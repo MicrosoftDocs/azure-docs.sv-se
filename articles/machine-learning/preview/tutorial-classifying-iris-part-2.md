@@ -213,7 +213,7 @@ I Azure ML kan du enkelt konfigurera ytterligare körningsmiljöer, till exempel
 
 2. Använd Kommandotolken (CLI) för att logga in på Azure. 
 
-   Workbench-appen och CLI använder oberoende cacheminnen för inloggningsuppgifter vid autentisering mot Azure-resurser. Du behöver bara göra det här en gång, tills token i cacheminnet upphör att gälla. Kommandot **az account list** returnerar listan med prenumerationer som är tillgängliga för din inloggning. Om det finns fler än en prenumeration använder du ID-värdet för den önskade prenumerationen, och anger den som standardkonto med kommandot **az set account -s** samt prenumerationens ID-värde. Bekräfta sedan inställningen med kommandot account show.
+   Workbench-appen och CLI använder oberoende cacheminnen för inloggningsuppgifter vid autentisering mot Azure-resurser. Du behöver bara göra det här en gång, tills token i cacheminnet upphör att gälla. Kommandot **az account list** returnerar listan med prenumerationer som är tillgängliga för din inloggning. Om det finns fler än en prenumeration använder du ID-värdet för den önskade prenumerationen, och anger den som standardkonto med kommandot **az account set -s** samt prenumerationens ID-värde. Bekräfta sedan inställningen med kommandot account show.
 
    ```azurecli
    REM login using aka.ms/devicelogin site.
@@ -223,7 +223,7 @@ I Azure ML kan du enkelt konfigurera ytterligare körningsmiljöer, till exempel
    az account list -o table
    
    REM set the current Azure subscription to the one you want to use.
-   az set account -s <subscriptionId>
+   az account set -s <subscriptionId>
    
    REM verify your current subscription is set correctly
    az account show
