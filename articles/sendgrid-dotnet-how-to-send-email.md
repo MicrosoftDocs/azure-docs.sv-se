@@ -212,7 +212,7 @@ På domänkontrollanten efter att infoga den `IConfiguration` gränssnitt, som v
               var subject = "Hello world email from Sendgrid ";
               var htmlContent = "<strong>Hello world with HTML content</strong>";
               var displayRecipients = false; // set this to true if you want recipients to see each others mail id 
-              var msg = MailHelper.CreateSingleEmailToMultipleRecipients(from, tos, subject, "", htmlContent, false);
+              var msg = MailHelper.CreateSingleEmailToMultipleRecipients(from, tos, subject, "", htmlContent, displayRecipients);
               var response = await client.SendEmailAsync(msg);
           }
        }
