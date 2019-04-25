@@ -129,15 +129,15 @@ Diagnostik från Azure Automation skapar två typer av poster i Azure Monitor-lo
 | --- | --- |
 | TimeGenerated |Datum och tid när kompatibilitetskontrollen kördes. |
 | OperationName |DscNodeStatusData |
-| resultType |Om noden är kompatibla. |
+| ResultType |Om noden är kompatibla. |
 | NodeName_s |Namnet på den hantera noden. |
 | NodeComplianceStatus_s |Om noden är kompatibla. |
 | DscReportStatus |Om kompatibilitetskontrollen har körts. |
 | ConfigurationMode | Hur konfigurationen tillämpas på noden. Möjliga värden är __”ApplyOnly”__,__”ApplyandMonitior”__, och __”ApplyandAutoCorrect”__. <ul><li>__ApplyOnly__: DSC gäller konfigurationen av och gör ingenting ytterligare såvida inte en ny konfiguration skickas till målnoden eller när en ny konfiguration hämtas från en server. Efter första gången av en ny konfiguration kontrollerar inte DSC för drift från ett tidigare konfigurerade tillstånd. DSC försöker tillämpa konfigurationen tills den lyckas innan __ApplyOnly__ träder i kraft. </li><li> __ApplyAndMonitor__: Detta är standardvärdet. LCM gäller alla nya konfigurationer. Efter första gången av en ny konfiguration rapporterar DSC avvikelse i loggarna om målnoden drifts från önskat tillstånd. DSC försöker tillämpa konfigurationen tills den lyckas innan __ApplyAndMonitor__ träder i kraft.</li><li>__ApplyAndAutoCorrect__: DSC gäller alla nya konfigurationer. Efter första gången av en ny konfiguration om målnoden drifts från önskat tillstånd DSC rapporterar avvikelse i loggar och återställer den aktuella konfigurationen.</li></ul> |
 | HostName_s | Namnet på den hantera noden. |
-| IP-adress | IPv4-adressen för hanterad nod. |
-| Kategori | DscNodeStatus |
-| Resurs | Namnet på Azure Automation-konto. |
+| IPAddress | IPv4-adressen för hanterad nod. |
+| Category | DscNodeStatus |
+| Resource | Namnet på Azure Automation-konto. |
 | Tenant_g | GUID som identifierar klient för anroparen. |
 | NodeId_g |GUID som identifierar hanterad nod. |
 | DscReportId_g |GUID som identifierar rapporten. |
@@ -160,10 +160,10 @@ Diagnostik från Azure Automation skapar två typer av poster i Azure Monitor-lo
 | --- | --- |
 | TimeGenerated |Datum och tid när kompatibilitetskontrollen kördes. |
 | OperationName |DscResourceStatusData|
-| resultType |Om resursen är kompatibla. |
+| ResultType |Om resursen är kompatibla. |
 | NodeName_s |Namnet på den hantera noden. |
-| Kategori | DscNodeStatus |
-| Resurs | Namnet på Azure Automation-konto. |
+| Category | DscNodeStatus |
+| Resource | Namnet på Azure Automation-konto. |
 | Tenant_g | GUID som identifierar klient för anroparen. |
 | NodeId_g |GUID som identifierar hanterad nod. |
 | DscReportId_g |GUID som identifierar rapporten. |
