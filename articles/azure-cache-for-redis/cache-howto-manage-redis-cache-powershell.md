@@ -127,17 +127,17 @@ I följande tabell innehåller egenskaperna och beskrivningar för vanliga param
 
 | Parameter | Beskrivning | Standard |
 | --- | --- | --- |
-| Namn |Namnet på cachen | |
+| Name |Namnet på cachen | |
 | Location |Platsen för cachen | |
 | ResourceGroupName |Resursgruppens namn som skapas i cachen | |
-| Storlek |Storleken på cacheminnet. Giltiga värden är: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2,5 GB, 6 GB, 13 GB, 26 GB, 53 GB |1 GB |
+| Size |Storleken på cacheminnet. Giltiga värden är: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2,5 GB, 6 GB, 13 GB, 26 GB, 53 GB |1 GB |
 | ShardCount |Antalet partitioner skapa när du skapar en premium-cache med klustring aktiverat. Giltiga värden är: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | |
 | SKU |Anger SKU för cachen. Giltiga värden är: Basic, Standard, Premium |Standard |
 | RedisConfiguration |Anger inställningar för Redis. Information om varje inställning finns i följande [RedisConfiguration egenskaper](#redisconfiguration-properties) tabell. | |
 | EnableNonSslPort |Anger om icke-SSL-porten är aktiverad. |False |
 | MaxMemoryPolicy |Den här parametern är inaktuell – Använd RedisConfiguration istället. | |
 | StaticIP |När du har ditt cacheminne i ett virtuellt nätverk, anger du en unik IP-adress i undernätet för cachen. Om du inte är något valt från undernätet. | |
-| Undernät |När du har ditt cacheminne i ett virtuellt nätverk, anger du namnet på undernätet där du kan distribuera cacheminnet. | |
+| Subnet |När du har ditt cacheminne i ett virtuellt nätverk, anger du namnet på undernätet där du kan distribuera cacheminnet. | |
 | VirtualNetwork |När du har ditt cacheminne i ett virtuellt nätverk, anger du resurs-ID för det virtuella nätverket där du kan distribuera cacheminnet. | |
 | KeyType |Anger vilka åtkomstnyckel att återskapa när du förnyar åtkomstnycklar. Giltiga värden är: Primär, sekundär | |
 
