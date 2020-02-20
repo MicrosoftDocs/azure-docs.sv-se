@@ -125,7 +125,7 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med &fran
 
 ### <a name="configure-frankly-single-sign-on"></a>Konfigurera enkel inloggning för &frankly
 
-För att konfigurera enkel inloggning på **&frankly**-sidan behöver du logga in och gå till **Inställningar => Användare**, ändra till **Enterprise Sign-on (SAML)** som authentisieringsmetod samt ladda upp det **Federation Metadata XML** dokument som du laddade ner i steg 6 ovan, och trycka på **Spara**. När detta är gjort är SSO påslaget i &frankly.
+För att konfigurera enkel inloggning på **&frankly**-sidan behöver du skicka nedladdade **XML-federationsmetadata** och lämpliga kopierade URL:er från Azure-portalen till [supportteamet för &frankly](mailto:help@andfrankly.com). De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
 
