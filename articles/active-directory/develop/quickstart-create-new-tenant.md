@@ -32,7 +32,7 @@ Varje Azure AD-klientorganisation skiljer sig från andra Azure AD-klientorganis
 
 Det finns två typer av miljöer som du kan skapa. Att bestämma vilken du behöver baseras helt på vilka typer av användare som din app autentiserar.
 
-* Arbets- och skolkonton (Azure AD-konton) eller Microsof-konton (t.ex. outlook.com och live.com)
+* Arbets- och skolkonton (Azure AD-konton) eller Microsoft-konton (t.ex. outlook.com och live.com)
 * Sociala och lokala konton (Azure AD B2C)
 
 Snabbstarten är indelad i två scenarier beroende på vilken app du vill skapa. Om du behöver hjälp med rikta in dig på en identitetstyp kan du ta en titt på avsnittet [om Microsoft Identity-plattformen](about-microsoft-identity-platform.md)
