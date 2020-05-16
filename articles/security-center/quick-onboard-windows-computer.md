@@ -1,6 +1,6 @@
 ---
 title: Publicera Windows-datorer till Azure Security Center
-description: Den här snabb starten visar hur du etablerar Log Analytics-agenten på en Windows-dator.
+description: Den här snabbstarten visar hur du etablerar Log Analytics-agenten på en Windows-dator.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -22,9 +22,9 @@ ms.lasthandoff: 04/29/2020
 ms.locfileid: "80435927"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Snabbstart: Publicera Windows-datorer till Azure Security Center
-När du har publicerat dina Azure-prenumerationer kan du aktivera Security Center för resurser som körs utanför Azure, till exempel lokalt eller i andra moln, genom att tillhandahålla Log Analytics agenten.
+När du har publicerat dina Azure-prenumerationer kan du aktivera Security Center för resurser som körs utanför Azure, till exempel lokalt eller i andra moln, genom att tillhandahålla Log Analytics-agenten.
 
-Den här snabb starten visar hur du installerar Log Analytics-agenten på en Windows-dator.
+Den här snabbstarten visar hur du installerar Log Analytics-agenten på en Windows-dator.
 
 ## <a name="prerequisites"></a>Krav
 Du måste ha en prenumeration på Microsoft Azure för att komma igång med Security Center. Om du inte har någon prenumeration kan du registrera dig för ett [kostnadsfritt konto](https://azure.microsoft.com/pricing/free-trial/).
@@ -38,7 +38,7 @@ Innan du startar den här snabbstarten måste du ha standardnivån i Security Ce
 
    ![Översikt över Security Center][2]
 
-3. På huvudmenyn i Security Center väljer du **Komma igång**.
+3. I huvudmenyn i Security Center väljer du **Komma igång**.
 4. Välj fliken **Kom igång**.
 
    ![Kom igång][3]
@@ -72,7 +72,7 @@ Nu måste du installera den hämtade filen på måldatorn.
 9. På sidan **Klar att installera** kontrollerar du valen och väljer sedan **Installera**.
 10. På sidan **Konfigurationen har slutförts** väljer du **Slutför**
 
-När du är klar visas **Log Analytics agenten** på **kontroll panelen**. Du kan granska konfigurationen där och bekräfta att agenten är ansluten.
+När du är klar visas **Log Analytics-agenten** på **kontroll panelen**. Du kan granska konfigurationen där och bekräfta att agenten är ansluten.
 
 Mer information om att installera och konfigurera agenten finns i dokumentationen om att [ansluta Windows-datorer](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard).
 
@@ -91,12 +91,12 @@ När den inte längre behövs kan du ta bort agenten från Windows-datorn.
 
 Så här tar du bort agenten:
 
-1. Öppna **kontroll panelen**.
+1. Öppna **kontrollpanelen**.
 2. Öppna **Program och funktioner**.
-3. I **program och funktioner**väljer du **Log Analytics agent** och klickar på **Avinstallera**.
+3. I **program och funktioner** väljer du **Log Analytics agent** och klickar på **Avinstallera**.
 
 ## <a name="next-steps"></a>Nästa steg
-I den här snabb starten etablerade du Log Analytics-agenten på en Windows-dator. Om du vill läsa mer om hur du använder Security Center fortsätter du till självstudien om konfiguration av en säkerhetsprincip och utvärderar resursers säkerhet.
+I den här snabbstarten etablerade du Log Analytics-agenten på en Windows-dator. Om du vill läsa mer om hur du använder Security Center fortsätter du till självstudien om konfiguration av en säkerhetsprincip och utvärderar resursers säkerhet.
 
 > [!div class="nextstepaction"]
 > [Självstudie: Definiera och utvärdera säkerhetsprinciper](tutorial-security-policy.md)
