@@ -3,12 +3,12 @@ title: Frågor om identifiering, utvärdering och beroende analys i Azure Migrat
 description: Få svar på vanliga frågor om identifiering, utvärdering och beroende analys i Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 8db9103494c0006127c45c0ae5f9672d3bd2bbb1
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9b8ba0ec83b9f2faedebb2bfb4ba84109f6f8b77
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829891"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263511"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Identifiering, utvärdering och beroende analys – vanliga frågor
 
@@ -36,23 +36,34 @@ Du kan identifiera upp till 10 000 virtuella VMware-datorer, upp till 5 000 virt
 - Använd **Azure VMware Solution (AVS)-** utvärderingar när du vill utvärdera dina lokala [virtuella VMware-datorer](how-to-set-up-appliance-vmware.md) för migrering till [Azure VMware-lösningen (AVS)](../azure-vmware/introduction.md) med den här utvärderings typen. [Läs mer](concepts-azure-vmware-solution-assessment-calculation.md)
 
 - Du kan använda en gemensam grupp med endast VMware-datorer om du vill köra båda utvärderingstyperna. Om du kör AVS-utvärderingar i Azure Migrate för första gången rekommenderar vi att du skapar en ny grupp med VMware-datorer.
+ 
+
+## <a name="why-is-performance-data-missing-for-someall-vms-in-my-assessment-report"></a>Varför saknas prestandadata för vissa/alla virtuella datorer i min utvärderingsrapport?
+
+Det står PercentageOfCoresUtilizedMissing eller PercentageOfMemoryUtilizedMissing för prestandabaserad utvärdering i utvärderingsrapporten när Azure Migrate-installationen inte kan samla in prestandadata för lokala virtuella datorer. Kontrollera följande:
+
+- Om de virtuella datorerna är påslagna under hela den varaktighet för vilken du skapar utvärderingen
+- Om endast minnesräknare saknas och du försöker utvärdera virtuella Hyper-V-datorer kontrollerar du om dynamiskt minne är aktiverat på de virtuella datorerna. Det finns för närvarande ett känt problem som gör att Azure Migrate-installationen inte kan samla in minnesanvändning för sådana virtuella datorer.
+- Om alla prestandaräknare saknas kontrollerar du att utgående anslutningar är tillåtna på port 443 (HTTPS).
+
+Obs! Om någon av prestandaräknarna saknas återgår Azure Migrate: Server Assessment till de allokerade kärnorna/minnet lokalt och rekommenderar lämplig VM-storlek.
+
+## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>Varför har min utvärdering lågt säkerhetsomdöme?
+
+Säkerhetsomdömet beräknas för ”prestandabaserade” utvärderingar baserat på den procentandel av [tillgängliga datapunkter](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#ratings) som behövdes för att beräkna utvärderingen. Ett lågt säkerhetsomdöme för en utvärdering kan bero på något av följande:
+
+- Du profilerade inte din miljö för hela den varaktighet för vilken du skapar utvärderingen. Om du till exempel skapar en utvärdering med en varaktighet på en vecka måste du vänta minst en vecka efter att identifieringen startade, tills alla datapunkter har samlats in. Om du inte kan vänta hela varaktigheten ändrar du varaktigheten för prestanda till en kortare period och ”räknar om” utvärderingen.
+ 
+- Server Assessment kan inte samla in prestandadata för vissa eller alla virtuella datorer under utvärderingsperioden. Kontrollera att de virtuella datorerna var påslagna under utvärderingen och att utgående anslutningar tillåts på port 443. Om dynamiskt minne är aktiverat för virtuella Hyper-V-datorer saknas minnesräknare, vilket ger ett lågt säkerhetsomdöme. Beräkna om utvärderingen så att de senaste ändringarna återspeglas i säkerhetsomdömet. 
+
+- Få virtuella datorer skapades efter att identifieringen startades i Server Assessment. Om du till exempel skapar en utvärdering för prestandahistoriken för den senaste månaden, men några virtuella datorer skapades i miljön för en vecka sedan. I detta fall kommer prestandadata för de nya virtuella datorerna inte att vara tillgängliga för hela tidsperioden och säkerhetsomdömet blir lågt.
+
+[Läs mer](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#confidence-ratings-performance-based) om säkerhetsomdömen.
 
 ## <a name="i-cant-see-some-groups-when-i-am-creating-an-azure-vmware-solution-avs-assessment"></a>Jag kan inte se vissa grupper när jag skapar en Azure VMware-lösning (AVS)-utvärdering
 
 - En AVS-utvärdering kan göras för grupper som endast innehåller VMware-datorer. Ta bort alla datorer som inte är VMware-datorer från gruppen om du tänker köra en AVS-utvärdering.
 - Om du kör AVS-utvärderingar i Azure Migrate för första gången rekommenderar vi att du skapar en ny grupp med VMware-datorer.
-
-## <a name="how-do-i-select-ftt-raid-level-in-avs-assessment"></a>Hur gör jag för att väljer du FTT-RAID-nivå i AVS-utvärderingen?
-
-Den lagrings motor som används i AVS är virtuellt San. vSAN-lagringsprinciperna definierar lagringskraven för dina virtuella datorer. Med dessa principer garanteras den tjänstnivå som krävs för dina virtuella datorer eftersom de fastställer hur lagringen allokeras till den virtuella datorn. Tillgängliga FTT-RAID-kombinationer: 
-
-**Fel som ska kunna hanteras (FTT)** | **RAID-konfiguration** | **Lägsta antal värdar som krävs** | **Storleksövervägande**
---- | --- | --- | --- 
-1 | RAID-1 (spegling) | 3 | En virtuell dator på 100 GB skulle förbruka 200 GB.
-1 | RAID-5 (raderingsskyddad kod) | 4 | En virtuell dator på 100 GB skulle förbruka 133,33 GB
-2 | RAID-1 (spegling) | 5 | En virtuell dator på 100 GB skulle förbruka 300 GB.
-2 | RAID-6 (raderingsskyddad kod) | 6 | En virtuell dator på 100 GB skulle förbruka 150 GB.
-3 | RAID-1 (spegling) | 7 | En virtuell dator på 100 GB skulle förbruka 400 GB.
 
 ## <a name="i-cant-see-some-vm-types-in-azure-government"></a>Jag kan inte se vissa typer av virtuella datorer i Azure Government
 
@@ -131,7 +142,7 @@ Skillnaderna mellan agent utan visualisering och agentbaserade visualiseringar s
 --- | --- | ---
 Support | Det här alternativet är för närvarande en för hands version och är bara tillgängligt för virtuella VMware-datorer. [Granska](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) operativ system som stöds. | Allmän tillgänglighet (GA).
 Agent | Du behöver inte installera agenter på datorer som du vill kryssa för. | Agenter som ska installeras på varje lokal dator som du vill analysera: [Microsoft Monitoring Agent (MMA)](../azure-monitor/platform/agent-windows.md)och [beroende agenten](../azure-monitor/platform/agents-overview.md#dependency-agent). 
-Förutsättningar | [Granska](concepts-dependency-visualization.md#agentless-analysis) kraven och distributions kraven. | [Granska](concepts-dependency-visualization.md#agent-based-analysis) kraven och distributions kraven.
+Krav | [Granska](concepts-dependency-visualization.md#agentless-analysis) kraven och distributions kraven. | [Granska](concepts-dependency-visualization.md#agent-based-analysis) kraven och distributions kraven.
 Log Analytics | Krävs inte. | Azure Migrate använder [tjänstkarta](../azure-monitor/insights/service-map.md) -lösningen i [Azure Monitor loggar](../azure-monitor/log-query/log-query-overview.md) för beroende visualisering. [Läs mer](concepts-dependency-visualization.md#agent-based-analysis).
 Så här fungerar det | Fångar upp TCP-anslutningsfel på datorer aktiverade för beroende visualisering. Efter identifieringen samlar den in data i intervall om fem minuter. | Tjänstkarta agenter som installerats på en dator samla in data om TCP-processer och inkommande/utgående anslutningar för varje process.
 Data | Käll datorns Server namn, process, program namn.<br/><br/> Mål datorns Server namn, process, program namn och port. | Käll datorns Server namn, process, program namn.<br/><br/> Mål datorns Server namn, process, program namn och port.<br/><br/> Antalet anslutningar, svars tid och data överförings information samlas in och är tillgängliga för Log Analytics frågor. 

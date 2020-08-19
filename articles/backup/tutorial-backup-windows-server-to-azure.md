@@ -4,12 +4,12 @@ description: Den här självstudiekursen förklarar hur du säkerhetskopierar lo
 ms.topic: tutorial
 ms.date: 08/22/2018
 ms.custom: mvc
-ms.openlocfilehash: 560a4907fc812aae027ad9e1a1c262fc994c0da9
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: d2990b5950cf8812367c3a59c6cace39e4085e2a
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295549"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261913"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Säkerhetskopiera Windows Server till Azure
 
@@ -29,13 +29,13 @@ Logga in på Azure Portal på <https://portal.azure.com>.
 
 Innan du kan säkerhetskopiera Windows Server måste du skapa en plats för de säkerhetskopior, eller återställningspunkter, som ska lagras. Ett [Recovery Services-valv](backup-azure-recovery-services-vault-overview.md) är en container i Azure som lagrar säkerhetskopior från Windows Server. Följ stegen nedan för att skapa ett Recovery Services-valv i Azure-portalen.
 
-1. Välj **Alla tjänster** på menyn till vänster och skriv **Recovery Services** i tjänstlistan. Klicka på **Recovery Services-valv**.
+1. Välj **Alla tjänster** på menyn till vänster och skriv **Recovery Services** i tjänstlistan. Välj **Recovery Services valv**.
 
-   ![öppna Recovery Services-valv](./media/tutorial-backup-windows-server-to-azure/full-browser-open-rs-vault_2.png)
+   ![Öppna Recovery Services valv](./media/tutorial-backup-windows-server-to-azure/full-browser-open-rs-vault_2.png)
 
-2. På menyn **Recovery Services-valv** klickar du på **Lägg till**.
+2. På menyn **Recovery Services valv** väljer du **Lägg till**.
 
-   ![ange information för valvet](./media/tutorial-backup-windows-server-to-azure/provide-vault-detail-2.png)
+   ![Ange information för valvet](./media/tutorial-backup-windows-server-to-azure/provide-vault-detail-2.png)
 
 3. På menyn **Recovery Services-valt**:
 
@@ -43,7 +43,7 @@ Innan du kan säkerhetskopiera Windows Server måste du skapa en plats för de s
     * Aktuellt prenumerations-ID visas i **Prenumeration**.
     * För **Resursgrupp** väljer du **Använd befintlig** och sedan *myResourceGroup*. Om *myResourceGroup* inte finns väljer du **Skapa ny** och skriver *myResourceGroup*.
     * Från den nedrullningsbara menyn **Plats** väljer du *Europa, västra*.
-    * Klicka på **Skapa** för att skapa ditt Recovery Services-valv.
+    * Välj **skapa** för att skapa Recovery Services-valvet.
 
 När valvet har skapats visas det i listan över Recovery Services-valv.
 
@@ -53,44 +53,44 @@ MARS-agenten (Microsoft Azure Recovery Services) skapar en koppling mellan Windo
 
 1. Från listan med Recovery Services-valv väljer du **myRecoveryServicesVault** för att öppna valvets instrumentpanel.
 
-   ![ange information för valvet](./media/tutorial-backup-windows-server-to-azure/open-vault-from-list.png)
+   ![Välj valvet för att öppna instrument panelen](./media/tutorial-backup-windows-server-to-azure/open-vault-from-list.png)
 
-2. Klicka på **Säkerhetskopiering** på valvets instrumentpanel.
+2. På instrument panelen för valv väljer du **säkerhets kopiering**.
 
 3. På **Säkerhetskopieringsmål**-menyn:
 
    * för **var körs din arbets belastning?**, Välj **lokalt**
    * för **Vad vill du säkerhetskopiera?**, välj **Filer och mappar** och **Systemtillstånd**.
 
-   ![ange information för valvet](./media/tutorial-backup-windows-server-to-azure/backup-goal.png)
+   ![Menyn säkerhetskopiera mål](./media/tutorial-backup-windows-server-to-azure/backup-goal.png)
 
-4. Klicka på **Förbered infrastrukturen** för att öppna **Förbered infrastruktur**-menyn.
+4. Välj **Förbered infrastruktur** för att öppna menyn **Förbered infrastruktur** .
 
-5. På **Förbered infrastruktur**-menyn, klicka på **Ladda ned agent för Windows Server eller Windows Client** för att ladda ned *MARSAgentInstaller.exe*.
+5. På menyn **Förbered infrastruktur** väljer du **Ladda ned agent för Windows Server eller Windows-klient** för att ladda ned *MARSAgentInstaller.exe*.
 
-    ![förbereda infrastrukturen](./media/tutorial-backup-windows-server-to-azure/prepare-infrastructure.png)
+    ![Ladda ned agent för Windows Server eller Windows-klient](./media/tutorial-backup-windows-server-to-azure/prepare-infrastructure.png)
 
     Installationsprogrammet öppnar en separat webbläsare och laddar ned **MARSAgentInstaller.exe**.
 
-6. Innan du kör den nedladdade filen klickar du på menyn Förbered infrastruktur, klickar på **Hämta** och sparar filen med **valvautentiseringsuppgifter**. Autentiseringsuppgifter krävs för att koppla MARS-agenten till Recovery Services-valvet.
+6. Innan du kör den nedladdade filen väljer du **Hämta** och spara filen med autentiseringsuppgifter för **valvet** i menyn Förbered infrastruktur. Autentiseringsuppgifter krävs för att koppla MARS-agenten till Recovery Services-valvet.
 
-    ![förbereda infrastrukturen](./media/tutorial-backup-windows-server-to-azure/download-vault-credentials.png)
+    ![Ladda ned autentiseringsuppgifter för valvet](./media/tutorial-backup-windows-server-to-azure/download-vault-credentials.png)
 
 ## <a name="install-and-register-the-agent"></a>Installera och registrera agenten
 
 1. Leta upp och dubbelklicka på **MARSagentinstaller.exe** som du laddade ned.
-2. **Installationsguide för Microsoft Azure Recovery Services-agenten** visas. När du går igenom guiden anger du följande information när den efterfrågas och klickar på **Registrera**.
+2. **Installationsguide för Microsoft Azure Recovery Services-agenten** visas. När du går igenom guiden anger du följande information när du uppmanas till det och väljer **Registrera**.
    * Plats för installationen och cachelagringsmappen.
    * Information om proxyservern om du använder en proxyserver för att ansluta till Internet.
    * Ditt användarnamn och lösenord om du använder en autentiserad proxyserver.
 
-     ![förbereda infrastrukturen](./media/tutorial-backup-windows-server-to-azure/mars-installer.png)
+     ![Installations guide för Microsoft Azure Recovery Services agent](./media/tutorial-backup-windows-server-to-azure/mars-installer.png)
 
-3. I slutet av guiden klickar du på **Fortsätt till registreringen** och tillhandahåller filen med **valvautentiseringsuppgifter** som du hämtade i föregående steg.
+3. I slutet av guiden väljer du **Fortsätt till registrering** och anger den fil för **valv** som du laddade ned i föregående procedur.
 
-4. Ange vid uppmaningen en krypteringslösenfrasen för att kryptera säkerhetskopiorna från Windows Server. Spara lösenfrasen på en säker plats eftersom Microsoft inte kan återställa lösenfrasen om du förlorar den.
+4. Ange vid uppmaningen en krypteringslösenfrasen för att kryptera säkerhetskopiorna från Windows Server. Spara lösen frasen på en säker plats eftersom Microsoft inte kan återställa lösen frasen om den går förlorad.
 
-5. Klicka på **Slutför**.
+5. Välj **Slutför**.
 
 ## <a name="configure-backup-and-retention"></a>Konfigurera säkerhetskopiering och kvarhållning
 
@@ -98,39 +98,39 @@ Du använder Microsoft Azure Recovery Services-agenten för att schemalägga nä
 
 1. Öppna Microsoft Azure Recovery Services-agenten. Du hittar den genom att söka efter **Microsoft Azure Backup** på datorn.
 
-2. I konsolen för Recovery Services-agenten klickar du på **Schemalägg säkerhetskopiering** under **åtgärdsfönstret**.
+2. I Recovery Services agent-konsolen väljer du **Schemalägg säkerhets kopiering** under **Åtgärds fönstret**.
 
-    ![förbereda infrastrukturen](./media/tutorial-backup-windows-server-to-azure/mars-schedule-backup.png)
+    ![Schemalägg säkerhets kopiering](./media/tutorial-backup-windows-server-to-azure/mars-schedule-backup.png)
 
-3. Klicka på **Nästa** för att gå till sidan där du **väljer objekt att säkerhetskopiera**.
+3. Välj **Nästa** för att navigera till sidan **Välj objekt som ska säkerhets kopie ras** .
 
-4. Klicka på **Lägg till objekt**. I dialogrutan som öppnas markerar du **Systemtillstånd** och de filer eller mappar som du vill säkerhetskopiera. Klicka sedan på **OK**.
+4. Välj **Lägg till objekt** och i dialog rutan som öppnas väljer du **system tillstånd** och filer eller mappar som du vill säkerhetskopiera. Välj sedan **OK**.
 
-5. Klicka på **Nästa**.
+5. Välj **Nästa**.
 
-6. På sidan **Ange schema för säkerhetskopiering (Systemtillstånd)** anger du tidpunkten på dagen eller veckan när säkerhetskopieringar ska utlösas för Systemtillstånd och klickar på **Nästa**.
+6. På sidan **Ange schema för säkerhets kopiering (system tillstånd)** anger du den tid på dagen eller vecka då säkerhets kopieringar måste utlösas för system tillstånd och välj **Nästa**.
 
-7. På sidan **Välj kvarhållningsprincip (Systemtillstånd) ** väljer du en kvarhållningsprincip för säkerhetskopian för Systemtillstånd och klickar på **Nästa**.
+7. På sidan **Välj bevarande princip (system tillstånd)** väljer du bevarande principen för säkerhets kopian för system tillstånd och väljer **Nästa**.
 
 8. Välj på samma sätt säkerhetskopieringsschema och kvarhållningsprincip för valda filer och mappar.
 
-9. Välj **Automatiskt över nätverket** på sidan **Välj typ för första säkerhetskopieringen** och klicka på **Nästa**.
+9. På sidan **Välj första säkerhets kopierings typ** väljer du **automatiskt över nätverket**och väljer **sedan nästa**.
 
-10. Läs informationen på sidan **Bekräftelse** och klicka på **Slutför**.
+10. På sidan **bekräftelse** granskar du informationen och väljer **Slutför**.
 
-11. När guiden har skapat säkerhetskopieringsschemat klickar du på **Stäng**.
+11. När du har skapat säkerhets kopierings schemat väljer du **Stäng**.
 
 ## <a name="perform-an-on-demand-backup"></a>Utföra en säkerhetskopiering på begäran
 
-Du har skapat schemat för när säkerhetskopieringsjobb ska köras. Men du har inte säkerhetskopierat servern. Det är bästa praxis för haveriberedskap att köra en säkerhetskopiering på begäran för att säkerställa dataåterhämtning för servern.
+Du har upprättat schemat när säkerhets kopierings jobb körs. Men du har inte säkerhetskopierat servern. Det är en bra metod för haveri beredskap att köra en säkerhets kopiering på begäran för att säkerställa data återhämtning för servern.
 
-1. Öppna Microsoft Azure Recovery Services-agenten och klicka på **Säkerhetskopiera nu**.
+1. I Microsoft Azure Recovery Services agent-konsolen väljer du **Säkerhetskopiera nu**.
 
-    ![förbereda infrastrukturen](./media/tutorial-backup-windows-server-to-azure/backup-now.png)
+    ![Säkerhetskopiera nu](./media/tutorial-backup-windows-server-to-azure/backup-now.png)
 
-2. Guiden **Säkerhetskopiera nu** öppnas. Välj antingen **Filer och mappar** eller **Systemtillstånd** som du vill säkerhetskopiera och klicka på **Nästa**
-3. Gå igenom de inställningar på sidan **Bekräftelse** som guiden **Säkerhetskopiera nu** ska använda för att säkerhetskopiera servern. Klicka på **Säkerhetskopiera**.
-4. Stäng guiden genom att klicka på **Stäng**. Om du stänger guiden innan säkerhetskopieringen är klar fortsätter guiden att köras i bakgrunden.
+2. I guiden **Säkerhetskopiera nu** väljer du en från **filer och mappar** eller **system tillstånd** som du vill säkerhetskopiera och väljer **Nästa**
+3. Gå igenom de inställningar på sidan **Bekräftelse** som guiden **Säkerhetskopiera nu** ska använda för att säkerhetskopiera servern. Välj sedan **säkerhetskopiera**.
+4. Stäng guiden genom att välja **Stäng** . Om du stänger guiden innan säkerhetskopieringen är klar fortsätter guiden att köras i bakgrunden.
 5. När den första säkerhetskopieringen har slutförts visas statusen **Jobbet har slutförts** i rutan **Jobb** i MARS-agentkonsolen.
 
 ## <a name="next-steps"></a>Nästa steg

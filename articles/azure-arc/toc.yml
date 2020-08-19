@@ -8,7 +8,7 @@
       href: ./servers/overview.md
 - name: Snabbstarter
   items:
-    - name: Aktivera Arc för serveragenter
+    - name: Aktivera Azure Arc-aktiverad agent för servrar
       href: ./servers/learn/quick-enable-hybrid-vm.md
 - name: Självstudier
   items:

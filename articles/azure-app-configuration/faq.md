@@ -1,18 +1,18 @@
 ---
 title: Vanliga frågor om Azure App konfiguration
-description: Vanliga frågor om Azure App konfiguration
+description: Läs vanliga frågor och svar om Azure App konfiguration, t. ex. hur det skiljer sig från Azure Key Vault.
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 25187fd055f40e8b32d840ead2a9c54882446b88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1483230313b9e1b8e59cafea478b14ba0dfcc70
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80348792"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587352"
 ---
 # <a name="azure-app-configuration-faq"></a>Vanliga frågor om Azure App konfiguration
 

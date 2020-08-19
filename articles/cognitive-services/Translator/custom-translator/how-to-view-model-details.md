@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 56d947a6b2d236a04f2b71421a235120a9f02c76
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 52e305f9d50ab0f383810778be681ac41be97c72
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994197"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509812"
 ---
 # <a name="view-model-details"></a>Visa modellinformation
 
@@ -22,25 +22,25 @@ På fliken modeller under projektet visas alla modeller i projektet. Alla modell
 
 För varje modell i projektet visas dessa uppgifter.
 
-1.  Modell namn: visar modell namnet för en specifik modell.
+1. Modell namn: visar modell namnet för en specifik modell.
 
-2.  Status: visar status för en specifik modell. Din nya utbildning kommer att ha statusen skickad tills den accepteras. Statusen ändras till data bearbetning medan tjänsten utvärderar dokumentets innehåll. När utvärderingen av dokumenten har slutförts ändras statusen till körs och du kan se antalet meningar som är en del av utbildningen, inklusive de justerings-och test uppsättningar som skapas automatiskt. Nedan visas en lista med modell status som beskriver modellens tillstånd.
+2. Status: visar status för en specifik modell. Din nya utbildning kommer att ha statusen skickad tills den accepteras. Statusen ändras till data bearbetning medan tjänsten utvärderar dokumentets innehåll. När utvärderingen av dokumenten har slutförts ändras statusen till körs och du kan se antalet meningar som är en del av utbildningen, inklusive de justerings-och test uppsättningar som skapas automatiskt. Nedan visas en lista med modell status som beskriver modellens tillstånd.
 
-    -  Skickat: anger att Server delen bearbetar dokumenten för den modellen.
+    - Skickat: anger att Server delen bearbetar dokumenten för den modellen.
 
-    -  TrainingQueued: anger att utbildningen har placerats i kö till MT-system för den modellen.
+    - TrainingQueued: anger att utbildningen har placerats i kö till MT-system för den modellen.
 
-    -  Kör: anger att träningen körs i MT-systemet för den modellen.
+    - Kör: anger att träningen körs i MT-systemet för den modellen.
 
-    -  Lyckades: anger att utbildningen lyckades i MT-systemet och att en modell är tillgänglig. I den här statusen visas en BLEU Poäng för den modellen.
+    - Lyckades: anger att utbildningen lyckades i MT-systemet och att en modell är tillgänglig. I den här statusen visas en BLEU Poäng för den modellen.
 
-    -  Distribuerad: anger att den lyckade tränade modellen skickas till MT-systemet för distribution.
+    - Distribuerad: anger att den lyckade tränade modellen skickas till MT-systemet för distribution.
 
-    -  Avdistribuera: anger att den distribuerade modellen är avdistribuerad.
+    - Avdistribuera: anger att den distribuerade modellen är avdistribuerad.
 
-    -  Inte distribuerad: anger att processen för att distribuera en modell har slutförts utan problem.
+    - Inte distribuerad: anger att processen för att distribuera en modell har slutförts utan problem.
 
-    -  Inlärningen misslyckades: anger att träningen misslyckades. Om ett inlärnings fel inträffar försöker du igen med utbildnings jobbet. Om felet kvarstår kan du kontakta oss. Ta inte bort den misslyckade modellen.
+    - Inlärningen misslyckades: anger att träningen misslyckades. Om ett inlärnings fel inträffar försöker du igen med utbildnings jobbet. Om felet kvarstår kan du kontakta oss. Ta inte bort den misslyckade modellen.
 
     - DataProcessingFailed: anger att data bearbetningen har misslyckats för ett eller flera dokument som tillhör modellen.
 
@@ -48,19 +48,19 @@ För varje modell i projektet visas dessa uppgifter.
 
     - MigratedDraft: anger att modellen är i utkast tillstånd efter migrering från hubben till en anpassad översättare.
 
-4.  BLEU Poäng: visar BLEU (tvåspråkig utvärdering understudie) av modellen, vilket anger kvaliteten på översättnings systemet. Det här resultatet visar hur nära översättnings systemet som är resultatet av den här utbildningen som matchar referens meningarna i test data uppsättningen. BLEU-poängen visas om träningen har slutförts. Om inlärningen inte är slutförd/misslyckad visas inga BLEU poäng.
+3. BLEU Poäng: visar BLEU (tvåspråkig utvärdering understudie) av modellen, vilket anger kvaliteten på översättnings systemet. Det här resultatet visar hur nära översättnings systemet som är resultatet av den här utbildningen som matchar referens meningarna i test data uppsättningen. BLEU-poängen visas om träningen har slutförts. Om inlärningen inte är slutförd/misslyckad visas inga BLEU poäng.
 
-5.  Antal inlärnings meningar: visar det totala antalet meningar som används som inlärnings uppsättning.
+4. Antal inlärnings meningar: visar det totala antalet meningar som används som inlärnings uppsättning.
 
-6.  Justera menings antal: visar det totala antalet meningar som används som justerings uppsättning.
+5. Justera menings antal: visar det totala antalet meningar som används som justerings uppsättning.
 
-7.  Antal inlärnings meningar: visar det totala antalet meningar som används som testnings uppsättning.
+6.  Antal inlärnings meningar: visar det totala antalet meningar som används som testnings uppsättning.
 
-8.  Antal svartvita meningar: visar det totala antalet meningar som används som mono uppsättning.
+7.  Antal svartvita meningar: visar det totala antalet meningar som används som mono uppsättning.
 
-9.  Knappen distribuera åtgärd: för en lyckad tränad modell visas knappen distribuera om den inte har distribuerats. Om en modell distribueras visas en "avdistribuera"-knapp.
+8.  Knappen distribuera åtgärd: för en lyckad tränad modell visas knappen distribuera om den inte har distribuerats. Om en modell distribueras visas en "avdistribuera"-knapp.
 
-10. Ta bort: du kan använda den här knappen om du vill ta bort modellen. Om du tar bort en modell raderas inte alla dokument som används för att skapa modellen.
+9. Ta bort: du kan använda den här knappen om du vill ta bort modellen. Om du tar bort en modell raderas inte alla dokument som används för att skapa modellen.
 
     ![Visa modellinformation](media/how-to/how-to-view-model-details.png)
 

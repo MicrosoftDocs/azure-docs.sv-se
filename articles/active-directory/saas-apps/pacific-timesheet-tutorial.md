@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Pacific-tidrapport | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Pacific-tidrapporten.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: e546e8ba-821a-4942-9545-c84b0670beab
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 076a1e7cfc16b5ca9ff5505898cfd5399a4b7efd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9802c3771e1f543abc685a9b07fad69575fd43ee
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67095162"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554279"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pacific-timesheet"></a>Självstudie: Azure Active Directory integrering med Pacific-tidrapport
 
@@ -32,9 +28,9 @@ Genom att integrera Pacific-tidrapporten med Azure AD får du följande fördela
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Pacific-tidrapport, behöver du följande objekt:
 
@@ -105,9 +101,9 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Pa
 
     ![Pacific-tidrapport, domän och URL enkel inloggning information](common/idp-intiated.png)
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://<InstanceID>.pacifictimesheet.com/timesheet/home.do`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://<InstanceID>.pacifictimesheet.com/timesheet/home.do`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<InstanceID>.pacifictimesheet.com/timesheet/home.do`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<InstanceID>.pacifictimesheet.com/timesheet/home.do`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska identifieraren och svars-URL. Kontakta [Stilla havs tid för klient support teamet](https://www.pacifictimesheet.com/support) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -149,7 +145,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **Användarnamn** anger du **brittasimon@yourcompanydomain.extension**  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

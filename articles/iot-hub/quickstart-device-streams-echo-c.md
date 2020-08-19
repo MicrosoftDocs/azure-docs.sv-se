@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 08/20/2019
 ms.author: robinsh
 ms.openlocfilehash: 7b5487233e2bd0e532efad4e108c41f188b51d91
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 08/17/2020
 ms.locfileid: "83727186"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Snabb start: kommunicera med ett enhets program i C via IoT Hub enhets strömmar (för hands version)
@@ -26,7 +26,7 @@ Azure IoT Hub stöder för närvarande enhets strömmar som en [förhands gransk
 
 * [Kommunicera med enhetens appar i C# via IoT Hub enhets strömmar](./quickstart-device-streams-echo-csharp.md)
 
-* [Kommunicera med enhetens appar i Node. js via IoT Hub enhets strömmar](./quickstart-device-streams-echo-nodejs.md)
+* [Kommunicera med enhets program i Node.js via IoT Hub enhets strömmar](./quickstart-device-streams-echo-nodejs.md)
 
 C-programmet på enhetssidan i den här snabbstarten har följande funktioner:
 
@@ -58,9 +58,9 @@ Du behöver följande krav:
 
 För hands versionen av enhets strömmar stöds för närvarande bara för IoT-hubbar som skapas i följande regioner:
 
-  * USA, centrala
+  * Central US
   * Centrala USA-EUAP
-  * Europa, norra
+  * Norra Europa
   * Sydostasien
 
 ## <a name="prepare-the-development-environment"></a>Förbereda utvecklingsmiljön
@@ -194,7 +194,7 @@ Som tidigare nämnts stöder IoT Hub C SDK endast enhets strömmar på enhets si
 
 * [Kommunicera med en enhets app i C# via IoT Hub enhets strömmar](./quickstart-device-streams-echo-csharp.md)
 
-* [Kommunicera med en enhets app i Node. js via IoT Hub enhets strömmar](./quickstart-device-streams-echo-nodejs.md)
+* [Kommunicera med en enhets app i Node.js via IoT Hub enhets strömmar](./quickstart-device-streams-echo-nodejs.md)
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

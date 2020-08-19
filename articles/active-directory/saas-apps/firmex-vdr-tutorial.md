@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory-integrering med enkel inloggning (SSO) med Firmex VDR | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Firmex VDR.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 670ff192-c23e-49e4-8fd1-516e02d8856c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdfb857d3a68081fda84aef33e6b5a4b4d1bce28
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ab480dd8dae00cd48811473a7b335291fb6300eb
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76761240"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555027"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-firmex-vdr"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Firmex VDR
 
@@ -32,7 +28,7 @@ I den här självstudien får du lära dig att integrera Firmex-VDR med Azure Ac
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -116,7 +112,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -157,7 +153,7 @@ Det tar några minuter att implementera SSO. Det finns i princip inget avbrott m
 
 Identifiera de domäner som företagets användare loggar in med.
 
-Ett exempel:
+Exempel:
 
 - @firmex.com
 - @firmex.ca
@@ -172,7 +168,7 @@ Varning! ditt företags användare kommer inte att kunna logga in på VDR förr�
 
 1. Logga in på Firmex som plats administratör.
 1. Klicka på företagets logo typ i det övre vänstra hörnet.
-1. Välj fliken **SSO** . Välj sedan **SSO-konfiguration**. Klicka på den domän som du vill konfigurera.
+1. Välj fliken  **SSO**  . Välj sedan  **SSO-konfiguration**. Klicka på den domän som du vill konfigurera.
 
     ![Anspråk domäner](./media/firmex-vdr-tutorial/edit-sso.png)  
 
@@ -184,7 +180,7 @@ Varning! ditt företags användare kommer inte att kunna logga in på VDR förr�
 
     b. I text rutan **URL för identitetsprovider** klistrar du in värdet för **inloggnings-URL** , som du har kopierat från Azure Portal.
 
-    c. **Certifikat för offentlig nyckel** – för autentisering kan ett SAML-meddelande signeras digitalt av utfärdaren. För att verifiera signaturen i meddelandet använder meddelande mottagaren en offentlig nyckel som är känd för utfärdaren. Om du vill kryptera ett meddelande måste en offentlig krypterings nyckel som tillhör den slutgiltiga mottagaren vara känd för utfärdaren. I båda fallen – signering och kryptering – betrodda offentliga nycklar måste delas i förväg.  Detta är **X509Certificate** från **XML för federationsmetadata**
+    c. **Certifikat för offentlig nyckel**  – för autentisering kan ett SAML-meddelande signeras digitalt av utfärdaren. För att verifiera signaturen i meddelandet använder meddelande mottagaren en offentlig nyckel som är känd för utfärdaren. Om du vill kryptera ett meddelande måste en offentlig krypterings nyckel som tillhör den slutgiltiga mottagaren vara känd för utfärdaren. I båda fallen – signering och kryptering – betrodda offentliga nycklar måste delas i förväg.  Detta är **X509Certificate** från **XML för federationsmetadata**
 
     d. Klicka på **Spara** för att slutföra SSO-konfigurationen. Ändringarna träder i kraft omedelbart.
 
@@ -202,11 +198,11 @@ När du klickar på panelen Firmex VDR på åtkomst panelen, bör du loggas in a
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Prova Firmex VDR med Azure AD](https://aad.portal.azure.com/)
 

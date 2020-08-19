@@ -1,18 +1,18 @@
 ---
 title: 'Arbeta med virtuella datorer och NSG: er i Azure skydds'
-description: Den här artikeln beskriver hur du införlivar NSG-åtkomst med Azure skydds
+description: Du kan använda nätverks säkerhets grupper med Azure skydds. Läs om de undernät som krävs för den här konfigurationen.
 services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: charwen
-ms.openlocfilehash: 1fc261c31a1190536f3128ed6472d9ca76dfce7e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 563c12f91e9553f802d4cf26519da0550880dfcd
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112225"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270537"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>Arbeta med NSG-åtkomst och Azure skydds
 
@@ -50,7 +50,7 @@ Azure-skydds distribueras specifikt till ***AzureBastionSubnet***.
    * **Utgående trafik till andra offentliga slut punkter i Azure:** Azure-skydds måste kunna ansluta till olika offentliga slut punkter i Azure (till exempel för lagring av diagnostikloggar och avläsnings loggar). Av den anledningen behöver Azure skydds utgående till 443 till **AzureCloud** service tag.
 
 
-   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="Utgående":::
+   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="Outbound (Utgående)":::
 
 ### <a name="target-vm-subnet"></a>Mål för virtuellt dator under nät
 Det här är under nätet som innehåller den virtuella mål datorn som du vill ha RDP/SSH till.

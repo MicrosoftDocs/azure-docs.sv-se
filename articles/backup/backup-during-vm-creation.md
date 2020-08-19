@@ -3,12 +3,12 @@ title: Aktivera säkerhetskopiering när du skapar en virtuell Azure-dator
 description: Beskriver hur du aktiverar säkerhets kopiering när du skapar en virtuell Azure-dator med Azure Backup.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 7fb6fd25f5031669633641ea02f34180f6f795d4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c744f6aa2bef6d3d6800aa6b6dc077915fc5205b
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032858"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586706"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Aktivera säkerhetskopiering när du skapar en virtuell Azure-dator
 
@@ -28,7 +28,7 @@ Om du inte redan har loggat in på ditt konto loggar du in på [Azure Portal](ht
 
 1. Klicka på **skapa en resurs**i Azure Portal.
 
-2. I Azure Marketplace klickar du på **Compute**och väljer sedan en VM-avbildning.
+2. I Azure Marketplace klickar du på **Compute**och väljer sedan en avbildning av en virtuell dator.
 
 3. Konfigurera den virtuella datorn i enlighet med [Windows](../virtual-machines/windows/quick-create-portal.md) -eller [Linux](../virtual-machines/linux/quick-create-portal.md) -instruktionerna.
 
@@ -47,6 +47,9 @@ Om du inte redan har loggat in på ditt konto loggar du in på [Azure Portal](ht
     - [Läs mer](backup-instant-restore-capability.md) om funktionen för omedelbar återställning.
 
       ![Standard princip för säkerhets kopiering](./media/backup-during-vm-creation/daily-policy.png)
+
+>[!NOTE]
+>[SSE och PMK är standard krypterings metoder](backup-encryption.md) för virtuella Azure-datorer. Azure Backup stöder säkerhets kopiering och återställning av de här virtuella Azure-datorerna.
 
 ## <a name="azure-backup-resource-group-for-virtual-machines"></a>Azure Backup resurs grupp för Virtual Machines
 

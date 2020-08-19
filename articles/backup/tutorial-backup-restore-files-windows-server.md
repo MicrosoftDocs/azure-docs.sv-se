@@ -4,12 +4,12 @@ description: I den här självstudien får du lära dig hur du använder MARS-ag
 ms.topic: tutorial
 ms.date: 02/14/2018
 ms.custom: mvc
-ms.openlocfilehash: c9258b7f95337330e4f1de36e389f6b8f2276976
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 746c901747cf1c0b87612a31fbabcb657d5c4a0c
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78672951"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263120"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Återställa filer från Azure till Windows Server
 
@@ -21,7 +21,7 @@ Med Azure Backup kan du återställa enskilda objekt från säkerhetskopior av W
 > * Välja en återställningspunkt
 > * Återställa objekt från en återställningspunkt
 
-Den här kursen förutsätter att du redan har utfört stegen för att [Säkerhetskopiera Windows Server till Azure](backup-windows-with-mars-agent.md) och att du har minst en säkerhetskopia av dina Windows Server-filer i Azure.
+Den här självstudien förutsätter att du redan har utfört stegen för att [säkerhetskopiera en Windows-Server till Azure](backup-windows-with-mars-agent.md) och ha minst en säkerhets kopia av dina Windows Server-filer i Azure.
 
 ## <a name="initiate-recovery-of-individual-items"></a>Initiera återställning av enskilda objekt
 
@@ -29,39 +29,39 @@ En praktisk användargränssnittsguide som heter Microsoft Azure Backup är inst
 
 1. Öppna snapin-modulen **Microsoft Azure Backup**. Du hittar den genom att söka efter **Microsoft Azure Backup** på datorn.
 
-    ![Säkerhetskopiering väntar](./media/tutorial-backup-restore-files-windows-server/mars.png)
+    ![Microsoft Azure Backup snapin-modul](./media/tutorial-backup-restore-files-windows-server/mars.png)
 
-2. I guiden klickar du på **Återställ data** i **åtgärdsfönstret** i agentkonsolen för att starta guiden **Återställ data**.
+2. I guiden väljer du **Återställ data** i **Åtgärds fönstret** i agent konsolen för att starta guiden **Återställ data** .
 
-    ![Säkerhetskopiering väntar](./media/tutorial-backup-restore-files-windows-server/mars-recover-data.png)
+    ![Välj Återställ data](./media/tutorial-backup-restore-files-windows-server/mars-recover-data.png)
 
-3. På sidan **Komma igång** väljer du **Den här servern (servernamn)** och klickar på **Nästa**.
+3. På sidan **komma igång** väljer du **den här servern (Server namn)** och väljer **Nästa**.
 
-4. På sidan **Välj återställningsläge** väljer du **Enskilda filer och mappar** och klickar sedan på **Nästa** för att påbörja urvalet av återställningspunkt.
+4. På sidan **Välj återställnings läge** väljer du **enskilda filer och mappar** och väljer sedan **Nästa** för att påbörja urvals processen för återställnings punkten.
 
-5. På sidan **Välj volym och datum** väljer du volymen som innehåller filerna eller mapparna du vill återställa och klickar på **Montera**. Välj ett datum och en tid på den nedrullningsbara menyn som motsvarar en återställningspunkt. Datum i **fetstil** anger tillgängligheten för minst en återställningspunkt för den dagen.
+5. På sidan **Välj volym och datum** väljer du den volym som innehåller de filer eller mappar som du vill återställa och väljer **montera**. Välj ett datum och en tid på den nedrullningsbara menyn som motsvarar en återställningspunkt. Datum i **fetstil** anger tillgängligheten för minst en återställningspunkt för den dagen.
 
-    ![Säkerhetskopiering väntar](./media/tutorial-backup-restore-files-windows-server/mars-select-date.png)
+    ![Välj volym och datum](./media/tutorial-backup-restore-files-windows-server/mars-select-date.png)
 
-    När du klickar på **Montera** gör Azure Backup återställningspunkten tillgänglig som en disk. Bläddra till och återställ filer från disken.
+    När du väljer **montera**gör Azure Backup återställnings punkten tillgänglig som en disk. Bläddra till och återställ filer från disken.
 
 ## <a name="restore-items-from-a-recovery-point"></a>Återställa objekt från en återställningspunkt
 
-1. När återställningsvolymen är monterad klickar du på **Bläddra** för att öppna Utforskaren i Windows och söker rätt på filerna och mapparna du vill återställa.
+1. När återställnings volymen har monterats väljer du **Bläddra** för att öppna Utforskaren och hitta de filer och mappar som du vill återställa.
 
-    ![Säkerhetskopiering väntar](./media/tutorial-backup-restore-files-windows-server/mars-browse-recover.png)
+    ![Välj Bläddra](./media/tutorial-backup-restore-files-windows-server/mars-browse-recover.png)
 
     Du kan öppna filerna direkt från återställningsvolymen och verifiera filerna.
 
-2. I Utforskaren i Windows kopierar du filerna och/eller mapparna du vill återställa och klistrar in dem på önskad plats på servern.
+2. I Utforskaren i Windows kopierar du de filer och mappar som du vill återställa och klistrar in dem på önskad plats på servern.
 
-    ![Säkerhetskopiering väntar](./media/tutorial-backup-restore-files-windows-server/mars-final.png)
+    ![Kopiera filer och mappar](./media/tutorial-backup-restore-files-windows-server/mars-final.png)
 
-3. När du har återställt filerna och/eller mapparna går du till sidan för att **söka efter och återställa filer** i guiden **Återställ data** och klickar på **Demontera**.
+3. När du är klar med att återställa filerna och mapparna går du till sidan **Bläddra och återställa filer** i guiden **Återställ data** och väljer **demontera**.
 
-    ![Säkerhetskopiering väntar](./media/tutorial-backup-restore-files-windows-server/unmount-and-confirm.png)
+    ![Välj demontera](./media/tutorial-backup-restore-files-windows-server/unmount-and-confirm.png)
 
-4. Klicka på **Ja** för att bekräfta att du vill demontera volymen.
+4. Välj **Ja** för att bekräfta att du vill demontera volymen.
 
     När ögonblicksbilden är demonterad visas **Jobbet har slutförts** i rutan **Jobb** i agentkonsolen.
 

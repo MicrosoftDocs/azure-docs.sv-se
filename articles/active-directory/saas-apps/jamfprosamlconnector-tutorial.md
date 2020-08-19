@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med JAMF Pro | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Jamf Pro.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 35e86d08-c29e-49ca-8545-b0ff559c5faf
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/11/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d83dbe756e8e6acdb58861ac359801bc13a63c4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 780421d93916c7da7897dfa15d09dc895cf56280
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77373183"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552670"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>Självstudie: Azure Active Directory SSO-integrering med JAMF Pro
 
@@ -33,7 +28,7 @@ I den här självstudien får du lära dig att integrera JAMF Pro med Azure Acti
 
 Mer information om SaaS app integration med Azure AD finns i [enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -83,11 +78,11 @@ I det här avsnittet aktiverar du Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** kan du ange värden för följande fält om du vill konfigurera programmet i **IDP-initierat** läge:
 
-    a. I text rutan **identifierare** anger du en URL som använder följande formel:`https://<subdomain>.jamfcloud.com/saml/metadata`
+    a. I text rutan **identifierare** anger du en URL som använder följande formel: `https://<subdomain>.jamfcloud.com/saml/metadata`
 
-    b. I text rutan **svars-URL** anger du en URL som använder följande formel:`https://<subdomain>.jamfcloud.com/saml/SSO`
+    b. I text rutan **svars-URL** anger du en URL som använder följande formel: `https://<subdomain>.jamfcloud.com/saml/SSO`
 
-1. Välj **Ange ytterligare URL: er**. Om du vill konfigurera programmet i **SP-initierat** läge, i text rutan **inloggnings-URL** , anger du en URL som använder följande formel:`https://<subdomain>.jamfcloud.com`
+1. Välj **Ange ytterligare URL: er**. Om du vill konfigurera programmet i **SP-initierat** läge, i text rutan **inloggnings-URL** , anger du en URL som använder följande formel: `https://<subdomain>.jamfcloud.com`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL: en och inloggnings-URL: en. Du får det faktiska ID-värdet från avsnittet **enkel inloggning** i JAMF Pro-portalen, som beskrivs senare i självstudien. Du kan extrahera det faktiska under domän svärdet från ID-värdet och använda under domän informationen som inloggnings-URL och svars-URL. Du kan också se de formler som visas i avsnittet **grundläggande SAML-konfiguration** i Azure Portal.
@@ -195,7 +190,7 @@ Gör så här för att etablera ett användar konto:
 
     ![JAMF Pro-användarkonton & Groups-ikonen i JAMF Pro-inställningar](./media/jamfprosamlconnector-tutorial/user1.png)
 
-4. Välj **Ny**.
+4. Välj **Nytt**.
 
     ![JAMF Pro-användarkonton & grupper system inställnings sida](./media/jamfprosamlconnector-tutorial/user2.png)
 
@@ -207,11 +202,11 @@ Gör så här för att etablera ett användar konto:
 
     ![Nya konto installations alternativ i JAMF Pro-Systeminställningar](./media/jamfprosamlconnector-tutorial/user4.png)
 
-    a. I fältet **username (användar namn** ) anger `Britta Simon`du det fullständiga namnet på test användaren.
+    a. I fältet **username (användar namn** ) anger `Britta Simon` du det fullständiga namnet på test användaren.
 
     b. Välj alternativ för **åtkomst nivå**, **behörighets uppsättning**och **åtkomst status** som är i enlighet med din organisation.
 
-    c. I fältet **fullständigt namn** anger `Britta Simon`du.
+    c. I fältet **fullständigt namn** anger du `Britta Simon` .
 
     d. I fältet **e-postadress** anger du e-postadressen för Britta Simon-kontot.
 
@@ -219,7 +214,7 @@ Gör så här för att etablera ett användar konto:
 
     f. I fältet **Verifiera lösen ord** anger du användarens lösen ord igen.
 
-    g. Välj **Spara**.
+    ex. Välj **Spara**.
 
 ## <a name="test-the-sso-configuration"></a>Testa SSO-konfigurationen
 
@@ -229,7 +224,7 @@ När du väljer JAMF Pro-panelen på åtkomst panelen, bör du loggas in automat
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Självstudier för att integrera SaaS-program med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Självstudier för att integrera SaaS-program med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Enkel inloggning till program i Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 

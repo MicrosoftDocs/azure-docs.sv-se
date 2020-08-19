@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med SAP-moln för kund | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och SAP Cloud for Customer.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 90154dab-eba2-4563-bcf0-f2acc797ea97
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 837787d375a7570b7daf0a149960ca0020bcdced
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f9fd458ea19fa0dad2f630f94a67d5e1db96cee3
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72264059"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543320"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-for-customer"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med SAP-moln för kund
 
@@ -33,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar SAP Cloud för kund
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -126,7 +121,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -152,7 +147,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 1. Öppna ett nytt webbläsarfönster och logga in på ditt SAP-moln för kund företags webbplats som administratör.
 
-2. Från menyn till vänster klickar du på **identitet leverantörer** > **företags identitets leverantörer** > **Lägg till** och i popup-fönstret Lägg till ID-providern som **Azure AD**, klickar på **Spara** och sedan på **SAML 2,0-konfiguration**.
+2. Från menyn till vänster klickar du på **identitet leverantörer**   >  **företags identitets leverantörer**  >  **Lägg till** och i popup-fönstret Lägg till ID-providern som **Azure AD**, klickar på **Spara** och sedan på **SAML 2,0-konfiguration**.
 
     ![SAP-konfiguration](./media/sap-customer-cloud-tutorial/configure01.png)
 
@@ -172,7 +167,7 @@ Om du vill att Azure AD-användare ska kunna logga in på SAP-molnet för kunden
 
 1. Logga in på SAP Cloud för kunden som en säkerhets administratör.
 
-2. På vänster sida av menyn klickar du på **användare & auktorisering** > **användar hantering** > **Lägg till användare**.
+2. På vänster sida av menyn klickar du på **användare & auktorisering**   >  **användar hantering**  >  **Lägg till användare**.
 
     ![SAP-konfiguration](./media/sap-customer-cloud-tutorial/configure03.png)
 
@@ -184,7 +179,7 @@ Om du vill att Azure AD-användare ska kunna logga in på SAP-molnet för kunden
 
     b. I text rutan **efter namn** anger du namnet på användaren som **Simon**.
 
-    c. I text rutan **e-postadress** anger du e-postadressen till användaren `B.Simon@contoso.com`.
+    c. I text rutan **e-postadress** anger du e-postadressen till användaren `B.Simon@contoso.com` .
 
     d. Ange namnet på den användare som **B. Simon**i text rutan **inloggnings namn** .
 
@@ -200,11 +195,11 @@ När du klickar på SAP Cloud for Customer-panelen i åtkomstpanelen bör du aut
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Prova SAP Cloud för kunden med Azure AD](https://aad.portal.azure.com/)
 

@@ -1,18 +1,18 @@
 ---
 title: Vanliga frågor och svar – AVERT vFXT för Azure
-description: Vanliga frågor och svar om AVERT vFXT för Azure
+description: Använd dessa vanliga frågor och svar för att avgöra om AVERT vFXT för Azure passar dina behov. Lär dig hur du fungerar med AVERT vFXT for Azure tillsammans med andra Azure-komponenter.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.custom: references_regions
-ms.openlocfilehash: 55423119e55401d5176e228eba784f2eb498bfef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6459e2daf17772b28ee53289754deb33b4823ae
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196351"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272699"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Vanliga frågor och svar om Avere vFXT för Azure
 

@@ -3,14 +3,14 @@ title: Skala och var värd i Azure Functions
 description: Lär dig hur du väljer mellan Azure Functions förbruknings plan och Premium-plan.
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 26924498f32b8aac2e3e7fb5cfd7c1965ee5884f
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 80bb59527f416afd78b992fb12a4ef72956f91b7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025836"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587233"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Skala och var värd i Azure Functions
 
@@ -86,7 +86,7 @@ När du kör JavaScript-funktioner på en App Service plan bör du välja en pla
 
 Genom att köra i en [App Service-miljön](../app-service/environment/intro.md) (ASE) kan du helt isolera dina funktioner och dra nytta av stor skala.
 
-### <a name="always-on"></a><a name="always-on"></a>Always on
+### <a name="always-on"></a><a name="always-on"></a> Always on
 
 Om du kör på en App Service plan bör du aktivera inställningen **Always on** så att din funktions app fungerar som den ska. På en App Service plan aktive ras funktions körningen efter några minuter av inaktivitet, så endast HTTP-utlösare kommer att aktivera dina funktioner. Always On är bara tillgängligt på en App Service plan. I en förbruknings plan aktiverar plattformen automatiskt funktions appar.
 
@@ -144,11 +144,19 @@ När din Function-app har varit inaktiv i ett antal minuter kan plattformen skal
 
 Skalning kan variera beroende på ett antal faktorer och skala på olika sätt beroende på vilken utlösare och vilket språk som valts. Det finns några erna för skalnings beteenden som kan vara medvetna om:
 
-* En enda Function-app skalar bara ut till högst 200 instanser. En enskild instans kan bearbeta mer än ett meddelande eller en begäran i taget, så det finns ingen angiven gräns för antalet samtidiga körningar.
+* En enda Function-app skalar bara ut till högst 200 instanser. En enskild instans kan bearbeta mer än ett meddelande eller en begäran i taget, så det finns ingen angiven gräns för antalet samtidiga körningar.  Du kan [Ange ett lägre värde](#limit-scale-out) för att begränsa skalningen efter behov.
 * För HTTP-utlösare allokeras nya instanser, högst en gång per sekund.
 * För icke-HTTP-utlösare allokeras nya instanser, högst en gång var 30: e sekund. Skalning är snabbare när du kör i en [Premium-plan](#premium-plan).
 * För Service Bus utlösare använder du _Hantera_ rättigheter för resurser för den mest effektiva skalningen. Med _avlyssnings_ rättigheter är skalning inte lika tillförlitligt eftersom köns längd inte kan användas för att informera om skalnings beslut. Mer information om hur du ställer in rättigheter i Service Bus åtkomst principer finns i [auktoriseringsprincipen för delad åtkomst](../service-bus-messaging/service-bus-sas.md#shared-access-authorization-policies).
 * För Event Hub-utlösare, se [vägledningen för skalning](functions-bindings-event-hubs-trigger.md#scaling) i referens artikeln. 
+
+### <a name="limit-scale-out"></a>Begränsa skala ut
+
+Du kanske vill begränsa antalet instanser som en app skalar ut till.  Detta är vanligt för fall där en underordnad komponent som en databas har begränsat data flöde.  Som standard skalas förbruknings Plans funktionerna ut till så många som 200 instanser, och Premium plan-funktioner kommer att skalas ut till så många som 100-instanser.  Du kan ange ett lägre Max värde för en speciell app genom att ändra `functionAppScaleLimit` värdet.  `functionAppScaleLimit`Kan anges till 0 eller null för obegränsade, eller ett giltigt värde mellan 1 och appens Max värde.
+
+```azurecli
+az resource update --resource-type Microsoft.Web/sites -g <resource_group> -n <function_app_name>/config/web --set properties.functionAppScaleLimit=<scale_limit>
+```
 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>Metod tips och mönster för skalbara appar
 
@@ -174,7 +182,7 @@ Följande jämförelse tabell visar alla viktiga aspekter som kan hjälpa dig me
 ### <a name="plan-summary"></a>Plan Sammanfattning
 | | |
 | --- | --- |  
-|**[Förbruknings plan](#consumption-plan)**| Skala automatiskt och betala bara för beräknings resurser när funktionerna körs. I förbruknings planen läggs instanser av funktions värden dynamiskt till och tas bort baserat på antalet inkommande händelser.<br/> ✔ Standard värd plan.<br/>✔ Endast betala när funktionerna körs.<br/>✔ skala ut automatiskt, även under perioder med hög belastning.|  
+|**[Förbrukningsplan](#consumption-plan)**| Skala automatiskt och betala bara för beräknings resurser när funktionerna körs. I förbruknings planen läggs instanser av funktions värden dynamiskt till och tas bort baserat på antalet inkommande händelser.<br/> ✔ Standard värd plan.<br/>✔ Endast betala när funktionerna körs.<br/>✔ skala ut automatiskt, även under perioder med hög belastning.|  
 |**[Premiumplan](#premium-plan)**|När du skalar automatiskt baserat på efter frågan använder du förvärmade arbetare för att köra program utan fördröjning efter att de varit inaktiva, köra på mer kraftfulla instanser och ansluta till virtuella nätverk. Överväg Azure Functions Premium-planen i följande situationer, förutom alla funktioner i App Service plan: <br/>✔ Dina funktions appar körs kontinuerligt eller nästan kontinuerligt.<br/>✔ Du har ett stort antal små körningar och har en hög körnings faktura men låg GB andra fakturor i förbruknings planen.<br/>✔ Du behöver fler processor-eller minnes alternativ än vad som tillhandahålls av förbruknings planen.<br/>✔ Din kod behöver köra längre än den maximala körnings tiden som tillåts i förbruknings planen.<br/>✔ Du behöver funktioner som bara är tillgängliga i en Premium-prenumeration, till exempel virtuell nätverks anslutning.|  
 |**[Dedikerad plan](#app-service-plan)**<sup>1</sup>|Kör dina funktioner inom ett App Service plan med jämna App Service plans taxor. Passar bra för långvariga åtgärder, samt när mer förutsägelse skalning och kostnader krävs. Överväg ett App Service plan i följande situationer:<br/>✔ Du har befintliga, underutnyttjade virtuella datorer som redan kör andra App Service-instanser.<br/>✔ Du vill tillhandahålla en anpassad avbildning som dina funktioner ska köras på.|  
 |**[ASE](#app-service-plan)**<sup>1</sup>|App Service-miljön (ASE) är en App Service funktion som ger en helt isolerad och dedikerad miljö för säker körning av App Service appar i hög skala. ASE är lämpliga för program arbets belastningar som kräver: <br/>✔ Mycket hög skala.<br/>✔ Isolering och säker nätverks åtkomst.<br/>✔ Hög minnes användning.|  
@@ -186,7 +194,7 @@ Följande jämförelse tabell visar alla viktiga aspekter som kan hjälpa dig me
 
 | | Linux<sup>1</sup><br/>Endast kod | Windows<sup>2</sup><br/>Endast kod | Linux<sup>1, 3</sup><br/>Docker-behållare |
 | --- | --- | --- | --- |
-| **[Förbruknings plan](#consumption-plan)** | .NET Core<br/>Node.js<br/>Java<br/>Python | .NET Core<br/>Node.js<br/>Java<br/>PowerShell Core | Inget stöd  |
+| **[Förbrukningsplan](#consumption-plan)** | .NET Core<br/>Node.js<br/>Java<br/>Python | .NET Core<br/>Node.js<br/>Java<br/>PowerShell Core | Inget stöd  |
 | **[Premiumplan](#premium-plan)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python  | 
 | **[Dedikerade plan](#app-service-plan)**<sup>4</sup> | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
 | **[ASE](#app-service-plan)**<sup>4</sup> | .NET Core<br/>Node.js<br/>Java<br/>Python |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core  |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python | 
@@ -201,7 +209,7 @@ Följande jämförelse tabell visar alla viktiga aspekter som kan hjälpa dig me
 
 | | Skala ut | Maximalt antal instanser |
 | --- | --- | --- |
-| **[Förbruknings plan](#consumption-plan)** | Händelse driven. Skala ut automatiskt, även vid perioder med hög belastning. Azure Functions-infrastrukturen skalar processor-och minnes resurser genom att lägga till ytterligare instanser av Functions-värden, baserat på antalet händelser som dess funktioner aktive ras på. | 200 |
+| **[Förbrukningsplan](#consumption-plan)** | Händelse driven. Skala ut automatiskt, även vid perioder med hög belastning. Azure Functions-infrastrukturen skalar processor-och minnes resurser genom att lägga till ytterligare instanser av Functions-värden, baserat på antalet händelser som dess funktioner aktive ras på. | 200 |
 | **[Premiumplan](#premium-plan)** | Händelse driven. Skala ut automatiskt, även vid perioder med hög belastning. Azure Functions-infrastrukturen skalar processor-och minnes resurser genom att lägga till ytterligare instanser av Functions-värden, baserat på antalet händelser som dess funktioner aktive ras på. |100|
 | **[Dedikerad plan](#app-service-plan)**<sup>1</sup> | Manuell/autoskalning |10-20|
 | **[ASE](#app-service-plan)**<sup>1</sup> | Manuell/autoskalning |100 |
@@ -233,7 +241,7 @@ Följande jämförelse tabell visar alla viktiga aspekter som kan hjälpa dig me
 
 | | | 
 | --- | --- |
-| **[Förbruknings plan](#consumption-plan)** | Betala endast för den tid som dina funktioner körs. Fakturering baseras på antalet körningar, körningstid och använt minne. |
+| **[Förbrukningsplan](#consumption-plan)** | Betala endast för den tid som dina funktioner körs. Fakturering baseras på antalet körningar, körningstid och använt minne. |
 | **[Premiumplan](#premium-plan)** | Premium-planen baseras på antalet kärn sekunder och minne som används för alla nödvändiga och förvärmade instanser. Minst en instans per plan måste alltid vara varm. Den här planen ger mer förutsägbar prissättning. |
 | **[Dedikerad plan](#app-service-plan)**<sup>1</sup> | Du betalar samma för functions-appar i en App Service planera precis som för andra App Service resurser, t. ex. Web Apps.|
 | **[ASE](#app-service-plan)**<sup>1</sup> | Det finns en fast månads avgift för en ASE som betalar för infrastrukturen och som inte ändras med ASE storlek. Det finns dessutom en kostnad per App Service plan vCPU. Alla appar som har en ASE som värd finns i SKU med isolerad prissättning. |

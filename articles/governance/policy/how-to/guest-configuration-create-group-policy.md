@@ -1,29 +1,29 @@
 ---
 title: Så här skapar du princip definitioner för gäst konfiguration från grupprincip bas linje för Windows
 description: Lär dig hur du konverterar grupprincip från säkerhets bas linjen för Windows Server 2019 till en princip definition.
-ms.date: 06/05/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: bbb634ed55acf8aa994045fbef6569fae031c841
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 58fe4fa3e5056192fa5febe4883a1457d130871b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080677"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547776"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Så här skapar du princip definitioner för gäst konfiguration från grupprincip bas linje för Windows
 
-Innan du skapar anpassade princip definitioner, är det en bra idé att läsa den konceptuella översikts informationen på [Azure policy gäst konfiguration](../concepts/guest-configuration.md). Information om hur du skapar anpassade princip definitioner för gäst konfiguration för Linux finns i [så här skapar du principer för gäst konfiguration för Linux](./guest-configuration-create-linux.md). Information om hur du skapar anpassade princip definitioner för gäst konfiguration för Windows finns i [så här skapar du principer för gäst konfiguration för Windows](./guest-configuration-create.md). 
+Innan du skapar anpassade princip definitioner, är det en bra idé att läsa den konceptuella översikts informationen på [Azure policy gäst konfiguration](../concepts/guest-configuration.md). Information om hur du skapar anpassade princip definitioner för gäst konfiguration för Linux finns i [så här skapar du principer för gäst konfiguration för Linux](./guest-configuration-create-linux.md). Information om hur du skapar anpassade princip definitioner för gäst konfiguration för Windows finns i [så här skapar du principer för gäst konfiguration för Windows](./guest-configuration-create.md).
 
-När du granskar Windows använder gäst konfigurationen en resurs modell för [önskad tillstånds konfiguration](/powershell/scripting/dsc/overview/overview) (DSC) för att skapa konfigurations filen. DSC-konfigurationen definierar det villkor som datorn ska ha. Om utvärderingen av konfigurationen är **icke-kompatibel**utlöses *auditIfNotExists* princip påverkan. [Azure policy endast gäst konfiguration](../concepts/guest-configuration.md) granskar inställningar i datorer.
+Vid Windows-granskning använder gästkonfigurationen en [DSC](/powershell/scripting/dsc/overview/overview)-resursmodul (Desired State Configuration) för att skapa konfigurations filen. DSC-konfigurationen definierar det tillstånd som datorn ska ha. Om utvärderingen av konfigurationen är **icke-kompatibel**utlöses *auditIfNotExists* princip påverkan.
+[Azure policy endast gäst konfiguration](../concepts/guest-configuration.md) granskar inställningar i datorer.
 
 > [!IMPORTANT]
 > Anpassade princip definitioner med gäst konfiguration är en förhands gransknings funktion.
 >
-> Gäst konfigurations tillägget krävs för att utföra granskningar på virtuella Azure-datorer.
-> Tilldela följande princip definitioner för att distribuera tillägget i skala över alla Windows-datorer:
->   - [Distribuera krav för att aktivera principen för gäst konfiguration på virtuella Windows-datorer.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
+> Gästkonfigurationstillägget krävs för att utföra granskningar på virtuella Azure-datorer. Tilldela följande princip definitioner för att distribuera tillägget i skala över alla Windows-datorer:
+> - [Distribuera krav för att aktivera principen för gäst konfiguration på virtuella Windows-datorer.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
 
-DSC-communityn har publicerat [BaselineManagement-modulen](https://github.com/microsoft/BaselineManagement) för att konvertera exporterade grupprincip-mallar till DSC-format. Tillsammans med GuestConfiguration-cmdleten skapar BaselineManagement-modulen Azure Policy gäst konfigurations paket för Windows från grupprincip innehåll. Mer information om hur du använder BaselineManagement-modulen finns i artikeln [snabb start: konvertera Grupprincip till DSC](/powershell/scripting/dsc/quickstarts/gpo-quickstart). 
+DSC-communityn har publicerat [BaselineManagement-modulen](https://github.com/microsoft/BaselineManagement) för att konvertera exporterade grupprincip-mallar till DSC-format. Tillsammans med GuestConfiguration-cmdleten skapar BaselineManagement-modulen Azure Policy gäst konfigurations paket för Windows från grupprincip innehåll. Mer information om hur du använder BaselineManagement-modulen finns i artikeln [snabb start: konvertera Grupprincip till DSC](/powershell/scripting/dsc/quickstarts/gpo-quickstart).
 
 I den här guiden går vi igenom processen för att skapa ett Azure Policy gäst konfigurations paket från ett grupprincip objekt (GPO). När genom gången beskriver konverteringen av säkerhets bas linjen för Windows Server 2019 kan samma process tillämpas på andra grup princip objekt.  
 
@@ -62,7 +62,7 @@ Så här installerar du **DSC**, **GuestConfiguration**, **bas linje hantering**
 
 ## <a name="convert-from-group-policy-to-azure-policy-guest-configuration"></a>Konvertera från grupprincip till Azure Policy gäst konfiguration
 
-Sedan konverterar vi den hämtade Server 2019-bas linjen till ett gäst konfigurations paket med hjälp av modulerna gäst konfiguration och bas linje hantering. 
+Sedan konverterar vi den hämtade Server 2019-bas linjen till ett gäst konfigurations paket med hjälp av modulerna gäst konfiguration och bas linje hantering.
 
 1. Konvertera grupprincip till önskad tillstånds konfiguration med modulen för bas linje hantering.
 
@@ -203,5 +203,5 @@ För att tilldela en princip definition med _DeployIfNotExists_ -effekter krävs
 ## <a name="next-steps"></a>Nästa steg
 
 - Lär dig mer om att granska virtuella datorer med [gäst konfiguration](../concepts/guest-configuration.md).
-- Lär dig att [program mässigt skapa principer](programmatically-create.md).
-- Lär dig hur du [hämtar efterlevnadsprinciper](get-compliance-data.md).
+- Lär dig att [program mässigt skapa principer](./programmatically-create.md).
+- Lär dig hur du [hämtar efterlevnadsprinciper](./get-compliance-data.md).

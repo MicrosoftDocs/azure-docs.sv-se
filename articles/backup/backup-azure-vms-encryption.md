@@ -2,24 +2,29 @@
 title: Säkerhetskopiera och återställa krypterade virtuella Azure-datorer
 description: Beskriver hur du säkerhetskopierar och återställer krypterade virtuella Azure-datorer med tjänsten Azure Backup.
 ms.topic: conceptual
-ms.date: 07/29/2020
-ms.openlocfilehash: 25c5e66bde817e824a307df2a2b1b5f76c773c01
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.date: 08/18/2020
+ms.openlocfilehash: 304196f6b517c353cb4fc142129fa4d3007a1d9c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405772"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585344"
 ---
-# <a name="back-up-and-restore-encrypted-azure-vm"></a>Säkerhetskopiera och återställa krypterade virtuella Azure-datorer
+# <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>Säkerhetskopiera och återställa krypterade virtuella Azure-datorer
 
-Den här artikeln beskriver hur du säkerhetskopierar och återställer virtuella Windows-eller Linux Azure-datorer (VM: ar) med krypterade diskar med hjälp av tjänsten [Azure Backup](backup-overview.md) .
+Den här artikeln beskriver hur du säkerhetskopierar och återställer virtuella Windows-eller Linux Azure-datorer (VM: ar) med krypterade diskar med hjälp av tjänsten [Azure Backup](backup-overview.md) . Mer information finns i [kryptering av virtuella Azure-säkerhetskopieringar](backup-azure-vms-introduction.md#encryption-of-azure-vm-backups).
 
-Om du vill veta mer om hur Azure Backup interagerar med virtuella Azure-datorer innan du börjar, granskar du följande resurser:
+## <a name="encryption-using-platform-managed-keys"></a>Kryptering med hjälp av plattforms hanterade nycklar
 
-- [Granska](backup-architecture.md#architecture-built-in-azure-vm-backup) arkitekturen för säkerhets kopiering av virtuella Azure-datorer.
-- [Läs mer om](backup-azure-vms-introduction.md) Azure VM-säkerhetskopiering och Azure Backup-tillägget.
+Som standard krypteras alla diskar i de virtuella datorerna automatiskt i vila med hjälp av PMK (Platform-Managed Keys) som använder [kryptering av lagrings tjänst](https://docs.microsoft.com/azure/storage/common/storage-service-encryption). Du kan säkerhetskopiera de här virtuella datorerna med Azure Backup utan några särskilda åtgärder som krävs för att stödja krypteringen i slutet. Mer information om kryptering med plattforms hanterade nycklar [finns i den här artikeln](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#platform-managed-keys).
 
-## <a name="encryption-support"></a>Stöd för kryptering
+![Krypterade diskar](./media/backup-encryption/encrypted-disks.png)
+
+## <a name="encryption-using-customer-managed-keys"></a>Kryptering med kundhanterade nycklar
+
+När du krypterar diskar med anpassade hanterade nycklar (CMK) lagras nyckeln som används för att kryptera diskarna i Azure Key Vault och hanteras av dig. Kryptering för lagringstjänst (SSE) med CMK skiljer sig från Azure Disk Encryption-kryptering (ADE). ADE använder krypterings verktygen i operativ systemet. SSE krypterar data i lagrings tjänsten, så att du kan använda alla operativ system eller avbildningar för dina virtuella datorer. Mer information om kryptering av hanterade diskar med Kundhanterade nycklar finns i [den här artikeln](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys).
+
+## <a name="encryption-support-using-ade"></a>Krypterings stöd med ADE
 
 Azure Backup stöder säkerhets kopiering av virtuella Azure-datorer som har sina operativ system/data diskar krypterade med Azure Disk Encryption (ADE). ADE använder BitLocker för kryptering av virtuella Windows-datorer och dm-crypt-funktionen för virtuella Linux-datorer. ADE integreras med Azure Key Vault för att hantera nycklar och hemligheter för disk kryptering. Key Vault nyckel krypterings nycklar (KeyExchange) kan användas för att lägga till ett extra säkerhets lager, kryptera krypterings hemligheter innan de skrivs till Key Vault.
 
@@ -70,13 +75,13 @@ Dessutom finns det några saker som du kan behöva göra i vissa fall:
     - En säkerhets kopierings princip anger när säkerhets kopieringar görs och hur länge de lagras.
     - Information om standardprincipen visas under den nedrullningsbara menyn.
 
-    ![Öppna bladet Scenario](./media/backup-azure-vms-encryption/select-backup-goal-two.png)
+    ![Välj säkerhets kopierings princip](./media/backup-azure-vms-encryption/select-backup-goal-two.png)
 
 1. Om du inte vill använda standard principen väljer du **Skapa ny**och [skapar en anpassad princip](backup-azure-arm-vms-prepare.md#create-a-custom-policy).
 
 1. Under **Virtual Machines**väljer du **Lägg till**.
 
-    ![Öppna bladet Scenario](./media/backup-azure-vms-encryption/add-virtual-machines.png)
+    ![Lägg till virtuella datorer](./media/backup-azure-vms-encryption/add-virtual-machines.png)
 
 1. Välj de krypterade virtuella datorer som du vill säkerhetskopiera med hjälp av Välj princip och välj **OK**.
 
@@ -119,11 +124,6 @@ Ange behörigheter:
 1. Välj **åtkomst principer**  >  **Lägg till åtkomst princip**.
 
     ![Lägg till åtkomst princip](./media/backup-azure-vms-encryption/add-access-policy.png)
-
-1. Välj **Välj huvud konto**och skriv sedan **säkerhets kopierings hantering**.
-1. Välj **säkerhets kopierings hanterings tjänst**  >  **Välj**.
-
-    ![Val av säkerhets kopierings tjänst](./media/backup-azure-vms-encryption/select-backup-service.png)
 
 1. I **Lägg till åtkomst princip**  >  **Konfigurera från mall (valfritt)** väljer du **Azure Backup**.
     - De behörigheter som krävs är förifyllda för **nyckel behörigheter** och **hemliga behörigheter**.

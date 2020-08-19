@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Beeline | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Beeline.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 0726859d-1dac-44a0-810b-da56d89039ee
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: cca1b4b9f27a8711d0340389359320a2f99a918a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 571ab3c3943faf6ef5cbccb401a5416c327e3975
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87018542"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88537858"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-beeline"></a>Självstudie: Azure Active Directory integrering med Beeline
 
@@ -106,7 +101,7 @@ Utför följande steg för att konfigurera enkel inloggning med Beeline i Azure 
 
     ![Information om enkel inloggning med BeeLine-domän och URL:er](common/idp-intiated.png)
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://projects.beeline.com/<ProjInstanceName>`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://projects.beeline.com/<ProjInstanceName>`
 
     b. I textrutan **Svars-URL** skriver du in en URL med följande mönster:
 
@@ -153,7 +148,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: 71020453f51e5baa9172ad8902eeb537dd55763b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac843ec2084cd019ec9d3bc90f6c8bbcb5c34279
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255236"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590361"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Kom igång med Azure Cloud Services och ASP.NET
 
@@ -37,12 +37,12 @@ Under den här kursen får du lära dig hur du kör både klient- och serverdele
 ## <a name="what-youll-learn"></a>Det här lär du dig
 * Hur du aktiverar datorn för Azure-utveckling genom att installera Azure SDK.
 * Hur du skapar ett Visual Studio-molntjänstprojekt med en ASP.NET MVC-webbroll och en arbetsroll.
-* Hur du testar molntjänstprojektet lokalt med hjälp av Azure-lagringsemulatorn.
+* Så här testar du moln tjänst projektet lokalt med hjälp av Azure Storage emulatorn.
 * Hur du publicerar molnprojektet på en Azure-molntjänst och testar det med ett Azure-lagringskonto.
 * Hur du laddar upp filer och lagrar dem i Azure Blob-tjänsten.
 * Hur du använder Azure-kötjänsten för kommunikation mellan nivåer.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 Kursen förutsätter att du förstår [grundläggande koncept om Azure-molntjänster](cloud-services-choose-me.md), t.ex. termerna *webbroll* och *arbetsroll*.  Det förutsätts även att du kan använda [ASP.NET MVC](https://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)- eller [Web Forms](https://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview)-projekt i Visual Studio. Exempelprogrammet använder MVC, men större delen av kursen gäller också Web Forms.
 
 Du kan köra appen lokalt utan en Azure-prenumeration, men du behöver en prenumeration för att kunna distribuera programmet i molnet. Om du inte har ett konto kan du [aktivera MSDN-prenumerantförmåner](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668) eller [registrera dig för en kostnadsfri utvärderingsversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A55E3C668).
@@ -56,7 +56,7 @@ Själv studie anvisningarna fungerar med någon av följande produkter:
 
 Om du inte har någon av dessa kan Visual Studio installeras automatiskt när du installerar Azure SDK.
 
-## <a name="application-architecture"></a>Programarkitektur
+## <a name="application-architecture"></a>Programmets arkitektur
 Appen lagrar annonser i en SQL-databas och använder Entity Framework Code First för att skapa tabellerna och komma åt data. Databasen lagrar två URL:er för varje annons, en för bilden i full storlek och en för miniatyrbilden.
 
 ![Annonstabell](./media/cloud-services-dotnet-get-started/adtable.png)
@@ -100,7 +100,7 @@ Du har kört programmet helt på din lokala dator utan anslutning till molnet. L
 
 I följande avsnitt får du konfigurera lösningen så att den använder Azure-molnresurser för köer, blobbar och programdatabasen när den körs i molnet. Om du vill fortsätta att köra lösningen lokalt men använda molnet och databasresurser kan du göra det. Det är bara att ställa in anslutningssträngar, vilket du får lära dig här.
 
-## <a name="deploy-the-application-to-azure"></a>Distribuera programmet till Azure
+## <a name="deploy-the-application-to-azure"></a>Distribuera appen till Azure
 Följ dessa steg för att köra programmet i molnet:
 
 * Skapa en Azure-molntjänst.
@@ -155,7 +155,7 @@ När appen körs i molnet använder den en molnbaserad databas.
     ![Ny server](./media/cloud-services-dotnet-get-started/newdbserver.png)
 10. Klicka på **Skapa**.
 
-### <a name="create-an-azure-storage-account"></a>Skapa ett Azure-lagringskonto
+### <a name="create-an-azure-storage-account"></a>Skapa ett Azure Storage-konto
 Ett Azure-lagringskonto tillhandahåller resurser för att lagra kö- och blobbdata i molnet.
 
 I ett riktigt program skapar du vanligtvis separata konton för programdata jämfört med loggningsdata, samt separata konton för testdata jämfört med produktionsdata. Under den här kursen använder du bara ett konto.
@@ -396,7 +396,7 @@ I det här avsnittet konfigurerar du Azure Storage- och SQL-anslutningssträngar
        Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;
        ```
 
-### <a name="add-code-files"></a>Lägga till kodfiler
+### <a name="add-code-files"></a>Lägg till kodfiler
 I det här avsnittet får du kopiera kodfiler från den hämtade lösningen till den nya lösningen. I följande avsnitt visas och förklaras viktiga delar av den här koden.
 
 Om du vill lägga till filer i ett projekt eller en mapp högerklickar du på projektet eller mappen och klickar på **Lägg till**  -  **befintligt objekt**. Välj de filer du vill ha och klicka sedan på **Add** (Lägg till). Om du blir tillfrågad om du vill ersätta befintliga filer klickar du på **Yes** (Ja).

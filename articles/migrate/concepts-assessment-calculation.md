@@ -3,14 +3,14 @@ title: Utvärderingar av virtuella Azure-datorer i Azure Migrate Server-utvärde
 description: Lär dig mer om utvärderingar i Azure Migrate Server bedömning
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 7664c8296f0d47f37f9542dee82d3c718be40126
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1d9c887f42089611ce7402aa32174958cd8c0b07
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825998"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261862"
 ---
-# <a name="azure-vm-assessments-in-azure-migrate-server-assessment"></a>Utvärderingar av virtuella Azure-datorer i Azure Migrate: Server utvärdering
+# <a name="server-assessment-overview-migrate-to-azure-vms"></a>Översikt över Server utvärdering (migrera till virtuella Azure-datorer)
 
 Den här artikeln innehåller en översikt över utvärderingar i verktyget [Azure Migrate: Server bedömning](migrate-services-overview.md#azure-migrate-server-assessment-tool) . Verktyget kan utvärdera lokala virtuella VMware-datorer, virtuella Hyper-V-datorer och fysiska servrar för migrering till Azure.
 
@@ -122,7 +122,7 @@ Här är what's som ingår i en Azure VM-utvärdering i Server utvärderingen:
 **Prestandahistorik** | Används med prestanda-baserad storlek. Prestanda historik anger den varaktighet som används när prestanda data utvärderas.
 **Percentilutnyttjande** | Används med prestanda-baserad storlek. Percentils användning anger percentilvärdet för det prestanda exempel som används för att ha behörighet.
 **VM-serie** | Den Azure VM-serie som du vill ta hänsyn till. Om du till exempel inte har en produktions miljö som behöver en-seriens virtuella datorer i Azure kan du undanta en-serien från listan över serier.
-**Komfortfaktor** | Den buffert som användes under utvärderingen. Den används för processor-, RAM-, disk-och nätverks användnings data för virtuella datorer. IT-konton för problem som säsongs användning, kort prestanda historik och sannolika ökningar i framtida användning.<br/><br/> Till exempel resulterar en virtuell dator med 10 kärnor med 20% användning vanligt vis i en virtuell dator med två kärnor. Med en bekvämlighets faktor på 2,0 är resultatet en virtuell dator med fyra kärnor i stället.
+**Komfortfaktor** | Den buffert som användes under utvärderingen. Den används för processor-, RAM-, disk-och nätverks data för virtuella datorer. IT-konton för problem som säsongs användning, kort prestanda historik och sannolika ökningar i framtida användning.<br/><br/> Till exempel resulterar en virtuell dator med 10 kärnor med 20% användning vanligt vis i en virtuell dator med två kärnor. Med en bekvämlighets faktor på 2,0 är resultatet en virtuell dator med fyra kärnor i stället.
 **Erbjudande** | Det [Azure-erbjudande](https://azure.microsoft.com/support/legal/offer-details/) som du har registrerat i. Server utvärderingen beräknar kostnaden för det erbjudandet.
 **Valuta** | Fakturerings valutan för ditt konto.
 **Rabatt (%)** | Eventuella prenumerations rabatter som du får ovanpå Azure-erbjudandet. Standardinställningen är 0%.
@@ -151,8 +151,8 @@ För en Azure VM-utvärdering granskar Server utvärderingen följande egenskape
 Egenskap | Information | Status för Azure-beredskap
 --- | --- | ---
 **Start typ** | Azure har stöd för virtuella datorer med en start typ av BIOS, inte UEFI. | Villkorligt redo om start typen är UEFI
-**Kärnor** | Varje dator får inte ha fler än 128 kärnor, vilket är det högsta antalet som en virtuell Azure-dator stöder.<br/><br/> Om prestanda historiken är tillgänglig, Azure Migrate beakta de använda kärnorna för jämförelse. Om utvärderings inställningarna anger en bekvämlighets faktor multipliceras antalet använda kärnor av den praktiska faktorn.<br/><br/> Om det inte finns någon prestanda historik använder Azure Migrate tilldelade kärnor utan att använda den praktiska faktorn. | Redo om antalet kärnor ligger inom gränsen
-**Mycket** | Varje dator får inte ha mer än 3 892 GB RAM-minne, vilket är den maximala storleken som en Azure M-serie Standard_M128m &nbsp; <sup>2</sup> VM stöder. [Läs mer](../virtual-machines/sizes.md).<br/><br/> Om prestanda historiken är tillgänglig kan Azure Migrate anses använda RAM-minne för jämförelse. Om en bekvämlighets faktor anges multipliceras det utnyttjade RAM-minnet av den praktiska faktorn.<br/><br/> Om det inte finns någon historik används det allokerade RAM-minnet utan en bekvämlighets faktor.<br/><br/> | Klar om mängden RAM-minne ligger inom gränsen
+**Kärnor** | Varje dator får inte ha fler än 128 kärnor, vilket är det högsta antalet som en virtuell Azure-dator stöder.<br/><br/> Om prestanda historiken är tillgänglig, Azure Migrate beakta de använda kärnorna för jämförelse. Om utvärderings inställningarna anger en bekvämlighets faktor multipliceras antalet använda kärnor av den praktiska faktorn.<br/><br/> Om det inte finns någon prestanda historik använder Azure Migrate de allokerade kärnorna för att tillämpa komfort faktorn. | Redo om antalet kärnor ligger inom gränsen
+**Mycket** | Varje dator får inte ha mer än 3 892 GB RAM-minne, vilket är den maximala storleken som en Azure M-serie Standard_M128m &nbsp; <sup>2</sup> VM stöder. [Läs mer](../virtual-machines/sizes.md).<br/><br/> Om prestanda historiken är tillgänglig kan Azure Migrate anses använda RAM-minne för jämförelse. Om en bekvämlighets faktor anges multipliceras det utnyttjade RAM-minnet av den praktiska faktorn.<br/><br/> Om det inte finns någon historik används det allokerade RAM-minnet för att tillämpa en bekvämlighets faktor.<br/><br/> | Klar om mängden RAM-minne ligger inom gränsen
 **Lagrings disk** | Den allokerade storleken på en disk får inte överstiga 32 TB. Även om Azure har stöd för 64 TB-diskar med Azure Ultra SSD-diskar, Azure Migrate: Server utvärderingen söker efter 32 TB som disk storleks gräns eftersom den inte har stöd för Ultra SSD än. <br/><br/> Antalet diskar som är anslutna till datorn, inklusive OS-disken, måste vara 65 eller färre. | Redo om diskens storlek och antalet ligger inom gränserna
 **Nätverk** | En dator får inte ha fler än 32 nätverks gränssnitt (NIC) anslutna till sig. | Redo om antalet nätverkskort ligger inom gränsen
 

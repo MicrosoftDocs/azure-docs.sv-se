@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Silverback | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Silverback.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 32cfc96f-2137-49ff-818b-67feadcd73b7
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 3c4eab02ed0c7c09fe9b5893bbaaf7cbe1c8028f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43f7cddfa6fb887fd421d1f90a41145c6182654d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67090915"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88517205"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>Självstudie: Azure Active Directory integrering med Silverback
 
@@ -32,9 +28,9 @@ Genom att integrera Silverback med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Silverback behöver du följande objekt:
 
@@ -105,11 +101,11 @@ Utför följande steg för att konfigurera enkel inloggning med Silverback i Azu
 
     ![Information om enkel inloggning för Silverback-domän och URL: er](common/sp-identifier-reply.png)
 
-    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<YOURSILVERBACKURL>.com/ssp`
+    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://<YOURSILVERBACKURL>.com/ssp`
 
-    b. I rutan **identifierare** anger du en URL med följande mönster:`<YOURSILVERBACKURL>.com`
+    b. I rutan **identifierare** anger du en URL med följande mönster: `<YOURSILVERBACKURL>.com`
 
-    c. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<YOURSILVERBACKURL>.com/sts/authorize/login`
+    c. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<YOURSILVERBACKURL>.com/sts/authorize/login`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera de här värdena med den faktiska inloggnings-URL:en, identifieraren och svars-URL:en. Kontakta [Silverback client support team](mailto:helpdesk@matrix42.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -122,7 +118,7 @@ Utför följande steg för att konfigurera enkel inloggning med Silverback i Azu
 
 1. Logga in på din Silverback-server som administratör i en annan webbläsare.
 
-2. Gå till **admin** > **autentiseringsprovider**.
+2. Gå till **admin**  >  **autentiseringsprovider**.
 
 3. Utför följande steg på sidan **Inställningar för autentiseringsprovider** :
 
@@ -140,7 +136,7 @@ Utför följande steg för att konfigurera enkel inloggning med Silverback i Azu
 
     f.  Skapa en **rubrik** för knappen på självbetjänings portalen.
 
-    g.  Ladda upp en **ikon** genom att klicka på **Välj fil**.
+    ex.  Ladda upp en **ikon** genom att klicka på **Välj fil**.
 
     h.  Välj bakgrunds **färg** för knappen.
 
@@ -165,7 +161,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **Användarnamn** anger du **brittasimon@yourcompanydomain.extension**  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
@@ -217,16 +213,16 @@ För att Azure AD-användare ska kunna logga in på Silverback måste de tillhan
 
     c. I text rutan **efter namn** anger du det senaste namnet på användaren som **Simon**.
 
-    d. I text rutan e-postadress anger du e- **postadressen** till användaren **Brittasimon@contoso.com**.
+    d. I text rutan e-postadress anger du e- **postadressen** till användaren **Brittasimon@contoso.com** .
 
     e. Ange ditt lösen ord i text rutan **lösen ord** .
 
     f. Ange lösen ordet på nytt i text rutan **Bekräfta lösen ord** och bekräfta.
 
-    g. Klicka på **Spara**.
+    ex. Klicka på **Spara**.
 
 > [!NOTE]
-> Om du inte vill skapa varje användare manuellt aktiverar du kryss rutan för att **skapa dynamiska användare** **under autentiseringsprovider för** **Administration** > .
+> Om du inte vill skapa varje användare manuellt aktiverar du kryss rutan för att **skapa dynamiska användare** under autentiseringsprovider för **Administration**  >  **Authentication Provider**.
 
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning
 

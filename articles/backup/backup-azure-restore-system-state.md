@@ -3,12 +3,12 @@ title: Återställa system tillstånd till en Windows-Server
 description: Steg för steg-förklaringar för återställning av Windows Server-systemtillstånd från en säkerhets kopia i Azure.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 8ba4cb5d5617b6a051aec8c54a595e701f62fb87
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 727268b2dc9473a6bda79f023e8a75202d43afe4
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067369"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263443"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Återställa system tillstånd till Windows Server
 
@@ -28,15 +28,15 @@ Följande steg beskriver hur du återställer din Windows Server-konfiguration t
 
     Skriv bords appen bör visas i Sök resultaten.
 
-2. Klicka på **Återställ data** för att starta guiden.
+2. Välj **Återställ data** för att starta guiden.
 
     ![Återställa data](./media/backup-azure-restore-windows-server/recover.png)
 
-3. I rutan **komma igång** , för att återställa data till samma server eller dator, väljer du **den här servern ( `<server name>` )** och klickar på **Nästa**.
+3. I rutan **komma igång** , för att återställa data till samma server eller dator, väljer du **den här servern ( `<server name>` )** och väljer **Nästa**.
 
     ![Välj detta Server alternativ för att återställa data till samma dator](./media/backup-azure-restore-system-state/samemachine.png)
 
-4. I fönstret **Välj återställnings läge** väljer du **system tillstånd** och klickar sedan på **Nästa**.
+4. I fönstret **Välj återställnings läge** väljer du **system tillstånd** och väljer sedan **Nästa**.
 
     ![Bläddra bland filer](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
@@ -46,15 +46,15 @@ Följande steg beskriver hur du återställer din Windows Server-konfiguration t
 
     ![Volym och datum](./media/backup-azure-restore-system-state/select-date.png)
 
-6. När du har valt återställnings punkt att återställa klickar du på **Nästa**.
+6. När du har valt den återställnings punkt som ska återställas väljer du **Nästa**.
 
     Azure Backup monterar den lokala återställnings punkten och använder den som återställnings volym.
 
-7. I nästa fönster anger du målet för de återställda system tillstånds filerna. Klicka sedan på **Bläddra** för att öppna Utforskaren och leta reda på de filer och mappar som du vill använda. Alternativet **skapa kopior så att du har båda versionerna**, skapar kopior av enskilda filer i en befintlig fil Arkiv i system tillstånd i stället för att skapa en kopia av hela system tillstånds arkivet.
+7. I nästa fönster anger du målet för de återställda system tillstånds filerna. Välj sedan **Bläddra** för att öppna Utforskaren och hitta de filer och mappar som du vill använda. Alternativet **skapa kopior så att du har båda versionerna**, skapar kopior av enskilda filer i en befintlig fil Arkiv i system tillstånd i stället för att skapa en kopia av hela system tillstånds arkivet.
 
     ![Återställnings alternativ](./media/backup-azure-restore-system-state/recover-as-files.png)
 
-8. Kontrol lera informationen om återställningen i **bekräftelse** fönstret och klicka på **Återställ**.
+8. Kontrol lera informationen om återställningen i **bekräftelse** fönstret och välj **Återställ**.
 
    ![Klicka på Återställ för att bekräfta åtgärden för att återställa](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
@@ -78,7 +78,7 @@ Den terminologi som används i dessa steg omfattar:
 
 1. Öppna snapin-modulen **Microsoft Azure Backup** på *mål datorn*.
 2. Se till att *mål datorn* och *käll datorn* är registrerade på samma Recovery Services-valv.
-3. Klicka på **Återställ data** för att starta arbets flödet.
+3. Välj **Återställ data** för att initiera arbets flödet.
 4. Välj **en annan server**
 
     ![En annan server](./media/backup-azure-restore-system-state/anotherserver.png)
@@ -86,23 +86,23 @@ Den terminologi som används i dessa steg omfattar:
 5. Ange den loggfil för valvet som motsvarar *exempel valvet*. Om valvet för valvet är ogiltigt (eller har gått ut) laddar du ned en ny fil för valvet från *exempel valvet* i Azure Portal. När du har angett valv filen för valvet visas det Recovery Services valv som är associerat med filen med valvets autentiseringsuppgifter.
 
 6. I fönstret Välj säkerhets kopierings server väljer du *käll datorn* i listan med datorer som visas.
-7. I fönstret Välj återställnings läge väljer du **system tillstånd** och klickar på **Nästa**.
+7. I fönstret Välj återställnings läge väljer du **system tillstånd** och **sedan nästa**.
 
-    ![Sök](./media/backup-azure-restore-system-state/recover-type-selection.png)
+    ![Search](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
 8. I kalendern i fönstret **Välj volym och datum** väljer du en återställnings punkt. Du kan återställa från vilken återställnings punkt som helst. Datum i **fetstil** anger tillgänglighet för minst en återställnings punkt. När du har valt ett datum, om det finns flera återställnings punkter, väljer du den aktuella återställnings punkten från den nedrullningsbara menyn **tid** .
 
     ![Sök efter objekt](./media/backup-azure-restore-system-state/select-date.png)
 
-9. När du har valt återställnings punkt att återställa klickar du på **Nästa**.
+9. När du har valt den återställnings punkt som ska återställas väljer du **Nästa**.
 
-10. I fönstret **Välj återställnings läge för system tillstånd** anger du den plats där du vill att system tillstånds filerna ska återställas och klickar sedan på **Nästa**.
+10. I fönstret **Välj återställnings läge för system tillstånd** anger du den plats där du vill att system tillstånds filerna ska återställas och väljer sedan **Nästa**.
 
     ![Kryptering](./media/backup-azure-restore-system-state/recover-as-files.png)
 
     Alternativet **skapa kopior så att du har båda versionerna**, skapar kopior av enskilda filer i en befintlig fil Arkiv i system tillstånd i stället för att skapa en kopia av hela system tillstånds arkivet.
 
-11. Kontrol lera informationen om återställningen i bekräftelse fönstret och klicka på **Återställ**.
+11. Kontrol lera informationen om återställningen i bekräftelse fönstret och välj **Återställ**.
 
     ![Klicka på knappen Återställ för att bekräfta återställnings processen](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
@@ -122,9 +122,9 @@ När du har återställt system tillstånd som filer med Azure Recovery Services
 
     ![Välj lokal säkerhets kopia att återställa därifrån](./media/backup-azure-restore-system-state/win-server-backup-local-backup.png)
 
-1. Klicka på **Återställ** i rutan **åtgärder**i den lokala säkerhets kopierings konsolen för att öppna återställnings guiden.
+1. I den lokala säkerhets kopierings konsolen går du till **fönstret åtgärder**och väljer **Återställ** för att öppna återställnings guiden.
 
-1. Välj alternativet, **en säkerhets kopia som lagrats på en annan plats**och klicka på **Nästa**.
+1. Välj alternativet, **en säkerhets kopia som lagras på en annan plats**och välj **Nästa**.
 
    ![Välj att återställa till en annan server](./media/backup-azure-restore-system-state/backup-stored-in-diff-location.png)
 
@@ -132,15 +132,15 @@ När du har återställt system tillstånd som filer med Azure Recovery Services
 
     ![Välj om du vill återställa från en lokal server eller en annan](./media/backup-azure-restore-system-state/ss-recovery-remote-shared-folder.png)
 
-1. Ange sökvägen till katalogen *WindowsImageBackup* eller Välj den lokala enhet som innehåller katalogen (till exempel D:\WindowsImageBackup), återställt som en del av återställningen av system tillstånds filer med Azure Recovery Services-agenten och klicka på **Nästa**.
+1. Ange sökvägen till katalogen *WindowsImageBackup* eller Välj den lokala enhet som innehåller katalogen (till exempel D:\WindowsImageBackup), återställt som en del av återställningen av system tillstånds filer med Azure Recovery Services agent och välj **Nästa**.
 
     ![sökväg till den delade filen](./media/backup-azure-restore-system-state/ss-recovery-remote-folder.png)
 
-1. Välj den version av system tillstånd som du vill återställa och klicka på **Nästa**.
+1. Välj den version av system tillstånd som du vill återställa och välj **Nästa**.
 
-1. I fönstret Välj återställnings typ väljer du **system tillstånd** och klickar på **Nästa**.
+1. I fönstret Välj återställnings typ väljer du **system tillstånd** och **sedan nästa**.
 
-1. För system tillstånds återställningens plats väljer du **ursprunglig plats**och klickar på **Nästa**.
+1. För system tillstånds återställningens plats väljer du **ursprunglig plats**och **sedan nästa**.
 
     Om du återställer en domänkontrollant visas följande ytterligare alternativ:
 
@@ -149,14 +149,14 @@ När du har återställt system tillstånd som filer med Azure Recovery Services
     >[!NOTE]
     >Välj endast "utför en auktoritativ återställning av Active Directory-filer" om du uttryckligen planerar att göra en auktoritativ återställning av alla Active Directory data.
 
-1. Läs igenom bekräftelse informationen, verifiera inställningarna för omstart och klicka på **Återställ** för att tillämpa de återställda system tillstånds filerna.
+1. Läs igenom bekräftelse informationen, verifiera inställningarna för omstart och välj **Återställ** för att tillämpa de återställda system tillstånds filerna.
 
     ![starta återställningen av filer för system tillstånd](./media/backup-azure-restore-system-state/launch-ss-recovery.png)
 
     >[!NOTE]
     >Välj inte alternativet **starta om servern automatiskt** om du utför återställningen i DSRM-läge.
 
-1. När du har slutfört en återställning måste du starta om servern i normalt läge. Öppna en kommando tolk och skriv följande:`bcdedit /deletevalue safeboot`
+1. När du har slutfört en återställning måste du starta om servern i normalt läge. Öppna en kommando tolk och skriv följande: `bcdedit /deletevalue safeboot`
 1. Starta om servern.
 
 ## <a name="special-considerations-for-system-state-recovery-on-a-domain-controller"></a>Särskilda överväganden för återställning av system tillstånd på en domänkontrollant
@@ -199,7 +199,7 @@ Den här artikeln diskuterar bara det första scenariot, som anropar en nonautho
         wbadmin start systemstaterecovery -version:04/30/2020-09:00 -backupTarget:\\servername\share -machine:server01 -authsysvol
         ```
 
-1. När du har slutfört en återställning bör du starta om servern i normalt läge. Öppna en kommando tolk och skriv följande:`bcdedit /deletevalue safeboot`
+1. När du har slutfört en återställning bör du starta om servern i normalt läge. Öppna en kommando tolk och skriv följande: `bcdedit /deletevalue safeboot`
 1. Starta om servern.
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>Felsökning av misslyckad återställning av systemtillstånd
@@ -210,15 +210,15 @@ Om den tidigare processen att tillämpa system tillstånd inte slutförs korrekt
 
 2. Välj Felsök från de tre tillgängliga alternativen.
 
-    ![öppna meny](./media/backup-azure-restore-system-state/winre-1.png)
+    ![Välj Felsök](./media/backup-azure-restore-system-state/winre-1.png)
 
 3. Välj **kommando tolk** på skärmen **Avancerade alternativ** och ange användar namn och lösen ord för Server administratör.
 
-   ![öppna meny](./media/backup-azure-restore-system-state/winre-2.png)
+   ![Välj kommando tolk](./media/backup-azure-restore-system-state/winre-2.png)
 
 4. Ange användar namn och lösen ord för Server administratören.
 
-    ![öppna meny](./media/backup-azure-restore-system-state/winre-3.png)
+    ![Ange lösenord](./media/backup-azure-restore-system-state/winre-3.png)
 
 5. När du öppnar kommando tolken i administratörs läge kör du följande kommando för att hämta system tillståndets säkerhets kopierings versioner.
 
@@ -234,7 +234,7 @@ Om den tidigare processen att tillämpa system tillstånd inte slutförs korrekt
     Wbadmin get items -version:<copy version from above step> -backuptarget:<Backup volume>
     ```
 
-    ![Hämta säkerhets kopie versioner för system tillstånd](./media/backup-azure-restore-system-state/winre-5.png)
+    ![Hämta alla tillgängliga volymer](./media/backup-azure-restore-system-state/winre-5.png)
 
 7. Följande kommando återställer alla volymer som ingår i säkerhets kopieringen av system tillstånd. Observera att det här steget bara återställer de kritiska volymer som ingår i systemets tillstånd. Alla data som inte är system raderas.
 
@@ -242,7 +242,7 @@ Om den tidigare processen att tillämpa system tillstånd inte slutförs korrekt
     Wbadmin start recovery -items:C: -itemtype:Volume -version:<Backupversion> -backuptarget:<backup target volume>
     ```
 
-     ![Hämta säkerhets kopie versioner för system tillstånd](./media/backup-azure-restore-system-state/winre-6.png)
+     ![Återställ alla volymer](./media/backup-azure-restore-system-state/winre-6.png)
 
 ## <a name="next-steps"></a>Nästa steg
 

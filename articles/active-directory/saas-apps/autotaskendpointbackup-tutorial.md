@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med slut punkts säkerhets kopiering för aktivitet | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Autotask Endpoint Backup.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9f55319e-895b-4130-8460-71713f25ed04
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/19/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d080fd3cac7a0550452908e9e0265bb2ffcb462
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 502717621fb9b228a818b67a09a699a2ac1713f7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500042"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550227"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-endpoint-backup"></a>Självstudie: Azure Active Directory integration med aktivitets slut punkts säkerhets kopiering
 
@@ -106,9 +101,9 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Au
 
     ![Information om domäner och URL:er för enkel inloggning med Autotask Endpoint Backup](common/idp-intiated.png)
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://<subdomain>.backup.autotask.net/singlesignon/saml/metadata`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://<subdomain>.backup.autotask.net/singlesignon/saml/metadata`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<subdomain>.backup.autotask.net/singlesignon/saml/SSO`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<subdomain>.backup.autotask.net/singlesignon/saml/SSO`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska identifieraren och svars-URL. Kontakta [Autotask Endpoint Backup-kundsupporten](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm) och be om dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -150,7 +145,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

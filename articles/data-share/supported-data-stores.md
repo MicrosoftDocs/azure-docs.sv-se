@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 07/30/2020
-ms.openlocfilehash: 967b2dceab1f1702120cd3121ccd64b4e7286bc6
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 08/14/2020
+ms.openlocfilehash: 0e81d04edff667b0526f1d286701b2e8701528dc
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87511912"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258603"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Data lager som stöds i Azure Data Share
 
@@ -30,7 +30,7 @@ Tabellen nedan innehåller information om de data källor som stöds för Azure 
 | Azure Data Lake Storage Gen2 |✓ ||
 | Azure SQL Database |Offentlig för hands version | |
 | Azure Synapse Analytics (tidigare Azure SQL DW) |Offentlig för hands version | |
-| Azure-datautforskaren | |Offentlig för hands version |
+| Azure-datautforskaren | |✓ |
 
 ## <a name="data-store-support-matrix"></a>Support mat ris för data lager
 
@@ -62,9 +62,7 @@ Att dela från SQL-baserade källor har krav som rör brand Väggs regler och-be
 ## <a name="share-from-azure-data-explorer"></a>Dela från Azure Datautforskaren
 Azure Data Share stöder möjligheten att dela databaser på plats från Azure Datautforskaren-kluster. Data leverantören kan dela på databas-eller kluster nivå. Vid delning på databas nivå kommer data konsumenten bara att kunna komma åt de enskilda databaserna som delas av data leverantören. Vid delning på kluster nivå kan data konsumenten komma åt alla databaser från leverantörens kluster, inklusive alla framtida databaser som skapats av data leverantören.
 
-För att få åtkomst till delade databaser måste data konsumenten ha ett eget Azure Datautforskaren-kluster. Data konsumentens Azure Datautforskaren-kluster måste hitta i samma Azure-datacenter som data leverantörens Azure Datautforskaren-kluster. När du har upprättat relationen skapas en symbolisk länk mellan providern och användarens Azure Datautforskaren-kluster vid Azure-dataresursen.
-
-Azure Datautforskaren stöder två lägen för data inmatning: batch och strömning. Data som tas emot från batch i den delade databasen kommer att visas mellan några sekunder till några minuter på data konsument sidan. Data som tas emot från strömningen kan ta upp till 24 timmar innan de visas på data konsument sidan. 
+För att få åtkomst till delade databaser måste data konsumenten ha ett eget Azure Datautforskaren-kluster. Data konsumentens Azure Datautforskaren-kluster måste hitta i samma Azure-datacenter som data leverantörens Azure Datautforskaren-kluster. När du har upprättat relationen skapas en symbolisk länk mellan providern och användarens Azure Datautforskaren-kluster vid Azure-dataresursen. Data som matas in med batch-läge i Azure Datautforskaren-klustret visas i mål klustret inom några sekunder till några minuter.
 
 ## <a name="next-steps"></a>Nästa steg
 

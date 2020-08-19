@@ -4,12 +4,12 @@ description: I den här självstudien får du lära dig hur du skapar ett Recove
 ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 7a8849bba51939a0c40cba81925e1b4b4a6e3826
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ed91105488b812131d3a908c509998c955cec299
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372560"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263426"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Använda Azure Portal till att säkerhetskopiera flera virtuella datorer
 
@@ -156,7 +156,7 @@ Om du planerar att fortsätta att arbeta med efterföljande självstudier ska du
 
 1. På instrument panelen **myRecoveryServicesVault** väljer du **3** under **säkerhets kopierings objekt** för att öppna menyn säkerhets kopierings objekt.
 
-    ![Säkerhetskopiera objekt](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
+    ![Öppna menyn säkerhets kopierings objekt](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
 
 1. På menyn **säkerhets kopierings objekt** väljer du **virtuell Azure-dator** för att öppna listan över virtuella datorer som är associerade med valvet.
 
@@ -185,7 +185,7 @@ Om du planerar att fortsätta att arbeta med efterföljande självstudier ska du
 
 1. När det inte finns några fler objekt i valvet väljer du **ta bort**.
 
-    ![Välj stoppa säkerhets kopiering för att ta bort valvet](./media/tutorial-backup-vm-at-scale/deleting-the-vault.png)
+    ![Välj Ta bort](./media/tutorial-backup-vm-at-scale/deleting-the-vault.png)
 
     När valvet har tagits bort återgår du till listan över Recovery Services valv.
 

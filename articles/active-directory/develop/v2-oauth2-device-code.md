@@ -13,12 +13,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a0677603f02b429c269c0f93ef348b2b1d717a9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c757f3e067aeac5d8145ca47b2eac145daba574
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82689764"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272458"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft Identity Platform och OAuth 2,0-enhetens Authorization-flöde
 
@@ -53,9 +53,9 @@ scope=user.read%20openid%20profile
 
 | Parameter | Villkor | Beskrivning |
 | --- | --- | --- |
-| `tenant` | Obligatorisk | Kan vara/vanliga,/consumers eller/organizations.  Det kan också vara den katalog klient som du vill begära behörighet från i GUID eller eget namn format.  |
+| `tenant` | Krävs | Kan vara/vanliga,/consumers eller/organizations.  Det kan också vara den katalog klient som du vill begära behörighet från i GUID eller eget namn format.  |
 | `client_id` | Obligatorisk | **Program-ID: t (klienten)** som [Azure Portal – Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) -upplevelsen som har tilldelats din app. |
-| `scope` | Rekommenderas | En blankstegsavgränsad lista med [omfattningar](v2-permissions-and-consent.md) som du vill att användaren ska godkänna.  |
+| `scope` | Obligatorisk | En blankstegsavgränsad lista med [omfattningar](v2-permissions-and-consent.md) som du vill att användaren ska godkänna.  |
 
 ### <a name="device-authorization-response"></a>Svar på enhets auktorisering
 
@@ -92,8 +92,8 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 
 | Parameter | Krävs | Beskrivning|
 | -------- | -------- | ---------- |
-| `tenant`  | Obligatorisk | Samma klient organisation eller klient Ali Aset som används i den första begäran. |
-| `grant_type` | Obligatorisk | Måste vara`urn:ietf:params:oauth:grant-type:device_code`|
+| `tenant`  | Krävs | Samma klient organisation eller klient Ali Aset som används i den första begäran. |
+| `grant_type` | Obligatorisk | Måste vara `urn:ietf:params:oauth:grant-type:device_code`|
 | `client_id`  | Obligatorisk | Måste matcha det `client_id` som används i den första begäran. |
 | `device_code`| Obligatorisk | `device_code`Returnerade i begäran om enhets godkännande.  |
 

@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory enkel inloggning (SSO) med ScaleX Enterprise | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och ScaleX Enterprise.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c2379a8d-a659-45f1-87db-9ba156d83183
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e54994d02dd1abbca1602952fbad058b3ad993d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c7033886d55e381445d99035115654332491441c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72594266"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547886"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-scalex-enterprise"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med ScaleX Enterprise
 
@@ -33,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar ScaleX Enterprise m
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -83,13 +78,13 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://platform.rescale.com/saml2/<company id>/`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://platform.rescale.com/saml2/<company id>/`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://platform.rescale.com/saml2/<company id>/acs/`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://platform.rescale.com/saml2/<company id>/acs/`
 
 1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://platform.rescale.com/saml2/<company id>/sso/`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://platform.rescale.com/saml2/<company id>/sso/`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [scaleX Enterprise client support team](https://info.rescale.com/contact_sales) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -114,7 +109,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -167,7 +162,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     b. **Service Provider SAML**: klistra in värdet ***urn: Oasis: Names: TC: SAML: 2.0: NameID-format: persistent***
 
-    c. **Namn på e-postfältet med identitets leverantör i ACS-svar**: klistra in värdet`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    c. **Namn på e-postfältet med identitets leverantör i ACS-svar**: klistra in värdet `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
     d. **ID för EntityDescriptor entitet för identitetsprovider:** Klistra in värdet för **Azure AD-identifieraren** som kopierats från Azure Portal.
 
@@ -175,7 +170,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     f. **Offentligt X509-certifikat för identitetsprovider:** Öppna det X509-certifikat som du laddade ned från Azure i anteckningar och klistra in innehållet i den här rutan. Se till att det inte finns några rad brytningar mitt i certifikat innehållet.
 
-    g. Markera följande kryss rutor: **aktiverade, kryptera NameID och signera AuthnRequests.**
+    ex. Markera följande kryss rutor: **aktiverade, kryptera NameID och signera AuthnRequests.**
 
     h. Klicka på **Uppdatera SSO-inställningar** för att spara inställningarna.
 
@@ -191,10 +186,10 @@ När du klickar på panelen ScaleX Enterprise på åtkomst panelen, bör du logg
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Prova ScaleX Enterprise med Azure AD](https://aad.portal.azure.com/)

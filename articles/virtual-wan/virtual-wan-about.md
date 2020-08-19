@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 713e980eb84032c98ccf08c52e68dab36eadd659
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 451e1581350bb1d38580d00ffd24c781bc30242d
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513153"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507592"
 ---
 # <a name="about-azure-virtual-wan"></a>Om Azure Virtual WAN
 
@@ -98,7 +98,7 @@ Routern kan ha fyra Dirigerings status: etablerad, etablering, misslyckad eller 
 * **Ingen** status anger att den virtuella hubben inte etablerade routern. Detta kan inträffa om det virtuella WAN-nätverket är av typen *Basic*eller om den virtuella hubben distribuerades innan tjänsten är tillgänglig.
 * Statusen **misslyckades anger att det** inte gick att instansiera. För att instansiera eller återställa routern kan du leta upp alternativet **Återställ router** genom att gå till översikts sidan för virtuella hubbar i Azure Portal.
 
-Varje virtuell hubb-router stöder ett sammanställt data flöde på upp till 50 Gbit/s. Anslutning mellan virtuella nätverks anslutningar förutsätter totalt 2000 VM-arbetsbelastning över alla virtuella nätverk i ett virtuellt WAN.
+Varje virtuell hubb-router stöder ett sammanställt data flöde på upp till 50 Gbit/s. Anslutning mellan virtuella nätverks anslutningar förutsätter totalt 2000 VM-arbetsbelastning över alla virtuella nätverk som är anslutna till en enda virtuell hubb.
 
 #### <a name="transit-connectivity-between-vpn-and-expressroute"></a><a name="transit-er"></a>Överförings anslutning mellan VPN och ExpressRoute
 

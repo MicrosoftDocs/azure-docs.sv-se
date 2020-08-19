@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 6a2208fac98d3cd8e4ddcea887d9b8cf30fb6482
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f5409fea1cdbbc35e9068fae6b3ba7fbc2a95580
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524513"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547400"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Installera och köra LUIS Docker-behållare
 
@@ -26,7 +26,7 @@ Följande video visar hur du använder den här behållaren.
 
 [![Demonstration av behållare för Cognitive Services](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/cognitive-services/) innan du börjar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -64,7 +64,7 @@ I tabellen nedan visas de lägsta och rekommenderade värdena för behållar vä
 
 Core och minne motsvarar `--cpus` `--memory` inställningarna och som används som en del av `docker run` kommandot.
 
-## <a name="get-the-container-image-with-docker-pull"></a>Hämta behållar avbildningen med`docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>Hämta behållar avbildningen med `docker pull`
 
 Använd [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) kommandot för att ladda ned en behållar avbildning från `mcr.microsoft.com/azure-cognitive-services/luis` lagrings platsen:
 
@@ -171,7 +171,7 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 | **{APP_ID}** | Program-ID för den publicerade LUIS-appen. |
 | **{SLOT_NAME}** | Den publicerade LUIS-appens miljö. Använd något av följande värden:<br/>`PRODUCTION`<br/>`STAGING` |
 | **{AUTHORING_KEY}** | Redigerings nyckeln för LUIS-kontot för den publicerade LUIS-appen.<br/>Du kan hämta din redigerings nyckel från sidan **användar inställningar** på Luis-portalen. |
-| **{AZURE_REGION}** | Lämplig Azure-region:<br/><br/>`westus`– Västra USA<br/>`westeurope`– Västeuropa<br/>`australiaeast`– Australien, öst |
+| **{AZURE_REGION}** | Lämplig Azure-region:<br/><br/>`westus` – Västra USA<br/>`westeurope` – Västeuropa<br/>`australiaeast` – Australien, öst |
 
 Information om hur du hämtar det publicerade paketet finns i [API-dokumentationen här][download-published-package]. Om det har hämtats är svaret en LUIS-paketfil. Spara filen på den lagrings plats som angetts för behållaren för indata-montering.
 
@@ -190,11 +190,11 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 | **{APP_ID}** | Program-ID för den tränade LUIS-appen. |
 | **{APP_VERSION}** | Program versionen av den tränade LUIS-appen. |
 | **{AUTHORING_KEY}** | Redigerings nyckeln för LUIS-kontot för den publicerade LUIS-appen.<br/>Du kan hämta din redigerings nyckel från sidan **användar inställningar** på Luis-portalen. |
-| **{AZURE_REGION}** | Lämplig Azure-region:<br/><br/>`westus`– Västra USA<br/>`westeurope`– Västeuropa<br/>`australiaeast`– Australien, öst |
+| **{AZURE_REGION}** | Lämplig Azure-region:<br/><br/>`westus` – Västra USA<br/>`westeurope` – Västeuropa<br/>`australiaeast` – Australien, öst |
 
 Information om hur du hämtar det versions bara paketet finns i [API-dokumentationen här][download-versioned-package]. Om det har hämtats är svaret en LUIS-paketfil. Spara filen på den lagrings plats som angetts för behållaren för indata-montering.
 
-## <a name="run-the-container-with-docker-run"></a>Kör behållaren med`docker run`
+## <a name="run-the-container-with-docker-run"></a>Kör behållaren med `docker run`
 
 Använd kommandot [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) för att köra behållaren. Läs om hur du [samlar in nödvändiga parametrar](#gathering-required-parameters) för information om hur du hämtar `{ENDPOINT_URI}` och- `{API_KEY}` värden.
 

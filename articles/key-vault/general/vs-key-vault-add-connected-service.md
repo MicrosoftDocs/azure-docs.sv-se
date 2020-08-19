@@ -6,15 +6,15 @@ author: ghogen
 manager: jillfra
 ms.service: key-vault
 ms.custom: vs-azure
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: e8c452ffb40b27ed84061e93c1758b3d403052fe
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 52c9584ca94117db58a5427c46269d7f2612861a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054446"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588491"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Lägg till Key Vault i ditt webb program med hjälp av Visual Studio Connected Services
 
@@ -154,7 +154,7 @@ Påverkar projekt filens .NET-referenser och NuGet-paket referenser.
 
 ### <a name="added-files-for-aspnet-core"></a>Filer har lagts till för ASP.NET Core
 
-- `ConnectedService.json`tillagt, som innehåller information om den anslutna tjänst leverantören, versionen och en länk till dokumentationen.
+- `ConnectedService.json` tillagt, som innehåller information om den anslutna tjänst leverantören, versionen och en länk till dokumentationen.
 
 ### <a name="project-file-changes-for-aspnet-core"></a>Projekt fil ändringar för ASP.NET Core
 
@@ -192,7 +192,7 @@ Påverkar projekt filens .NET-referenser och `packages.config` (NuGet-referenser
 
 ### <a name="added-files-for-aspnet-framework"></a>Filer har lagts till för ASP.NET Framework
 
-- `ConnectedService.json`tillagt, som registrerar viss information om den anslutna tjänst leverantören, versionen och en länk till dokumentationen.
+- `ConnectedService.json` tillagt, som registrerar viss information om den anslutna tjänst leverantören, versionen och en länk till dokumentationen.
 
 ### <a name="project-file-changes-for-aspnet-framework"></a>Projekt fil ändringar för ASP.NET Framework
 

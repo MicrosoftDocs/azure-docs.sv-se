@@ -3,12 +3,12 @@ title: Säkerhetskopiera filer i Azure Stack virtuella datorer
 description: Använd Azure Backup för att säkerhetskopiera och återställa Azure Stack filer och program till din Azure Stack-miljö.
 ms.topic: conceptual
 ms.date: 06/05/2018
-ms.openlocfilehash: 07a64e5457963ea4a6d3b39b3f2326dbcfc5e63a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b45e3a0916f46f247503ea336105646f5538246c
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032773"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263137"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Säkerhetskopiera filer och program på Azure Stack
 
@@ -24,45 +24,45 @@ Den här artikeln beskriver inte hur du installerar Azure Backup Server i Azure 
 
 Om du vill konfigurera Azure Backup Server för att skydda filer i Azure Stack virtuella datorer öppnar du Azure Backup Server-konsolen. Du använder-konsolen för att konfigurera skydds grupper och för att skydda data på dina virtuella datorer.
 
-1. I Azure Backup Server-konsolen klickar du på **skydd** och i verktygsfältet klickar du på **nytt** för att öppna guiden **Skapa ny skydds grupp** .
+1. I Azure Backup Server-konsolen väljer du **skydd** och i verktygsfältet väljer du **nytt** för att öppna guiden **Skapa ny skydds grupp** .
 
    ![Konfigurera skydd i Azure Backup Server-konsolen](./media/backup-mabs-files-applications-azure-stack/1-mabs-menu-create-protection-group.png)
 
-    Det kan ta några sekunder innan guiden öppnas. När guiden öppnas klickar du på **Nästa** för att gå till sidan **Välj typ av skydds grupp** .
+    Det kan ta några sekunder innan guiden öppnas. När guiden öppnas väljer du **Nästa** för att gå till sidan **Välj typ av skydds grupp** .
 
    ![Guiden ny skydds grupp öppnas](./media/backup-mabs-files-applications-azure-stack/2-create-new-protection-group-wiz.png)
 
-2. På skärmen **Välj typ av skydds grupp** väljer du **servrar** och klickar på **Nästa**.
+2. På skärmen **Välj typ av skydds grupp** väljer du **servrar** och sedan **Nästa**.
 
-    ![Guiden ny skydds grupp öppnas](./media/backup-mabs-files-applications-azure-stack/3-select-protection-group-type.png)
+    ![Välj typ av skydds grupp](./media/backup-mabs-files-applications-azure-stack/3-select-protection-group-type.png)
 
     Sidan **Välj grupp medlemmar** öppnas.
 
-    ![Guiden ny skydds grupp öppnas](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
+    ![Välj grupp medlemmar](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
 
-3. På skärmen **Välj grupp medlemmar** klickar du på **+** för att expandera listan över under objekt. Markera kryss rutan för alla objekt som du vill skydda. När alla objekt har marker ATS klickar du på **Nästa**.
+3. På skärmen **Välj grupp medlemmar** väljer **+** du för att expandera listan över under objekt. Markera kryss rutan för alla objekt som du vill skydda. När alla objekt har marker ATS väljer du **Nästa**.
 
-    ![Guiden ny skydds grupp öppnas](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
+    ![Markera de objekt som du vill skydda](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 
     Microsoft rekommenderar att du placerar alla data som ska dela en skydds princip i en skydds grupp. Fullständig information om hur du planerar och distribuerar skydds grupper finns i artikeln System Center DPM, [distribuera skydds grupper](/system-center/dpm/create-dpm-protection-groups).
 
-4. På skärmen **Välj data skydds metod** anger du ett namn på skydds gruppen. Markera kryss rutan för **Jag vill använda kortsiktigt skydd med:** och **Jag vill ha onlineskydd**. Klicka på **Nästa**.
+4. På skärmen **Välj data skydds metod** anger du ett namn på skydds gruppen. Markera kryss rutan för **Jag vill använda kortsiktigt skydd med:** och **Jag vill ha onlineskydd**. Välj **Nästa**.
 
-    ![Guiden ny skydds grupp öppnas](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
+    ![Välj data skydds metod](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
 
-    Om du vill välja att **Jag vill ha onlineskydd**måste du först välja **Jag vill ha kortvarigt skydd med:** disk. Azure Backup Server skyddar inte på band, så disk är det enda alternativet för kortsiktigt skydd.
+    Om du vill välja att **Jag vill ha onlineskydd**måste du först välja **Jag vill ha kortvarigt skydd med:** disk. Azure Backup Server skyddar inte till band, så disk är det enda alternativet för kortsiktigt skydd.
 
-5. På skärmen **Ange kortvariga mål** väljer du hur länge du vill behålla återställnings punkterna som sparas på disk och när du ska spara stegvisa säkerhets kopior. Klicka på **Nästa**.
+5. På skärmen **Ange kortvariga mål** väljer du hur länge du vill behålla återställnings punkterna som sparas på disk och när du ska spara stegvisa säkerhets kopior. Välj **Nästa**.
 
     > [!IMPORTANT]
     > Du bör **inte** behålla återställnings data (säkerhets kopiering) på Azure Backup Server anslutna diskar i mer än fem dagar.
     >
 
-    ![Guiden ny skydds grupp öppnas](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png)
+    ![Ange kortsiktiga mål](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png)
 
-    I stället för att välja ett intervall för stegvisa säkerhets kopieringar för att köra en fullständig snabb säkerhets kopiering precis innan varje schemalagd återställnings punkt klickar du på **precis innan en återställnings punkt**. Om du skyddar program arbets belastningar skapar Azure Backup Server återställnings punkter enligt schemat för synkroniseringsfrekvens (förutsatt att programmet stöder stegvis säkerhets kopiering). Om programmet inte har stöd för stegvisa säkerhets kopieringar kör Azure Backup Server en fullständig snabb säkerhets kopiering.
+    I stället för att välja ett intervall för stegvisa säkerhets kopieringar för att köra en fullständig snabb säkerhets kopiering precis innan varje schemalagd återställnings punkt väljer du **precis innan en återställnings punkt**. Om du skyddar program arbets belastningar skapar Azure Backup Server återställnings punkter enligt schemat för synkroniseringsfrekvens (förutsatt att programmet stöder stegvis säkerhets kopiering). Om programmet inte har stöd för stegvisa säkerhets kopieringar kör Azure Backup Server en fullständig snabb säkerhets kopiering.
 
-    Ange när återställnings punkter ska skapas i **fil återställnings punkter**. Klicka på **ändra** för att ange tider och dagar i veckan när återställnings punkter skapas.
+    Ange när återställnings punkter ska skapas i **fil återställnings punkter**. Välj **ändra** för att ange tider och dagar i veckan när återställnings punkter skapas.
 
 6. På skärmen **Granska diskallokering** granskar du disk utrymmet för lagringspoolen som allokerats för skydds gruppen.
 
@@ -83,19 +83,19 @@ Om du vill konfigurera Azure Backup Server för att skydda filer i Azure Stack v
 
 12. I **Välj online-replikering**anger du hur den första fullständiga replikeringen av data ska ske.
 
-13. Granska inställningarna i **Sammanfattning**. När du klickar på **Skapa grupp**sker den första datareplikeringen. När datareplikeringen är klar visas skydds gruppens status som **OK**på sidan **status** . Det första säkerhets kopierings jobbet sker i enlighet med inställningarna för skydds gruppen.
+13. Granska inställningarna i **Sammanfattning**. När du väljer **Skapa grupp**sker den första datareplikeringen. När datareplikeringen är klar visas skydds gruppens status som **OK**på sidan **status** . Det första säkerhets kopierings jobbet sker i enlighet med inställningarna för skydds gruppen.
 
 ## <a name="recover-file-data"></a>Återställa fildata
 
 Använd Azure Backup Server-konsolen för att återställa data till den virtuella datorn.
 
-1. Klicka på **återställning** i navigerings fältet i Azure Backup Server-konsolen och bläddra efter de data som du vill återställa. Välj dessa data i resultatfönstret.
+1. I Azure Backup Server-konsolen i navigerings fältet väljer du **återställning** och bläddrar efter de data som du vill återställa. Välj dessa data i resultatfönstret.
 
 2. I kalendern i avsnittet återställnings punkter är datum i fetstil att återställnings punkter är tillgängliga. Välj det datum som ska återställas.
 
 3. I fönstret **återställnings Bart objekt** väljer du det objekt som du vill återställa.
 
-4. Klicka på **Återställ** i fönstret **Åtgärder** för att öppna återställningsguiden.
+4. I fönstret **åtgärder** väljer du **Återställ** för att öppna återställnings guiden.
 
 5. Så här kan du återställa data:
 
@@ -106,11 +106,11 @@ Använd Azure Backup Server-konsolen för att återställa data till den virtuel
 
     * För **återställning av befintliga versioner**väljer du **Skapa kopia**, **hoppa över**eller **Skriv över**. Överskrivning är bara tillgängligt när du återställer till den ursprungliga platsen.
     * För **återställning av säkerhet**väljer du **tillämpa inställningar på mål datorn** eller **tillämpar säkerhets inställningarna för återställnings punkt versionen**.
-    * För **begränsning av nätverks bandbredd**klickar du på **ändra** för att aktivera begränsning av nätverks bandbredd.
-    * **Meddelande** Klicka på **Skicka ett e-postmeddelande när återställningen är slutförd**och ange de mottagare som ska ta emot meddelandet. Avgränsa e-postadresserna med kommatecken.
-    * När du har gjort dina val klickar du på **Nästa**
+    * För **begränsning av nätverks bandbredd**väljer du **ändra** för att aktivera begränsning av nätverks bandbredd.
+    * **Meddelande** Välj **Skicka ett e-postmeddelande när återställningen är slutförd**och ange de mottagare som ska ta emot meddelandet. Avgränsa e-postadresserna med kommatecken.
+    * När du har gjort valen väljer du **Nästa**
 
-7. Granska återställningsinställningarna och klicka på **Återställ**.
+7. Granska återställnings inställningarna och välj **Återställ**.
 
     >[!Note]
     >Medan återställnings jobbet pågår avbryts alla synkroniseringsjobb för de valda återställnings objekten.
@@ -119,14 +119,14 @@ Om du använder Modern Backup Storage (MB) stöds inte återställning av fil Se
 
 1. Navigera till de skyddade filerna och högerklicka på fil namnet och välj **Egenskaper**.
 
-2. På menyn **Egenskaper** klickar du på **tidigare versioner** och väljer den version som du vill återställa.
+2. Välj **tidigare versioner** på menyn **Egenskaper** och välj den version som du vill återställa.
 
 ## <a name="view-azure-backup-server-with-a-vault"></a>Visa Azure Backup Server med ett valv
 
 Du kan visa Azure Backup Server entiteter i Azure Portal genom att följa stegen nedan:
 
 1. Öppna Recovery Services valv.
-2. Klicka på infrastruktur för säkerhets kopiering.
+2. Välj infrastruktur för säkerhets kopiering.
 3. Visa säkerhets kopierings hanterings servrar.
 
 ## <a name="next-steps"></a>Nästa steg

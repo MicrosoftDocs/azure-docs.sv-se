@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Oracle Cloud Infrastructure Console | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Oracle Cloud Infrastructure-konsolen.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: f045fe19-11f8-4ccf-a3eb-8495fdc8716f
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64cae5812a380725d612d27190042797542ee255
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d4a478c402346e33a4f27ff2a363de75285b435b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76289109"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543847"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>Självstudie: integrera Oracle Cloud Infrastructure-konsolen med Azure Active Directory
 
@@ -32,7 +28,7 @@ I den här självstudien får du lära dig att integrera Oracle Cloud Infrastruc
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -94,7 +90,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
       > [!NOTE]
       > Om värdena **Identifierare** och **Svars-URL** inte fylls i automatiskt fyller du i värdena manuellt enligt dina krav.
 
-      I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://console.<REGIONNAME>.oraclecloud.com/`
+      I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://console.<REGIONNAME>.oraclecloud.com/`
 
       > [!NOTE]
       > Värdet är inte verkligt. Uppdatera värdet med den faktiska inloggnings-URL:en. Kontakta [support teamet för Oracle Cloud Infrastructure Console](https://www.oracle.com/support/advanced-customer-support/products/cloud.html) för att hämta värdet. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -129,7 +125,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
    1. Skriv **GroupName**i text rutan **namn** .
 
-   1. I text rutan **namnrymd (valfritt)** skriver `https://auth.oraclecloud.com/saml/claims`du.
+   1. I text rutan **namnrymd (valfritt)** skriver du `https://auth.oraclecloud.com/saml/claims` .
 
    1. Klicka på **Spara**.
 
@@ -149,7 +145,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B. Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B. Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B. Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 

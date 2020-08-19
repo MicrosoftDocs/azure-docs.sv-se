@@ -148,6 +148,12 @@
         - name: Felsöka
           expanded: false
           items:
+            - name: Felsöka inloggning
+              href: container-registry-troubleshoot-login.md
+            - name: Felsöka nätverksproblem
+              href: container-registry-troubleshoot-access.md
+            - name: Felsöka registerprestanda
+              href: container-registry-troubleshoot-performance.md
             - name: Identifiera vanliga problem
               href: container-registry-check-health.md
             - name: VANLIGA FRÅGOR OCH SVAR

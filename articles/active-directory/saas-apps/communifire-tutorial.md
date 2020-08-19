@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Communifire | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Communifire.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: de2a164d-2115-43e7-a9ed-e54f483f4aeb
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9bd5ae486dc31b7e19ffed9561f9cfc9dea4cc4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d743785ad5525f582e5cb25df715d8211121e809
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73159403"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547265"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-communifire"></a>Självstudie: Azure Active Directory integrering med Communifire
 
@@ -33,9 +28,9 @@ Integreringen av Communifire med Azure AD medför följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att konfigurera Azure AD-integrering med Communifire behöver du följande:
 
@@ -108,15 +103,15 @@ Utför följande steg för att konfigurera enkel inloggning med Azure AD för Co
 
     ![Communifire-domän och information om URL:er för enkel inloggning](common/idp-intiated.png)
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://<subdomain>.communifire.com`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://<subdomain>.communifire.com`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<subdomain>.communifire.com/SAML/AssertionConsumerService.aspx`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<subdomain>.communifire.com/SAML/AssertionConsumerService.aspx`
 
 5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     ![Communifire-domän och information om URL:er för enkel inloggning](common/metadata-upload-additional-signon.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<subdomain>.communifire.com/login`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<subdomain>.communifire.com/login`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [kundsupporten för Communifire](mailto:support@axerosolutions.com) och be om dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -167,8 +162,8 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** skriver du **brittasimon\@yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

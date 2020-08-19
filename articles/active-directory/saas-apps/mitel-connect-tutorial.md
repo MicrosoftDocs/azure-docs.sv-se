@@ -2,24 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med spets anslutning | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory-och avgränsnings anslutning.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 204f540b-09f1-452b-a52f-78143710ef76
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 60e81bed348289f560b6341398bf4fe9bdaff0eb
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 63f1d1d40d8aff21641f3fa4ee10a289de40800d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054865"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552619"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>Självstudie: Azure Active Directory integrering med MiCloud Connect eller CloudLink Platform
 
@@ -127,8 +124,8 @@ Om du vill konfigurera MiCloud ansluta med SSO för Azure AD är det enklast att
 
 7. I text rutan **inloggnings-URL** skriver du en av följande URL: er:
 
-    1. **https://portal.shoretelsky.com**– Om du vill använda en spetsig konto portal som standard-avgränsnings program
-    1. **https://teamwork.shoretel.com**– Om du vill använda lag lag som ditt standard avgränsnings program
+    1. **https://portal.shoretelsky.com** – Om du vill använda en spetsig konto portal som standard-avgränsnings program
+    1. **https://teamwork.shoretel.com** – Om du vill använda lag lag som ditt standard avgränsnings program
 
     > [!NOTE]
     > Standard avgränsnings programmet är det program som nås när en användare väljer panel för att ansluta på åtkomst panelen. Detta är också det program som nås när du gör en test installation från Azure AD.

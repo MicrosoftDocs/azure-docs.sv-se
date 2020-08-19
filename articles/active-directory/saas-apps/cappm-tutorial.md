@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med klarhet | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och klarhet.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: ca9d5e71-e429-4891-8d10-3498e7210e89
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/05/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89700ccac8e197b393cb1e96cdbf5e04877c4a44
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 969fb8c688fe26e1aa830cab2bbc35c5712b060e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484606"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88530757"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarity"></a>Självstudie: Azure Active Directory integration med klarhet
 
@@ -32,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar klarhet med Azure A
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -82,7 +78,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 4. På sidan **Konfigurera enkel inloggning med SAML** utför du följande steg:
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://ca.ondemand.saml.20.post.<companyname>`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://ca.ondemand.saml.20.post.<companyname>`
 
     b. I textrutan **Svars-URL** skriver du: `https://fedsso.ondemand.ca.com/affwebservices/public/saml2assertionconsumer`
 
@@ -105,7 +101,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Exempelvis `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 

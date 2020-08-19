@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med nät | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och-nät.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 82367f62-173e-4e14-bf84-d8f611706086
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/02/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21409eb056743d92db42e0787af24f8cec07db1b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cfa81b52e8479851fc22b12cbc96a9507f0b2dc7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72026958"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551397"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med nät
 
@@ -33,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar nät med Azure Acti
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -82,11 +77,11 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
 
-    Skriv en URL i text rutan **svars-URL** med följande mönster:`https://app.harness.io/gateway/api/users/saml-login?accountId=<harness_account_id>`
+    Skriv en URL i text rutan **svars-URL** med följande mönster:  `https://app.harness.io/gateway/api/users/saml-login?accountId=<harness_account_id>`
 
 1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
-    Skriv en URL i text rutan **inloggnings-URL** :`https://app.harness.io/`
+    Skriv en URL i text rutan **inloggnings-URL** :  `https://app.harness.io/`
 
     > [!NOTE]
     > Värdet för svars-URL:en är inte verkligt. Du får den faktiska svars-URL: en från avsnittet **Konfigurera nät-SSO** , som beskrivs senare i självstudien. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -107,7 +102,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -141,11 +136,11 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 3. Om du vill konfigurera nät manuellt öppnar du ett nytt webbläsarfönster och loggar in på din företags webbplats som administratör och utför följande steg:
 
-4. Klicka på**Inställningar**för **kontinuerlig säkerhets** > **åtkomst hantering** > på sidan längst upp till höger på sidan.
+4. Klicka på Inställningar för **kontinuerlig säkerhets**  >  **åtkomst hantering**på sidan längst upp till höger på sidan  >  **Authentication Settings**.
 
     ![Konfiguration av nät](./media/harness-tutorial/configure01.png)
 
-5. I avsnittet **SSO-providers** klickar du på **+ Lägg till SSO-providers** > **SAML**.
+5. I avsnittet **SSO-providers** klickar du på **+ Lägg till SSO-providers**  >  **SAML**.
 
     ![Konfiguration av nät](./media/harness-tutorial/configure03.png)
 
@@ -169,7 +164,7 @@ Om du vill att Azure AD-användare ska kunna logga in på ett nät, måste de ti
 
 1. Logga in för att ansluta som administratör.
 
-1. Längst upp till höger på sidan**klickar du på**principer för **kontinuerlig säkerhets** > **åtkomst hantering** > .
+1. Längst upp till höger på sidan klickar du på principer för **kontinuerlig säkerhets**  >  **åtkomst hantering**  >  **Users**.
 
     ![Konfiguration av nät](./media/harness-tutorial/configure04.png)
 
@@ -181,7 +176,7 @@ Om du vill att Azure AD-användare ska kunna logga in på ett nät, måste de ti
 
     ![Konfiguration av nät](./media/harness-tutorial/configure06.png)
 
-    a. I text rutan **e-postadress (er)** anger du e-postadressen till användaren `B.simon@contoso.com`.
+    a. I text rutan **e-postadress (er)** anger du e-postadressen till användaren `B.simon@contoso.com` .
 
     b. Välj **användar grupper**.
 
@@ -195,11 +190,11 @@ När du klickar på panelen nät på åtkomst panelen, bör du loggas in automat
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Prova att använda Azure AD](https://aad.portal.azure.com/)
 

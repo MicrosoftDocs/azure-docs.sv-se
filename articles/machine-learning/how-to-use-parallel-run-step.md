@@ -9,21 +9,23 @@ ms.topic: tutorial
 ms.reviewer: jmartens, larryfr
 ms.author: tracych
 author: tracychms
-ms.date: 07/16/2020
+ms.date: 08/14/2020
 ms.custom: Build2020, devx-track-python
-ms.openlocfilehash: 960b59275885efd547df63febab37d2403c1c7cf
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: dddb332498f41437eba77d75c38218c58b8c8379
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87847712"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507122"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Kör batch-härledning på stora mängder data med hjälp av Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Lär dig hur du kör batch-härledning på stora mängder data asynkront och parallellt med hjälp av Azure Machine Learning. ParallelRunStep tillhandahåller parallella funktioner.
+Den här artikeln visar hur du kör Azure Machine Learnings modellen parallellt och snabbt utvärderar stora mängder data. 
 
-Med ParallelRunStep är det enkelt att skala offline-inferences till stora kluster datorer i terabyte strukturerade eller ostrukturerade data med förbättrad produktivitet och optimerad kostnad.
+Inferencing över stora data mängder eller med komplicerade modeller kan vara tids krävande. Med `ParallelRunStep` klassen kan du utföra bearbetning parallellt, vilket kan leda till övergripande resultat snabbare. Även om det är ganska snabbare att köra en enda utvärdering, kan många scenarier (objekt identifiering, video bearbetning, naturligt språk bearbetning osv.) köra många utvärderingar. 
+
+Med är `ParallelRunStep` det enkelt att skala batch-inferences till stora kluster datorer. Sådana kluster kan hantera terabyte av strukturerade eller ostrukturerade data med förbättrad produktivitet och optimerad kostnad.
 
 I den här artikeln får du lära dig följande uppgifter:
 
@@ -35,7 +37,7 @@ I den här artikeln får du lära dig följande uppgifter:
 > 1. Skicka en ny körnings härledning igen med nya indata och parametrar. 
 > 1. Granska resultaten.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Om du inte har en Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar. Prova den [kostnads fria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree).
 
@@ -52,7 +54,7 @@ Följande åtgärder konfigurerar de Machine Learning-resurser som du behöver f
 
 ### <a name="configure-workspace"></a>Konfigurera arbetsyta
 
-Skapa ett arbetsyteobjekt från den befintliga arbetsytan. `Workspace.from_config()`läser config.jspå filen och läser in informationen i ett objekt med namnet ws.
+Skapa ett arbetsyteobjekt från den befintliga arbetsytan. `Workspace.from_config()` läser config.jspå filen och läser in informationen i ett objekt med namnet ws.
 
 ```python
 from azureml.core import Workspace
@@ -134,7 +136,7 @@ def_data_store = ws.get_default_datastore()
 
 Indata för batch-härledning är de data som du vill partitionera för parallell bearbetning. En pipeline för batch-härledning accepterar data indata via [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) .
 
-`Dataset`är för att utforska, transformera och hantera data i Azure Machine Learning. Det finns två typer: [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) och [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py) . I det här exemplet ska du använda `FileDataset` som indata. `FileDataset`ger dig möjlighet att ladda ned eller montera filerna i din beräkning. Genom att skapa en data uppsättning skapar du en referens till data käll platsen. Om du har tillämpat transformeringar av under inställningar till data uppsättningen lagras de även i data uppsättningen. Data behålls på den befintliga platsen, så ingen extra lagrings kostnad uppstår.
+`Dataset` är för att utforska, transformera och hantera data i Azure Machine Learning. Det finns två typer: [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) och [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py) . I det här exemplet ska du använda `FileDataset` som indata. `FileDataset` ger dig möjlighet att ladda ned eller montera filerna i din beräkning. Genom att skapa en data uppsättning skapar du en referens till data käll platsen. Om du har tillämpat transformeringar av under inställningar till data uppsättningen lagras de även i data uppsättningen. Data behålls på den befintliga platsen, så ingen extra lagrings kostnad uppstår.
 
 Mer information om Azure Machine Learning data uppsättningar finns i [skapa och komma åt data uppsättningar (för hands version)](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets).
 
@@ -157,7 +159,7 @@ input_mnist_ds_consumption = DatasetConsumptionConfig("minist_param_config", pip
 
 ### <a name="create-the-output"></a>Skapa utdata
 
-[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)objekt används för att överföra mellanliggande data mellan pipeline-steg. I det här exemplet använder du den för att ge en utmatnings effekt.
+[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) objekt används för att överföra mellanliggande data mellan pipeline-steg. I det här exemplet använder du den för att ge en utmatnings effekt.
 
 ```python
 from azureml.pipeline.core import Pipeline, PipelineData
@@ -287,14 +289,14 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 
 ### <a name="specify-the-parameters-using-parallelrunconfig"></a>Ange parametrar med ParallelRunConfig
 
-`ParallelRunConfig`är den viktigaste konfigurationen för `ParallelRunStep` instansen i Azure Machine Learning pipelinen. Du använder den för att omsluta ditt skript och konfigurera nödvändiga parametrar, inklusive alla följande poster:
+`ParallelRunConfig` är den viktigaste konfigurationen för `ParallelRunStep` instansen i Azure Machine Learning pipelinen. Du använder den för att omsluta ditt skript och konfigurera nödvändiga parametrar, inklusive alla följande poster:
 - `entry_script`: Ett användar skript som en lokal fil Sök väg som ska köras parallellt på flera noder. Om `source_directory` det finns använder du en relativ sökväg. Annars använder du valfri sökväg som är tillgänglig på datorn.
 - `mini_batch_size`: Den mini-batch-storlek som skickas till ett enda `run()` anrop. (valfritt; standardvärdet är `10` filer för `FileDataset` och `1MB` for `TabularDataset` .)
     - För är `FileDataset` det antalet filer med minimivärdet `1` . Du kan kombinera flera filer i en mini-batch.
     - För är `TabularDataset` det data storleken. Exempel värden är `1024` , `1024KB` , `10MB` och `1GB` . Det rekommenderade värdet är `1MB` . Mini-batch från `TabularDataset` kommer aldrig att överskrida fil gränser. Om du till exempel har CSV-filer med olika storlekar är den minsta filen 100 KB och störst är 10 MB. Om du anger `mini_batch_size = 1MB` kommer filer med en storlek som är mindre än 1 MB att behandlas som en mini-batch. Filer med en storlek som är större än 1 MB delas upp i flera mini-batchar.
 - `error_threshold`: Antalet post-och fil haverier `TabularDataset` `FileDataset` som ska ignoreras under bearbetningen. Om antalet fel för hela inflödet överskrider det här värdet kommer jobbet att avbrytas. Fel tröskeln är för alla indatatyper och inte för enskilda mini-batchar som skickas till- `run()` metoden. Intervallet är `[-1, int.max]` . `-1`Delen indikerar att ignorera alla avbrott under bearbetningen.
 - `output_action`: Ett av följande värden anger hur utdata ska ordnas:
-    - `summary_only`: Användar skriptet kommer att lagra utdata. `ParallelRunStep`kommer bara att använda utdata för fel tröskel beräkningen.
+    - `summary_only`: Användar skriptet kommer att lagra utdata. `ParallelRunStep` kommer bara att använda utdata för fel tröskel beräkningen.
     - `append_row`: För alla indata skapas bara en fil i mappen utdata för att lägga till alla utdata avgränsade med rad.
 - `append_row_file_name`: Om du vill anpassa namnet på utdatafilen för append_row output_action (valfritt; standardvärde `parallel_run_step.txt` ).
 - `source_directory`: Sökvägar till mappar som innehåller alla filer som ska köras på beräknings målet (valfritt).

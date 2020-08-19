@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15838e1e9acf328a0deaa981d1227c22c08dbbdf
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: bd8177f6fd8e40e9c4ea37bc7ead910806efbad2
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832271"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88504950"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines DBMS-distribution för SAP-arbetsbelastning
 
@@ -374,10 +374,10 @@ Den lägsta konfigurationen är följande:
 
 | Komponent | Disk | Caching | Lagringspool |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA & mirrlogB | Premium | Inga | Krävs inte |
-| \oracle \<SID> \origlogaB & mirrlogA | Premium | Inga | Krävs inte |
+| \oracle \<SID> \origlogaA & mirrlogB | Premium | Inget | Krävs inte |
+| \oracle \<SID> \origlogaB & mirrlogA | Premium | Inget | Krävs inte |
 | \oracle \<SID> \sapdata1... m | Premium | Skrivskyddad | Kan användas |
-| \oracle \<SID> \oraarch | Standard | Inga | Krävs inte |
+| \oracle \<SID> \oraarch | Standard | Inget | Krävs inte |
 | Oracle Home, saptrace,... | OS-disk | | Krävs inte |
 
 
@@ -387,13 +387,13 @@ Prestanda konfigurationen är följande:
 
 | Komponent | Disk | Caching | Lagringspool |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA | Premium | Inga | Kan användas  |
-| \oracle \<SID> \origlogaB | Premium | Inga | Kan användas |
-| \oracle \<SID> \mirrlogAB | Premium | Inga | Kan användas |
-| \oracle \<SID> \mirrlogBA | Premium | Inga | Kan användas |
+| \oracle \<SID> \origlogaA | Premium | Inget | Kan användas  |
+| \oracle \<SID> \origlogaB | Premium | Inget | Kan användas |
+| \oracle \<SID> \mirrlogAB | Premium | Inget | Kan användas |
+| \oracle \<SID> \mirrlogBA | Premium | Inget | Kan användas |
 | \oracle \<SID> \sapdata1... m | Premium | Skrivskyddad | Rekommenderas  |
-| \oracle\SID\sapdata (n + 1) * | Premium | Inga | Kan användas |
-| \oracle \<SID> \oraarch * | Premium | Inga | Krävs inte |
+| \oracle\SID\sapdata (n + 1) * | Premium | Inget | Kan användas |
+| \oracle \<SID> \oraarch * | Premium | Inget | Krävs inte |
 | Oracle Home, saptrace,... | OS-disk | Krävs inte |
 
 * (n + 1): värdbaserade SYSTEM-, TEMP-och UNDO-datatabeller. I/O-mönstret för system-och Undo-datatabeller skiljer sig från andra register utrymmen som är värdar för program data. Ingen cachelagring är det bästa alternativet för systemets prestanda och återställa tabell utrymmen.
@@ -404,7 +404,7 @@ Om det krävs mer IOPS rekommenderar vi att du använder Windows-lagringspooler 
 
 
 #### <a name="write-accelerator"></a>Skrivningsaccelerator
-Svars tiden för virtuella datorer i Azure M-serien kan minskas med faktorer jämfört med Azure Premium Storage. Aktivera Azure-Skrivningsaccelerator för diskarna (VHD: er) baserat på Azure-Premium Storage som används för att skapa om loggfiler. Mer information finns i [Skrivningsaccelerator](../../linux/how-to-enable-write-accelerator.md).
+Svars tiden för virtuella datorer i Azure M-serien kan minskas med faktorer jämfört med Azure Premium Storage. Aktivera Azure-Skrivningsaccelerator för diskarna (VHD: er) baserat på Azure-Premium Storage som används för att skapa om loggfiler. Mer information finns i [Skrivningsaccelerator](../../how-to-enable-write-accelerator.md).
 
 
 ### <a name="backuprestore"></a>Säkerhets kopiering/återställning
@@ -464,10 +464,10 @@ Lägsta konfiguration:
 
 | Komponent | Disk | Caching | Tar bort |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA & mirrlogB | Premium | Inga | Krävs inte |
-| /Oracle/ \<SID> /origlogaB & mirrlogA | Premium | Inga | Krävs inte |
+| /Oracle/ \<SID> /origlogaA & mirrlogB | Premium | Inget | Krävs inte |
+| /Oracle/ \<SID> /origlogaB & mirrlogA | Premium | Inget | Krävs inte |
 | /Oracle/ \<SID> /sapdata1... m | Premium | Skrivskyddad | Kan användas |
-| /Oracle/ \<SID> /oraarch | Standard | Inga | Krävs inte |
+| /Oracle/ \<SID> /oraarch | Standard | Inget | Krävs inte |
 | Oracle Home, saptrace,... | OS-disk | | Krävs inte |
 
 * Ta bort: LVM rand eller MDADM med RAID0
@@ -478,13 +478,13 @@ Prestanda konfiguration:
 
 | Komponent | Disk | Caching | Tar bort |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA | Premium | Inga | Kan användas  |
-| /Oracle/ \<SID> /origlogaB | Premium | Inga | Kan användas |
-| /Oracle/ \<SID> /mirrlogAB | Premium | Inga | Kan användas |
-| /Oracle/ \<SID> /mirrlogBA | Premium | Inga | Kan användas |
+| /Oracle/ \<SID> /origlogaA | Premium | Inget | Kan användas  |
+| /Oracle/ \<SID> /origlogaB | Premium | Inget | Kan användas |
+| /Oracle/ \<SID> /mirrlogAB | Premium | Inget | Kan användas |
+| /Oracle/ \<SID> /mirrlogBA | Premium | Inget | Kan användas |
 | /Oracle/ \<SID> /sapdata1... m | Premium | Skrivskyddad | Rekommenderas  |
-| /Oracle/ \<SID> /sapdata (n + 1) * | Premium | Inga | Kan användas |
-| /Oracle/ \<SID> /oraarch * | Premium | Inga | Krävs inte |
+| /Oracle/ \<SID> /sapdata (n + 1) * | Premium | Inget | Kan användas |
+| /Oracle/ \<SID> /oraarch * | Premium | Inget | Krävs inte |
 | Oracle Home, saptrace,... | OS-disk | Krävs inte |
 
 * Ta bort: LVM rand eller MDADM med RAID0
@@ -498,7 +498,7 @@ Om det krävs mer IOPS rekommenderar vi att du använder LVM (Logical Volume Man
 
 
 #### <a name="write-accelerator"></a>Skrivningsaccelerator
-När du använder Azure-Skrivningsaccelerator för virtuella datorer i Azure M-serien kan svars tiderna för att skriva till online-serien minskas med faktorer jämfört med Azure Premium Storage prestanda. Aktivera Azure-Skrivningsaccelerator för diskarna (VHD: er) baserat på Azure-Premium Storage som används för att skapa om loggfiler. Mer information finns i [Skrivningsaccelerator](../../linux/how-to-enable-write-accelerator.md).
+När du använder Azure-Skrivningsaccelerator för virtuella datorer i Azure M-serien kan svars tiderna för att skriva till online-serien minskas med faktorer jämfört med Azure Premium Storage prestanda. Aktivera Azure-Skrivningsaccelerator för diskarna (VHD: er) baserat på Azure-Premium Storage som används för att skapa om loggfiler. Mer information finns i [Skrivningsaccelerator](../../how-to-enable-write-accelerator.md).
 
 
 ### <a name="backuprestore"></a>Säkerhets kopiering/återställning

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
-ms.openlocfilehash: 831f09ecf7550a847c483fbe1678f1e4c3cecb61
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 07055025eff9ab81c7321624daed9b4a6e993a60
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052289"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506519"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell-exempelskript
 
@@ -26,21 +26,21 @@ Azure Remote rendering innehåller följande två REST-API: er:
 Om du vill köra exempel skripten behöver du en fungerande installation av [Azure PowerShell](https://docs.microsoft.com/powershell/azure/).
 
 1. Installera Azure PowerShell:
-    1. Öppna en PowerShell med administratörs behörighet
-    1. Fungerar`Install-Module -Name Az -AllowClobber`
+    1. Öppna ett PowerShell-fönster med administratörs behörighet.
+    1. Fungerar `Install-Module -Name Az -AllowClobber`
 
 1. Om du får problem med att köra skript, se till att [körnings principen](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) är korrekt inställd:
-    1. Öppna en PowerShell med administratörs behörighet
-    1. Fungerar`Set-ExecutionPolicy -ExecutionPolicy Unrestricted`
+    1. Öppna ett PowerShell-fönster med administratörs behörighet.
+    1. Fungerar `Set-ExecutionPolicy -ExecutionPolicy Unrestricted`
 
 1. [Förbereda ett Azure Storage-konto](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts)
 
 1. Logga in på din prenumeration som innehåller ditt Azure-konto för fjärrrendering:
-    1. Öppna en PowerShell
+    1. Öppna ett PowerShell-fönster.
     1. Kör: `Connect-AzAccount` och följ anvisningarna på skärmen.
 
-> [!NOTE]
-> Om din organisation har mer än en prenumeration kan du behöva ange SubscriptionId-och klient argument. Mer information finns i [dokumentationen för Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount).
+    > [!NOTE]
+    > Om din organisation har mer än en prenumeration kan du behöva ange SubscriptionId-och klient argument. Mer information finns i [dokumentationen för Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount).
 
 1. Hämta mappen *skript* från GithHub- [lagringsplatsen för Azure Remote rendering](https://github.com/Azure/azure-remote-rendering).
 
@@ -77,7 +77,7 @@ Bredvid `.ps1` filerna finns det en `arrconfig.json` som du måste fylla i:
 > Se till att du på ett korrekt sätt kan kringgå omvänt snedstreck i LocalAssetDirectoryPath-sökvägen med dubbla omvända snedstreck: " \\ \\ " och Använd snedstreck "/" i alla andra sökvägar som InputFolderPath och inputAssetPath.
 
 > [!CAUTION]
-> Valfria värden måste fyllas i eller så måste du ta bort nyckeln och värdet helt. Om du till exempel inte använder `"outputAssetFileName"` parametern måste du ta bort hela raden i `arrconfig.json` .
+> Valfria värden måste fyllas i eller så måste du ta bort nyckeln och värdet helt. Om du till exempel inte använder  `"outputAssetFileName"` parametern måste du ta bort hela raden i `arrconfig.json` .
 
 ### <a name="accountsettings"></a>accountSettings
 
@@ -86,9 +86,9 @@ Mer `arrAccountId` `arrAccountKey` information finns i [skapa ett konto för Azu
 
 ### <a name="renderingsessionsettings"></a>renderingSessionSettings
 
-Den här strukturen måste fyllas i om du vill köra **RenderingSession.ps1**.
+Den här strukturen måste fyllas i om du vill köra **RenderingSession.ps1**:
 
-- **vmSize:** Väljer storlek på den virtuella datorn. Välj *standard* eller *Premium*. Stäng av åter givnings sessioner när du inte behöver dem längre.
+- **vmSize:** Väljer storlek på den virtuella datorn. Välj [*standard*](../reference/vm-sizes.md) eller [*Premium*](../reference/vm-sizes.md). Stäng av åter givnings sessioner när du inte behöver dem längre.
 - **maxLeaseTime:** Den varaktighet som du vill att den virtuella datorn ska lånas ut för. Det kommer att stängas av när lånet upphör att gälla. Låne tiden kan utökas senare (se nedan).
 
 ### <a name="assetconversionsettings"></a>assetConversionSettings
@@ -189,10 +189,10 @@ Att använda ett länkat lagrings konto är det bästa sättet att använda konv
 .\Conversion.ps1
 ```
 
-1. Ladda upp alla filer som finns i `assetConversionSettings.modelLocation` till BLOB-behållaren för inflöde under den angivna`inputFolderPath`
+1. Ladda upp alla filer som finns i `assetConversionSettings.modelLocation` till BLOB-behållaren för inflöde under den angivna `inputFolderPath` ..
 1. Anropa modell konverterings [REST API](../how-tos/conversion/conversion-rest-api.md) för att starta [modell konverteringen](../how-tos/conversion/model-conversion.md)
-1. Avsök konverterings statusen tills konverteringen lyckades eller misslyckades
-1. Information om den konverterade filens plats (lagrings konto, utdatafil, fil Sök väg i behållaren)
+1. Avsök konverterings statusen tills konverteringen lyckades eller misslyckades.
+1. Information om den konverterade filens plats (lagrings konto, utdatafil, fil Sök väg i behållaren).
 
 ### <a name="access-to-storage-via-shared-access-signatures"></a>Åtkomst till lagring via signaturer för delad åtkomst
 
@@ -202,13 +202,13 @@ Att använda ett länkat lagrings konto är det bästa sättet att använda konv
 
 Detta kommer att:
 
-1. Ladda upp den lokala filen från `assetConversionSettings.localAssetDirectoryPath` till BLOB-behållaren för indata
-1. Generera en SAS-URI för indatamängden
-1. Skapa en SAS-URI för behållaren för utdata
-1. Anropa modell konverterings [REST API](../how-tos/conversion/conversion-rest-api.md) för att starta [modell konverteringen](../how-tos/conversion/model-conversion.md)
-1. Avsök konverterings statusen tills konverteringen lyckades eller misslyckades
-1. Information om den konverterade filens plats (lagrings konto, utdatafil, fil Sök väg i behållaren)
-1. Utdata från en SAS-URI till den konverterade modellen i BLOB-behållaren för utdata
+1. Ladda upp den lokala filen från `assetConversionSettings.localAssetDirectoryPath` till BLOB-behållaren för indata.
+1. Generera en SAS-URI för behållaren för indatamängd.
+1. Generera en SAS-URI för behållaren för utdata.
+1. Anropa modell konverterings [REST API](../how-tos/conversion/conversion-rest-api.md) för att starta [modell konverteringen](../how-tos/conversion/model-conversion.md).
+1. Avsök konverterings statusen tills konverteringen lyckades eller misslyckades.
+1. Information om den konverterade filens plats (lagrings konto, utdatafil, fil Sök väg i behållaren).
+1. Utdata från en SAS-URI till den konverterade modellen i BLOB-behållaren utgående.
 
 ### <a name="additional-command-line-options"></a>Ytterligare kommando rads alternativ
 
@@ -249,7 +249,7 @@ Du kan till exempel kombinera ett antal alternativ så här:
 
 Om du vill köra enskilda steg i processen kan du använda:
 
-Ladda bara upp data från den aktuella LocalAssetDirectoryPath
+Ladda bara upp data från den aktuella LocalAssetDirectoryPath.
 
 ```PowerShell
 .\Conversion.ps1 -Upload

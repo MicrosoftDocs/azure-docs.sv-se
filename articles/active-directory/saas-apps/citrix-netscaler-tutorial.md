@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory enkel inloggnings integrering med Citrix NetScaler (Kerberos-baserad autentisering) | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning (SSO) mellan Azure Active Directory och Citrix NetScaler med hjälp av Kerberos-baserad autentisering.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: af501bd0-8ff5-468f-9b06-21e607ae25de
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/27/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6771060f05a03c82879738dc5e8caccb67e55abc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4ff6154e17408b9e2daaf3c81321ae31693de3aa
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80477996"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544612"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-kerberos-based-authentication"></a>Självstudie: Azure Active Directory enkel inloggnings integrering med Citrix NetScaler (Kerberos-baserad autentisering)
 
@@ -32,7 +28,7 @@ I den här självstudien får du lära dig att integrera Citrix NetScaler med Az
 
 Om du vill veta mer om SaaS (Software as a Service) med Azure AD, se [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -101,13 +97,13 @@ Slutför de här stegen för att aktivera Azure AD SSO med hjälp av Azure Porta
 
 1. I avsnittet **grundläggande SAML-konfiguration** kan du konfigurera programmet i **IDP-initierat** läge:
 
-    1. I text rutan **identifierare** anger du en URL som har följande mönster:`https://<Your FQDN>`
+    1. I text rutan **identifierare** anger du en URL som har följande mönster: `https://<Your FQDN>`
 
-    1. I text rutan **svars-URL** anger du en URL som har följande mönster:`http(s)://<Your FQDN>.of.vserver/cgi/samlauth`
+    1. I text rutan **svars-URL** anger du en URL som har följande mönster: `http(s)://<Your FQDN>.of.vserver/cgi/samlauth`
 
 1. Om du vill konfigurera programmet i **SP-initierat** läge väljer du **Ange ytterligare URL: er** och Slutför följande steg:
 
-    * I text rutan **inloggnings-URL** anger du en URL som har följande mönster:`https://<Your FQDN>/CitrixAuthService/AuthService.asmx`
+    * I text rutan **inloggnings-URL** anger du en URL som har följande mönster: `https://<Your FQDN>/CitrixAuthService/AuthService.asmx`
 
     > [!NOTE]
     > * URL: erna som används i det här avsnittet är inte verkliga värden. Uppdatera värdena med de faktiska värdena för identifierare, svars-URL och inloggnings-URL. Kontakta [support teamet för Citrix NetScaler-klienten](https://www.citrix.com/contact/technical-support.html) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -131,9 +127,9 @@ I det här avsnittet skapar du en test användare i Azure Portal som kallas B. S
 
 1. I **användar** egenskaper slutför du de här stegen:
 
-   1. Som **namn**anger `B.Simon`du.  
+   1. Som **namn**anger du `B.Simon` .  
 
-   1. För **användar namn**anger _username@companydomain.extension_du. Till exempel `B.Simon@contoso.com`.
+   1. För **användar namn**anger du _username@companydomain.extension_ . Till exempel `B.Simon@contoso.com`.
 
    1. Markera kryss rutan **Visa lösen ord** och skriv sedan ned eller kopiera värdet som visas i **lösen ordet**.
 
@@ -173,7 +169,7 @@ Välj en länk för steg för den typ av autentisering som du vill konfigurera:
 
 Så här skapar du en virtuell server:
 
-1. Välj**belastnings Utjämnings** > **tjänster**för **trafik hantering** > .
+1. Välj **Traffic Management**  >  **belastnings Utjämnings**  >  **tjänster**för trafik hantering.
     
 1. Välj **Lägg till**.
 
@@ -181,25 +177,25 @@ Så här skapar du en virtuell server:
 
 1. Ange följande värden för webb servern som kör programmen:
 
-   * **Tjänstnamn**
+   * **Tjänstens namn**
    * **Server-IP/befintlig server**
-   * **Protokollhanterare**
-   * **Lastning**
+   * **Protokoll**
+   * **Port**
 
 ### <a name="configure-the-load-balancer"></a>Konfigurera belastningsutjämnaren
 
 Så här konfigurerar du belastningsutjämnaren:
 
-1. Gå till**belastnings Utjämnings** > **virtuella servrar**för **trafik hantering** > .
+1. Gå till **Traffic Management**  >  **belastnings Utjämnings**  >  **virtuella servrar**för trafik hantering.
 
 1. Välj **Lägg till**.
 
 1. Ange följande värden enligt beskrivningen i följande skärm bild:
 
     * **Namn**
-    * **Protokollhanterare**
+    * **Protokoll**
     * **IP-adress**
-    * **Lastning**
+    * **Port**
 
 1. Välj **OK**.
 
@@ -237,7 +233,7 @@ Om du vill konfigurera Citrix ADC SAML-profilen, fyller du i följande avsnitt.
 
 Så här skapar du en autentiseringsprincip:
 
-1. Gå till **Security** > **AAA –** > **principer för** > **autentisering** > **Authentication Policies**av program trafik.
+1. Gå till **Security**  >  **AAA –** principer för autentisering av program trafik  >  **Policies**  >  **Authentication**  >  **Authentication Policies**.
 
 1. Välj **Lägg till**.
 
@@ -273,7 +269,7 @@ Om du vill skapa en SAML-Server för autentisering går du till fönstret **skap
 
 Så här skapar du en virtuell autentiserings Server:
 
-1.  Gå till **Security** > **AAA –** > **Policies** > **autentisering av autentisering** > för program trafik**virtuella servrar**.
+1.  Gå till **Security**  >  **AAA –** autentisering av autentisering för program trafik  >  **Policies**  >  **Authentication**  >  **virtuella servrar**.
 
 1.  Välj **Lägg till**och utför sedan följande steg:
 
@@ -332,9 +328,9 @@ Så här skapar du en virtuell autentiserings Server:
     
     I det här exemplet:
 
-    * `IDENTT.WORK`är domänens FQDN.
-    * `identt`är domänens NetBIOS-namn.
-    * `appdelegation`är namnet på användar kontot för delegering.
+    * `IDENTT.WORK` är domänens FQDN.
+    * `identt` är domänens NetBIOS-namn.
+    * `appdelegation` är namnet på användar kontot för delegering.
 
 1. Konfigurera delegering för webb servern så som visas på följande skärm bild:
  
@@ -347,7 +343,7 @@ Så här skapar du en virtuell autentiserings Server:
 
 Så här konfigurerar du Citrix NetScaler AAA KCD-kontot:
 
-1.  Gå till **Citrix Gateway** > **AAA KCD-konton (Kerberos-begränsad delegering)**.
+1.  Gå till **Citrix Gateway**  >  **AAA KCD-konton (Kerberos-begränsad delegering)**.
 
 1.  Välj **Lägg till**och ange eller Välj följande värden:
 
@@ -355,10 +351,10 @@ Så här konfigurerar du Citrix NetScaler AAA KCD-kontot:
 
     * **Sfär**: ange domänen och tillägget i versaler.
 
-    * **Tjänst-SPN**: `http/<host/fqdn>@<DOMAIN.COM>`.
+    * **Tjänst-SPN**: `http/<host/fqdn>@<DOMAIN.COM>` .
     
         > [!NOTE]
-        > `@DOMAIN.COM`är obligatoriskt och måste vara versaler. Exempel: `http/cweb2@IDENTT.WORK`.
+        > `@DOMAIN.COM` är obligatoriskt och måste vara versaler. Exempel: `http/cweb2@IDENTT.WORK`.
 
     * **Delegerad användare**: Ange det delegerade användar namnet.
 
@@ -372,7 +368,7 @@ Så här konfigurerar du Citrix NetScaler AAA KCD-kontot:
 
 Så här konfigurerar du Citrix Traffic policy och trafik profil:
 
-1.  Gå till **Security** > **AAA –** > **principer** > för program trafik**trafik principer, profiler och formulär SSO ProfilesTraffic-principer**.
+1.  Gå till **Security**  >  **AAA – principer för program trafik**  >  **Policies**  >  **trafik principer, profiler och formulär SSO ProfilesTraffic-principer**.
 
 1.  Välj **trafik profiler**.
 
@@ -410,7 +406,7 @@ Så här konfigurerar du Citrix Traffic policy och trafik profil:
 
 Så här binder du en trafik princip till en virtuell server med hjälp av det grafiska användar gränssnittet:
 
-1. Gå till**belastnings Utjämnings** > **virtuella servrar**för **trafik hantering** > .
+1. Gå till **Traffic Management**  >  **belastnings Utjämnings**  >  **virtuella servrar**för trafik hantering.
 
 1. I listan över virtuella servrar väljer du den virtuella server som du vill binda den omskrivnings principen till och väljer sedan **Öppna**.
 
@@ -459,7 +455,7 @@ När du väljer panelen för att skapa en netscaleor-panel i åtkomst panelen, b
 
 - [Vad är program åtkomst och enkel inloggning med Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Prova Citrix NetScaler med Azure AD](https://aad.portal.azure.com/)
 

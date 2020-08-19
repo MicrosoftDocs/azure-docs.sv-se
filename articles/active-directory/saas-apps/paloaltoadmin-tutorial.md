@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Palo-nätverk – admin UI | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Palo Alto Networks – Admin UI.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: a826eaec-15af-4c85-8855-8a3374d1efb9
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbfa16223484928dda1004011d2e92295edd8b89
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 8bd41034d6d4cfa444ae4c0711fd46cb2924d009
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85297265"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554102"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>Självstudie: Azure Active Directory integrering med Palo-nätverk – admin UI
 
@@ -32,9 +28,9 @@ Integreringen av Palo Alto Networks – Admin UI med Azure AD medför följande 
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att konfigurera Azure AD-integrering med Palo Alto Networks – Admin UI behöver du följande:
 
@@ -93,9 +89,9 @@ För att konfigurera enkel inloggning i Azure AD med Palo Alto Networks – Admi
 
 1. I avsnittet **Grundläggande SAML-konfiguration** utför du följande steg:
 
-    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<Customer Firewall FQDN>/php/login.php`
+    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://<Customer Firewall FQDN>/php/login.php`
 
-    b. I rutan **identifierare** anger du en URL med följande mönster:`https://<Customer Firewall FQDN>:443/SAML20/SP`
+    b. I rutan **identifierare** anger du en URL med följande mönster: `https://<Customer Firewall FQDN>:443/SAML20/SP`
 
     c. Ange ACS-URL:en (Assertion Consumer Service) i textrutan **Svars-URL** i följande format: `https://<Customer Firewall FQDN>:443/SAML20/SP/ACS`
 
@@ -148,7 +144,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Exempelvis `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -241,7 +237,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
     f. Markera kryssrutan **Alla** eller välj de användare och grupper som kan autentiseras med den här profilen.  
     När en användare autentiseras matchar brandväggen det associerade användarnamnet eller den associerade gruppen mot posterna i den här listan. Om du inte lägger till poster kan inga användare autentiseras.
 
-    g. Välj **OK**.
+    ex. Välj **OK**.
 
 13. Om du vill att administratörer ska kunna använda SAML SSO med hjälp av Azure väljer du **enhets**  >  **konfiguration**. I fönstret **Installation** väljer du fliken **Hantering** och väljer sedan knappen **Inställningar** (”kugghjulsikon”) under **Autentiseringsinställningar**.
 

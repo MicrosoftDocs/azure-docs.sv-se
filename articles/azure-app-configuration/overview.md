@@ -1,17 +1,17 @@
 ---
 title: Vad är Azure App Configuration?
-description: En översikt över tjänsten Azure App Configuration.
+description: Läs en översikt över Azure App konfigurations tjänsten. Ta reda på varför du vill använda app Configuration och lär dig hur du kan använda den.
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: overview
 ms.date: 02/19/2020
-ms.openlocfilehash: 1f1cec68813d33e7fa19a414a30adfc9a41df91f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f38b8de37e84cd8a65c5a5caadf8d3b6b71ce455
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77523483"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587080"
 ---
 # <a name="what-is-azure-app-configuration"></a>Vad är Azure App Configuration?
 
@@ -51,7 +51,7 @@ Konfiguration av appar kompletterar [Azure Key Vault](https://azure.microsoft.co
 
 Det enklaste sättet att lägga till ett program konfigurations lager i ditt program är via ett klient bibliotek från Microsoft. Följande metoder är tillgängliga för att ansluta till ditt program, beroende på vilket språk och ramverk du valt
 
-| Programmeringsspråk och ramverk | Ansluta |
+| Programmeringsspråk och ramverk | Så här ansluter du |
 |---|---|
 | .NET Core och ASP.NET Core | App Configuration Provider för .NET Core |
 | .NET Framework och ASP.NET | Konfigurations verktyg för app för .NET |

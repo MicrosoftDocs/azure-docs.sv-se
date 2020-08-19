@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory-integrering med Workspot-kontroll | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning för Azure Active Directory-och Workspot-kontroll.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3ea8e4e9-f61f-4f45-b635-b0e306eda3d1
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 086ec95531b01477be56d4b1a19d189f167a020f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bfbecc71638e6feaaf29809f09dda752dd29b2ae
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67086685"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88526643"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>Självstudie: Azure Active Directory integrering med Workspot-kontroll
 
@@ -32,7 +28,7 @@ I den här självstudien får du lära dig att integrera Workspot-kontroll med A
 
 Mer information om SaaS app integration med Azure AD finns i [enkel inloggning till program i Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Workspot-kontroll behöver du följande saker:
 
@@ -107,17 +103,17 @@ Följ dessa steg för att konfigurera enkel inloggning för Azure AD med Workspo
     ![Workspot kontrol lera domän och URL-information för enkel inloggning](common/idp-intiated.png)
 
     1. I text rutan **identifierare** anger du en URL i följande mönster:<br/>
-    ***https://<<i> </i>instans namn>-SAML.Workspot.com/SAML/metadata***
+    ***https://<<i></i> instans namn>-SAML.Workspot.com/SAML/metadata***
 
     1. I text rutan **svars-URL** anger du en URL i följande mönster:<br/>
-    ***https://<<i> </i>instans namn>-SAML.Workspot.com/SAML/Assertion***
+    ***https://<<i></i> instans namn>-SAML.Workspot.com/SAML/Assertion***
 
 5. Om du vill konfigurera programmet i SP-initierat läge väljer du **Ange ytterligare URL: er**.
 
     ![Workspot kontrol lera domän och URL-information för enkel inloggning](common/metadata-upload-additional-signon.png)
 
     I text rutan **inloggnings-URL** anger du en URL i följande mönster:<br/>
-    ***https://<<i> </i>instans namn>-SAML.Workspot.com/***
+    ***https://<<i></i> instans namn>-SAML.Workspot.com/***
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Ersätt värdena med den faktiska identifieraren, svars-URL: en och inloggnings-URL: en. Kontakta [support teamet för Workspot-kontroll](mailto:support@workspot.com) för att hämta dessa värden. Eller också kan du referera till mönstren i avsnittet **grundläggande SAML-konfiguration** i Azure Portal.
@@ -176,7 +172,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal.
 
     1. I fältet **namn** anger du **BrittaSimon**.
   
-    1. I fältet **användar namn** anger du **brittasimon@* yourcompanydomain. extension * * *. Ange till exempel ** BrittaSimon@contoso.<i> </i> com**.
+    1. I fältet **användar namn** anger du **brittasimon@* yourcompanydomain. extension * * *. Ange till exempel ** BrittaSimon@contoso . <i></i> com**.
 
     1. Markera kryss rutan **Visa lösen ord** . Skriv sedan ned värdet som visas i rutan **lösen ord** .
 
@@ -228,7 +224,7 @@ För att Azure AD-användare ska kunna logga in på Workspot-kontroll måste de 
 
     1. I text rutan **efter namn** anger du användarens efter namn, till exempel **Simon**.
 
-    1. I rutan **e-** postadress anger du användarens e-postadress, till exempel ** Brittasimon@contoso.<i> </i> com**.
+    1. I rutan **e-** postadress anger du användarens e-postadress, till exempel ** Brittasimon@contoso . <i></i> com**.
 
     1. Välj lämplig användar roll i list rutan **roll** .
 

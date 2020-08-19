@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/17/2020
+ms.date: 08/17/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 185992284e353c3e58104bc46296c1741fbca7d9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b9882168cd063cb4448269cc6a4949778fe93fb1
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502179"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509866"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Bevilja begränsad åtkomst till Azure Storage resurser med signaturer för delad åtkomst (SAS)
 
@@ -29,7 +29,7 @@ Azure Storage stöder tre typer av signaturer för delad åtkomst:
 
     Mer information om sa för användar delegering finns i [skapa en användar delegering SAS (REST API)](/rest/api/storageservices/create-user-delegation-sas).
 
-- **Tjänstens SAS.** En tjänst-SAS skyddas med lagrings konto nyckeln. En tjänst-SAS delegerar åtkomst till en resurs i endast en av de Azure Storage tjänsterna: Blob Storage, Queue Storage, Table Storage eller Azure Files. 
+- **Tjänstens SAS.** En tjänst-SAS skyddas med lagrings konto nyckeln. En tjänst-SAS delegerar åtkomst till en resurs i endast en av de Azure Storage tjänsterna: Blob Storage, Queue Storage, Table Storage eller Azure Files.
 
     Mer information om tjänste-SAS finns i [skapa en tjänst SAS (REST API)](/rest/api/storageservices/create-service-sas).
 
@@ -38,7 +38,7 @@ Azure Storage stöder tre typer av signaturer för delad åtkomst:
     Om du vill ha mer information om kontots SAS [skapar du ett konto SAS (REST API)](/rest/api/storageservices/create-account-sas).
 
 > [!NOTE]
-> Microsoft rekommenderar att du använder Azure AD-autentiseringsuppgifter när det är möjligt som en säkerhets åtgärd, i stället för att använda konto nyckeln, vilket kan vara enklare att avslöja. När program designen kräver delade åtkomst-signaturer för att få åtkomst till Blob Storage använder du autentiseringsuppgifter för Azure AD för att skapa en användar Delegerings-sa när det är möjligt för överlägsen säkerhet.
+> Microsoft rekommenderar att du använder Azure AD-autentiseringsuppgifter när det är möjligt som en säkerhets åtgärd, i stället för att använda konto nyckeln, vilket kan vara enklare att avslöja. När program designen kräver delade åtkomst-signaturer för att få åtkomst till Blob Storage använder du autentiseringsuppgifter för Azure AD för att skapa en användar Delegerings-sa när det är möjligt för överlägsen säkerhet. Mer information finns i [bevilja åtkomst till blobbar och köer med hjälp av Azure Active Directory](storage-auth-aad.md).
 
 En signatur för delad åtkomst kan ha ett av två formulär:
 
@@ -52,15 +52,27 @@ En signatur för delad åtkomst kan ha ett av två formulär:
 
 En signatur för delad åtkomst är en signerad URI som pekar på en eller flera lagrings resurser och som innehåller en token som innehåller en särskild uppsättning frågeparametrar. Token anger hur resurserna kan nås av klienten. En av frågeparametrar, signaturen, är konstruerad från SAS-parametrarna och är signerad med den nyckel som användes för att skapa SAS. Den här signaturen används av Azure Storage för att ge åtkomst till lagrings resursen.
 
-### <a name="sas-signature"></a>SAS-signatur
+### <a name="sas-signature-and-authorization"></a>SAS-signatur och-auktorisering
 
-Du kan signera en SAS på ett av två sätt:
+Du kan signera en SAS-token på något av två sätt:
 
 - Med en *användar Delegerings nyckel* som skapades med Azure Active Directory (autentiseringsuppgifter för Azure AD). En användar Delegerings-SAS är signerad med användar Delegerings nyckeln.
 
     För att hämta användar Delegerings nyckeln och skapa SAS måste ett Azure AD-säkerhetsobjekt tilldelas en Azure-roll som innehåller åtgärden **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** . För detaljerad information om Azure-roller med behörighet att hämta användar Delegerings nyckeln, se [skapa en användar delegering SAS (REST API)](/rest/api/storageservices/create-user-delegation-sas).
 
-- Med lagrings konto nyckeln. Både en tjänst-SAS och ett konto säkerhets associationer signeras med lagrings konto nyckeln. För att skapa en SAS som är signerad med konto nyckeln måste ett program ha åtkomst till konto nyckeln.
+- Med lagrings konto nyckeln (delad nyckel). Både en tjänst-SAS och ett konto säkerhets associationer signeras med lagrings konto nyckeln. För att skapa en SAS som är signerad med konto nyckeln måste ett program ha åtkomst till konto nyckeln.
+
+När en begäran innehåller en SAS-token, auktoriseras begäran baserat på hur SAS-token signeras. Den åtkomst nyckel eller de autentiseringsuppgifter som du använder för att skapa en SAS-token används också av Azure Storage för att ge åtkomst till en klient som innehar SAS.
+
+I följande tabell sammanfattas hur varje typ av SAS-token auktoriseras när den tas med på en begäran till Azure Storage:
+
+| Typ av SAS | Typ av auktorisering |
+|-|-|
+| Användar delegering SAS (endast blob-lagring) | Azure AD |
+| Tjänstens SAS | Delad nyckel |
+| Kontots SAS | Delad nyckel |
+
+Microsoft rekommenderar att du använder en användar Delegerings-SAS när det är möjligt för överlägsen säkerhet.
 
 ### <a name="sas-token"></a>SAS-token
 

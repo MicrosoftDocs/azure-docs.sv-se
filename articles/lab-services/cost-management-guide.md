@@ -3,20 +3,20 @@ title: Kostnads hanterings guide för Azure Lab Services
 description: Förstå de olika sätten att Visa kostnader för labb tjänster.
 author: rbest
 ms.author: rbest
-ms.date: 06/26/2020
+ms.date: 08/16/2020
 ms.topic: article
-ms.openlocfilehash: fbbaf4a3646260fc09467e214b82fd0213415635
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98ce4d5e82d65d911984dc45615253ddcae33ae1
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445312"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589890"
 ---
 # <a name="cost-management-for-azure-lab-services"></a>Kostnads hantering för Azure Lab Services
 
 Kostnads hantering kan delas upp i två olika områden: kostnads uppskattning och kostnads analys.  Kostnads uppskattning inträffar när du konfigurerar labbet för att se till att den inledande strukturen i labbet får plats inom den förväntade budgeten.  Kostnads analys sker vanligt vis i slutet av månaden för att analysera kostnaderna och fastställa de åtgärder som krävs för nästa månad.
 
-## <a name="estimating-the-lab-costs"></a>Uppskatta labb kostnaderna
+## <a name="estimate-the-lab-costs"></a>Uppskatta labb kostnaderna
 
 Varje labb instrument panel har ett **kostnads & fakturerings** avsnitt som ger en grov uppskattning av vad labbet kostar för månaden.  Kostnads uppskattningen sammanfattar användningen av timmen med det maximala antalet användare med den uppskattade kostnaden per timme.  För att få den mest exakta uppskattningen att ställa in labbet, inklusive [schemat](how-to-create-schedules.md), och instrument panelen visar den uppskattade kostnaden.  
 
@@ -25,7 +25,7 @@ Den här uppskattningen kanske inte är alla möjliga kostnader, det finns någr
 > [!div class="mx-imgBorder"]
 > ![Kostnads uppskattning för instrument panelen](./media/cost-management-guide/dashboard-cost-estimation.png)
 
-## <a name="analyzing-previous-months-usage"></a>Analysera användning av föregående månad
+## <a name="analyze-previous-months-usage"></a>Analysera föregående månads användning
 
 Kostnads analysen är att granska föregående månads användning för att hjälpa till att fastställa eventuella justeringar för labbet.  Nedbrytning av kostnader i förflutna finns i [prenumerations kostnads analysen](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis).  I Azure Portal kan du skriva "prenumerationer" i det övre Sök fältet och sedan välja alternativet prenumerationer.  
 
@@ -39,14 +39,14 @@ Välj den prenumeration som ska granskas.
 
  Välj "cost Analysis" i den vänstra rutan under **Cost Management**.
 
- > [!div class="mx-imgBorder"]
+> [!div class="mx-imgBorder"]
 > ![Kostnads analys av prenumeration](./media/cost-management-guide/subscription-cost-analysis.png)
 
 Den här instrument panelen kommer att möjliggöra djupgående kostnads analys, inklusive möjligheten att exportera till olika filtyper enligt ett schema.  Cost Management har flera funktioner för mer information, se [Cost Management fakturerings översikt](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview)
 
 Filtrering av resurs typen: `microsoft.labservices/labaccounts` visar bara kostnaden som är associerad med labb tjänsterna.
 
-## <a name="understanding-the-usage"></a>Förstå användningen
+## <a name="understand-the-usage"></a>Förstå användningen
 
 Nedan visas ett exempel på kostnads analys.
 
@@ -68,9 +68,69 @@ Vissa universitet har använt labb kontot och resurs gruppen som olika sätt att
 
 Beroende på typen av klass finns det olika sätt att hantera kostnader för att minska antalet virtuella datorer som körs utan student användning av datorn.
 
-### <a name="auto-shutdown-on-disconnect"></a>Automatisk avstängning vid från koppling
+### <a name="maximize-cost-control-with-auto-shutdown-settings"></a>Maximera kostnads kontrollen med inställningar för automatisk avstängning
 
-När labbet skapas kan labb ägaren ställa in de virtuella datorerna i labbet så att de [stängs av när RDP-anslutningen till den virtuella datorn är frånkopplad](how-to-enable-shutdown-disconnect.md).  Den här inställningen minskar scenariot där studenten kopplas bort men glömmer att stoppa den virtuella datorn.
+Med funktionen för att automatiskt stänga av kostnads styrnings funktioner kan du förhindra att de virtuella datorernas användnings timmar används i labbet. Kombinationen av följande tre funktioner för automatisk avstängning och från koppling fångar upp de flesta fall där användare av misstag lämnar sina virtuella datorer som kör:
+
+> [!div class="mx-imgBorder"]
+> ![Kostnads analys av prenumeration](./media/cost-management-guide/auto-shutdown-disconnect.png)
+
+Dessa inställningar kan konfigureras på både labb konto nivån och labb nivån. Om inställningarna är aktiverade på labb konto nivån tillämpas de på alla labb i labb kontot. För alla nya labb konton är de här inställningarna aktiverade som standard. 
+
+#### <a name="details-about-auto-shutdown-settings"></a>Information om inställningar för automatisk avstängning
+
+* Koppla automatiskt bort användare från virtuella datorer som operativ systemet bedömer vara inaktivt (endast Windows).
+
+    > [!NOTE]
+    > Den här inställningen är endast tillgänglig för virtuella Windows-datorer.
+
+    När inställningen är aktive rad kopplas användaren bort från alla datorer i labbet när Windows OS bedömer att sessionen är inaktiv (inklusive mallens virtuella datorer). [Windows OS-definitionen för Idle](https://docs.microsoft.com/windows/win32/taskschd/task-idle-conditions#detecting-the-idle-state) använder två villkor: 
+
+    * Användar frånvaro – inget tangent bord eller mus indata.
+    * Brist på resursförbrukning – alla processorer och alla diskar var inaktiva under en viss tid i procent
+
+    Användarna ser ett meddelande som detta i den virtuella datorn innan de kopplas från: 
+
+    > [!div class="mx-imgBorder"]
+    > ![Kostnads analys av prenumeration](./media/cost-management-guide/idle-timer-expired.png)
+    
+    Den virtuella datorn körs fortfarande när användaren är frånkopplad. Om användaren återansluter till den virtuella datorn genom att logga in, kommer Windows eller filer som var öppna eller osparade arbete tidigare till från kopplingen fortfarande att finnas där. I det här läget, eftersom den virtuella datorn körs, räknas den fortfarande som aktiv och kostnaden påförs. 
+    
+    Om du vill stänga av de inaktiva virtuella datorer som är frånkopplade automatiskt använder du kombinationen av **Koppla från användare när virtuella datorer är inaktiva** och **stänger av virtuella datorer när användarna kopplar från** inställningarna.
+
+    Om du till exempel konfigurerar inställningarna enligt följande:
+    
+    * Koppla från användare när virtuella datorer är inaktiva – 15 minuter efter inaktivt tillstånd har identifierats.
+    * Stäng av virtuella datorer när användare kopplar från – 5 minuter efter att användaren kopplats från.
+    
+    De virtuella Windows-datorerna stängs automatiskt om 20 minuter efter att användaren slutar använda dem. 
+    
+    > [!div class="mx-imgBorder"]
+    > ![Kostnads analys av prenumeration](./media/cost-management-guide/vm-idle-diagram.png)
+* Stäng virtuella datorer automatiskt när användare kopplar från (Windows & Linux).
+    
+    Den här inställningen stöder både virtuella Windows-och Linux-datorer. När den här inställningen är aktive ras sker automatisk avstängning när:
+    
+    * För Windows, anslutning till fjärr skrivbord (RDP) är frånkopplad.
+    * SSH-anslutningen är frånkopplad för Linux.
+    
+    > [!NOTE]
+    > Endast [vissa distributioner och versioner av Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux#supported-linux-distributions) stöds.
+    
+    Du kan ange hur länge de virtuella datorerna ska vänta tills användaren ansluter igen innan den stängs av automatiskt. 
+* Stäng av virtuella datorer som har startats automatiskt, men som inte ansluter till dem.
+     
+    I ett labb kan en användare starta en virtuell dator men inte ansluta till den. Exempel:
+    
+    * Ett schema i labbet startar alla virtuella datorer för en klassmodul, men vissa studenter visas inte och ansluter inte till sina datorer.  
+    * En användare startar en virtuell dator, men glömmer att ansluta. 
+    
+    Inställningen "Stäng av virtuella datorer när användare inte ansluter" kommer att fånga dessa fall och automatiskt stänga av de virtuella datorerna.  
+    
+Information om hur du konfigurerar och aktiverar automatisk avstängning av virtuella datorer vid från koppling finns i följande artiklar:
+
+* [Konfigurera automatisk avstängning av virtuella datorer vid från kopplings inställning för ett labb konto](how-to-configure-lab-accounts.md)
+* [Aktivera automatisk avstängning av virtuella datorer vid från koppling](how-to-enable-shutdown-disconnect.md)
 
 ### <a name="quota-vs-scheduled-time"></a>Kvot jämfört med schemalagd tid
 

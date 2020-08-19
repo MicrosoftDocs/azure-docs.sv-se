@@ -11,23 +11,23 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 8d08a0ab8f817d70343686f907ac444af392ea06
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 61303a52212c4cec88dee2ccd8a1c08fb971a9b8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108998"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545666"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Installera och kör Textanalys-containrar
 
 > [!NOTE]
-> * Behållaren för Attitydanalys v3 är nu allmänt tillgänglig. Extraheringen av nyckel fraser och språk identifierings behållare är tillgängliga som en icke-Gate offentlig för hands version.
+> * Behållaren för Attitydanalys v3 är nu allmänt tillgänglig. Containrarna för extrahering av nyckelfraser och språkidentifiering är tillgängliga som obegränsad offentlig förhandsversion.
 > * Enhets länkning och NER är för närvarande inte tillgängliga som en behållare.
-> * För närvarande debiteras du inte för Textanalys för användning av hälso containern.
+> * För närvarande debiteras du inte för användning av containrar för Textanalys för hälso- och sjukvården.
 
-Med behållare kan du köra API: er för text analys i din egen miljö och passar dina specifika krav för säkerhet och data styrning. Textanalys behållare tillhandahåller avancerad naturlig språk bearbetning över rå text och innehåller tre huvud funktioner: sentiment analys, extrahering av nyckel fraser och språk identifiering. 
+Med containrar kan du köra API:er för textanalys i din egen miljö och de är bra för dina specifika säkerhets- och datastyrningskrav. Textanalys behållare tillhandahåller avancerad naturlig språk bearbetning över rå text och innehåller tre huvud funktioner: sentiment analys, extrahering av nyckel fraser och språk identifiering. 
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/cognitive-services/) innan du börjar.
 
 > [!IMPORTANT]
 > Det kostnads fria kontot är begränsat till 5 000 transaktioner per månad och bara <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">pris nivåerna <span class="docon docon-navigate-external x-hidden-focus"></span> </a> **kostnads fri** och **standard** är giltiga för behållare. Mer information om avgifter för transaktions begär Anden finns i [data begränsningar](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits).
@@ -65,7 +65,7 @@ I följande tabell beskrivs de lägsta och rekommenderade specifikationerna för
 
 PROCESSOR kärnor och minne motsvarar `--cpus` `--memory` inställningarna och som används som en del av `docker run` kommandot.
 
-## <a name="get-the-container-image-with-docker-pull"></a>Hämta behållar avbildningen med`docker pull`
+## <a name="get-the-container-image-with-docker-pull"></a>Hämta behållar avbildningen med `docker pull`
 
 [!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -96,7 +96,7 @@ När behållaren är på [värddatorn](#the-host-computer)använder du följande
 1. [Kör behållaren](#run-the-container-with-docker-run)med de fakturerings inställningar som krävs.
 1. [Fråga behållarens förutsägelse slut punkt](#query-the-containers-prediction-endpoint).
 
-## <a name="run-the-container-with-docker-run"></a>Kör behållaren med`docker run`
+## <a name="run-the-container-with-docker-run"></a>Kör behållaren med `docker run`
 
 Använd kommandot [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) för att köra behållarna. Behållaren fortsätter att köras tills du stoppar den.
 
@@ -125,11 +125,11 @@ Använd kommandot [Docker Run](https://docs.docker.com/engine/reference/commandl
 
 [!INCLUDE [Running multiple containers on the same host](../../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
-## <a name="query-the-containers-prediction-endpoint"></a>Fråga behållarens förutsägelse slut punkt
+## <a name="query-the-containers-prediction-endpoint"></a>Köra frågor mot containerns förutsägelseslutpunkt
 
-Behållaren innehåller REST-baserade slut punkts-API: er för frågor förutsägelse.
+Containern innehåller REST-baserade slutpunkts-API:er för frågeförutsägelse.
 
-Använd värden, `http://localhost:5000` för behållar-API: er.
+Använd värden, `http://localhost:5000`, för container-API:er.
 
 <!--  ## Validate container is running -->
 

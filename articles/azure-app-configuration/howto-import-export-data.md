@@ -1,18 +1,18 @@
 ---
 title: Importera eller exportera data med Azure App-konfiguration
-description: Lär dig hur du importerar eller exporterar data till eller från Azure App konfiguration
+description: Lär dig hur du importerar eller exporterar konfigurations data till eller från Azure App konfiguration. Exchange-data mellan appens konfigurations lager och kod projekt.
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: lcozzens
-ms.openlocfilehash: 5b3d6d0561d7d6d6b23cb4f579b0988850da9771
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21eba653bcd853db9550d0d3781aacd281884605
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80056871"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588083"
 ---
 # <a name="import-or-export-configuration-data"></a>Importera eller exportera konfigurationsdata
 

@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Splashtop | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Splashtop.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c05f63c2-4170-49ce-a967-be1cb1dbcd06
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/04/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6ecb03130e26d432f0bd10980c7c3553ce9f8b0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 72c7a24f165d48d3ba2ea0dbcc2b41c818e3f1d7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77539788"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88524576"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-splashtop"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Splashtop
 
@@ -32,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar Splashtop med Azure
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -106,7 +102,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -131,7 +127,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 ## <a name="configure-splashtop-sso"></a>Konfigurera Splashtop SSO
 
 I det här avsnittet måste du använda för en ny SSO-metod från [Splashtop-webbportalen](https://my.splashtop.com/login).
-1. I webb portalen för Splashtop går du till fliken **konto information** / **team** och bläddrar ned till avsnittet om att hitta **enkel inloggning** . Klicka sedan på **Använd för ny SSO-metod**.
+1. I webb portalen för Splashtop går du till fliken **konto information**  /  **team** och bläddrar ned till avsnittet om att hitta **enkel inloggning** . Klicka sedan på **Använd för ny SSO-metod**.
 
     ![image](media/splashtop-tutorial/apply-for-new-SSO-method.png)
 
@@ -141,7 +137,7 @@ I det här avsnittet måste du använda för en ny SSO-metod från [Splashtop-we
 
 1. För certifikat information högerklickar du på den certifikat fil som hämtats från Splashtop-programmet på Azure Portal, redigerar den med anteckningar och kopierar sedan innehållet och klistrar in det i fältet **Hämta certifikat (base64)** .
 
-    ![](media/splashtop-tutorial/cert-1.png) ![bild](media/splashtop-tutorial/cert-2.png) av bild ![](media/splashtop-tutorial/azure-sso-2.png)
+    ![bild ](media/splashtop-tutorial/cert-1.png) av bild ![ ](media/splashtop-tutorial/cert-2.png) ![](media/splashtop-tutorial/azure-sso-2.png)
 
 1. Klart! Klicka på **Spara** och SPLASHTOP för SSO-validering kommer att kontakta dig för verifierings informationen och sedan aktivera SSO-metoden.
 
@@ -167,11 +163,11 @@ När du klickar på panelen Splashtop på åtkomst panelen, bör du loggas in au
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Prova Splashtop med Azure AD](https://aad.portal.azure.com/)
 

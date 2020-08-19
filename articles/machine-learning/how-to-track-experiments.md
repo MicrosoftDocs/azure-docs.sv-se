@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: d0c6488f9a75bbf9ba6775138edeed9c4a397abf
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 7a0fd4178df92cc9102456c1fa2ae4e8927337e4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552228"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547332"
 ---
 # <a name="enable-logging-in-azure-ml-training-runs"></a>Aktivera loggning i Azure ML-utbildningar
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,12 +42,6 @@ Du kan logga flera data typer, inklusive skalära värden, listor, tabeller, bil
 ## <a name="interactive-logging-session"></a>Interaktiv Logging-session
 
 Interaktiva loggnings sessioner används vanligt vis i Notebook-miljöer. Metoden [experiment. start_logging ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#start-logging--args----kwargs-) startar en interaktiv inloggningssession. Alla mått som loggas under sessionen läggs till i körnings posten i experimentet. Metoden [Run. Complete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#complete--set-status-true-) avslutar sessionerna och markerar kör som slutförd.
-
-Följande kodfragment använder en interaktiv loggningsmodul för att logga utbildnings parametrar och prestanda mått med metoden [Run. log ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#log-name--value--description----) . Den har också laddat upp den tränade modellen till en angiven utmatnings plats.
-
-[! Notebook – python [] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb? namn = create_experiment)]
-
-En komplett exempel antecknings bok som använder interaktiv loggning finns i [träna en modell i en bärbar dator](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb).
 
 ## <a name="scriptrunconfig-logs"></a>ScriptRunConfig-loggar
 

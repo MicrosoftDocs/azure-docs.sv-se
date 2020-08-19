@@ -13,12 +13,12 @@ metadata:
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 12/23/2019
-  ms.openlocfilehash: 7cebc4fb6e676470b46a52cf1ea62e0990e708e9
-  ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+  ms.openlocfilehash: 705757e3021ff7421dd88e3a2661b1b51f3f927a
+  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
   ms.translationtype: HT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 04/30/2020
-  ms.locfileid: "82607765"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88213561"
 landingContent:
 - title: Om benchmark för Azure-säkerhet
   linkLists:
@@ -28,7 +28,13 @@ landingContent:
       url: introduction.md
     - text: Översikt över Azure-säkerhetskontroller
       url: overview.md
-- title: Säkerhetskontroller
+    - text: Delat ansvar i molnet
+      url: ../fundamentals/shared-responsibility.md
+    - text: Azure Security Center
+      url: ../../security-center/index.yml
+    - text: Grunderna i Azure-säkerhet
+      url: ../fundamentals/index.yml
+- title: Kontroller för benchmark för Azure-säkerhet
   linkLists:
   - linkListType: overview
     links:
@@ -44,13 +50,95 @@ landingContent:
       url: security-control-vulnerability-management.md
     - text: Mer information
       url: security-control-inventory-asset-management.md
-- title: Mer information om Azure-säkerhet
+- title: Säkerhetsbaslinjer för beräkning
   linkLists:
-  - linkListType: learn
+  - linkListType: overview
     links:
-    - text: Grunderna i Azure-säkerhet
-      url: ../fundamentals/index.yml
-    - text: Delat ansvar i molnet
-      url: ../fundamentals/shared-responsibility.md
-    - text: Azure Security Center
-      url: ../../security-center/index.yml
+    - text: Virtuella Linux-datorer
+      url: ../../virtual-machines/linux/security-baseline.md
+    - text: Virtuella Windows-datorer
+      url: ../../virtual-machines/windows/security-baseline.md
+    - text: Virtual Machine Scale Sets
+      url: ../../virtual-machine-scale-sets/security-baseline.md
+    - text: Batch
+      url: ../../batch/security-baseline.md
+    - text: Azure Functions
+      url: ../../azure-functions/security-baseline.md
+- title: Säkerhetsbaslinjer för containrar
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Container Instances
+      url: ../../container-instances/security-baseline.md
+    - text: Container Registry
+      url: ../../container-registry/security-baseline.md
+    - text: Service Fabric
+      url: ../../service-fabric/security-baseline.md
+- title: Säkerhetsbaslinjer för analys
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Data Explorer
+      url: /azure/data-explorer/security-baseline
+    - text: Data Lake Analytics
+      url: ../../data-lake-analytics/security-baseline.md
+    - text: Databricks
+      url: ../../azure-databricks/security-baseline.md
+    - text: Data Factory
+      url: ../../data-factory/security-baseline.md
+    - text: HDInsight
+      url: ../../hdinsight/security-baseline.md
+- title: Säkerhetsbaslinjer för databaser
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Cache for Redis
+      url: ../../azure-cache-for-redis/security-baseline.md
+    - text: Azure-databas för MariaDB
+      url: ../../mariadb/security-baseline.md
+    - text: Azure Database for MySQL
+      url: ../../mysql/security-baseline.md
+    - text: Azure Database for PostgreSQL
+      url: ../../postgresql/security-baseline.md
+    - text: Azure SQL Database
+      url: ../../sql-database/security-baseline.md
+- title: Säkerhetsbaslinjer för nätverk
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Application Gateway
+      url: ../../application-gateway/security-baseline.md
+    - text: DDOS-skydd
+      url: ../fundamentals/ddos-protection-security-baseline.md
+    - text: Azure ExpressRoute
+      url: ../../expressroute/security-baseline.md
+    - text: Azure Firewall
+      url: ../../firewall/security-baseline.md
+    - text: Network Watcher
+      url: ../../network-watcher/security-baseline.md
+- title: Säkerhetsbaslinjer
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Key Vault
+      url: ../../key-vault/security-baseline.md
+    - text: Security Center
+      url: ../../security-center/security-baseline.md
+    - text: Customer Lockbox
+      url: ../fundamentals/customer-lockbox-security-baseline.md
+    - text: Azure Policy
+      url: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
+- title: Hantering och integration
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Automation
+      url: ../../automation/security-baseline.md
+    - text: Backup
+      url: ../../backup/security-baseline.md
+    - text: API Management
+      url: ../../api-management/security-baseline.md
+    - text: Event Grid
+      url: ../../event-hubs/security-baseline.md
+    - text: Logic Apps
+      url: ../../logic-apps/security-baseline.md

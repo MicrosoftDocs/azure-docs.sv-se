@@ -7,13 +7,13 @@ author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 04/27/2020
-ms.openlocfilehash: 2edd5b661240b6156cf8a02059b2b9a668c402f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/16/2020
+ms.openlocfilehash: 0a691b562ebf030712eb0c13a688ea9a52fdb164
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83829128"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263477"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Felsöka data flöden i Azure Data Factory
 
@@ -70,6 +70,13 @@ Den här artikeln utforskar vanliga fel söknings metoder för data flöden i Az
 - **Orsaker**: det här är ett fel i backend-tjänsten. Du kan försöka igen och starta om din felsökningssession.
 - **Rekommendation**: om försök igen och omstart inte löser problemet kontaktar du kund support.
 
+### <a name="error-code-debug-data-preview-no-output-data-on-join"></a>Felkod: fel meddelande vid förhands granskning av data inga utdata vid koppling
+
+- **Meddelande**: det finns ett stort antal null-värden eller saknade värden som kan bero på att det inte finns några rader som samplats. Försök att uppdatera gränsen för fel söknings rad och uppdatera data.
+- **Orsaker**: JOIN-villkoret matchade inte några rader eller resulterade i ett stort antal null-värden under förhands granskningen.
+- **Rekommendation**: gå till fel söknings inställningar och öka antalet rader i käll rad gränsen. Kontrol lera att du har valt och Azure IR med ett tillräckligt stort data flödes kluster för att hantera mer data.
+
+
 ## <a name="general-troubleshooting-guidance"></a>Allmän fel söknings vägledning
 
 1. Kontrol lera statusen för dina data uppsättnings anslutningar. I varje käll-och mottagar omvandling kan du gå till den länkade tjänsten för varje data uppsättning som du använder och testa anslutningarna.
@@ -79,9 +86,9 @@ Den här artikeln utforskar vanliga fel söknings metoder för data flöden i Az
 ## <a name="next-steps"></a>Nästa steg
 
 Om du vill ha mer fel söknings hjälp kan du prova följande resurser:
-*  [Data Factory blogg](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Data Factory blogg](https://techcommunity.microsoft.com/t5/azure-data-factory/bg-p/AzureDataFactoryBlog)
 *  [Data Factory funktions begär Anden](https://feedback.azure.com/forums/270578-data-factory)
-*  [Azure-videor](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
+*  [Azure-videor](https://www.youtube.com/channel/UC2S0k7NeLcEm5_IhHUwpN0g/videos)
 *  [Sidan Microsoft Q&en fråga](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
 *  [Stack Overflow forum för Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Twitter-information om Data Factory](https://twitter.com/hashtag/DataFactory)

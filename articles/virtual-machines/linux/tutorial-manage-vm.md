@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 6e4f71be1dc3cdaeb01069f234531da29a7b4977
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 601e51c7a587cd55e9b0b235bbdfb2e559be09e2
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498709"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263103"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Självstudie: Skapa och hantera virtuella Linux-datorer med Azure CLI
 
@@ -251,7 +251,7 @@ En virtuell Azure-dator kan ha en av många energinivåer. Det här tillståndet
 
 ### <a name="power-states"></a>Energinivåer
 
-| Energinivå | Description
+| Energinivå | Beskrivning
 |----|----|
 | Startar | Anger att den virtuella datorn startas. |
 | Körs | Anger att den virtuella datorn körs. |
@@ -279,6 +279,8 @@ ode                DisplayStatus    Level
 ------------------  ---------------  -------
 PowerState/running  VM running       Info
 ```
+
+Om du vill hämta energi läget för alla virtuella datorer i din prenumeration använder du [Virtual Machines-List all API](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall) med parametern **statusOnly** inställd på *True*.
 
 ## <a name="management-tasks"></a>Hanteringsuppgifter
 

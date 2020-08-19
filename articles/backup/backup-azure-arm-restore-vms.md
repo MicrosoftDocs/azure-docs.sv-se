@@ -4,12 +4,12 @@ description: Återställa en virtuell Azure-dator från en återställnings punk
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: a006988049925d2d81c3f15fe24cfe60205b5789
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: af9b505e762e201713b8e554b7886e5e2062dfef
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006340"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263018"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Så här återställer du Azure VM-data i Azure Portal
 
@@ -53,7 +53,7 @@ Om du inte har behörighet kan du [återställa en disk](#restore-disks)och seda
 
 1. I valvet som är associerat med den virtuella dator som du vill återställa väljer du **säkerhets kopierings objekt**  >  **Azure virtuell dator**.
 1. Välj en virtuell dator. Återställnings punkter från de senaste 30 dagarna visas som standard på VM-instrumentpanelen. Du kan visa återställnings punkter som är äldre än 30 dagar eller filtrera för att hitta återställnings punkter baserat på datum, tidsintervall och olika typer av ögonblicks bilds konsekvens.
-1. Klicka på **Återställ virtuell dator**om du vill återställa den virtuella datorn.
+1. Om du vill återställa den virtuella datorn väljer du **Återställ virtuell dator**.
 
     ![Återställningspunkt](./media/backup-azure-arm-restore-vms/restore-point.png)
 
@@ -85,7 +85,7 @@ Som en av [återställnings alternativen](#restore-options)kan du snabbt skapa e
 
 ## <a name="restore-disks"></a>Återställa diskar
 
-Som ett av [återställnings alternativen](#restore-options)kan du skapa en disk från en återställnings punkt. Med disken kan du sedan göra något av följande:
+Som ett av [återställnings alternativen](#restore-options)kan du skapa en disk från en återställnings punkt. Sedan kan du utföra någon av följande åtgärder med disken:
 
 - Använd mallen som genereras under återställnings åtgärden för att anpassa inställningarna och utlösa VM-distribution. Du redigerar standardinställningarna för mallar och skickar mallen för distribution av virtuella datorer.
 - [Koppla återställda diskar](../virtual-machines/windows/attach-managed-disk-portal.md) till en befintlig virtuell dator.
@@ -95,7 +95,7 @@ Som ett av [återställnings alternativen](#restore-options)kan du skapa en disk
 1. I **resurs grupp**väljer du en befintlig resurs grupp för de återställda diskarna eller skapar en ny med ett globalt unikt namn.
 1. På **mellanlagringsplatsen**anger du det lagrings konto som de virtuella hård diskarna ska kopieras till. [Läs mer](#storage-accounts).
 
-    ![Återställnings konfigurationen slutförd](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
+    ![Välj resurs grupp och mellanlagringsplats](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
 
 1. Välj **Återställ** för att utlösa återställnings åtgärden.
 

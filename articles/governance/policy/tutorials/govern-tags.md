@@ -1,14 +1,14 @@
 ---
 title: 'Självstudie: hantera märkes styrning'
 description: I den här självstudien använder du ändrings resultatet för Azure Policy för att skapa och tillämpa en etikett styrnings modell på nya och befintliga resurser.
-ms.date: 04/21/2020
+ms.date: 08/17/2020
 ms.topic: tutorial
-ms.openlocfilehash: 8b3d0db100a601950ec82824897a3ba3e5145b79
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: f49eedb00c98d3c362140fdca9b195a086903f10
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142273"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545513"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Självstudie: hantera märkes styrning med Azure Policy
 
@@ -45,7 +45,7 @@ Precis som all bra implementering av styrnings kontroller bör kraven komma frå
 
 ## <a name="configure-the-costcenter-tag"></a>Konfigurera CostCenter-taggen
 
-Med avseende på en Azure-miljö som hanteras av Azure Policy, kräver _CostCenter_ tag-krav för följande:
+Med avseende på en Azure-miljö som hanteras av Azure Policy, kräver _CostCenter_ tag-krav för följande resultat:
 
 - Neka resurs grupper som saknar taggen _CostCenter_
 - Ändra resurser för att lägga till _CostCenter_ -taggen från den överordnade resurs gruppen när den saknas
@@ -107,7 +107,7 @@ Den här princip regeln använder åtgärden **Lägg till** i stället för **ad
 
 ## <a name="configure-the-env-tag"></a>Konfigurera kuvert-taggen
 
-I termer som är särskilt för en Azure-miljö som hanteras av Azure Policy, uppfyller _Kuvert_ tag gen kraven följande:
+I termer som är särskilt för en Azure-miljö som hanteras av Azure Policy, är kraven på _Kuvert_ märkningen för följande resultat:
 
 - Ändra _Kuvert_ -taggen i resurs gruppen baserat på resurs gruppens namngivnings schema
 - Ändra _Kuvert_ -taggen för alla resurser i resurs gruppen till samma som den överordnade resurs gruppen
@@ -204,7 +204,7 @@ Om du är klar med att arbeta med resurser i den här självstudien kan du anvä
 
 1. Högerklicka på raden eller välj ellipserna i slutet av definitionen (eller tilldelningen) och välj **Ta bort definition** (eller **Ta bort tilldelning**).
 
-## <a name="review"></a>Granska
+## <a name="review"></a>Genomgång
 
 I den här självstudien har du lärt dig om följande uppgifter:
 

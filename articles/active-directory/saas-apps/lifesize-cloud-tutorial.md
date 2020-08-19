@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Lifesize Cloud | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Lifesize Cloud.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 75fab335-fdcd-4066-b42c-cc738fcb6513
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a41fe75975537a54ae142034f74a613731736525
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0ff2464705a770e257010347f0f04e9b695bb6e4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051250"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540141"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>Självstudie: Azure Active Directory integrering med Lifesize Cloud
 
@@ -111,9 +106,9 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Lifes
 
     ![Lifesize Cloud-domän och information om URL:er för enkel inloggning](common/sp-identifier-relay.png)
 
-    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://login.lifesizecloud.com/ls/?acs`
+    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://login.lifesizecloud.com/ls/?acs`
 
-    b. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://login.lifesizecloud.com/<companyname>`
+    b. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://login.lifesizecloud.com/<companyname>`
 
     c. Klicka på **Ange ytterligare URL: er**.
 
@@ -192,7 +187,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

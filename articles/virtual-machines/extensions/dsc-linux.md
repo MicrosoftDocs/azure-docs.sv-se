@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: a1a166d12ef753a7a6fc7225d0467ead08514f99
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 59b05fcd7fbaf9b0fd9b4083c884edadb4bfef4e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876724"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505588"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC-tillägg för Linux (Microsoft. OSTCExtensions. DSCForLinux)
 
@@ -40,10 +40,11 @@ DSCForLinux-tillägget har publicerats och stöds av Microsoft. Tillägget insta
 ### <a name="operating-system"></a>Operativsystem
 
 För noder som kör Linux stöder DSC Linux-tillägget alla Linux-distributioner som anges i [POWERSHELL DSC-dokumentationen](/powershell/scripting/dsc/getting-started/lnxgettingstarted).
- 
+
 ### <a name="internet-connectivity"></a>Internetanslutning
 
-DSCForLinux-tillägget kräver att den virtuella mål datorn är ansluten till Internet. Register tillägget kräver till exempel anslutning till Automation-tjänsten. För andra åtgärder som pull, pull, installation krävs anslutning till Azure Storage och GitHub. Det beror på de inställningar som tillhandahålls av kunden.
+DSCForLinux-tillägget kräver att den virtuella mål datorn är ansluten till Internet. Register tillägget kräver till exempel anslutning till Automation-tjänsten.
+För andra åtgärder som pull, pull, installation krävs anslutning till Azure Storage och GitHub. Det beror på de inställningar som tillhandahålls av kunden.
 
 ## <a name="extension-schema"></a>Tilläggsschema
 
@@ -55,13 +56,13 @@ Här följer alla offentliga konfigurations parametrar som stöds:
 * `ResourceName`: (valfritt, sträng) namnet på den anpassade modulen.
 * `ExtensionAction`: (valfritt, sträng) anger vad ett tillägg gör. Giltiga värden är registrera, push, pull, install och Remove. Om inget värde anges anses det som standard en push-åtgärd.
 * `NodeConfigurationName`: (valfritt, sträng) namnet på den nods konfiguration som ska användas.
-* `RefreshFrequencyMins`: (valfritt, int) anger hur ofta (i minuter) som DSC försöker hämta konfigurationen från hämtnings servern. 
+* `RefreshFrequencyMins`: (valfritt, int) anger hur ofta (i minuter) som DSC försöker hämta konfigurationen från hämtnings servern.
        Om konfigurationen på hämtnings servern skiljer sig från den nuvarande på målnoden kopieras den till den väntande lagringen och tillämpas.
 * `ConfigurationMode`: (valfritt, sträng) anger hur DSC ska tillämpa konfigurationen. Giltiga värden är ApplyOnly, ApplyAndMonitor och ApplyAndAutoCorrect.
 * `ConfigurationModeFrequencyMins`: (valfritt, int) anger hur ofta (i minuter) DSC säkerställer att konfigurationen är i önskat tillstånd.
 
 > [!NOTE]
-> Om du använder en tidigare version än 2,3 är läges parametern densamma som ExtensionAction. Läget verkar vara ett överbelastat villkor. För att undvika förvirring används ExtensionAction från version 2,3 och senare. För bakåtkompatibilitet stöder tillägget både läge och ExtensionAction. 
+> Om du använder en tidigare version än 2,3 är läges parametern densamma som ExtensionAction. Läget verkar vara ett överbelastat villkor. För att undvika förvirring används ExtensionAction från version 2,3 och senare. För bakåtkompatibilitet stöder tillägget både läge och ExtensionAction.
 >
 
 ### <a name="protected-configuration"></a>Skyddad konfiguration
@@ -269,7 +270,7 @@ $publicConfig = '{
 
 ## <a name="template-deployment"></a>Malldistribution
 
-Azure VM-tillägg kan distribueras med Azure Resource Manager mallar. Mallarna är idealiska när du distribuerar en eller flera virtuella datorer som kräver konfiguration efter distribution, till exempel onboarding till Azure Automation. 
+Azure VM-tillägg kan distribueras med Azure Resource Manager mallar. Mallarna är idealiska när du distribuerar en eller flera virtuella datorer som kräver konfiguration efter distribution, till exempel onboarding till Azure Automation.
 
 Exempel Resource Manager-mallen är [201-DSC-Linux-Azure-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-azure-storage-on-ubuntu) och [201-DSC-Linux-Public-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-public-storage-on-ubuntu).
 
@@ -323,13 +324,13 @@ DSCForLinux Microsoft.OSTCExtensions <version> \
 
 Du kan logga in på ditt Azure-konto i Azure Service Management-läge genom att köra:
 
-```powershell>
+```powershell
 Add-AzureAccount
 ```
 
 Och distribuera DSCForLinux-tillägget genom att köra:
 
-```powershell>
+```powershell
 $vmname = '<vm-name>'
 $vm = Get-AzureVM -ServiceName $vmname -Name $vmname
 $extensionName = 'DSCForLinux'
@@ -362,7 +363,7 @@ Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher
 
 Du kan logga in på ditt Azure-konto i Azure Resource Manager läge genom att köra:
 
-```powershell>
+```powershell
 Login-AzAccount
 ```
 
@@ -370,7 +371,7 @@ Mer information om hur du använder Azure PowerShell med Azure Resource Manager 
 
 Du kan distribuera DSCForLinux-tillägget genom att köra:
 
-```powershell>
+```powershell
 $rgName = '<resource-group-name>'
 $vmName = '<vm-name>'
 $location = '< location>'

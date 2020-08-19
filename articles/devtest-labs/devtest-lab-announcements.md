@@ -1,14 +1,14 @@
 ---
 title: Publicera ett meddelande till ett labb i Azure DevTest Labs | Microsoft Docs
-description: Lär dig hur du lägger till ett meddelande i ett labb i Azure DevTest Labs
+description: Lär dig hur du publicerar ett anpassat meddelande i ett befintligt labb för att meddela användare om nyligen gjorda ändringar eller tillägg till labbet i Azure DevTest Labs.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: bac2b0a4e33a01977418b36ce6e3726999d10ed5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72c6ed7ab691ece094673ff5a158ffa769a9f7a1
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479002"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270775"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Publicera ett meddelande till ett labb i Azure DevTest Labs
 

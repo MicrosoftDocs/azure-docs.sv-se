@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory-integrering med enkel inloggning (SSO) med CCH Tagetik | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och CCH Tagetik.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 514c7fa1-77a5-475d-a3e4-548c002d579e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c574641ce552e9908c35c9fc93ecf6e2b4a0be14
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c569f0d3bd6561747edcf9994d543e2c53760b8b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83666062"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88530162"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cch-tagetik"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med CCH Tagetik
 
@@ -32,7 +28,7 @@ I den här självstudien får du lära dig att integrera CCH-Tagetik med Azure A
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -83,13 +79,13 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://<CUSTOMER_NAME>.saastagetik.com/prod/5/`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://<CUSTOMER_NAME>.saastagetik.com/prod/5/`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<CUSTOMER_NAME>.saastagetik.com/prod/5/`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<CUSTOMER_NAME>.saastagetik.com/prod/5/`
 
 1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<CUSTOMER_NAME>.saastagetik.com/prod/5/`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<CUSTOMER_NAME>.saastagetik.com/prod/5/`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [CCH Tagetik client support team](mailto:tgk-dl-supportmembers@wolterskluwer.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -148,11 +144,11 @@ När du klickar på panelen CCH Tagetik på åtkomst panelen, bör du loggas in 
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Prova CCH Tagetik med Azure AD](https://aad.portal.azure.com/)
 

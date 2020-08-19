@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Percolate | Microsoft Docs'
 description: I den här självstudien får du lära dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Percolate.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 355f9659-b378-44c9-aa88-236e9b529a53
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: a6c1f893757baf1e6c85420b31997a5073cff684
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: deb64aa0c344e818b5fd85ca1a161293fd35d6f6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67094603"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554023"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>Självstudie: Azure Active Directory integrering med Percolate
 
@@ -36,7 +32,7 @@ Läs mer om SaaS-appintegrering med Azure AD i [Enkel inloggning till program i 
 
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Percolate måste du ha:
 
@@ -57,7 +53,7 @@ Om du vill konfigurera integreringen av Percolate i Azure AD måste du lägga ti
 
     ![Välj Azure Active Directory](common/select-azuread.png)
 
-2. Gå till **företags program** > **alla program**:
+2. Gå till **företags program**  >  **alla program**:
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -105,7 +101,7 @@ Utför följande steg för att konfigurera enkel inloggning med Percolate i Azur
 
     ![Information om enkel inloggning för Percolate-domän och URL: er](common/preintegrated.png)
 
-5. Om du vill konfigurera programmet i SP-initierat läge väljer du **Ange ytterligare URL: er** i rutan **inloggnings-URL** och anger: **https://percolate.com/app/login**
+5. Om du vill konfigurera programmet i SP-initierat läge väljer du **Ange ytterligare URL: er** i rutan **inloggnings-URL** och anger **https://percolate.com/app/login** :
 
    ![Information om enkel inloggning för Percolate-domän och URL: er](common/metadata-upload-additional-signon.png)
 6. På sidan **Konfigurera enkel inloggning med SAML** , i avsnittet **SAML-signerings certifikat** , väljer du **kopierings** ikonen för att kopiera **URL: en för appens federationens metadata**. Spara den här URL: en.
@@ -168,7 +164,7 @@ I det här avsnittet ska du skapa en test användare med namnet Britta Simon i A
 
     1. I rutan **Namn** anger du **BrittaSimon**.
   
-    1. I rutan **användar namn** anger du **BrittaSimon@\<\< yourcompanydomain>. tillägg>**. (Till exempel BrittaSimon@contoso.com.)
+    1. I rutan **användar namn** anger du **BrittaSimon@ \<yourcompanydomain> . \<extension> **. (Till exempel BrittaSimon@contoso.com .)
 
     1. Välj **Visa lösen ord**och skriv sedan ned värdet i rutan **lösen ord** .
 

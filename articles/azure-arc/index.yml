@@ -7,20 +7,20 @@ metadata:
   author: mgoedtel
   ms.service: azure-arc
   ms.topic: landing-page
-  ms.date: 06/26/2020
+  ms.date: 08/13/2020
   ms.author: magoedte
-  ms.openlocfilehash: f9d4da85185d3a8541c165b407d276af0a25ccc6
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: afb1dd4986220bcf3f244532a730faf6b80e6074
+  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
   ms.translationtype: HT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87008497"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88212778"
 landingContent:
-- title: Översikt över Azure Arc
+- title: Om Azure Arc
   linkLists:
   - linkListType: overview
     links:
-    - text: Läs mer om Azure Arc
+    - text: Vad är Azure Arc?
       url: https://aka.ms/Azure-Arc-Info
 - title: Ansluta datorer till Azure med Azure Arc-aktiverade servrar
   linkLists:
@@ -30,12 +30,18 @@ landingContent:
       url: ./servers/overview.md
   - linkListType: quickstart
     links:
+    - text: Aktivera Azure Arc-aktiverad agent för servrar
+      url: ./servers/learn/quick-enable-hybrid-vm.md
+  - linkListType: how-to-guide
+    links:
     - text: Ansluta datorer till Azure Arc från Microsoft Azure-portalen
       url: ./servers/onboard-portal.md
     - text: Ansluta datorer i stor skala med ett huvudnamn för tjänsten
       url: ./servers/onboard-service-principal.md
     - text: Ansluta datorer till Azure med PowerShell DSC
       url: ./servers/onboard-dsc.md
+    - text: Hantera och använda tillägg för virtuella Azure-datorer
+      url: ./servers/manage-vm-extensions.md
 - title: Anslut Kubernetes-kluster till Azure med Azure Arc
   linkLists:
   - linkListType: overview

@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory-integrering med enkel inloggning (SSO) med Bizagi för digital process Automation | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Bizagi för digital process automatisering.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: af3d4613-c3fb-485c-b7b9-c385713e6f8f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a374ef8c6605aef8dfb54379017781507339306e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5f8126f497bfd66544576b218a903c50e58106b5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83740641"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544510"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bizagi-for-digital-process-automation"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med Bizagi för digital process Automation
 
@@ -32,7 +28,7 @@ I den här självstudien får du lära dig att integrera Bizagi för digital pro
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -85,9 +81,9 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** anger du värden för följande fält:
 
-    a. I text rutan **inloggnings-URL** anger du URL: en för ditt Bizagi-projekt:`https://<COMPANYNAME>.bizagi.com/<PROJECTNAME>`
+    a. I text rutan **inloggnings-URL** anger du URL: en för ditt Bizagi-projekt: `https://<COMPANYNAME>.bizagi.com/<PROJECTNAME>`
 
-    b. I text rutan **identifierare (enhets-ID)** anger du URL: en för ditt Bizagi-projekt:`https://<COMPANYNAME>.bizagi.com/<PROJECTNAME>`
+    b. I text rutan **identifierare (enhets-ID)** anger du URL: en för ditt Bizagi-projekt: `https://<COMPANYNAME>.bizagi.com/<PROJECTNAME>`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska inloggnings-URL:en och identifieraren. Kontakta [Bizagi för digital process Automation support team](mailto:jarvein.rivera@bizagi.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -148,11 +144,11 @@ När du klickar på panelen Bizagi för digital process automatisering på åtko
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Testa Bizagi för digital process Automation med Azure AD](https://aad.portal.azure.com/)
 

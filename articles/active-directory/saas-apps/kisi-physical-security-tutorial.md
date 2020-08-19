@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory-integrering med enkel inloggning (SSO) med fysisk säkerhet för kisi | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och kisi fysisk säkerhet.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: ee67ca73-2f8e-40b7-a4f3-69fecd2f3308
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65062b886000a9a0e19dec7d72bf27ab1e1790eb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8543eb83e9a642f377d5d3abd261a545cefc7e5f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87016929"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88534983"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kisi-physical-security"></a>Självstudie: Azure Active Directory-integrering med enkel inloggning (SSO) med fysisk säkerhet för kisi
 
@@ -85,16 +81,16 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://api.kisi.io/saml/metadata`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://api.kisi.io/saml/metadata`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://api.kisi.io/saml/consume/<DOMAIN>`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://api.kisi.io/saml/consume/<DOMAIN>`
 
     > [!NOTE] 
-    > `DOMAIN`är en alfanumerisk identifierare som är tilldelad till organisationen av kisi, den är **inte** samma som organisationens DNS-domännamn. *
+    > `DOMAIN` är en alfanumerisk identifierare som är tilldelad till organisationen av kisi, den är **inte** samma som organisationens DNS-domännamn. *
 
 1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://web.kisi.io/organizations/sign_in?domain=<DOMAIN>`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://web.kisi.io/organizations/sign_in?domain=<DOMAIN>`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [kisi-teamet för fysisk säkerhets klient](mailto:support@getkisi.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -105,7 +101,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Utöver ovan förväntar sig kisi fysiska säkerhets program att fler attribut skickas tillbaka i SAML-svar som visas nedan. Dessa attribut är också förifyllda, men du kan granska dem enligt dina krav.
 
-    | Namn | Källattribut|
+    | Name | Källattribut|
     | ---------------| --------- |
     | FirstName | user.givenname |
     | LastName | user.surname |
@@ -161,7 +157,7 @@ När du klickar på panelen fysisk säkerhets kisi på åtkomst panelen, bör du
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

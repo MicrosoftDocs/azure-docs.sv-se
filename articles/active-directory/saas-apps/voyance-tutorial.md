@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Voyance | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Voyance.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 539dc1f9-64c9-4dce-b259-2b0b49dcf857
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 3c286c004885cdc2cc83899bd06af19176c5581b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e51d275b32b634b7914b4e4f53959c1b89d96aed
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67087579"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88531731"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-voyance"></a>Självstudie: Azure Active Directory integrering med Voyance
 
@@ -32,9 +28,9 @@ Genom att integrera Voyance med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Voyance behöver du följande objekt:
 
@@ -107,15 +103,15 @@ Utför följande steg för att konfigurera enkel inloggning med Voyance i Azure 
 
     ![Information om enkel inloggning för Voyance-domän och URL: er](common/idp-intiated.png)
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://<companyname>.nyansa.com`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://<companyname>.nyansa.com`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<companyname>.nyansa.com/saml/create/`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<companyname>.nyansa.com/saml/create/`
 
 5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     ![Information om enkel inloggning för Voyance-domän och URL: er](common/metadata-upload-additional-signon.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<companyname>.nyansa.com/`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<companyname>.nyansa.com/`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [Voyance client support team](mailto:support@nyansa.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -184,7 +180,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** brittasimon@yourcompanydomain.extension. Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** brittasimon@yourcompanydomain.extension . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

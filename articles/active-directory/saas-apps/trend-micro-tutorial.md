@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure AD SSO-integrering med Trend Micro Web Security (TMWS)'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Trend Micro Web Security (TMWS).
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 827285d3-8e65-43cd-8453-baeda32ef174
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d09af492439beb931b4ab1cd08ccb9e1d82fc3f
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: f2a6598cc28c39719d73be333bd74c24fce9371b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583146"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551917"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-security-tmws"></a>Självstudie: Azure Active Directory-integrering med enkel inloggning (SSO) med Trend Micro Web Security (TMWS)
 
@@ -32,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar Trend Micro Web Sec
 
 Läs mer om SaaS-appintegrering med Azure AD i [Enkel inloggning till program i Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du behöver följande för att komma igång:
 
@@ -119,8 +115,8 @@ I det här avsnittet ska du skapa en test användare som heter B. Simon i Azure 
 1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**. Välj **användare**och välj sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
-   1. I rutan **namn** anger `B.Simon`du.  
-   1. Ange **User name** ****@* username companydomain i rutan användar namn *.* tillägg***. Till exempel `B.Simon@contoso.com`.
+   1. I rutan **namn** anger du `B.Simon` .  
+   1. Ange username companydomain i rutan **användar namn** *** *@* *.* tillägg***. Till exempel `B.Simon@contoso.com`.
    1. Välj **Visa lösen ord**och skriv sedan ned värdet som visas i rutan **lösen ord** .
    1. Välj **Skapa**.
 
@@ -179,7 +175,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 Slutför de här stegen för att konfigurera TMWS SSO på program sidan.
 
-1. Logga in på TMWS-hanterings konsolen och gå till **administrations** > **användare &** > **Directory-tjänster**för autentisering.
+1. Logga in på TMWS-hanterings konsolen och gå till **administrations**  >  **användare &**  >  **Directory-tjänster**för autentisering.
 
 1. Välj **här** på den övre delen av skärmen.
 
@@ -220,7 +216,7 @@ Slutför de här stegen för att konfigurera TMWS SSO på program sidan.
 När du har konfigurerat Azure AD-tjänsten och angett Azure AD som autentiseringsmetod för användaren, kan du logga in på TMWS-proxyservern för att verifiera installationen. När Azure AD-inloggningen har verifierat ditt konto kan du besöka Internet.
 
 > [!NOTE]
-> TMWS stöder inte testning av enkel inloggning från Azure AD-portalen, under **Översikt** > **enkel inloggning** > **Konfigurera enkel inloggning med SAML** > **test** av ditt nya företags program.
+> TMWS stöder inte testning av enkel inloggning från Azure AD-portalen, under **Översikt**  >  **enkel inloggning**  >  **Konfigurera enkel inloggning med SAML**  >  **test** av ditt nya företags program.
 
 1. Rensa webbläsaren för alla cookies och starta sedan om webbläsaren. 
 
@@ -228,7 +224,7 @@ När du har konfigurerat Azure AD-tjänsten och angett Azure AD som autentiserin
 
 1. Besök en webbplats på Internet. TMWS leder dig till TMWS-portalen.
 
-1. Ange ett Active Directory konto (format: *domän*\\*sAMAccountName* eller *sAMAccountName*@-*domän*), e-postadress eller UPN och välj sedan **Logga in**. TMWS skickar dig till inloggnings fönstret för Azure AD.
+1. Ange ett Active Directory konto (format: *domän* \\ -*sAMAccountName* eller *sAMAccountName* @ -*domän*), e-postadress eller UPN och välj sedan **Logga in**. TMWS skickar dig till inloggnings fönstret för Azure AD.
 
 1. Ange dina autentiseringsuppgifter för Azure AD-kontot i inloggnings fönstret i Azure AD. Du bör nu vara inloggad på TMWS.
 

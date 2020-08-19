@@ -236,7 +236,7 @@
       items:
         - name: Konfigurera privata slutpunkter
           href: configure-private-endpoints.md
-        - name: Konfigurera IP-brandvägg (förhandsversion)
+        - name: Konfigurera IP-brandvägg
           href: configure-firewall.md
         - name: Säker webhook med AAD
           href: secure-webhook-delivery.md

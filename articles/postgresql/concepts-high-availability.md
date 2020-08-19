@@ -1,17 +1,17 @@
 ---
 title: Hög tillgänglighet – Azure Database for PostgreSQL-enskild server
 description: Den här artikeln innehåller information om hög tillgänglighet i Azure Database for PostgreSQL-enskild server
-author: sr-pg20
-ms.author: srranga
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
-ms.openlocfilehash: 564aa030c442331fbcd965c87da3bfbc03d00d79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16ce5b42e35ff3d650ba18aa95ab80b83fdbfdad
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85105887"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547689"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Hög tillgänglighet i Azure Database for PostgreSQL – enskild server
 Tjänsten Azure Database for PostgreSQL – enskild server ger en garanterad hög tillgänglighets nivå med det ekonomiskt service avtal (SLA) på [99,99%](https://azure.microsoft.com/support/legal/sla/postgresql) drift tid. Azure Database for PostgreSQL ger hög tillgänglighet under planerade händelser som initated Scale Compute operation och även när oplanerade händelser som underliggande maskin vara, program eller nätverks fel inträffar. Azure Database for PostgreSQL kan snabbt återställas från de mest kritiska förhållandena, vilket säkerställer att det är praktiskt taget ingen program tids period när tjänsten används.
@@ -31,6 +31,9 @@ Azure Database for PostgreSQL konstrueras för att ge hög tillgänglighet under
 
 ![vy över elastisk skalning i Azure PostgreSQL](./media/concepts-high-availability/azure-postgresql-elastic-scaling.png)
 
+1. Skala upp och ned PostgreSQL databas servrar på några sekunder
+2. Gateway som fungerar som en proxy för att dirigera klienten ansluter till rätt databas server
+3. En skalning av lagrings utrymmet kan utföras utan avbrott. Fjärrlagring möjliggör snabb från koppling/åter anslutning efter redundansväxlingen.
 Här följer några planerade underhålls scenarier:
 
 | **Scenario** | **Beskrivning**|
@@ -48,20 +51,25 @@ Oplanerade stillestånd kan uppstå på grund av oförutsedda fel, inklusive und
 
 ![vy över hög tillgänglighet i Azure PostgreSQL](./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png)
 
+1. Azure PostgreSQL-servrar med snabba skalnings funktioner.
+2. Gateway som fungerar som proxy för att dirigera klient anslutningar till rätt databas server
+3. Azure Storage med tre kopior för tillförlitlighet, tillgänglighet och redundans.
+4. Fjärrlagring möjliggör även snabb från koppling/omkoppling efter serverns redundans.
+   
 ### <a name="unplanned-downtime-failure-scenarios-and-service-recovery"></a>Oplanerat avbrott: haveri-scenarier och tjänst återställning
 Här följer några fel scenarier och hur Azure Database for PostgreSQL återställer automatiskt:
 
 | **Scenario** | **Automatisk återställning** |
 | ---------- | ---------- |
-| <B>Databas Server-problem | Om databas servern är nere på grund av ett underliggande maskin varu fel, släpps aktiva anslutningar och eventuella synlighetssekvensnummer transaktioner avbryts. En ny databas server distribueras automatiskt och fjärrlagringsplatsen är kopplad till den nya databas servern. När databas återställningen är klar kan klienter ansluta till den nya databas servern via gatewayen. <br /> <br /> Program som använder PostgreSQL-databaserna måste byggas på ett sätt som de kan identifiera och försöka ta bort anslutningar och misslyckade transaktioner.  När programmet försöker igen omdirigerar gatewayen transparent anslutning till den nyligen skapade databas servern. |
+| <B>Databas Server-problem | Om databas servern är nere på grund av ett underliggande maskin varu fel, släpps aktiva anslutningar och eventuella synlighetssekvensnummer transaktioner avbryts. En ny databas server distribueras automatiskt och fjärrlagringsplatsen är kopplad till den nya databas servern. När databas återställningen är klar kan klienter ansluta till den nya databas servern via gatewayen. <br /> <br /> Återställnings tiden (RTO) är beroende av olika faktorer, inklusive aktiviteten vid tidpunkten för felet, till exempel stor transaktion och mängden återställning som ska utföras under start processen för databas servern. <br /> <br /> Program som använder PostgreSQL-databaserna måste byggas på ett sätt som de kan identifiera och försöka ta bort anslutningar och misslyckade transaktioner.  När programmet försöker igen omdirigerar gatewayen transparent anslutning till den nyligen skapade databas servern. |
 | <B>Lagrings problem | Program kan inte se någon inverkan på eventuella problem som rör lagring, till exempel diskfel eller fysiska blockerade fel. När data lagras i tre kopior betjänas data kopian av den kvarvarande lagringen. Block skador korrigeras automatiskt. Om en kopia av data går förlorad skapas automatiskt en ny kopia av data. |
 
 Här följer några fel scenarier som kräver användar åtgärd för att återställa:
 
 | **Scenario** | **Återställnings plan** |
 | ---------- | ---------- |
-| <b>Regions haveri | En regions haveri är en sällsynt händelse. Men om du behöver skydd från ett regions haveri kan du konfigurera en eller flera Läs repliker i andra regioner för haveri beredskap (DR). (Mer information finns i [den här artikeln](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) om att skapa och hantera Läs repliker). I händelse av ett problem på regions nivå kan du manuellt befordra den skrivskyddade replik som kon figurer ATS i den andra regionen som din produktions databas server. |
-| <b>Logiska/användar fel | Återställning från användar fel, till exempel oavsiktligt borttagna tabeller eller felaktigt uppdaterade data, innebär att utföra en [tidpunkts återställning](https://docs.microsoft.com/azure/postgresql/concepts-backup) (PITR), genom att återställa och återställa data tills tiden strax innan felet uppstod.<br> <br>  Om du bara vill återställa en delmängd av databaser eller vissa tabeller i stället för alla databaser på databas servern, kan du återställa databas servern i en ny instans, exportera tabellen/tabellerna via [pg_dump](https://www.postgresql.org/docs/11/app-pgdump.html)och sedan använda [pg_restore](https://www.postgresql.org/docs/11/app-pgrestore.html) för att återställa tabellerna till din databas. |
+| <b> Regions haveri | En regions haveri är en sällsynt händelse. Men om du behöver skydd från ett regions haveri kan du konfigurera en eller flera Läs repliker i andra regioner för haveri beredskap (DR). (Mer information finns i [den här artikeln](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) om att skapa och hantera Läs repliker). I händelse av ett problem på regions nivå kan du manuellt befordra den skrivskyddade replik som kon figurer ATS i den andra regionen som din produktions databas server. |
+| <b> Logiska/användar fel | Återställning från användar fel, till exempel oavsiktligt borttagna tabeller eller felaktigt uppdaterade data, innebär att utföra en [tidpunkts återställning](https://docs.microsoft.com/azure/postgresql/concepts-backup) (PITR), genom att återställa och återställa data tills tiden strax innan felet uppstod.<br> <br>  Om du bara vill återställa en delmängd av databaser eller vissa tabeller i stället för alla databaser på databas servern, kan du återställa databas servern i en ny instans, exportera tabellen/tabellerna via [pg_dump](https://www.postgresql.org/docs/11/app-pgdump.html)och sedan använda [pg_restore](https://www.postgresql.org/docs/11/app-pgrestore.html) för att återställa tabellerna till din databas. |
 
 
 

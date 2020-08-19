@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med EverBridge | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och EverBridge.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 58d7cd22-98c0-4606-9ce5-8bdb22ee8b3e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 60463a00c6864bed7b3a18e816ef0143d3573782
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1da2fd879dbeac1836469d46567566769f6163a2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67103261"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555407"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>Självstudie: Azure Active Directory integrering med EverBridge
 
@@ -31,9 +27,9 @@ När du integrerar EverBridge med Azure AD kan du:
 * Tillåt att användarna loggas in automatiskt på EverBridge med sina Azure AD-konton. Den här åtkomst kontrollen kallas enkel inloggning (SSO).
 * Hantera dina konton på en central plats med hjälp av Azure Portal.
 Mer information om program vara som en tjänst (SaaS) för program integrering med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med EverBridge behöver du följande objekt:
 
@@ -108,9 +104,9 @@ Följ dessa steg om du vill konfigurera enkel inloggning med EverBridge i Azure 
 
     ![Information om enkel inloggning för EverBridge-domän och URL: er](common/idp-intiated.png)
 
-    a. I rutan **identifierare** anger du en URL som följer mönstret`https://sso.everbridge.net/<API_Name>`
+    a. I rutan **identifierare** anger du en URL som följer mönstret `https://sso.everbridge.net/<API_Name>`
 
-    b. I rutan **svars-URL** anger du en URL som följer mönstret`https://manager.everbridge.net/saml/SSO/<API_Name>/alias/defaultAlias`
+    b. I rutan **svars-URL** anger du en URL som följer mönstret `https://manager.everbridge.net/saml/SSO/<API_Name>/alias/defaultAlias`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera dessa värden med faktiska ID-och svars-URL-värden. Kontakta [EverBridge support-teamet](mailto:support@everbridge.com)om du vill hämta dessa värden. Du kan också referera till mönstren som visas i avsnittet **grundläggande SAML-konfiguration** i Azure Portal.
@@ -121,15 +117,15 @@ Följ dessa steg om du vill konfigurera enkel inloggning med EverBridge i Azure 
 
      ![Information om enkel inloggning för EverBridge-domän och URL: er för IDP-initierat läge](common/idp-intiated.png)
 
-    a. I rutan **identifierare** anger du en URL som följer mönstret`https://sso.everbridge.net/<API_Name>/<Organization_ID>`
+    a. I rutan **identifierare** anger du en URL som följer mönstret `https://sso.everbridge.net/<API_Name>/<Organization_ID>`
 
-    b. I rutan **svars-URL** anger du en URL som följer mönstret`https://member.everbridge.net/saml/SSO/<API_Name>/<Organization_ID>/alias/defaultAlias`
+    b. I rutan **svars-URL** anger du en URL som följer mönstret `https://member.everbridge.net/saml/SSO/<API_Name>/<Organization_ID>/alias/defaultAlias`
 
    * Om du vill konfigurera programmet i SP-initierat läge väljer du **Ange ytterligare URL: er** och följer det här steget:
 
      ![Information om enkel inloggning för EverBridge-domän och URL: er för SP-initierat läge](common/both-signonurl.png)
 
-     a. I rutan **inloggnings-URL** anger du en URL som följer mönstret`https://member.everbridge.net/saml/login/<API_Name>/<Organization_ID>/alias/defaultAlias?disco=true`
+     a. I rutan **inloggnings-URL** anger du en URL som följer mönstret `https://member.everbridge.net/saml/login/<API_Name>/<Organization_ID>/alias/defaultAlias?disco=true`
 
      > [!NOTE]
      > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL: en och inloggnings-URL-värden. Kontakta [EverBridge support-teamet](mailto:support@everbridge.com)om du vill hämta dessa värden. Du kan också referera till mönstren som visas i avsnittet **grundläggande SAML-konfiguration** i Azure Portal.
@@ -168,7 +164,7 @@ Följ dessa steg om du vill konfigurera SSO på **EverBridge** som ett **EverBri
    
      f. Välj **http-omdirigering**för **tjänste leverantörens initierade begär ande bindning**.
 
-     g. Välj **Spara**.
+     ex. Välj **Spara**.
 
 ### <a name="configure-everbridge-as-everbridge-member-portal-single-sign-on"></a>Konfigurera EverBridge som EverBridge-medlems Portal med enkel inloggning
 
@@ -178,7 +174,7 @@ Om du vill konfigurera enkel inloggning på **EverBridge** som en **EverBridge-m
 
 Följ dessa steg om du vill skapa test User Britta Simon i Azure Portal.
 
-1. I Azure Portal i det vänstra fönstret väljer du **Azure Active Directory** > **användare** > **alla användare**.
+1. I Azure Portal i det vänstra fönstret väljer du **Azure Active Directory**  >  **användare**  >  **alla användare**.
 
     ![Användare och alla användare länkar](common/users.png)
 
@@ -202,7 +198,7 @@ Följ dessa steg om du vill skapa test User Britta Simon i Azure Portal.
 
 Aktivera Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till EverBridge.
 
-1. I Azure Portal väljer du **företags program** > **alla program** >**EverBridge**.
+1. I Azure Portal väljer du **företags program**  >  **alla program**  > **EverBridge**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

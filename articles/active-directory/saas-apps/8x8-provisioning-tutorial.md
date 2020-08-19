@@ -2,25 +2,21 @@
 title: 'Självstudie: Konfigurera 8x8 för automatisk användar etablering med Azure Active Directory | Microsoft Docs'
 description: Lär dig hur du automatiskt etablerar och avetablerar användar konton från Azure AD till 8x8.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 81b4cde7-4938-4a1a-8495-003c06239b27
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: d1359ffb28cb98c0e46a6b7eff32c6faa7d00ba4
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 7aaa87691f1ebfa79cd58dae56bf9bd1b979131b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924792"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88538611"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>Självstudie: Konfigurera 8x8 för automatisk användar etablering
 
@@ -120,7 +116,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
 9. Granska de användarattribut som synkroniseras från Azure AD till 8x8 i avsnittet **attribut-mappning** . Attributen som väljs som **matchande** egenskaper används för att matcha användar kontona i 8x8 för uppdaterings åtgärder. Om du väljer att ändra [matchande målattribut](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)måste du se till att 8x8-API: et stöder filtrering av användare baserat på det attributet. Välj knappen **Spara** för att spara ändringarna.
 
-   |Attribut|Typ|Anteckningar|
+   |Attribut|Typ|Kommentarer|
    |---|---|---|
    |userName|Sträng|Anger både användar namn och Federations-ID|
    |externalId|Sträng||

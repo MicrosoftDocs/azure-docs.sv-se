@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 18263f9e77961fb4c169559f221ab94eb4a38840
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: bbdc05d2b5a770791bb81f26a71b9dc3eb7523d5
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207443"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505724"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Arbeta med Azure Functions Core Tools
 
@@ -164,6 +164,9 @@ I terminalfönstret eller från en kommando tolk kör du följande kommando för
 ```
 func init MyFunctionProj
 ```
+
+>[!IMPORTANT]
+> Java använder en maven-archetype för att skapa de lokala Functions-projektet, tillsammans med din första HTTP-utlöst funktion. Använd följande kommando för att skapa ett Java-projekt: `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` . Ett exempel på hur du använder maven-archetype finns i snabb starten av [kommando raden](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java).  
 
 När du anger ett projekt namn skapas och initieras en ny mapp med det namnet. Annars initieras den aktuella mappen.  
 När du kör kommandot måste du välja en körning för projektet i version 3. x/2. x. 
@@ -334,6 +337,14 @@ Kör Functions-värden om du vill köra ett Functions-projekt. Värden aktiverar
 ```
 func start --build
 ```
+
+# <a name="java"></a>[Java](#tab/java)
+
+```
+mvn clean package 
+mvn azure-functions:run
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/node)
 
 ```
@@ -504,6 +515,9 @@ Om du vill publicera din lokala kod i en Function-app i Azure använder du `publ
 ```
 func azure functionapp publish <FunctionAppName>
 ```
+
+>[!IMPORTANT]
+> Java använder Maven för att publicera ditt lokala projekt till Azure. Använd följande kommando för att publicera till Azure: `mvn azure-functions:deploy` . Azure-resurser skapas vid den första distributionen.
 
 Det här kommandot publicerar till en befintlig Function-app i Azure. Du får ett fel meddelande om du försöker publicera till en `<FunctionAppName>` som inte finns i din prenumeration. Information om hur du skapar en Function-app från kommando tolken eller terminalfönstret med hjälp av Azure CLI finns i [skapa en Funktionsapp för Server lös körning](./scripts/functions-cli-create-serverless.md). Som standard använder detta kommando [fjärrversion](functions-deployment-technologies.md#remote-build) och distribuerar din app för [körning från distributions paketet](run-functions-from-deployment-package.md). Om du vill inaktivera det rekommenderade distributions läget använder du `--nozip` alternativet.
 

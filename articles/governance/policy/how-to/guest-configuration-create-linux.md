@@ -1,14 +1,14 @@
 ---
 title: Skapa gästkonfigurationsprinciper för Linux
 description: Lär dig hur du skapar en princip för Azure Policy gäst konfiguration för Linux.
-ms.date: 03/20/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: fef5bdea1b7f98e19f9f8ee8bc9bce8553107fda
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 8bf01d8f69439f7b4d60fba76de0b7abf636c274
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236598"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547728"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Skapa gästkonfigurationsprinciper för Linux
 
@@ -25,9 +25,8 @@ Använd följande åtgärder för att skapa en egen konfiguration för att verif
 > [!IMPORTANT]
 > Anpassade principer med gäst konfiguration är en förhands gransknings funktion.
 >
-> Gästkonfigurationstillägget krävs för att utföra granskningar på virtuella Azure-datorer.
-> Om du vill distribuera tillägget i skala över alla Linux-datorer tilldelar du följande princip definition:
->   - [Distribuera krav för att aktivera principen för gäst konfiguration på virtuella Linux-datorer.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
+> Gästkonfigurationstillägget krävs för att utföra granskningar på virtuella Azure-datorer. Om du vill distribuera tillägget i skala över alla Linux-datorer tilldelar du följande princip definition:
+> - [Distribuera krav för att aktivera principen för gäst konfiguration på virtuella Linux-datorer.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
 ## <a name="install-the-powershell-module"></a>Installera PowerShell-modulen
 
@@ -52,8 +51,7 @@ Operativ system där modulen kan installeras:
 - Windows
 
 > [!NOTE]
-> Cmdleten "test-GuestConfigurationPackage" kräver OpenSSL version 1,0, på grund av ett beroende på OMI.
-> Detta orsakar ett fel i en miljö med OpenSSL 1,1 eller senare.
+> Cmdleten "test-GuestConfigurationPackage" kräver OpenSSL version 1,0, på grund av ett beroende på OMI. Detta orsakar ett fel i en miljö med OpenSSL 1,1 eller senare.
 
 Resurs modulen för gäst konfiguration kräver följande program vara:
 
@@ -81,7 +79,8 @@ Så här installerar du **GuestConfiguration** -modulen i PowerShell:
 
 ## <a name="guest-configuration-artifacts-and-policy-for-linux"></a>Artefakter och principer för gäst konfiguration för Linux
 
-Till och med i Linux-miljöer använder gäst konfigurationen önskad tillstånds konfiguration som en språk abstraktion. Implementeringen är baserad i intern kod (C++) så att den inte kräver inläsning av PowerShell. Men det krävs en konfigurations-MOF som beskriver information om miljön. DSC agerar som en omslutning för att standardisera hur den körs, hur parametrar anges och hur utdata returneras till tjänsten. Lite kunskap om DSC krävs när du arbetar med anpassad INSPEC-information.
+Till och med i Linux-miljöer använder gäst konfigurationen önskad tillstånds konfiguration som en språk abstraktion. Implementeringen är baserad i intern kod (C++) så att den inte kräver inläsning av PowerShell. Men det krävs en konfigurations-MOF som beskriver information om miljön.
+DSC agerar som en omslutning för att standardisera hur den körs, hur parametrar anges och hur utdata returneras till tjänsten. Lite kunskap om DSC krävs när du arbetar med anpassad INSPEC-information.
 
 #### <a name="configuration-requirements"></a>Konfigurations krav
 
@@ -141,8 +140,6 @@ AuditFilePathExists -out ./Config
 Spara filen med namnet `config.ps1` i projektmappen. Kör den i PowerShell genom att köra `./config.ps1` i terminalen. En ny MOF-fil kommer att skapas.
 
 `Node AuditFilePathExists`Kommandot är inte tekniskt obligatoriskt, utan skapar en fil med namnet `AuditFilePathExists.mof` istället för standardvärdet `localhost.mof` . Med hjälp av MOF-filnamn följer du konfigurationen och gör det enkelt att ordna många filer när de körs i stor skala.
-
-
 
 Nu bör du ha en projekt struktur enligt nedan:
 
@@ -288,8 +285,7 @@ Följande filer skapas av `New-GuestConfigurationPolicy` :
 
 Cmdlet-utdata returnerar ett objekt som innehåller initiativets visnings namn och sökväg.
 
-Publicera sedan princip definitionerna med hjälp av `Publish-GuestConfigurationPolicy` cmdleten.
-Cmdleten har bara **Sök vägs** parametern som pekar på platsen för de JSON-filer som skapas av `New-GuestConfigurationPolicy` .
+Publicera sedan princip definitionerna med hjälp av `Publish-GuestConfigurationPolicy` cmdleten. Cmdleten har bara **Sök vägs** parametern som pekar på platsen för de JSON-filer som skapas av `New-GuestConfigurationPolicy` .
 
 Om du vill köra kommandot Publicera måste du ha åtkomst till skapa principer i Azure. De särskilda kraven för auktorisering finns dokumenterade på sidan [Azure policy översikt](../overview.md) . Den bästa inbyggda rollen är **resurs princip deltagare**.
 
@@ -459,5 +455,5 @@ Mer information om cmdletarna i det här verktyget får du genom att använda ko
 ## <a name="next-steps"></a>Nästa steg
 
 - Lär dig mer om att granska virtuella datorer med [gäst konfiguration](../concepts/guest-configuration.md).
-- Lär dig att [program mässigt skapa principer](programmatically-create.md).
-- Lär dig hur du [hämtar efterlevnadsprinciper](get-compliance-data.md).
+- Lär dig att [program mässigt skapa principer](./programmatically-create.md).
+- Lär dig hur du [hämtar efterlevnadsprinciper](./get-compliance-data.md).

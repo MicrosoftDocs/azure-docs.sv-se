@@ -67,7 +67,9 @@
       items:
         - name: Autentisera och auktorisera
           href: time-series-insights-authentication-and-authorization.md
-        - name: Fråga data med hjälp av C#
+        - name: Fråga data med hjälp av C# – Gen2
+          href: time-series-insights-update-query-data-csharp.md
+        - name: Fråga data med hjälp av C# – Gen1
           href: time-series-insights-query-data-csharp.md
         - name: Hantera referensdata med C#
           href: time-series-insights-manage-reference-data-csharp.md

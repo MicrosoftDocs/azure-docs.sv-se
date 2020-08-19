@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc2030f589185fd39c0f10b00c012db038a4e008
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 394a4c171153ecf50ff5d755c42e3c5f939b2ec7
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848719"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507186"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrera din VPN-infrastruktur med Azure MFA genom att använda nätverks princip Server tillägget för Azure
 
@@ -308,6 +308,10 @@ Om du behöver hjälp med att konfigurera användare för Multi-Factor Authentic
 
 Det här avsnittet innehåller instruktioner för hur du konfigurerar VPN att använda MFA för klientautentisering med VPN-servern.
 
+> [!NOTE]
+> Register nyckeln REQUIRE_USER_MATCH är Skift läges känslig. Alla värden måste anges i versal format.
+>
+
 När du har installerat och konfigurerat NPS-tillägget krävs all RADIUS-baserad klientautentisering som bearbetas av den här servern för att använda MFA. Om alla VPN-användare inte har registrerats i Azure Multi-Factor Authentication kan du göra något av följande:
 
 * Konfigurera en annan RADIUS-server för att autentisera användare som inte är konfigurerade att använda MFA.
@@ -319,6 +323,8 @@ Skapa ett nytt sträng värde med namnet _REQUIRE_USER_MATCH i HKLM\SOFTWARE\Mic
 ![Inställningen Kräv användar matchning](./media/howto-mfa-nps-extension-vpn/image34.png)
 
 Om värdet är inställt på *Sant* eller tomt, omfattas alla autentiseringsbegäranden till en MFA-utmaning. Om värdet är *false*utfärdas MFA-utmaningarna endast till användare som är registrerade i Azure Multi-Factor Authentication. Använd inställningen *falskt* endast vid testning eller i produktions miljöer under en onboarding-period.
+
+
 
 ### <a name="obtain-the-azure-active-directory-tenant-id"></a>Hämta Azure Active Directory klient-ID
 
@@ -390,7 +396,7 @@ Om du vill använda skriptet anger du fil namns tillägget med Azure Active Dire
 
 6. Starta om servern.
 
-### <a name="verify-the-configuration"></a>Kontrollera konfigurationen
+### <a name="verify-the-configuration"></a>Verifiera konfigurationen
 
 För att verifiera konfigurationen måste du upprätta en ny VPN-anslutning till VPN-servern. När du har angett dina autentiseringsuppgifter för primär autentisering, väntar VPN-anslutningen på att den sekundära autentiseringen ska lyckas innan anslutningen upprättas, som du ser nedan.
 

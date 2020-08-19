@@ -3,12 +3,12 @@ title: Använda Azure Backup Server för att säkerhetskopiera arbets belastning
 description: I den här artikeln lär du dig hur du förbereder din miljö för att skydda och säkerhetskopiera arbets belastningar med hjälp av Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 74706e772371c39b96b0cb02bd09ec70ad4d43f6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 76f212875c7f48d9436295f523660b7a298ce7f0
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539133"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263341"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Installera och uppgradera Azure Backup Server
 
@@ -35,7 +35,7 @@ MABS som distribueras i en virtuell Azure-dator kan säkerhetskopiera virtuella 
 >
 >
 
-Azure Backup Server ärver många av funktionerna för säkerhets kopiering av arbets belastning från Data Protection Manager (DPM). Den här artikeln länkar till DPM-dokumentationen för att förklara några av de delade funktionerna. Även om Azure Backup Server delar mycket av samma funktioner som DPM, kan Azure Backup Server inte säkerhetskopiera till band eller integrera den med System Center.
+Azure Backup Server ärver många av funktionerna för säkerhets kopiering av arbets belastning från Data Protection Manager (DPM). Den här artikeln länkar till DPM-dokumentationen för att förklara några av de delade funktionerna. Även om Azure Backup Server delar mycket av samma funktioner som DPM, Azure Backup Server inte säkerhets kopie ras till band eller integreras inte med System Center.
 
 ## <a name="choose-an-installation-platform"></a>Välj en installations plattform
 
@@ -84,10 +84,10 @@ Med alternativet för lagringsreplikering kan du välja mellan geo-redundant lag
 
 Så här redigerar du inställningen för lagringsreplikering:
 
-1. På bladet **Recovery Services-valv** klickar du på det nya valvet. Under avsnittet **Inställningar** klickar du på **Egenskaper**.
-2. I **Egenskaper**, under **säkerhets kopierings konfiguration**, klickar du på **Uppdatera**.
+1. Välj det nya valvet i fönstret **Recovery Services valv** . Under avsnittet **Inställningar** väljer du  **Egenskaper**.
+2. I **Egenskaper**, under **säkerhets kopierings konfiguration**, väljer du **Uppdatera**.
 
-3. Välj typ av lagrings replikering och klicka på **Spara**.
+3. Välj typ av lagrings replikering och välj **Spara**.
 
      ![Ange lagringskonfigurationen för det nya valvet](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
@@ -96,10 +96,10 @@ Så här redigerar du inställningen för lagringsreplikering:
 ### <a name="downloading-the-software-package"></a>Laddar ned programpaketet
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
-2. Om du redan har ett Recovery Services-valv öppet går du vidare till steg 3. Om du inte har ett Recovery Services-valv öppet, men är i Azure Portal klickar du på **Bläddra**i huvud menyn.
+2. Om du redan har ett Recovery Services-valv öppet, Fortsätt till steg 3. Om du inte har ett Recovery Services-valv öppet, men är i Azure Portal väljer du **Bläddra**i huvud menyn.
 
    * I listan över resurser skriver du **Recovery Services**.
-   * När du börjar skriva filtreras listan baserat på det du skriver. När du ser **Recovery Services-valv** klickar du på det.
+   * När du börjar skriva filtreras listan baserat på det du skriver. När du ser **Recovery Services valv**väljer du det.
 
      ![Skapa Recovery Services-valv (steg 1)](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
@@ -108,23 +108,23 @@ Så här redigerar du inställningen för lagringsreplikering:
 
      Instrumentpanelen för det valda valvet öppnas.
 
-     ![Öppna bladet för valvet](./media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
-3. Bladet **Inställningar** öppnas som standard. Om den är stängd klickar du på **Inställningar** för att öppna bladet inställningar.
+     ![Valv instrument panel](./media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
+3. Fönstret **Inställningar** öppnas som standard. Om den är stängd väljer du **Inställningar** för att öppna fönstret inställningar.
 
-    ![Öppna bladet för valvet](./media/backup-azure-microsoft-azure-backup/vault-setting.png)
-4. Klicka på **säkerhets kopiering** för att öppna guiden komma igång.
+    ![Fönstret inställningar](./media/backup-azure-microsoft-azure-backup/vault-setting.png)
+4. Välj **säkerhets kopiering** för att öppna guiden komma igång.
 
     ![Komma igång med säkerhets kopiering](./media/backup-azure-microsoft-azure-backup/getting-started-backup.png)
 
-    På bladet **komma igång med säkerhets kopia** som öppnas, väljs **säkerhets kopierings mål** automatiskt.
+    I rutan **komma igång med säkerhets kopiering** som öppnas väljs **säkerhets kopierings mål** automatiskt.
 
     ![Säkerhets kopiering-mål – standard – öppnade](./media/backup-azure-microsoft-azure-backup/getting-started.png)
 
-5. På bladet **säkerhets kopierings mål** väljer du **lokalt**på menyn **där är din arbets belastning som körs** .
+5. I fönstret **säkerhets kopierings mål** , från menyn **där är din arbets belastning som körs** , väljer du **lokalt**.
 
     ![lokalt och arbets belastningar som mål](./media/backup-azure-microsoft-azure-backup/backup-goals-azure-backup-server.png)
 
-    På list menyn **vad vill du säkerhetskopiera?** väljer du de arbets belastningar som du vill skydda med Azure Backup Server och klickar sedan på **OK**.
+    Från List rutan **vad vill du säkerhetskopiera?** väljer du de arbets belastningar som du vill skydda med Azure Backup Server och väljer sedan **OK**.
 
     Guiden **komma igång med säkerhets kopiering** växlar till alternativet **Förbered infrastruktur** för att säkerhetskopiera arbets belastningar till Azure.
 
@@ -135,11 +135,11 @@ Så här redigerar du inställningen för lagringsreplikering:
 
     ![Ändring av guiden Komma igång](./media/backup-azure-microsoft-azure-backup/getting-started-prep-infra.png)
 
-6. På bladet **Förbered infrastruktur** som öppnas klickar du på länken **Hämta** Länkar för installation Azure Backup Server och laddar ned autentiseringsuppgifter för valvet. Du använder autentiseringsuppgifterna för valvet under registreringen av Azure Backup Server i Recovery Services-valvet. Länkarna tar dig till Download Center där du kan ladda ned program varu paketet.
+6. I fönstret **Förbered infrastruktur** som öppnas väljer du länken **Hämta** Länkar för installation Azure Backup Server och laddar ned autentiseringsuppgifter för valvet. Du använder autentiseringsuppgifterna för valvet under registreringen av Azure Backup Server i Recovery Services-valvet. Länkarna tar dig till Download Center där du kan ladda ned program varu paketet.
 
     ![Förbered infrastruktur för Azure Backup Server](./media/backup-azure-microsoft-azure-backup/azure-backup-server-prep-infra.png)
 
-7. Markera alla filer och klicka på **Nästa**. Hämta alla filer som kommer från sidan Microsoft Azure Backup hämtning och placera alla filer i samma mapp.
+7. Markera alla filer och välj **Nästa**. Hämta alla filer som kommer från sidan Microsoft Azure Backup hämtning och placera alla filer i samma mapp.
 
     ![Hämta Center 1](./media/backup-azure-microsoft-azure-backup/downloadcenter.png)
 
@@ -147,26 +147,26 @@ Så här redigerar du inställningen för lagringsreplikering:
 
 ### <a name="extracting-the-software-package"></a>Extrahera programpaketet
 
-När du har hämtat alla filer klickar du på **MicrosoftAzureBackupInstaller.exe**. Då startas **guiden Microsoft Azure Backup installations guiden** för att extrahera installationsfilerna till en plats som du har angett. Fortsätt genom guiden och klicka på **extraherings** knappen för att starta extraherings processen.
+När du har laddat ned alla filer väljer du **MicrosoftAzureBackupInstaller.exe**. Då startas **guiden Microsoft Azure Backup installations guiden** för att extrahera installationsfilerna till en plats som du har angett. Fortsätt genom guiden och välj **extraherings** knappen för att starta extraherings processen.
 
 > [!WARNING]
 > Det krävs minst 4 GB ledigt utrymme för att extrahera installationsfilerna.
 >
 >
 
-![Microsoft Azure Backup installations guiden](./media/backup-azure-microsoft-azure-backup/extract/03.png)
+![Installations programmet extraherar filer för installation](./media/backup-azure-microsoft-azure-backup/extract/03.png)
 
-När extraherings processen har slutförts markerar du kryss rutan för att starta den nyligen extraherade *setup.exe* för att börja installera Microsoft Azure Backup Server och klickar på knappen **Slutför** .
+När extraherings processen har slutförts markerar du kryss rutan för att starta den nyligen extraherade *setup.exe* för att börja installera Microsoft Azure Backup Server och väljer på knappen **Slutför** .
 
 ### <a name="installing-the-software-package"></a>Installera programpaketet
 
-1. Klicka på **Microsoft Azure Backup** för att starta installations guiden.
+1. Välj **Microsoft Azure Backup** för att starta installations guiden.
 
     ![Microsoft Azure Backup installations guiden](./media/backup-azure-microsoft-azure-backup/launch-screen2.png)
-2. Klicka på knappen **Nästa** på Välkomst skärmen. Detta tar dig till avsnittet *krav kontroll* . På den här skärmen klickar du på **kontrol lera** för att avgöra om maskin-och program varu kraven för Azure Backup Server är uppfyllda. Om alla krav har uppfyllts visas ett meddelande som anger att datorn uppfyller kraven. Klicka på knappen **Nästa** .
+2. På Välkomst skärmen väljer du knappen **Nästa** . Detta tar dig till avsnittet *krav kontroll* . På den här skärmen väljer du **kontrol lera** för att fastställa om maskin-och program varu kraven för Azure Backup Server har uppfyllts. Om alla krav har uppfyllts visas ett meddelande som anger att datorn uppfyller kraven. Välj knappen **Nästa**.
 
     ![Azure Backup Server-Välkommen och krav kontroll](./media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
-3. Installations paketet för Azure Backup Server levereras med lämpliga SQL Server binärfiler som behövs. När du startar en ny Azure Backup Server-installation väljer du alternativet **installera ny instans av SQL Server med den här installationen** och klickar på knappen **kontrol lera och installera** . När de nödvändiga komponenterna har installerats klickar du på **Nästa**.
+3. Installations paketet för Azure Backup Server levereras med lämpliga SQL Server binärfiler som behövs. När du startar en ny Azure Backup Server-installation väljer du alternativet **installera ny instans av SQL Server med den här installationen** och klickar på knappen **kontrol lera och installera** . När du har installerat nödvändiga komponenter väljer du **Nästa**.
 
     >[!NOTE]
     >Om du vill använda din egen SQL Server är de SQL Server-versioner som stöds SQL Server 2014 SP1 eller högre, 2016 och 2017.  Alla SQL Server-versioner ska vara standard eller Enterprise 64-bitars.
@@ -174,7 +174,7 @@ När extraherings processen har slutförts markerar du kryss rutan för att star
 
     ![Azure Backup Server-SQL-kontroll](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 
-    Om ett fel inträffar med en rekommendation om att starta om datorn gör du det och klickar på **kontrol lera igen**. Om det finns några problem med SQL-konfigurationen konfigurerar du om SQL enligt SQL-rikt linjerna och försöker installera/uppgradera MABS med hjälp av den befintliga SQL-instansen.
+    Om ett fel inträffar med en rekommendation om att starta om datorn gör du det och väljer **kontrol lera igen**. Om det finns några problem med SQL-konfigurationen konfigurerar du om SQL enligt SQL-rikt linjerna och försöker installera/uppgradera MABS med hjälp av den befintliga SQL-instansen.
 
    **Manuell konfiguration**
 
@@ -195,35 +195,35 @@ När extraherings processen har slutförts markerar du kryss rutan för att star
     > [!NOTE]
     > Licensiering för SQL Server som används som databas för MABS styrs av [Microsoft Online Services-villkoren](https://www.microsoft.com/licensing/product-licensing/products) (ost). Enligt OST kan SQL Server paketerad med MABS endast användas som databas för MABS.
 
-4. Ange en plats för installationen av Microsoft Azure Backup Server-filerna och klicka på **Nästa**.
+4. Ange en plats för installationen av Microsoft Azure Backup server-filer och välj **Nästa**.
 
-    ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/space-screen.png)
+    ![Ange plats för installation av filer](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
     Arbets platsen är ett krav för säkerhets kopiering till Azure. Se till att arbets platsen är minst 5% av de data som planeras att säkerhets kopie ras till molnet. För disk skydd måste separata diskar konfigureras när installationen är klar. Mer information om lagringspooler finns i [förbereda data lagring](/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019).
-5. Ange ett starkt lösen ord för begränsade lokala användar konton och klicka på **Nästa**.
+5. Ange ett starkt lösen ord för begränsade lokala användar konton och välj **Nästa**.
 
-    ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/security-screen.png)
-6. Välj om du vill använda *Microsoft Update* för att söka efter uppdateringar och klicka på **Nästa**.
+    ![Ange ett starkt lösen ord](./media/backup-azure-microsoft-azure-backup/security-screen.png)
+6. Välj om du vill använda *Microsoft Update* för att söka efter uppdateringar och välj **Nästa**.
 
    > [!NOTE]
    > Vi rekommenderar att du Windows Update omdirigera till Microsoft Update, som erbjuder säkerhet och viktiga uppdateringar för Windows och andra produkter som Microsoft Azure Backup Server.
    >
    >
 
-    ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
-7. Granska *sammanfattningen av inställningarna* och klicka på **Installera**.
+    ![Microsoft Update Anmäl dig](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
+7. Granska *sammanfattningen av inställningarna* och välj **Installera**.
 
-    ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/summary-screen.png)
-8. Installationen sker i faser. I den första fasen installeras Microsoft Azure Recovery Services-agenten på-servern. Guiden kontrollerar också om det är en Internet anslutning. Om Internet anslutningen är tillgänglig kan du fortsätta med installationen, om inte behöver du ange information om proxyn för att ansluta till Internet.
+    ![Sammanfattning av inställningar](./media/backup-azure-microsoft-azure-backup/summary-screen.png)
+8. Installationen sker i faser. I den första fasen installeras Microsoft Azure Recovery Services-agenten på-servern. Guiden kontrollerar också om det är en Internet anslutning. Om Internet anslutningen är tillgänglig kan du fortsätta med installationen. Annars måste du ange information om proxyn för att ansluta till Internet.
 
     Nästa steg är att konfigurera Microsoft Azure Recovery Services agenten. Som en del av konfigurationen måste du ange dina autentiseringsuppgifter för valvet för att registrera datorn i Recovery Services-valvet. Du får också en lösen fras för att kryptera/dekryptera data som skickas mellan Azure och dina lokaler. Du kan generera en lösen fras automatiskt eller ange en egen lösen fras för lösen ord på 16. Fortsätt med guiden tills agenten har kon figurer ATS.
 
-    ![Azure Backup Server PreReq2](./media/backup-azure-microsoft-azure-backup/mars/04.png)
+    ![Guiden Registrera Server](./media/backup-azure-microsoft-azure-backup/mars/04.png)
 9. När registreringen av Microsoft Azure Backup servern har slutförts fortsätter den övergripande installations guiden till installationen och konfigurationen av SQL Server och Azure Backup Server-komponenterna. När installationen av SQL Server-komponenten är klar installeras Azure Backup Server-komponenterna.
 
-    ![Azure Backup Server](./media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
+    ![Azure Backup Server installations förlopp](./media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
 
-När installations steget har slutförts kommer produktens Skriv bords ikoner också att skapas. Dubbelklicka bara på ikonen för att starta produkten.
+När installations steget har slutförts kommer produktens Skriv bords ikoner också att skapas. Dubbelklicka på ikonen för att starta produkten.
 
 ### <a name="add-backup-storage"></a>Lägg till säkerhets kopierings lagring
 
@@ -292,10 +292,10 @@ När du känner till statusen för Azure-anslutningen och Azure-prenumerationen 
 | Anslutnings tillstånd | Azure Subscription (Azure-prenumeration) | Säkerhetskopiera till Azure | Säkerhetskopiera till disk | Återställa från Azure | Återställa från disk |
 | --- | --- | --- | --- | --- | --- |
 | Ansluten |Aktiv |Tillåts |Tillåts |Tillåts |Tillåts |
-| Ansluten |Expired (Har upphört) |Stoppad |Stoppad |Tillåts |Tillåts |
+| Ansluten |Upphörd |Stoppad |Stoppad |Tillåts |Tillåts |
 | Ansluten |Avetableras |Stoppad |Stoppad |Stoppade och Azure-återställnings punkter har tagits bort |Stoppad |
 | Förlorad anslutning > 15 dagar |Aktiv |Stoppad |Stoppad |Tillåts |Tillåts |
-| Förlorad anslutning > 15 dagar |Expired (Har upphört) |Stoppad |Stoppad |Tillåts |Tillåts |
+| Förlorad anslutning > 15 dagar |Upphörd |Stoppad |Stoppad |Tillåts |Tillåts |
 | Förlorad anslutning > 15 dagar |Avetableras |Stoppad |Stoppad |Stoppade och Azure-återställnings punkter har tagits bort |Stoppad |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Återställning från förlust av anslutning
@@ -320,10 +320,10 @@ När anslutningen till Azure har återställts till den Azure Backup Server dato
 
 ### <a name="handling-subscription-states"></a>Hantera prenumerations tillstånd
 
-Det går att ta en Azure-prenumeration från ett *utgånget* eller *avetablerat* tillstånd till det *aktiva* tillståndet. Detta har dock vissa konsekvenser för produktens beteende medan statusen inte är *aktiv*:
+Det går att ta en Azure-prenumeration från ett *utgånget* eller *avetablerat* tillstånd till det *aktiva* tillståndet. Detta har dock vissa följder av produkt beteendet när statusen inte är *aktiv*:
 
-* En *avetablerad* prenumeration förlorar funktioner under den period som den avetableras. När den *aktive*ras är produkt funktionerna i Backup/Restore återupplivat. Du kan också hämta säkerhets kopierings data på den lokala disken om den behålls med en tillräckligt stor kvarhållningsperiod. Säkerhets kopierings data i Azure är dock irretrievably förlorade när prenumerationen övergår till *avetablerat* tillstånd.
-* En *utgången* prenumeration förlorar bara funktioner för tills den har gjorts *aktiv* igen. Eventuella säkerhets kopieringar som är schemalagda för den period då prenumerationen gick *ut* kommer inte att köras.
+* En *avetablerad* prenumeration förlorar funktioner under den period som den avetablerats. När den *aktive*ras är produkt funktionerna i Backup/Restore återupplivat. Du kan också hämta säkerhets kopierings data på den lokala disken om den behålls med en tillräckligt stor kvarhållningsperiod. Säkerhets kopierings data i Azure är dock irretrievably förlorade när prenumerationen övergår till *avetablerat* tillstånd.
+* En *utgången* prenumeration förlorar bara funktioner för tills den har gjorts *aktiv* igen. Eventuella säkerhets kopieringar som har schemalagts för den period då prenumerationen gick *ut* kommer inte att köras.
 
 ## <a name="upgrade-mabs"></a>Uppgradera MABS
 
@@ -339,7 +339,7 @@ Använd följande steg för att uppgradera MABS:
 
 1. Uppgradera operativ systemet till Windows Server 2016 eller Windows Server 2019 om det behövs för att uppgradera från MABS v2 till MABS v3.
 
-2. Uppgradera servern. Stegen liknar [installationen](#install-and-upgrade-azure-backup-server). Men för SQL-inställningar kommer du att få ett alternativ för att uppgradera SQL-instansen till SQL 2017 eller använda din egen instans av SQL Server 2017.
+2. Uppgradera servern. Stegen liknar [installationen](#install-and-upgrade-azure-backup-server). Men för SQL-inställningar får du ett alternativ för att uppgradera SQL-instansen till SQL 2017, eller för att använda din egen instans av SQL Server 2017.
 
    > [!NOTE]
    >
@@ -353,11 +353,11 @@ Använd följande steg för att uppgradera MABS:
 
 3. Uppdatera skydds agenterna på de skyddade servrarna.
 4. Säkerhets kopieringarna bör fortsätta utan att du behöver starta om produktions servrarna.
-5. Du kan börja skydda dina data nu. Om du uppgraderar till Modern Backup Storage, samtidigt som du skyddar, kan du även välja de volymer som du vill lagra säkerhets kopiorna i och kontrol lera under allokerat utrymme. [Läs mer](backup-mabs-add-storage.md).
+5. Du kan börja skydda dina data nu. Om du uppgraderar till Modern Backup Storage, samtidigt som du skyddar, kan du även välja de volymer som du vill lagra säkerhets kopiorna i och kontrol lera om det finns ett allokerat utrymme. [Läs mer](backup-mabs-add-storage.md).
 
 ## <a name="troubleshooting"></a>Felsökning
 
-Om Microsoft Azure Backup-servern Miss lyckas med fel under installations fasen (eller säkerhets kopiering eller återställning) läser du det här [fel kods dokumentet](https://support.microsoft.com/kb/3041338) för mer information.
+Om Microsoft Azure Backup-servern Miss lyckas med fel under installations fasen (eller säkerhets kopiering eller återställning) läser du det här [fel kods dokumentet](https://support.microsoft.com/kb/3041338)  för mer information.
 Du kan också läsa [Azure Backup relaterade vanliga frågor och svar](backup-azure-backup-faq.md)
 
 ## <a name="next-steps"></a>Nästa steg

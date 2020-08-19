@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 9a393e29c4b5b2faa48cbcd273c7bc7a46169ba3
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: d4938d2e4649d62ab656b6854e8176fd82b59a8f
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904198"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587743"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Självstudie: skapa ett Azure Red Hat OpenShift 4-kluster
 
@@ -22,13 +22,13 @@ I den här självstudien, som är del ett av tre, förbereder du din miljö för
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-Om du väljer att installera och använda CLI lokalt kräver den här självstudien att du kör Azure CLI-version 2.0.75 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Om du väljer att installera och använda CLI lokalt kräver den här självstudien att du kör Azure CLI-version 2.6.0 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ### <a name="verify-your-permissions"></a>Verifiera dina behörigheter
 
 Om du vill skapa ett Azure Red Hat OpenShift-kluster kontrollerar du följande behörigheter för din Azure-prenumeration, Azure Active Directory användare eller tjänstens huvud namn:
 
-|Behörigheter|Resurs grupp som innehåller VNet|Användaren körs`az aro create`|Tjänstens huvud namn angavs som`–client-id`|
+|Behörigheter|Resurs grupp som innehåller VNet|Användaren körs `az aro create`|Tjänstens huvud namn angavs som `–client-id`|
 |----|:----:|:----:|:----:|
 |**Administratör för användaråtkomst**|X|X| |
 |**Deltagare**|X|X|X|

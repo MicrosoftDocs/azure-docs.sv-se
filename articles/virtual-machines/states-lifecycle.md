@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: 0613b4c444b9eacaaf2b9d3e0795f4872cb903f3
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: cd104a31fdba932481889db198ae3cc4998a4466
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182959"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261896"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>Livscykler och tillstånd för Virtual Machines
 
@@ -31,7 +31,7 @@ Följande tabell innehåller en beskrivning av varje instans tillstånd och indi
 :::row:::
    :::column span="":::
 
-   **Låst**
+   **Stat**
    
    :::column-end:::
    :::column span="":::
@@ -232,7 +232,7 @@ Här följer över gångs åtgärds tillstånd efter att plattformen har accepte
 :::row:::
    :::column span="":::
 
-   **Låst**
+   **Stat**
    
    :::column-end:::
    :::column span="2":::
@@ -423,6 +423,8 @@ Instans visnings-API: et tillhandahåller information om den virtuella datorns k
 Azures resurs Utforskaren innehåller ett enkelt användar gränssnitt för att visa den virtuella datorn som kör tillstånd: [Resursläsaren](https://resources.azure.com/).
 
 Etablerings tillstånd visas på VM-egenskaper och instans visning. Energi spar lägen är tillgängliga i instans visning av virtuell dator.
+
+Om du vill hämta energi läget för alla virtuella datorer i din prenumeration använder du [Virtual Machines-List all API](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall) med parametern **statusOnly** inställd på *True*.
 
 ## <a name="next-steps"></a>Nästa steg
 

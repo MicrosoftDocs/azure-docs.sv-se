@@ -1,14 +1,14 @@
 ---
 title: Hantera Azure Sentinel-arbetsytor i skala
 description: Lär dig hur du effektivt hanterar Azure Sentinel på delegerade kund resurser.
-ms.date: 06/17/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: fc6d66a31ed46766bbe664fd8656792c97ff69fd
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 1734efb57b18cfc559144b13aaecb882612ca73b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163245"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511260"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Hantera Azure Sentinel-arbetsytor i skala
 
@@ -69,9 +69,9 @@ Du kan distribuera arbets böcker i hanterings klienten och skapa instrument pan
 
 Du kan också distribuera arbets böcker direkt i en enskild klient som du hanterar för scenarier som är specifika för kunden.
 
-## <a name="run-queries-across-azure-sentinel-workspaces"></a>Köra frågor i Azure Sentinel-arbetsytor
+## <a name="run-log-analytics-and-hunting-queries-across-azure-sentinel-workspaces"></a>Kör Log Analytics-och jakt frågor i Azure Sentinel-arbetsytor
 
-Du kan skapa och spara Log Analytics frågor för att identifiera hot centralt i hanterings klienten. Dessa frågor kan sedan köras i alla dina kunders Azure Sentinel-arbetsytor med hjälp av operatorn union och arbetsyte (). Mer information finns i [frågor om flera arbets ytor](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying).
+Du kan skapa och spara Log Analytics frågor för att identifiera hot centralt i hanterings klienten, inklusive [jakt frågor](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-hunting). Dessa frågor kan sedan köras i alla dina kunders Azure Sentinel-arbetsytor med hjälp av operatorn union och arbetsyte (). Mer information finns i [frågor om flera arbets ytor](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying).
 
 ## <a name="use-automation-for-cross-workspace-management"></a>Använd Automation för hantering över arbets ytor
 

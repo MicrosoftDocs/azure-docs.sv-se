@@ -1,14 +1,14 @@
 ---
 title: Konfigurera ett delat avbildnings galleri i Azure DevTest Labs | Microsoft Docs
-description: Lär dig hur du konfigurerar ett delat avbildnings galleri i Azure DevTest Labs
+description: Lär dig hur du konfigurerar ett delat avbildnings galleri i Azure DevTest Labs, vilket ger användare åtkomst till bilder från en delad plats när du skapar labb resurser.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: f4a80062a245530c5d15e761a9eb7dc95fee091e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ec08fa741c1b52d3dd1d1e2b4247d3689190020
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483796"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271047"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Konfigurera ett delat bildgalleri i Azure DevTest Labs
 DevTest Labs stöder nu funktionen för [delad bild galleri](../virtual-machines/windows/shared-image-galleries.md) . Det gör det möjligt för labb användare att komma åt bilder från en delad plats när du skapar labb resurser. Det hjälper dig också att bygga struktur och organisation runt dina anpassade avbildningar av virtuella datorer. Funktionen för delad bild galleri stöder:
@@ -25,7 +25,7 @@ Om du har ett stort antal hanterade avbildningar som du behöver underhålla och
 > [!NOTE]
 > Mer information om kostnader som är associerade med tjänsten för delad avbildning finns i [fakturering för delade avbildnings Galleri](../virtual-machines/windows/shared-image-galleries.md#billing).
 
-## <a name="considerations"></a>Att tänka på
+## <a name="considerations"></a>Överväganden
 - Du kan bara koppla ett delat bild galleri till ett labb i taget. Om du vill koppla ett annat galleri måste du koppla från det befintliga ett och koppla ett annat. 
 - DevTest Labs har för närvarande inte stöd för att ladda upp bilder till galleriet via labbet. 
 - När du skapar en virtuell dator med hjälp av en delad avbildning av galleriet, använder DevTest Labs alltid den senaste publicerade versionen av den här avbildningen. Om en avbildning har flera versioner kan användaren dock välja att skapa en dator från en tidigare version genom att gå till fliken Avancerade inställningar när du skapar en virtuell dator.  

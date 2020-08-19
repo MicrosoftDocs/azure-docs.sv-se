@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med SAML SSO för JIRA med hjälp av resolution GmbH | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och SAML SSO for Jira by resolution GmbH.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 20e18819-e330-4e40-bd8d-2ff3b98e035f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b31bc86554998295bc97352d28fa3b3d4b330abe
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 44077c2685ce78b7ba1ea140a34dd75dcf5c7c46
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146568"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543473"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>Självstudie: Azure Active Directory integrering med SAML SSO för JIRA med hjälp av resolution GmbH
 
@@ -35,7 +30,7 @@ Integreringen av SAML SSO for Jira by resolution GmbH med Azure AD medför följ
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering och SAML SSO för JIRA med hjälp av resolution GmbH behöver du följande objekt:
 
@@ -106,15 +101,15 @@ Utför följande steg för att konfigurera enkel inloggning med SAML SSO för JI
 
     ![Information om enkel inloggning med SAML SSO for Jira by resolution GmbH-domäner och -URL:er](common/idp-intiated.png)
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://<server-base-url>/plugins/servlet/samlsso`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://<server-base-url>/plugins/servlet/samlsso`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<server-base-url>/plugins/servlet/samlsso`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<server-base-url>/plugins/servlet/samlsso`
 
     c. Klicka på **Ange ytterligare URL: er** och utför följande steg om du vill konfigurera programmet i läget **SP** -initierat:
 
     ![Information om enkel inloggning med SAML SSO for Jira by resolution GmbH-domäner och -URL:er](common/metadata-upload-additional-signon.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<server-base-url>/plugins/servlet/samlsso`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<server-base-url>/plugins/servlet/samlsso`
 
     > [!NOTE]
     > För ID: t, svars-URL och inloggnings-URL ersätter du **\<server-base-url>** med bas-URL: en för din JIRA-instans. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen. Om du har problem kan du kontakta oss på [SAML SSO för JIRA av support teamet för resolution GmbH-klienten](https://www.resolution.de/go/support).
@@ -241,7 +236,7 @@ I det här avsnittet lägger du till Britta Simon i företags programmet, vilket
 
     ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-4. Välj **Lägg till användare**och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+4. Välj **Lägg till användare**och välj sedan  **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 
     ![Fönstret Lägg till tilldelning](common/add-assign-user.png)
 
@@ -275,7 +270,7 @@ För att Azure AD-användare ska kunna logga in på SAML SSO för JIRA med hjäl
 
     ![Lägga till medarbetare](./media/samlssojira-tutorial/user4-new.png) 
 
-    a. I text rutan **e-postadress** anger du användarens e-postadress: <b>BrittaSimon@contoso.com</b> .
+    a. I text rutan **e-postadress** anger du användarens e-postadress:  <b>BrittaSimon@contoso.com</b> .
 
     b. I text rutan **fullständigt namn** skriver du det fullständiga namnet på användaren: **Britta Simon**.
 

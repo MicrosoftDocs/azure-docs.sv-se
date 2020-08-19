@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Predictix sortiments planering | Microsoft Docs'
 description: I den här självstudien får du lära dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och planering av Predictix sortiment.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 37e686ff-f8e5-40b1-9d7e-f64b076917b7
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: be1aa932e246992bd5826ac502ab2ac5b8d52ddf
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 5b7ec1843d279e8c0477ed1c7754746d4f3044ad
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800745"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553677"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-assortment-planning"></a>Självstudie: Azure Active Directory integrering med Predictix sortiment
 

@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory-integrering med enkel inloggning (SSO) med EasySSO för BitBucket | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och EasySSO för BitBucket.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3ed96e97-b590-4dca-8d00-36288444c641
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/18/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 946785f02461706d1d3675d089c19d68816fb8ca
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bd15798e9b642f3abc617c0fa224c530d90b5dd6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077124"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555585"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bitbucket"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med EasySSO för BitBucket
 
@@ -84,13 +80,13 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
 
-    a. I text rutan **identifierare** anger du en URL som använder följande mönster:`https://<server-base-url>/plugins/servlet/easysso/saml`
+    a. I text rutan **identifierare** anger du en URL som använder följande mönster: `https://<server-base-url>/plugins/servlet/easysso/saml`
 
-    b. I text rutan **svars-URL** anger du en URL som använder följande mönster:`https://<server-base-url>/plugins/servlet/easysso/saml`
+    b. I text rutan **svars-URL** anger du en URL som använder följande mönster: `https://<server-base-url>/plugins/servlet/easysso/saml`
 
 1. Välj **Ange ytterligare URL: er**och gör följande om du vill konfigurera programmet i läget **SP** -initierat:
 
-    - I text rutan **inloggnings-URL** anger du en URL som använder följande mönster:`https://<server-base-url>/login.jsp`
+    - I text rutan **inloggnings-URL** anger du en URL som använder följande mönster: `https://<server-base-url>/login.jsp`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [EasySSO support-teamet](mailto:support@techtime.co.nz) för att få dessa värden om du är tveksam. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.

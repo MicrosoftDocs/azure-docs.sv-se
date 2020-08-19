@@ -2,25 +2,20 @@
 title: 'Självstudie: Azure Active Directory integrering med Printix | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Printix.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.assetid: 4aea7320-b2d5-49e0-9b63-aeaff0f6fe66
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e883833f7998c073b574c892ed5c7777e01faab4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9bc7969c5fee83944dab7cb35832f82b57c5595
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "62111467"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552351"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-printix"></a>Självstudie: Azure Active Directory integrering med Printix
 
@@ -113,7 +108,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure Portal o
 
     ![Konfigurera enkel inloggning](./media/printix-tutorial/tutorial_printix_url.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<subdomain>.printix.net`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://<subdomain>.printix.net`
 
     > [!NOTE] 
     > Värdet är inte verkligt. Uppdatera värdet med den faktiska inloggnings-URL:en. Kontakta [Printix client support team](mailto:support@printix.net) för att hämta värdet. 

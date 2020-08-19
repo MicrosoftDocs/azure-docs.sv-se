@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med MOVEit-överföring – Azure AD-integrering | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och MOVEit-överföring – Azure AD-integrering.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8ff7102d-be73-4888-ae81-d8e3d01dd534
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 43383e82d983c998d159728997da4757cc364999
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4ec0a3082b5978e0c540a2e0a70843081201a29b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73161318"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544171"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moveit-transfer---azure-ad-integration"></a>Självstudie: Azure Active Directory integrering med MOVEit transfer – Azure AD-integrering
 
@@ -32,9 +28,9 @@ Att integrera MOVEit-överföring – Azure AD-integrering med Azure AD ger föl
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med MOVEit-överföring – Azure AD-integrering behöver du följande objekt:
 
@@ -115,7 +111,7 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med MO
 
     ![MOVEit-överföring – Azure AD-integrerings domän och enkel inloggnings information för URL: er](common/sp-identifier-reply.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://contoso.com`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://contoso.com`
 
     > [!NOTE]
     > **Inloggnings-URL** -värdet är inte verkligt. Uppdatera värdet med den faktiska inloggnings-URL:en. Kontakta [MOVEit transfer – support teamet för Azure AD integration client](https://community.ipswitch.com/s/support) för att hämta värdet. Du kan ladda ned **metadata filen för tjänst leverantören** från **providerns metadata-URL** , som beskrivs senare i avsnittet **Konfigurera Moveit-överföring – Azure AD-integrering** i självstudien. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -151,7 +147,7 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med MO
     ![Metadata-URL för tjänste leverantör](./media/moveittransfer-tutorial/tutorial_moveittransfer_002.png)
     
    * Verifiera **entityId** matchar **identifieraren** i avsnittet **grundläggande SAML-konfiguration** .
-   * Verifiera **AssertionConsumerService** -platsens URL matchar **svars-URL** i avsnittet **grundläggande SAML-konfiguration** .
+   * Verifiera **AssertionConsumerService** -platsens URL matchar **svars-URL**  i avsnittet **grundläggande SAML-konfiguration** .
     
      ![Konfigurera enkel inloggning på appsidan](./media/moveittransfer-tutorial/tutorial_moveittransfer_007.png)
 
@@ -173,9 +169,9 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med MO
     
     a. Välj **SAML-NameID** som **inloggnings namn**.
     
-    b. Välj **annat** som **fullständigt namn** och ange värdet i text rutan **attributnamn** : `http://schemas.microsoft.com/identity/claims/displayname`.
+    b. Välj **annat** som **fullständigt namn** och ange värdet i text rutan **attributnamn** : `http://schemas.microsoft.com/identity/claims/displayname` .
     
-    c. Välj **annan** som **e-post** och i text rutan **attributnamn** sätter du in `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`värdet:.
+    c. Välj **annan** som **e-post** och i text rutan **attributnamn** sätter du in värdet: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
     
     d. Välj **Ja** som **Skapa automatiskt konto på inloggning**.
     
@@ -199,8 +195,8 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** skriver du **brittasimon\@yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

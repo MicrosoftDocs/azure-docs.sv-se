@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory enkel inloggning (SSO) med Netvision kompositioner | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory-och Netvision kompositioner.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a56f44c5-dc08-4c7c-ad20-b6e7127deb2c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/16/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3015ea26d81505c4f058846dbcb3b7858f79267
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8f92ff60dacd78687207c7523504182521700a7b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80520128"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554506"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netvision-compas"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med Netvision kompositioner
 
@@ -32,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar Netvision-kompositi
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -84,13 +80,13 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://<TENANT>.compas.cloud/Identity/Saml20`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://<TENANT>.compas.cloud/Identity/Saml20`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<TENANT>.compas.cloud/Identity/Auth/AssertionConsumerService`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<TENANT>.compas.cloud/Identity/Auth/AssertionConsumerService`
 
 1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<TENANT>.compas.cloud/Identity/Auth/AssertionConsumerService`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<TENANT>.compas.cloud/Identity/Auth/AssertionConsumerService`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [Netvision kompositioner-klient support teamet](mailto:contact@net.vision) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -109,7 +105,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -159,7 +155,7 @@ I det här avsnittet aktiverar du SAML SSO i **Netvision kompositioner**.
 
 I det här avsnittet konfigurerar du en befintlig användare i **Netvision-kompositioner** att använda Azure AD för SSO.
 1. Följ anvisningarna för användar etablering av **Netvision kompositioner** , som definieras av ditt företag eller redigera ett befintligt användar konto.
-1. När du definierar användarens profil kontrollerar du att användarens **e-postadress (personlig)** matchar användar namnet för Azure AD: username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+1. När du definierar användarens profil kontrollerar du att användarens **e-postadress (personlig)** matchar användar namnet för Azure AD: username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
 
     ![Redigera användare](media/netvision-compas-tutorial/user-config.png)
 
@@ -188,11 +184,11 @@ När du klickar på panelen för Netvision-kompositioner på åtkomst panelen, b
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Testa Netvision kompositioner med Azure AD](https://aad.portal.azure.com/)
 

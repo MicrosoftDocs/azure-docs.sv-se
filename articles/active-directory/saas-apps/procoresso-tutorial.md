@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med ProCore SSO | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och ProCore SSO.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9818edd3-48c0-411d-b05a-3ec805eafb2e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca6863a6b02e867afd732ce1662136051b8afec8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e0a8e6786dbce1015d587cf8015e3624c97a5817
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67093666"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553622"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Självstudie: Azure Active Directory integrering med ProCore SSO
 
@@ -33,9 +28,9 @@ Genom att integrera ProCore SSO med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med ProCore SSO behöver du följande objekt:
 
@@ -160,7 +155,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** `brittasimon@yourcompanydomain.extension`. Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** `brittasimon@yourcompanydomain.extension` . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
@@ -210,7 +205,7 @@ Följ stegen nedan om du vill skapa en ProCore test-användare på en central en
 
     b. I text rutan **efter namn** skriver du användarens efter namn som **Simon**.
 
-    c. I text rutan **e-postadress** skriver du användarens e- BrittaSimon@contoso.compostadress som.
+    c. I text rutan **e-postadress** skriver du användarens e-postadress som BrittaSimon@contoso.com .
 
     d. Välj **behörighets mal len** som mall för behörighet att **använda senare**.
 

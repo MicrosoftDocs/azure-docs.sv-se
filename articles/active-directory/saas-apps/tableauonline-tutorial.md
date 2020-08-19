@@ -2,24 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Tableau online | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Tableau online.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 1d4b1149-ba3b-4f4e-8bce-9791316b730d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 187600edb599f5a5775e1b847ed1cb3a49f3b827
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 035bc13ee44a8a003ae860eb2bdd67432fa91f14
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76985636"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542533"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-online"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med Tableau online
 
@@ -31,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar Tableau online med 
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -131,8 +128,8 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** skriver du **brittasimon\@yourcompanydomain. extension**  
-    Till exempel BrittaSimon\@contoso.com
+    b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
+    Till exempel BrittaSimon \@ contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
@@ -198,7 +195,7 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
     f. Om du vill kopiera namn rymds värden för e-postmeddelandet och förnamnet upprepar du ovanstående steg.
 
-    g. Växla till Tableau online-programmet och ange sedan avsnittet **användarattribut &-anspråk** enligt följande:
+    ex. Växla till Tableau online-programmet och ange sedan avsnittet **användarattribut &-anspråk** enligt följande:
 
     * E-post: **mail** eller **userPrincipalName**
 
@@ -216,7 +213,7 @@ I det här avsnittet skapar du en användare som heter Britta Simon i Tableau on
   
     ![Skapa en testanvändare för Azure AD](./media/tableauonline-tutorial/tutorial_tableauonline_15.png)
 
-2. Välj **Lägg till användare för (SAML) autentisering**. I text rutan **Ange e-postadresser** lägger du till\@Britta. Simon contoso.com
+2. Välj **Lägg till användare för (SAML) autentisering**. I text rutan **Ange e-postadresser** lägger du till Britta. Simon \@ contoso.com
   
     ![Skapa en testanvändare för Azure AD](./media/tableauonline-tutorial/tutorial_tableauonline_11.png)
 

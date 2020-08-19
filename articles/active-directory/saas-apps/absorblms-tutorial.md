@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med absorberande LMS | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Absorb LMS.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: ba9f1b3d-a4a0-4ff7-b0e7-428e0ed92142
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3d5dbd5c831b4e3cf2ab63796165dc6bad005a5
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 59fb36765ad3cd584af4d6459cd78e2886d0edce
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905850"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88538713"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Självstudie: Azure Active Directory integrering med absorberande LMS
 
@@ -111,15 +106,15 @@ Utför följande steg för att konfigurera enkel inloggning med Azure AD med Abs
 
     Om du använder **Absorb 5 – UI** använder du följande konfiguration:
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://company.myabsorb.com/account/saml`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://company.myabsorb.com/account/saml`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://company.myabsorb.com/account/saml`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://company.myabsorb.com/account/saml`
 
     Om du använder **Absorb 5 – New Learner Experience** använder du följande konfiguration:
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://company.myabsorb.com/api/rest/v2/authentication/saml`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://company.myabsorb.com/api/rest/v2/authentication/saml`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://company.myabsorb.com/api/rest/v2/authentication/saml`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://company.myabsorb.com/api/rest/v2/authentication/saml`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska identifieraren och svars-URL. Kontakta [Supportteamet för Absorb LMS](https://support.absorblms.com/hc/) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.

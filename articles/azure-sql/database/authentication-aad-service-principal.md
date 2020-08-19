@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 07/27/2020
-ms.openlocfilehash: bfe609dc480dcdb71f162ca1bfd383a27257fedc
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/17/2020
+ms.openlocfilehash: d8268ebf89bed6b67919e77576118343b58edb6c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321708"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516630"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>Azure Active Directory tjänstens huvud namn med Azure SQL
 
@@ -80,6 +80,8 @@ Om du vill aktivera en Azure AD-objekts skapande i SQL Database och Azure-Synaps
 
 > [!IMPORTANT]
 > Steg 1 och 2 måste köras i ovanstående ordning. Börja med att skapa eller tilldela server identiteten och följ genom att ge [**katalog läsar**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) behörighet. Om du utelämnar något av dessa steg, eller båda kommer att orsaka ett körnings fel under en Azure AD-objekts skapande i Azure SQL för ett Azure AD-program. Stegvisa instruktioner för att skapa en Azure AD-användare på uppdrag av ett Azure AD-program finns i [Självstudier: Skapa Azure AD-användare med hjälp av Azure AD-program](authentication-aad-service-principal-tutorial.md).
+>
+> I **offentlig för hands version**kan du tilldela rollen **katalog läsare** till en grupp i Azure AD. Grupp ägarna kan sedan lägga till den hanterade identiteten som en medlem i den här gruppen, vilket skulle kringgå behovet av att en **Global administratör** eller **privilegierad roll administratör** ska bevilja rollen som **katalog läsare** . Mer information om den här funktionen finns i [katalog läsare roll i Azure Active Directory för Azure SQL](authentication-aad-directory-readers-role.md).
 
 ## <a name="troubleshooting-and-limitations-for-public-preview"></a>Fel sökning och begränsningar för offentlig för hands version
 

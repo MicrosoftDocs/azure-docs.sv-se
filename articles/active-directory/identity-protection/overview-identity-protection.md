@@ -5,20 +5,21 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 03/17/2020
+ms.date: 08/15/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
+ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80873b2e2655e7cedbafb526d0fe757eaa282312
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 39c9522362ca6710fae5dee5d831e63cc36a3950
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019619"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509118"
 ---
-# <a name="what-is-azure-active-directory-identity-protection"></a>Vad är Azure Active Directory Identity Protection?
+# <a name="what-is-identity-protection"></a>Vad är Identity Protection?
 
 Identity Protection är ett verktyg som gör det möjligt för organisationer att utföra tre viktiga uppgifter:
 
@@ -69,6 +70,12 @@ Administratörer kan granska identifieringar och vidta manuella åtgärder på d
 
 Mer information finns i artikeln [så här gör du: Undersök risker](howto-identity-protection-investigate-risk.md).
 
+### <a name="risk-levels"></a>Risk nivåer
+
+Identitets skyddet kategoriserar risker i tre nivåer: låg, medel och hög. 
+
+Även om Microsoft inte tillhandahåller detaljerad information om hur risken beräknas, säger vi att varje nivå ger högre förtroende för att användaren eller inloggningen ska komprometteras. Till exempel kanske något som liknar en instans av okända inloggnings egenskaper för en användare inte är lika hotade som läckage av autentiseringsuppgifter för en annan användare.
+
 ## <a name="exporting-risk-data"></a>Exportera risk data
 
 Data från identitets skydd kan exporteras till andra verktyg för arkivering och ytterligare undersökning och korrelation. Microsoft Graph baserade API: er gör det möjligt för organisationer att samla in data för vidare bearbetning i ett verktyg som deras SIEM. Information om hur du kommer åt Identity Protection-API: et finns i artikeln, [Kom igång med Azure Active Directory Identity Protection och Microsoft Graph](howto-identity-protection-graph-api.md)
@@ -94,17 +101,17 @@ Administratörer för villkorlig åtkomst kan också skapa principer som faktorr
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-| Funktion | Information | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Free/Office 365-appar |
+| Kapacitet | Information | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Free/Office 365-appar |
 | --- | --- | --- | --- | --- |
-| Risk principer | Användar risk princip (via identitets skydd) | Ja | Inga | Inga |
-| Risk principer | Inloggnings risk princip (via identitets skydd eller villkorlig åtkomst) | Ja | Inga | Inga |
-| Säkerhetsrapporter | Översikt | Ja | Inga | Inga |
+| Risk principer | Användar risk princip (via identitets skydd) | Ja | Nej | Nej |
+| Risk principer | Inloggnings risk princip (via identitets skydd eller villkorlig åtkomst) | Ja | Nej | Nej |
+| Säkerhetsrapporter | Översikt | Ja | Nej | Nej |
 | Säkerhetsrapporter | Riskfyllda användare | Fullständig åtkomst | Begränsad information | Begränsad information |
 | Säkerhetsrapporter | Riskfyllda inloggningar | Fullständig åtkomst | Begränsad information | Begränsad information |
-| Säkerhetsrapporter | Riskidentifieringar | Fullständig åtkomst | Begränsad information | No |
-| Meddelanden | Varningar för användare med risk identifiering | Ja | Inga | Inga |
-| Meddelanden | Vecko sammandrag | Ja | Inga | Inga |
-| | Registreringsprincip för multifaktorautentisering | Ja | Inga | Inga |
+| Säkerhetsrapporter | Riskidentifieringar | Fullständig åtkomst | Begränsad information | Nej |
+| Meddelanden | Varningar för användare med risk identifiering | Ja | Nej | Nej |
+| Meddelanden | Vecko sammandrag | Ja | Nej | Nej |
+| | Registreringsprincip för multifaktorautentisering | Ja | Nej | Nej |
 
 ## <a name="next-steps"></a>Nästa steg
 

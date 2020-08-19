@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med Zoho One | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Zoho.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: bbc3038c-0d8b-45dd-9645-368bd3d01a0f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 0a37789e7c7efeb71770ff0e8061d57e6603b6c4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: baa33e79b3bba8eccb2d0fc03e110e1a3c4defde
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67086236"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546014"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>Självstudie: Azure Active Directory integrering med Zoho One
 
@@ -32,9 +28,9 @@ Genom att integrera Zoho en med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Zoho ett behöver du följande objekt:
 
@@ -105,9 +101,9 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Zo
 
     ![Zoho en enkel inloggnings information för en domän och URL](common/idp-relay.png)
 
-    a. Skriv en URL i text rutan **identifierare** :`one.zoho.com`
+    a. Skriv en URL i text rutan **identifierare** : `one.zoho.com`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://accounts.zoho.com/samlresponse/<saml-identifier>`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://accounts.zoho.com/samlresponse/<saml-identifier>`
 
     > [!NOTE]
     > Föregående **svars-URL** -värde är inte verkligt. Du får `<saml-identifier>` värdet från #step4 av **Konfigurera Zoho ett enda inloggnings** avsnitt, som beskrivs senare i självstudien.
@@ -121,7 +117,7 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Zo
 
     ![Zoho en enkel inloggnings information för en domän och URL](common/both-signonurl.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://accounts.zoho.com/samlauthrequest/<domain_name>?serviceurl=https://one.zoho.com` 
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://accounts.zoho.com/samlauthrequest/<domain_name>?serviceurl=https://one.zoho.com` 
 
     > [!NOTE] 
     > Föregående **URL-** värde för inloggning är inte verkligt. Du uppdaterar värdet med den faktiska inloggnings-URL: en från avsnittet **Konfigurera Zoho ett enkel inloggning** , som beskrivs senare i självstudien. 
@@ -160,7 +156,7 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Zo
 
     d. Klicka på **Spara**.
 
-4. När du har sparat inställningen för SAML-autentisering kopierar du värdet för **SAML-identifieraren** och lägger till det med **svars-URL:** en `<saml-identifier>`i stället för `https://accounts.zoho.com/samlresponse/one.zoho.com` och klistrar in det genererade värdet i text rutan **svars-URL** under avsnittet **grundläggande SAML-konfiguration** .
+4. När du har sparat inställningen för SAML-autentisering kopierar du värdet för **SAML-identifieraren** och lägger till det med **svars-URL:** en i stället för `<saml-identifier>` `https://accounts.zoho.com/samlresponse/one.zoho.com` och klistrar in det genererade värdet i text rutan **SVARs-URL** under avsnittet **grundläggande SAML-konfiguration** .
 
     ![Zoho ett SAML](./media/zohoone-tutorial/tutorial_zohoone_samlidenti.png)
 
@@ -197,7 +193,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** `brittasimon@yourcompanydomain.extension`. Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** `brittasimon@yourcompanydomain.extension` . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

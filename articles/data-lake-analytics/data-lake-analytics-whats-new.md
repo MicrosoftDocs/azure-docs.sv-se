@@ -6,19 +6,19 @@ ms.service: data-lake-analytics
 ms.topic: overview
 ms.author: xujiang1
 ms.date: 07/31/2020
-ms.openlocfilehash: 0afd37a9f80fd2778f2b7206f58cec6ff423763e
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 6f4885594e4f67d91c595d8afdddc15e8ed4ae75
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184966"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263188"
 ---
 # <a name="whats-new-in-data-lake-analytics"></a>Nyheter i Data Lake Analytics
 
 Azure Data Lake Analytics uppdateras baserat på aperiodic för vissa komponenter. För att hålla uppdaterad med den senaste uppdateringen ger den här artikeln information om:
 
 - Meddelande om för hands versionen av Key Component beta
-- Information om den viktiga komponent versionen, t. ex.: listan över tillgängliga versioner av komponenten, den aktuella standard versionen och så vidare.
+- Viktig information om komponent version, till exempel: listan över tillgängliga versioner av komponenten, den aktuella standard versionen och så vidare.
 
 
 ## <a name="notification-of-key-component-beta-preview"></a>Meddelande om för hands versionen av Key Component beta
@@ -33,14 +33,13 @@ När du skickar Azure Data Lake Analytics-jobbet från valfria verktyg använder
 
 Körnings versionen kommer att uppdateras aperiodically. Och den tidigare körningen kommer att finnas tillgänglig under en viss tid. När en ny beta version är klar för förhands granskning kommer den också att vara tillgänglig där.
 
-Följande är de versioner som är tillgängliga för närvarande.
+> [!CAUTION]
+> - Om du väljer en annan körnings miljö än standardvärdet har du möjlighet att bryta U-SQL-jobben. Vi rekommenderar starkt att du inte använder dessa versioner som inte är standard för produktion, men endast för testning.
+> - Körnings versionen som inte är standard har en fast livs cykel. Den upphör att gälla automatiskt.
 
-- Release-20200124live_adl_16283022_2--> **den aktuella standard versionen**
-- release_20200124live_adl_16283022
-- release_20200124_adl_14480125
-- release_20190904_adl_10236248_1
-- release_20190904_adl_10236248
-- release_20190904_adl_9225818
+Följande version är den aktuella standard körnings versionen.
+
+- Release-20200124live_adl_16283022_2
 
 Information om hur du felsöker U-SQL runtime-fel finns i [Felsöka u-SQL runtime-fel](runtime-troubleshoot.md).
 

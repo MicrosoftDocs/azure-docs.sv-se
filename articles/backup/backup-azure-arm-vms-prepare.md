@@ -3,12 +3,12 @@ title: Säkerhetskopiera virtuella Azure-datorer i ett Recovery Services valv
 description: Beskriver hur du säkerhetskopierar virtuella Azure-datorer i ett Recovery Services valv med hjälp av Azure Backup
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 91fca2eef21a817c0f78b826e507901d94156dcd
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1ae501be57be672238c8b55f431b6f5962a5fd99
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533605"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261947"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Säkerhetskopiera virtuella Azure-datorer i ett Recovery Services valv
 
@@ -140,7 +140,7 @@ Informationen om säkerhets kopierings jobbet för varje VM-säkerhetskopiering 
 
 Det finns två **under aktiviteter** som körs på Server delen, en för säkerhets kopierings jobb på klient sidan som kan kontrol leras från informations fönstret för **säkerhets kopierings jobb** enligt vad som anges nedan:
 
-  ![Status för säkerhets kopierings jobb](./media/backup-azure-arm-vms-prepare/backup-job-phase.png)
+  ![Status under aktiviteter för säkerhets kopierings jobb](./media/backup-azure-arm-vms-prepare/backup-job-phase.png)
 
 Det kan ta flera dagar innan **överförings data till valv** fasen slutförs beroende på storleken på diskarna, omsättningen per disk och flera andra faktorer.
 

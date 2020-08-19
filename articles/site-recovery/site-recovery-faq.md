@@ -4,12 +4,12 @@ description: I den här artikeln beskrivs populära allmänna frågor om Azure S
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 89a5785811b4f4833a5a5ddcef827b258ce1775a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b5730fba1a0267ab72497bc65b51de75654f970
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083743"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263392"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Allmänna frågor om Azure Site Recovery
 
@@ -121,7 +121,7 @@ Du kan växla till den hanterade identiteten för Recovery Services-valvet genom
 
 - Resource Manager-baserade lagrings konton (standard typ):
   - [Deltagare](../role-based-access-control/built-in-roles.md#contributor)
-  - [Storage BLOB data-deltagare](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
+  - [Storage Blob Data-deltagare](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
 - Resource Manager-baserade lagrings konton (Premium typ):
   - [Deltagare](../role-based-access-control/built-in-roles.md#contributor)
   - [Storage BLOB data-ägare](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
@@ -247,6 +247,75 @@ Ja. Azure Site Recovery för Linux-åtgärds system har stöd för anpassade skr
 
 >[!Note]
 >Site Recovery agent-versionen ska vara 9,24 eller högre för att stödja anpassade skript.
+
+## <a name="replication-policy"></a>Replikeringsprincip
+
+### <a name="what-is-a-replication-policy"></a>Vad är en replikeringsprincip?
+
+En replikeringsprincip definierar inställningarna för lagrings historiken för återställnings punkter. Principen definierar också frekvensen för programkonsekventa ögonblicks bilder. Som standard skapar Azure Site Recovery en ny replikeringsprincip med standardinställningar för:
+
+- 24 timmar för Retentions historiken för återställnings punkter.
+- 4 timmar för frekvensen av programkonsekventa ögonblicks bilder.
+
+[Läs mer om replikeringsinställningar](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings).
+
+### <a name="what-is-a-crash-consistent-recovery-point"></a>Vad är en krasch-konsekvent återställnings punkt?
+
+En kraschad återställnings punkt har data på disken som om du hämtade ström sladden från servern under ögonblicks bilden. Den kraschbaserade återställnings punkten innehåller inte något som fanns i minnet när ögonblicks bilden togs.
+
+Idag kan de flesta program återställa sig väl från kraschbaserade ögonblicks bilder. En kraschad återställnings punkt är vanligt vis tillräckligt för operativ system och program som inte kommer från en databas, t. ex. fil servrar, DHCP-servrar och utskrifts servrar.
+
+### <a name="what-is-the-frequency-of-crash-consistent-recovery-point-generation"></a>Vad är frekvensen för generering av kraschbaserade återställnings punkter?
+
+Site Recovery skapar en kraschad återställnings punkt var femte minut.
+
+### <a name="what-is-an-application-consistent-recovery-point"></a>Vad är en programkonsekvent återställnings punkt?
+
+Programkonsekventa återställnings punkter skapas från programkonsekventa ögonblicks bilder. Programkonsekventa återställnings punkter fångar samma data som kraschbaserade ögonblicks bilder samtidigt som data i minnet och alla transaktioner i processen fångas.
+
+På grund av det extra innehållet är programkonsekventa ögonblicks bilder de mest inblandade och ta den längsta. Vi rekommenderar programkonsekventa återställnings punkter för databas operativ system och program som SQL Server.
+
+### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>Vad är effekten av programkonsekventa återställnings punkter för program prestanda?
+
+Programkonsekventa återställnings punkter fångar alla data i minnet och i processen. Eftersom återställnings punkter fångar dessa data, kräver de ramverk som tjänsten Volume Shadow Copy i Windows för att inaktive ring av programmet. Om insamlings processen används ofta kan den påverka prestanda när arbets belastningen redan är upptagen. Vi rekommenderar inte att du använder låg frekvens för programkonsekventa återställnings punkter för arbets belastningar som inte är databas. Det räcker med 1 timme för databas arbets belastningen.
+
+### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>Vad är den minsta frekvensen för generering av programkonsekventa återställnings punkter?
+
+Site Recovery kan skapa en programkonsekvent återställnings punkt med en minsta frekvens på 1 timme.
+
+### <a name="how-are-recovery-points-generated-and-saved"></a>Hur genereras och sparas återställnings punkter?
+
+För att förstå hur Site Recovery genererar återställnings punkter ser vi ett exempel på en replikeringsprincip. Den här replikeringsprincipen har en återställnings punkt med en 24-timmarsperiod och en programkonsekvent frekvens ögonblicks bild på 1 timme.
+
+Site Recovery skapar en kraschad återställnings punkt var femte minut. Du kan inte ändra den här frekvensen. Under den senaste timmen kan du välja mellan 12 kraschbaserade punkter och 1 app-konsekvent punkt. När tiden pågår Site Recovery rensar alla återställnings punkter bortom den senaste timmen och sparar bara 1 återställnings punkt per timme.
+
+Följande skärm bild illustrerar exemplet. I skärm bilden:
+
+- Under den senaste timmen finns återställnings punkter med en frekvens på 5 minuter.
+- Under den senaste timmen behålls Site Recovery endast en återställnings punkt.
+
+   ![Lista över genererade återställnings punkter](./media/azure-to-azure-troubleshoot-errors/recoverypoints.png)
+
+### <a name="how-far-back-can-i-recover"></a>Hur långt tillbaka kan jag återställa?
+
+Den äldsta återställnings punkten som du kan använda är 72 timmar.
+
+### <a name="i-have-a-replication-policy-of-24-hours-what-will-happen-if-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-lost"></a>Jag har en replikeringsprincip på 24 timmar. Vad händer om ett problem förhindrar Site Recovery att skapa återställnings punkter i mer än 24 timmar? Kommer mina tidigare återställnings punkter att gå förlorade?
+
+Nej, Site Recovery kommer att behålla alla dina tidigare återställnings punkter. Beroende på återställnings punkternas kvarhållning fönster ersätter Site Recovery den äldsta punkten endast om den genererar nya punkter. På grund av problemet kan Site Recovery inte skapa några nya återställnings punkter. Tills det finns nya återställnings punkter är alla gamla punkter kvar när du har nått fönstret med kvarhållning.
+
+### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>Hur ändrar jag replikeringsprincipen när replikering har Aktiver ATS på en virtuell dator?
+
+Gå till **Site Recovery valv**  >  **Site Recovery Infrastructure**  >  **Replication policies**. Välj den princip som du vill redigera och spara ändringarna. Alla ändringar kommer också att gälla för alla befintliga replikeringar.
+
+### <a name="are-all-the-recovery-points-a-complete-copy-of-the-vm-or-a-differential"></a>Är alla återställnings punkter en fullständig kopia av den virtuella datorn eller en differentiell?
+
+Den första återställnings punkten som genereras har en fullständig kopia. Eventuella återställnings punkter har delta ändringar.
+
+### <a name="does-increasing-the-retention-period-of-recovery-points-increase-the-storage-cost"></a>Ökar lagrings kostnaden genom att öka lagrings tiden för återställnings punkter?
+
+Ja, om du ökar kvarhållningsperioden från 24 timmar till 72 timmar kommer Site Recovery att spara återställnings punkterna under ytterligare 48 timmar. Den tillagda tiden debiteras lagrings kostnader. En enda återställnings punkt kan till exempel ha delta ändringar på 10 GB med en kostnad per GB $0,16 per månad. Ytterligare kostnader blir $1,60 × 48 per månad.
+
 
 ## <a name="failover"></a>Redundans
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Hur får jag åtkomst till virtuella Azure-datorer efter redundansväxlingen om jag växlar över till Azure?

@@ -7,15 +7,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 659ecbc7f6c2a5627824ff09af5f30ef503c9e16
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 41586b2ec96d30fd583cbc9a746493ed9206548b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954544"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510750"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Vad är en anpassad översättare-arbetsyta?
 
@@ -39,7 +39,7 @@ I samma arbets yta kan du skapa projekt för samma språk par i olika kategorier
 
 Med anpassad översättare kan du tilldela en projekt etikett till projektet. Projekt etiketten skiljer sig mellan flera projekt med samma språk par och kategori. Vi rekommenderar att du inte använder Project-etiketter om det inte behövs.
 
-Projekt etiketten används som en del av kategorin kategori. Om projekt etiketten lämnas kvar eller anges identiskt mellan projekt, kommer projekt med samma kategori och *olika* språk par att dela samma kategori. Den här metoden är fördelaktig eftersom det låter dig eller din kund växla mellan språk när du använder Translator utan att behöva oroa dig för en kategori som är unik för varje projekt.
+Projekt etiketten används som en del av kategorin kategori. Om projekt etiketten lämnas kvar eller anges identiskt mellan projekt, kommer projekt med samma kategori och *olika* språk par att dela samma kategori. Den här metoden är fördelaktig eftersom det låter dig eller din kund växla mellan språk när du använder API: et för text översättning utan att oroa dig för en kategori som är unik för varje projekt.
 
 Om jag till exempel ville aktivera översättningar i teknik domänen från engelska till franska och från franska till engelska, skulle jag skapa två projekt: ett för engelska \> och franska, och ett för franska – \> engelska. Jag skulle ange samma kategori (teknik) för båda och lämna projekt etiketten tom. Kategorin för båda projekten skulle matcha, så jag kan fråga API: t för både engelska och franska översättningar utan att behöva ändra min kategori.
 

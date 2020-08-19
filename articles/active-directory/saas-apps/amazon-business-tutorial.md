@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med Amazon Business | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Amazon Business.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b2597a66-afd9-4f11-b14b-646b597bb6c2
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8f5ff42597a457a8849e424e041f1677c28b383
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 0db43f438eaff3e783b829eabe7152c5f13e943d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85608967"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548324"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>Självstudie: integrera Amazon Business med Azure Active Directory
 
@@ -33,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar Amazon Business med
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -171,7 +166,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     ![Attribut](media/amazon-business-tutorial/map-attribute1.png)
 
-1. I guiden **attributmappning** lägger du till krav fälten genom att klicka på alternativet **+ Lägg till ett fält** . Lägg till attributvärdena inklusive namn området som du har kopierat från avsnittet **användarattribut &-anspråk** i Azure Portal till fältet **SAML-ATTRIBUTENAME** och klicka på **Nästa**.
+1. I guiden **attributmappning** lägger du till krav fälten genom att klicka på alternativet **+ Lägg till ett fält** . Lägg till attributvärdena inklusive namn området som du har kopierat från avsnittet **användarattribut &-anspråk** i Azure Portal till fältet  **SAML-ATTRIBUTENAME** och klicka på **Nästa**.
 
     ![Attribut](media/amazon-business-tutorial/map-attribute2.png)
 
@@ -293,7 +288,7 @@ När du klickar på fliken Amazon-företag i åtkomst panelen bör du loggas in 
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

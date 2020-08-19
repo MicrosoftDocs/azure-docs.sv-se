@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 7dded3b938444198e72d6eb87476f571dd3f4d78
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: b48ff1043ae8128a5cbfdcbba0548d89b5af2624
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836776"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565850"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Behörigheter i Azure Sentinel
 
@@ -60,6 +60,10 @@ Användare med särskilda jobb krav kan behöva tilldelas ytterligare roller ell
 
     För att en användare ska kunna lägga till **data anslutningar**måste du tilldela användaren Skriv behörighet på Azure Sentinel-arbetsytan. Observera också de ytterligare behörigheter som krävs för varje koppling, enligt listan på relevant anslutnings sida.
 
+- Gäst användare som tilldelar incidenter
+
+    Om en gäst användare behöver kunna tilldela incidenter, kommer användaren också att behöva tilldelas rollen som [katalog läsare](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers), förutom rollen Azure Sentinel responder. Observera att den här rollen *inte* är en Azure RBAC-roll, men en **Azure Active Directory** roll och att vanliga (icke-gäst) användare har den här rollen som standard. 
+
 En jämförelse sida vid sida finns i [tabellen nedan](#roles-and-allowed-actions).
 
 ### <a name="other-roles-you-might-see-assigned"></a>Andra roller som du kan se tilldelade
@@ -76,7 +80,7 @@ Till exempel kan en användare som har tilldelats rollen **Azure Sentinel Reader
 
 I följande tabell sammanfattas rollerna och tillåtna åtgärder i Azure Sentinel. 
 
-| Role | Skapa och kör spel böcker| Skapa och redigera arbets böcker, analys regler och andra Azure Sentinel-resurser | Hantera incidenter (Stäng, tilldela osv.) | Visa data, incidenter, arbets böcker och andra Azure Sentinel-resurser |
+| Roll | Skapa och kör spel böcker| Skapa och redigera arbets böcker, analys regler och andra Azure Sentinel-resurser | Hantera incidenter (Stäng, tilldela osv.) | Visa data, incidenter, arbets böcker och andra Azure Sentinel-resurser |
 |---|---|---|---|---|
 | Azure Sentinel-läsare | -- | -- | -- | &#10003; |
 | Azure Sentinel-svarare | -- | -- | &#10003; | &#10003; |

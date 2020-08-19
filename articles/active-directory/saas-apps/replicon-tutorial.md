@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Replicon | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Replicon.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 02a62f15-917c-417c-8d80-fe685e3fd601
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84a93d4fb8a6a3890ddd2c94b4f0a5c9114bd84d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8394191820226a0d4fdcfe1a078e85e1caafa37f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058202"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88534345"
 ---
 # <a name="tutorial-integrate-replicon-with-azure-active-directory"></a>Självstudie: integrera Replicon med Azure Active Directory
 
@@ -83,11 +78,11 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. På sidan **grundläggande SAML-konfiguration** anger du värden för följande fält:
 
-    1. I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://global.replicon.com/!/saml2/<client name>/sp-sso/post`
+    1. I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://global.replicon.com/!/saml2/<client name>/sp-sso/post`
 
-    1. I rutan **identifierare** anger du en URL med följande mönster:`https://global.replicon.com/!/saml2/<client name>`
+    1. I rutan **identifierare** anger du en URL med följande mönster: `https://global.replicon.com/!/saml2/<client name>`
 
-    1. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://global.replicon.com/!/saml2/<client name>/sso/post`
+    1. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://global.replicon.com/!/saml2/<client name>/sso/post`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera de här värdena med den faktiska inloggnings-URL:en, identifieraren och svars-URL:en. Kontakta [Replicon client support team](https://www.replicon.com/customerzone/contact-support) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -112,9 +107,9 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     ![Aktivera SAML-autentisering](./media/replicon-tutorial/ic777805.png "Aktivera SAML-autentisering")
 
-    a. För att Visa dialog rutan **EnableSAML Authentication2** lägger du till följande i URL: en efter företagets nyckel:`/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
+    a. För att Visa dialog rutan **EnableSAML Authentication2** lägger du till följande i URL: en efter företagets nyckel: `/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
-    * Följande visar schemat för den fullständiga URL: en:`https://na2.replicon.com/\<YourCompanyKey\>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
+    * Följande visar schemat för den fullständiga URL: en: `https://na2.replicon.com/\<YourCompanyKey\>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
    b. Klicka på alternativet **+** för att expandera **v20Configuration** -avsnittet.
 

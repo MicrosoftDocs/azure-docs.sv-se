@@ -6,13 +6,13 @@ ms.author: sebansal
 ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
-ms.openlocfilehash: e52fe8e738f2a35204078b27019ea3742c608560
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.topic: how-to
+ms.openlocfilehash: f31782fb4e91b72f51d6f0550fe9010cba7ca3d6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88122176"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585465"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Felsöka problem med åtkomst principer för Azure Key Vault
 
@@ -36,6 +36,9 @@ Om du skapar ett lokal program, gör en lokal utveckling eller inte kan använda
 Ge AD-gruppen behörighet till ditt nyckel valv med hjälp av Azure CLI-AZ för att ange princip, eller cmdleten Azure PowerShell set-AzKeyVaultAccessPolicy. Granska till exempel [ge programmet, Azure AD-gruppen eller användar åtkomst till ditt nyckel valv](https://docs.microsoft.com/azure/key-vault/general/group-permissions-for-apps#give-the-principal-access-to-your-key-vault).
 
 Programmet behöver också minst en roll för identitets-och åtkomst hantering (IAM) som har tilldelats nyckel valvet. Annars kommer den inte att kunna logga in och kommer att Miss lyckas med otillräcklig behörighet för att komma åt prenumerationen. Azure AD-grupper med hanterade identiteter kan kräva upp till 8hr för att uppdatera token och bli gällande.
+
+### <a name="how-can-i-redeploy-key-vault-with-arm-template-without-deleting-existing-access-policies"></a>Hur kan jag distribuera om Key Vault med ARM-mall utan att ta bort befintliga åtkomst principer?
+För närvarande tar Key Vault ARM redopleyment bort alla åtkomst principer i Key Vault och ersätter dem med åtkomst principen i ARM-mallen. Det finns inget stegvist alternativ för Key Vault åtkomst principer. Om du vill bevara åtkomst principerna i Key Vault du läsa befintliga åtkomst principer i Key Vault och fylla ARM-mallen med dessa principer för att undvika eventuella åtkomst avbrott.
 
 ### <a name="recommended-troubleshooting-steps-for-following-error-types"></a>Rekommenderade fel söknings steg för följande feltyper
 * HTTP 401: oautentiserad begäran – [fel söknings steg](https://docs.microsoft.com/azure/key-vault/general/rest-error-codes#http-401-unauthenticated-request)

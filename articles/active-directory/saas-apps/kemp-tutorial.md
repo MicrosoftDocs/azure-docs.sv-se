@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory enkel inloggning (SSO) med Azure AD-integrering för Kemp: LoadMaster | Microsoft Docs'
 description: 'Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Kemp: LoadMaster Azure AD-integrering.'
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: f42e1731-0477-4955-9571-b69a0f3de0bc
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/28/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd436462d157a7e416f0f6a468edd33520ccec7d
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 1d974badd715d7966f552603a77d77aab95d70f7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009946"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549978"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>Självstudie: Azure Active Directory SSO-integrering med Kemp: LoadMaster Azure AD-integrering
 
@@ -92,7 +88,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** anger du värden för följande fält:
 
-    a. I text rutan **identifierare (enhets-ID)** anger du en URL:`https://<KEMP-CUSTOMER-DOMAIN>.com/`
+    a. I text rutan **identifierare (enhets-ID)** anger du en URL: `https://<KEMP-CUSTOMER-DOMAIN>.com/`
 
     b. Skriv en URL i textrutan **Svars-URL**: `https://<KEMP-CUSTOMER-DOMAIN>.com/`
 
@@ -386,7 +382,7 @@ När du klickar på panelen Kemp: LoadMaster Azure AD-integration på åtkomst p
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

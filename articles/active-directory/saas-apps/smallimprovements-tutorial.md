@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory-integrering med små förbättringar | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och små förbättringar.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 59c8a112-41e1-4337-9ef3-3d7029780d61
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: d2d0bbc7a6e1c680434041d1b9d55e39a96b6f44
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c659af83034a2406449e586723341e1ae535934f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67090366"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525432"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>Självstudie: Azure Active Directory integrering med små förbättringar
 
@@ -32,9 +28,9 @@ Att integrera små förbättringar med Azure AD ger följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med små förbättringar behöver du följande objekt:
 
@@ -171,7 +167,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **Användarnamn** anger du **brittasimon@yourcompanydomain.extension**  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
@@ -229,7 +225,7 @@ Om du vill att Azure AD-användare ska kunna logga in på små förbättringar m
 
     b. Ange det **senaste namnet** på användaren som **Simon**.
 
-    c. Ange **e-postmeddelandet** som **brittasimon@contoso.com**användare.
+    c. Ange **e-postmeddelandet** som användare **brittasimon@contoso.com** .
 
     d. Du kan också välja att ange det personliga meddelandet i e-postmeddelandet **Skicka meddelande** . Avmarkera den här kryss rutan om du inte vill skicka meddelandet.
 

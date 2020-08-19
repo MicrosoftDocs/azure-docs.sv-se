@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 72b3b190492be5cec9986729875c5b09e2559ae5
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 46ddbd18051ffa44232468704ce189d4171b50e7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854321"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590017"
 ---
 # <a name="azure-cosmos-db-apache-spark-connector-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Apache Spark Connector for Core (SQL) API: viktig information och resurser
 > [!div class="op_single_selector"]
@@ -26,7 +26,8 @@ ms.locfileid: "87854321"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Asynkron Java-SDK v2](sql-api-sdk-async-java.md)
 > * [Synkron Java-SDK v2](sql-api-sdk-java.md)
-> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Våren data v2](sql-api-sdk-java-spring-v2.md)
+> * [Våren data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark-anslutning](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -35,7 +36,7 @@ ms.locfileid: "87854321"
 > * [Mass utförar – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Mass utförar – Java](sql-api-sdk-bulk-executor-java.md)
 
-Påskynda stor data analys med hjälp av Azure Cosmos DB Apache Spark Connector for Core (SQL). Med Spark-anslutningen kan du köra [Spark](https://spark.apache.org/) -jobb på data som lagras i Azure Cosmos dB. Batch-och Stream-bearbetning stöds.
+Påskynda stor data analys med hjälp av Azure Cosmos DB Apache Spark Connector for Core (SQL). Med Spark-anslutningen kan du köra [Spark ](https://spark.apache.org/) -jobb på data som lagras i Azure Cosmos dB. Batch-och Stream-bearbetning stöds.
 
 Du kan använda anslutningen med [Azure Databricks](https://azure.microsoft.com/services/databricks) eller [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/), som tillhandahåller hanterade Spark-kluster i Azure. I följande tabell visas de Spark-versioner som stöds.
 

@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med GreenLight Enterprise Business Controls Platform | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och GreenLight-plattformen för företags kontroll.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 6088358e-125d-4c48-8606-b67ce9eb020e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5300ce903143162de6e23db60c6362932ce7a49a
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b8e366438e63ec7e4bd33032cea7162d249ff7c8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010354"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551475"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-greenlight-enterprise-business-controls-platform"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med GreenLight Enterprise Business Controls Platform
 
@@ -84,13 +80,13 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://<CUSTOMER_NAME>.gltcloud.com/ebcpplatform/saml`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://<CUSTOMER_NAME>.gltcloud.com/ebcpplatform/saml`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<CUSTOMER_NAME>.gltcloud.com/ebcpplatform/saml`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<CUSTOMER_NAME>.gltcloud.com/ebcpplatform/saml`
 
 1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<CUSTOMER_NAME>.gltcloud.com/ebcpplatform/saml`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<CUSTOMER_NAME>.gltcloud.com/ebcpplatform/saml`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [GreenLight Enterprise Business Controls Platform client support team](mailto:support@greenlightcorp.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -149,7 +145,7 @@ När du klickar på GreenLight Enterprise Business Controls Platform panel på �
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

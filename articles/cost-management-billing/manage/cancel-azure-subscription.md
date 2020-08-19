@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 08/10/2020
 ms.author: banders
-ms.openlocfilehash: 8b0ba7b597921d82883f2c7ba505ebb10eee1876
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 592a5d9573cb4e475c5d1ca6b4f06002f949e197
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039750"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136260"
 ---
 # <a name="cancel-your-azure-subscription"></a>Avbryta din Azure-prenumeration
 
@@ -32,10 +32,10 @@ Om du avslutar ett betalt supportavtal för Azure debiteras du för resten av pr
 ## <a name="cancel-subscription-in-the-azure-portal"></a>Avsluta prenumeration i Azure-portalen
 
 1. Välj din prenumeration på [prenumerationssidan i Azure-portalen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-2. Välj den prenumeration som du vill avsluta.
-3. Välj **Översikt** och sedan **Avbryt prenumeration**.
+1. Välj den prenumeration som du vill avsluta.
+1. Välj **Översikt** och sedan **Avbryt prenumeration**.
     ![Skärmbild som visar knappen Avbryt](./media/cancel-azure-subscription/cancel_ibiza.png)
-3. Följ anvisningarna och slutför annulleringen.
+1. Följ anvisningarna och slutför annulleringen.
 
 ## <a name="who-can-cancel-a-subscription"></a>Vem kan avsluta en prenumeration?
 
@@ -49,11 +49,20 @@ I tabellen nedan beskrivs den behörighet som krävs för att avbryta en prenume
 
 ## <a name="what-happens-after-i-cancel-my-subscription"></a>Vad händer när jag har sagt upp min prenumeration?
 
-När du har avbrutit stoppas faktureringen omedelbart. Det kan dock ta upp till 10 minuter innan annulleringen visas i portalen. Om du avbryter mitt i en faktureringsperiod skickar vi den sista fakturan på ditt vanliga faktureringsdatum när perioden är slut. 
+När du har avbrutit stoppas faktureringen omedelbart. Det kan dock ta upp till 10 minuter innan annulleringen visas i portalen. Om du avbryter mitt i en faktureringsperiod skickar vi den sista fakturan på ditt vanliga faktureringsdatum när perioden är slut.
 
 När du har avbrutit inaktiveras dina tjänster. Det innebär att dina virtuella datorer avallokeras, temporära IP-adresser frigörs och lagringen skrivskyddas.
 
-Microsoft väntar 30–90 dagar innan dina data tas bort permanent ifall du behöver komma åt dem eller om du ändrar dig. Vi debiterar dig inte för bevarade data. Mer information finns i [Microsoft Trust Center – Så hanterar vi dina data](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
+När prenumerationen har avslutats väntar Microsoft 30–90 dagar innan data tas bort permanent, om du skulle behöva komma åt dem eller om du ångrar dig. Vi debiterar dig inte för bevarade data. Mer information finns i [Microsoft Trust Center – Så hanterar vi dina data](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
+
+## <a name="delete-free-trial-subscription"></a>Ta bort kostnadsfri utvärderingsprenumeration
+
+Om du har en kostnadsfri utvärderingsprenumeration behöver du inte vänta 30 dagar på att prenumerationen ska tas bort automatiskt. Du kan ta bort prenumerationen *tre dagar* efter att du har avslutat den. Alternativet **Ta bort prenumeration** är inte tillgängligt förrän tre dagar efter att du har avslutat din prenumeration.
+
+1. Vänta tre dagar efter det datum då du avslutade prenumerationen.
+1. Välj din prenumeration på [prenumerationssidan](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) på Azure-portalen.
+1. Välj den prenumeration som du vill ta bort.
+1. Välj **Översikt** och välj sedan **Ta bort prenumeration**.
 
 ## <a name="reactivate-subscription"></a>Återaktivera prenumeration
 

@@ -25,12 +25,12 @@ Azure Functions projekt mal len i Visual Studio skapar ett projekt som du kan pu
 
 1. Använd värdena i följande tabell för **program inställningarna skapa en ny Azure Functions** :
 
-    | Inställningen      | Värde  | Beskrivning                      |
+    | Inställning      | Värde  | Beskrivning                      |
     | ------------ |  ------- |----------------------------------------- |
     | **Functions-körning** | **Azure Functions v3 <br /> (.net Core)** | Det här värdet skapar ett funktions projekt som använder version 3. x-körningen av Azure Functions, som stöder .NET Core 3. x. Azure Functions 1.x har stöd för .NET Framework. Mer information finns i [Översikt över Azure Functions körnings versioner](../articles/azure-functions/functions-versions.md).   |
     | **Funktions mal len** | **HTTP-utlösare** | Det här värdet skapar en funktion som utlöses av en HTTP-begäran. |
     | **Lagrings konto (AzureWebJobsStorage)**  | **Storage-emulator** | Eftersom en Azure-funktion kräver ett lagrings konto, tilldelas eller skapas en när du publicerar projektet till Azure. En HTTP-utlösare använder inte en anslutnings sträng för Azure Storage konto. alla andra utlösare kräver en giltig anslutnings sträng för Azure Storage konto.  |
-    | **Auktorisationsnivå** | **Anonym** | Funktionen som skapats kan utlösas av alla klienter utan att en nyckel anges. Den här auktoriseringsinställningen gör det enkelt att testa den nya funktionen. Mer information om nycklar och auktorisering finns i [auktoriseringsarkiv](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) och [http-och webhook-bindningar](../articles/azure-functions/functions-bindings-http-webhook.md). |
+    | **Auktoriseringsnivå** | **Antal** | Funktionen som skapats kan utlösas av alla klienter utan att en nyckel anges. Den här auktoriseringsinställningen gör det enkelt att testa den nya funktionen. Mer information om nycklar och auktorisering finns i [auktoriseringsarkiv](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) och [http-och webhook-bindningar](../articles/azure-functions/functions-bindings-http-webhook.md). |
     
     
     ![Azure Functions projekt inställningar](./media/functions-vs-tools-create/functions-project-settings.png)

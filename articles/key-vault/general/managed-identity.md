@@ -7,15 +7,15 @@ manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d2d4af5086e3cf4099013969cd359f8e11873c6d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0aa9a9728c3a59b6f47ef1427cbcd368d4f1e77c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090645"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586179"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>Tillhandahåll Key Vault autentisering med en hanterad identitet
 
@@ -42,7 +42,7 @@ För att slutföra den här guiden måste du ha följande resurser.
 
 Först måste du lägga till en tilldelad identitet till ett program. 
  
-### <a name="azure-portal"></a>Azure-portalen 
+### <a name="azure-portal"></a>Azure Portal 
 
 För att konfigurera en hanterad identitet i portalen skapar du först ett program som vanligt och aktiverar sedan funktionen. 
 
@@ -88,7 +88,7 @@ Anteckna `PrincipalId` , som kommer att behövas i nästa avsnitt.
 ```
 ## <a name="grant-your-app-access-to-key-vault"></a>Ge appen åtkomst till Key Vault 
 
-### <a name="azure-portal"></a>Azure-portalen
+### <a name="azure-portal"></a>Azure Portal
 
 1.  Navigera till Key Vault resurs. 
 

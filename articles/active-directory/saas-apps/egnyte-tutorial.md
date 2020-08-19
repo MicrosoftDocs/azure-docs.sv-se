@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Egnyte | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Egnyte.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8c2101d4-1779-4b36-8464-5c1ff780da18
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f8eb0f0d566d656436da11141ea7f6c521b7b82
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 512b96b6b785c0694bb41fab657f0a45c4321f10
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76983732"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544340"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egnyte"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Egnyte
 
@@ -32,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar Egnyte med Azure Ac
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -95,7 +91,7 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Egnyt
 
     ![Information om enkel inloggning med Egnyte-domäner och -URL:er](common/sp-signonurl.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<companyname>.egnyte.com`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<companyname>.egnyte.com`
 
     > [!NOTE]
     > Värdet är inte verkligt. Uppdatera värdet med den faktiska inloggnings-URL:en. Kontakta [supportteamet för Egnyte-klienten](https://www.egnyte.com/corp/contact_egnyte.html) för att få det här värdet. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -132,8 +128,8 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** skriver du **brittasimon\@yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
@@ -197,7 +193,7 @@ I det här avsnittet gör du det möjligt för Britta Simon att använda enkel i
    
     f. Välj **e-postadress** som **standardanvändarmappning**.
    
-    g. Välj **inaktiverad** för **Use domain-specific issuer value** (Använd domänspecifikt utfärdarvärde).
+    ex. Välj **inaktiverad** för **Use domain-specific issuer value** (Använd domänspecifikt utfärdarvärde).
    
     h. Klicka på **Spara**.
 
@@ -219,7 +215,7 @@ Om du vill att Azure AD-användare ska kunna logga in på Egnyte måste de tillh
     
     ![Ny standard användare](./media/egnyte-tutorial/ic787825.png "Ny standard användare")   
 
-    a. I text rutan **e-postadress** anger du e-postmeddelandet som **\@Brittasimon contoso.com**.
+    a. I text rutan **e-postadress** anger du e-postmeddelandet som **Brittasimon \@ contoso.com**.
 
     b. I textrutan för **användarnamn** anger du användarnamnet för användaren, till exempel **Brittasimon**.
 

@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med CODA | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och CODA.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: acaf2012-ef2e-4ce0-8467-ceece3bae50e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/23/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74da278dbbc0ac32407c345524e224ca5f7616da
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 718afec8b36a27bfd36e2a018b39f480144bf822
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77194756"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545360"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coda"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med CODA
 
@@ -32,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar CODA med Azure Acti
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -107,9 +103,9 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. På sidan **Konfigurera enkel inloggning med SAML** anger du värdena för följande fält:
 
-   a. I text rutan **identifierare** anger du "ENTITETS-ID" ovan. Det ska följa mönstret:`https://coda.io/samlId/<CUSTOMID>`
+   a. I text rutan **identifierare** anger du "ENTITETS-ID" ovan. Det ska följa mönstret: `https://coda.io/samlId/<CUSTOMID>`
 
-   b. I text rutan **svars-URL** anger du URL för SAML-svar från ovan. Det ska följa mönstret:`https://coda.io/login/sso/saml/<CUSTOMID>/consume`
+   b. I text rutan **svars-URL** anger du URL för SAML-svar från ovan. Det ska följa mönstret: `https://coda.io/login/sso/saml/<CUSTOMID>/consume`
 
    > [!NOTE]
    > Värdena skiljer sig från ovanstående. Du kan hitta värdena i CODA-konsolen "Configure SAML". Uppdatera dessa värden med den faktiska identifieraren och svars-URL.
@@ -130,7 +126,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -178,11 +174,11 @@ När du klickar på CODA-panelen i åtkomst panelen, bör du loggas in automatis
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Testa CODA med Azure AD](https://aad.portal.azure.com/)
 

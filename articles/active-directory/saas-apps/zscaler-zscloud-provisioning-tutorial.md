@@ -2,25 +2,21 @@
 title: 'Självstudie: Konfigurera Zscaler ZSCloud för automatisk användar etablering med Azure Active Directory | Microsoft Docs'
 description: I den här självstudien får du lära dig hur du konfigurerar Azure Active Directory att automatiskt etablera och avetablera användar konton till Zscaler ZSCloud.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd-msft
-ms.assetid: a752be80-d3ef-45d1-ac8f-4fb814c07b07
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: af9d4aa15a4ff2784d2e1ca1334d9c24a8d12251
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5e8571da46ca188e975119c387fa4ee0695c4fde
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77062684"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545719"
 ---
 # <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Zscaler ZSCloud för automatisk användar etablering
 
@@ -30,7 +26,7 @@ I den här självstudien får du lära dig hur du konfigurerar Azure Active Dire
 > I den här självstudien beskrivs en koppling som bygger på Azure AD-tjänsten för användar etablering. Viktig information om vad den här tjänsten gör och hur den fungerar och svar på vanliga frågor finns i [Automatisera användar etablering och avetablering för SaaS-program med Azure Active Directory](../active-directory-saas-app-provisioning.md).
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra stegen som beskrivs i den här självstudien behöver du följande:
 
@@ -80,7 +76,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 > [!TIP]
 > Du kanske också vill aktivera SAML-baserad enkel inloggning för Zscaler ZSCloud. Om du gör det följer du anvisningarna i [självstudien om Zscaler ZSCloud enkel inloggning](zscaler-zsCloud-tutorial.md). Enkel inloggning kan konfigureras oberoende av automatisk användar etablering, men de två funktionerna kompletterar varandra.
 
-1. Logga in på [Azure Portal](https://portal.azure.com) och välj **företags program** > **alla program** > **Zscaler ZSCloud**:
+1. Logga in på [Azure Portal](https://portal.azure.com) och välj **företags program**  >  **alla program**  >  **Zscaler ZSCloud**:
 
     ![Företagsprogram](common/enterprise-applications.png)
 
@@ -98,7 +94,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
 5. I avsnittet **admin credentials** anger du **klient-URL** och **hemlig token** för ditt Zscaler ZSCloud-konto, enligt beskrivningen i nästa steg.
 
-6. Om du vill hämta **klient-URL** och **hemlig token**går du till **Administration** > **autentiseringsinställningar** i Zscaler ZSCloud-portalen och väljer **SAML** under **Autentiseringstyp**:
+6. Om du vill hämta **klient-URL** och **hemlig token**går du till **Administration**  >  **autentiseringsinställningar** i Zscaler ZSCloud-portalen och väljer **SAML** under **Autentiseringstyp**:
 
     ![Autentiseringsinställningar för Zscaler-ZSCloud](./media/zscaler-zscloud-provisioning-tutorial/secrettoken1.png)
 

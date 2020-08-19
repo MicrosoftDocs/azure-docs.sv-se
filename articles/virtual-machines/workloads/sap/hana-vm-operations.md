@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e01eecf24802bc43aebfa7b02105a2b1aa679a52
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 93587c6bbed20982bd96d04f58106ec1617542d3
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051946"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506438"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Konfigurationer och åtgärder för SAP HANA i Azure-infrastrukturer
 Det här dokumentet innehåller rikt linjer för att konfigurera Azure-infrastruktur och operativ SAP HANA system som distribueras på virtuella Azure-datorer (VM: ar). Dokumentet innehåller också konfigurations information för SAP HANA skala ut för VM-SKU: n för M128s. Detta dokument är inte avsett att ersätta standard-SAP-dokumentationen, som innehåller följande innehåll:
@@ -29,7 +29,7 @@ Det här dokumentet innehåller rikt linjer för att konfigurera Azure-infrastru
 - [Installations guider för SAP](https://service.sap.com/instguides)
 - [SAP-anteckningar](https://service.sap.com/notes)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 Om du vill använda den här guiden behöver du grundläggande kunskaper om följande Azure-komponenter:
 
 - [Virtuella Azure-datorer](../../linux/tutorial-manage-vm.md)
@@ -259,7 +259,7 @@ Eftersom den virtuella M64-32ms-datorn har mycket minne, kanske inte IO-belastni
 
 Särskilt om arbets belastningen är Read-stark kan det öka IO-prestandan för att aktivera Azure-värd-cachen "skrivskyddad" enligt rekommendationer för databas program varans data volymer. För transaktions loggens cache för Azure-värddatorn måste det vara ingen. 
 
-När det gäller logg volymens storlek är en rekommenderad start punkt en tumregel på 15% av data storleken. Du kan skapa logg volymen genom att använda olika typer av Azure-diskar beroende på krav på kostnad och data flöde. För logg volymen krävs högt I/O-genomflöde.  Om du använder VM-typen M64-32ms är det obligatoriskt att aktivera [Skrivningsaccelerator](../../linux/how-to-enable-write-accelerator.md). Azure Skrivningsaccelerator ger optimal disk Skriv fördröjning för transaktions loggen (endast tillgängligt för M-serien). Det finns några objekt att överväga, till exempel det högsta antalet diskar per VM-typ. Information om Skrivningsaccelerator hittar du [här](../../windows/how-to-enable-write-accelerator.md)
+När det gäller logg volymens storlek är en rekommenderad start punkt en tumregel på 15% av data storleken. Du kan skapa logg volymen genom att använda olika typer av Azure-diskar beroende på krav på kostnad och data flöde. För logg volymen krävs högt I/O-genomflöde.  Om du använder VM-typen M64-32ms är det obligatoriskt att aktivera [Skrivningsaccelerator](../../how-to-enable-write-accelerator.md). Azure Skrivningsaccelerator ger optimal disk Skriv fördröjning för transaktions loggen (endast tillgängligt för M-serien). Det finns några objekt att överväga, till exempel det högsta antalet diskar per VM-typ. Information om Skrivningsaccelerator hittar du [här](../../how-to-enable-write-accelerator.md)
 
 
 Här följer några exempel på hur du ändrar storlek på logg volymen:
@@ -316,7 +316,7 @@ Mer information om hur du konfigurerar och underhåller support anslutningar via
 ### <a name="high-availability-with-sap-hana-on-azure-native-vms"></a>Hög tillgänglighet med SAP HANA på virtuella Azure-datorer
 Om du kör SUSE Linux Enterprise Server eller Red Hat kan du upprätta ett pacemaker-kluster med STONITH-enheter. Du kan använda enheterna för att konfigurera en SAP HANA-konfiguration som använder synkron replikering med HANA-systemreplikering och automatisk redundans. Mer information finns i avsnittet "nästa steg".
 
-## <a name="next-steps"></a>Nästa steg
+## <a name="next-steps"></a>Efterföljande moment
 Bekanta dig med artiklarna som de visas i listan
 - [Lagringskonfigurationer för virtuella Azure-datorer för SAP HANA](./hana-vm-operations-storage.md)
 - [Distribuera ett SAP HANA skalbart system med noden vänte läge på virtuella Azure-datorer med Azure NetApp Files på SUSE Linux Enterprise Server](./sap-hana-scale-out-standby-netapp-files-suse.md)

@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med mobil Xpense | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och mobila Xpense.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: e649fc4e-3e15-4948-b977-00bfe9f7db13
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: ba7a8e4dc8172d0ba254a10d4efd5d9354a3d453
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9a15125e5b15db18b3844c79d3c8b44f26006053
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73161352"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554659"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobile-xpense"></a>Självstudie: Azure Active Directory integrering med mobil Xpense
 
@@ -32,9 +28,9 @@ Att integrera mobila Xpense med Azure AD ger följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med mobila Xpense behöver du följande objekt:
 
@@ -105,15 +101,15 @@ Utför följande steg för att konfigurera enkel inloggning med mobila Xpense i 
 
     ![Information om enkel inloggning för mobila Xpense-domäner och webb adresser](common/idp-intiated.png)
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://mobilexpense.com/ServiceProvider`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://mobilexpense.com/ServiceProvider`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<sub-domain>.mobilexpense.com/NET/SSO/SAML20/SAML/AssertionConsumerService.aspx`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<sub-domain>.mobilexpense.com/NET/SSO/SAML20/SAML/AssertionConsumerService.aspx`
 
 5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     ![Information om enkel inloggning för mobila Xpense-domäner och webb adresser](common/metadata-upload-additional-signon.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<sub-domain>.mobilexpense.com/<customername>`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<sub-domain>.mobilexpense.com/<customername>`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [support teamet för mobila Xpense-klienter](https://www.mobilexpense.net/contact) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -154,8 +150,8 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** skriver du **brittasimon\@yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

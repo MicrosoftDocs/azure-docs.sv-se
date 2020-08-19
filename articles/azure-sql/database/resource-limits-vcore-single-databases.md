@@ -11,14 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 07/21/2020
-ms.openlocfilehash: 64a21c0d0edcd035bdf42c3b17c5f2c0131dabfa
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: bb69d48fe4e65d0fc27db027aecab0f1a745e8d5
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117035"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566190"
 ---
-# <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Resurs gränser för enskilda databaser med vCore inköps modell
+# <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Resursbegränsningar för enskilda databaser med hjälp av vCore-inköpsmodellen
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Den här artikeln innehåller detaljerade resurs gränser för enskilda databaser i Azure SQL Database med hjälp av vCore inköps modell.
@@ -43,7 +43,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Min-max minne (GB)|2.02-3|2.05-6|2.10-12|2.25-18|3.00 – 24|
 |Min-max fördröjning för automatisk paus (minuter)|60-10080|60-10080|60-10080|60-10080|60-10080|
 |Columnstore-stöd|Ja|Ja|Ja|Ja|Ja|
-|Minnes intern OLTP-lagring (GB)|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
+|Minnes intern OLTP-lagring (GB)|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Maximal data storlek (GB)|512|1024|1024|1024|1536|
 |Största logg storlek (GB)|154|307|307|307|461|
 |Maximal data storlek för TempDB (GB)|32|64|128|192|256|
@@ -54,11 +54,11 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Maximalt antal samtidiga arbetare (begär Anden)|75|150|300|450|600|
 |Maximalt antal samtidiga sessioner|30 000|30 000|30 000|30 000|30 000|
 |Antal repliker|1|1|1|1|1|
-|Multi-AZ|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
-|Lässkalning|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
+|Multi-AZ|Saknas|Saknas|Saknas|Saknas|Saknas|
+|Lässkalning|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Inkluderad säkerhets kopierings lagring|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|
 
-\*Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
+\* Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
 
 ### <a name="gen5-compute-generation-part-2"></a>Gen5 beräknings generation (del 2)
 
@@ -69,7 +69,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Min-max minne (GB)|3,75 – 30|4.50-36|5,25-42|6.00-48|
 |Min-max fördröjning för automatisk paus (minuter)|60-10080|60-10080|60-10080|60-10080|
 |Columnstore-stöd|Ja|Ja|Ja|Ja|
-|Minnes intern OLTP-lagring (GB)|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
+|Minnes intern OLTP-lagring (GB)|Saknas|Saknas|Saknas|Saknas|
 |Maximal data storlek (GB)|1536|3072|3072|3072|
 |Största logg storlek (GB)|461|461|461|922|
 |Maximal data storlek för TempDB (GB)|320|384|448|512|
@@ -80,11 +80,11 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Maximalt antal samtidiga arbetare (begär Anden)|750|900|1050|1200|
 |Maximalt antal samtidiga sessioner|30 000|30 000|30 000|30 000|
 |Antal repliker|1|1|1|1|
-|Multi-AZ|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
-|Lässkalning|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
+|Multi-AZ|Saknas|Saknas|Saknas|Saknas|
+|Lässkalning|Saknas|Saknas|Saknas|Saknas|
 |Inkluderad säkerhets kopierings lagring|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|
 
-\*Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
+\* Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
 
 ### <a name="gen5-compute-generation-part-3"></a>Gen5 beräknings generation (del 3)
 
@@ -95,9 +95,9 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Min-max minne (GB)|6.75-54|7.5 – 60|9-72|12-96|15-120|
 |Min-max fördröjning för automatisk paus (minuter)|60-10080|60-10080|60-10080|60-10080|60-10080|
 |Columnstore-stöd|Ja|Ja|Ja|Ja|Ja|
-|Minnes intern OLTP-lagring (GB)|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
+|Minnes intern OLTP-lagring (GB)|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Maximal data storlek (GB)|3072|3072|4096|4096|4096|
-|Största logg storlek (GB)|922|922|1229|1229|1229|
+|Största logg storlek (GB)|922|922|1024|1024|1024|
 |Maximal data storlek för TempDB (GB)|576|640|768|1024|1280|
 |Lagringstyp|Fjärr-SSD|Fjärr-SSD|Fjärr-SSD|Fjärr-SSD|Fjärr-SSD|
 |I/o-latens (ungefärligt)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|
@@ -106,11 +106,11 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Maximalt antal samtidiga arbetare (begär Anden)|1350|1500|1800|2400|3000|
 |Maximalt antal samtidiga sessioner|30 000|30 000|30 000|30 000|30 000|
 |Antal repliker|1|1|1|1|1|
-|Multi-AZ|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
-|Lässkalning|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
+|Multi-AZ|Saknas|Saknas|Saknas|Saknas|Saknas|
+|Lässkalning|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Inkluderad säkerhets kopierings lagring|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|
 
-\*Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
+\* Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
 
 
 ## <a name="hyperscale---provisioned-compute---gen4"></a>Storskalig-allokerad beräkning – Gen4
@@ -124,7 +124,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Minne (GB)|7|14|21|28|35|42|
 |[RBPEX](service-tier-hyperscale.md#compute) Ändra|3X-minne|3X-minne|3X-minne|3X-minne|3X-minne|3X-minne|
 |Columnstore-stöd|Ja|Ja|Ja|Ja|Ja|Ja|
-|Minnes intern OLTP-lagring (GB)|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
+|Minnes intern OLTP-lagring (GB)|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Maximal data storlek (TB)|100 |100 |100 |100 |100 |100|
 |Största logg storlek (TB)|Obegränsat |Obegränsat |Obegränsat |Obegränsat |Obegränsat |Obegränsat |
 |Maximal data storlek för TempDB (GB)|32|64|96|128|160|192|
@@ -135,12 +135,12 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Maximalt antal samtidiga arbetare (begär Anden)|200|400|600|800|1000|1200|
 |Maximalt antal samtidiga sessioner|30 000|30 000|30 000|30 000|30 000|30 000|
 |Sekundära repliker|0-4|0-4|0-4|0-4|0-4|0-4|
-|Multi-AZ|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
+|Multi-AZ|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Lässkalning|Ja|Ja|Ja|Ja|Ja|Ja|
 |Kvarhållning av lagrings utrymme för säkerhets kopior|7 dagar|7 dagar|7 dagar|7 dagar|7 dagar|7 dagar|
 |||
 
-\*Förutom lokal SSD i/o kommer arbets belastningarna att använda [fjärrsidas serverns](service-tier-hyperscale.md#page-server) IO. Effektiv IOPS är beroende av arbets belastning. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance)och [data-i/o i statistik över resursutnyttjande](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics).
+\* Förutom lokal SSD i/o kommer arbets belastningarna att använda [fjärrsidas serverns](service-tier-hyperscale.md#page-server) IO. Effektiv IOPS är beroende av arbets belastning. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance)och [data-i/o i statistik över resursutnyttjande](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics).
 
 ### <a name="gen4-compute-generation-part-2"></a>Gen4 beräknings generation (del 2)
 
@@ -151,7 +151,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Minne (GB)|49|56|63|70|112|159,5|
 |[RBPEX](service-tier-hyperscale.md#compute) Ändra|3X-minne|3X-minne|3X-minne|3X-minne|3X-minne|3X-minne|
 |Columnstore-stöd|Ja|Ja|Ja|Ja|Ja|Ja|
-|Minnes intern OLTP-lagring (GB)|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
+|Minnes intern OLTP-lagring (GB)|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Maximal data storlek (TB)|100 |100 |100 |100 |100 |100 |
 |Största logg storlek (TB)|Obegränsat |Obegränsat |Obegränsat |Obegränsat |Obegränsat |Obegränsat |
 |Maximal data storlek för TempDB (GB)|224|256|288|320|512|768|
@@ -162,12 +162,12 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Maximalt antal samtidiga arbetare (begär Anden)|1400|1600|1800|2000|3200|4800|
 |Maximalt antal samtidiga sessioner|30 000|30 000|30 000|30 000|30 000|30 000|
 |Sekundära repliker|0-4|0-4|0-4|0-4|0-4|0-4|
-|Multi-AZ|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
+|Multi-AZ|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Lässkalning|Ja|Ja|Ja|Ja|Ja|Ja|
 |Kvarhållning av lagrings utrymme för säkerhets kopior|7 dagar|7 dagar|7 dagar|7 dagar|7 dagar|7 dagar|
 |||
 
-\*Förutom lokal SSD i/o kommer arbets belastningarna att använda [fjärrsidas serverns](service-tier-hyperscale.md#page-server) IO. Effektiv IOPS är beroende av arbets belastning. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance)och [data-i/o i statistik över resursutnyttjande](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics).
+\* Förutom lokal SSD i/o kommer arbets belastningarna att använda [fjärrsidas serverns](service-tier-hyperscale.md#page-server) IO. Effektiv IOPS är beroende av arbets belastning. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance)och [data-i/o i statistik över resursutnyttjande](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics).
 
 ## <a name="hyperscale---provisioned-compute---gen5"></a>Storskalig-allokerad beräkning – Gen5
 
@@ -180,7 +180,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Minne (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
 |[RBPEX](service-tier-hyperscale.md#compute) Ändra|3X-minne|3X-minne|3X-minne|3X-minne|3X-minne|3X-minne|3X-minne|
 |Columnstore-stöd|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|Minnes intern OLTP-lagring (GB)|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
+|Minnes intern OLTP-lagring (GB)|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Maximal data storlek (TB)|100 |100 |100 |100 |100 |100 |100|
 |Största logg storlek (TB)|Obegränsat |Obegränsat |Obegränsat |Obegränsat |Obegränsat |Obegränsat |Obegränsat |
 |Maximal data storlek för TempDB (GB)|64|128|192|256|320|384|448|
@@ -191,12 +191,12 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Maximalt antal samtidiga arbetare (begär Anden)|200|400|600|800|1000|1200|1400|
 |Maximalt antal samtidiga sessioner|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Sekundära repliker|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
-|Multi-AZ|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
+|Multi-AZ|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Lässkalning|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Kvarhållning av lagrings utrymme för säkerhets kopior|7 dagar|7 dagar|7 dagar|7 dagar|7 dagar|7 dagar|7 dagar|
 |||
 
-\*Förutom lokal SSD i/o kommer arbets belastningarna att använda [fjärrsidas serverns](service-tier-hyperscale.md#page-server) IO. Effektiv IOPS är beroende av arbets belastning. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance)och [data-i/o i statistik över resursutnyttjande](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics).
+\* Förutom lokal SSD i/o kommer arbets belastningarna att använda [fjärrsidas serverns](service-tier-hyperscale.md#page-server) IO. Effektiv IOPS är beroende av arbets belastning. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance)och [data-i/o i statistik över resursutnyttjande](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics).
 
 ### <a name="gen5-compute-generation-part-2"></a>Gen5 beräknings generation (del 2)
 
@@ -207,7 +207,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Minne (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
 |[RBPEX](service-tier-hyperscale.md#compute) Ändra|3X-minne|3X-minne|3X-minne|3X-minne|3X-minne|3X-minne|3X-minne|
 |Columnstore-stöd|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|Minnes intern OLTP-lagring (GB)|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
+|Minnes intern OLTP-lagring (GB)|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Maximal data storlek (TB)|100 |100 |100 |100 |100 |100 |100 |
 |Största logg storlek (TB)|Obegränsat |Obegränsat |Obegränsat |Obegränsat |Obegränsat |Obegränsat |Obegränsat |
 |Maximal data storlek för TempDB (GB)|512|576|640|768|1024|1280|2560|
@@ -218,12 +218,12 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Maximalt antal samtidiga arbetare (begär Anden)|1600|1800|2000|2400|3200|4000|8000|
 |Maximalt antal samtidiga sessioner|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Sekundära repliker|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
-|Multi-AZ|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
+|Multi-AZ|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Lässkalning|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Kvarhållning av lagrings utrymme för säkerhets kopior|7 dagar|7 dagar|7 dagar|7 dagar|7 dagar|7 dagar|7 dagar|
 |||
 
-\*Förutom lokal SSD i/o kommer arbets belastningarna att använda [fjärrsidas serverns](service-tier-hyperscale.md#page-server) IO. Effektiv IOPS är beroende av arbets belastning. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance)och [data-i/o i statistik över resursutnyttjande](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics).
+\* Förutom lokal SSD i/o kommer arbets belastningarna att använda [fjärrsidas serverns](service-tier-hyperscale.md#page-server) IO. Effektiv IOPS är beroende av arbets belastning. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance)och [data-i/o i statistik över resursutnyttjande](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics).
 
 #### <a name="notes"></a>Kommentarer
 
@@ -244,7 +244,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Virtuella kärnor|1|2|3|4|5|6|
 |Minne (GB)|7|14|21|28|35|42|
 |Columnstore-stöd|Ja|Ja|Ja|Ja|Ja|Ja|
-|Minnes intern OLTP-lagring (GB)|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
+|Minnes intern OLTP-lagring (GB)|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Maximal data storlek (GB)|1024|1024|1536|1536|1536|3072|
 |Största logg storlek (GB)|307|307|461|461|461|922|
 |Maximal data storlek för TempDB (GB)|32|64|96|128|160|192|
@@ -255,11 +255,11 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Maximalt antal samtidiga arbetare (begär Anden)|200|400|600|800|1000|1200|
 |Maximalt antal samtidiga sessioner|30 000|30 000|30 000|30 000|30 000|30 000|
 |Antal repliker|1|1|1|1|1|1|
-|Multi-AZ|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
-|Lässkalning|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
+|Multi-AZ|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
+|Lässkalning|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Inkluderad säkerhets kopierings lagring|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|
 
-\*Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
+\* Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
 
 ### <a name="gen4-compute-generation-part-2"></a>Gen4 beräknings generation (del 2)
 
@@ -269,7 +269,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Virtuella kärnor|7|8|9|10|16|24|
 |Minne (GB)|49|56|63|70|112|159,5|
 |Columnstore-stöd|Ja|Ja|Ja|Ja|Ja|Ja|
-|Minnes intern OLTP-lagring (GB)|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
+|Minnes intern OLTP-lagring (GB)|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Maximal data storlek (GB)|3072|3072|3072|3072|4096|4096|
 |Största logg storlek (GB)|922|922|922|922|1229|1229|
 |Maximal data storlek för TempDB (GB)|224|256|288|320|512|768|
@@ -280,11 +280,11 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Maximalt antal samtidiga arbetare (begär Anden)|1400|1600|1800|2000|3200|4800|
 |Maximalt antal samtidiga sessioner|30 000|30 000|30 000|30 000|30 000|30 000|
 |Antal repliker|1|1|1|1|1|1|
-|Multi-AZ|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
-|Lässkalning|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
+|Multi-AZ|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
+|Lässkalning|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Inkluderad säkerhets kopierings lagring|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|
 
-\*Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
+\* Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
 
 ## <a name="general-purpose---provisioned-compute---gen5"></a>Generell användning-allokerad beräkning – Gen5
 
@@ -296,7 +296,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Virtuella kärnor|2|4|6|8|10|12|14|
 |Minne (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
 |Columnstore-stöd|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|Minnes intern OLTP-lagring (GB)|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
+|Minnes intern OLTP-lagring (GB)|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Maximal data storlek (GB)|1024|1024|1536|1536|1536|3072|3072|
 |Största logg storlek (GB)|307|307|461|461|461|922|922|
 |Maximal data storlek för TempDB (GB)|64|128|192|256|320|384|384|
@@ -307,11 +307,11 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Maximalt antal samtidiga arbetare (begär Anden)|200|400|600|800|1000|1200|1400|
 |Maximalt antal samtidiga sessioner|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Antal repliker|1|1|1|1|1|1|1|
-|Multi-AZ|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
-|Lässkalning|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
+|Multi-AZ|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
+|Lässkalning|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Inkluderad säkerhets kopierings lagring|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|
 
-\*Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
+\* Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
 
 ### <a name="gen5-compute-generation-part-2"></a>Gen5 beräknings generation (del 2)
 
@@ -321,9 +321,9 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Virtuella kärnor|16|18|20|24|32|40|80|
 |Minne (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
 |Columnstore-stöd|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|Minnes intern OLTP-lagring (GB)|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
+|Minnes intern OLTP-lagring (GB)|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Maximal data storlek (GB)|3072|3072|3072|4096|4096|4096|4096|
-|Största logg storlek (GB)|922|922|922|1229|1229|1229|1229|
+|Största logg storlek (GB)|922|922|922|1024|1024|1024|1024|
 |Maximal data storlek för TempDB (GB)|512|576|640|768|1024|1280|2560|
 |Lagringstyp|Fjärr-SSD|Fjärr-SSD|Fjärr-SSD|Fjärr-SSD|Fjärr-SSD|Fjärr-SSD|Fjärr-SSD|
 |I/o-latens (ungefärligt)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|5-7 MS (skrivning)<br>5-10 ms (läsa)|
@@ -332,11 +332,11 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Maximalt antal samtidiga arbetare (begär Anden)|1600|1800|2000|2400|3200|4000|8000|
 |Maximalt antal samtidiga sessioner|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Antal repliker|1|1|1|1|1|1|1|
-|Multi-AZ|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
-|Lässkalning|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
+|Multi-AZ|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
+|Lässkalning|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Inkluderad säkerhets kopierings lagring|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|
 
-\*Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
+\* Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
 
 ## <a name="general-purpose---provisioned-compute---fsv2-series"></a>Allmänt syfte – etablerad beräkning – Fsv2-serien
 
@@ -348,7 +348,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Virtuella kärnor|8|10|12|14|16|
 |Minne (GB)|15,1|18,9|22,7|26,5|30,2|
 |Columnstore-stöd|Ja|Ja|Ja|Ja|Ja|
-|Minnes intern OLTP-lagring (GB)|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
+|Minnes intern OLTP-lagring (GB)|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Maximal data storlek (GB)|1024|1024|1024|1024|1536|
 |Största logg storlek (GB)|336|336|336|336|512|
 |Maximal data storlek för TempDB (GB)|333|333|333|333|333|
@@ -360,11 +360,11 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Maximalt antal samtidiga inloggningar|800|1000|1200|1400|1600|
 |Maximalt antal samtidiga sessioner|30 000|30 000|30 000|30 000|30 000|
 |Antal repliker|1|1|1|1|1|
-|Multi-AZ|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
-|Lässkalning|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
+|Multi-AZ|Saknas|Saknas|Saknas|Saknas|Saknas|
+|Lässkalning|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Inkluderad säkerhets kopierings lagring|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|
 
-\*Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
+\* Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
 
 ### <a name="fsv2-series-compute-generation-part-2"></a>Fsv2-seriens beräknings generation (del 2)
 
@@ -374,7 +374,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Virtuella kärnor|18|20|24|32|36|72|
 |Minne (GB)|34,0|37,8|45,4|60,5|68,0|136,0|
 |Columnstore-stöd|Ja|Ja|Ja|Ja|Ja|Ja|
-|Minnes intern OLTP-lagring (GB)|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
+|Minnes intern OLTP-lagring (GB)|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Maximal data storlek (GB)|1536|1536|1536|3072|3072|4096|
 |Största logg storlek (GB)|512|512|512|1024|1024|1024|
 |Maximal data storlek för TempDB (GB)|83,25|92,5|111|148|166,5|333|
@@ -386,11 +386,11 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Maximalt antal samtidiga inloggningar|1800|2000|2400|3200|3600|7200|
 |Maximalt antal samtidiga sessioner|30 000|30 000|30 000|30 000|30 000|30 000|
 |Antal repliker|1|1|1|1|1|1|
-|Multi-AZ|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
-|Lässkalning|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|Ej tillämpligt|
+|Multi-AZ|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
+|Lässkalning|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Inkluderad säkerhets kopierings lagring|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|
 
-\*Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
+\* Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
 
 ## <a name="business-critical---provisioned-compute---gen4"></a>Verksamhets kritiskt allokerad beräkning – Gen4
 
@@ -421,7 +421,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Lässkalning|Ja|Ja|Ja|Ja|Ja|Ja|
 |Inkluderad säkerhets kopierings lagring|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|
 
-\*Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
+\* Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
 
 ### <a name="gen4-compute-generation-part-2"></a>Gen4 beräknings generation (del 2)
 
@@ -447,7 +447,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Lässkalning|Ja|Ja|Ja|Ja|Ja|Ja|
 |Inkluderad säkerhets kopierings lagring|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|
 
-\*Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
+\* Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
 
 ## <a name="business-critical---provisioned-compute---gen5"></a>Verksamhets kritiskt allokerad beräkning – Gen5
 
@@ -475,7 +475,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Lässkalning|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Inkluderad säkerhets kopierings lagring|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|
 
-\*Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
+\* Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
 
 ### <a name="gen5-compute-generation-part-2"></a>Gen5 beräknings generation (del 2)
 
@@ -487,7 +487,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Columnstore-stöd|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Minnes intern OLTP-lagring (GB)|15,77|18,14|20,51|25,25|37,94|52,23|131,64|
 |Maximal data storlek (GB)|3072|3072|3072|4096|4096|4096|4096|
-|Största logg storlek (GB)|922|922|922|1229|1229|1229|1229|
+|Största logg storlek (GB)|922|922|922|1024|1024|1024|1024|
 |Maximal data storlek för TempDB (GB)|512|576|640|768|1024|1280|2560|
 |Lagringstyp|Lokal SSD|Lokal SSD|Lokal SSD|Lokal SSD|Lokal SSD|Lokal SSD|Lokal SSD|
 |I/o-latens (ungefärligt)|1-2 ms (skrivning)<br>1-2 ms (läsa)|1-2 ms (skrivning)<br>1-2 ms (läsa)|1-2 ms (skrivning)<br>1-2 ms (läsa)|1-2 ms (skrivning)<br>1-2 ms (läsa)|1-2 ms (skrivning)<br>1-2 ms (läsa)|1-2 ms (skrivning)<br>1-2 ms (läsa)|1-2 ms (skrivning)<br>1-2 ms (läsa)|
@@ -501,7 +501,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Lässkalning|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Inkluderad säkerhets kopierings lagring|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|
 
-\*Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
+\* Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
 
 ## <a name="business-critical---provisioned-compute---m-series"></a>Verksamhets kritiskt allokerad beräkning – M-serien
 
@@ -525,11 +525,11 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Maximalt antal samtidiga inloggningar|800|1 000|1 200|1400|1600|1800|
 |Maximalt antal samtidiga sessioner|30000|30000|30000|30000|30000|30000|
 |Antal repliker|4|4|4|4|4|4|
-|Multi-AZ|Inga|Inga|Inga|Inga|Inga|Inga|
+|Multi-AZ|Nej|Nej|Nej|Nej|Nej|Nej|
 |Lässkalning|Ja|Ja|Ja|Ja|Ja|Ja|
 |Inkluderad säkerhets kopierings lagring|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|
 
-\*Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
+\* Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
 
 > [!IMPORTANT]
 > Under vissa omständigheter kan du behöva krympa en databas för att frigöra utrymme som inte används. Mer information finns i [Hantera fil utrymme i Azure SQL Database](file-space-manage.md).
@@ -554,11 +554,11 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Maximalt antal samtidiga inloggningar|2 000|2 400|3 200|6 400|12 800|
 |Maximalt antal samtidiga sessioner|30000|30000|30000|30000|30000|
 |Antal repliker|4|4|4|4|4|
-|Multi-AZ|Inga|Inga|Inga|Inga|Inga|
+|Multi-AZ|Nej|Nej|Nej|Nej|Nej|
 |Lässkalning|Ja|Ja|Ja|Ja|Ja|
 |Inkluderad säkerhets kopierings lagring|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|
 
-\*Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
+\* Det maximala värdet för IO-storlekar mellan 8 KB och 64 KB. Faktisk IOPS är arbets belastnings beroende. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance).
 
 > [!IMPORTANT]
 > Under vissa omständigheter kan du behöva krympa en databas för att frigöra utrymme som inte används. Mer information finns i [Hantera fil utrymme i Azure SQL Database](file-space-manage.md).

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 52427cbaa418e0335797fe0a98c26c3fb84cf670
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: dddcdd52709c634f0dcf67cb982804f5556e88b9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87304181"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548343"
 ---
 # <a name="register-a-saas-application"></a>Registrera ett SaaS-program
 
@@ -82,7 +82,7 @@ Skicka<br>
 
 |  Egenskapsnamn     |  Krävs         |  Beskrivning |
 |  ---------------   |  ---------------  | ------------ |
-|  `grant-type`      |  Sant      |  Typ av beviljande. Använd `"client_credentials"`. |
+|  `grant_type`      |  Sant      |  Typ av beviljande. Använd `"client_credentials"`. |
 |  `client_id`       |  Sant      |  Klient/app-identifierare som är associerad med Azure AD-appen. |
 |  `client_secret`   |  Sant      |  Hemlighet som är associerad med Azure AD-appen. |
 |  `resource`        |  Sant      |  Mål resurs för vilken token begärs. Använd `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` eftersom Marketplace SaaS-API: n alltid är mål resursen i det här fallet. |

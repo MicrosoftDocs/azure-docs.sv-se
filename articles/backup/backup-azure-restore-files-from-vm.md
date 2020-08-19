@@ -4,12 +4,12 @@ description: I den här artikeln lär du dig hur du återställer filer och mapp
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 3a7fe7ca2e439739cbdeeb626fea9d2fb3983b83
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 01235e116ca93f9c73e698e4d72ae0cb561824d5
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236309"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88262678"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Återställa filer från säkerhets kopiering av virtuella Azure-datorer
 
@@ -32,7 +32,7 @@ Om du vill återställa filer eller mappar från återställnings punkten går d
 
 3. På instrument panelen för säkerhets kopierings menyn väljer du **fil återställning**.
 
-    ![Knappen fil återställning](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
+    ![Välj fil återställning](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
 
     Menyn **fil återställning** öppnas.
 
@@ -42,7 +42,7 @@ Om du vill återställa filer eller mappar från återställnings punkten går d
 
 5. Om du vill ladda ned program varan som används för att kopiera filer från återställnings punkten väljer du **Hämta körbar fil** (för virtuella Windows Azure-datorer) eller **Ladda ned skript** (för virtuella Linux Azure-datorer genereras ett Python-skript).
 
-    ![Genererat lösen ord](./media/backup-azure-restore-files-from-vm/download-executable.png)
+    ![Ladda ned körbar fil](./media/backup-azure-restore-files-from-vm/download-executable.png)
 
     Azure laddar ned den körbara filen eller skriptet till den lokala datorn.
 
@@ -56,7 +56,7 @@ Om du vill återställa filer eller mappar från återställnings punkten går d
 
 7. Kontrol lera att [du har rätt dator](#selecting-the-right-machine-to-run-the-script) för att köra skriptet. Om rätt dator är samma dator som du laddade ned skriptet på, kan du fortsätta till nedladdnings avsnittet. Från nedladdnings platsen (vanligt vis mappen *hämtade filer* ) högerklickar du på den körbara filen eller skriptet och kör det med administratörs behörighet. När du uppmanas till det anger du lösen ordet eller klistrar in lösen ordet från minnet och trycker på **RETUR**. När du har angett ett giltigt lösen ord ansluter skriptet till återställnings punkten.
 
-    ![Fil återställnings meny](./media/backup-azure-restore-files-from-vm/executable-output.png)
+    ![Körbara utdata](./media/backup-azure-restore-files-from-vm/executable-output.png)
 
 8. För Linux-datorer genereras ett Python-skript. En måste ladda ned skriptet och kopiera det till den relevanta/kompatibla Linux-servern. Du kan behöva ändra behörigheterna för att köra den med ```chmod +x <python file name>``` . Kör sedan python-filen med ```./<python file name>``` .
 

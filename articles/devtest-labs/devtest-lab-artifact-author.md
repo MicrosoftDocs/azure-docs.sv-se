@@ -1,14 +1,14 @@
 ---
 title: Skapa anpassade artefakter för den virtuella DevTest Labs-datorn | Microsoft Docs
-description: Lär dig hur du skapar dina egna artefakter som ska användas med Azure DevTest Labs.
+description: Lär dig hur du skapar artefakter som ska användas med Azure DevTest Labs för att distribuera och konfigurera program efter att du har etablerat en virtuell dator.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 775908749f52c71eeaf97eef25e3787f9b6794fc
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 85acfcc3811e671e58fadab08a23951778e1323d
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857019"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270690"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Skapa anpassade artefakter för den virtuella DevTest Labs-datorn
 
@@ -46,12 +46,12 @@ I följande exempel visas de avsnitt som utgör bas strukturen för en definitio
 
 | Elementnamn | Obligatoriskt? | Beskrivning |
 | --- | --- | --- |
-| $schema |No |Plats för JSON-schemafilen. JSON-schemafilen kan hjälpa dig att testa giltighets tiden för definitions filen. |
+| $schema |Nej |Plats för JSON-schemafilen. JSON-schemafilen kan hjälpa dig att testa giltighets tiden för definitions filen. |
 | rubrik |Ja |Namnet på den artefakt som visas i labbet. |
-| description |Ja |Beskrivning av den artefakt som visas i labbet. |
-| iconUri |No |URI för den ikon som visas i labbet. |
+| beskrivning |Ja |Beskrivning av den artefakt som visas i labbet. |
+| iconUri |Nej |URI för den ikon som visas i labbet. |
 | targetOsType |Ja |Operativ system för den virtuella dator där artefakten är installerad. Alternativ som stöds är Windows och Linux. |
-| parameters |No |Värden som anges när kommandot artefakt installation körs på en dator. Detta hjälper dig att anpassa din artefakt. |
+| parametrar |Nej |Värden som anges när kommandot artefakt installation körs på en dator. Detta hjälper dig att anpassa din artefakt. |
 | Kör |Ja |Artefakt installations kommando som körs på en virtuell dator. |
 
 ### <a name="artifact-parameters"></a>Artefakt parametrar
@@ -73,7 +73,7 @@ Använd följande struktur för att definiera parametrar:
 | --- | --- | --- |
 | typ |Ja |Typ av parameter värde. Se följande lista för de tillåtna typerna. |
 | displayName |Ja |Namnet på den parameter som visas för en användare i labbet. |
-| description |Ja |Beskrivning av den parameter som visas i labbet. |
+| beskrivning |Ja |Beskrivning av den parameter som visas i labbet. |
 
 Tillåtna typer är:
 

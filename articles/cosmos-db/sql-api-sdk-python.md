@@ -1,20 +1,20 @@
 ---
 title: Azure Cosmos DB SQL python API, SDK & resurser
 description: Lär dig allt om SQL python API och SDK, inklusive versions datum, indragnings datum och ändringar som gjorts mellan varje version av Azure Cosmos DB python SDK.
-author: anfeldma-ms
+author: Rodrigossz
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: 44d9521e9d02195cb1d4ff61fd519f31ce9c0018
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e9f9daea2c0d570efb81603784ee730b11668426
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876265"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585992"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB python SDK för SQL API: viktig information och resurser
 
@@ -27,7 +27,8 @@ ms.locfileid: "87876265"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Asynkron Java-SDK v2](sql-api-sdk-async-java.md)
 > * [Synkron Java-SDK v2](sql-api-sdk-java.md)
-> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Våren data v2](sql-api-sdk-java-spring-v2.md)
+> * [Våren data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark-anslutning](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -45,6 +46,20 @@ ms.locfileid: "87876265"
 |**Aktuell plattform som stöds**|[Python 2,7](https://www.python.org/downloads/) och [python 3.5.3 +](https://www.python.org/downloads/)|
 
 ## <a name="release-history"></a>Versions historik
+
+### <a name="410-2020-08-10"></a>4.1.0 (2020-08-10)
+
+- Varning om utfasning har lagts till för "Lazy" Indexing-läge. Server delen tillåter inte längre att skapa behållare med det här läget och anger att de ska vara konsekventa i stället.
+
+**Nya funktioner**
+- Har lagt till möjligheten att ange TTL för analys lagring när du skapar en ny behållare.
+
+**Fel korrigeringar**
+- Fast stöd för förutsägelser som indata för get_client-API: er.
+- Fast python 2/3-kompatibilitet i frågemeddelanden.
+- Fel i fast typ tips (problem #12570).
+- Ett fel har åtgärd ATS där alternativ rubriker inte lades till i upsert_item funktionen. Problem #11791 – tack @aalapatirvbd .
+- Ett fast fel uppstod när ett icke-sträng-ID används i ett objekt. Den genererar nu TypeError snarare än AttributeError (utfärdande #11793).
 
 ### <a name="400"></a>4.0.0
 
@@ -81,14 +96,14 @@ ms.locfileid: "87876265"
 
 * Nya argument för konfigurations nyckelord för konstruktor och per åtgärd har lagts till:
 
-  * `retry_total`– Högsta antal nya försök.
-  * `retry_backoff_max`-Högsta vänte tid för återförsök i sekunder.
-  * `retry_fixed_interval`– Fast återförsöksintervall i millisekunder.
-  * `retry_read`-Maximalt antal Sockets-försök för läsning.
-  * `retry_connect`-Maximalt antal nya försök för anslutnings fel.
-  * `retry_status`-Maximalt antal nya försök vid fel status koder.
-  * `retry_on_status_codes`– En lista med vissa status koder att försöka igen.
-  * `retry_backoff_factor`– Faktor för att beräkna vänte tiden mellan återförsök.
+  * `retry_total` – Högsta antal nya försök.
+  * `retry_backoff_max` -Högsta vänte tid för återförsök i sekunder.
+  * `retry_fixed_interval` – Fast återförsöksintervall i millisekunder.
+  * `retry_read` -Maximalt antal Sockets-försök för läsning.
+  * `retry_connect` -Maximalt antal nya försök för anslutnings fel.
+  * `retry_status` -Maximalt antal nya försök vid fel status koder.
+  * `retry_on_status_codes` – En lista med vissa status koder att försöka igen.
+  * `retry_backoff_factor` – Faktor för att beräkna vänte tiden mellan återförsök.
 
 ### <a name="400b3"></a>4.0.0 B3
 
@@ -98,7 +113,7 @@ ms.locfileid: "87876265"
 
 * Version 4.0.0 B2 är den andra iterationen i våra ansträngningar för att bygga ett klient bibliotek som passar Best Practices för python-språk.
 
-**Icke-bakåtkompatibla ändringar**
+**Bryta ändringar**
 
 * Klient anslutningen har anpassats till att använda HTTP-pipeline som definierats i `azure.core.pipeline` .
 
@@ -139,13 +154,13 @@ ms.locfileid: "87876265"
 * Felhierarkin har nu ärvts från `azure.core.AzureError` :
 
   * `HTTPFailure` har bytt namn till `CosmosHttpResponseError`
-  * `JSONParseFailure`har tagits bort och ersatts av`azure.core.DecodeError`
+  * `JSONParseFailure` har tagits bort och ersatts av `azure.core.DecodeError`
   * Ytterligare fel har lagts till för vissa svars koder:
-    * `CosmosResourceNotFoundError`för status 404
-    * `CosmosResourceExistsError`för status 409
-    * `CosmosAccessConditionFailedError`för status 412
+    * `CosmosResourceNotFoundError` för status 404
+    * `CosmosResourceExistsError` för status 409
+    * `CosmosAccessConditionFailedError` för status 412
 
-* `CosmosClient`kan nu köras i en kontext hanterare för att hantera stängning av klient anslutningen.
+* `CosmosClient` kan nu köras i en kontext hanterare för att hantera stängning av klient anslutningen.
 
 * Iterable-svar (till exempel fråge svar och list svar) är nu av typen `azure.core.paging.ItemPaged` . Metoden `fetch_next_block` har ersatts av en sekundär iterator, som används av `by_page` metoden.
 

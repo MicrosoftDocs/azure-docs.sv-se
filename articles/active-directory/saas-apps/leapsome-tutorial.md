@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Leapsome | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Leapsome.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: cb523e97-add8-4289-b106-927bf1a02188
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef28b95e779e2b814b0ae91059c3edd12644d7c9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c58c9febcbd8c1007938b16545337f07f1a0da63
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75430944"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88519163"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-leapsome"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Leapsome
 
@@ -33,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar Leapsome med Azure 
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -82,13 +77,13 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
 
-    a. Skriv en URL i text rutan **identifierare** :`https://www.leapsome.com`
+    a. Skriv en URL i text rutan **identifierare** : `https://www.leapsome.com`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://www.leapsome.com/api/users/auth/saml/<CLIENTID>/assert`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://www.leapsome.com/api/users/auth/saml/<CLIENTID>/assert`
 
 1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://www.leapsome.com/api/users/auth/saml/<CLIENTID>/login`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://www.leapsome.com/api/users/auth/saml/<CLIENTID>/login`
 
     > [!NOTE]
     > Den föregående svars-URL: en och inloggnings-URL-värdet är inte ett reellt värde. Du kommer att uppdatera dessa med de faktiska värdena, som beskrivs senare i självstudien.
@@ -103,7 +98,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
     | ---------------| --------------- | --------- |  
     | förnamn | user.givenname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | efternamn | user.surname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | title | user.jobtitle | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | rubrik | user.jobtitle | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | bild | URL till den anställdas bild | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | | |
 
@@ -126,7 +121,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -164,11 +159,11 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     b. Kopiera **inloggnings-URL: en (peka dina användare här för att starta inloggning)** och klistra in den i text rutan för **inloggnings-URL** i avsnittet **grundläggande SAML-konfiguration** på Azure Portal.
 
-    c. Kopiera **svars-URL: en (tar emot svar från din identitetsprovider)** och klistra in den i text rutan **svars-URL** i avsnittet **grundläggande SAML-konfiguration** på Azure Portal.
+    c. Kopiera **svars-URL: en (tar emot svar från din identitetsprovider)** och klistra in den i text rutan **svars-URL** i avsnittet  **grundläggande SAML-konfiguration** på Azure Portal.
 
     d. I text rutan **SSO-inloggnings-URL (tillhandahålls av identitetsprovider)** klistrar du in värdet för **inloggnings-URL: en**som du kopierade från Azure Portal.
 
-    e. Kopiera det certifikat som du har laddat ned från `--BEGIN CERTIFICATE and END CERTIFICATE--` Azure Portal utan kommentarer och klistra in det i text rutan **certifikat (tillhandahålls av identitets leverantören)** .
+    e. Kopiera det certifikat som du har laddat ned från Azure Portal utan `--BEGIN CERTIFICATE and END CERTIFICATE--` kommentarer och klistra in det i text rutan **certifikat (tillhandahålls av identitets leverantören)** .
 
     f. Klicka på **Uppdatera SSO-inställningar**.
 
@@ -184,10 +179,10 @@ När du klickar på panelen Leapsome på åtkomst panelen, bör du loggas in aut
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Prova Leapsome med Azure AD](https://aad.portal.azure.com/)

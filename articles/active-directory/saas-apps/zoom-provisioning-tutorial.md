@@ -2,25 +2,21 @@
 title: 'Självstudie: Konfigurera zoom för automatisk användar etablering med Azure Active Directory | Microsoft Docs'
 description: Lär dig att automatiskt etablera och avetablera användar konton från Azure AD till att zooma.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: 3a2e4bbff1274a2473ac961b8355ca4193dcc69f
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 15e3d72661ad35335c744fbaf0ab39627d254750
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924913"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545989"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Självstudie: Konfigurera zoom för automatisk användar etablering
 
@@ -50,7 +46,7 @@ Det scenario som beskrivs i den här självstudien förutsätter att du redan ha
 
 ## <a name="step-2-configure-zoom-to-support-provisioning-with-azure-ad"></a>Steg 2. Konfigurera zoom för att ge stöd för etablering med Azure AD
 
-1. Logga in på [Administratörs konsolen för zoomning](https://zoom.us/signin). Gå till **avancerad > zoom för utvecklare** i det vänstra navigerings fönstret.
+1. Logga in på [Administratörs konsolen för zoomning](https://zoom.us/signin). Gå till **Advanced > app Marketplace** i det vänstra navigerings fönstret.
 
     ![Zooma in integreringar](media/zoom-provisioning-tutorial/zoom01.png)
 

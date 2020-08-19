@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: db3eae5cd31fff0db465389ea4a09b1666453634
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 480e22b319edd03dc9bb9d666dd43718fb3c841b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387004"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507038"
 ---
 # <a name="what-is-azure-virtual-network"></a>Vad är Azure Virtual Network?
 
@@ -37,7 +37,7 @@ När du skapar nätverket i Azure är det viktigt att tänka på följande allm�
 
 - Se till att adress utrymmen inte överlappar varandra. Kontrol lera att ditt VNet-adressutrymme (CIDR-block) inte överlappar din organisations andra nätverks intervall.
 - Dina undernät ska inte avse hela det virtuella adress utrymmet för det virtuella nätverket. Planera i förväg och reservera vissa adress utrymmen för framtiden.
-- Vi rekommenderar att du har färre stora virtuella nätverk än flera små virtuella nätverk. Detta förhindrar hanterings kostnader.
+- Vi rekommenderar att du har färre stora virtuella nätverk i stället för flera små virtuella nätverk. Detta förhindrar hanterings kostnader.
 - Skydda ditt VNet genom att tilldela nätverks säkerhets grupper (NSG: er) till under näten under dem.
 
 ## <a name="communicate-with-the-internet"></a>Kommunicera med Internet
@@ -63,14 +63,14 @@ Du kan ansluta lokala datorer och nätverk till ett virtuellt nätverk med hjäl
 - **Plats-till-plats-VPN:** Upprättas mellan den lokala VPN-enheten och Azure VPN Gateway som distribueras i ett virtuellt nätverk. Med den här anslutningstypen kan alla lokala resurser som du ger behörighet få åtkomst till ett virtuellt nätverk. Kommunikationen mellan den lokala VPN-enheten och en Azure VPN-gateway skickas genom en krypterad tunnel via Internet. Läs mer i [Plats-till-plats-VPN](../vpn-gateway/design.md?toc=%2fazure%2fvirtual-network%2ftoc.json#s2smulti).
 - **Azure ExpressRoute:** Upprättas mellan ditt nätverk och Azure, via en ExpressRoute-partner. Den här anslutningen är privat. Trafiken går inte via Internet. Läs mer i [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-## <a name="filter-network-traffic"></a>Filtrering av nätverkstrafik
+## <a name="filter-network-traffic"></a>Filtrera nätverkstrafik
 
 Du kan filtrera nätverkstrafik mellan undernät med ett eller båda av följande alternativ:
 
 - **Nätverks säkerhets grupper:** Nätverks säkerhets grupper och program säkerhets grupper kan innehålla flera inkommande och utgående säkerhets regler som gör att du kan filtrera trafik till och från resurser efter källans och målets IP-adress, port och protokoll. Mer information finns i [Nätverkssäkerhetsgrupper](security-overview.md#network-security-groups) eller [Programsäkerhetsgrupper](security-overview.md#application-security-groups).
 - **Virtuella nätverksinstallationer:** En virtuell nätverksinstallation är en virtuell dator som utför en nätverksfunktion, till exempel en brandvägg, WAN-optimering eller annan nätverksfunktion. En lista över tillgängliga virtuella nätverksinstallationer som du kan distribuera i ett virtuellt nätverk finns i [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances).
 
-## <a name="route-network-traffic"></a>Dirigering av nätverkstrafik
+## <a name="route-network-traffic"></a>Dirigera nätverkstrafik
 
 Azure dirigerar trafik mellan undernät, anslutna virtuella nätverk, lokala nätverk och Internet, som standard. Du kan implementera ett eller båda av följande alternativ för att åsidosätta de standardvägar som Azure skapar:
 
@@ -90,7 +90,7 @@ Du kan integrera Azure-tjänster i ditt virtuella nätverk med följande alterna
 
 Det finns vissa begränsningar kring antalet Azure-resurser som du kan distribuera. De flesta gränser för Azure-nätverk har högsta tillåtna värden. Du kan dock [öka vissa nätverks gränser](../azure-portal/supportability/networking-quota-requests.md) enligt vad som anges på [sidan VNet-gränser](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits). 
 
-## <a name="pricing"></a>Priser
+## <a name="pricing"></a>Prissättning
 
 Det kostar inget att använda Azure VNet, utan kostnad. Standard avgifterna gäller för resurser, till exempel Virtual Machines (VM) och andra produkter. Mer information finns i avsnittet om [priser för VNet](https://azure.microsoft.com/pricing/details/virtual-network/) och [pris kalkylatorn](https://azure.microsoft.com/pricing/calculator/)för Azure.
 

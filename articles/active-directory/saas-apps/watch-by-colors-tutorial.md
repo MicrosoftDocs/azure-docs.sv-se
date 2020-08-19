@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory enkel inloggning (SSO) med titta på färger | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och titta på färger.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 586a029c-fb8d-4233-b280-103b9ba7102d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d8fdc8ba2337a3be49a4645e48a45120fb0ccec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 79fd6c5212b2ad956259f2cfbfb36ec3e7e92844
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72026088"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88523826"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-watch-by-colors"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med titta på färger
 
@@ -33,7 +28,7 @@ I den här självstudien får du lära dig att integrera bevakade färger med Az
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -84,7 +79,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
-    Skriv en URL i text rutan **inloggnings-URL** :`https://app.colorscorporation.com/login`
+    Skriv en URL i text rutan **inloggnings-URL** :  `https://app.colorscorporation.com/login`
 
 1. På sidan **Konfigurera enkel inloggning med SAML** , i avsnittet **SAML-signeringscertifikat** , klickar du på Kopiera för att kopiera **URL: en för appens Federations-metadata** och spara den på din dator.
 
@@ -98,7 +93,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -132,7 +127,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 3. Om du vill konfigurera bevakade färger manuellt öppnar du ett nytt webbläsarfönster och loggar in på din bevakare av företags plats som administratör och utför följande steg:
 
-4. Klicka på **profil** > **konto inställningar** > **SSO (enkel inloggning)** i det övre högra hörnet på sidan.
+4. Klicka på **profil**  >  **konto inställningar**  >  **SSO (enkel inloggning)** i det övre högra hörnet på sidan.
 
     ![Konfiguration av bevaka färger](./media/watch-by-colors-tutorial/config01.png)
 
@@ -156,7 +151,7 @@ Om du vill att Azure AD-användare ska kunna logga in för att titta på färger
 
 1. Logga in för att titta på färger som en säkerhets administratör.
 
-1. Klicka på **profil** > **användare** > **Lägg till användare**i det övre högra hörnet på sidan.
+1. Klicka på **profil**  >  **användare**  >  **Lägg till användare**i det övre högra hörnet på sidan.
 
     ![Konfiguration av bevaka färger](./media/watch-by-colors-tutorial/config03.png)
 
@@ -184,11 +179,11 @@ När du klickar på panelen titta efter färger i åtkomst panelen, bör du logg
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Prova att titta på färger med Azure AD](https://aad.portal.azure.com/)
 

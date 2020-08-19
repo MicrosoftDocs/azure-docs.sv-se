@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 6738f598275e91ce8a811c3ef6bcc6d5dc84e0bd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bbc06b657525880f22bd5fb38e902f906d438c9c
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089506"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565918"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>Snabb start: skapa din första statiska webbapp
 
@@ -98,7 +98,7 @@ När du har loggat in med GitHub anger du lagrings plats informationen.
 :::image type="content" source="media/getting-started/next-build-button.png" alt-text="Nästa build-knapp":::
 
 > [!NOTE]
->  Om du inte ser några databaser kan du behöva auktorisera Azures statiska Web Apps i GitHub. Bläddra till GitHub-lagringsplatsen och gå till **inställningar > program > auktoriserade OAuth-appar**, Välj **Azure static Web Apps**och välj sedan **bevilja**. Du måste vara ägare till organisationen för att kunna bevilja behörighet för organisations databaser.
+>  Om du inte ser några databaser kan du behöva auktorisera Azures statiska Web Apps i GitHub. Bläddra till [Start sidan för GitHub](https://github.com) och klicka på din konto avbildning för att öppna den nedrullningsbara menyn. Klicka på **Inställningar**och sedan på **program > auktoriserade OAuth-appar > Azure static Web Apps**och slutligen väljer du **bevilja**. Du måste vara ägare till organisationen för att kunna bevilja behörighet för organisations databaser.
 
 ### <a name="build"></a>Skapa
 

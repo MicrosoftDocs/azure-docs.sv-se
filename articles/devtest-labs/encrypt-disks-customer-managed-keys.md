@@ -3,12 +3,12 @@ title: Kryptera OS-diskar med Kundhanterade nycklar i Azure DevTest Labs
 description: Lär dig hur du krypterar operativ system diskar (OS) med Kundhanterade nycklar i Azure DevTest Labs.
 ms.topic: article
 ms.date: 07/28/2020
-ms.openlocfilehash: b9eb401521f6bd81efe3238dc05d07e4554c4f62
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 209ab1f74dce0982af66777f211c41066d53b8f9
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542435"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566207"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>Kryptera operativ system diskar (OS) med Kundhanterade nycklar i Azure DevTest Labs
 Server Side Encryption (SSE) skyddar dina data och hjälper dig att uppfylla organisationens säkerhets-och efterlevnads åtaganden. SSE krypterar automatiskt dina data som lagras på hanterade diskar i Azure (OS-och data diskar) i vila som standard när de sparas i molnet. Lär dig mer om [disk kryptering](../virtual-machines/windows/disk-encryption.md) i Azure. 
@@ -28,12 +28,11 @@ I följande avsnitt visas hur en labb ägare kan konfigurera kryptering med hjä
 1. Om du inte har en disk krypterings uppsättning följer du den här artikeln för att [Konfigurera en Key Vault och en disk krypterings uppsättning](../virtual-machines/windows/disks-enable-customer-managed-keys-portal.md#set-up-your-azure-key-vault). Observera följande krav för disk krypterings uppsättningen: 
 
     - Disk krypterings uppsättningen måste finnas **i samma region och prenumeration som din labb miljö**. 
-    - Se till att du (labb ägare) har minst en **åtkomst på läsar nivå** till den disk krypterings uppsättning som ska användas för att kryptera labb OS-diskar.  
-2. För att labbet ska kunna hantera kryptering för alla labb-OS-diskar måste labb ägaren uttryckligen bevilja Labbets **systemtilldelade identitet** behörigheten till disk krypterings uppsättningen. Labb ägaren kan göra detta genom att utföra följande steg:
+    - Se till att du (labb ägare) har minst en **åtkomst på läsar nivå** till den disk krypterings uppsättning som ska användas för att kryptera labb OS-diskar. 
+2. För labb som skapats före 8/1/2020 måste labb ägaren se till att identiteten för labb systemets tilldelade identitet är aktive rad. För att göra det kan labb ägaren gå till sitt labb, klicka på **konfiguration och principer**, klicka på **(för hands version)** blad, ändra systemtilldelad identitets **status** till **på** och klicka på **Spara**. För nya labb som skapats efter 8/1/2020-Labbets tilldelade identitet, aktive ras som standard. 
+3. För att labbet ska kunna hantera kryptering för alla labb-OS-diskar måste labb ägaren uttryckligen ge labb rollen **system tilldelad identitets** läsare på disk krypterings uppsättningen och rollen virtuell dator deltagare på den underliggande Azure-prenumerationen. Labb ägaren kan göra detta genom att utföra följande steg:
 
-    > [!IMPORTANT]
-    > Du måste utföra dessa steg för labb som skapats på eller efter 8/1/2020. Ingen åtgärd krävs för labb som skapades före det datumet.
-
+   
     1. Se till att du är medlem i [rollen administratör för användar åtkomst](../role-based-access-control/built-in-roles.md#user-access-administrator) på Azures prenumerations nivå så att du kan hantera användar åtkomst till Azure-resurser. 
     1. På sidan **disk krypterings uppsättning** väljer du **åtkomst kontroll (IAM)** på den vänstra menyn. 
     1. Välj **+ Lägg till** i verktygsfältet och välj **Lägg till en roll tilldelning**.  
@@ -48,9 +47,7 @@ I följande avsnitt visas hur en labb ägare kan konfigurera kryptering med hjä
         :::image type="content" source="./media/encrypt-disks-customer-managed-keys/save-role-assignment.png" alt-text="Spara roll tilldelning":::
 3. Lägg till Labbets **systemtilldelade identitet** i rollen **virtuell dator deltagare** med hjälp av sidan för **prenumerations**  ->  **åtkomst kontroll (IAM)** . Stegen liknar dem i föregående steg. 
 
-    > [!IMPORTANT]
-    > Du måste utföra dessa steg för labb som skapats på eller efter 8/1/2020. Ingen åtgärd krävs för labb som skapades före det datumet.
-
+    
     1. Gå till **prenumerations** sidan i Azure Portal. 
     1. Välj **Åtkomstkontroll (IAM)** . 
     1. Välj **+ Lägg till** i verktygsfältet och välj **Lägg till en roll tilldelning**. 

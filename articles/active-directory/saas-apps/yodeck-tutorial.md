@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Yodeck | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Yodeck.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b2c8dccb-eeb0-4f4d-a24d-8320631ce819
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: af0748f36e8d2299921f987c517f7a4923bd0d55
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8eed884ed9d957ede4ae9fc192ae5a8e501b652e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67086482"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546244"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yodeck"></a>Självstudie: Azure Active Directory integrering med Yodeck
 
@@ -32,9 +28,9 @@ Genom att integrera Yodeck med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Yodeck behöver du följande objekt:
 
@@ -111,7 +107,7 @@ Utför följande steg för att konfigurera enkel inloggning med Yodeck i Azure A
 
     ![image](common/both-preintegrated-signon.png)
 
-    Skriv en URL i text rutan **inloggnings-URL** :`https://app.yodeck.com/login`
+    Skriv en URL i text rutan **inloggnings-URL** :  `https://app.yodeck.com/login`
 
 6. På sidan **Set up Single Sign-On with SAML** (Konfigurera enkel inloggning med SAML) går du till avsnittet **SAML Signing Certificate** (SAML-signeringscertifikat), klickar på kopieringsknappen för att kopiera **App Federation Metadata-URL** och spara den på datorn.
 
@@ -119,13 +115,23 @@ Utför följande steg för att konfigurera enkel inloggning med Yodeck i Azure A
 
 ### <a name="configure-yodeck-single-sign-on"></a>Konfigurera Yodeck enkel inloggning
 
+1. Om du vill automatisera konfigurationen i **Yodeck**måste du installera **Mina appar säker inloggnings webb läsar tillägg** genom att klicka på **installera tillägget**.
+
+    ![image](./media/target-process-tutorial/install_extension.png)
+
+1. När du har lagt till tillägg i webbläsaren, klickar du på **installations Yodeck** för att dirigera dig till Yodeck-programmet. Därifrån anger du administratörsautentiseringsuppgifter för att logga in på Yodeck. Webb läsar tillägget kommer automatiskt att konfigurera programmet åt dig och automatisera steg 3-5.
+
+    ![Konfigurera konfiguration](common/setup-sso.png)
+
+    **Om du vill konfigurera programmet manuellt utför du följande steg:**
+
 1. Logga in på din Yodeck-företags webbplats som administratör i ett annat webbläsarfönster.
 
-2. Klicka på alternativ för **användar inställningar** i det övre högra hörnet på sidan och välj **konto inställningar**.
+1. Klicka på alternativ för **användar inställningar** i det övre högra hörnet på sidan och välj **konto inställningar**.
 
     ![Yodeck-konfiguration](./media/yodeck-tutorial/configure1.png)
 
-3. Välj **SAML** och utför följande steg:
+1. Välj **SAML** och utför följande steg:
 
     ![Yodeck-konfiguration](./media/yodeck-tutorial/configure2.png)
 
@@ -155,7 +161,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** brittasimon@yourcompanydomain.extension. Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** brittasimon@yourcompanydomain.extension . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

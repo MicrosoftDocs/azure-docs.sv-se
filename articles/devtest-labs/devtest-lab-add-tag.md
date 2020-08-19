@@ -1,14 +1,14 @@
 ---
 title: Lägga till taggar i ett labb i Azure DevTest Labs | Microsoft Docs
-description: Lär dig hur du lägger till en tagg i ett labb i Azure DevTest Labs
+description: Lär dig hur du skapar anpassade taggar i Azure DevTest Labs och använder taggar för att kategorisera resurser. Du kan se alla resurser i din prenumeration som har en-tagg.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 30f0f2ed4b8cc98985326db652371b8ceb16bfb4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a4d2b328626f0d0f096082fa88bb170894ccf3e4
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287582"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270741"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Lägga till taggar i ett labb i Azure DevTest Labs
 

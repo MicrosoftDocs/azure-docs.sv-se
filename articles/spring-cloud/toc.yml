@@ -47,6 +47,8 @@
       href: ./policy-samples.md
 - name: Begrepp
   items:
+    - name: Förstå appar och distribution
+      href: spring-cloud-concept-understand-app-and-deployment.md
     - name: Förstå kvoter och gränser
       href: spring-cloud-quotas.md
     - name: Förstå mått

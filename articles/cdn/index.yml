@@ -3,18 +3,18 @@ title: Dokumentation om Azure CDN
 summary: Azure Content Delivery Network (CDN) är en global CDN-lösning för att leverera innehåll med hög bandbredd. Den kan köras i Azure eller på någon annan plats. Med Azure CDN kan du cachelagra statiska objekt som läses in från Azure Blob Storage, en webbapp, eller valfri offentligt tillgänglig webbserver genom att använda den närmaste POP-servern. Azure CDN möjliggör också snabbare dynamiskt innehåll, som inte kan cachelagras, genom att utnyttja olika nätverks- och routningsoptimeringar.
 metadata:
   title: Dokumentation om Azure CDN – självstudier, API-referens
-  description: Azure Content Delivery Network (CDN) är en global CDN-lösning för att leverera innehåll med hög bandbredd. Den kan köras i Azure eller på någon annan plats. Med Azure CDN kan du cachelagra statiska objekt som läses in från Azure Blob Storage, en webbapp, eller valfri offentligt tillgänglig webbserver genom att använda den närmaste POP-servern. Azure CDN möjliggör också snabbare dynamiskt innehåll, som inte kan cachelagras, genom att utnyttja olika nätverks- och routningsoptimeringar.
+  description: Lär dig mer om Azure Content Delivery Network, en lösning för att leverera innehåll med hög bandbredd som kan användas i Azure eller på någon annan plats.
   ms.service: azure-cdn
   ms.topic: landing-page
   author: asudbring
   ms.author: allensu
   ms.date: 02/24/2020
-  ms.openlocfilehash: c3c9cd72a85744ac6b609b178ac4e7c2413b4080
-  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+  ms.openlocfilehash: ed3c4f1794407ccdb841ea3c6ca35ff4d8e1a808
+  ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
   ms.translationtype: HT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 06/30/2020
-  ms.locfileid: "85554309"
+  ms.lasthandoff: 08/13/2020
+  ms.locfileid: "88192449"
 landingContent:
 - title: Om Azure CDN
   linkLists:

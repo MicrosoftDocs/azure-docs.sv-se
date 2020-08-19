@@ -418,7 +418,7 @@
         - name: Översikt över migrering
           href: migration-classic-resource-manager-overview.md
         - name: Djupgående om migrering
-          href: migration-classic-resource-manager-deep-dive.md
+          href: ../migration-classic-resource-manager-deep-dive.md
         - name: Planera för migrering
           href: migration-classic-resource-manager-plan.md
         - name: Migrera med CLI
@@ -428,7 +428,7 @@
         - name: Community-verktyg för migrering
           href: ../windows/migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: VANLIGA FRÅGOR OCH SVAR
-          href: migration-classic-resource-manager-faq.md
+          href: ../migration-classic-resource-manager-faq.md
     - name: Använda avbildningar
       displayName: 'SIG, AMI, image'
       items:
@@ -954,7 +954,7 @@
           href: detach-disk.md
         - name: Distribuera diskar med ARM-mall
           displayName: 'Azure Resource Manager, ARM'
-          href: using-managed-disks-template-deployments.md
+          href: ../using-managed-disks-template-deployments.md
         - name: Aktivera delade diskar
           href: disks-shared-enable.md
         - name: Ladda upp en virtuell hårddisk till en disk – CLI
@@ -1004,7 +1004,7 @@
         - name: Prestanda
           items:
             - name: Använda Write Accelerator
-              href: how-to-enable-write-accelerator.md
+              href: ../how-to-enable-write-accelerator.md
             - name: Använda ultradiskar
               href: disks-enable-ultra-ssd.md
             - name: Beräkna benchmark för en disk

@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Rackspace SSO | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Rackspace SSO.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 36b398be-2f7e-4ce8-9031-53587299bc4a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 98a160b361e316c87e61855825c2cc36fdbb06d1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a2c2e7358c32453daf53c40a9322df4fe30642d8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81870305"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548910"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>Självstudie: Azure Active Directory integrering med Rackspace SSO
 
@@ -32,9 +28,9 @@ Att integrera Rackspace SSO med Azure AD ger följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Rackspace SSO behöver du följande objekt:
 
@@ -113,7 +109,7 @@ Utför följande steg för att konfigurera enkel inloggning med Rackspace SSO i 
 
     c. När metadatafilen har laddats upp hämtas de nödvändiga URL: erna automatiskt.
 
-    d. Skriv en URL i text rutan **inloggnings-URL** :`https://login.rackspace.com/federate/`
+    d. Skriv en URL i text rutan **inloggnings-URL** : `https://login.rackspace.com/federate/`
 
     ![Information om enkel inloggning för Rackspace SSO-domän och URL: er](common/sp-signonurl.png)   
 
@@ -153,7 +149,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** `brittasimon@yourcompanydomain.extension`. Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** `brittasimon@yourcompanydomain.extension` . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
@@ -200,7 +196,7 @@ Rackspace använder en **princip för mappning av attribut** för att tilldela R
 Följande exempel på **attribut mappnings princip** visar:
 1. Anger Rackspace-användarens namn till `user.name` SAML-anspråket. Alla anspråk kan användas, men det är vanligt att ange detta till ett fält som innehåller användarens e-postadress.
 1. Ange Rackspace-roller `admin` och `billing:admin` för en användare genom att matcha en Azure AD-grupp, antingen efter grupp namn eller grupp-UID. En *ersättning* av `"{0}"` i `roles` fältet används och ersätts av resultaten av `remote` regel uttrycken.
-1. `"{D}"` Använd *standard ersättningen* för att låta Rackspace hämta ytterligare SAML-fält genom att söka efter standard-och välkända SAML-anspråk i SAML Exchange.
+1. Använd `"{D}"` *standard ersättningen* för att låta RACKSPACE hämta ytterligare SAML-fält genom att söka efter standard-och välkända SAML-anspråk i SAML Exchange.
 
 ```yaml
 ---

@@ -6,18 +6,19 @@ ms.author: robinsh
 ms.date: 04/04/2018
 ms.topic: conceptual
 ms.service: iot-dps
+ms.custom: fasttrack-edit, iot
 services: iot-dps
-ms.openlocfilehash: 5cb0e25ec70956e66f7b867f0d0b9473160fc3ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a5e8b6f430f6af49ab79ca0f8cb2253bd0f2049
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975082"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520664"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Hantera enhets registreringar med SDK: er för Azure Device Provisioning-tjänsten
 En *enhets registrering* skapar en post för en enskild enhet eller en grupp av enheter som kan komma att registreras med enhets etablerings tjänsten. Registrerings posten innehåller den initiala önskade konfigurationen för enheten eller enheterna som en del av registreringen, inklusive önskad IoT-hubb. Den här artikeln visar hur du hanterar enhets registreringar för din etablerings tjänst program mässigt med hjälp av SDK: er för Azure IoT Provisioning-tjänsten.  SDK: er är tillgängliga på GitHub i samma databas som Azure IoT SDK: er.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 * Hämta anslutnings strängen från din enhets etablerings tjänst instans.
 * Hämta enhetens säkerhets artefakter för den [mekanism för attestering](concepts-security.md#attestation-mechanism) som används:
     * [**Trusted Platform Module (TPM)**](/azure/iot-dps/concepts-security#trusted-platform-module):
@@ -28,7 +29,7 @@ En *enhets registrering* skapar en post för en enskild enhet eller en grupp av 
         * Registrerings grupp: [certifikat utfärdare/rot certifikat](/azure/iot-dps/concepts-security#root-certificate) eller [mellanliggande certifikat](/azure/iot-dps/concepts-security#intermediate-certificate)som används för att skapa enhets certifikat på en fysisk enhet.  Det kan också genereras från SDK tärning-emulatorn.
 * Exakta API-anrop kan vara olika på grund av skillnader i språket. Mer information hittar du i exemplen som tillhandahålls på GitHub:
    * [Klient exempel för Java-etablerings tjänst](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples)
-   * [Klient exempel förNode.js etablerings tjänst](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service/samples)
+   * [ Klient exempel förNode.js etablerings tjänst](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service/samples)
    * [Klient exempel för .NET-etablerings tjänst](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples)
 
 ## <a name="create-a-device-enrollment"></a>Skapa en enhets registrering
@@ -39,7 +40,7 @@ Det finns två sätt att registrera enheter med etablerings tjänsten:
     Du kan skapa en registrerings grupp med SDK: er med följande arbets flöde:
 
     1. För registrerings gruppen använder mekanismen X. 509 rot certifikat.  Anropa service SDK API ```X509Attestation.createFromRootCertificate``` med rot certifikat för att skapa attestering för registrering.  X. 509-rotcertifikat anges antingen i en PEM-fil eller som en sträng.
-    1. Skapa en ny ```EnrollmentGroup``` variabel med hjälp av den ```attestation``` skapade och en unik ```enrollmentGroupId``` .  Du kan också ange parametrar som ```Device ID``` , ```IoTHubHostName``` , ```ProvisioningStatus``` .
+    1. Skapa en ny ```EnrollmentGroup``` variabel med hjälp av den ```attestation``` skapade och en unik ```enrollmentGroupId``` .  Du kan också ange parametrar som ```IoTHubHostName``` , ```ProvisioningStatus``` .
     2. Anropa service SDK API ```createOrUpdateEnrollmentGroup``` i Server dels programmet med ```EnrollmentGroup``` för att skapa en registrerings grupp.
 
 * En **enskild registrering** är en post för en enskild enhet som kan registreras. Enskilda registreringar kan använda antingen X. 509-certifikat eller SAS-token (från en fysisk eller virtuell TPM) som attesterings metoder. Vi rekommenderar att du använder enskilda registreringar för enheter som kräver unika inledande konfigurationer eller för enheter som bara kan använda SAS-token via TPM eller virtuell TPM som mekanism för attestering. Enskilda registreringar kan ha angivet önskat enhets-ID för IoT Hub.

@@ -1,18 +1,18 @@
 ---
 title: 'Azure-skydds: Visa virtuell dator-session: hel skärms läge'
-description: I den här artikeln lär du dig hur du ändrar vyn till hel skärms läge.
+description: Lär dig hur du ändrar vyn för virtuella datorer till full skärm och tillbaka i webbläsaren för en RDP-eller SSH-anslutning i Azure skydds.
 services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: f4aa2c5aa3f40802db7be64eeb778866819bfe67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa795d7b066733aba54f8612bbabecf264a11c70
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744229"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270299"
 ---
 # <a name="change-to-full-screen-view-for-a-vm-session-azure-bastion"></a>Ändra till hel skärms läge för en VM-session: Azure skydds
 

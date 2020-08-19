@@ -3,12 +3,12 @@ title: Azure Relay Hybridanslutningar protokoll guide | Microsoft Docs
 description: I den här artikeln beskrivs interaktionen på klient sidan med Hybridanslutningar relä för att ansluta klienterna i lyssnings-och avsändarens roller.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 798be7f0003509aee6ae616ba33fcc41e5c86275
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fec021d961a17102f8d979c61ee46af6b938f073
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316652"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272017"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay Hybridanslutningar protokoll
 
@@ -138,7 +138,7 @@ Parameter alternativen för frågesträng är följande.
 | `sb-hc-action`   | Ja      | Parametern måste vara **SB-HC-Action = avlyssna** för Listener-rollen
 | `{path}`         | Ja      | Den URL-kodade namn områdets sökväg för den förkonfigurerade hybrid anslutningen för att registrera lyssnaren på. Det här uttrycket läggs till i den fasta `$hc/` Sök vägs delen.
 | `sb-hc-token`    | Ja\*    | Lyssnaren måste ange en giltig URL-kodad Service Bus-token för delad åtkomst för namn området eller hybrid anslutningen som ger **lyssnings** rättigheten.
-| `sb-hc-id`       | No       | Det här tillhandahållna valfria ID: t för klienten möjliggör diagnostisk spårning från slut punkt till slut punkt.
+| `sb-hc-id`       | Nej       | Det här tillhandahållna valfria ID: t för klienten möjliggör diagnostisk spårning från slut punkt till slut punkt.
 
 Om WebSocket-anslutningen Miss lyckas på grund av att hybrid anslutnings Sök vägen inte är registrerad, eller om en token är ogiltig eller saknas, eller om något annat fel inträffar, så anges fel återkopplings modellen med vanlig HTTP 1,1-status feedback. Status beskrivningen innehåller ett fel spårnings-ID som kan förmedlas till support personal för Azure:
 
@@ -195,11 +195,11 @@ URL: en måste användas för att upprätta en socket för godkännande, men inn
 
 | Parameter      | Krävs | Beskrivning
 | -------------- | -------- | -------------------------------------------------------------------
-| `sb-hc-action` | Ja      | För att acceptera en socket måste parametern vara`sb-hc-action=accept`
+| `sb-hc-action` | Ja      | För att acceptera en socket måste parametern vara `sb-hc-action=accept`
 | `{path}`       | Ja      | (se följande stycke)
-| `sb-hc-id`     | No       | Se tidigare beskrivning av **ID**.
+| `sb-hc-id`     | Nej       | Se tidigare beskrivning av **ID**.
 
-`{path}`är sökvägen till URL-kodad namnrymd för den förkonfigurerade hybrid anslutning som den här lyssnaren ska registreras på. Det här uttrycket läggs till i den fasta `$hc/` Sök vägs delen.
+`{path}` är sökvägen till URL-kodad namnrymd för den förkonfigurerade hybrid anslutning som den här lyssnaren ska registreras på. Det här uttrycket läggs till i den fasta `$hc/` Sök vägs delen.
 
 `path`Uttrycket kan utökas med ett suffix och ett frågesträngs uttryck som följer det registrerade namnet efter ett snedstreck.
 Detta gör att avsändar klienten kan skicka sändnings argument till den godkända lyssnaren när det inte går att inkludera HTTP-huvuden. Förväntat är att lyssnar ramverket tolkar den fasta Sök vägs delen och det registrerade namnet från sökvägen och gör resten, eventuellt utan några frågesträngs argument som har fastställts av, som är `sb-` tillgängliga för programmet för att avgöra om anslutningen ska godkännas eller inte.
@@ -294,16 +294,16 @@ JSON-innehållet för `request` ser ut så här:
 * **ID** – sträng. Den unika identifieraren för den här begäran.
 * **requestHeaders** – det här objektet innehåller alla HTTP-huvuden som har angetts till slut punkten av avsändaren, med undantag för auktoriseringsinformation enligt beskrivningen [ovan](#request-operation), och huvuden som är strikt kopplade till anslutningen med gatewayen. Mer specifikt, alla huvuden som definieras eller reserveras i [RFC7230](https://tools.ietf.org/html/rfc7230), förutom `Via` , tas bort och vidarebefordras inte:
 
-  * `Connection`(RFC7230, avsnitt 6,1)
-  * `Content-Length`(RFC7230, avsnitt 3.3.2)
-  * `Host`(RFC7230, avsnitt 5,4)
-  * `TE`(RFC7230, avsnitt 4,3)
-  * `Trailer`(RFC7230, avsnitt 4,4)
-  * `Transfer-Encoding`(RFC7230, avsnitt 3.3.1)
-  * `Upgrade`(RFC7230, avsnitt 6,7)
-  * `Close`(RFC7230, avsnitt 8,1)
+  * `Connection` (RFC7230, avsnitt 6,1)
+  * `Content-Length`  (RFC7230, avsnitt 3.3.2)
+  * `Host`  (RFC7230, avsnitt 5,4)
+  * `TE`  (RFC7230, avsnitt 4,3)
+  * `Trailer`  (RFC7230, avsnitt 4,4)
+  * `Transfer-Encoding`  (RFC7230, avsnitt 3.3.1)
+  * `Upgrade` (RFC7230, avsnitt 6,7)
+  * `Close`  (RFC7230, avsnitt 8,1)
 
-* **requestTarget** – sträng. Den här egenskapen innehåller ["mål för begäran" (RFC7230, Section 5,3)](https://tools.ietf.org/html/rfc7230#section-5.3) i begäran. Detta inkluderar frågesträngen, som inte är lika med alla prefix som har `sb-hc-` fastställts för fasta parametrar.
+* **requestTarget** – sträng. Den här egenskapen innehåller  ["mål för begäran" (RFC7230, Section 5,3)](https://tools.ietf.org/html/rfc7230#section-5.3) i begäran. Detta inkluderar frågesträngen, som inte är lika med alla prefix som har `sb-hc-` fastställts för fasta parametrar.
 * **metod** -sträng. Detta är metoden för begäran, per [RFC7231, avsnitt 4](https://tools.ietf.org/html/rfc7231#section-4). `CONNECT`Metoden får inte användas.
 * **Body** – boolesk. Anger om en eller flera förekomster av en binär textram följer.
 
@@ -367,7 +367,7 @@ För svar som överstiger 64 kB måste svaret levereras via en Rendezvous-socket
 
 | Parameter      | Krävs | Beskrivning
 | -------------- | -------- | -------------------------------------------------------------------
-| `sb-hc-action` | Ja      | För att acceptera en socket måste parametern vara`sb-hc-action=request`
+| `sb-hc-action` | Ja      | För att acceptera en socket måste parametern vara `sb-hc-action=request`
 
 Om det uppstår ett fel kan tjänsten svara på följande sätt:
 
@@ -428,7 +428,7 @@ Parameter alternativen för frågesträngen är följande:
 | `sb-hc-action` | Ja       | Parametern måste vara för avsändarens roll `sb-hc-action=connect` .
 | `{path}`       | Ja       | (se följande stycke)
 | `sb-hc-token`  | Ja\*     | Lyssnaren måste ange en giltig URL-kodad Service Bus delad åtkomsttoken för namn området eller hybrid anslutningen som ger **send** -rättigheten.
-| `sb-hc-id`     | No        | Ett valfritt ID som möjliggör diagnostisk spårning från slut punkt till slut punkt och görs tillgängligt för lyssnaren under godkännande hand skakningen.
+| `sb-hc-id`     | Nej        | Ett valfritt ID som möjliggör diagnostisk spårning från slut punkt till slut punkt och görs tillgängligt för lyssnaren under godkännande hand skakningen.
 
  `{path}`Är sökvägen till URL-kodad namnrymd för den förkonfigurerade hybrid anslutning som den här lyssnaren ska registreras på. `path`Uttrycket kan utökas med ett suffix och ett frågeuttryck för att kommunicera vidare. Om hybrid anslutningen är registrerad under sökvägen `hyco` `path` kan uttrycket `hyco/suffix?param=value&...` följas av de parametrar för frågesträng som definierats här. Ett fullständigt uttryck kan sedan vara följande:
 
@@ -467,7 +467,7 @@ https://{namespace-address}/{path}?sbc-hc-token=...
 
 _Namn områdets adress_ är det fullständigt kvalificerade domän namnet för Azure Relay namn området som är värd för Hybrid anslutningen, vanligt vis av formuläret `{myname}.servicebus.windows.net` .
 
-Begäran kan innehålla godtyckligt extra HTTP-huvuden, inklusive programdefinierade. Alla angivna huvuden, förutom de som är direkt definierade i RFC7230 (se [begär ande meddelande](#Request message)) flödar till lyssnaren och finns på `requestHeader` objektet i **begär ande** meddelandet.
+Begäran kan innehålla godtyckligt extra HTTP-huvuden, inklusive programdefinierade. Alla angivna huvuden, förutom de som är direkt definierade i RFC7230 (se [begär ande meddelande](#request-message)) flödar till lyssnaren och finns på `requestHeader` objektet i **begär ande** meddelandet.
 
 Parameter alternativen för frågesträngen är följande:
 

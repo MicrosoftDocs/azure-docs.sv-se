@@ -1,14 +1,14 @@
 ---
 title: Information om princip definitions strukturen
 description: Beskriver hur princip definitioner används för att upprätta konventioner för Azure-resurser i din organisation.
-ms.date: 06/12/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 87cdca414a04d287f02fec5b3510c4f561cab8c0
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: ba6b8160eefb0a59bc8273989c27a3a8501a79b7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117001"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547808"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy-definitionsstruktur
 
@@ -17,12 +17,12 @@ Läs mer om [villkor](#conditions).
 
 Genom att definiera konventioner kan du kontrol lera kostnaderna och enklare hantera dina resurser. Du kan till exempel ange att endast vissa typer av virtuella datorer ska tillåtas. Du kan också kräva att resurserna har en viss tagg. Princip tilldelningar ärvs av underordnade resurser. Om en princip tilldelning tillämpas på en resurs grupp, gäller den för alla resurser i resurs gruppen.
 
-Princip definitions schema finns här:[https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
+Princip definitions schema finns här: [https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
 
 Du använder JSON för att skapa en princip definition. Princip definitionen innehåller element för:
 
 - visningsnamn
-- description
+- beskrivning
 - mode
 - metadata
 - parametrar
@@ -100,15 +100,15 @@ Resurs stöder till exempel `Microsoft.Network/routeTables` taggar och plats och
 
 Vi rekommenderar att du ställer in **läget** till `all` i de flesta fall. Alla princip definitioner som skapats via portalen använder `all` läget. Om du använder PowerShell eller Azure CLI kan du ange **läges** parametern manuellt. Om princip definitionen inte innehåller ett **läges** värde används standardvärdet `all` i Azure PowerShell och `null` i Azure CLI. Ett `null` läge är detsamma som att använda `indexed` för att ge stöd för bakåtkompatibilitet.
 
-`indexed`ska användas när du skapar principer som tvingar etiketter eller platser. Även om det inte krävs, förhindrar det att resurser som inte stöder taggar och platser visas som icke-kompatibla i resultatet av efterlevnaden. Undantaget är **resurs grupper** och **prenumerationer**. Princip definitioner som tvingar plats eller taggar i en resurs grupp eller prenumeration ska ange **läge** till `all` och särskilt vara mål för- `Microsoft.Resources/subscriptions/resourceGroups` eller- `Microsoft.Resources/subscriptions` typen. Ett exempel finns i [Pattern: Tags-Sample #1](../samples/pattern-tags.md). En lista över resurser som stöder taggar finns i [tagga stöd för Azure-resurser](../../../azure-resource-manager/management/tag-support.md).
+`indexed` ska användas när du skapar principer som tvingar etiketter eller platser. Även om det inte krävs, förhindrar det att resurser som inte stöder taggar och platser visas som icke-kompatibla i resultatet av efterlevnaden. Undantaget är **resurs grupper** och **prenumerationer**. Princip definitioner som tvingar plats eller taggar i en resurs grupp eller prenumeration ska ange **läge** till `all` och särskilt vara mål för- `Microsoft.Resources/subscriptions/resourceGroups` eller- `Microsoft.Resources/subscriptions` typen. Ett exempel finns i [Pattern: Tags-Sample #1](../samples/pattern-tags.md). En lista över resurser som stöder taggar finns i [tagga stöd för Azure-resurser](../../../azure-resource-manager/management/tag-support.md).
 
 ### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes"></a>Lägen för resurs leverantörer (för hands version)
 
 Följande resurs leverantörs lägen stöds för närvarande under för hands versionen:
 
-- `Microsoft.ContainerService.Data`för hantering av regler för regler för åtkomst kontroll i [Azure Kubernetes-tjänsten](../../../aks/intro-kubernetes.md). Definitioner som använder detta resurs leverantörs läge **måste** använda [EnforceRegoPolicy](./effects.md#enforceregopolicy) -effekter. Det här läget är _föråldrat_.
-- `Microsoft.Kubernetes.Data`för hantering av Kubernetes-kluster på eller av Azure. Definitioner som använder detta resurs leverantörs läge använder effekter _granskning_, _neka_och _inaktive rad_. Användning av [EnforceOPAConstraint](./effects.md#enforceopaconstraint) -påverkan är _föråldrad_.
-- `Microsoft.KeyVault.Data`för hantering av valv och certifikat i [Azure Key Vault](../../../key-vault/general/overview.md).
+- `Microsoft.ContainerService.Data` för hantering av regler för regler för åtkomst kontroll i [Azure Kubernetes-tjänsten](../../../aks/intro-kubernetes.md). Definitioner som använder detta resurs leverantörs läge **måste** använda [EnforceRegoPolicy](./effects.md#enforceregopolicy) -effekter. Det här läget är _föråldrat_.
+- `Microsoft.Kubernetes.Data` för hantering av Kubernetes-kluster på eller av Azure. Definitioner som använder detta resurs leverantörs läge använder effekter _granskning_, _neka_och _inaktive rad_. Användning av [EnforceOPAConstraint](./effects.md#enforceopaconstraint) -påverkan är _föråldrad_.
+- `Microsoft.KeyVault.Data` för hantering av valv och certifikat i [Azure Key Vault](../../../key-vault/general/overview.md).
 
 > [!NOTE]
 > Resurs leverantörs lägen stöder bara inbyggda princip definitioner och stöder inte initiativ i för hands versionen.
@@ -119,10 +119,10 @@ Den valfria `metadata` egenskapen innehåller information om princip definitione
 
 ### <a name="common-metadata-properties"></a>Gemensamma egenskaper för metadata
 
-- `version`(sträng): spårar information om versionen av innehållet i en princip definition.
-- `category`(sträng): anger under vilken kategori i Azure Portal princip definitionen visas.
-- `preview`(boolesk): true eller false flagga för om princip definitionen är för _hands version_.
-- `deprecated`(boolesk): true eller false flagga för om princip definitionen har marker ATS som _föråldrad_.
+- `version` (sträng): spårar information om versionen av innehållet i en princip definition.
+- `category` (sträng): anger under vilken kategori i Azure Portal princip definitionen visas.
+- `preview` (boolesk): true eller false flagga för om princip definitionen är för _hands version_.
+- `deprecated` (boolesk): true eller false flagga för om princip definitionen har marker ATS som _föråldrad_.
 
 > [!NOTE]
 > Azure Policy tjänsten använder `version` , `preview` , och `deprecated` Egenskaper för att förmedla ändrings nivån till en inbyggd princip definition eller initiativ och tillstånd. Formatet `version` är: `{Major}.{Minor}.{Patch}` . Vissa tillstånd, till exempel _föråldrad_ eller för _hands version_, läggs till i `version` egenskapen eller i en annan egenskap som **boolesk**. Mer information om hur Azure Policy inbyggda versioner finns i [inbyggd versions hantering](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md).
@@ -188,7 +188,7 @@ Det här exemplet refererar till den **allowedLocations** -parameter som visades
 
 I `metadata` egenskapen kan du använda **strongType** för att ange en lista med alternativ för flera val i Azure Portal. **strongType** kan vara en _resurs typ_ som stöds eller ett tillåtet värde. Använd [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider)för att avgöra om en _resurs typ_ är giltig för **strongType**. Formatet för en _resurs typ_ **strongType** är `<Resource Provider>/<Resource Type>` . Till exempel `Microsoft.Network/virtualNetworks/subnets`.
 
-Vissa _resurs typer_ som inte returneras av **Get-AzResourceProvider** stöds. De är:
+Vissa _resurs typer_ som inte returneras av **Get-AzResourceProvider** stöds. Dessa typer är:
 
 - `Microsoft.RecoveryServices/vaults/backupPolicies`
 
@@ -275,7 +275,8 @@ Ett villkor utvärderar om ett **fält** eller **värde** accessor uppfyller vis
 - `"less": "dateValue"` | `"less": "stringValue"` | `"less": intValue`
 - `"lessOrEquals": "dateValue"` | `"lessOrEquals": "stringValue"` | `"lessOrEquals": intValue`
 - `"greater": "dateValue"` | `"greater": "stringValue"` | `"greater": intValue`
-- `"greaterOrEquals": "dateValue"` | `"greaterOrEquals": "stringValue"` | `"greaterOrEquals": intValue`
+- `"greaterOrEquals": "dateValue"` | `"greaterOrEquals": "stringValue"` |
+  `"greaterOrEquals": intValue`
 - `"exists": "bool"`
 
 För **mindre**, **lessOrEquals**, **större**och **större**, om egenskaps typen inte matchar villkors typen, genereras ett fel. Sträng jämförelser görs med `InvariantCultureIgnoreCase` .
@@ -346,8 +347,7 @@ I följande exempel `concat` används för att skapa ett fält uppslag för tagg
 
 ### <a name="value"></a>Värde
 
-Villkor kan även skapas med hjälp av **värde**. **värde** kontrollerar villkor mot [parametrar](#parameters), [mall funktioner som stöds](#policy-functions)eller litteraler.
-**värdet** kombineras med alla [villkor](#conditions)som stöds.
+Villkor kan även skapas med hjälp av **värde**. **värde** kontrollerar villkor mot [parametrar](#parameters), [mall funktioner som stöds](#policy-functions)eller litteraler. **värdet** kombineras med alla [villkor](#conditions)som stöds.
 
 > [!WARNING]
 > Om resultatet av en _mall_ är ett fel, Miss lyckas princip utvärderingen. En misslyckad utvärdering är en implicit **nekande**. Mer information finns i [undvika mall-haverier](#avoiding-template-failures). Använd [enforcementMode](./assignment-structure.md#enforcement-mode) av **DoNotEnforce** för att förhindra påverkan av en misslyckad utvärdering på nya eller uppdaterade resurser vid testning och validering av en ny princip definition.
@@ -430,7 +430,7 @@ Använd i stället funktionen [IF ()](../../../azure-resource-manager/templates/
 
 Med den reviderade princip regeln `if()` kontrollerar **namnet på namnet** innan det försöker hämta ett `substring()` värde med färre än tre tecken. Om **namnet** är för kort returneras värdet "inte börjar med ABC" i stället och jämförs med **ABC**. En resurs med ett kort namn som inte börjar med **ABC** kan fortfarande inte utföra princip regeln, men inte längre orsaka ett fel under utvärderingen.
 
-### <a name="count"></a>Antal
+### <a name="count"></a>Count
 
 Villkor som räknar hur många medlemmar i en matris i resurs nytto lasten uppfyller ett villkors uttryck kan skapas med hjälp av **Count** -uttryck. Vanliga scenarier kontrollerar om "minst en av", ",", "alla" eller "ingen av" mat ris medlemmarna uppfyller villkoret. **Count** utvärderar varje [ \[ \* \] alias](#understanding-the--alias) mat ris medlem för ett villkors uttryck och summerar de _sanna_ resultaten, som sedan jämförs med uttrycks operatorn. **Count** -uttryck kan läggas till upp till tre gånger i en enda **policyRule** -definition.
 
@@ -453,7 +453,7 @@ Följande egenskaper används med **Count**:
 - **Count. Field** (required): innehåller sökvägen till matrisen och måste vara ett mat ris alias. Om matrisen saknas utvärderas uttrycket till _false_ utan att ta hänsyn till villkors uttrycket.
 - **Count.** (valfritt): villkors uttrycket för att varje [ \[ \* \] alias](#understanding-the--alias) ska utvärderas individuellt i **fältet Count.** Om den här egenskapen inte anges utvärderas alla mat ris medlemmar med sökvägen för Field till _True_. Alla [villkor](../concepts/definition-structure.md#conditions) kan användas i den här egenskapen.
   [Logiska operatorer](#logical-operators) kan användas i den här egenskapen för att skapa komplexa utvärderings krav.
-- **\<condition\>**(obligatoriskt): värdet jämförs med antalet objekt som uppfyllde **antalet. Where** villkors uttryck. Ett numeriskt [villkor](../concepts/definition-structure.md#conditions) ska användas.
+- **\<condition\>** (obligatoriskt): värdet jämförs med antalet objekt som uppfyllde **antalet. Where** villkors uttryck. Ett numeriskt [villkor](../concepts/definition-structure.md#conditions) ska användas.
 
 #### <a name="count-examples"></a>Antal exempel
 
@@ -575,7 +575,7 @@ Alla [funktioner i Resource Manager-mallar](../../../azure-resource-manager/temp
 
 Följande funktion är tillgänglig för användning i en princip regel, men skiljer sig från användning i en Azure Resource Manager mall (ARM-mall):
 
-- `utcNow()`– Till skillnad från en ARM-mall, kan den här egenskapen användas utanför _DefaultValue_.
+- `utcNow()` – Till skillnad från en ARM-mall, kan den här egenskapen användas utanför _DefaultValue_.
   - Returnerar en sträng som har angetts till aktuellt datum och aktuell tid i universellt ISO 8601 DateTime-format ' ÅÅÅÅ-MM-ddTHH: mm: SS. fffffffZ '
 
 Följande funktioner är endast tillgängliga i princip regler:
@@ -586,7 +586,7 @@ Följande funktioner är endast tillgängliga i princip regler:
 - `field(fieldName)`
   - **FieldName**: [required] sträng-namnet på det [fält](#fields) som ska hämtas
   - Returnerar värdet för det fältet från den resurs som utvärderas av IF-villkoret
-  - `field`används i första hand med **AuditIfNotExists** och **DeployIfNotExists** för att referera till fält på den resurs som utvärderas. Ett exempel på den här användningen kan visas i [DeployIfNotExists-exemplet](effects.md#deployifnotexists-example).
+  - `field` används i första hand med **AuditIfNotExists** och **DeployIfNotExists** för att referera till fält på den resurs som utvärderas. Ett exempel på den här användningen kan visas i [DeployIfNotExists-exemplet](effects.md#deployifnotexists-example).
 - `requestContext().apiVersion`
   - Returnerar API-versionen för den begäran som utlöste princip utvärderingen (exempel: `2019-09-01` ).
     Det här värdet är den API-version som användes i begäran om att skicka/korrigera för utvärderingar om att skapa eller uppdatera resurser. Den senaste API-versionen används alltid vid utvärdering av efterlevnad på befintliga resurser.

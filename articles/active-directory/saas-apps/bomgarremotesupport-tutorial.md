@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory enkel inloggning (SSO) med BeyondTrust-fjärrsupport | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och BeyondTrust-fjärrsupport.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 193b163f-bdee-4974-b16d-777c51b991df
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ff21c3ee7721c82232e668ddb9645895080cf79
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ecaeea625bc4891c95614292a44d31b616d39eb2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74082077"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549306"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beyondtrust-remote-support"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med BeyondTrust-fjärrsupport
 
@@ -33,7 +28,7 @@ I den här självstudien får du lära dig att integrera BeyondTrust-fjärrsuppo
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -83,11 +78,11 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** anger du värden för följande fält:
 
-    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<HOSTNAME>.bomgar.com/saml`
+    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://<HOSTNAME>.bomgar.com/saml`
 
-    b. I rutan **identifierare** anger du en URL med följande mönster:`https://<HOSTNAME>.bomgar.com`
+    b. I rutan **identifierare** anger du en URL med följande mönster: `https://<HOSTNAME>.bomgar.com`
 
-    c. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<HOSTNAME>.bomgar.com/saml/sso`
+    c. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<HOSTNAME>.bomgar.com/saml/sso`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera de här värdena med den faktiska inloggnings-URL:en, identifieraren och svars-URL:en. Du får de här värdena förklaras senare i självstudien.
@@ -132,7 +127,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -164,7 +159,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 1. Gå till BeyondTrust remote support/login Interface på `https://support.example.com/login` där **support.example.com** är det primära värd namnet för din installation och autentisera med dina administrativa autentiseringsuppgifter.
 
-1. Navigera till **användare & säkerhets** > **säkerhets leverantörer**.
+1. Navigera till **användare & säkerhets**  >  **säkerhets leverantörer**.
 
 1. I den nedrullningsbara menyn väljer du **SAML** och klickar på knappen **skapa Provider** .
 
@@ -186,7 +181,7 @@ Vi kommer att konfigurera inställningarna för användar etablering här. Värd
 ![Skapar användare](./media/bomgarremotesupport-tutorial/config-user3.png)
 
 > [!NOTE]
-> Du kan också ställa in en standard grup princip på SAML2-säkerhetsprovidern. Genom att definiera det här alternativet tilldelar detta alla användare som autentiserar via SAML de behörigheter som anges i grup principen. Den allmänna medlems principen ingår i BeyondTrust remote support/Privileged Remote Access med begränsade behörigheter som kan användas för att testa autentiseringen och tilldela användare rätt principer. Användarna kommer inte att fylla i listan SAML2 användare via/login > användare & säkerhet förrän det första lyckade autentiserings försöket. Du hittar mer information om grup principer på följande länk:`https://www.beyondtrust.com/docs/remote-support/getting-started/admin/group-policies.htm`
+> Du kan också ställa in en standard grup princip på SAML2-säkerhetsprovidern. Genom att definiera det här alternativet tilldelar detta alla användare som autentiserar via SAML de behörigheter som anges i grup principen. Den allmänna medlems principen ingår i BeyondTrust remote support/Privileged Remote Access med begränsade behörigheter som kan användas för att testa autentiseringen och tilldela användare rätt principer. Användarna kommer inte att fylla i listan SAML2 användare via/login > användare & säkerhet förrän det första lyckade autentiserings försöket. Du hittar mer information om grup principer på följande länk: `https://www.beyondtrust.com/docs/remote-support/getting-started/admin/group-policies.htm`
 
 ## <a name="test-sso"></a>Testa SSO
 
@@ -196,10 +191,10 @@ När du klickar på panelen fjärrsupport för BeyondTrust på åtkomst panelen,
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Prova BeyondTrust remote support med Azure AD](https://aad.portal.azure.com/)

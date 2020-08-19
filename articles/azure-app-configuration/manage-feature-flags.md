@@ -52,7 +52,7 @@ Lägga till en ny funktions flagga:
 
 1. När tillståndet är *på*väljer du **+ Lägg till filter** för att ange ytterligare villkor för att kvalificera tillståndet. Ange en inbyggd eller anpassad filter nyckel och välj sedan **+ Lägg till parameter** för att associera en eller flera parametrar med filtret. Inbyggda filter är:
 
-    | Nyckel | JSON-parametrar |
+    | Tangent | JSON-parametrar |
     |---|---|
     | Microsoft. procent | {"Värde": 0-100 procent} |
     | Microsoft. TimeWindow | {"Start": UTC-tid, "slut": UTC-tid} |

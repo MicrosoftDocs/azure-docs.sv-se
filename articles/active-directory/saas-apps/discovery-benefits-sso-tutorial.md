@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory enkel inloggning (SSO) med identifierings förmåner SSO | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och identifierings förmåner SSO.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a788cd07-0eed-4067-b79d-19b840e8836d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64c4a6811ef5d7ed4f29c7dae89561616895a42a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3beefb467f7875e6bc76765811c6525f5dab9393
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72266145"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88536250"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-discovery-benefits-sso"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med identifierings förmåner SSO
 
@@ -33,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar identifierings för
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -83,13 +78,13 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
-1. I avsnittet **grundläggande SAML-konfiguration** är programmet förkonfigurerat i **IDP** initierat läge och de nödvändiga URL: erna redan är i förväg ifyllda med Azure. Användaren måste spara konfigurationen genom att klicka på knappen **Spara** .
+1. I avsnittet **grundläggande SAML-konfiguration**   är programmet förkonfigurerat i **IDP**   initierat läge och de nödvändiga URL: erna redan är i förväg ifyllda med Azure. Användaren måste spara konfigurationen genom att klicka på knappen **Spara**   .
 
 1. SSO-programmet för identifierings förmåner förväntar sig SAML-intyg i ett särskilt format, vilket kräver att du lägger till anpassade mappningar av attribut i konfigurationen för SAML-token. I följande skärmbild visas listan över standardattribut. Klicka på ikonen**Redigera** för att öppna dialogrutan Användarattribut.
 
     ![image](common/edit-attribute.png)
 
-    a. Klicka på **Redigera** -ikonen för att öppna dialog rutan **unik användar identifierare (namn-ID)** .
+    a. Klicka på **Redigera**  -ikonen för att öppna dialog rutan **unik användar identifierare (namn-ID)** .
 
     ![SSO-konfiguration för identifierings förmåner](./media/discovery-benefits-sso-tutorial/attribute01.png)
 
@@ -99,14 +94,14 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     c. I text rutan **omvandling** skriver du **ToUppercase ()** som visas för den raden.
 
-    d. I text rutan **parameter 1** anger du parametern som `<Name Identifier value>`.
+    d. I text rutan **parameter 1** anger du parametern som `<Name Identifier value>` .
 
     e. Klicka på **Lägg till**.
 
     > [!NOTE]
     > Identifierings förmåner SSO kräver ett fast sträng värde som ska skickas i **ett unikt användar-ID (namn-ID)** för att integreringen ska fungera. Azure AD har för närvarande inte stöd för den här funktionen, och du kan använda **ToUpper** -eller **ToLower** -transformeringar av NameID för att ange ett fast sträng värde som visas ovan i skärm bilden.
 
-    f. Vi har automatiskt fyllt i de ytterligare anspråk som krävs för SSO-konfiguration (`SSOInstance` och `SSOID`). Använd **redigerings** ikonen för att mappa värdena enligt din organisation.
+    f. Vi har automatiskt fyllt i de ytterligare anspråk som krävs för SSO-konfiguration ( `SSOInstance` och `SSOID` ). Använd **redigerings** ikonen för att mappa värdena enligt din organisation.
 
     ![SSO-konfiguration för identifierings förmåner](./media/discovery-benefits-sso-tutorial/attribute03.png)
 
@@ -126,7 +121,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -164,11 +159,11 @@ När du klickar på INLOGGNINGs panelen för identifierings förmåner på åtko
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Prova identifierings förmåner SSO med Azure AD](https://aad.portal.azure.com/)
 

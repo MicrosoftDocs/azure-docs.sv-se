@@ -9,12 +9,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3aa45050286888dd8ae1d26d96c8ed02da197326
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 0cf2aa504fd7a36a55740b3a59eeb3759e67f469
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876741"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509917"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Självstudie: använda en Personanpassare i Azure Notebook
 
@@ -63,7 +63,7 @@ Systemet tar emot begäran och jämför sedan förutsägelsen med användarens k
 > Detta är en simulering så att algoritmen för belöningen är enkel. I ett verkligt scenario bör algoritmen använda affärs logik, möjligt vis med vikt för olika aspekter av kundens upplevelse, för att fastställa belönings poängen.
 
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Ett [Azure Notebook](https://notebooks.azure.com/) -konto.
 * En [Azures personanpassa resurs](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer).
@@ -623,7 +623,7 @@ Coffee count 4
 
 ## <a name="validate-new-learning-policy"></a>Verifiera ny inlärnings princip
 
-Gå tillbaka till Azure Notebook och Fortsätt genom att köra samma slinga, men endast för 2 000 iterationer. Uppdatera mått diagrammet i Azure Portal regelbundet för att se det totala antalet anrop till tjänsten. När du har cirka 4 000 samtal, ett rang-och belönings samtal för varje iteration av slingan, är iterationerna gjorda.
+Gå tillbaka till Azure Notebooks-filen och Fortsätt genom att köra samma slinga, men endast för 2 000 iterationer. Uppdatera mått diagrammet i Azure Portal regelbundet för att se det totala antalet anrop till tjänsten. När du har cirka 4 000 samtal, ett rang-och belönings samtal för varje iteration av slingan, är iterationerna gjorda.
 
 ```python
 # max iterations

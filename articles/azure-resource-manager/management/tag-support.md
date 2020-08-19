@@ -3,12 +3,12 @@ title: Tagga stöd för resurser
 description: Visar vilka typer av Azure-resurs typer som stöder taggar. Innehåller information om alla Azure-tjänster.
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 2ebf55a15233c401904460d459a118fc46142ac3
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: e3a51bb7c21b6ea2e8baa86fe2981184c41d7d69
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87338001"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272441"
 ---
 # <a name="tag-support-for-azure-resources"></a>Tagga stöd för Azure-resurser
 I den här artikeln beskrivs om en resurs typ stöder [taggar](tag-resources.md). Den kolumn som har etiketten **stöder Taggar** anger om resurs typen har en egenskap för taggen. Kolumnen med etiketten **tagg i Cost** visar om den resurs typen skickar taggen till kostnads rapporten. Du kan visa kostnader efter taggar i [Cost Management kostnads analys](../../cost-management-billing/costs/group-filter.md) och Azure- [faktura och användnings data per dag](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
@@ -738,7 +738,7 @@ Hoppa till ett namn område för en resurs leverantör:
 > | virtualMachineScaleSets/networkInterfaces | Nej | Nej |
 > | virtualMachineScaleSets/publicIPAddresses | Nej | Nej |
 > | virtualMachineScaleSets/virtualMachines | Nej | Nej |
-> | virtualMachineScaleSets/virtualMachines/networkInterfaces | Inga | Inga |
+> | virtualMachineScaleSets/virtualMachines/networkInterfaces | Nej | Nej |
 
 > [!NOTE]
 > Du kan inte lägga till en tagg till en virtuell dator som har marker ATS som generaliserad. Du markerar en virtuell dator som generaliserad med [set-AzVm – generaliserad](/powershell/module/Az.Compute/Set-AzVM) eller [AZ VM generalize](/cli/azure/vm#az-vm-generalize).
@@ -755,27 +755,27 @@ Hoppa till ett namn område för en resurs leverantör:
 > [!div class="mx-tableFixed"]
 > | Resurstyp | Stöder Taggar | Tagga i kostnads rapport |
 > | ------------- | ----------- | ----------- |
-> | AggregatedCost | Inga | Inga |
-> | Saldon | Inga | Inga |
-> | Budgetar | Inga | Inga |
-> | Avgifter | Inga | Inga |
-> | CostTags | Inga | Inga |
-> | krediter | Inga | Inga |
-> | händelser | Inga | Inga |
-> | Prognoser | Inga | Inga |
-> | samtliga | Inga | Inga |
-> | Marknads platser | Inga | Inga |
-> | Prisdokument | Inga | Inga |
-> | läkemedle | Inga | Inga |
-> | ReservationDetails | Inga | Inga |
-> | ReservationRecommendationDetails | Inga | Inga |
-> | ReservationRecommendations | Inga | Inga |
-> | ReservationSummaries | Inga | Inga |
-> | ReservationTransactions | Inga | Nej |
-> | Taggar | Nej | Inga |
-> | klienter | Inga | Inga |
-> | Termer | Inga | Inga |
-> | UsageDetails | Inga | Inga |
+> | AggregatedCost | Nej | Nej |
+> | Saldon | Nej | Nej |
+> | Budgetar | Nej | Nej |
+> | Avgifter | Nej | Nej |
+> | CostTags | Nej | Nej |
+> | krediter | Nej | Nej |
+> | händelser | Nej | Nej |
+> | Prognoser | Nej | Nej |
+> | samtliga | Nej | Nej |
+> | Marknads platser | Nej | Nej |
+> | Prisdokument | Nej | Nej |
+> | läkemedle | Nej | Nej |
+> | ReservationDetails | Nej | Nej |
+> | ReservationRecommendationDetails | Nej | Nej |
+> | ReservationRecommendations | Nej | Nej |
+> | ReservationSummaries | Nej | Nej |
+> | ReservationTransactions | Nej | Nej |
+> | Taggar | Nej | Nej |
+> | klienter | Nej | Nej |
+> | Termer | Nej | Nej |
+> | UsageDetails | Nej | Nej |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
 
@@ -783,7 +783,7 @@ Hoppa till ett namn område för en resurs leverantör:
 > | Resurstyp | Stöder Taggar | Tagga i kostnads rapport |
 > | ------------- | ----------- | ----------- |
 > | containerGroups | Ja | Ja |
-> | serviceAssociationLinks | Inga | Inga |
+> | serviceAssociationLinks | Nej | Nej |
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft. ContainerRegistry
 
@@ -902,7 +902,7 @@ Hoppa till ett namn område för en resurs leverantör:
 > [!div class="mx-tableFixed"]
 > | Resurstyp | Stöder Taggar | Tagga i kostnads rapport |
 > | ------------- | ----------- | ----------- |
-> | arbetsytor | Ja | Nej |
+> | arbetsytor | Ja | Ja |
 > | arbets ytor/dbWorkspaces | Nej | Nej |
 > | arbets ytor/storageEncryption | Nej | Nej |
 > | arbets ytor/virtualNetworkPeerings | Nej | Nej |

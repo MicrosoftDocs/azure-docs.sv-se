@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: eda93f64b503a1894f306be75dd5a3321d428eb9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5bedb7da2f088c065d95d60effeda1e4db15d44a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089234"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589494"
 ---
 # <a name="supported-language-and-runtime-versions-for-apache-spark-and-dependent-components"></a>Språk-och körnings versioner som stöds för Apache Spark och beroende komponenter  
 
@@ -567,7 +567,6 @@ Zookeeper-3.4.11.2.6.99.201 -1240. jar
 zstd-jni-1.3.2 -2. jar
 
 ## <a name="python-libraries"></a>Python-bibliotek
-_license = = 1.1
 
 ABSL-py = = 0.8.1
 
@@ -578,8 +577,6 @@ alabaster = = 0.7.10
 Altair = = 3.2.0
 
 applicationinsights = = 0.11.9
-
-asn1crypto = = 0.22.0
 
 asn1crypto = = 1.0.1
 
@@ -593,7 +590,11 @@ attr = = 19.2.0
 
 Azure-common = = 1.1.23
 
+Azure-core = = 1.6.0
+
 Azure-graphrbac = = 0.61.1
+
+Azure-Identity = = 1.2.0
 
 Azure-MGMT-Authorization = = 0.60.0
 
@@ -601,43 +602,68 @@ Azure-MGMT-containerregistry = = 2.8.0
 
 Azure-MGMT-nyckel valv = = 2.0.0
 
+Azure-MGMT-Network = = 10.2.0
+
 Azure-MGMT-Resource = = 5.1.0
 
 Azure-MGMT-Storage = = 4.2.0
 
-azureml-automl-core = = 1.0.65.1
+Azure-Storage-BLOB = = 2.1.0
 
-azureml-core = = 1.0.65.1
+Azure-Storage – common = = 2.1.0
 
-azureml-nu = = 1.1.20
+azureml-automl-core = = 1.6.0
 
-azureml-nu-Native = = 13.1.0
+azureml-automl-Runtime = = 1.6.0. post1
 
-azureml-pipeline = = 1.0.65
+azureml-core = = 1.6.0
 
-azureml-pipeline-core = = 1.0.65
+azureml-nu = = 1.6.3
 
-azureml – pipeline – steg = = 1.0.65
+azureml-nu-Native = = 14.1.0
 
-azureml – SDK = = 1.0.65
+azureml-standardvärden = = 1.6.0
 
-azureml-telemetri = = 1.0.65
+azureml – förklara-Model = = 1.6.0
 
-azureml-träna = = 1.0.65
+azureml-tolka = = 1.6.0
 
-azureml-träna-automl = = 1.0.65
+azureml-Model-Management-SDK = = 1.0.1 B6. post1
 
-azureml-träna-core = = 1.0.65
 
-azureml-träna-restclients-HyperDrive = = 1.0.65
+azureml-OpenData uppsättningar = = 1.6.0
+
+azureml-pipeline = = 1.6.0
+
+azureml-pipeline-core = = 1.6.0
+
+azureml – pipeline – steg = = 1.6.0
+
+azureml – SDK = = 1.6.0
+
+azureml-telemetri = = 1.6.0
+
+azureml-träna = = 1.6.0
+
+azureml-träna-automl = = 1.6.0
+
+azureml-träna-automl-client = = 1.6.0. post1
+
+azureml-träna-automl-Runtime = = 1.6.0
+
+azureml-träna-core = = 1.6.0
+
+azureml-träna-restclients-HyperDrive = = 1.6.0
 
 Babel = = 2.4.0
+
+Recall = = 0.2.0
+
+backports. shutil-get-Terminal-size = = 1.0.0
 
 backports. tempfile = = 1.0
 
 backports. weakref = = 1.0. post1
-
-backports = = 1.0
 
 beautifulsoup4 = = 4.6.0
 
@@ -647,37 +673,25 @@ blixt = = 0.10.1
 
 blek = = 1.5.0
 
-bokeh = = 0.12.5
-
 bokeh = = 1.3.4
-
-boto = = 2.46.1
 
 boto = = 2.49.0
 
-boto3 = = 1.9.245
+boto3 = = 1.9.247
 
-botocore = = 1.12.245
+botocore = = 1.12.247
 
 Flask hals = = 1.2.1
 
-Cairo = = 1.14.8
-
 certifiera = = 2019.9.11
-
-cffi = = 1.10.0
 
 cffi = = 1.12.3
 
-chardet = = 3.0.3
-
 chardet = = 3.0.4
 
+diagram – Studio = = 1.0.0
+
 Klicka på = = 6,7
-
-Klicka på = = 7.0
-
-cloudpickle = = 0.2.2
 
 cloudpickle = = 1.2.2
 
@@ -685,21 +699,13 @@ clyent = = 1.2.2
 
 Colorama = = 0.3.9
 
-contextlib2 = = 0.5.5
+ConfigParser = = 3.7.4
 
-contextlib2 = = 0.6.0
-
-kryptografi = = 1.8.1
+contextlib2 = = 0.6.0. post1
 
 kryptografi = = 2.7
 
-Sväng = = 7.52.1
-
 cykel = = 0.10.0
-
-cykel = = 0.10.0
-
-cython = = 0.25.2
 
 Cython = = 0.29.13
 
@@ -709,9 +715,7 @@ dask = = 0.14.3
 
 datashape = = 0.5.4
 
-DBU = = 1.10.10
-
-decorator = = 4.0.11
+decorator = = 4.4.0
 
 dill = = 0.3.1.1
 
@@ -721,31 +725,23 @@ distribution = = 1.4.0
 
 Docker = = 4.1.0
 
-docutils = = 0.13.1
-
 docutils = = 0.15.2
 
-dotnetcore2 = = 2.1.9
-
-entrypoints = = 0.2.2
+dotnetcore2 = = 2.1.14
 
 entrypoints = = 0,3
 
-et_xmlfile = = 1.0.1
-
-expat = = 2.1.0
+et-xmlfile = = 1.0.1
 
 FastCache = = 1.0.2
 
 brand = = 0.2.1
 
-kolv = = 0.12.2
+flake8 = = 3.7.9
 
-kolv-CORS = = 3.0.2
+Kolv = = 1.0.3
 
-fontconfig = = 2.12.1
-
-freetype = = 2.5.5
+Kolv-CORS = = 3.0.2
 
 fsspec = = 0.5.2
 
@@ -755,11 +751,7 @@ Gast = = 0.3.2
 
 gensim = = 3.8.1
 
-get_terminal_size = = 1.0.0
-
 gevent = = 1.2.1
-
-glib = = 2.50.2
 
 Google-pasta = = 0.1.7
 
@@ -767,37 +759,31 @@ greenlet = = 0.4.12
 
 grpcio = = 1.24.1
 
-GST-plugin-Base = = 1.8.0
-
-gstreamer = = 1.8.0
+gunicorn = = 19.9.0
 
 h5py = = 2.10.0
 
-h5py = = 2.7.0
-
-HarfBuzz = = 0.9.39
-
-hdf5 = = 1.8.17
-
-heapdict = = 1.0.0
+HeapDict = = 1.0.1
 
 html5lib = = 0.999
 
-ICU = = 54.1
-
-IDNA = = 2,5
-
 IDNA = = 2,8
+
+ImageIO = = 2.6.1
 
 ImageSize = = 0.7.1
 
 importlib-metadata = = 0.23
 
+tolka – community = = 0.10.2
+
+tolka kärnor = = 0.1.21
+
 ipykernel = = 4.6.1
 
-ipython_genutils = = 0.2.0
+ipython = = 7.8.0
 
-ipython = = 5.3.0
+ipython-genutils = = 0.2.0
 
 ipywidgets = = 6.0.0
 
@@ -807,8 +793,6 @@ iSort = = 4.2.5
 
 itsdangerous = = 0.24
 
-JBIG = = 2.1
-
 jdcal = = 1.3
 
 Jedi = = 0.10.2
@@ -817,71 +801,43 @@ jeepney = = 0.4.1
 
 Jinja2 = = 2.10.3
 
-jinja2 = = 2.9.6
-
 jmespath = = 0.9.4
 
-JPEG = = 9b
+joblib = = 0.14.1
+
+JSON-loggning – py = = 0,2
 
 JsonForm = = 0.0.2
 
 jsonpickle = = 1.2
 
-jsonschema = = 2.6.0
-
-jsonschema = = 3.1.0
+jsonschema = = 3.1.1
 
 JsonSir = = 0.0.2
 
-JS-regex = = 1.0.0
-
-jupyter_client = = 5.0.1
-
-jupyter_console = = 5.1.0
-
-jupyter_core = = 4.3.0
-
 Jupyter = = 1.0.0
 
-keras2onnx = = 1.5.2
+Jupyter-client = = 5.0.1
+
+Jupyter-Console = = 5.1.0
+
+Jupyter-Core = = 4.3.0
 
 Keras-Applications = = 1.0.8
 
 Keras – för bearbetning = = 1.1.0
 
+keras2onnx = = 1.5.2
+
 kiwisolver = = 1.1.0
 
 Lazy-Object-proxy = = 1.2.2
 
-libffi = = 3.2.1
-
-libgcc = = 4.8.5
-
-libgfortran = = 3.0.0
-
-libiconv = = 1.14
-
-libpng = = 1.6.27
-
-libnatrium = = 1.0.10
-
-libtiff = = 4.0.6
-
-lib-verktyget = = 2.4.2
-
-libxcb = = 1.12
-
-libxml2 = = 2.9.4
-
-libxslt = = 1.1.29
+liac-arff = = 2.4.0
 
 lightgbm = = 2.2.3
 
 llvmlite = = 0.18.0
-
-llvmlite = = 0.29.0
-
-locket = = 0.2.0
 
 locket = = 0.2.0
 
@@ -889,25 +845,25 @@ lxml = = 3.7.3
 
 Markdown = = 3.1.1
 
-markupsafe = = 0.23
-
 MarkupSafe = = 1.1.1
 
-matplotlib = = 2.0.2
-
 matplotlib = = 3.1.1
+
+McCabe = = 0.6.1
 
 MissingNo = = 0.4.2
 
 feljustering = = 0.7.4
 
-MKL = = 2017.0.1
-
-MKL-service = = 1.1.2
+mmlspark = = 1.0.0. Dev1
 
 Mer-itertools = = 7.2.0
 
 mpmath = = 0.19
+
+msal = = 1.3.0
+
+msal-Extensions = = 0.1.3
 
 msgpack = = 0.6.2
 
@@ -916,6 +872,8 @@ msgpack – python = = 0.4.8
 msrest = = 0.6.10
 
 msrestazure = = 0.6.2
+
+multimethods = = 1.0.0
 
 multipledispatch = = 0.4.9
 
@@ -927,7 +885,7 @@ nbformat = = 4.3.0
 
 NDG-httpsclient = = 0.5.1
 
-networkx = = 1.11
+networkx = = 2,3
 
 nimbusml = = 1.5.0
 
@@ -937,13 +895,11 @@ näsa = = 1.3.7
 
 Notebook = = 5.0.0
 
+notebookutils = = 20200602.4
+
 Numba = = 0.33.0
 
-Numba = = 0.45.1
-
 numexpr = = 2.6.2
-
-numpy = = 1.12.1
 
 numpy = = 1.16.2
 
@@ -965,35 +921,21 @@ onnxruntime = = 0.4.0
 
 openpyxl = = 2.4.7
 
-openssl = = 1.0.2 l
-
-paketering = = 16,8
-
 paketering = = 19,2
-
-Pandas = = 0.20.1
 
 Pandas = = 0.23.4
 
 pandocfilters = = 1.4.1
 
-pango = = 1.40.3
-
-delvis = = 0.3.8
+PARAM = = 1.9.2
 
 delvis = = 1.0.0
-
-sökväg. py = = 10.3.1
 
 pathlib2 = = 2.2.1
 
 pathspec = = 0.6.0
 
-Patsy = = 0.4.1
-
 Patsy = = 0.5.1
-
-pcre = = 8.39
 
 pep8 = = 1.7.0
 
@@ -1001,15 +943,7 @@ pexpect = = 4.2.1
 
 pickleshare = = 0.7.4
 
-Pillow = = 4.1.1
-
 Pillow = = 6.2.0
-
-PIP = = 9.0.1
-
-PIP = = 9.0.1
-
-pixman = = 0.34.0
 
 Rita = = 4.1.1
 
@@ -1017,7 +951,9 @@ blad = = 3.10
 
 pmdarima = = 1.1.1
 
-prompt_toolkit = = 1.0.14
+portalocker = = 1.7.0
+
+prompt-Toolkit = = 2.0.10
 
 protobuf = = 3.10.0
 
@@ -1027,23 +963,31 @@ ptyprocess = = 0.5.1
 
 PY = = 1.4.33
 
+PY-cpuinfo = = 6.0.0
+
+py4j = = 0.10.7
+
+pyarrow = = 0.15.1
+
 pyasn1 = = 0.4.7
 
-pycosat = = 0.6.2
+pycodestyle = = 2.5.0
 
-pycparser = = 2.17
+pycosat = = 0.6.2
 
 pycparser = = 2.19
 
 pycrypto = = 2.6.1
 
+pyct = = 0.4.6
+
 pycurl = = 7.43.0
 
-pyflakes = = 1.5.0
+pyflakes = = 2.1.1
 
 pygal = = 2.4.0
 
-pygments = = 2.2.0
+Pygments = = 2.2.0
 
 PyJWT = = 1.7.1
 
@@ -1053,53 +997,33 @@ pymssql = = 2.1.4
 
 pyodbc = = 4.0.16
 
-pyopenssl = = 17.0.0
-
 pyOpenSSL = = 19.0.0
-
-pyparsing = = 2.1.4
 
 pyparsing = = 2.4.2
 
-pyqt = = 5.6.0
-
 pyrsistent = = 0.15.4
 
-pytables = = 3.3.0
+pyspark = = 2.4.4
 
 pytest = = 3.0.7
-
-python = = 3.6.1
-
-python-dateutil = = 2.6.0
 
 python-dateutil = = 2.8.0
 
 Python-EasyConfig = = 0.1.7
 
-pytz = = 2017.2
-
 pytz = = 2019.3
 
-pywavelets = = 0.5.2
-
-pyyaml = = 3.12
+PyWavelets = = 1.0.3
 
 PyYAML = = 5.1.2
 
 pyzmq = = 16.0.2
 
-QT = = 5.6.2
-
-qtawesome = = 0.4.4
+QtAwesome = = 0.4.4
 
 qtconsole = = 4.3.0
 
-qtpy = = 1.2.1
-
-readline = = 6.2
-
-begär Anden = = 2.14.2
+QtPy = = 1.2.1
 
 begär Anden = = 2.22.0
 
@@ -1109,41 +1033,27 @@ Resurs = = 0.2.1
 
 försöker igen = = 1.3.3
 
-rep = = 0.9.4
+rep-py3k = = 0.9.4. post1
 
 ruamel. yaml = = 0.15.89
 
-ruamel_yaml = = 0.11.14
-
 s3transfer = = 0.2.1
 
-scikit-image = = 0.13.0
-
-scikit – lära = = 0.18.1
+scikit-image = = 0.15.0
 
 scikit – lära = = 0.20.3
 
-scipy = = 0.19.0
-
 scipy = = 1.1.0
-
-Seaborn = = 0.7.1
 
 Seaborn = = 0.9.0
 
 SecretStorage = = 3.1.1
 
-installations verktyg = = 27.2.0
-
-installations verktyg = = 41.4.0
+Shap = = 0.34.0
 
 simplegeneric = = 0.8.1
 
 singledispatch = = 3.4.0.3
-
-SIP = = 4.18
-
-sex = = 1.10.0
 
 sex = = 1.12.0
 
@@ -1157,25 +1067,19 @@ snowballstemmer = = 1.2.1
 
 sortedcollections = = 0.5.3
 
-sortedcontainers = = 1.5.7
-
 sortedcontainers = = 2.1.0
 
 Sphinx = = 1.5.6
 
 Spyder = = 3.1.4
 
-sqlalchemy = = 1.1.9
-
-SQLite = = 3.13.0
+SQLAlchemy = = 1.1.9
 
 statsmodels = = 0.10.1
 
-statsmodels = = 0.8.0
-
 sympy = = 1.0
 
-tblib = = 1.3.2
+tabeller = = 3.3.0
 
 tblib = = 1.4.0
 
@@ -1191,17 +1095,13 @@ terminado = = 0.6
 
 testpath = = 0,3
 
-TK = = 8.5.18
-
 Toolz = = 0.10.0
 
-Toolz = = 0.8.2
-
-Torch = = 1.2.0
-
-Storm = = 4.5.1
+Torch = = 1.3.0
 
 Storm = = 6.0.3
+
+tqdm = = 4.46.1
 
 traitlets = = 4.3.2
 
@@ -1209,45 +1109,29 @@ Skriv-Extensions = = 3.7.4
 
 unicodecsv = = 0.14.1
 
-unixodbc = = 2.3.4
-
 urllib3 = = 1.25.6
+
+Vega-data uppsättningar = = 0.7.0
 
 wcwidth = = 0.1.7
 
 WebSocket-Client = = 0.56.0
 
-werkzeug = = 0.12.2
-
 Werkzeug = = 0.16.0
 
-Wheel = = 0.29.0
-
-Wheel = = 0.30.0
-
 widgetsnbextension = = 2.0.0
-
-figursatta = = 1.10.10
 
 figursatta = = 1.11.2
 
 xlrd = = 1.0.0
 
-xlsxwriter = = 0.9.6
+XlsxWriter = = 0.9.6
 
 xlwt = = 1.2.0
 
-XZ = = 5.2.2
-
-yaml = = 0.1.6
-
-ZeroMQ = = 4.1.5
-
-zict = = 0.1.2
+zict = = 1.0.0
 
 Zipp = = 0.6.0
-
-zlib = = 1.2.8
 
 ## <a name="next-steps"></a>Nästa steg
 

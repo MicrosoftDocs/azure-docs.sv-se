@@ -2,31 +2,26 @@
 title: 'Självstudie: användar etablering för CERN, centrala – Azure AD'
 description: Lär dig hur du konfigurerar Azure Active Directory att automatiskt etablera användare till en lista i CERN Central.
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ed04d8fdcc2d79c66e2ebc53c737c78664e4621
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58b991f5b229d924bc933ff34987db24bc895e10
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77058324"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88529873"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Självstudie: Konfigurera CERN central för automatisk användar etablering
 
 Syftet med den här självstudien är att visa de steg du behöver utföra i CERN Central och Azure AD för att automatiskt etablera och avetablera användar konton från Azure AD till en användar lista i CERN Central.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande objekt:
 
@@ -65,29 +60,29 @@ För att kunna etablera användar konton till CERN Central måste du begära ett
 
 1. Det första steget är att se till att de personer som hanterar CERN-och Azure AD-integreringen har ett CernerCare-konto, vilket krävs för att få åtkomst till den dokumentation som krävs för att slutföra anvisningarna. Om det behövs kan du använda URL: erna nedan för att skapa CernerCare-konton i varje tillämplig miljö.
 
-   * Sammansättningenhttps://sandboxcernercare.com/accounts/create
+   * Sammansättningen  https://sandboxcernercare.com/accounts/create
 
-   * Produktionshttps://cernercare.com/accounts/create  
+   * Produktions  https://cernercare.com/accounts/create  
 
 2. Därefter måste ett system konto skapas för Azure AD. Använd anvisningarna nedan om du vill begära ett system konto för dina sand Box-och produktions miljöer.
 
-   * Problemlösninghttps://wiki.ucern.com/display/CernerCentral/Requesting+A+System+Account
+   * Problemlösning  https://wiki.ucern.com/display/CernerCentral/Requesting+A+System+Account
 
-   * Sammansättningenhttps://sandboxcernercentral.com/system-accounts/
+   * Sammansättningen https://sandboxcernercentral.com/system-accounts/
 
-   * Produktionshttps://cernercentral.com/system-accounts/
+   * Produktions  https://cernercentral.com/system-accounts/
 
 3. Därefter genererar du en OAuth Bearer-token för varje system konto. Det gör du genom att följa anvisningarna nedan.
 
-   * Problemlösninghttps://wiki.ucern.com/display/public/reference/Accessing+Cerner%27s+Web+Services+Using+A+System+Account+Bearer+Token
+   * Problemlösning  https://wiki.ucern.com/display/public/reference/Accessing+Cerner%27s+Web+Services+Using+A+System+Account+Bearer+Token
 
-   * Sammansättningenhttps://sandboxcernercentral.com/system-accounts/
+   * Sammansättningen https://sandboxcernercentral.com/system-accounts/
 
-   * Produktionshttps://cernercentral.com/system-accounts/
+   * Produktions  https://cernercentral.com/system-accounts/
 
 4. Slutligen måste du skaffa användar domän-ID: t för användar domänen för både Sandbox-och produktions miljöerna i CERN för att slutföra konfigurationen. Information om hur du hämtar detta finns i: https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM . 
 
-5. Nu kan du konfigurera Azure AD för att etablera användar konton till CERN. Logga in på [Azure Portal](https://portal.azure.com)och bläddra till avsnittet **Azure Active Directory > Enterprise-appar > alla program** .
+5. Nu kan du konfigurera Azure AD för att etablera användar konton till CERN. Logga in på [Azure Portal](https://portal.azure.com)och bläddra till avsnittet **Azure Active Directory > Enterprise-appar > alla program**  .
 
 6. Om du redan har konfigurerat CERN central för enkel inloggning söker du efter din instans av CERN Central med Sök fältet. Annars väljer du **Lägg till** och söker efter **CERN Central** i program galleriet. Välj CERN Central från Sök resultatet och Lägg till det i listan över program.
 
@@ -101,9 +96,9 @@ För att kunna etablera användar konton till CERN Central måste du begära ett
 
    * I fältet **klient-URL** anger du en URL i formatet nedan och ersätter "User-List-REALM-ID" med sfär-ID: t som du fick i steg #4.
 
-    > Sammansättningenhttps://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+    > Sammansättningen https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
     > 
-    > Produktionshttps://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+    > Produktions https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
    * I fältet **hemlig token** anger du den OAuth Bearer-token som du skapade i steg #3 och klickar på **Testa anslutning**.
 

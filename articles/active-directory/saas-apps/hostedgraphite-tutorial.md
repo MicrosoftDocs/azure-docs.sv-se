@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med värdbaserat grafsystem | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Hosted Graphite.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a1ac4d7f-d079-4f3c-b6da-0f520d427ceb
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6c5b689d00bd1adad820043840c43f49666655c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b7aaaa589b92814694bee2838332f6823b3351de
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158077"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521920"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>Självstudie: Azure Active Directory integrering med värdbaserat grafsystem
 
@@ -33,9 +28,9 @@ När du integrerar Hosted Graphite med Azure AD innebär det följande fördelar
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att konfigurera Azure AD-integrering med Hosted Graphite behöver du följande:
 
@@ -107,15 +102,15 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Hoste
 
     ![Information om enkel inloggning för Hosted Graphite-domän och -URL:er](common/idp-intiated.png)
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://www.hostedgraphite.com/metadata/<user id>`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://www.hostedgraphite.com/metadata/<user id>`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://www.hostedgraphite.com/complete/saml/<user id>`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://www.hostedgraphite.com/complete/saml/<user id>`
 
 5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     ![Information om enkel inloggning för Hosted Graphite-domän och -URL:er](common/metadata-upload-additional-signon.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://www.hostedgraphite.com/login/saml/<user id>/`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://www.hostedgraphite.com/login/saml/<user id>/`
 
     > [!NOTE]
     > Observera att detta inte är de verkliga värdena. Du måste uppdatera de här värdena med faktisk identifierare, svars-URL och inloggnings-URL. För att få de här värdena kan du gå till Åtkomst->SAML-konfiguration på programsidan eller kontakta [Hosted Graphite-supportteamet](mailto:help@hostedgraphite.com).
@@ -178,8 +173,8 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** skriver du **brittasimon\@yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

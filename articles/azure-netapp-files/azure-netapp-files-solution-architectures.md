@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: b-juche
-ms.openlocfilehash: 8ed9f6565da55d3ffbe522bbdf404265c487f67c
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 79ad95179f4ad6d332a848e59ca341b8a9f90b1f
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225622"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258233"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Lösningsarkitekturer med Azure NetApp Files
 Den här artikeln innehåller referenser till bästa praxis som kan hjälpa dig att förstå lösnings arkitekturerna för att använda Azure NetApp Files.  
@@ -85,7 +85,7 @@ Det här avsnittet innehåller referenser till infrastruktur lösningar för vir
 
 ### <a name="windows-virtual-desktop"></a>Windows Virtual Desktop
 
-* [Använda Windows Virtual Desktop med Azure NetApp Files](solutions-windows-virtual-desktop.md)
+* [Fördelar med att använda Azure NetApp Files med Windows Virtual Desktop](solutions-windows-virtual-desktop.md)
 * [Lagrings alternativ för FSLogix profil behållare i Windows Virtual Desktop](https://docs.microsoft.com/azure/virtual-desktop/store-fslogix-profile#azure-platform-details)
 * [Skapa en FSLogix profil behållare för en värd-pool med hjälp av Azure NetApp Files](https://docs.microsoft.com/azure/virtual-desktop/create-fslogix-profile-container)
 * [Windows Virtual Desktop i företags skala](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop)

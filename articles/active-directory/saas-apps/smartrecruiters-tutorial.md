@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med SmartRecruiters | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och SmartRecruiters.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: e96aeecd-e113-454e-89c3-58c9f44cfd4c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: f20a8a63160a498b9789f77eededad1fd6a02906
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c960a7b509f365ad7fd6b04267cfec6bf41c4e42
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67090110"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542572"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartrecruiters"></a>Självstudie: Azure Active Directory integrering med SmartRecruiters
 
@@ -32,9 +28,9 @@ Genom att integrera SmartRecruiters med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med SmartRecruiters behöver du följande objekt:
 
@@ -105,15 +101,15 @@ Utför följande steg för att konfigurera enkel inloggning med SmartRecruiters 
 
     ![Information om enkel inloggning för SmartRecruiters-domän och URL: er](common/idp-intiated.png)
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://www.smartrecruiters.com/web-sso/saml/<companyname>`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://www.smartrecruiters.com/web-sso/saml/<companyname>`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://www.smartrecruiters.com/web-sso/saml/<companyname>/callback`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://www.smartrecruiters.com/web-sso/saml/<companyname>/callback`
 
 5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     ![Information om enkel inloggning för SmartRecruiters-domän och URL: er](common/metadata-upload-additional-signon.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://www.smartrecruiters.com/web-sso/saml/<companyname>/login`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://www.smartrecruiters.com/web-sso/saml/<companyname>/login`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [SmartRecruiters client support team](https://www.smartrecruiters.com/about-us/contact-us/) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -177,7 +173,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **Användarnamn** anger du **brittasimon@yourcompanydomain.extension**  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
@@ -211,7 +207,7 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
 ### <a name="create-smartrecruiters-test-user"></a>Skapa SmartRecruiters test användare
 
-I det här avsnittet skapar du en användare som heter Britta Simon i SmartRecruiters. Arbeta med [SmartRecruiters support team](https://www.smartrecruiters.com/about-us/contact-us/) för att lägga till användare i SmartRecruiters-plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning.
+I det här avsnittet skapar du en användare som heter Britta Simon i SmartRecruiters. Arbeta med [SmartRecruiters support team](https://www.smartrecruiters.com/about-us/contact-us/)   för att lägga till användare i SmartRecruiters-plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning.
 
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning 
 

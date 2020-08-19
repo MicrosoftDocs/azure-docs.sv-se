@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
-ms.openlocfilehash: 9816ea7dd9f5aef9dcdd62319f8cc4408eff3fd8
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 90b4ffb273fc314a7c92971490fb09b6f0c131ee
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987264"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258350"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Prestandatips för Azure Cosmos DB och .NET
 
@@ -32,7 +32,7 @@ Om du försöker förbättra databasens prestanda bör du därför överväga f�
 
 Vi rekommenderar Windows 64-bitars värd bearbetning för bättre prestanda. SQL-SDK: n innehåller en intern ServiceInterop.dll för att analysera och optimera frågor lokalt. ServiceInterop.dll stöds endast på Windows x64-plattformen. För Linux och andra plattformar som inte stöds, där ServiceInterop.dll inte är tillgänglig, görs ytterligare ett nätverks anrop till gatewayen för att hämta den optimerade frågan. Följande typer av program använder 32-bitars värd bearbetning som standard. Om du vill ändra värd bearbetningen till 64-bitars bearbetning följer du dessa steg baserat på typen av program:
 
-- För körbara program kan du ändra värd bearbetningen genom att ange [plattforms målet](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) till **x64** i fönstret **projekt egenskaper** på fliken **skapa** .
+- För körbara program kan du ändra värd bearbetningen genom att ange [plattforms målet](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) till **x64**  i fönstret **projekt egenskaper** på fliken **skapa** .
 
 - För VSTest-baserade test projekt kan du ändra värd bearbetningen genom att välja **testa**  >  **standardinställningar**  >  **standard processor arkitektur som x64** på **test** menyn i Visual Studio.
 
@@ -71,15 +71,12 @@ Hur en klient ansluter till Azure Cosmos DB har viktiga prestanda effekter, sär
      Om ditt program körs i ett företags nätverk med strikta brand Väggs begränsningar är Gateway-läget det bästa valet eftersom det använder HTTPS-standardporten och en enda slut punkt. Prestanda kompromissen är dock att Gateway-läget omfattar ytterligare ett nätverks hopp varje gång data läses från eller skrivs till Azure Cosmos DB. Det direkta läget ger bättre prestanda eftersom det finns färre nätverks hopp. Vi rekommenderar också Gateway-anslutnings läge när du kör program i miljöer som har ett begränsat antal socketanslutningar.
 
      När du använder SDK i Azure Functions, i synnerhet i [förbruknings planen](../azure-functions/functions-scale.md#consumption-plan), var medveten om de aktuella [gränserna för anslutningar](../azure-functions/manage-connections.md). I så fall kan gateway-läget vara bättre om du även arbetar med andra HTTP-baserade klienter i ditt Azure Functions-program.
-
-
-I Gateway-läge använder Azure Cosmos DB port 443 och portarna 10250, 10255 och 10256 när du använder Azure Cosmos DB API för MongoDB. Port 10250 mappar till en standard instans av MongoDB utan geo-replikering. Portarna 10255 och 10256 mappar till MongoDB-instansen som har geo-replikering.
      
-Om du använder TCP i direkt läge, förutom Gateway-portarna, måste du se till att port intervallet är mellan 10000 och 20000 är öppen eftersom Azure Cosmos DB använder dynamiska TCP-portar (när du använder direkt läge på [privata slut punkter](./how-to-configure-private-endpoints.md), måste hela intervallet TCP-portar-från 0 till 65535-vara öppna). Portarna är öppna som standard för standard konfigurationen av virtuella Azure-datorer. Om de här portarna inte är öppna och du försöker använda TCP, får du ett fel meddelande om att 503-tjänsten inte är tillgänglig. I den här tabellen visas de anslutnings lägen som är tillgängliga för olika API: er och tjänst portarna som används för varje API:
+När du använder TCP i direkt läge måste du förutom Gateway-portarna se till att port intervallet är mellan 10000 och 20000 är öppen eftersom Azure Cosmos DB använder dynamiska TCP-portar. När du använder direkt läge på [privata slut punkter](./how-to-configure-private-endpoints.md)ska hela intervallet TCP-portar – från 0 till 65535 vara öppen. Portarna är öppna som standard för standard konfigurationen av virtuella Azure-datorer. Om de här portarna inte är öppna och du försöker använda TCP, får du ett fel meddelande om att 503-tjänsten inte är tillgänglig. I följande tabell visas de anslutnings lägen som är tillgängliga för olika API: er och tjänst portar som används för varje API:
 
 |Anslutningsläge  |Protokoll som stöds  |SDK: er som stöds  |API/tjänst-port  |
 |---------|---------|---------|---------|
-|Gateway  |   HTTPS    |  Alla SDK: er    |   SQL (443), MongoDB (10250, 10255, 10256), tabell (443), Cassandra (10350), Graf (443)    |
+|Gateway  |   HTTPS    |  Alla SDK: er    |   SQL (443), MongoDB (10250, 10255, 10256), tabell (443), Cassandra (10350), Graf (443) <br> Port 10250 mappar till ett standard-Azure Cosmos DB-API för MongoDB-instans utan geo-replikering. Portarna 10255 och 10256 mappar till den instans som har geo-replikering.   |
 |Direct    |     TCP    |  .NET SDK    | När du använder offentliga/tjänst slut punkter: portar i intervallet 10000 till 20000<br>När du använder privata slut punkter: portar inom intervallet 0 till 65535 |
 
 Azure Cosmos DB erbjuder en enkel, öppen RESTful programmerings modell över HTTPS. Dessutom erbjuder den ett effektivt TCP-protokoll, som också RESTful i sin kommunikations modell och är tillgängligt via .NET-klient-SDK: n. TCP-protokollet använder TLS för inledande autentisering och kryptering av trafik. Använd TCP-protokollet när det är möjligt för bästa prestanda.
@@ -167,8 +164,8 @@ Azure Cosmos DB begär Anden görs via HTTPS/REST när du använder Gateway-läg
 **Justera parallella frågor för partitionerade samlingar**
 
 SQL .NET SDK stöder parallella frågor, vilket gör att du kan fråga en partitionerad behållare parallellt. Mer information finns i [kod exempel](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/Queries/Program.cs) för att arbeta med SDK: er. Parallella frågor är utformade för att ge bättre svars tid och data flöde än deras serie motsvarighet. Parallella frågor ger två parametrar som du kan justera för att passa dina behov: 
-- `MaxConcurrency`kontrollerar det högsta antalet partitioner som kan frågas parallellt. 
-- `MaxBufferedItemCount`styr antalet i förväg hämtade resultat.
+- `MaxConcurrency` kontrollerar det högsta antalet partitioner som kan frågas parallellt. 
+- `MaxBufferedItemCount` styr antalet i förväg hämtade resultat.
 
 ***Justera graden av samtidighet***
 

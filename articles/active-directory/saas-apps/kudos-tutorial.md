@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Kudos | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Kudos.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 39c47ce6-4944-47ba-8f53-3afa95398034
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 1fb1a1bc7bfd8b3cc9d7758bf8e80d8759f9357e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1ac613776729f6e67456a65695cc6017c453da15
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74227472"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88519710"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kudos"></a>Självstudie: Azure Active Directory integrering med Kudos
 
@@ -32,9 +28,9 @@ Genom att integrera Kudos med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Kudos behöver du följande objekt:
 
@@ -105,7 +101,7 @@ Utför följande steg för att konfigurera enkel inloggning med Kudos i Azure AD
 
     ![Information om enkel inloggning för Kudos-domän och URL: er](common/sp-signonurl.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<company>.kudosnow.com`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<company>.kudosnow.com`
 
     > [!NOTE]
     > Värdet är inte verkligt. Uppdatera värdet med den faktiska inloggnings-URL:en. Kontakta [Kudos client support team](http://success.kudosnow.com/home) för att hämta värdet. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -136,11 +132,11 @@ Utför följande steg för att konfigurera enkel inloggning med Kudos i Azure AD
 
     ![Enkel inloggning](./media/kudos-tutorial/ic787807.png "Enkel inloggning")
 
-    a. I text rutan för **inloggnings-URL** klistrar du in värdet för **inloggnings-URL: en** som du har kopierat från Azure Portal.
+    a. I text rutan för **inloggnings-URL** klistrar du in värdet för  **inloggnings-URL: en** som du har kopierat från Azure Portal.
 
     b. Öppna ditt bas-64-kodade certifikat i anteckningar, kopiera innehållet i det till Urklipp och klistra in det i rutan **X. 509-certifikat**
 
-    c. I text rutan **Logga ut till URL** klistrar du in värdet för den **utloggnings-URL** som du har kopierat från Azure Portal.
+    c. I text rutan **Logga ut till URL** klistrar du in värdet för den  **utloggnings-URL** som du har kopierat från Azure Portal.
 
     d. Skriv ditt företags namn i text rutan för **din Kudos-URL** .
 
@@ -165,7 +161,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **Användarnamn** anger du `brittasimon@yourcompanydomain.extension`  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

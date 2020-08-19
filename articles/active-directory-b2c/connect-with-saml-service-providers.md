@@ -12,12 +12,12 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3baa659d454a24a132eda914d50acddbd5df8a90
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2bf767bd87e0df791b0efff1294f15353234ba2c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020074"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520217"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrera ett SAML-program i Azure AD B2C
 
@@ -334,7 +334,7 @@ Det sista steget är att aktivera Azure AD B2C som en SAML-IdP i ditt SAML-förl
 
 En eller flera av följande är vanligt vis obligatoriska:
 
-* **Metadata**:`https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
+* **Metadata**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 * **Utfärdare**: Använd entityId i metadatafilen
 * **Inloggnings webb adress/SAML-slut punkt/SAML-URL**: kontrol lera värdet i metadatafilen
 * **Certifikat**: det här är *B2C_1A_SamlIdpCert*, men utan den privata nyckeln. Så här hämtar du den offentliga nyckeln för certifikatet:
@@ -350,7 +350,7 @@ För att slutföra den här självstudien med vårt [SAML-testprogram][samltest]
 
 * Uppdatera klient organisations namnet
 * Uppdaterings princip namn, till exempel *B2C_1A_signup_signin_saml*
-* Ange denna utfärdar-URI:`https://contoso.onmicrosoft.com/app-name`
+* Ange denna utfärdar-URI: `https://contoso.onmicrosoft.com/app-name`
 
 Välj **Logga in** och visa en användar inloggnings skärm. Vid inloggning utfärdas en SAML-kontroll tillbaka till exempel programmet.
 
@@ -414,6 +414,10 @@ Följande scenarier för SAML-förlitande part (RP) stöds via din egen metadata
 * Flera URL: er för utloggning eller PUBLICERINGs bindning för utloggnings-URL i program-/tjänst huvud objekt.
 * Ange signerings nyckel för att verifiera RP-begäranden i program/tjänstens huvud namns objekt.
 * Ange token krypterings nyckel i program/tjänstens huvud namns objekt.
+* Identitets leverantören initierade inloggningen, där identitetsprovider är Azure AD B2C.
+
+Följande scenarier för SAML-förlitande part (RP) stöds inte för närvarande:
+* Identitetsprovider initierade inloggning, där identitets leverantören är en extern identitetsprovider, till exempel ADFS.
 
 ## <a name="next-steps"></a>Nästa steg
 

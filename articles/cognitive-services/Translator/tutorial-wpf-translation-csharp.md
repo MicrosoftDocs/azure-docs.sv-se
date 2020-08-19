@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: f80d22adc432a81fcc88391e71ed7540399fa559
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 70550b61354c23889836b48be6f09475569ecd52
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995742"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589664"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Självstudie: skapa en översättnings app med WPF
 
@@ -40,7 +40,7 @@ Den här listan innehåller de Cognitive Services som används i den här själv
 | Tjänst | Funktion | Beskrivning |
 |---------|---------|-------------|
 | Översättare | [Hämta språk](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | Hämta en fullständig lista över språk som stöds för textöversättning. |
-| Översättare | [Översätta](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Översätt text till fler än 60 språk. |
+| Översättare | [Översätta](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Översätt text till fler än 70 språk. |
 | Översättare | [Upptäcka](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | Identifiera språket i indatatexten. Innehåller förtroendepoäng för identifiering. |
 | Stavningskontroll i Bing | [Stavningskontroll](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | Förbättra översättningens noggrannhet genom att rätta stavfel. |
 
@@ -97,7 +97,7 @@ Appen använder NewtonSoft.Json för att deserialisera JSON-objekt. Följ dessa 
 
 1. Leta upp projektet i Visual Studios Solution Explorer och högerklicka på ditt projekt. Välj **Hantera NuGet-paket**.
 1. Leta upp och välj fliken **Bläddra**.
-1. Ange [NewtonSoft. JSON](https://www.nuget.org/packages/Newtonsoft.Json/) i Sök fältet.
+1. Ange [NewtonSoft.Jsi](https://www.nuget.org/packages/Newtonsoft.Json/) Sök fältet.
 
     ![Leta upp och installera Newtonsoft.Json](media/nuget-package-manager.png)
 
@@ -114,7 +114,7 @@ Vi tar en titt på vad vi skapar.
 
 Användar gränssnittet innehåller följande komponenter:
 
-| Name | Typ | Beskrivning |
+| Namn | Typ | Description |
 |------|------|-------------|
 | `FromLanguageComboBox` | ComboBox (Kombinationsruta) | Visar en lista över de språk som stöds av Microsoft Translator för textöversättning. Användaren väljer det språk som översättningen görs från. |
 | `ToLanguageComboBox` | ComboBox (Kombinationsruta) | Visar samma lista över språk som `FromComboBox` men används för att välja det språk som användaren översätter till. |
@@ -250,7 +250,7 @@ Hela projektet är inkapslat i klassen `MainWindow : Window`. Vi börjar med att
 
 I det här kodblocket har vi deklarerat två medlemsvariabler som innehåller information om tillgängliga språk för översättning:
 
-| Variabel | Typ | Beskrivning |
+| Variabel | Typ | Description |
 |----------|------|-------------|
 |`languageCodes` | Strängmatris |Cachelagrar språkkoderna. Translator-tjänsten använder korta koder som `en` för engelska, för att identifiera språk. |
 |`languageCodesAndTitles` | Sorterad ordlista | Mappar ”egna” namn i användargränssnittet tillbaka till de korta koderna som används i API:et. Sorteras alfabetiskt utan hänsyn till skiftläge. |
@@ -263,7 +263,7 @@ Slutligen har vi lagt till kod för att anropa metoder för att hämta språk f�
 
 ## <a name="get-supported-languages"></a>Hämta språk som stöds
 
-Translator stöder för närvarande över 60 språk. Eftersom det nya språk stödet kommer att läggas till med tiden rekommenderar vi att du anropar de språk resurser som exponeras av Translator i stället för att hårdkoda språk listan i appen.
+Translator stöder för närvarande över 70 språk. Eftersom det nya språk stödet kommer att läggas till med tiden rekommenderar vi att du anropar de språk resurser som exponeras av Translator i stället för att hårdkoda språk listan i appen.
 
 I det här avsnittet skapar vi en `GET`-begäran till Language-resursen som anger att vi vill ha en lista över språk som är tillgängliga för översättning.
 
@@ -289,7 +289,7 @@ Innan vi går vidare tittar vi på exempelutdata för ett anrop till Language-re
 }
 ```
 
-Från dessa utdata kan vi extrahera språkkoden och `name` för ett specifikt språk. Vår app använder NewtonSoft. JSON för att deserialisera JSON-objektet ( [`JsonConvert.DeserializeObject`](https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConvert_DeserializeObject__1.htm) ).
+Från dessa utdata kan vi extrahera språkkoden och `name` för ett specifikt språk. Appen använder NewtonSoft.Jsför att deserialisera JSON-objektet ( [`JsonConvert.DeserializeObject`](https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConvert_DeserializeObject__1.htm) ).
 
 Vi fortsätter där vi slutade i det förra avsnittet genom att lägga till en metod för att hämta språk som stöds till appen.
 

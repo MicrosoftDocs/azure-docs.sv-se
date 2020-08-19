@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Lenses.io | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Lenses.io.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2a0d4a7c-a171-48c6-b1c1-f2bd728fb37f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2b630111261be8e3615ab45e95633040e799551
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0b8d736ab169ad07bd23a21d3a420bb6a044bf01
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050993"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88528666"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-the-lensesio-dataops-portal"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Lenses.io DataOps-portalen.
 
@@ -85,12 +81,12 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** anger du värden för följande fält:
 
-    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://<CUSTOMER_LENSES_BASE_URL>` t. ex.`https://lenses.my.company.com`
+    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://<CUSTOMER_LENSES_BASE_URL>` t. ex. `https://lenses.my.company.com`
 
-    b. I text rutan **identifierare (enhets-ID)** anger du en URL med följande mönster: `https://<CUSTOMER_LENSES_BASE_URL>` t. ex.`https://lenses.my.company.com`
+    b. I text rutan **identifierare (enhets-ID)** anger du en URL med följande mönster: `https://<CUSTOMER_LENSES_BASE_URL>` t. ex. `https://lenses.my.company.com`
 
-    c. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<CUSTOMER_LENSES_BASE_URL>/api/v2/auth/saml/callback?client_name=SAML2Client`
-    otillräcklig.`https://lenses.my.company.com/api/v2/auth/saml/callback?client_name=SAML2Client`
+    c. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<CUSTOMER_LENSES_BASE_URL>/api/v2/auth/saml/callback?client_name=SAML2Client`
+    otillräcklig. `https://lenses.my.company.com/api/v2/auth/saml/callback?client_name=SAML2Client`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska inloggnings-URL: en, svars-URL och identifierare, baserat på bas-URL: en för din linser-Portal instans. Du hittar mer information i [LENSES.io SSO-dokumentationen](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0).
@@ -119,7 +115,7 @@ Så här skapar du gruppen:
 1. Välj **ny grupp** överst på skärmen.
 1. I **grupp egenskaperna**följer du dessa steg:
    1. I fältet **typ av grupp** väljer du `Security` .
-   1. I fältet **grupp namn** anger du`LensesUsers`
+   1. I fältet **grupp namn** anger du `LensesUsers`
    1. Klicka på **Skapa**.
 1. Välj gruppen `LensesUsers` och anteckna **objekt-ID** (t. ex. `f8b5c1ec-45de-4abd-af5c-e874091fb5f7` ). Detta ID kommer att användas i linser för att mappa användare av gruppen till [rätt behörigheter](https://docs.lenses.io/install_setup/configuration/security.html#id3).  
    
@@ -167,9 +163,9 @@ När du klickar på panelen Lenses.io på åtkomst panelen, bör du loggas in au
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Konfigurera SSO i din Lenses.io-instans](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0)
+- [ Konfigurera SSO i din Lenses.io-instans ](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0)
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

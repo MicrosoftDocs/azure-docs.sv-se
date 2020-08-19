@@ -8,12 +8,12 @@ ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 1eebacefa2e91970263c301de4ff160ea7c9f2eb
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 008d5f22a48fdd31c90e63643adc94b26a975ca2
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420353"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589375"
 ---
 # <a name="write-client-app-authentication-code"></a>Skriv kod för klientautentisering för klient program
 
@@ -34,8 +34,8 @@ Om du vill fortsätta måste du ha ett klient-app-projekt där du skriver koden.
 ## <a name="authentication-and-client-creation-net-c-sdk"></a>Autentisering och klient skapande: .NET (C#) SDK
 
 Ta först med följande paket i projektet för att använda .NET SDK och autentiseringsinställningar för den här instruktionen:
-* `Azure.DigitalTwins.Core`(version `1.0.0-preview.2` )
-* `Azure.Identity`
+* `Azure.DigitalTwins.Core` (version `1.0.0-preview.2` )
+* `Azure.Identity` (version `1.1.1` )
 
 Beroende på vilka verktyg du väljer kan du inkludera paketen med hjälp av Visual Studio Package Manager eller `dotnet` kommando rads verktyget. 
 

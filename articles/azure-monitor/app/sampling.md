@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4a618b00b211ce65b170379cc14d6b83a1183d28
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: bb6793bc1e3d5bb55426c1f344520ae19a22a9f9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460365"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549573"
 ---
 # <a name="sampling-in-application-insights"></a>Sampling i Application Insights
 
@@ -34,11 +34,11 @@ I följande tabell sammanfattas de samplings typer som är tillgängliga för va
 |-|-|-|-|
 | ASP.NET | [Ja (aktiverat som standard)](#configuring-adaptive-sampling-for-aspnet-applications) | [Ja](#configuring-fixed-rate-sampling-for-aspnet-applications) | Endast om ingen annan sampling gäller |
 | ASP.NET Core | [Ja (aktiverat som standard)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Ja](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Endast om ingen annan sampling gäller |
-| Azure Functions | [Ja (aktiverat som standard)](#configuring-adaptive-sampling-for-azure-functions) | Inga | Endast om ingen annan sampling gäller |
-| Java | Inga | [Ja](#configuring-fixed-rate-sampling-for-java-applications) | Endast om ingen annan sampling gäller |
-| Node.JS | Inga | [Ja](./nodejs.md#sampling) | Endast om ingen annan sampling gäller
-| Python | Inga | [Ja](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Endast om ingen annan sampling gäller |
-| Alla andra | Inga | Inga | [Ja](#ingestion-sampling) |
+| Azure Functions | [Ja (aktiverat som standard)](#configuring-adaptive-sampling-for-azure-functions) | No | Endast om ingen annan sampling gäller |
+| Java | No | [Ja](#configuring-fixed-rate-sampling-for-java-applications) | Endast om ingen annan sampling gäller |
+| Node.JS | No | [Ja](./nodejs.md#sampling) | Endast om ingen annan sampling gäller
+| Python | No | [Ja](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Endast om ingen annan sampling gäller |
+| Alla andra | Nej | Nej | [Ja](#ingestion-sampling) |
 
 > [!NOTE]
 > Informationen på de flesta av den här sidan gäller för de aktuella versionerna av Application Insights SDK: er. Mer information om äldre versioner av SDK: er [finns i avsnittet nedan](#older-sdk-versions).
@@ -187,6 +187,8 @@ Använd tilläggs metoder `TelemetryProcessorChainBuilder` som visas nedan för 
 > Om du använder den här metoden för att konfigurera sampling, se till att ange `aiOptions.EnableAdaptiveSampling` egenskapen till `false` vid anrop `AddApplicationInsightsTelemetry()` .
 
 ```csharp
+using Microsoft.ApplicationInsights.Extensibility
+
 public void Configure(IApplicationBuilder app, IHostingEnvironment env, TelemetryConfiguration configuration)
 {
     var builder = configuration.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
@@ -448,7 +450,7 @@ I likhet med andra typer av sampling behåller algoritmen relaterade telemetri o
 
 Data punkter som tas bort från sampling är inte tillgängliga i någon Application Insights funktion som [kontinuerlig export](./export-telemetry.md).
 
-Provtagnings samplingen fungerar inte medan adaptiv eller fast pris sampling är i drift. Adaptiv sampling är aktiverat som standard när ASP.NET SDK eller ASP.NET Core SDK används, eller när Application Insights har Aktiver ATS i [Azure App Service](azure-web-apps.md) eller med hjälp av statusövervakare. När telemetri tas emot av Application Insights tjänstens slut punkt, undersöker den Telemetrin och om samplings frekvensen rapporteras vara mindre än 100% (vilket betyder att telemetri samplas), ignoreras den inmatnings samplings frekvens som du har angett.
+Provtagnings samplingen fungerar inte medan adaptiv eller fast pris sampling är i drift. Adaptiv sampling är aktiverat som standard när ASP.NET SDK eller ASP.NET Core SDK används, eller när Application Insights har Aktiver ATS i [Azure App Service ](azure-web-apps.md) eller med hjälp av statusövervakare. När telemetri tas emot av Application Insights tjänstens slut punkt, undersöker den Telemetrin och om samplings frekvensen rapporteras vara mindre än 100% (vilket betyder att telemetri samplas), ignoreras den inmatnings samplings frekvens som du har angett.
 
 > [!WARNING]
 > Värdet som visas på Portal panelen visar det värde som du angav för inmatnings sampling. Den representerar inte den faktiska samplings frekvensen om någon form av SDK-sampling (anpassningsbar eller fast pris sampling) är i drift.

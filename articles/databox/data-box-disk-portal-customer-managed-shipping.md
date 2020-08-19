@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 05/20/2020
 ms.author: v-grpr
-ms.openlocfilehash: 81fc8de7e5a70ebb95e06a8e362cda41f8bfe1aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95c0a884b335920df9803a9b468ab522646b26a1
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945026"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258748"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-disk-in-the-azure-portal"></a>Använd självhanterad leverans för Azure Data Box Disk i Azure Portal
 
@@ -28,6 +28,7 @@ Självhanterad leverans är tillgängligt som ett alternativ när du [beställer
 * Japan
 * Singapore
 * Sydkorea
+* Sydafrika
 * Indien (för hands version)
 
 ## <a name="use-self-managed-shipping"></a>Använd självhanterad frakt
@@ -36,13 +37,13 @@ När du placerar en Data Box Disk order kan du välja alternativet för självha
 
 1. I din Azure Data Box Disk ordning väljer du **+ Lägg till leverans adress**under **kontakt uppgifter**.
 
-   ![Självhanterad leverans](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
+   ![Egenhanterad frakt](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
 
 2. När du väljer leverans typ väljer du alternativet för **själv hantering av leverans** . Det här alternativet är bara tillgängligt om du befinner dig i en region som stöds enligt beskrivningen i kraven.
 
 3. När du har angett din leverans adress måste du verifiera den och slutföra beställningen.
 
-   ![Självhanterad leverans](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
+   ![Egenhanterad frakt](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
 4. När enheten har förberetts och du fått ett e-postmeddelande kan du schemalägga en hämtning. I din Azure Data Box Disk ordning går du till **Översikt** och väljer sedan **Schemalägg hämtning**.
 
@@ -52,7 +53,7 @@ När du placerar en Data Box Disk order kan du välja alternativet för självha
 
    ![Boka upphämtning](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-user-pickup-02c.png)
 
-6. När du har schemalagt enhets upphämtningen kan du Visa din auktoriseringskod i **schemat pickup för Azure**.
+6. När du har schemalagt enhets upphämtningen kan du Visa din auktoriseringskod i  **schemat pickup för Azure**.
 
    ![Visa din auktoriseringskod](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-01b.png)
 

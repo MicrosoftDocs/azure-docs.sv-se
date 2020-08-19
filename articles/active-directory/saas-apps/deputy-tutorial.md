@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med vice | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Deputy.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 5665c3ac-5689-4201-80fe-fcc677d4430d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 798468f1e8ef62f5ccf8cdd451b643ecdbe255bc
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: e9ca679c7bb8deedca20a5aa97cbb53a9139ea8a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85799334"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88536918"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Självstudie: Azure Active Directory integrering med vice
 
@@ -33,7 +28,7 @@ Integreringen av Deputy med Azure AD medför följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -150,7 +145,7 @@ Utför följande steg för att konfigurera enkel inloggning med Azure AD för De
 
     ![Deputy-domän och information om URL:er för enkel inloggning](common/metadata-upload-additional-signon.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<your-subdomain>.<region>.deputy.com`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<your-subdomain>.<region>.deputy.com`
 
     >[!NOTE]
     > Deputy-regionssuffixet är valfritt, eller så bör det använda något av följande: au | na | eu | as | la |af |an | ent-au | ent-na | ent-eu | ent-as | ent-la | ent-af | ent-an
@@ -213,7 +208,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/20/2020
+ms.date: 08/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c8c4e65c7ee97b33acbd68bfd8267a334508e25c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40672ac958e84d816d4b582472ae04502a910c6a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203749"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521271"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -74,7 +74,7 @@ I följande exempel visas ett **RelyingParty** -element i *B2C_1A_signup_signin*
 
 Det valfria **RelyingParty** -elementet innehåller följande element:
 
-| Element | Förekomster | Beskrivning |
+| Element | Förekomster | Description |
 | ------- | ----------- | ----------- |
 | DefaultUserJourney | 1:1 | Standard användar resan för RP-programmet. |
 | UserJourneyBehaviors | 0:1 | Omfattningen av användar resans beteenden. |
@@ -104,13 +104,13 @@ Det valfria **RelyingParty** -elementet innehåller följande element:
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| ReferenceId | Ja | En identifierare för användar resan i principen. Mer information finns i [användar resor](userjourneys.md) |
+| ReferenceId | Yes | En identifierare för användar resan i principen. Mer information finns i [användar resor](userjourneys.md) |
 
 ## <a name="userjourneybehaviors"></a>UserJourneyBehaviors
 
 **UserJourneyBehaviors** -elementet innehåller följande element:
 
-| Element | Förekomster | Beskrivning |
+| Element | Förekomster | Description |
 | ------- | ----------- | ----------- |
 | SingleSignOn | 0:1 | Omfattningen av beteendet för enkel inloggning (SSO) för en användar resa. |
 | SessionExpiryType |0:1 | Autentiseringens funktions sätt. Möjliga värden: `Rolling` eller `Absolute` . `Rolling`Värdet (standard) visar att användaren är inloggad så länge användaren alltid är aktiv i programmet. `Absolute`Värdet anger att användaren tvingas att autentisera igen efter den tids period som anges av livs längden för programsessionen. |
@@ -125,8 +125,8 @@ Det valfria **RelyingParty** -elementet innehåller följande element:
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| Omfång | Ja | Omfattningen av det enkla inloggnings beteendet. Möjliga värden: `Suppressed` , `Tenant` , `Application` eller `Policy` . `Suppressed`Värdet anger att beteendet ignoreras och att användaren alltid uppmanas att ange ett val av identitetsprovider.  `Tenant`Värdet anger att beteendet tillämpas på alla principer i klienten. Till exempel behöver en användare som navigerar genom två princip resor för en klient inte uppmanas att välja ett val av identitetsprovider. `Application`Värdet anger att beteendet tillämpas på alla principer för programmet som gör begäran. Till exempel behöver en användare som navigerar genom två princip resor för ett program inte ange något val av en identitetsprovider. `Policy`Värdet anger att beteendet bara gäller för en princip. Till exempel, en användare som navigerar genom två princip resor för ett förtroende Framework, uppmanas du att ange en identitets leverantör när du växlar mellan principer. |
-| KeepAliveInDays | Ja | Styr hur länge användaren förblir inloggad. Om du anger värdet 0 inaktive ras KMSI avgör-funktionen. Mer information finns i [Håll mig inloggad](custom-policy-keep-me-signed-in.md). |
+| Omfång | Yes | Omfattningen av det enkla inloggnings beteendet. Möjliga värden: `Suppressed` , `Tenant` , `Application` eller `Policy` . `Suppressed`Värdet anger att beteendet ignoreras och att användaren alltid uppmanas att ange ett val av identitetsprovider.  `Tenant`Värdet anger att beteendet tillämpas på alla principer i klienten. Till exempel behöver en användare som navigerar genom två princip resor för en klient inte uppmanas att välja ett val av identitetsprovider. `Application`Värdet anger att beteendet tillämpas på alla principer för programmet som gör begäran. Till exempel behöver en användare som navigerar genom två princip resor för ett program inte ange något val av en identitetsprovider. `Policy`Värdet anger att beteendet bara gäller för en princip. Till exempel, en användare som navigerar genom två princip resor för ett förtroende Framework, uppmanas du att ange en identitets leverantör när du växlar mellan principer. |
+| KeepAliveInDays | Yes | Styr hur länge användaren förblir inloggad. Om du anger värdet 0 inaktive ras KMSI avgör-funktionen. Mer information finns i [Håll mig inloggad](custom-policy-keep-me-signed-in.md). |
 |EnforceIdTokenHintOnLogout| No|  Tvinga att skicka en tidigare utfärdad ID-token till utloggnings slut punkten som ett tips om slutanvändarens aktuella autentiserade session med-klienten. Möjliga värden: `false` (standard) eller `true` . Mer information finns i [webb inloggning med OpenID Connect](openid-connect.md).  |
 
 
@@ -136,12 +136,12 @@ Det valfria **RelyingParty** -elementet innehåller följande element:
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| TelemetryEngine | Ja | Värdet måste vara `ApplicationInsights` . |
-| InstrumentationKey | Ja | Strängen som innehåller Instrumentation-nyckeln för Application Insights-elementet. |
-| DeveloperMode | Ja | Möjliga värden: `true` eller `false` . Om `true` Application Insights påskyndar Telemetrin genom bearbetnings pipelinen. Den här inställningen är praktisk för utveckling, men är begränsad till hög volym de detaljerade aktivitets loggarna är endast utformade för att hjälpa till med utveckling av anpassade principer. Använd inte utvecklings läge i produktion. Loggar samlar in alla anspråk som skickas till och från identitets leverantörerna under utvecklingen. Om den används i produktion, antar utvecklaren ansvaret för PII (privat identifierbar information) som samlats in i den App Insights-logg som de äger. Dessa detaljerade loggar samlas endast in när det här värdet är inställt på `true` .|
-| ClientEnabled | Ja | Möjliga värden: `true` eller `false` . `true`Skickar Application Insights klient sidans skript för att spåra sid visning och fel på klient sidan. |
-| ServerEnabled | Ja | Möjliga värden: `true` eller `false` . `true`Skickar den befintliga UserJourneyRecorder-JSON som en anpassad händelse till Application Insights. |
-| TelemetryVersion | Ja | Värdet måste vara `1.0.0` . |
+| TelemetryEngine | Yes | Värdet måste vara `ApplicationInsights` . |
+| InstrumentationKey | Yes | Strängen som innehåller Instrumentation-nyckeln för Application Insights-elementet. |
+| DeveloperMode | Yes | Möjliga värden: `true` eller `false` . Om `true` Application Insights påskyndar Telemetrin genom bearbetnings pipelinen. Den här inställningen är praktisk för utveckling, men är begränsad till hög volym de detaljerade aktivitets loggarna är endast utformade för att hjälpa till med utveckling av anpassade principer. Använd inte utvecklings läge i produktion. Loggar samlar in alla anspråk som skickas till och från identitets leverantörerna under utvecklingen. Om den används i produktion, antar utvecklaren ansvaret för PII (privat identifierbar information) som samlats in i den App Insights-logg som de äger. Dessa detaljerade loggar samlas endast in när det här värdet är inställt på `true` .|
+| ClientEnabled | Yes | Möjliga värden: `true` eller `false` . `true`Skickar Application Insights klient sidans skript för att spåra sid visning och fel på klient sidan. |
+| ServerEnabled | Yes | Möjliga värden: `true` eller `false` . `true`Skickar den befintliga UserJourneyRecorder-JSON som en anpassad händelse till Application Insights. |
+| TelemetryVersion | Yes | Värdet måste vara `1.0.0` . |
 
 Mer information finns i [samla in loggar](troubleshoot-with-application-insights.md)
 
@@ -155,7 +155,7 @@ I följande exempel skickas en parameter `campaignId` med namnet med värdet `ha
 
 **ContentDefinitionParameters** -elementet innehåller följande element:
 
-| Element | Förekomster | Beskrivning |
+| Element | Förekomster | Description |
 | ------- | ----------- | ----------- |
 | ContentDefinitionParameter | 0: n | En sträng som innehåller nyckel värdes paret som läggs till i frågesträngen för en inläsnings-URI för innehålls definition. |
 
@@ -163,7 +163,7 @@ I följande exempel skickas en parameter `campaignId` med namnet med värdet `ha
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| Name | Ja | Namnet på nyckel värdes paret. |
+| Name | Yes | Namnet på nyckel värdes paret. |
 
 Mer information finns i [Konfigurera gränssnittet med dynamiskt innehåll med hjälp av anpassade principer](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri)
 
@@ -173,14 +173,14 @@ Mer information finns i [Konfigurera gränssnittet med dynamiskt innehåll med h
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| Id | Ja | Värdet måste vara `PolicyProfile` . |
+| Id | Yes | Värdet måste vara `PolicyProfile` . |
 
 **TechnicalProfile** innehåller följande element:
 
-| Element | Förekomster | Beskrivning |
+| Element | Förekomster | Description |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | Den sträng som innehåller namnet på den tekniska profilen. |
-| Beskrivning | 0:1 | Den sträng som innehåller beskrivningen av den tekniska profilen. |
+| Description | 0:1 | Den sträng som innehåller beskrivningen av den tekniska profilen. |
 | Protokoll | 1:1 | Protokollet som används för federationen. |
 | Metadata | 0:1 | Insamling av *objekt* med nyckel/värde-par som används av protokollet för att kommunicera med slut punkten under en transaktion för att konfigurera interaktion mellan den förlitande parten och andra Community-deltagare. |
 | OutputClaims | 1:1 | En lista med anspråks typer som tas ut i den tekniska profilen. Vart och ett av dessa element innehåller en referens till en **claimType** som redan har definierats i avsnittet **ClaimsSchema** eller i en princip som den här princip filen ärver. |
@@ -190,13 +190,21 @@ Mer information finns i [Konfigurera gränssnittet med dynamiskt innehåll med h
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| Name | Ja | Namnet på ett giltigt protokoll som stöds av Azure AD B2C som används som en del av den tekniska profilen. Möjliga värden: `OpenIdConnect` eller `SAML2` . `OpenIdConnect`Värdet representerar OpenID Connect 1,0-protokoll standard som per OpenID Foundation-specifikation. `SAML2`Representerar SAML 2,0-protokoll standarden enligt Oasis-specifikationen. |
+| Name | Yes | Namnet på ett giltigt protokoll som stöds av Azure AD B2C som används som en del av den tekniska profilen. Möjliga värden: `OpenIdConnect` eller `SAML2` . `OpenIdConnect`Värdet representerar OpenID Connect 1,0-protokoll standard som per OpenID Foundation-specifikation. `SAML2`Representerar SAML 2,0-protokoll standarden enligt Oasis-specifikationen. |
 
-## <a name="outputclaims"></a>OutputClaims
+### <a name="metadata"></a>Metadata
+
+När protokollet är `SAML` , innehåller ett metadataelement följande element.
+
+| Attribut | Krävs | Beskrivning |
+| --------- | -------- | ----------- |
+| XmlSignatureAlgorithm | No | Metoden som Azure AD B2C använder för att signera SAML-svaret. Möjliga värden: `Sha256` , `Sha384` , `Sha512` eller `Sha1` . Se till att du konfigurerar signeringsalgoritmen på båda sidor med samma värde. Använd bara den algoritm som ditt certifikat stöder. Information om hur du konfigurerar SAML-kontroll finns i [metadata för SAML Issuer Technical Profile](saml-issuer-technical-profile.md#metadata). |
+
+### <a name="outputclaims"></a>OutputClaims
 
 **OutputClaims** -elementet innehåller följande element:
 
-| Element | Förekomster | Beskrivning |
+| Element | Förekomster | Description |
 | ------- | ----------- | ----------- |
 | OutputClaim | 0: n | Namnet på en förväntad anspråks typ i listan över stödda för principen som den förlitande parten prenumererar på. Detta påstående fungerar som utdata för den tekniska profilen. |
 
@@ -204,7 +212,7 @@ Mer information finns i [Konfigurera gränssnittet med dynamiskt innehåll med h
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Ja | En referens till en **claimType** som redan har definierats i **ClaimsSchema** -avsnittet i princip filen. |
+| ClaimTypeReferenceId | Yes | En referens till en **claimType** som redan har definierats i **ClaimsSchema** -avsnittet i princip filen. |
 | Standar | No | Ett standardvärde som kan användas om anspråks värdet är tomt. |
 | PartnerClaimType | No | Skickar anspråket i ett annat namn som har kon figurer ATS i definitions definitionen för ClaimType. |
 
@@ -212,13 +220,14 @@ Mer information finns i [Konfigurera gränssnittet med dynamiskt innehåll med h
 
 Med **SubjectNameingInfo** -elementet kan du styra värdet för token-ämnet:
 - **JWT-token** – `sub` anspråket. Detta är ett huvud konto som används för att kontrollera information, t. ex. användare av ett program. Värdet är oföränderligt och kan inte tilldelas om eller återanvändas. Den kan användas för att utföra säkra verifierings kontroller, till exempel när token används för att få åtkomst till en resurs. Som standard fylls ämnes anspråket med objekt-ID: t för användaren i katalogen. Mer information finns i [konfiguration av token, session och enkel inloggning](session-behavior.md).
-- **SAML-token** – det `<Subject><NameID>` element som identifierar ämnes elementet.
+- **SAML-token** – det `<Subject><NameID>` element som identifierar ämnes elementet. NameId-formatet kan ändras.
 
 **SubjectNamingInfo** -elementet innehåller följande attribut:
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| ClaimType | Ja | En referens till ett utgående anspråks **PartnerClaimType**. De utgående anspråken måste definieras i **OutputClaims** -samlingen för förlitande part princip. |
+| ClaimType | Yes | En referens till ett utgående anspråks **PartnerClaimType**. De utgående anspråken måste definieras i **OutputClaims** -samlingen för förlitande part princip. |
+| Format | No | Används för SAML-förlitande parter för att ange det **NameId-format** som returnerades i SAML-kontrollen. |
 
 I följande exempel visas hur du definierar en OpenID Connect-förlitande part. Ämnes namnets information konfigureras som `objectId` :
 
@@ -248,4 +257,25 @@ JWT-token inkluderar `sub` anspråk med användaren ObjectID:
   "sub": "6fbbd70d-262b-4b50-804c-257ae1706ef2",
   ...
 }
+```
+
+I följande exempel visas hur du definierar en SAML-förlitande part. Ämnes namnets information har kon figurer ATS som `objectId` , och NameId `format` har angetts:
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2" />
+    <OutputClaims>
+      <OutputClaim ClaimTypeReferenceId="displayName" />
+      <OutputClaim ClaimTypeReferenceId="givenName" />
+      <OutputClaim ClaimTypeReferenceId="surname" />
+      <OutputClaim ClaimTypeReferenceId="email" />
+      <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+      <OutputClaim ClaimTypeReferenceId="identityProvider" />
+    </OutputClaims>
+    <SubjectNamingInfo ClaimType="sub" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient"/>
+  </TechnicalProfile>
+</RelyingParty>
 ```

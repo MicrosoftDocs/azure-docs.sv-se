@@ -1,7 +1,7 @@
 ---
 title: Visualisera Azure NSG Flow-loggar – Power BI
 titleSuffix: Azure Network Watcher
-description: Den här sidan beskriver hur du visualiserar NSG Flow-loggar med Power BI.
+description: Lär dig hur du använder Power BI för att visualisera flödes loggar för nätverks säkerhets grupper så att du kan visa information om IP-trafik i Azure Network Watcher.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 1ef2e32614b5a57208f91ac0fe5a4c17affa38e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4c97b8baaf5265f984622e2dc47e6c8c714172a
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738557"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272645"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Visualisering av flödes loggar för nätverks säkerhets grupper med Power BI
 
@@ -109,9 +109,9 @@ Vi visade i det här fallet genom att använda flödes loggar för nätverks sä
 
 Du kan anpassa den här mallen efter dina behov. Det finns många olika sätt som du kan använda för Power BI med flödes loggar för nätverks säkerhets grupper. 
 
-## <a name="notes"></a>Obs!
+## <a name="notes"></a>Anteckningar
 
-* Loggar som standard lagras i`https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/`
+* Loggar som standard lagras i `https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/`
 
     * Om det finns andra data i en annan katalog, så måste de frågor som krävs för att hämta och bearbeta data ändras.
 
@@ -119,7 +119,7 @@ Du kan anpassa den här mallen efter dina behov. Det finns många olika sätt so
 
 * Om du har en stor mängd loggar rekommenderar vi att du undersöker en lösning med hjälp av ett annat data lager som Data Lake eller SQL Server.
 
-## <a name="next-steps"></a>Nästa steg
+## <a name="next-steps"></a>Efterföljande moment
 
 Lär dig hur du visualiserar dina NSG Flow-loggar med den elastiska stacken genom att besöka [visualisera Azure Network WATCHER NSG flödes loggar med verktyg för öppen källkod](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 

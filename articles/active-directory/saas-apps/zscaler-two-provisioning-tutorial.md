@@ -2,25 +2,21 @@
 title: 'Självstudie: Konfigurera Zscaler två för automatisk användar etablering med Azure Active Directory | Microsoft Docs'
 description: I den här självstudien får du lära dig hur du konfigurerar Azure Active Directory att automatiskt etablera och avetablera användar konton till Zscaler två.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd-msft
-ms.assetid: 0a250fcd-6ca1-47c2-a780-7a6278186a69
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 364b106e7c1f01269ac02b0c2851f8824ea0f58c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bea34b2a8b8827b709cc637c0a33132477419a83
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77062703"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545748"
 ---
 # <a name="tutorial-configure-zscaler-two-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Zscaler två för automatisk användar etablering
 
@@ -29,7 +25,7 @@ I den här självstudien får du lära dig hur du konfigurerar Azure Active Dire
 > [!NOTE]
 > I den här självstudien beskrivs en koppling som bygger på Azure AD-tjänsten för användar etablering. Viktig information om vad den här tjänsten gör och hur den fungerar och svar på vanliga frågor finns i [Automatisera användar etablering och avetablering för SaaS-program med Azure Active Directory](../active-directory-saas-app-provisioning.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra stegen som beskrivs i den här självstudien behöver du följande:
 
@@ -79,7 +75,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 > [!TIP]
 > Du kanske också vill aktivera SAML-baserad enkel inloggning för Zscaler två. Om du gör det följer du anvisningarna i [självstudien om Zscaler av två enkla inloggningar](zscaler-two-tutorial.md). Enkel inloggning kan konfigureras oberoende av automatisk användar etablering, men de två funktionerna kompletterar varandra.
 
-1. Logga in på [Azure Portal](https://portal.azure.com) och välj **företags program** > **alla program** > **Zscaler två**:
+1. Logga in på [Azure Portal](https://portal.azure.com) och välj **företags program**  >  **alla program**  >  **Zscaler två**:
 
     ![Företagsprogram](common/enterprise-applications.png)
 
@@ -97,7 +93,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
 5. I avsnittet **admin credentials** anger du **klient-URL** och den **hemliga token** för ditt Zscaler två konto, enligt beskrivningen i nästa steg.
 
-6. Om du vill hämta **klient-URL** och **hemlig token**går du till **Administration** > **autentiseringsinställningar** i Zscaler två Portal och väljer **SAML** under **Autentiseringstyp**:
+6. Om du vill hämta **klient-URL** och **hemlig token**går du till **Administration**  >  **autentiseringsinställningar** i Zscaler två Portal och väljer **SAML** under **Autentiseringstyp**:
 
     ![Zscaler två autentiseringsinställningar](./media/zscaler-two-provisioning-tutorial/secret-token-1.png)
 

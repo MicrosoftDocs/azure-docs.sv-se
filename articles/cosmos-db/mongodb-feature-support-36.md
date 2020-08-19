@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/07/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 2b389b71e15edcf0558b2ce60290c1ad7b171eab
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 50414d48c3368ddf409630422d3316cdc45a63fe
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030554"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587403"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB:s API för MongoDB (version 3.6): Funktioner och syntax som stöds
 
@@ -115,7 +115,7 @@ Azure Cosmos DB:s API för MongoDB stöder följande databaskommandon:
 |Kommando  |Stöds |
 |---------|---------|
 |aggregate |   Yes  |
-|count     |   Yes  |
+|antal     |   Yes  |
 |distinct  | Yes |
 |mapReduce | No |
 
@@ -137,7 +137,7 @@ Azure Cosmos DB:s API för MongoDB stöder följande databaskommandon:
 |$lookup    |    Yes|
 |$out        |Yes|
 |$indexStats|        No|
-|$facet    |No|
+|$facet    |Yes|
 |$bucket|    No|
 |$bucketAuto|    No|
 |$sortByCount|    Yes|

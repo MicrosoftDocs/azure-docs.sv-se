@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 47140bccc8c2a1b69f083502d031a9db6d21294e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 884aa18b1a29b1c4f1bbf1159a5d48870529c72b
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835790"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565714"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Vad är Azures statiska Web Apps för hands version?
 
@@ -32,10 +32,10 @@ Med statiska Web Apps separeras statiska till gångar från en traditionell webb
 
 - **Webb värd** för statiskt innehåll som HTML, CSS, Java Script och avbildningar.
 - **Inbyggt API** -stöd som tillhandahålls av Azure Functions.
-- **GitHub-integration från första part** där lagrings ändringar utlöser versioner och distributioner.
+- **GitHub-integrering i första klass** där lagrings plats ändringar utlöser versioner och distributioner.
 - **Globalt distribuerat** statiskt innehåll, vilket ger innehållet närmare dina användare.
 - **Kostnads fria SSL-certifikat**, som automatiskt förnyas.
-- **Anpassade domäner** \* för att tillhandahålla anpassade anpassningar till din app.
+- **Anpassade domäner** för att tillhandahålla anpassade anpassningar till din app.
 - **Sömlös säkerhets modell** med en omvänd proxy vid anrop till API: er som inte kräver CORS-konfiguration.
 - **Integrering av autentiseringsprovider** med Azure Active Directory, Facebook, Google, GitHub och Twitter.
 - **Anpassningsbar roll definition** och tilldelningar för auktorisering.
@@ -44,11 +44,9 @@ Med statiska Web Apps separeras statiska till gångar från en traditionell webb
 
 ## <a name="what-you-can-do-with-static-web-apps"></a>Vad du kan göra med statiska Web Apps
 
-- **Bygg moderna JavaScript-program** med ramverk och bibliotek som [vinkel](getting-started.md#tabpanel_CeZOj-G++Q_angular), [reagera](getting-started.md#tabpanel_CeZOj-G++Q_react), [svelte](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/), [Vue](getting-started.md#tabpanel_CeZOj-G++Q_vue) med en [Azure Functions](apis.md) backend.
+- **Bygg moderna JavaScript-program** med ramverk och bibliotek som [vinkel](getting-started.md?tabs=angular), [reagera](getting-started.md?tabs=react), [svelte](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/), [Vue](getting-started.md?tabs=react) med en [Azure Functions](apis.md) backend.
 - **Publicera statiska platser** med ramverk som [Gatsby](publish-gatsby.md), [Hugo](publish-hugo.md), [VuePress](publish-vuepress.md).
 - **Distribuera webb program** med ramverk som [Next.js](deploy-nextjs.md) och [Nuxt.js](deploy-nuxtjs.md).
-
-\*Spetsig domän registreringar stöds inte under för hands versionen.
 
 ## <a name="next-steps"></a>Nästa steg
 

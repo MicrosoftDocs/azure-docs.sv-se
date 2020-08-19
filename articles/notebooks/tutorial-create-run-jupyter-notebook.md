@@ -1,21 +1,21 @@
 ---
-title: Självstudie – Skapa och köra en Jupyter Notebook – Azure Notebooks för hands version
-description: Lär dig hur du skapar och kör en Jupyter Notebook i Azure Notebooks Preview som demonstrerar processen för linjär regression i data vetenskap.
+title: Självstudie – Skapa och köra en Jupyter Notebook-Azure Notebooks för hands version
+description: Lär dig hur du skapar och kör en Jupyter Notebook i Azure Notebooks för hands versionen som visar processen för linjär regression i data vetenskap.
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: f6480a93610761061462be8e83ce3e719f3e8bdf
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: cb8be1618de7e95a7096e4ea9dec78bf4aa277f6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846920"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589287"
 ---
-# <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Självstudie: skapa och kör en Jupyter-anteckningsbok med python
+# <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Självstudie: skapa och köra en Jupyter Notebook med python
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-Den här självstudien vägleder dig genom processen att använda Azure Notebooks för att skapa en komplett Jupyter-anteckningsbok som visar enkel linjär regression. I den här självstudien får du bekanta dig med användar gränssnittet för Jupyter Notebook, vilket innefattar att skapa olika celler, köra celler och presentera antecknings boken som ett bild spel.
+Den här självstudien vägleder dig genom processen att använda Azure Notebooks för att skapa en fullständig Jupyter Notebook som visar enkel linjär regression. I den här självstudien får du bekanta dig med Jupyter Notebook gränssnittet, vilket innefattar att skapa olika celler, köra celler och presentera antecknings boken som ett bild spel.
 
 Den slutförda antecknings boken finns på [GitHub Azure Notebooks-exempel](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps). Den här själv studie kursen börjar dock med ett nytt projekt och en tom antecknings bok så att du kan skapa det steg för steg.
 

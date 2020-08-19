@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: d8ad191476416bc6ced35c4086d336b7f0a926cb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a014038996ae2846d059551b565feedd8de560a0
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327845"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258305"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Prestanda tips för Azure Cosmos DB Java SDK v4
 
@@ -45,9 +45,9 @@ Så om du frågar "Hur kan jag förbättra min databas prestanda?" Överväg fö
 
     Dessa anslutnings lägen är i princip den väg som data planet begär – dokument läsningar och skrivningar – tar från klient datorn till partitioner i Azure Cosmos DB backend. Normalt är Direct-läge det bästa alternativet för bästa prestanda – det gör att klienten kan öppna TCP-anslutningar direkt till partitioner i Azure Cosmos DB backend-och sändnings begär Anden *Direct*-ly utan mellanmedium. I Gateway-läge dirigeras begär Anden som görs av klienten till en så kallad "Gateway"-server i Azure Cosmos DB klient del, som i sin tur ger ut dina begär anden till lämpliga partitioner i Azure Cosmos DB backend. Om ditt program körs i ett företags nätverk med strikta brand Väggs begränsningar är Gateway-läget det bästa valet eftersom det använder standard-HTTPS-porten och en enda slut punkt. Prestanda kompromissen är dock att Gateway-läget omfattar ytterligare nätverks hopp (klient till gateway och gateway till partition) varje gång data läses eller skrivs till Azure Cosmos DB. Därför erbjuder Direct-läget bättre prestanda på grund av färre nätverks hopp.
 
-    Anslutnings läget för data Plans begär Anden konfigureras i Azure Cosmos DB client Builder med hjälp av metoderna *directMode ()* eller *gatewayMode ()* , som du ser nedan. Om du vill konfigurera något av de båda alternativen med standardinställningar anropar du någon av metoderna utan argument. Annars skickar du en klass instans för konfigurations inställningar som argument (*DirectConnectionConfig* för *directMode ()*, *GatewayConnectionConfig* för *gatewayMode ()*.)
+    Anslutnings läget för data Plans begär Anden konfigureras i Azure Cosmos DB client Builder med hjälp av metoderna *directMode ()* eller *gatewayMode ()* , som du ser nedan. Om du vill konfigurera något av de båda alternativen med standardinställningar anropar du någon av metoderna utan argument. Annars skickar du en klass instans för konfigurations inställningar som argument (*DirectConnectionConfig* för *directMode ()*,  *GatewayConnectionConfig* för *gatewayMode ()*.)
     
-    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Java v4 SDK
+    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK
 
     # <a name="async"></a>[Async](#tab/api-async)
 
@@ -65,7 +65,7 @@ Så om du frågar "Hur kan jag förbättra min databas prestanda?" Överväg fö
 
     Metoden *directMode ()* har en ytterligare åsidosättning, av följande skäl. Kontroll Plans åtgärder som databas och container CRUD använder *alltid* Gateway-läge. När användaren har konfigurerat direkt läge för data Plans åtgärder, använder kontroll planens standardinställningar för gateway-läge. Detta passar de flesta användare. Användare som vill ha direkt läge för data Plans åtgärder samt tunability-parametrar för kontroll planens läge kan dock använda följande *directMode ()-* åsidosättning:
 
-    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Java v4 SDK
+    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK
 
     # <a name="async"></a>[Async](#tab/api-async)
 
@@ -133,7 +133,7 @@ Mer information finns i [Windows](https://docs.microsoft.com/azure/virtual-netwo
 
     Följande kodfragment visar hur du initierar din Azure Cosmos DB-klient för asynkron API eller synkroniserings-API-åtgärd:
 
-    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Java v4 SDK
+    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java v4 SDK
 
     # <a name="async"></a>[Async](#tab/api-async)
 
@@ -169,7 +169,7 @@ Mer information finns i [Windows](https://docs.microsoft.com/azure/virtual-netwo
 
         I det första steget använder du följande rekommenderade konfigurations inställningar nedan. Dessa *DirectConnectionConfig* -alternativ är avancerade konfigurations inställningar som kan påverka SDK-prestanda på oväntade sätt. Vi rekommenderar att användarna undviker att ändra dem om de inte känner sig för att förstå kompromisserna och det är absolut nödvändigt. Kontakta Azure Cosmos DB- [teamet](mailto:CosmosDBPerformanceSupport@service.microsoft.com) om du stöter på problem på det här specifika ämnet.
 
-        | Konfigurations alternativ       | Standard    |
+        | Konfigurations alternativ       | Standardvärde    |
         | :------------------:       | :-----:    |
         | idleConnectionTimeout      | "PT1M"     |
         | maxConnectionsPerEndpoint  | "PT0S"     |
@@ -316,7 +316,7 @@ Mer information finns i [Windows](https://docs.microsoft.com/azure/virtual-netwo
 
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-indexing"></a>Java SDK v4 (maven com. Azure:: Azure-Cosmos)
 
-    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=MigrateIndexingAsync)]
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=MigrateIndexingAsync)]
 
     Mer information finns i [Azure Cosmos DB indexerings principer](indexing-policies.md).
 

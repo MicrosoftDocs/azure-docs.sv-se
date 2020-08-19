@@ -2,27 +2,22 @@
 title: Konfigurera ett OpenID/OAuth-program från Azure AD-appgalleri | Microsoft Docs
 description: Steg för att konfigurera ett OpenID/OAuth-program från Azure AD-appgalleri.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: eedebb76-e78c-428f-9cf0-5891852e79fb
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 13c3a7f8376d4c852a74be75e323c6bb042b5407
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 1934b6256ecf4f35c54bbc2ac497c331b2c5ee89
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610997"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543932"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Konfigurera ett OpenID/OAuth-program från Azure AD-appgalleri
 
@@ -32,7 +27,7 @@ ms.locfileid: "82610997"
 
     ![Azure Active Directory-knappen](common/select-azuread.png))
 
-2. Gå till **företags program** > **alla program**.
+2. Gå till **företags program**  >  **alla program**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -138,12 +133,12 @@ En vanlig användare kan godkänna vissa behörigheter. Andra behörigheter krä
 
 ## <a name="difference-between-admin-consent-and-user-consent"></a>Skillnaden mellan administratörens och användarens medgivande
 
-Som administratör kan du även samtycka till ett programs delegerade behörigheter för samtliga användare i klienten. Administratörens medgivande förhindrar att dialogrutan för medgivande visas för varje användare i klienten. Användare som har administratörsrollen kan ge sitt medgivande i Azure-portalen. På sidan **Inställningar** för ditt program väljer du **nödvändiga behörigheter** > **bevilja administratörs medgivande**.
+Som administratör kan du även samtycka till ett programs delegerade behörigheter för samtliga användare i klienten. Administratörens medgivande förhindrar att dialogrutan för medgivande visas för varje användare i klienten. Användare som har administratörsrollen kan ge sitt medgivande i Azure-portalen. På sidan **Inställningar** för ditt program väljer du **nödvändiga behörigheter**  >  **bevilja administratörs medgivande**.
 
 ![Knappen Bevilja behörigheter](./media/openidoauth-tutorial/grantpermission.png)
 
 > [!NOTE]
-> Att bevilja explicit medgivande genom att använda knappen **bevilja administratörs medgivande** krävs nu för program med en enda sida (SPAs) som använder ADAL. js. Annars misslyckas programmet när åtkomsttoken begärs.
+> Att bevilja uttryckligt medgivande genom att använda knappen **bevilja administratörs medgivande** krävs nu för program med en enda sida (SPAs) som använder ADAL.js. Annars misslyckas programmet när åtkomsttoken begärs.
 
 Endast app-behörigheter kräver alltid en klient administratörs medgivande. Om ditt program begär en appspecifik behörighet och en användare försöker logga in på programmet visas ett felmeddelande. Meddelandet säger att användaren inte kan godkänna.
 

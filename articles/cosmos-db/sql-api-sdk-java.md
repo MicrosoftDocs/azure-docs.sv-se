@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: f36a4b223c12662eec1369bd4ec1a1175e459198
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 406690eb1303a25002d3d787e746bd091dd83fc6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851791"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586145"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK för SQL API: viktig information och resurser
 > [!div class="op_single_selector"]
@@ -26,7 +26,8 @@ ms.locfileid: "87851791"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Asynkron Java-SDK v2](sql-api-sdk-async-java.md)
 > * [Synkron Java-SDK v2](sql-api-sdk-java.md)
-> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Våren data v2](sql-api-sdk-java-spring-v2.md)
+> * [Våren data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark-anslutning](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -101,7 +102,7 @@ Det här är den ursprungliga Azure Cosmos DB synkronisera Java SDK v2 för SQL 
 * Åtgärdat fel i global slut punkts hanterare för att framtvinga uppdatering.
 * Fast bugg för upsertar med för-villkor i direkt läge.
 
-### <a name="211"></a><a name="2.1.1"></a>2.1.1
+### <a name="211"></a><a name="2.1.1"></a>punkt
 * Fast bugg i Gateway-diskcachen.
 
 ### <a name="210"></a><a name="2.1.0"></a>2.1.0
@@ -284,7 +285,7 @@ Microsoft tillhandahåller ett meddelande minst **12 månader** i förväg för 
 | [2.2.0](#2.2.0) |Mar 27, 2019 |--- |
 | [2.1.3](#2.1.3) |Mar 13, 2019 |--- |
 | [2.1.2](#2.1.2) |Mar 09, 2019 |--- |
-| [2.1.1](#2.1.1) |Dec 13, 2018 |--- |
+| [punkt](#2.1.1) |Dec 13, 2018 |--- |
 | [2.1.0](#2.1.0) |Nov 20, 2018 |--- |
 | [2.0.0](#2.0.0) |21 september 2018 |--- |
 | [1.16.4](#1.16.4) |10 september 2018 |30 maj 2020 |

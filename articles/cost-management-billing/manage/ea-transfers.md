@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: banders
-ms.openlocfilehash: c49894c722897233afa6325def1d3e17562d2dab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a770fe2362e1e1c98c683f694f7f834ac6f4ea6c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075103"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836861"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Enterprise-överföringar
 
@@ -98,7 +98,7 @@ Du kan överföra prenumerationer från en kontoinnehavare till en annan i Azure
 
 ## <a name="subscription-transfer-effects"></a>Åtgärder som utförs vid överföring av prenumerationer
 
-När du överför en Azure-prenumeration till ett konto i samma klientorganisation i Azure Active Directory så behåller alla användare, grupper och huvudnamn för tjänster med [rollbaserad åtkomst (RBAC)](../../role-based-access-control/overview.md) för hantering av resurser sin åtkomst.
+När du överför en Azure-prenumeration till ett konto i samma klientorganisation i Azure Active Directory så behåller alla användare, grupper och huvudnamn för tjänster med [rollbaserad åtkomst (Azure RBAC)](../../role-based-access-control/overview.md) för hantering av resurser sin åtkomst.
 
 Så här visar du användare med rollbaserad åtkomst för prenumerationen:
 

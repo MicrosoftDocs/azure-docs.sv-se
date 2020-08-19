@@ -11,12 +11,12 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: 365f0b07370937a73d3925373be0be544a182865
-  ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+  ms.openlocfilehash: be76cd9d3c358864d1278cad77be43048dec7a71
+  ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
   ms.translationtype: HT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 07/29/2020
-  ms.locfileid: "87386783"
+  ms.lasthandoff: 08/17/2020
+  ms.locfileid: "88263460"
 landingContent:
 - title: Certifikat
   linkLists:
@@ -46,6 +46,18 @@ landingContent:
       url: quick-create-python.md
     - text: Importera ett certifikat i Key Vault
       url: tutorial-import-certificate.md
+- title: Klientbibliotek för Key Vault-certifikat
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: .NET-klientbibliotek
+      url: /dotnet/api/azure.security.keyvault.certificates?view=azure-dotnet
+    - text: Python-klientbibliotek
+      url: /python/api/overview/azure/keyvault-certificates-readme?view=azure-python
+    - text: Java-klientbibliotek
+      url: https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.2.0/index.html
+    - text: Node.js-klientbibliotek
+      url: /javascript/api/@azure/keyvault-certificates/?view=azure-node-latest
 - title: Mer om Key Vault
   linkLists:
   - linkListType: overview

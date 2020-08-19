@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9dcc1b6f6f3792682f81c0d37ef2046bd1840657
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1865d307e7b79e7e40b0e98f2dcfa2535b0313fd
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527004"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551715"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Självstudier: Säkerhetskopiera och återställa filer för virtuella Linux-datorer i Azure
 
@@ -45,7 +45,7 @@ Skapa en schemalagd daglig säkerhetskopiering till ett Recovery Services-valv:
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
 2. Välj **Virtuella datorer** på menyn till vänster. 
 3. Välj en virtuell dator som du vill säkerhetskopiera i listan.
-4. Klicka på **Säkerhetskopiering** i avsnittet **Inställningar** på bladet VM. Bladet **Aktivera säkerhetskopiering** öppnas.
+4. På VM-bladet går du till avsnittet **Åtgärder** och klickar på **Säkerhetskopiering**. Bladet **Aktivera säkerhetskopiering** öppnas.
 5. I **Recovery Services-valv** klickar du på **Skapa nytt** och anger namnet för det nya valvet. Ett nytt valv skapas i samma resursgrupp och på samma plats som den virtuella datorn.
 6. Klicka på **Säkerhetskopieringspolicy**. I det här exemplet behåller du standardvärdena och klickar på **OK**.
 7. Klicka på **Aktivera säkerhetskopiering** på bladet **Aktivera säkerhetskopiering**. Då skapas en daglig säkerhetskopia baserat på standardschemat.

@@ -19,15 +19,15 @@
       href: advisor-get-started.md
 - name: Anvisningar
   items:
-    - name: Förbättra pålitligheten för Azure-program
+    - name: Tillförlitlighet
       href: advisor-high-availability-recommendations.md
-    - name: Gör resurser säkrare
+    - name: Säkerhet
       href: advisor-security-recommendations.md
-    - name: Förbättra prestanda för Azure-program
+    - name: Prestandaeffektivitet
       href: advisor-performance-recommendations.md
-    - name: Minska tjänstkostnader
+    - name: Kostnadsoptimering
       href: advisor-cost-recommendations.md
-    - name: Tillgodose era behov
+    - name: Utmärkt driftseffektivitet
       href: advisor-operational-excellence-recommendations.md
     - name: Konfigurera rekommendationer
       href: view-recommendations.md
@@ -35,6 +35,8 @@
       href: permissions.md
     - name: Konfigurera aviseringar för rekommendationer
       href: advisor-alerts-portal.md
+    - name: Konfigurera sammanfattning av rekommendationer
+      href: advisor-recommendations-digest.md
     - name: Massåtgärd för rekommendationer
       href: advisor-quick-fix.md
     - name: Advisor-data i Azure Resource Graph

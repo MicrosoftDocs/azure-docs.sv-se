@@ -1,14 +1,14 @@
 ---
 title: Förstå hur effekter fungerar
 description: Azure Policy definitioner har olika effekter som avgör hur efterlevnaden hanteras och rapporteras.
-ms.date: 06/15/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 54c2a687c6386c075ef5802826bc60b87b4d3ee4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0cfa8215d828de6d5426c3883ca1968e7a7cb542
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791426"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544731"
 ---
 # <a name="understand-azure-policy-effects"></a>Förstå Azure Policys effekter
 
@@ -16,13 +16,13 @@ Varje principdefinition i Azure Policy har en enda effekt. Den här inställning
 
 Dessa effekter stöds för närvarande i en princip definition:
 
-- [Lägg till](#append)
-- [Granska](#audit)
+- [Append](#append) (Lägg till)
+- [Audit](#audit) (Granska)
 - [AuditIfNotExists](#auditifnotexists)
 - [Neka](#deny)
 - [DeployIfNotExists](#deployifnotexists)
-- [Inaktiverad](#disabled)
-- [Ändra](#modify)
+- [Disabled](#disabled) (Inaktiverat)
+- [Modify](#modify) (Ändra)
 
 Följande effekter är _föråldrade_:
 
@@ -362,7 +362,7 @@ Exempel: utvärderar SQL Server databaser för att avgöra om transparentDataEnc
 }
 ```
 
-## <a name="disabled"></a>Disabled
+## <a name="disabled"></a>Inaktiverad
 
 Den här inställningen är användbar för att testa situationer eller när princip definitionen har parameterstyrda påverkan. Den här flexibiliteten gör det möjligt att inaktivera en enskild tilldelning i stället för att inaktivera alla tilldelningar för principen.
 
@@ -546,7 +546,7 @@ Med egenskapen för **drifts** egenskaper kan du ändra flera taggar på olika s
 
 Egenskapen **operation** har följande alternativ:
 
-|Åtgärd |Beskrivning |
+|Åtgärd |Description |
 |-|-|
 |addOrReplace |Lägger till den definierade taggen och värdet i resursen, även om taggen redan finns med ett annat värde. |
 |Lägg till |Lägger till den definierade taggen och värdet i resursen. |
@@ -601,7 +601,7 @@ Exempel 2: ta bort `env` taggen och Lägg till `environment` taggen eller ersät
 
 ## <a name="layering-policy-definitions"></a>Skikt princip definitioner
 
-En resurs kan påverkas av flera tilldelningar. Tilldelningarna kan finnas i samma omfång eller i olika omfång. Vart och ett av dessa tilldelningar är också troligt att en annan inverkan har definierats. Villkoret och påverkan för varje princip utvärderas oberoende av varandra. Ett exempel:
+En resurs kan påverkas av flera tilldelningar. Tilldelningarna kan finnas i samma omfång eller i olika omfång. Vart och ett av dessa tilldelningar är också troligt att en annan inverkan har definierats. Villkoret och påverkan för varje princip utvärderas oberoende av varandra. Exempel:
 
 - Princip 1
   - Begränsar resursens plats till "väst"

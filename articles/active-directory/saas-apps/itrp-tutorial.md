@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med ITRP | Microsoft Docs'
 description: I den här självstudien får du lära dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och ITRP.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: e09716a3-4200-4853-9414-2390e6c10d98
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: c4d0f753e23e42b1064fec3f56957dfe97c30ca4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d7a7c4f7d9a9ba2ef574519a41aae3dd6e28e4fb
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81261201"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552806"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Självstudie: Azure Active Directory integrering med ITRP
 
@@ -33,9 +29,9 @@ Den här integrationen ger följande fördelar:
 
 Läs mer om SaaS-appintegrering med Azure AD i [Enkel inloggning till program i Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med ITRP måste du ha:
 
@@ -56,7 +52,7 @@ Om du vill ställa in integreringen av ITRP i Azure AD måste du lägga till ITR
 
     ![Välj Azure Active Directory](common/select-azuread.png)
 
-2. Gå till **företags program** > **alla program**:
+2. Gå till **företags program**  >  **alla program**:
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -179,7 +175,7 @@ I det här avsnittet ska du skapa en test användare med namnet Britta Simon i A
 
     1. I rutan **Namn** anger du **BrittaSimon**.
   
-    1. I rutan **användar namn** anger du **BrittaSimon@\<\< yourcompanydomain>. tillägg>**. (Till exempel BrittaSimon@contoso.com.)
+    1. I rutan **användar namn** anger du **BrittaSimon@ \<yourcompanydomain> . \<extension> **. (Till exempel BrittaSimon@contoso.com .)
 
     1. Välj **Visa lösen ord**och skriv sedan ned värdet i rutan **lösen ord** .
 
@@ -227,7 +223,7 @@ Gör så här för att skapa ett användar konto:
 
     ![Välj personer](./media/itrp-tutorial/ic775587.png "Välj personer")
 
-1. Välj plus tecknet (**+**) för att lägga till en ny person:
+1. Välj plus tecknet ( **+** ) för att lägga till en ny person:
 
     ![Välj plus tecknet](./media/itrp-tutorial/ic775576.png "Välj plus tecknet")
 

@@ -1,6 +1,6 @@
 ---
 title: Snabbstart för Azure App Configuration med Azure Functions | Microsoft Docs
-description: En snabbstart för användning av Azure App Configuration med Azure Functions.
+description: I den här snabb starten ska du göra en Azure Functions-app med Azure App konfiguration och C#. Skapa och Anslut till ett konfigurations Arkiv för appar. Testa funktionen lokalt.
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -8,18 +8,18 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: bae602bd45115fa6e199e886db0539c4f47f5180
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: e15c83504ee0eebb925c122d0efd4896e7b55916
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210020"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590293"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Snabb start: skapa en Azure Functions-app med Azure App konfiguration
 
 I den här snabb starten införlivar du Azure App konfigurations tjänsten i en Azure Functions-app för att centralisera lagring och hantering av alla dina program inställningar separat från din kod.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs) med arbets belastningen **Azure Development** .
@@ -37,7 +37,7 @@ I den här snabb starten införlivar du Azure App konfigurations tjänsten i en 
 
     Lämna **etiketten** och **innehålls typen** tom för tillfället.
 
-7. Välj **Använd**.
+7. Välj **Tillämpa**.
 
 ## <a name="create-a-functions-app"></a>Skapa en Functions-app
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: sngun
-ms.openlocfilehash: c6c1b30716b52554afebe39562692de181dd7d1a
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: bc73292d7ed01468fc31e5a6203a4ba53a6425a2
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921222"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505775"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Prestanda tips för Azure Cosmos DB och .NET SDK v2
 
@@ -41,7 +41,7 @@ Om du försöker förbättra databasens prestanda bör du därför överväga f�
 
 Vi rekommenderar Windows 64-bitars värd bearbetning för bättre prestanda. SQL-SDK: n innehåller en intern ServiceInterop.dll för att analysera och optimera frågor lokalt. ServiceInterop.dll stöds endast på Windows x64-plattformen. För Linux och andra plattformar som inte stöds, där ServiceInterop.dll inte är tillgänglig, görs ytterligare ett nätverks anrop till gatewayen för att hämta den optimerade frågan. Följande typer av program använder 32-bitars värd bearbetning som standard. Om du vill ändra värd bearbetningen till 64-bitars bearbetning följer du dessa steg baserat på typen av program:
 
-- För körbara program kan du ändra värd bearbetningen genom att ange [plattforms målet](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) till **x64** i fönstret **projekt egenskaper** på fliken **skapa** .
+- För körbara program kan du ändra värd bearbetningen genom att ange [plattforms målet](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) till **x64**  i fönstret **projekt egenskaper** på fliken **skapa** .
 
 - För VSTest-baserade test projekt kan du ändra värd bearbetningen genom att välja **testa**  >  **standardinställningar**  >  **standard processor arkitektur som x64** på **test** menyn i Visual Studio.
 
@@ -64,7 +64,7 @@ Om du testar med höga data flödes nivåer (mer än 50 000 RU/s) kan klient pro
 > [!NOTE] 
 > Hög CPU-användning kan orsaka ökad latens och begär timeout-undantag.
 
-## <a name="networking"></a><a id="networking"></a>Nätverk
+## <a name="networking"></a><a id="networking"></a> Nätverk
 
 **Anslutnings princip: Använd direkt anslutnings läge**
 
@@ -72,21 +72,19 @@ Hur en klient ansluter till Azure Cosmos DB har viktiga prestanda effekter, sär
 
   * Gateway-läge (standard)
       
-    Gateway-läge stöds på alla SDK-plattformar och är det konfigurerade standardvärdet för [Microsoft.Azure.DocUMENTDB SDK](sql-api-sdk-dotnet.md). Om ditt program körs i ett företags nätverk med strikta brand Väggs begränsningar är Gateway-läget det bästa valet eftersom det använder HTTPS-standardporten och en enda slut punkt. Prestanda kompromissen är dock att Gateway-läget omfattar ytterligare ett nätverks hopp varje gång data läses från eller skrivs till Azure Cosmos DB. Det direkta läget ger bättre prestanda eftersom det finns färre nätverks hopp. Vi rekommenderar också Gateway-anslutnings läge när du kör program i miljöer som har ett begränsat antal socketanslutningar.
+    Gateway-läge stöds på alla SDK-plattformar och är det konfigurerade standardvärdet för [Microsoft.Azure.DocUMENTDB SDK](sql-api-sdk-dotnet.md). Om ditt program körs i ett företags nätverk med strikta brand Väggs begränsningar är Gateway-läget det bästa valet eftersom det använder standard-HTTPS-porten och en enda DNS-slutpunkt. Prestanda kompromissen är dock att Gateway-läget omfattar ytterligare ett nätverks hopp varje gång data läses från eller skrivs till Azure Cosmos DB. Det direkta läget ger bättre prestanda eftersom det finns färre nätverks hopp. Vi rekommenderar också Gateway-anslutnings läge när du kör program i miljöer som har ett begränsat antal socketanslutningar.
 
     När du använder SDK i Azure Functions, i synnerhet i [förbruknings planen](../azure-functions/functions-scale.md#consumption-plan), var medveten om de aktuella [gränserna för anslutningar](../azure-functions/manage-connections.md). I så fall kan gateway-läget vara bättre om du även arbetar med andra HTTP-baserade klienter i ditt Azure Functions-program.
 
   * Direkt läge
 
     Direct-läget stöder anslutning via TCP-protokollet.
-
-I Gateway-läge använder Azure Cosmos DB port 443 och portarna 10250, 10255 och 10256 när du använder Azure Cosmos DB API för MongoDB. Port 10250 mappar till en standard instans av MongoDB utan geo-replikering. Portarna 10255 och 10256 mappar till MongoDB-instansen som har geo-replikering.
      
-Om du använder TCP i direkt läge, förutom Gateway-portarna, måste du se till att port intervallet är mellan 10000 och 20000 är öppen eftersom Azure Cosmos DB använder dynamiska TCP-portar (när du använder direkt läge på [privata slut punkter](./how-to-configure-private-endpoints.md), måste hela intervallet TCP-portar-från 0 till 65535-vara öppna). Om de här portarna inte är öppna och du försöker använda TCP, får du ett fel meddelande om att 503-tjänsten inte är tillgänglig. I den här tabellen visas de anslutnings lägen som är tillgängliga för olika API: er och tjänst portarna som används för varje API:
+När du använder TCP i direkt läge måste du förutom Gateway-portarna se till att port intervallet är mellan 10000 och 20000 är öppen eftersom Azure Cosmos DB använder dynamiska TCP-portar. När du använder direkt läge på [privata slut punkter](./how-to-configure-private-endpoints.md)ska hela intervallet TCP-portar – från 0 till 65535 vara öppen. Om de här portarna inte är öppna och du försöker använda TCP-protokollet får du ett meddelande om att 503-tjänsten inte är tillgänglig. I följande tabell visas de anslutnings lägen som är tillgängliga för olika API: er och tjänst portar som används för varje API:
 
 |Anslutningsläge  |Protokoll som stöds  |SDK: er som stöds  |API/tjänst-port  |
 |---------|---------|---------|---------|
-|Gateway  |   HTTPS    |  Alla SDK: er    |   SQL (443), MongoDB (10250, 10255, 10256), tabell (443), Cassandra (10350), Graf (443)    |
+|Gateway  |   HTTPS    |  Alla SDK: er    |   SQL (443), MongoDB (10250, 10255, 10256), tabell (443), Cassandra (10350), Graf (443) <br> Port 10250 mappar till ett standard-Azure Cosmos DB-API för MongoDB-instans utan geo-replikering. Portarna 10255 och 10256 mappar till den instans som har geo-replikering.   |
 |Direct    |     TCP    |  .NET SDK    | När du använder offentliga/tjänst slut punkter: portar i intervallet 10000 till 20000<br>När du använder privata slut punkter: portar inom intervallet 0 till 65535 |
 
 Azure Cosmos DB erbjuder en enkel, öppen RESTful programmerings modell över HTTPS. Dessutom erbjuder den ett effektivt TCP-protokoll, som också RESTful i sin kommunikations modell och är tillgängligt via .NET-klient-SDK: n. TCP-protokollet använder TLS för inledande autentisering och kryptering av trafik. Använd TCP-protokollet när det är möjligt för bästa prestanda.
@@ -121,10 +119,10 @@ I scenarier där du har sparse-åtkomst och om du upptäcker ett högre antal an
 
 **Anropa openAsync för att undvika start fördröjning för första begäran**
 
-Som standard har den första begäran högre latens eftersom den måste hämta adress routningstabellen. När du använder [SDK v2](sql-api-sdk-dotnet.md)anropar du `OpenAsync()` en gång under initieringen för att undvika den här start fördröjningen för den första begäran. Anropet ser ut så här:`await client.OpenAsync();`
+Som standard har den första begäran högre latens eftersom den måste hämta adress routningstabellen. När du använder [SDK v2](sql-api-sdk-dotnet.md)anropar du `OpenAsync()` en gång under initieringen för att undvika den här start fördröjningen för den första begäran. Anropet ser ut så här: `await client.OpenAsync();`
 
 > [!NOTE]
-> `OpenAsync`genererar begär Anden för att hämta adress routningstabellen för alla behållare i kontot. För konton som har många behållare men vars program har åtkomst till en delmängd av dem, `OpenAsync` genererar en onödig mängd trafik som gör initieringen långsam. Det `OpenAsync` kan vara bra att använda i det här scenariot eftersom det gör att program starten går långsamt.
+> `OpenAsync` genererar begär Anden för att hämta adress routningstabellen för alla behållare i kontot. För konton som har många behållare men vars program har åtkomst till en delmängd av dem, `OpenAsync` genererar en onödig mängd trafik som gör initieringen långsam. Det `OpenAsync` kan vara bra att använda i det här scenariot eftersom det gör att program starten går långsamt.
 
 **Samordna-klienter i samma Azure-region för prestanda.**
 
@@ -158,8 +156,8 @@ Azure Cosmos DB begär Anden görs via HTTPS/REST när du använder Gateway-läg
 **Justera parallella frågor för partitionerade samlingar**
 
 SQL .NET SDK-1.9.0 och senare stöder parallella frågor som gör att du kan fråga en partitionerad samling parallellt. Mer information finns i [kod exempel](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) för att arbeta med SDK: er. Parallella frågor är utformade för att ge bättre svars tid och data flöde än deras serie motsvarighet. Parallella frågor ger två parametrar som du kan justera för att passa dina behov: 
-- `MaxDegreeOfParallelism`kontrollerar det högsta antalet partitioner som kan frågas parallellt. 
-- `MaxBufferedItemCount`styr antalet i förväg hämtade resultat.
+- `MaxDegreeOfParallelism` kontrollerar det högsta antalet partitioner som kan frågas parallellt. 
+- `MaxBufferedItemCount` styr antalet i förväg hämtade resultat.
 
 ***Justera graden av parallellitet***
 
@@ -216,7 +214,7 @@ När en fråga körs skickas resulterande data i ett TCP-paket. Om du anger för
 
 Se [öka antalet trådar/aktiviteter](#increase-threads) i avsnittet nätverk i den här artikeln.
 
-## <a name="indexing-policy"></a>Indexeringspolicy
+## <a name="indexing-policy"></a>Indexeringsprincip
  
 **Utesluta sökvägar som inte används från indexering för att få snabbare skrivning**
 
@@ -231,7 +229,7 @@ collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabas
 
 Mer information finns i [Azure Cosmos DB indexerings principer](index-policy.md).
 
-## <a name="throughput"></a><a id="measure-rus"></a>Kapacitet
+## <a name="throughput"></a><a id="measure-rus"></a> Kapacitet
 
 **Mått och justering för lägre enheter för programbegäran/andra användning**
 

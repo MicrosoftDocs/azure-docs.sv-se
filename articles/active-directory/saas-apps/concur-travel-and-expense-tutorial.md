@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory-integrering med enkel inloggning (SSO) med rese-och utgifts hantering i Concur | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Concur resor och kostnader.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 6401ace4-71c0-4778-8b15-900f2f5f0c4c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/10/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dddd9f6904aa5ef7840850792aeabf04666dddc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6797d169dbdfdd63ae9cc96ac9fed133bc8d1adc
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72373427"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544493"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur-travel-and-expense"></a>Självstudie: Azure Active Directory-integrering med enkel inloggning (SSO) med Concur rese-och utgifts hantering
 
@@ -33,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar Concur resor och ut
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -106,7 +101,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -144,7 +139,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 I det här avsnittet skapar du en användare som heter B. Simon i Concur resor och utgifter. Arbeta med Concur support team för att lägga till användare i Concur rese-och utgifts plattform. Användare måste skapas och aktiveras innan du använder enkel inloggning. 
 
 > [!NOTE]
-> B. Simons Concur-inloggnings-ID måste matcha B. Simons unika identifierare i Azure AD. Till exempel om B. Simon s Azure AD Unique-identifierare är `B.Simon@contoso.com`. B. Simon: s Concur-inloggnings- `B.Simon@contoso.com` ID måste också vara. 
+> B. Simons Concur-inloggnings-ID måste matcha B. Simons unika identifierare i Azure AD. Till exempel om B. Simon s Azure AD Unique-identifierare är `B.Simon@contoso.com` . B. Simon: s Concur-inloggnings-ID måste `B.Simon@contoso.com` också vara. 
 
 ## <a name="configure-concur-mobile-sso"></a>Konfigurera Concur Mobile SSO
 Om du vill aktivera Concur Mobile SSO måste du ge Concur support team **User Access URL**. Följ stegen nedan för att hämta **URL för användar åtkomst** från Azure AD:
@@ -164,11 +159,11 @@ När du klickar på panelen Concur rese-och utgifts hantering i åtkomst panelen
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Prova Concur resor och utgifter med Azure AD](https://aad.portal.azure.com/)
 

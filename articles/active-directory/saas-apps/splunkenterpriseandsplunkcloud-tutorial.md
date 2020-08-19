@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med Splunk Enterprise och Splunk Cloud | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Splunk Enterprise och Splunk Cloud.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: b3e2b4a9-749c-4895-813d-db46f8dfdbf8
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d64307c4f91839c466b5f3f495cad8d7410ed364
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 22406fc3ed17e486859fc7e2e2f026619c7c6b55
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81867317"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88527620"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-splunk-enterprise-and-splunk-cloud"></a>Självstudie: Azure Active Directory integrering med Splunk Enterprise och Splunk Cloud
 
@@ -33,9 +28,9 @@ Genom att integrera Splunk Enterprise och Splunk Cloud med Azure AD får du föl
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Splunk Enterprise och Splunk Cloud behöver du följande objekt:
 
@@ -106,11 +101,11 @@ Om du vill konfigurera Azure AD enkel inloggning med Splunk Enterprise och Splun
 
     ![Information om enkel inloggning för URL:er för Splunk Enterprise och Splunk Cloud](common/sp-identifier-reply.png)
 
-    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<splunkserverUrl>/en-US/app/launcher/home`
+    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://<splunkserverUrl>/en-US/app/launcher/home`
 
-    b. I rutan **identifierare** anger du en URL med följande mönster:`<splunkserverUrl>`
+    b. I rutan **identifierare** anger du en URL med följande mönster: `<splunkserverUrl>`
 
-    c. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<splunkserver>/saml/acs`
+    c. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<splunkserver>/saml/acs`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera de här värdena med den faktiska inloggnings-URL:en, identifieraren och svars-URL:en. Kontakta [supportteamet för Splunk Enterprise och Splunk Cloud ](https://www.splunk.com/en_us/about-splunk/contact-us.html) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -141,8 +136,8 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** skriver du **brittasimon\@yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

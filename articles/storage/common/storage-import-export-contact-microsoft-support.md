@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/29/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 20ac33a26bfe24eb60e2febc1344859f4e54cdd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee30e9bba35ad39606fbe201c49e4eed3e656c97
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514424"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548282"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>Öppna ett support ärende för ett import/export-jobb
 
@@ -26,9 +26,9 @@ Om du stöter på problem med import/export-tjänsten kan du skapa en tjänstbeg
 
 Utför följande steg för att skapa en support förfrågan:
 
-1. Gå till ditt import/export-jobb. Gå till avsnittet **support + fel sökning** och klicka sedan på **ny supportbegäran**.
+1. Gå till ditt import/export-jobb. Gå till avsnittet **support + fel sökning** och välj sedan **ny supportbegäran**.
      
-    ![Grunderna](./media/storage-import-export-contact-microsoft-support/import-export-support1.png)
+    ![Grundläggande inställningar](./media/storage-import-export-contact-microsoft-support/import-export-support1.png)
    
 2. I **ny supportbegäran**väljer du **grunderna**. I **grunderna**, utför du följande steg:
     
@@ -40,7 +40,7 @@ Utför följande steg för att skapa en support förfrågan:
         - Om du väljer **BLOB**väljer du **resurs**, **behållar namn** (valfritt) och **Support plan**.
             ![Välj BLOB](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
         - Om du väljer **fil**väljer du **resurs**, **fil resurs namn** (valfritt) och **Support plan** ![ Välj fil](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
-    4. Klicka på **Nästa**.
+    4. Välj **Nästa**.
 
 3. I **New Support-begäran**väljer du **steg 2 problem**. I **problem**, utför följande steg:
     
@@ -49,22 +49,22 @@ Utför följande steg för att skapa en support förfrågan:
     3. Välj **kategorin** som **import-export**.
     4. Ange ett **namn** på problemet och mer **information**.
     5. Ange start datum och start tid för problemet.
-    6. I **fil överföringen**klickar du på mappikonen för att bläddra bland andra filer som du vill ladda upp.
+    6. I **fil uppladdning**väljer du mappikonen för att bläddra bland andra filer som du vill ladda upp.
     7. Kontrol lera **delning av diagnostikinformation**.
-    8. Klicka på **Nästa**.
+    8. Välj **Nästa**.
 
        ![Problem](./media/storage-import-export-contact-microsoft-support/import-export-support5.png)
 
-4. I **nytt support ärende**klickar du på **steg 3 kontakt information**. Utför följande steg i **kontakt information**:
+4. I **ny supportbegäran**väljer du **steg 3 kontakt information**. Utför följande steg i **kontakt information**:
 
    1. I **kontakt alternativen**anger du önskad kontakt metod (telefon eller e-post) och språket. Svars tiden väljs automatiskt baserat på prenumerations planen.
    2. I kontakt uppgifterna anger du ditt namn, din e-postadress, valfri kontakt, land/region. Markera kryss rutan **Spara kontakt ändringar för framtida support begär Anden** .
-   3. Klicka på **Skapa**.
+   3. Välj **Skapa**.
    
        ![Kontaktinformation](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   
 
       Microsoft Support kommer att använda den här informationen för att kontakta dig för ytterligare information, diagnos och lösning.
-      När du har skickat in din begäran kontaktar en support tekniker så snart som möjligt för att fortsätta med din begäran.
+      När du har skickat in din begäran kontaktar en support tekniker om du vill fortsätta med din begäran.
 
 ## <a name="manage-a-support-request"></a>Hantera en support förfrågan
 
@@ -80,11 +80,11 @@ När du har skapat ett supportärende kan du hantera ärendets livscykel på por
 
     ![Hantera support förfrågningar](./media/storage-import-export-contact-microsoft-support/manage-support-ticket1.png) 
 
-3. Välj och klicka på en support förfrågan. Du kan visa status och information för den här begäran. Klicka på **+ nytt meddelande** om du vill följa upp den här begäran.
+3. Välj och klicka på en support förfrågan. Du kan visa status och information för den här begäran. Välj **+ nytt meddelande** om du vill följa upp den här begäran.
 
     ![Hantera support förfrågningar](./media/storage-import-export-contact-microsoft-support/manage-support-ticket3.png) 
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig hur du [felsöker problem som rör import/export-tjänsten](storage-import-export-tool-troubleshooting-v1.md).
+Lär dig hur du [använder Azure import/export för att överföra data till och från Azure Storage](storage-import-export-service.md).

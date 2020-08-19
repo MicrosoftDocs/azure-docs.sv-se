@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory enkel inloggning (SSO) med SSOGEN – Azure AD SSO Gateway för Oracle E-Business Suite-EBS, liboch JDE | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och SSOGEN – Azure AD SSO Gateway för Oracle E-Business Suite-EBS, JDE och.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: f4311031-5a4b-468e-be58-324d06220869
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74b56e30eb8851913f91cbee377204a575311375
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 72b91be9875abf07e5f6f828ed32483a5d61eadd
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76293682"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88524449"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ssogen---azure-ad-sso-gateway-for-oracle-e-business-suite---ebs-peoplesoft-and-jde"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med SSOGEN – Azure AD SSO Gateway för Oracle E-Business Suite-EBS, östra och JDE
 
@@ -32,7 +28,7 @@ I den här självstudien får du lära dig att integrera SSOGEN – Azure AD SSO
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -85,11 +81,11 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
 
-    Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<customer_name>.ssogen.com/ssogen/login?client_name=<customer_name>`
+    Skriv en URL i text rutan **svars-URL** med följande mönster:  `https://<customer_name>.ssogen.com/ssogen/login?client_name=<customer_name>`
 
 1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<customer_name>.ssogen.com/ssogen/login?client_name=<customer_name>`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<customer_name>.ssogen.com/ssogen/login?client_name=<customer_name>`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med faktisk svars-URL och inloggnings-URL. Kontakta [SSOGEN – Azure AD SSO Gateway för Oracle E-Business Suite – EBS, östra och JDE klient support team](mailto:support@ssogen.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -110,7 +106,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -136,10 +132,10 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 Om du vill konfigurera enkel inloggning på **SSOGEN – Azure AD SSO Gateway för Oracle E-Business Suite-EBS, östra och JDE** sida, hittar du programspecifik SSO Registration-dokumentation nedan:
 
-* Oracle-EBS – integrering av Azure AD SSO:[https://www.ssogen.com/oracle-ebs-sso-ldap/](https://www.ssogen.com/oracle-ebs-sso-ldap/)
-* Till och med Azure AD SSO-integrering:[https://www.ssogen.com/peoplesoft-sso/](https://www.ssogen.com/peoplesoft-sso/)
-* JD Edwards – Azure AD SSO-integrering:[https://www.ssogen.com/oracle-jde-sso/](https://www.ssogen.com/oracle-jde-sso/)
-* Apache – Azure AD SSO-integrering:[https://www.ssogen.com/apache-sso-authentication/](https://www.ssogen.com/apache-sso-authentication/)
+* Oracle-EBS – integrering av Azure AD SSO: [https://www.ssogen.com/oracle-ebs-sso-ldap/](https://www.ssogen.com/oracle-ebs-sso-ldap/)
+* Till och med Azure AD SSO-integrering: [https://www.ssogen.com/peoplesoft-sso/](https://www.ssogen.com/peoplesoft-sso/)
+* JD Edwards – Azure AD SSO-integrering: [https://www.ssogen.com/oracle-jde-sso/](https://www.ssogen.com/oracle-jde-sso/)
+* Apache – Azure AD SSO-integrering: [https://www.ssogen.com/apache-sso-authentication/](https://www.ssogen.com/apache-sso-authentication/)
 
 ### <a name="create-ssogen-azure-ad-sso-gateway-for-oracle-e-business-suite-ebs-peoplesoft-and-jde-test-user"></a>Skapa SSOGEN Azure AD SSO Gateway för Oracle E Business Suite EBS, östra och JDE test User
 
@@ -155,11 +151,11 @@ När du klickar på SSOGEN-Azure AD SSO Gateway för Oracle E-Business Suite-EBS
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Prova SSOGEN – Azure AD SSO Gateway för Oracle E-Business Suite-EBS, östra och JDE med Azure AD](https://aad.portal.azure.com/)
 

@@ -1,20 +1,20 @@
 ---
 title: Självstudie för att skicka Azure Data Box Disk| Microsoft Docs
-description: I den här självstudien förklarar vi hur du skickar tillbaka Azure Data Box-disken till Microsoft
+description: I den här självstudien lär du dig hur du returnerar Azure Data Box Disk. Instruktionerna för upphämtning beror på var du returnerar enheten.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 07/21/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 62ab110a24bbf6b93f7f019c829222ca666ecfaf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 692ddbf1e17e316bdcee6c34062ffa51ef278bc7
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039471"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923789"
 ---
 ::: zone target="docs"
 
@@ -85,7 +85,7 @@ Azure-datacenter i Australien kräver ytterligare en säkerhetsavisering. För a
 
 1. Använd den tillhandahållna returetiketten och kontrollera att TAU-koden (referensnummer) är skriven på den. Om den tillhandahållna adressetiketten saknas eller om du har något annat problem skickar du ett e-postmeddelande till [Data Box Asia Operations](mailto:adbo@microsoft.com). Ange beställningsnamnet i ämnesrubriken och information om problemet du har.
 2. Fäst etiketten på kartongen.
-3. Boka en upphämtning online på länken https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference. 
+3. Boka en upphämtning online på länken https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference.
 
 ### <a name="japan"></a>[Japan](#tab/in-japan)
 
@@ -138,7 +138,7 @@ Vid behov kan du kontakta Quantium Solutions support (på japanska) med följand
 
     ```
     To: kadcustcare@singpost.com
-    Subject: Microsoft Azure Pick-up - XZ00001234567
+    Subject: Microsoft Azure Pickup - XZ00001234567
     Body:
      a.    Requestor name
      b.    Requestor contact number
@@ -155,6 +155,32 @@ Vid behov kan du kontakta Quantium Solutions support (på japanska) med följand
    Om du stöter på några problem kan du kontakta Data Box Operations Asia på adbo@microsoft.com. I ämnesrubriken anger du jobbnamnet och det problem som påträffats.
 
 3. Lämna över till fraktföretaget.
+
+### <a name="south-africa"></a>[Sydafrika](#tab/in-sa)
+
+Gör så här om du returnerar enheten i Sydafrika.
+
+1. Fäst den medföljande leveransetiketten på kartongen. Den här handlingen innehåller spårningsnumret. Om frakthandlingen saknas kan du ladda ned en ny från **Översikt > Ladda ned frakthandling**.
+
+2. Försegla fraktlådan och se till att adressetiketten är väl synlig.
+
+3. Så här bokar du en upphämtning med DHL:
+
+    * Ring kundtjänsten på +27 (0) 119 21 36 00. Välj alternativ 1 och uppge numret på fraktsedeln.
+    * Du måste ringa före kl. 14 (standardtid för Sydafrika, ZA) för att schemalägga en upphämtning.  
+    * Skicka ett e-postmeddelande till [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) för att boka upphämtningen. Använd följande e-postmall:
+
+    ```output
+    To: Priority.Support@dhl.com
+    Subject:Pickup request for Microsoft Azure
+    Body:  Need pick up for the below shipment
+    *  DHL tracking number (reference number/waybill number)
+    *  Requested pickup date：yyyy/mm/dd; time: HH MM
+    ```
+
+    * Du kan också lämna in paketet på närmaste DHL-servicepunkt.
+
+4. Om du stöter på problem skickar du ett e-postmeddelande till [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com). Beskriv problemet och ange numret på fraktsedeln på ämnesraden. Du kan också ringa +27 (0) 119 21 39 02.
 
 ### <a name="china"></a>[Kina](#tab/in-china)
 
@@ -231,7 +257,3 @@ Gå vidare till nästa anvisningar för att lära dig hur du verifierar datauppl
 > [Verifiera datauppladdning från Azure Data Box Disk](./data-box-disk-deploy-upload-verify.md)
 
 ::: zone-end
-
-
-
-

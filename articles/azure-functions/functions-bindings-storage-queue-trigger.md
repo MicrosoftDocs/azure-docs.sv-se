@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 2b44728d1f5b2a6985e7e636d9e3593b09d009ba
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 1755c2d572b44f1e0d8597a108ca83d429405f25
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212957"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565663"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Queue Storage-utlösare för Azure Functions
 
@@ -311,7 +311,7 @@ public class QueueTriggerDemo {
 
 I följande tabell förklaras de egenskaper för bindnings konfiguration som du anger i *function.js* filen och `QueueTrigger` attributet.
 
-|function.jspå egenskap | Attributets egenskap |Beskrivning|
+|function.jspå egenskap | Attributets egenskap |Description|
 |---------|---------|----------------------|
 |**bastyp** | saknas| Måste anges till `queueTrigger` . Den här egenskapen anges automatiskt när du skapar utlösaren i Azure Portal.|
 |**position**| saknas | Endast i *function.jsendast på* fil. Måste anges till `in` . Den här egenskapen anges automatiskt när du skapar utlösaren i Azure Portal. |
@@ -363,7 +363,7 @@ Få åtkomst till Queue-meddelandet via parametern som anges som [QueueMessage](
 
 Utlösaren för kön innehåller flera [Egenskaper för metadata](./functions-bindings-expressions-patterns.md#trigger-metadata). Dessa egenskaper kan användas som en del av bindnings uttryck i andra bindningar eller som parametrar i koden. Egenskaperna är medlemmar i klassen [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) .
 
-|Egenskap|Typ|Beskrivning|
+|Egenskap|Typ|Description|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|Köns nytto Last (om en giltig sträng). Om nytto lasten i kön är en sträng, `QueueTrigger` har samma värde som variabeln som namnges av `name` egenskapen i *function.jspå*.|
 |`DequeueCount`|`int`|Antal gånger som det här meddelandet har tagits ur kö.|
@@ -400,7 +400,7 @@ När det finns flera köa meddelanden som väntar, hämtar kön utlösare en bat
 
 Batchstorleken och tröskelvärdet för att hämta en ny batch kan konfigureras ihost.jsi [ filen](functions-host-json.md#queues). Om du vill minimera parallell körning för köade funktioner i en Function-app kan du ange batchstorleken till 1. Med den här inställningen elimineras samtidighet endast så länge din funktions program körs på en enda virtuell dator (VM). 
 
-Queue-utlösaren förhindrar automatiskt en funktion från att bearbeta ett köobjekt flera gånger; funktioner behöver inte skrivas för att vara idempotenta.
+Queue-utlösaren förhindrar automatiskt en funktion från att bearbeta ett köobjekt flera gånger samtidigt.
 
 ## <a name="hostjson-properties"></a>host.jspå egenskaper
 

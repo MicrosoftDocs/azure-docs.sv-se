@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 7539b951a4a138802150d9408221b6e4ad19e92b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0fcad26bb78e0e9a03d51818ac66a98af1ef0b18
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075549"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590395"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Vad är VM-skalningsuppsättningar?
 Med skalnings uppsättningar för virtuella Azure-datorer kan du skapa och hantera en grupp med belastningsutjämnade virtuella datorer. Antalet VM-instanser kan automatiskt öka eller minska som svar på efterfrågan eller ett definierat schema. Skalningsuppsättningar tillhandahåller hög tillgänglighet för dina program, och låter dig centralt hantera, konfigurera och uppdatera ett stort antal virtuella datorer. Med VM-skalningsuppsättningar kan du skapa storskaliga tjänster för områden som beräkning, stordata och arbetsbelastningar i containrar.
@@ -60,6 +60,10 @@ Det tillkommer ingen extra kostnad för skalningsuppsättningar. Du betalar bara
 Använd [Azure Monitor for VMS](../azure-monitor/insights/vminsights-overview.md), som har en enkel onboarding-process och automatiserar samlingen av viktiga prestanda räknare för processor, minne, disk och nätverk från de virtuella datorerna i din skalnings uppsättning. Den innehåller också ytterligare övervakningsfunktioner och fördefinierade visualiseringar som hjälper dig att fokusera på tillgänglighet och prestanda för dina skalnings uppsättningar.
 
 Aktivera övervakning av den [virtuella datorns skalnings uppsättnings program](../azure-monitor/app/azure-vm-vmss-apps.md) med Application Insights för att samla in detaljerad information om ditt program, till exempel sidvyer, program begär Anden och undantag. Kontrol lera att programmet är tillgängligt genom att konfigurera ett [tillgänglighets test](../azure-monitor/app/monitor-web-app-availability.md) för att simulera användar trafik.
+
+## <a name="singapore-data-residency"></a>Placering för Singapore-data
+
+I Azure är funktionen för att aktivera lagring av kunddata i en enda region för närvarande endast tillgänglig i Sydostasien region (Singapore) för Asien och stillahavsområdet geo. För alla andra regioner lagras kund information på Geo. Mer information finns i [säkerhets Center](https://azuredatacentermap.azurewebsites.net/).
 
 ## <a name="next-steps"></a>Nästa steg
 Kom igång genom att skapa din första VM-skalningsuppsättning i Azure Portal.

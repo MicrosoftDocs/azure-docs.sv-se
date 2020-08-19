@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6e217540b1dd3744da855c71e0add289dd1c9e18
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e73bc3791ceb75685275af99f888136315c6e50d
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831064"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505568"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SQL Server Azure Virtual Machines DBMS-distribution för SAP NetWeaver
 
@@ -314,7 +314,7 @@ Det här dokumentet omfattar flera olika områden att tänka på när du distrib
 
 
 > [!IMPORTANT]
-> Omfånget för det här dokumentet är Windows-versionen på SQL Server. SAP stöder inte Linux-versionen av SQL Server med någon av SAP-program varan. Dokumentet diskuterar inte Microsoft Azure SQL Database, som är en plattform som ett tjänst erbjudande för Microsoft Azures plattformen. Diskussionen i det här dokumentet är på väg att köra SQL Server-produkten eftersom den är känd för lokala distributioner i Azure Virtual Machines, vilket utnyttjar infrastrukturen som en tjänst funktion i Azure. Databas funktionerna och funktionerna mellan dessa två erbjudanden är olika och ska inte blandas med varandra. Se även:<https://azure.microsoft.com/services/sql-database/>
+> Omfånget för det här dokumentet är Windows-versionen på SQL Server. SAP stöder inte Linux-versionen av SQL Server med någon av SAP-program varan. Dokumentet diskuterar inte Microsoft Azure SQL Database, som är en plattform som ett tjänst erbjudande för Microsoft Azures plattformen. Diskussionen i det här dokumentet är på väg att köra SQL Server-produkten eftersom den är känd för lokala distributioner i Azure Virtual Machines, vilket utnyttjar infrastrukturen som en tjänst funktion i Azure. Databas funktionerna och funktionerna mellan dessa två erbjudanden är olika och ska inte blandas med varandra. Se även: <https://azure.microsoft.com/services/sql-database/>
 > 
 >
 
@@ -355,13 +355,13 @@ Diagrammet ovan visar ett enkelt ärende. Som eluded i artikeln [överväganden 
 
 
 ### <a name="special-for-m-series-vms"></a>Special för virtuella datorer i M-serien
-För virtuella datorer i Azure M-serien kan svars tiden som skrivs till transaktions loggen minskas av faktorer, jämfört med Azure Premium Storage prestanda, när Azure Skrivningsaccelerator används. Därför bör du Distribuera Azure-Skrivningsaccelerator för de virtuella hård diskarna som utgör volymen för SQL Server transaktions loggen. Information kan läsas i dokumentet [Skrivningsaccelerator](../../windows/how-to-enable-write-accelerator.md).
+För virtuella datorer i Azure M-serien kan svars tiden som skrivs till transaktions loggen minskas av faktorer, jämfört med Azure Premium Storage prestanda, när Azure Skrivningsaccelerator används. Därför bör du Distribuera Azure-Skrivningsaccelerator för de virtuella hård diskarna som utgör volymen för SQL Server transaktions loggen. Information kan läsas i dokumentet [Skrivningsaccelerator](../../how-to-enable-write-accelerator.md).
   
 
 ### <a name="formatting-the-disks"></a>Formatera diskarna
 För SQL Server ska NTFS-block storleken för diskar som innehåller SQL Server data och loggfiler vara 64 kB. Du behöver inte formatera D:\ kombinationsenhet. Den här enheten levereras i förväg.
 
-För att se till att det inte går att initiera datafilerna genom att nollställa innehållet i filerna bör du se till att den användar kontext som SQL Server tjänsten körs i har en viss behörighet. Användare i gruppen Windows-administratörer har vanligt vis dessa behörigheter. Om SQL Server-tjänsten körs i användar kontexten för en användare som inte är Windows-administratör, måste du tilldela användaren användar rättigheten att **utföra volym underhålls aktiviteter**.  Se informationen i den här artikeln i Microsoft Knowledge Base:<https://support.microsoft.com/kb/2574695>
+För att se till att det inte går att initiera datafilerna genom att nollställa innehållet i filerna bör du se till att den användar kontext som SQL Server tjänsten körs i har en viss behörighet. Användare i gruppen Windows-administratörer har vanligt vis dessa behörigheter. Om SQL Server-tjänsten körs i användar kontexten för en användare som inte är Windows-administratör, måste du tilldela användaren användar rättigheten att **utföra volym underhålls aktiviteter**.  Se informationen i den här artikeln i Microsoft Knowledge Base: <https://support.microsoft.com/kb/2574695>
 
 ### <a name="impact-of-database-compression"></a>Påverkan av databas komprimering
 I konfigurationer där I/O-bandbredden kan bli en begränsnings faktor kan varje mått minska IOPS för att öka den arbets belastning som kan köras i ett IaaS-scenario som Azure. Om du ännu inte har utfört det rekommenderar vi att du använder SQL Server sid komprimering av både SAP och Microsoft innan du laddar upp en befintlig SAP-databas till Azure.
@@ -487,16 +487,16 @@ Databas spegling som stöds av SAP (se SAP NOTE [965908]) förlitar sig på att 
 
 Vid distributioner med enbart moln är den enklaste metoden att låta en annan domän konfigurera i Azure ha dessa DBMS-VM: ar (och idealiskt dedikerade virtuella SAP-datorer) i en domän.
 
-Om en domän inte är möjlig kan en använda certifikat för databas speglingens slut punkter enligt beskrivningen här:<https://docs.microsoft.com/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql>
+Om en domän inte är möjlig kan en använda certifikat för databas speglingens slut punkter enligt beskrivningen här: <https://docs.microsoft.com/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql>
 
-En själv studie kurs om hur du konfigurerar databas spegling i Azure hittar du här:<https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server> 
+En själv studie kurs om hur du konfigurerar databas spegling i Azure hittar du här: <https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server> 
 
 ### <a name="sql-server-always-on"></a>Ständig aktivering av SQL Server
 Eftersom Always on stöds för SAP lokalt (se SAP anmärkning [1772688]), stöds det i kombination med SAP i Azure. Det finns några saker att tänka på när du distribuerar SQL Server tillgänglighets gruppens lyssnare (ska inte förväxlas med Azures tillgänglighets uppsättning) eftersom Azure vid denna tidpunkt inte tillåter att ett AD/DNS-objekt skapas eftersom det är möjligt lokalt. Därför är vissa olika installations steg nödvändiga för att lösa det speciella beteendet i Azure.
 
 Några saker att tänka på när du använder en tillgänglighets grupps lyssnare är:
 
-* Det går bara att använda en lyssnare för tillgänglighets grupper med Windows Server 2012 eller högre som gäst operativ system för den virtuella datorn. För Windows Server 2012 måste du kontrol lera att den här korrigerings filen tillämpas:<https://support.microsoft.com/kb/2854082> 
+* Det går bara att använda en lyssnare för tillgänglighets grupper med Windows Server 2012 eller högre som gäst operativ system för den virtuella datorn. För Windows Server 2012 måste du kontrol lera att den här korrigerings filen tillämpas: <https://support.microsoft.com/kb/2854082> 
 * För Windows Server 2008 R2 finns inte den här korrigeringen och Always on måste användas på samma sätt som databas spegling genom att ange en redundansrelation i anslutnings strängen (görs via SAP-standardvärdet. PFL-parametern databaser/MSS/server-se SAP NOTE [965908]).
 * När du använder en tillgänglighets grupps lyssnare måste de virtuella datorerna i databasen vara anslutna till en dedikerad Load Balancer. För att undvika att Azure tilldelar nya IP-adresser i fall där båda VM: ar stängs av, bör en tilldela statiska IP-adresser till nätverks gränssnitten för de virtuella datorerna i konfigurationen Always On (definiera en statisk IP-adress beskrivs i [den här][virtual-networks-reserved-private-ip] artikeln)
 * Det krävs särskilda steg när du skapar WSFC-klustrets konfiguration där klustret behöver en speciell IP-adress, eftersom Azure med dess aktuella funktion skulle tilldela kluster namnet samma IP-adress som den nod som klustret skapas på. Det innebär att en manuell åtgärd måste utföras för att tilldela klustret en annan IP-adress.

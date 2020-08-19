@@ -1,6 +1,6 @@
 ---
 title: Snabb start för att lära dig att använda Azure App konfiguration
-description: En snabbstart för användning av Azure App Configuration med Java Spring-appar.
+description: I den här snabb starten skapar du en Java våren-app med Azure App konfiguration för att centralisera lagring och hantering av program inställningar separat från din kod.
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.custom: devx-track-java
 ms.author: lcozzens
-ms.openlocfilehash: 93a2fd89e21dbf4edee29a27bd18f63f2b835aae
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 10b38d5c5802ec4f6bc33b15b3ddef12e8256a78
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121229"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586461"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Snabb start: skapa en Java våren-app med Azure App konfiguration
 
@@ -40,7 +40,7 @@ I den här snabb starten inkluderar du Azure App konfiguration i en Java våren-
 
     Lämna **etiketten** och **innehålls typen** tom för tillfället.
 
-7. Välj **Använd**.
+7. Välj **Tillämpa**.
 
 ## <a name="create-a-spring-boot-app"></a>Skapa en Spring Boot-app
 

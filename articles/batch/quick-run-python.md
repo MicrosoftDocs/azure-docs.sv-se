@@ -1,32 +1,34 @@
 ---
-title: Använd python API för att köra ett Azure Batch jobb
-description: Kör snabbt ett Azure Batch exempel jobb och aktiviteter med hjälp av batch python-klientprogrammet. Lär dig viktiga begrepp i batch-tjänsten.
+title: Snabb start – Använd python API för att köra ett Azure Batch jobb
+description: I den här snabb starten kör du ett Azure Batch exempel jobb och aktiviteter med hjälp av batch python-klientprogrammet. Lär dig viktiga begrepp i batch-tjänsten.
 ms.topic: quickstart
-ms.date: 11/27/2018
+ms.date: 08/17/2020
 ms.custom:
 - seo-python-october2019
 - mvc
 - devx-track-python
-ms.openlocfilehash: 7cef08c81a4122fcbfcc18160ad8e6602f335569
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e3792a88104c359b014a7a12cf6e48e690c2a865
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852573"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511022"
 ---
 # <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Snabb start: Använd python API för att köra ett Azure Batch jobb
 
-I den här snabb starten använder du python-API: et för att köra ett Azure Batch jobb från en app. Appen laddar upp indata-filer till Azure Storage och skapar en *pool* med batch-datornoder (virtuella datorer). Sedan skapas ett *jobb* som kör *aktiviteter* för att bearbeta varje indatafil i poolen med hjälp av ett grundläggande kommando.
+Kom igång med Azure Batch med hjälp av python API för att köra ett Azure Batch jobb från en app. Appen laddar upp indata-filer till Azure Storage och skapar en pool med batch-datornoder (virtuella datorer). Sedan skapas ett jobb som kör aktiviteter för att bearbeta varje indatafil i poolen med hjälp av ett grundläggande kommando.
 
-Här lär du dig viktiga begrepp i batch-tjänsten och är redo att testa batch med mer realistiska arbets belastningar i större skala.
+När du har slutfört den här snabb starten lär du dig viktiga begrepp i batch-tjänsten och är redo att testa batch med mer realistiska arbets belastningar i större skala.
 
 ![Översikt över Azure Batch arbets flöde](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
-- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Ett **Azure Batch** konto och länkat **Azure Storage** konto. Använd [Azure Portal](quick-create-portal.md) eller [CLI](quick-create-cli.md) för att skapa dessa konton.
-- [Python](https://python.org/downloads), version 2,7 eller 3,3 eller senare, inklusive [pip](https://pip.pypa.io/en/stable/installing/) -paket hanteraren
+- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+- Ett Batch-konto och ett länkat Azure Storage-konto. Information om hur du skapar de här kontona finns Batch-snabbstarterna som du kommer åt via [Azure-portalen](quick-create-portal.md) eller [Azure CLI](quick-create-cli.md).
+
+- [Python](https://python.org/downloads) version 2,7 eller 3,3 eller senare, inklusive [pip](https://pip.pypa.io/en/stable/installing/) -paket hanteraren
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 
@@ -50,7 +52,7 @@ I Python-miljön installerar du de nödvändiga paketen med `pip`.
 pip install -r requirements.txt
 ```
 
-Öppna filen `config.py`. Uppdatera autentiseringssträngarna med Batch- och lagringskontouppgifter med värdena för dina konton. Exempel:
+Öppna filen `config.py`. Uppdatera autentiseringssträngarna med Batch- och lagringskontouppgifter med värdena för dina konton. Ett exempel:
 
 ```Python
 _BATCH_ACCOUNT_NAME = 'mybatchaccount'
@@ -68,7 +70,7 @@ Kör skriptet för att se Batch-arbetsflödet i praktiken:
 python python_quickstart_client.py
 ```
 
-Granska koden för att lära dig vad varje del av appen gör när skriptet har körts. 
+Granska koden för att lära dig vad varje del av appen gör när skriptet har körts.
 
 När du kör exempelappen ser utdata i konsolen ut ungefär så här. Under körningen uppstår det en paus vid `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` medan poolens beräkningsnoder startas. Aktiviteter köas för att köras när den första beräkningsnoden körs. Gå till Batch-kontot i [Azure-portalen](https://portal.azure.com) för att övervaka poolen, beräkningsnoderna, jobbet och aktiviteterna på Batch-kontot.
 
@@ -102,9 +104,9 @@ Körningen tar normalt runt 3 minuter om du kör programmet med standardkonfigur
 
 Python-appen i den här snabbstarten gör följande:
 
-* Överför tre små textfiler till en blobcontainer i ditt Azure-lagringskonto. Dessa filer är indata som ska bearbetas av Batch-aktiviteter.
-* Skapar en pool med två beräkningsnoder som kör Ubuntu 18.04 LTS.
-* Skapar ett jobb och tre aktiviteter som ska köras på noderna. Varje aktivitet bearbetar en av indatafilerna på en kommandorad för Bash-gränssnitt.
+- Överför tre små textfiler till en blobcontainer i ditt Azure-lagringskonto. Dessa filer är indata som ska bearbetas av Batch-aktiviteter.
+- Skapar en pool med två beräkningsnoder som kör Ubuntu 18.04 LTS.
+- Skapar ett jobb och tre aktiviteter som ska köras på noderna. Varje aktivitet bearbetar en av indatafilerna på en kommandorad för Bash-gränssnitt.
 * Visar filer som returneras av aktiviteterna.
 
 Se filen `python_quickstart_client.py` och information i följande avsnitt.
@@ -182,7 +184,7 @@ batch_service_client.job.add(job)
 
 Appen skapar en lista med aktivitetsobjekt med hjälp av klassen [TaskAddParameter](/python/api/azure-batch/azure.batch.models.taskaddparameter). Varje aktivitet bearbetar ett indata `resource_files`-objekt med en `command_line`-parameter. I det här exemplet kör kommandoraden Bash-gränssnittskommandot `cat` för att visa textfilen. Detta kommando är ett enkelt exempel i demonstrationssyfte. När du använder Batch är det på kommandoraden som du anger din app eller ditt skript. Batch tillhandahåller ett antal sätt att distribuera appar och skript till beräkningsnoder.
 
-Sedan lägger appen till aktiviteter i jobbet med metoden [task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations) som köar dem för att köras på beräkningsnoderna. 
+Sedan lägger appen till aktiviteter i jobbet med metoden [task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations) som köar dem för att köras på beräkningsnoderna.
 
 ```python
 tasks = list()

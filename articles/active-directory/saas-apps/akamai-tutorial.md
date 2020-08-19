@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Akamai | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Akamai.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 1b7e0d7a-e78f-43a5-af93-b626186e2376
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ea2c20a7720cc80b36ff88595aa6ca5c57f6b9a
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: fbec82e25424fd5220aa992cf2dd0e8449e6a0a4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232397"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88523141"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Akamai
 
@@ -148,9 +144,9 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://<Yourapp>.login.go.akamai-access.com/saml/sp/response`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://<Yourapp>.login.go.akamai-access.com/saml/sp/response`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https:// <Yourapp>.login.go.akamai-access.com/saml/sp/response`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https:// <Yourapp>.login.go.akamai-access.com/saml/sp/response`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska identifieraren och svars-URL. Kontakta [Akamai client support team](https://www.akamai.com/us/en/contact-us/) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -171,7 +167,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -373,7 +369,7 @@ Klicka på **Spara och gå till avancerade inställningar**.
 
     ![Konfigurera Akamai](./media/header-akamai-tutorial/enduser02.png)
 
-1. Villkorsstyrd åtkomst
+1. Villkorlig åtkomst
 
     ![Konfigurera Akamai](./media/header-akamai-tutorial/conditionalaccess04.png)
 
@@ -439,7 +435,7 @@ Klicka på Spara och gå till distribution
 
     ![Konfigurera Akamai](./media/header-akamai-tutorial/enduser04.png)
 
-1. Villkorsstyrd åtkomst
+1. Villkorlig åtkomst
 
     ![Konfigurera Akamai](./media/header-akamai-tutorial/conditionalaccess04.png)
 
@@ -540,15 +536,15 @@ Tilldela identitets leverantören
 
 1. Här är den allmänna syntaxen.
 
-1. ktpass/out ActiveDirectorydomain. keytab/Princ `HTTP/yourloginportalurl@ADDomain.com` /mapuser serviceaccount@ADdomain.com /pass + RdnPass/crypto alla/ptype KRB5_NT_PRINCIPAL
+1. ktpass/out ActiveDirectorydomain. keytab/Princ `HTTP/yourloginportalurl@ADDomain.com`  /mapuser serviceaccount@ADdomain.com /pass + RdnPass/crypto alla/ptype KRB5_NT_PRINCIPAL
 
 1. Exempel på förklaring
 
     | Kodfragment | Förklaring |
     | - | - |
     | Ktpass/out EAADemo. keytab | Namnet på den utgående Keytab-filen |
-    | /princHTTP/corpapps.login.go.akamai-access.com@superdemo.live | // HTTP/yourIDPName@YourdomainName |
-    | /mapusereaadelegation@superdemo.live | Delegerings konto i EAA |
+    | /princ HTTP/corpapps.login.go.akamai-access.com@superdemo.live | // HTTP/yourIDPName@YourdomainName |
+    | /mapuser eaadelegation@superdemo.live | Delegerings konto i EAA |
     | /pass RANDOMPASS | Konto lösen ord för EAA-delegering |
     | /crypto alla ptype KRB5_NT_PRINCIPAL | Läs dokumentationen om Akamai-EAA |
     | | |
@@ -577,7 +573,7 @@ Tilldela identitets leverantören
 
     ![Konfigurera Akamai](./media/header-akamai-tutorial/enduser04.png)
 
-1. Villkorsstyrd åtkomst
+1. Villkorlig åtkomst
 
     ![Konfigurera Akamai](./media/header-akamai-tutorial/conditionalaccess04.png)
 
@@ -597,7 +593,7 @@ När du klickar på panelen Akamai på åtkomst panelen, bör du loggas in autom
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

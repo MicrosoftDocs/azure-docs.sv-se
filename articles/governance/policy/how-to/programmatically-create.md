@@ -1,14 +1,14 @@
 ---
 title: Skapa principer programmässigt
 description: Den här artikeln vägleder dig genom program mässigt skapa och hantera principer för Azure Policy med Azure CLI, Azure PowerShell och REST API.
-ms.date: 05/20/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 3f785556dd86aa8b02f5aa0af09190266b8c509f
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 7a72986d8ffe64953e68ff166de9a02a15fb9c86
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969897"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548319"
 ---
 # <a name="programmatically-create-policies"></a>Skapa principer programmässigt
 
@@ -16,7 +16,7 @@ Den här artikeln vägleder dig genom program mässigt skapa och hantera princip
 
 Information om kompatibilitet finns i [Hämta efterlevnadsprinciper](get-compliance-data.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Kontrol lera att följande krav är uppfyllda innan du börjar:
 
@@ -88,12 +88,12 @@ Det första steget mot bättre insyn i resurserna är att skapa och tilldela pri
    Ersätt _conto sorg_ med namnet på den avsedda resurs gruppen.
 
    **Omfattnings** parametern i `New-AzPolicyAssignment` fungerar med hanterings grupp, prenumeration, resurs grupp eller en enskild resurs. Parametern använder en fullständig resurs Sök väg som egenskapen **ResourceID** i `Get-AzResourceGroup` returnerar. Mönstret för **omfånget** för varje behållare är följande. Ersätt `{rName}` , `{rgName}` , `{subId}` , och `{mgName}` med resurs namnet, resurs gruppens namn, prenumerations-ID och namn på hanterings gruppen.
-   `{rType}`ersätts med resurs **typen** för resursen, till exempel `Microsoft.Compute/virtualMachines` för en virtuell dator.
+   `{rType}` ersätts med resurs **typen** för resursen, till exempel `Microsoft.Compute/virtualMachines` för en virtuell dator.
 
-   - Klusterresursen`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
-   - Resurs grupp –`/subscriptions/{subId}/resourceGroups/{rgName}`
-   - Prenumerera`/subscriptions/{subId}/`
-   - Hanterings grupp –`/providers/Microsoft.Management/managementGroups/{mgName}`
+   - Klusterresursen `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - Resurs grupp – `/subscriptions/{subId}/resourceGroups/{rgName}`
+   - Prenumerera `/subscriptions/{subId}/`
+   - Hanterings grupp – `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 Mer information om hur du hanterar resurs principer med hjälp av Resource Manager PowerShell-modulen finns i [AZ. Resources](/powershell/module/az.resources/#policies).
 
@@ -216,12 +216,12 @@ Använd följande procedur för att skapa en princip definition:
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   **Omfattnings** parametern i `az policy assignment create` fungerar med hanterings grupp, prenumeration, resurs grupp eller en enskild resurs. Parametern använder en fullständig resurs Sök väg. Mönstret för **omfånget** för varje behållare är följande. Ersätt `{rName}` , `{rgName}` , `{subId}` , och `{mgName}` med resurs namnet, resurs gruppens namn, prenumerations-ID och namn på hanterings gruppen. `{rType}`ersätts med resurs **typen** för resursen, till exempel `Microsoft.Compute/virtualMachines` för en virtuell dator.
+   **Omfattnings** parametern i `az policy assignment create` fungerar med hanterings grupp, prenumeration, resurs grupp eller en enskild resurs. Parametern använder en fullständig resurs Sök väg. Mönstret för **omfånget** för varje behållare är följande. Ersätt `{rName}` , `{rgName}` , `{subId}` , och `{mgName}` med resurs namnet, resurs gruppens namn, prenumerations-ID och namn på hanterings gruppen. `{rType}` ersätts med resurs **typen** för resursen, till exempel `Microsoft.Compute/virtualMachines` för en virtuell dator.
 
-   - Klusterresursen`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
-   - Resurs grupp –`/subscriptions/{subID}/resourceGroups/{rgName}`
-   - Prenumerera`/subscriptions/{subID}`
-   - Hanterings grupp –`/providers/Microsoft.Management/managementGroups/{mgName}`
+   - Klusterresursen `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - Resurs grupp – `/subscriptions/{subID}/resourceGroups/{rgName}`
+   - Prenumerera `/subscriptions/{subID}`
+   - Hanterings grupp – `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 Du kan hämta Azure Policy Definitions-ID med hjälp av PowerShell med följande kommando:
 

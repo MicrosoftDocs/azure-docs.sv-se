@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med OneTrust-program för sekretess hantering | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och OneTrust-program för sekretess hantering.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 71c2b6d0-3d28-4130-a2c8-1e72ab3d5814
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 5fbec8b6a1a21826896f8e2499b1e8b7237d0ff9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2c840f123d74222770f1d044e085cf131f5ab708
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67095887"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547978"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-onetrust-privacy-management-software"></a>Självstudie: Azure Active Directory integration med OneTrust-program för sekretess hantering
 
@@ -32,9 +28,9 @@ Integrering av OneTrust Privacy Management-programvara med Azure AD ger följand
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med OneTrust-program för sekretess hantering behöver du följande objekt:
 
@@ -107,15 +103,15 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med On
 
     ![OneTrust Privacy Management-programvara och information om enkel inloggning för URL: er](common/idp-intiated.png)
 
-    a. Skriv en URL i text rutan **identifierare** :`https://www.onetrust.com/saml2`
+    a. Skriv en URL i text rutan **identifierare** : `https://www.onetrust.com/saml2`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<subdomain>.onetrust.com/auth/consumerservice`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<subdomain>.onetrust.com/auth/consumerservice`
 
 5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     ![OneTrust Privacy Management-programvara och information om enkel inloggning för URL: er](common/metadata-upload-additional-signon.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<subdomain>.onetrust.com/auth/login`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<subdomain>.onetrust.com/auth/login`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska svars-URL:en och inloggnings-URL:en. Kontakta [OneTrust Software support team support team](mailto:support@onetrust.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -157,7 +153,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **Användarnamn** anger du **brittasimon@yourcompanydomain.extension**  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

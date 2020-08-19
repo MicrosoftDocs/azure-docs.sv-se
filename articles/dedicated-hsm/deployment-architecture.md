@@ -9,15 +9,15 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 89e3bf95a6b048e5e97cfb151ef9302b70eac1c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0989c31611b2f42c0219324fa517adc5c216c6c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77048552"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586613"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Distributionsarkitektur för Azure Dedicated HSM
 
@@ -29,7 +29,7 @@ Azure Dedicated HSM tillhandahåller kryptografisk nyckel lagring i Azure. Den u
 
 HSM: er distribueras mellan Microsofts Data Center och kan enkelt etableras som ett enhets par som grund för en lösning med hög tillgänglighet. De kan också distribueras i olika regioner för en katastrof flexibel lösning. Regionerna med dedikerad HSM är för närvarande:
 
-* USA, östra
+* East US
 * USA, östra 2
 * USA, västra
 * USA, södra centrala
@@ -39,7 +39,7 @@ HSM: er distribueras mellan Microsofts Data Center och kan enkelt etableras som 
 * Södra Indien
 * Japan, östra
 * Japan, västra
-* Europa, norra
+* Norra Europa
 * Europa, västra
 * Storbritannien, södra
 * Storbritannien, västra
@@ -48,7 +48,7 @@ HSM: er distribueras mellan Microsofts Data Center och kan enkelt etableras som 
 * Australien, östra
 * Australien, sydöstra
 
-Var och en av dessa regioner har HSM-rack som distribueras i antingen två oberoende data Center eller minst två oberoende tillgänglighets zoner. Asien, sydöstra har tre tillgänglighets zoner och östra USA 2 har två. Det finns totalt åtta regioner i Europa, Asien och USA som erbjuder dedikerad HSM-tjänst. Mer information om Azure-regioner finns i informationen om officiella [Azure-regioner](https://azure.microsoft.com/global-infrastructure/regions/).
+Var och en av dessa regioner har HSM-rack som distribueras i antingen två oberoende data Center eller minst två oberoende tillgänglighets zoner. Asien, sydöstra har tre tillgänglighets zoner och östra USA 2 har två. Det finns totalt åtta regioner i Europa, Asien och USA som erbjuder dedikerad HSM-tjänst. Mer information om Azure-regioner finns i informationen om officiella  [Azure-regioner](https://azure.microsoft.com/global-infrastructure/regions/).
 Vissa design faktorer för alla dedikerade HSM-baserade lösningar är plats/latens, hög tillgänglighet och stöd för andra distribuerade program.
 
 ## <a name="device-location"></a>Enhetsplats

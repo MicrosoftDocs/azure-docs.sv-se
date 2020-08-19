@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory-integrering med enkel inloggning (SSO) med Meraki-instrumentpanel | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory-och Meraki-instrumentpanelen.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 09766236-5de0-43fd-8950-5316390ce646
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d5fd75a737a0a866b6e5c26c417458ee95845fb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f4a4c38cf079c22dbd2b8eda5e68cc3f147b1fc0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82084166"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88535022"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-meraki-dashboard"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med Meraki-instrumentpanel
 
@@ -32,7 +28,7 @@ I den här självstudien får du lära dig att integrera Meraki-instrumentpanele
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -82,7 +78,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **Grundläggande SAML-konfiguration** utför du följande steg:
      
-    I text rutan **svars-URL** skriver du en URL med följande mönster:`https://n27.meraki.com/saml/login/m9ZEgb/< UNIQUE ID >`
+    I text rutan **svars-URL** skriver du en URL med följande mönster:  `https://n27.meraki.com/saml/login/m9ZEgb/< UNIQUE ID >`
 
     > [!NOTE]
     > Värdet för svars-URL:en är inte verkligt. Uppdatera det här värdet med det faktiska svars-URL-värdet, vilket beskrivs senare i självstudien.
@@ -123,7 +119,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -149,7 +145,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 1. Logga in på Meraki-instrumentpanelen som administratör i ett annat webbläsarfönster.
 
-1. Navigera till **organisations** -> **Inställningar**.
+1. Navigera till **organisations**  ->  **Inställningar**.
 
     ![Konfiguration av Meraki-instrumentpanel](./media/meraki-dashboard-tutorial/configure1.png)
 
@@ -169,7 +165,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 1. Logga in på Meraki-instrumentpanelen som administratör i ett annat webbläsarfönster.
 
-1. Gå till **organisations** -> **Administratörer**.
+1. Gå till **organisations**  ->  **Administratörer**.
 
     ![Konfiguration av Meraki-instrumentpanel](./media/meraki-dashboard-tutorial/user1.png)
 
@@ -189,11 +185,11 @@ När du klickar på panelen Meraki instrument panel på åtkomst panelen, bör d
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Prova Meraki-instrumentpanelen med Azure AD](https://aad.portal.azure.com/)
 

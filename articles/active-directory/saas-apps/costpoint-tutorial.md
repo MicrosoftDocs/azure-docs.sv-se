@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Costpoint | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Costpoint.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: 9ecc5f58-4462-4ade-ab73-0a4f61027504
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01168540e27605db0d240c0774159a710b5d5254
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1db1589561968cf1e2974edcee2bfe1cccb4a327
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71840126"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549259"
 ---
 # <a name="tutorial-integrate-costpoint-with-azure-active-directory"></a>Självstudie: integrera Costpoint med Azure Active Directory
 
@@ -33,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar Costpoint med Azure
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -46,7 +41,7 @@ I den här självstudien kommer du att konfigurera och testa Azure AD SSO i en t
 
 ## <a name="generate-costpoint-metadata"></a>Generera Costpoint metadata
 
-Costpoint SAML SSO-konfiguration beskrivs i guiden **DeltekCostpoint711Security. pdf** . Hämta den här guiden från Deltek Costpoint Support Site och se **installations programmet** > för SAML enkel inloggning**Konfigurera SAML enkel inloggning mellan Costpoint och Microsoft Azure** avsnittet. Följ instruktionerna och generera en **XML-fil för COSTPOINT SP-federationsmetadata** . 
+Costpoint SAML SSO-konfiguration beskrivs i **DeltekCostpoint711Security.pdfs ** guiden. Hämta den här guiden från Deltek Costpoint Support Site och se **installations programmet för SAML enkel inloggning**  >  **Konfigurera SAML enkel inloggning mellan Costpoint och Microsoft Azure** avsnittet. Följ instruktionerna och generera en **XML-fil för COSTPOINT SP-federationsmetadata** . 
 
 ![Konfigurations verktyg för Costpoint](./media/costpoint-tutorial/config-utility.png)
 
@@ -60,7 +55,7 @@ Om du vill integrera Costpoint med Azure AD lägger du först till Costpoint i l
 
    ![Azure Active Directory-knappen](common/select-azuread.png)
 
-1. Välj **företags program** > **alla program**.
+1. Välj **företags program**  >  **alla program**.
 
    ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -109,7 +104,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal:
       > [!NOTE]
       > Om **ID** -och **svars-URL** -värdena inte är automatiska polulated anger du värdena manuellt enligt ditt krav. Verifiera att **identifieraren (entitets-ID)** och **svars-URL (intygets konsument tjänst-URL)** är korrekt inställda och att **ACS-URL:** en är en giltig Costpoint-URL som slutar med **/LoginServlet.CPS**.
 
-   1. Välj **Ange ytterligare URL: er**. För **relä tillstånd**anger du ett värde med hjälp av följande mönster`system=[your system]` : (till exempel **system = DELTEKCP**).
+   1. Välj **Ange ytterligare URL: er**. För **relä tillstånd**anger du ett värde med hjälp av följande mönster: `system=[your system]` (till exempel **system = DELTEKCP**).
 
 1. På sidan **Konfigurera enkel inloggning med SAML** , i avsnittet **SAML-signeringscertifikat** , väljer du **kopierings** ikonen för att kopiera **URL: en för appens Federations-metadata** och spara den i anteckningar.
 
@@ -121,13 +116,13 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal:
 
    ![Konfigurations verktyg för Costpoint](./media/costpoint-tutorial/config-utility-idp.png)
 
-1. Fortsätt med instruktionerna från guiden **DeltekCostpoint711Security. pdf** för att avsluta SAML-installationen av Costpoint.
+1. Fortsätt med instruktionerna från **DeltekCostpoint711Security.pdfs ** guiden för att avsluta SAML-installationen av Costpoint.
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
 
 Syftet med det här avsnittet är att skapa en test användare i Azure Portal med namnet B. Simon.
 
-1. I Azure Portal i det vänstra fönstret väljer du **Azure Active Directory** > **användare** > **alla användare**.
+1. I Azure Portal i det vänstra fönstret väljer du **Azure Active Directory**  >  **användare**  >  **alla användare**.
 
    ![Länkarna ”Användare och grupper” och ”Alla grupper”](common/users.png)
 
@@ -141,7 +136,7 @@ Syftet med det här avsnittet är att skapa en test användare i Azure Portal me
 
    1. I fältet **namn** anger du **B. Simon**.
    
-   1. I fältet **användar namn** anger `b.simon\@yourcompanydomain.extension` du (till exempel B.Simon@contoso.com).
+   1. I fältet **användar namn** anger du `b.simon\@yourcompanydomain.extension` (till exempel B.Simon@contoso.com ).
    
    1. Markera kryss rutan **Visa lösen ord** och skriv sedan ned värdet som visas i fältet **lösen ord** .
    
@@ -151,7 +146,7 @@ Syftet med det här avsnittet är att skapa en test användare i Azure Portal me
 
 I det här avsnittet aktiverar du B. Simon för att använda enkel inloggning med Azure genom att bevilja B. Simon åtkomst till Costpoint.
 
-1. I Azure Portal väljer du **företags program** > **alla program**.
+1. I Azure Portal väljer du **företags program**  >  **alla program**.
 
 1. I listan program väljer du **Costpoint**.
 
@@ -187,4 +182,4 @@ När du väljer panelen Costpoint på åtkomst panelen, bör du loggas in automa
 
 - [Vad är program åtkomst och enkel inloggning med Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

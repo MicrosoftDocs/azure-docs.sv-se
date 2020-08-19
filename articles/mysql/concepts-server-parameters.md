@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: de1345fca418118e88929870cd2f4007dd36b3a4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e7ca86d0146f05d5171d5eae18aac81d75122bcc
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835994"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258549"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Server parametrar i Azure Database for MySQL
 
@@ -63,8 +63,8 @@ Läs mer om den här parametern i [MySQL-dokumentationen](https://dev.mysql.com/
 
 |**Prisnivå**|**vCore (s)**|**Standardvärde (byte)**|**Minsta värde (byte)**|**Max värde (byte)**|
 |---|---|---|---|---|
-|Grundläggande|1|872415232|134217728|872415232|
-|Grundläggande|2|2684354560|134217728|2684354560|
+|Basic|1|872415232|134217728|872415232|
+|Basic|2|2684354560|134217728|2684354560|
 |Generell användning|2|3758096384|134217728|3758096384|
 |Generell användning|4|8053063680|134217728|8053063680|
 |Generell användning|8|16106127360|134217728|16106127360|
@@ -81,8 +81,8 @@ Läs mer om den här parametern i [MySQL-dokumentationen](https://dev.mysql.com/
 
 |**Prisnivå**|**vCore (s)**|**Standardvärde (byte)**|**Minsta värde (byte)**|**Max värde (byte)**|
 |---|---|---|---|---|
-|Grundläggande|1|872415232|134217728|872415232|
-|Grundläggande|2|2684354560|134217728|2684354560|
+|Basic|1|872415232|134217728|872415232|
+|Basic|2|2684354560|134217728|2684354560|
 |Generell användning|2|7516192768|134217728|7516192768|
 |Generell användning|4|16106127360|134217728|16106127360|
 |Generell användning|8|32212254720|134217728|32212254720|
@@ -98,7 +98,7 @@ Läs mer om den här parametern i [MySQL-dokumentationen](https://dev.mysql.com/
 ### <a name="innodb_file_per_table"></a>innodb_file_per_table
 
 > [!NOTE]
-> `innodb_file_per_table`kan bara uppdateras i Generell användning och minnesoptimerade pris nivåer.
+> `innodb_file_per_table` kan bara uppdateras i Generell användning och minnesoptimerade pris nivåer.
 
 MySQL lagrar tabellen InnoDB i olika tabell utrymmen baserat på den konfiguration du angav när tabellen skapades. [Systemets tabell utrymme](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html) är lagrings utrymmet för data ord listan InnoDB. Ett tabell namn för en [fil per tabell](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html) innehåller data och index för en enskild InnoDB-tabell och lagras i fil systemet i en egen datafil. Detta beteende styrs av `innodb_file_per_table` Server parametern. Inställningen `innodb_file_per_table` `OFF` gör att InnoDB skapar tabeller i System register utrymmet. Annars skapar InnoDB tabeller i tabell utrymmen per tabell.
 
@@ -110,8 +110,8 @@ Läs mer om den här parametern i [MySQL-dokumentationen](https://dev.mysql.com/
 
 |**Prisnivå**|**vCore (s)**|**Standardvärde (byte)**|**Minsta värde (byte)**|**Max värde (byte)**|
 |---|---|---|---|---|
-|Grundläggande|1|Kan inte konfigureras på Basic-nivå|Saknas|Saknas|
-|Grundläggande|2|Kan inte konfigureras på Basic-nivå|Saknas|Saknas|
+|Basic|1|Kan inte konfigureras på Basic-nivå|Saknas|Saknas|
+|Basic|2|Kan inte konfigureras på Basic-nivå|Saknas|Saknas|
 |Generell användning|2|262144|128|268435455|
 |Generell användning|4|262144|128|536870912|
 |Generell användning|8|262144|128|1073741824|
@@ -128,8 +128,8 @@ Läs mer om den här parametern i [MySQL-dokumentationen](https://dev.mysql.com/
 
 |**Prisnivå**|**vCore (s)**|**Standardvärde**|**Minvärde**|**Maxvärde**|
 |---|---|---|---|---|
-|Grundläggande|1|50|10|50|
-|Grundläggande|2|100|10|100|
+|Basic|1|50|10|50|
+|Basic|2|100|10|100|
 |Generell användning|2|300|10|600|
 |Generell användning|4|625|10|1250|
 |Generell användning|8|1250|10|2500|
@@ -159,8 +159,8 @@ Läs mer om den här parametern i [MySQL-dokumentationen](https://dev.mysql.com/
 
 |**Prisnivå**|**vCore (s)**|**Standardvärde (byte)**|**Minsta värde (byte)**|**Max värde (byte)**|
 |---|---|---|---|---|
-|Grundläggande|1|Kan inte konfigureras på Basic-nivå|Saknas|Saknas|
-|Grundläggande|2|Kan inte konfigureras på Basic-nivå|Saknas|Saknas|
+|Basic|1|Kan inte konfigureras på Basic-nivå|Saknas|Saknas|
+|Basic|2|Kan inte konfigureras på Basic-nivå|Saknas|Saknas|
 |Generell användning|2|16777216|16384|268435455|
 |Generell användning|4|16777216|16384|536870912|
 |Generell användning|8|16777216|16384|1073741824|
@@ -184,8 +184,8 @@ Läs mer om den här parametern i [MySQL-dokumentationen](https://dev.mysql.com/
 
 |**Prisnivå**|**vCore (s)**|**Standardvärde (byte)**|**Minsta värde (byte)**|* * Max värde * *|
 |---|---|---|---|---|
-|Grundläggande|1|Kan inte konfigureras på Basic-nivå|Saknas|Saknas|
-|Grundläggande|2|Kan inte konfigureras på Basic-nivå|Saknas|Saknas|
+|Basic|1|Kan inte konfigureras på Basic-nivå|Saknas|Saknas|
+|Basic|2|Kan inte konfigureras på Basic-nivå|Saknas|Saknas|
 |Generell användning|2|0|0|16777216|
 |Generell användning|4|0|0|33554432|
 |Generell användning|8|0|0|67108864|
@@ -213,14 +213,17 @@ Om du får ett fel som liknar "rad storleken är för stor (> 8126)" kanske du v
 
 Den här parametern kan ställas in på en sessionsnyckel med `init_connect` . Om du vill ange **innodb_strict_mode** på sessionsstatus, se [inställnings parameter som inte visas](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed).
 
+> [!NOTE]
+> Om du har en Läs replik Server avbryts replikeringen om du anger **innodb_strict_mode** till av på sessions nivå på en huvud server. Vi rekommenderar att du håller parametern inställt på av om du har Läs repliker.
+
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 
 Läs mer om den här parametern i [MySQL-dokumentationen](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_sort_buffer_size) .
 
 |**Prisnivå**|**vCore (s)**|**Standardvärde (byte)**|**Minsta värde (byte)**|**Max värde (byte)**|
 |---|---|---|---|---|
-|Grundläggande|1|Kan inte konfigureras på Basic-nivå|Saknas|Saknas|
-|Grundläggande|2|Kan inte konfigureras på Basic-nivå|Saknas|Saknas|
+|Basic|1|Kan inte konfigureras på Basic-nivå|Saknas|Saknas|
+|Basic|2|Kan inte konfigureras på Basic-nivå|Saknas|Saknas|
 |Generell användning|2|524288|32768|4194304|
 |Generell användning|4|524288|32768|8388608|
 |Generell användning|8|524288|32768|16777216|
@@ -239,8 +242,8 @@ Läs mer om den här parametern i [MySQL-dokumentationen](https://dev.mysql.com/
 
 |**Prisnivå**|**vCore (s)**|**Standardvärde (byte)**|**Minsta värde (byte)**|**Max värde (byte)**|
 |---|---|---|---|---|
-|Grundläggande|1|Kan inte konfigureras på Basic-nivå|Saknas|Saknas|
-|Grundläggande|2|Kan inte konfigureras på Basic-nivå|Saknas|Saknas|
+|Basic|1|Kan inte konfigureras på Basic-nivå|Saknas|Saknas|
+|Basic|2|Kan inte konfigureras på Basic-nivå|Saknas|Saknas|
 |Generell användning|2|16777216|1024|67108864|
 |Generell användning|4|16777216|1024|134217728|
 |Generell användning|8|16777216|1024|268435456|

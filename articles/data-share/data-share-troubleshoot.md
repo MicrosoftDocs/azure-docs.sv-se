@@ -6,13 +6,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
-ms.date: 07/30/2020
-ms.openlocfilehash: 0fb2f9dd156d18705308b41ef8d6b015b3b6d71b
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.date: 08/14/2020
+ms.openlocfilehash: c68c9dc961475d6916b1f00e7d4f596bfd8c77dd
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534455"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257803"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Felsök vanliga problem i Azure Data Share 
 
@@ -34,7 +34,7 @@ Detta kan bero på följande orsaker:
     1. Sök efter **Microsoft. DataShare**
     1. Klicka på **Registrera** 
 
-    Du måste ha [rollen deltagare i Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) för att slutföra de här stegen. 
+    Du måste ha [Azure Contributor-rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) till Azure-prenumerationen för att slutföra de här stegen. 
 
 * **Inbjudan skickas till ditt e-postalias i stället för din e-postadress för Azure-inloggning.** Om du har registrerat Azure Data Share-tjänsten eller redan har skapat en data resurs resurs i Azure-klienten, men ändå inte kan se inbjudan, kan det bero på att providern har angett ditt e-postalias som mottagare i stället för din e-postadress för Azure-inloggning. Kontakta din dataprovider och kontrol lera att de har skickat inbjudan till din Azure-inloggnings-e-postadress och inte ditt e-postalias.
 

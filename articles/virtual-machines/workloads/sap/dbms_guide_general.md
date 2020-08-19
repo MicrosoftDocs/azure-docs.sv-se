@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 34b7f4bc55fc8e33b7d66f53e6f2fc241801f965
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ad6bbc1d3c20659441b8b062898526471f4d713a
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827426"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510240"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Överväganden för Azure Virtual Machines DBMS-distribution för SAP-arbetsbelastningar
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -205,7 +205,7 @@ Följande rekommendationer antar dessa I/O-egenskaper för standard-DBMS:
 
 För standard lagring är möjliga cache-typer:
 
-* Inga
+* Inget
 * Läsa
 * Läsa/Skriva
 
@@ -213,7 +213,7 @@ Om du vill få konsekvent och deterministisk prestanda ställer du in cachelagri
 
 För Premium Storage finns följande alternativ för cachelagring:
 
-* Inga
+* Inget
 * Läsa
 * Läsa/skriva
 * Ingen + Skrivningsaccelerator, som endast gäller för virtuella datorer i Azure M-serien
@@ -221,7 +221,7 @@ För Premium Storage finns följande alternativ för cachelagring:
 
 För Premium Storage rekommenderar vi att du använder **cachelagring av utdata för datafiler** i SAP-databasen och väljer **ingen cachelagring för diskarna i logg filen (erna)**.
 
-För distributioner i M-serien rekommenderar vi att du använder Azure Skrivningsaccelerator för din DBMS-distribution. Mer information, begränsningar och distribution av Azure Skrivningsaccelerator finns i [aktivera Skrivningsaccelerator](../../windows/how-to-enable-write-accelerator.md).
+För distributioner i M-serien rekommenderar vi att du använder Azure Skrivningsaccelerator för din DBMS-distribution. Mer information, begränsningar och distribution av Azure Skrivningsaccelerator finns i [aktivera Skrivningsaccelerator](../../how-to-enable-write-accelerator.md).
 
 
 ### <a name="azure-nonpersistent-disks"></a>Azure-fasta diskar

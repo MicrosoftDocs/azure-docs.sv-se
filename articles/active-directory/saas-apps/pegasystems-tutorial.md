@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med PEGA-system | Microsoft Docs'
 description: I den här självstudien får du lära dig hur du konfigurerar enkel inloggning mellan Azure Active Directory-och PEGA-system.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 31acf80f-1f4b-41f1-956f-a9fbae77ee69
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: bd54466e054055ff84cd5bb2b28c5cc074ac0017
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3dd09770ef5f747f008090368c35b1f274374c5f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72026802"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549083"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>Självstudie: Azure Active Directory integrering med PEGA-system
 
@@ -36,7 +32,7 @@ Läs mer om SaaS-appintegrering med Azure AD i [Enkel inloggning till program i 
 
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med PEGA-system måste du ha:
 
@@ -57,7 +53,7 @@ Om du vill konfigurera integrering av PEGA-system i Azure AD måste du lägga ti
 
     ![Välj Azure Active Directory](common/select-azuread.png)
 
-2. Gå till **företags program** > **alla program**.
+2. Gå till **företags program**  >  **alla program**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -119,7 +115,7 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med PE
 
     1. I rutan **inloggnings-URL** anger du URL-värdet för inloggning.
 
-    1. I rutan **relä tillstånd** anger du en URL i det här mönstret:`https://<customername>.pegacloud.io/prweb/sso`
+    1. I rutan **relä tillstånd** anger du en URL i det här mönstret: `https://<customername>.pegacloud.io/prweb/sso`
 
     > [!NOTE]
     > De värden som anges här är plats hållare. Du måste använda den faktiska identifieraren, svars-URL: en, inloggnings-URL: en och URL: en för Relay status. Du kan hämta ID-och svars-URL-värden från ett PEGA-program, som beskrivs senare i den här självstudien. Kontakta [PEGA Systems support team](https://www.pega.com/contact-us)för att hämta värdet för relä status. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -180,7 +176,7 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med PE
 
 1. Om du vill konfigurera enkel inloggning på **PEGA system** -sidan loggar du in på PEGA-portalen med ett administratörs konto i ett annat webbläsarfönster.
 
-2. Välj **skapa** > **sysadmin** > **-autentiseringstjänst**:
+2. Välj **skapa**  >  **sysadmin**  >  **-autentiseringstjänst**:
 
     ![Välj autentiseringstjänst](./media/pegasystems-tutorial/tutorial_pegasystems_admin.png)
     
@@ -234,7 +230,7 @@ I det här avsnittet ska du skapa en test användare med namnet Britta Simon i A
 
     a. I rutan **Namn** anger du **BrittaSimon**.
   
-    b. I rutan **användar namn** anger du **brittasimon@\<\< yourcompanydomain>. tillägg>**. (Till exempel BrittaSimon@contoso.com.)
+    b. I rutan **användar namn** anger du **brittasimon@ \<yourcompanydomain> . \<extension> **. (Till exempel BrittaSimon@contoso.com .)
 
     c. Välj **Visa lösen ord**och skriv sedan ned värdet i rutan **lösen ord** .
 

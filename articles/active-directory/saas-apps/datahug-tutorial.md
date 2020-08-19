@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Datahug | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Datahug.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 5c0dc1ea-7ff4-4554-b60b-0f2fa9f5abaa
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf2ef4211cab0dd778295c71a39a32305d074765
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: 787de3e3e44ca921c5dccd7b51a2e655a31d112b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85367656"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555985"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-datahug"></a>Självstudie: Azure Active Directory integrering med Datahug
 
@@ -33,9 +28,9 @@ Integreringen mellan Datahug och Azure AD medför följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att konfigurera Azure AD-integrering med Datahug behöver du följande:
 
@@ -106,15 +101,15 @@ Utför följande steg för att konfigurera enkel inloggning mellan Azure AD och 
 
     ![Information om domäner och URL:er för enkel inloggning med Datahug](common/idp-intiated.png)
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://apps.datahug.com/identity/<uniqueID>`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://apps.datahug.com/identity/<uniqueID>`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://apps.datahug.com/identity/<uniqueID>/acs`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://apps.datahug.com/identity/<uniqueID>/acs`
 
 5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     ![Information om domäner och URL:er för enkel inloggning med Datahug](common/metadata-upload-additional-signon.png)
 
-    Skriv en URL i text rutan **inloggnings-URL** :`https://apps.datahug.com/`
+    Skriv en URL i text rutan **inloggnings-URL** :  `https://apps.datahug.com/`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska identifieraren och svars-URL. Kontakta [Datahug-klientsupporten](https://www.sap.com/corporate/en/company/office-locations.html) och be om dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -168,7 +163,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **namn** anger du **BrittaSimon**.
   
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

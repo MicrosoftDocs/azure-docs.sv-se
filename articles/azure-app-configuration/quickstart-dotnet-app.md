@@ -1,6 +1,6 @@
 ---
 title: Snabbstart för Azure App Configuration med .NET Framework | Microsoft Docs
-description: En snabbstart för användning av Azure App Configuration med .NET Framework-appar
+description: I den här artikeln skapar du en .NET Framework-app med Azure App konfiguration för att centralisera lagring och hantering av program inställningar separat från din kod.
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -9,18 +9,18 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: lcozzens
-ms.openlocfilehash: 63b7f8b28e339abde326bf3dca34d9ee6d816a31
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 6795d10950ddd7b03dfa505ab44d2f43837c9045
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209918"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590276"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Snabb start: skapa en .NET Framework-app med Azure App konfiguration
 
 I den här snabb starten inkluderar du Azure App konfiguration i en .NET Framework-baserad konsolsession för att centralisera lagring och hantering av program inställningar separat från din kod.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
@@ -38,7 +38,7 @@ I den här snabb starten inkluderar du Azure App konfiguration i en .NET Framewo
 
     Lämna **etiketten** och **innehålls typen** tom för tillfället.
 
-7. Välj **Använd**.
+7. Välj **Tillämpa**.
 
 ## <a name="create-a-net-console-app"></a>Skapa en .NET-konsolapp
 

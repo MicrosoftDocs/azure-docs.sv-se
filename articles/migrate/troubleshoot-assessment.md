@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: f9598ad508e3760bf1bad04f8694838465e4961f
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 24e7a1660da4dd021ef7ceb2594b4db2340cf104
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460991"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263035"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Felsöka utvärdering/beroendevisualisering
 
@@ -28,7 +28,7 @@ Den här artikeln hjälper dig att felsöka problem med utvärderings-och beroen
 Start typen stöds inte | Azure har inte stöd för virtuella datorer med en EFI-starttyp. Vi rekommenderar att du konverterar start typen till BIOS innan du kör en migrering. <br/><br/>Du kan använda migrering av Azure Migrate Server för att hantera migrering av sådana virtuella datorer. Den kommer att konvertera start typen för den virtuella datorn till BIOS under migreringen.
 Villkorligt Windows-operativsystem som stöds | Operativ systemet har passerat sitt slutdatum och måste ha ett anpassat support avtal (CSA) för [support i Azure](https://aka.ms/WSosstatement). Överväg att uppgradera innan du migrerar till Azure.
 Windows-operativsystem som inte stöds | Azure stöder endast [valda Windows OS-versioner](https://aka.ms/WSosstatement). Överväg att uppgradera datorn innan du migrerar till Azure.
-Villkorligt godkänt Linux OS | Azure har endast godkänt [valda Linux OS-versioner](../virtual-machines/linux/endorsed-distros.md). Överväg att uppgradera datorn innan du migrerar till Azure.
+Villkorligt godkänt Linux OS | Azure har endast godkänt [valda Linux OS-versioner](../virtual-machines/linux/endorsed-distros.md). Överväg att uppgradera datorn innan du migrerar till Azure. Se även [här](https://docs.microsoft.com/azure/migrate/troubleshoot-assessment#linux-vms-are-conditionally-ready-in-an-azure-vm-assessment) för mer information.
 Avsignerat Linux OS | Datorn kan starta i Azure, men Azure tillhandahåller inget stöd för operativ system. Överväg att uppgradera till en [godkänd Linux-version](../virtual-machines/linux/endorsed-distros.md) innan du migrerar till Azure.
 Okänt operativ system | Operativ systemet för den virtuella datorn angavs som "Övrigt" i vCenter Server. Det här beteendet blockerar Azure Migrate från att verifiera den virtuella datorns Azure-beredskap. Kontrol lera att operativ systemet [stöds](https://aka.ms/azureoslist) av Azure innan du migrerar datorn.
 Bit versionen stöds inte | Virtuella datorer med ett 32-bitars operativ system kan starta i Azure, men vi rekommenderar att du uppgraderar till 64-bit innan du migrerar till Azure.
@@ -64,7 +64,7 @@ När det gäller VMware-och Hyper-V-datorer markerar Server utvärderingen virtu
 - Du kan avgöra om Linux-operativsystemet som körs på den lokala virtuella datorn har godkänts i Azure genom att granska [Azure Linux-supporten](https://aka.ms/migrate/selfhost/azureendorseddistros).
 -  När du har verifierat den godkända distributionen kan du ignorera den här varningen.
 
-Denna lucka kan åtgärdas genom att aktivera [program identifiering](./how-to-discover-applications.md) på de virtuella VMware-datorerna. Server utvärderingen använder det operativ system som identifierats från den virtuella datorn med autentiseringsuppgifterna för gäst. Detta operativ system data identifierar rätt operativ Systems information när det gäller virtuella Windows-och Linux-datorer.
+Denna lucka kan åtgärdas genom att aktivera [program identifiering](./how-to-discover-applications.md) på de virtuella VMware-datorerna. Server Assessment använder operativsystemet som identifierats från den virtuella datorn med hjälp av de gästautentiseringsuppgifter som angetts. Detta operativ system data identifierar rätt operativ Systems information när det gäller virtuella Windows-och Linux-datorer.
 
 ## <a name="operating-system-version-not-available"></a>Operativ system versionen är inte tillgänglig
 
@@ -74,10 +74,9 @@ För fysiska servrar bör den lägre versions informationen för operativ system
 
 Azure Migrate Server utvärderingen kan rekommendera Azure VM SKU: er med fler kärnor och minne än den aktuella lokala allokeringen baserat på typen av utvärdering:
 
-
 - Den virtuella datorns SKU-rekommendation beror på utvärderings egenskaperna.
 - Detta påverkas av den typ av utvärdering som du utför i Server utvärderingen: *prestanda-baserad*eller *lokalt*.
-- För prestandabaserade utvärderingar beaktar Server utvärderingen användnings data för de lokala virtuella datorerna (CPU, minne, disk och nätverks användning) för att fastställa rätt mål-SKU för virtuella datorer för dina lokala virtuella datorer. Den lägger också till en bekvämlighets faktor när du fastställer effektiv användning.
+- För prestandabaserade utvärderingar beaktar Server utvärderingen användnings data för de lokala virtuella datorerna (CPU, minne, disk och nätverks användning) för att fastställa rätt mål-SKU för virtuella datorer för dina lokala virtuella datorer. Även en komfortfaktor läggs till när du fastställer effektiv användning.
 - För lokal storleks sortering beaktas inte prestanda data och SKU: n rekommenderas för lokal allokering.
 
 För att visa hur detta kan påverka rekommendationerna, tar vi ett exempel:
@@ -88,7 +87,7 @@ Vi har en lokal virtuell dator med fyra kärnor och åtta GB minne, med 50% proc
 - Om utvärderingen är prestanda beroende av, baserat på effektiv processor-och minnes användning (50% av 4 kärnor * 1,3 = 2,6 kärnor och 50% av 8 GB minne * 1,3 = 5,3-GB minne), rekommenderas billigaste VM-SKU: n för fyra kärnor (närmaste antal kärnor som stöds) och åtta GB minne (närmaste minnes storlek som stöds) rekommenderas.
 - [Läs mer](concepts-assessment-calculation.md#types-of-assessments) om utvärderings storlek.
 
-## <a name="azure-disk-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Azure disk-SKU: er större än lokalt i en Azure VM-utvärdering
+## <a name="why-is-the-recommended-azure-disk-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Varför är de rekommenderade Azure disk-SKU: erna större än lokala i en Azure VM-utvärdering?
 
 Azure Migrate Server-utvärderingen kan rekommendera en större disk baserat på typen av utvärdering.
 - Disk storlek i Server utvärderingen är beroende av två bedömnings egenskaper: storleks kriterier och lagrings typ.
@@ -97,14 +96,26 @@ Azure Migrate Server-utvärderingen kan rekommendera en större disk baserat på
 
 Om du till exempel har en lokal disk med 32 GB minne, men den aggregerade läsnings-och skriv-IOPS för disken är 800 IOPS, rekommenderar Server utvärderingen en Premium disk (på grund av de högre IOPS-kraven) och rekommenderar sedan en disk-SKU som stöder den nödvändiga IOPS och storleken. Den bästa matchningen i det här exemplet är P15 (256 GB, 1100 IOPS). Även om den storlek som krävs av den lokala disken var 32 GB, rekommenderar Server utvärderingen en större disk på grund av det höga IOPS-kravet för den lokala disken.
 
-## <a name="utilized-corememory-percentage-missing"></a>Använd kärn-/minnes procent saknas
+## <a name="why-is-performance-data-missing-for-someall-vms-in-my-assessment-report"></a>Varför saknas prestandadata för vissa/alla virtuella datorer i min utvärderingsrapport?
 
-Server utvärderings rapporter "PercentageOfCoresUtilizedMissing" eller "PercentageOfMemoryUtilizedMissing" när Azure Migrate-enheten inte kan samla in prestanda data för de relevanta lokala virtuella datorerna.
+Det står PercentageOfCoresUtilizedMissing eller PercentageOfMemoryUtilizedMissing för prestandabaserad utvärdering i utvärderingsrapporten när Azure Migrate-installationen inte kan samla in prestandadata för lokala virtuella datorer. Kontrollera följande:
 
-- Detta kan inträffa om de virtuella datorerna är avstängda under utvärderings tiden. Enheten kan inte samla in prestanda data för en virtuell dator när den är avstängd.
-- Om endast minnes räknarna saknas och du försöker utvärdera virtuella Hyper-V-datorer, kontrollerar du om du har dynamiskt minne aktiverat på de här virtuella datorerna. Det finns ett känt problem för virtuella Hyper-V-datorer, där en Azure Migrate-apparat inte kan samla in minnes användnings data för virtuella datorer som inte har dynamiskt minne aktiverat.
-- Om någon av prestanda räknarna saknas går Azure Migrate Server utvärderingen tillbaka till allokerade kärnor och minne, och det rekommenderar en motsvarande VM-storlek.
+- Om de virtuella datorerna är påslagna under hela den varaktighet för vilken du skapar utvärderingen
+- Om endast minnesräknare saknas och du försöker utvärdera virtuella Hyper-V-datorer kontrollerar du om dynamiskt minne är aktiverat på de virtuella datorerna. Det finns för närvarande ett känt problem som gör att Azure Migrate-installationen inte kan samla in minnesanvändning för sådana virtuella datorer.
 - Om alla prestanda räknare saknas kontrollerar du att port åtkomst kraven för utvärdering är uppfyllda. Läs mer om Port åtkomst krav för [VMware](./migrate-support-matrix-vmware.md#port-access-requirements), [Hyper-V](./migrate-support-matrix-hyper-v.md#port-access) och utvärderingen av [fysiska](./migrate-support-matrix-physical.md#port-access) servrar.
+Obs! Om någon av prestandaräknarna saknas återgår Azure Migrate: Server Assessment till de allokerade kärnorna/minnet lokalt och rekommenderar lämplig VM-storlek.
+
+## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>Varför har min utvärdering lågt säkerhetsomdöme?
+
+Säkerhetsomdömet beräknas för ”prestandabaserade” utvärderingar baserat på den procentandel av [tillgängliga datapunkter](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#ratings) som behövdes för att beräkna utvärderingen. Ett lågt säkerhetsomdöme för en utvärdering kan bero på något av följande:
+
+- Du profilerade inte din miljö för hela den varaktighet för vilken du skapar utvärderingen. Om du till exempel skapar en utvärdering med en varaktighet på en vecka måste du vänta minst en vecka efter att identifieringen startade, tills alla datapunkter har samlats in. Om du inte kan vänta hela varaktigheten ändrar du varaktigheten för prestanda till en kortare period och ”räknar om” utvärderingen.
+ 
+- Server Assessment kan inte samla in prestandadata för vissa eller alla virtuella datorer under utvärderingsperioden. Kontrollera att de virtuella datorerna var påslagna under utvärderingen och att utgående anslutningar tillåts på port 443. Om dynamiskt minne är aktiverat för virtuella Hyper-V-datorer saknas minnesräknare, vilket ger ett lågt säkerhetsomdöme. Beräkna om utvärderingen så att de senaste ändringarna återspeglas i säkerhetsomdömet. 
+
+- Få virtuella datorer skapades efter att identifieringen startades i Server Assessment. Om du till exempel skapar en utvärdering för prestandahistoriken för den senaste månaden, men några virtuella datorer skapades i miljön för en vecka sedan. I detta fall kommer prestandadata för de nya virtuella datorerna inte att vara tillgängliga för hela tidsperioden och säkerhetsomdömet blir lågt.
+
+[Läs mer](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#confidence-ratings-performance-based) om säkerhetsomdömen.
 
 ## <a name="is-the-operating-system-license-included-in-an-azure-vm-assessment"></a>Ingår operativ Systems licensen i en Azure VM-utvärdering?
 
@@ -133,10 +144,6 @@ Kategorin beredskap kan felaktigt markeras som "inte redo" om en fysisk server s
 ## <a name="number-of-discovered-nics-higher-than-actual-for-physical-servers"></a>Antal identifierade nätverkskort som är högre än vad som är faktiskt för fysiska servrar
 
 Detta kan inträffa om Hyper-V-virtualisering är aktiverat på den fysiska servern. På dessa servrar identifierar Azure Migrate för närvarande både fysiska och virtuella nätverkskort. Därför är nej. av nätverkskort som har identifierats är högre än faktiskt.
-
-
-## <a name="low-confidence-rating-on-physical-server-assessments"></a>Bedömning av låg förtroende nivå för fysiska server utvärderingar
-Omdömet tilldelas baserat på tillgängligheten för data punkter som behövs för att beräkna utvärderingen. Om fysiska servrar som har Hyper-V-virtualisering aktive rad, finns det en känd produkt lucka på grund av att låg exakthet-klassificeringen felaktigt kan tilldelas till fysiska server utvärderingar. På dessa servrar identifierar Azure Migrate för närvarande både fysiska och virtuella nätverkskort. Nätverks data flödet samlas in på de virtuella nätverkskort som identifierats, men inte på de fysiska nätverkskorten. På grund av frånvaro av data punkter på de fysiska nätverkskorten kan förtroende klassificeringen påverkas, vilket leder till en låg klassificering. Detta är en produkt lucka som kommer att åtgärdas framåt.
 
 ## <a name="dependency-visualization-in-azure-government"></a>Beroende visualisering i Azure Government
 
@@ -193,7 +200,7 @@ Azure Migrate har för närvarande stöd för att skapa OMS-arbetsytor i regione
 Samla in nätverks trafik loggar enligt följande:
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-2. Tryck på F12 för att starta Utvecklarverktyg. Om det behövs avmarkerar du **navigerings inställningen rensa poster** .
+2. Tryck på F12 för att starta Utvecklarverktyg. Om det behövs avmarkerar du  **navigerings inställningen rensa poster** .
 3. Välj fliken **nätverk** och börja samla in nätverks trafik:
    - I Chrome väljer du **bevara logg**. Inspelningen bör starta automatiskt. En röd cirkel visar att trafiken fångas. Om den röda cirkeln inte visas väljer du den svarta cirkeln för att starta.
    - I Microsoft Edge och Internet Explorer ska inspelningen starta automatiskt. Om den inte är det väljer du den gröna uppspelnings knappen.

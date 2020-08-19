@@ -4,12 +4,12 @@ description: Lär dig att distribuera ett Linux Service Fabric-kluster till ett 
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: 14e029622f17e8aae392cc55ba4418b3971a5ad2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c4b71328ce59284f8870407c9492d24afe9acd8a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260228"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586928"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Distribuera ett Service Fabric-kluster i Linux till ett virtuellt Azure-nätverk
 
@@ -41,7 +41,12 @@ För Ubuntu 18,04-LTS:
 * [AzureDeploy.jspå][template2]
 * [AzureDeploy.Parameters.jspå][parameters2]
 
-Skillnaden mellan de två mallarna är att attributet **vmImageSku** anges till "18,04-LTS" och varje nods **typeHandlerVersion** anges till 1,1.
+För Ubuntu 18,04 LTS skillnaden mellan de två mallarna 
+* attributet **vmImageSku** anges till "18,04-LTS"
+* varje nods **typeHandlerVersion** anges till 1,1
+* Microsoft. ServiceFabric/Clusters-resurs
+   - **API version** anges till "2019-03-01" eller högre
+   - **vmImage** -egenskapen anges till "Ubuntu18_04"
 
 Den här mallen distribuerar ett säkert kluster med sju virtuella datorer och tre nodtyper till ett virtuellt nätverk.  Andra exempelmallar finns på [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates). [AzureDeploy.jspå][template] distribuerar en siffer resurs, inklusive följande.
 
@@ -81,7 +86,7 @@ Om du behöver andra programportar måste du justera resursen Microsoft.Network/
 
 Filen **AzureDeploy. Parameters** deklarerar många värden som används för att distribuera klustret och associerade resurser. Här är några av parametrarna du kan behöva ändra för distributionen:
 
-|Parameter|Exempelvärde|Anteckningar|
+|Parameter|Exempelvärde|Kommentarer|
 |---|---||
 |adminUserName|vmadmin| Administratörsnamn för virtuella datorer i klustret. |
 |adminPassword|Password#1234| Administratörslösenord för virtuella datorer i klustret.|

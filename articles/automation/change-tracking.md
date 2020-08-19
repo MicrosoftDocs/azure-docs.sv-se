@@ -3,14 +3,14 @@ title: Översikt över Azure Automation Ändringsspårning och inventering
 description: I den här artikeln beskrivs funktionen Ändringsspårning och inventering, som hjälper dig att identifiera program-och Microsoft-tjänsteändringar i din miljö.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 06/08/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: ca96f817407aaef808fa10fbedec7af7b5912dc8
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 2fe92942e263cf53b9827ccbcb13a2d7bafc367c
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447925"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511056"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Översikt över Ändringsspårning och inventering
 
@@ -26,10 +26,10 @@ I den här artikeln beskrivs hur du Ändringsspårning och inventering i Azure A
 > [!NOTE]
 > Information om hur du spårar Azure Resource Manager egenskaps ändringar finns i [ändrings historiken](../governance/resource-graph/how-to/get-resource-changes.md)för Azure Resource Graph.
 
-Ändringsspårning och lagret hämtar data från Azure Monitor. Virtuella datorer som är anslutna till Log Analytics arbets ytor använder Log Analytics agenter för att samla in data om ändringar av installerad program vara, Microsoft-tjänster, Windows-register och filer och Linux-daemon på övervakade servrar. När data är tillgängliga skickar agenterna den till Azure Monitor för bearbetning. Azure Monitor använder logik för mottagna data, registrerar dem och gör dem tillgängliga. 
+Ändringsspårning och lagret hämtar data från Azure Monitor. Virtuella datorer som är anslutna till Log Analytics arbets ytor använder sig av Log Analytics-agenten för att samla in data om ändringar av installerad program vara, Microsoft-tjänster, Windows-register och filer och Linux-daemon på övervakade servrar. När data är tillgängliga skickar agenten den till Azure Monitor för bearbetning. Azure Monitor använder logik för mottagna data, registrerar dem och gör dem tillgängliga.
 
 > [!NOTE]
-> Om du vill använda funktionen Ändringsspårning och inventering måste du hitta alla virtuella datorer i samma prenumeration och region som Automation-kontot.
+> Ändringsspårning och inventeringen kräver att en Log Analytics arbets yta länkas till ditt Automation-konto. En slutgiltig lista över regioner som stöds finns i [mappningar för Azure-arbetsytor](./how-to/region-mappings.md). Region mappningarna påverkar inte möjligheten att hantera virtuella datorer i en separat region från ditt Automation-konto.
 
 Ändringsspårning och lager stöder för närvarande inte följande objekt:
 
@@ -53,7 +53,7 @@ Följande problem har uppstått för Ändringsspårning och inventering:
 
 ## <a name="supported-operating-systems"></a>Operativsystem som stöds
 
-Ändringsspårning och inventering stöds på alla operativ system som uppfyller Log Analytics agent krav. De officiella versionerna av operativ systemet är Windows Server 2008 SP1 eller senare och Windows 7 SP1 eller senare. Funktionen stöds också på ett antal Linux-operativsystem. Information om operativ system som stöder Log Analytics finns i [Översikt över Log Analytics-agenten](../azure-monitor/platform/log-analytics-agent.md).
+Ändringsspårning och inventering stöds på alla operativ system som uppfyller Log Analytics agent krav. De officiella versionerna av operativ systemet är Windows Server 2008 SP1 eller senare och Windows 7 SP1 eller senare. Funktionen stöds också på ett antal Linux-operativsystem. En lista över operativ system som stöds finns i [Översikt över Log Analytics-agenten](../azure-monitor/platform/log-analytics-agent.md).
 
 Information om klient kraven för TLS 1,2 finns i [TLS 1,2 Enforcement för Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 

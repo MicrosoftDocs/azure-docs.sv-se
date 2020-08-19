@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: skamal
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 214d6d614fcc54a532766854f2e72ac45dbfa8ad
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 1abd1052c33346d949809d7c35a99ef97bde2c03
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407208"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516290"
 ---
 # <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>Självstudie: integrera flera fördjupade läsare resurser
 
@@ -25,7 +25,7 @@ I [översikten](./overview.md)har du lärt dig om vad den fördjupade läsaren �
 > * Skapa flera fördjupad läsar resurs under en befintlig resurs grupp
 > * Starta den fördjupade läsaren med flera resurser
 
-Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/cognitive-services/) innan du börjar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -79,7 +79,7 @@ SUBDOMAIN_EUS={YOUR_EASTUS_SUBDOMAIN}
 
 Se till att du inte utför den här filen i käll kontrollen eftersom den innehåller hemligheter som inte bör göras offentliga.
 
-Nu ska vi ändra _routes\index.js_ -filen som vi har skapat för att stödja våra flera resurser. Ersätt dess innehåll med följande kod.
+Nu ska vi ändra  _routes\index.js_ -filen som vi har skapat för att stödja våra flera resurser. Ersätt dess innehåll med följande kod.
 
 Som tidigare skapar den här koden en API-slutpunkt som skaffar en Azure AD-autentiseringstoken med ditt huvud namn för tjänsten. Den här gången kan användaren ange en resurs plats och skicka den som en frågeparameter. Den returnerar sedan ett-objekt som innehåller token och motsvarande under domän.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 223514e8e873d36f8551e18956aafc0a54243990
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cd0ad1553f04a781349a4664fbb408108015632
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119383"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510291"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Ändringsflöde i Azure Cosmos DB
 
@@ -42,7 +42,7 @@ Den aktuella ändrings flödet loggar inte borttagningar. Precis som i föregåe
 
 Ändra feed-objekt levereras i rätt ordning efter ändrings tiden. Den här sorterings ordningen garanteras per logisk partitionsnyckel.
 
-### <a name="consistency-level"></a>Konsekvens nivå
+### <a name="consistency-level"></a>Konsekvensnivå
 
 När du förbrukar ändrings flödet i en eventuell konsekvens nivå, kan det finnas dubbla händelser i-mellan efterföljande Läs åtgärder för ändrings flöden (den sista händelsen i en Läs åtgärd visas som första av nästa).
 
@@ -56,7 +56,7 @@ Om en egenskap för ett TTL-värde (Time to Live) har angetts för ett objekt ti
 
 ### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>Ändra feed och _etag, _lsn eller _ts
 
-_Etags formatet är internt och du bör inte ta beroende på det, eftersom det kan ändras när som helst. _ts är en ändring eller en tidsstämpel för skapande. Du kan använda _ts för kronologisk jämförelse. _lsn är ett batch-ID som endast läggs till för ändrings flöde. den representerar transaktions-ID: t. Många objekt kan ha samma _lsn. ETag på FeedResponse skiljer sig från _etag som visas på objektet. _etag är en intern identifierare och används för samtidighets kontroll, vilket visar om versionen av objektet, medan ETag används för att sekvensera flödet.
+_Etags formatet är internt och du bör inte ta beroende på det, eftersom det kan ändras när som helst. _ts är en ändring eller en tidsstämpel för skapande. Du kan använda _ts för kronologisk jämförelse. _lsn är ett batch-ID som endast läggs till för ändrings flöde. den representerar transaktions-ID: t. Många objekt kan ha samma _lsn. ETag på FeedResponse skiljer sig från _etag som visas på objektet. _etag är en intern identifierare som används för samtidighets kontroll. Egenskapen _etag visar om versionen av objektet, medan ETag-egenskapen används för att sekvensera feeden.
 
 ## <a name="working-with-change-feed"></a>Arbeta med ändrings flöde
 

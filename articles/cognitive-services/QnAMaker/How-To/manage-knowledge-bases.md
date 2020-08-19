@@ -3,21 +3,21 @@ title: Hantera kunskaps banker – QnA Maker
 description: Med QnA Maker kan du hantera dina kunskaps baser genom att ge åtkomst till kunskaps bas inställningar och innehåll.
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 4eb07b30b10826c361f4f9b805b517e372fc5ea1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 08736ce61e6768cfd9ac3d3ded7092a4ab93fca9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80756814"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551786"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>Skapa kunskaps bas och hantera inställningar
 
 Med QnA Maker kan du hantera dina kunskaps baser genom att ge åtkomst till kunskaps bas inställningar och data källor.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 > [!div class="checklist"]
-> * Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+> * Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/cognitive-services/) innan du börjar.
 > * En [QNA Maker resurs](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) som skapats i Azure Portal. Kom ihåg Azure Active Directory ID, prenumeration, QnA-resurs namn som du valde när du skapade resursen.
 
 ## <a name="create-a-knowledge-base"></a>Skapa en kunskapsbas
@@ -36,7 +36,7 @@ Med QnA Maker kan du hantera dina kunskaps baser genom att ge åtkomst till kuns
 
    ![Skärm bild av att välja en QnA Maker tjänst kunskaps bas](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 
-1. Ge din kunskaps bas `My Sample QnA KB`i **steg 3**.
+1. Ge din kunskaps bas i **steg 3** `My Sample QnA KB` .
 
 1. I **steg 4**konfigurerar du inställningarna med följande tabell:
 
@@ -45,7 +45,7 @@ Med QnA Maker kan du hantera dina kunskaps baser genom att ge åtkomst till kuns
     |**Aktivera extrahering av flera adresser från URL: er, PDF-eller docx-filer.**|Markerad|
     |**Standard svars text**| `Quickstart - default answer not found.`|
     |**+ Lägg till URL**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
-    |**CHI2TEST – Chat**|Välj **Professional**|
+    |**Chit-chat**|Välj **Professional**|
 
 1. I **steg 5**väljer **du skapa din KB**.
 
@@ -63,7 +63,7 @@ Med QnA Maker kan du hantera dina kunskaps baser genom att ge åtkomst till kuns
 
 1. Välj en viss kunskaps bas för att göra ändringar i den.
 
-1.  Välj **Inställningar**. Följande lista innehåller fält som du kan ändra.
+1.  Välj **inställningar**. Följande lista innehåller fält som du kan ändra.
 
        |Mål|Action|
        |--|--|

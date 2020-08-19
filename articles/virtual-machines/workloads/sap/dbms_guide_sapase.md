@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 26179dd2491a8b8cbc2ef3eb0ad66fa61722d413
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 82dbb73da06097407d91f23d4d372aaa4cc76e99
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525270"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510903"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>DBMS-distribution för SAP-arbetsbelastning för SAP ASE på Azure Virtual Machines
 
@@ -59,7 +59,7 @@ Sid storleken är vanligt vis 2048 KB. Mer information finns i artikeln [enorma 
 
 ## <a name="recommendations-on-vm-and-disk-structure-for-sap-ase-deployments"></a>Rekommendationer för VM och disk struktur för SAP ASE-distributioner
 
-SAP ASE for SAP NetWeaver-program stöds på alla VM-typer som anges i [SAP support note #1928533](https://launchpad.support.sap.com/#/notes/1928533) typiska VM-typer som används för medel stora SAP-ASE databas servrar är Esv3.  Stora databaser i flera terabyte kan utnyttja VM-typer i M-serien. Det kan vara bättre att skriva prestanda för SAP ASE-transaktions logg disk genom att aktivera M-seriens Skrivningsaccelerator. Skrivningsaccelerator bör testas noggrant med SAP-ASE på grund av det sätt som SAP-ASE utför logg skrivningar.  Granska [SAP support note #2816580](../../windows/how-to-enable-write-accelerator.md) och Överväg att köra ett prestanda test.  
+SAP ASE for SAP NetWeaver-program stöds på alla VM-typer som anges i [SAP support note #1928533](https://launchpad.support.sap.com/#/notes/1928533) typiska VM-typer som används för medel stora SAP-ASE databas servrar är Esv3.  Stora databaser i flera terabyte kan utnyttja VM-typer i M-serien. Det kan vara bättre att skriva prestanda för SAP ASE-transaktions logg disk genom att aktivera M-seriens Skrivningsaccelerator. Skrivningsaccelerator bör testas noggrant med SAP-ASE på grund av det sätt som SAP-ASE utför logg skrivningar.  Granska [SAP support note #2816580](../../how-to-enable-write-accelerator.md) och Överväg att köra ett prestanda test.  
 Skrivningsaccelerator är endast avsedd för transaktions logg diskar. Cachen på disk nivå ska vara inställd på ingen. Bli inte förvånad om Azure Skrivningsaccelerator inte visar liknande förbättringar som med andra DBMS. Beroende på hur SAP ASE skriver till transaktions loggen kan det bero på att det inte finns någon acceleration av Azure Skrivningsaccelerator.
 Separata diskar rekommenderas för data enheter och logg enheter.  System databaserna sybsecurity och `saptools` kräver inte dedikerade diskar och kan placeras på de diskar som innehåller data och logg enheter för SAP-databasen 
 
@@ -68,7 +68,7 @@ Separata diskar rekommenderas för data enheter och logg enheter.  System databa
 ### <a name="file-systems-stripe-size--io-balancing"></a>Fil system, stripe-storlek & IO-balansering 
 SAP ASE skriver data sekventiellt till disk lagrings enheter om inget annat konfigureras. Det innebär att en tom SAP ASE-databas med fyra enheter endast skriver data till den första enheten.  De andra disk enheterna kommer bara att skrivas till när den första enheten är full.  Mängden Läs-och skriv-IO till varje SAP ASE-enhet är förmodligen annorlunda. För att balansera disk-i/o över alla tillgängliga Azure-diskar måste du använda antingen Windows Storage Spaces eller Linux LVM2. I Linux rekommenderar vi att du använder XFS File System för att formatera diskarna. LVM stripe-storlek ska testas med ett prestanda test. 128 KB stripe-storlek är en lämplig start punkt. I Windows bör storleken på NTFS-allokeringsenheten (Australien) testas. 64 KB kan användas som ett start värde. 
 
-Vi rekommenderar att du konfigurerar automatisk databas expansion enligt beskrivningen i artikeln [Konfigurera automatisk expansion av databas utrymme i SAP anpassningsbar Server Enterprise](https://blogs.sap.com/2014/07/09/configuring-automatic-database-space-expansion-in-sap-adaptive-server-enterprise/) och [sap support NOTE #1815695](https://launchpad.support.sap.com/#/notes/1815695). 
+Vi rekommenderar att du konfigurerar automatisk databas expansion enligt beskrivningen i artikeln [Konfigurera automatisk expansion av databas utrymme i SAP anpassningsbar Server Enterprise](https://blogs.sap.com/2014/07/09/configuring-automatic-database-space-expansion-in-sap-adaptive-server-enterprise/)  och [sap support NOTE #1815695](https://launchpad.support.sap.com/#/notes/1815695). 
 
 ### <a name="sample-sap-ase-on-azure-virtual-machine-disk-and-file-system-configurations"></a>Exempel på SAP-ASE på virtuella Azure-datorer, disk-och fil system konfigurationer 
 I mallarna nedan visas exempel konfigurationer för både Linux och Windows. Innan du bekräftar den virtuella datorn och disk konfigurationen kontrollerar du att kvoterna för nätverks-och lagrings bandbredden för den enskilda virtuella datorn är tillräckliga för att uppfylla affärs kraven. Tänk också på att olika typer av virtuella Azure-datorer har olika högsta antal diskar som kan anslutas till den virtuella datorn. Till exempel har en E4s_v3 VM en gräns på 48 MB/s Storage IO-dataflöde. Om lagrings data flödet som krävs av säkerhets kopierings aktiviteten för databasen kräver mer än 48 MB/SEK kan en större VM-typ med mer data flöde för lagrings bandbredd undvikas. När du konfigurerar Azure Storage måste du också vara medveten om att i synnerhet med [Azure Premium Storage](../../windows/premium-storage-performance.md) kan data flödet och IOPS per GB-kapacitet ändras. Mer information finns i artikeln [vilka disk typer är tillgängliga i Azure?](../../windows/disks-types.md). Kvoterna för vissa typer av virtuella Azure-datorer dokumenteras i artikel [minnet optimerade storlekar för virtuella datorer](../../sizes-memory.md) och artiklar som är länkade till den. 

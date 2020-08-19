@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Trello | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Trello.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: cd5ae365-9ed6-43a6-920b-f7814b993949
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4f82617784fa782d37b915800498f44f8222bb2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: de37b4b958ab1139d46d476889ffdf8e3b4f7e4a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71121843"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551926"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trello"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Trello
 
@@ -33,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar Trello med Azure Ac
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -79,7 +74,7 @@ Om du vill konfigurera och testa Azure AD SSO med Trello, slutför du följande 
 I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen.
 
 > [!NOTE]
-> Du bör hämta ** \<företags\> ** instruktionen från Trello. Om du inte har något värde för värdens värde kan du kontakta [Trello support-teamet](mailto:support@trello.com) för att få hjälp med instruktionen för ditt företag.
+> Du bör hämta **\<enterprise\>** instruktionen från Trello. Om du inte har något värde för värdens värde kan du kontakta [Trello support-teamet](mailto:support@trello.com) för att få hjälp med instruktionen för ditt företag.
 
 Utför följande steg för att konfigurera enkel inloggning med Trello i Azure AD:
 
@@ -91,13 +86,13 @@ Utför följande steg för att konfigurera enkel inloggning med Trello i Azure A
 
 1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
 
-    a. Skriv en URL i text rutan **identifierare** :`https://trello.com/auth/saml/metadata`
+    a. Skriv en URL i text rutan **identifierare** : `https://trello.com/auth/saml/metadata`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://trello.com/auth/saml/consume/<enterprise>`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://trello.com/auth/saml/consume/<enterprise>`
 
 1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://trello.com/auth/saml/login/<enterprise>`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://trello.com/auth/saml/login/<enterprise>`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska svars-URL:en och inloggnings-URL:en. Kontakta [Trello-supporten](https://trello.com/sso-configuration) för att få värdena. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -118,7 +113,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -159,10 +154,10 @@ När du klickar på Trello-panelen i åtkomstpanelen bör du automatiskt loggas 
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Prova Trello med Azure AD](https://aad.portal.azure.com/)

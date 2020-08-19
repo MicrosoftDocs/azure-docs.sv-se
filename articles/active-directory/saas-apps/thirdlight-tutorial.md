@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med ThirdLight | Microsoft Docs'
 description: I den här självstudien får du lära dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och ThirdLight.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 168aae9a-54ee-4c2b-ab12-650a2c62b901
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 448d46cd21a63488c4f567d5555fe6406fc0fa73
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3193df0848c0d67935faa0020465e79bd50e2151
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67089097"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544986"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdlight"></a>Självstudie: Azure Active Directory integrering med ThirdLight
 
@@ -32,9 +28,9 @@ I den här självstudien får du lära dig hur du integrerar ThirdLight med Azur
 
 Om du vill veta mer om SaaS-appens integrering med Azure AD kan du läsa [enkel inloggning till program i Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med ThirdLight måste du ha:
 
@@ -55,7 +51,7 @@ Om du vill ställa in integreringen av ThirdLight i Azure AD måste du lägga ti
 
     ![Välj Azure Active Directory](common/select-azuread.png)
 
-2. Gå till **företags program** > **alla program**:
+2. Gå till **företags program**  >  **alla program**:
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -132,7 +128,7 @@ Utför följande steg för att konfigurera enkel inloggning med ThirdLight i Azu
 
 1. I ett nytt webbläsarfönster loggar du in på din ThirdLight-företags webbplats som administratör.
 
-1. Gå till **konfigurations** > **system administration** > **SAML2**:
+1. Gå till **konfigurations**  >  **system administration**  >  **SAML2**:
 
     ![System administration](./media/thirdlight-tutorial/ic805843.png "System administration")
 
@@ -166,7 +162,7 @@ I det här avsnittet ska du skapa en test användare med namnet Britta Simon i A
 
     1. I rutan **Namn** anger du **BrittaSimon**.
   
-    1. I rutan **användar namn** anger du **BrittaSimon@\<\< yourcompanydomain>. tillägg>**. (Till exempel BrittaSimon@contoso.com.)
+    1. I rutan **användar namn** anger du **BrittaSimon@ \<yourcompanydomain> . \<extension> **. (Till exempel BrittaSimon@contoso.com .)
 
     1. Välj **Visa lösen ord**och skriv sedan ned värdet i rutan **lösen ord** .
 

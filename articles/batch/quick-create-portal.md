@@ -2,14 +2,14 @@
 title: Azure snabb start – kör ditt första batch-jobb i Azure Portal
 description: Lär dig hur du använder Azure Portal för att skapa ett batch-konto, en pool med Compute-noder och ett jobb som kör grundläggande aktiviteter i poolen.
 ms.topic: quickstart
-ms.date: 08/13/2020
+ms.date: 08/17/2020
 ms.custom: mvc
-ms.openlocfilehash: f9af6a2f0fbbbd799b781480d499adf124b4cb7d
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: cf65a681764a848f8132ec44b8ba313ef1a83235
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225347"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511379"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Snabbstart: Kör ditt första Batch-jobb på Azure-portalen
 
@@ -23,7 +23,7 @@ Kom igång med Azure Batch genom att använda Azure Portal för att skapa ett ba
 
 Följ dessa steg om du vill skapa ett Batch-konto som ska användas som exempel för testning. Du behöver ett Batch-konto för att skapa pooler och jobb. Som du ser här kan du länka ett Azure-lagringskonto till Batch-kontot. Även om det inte krävs för den här snabbstarten, är lagringskontot användbart för att distribuera program och lagra indata och utdata för de flesta verkliga arbetsbelastningarna.
 
-1. I Azure Portal väljer du **skapa en resurs**  >  **Compute**  >  **Batch-tjänst**. 
+1. I [Azure Portal](https://portal.azure.com)väljer du **skapa en resurs**  >  **Compute**  >  **Batch-tjänst**. 
 
    :::image type="content" source="media/quick-create-portal/marketplace-batch.png" alt-text="Skärm bild av batch-tjänsten på Azure Marketplace.":::
 
@@ -47,7 +47,7 @@ Nu när du har ett Batch-konto kan du skapa en exempelpool med Windows beräknin
 
 1. Vid **Operativsystem** väljer du följande inställningar (du kan utforska andra alternativ).
   
-   |Inställningen  |Värde  |
+   |Inställning  |Värde  |
    |---------|---------|
    |**Avbildnings typ**|Marketplace|
    |**Publisher**     |Microsoft Windows Server|
@@ -56,7 +56,7 @@ Nu när du har ett Batch-konto kan du skapa en exempelpool med Windows beräknin
 
 1. Rulla nedåt för att ange inställningar för **Nodstorlek** och **Skala**. Föreslagen nodstorlek erbjuder en bra balans mellan prestanda och kostnad för det här snabba exemplet.
   
-   |Inställningen  |Värde  |
+   |Inställning  |Värde  |
    |---------|---------|
    |**Nodprisnivå**     |Standard a1|
    |**Reserverade målnoder**     |2|

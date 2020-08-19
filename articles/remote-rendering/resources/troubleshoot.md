@@ -1,18 +1,18 @@
 ---
-title: Felsök
+title: Felsöka
 description: Felsöknings information för Azure Remote rendering
 author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 2cb143e08e3901b1d0ab7181df68f06887069012
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2c5b6ef0792e418d873d84341a0fffc356c799e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563275"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509288"
 ---
-# <a name="troubleshoot"></a>Felsök
+# <a name="troubleshoot"></a>Felsöka
 
 Den här sidan listar vanliga problem som stör Azure-fjärrrendering och sätt att lösa dem.
 
@@ -105,7 +105,7 @@ Om dessa två steg inte var hjälp, krävs det att ta reda på om video ramar ta
 
 **Modellen överskrider gränserna för den valda virtuella datorn, särskilt det maximala antalet polygoner:**
 
-Se vissa [storleks gränser för virtuella datorer](../reference/limits.md#overall-number-of-polygons).
+Se vissa [begränsningar för Server storlek](../reference/limits.md#overall-number-of-polygons).
 
 **Modellen finns inte i kamerans Frustum:**
 
@@ -148,7 +148,7 @@ Azure Remote rendering-hookar i Unity Render-pipeline för att göra en ram komp
 
 ## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>Schack rutigt mönster återges efter inläsning av modell
 
-Om den renderade bilden ser ut så här: ![ schack rutor, ](../reference/media/checkerboard.png) träffar åter givnings funktionen [polygonens gränser för den virtuella datorns standard storlek](../reference/vm-sizes.md). Du kan undvika detta genom att antingen växla till storlek på **Premium-VM** eller minska antalet synliga polygoner.
+Om den renderade bilden ser ut så här: ![ schack rutor, ](../reference/media/checkerboard.png) träffar åter givnings funktionen [polygonens gränser för standard konfigurations storleken](../reference/vm-sizes.md). Du kan undvika detta genom att antingen växla till **Premium** -konfigurations storlek eller minska antalet synliga polygoner.
 
 ## <a name="the-rendered-image-in-unity-is-upside-down"></a>Den renderade bilden i Unity är upp-ned
 

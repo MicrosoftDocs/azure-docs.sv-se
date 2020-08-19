@@ -22,8 +22,8 @@ ms.locfileid: "85980231"
 
 Med din nyckel och slut punkt från den resurs som du har skapat skapar du två miljövariabler för autentisering:
 
-* `ANOMALY_DETECTOR_KEY`– Resurs nyckeln för autentisering av dina begär Anden.
-* `ANOMALY_DETECTOR_ENDPOINT`– Resurs slut punkten för att skicka API-begäranden. Den se ut så här: 
+* `ANOMALY_DETECTOR_KEY` – Resurs nyckeln för autentisering av dina begär Anden.
+* `ANOMALY_DETECTOR_ENDPOINT` – Resurs slut punkten för att skicka API-begäranden. Resultatet ser ut så här: 
   * `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
 
 Följ anvisningarna för ditt operativ system.

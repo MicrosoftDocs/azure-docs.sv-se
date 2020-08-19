@@ -9,12 +9,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: d895ff3a16f8e21f73845c03d8bec83ded9bcd43
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 3efd0303b447242c0229bc71720e55c8aa3a2f2d
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85564537"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566258"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Snabb start: fordonsbaserad Azure Sentinel
 
@@ -39,7 +39,7 @@ När du har anslutit dina data källor väljer du från ett galleri med arbets b
 - Ytterligare behörigheter kan krävas för att ansluta till vissa data källor.
 - Azure Sentinel är en betald tjänst. Pris information finns i [om Azure Sentinel](https://go.microsoft.com/fwlink/?linkid=2104058).
  
-## <a name="enable-azure-sentinel"></a>Aktivera Azure Sentinel<a name="enable"></a>
+## <a name="enable-azure-sentinel"></a>Aktivera Azure Sentinel <a name="enable"></a>
 
 1. Logga in på Azure-portalen. Kontrol lera att den prenumeration där Azure Sentinel har skapats har valts.
 
@@ -58,7 +58,10 @@ När du har anslutit dina data källor väljer du från ett galleri med arbets b
    > - Azure Sentinel kan köras på arbets ytor i alla [ga-regioner med Log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) förutom regionerna Kina och Tyskland (suverän). Data som genereras av Azure Sentinel (t. ex. incidenter, bok märken och varnings regler som kan innehålla vissa kund uppgifter från dessa arbets ytor) sparas antingen i Europa (för arbets ytor som finns i Europa) i Australien (för arbets ytor i Australien) eller i östra USA (för arbets ytor som finns i en annan region).
 
    >[!IMPORTANT]
-   > - När Azure Sentinel har Aktiver ATS på en arbets yta stöds inte flyttningen av arbets ytan till andra resurs grupper eller prenumerationer. Kontakta [Azure Sentinel](mailto:AzureSentinel@microsoft.com)om du behöver flytta arbets ytan.
+   >
+   > - När Azure Sentinel har distribuerats på en arbets yta **stöder den inte** flytten av arbets ytan till andra resurs grupper eller prenumerationer. 
+   >
+   >   Om du redan har flyttat arbets ytan inaktiverar du alla aktiva regler under **analyser** och aktiverar dem igen efter fem minuter. Detta bör vara effektivt i de flesta fall, men för att kunna upprepas, stöds den inte och görs på egen risk.
 
 1. Välj **Lägg till Azure Sentinel**.
   

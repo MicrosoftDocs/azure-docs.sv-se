@@ -7,12 +7,13 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 17274c2b5308b1e5069370400895c001dc03e5bb
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.custom: references_regions
+ms.openlocfilehash: c2d3237e629c7ed5d2931e15939b154e0239f259
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224449"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553115"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planera för distribution av Azure File Sync
 
@@ -147,7 +148,7 @@ Endast NTFS-volymer stöds. ReFS, FAT, FAT32 och andra fil system stöds inte.
 
 I följande tabell visas interop-tillstånd för NTFS-fil system funktioner: 
 
-| Funktion | Supportstatus | Anteckningar |
+| Funktion | Supportstatus | Kommentarer |
 |---------|----------------|-------|
 | Åtkomstkontrollistor (ACL) | Fullt stöd | Windows-typ Discretionary Access Control Lists bevaras av Azure File Sync och verkställs av Windows Server på Server slut punkter. ACL: er kan också tillämpas när du monterar Azure-filresursen direkt, men detta kräver ytterligare konfiguration. Mer information finns i [avsnittet om identiteter](#identity) . |
 | Hårda länkar | Överhoppad | |
@@ -314,7 +315,7 @@ Azure File Sync är tillgängligt i följande regioner:
 | Offentlig | Europa | Europa, västra | `westeurope` |
 | Offentlig | Frankrike | Frankrike, centrala | `francecentral` |
 | Offentlig | Frankrike | Frankrike, södra * | `francesouth` |
-| Offentlig | Indien | Central India | `centralindia` |
+| Offentlig | Indien | Indien, centrala | `centralindia` |
 | Offentlig | Indien | Indien, södra | `southindia` |
 | Offentlig | Japan | Japan, östra | `japaneast` |
 | Offentlig | Japan | Japan, västra | `japanwest` |

@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Schoox | Microsoft Docs'
 description: Lär dig att konfigurera enkel inloggning mellan Azure Active Directory och Schoox.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: f8b4cdcc-cbf6-4229-9427-05632e33f942
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b800966055ede8a6fb897eda15b4ff77ea61fcc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5dc88caae33cc085b1f66b37d90be76873f779f1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73161158"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547888"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-schoox"></a>Självstudie: Azure Active Directory integrering med Schoox
 
@@ -33,9 +28,9 @@ När du integrerar Schoox med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att konfigurera Azure AD-integrering med Schoox behöver du följande:
 
@@ -112,7 +107,7 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Schoo
 
     ![image](common/both-preintegrated-signon.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://saml.schoox.com/saml/login?idpUrl=<entityID>`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://saml.schoox.com/saml/login?idpUrl=<entityID>`
 
     > [!NOTE]
     > `<entityID>` är det SAML entitets-ID som kopieras från avsnittet Snabbreferens, vilket beskrivs senare i självstudien.
@@ -153,8 +148,8 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** skriver du **brittasimon\@yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

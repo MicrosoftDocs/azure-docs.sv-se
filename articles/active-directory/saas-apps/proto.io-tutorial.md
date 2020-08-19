@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Proto.io | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Proto.io.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a68387de-6dfe-44b6-a9e3-94242f180e28
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/12/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: db770e513599aa5da43ffa25463994d887536494
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 5e5da45dc2df29a237ae1e2eb4bb3eb32111f707
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800161"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553346"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-protoio"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Proto.io
 
@@ -84,13 +80,13 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://proto.io/saml/sp/<PROTO-SAML-ACCOUNT-ID>`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://proto.io/saml/sp/<PROTO-SAML-ACCOUNT-ID>`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://saml.proto.io/login/callback?code=<PROTO-SAML-ACCOUNT-ID>`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://saml.proto.io/login/callback?code=<PROTO-SAML-ACCOUNT-ID>`
 
 1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<PROTO-SAML-ACCOUNT-ID>.proto.io`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<PROTO-SAML-ACCOUNT-ID>.proto.io`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [proto.io client support team](mailto:support@proto.io) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -160,7 +156,7 @@ När du klickar på panelen Proto.io på åtkomst panelen, bör du loggas in aut
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

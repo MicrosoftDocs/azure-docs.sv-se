@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 8/11/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5209ffb0328e90fb2ca9b91773cbf18dd4ed2916
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 47e4bb291d031c41c89c88435a795004490e20a1
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163641"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505333"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Mata in IoT Hub telemetri i Azure Digitals, dubbla
 
@@ -22,12 +22,12 @@ Processen för att mata in data i Azure Digitals, är att konfigurera en extern 
 
 Det här dokumentet vägleder dig genom processen för att skriva en Azure-funktion som kan mata in telemetri från IoT Hub.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
-Innan du fortsätter med det här exemplet måste du uppfylla följande krav.
-* **En IoT-hubb**. Anvisningar finns i avsnittet *skapa en IoT Hub* i [den här IoT Hub snabb](../iot-hub/quickstart-send-telemetry-cli.md) starten.
-* **En Azure-funktion** med rätt behörighet för att anropa den digitala dubbla instansen. Se anvisningar [*: Konfigurera en Azure-funktion för att bearbeta data*](how-to-create-azure-function.md) för instruktioner. 
-* **En digital, dubbla instans** som tar emot din enhets telemetri. Se [ *anvisningar: Konfigurera en digital Azure-instans och autentisering*](./how-to-set-up-instance-portal.md) 
+Innan du fortsätter med det här exemplet måste du konfigurera följande resurser som krav:
+* **En IoT-hubb**. Anvisningar finns i avsnittet *skapa en IoT Hub* i [den här IoT Hub snabb](../iot-hub/quickstart-send-telemetry-cli.md)starten.
+* **En Azure-funktion** med rätt behörighet för att anropa den digitala dubbla instansen. Instruktioner finns i [*instruktion: Konfigurera en Azure-funktion för bearbetning av data*](how-to-create-azure-function.md). 
+* **En digital Azure-instans** som tar emot din enhets telemetri. Anvisningar finns i anvisningar [*: Konfigurera en digital Azure-instans och autentisering*](./how-to-set-up-instance-portal.md).
 
 ### <a name="example-telemetry-scenario"></a>Exempel scenario för telemetri
 

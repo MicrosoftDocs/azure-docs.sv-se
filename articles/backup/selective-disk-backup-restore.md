@@ -3,16 +3,20 @@ title: Selektiv säkerhets kopiering och återställning av diskar för virtuell
 description: I den här artikeln lär du dig mer om säkerhets kopiering och återställning av selektiva diskar med den virtuella Azure-datorn säkerhets kopierings lösning.
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: e61014a4fde7bfce316671ff0b081ff7bc2205a5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.custom: references_regions
+ms.openlocfilehash: 6a5e574795dfded98260da20711dab7d16cabd5b
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535435"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566241"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Selektiv säkerhets kopiering och återställning av diskar för virtuella Azure-datorer
 
 Azure Backup stöder säkerhets kopiering av alla diskar (operativ system och data) i en virtuell dator tillsammans med säkerhets kopierings lösningen för virtuella datorer. Nu kan du använda säkerhets kopierings-och återställnings funktionen selektiva diskar för att säkerhetskopiera en delmängd av data diskarna i en virtuell dator. Detta ger en effektiv och kostnads effektiv lösning för dina säkerhets kopierings-och återställnings behov. Varje återställnings punkt innehåller bara de diskar som ingår i säkerhets kopierings åtgärden. Detta gör att du kan ha en delmängd av diskarna som återställs från den aktuella återställnings punkten under återställnings åtgärden. Detta gäller både för återställning från ögonblicks bilder och valvet.
+
+>[!NOTE]
+>Säkerhets kopiering och återställning av selektiva diskar för virtuella Azure-datorer finns i offentlig för hands version i alla regioner.
 
 ## <a name="scenarios"></a>Scenarier
 

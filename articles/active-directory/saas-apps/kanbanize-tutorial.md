@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Kanbanize | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Kanbanize.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b436d2f6-bfa5-43fd-a8f9-d2144dc25669
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/09/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c5a3a096c5a44f681d23587837ae31fd1af33b2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 686a186650bfe4066533b0f086c080b5ffb14eb6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72373231"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546843"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kanbanize"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Kanbanize
 
@@ -33,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar Kanbanize med Azure
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -83,17 +78,17 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
 
-     a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://<subdomain>.kanbanize.com/`
+     a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://<subdomain>.kanbanize.com/`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<subdomain>.kanbanize.com/saml/acs`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<subdomain>.kanbanize.com/saml/acs`
 
     c. Klicka på **Ange ytterligare URL:er**.
 
-    d. I text rutan för **relä tillstånd** anger du en URL:`/ctrl_login/saml_login`
+    d. I text rutan för **relä tillstånd** anger du en URL: `/ctrl_login/saml_login`
 
 1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<subdomain>.kanbanize.com`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<subdomain>.kanbanize.com`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [Kanbanize client support team](mailto:support@ms.kanbanize.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -118,7 +113,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -174,7 +169,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     c. I text rutan **IDP-utloggnings slut punkt** klistrar du in värdet för **utloggnings-URL**, som du har kopierat från Azure Portal.
 
-    d. Ange det här värdet i rutan **attributnamn för e-post** .`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
+    d. Ange det här värdet i rutan **attributnamn för e-post** . `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
     e. Ange det här värdet i text rutan **attribut namn för förnamn**`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
@@ -183,7 +178,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
     > [!Note]
     > Du kan hämta dessa värden genom att kombinera namn rymder och namn värden för respektive attribut från avsnittet användarattribut i Azure Portal.
 
-    g. I anteckningar öppnar du det bas-64-kodade certifikatet som du laddade ned från Azure Portal, kopierar dess innehåll (utan start-och slut markeringar) och klistrar in det i rutan **IDP X. 509** .
+    ex. I anteckningar öppnar du det bas-64-kodade certifikatet som du laddade ned från Azure Portal, kopierar dess innehåll (utan start-och slut markeringar) och klistrar in det i rutan **IDP X. 509** .
 
     h. Markera **Aktivera inloggning med både SSO och Kanbanize**.
 
@@ -201,11 +196,11 @@ När du klickar på panelen Kanbanize på åtkomst panelen, bör du loggas in au
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Prova Kanbanize med Azure AD](https://aad.portal.azure.com/)
 

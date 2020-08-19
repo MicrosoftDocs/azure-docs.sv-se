@@ -1,6 +1,6 @@
 ---
 title: Snabbstart för Microsoft Azure Data Box| Microsoft Docs
-description: Lär dig hur du snabbt distribuerar Azure Data Box i Azure-portalen
+description: I den här snabbstarten lär du dig hur du distribuerar Azure Data Box från Azure-portalen för en importorder. Konfigurera Azure Data Box och kopiera data för uppladdning till Azure.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: dd429dadcbe67f0ac91da19d6606626b39f34ef5
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 2ee9d1edefb0e248d0eba13e2d0b9f1c651fdd42
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201092"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924520"
 ---
 # <a name="get-started-with-azure-data-box-to-import-data-into-azure"></a>Kom igång med Azure Data Box för att importera data till Azure
 

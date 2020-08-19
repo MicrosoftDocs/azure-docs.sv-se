@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 08/10/2020
+ms.date: 08/18/2020
 ms.author: victorh
-ms.openlocfilehash: 0fcf1c8a3800a52e8fa8659fe4bf97e83103c79d
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: b4ef35f2892925919ca9c8eda37a9b0e0d11835e
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88057000"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590412"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Vad är Azure Firewall Manager?
 
@@ -85,6 +85,8 @@ Azure Firewall Manager har följande kända problem:
 |Ekrar i annan region än den virtuella hubben|Ekrar i annan region än det virtuella navet stöds inte.|Undersöker<br><br>Skapa en hubb per region och peer-virtuella nätverk i samma region som hubben.|
 |Gren till gren trafik med privat trafik filtrering aktive rad|Trafik mellan grenar och förgreningar stöds inte när privat trafik filtrering är aktive rad. |Undersöka.<br><br>Skydda inte privat trafik om gren-till-gren-anslutningen är kritisk.|
 |Alla skyddade virtuella hubbar som delar samma virtuella WAN-nätverk måste finnas i samma resurs grupp.|Det här beteendet är justerat med virtuella WAN-hubbar idag.|Skapa flera virtuella WAN-administratörer för att kunna skapa säkra virtuella hubbar i olika resurs grupper.|
+|Det går inte att lägga till Mass IP-adress|Brand väggen för skyddat nav hamnar i ett felaktigt tillstånd om du lägger till flera offentliga IP-adresser.|Lägg till mindre offentliga IP-prisökningar. Du kan till exempel lägga till 10 i taget.|
+|Det går inte att köra program regler i ett säkert nav med konfigurerat anpassad DNS (för hands version).|DNS-proxy/anpassad DNS (för hands version) fungerar inte i scenarier där en brand Väggs hantering NIC har kon figurer ATS. Detta inkluderar distributioner av säkra hubbar och fall där Tvingad tunnel trafik är aktive rad.|Korrigera under undersökning.|
 
 ## <a name="next-steps"></a>Nästa steg
 

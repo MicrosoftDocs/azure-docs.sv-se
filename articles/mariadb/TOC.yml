@@ -1,4 +1,4 @@
-- name: Azure DB för MariaDB-dokument
+- name: Dokumentation om Azure DB for MariaDB
   href: index.yml
 - name: Översikt
   items:

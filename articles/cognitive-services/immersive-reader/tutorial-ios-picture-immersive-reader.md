@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: metan
-ms.openlocfilehash: a7e0cb41f32a60e4f00cb60cc3c86e40ab926785
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 968f3c9fbfea1e2f04fb029605173087f6f311c0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735138"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516511"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Självstudie: skapa en iOS-app som startar den fördjupade läsaren med innehåll från ett foto (SWIFT)
 
@@ -24,7 +24,7 @@ Den [fördjupade läsaren](https://www.onenote.com/learningtools) är ett särsk
 
 I den här självstudien skapar du en iOS-app från grunden och integrerar Read API och den fördjupade läsaren med hjälp av SDK för avancerad läsare. Ett komplett fungerande exempel på den här själv studie kursen finns [här](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios).
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/cognitive-services/) innan du börjar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -81,7 +81,7 @@ I huvudprojektmappen som innehåller filen ViewController. SWIFT skapar du en SW
 
 Byt namn på ViewController. SWIFT till PictureLaunchViewController. SWIFT och Ersätt filen med följande kod.
 
-## <a name="build-and-run-the-app"></a>Skapa och kör appen
+## <a name="build-and-run-the-app"></a>Kompilera och köra appen
 
 Ange Arkiv schema i Xcode genom att välja en simulator eller ett enhets mål.
 ![Arkiv schema](./media/ios/xcode-archive-scheme.png)<br/>

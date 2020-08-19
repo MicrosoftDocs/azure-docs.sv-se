@@ -3,12 +3,12 @@ title: Förbättra prestanda för Azure Apps med Advisor
 description: Använd prestanda rekommendationer i Azure Advisor för att förbättra hastighet och svars tider för affärs kritiska program.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 7ecd6a45dc255f4748ed5074a3adb3d948f4122e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bdca8cd39427fb0d25f8b3308eaf2be24e0eb81a
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057575"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257459"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Förbättra prestanda för Azure-program med hjälp av Azure Advisor
 
@@ -20,7 +20,7 @@ Du kan använda [Inställningar för TTL (Time-to-Live)](../traffic-manager/traf
 
 Azure Advisor identifierar Traffic Manager profiler som har ett längre TTL-värde konfigurerat. Vi rekommenderar att du konfigurerar TTL till antingen 20 sekunder eller 60 sekunder, beroende på om profilen har kon figurer ATS för [snabb redundans](https://azure.microsoft.com/roadmap/fast-failover-and-tcp-probing-in-azure-traffic-manager/).
 
-## <a name="improve-database-performance-by-using-sql-database-advisor"></a>Förbättra databasens prestanda genom att använda SQL Database Advisor
+## <a name="improve-database-performance-by-using-sql-database-advisor-temporarily-disabled"></a>Förbättra databasens prestanda genom att använda SQL Database Advisor (tillfälligt inaktive rad)
 
 Azure Advisor ger en enhetlig, sammanslagen översikt över rekommendationer för alla dina Azure-resurser. Den integreras med SQL Database Advisor för att få rekommendationer för att förbättra prestandan för dina databaser.SQL Database Advisor utvärderar prestanda för dina databaser genom att analysera användnings historiken. Den erbjuder sedan rekommendationer som passar bäst för att köra databasens typiska arbets belastning.
 
@@ -151,6 +151,22 @@ Advisor identifierar Azure Cosmos DB behållare som använder standard indexerin
 ## <a name="set-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Ange sid storlek för Azure Cosmos DB (MaxItemCount) till-1 
 
 Azure Advisor identifierar Azure Cosmos DB behållare som använder en sid storlek på 100. Vi rekommenderar att du använder en sid storlek på-1 för snabbare genomsökningar. [Läs mer om MaxItemCount.](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
+
+## <a name="consider-using-accelerated-writes-feature-in-your-hbase-cluster-to-improve-cluster-performance"></a>Överväg att använda accelererade skrivningar i ditt HBase-kluster för att förbättra kluster prestanda
+Azure Advisor analyserar system loggarna under de senaste 7 dagarna och identifierar om ditt kluster har påträffat följande scenarier:
+1. Långa svarstider för WAL-synkroniseringstid 
+2. Högt antal skrivbegäranden (minst 3 fönster på en timme med över 1 000 avg_write_requests/second/node – genomsnittliga skrivbegäranden/sekund/nod)
+
+Dessa tillstånd är tecken på att klustret lider av långa skrivningssvarstider. Detta kan bero på att tung belastning utförs på klustret. För att förbättra klustrets prestanda kanske du vill överväga att använda de accelererade Skriv funktioner som tillhandahålls av Azure HDInsight HBase. Funktionen för accelererade skrivningar för HDInsight Apache HBase-kluster ansluter Premium SSD-hanterade diskar till varje RegionServer (arbetsnod) i stället för att använda molnlagring. Tack vare det får du kort skrivningssvarstid och bättre återhämtning för dina program. Läs mer om den här funktionen i [Mer information](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes#how-to-enable-accelerated-writes-for-hbase-in-hdinsight)
+
+## <a name="review-azure-data-explorer-table-cache-period-policy-for-better-performance-preview"></a>Granska Azure Datautforskaren Table cache-period (princip) för bättre prestanda (för hands version)
+Den här rekommendationen visar Azure Data Explorer-tabeller som har ett stort antal frågor som går tillbaka utöver den konfigurerade cacheperioden (principen) (du kommer att se de 10 främsta tabellerna efter frågeprocent som har åtkomst till data utöver cacheperioden). Den rekommenderade åtgärden för att förbättra klustrets prestanda: Begränsa frågor för den här tabellen till det minsta tidsintervallet som krävs (inom den definierade principen). Om data från hela tidsintervallet krävs ökar du cacheperioden till det rekommenderade värdet.
+
+## <a name="improve-performance-by-optimizing-mysql-temporary-table-sizing"></a>Förbättra prestanda genom att optimera storleken på temporära MySQL-tabeller
+Advisor-analysen anger att MySQL-servern kan bli onödigt I/O-overhead på grund av en låg temporär tabell parameter inställningar. Det här kan leda till onödiga diskbaserade transaktioner och sämre prestanda. Vi rekommenderar att du ökar värdena för parametrarna ”tmp_table_size” och ”max_heap_table_size” så att du minskar antalet diskbaserade transaktioner. [Läs mer](https://aka.ms/azure_mysql_tmp_table)
+
+## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>Distribuera data i Server gruppen för att distribuera arbets belastningen mellan noder
+Advisor identifierar de Server grupper där data inte har distribuerats utan kvar på koordinatorn. Baserat på detta rekommenderar Advisor att för full citus-förmåner distribuerar data på arbetsnoder för dina Server grupper. Detta förbättrar prestanda för frågor genom att använda resursen för varje nod i Server gruppen. [Läs mer](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Få åtkomst till prestanda rekommendationer i Advisor
 

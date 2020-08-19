@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Picturepark | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Picturepark.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 31c21cd4-9c00-4cad-9538-a13996dc872f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 57f412f93d9dbe2d9967c5cbc7dc50b1ee8bd61f
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: bb12b666315f6d30df64b33b6a87d6ce831fd225
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801503"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553867"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>Självstudie: Azure Active Directory integrering med Picturepark
 
@@ -32,7 +28,7 @@ Genom att integrera Picturepark med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -126,7 +122,7 @@ Utför följande steg för att konfigurera enkel inloggning med Picturepark i Az
 
     ![Kopiera tumavtrycksvärdet](common/copy-thumbprint.png)
 
-7. I avsnittet **Konfigurera Picturepark** kopierar du lämpliga URL: er enligt ditt krav. För **inloggnings-URL**använder du värdet med följande mönster:`https://login.microsoftonline.com/_my_directory_id_/wsfed`
+7. I avsnittet **Konfigurera Picturepark** kopierar du lämpliga URL: er enligt ditt krav. För **inloggnings-URL**använder du värdet med följande mönster: `https://login.microsoftonline.com/_my_directory_id_/wsfed`
 
     > [!Note]
     > _my_directory_id_ är klient-ID: t för Azure AD-prenumerationen.
@@ -187,7 +183,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** `brittasimon@yourcompanydomain.extension` . Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** `brittasimon@yourcompanydomain.extension` . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

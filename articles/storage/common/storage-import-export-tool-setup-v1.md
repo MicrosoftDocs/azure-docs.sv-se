@@ -1,6 +1,6 @@
 ---
 title: Konfigurera Azure import/export-verktyget v1 | Microsoft Docs
-description: Lär dig hur du konfigurerar enhets förberedelse-och reparations verktyget för Azure import/export-tjänsten. Detta avser v1 i import/export-verktyget.
+description: Lär dig hur du konfigurerar enhets förberedelse-och reparations verktyget för Azure import/export-tjänsten. Den här artikeln hänvisar till version 1 av import/export-verktyget.
 author: twooley
 services: storage
 ms.service: storage
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: ca74e3aea8a847344c75ca7167c46675e1339459
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f2aeb010d0c6f62284f1347bd90b952be50c665e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077816"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88530808"
 ---
 # <a name="setting-up-the-azure-importexport-tool-v1"></a>Konfigurera Azure import/export-verktyget v1
 Verktyget Microsoft Azure Import/Export är verktyget för förberedelse och reparation av enheter som du kan använda med tjänsten Microsoft Azure Import/Export. Du kan använda verktyget för följande funktioner:  
 
--   Innan du skapar ett import jobb kan du använda det här verktyget för att kopiera data till de hård diskar som du kommer att leverera till ett Windows Azure-datacenter.  
+-   Innan du skapar ett import jobb kan du använda det här verktyget för att kopiera data till hård diskar som du levererar till ett Windows Azure-datacenter.  
 
 -   När ett import jobb har slutförts kan du använda det här verktyget för att reparera eventuella blobbar som var skadade, saknades eller står i konflikt med andra blobbar.  
 
@@ -29,7 +29,7 @@ Om du förbereder enheter för ett import jobb måste du uppfylla följande krav
 
 -   Du måste ha en aktiv Azure-prenumeration.  
 
--   Din prenumeration måste innehålla ett lagrings konto med tillräckligt mycket ledigt utrymme för att lagra de filer som du ska importera.  
+-   Din prenumeration måste innehålla ett lagrings konto med tillräckligt mycket ledigt utrymme för att lagra de filer som du importerar.  
 
 -   Du behöver minst en av konto nycklarna för lagrings kontot.  
 
@@ -253,5 +253,4 @@ Examples:
 * [För hands Visa enhets användning för ett export jobb](../storage-import-export-tool-previewing-drive-usage-export-v1.md)   
 * [Granska jobbstatus med kopiera loggfiler](../storage-import-export-tool-reviewing-job-status-v1.md)   
 * [Reparera ett importjobb](../storage-import-export-tool-repairing-an-import-job-v1.md)   
-* [Reparera ett exportjobb](../storage-import-export-tool-repairing-an-export-job-v1.md)   
-* [Felsökning av Azures import-/exportverktyg](storage-import-export-tool-troubleshooting-v1.md)
+* [Reparera ett exportjobb](../storage-import-export-tool-repairing-an-export-job-v1.md)

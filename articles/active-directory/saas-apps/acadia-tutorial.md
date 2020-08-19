@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Acadia | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Acadia.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: e02bfb28-b3c9-424c-8c42-0c8dfa12342a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d85409dc9e53c61f0f04b7ed39ec0fd8b06e297
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 39339803945034765fbc30e6f5fc11e737f750c4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73154437"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88538442"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-acadia"></a>Självstudie: Azure Active Directory integrering med Acadia
 
@@ -33,9 +28,9 @@ Integreringen av Acadia med Azure AD medför följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att konfigurera Azure AD-integrering med Acadia behöver du följande:
 
@@ -107,15 +102,15 @@ Utför följande steg för att konfigurera enkel inloggning med Azure AD för Ac
 
     ![Information om enkel inloggning med Acadia-domäner och -URL:er](common/idp-intiated.png)
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://<CUSTOMER>.acadia.sysalli.com/shibboleth`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://<CUSTOMER>.acadia.sysalli.com/shibboleth`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<CUSTOMER>.acadia.sysalli.com/Shibboleth.sso/SAML2/POST`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<CUSTOMER>.acadia.sysalli.com/Shibboleth.sso/SAML2/POST`
 
 5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     ![Information om enkel inloggning med Acadia-domäner och -URL:er](common/metadata-upload-additional-signon.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<CUSTOMER>.acadia.sysalli.com/Shibboleth.sso/Login`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<CUSTOMER>.acadia.sysalli.com/Shibboleth.sso/Login`
 
     > [!NOTE]
     > Värdena för steg 4 och 5 kommer att anges i en metadatafil av Acadia-teamet. Den kan importeras genom att du klickar på **Ladda upp metadatafil** i avsnittet **Grundläggande SAML-konfiguration**. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Du kan även se de mönster som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen för att bekräfta att metadatavärdena är korrekta. Kontakta [kundsupporten för Acadia](mailto:support@systemsalliance.com) om de angivna värdena är felaktiga.
@@ -156,8 +151,8 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** skriver du **brittasimon\@yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

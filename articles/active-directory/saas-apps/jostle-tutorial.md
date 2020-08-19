@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Jostle | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Jostle.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9ca4ca1f-8f68-4225-81a6-1666b486d6a8
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 612d25f10d051a3137f4c637af9abca1450e9399
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 946fd92ba53ef2d30190eef2c34a7a7f2201324a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73159802"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547009"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jostle"></a>Självstudie: Azure Active Directory integrering med Jostle
 
@@ -33,9 +28,9 @@ Genom att integrera Jostle med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Jostle behöver du följande objekt:
 
@@ -106,11 +101,11 @@ Utför följande steg för att konfigurera enkel inloggning med Jostle i Azure A
 
     ![Information om enkel inloggning för Jostle-domän och URL: er](common/sp-identifier-reply.png)
 
-    a. I text rutan **inloggnings-URL** anger du URL: en:`https://login-prod.jostle.us`
+    a. I text rutan **inloggnings-URL** anger du URL: en: `https://login-prod.jostle.us`
 
-    b. I rutan **identifierare** anger du URL: en:`https://jostle.us`
+    b. I rutan **identifierare** anger du URL: en: `https://jostle.us`
 
-    c. Skriv webb adressen i text rutan **svars-URL** :`https://login-prod.jostle.us/saml/SSO/alias/newjostle.us`
+    c. Skriv webb adressen i text rutan **svars-URL** : `https://login-prod.jostle.us/saml/SSO/alias/newjostle.us`
 
 5. På sidan **Set up Single Sign-On with SAML** (Konfigurera enkel inloggning med SAML) går du till avsnittet **SAML Signing Certificate** (SAML-signeringscertifikat), klickar på **Ladda ned** för att ladda ned **Federation Metadata-XML** från de angivna alternativen enligt dina behov och spara den på datorn.
 
@@ -148,8 +143,8 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** skriver du **brittasimon\@yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

@@ -3,31 +3,16 @@ title: Förbättra tillförlitligheten för ditt program med Advisor
 description: Använd Azure Advisor för att säkerställa och förbättra tillförlitligheten i affärs kritiska Azure-distributioner.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 1eba688a67a8684cdbb6846b389f83e61b349abe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0d96974e53f24d5a01eeee8b08eee578177a9ad2
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057676"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258494"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Förbättra tillförlitligheten för ditt program genom att använda Azure Advisor
 
 Azure Advisor hjälper dig att säkerställa och förbättra kontinuiteten i verksamhets kritiska program. Du kan få Tillförlitlighets rekommendationer från Advisor på fliken **tillförlitlighet** i Advisor-instrumentpanelen.
-
-## <a name="ensure-virtual-machine-fault-tolerance"></a>Se till att fel tolerans för virtuell dator
-
-För att tillhandahålla redundans för ditt program rekommenderar vi att du grupperar två eller flera virtuella datorer i en tillgänglighets uppsättning. Advisor identifierar virtuella datorer som inte ingår i en tillgänglighets uppsättning och rekommenderar att du flyttar dem till en. Den här konfigurationen garanterar att minst en virtuell dator är tillgänglig under ett planerat eller oplanerat underhåll och uppfyller service avtalet för virtuella Azure-datorer. Du kan välja att skapa en tillgänglighets uppsättning för den virtuella datorn eller lägga till den virtuella datorn i en befintlig tillgänglighets uppsättning.
-
-> [!NOTE]
-> Om du väljer att skapa en tillgänglighets uppsättning måste du lägga till minst en virtuell dator i den. Vi rekommenderar att du grupperar två eller flera virtuella datorer i en tillgänglighets uppsättning för att säkerställa att minst en dator är tillgänglig under ett avbrott.
-
-## <a name="ensure-availability-set-fault-tolerance"></a>Se till att fel tolerans för tillgänglighets uppsättning
-
-För att tillhandahålla redundans för ditt program rekommenderar vi att du grupperar två eller flera virtuella datorer i en tillgänglighets uppsättning. Advisor identifierar tillgänglighets uppsättningar som innehåller en enda virtuell dator och rekommenderar att du lägger till en eller flera virtuella datorer i den.Den här konfigurationen garanterar att minst en virtuell dator är tillgänglig under ett planerat eller oplanerat underhåll och uppfyller service avtalet för virtuella Azure-datorer.Du kan välja att skapa en virtuell dator eller lägga till en befintlig virtuell dator i tillgänglighets uppsättningen.  
-
-## <a name="use-managed-disks-to-improve-data-reliability"></a>Använd Managed disks för att förbättra data tillförlitligheten
-
-Virtuella datorer som finns i en tillgänglighets uppsättning med diskar som delar lagrings konton eller lagrings skalnings enheter är inte elastiska till andra lagrings enheter för lagring vid avbrott. Advisor identifierar dessa tillgänglighets uppsättningar och rekommenderar att du migrerar till Azure Managed disks. Den här migreringen ser till att diskarna för de virtuella datorerna i tillgänglighets uppsättningen är tillräckligt isolerade för att undvika en enskild felpunkt. 
 
 ## <a name="check-the-version-of-your-check-point-network-virtual-appliance-image"></a>Kontrol lera versionen av avbildningen av den virtuella datorn för kontroll punkter
 
@@ -73,6 +58,21 @@ Azure Advisor söker efter VPN-gatewayer som använder en grundläggande SKU och
 - Konfigurations alternativ för aktiv-aktiv. 
 - Anpassad IPsec/IKE-princip. 
 - Högre stabilitet och tillgänglighet.
+
+## <a name="ensure-virtual-machine-fault-tolerance-temporarily-disabled"></a>Se till att fel toleransen för virtuella datorer (tillfälligt inaktive rad)
+
+För att tillhandahålla redundans för ditt program rekommenderar vi att du grupperar två eller flera virtuella datorer i en tillgänglighets uppsättning. Advisor identifierar virtuella datorer som inte ingår i en tillgänglighets uppsättning och rekommenderar att du flyttar dem till en. Den här konfigurationen garanterar att minst en virtuell dator är tillgänglig under ett planerat eller oplanerat underhåll och uppfyller service avtalet för virtuella Azure-datorer. Du kan välja att skapa en tillgänglighets uppsättning för den virtuella datorn eller lägga till den virtuella datorn i en befintlig tillgänglighets uppsättning.
+
+> [!NOTE]
+> Om du väljer att skapa en tillgänglighets uppsättning måste du lägga till minst en virtuell dator i den. Vi rekommenderar att du grupperar två eller flera virtuella datorer i en tillgänglighets uppsättning för att säkerställa att minst en dator är tillgänglig under ett avbrott.
+
+## <a name="ensure-availability-set-fault-tolerance-temporarily-disabled"></a>Se till att fel tolerans för tillgänglighets uppsättning (tillfälligt inaktive rad)
+
+För att tillhandahålla redundans för ditt program rekommenderar vi att du grupperar två eller flera virtuella datorer i en tillgänglighets uppsättning. Advisor identifierar tillgänglighets uppsättningar som innehåller en enda virtuell dator och rekommenderar att du lägger till en eller flera virtuella datorer i den.Den här konfigurationen garanterar att minst en virtuell dator är tillgänglig under ett planerat eller oplanerat underhåll och uppfyller service avtalet för virtuella Azure-datorer.Du kan välja att skapa en virtuell dator eller lägga till en befintlig virtuell dator i tillgänglighets uppsättningen.  
+
+## <a name="use-managed-disks-to-improve-data-reliability-temporarily-disabled"></a>Använd Managed disks för att förbättra data tillförlitligheten (tillfälligt inaktive rad)
+
+Virtuella datorer som finns i en tillgänglighets uppsättning med diskar som delar lagrings konton eller lagrings skalnings enheter är inte elastiska till andra lagrings enheter för lagring vid avbrott. Advisor identifierar dessa tillgänglighets uppsättningar och rekommenderar att du migrerar till Azure Managed disks. Den här migreringen ser till att diskarna för de virtuella datorerna i tillgänglighets uppsättningen är tillräckligt isolerade för att undvika en enskild felpunkt. 
 
 ## <a name="repair-invalid-log-alert-rules"></a>Reparera ogiltiga logg aviserings regler
 
