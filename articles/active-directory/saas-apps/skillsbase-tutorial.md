@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med kunskaps bas | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och kunskaps bas.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 237d90c4-8243-4f80-a305-b5ad9204159e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 60f8e4408a3a7d4f05bc820f0c0a825106b47009
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1c8135f39517a5983f700c35f08a5c0749113450
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87017158"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552251"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>Självstudie: Azure Active Directory integrering med kunskaps bas
 
@@ -109,7 +105,7 @@ Utför följande steg för att konfigurera enkel inloggning med Azure AD med kun
 
     ![Information om enkel inloggning för kunskaps bas domäner och URL: er](common/sp-signonurl.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://app.skills-base.com/o/<customer-unique-key>`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://app.skills-base.com/o/<customer-unique-key>`
 
     > [!NOTE]
     > Du kan hämta inloggnings-URL: en från kunskaps bas programmet. Logga in som administratör och gå till admin-> inställningar-> instans information – > gen vägs länk. Kopiera inloggnings-URL och klistra in den i ovanstående text ruta.
@@ -170,7 +166,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **Användarnamn** anger du **brittasimon@yourcompanydomain.extension**  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

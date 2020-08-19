@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory enkel inloggning med Citrix NetScaler (huvud-baserad autentisering) | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning (SSO) mellan Azure Active Directory och Citrix NetScaler med hjälp av rubrik-baserad autentisering.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b0adc7bf-696d-44c9-a57a-f9e9471b8710
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/13/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07ea6824975d0cb3f4b909db41188c490bbba6d2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 48fedf7f3a73ce7fde60a1df80d971a5d7f88dd7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80477954"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540651"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-header-based-authentication"></a>Självstudie: Azure Active Directory enkel inloggning med Citrix NetScaler (huvud-baserad autentisering)
 
@@ -33,7 +28,7 @@ I den här självstudien får du lära dig att integrera Citrix NetScaler med Az
 
 Om du vill veta mer om SaaS (Software as a Service) med Azure AD, se [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -100,13 +95,13 @@ Slutför de här stegen för att aktivera Azure AD SSO med hjälp av Azure Porta
 
 1. I avsnittet **grundläggande SAML-konfiguration** kan du konfigurera programmet i **IDP-initierat** läge:
 
-    1. I text rutan **identifierare** anger du en URL som har följande mönster:`https://<Your FQDN>`
+    1. I text rutan **identifierare** anger du en URL som har följande mönster: `https://<Your FQDN>`
 
-    1. I text rutan **svars-URL** anger du en URL som har följande mönster:`https://<Your FQDN>/CitrixAuthService/AuthService.asmx`
+    1. I text rutan **svars-URL** anger du en URL som har följande mönster: `https://<Your FQDN>/CitrixAuthService/AuthService.asmx`
 
 1. Om du vill konfigurera programmet i **SP-initierat** läge väljer du **Ange ytterligare URL: er** och Slutför följande steg:
 
-    * I text rutan **inloggnings-URL** anger du en URL som har följande mönster:`https://<Your FQDN>/CitrixAuthService/AuthService.asmx`
+    * I text rutan **inloggnings-URL** anger du en URL som har följande mönster: `https://<Your FQDN>/CitrixAuthService/AuthService.asmx`
 
     > [!NOTE]
     > * URL: erna som används i det här avsnittet är inte verkliga värden. Uppdatera värdena med de faktiska värdena för identifierare, svars-URL och inloggnings-URL. Kontakta [support teamet för Citrix NetScaler-klienten](https://www.citrix.com/contact/technical-support.html) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -154,9 +149,9 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 
 1. I **användar** egenskaper slutför du de här stegen:
 
-   1. Som **namn**anger `B.Simon`du.  
+   1. Som **namn**anger du `B.Simon` .  
 
-   1. För **användar namn**anger _username@companydomain.extension_du. Till exempel `B.Simon@contoso.com`.
+   1. För **användar namn**anger du _username@companydomain.extension_ . Till exempel `B.Simon@contoso.com`.
 
    1. Markera kryss rutan **Visa lösen ord** och skriv sedan ned eller kopiera värdet som visas i **lösen ordet**.
 
@@ -196,7 +191,7 @@ Välj en länk för steg för den typ av autentisering som du vill konfigurera:
 
 Så här skapar du en virtuell server:
 
-1. Välj**belastnings Utjämnings** > **tjänster**för **trafik hantering** > .
+1. Välj **Traffic Management**  >  **belastnings Utjämnings**  >  **tjänster**för trafik hantering.
     
 1. Välj **Lägg till**.
 
@@ -204,10 +199,10 @@ Så här skapar du en virtuell server:
 
 1. Ange följande värden för webb servern som kör programmen:
 
-   * **Tjänstnamn**
+   * **Tjänstens namn**
    * **Server-IP/befintlig server**
-   * **Protokollhanterare**
-   * **Lastning**
+   * **Protokoll**
+   * **Port**
 
      ![Konfigurations fönstret Citrix NetScaler](./media/header-citrix-netscaler-tutorial/web01.png)
 
@@ -215,16 +210,16 @@ Så här skapar du en virtuell server:
 
 Så här konfigurerar du belastningsutjämnaren:
 
-1. Gå till**belastnings Utjämnings** > **virtuella servrar**för **trafik hantering** > .
+1. Gå till **Traffic Management**  >  **belastnings Utjämnings**  >  **virtuella servrar**för trafik hantering.
 
 1. Välj **Lägg till**.
 
 1. Ange följande värden enligt beskrivningen i följande skärm bild:
 
     * **Namn**
-    * **Protokollhanterare**
+    * **Protokoll**
     * **IP-adress**
-    * **Lastning**
+    * **Port**
 
 1. Välj **OK**.
 
@@ -262,7 +257,7 @@ Om du vill konfigurera Citrix ADC SAML-profilen, fyller du i följande avsnitt:
 
 Så här skapar du en autentiseringsprincip:
 
-1. Gå till **Security** > **AAA –** > **principer för** > **autentisering** > **Authentication Policies**av program trafik.
+1. Gå till **Security**  >  **AAA –** principer för autentisering av program trafik  >  **Policies**  >  **Authentication**  >  **Authentication Policies**.
 
 1. Välj **Lägg till**.
 
@@ -298,7 +293,7 @@ Om du vill skapa en SAML-Server för autentisering går du till fönstret **skap
 
 Så här skapar du en virtuell autentiserings Server:
 
-1.  Gå till **Security** > **AAA –** > **Policies** > **autentisering av autentisering** > för program trafik**virtuella servrar**.
+1.  Gå till **Security**  >  **AAA –** autentisering av autentisering för program trafik  >  **Policies**  >  **Authentication**  >  **virtuella servrar**.
 
 1.  Välj **Lägg till**och utför sedan följande steg:
 
@@ -351,7 +346,7 @@ Om du vill konfigurera Citrix ADC för huvud-baserad autentisering, fyller du i 
 
 #### <a name="create-a-rewrite-action"></a>Skapa en Skriv åtgärd
 
-1. Gå till **AppExpert** > **Skriv** > om Skriv**åtgärder**.
+1. Gå till **AppExpert**  >  **Skriv**om Skriv  >  **åtgärder**.
  
     ![Citrix NetScaler-konfiguration – Skriv åtgärds fönstret](./media/header-citrix-netscaler-tutorial/header01.png)
 
@@ -371,7 +366,7 @@ Om du vill konfigurera Citrix ADC för huvud-baserad autentisering, fyller du i 
  
 #### <a name="create-a-rewrite-policy"></a>Skapa en princip för att skriva om
 
-1.  Gå till **AppExpert** > **Skriv** > om**omskrivnings principer**.
+1.  Gå till **AppExpert**  >  **Skriv**om  >  **omskrivnings principer**.
  
     ![Citrix NetScaler-konfiguration – Skriv om principer-fönstret](./media/header-citrix-netscaler-tutorial/header03.png)
 
@@ -391,7 +386,7 @@ Om du vill konfigurera Citrix ADC för huvud-baserad autentisering, fyller du i 
 
 Så här binder du en omskrivnings princip till en virtuell server med hjälp av det grafiska användar gränssnittet:
 
-1. Gå till**belastnings Utjämnings** > **virtuella servrar**för **trafik hantering** > .
+1. Gå till **Traffic Management**  >  **belastnings Utjämnings**  >  **virtuella servrar**för trafik hantering.
 
 1. I listan över virtuella servrar väljer du den virtuella server som du vill binda den omskrivnings principen till och väljer sedan **Öppna**.
 
@@ -417,13 +412,13 @@ Så här binder du en omskrivnings princip till en virtuell server med hjälp av
 
 ### <a name="modify-the-saml-server-to-extract-attributes-from-a-claim"></a>Ändra SAML-servern för att extrahera attribut från ett anspråk
 
-1.  Gå till **Security** > **AAA – program trafik** > **principer** > **autentisering** > **avancerade principer** > **Åtgärds** > **servrar**.
+1.  Gå till **Security**  >  **AAA – program trafik**  >  **principer**  >  **autentisering**  >  **avancerade principer**  >  **Åtgärds**  >  **servrar**.
 
 1.  Välj lämplig SAML-Server för autentisering för programmet.
  
     ![Citrix NetScaler-konfiguration – konfigurera autentisering SAML-Server fönstret](./media/header-citrix-netscaler-tutorial/header09.png)
 
-1. I smärta för **attribut** anger du de SAML-attribut som du vill extrahera, avgränsade med kommatecken. I vårt exempel anger vi attributet `mySecretID`.
+1. I smärta för **attribut** anger du de SAML-attribut som du vill extrahera, avgränsade med kommatecken. I vårt exempel anger vi attributet `mySecretID` .
  
     ![Citrix NetScaler-konfiguration – attribut-fönstret](./media/header-citrix-netscaler-tutorial/header10.png)
 
@@ -450,7 +445,7 @@ När du väljer panelen för att skapa en netscaleor-panel i åtkomst panelen, b
 
 - [Vad är program åtkomst och enkel inloggning med Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Prova Citrix NetScaler med Azure AD](https://aad.portal.azure.com/)
 

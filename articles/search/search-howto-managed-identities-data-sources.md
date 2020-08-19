@@ -9,18 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 48b94b8cd047f62ea13bf4e062254088ea11840e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b07236fd639c9878c59523f78de5215b173ffc6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83664902"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553172"
 ---
 # <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity-preview"></a>Konfigurera en indexerare-anslutning till en data källa med hjälp av en hanterad identitet (förhands granskning)
 
 > [!IMPORTANT] 
-> Stöd för att konfigurera en anslutning till en data källa med hjälp av en hanterad identitet är för närvarande en offentlig för hands version av en gated. För hands versions funktionerna tillhandahålls utan service nivå avtal och rekommenderas inte för produktions arbets belastningar.
-> Du kan begära åtkomst till förhands granskningen genom att fylla i [det här formuläret](https://aka.ms/azure-cognitive-search/mi-preview-request).
+> Stöd för att konfigurera en anslutning till en data källa med hjälp av en hanterad identitet finns för närvarande i offentlig för hands version. För hands versions funktionerna tillhandahålls utan service nivå avtal och rekommenderas inte för produktions arbets belastningar.
 
 En [indexerare](search-indexer-overview.md) i Azure kognitiv sökning är en sökrobot som gör det möjligt att hämta data från data källan till Azure kognitiv sökning. En indexerare hämtar en data källans lutning från det data käll objekt som du skapar. Objektet datakällobjektet innehåller vanligt vis autentiseringsuppgifter för mål data källan. Objektet datakällobjektet kan till exempel innehålla en Azure Storage konto nyckel om du vill indexera data från en Blob Storage-behållare.
 

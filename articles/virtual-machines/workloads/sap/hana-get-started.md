@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
-ms.openlocfilehash: ec63d08b164a3ed767a7622a9829beaf73e65ef3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f2a62cb08fcce6597f02c080231f5e1808794054
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042316"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509968"
 ---
 # <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>Installation av SAP HANA på virtuella Azure-datorer
 ## <a name="introduction"></a>Introduktion
@@ -29,7 +29,7 @@ Den här guiden hjälper dig att peka på rätt resurser för att distribuera HA
 > [!NOTE]
 > I den här guiden beskrivs distributioner av SAP HANA till virtuella Azure-datorer. Information om hur du distribuerar SAP HANA till HANA-stora instanser finns i [så här installerar och konfigurerar du SAP HANA (stora instanser) i Azure](./hana-installation.md).
  
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 Den här guiden förutsätter också att du är bekant med:
 * SAP HANA-och SAP-NetWeaver och hur de installeras lokalt.
 * Installera och använda SAP HANA-och SAP-programinstanser på Azure.
@@ -72,7 +72,7 @@ I den här fasen måste du gå igenom de steg som distribuerar VM: erna för att
     -  [Stöd för SAP-support #2382421 – optimera nätverks konfigurationen på HANA-och OS-nivå](https://launchpad.support.sap.com/#/notes/2382421)
 
 1. Välj Azure Storage-typ för SAP HANA. I det här steget måste du bestämma lagrings-layouten för SAP HANA installationen. Du kommer att använda antingen anslutna Azure-diskar eller interna Azure NFS-resurser. De Azure Storage-typer som eller stöds och kombinationer av olika typer av Azure-lagring som kan användas, dokumenteras i [SAP HANA Storage-konfigurationer för virtuella Azure-datorer](./hana-vm-operations-storage.md). Ta de konfigurationer som dokumenteras som start punkt. För icke-produktionssystem kanske du kan konfigurera lägre data flöde eller IOPS. I produktions syfte kan du behöva konfigurera en lite mer data flöde och IOPS.
-2. Se till att du har konfigurerat [Azure-Skrivningsaccelerator](../../linux/how-to-enable-write-accelerator.md) för dina volymer som innehåller DBMS-transaktions loggarna eller gör om loggar när du använder virtuella datorer i M-eller Mv2-serien. Tänk på begränsningarna för Skrivningsaccelerator som dokumenterade.
+2. Se till att du har konfigurerat [Azure-Skrivningsaccelerator](../../how-to-enable-write-accelerator.md) för dina volymer som innehåller DBMS-transaktions loggarna eller gör om loggar när du använder virtuella datorer i M-eller Mv2-serien. Tänk på begränsningarna för Skrivningsaccelerator som dokumenterade.
 2. Kontrol lera om [Azure-accelererat nätverk](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) är aktiverat på de virtuella datorer som distribueras.
 
 > [!NOTE]

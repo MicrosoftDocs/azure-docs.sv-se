@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: j-martens
 ms.author: jmartens
 ms.date: 06/11/2020
-ms.openlocfilehash: aa754868677802b7d0000045f22090fbca62d9b6
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: fbe3f0109ca3af2cf9ff44061c7882e6bd72c8a6
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927427"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508610"
 ---
-# <a name="enterprise-and-basic-editions-of-azure-machine-learning"></a>Enterprise-och Basic-versioner av Azure Machine Learning 
+# <a name="enterprise-preview-and-basic-editions-of-azure-machine-learning"></a>Enterprise (för hands version) och Basic-versioner av Azure Machine Learning 
 
 Azure Machine Learning erbjuder två versioner som är skräddarsydda för dina maskin inlärnings behov. Dessa versioner avgör vilka Machine Learning-verktyg som är tillgängliga för utvecklare och data experter från deras arbets yta.
 
@@ -23,7 +23,7 @@ Azure Machine Learning erbjuder två versioner som är skräddarsydda för dina 
 
 Du tilldelar versionen varje gång du skapar en arbets yta. Kunderna är ansvariga för kostnader som uppstår för beräkning och andra Azure-resurser under den här tiden. Lär dig hur du [hanterar kostnader för Azure Machine Learning](concept-plan-manage-cost.md).
 
-Lär dig hur du [uppgraderar en grundläggande arbets yta till Enterprise Edition](how-to-manage-workspace.md#upgrade). 
+Lär dig hur du [uppgraderar en grundläggande arbets yta till Enterprise (för hands version)](how-to-manage-workspace.md#upgrade). 
 
 ## <a name="whats-in-each-edition"></a>Vad är i varje utgåva
 
@@ -49,7 +49,7 @@ Lär dig hur du [uppgraderar en grundläggande arbets yta till Enterprise Editio
 | Funktioner    | Utgåva                 |
 |------------------------------------------------------------------------------------|:-----------:|
 | Skapa och kör [AutoML-experiment i antecknings böcker](how-to-configure-auto-train.md)               | Alla                     |
-| Skapa och köra [AutoML-experiment i Studio (webb)](how-to-use-automated-ml-for-ml-models.md)   | Endast Enterprise-utgåva |
+| Skapa och köra  [AutoML-experiment i Studio (webb)](how-to-use-automated-ml-for-ml-models.md)   | Endast Enterprise-utgåva |
 | Branschledande AutoML prognos funktioner             | Endast Enterprise-utgåva |
 | Stöd för djup inlärning och andra avancerade lärare | Endast Enterprise-utgåva |
 | Klassificering och Regressions aktiviteter för stor data support (upp till 100 GB)                     | Endast Enterprise-utgåva |

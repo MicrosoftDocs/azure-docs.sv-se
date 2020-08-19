@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med community Spark | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och community Spark.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: cbe52427-93fa-4d19-a958-7585e01f155d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 363dc6bdf8339379b17f1672c46ac38b856cf0b9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 730cfbbffdae4b1525d58392152f533c413ba31d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101759"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545309"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-community-spark"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med community Spark
 
@@ -90,7 +86,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     b. I textrutan **Identifierare (entitets-ID)** anger du en URL enligt följande mönster: `https://<SUBDOMAIN>.communityspark.co/saml/metadata`
 
-    c. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<SUBDOMAIN>.communityspark.co/saml/consume`
+    c. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<SUBDOMAIN>.communityspark.co/saml/consume`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska inloggnings-URL: en, svars-URL och identifierare. Kontakta [support teamet för Community Spark-klienten](mailto:support@socialassurance.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -145,7 +141,7 @@ När du klickar på panelen för Community Spark på åtkomst panelen bör du lo
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
-ms.openlocfilehash: c43ed412116d0cb30f7d06ba65467fd529f367ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcff550b5411ac00dc54d2103278812f32f56543
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552688"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509985"
 ---
 # <a name="use-the-azure-frontend-apis-for-authentication"></a>Använda Azure Frontend-API:er för autentisering
 
@@ -60,11 +60,11 @@ Konto informationen kan hämtas från portalen enligt beskrivningen i stycket [H
 
 ## <a name="azure-frontend"></a>Azure-frontend
 
-Relevanta klasser är ```AzureFrontend``` och ```AzureSession``` . ```AzureFrontend```används för konto hanterings-och konto nivå funktioner, bland annat: till gångs konvertering och åter givnings skapande av session. ```AzureSession```används för funktioner på sidnivå och innehåller: uppdatering av sessionen, frågor, förnyande och inaktive ring.
+Relevanta klasser är ```AzureFrontend``` och ```AzureSession``` . ```AzureFrontend``` används för konto hanterings-och konto nivå funktioner, bland annat: till gångs konvertering och åter givnings skapande av session. ```AzureSession``` används för funktioner på sidnivå och innehåller: uppdatering av sessionen, frågor, förnyande och inaktive ring.
 
 Alla öppna/skapade ```AzureSession``` behåller en referens till den klient som skapade den. För att stänga av datorn måste alla sessioner frigöras innan klient delen frigörs.
 
-Om du avallokerar en session stoppas inte den virtuella datorn på Azure, `AzureSession.StopAsync` måste uttryckligen anropas.
+Att ta bort en session stoppar inte servern på Azure, `AzureSession.StopAsync` måste anropas explicit.
 
 När en session har skapats och dess status har marker ATS som klar, kan den ansluta till körnings miljön för fjärrrendering med `AzureSession.ConnectToRuntime` .
 

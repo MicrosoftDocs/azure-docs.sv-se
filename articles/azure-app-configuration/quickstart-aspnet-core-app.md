@@ -1,6 +1,6 @@
 ---
 title: Snabbstart för Azure App Configuration med ASP.NET Core | Microsoft Docs
-description: Snabb start för att använda Azure App konfiguration med ASP.NET Core appar
+description: Skapa en ASP.NET Core-app med Azure App konfiguration för att centralisera lagring och hantering av program inställningar för ett ASP.NET Core program.
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -9,18 +9,18 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: fc2b5829b2978253476ad8cca1438b784c6ad10d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 41675eb1911eede750b5a9cdc19cfe49e4699bac
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210003"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590310"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Snabb start: skapa en ASP.NET Core-app med Azure App konfiguration
 
 I den här snabb starten ska du använda Azure App konfiguration för att centralisera lagring och hantering av program inställningar för ett ASP.NET Core program. ASP.NET Core skapar ett enda nyckelbaserade konfigurations objekt med hjälp av inställningar från en eller flera data källor som anges av ett program. Dessa data källor kallas för *konfigurations leverantörer*. Eftersom app Configurations .NET Core-klient implementeras som en Konfigurationsprovider, visas tjänsten som en annan data källa.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/)
 - [.NET Core SDK](https://dotnet.microsoft.com/download)
@@ -36,12 +36,12 @@ I den här snabb starten ska du använda Azure App konfiguration för att centra
 
     | Tangent | Värde |
     |---|---|
-    | TestApp:Settings:BackgroundColor | Vita |
+    | TestApp:Settings:BackgroundColor | Vit |
     | TestApp:Settings:FontSize | 24 |
     | TestApp:Settings:FontColor | Svarta |
     | TestApp:Settings:Message | Data från Azure App Configuration |
 
-    Lämna **etiketten** och **innehålls typen** tom för tillfället. Välj **Använd**.
+    Lämna **etiketten** och **innehålls typen** tom för tillfället. Välj **Tillämpa**.
 
 ## <a name="create-an-aspnet-core-web-app"></a>Skapa en ASP.NET Core-webbapp
 

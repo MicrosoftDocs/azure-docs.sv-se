@@ -138,6 +138,8 @@
           href: move-region.md
 - name: Referens
   items:
+    - name: Klientbibliotek
+      href: client-libraries.md
     - name: REST API-felkoder – Azure Key Vault
       href: rest-error-codes.md
     - name: Vanliga parametrar och sidhuvuden

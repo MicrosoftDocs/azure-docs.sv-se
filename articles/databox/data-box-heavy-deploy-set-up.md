@@ -1,6 +1,6 @@
 ---
 title: Självstudie för att konfigurera Azure Data Box Heavy | Microsoft Docs
-description: Lär dig hur du kopplar in och ansluter till Azure Data Box Heavy
+description: I den här självstudien får du lära dig hur du ansluter kablarna på din Azure Data Box Heavy, hur du ansluter Azure Data Box Heavy-enheten och hur du startar den.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 15e031bcdcac7bd84d58286f5bdb5a7b6cd0c973
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c38ff7e642017afe5f220ae26d3a04c2c0b706ee
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199216"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920950"
 ---
 ::: zone target = "docs"
 

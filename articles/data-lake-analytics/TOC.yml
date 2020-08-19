@@ -32,7 +32,7 @@
           href: ./security-controls-policy.md
         - name: Säkerhetsbaslinje för Azure Security Benchmark
           href: security-baseline.md
-- name: Gör så här för att
+- name: Anvisningar
   items:
     - name: Hantera Data Lake Analytics
       items:

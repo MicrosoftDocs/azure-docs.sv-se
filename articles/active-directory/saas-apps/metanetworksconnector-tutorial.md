@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med meta Networks Connector | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Meta Networks Connector.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 4ae5f30d-113b-4261-b474-47ffbac08bf7
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: a09eda25e8c7cc087770210cdfbe7e2bc9832acf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 71aaaeec174611a86b037b693187cc4f49fe1a0c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73160636"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88528955"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Självstudie: Azure Active Directory integrering med meta Networks Connector
 
@@ -32,9 +28,9 @@ Integreringen av Meta Networks Connector med Azure AD medför följande fördela
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att konfigurera Azure AD-integrering med Meta Networks Connector behöver du följande:
 
@@ -107,15 +103,15 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Meta 
 
     ![Information om enkel inloggning med Meta Networks Connector-domän och URL:er](common/idp-intiated.png)
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/saml/metadata`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/saml/metadata`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/sso/saml`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/sso/saml`
 
 5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     ![Information om enkel inloggning med Meta Networks Connector-domän och URL:er](common/both-advanced-urls.png)
 
-    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/login`
+    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/login`
 
     b. I textrutan **Vidarebefordransstatus** skriver du en URL med följande mönster: `https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/#/`
 
@@ -152,7 +148,7 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Meta 
 
     f. Klicka på **OK**
 
-    g. Klicka på **Spara**.
+    ex. Klicka på **Spara**.
 
 8. På sidan **Konfigurera enkel inloggning med SAML** går du till avsnittet **SAML-signeringscertifikat**, klickar du på **Ladda ned** för att ladda ned **Certifikat (Base64)** från de angivna alternativen enligt dina behov och sparar det på datorn.
 
@@ -229,8 +225,8 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** skriver du **brittasimon\@yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

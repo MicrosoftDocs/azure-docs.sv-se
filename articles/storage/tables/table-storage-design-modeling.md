@@ -8,12 +8,12 @@ ms.author: tamram
 ms.topic: article
 ms.date: 04/23/2018
 ms.subservice: tables
-ms.openlocfilehash: a7316bc60ea26968e30bb11ef97d63bddb33895a
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 3023b478ef7a4aaf6d9239e997bdf63282b56210
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235969"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271200"
 ---
 # <a name="modeling-relationships"></a>Modellera relationer
 I den här artikeln beskrivs modell processen som hjälper dig att utforma dina lagrings lösningar för Azure-tabeller.
@@ -51,7 +51,7 @@ I följande tabell sammanfattas de olika metoderna och nack delar med var och en
 <td>
 <ul>
 <li>Du kan uppdatera en avdelnings enhet med en enda åtgärd.</li>
-<li>Du kan använda en EGT för att upprätthålla konsekvens om du har ett krav på att ändra en avdelnings enhet när du uppdaterar/infogar/tar bort en anställds entitet. Om du till exempel underhåller ett antal anställda för varje avdelning.</li>
+<li>Du kan använda en enhets grupp transaktion * (EGT) för att upprätthålla konsekvens om du har ett krav för att ändra en avdelnings enhet när du uppdaterar/infogar/tar bort en anställds entitet. Om du till exempel underhåller ett antal anställda för varje avdelning.</li>
 </ul>
 </td>
 <td>
@@ -92,6 +92,9 @@ I följande tabell sammanfattas de olika metoderna och nack delar med var och en
 </td>
 </tr>
 </table>
+
+* Mer information finns i [enhets grupp transaktioner](table-storage-design.md#entity-group-transactions)  
+
 
 Hur du väljer mellan dessa alternativ och vilka av-och nack delar som är mest signifikanta beror på dina specifika program scenarier. Till exempel hur ofta ändrar du avdelnings enheter. behöver alla dina anställda-frågor ytterligare avdelnings information. hur nära är du på skalbarhets gränserna för dina partitioner eller ditt lagrings konto?  
 

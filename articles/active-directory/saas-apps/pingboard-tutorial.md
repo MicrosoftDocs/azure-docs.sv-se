@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Pingboard | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Pingboard.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 341d8dd712b858572ec5df76b176258ca87c8857
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0e7b09c13cd27bd8197f6b65a1213d3154db6ac3
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67094432"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553854"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>Självstudie: Azure Active Directory integrering med Pingboard
 
@@ -32,9 +28,9 @@ Genom att integrera Pingboard med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Pingboard behöver du följande objekt:
 
@@ -107,15 +103,15 @@ Utför följande steg för att konfigurera enkel inloggning med Pingboard i Azur
 
     ![Information om enkel inloggning för Pingboard-domän och URL: er](common/idp-intiated.png)
 
-    a. Skriv en URL i text rutan **identifierare** :`http://app.pingboard.com/sp`
+    a. Skriv en URL i text rutan **identifierare** : `http://app.pingboard.com/sp`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<entity-id>.pingboard.com/auth/saml/consume`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<entity-id>.pingboard.com/auth/saml/consume`
 
 5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     ![Information om enkel inloggning för Pingboard-domän och URL: er](common/metadata-upload-additional-signon.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<sub-domain>.pingboard.com/sign_in`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<sub-domain>.pingboard.com/sign_in`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska svars-URL:en och inloggnings-URL:en. Kontakta [Pingboard client support team](https://support.pingboard.com/) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -174,7 +170,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** brittasimon@yourcompanydomain.extension. Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** brittasimon@yourcompanydomain.extension . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
@@ -224,7 +220,7 @@ Syftet med det här avsnittet är att skapa en användare som kallas Britta Simo
 
     a. I text rutan **fullständigt namn** skriver du det fullständiga namnet på användaren som **Britta Simon**.
 
-    b. Skriv e-postadressen till användaren som **brittasimon@contoso.com**i text rutan **e-post** .
+    b. Skriv e-postadressen till användaren som i text rutan **e-post** **brittasimon@contoso.com** .
 
     c. Skriv jobb titeln för Britta Simon i text rutan för **jobb titeln** .
 

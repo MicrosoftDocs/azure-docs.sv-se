@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Tango Analytics | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory-och Tango-analys.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2f7555d3-e9ba-40b2-9b3a-2f0ab38a4c08
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 6d7b06d809d7ec3c421254b51a3cbd4a36d494ab
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3afe95d7a9c1c979e75e3887b410392b40891280
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67089109"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546568"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tango-analytics"></a>Självstudie: Azure Active Directory integrering med Tango Analytics
 
@@ -32,9 +28,9 @@ Genom att integrera Tango Analytics med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Tango Analytics behöver du följande objekt:
 
@@ -105,9 +101,9 @@ Utför följande steg för att konfigurera enkel inloggning med Tango Analytics 
 
     ![Information om enkel inloggning för Tango Analytics-domän och URL](common/idp-intiated.png)
 
-    a. I text rutan **identifierare** skriver du in värdet:`TACORE_SSO`
+    a. I text rutan **identifierare** skriver du in värdet: `TACORE_SSO`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://mts.tangoanalytics.com/saml2/sp/acs/post`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://mts.tangoanalytics.com/saml2/sp/acs/post`
 
     > [!NOTE]
     > Värdet för svars-URL:en är inte verkligt. Uppdatera detta med den faktiska svars-URL: en. Kontakta [Tango Analytics client support team](mailto:support@tangoanalytics.com) för att få det här värdet. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -149,7 +145,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **Användarnamn** anger du **brittasimon@yourcompanydomain.extension**  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

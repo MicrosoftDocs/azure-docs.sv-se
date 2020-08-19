@@ -23,7 +23,7 @@ Ett arbets flöde definieras av en YAML-fil (. yml) i `/.github/workflows/` sök
 
 För ett Azure Functions-arbetsflöde har filen tre delar: 
 
-| Avsnitt | Uppgifter |
+| Avsnitt | Aktiviteter |
 | ------- | ----- |
 | **Autentisering** | <ol><li>Definiera ett huvud namn för tjänsten.</li><li>Ladda ned publicerings profil.</li><li>Skapa en GitHub-hemlighet.</li></ol>|
 | **Skapa** | <ol><li>Konfigurera miljön.</li><li>Bygg in Function-appen.</li></ol> |

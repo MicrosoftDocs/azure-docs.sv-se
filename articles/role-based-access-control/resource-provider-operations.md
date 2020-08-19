@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 07/29/2020
+ms.date: 08/16/2020
 ms.custom: generated
-ms.openlocfilehash: 753ee8eef1af1dbac9c776ed0410d2143cd71735
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 5809a2325b825bde74c7a8859c3a96f94c05b170
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449069"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272051"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure Resource Provider-åtgärder
 
@@ -40,7 +40,7 @@ Klicka på namnet på resurs leverantören i följande tabell om du vill se en l
 | [Microsoft. CDN](#microsoftcdn) |
 | [Microsoft. ClassicNetwork](#microsoftclassicnetwork) |
 | [Microsoft.Network](#microsoftnetwork) |
-| **Lagring** |
+| **Storage** |
 | [Microsoft. ClassicStorage](#microsoftclassicstorage) |
 | [Microsoft. data-](#microsoftdatabox) |
 | [Microsoft. ImportExport](#microsoftimportexport) |
@@ -124,7 +124,7 @@ Klicka på namnet på resurs leverantören i följande tabell om du vill se en l
 | **Migrera** |
 | [Microsoft. Migrate](#microsoftmigrate) |
 | [Microsoft. OffAzure](#microsoftoffazure) |
-| **Övervakare** |
+| **Övervaka** |
 | [Microsoft. AlertsManagement](#microsoftalertsmanagement) |
 | [Microsoft. Insights](#microsoftinsights) |
 | [Microsoft. OperationalInsights](#microsoftoperationalinsights) |
@@ -620,12 +620,21 @@ Azure-tjänst: [Content Delivery Network](../cdn/index.yml)
 > | Microsoft. CDN/CheckNameAvailability/åtgärd |  |
 > | Microsoft. CDN/ValidateProbe/åtgärd |  |
 > | Microsoft. CDN/CheckResourceUsage/åtgärd |  |
+> | Microsoft. CDN/cdnwebapplicationfirewallmanagedrulesets/Read |  |
+> | Microsoft. CDN/cdnwebapplicationfirewallmanagedrulesets/Write |  |
+> | Microsoft. CDN/cdnwebapplicationfirewallmanagedrulesets/Delete |  |
+> | Microsoft. CDN/cdnwebapplicationfirewallpolicies/Read |  |
+> | Microsoft. CDN/cdnwebapplicationfirewallpolicies/Write |  |
+> | Microsoft. CDN/cdnwebapplicationfirewallpolicies/Delete |  |
 > | Microsoft. CDN/edgenodes/Read |  |
 > | Microsoft. CDN/edgenodes/Write |  |
 > | Microsoft. CDN/edgenodes/Delete |  |
 > | Microsoft. CDN/operationresults/Read |  |
 > | Microsoft. CDN/operationresults/Write |  |
 > | Microsoft. CDN/operationresults/Delete |  |
+> | Microsoft. CDN/operationresults/cdnwebapplicationfirewallpolicyresults/Read |  |
+> | Microsoft. CDN/operationresults/cdnwebapplicationfirewallpolicyresults/Write |  |
+> | Microsoft. CDN/operationresults/cdnwebapplicationfirewallpolicyresults/Delete |  |
 > | Microsoft. CDN/operationresults/profileresults/Read |  |
 > | Microsoft. CDN/operationresults/profileresults/Write |  |
 > | Microsoft. CDN/operationresults/profileresults/Delete |  |
@@ -2114,6 +2123,7 @@ Azure-tjänst: [App Service](../app-service/index.yml), [Azure Functions](../azu
 > | Microsoft. Web/connectionGateways/Delete | Tar bort en gateway för anslutning. |
 > | Microsoft. webb/connectionGateways/flytta/åtgärd | Flyttar en gateway för anslutning. |
 > | Microsoft. Web/connectionGateways/JOIN/åtgärd | Ansluter till en gateway för anslutning. |
+> | Microsoft. Web/connectionGateways/associera/åtgärd | Associeras med en gateway för anslutning. |
 > | Microsoft. Web/connectionGateways/ListStatus/åtgärd | Visar status för en anslutnings-Gateway. |
 > | Microsoft. Web/Connections/Read | Hämta listan över anslutningar. |
 > | Microsoft. Web/Connections/Write | Skapar eller uppdaterar en anslutning. |
@@ -2249,6 +2259,11 @@ Azure-tjänst: [App Service](../app-service/index.yml), [Azure Functions](../azu
 > | Microsoft. Web/Sites/backups/Restore/Action | Återställa Web Apps säkerhets kopior. |
 > | Microsoft. Web/Sites/backups/Delete | Ta bort Web Apps säkerhets kopior. |
 > | Microsoft. Web/Sites/backups/Write | Uppdatera Web Apps säkerhets kopieringar. |
+> | Microsoft. Web/Sites/basicPublishingCredentialsPolicies/Read | Lista vilka publicerings metoder som tillåts för en webbapp |
+> | Microsoft. Web/Sites/basicPublishingCredentialsPolicies/FTP/Read | Ta reda på om autentiseringsuppgifter för FTP-publicering tillåts för en webbapp |
+> | Microsoft. Web/Sites/basicPublishingCredentialsPolicies/FTP/Write | Uppdatera om autentiseringsuppgifter för FTP-publicering tillåts för en webbapp |
+> | Microsoft. Web/Sites/basicPublishingCredentialsPolicies/SCM/Read | Hämta om autentiseringsuppgifter för SCM-publicering tillåts för en webbapp |
+> | Microsoft. Web/Sites/basicPublishingCredentialsPolicies/SCM/Write | Uppdatera om autentiseringsuppgifter för SCM-publicering tillåts för en webbapp |
 > | Microsoft. Web/Sites/config/Read | Hämta konfigurations inställningar för webb program |
 > | Microsoft. Web/Sites/config/List/Action | Visa en lista över säkerhets känsliga inställningar för webbappen, till exempel att publicera autentiseringsuppgifter, appinställningar och anslutnings strängar |
 > | Microsoft. Web/Sites/config/Write | Uppdatera konfigurations inställningar för webb program |
@@ -2341,6 +2356,9 @@ Azure-tjänst: [App Service](../app-service/index.yml), [Azure Functions](../azu
 > | Microsoft. Web/Sites/Metrics/Read | Hämta Web Apps mått. |
 > | Microsoft. Web/Sites/metricsdefinitions/Read | Hämta Web Apps mått definitioner. |
 > | Microsoft. Web/Sites/migratemysql/Read | Hämta Web Apps migrera MySql. |
+> | Microsoft. Web/Sites/networkConfig/Read | Hämta App Service nätverks konfiguration. |
+> | Microsoft. Web/Sites/networkConfig/Write | Uppdatera App Service nätverks konfiguration. |
+> | Microsoft. Web/Sites/networkConfig/Delete | Ta bort App Service nätverks konfiguration. |
 > | Microsoft. Web/Sites/networktraces/operationresults/Read | Få Web Apps nätverks spårnings åtgärds resultat. |
 > | Microsoft. Web/Sites/operationresults/Read | Hämta Web Apps åtgärds resultat. |
 > | Microsoft. Web/Sites/Operations/Read | Hämta Web Apps-åtgärder. |
@@ -2349,6 +2367,10 @@ Azure-tjänst: [App Service](../app-service/index.yml), [Azure Functions](../azu
 > | Microsoft. Web/Sites/premieraddons/Read | Få Web Apps Premier-tillägg. |
 > | Microsoft. Web/Sites/premieraddons/Write | Uppdatera Web Apps Premier-tillägg. |
 > | Microsoft. Web/Sites/privateaccess/Read | Hämta data runt åtkomst till privata webbplatser och auktoriserade virtuella nätverk som har åtkomst till webbplatsen. |
+> | Microsoft. Web/Sites/privateEndpointConnections/Write | Godkänna eller avvisa en anslutning till en privat slutpunkt. |
+> | Microsoft. Web/Sites/privateEndpointConnections/Read | Hämta en privat slut punkts anslutning eller listan över privata slut punkts anslutningar. |
+> | Microsoft. Web/Sites/privateEndpointConnections/Delete | Ta bort en privat slut punkts anslutning. |
+> | Microsoft. Web/Sites/privateLinkResources/Read | Hämta resurser för privat länk. |
 > | Microsoft. Web/Sites/Processes/Read | Hämta Web Appss processer. |
 > | Microsoft. Web/Sites/Processes/modules/Read | Hämta moduler för Web Apps processer. |
 > | Microsoft. Web/Sites/Processes/threads/Read | Hämta Web Apps bearbetar trådar. |
@@ -2394,6 +2416,11 @@ Azure-tjänst: [App Service](../app-service/index.yml), [Azure Functions](../azu
 > | Microsoft. webb/platser/platser/säkerhets kopieringar/lista/åtgärd | Visa Web Apps säkerhets kopiering av platser. |
 > | Microsoft. Web/Sites/platser/säkerhets kopiering/återställning/åtgärd | Återställa säkerhets kopior av Web Apps platser. |
 > | Microsoft. Web/Sites/lotss/backups/Delete | Ta bort säkerhets kopior för Web Apps platser. |
+> | Microsoft. Web/Sites/lotss/basicPublishingCredentialsPolicies/Read | Lista vilka autentiseringsuppgifter för publicering som tillåts för en webbapp |
+> | Microsoft. Web/Sites/lotss/basicPublishingCredentialsPolicies/FTP/Read | Ta reda på om autentiseringsuppgifter för FTP-publicering tillåts för en webbapp |
+> | Microsoft. Web/Sites/lotss/basicPublishingCredentialsPolicies/FTP/Write | Uppdatera om autentiseringsuppgifter för FTP-publicering tillåts för en webbapp |
+> | Microsoft. Web/Sites/lotss/basicPublishingCredentialsPolicies/SCM/Read | Hämta om autentiseringsuppgifter för SCM-publicering tillåts för en webbapp |
+> | Microsoft. Web/Sites/lotss/basicPublishingCredentialsPolicies/SCM/Write | Uppdatera om autentiseringsuppgifter för SCM-publicering tillåts för en webbapp |
 > | Microsoft. Web/Sites/lotss/config/Read | Hämta konfigurations inställningar för webb program plats |
 > | Microsoft. Web/Sites/lotss/config/List/Action | Visa en lista med säkerhets känsliga inställningar för webbappens plats, till exempel autentiseringsuppgifter för publicering, appar och anslutnings strängar |
 > | Microsoft. Web/Sites/lotss/config/Write | Uppdatera konfigurations inställningar för webb program plats |
@@ -2514,6 +2541,7 @@ Azure-tjänst: [App Service](../app-service/index.yml), [Azure Functions](../azu
 > | Microsoft. Web/staticSites/Write | Skapa en ny statisk plats eller uppdatera en befintlig |
 > | Microsoft. Web/staticSites/Delete | Ta bort en befintlig statisk plats |
 > | Microsoft. Web/staticSites/createinvitation/åtgärd | Skapar invitiation-länk för statisk webbplats användare för en uppsättning roller |
+> | Microsoft. Web/staticSites/listConfiguredRoles/åtgärd | Visar en lista över roller som har kon figurer ATS för den statiska platsen. |
 > | Microsoft. Web/staticSites/listfunctionappsettings/åtgärd | Visa program inställningar för en statisk plats |
 > | Microsoft. Web/staticSites/loss/åtgärd | Koppla från en statisk plats från den för tillfället länkade databasen |
 > | Microsoft. Web/staticSites/getuser/åtgärd | Hämta en användares information för en statisk plats |
@@ -3114,6 +3142,7 @@ Azure-tjänst: [Data Factory](../data-factory/index.yml)
 > | Microsoft. DataFactory/factors/sandboxpipelineruns/Action | Frågar om fel söknings pipelinen körs. |
 > | Microsoft. DataFactory/factors/querytriggers/Action | Skickar frågor till utlösarna. |
 > | Microsoft. DataFactory/factors/getFeatureValue/Action | Hämta funktions värde för exponerings kontroll för den angivna platsen. |
+> | Microsoft. DataFactory/factors/queryFeaturesValue/Action | Hämta funktions värden för exponerings kontroll för en lista över funktioner |
 > | Microsoft. DataFactory/factors/getDataPlaneAccess/Action | Hämtar åtkomst till ADF dataplanen-tjänsten. |
 > | Microsoft. DataFactory/factors/getGitHubAccessToken/Action | Hämtar GitHub-åtkomsttoken. |
 > | Microsoft. DataFactory/factors/querytriggerruns/Action | Frågar om utlösaren körs. |
@@ -3133,6 +3162,8 @@ Azure-tjänst: [Data Factory](../data-factory/index.yml)
 > | Microsoft. DataFactory/factors/integrationruntimes/Delete | Tar bort alla Integration Runtime. |
 > | Microsoft. DataFactory/factors/integrationruntimes/start/Action | Startar alla Integration Runtime. |
 > | Microsoft. DataFactory/factors/integrationruntimes/stopp/åtgärd | Stoppar alla Integration Runtime. |
+> | Microsoft. DataFactory/factors/integrationruntimes/getconnectioninfo/Action | Läser Integration Runtime anslutnings information. |
+> | Microsoft. DataFactory/factors/integrationruntimes/listauthkeys/Action | Visar en lista över autentiseringsinställningarna för alla Integration Runtime. |
 > | Microsoft. DataFactory/factors/integrationruntimes/synccredentials/Action | Synkroniserar autentiseringsuppgifterna för angivet Integration Runtime. |
 > | Microsoft. DataFactory/factors/integrationruntimes/Upgrade/Action | Uppgraderar den angivna Integration Runtime. |
 > | Microsoft. DataFactory/factors/integrationruntimes/createexpressshirinstalllink/Action | Skapa en snabb installations länk för Integration Runtime med egen värd. |
@@ -3141,9 +3172,7 @@ Azure-tjänst: [Data Factory](../data-factory/index.yml)
 > | Microsoft. DataFactory/factors/integrationruntimes/linkedIntegrationRuntime/Action | Skapa länkad Integration Runtime referens på den angivna delade Integration Runtime. |
 > | Microsoft. DataFactory/factors/integrationruntimes/getObjectMetadata/Action | Hämta SSIS Integration Runtime metadata för den angivna Integration Runtime. |
 > | Microsoft. DataFactory/factors/integrationruntimes/refreshObjectMetadata/Action | Uppdatera SSIS Integration Runtime metadata för den angivna Integration Runtime. |
-> | Microsoft. DataFactory/factors/integrationruntimes/getconnectioninfo/Read | Läser Integration Runtime anslutnings information. |
 > | Microsoft. DataFactory/factors/integrationruntimes/getStatus/Read | Läser Integration Runtimes status. |
-> | Microsoft. DataFactory/factors/integrationruntimes/listauthkeys/Read | Visar en lista över autentiseringsinställningarna för alla Integration Runtime. |
 > | Microsoft. DataFactory/factors/integrationruntimes/monitoringdata/Read | Hämtar övervaknings data för alla Integration Runtime. |
 > | Microsoft. DataFactory/factors/integrationruntimes/Nodes/Read | Läser noden för angivet Integration Runtime. |
 > | Microsoft. DataFactory/factors/integrationruntimes/Nodes/Delete | Tar bort noden för angivet Integration Runtime. |
@@ -3187,6 +3216,8 @@ Azure-tjänst: [Data Factory](../data-factory/index.yml)
 > | Microsoft. DataFactory/factors/utlösare/starta/åtgärd | Startar alla utlösare. |
 > | Microsoft. DataFactory/factors/utlösare/stoppa/åtgärd | Stoppar eventuell utlösare. |
 > | Microsoft. DataFactory/factors/triggers/triggerruns/Read | Läser utlösare som körs. |
+> | Microsoft. DataFactory/factors/triggers/triggerruns/Cancel/Action | Avbryt utlösarens körning med angivet utlösar-ID. |
+> | Microsoft. DataFactory/factors/utlösare/triggerruns/kör om/åtgärd | Kör om utlösarens körning med angivet utlösar-ID. |
 > | Microsoft. DataFactory/locations/configureFactoryRepo/Action | Konfigurerar lagrings platsen för fabriken. |
 > | Microsoft. DataFactory/locations/getFeatureValue/Action | Hämta funktions värde för exponerings kontroll för den angivna platsen. |
 > | Microsoft. DataFactory/locations/getFeatureValue/Read | Läser funktions värdet för exponerings kontroll för den angivna platsen. |
@@ -4881,12 +4912,29 @@ Azure-tjänst: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. CognitiveServices/konton/ansikte/ögonblicks bild/skrivning | Uppdatera egenskaperna för en ögonblicks bild. |
 > | Microsoft. CognitiveServices/konton/ansikte/ögonblicks bilder/läsa | Lista alla användares tillgängliga ögonblicks bilder med information. * |
 > | Microsoft. CognitiveServices/Accounts/FormRecognizer/Custom/träna/Action | Skapa och träna en anpassad modell.<br>Ombordpersonalen måste innehålla en käll parameter som antingen är en extern tillgänglig Azure Storage BLOB container-URI (helst en signatur-URI för delad åtkomst) eller en giltig sökväg till en datamapp på en lokalt monterad enhet.<br>När du har angett lokala sökvägar måste de följa formatet för Linux/UNIX-sökvägen och vara en absolut sökväg som är rotad till monterings konfigurationen för indatakälla |
+> | Microsoft. CognitiveServices/Accounts/FormRecognizer/Custom/Models/Action | Skapa och träna en anpassad modell.<br>Begäran måste innehålla en käll parameter som antingen är en externt tillgänglig Azure Storage BLOB container-URI (helst en signatur-URI för delad åtkomst) eller en giltig sökväg till en datamapp på en lokalt monterad enhet.<br>När du har angett lokala sökvägar måste de följa formatet för Linux/UNIX-sökvägen och vara en absolut sökväg till värdet för inställningen för monterings konfiguration för indatakälla, t. ex., om värdet {Mounts: indatavärdet} är '/input ', så skulle en giltig käll Sök väg vara '/input/contosodataset '.<br>Alla data som ska tränas förväntas finnas under källmappen eller undermappar under den.<br>Modeller tränas med dokument som har följande innehålls typ: ' Application/PDF ', ' image/jpeg ', ' image/png ', ' bild/TIFF '.<br>Annan typ av innehåll ignoreras. |
 > | Microsoft. CognitiveServices/Accounts/FormRecognizer/Custom/Models/analysera/åtgärd | Extrahera nyckel/värde-par från ett givet dokument. Indata-dokumentet måste vara av en av de innehålls typer som stöds: "Application/PDF", "image/jpeg" eller "image/png". Ett lyckat svar returneras i JSON. |
 > | Microsoft. CognitiveServices/Accounts/FormRecognizer/Custom/Models/Delete | Ta bort modell artefakter. |
-> | Microsoft. CognitiveServices/Accounts/FormRecognizer/Custom/Models/Read | Hämta information om en modell. Få information om alla tränade anpassade modeller * |
+> | Microsoft. CognitiveServices/Accounts/FormRecognizer/Custom/Models/Read | Hämta information om en modell. |
+> | Microsoft. CognitiveServices/Accounts/FormRecognizer/Custom/Models/copyauthorization/Action | Skapa en nytto last för att kopiera en modell i mål formulärets tolknings resurs. |
+> | Microsoft. CognitiveServices/Accounts/FormRecognizer/Custom/Models/Copy/åtgärd | Kopiera en anpassad formulär tolks modell från en prenumeration till en annan.<br>Starta processen genom att hämta en `modelId` token från mål slut punkten med hjälp av det här API: et med `source=false` frågesträngen.<br>Skicka sedan `modelId` referensen i begär ande texten tillsammans med annan information om mål resurser. |
+> | Microsoft. CognitiveServices/Accounts/FormRecognizer/Custom/Models/analysera/åtgärd | Extrahera nyckel/värde-par, tabeller och semantiska värden från ett givet dokument.<br>Indata-dokumentet måste vara av en av de innehålls typer som stöds: "Application/PDF", "image/jpeg", "image/png" eller "image/TIFF".<br>Du kan också använda ' Application/JSON '-typ för att ange URL-platsen för det dokument som ska analyseras. |
+> | Microsoft. CognitiveServices/Accounts/FormRecognizer/Custom/Models/Copy/åtgärd | Kopiera en anpassad formulär igenkännings modell till en mål formulärs igenkännings resurs. Innan du anropar den här åtgärden måste du först få behörighet att kopiera till  |
+> | Microsoft. CognitiveServices/Accounts/FormRecognizer/Custom/Models/Delete | Markera modell för borttagning. Modell artefakter tas bort permanent inom 48 timmar. |
+> | Microsoft. CognitiveServices/Accounts/FormRecognizer/Custom/Models/copyauthorization/Action | Generera en nytto last för en modell kopierings åtgärd. Den här åtgärden anropas mot en resurs slut punkt för ett mål formulär  |
+> | Microsoft. CognitiveServices/Accounts/FormRecognizer/Custom/Models/Read | Få detaljerad information om en anpassad modell. Hämta information om alla anpassade modeller |
+> | Microsoft. CognitiveServices/Accounts/FormRecognizer/Custom/Models/analyzeresults/Read | Hämta aktuell status och resultatet av åtgärden analysera formulär. |
+> | Microsoft. CognitiveServices/Accounts/FormRecognizer/Custom/Models/analyzeresults/Read | Hämta aktuell status och resultatet av åtgärden analysera formulär. |
+> | Microsoft. CognitiveServices/Accounts/FormRecognizer/Custom/Models/copyresults/Read | Hämta aktuell status och resultatet av den anpassade kopierings åtgärden för formulär modellen. |
+> | Microsoft. CognitiveServices/Accounts/FormRecognizer/Custom/Models/copyresults/Read | Hämta aktuell status och resultatet av den anpassade kopierings åtgärden för formulär modellen. |
 > | Microsoft. CognitiveServices/Accounts/FormRecognizer/Custom/Models/Keys/Read | Hämta nycklar för modellen. |
-> | Microsoft. CognitiveServices/Accounts/FormRecognizer/fördefinierad/inlevns/asyncbatchanalyze/åtgärd | Extrahera fält text och semantiska värden från ett givet kvitto dokument. Det inmatade bild dokumentet måste vara en av de innehålls typer som stöds – JPEG, PNG, BMP, PDF eller TIFF. Ett lyckat svar är en JSON som innehåller ett fält med namnet "operation-location", som innehåller URL: en för åtgärden Hämta ingångs resultat till asynkront Hämta resultaten. |
-> | Microsoft. CognitiveServices/Accounts/FormRecognizer/rekonstruerad/inlevns/Operations/Action | Fråga efter status och hämta resultatet av en åtgärd för att analysera inleverans. URL: en till det här gränssnittet kan hämtas från "operation-location"-huvudet i svaret för att analysera kvittot. |
+> | Microsoft. CognitiveServices/Accounts/FormRecognizer/layout/analysera/åtgärd | Extrahera text-och layoutinformation från ett givet dokument.<br>Indata-dokumentet måste vara av en av de innehålls typer som stöds: "Application/PDF", "image/jpeg", "image/png" eller "image/TIFF".<br>Du kan också använda ' Application/JSON '-typ för att ange URL-platsen för det dokument som ska analyseras. |
+> | Microsoft. CognitiveServices/Accounts/FormRecognizer/layout/analyzeresults/Read | Spåra förloppet och få resultatet av åtgärden analysera layout |
+> | Microsoft. CognitiveServices/Accounts/FormRecognizer/prekonstruerad/businesscard/analysera/åtgärd | Extrahera fält text och semantiska värden från ett givet visitkorts dokument.  |
+> | Microsoft. CognitiveServices/Accounts/FormRecognizer/prekonstruerad/businesscard/analyzeresults/Read | Fråga efter status och hämta resultatet av en analysera verksamhets korts åtgärd. URL: en till det här gränssnittet kan hämtas från "operation-location"-huvudet i analysera affärskorts svar. |
+> | Microsoft. CognitiveServices/Accounts/FormRecognizer/fördefinierad/inlevns/asyncbatchanalyze/åtgärd | Extrahera fält text och semantiska värden från ett givet kvitto dokument. Indatamängden måste vara ett av de som stöds |
+> | Microsoft. CognitiveServices/Accounts/FormRecognizer/prekonstruerad/inlevns/analyzeresults/Read | Fråga efter status och hämta resultatet av en åtgärd för att analysera inleverans. URL: en till det här gränssnittet kan hämtas från "operation-location"-huvudet i svaret för att analysera kvittot. |
+> | Microsoft. CognitiveServices/Accounts/FormRecognizer/förbyggd/inlevns/Operations/Read | Fråga efter status och hämta resultatet av en åtgärd för att analysera inleverans. URL: en till det här gränssnittet kan hämtas från "operation-location"-huvudet i svaret för att analysera kvittot. |
 > | Microsoft. CognitiveServices/konton/ImageSearch/information/åtgärd | Returnerar insikter om en bild, till exempel webb sidor som innehåller bilden. |
 > | Microsoft. CognitiveServices/Accounts/ImageSearch/search/Action | Hämta relevanta avbildningar för en specifik fråga. |
 > | Microsoft. CognitiveServices/konton/ImageSearch/trending/åtgärd | Hämta bilder för utveckling. |
@@ -5659,6 +5707,7 @@ Azure-tjänst: [Azure Stack Edge](../databox-online/azure-stack-edge-overview.md
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Orders/Read | Listar eller hämtar order |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/order/Write | Skapar eller uppdaterar order |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Orders/Delete | Tar bort order |
+> | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Orders/listDCAccessCode/Action | ArmApiDesc_action_listDCAccessCode_orders |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Orders/operationResults/Read | Visar eller hämtar åtgärds resultatet |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/roles/Read | Visar eller hämtar roller |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/roles/Read | Visar eller hämtar roller |
@@ -5700,7 +5749,6 @@ Azure-tjänst: [Azure Stack Edge](../databox-online/azure-stack-edge-overview.md
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Users/Write | Skapar eller uppdaterar resurs användare |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Users/Delete | Tar bort resurs användare |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/Users/operationResults/Read | Visar eller hämtar åtgärds resultatet |
-> | Microsoft. DataBoxEdge/Operations/Read | Visar eller hämtar åtgärder |
 > | Microsoft. DataBoxEdge/SKU/Read | Visar eller hämtar SKU: er |
 
 ### <a name="microsoftdatacatalog"></a>Microsoft. DataCatalog
@@ -5763,6 +5811,13 @@ Azure-tjänst: [Event Grid](../event-grid/index.yml)
 > | Microsoft. EventGrid/operationResults/Read | Läs resultatet av en åtgärd |
 > | Microsoft. EventGrid/Operations/Read | Visa en lista över EventGrid-åtgärder. |
 > | Microsoft. EventGrid/operationsStatus/Read | Läs status för en åtgärd |
+> | Microsoft. EventGrid/partnerNamespaces/providers/Microsoft. Insights/diagnosticSettings/Read | Hämtar den diagnostiska inställningen för partner namn områden |
+> | Microsoft. EventGrid/partnerNamespaces/providers/Microsoft. Insights/diagnosticSettings/Write | Skapar eller uppdaterar den diagnostiska inställningen för partner namn områden |
+> | Microsoft. EventGrid/partnerNamespaces/providers/Microsoft. Insights/logDefinitions/Read | Tillåter åtkomst till diagnostikloggar |
+> | Microsoft. EventGrid/partnerNamespaces/providers/Microsoft. Insights/metricDefinitions/Read | Hämtar tillgängliga mått för partner namn områden |
+> | Microsoft. EventGrid/partnerTopics/providers/Microsoft. Insights/diagnosticSettings/Read | Hämtar den diagnostiska inställningen för partner ämnen |
+> | Microsoft. EventGrid/partnerTopics/providers/Microsoft. Insights/diagnosticSettings/Write | Skapar eller uppdaterar den diagnostiska inställningen för partner ämnen |
+> | Microsoft. EventGrid/partnerTopics/providers/Microsoft. Insights/logDefinitions/Read | Tillåter åtkomst till diagnostikloggar |
 > | Microsoft. EventGrid/partnerTopics/providers/Microsoft. Insights/metricDefinitions/Read | Hämtar tillgängliga mått för partner ämnen |
 > | Microsoft. EventGrid/SKU/läsa | Läs tillgängliga SKU-definitioner för Event Grid-resurser |
 > | Microsoft. EventGrid/systemTopics/providers/Microsoft. Insights/diagnosticSettings/Read | Hämtar den diagnostiska inställningen för system ämnen |
@@ -6339,6 +6394,10 @@ Azure-tjänst: [Security Center](../security-center/index.yml)
 > | Microsoft. Security/iotSecuritySolutions/Delete | Tar bort IoT-säkerhetslösningar |
 > | Microsoft. Security/iotSecuritySolutions/Read | Hämtar IoT-säkerhetslösningar |
 > | Microsoft. Security/iotSecuritySolutions/analyticsModels/Read | Hämtar IoT Security Analytics-modellen |
+> | Microsoft. Security/iotSecuritySolutions/analyticsModels/Read | Hämtar IoT-aviseringar |
+> | Microsoft. Security/iotSecuritySolutions/analyticsModels/Read | Hämtar IoT-aviseringar |
+> | Microsoft. Security/iotSecuritySolutions/analyticsModels/Read | Hämtar IoT-rekommendations typer |
+> | Microsoft. Security/iotSecuritySolutions/analyticsModels/Read | Hämtar IoT-rekommendationer |
 > | Microsoft. Security/iotSecuritySolutions/analyticsModels/aggregatedAlerts/Read | Hämtar sammanställda IoT-aviseringar |
 > | Microsoft. Security/iotSecuritySolutions/analyticsModels/aggregatedAlerts/Stäng/åtgärd | Stänger av IoT-aggregerade aviseringar |
 > | Microsoft. Security/iotSecuritySolutions/analyticsModels/aggregatedRecommendations/Read | Hämtar de IoT-aggregerade rekommendationerna |
@@ -6599,6 +6658,7 @@ Azure-tjänst: [Azure Lab Services](../lab-services/index.yml)
 > | Microsoft. LabServices/labAccounts/Labs/AddUsers/Action | Lägga till användare i ett labb |
 > | Microsoft. LabServices/labAccounts/Labs/SendEmail/Action | Skicka e-post med registrerings länk till labbet |
 > | Microsoft. LabServices/labAccounts/Labs/GetLabPricingAndAvailability/Action | Hämta pris per labb enhet för det här labbet och tillgängligheten som anger om det här labbet kan skalas upp. |
+> | Microsoft. LabServices/labAccounts/Labs/SyncUserList/Action | Synkroniserar ändringarna från AAD-gruppen till UserList |
 > | Microsoft. LabServices/labAccounts/Labs/environmentSettings/Delete | Ta bort miljö inställning. |
 > | Microsoft. LabServices/labAccounts/Labs/environmentSettings/Read | Läs miljö inställning. |
 > | Microsoft. LabServices/labAccounts/Labs/environmentSettings/Write | Lägg till eller ändra miljö inställning. |
@@ -6668,6 +6728,8 @@ Azure-tjänst: [Azure Migrate](../migrate/migrate-services-overview.md)
 > | Microsoft. Migrate/assessmentprojects/Delete | Tar bort bedömnings projektet |
 > | Microsoft. Migrate/assessmentprojects/assessmentOptions/Read | Hämtar de bedömnings alternativ som är tillgängliga på den aktuella platsen |
 > | Microsoft. Migrate/assessmentprojects/bedömningar/läsa | Visar en lista över utvärderingar inom ett projekt |
+> | Microsoft. Migrate/assessmentprojects/assessmentsSummary/Read | Hämtar utvärderings sammanfattningen som är tillgänglig på den aktuella platsen |
+> | Microsoft. Migrate/assessmentprojects/avsAssessmentOptions/Read | Hämtar alternativ för AVS-utvärdering som är tillgängliga på den aktuella platsen |
 > | Microsoft. Migrate/assessmentprojects/Groups/Read | Hämta egenskaperna för en grupp |
 > | Microsoft. Migrate/assessmentprojects/Groups/Write | Skapar en ny grupp eller uppdaterar en befintlig grupp |
 > | Microsoft. Migrate/assessmentprojects/Groups/Delete | Tar bort en grupp |
@@ -6677,6 +6739,11 @@ Azure-tjänst: [Azure Migrate](../migrate/migrate-services-overview.md)
 > | Microsoft. Migrate/assessmentprojects/Groups/assessments/Delete | Tar bort en utvärdering |
 > | Microsoft. Migrate/assessmentprojects/Groups/assessments/DownloadURL/Action | Laddar ned en utvärderings rapports URL |
 > | Microsoft. Migrate/assessmentprojects/Groups/assessments/assessedmachines/Read | Hämta egenskaperna för en utvärderad dator |
+> | Microsoft. Migrate/assessmentprojects/Groups/avsAssessments/Read | Hämtar egenskaperna för en AVS-utvärdering |
+> | Microsoft. Migrate/assessmentprojects/Groups/avsAssessments/Write | Skapar en ny AVS-utvärdering eller uppdaterar en befintlig AVS-utvärdering |
+> | Microsoft. Migrate/assessmentprojects/Groups/avsAssessments/Delete | Tar bort en AVS-utvärdering |
+> | Microsoft. Migrate/assessmentprojects/Groups/avsAssessments/DownloadURL/Action | Laddar ned en AVS-bedömnings rapports URL |
+> | Microsoft. Migrate/assessmentprojects/Groups/avsAssessments/avsassessedmachines/Read | Hämta egenskaperna för en dator som bedöms som en AVS-bedömning |
 > | Microsoft. Migrate/assessmentprojects/hypervcollectors/Read | Hämtar egenskaperna för HyperV-insamlaren |
 > | Microsoft. Migrate/assessmentprojects/hypervcollectors/Write | Skapar en ny HyperV-insamlare eller uppdaterar en befintlig HyperV-insamlare |
 > | Microsoft. Migrate/assessmentprojects/hypervcollectors/Delete | Tar bort HyperV-insamlaren |
@@ -6684,6 +6751,14 @@ Azure-tjänst: [Azure Migrate](../migrate/migrate-services-overview.md)
 > | Microsoft. Migrate/assessmentprojects/importcollectors/Write | Skapar en ny import insamlare eller uppdaterar en befintlig import insamlare |
 > | Microsoft. Migrate/assessmentprojects/importcollectors/Delete | Tar bort import insamlaren |
 > | Microsoft. Migrate/assessmentprojects/Machines/Read | Hämtar egenskaperna för en dator |
+> | Microsoft. Migrate/assessmentprojects/privateEndpointConnectionProxies/Read | Hämta anslutnings proxy för privat slutpunkt |
+> | Microsoft. Migrate/assessmentprojects/privateEndpointConnectionProxies/validate/Action | Verifiera en proxy för anslutning till privat slutpunkt |
+> | Microsoft. Migrate/assessmentprojects/privateEndpointConnectionProxies/Write | Skapa eller uppdatera en anslutning till en privat slut punkt |
+> | Microsoft. Migrate/assessmentprojects/privateEndpointConnectionProxies/Delete | Ta bort en proxy för anslutning till privat slutpunkt |
+> | Microsoft. Migrate/assessmentprojects/privateEndpointConnections/Read | Hämta privat slut punkts anslutning |
+> | Microsoft. Migrate/assessmentprojects/privateEndpointConnections/Write | Uppdatera en privat slut punkts anslutning |
+> | Microsoft. Migrate/assessmentprojects/privateEndpointConnections/Delete | Ta bort en privat slut punkts anslutning |
+> | Microsoft. Migrate/assessmentprojects/privateLinkResources/Read | Hämta privat länk resurs |
 > | Microsoft. Migrate/assessmentprojects/servercollectors/Read | Hämtar egenskaperna för Server insamlaren |
 > | Microsoft. Migrate/assessmentprojects/servercollectors/Write | Skapar en ny server insamlare eller uppdaterar en befintlig server insamlare |
 > | Microsoft. Migrate/assessmentprojects/vmwarecollectors/Read | Hämtar egenskaperna för VMware-insamlaren |
@@ -6696,16 +6771,28 @@ Azure-tjänst: [Azure Migrate](../migrate/migrate-services-overview.md)
 > | Microsoft. Migrate/migrateprojects/Delete | Tar bort ett migrerat projekt |
 > | Microsoft. Migrate/migrateprojects/registerTool/Action | Registrerar verktyget för ett migrera projekt |
 > | Microsoft. Migrate/migrateprojects/RefreshSummary/Action | Uppdaterar sammanfattningen av den migrerade projektet |
+> | Microsoft. Migrate/migrateprojects/registrationDetails/Action | Innehåller information om verktygs registreringen |
 > | Microsoft. Migrate/migrateprojects/DatabaseInstances/Read | Hämtar egenskaperna för en databas instans |
 > | Microsoft. Migrate/migrateprojects/databaser/läsa | Hämtar egenskaperna för en databas |
 > | Microsoft. Migrate/migrateprojects/Machines/Read | Hämtar egenskaperna för en dator |
 > | Microsoft. Migrate/migrateprojects/MigrateEvents/Read | Hämtar egenskaperna för ett migrerande händelser. |
 > | Microsoft. Migrate/migrateprojects/MigrateEvents/Delete | Tar bort en migrerings händelse |
+> | Microsoft. Migrate/migrateprojects/privateEndpointConnectionProxies/Read | Hämta anslutnings proxy för privat slutpunkt |
+> | Microsoft. Migrate/migrateprojects/privateEndpointConnectionProxies/validate/Action | Verifiera en proxy för anslutning till privat slutpunkt |
+> | Microsoft. Migrate/migrateprojects/privateEndpointConnectionProxies/Write | Skapa eller uppdatera en anslutning till en privat slut punkt |
+> | Microsoft. Migrate/migrateprojects/privateEndpointConnectionProxies/Delete | Ta bort en proxy för anslutning till privat slutpunkt |
+> | Microsoft. Migrate/migrateprojects/privateEndpointConnections/Read | Hämta privat slut punkts anslutning |
+> | Microsoft. Migrate/migrateprojects/privateEndpointConnections/Write | Uppdatera en privat slut punkts anslutning |
+> | Microsoft. Migrate/migrateprojects/privateEndpointConnections/Delete | Ta bort en privat slut punkts anslutning |
+> | Microsoft. Migrate/migrateprojects/privateLinkResources/Read | Hämta privat länk resurs |
 > | Microsoft. Migrate/migrateprojects/Solutions/Read | Hämtar egenskaper för att migrera projekt lösning |
 > | Microsoft. Migrate/migrateprojects/Solutions/Write | Skapar en ny lösning för att migrera projekt eller uppdaterar en befintlig lösning för att migrera projekt |
 > | Microsoft. Migrate/migrateprojects/Solutions/Delete | Tar bort en lösning för att migrera projekt |
 > | Microsoft. Migrate/migrateprojects/Solutions/getconfig/Action | Hämtar konfigurationen för migrera projekt lösning |
 > | Microsoft. Migrate/migrateprojects/Solutions/cleanupData/Action | Rensa informationen om migrerade projekt lösningar |
+> | Microsoft. Migrate/migrateprojects/VirtualDesktopUsers/Read | Hämtar egenskaperna för en användare med virtuella skriv bord |
+> | Microsoft. Migrate/migrateprojects/webservers/Read | Hämtar egenskaperna för en webb server |
+> | Microsoft. Migrate/migrateprojects/websites/Read | Hämtar egenskaperna för en webbplats |
 > | Microsoft. Migrate/Operations/Read | Visar en lista över åtgärder som är tillgängliga på Microsoft. Migrera resurs leverantör |
 > | Microsoft. Migrate/Projects/Read | Hämtar egenskaperna för ett projekt |
 > | Microsoft. Migrate/Projects/Write | Skapar ett nytt projekt eller uppdaterar ett befintligt projekt |
@@ -7432,6 +7519,7 @@ Azure-tjänst: [Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/arbets ytor/fråga/AppPlatformLogsforSpring/läsa | Läsa data från tabellen AppPlatformLogsforSpring |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/AppPlatformSystemLogs/läsa | Läsa data från tabellen AppPlatformSystemLogs |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/AppRequests/läsa | Läsa data från tabellen AppRequests |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/AppServiceAntivirusScanLogs/läsa | Läsa data från tabellen AppServiceAntivirusScanLogs |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/AppServiceAppLogs/läsa | Läsa data från tabellen AppServiceAppLogs |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/AppServiceAuditLogs/läsa | Läsa data från tabellen AppServiceAuditLogs |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/AppServiceConsoleLogs/läsa | Läsa data från tabellen AppServiceConsoleLogs |
@@ -7512,6 +7600,35 @@ Azure-tjänst: [Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/arbets ytor/fråga/ExchangeOnlineAssessmentRecommendation/läsa | Läsa data från tabellen ExchangeOnlineAssessmentRecommendation |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/FailedIngestion/läsa | Läsa data från tabellen FailedIngestion |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/FunctionAppLogs/läsa | Läsa data från tabellen FunctionAppLogs |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightAmbariClusterAlerts/läsa | Läsa data från tabellen HDInsightAmbariClusterAlerts |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightAmbariSystemMetrics/läsa | Läsa data från tabellen HDInsightAmbariSystemMetrics |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightGatewayAuditLogs/läsa | Läsa data från tabellen HDInsightGatewayAuditLogs |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightHadoopAndYarnLogs/läsa | Läsa data från tabellen HDInsightHadoopAndYarnLogs |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightHadoopAndYarnMetrics/läsa | Läsa data från tabellen HDInsightHadoopAndYarnMetrics |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightHBaseLogs/läsa | Läsa data från tabellen HDInsightHBaseLogs |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightHBaseMetrics/läsa | Läsa data från tabellen HDInsightHBaseMetrics |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightHiveAndLLAPLogs/läsa | Läsa data från tabellen HDInsightHiveAndLLAPLogs |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightHiveAndLLAPMetrics/läsa | Läsa data från tabellen HDInsightHiveAndLLAPMetrics |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightJupyterNotebookEvents/läsa | Läsa data från tabellen HDInsightJupyterNotebookEvents |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightKafkaLogs/läsa | Läsa data från tabellen HDInsightKafkaLogs |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightKafkaMetrics/läsa | Läsa data från tabellen HDInsightKafkaMetrics |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightOozieLogs/läsa | Läsa data från tabellen HDInsightOozieLogs |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightRangerAuditLogs/läsa | Läsa data från tabellen HDInsightRangerAuditLogs |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightSecurityLogs/läsa | Läsa data från tabellen HDInsightSecurityLogs |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightSparkApplicationEvents/läsa | Läsa data från tabellen HDInsightSparkApplicationEvents |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightSparkBlockManagerEvents/läsa | Läsa data från tabellen HDInsightSparkBlockManagerEvents |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightSparkEnvironmentEvents/läsa | Läsa data från tabellen HDInsightSparkEnvironmentEvents |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightSparkExecutorEvents/läsa | Läsa data från tabellen HDInsightSparkExecutorEvents |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightSparkExtraEvents/läsa | Läsa data från tabellen HDInsightSparkExtraEvents |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightSparkJobEvents/läsa | Läsa data från tabellen HDInsightSparkJobEvents |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightSparkLogs/läsa | Läsa data från tabellen HDInsightSparkLogs |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightSparkSQLExecutionEvents/läsa | Läsa data från tabellen HDInsightSparkSQLExecutionEvents |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightSparkStageEvents/läsa | Läsa data från tabellen HDInsightSparkStageEvents |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightSparkStageTaskAccumulables/läsa | Läsa data från tabellen HDInsightSparkStageTaskAccumulables |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightSparkTaskEvents/läsa | Läsa data från tabellen HDInsightSparkTaskEvents |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightStormLogs/läsa | Läsa data från tabellen HDInsightStormLogs |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightStormMetrics/läsa | Läsa data från tabellen HDInsightStormMetrics |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/HDInsightStormTopologyMetrics/läsa | Läsa data från tabellen HDInsightStormTopologyMetrics |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/pulsslag/läsa | Läsa data från pulsslags tabellen |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/HuntingBookmark/läsa | Läsa data från tabellen HuntingBookmark |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/IISAssessmentRecommendation/läsa | Läsa data från tabellen IISAssessmentRecommendation |
@@ -7527,6 +7644,7 @@ Azure-tjänst: [Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/arbets ytor/fråga/KubeNodeInventory/läsa | Läsa data från tabellen KubeNodeInventory |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/KubePodInventory/läsa | Läsa data från tabellen KubePodInventory |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/KubeServices/läsa | Läsa data från tabellen KubeServices |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/LAQueryLogs/läsa | Läsa data från tabellen LAQueryLogs |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/LinuxAuditLog/läsa | Läsa data från tabellen LinuxAuditLog |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/MAApplication/läsa | Läsa data från tabellen MAApplication |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/MAApplicationHealth/läsa | Läsa data från tabellen MAApplicationHealth |
@@ -7646,6 +7764,8 @@ Azure-tjänst: [Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/arbets ytor/fråga/UpdateRunProgress/läsa | Läsa data från tabellen UpdateRunProgress |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/UpdateSummary/läsa | Läsa data från tabellen UpdateSummary |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/Använd/Läs | Läsa data från användnings tabellen |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/UserAccessAnalytics/läsa | Läsa data från tabellen UserAccessAnalytics |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/UserPeerAnalytics/läsa | Läsa data från tabellen UserPeerAnalytics |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/VMBoundPort/läsa | Läsa data från tabellen VMBoundPort |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/VMComputer/läsa | Läsa data från tabellen VMComputer |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/VMConnection/läsa | Läsa data från tabellen VMConnection |
@@ -7654,6 +7774,7 @@ Azure-tjänst: [Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/arbets ytor/fråga/WaaSDeploymentStatus/läsa | Läsa data från tabellen WaaSDeploymentStatus |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/WaaSInsiderStatus/läsa | Läsa data från tabellen WaaSInsiderStatus |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/WaaSUpdateStatus/läsa | Läsa data från tabellen WaaSUpdateStatus |
+> | Microsoft. OperationalInsights/arbets ytor/fråga/visnings lista/läsa | Läsa data från tabellen visnings lista |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/WDAVStatus/läsa | Läsa data från tabellen WDAVStatus |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/WDAVThreat/läsa | Läsa data från tabellen WDAVThreat |
 > | Microsoft. OperationalInsights/arbets ytor/fråga/WindowsClientAssessmentRecommendation/läsa | Läsa data från tabellen WindowsClientAssessmentRecommendation |
@@ -7781,6 +7902,7 @@ Azure-tjänst: [Azure policy](../governance/policy/overview.md), [azure RBAC](ov
 > | Microsoft. Authorization/policyAssignments/Read | Hämta information om en princip tilldelning. |
 > | Microsoft. Authorization/policyAssignments/Write | Skapa en princip tilldelning i det angivna omfånget. |
 > | Microsoft. Authorization/policyAssignments/Delete | Ta bort en princip tilldelning i det angivna omfånget. |
+> | Microsoft. Authorization/policyAssignments/undanta/åtgärd | Undanta en princip tilldelning i det angivna omfånget. |
 > | Microsoft. Authorization/policyAssignments/privateLinkAssociations/Read | Hämta information om privat länk Association. |
 > | Microsoft. Authorization/policyAssignments/privateLinkAssociations/Write | Skapar eller uppdaterar en privat länk-Association. |
 > | Microsoft. Authorization/policyAssignments/privateLinkAssociations/Delete | Tar bort en privat länk-Association. |
@@ -7797,6 +7919,9 @@ Azure-tjänst: [Azure policy](../governance/policy/overview.md), [azure RBAC](ov
 > | Microsoft. Authorization/policyDefinitions/Read | Hämta information om en princip definition. |
 > | Microsoft. Authorization/policyDefinitions/Write | Skapa en anpassad princip definition. |
 > | Microsoft. Authorization/policyDefinitions/Delete | Ta bort en princip definition. |
+> | Microsoft. Authorization/policyExemptions/Read | Hämta information om ett princip undantag. |
+> | Microsoft. Authorization/policyExemptions/Write | Skapa ett princip undantag i det angivna omfånget. |
+> | Microsoft. Authorization/policyExemptions/Delete | Ta bort ett princip undantag i det angivna omfånget. |
 > | Microsoft. Authorization/policySetDefinitions/Read | Hämta information om en princip uppsättnings definition. |
 > | Microsoft. Authorization/policySetDefinitions/Write | Skapa en anpassad princip uppsättnings definition. |
 > | Microsoft. Authorization/policySetDefinitions/Delete | Ta bort en princip uppsättnings definition. |

@@ -6,14 +6,14 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: mahain
-ms.openlocfilehash: 84798dbcd158b62ce6714bf73494a9e85bf932a8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 3469b612081f9cb96beec98a065e0827d1c04b4c
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387956"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261845"
 ---
-# <a name="avs-assessments-in-azure-migrate-server-assessment"></a>AVS-utvärderingar i Azure Migrate: Server utvärdering
+# <a name="server-assessment-overview-migrate-to-azure-vmware-solution"></a>Översikt över Server utvärdering (migrera till Azure VMware-lösning)
 
 [Azure Migrate](migrate-services-overview.md) tillhandahåller en central hubb för att spåra identifiering, utvärdering och migrering av dina lokala appar och arbets belastningar. Den spårar också dina privata och offentliga moln instanser till Azure. Hubben erbjuder Azure Migrate verktyg för utvärdering och migrering, samt oberoende program varu leverantörer från tredje part (ISV).
 

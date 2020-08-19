@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med insikt | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och insikter.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 02487206-30b0-4b1d-ae99-573c3d2ef9b0
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/09/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c2427fff37158745e416f4b2f0641697ad62ea9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c988168f5d56fd7dcf8142a9f1e68af2defdcfc7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81682666"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552976"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-invision"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med insikt
 
@@ -32,7 +28,7 @@ I den här självstudien får du lära dig att integrera insikter med Azure Acti
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -82,13 +78,13 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://<SUBDOMAIN>.invisionapp.com`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://<SUBDOMAIN>.invisionapp.com`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<SUBDOMAIN>.invisionapp.com//sso/auth`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<SUBDOMAIN>.invisionapp.com//sso/auth`
 
 1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<SUBDOMAIN>.invisionapp.com`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<SUBDOMAIN>.invisionapp.com`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Få de här värdena genom att kontakta [Insiktens support team](mailto:support@invisionapp.com) . Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -109,7 +105,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -149,7 +145,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     a. Ändra **KRÄV SSO för varje medlem i < konto namnet >** till **på**.
 
-    b. I text rutan **namn** anger du namnet på till exempel som `azureadsso`.
+    b. I text rutan **namn** anger du namnet på till exempel som `azureadsso` .
 
     c. Ange inloggnings-URL-värdet i text rutan för **inloggnings-URL** : en.
 
@@ -159,7 +155,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     f. I text rutan **namn-ID-format** använder `Unspecified` du för **namn-ID-formatet**.
 
-    g. Välj **SHA-256** i list rutan för **hash-algoritmen**.
+    ex. Välj **SHA-256** i list rutan för **hash-algoritmen**.
 
     h. Ange ett namn på **etiketten för SSO-knappen**.
 
@@ -195,11 +191,11 @@ När du klickar på panelen insikt i åtkomst panelen, bör du loggas in automat
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Testa insikter med Azure AD](https://aad.portal.azure.com/)
 

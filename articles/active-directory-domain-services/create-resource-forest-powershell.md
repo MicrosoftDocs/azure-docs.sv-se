@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: iainfou
-ms.openlocfilehash: eb627b8069bcd9efd1d56adab5eda45dc34a1a10
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 50a8e4f6d966a63a8e727dbacefbc7bb21f5f98b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922004"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506336"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Skapa en Azure Active Directory Domain Services resurs skog och utgående skogs förtroende till en lokal domän med hjälp av Azure PowerShell
 
@@ -36,7 +36,7 @@ Om du inte har någon Azure-prenumeration [skapar du ett konto](https://azure.mi
 > [!IMPORTANT]
 > Hanterade domän resurs skogar har för närvarande inte stöd för Azure HDInsight eller Azure Files. Standard hanterade domän användar skogar stöder båda dessa ytterligare tjänster.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att slutföra den här artikeln behöver du följande resurser och behörigheter:
 
@@ -88,7 +88,7 @@ Om du vill skapa en resurs skog för en hanterad domän använder du `New-AzureA
 
 1. Börja med att skapa en resurs grupp med cmdleten [New-AzResourceGroup][New-AzResourceGroup] . I följande exempel heter resurs gruppen *myResourceGroup* och skapas i regionen *väst* . Använd ditt eget namn och önskad region:
 
-    ```azure-powershell
+    ```azurepowershell
     New-AzResourceGroup `
       -Name "myResourceGroup" `
       -Location "WestUS"
@@ -123,7 +123,7 @@ Om du vill skapa en resurs skog för en hanterad domän använder du `New-AzureA
 
 1. Skapa nu en resurs skog med hanterad domän med hjälp av `New-AzureAaaddsForest` skriptet. I följande exempel skapas en skog med namnet *addscontoso.com* och ett arbets belastnings undernät skapas. Ange egna parameter namn och IP-adressintervall eller befintliga virtuella nätverk.
 
-    ```azure-powershell
+    ```azurepowershell
     New-AzureAaddsForest `
         -azureSubscriptionId <subscriptionId> `
         -aaddsResourceGroupName "myResourceGroup" `
@@ -204,7 +204,7 @@ Ange nu skriptet med följande information:
 
 I följande exempel skapas en förtroende relation med namnet *myAzureADDSTrust* till *OnPrem.contoso.com*. Använd dina egna parameter namn och lösen ord:.
 
-```azure-powershell
+```azurepowershell
 Add-AaddsResourceForestTrust `
     -ManagedDomainFqdn "aaddscontoso.com" `
     -TrustFqdn "onprem.contoso.com" `

@@ -1,18 +1,18 @@
 ---
 title: Vanliga frågor och svar om Azure skydds | Microsoft Docs
-description: Vanliga frågor och svar om Azure skydds
+description: Åtgärda vanliga frågor för Azure skydds, till exempel tillgänglighet, hur många samtidiga sessioner som stöds, problem med konfigurationen och prissättningen.
 services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 07/10/2020
 ms.author: charwen
-ms.openlocfilehash: a37ca4b9977a1d2bd51a6153f4da1b65c1c916be
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: e546888689ff290c750d594f1e737857049bf1ff
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276131"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270554"
 ---
 # <a name="azure-bastion-faq"></a>Vanliga frågor och svar om Azure Bastion
 

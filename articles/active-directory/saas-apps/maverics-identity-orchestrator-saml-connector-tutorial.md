@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory enkel inloggning (SSO) med Maverics Identity Orchestrator SAML Connector | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Maverics Identity Orchestrator SAML Connector.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9cad791f-8746-4584-bf4e-e281b709fb2b
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e923e051116b70b2db35d1ac710a40941305aae
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: ec5368427f50f548be965bb883683c859759bbf3
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214336"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88518954"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-maverics-identity-orchestrator-saml-connector"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med Maverics Identity Orchestrator SAML Connector
 
@@ -44,7 +40,7 @@ Den här självstudien visar hur du migrerar ett lokalt webb program som skyddas
 
 Mer information om installation och konfiguration finns på https://strata.io/docs
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - En Azure AD-prenumeration. Om du inte har någon prenumeration kan du få ett [kostnads fritt konto](https://azure.microsoft.com/free/).
 - Maverics Identity Orchestrator SAML Connector enkel inloggning (SSO) aktive rad prenumeration. För att få Maverics-programvaran kontaktar du sales@strata.io

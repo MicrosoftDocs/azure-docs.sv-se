@@ -1,7 +1,7 @@
 ---
 title: Skript exempel för Azure CLI – ta bort ett Azure App konfigurations lager
 titleSuffix: Azure App Configuration
-description: Använd Azure CLI-skript för att ta bort ett Azure App konfigurations lager
+description: Ta bort ett Azure App konfigurations lager med ett exempel skript för Azure CLI. Se referens artikel länkar till kommandon som används i skriptet.
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -10,12 +10,12 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ba04b1a9aefa942c862b89f853d015762579937d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e107ba9628eca384f518f7a241be5c00c278ef0a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494850"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588351"
 ---
 # <a name="delete-an-azure-app-configuration-store"></a>Ta bort ett Azure App Configuration-arkiv
 

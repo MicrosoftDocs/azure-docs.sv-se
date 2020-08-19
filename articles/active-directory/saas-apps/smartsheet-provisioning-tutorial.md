@@ -2,25 +2,21 @@
 title: 'Självstudie: Konfigurera Smartsheet för automatisk användar etablering med Azure Active Directory | Microsoft Docs'
 description: Lär dig hur du konfigurerar Azure Active Directory att automatiskt etablera och avetablera användar konton till Smartsheet.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2019
 ms.author: jeedes
-ms.openlocfilehash: c23c57e77f69cd7043e09ff5e2809d8329d62da3
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: f323b563d90de315bdbb317f88d7f9449be6c008
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925532"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546704"
 ---
 # <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Smartsheet för automatisk användar etablering
 

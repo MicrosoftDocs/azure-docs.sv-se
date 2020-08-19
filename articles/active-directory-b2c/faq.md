@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 08a1d655d19b5e7deb81e42ca5bebdfe4f18aeef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85ce79644ead939eaeffa5cfffeb495da15e7fe5
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84297912"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270673"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: vanliga frågor och svar
 
@@ -134,7 +134,7 @@ Inte för tillfället. Den här funktionen finns i vår översikt. Att verifiera
 
 Följ dessa steg om du vill ta bort din Azure AD B2C-klient.
 
-Du kan använda vår nya enhetlig **Appregistreringar** upplevelse eller äldre **program (äldre)** . [Läs mer om den nya upplevelsen](https://aka.ms/b2cappregtraining)
+Du kan använda vår nya enhetlig **Appregistreringar** upplevelse eller äldre  **program (äldre)** . [Läs mer om den nya upplevelsen](https://aka.ms/b2cappregtraining)
 
 #### <a name="app-registrations"></a>[Appregistreringar](#tab/app-reg-ga/)
 
@@ -154,7 +154,7 @@ Du kan använda vår nya enhetlig **Appregistreringar** upplevelse eller äldre 
 1. Under **Åtkomsthantering för Azure-resurser** väljer du **Ja** och väljer sedan **Spara**.
 1. Logga ut från Azure Portal och logga sedan in igen för att uppdatera åtkomsten.
 1. Välj **Azure Active Directory** på menyn till vänster.
-1. På sidan **Översikt** väljer du **ta bort katalog**. Slutför processen genom att följa anvisningarna på skärmen.
+1. På sidan **Översikt** väljer du **ta bort klient organisation**. Slutför processen genom att följa anvisningarna på skärmen.
 
 #### <a name="applications-legacy"></a>[Program (bakåtkompatibelt)](#tab/applications-legacy/)
 
@@ -166,7 +166,7 @@ Du kan använda vår nya enhetlig **Appregistreringar** upplevelse eller äldre 
 1. Välj **Azure Active Directory** på menyn till vänster.
 1. Under **Hantera** väljer du **Användare**.
 1. Välj varje användare i tur (exkludera den *prenumerations administratörs* användare som du för närvarande är inloggad som). Välj **ta bort** längst ned på sidan och välj **Ja** när du uppmanas till det.
-1. Under **Hantera**väljer du **Appregistreringar**.
+1. Välj **Appregistreringar** under **Hantera**.
 1. Välj **Visa alla program**
 1. Välj programmet med namnet **B2C-Extensions-app**, Välj **ta bort**och välj sedan **Ja** när du uppmanas att göra det.
 1. Under **Hantera**väljer du **användar inställningar**.

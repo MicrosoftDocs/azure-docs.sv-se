@@ -8,20 +8,66 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: ac4b0c59cfad3d435858e094cbcb8c9f855a0041
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 8df54adf8f3aeaa58e30d6d9218cec8bec8c1121
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185323"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525929"
 ---
 # <a name="speech-service-release-notes"></a>Viktig information om Speech service
 
+## <a name="text-to-speech-2020-august-release"></a>Text till tal 2020 – augusti-utgåva
+
+### <a name="new-features"></a>Nya funktioner
+
+* **NEURALA TTS: ny tal format för `en-US` Aria röst**. AriaNeural kan ge ett ljud som en newscaster när de läser nyheter. Formatet "newscast-formell" låter mer allvarligt, medan formatet "newscast-vardaglig" är mer avslappnad och informell. Se [hur du använder tal formatet i SSML](speech-synthesis-markup.md).
+
+* **Anpassad röst: en ny funktion släpps automatiskt för att kontrol lera kvaliteten på tränings data**. När du överför dina data kommer systemet att undersöka olika aspekter av dina ljud-och avskrifts data och automatiskt korrigera eller filtrera problem för att förbättra kvaliteten på röst modellen. Detta täcker Ljudets volym, brus nivån, tal igenkännings precisionen, justeringen av tal med normaliserad text, tystnad i ljudet, förutom ljud-och skript formatet. 
+
+* **Skapa ljud innehåll: en uppsättning nya funktioner för att aktivera mer kraftfulla funktioner för röst justering och ljud hantering**.
+
+    * Uttal: funktionen för inuttals justering uppdateras till den senaste fonem-uppsättningen. Du kan välja rätt fonem-element från biblioteket och förfina uttal av de ord som du har valt. 
+
+    * Ladda ned: funktionen "Ladda ned"/"Exportera" har förbättrats för att ge stöd för att generera ljud per stycke. Du kan redigera innehållet i samma fil-SSML, samtidigt som du genererar flera ljud resultat. Fil strukturen för "Ladda ned" är också raffinerad. Nu kan du enkelt hämta alla ljud i en mapp. 
+
+    * Aktivitets status: export upplevelsen med flera filer har förbättrats. När du exporterar flera filer tidigare kommer hela aktiviteten att Miss lyckas om en av filerna har misslyckats. Men nu kommer alla andra filer att exporteras. Uppgifts rapporten är omfattande och mer detaljerad och strukturerad information. Du kan kontrol lera loggarna för alla misslyckade filer och meningar nu med rapporten. 
+
+    * SSML-dokumentation: länkat till SSML-dokument för att hjälpa dig att kontrol lera reglerna för hur du använder alla justerings funktioner.
+
+* **Röst listans API har uppdaterats med ett användarvänligt visnings namn och de tal format som stöds för neurala-röster**.
+
+### <a name="general-tts-voice-quality-improvements"></a>Vanliga förbättringar av tal röst kvalitet
+
+* Minskat uttal-fel i Word-nivå% för `ru-RU` (fel som minskas med 56%) och `sv-SE` (fel minskat med 49%)
+
+* Förbättrat Polyphony ord som läses på `en-US` neurala-röster med 40%. Exempel på Polyphony-ord är "Read", "Live", "content", "Record", "Object" osv. 
+
+* Förbättrade frågans naturliga ton i `fr-FR` . MOS (genomsnittligt yttrande Poäng): + 0,28
+
+* Uppdaterade vocoders för följande röster, med åter givningen av förbättringarna och den övergripande prestanda hastigheten med 40%.
+
+    | Nationell inställning | Röst |
+    |---|---|    
+    | `en-GB` | Mia |
+    | `es-MX` | Dalia |
+    | `fr-CA` | Sylvie |
+    | `fr-FR` | Denise |
+    | `ja-JP` | Nanami |
+    | `ko-KR` | Sun – Hi |
+
+### <a name="bug-fixes"></a>Felkorrigeringar
+
+* Ett antal buggar har åtgärd ATS med verktyget för att skapa ljud innehåll 
+    * Åtgärdat problem med automatisk uppdatering. 
+    * Korrigerade problem med röst format i zh-CN i den Asien, sydöstra regionen.
+    * Fast stabilitets problem, inklusive ett export fel med taggen Break och fel i skiljetecken.    
+
 ## <a name="new-speech-to-text-locales-2020-august-release"></a>Nya språk som är tal till text: 2020 – augusti version
-Inläsning av tal till text 26 nya nationella inställningar i augusti: 2 europeiska språk CS-CZ och hu-HU, 5 engelska lokala och 19 spanska språk som avser de flesta länder i södra Amerika. Nedan visas en lista över de nya språken. Se den fullständiga språk listan [här](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support).
+Inläsning av tal till text 26 nya språk i augusti: 2 europeiska språk `cs-CZ` och `hu-HU` , 5 engelska lokala och 19 spanska nationella inställningar som avser de flesta länder i södra Amerika. Nedan visas en lista över de nya språken. Se den fullständiga språk listan [här](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support).
 
 | Nationell inställning  | Språk                          |
 |---------|-----------------------------------|

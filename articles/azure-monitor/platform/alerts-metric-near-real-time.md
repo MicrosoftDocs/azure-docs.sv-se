@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 7/26/2020
+ms.date: 8/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: bbfbc5e92fc49e45d1d16621992dbf4483f01bb5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 877134fb1d4417c04da3bf6a96267b413389ecb2
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327165"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258449"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Resurser som stöds för mått varningar i Azure Monitor
 
@@ -30,82 +30,87 @@ Här är en fullständig lista över Azure Monitors mått källor som stöds av 
 
 |Resurstyp  |Dimensioner som stöds |Aviseringar med flera resurser| Tillgängliga mått|
 |---------|---------|-----|----------|
-|Microsoft.ApiManagement/service | Ja | Nej | [API Management](./metrics-supported.md#microsoftapimanagementservice) |
-|Microsoft. AppConfiguration/configurationStores |Ja | Nej | [App Configuration](./metrics-supported.md#microsoftappconfigurationconfigurationstores) |
-|Microsoft. AppPlatform/våren | Ja | Nej | [Azure Spring Cloud](./metrics-supported.md#microsoftappplatformspring) |
-|Microsoft. Automation/automationAccounts | Ja| Nej | [Automation-konton](./metrics-supported.md#microsoftautomationautomationaccounts) |
-|Microsoft.BatCH/batchAccounts | Ja | Nej | [Batch-konton](./metrics-supported.md#microsoftbatchbatchaccounts) |
-|Microsoft. cache/Redis | Ja | Nej | [Azure Cache for Redis](./metrics-supported.md#microsoftcacheredis) |
-|Microsoft. ClassicStorage/storageAccounts | Ja | Nej | [Lagrings konton (klassiska)](./metrics-supported.md#microsoftclassicstoragestorageaccounts) |
-|Microsoft. ClassicStorage/storageAccounts/blobServices | Ja | Nej | |
-|Microsoft. ClassicStorage/storageAccounts/fileServices | Ja | Nej | |
-|Microsoft. ClassicStorage/storageAccounts/queueServices | Ja | Nej | |
-|Microsoft. ClassicStorage/storageAccounts/tableServices | Ja | Nej | |
-|Microsoft. CognitiveServices/konton | Ja | Nej | [Cognitive Services](./metrics-supported.md#microsoftcognitiveservicesaccounts) |
+|Microsoft. Aadiam/azureADMetrics | Ja | Inga | |
+|Microsoft.ApiManagement/service | Ja | Inga | [API Management](./metrics-supported.md#microsoftapimanagementservice) |
+|Microsoft. AppConfiguration/configurationStores |Ja | Inga | [App Configuration](./metrics-supported.md#microsoftappconfigurationconfigurationstores) |
+|Microsoft. AppPlatform/våren | Ja | Inga | [Azure Spring Cloud](./metrics-supported.md#microsoftappplatformspring) |
+|Microsoft. Automation/automationAccounts | Ja| Inga | [Automation-konton](./metrics-supported.md#microsoftautomationautomationaccounts) |
+|Microsoft. AVS/privateClouds | Inga | Inga | |
+|Microsoft.BatCH/batchAccounts | Ja | Inga | [Batch-konton](./metrics-supported.md#microsoftbatchbatchaccounts) |
+|Microsoft. cache/Redis | Ja | Inga | [Azure Cache for Redis](./metrics-supported.md#microsoftcacheredis) |
+|Microsoft. ClassicStorage/storageAccounts | Ja | Inga | [Lagrings konton (klassiska)](./metrics-supported.md#microsoftclassicstoragestorageaccounts) |
+|Microsoft. ClassicStorage/storageAccounts/blobServices | Ja | Inga | |
+|Microsoft. ClassicStorage/storageAccounts/fileServices | Ja | Inga | |
+|Microsoft. ClassicStorage/storageAccounts/queueServices | Ja | Inga | |
+|Microsoft. ClassicStorage/storageAccounts/tableServices | Ja | Inga | |
+|Microsoft. CognitiveServices/konton | Ja | Inga | [Cognitive Services](./metrics-supported.md#microsoftcognitiveservicesaccounts) |
 |Microsoft.Compute/virtualMachines | Ja | Ja | [Virtual Machines](./metrics-supported.md#microsoftcomputevirtualmachines) |
-|Microsoft.Compute/virtualMachineScaleSets | Ja | Nej |[Skalnings uppsättningar för virtuella datorer](./metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
-|Microsoft. ContainerInstance/containerGroups | Ja| Nej | [Containergrupper](./metrics-supported.md#microsoftcontainerinstancecontainergroups) |
-|Microsoft. ContainerRegistry/register | Nej | Nej | [Behållar register](./metrics-supported.md#microsoftcontainerregistryregistries) |
-|Microsoft. container service/managedClusters | Ja | Nej | [Hanterade kluster](./metrics-supported.md#microsoftcontainerservicemanagedclusters) |
+|Microsoft.Compute/virtualMachineScaleSets | Ja | Inga |[Skalnings uppsättningar för virtuella datorer](./metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
+|Microsoft. ContainerInstance/containerGroups | Ja| Inga | [Containergrupper](./metrics-supported.md#microsoftcontainerinstancecontainergroups) |
+|Microsoft. ContainerRegistry/register | Inga | Inga | [Behållar register](./metrics-supported.md#microsoftcontainerregistryregistries) |
+|Microsoft. container service/managedClusters | Ja | Inga | [Hanterade kluster](./metrics-supported.md#microsoftcontainerservicemanagedclusters) |
 |Microsoft. DataBoxEdge/dataBoxEdgeDevices | Ja | Ja | [Data Box](./metrics-supported.md#microsoftdataboxedgedataboxedgedevices) |
-|Microsoft. DataFactory/datafactories| Ja| Nej | [Data fabriker v1](./metrics-supported.md#microsoftdatafactorydatafactories) |
-|Microsoft. DataFactory/fabriker |Ja | Nej | [Data fabriker v2](./metrics-supported.md#microsoftdatafactoryfactories) |
-|Microsoft. DataShare/konton | Ja | Nej | |
-|Microsoft. DBforMariaDB/servers | Nej | Nej | [DATABAS för MariaDB](./metrics-supported.md#microsoftdbformariadbservers) |
-|Microsoft. DBforMySQL/servers | Nej | Nej |[DB för MySQL](./metrics-supported.md#microsoftdbformysqlservers)|
-|Microsoft. DBforPostgreSQL/servers | Nej | Nej | [DATABAS för PostgreSQL](./metrics-supported.md#microsoftdbforpostgresqlservers)|
-|Microsoft. DBforPostgreSQL/serversv2 | Nej | Nej | [DB för PostgreSQL v2](./metrics-supported.md#microsoftdbforpostgresqlserversv2)|
-|Microsoft. DBforPostgreSQL/singleservers | Nej | Nej | [DB för PostgreSQL (enskilda servrar)](./metrics-supported.md#microsoftdbforpostgresqlsingleservers)|
-|Microsoft. Devices/IotHubs | Ja | Nej |[IoT Hub](./metrics-supported.md#microsoftdevicesiothubs) |
-|Microsoft. Devices/provisioningServices| Ja | Nej | [Enhets etablerings tjänster](./metrics-supported.md#microsoftdevicesprovisioningservices) |
-|Microsoft.DocumentDB/databaseAccounts | Ja | Nej | [Cosmos DB](./metrics-supported.md#microsoftdocumentdbdatabaseaccounts) |
-|Microsoft. EventGrid/Domains | Ja | Nej | [Event Grid-domäner](./metrics-supported.md#microsofteventgriddomains) |
-|Microsoft. EventGrid/systemTopics | Ja | Nej | [Avsnitt om Event Grid system](./metrics-supported.md#microsofteventgridsystemtopics) |
-|Microsoft. EventGrid/ämnen |Ja | Nej | [Event Grid-ämnen](./metrics-supported.md#microsofteventgridtopics) |
-|Microsoft. EventHub/Clusters |Ja| Nej | [Event Hubs kluster](./metrics-supported.md#microsofteventhubclusters) |
-|Microsoft. EventHub/Namespaces |Ja| Nej | [Event Hubs](./metrics-supported.md#microsofteventhubnamespaces) |
-|Microsoft. HDInsight/kluster | Ja | Nej | [HDInsight-kluster](./metrics-supported.md#microsofthdinsightclusters) |
-|Microsoft. Insights/komponenter | Ja | Nej | [Application Insights](./metrics-supported.md#microsoftinsightscomponents) |
-|Microsoft. nyckel valv/-valv | Nej |Nej |[Valv](./metrics-supported.md#microsoftkeyvaultvaults)|
-|Microsoft. Kusto/kluster | Ja |Nej |[Datautforskaren kluster](./metrics-supported.md#microsoftkustoclusters)|
-|Microsoft. Logic/arbets flöden | Nej | Nej |[Logic Apps](./metrics-supported.md#microsoftlogicworkflows) |
-|Microsoft. MachineLearningServices/arbets ytor | Ja | Nej | [Machine Learning](./metrics-supported.md#microsoftmachinelearningservicesworkspaces) |
-|Microsoft. Maps/konton | Ja | Nej | [Mappar konton](./metrics-supported.md#microsoftmapsaccounts) |
-|Microsoft. Media/Media Services | Nej | Nej | [Media Services](./metrics-supported.md#microsoftmediamediaservices) |
-|Microsoft. Media/Media Services/strömnings slut punkter | Ja | Nej | [Media Services slut punkter för direkt uppspelning](./metrics-supported.md#microsoftmediamediaservicesstreamingendpoints) |
-|Microsoft. NetApp/netAppAccounts/capacityPools | Ja | Nej | [Pool för Azure NetApp-kapacitet](./metrics-supported.md#microsoftnetappnetappaccountscapacitypools) |
-|Microsoft. NetApp/netAppAccounts/capacityPools/Volumes | Ja | Nej | [Azure NetApp-volymer](./metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) |
-|Microsoft. Network/applicationGateways | Ja | Nej | [Programgatewayer](./metrics-supported.md#microsoftnetworkapplicationgateways) |
-|Microsoft. Network/azurefirewalls | Ja | Nej | [Brandväggar](./metrics-supported.md#microsoftnetworkazurefirewalls) |
-|Microsoft. Network/dnsZones | Nej | Nej | [DNS-zoner](./metrics-supported.md#microsoftnetworkdnszones) |
-|Microsoft. Network/expressRouteCircuits | E.t. | Nej |[ExpressRoute-kretsar](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
-|Microsoft. Network/belastningsutjämnare (endast för standard-SKU: er)| Ja| Nej | [Belastnings utjämning](./metrics-supported.md#microsoftnetworkloadbalancers) |
-|Microsoft. Network/natGateways| Nej | Nej | |
-|Microsoft. Network/privateEndpoints| Nej | Nej | |
-|Microsoft. Network/privateLinkServices| Nej | Nej |
-|Microsoft. Network/publicipaddresses | Nej | Nej |[offentliga IP-adresser](./metrics-supported.md#microsoftnetworkpublicipaddresses)|
-|Microsoft. Network/trafficManagerProfiles | Ja | Nej | [Traffic Manager-profiler](./metrics-supported.md#microsoftnetworktrafficmanagerprofiles) |
-|Microsoft. OperationalInsights/arbets ytor| Ja | Nej | [Log Analytics-arbetsytor](./metrics-supported.md#microsoftoperationalinsightsworkspaces)|
-|Microsoft. peering/peering | Ja | Nej | [Peering-sessioner](./metrics-supported.md#microsoftpeeringpeerings) |
-|Microsoft. peering/peeringServices | Ja | Nej | [Peering-tjänster](./metrics-supported.md#microsoftpeeringpeeringservices) |
-|Microsoft. PowerBIDedicated/kapacitet | Nej | Nej | [Kapacitet](./metrics-supported.md#microsoftpowerbidedicatedcapacities) |
-|Microsoft. Relay/namnrymder | Ja | Nej | [Reläer](./metrics-supported.md#microsoftrelaynamespaces) |
-|Microsoft. search/searchServices | Nej | Nej | [Sök tjänster](./metrics-supported.md#microsoftsearchsearchservices) |
-|Microsoft. Service Bus/namnrymder | Ja | Nej | [Service Bus](./metrics-supported.md#microsoftservicebusnamespaces) |
-|Microsoft. SQL/managedInstances | Nej | Ja | [SQL-hanterade instanser](./metrics-supported.md#microsoftsqlmanagedinstances) |
-|Microsoft. SQL/Servers/databaser | Nej | Ja | [SQL-databaser](./metrics-supported.md#microsoftsqlserversdatabases) |
-|Microsoft. SQL/Servers/elasticPools | Nej | Ja | [Elastiska SQL-pooler](./metrics-supported.md#microsoftsqlserverselasticpools) |
-|Microsoft. Storage/storageAccounts |Ja | Nej | [Lagrings konton](./metrics-supported.md#microsoftstoragestorageaccounts)|
-|Microsoft. Storage/storageAccounts/Services | Ja| Nej | [BLOB Services](./metrics-supported.md#microsoftstoragestorageaccountsblobservices), [fil tjänster](./metrics-supported.md#microsoftstoragestorageaccountsfileservices), [Queue Services](./metrics-supported.md#microsoftstoragestorageaccountsqueueservices) och [tabell tjänster](./metrics-supported.md#microsoftstoragestorageaccountstableservices)|
-|Microsoft. StorageCache/cacheminnen | Ja | Nej | |
-|Microsoft. StorageSync/storageSyncServices | Ja | Nej | [Tjänster för synkronisering av lagring](./metrics-supported.md#microsoftstoragesyncstoragesyncservices) |
-|Microsoft. StreamAnalytics/streamingjobs | Ja | Nej | [Stream Analytics](./metrics-supported.md#microsoftstreamanalyticsstreamingjobs) |
-|Microsoft. VMWareCloudSimple/virtualMachines | Ja | Nej | [Virtuella CloudSimple-datorer](./metrics-supported.md#microsoftvmwarecloudsimplevirtualmachines) |
-|Microsoft. Web/hostingEnvironments/multiRolePools | Ja | Nej | [App Service-miljön pooler med flera roller](./metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
-|Microsoft. Web/hostingEnvironments/workerPools | Ja | Nej | [App Service-miljön Worker-pooler](./metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|
-|Microsoft. Web/Server grupper | Ja | Nej | [App Services planer](./metrics-supported.md#microsoftwebserverfarms)|
-|Microsoft. Web/Sites | Ja | Nej | [App Services](./metrics-supported.md#microsoftwebsites-excluding-functions) och [funktioner](./metrics-supported.md#microsoftwebsites-functions)|
-|Microsoft. Web/Sites/lotss | Ja | Nej | [App Service platser](./metrics-supported.md#microsoftwebsitesslots)|
+|Microsoft. DataFactory/datafactories| Ja| Inga | [Data fabriker v1](./metrics-supported.md#microsoftdatafactorydatafactories) |
+|Microsoft. DataFactory/fabriker |Ja | Inga | [Data fabriker v2](./metrics-supported.md#microsoftdatafactoryfactories) |
+|Microsoft. DataShare/konton | Ja | Inga | |
+|Microsoft. DBforMariaDB/servers | Inga | Inga | [DATABAS för MariaDB](./metrics-supported.md#microsoftdbformariadbservers) |
+|Microsoft. DBforMySQL/servers | Inga | Inga |[DB för MySQL](./metrics-supported.md#microsoftdbformysqlservers)|
+|Microsoft. DBforPostgreSQL/flexibleServers | Ja | Inga | |
+|Microsoft. DBforPostgreSQL/servers | Inga | Inga | [DATABAS för PostgreSQL](./metrics-supported.md#microsoftdbforpostgresqlservers)|
+|Microsoft. DBforPostgreSQL/serversv2 | Inga | Inga | [DB för PostgreSQL v2](./metrics-supported.md#microsoftdbforpostgresqlserversv2)|
+|Microsoft. DBforPostgreSQL/singleservers | Inga | Inga | [DB för PostgreSQL (enskilda servrar)](./metrics-supported.md#microsoftdbforpostgresqlsingleservers)|
+|Microsoft. Devices/IotHubs | Ja | Inga |[IoT Hub](./metrics-supported.md#microsoftdevicesiothubs) |
+|Microsoft. Devices/provisioningServices| Ja | Inga | [Enhets etablerings tjänster](./metrics-supported.md#microsoftdevicesprovisioningservices) |
+|Microsoft. DigitalTwins/digitalTwinsInstances | Ja | Inga | |
+|Microsoft.DocumentDB/databaseAccounts | Ja | Inga | [Cosmos DB](./metrics-supported.md#microsoftdocumentdbdatabaseaccounts) |
+|Microsoft. EventGrid/Domains | Ja | Inga | [Event Grid-domäner](./metrics-supported.md#microsofteventgriddomains) |
+|Microsoft. EventGrid/systemTopics | Ja | Inga | [Avsnitt om Event Grid system](./metrics-supported.md#microsofteventgridsystemtopics) |
+|Microsoft. EventGrid/ämnen |Ja | Inga | [Event Grid-ämnen](./metrics-supported.md#microsofteventgridtopics) |
+|Microsoft. EventHub/Clusters |Ja| Inga | [Event Hubs kluster](./metrics-supported.md#microsofteventhubclusters) |
+|Microsoft. EventHub/Namespaces |Ja| Inga | [Event Hubs](./metrics-supported.md#microsofteventhubnamespaces) |
+|Microsoft. HDInsight/kluster | Ja | Inga | [HDInsight-kluster](./metrics-supported.md#microsofthdinsightclusters) |
+|Microsoft. Insights/komponenter | Ja | Inga | [Application Insights](./metrics-supported.md#microsoftinsightscomponents) |
+|Microsoft. nyckel valv/-valv | Ja |Ja |[Valv](./metrics-supported.md#microsoftkeyvaultvaults)|
+|Microsoft. Kusto/kluster | Ja |Inga |[Datautforskaren kluster](./metrics-supported.md#microsoftkustoclusters)|
+|Microsoft. Logic/integrationServiceEnvironments | Ja | Inga |[Integrerings tjänst miljöer](./metrics-supported.md#microsoftlogicintegrationserviceenvironments) |
+|Microsoft. Logic/arbets flöden | Inga | Inga |[Logic Apps](./metrics-supported.md#microsoftlogicworkflows) |
+|Microsoft. MachineLearningServices/arbets ytor | Ja | Inga | [Machine Learning](./metrics-supported.md#microsoftmachinelearningservicesworkspaces) |
+|Microsoft. Maps/konton | Ja | Inga | [Mappar konton](./metrics-supported.md#microsoftmapsaccounts) |
+|Microsoft. Media/Media Services | Inga | Inga | [Media Services](./metrics-supported.md#microsoftmediamediaservices) |
+|Microsoft. Media/Media Services/strömnings slut punkter | Ja | Inga | [Media Services slut punkter för direkt uppspelning](./metrics-supported.md#microsoftmediamediaservicesstreamingendpoints) |
+|Microsoft. NetApp/netAppAccounts/capacityPools | Ja | Ja | [Pool för Azure NetApp-kapacitet](./metrics-supported.md#microsoftnetappnetappaccountscapacitypools) |
+|Microsoft. NetApp/netAppAccounts/capacityPools/Volumes | Ja | Ja | [Azure NetApp-volymer](./metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) |
+|Microsoft. Network/applicationGateways | Ja | Inga | [Programgatewayer](./metrics-supported.md#microsoftnetworkapplicationgateways) |
+|Microsoft. Network/azurefirewalls | Ja | Inga | [Brandväggar](./metrics-supported.md#microsoftnetworkazurefirewalls) |
+|Microsoft. Network/dnsZones | Inga | Inga | [DNS-zoner](./metrics-supported.md#microsoftnetworkdnszones) |
+|Microsoft. Network/expressRouteCircuits | Ej tillämpligt | Inga |[ExpressRoute-kretsar](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
+|Microsoft. Network/belastningsutjämnare (endast för standard-SKU: er)| Ja| Inga | [Belastnings utjämning](./metrics-supported.md#microsoftnetworkloadbalancers) |
+|Microsoft. Network/natGateways| Inga | Inga | |
+|Microsoft. Network/privateEndpoints| Inga | Inga | |
+|Microsoft. Network/privateLinkServices| Inga | Inga |
+|Microsoft. Network/publicipaddresses | Inga | Inga |[offentliga IP-adresser](./metrics-supported.md#microsoftnetworkpublicipaddresses)|
+|Microsoft. Network/trafficManagerProfiles | Ja | Inga | [Traffic Manager-profiler](./metrics-supported.md#microsoftnetworktrafficmanagerprofiles) |
+|Microsoft. OperationalInsights/arbets ytor| Ja | Inga | [Log Analytics-arbetsytor](./metrics-supported.md#microsoftoperationalinsightsworkspaces)|
+|Microsoft. peering/peering | Ja | Inga | [Peering-sessioner](./metrics-supported.md#microsoftpeeringpeerings) |
+|Microsoft. peering/peeringServices | Ja | Inga | [Peering-tjänster](./metrics-supported.md#microsoftpeeringpeeringservices) |
+|Microsoft. PowerBIDedicated/kapacitet | Inga | Inga | [Kapacitet](./metrics-supported.md#microsoftpowerbidedicatedcapacities) |
+|Microsoft. Relay/namnrymder | Ja | Inga | [Reläer](./metrics-supported.md#microsoftrelaynamespaces) |
+|Microsoft. search/searchServices | Inga | Inga | [Sök tjänster](./metrics-supported.md#microsoftsearchsearchservices) |
+|Microsoft. Service Bus/namnrymder | Ja | Inga | [Service Bus](./metrics-supported.md#microsoftservicebusnamespaces) |
+|Microsoft. SQL/managedInstances | Inga | Ja | [SQL-hanterade instanser](./metrics-supported.md#microsoftsqlmanagedinstances) |
+|Microsoft. SQL/Servers/databaser | Inga | Ja | [SQL-databaser](./metrics-supported.md#microsoftsqlserversdatabases) |
+|Microsoft. SQL/Servers/elasticPools | Inga | Ja | [Elastiska SQL-pooler](./metrics-supported.md#microsoftsqlserverselasticpools) |
+|Microsoft. Storage/storageAccounts |Ja | Inga | [Lagringskonton](./metrics-supported.md#microsoftstoragestorageaccounts)|
+|Microsoft. Storage/storageAccounts/Services | Ja| Inga | [BLOB Services](./metrics-supported.md#microsoftstoragestorageaccountsblobservices), [fil tjänster](./metrics-supported.md#microsoftstoragestorageaccountsfileservices), [Queue Services](./metrics-supported.md#microsoftstoragestorageaccountsqueueservices) och [tabell tjänster](./metrics-supported.md#microsoftstoragestorageaccountstableservices)|
+|Microsoft. StorageCache/cacheminnen | Ja | Inga | |
+|Microsoft. StorageSync/storageSyncServices | Ja | Inga | [Tjänster för synkronisering av lagring](./metrics-supported.md#microsoftstoragesyncstoragesyncservices) |
+|Microsoft. StreamAnalytics/streamingjobs | Ja | Inga | [Stream Analytics](./metrics-supported.md#microsoftstreamanalyticsstreamingjobs) |
+|Microsoft. VMWareCloudSimple/virtualMachines | Ja | Inga | [Virtuella CloudSimple-datorer](./metrics-supported.md#microsoftvmwarecloudsimplevirtualmachines) |
+|Microsoft. Web/hostingEnvironments/multiRolePools | Ja | Inga | [App Service-miljön pooler med flera roller](./metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
+|Microsoft. Web/hostingEnvironments/workerPools | Ja | Inga | [App Service-miljön Worker-pooler](./metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|
+|Microsoft. Web/Server grupper | Ja | Inga | [App Services planer](./metrics-supported.md#microsoftwebserverfarms)|
+|Microsoft. Web/Sites | Ja | Inga | [App Services](./metrics-supported.md#microsoftwebsites-excluding-functions) och [funktioner](./metrics-supported.md#microsoftwebsites-functions)|
+|Microsoft. Web/Sites/lotss | Ja | Inga | [App Service platser](./metrics-supported.md#microsoftwebsitesslots)|
 
 ## <a name="payload-schema"></a>Nytto Last schema
 

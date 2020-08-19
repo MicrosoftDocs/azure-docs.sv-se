@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med NimbleX | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och NimbleX.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d3e165a5-f062-4b50-ac0b-b400838e99cd
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: jeedes
-ms.openlocfilehash: cd7199e94a58b3f0c121a0fd9401bff94406ed84
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 595977635937ec5dcf4a45a1d57524c1d3f41a6e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67096103"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554387"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nimblex"></a>Självstudie: Azure Active Directory integrering med NimbleX
 
@@ -32,9 +28,9 @@ Genom att integrera NimbleX med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med NimbleX behöver du följande objekt:
 
@@ -107,11 +103,11 @@ Utför följande steg för att konfigurera enkel inloggning med NimbleX i Azure 
 
     ![Information om enkel inloggning för NimbleX-domän och URL: er](common/sp-identifier-reply.png)
 
-    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<YOUR APPLICATION PATH>/Login.aspx`
+    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://<YOUR APPLICATION PATH>/Login.aspx`
 
-    b. I rutan **identifierare** anger du en URL med följande mönster:`https://<YOUR APPLICATION PATH>/`
+    b. I rutan **identifierare** anger du en URL med följande mönster: `https://<YOUR APPLICATION PATH>/`
 
-    c. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<path-to-application>/SamlReply.aspx`
+    c. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<path-to-application>/SamlReply.aspx`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera de här värdena med den faktiska inloggnings-URL:en, identifieraren och svars-URL:en. Kontakta [NimbleX client support team](mailto:support@ebms.com.au) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -176,8 +172,8 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** skriver du**brittasimon@yourcompanydomain.extension**  
-    Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** skriver du **brittasimon@yourcompanydomain.extension**  
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

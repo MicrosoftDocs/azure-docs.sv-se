@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure AD SSO-integrering med ändrings process hantering'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och ändrings process hantering.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d1215e3d-44f6-477d-9d94-bec0c9ebdbb0
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/07/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f803fda1d1709e60db078f7b729d7588aa725fd
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 501f19b2022d221ad6facd66c483790b13491ba0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456835"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88529686"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-change-process-management"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med hantering av ändrings processer
 
@@ -32,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar hantering av ändri
 
 Läs mer om SaaS-appintegrering med Azure AD i [Enkel inloggning till program i Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -83,9 +79,9 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Utför följande steg på sidan **Konfigurera enkel inloggning med SAML** :
 
-    a. I rutan **identifierare** anger du en URL i följande mönster:`https://<hostname>:8443/`
+    a. I rutan **identifierare** anger du en URL i följande mönster: `https://<hostname>:8443/`
 
-    b. I rutan **svars-URL** anger du en URL i följande mönster:`https://<hostname>:8443/changepilot/saml/sso`
+    b. I rutan **svars-URL** anger du en URL i följande mönster: `https://<hostname>:8443/changepilot/saml/sso`
 
     > [!NOTE]
     > Föregående **ID** -och **SVARs-URL** -värden är inte de faktiska värden som du bör använda. Kontakta [support teamet för ändrings process hantering](mailto:support@realtech-us.com) för att få fram de faktiska värdena. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -106,7 +102,7 @@ I det här avsnittet ska du skapa en test användare med namnet B. Simon i Azure
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna slutför du de här stegen:
    1. I rutan **namn** anger du **B. Simon**.  
-   1. I rutan **användar namn** anger du \<username> @ \<companydomain> . \<extension> . Exempelvis `B.Simon@contoso.com`.
+   1. I rutan **användar namn** anger du \<username> @ \<companydomain> . \<extension> . Till exempel `B.Simon@contoso.com`.
    1. Välj **Visa lösen ord**och skriv sedan ned värdet som visas i rutan **lösen ord** .
    1. Välj **Skapa**.
 

@@ -2,31 +2,26 @@
 title: 'Självstudie: användar etablering för LinkedIn-höjning – Azure AD'
 description: Lär dig hur du konfigurerar Azure Active Directory att automatiskt etablera och avetablera användar konton till LinkedIn-höjning.
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa0a26eaeac431ed2c78c5bd938bbbe7dff14e0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e49b35de5cce914edbd8db2ac0c0c8cccd5f811b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77057421"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549780"
 ---
 # <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>Självstudie: Konfigurera LinkedIn-höjning för automatisk användar etablering
 
 Syftet med den här självstudien är att visa de steg du behöver utföra på LinkedIn-höjning och Azure AD för att automatiskt etablera och avetablera användar konton från Azure AD till LinkedIn-höjning.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande objekt:
 
@@ -86,7 +81,7 @@ Det första steget är att hämta din LinkedIn-åtkomsttoken. Om du är företag
 
 6. Spara din åtkomsttoken i Urklipp eller på datorn innan du lämnar sidan.
 
-7. Logga sedan in på [Azure Portal](https://portal.azure.com)och bläddra till avsnittet **Azure Active Directory > Enterprise-appar > alla program** .
+7. Logga sedan in på [Azure Portal](https://portal.azure.com)och bläddra till avsnittet **Azure Active Directory > Enterprise-appar > alla program**  .
 
 8. Om du redan har konfigurerat LinkedIn-höjning för enkel inloggning kan du söka efter din instans av LinkedIn-höjning med hjälp av Sök fältet. Annars väljer du **Lägg till** och söker efter **LinkedIn-höjning** i program galleriet. Välj LinkedIn Upphöj från Sök resultatet och Lägg till det i listan över program.
 

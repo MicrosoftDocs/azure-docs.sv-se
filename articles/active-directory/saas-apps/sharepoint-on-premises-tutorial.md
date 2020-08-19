@@ -2,24 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med SharePoint lokalt | Microsoft Docs'
 description: Läs hur du konfigurerar enkel inloggning mellan Azure Active Directory och lokal SharePoint.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 85b8d4d0-3f6a-4913-b9d3-8cc327d8280d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: miguego
-ms.openlocfilehash: c623ed8cfcdb61081c74a0f7326106c42781cefa
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 996668751ee93d14b18e399035fd345f32c58fbe
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648488"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552181"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-sharepoint-on-premises"></a>Självstudie: Azure Active Directory integration med enkel inloggning med SharePoint lokalt
 
@@ -31,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar lokal SharePoint me
 
 Mer information om SaaS-appar (Software as a Service) med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med SharePoint lokalt behöver du följande objekt:
 

@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory enkel inloggning (SSO) med enkel inloggning för Skytap | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och enkel inloggning för Skytap.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d6cb7ab2-da1a-4015-8e6f-c0c47bb6210f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/13/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33a8035f16f531dbb17177d1c2f4d5cd344e5a28
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8d34ca8ed01144ee282f6411640894807a09ef08
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77565799"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88527884"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-single-sign-on-for-skytap"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med enkel inloggning för Skytap
 
@@ -32,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar enkel inloggning f�
 
 Om du vill veta mer om SaaS (Software as a Service) med Azure AD, se [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -85,16 +81,16 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
 
-    a. I text rutan **identifierare** anger du en URL som använder följande mönster:`http://pingone.com/<custom EntityID>`
+    a. I text rutan **identifierare** anger du en URL som använder följande mönster: `http://pingone.com/<custom EntityID>`
 
-    b. I text rutan **svars-URL** anger du en URL som använder följande mönster:`https://sso.connect.pingidentity.com/sso/sp/ACS.saml2`
+    b. I text rutan **svars-URL** anger du en URL som använder följande mönster: `https://sso.connect.pingidentity.com/sso/sp/ACS.saml2`
 
 1. Välj **Ange ytterligare URL: er**och utför följande steg om du vill konfigurera programmet i **SP** -initierat läge:
 
-    a. I text rutan **inloggnings-URL** anger du en URL som använder följande mönster:`https://sso.connect.pingidentity.com/sso/sp/initsso?saasid=<saasid>&idpid=<idpid>`
+    a. I text rutan **inloggnings-URL** anger du en URL som använder följande mönster: `https://sso.connect.pingidentity.com/sso/sp/initsso?saasid=<saasid>&idpid=<idpid>`
 
     
-    b. I text rutan **vidarebefordra tillstånd** anger du en URL som använder följande mönster:`https://pingone.com/1.0/<custom ID>`
+    b. I text rutan **vidarebefordra tillstånd** anger du en URL som använder följande mönster: `https://pingone.com/1.0/<custom ID>`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera de här värdena med aktuell identifierare, svars-URL, inloggnings-URL och relä status. Kontakta [enkel inloggning för Skytap-klientens support team](mailto:support@skytap.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -111,11 +107,11 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet skapar du en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory** > **användare** > **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**  >  **användare**  >  **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryss rutan **Visa lösen ord** och skriv sedan ned värdet som visas i fältet **lösen ord** .
    1. Välj **Skapa**.
 
@@ -123,7 +119,7 @@ I det här avsnittet skapar du en test användare i Azure Portal som kallas B. S
 
 I det här avsnittet aktiverar du B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till enkel inloggning för Skytap.
 
-1. I Azure Portal väljer du **företags program** > **alla program**.
+1. I Azure Portal väljer du **företags program**  >  **alla program**.
 1. I listan program väljer du **enkel inloggning för Skytap**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
@@ -158,7 +154,7 @@ När du väljer den enkla inloggningen för Skytap-panelen i åtkomst panelen, b
 
 - [Vad är program åtkomst och enkel inloggning med Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Prova slack med Azure AD](https://aad.portal.azure.com/)
 

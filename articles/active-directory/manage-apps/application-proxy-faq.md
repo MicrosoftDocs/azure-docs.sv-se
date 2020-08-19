@@ -2,25 +2,21 @@
 title: Vanliga frågor och svar om Azure AD-programproxy | Microsoft Docs
 description: Läs vanliga frågor och svar om hur du använder Azure-AD-programproxy för att publicera interna, lokala program till fjärran vändare.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 78a0cb6217d8c1d25f08801066a970d6bc94e1b0
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: edf51dad768e8d8b5ea5dc6c1eff88f43f0f6b70
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042113"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589171"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Vanliga frågor och svar om Active Directory (Azure AD) Application Proxy
 
@@ -90,6 +86,15 @@ Application Proxy kräver Windows Server 2012 R2 eller senare. Det finns för n�
 
 
 ## <a name="application-configuration"></a>Tillämpningskonfiguration
+
+### <a name="i-am-receiving-an-error-about-an-invalid-certificate-or-possible-wrong-password"></a>Jag får ett fel meddelande om ett ogiltigt certifikat eller möjligt fel lösen ord
+
+När du har överfört SSL-certifikatet visas meddelandet "ogiltigt certifikat, möjligt fel lösen ord" på portalen.
+
+Här följer några tips för att felsöka det här felet:
+- Kontrol lera om det finns problem med certifikatet. Installera den på den lokala datorn. Om du inte drabbas av några problem är certifikatet lämpligt.
+- Se till att lösen ordet inte innehåller några specialtecken. För testning bör lösen ordet endast innehålla tecknen 0-9, A-Z och a-z.
+- Om certifikatet har skapats med Microsoft Software Key Storage Provider måste RSA-algoritmen användas.
 
 ### <a name="what-is-the-length-of-the-default-and-long-back-end-timeout-can-the-timeout-be-extended"></a>Vad är längden på standardvärdet och "Long"-timeout för Server delen? Kan tids gränsen utökas?
 

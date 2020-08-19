@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: dylankil
 ms.custom: devx-track-python
-ms.openlocfilehash: 967e290af390ff4310de3e7d0fd844e340ac289d
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 5a6c68dbb7dd4171fad3b3a13e904a152618a55d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876571"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516393"
 ---
 # <a name="tutorial-start-the-immersive-reader-using-the-python-sample-project"></a>Självstudie: starta den fördjupade läsaren med python-exempelprojektet
 
@@ -27,7 +27,7 @@ I [översikten](./overview.md)har du lärt dig om vad den fördjupade läsaren �
 > * Hämta en åtkomsttoken.
 > * Starta den fördjupade läsaren med exempel innehåll.
 
-Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/cognitive-services/) innan du börjar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -217,7 +217,7 @@ sudo nano /etc/paths
 - Gå till slutet av filen och ange den sökväg som du vill lägga till som sista objekt i listan, till exempel `PATH=$PATH:/usr/local/bin` .
 - Välj **CTRL + X** om du vill avsluta.
 - Skriv **Y** för att spara den ändrade bufferten.
-- Det är allt. Testa det genom att ange i ett nytt terminalfönster `echo $PATH` .
+- Klart! Testa det genom att ange i ett nytt terminalfönster `echo $PATH` .
 
 Installations flaska.
 

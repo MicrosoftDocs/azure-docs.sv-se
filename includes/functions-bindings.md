@@ -17,7 +17,7 @@ I den här tabellen visas de bindningar som stöds i huvud versionerna av Azure 
 
 | Typ | 1.x | 2. x och högre<sup>1</sup> | Utlösare | Indata | Resultat |
 | ---- | :-: | :-: | :------: | :---: | :----: |
-| [Blob-lagring](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔|✔|✔|✔|
+| [Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔|✔|✔|✔|
 | [Cosmos DB](../articles/azure-functions/functions-bindings-documentdb.md)               |✔|✔|✔|✔|✔|
 | [Event Grid](../articles/azure-functions/functions-bindings-event-grid.md)              |✔|✔|✔| |✔|
 | [Event Hubs](../articles/azure-functions/functions-bindings-event-hubs.md)              |✔|✔|✔| |✔|

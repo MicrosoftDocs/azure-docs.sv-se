@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory enkel inloggning (SSO) med iSAM | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och iSAM.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 01f4ef26-9adb-4a3d-b36c-dce523815afd
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75c9f9065fdb2be86438f1517c07de1ce45f5623
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: e0226392ff96c6dc10cbd729135a15c066378f68
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88187242"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552739"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-isams"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med iSAM
 
@@ -32,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar iSAMs med Azure Act
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -84,13 +80,13 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://<SUBDOMAIN>.isams.cloud/main/sso/saml2`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://<SUBDOMAIN>.isams.cloud/main/sso/saml2`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<SUBDOMAIN>.isams.cloud/main/sso/saml2/acs`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<SUBDOMAIN>.isams.cloud/main/sso/saml2/acs`
 
 1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<SUBDOMAIN>.isams.cloud/`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<SUBDOMAIN>.isams.cloud/`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [ISAM-klientens support team](mailto:support@isams.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -147,21 +143,15 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     ![Konfiguration](./media/isams-tutorial/configure-isams.png)
 
-    a. I text rutan **namn** , ange ett giltigt namn som`Saml2 Azure`
+    a. Ange ett giltigt namn som i text rutan **namn** `Saml2 Azure` . Detta är det namn som kommer att visas på inloggnings sidan.
 
-    b. I text rutan för **inloggnings-URL** klistrar du in URL-värdet för **inloggning** som du har kopierat från Azure Portal.
+    b. I rutan metadata-URL anger du URL-värdet för **app Federation-Metadata** som du har kopierat från Azure Portal.
+    
+    c. Tryck på **Importera**.
+    
+    d. I list rutan **program** i avsnittet **aktiverade klient program** väljer du alla ISAM-program som du vill att din Provider ska visas på inloggnings sidan för.
 
-    c. I text rutan **utfärdare** klistrar du in det **entitets-ID-** värde som du har kopierat från Azure Portal.
-
-    d. Ange **Tvingad autentisering** till **falskt** från List rutan.
-
-    e. Fyll i text rutan med **användarns attribut-uttryck** med ett giltigt användar namn.
-
-    f. Öppna det hämtade **certifikatet** från Azure Portal i anteckningar och klistra in innehållet i text rutan **X509 finger avtryck** .
-
-    ex. Ange värdet för **inaktivera mål grupps begränsning** till **falskt** från List rutan.
-
-    h. Klicka på **spara & Stäng**.
+    e. Klicka på **spara & Stäng**.
 
 ### <a name="create-isams-test-user"></a>Skapa iSAM-test användare
 
@@ -186,7 +176,7 @@ När du klickar på iSAM-panelen på åtkomst panelen, bör du loggas in automat
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

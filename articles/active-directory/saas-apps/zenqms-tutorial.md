@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med ZenQMS | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och ZenQMS.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 72857c30-8896-438d-90c9-aeb21bf5fec0
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 850923940c60212ad99729b8dbd002d8f9083a0b
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 1b4f4d801a5bbc3342b203a402f5921265630944
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86167172"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546193"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zenqms"></a>Självstudie: Azure Active Directory integrering med ZenQMS
 
@@ -34,7 +30,7 @@ Genom att integrera ZenQMS med Azure AD får du följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med ZenQMS behöver du följande objekt:
 
@@ -105,9 +101,9 @@ Utför följande steg för att konfigurera enkel inloggning med ZenQMS i Azure A
 
     ![Information om enkel inloggning för ZenQMS-domän och URL: er](common/idp-intiated.png)
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`urn:zenqms:<INSTANCE>`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `urn:zenqms:<INSTANCE>`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<INSTANCE>.zenqms.com/SAML/AssertionConsumerService`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<INSTANCE>.zenqms.com/SAML/AssertionConsumerService`
 
 5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
@@ -147,7 +143,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** brittasimon@yourcompanydomain.extension . Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** brittasimon@yourcompanydomain.extension . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

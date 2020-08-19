@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med ChronicX® | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och ChronicX®.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: f3f19be6-6ee8-413c-919c-4884ffe685ca
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24990ce397d91bb71ebbc455be345d9451d2dce1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 149de1f104d7005ea382decd93dd5f61a1fffe0a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158655"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88529232"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-chronicx"></a>Självstudie: Azure Active Directory integrering med ChronicX®
 
@@ -33,9 +28,9 @@ Genom att integrera ChronicX-® med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med ChronicX® behöver du följande objekt:
 
@@ -109,7 +104,7 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Ch
 
     a. I textrutan **Inloggnings-URL** anger du en URL enligt följande mönster: `https://<subdomain>.chronicx.com/ups/processlogonSSO.jsp`
 
-    b. I text rutan **identifierare (enhets-ID)** anger du en URL:`ups.chronicx.com`
+    b. I text rutan **identifierare (enhets-ID)** anger du en URL: `ups.chronicx.com`
 
     > [!NOTE]
     >Inloggnings-URL-värdet är inte verkligt. Uppdatera värdet med den faktiska inloggnings-URL:en. Kontakta [ChronicX® klient support teamet](https://www.casebank.com/contact-us/) för att hämta värdet. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -150,8 +145,8 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** skriver du **brittasimon\@yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

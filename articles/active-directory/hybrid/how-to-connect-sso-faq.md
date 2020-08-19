@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f621ed1342928b7f05fc8b84bfc2fceadf494fb5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ea5c3e0ffc000d3d239e87e9771d1b49d98fd206
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019739"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589052"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory sömlös enkel inloggning: vanliga frågor och svar
 
@@ -54,7 +54,7 @@ Dessutom får användarna en tyst inloggnings upplevelse om ett program skickar 
 | Programnamn | Programmets URL som ska användas |
 | -- | -- |
 | sharepoint online | https: \/ /contoso.SharePoint.com |
-| Azure-portalen | https: \/ /Portal.Azure.com/contoso.com |
+| Azure Portal | https: \/ /Portal.Azure.com/contoso.com |
 
 I tabellerna ovan ersätter du "contoso.com" med ditt domän namn för att komma till rätt program-URL: er för din klient.
 
@@ -104,7 +104,7 @@ Följ de här stegen på den lokala server där du kör Azure AD Connect:
    2. Anropa `Update-AzureADSSOForest -OnPremCredentials $creds` . Det här kommandot uppdaterar Kerberos-dekrypterings nyckeln för `AZUREADSSO` dator kontot i den här särskilda AD-skogen och uppdaterar det i Azure AD.
    
    >[!NOTE]
-   >Om du inte är domän administratör och har tilldelats behörigheter av domän administratören, bör du anropa`Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
+   >Om du inte är domän administratör och har tilldelats behörigheter av domän administratören, bör du anropa `Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
    
    3. Upprepa föregående steg för varje AD-skog som du har konfigurerat funktionen på.
 
@@ -135,6 +135,8 @@ Följ de här stegen på den lokala server där du kör Azure AD Connect:
    3. Importera den sömlös SSO PowerShell-modulen med hjälp av det här kommandot: `Import-Module .\AzureADSSO.psd1` .
    4. Kör PowerShell som administratör. I PowerShell anropar du `New-AzureADSSOAuthenticationContext` . Det här kommandot ska ge dig en popup-meny för att ange klient organisationens autentiseringsuppgifter för global administratör.
    5. Anropa `Enable-AzureADSSO -Enable $false` .
+   
+   I det här läget är sömlöst enkel inloggning inaktiverat, men domänerna förblir konfigurerade om du vill aktivera sömlöst SSO tillbaka. Om du vill ta bort domänerna från sömlös SSO-konfiguration fullständigt, anropar du följande cmdlet efter att du slutfört steg 5 ovan: `Disable-AzureADSSOForest -DomainFqdn <fqdn>` .
 
    >[!IMPORTANT]
    >Att inaktivera sömlös SSO med PowerShell ändrar inte tillstånd i Azure AD Connect. Sömlös SSO visas som aktive rad på **inloggnings sidan för ändrings användare** .

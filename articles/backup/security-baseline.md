@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d0a6b6561b5d0995d7794993608a4991b1da2718
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 72c038bda88ecc9b7518f1f764a41bd4c49f52c6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810147"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589426"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Azures säkerhets bas linje för säkerhets kopiering
 
@@ -350,7 +350,7 @@ Dessutom kan du använda Azure AD-farlighets identifiering för att visa aviseri
 
 - [Så här konfigurerar du Azure Backup att använda Azure AD-inloggning](../app-service/configure-authentication-provider-aad.md)
 
-- [Så här skapar och konfigurerar du en AAD-instans](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [Så här skapar och konfigurerar du en Azure AD-instans](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Security Center övervakning**: Ja
 
@@ -902,7 +902,7 @@ Säkerhetskopiera kund hanterade nycklar inom Azure Key Vault.
 
 - [Så här säkerhetskopierar du nyckel valv nycklar i Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
-- [Förstå kryptering i Azure Backup](./backup-encryption.md#encryption-of-backup-data-using-customer-managed-keys)
+- [Förstå kryptering i Azure Backup](./backup-encryption.md)
 
 **Azure Security Center övervakning**: inte tillämpligt
 

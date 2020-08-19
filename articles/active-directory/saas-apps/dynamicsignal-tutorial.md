@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med dynamisk signal | Microsoft Docs'
 description: Lär dig att konfigurera enkel inloggning mellan Azure Active Directory och Dynamic Signal.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 863f7340-b065-4f59-b092-daa67da6f703
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2426dfe95a40c7305df38412d624c898a532771
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c74ef351e316c075e6a88207db19bbd115779571
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158376"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555737"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dynamic-signal"></a>Självstudie: Azure Active Directory integrering med dynamisk signal
 
@@ -33,9 +28,9 @@ När du integrerar Dynamic Signal med Azure AD innebär det följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att konfigurera Azure AD-integrering med Dynamic Signal behöver du följande:
 
@@ -108,11 +103,11 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Dynam
 
     ![Information om Dynamic Signal-domän och URL:er med enkel inloggning](common/sp-identifier-reply.png)
 
-    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<subdomain>.voicestorm.com`
+    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://<subdomain>.voicestorm.com`
 
-    b. I rutan **identifierare** anger du en URL med följande mönster:`https://<subdomain>.voicestorm.com`
+    b. I rutan **identifierare** anger du en URL med följande mönster: `https://<subdomain>.voicestorm.com`
 
-    c. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<subdomain>.voicestorm.com/User/SsoResponse`
+    c. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<subdomain>.voicestorm.com/User/SsoResponse`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera de här värdena med den faktiska inloggnings-URL:en, identifieraren och svars-URL:en. Kontakta [Dynamic Signal-klientens supportteam](mailto:support@dynamicsignal.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -153,8 +148,8 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** skriver du **brittasimon\@yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

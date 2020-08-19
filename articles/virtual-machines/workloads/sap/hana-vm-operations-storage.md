@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5497f50f9e868338541143a18ab0c83f32c1d1b
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 4e1b510ed970b253adedef0fb6efb4abe0c3b65b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080532"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506404"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Lagringskonfigurationer för virtuella Azure-datorer för SAP HANA
 
@@ -42,11 +42,11 @@ En lista över lagrings typer och deras service avtal i IOPS och lagrings data f
 
 Lägsta SAP HANA certifierade villkor för olika lagrings typer är: 
 
-- Azure Premium Storage – **/Hana/log** krävs för att Azure [Skrivningsaccelerator](../../linux/how-to-enable-write-accelerator.md)ska kunna användas. **/Hana/data** -volymen kan placeras på Premium Storage utan Azure Skrivningsaccelerator eller på Ultra disk
+- Azure Premium Storage – **/Hana/log** krävs för att Azure [Skrivningsaccelerator](../../how-to-enable-write-accelerator.md)ska kunna användas. **/Hana/data** -volymen kan placeras på Premium Storage utan Azure Skrivningsaccelerator eller på Ultra disk
 - Azure Ultra disk minst för **/Hana/log** -volymen. **/Hana/data** -volymen kan placeras på antingen Premium Storage utan Azure Skrivningsaccelerator eller för att få snabbare omstart Ultra disk
 - **NFS v 4.1** -volymer ovanpå Azure NetApp Files för **/Hana/log och/Hana/data**. Volymen av/Hana/Shared kan använda NFS v3-eller NFS v 4.1-protokollet
 
-Några av lagrings typerna kan kombineras. Det är till exempel möjligt att placera **/Hana/data** till Premium Storage och **/Hana/log** kan placeras på Ultra disk Storage för att få en nödvändig låg latens. Om du använder en volym som baseras på ANF för **/Hana/data**måste **/Hana/log** -volymen baseras på NFS även ovanpå ANF. Att använda NFS ovanpå ANF för en av volymerna (t. ex./Hana/data) och Azure Premium-lagring eller Ultra disk för den andra volymen (t. ex. **/Hana/log**) **stöds inte**.
+Några av lagrings typerna kan kombineras. Det är till exempel möjligt att placera **/Hana/data** till Premium Storage och **/Hana/log** kan placeras på Ultra disk Storage för att få en nödvändig låg latens. Om du använder en volym som baseras på ANF för **/Hana/data**måste  **/Hana/log** -volymen baseras på NFS även ovanpå ANF. Att använda NFS ovanpå ANF för en av volymerna (t. ex./Hana/data) och Azure Premium-lagring eller Ultra disk för den andra volymen (t. ex. **/Hana/log**) **stöds inte**.
 
 I den lokala världen var du sällan medveten om I/O-undersystemen och dess funktioner. Orsaken var att den nödvändiga enhets leverantören för att se till att minimi kraven för lagring är uppfyllda för SAP HANA. När du skapar Azure-infrastrukturen själv bör du vara medveten om några av dessa SAP-utfärdade krav. Några av de minsta data flödes egenskaper som SAP rekommenderar är:
 
@@ -75,7 +75,7 @@ Linux har flera olika I/O-schemaläggnings lägen. Vanliga rekommendationer via 
 Azure Skrivningsaccelerator är en funktion som endast är tillgänglig för virtuella datorer i Azure M-serien. Som namn tillstånd är syftet med funktionen att förbättra I/O-svars tiden för skrivningar mot Azure Premium-lagringen. För SAP HANA ska Skrivningsaccelerator endast användas mot **/Hana/log** -volymen. Därför är **/Hana/data** och **/Hana/log** separata volymer med Azure Skrivningsaccelerator som bara stöder **/Hana/log** -volymen. 
 
 > [!IMPORTANT]
-> När du använder Azure Premium Storage är användningen av Azure- [Skrivningsaccelerator](../../linux/how-to-enable-write-accelerator.md) för **/Hana/log** -volymen obligatorisk. Skrivningsaccelerator är endast tillgängligt för Premium Storage och virtuella datorer i M-serien och Mv2-serien. Skrivningsaccelerator fungerar inte tillsammans med andra Azure VM-familjer, t. ex. Esv3 eller Edsv4.
+> När du använder Azure Premium Storage är användningen av Azure- [Skrivningsaccelerator](../../how-to-enable-write-accelerator.md) för **/Hana/log** -volymen obligatorisk. Skrivningsaccelerator är endast tillgängligt för Premium Storage och virtuella datorer i M-serien och Mv2-serien. Skrivningsaccelerator fungerar inte tillsammans med andra Azure VM-familjer, t. ex. Esv3 eller Edsv4.
 
 Rekommendationerna för cachelagring för Azure Premium-diskar nedan förutsätter I/O-egenskaperna för SAP HANA listan, t. ex.:
 
@@ -194,7 +194,7 @@ För de andra volymerna skulle konfigurationen se ut så här:
 
 Kontrol lera om lagrings data flödet för de olika föreslagna volymerna uppfyller den arbets belastning som du vill köra. Om arbets belastningen kräver högre volymer för **/Hana/data** och **/Hana/log**måste du öka antalet virtuella hård diskar för Azure Premium Storage. Att ändra storlek på en volym med fler virtuella hård diskar än vad som anges i listan ökar IOPS-och I/O-genomflödet inom gränserna för den virtuella Azure-dator typen.
 
-Azure-Skrivningsaccelerator fungerar bara tillsammans med [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/). Minst de Azure Premium Storage-diskar som utgör **/Hana/log** -volymen måste distribueras som hanterade diskar. Mer detaljerade instruktioner och begränsningar för Azure Skrivningsaccelerator finns i artikeln [Skrivningsaccelerator](../../linux/how-to-enable-write-accelerator.md).
+Azure-Skrivningsaccelerator fungerar bara tillsammans med [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/). Minst de Azure Premium Storage-diskar som utgör **/Hana/log** -volymen måste distribueras som hanterade diskar. Mer detaljerade instruktioner och begränsningar för Azure Skrivningsaccelerator finns i artikeln [Skrivningsaccelerator](../../how-to-enable-write-accelerator.md).
 
 För de HANA-certifierade virtuella datorerna i Azure [Esv3](../../ev3-esv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#esv3-series) -familjen och [EDSV4](../../edv4-edsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#edsv4-series)måste du ANF för **/Hana/data** -och **/Hana/log** -volymen. Eller så behöver du utnyttja Azure Ultra disk Storage i stället för Azure Premium Storage för **/Hana/log** -volymen. Därför kan konfigurationerna för **/Hana/data** -volymen på Azure Premium Storage se ut så här:
 
@@ -352,9 +352,9 @@ Ett mindre kostsamt alternativ för sådana konfigurationer kan se ut så här:
 | M416ms_v2 | 11400 GiB | 2 000 MB/s | 7 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | Om du använder Skrivningsaccelerator för kombinerad data och logg volym begränsas IOPS-priset till 20 000<sup>2</sup> |
 
 
-<sup>1</sup> [Azure Skrivningsaccelerator](../../linux/how-to-enable-write-accelerator.md) kan inte användas med Ev4 och Ev4 VM-familjer. I och med att använda Azure Premium Storage är I/O-fördröjningen inte mindre än 1ms
+<sup>1</sup> [Azure Skrivningsaccelerator](../../how-to-enable-write-accelerator.md) kan inte användas med Ev4 och Ev4 VM-familjer. I och med att använda Azure Premium Storage är I/O-fördröjningen inte mindre än 1ms
 
-<sup>2</sup> VM-serien har stöd för [Azure Skrivningsaccelerator](../../linux/how-to-enable-write-accelerator.md), men det finns en risk att IOPS-gränsen för Write Accelerator kan begränsa disk konfigurationens IOPS-funktioner
+<sup>2</sup> VM-serien har stöd för [Azure Skrivningsaccelerator](../../how-to-enable-write-accelerator.md), men det finns en risk att IOPS-gränsen för Write Accelerator kan begränsa disk konfigurationens IOPS-funktioner
 
 Om du kombinerar data-och logg volymen för SAP HANA bör diskarna som skapar stripe-volymen inte ha Read cache eller read/write cache aktiverat.
 

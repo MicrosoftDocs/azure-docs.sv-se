@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Freedcamp | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Freedcamp.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: bfc73563-017d-458f-b634-162f93e03b74
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4de1ae135df4cd070fe9c6ee322e304caa1e17c9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 50b5e21c8dc441187b3d78310db55b84aa1cd158
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67101919"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551038"
 ---
 # <a name="tutorial-integrate-freedcamp-with-azure-active-directory"></a>Självstudie: integrera Freedcamp med Azure Active Directory
 
@@ -33,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar Freedcamp med Azure
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -80,16 +75,16 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, utför följande steg:
 
-    1. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://<SUBDOMAIN>.freedcamp.com/sso/<UNIQUEID>`
+    1. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://<SUBDOMAIN>.freedcamp.com/sso/<UNIQUEID>`
 
-    2. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<SUBDOMAIN>.freedcamp.com/sso/acs/<UNIQUEID>`
+    2. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<SUBDOMAIN>.freedcamp.com/sso/acs/<UNIQUEID>`
 
 1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<SUBDOMAIN>.freedcamp.com/login`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<SUBDOMAIN>.freedcamp.com/login`
 
     > [!NOTE]
-    > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Användarna kan också ange URL-värden med avseende på sin egen kund domän och de kanske inte behöver mönstret `freedcamp.com`, de kan ange valfritt kundspecifika värde, specifika för deras program instans. Du kan också kontakta [Freedcamp client support team](mailto:devops@freedcamp.com) för ytterligare information om URL-mönster.
+    > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Användarna kan också ange URL-värden med avseende på sin egen kund domän och de kanske inte behöver mönstret `freedcamp.com` , de kan ange valfritt kundspecifika värde, specifika för deras program instans. Du kan också kontakta [Freedcamp client support team](mailto:devops@freedcamp.com) för ytterligare information om URL-mönster.
 
 1. På sidan **Konfigurera enkel inloggning med SAML** , i avsnittet **SAML-signeringscertifikat** , Sök efter **certifikat (base64)** och välj **Ladda ned** för att ladda ned certifikatet och spara det på din dator.
 
@@ -137,7 +132,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `Britta Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `BrittaSimon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `BrittaSimon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -177,7 +172,7 @@ Om du vill aktivera Azure AD-användare loggar du in på Freedcamp, de måste va
 
     a. Klicka på **Lägg till eller Bjud in användare**.
 
-    b. I text rutan **e-postadress** anger du e-postadressen till användaren `Brittasimon@contoso.com`.
+    b. I text rutan **e-postadress** anger du e-postadressen till användaren `Brittasimon@contoso.com` .
 
     c. Klicka på **Lägg till användare**.
 

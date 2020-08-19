@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med ClickTime | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och ClickTime.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d437b5ab-4d71-4c13-96d0-79018cebbbd4
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0db29309c2f691a1c7811258fee59582643a6e6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ed39064d4aee07554ce795be73732024e1b47f84
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256125"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549350"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Självstudie: Azure Active Directory integrering med ClickTime
 
@@ -35,7 +30,7 @@ När du integrerar ClickTime med Azure AD får du följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förhandskrav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med ClickTime behöver du följande objekt:
 
@@ -106,7 +101,7 @@ Utför följande steg för att konfigurera Azure AD enkel inloggning med ClickTi
 
     ![Information om enkel inloggning med ClickTime-domäner och -URL:er](common/idp-intiated.png)
 
-    a. Skriv en URL i text rutan **identifierare** :`https://app.clicktime.com/sp/`
+    a. Skriv en URL i text rutan **identifierare** : `https://app.clicktime.com/sp/`
 
     b. I textrutan **Svars-URL** skriver du in en URL med följande mönster:
     
@@ -166,7 +161,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

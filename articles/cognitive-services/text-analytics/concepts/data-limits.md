@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 04/27/2020
+ms.date: 08/14/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 0dc79132ae75be511b53bf272e578ff0ce7a7775
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 068c2dc698e9f0b6d6f2f6486dff863c1343b178
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986822"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258282"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Data-och hastighets begränsningar för API för textanalys
 <a name="data-limits"></a>
@@ -31,8 +31,8 @@ Använd den här artikeln för att hitta gränserna för storlek och frekvenser 
 
 | Gräns | Värde |
 |------------------------|---------------|
-| Maximal storlek på ett enskilt dokument | 5 120 tecken som mäts av [StringInfo. LengthInTextElements](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements). |
-| Maximal storlek på hela begäran | 1 MB |
+| Maximal storlek på ett enskilt dokument | 5 120 tecken som mäts av [StringInfo. LengthInTextElements](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements). Gäller även för Textanalys för hälso container. |
+| Maximal storlek på hela begäran | 1 MB. Gäller även för Textanalys för hälso container. |
 
 Det maximala antalet dokument som du kan skicka i en enskild begäran beror på vilken API-version och funktion du använder.
 
@@ -48,7 +48,7 @@ Följande gränser har ändrats i v3 för API: et. Om du överskrider gränserna
 | Extrahering av nyckelfraser | 10 |
 | Igenkänning av namngiven enhet | 5 |
 | Entity Linking | 5 |
-
+| Textanalys för hälso container | 1000 |
 #### <a name="version-2"></a>[Version 2](#tab/version-2)
 
 | Funktion | Maximalt antal dokument per begäran | 
@@ -63,7 +63,7 @@ Följande gränser har ändrats i v3 för API: et. Om du överskrider gränserna
 
 ## <a name="rate-limits"></a>Hastighetsbegränsningar
 
-Din hastighets gräns varierar beroende på [pris nivå](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/). Dessa begränsningar är desamma för båda versionerna av API: et.
+Din hastighets gräns varierar beroende på [pris nivå](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/). Dessa begränsningar är desamma för båda versionerna av API: et. Dessa hastighets begränsningar gäller inte för Textanalys för hälso containern, som inte har någon angiven hastighets gräns.
 
 | Nivå          | Förfrågningar per sekund | Begär Anden per minut |
 |---------------|---------------------|---------------------|

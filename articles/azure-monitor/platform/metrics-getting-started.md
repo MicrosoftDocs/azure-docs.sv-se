@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 14f21b1c0bff5f4d5f77b1547c09ddd6c370ece0
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 3e5514c4a54083bcc6ef8187f2cd97515d2dd680
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276438"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590191"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Komma igång med Azure Metrics Explorer
 
@@ -41,16 +41,19 @@ Om du vill skapa ett mått diagram går du till vyn resurs, resurs grupp, prenum
 
 4. Alternativt kan du [ändra mått agg regeringen](metrics-charts.md#changing-aggregation). Du kanske exempelvis vill att diagrammet ska Visa lägsta, högsta eller genomsnittliga värden för måttet.
 
-> [!NOTE]
+> [!TIP]
 > Använd knappen **Lägg till mått** och upprepa de här stegen om du vill se flera mått som är ritade i samma diagram. För flera diagram i en vy väljer du knappen **Lägg till diagram** överst.
 
 ## <a name="select-a-time-range"></a>Välj ett tidsintervall
+
+> [!WARNING]
+> [De flesta mått i Azure lagras i 93 dagar](data-platform-metrics.md#retention-of-metrics). Du kan dock fråga högst 30 dagar på data i ett enskilt diagram. Den här begränsningen gäller inte för [loggbaserade mått](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics).
 
 Som standard visar diagrammet de senaste 24 timmarna med mät data. Använd panelen **tids väljare** för att ändra tidsintervallet, zooma in eller ut i diagrammet. 
 
 ![Ändra tids områdets panel](./media/metrics-getting-started/time-picker.png)
 
-> [!NOTE]
+> [!TIP]
 > Använd **tids penseln** för att undersöka ett intressant ytdiagram i diagrammet (insamling eller dip). Placera mus pekaren i början av ytan, klicka och håll ned vänster MUSKNAPP, dra till den andra sidan av ytan och släpp sedan knappen. Diagrammet kommer att zooma in inom det tidsintervallet. 
 
 ## <a name="apply-dimension-filters-and-splitting"></a>Använd dimensions filter och delning

@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Signagelive | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Signagelive.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: d923f0e7-ad31-4d59-a6fd-f0e895e1a32d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/11/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dab2fd0ee2f25e835b4bd07a3534475d3d93b5e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5a8fe24e5fa1935b2363ed5d2c15c72af8af11ff
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73160938"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88539784"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>Självstudie: Azure Active Directory integrering med Signagelive
 
@@ -32,9 +27,9 @@ Genom att integrera Signagelive med Azure AD får du följande fördelar:
 * Du kan göra det möjligt för användarna att logga in automatiskt på Signagelive (enkel inloggning) med sina Azure AD-konton.
 * Du kan hantera dina konton på en central plats: Azure Portal.
 
-Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis). Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis). Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att konfigurera Azure AD-integrering med Signagelive behöver du följande:
 
@@ -61,7 +56,7 @@ Gör så här om du vill lägga till Signagelive från galleriet:
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
-3. Om du vill lägga till ett nytt program väljer du knappen **nytt program** överst i dialog rutan.
+3. Om du vill lägga till ett nytt program väljer du knappen  **nytt program** överst i dialog rutan.
 
     ![Knappen Nytt program](common/add-new-app.png)
 
@@ -107,7 +102,7 @@ Utför följande steg för att konfigurera enkel inloggning med Signagelive i Az
 
     ![Signagelive-domän och information om URL:er för enkel inloggning](common/sp-signonurl.png)
 
-    I rutan **inloggnings-URL** anger du en URL som använder följande mönster:`https://login.signagelive.com/sso/<ORGANIZATIONALUNITNAME>`
+    I rutan **inloggnings-URL** anger du en URL som använder följande mönster:  `https://login.signagelive.com/sso/<ORGANIZATIONALUNITNAME>`
 
     > [!NOTE]
     > Värdet är inte verkligt. Uppdatera värdet med den faktiska inloggnings-URL: en. Kontakta [Signagelive-klientens support team](mailto:support@signagelive.com) för att få värdet. Du kan också se de mönster som visas i avsnittet **grundläggande SAML-konfiguration** i Azure Portal.
@@ -148,7 +143,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** anger du "brittasimon@yourcompanydomain.extension". I det här fallet kan du till exempel ange "BrittaSimon@contoso.com".
+    b. I fältet **användar namn** anger du " brittasimon@yourcompanydomain.extension ". I det här fallet kan du till exempel ange " BrittaSimon@contoso.com ".
 
     c. Markera kryss rutan **Visa lösen ord** och anteckna värdet som visas i rutan lösen ord.
 

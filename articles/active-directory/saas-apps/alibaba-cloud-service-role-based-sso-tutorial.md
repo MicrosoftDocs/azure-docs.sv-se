@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory-integrering med enkel inloggning (SSO) med Alibaba Cloud Service (rollbaserad SSO) | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Alibaba moln tjänst (rollbaserad SSO).
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3667841e-acfc-4490-acf5-80d9ca3e71e8
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e22bec224d185d0306f2b0032aef929f627c910e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0e9ccb3f4308a1a75a715a16ab4c1a2887b0a915
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77367936"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522092"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>Självstudie: Azure Active Directory-integrering med enkel inloggning (SSO) med Alibaba Cloud Service (rollbaserad SSO)
 
@@ -33,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar Alibaba Cloud Servi
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -117,7 +112,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -154,11 +149,11 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 3. Klicka på **skapa IDP**på fliken **rollbaserad SSO** .
 
-4. På sidan `AAD` som visas anger du i fältet IdP namn, anger en beskrivning i fältet **notering** , klickar på **överför** för att ladda upp den federationsmetadata som du hämtade tidigare och klickar på **OK**.
+4. På sidan som visas anger `AAD` du i fältet IdP namn, anger en beskrivning i fältet **notering** , klickar på **överför** för att ladda upp den federationsmetadata som du hämtade tidigare och klickar på **OK**.
 
 5. När IdP har skapats klickar du på **skapa ram-roll**.
 
-6. I fältet **ram-rollnamn** anger `AADrole`du väljer `AAD` du från List rutan **Välj IDP** och klickar på OK.
+6. I fältet **ram-rollnamn** anger du `AADrole` väljer du `AAD` från List rutan **Välj IDP** och klickar på OK.
 
     >[!NOTE]
     >Du kan bevilja behörighet till rollen vid behov. När du har skapat IdP och motsvarande roll rekommenderar vi att du sparar ARNs för IdP och rollen för efterföljande användning. Du kan hämta ARNs på sidan information om IdP och roll information.
@@ -178,7 +173,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
     >[!NOTE]
     >När behörigheterna har beviljats loggar du in i Graph Explorer igen.
 
-    d. På Graph Explorer-sidan väljer du **Hämta** från den första List rutan och **beta** fönstret i den andra List rutan. Ange `https://graph.microsoft.com/beta/servicePrincipals` sedan i fältet bredvid List rutorna och klicka på **Kör fråga**.
+    d. På Graph Explorer-sidan väljer du **Hämta** från den första List rutan och **beta** fönstret i den andra List rutan. Ange sedan `https://graph.microsoft.com/beta/servicePrincipals` i fältet bredvid List rutorna och klicka på **Kör fråga**.
 
     ![Graph-konfiguration](./media/alibaba-cloud-service-role-based-sso-tutorial/graph03.png)
 
@@ -190,7 +185,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
     ![Graph-konfiguration](./media/alibaba-cloud-service-role-based-sso-tutorial/graph05.png)
 
     >[!NOTE]
-    >Du kan hitta egenskapen appRoles genom att ange `https://graph.microsoft.com/beta/servicePrincipals/<objectID>` i fältet för frågan. Observera att objekt `objectID` -ID: t som du har kopierat från sidan **Egenskaper** för Azure AD.
+    >Du kan hitta egenskapen appRoles genom att ange `https://graph.microsoft.com/beta/servicePrincipals/<objectID>` i fältet för frågan. Observera att `objectID` objekt-ID: t som du har kopierat från sidan **Egenskaper** för Azure AD.
 
     f. Gå tillbaka till Graph Explorer, ändra metoden från **Hämta** till **patch**, klistra in följande innehåll i avsnittet **begär ande text** och klicka på **Kör fråga**:
     ```
@@ -221,9 +216,9 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
     }
     ```
     > [!NOTE]
-    > `value` Är Arns för IDP och rollen som du skapade i ram-konsolen. Här kan du lägga till flera roller efter behov. Azure AD skickar värdet för dessa roller som anspråks värde i SAML-svar. Du kan dock bara lägga till nya roller efter `msiam_access` delen för korrigerings åtgärden. För att utjämna skapandet av processen rekommenderar vi att du använder en ID-generator, till exempel GUID-generator, för att generera ID i real tid.
+    > `value`Är Arns för IDP och rollen som du skapade i ram-konsolen. Här kan du lägga till flera roller efter behov. Azure AD skickar värdet för dessa roller som anspråks värde i SAML-svar. Du kan dock bara lägga till nya roller efter `msiam_access` delen för korrigerings åtgärden. För att utjämna skapandet av processen rekommenderar vi att du använder en ID-generator, till exempel GUID-generator, för att generera ID i real tid.
 
-    g. När tjänstens huvud namn har uppdaterats med den roll som krävs, bifogar du rollen med Azure AD-användaren (U2) genom att följa anvisningarna i avsnittet **tilldela test användare i Azure AD** i självstudien.
+    ex. När tjänstens huvud namn har uppdaterats med den roll som krävs, bifogar du rollen med Azure AD-användaren (U2) genom att följa anvisningarna i avsnittet **tilldela test användare i Azure AD** i självstudien.
 
 ### <a name="configure-alibaba-cloud-service-role-based-sso-sso"></a>Konfigurera Alibaba Cloud Service (rollbaserad SSO) SSO
 
@@ -255,11 +250,11 @@ När de föregående konfigurationerna har slutförts testar du Alibaba Cloud Se
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Prova Alibaba Cloud Service (rollbaserad SSO) med Azure AD](https://aad.portal.azure.com/)
 

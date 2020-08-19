@@ -2,14 +2,14 @@
 title: Azure snabb start – skapa ett batch-konto – Azure Resource Manager mall
 description: Lär dig snabbt att köra ett Batch-jobb med Azure CLI. Skapa och hantera Azure-resurser från kommando raden eller i skript.
 ms.topic: quickstart
-ms.date: 05/19/2020
+ms.date: 08/17/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: d92751d1463a20c8fb0cb83fe678789860957189
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c59e8891678d9fc1af7c4fe78e4ee2d267ec99b4
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086134"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511396"
 ---
 # <a name="quickstart-create-a-batch-account-by-using-arm-template"></a>Snabb start: skapa ett batch-konto med hjälp av ARM-mall
 
@@ -17,11 +17,11 @@ Du behöver ett batch-konto för att skapa beräknings resurser (pooler för Com
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Om din miljö uppfyller förutsättningarna och du är van att använda ARM-mallar, väljer du knappen **distribuera till Azure** . Mallen öppnas i Azure Portal.
+Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure**. Mallen öppnas på Azure-portalen.
 
 [![Distribuera till Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-batchaccount-with-storage%2Fazuredeploy.json)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Du måste ha en aktiv Azure-prenumeration.
 
@@ -29,7 +29,7 @@ Du måste ha en aktiv Azure-prenumeration.
 
 ## <a name="review-the-template"></a>Granska mallen
 
-Mallen som används i den här snabb starten är från [Azure snabb starts-mallar](https://azure.microsoft.com/resources/templates/101-batchaccount-with-storage/).
+Mallen som används i den här snabbstarten kommer från [Azure-snabbstartsmallar](https://azure.microsoft.com/resources/templates/101-batchaccount-with-storage/).
 
 :::code language="json" source="~/quickstart-templates/101-batchaccount-with-storage/azuredeploy.json" range="1-80" highlight="36-69":::
 

@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Zwayam | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Zwayam.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7754344c-34d6-4764-a368-e1dbfe876c0c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: c36749c40f3ce2e1d5478b3d9ab5eb2637a3c63b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e0e16d5eb41bf038e29d7786395a9ec946efac78
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67085629"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545697"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zwayam"></a>Självstudie: Azure Active Directory integrering med Zwayam
 
@@ -32,9 +28,9 @@ Genom att integrera Zwayam med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Zwayam behöver du följande objekt:
 
@@ -107,10 +103,10 @@ Utför följande steg för att konfigurera enkel inloggning med Zwayam i Azure A
 
     a. I textrutan **Inloggnings-URL** anger du en URL enligt följande mönster: `https://sso.zwayam.com/zwayam-saml/zwayam-saml/saml/login?idp=<SAML Entity ID>`
 
-    b. I text rutan **identifierare (enhets-ID)** anger du en URL:`https://sso.zwayam.com/zwayam-saml/saml/metadata`
+    b. I text rutan **identifierare (enhets-ID)** anger du en URL: `https://sso.zwayam.com/zwayam-saml/saml/metadata`
 
     > [!NOTE]
-    > Värdet för **inloggnings-URL** är inte verkligt. Uppdatera värdet med den faktiska inloggnings-URL:en. `<SAML Entity ID>`är värdet för Azure AD-identifieraren, som beskrivs senare i självstudien.
+    > Värdet för **inloggnings-URL** är inte verkligt. Uppdatera värdet med den faktiska inloggnings-URL:en. `<SAML Entity ID>` är värdet för Azure AD-identifieraren, som beskrivs senare i självstudien.
 
 6. På sidan **Set up Single Sign-On with SAML** (Konfigurera enkel inloggning med SAML) går du till avsnittet **SAML Signing Certificate** (SAML-signeringscertifikat), klickar på **Ladda ned** för att ladda ned **Federation Metadata-XML** från de angivna alternativen enligt dina behov och spara den på datorn.
 
@@ -148,7 +144,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** brittasimon@yourcompanydomain.extension. Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** brittasimon@yourcompanydomain.extension . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

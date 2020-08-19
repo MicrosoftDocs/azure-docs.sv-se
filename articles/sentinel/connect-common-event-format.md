@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2019
 ms.author: yelevin
-ms.openlocfilehash: 34091e0c9f18cb87a240054f534f474710eb421d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7f03c11b53c6dc61fad6b916e7c08086917b416
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563934"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565748"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Ansluta din externa lösning med hjälp av vanligt händelse format
 
@@ -33,7 +33,7 @@ Den här artikeln beskriver hur anslutningen fungerar, innehåller krav och ger 
 > [!NOTE] 
 > Data lagras på den geografiska platsen för den arbets yta där du kör Azure Sentinel.
 
-För att kunna ansluta till den här anslutningen måste du distribuera en agent på en särskild Linux-dator (VM eller lokalt) för att stödja kommunikationen mellan installations programmet och Azure Sentinel. Följande diagram beskriver installationen i händelse av en virtuell Linux-dator i Azure.
+För att kunna ansluta till den här anslutningen måste du distribuera en agent på en särskild Linux-dator (VM eller lokalt) för att stödja kommunikationen mellan-enheten och Azure Sentinel. Följande diagram beskriver installationen i händelse av en virtuell Linux-dator i Azure.
 
  ![CEF i Azure](./media/connect-cef/cef-syslog-azure.png)
 
@@ -49,7 +49,7 @@ Se till att konfigurera datorns säkerhet enligt din organisations säkerhets pr
 Om du vill använda TLS-kommunikation mellan säkerhetslösningen och syslog-datorn måste du konfigurera syslog-daemonen (rsyslog eller syslog-ng) för att kommunicera i TLS: [kryptera syslog-trafik med TLS-rsyslog](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [kryptera logg meddelanden med TLS – syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
 
  
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 Kontrol lera att Linux-datorn som du använder som proxy kör något av följande operativ system:
 
 - 64-bitars

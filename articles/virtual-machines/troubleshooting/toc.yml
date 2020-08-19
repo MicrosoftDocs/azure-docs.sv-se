@@ -232,6 +232,8 @@
       href: ../extensions/troubleshoot.md
     - name: Installera agent för virtuell Windows-dator offline
       href: install-vm-agent-offline.md
+    - name: Felsöka VM-agent för Windows
+      href: windows-azure-guest-agent.md
 - name: Säkerhetskopiering och återställning
   items:
     - name: Felsök problem med säkerhetskopior på virtuella Azure-datorer

@@ -11,16 +11,16 @@ ms.topic: overview
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 7044954d2ba67e61172c08c0a77acaaaec3822c6
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 5da9e5b38b88a5a148bd3d85664daa523153086b
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992682"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589460"
 ---
 # <a name="what-is-the-translator"></a>Vad är Translator?
 
-Översättningen är enkel att integrera i dina program, webbplatser, verktyg och lösningar. Det gör att du kan flerspråksanvändarupplevelser med [fler än 60 språk](languages.md), och det kan användas på alla maskinvaruplattformar med alla operativsystem för text-till-text-språköversättningar.
+Översättningen är enkel att integrera i dina program, webbplatser, verktyg och lösningar. Det gör att du kan lägga till användar upplevelser med flera språk på [över 70 språk](languages.md)och kan användas på alla maskin varu plattformar med valfritt operativ system för översättning av text till text-språk.
 
 Översättaren är en del av [Azure Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai) -samlingen av Machine Learning-och AI-algoritmer i molnet och är lätt att använda i dina utvecklings projekt.
 
@@ -54,6 +54,6 @@ Läs mer om [språkanpassning](customization.md)
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Registrera dig ](translator-text-how-to-signup.md) och få en åtkomstnyckel.
+- [Registrera dig](translator-text-how-to-signup.md) för en åtkomst nyckel.
 - [API-referensen](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference) innehåller den tekniska dokumentationen för API:erna.
-- [Pris information](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
+- [Prisinformation](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)

@@ -2,25 +2,21 @@
 title: 'Självstudie: Konfigurera HootSuite för automatisk användar etablering med Azure Active Directory | Microsoft Docs'
 description: Lär dig hur du automatiskt etablerar och avetablerar användar konton från Azure AD till HootSuite.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: fbbee24e-272f-4fa6-819c-10c548bf0215
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 2c31aabb57a9e1f4b29f535271691e17ea4f8559
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 83b2a497cbeda188a4329e634256746f48984a89
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924112"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521943"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>Självstudie: Konfigurera HootSuite för automatisk användar etablering
 

@@ -27,20 +27,16 @@
       href: azure-portal-dashboards-create-programmatically.md
 - name: Anvisningar
   items:
-    - name: Ange Azure-portalinställningar
+    - name: Hantera dina inställningar i Microsoft Azure-portalen
       href: set-preferences.md
-    - name: Ange inaktiva tidsgränsinställningar för alla användare
-      href: admin-timeout.md
-    - name: Aktivera hög kontrast eller ändra tema
-      href: azure-portal-change-theme-high-contrast.md
     - name: 'Lägga till, ta bort och sortera favoriter'
       href: azure-portal-add-remove-sort-favorites.md
-    - name: Skapa och dela Azure-instrumentpaneler
-      href: azure-portal-dashboards.md
-    - name: Använda en anpassad Markdown-panel
-      href: azure-portal-markdown-tile.md
-    - name: Exportera eller ta bort användarinställningar
-      href: azure-portal-export-delete-settings.md
+    - name: Skapa Azure-instrumentpaneler
+      items:
+        - name: Skapa och dela Azure-instrumentpaneler
+          href: azure-portal-dashboards.md
+        - name: Använda en anpassad Markdown-panel
+          href: azure-portal-markdown-tile.md
     - name: Instruktionsvideoserie om Azure-portalen
       href: azure-portal-video-series.md
     - name: Skapa och hantera supportförfrågningar

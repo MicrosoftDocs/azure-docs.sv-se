@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory-integrering med xMatters OnDemand | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och xMatters OnDemand.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: ca0633db-4f95-432e-b3db-0168193b5ce9
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: ada0977dafeba546e84b22c6c61efecce1511dc7
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 9e84be9cbc6aa50f4beb3ed333b47459b15fbcc1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170164"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546295"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>Självstudie: Azure Active Directory integrering med xMatters OnDemand
 
@@ -34,7 +30,7 @@ Genom att integrera xMatters OnDemand med Azure AD får du följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med xMatters OnDemand behöver du följande objekt:
 
@@ -146,7 +142,7 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med xM
 
 2. I verktygsfältet högst upp klickar du på **admin**och sedan på **företags information** i navigerings fältet på vänster sida.
 
-    ![Administratör](./media/xmatters-ondemand-tutorial/IC776795.png "Admin")
+    ![Administratör](./media/xmatters-ondemand-tutorial/IC776795.png "Administratör")
 
 3. I dialogrutan **SAML-konfiguration** utför du följande steg:
 
@@ -182,7 +178,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** brittasimon@yourcompanydomain.extension . Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** brittasimon@yourcompanydomain.extension . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

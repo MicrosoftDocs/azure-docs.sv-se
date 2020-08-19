@@ -1,5 +1,5 @@
 ---
-title: 'Snabb start: skapa distribuerade tabeller – storskalig (citus) – Azure Database for PostgreSQL'
+title: 'Snabb start: skapa en Server grupp – storskalig (citus)-Azure Database for PostgreSQL'
 description: Snabb start för att skapa och fråga distribuerade tabeller på Azure Database for PostgreSQL storskalig (citus).
 author: jonels-msft
 ms.author: jonels
@@ -7,15 +7,15 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 05/14/2019
-ms.openlocfilehash: c17018e0f2f3a7c1c23d176a441842abcf5521f4
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.date: 08/17/2020
+ms.openlocfilehash: 977082b7f9055b90ee5c93913154934741d93772
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183929"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547706"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>Snabb start: skapa en Azure Database for PostgreSQL-storskalig (citus) i Azure Portal
+# <a name="quickstart-create-a-hyperscale-citus-server-group-in-the-azure-portal"></a>Snabb start: skapa en citus-servergrupp (för skalning) i Azure Portal
 
 Azure Database för PostgreSQL är en hanterad tjänst som du använder för att köra, hantera och skala högtillgängliga PostgreSQL-databaser i molnet. Den här snabb starten visar hur du skapar en citus-servergrupp (Azure Database for PostgreSQL-Scale Scale) med hjälp av Azure Portal. Du kommer att utforska distribuerade data: horisontell partitionering tabeller över flera noder, mata in exempel data och köra frågor som körs på flera noder.
 

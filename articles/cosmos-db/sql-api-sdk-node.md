@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-javascript
-ms.openlocfilehash: f280e6754d40ad5dc8cbfa4b760e090d0b5b81aa
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 76671ba2dec2590baf4f3df38325b4cfb0129e8d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846487"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586111"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK för SQL API: viktig information och resurser
 > [!div class="op_single_selector"]
@@ -26,7 +26,8 @@ ms.locfileid: "87846487"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Asynkron Java-SDK v2](sql-api-sdk-async-java.md)
 > * [Synkron Java-SDK v2](sql-api-sdk-java.md)
-> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Våren data v2](sql-api-sdk-java-spring-v2.md)
+> * [Våren data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark-anslutning](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -235,7 +236,7 @@ Inte alltid de mest synliga ändringarna, men de hjälper vårt team att leverer
 * Åtgärda fel i executeNext ()-typ signatur
 * Skrivfel
 
-### <a name="211"></a><a name="2.1.1"></a>2.1.1
+### <a name="211"></a><a name="2.1.1"></a>punkt
 * Bygg om omstrukturering. Gör det möjligt att hämta SDK-versionen vid Bygg tiden.
 
 ### <a name="210"></a><a name="2.1.0"></a>2.1.0
@@ -426,7 +427,7 @@ Microsoft tillhandahåller ett meddelande minst **12 månader** i förväg för 
 | [2.1.4](#2.1.4) |15 mars 2019 |--- |
 | [2.1.3](#2.1.3) |8 mars 2019 |--- |
 | [2.1.2](#2.1.2) |28 januari 2019 |--- |
-| [2.1.1](#2.1.1) |5 december 2018 |--- |
+| [punkt](#2.1.1) |5 december 2018 |--- |
 | [2.1.0](#2.1.0) |4 december 2018 |--- |
 | [2.0.5](#2.0.5) |7 november 2018 |--- |
 | [2.0.4](#2.0.4) |30 oktober 2018 |--- |

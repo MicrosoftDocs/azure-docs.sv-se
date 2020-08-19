@@ -3,24 +3,23 @@ title: Lär dig att granska innehållet i virtuella datorer
 description: Lär dig hur Azure Policy använder gäst konfigurations agenten för att granska inställningar i virtuella datorer.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 906c86856342febc92f070493fde31af42e4ca10
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 624f0a2464323e8002b9940471c93b3030f053d5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987111"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544680"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Om Azure Policys gästkonfiguration
 
-Azure Policy kan granska inställningar i en dator, både för datorer som körs i Azure och [Arc-anslutna datorer](../../../azure-arc/servers/overview.md).
-Verifieringen utförs av gästkonfigurationstillägget och klienten. Tillägget kontrollerar inställningar via klienten, till exempel:
+Azure Policy kan granska inställningar i en dator, både för datorer som körs i Azure och [Arc-anslutna datorer](../../../azure-arc/servers/overview.md). Verifieringen utförs av gästkonfigurationstillägget och klienten. Tillägget kontrollerar inställningar via klienten, till exempel:
 
-- Operativ systemets konfiguration
+- Operativsystemets konfiguration
 - Programkonfiguration eller förekomst
 - Miljöinställningar
 
-För närvarande granskar de flesta Azure Policy principer för gäst konfiguration bara inställningarna på datorn.
-De använder inte konfigurationer. Undantaget är en inbyggd princip som [refereras nedan](#applying-configurations-using-guest-configuration).
+För närvarande granskar de flesta gästkonfigurationprinciper i Azure Policy endast inställningar i datorn.
+De tillämpar inte konfigurationer. Undantaget är en inbyggd princip som [refereras nedan](#applying-configurations-using-guest-configuration).
 
 ## <a name="enable-guest-configuration"></a>Aktivera gäst konfiguration
 
@@ -32,7 +31,7 @@ Innan du kan använda gäst konfiguration måste du registrera resurs leverantö
 
 ## <a name="deploy-requirements-for-azure-virtual-machines"></a>Distribuera krav för virtuella Azure-datorer
 
-Om du vill granska inställningarna i en dator är ett [tillägg för virtuell dator](../../../virtual-machines/extensions/overview.md) aktiverat och datorn måste ha en Systemhanterad identitet. Tillägget hämtar tillämplig princip tilldelning och motsvarande konfigurations definition. Identiteten används för att autentisera datorn när den läser och skriver till gäst konfigurations tjänsten. Tillägget krävs inte för Arc-anslutna datorer eftersom det ingår i Arc Connected Machine agent.
+Om du vill granska inställningarna i en dator är ett [tillägg för virtuell dator](../../../virtual-machines/extensions/overview.md) aktiverat och datorn måste ha en Systemhanterad identitet. Tillägget hämtar tillämplig principtilldelning och motsvarande konfigurationsdefinition. Identiteten används för att autentisera datorn när den läser och skriver till gäst konfigurations tjänsten. Tillägget krävs inte för Arc-anslutna datorer eftersom det ingår i Arc Connected Machine agent.
 
 > [!IMPORTANT]
 > Gäst konfigurations tillägget och en hanterad identitet krävs för att granska virtuella Azure-datorer. Om du vill distribuera tillägget i skala tilldelar du följande princip initiativ:
@@ -49,7 +48,7 @@ I datorn använder gäst konfigurations klienten lokala verktyg för att köra g
 
 I följande tabell visas en lista över de lokala verktyg som används på varje operativ system som stöds. För inbyggt innehåll hanterar gäst konfigurationen inläsning av dessa verktyg automatiskt.
 
-|Operativsystem|Validerings verktyg|Anteckningar|
+|Operativsystem|Validerings verktyg|Kommentarer|
 |-|-|-|
 |Windows|[PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| Sidan har lästs in till en mapp som endast används av Azure Policy. Är inte i konflikt med Windows PowerShell DSC. PowerShell-kärnan har inte lagts till i System Sök vägen.|
 |Linux|[Chefs INSPEC](https://www.chef.io/inspec/)| Installerar chefs inspecens version 2.2.61 på standard platsen och läggs till i System Sök vägen. Beroenden för INSPEC-paketet inklusive ruby och python installeras också. |
@@ -60,10 +59,10 @@ Klienten för gäst konfiguration söker efter nytt innehåll var 5: e minut. N�
 
 ## <a name="supported-client-types"></a>Klient typer som stöds
 
-Konfigurations principer för gäster är inklusive nya versioner. Äldre versioner av operativ system som är tillgängliga på Azure Marketplace ingår inte om gäst konfigurations agenten inte är kompatibel.
+Konfigurations principer för gäster är inklusive nya versioner. Äldre versioner av operativ system som är tillgängliga i Azure Marketplace ingår inte om gäst konfigurations agenten inte är kompatibel.
 I följande tabell visas en lista över operativ system som stöds på Azure-avbildningar:
 
-|Publisher|Namn|Versioner|
+|Publisher|Name|Versioner|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 och senare|
 |Credativ|Debian|8 och senare|
@@ -93,8 +92,7 @@ Trafiken dirigeras med hjälp av den [offentliga Azure-IP-adressen](../../../vir
 
 ### <a name="azure-arc-connected-machines"></a>Azure Arc-anslutna datorer
 
-Noder som finns utanför Azure och som är anslutna till Azure-bågen kräver anslutning till gäst konfigurations tjänsten.
-Information om nätverks-och proxy-krav som anges i [Azure Arc-dokumentationen](../../../azure-arc/servers/overview.md).
+Noder som finns utanför Azure och som är anslutna till Azure-bågen kräver anslutning till gäst konfigurations tjänsten. Information om nätverks-och proxy-krav som anges i [Azure Arc-dokumentationen](../../../azure-arc/servers/overview.md).
 
 För att kunna kommunicera med resurs leverantören för gäst konfiguration i Azure måste datorer ha utgående åtkomst till Azure-datacenter på port **443**. Om ett nätverk i Azure inte tillåter utgående trafik konfigurerar du undantag med regler för [nätverks säkerhets grupper](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) . [Service tag-](../../../virtual-network/service-tags-overview.md) GuestAndHybridManagement kan användas för att referera till gäst konfigurations tjänsten.
 
@@ -157,9 +155,9 @@ Principer för gäst konfiguration stöder för närvarande bara tilldelning av 
 
 Gäst konfigurations tillägget skriver loggfiler till följande platser:
 
-Aktivitets`C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
+Aktivitets `C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
 
-Linux`/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
+Linux `/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
 
 Där `<version>` refererar till det aktuella versions numret.
 

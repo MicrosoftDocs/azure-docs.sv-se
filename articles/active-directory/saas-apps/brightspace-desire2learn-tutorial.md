@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med Brightspace av Desire2Learn | Microsoft Docs'
 description: Lär dig att konfigurera enkel inloggning mellan Azure Active Directory och Brightspace by Desire2Learn.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: e2d3065b-1f6c-4c45-af78-0d5da3266999
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e14ad53ad613e7cbc6631707b79f607cd39b3791
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e212b8c72a8cf7000a2789034f3ee83a5a0c9cda
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87018502"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542793"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightspace-by-desire2learn"></a>Självstudie: Azure Active Directory integration med Brightspace av Desire2Learn
 
@@ -116,7 +111,7 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Brigh
     https://<companyname>.desire2learn.com/shibboleth-sp
     ```
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<companyname>.desire2learn.com/d2l/lp/auth/login/samlLogin.d2l`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<companyname>.desire2learn.com/d2l/lp/auth/login/samlLogin.d2l`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska identifieraren och svars-URL. Kontakta [Brightspace av Desire2Learn-klientens supportteam](https://www.d2l.com/contact/) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -158,7 +153,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

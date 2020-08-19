@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med anpassningsbara insikter | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och anpassningsbara insikter.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 13af9d00-116a-41b8-8ca0-4870b31e224c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/19/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf05fc30a2b111a12c0b8e131db5117ec784075b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3471d79875fb34ea0285c086e7d908aa254957dc
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74232125"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88537748"
 ---
 # <a name="tutorial-integrate-adaptive-insights-with-azure-active-directory"></a>Självstudie: integrera anpassningsbara insikter med Azure Active Directory
 
@@ -33,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar anpassningsbara ins
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -83,9 +78,9 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **Grundläggande SAML-konfiguration** utför du följande steg:
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
     > [!NOTE]
     > Du kan hämta identifierare (enhets-ID) och svars-URL-värden från sidan med **Inställningar för SAML SSO-inställningar** för adaptiva insikter.
@@ -104,7 +99,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 2. Gå till **Administration**.
 
-    ![Administratör](./media/adaptivesuite-tutorial/ic805644.png "Admin")
+    ![Administratör](./media/adaptivesuite-tutorial/ic805644.png "Administratör")
 
 3. I avsnittet **användare och roller** klickar du på **Inställningar för SAML SSO**.
 
@@ -134,7 +129,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
      * **Aktivera SAML**, Välj **Tillåt SAML SSO och Direct adaptiv Insights-inloggning**.
 
-    g. Kopiera **URL: en för adaptiv insikter** och klistra in i text rutorna **identifiera (enhets-ID)** och **svars-URL** i avsnittet **grundläggande SAML-konfiguration** i Azure Portal.
+    ex. Kopiera **URL: en för adaptiv insikter** och klistra in i text rutorna **identifiera (enhets-ID)** och **svars-URL** i avsnittet **grundläggande SAML-konfiguration** i Azure Portal.
 
     h. Klicka på **Spara**.
 
@@ -146,7 +141,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -178,7 +173,7 @@ Om du vill att Azure AD-användare ska kunna logga in på anpassningsbara insikt
 
 2. Gå till **Administration**.
 
-   ![Administratör](./media/adaptivesuite-tutorial/IC805644.png "Admin")
+   ![Administratör](./media/adaptivesuite-tutorial/IC805644.png "Administratör")
 
 3. I avsnittet **användare och roller** klickar du på **användare**.
 
@@ -205,9 +200,9 @@ När du klickar på panelen adaptiva insikter på åtkomst panelen, bör du logg
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,17 +1,17 @@
 ---
 title: Så här får du support för AVERT vFXT för Azure
-description: Förklaring till att öppna support ärenden om AVERT vFXT för Azure
+description: Lär dig hur du löser problem som kan uppstå när du distribuerar eller använder AVERT vFXT för Azure genom att skapa ett support ärende via Azure Portal.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: b3c604003f78a150067875fb2064ab5eca0600db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 522d29505d7d10f5f6d97136f270f07a63053d19
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847343"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271115"
 ---
 # <a name="get-help-with-your-system"></a>Få hjälp med systemet
 
@@ -43,7 +43,7 @@ Följ dessa steg för att se till att ditt support ärende är taggat med en res
 
     ![skärm bild av en ny support förfrågan-skärm i Azure Portal. Fliken grundläggande är markerad. Skärm objekt är ärende typ, prenumeration, tjänst, Sammanfattning och problem typ.](media/ticket-basics.png)
 
-   Fortsätt genom att klicka på **Next** .
+   Klicka på **Nästa** för att fortsätta.
 
 1. Den andra sidan i support formuläret innehåller förslag på hur du kan åtgärda problemet baserat på din sammanfattnings beskrivning. Klicka på knappen **Nästa** längst ned om du fortfarande behöver skapa ett support ärende.
 

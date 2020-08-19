@@ -3,12 +3,12 @@ title: Översikt över säkerhetsfunktioner
 description: Lär dig mer om säkerhetsfunktioner i Azure Backup som hjälper dig att skydda dina säkerhets kopierings data och uppfylla verksamhetens säkerhets behov.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 944ef2e86ad8e56501692b29d0958bc4fc19bf0a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8a63585635f578f55b274c3257807fc731eacc47
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319311"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589392"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Översikt över säkerhetsfunktioner i Azure Backup
 
@@ -48,9 +48,9 @@ Kryptering skyddar dina data och hjälper dig att uppfylla organisationens säke
 
 * I Azure skyddas data i överföring mellan Azure Storage och valvet [av https](backup-support-matrix.md#network-traffic-to-azure). Dessa data finns kvar i Azure stamnät nätverket.
 
-* Säkerhetskopierade data krypteras automatiskt med [Microsoft-hanterade nycklar](backup-encryption.md#encryption-of-backup-data-using-platform-managed-keys)och du behöver inte vidta några uttryckliga åtgärder för att aktivera den. Du kan också kryptera säkerhetskopierade data med hjälp av [Kundhanterade nycklar](encryption-at-rest-with-cmk.md) som lagras i Azure Key Vault. Den gäller för alla arbets belastningar som säkerhets kopie ras till Recovery Services-valvet.
+* Säkerhetskopierade data krypteras automatiskt med hjälp av [plattforms hanterade nycklar](backup-encryption.md)och du behöver inte vidta några uttryckliga åtgärder för att aktivera den. Du kan också kryptera säkerhetskopierade data med hjälp av [Kundhanterade nycklar](encryption-at-rest-with-cmk.md) som lagras i Azure Key Vault. Den gäller för alla arbets belastningar som säkerhets kopie ras till Recovery Services-valvet.
 
-* Azure Backup stöder säkerhets kopiering och återställning av virtuella Azure-datorer som har sina operativ system/data diskar krypterade med [Azure Disk Encryption (ade)](backup-encryption.md#backup-of-vms-encrypted-using-ade) och [virtuella datorer med CMK krypterade diskar](backup-encryption.md#backup-of-managed-disk-vms-encrypted-using-customer-managed-keys). Mer information finns i [läsa mer om krypterade virtuella Azure-datorer och Azure Backup](./backup-azure-vms-encryption.md).
+* Azure Backup stöder säkerhets kopiering och återställning av virtuella Azure-datorer som har sina operativ system/data diskar krypterade med [Azure Disk Encryption (ade)](backup-azure-vms-encryption.md#encryption-support-using-ade) och [virtuella datorer med CMK krypterade diskar](backup-azure-vms-encryption.md#encryption-using-customer-managed-keys). Mer information finns i [läsa mer om krypterade virtuella Azure-datorer och Azure Backup](./backup-azure-vms-encryption.md).
 
 * När data säkerhets kopie ras från lokala servrar med MARS-agenten krypteras data med en lösen fras innan överföring till Azure Backup och dekrypteras först efter att den har laddats ned från Azure Backup. Läs mer om [säkerhetsfunktioner som hjälper dig att skydda hybrid säkerhets kopieringar](#security-features-to-help-protect-hybrid-backups).
 
@@ -64,7 +64,7 @@ Azure Backup innehåller [inbyggda övervaknings-och aviserings funktioner](./ba
 
 ## <a name="security-features-to-help-protect-hybrid-backups"></a>Säkerhetsfunktioner som hjälper dig att skydda hybrid säkerhets kopieringar
 
-Azure Backup tjänsten använder MARS-agenten (Microsoft Azure Recovery Services) för att säkerhetskopiera och återställa filer, mappar och volym eller system tillstånd från en lokal dator till Azure. MARS innehåller nu säkerhetsfunktioner som hjälper dig att skydda hybrid säkerhets kopieringar. Funktionerna är:
+Azure Backup tjänsten använder MARS-agenten (Microsoft Azure Recovery Services) för att säkerhetskopiera och återställa filer, mappar och volym eller system tillstånd från en lokal dator till Azure. MARS innehåller nu säkerhetsfunktioner som hjälper dig att skydda hybrid säkerhets kopieringar. Dessa funktioner omfattar:
 
 * Ytterligare ett lager med autentisering läggs till när en kritisk åtgärd som att ändra en lösen fras utförs. Den här verifieringen är till för att säkerställa att sådana åtgärder bara kan utföras av användare som har giltiga autentiseringsuppgifter för Azure. [Läs mer om de funktioner som förhindrar attacker](./backup-azure-security-feature.md#prevent-attacks).
 

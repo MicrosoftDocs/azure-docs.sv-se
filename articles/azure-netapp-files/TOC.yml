@@ -43,6 +43,8 @@
               href: solutions-benefits-azure-netapp-files-oracle-database.md
             - name: Fördelar med att använda Azure NetApp Files för elektronisk designautomatisering
               href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
+            - name: Fördelar med att använda Azure NetApp Files med Windows Virtual Desktop
+              href: solutions-windows-virtual-desktop.md
     - name: Vanliga frågor och svar om Azure NetApp Files
       href: azure-netapp-files-faqs.md
 - name: Anvisningar
@@ -61,16 +63,24 @@
           href: azure-netapp-files-create-volumes.md
         - name: Konfigurera NFSv4.1-standarddomän
           href: azure-netapp-files-configure-nfsv41-domain.md
+        - name: Konfigurera NFSv4.1 Kerberos-kryptering
+          href: configure-kerberos-encryption.md
+        - name: Konfigurera en NFS-klient för Azure NetApp Files
+          href: configure-nfs-clients.md
         - name: Konfigurera exportprincipen för en NFS-volym
           href: azure-netapp-files-configure-export-policy.md
     - name: Skapa en SMB-volym
       href: azure-netapp-files-create-volumes-smb.md
+    - name: Skapa en volym med dubbla protokoll
+      href: create-volumes-dual-protocol.md
     - name: Montera eller demontera en volym för virtuella Windows- eller Linux-datorer
       href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
     - name: Hantera ögonblicksbilder
       href: azure-netapp-files-manage-snapshots.md
     - name: Ändra storlek på en kapacitetspool eller en volym
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
+    - name: Ändra tjänstnivå för en volym dynamiskt
+      href: dynamic-change-volume-service-level.md
     - name: Utveckla
       items:
         - name: REST-API

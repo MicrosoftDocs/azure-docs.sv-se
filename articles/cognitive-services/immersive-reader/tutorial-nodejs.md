@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: metan
 ms.custom: devx-track-javascript
-ms.openlocfilehash: c64fc95c44aad81087cada23639e3b13bf478056
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: a8cd8bacc749ef44ee23e98709f04f75757f5919
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407191"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516341"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Självstudie: starta den fördjupade läsaren (Node.js)
 
@@ -30,7 +30,7 @@ I [översikten](./overview.md)har du lärt dig om vad den fördjupade läsaren �
 > * Ange språket för gränssnittet för avancerad läsare
 > * Starta den fördjupade läsaren med matematik innehåll
 
-Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/cognitive-services/) innan du börjar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 

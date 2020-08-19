@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Reflektive | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Reflektive.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 799a08b9-1ce6-46d1-9064-aa9f36f6604e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 76ded60421c1f6d39328ec88e964876e3eb64d78
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 70ad4bfdfda0def4fba2778725fcfc4e81e72a5b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169059"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548871"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reflektive"></a>Självstudie: Azure Active Directory integrering med Reflektive
 
@@ -34,7 +30,7 @@ Genom att integrera Reflektive med Azure AD får du följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Reflektive behöver du följande objekt:
 
@@ -114,7 +110,7 @@ Utför följande steg för att konfigurera enkel inloggning med Reflektive i Azu
 
     ![image](common/both-preintegrated-signon.png)
 
-    Skriv en URL i text rutan **inloggnings-URL** :`https://www.reflektive.com/app`
+    Skriv en URL i text rutan **inloggnings-URL** :  `https://www.reflektive.com/app`
 
     > [!NOTE]
     > För SP-läge måste du skaffa e-postadressen som registrerats med [Reflektive support team](https://support@reflektive.com). När du anger ditt ID i text rutan för **e-post** aktive ras alternativet för enkel inloggning. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -155,7 +151,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** brittasimon@yourcompanydomain.extension . Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** brittasimon@yourcompanydomain.extension . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

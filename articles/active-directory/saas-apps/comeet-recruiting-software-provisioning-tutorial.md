@@ -2,25 +2,21 @@
 title: 'Självstudie: Konfigurera samstämmande rekryterings program vara för automatisk användar etablering med Azure Active Directory | Microsoft Docs'
 description: Lär dig hur du konfigurerar Azure Active Directory att automatiskt etablera och avetablera användar konton så att de uppfyller rekryterings program varan.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: f427fb75cfaeda79b037c327992e4ad482a7e689
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5165c3f03d51403a978ad3574306bc27d931e1d7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77058347"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88536904"
 ---
 # <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>Självstudie: Konfigurera samstämmande rekryterings program vara för automatisk användar etablering
 
@@ -31,7 +27,7 @@ Syftet med den här självstudien är att demonstrera de steg som ska utföras i
 >
 > Den här anslutningen är för närvarande en offentlig för hands version. Mer information om allmänna Microsoft Azure användnings villkor för för hands versions funktioner finns i kompletterande användnings [villkor för Microsoft Azure för](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)hands versioner.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 
@@ -102,7 +98,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
 5. Under avsnittet **admin credentials** måste du skriva in **klient-URL: en** och den **hemliga token** för den Samstämmande rekryterings program varans konto enligt beskrivningen i steg 6.
 
-6. I den [samstämmiga rekryterings program varans administratörs konsol](https://app.comeet.co/)navigerar du till **samstämmiga > inställningar > autentisering > Microsoft Azure**och kopierar den **hemliga token för ditt företags** värde till fältet **hemligt token** i Azure AD.
+6. I den [samstämmiga rekryterings program varans administratörs konsol](https://app.comeet.co/)navigerar du till  **samstämmiga > inställningar > autentisering > Microsoft Azure**och kopierar den **hemliga token för ditt företags** värde till fältet **hemligt token** i Azure AD.
 
     ![Möt rekrytering av program varu etablering](./media/comeet-recruiting-software-provisioning-tutorial/secret-token-1.png)
 

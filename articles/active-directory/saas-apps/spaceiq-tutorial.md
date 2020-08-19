@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med SpaceIQ | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och SpaceIQ.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 5b55ae29-491f-401f-9299-d3a6b64a1b99
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: b3358ad473ede9e8d78a835e8c68e690e5340638
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 643d2481c171ae58a9d105d3dd7c53c251c2c41f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67090095"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545037"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spaceiq"></a>Självstudie: Azure Active Directory integrering med SpaceIQ
 
@@ -32,9 +28,9 @@ Genom att integrera SpaceIQ med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med SpaceIQ behöver du följande objekt:
 
@@ -105,9 +101,9 @@ Utför följande steg för att konfigurera enkel inloggning med SpaceIQ i Azure 
 
     ![Information om enkel inloggning för SpaceIQ-domän och URL: er](common/idp-intiated.png)
 
-    a. Skriv webb adressen i text rutan **identifierare** :`https://api.spaceiq.com`
+    a. Skriv webb adressen i text rutan **identifierare** : `https://api.spaceiq.com`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://api.spaceiq.com/saml/<instanceid>/callback`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://api.spaceiq.com/saml/<instanceid>/callback`
 
     > [!NOTE]
     > Uppdatera värdena med den faktiska svars-URL: en och identifieraren som beskrivs senare i självstudien.
@@ -171,7 +167,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **Användarnamn** anger du `brittasimon@yourcompanydomain.extension`  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
@@ -205,7 +201,7 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
 ### <a name="create-spaceiq-test-user"></a>Skapa SpaceIQ test användare
 
-I det här avsnittet skapar du en användare som heter Britta Simon i SpaceIQ. Arbets [SpaceIQ support team](mailto:eng@spaceiq.com) för att lägga till användare i SpaceIQ-plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning.
+I det här avsnittet skapar du en användare som heter Britta Simon i SpaceIQ. Arbets [SpaceIQ support team](mailto:eng@spaceiq.com)   för att lägga till användare i SpaceIQ-plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning.
 
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning
 

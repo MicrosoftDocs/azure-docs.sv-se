@@ -3,12 +3,12 @@ title: Hur du utformar din Application Insights-distribution – en vs många re
 description: Dirigera telemetri till olika resurser för utveckling, testning och produktions märken.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 4f539862432fcdc67632e91caadf71d6584fbc3e
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 264cbe35e7af50577b345d686b639e47760f428d
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420574"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258722"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Hur många Application Insights-resurser ska jag distribuera
 
@@ -39,9 +39,9 @@ Varje Application Insights resurs levereras med mått som är tillgängliga dire
 - För Service Fabric program och klassiska moln tjänster läser SDK: n automatiskt från Azures roll miljö och ställer in dessa. För alla andra typer av appar behöver du förmodligen ange det här explicit.
 -   Live Metrics-upplevelsen stöder inte delning efter roll namn.
 
-## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a>Dynamisk Instrumentation-nyckel
+## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> Dynamisk Instrumentation-nyckel
 
-För att göra det enklare att ändra iKey när koden flyttas mellan produktions faser, ställer du in den i kod i stället för i konfigurations filen.
+För att göra det enklare att ändra iKey när koden flyttas mellan produktions faserna, referera till nyckeln dynamiskt i kod i stället för att använda ett hårdkodad/static-värde.
 
 Ange nyckeln i en initierings metod, till exempel global.aspx.cs i en ASP.NET-tjänst:
 

@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med SiteIntel | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och SiteIntel.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c987f101-8746-467e-ad12-75cf2920af2b
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45b3f6bbda9923b7f4f19dda505e799cb8b102ca
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.openlocfilehash: f681dd2931300ec00fd6388b4636015c87f38170
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84424337"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525105"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-siteintel"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med SiteIntel
 
@@ -32,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar SiteIntel med Azure
 
 Mer information om SaaS-appar (Software as a Service) med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -87,15 +83,15 @@ Gör så här om du vill aktivera Azure AD SSO i Azure Portal:
 
 1. Om du vill konfigurera programmet i IdP läge, i avsnittet **grundläggande SAML-konfiguration** , gör du följande:
 
-    a. I rutan **identifierare** anger du en URL i följande format:`urn:amazon:cognito:sp:<REGION>_<USERPOOLID>`
+    a. I rutan **identifierare** anger du en URL i följande format: `urn:amazon:cognito:sp:<REGION>_<USERPOOLID>`
 
-    b. I rutan **svars-URL** anger du en URL i följande format:`https://<CLIENT>.auth.siteintel.com/saml2/idpresponse`
+    b. I rutan **svars-URL** anger du en URL i följande format: `https://<CLIENT>.auth.siteintel.com/saml2/idpresponse`
 
-    c. I rutan **relä tillstånd** anger du en URL i följande format:`https://<CLIENT>.siteintel.com`
+    c. I rutan **relä tillstånd** anger du en URL i följande format: `https://<CLIENT>.siteintel.com`
 
 1. Om du vill konfigurera programmet i SP-initierat läge väljer du **Ange ytterligare URL: er**och gör sedan följande:
 
-   * I rutan **inloggnings-URL** skriver du en URL i följande format:`https://<CLIENT>.siteintel.com`
+   * I rutan **inloggnings-URL** skriver du en URL i följande format: `https://<CLIENT>.siteintel.com`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera dem med aktuell identifierare, svars-URL, inloggnings-URL och relä status. Kontakta [SiteIntel-klientens support team](mailto:support@intalytics.com)för att få dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -154,7 +150,7 @@ När du väljer panelen **SiteIntel** på åtkomst panelen, bör du loggas in au
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 - [Vad är program åtkomst och enkel inloggning med Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 - [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 - [Prova SiteIntel med Azure AD](https://aad.portal.azure.com/)

@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory enkel inloggning (SSO) med ContractSafe Saml2 SSO | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och ContractSafe Saml2 SSO.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9d8c9eba-6a90-4c8f-b387-a6ead4af00af
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ab2dc71f39164988e0d229fc994548a00447986
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9459d13e8943f7e9177d2ad493873257f46f6649
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77185622"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544407"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-contractsafe-saml2-sso"></a>Självstudie: integrera Azure Active Directory enkel inloggning (SSO) med ContractSafe Saml2 SSO
 
@@ -32,7 +28,7 @@ I den här självstudien får du lära dig att integrera ContractSafe Saml2 SSO 
 
 Mer information om SaaS-appar (Software as a Service) med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du behöver följande för att komma igång:
 
@@ -80,9 +76,9 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal:
 
 1. På sidan **Konfigurera enkel inloggning med SAML** anger du följande värden i motsvarande fält:
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande format:`https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande format: `https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
 
-    b. I text rutan **svars-URL** anger du en URL med hjälp av följande format:`https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
+    b. I text rutan **svars-URL** anger du en URL med hjälp av följande format: `https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska identifieraren och svars-URL:en. Kontakta [ContractSafe SAML2 SSO client support team](mailto:support@contractsafe.com) för att hämta dessa värden. Du kan också se de format som visas i avsnittet **grundläggande SAML-konfiguration** i Azure Portal.
@@ -150,10 +146,10 @@ Testa din Azure AD SSO-konfiguration med hjälp av åtkomst panelen. När du vä
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är program åtkomst och enkel inloggning med Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Prova ContractSafe Saml2 SSO med Azure AD](https://aad.portal.azure.com/)

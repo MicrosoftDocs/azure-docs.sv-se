@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory enkel inloggning (SSO) med hubb Planner | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Hub Planner.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7dca6768-1d0a-4e05-ad2e-8db7508ca3c1
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/12/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35bd80c2501f9e4c24093f861479f993d85d9c02
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1f1da374c2bf5ab8e570c705638ca4d6e627bcab
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034189"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549182"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hub-planner"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med hubb planerare
 
@@ -83,11 +79,11 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** anger du värden för följande fält:
 
-    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<SUBDOMAIN>.hubplanner.com`
+    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://<SUBDOMAIN>.hubplanner.com`
 
-    b. I rutan **identifierare** anger du en URL med följande mönster:`https://app.hubplanner.com/sso/metadata`
+    b. I rutan **identifierare** anger du en URL med följande mönster: `https://app.hubplanner.com/sso/metadata`
 
-    c. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://app.hubplanner.com/sso/callback`
+    c. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://app.hubplanner.com/sso/callback`
 
     > [!NOTE]
     > De här värdena är de som du kommer att använda. Den enda ändringen du behöver göra är att ersätta \<SUBDOMAIN\> i **inloggnings-URL: en** med den under domän som du fick när du registrerade dig för Hub Planner. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.

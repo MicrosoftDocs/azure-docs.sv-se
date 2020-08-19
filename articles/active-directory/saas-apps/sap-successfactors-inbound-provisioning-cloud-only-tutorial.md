@@ -3,23 +3,19 @@ title: 'Självstudie: Konfigurera SuccessFactors inkommande etablering i Azure A
 description: Lär dig hur du konfigurerar inkommande etablering från SuccessFactors till Azure AD
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: jodadzie
-ms.assetid: fac4f61e-d942-4429-a298-9ba74db95077
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 97bda09870949846e333cc2845286512fd5d6386
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 9c94d2ab2e0c49fe38142e42cf934c440746da75
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809909"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546686"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning"></a>Självstudie: konfigurera SAP-SuccessFactors till användar etablering i Azure AD
 Syftet med den här självstudien är att visa de steg som du behöver utföra för att etablera arbetarnas data från SuccessFactors personal Central till Azure Active Directory, med valfri Skriv åtgärd för e-postadressen till SuccessFactors. 

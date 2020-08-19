@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med BambooHR | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och BambooHR.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: f826b5d2-9c64-47df-bbbf-0adf9eb0fa71
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfa7934472b512e2c884ab3f9a06728a8fb18b12
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9e733aa9f609928f8129123c4286cfa98e51e1d4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73157742"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549491"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bamboohr"></a>Självstudie: Azure Active Directory integrering med BambooHR
 
@@ -33,9 +28,9 @@ Genom att integrera BambooHR med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera integrering av Azure AD med BambooHR, behöver du följande:
 
@@ -169,8 +164,8 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** skriver du **brittasimon\@yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
@@ -210,11 +205,11 @@ Om du vill göra det möjligt för Azure AD-användare att logga in på BambooHR
 
 2. Välj **Inställningar** i verktygsfältet högst upp.
    
-    ![Knappen Inställningar](./media/bamboo-hr-tutorial/IC796694.png "Inställningen")
+    ![Knappen Inställningar](./media/bamboo-hr-tutorial/IC796694.png "Inställning")
 
 3. Välj **Översikt**.
 
-4. I det vänstra fönstret väljer du **säkerhets** > **användare**.
+4. I det vänstra fönstret väljer du **säkerhets**  >  **användare**.
 
 5. Skriv användarnamn, lösenord och e-postadress för det giltiga Azure AD-konto som du vill konfigurera.
 

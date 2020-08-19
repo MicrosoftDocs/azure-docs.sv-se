@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: dc566d2702fb24ef551e4900bed7b828d2597383
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 6e1a6cb583c0d310cc7ce73995224c42bb84784d
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85557069"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566173"
 ---
 # <a name="quickstart-deploy-unity-sample-to-desktop"></a>Snabb start: Distribuera Unity-exempel till Skriv bordet
 
@@ -24,7 +24,7 @@ I den här snabb starten får du lära dig att:
 >* Distribuera exemplet till en dator
 >* Kör exemplet på en dator
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 I den här snabb starten ska vi distribuera exempelprojektet från [snabb start: återge en modell med Unity](render-model.md).
 
@@ -58,9 +58,6 @@ Endast flata skrivbordsappar stöds för närvarande på Desktop, så VR-stödet
 1. Växla fel söknings läge till **lokal dator**. \
   ![Lösnings konfiguration](./media/unity-deploy-config-pc.png)
 1. Bygg lösningen (F7).
-
-> [!WARNING]
-> Se till att välja **x86**. **UWP/x64** stöds inte för närvarande, se [plattforms begränsningar](../reference/limits.md#platform-limitations).
 
 ## <a name="launch-the-sample-project"></a>Starta exempelprojektet
 

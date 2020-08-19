@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 3361241bf0a330abc18701f93460208b8804a7dc
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 04e21e4bcd56506ba27730ebc1f9b0db8dc39615
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994270"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509693"
 ---
 # <a name="view-system-test-results"></a>Visa testresultat för system
 
@@ -54,11 +54,11 @@ Klicka på länken Hämta översättningar för att ladda ned en zip-fil. Zip-fi
 
 Det hämtade ZIP-arkivet innehåller tre filer.
 
-1.  **Anpassad. mt. txt:** Den här filen innehåller dator översättningar av käll språk meningar på mål språket som sköts av modellen som tränas med användarens data.
+1.  **custom.mt.txt:** Den här filen innehåller dator översättningar av käll språk meningar på mål språket som sköts av modellen som tränas med användarens data.
 
-2.  **Ref. txt:** Den här filen innehåller användare som har angett översättningar av käll språkets meningar på mål språket.
+2.  **ref.txt:** Den här filen innehåller användare som har angett översättningar av käll språkets meningar på mål språket.
 
-3.  **källa. txt:** Den här filen innehåller meningar i käll språket.
+3.  **source.txt:** Den här filen innehåller meningar i käll språket.
 
     ![Hämtade system test resultat](media/how-to/how-to-download-system-test.png)
 
@@ -102,6 +102,6 @@ Så här uppdaterar du distributions inställningarna:
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Börja använda din distribuerade anpassade översättnings modell via [Translator v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).
+- Börja använda din distribuerade anpassade översättnings modell via [Microsoft Translator text API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).
 - Lär dig [hur du hanterar inställningar](how-to-manage-settings.md) för att dela din arbets yta, hantera prenumerations nyckel.
 - Lär dig [hur du migrerar din arbets yta och ditt projekt](how-to-migrate.md) från [Microsoft Translator Hub](https://hub.microsofttranslator.com)

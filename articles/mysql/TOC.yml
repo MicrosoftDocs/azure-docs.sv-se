@@ -1,4 +1,4 @@
-- name: Azure DB för MySQL-dokument
+- name: Azure DB for MySQL-dokumentation
   href: index.yml
 - name: Översikt
   items:
@@ -138,6 +138,8 @@
           href: concepts-server-parameters.md
     - name: Utveckling
       items:
+        - name: Regelverk för program
+          href: app-development-best-practices.md
         - name: Kompatibilitet för drivrutiner och verktyg
           href: concepts-compatibility.md
         - name: Programutveckling

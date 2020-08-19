@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/11/2020
+ms.date: 08/18/2020
 ms.author: b-juche
-ms.openlocfilehash: 29055da1ea8093d413691a41d38d6280f43f728a
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: eeb22672829dca9ba342079183dcc5ed7c35393c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134504"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590378"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Vanliga frågor och svar om Azure NetApp Files
 
@@ -54,7 +54,9 @@ Nej. IP-tilldelningen till Azure NetApp Files volymer är dynamisk. Tilldelning 
 
 ### <a name="can-the-network-traffic-between-the-azure-vm-and-the-storage-be-encrypted"></a>Kan nätverks trafiken mellan den virtuella Azure-datorn och lagringen krypteras?
 
-Data trafik (trafik från NFSv3-, NFSv 4.1-eller SMBv3-klienten till Azure NetApp Files-volymer) är inte krypterad. Men trafiken från en virtuell Azure-dator (som kör en NFS-eller SMB-klient) till Azure NetApp Files är lika säker som vilken annan Azure-VM-till-VM-trafik som helst. Den här trafiken är lokal i Azure Data Center-nätverket. 
+Data trafik mellan NFSv 4.1-klienter och Azure NetApp Files volymer kan krypteras med hjälp av Kerberos med AES-256-kryptering. Mer information finns i [Konfigurera nfsv 4.1 Kerberos-kryptering för Azure NetApp Files](configure-kerberos-encryption.md) .   
+
+Data trafik mellan NFSv3-eller SMBv3-klienter till Azure NetApp Files volymer är inte krypterad. Men trafiken från en virtuell Azure-dator (som kör en NFS-eller SMB-klient) till Azure NetApp Files är lika säker som vilken annan Azure-VM-till-VM-trafik som helst. Den här trafiken är lokal i Azure Data Center-nätverket. 
 
 ### <a name="can-the-storage-be-encrypted-at-rest"></a>Kan lagringen krypteras i vila?
 
@@ -125,7 +127,7 @@ Azure NetApp Files stöder NFSv3 och NFSv 4.1. Du kan [skapa en volym](azure-net
 
 ### <a name="how-do-i-enable-root-squashing"></a>Hur gör jag för att aktivera rot-squashing?
 
-Rot-squashing stöds inte för närvarande.
+Du kan ange om rot kontot ska ha åtkomst till volymen eller inte genom att använda volymens export princip. Mer information finns i [Konfigurera export princip för en NFS-volym](azure-netapp-files-configure-export-policy.md) .
 
 ## <a name="smb-faqs"></a>Vanliga frågor och svar om SMB
 

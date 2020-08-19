@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a3c22a46d22ef4eb717eb686fa295c820c78c934
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: f3402f4ff719752cca6e1d7a4aeeb3b7e12c3e28
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067264"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511150"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-arbetsbelastningar på Azure: planering och distribution check lista
 
@@ -114,7 +114,7 @@ Vi rekommenderar att du ställer in och validerar en fullständig HADR-lösning 
         - I allmänhet rekommenderar vi inte användningen av [Azure standard HDD-diskar](../../windows/disks-types.md#standard-hdd).
         - Använd [Azure Premium Storage](../../windows/disks-types.md#premium-ssd) för alla DBMS-VM: ar som är fjärrpresterade.
         - Använd [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/).
-        - Använd Azure Skrivningsaccelerator för DBMS-loggfiler med M-serien. Tänk på Skrivningsaccelerator gränser och användning, enligt beskrivningen i [Skrivningsaccelerator](../../linux/how-to-enable-write-accelerator.md).
+        - Använd Azure Skrivningsaccelerator för DBMS-loggfiler med M-serien. Tänk på Skrivningsaccelerator gränser och användning, enligt beskrivningen i [Skrivningsaccelerator](../../how-to-enable-write-accelerator.md).
         - För olika DBMS-typer kontrollerar du den [allmänna SAP-relaterade DBMS-dokumentationen](./dbms_guide_general.md) och den DBMS-specificerade dokumentation som det generiska dokumentet pekar på.
         - Mer information om SAP HANA finns i [SAP HANA infrastruktur konfiguration och åtgärder på Azure](./hana-vm-operations.md).
         - Montera aldrig Azure-datadiskarna till en virtuell Azure Linux-dator med hjälp av enhets-ID. Använd i stället den universella unika identifieraren (UUID). Var försiktig när du använder grafiska verktyg för att montera Azure Data disks, till exempel. Kontrol lera posterna i/etc/fstab för att se till att UUID används för att montera diskarna. Du hittar mer information i [den här artikeln](../../linux/attach-disk-portal.md#connect-to-the-linux-vm-to-mount-the-new-disk).

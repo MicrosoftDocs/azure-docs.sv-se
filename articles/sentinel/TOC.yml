@@ -60,8 +60,8 @@
               href: connect-asc-iot.md
             - name: Domännamnserver
               href: connect-dns.md
-            - name: Microsoft-brandväggen för webbaserade program
-              href: connect-microsoft-waf.md
+            - name: Azure-brandvägg för webbaserade program
+              href: connect-azure-waf.md
             - name: Windows-brandvägg
               href: connect-windows-firewall.md
             - name: Windows säkerhetshändelser

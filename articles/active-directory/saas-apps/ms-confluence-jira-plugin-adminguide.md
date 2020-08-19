@@ -2,25 +2,21 @@
 title: Atlassian JIRA/Confluence admin guide – Azure Active Directory | Microsoft Docs
 description: Administratörs guide för att använda Atlassian JIRA och Confluence med Azure Active Directory (Azure AD).
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: joflore
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5884685f12c4697558a008287f446e52e5105d3b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 07bd9353f08e9440e495dfa92c608b4d6f70f5cf
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87016793"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543990"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian JIRA och Confluence admin guide för Azure Active Directory
 
@@ -147,7 +143,7 @@ Följande bild visar konfigurations skärmen i både JIRA och Confluence:
 
 * **Du vill inaktivera WebSudo (inaktivera den säkra administratörs sessionen)**:
 
-  * För JIRA är säkra administratörs sessioner (det vill säga lösen ords bekräftelse före åtkomst till administrations funktioner) aktiverade som standard. Om du vill ta bort den här möjligheten i JIRA-instansen anger du följande rad i JIRA-config. Properties-filen:`jira.websudo.is.disabled = true`
+  * För JIRA är säkra administratörs sessioner (det vill säga lösen ords bekräftelse före åtkomst till administrations funktioner) aktiverade som standard. Om du vill ta bort den här möjligheten i JIRA-instansen anger du följande rad i JIRA-config. Properties-filen: `jira.websudo.is.disabled = true`
 
   * För Confluence följer du stegen på [Support webbplatsen för Confluence](https://confluence.atlassian.com/doc/configuring-secure-administrator-sessions-218269595.html).
 

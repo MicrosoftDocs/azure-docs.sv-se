@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Rollbar | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Rollbar.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 57537e54-9388-4272-a610-805ce45a451f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
-ms.openlocfilehash: d76f4e9d61d8fd210fe9332084f9f44d19e54eed
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 253621fe257a0b1a1b3bdaa2578fd7df10b03f73
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67092685"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88528642"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>Självstudie: Azure Active Directory integrering med Rollbar
 
@@ -32,9 +28,9 @@ Genom att integrera Rollbar med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Rollbar behöver du följande objekt:
 
@@ -105,15 +101,15 @@ Utför följande steg för att konfigurera enkel inloggning med Rollbar i Azure 
 
     ![Information om enkel inloggning för Rollbar-domän och URL: er](common/idp-intiated.png)
 
-    a. Skriv webb adressen i text rutan **identifierare** :`https://saml.rollbar.com`
+    a. Skriv webb adressen i text rutan **identifierare** : `https://saml.rollbar.com`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://rollbar.com/<accountname>/saml/sso/azure/`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://rollbar.com/<accountname>/saml/sso/azure/`
 
 5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     ![Information om enkel inloggning för Rollbar-domän och URL: er](common/metadata-upload-additional-signon.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://rollbar.com/<accountname>/saml/login/azure/`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://rollbar.com/<accountname>/saml/login/azure/`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med faktisk svars-URL och inloggnings-URL. Kontakta [Rollbar client support team](mailto:support@rollbar.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -187,7 +183,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **Användarnamn** anger du `brittasimon@yourcompanydomain.extension`  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
@@ -239,7 +235,7 @@ Om du vill att Azure AD-användare ska kunna logga in på Rollbar måste de till
 
     ![Bjud in personer](./media/rollbar-tutorial/user2.png)
 
-1. I text rutan anger du namnet på den användare som **brittasimon\@contoso.com** och klickar på **Lägg till/Bjud in**.
+1. I text rutan anger du namnet på den användare som **brittasimon \@ contoso.com** och klickar på **Lägg till/Bjud in**.
 
     ![Bjud in personer](./media/rollbar-tutorial/user3.png)
 

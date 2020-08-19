@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med Infogix Data3Sixty-regler | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Infogix Data3Sixty-regler.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: aa3109b8-bdbe-45ae-933a-2eb4dc03855c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: a0b8dbb3992808bdcb94291d876192431c72f6c2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c46fe09691c270338e7ce60f8f0753e8c9b84948
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67100350"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553051"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>Självstudie: Azure Active Directory integrering med Infogix Data3Sixty-regler
 
@@ -32,9 +28,9 @@ Att integrera Infogix Data3Sixty-regler med Azure AD ger följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Infogix Data3Sixty-regler behöver du följande objekt:
 
@@ -106,15 +102,15 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Infog
 
     ![Infogix Data3Sixty styr domän-och URL-information för enkel inloggning](common/idp-intiated.png)
 
-    a. Skriv en URL i text rutan **identifierare** :`https://data3sixty.com/ui`
+    a. Skriv en URL i text rutan **identifierare** : `https://data3sixty.com/ui`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<subdomain>.data3sixty.com/sso/acs`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<subdomain>.data3sixty.com/sso/acs`
 
 5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     ![Infogix Data3Sixty styr domän-och URL-information för enkel inloggning](common/metadata-upload-additional-signon.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<subdomain>.data3sixty.com`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<subdomain>.data3sixty.com`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med faktisk svars-URL och inloggnings-URL. Kontakta [Infogix Data3Sixty för att styra klient support teamet](mailto:data3sixtysupport@infogix.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -147,7 +143,7 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Infog
 
     f. Klicka på **OK**
 
-    g. Klicka på **Spara**.
+    ex. Klicka på **Spara**.
 
 8. På sidan **Konfigurera enkel inloggning med SAML**, i avsnittet **SAML-signeringscertifikat**, klickar du på **Ladda ned** för att ladda ned **Certifikat (RAW)** från de angivna alternativen enligt dina behov och spara den på datorn.
 
@@ -186,7 +182,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **Användarnamn** anger du **brittasimon@yourcompanydomain.extension**  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

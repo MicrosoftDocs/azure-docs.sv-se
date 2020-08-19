@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory-integrering med hjälp program varan | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och hjälp information.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: 5f42e4d7-4d92-4096-a0d5-02fa438a5dfd
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/31/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d70cdade93b028c90c9f62374cd6b997556dd52
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 89467dcca75c72c3a868478cc3e46b9cb474ed19
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67101274"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540107"
 ---
 # <a name="tutorial-integrate-helper-helper-with-azure-active-directory"></a>Självstudie: integrera hjälp med Azure Active Directory
 
@@ -33,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar hjälp program hjä
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -81,7 +76,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 1. I avsnittet **grundläggande SAML-konfiguration** , om du har en **metadata-fil för Service Provider** och vill konfigurera i **IDP** initierat läge utför du följande steg:
 
     >[!NOTE]
-    >Gå till URL: `https://sso.helperhelper.com/saml/<customer_id>` en för att hämta metadata-filen för tjänste leverantören. Kontakta [support teamet](mailto:info@helperhelper.com) för supportavdelningen för `<customer_id>`.
+    >Gå till URL: en `https://sso.helperhelper.com/saml/<customer_id>` för att hämta metadata-filen för tjänste leverantören. Kontakta [support teamet](mailto:info@helperhelper.com) för supportavdelningen för `<customer_id>` .
 
     a. Klicka på **Ladda upp metadatafil**.
 
@@ -94,7 +89,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://sso.helperhelper.com/saml/<customer_id>/login`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://sso.helperhelper.com/saml/<customer_id>/login`
 
     > [!NOTE]
     > Inloggnings-URL-värdet är inte verkligt. Uppdatera värdet med den faktiska inloggnings-URL:en. Kontakta [support teamet](mailto:info@helperhelper.com) för supportavdelningen för att få det här värdet. Du kan också se de mönster som visas i avsnittet **grundläggande SAML-konfiguration** i Azure Portal. l.
@@ -119,7 +114,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B. Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `BrittaSimon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `BrittaSimon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 

@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Uberflip | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Uberflip.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 754b1f5b-6694-4fd6-9e1e-9fad769c64db
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: d20c05e6ec5a413b81ede9cb4906de2595967115
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8936c2150c32a22877f9b56736ecc4b8f3424b32
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80048479"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88533188"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>Självstudie: Azure Active Directory integrering med Uberflip
 
@@ -34,11 +30,11 @@ Genom att integrera Uberflip med Azure AD får du följande fördelar:
 
 Mer information om program vara som en tjänst (SaaS) för program integrering med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Uberflip behöver du följande objekt:
 
-* En Azure AD-prenumeration. Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+* En Azure AD-prenumeration. Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 * En Uberflip-prenumeration med enkel inloggning aktive rad.
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
@@ -139,7 +135,7 @@ Om du vill konfigurera enkel inloggning på Uberflip-sidan måste du skicka den 
 
 I det här avsnittet skapar du en test användare med namnet B. Simon i Azure Portal.
 
-1. I Azure Portal i det vänstra fönstret väljer du **Azure Active Directory** > **användare** > **alla användare**.
+1. I Azure Portal i det vänstra fönstret väljer du **Azure Active Directory**  >  **användare**  >  **alla användare**.
 
     ![Alternativen användare och alla användare](common/users.png)
 
@@ -153,7 +149,7 @@ I det här avsnittet skapar du en test användare med namnet B. Simon i Azure Po
 
     1. I rutan **namn** anger du **BSimon**.
   
-    1. I rutan **användar namn** anger du **BSimon\@\<\< yourcompanydomain>. tillägg>**. Till exempel **BSimon\@contoso.com**.
+    1. I rutan **användar namn** anger du **BSimon \@ \<yourcompanydomain> . \<extension> **. Till exempel **BSimon \@ contoso.com**.
 
     1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
 
@@ -163,7 +159,7 @@ I det här avsnittet skapar du en test användare med namnet B. Simon i Azure Po
 
 I det här avsnittet aktiverar du B. Simon för att använda enkel inloggning med Azure genom att ge åtkomst till Uberflip.
 
-1. I Azure Portal väljer du **företags program** > **alla program** > **Uberflip**.
+1. I Azure Portal väljer du **företags program**  >  **alla program**  >  **Uberflip**.
 
     ![Fönstret företags program](common/enterprise-applications.png)
 

@@ -2,25 +2,21 @@
 title: 'Självstudie: Konfigurera Zscaler tre för automatisk användar etablering med Azure Active Directory | Microsoft Docs'
 description: I den här självstudien får du lära dig hur du konfigurerar Azure Active Directory att automatiskt etablera och avetablera användar konton till Zscaler tre.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd-msft
-ms.assetid: 385a1153-0f47-4e41-8f44-da1b49d7629e
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 177bc34162c2b5e4dadc54e1166c5f6061068bae
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b7cb55b5d14208128c894a007d13f4e73fc54b3b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77064112"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545814"
 ---
 # <a name="tutorial-configure-zscaler-three-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Zscaler tre för automatisk användar etablering
 
@@ -29,7 +25,7 @@ I den här självstudien får du lära dig hur du konfigurerar Azure Active Dire
 > [!NOTE]
 > I den här självstudien beskrivs en koppling som bygger på Azure AD-tjänsten för användar etablering. Viktig information om vad den här tjänsten gör och hur den fungerar och svar på vanliga frågor finns i [Automatisera användar etablering och avetablering för SaaS-program med Azure Active Directory](../active-directory-saas-app-provisioning.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra stegen som beskrivs i den här självstudien behöver du följande:
 
@@ -79,7 +75,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 > [!TIP]
 > Du kanske också vill aktivera SAML-baserad enkel inloggning för Zscaler tre. Om du gör det följer du anvisningarna i [självstudien om Zscaler tre enkla inloggningar](zscaler-three-tutorial.md). Enkel inloggning kan konfigureras oberoende av automatisk användar etablering, men de två funktionerna kompletterar varandra.
 
-1. Logga in på [Azure Portal](https://portal.azure.com) och välj **företags program** > **alla program** > **Zscaler tre**:
+1. Logga in på [Azure Portal](https://portal.azure.com) och välj **företags program**  >  **alla program**  >  **Zscaler tre**:
 
     ![Företagsprogram](common/enterprise-applications.png)
 
@@ -97,7 +93,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
 5. I avsnittet **admin credentials** anger du **klient-URL** och **hemlig token** för ditt Zscaler tre konto, enligt beskrivningen i nästa steg.
 
-6. Om du vill hämta **klient-URL** och **hemlig token**går du till **Administration** > **autentiseringsinställningar** i Zscaler tre Portal och väljer **SAML** under **Autentiseringstyp**:
+6. Om du vill hämta **klient-URL** och **hemlig token**går du till **Administration**  >  **autentiseringsinställningar** i Zscaler tre Portal och väljer **SAML** under **Autentiseringstyp**:
 
     ![Zscaler tre autentiseringsinställningar](./media/zscaler-three-provisioning-tutorial/secret-token-1.png)
 

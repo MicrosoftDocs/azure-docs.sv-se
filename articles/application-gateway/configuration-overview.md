@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/30/2020
 ms.author: absha
-ms.openlocfilehash: 9315884db30c053d86c889ff3b45aaea17d48b17
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 32809c33e1c365d8d333bb89a5c2f773b311c2ff
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87438908"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511090"
 ---
 # <a name="application-gateway-configuration-overview"></a>Översikt över Application Gateway konfiguration
 
@@ -25,7 +25,7 @@ Den här bilden illustrerar ett program som har tre lyssnare. De första två ä
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 ### <a name="azure-virtual-network-and-dedicated-subnet"></a>Virtuellt Azure-nätverk och dedikerat undernät
 
@@ -38,11 +38,13 @@ En Application Gateway är en dedikerad distribution i det virtuella nätverket.
 
 Application Gateway använder en privat IP-adress per instans, plus en annan privat IP-adress om en privat klient-IP-adress har kon figurer ATS.
 
-Azure reserverar också fem IP-adresser i varje undernät för internt bruk: de första fyra och sista IP-adresserna. Överväg till exempel 15 Application Gateway-instanser utan privat frontend-IP. Du behöver minst 20 IP-adresser för det här under nätet: fem för intern användning och 15 för Application Gateway-instanserna. Så du behöver en/27-nätstorlek eller större.
+Azure reserverar också fem IP-adresser i varje undernät för internt bruk: de första fyra och sista IP-adresserna. Överväg till exempel 15 Application Gateway-instanser utan privat frontend-IP. Du behöver minst 20 IP-adresser för det här under nätet: fem för intern användning och 15 för Application Gateway-instanserna.
 
-Överväg ett undernät som har 27 Application Gateway-instanser och en IP-adress för en privat klient dels-IP. I det här fallet behöver du 33 IP-adresser: 27 för Application Gateway-instanserna, en för den privata klient delen och fem för internt bruk. Så du behöver en/26-nätmask eller större.
+Överväg ett undernät som har 27 Application Gateway-instanser och en IP-adress för en privat klient dels-IP. I det här fallet behöver du 33 IP-adresser: 27 för Application Gateway-instanserna, en för den privata klient delen och fem för internt bruk.
 
-Vi rekommenderar att du använder en under näts storlek på minst/28. Den här storleken ger dig 11 användbara IP-adresser. Om program belastningen kräver fler än 10 Application Gateway-instanser bör du överväga att ha en/27-eller/26-nätmask.
+Application Gateway-SKU: n (standard eller WAF) har stöd för upp till 32 instanser (32 instans-IP-adresser + 1 privat frontend IP + 5 Azure reserverad) – så en minsta under näts storlek på/26 rekommenderas
+
+Application Gateway (Standard_v2 eller WAF_v2 SKU) har stöd för upp till 125 instanser (125 instans-IP-adresser + 1 privat frontend IP + 5 Azure reserverad) – så en minsta under näts storlek på/24 rekommenderas
 
 #### <a name="network-security-groups-on-the-application-gateway-subnet"></a>Nätverks säkerhets grupper på Application Gateway under nätet
 

@@ -7,15 +7,15 @@ manager: ravijan
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: sudbalas
-ms.openlocfilehash: 668154b5e54ed4d496d272e33e8fc7f378e75e8a
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: a1c07432dcf90759662e8f4aaedc760abd18157c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386273"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585941"
 ---
 # <a name="azure-key-vault-backup"></a>Azure Key Vault säkerhets kopiering
 
@@ -68,7 +68,7 @@ Följ stegen i det här avsnittet för att säkerhetskopiera och återställa ob
 
     ![Skärm bild som visar var du väljer knappen Hämta säkerhets kopia i ett nyckel valv.](../media/backup-2.png)
     
-6. Välj **Download** (Ladda ned).
+6. Välj **Hämta**.
 
     ![Skärm bild som visar var du väljer nedladdnings knappen i ett nyckel valv.](../media/backup-3.png)
     

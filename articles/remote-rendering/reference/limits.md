@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: 17f98f452764abdc8458cdc38661d464ecb0a60d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af935aeaaeee11ab50b327b7f7b5b77246cb974b
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808548"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566054"
 ---
 # <a name="limitations"></a>Begränsningar
 
@@ -35,18 +35,17 @@ Ett antal funktioner har storlek, antal eller andra begränsningar.
 
 Det tillåtna antalet polygoner för alla laddade modeller beror på storleken på den virtuella datorn som skickas till [sessionen hanterings REST API](../how-tos/session-rest-api.md#create-a-session):
 
-| Storlek på virtuell dator | Maximalt antal polygoner |
+| Server storlek | Maximalt antal polygoner |
 |:--------|:------------------|
 |standard| 20 000 000 |
 |denaturering| ingen gräns |
 
-Mer detaljerad information om den här begränsningen finns i kapitel för [VM-storlek](../reference/vm-sizes.md) .
+Mer detaljerad information om den här begränsningen finns i kapitel för [Server storlek](../reference/vm-sizes.md) .
 
 ## <a name="platform-limitations"></a>Plattforms begränsningar
 
 **Windows 10 Desktop**
 
-* UWP/x86 är den enda UWP-plattform som stöds. UWP/x64 stöds inte.
 * Win32/x64 är den enda Win32-plattform som stöds. Win32/x86 stöds inte.
 
 **HoloLens 2**

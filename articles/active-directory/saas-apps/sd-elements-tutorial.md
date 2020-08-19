@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory enkel inloggning (SSO) med SD-element | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och SD-element.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: f0386307-bb3b-4810-8d4b-d0bfebda04f4
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a387659e2375444fd32cf731ab4bccc210b669a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 323d6324bc99028a3df4cb9cada133ad8cd990aa
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74081684"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543273"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sd-elements"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med SD-element
 
@@ -33,7 +28,7 @@ I den här självstudien får du lära dig att integrera SD-element med Azure Ac
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -83,9 +78,9 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. På sidan **Konfigurera enkel inloggning med SAML** anger du värdena för följande fält:
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://<tenantname>.sdelements.com/sso/saml2/metadata`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://<tenantname>.sdelements.com/sso/saml2/metadata`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<tenantname>.sdelements.com/sso/saml2/acs/`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<tenantname>.sdelements.com/sso/saml2/acs/`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska identifieraren och svars-URL. Kontakta [support teamet för SD-element](mailto:support@sdelements.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -118,7 +113,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -182,7 +177,7 @@ Syftet med det här avsnittet är att skapa en användare som kallas B. Simon i 
 
     ![Skapa ett SD-element test användare](./media/sd-elements-tutorial/tutorial_sd-elements_13.png) 
 
-    a. I text rutan **e-post** anger du e-postmeddelandet för användaren **b.simon@contoso.com**.
+    a. I text rutan **e-post** anger du e-postmeddelandet för användaren **b.simon@contoso.com** .
 
     b. I text rutan för det **första namnet** anger du det första namnet på användaren, t **. ex. B.**..
 
@@ -200,10 +195,10 @@ När du klickar på panelen för SD-element på åtkomst panelen, bör du loggas
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Testa SD-element med Azure AD](https://aad.portal.azure.com/)

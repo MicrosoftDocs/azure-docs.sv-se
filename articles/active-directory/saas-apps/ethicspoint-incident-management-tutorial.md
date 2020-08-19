@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med EthicsPoint incident hantering (EPIM) | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och EthicsPoint Incident Management (EPIM).
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8cb31a4c-9309-469b-93ac-daf0d3c7a3e6
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01ad3a1fb23aac9badefcef7414521e014476eef
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 8ea85db0749b2dc95c073072e52a49c795585b55
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85799578"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555442"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ethicspoint-incident-management-epim"></a>Självstudie: Azure Active Directory integration med EthicsPoint incident hantering (EPIM)
 
@@ -33,7 +28,7 @@ Integreringen av EthicsPoint Incident Management (EPIM) med Azure AD medför fö
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -113,9 +108,9 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Ethic
     https://<companyname>.ethicspointvp.com
     ```
 
-    b. I rutan **identifierare** anger du en URL med följande mönster:`https://<companyname>.navexglobal.com/adfs/services/trust`
+    b. I rutan **identifierare** anger du en URL med följande mönster: `https://<companyname>.navexglobal.com/adfs/services/trust`
 
-    c. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<servername>.navexglobal.com/adfs/ls/`
+    c. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<servername>.navexglobal.com/adfs/ls/`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera de här värdena med den faktiska inloggnings-URL:en, identifieraren och svars-URL:en. Kontakta [kundsupporten för EthicsPoint Incident Management (EPIM)](https://www.navexglobal.com/company/contact-us) och be om dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -157,7 +152,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

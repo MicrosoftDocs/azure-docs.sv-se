@@ -1,21 +1,21 @@
 ---
-title: Skapa och dela en Jupyter-anteckningsbok för Azure Notebooks för hands version
-description: Skapa snabbt och kör en Jupyter-anteckningsbok på Azure Notebooks för hands versionen och dela den sedan med andra.
+title: Skapa och dela en Jupyter Notebook på Azure Notebooks för hands version
+description: Skapa och kör snabbt en Jupyter Notebook för Azure Notebooks för hands version och dela sedan den bärbara datorn med andra.
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.custom: devx-track-python
-ms.openlocfilehash: 19773a6857d58f5b6af2a02ac28a3414c51fc917
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 77575b5b9e006ac9881d03dc95509d55c53c26d7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849411"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589341"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>Snabb start: skapa och dela en antecknings bok i Azure Notebooks för hands version
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-I den här snabb starten skapar du och kör en Jupyter Notebook på Azure Notebooks och delar sedan den bärbara datorn med andra. Med Jupyter kan du enkelt kombinera markdown text, körbar kod, beständiga data, grafik och visualiseringar på en enda delbar arbets yta, antecknings boken. Azure Notebooks är en kostnadsfri värdbaserad tjänst som används för att utveckla och köra Jupyter Notebooks i molnet utan installation.
+I den här snabb starten skapar du och kör en Jupyter Notebook på Azure Notebooks och delar sedan den bärbara datorn med andra. Med Jupyter kan du enkelt kombinera markdown text, körbar kod, beständiga data, grafik och visualiseringar på en enda delbar arbets yta, antecknings boken. Azure Notebooks är en kostnads fri värdbaserad tjänst för att utveckla och köra Jupyter-anteckningsböcker i molnet utan installation.
 
 ## <a name="prerequisites"></a>Förutsättningar
 Inga.
@@ -91,7 +91,7 @@ Inga.
 
 1. Välj ikonen Spara för att spara ditt arbete:
 
-    ![Spara ikon i Jupyter Notebook-verktygsfältet](media/quickstarts/hello-results-save-icon.png)
+    ![Ikonen Spara i verktygsfältet Jupyter Notebook](media/quickstarts/hello-results-save-icon.png)
 
 1. Välj **File**  >  meny kommandot**Stäng och** stoppa för att stoppa servern och stänga webbläsarfönstret.
 
@@ -106,4 +106,4 @@ På projekt sidan kan du också använda **delnings** menyn för att hämta en l
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Självstudie: skapa och kör en Jupyter-anteckningsbok för linjär regression](tutorial-create-run-jupyter-notebook.md)
+> [Självstudie: skapa och köra en Jupyter Notebook att göra en linjär regression](tutorial-create-run-jupyter-notebook.md)

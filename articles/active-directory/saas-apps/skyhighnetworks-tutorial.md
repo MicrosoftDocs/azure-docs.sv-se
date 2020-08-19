@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med MVISION Cloud Azure AD SSO-konfiguration | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory-och MVISION-molnet i Azure AD SSO-konfigurationen.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 48d6ddd1-4d3e-4019-8234-5e5212684d9c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a519ab6558db95ecf86b7595dbbb13a970460043
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: d529123b52e0e90702839f6822a586cf53dffa52
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85806898"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546727"
 ---
 # <a name="tutorial-integrate-mvision-cloud-azure-ad-sso-configuration-with-azure-active-directory"></a>Självstudie: integrera MVISION Cloud Azure AD SSO-konfiguration med Azure Active Directory
 
@@ -84,15 +80,15 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 4. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, utför följande steg:
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://<ENV>.myshn.net/shndash/saml/Azure_SSO`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://<ENV>.myshn.net/shndash/saml/Azure_SSO`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<ENV>.myshn.net/shndash/response/saml-postlogin`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<ENV>.myshn.net/shndash/response/saml-postlogin`
 
 5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     ![MVISION Cloud Azure AD SSO konfigurations domän och enkel inloggnings information för URL: er](common/metadata-upload-additional-signon.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<ENV>.myshn.net/shndash/saml/Azure_SSO`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<ENV>.myshn.net/shndash/saml/Azure_SSO`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [MVision Cloud Azure AD SSO Configuration Client support team](mailto:support@skyhighnetworks.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -125,7 +121,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **Användarnamn** anger du **brittasimon@yourcompanydomain.extension**  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

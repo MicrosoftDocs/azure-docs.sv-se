@@ -12,12 +12,12 @@ metadata:
   title: Dokumentation om Personanpassning
   titleSuffix: Azure Cognitive Services
   description: Personanpassning i Azure är en molnbaserad API-tjänst som gör det möjligt att välja det bästa alternativet att visa användarna och drar lärdom av beteende i realtid.
-  ms.openlocfilehash: 0c8e99ab2817cd9aaa2de60b9996b3d47b10a1ff
-  ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+  ms.openlocfilehash: 28197f7408ea93ed07d09e1ae44e7924f4605a14
+  ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
   ms.translationtype: HT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 06/11/2020
-  ms.locfileid: "84717925"
+  ms.lasthandoff: 08/18/2020
+  ms.locfileid: "88506557"
 landingContent:
 - title: Om Personanpassning
   linkLists:
@@ -49,7 +49,7 @@ landingContent:
     links:
     - text: Använda Personanpassning i en .NET-webbapp
       url: tutorial-use-personalizer-web-app.md
-    - text: Använda Personanpassning med en Azure Notebook
+    - text: Använda Personanpassning med en Azure Notebooks-fil
       url: tutorial-use-azure-notebook-generate-loop-data.md
   - linkListType: how-to-guide
     links:

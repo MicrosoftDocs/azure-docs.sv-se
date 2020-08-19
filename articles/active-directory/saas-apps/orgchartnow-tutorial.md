@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med organisations schema nu | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och organisations schema nu.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 50a1522f-81de-4d14-9b6b-dd27bb1338a4
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: b96606b5558e0fbb81733b2f548a89bfb38d5f99
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a28bfbb7fcfd357dc3aac521db24788607cd2212
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67095433"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543877"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>Självstudie: Azure Active Directory integrering med organisations schema nu
 
@@ -32,9 +28,9 @@ Att integrera organisations schema nu med Azure AD ger följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med organisations schema nu behöver du följande objekt:
 
@@ -111,10 +107,10 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med or
 
     ![image](common/both-preintegrated-signon.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://sso2.orgchartnow.com/Shibboleth.sso/Login?entityID=<YourEntityID>&target=https://sso2.orgchartnow.com`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://sso2.orgchartnow.com/Shibboleth.sso/Login?entityID=<YourEntityID>&target=https://sso2.orgchartnow.com`
 
     > [!NOTE]
-    > `<YourEntityID>`är **Azure AD-identifieraren** kopierad från avsnittet **Konfigurera organisations schema nu** , som beskrivs senare i självstudierna.
+    > `<YourEntityID>` är **Azure AD-identifieraren** kopierad från avsnittet **Konfigurera organisations schema nu** , som beskrivs senare i självstudierna.
 
 6. På sidan **Set up Single Sign-On with SAML** (Konfigurera enkel inloggning med SAML) går du till avsnittet **SAML Signing Certificate** (SAML-signeringscertifikat), klickar på **Ladda ned** för att ladda ned **Federation Metadata-XML** från de angivna alternativen enligt dina behov och spara den på datorn.
 
@@ -153,7 +149,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **Användarnamn** anger du **brittasimon@yourcompanydomain.extension**  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
@@ -219,9 +215,9 @@ Om du vill att Azure AD-användare ska kunna logga in på organisations schema n
 
     ![Organisations schema hanteras nu](./media/orgchartnow-tutorial/tutorial_orgchartnow_manageusers.png)
 
-    * I text rutan **användar-ID** anger du användar-ID **som\@brittasimon contoso.com**.
+    * I text rutan **användar-ID** anger du användar-ID **som \@ brittasimon contoso.com**.
 
-    * I text rutan e-postadress anger du e- **postadressen** för användaren som **\@brittasimon contoso.com**.
+    * I text rutan **e-postadress** anger du e-postadressen för användaren som **brittasimon \@ contoso.com**.
 
     * Klicka på **Lägg till**.
 

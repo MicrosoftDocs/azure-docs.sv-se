@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 2e741b0501f5e5cc37a6fea781dc1a5ede4fb1c2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 217c564a6bdb340ec15262c1eaf54a75bbffc833
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207163"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585024"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Självstudie: Använd dynamisk konfiguration i en ASP.NET Core app
 
@@ -40,7 +40,7 @@ I den här guiden får du lära dig att:
 > * Konfigurera ditt program för att uppdatera konfigurationen som svar på ändringar i ett konfigurations lager för appar.
 > * Mata in den senaste konfigurationen i dina programs kontrollanter.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill göra den här själv studie kursen installerar du [.net Core SDK](https://dotnet.microsoft.com/download).
 
@@ -56,7 +56,10 @@ En *kontroll nyckel* är en särskild nyckel som används för att signalera nä
 
 1. För **nyckel**anger du *TestApp: Settings (inställningar: Sentinel*). För **värde**anger du 1. Lämna **etikett** och **innehålls typ** tom.
 
-1. Välj **Använd**.
+1. Välj **Tillämpa**.
+
+    > [!NOTE]
+    > Om du inte använder en kontroll nyckel måste du registrera varje nyckel som du vill se manuellt.
 
 ## <a name="reload-data-from-app-configuration"></a>Läsa in data på nytt från App Configuration
 
@@ -159,6 +162,9 @@ En *kontroll nyckel* är en särskild nyckel som används för att signalera nä
     }
     ```
     ---
+
+    > [!TIP]
+    > Mer information om alternativ mönstret när du läser konfigurations värden finns [i alternativ mönster i ASP.net Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1).
 
 4. Uppdatera `Configure` metoden, Lägg till `UseAzureAppConfiguration` mellanprogram för att tillåta att konfigurations inställningarna som registreras för uppdatering uppdateras medan den ASP.net Core webbappen fortsätter att ta emot begär Anden.
 

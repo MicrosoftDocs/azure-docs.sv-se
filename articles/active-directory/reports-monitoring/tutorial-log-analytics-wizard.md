@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 337b75412751fb15e3fc1746666a8efb385a8939
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: cffd72171693499365f31b6eb51fd2586187b98b
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854599"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271271"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Självstudie: Konfigurera Log Analytics-guiden
 
@@ -30,7 +30,7 @@ I den här guiden får du lära dig att:
 > * Skapa en anpassad arbets bok med snabb starts mal len
 > * Lägg till en fråga till en befintlig arbetsboksmall
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - En Azure-prenumeration med minst en P1-licensierad administratör. Om du inte har någon Azure-prenumeration kan du [Registrera dig för en kostnads fri utvärderings version](https://azure.microsoft.com/free/).
 
@@ -152,7 +152,7 @@ Titta på de inloggningar där den villkorliga åtkomsten lyckades
 
 Räkna hur många lyckade aktiviteter som har gjorts
 
-' SigninLogs | där ConditionalAccessStatus = = "lyckades" | Project UserDisplayName, ConditionalAccessStatus | reparationer
+`SigninLogs | where ConditionalAccessStatus == "success" | project UserDisplayName, ConditionalAccessStatus | count`
 
 
 Sammanlagt antal lyckade inloggningar per användare per dag:
@@ -216,7 +216,7 @@ Den här proceduren visar hur du skickar aviseringar när BreakGlass-kontot anv�
 
 4. På sidan **loggar** klickar du på **Kom igång**.
 
-5. I text rutan **Sök** skriver du:`SigninLogs |where UserDisplayName contains "BreakGlass" | project UserDisplayName`
+5. I text rutan **Sök** skriver du: `SigninLogs |where UserDisplayName contains "BreakGlass" | project UserDisplayName`
 
 6. Klicka på **Kör**.  
 
@@ -277,15 +277,15 @@ Den här proceduren visar hur du skickar aviseringar när BreakGlass-kontot anv�
 
     1. Välj **e-postämne**.
 
-    2. I text rutan **ämnes rad** skriver du:`Breakglass account has been used`
+    2. I text rutan **ämnes rad** skriver du: `Breakglass account has been used`
 
 16. Utför följande steg under **aviserings regel information**:
 
     ![Information om aviserings regel](./media/tutorial-log-analytics-wizard/alert-rule-details.png)
 
-    1. I text rutan **aviserings regel namn** skriver du:`Breakglass account`
+    1. I text rutan **aviserings regel namn** skriver du: `Breakglass account`
 
-    2. I text rutan **Beskrivning** skriver du:`Your emergency access account has been used`
+    2. I text rutan **Beskrivning** skriver du: `Your emergency access account has been used`
 
 17. Klicka på **Skapa aviseringsregel**.   
 
@@ -328,7 +328,7 @@ Den här proceduren visar hur du skapar en ny arbets bok med hjälp av snabb sta
 
     ![Lägg till fråga](./media/tutorial-log-analytics-wizard/add-query.png)
 
-9. I text rutan fråga skriver du:`SigninLogs | where TimeGenerated > ago(7d) | project TimeGenerated, UserDisplayName, ClientAppUsed | summarize count() by ClientAppUsed`
+9. I text rutan fråga skriver du: `SigninLogs | where TimeGenerated > ago(7d) | project TimeGenerated, UserDisplayName, ClientAppUsed | summarize count() by ClientAppUsed`
 
 10. Klicka på **Kör fråga**.
 
@@ -371,7 +371,7 @@ Den här proceduren visar hur du lägger till en fråga till en befintlig arbets
 
     ![Lägg till arbets bok fråga](./media/tutorial-log-analytics-wizard/add-custom-workbook-query.png)
 
-7. I text rutan fråga skriver du:`SigninLogs | where TimeGenerated > ago(20d) | where ConditionalAccessPolicies != "[]" | summarize dcount(UserDisplayName) by bin(TimeGenerated, 1d), ConditionalAccessStatus`
+7. I text rutan fråga skriver du: `SigninLogs | where TimeGenerated > ago(20d) | where ConditionalAccessPolicies != "[]" | summarize dcount(UserDisplayName) by bin(TimeGenerated, 1d), ConditionalAccessStatus`
 
 8. Klicka på **Kör fråga**.
 

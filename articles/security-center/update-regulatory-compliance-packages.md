@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 6ba0be3a6fba35e413270dd6770f5d3f47586b5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28b6a70297efb8d8237f085e1f5b08dbb6a09072
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83873324"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522614"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Anpassa uppsättningen standarder i din instrument panel för regelefterlevnad
 
@@ -73,6 +73,8 @@ Följande steg beskriver hur du lägger till ett paket för att övervaka efterl
     - **Kanada-PBMM**
     
     ![Lägga till reglerings paket i Azure Security Center kontroll panelen för regelefterlevnad](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
+
+1. Välj **Lägg till** och ange all nödvändig information för det aktuella initiativet, till exempel omfång, parametrar och reparation.
 
 1. Från Security Centerens marginal List väljer du **regler för efterlevnad** igen för att gå tillbaka till instrument panelen för kontroll av efterlevnad.
     * Din nya standard visas i din lista över bransch & reglerande standarder. 

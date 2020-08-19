@@ -3,12 +3,12 @@ title: Ta bort ett Microsoft Azure Recovery Services-valv
 description: I den här artikeln lär du dig hur du tar bort beroenden och sedan tar bort ett Azure Backup Recovery Services-valv.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 5446c54ac070555987dfc05afa67825f307ee61b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 41d0cbc8e1c59f33efc24f38b535aa9cf91b2cc9
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055201"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257961"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Ta bort ett Azure Backup Recovery Services-valv
 
@@ -43,8 +43,9 @@ Om du vill ta bort ett valv korrekt måste du följa stegen i den här ordningen
 - **Steg 3**: du måste kontrol lera alla följande tre platser för att kontrol lera om det finns några skyddade objekt:
 
   - **Moln skydds objekt**: gå till instrument panelen för valv-menyn > **säkerhets kopierings objekt**. Alla objekt som anges här måste tas bort med **stoppa säkerhets kopiering** eller **ta bort säkerhetskopierade data** tillsammans med sina säkerhets kopierings data.  [Följ de här stegen](#delete-protected-items-in-the-cloud) för att ta bort dessa objekt.
+  - **SQL Server instans**: gå till instrument panelen för valvet > **säkerhets kopierings infrastruktur**  >  **skyddade servrar**. I skyddade servrar väljer du den server som ska avregistreras. Om du vill ta bort valvet måste du avregistrera alla servrar. Högerklicka på den skyddade servern och välj **avregistrera**.
   - **Mars-skyddade servrar**: gå till instrument panelen för valv-menyn > **säkerhets kopierings infrastruktur**  >  **skyddade servrar**. Om du har MARS-skyddade servrar måste alla objekt som anges här tas bort tillsammans med sina säkerhets kopierings data. [Följ dessa steg](#delete-protected-items-on-premises) om du vill ta bort mars-skyddade servrar.
-  - **Mabs-eller DPM-hanterings servrar**: gå till instrument panelen för valvet > **säkerhets kopierings**  >  **hanterings servrar**för säkerhets kopiering. Om du har DPM eller Azure Backup Server (MABS) måste alla objekt som anges här tas bort eller avregistreras tillsammans med sina säkerhets kopierings data. [Följ dessa steg](#delete-protected-items-on-premises) om du vill ta bort hanterings servrarna.
+   - **Mabs-eller DPM-hanterings servrar**: gå till instrument panelen för valvet > **säkerhets kopierings**  >  **hanterings servrar**för säkerhets kopiering. Om du har DPM eller Azure Backup Server (MABS) måste alla objekt som anges här tas bort eller avregistreras tillsammans med sina säkerhets kopierings data. [Följ dessa steg](#delete-protected-items-on-premises) om du vill ta bort hanterings servrarna.
 
 - **Steg 4**: du måste se till att alla registrerade lagrings konton tas bort. Gå till instrument panelen för valv-menyn > **säkerhets kopierings infrastruktur**  >  **lagrings konton**. Om du har lagrings konton som listas här måste du avregistrera alla. Information om hur du avregistrerar kontot finns i [avregistrera ett lagrings konto](manage-afs-backup.md#unregister-a-storage-account).
 
@@ -84,7 +85,7 @@ Börja med att läsa avsnittet **[innan du börjar](#before-you-start)** och fö
 1. På instrument panelen för valv väljer du **infrastruktur för säkerhets kopiering**.
 2. Välj något av följande alternativ beroende på ditt lokala scenario:
 
-      - För MARS väljer du **skyddade servrar** och **Azure Backup sedan agent**. Välj sedan den server som du vill ta bort.
+      - För MARS väljer du **skyddade servrar** och  **Azure Backup sedan agent**. Välj sedan den server som du vill ta bort.
 
         ![För MARS väljer du ditt valv för att öppna instrument panelen.](./media/backup-azure-delete-vault/identify-protected-servers.png)
 
@@ -171,7 +172,7 @@ Gör så här om du vill stoppa skyddet och ta bort säkerhetskopierade data:
 
 #### <a name="method-2"></a>Metod 2
 
-Öppna hanterings konsolen för **Mabs** eller **DPM** . Under **Välj data skydds metod**avmarkerar du kryss rutan **Jag vill ha onlineskydd** .
+Öppna hanterings konsolen för **Mabs** eller **DPM** . Under **Välj data skydds metod**avmarkerar du kryss rutan  **Jag vill ha onlineskydd** .
 
   ![Välj data skydds metod.](./media/backup-azure-delete-vault/data-protection-method.png)
 
@@ -235,7 +236,7 @@ Stoppa skyddet och ta bort säkerhets kopierings data:
 
     Post där följande meddelande visas:
 
-    *Microsoft Azure Backup är du säker på att du vill ta bort den här säkerhets kopierings principen? Borttagna säkerhets kopierings data sparas i 14 dagar. Efter den tiden tas säkerhetskopierade data bort permanent. <br/>[J] Ja [A] ja till alla [N] nej [L] nej till alla [S] gör uppehåll [?] Hjälp (standard är "Y"):*
+    *Microsoft Azure Backup är du säker på att du vill ta bort den här säkerhets kopierings principen? Borttagna säkerhets kopierings data sparas i 14 dagar. Efter den tiden tas säkerhetskopierade data bort permanent. <br/> [J] Ja [A] ja till alla [N] nej [L] nej till alla [S] gör uppehåll [?] Hjälp (standard är "Y"):*
 
 - Använd följande kommando för att ta bort säkerhetskopierade data i Azure för lokala datorer som skyddas med MABS (Microsoft Azure Backup Server) eller DPM (System Center Data Protection Manager) till Azure.
 

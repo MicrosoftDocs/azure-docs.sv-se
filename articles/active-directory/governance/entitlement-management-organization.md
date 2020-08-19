@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 272dd95b97c65ecc52dd73909f1ed87d5e5ae3ca
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 3c4869859e11cb6c0cc868ec9deacb3e5cb972c6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170504"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586579"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Lägga till en ansluten organisation i hantering av Azure AD-rättigheter
 
@@ -103,7 +103,7 @@ Följ anvisningarna i det här avsnittet om du vill lägga till en extern Azure 
 
 Om den anslutna organisationen ändras till en annan domän, om organisationens namn ändras eller om du vill ändra sponsorerna kan du uppdatera den anslutna organisationen genom att följa anvisningarna i det här avsnittet.
 
-**Nödvändig roll**: *Global administratör*, *användar administratör*eller *gäst deltagare*
+**Nödvändig roll**: *Global administratör* eller *användar administratör*
 
 1. I Azure Portal väljer du **Azure Active Directory**och väljer sedan **identitets styrning**.
 
@@ -120,7 +120,7 @@ Om den anslutna organisationen ändras till en annan domän, om organisationens 
 
 Om du inte längre har en relation med en extern Azure AD-katalog eller-domän kan du ta bort den anslutna organisationen.
 
-**Nödvändig roll**: *Global administratör*, *användar administratör*eller *gäst deltagare*
+**Nödvändig roll**: *Global administratör* eller *användar administratör*
 
 1. I Azure Portal väljer du **Azure Active Directory**och väljer sedan **identitets styrning**.
 
@@ -131,6 +131,10 @@ Om du inte längre har en relation med en extern Azure AD-katalog eller-domän k
     För närvarande kan du bara ta bort en ansluten organisation om det inte finns några anslutna användare.
 
     ![Knappen för att ta bort den anslutna organisationen](./media/entitlement-management-organization/organization-delete.png)
+
+## <a name="managing-a-connected-organization-programmatically"></a>Hantera en ansluten organisation program mässigt
+
+Du kan också skapa, lista, uppdatera och ta bort anslutna organisationer med Microsoft Graph. En användare i en lämplig roll med ett program som har den delegerade `EntitlementManagement.ReadWrite.All` behörigheten kan anropa API: et för att hantera [connectedOrganization](https://docs.microsoft.com/graph/api/resources/connectedorganization?view=graph-rest-beta) -objekt och ange sponsorer för dem.
 
 ## <a name="next-steps"></a>Nästa steg
 

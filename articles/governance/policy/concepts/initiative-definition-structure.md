@@ -1,14 +1,14 @@
 ---
 title: Information om initiativ definitions strukturen
 description: Beskriver hur definitioner av policy initiativ används för att gruppera princip definitioner för distribution till Azure-resurser i din organisation.
-ms.date: 05/29/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 80fa90765caa25d6995220134b9a5b4225133219
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b151ef4d58998b810e116321de68cbdb2e8d3eff
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84205962"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544646"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Definitions struktur för Azure Policy initiativ
 
@@ -17,9 +17,9 @@ Med initiativ kan du gruppera flera relaterade princip definitioner för att fö
 Du använder JSON för att skapa en princip initiativ definition. Definitionen av policy initiativ innehåller element för:
 
 - visningsnamn
-- description
+- beskrivning
 - metadata
-- parameters
+- parametrar
 - princip definitioner
 - princip grupper (den här egenskapen ingår i funktionen för för [hands versions kontroll](./regulatory-compliance.md))
 
@@ -109,14 +109,14 @@ Kunder kan definiera egenskaper och värden som är användbara för deras organ
 
 ### <a name="common-metadata-properties"></a>Gemensamma egenskaper för metadata
 
-- `version`(sträng): spårar information om versionen av innehållet i en princip initiativs definition.
-- `category`(sträng): anger under vilken kategori i Azure Portal princip definitionen visas.
+- `version` (sträng): spårar information om versionen av innehållet i en princip initiativs definition.
+- `category` (sträng): anger under vilken kategori i Azure Portal princip definitionen visas.
 
   > [!NOTE]
   > För ett [reglerings](./regulatory-compliance.md) -initiativ `category` måste **lagen efterlevas**.
 
-- `preview`(boolesk): true eller false flagga för om definitionen av policy initiativ är för _hands version_.
-- `deprecated`(boolesk): true eller false flagga för om definitionen av policy initiativ har marker ATS som _föråldrad_.
+- `preview` (boolesk): true eller false flagga för om definitionen av policy initiativ är för _hands version_.
+- `deprecated` (boolesk): true eller false flagga för om definitionen av policy initiativ har marker ATS som _föråldrad_.
 
 > [!NOTE]
 > Azure Policy tjänsten använder `version` , `preview` , och `deprecated` Egenskaper för att förmedla ändrings nivån till en inbyggd princip definition eller initiativ och tillstånd. Formatet `version` är: `{Major}.{Minor}.{Patch}` . Vissa tillstånd, till exempel _föråldrad_ eller för _hands version_, läggs till i `version` egenskapen eller i en annan egenskap som **boolesk**. Mer information om hur Azure Policy inbyggda versioner finns i [inbyggd versions hantering](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md).
@@ -218,10 +218,10 @@ De värden som inte är av typen resurs typ tillåts för **strongType** :
 
 Varje _mat ris_ element som representerar en princip definition har följande egenskaper:
 
-- `policyDefinitionId`(sträng): ID: t för den anpassade eller inbyggda princip definitionen som ska ingå.
-- `policyDefinitionReferenceId`(sträng): ett kort namn för den inkluderade princip definitionen.
+- `policyDefinitionId` (sträng): ID: t för den anpassade eller inbyggda princip definitionen som ska ingå.
+- `policyDefinitionReferenceId` (sträng): ett kort namn för den inkluderade princip definitionen.
 - `parameters`: (Valfritt) namn/värde-par för att skicka en initiativ parameter till den inkluderade princip definitionen som en egenskap i den princip definitionen. Mer information finns i [parametrar](#parameters).
-- `groupNames`(sträng mat ris): (valfritt) den grupp som princip definitionen är medlem i. Mer information finns i [princip grupper](#policy-definition-groups).
+- `groupNames` (sträng mat ris): (valfritt) den grupp som princip definitionen är medlem i. Mer information finns i [princip grupper](#policy-definition-groups).
 
 Här är ett exempel på `policyDefinitions` som har två inkluderade princip definitioner som var och en har genomgått samma initiativ-parameter:
 
@@ -257,11 +257,11 @@ Ytterligare grupperingsinställningar kan hittas i ett **policyMetadata** -objek
 
 Varje _mat ris_ element i `policyDefinitionGroups` måste ha båda följande egenskaper:
 
-- `name`(sträng) \[ krävs \] : **kontrollens**kort namn. Värdet för den här egenskapen används av `groupNames` i `policyDefinitions` .
-- `category`(sträng): kontrollens **efterlevnads domän** .
-- `displayName`(sträng): det egna namnet på **kontrollen**. Används av portalen.
-- `description`(sträng): en beskrivning av vad **kontrollen** gör.
-- `additionalMetadataId`(sträng): platsen för [policyMetadata](#metadata-objects) -objektet som innehåller ytterligare information om domänen för **kontroll** och **efterlevnad**.
+- `name` (sträng) \[ krävs \] : **kontrollens**kort namn. Värdet för den här egenskapen används av `groupNames` i `policyDefinitions` .
+- `category` (sträng): kontrollens **efterlevnads domän** .
+- `displayName` (sträng): det egna namnet på **kontrollen**. Används av portalen.
+- `description` (sträng): en beskrivning av vad **kontrollen** gör.
+- `additionalMetadataId` (sträng): platsen för [policyMetadata](#metadata-objects) -objektet som innehåller ytterligare information om domänen för **kontroll** och **efterlevnad**.
 
   > [!NOTE]
   > Kunder kan peka på ett befintligt [policyMetadata](#metadata-objects) -objekt. Dessa objekt är dock _skrivskyddade_ och skapas endast av Microsoft.
@@ -292,9 +292,9 @@ Den här informationen är:
 Metadata för en princip gruppering har följande information i `properties` noden:
 
 - `metadataId`: Det **kontroll-ID** som grupperingen avser.
-- `category`(obligatoriskt): den **kompatibilitetstillstånd** som **kontrollen** tillhör.
-- `title`(obligatoriskt): det egna namnet på **kontroll-ID: t**.
-- `owner`(obligatoriskt): identifierar vem som har ansvar för kontrollen i Azure: _Custom_, _Microsoft_, _Shared_.
+- `category` (obligatoriskt): den **kompatibilitetstillstånd** som **kontrollen** tillhör.
+- `title` (obligatoriskt): det egna namnet på **kontroll-ID: t**.
+- `owner` (obligatoriskt): identifierar vem som har ansvar för kontrollen i Azure: _Custom_, _Microsoft_, _Shared_.
 - `description`: Ytterligare information om kontrollen.
 - `requirements`: Information om ansvaret för implementeringen av kontrollen.
 - `additionalContentUrl`: En länk till mer information om kontrollen. Den här egenskapen är vanligt vis en länk till avsnittet i dokumentationen som täcker den här kontrollen i standarden för efterlevnad.

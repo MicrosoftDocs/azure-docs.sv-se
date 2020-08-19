@@ -2,22 +2,21 @@
 title: PowerShell-exempel – programproxy-appar med anpassade domäner
 description: PowerShell-exempel som visar alla Azure Active Directory (Azure AD) Application Proxy-program som använder anpassade domäner och certifikat information.
 services: active-directory
-author: msmimart
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 12/05/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9722178011c3c0411f2e0e888dd9ab5962b933b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e6f300126da0eeffe9d1c752102ab9ded81ff5b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75482054"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506761"
 ---
 # <a name="get-all-application-proxy-apps-using-custom-domains-and-certificate-information"></a>Hämta alla Application Proxy-appar med hjälp av anpassade domäner och certifikat information
 
@@ -37,7 +36,7 @@ Det här exemplet kräver [AzureAD v2 PowerShell för Graph module](https://docs
 
 ## <a name="script-explanation"></a>Förklaring av skript
 
-| Kommando | Obs! |
+| Kommando | Anteckningar |
 |---|---|
 |[Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | Hämtar ett huvud namn för tjänsten. |
 |[Get-AzureADApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0) | Hämtar ett Azure AD-program. |

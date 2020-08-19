@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
-ms.date: 08/12/2020
-ms.openlocfilehash: e1a5cb4a5ce02954a14a6936ec14379701354a79
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.date: 08/18/2020
+ms.openlocfilehash: 1833f0343aa3e41119e215e7ce022f122d13489b
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191203"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589511"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Användarinitierade manuell redundans på SQL-hanterad instans
 
@@ -126,9 +126,12 @@ Innan redundansväxlingen initieras anger utdata den aktuella primära repliken 
 
 Du kommer inte att kunna se samma utdata med GP-tjänstens nivå som den som anges ovan för BC. Detta beror på att GP-tjänstens nivå endast baseras på en enda nod. Utdata från T-SQL-frågan för GP-tjänstnivå visar bara en enskild nod före och efter redundansväxlingen. Förlust av anslutning från klienten under redundansväxlingen, vanligt vis bestående av en minut, är en indikation på redundansväxlingen.
 
+> [!NOTE]
+> Det kan ta flera minuter att slutföra redundansväxlingen (inte den faktiska kort otillgängligheten) i taget vid arbets belastningar med **hög intensitet** . Detta beror på att instans motorn tar hand om alla aktuella transaktioner på den primära och den sekundära noden, innan de kan redundansväxla.
+
 > [!IMPORTANT]
 > Funktionella begränsningar för manuell redundansväxling i användaren är:
-> - En (1) redundansväxling kan initieras på samma hanterade instans var 30: e minut.
+> - En (1) redundansväxling kan initieras på samma hanterade instans var **30: e minut**.
 > - För BC-instanser måste det finnas kvorum med repliker för att redundansväxlingen ska godkännas.
 > - För BC-instanser går det inte att ange vilken läsbar sekundär replik som ska initiera redundansväxlingen.
 

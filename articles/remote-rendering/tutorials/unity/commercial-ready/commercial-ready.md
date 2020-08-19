@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: e827f7eff707f5a7c467f53eacab6973bff2ef2f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0dad78ad76a870ea9f1db28a3cb5ccace5cd804f
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076433"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510937"
 ---
 # <a name="tutorial-creating-a-commercial-ready-azure-remote-rendering-application"></a>Självstudie: skapa ett affärs klart program för Azure Remote rendering
 
@@ -23,7 +23,7 @@ I den här självstudien lär du dig:
 > * Optimera användar upplevelsen kring tiden för inläsning av session
 > * Att tänka på kring nätverks fördröjning
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Den här självstudien bygger på [Självstudier: skydda Azure-Fjärråter givning och modell lagring](../security/security.md).
 
@@ -78,13 +78,13 @@ Mer information finns på:
 
 Ditt användnings fall kan kräva snabb start från program start till visning av 3D-modell. Till exempel, under ett viktigt möte där det är viktigt att allt körs i förväg. Ett annat exempel är under en granskning av en CAD 3D-modell där snabba design iterationer mellan ett CAD-program och Mixad verklighet är nyckeln till effektiv.
 
-Azure Remote rendering kräver förbearbetade 3D-modeller och Azure tar för närvarande flera minuter att skapa en virtuell dator och läsa in en modell för åter givning. Att göra den här processen så sömlös och snabb som möjligt kräver förberedelse av 3D-modellens data och ARR-sessionen i förväg.
+Azure Remote rendering kräver förbearbetade 3D-modeller och Azure tar för närvarande flera minuter att skapa en session och läsa in en modell för åter givning. Att göra den här processen så sömlös och snabb som möjligt kräver förberedelse av 3D-modellens data och ARR-sessionen i förväg.
 
 De förslag som delas här ingår för närvarande inte i Azures standard åter givning, men du kan implementera dem på egen hand för snabbare start tider.
 
 ### <a name="initiate-early"></a>Initiera tidig
 
-För att minska start tiden är den enklaste lösningen att flytta skapandet och initieringen av den virtuella datorn så tidigt som möjligt i användar arbets flödet. En strategi är att initiera sessionen så snart det är känt att en ARR-session krävs. Detta är ofta när användaren börjar ladda upp en 3D-modell till Azure Blob Storage använda med Azure-fjärrrendering. I det här fallet kan skapande av sessioner och VM-initiering initieras samtidigt som den nedladdade 3D-modellen så att båda arbets strömmar körs parallellt.
+För att minska start tiden är den enklaste lösningen att flytta skapande och initiering av sessionen så tidigt som möjligt i användar arbets flödet. En strategi är att initiera sessionen så snart det är känt att en ARR-session krävs. Detta är ofta när användaren börjar ladda upp en 3D-modell till Azure Blob Storage använda med Azure-fjärrrendering. I det här fallet kan skapande av sessioner och initiering initieras samtidigt som den nedladdade 3D-modellen så att båda arbets strömmar körs parallellt.
 
 Den här processen kan effektiviseras ytterligare genom att se till att de valda Azure Blob Storage-och utmatnings behållarna finns i samma regionala Data Center som Azure-fjärrrendering-sessionen.
 
@@ -92,41 +92,41 @@ Den här processen kan effektiviseras ytterligare genom att se till att de valda
 
 Om du vet att du har ett framtida behov av Azure-fjärrrendering kan du schemalägga ett visst datum och en tid för att starta Azure-fjärrrendering-sessionen.
 
-Det här alternativet kan erbjudas via en webb portal där människor både kan ladda upp en 3D-modell och schemalägga en tid för att visa den i framtiden. Detta är också en bra plats för att be om andra inställningar som standard eller Premium åter givning. Premium-åter givning kan vara lämpligt om det finns en önskan att visa en blandning av till gångar där den idealiska storleken är svårare att fastställa eller ett behov av att se till att Azure-regionen har tillgängliga virtuella datorer vid den angivna tidpunkten.
+Det här alternativet kan erbjudas via en webb portal där människor både kan ladda upp en 3D-modell och schemalägga en tid för att visa den i framtiden. Detta är också en bra plats för att be om andra inställningar som [*standard*](../../../reference/vm-sizes.md) eller [*Premium*](../../../reference/vm-sizes.md) åter givning. *Premium* -åter givning kan vara lämpligt om det finns en önskan att visa en blandning av till gångar där den idealiska storleken är svårare att fastställa eller ett behov av att se till att Azure-regionen har tillgängliga virtuella datorer vid den angivna tidpunkten.
 
 ### <a name="session-pooling"></a>Anslutningspoolning
 
 I de mest krävande situationer är ett annat alternativ att anslutningspoolen, där en eller flera sessioner skapas och initieras hela tiden. Detta skapar en sessionsbiljett för omedelbar användning av en begär ande användare. Nack delen med den här metoden är att när den virtuella datorn har initierats startar faktureringen för tjänsten. Det kanske inte är kostnads effektivt att ha en sessionsbiljett som körs hela tiden, men baserat på analys, kan det vara möjligt att förutsäga högsta belastning eller kombineras med planerings strategin ovan för att förutsäga när sessioner kommer att behövas och öka och ned i sessionen.
 
-Den här strategin hjälper också till att optimera valet mellan standard-och Premium-sessioner på ett mer dynamiskt sätt eftersom det skulle bli mycket snabbare att växla mellan de två typerna i en enda användarsession, till exempel när en förstklassig modell visas först, följt av en som kan fungera inom standard. Om dessa användarsessioner är ganska långa kan det vara betydande besparingar.
+Den här strategin hjälper också till att optimera valet mellan *standard* -och *Premium* -sessioner på ett mer dynamiskt sätt eftersom det skulle bli mycket snabbare att växla mellan de två typerna i en enda användarsession, till exempel när en *förstklassig* modell visas först, följt av en som kan fungera inom *standard*. Om dessa användarsessioner är ganska långa kan det vara betydande besparingar.
 
 Om du vill ha mer information om Azure Remote rendering-sessioner kan du kolla in:
 
 * [Remote Rendering-sessioner](https://docs.microsoft.com/azure/remote-rendering/concepts/sessions)
 
-## <a name="standard-vs-premium-vm-routing-strategies"></a>Strategier för routning av standard-och Premium-routning för virtuella datorer
+## <a name="standard-vs-premium-server-size-routing-strategies"></a>Strategier för routning av standard vs. Premium-Server storlek
 
-Du måste välja om du vill skapa en standard-eller Premium VM som visar en utmaning för att utforma användar upplevelsen och från slut punkt till slut punkt. Även om endast Premium-sessioner används är ett alternativ, använder standard-sessioner mycket mindre Azure Compute-resurser och är billigare än Premium. Detta ger ett starkt motivation att använda standardsessioner närhelst det är möjligt och endast använda Premium vid behov.
+Genom att välja om du vill skapa en *standard* -eller *Premium* Server-storlek presenteras en utmaning vid utformningen av användar upplevelsen och slut punkt till slut punkt. Även om endast *Premium* -sessioner används är ett alternativ, använder *standard* -sessioner mycket mindre Azure Compute-resurser och är billigare än *Premium*. Detta ger ett starkt motivation att använda *standardsessioner* närhelst det är möjligt och endast använda *Premium* vid behov.
 
 Här delar vi flera alternativ, från minst till mest omfattande, för att kunna hantera valen av sessioner.
 
 ### <a name="use-only-standard-or-premium"></a>Använd endast standard eller Premium
 
-Om du är säker på att dina behov *alltid* hamnar under tröskelvärdet mellan standard och Premium, så fören klar ditt beslut avsevärt. Använd bara standard. Tänk på att påverkan på användar upplevelsen är viktig om den totala komplexiteten för de inlästa resurserna avvisas som för komplex för en standardsession.
+Om du är säker på att dina behov *alltid* hamnar under tröskelvärdet mellan *standard* och *Premium*, så fören klar ditt beslut avsevärt. Använd bara *standard*. Tänk på att påverkan på användar upplevelsen är viktig om den totala komplexiteten för de inlästa resurserna avvisas som för komplex *för en* standardsession.
 
-Om du förväntar dig att en stor del av användningarna överskrider tröskelvärdet mellan standard och Premium, eller om kostnaden inte är en viktig faktor i ditt användnings fall, är det också ett alternativ för att hålla det enkelt att välja Premium.
+Om du förväntar dig att en stor del av användningarna överskrider tröskelvärdet mellan *standard* och *Premium*, eller om kostnaden inte är en viktig faktor i ditt användnings fall, är det också ett alternativ för att hålla det enkelt att välja *Premium* .
 
 ### <a name="ask-the-user"></a>Be användaren
 
-Om du vill ha stöd för både standard och Premium, är det enklaste sättet att avgöra vilken typ av VM-session som ska instansieras att fråga användaren när de väljer 3D-tillgångar att visa. Utmaningen med den här metoden är att användaren måste förstå 3D-till gångens komplexitet eller till och med flera till gångar som ska visas. Detta rekommenderas vanligt vis inte av den anledningen. Om användaren väljer fel och väljer standard kan den resulterande användar upplevelsen komprometteras vid en inopportune tidpunkt.
+Om du vill ha stöd för både *standard* och *Premium*, är det enklaste sättet att avgöra vilken typ av session som ska instansieras att fråga användaren när de väljer 3D-tillgångar att visa. Utmaningen med den här metoden är att användaren måste förstå 3D-till gångens komplexitet eller till och med flera till gångar som ska visas. Detta rekommenderas vanligt vis inte av den anledningen. Om användaren väljer fel och väljer *standard*kan den resulterande användar upplevelsen komprometteras vid en inopportune tidpunkt.
 
 ### <a name="analyze-the-3d-model"></a>Analysera 3D-modellen
 
-En annan relativt enkel metod är att analysera komplexiteten för de valda 3D-resurserna. Om modell komplexiteten är under tröskelvärdet för standard startar du en standardsession, annars initierar en Premium-session. Här är utmaningen att en enskild session slutligen kan användas för att visa flera modeller av vilka vissa kan överstiga komplexitets tröskeln för en standardsession, vilket ger möjlighet att sömlöst använda samma session för en sekvens med olika 3D-tillgångar.
+En annan relativt enkel metod är att analysera komplexiteten för de valda 3D-resurserna. Om modell komplexiteten är under tröskelvärdet för *standard*startar du en *standardsession,* annars initierar en *Premium* -session. Här är utmaningen att en enskild session slutligen kan användas för att visa flera modeller av vilka vissa kan överstiga komplexitets tröskeln för en standardsession, vilket ger möjlighet att sömlöst använda samma session *för en sekvens* med olika 3D-tillgångar.
 
 ### <a name="automatic-switching"></a>Automatisk växling
 
-Automatisk växling mellan standard-och Premium-sessioner kan göra mycket bra i en system design som även omfattar anslutningspoolen. Den här strategin möjliggör ytterligare optimering av resursutnyttjande. När användaren läser in modeller för visning, bestäms komplexiteten och rätt sessions storlek begärs från tjänsten session pooling.
+Automatisk växling mellan *standard* -och *Premium* -sessioner kan göra mycket bra i en system design som även omfattar anslutningspoolen. Den här strategin möjliggör ytterligare optimering av resursutnyttjande. När användaren läser in modeller för visning, bestäms komplexiteten och rätt sessions storlek begärs från tjänsten session pooling.
 
 ## <a name="working-with-networks"></a>Arbeta med nätverk
 
@@ -213,7 +213,7 @@ Utifrån det förväntade användnings fallet bestämmer du den bästa platsen e
 
 Om ditt användnings mönster har användnings mönster där samma 3D-till gång kan överföras flera gånger, kommer backend att spåra vilka modeller som redan har konverterats för användning med ARR, så att en modell bara bearbetas i förväg en gång för flera framtida val. Ett exempel på design granskning är där ett team har åtkomst till en gemensam ursprunglig 3D-till gång. Varje grupp medlem förväntas granska modellen med hjälp av ARR vid en viss tidpunkt i arbets flödet. Endast den första vyn utlöser sedan för bearbetnings steget. De efterföljande vyerna skulle slå upp den associerade efter bearbetningen av den associerade filen med SAS-utdata.
 
-Beroende på användnings fallet vill du förmodligen fastställa och eventuellt spara rätt storlek, standard eller Premium för Azure Remote rendering för varje 3D-till gång eller grupp av till gångar som ska visas tillsammans i samma session.  
+Beroende på användnings fallet vill du förmodligen bestämma och eventuellt spara rätt storlek, *standard* eller *Premium*för Azure Remote rendering-servern för varje 3D-till gång eller grupp av till gångar som ska visas tillsammans i samma session.  
 
 ### <a name="on-device-model-selection-list"></a>Val lista för enhets modell
 

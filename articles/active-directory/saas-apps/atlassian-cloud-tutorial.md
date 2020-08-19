@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Atlassian Cloud | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Atlassian Cloud.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: 729b8eb6-efc4-47fb-9f34-8998ca2c9545
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcb3522898a40dc79e8465af813633015568f1c8
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: ca75aea393e4850eb302cb03914296d7c1eaa951
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033876"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88517661"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>Självstudie: integrera Atlassian Cloud med Azure Active Directory
 
@@ -77,6 +73,16 @@ Om du vill konfigurera och testa Azure AD SSO med Atlassian-molnet slutför du f
 ### <a name="configure-azure-ad-sso"></a>Konfigurera Azure AD SSO
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
+
+1. Om du vill automatisera konfigurationen i Atlassian-molnet måste du installera **webb läsar tillägget Mina appar med säker inloggning** genom att klicka på **installera tillägget**.
+
+    ![Mina Apps-tillägg](common/install-myappssecure-extension.png)
+
+1. När du har lagt till tillägg i webbläsaren kan du klicka på **Konfigurera Atlassian Cloud** för att dirigera dig till Atlassian Cloud Application. Därifrån anger du administratörsautentiseringsuppgifter för att logga in på Atlassian-molnet. Webb läsar tillägget kommer automatiskt att konfigurera programmet åt dig.
+
+    ![Konfigurera konfiguration](common/setup-sso.png)
+
+1. Om du vill konfigurera Atlassian-molnet manuellt loggar du in på din Atlassian Cloud Company-webbplats som administratör och utför följande steg.
 
 1. Innan du börjar går du till din Atlassian produkt instans och kopierar/sparar instans-URL: en
    > [!NOTE]
@@ -177,7 +183,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
       ![image](./media/atlassian-cloud-tutorial/email-address.png)
          
-      b. Även om Azure inte fyller i **User. mail-** attributet för användare som skapats i Azure AD-klienter utan Office 365-licenser och lagrar e-postmeddelandet för sådana användare i **userPrincipalName** -attributet. Atlassian Cloud förväntar sig att **NameIdentifier** (**unik användar identifierare**) ska mappas till användarens e-post (**User. UserPrincipalName**).  Redigera **källattributet** och ändra det till **User. UserPrincipalName**. Spara ändringarna i anspråket.
+      b. Även om Azure inte fyller i **User. mail-** attributet för användare som skapats i Azure AD-klienter utan Office 365-licenser och lagrar e-postmeddelandet för sådana användare i **userPrincipalName** -attributet. Atlassian Cloud förväntar sig att **NameIdentifier** (**unik användar identifierare**) ska mappas till användarens e-post (**User. UserPrincipalName**).  Redigera **källattributet**  och ändra det till **User. UserPrincipalName**. Spara ändringarna i anspråket.
 
       ![image](./media/atlassian-cloud-tutorial/set-email.png)
          

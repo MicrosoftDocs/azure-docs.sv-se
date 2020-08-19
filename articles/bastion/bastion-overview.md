@@ -1,18 +1,18 @@
 ---
 title: Azure-skydds | Microsoft Docs
-description: Lär dig mer om Azure skydds
+description: Lär dig om Azure skydds, som ger säker och sömlös RDP/SSH-anslutning till dina virtuella datorer utan att exponera RDP/SSH-portar externt.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: overview
 ms.date: 01/31/2020
 ms.author: cherylmc
-ms.openlocfilehash: 299a69675eed1ba958c6d13cf447407450df2abb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8b27a7c2fd03ed0a80f1775465f1f1bbb44f0202
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80411109"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270350"
 ---
 # <a name="what-is-azure-bastion"></a>Vad är Azure Bastion?
 

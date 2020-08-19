@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2020
 ms.author: memildin
-ms.openlocfilehash: f159d2cdc48b144d0c75c62cd8a7ba6667424243
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: e0085ef5213853a1577ec039d5e360114aa7c64e
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043877"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566275"
 ---
 # <a name="advanced-data-security-for-sql-machines-preview"></a>Avancerad data säkerhet för SQL-datorer (för hands version)
 
@@ -72,7 +72,7 @@ Båda beskrivs nedan.
 
     [![Sidan Security Center prissättning med valfria paket](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png)](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-large.png#lightbox)
 
-    Avancerad data säkerhet för SQL-servrar på datorer kommer att aktive ras på alla SQL-servrar som är anslutna till den valda arbets ytan. Skyddet aktive ras fullständigt efter den första omstarten av SQL Server. 
+    Avancerad data säkerhet för SQL-servrar på datorer kommer att aktive ras på alla SQL-servrar som är anslutna till den valda arbets ytan. Skyddet aktive ras fullständigt efter den första omstarten av SQL Server-instansen.
 
     >[!TIP] 
     > Skapa en ny arbets yta genom att följa anvisningarna i [skapa en Log Analytics arbets yta](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).

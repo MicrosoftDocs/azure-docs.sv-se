@@ -5,12 +5,12 @@ author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 722d3e218272202074820db442ab1592042c7011
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5c38ac88503416b37b720a091c9e46d819a3146
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805012"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509305"
 ---
 # <a name="get-information-about-a-converted-model"></a>Få information om en konverterad modell
 
@@ -100,7 +100,7 @@ I det här avsnittet registreras information om käll fils formatet.
 Det här avsnittet innehåller information om käll scenen. Det kommer ofta att finnas skillnader mellan värdena i det här avsnittet och motsvarande värden i verktyget som skapade käll modellen. Sådana skillnader förväntas, eftersom modellen ändras under export-och konverterings stegen.
 
 * `numMeshes`: Antalet nät delar, där varje del kan referera till ett enskilt material.
-* `numFaces`: Det totala antalet _trianglar_ i hela modellen. Observera att nätet är triangulated under konverteringen. Det här talet bidrar till polygonens gräns i [standard storleken för rendering av virtuell dator](../../reference/vm-sizes.md#how-the-renderer-evaluates-the-number-of-polygons).
+* `numFaces`: Det totala antalet _trianglar_ i hela modellen. Observera att nätet är triangulated under konverteringen. Det här talet bidrar till polygonens gräns på [standard storleken för åter givnings servern](../../reference/vm-sizes.md#how-the-renderer-evaluates-the-number-of-polygons).
 * `numVertices`: Det totala antalet hörn i hela modellen.
 * `numMaterial`: Det totala antalet material i hela modellen.
 * `numFacesSmallestMesh`: Antalet trianglar i det minsta nätet i modellen.

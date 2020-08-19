@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory-integrering med LockPath-indikering | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och LockPath-indikering.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 234a32f1-9f56-4650-9e31-7b38ad734b1a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 148c2c46a911088d01ab83fe2d16e8ca81d272ff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 82af00c091aedb56e0cad954e554094e75df0013
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67098782"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88535891"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>Självstudie: Azure Active Directory integrering med LockPath-indikering
 
@@ -33,9 +28,9 @@ Att integrera LockPath-indikering med Azure AD ger följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med LockPath-indikering behöver du följande objekt:
 
@@ -162,9 +157,9 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Lo
 
     e. Ange **SAML-användarens ID-plats** till **NameIdentifier-elementet för ämnes instruktionen**.
 
-    f. Tillhandahåll **tjänst leverantören** för en indikering med följande mönster: `https://<CompanyName>.keylightgrc.com`.
+    f. Tillhandahåll **tjänst leverantören** för en indikering med följande mönster: `https://<CompanyName>.keylightgrc.com` .
 
-    g. Ange **användare för automatisk etablering** till **aktiv**.
+    ex. Ange **användare för automatisk etablering** till **aktiv**.
 
     h. Ange en **konto typ för automatisk etablering** till **fullständig användare**.
 
@@ -172,11 +167,11 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Lo
 
     j. Ange **Automatisk etablering av säkerhets**konfiguration, Välj **standard användar konfiguration**.
 
-    k. I text rutan **email-attribut** skriver `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`du.
+    k. I text rutan **email-attribut** skriver du `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
 
-    l. I text rutan för det **första** namnattributet skriver `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`du.
+    l. I text rutan för det **första** namnattributet skriver du `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` .
 
-    m. I text rutan för **senaste namnattribut** skriver `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`du.
+    m. I text rutan för **senaste namnattribut** skriver du `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` .
 
     n. Klicka på **Spara**.
 
@@ -198,7 +193,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** `brittasimon@yourcompanydomain.extension`. Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** `brittasimon@yourcompanydomain.extension` . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

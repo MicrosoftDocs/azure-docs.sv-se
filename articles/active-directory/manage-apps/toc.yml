@@ -91,16 +91,6 @@
           href: application-proxy-high-availability-load-balancing.md
         - name: Jämförelse mellan fjärråtkomstlösningar
           href: application-proxy-migration.md
-    - name: Publicera en app på marknaden
-      items:
-        - name: Aktivera enkel inloggning för ditt program för flera innehavare
-          href: isv-sso-content.md
-        - name: Skapa en Azure-klient för program för flera innehavare
-          href: isv-tenant-multi-tenant-app.md
-        - name: Välja federation för flera innehavare
-          href: isv-choose-multi-tenant-federation.md
-        - name: Skapa dokumentation för program för flera innehavare
-          href: isv-create-sso-documentation.md
 - name: Anvisningar
   expanded: false
   items:

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/29/2020
+ms.date: 08/14/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ef42dbb4cad1d40a35af28845baa402763acfc9b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 6cf9f7a005a80ab34e05ee293c20209e9d0b3f01
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119631"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258585"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity Platform och OAuth 2,0 Authorization Code Flow
 
@@ -60,6 +60,8 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_mode=query
 &scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
 &state=12345
+&code_challenge=YTFjNjI1OWYzMzA3MTI4ZDY2Njg5M2RkNmVjNDE5YmEyZGRhOGYyM2IzNjdmZWFhMTQ1ODg3NDcxY2Nl
+&code_challenge_method=S256
 ```
 
 > [!TIP]
@@ -73,13 +75,13 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `response_type` | krävs    | Måste innehålla `code` för flödet av auktoriseringskod.       |
 | `redirect_uri`  | krävs | Appens redirect_uri, där autentiserings svar kan skickas och tas emot av din app. Det måste exakt matcha ett av de redirect_uris som du registrerade i portalen, förutom att det måste vara URL-kodat. Använd standardvärdet för interna & mobila appar `https://login.microsoftonline.com/common/oauth2/nativeclient` .   |
 | `scope`  | krävs    | En blankstegsavgränsad lista med [omfattningar](v2-permissions-and-consent.md) som du vill att användaren ska godkänna.  För en del `/authorize` av begäran kan detta avse flera resurser, så att din app får tillåtelse för flera webb-API: er som du vill anropa. |
-| `response_mode`   | rekommenderas | Anger den metod som ska användas för att skicka den resulterande token tillbaka till din app. Kan vara något av följande:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query`innehåller koden som en frågesträngparametern i omdirigerings-URI: n. Om du begär en ID-token med det implicita flödet kan du inte använda `query` enligt vad som anges i [OpenID-specifikationen](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Om du bara begär koden kan du använda `query` , `fragment` , eller `form_post` . `form_post`kör ett inlägg som innehåller koden för omdirigerings-URI: n. Mer information finns i [OpenID Connect-protokollet](../azuread-dev/v1-protocols-openid-connect-code.md).  |
+| `response_mode`   | rekommenderas | Anger den metod som ska användas för att skicka den resulterande token tillbaka till din app. Kan vara något av följande:<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` innehåller koden som en frågesträngparametern i omdirigerings-URI: n. Om du begär en ID-token med det implicita flödet kan du inte använda `query` enligt vad som anges i [OpenID-specifikationen](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Om du bara begär koden kan du använda `query` , `fragment` , eller `form_post` . `form_post` kör ett inlägg som innehåller koden för omdirigerings-URI: n. Mer information finns i [OpenID Connect-protokollet](../azuread-dev/v1-protocols-openid-connect-code.md).  |
 | `state`                 | rekommenderas | Ett värde som ingår i begäran som också kommer att returneras i svaret från token. Det kan vara en sträng med innehåll som du vill. Ett slumpmässigt genererat unikt värde används vanligt vis för [att förhindra förfalsknings attacker på begäran](https://tools.ietf.org/html/rfc6749#section-10.12)från en annan plats. Värdet kan också koda information om användarens tillstånd i appen innan autentiseringsbegäran inträffade, t. ex. sidan eller vyn de var på. |
-| `prompt`  | valfri    | Anger vilken typ av användar interaktion som krävs. De enda giltiga värdena för tillfället är `login` , `none` och `consent` .<br/><br/>- `prompt=login`tvingar användaren att ange sina autentiseringsuppgifter för den begäran och negera enkel inloggning.<br/>- `prompt=none`är motsatt – det ser till att användaren inte visas med interaktiva prompter. Om begäran inte kan slutföras i bakgrunden via enkel inloggning, returnerar slut punkten för Microsoft Identity Platform ett `interaction_required` fel.<br/>- `prompt=consent`utlöser dialog rutan OAuth-medgivande när användaren loggar in och ber användaren att bevilja behörighet till appen.<br/>- `prompt=select_account`avbryter enkel inloggning med konto val som visar alla konton antingen i en session eller ett Sparad konto eller ett alternativ för att välja att använda ett annat konto helt och hållet.<br/> |
+| `prompt`  | valfri    | Anger vilken typ av användar interaktion som krävs. De enda giltiga värdena för tillfället är `login` , `none` och `consent` .<br/><br/>- `prompt=login` tvingar användaren att ange sina autentiseringsuppgifter för den begäran och negera enkel inloggning.<br/>- `prompt=none` är motsatt – det ser till att användaren inte visas med interaktiva prompter. Om begäran inte kan slutföras i bakgrunden via enkel inloggning, returnerar slut punkten för Microsoft Identity Platform ett `interaction_required` fel.<br/>- `prompt=consent` utlöser dialog rutan OAuth-medgivande när användaren loggar in och ber användaren att bevilja behörighet till appen.<br/>- `prompt=select_account` avbryter enkel inloggning med konto val som visar alla konton antingen i en session eller ett Sparad konto eller ett alternativ för att välja att använda ett annat konto helt och hållet.<br/> |
 | `login_hint`  | valfri    | Kan användas för att fylla i fältet användar namn/e-postadress på inloggnings sidan för användaren, om du känner till användar namnet i förväg. Appar kommer ofta att använda den här parametern under omautentiseringen och har redan extraherat användar namnet från en tidigare inloggning med hjälp av `preferred_username` anspråket.   |
 | `domain_hint`  | valfri    | Om den är inkluderad hoppar den e-postbaserad identifierings processen som användaren går igenom på inloggnings sidan, vilket leder till en något mer effektiviserad användar upplevelse, till exempel att skicka dem till sin federerade identitets leverantör. Appar använder ofta den här parametern vid omautentisering genom att extrahera `tid` från en tidigare inloggning. Om `tid` anspråk svärdet är `9188040d-6c67-4c5b-b112-36a304b66dad` ska du använda `domain_hint=consumers` . Annars använder du `domain_hint=organizations` .  |
 | `code_challenge`  | rekommenderas/krävs | Används för att skydda auktoriseringskod-bidrag via bevis nyckel för Code Exchange (PKCE). Krävs om ingår `code_challenge_method` . Mer information finns i [PKCE RFC](https://tools.ietf.org/html/rfc7636). Det rekommenderas nu för alla program typer – inbyggda appar, SPAs och konfidentiella klienter som Web Apps. |
-| `code_challenge_method` | rekommenderas/krävs | Den metod som används för att koda `code_verifier` för `code_challenge` parametern. Kan vara något av följande värden:<br/><br/>- `plain` <br/>- `S256`<br/><br/>Om det utesluts, `code_challenge` antas vara oformaterad text om `code_challenge` ingår. Microsoft Identity Platform stöder både `plain` och `S256` . Mer information finns i [PKCE RFC](https://tools.ietf.org/html/rfc7636). Detta krävs för [appar med en sida med hjälp av flödes kods flödet](reference-third-party-cookies-spas.md).|
+| `code_challenge_method` | rekommenderas/krävs | Den metod som används för att koda `code_verifier` för `code_challenge` parametern. Detta *bör* vara `S256` , men i specifikationen kan du använda `plain` IF av någon anledning till att klienten inte stöder SHA256. <br/><br/>Om det utesluts, `code_challenge` antas vara oformaterad text om `code_challenge` ingår. Microsoft Identity Platform stöder både `plain` och `S256` . Mer information finns i [PKCE RFC](https://tools.ietf.org/html/rfc7636). Detta krävs för [appar med en sida med hjälp av flödes kods flödet](reference-third-party-cookies-spas.md).|
 
 
 Användaren uppmanas att ange sina autentiseringsuppgifter och slutföra autentiseringen. Slut punkten för Microsoft Identity Platform ser också till att användaren har samtyckt till de behörigheter som anges i `scope` Frågeparametern. Om användaren inte har samtyckt till någon av dessa behörigheter uppmanas användaren att godkänna de behörigheter som krävs. Information om [behörigheter, medgivande och appar för flera klient organisationer finns här](v2-permissions-and-consent.md).
@@ -150,6 +152,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &code=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq3n8b2JRLk4OxVXr...
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &grant_type=authorization_code
+&code_verifier=ThisIsntRandomButItNeedsToBe43CharactersLong 
 &client_secret=JqQX2PNo9bpM0uEihUPzyrh    // NOTE: Only required for web apps. This secret needs to be URL-Encoded.
 ```
 

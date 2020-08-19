@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 947f7afba6a8b40e9b1c71ac817239dd039539f7
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 9f92e703dd45e893a3dfdd8a4c1d6aa3e9b8e96e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192405"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506523"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Nätverks isolering under utbildning &s störningar med privata virtuella nätverk
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -92,7 +92,7 @@ Studio har stöd för läsning av data från följande data lager typer i ett vi
 
 Lägg till din arbets yta och ditt lagrings konto i samma virtuella nätverk så att de kan komma åt varandra.
 
-1. [Aktivera Azure Private-länken](how-to-configure-private-link.md)om du vill ansluta din arbets yta till det virtuella nätverket. Den här funktionen är för närvarande en för hands version och är tillgänglig i regionerna USA, östra, västra USA, västra 2, södra centrala USA.
+1. [Aktivera Azure Private-länken](how-to-configure-private-link.md)om du vill ansluta din arbets yta till det virtuella nätverket. Den här funktionen är för närvarande en för hands version och är tillgänglig i regionerna USA, östra och USA, västra 2.
 
 1. Om du vill ansluta ditt lagrings konto till det virtuella nätverket [konfigurerar du inställningarna för brand väggar och virtuella nätverk](#use-a-storage-account-for-your-workspace).
 
@@ -832,4 +832,4 @@ Använd följande steg om du vill använda en virtuell dator eller ett Azure HDI
 * [Konfigurera miljöer för utbildning](how-to-set-up-training-targets.md)
 * [Konfigurera privata slut punkter](how-to-configure-private-link.md)
 * [Välj var du vill distribuera modeller](how-to-deploy-and-where.md)
-* [Använd TLS för att skydda en webb tjänst via Azure Machine Learning](how-to-secure-web-service.md)
+* [Använda TLS för att skydda en webbtjänst via Azure Machine Learning](how-to-secure-web-service.md)

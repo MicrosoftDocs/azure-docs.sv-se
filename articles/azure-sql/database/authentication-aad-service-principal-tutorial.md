@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 07/27/2020
-ms.openlocfilehash: 10d1fe9e47b7a3bf2d921f86703d5ae6d067813c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/17/2020
+ms.openlocfilehash: 61cb5384fd4d935ef4038c18b391b5da5fbc96b1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87294869"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516698"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>Självstudie: Skapa Azure AD-användare med hjälp av Azure AD-program
 
@@ -36,7 +36,7 @@ I den här guiden får du lära dig att:
 > - Skapa en tjänst huvud användare i Azure SQL Database
 > - Skapa en annan Azure AD-användare i SQL Database med hjälp av en Azure AD-tjänstens huvud namn användare
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - En befintlig [Azure SQL Database](single-database-create-quickstart.md) -eller [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) -distribution. Vi förutsätter att du har en fungerande SQL Database för den här självstudien.
 - Åtkomst till ett redan befintligt Azure Active Directory.
@@ -94,6 +94,8 @@ För att bevilja den här nödvändiga behörigheten kör du följande skript.
 
 > [!NOTE] 
 > Det här skriptet måste utföras av en Azure AD `Global Administrator` eller en `Privileged Roles Administrator` .
+>
+> I **offentlig för hands version**kan du tilldela `Directory Readers` rollen till en grupp i Azure AD. Grupp ägarna kan sedan lägga till den hanterade identiteten som en medlem i den här gruppen, vilket skulle kringgå behovet av en `Global Administrator` eller `Privileged Roles Administrator` att bevilja `Directory Readers` rollen. Mer information om den här funktionen finns i [katalog läsare roll i Azure Active Directory för Azure SQL](authentication-aad-directory-readers-role.md).
 
 - Ersätt `<TenantId>` med din `TenantId` tidigare insamlade version.
 - Ersätt `<server name>` med namnet på den logiska SQL-servern. Om Server namnet är `myserver.database.windows.net` , ersätter du `<server name>` med `myserver` .
@@ -304,3 +306,4 @@ När du har skapat ett huvud namn för tjänsten i Azure AD skapar du användare
 - [Azure AD Service Principal-autentisering till SQL DB-kod exempel](https://techcommunity.microsoft.com/t5/azure-sql-database/azure-ad-service-principal-authentication-to-sql-db-code-sample/ba-p/481467)
 - [Objekt för program och tjänstens huvudnamn i Azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md)
 - [Skapa tjänstens huvudnamn för Azure med Azure PowerShell](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)
+- [Katalog läsar roll i Azure Active Directory för Azure SQL](authentication-aad-directory-readers-role.md)

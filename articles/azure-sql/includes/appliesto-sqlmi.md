@@ -6,5 +6,5 @@ ms.contentlocale: sv-SE
 ms.lasthandoff: 07/20/2020
 ms.locfileid: "86498428"
 ---
-<Token>**gäller för:** ![ Ja ](../media/applies-to/yes.png) Azure SQL-hanterad instans</Token> 
+<Token>**gäller för:** ![ Ja ](../media/applies-to/yes.png) Azure SQL-hanterad instans </Token> 
 

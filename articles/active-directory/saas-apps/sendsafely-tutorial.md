@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med SendSafely | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och SendSafely.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 5ac4d4b9-8e52-4dae-a767-041684dc7db0
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86e71dc45eb2d8cdc2c016d564efd53a42a44e95
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 36d075ea84ef42be27520a9ad33d8d4b1ffa8218
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85813945"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543133"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sendsafely"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med SendSafely
 
@@ -85,13 +81,13 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://<SENDSAFELY_URL>/auth/saml2/`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://<SENDSAFELY_URL>/auth/saml2/`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<SENDSAFELY_URL>/auth/saml2/`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<SENDSAFELY_URL>/auth/saml2/`
 
 1. Klicka på **Ange ytterligare URL:er** och utför följande steg om du vill konfigurera programmet i **SP**-initierat läge:
 
-    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<SENDSAFELY_URL>/auth/`
+    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://<SENDSAFELY_URL>/auth/`
 
     b. Skriv en URL med följande mönster i textrutan **Vidarebefordransstatus**: `https://<SENDSAFELY_URL>/auth/saml2/`
 
@@ -152,7 +148,7 @@ När du klickar på panelen SendSafely på åtkomst panelen, bör du loggas in a
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

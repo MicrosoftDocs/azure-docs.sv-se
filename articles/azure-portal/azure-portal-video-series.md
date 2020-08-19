@@ -5,16 +5,16 @@ services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: mblythe
-ms.date: 05/11/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 49a9cfca1c1f3a76c85dfac98cafea00df1d5ff0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3c34fd198164d7e3ae0851749cf51809df31ca19
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504894"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522954"
 ---
 # <a name="azure-portal-how-to-video-series"></a>Instruktionsvideoserie om Azure-portalen
 
@@ -22,17 +22,18 @@ I Azure Portal instruktions video serien lär du dig hur du arbetar med Azure-tj
 
 ## <a name="featured-video"></a>Aktuell video
 
-I den här aktuella videon visar vi hur du ansluter till ett lagrings konto med hjälp av en privat Azure-länk.
+I den här aktuella videon visar vi hur du distribuerar en statisk Azure-webbapp.
 
-> [!VIDEO https://www.youtube.com/embed/vM7yDwHSc_o]
+> [!VIDEO https://www.youtube.com/embed/H2MPsgujpNk]
 
-[Så här ansluter du till ett lagrings konto med hjälp av Azure Private Link](https://www.youtube.com/watch?v=vM7yDwHSc_o)
+[Så här distribuerar du en statisk Azure-webbapp](https://www.youtube.com/watch?v=H2MPsgujpNk)
 
 Kom igång med de senaste videor som du kanske har missat:
 
-| [Den nya Azure Functions upplevelsen](https://www.youtube.com/watch?v=0bdT_9uOqkg)  | [Distribuera din webbapp med GitHub-åtgärder](https://www.youtube.com/watch?v=b2oyxbSbLPA)  | [Använda service information Cards](https://www.youtube.com/watch?v=u00TU531qsQ)  |
+| [Övervaka Azure Functions](https://www.youtube.com/watch?v=eVDZz8h0s00)  | [Så här använder du Blob-versioner](https://www.youtube.com/watch?v=b2oyxbSbLPA)  | [Ansluta till ett lagrings konto med hjälp av Azures privata länk](https://www.youtube.com/watch?v=m7e9h1gedWQ)  |
 | ------| ------ | ------ |
-| [![Bild av YouTube-video om den nya Azure Functions upplevelsen](https://i.ytimg.com/vi/0bdT_9uOqkg/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=0bdT_9uOqkg) | [![Bild av YouTube-video som distribuerar din webbapp med GitHub-åtgärder](https://i.ytimg.com/vi/b2oyxbSbLPA/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=b2oyxbSbLPA) | [![Bild av YouTube-video om hur du använder service informations kort](https://i.ytimg.com/vi/u00TU531qsQ/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](http://www.youtube.com/watch?v=u00TU531qsQ) |
+| [![Bild av YouTube-video om hur du övervakar Azure Functions](https://i.ytimg.com/vi/eVDZz8h0s00/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=eVDZz8h0s00) | [![Bild av YouTube-video om hur du använder BLOB-versioner](https://i.ytimg.com/vi/m7e9h1gedWQ/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=m7e9h1gedWQ) | [![Bild av YouTube-video om att ansluta till ett lagrings konto med Azures privata länk](https://i.ytimg.com/vi/vM7yDwHSc_o/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](https://www.youtube.com/watch?v=vM7yDwHSc_o) |
+
 
 ## <a name="video-playlist"></a>Video spelnings lista
 

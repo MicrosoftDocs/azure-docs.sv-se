@@ -1,27 +1,22 @@
 ---
-title: Anpassade domäner i Azure AD-programproxy | Microsoft Docs
+title: Anpassade domäner i Azure AD-programproxy
 description: Konfigurera och hantera anpassade domäner i Azure AD-programproxy.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 646a32509921709711b208c263ac6b077555eac5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6688875385d34fcbece964d43827c6d62ae7ced4
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764918"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587777"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Konfigurera anpassade domäner med Azure AD-programproxy
 
@@ -91,11 +86,11 @@ Publicera din app via Application Proxy med en anpassad domän:
    
    ![Välj anpassad domän](./media/application-proxy-configure-custom-domain/application-proxy.png)
    
-6. Om domänen redan har ett certifikat visas certifikat informationen i fältet **certifikat** . Annars väljer du fältet **certifikat** . 
+6. Om domänen redan har ett certifikat visas certifikat informationen i fältet **certifikat** . Annars väljer du fältet **certifikat** .
    
    ![Klicka om du vill överföra ett certifikat](./media/application-proxy-configure-custom-domain/certificate.png)
    
-7. På sidan **SSL-certifikat** bläddrar du till och väljer din PFX-certifikatfil. Ange lösen ordet för certifikatet och välj **Ladda upp certifikat**. Mer information om certifikat finns i avsnittet [certifikat för anpassade domäner](#certificates-for-custom-domains) .
+7. På sidan **SSL-certifikat** bläddrar du till och väljer din PFX-certifikatfil. Ange lösen ordet för certifikatet och välj **Ladda upp certifikat**. Mer information om certifikat finns i avsnittet [certifikat för anpassade domäner](#certificates-for-custom-domains) . Om certifikatet inte är giltigt eller om det är problem med lösen ordet visas ett fel meddelande. [Vanliga frågor om programproxy](application-proxy-faq.md#application-configuration) innehåller några fel söknings steg som du kan prova.
    
    ![Ladda upp certifikat](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
    
@@ -126,7 +121,7 @@ Ett certifikat skapar en säker TLS-anslutning för din anpassade domän.
 
 Du måste använda ett PFX-certifikat för att se till att alla nödvändiga mellanliggande certifikat ingår. Certifikatet måste innehålla den privata nyckeln.
 
-Det finns ingen begränsning för certifikatets signatur metoder. Elliptic Curve Cryptography (ECC), alternativt namn för certifikat mottagare (SAN) och andra vanliga certifikat typer stöds. 
+De vanligaste metoderna för certifikat signering stöds, till exempel ett alternativt namn för certifikat mottagare (SAN). 
 
 Du kan använda certifikat med jokertecken så länge jokertecknet matchar den externa URL: en. Du måste använda certifikat med jokertecken för [program med jokertecken](application-proxy-wildcard.md). Om du vill använda certifikatet till att även komma åt under domäner måste du lägga till jokertecken för underdomäner som alternativa namn i samma certifikat. Till exempel fungerar inte ett certifikat för * \* . Adventure-Works.com* för * \* . Apps.Adventure-Works.com* om du inte lägger till * \* . Apps.Adventure-Works.com* som alternativt namn för certifikat mottagare. 
 

@@ -2,25 +2,21 @@
 title: 'Självstudie: Konfigurera Juno-resan för automatisk användar etablering med Azure Active Directory | Microsoft Docs'
 description: Lär dig hur du automatiskt etablerar och avetablerar användar konton från Azure AD till Juno resan.
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 79813b19-c96e-4459-a4e5-636a6b6f5041
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0538902897d088c8ce271487b3f30698af0bb1eb
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 96dd5c617eb643ce8db5058bca238f5c3a83e756
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926560"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546895"
 ---
 # <a name="tutorial-configure-juno-journey-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Juno-resan för automatisk användar etablering
 
@@ -50,7 +46,7 @@ Det scenario som beskrivs i den här självstudien förutsätter att du redan ha
 
 ## <a name="step-2-configure-juno-journey-to-support-provisioning-with-azure-ad"></a>Steg 2. Konfigurera Juno-resan för att ge stöd för etablering med Azure AD
 
-1. För den **hemliga token** och **klient webb adressen** kontaktar du support teamet för Juno resan på support@the-juno.com . Det här värdet anges i fälten för **hemliga token** och **klient-URL: er** på fliken etablering i ditt Juno-resa-program i Azure Portal. 
+1. För den **hemliga token**  och **klient webb adressen** kontaktar du support teamet för Juno resan på support@the-juno.com . Det här värdet anges i fälten för **hemliga token**  och **klient-URL: er** på fliken etablering i ditt Juno-resa-program i Azure Portal. 
 
 ## <a name="step-3-add-juno-journey-from-the-azure-ad-application-gallery"></a>Steg 3. Lägg till Juno-resa från Azure AD-programgalleriet
 

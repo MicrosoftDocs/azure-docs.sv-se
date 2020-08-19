@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f48b30e0e4e76a4cf4c855008776f6b7541ad5a2
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 7a344b9c1383976cfe1b7507c120e19221f3555f
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850667"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589358"
 ---
 # <a name="scenario-azure-firewall---custom"></a>Scenario: Azure Firewall – Custom
 
 När du arbetar med virtuell WAN-routning för virtuella WAN finns det några tillgängliga scenarier. I det här scenariot är målet att dirigera trafik mellan virtuella nätverk direkt, men Använd Azure-brandvägg för VNet-till-Internet/gren-och gren-till-VNet-trafikflöden.
 
-## <a name="design"></a><a name="design"></a>Utforma
+## <a name="design"></a><a name="design"></a>Design
 
 För att ta reda på hur många väg tabeller som behövs kan du bygga en anslutnings mat ris där varje cell representerar om en källa (rad) kan kommunicera med ett mål (kolumn). Anslutnings matrisen i det här scenariot är trivial, men överensstämmer med andra scenarier. vi kan fortfarande titta på den.
 
@@ -40,6 +40,8 @@ I den föregående tabellen representerar ett "X" direkt anslutning mellan två 
   * Associerad routningstabell: **standard**
   * Sprider till routningstabeller: **standard**
 
+> [!NOTE]
+> Du kan skapa en separat virtuell WAN-instans med en enda säker virtuell hubb i varje region, och sedan kan du ansluta varje virtuellt WAN-nätverk till varandra via plats-till-plats-VPN.
 
 Information om virtuell hubb routning finns i [om virtuell nav-routning](about-virtual-hub-routing.md).
 

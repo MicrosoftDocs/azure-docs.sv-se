@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Zscaler beta | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Zscaler Beta.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 56b846ae-a1e7-45ae-a79d-992a87f075ba
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07b0f8112f724c857ffb46378f7aa7ef605b9bbb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f342371ec065c4fb60c492c4354c6f8c717c9bb8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68943293"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546085"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Självstudie: Azure Active Directory integrering med Zscaler beta
 
@@ -33,9 +28,9 @@ När du integrerar Zscaler beta med Azure AD kan du:
 * Hantera dina konton på en central plats med hjälp av Azure Portal.
 
 Mer information om program vara som en tjänst (SaaS) för program integrering med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att konfigurera Azure AD-integrering med Zscaler Beta behöver du följande:
 
@@ -138,7 +133,7 @@ Följ dessa steg om du vill konfigurera enkel inloggning med Azure AD med Zscale
 
     f. Välj **OK**.
 
-    g. Välj **Spara**.
+    ex. Välj **Spara**.
 
     > [!NOTE]
     > Information om hur du konfigurerar roller i Azure AD finns i [Konfigurera roll anspråk](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management).
@@ -167,7 +162,7 @@ Följ dessa steg om du vill konfigurera enkel inloggning med Azure AD med Zscale
 
 3. Öppna ett nytt webbläsarfönster om du vill konfigurera Zscaler-beta manuellt. Logga in på din Zscaler beta-företags webbplats som administratör och följ de här stegen.
 
-4. Gå**till autentiseringsinställningarna för** **administrations** > **autentisering** > och följ de här stegen.
+4. Gå till autentiseringsinställningarna för **administrations**  >  **autentisering**  >  **Authentication Settings**och följ de här stegen.
    
     ![Administration](./media/zscaler-beta-tutorial/ic800206.png "Administration")
 
@@ -191,7 +186,7 @@ Följ dessa steg om du vill konfigurera enkel inloggning med Azure AD med Zscale
 
     f. I rutan **gruppnamn-attribut** anger du **memberOf** om du vill aktivera SAML autoetablering för memberOf-attribut.
 
-    g. I rutan **avdelnings namn** anger du **avdelning** om du vill aktivera SAML autoetablering för avdelnings-attribut.
+    ex. I rutan **avdelnings namn** anger du **avdelning** om du vill aktivera SAML autoetablering för avdelnings-attribut.
 
     h. Välj **Spara**.
 
@@ -238,7 +233,7 @@ Följ dessa steg om du vill konfigurera proxyinställningarna i Internet Explore
 
 Skapa en test användare i Azure Portal som kallas Britta Simon.
 
-1. I Azure Portal i det vänstra fönstret väljer du **Azure Active Directory** > **användare** > **alla användare**.
+1. I Azure Portal i det vänstra fönstret väljer du **Azure Active Directory**  >  **användare**  >  **alla användare**.
 
     ![Användare och alla användare länkar](common/users.png)
 
@@ -262,7 +257,7 @@ Skapa en test användare i Azure Portal som kallas Britta Simon.
 
 Aktivera Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Zscaler beta.
 
-1. I Azure Portal väljer du **företags program** > **alla program** > **Zscaler beta**.
+1. I Azure Portal väljer du **företags program**  >  **alla program**  >  **Zscaler beta**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

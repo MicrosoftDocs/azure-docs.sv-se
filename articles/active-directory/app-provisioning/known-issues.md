@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 08/12/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 127629cb0102c2736995364db9202cd837d99a17
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 23c3dfc6670c96f44a10b2ad5d5bfeb3ff96382c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214290"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271013"
 ---
 # <a name="known-issues-application-provisioning"></a>Kända problem: program etablering
 Kända problem som kan vara medvetna om när du arbetar med app-etablering. Du kan ge feedback om program etablerings tjänsten på UserVoice, se [Azure AD Application-etablering UserVoice](https://aka.ms/appprovisioningfeaturerequest). Vi tittar på UserVoice så att vi kan förbättra tjänsten. 
@@ -66,9 +66,11 @@ Attribut-mappnings uttryck får innehålla högst 10 000 tecken.
 - Det finns inte stöd för etablering av kapslade grupper. 
 - Etablering av B2C-klienter stöds inte på grund av innehavarens storlek. 
 
+**Etablerings intervallet är fast** [Tiden](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users) mellan etablerings cykler kan för närvarande inte konfigureras. 
+
 **Ändringar som inte flyttas från mål programmet till Azure AD**
 
-App Provisioning-tjänsten är inte medveten om ändringar som gjorts i externa appar. Därför vidtas ingen åtgärd för att återställa igen. App Provisioning-tjänsten förlitar sig på ändringar som gjorts i Azure AD.  
+App Provisioning-tjänsten är inte medveten om ändringar som gjorts i externa appar. Därför vidtas ingen åtgärd för att återställa igen. App Provisioning-tjänsten förlitar sig på ändringar som gjorts i Azure AD. 
 
 **Etablerings cykeln fortsätter tills den har slutförts**
 

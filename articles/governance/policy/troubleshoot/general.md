@@ -1,14 +1,14 @@
 ---
 title: Felsöka vanliga fel
 description: 'Lär dig hur du felsöker problem med att skapa princip definitioner, de olika SDK: n och tillägget för Kubernetes.'
-ms.date: 05/22/2020
+ms.date: 08/17/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 6d23a148521506adf0c0fc16913a32aab5eb7a30
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: d4ede1703df922196c89a4c1ca4f37cbc95a6297
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135569"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545547"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Felsöka fel med hjälp av Azure Policy
 

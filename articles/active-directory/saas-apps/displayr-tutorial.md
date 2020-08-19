@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med nedspelare | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och displayer.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: b739b4e3-1a37-4e3c-be89-c3945487f4c1
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3cd1785595cf2f6b2401837780106f52fdc97e36
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a69b4a068e62c6376660a79b3a7c8ab5402b5704
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67103989"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88536265"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>Självstudie: integrera displayer med Azure Active Directory
 
@@ -33,7 +28,7 @@ I den här självstudien får du lära dig att integrera displayer med Azure Act
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -80,7 +75,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **Grundläggande SAML-konfiguration** utför du följande steg:
 
-    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<YOURDOMAIN>.displayr.com`
+    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://<YOURDOMAIN>.displayr.com`
 
     b. I text rutan **identifierare (enhets-ID)** anger du en URL med hjälp av följande mönster:`<YOURDOMAIN>.displayr.com`
 
@@ -153,7 +148,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     f. **Grupp mappningar** är valfria.
 
-    g. Klicka på **Spara**.  
+    ex. Klicka på **Spara**.  
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
 
@@ -163,7 +158,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `Britta Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `BrittaSimon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `BrittaSimon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 

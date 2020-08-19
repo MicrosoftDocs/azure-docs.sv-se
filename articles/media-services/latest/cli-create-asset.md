@@ -3,32 +3,40 @@ title: Ladda upp innehåll till en Azure Media Services till gång med Azure CLI
 description: Azure CLI-skriptet i det här avsnittet visar hur du skapar en Media Services-tillgång för att överföra innehåll till.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: ''
 ms.service: media-services
 ms.devlang: azurecli
-ms.topic: sample
+ms.topic: how-to
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/01/2019
-ms.author: juliako
+ms.date: 08/18/2020
+ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 77264416affb582bb709ff747ebaa467927114c3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7b362ba30baf13211dc41a6043dcedd05bd506ea
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494901"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585430"
 ---
-# <a name="cli-example-create-an-asset"></a>CLI-exempel: Skapa en tillgång
+# <a name="create-an-asset"></a>Skapa en tillgång
 
-Azure CLI-skriptet i den här artikeln visar hur du skapar en Media Services-tillgång att överföra innehåll till.
+Den här artikeln visar hur du skapar en Media Services till gång.  Du kommer att använda en till gång för att lagra medie innehåll för kodning och strömning.  Läs mer om hur du Media Services till gångar genom att läsa [till gångar i Azure Media Services v3](assets-concept.md)
 
-## <a name="prerequisites"></a>Förutsättningar 
+## <a name="prerequisites"></a>Förutsättningar
 
-[Skapa ett Media Services-konto](./create-account-howto.md).
+Följ stegen i [skapa ett Media Services konto](./create-account-howto.md) för att skapa ett Media Services konto och en resurs grupp som krävs för att skapa en till gång.
+
+## <a name="methods"></a>Metoder
+
+## <a name="cli"></a>[CLI](#tab/cli/)
+
+[!INCLUDE [Create an asset with CLI](./includes/task-create-asset-cli.md)]
+
+## <a name="cli-shell"></a>[CLI-gränssnitt](#tab/clishell/)
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
@@ -36,6 +44,8 @@ Azure CLI-skriptet i den här artikeln visar hur du skapar en Media Services-til
 
 [!code-azurecli-interactive[main](../../../cli_scripts/media-services/create-asset/Create-Asset.sh "Create an asset")]
 
+---
+
 ## <a name="next-steps"></a>Nästa steg
 
-[Översikt över Media Services](media-services-overview.md)
+[Hantera tillgångar](manage-asset-concept.md)

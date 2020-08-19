@@ -3,23 +3,19 @@ title: 'Självstudie: Konfigurera inkommande etablering för Workday i Azure Act
 description: Lär dig hur du konfigurerar inkommande etablering från arbets dagar till Azure AD
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: daveba
-ms.assetid: fac4f61e-d942-4429-a297-9ba74db95077
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 6fb80af84379a1a0bc174a7318c8150a98bea95e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69c3246c910a83d889151d6ad749e1be86340e8c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84041815"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540974"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>Självstudie: Konfigurera arbets dag till användar etablering i Azure AD
 Syftet med den här självstudien är att visa de steg som du måste utföra för att etablera arbetarnas data från arbets dagar till Azure Active Directory. 
@@ -111,7 +107,7 @@ I följande avsnitt beskrivs hur du konfigurerar användar etablering från Work
 
 8. Slutför avsnittet **admin credentials** enligt följande:
 
-   * **Workday-användarnamn** – Ange användar namnet för kontot för arbets dag integrerings systemet, med namnet på klient organisationen som lagts till. Bör se ut ungefär så här:username@contoso4
+   * **Workday-användarnamn** – Ange användar namnet för kontot för arbets dag integrerings systemet, med namnet på klient organisationen som lagts till. Bör se ut ungefär så här: username@contoso4
 
    * **Lösen ord för arbets dag –** Ange lösen ordet för system kontot för Workday-integrering
 
@@ -121,7 +117,7 @@ I följande avsnitt beskrivs hur du konfigurerar användar etablering från Work
      |------------|----------------------|------------------------|
      | https://####.workday.com/ccx/service/tenantName | v-21.1 | No |
      | https://####.workday.com/ccx/service/tenantName/Human_Resources | v-21.1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Ja |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
 
       > [!NOTE]
      > Om ingen versions information anges i URL: en använder appen Workday-WWS (Web Services) och inga ändringar krävs för standard-XPATH API-uttryck som levereras med appen. Om du vill använda en viss WWS API-version anger du versions nummer i URL: en <br>
@@ -156,7 +152,7 @@ I det här avsnittet ska du konfigurera hur användar data flödar från arbets 
 
       * Operator: är inte NULL
 
-3. I fältet **mål objekts åtgärder** kan du globalt filtrera vilka åtgärder som utförs i Azure AD. **Skapa** och **Uppdatera** är de vanligaste.
+3. I fältet **mål objekts åtgärder** kan du globalt filtrera vilka åtgärder som utförs i Azure AD. **Skapa**  och **Uppdatera** är de vanligaste.
 
 4. I avsnittet **mappningar för attribut** kan du definiera hur enskilda Workday-attribut mappar ska Active Directory attribut.
 

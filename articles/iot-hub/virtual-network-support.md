@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: 7776345ee4e02baa2d2a6ae7bc08389aa94bd09b
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 3c097260812e72dfaa3678a4aade556a337e6a6c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534489"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272908"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT Hub stöd för virtuella nätverk med privat länk och hanterad identitet
 
@@ -182,7 +182,7 @@ IoT Hub kan dirigera meddelanden till ett kundägda lagrings konto. För att rou
 
 5. Gå till avsnittet **anpassade slut punkter** och klicka på **Lägg till**. Välj **lagring** som typ av slut punkt.
 
-6. På sidan som visas anger du ett namn för din slut punkt, väljer den behållare som du vill använda i blob-lagringen, ange kodning och fil namns format. Välj **system tilldelat** som **Autentiseringstyp** till lagrings slut punkten. Klicka på knappen **Skapa**.
+6. På sidan som visas anger du ett namn för din slut punkt, väljer den behållare som du vill använda i blob-lagringen, ange kodning och fil namns format. Välj **identitets baserad** som **Autentiseringstyp** för lagrings slut punkten. Klicka på knappen **Skapa**.
 
 Nu är din anpassade lagrings slut punkt inställd på att använda navets tilldelade identitet och har behörighet att komma åt lagrings resursen trots dess brand Väggs begränsningar. Du kan nu använda den här slut punkten för att ställa in en regel för routning.
 
@@ -234,7 +234,7 @@ Med IoT Hub fil överförings funktionen kan enheter Ladda upp filer till ett ku
 
 4. På resurs sidan för IoT Hub navigerar du till fliken **fil uppladdning** .
 
-5. På sidan som visas väljer du den behållare som du tänker använda i blob-lagringen, konfigurerar **inställningarna för fil meddelanden**, **SAS TTL**, standard- **TTL**och maximalt antal **leveranser** som önskas. Välj **system tilldelat** som **Autentiseringstyp** till lagrings slut punkten. Klicka på knappen **Skapa**.
+5. På sidan som visas väljer du den behållare som du tänker använda i blob-lagringen, konfigurerar **inställningarna för fil meddelanden**, **SAS TTL**, standard- **TTL**och maximalt antal **leveranser** som önskas. Välj **identitets baserad** som **Autentiseringstyp** för lagrings slut punkten. Klicka på knappen **Skapa**.
 
 Nu har din lagrings slut punkt för fil uppladdning kon figurer ATS för att använda navets tilldelade identitet och har behörighet att komma åt lagrings resursen trots dess brand Väggs begränsningar.
 

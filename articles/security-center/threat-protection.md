@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: d049538653ea345935d40bd965afd7d2453b2aa2
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 69f439e102edc53207e44d63cb29396f64f59e0e
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041994"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272509"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Skydd mot hot i Azure Security Center
 
@@ -43,7 +43,7 @@ Om en avisering genereras av Security Center eller tas emot av Security Center f
 
 
 
-## <a name="threat-protection-for-windows-machines"></a>Skydd mot hot för Windows-datorer<a name="windows-machines"></a>
+## <a name="threat-protection-for-windows-machines"></a>Skydd mot hot för Windows-datorer <a name="windows-machines"></a>
 
 Azure Security Center integreras med Azure-tjänster för att övervaka och skydda dina Windows-baserade datorer. Security Center visar aviseringar och reparations förslag från alla dessa tjänster i ett lättanvänt format.
 
@@ -74,7 +74,7 @@ Azure Security Center integreras med Azure-tjänster för att övervaka och skyd
 
 
 
-## <a name="threat-protection-for-linux-machines"></a>Skydd mot hot för Linux-datorer<a name="linux-machines"></a>
+## <a name="threat-protection-for-linux-machines"></a>Skydd mot hot för Linux-datorer <a name="linux-machines"></a>
 
 Security Center samlar in gransknings poster från Linux-datorer med hjälp av **granskning**, ett av de vanligaste Linux-gransknings ramverken. granskade liv i Mainline-kärnan. 
 
@@ -91,7 +91,7 @@ Security Center samlar in gransknings poster från Linux-datorer med hjälp av *
 
 
 
-## <a name="threat-protection-for-azure-app-service"></a>Skydd mot hot för Azure App Service<a name="app-services"></a>
+## <a name="threat-protection-for-azure-app-service"></a>Skydd mot hot för Azure App Service <a name="app-services"></a>
 
 > [!NOTE]
 > Den här tjänsten är för närvarande inte tillgänglig i moln regioner i Azure myndigheter och suveräna.
@@ -110,7 +110,7 @@ Mer information om App Service-planer finns i [App Service planer](https://azure
 
 
 
-## <a name="threat-protection-for-containers"></a>Skydd mot hot för behållare<a name="azure-containers"></a>
+## <a name="threat-protection-for-containers"></a>Skydd mot hot för behållare <a name="azure-containers"></a>
 
 ### <a name="availability"></a>Tillgänglighet
 
@@ -119,7 +119,7 @@ Mer information om App Service-planer finns i [App Service planer](https://azure
 |Versions tillstånd:|Allmänt tillgänglig|
 |Priset|Standard-nivå|
 |Nödvändiga roller och behörigheter:|**Säkerhets administratören** kan stänga aviseringar.<br>**Säkerhets läsaren** kan visa resultat.|
-|Moln|![Yes](./media/icons/yes-icon.png) Kommersiella moln<br>![No](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
+|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Nej](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
 |||
 
 [!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
@@ -131,7 +131,7 @@ Mer information om App Service-planer finns i [App Service planer](https://azure
 
 
 
-## <a name="threat-protection-for-sql-database-and-sql-data-warehouse"></a>Skydd mot hot för SQL Database och SQL Data Warehouse<a name="data-sql"></a>
+## <a name="threat-protection-for-sql-database-and-sql-data-warehouse"></a>Skydd mot hot för SQL Database och SQL Data Warehouse <a name="data-sql"></a>
 
 Avancerat skydd för Azure SQL Database identifierar avvikande aktiviteter som visar ovanliga och potentiellt skadliga försök att komma åt eller utnyttja databaser.
 
@@ -147,7 +147,7 @@ Mer information finns i:
 
 
 
-## <a name="threat-protection-for-azure-storage"></a>Skydd mot hot för Azure Storage<a name="azure-storage"></a>
+## <a name="threat-protection-for-azure-storage"></a>Skydd mot hot för Azure Storage <a name="azure-storage"></a>
 
 ### <a name="availability"></a>Tillgänglighet
 
@@ -155,7 +155,7 @@ Mer information finns i:
 |----|:----|
 |Versions tillstånd:|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/) (allmän tillgänglighet)<br>[Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (för hands version)<br>[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (för hands version)|
 |Priset|Standard-nivå|
-|Moln|![Yes](./media/icons/yes-icon.png) Kommersiella moln<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Kina gov, andra gov|
+|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nej](./media/icons/no-icon.png) Kina gov, andra gov|
 |||
 
 
@@ -204,7 +204,7 @@ Mer information finns i:
 
 
 
-## <a name="threat-protection-for-azure-cosmos-db"></a>Skydd mot hot för Azure Cosmos DB<a name="cosmos-db"></a>
+## <a name="threat-protection-for-azure-cosmos-db"></a>Skydd mot hot för Azure Cosmos DB <a name="cosmos-db"></a>
 
 Azure Cosmos DB-aviseringar genereras av ovanliga och potentiellt skadliga försök att komma åt eller utnyttja Azure Cosmos DB-konton.
 
@@ -216,7 +216,7 @@ Mer information finns i:
 
 
 
-## <a name="threat-protection-for-azure-network-layer"></a>Hot skydd för Azure nätverks lager<a name="network-layer"></a>
+## <a name="threat-protection-for-azure-network-layer"></a>Hot skydd för Azure nätverks lager <a name="network-layer"></a>
 
 Security Center Network Layer Analytics baseras på [IPFIX data](https://en.wikipedia.org/wiki/IP_Flow_Information_Export), som är paket rubriker som samlas in av Azure Core-routrar. Baserat på den här datafeeden använder Security Center maskin inlärnings modeller för att identifiera och flagga skadliga trafik aktiviteter. Security Center använder också Microsoft Threat Intelligence-databasen för att utöka IP-adresser.
 
@@ -230,7 +230,6 @@ Vissa nätverkskonfigurationer kan begränsa Security Center från att generera 
 
 En lista över aviseringar för Azure nätverks lager finns i [referens tabellen för aviseringar](alerts-reference.md#alerts-azurenetlayer).
 
-Mer information om hur Security Center kan använda nätverksrelaterade signaler för att använda hot skydd finns [i heuristisk DNS-identifieringar i Security Center](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/).
 
 
 
@@ -281,9 +280,9 @@ En lista över Azure Key Vault aviseringar finns i [referens tabellen för avise
 
 
 
-## <a name="threat-protection-for-other-microsoft-services"></a>Skydd mot hot för andra Microsoft-tjänster<a name="alerts-other"></a>
+## <a name="threat-protection-for-other-microsoft-services"></a>Skydd mot hot för andra Microsoft-tjänster <a name="alerts-other"></a>
 
-### <a name="threat-protection-for-azure-waf"></a>Skydd mot hot för Azure-WAF<a name="azure-waf"></a>
+### <a name="threat-protection-for-azure-waf"></a>Skydd mot hot för Azure-WAF <a name="azure-waf"></a>
 
 Azure Application Gateway erbjuder en WAF (brandvägg för webbaserade program) som ger ett centraliserat skydd för dina webbappar mot vanliga kryphål och säkerhetsproblem.
 
@@ -292,7 +291,7 @@ Webb program är alltmer riktade mot skadliga attacker som utnyttjar ofta kända
 Om du har en licens för Azure WAF strömmas dina WAF-aviseringar till Security Center utan ytterligare konfiguration som behövs. Mer information om de aviseringar som genererats av WAF finns i [regel grupper och regler för webb programs brand vägg](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md?tabs=owasp31#crs911-31).
 
 
-### <a name="threat-protection-for-azure-ddos-protection"></a>Skydd mot hot för Azure DDoS Protection<a name="azure-ddos"></a>
+### <a name="threat-protection-for-azure-ddos-protection"></a>Skydd mot hot för Azure DDoS Protection <a name="azure-ddos"></a>
 
 DDoS-attacker (distributed denial of Service) är kända för att vara lätta att köra. De har blivit ett bra säkerhets problem, särskilt om du flyttar dina program till molnet. 
 

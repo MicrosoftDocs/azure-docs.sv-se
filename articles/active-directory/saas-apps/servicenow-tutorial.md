@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med ServiceNow | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och ServiceNow.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: a5a1a264-7497-47e7-b129-a1b5b1ebff5b
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/19/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a09cc83259a6fbb07b8c88e1d8f82b720400c0d1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9748c772466db73fc49b1291ffe2ce7d13da1d8c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507752"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540243"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med ServiceNow
 
@@ -98,9 +94,9 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** utför du följande steg:
 
-    a. I **inloggnings-URL**anger du en URL som använder följande mönster:`https://instance.service-now.com/login_with_sso.do?glide_sso_id=<sys_id of the sso configuration>`
+    a. I **inloggnings-URL**anger du en URL som använder följande mönster: `https://instance.service-now.com/login_with_sso.do?glide_sso_id=<sys_id of the sso configuration>`
 
-    b. I **identifierare (enhets-ID)** anger du en URL som använder följande mönster:`https://<instance-name>.service-now.com`
+    b. I **identifierare (enhets-ID)** anger du en URL som använder följande mönster: `https://<instance-name>.service-now.com`
 
     c. Ange en av följande URL: er för **svars-URL**:
 
@@ -170,9 +166,9 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 4. I avsnittet **grundläggande SAML-konfiguration** utför du följande steg:
 
-    a. För **inloggnings-URL**anger du en URL som använder följande mönster:`https://instance.service-now.com/login_with_sso.do?glide_sso_id=<sys_id of the sso configuration>`
+    a. För **inloggnings-URL**anger du en URL som använder följande mönster: `https://instance.service-now.com/login_with_sso.do?glide_sso_id=<sys_id of the sso configuration>`
 
-    b. För **identifierare (enhets-ID)** anger du en URL som använder följande mönster:`https://<instance-name>.service-now.com`
+    b. För **identifierare (enhets-ID)** anger du en URL som använder följande mönster: `https://<instance-name>.service-now.com`
 
     c. Ange en av följande URL: er för **svars-URL**:
 
@@ -250,7 +246,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     1. Logga in på ditt ServiceNow-program som administratör.
 
-       * I den automatiska konfigurationen konfigureras alla nödvändiga inställningar på **ServiceNow** -sidan, men **X. 509-certifikatet** är inte aktiverat som standard. Du måste mappa den manuellt till din identitets leverantör i ServiceNow. Gör så här:
+       * I den automatiska konfigurationen konfigureras alla nödvändiga inställningar på **ServiceNow** -sidan, men **X. 509-certifikatet** är inte aktiverat som standard. Du måste mappa den manuellt till din identitets leverantör i ServiceNow. Följ de här stegen:
 
          1. I det vänstra fönstret söker du efter **SSO-avsnittet för flera providers** från sökrutan och väljer **identitets leverantörer**.
 
@@ -296,7 +292,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
              > ![Skärm bild av Testresultat sida](./media/servicenow-tutorial/testconnection-fail.png "Konfigurera enkel inloggning")
         
-          1. När du uppmanas att ange dina autentiseringsuppgifter anger du dem. Du ser följande sida. **SSO-Utloggningen testresultat** ett fel förväntas. Ignorera felet och välj **Aktivera**.
+          1. När du uppmanas att ange dina autentiseringsuppgifter anger du dem. Du ser följande sida. **SSO-Utloggningen testresultat** ett fel förväntas. Ignorera felet och välj  **Aktivera**.
 
              ![Skärm bild av Testresultat sida](./media/servicenow-tutorial/servicenowactivate.png "Konfigurera enkel inloggning")
   
@@ -353,7 +349,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
           > ![Skärm bild av Testresultat sida](./media/servicenow-tutorial/testconnection-fail.png "Konfigurera enkel inloggning")
 
-        * När du uppmanas att ange dina autentiseringsuppgifter anger du dem. Du ser följande sida. **SSO-Utloggningen testresultat** ett fel förväntas. Ignorera felet och välj **Aktivera**.
+        * När du uppmanas att ange dina autentiseringsuppgifter anger du dem. Du ser följande sida. **SSO-Utloggningen testresultat** ett fel förväntas. Ignorera felet och välj  **Aktivera**.
 
           ![Skärm bild av Testresultat sida](./media/servicenow-tutorial/servicenowactivate.png "Konfigurera enkel inloggning")
 

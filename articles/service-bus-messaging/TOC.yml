@@ -44,6 +44,8 @@
           items:
             - name: Azure Portal
               href: service-bus-quickstart-topics-subscriptions-portal.md
+            - name: Azure CLI
+              href: service-bus-tutorial-topics-subscriptions-cli.md
             - name: ARM-mall
               href: service-bus-resource-manager-namespace-topic.md
         - name: Publicera och prenumerera på meddelanden
@@ -62,12 +64,8 @@
               href: service-bus-ruby-how-to-use-topics-subscriptions.md
 - name: Självstudier
   items:
-    - name: Uppdatera inventering – PowerShell
-      href: service-bus-tutorial-topics-subscriptions-powershell.md
-    - name: Uppdatera inventering – Portal
+    - name: Uppdatera inventering
       href: service-bus-tutorial-topics-subscriptions-portal.md
-    - name: Uppdatera inventering – CLI
-      href: service-bus-tutorial-topics-subscriptions-cli.md
     - name: Svara på händelser via Event Grid
       href: service-bus-to-event-grid-integration-example.md
 - name: Exempel

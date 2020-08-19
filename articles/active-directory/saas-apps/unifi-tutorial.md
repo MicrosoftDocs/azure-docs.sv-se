@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med en genom koppling | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och UNIFI.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: e1f49ee4-d2d4-4a82-9baf-0587ca1f20f6
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f7c5ee13f02c10441ca7852483e1299b6315309
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 27e346dd97824918d859ea6819e3c2b43f4c02aa
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73161090"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551956"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-unifi"></a>Självstudie: Azure Active Directory integrering med en enhetlig
 
@@ -33,9 +28,9 @@ Integreringen av UNIFI med Azure AD medför följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att konfigurera Azure AD-integrering med UNIFI behöver du följande:
 
@@ -107,11 +102,11 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med UNIFI
 
     ![Information om enkel inloggning med UNIFI-domäner och -URL:er](common/idp-identifier.png)
 
-    Skriv webb adressen i text rutan **identifierare** :`INVIEWlabs`
+    Skriv webb adressen i text rutan **identifierare** : `INVIEWlabs`
 
 5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
-    Skriv en URL i text rutan **inloggnings-URL** :`https://app.discoverunifi.com/login`
+    Skriv en URL i text rutan **inloggnings-URL** :  `https://app.discoverunifi.com/login`
 
     ![image](common/both-preintegrated-signon.png)
 
@@ -171,8 +166,8 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** skriver du **brittasimon\@yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

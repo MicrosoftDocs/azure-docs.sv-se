@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory enkel inloggning (SSO) med fält-iD | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och fält-iD.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: cb778239-dda9-4c5d-ba82-37d2a798978d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/28/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c90674ccbbbece59efe34986f320d0a18080399b
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: a9ace754a75d63bc24bea91dd6c88a3d004fd0eb
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84764119"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555104"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-field-id"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med fält-iD
 
@@ -32,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar fält-iD med Azure 
 
 Om du vill veta mer om SaaS (Software as a Service) med Azure AD, se [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du behöver följande för att komma igång:
 
@@ -82,9 +78,9 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **Grundläggande SAML-konfiguration** utför du följande steg:
 
-   a. I text rutan **identifierare** anger du en URL som använder följande mönster:`https://<tenantname>.fieldid.com/fieldid`
+   a. I text rutan **identifierare** anger du en URL som använder följande mönster: `https://<tenantname>.fieldid.com/fieldid`
 
-   b. I text rutan **svars-URL** anger du en URL som använder följande mönster:`https://<tenantname>.fieldid.com/fieldid/saml/SSO/alias/<Tenant Name>`
+   b. I text rutan **svars-URL** anger du en URL som använder följande mönster: `https://<tenantname>.fieldid.com/fieldid/saml/SSO/alias/<Tenant Name>`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska identifieraren och svars-URL. Kontakta [support teamet för fält-ID](mailto:support@ecompliance.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.

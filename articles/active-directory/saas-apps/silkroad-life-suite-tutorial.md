@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med SilkRoad Life Suite | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och SilkRoad Life Suite.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3cd92319-7964-41eb-8712-444f5c8b4d15
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: ae0be30eb834ea5c01a719daca410fe0e0c90b4d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 49dd333454f0eb92f5fb0dddc40390ec1baa91c5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170742"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525602"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silkroad-life-suite"></a>Självstudie: Azure Active Directory integrering med SilkRoad Life Suite
 
@@ -34,7 +30,7 @@ Genom att integrera SilkRoad Life Suite med Azure AD får du följande fördelar
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med SilkRoad Life Suite behöver du följande objekt:
 
@@ -121,13 +117,13 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Si
     > [!Note]
     > Om värdena **Identifierare** och **Svars-URL** inte fylls i automatiskt fyller du i värdena manuellt enligt dina krav.
 
-    d. I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<subdomain>.silkroad-eng.com/Authentication/`
+    d. I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://<subdomain>.silkroad-eng.com/Authentication/`
 
 5. I avsnittet **grundläggande SAML-konfiguration** , om du inte har en **metadata-fil för tjänst leverantören**, utför följande steg:
 
     ![Information om SilkRoad Life Suite-domän och URL: er för enkel inloggning](common/sp-identifier-reply.png)
 
-    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<subdomain>.silkroad-eng.com/Authentication/`
+    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://<subdomain>.silkroad-eng.com/Authentication/`
 
     b. I rutan **Identifierare** skriver du en URL med följande mönster:
 
@@ -234,7 +230,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **Användarnamn** anger du `brittasimon@yourcompanydomain.extension`  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

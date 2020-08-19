@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Citrix ShareFile | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Citrix ShareFile.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: e14fc310-bac4-4f09-99ef-87e5c77288b6
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c535b6610b569c4d3649f3d97428b2c97d0db91
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 0535363165ccda83759a21bff1773280e60fe73c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86168192"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542606"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Självstudie: Azure Active Directory integrering med Citrix ShareFile
 
@@ -35,7 +30,7 @@ Du får följande fördelar när du integrerar Citrix ShareFile med Azure AD:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att kunna konfigurera Azure AD-integrering med Citrix ShareFile behöver du följande:
 
@@ -106,7 +101,7 @@ Gör följande för att konfigurera enkel inloggning med Azure AD med Citrix Sha
 
     ![Citrix ShareFile – enkel inloggning-information för domän och -URL:er](common/sp-identifier-reply.png)
 
-    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<tenant-name>.sharefile.com/saml/login`
+    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://<tenant-name>.sharefile.com/saml/login`
 
     b. I textrutan **Identifierare (entitets-ID)** skriver du en URL med följande mönster:
 
@@ -184,7 +179,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

@@ -4,12 +4,12 @@ description: Lär dig att anpassa funktionen för autentisering och auktoriserin
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 52213999ae0ec9f6891c8ec10ab65471926e87d2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 7ec16b5de6053256fa6565db510ee94776def2c4
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208030"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272322"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Avancerad användning av autentisering och auktorisering i Azure App Service
 
@@ -33,7 +33,7 @@ På sidan **autentisering/auktorisering** i Azure Portal konfigurerar du först 
 
 I **åtgärd som ska vidtas när begäran inte autentiseras**väljer du **Tillåt anonyma begär Anden (ingen åtgärd)**.
 
-På inloggnings sidan eller i navigerings fältet eller på någon annan plats i appen lägger du till en inloggnings länk till alla providers som du har aktiverat ( `/.auth/login/<provider>` ). Till exempel:
+På inloggnings sidan eller i navigerings fältet eller på någon annan plats i appen lägger du till en inloggnings länk till alla providers som du har aktiverat ( `/.auth/login/<provider>` ). Ett exempel:
 
 ```html
 <a href="/.auth/login/aad">Log in with Azure AD</a>
@@ -55,7 +55,7 @@ Om du vill omdirigera användaren efter inloggning till en anpassad URL, använd
 
 I en klient-riktad inloggning loggar programmet in användaren till providern manuellt och skickar sedan autentiseringstoken till App Service för verifiering (se [Authentication Flow](overview-authentication-authorization.md#authentication-flow)). Den här verifieringen ger i själva verket ingen åtkomst till de resurser som behövs, men en lyckad verifiering ger dig en sessionstoken som du kan använda för att få åtkomst till program resurser. 
 
-För att verifiera providerns token måste App Service-appen först konfigureras med önskad Provider. När du har hämtat autentiseringstoken från providern efter att du har hämtat token, kan du ställa in token `/.auth/login/<provider>` för verifiering. Till exempel: 
+För att verifiera providerns token måste App Service-appen först konfigureras med önskad Provider. När du har hämtat autentiseringstoken från providern efter att du har hämtat token, kan du ställa in token `/.auth/login/<provider>` för verifiering. Ett exempel: 
 
 ```
 POST https://<appname>.azurewebsites.net/.auth/login/aad HTTP/1.1
@@ -86,7 +86,7 @@ Om providerns token verifieras, returnerar API: t med en `authenticationToken` i
 }
 ```
 
-När du har denna sessionstoken kan du komma åt skyddade app-resurser genom att lägga till `X-ZUMO-AUTH` rubriken till dina HTTP-begäranden. Till exempel: 
+När du har denna sessionstoken kan du komma åt skyddade app-resurser genom att lägga till `X-ZUMO-AUTH` rubriken till dina HTTP-begäranden. Ett exempel: 
 
 ```
 GET https://<appname>.azurewebsites.net/api/products/1
@@ -107,7 +107,7 @@ Här är en enkel utloggningslänk på en webbsida:
 <a href="/.auth/logout">Sign out</a>
 ```
 
-Som standard omdirigerar en lyckad utloggning klienten till URL: en `/.auth/logout/done` . Du kan ändra omdirigerings sidan efter utloggning genom att lägga till `post_logout_redirect_uri` Frågeparametern. Till exempel:
+Som standard omdirigerar en lyckad utloggning klienten till URL: en `/.auth/logout/done` . Du kan ändra omdirigerings sidan efter utloggning genom att lägga till `post_logout_redirect_uri` Frågeparametern. Ett exempel:
 
 ```
 GET /.auth/logout?post_logout_redirect_uri=/index.html
@@ -146,7 +146,7 @@ App Service skickar användar anspråk till ditt program med hjälp av särskild
 
 Kod som har skrivits på valfritt språk eller ramverk kan hämta den information som behövs från dessa huvuden. För ASP.NET 4,6-appar anges **ClaimsPrincipal** automatiskt med lämpliga värden. ASP.NET Core ger dock inte en mellanliggande autentisering som integreras med App Service användar anspråk. En lösning finns i [MaximeRouiller. Azure. AppService. EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth).
 
-Programmet kan också hämta ytterligare information om den autentiserade användaren genom att anropa `/.auth/me` . Mobile Apps Server SDK: er ger hjälp metoder för att arbeta med dessa data. Mer information finns i [så här använder du Azure-Mobile Apps Node.js SDK](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity)och [arbetar med .NET-Server-SDK för Azure-Mobile Apps](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info).
+Om [tokenarkivet](overview-authentication-authorization.md#token-store) är aktiverat för din app kan du också hämta ytterligare information om den autentiserade användaren genom att anropa `/.auth/me` . Mobile Apps Server SDK: er ger hjälp metoder för att arbeta med dessa data. Mer information finns i [så här använder du Azure-Mobile Apps Node.js SDK](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity)och [arbetar med .NET-Server-SDK för Azure-Mobile Apps](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info).
 
 ## <a name="retrieve-tokens-in-app-code"></a>Hämta token i app Code
 
@@ -161,14 +161,14 @@ Från din server kod matas de providerspecifika tokens in i begär ande huvudet,
 | Twitter | `X-MS-TOKEN-TWITTER-ACCESS-TOKEN` <br/> `X-MS-TOKEN-TWITTER-ACCESS-TOKEN-SECRET` |
 |||
 
-Skicka en HTTP-begäran från din klient kod (till exempel en mobilapp eller i en webbläsares java script) `GET` `/.auth/me` . Den returnerade JSON-filen har de providerspecifika tokens.
+Skicka en HTTP- `GET` begäran till `/.auth/me` ([token Store](overview-authentication-authorization.md#token-store) måste vara aktive rad) från din klient kod (till exempel en mobilapp eller i en webbläsares java script). Den returnerade JSON-filen har de providerspecifika tokens.
 
 > [!NOTE]
 > Åtkomsttoken används för att få åtkomst till leverantörs resurser, så de finns bara om du konfigurerar providern med en klient hemlighet. Information om hur du hämtar uppdateringstoken finns i uppdatera åtkomsttoken.
 
 ## <a name="refresh-identity-provider-tokens"></a>Uppdatera token för identitetsprovider
 
-När din leverantörs åtkomsttoken (inte [sessionstoken](#extend-session-token-expiration-grace-period)) går ut måste du autentisera om användaren innan du använder denna token igen. Du kan undvika att token upphör att gälla genom att `GET` ringa till `/.auth/refresh` slut punkten för ditt program. När den anropas uppdaterar App Service automatiskt åtkomsttoken i tokenarkivet för den autentiserade användaren. Efterföljande begär Anden om token från din app-kod hämtar de uppdaterade tokens. För att token-uppdateringen ska fungera måste dock tokenarkivet innehålla [uppdateringstoken](https://auth0.com/learn/refresh-tokens/) för providern. Sättet att hämta uppdateringstoken dokumenteras av varje provider, men följande lista är en kort sammanfattning:
+När din leverantörs åtkomsttoken (inte [sessionstoken](#extend-session-token-expiration-grace-period)) går ut måste du autentisera om användaren innan du använder denna token igen. Du kan undvika att token upphör att gälla genom att `GET` ringa till `/.auth/refresh` slut punkten för ditt program. När den anropas uppdaterar App Service automatiskt åtkomsttoken i [tokenarkivet](overview-authentication-authorization.md#token-store) för den autentiserade användaren. Efterföljande begär Anden om token från din app-kod hämtar de uppdaterade tokens. För att token-uppdateringen ska fungera måste dock tokenarkivet innehålla [uppdateringstoken](https://auth0.com/learn/refresh-tokens/) för providern. Sättet att hämta uppdateringstoken dokumenteras av varje provider, men följande lista är en kort sammanfattning:
 
 - **Google**: Lägg till en `access_type=offline` frågesträngparametern till ditt `/.auth/login/google` API-anrop. Om du använder Mobile Apps SDK kan du lägga till parametern i en av `LogicAsync` överlagringarna (se [Google Refresh-token](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
 - **Facebook**: tillhandahåller inte uppdaterade tokens. Token för lång livs längd upphör att gälla om 60 dagar (se [Facebook-förfallo tid och tillägg för](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)åtkomsttoken).
@@ -269,7 +269,7 @@ För alla Windows-appar kan du definiera behörighets beteendet för IIS-webbser
 
 ### <a name="identity-provider-level"></a>Identitets leverantörs nivå
 
-Identitets leverantören kan ge viss behörighet för att aktivera nycklar. Till exempel:
+Identitets leverantören kan ge viss behörighet för att aktivera nycklar. Ett exempel:
 
 - För [Azure App Service](configure-authentication-provider-aad.md)kan du [Hantera åtkomst på företags nivå](../active-directory/manage-apps/what-is-access-management.md) direkt i Azure AD. Instruktioner finns i [så här tar du bort en användares åtkomst till ett program](../active-directory/manage-apps/methods-for-removing-user-access.md).
 - Google [-API](configure-authentication-provider-google.md)-projekt som tillhör en [organisation](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) kan konfigureras så att de endast tillåter åtkomst till användare i din organisation (se [Google ' **Setting Up The OAuth 2,0** support Page](https://support.google.com/cloud/answer/6158849?hl=en)).

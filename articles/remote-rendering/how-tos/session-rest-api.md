@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 46560f067e020236031487677ad4f48a9560d4e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e65655f1809c6badc50e39a2a5e932516ef99d2
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80681251"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509849"
 ---
 # <a name="use-the-session-management-rest-api"></a>Använda REST API:et för sessionshantering
 
@@ -71,9 +71,9 @@ Det här kommandot skapar en session. Den returnerar ID: t för den nya sessione
 
 **Brödtext i begäran:**
 
-* maxLeaseTime (TimeSpan): ett timeout-värde när den virtuella datorn tas ur bruk automatiskt
+* maxLeaseTime (TimeSpan): ett timeout-värde när sessionen tas ur bruk automatiskt
 * modeller (matris): URL: er för till gångs behållare till preload
-* storlek (sträng): VM-storlek (**standard** eller **Premium**). Se vissa [begränsningar för VM-storlek](../reference/limits.md#overall-number-of-polygons).
+* storlek (sträng): Server storleken som ska konfigureras ([**"standard"**](../reference/vm-sizes.md) eller [**"Premium"**](../reference/vm-sizes.md)). Visa [begränsade storleks begränsningar](../reference/limits.md#overall-number-of-polygons).
 
 **Registrera**
 
@@ -130,7 +130,7 @@ Detta kommando uppdaterar en sessions parametrar. För närvarande kan du bara u
 
 **Brödtext i begäran:**
 
-* maxLeaseTime (TimeSpan): ett timeout-värde när den virtuella datorn tas ur bruk automatiskt
+* maxLeaseTime (TimeSpan): ett timeout-värde när sessionen tas ur bruk automatiskt
 
 **Registrera**
 
@@ -166,7 +166,7 @@ Det här kommandot returnerar en lista över aktiva sessioner.
 
 | URI | Metod |
 |-----------|:-----------|
-| /v1/Accounts/*accountId*/sessions | HÄMTA |
+| /v1/Accounts/*accountId*/sessions | GET |
 
 **Registrera**
 
@@ -209,7 +209,7 @@ Det här kommandot returnerar information om en session, till exempel dess VM-v�
 
 | URI | Metod |
 |-----------|:-----------|
-| /v1/Accounts/*accountId*/sessions/*SessionID*/Properties | HÄMTA |
+| /v1/Accounts/*accountId*/sessions/*SessionID*/Properties | GET |
 
 **Registrera**
 

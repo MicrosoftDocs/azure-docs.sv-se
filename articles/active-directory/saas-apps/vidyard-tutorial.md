@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Vidyard | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Vidyard.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: bed7df23-6e13-4e7c-b4cc-53ed4804664d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: a55ec7afc94440ea8b6a48ed1507476d362df6c0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2c6b88e9c59fa7195e77275ad193975924df137f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67087428"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88532202"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vidyard"></a>Självstudie: Azure Active Directory integrering med Vidyard
 
@@ -32,9 +28,9 @@ Genom att integrera Vidyard med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Vidyard behöver du följande objekt:
 
@@ -107,15 +103,15 @@ Utför följande steg för att konfigurera enkel inloggning med Vidyard i Azure 
 
     ![Information om enkel inloggning för Vidyard-domän och URL: er](common/idp-intiated.png)
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://secure.vidyard.com/sso/saml/<unique id>/metadata`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://secure.vidyard.com/sso/saml/<unique id>/metadata`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://secure.vidyard.com/sso/saml/<unique id>/consume`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://secure.vidyard.com/sso/saml/<unique id>/consume`
 
 5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     ![Information om enkel inloggning för Vidyard-domän och URL: er](common/metadata-upload-additional-signon.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://secure.vidyard.com/sso/saml/<unique id>/login`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://secure.vidyard.com/sso/saml/<unique id>/login`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Du kommer att uppdatera dessa värden med den faktiska identifieraren, svars-URL: en och inloggnings-URL, som beskrivs senare i självstudien. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -138,7 +134,7 @@ Utför följande steg för att konfigurera enkel inloggning med Vidyard i Azure 
 
 1. Logga in på din Vidyard-program företags webbplats som administratör i ett annat webbläsarfönster.
 
-2. Välj **grupp** > **säkerhet** från Vidyard-instrumentpanelen
+2. Välj **grupp**  >  **säkerhet** från Vidyard-instrumentpanelen
 
     ![Vidyard-konfiguration](./media/vidyard-tutorial/configure1.png)
 
@@ -162,7 +158,7 @@ Utför följande steg för att konfigurera enkel inloggning med Vidyard i Azure 
 
     f. I text rutan **URL för SAML-slutpunkt** klistrar du in värdet för **inloggnings-URL: en** som kopierats från Azure Portal
 
-    g. Klicka på **Bekräfta**.
+    ex. Klicka på **Bekräfta**.
 
 5. På fliken enkel inloggning väljer du **tilldela** bredvid en befintlig profil
 
@@ -200,7 +196,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** brittasimon@yourcompanydomain.extension. Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** brittasimon@yourcompanydomain.extension . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

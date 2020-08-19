@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: f9c5de4fb4e38d3f9ccb79c89be988fe0bbebc3c
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 95d892bf7a0c0e395289d4a5535cd9b6b789b055
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760302"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565935"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Autentisera åtkomst till Azure-resurser med hjälp av hanterade identiteter i Azure Logic Apps
 
@@ -28,12 +28,12 @@ Den här artikeln visar hur du konfigurerar båda typerna av hanterade identitet
 
 * [Utlösare och åtgärder som har stöd för hanterade identiteter](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
 * [Autentiseringstyper som stöds för utgående anrop](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
-* [Hanterade identitets gränser för Logic Apps](../logic-apps/logic-apps-limits-and-config.md#managed-identity)
+* [Begränsningar för hanterade identiteter för Logic Apps](../logic-apps/logic-apps-limits-and-config.md#managed-identity)
 * [Azure-tjänster som stöder Azure AD-autentisering med hanterade identiteter](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* En Azure-prenumeration. Om du inte har någon prenumeration kan du [registrera ett kostnadsfritt Azure-konto](https://azure.microsoft.com/free/). Både den hanterade identiteten och den Azure-resurs där du behöver åtkomst måste använda samma Azure-prenumeration.
+* Ett Azure-konto och prenumeration. Om du inte har någon prenumeration kan du [registrera ett kostnadsfritt Azure-konto](https://azure.microsoft.com/free/). Både den hanterade identiteten och den Azure-resurs där du behöver åtkomst måste använda samma Azure-prenumeration.
 
 * Om du vill ge en hanterad identitets åtkomst till en Azure-resurs måste du lägga till en roll i mål resursen för den identiteten. Om du vill lägga till roller måste du ha [administratörs behörighet för Azure AD](../active-directory/users-groups-roles/directory-assign-admin-roles.md) som kan tilldela roller till identiteter i motsvarande Azure AD-klient.
 
@@ -162,10 +162,10 @@ Om du vill konfigurera en användardefinierad hanterad identitet för din Logic 
 
    | Egenskap | Krävs | Värde | Beskrivning |
    |----------|----------|-------|-------------|
-   | **Resursnamn** | Ja | <*användarens tilldelad identitet-namn*> | Namnet för att ge din användar tilldelnings identitet. I det här exemplet används "Fabrikam-User-Assigned-Identity". |
-   | **Prenumeration** | Ja | <*Azure-prenumeration-namn*> | Namnet på den Azure-prenumeration som ska användas |
-   | **Resursgrupp** | Ja | <*Azure-resurs-grupp-namn*> | Namnet på resurs gruppen som ska användas. Skapa en ny grupp eller Välj en befintlig grupp. I det här exemplet skapas en ny grupp med namnet "Fabrikam-Managed-Identities-RG". |
-   | **Plats** | Ja | <*Azure-region*> | Den Azure-region där information om din resurs ska lagras. I det här exemplet används "västra USA". |
+   | **Resursnamn** | Yes | <*användarens tilldelad identitet-namn*> | Namnet för att ge din användar tilldelnings identitet. I det här exemplet används "Fabrikam-User-Assigned-Identity". |
+   | **Prenumeration** | Yes | <*Azure-prenumeration-namn*> | Namnet på den Azure-prenumeration som ska användas |
+   | **Resursgrupp** | Yes | <*Azure-resurs-grupp-namn*> | Namnet på resurs gruppen som ska användas. Skapa en ny grupp eller Välj en befintlig grupp. I det här exemplet skapas en ny grupp med namnet "Fabrikam-Managed-Identities-RG". |
+   | **Plats** | Yes | <*Azure-region*> | Den Azure-region där information om din resurs ska lagras. I det här exemplet används "västra USA". |
    |||||
 
    Nu kan du lägga till den användardefinierade identiteten i din Logic app. Du kan inte lägga till fler än en användardefinierad identitet i din Logic app.
@@ -195,7 +195,7 @@ Om du vill konfigurera en användardefinierad hanterad identitet för din Logic 
 
 Om du vill automatisera skapandet och distributionen av Azure-resurser, till exempel Logic Apps, kan du använda [Azure Resource Manager mallar](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)som stöder [användarspecifika identiteter för autentisering](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md). I mallens `resources` avsnitt kräver din Logic Apps-resurs definitionen följande objekt:
 
-* Ett `identity` objekt med `type` egenskapen inställd på`UserAssigned`
+* Ett `identity` objekt med `type` egenskapen inställd på `UserAssigned`
 
 * Ett underordnat `userAssignedIdentities` objekt som anger den användardefinierade resursen och namnet
 
@@ -285,7 +285,7 @@ Om din mall även omfattar resurs definitionen för den hanterade identiteten ka
 Innan du kan använda din Logic Apps-hanterade identitet för autentisering ska du konfigurera åtkomst för den identiteten på den Azure-resurs där du planerar att använda identiteten. För att slutföra den här uppgiften tilldelar du den aktuella rollen till den identiteten på Azure-resursen. Här följer de alternativ som du kan använda:
 
 * [Azure-portalen](#azure-portal-assign-access)
-* [Azure Resource Manager mall](../role-based-access-control/role-assignments-template.md)
+* [Azure Resource Manager-mall](../role-based-access-control/role-assignments-template.md)
 * Azure PowerShell ([New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)) – mer information finns i [lägga till roll tilldelning med hjälp av Azure RBAC och Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
 * Azure CLI ([AZ Role Assignment Create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)) – mer information finns i [lägga till roll tilldelning med hjälp av Azure RBAC och Azure CLI](../role-based-access-control/role-assignments-cli.md).
 * [REST-API för Azure](../role-based-access-control/role-assignments-rest.md)
@@ -360,11 +360,11 @@ De här stegen visar hur du använder den hanterade identiteten med en utlösare
 
    | Egenskap | Krävs | Beskrivning |
    |----------|----------|-------------|
-   | **Metod** | Ja | HTTP-metoden som används av den åtgärd som du vill köra |
-   | **URI** | Ja | Slut punkts-URL för åtkomst till Azure-resursen eller-entiteten. URI-syntaxen innehåller vanligt vis [resurs-ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) för Azure-resursen eller-tjänsten. |
-   | **Sidhuvuden** | Nej | Eventuella rubrik värden som du behöver eller vill inkludera i den utgående begäran, till exempel innehålls typen |
-   | **Frågor** | Nej | Alla frågeparametrar som du behöver eller vill inkludera i begäran, till exempel parametern för en åtgärd eller API-versionen för den åtgärd som du vill köra |
-   | **Autentisering** | Ja | Autentiseringstypen som används för att autentisera åtkomsten till mål resursen eller entiteten |
+   | **Metod** | Yes | HTTP-metoden som används av den åtgärd som du vill köra |
+   | **URI** | Yes | Slut punkts-URL för åtkomst till Azure-resursen eller-entiteten. URI-syntaxen innehåller vanligt vis [resurs-ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) för Azure-resursen eller-tjänsten. |
+   | **Sidhuvuden** | No | Eventuella rubrik värden som du behöver eller vill inkludera i den utgående begäran, till exempel innehålls typen |
+   | **Frågor** | No | Alla frågeparametrar som du behöver eller vill inkludera i begäran, till exempel parametern för en åtgärd eller API-versionen för den åtgärd som du vill köra |
+   | **Autentisering** | Yes | Autentiseringstypen som används för att autentisera åtkomsten till mål resursen eller entiteten |
    ||||
 
    Som ett särskilt exempel förutsätter vi att du vill köra [ögonblicks bilds-bloben](/rest/api/storageservices/snapshot-blob) på en BLOB i det Azure Storage konto där du tidigare har konfigurerat åtkomst till din identitet. Men [Azure Blob Storage-anslutningen](/connectors/azureblob/) har för närvarande inte den här åtgärden. I stället kan du köra den här åtgärden med hjälp av [http-åtgärden](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) eller någon annan [REST API åtgärd för BLOB service](/rest/api/storageservices/operations-on-blobs).
@@ -374,10 +374,10 @@ De här stegen visar hur du använder den hanterade identiteten med en utlösare
 
    För att köra [ögonblicks bildens BLOB](/rest/api/storageservices/snapshot-blob)-åtgärd anger http-åtgärden följande egenskaper:
 
-   | Egenskap | Krävs | Exempelvärde | Beskrivning |
+   | Egenskap | Krävs | Exempelvärde | Description |
    |----------|----------|---------------|-------------|
-   | **Metod** | Ja | `PUT`| HTTP-metoden som ögonblicks bildens BLOB-åtgärd använder |
-   | **URI** | Ja | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Resurs-ID för en Azure Blob Storage-fil i den globala Azure-miljön (offentlig) som använder den här syntaxen |
+   | **Metod** | Yes | `PUT`| HTTP-metoden som ögonblicks bildens BLOB-åtgärd använder |
+   | **URI** | Yes | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Resurs-ID för en Azure Blob Storage-fil i den globala Azure-miljön (offentlig) som använder den här syntaxen |
    | **Sidhuvuden** | Ja, för Azure Storage | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` | De- `x-ms-blob-type` och- `x-ms-version` huvud värden som krävs för Azure Storage åtgärder. <p><p>**Viktigt**: i utgående http-utlösare och åtgärds begär anden för Azure Storage, kräver huvudet `x-ms-version` egenskapen och API-versionen för den åtgärd som du vill köra. <p>Mer information finns i de här ämnena: <p><p>- [Begärandehuvuden – ögonblicks bilds-BLOB](/rest/api/storageservices/snapshot-blob#request) <br>- [Versions hantering för Azure Storage tjänster](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
    | **Frågor** | Ja, för den här åtgärden | `comp` = `snapshot` | Frågeparametern och värdet för ögonblicks bildens BLOB-åtgärd. |
    |||||

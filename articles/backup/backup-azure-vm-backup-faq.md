@@ -4,12 +4,12 @@ description: I den här artikeln hittar du svar på vanliga frågor om hur du s�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 268146430a71cca4e620381ec4ce8666f808fefd
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 03e2f004fa54ee235eabc49afd6abd7532a6ee44
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190897"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88262780"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Vanliga frågor och svar – säkerhetskopiera virtuella Azure-datorer
 
@@ -100,6 +100,10 @@ Om du ändrar Skift läget (till övre eller lägre) för din virtuella dator el
 ### <a name="can-i-back-up-or-restore-selective-disks-attached-to-a-vm"></a>Kan jag säkerhetskopiera eller återställa selektiva diskar som är anslutna till en virtuell dator?
 
 Azure Backup har nu stöd för säkerhets kopiering och återställning av selektiva diskar med den virtuella Azure-datorn säkerhets kopierings lösning. Mer information finns i [selektiv säkerhets kopiering av diskar och återställning för virtuella Azure-datorer](selective-disk-backup-restore.md).
+
+### <a name="are-managed-identities-preserved-if-a-tenant-change-occurs-during-backup"></a>Behålls hanterade identiteter om en klient förändring sker under säkerhets kopieringen?
+
+Om [klient ändringar](https://docs.microsoft.com/azure/devops/organizations/accounts/change-azure-ad-connection) sker måste du inaktivera och återaktivera [hanterade identiteter](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) för att säkerhets kopieringen ska fungera igen.
 
 ## <a name="restore"></a>Återställ
 

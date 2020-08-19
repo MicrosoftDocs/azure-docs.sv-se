@@ -3,12 +3,12 @@ title: Återställa virtuella VMware-datorer med Azure Backup Server
 description: Använd Azure Backup Server (MABS) för att återställa virtuella VMware-datorer som körs på en VMware vCenter/ESXi-Server.
 ms.topic: conceptual
 ms.date: 08/18/2019
-ms.openlocfilehash: d11b9259a44c32891f5fefa6f175681838927586
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b3f61aa828db39aeb11b1ce46a850d9a5b868653
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524530"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263528"
 ---
 # <a name="restore-vmware-virtual-machines"></a>Återställa virtuella VMware-datorer
 
@@ -22,7 +22,7 @@ Den här artikeln förklarar hur du använder Microsoft Azure Backup Server (MAB
 
 ## <a name="restore-a-recovery-point"></a>Återställa en återställnings punkt
 
-1. I MABS Administratörskonsol klickar du på återställnings visning.
+1. I MABS-Administratörskonsol väljer du **återställnings visning**.
 
 2. Använd fönstret Bläddra, bläddra eller filtrera för att hitta den virtuella dator som du vill återställa. När du har valt en virtuell dator eller mapp visas tillgängliga återställnings punkter i rutan återställnings punkter för.
 
@@ -30,15 +30,15 @@ Den här artikeln förklarar hur du använder Microsoft Azure Backup Server (MAB
 
 3. I fältet **återställnings punkter för** använder du kalender-och list menyerna för att välja ett datum när en återställnings punkt skulle utföras. Kalender datum i fetstil har tillgängliga återställnings punkter.
 
-4. I menyfliksområdet verktyg klickar du på **Återställ** för att öppna **återställnings guiden**.
+4. I menyfliksområdet verktyg väljer du **Återställ** för att öppna **återställnings guiden**.
 
     ![Återställnings guiden, granska val av återställning](./media/restore-azure-backup-server-vmware/recovery-wizard.png)
 
-5. Klicka på **Nästa** för att gå vidare till skärmen **Ange återställnings alternativ** .
+5. Välj **Nästa** för att gå vidare till skärmen **Ange återställnings alternativ** .
 
-6. På skärmen **Ange återställnings alternativ** , om du vill aktivera begränsning av nätverks bandbredd, klickar du på **ändra**. Om du vill lämna nätverks begränsningen inaktive rad klickar du på **Nästa**. Inga andra alternativ för den här guide skärmen är tillgängliga för virtuella VMware-datorer. Om du väljer att ändra nätverks bandbredds begränsningen i dialog rutan begränsa väljer du **Aktivera begränsning av nätverks bandbredds användning** för att aktivera det. När du har aktiverat konfigurerar du **inställningarna** och **arbets schemat**.
+6. På skärmen **Ange återställnings alternativ** , om du vill aktivera begränsning av nätverks bandbredd, väljer du **ändra**. Om du vill lämna nätverks begränsningen inaktive rad väljer du **Nästa**. Inga andra alternativ för den här guide skärmen är tillgängliga för virtuella VMware-datorer. Om du väljer att ändra nätverks bandbredds begränsningen i dialog rutan begränsa väljer du **Aktivera begränsning av nätverks bandbredds användning** för att aktivera det. När du har aktiverat konfigurerar du **inställningarna** och **arbets schemat**.
 
-7. På skärmen **Välj återställnings typ** väljer du om du vill återställa till den ursprungliga instansen eller till en ny plats och klickar på **Nästa**.
+7. På skärmen **Välj återställnings typ** väljer du om du vill återställa till den ursprungliga instansen eller till en ny plats. Välj sedan **Nästa**.
 
      * Om du väljer **Återställ till ursprunglig instans**behöver du inte göra några fler val i guiden. Data för den ursprungliga instansen används.
 
@@ -46,7 +46,7 @@ Den här artikeln förklarar hur du använder Microsoft Azure Backup Server (MAB
 
       ![Välj återställnings typ](./media/restore-azure-backup-server-vmware/recovery-type.png)
 
-8. På sidan **Sammanfattning** granskar du inställningarna och klickar på **Återställ** för att starta återställnings processen. Skärmen **återställnings status** visar förloppet för återställnings åtgärden.
+8. På sidan **Sammanfattning** granskar du inställningarna och väljer **Återställ** för att starta återställnings processen. Skärmen **återställnings status** visar förloppet för återställnings åtgärden.
 
 ## <a name="restore-an-individual-file-from-a-vm"></a>Återställa en enskild fil från en virtuell dator
 
@@ -55,11 +55,11 @@ Du kan återställa enskilda filer från en skyddad VM-återställnings punkt. D
 >[!NOTE]
 >Att återställa en enskild fil från en virtuell dator är bara tillgängligt för virtuella Windows-datorer och disk återställnings punkter.
 
-1. I MABS Administratörskonsol klickar du på **återställnings** visning.
+1. I MABS-Administratörskonsol väljer du **återställnings** visning.
 
-2. Använd fönstret **Bläddra** , bläddra eller filtrera för att hitta den virtuella dator som du vill återställa. När du har valt en virtuell dator eller mapp visas tillgängliga återställnings punkter i rutan återställnings punkter för.
+2. Använd fönstret **Bläddra** , bläddra eller filtrera för att hitta den virtuella dator som du vill återställa. När du har valt en virtuell dator eller mapp visas tillgängliga återställnings punkter i **rutan återställnings punkter för** .
 
-    ![Tillgängliga återställnings punkter](./media/restore-azure-backup-server-vmware/vmware-rp-disk.png)
+    ![Fönstret återställnings punkter för](./media/restore-azure-backup-server-vmware/vmware-rp-disk.png)
 
 3. I rutan **återställnings punkter för:** använder du kalendern för att välja det datum som innehåller önskade återställnings punkt (er). Beroende på hur säkerhets kopierings principen har kon figurer ATS kan datum ha fler än en återställnings punkt. När du har valt den dag då återställnings punkten togs, se till att du har valt rätt **återställnings tid**. Om det valda datumet har flera återställnings punkter väljer du återställnings punkten genom att välja den i list rutan återställnings tid. När du har valt återställnings punkten visas listan över återställnings bara objekt i rutan **sökväg:** .
 
@@ -67,16 +67,16 @@ Du kan återställa enskilda filer från en skyddad VM-återställnings punkt. D
 
     ![Granska val av återställning](./media/restore-azure-backup-server-vmware/vmware-rp-disk-ilr-2.png)
 
-5. När du har valt objekt för återställning går du till menyfliksområdet Administratörskonsol verktyg och klickar på **Återställ** för att öppna **återställnings guiden**. I återställnings guiden visar sidan **Granska val av återställning** de valda objekten som ska återställas.
+5. När du har valt objekt för återställning går du till menyfliksområdet Administratörskonsol verktyg och väljer **Återställ** för att öppna **återställnings guiden**. I återställnings guiden visar sidan **Granska val av återställning** de valda objekten som ska återställas.
 
-6. På skärmen **Ange återställnings alternativ** , om du vill aktivera begränsning av nätverks bandbredd, klickar du på **ändra**. Om du vill lämna nätverks begränsningen inaktive rad klickar du på **Nästa**. Inga andra alternativ för den här guide skärmen är tillgängliga för virtuella VMware-datorer. Om du väljer att ändra nätverks bandbredds begränsningen i dialog rutan begränsa väljer du **Aktivera begränsning av nätverks bandbredds användning** för att aktivera det. När du har aktiverat konfigurerar du **inställningarna** och **arbets schemat**.
-7. På skärmen **Välj återställnings typ** klickar du på **Nästa**. Du kan bara återställa dina filer eller mappar till en nätverksmapp.
-8. På skärmen **Ange mål** klickar du på **Bläddra** för att hitta en nätverks plats för dina filer eller mappar. MABS skapar en mapp där alla återställda objekt kopieras. Mappnamnet har prefixet MABS_day-månad-år. När du väljer en plats för de återställda filerna eller mappen, anges information för den platsen (mål, mål Sök väg och tillgängligt utrymme).
+6. På skärmen **Ange återställnings alternativ** , om du vill aktivera begränsning av nätverks bandbredd, väljer du **ändra**. Om du vill lämna nätverks begränsningen inaktive rad väljer du **Nästa**. Inga andra alternativ för den här guide skärmen är tillgängliga för virtuella VMware-datorer. Om du väljer att ändra nätverks bandbredds begränsningen i dialog rutan begränsa väljer du **Aktivera begränsning av nätverks bandbredds användning** för att aktivera det. När du har aktiverat konfigurerar du **inställningarna** och **arbets schemat**.
+7. På skärmen **Välj återställnings typ** väljer du **Nästa**. Du kan bara återställa dina filer eller mappar till en nätverksmapp.
+8. På skärmen **Ange mål** väljer du **Bläddra** för att hitta en nätverks plats för dina filer eller mappar. MABS skapar en mapp där alla återställda objekt kopieras. Mappnamnet har prefixet MABS_day-månad-år. När du väljer en plats för de återställda filerna eller mappen, anges information för den platsen (mål, mål Sök väg och tillgängligt utrymme).
 
     ![Ange plats för att återställa filer](./media/restore-azure-backup-server-vmware/specify-destination.png)
 
-9. På skärmen **Ange återställnings alternativ** väljer du vilken säkerhets inställning som ska användas. Du kan välja att ändra nätverks bandbreddens användnings begränsning, men begränsningen är inaktive rad som standard. Dessutom är **San-återställning** och **meddelanden** inte aktiverade.
-10. På sidan **Sammanfattning** granskar du inställningarna och klickar på **Återställ** för att starta återställnings processen. Skärmen **återställnings status** visar förloppet för återställnings åtgärden.
+9. På skärmen **Ange återställnings alternativ** väljer du vilken säkerhets inställning som ska användas. Du kan välja att ändra nätverks bandbreddens användnings begränsning, men begränsningen är inaktive rad som standard. Dessutom aktive ras inte **San-återställning** och **meddelanden** .
+10. På sidan **Sammanfattning** granskar du inställningarna och väljer **Återställ** för att starta återställnings processen. Skärmen **återställnings status** visar förloppet för återställnings åtgärden.
 
 ## <a name="next-steps"></a>Nästa steg
 

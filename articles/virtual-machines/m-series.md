@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: 0039480c24e96f39ec2b464984a84e672b5bffa1
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 79d0386e12b38eb6590b68ff959911ddc0a0ab5f
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832611"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505571"
 ---
 # <a name="m-series"></a>M-serien
 
@@ -30,7 +30,7 @@ Direktmigrering: stöds inte
 
 Minnes bebetjänings uppdateringar: stöds inte
 
-Skrivningsaccelerator: [stöds](./windows/how-to-enable-write-accelerator.md)
+Skrivningsaccelerator:  [stöds](./how-to-enable-write-accelerator.md)
 
 | Storlek | Virtuell processor | Minne: GiB | Temporär lagring (SSD) GiB | Maximalt antal datadiskar | Högsta cachelagrade data flöde för cache och temporär lagring: IOPS/Mbit/s (cachestorlek i GiB) | Maximalt antal cachelagrade diskar: IOPS/MBps | Maximalt antal nätverkskort|Förväntad nätverks bandbredd (Mbit/s) |
 |---|---|---|---|---|---|---|---|---|

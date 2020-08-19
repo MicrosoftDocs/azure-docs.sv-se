@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med SciQuest spenderad Director | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och SciQuest spenderad Director.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9fab641b-292e-4bef-91d1-8ccc4f3a0c1f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 199f531485a6a6c9ea234b35a7dbb88b66b3067c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 00d82554c2a4c46cd523c291549413aa7526f0a5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67091646"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547866"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sciquest-spend-director"></a>Självstudie: Azure Active Directory integration med SciQuest spenderad Director
 
@@ -32,9 +28,9 @@ Att integrera SciQuest-utgifter med Azure AD ger följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med SciQuest utgifts ansvarig behöver du följande objekt:
 
@@ -106,11 +102,11 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Sc
 
     ![SciQuest spenderad Director-domän och enkel inloggnings information för URL: er](common/sp-identifier-reply.png)
 
-    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<companyname>.sciquest.com/apps/Router/SAMLAuth/<instancename>`
+    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://<companyname>.sciquest.com/apps/Router/SAMLAuth/<instancename>`
 
-    b. I rutan **identifierare** anger du en URL med följande mönster:`https://<companyname>.sciquest.com`
+    b. I rutan **identifierare** anger du en URL med följande mönster: `https://<companyname>.sciquest.com`
 
-    c. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<companyname>.sciquest.com/apps/Router/ExternalAuth/Login/<instancename>`
+    c. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<companyname>.sciquest.com/apps/Router/ExternalAuth/Login/<instancename>`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera de här värdena med den faktiska inloggnings-URL:en, identifieraren och svars-URL:en. Kontakta [SciQuest spendera Director client support team](https://www.jaggaer.com/contact-us/) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -152,7 +148,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **Användarnamn** anger du **brittasimon@yourcompanydomain.extension**  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

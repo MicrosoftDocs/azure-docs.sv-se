@@ -1,17 +1,17 @@
 ---
 title: Aver vFXT för Azure demo-projekt
-description: Länkar till demonstrations kurser för källkod för aver vFXT
+description: 'De här exemplen visar viktiga funktioner och användnings fall för AVERT vFXT för Azure: video åter givning, data behandling med höga prestanda, vFXT prestanda och klient installation.'
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: b01bcb743e4ffc110f0182e50630baea288f16d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31e32bfc0a2c3279375148bdf3da7d4a4829af1c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76153708"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271081"
 ---
 # <a name="avere-vfxt-demo-projects"></a>Aver vFXT demo projekt
 
@@ -23,7 +23,7 @@ Exempel på självstudier finns på [GitHub](https://github.com/Azure/Avere). De
 
 * [Varför ska jag använda aver-vFXT för rendering?](https://github.com/Azure/Avere/blob/master/docs/why_avere_for_rendering.md) – En demonstration som jämför åter givnings tider från nätverksansluten lagring med och utan ett AVERT vFXT-kluster
 
-## <a name="high-performance-computing"></a>Data behandling med höga prestanda
+## <a name="high-performance-computing"></a>Databehandling med höga prestanda
 
 * [Metod tips för att förbättra start tiden för virtuella datorer i Azure (VM)](https://github.com/Azure/Avere/blob/master/docs/azure_vm_provision_best_practices.md) – ett reproduktivt test som använder AVERT VFXT för Azure för att förbättra start tiderna när man snabbt snurrar upp tusentals beräknings klienter
 

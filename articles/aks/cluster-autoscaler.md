@@ -4,12 +4,12 @@ description: Lär dig hur du använder kluster autoskalning för att automatiskt
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: af09d594dd745b64901965499df4245fa2e6a85f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 9f1dcc64569e9822e3703312740450e2528479dc
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130842"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257510"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Skala ett kluster automatiskt för att uppfylla programbehov i Azure Kubernetes Service (AKS)
 
@@ -20,12 +20,6 @@ Den här artikeln visar hur du aktiverar och hanterar klustrets autoskalning i e
 ## <a name="before-you-begin"></a>Innan du börjar
 
 Den här artikeln kräver att du kör Azure CLI-version 2.0.76 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI][azure-cli-install].
-
-## <a name="limitations"></a>Begränsningar
-
-Följande begränsningar gäller när du skapar och hanterar AKS-kluster som använder kluster autoskalning:
-
-* Det går inte att använda Dirigerings tillägget för HTTP-program.
 
 ## <a name="about-the-cluster-autoscaler"></a>Om klustrets autoskalning
 
@@ -44,7 +38,7 @@ Både den automatiska skalnings tjänsten för Pod och klustret kan också minsk
 
 För mer information om hur klustrets autoskalning inte kan skalas ned, se [vilka typer av poddar kan förhindra att klustret autoskalning tar bort en nod?][autoscaler-scaledown]
 
-Klustrets autoskalning använder start parametrar för saker som tidsintervall mellan skalnings händelser och resurs trösklar. Mer information om vilka parametrar som används av klustret finns i [Vad är klustrets parametrar för autoskalning?][autoscaler-parameters]
+Klustrets autoskalning använder start parametrar för saker som tidsintervall mellan skalnings händelser och resurs trösklar. Mer information om vilka parametrar som används av klustret finns i [använda autoskalning-profilen](#using-the-autoscaler-profile).
 
 De automatiska skalningarna i kluster och horisontella Pod kan fungera tillsammans och båda är ofta distribuerade i ett kluster. När den här funktionen kombineras, fokuserar den horisontella Pod autoskalning på att köra antalet poddar som krävs för att uppfylla programmets krav. Klustrets autoskalning fokuserar på att köra antalet noder som krävs för att stödja den schemalagda poddar.
 
@@ -127,7 +121,7 @@ Exemplet ovan uppdaterar kluster autoskalning på den enskild Node-poolen i *myA
 
 Du kan också konfigurera mer detaljerad information om klustrets autoskalning genom att ändra standardvärdena i den globala profilen för autoskalning i klustret. Till exempel inträffar en händelsen skala ned efter att noderna har utnyttjats efter 10 minuter. Om du har arbets belastningar som kördes var 15: e minut kanske du vill ändra profilen för autoskalning för att skala ned under använda noder efter 15 eller 20 minuter. När du aktiverar klustret autoskalning används en standard profil om du inte anger andra inställningar. Klustrets profil för autoskalning har följande inställningar som du kan uppdatera:
 
-| Inställning                          | Beskrivning                                                                              | Standardvärde |
+| Inställningen                          | Beskrivning                                                                              | Standardvärde |
 |----------------------------------|------------------------------------------------------------------------------------------|---------------|
 | genomsökning – intervall                    | Hur ofta klustret utvärderas för att skala upp eller ned                                    | 10 sekunder    |
 | skala ned-fördröjning – efter-tillägg       | Hur lång tid det tar att skala ned utvärderingen återupptas                               | 10 minuter    |
@@ -135,7 +129,7 @@ Du kan också konfigurera mer detaljerad information om klustrets autoskalning g
 | skala ned-fördröjning – efter-Failure   | Hur lång tid det tar för fel på att skala ned utvärderings versionen återupptas                     | 3 minuter     |
 | skalning – inte nödvändig-tid         | Hur länge en nod ska vara onödiga innan den kan skalas ned                  | 10 minuter    |
 | skalar ned-oläst, tid          | Hur länge en oläsbar nod ska vara onödiga innan den kan skalas ned         | 20 minuter    |
-| skalning – användning – tröskel | Nodens användnings nivå, definieras som summan av de begärda resurserna dividerat med kapaciteten, under vilken en nod kan övervägas för skalning nedåt | 0.5 |
+| skalning – användning – tröskel | Nodens användnings nivå, definieras som summan av de begärda resurserna dividerat med kapaciteten, under vilken en nod kan övervägas för skalning nedåt | 0,5 |
 | Max--Termination-s     | Maximalt antal sekunder som klustrets automatiska skalning väntar på att Pod avslutas vid försök att skala ned en nod. | 600 sekunder   |
 | balans-liknande-Node-Groups | Identifiera liknande noder och utjämna antalet noder mellan dem | falskt |
 
@@ -165,7 +159,7 @@ az aks update \
   --cluster-autoscaler-profile scan-interval=30s
 ```
 
-När du aktiverar klustrets automatiska skalning på nodkonfigurationer i klustret, använder dessa kluster även profilen för autoskalning i klustret. Exempel:
+När du aktiverar klustrets automatiska skalning på nodkonfigurationer i klustret, använder dessa kluster även profilen för autoskalning i klustret. Ett exempel:
 
 ```azurecli-interactive
 az aks nodepool update \
@@ -182,7 +176,7 @@ az aks nodepool update \
 
 ### <a name="set-the-cluster-autoscaler-profile-when-creating-an-aks-cluster"></a>Ställ in klustrets profil för autoskalning när du skapar ett AKS-kluster
 
-Du kan också använda *klustret-autoskalning-profil* parameter när du skapar klustret. Exempel:
+Du kan också använda *klustret-autoskalning-profil* parameter när du skapar klustret. Ett exempel:
 
 ```azurecli-interactive
 az aks create \

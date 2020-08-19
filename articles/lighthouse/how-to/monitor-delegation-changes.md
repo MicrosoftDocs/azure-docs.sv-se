@@ -1,14 +1,14 @@
 ---
 title: Övervaka Delegerings ändringar i hanterings klienten
 description: Lär dig hur du övervakar Delegerings aktivitet från kund klienter till din hanterings klient.
-ms.date: 08/11/2020
+ms.date: 08/18/2020
 ms.topic: how-to
-ms.openlocfilehash: 63b8ec60ecf2f2e5655e3253db7aef01c003fc63
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 4d9d8b18634f94c355ea7fc0b5c125d631ec419c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163347"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589749"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Övervaka Delegerings ändringar i hanterings klienten
 
@@ -66,9 +66,6 @@ New-AzRoleAssignment -SignInName <yourLoginName> -Scope "/" -RoleDefinitionName 
 
 az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role "Monitoring Reader" --scope "/"
 ```
-
-> [!NOTE]
-> Du kan också tilldela den inbyggda rollen för övervaknings läsaren i rot omfånget till enskilda användare eller till användar grupper. Detta kan vara användbart om du vill att en användare ska kunna [Visa Delegerings information direkt i Azure Portal](#view-delegation-changes-in-the-azure-portal). Om du gör det bör du vara medveten om att detta är en bred åtkomst nivå som bör begränsas till det minsta antalet användare som är möjliga.
 
 ### <a name="remove-elevated-access-for-the-global-administrator-account"></a>Ta bort utökad åtkomst för det globala administratörs kontot
 
@@ -164,15 +161,6 @@ else {
     Write-Output "No new delegation events for tenant: $($currentContext.Tenant.TenantId)"
 }
 ```
-
-## <a name="view-delegation-changes-in-the-azure-portal"></a>Visa Delegerings ändringar i Azure Portal
-
-Användare som har tilldelats den inbyggda rollen övervakare Azure i rot omfånget kan visa Delegerings ändringar direkt i Azure Portal.
-
-1. Gå till sidan **Mina kunder** och välj sedan **aktivitets logg** på den vänstra navigerings menyn.
-1. Se till att **katalog aktivitet** är markerad i filtret längst upp på skärmen.
-
-En lista över Delegerings ändringar kommer att visas. Du kan välja **Redigera kolumner** om du vill visa eller **dölja status**, **händelse kategori**, tid **, tidstämpel**, **prenumeration**, **händelse som initieras av**, **resurs grupp**, **resurs typ**och **resurs** värden. **Time**
 
 > [!TIP]
 > Även om vi refererar till tjänst leverantörer och kunder i det här avsnittet kan [företag som hanterar flera klienter](../concepts/enterprise.md) använda samma processer.

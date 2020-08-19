@@ -3,23 +3,19 @@ title: 'Självstudie: konfigurera SAP SuccessFactors tillbakaskrivning i Azure A
 description: Lär dig hur du konfigurerar attributet Skriv-tillbaka till SAP SuccessFactors från Azure AD
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: jodadzie
-ms.assetid: ad255bd4-9e50-43a1-a92b-359215868b6b
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: f150d6abf2ac6a423a99d3347df9bf0adc9b294b
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 4b048053a553176f73b5bd199bcb6e28bc74cc6c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809940"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88534004"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Självstudie: konfigurera attributet Skriv-back från Azure AD till SAP SuccessFactors
 Syftet med den här självstudien är att Visa stegen för att skriva tillbaka attribut från Azure AD till SAP SuccessFactors personal Central. 
@@ -151,7 +147,7 @@ SuccessFactors tillbakaskrivning Provisioning-appen använder vissa *kod* värde
 1. I Postman klickar du på ellipsen (...) som är associerad med SuccessFactors-samlingen och lägger till en "ny begäran" som kallas "Hämta e-posttyper" som visas nedan. 
 
    > [!div class="mx-imgBorder"]
-   > ![Postman-e-postbegäran](./media/sap-successfactors-inbound-provisioning/postman-email-request.png)
+   > ![Postman-e-postbegäran ](./media/sap-successfactors-inbound-provisioning/postman-email-request.png)
 
 1. Öppna begär ande panelen "Hämta e-posttyp". 
 1. Lägg till följande URL i Hämta URL och Ersätt `successFactorsAPITenantName` med API-klienten för din SuccessFactors-instans. 

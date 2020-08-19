@@ -1,15 +1,15 @@
 ---
 title: Förstå hur mått varningar fungerar i Azure Monitor.
 description: Få en översikt över vad du kan göra med mått aviseringar och hur de fungerar i Azure Monitor.
-ms.date: 07/16/2020
+ms.date: 08/16/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 9ac034eb144e5873f8f73ab7b1d7459394ce4775
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 035b68afed7383956beb13e367aa7a1f6dfcd070
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327148"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258426"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Förstå hur måttaviseringar fungerar i Azure Monitor
 
@@ -135,12 +135,15 @@ Hittills har du sett hur du kan använda en enda mått avisering för att överv
 
 Den här funktionen stöds för närvarande för plattforms mått (inte anpassade mått) för följande tjänster i följande Azure-moln:
 
-| Tjänst | Offentlig Azure | Government | Kina |
+| Tjänst | Offentlig Azure | Myndigheter | Kina |
 |:--------|:--------|:--------|:--------|
-| Virtuella datorer  | **Ja** | Nej | Nej |
-| SQL Server-databaser | **Ja** | **Ja** | Nej |
-| Elastiska SQL Server-pooler | **Ja** | **Ja** | Nej |
-| Data Box Edge-enheter | **Ja** | **Ja** | Nej |
+| Virtuella datorer  | **Ja** | Inga | Inga |
+| SQL Server-databaser | **Ja** | **Ja** | **Ja** |
+| Elastiska SQL Server-pooler | **Ja** | **Ja** | **Ja** |
+| Kapacitets pooler för NetApp-filer | **Ja** | **Ja** | **Ja** |
+| NetApp-filer volymer | **Ja** | **Ja** | **Ja** |
+| Nyckelvalv | **Ja** | **Ja** | **Ja** |
+| Data Box Edge-enheter | **Ja** | **Ja** | **Ja** |
 
 Du kan ange omfattningen för övervakning av en regel för en enskild måtts avisering på ett av tre sätt. Med virtuella datorer kan du till exempel ange omfånget som:  
 

@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 95b514999d7c38140bd3dd275b8ba103ee9af20e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3055d8c31307cfacad575d892db0ed812a03a9e4
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519258"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258610"
 ---
 # <a name="feature-coverage-for-machines"></a>Funktions täckning för datorer
 
 De två flikarna nedan visar funktionerna i Azure Security Center som är tillgängliga för virtuella Windows-och Linux-datorer och-servrar.
 
-## <a name="supported-features-for-virtual-machines-and-servers"></a>Funktioner som stöds för virtuella datorer och servrar<a name="vm-server-features"></a>
+## <a name="supported-features-for-virtual-machines-and-servers"></a>Funktioner som stöds för virtuella datorer och servrar <a name="vm-server-features"></a>
 
 ### <a name="windows-machines"></a>[**Windows-datorer**](#tab/features-windows)
 
@@ -39,15 +39,15 @@ De två flikarna nedan visar funktionerna i Azure Security Center som är tillg�
 |[Övervakning av fil integritet](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
 |[Anpassningsbara programkontroller](security-center-adaptive-application.md)|✔|-|✔|Standard|
 |[Nätverks karta](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
-|[Anpassad nätverks härdning](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
+|[Anpassningsbar nätverkshärdning](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
 |[Instrument panel för regelefterlevnad & rapporter](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
 |Rekommendationer och hot skydd på Docker-värdbaserade IaaS-behållare|-|-|-|Standard|
 |Utvärdering av OS-korrigeringsfiler som saknas|✔|✔|✔|Azure: kostnads fri<br><br>Icke-Azure: standard|
 |Utvärdering av felkonfigurationer för säkerhet|✔|✔|✔|Azure: kostnads fri<br><br>Icke-Azure: standard|
 |[Endpoint Protection-utvärdering](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: kostnads fri<br><br>Icke-Azure: standard|
-|Disk krypterings bedömning|✔|✔|-|Kostnadsfri|
-|Sårbarhets bedömning från tredje part|✔|-|-|Kostnadsfri|
-|[Nätverks säkerhets utvärdering](security-center-network-recommendations.md)|✔|✔|-|Kostnadsfri|
+|Disk krypterings bedömning|✔|✔|-|Ingenting|
+|Sårbarhets bedömning från tredje part|✔|-|-|Ingenting|
+|[Nätverks säkerhets utvärdering](security-center-network-recommendations.md)|✔|✔|-|Ingenting|
 
 
 ### <a name="linux-machines"></a>[**Linux-datorer**](#tab/features-linux)
@@ -63,15 +63,15 @@ De två flikarna nedan visar funktionerna i Azure Security Center som är tillg�
 |[Övervakning av fil integritet](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
 |[Anpassningsbara programkontroller](security-center-adaptive-application.md)|✔|-|✔|Standard|
 |[Nätverks karta](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
-|[Anpassad nätverks härdning](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
+|[Anpassningsbar nätverkshärdning](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
 |[Instrument panel för regelefterlevnad & rapporter](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
 |Rekommendationer och hot skydd på Docker-värdbaserade IaaS-behållare|✔|✔|✔|Standard|
 |Utvärdering av OS-korrigeringsfiler som saknas|✔|✔|✔|Azure: kostnads fri<br><br>Icke-Azure: standard|
 |Utvärdering av felkonfigurationer för säkerhet|✔|✔|✔|Azure: kostnads fri<br><br>Icke-Azure: standard|
-|[Endpoint Protection-utvärdering](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Kostnadsfri|
-|Disk krypterings bedömning|✔|✔|-|Kostnadsfri|
-|Sårbarhets bedömning från tredje part|✔|-|-|Kostnadsfri|
-|[Nätverks säkerhets utvärdering](security-center-network-recommendations.md)|✔|✔|-|Kostnadsfri|
+|[Endpoint Protection-utvärdering](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Ingenting|
+|Disk krypterings bedömning|✔|✔|-|Ingenting|
+|Sårbarhets bedömning från tredje part|✔|-|-|Ingenting|
+|[Nätverks säkerhets utvärdering](security-center-network-recommendations.md)|✔|✔|-|Ingenting|
 
 --- 
 
@@ -80,7 +80,7 @@ De två flikarna nedan visar funktionerna i Azure Security Center som är tillg�
 >För att experimentera med funktioner som bara är tillgängliga på standard pris nivån kan användare på den kostnads fria nivån registreras i en 30-dagars utvärderings version. Mer information finns på sidan med [priser](https://azure.microsoft.com/pricing/details/security-center/).
 
 
-## <a name="supported-endpoint-protection-solutions"></a>Slut punkts skydds lösningar som stöds<a name="endpoint-supported"></a>
+## <a name="supported-endpoint-protection-solutions"></a>Slut punkts skydds lösningar som stöds <a name="endpoint-supported"></a>
 
 Följande tabell innehåller en matris med:
 
@@ -91,13 +91,13 @@ Information om när rekommendationer genereras för vart och ett av dessa skydd 
 
 | Slutpunktsskydd| Plattformar | Installation av Security Center | Security Center Discovery |
 |------|------|-----|-----|
-| Windows Defender (Microsoft-programvara mot skadlig kod)| Windows Server 2016| Nej, inbyggd i OS| Ja |
+| Windows Defender (Microsoft-programvara mot skadlig kod)| Windows Server 2016 eller senare| Nej, inbyggd i OS| Ja |
 | System Center Endpoint Protection (Microsoft-programvara mot skadlig kod) | Windows Server 2012 R2, 2012, 2008 R2 (se anmärkning nedan) | Via tillägg | Ja |
-| Trend Micro – djup säkerhet | Windows Server-familjen  | Nej | Ja |
-| Symantec v12.1.1100+| Windows Server-familjen  | Nej | Ja |
-| McAfee v10 + | Windows Server-familjen  | Nej | Ja |
-| McAfee v10 + | Linux Server-serien  | Nej | Ja**\*** |
-| Sophos v9 +| Linux Server-serien  | Nej | Ja**\***  |
+| Trend Micro – djup säkerhet | Windows Server-familjen  | Inga | Ja |
+| Symantec v12.1.1100+| Windows Server-familjen  | Inga | Ja |
+| McAfee v10 + | Windows Server-familjen  | Inga | Ja |
+| McAfee v10 + | Linux Server-serien  | Inga | Ja **\*** |
+| Sophos v9 +| Linux Server-serien  | Inga | Ja  **\***  |
 
  **\*** Täcknings tillstånd och kompletterande data är för närvarande bara tillgängligt i Log Analytics arbets ytan som är kopplad till dina skyddade prenumerationer. Den visas inte i Azure Security Center portalen.
 

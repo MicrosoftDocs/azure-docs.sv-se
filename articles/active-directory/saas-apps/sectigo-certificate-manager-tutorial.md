@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med Sectigo Certificate Manager | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Sectigo Certificate Manager.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 62cd6987-3373-4b58-b1ff-589f4a3d70a9
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0447a8dd464363ae7e076dde2520565005d7c0a5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d68e5335fff0341d8808e581061519977e1bb517
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67588236"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543286"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>Självstudie: Azure Active Directory integration med Sectigo Certificate Manager
 
@@ -35,7 +30,7 @@ Genom att integrera Sectigo Certificate Manager med Azure AD får du följande f
 
 Mer information om program vara som en tjänst (SaaS) för att integrera appar med Azure AD finns i [enkel inloggning till program i Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Sectigo Certificate Manager behöver du följande objekt:
 
@@ -61,7 +56,7 @@ Om du vill integrera Sectigo Certificate Manager med Azure AD måste du lägga t
 
     ![Alternativet Azure Active Directory](common/select-azuread.png)
 
-1. Välj **företags program** > **alla program**.
+1. Välj **företags program**  >  **alla program**.
 
     ![Fönstret Företagsprogram](common/enterprise-applications.png)
 
@@ -107,26 +102,26 @@ I det här avsnittet konfigurerar du enkel inloggning med Azure AD med Sectigo C
 1. I fönstret **grundläggande SAML-konfiguration** konfigurerar du *IDP-initierat läge*genom att utföra följande steg:
 
     1. I rutan **identifierare** anger du en av följande URL: er:
-       * https:\//cert-Manager.com/Shibboleth
-       * https:\//Hard.cert-Manager.com/Shibboleth
+       * https: \/ /cert-Manager.com/Shibboleth
+       * https: \/ /Hard.cert-Manager.com/Shibboleth
 
     1. I rutan **svars-URL** anger du en av följande URL: er:
-        * https:\//cert-Manager.com/Shibboleth.SSO/SAML2/post
-        * https:\//Hard.cert-Manager.com/Shibboleth.SSO/SAML2/post
+        * https: \/ /cert-Manager.com/Shibboleth.SSO/SAML2/post
+        * https: \/ /Hard.cert-Manager.com/Shibboleth.SSO/SAML2/post
 
     1. Välj **Ange ytterligare URL: er**.
 
     1. I rutan **relä tillstånd** anger du en av följande URL: er:
-       * https:\//cert-Manager.com/Customer/SSLSupport/IDP
-       * https:\//Hard.cert-Manager.com/Customer/SSLSupport/IDP
+       * https: \/ /cert-Manager.com/Customer/SSLSupport/IDP
+       * https: \/ /Hard.cert-Manager.com/Customer/SSLSupport/IDP
 
     ![Information om enkel inloggning för Sectigo Certificate Manager-domän och URL: er](common/idp-relay.png)
 
 1.  Slutför följande steg för att konfigurera programmet i *SP-initierat läge*:
 
     * I rutan **inloggnings-URL** anger du en av följande URL: er:
-      * https:\//cert-Manager.com/Shibboleth.SSO/login
-      * https:\//Hard.cert-Manager.com/Shibboleth.SSO/login
+      * https: \/ /cert-Manager.com/Shibboleth.SSO/login
+      * https: \/ /Hard.cert-Manager.com/Shibboleth.SSO/login
 
       ![Information om enkel inloggning för Sectigo Certificate Manager-domän och URL: er](common/both-signonurl.png)
 
@@ -150,7 +145,7 @@ Om du vill konfigurera enkel inloggning på sidan Sectigo Certificate Manager sk
 
 I det här avsnittet skapar du en testanvändare med namnet Britta Simon i Azure-portalen.
 
-1. I Azure Portal väljer du **Azure Active Directory** > **användare** > **alla användare**.
+1. I Azure Portal väljer du **Azure Active Directory**  >  **användare**  >  **alla användare**.
 
     ![Alternativen användare och alla användare](common/users.png)
 
@@ -162,7 +157,7 @@ I det här avsnittet skapar du en testanvändare med namnet Britta Simon i Azure
 
     1. I rutan **Namn** anger du **BrittaSimon**.
   
-    1. I rutan **användar namn** anger **du brittasimon\@\<till företagets domän>.\< tillägg\>**. Till exempel **brittasimon\@contoso.com**.
+    1. I rutan **användar namn** anger du **brittasimon \@ \<your-company-domain> . \<extension\> **. Till exempel **brittasimon \@ contoso.com**.
 
     1. Markera kryss rutan **Visa lösen ord** . Skriv ned värdet som visas i rutan **lösen ord** .
 
@@ -174,7 +169,7 @@ I det här avsnittet skapar du en testanvändare med namnet Britta Simon i Azure
 
 I det här avsnittet beviljar du Britta Simon-åtkomst till Sectigo Certificate Manager så att hon kan använda enkel inloggning i Azure.
 
-1. I Azure Portal väljer du **företags program** > **alla program** > **Sectigo Certificate Manager**.
+1. I Azure Portal väljer du **företags program**  >  **alla program**  >  **Sectigo Certificate Manager**.
 
     ![Fönstret Företagsprogram](common/enterprise-applications.png)
 

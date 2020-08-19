@@ -1,14 +1,14 @@
 ---
 title: 'Snabb start: ny princip tilldelning med PowerShell'
 description: I den här snabb starten använder du Azure PowerShell för att skapa en Azure Policy tilldelning för att identifiera icke-kompatibla resurser.
-ms.date: 05/20/2020
+ms.date: 08/17/2020
 ms.topic: quickstart
-ms.openlocfilehash: 1fe1c7ee50c1e93f94d387440a22b011d392ffca
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e941b74101308af703f243197fb4043f8f32d233
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684506"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548420"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Snabb start: skapa en princip tilldelning för att identifiera icke-kompatibla resurser med hjälp av Azure PowerShell
 
@@ -17,9 +17,9 @@ Det första steget mot att förstå kompatibilitet i Azure är att identifiera d
 Azure PowerShell-modulen används för att hantera Azure-resurser från kommando raden eller i skript.
 Den här guiden förklarar hur du använder AZ-modulen för att skapa en princip tilldelning.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
-- Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt](https://azure.microsoft.com/free/) konto innan du börjar.
+- Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://azure.microsoft.com/free/) konto innan du börjar.
 
 - Innan du börjar bör du kontrollera att den senaste versionen av Azure PowerShell har installerats. Detaljerad information finns i [Installera Azure PowerShell-modulen](/powershell/azure/install-az-ps).
 
@@ -54,8 +54,8 @@ New-AzPolicyAssignment -Name 'audit-vm-manageddisks' -DisplayName 'Audit VMs wit
 Föregående kommandon använder följande information:
 
 - **Namn** – det faktiska namnet på tilldelningen. I det här exemplet användes _audit-vm-manageddisks_.
-- **Visningsnamn** – Visningsnamn för principtilldelningen. I det här fallet använder du _tilldelningen Granska virtuella datorer utan Managed Disks_.
-- **Definition** – Principdefinitionen som du använder som bas för att skapa tilldelningen. I det här fallet är principdefinitionens ID _Granska virtuella datorer som inte använder hanterade diskar_.
+- **Visningsnamn** – Visningsnamn för principtilldelningen. I det här fallet använder du _granskning av virtuella datorer utan Managed disks tilldelning_.
+- **Definition** – Principdefinitionen som du använder som bas för att skapa tilldelningen. I det här fallet är det ID: t för granskning av princip definition för _virtuella datorer som inte använder hanterade diskar_.
 - **Omfång** – Ett omfång avgör vilka resurser eller grupper med resurser som principtilldelningen används på. Det kan vara allt från en prenumeration till resursgrupper. Kom ihåg att ersätta &lt;omfång&gt; med namnet på din resursgrupp.
 
 Du är nu redo att identifiera icke-kompatibla resurser för att förstå miljöns kompatibilitetstillstånd.

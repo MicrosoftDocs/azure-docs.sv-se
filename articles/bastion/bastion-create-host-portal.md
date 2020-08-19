@@ -1,18 +1,18 @@
 ---
 title: 'Skapa en Azure skydds-värd: Portal'
-description: I den här artikeln lär du dig hur du skapar en Azure skydds-värd med portalen
+description: I den här artikeln lär du dig hur du skapar en Azure skydds-värd, som tillhandahåller RDP/SSH-anslutning till alla virtuella datorer i ett virtuellt nätverk.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: cherylmc
-ms.openlocfilehash: d18d520419e77a225431d9c2a395f62411656537
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e0bc9a17a12afac6d91867b19aba0f90b7f6edb
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744280"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270758"
 ---
 # <a name="create-an-azure-bastion-host-using-the-portal"></a>Skapa en Azure skydds-värd med portalen
 
@@ -30,7 +30,7 @@ Skydds finns i följande offentliga Azure-regioner:
 
 Det här avsnittet hjälper dig att skapa en ny Azure skydds-resurs från Azure Portal.
 
-1. På [Azure Portal](https://portal.azure.com) -menyn eller på **Start** sidan väljer du **skapa en resurs**.
+1. I menyn i [Azure-portalen](https://portal.azure.com) eller på sidan **Start** väljer du **Skapa en resurs**.
 
 1. På sidan **ny** i fältet *Sök på Marketplace skriver du* **skydds**och klickar sedan på **RETUR** för att komma till Sök resultaten.
 

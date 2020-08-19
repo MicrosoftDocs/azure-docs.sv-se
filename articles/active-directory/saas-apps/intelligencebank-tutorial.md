@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med IntelligenceBank | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och IntelligenceBank.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7479c06a-e1fb-4f1d-81f8-9f255ff1b9fc
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0b418b15aaebe298b8e7c6507c96de2843d51e9
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 5956623876646d976c2c93b4953adab33e8231b2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170181"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88535619"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-intelligencebank"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med IntelligenceBank
 
@@ -32,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar IntelligenceBank me
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -92,7 +88,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
     - `IntelligenceBank`
     - `https://<SUBDOMAIN>.intelligencebank.com`
 
-    c. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<SUBDOMAIN>.intelligencebank.com/auth`
+    c. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<SUBDOMAIN>.intelligencebank.com/auth`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera de här värdena med faktisk inloggnings-URL, identifierare och svars-URL. Kontakta [IntelligenceBank client support team](mailto:helpdesk@intelligencebank.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -183,7 +179,7 @@ När du klickar på panelen IntelligenceBank på åtkomst panelen, bör du logga
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

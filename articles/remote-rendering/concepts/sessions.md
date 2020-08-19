@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 509375459d019ead5a7992b808044a75e2666393
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a74fae74a2d0ebbb71d65420475e5772e44a8d84
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83758868"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507101"
 ---
 # <a name="remote-rendering-sessions"></a>Remote Rendering-sessioner
 
@@ -40,10 +40,10 @@ Varje session genomgår flera faser.
 
 När du ställer in ARR för att [skapa en ny session](../how-tos/session-rest-api.md#create-a-session)är det första alternativet att returnera ett [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)för session. Detta UUID gör att du kan fråga efter information om sessionen. UUID och grundläggande information om sessionen är bestående i 30 dagar, så du kan fråga informationen även efter att sessionen har stoppats. I det här läget rapporteras **sessionstillståndet** som att **Starta**.
 
-Sedan försöker Azure Remote rendering hitta en server som kan vara värd för din session. Det finns två parametrar för den här sökningen. Först kommer den bara att reservera servrar i din [region](../reference/regions.md). Det beror på att nätverks fördröjningen i flera regioner kan vara för hög för att garantera en vettigt upplevelse. Den andra faktorn är den önskade *storlek* som du har angett. I varje region finns ett begränsat antal servrar som kan uppfylla *standard* -eller *Premium* storleks förfrågan. Om alla servrar med den begärda storleken för närvarande används i din region kommer det därför inte att skapas någon session. Orsaken till att ett problem [kan frågas](../how-tos/session-rest-api.md#get-sessions-properties).
+Sedan försöker Azure Remote rendering hitta en server som kan vara värd för din session. Det finns två parametrar för den här sökningen. Först kommer den bara att reservera servrar i din [region](../reference/regions.md). Det beror på att nätverks fördröjningen i flera regioner kan vara för hög för att garantera en vettigt upplevelse. Den andra faktorn är den önskade *storlek* som du har angett. I varje region finns ett begränsat antal servrar som kan uppfylla [*standard*](../reference/vm-sizes.md) -eller [*Premium*](../reference/vm-sizes.md) storleks förfrågan. Om alla servrar med den begärda storleken för närvarande används i din region kommer det därför inte att skapas någon session. Orsaken till att ett problem [kan frågas](../how-tos/session-rest-api.md#get-sessions-properties).
 
 > [!IMPORTANT]
-> Om du begär en *standard* storlek för virtuella datorer och begäran Miss lyckas på grund av hög efter frågan, vilket inte innebär att det inte går att begära en *Premium* -Server. Så om det är ett alternativ åt dig kan du försöka att återgå till en *Premium* -VM.
+> Om du begär en *standard* Server storlek och begäran Miss lyckas på grund av hög efter frågan, vilket inte innebär att det inte går att begära en *Premium* -Server. Så om det är ett alternativ åt dig kan du prova att gå tillbaka till en *Premium* Server-storlek.
 
 När tjänsten hittar en lämplig server måste den kopiera rätt virtuell dator (VM) till den för att omvandla den till en Azure-fjärrrendering-värd. Den här processen tar flera minuter. Därefter startas den virtuella datorn och över gången till **sessionen** är **klar**.
 
@@ -72,7 +72,7 @@ En session kan också stoppas på grund av ett problem.
 I samtliga fall faktureras du inte ytterligare när en session har stoppats.
 
 > [!WARNING]
-> Oavsett om du ansluter till en session och hur länge, inte påverkar faktureringen. Vad du betalar för tjänsten beror på *sessionens varaktighet*, vilket innebär den tid som en server är exklusivt reserverad för dig och de begärda maskin varu funktionerna (VM-storleken). Om du startar en session ansluter du i fem minuter och stoppar sedan inte sessionen, så att den fortsätter tills dess att lånet upphör att gälla, så faktureras du för den fullständiga låne tiden för sessionen. Den *längsta låne tiden* är i huvudsak ett säkerhets nät. Det spelar ingen roll om du begär en session med en låne tid på åtta timmar och sedan bara använder den i fem minuter, om du stoppar sessionen manuellt efteråt.
+> Oavsett om du ansluter till en session och hur länge, inte påverkar faktureringen. Vad du betalar för tjänsten beror på *sessionens varaktighet*, vilket innebär den tid som en server är exklusivt reserverad för dig och de begärda maskin varu funktionerna ( [allokerad storlek](../reference/vm-sizes.md)). Om du startar en session ansluter du i fem minuter och stoppar sedan inte sessionen, så att den fortsätter tills dess att lånet upphör att gälla, så faktureras du för den fullständiga låne tiden för sessionen. Den *längsta låne tiden* är i huvudsak ett säkerhets nät. Det spelar ingen roll om du begär en session med en låne tid på åtta timmar och sedan bara använder den i fem minuter, om du stoppar sessionen manuellt efteråt.
 
 #### <a name="extend-a-sessions-lease-time"></a>Utöka en sessions låne tid
 
@@ -138,7 +138,7 @@ RemoteManagerStatic.ShutdownRemoteRendering();
 
 Flera `AzureFrontend` och `AzureSession` instanser kan underhållas, manipuleras och efter frågas från kod. Men bara en enskild enhet kan ansluta till en `AzureSession` i taget.
 
-Livs längden för en virtuell dator är inte kopplad till `AzureFrontend` instansen eller `AzureSession` instansen. `AzureSession.StopAsync`måste anropas för att stoppa en session.
+Livs längden för en virtuell dator är inte kopplad till `AzureFrontend` instansen eller `AzureSession` instansen. `AzureSession.StopAsync` måste anropas för att stoppa en session.
 
 Det permanenta sessions-ID: t kan frågas via `AzureSession.SessionUUID()` och cachelagras lokalt. Med det här ID: t kan ett program anropa `AzureFrontend.OpenSession` för att binda till den sessionen.
 

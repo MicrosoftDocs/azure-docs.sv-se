@@ -1,24 +1,24 @@
 ---
 title: 'Snabb start: bygga en python-app med Azure Cosmos DB SQL API-konto'
 description: Presenterar ett Python-kodexempel som du kan använda för att ansluta till och fråga Azure Cosmos DB SQL API:t
-author: anfeldma-ms
+author: Rodrigossz
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 05/11/2020
-ms.author: anfeldma
+ms.date: 08/11/2020
+ms.author: rosouz
 ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
 - devx-track-python
-ms.openlocfilehash: 7014e39492033b241d05cb670083d5b6277fac6e
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 16f1a7d3608b13dd5423205dc75500d76f62d69a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87872947"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588168"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Snabb start: bygga ett python-program med ett Azure Cosmos DB SQL API-konto
 
@@ -34,11 +34,19 @@ I den här snabb starten skapar och hanterar du ett Azure Cosmos DB SQL API-kont
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Ett Azure-konto med en aktiv prenumeration. [Skapa ett kostnads fritt](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Eller [prova Azure Cosmos DB kostnads fritt](https://azure.microsoft.com/try/cosmosdb/) utan en Azure-prenumeration. Du kan också använda [Azure Cosmos DB emulatorn](https://aka.ms/cosmosdb-emulator) med en URI `https://localhost:8081` och nyckeln `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` .
-- [Python 3.6 +](https://www.python.org/downloads/), med den `python` körbara filen i din `PATH` .
+- Ett Cosmos DB konto. Du kan välja mellan följande alternativ:
+    * I en Azure Active-prenumeration:
+        * [Skapa ett kostnads fritt Azure-konto](https://azure.microsoft.com/free) eller Använd din befintliga prenumeration 
+        * [Månads krediter för Visual Studio](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers)
+        * [Azure Cosmos DB kostnads fri nivå](https://docs.microsoft.com/azure/cosmos-db/optimize-dev-test#azure-cosmos-db-free-tier)
+    * Utan en Azure-aktiv prenumeration:
+        * [Prova Azure Cosmos DB kostnads fritt](https://azure.microsoft.com/try/cosmosdb/), en test miljö som varar i 30 dagar.
+        * [Azure Cosmos DB-emulator](https://aka.ms/cosmosdb-emulator) 
+- [Python 2,7 eller 3.5.3 +](https://www.python.org/downloads/), med den `python` körbara filen i din `PATH` .
 - [Visual Studio Code](https://code.visualstudio.com/).
 - [Python-tillägget för Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview).
 - [Git](https://www.git-scm.com/downloads). 
+- [Azure Cosmos DB SQL API SDK för python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)
 
 ## <a name="create-a-database-account"></a>Skapa ett databaskonto
 

@@ -3,24 +3,19 @@ title: 'Självstudie: Konfigurera arbets dag för automatisk användar etablerin
 description: Lär dig hur du konfigurerar Azure Active Directory att automatiskt etablera och avetablera användar konton till Workday.
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: daveba
-ms.assetid: 1a2c375a-1bb1-4a61-8115-5a69972c6ad6
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bbd461072a137bf32874805e5c6171d1102ef0c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 51ab05a995ba5b620b759f419fb5b4594873d2f5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245355"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88527816"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Självstudie: Konfigurera arbets dag för automatisk användar etablering
 
@@ -395,9 +390,9 @@ I det här steget upprättar vi anslutningen till arbets dagar och Active Direct
    
      | URL-format | WWS-API-version som används | XPATH-ändringar krävs |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v-21.1 | Nej |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v-21.1 | Nej |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Ja |
+     | https://####.workday.com/ccx/service/tenantName | v-21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v-21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
 
       > [!NOTE]
      > Om ingen versions information anges i URL: en använder appen Workday-WWS (Web Services) och inga ändringar krävs för standard-XPATH API-uttryck som levereras med appen. Om du vill använda en viss WWS API-version anger du versions nummer i URL: en <br>
@@ -499,7 +494,7 @@ I det här avsnittet ska du konfigurera hur användar data flödar från arbets 
 | ---------- | ---------- | ---------- | ---------- |
 | **WorkerID**  |  EmployeeID | **Ja** | Endast skrivet vid skapande |
 | **PreferredNameData**    |  nomenklatur    |   |   Endast skrivet vid skapande |
-| **SelectUniqueValue (JOIN (" \@ ", Anslut (".", \[ FirstName \] , \[ lastname \] ), "contoso.com"), JOIN (" \@ ", JOIN (".", MID ( \[ FirstName \] , 1, 1), \[ LastName \] ), "contoso.com"), JOIN (" \@ ", JOIN (".", MID ( \[ FirstName \] , 1, 2), \[ \] "contoso.com"))**   | userPrincipalName     |     | Endast skrivet vid skapande 
+| **SelectUniqueValue (JOIN (" \@ ", Anslut (".",  \[ FirstName \] , \[ lastname \] ), "contoso.com"), JOIN (" \@ ", JOIN (".", MID ( \[ FirstName \] , 1, 1), \[ LastName \] ), "contoso.com"), JOIN (" \@ ", JOIN (".", MID ( \[ FirstName \] , 1, 2), \[ \] "contoso.com"))**   | userPrincipalName     |     | Endast skrivet vid skapande 
 | `Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )`      |    sAMAccountName            |     |         Endast skrivet vid skapande |
 | **Växel ( \[ aktiv \] ,, "0", "sant", "1", "falskt")** |  accountDisabled      |     | Skapa + uppdatera |
 | **FirstName**   | förnamn       |     |    Skapa + uppdatera |
@@ -515,7 +510,7 @@ I det här avsnittet ska du konfigurera hur användar data flödar från arbets 
 | **CountryReferenceTwoLetter**    |  c  |     |         Skapa + uppdatera |
 | **CountryRegionReference** |  st     |     | Skapa + uppdatera |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  Skapa + uppdatera |
-| **Post nummer**  |   Post nummer  |     | Skapa + uppdatera |
+| **Postnummer**  |   Post nummer  |     | Skapa + uppdatera |
 | **PrimaryWorkTelephone**  |  telephoneNumber   |     | Skapa + uppdatera |
 | **Fax**      | facsimileTelephoneNumber     |     |    Skapa + uppdatera |
 | **Mobilt**  |    mobil       |     |       Skapa + uppdatera |
@@ -776,7 +771,7 @@ Det är ett vanligt krav att konfigurera attributet *DisplayName* i AD så att d
 
 Här kan du hantera sådana krav för att skapa *CN* eller *DisplayName* för att inkludera attribut som företag, affär senhet, stad eller land/region.
 
-* Varje Workday-attribut hämtas med ett underliggande XPATH API-uttryck, som kan konfigureras i **Attribute Mapping-> Advanced section-> redigera attributlistan för arbets dagar**. Här är standard-XPATH API-uttrycket för *PreferredFirstName*-, *PreferredLastName*-, *Company* -och *SupervisoryOrganization* -attribut.
+* Varje Workday-attribut hämtas med ett underliggande XPATH API-uttryck, som kan konfigureras i  **Attribute Mapping-> Advanced section-> redigera attributlistan för arbets dagar**. Här är standard-XPATH API-uttrycket för *PreferredFirstName*-, *PreferredLastName*-, *Company* -och *SupervisoryOrganization* -attribut.
 
      | Workday-attribut | API XPATH-uttryck |
      | ----------------- | -------------------- |
@@ -806,7 +801,7 @@ Här kan du hantera sådana krav för att skapa *CN* eller *DisplayName* för at
     ```
      Append(Join(", ",[PreferredLastName],[PreferredFirstName]), Join(""," (",[SupervisoryOrganization],"-",[CountryReferenceTwoLetter],")"))
     ```
-    När du har rätt uttryck redigerar du mappnings tabellen för attribut och ändrar attributet *DisplayName* -attribut så som visas nedan: ![ DisplayName-mappning](./media/workday-inbound-tutorial/wd_displayname_map.png)
+    När du har rätt uttryck redigerar du mappnings tabellen för attribut och ändrar attributet *DisplayName* -attribut så som visas nedan:   ![ DisplayName-mappning](./media/workday-inbound-tutorial/wd_displayname_map.png)
 
 * Utöka exemplet ovan, låt oss säga att du vill konvertera Orts namn från *arbets dagar till* stenografiska värden och sedan använda det för att bygga visnings namn som *Smith, John (Chi)* eller *berg, Jane (NYC)*. sedan kan det här resultatet uppnås med ett switch-uttryck med attributet Workday som Determinant variabel.
 
@@ -988,7 +983,7 @@ I det här avsnittet beskrivs vanliga fel med användar etablering för arbets d
 
 |#|Felscenario |Troliga orsaker|Rekommenderad lösning|
 |--|---|---|---|
-|1.| Det gick inte att installera etablerings agenten med fel meddelandet: *Det gick inte att starta tjänsten Microsoft Azure AD ansluta etablerings agenten (AADConnectProvisioningAgent). Kontrol lera att du har behörighet att starta systemet.* | Det här felet visas vanligt vis om du försöker installera etablerings agenten på en domänkontrollant och grup princip förhindrar att tjänsten startar.  Den visas också om du har en tidigare version av agenten som körs och du inte har avinstallerat den innan du påbörjar en ny installation.| Installera etablerings agenten på en server som inte är en DOMÄNKONTROLLANT. Se till att tidigare versioner av agenten avinstalleras innan du installerar den nya agenten.|
+|1.| Det gick inte att installera etablerings agenten med fel meddelandet:  *Det gick inte att starta tjänsten Microsoft Azure AD ansluta etablerings agenten (AADConnectProvisioningAgent). Kontrol lera att du har behörighet att starta systemet.* | Det här felet visas vanligt vis om du försöker installera etablerings agenten på en domänkontrollant och grup princip förhindrar att tjänsten startar.  Den visas också om du har en tidigare version av agenten som körs och du inte har avinstallerat den innan du påbörjar en ny installation.| Installera etablerings agenten på en server som inte är en DOMÄNKONTROLLANT. Se till att tidigare versioner av agenten avinstalleras innan du installerar den nya agenten.|
 |2.| Windows-tjänsten Microsoft Azure AD ansluta etablerings agenten är i *Start* läge och växlar inte till *körnings* tillstånd. | Som en del av installationen skapar agent guiden ett lokalt konto (**NT- \\ AADConnectProvisioningAgent**) på servern och det är det inloggnings konto som används för att starta tjänsten. Om en säkerhets princip på Windows Server förhindrar att lokala konton kör tjänsterna, kommer du att stöta på det här felet. | Öppna *konsolen tjänster*. Högerklicka på Windows-tjänsten Microsoft Azure AD Anslut etablerings agenten och på fliken inloggning anger du kontot för en domän administratör som ska köra tjänsten. Starta om tjänsten. |
 |3.| När du konfigurerar etablerings agenten med AD-domänen i steget *anslut Active Directory*, tar det längre tid att läsa in AD-schemat i guiden och tids gränsen går ut. | Det här felet visas vanligtvis om det inte går att kontakta AD-domänkontrollantservern på grund av problem med brandväggen. | På skärmen *anslut Active Directory* guiden, medan du anger autentiseringsuppgifterna för din AD-domän, finns ett alternativ som kallas *Välj domänkontrollantens prioritet*. Använd det här alternativet för att välja en domänkontrollant som finns på samma plats som agent servern och se till att det inte finns några brand Väggs regler som blockerar kommunikationen. |
 
@@ -1041,7 +1036,7 @@ För att göra den här ändringen måste du använda [Workday Studio](https://c
 
 3. Starta Workday Studio.
 
-4. I kommando fältet väljer du arbets **dag > test-webbtjänst i testare** .
+4. I kommando fältet väljer du arbets  **dag > test-webbtjänst i testare** .
 
 5. Välj **extern**och välj den Human_Resources WSDL-fil som du laddade ned i steg 2.
 

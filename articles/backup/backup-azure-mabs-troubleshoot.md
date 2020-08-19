@@ -4,12 +4,12 @@ description: Felsöka installation, registrering av Azure Backup Server och säk
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: a4882867f9bbe5123df275b8d1c69fe4e163f294
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 54b7295eaed5f04a118cf5097ebc7b25b18f67d2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054833"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522852"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Felsöka Azure Backup Server
 
@@ -20,13 +20,46 @@ Använd informationen i följande tabeller för att felsöka fel som uppstår n�
 Vi rekommenderar att du utför verifieringen nedan innan du börjar felsöka Microsoft Azure Backup Server (MABS):
 
 - [Se till att Microsoft Azure Recovery Services (MARS) Agent är uppdaterad](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
-- [Kontrollera att det finns nätverksanslutning mellan MARS-agenten och Azure](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
+- [Se till att det finns en nätverks anslutning mellan MARS-agenten och Azure](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - Kontrollera att Microsoft Azure Recovery Services körs (i tjänstkonsolen). Om det behövs startar du om och försöker igen
 - [Kontrollera att det finns 5–10 % ledigt utrymme i den tillfälliga mappen](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
-- Om registreringen misslyckades, se till att den server som du försöker installera Azure Backup Server inte redan har registrerats med ett annat valv
+- Om registreringen inte fungerar kontrollerar du att den server som du försöker installera Azure Backup Server inte redan har registrerats med ett annat valv
 - Kontrollera om DPM-agenten redan finns om push-överföringen misslyckas. Om den gör det avinstallerar du agenten och provar att installera igen
 - [Se till att inga andra processer eller antivirusprogram stör Azure Backup](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)<br>
 - Se till att SQL Agent-tjänsten körs och är inställd på automatisk i MABS-servern<br>
+
+## <a name="configure-antivirus-for-mabs-server"></a>Konfigurera antivirus program för MABS-Server
+
+MABS är kompatibelt med de flesta populära antivirus program produkter. Vi rekommenderar följande steg för att undvika konflikter:
+
+1. **Inaktivera real tids övervakning** – inaktivera real tids övervakning av antivirus programmet för följande:
+    - `C:\Program Files<MABS Installation path>\XSD` projektbevakningsmappen
+    - `C:\Program Files<MABS Installation path>\Temp` projektbevakningsmappen
+    - Enhets bokstav för Modern Backup Storage volym
+    - Replik-och överförings loggar: du kan göra detta genom att inaktivera real tids övervakning av **dpmra.exe**, som finns i mappen `Program Files\Microsoft Azure Backup Server\DPM\DPM\bin` . Prestanda i real tid försämras, eftersom antivirus programmet söker igenom replikerna varje gången MABS synkroniseras med den skyddade servern och söker igenom alla berörda filer varje gången MABS tillämpar ändringar på replikerna.
+    - Administratörs konsol: om du vill undvika påverkan på prestanda inaktiverar du real tids övervakning av **csc.exe** processen. **csc.exe** processen är C \# -kompilatorn och övervakning i real tid kan försämra prestandan eftersom antivirus programmet söker igenom filer som **csc.exe** processen avger när de genererar XML-meddelanden. **CSC.exe** finns i följande sökvägar:
+        - `\Windows\Microsoft.net\Framework\v2.0.50727\csc.exe`
+        - `\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe`
+    - För att MARS-agenten ska installeras på MABS-servern rekommenderar vi att du undantar följande filer och platser:
+        - `C:\Program Files\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\bin\cbengine.exe` som en process
+        - `C:\Program Files\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\folder`
+        - Arbets plats (om du inte använder standard platsen)
+2. **Inaktivera real tids övervakning på den skyddade servern**: inaktivera real tids övervakning av **dpmra.exe**, som finns i mappen `C:\Program Files\Microsoft Data Protection Manager\DPM\bin` , på den skyddade servern.
+3. **Konfigurera antivirus program vara för att ta bort de infekterade filerna på skyddade servrar och Mabs-servern**: för att förhindra skadade data från repliker och återställnings punkter konfigurerar du antivirus programmet att ta bort infekterade filer i stället för att automatiskt rengöra eller sätta dem. Automatisk rensning och sätta kan orsaka att antivirus programmet ändrar filer, och gör ändringar som MABS inte kan identifiera.
+
+Du bör köra en manuell synkronisering med konsekvens. Kontrol lera jobbet varje gången antivirus programmet tar bort en fil från repliken, även om repliken markeras som inkonsekvent.
+
+### <a name="mabs-installation-folders"></a>MABS-installationsfiler
+
+Standardmappen för installation av DPM är följande:
+
+- `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM`
+
+Du kan också köra följande kommando för att hitta sökvägen till installationsmappen:
+
+```cmd
+Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
+```
 
 ## <a name="invalid-vault-credentials-provided"></a>Ogiltiga valvautentiseringsuppgifter har angetts
 

@@ -3,12 +3,12 @@ title: Om Säkerhetskopiering av virtuella Azure-datorer
 description: I den här artikeln lär du dig hur tjänsten Azure Backup säkerhetskopierar virtuella Azure-datorer och hur du följer bästa praxis.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 3c73b489404d1e8198fbd984b5188a7a2ccb973f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 04ea9fa49d95ced3245f88fee58a23ba67aaa0d7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091053"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587505"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>En översikt över säkerhets kopiering av virtuella Azure-datorer
 
@@ -49,10 +49,10 @@ Så här gör Azure Backup slutföra en säkerhets kopiering för virtuella Azur
 
 När du säkerhetskopierar virtuella Azure-datorer med Azure Backup krypteras de virtuella datorerna i rest med Kryptering för lagringstjänst (SSE). Azure Backup kan också säkerhetskopiera virtuella Azure-datorer som krypteras med hjälp av Azure Disk Encryption.
 
-**Kryptering** | **Detaljer** | **Support**
+**Kryptering** | **Information** | **Support**
 --- | --- | ---
+**SSE** | Med SSE ger Azure Storage kryptering i vila genom att automatiskt kryptera data innan de lagras. Azure Storage dekrypterar också data innan de hämtas. Azure Backup stöder säkerhets kopiering av virtuella datorer med två typer av Kryptering för lagringstjänst:<li> **SSE med plattforms hanterade nycklar**: den här krypteringen är som standard för alla diskar i de virtuella datorerna. Läs mer [här](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#platform-managed-keys).<li> **SSE med Kundhanterade nycklar**. Med CMK hanterar du de nycklar som används för att kryptera diskarna. Läs mer [här](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys). | Azure Backup använder SSE för at-rest-kryptering av virtuella Azure-datorer.
 **Azure Disk Encryption** | Azure Disk Encryption krypterar både OS-och data diskar för virtuella Azure-datorer.<br/><br/> Azure Disk Encryption integreras med BitLocker-BEKs (-krypterings nycklar) som skyddas i ett nyckel valv som hemligheter. Azure Disk Encryption integreras också med Azure Key Vault Key Encryption Keys (KeyExchange). | Azure Backup stöder säkerhets kopiering av hanterade och ohanterade virtuella Azure-datorer med endast BEKs, eller med BEKs tillsammans med KeyExchange.<br/><br/> Både BEKs och KeyExchange säkerhets kopie ras och krypteras.<br/><br/> Eftersom KeyExchange och BEKs säkerhets kopie ras kan användare med de behörigheter som krävs återställa nycklar och hemligheter tillbaka till nyckel valvet om det behövs. Dessa användare kan också återställa den krypterade virtuella datorn.<br/><br/> Krypterade nycklar och hemligheter kan inte läsas av obehöriga användare eller av Azure.
-**SSE** | Med SSE ger Azure Storage kryptering i vila genom att automatiskt kryptera data innan de lagras. Azure Storage dekrypterar också data innan de hämtas. | Azure Backup använder SSE för at-rest-kryptering av virtuella Azure-datorer.
 
 För hanterade och ohanterade virtuella Azure-datorer stöder säkerhets kopiering både virtuella datorer som är krypterade med BEKs eller virtuella datorer som har krypterats med BEKs tillsammans med KeyExchange.
 
@@ -76,7 +76,7 @@ Azure Backup tar ögonblicks bilder enligt schema för säkerhets kopiering.
 
 I följande tabell förklaras de olika typerna av ögonblicks bilds konsekvens:
 
-**Ögonblicks bild** | **Detaljer** | **Återställning** | **Övervägande**
+**Ögonblicksbild** | **Information** | **Återställande** | **Övervägande**
 --- | --- | --- | ---
 **Programkonsekvent** | Programkonsekventa säkerhets kopieringar fångar upp minnes innehåll och väntande I/O-åtgärder. I programkonsekventa ögonblicks bilder används en VSS-skrivare (eller pre/post-skript för Linux) för att säkerställa konsekvensen av AppData innan en säkerhets kopiering sker. | När du återställer en virtuell dator med en programkonsekvent ögonblicks bild startas den virtuella datorn. Det finns inga skadade data eller går förlorade. Apparna startar i ett konsekvent tillstånd. | Windows: alla VSS-skrivare har slutförts<br/><br/> Linux: pre/post-skript har kon figurer ATS och genomförts
 **Konsekvent fil system** | Konsekventa säkerhets kopieringar i fil systemet ger konsekvens genom att ta en ögonblicks bild av alla filer på samma gång.<br/><br/> | När du återställer en virtuell dator med en konsekvent fil system ögonblicks bild startas den virtuella datorn. Det finns inga skadade data eller går förlorade. Appar behöver implementera sin egen "Fix"-mekanism för att se till att återställda data är konsekventa. | Windows: vissa VSS-skrivare misslyckades <br/><br/> Linux: standard (om pre/post-skript inte har kon figurer ATS eller misslyckats)
@@ -87,7 +87,7 @@ I följande tabell förklaras de olika typerna av ögonblicks bilds konsekvens:
 
 ## <a name="backup-and-restore-considerations"></a>Överväganden för säkerhetskopiering och återställning
 
-**Övervägande** | **Detaljer**
+**Övervägande** | **Information**
 --- | ---
 **Disk** | Säkerhets kopiering av virtuella dator diskar är parallell. Om till exempel en virtuell dator har fyra diskar, försöker säkerhets kopierings tjänsten säkerhetskopiera alla fyra diskarna parallellt. Backup är stegvis (endast ändrade data).
 **Schemaläggning** |  Du kan minska säkerhets kopierings trafiken genom att säkerhetskopiera olika virtuella datorer vid olika tidpunkter på dagen och se till att tiderna inte överlappar varandra. Säkerhetskopiering av virtuella datorer samtidigt orsakar trafikstockningar.
@@ -140,4 +140,4 @@ Den faktiska storleken på den virtuella datorn i det här fallet är 17 GB + 30
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Förbered dig nu för säkerhets kopiering av virtuella Azure-datorer](backup-azure-arm-vms-prepare.md).
+- [Förbered för säkerhets kopiering av virtuella Azure-datorer](backup-azure-arm-vms-prepare.md).

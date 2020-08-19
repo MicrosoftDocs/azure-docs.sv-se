@@ -3,12 +3,12 @@ title: Resource Manager och klassisk distribution
 description: Beskriver skillnaderna mellan Resource Manager-distributionsmodellen och den klassiska distributionsmodellen (eller Service Management).
 ms.topic: conceptual
 ms.date: 02/06/2020
-ms.openlocfilehash: 9e44128da9b6e180bd2857f4574c0b384fdffef2
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: d9c1a27efc1f474e25d0ed164d106e8f64ba3e96
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057576"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511413"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager jämfört med klassisk distribution: Förstå distributionsmodeller och dina resursers tillstånd
 
@@ -113,7 +113,7 @@ I följande tabell beskrivs ändringar i hur Compute-, Network- och Storage-resu
 | Reserverad IP-adress |Du kan reservera en IP-adress i Azure och koppla den till en molntjänst för att kontrollera att IP-adressen är fäst. |En offentlig IP-adress kan skapas i statiskt läge och har då samma funktion som en reserverad IP-adress. |
 | Offentlig IP-adress (PIP) per VM |Offentliga IP-adresser kan också associeras direkt till en virtuell dator. |En offentlig IP-adress är en resurs som exponeras av Microsoft.Network-providern. Den offentliga IP-adressen kan vara statisk (reserverad) eller dynamisk. |
 | Slutpunkter |Inkommande slutpunkter behöver konfigureras på en virtuell dator för att öppna upp anslutningar på vissa portar. Ett vanligt sätt att ansluta till virtuella datorer är genom att konfigurera inkommande slutpunkter. |Inkommande NAT-regler kan konfigureras på lastbalanserare för att uppnå samma funktion som vid aktivering av inkommande slutpunkter på specifika portar för att ansluta till VM:ar. |
-| DNS-namn |En molntjänst får ett implicit, globalt-unikt DNS-namn. Exempel: `mycoffeeshop.cloudapp.net`. |DNS-namn är valfria parametrar som kan anges för en offentlig IP-adressresurs. FQDN har följande format – `<domainlabel>.<region>.cloudapp.azure.com`. |
+| DNS-namn |En molntjänst får ett implicit, globalt-unikt DNS-namn. Till exempel: `mycoffeeshop.cloudapp.net`. |DNS-namn är valfria parametrar som kan anges för en offentlig IP-adressresurs. FQDN har följande format – `<domainlabel>.<region>.cloudapp.azure.com`. |
 | Nätverksgränssnitt |Primära och sekundära nätverksgränssnitt och dess egenskaper har definierats som nätverkskonfigurationen för en virtuell dator. |Nätverksgränssnittet är en resurs som exponeras av Microsoft.Network-providern. Livs cykeln för nätverks gränssnittet är inte kopplad till en virtuell dator. Det refererar till den virtuella datorns tilldelade IP-adress (krävs), undernätet i det virtuella nätverket för den virtuella datorn (krävs) och en nätverkssäkerhetsgrupp (valfritt). |
 
 Läs om hur du ansluter virtuella nätverk från olika distributionsmodeller i [Ansluta virtuella nätverk från olika distributionsmodeller i portalen](../../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md).
@@ -122,7 +122,7 @@ Läs om hur du ansluter virtuella nätverk från olika distributionsmodeller i [
 
 Om du är redo att migrera dina resurser från den klassiska distributionen till Resource Manager-distribution, se:
 
-1. [En teknisk djupdykning i plattformsstödd migrering från klassisk distribution till Azure Resource Manager](../../virtual-machines/windows/migration-classic-resource-manager-deep-dive.md)
+1. [En teknisk djupdykning i plattformsstödd migrering från klassisk distribution till Azure Resource Manager](../../virtual-machines/migration-classic-resource-manager-deep-dive.md)
 2. [Plattformsstödd migrering av IaaS-resurser från klassisk distribution till Azure Resource Manager](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)
 3. [Migrera IaaS-resurser från klassisk distribution till Azure Resource Manager med hjälp av Azure PowerShell](../../virtual-machines/windows/migration-classic-resource-manager-ps.md)
 4. [Migrera IaaS-resurser från klassisk distribution till Azure Resource Manager med hjälp av Azure CLI](../../virtual-machines/linux/migration-classic-resource-manager-cli.md)

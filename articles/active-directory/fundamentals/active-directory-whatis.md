@@ -11,12 +11,12 @@ ms.date: 06/05/2020
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd63e82788856624c3babe078de52e698f190ce0
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 91e89f274615e75fec818ec9e3ecf785aa6e804f
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87796633"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88262966"
 ---
 # <a name="what-is-azure-active-directory"></a>Vad är Azure Active Directory?
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) är Microsofts molnbaserade identitets-och åt
 
 - Interna resurser, som appar i företagets nätverk och intranät, tillsammans med molnappar som utvecklats av din egen organisation. Mer information om hur du skapar en klient organisation för din organisation finns i [snabb start: skapa en ny klient i Azure Active Directory](active-directory-access-create-new-tenant.md).
 
-Mer information om skillnaden mellan Azure AD och Active Directory Domain Services finns i [jämföra Active Directory till Azure Active Directory](active-directory-compare-azure-ad-to-ad.md). Du kan också använda de olika [Microsoft Cloud för affischer för Enterprise Architects-serien](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources#identity) för att bättre förstå kärn identitets tjänsterna i Azure, Azure AD och Office 365.
+Mer information om skillnaden mellan Azure AD och Active Directory Domain Services finns i [jämföra Active Directory till Azure Active Directory](active-directory-compare-azure-ad-to-ad.md). Du kan också använda de olika [Microsoft Cloud för affischer för Enterprise Architects-serien](https://docs.microsoft.com/microsoft-365/solutions/cloud-architecture-models?view=o365-worldwide) för att bättre förstå kärn identitets tjänsterna i Azure, Azure AD och Office 365.
 
 ## <a name="who-uses-azure-ad"></a>Vem använder Azure AD?
 

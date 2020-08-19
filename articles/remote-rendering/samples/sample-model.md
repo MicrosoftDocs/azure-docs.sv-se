@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/29/2020
 ms.topic: sample
-ms.openlocfilehash: 0c28d36c7934fbbac0ddd11562c8dc237b0360ee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8e5dcb6c9dfa08efc0889fcab779d6cb333d2330
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80679487"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507543"
 ---
 # <a name="sample-models"></a>Exempelmodeller
 
@@ -20,13 +20,13 @@ I den här artikeln visas några resurser för exempel data som kan användas f�
 
 Vi tillhandahåller en inbyggd exempel modell som alltid kan läsas in med URL- **Builtin://Engine**
 
-![Exempel modell](./media/sample-model.png "Exempel modell")
+![Exempelmodell](./media/sample-model.png "Exempelmodell")
 
 Modell statistik:
 
-| Name | Värde |
+| Namn | Värde |
 |-----------|:-----------|
-| [Nödvändig VM-storlek](../how-tos/session-rest-api.md#create-a-session) | standard |
+| [Nödvändig Server storlek](../how-tos/session-rest-api.md#create-a-session) | standard |
 | Antal trianglar | 18 700 000 |
 | Antal rörliga delar | 2073 |
 | Antal material | 94 |

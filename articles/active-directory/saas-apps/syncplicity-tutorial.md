@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Syncplicity | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Syncplicity.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 896a3211-f368-46d7-95b8-e4768c23be08
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 663958ae367162eaeb336c819d1d219dc74a2cbe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: da532adfa2d4ab97edb44de9ae49c646ccdff381
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74233289"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544901"
 ---
 # <a name="tutorial-integrate-syncplicity-with-azure-active-directory"></a>Självstudie: integrera Syncplicity med Azure Active Directory
 
@@ -32,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar Syncplicity med Azu
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -104,7 +100,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Utför följande steg på dialog sidan **enkel inloggning (SSO)** :
 
-    ![Enkel inloggning \(\)](./media/syncplicity-tutorial/ic769550.png "Single Sign-On \\\(SSO\\\)")
+    ![\(Enkel inloggning\)](./media/syncplicity-tutorial/ic769550.png "Single Sign-On \\\(SSO\\\)")
 
     a. Skriv namnet på din domän i text rutan **anpassad domän** .
   
@@ -118,7 +114,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     f. I **certifikat för identitetsprovider**klickar du på **Välj fil**och överför sedan det certifikat som du har laddat ned från Azure Portal.
 
-    g. Klicka på **SPARA ÄNDRINGAR** för att spara ändringarna.
+    ex. Klicka på **SPARA ÄNDRINGAR** för att spara ändringarna.
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
 
@@ -128,7 +124,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -156,7 +152,7 @@ För att Azure AD-användare ska kunna logga in måste de vara etablerade i Sync
 
 **Utför följande steg för att etablera ett användar konto för Syncplicity:**
 
-1. Logga in på din **Syncplicity** -klient (till exempel `https://company.Syncplicity.com`:).
+1. Logga in på din **Syncplicity** -klient (till exempel: `https://company.Syncplicity.com` ).
 
 1. Klicka på **admin** och välj **användar konton** och klicka sedan på **Lägg till en användare**.
 

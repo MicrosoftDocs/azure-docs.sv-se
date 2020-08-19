@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med Rensa granskning | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Clear Review.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8264159a-11a2-4a8c-8285-4efea0adac8c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed7900373c5d8897fd360c708434d96e5dfbc73d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 06c4945c6fee82b3ce622304351c3ad6d9ae282d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034711"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544714"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>Självstudie: Azure Active Directory integrering med tydlig granskning
 
@@ -109,15 +104,15 @@ Utför följande steg för att konfigurera Azure AD enkel inloggning med Clear R
 
     ![Information om enkel inloggning med Clear Review-domäner och -URL:er](common/idp-intiated.png)
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://<customer name>.clearreview.com/sso/metadata/`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://<customer name>.clearreview.com/sso/metadata/`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<customer name>.clearreview.com/sso/acs/`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<customer name>.clearreview.com/sso/acs/`
 
 5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     ![Information om enkel inloggning med Clear Review-domäner och -URL:er](common/metadata-upload-additional-signon.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<customer name>.clearreview.com`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<customer name>.clearreview.com`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [supportteamet för Clear Review-klienten](https://clearreview.com/contact/) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -197,7 +192,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 4e4200e291db81ff759e21eac5b1a9b785b5657f
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: d692daf2f7f8b77358e73246fd8d8760f95982ac
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888305"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510801"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Språk-och region stöd för text-och tal Översättning
 
-Använd Translator för att översätta till och från något av 60 + text översättnings språk. Neurala Machine Translation (NMT) är den nya standarden för AI-drivna dator översättningar med hög kvalitet och är tillgänglig som standard med hjälp av v3 av Translator när ett neurala-system är tillgängligt.
+Använd Translator för att översätta till och från något av 70 + text översättnings språk. Neurala Machine Translation (NMT) är den nya standarden för AI-drivna dator översättningar med hög kvalitet och är tillgänglig som standard med hjälp av v3 av Translator när ett neurala-system är tillgängligt.
 
 Du kan också använda Translator tillsammans med anpassad översättare för att skapa neurala översättnings system som förstår terminologin som används i din verksamhet och bransch, och med Microsoft Speech service kan du lägga till tal översättning till din app.
 
@@ -47,6 +47,7 @@ Translator stöder följande språk för text översättning av text.
 |Kinesiska, traditionell|   `zh-Hant`       |
 |Kroatiska|  `hr`    |
 |Tjeckiska| `cs`    |
+|Dari|  `prs`   |
 |Danska|    `da`        |
 |Nederländska| `nl`|
 |Engelska|   `en`    |
@@ -83,6 +84,8 @@ Translator stöder följande språk för text översättning av text.
 |Maori| `mi`  |
 |Marathi| `mr`  |
 |Norska| `nb`    |
+|Odia|  `or`    |
+|Afghanska|    `ps`    |
 |Persiska|   `fa`    |
 |Polska|    `pl`    |
 |Portugisiska (Brasilien)|   `pt-br` |
@@ -185,26 +188,26 @@ Metoden translittererad stöder följande språk. I "till/från", "<-->" anger a
 
 | Språk    | Språkkod | Skript | Till/från | Skript|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
-| Arabiska | `ar` | Arabiska`Arab` | <--> | Latin`Latn` |
-| Bangla  | `bn` | Bengali`Beng` | <--> | Latin`Latn` |
-| Kinesiska (förenklad) | `zh-Hans` | Kinesiska, förenklad`Hans`| <--> | Latin`Latn` |
-| Kinesiska (förenklad) | `zh-Hans` | Kinesiska, förenklad`Hans`| <--> | Kinesiska, traditionell`Hant`|
-| Kinesiska (traditionell) | `zh-Hant` | Kinesiska, traditionell`Hant`| <--> | Latin`Latn` |
-| Kinesiska (traditionell) | `zh-Hant` | Kinesiska, traditionell`Hant`| <--> | Kinesiska, förenklad`Hans` |
-| Gujarati | `gu`  | Gujarati`Gujr` | --> | Latin`Latn` |
-| Hebreiska | `he` | Hebreiska`Hebr` | <--> | Latin`Latn` |
-| Hindi | `hi` | Devanagari`Deva` | <--> | Latin`Latn` |
-| Japanska | `ja` | Japanska`Jpan` | <--> | Latin`Latn` |
-| Kannada | `kn` | Kannada`Knda` | --> | Latin`Latn` |
-| Malayalam | `ml` | Malayalam`Mlym` | --> | Latin`Latn` |
-| Marathi | `mr` | Devanagari`Deva` | --> | Latin`Latn` |
-| Odia | `or` | Odia`Orya` | <--> | Latin`Latn` |
-| Punjabi | `pa` | Gurmukhi`Guru`  | <--> | Latin`Latn`  |
-| Serbiska (kyrillisk) | `sr-Cyrl` | Kyrillisk`Cyrl`  | --> | Latin`Latn` |
-| Serbiska (latinsk) (Serbien) | `sr-Latn` | Latin`Latn` | --> | Kyrillisk`Cyrl`|
-| Tamilska | `ta` | Tamilska`Taml` | --> | Latin`Latn` |
-| Telugu | `te` | Telugu`Telu` | --> | Latin`Latn` |
-| Thailändska | `th` | Thai`Thai` | --> | Latin`Latn` |
+| Arabiska | `ar` | Arabiska `Arab` | <--> | Latin `Latn` |
+| Bangla  | `bn` | Bengali `Beng` | <--> | Latin `Latn` |
+| Kinesiska (förenklad) | `zh-Hans` | Kinesiska, förenklad `Hans`| <--> | Latin `Latn` |
+| Kinesiska (förenklad) | `zh-Hans` | Kinesiska, förenklad `Hans`| <--> | Kinesiska, traditionell `Hant`|
+| Kinesiska (traditionell) | `zh-Hant` | Kinesiska, traditionell `Hant`| <--> | Latin `Latn` |
+| Kinesiska (traditionell) | `zh-Hant` | Kinesiska, traditionell `Hant`| <--> | Kinesiska, förenklad `Hans` |
+| Gujarati | `gu`  | Gujarati `Gujr` | --> | Latin `Latn` |
+| Hebreiska | `he` | Hebreiska `Hebr` | <--> | Latin `Latn` |
+| Hindi | `hi` | Devanagari `Deva` | <--> | Latin `Latn` |
+| Japanska | `ja` | Japanska `Jpan` | <--> | Latin `Latn` |
+| Kannada | `kn` | Kannada `Knda` | --> | Latin `Latn` |
+| Malayalam | `ml` | Malayalam `Mlym` | --> | Latin `Latn` |
+| Marathi | `mr` | Devanagari `Deva` | --> | Latin `Latn` |
+| Odia | `or` | Odia `Orya` | <--> | Latin `Latn` |
+| Punjabi | `pa` | Gurmukhi `Guru`  | <--> | Latin `Latn`  |
+| Serbiska (kyrillisk) | `sr-Cyrl` | Kyrillisk `Cyrl`  | --> | Latin `Latn` |
+| Serbiska (latinsk) (Serbien) | `sr-Latn` | Latin `Latn` | --> | Kyrillisk `Cyrl`|
+| Tamilska | `ta` | Tamilska `Taml` | --> | Latin `Latn` |
+| Telugu | `te` | Telugu `Telu` | --> | Latin `Latn` |
+| Thailändska | `th` | Thai `Thai` | --> | Latin `Latn` |
 
 ### <a name="dictionary"></a>Ordlista
 

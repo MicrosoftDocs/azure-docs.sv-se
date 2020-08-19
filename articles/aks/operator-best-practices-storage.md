@@ -5,12 +5,12 @@ description: Lär dig metod tips för kluster operatörer för lagring, data kry
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 26af9e0ab2bd3a52c159e947f1f40300f9e84dd4
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: c683cbf7802fbf5420ec95d49e2dfda624ce093f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562846"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551803"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Metod tips för lagring och säkerhets kopiering i Azure Kubernetes service (AKS)
 
@@ -35,8 +35,8 @@ I följande tabell beskrivs tillgängliga lagrings typer och deras funktioner:
 | Användningsfall | Volym-plugin | Läs/skriv en gång | Skrivskyddat antal | Läs/skriv många | Stöd för Windows Server-behållare |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
 | Delad konfiguration       | Azure Files   | Ja | Ja | Ja | Ja |
-| Strukturerade AppData        | Azure-diskar   | Ja | Inga  | Inga  | Ja |
-| Ostrukturerade data, fil system åtgärder | [BlobFuse][blobfuse] | Ja | Ja | Ja | Inga |
+| Strukturerade AppData        | Azure-diskar   | Ja | Nej  | Nej  | Ja |
+| Ostrukturerade data, fil system åtgärder | [BlobFuse][blobfuse] | Ja | Ja | Ja | Nej |
 
 De två primära typerna av lagring som tillhandahålls för volymer i AKS backas upp av Azure-diskar eller Azure Files. För att förbättra säkerheten, använder båda typerna av lagring Azure Storage Service Encryption (SSE) som standard som krypterar data i vila. Diskar kan för närvarande inte krypteras med hjälp av Azure Disk Encryption på AKS Node-nivå.
 
@@ -88,7 +88,7 @@ Mer information om alternativ för lagrings klass finns i principer för att [fr
 
 ## <a name="secure-and-back-up-your-data"></a>Skydda och säkerhetskopiera dina data
 
-**Vägledning för bästa praxis** – säkerhetskopiera dina data med hjälp av ett lämpligt verktyg för din lagrings typ, till exempel Velero eller Azure Site Recovery. Verifiera integriteten och säkerheten för dessa säkerhets kopior.
+**Vägledning för bästa praxis** – säkerhetskopiera dina data med hjälp av ett lämpligt verktyg för din lagrings typ, till exempel Velero eller Azure Backup. Verifiera integriteten och säkerheten för dessa säkerhets kopior.
 
 När dina program lagrar och använder data som behålls på diskar eller filer måste du göra regelbundna säkerhets kopior eller ögonblicks bilder av dessa data. Azure-diskar kan använda inbyggda ögonblicks bild tekniker. Du kan behöva söka efter dina program för att tömma skrivningar till disken innan du utför ögonblicks bild åtgärden. [Velero][velero] kan säkerhetskopiera beständiga volymer tillsammans med ytterligare kluster resurser och konfigurationer. Om du inte kan [ta bort tillstånd från dina program][remove-state]säkerhetskopierar du data från permanenta volymer och testar regelbundet återställnings åtgärderna för att kontrol lera data integriteten och de processer som krävs.
 

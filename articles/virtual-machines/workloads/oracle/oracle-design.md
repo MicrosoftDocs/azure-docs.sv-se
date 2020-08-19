@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 78eedb9bd4f12644a1bc992d0786a43b8af767a9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0dd787916159637ce92a29a5d4baa1ffe7a09ba4
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507938"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510019"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Utforma och implementera en Oracle-databas i Azure
 
@@ -52,7 +52,7 @@ I följande tabell visas några av skillnaderna mellan en lokal implementering o
 | **Planerat underhåll** |Korrigeringar/uppgraderingar|[Tillgänglighets uppsättningar](../../windows/infrastructure-example.md) (uppdatering/uppgraderingar som hanteras av Azure) |
 | **Resurs** |Dedikerad  |Delas med andra klienter|
 | **Regioner** |Datacenter |[Regionpar](../../regions.md#region-pairs)|
-| **Lagring** |SAN/fysiska diskar |[Azure-hanterad lagring](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
+| **Storage** |SAN/fysiska diskar |[Azure-hanterad lagring](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
 | **Skalning** |Lodrät skala |Horisontell skalning|
 
 
@@ -187,7 +187,7 @@ När du har en tydlig bild av I/O-kraven kan du välja en kombination av enheter
 - Använd data komprimering för att minska I/O (för både data och index).
 - Separera återupprepnings loggar, system, och temporärt, och ångra TS på separata data diskar.
 - Lägg inte till några programfiler på standard OS-diskar (/dev/SDA). Diskarna är inte optimerade för start tider för snabb virtuell dator och de kanske inte ger dig bästa prestanda för ditt program.
-- När du använder virtuella datorer i M-serien på Premium Storage aktiverar du [Skrivningsaccelerator](../../linux/how-to-enable-write-accelerator.md) on REG logs disks.
+- När du använder virtuella datorer i M-serien på Premium Storage aktiverar du [Skrivningsaccelerator](../../how-to-enable-write-accelerator.md) on REG logs disks.
 
 ### <a name="disk-cache-settings"></a>Inställningar för disk-cache
 

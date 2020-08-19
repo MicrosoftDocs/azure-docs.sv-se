@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 07/27/2020
-ms.openlocfilehash: f98e540a6764869f1d37edfbb0f00bf8d1cc2198
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/17/2020
+ms.openlocfilehash: 3eb1a4cbfcf62617796af6a26cb4688b734eb617
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499185"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551849"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Konfigurera och hantera Azure AD-autentisering med Azure SQL
 
@@ -71,11 +71,13 @@ När du använder Azure Active Directory med geo-replikering måste Azure Active
 ## <a name="provision-azure-ad-admin-sql-managed-instance"></a>Etablera Azure AD-administratör (SQL-hanterad instans)
 
 > [!IMPORTANT]
-> Följ bara de här stegen om du konfigurerar en hanterad Azure SQL-instans. Den här åtgärden kan bara utföras av en global/företags administratör eller en privilegie rad roll administratör i Azure AD. Följande steg beskriver hur du beviljar behörigheter för användare med olika behörigheter i katalogen.
+> Följ bara de här stegen om du konfigurerar en hanterad Azure SQL-instans. Den här åtgärden kan bara utföras av en global/företags administratör eller en privilegie rad roll administratör i Azure AD.
+>
+> I **offentlig för hands version**kan du tilldela rollen **katalog läsare** till en grupp i Azure AD. Grupp ägarna kan sedan lägga till den hanterade instans identiteten som en medlem i den här gruppen, vilket gör att du kan etablera en Azure AD-administratör för SQL-hanterad instans. Mer information om den här funktionen finns i [katalog läsare roll i Azure Active Directory för Azure SQL](authentication-aad-directory-readers-role.md).
 
 Din SQL-hanterade instans måste ha behörighet att läsa Azure AD för att kunna utföra uppgifter som autentisering av användare via säkerhets grupp medlemskap eller skapande av nya användare. För att detta ska fungera måste du bevilja SQL-hanterad instans behörighet att läsa Azure AD. Du kan göra detta med hjälp av Azure Portal eller PowerShell.
 
-### <a name="azure-portal"></a>Azure-portalen
+### <a name="azure-portal"></a>Azure Portal
 
 Om du vill bevilja din SQL-hanterade instans Läs behörighet för Azure AD med hjälp av Azure Portal loggar du in som global/företags administratör i Azure AD och följer de här stegen:
 
@@ -234,7 +236,7 @@ Mer information om CLI-kommandon finns i [AZ SQL mi](/cli/azure/sql/mi).
 
 Följande två procedurer visar hur du etablerar en Azure Active Directory administratör för servern i Azure Portal och med hjälp av PowerShell.
 
-### <a name="azure-portal"></a>Azure-portalen
+### <a name="azure-portal"></a>Azure Portal
 
 1. På [Azure-portalen](https://portal.azure.com/) väljer du din anslutning i det övre högra hörnet för att visa en lista över möjliga Active Directories. Välj rätt Active Directory som standard-Azure AD. Det här steget länkar den prenumeration som är kopplad till Active Directory med Server och som kontrollerar att samma prenumeration används för både Azure AD och servern.
 
@@ -519,7 +521,7 @@ Mer information finns i [SQL Server Security Blogg](https://blogs.msdn.microsoft
 Följande instruktioner är Anslut med version 13,1 av SQLCMD, som är tillgänglig från [Download Center](https://www.microsoft.com/download/details.aspx?id=53591).
 
 > [!NOTE]
-> `sqlcmd`med `-G` kommandot fungerar inte med system identiteter och kräver en användares huvud inloggning.
+> `sqlcmd` med `-G` kommandot fungerar inte med system identiteter och kräver en användares huvud inloggning.
 
 ```cmd
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -G  
@@ -528,7 +530,7 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyA
 
 ## <a name="troubleshoot-azure-ad-authentication"></a>Felsöka Azure AD-autentisering
 
-Vägledning om hur du felsöker problem med Azure AD-autentisering finns i följande blogg:<https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
+Vägledning om hur du felsöker problem med Azure AD-autentisering finns i följande blogg: <https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 
 ## <a name="next-steps"></a>Nästa steg
 

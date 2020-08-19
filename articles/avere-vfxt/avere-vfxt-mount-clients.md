@@ -1,17 +1,17 @@
 ---
 title: Montera AVERT vFXT – Azure
-description: Montera klienter med AVERT vFXT för Azure
+description: Lär dig hur du ansluter klienter till ditt vFXT-kluster i aver vFXT för Azure och hur du kan belastningsutjämna klient trafik mellan klusternoderna.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: e8850162847f2dd416b0951a797e2eb0cd7d55d2
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 44a4e1293bc4c5a54e1e345d5cf95ba307a7b120
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229575"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272579"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>Montera Avere vFXT-klustret
 
@@ -64,7 +64,7 @@ Funktionen ovan är en del av batch-exemplet som är tillgängligt i exempel web
 > [!NOTE]
 > Om du inte skapade en ny BLOB-behållare när du skapade ditt AVERT vFXT-kluster, lägger du till lagrings system enligt beskrivningen i [Konfigurera lagring](avere-vfxt-add-storage.md) innan du försöker montera klienter.
 
-Från klienten ``mount`` mappar kommandot den virtuella servern (vserver) i vFXT-klustret till en sökväg i det lokala fil systemet. Formatet är``mount <vFXT path> <local path> {options}``
+Från klienten ``mount`` mappar kommandot den virtuella servern (vserver) i vFXT-klustret till en sökväg i det lokala fil systemet. Formatet är ``mount <vFXT path> <local path> {options}``
 
 Monterings kommandot har tre element:
 
@@ -76,7 +76,7 @@ Monterings kommandot har tre element:
 
 Vserver-sökvägen är en kombination av dess *IP-adress* plus sökvägen till en *Knut punkt för namn områden*. Namn områdes knuten är en virtuell sökväg som definierades när lagrings systemet lades till.
 
-Om klustret skapades med Blob Storage, är namn områdets sökväg till behållaren`/msazure`
+Om klustret skapades med Blob Storage, är namn områdets sökväg till behållaren `/msazure`
 
 Exempel: ``mount 10.0.0.12:/msazure /mnt/vfxt``
 

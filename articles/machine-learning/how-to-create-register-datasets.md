@@ -12,20 +12,20 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: b2252a70aea6df755bb8b37c36b77b08db819ba9
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 51e31977a5f31777252920f9cd18bf069bad6d1e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037549"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507203"
 ---
-# <a name="create-azure-machine-learning-datasets"></a>Skapa Azure Machine Learning data uppsättningar
+# <a name="create-azure-machine-learning-datasets"></a>Skapa Azure Machine Learning-datamängder
 
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 I den här artikeln får du lära dig hur du skapar Azure Machine Learning data uppsättningar för att komma åt data för dina lokala eller fjärranslutna experiment. Information om var data uppsättningar passar i Azure Machine Learning programmets övergripande data åtkomst arbets flöde finns i artikeln [säker åtkomst till data](concept-data.md#data-workflow) .
 
-Genom att skapa en datamängd skapar du en referens till datakällans plats, tillsammans med en kopia av dess metadata. Eftersom data behålls på den befintliga platsen debiteras du ingen extra lagrings kostnad och riskerar inte att skydda dina data källor. Även data uppsättningar är Lazy utvärderas, vilket bidrar till prestanda hastigheten för arbets flödet. Du kan skapa data uppsättningar från data lager, offentliga URL: er och [öppna data uppsättningar i Azure](../open-datasets/how-to-create-dataset-from-open-dataset.md).
+Genom att skapa en datamängd skapar du en referens till datakällans plats, tillsammans med en kopia av dess metadata. Eftersom data behålls på den befintliga platsen debiteras du ingen extra lagrings kostnad och riskerar inte att skydda dina data källor. Även data uppsättningar är Lazy utvärderas, vilket bidrar till prestanda hastigheten för arbets flödet. Du kan skapa data uppsättningar från data lager, offentliga URL: er och [öppna data uppsättningar i Azure](../open-datasets/how-to-create-azure-machine-learning-dataset-from-open-dataset.md).
 
 Med Azure Machine Learning data uppsättningar kan du:
 
@@ -35,7 +35,7 @@ Med Azure Machine Learning data uppsättningar kan du:
 
 * Dela data och samar beta med andra användare.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill skapa och arbeta med data uppsättningar behöver du:
 
@@ -163,7 +163,7 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-|Tabbindex|PassengerId|Överlevt|Pclass|Name|Sex|Ålder|SibSp|Parch|Biljett|Resa|Bagage|Har avlastat
+|Tabbindex|PassengerId|Överlevt|Pclass|Namn|Sex|Ålder|SibSp|Parch|Biljett|Resa|Bagage|Har avlastat
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|Falskt|3|Braund, Mr. Owen Harris|man|22,0|1|0|A/5 21171|7,2500||S
 1|2|Sant|1|Cumings, fru. John Bradley (Florence Briggs to...|kvinna|38,0|1|0|PC 17599|71,2833|C85|C
@@ -232,7 +232,7 @@ Så här skapar du en data uppsättning i Studio:
 
 [Azure Open-datauppsättningar](https://azure.microsoft.com/services/open-datasets/) är granskade offentliga data uppsättningar som du kan använda för att lägga till scenario-/regionsspecifika funktioner till maskin inlärnings lösningar för mer exakta modeller. Data uppsättningar omfattar data från offentliga domäner för väder, räkning, helger, offentlig säkerhet och plats som hjälper dig att träna maskin inlärnings modeller och utöka förutsägelse lösningar. Öppna data uppsättningar finns i molnet på Microsoft Azure och ingår i både SDK och Studio.
 
-Lär dig hur du skapar [Azure Machine Learning data uppsättningar från Azure Open data uppsättningar](../open-datasets/how-to-create-dataset-from-open-dataset.md). 
+Lär dig hur du skapar [Azure Machine Learning data uppsättningar från Azure Open data uppsättningar](../open-datasets/how-to-create-azure-machine-learning-dataset-from-open-dataset.md). 
 
 ## <a name="train-with-datasets"></a>Träna med datauppsättningar
 

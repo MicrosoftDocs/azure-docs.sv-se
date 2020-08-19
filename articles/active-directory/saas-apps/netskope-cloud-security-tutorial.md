@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory-integrering med enkel inloggning (SSO) med Netskope Administratörskonsol | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Netskope Administratörskonsol.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: e286adec-8d19-4d41-9afa-a2e39d7a5983
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/31/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c38900d4ded3d2ee08245674bda90d96226c1eb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: daef8a91c2f31379ebf50d1e8ec66d0b33ebb2cc
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80396566"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88534855"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-administrator-console"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Netskope Administratörskonsol
 
@@ -33,7 +28,7 @@ I den här självstudien får du lära dig att integrera Netskope-Administratör
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -82,16 +77,16 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`<OrgKey>`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `<OrgKey>`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<tenant_host_name>/saml/acs`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<tenant_host_name>/saml/acs`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska identifieraren och svars-URL. Du får de här värdena förklaras senare i självstudien.
 
 1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<tenantname>.goskope.com`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<tenantname>.goskope.com`
 
     > [!NOTE]
     > Inloggnings-URL-värdena är inte riktiga. Uppdatera inloggnings-URL-värdet med den faktiska inloggnings-URL: en. Kontakta [Netskope administratörskonsol client support team](mailto:support@netskope.com) för att få inloggnings-URL-värde. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -125,7 +120,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -191,7 +186,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     f. I text rutan **IDP service nivå mål** klistrar du in URL-värdet för **utloggning** , som du har kopierat från Azure Portal.
 
-    g. Klicka på **Skicka**.
+    ex. Klicka på **Skicka**.
 
 ### <a name="create-netskope-administrator-console-test-user"></a>Skapa Netskope Administratörskonsol test användare
 
@@ -225,10 +220,10 @@ När du klickar på panelen Netskope Administratörskonsol på åtkomst panelen,
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Prova Netskope Administratörskonsol med Azure AD](https://aad.portal.azure.com/)

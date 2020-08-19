@@ -78,12 +78,16 @@
   items:
     - name: Datasäkerhet och kryptering
       href: encryption-overview.md
+    - name: Dubbel kryptering
+      href: double-encryption.md
     - name: Diskkryptering
       items:
         - name: Bästa praxis
           href: data-encryption-best-practices.md
-        - name: Vilande datakryptering
+        - name: Datakryptering i vila
           href: encryption-atrest.md
+        - name: Datakrypteringsmodeller
+          href: encryption-models.md
         - name: Azure Disk Encryption för virtuella datorer
           href: azure-disk-encryption-vms-vmss.md
     - name: Databassäkerhet

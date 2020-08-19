@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med vxMaintain | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och vxMaintain.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 841a1066-593c-4603-9abe-f48496d73d10
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 642af77d62b88d2e22748c55b901a31bbc0db9b9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9f970453485af4a692e21c1b8b2ef7e5ad3582de
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67087331"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88531511"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>Självstudie: Azure Active Directory integrering med vxMaintain
 
@@ -32,9 +28,9 @@ Genom att integrera vxMaintain med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med vxMaintain behöver du följande objekt:
 
@@ -105,9 +101,9 @@ Utför följande steg för att konfigurera enkel inloggning med vxMaintain i Azu
 
     ![information om enkel inloggning för vxMaintain-domän och URL: er](common/idp-intiated.png)
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://<company name>.verisae.com`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://<company name>.verisae.com`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska identifieraren och svars-URL. Kontakta [VxMaintain client support team](https://www.hubspot.com/company/contact) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -148,7 +144,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** brittasimon@yourcompanydomain.extension. Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** brittasimon@yourcompanydomain.extension . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

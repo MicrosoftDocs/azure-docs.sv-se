@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med Amazon Web Services (AWS) för att ansluta flera konton | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure AD och Amazon Web Services (AWS) (tidigare självstudier).
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
-ms.assetid: 7561c20b-2325-4d97-887f-693aa383c7be
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/16/2020
+ms.date: 08/07/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51be98654950ba290fa83f77eccdae4d6f549891
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 20674f5a793267c3a9e2fa078f95cbf96624df13
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81603832"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550185"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Självstudie: Azure Active Directory integration med Amazon Web Services (AWS) (tidigare självstudier)
 
@@ -49,7 +45,7 @@ Om du vill veta mer om SaaS-appens integrering med Azure AD, se [Vad är program
 
 * Alla AWS-konton kommer att använda samma XML-fil för federationsmetadata och vid tidpunkten för certifikat förnyelse måste du köra den här enorma övningen för att uppdatera certifikatet på alla AWS-konton på samma gång
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att konfigurera Azure AD-integrering med Amazon Web Services (AWS) behöver du följande:
 
@@ -69,7 +65,7 @@ Du bör följa de här rekommendationerna när du testar stegen i självstudien:
 I den här självstudien konfigurerar och testar du enkel inloggning med Azure AD i en testmiljö.
 
 * Amazon Web Services (AWS) stöder **SP- och IDP**-initierad enkel inloggning
-* När du har konfigurerat Amazon Web Services (AWS) kan du framtvinga kontroll av sessioner, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen utökas från villkorlig åtkomst. [Lär dig hur du tvingar fram sessions kontroll med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* När du har konfigurerat Amazon Web Services (AWS) kan du framtvinga kontroll av sessioner, vilket skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram sessions kontroll med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-amazon-web-services-aws-from-the-gallery"></a>Lägga till Amazon Web Services (AWS) från galleriet
 
@@ -86,7 +82,7 @@ För att konfigurera integreringen av Amazon Web Services (AWS) med Azure AD må
 
     ![Amazon Web Services (AWS) i resultatlistan](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-properties.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
+## <a name="configure-and-test-azure-ad-sso"></a>Konfigurera och testa Azure AD SSO
 
 I det här avsnittet konfigurerar och testar du enkel inloggning i Azure AD med Amazon Web Services (AWS) baserat på en test användare som kallas "Britta Simon".
 
@@ -273,11 +269,11 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure Portal o
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
-    Om du använder flera kataloger kan du använda följande mönster, som har din primära domän`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Om du använder flera kataloger kan du använda följande mönster, som har din primära domän  `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
     ![Dialog rutan Microsoft Graph Explorer](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
 
-    f. Hämta den som du behöver ändra i listan över tjänstens huvud namn. Du kan också använda Ctrl + F för att söka i programmet från alla listade service princip ALS. Du kan använda följande fråga med hjälp av det **objekt-ID** som du har kopierat från sidan Azure AD-egenskaper för att komma till respektive tjänst huvud namn.
+    f. Hämta den som du behöver ändra i listan över tjänstens huvud namn. Du kan också använda Ctrl + F för att söka i programmet från alla listade service princip ALS. Du kan använda följande fråga genom att använda det **objekt-ID för tjänstens huvud namn** som du har kopierat från sidan för Azure AD-egenskaper för att komma till respektive tjänst huvud namn.
 
     `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
 

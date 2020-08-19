@@ -151,6 +151,8 @@
           href: workflow-automation.md
         - name: Exportera rekommendationer
           href: continuous-export.md
+    - name: Hantera dina resurser med tillgångslager
+      href: asset-inventory.md
     - name: Integrera med andra verktyg och tjänster
       items:
         - name: Integrera med Windows Admin Center

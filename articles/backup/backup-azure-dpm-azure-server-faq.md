@@ -4,12 +4,12 @@ description: I den här artikeln hittar du svar på vanliga frågor om Microsoft
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.openlocfilehash: 35957a1e8a3d6c3d9be06d9d44dbcd47efa0e6ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2994e250c37d707eee5428e83c151728f83a1ab
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74173164"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522937"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server och DPM – vanliga frågor och svar
 
@@ -36,6 +36,10 @@ Ja. Men du bör konfigurera DPM först och sedan installera Azure Backup agenten
 ### <a name="why-cant-i-add-an-external-dpm-server-after-installing-ur7-and-latest-azure-backup-agent"></a>Varför kan jag inte lägga till en extern DPM-server efter att ha installerat UR7 och den senaste Azure Backup agenten?
 
 För DPM-servrar med data källor som är skyddade i molnet (genom att använda en samlad uppdatering som är tidigare än Samlad uppdatering 7) måste du vänta minst en dag efter att du har installerat UR7 och den senaste Azure Backup agenten för att starta **Lägg till extern DPM-server**. Tids perioden för en dag krävs för att ladda upp metadata för DPM-skyddsagenten till Azure. Skydds gruppens metadata överförs första gången till ett natt jobb.
+
+### <a name="are-there-recommendations-for-configuring-exclusions-for-antivirus-software"></a>Finns det några rekommendationer för att konfigurera undantag för antivirus program?
+
+Ja, vi rekommenderar att du konfigurerar Antivirus uteslutning. Undantag för DPM finns i [köra antivirus program på DPM-servern](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019). Undantag för MABS finns i [Konfigurera antivirus program för Mabs-servern](backup-azure-mabs-troubleshoot.md#configure-antivirus-for-mabs-server).
 
 ## <a name="vmware-and-hyper-v-backup"></a>VMware och Hyper-V-säkerhetskopiering
 

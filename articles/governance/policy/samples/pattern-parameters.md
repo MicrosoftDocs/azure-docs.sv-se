@@ -1,14 +1,14 @@
 ---
 title: 'Mönster: parametrar i en princip definition'
 description: Det här Azure Policys mönstret ger ett exempel på hur du använder parametrar i en princip definition.
-ms.date: 05/20/2020
+ms.date: 08/17/2020
 ms.topic: sample
-ms.openlocfilehash: e163a243a0dc23f04d564287b630634eb4662cda
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 6d938cdf2f31d30932d3631e99254b7d833f2941
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83696737"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545581"
 ---
 # <a name="azure-policy-pattern-parameters"></a>Azure Policy mönster: parametrar
 

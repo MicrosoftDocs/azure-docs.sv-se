@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Maxient utföra Manager-programvara | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Maxient utföra Manager-programvara.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 85e71b76-cac3-4ce6-a35f-796d2cb7bdb5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09399f59e61ded49fef5a2388900b7b478111119
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: dd6872fd8dca3f29b61c6f1dffb5f219abac5cb8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847233"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88518918"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-maxient-conduct-manager-software"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Maxient utföra Manager-programvara
 
@@ -33,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar Maxient med program
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -86,7 +81,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://cm.maxient.com/<SCHOOLCODE>`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://cm.maxient.com/<SCHOOLCODE>`
 
     > [!NOTE]
     > Värdet är inte verkligt. Uppdatera värdet med den faktiska inloggnings-URL:en. Arbeta med din Maxient-implementering/support-representant för att hämta värdet.
@@ -113,15 +108,15 @@ I det här avsnittet får du beviljar åtkomst för alla konton att autentisera 
 
 ## <a name="test-with-maxient"></a>Testa med Maxient 
 
-Om ett support ärende inte redan har öppnats med en Maxient implementering/support-representant, skickar du ett e-postmeddelande till [support@maxient.com](mailto:support@maxient.com) med ämnet "Campus-baserad autentisering/Azure-installation- \< \< skolans namn \> \> ". I e-postmeddelandets brödtext anger du **URL: en för appens federationens metadata**. Maxient personal kommer att svara med en test länk för att kontrol lera att rätt attribut släpps.  
+Om ett support ärende inte redan har öppnats med en Maxient implementering/support-representant, skickar du ett e-postmeddelande till [support@maxient.com](mailto:support@maxient.com) med ämnet "Campus-baserad autentisering/Azure-installation- \<\<School Name\> \> ". I e-postmeddelandets brödtext anger du **URL: en för appens federationens metadata**. Maxient personal kommer att svara med en test länk för att kontrol lera att rätt attribut släpps.  
     
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Prova Maxient Driver Manager-programvara med Azure AD](https://aad.portal.azure.com/)
 

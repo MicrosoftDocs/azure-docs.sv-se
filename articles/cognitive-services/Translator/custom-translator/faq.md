@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: 2edc5e9e255af321a30521ba1e707eea30d81f73
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 06caafe75682a2375a8023787f9905ca1e8117c9
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957604"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507237"
 ---
 # <a name="custom-translator-frequently-asked-questions"></a>Vanliga frågor och svar om anpassad översättare
 
@@ -41,14 +41,15 @@ Distributionen tar vanligt vis mindre än en timme.
 
 ## <a name="how-do-you-access-a-deployed-system"></a>Hur kommer du åt ett distribuerat system?
 
-Distribuerade system kan nås via Translator genom att ange kategorin kategori. Mer information om Translator hittar du på webb sidan [API-referens](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) .
+Distribuerade system kan nås via Microsoft Translator Text API v3 genom att ange kategori kategori. Mer information om Translator Text API hittar du på webb sidan [API-referens](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) .
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>Hur gör jag för att hoppa över justerings-och menings brytningar om mina data redan är meningen?
 
-Den anpassade översättaren hoppar över menings justering och menings brytningar för TMX-filer och text-filer med `.align` tillägget. `.align`filer ger användarna möjlighet att hoppa över en anpassad översättares mening och justerings process för de filer som är perfekt justerade och behöver ingen ytterligare bearbetning. Vi rekommenderar `.align` att du bara använder tillägget för filer som är perfekt justerade.
+Den anpassade översättaren hoppar över menings justering och menings brytningar för TMX-filer och text-filer med `.align` tillägget. `.align` filer ger användarna möjlighet att hoppa över en anpassad översättares mening och justerings process för de filer som är perfekt justerade och behöver ingen ytterligare bearbetning. Vi rekommenderar `.align` att du bara använder tillägget för filer som är perfekt justerade.
 
 Om antalet extraherade meningar inte stämmer överens med de två filerna med samma bas namn, kommer den anpassade översättningen fortfarande att köra menings justeringen på `.align` filer.
 
-## <a name="i-tried-uploading-my-tmx-but-it-says-document-processing-failed"></a>Jag försökte ladda upp min TMX, men det säger att dokument bearbetningen misslyckades.
+## <a name="i-tried-uploading-my-tmx-but-it-says-document-processing-failed"></a>Jag försökte ladda upp min TMX, men det står "dokument bearbetning misslyckades"
+
 
 Se till att TMX överensstämmer med TMX 1.4 b-specifikationen på <https://www.gala-global.org/tmx-14b> .

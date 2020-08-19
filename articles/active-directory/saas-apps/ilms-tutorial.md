@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med iLMS | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och iLMS.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: d6e11639-6cea-48c9-b008-246cf686e726
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50097aec1c4a003d3494029e8f25bb13b564f207
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 219dd6e4a8f04da8b28a28e5473394f0721e4013
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68944024"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545221"
 ---
 # <a name="tutorial-integrate-ilms-with-azure-active-directory"></a>Självstudie: integrera iLMS med Azure Active Directory
 
@@ -33,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar iLMS med Azure Acti
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -82,11 +77,11 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     a. I text rutan **identifierare** klistrar du in det **ID** -värde som du kopierar från **Service Provider-** avsnittet i SAML-inställningar i iLMS administrations Portal.
 
-    b. I text rutan **svars-URL** klistrar du in värdet för **slut punkt (URL)** som du kopierar från **Service Provider** -avsnittet i SAML-inställningar i iLMS Admin Portal med följande mönster`https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`
+    b. I text rutan **svars-URL** klistrar du in värdet för **slut punkt (URL)** som du kopierar från **Service Provider** -avsnittet i SAML-inställningar i iLMS Admin Portal med följande mönster `https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`
 
 1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
-    I text rutan **inloggnings-URL** klistrar du in värdet för **slut punkt (URL)** som du kopierar från **Service Provider** -avsnittet i SAML-inställningar i iLMS Admin portal som`https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`
+    I text rutan **inloggnings-URL** klistrar du in värdet för **slut punkt (URL)** som du kopierar från **Service Provider** -avsnittet i SAML-inställningar i iLMS Admin portal som `https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`
 
 1. Om du vill aktivera JIT-etablering förväntar ditt iLMS-program SAML-intyg i ett särskilt format, vilket kräver att du lägger till anpassade mappningar av attribut i konfigurationen för SAML-token. I följande skärmbild visas listan över standardattribut. Klicka på ikonen**Redigera** för att öppna dialogrutan Användarattribut.
 
@@ -113,7 +108,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     f. Klicka på **OK**
 
-    g. Klicka på **Spara**.
+    ex. Klicka på **Spara**.
 
 1. På sidan **Set up Single Sign-On with SAML** (Konfigurera enkel inloggning med SAML) går du till avsnittet **SAML Signing Certificate** (SAML-signeringscertifikat), klickar på **Ladda ned** för att ladda ned **Federation Metadata-XML** från de angivna alternativen enligt dina behov och spara den på datorn.
 
@@ -165,7 +160,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     f. Om alternativet **Uppdatera tomma värden för fält som inte är obligatoriska i användar profilen** är markerat kommer det valfria profil fält som är tomt vid inloggningen också att användarens iLMS-profil ska innehålla tomma värden för dessa fält.
 
-    g. Markera **skicka e-postmeddelande om fel meddelande** och ange e-postadressen till den användare där du vill ta emot e-postmeddelandet.
+    ex. Markera **skicka e-postmeddelande om fel meddelande** och ange e-postadressen till den användare där du vill ta emot e-postmeddelandet.
 
 7. Klicka på knappen **Spara** för att spara inställningarna.
 
@@ -179,7 +174,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `Britta Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `BrittaSimon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `BrittaSimon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -221,7 +216,7 @@ Om du behöver skapa en användare manuellt följer du stegen nedan:
 
     b. I text rutan **efter namn** skriver du det senaste namnet som Simon.
 
-    c. Skriv e-postadressen till användaren som BrittaSimon@contoso.comi text rutan **e-post-ID** .
+    c. Skriv e-postadressen till användaren som i text rutan **e-post-ID** BrittaSimon@contoso.com .
 
     d. I list rutan **region** väljer du värdet för region.
 
@@ -229,7 +224,7 @@ Om du behöver skapa en användare manuellt följer du stegen nedan:
 
     f. I list rutan **avdelning** väljer du värdet för avdelning.
 
-    g. Klicka på **Spara**.
+    ex. Klicka på **Spara**.
 
     > [!NOTE]
     > Du kan skicka e-post till användare genom att markera kryss rutan **Skicka registrerings post** .

@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med TurboRater | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och TurboRater.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: abb116b8-8024-4cc6-bc81-f32ef490ea17
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 3/8/2019
 ms.author: jeedes
-ms.openlocfilehash: 3777cf09ec669fe3df6bca13f6960f53c689767c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0c22993baa6a9095bddba67bdc9d18a40021db6c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67088280"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546397"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-turborater"></a>Självstudie: Azure Active Directory integrering med TurboRater
 
@@ -34,11 +30,11 @@ Genom att integrera TurboRater med Azure AD får du följande fördelar:
 
 Mer information om program vara som en tjänst (SaaS) för program integrering med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med TurboRater behöver du följande objekt:
 
-* En Azure AD-prenumeration. Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+* En Azure AD-prenumeration. Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 * En TurboRater-prenumeration med enkel inloggning aktive rad.
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
@@ -70,7 +66,7 @@ Om du vill konfigurera integreringen av TurboRater i Azure AD måste du lägga t
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
-I det här avsnittet konfigurerar och testar du enkel inloggning med Azure AD med TurboRater baserat på en test användare som heter **B Simon**. För att enkel inloggning ska fungera måste du upprätta en länk mellan en Azure AD-användare och en relaterad användare i TurboRater.
+I det här avsnittet konfigurerar och testar du enkel inloggning med Azure AD med TurboRater baserat på en test användare som heter  **B Simon**. För att enkel inloggning ska fungera måste du upprätta en länk mellan en Azure AD-användare och en relaterad användare i TurboRater.
 
 Om du vill konfigurera och testa enkel inloggning med TurboRater i Azure AD måste du slutföra följande Bygg stenar:
 
@@ -112,7 +108,7 @@ Utför följande steg för att konfigurera enkel inloggning med TurboRater i Azu
        | Miljö | URL |
        | ---------------| --------------- |
        | Testa  | `https://ratingqa.itcdataservices.com/webservices/imp/saml/login` |
-       | Live  | `https://www.itcratingservices.com/webservices/imp/saml/login` |
+       | Direktsändning  | `https://www.itcratingservices.com/webservices/imp/saml/login` |
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska identifieraren och svars-URL:en. Kontakta [TurboRater support-teamet](https://www.getitc.com/support)om du vill hämta dessa värden. Du kan också se de mönster som visas i fönstret **grundläggande konfiguration av SAML** i Azure Portal.
@@ -137,7 +133,7 @@ Om du vill konfigurera enkel inloggning på TurboRater-sidan måste du skicka de
 
 I det här avsnittet skapar du en testanvändare med namnet Britta Simon i Azure-portalen.
 
-1. I Azure Portal i det vänstra fönstret väljer du **Azure Active Directory**   > **användare** > **alla användare**.
+1. I Azure Portal i det vänstra fönstret väljer du **Azure Active Directory**    >  **användare**  >  **alla användare**.
 
     ![Alternativen användare och alla användare](common/users.png)
 
@@ -151,7 +147,7 @@ I det här avsnittet skapar du en testanvändare med namnet Britta Simon i Azure
 
     1. I rutan **namn** anger du **BSimon**.
   
-    1. I rutan **användar namn** anger du **BSimon\@\<\< yourcompanydomain>. tillägg>**. Till exempel **BSimon\@contoso.com**.
+    1. I rutan **användar namn** anger du **BSimon \@ \<yourcompanydomain> . \<extension> **. Till exempel **BSimon \@ contoso.com**.
 
     1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
 
@@ -161,7 +157,7 @@ I det här avsnittet skapar du en testanvändare med namnet Britta Simon i Azure
 
 I det här avsnittet aktiverar du B. Simon för att använda enkel inloggning med Azure genom att ge åtkomst till TurboRater.
 
-1. I Azure Portal väljer du **företags program** > **alla program** > **TurboRater**.
+1. I Azure Portal väljer du **företags program**  >  **alla program**  >  **TurboRater**.
 
     ![Fönstret företags program](common/enterprise-applications.png)
 

@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med informations hantering för informations hantering | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och informations hantering i informations hantering.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 5ff49168-ef81-4169-8e5e-dc86e24dd5e5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91c48772ae50fd34e822c947687c0366e1d179cc
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 8724bb332e48bb9e458550b312fb9c1d41da2477
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85798792"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550579"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-retail--information-management"></a>Självstudie: Azure Active Directory integration med informations hantering i detalj handeln – informations hantering
 
@@ -33,7 +28,7 @@ Att integrera informations hantering i informations hantering med Azure AD ger f
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -113,13 +108,13 @@ Utför följande steg för att konfigurera enkel inloggning med informations han
     http://<company name>.mingledev.infor.com
     ```
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<company name>.mingle.infor.com/sp/ACS.saml2`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<company name>.mingle.infor.com/sp/ACS.saml2`
 
 5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     ![Informations hantering – information om domän och URL: er för information om enkel inloggning](common/metadata-upload-additional-signon.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<company name>.mingle.infor.com/<company code>`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<company name>.mingle.infor.com/<company code>`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [informations hantering klient support teamet](mailto:innovate@infor.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -160,7 +155,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** `brittasimon@yourcompanydomain.extension` . Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** `brittasimon@yourcompanydomain.extension` . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

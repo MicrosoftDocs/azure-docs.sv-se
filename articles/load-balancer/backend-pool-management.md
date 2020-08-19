@@ -5,15 +5,15 @@ description: Kom igång och lär dig hur du konfigurerar och hanterar backend-po
 services: load-balancer
 author: asudbring
 ms.service: load-balancer
-ms.topic: overview
+ms.topic: how-to
 ms.date: 07/07/2020
 ms.author: allensu
-ms.openlocfilehash: 1ab0fd2ff4a2105cdfc4a19b7307cd9817878156
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 81fad1c77b917c1e3eaf7ddd200c3fea83cb0e0a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421798"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589681"
 ---
 # <a name="backend-pool-management"></a>Hantering av Server dels pooler
 Backend-poolen är en kritisk komponent i belastningsutjämnaren. Backend-poolen definierar den grupp av resurser som kommer att betjäna trafik för en specifik belastnings Utjämnings regel.

@@ -4,12 +4,12 @@ description: Övervakning av program prestanda för Azure App Services. Diagramm
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 0921d7bbba90fa2199ea212bae6ad4c35e0fb051
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 33ad4503b744b4737c2d63f74e146a79d36080e1
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245493"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258743"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Övervaka Azure App Service-prestanda
 
@@ -123,8 +123,6 @@ Python App Service-baserade webb program stöder för närvarande inte automatis
 
    * **Spara** inställningarna och **starta om** din app.
 
-![Skärm bild av användar gränssnittet för program inställningar](./media/azure-web-apps/appinsights-javascript-enabled.png)
-
 Om du vill inaktivera övervakning på klient sidan tar du antingen bort det associerade nyckel värdes paret från program inställningarna eller anger värdet till falskt.
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
@@ -141,8 +139,6 @@ Om du av någon anledning vill inaktivera övervakning på klient sidan:
      Värde: `false`
 
    * **Spara** inställningarna och **starta om** din app.
-
-![Skärm bild av användar gränssnittet för program inställningar](./media/azure-web-apps/appinsights-javascript-disabled.png)
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 

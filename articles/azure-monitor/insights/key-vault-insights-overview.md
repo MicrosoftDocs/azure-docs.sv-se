@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: 7b52a1ee67c22fb3bded49a80d35305bdf612f10
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c669946ab76fcaeaaa6fd681f521408643c5a63c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498967"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88531267"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>Övervaka Key Vault-tjänsten med Azure Monitor för Key Vault (för hands version)
 Azure Monitor för Key Vault (för hands version) tillhandahåller omfattande övervakning av dina nyckel valv genom att leverera en enhetlig vy över dina Key Vault förfrågningar, prestanda, misslyckade och svars tider.
@@ -45,7 +45,7 @@ Azure Monitor för Key Vault kombinerar både loggar och mått för att tillhand
 
 Från Azure Monitor kan du Visa information om förfrågningar, svars tid och fel från flera nyckel valv i prenumerationen och hjälpa till att identifiera prestanda problem och begränsnings scenarier.
 
-Utför följande steg för att visa användning och åtgärder för dina lagrings konton över alla dina prenumerationer:
+Utför följande steg för att visa användning och åtgärder för nyckel valv i alla dina prenumerationer:
 
 1. Logga in på [Azure Portal](https://portal.azure.com/)
 

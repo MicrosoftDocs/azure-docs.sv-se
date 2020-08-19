@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med SonarQube | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och SonarQube.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b01665e7-c3d0-4393-9286-d5bcf8cf6add
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/18/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 571d8849fd7cae5c872a56182858848dbb43ef42
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b3790c52598b2857f56cac54acad156b3ba0bf51
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72026681"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545018"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sonarqube"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med SonarQube
 
@@ -33,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar SonarQube med Azure
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -111,7 +106,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -157,11 +152,11 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     f. Öppna det Base64-kodade certifikatet i anteckningar, kopiera dess innehåll och klistra in det i text rutan **Provider-certifikat** .
 
-    g. I text rutan **attribut för SAML-användar inloggning** anger du `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`värdet.
+    ex. I text rutan **attribut för SAML-användar inloggning** anger du värdet `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` .
 
-    h. I text rutan **SAML User Name-attribut** anger du värdet `http://schemas.microsoft.com/identity/claims/displayname`.
+    h. I text rutan **SAML User Name-attribut** anger du värdet `http://schemas.microsoft.com/identity/claims/displayname` .
 
-    i. Ange värdet `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`i text rutan **e-postattribut för SAML-användare** .
+    i. Ange värdet i text rutan **e-postattribut för SAML-användare** `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` .
 
     j. Klicka på **Spara**.
 
@@ -177,11 +172,11 @@ När du klickar på panelen SonarQube på åtkomst panelen, bör du loggas in au
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Prova SonarQube med Azure AD](https://aad.portal.azure.com/)
 

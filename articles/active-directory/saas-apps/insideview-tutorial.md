@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med InsideView | Microsoft Docs'
 description: I den här självstudien får du lära dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och InsideView.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c489a7ab-6b1f-4efb-8a66-8bc13bca78c3
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 4278f00b1026fe4d1b95634540d6d035d43ca5ab
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 17c9672663cae4df7eacb72779e6caf6476e3d24
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82202459"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550494"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Självstudie: Azure Active Directory integrering med InsideView
 
@@ -33,9 +29,9 @@ Den här integrationen ger följande fördelar:
 
 Läs mer om SaaS-appintegrering med Azure AD i [Enkel inloggning till program i Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med InsideView måste du ha:
 
@@ -56,7 +52,7 @@ Om du vill ställa in integreringen av InsideView i Azure AD måste du lägga ti
 
     ![Välj Azure Active Directory](common/select-azuread.png)
 
-2. Gå till **företags program** > **alla program**:
+2. Gå till **företags program**  >  **alla program**:
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -143,13 +139,13 @@ Utför följande steg för att konfigurera enkel inloggning med InsideView i Azu
 
     1. Öppna det RAW-certifikat som du laddade ned från Azure Portal. Kopiera innehållet i certifikatet till Urklipp och klistra in innehållet i rutan **STS-certifikat** .
 
-    1. I rutan **Mappning för CRM-användar-ID** anger **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** du.
+    1. I rutan **Mappning för CRM-användar-ID** anger du **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** .
 
-    1. I rutan **CRM e-Postmappning** anger **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** du.
+    1. I rutan **CRM e-Postmappning** anger du **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** .
 
-    1. I rutan **Mappning av CRM-förnamn** anger **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`** du.
+    1. I rutan **Mappning av CRM-förnamn** anger du **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`** .
 
-    1. I rutan **CRM LastName-mappning** anger **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`** du.  
+    1. I rutan **CRM LastName-mappning** anger du **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`** .  
 
     1. Välj **Spara**.
 
@@ -171,7 +167,7 @@ I det här avsnittet ska du skapa en test användare med namnet Britta Simon i A
 
     1. I rutan **Namn** anger du **BrittaSimon**.
   
-    1. I rutan **användar namn** anger du **BrittaSimon@\<\< yourcompanydomain>. tillägg>**. (Till exempel BrittaSimon@contoso.com.)
+    1. I rutan **användar namn** anger du **BrittaSimon@ \<yourcompanydomain> . \<extension> **. (Till exempel BrittaSimon@contoso.com .)
 
     1. Välj **Visa lösen ord**och skriv sedan ned värdet i rutan **lösen ord** .
 

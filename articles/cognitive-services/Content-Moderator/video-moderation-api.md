@@ -10,20 +10,20 @@ ms.subservice: content-moderator
 ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 081f512fd421bf46a86f3789eadd75e178e1b6f5
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e1054edbece83804b8e49394f979dbaaf0b99917
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685303"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516596"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>Analysera video innehåll för stötande material i C #
 
 Den här artikeln innehåller information och kod exempel som hjälper dig att komma igång med [Content moderator SDK för .net](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) för att skanna video innehåll för vuxna eller vågat innehåll.
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar. 
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/cognitive-services/) innan du börjar. 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 - En version av [Visual Studio 2015 eller 2017](https://www.visualstudio.com/downloads/)
 
 ## <a name="set-up-azure-resources"></a>Ställa in Azure-resurser
@@ -120,7 +120,7 @@ private static readonly string CONTENT_MODERATOR_PRESET_FILE = "preset.json";
 
 Om du vill använda en lokal videofil (enklaste fallet) lägger du till den i projektet och anger dess sökväg som `INPUT_FILE` värde (relativa sökvägar är relativa till körnings katalogen).
 
-Du måste också skapa den _förinställda. JSON_ -filen i den aktuella katalogen och använda den för att ange ett versions nummer. Till exempel:
+Du måste också skapa _preset.js_ filen i den aktuella katalogen och använda den för att ange ett versions nummer. Exempel:
 
 ```JSON
 {
@@ -369,10 +369,10 @@ Analysera JSON-svaret när innehålls redigerings jobbet har slutförts. Den bes
 - **Start**, **varaktighet**, **totalDuration**och **tidstämpel** är i "ticks". Dividera med **tids skala** för att hämta talet i sekunder.
  
 > [!NOTE]
-> - `adultScore`representerar potentiell närvaro och förutsägelse Poäng för innehåll som kan anses vara sexuellt explicit eller vuxna i vissa situationer.
-> - `racyScore`visar potentiell närvaro och förutsägelse Poäng för innehåll som kan anses vara sexuellt eller mogna i vissa situationer.
-> - `adultScore`och `racyScore` är mellan 0 och 1. Ju högre poäng, desto högre blir modellen för att förutsäga att kategorin kan vara tillämplig. Den här förhands granskningen använder en statistisk modell i stället för att manuellt koda resultat. Vi rekommenderar att du testar med ditt eget innehåll för att avgöra hur varje kategori anpassar sig efter dina behov.
-> - `reviewRecommended`är antingen sant eller falskt beroende på de interna Poäng tröskelvärdena. Kunderna bör bedöma om de ska använda det här värdet eller bestämma anpassade tröskelvärden baserat på deras innehålls principer.
+> - `adultScore` representerar potentiell närvaro och förutsägelse Poäng för innehåll som kan anses vara sexuellt explicit eller vuxna i vissa situationer.
+> - `racyScore` visar potentiell närvaro och förutsägelse Poäng för innehåll som kan anses vara sexuellt eller mogna i vissa situationer.
+> - `adultScore` och `racyScore` är mellan 0 och 1. Ju högre poäng, desto högre blir modellen för att förutsäga att kategorin kan vara tillämplig. Den här förhands granskningen använder en statistisk modell i stället för att manuellt koda resultat. Vi rekommenderar att du testar med ditt eget innehåll för att avgöra hur varje kategori anpassar sig efter dina behov.
+> - `reviewRecommended` är antingen sant eller falskt beroende på de interna Poäng tröskelvärdena. Kunderna bör bedöma om de ska använda det här värdet eller bestämma anpassade tröskelvärden baserat på deras innehålls principer.
 
 ```json
 {

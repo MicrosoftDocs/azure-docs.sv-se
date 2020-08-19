@@ -3,12 +3,12 @@ title: Referens för appinställningar för Azure Functions
 description: Referens dokumentation för Azure Functions app-inställningar eller miljövariabler.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 2be13fbdbf8ce75a051448bfb46d2a41ad425be8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b17db828aeb19c3347c0db4babf0eee2b9d5f280
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242771"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589308"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referens för appinställningar för Azure Functions
 
@@ -19,7 +19,7 @@ App-inställningar i en Function-app innehåller globala konfigurations alternat
 Det finns andra globala konfigurations alternativ i [host.jspå](functions-host-json.md) filen och i [local.settings.js](functions-run-local.md#local-settings-file) filen.
 
 > [!NOTE]  
-> Du kan använda program inställningarna för att åsidosätta host.jsatt ange värden utan att behöva ändra host.jspå själva filen. Detta är användbart för scenarier där du behöver konfigurera eller ändra vissa host.jspå Inställningar för en speciell miljö. Detta gör det också möjligt att ändra host.jspå inställningar utan att behöva publicera projektet på annat sätt. Mer information finns i [referens artikelnhost.js](functions-host-json.md#override-hostjson-values).  
+> Du kan använda program inställningarna för att åsidosätta host.jsatt ange värden utan att behöva ändra host.jspå själva filen. Detta är användbart för scenarier där du behöver konfigurera eller ändra vissa host.jspå Inställningar för en speciell miljö. Detta gör det också möjligt att ändra host.jspå inställningar utan att behöva publicera projektet på annat sätt. Mer information finns i [ referens artikelnhost.js](functions-host-json.md#override-hostjson-values).  
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
@@ -94,7 +94,7 @@ Valfri anslutnings sträng för lagrings konto för att lagra loggar och visa de
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
-`true`innebär att inaktivera standard sidan för landning som visas för rot-URL: en för en Function-app. Standardvärdet är `false`.
+`true` innebär att inaktivera standard sidan för landning som visas för rot-URL: en för en Function-app. Standardvärdet är `false`.
 
 |Nyckel|Exempelvärde|
 |---|------------|
@@ -106,7 +106,7 @@ När den här appens inställning utelämnas eller anges till `false` visas en s
 
 ## <a name="azurewebjobsdotnetreleasecompilation"></a>AzureWebJobsDotNetReleaseCompilation
 
-`true`innebär användning av versions läge när .NET-kod kompileras. `false`betyder Använd fel söknings läge. Standardvärdet är `true`.
+`true` innebär användning av versions läge när .NET-kod kompileras. `false` betyder Använd fel söknings läge. Standardvärdet är `true`.
 
 |Nyckel|Exempelvärde|
 |---|------------|
@@ -126,7 +126,7 @@ Anger lagrings platsen eller providern som ska användas för nyckel lagring. F�
 
 |Nyckel|Exempelvärde|
 |---|------------|
-|AzureWebJobsSecretStorageType|Filer|
+|AzureWebJobsSecretStorageType|Files|
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
@@ -234,8 +234,8 @@ Endast för förbruknings & Premium-planer. Fil Sök vägen till programmets kod
 
 Det maximala antalet instanser som Function-appen kan skala ut till. Standardvärdet är ingen gräns.
 
-> [!NOTE]
-> Den här inställningen är en förhands gransknings funktion – och är bara tillförlitlig om värdet <= 5
+> [!IMPORTANT]
+> Den här inställningen är i för hands version.  En [app-egenskap för funktionen högsta skalbarhet](./functions-scale.md#limit-scale-out) har lagts till och är det rekommenderade sättet att begränsa skalan.
 
 |Nyckel|Exempelvärde|
 |---|------------|

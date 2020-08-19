@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 737617b1fb8bd233a8747deacbbb328a02fa30ef
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 9db8a0397c836e8cbc45404d9c4f149255fc76fa
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185629"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271064"
 ---
 # <a name="monitor-azure-file-sync"></a>Övervaka Azure File Sync
 
@@ -135,7 +135,7 @@ Använd händelse loggen för telemetri på-servern för att övervaka registrer
 
 Sync-hälsa
 
-- Händelse-ID 9102 loggas när en Sync-session har slutförts. Använd den här händelsen för att avgöra om Sync-sessioner lyckas (**HResult = 0**) och om det finns synkroniseringsfel per objekt. Mer information finns i dokumentationen om [synkronisering av hälso tillstånd](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) och [meddelanden per objekt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing) .
+- Händelse-ID 9102 loggas när en Sync-session har slutförts. Använd den här händelsen för att avgöra om Sync-sessioner lyckas (**HResult = 0**) och om det finns synkroniseringsfel per objekt (**PerItemErrorCount**). Mer information finns i dokumentationen om [synkronisering av hälso tillstånd](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) och  [meddelanden per objekt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing) .
 
   > [!Note]  
   > Synkronisering av sessioner fungerar ibland inte generellt eller har en PerItemErrorCount som inte är noll. De kommer dock fortfarande att fortsätta och vissa filer synkroniseras. Du kan se detta i de använda fälten, till exempel AppliedFileCount, AppliedDirCount, AppliedTombstoneCount och AppliedSizeBytes. Dessa fält visar hur mycket av sessionen som har lyckats. Om flera Sync-sessioner visas på en rad och de har ett ökande antal tillämpade, kan du ange att synkroniseringen ska göras innan du öppnar ett support ärende.
@@ -196,7 +196,7 @@ Det här avsnittet innehåller några exempel på aviseringar för Azure File Sy
 5. I bladet **Konfigurera signal logik** klickar du på **Sync-session resultat** under signal namn.  
 6. Välj följande dimensions konfiguration: 
     - Dimensions namn: **Server slut punktens namn**  
-    - Operator**=** 
+    - Operator **=** 
     - Dimensions värden: **alla aktuella och framtida värden**  
 7. Navigera till **aviserings logiken** och Slutför följande: 
     - Tröskelvärdet har angetts till **statisk** 
@@ -218,7 +218,7 @@ Det här avsnittet innehåller några exempel på aviseringar för Azure File Sy
 5. I bladet **Konfigurera signal logik** klickar du på **filer som inte synkroniseras** under signal namn.  
 6. Välj följande dimensions konfiguration: 
      - Dimensions namn: **Server slut punktens namn**  
-     - Operator**=** 
+     - Operator **=** 
      - Dimensions värden: **alla aktuella och framtida värden**  
 7. Navigera till **aviserings logiken** och Slutför följande: 
      - Tröskelvärdet har angetts till **statisk** 
@@ -240,7 +240,7 @@ Det här avsnittet innehåller några exempel på aviseringar för Azure File Sy
 5. I bladet **Konfigurera signal logik** klickar du på **serverns onlinestatus** under signal namn.  
 6. Välj följande dimensions konfiguration: 
      - Dimensions namn: **Server namn**  
-     - Operator**=** 
+     - Operator **=** 
      - Dimensions värden: **alla aktuella och framtida värden**  
 7. Navigera till **aviserings logiken** och Slutför följande: 
      - Tröskelvärdet har angetts till **statisk** 
@@ -262,7 +262,7 @@ Det här avsnittet innehåller några exempel på aviseringar för Azure File Sy
 5. I bladet **Konfigurera signal logik** klickar du på **moln nivå åter kallelse storlek** under signal namn.  
 6. Välj följande dimensions konfiguration: 
      - Dimensions namn: **Server namn**  
-     - Operator**=** 
+     - Operator **=** 
      - Dimensions värden: **alla aktuella och framtida värden**  
 7. Navigera till **aviserings logiken** och Slutför följande: 
      - Tröskelvärdet har angetts till **statisk** 

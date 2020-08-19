@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Zendesk | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Zendesk.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 9d7c91e5-78f5-4016-862f-0f3242b00680
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/26/2020
+ms.date: 08/13/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f70e7067a78b439d3dcaf0b83460296cad7b4485
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c7d452803d15bab77df8e85a861de914a5ed08d5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80585810"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546080"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zendesk"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Zendesk
 
@@ -32,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar Zendesk med Azure A
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -87,7 +83,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     b. I textrutan **Identifierare (entitets-ID)** anger du en URL enligt följande mönster: `https://<subdomain>.zendesk.com`
 
-    c. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<subdomain>.zendesk.com/access/saml`
+    c. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<subdomain>.zendesk.com/access/saml`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera de här värdena med faktisk inloggnings-URL, identifierare och svars-URL. Kontakta [Zendesk-klients supportteam](https://support.zendesk.com/hc/en-us/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -119,7 +115,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -143,13 +139,21 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 ## <a name="configure-zendesk-sso"></a>Konfigurera Zendesk SSO
 
+1. Om du vill automatisera konfigurationen i **Zendesk**måste du installera **Mina appar säker inloggnings webb läsar tillägg** genom att klicka på **installera tillägget**.
+
+    ![image](./media/target-process-tutorial/install_extension.png)
+
+1. När du har lagt till tillägg i webbläsaren, klickar du på **installations Zendesk** för att dirigera dig till Zendesk-programmet. Därifrån anger du administratörsautentiseringsuppgifterna för att logga in på Zendesk. Webb läsar tillägget kommer automatiskt att konfigurera programmet åt dig och automatisera steg 3-6.
+
+    ![Konfigurera konfiguration](common/setup-sso.png)
+
 1. Om du vill konfigurera Zendesk manuellt öppnar du ett nytt webbläsarfönster och loggar in på din Zendesk-företags webbplats som administratör och utför följande steg:
 
-2. Klicka på **Admin**.
+1. Klicka på **Admin**.
 
-3. I det vänstra navigeringsfönstret klickar du på **Inställningar** och sedan på **Säkerhet**.
+1. I det vänstra navigeringsfönstret klickar du på **Inställningar** och sedan på **Säkerhet**.
 
-4. På sidan **Säkerhet** utför du följande steg:
+1. På sidan **Säkerhet** utför du följande steg:
 
     ![Säkerhet](./media/zendesk-tutorial/ic773089.png "Säkerhet")
 
@@ -182,7 +186,7 @@ Målet med det här avsnittet är att skapa en användare med namnet Britta Simo
 
 3. Välj fliken **Användare** och klicka på **Lägg till**.
 
-    ![Lägg till användare](./media/zendesk-tutorial/ic773632.png "Lägga till användare")
+    ![Lägg till användare](./media/zendesk-tutorial/ic773632.png "Lägg till användare")
 4. Skriv **namnet** och **e-postadressen** för ett befintligt Azure AD-konto du vill etablera och klicka sedan på **Spara**.
 
     ![Ny användare](./media/zendesk-tutorial/ic773633.png "Ny användare")
@@ -198,11 +202,11 @@ När du klickar på Zendesk-panelen i åtkomstpanelen så borde du automatiskt l
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Prova Zendesk med Azure AD](https://aad.portal.azure.com/)
 

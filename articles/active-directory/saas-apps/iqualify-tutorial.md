@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med iQualify LMS | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och iQualify LMS.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8a3caaff-dd8d-4afd-badf-a0fd60db3d2c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: a1db4784eb63df14b7e7971d0273512ba657df96
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8bf74994a07d69bbe53ec9a7e18f08b4232298bd
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68944997"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552962"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>Självstudie: Azure Active Directory integrering med iQualify LMS
 
@@ -32,9 +28,9 @@ Genom att integrera iQualify LMS med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med iQualify LMS behöver du följande objekt:
 
@@ -109,14 +105,14 @@ Utför följande steg för att konfigurera enkel inloggning med iQualify LMS i A
     a. I textrutan **Identifierare** skriver du en URL med följande mönster:  
     | |
     |--|--|
-    | Produktions miljö:`https://<yourorg>.iqualify.com/`|
-    | Test miljö:`https://<yourorg>.iqualify.io`|
+    | Produktions miljö: `https://<yourorg>.iqualify.com/`|
+    | Test miljö: `https://<yourorg>.iqualify.io`|
 
     b. I textrutan **Svars-URL** skriver du in en URL med följande mönster:
     | |
     |--|--|
-    | Produktions miljö:`https://<yourorg>.iqualify.com/auth/saml2/callback` |
-    | Test miljö:`https://<yourorg>.iqualify.io/auth/saml2/callback` |
+    | Produktions miljö: `https://<yourorg>.iqualify.com/auth/saml2/callback` |
+    | Test miljö: `https://<yourorg>.iqualify.io/auth/saml2/callback` |
 
 5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
@@ -125,8 +121,8 @@ Utför följande steg för att konfigurera enkel inloggning med iQualify LMS i A
     I textrutan **Inloggnings-URL** skriver du in en URL med följande mönster:
     | |
     |--|--|
-    | Produktions miljö:`https://<yourorg>.iqualify.com/login` |
-    | Test miljö:`https://<yourorg>.iqualify.io/login` |
+    | Produktions miljö: `https://<yourorg>.iqualify.com/login` |
+    | Test miljö: `https://<yourorg>.iqualify.io/login` |
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [IQUALIFY LMS client support team](https://www.iqualify.com/) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -160,7 +156,7 @@ Utför följande steg för att konfigurera enkel inloggning med iQualify LMS i A
 
     f. Klicka på **OK**
 
-    g. Klicka på **Spara**.
+    ex. Klicka på **Spara**.
 
     > [!Note]
     > Attributet **person_id** är **valfritt**
@@ -230,7 +226,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **Användarnamn** anger du **brittasimon@yourcompanydomain.extension**  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

@@ -4,12 +4,12 @@ description: I den här artikeln får du lära dig hur du skapar och konfigurera
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 244562efdc4c274a79ea27cdfa00dd51ae671fa4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7084fb9b599e127fac2b8c75748448d37d3f5365
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032960"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586196"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Skapa och konfigurera ett Recovery Services valv
 
@@ -25,10 +25,10 @@ Azure Backup hanterar automatiskt lagring för valvet. Du måste ange hur lagrin
 >- Om du ännu inte har konfigurerat säkerhets kopian [följer du de här stegen](#set-storage-redundancy) för att granska och ändra inställningarna.
 >- Om du redan har konfigurerat säkerhets kopian och måste gå från GRS till LRS går du [igenom dessa lösningar](#how-to-change-from-grs-to-lrs-after-configuring-backup).
 
-1. På bladet **Recovery Services-valv** klickar du på det nya valvet. Under avsnittet **Inställningar** klickar du på **Egenskaper**.
-1. I **Egenskaper**, under **säkerhets kopierings konfiguration**, klickar du på **Uppdatera**.
+1. Välj det nya valvet i fönstret **Recovery Services valv** . Under avsnittet **Inställningar** väljer du  **Egenskaper**.
+1. I **Egenskaper**, under **säkerhets kopierings konfiguration**, väljer du **Uppdatera**.
 
-1. Välj typ av lagrings replikering och klicka på **Spara**.
+1. Välj typ av lagrings replikering och välj **Spara**.
 
      ![Ange lagringskonfigurationen för det nya valvet](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
@@ -46,7 +46,7 @@ Som en av återställnings alternativen kan du med återställningen mellan regi
 - genomför övningar när det finns ett krav på granskning eller efterlevnad
 - Återställ den virtuella datorn eller disken om det finns en katastrof i den primära regionen.
 
-Om du vill välja den här funktionen väljer du **Aktivera återställning av kors region** från bladet **säkerhets kopierings konfiguration** .
+Om du vill välja den här funktionen väljer du **Aktivera återställning av kors region** från **konfigurations fönstret för säkerhets kopiering** .
 
 För den här processen finns det prissättnings effekter som på lagrings nivå.
 
@@ -62,22 +62,40 @@ För den här processen finns det prissättnings effekter som på lagrings nivå
 
 ### <a name="configure-cross-region-restore"></a>Konfigurera återställning mellan regioner
 
-Ett valv som skapats med GRS-redundans omfattar alternativet att konfigurera funktionen för återställning av kors region. Varje GRS-valv kommer att ha en banderoll som länkar till dokumentationen. Om du vill konfigurera CRR för valvet går du till bladet säkerhets kopierings konfiguration, som innehåller alternativet att aktivera den här funktionen.
+Ett valv som skapats med GRS-redundans omfattar alternativet att konfigurera funktionen för återställning av kors region. Varje GRS-valv kommer att ha en banderoll som länkar till dokumentationen. Om du vill konfigurera CRR för valvet går du till konfigurations fönstret för säkerhets kopiering, som innehåller alternativet att aktivera den här funktionen.
 
  ![Banderoll för säkerhets kopierings konfiguration](./media/backup-azure-arm-restore-vms/banner.png)
 
 1. Från portalen går du till Recovery Services valv > inställningar > egenskaper.
-2. Aktivera funktionen genom att klicka på **Aktivera återställning mellan regioner i det här valvet** .
+2. Välj **Aktivera återställning mellan regioner i det här valvet** för att aktivera funktionen.
 
-   ![Innan du klickar på Aktivera återställning mellan regioner i det här valvet](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
+   ![Innan du väljer Aktivera återställning mellan regioner i det här valvet](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
 
-   ![När du har klickat på Aktivera återställning mellan regioner i det här valvet](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
+   ![När du har valt Aktivera återställning mellan regioner i det här valvet](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
 
 Lär dig hur du [visar säkerhets kopierings objekt i den sekundära regionen](backup-azure-arm-restore-vms.md#view-backup-items-in-secondary-region).
 
 Lär dig hur du [återställer i den sekundära regionen](backup-azure-arm-restore-vms.md#restore-in-secondary-region).
 
 Lär dig hur du [övervakar återställnings jobb för sekundär region](backup-azure-arm-restore-vms.md#monitoring-secondary-region-restore-jobs).
+
+## <a name="set-encryption-settings"></a>Ange krypterings inställningar
+
+Som standard krypteras data i Recovery Services-valvet med hjälp av plattforms hanterade nycklar. Inga uttryckliga åtgärder krävs från slutpunkten för att aktivera den här krypteringen, och den gäller för alla arbets belastningar som säkerhets kopie ras till Recovery Services-valvet.  Du kan välja att ta med din egen nyckel för att kryptera säkerhetskopierade data i det här valvet. Detta kallas för Kundhanterade nycklar. Om du vill kryptera säkerhetskopierade data med din egen nyckel måste krypterings nyckeln anges innan något objekt skyddas för det här valvet. När du har aktiverat kryptering med din nyckel går det inte att ångra.
+
+### <a name="configuring-a-vault-to-encrypt-using-customer-managed-keys"></a>Konfigurera ett valv för kryptering med Kundhanterade nycklar
+
+Om du vill konfigurera valvet att kryptera med Kundhanterade nycklar, måste de här stegen följas i följande ordning:
+
+1. Aktivera hanterad identitet för Recovery Services valvet
+
+1. Tilldela behörighet till valvet för att få åtkomst till krypterings nyckeln i Azure Key Vault
+
+1. Aktivera mjuk borttagning och tömning av skydd på Azure Key Vault
+
+1. Tilldela krypterings nyckeln till Recovery Services-valvet
+
+Instruktioner för var och en av de här stegen finns [i den här artikeln](encryption-at-rest-with-cmk.md#configuring-a-vault-to-encrypt-using-customer-managed-keys).
 
 ## <a name="modifying-default-settings"></a>Ändra standardinställningar
 
@@ -132,7 +150,6 @@ Om du behöver behålla nuvarande skyddade data i GRS-valvet och fortsätta skyd
   - Du måste betala för att behålla återställnings punkterna i GRS-valvet (se [Azure Backup priser](azure-backup-pricing.md) för mer information).
   - Du kommer att kunna återställa den virtuella datorn, om det behövs, från GRS-valvet.
   - Den första säkerhets kopieringen i LRS-valvet för den virtuella datorn i den nya resursen är en inledande replik.
-
 
 ## <a name="next-steps"></a>Nästa steg
 

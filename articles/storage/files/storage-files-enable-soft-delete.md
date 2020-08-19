@@ -8,12 +8,12 @@ ms.date: 05/28/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: f432c544d8632a548c397b63ffa8066f63424f67
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2d2a000879a95f86a6cdda3324add5b692476eee
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528391"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590123"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Aktivera mjuk borttagning på Azure-filresurser
 
@@ -22,6 +22,8 @@ Azure Storage erbjuder mjuk borttagning för fil resurser (för hands version) s
 I följande avsnitt visas hur du aktiverar och använder mjuk borttagning för Azure-filresurser på ett befintligt lagrings konto:
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
+
+## <a name="getting-started"></a>Komma igång
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
 1. Navigera till ditt lagrings konto och välj **mjuk borttagning** under **fil tjänst**.
@@ -33,7 +35,13 @@ I följande avsnitt visas hur du aktiverar och använder mjuk borttagning för A
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Cmdlets för mjuk borttagning är tillgängliga i 2.1.1-Preview-versionen av modulen AZ. Storage. Om du vill aktivera mjuk borttagning måste du uppdatera en fil klients tjänst egenskaper. I följande exempel aktive ras mjuk borttagning för alla fil resurser i ett lagrings konto:
+## <a name="prerequisite"></a>Förutsättning
+
+Cmdlets för mjuk borttagning är för närvarande endast tillgängliga i [2.1.1-Preview](https://www.powershellgallery.com/packages/Az.Storage/2.1.1-preview) och [2.3.1-Preview-](https://www.powershellgallery.com/packages/Az.Storage/2.3.1-preview) versioner av modulen AZ. Storage. 
+
+## <a name="getting-started"></a>Komma igång
+
+Om du vill aktivera mjuk borttagning måste du uppdatera en fil klients tjänst egenskaper. I följande exempel aktive ras mjuk borttagning för alla fil resurser i ett lagrings konto:
 
 ```azurepowershell-interactive
 $rgName = "yourResourceGroupName"

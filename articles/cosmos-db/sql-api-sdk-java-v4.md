@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 0d1845c06c1f0373ffd4be43c104889a7327c3ac
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: af0964dceca8b862d0008d878045203983a96bda
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035781"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586223"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK v4 for Core (SQL) API: viktig information och resurser
 > [!div class="op_single_selector"]
@@ -26,7 +26,8 @@ ms.locfileid: "88035781"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Asynkron Java-SDK v2](sql-api-sdk-async-java.md)
 > * [Synkron Java-SDK v2](sql-api-sdk-java.md)
-> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Våren data v2](sql-api-sdk-java-spring-v2.md)
+> * [Våren data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark-anslutning](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -143,10 +144,10 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) kombinerar ett asynkront API och ett 
 * API har bytt namn `preferredLocations`  &  `multipleWriteLocations` till `preferredRegions`  &  `multipleWriteRegions` . 
 * Uppdaterat `reactor-core` till 3.3.5. release, `reactor-netty` till 0.9.7. release & `netty` till 4.1.49. Finale-versioner. 
 * Stöd har lagts till `analyticalStoreTimeToLive` i SDK.     
-* `CosmosClientException`utökar `AzureException` . 
+* `CosmosClientException` utökar `AzureException` . 
 * API: er har tagits bort `maxItemCount`  &  `requestContinuationToken` från `FeedOptions` i stället med `byPage()` API: er `CosmosPagedFlux`  &  `CosmosPagedIterable` .
 * Infört `CosmosPermissionProperties` på offentlig yta för `Permission` API: er.
-* Den borttagna `SqlParameterList` typen & ersatts av`List`
+* Den borttagna `SqlParameterList` typen & ersatts av `List`
 * Fast flera minnes läckor i direkt TCP-klient. 
 * Stöd har lagts till för `DISTINCT` frågor. 
 * Externa beroenden har tagits bort `fasterxml.uuid, guava, commons-io, commons-collection4, commons-text` .  
@@ -154,14 +155,14 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) kombinerar ett asynkront API och ett 
 * Uppdaterad nettning till 4.1.45. slutlig & projekt reaktor till 3.3.3 version.
 * Uppdaterade offentliga rest-kontrakt till `Final` klasser.
 * Stöd har lagts till för avancerad diagnostik för punkt åtgärder.
-* Paketet har uppdaterats till`com.azure.cosmos`
+* Paketet har uppdaterats till `com.azure.cosmos`
 * `models`Paket för modell/rest-avtal har lagts till
 * Paket har lagts till `utils` för `CosmosPagedFlux`  &  `CosmosPagedIterable` typer. 
 * Uppdaterade offentliga API: er som ska användas i `Duration` SDK.
 * Alla rest-kontrakt har lagts till i `models` paketet.
-* `RetryOptions`har bytt namn till `ThrottlingRetryOptions` .
+* `RetryOptions` har bytt namn till `ThrottlingRetryOptions` .
 * `CosmosPagedFlux`  &  `CosmosPagedIterable` Sid brytnings typer har lagts till för API: er för frågor. 
-* Stöd har lagts till för delning av TransportClient över flera instanser av CosmosClients med hjälp av ett nytt API i`CosmosClientBuilder#connectionSharingAcrossClientsEnabled(true)`
+* Stöd har lagts till för delning av TransportClient över flera instanser av CosmosClients med hjälp av ett nytt API i `CosmosClientBuilder#connectionSharingAcrossClientsEnabled(true)`
 * Optimering av frågor genom att ta bort dubbel serialisering/deserialisering. 
 * Optimeringar av svars rubriker genom att ta bort onödig kopiering och tillbaka. 
 * Optimerad `ByteBuffer` serialisering/deserialisering genom att ta bort mellanliggande strängars instansiering.
@@ -171,11 +172,11 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) kombinerar ett asynkront API och ett 
 * Fast problem vid parsning av frågeresultat i händelse av frågor om värde ordning. 
 * Problem med fast socket läcker med direkt TCP-klient.
 * Åtgärdat `orderByQuery` med fel i fortsättnings-token.
-* `ChangeFeedProcessor`fel korrigering för hantering av partition delas & när partitionen inte hittas.
-* `ChangeFeedProcessor`fel korrigering vid synkronisering av låne uppdateringar mellan olika trådar.
+* `ChangeFeedProcessor` fel korrigering för hantering av partition delas & när partitionen inte hittas.
+* `ChangeFeedProcessor` fel korrigering vid synkronisering av låne uppdateringar mellan olika trådar.
 * Fast konkurrens tillstånd `ArrayIndexOutOfBound` som orsakar undantag i StoreReader
 
-## <a name="faq"></a>Vanliga frågor
+## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>Nästa steg

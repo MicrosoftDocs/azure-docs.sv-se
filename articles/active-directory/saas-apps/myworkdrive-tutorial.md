@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med MyWorkDrive | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och MyWorkDrive.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: 4d049778-3c7b-46c0-92a4-f2633a32334b
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 60fdd9b0a8fb272da885df97e39804a98e48de67
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: aa0fe40ec28aea7f82ee0e635b3c42140a472816
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80478862"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552449"
 ---
 # <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>Självstudie: integrera MyWorkDrive med Azure Active Directory
 
@@ -32,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar MyWorkDrive med Azu
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -79,11 +75,11 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. På sidan **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
 
-    Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<SERVER.DOMAIN.COM>/SAML/AssertionConsumerService.aspx`
+    Skriv en URL i text rutan **svars-URL** med följande mönster:  `https://<SERVER.DOMAIN.COM>/SAML/AssertionConsumerService.aspx`
 
 1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<SERVER.DOMAIN.COM>/Account/Login-saml`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<SERVER.DOMAIN.COM>/Account/Login-saml`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med faktisk svars-URL och inloggnings-URL. Mata in ditt eget företags MyWorkDrive-Server värd Namn: t. ex.
@@ -133,7 +129,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `Britta Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `BrittaSimon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `BrittaSimon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 

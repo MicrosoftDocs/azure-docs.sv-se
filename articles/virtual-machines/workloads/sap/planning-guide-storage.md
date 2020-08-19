@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae3851da1dbcc5f7ac37821a64cada20164c7661
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 668f8ffdc4b797219dc1f3c23fecb858d8f706ad
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825012"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510869"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-typer för SAP-arbetsbelastning
 Azure har flera olika lagrings typer som skiljer sig mycket i funktioner, data flöde, svars tid och priser. Några av lagrings typerna är inte eller av begränsad användning för SAP-scenarier. Flera typer av Azure-lagring är väl lämpade eller optimerade för vissa SAP-arbetsbelastnings scenarier. I synnerhet för SAP HANA fick vissa Azure Storage-typer certifierade för användning med SAP HANA. I det här dokumentet ska vi gå igenom de olika typerna av lagring och beskriva deras kapacitet och användbarhet med SAP-arbetsbelastningar och SAP-komponenter.
@@ -84,7 +84,7 @@ Innan du går in på detaljerna presenterar vi sammanfattningen och rekommendati
 | DBMS-logg volym icke-HANA icke-Mv2 VM-familjer | stöds inte | begränsad lämplig (icke-Prod) | lämpligt för upp till medel stora arbets belastningar | rekommenderas | stöds inte |
 
 
-<sup>1</sup> med användning av [Azure-Skrivningsaccelerator](../../windows/how-to-enable-write-accelerator.md) för virtuella datorer i M/Mv2 för logg/gör om logg volymer <sup>2</sup> med ANF krävs/Hana/data såväl som/Hana/log för ANF 
+<sup>1</sup> med användning av [Azure-Skrivningsaccelerator](../../how-to-enable-write-accelerator.md) för virtuella datorer i M/Mv2 för logg/gör om logg volymer <sup>2</sup> med ANF krävs/Hana/data såväl som/Hana/log för ANF 
 
 De egenskaper du kan förväntar dig från listan med olika lagrings typer som:
 
@@ -101,7 +101,7 @@ De egenskaper du kan förväntar dig från listan med olika lagrings typer som:
 | GEO-redundans | inte för hanterade diskar | inte för hanterade diskar | nej | nej | nej |
 
 
-<sup>1</sup> med användning av [Azure Skrivningsaccelerator](../../windows/how-to-enable-write-accelerator.md) för virtuella datorer i M/Mv2 för logg/gör om-logg volymer
+<sup>1</sup> med användning av [Azure Skrivningsaccelerator](../../how-to-enable-write-accelerator.md) för virtuella datorer i M/Mv2 för logg/gör om-logg volymer
 
 <sup>2</sup> kostnader är beroende av etablerad IOPS och data flöde
 
@@ -137,8 +137,8 @@ Funktions mat ris för SAP-arbetsbelastningen ser ut så här:
 | Kapacitet| Kommentar| Anteckningar/länkar | 
 | --- | --- | --- | 
 | OS-bas-VHD | korrekt | alla system |
-| Datadisk | korrekt | alla system – [särskilt för SAP HANA](../../windows/how-to-enable-write-accelerator.md) |
-| SAP global transport katalog | JA | [Stöds](https://launchpad.support.sap.com/#/notes/2015553) |
+| Datadisk | korrekt | alla system – [särskilt för SAP HANA](../../how-to-enable-write-accelerator.md) |
+| SAP global transport katalog | JA | [Tillåtna](https://launchpad.support.sap.com/#/notes/2015553) |
 | SAP-sapmnt | korrekt | alla system |
 | Lagring av säkerhets kopior | korrekt | för kortsiktig lagring av säkerhets kopior |
 | Resurser/delad disk | inte tillgänglig | Behöver Azure Premium-filer eller tredje part |
@@ -149,12 +149,12 @@ Funktions mat ris för SAP-arbetsbelastningen ser ut så här:
 | Maximalt antal IOPS per disk | 20 000 [beroende av disk storlek](https://azure.microsoft.com/pricing/details/managed-disks/) | Överväg även [VM-gränser](../../sizes.md) |
 | SLA för data flöde | JA | - |
 | Data flöde linjärt till kapacitet | halvt linjärt i hakparenteser | [Priser för hanterad disk](https://azure.microsoft.com/pricing/details/managed-disks/) |
-| HANA-certifierad | JA | [särskilt för SAP HANA](../../windows/how-to-enable-write-accelerator.md) |
+| HANA-certifierad | JA | [särskilt för SAP HANA](../../how-to-enable-write-accelerator.md) |
 | Möjliga disk ögonblicks bilder | JA | - |
-| Möjliga Azure Backup VM-ögonblicksbilder | JA | Förutom för [Skrivningsaccelerator](../../windows/how-to-enable-write-accelerator.md) cachelagrade diskar  |
+| Möjliga Azure Backup VM-ögonblicksbilder | JA | Förutom för [Skrivningsaccelerator](../../how-to-enable-write-accelerator.md) cachelagrade diskar  |
 | Kostnader | SÄKER | - |
 
-Azure Premium Storage uppfyller inte SAP HANA KPI: er för lagrings fördröjning med de gemensamma caching-typer som erbjuds med Azure Premium Storage. För att kunna uppfylla KPI: er för lagrings fördröjning för SAP HANA logg skrivningar måste du använda Azure Skrivningsaccelerator-cachelagring enligt beskrivningen i artikeln [aktivera Skrivningsaccelerator](../../windows/how-to-enable-write-accelerator.md). Azure Skrivningsaccelerator fördelar alla andra DBMS-system för transaktions logg skrivningar och gör om logg skrivningar. Därför rekommenderar vi att du använder dem i alla SAP-DBMS-distributioner. För SAP HANA är användningen av Azure Skrivningsaccelerator tillsammans med Azure Premium Storage obligatorisk.
+Azure Premium Storage uppfyller inte SAP HANA KPI: er för lagrings fördröjning med de gemensamma caching-typer som erbjuds med Azure Premium Storage. För att kunna uppfylla KPI: er för lagrings fördröjning för SAP HANA logg skrivningar måste du använda Azure Skrivningsaccelerator-cachelagring enligt beskrivningen i artikeln [aktivera Skrivningsaccelerator](../../how-to-enable-write-accelerator.md). Azure Skrivningsaccelerator fördelar alla andra DBMS-system för transaktions logg skrivningar och gör om logg skrivningar. Därför rekommenderar vi att du använder dem i alla SAP-DBMS-distributioner. För SAP HANA är användningen av Azure Skrivningsaccelerator tillsammans med Azure Premium Storage obligatorisk.
 
 
 
@@ -196,7 +196,7 @@ Funktions mat ris för SAP-arbetsbelastningen ser ut så här:
 | --- | --- | --- | 
 | OS-bas-VHD | fungerar inte | - |
 | Datadisk | korrekt | alla system  |
-| SAP global transport katalog | JA | [Stöds](https://launchpad.support.sap.com/#/notes/2015553) |
+| SAP global transport katalog | JA | [Tillåtna](https://launchpad.support.sap.com/#/notes/2015553) |
 | SAP-sapmnt | korrekt | alla system |
 | Lagring av säkerhets kopior | korrekt | för kortsiktig lagring av säkerhets kopior |
 | Resurser/delad disk | inte tillgänglig | Behöver tredje part |
@@ -352,7 +352,7 @@ När du konfigurerar virtuella Azure-datorer i livs cykeln för ett SAP-system b
 
 
 ## <a name="striping-or-not-striping"></a>Randning eller not randning
-Genom att skapa en stripe-uppsättning av flera Azure-diskar i en större volym kan du samla IOPS och data flöde för de enskilda diskarna till en volym. Den används endast för Azure standard Storage och Azure Premium Storage. Azure Ultra disk där du kan konfigurera genomflödet och IOPS oberoende av kapaciteten för en disk, kräver inte att stripe-uppsättningar används. Delade volymer baserade på NFS eller SMB kan inte stripas. På grund av den icke-linjära typen av data flöde i Azure Premium Storage och IOPS kan du etablera mindre kapacitet med samma IOPS och data flöde än stora enskilda Azure Premium Storage-diskar. Det är metoden för att uppnå högre genomflöde eller IOPS med lägre kostnad med hjälp av Azure Premium Storage. Exempel:
+Genom att skapa en stripe-uppsättning av flera Azure-diskar i en större volym kan du samla IOPS och data flöde för de enskilda diskarna till en volym. Den används endast för Azure standard Storage och Azure Premium Storage. Azure Ultra disk där du kan konfigurera genomflödet och IOPS oberoende av kapaciteten för en disk, kräver inte att stripe-uppsättningar används. Delade volymer baserade på NFS eller SMB kan inte stripas. På grund av den icke-linjära typen av data flöde i Azure Premium Storage och IOPS kan du etablera mindre kapacitet med samma IOPS och data flöde än stora enskilda Azure Premium Storage-diskar. Det är metoden för att uppnå högre genomflöde eller IOPS med lägre kostnad med hjälp av Azure Premium Storage. Ett exempel:
 
 - Randning över två p15 Premium Storage-diskar ger dig till gång till ett data flöde av 
 - 250 MiB/s. En sådan volym kommer att ha 512 GiB-kapacitet. Om du vill ha en enda disk som ger dig 250 MiB-genomflöde per sekund måste du välja en P40-disk med 2 TiB-kapacitet. 

@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Cherwell | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Cherwell.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: ad891f99-179e-4487-834d-35f3bc01c1ec
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fde8c38722e39d530c2890ef9c9a045b28b6e49
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e506a6d8a309f844018d33285b82a490e2a3c93c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67105689"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88529516"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cherwell"></a>Självstudie: Azure Active Directory integrering med Cherwell
 
@@ -33,9 +28,9 @@ Integreringen av Cherwell med Azure AD medför följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att konfigurera Azure AD-integrering med Cherwell behöver du följande:
 
@@ -106,7 +101,7 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Cherw
 
     ![Information om enkel inloggning med Cherwell-domäner och -URL:er](common/sp-signonurl.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<companyname>.cherwellondemand.com/cherwellclient`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<companyname>.cherwellondemand.com/cherwellclient`
 
     > [!NOTE]
     > Värdet är inte verkligt. Uppdatera värdet med den faktiska inloggnings-URL:en. Kontakta [Cherwell-kundsupporten](https://cherwellsupport.com/CherwellPortal) och be om värdet. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -150,7 +145,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** skriver `brittasimon\@yourcompanydomain.extension`du. Till exempel BrittaSimon@contoso.com.
+    b. I fältet **användar namn** skriver du `brittasimon\@yourcompanydomain.extension` . Till exempel BrittaSimon@contoso.com.
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

@@ -1,4 +1,4 @@
-- name: Azure DB för PostgreSQL-dokument
+- name: Dokumentation om Azure DB for PostgreSQL
   href: index.yml
 - name: Översikt
   items:
@@ -163,10 +163,6 @@
               href: concepts-read-replicas.md
             - name: Logisk avkodning
               href: concepts-logical.md
-        - name: Flytta mellan regioner
-          items:
-            - name: Azure Portal
-              href: howto-move-regions-portal.md
     - name: Hyperskala (Citus)
       items:
         - name: Distribuerad data
@@ -339,6 +335,10 @@
               href: howto-read-replicas-cli.md
             - name: Hantera skrivskyddade repliker med Azure PowerShell
               href: howto-read-replicas-powershell.md
+        - name: Flytta mellan regioner
+          items:
+            - name: Azure Portal
+              href: howto-move-regions-portal.md
     - name: Hyperskala (Citus)
       items:
         - name: Skapa användare

@@ -1,20 +1,23 @@
 ---
-title: inkludera fil
-description: inkludera fil
-services: virtual-machines
-author: msraiye
+title: Azure-Skrivningsaccelerator
+description: Dokumentation om hur du aktiverar och använder Skrivningsaccelerator
+author: raiye
+manager: markkie
 ms.service: virtual-machines
-ms.topic: include
-ms.date: 11/27/2019
+ms.topic: how-to
+ms.workload: infrastructure
+ms.date: 2/20/2019
 ms.author: raiye
-ms.custom: include file
-ms.openlocfilehash: 456d550659c04b2272c048fcd64fe73b1a11522a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.subservice: disks
+ms.openlocfilehash: 0b5e6134de2260998e599bad0d1bf6b381898ffd
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74566369"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88513248"
 ---
+# <a name="enable-write-accelerator"></a>Aktivera Skrivningsaccelerator
+
 Skrivningsaccelerator är en disk kapacitet för Virtual Machines-serien (VM) på Premium Storage med Azure Managed Disks exklusivt. Som namn tillstånd är syftet med funktionen att förbättra I/O-svars tiden för skrivningar mot Azure Premium Storage. Skrivningsaccelerator passar utmärkt var logg fils uppdateringar krävs för att vara kvar på disk i ett mycket bra sätt för moderna databaser.
 
 Skrivningsaccelerator är allmänt tillgängligt för virtuella datorer i M-serien i det offentliga molnet.
@@ -167,11 +170,11 @@ Du kan aktivera Skrivningsaccelerator via portalen där du anger inställningarn
 
 Du kan använda [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) för att aktivera Skrivningsaccelerator.
 
-Om du vill aktivera Skrivningsaccelerator på en befintlig disk använder du [AZ VM Update](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-update). du kan använda följande exempel om du ersätter DiskName, VMName och ResourceGroup med dina egna värden:`az vm update -g group1 -n vm1 -write-accelerator 1=true`
+Om du vill aktivera Skrivningsaccelerator på en befintlig disk använder du [AZ VM Update](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-update). du kan använda följande exempel om du ersätter DiskName, VMName och ResourceGroup med dina egna värden: `az vm update -g group1 -n vm1 -write-accelerator 1=true`
 
-Om du vill ansluta en disk med Skrivningsaccelerator aktiverat Använd [AZ VM disk Attach](https://docs.microsoft.com/cli/azure/vm/disk?view=azure-cli-latest#az-vm-disk-attach)kan du använda följande exempel om du ersätter dina egna värden:`az vm disk attach -g group1 -vm-name vm1 -disk d1 --enable-write-accelerator`
+Om du vill ansluta en disk med Skrivningsaccelerator aktiverat Använd [AZ VM disk Attach](https://docs.microsoft.com/cli/azure/vm/disk?view=azure-cli-latest#az-vm-disk-attach)kan du använda följande exempel om du ersätter dina egna värden: `az vm disk attach -g group1 -vm-name vm1 -disk d1 --enable-write-accelerator`
 
-Om du vill inaktivera Skrivningsaccelerator använder du [AZ VM Update](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-update)och anger egenskaperna till falskt:`az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false`
+Om du vill inaktivera Skrivningsaccelerator använder du [AZ VM Update](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-update)och anger egenskaperna till falskt: `az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false`
 
 ## <a name="enabling-write-accelerator-using-rest-apis"></a>Aktivera Skrivningsaccelerator med hjälp av REST API: er
 
@@ -181,15 +184,15 @@ Om du vill distribuera via Azure REST API måste du installera Azure-armclient.
 
 Om du vill köra armclient måste du installera den genom choklad. Du kan installera det via cmd.exe eller PowerShell. Använd utökade rättigheter för dessa kommandon ("kör som administratör").
 
-Kör följande kommando med cmd.exe:`@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"`
+Kör följande kommando med cmd.exe: `@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"`
 
-Använd Power Shell och kör följande kommando:`Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))`
+Använd Power Shell och kör följande kommando: `Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))`
 
-Nu kan du installera armclient genom att använda följande kommando i antingen cmd.exe eller PowerShell`choco install armclient`
+Nu kan du installera armclient genom att använda följande kommando i antingen cmd.exe eller PowerShell `choco install armclient`
 
 ### <a name="getting-your-current-vm-configuration"></a>Hämta din aktuella VM-konfiguration
 
-Om du vill ändra disk konfigurationens attribut måste du först hämta den aktuella konfigurationen i en JSON-fil. Du kan hämta den aktuella konfigurationen genom att köra följande kommando:`armclient GET /subscriptions/<<subscription-ID<</resourceGroups/<<ResourceGroup>>/providers/Microsoft.Compute/virtualMachines/<<virtualmachinename>>?api-version=2017-12-01 > <<filename.json>>`
+Om du vill ändra disk konfigurationens attribut måste du först hämta den aktuella konfigurationen i en JSON-fil. Du kan hämta den aktuella konfigurationen genom att köra följande kommando: `armclient GET /subscriptions/<<subscription-ID<</resourceGroups/<<ResourceGroup>>/providers/Microsoft.Compute/virtualMachines/<<virtualmachinename>>?api-version=2017-12-01 > <<filename.json>>`
 
 Ersätt villkoren i <<   >> med dina data, inklusive fil namnet som JSON-filen ska ha.
 
@@ -292,7 +295,7 @@ Uppdatera sedan JSON-filen och aktivera Skrivningsaccelerator på disken med nam
         }
 ```
 
-Uppdatera sedan den befintliga distributionen med det här kommandot:`armclient PUT /subscriptions/<<subscription-ID<</resourceGroups/<<ResourceGroup>>/providers/Microsoft.Compute/virtualMachines/<<virtualmachinename>>?api-version=2017-12-01 @<<filename.json>>`
+Uppdatera sedan den befintliga distributionen med det här kommandot: `armclient PUT /subscriptions/<<subscription-ID<</resourceGroups/<<ResourceGroup>>/providers/Microsoft.Compute/virtualMachines/<<virtualmachinename>>?api-version=2017-12-01 @<<filename.json>>`
 
 Utdata bör se ut som den som visas nedan. Du kan se att Skrivningsaccelerator aktive rad för en disk.
 

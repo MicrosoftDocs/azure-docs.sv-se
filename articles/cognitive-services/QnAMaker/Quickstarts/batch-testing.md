@@ -3,12 +3,12 @@ title: 'Snabb start: testa kunskaps bas med batch-frågor'
 description: Använd batch-testverktyget QnA Maker för att testa kunskaps baserna i din QnA Maker-resurs för förväntade svar, förtroende poäng och frågor om flera inaktivitet.
 ms.topic: tutorial
 ms.date: 05/26/2020
-ms.openlocfilehash: 01c767a6fbea5061f644052234f7462857dd342b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: bcee98678212a3bc233c36a831f6bcde7e6ae550
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84337741"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88531077"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Snabb start: testa kunskaps bas med batch-frågor och förväntade svar
 
@@ -16,7 +16,7 @@ Använd batch-testverktyget QnA Maker för att testa kunskaps baserna i din QnA 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services/)
 * [Skapa antingen en QNA Maker tjänst](create-publish-knowledge-base.md) eller Använd en befintlig tjänst som använder det engelska språket.
 * Ladda ned [exempel `.docx` filen med flera turn](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)
 * Hämta [batch-testverktyget](https://aka.ms/qnamakerbatchtestingtool), extrahera den körbara filen från `.zip` filen.
@@ -25,7 +25,7 @@ Använd batch-testverktyget QnA Maker för att testa kunskaps baserna i din QnA 
 
 [Logga](https://www.qnamaker.ai/) in på QNA Maker Portal.
 
-## <a name="create-a-new-knowledge-base-from-the-multi-turn-sampledocx-file"></a>Skapa en ny kunskaps bas från filen multi-turn Sample. docx
+## <a name="create-a-new-knowledge-base-from-the-multi-turn-sampledocx-file"></a>Skapa en ny kunskaps bas från sample.docx-filen med flera turn
 
 1. Välj **skapa en kunskaps bas** i verktygsfältet.
 1. Hoppa över **steg 1** eftersom du redan bör ha en QNA Maker resurs, gå vidare till **steg 2** för att välja din befintliga resursinformation:
@@ -42,7 +42,7 @@ Använd batch-testverktyget QnA Maker för att testa kunskaps baserna i din QnA 
     |**Aktivera extrahering av flera adresser från URL: er, PDF-eller docx-filer.**|Markerad|
     |**Standard svars text**| `Batch test - default answer not found.`|
     |**+ Lägg till fil**|Välj den nedladdade `.docx` fil listan i kraven.|
-    |**CHI2TEST – Chat**|Välj **Professional**|
+    |**Chit-chat**|Välj **Professional**|
 
 1. I **steg 5**väljer **du skapa din KB**.
 
@@ -56,18 +56,18 @@ Använd batch-testverktyget QnA Maker för att testa kunskaps baserna i din QnA 
     |Obligatoriska data| Exempel|
     |--|--|
     |Publicerad värd|`https://YOUR-RESOURCE-NAME.azurewebsites.net`|
-    |Publicerad nyckel|`XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`(32 tecken sträng visas efter `Endpoint` )|
-    |App-ID|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`(36 tecken sträng visas som en del av `POST` ) |
+    |Publicerad nyckel|`XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX` (32 tecken sträng visas efter `Endpoint` )|
+    |App-ID|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (36 tecken sträng visas som en del av `POST` ) |
 
 ## <a name="create-batch-test-file-with-question-ids"></a>Skapa batch-testfilen med fråga-ID
 
-För att kunna använda batch-testverktyget skapar du en fil med namnet `batch-test-data-1.tsv` med en text redigerare. Filen måste ha följande kolumner avgränsade med en flik.
+För att kunna använda batch-testverktyget skapar du en fil med namnet `batch-test-data-1.tsv` med en text redigerare. Filen ska vara i UTF-8-format och måste ha följande kolumner avgränsade med en flik.
 
-|Fält för TSV-indatafiler|Anteckningar|Exempel|
+|Fält för TSV-indatafiler|Kommentarer|Exempel|
 |--|--|--|
-|Kunskaps bas-ID|Ditt kunskaps bas-ID finns på publicerings sidan. Testa flera kunskaps banker i samma tjänst samtidigt i en enda fil med hjälp av olika kunskaps bas-ID: n i en enda fil.|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`(36 tecken sträng visas som en del av `POST` ) |
+|Kunskaps bas-ID|Ditt kunskaps bas-ID finns på publicerings sidan. Testa flera kunskaps banker i samma tjänst samtidigt i en enda fil med hjälp av olika kunskaps bas-ID: n i en enda fil.|`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (36 tecken sträng visas som en del av `POST` ) |
 |Fråga|Den frågetext som en användare skulle ange. 1 000-Character max.|`How do I sign out?`|
-|Metadatataggar|valfri|`topic:power`använder _nyckeln: värde_ format|
+|Metadatataggar|valfri|`topic:power` använder _nyckeln: värde_ format|
 |Övre parameter|valfri|`25`|
 |Förväntat svars-ID|valfri|`13`|
 
@@ -130,7 +130,7 @@ Använd följande diagram för att förstå hur du hittar fältvärdena för val
 |Kolumn nummer|Valfri kolumn|Dataplats|
 |--|--|--|
 |3|metadata|Exportera befintlig kunskaps bas för befintlig _nyckel:_ värdepar.|
-|4|överst|Standardvärdet `25` rekommenderas.|
+|4|top|Standardvärdet `25` rekommenderas.|
 |5|ID för fråga och svars uppsättning|Exportera befintlig kunskaps bas för ID-värden. Observera också att ID: n returnerades i utdatafilen.|
 
 ## <a name="add-metadata-to-the-knowledge-base"></a>Lägg till metadata i kunskaps basen

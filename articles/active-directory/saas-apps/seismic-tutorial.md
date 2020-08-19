@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med seismisk | Microsoft Docs'
 description: Lär dig att konfigurera enkel inloggning mellan Azure Active Directory och Seismic.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 56014c05-e37f-4f85-bcfa-5115dda2d678
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: ec9a308d0eb0ea97d60ce427bb222dbebc33f735
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5f21fea2b1908a0ccd5a24ae424f405fbf141c9f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518308"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543201"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-seismic"></a>Självstudie: Azure Active Directory integrering med seismisk
 
@@ -152,7 +148,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med GaggleAMP | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och GaggleAMP.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9cc1a4b7-964b-406b-9e0c-05cb1a7c9856
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 4a6dc3dc2b0580f72ffae5cb5d034b0acdb64612
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7293430968d82fbf9a5efd370f3e0a3ca85842a2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73155383"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550936"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gaggleamp"></a>Självstudie: Azure Active Directory integrering med GaggleAMP
 
@@ -32,9 +28,9 @@ Integreringen av GaggleAMP med Azure AD medför följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att konfigurera Azure AD-integrering med GaggleAMP behöver du följande:
 
@@ -113,7 +109,7 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Gaggl
 
     ![image](common/both-preintegrated-signon.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://gaggleamp.com/i/<customerid>`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://gaggleamp.com/i/<customerid>`
 
     > [!NOTE]
     > Värdet är inte verkligt. Uppdatera värdet med den faktiska inloggnings-URL:en. Kontakta [kundsupporten för GaggleAMP](mailto:sales@gaggleamp.com) och be om värdet. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -134,7 +130,7 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Gaggl
 
 ### <a name="configure-gaggleamp-single-sign-on"></a>Konfigurera enkel inloggning för GaggleAMP
 
-1. I en annan webb läsar instans navigerar du till sidan med SAML SSO som skapats åt dig av Gaggle support team *https://accounts.gaggleamp.com/saml_configurations/oXH8sQcP79dOzgFPqrMTyw/edit*(till exempel:).
+1. I en annan webb läsar instans navigerar du till sidan med SAML SSO som skapats åt dig av Gaggle support team (till exempel: *https://accounts.gaggleamp.com/saml_configurations/oXH8sQcP79dOzgFPqrMTyw/edit* ).
 
 2. På sidan **SAML SSO** (Enkel inloggning med SAML) utför du följande steg:  
    
@@ -168,8 +164,8 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** skriver du **brittasimon\@yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

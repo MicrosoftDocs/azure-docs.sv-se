@@ -32,13 +32,13 @@ ms.locfileid: "84231602"
 
 1. I **App Service: skapa ny**, Använd de värden som anges i följande tabell:
 
-    | Inställningen      | Värde  | Beskrivning                                |
+    | Inställning      | Värde  | Beskrivning                                |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Namn** | Globalt unikt namn | Namn som unikt identifierar din nya funktionsapp. Acceptera det här namnet eller ange ett nytt namn. Giltiga tecken är: `a-z` , `0-9` , och `-` . |
     | **Prenumeration** | Din prenumeration | Den Azure-prenumeration som ska användas. Godkänn denna prenumeration eller Välj en ny i list rutan. |
-    | **[Resurs grupp](../articles/azure-resource-manager/management/overview.md)** | Namnet på din resurs grupp |  Resurs gruppen där du vill skapa din Function-app. Välj en befintlig resurs grupp i den nedrullningsbara listan eller Välj **ny** för att skapa en ny resurs grupp.|
-    | **[Värd plan](../articles/azure-functions/functions-scale.md)** | Namn på din värd plan | Välj **nytt** om du vill konfigurera en server lös plan. Se till att välja **förbrukningen** under **storlek**. När du publicerar projektet till en Function-app som körs i en [förbruknings plan](../articles/azure-functions/functions-scale.md#consumption-plan)betalar du bara för körningar av Functions-appen. Andra värd planer ådrar sig högre kostnader. Om du kör i en annan plan än **förbrukningen**måste du hantera [skalningen av din Function-app](../articles/azure-functions/functions-scale.md).  |
-    | **Position** | Platsen för App Service | Välj en **plats** i en [region](https://azure.microsoft.com/regions/) nära dig eller andra tjänster som dina funktioner har åtkomst till. |
+    | **[Resursgrupp](../articles/azure-resource-manager/management/overview.md)** | Namnet på din resurs grupp |  Resurs gruppen där du vill skapa din Function-app. Välj en befintlig resurs grupp i den nedrullningsbara listan eller Välj **ny** för att skapa en ny resurs grupp.|
+    | **[Värdplan](../articles/azure-functions/functions-scale.md)** | Namn på din värd plan | Välj **nytt** om du vill konfigurera en server lös plan. Se till att välja **förbrukningen** under **storlek**. När du publicerar projektet till en Function-app som körs i en [förbruknings plan](../articles/azure-functions/functions-scale.md#consumption-plan)betalar du bara för körningar av Functions-appen. Andra värd planer ådrar sig högre kostnader. Om du kör i en annan plan än **förbrukningen**måste du hantera [skalningen av din Function-app](../articles/azure-functions/functions-scale.md).  |
+    | **Plats** | Platsen för App Service | Välj en **plats** i en [region](https://azure.microsoft.com/regions/) nära dig eller andra tjänster som dina funktioner har åtkomst till. |
     | **[Azure Storage](../articles/storage/common/storage-account-create.md)** | Allmänt lagrings konto | Ett Azure Storage-konto krävs av Functions-körningen. Välj **nytt** om du vill konfigurera ett allmänt lagrings konto. Du kan också välja ett befintligt konto som uppfyller [kraven för lagrings kontot](../articles/azure-functions/functions-scale.md#storage-account-requirements).  |
 
     ![Dialogrutan Skapa App Service](./media/functions-vstools-publish/functions-visual-studio-publish.png)

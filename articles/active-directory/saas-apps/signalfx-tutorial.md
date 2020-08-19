@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med SignalFx | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och SignalFx.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 6d5ab4b0-29bc-4b20-8536-d64db7530f32
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 149718dcd325ef6bd6a6754ba100ffdc34be0a07
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3eae423763d2d4a05b33e4e1d4b6e9e087a47ba3
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79136422"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521577"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med SignalFx
 
@@ -32,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar SignalFx med Azure 
 
 Mer information om SaaS program integrering med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar behöver du:
 
@@ -90,7 +86,7 @@ Använd de här instruktionerna för att aktivera Azure AD SSO i Azure Portal.
 
     a. I **identifierare**anger du följande URL `https://api.<realm>.signalfx.com/v1/saml/metadata` och ersätter `<realm>` med din SignalFx-sfär. 
 
-    b. I **svars-URL**anger du följande `https://api.<realm>.signalfx.com/v1/saml/acs/<integration ID>` URL och `<realm>` ersätter med din SignalFx-sfär, samt `<integration ID>` med det **integrations-ID** som du kopierade tidigare från SignalFx-användargränssnittet.
+    b. I **svars-URL**anger du följande URL `https://api.<realm>.signalfx.com/v1/saml/acs/<integration ID>` och ersätter `<realm>` med din SignalFx-sfär, samt `<integration ID>` med det **integrations-ID** som du kopierade tidigare från SignalFx-användargränssnittet.
 
 1. SignalFx-programmet förväntar sig SAML-intyg i ett särskilt format, vilket innebär att du kan lägga till anpassade mappningar av attribut i konfigurationen för SAML-token. 
     
@@ -119,8 +115,8 @@ Använd de här anvisningarna för att skapa en test användare i Azure Portal s
 1. I Azure Portal i navigerings fönstret till vänster väljer du **Azure Active Directory**och väljer sedan **användare**. Välj sedan **alla användare**.
 1. Välj **ny användare**längst upp på sidan.
 1. I **användar** egenskaperna:
-   1. I **användar namn**anger `username@companydomain.extension`du, till exempel `b.simon@contoso.com`.
-   1. I **namn**anger `B.Simon`du.
+   1. I **användar namn**anger `username@companydomain.extension` du, till exempel `b.simon@contoso.com` .
+   1. I **namn**anger du `B.Simon` .
    1. Markera **Visa lösen ord**och kopiera sedan det visade värdet i **lösen ord**. Du behöver den här informationen i senare steg för att kunna testa den här integrationen. 
    1. Klicka på **Skapa**.
 
@@ -163,7 +159,7 @@ Läs följande information om hur du testar SSO, samt förväntningar för att l
         * Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 * SignalFx-programmet kan nås från åtkomst panelen eller via en anpassad inloggnings sida som tilldelats organisationen. Test användaren bör testa integreringen med början från någon av dessa platser.
-    * Test användaren kan använda de autentiseringsuppgifter som skapades tidigare i den här processen **b.simon@contoso.com**för.
+    * Test användaren kan använda de autentiseringsuppgifter som skapades tidigare i den här processen för **b.simon@contoso.com** .
 
 ### <a name="first-time-logins"></a>Inloggningar i första gången
 
@@ -173,11 +169,11 @@ Läs följande information om hur du testar SSO, samt förväntningar för att l
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Vad är session Control i Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 

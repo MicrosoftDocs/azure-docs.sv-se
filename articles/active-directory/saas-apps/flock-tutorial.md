@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med flock | Microsoft Docs'
 description: Lär dig att konfigurera enkel inloggning mellan Azure Active Directory och Flock.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7b2c3ac5-17f1-49a0-8961-c541b258d4b1
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 1751cc5d5bcf47f8fa269853051eee4185d4e3aa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c14d70f7489115b980479e7225cc3b47f80b3f2f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73156361"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554977"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flock"></a>Självstudie: Azure Active Directory integrering med flock
 
@@ -32,9 +28,9 @@ När du integrerar Flock med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att konfigurera Azure AD-integrering med Flock behöver du följande:
 
@@ -164,8 +160,8 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** skriver du **brittasimon\@yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
@@ -213,7 +209,7 @@ Azure AD-användarna måste vara etablerade i Flock för att kunna logga in. Nä
 
     ![Lägga till medarbetare](./media/flock-tutorial/user2.png)
 
-4. Ange e-postadressen till användaren **som\@Brittasimon contoso.com** och välj sedan **Lägg till användare**.
+4. Ange e-postadressen till användaren som **Brittasimon \@ contoso.com** och välj sedan **Lägg till användare**.
 
     ![Lägga till medarbetare](./media/flock-tutorial/user3.png)
 

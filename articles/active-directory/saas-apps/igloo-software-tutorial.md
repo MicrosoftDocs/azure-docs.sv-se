@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med Igloo-programvara | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Igloo-programvara.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2eb625c1-d3fc-4ae1-a304-6a6733a10e6e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/06/2019
 ms.author: jeedes
-ms.openlocfilehash: df1d70f895e2e0a81344cf2a4e8e2d9963c951fa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 857869b73e76c76075ac9607b64ffbb9d7358b5b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67100589"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545302"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>Självstudie: Azure Active Directory integrering med Igloo-programvara
 
@@ -32,9 +28,9 @@ Att integrera Igloo-program med Azure AD ger följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Igloo-programvara behöver du följande objekt:
 
@@ -106,11 +102,11 @@ Utför följande steg för att konfigurera enkel inloggning med Igloo-programvar
 
     ![Information om enkel inloggning för Igloo program domän och URL: er](common/sp-identifier-reply.png)
 
-    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<company name>.igloocommmunities.com`
+    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://<company name>.igloocommmunities.com`
 
-    b. I rutan **identifierare** anger du en URL med följande mönster:`https://<company name>.igloocommmunities.com/saml.digest`
+    b. I rutan **identifierare** anger du en URL med följande mönster: `https://<company name>.igloocommmunities.com/saml.digest`
 
-    c. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<company name>.igloocommmunities.com/saml.digest`
+    c. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<company name>.igloocommmunities.com/saml.digest`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera de här värdena med den faktiska inloggnings-URL:en, identifieraren och svars-URL:en. Kontakta [Igloo Software client support team](https://www.igloosoftware.com/services/support) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -202,7 +198,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **Användarnamn** anger du **brittasimon@yourcompanydomain.extension**  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

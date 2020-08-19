@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0f4d9811dc288222c0a2190805a8b052cb1ae47b
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 9f140594ef18df7f9a6a3b919998962c966cde76
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563933"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587607"
 ---
 # <a name="manage-digital-twins"></a>Hantera digitala tvillingar
 
@@ -37,18 +37,22 @@ Om du vill skapa en digital Digital måste du ange:
 
 Om du vill kan du ange startvärden för alla egenskaper för den digitala, dubbla. 
 
-Värdena modell och initial egenskap anges via `initData` parametern, som är en JSON-sträng som innehåller relevanta data.
+Värdena modell och initial egenskap anges via `initData` parametern, som är en JSON-sträng som innehåller relevanta data. Fortsätt till nästa avsnitt om du vill ha mer information om att strukturera objektet.
 
 > [!TIP]
 > När du har skapat eller uppdaterat en dubbel, kan det finnas en fördröjning på upp till 10 sekunder innan ändringarna visas i [frågor](how-to-query-graph.md). `GetDigitalTwin`API (beskrivs [längre fram i den här artikeln](#get-data-for-a-digital-twin)) förväntar sig inte den här fördröjningen, så Använd API-anropet i stället för att fråga om du vill se dina nyskapade dubblare om du behöver ett direkt svar. 
 
-### <a name="initialize-properties"></a>Initiera egenskaper
+### <a name="initialize-model-and-properties"></a>Initiera modell och egenskaper
 
-Det dubbla skapande-API: et accepterar ett objekt som kan serialiseras till en giltig JSON-Beskrivning av de dubbla egenskaperna. Se [*begrepp: digitala garn och den dubbla grafen*](concepts-twins-graph.md) för en beskrivning av JSON-formatet för en dubbel.
+Det dubbla skapande-API: et accepterar ett objekt som är serialiserat i en giltig JSON-Beskrivning av de dubbla egenskaperna. Se [*begrepp: digitala garn och den dubbla grafen*](concepts-twins-graph.md) för en beskrivning av JSON-formatet för en dubbel. 
+
+Först ska du skapa ett data objekt som representerar den dubbla och dess egenskaps data. Sedan kan du använda `JsonSerializer` för att skicka en serialiserad version av detta till API-anropet för `initdata` parametern.
 
 Du kan skapa ett parameter objekt antingen manuellt eller med hjälp av en angiven hjälp klass. Här är ett exempel på var och en.
 
 #### <a name="create-twins-using-manually-created-data"></a>Skapa dubbla med manuellt skapade data
+
+Utan att använda anpassade hjälp klasser kan du representera en dubbels egenskaper i a `Dictionary<string, object>` , där `string` är namnet på egenskapen och `object` är ett objekt som representerar egenskapen och dess värde.
 
 ```csharp
 // Define the model type for the twin to be created
@@ -68,6 +72,8 @@ client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<Dictionary<stri
 
 #### <a name="create-twins-with-the-helper-class"></a>Skapa dubbla med hjälp av klassen
 
+Med hjälp klassen i `BasicDigitalTwin` kan du lagra egenskaps fält i ett "" ""-objekt mer direkt. Du kanske fortfarande vill bygga listan med egenskaper med hjälp av en `Dictionary<string, object>` , som sedan kan läggas till i det dubbla objektet som dess `CustomProperties` direkt.
+
 ```csharp
 BasicDigitalTwin twin = new BasicDigitalTwin();
 twin.Metadata = new DigitalTwinMetadata();
@@ -80,6 +86,13 @@ twin.CustomProperties = props;
 
 client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<BasicDigitalTwin>(twin));
 ```
+
+>[!NOTE]
+> `BasicDigitalTwin` objekt levereras med ett `Id` fält. Du kan lämna fältet tomt, men om du lägger till ett ID-värde måste det matcha ID-parametern som skickas till `CreateDigitalTwin` anropet. I exemplet ovan skulle det se ut så här:
+>
+>```csharp
+>twin.Id = "myNewRoomID";
+>```
 
 ## <a name="get-data-for-a-digital-twin"></a>Hämta data för en digital, dubbel
 
@@ -181,6 +194,8 @@ Om du vill uppdatera egenskaperna till en digital, skriver du den information so
 await client.UpdateDigitalTwin(id, patch);
 ```
 
+Ett korrigerings anrop kan uppdatera så många egenskaper på samma sätt som du vill (även alla). Om du behöver uppdatera egenskaper över flera multiplar behöver du ett separat uppdaterings anrop för var och en.
+
 > [!TIP]
 > När du har skapat eller uppdaterat en dubbel, kan det finnas en fördröjning på upp till 10 sekunder innan ändringarna visas i [frågor](how-to-query-graph.md). `GetDigitalTwin`API: et (beskrivs [tidigare i den här artikeln](#get-data-for-a-digital-twin)) förväntar sig inte den här fördröjningen, så Använd API-anropet istället för att fråga om du vill se dina nyligen uppdaterade dubbla om du behöver ett direkt svar. 
 
@@ -204,6 +219,7 @@ Här är ett exempel på en JSON-patch-kod. Det här dokumentet ersätter *Mass*
 Du kan skapa uppdateringar manuellt eller genom att använda en serialiserande hjälp klass i [SDK](how-to-use-apis-sdks.md). Här är ett exempel på var och en.
 
 #### <a name="create-patches-manually"></a>Skapa korrigeringar manuellt
+
 ```csharp
 List<object> twinData = new List<object>();
 twinData.Add(new Dictionary<string, object>() {
@@ -278,6 +294,19 @@ Korrigeringen för den här situationen måste uppdatera både modellen och den 
   }
 ]
 ```
+
+### <a name="handle-conflicting-update-calls"></a>Hantera motstridiga uppdaterings anrop
+
+Azure Digitals dubbla, säkerställer att alla inkommande begär Anden bearbetas efter den andra. Det innebär att även om flera funktioner försöker uppdatera samma egenskap på en enhet samtidigt, **behöver du inte** skriva explicit låsnings kod för att hantera konflikten.
+
+Det här beteendet sker per nivå. 
+
+Ett exempel är att anta ett scenario där de här tre anropen kommer till samma tidpunkt: 
+*   Skriv egenskap A på *Twin1*
+*   Skriv egenskap B på *Twin1*
+*   Skriv egenskap A på *Twin2*
+
+De två anropen som ändrar *Twin1* körs en efter en annan och ändrings meddelanden genereras för varje ändring. Anropet till Modify *Twin2* kan köras samtidigt utan konflikter, så snart det kommer.
 
 ## <a name="delete-a-digital-twin"></a>Ta bort en digital delad
 

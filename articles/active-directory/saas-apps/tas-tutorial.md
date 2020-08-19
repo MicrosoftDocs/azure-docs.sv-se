@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med aktivitet | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och aktivitet.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 129b6e69-e3b4-41d7-9ab5-a2ddd0068f76
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: efd64830c0d9afa83838adef96cf1c103b4485e8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4aaf4f059976635f32c1a4e6b7130f8835598f98
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68943281"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552143"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tas"></a>Självstudie: Azure Active Directory integration med aktivitet
 
@@ -32,9 +28,9 @@ Att integrera aktivitet med Azure AD ger följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integration med aktivitet behöver du följande objekt:
 
@@ -105,15 +101,15 @@ Utför följande steg för att konfigurera enkel inloggning med Azure AD med akt
 
     ![Information om enkel inloggning för domän och URL-adresser](common/idp-intiated.png)
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://taseu.combtas.com/<DOMAIN>`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://taseu.combtas.com/<DOMAIN>`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://taseu.combtas.com/<ENVIRONMENTNAME>/AssertionService.aspx`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://taseu.combtas.com/<ENVIRONMENTNAME>/AssertionService.aspx`
 
 5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     ![Information om enkel inloggning för domän och URL-adresser](common/metadata-upload-additional-signon.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://taseu.combtas.com/<DOMAIN>`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://taseu.combtas.com/<DOMAIN>`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Du kommer att uppdatera dessa med den faktiska identifieraren, svars-URL: en och inloggnings-URL: en som beskrivs senare i självstudien. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -159,7 +155,7 @@ Utför följande steg för att konfigurera enkel inloggning med Azure AD med akt
 
     f. Kopiera URL: en för **enkel inloggning** och klistra in den i ID-rutan **(entitets-ID)** och **Logga in URL** för **grundläggande SAML-konfiguration** i Azure Portal. Observera att URL: en är Skift läges känslig och måste sluta med ett snedstreck (/).
 
-    g. Kopiera **bekräftelse tjänstens** URL på installations sidan och klistra in den i text rutan **SVARs-URL** i den **grundläggande SAML-konfigurationen** i Azure Portal.
+    ex. Kopiera **bekräftelse tjänstens** URL på installations sidan och klistra in den i text rutan **SVARs-URL** i den  **grundläggande SAML-konfigurationen** i Azure Portal.
 
     h. Klicka på **Infoga SSO-rad**.
 
@@ -182,7 +178,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **Användarnamn** anger du **brittasimon@yourcompanydomain.extension**  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

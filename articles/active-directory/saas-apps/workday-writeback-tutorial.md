@@ -3,23 +3,19 @@ title: 'Självstudie: Konfigurera tillbakaskrivning av arbets dagar i Azure Acti
 description: Lär dig hur du konfigurerar tillbakaskrivning av attribut från Azure AD till Workday
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: daveba
-ms.assetid: ad255bd4-9e50-43a1-a92b-359215867b6b
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 1d76fb96676ad49ce28ff4ef0d6c4fbc84636638
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 324d3a21e1694d243f03beca28ac8376bedffa4d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84041794"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88526838"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>Självstudie: Konfigurera tillbakaskrivning av attribut från Azure AD till Workday
 Syftet med den här självstudien är att visa de steg du behöver utföra för att göra om attribut från Azure AD till Workday. Tillbakaskrivning av tillbakaskrivning-appen för Workday stöder tilldelning av värden till följande Workday-attribut:

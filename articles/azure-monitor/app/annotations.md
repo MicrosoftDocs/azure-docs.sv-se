@@ -2,13 +2,13 @@
 title: Versions anteckningar för Application Insights | Microsoft Docs
 description: Lägg till distribution eller skapa markörer i dina Metrics Explorer-diagram i Application Insights.
 ms.topic: conceptual
-ms.date: 07/01/2019
-ms.openlocfilehash: 8e9e0cb49343524e8a45831566cf802b1c8c5d9b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/14/2020
+ms.openlocfilehash: e21981f134f6a78109d70b1edf6d61e204b64e12
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320671"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258411"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Anteckningar på mått diagram i Application Insights
 
@@ -68,6 +68,10 @@ Skapa en separat API-nyckel för var och en av dina mallar för Azure-pipeliner.
    ![På fliken Azure DevOps-variabler väljer du Lägg till, namnger variabeln ApiKey och klistrar in API-nyckeln under värde.](./media/annotations/7-paste-api-key.png)
    
 1. Spara mallen genom att välja **Spara** i fönstret för huvud versions mal len.
+
+
+   > [!NOTE]
+   > Begränsningar för API-nycklar beskrivs i [dokumentationen REST API Rate Limits](https://dev.applicationinsights.io/documentation/Authorization/Rate-limits).
 
 ## <a name="view-annotations"></a>Visa anteckningar
 

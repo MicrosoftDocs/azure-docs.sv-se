@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Andromeda | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Andromeda.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7a142c86-ca0c-4915-b1d8-124c08c3e3d8
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68fa570ecfbafe2000bfa6eb9fa159dff48219a6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 31fc1877dd0edd2fd670f0f9466692ac7bc8ad15
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67107072"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88531199"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>Självstudie: Azure Active Directory integrering med Andromeda
 
@@ -33,9 +28,9 @@ Genom att integrera Andromeda med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Andromeda behöver du följande objekt:
 
@@ -107,15 +102,15 @@ Utför följande steg för att konfigurera enkel inloggning med Andromeda i Azur
 
     ![Information om enkel inloggning för Andromeda-domän och URL: er](common/idp-intiated.png)
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://<tenantURL>.ngcxpress.com/`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://<tenantURL>.ngcxpress.com/`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<tenantURL>.ngcxpress.com/SAMLConsumer.aspx`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<tenantURL>.ngcxpress.com/SAMLConsumer.aspx`
 
 5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     ![Information om enkel inloggning för Andromeda-domän och URL: er](common/metadata-upload-additional-signon.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<tenantURL>.ngcxpress.com/SAMLLogon.aspx`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<tenantURL>.ngcxpress.com/SAMLLogon.aspx`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Du uppdaterar värdet med den faktiska identifieraren, svars-URL: en och inloggnings-URL: en som beskrivs senare i självstudien.
@@ -154,7 +149,7 @@ Utför följande steg för att konfigurera enkel inloggning med Andromeda i Azur
 
     f. Klicka på **OK**
 
-    g. Klicka på **Spara**.
+    ex. Klicka på **Spara**.
 
 8. På sidan **Konfigurera enkel inloggning med SAML** går du till avsnittet **SAML-signeringscertifikat**, klickar du på **Ladda ned** för att ladda ned **Certifikat (Base64)** från de angivna alternativen enligt dina behov och sparar det på datorn.
 
@@ -198,7 +193,7 @@ Utför följande steg för att konfigurera enkel inloggning med Andromeda i Azur
 
     f. I text rutan för **enkel inloggning i slut punkt** klistrar du in värdet för **inloggnings-URL: en** som du har kopierat från Azure Portal.
 
-    g. Öppna det nedladdade **base64-kodade certifikatet** från Azure Portal i anteckningar, klistra in det i text rutan **X 509-certifikat** .
+    ex. Öppna det nedladdade **base64-kodade certifikatet** från Azure Portal i anteckningar, klistra in det i text rutan **X 509-certifikat** .
     
     h. Mappa följande attribut med respektive värde för att under lätta SSO-inloggning från Azure AD. Attributet **User ID** krävs för inloggning. För etablering, krävs **e-post**, **företag**, **UserType**och **roll** . I det här avsnittet definierar vi attribut mappning (namn och värden) som motsvarar de som definierats i Azure Portal
 
@@ -224,7 +219,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** `brittasimon@yourcompanydomain.extension`. Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** `brittasimon@yourcompanydomain.extension` . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

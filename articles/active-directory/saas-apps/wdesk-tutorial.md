@@ -2,24 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Wdesk | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Wdesk.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 06900a91-a326-4663-8ba6-69ae741a536e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 349a9920adc0d9353ee8e8e821f54bc2ea2f2616
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9e64d76e29ba98181aac12e1e3167351a9c1aa95
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80666988"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88524025"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wdesk"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Wdesk
 
@@ -31,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar Wdesk med Azure Act
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -92,15 +89,15 @@ Utför följande steg för att konfigurera enkel inloggning med Wdesk i Azure AD
 
     ![Information om enkel inloggning för Wdesk-domän och URL: er](common/idp-intiated.png)
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://<subdomain>.wdesk.com/auth/saml/sp/metadata/<instancename>`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://<subdomain>.wdesk.com/auth/saml/sp/metadata/<instancename>`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<subdomain>.wdesk.com/auth/saml/sp/consumer/<instancename>`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<subdomain>.wdesk.com/auth/saml/sp/consumer/<instancename>`
 
 5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     ![Information om enkel inloggning för Wdesk-domän och URL: er](common/metadata-upload-additional-signon.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<subdomain>.wdesk.com/auth/login/saml/<instancename>`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<subdomain>.wdesk.com/auth/login/saml/<instancename>`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera de här värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Du får dessa värden från WDesk-portalen när du konfigurerar SSO.
@@ -137,7 +134,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** brittasimon@yourcompanydomain.extension. Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** brittasimon@yourcompanydomain.extension . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
@@ -177,7 +174,7 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
  
      ![Konfigurera enkel inloggning](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
-3. I Wdesk-administratör navigerar du till **säkerhet**, sedan **SAML** > **SAML Settings**:
+3. I Wdesk-administratör navigerar du till **säkerhet**, sedan **SAML**  >  **SAML Settings**:
 
     ![Konfigurera enkel inloggning](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
 
@@ -201,7 +198,7 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
    
       d. Spara ändringarna genom att klicka på **Spara** på Azure Portal.      
 
-6. Klicka på **Konfigurera IDP inställningar** för att öppna dialog rutan **Redigera inställningar för IDP** . Klicka på **Välj fil** för att hitta den **metadata. XML-** fil som du sparade från Azure Portal och ladda sedan upp den.
+6. Klicka på **Konfigurera IDP inställningar** för att öppna dialog rutan **Redigera inställningar för IDP** . Klicka på **Välj fil** för att hitta **Metadata.xml** filen som du sparade från Azure Portal och ladda sedan upp den.
     
     ![Konfigurera enkel inloggning](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig5.png)
   
@@ -217,7 +214,7 @@ Om du vill att Azure AD-användare ska kunna logga in på Wdesk måste de tillha
 
 1. Logga in på Wdesk som säkerhets administratör.
 
-2. Gå till **Admin** > administratörs**konto administratör**.
+2. Gå till **Administratörs**  >  **konto administratör**.
 
      ![Konfigurera enkel inloggning](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
@@ -227,7 +224,7 @@ Om du vill att Azure AD-användare ska kunna logga in på Wdesk måste de tillha
    
     ![Skapa en testanvändare för Azure AD](./media/wdesk-tutorial/createuser1.png)  
 
-5. I text rutan **användare** anger du användar namnet för användaren, b.simon@contoso.com till exempel och klickar på knappen **Fortsätt** .
+5. I text rutan **användare** anger du användar namnet för användaren, till exempel b.simon@contoso.com och klickar på knappen **Fortsätt** .
 
     ![Skapa en testanvändare för Azure AD](./media/wdesk-tutorial/createuser3.png)
 
@@ -235,7 +232,7 @@ Om du vill att Azure AD-användare ska kunna logga in på Wdesk måste de tillha
   
     ![Skapa en testanvändare för Azure AD](./media/wdesk-tutorial/createuser4.png)
  
-    a. I text rutan **e-postadress** anger du e-postadressen till användaren b.simon@contoso.com.
+    a. I text rutan **e-postadress** anger du e-postadressen till användaren b.simon@contoso.com .
 
     b. I text rutan **förnamn** anger du det första namnet på användaren, t. ex. **B**.
 

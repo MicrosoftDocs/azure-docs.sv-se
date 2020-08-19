@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med SAP Cloud Platform Identity Authentication | Microsoft Docs'
 description: Läs hur du konfigurerar enkel inloggning mellan Azure Active Directory och SAP Cloud Platform Identity Authentication.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 1c1320d1-7ba4-4b5f-926f-4996b44d9b5e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: db852254d7f6ec9c0cb76151fa23e58e2d97bd2c
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 2d0b53581bbc2211df156b90326fc73d0c2ae091
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981824"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548749"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-platform-identity-authentication"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med SAP Cloud Platform Identity Authentication
 
@@ -32,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar SAP Cloud Platform 
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -104,9 +100,9 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     ![SAP Cloud Platform Identity Authentication-domän och information om URL:er för enkel inloggning](common/idp-intiated.png)
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`<IAS-tenant-id>.accounts.ondemand.com`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `<IAS-tenant-id>.accounts.ondemand.com`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<IAS-tenant-id>.accounts.ondemand.com/saml2/idp/acs/<IAS-tenant-id>.accounts.ondemand.com`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<IAS-tenant-id>.accounts.ondemand.com/saml2/idp/acs/<IAS-tenant-id>.accounts.ondemand.com`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska identifieraren och svars-URL. Kontakta [kundsupporten för SAP Cloud Platform Identity Authentication](https://cloudplatform.sap.com/capabilities/security/trustcenter.html) och be om dessa värden. Om du inte förstår identifierarvärde läser du dokumentationen för SAP Cloud Platform Identity Authentication om [SAML 2.0-konfiguration för klientorganisation](https://help.hana.ondemand.com/cloud_identity/frameset.htm?e81a19b0067f4646982d7200a8dab3ca.html).
@@ -115,7 +111,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     ![SAP Cloud Platform Identity Authentication-domän och information om URL:er för enkel inloggning](common/metadata-upload-additional-signon.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`{YOUR BUSINESS APPLICATION URL}`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `{YOUR BUSINESS APPLICATION URL}`
 
     > [!NOTE]
     > Det här värdet är inte verkligt. Uppdatera värdet med den faktiska inloggnings-URL:en. Använd inloggnings-URL för ditt specifika affärsprogram. Kontakta [kundsupporten för SAP Cloud Platform Identity Authentication](https://cloudplatform.sap.com/capabilities/security/trustcenter.html) om du behöver hjälp.
@@ -152,7 +148,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -209,11 +205,11 @@ När du klickar på SAP Cloud Platform Identity Authentication-panelen i åtkoms
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Prova SAP Cloud Platform Identity Authentication with Azure AD](https://aad.portal.azure.com/)
 

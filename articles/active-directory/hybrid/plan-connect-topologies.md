@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9618e02f54fbb2a3b92771761c5fcf700d126b5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47973a8444de64dc5c2bb75b5f0d65d1e6d35f6e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698775"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509099"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologier för Azure AD Connect
 I den här artikeln beskrivs olika lokala och Azure Active Directory (Azure AD)-topologier som använder Azure AD Connect Sync som lösning för nyckel integrering. Den här artikeln innehåller konfigurationer som stöds och som inte stöds.
@@ -122,7 +122,7 @@ Vissa Office 365-arbetsbelastningar har vissa begränsningar för topologier som
 
 | Arbetsbelastning | Begränsningar |
 | --------- | --------- |
-| exchange online | Mer information om hybrid topologier som stöds av Exchange Online finns i [hybrid distributioner med flera Active Directory-skogar](https://technet.microsoft.com/library/jj873754.aspx). |
+| Exchange Online | Mer information om hybrid topologier som stöds av Exchange Online finns i [hybrid distributioner med flera Active Directory-skogar](https://technet.microsoft.com/library/jj873754.aspx). |
 | Skype för företag | När du använder flera lokala skogar stöds endast skogs topologin för konto resurser. Mer information finns i [miljö krav för Skype för företag Server 2015](https://technet.microsoft.com/library/dn933910.aspx). |
 
 Om du är en större organisation bör du överväga att använda [Office 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) -funktionen. Det gör att du kan definiera i vilken data Center region som användarens resurser finns.
@@ -165,7 +165,7 @@ Den här topologin har följande begränsningar för andra scenarier som stöds:
 * Windows 10-enheter kan bara associeras med en Azure AD-klient.
 * Alternativet enkel inloggning (SSO) för lösen ords-hash-synkronisering och direktautentisering kan bara användas med en Azure AD-klient.
 
-Kravet för en ömsesidigt exklusiv uppsättning objekt gäller också för tillbakaskrivning. Vissa tillbakaskrivning-funktioner stöds inte med den här topologin eftersom de förutsätter en enda lokal konfiguration. Funktionerna är:
+Kravet för en ömsesidigt exklusiv uppsättning objekt gäller också för tillbakaskrivning. Vissa tillbakaskrivning-funktioner stöds inte med den här topologin eftersom de förutsätter en enda lokal konfiguration. Dessa funktioner omfattar:
 
 * Tillbakaskrivning av grupp med standard konfiguration.
 * Tillbakaskrivning av enhet.
@@ -191,6 +191,11 @@ Azure AD-klienter isoleras genom design. Dessa uppgifter stöds inte:
 ![GALSync i en topologi för flera skogar och flera kataloger](./media/plan-connect-topologies/MultiForestMultiDirectoryGALSync.png)
 
 Du kan använda FIM 2010 eller MIM 2016 lokalt för att synkronisera användare (via GALSync) mellan två Exchange-organisationer. Användare i en organisation visas som externa användare/kontakter i den andra organisationen. De olika lokala Active Directory instanserna kan sedan synkroniseras med sina egna Azure AD-klienter.
+
+### <a name="using-unauthorized-clients-to-access-the-azure-ad-connect-backend"></a>Använda obehöriga klienter för att komma åt Azure AD Connect Server delen
+![Använda obehöriga klienter för att komma åt Azure AD Connect Server delen](./media/plan-connect-topologies/other-client-unsupported.png)
+
+Azure Active Directory Connect-servern kommunicerar med Azure Active Directory via Azure Active Directory Connect Server delen. Den enda program vara som kan användas för att kommunicera med den här server delen är Azure Active Directory Connect. Det finns inte stöd för att kommunicera med Azure Active Directory Connect Server delen med någon annan program vara eller metod. 
 
 ## <a name="next-steps"></a>Nästa steg
 Information om hur du installerar Azure AD Connect för dessa scenarier finns i [anpassad installation av Azure AD Connect](how-to-connect-install-custom.md).

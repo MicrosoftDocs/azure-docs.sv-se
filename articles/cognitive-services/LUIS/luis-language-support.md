@@ -1,7 +1,7 @@
 ---
 title: Språk stöd – LUIS
 titleSuffix: Azure Cognitive Services
-description: LUIS har flera olika funktioner i tjänsten. Alla funktioner är inte på samma språk paritet. Se till att de funktioner som du är intresse rad av stöds i språk kulturen som du riktar in dig på. En LUIS-app är landsspecifika och kan inte ändras när den har angetts.
+description: Det finns flera olika funktioner i tjänsten LUIS. Vilka funktioner som stöds varierar mellan olika språk. Kontrollera att de funktioner som du är intresserad av stöds i målspråkkulturen. En LUIS-app är landsspecifika och kan inte ändras när den har angetts.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 43858015857303d404b1abc0fe410aa462671587
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: b60a777960f3c6f8a2415ca551217d35b7f3497d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340206"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588030"
 ---
 # <a name="language-and-region-support-for-luis"></a>Språk-och region stöd för LUIS
 
-LUIS har flera olika funktioner i tjänsten. Alla funktioner är inte på samma språk paritet. Se till att de funktioner som du är intresse rad av stöds i språk kulturen som du riktar in dig på. En LUIS-app är landsspecifika och kan inte ändras när den har angetts.
+Det finns flera olika funktioner i tjänsten LUIS. Vilka funktioner som stöds varierar mellan olika språk. Kontrollera att de funktioner som du är intresserad av stöds i målspråkkulturen. En LUIS-app är landsspecifika och kan inte ändras när den har angetts.
 
 ## <a name="multi-language-luis-apps"></a>LUIS-appar med flera språk
 
@@ -115,8 +115,8 @@ Följande kulturer har anpassade tokenizer-versioner:
 |--|--|--|
 |Tyska<br>`de-de`|1.0.0|Tokenizes ord genom att dela dem med hjälp av en Machine Learning-baserad tokenizer som försöker dela upp sammansatta ord i sina enskilda komponenter.<br>Om en användare anger `Ich fahre einen krankenwagen` som en uttryck, aktive ras den `Ich fahre einen kranken wagen` . Tillåta markering av `kranken` och `wagen` oberoende som olika entiteter.|
 |Tyska<br>`de-de`|1.0.2|Tokenizes ord genom att dela dem på blank steg.<br> Om en användare anges `Ich fahre einen krankenwagen` som en uttryck, förblir den en enda token. `krankenwagen`Markeras därför som en enskild entitet. |
-|Nederländska<br>`de-de`|1.0.0|Tokenizes ord genom att dela dem med hjälp av en Machine Learning-baserad tokenizer som försöker dela upp sammansatta ord i sina enskilda komponenter.<br>Om en användare anger `Ik ga naar de kleuterschool` som en uttryck, aktive ras den `Ik ga naar de kleuter school` . Tillåta markering av `kleuter` och `school` oberoende som olika entiteter.|
-|Nederländska<br>`de-de`|1.0.1|Tokenizes ord genom att dela dem på blank steg.<br> Om en användare anges `Ik ga naar de kleuterschool` som en uttryck, förblir den en enda token. `kleuterschool`Markeras därför som en enskild entitet. |
+|Nederländska<br>`nl-nl`|1.0.0|Tokenizes ord genom att dela dem med hjälp av en Machine Learning-baserad tokenizer som försöker dela upp sammansatta ord i sina enskilda komponenter.<br>Om en användare anger `Ik ga naar de kleuterschool` som en uttryck, aktive ras den `Ik ga naar de kleuter school` . Tillåta markering av `kleuter` och `school` oberoende som olika entiteter.|
+|Nederländska<br>`nl-nl`|1.0.1|Tokenizes ord genom att dela dem på blank steg.<br> Om en användare anges `Ik ga naar de kleuterschool` som en uttryck, förblir den en enda token. `kleuterschool`Markeras därför som en enskild entitet. |
 
 
 ### <a name="migrating-between-tokenizer-versions"></a>Migrera mellan tokenizer-versioner

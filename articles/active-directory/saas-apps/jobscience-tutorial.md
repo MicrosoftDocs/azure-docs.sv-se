@@ -2,25 +2,20 @@
 title: 'Självstudie: Azure Active Directory integrering med Jobscience | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Jobscience.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.assetid: 77282dcc-bbe2-4728-953d-adb4ab6a713b
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23d2694aa4936090367cf881379f81911ae70f9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0de47cc12c461e47d8703861a99d11e7ee72d581
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81870546"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547077"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Självstudie: Azure Active Directory integrering med Jobscience
 
@@ -34,7 +29,7 @@ Genom att integrera Jobscience med Azure AD får du följande fördelar:
 
 Om du vill veta mer om SaaS-appens integrering med Azure AD, se [Vad är program åtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Jobscience behöver du följande objekt:
 
@@ -105,7 +100,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure Portal o
 
     ![Konfigurera enkel inloggning][4]
 
-1. I dialog rutan **enkel inloggning** väljer du **läge** som **SAML-baserad inloggning** för att aktivera enkel inloggning.
+1. I dialog rutan **enkel inloggning** väljer du **läge** som    **SAML-baserad inloggning** för att aktivera enkel inloggning.
  
     ![Konfigurera enkel inloggning](./media/jobscience-tutorial/tutorial_jobscience_samlbase.png)
 
@@ -113,7 +108,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure Portal o
 
     ![Konfigurera enkel inloggning](./media/jobscience-tutorial/tutorial_jobscience_url.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`http://<company name>.my.salesforce.com`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `http://<company name>.my.salesforce.com`
     
     > [!NOTE] 
     > Det här värdet är inte verkligt. Uppdatera värdet med den faktiska inloggnings-URL:en. Hämta det här värdet från [Jobscience-klientens support team](http://www.jobscience.com/support) eller från SSO-profilen som du skapar som beskrivs senare i självstudien. 
@@ -146,7 +141,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure Portal o
 
 1. På Jobscience Company-webbplatsen klickar du på **säkerhets kontroller**och sedan på **Inställningar för enkel inloggning**.
     
-    ![Säkerhetskontroller](./media/jobscience-tutorial/ic784364.png "Säkerhetskontroller")
+    ![Säkerhets kontroller](./media/jobscience-tutorial/ic784364.png "Säkerhetskontroller")
 
 1. I avsnittet **Inställningar för enkel inloggning** utför du följande steg:
     
@@ -164,7 +159,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure Portal o
 
     b. I text rutan **utfärdare** klistrar du in värdet för **SAML Entity ID**, som du har kopierat från Azure Portal.
 
-    c. I text rutan **entitets-ID** skriver du`https://salesforce-jobscience.com`
+    c. I text rutan **entitets-ID** skriver du `https://salesforce-jobscience.com`
 
     d. Klicka på **Bläddra** för att ladda upp ditt Azure AD-certifikat.
 
@@ -192,7 +187,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure Portal o
 
 1. Om du vill hämta inloggnings webb adressen för SP-initierad enkel inloggning klickar du på **Inställningar för enkel inloggning** i menyn **säkerhets kontroller** .
 
-    ![Säkerhetskontroller](./media/jobscience-tutorial/ic784368.png "Säkerhetskontroller")
+    ![Säkerhets kontroller](./media/jobscience-tutorial/ic784368.png "Säkerhetskontroller")
     
     Klicka på den SSO-profil som du har skapat i steget ovan. Den här sidan visar URL: en för enkel inloggning för ditt företag (till exempel `https://companyname.my.salesforce.com?so=companyid` .    
 

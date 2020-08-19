@@ -6,22 +6,22 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 67807e18559006b7d7eb6089a30370d614aefca3
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 1076a4fe3a460fa07e061e9ec0ec41b088ec7eca
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992852"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507271"
 ---
 # <a name="data-filtering"></a>Datafiltrering
 
 När du skickar dokument som ska användas för att träna ett anpassat system, genomgår dokumenten en serie bearbetnings-och filtrerings steg för att förbereda för utbildning. Dessa steg beskrivs här. Kunskapen om filtreringen kan hjälpa dig att förstå antalet meningar som visas i en anpassad översättare samt de steg du kan vidta för att förbereda dokumenten för utbildning med anpassad översättare.
 
 ## <a name="sentence-alignment"></a>Meningsjustering
-Om dokumentet inte finns i XLIFF-, TMX-eller ALIGN-format justerar den anpassade översättningen meningarna i käll-och mål dokumenten till varandra, mening per mening. Konverteraren utför inte dokument justering – det följer ditt namn på dokumenten för att hitta det matchande dokumentet för det andra språket. I dokumentet försöker anpassad översättare hitta motsvarande mening på det andra språket. Den använder dokument markering som inbäddade HTML-taggar för att hjälpa till med justeringen.  
+Om dokumentet inte finns i XLIFF-, TMX-eller ALIGN-format justerar den anpassade översättningen meningarna i käll-och mål dokumenten till varandra, mening per mening. Anpassad översättare utför inte dokument justering – det följer ditt namn på dokumenten för att hitta det matchande dokumentet för det andra språket. I dokumentet försöker anpassad översättare hitta motsvarande mening på det andra språket. Den använder dokument markering som inbäddade HTML-taggar för att hjälpa till med justeringen.  
 
 Om du ser en stor avvikelse mellan antalet meningar i käll-och mål dokumenten kanske inte dokumentet har varit parallellt på den första platsen, eller för andra orsaker kunde inte justeras. Dokument par med stor skillnad (>10%) av meningar på varje sida se till att de är i själva verket parallellt. Anpassad översättare visar en varning bredvid dokumentet om antalet meningar skiljer sig från suspiciously.  
 
@@ -49,9 +49,9 @@ Konvertera hel bredds bokstäver och siffror till halv bredds tecken.
 
 ## <a name="unescaped-xml-tags"></a>Avbrotts bara XML-taggar
 Filtrering transformerar avbrotts bara taggar till undantagna Taggar:
-* `&lt;`bli`&amp;lt;`
-* `&gt;`bli`&amp;gt;`
-* `&amp;`bli`&amp;amp;`
+* `&lt;` bli `&amp;lt;`
+* `&gt;` bli `&amp;gt;`
+* `&amp;` bli `&amp;amp;`
 
 ## <a name="invalid-characters"></a>Ogiltiga tecken
 Anpassad översättare tar bort meningar som innehåller Unicode-tecken U + FFFD. Tecken U + FFFD anger en kodnings konvertering som inte kunde konverteras.

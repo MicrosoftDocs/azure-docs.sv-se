@@ -1,14 +1,14 @@
 ---
 title: Så här skapar du gästkonfigurationsprinciper för Windows
 description: Lär dig hur du skapar en princip för Azure Policy gäst konfiguration för Windows.
-ms.date: 03/20/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 31c40640babea961ef3bb255112306f59772bae2
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 4ee0c9d1912338235e53eb287bfc86a14b75cc97
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236547"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547672"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Så här skapar du gästkonfigurationsprinciper för Windows
 
@@ -16,8 +16,7 @@ Innan du skapar anpassade princip definitioner, är det en bra idé att läsa de
  
 Information om hur du skapar principer för gäst konfiguration för Linux finns på sidan [hur du skapar principer för gäst konfiguration för Linux](./guest-configuration-create-linux.md)
 
-Vid Windows-granskning använder gästkonfigurationen en [DSC](/powershell/scripting/dsc/overview/overview)-resursmodul (Desired State Configuration) för att skapa konfigurations filen. DSC-konfigurationen definierar det tillstånd som datorn ska ha.
-Om utvärderingen av konfigurationen Miss lyckas utlöses **auditIfNotExists** för princip inställningen och datorn betraktas som **icke-kompatibel**.
+Vid Windows-granskning använder gästkonfigurationen en [DSC](/powershell/scripting/dsc/overview/overview)-resursmodul (Desired State Configuration) för att skapa konfigurations filen. DSC-konfigurationen definierar det tillstånd som datorn ska ha. Om utvärderingen av konfigurationen Miss lyckas utlöses **auditIfNotExists** för princip inställningen och datorn betraktas som **icke-kompatibel**.
 
 [Azure policy gäst konfiguration](../concepts/guest-configuration.md) kan bara användas för att granska inställningar i datorer. Reparationen av inställningar i datorer är inte tillgänglig ännu.
 
@@ -90,8 +89,7 @@ När gäst konfigurationen granskar en dator är sekvensen av händelser annorlu
 1. Det booleska värde som returneras av funktionen avgör om Azure Resource Managers status för gäst tilldelningen ska vara kompatibel/inte kompatibel.
 1. Providern kör `Get-TargetResource` för att returnera det aktuella läget för varje inställning så att information är tillgänglig både om varför en dator inte är kompatibel och för att bekräfta att det aktuella läget är kompatibelt.
 
-Parametrar i Azure Policy som överför värden till gäst konfigurations tilldelningar måste vara en _sträng_ typ.
-Det går inte att skicka matriser via parametrar, även om DSC-resursen stöder matriser.
+Parametrar i Azure Policy som överför värden till gäst konfigurations tilldelningar måste vara en _sträng_ typ. Det går inte att skicka matriser via parametrar, även om DSC-resursen stöder matriser.
 
 ### <a name="get-targetresource-requirements"></a>Get-TargetResource-krav
 
@@ -121,7 +119,7 @@ return @{
 }
 ```
 
-Egenskapen orsaker måste också läggas till i schema-MOF för resursen som en inbäddad klass.
+Egenskapen orsaker måste läggas till i schema-MOF för resursen som en inbäddad klass.
 
 ```mof
 [ClassVersion("1.0.0.0")] 
@@ -166,8 +164,7 @@ Paket formatet måste vara en. zip-fil.
 ### <a name="storing-guest-configuration-artifacts"></a>Lagring av gäst konfigurations artefakter
 
 Zip-paketet måste lagras på en plats som de hanterade virtuella datorerna kan komma åt.
-Exempel är GitHub-databaser, Azure-lagrings platsen eller Azure Storage. Om du inte vill att paketet ska vara offentligt kan du ta med en [SAS-token](../../../storage/common/storage-sas-overview.md) i URL: en.
-Du kan också implementera [tjänstens slut punkt](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) för datorer i ett privat nätverk, även om den här konfigurationen endast gäller för åtkomst till paketet och inte kommunicerar med tjänsten.
+Exempel är GitHub-databaser, Azure-lagrings platsen eller Azure Storage. Om du inte vill att paketet ska vara offentligt kan du ta med en [SAS-token](../../../storage/common/storage-sas-overview.md) i URL: en. Du kan också implementera [tjänstens slut punkt](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) för datorer i ett privat nätverk, även om den här konfigurationen endast gäller för åtkomst till paketet och inte kommunicerar med tjänsten.
 
 ## <a name="step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows"></a>Steg för steg, skapa en anpassad princip för gäst konfigurations granskning för Windows
 
@@ -602,5 +599,5 @@ Mer information om cmdletarna i det här verktyget får du genom att använda ko
 ## <a name="next-steps"></a>Nästa steg
 
 - Lär dig mer om att granska virtuella datorer med [gäst konfiguration](../concepts/guest-configuration.md).
-- Lär dig att [program mässigt skapa principer](programmatically-create.md).
-- Lär dig hur du [hämtar efterlevnadsprinciper](get-compliance-data.md).
+- Lär dig att [program mässigt skapa principer](./programmatically-create.md).
+- Lär dig hur du [hämtar efterlevnadsprinciper](./get-compliance-data.md).

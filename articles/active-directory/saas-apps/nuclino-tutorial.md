@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Nuclino | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Nuclino.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 74bbab82-5581-4dcf-8806-78f77c746968
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a75869c257e6b875a00036218b05db5521e8d0b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 18814d23c634dc58148c26b67c2f669e22a136ee
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72532964"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554302"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nuclino"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Nuclino
 
@@ -33,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar Nuclino med Azure A
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -83,16 +78,16 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://api.nuclino.com/api/sso/<UNIQUE-ID>/metadata`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://api.nuclino.com/api/sso/<UNIQUE-ID>/metadata`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://api.nuclino.com/api/sso/<UNIQUE-ID>/acs`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://api.nuclino.com/api/sso/<UNIQUE-ID>/acs`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren och svars-URL: en från avsnittet **Authentication** , som beskrivs senare i den här självstudien.
 
 1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://app.nuclino.com/<UNIQUE-ID>/login`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://app.nuclino.com/<UNIQUE-ID>/login`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [Nuclino client support team](mailto:contact@nuclino.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -124,7 +119,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -186,7 +181,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
     f. Öppna den nedladdade **Certificate(Base64)**-filen i Anteckningar. Kopiera innehållet i den till Urklipp och klistra in det i text rutan **offentligt certifikat** .
 
-    g. Klicka på **SPARA ÄNDRINGAR** för att spara ändringarna.
+    ex. Klicka på **SPARA ÄNDRINGAR** för att spara ändringarna.
 
 ### <a name="create-nuclino-test-user"></a>Skapa Nuclino test användare
 
@@ -203,11 +198,11 @@ När du klickar på panelen Nuclino på åtkomst panelen, bör du loggas in auto
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Prova Nuclino med Azure AD](https://aad.portal.azure.com/)
 

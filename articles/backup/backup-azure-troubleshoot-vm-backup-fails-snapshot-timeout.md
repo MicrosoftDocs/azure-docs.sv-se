@@ -4,12 +4,12 @@ description: Symptom, orsaker och lösningar på Azure Backup fel som rör agent
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 274435a958820c3fd08fef4a61643a1d656e31e3
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 53c0ede07040e782b683e8ff4b0b08e6fe0a9caf
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167937"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585568"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Felsöka Azure Backup fel: problem med agenten eller tillägget
 
@@ -23,7 +23,7 @@ De vanligaste säkerhets kopierings felen kan lösas själv genom att följa de 
 
 ### <a name="step-1-check-azure-vm-health"></a>Steg 1: kontrol lera Azure VM-hälsa
 
-- **Se till att etablerings statusen för Azure VM är igång**: om [etablerings status för virtuell dator](../virtual-machines/states-lifecycle.md#provisioning-states) är i läget **stoppad/frigjord/uppdatering** störs säkerhets kopieringen. Öppna *Azure Portal > VM > översikt >* och kontrol lera VM-statusen för att kontrol lera att den **körs** och försök att säkerhetskopiera igen.
+- **Se till att etablerings statusen för Azure VM är igång**: om [etablerings status för virtuell dator](../virtual-machines/states-lifecycle.md#provisioning-states) är i läget **stoppad/frigjord/uppdatering** störs säkerhets kopieringen. Öppna *Azure Portal > VM > översikt >* och kontrol lera VM-statusen för att kontrol lera att den **körs**  och försök att säkerhetskopiera igen.
 - **Granska väntande OS-uppdateringar eller omstarter**: kontrol lera att det inte finns någon VÄNTAnde OS-uppdatering eller väntande omstarter på den virtuella datorn.
 
 ### <a name="step-2-check-azure-vm-guest-agent-service-health"></a>Steg 2: kontrol lera hälsa för Azures gästa Gent tjänst
@@ -65,7 +65,7 @@ Azure Backup använder VM Snapshot-tillägget för att göra en programkonsekven
 
 - **Se till att VSS Writer-tjänsten är**igång: Följ dessa steg för att [FELSÖKA problem med VSS-skrivaren](backup-azure-vms-troubleshoot.md#extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state).
 - **Följ rikt linjerna för rekommendationer för säkerhets kopiering**: granska de [bästa metoderna för att aktivera säkerhets kopiering av virtuella Azure-datorer](backup-azure-vms-introduction.md#best-practices).
-- **Läs igenom rikt linjerna för krypterade diskar**: om du aktiverar säkerhets kopiering för virtuella datorer med krypterad disk kontrollerar du att du har angett alla behörigheter som krävs. Läs mer i [säkerhetskopiera och återställa krypterade virtuella Azure-datorer](backup-azure-vms-encryption.md#encryption-support).
+- **Läs igenom rikt linjerna för krypterade diskar**: om du aktiverar säkerhets kopiering för virtuella datorer med krypterad disk kontrollerar du att du har angett alla behörigheter som krävs. Läs mer i [säkerhetskopiera och återställa krypterade virtuella Azure-datorer](backup-azure-vms-encryption.md).
 
 ## <a name="usererrorguestagentstatusunavailable---vm-agent-unable-to-communicate-with-azure-backup"></a><a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable – Den virtuella datoragenten kunde inte kommunicera med Azure Backup
 
@@ -96,7 +96,7 @@ När du har registrerat och schemalagt en virtuell dator för Azure Backup tjän
 
 **Orsak 5: [lösning för program kontroll blockerar IaaSBcdrExtension.exe](#application-control-solution-is-blocking-iaasbcdrextensionexe)**
 
-## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed-den virtuella datorn är i ett misslyckat etablerings tillstånd
+## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed – Den virtuella datorn är i misslyckat etableringstillstånd
 
 **Felkod**: UserErrorVmProvisioningStateFailed<br>
 **Fel meddelande**: det gick inte att etablerings status för den virtuella datorn<br>
@@ -105,7 +105,7 @@ Felet uppstår när ett av de misslyckade tilläggen placerar den virtuella dato
 
 - Om VMSnapshot-tillägget är i ett felaktigt tillstånd högerklickar du på det misslyckade tillägget och tar bort det. Utlös en säkerhets kopiering på begäran. Med den här åtgärden installeras tilläggen om och säkerhets kopierings jobbet körs.  <br>
 - Om ett annat tillägg är i ett felaktigt tillstånd kan det störa säkerhets kopieringen. Se till att de här tilläggs problemen är lösta och försök att säkerhetskopiera igen.
-- Om etablerings statusen för den virtuella datorn är i ett uppdaterings tillstånd kan det störa säkerhets kopieringen. Se till att det är felfritt och försök att säkerhetskopiera igen.
+- Om etablerings statusen för den virtuella datorn är i ett uppdaterings tillstånd kan det störa säkerhets kopieringen. Kontrol lera att det är felfritt och försök att säkerhetskopiera igen.
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached – Maxgränsen för samling med återställningspunkter har uppnåtts
 
@@ -140,7 +140,7 @@ När du har registrerat och schemalagt en virtuell dator för Azure Backup tjän
 
 **[Det går inte att hämta ögonblicks bild status, eller så kan en ögonblicks bild inte tas](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 
-## <a name="extensionoperationfailedformanageddisks---vmsnapshot-extension-operation-failed"></a><a name="ExtensionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtensionOperationFailedForManagedDisks-VMSnapshot-tilläggs åtgärd misslyckades
+## <a name="extensionoperationfailedformanageddisks---vmsnapshot-extension-operation-failed"></a><a name="ExtensionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtensionOperationFailedForManagedDisks – Det gick inte att köra VMSnapshot-tillägget
 
 **Felkod**: ExtensionOperationFailedForManagedDisks <br>
 **Fel meddelande**: VMSnapshot-tilläggs åtgärd misslyckades<br>
@@ -175,36 +175,36 @@ Säkerhets kopierings åtgärden kunde inte utföras vid säkerhets kopiering av
 
 Det senaste säkerhets kopierings jobbet misslyckades på grund av att en befintlig säkerhets kopiering pågår. Du kan inte starta ett nytt säkerhets kopierings jobb förrän det aktuella jobbet har slutförts. Se till att den pågående säkerhets kopieringen har slutförts innan du utlöser eller schemalägger en annan säkerhets kopierings åtgärd. Gör så här för att kontrol lera status för säkerhets kopierings jobb:
 
-1. Logga in på Azure Portal, klicka på **alla tjänster**. Skriv Recovery Services och klicka på **Recovery Services-valv**. Listan över Recovery Services-valv visas.
+1. Logga in på Azure Portal och välj **alla tjänster**. Skriv Recovery Services och välj **Recovery Services valv**. Listan över Recovery Services-valv visas.
 2. I listan över Recovery Services-valv väljer du ett valv där säkerhets kopian har kon figurer ATS.
-3. På instrument panelen för valv klickar du på **säkerhets kopierings jobb** . då visas alla säkerhets kopierings jobb.
+3. På instrument panelen för valv väljer du **säkerhets kopierings jobb** där alla säkerhets kopierings jobb visas.
    - Om ett säkerhets kopierings jobb pågår väntar du tills det är klart eller Avbryt säkerhets kopierings jobbet.
-     - Du avbryter säkerhets kopierings jobbet genom att högerklicka på säkerhets kopierings jobbet och klicka på **Avbryt** eller använda [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob).
+     - Om du vill avbryta säkerhets kopierings jobbet högerklickar du på säkerhets kopierings jobbet och väljer **Avbryt** eller Använd [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob).
    - Om du har konfigurerat om säkerhets kopian i ett annat valv kontrollerar du att inga säkerhets kopierings jobb körs i det gamla valvet. Avbryt säkerhets kopierings jobbet om det finns.
-     - Om du vill avbryta säkerhetskopieringsjobbet högerklickar du på säkerhetskopieringsjobbet och klickar på **Avbryt** eller använder [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob)
+     - Om du vill avbryta säkerhets kopierings jobbet högerklickar du på säkerhets kopierings jobbet och väljer **Avbryt** eller Använd [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob)
 4. Försök säkerhetskopiera igen.
 
 Om den schemalagda säkerhets kopierings åtgärden tar längre tid, i konflikt med nästa säkerhets kopierings konfiguration, granskar du de [bästa metoderna](backup-azure-vms-introduction.md#best-practices), [säkerhets kopierings prestanda](backup-azure-vms-introduction.md#backup-performance)och [återställnings överväganden](backup-azure-vms-introduction.md#backup-and-restore-considerations).
 
-## <a name="usererrorcrpreportedusererror---backup-failed-due-to-an-error-for-details-see-job-error-message-details"></a>UserErrorCrpReportedUserError – det gick inte att säkerhetskopiera på grund av ett fel. Mer information finns i informationen om jobb fel meddelanden
+## <a name="usererrorcrpreportedusererror---backup-failed-due-to-an-error-for-details-see-job-error-message-details"></a>UserErrorCrpReportedUserError – Säkerhetskopieringen misslyckades på grund av ett fel. Mer information finns i informationen om meddelanden vid jobbfel
 
 **Felkod**: UserErrorCrpReportedUserError <br>
 **Fel meddelande**: säkerhets kopieringen misslyckades på grund av ett fel. Mer information finns i informationen om jobb fel meddelanden.
 
-Det här felet rapporteras från den virtuella IaaS-datorn. Om du vill identifiera orsaken till problemet går du till inställningarna för Recovery Services valvet. Under avsnittet **övervakning** väljer du **säkerhets kopierings jobb** för att filtrera och visa statusen. Klicka på **fel** om du vill granska informationen om underliggande fel meddelanden. Vidta ytterligare åtgärder enligt rekommendationerna på sidan med fel information.
+Det här felet rapporteras från den virtuella IaaS-datorn. Om du vill identifiera orsaken till problemet går du till inställningarna för Recovery Services valvet. Under avsnittet **övervakning** väljer du **säkerhets kopierings jobb** för att filtrera och visa statusen. Välj **fel** om du vill granska informationen om underliggande fel meddelanden. Vidta ytterligare åtgärder enligt rekommendationerna på sidan med fel information.
 
 ## <a name="usererrorbcmdatasourcenotpresent---backup-failed-this-virtual-machine-is-not-actively-protected-by-azure-backup"></a>UserErrorBcmDatasourceNotPresent-säkerhets kopieringen misslyckades: den här virtuella datorn skyddas inte (aktivt) av Azure Backup
 
 **Felkod**: UserErrorBcmDatasourceNotPresent <br>
 **Fel meddelande**: säkerhets kopieringen misslyckades: den här virtuella datorn skyddas inte (aktivt) av Azure Backup.
 
-Kontrol lera att den aktuella virtuella datorn är aktivt (inte i paus läge) som skyddas av Azure Backup. För att lösa det här problemet kontrollerar du att den virtuella datorn är aktiv och försöker sedan igen.
+Kontrol lera om den aktuella virtuella datorn är aktivt (inte i paus läge) som skyddas av Azure Backup. För att lösa det här problemet kontrollerar du att den virtuella datorn är aktiv och försöker sedan igen.
 
 ## <a name="causes-and-solutions"></a>Orsaker och lösningar
 
 ### <a name="the-agent-is-installed-in-the-vm-but-its-unresponsive-for-windows-vms"></a><a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Agenten installeras på den virtuella datorn, men den svarar inte (för virtuella Windows-datorer)
 
-#### <a name="solution"></a>Lösning
+#### <a name="solution-for-this-error"></a>Lösning för det här felet
 
 Den virtuella dator agenten kan ha skadats eller också har tjänsten stoppats. Genom att installera om VM-agenten får du den senaste versionen. Den hjälper också till att starta om kommunikationen med tjänsten.
 
@@ -229,12 +229,12 @@ De flesta Agent-relaterade eller felrelaterade fel för virtuella Linux-datorer 
    > [!NOTE]
    > Vi *rekommenderar starkt* att du bara uppdaterar agenten via en distributions lagrings plats. Vi rekommenderar inte att du laddar ned agent koden direkt från GitHub och uppdaterar den. Om den senaste agenten för distributionen inte är tillgänglig kan du kontakta distributions supporten för instruktioner om hur du installerar den. Om du vill söka efter den senaste agenten går du till sidan [Windows Azure Linux-Agent](https://github.com/Azure/WALinuxAgent/releases) i GitHub-lagringsplatsen.
 
-2. Se till att Azure-agenten körs på den virtuella datorn genom att köra följande kommando:`ps -e`
+2. Se till att Azure-agenten körs på den virtuella datorn genom att köra följande kommando: `ps -e`
 
    Om processen inte körs startar du om den med hjälp av följande kommandon:
 
-   - För Ubuntu:`service walinuxagent start`
-   - För andra distributioner:`service waagent start`
+   - För Ubuntu: `service walinuxagent start`
+   - För andra distributioner: `service waagent start`
 
 3. [Konfigurera agenten för automatisk omstart](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
 4. Kör en ny test säkerhets kopiering. Om felen kvarstår samlar du in följande loggar från den virtuella datorn:
@@ -252,13 +252,13 @@ Följ dessa steg om du behöver utförlig loggning för waagent:
 ### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>Konfigurations alternativen för VM-agenten har inte angetts (för virtuella Linux-datorer)
 
 En konfigurations fil (/etc/waagent.conf) styr åtgärder för waagent. Alternativ för konfigurations fil **tillägg. Aktivera** måste anges till **y** och **etableringen. agenten** måste vara inställd på **Automatisk** för att säkerhets kopieringen ska fungera.
-Fullständig lista över alternativ för konfigurations filen för virtuella datorer finns i<https://github.com/Azure/WALinuxAgent#configuration-file-options>
+Fullständig lista över alternativ för konfigurations filen för virtuella datorer finns i <https://github.com/Azure/WALinuxAgent#configuration-file-options>
 
 ### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>Program kontroll lösningen blockerar IaaSBcdrExtension.exe
 
 Om du kör [AppLocker](/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (eller någon annan lösning för program kontroll) och reglerna är utgivare eller sökväg baserade, kan de blockera **IaaSBcdrExtension.exe** körbara filen från att köras.
 
-#### <a name="solution"></a>Lösning
+#### <a name="solution-to-this-issue"></a>Lösning på det här problemet
 
 Undanta `/var/lib` sökvägen eller den körbara filen **IaaSBcdrExtension.exe** från AppLocker (eller annan program vara för program kontroll.)
 
@@ -266,7 +266,7 @@ Undanta `/var/lib` sökvägen eller den körbara filen **IaaSBcdrExtension.exe**
 
 Säkerhets kopieringen av den virtuella datorn är beroende av att utfärda ett ögonblicks bild kommando till det underliggande lagrings kontot. Säkerhets kopieringen kan inte utföras eftersom den inte har åtkomst till lagrings kontot, eller eftersom körningen av ögonblicks bild aktiviteten är fördröjd.
 
-#### <a name="solution"></a>Lösning
+#### <a name="solution-for-this-issue"></a>Lösning för det här problemet
 
 Följande villkor kan leda till att ögonblicks bild aktiviteten Miss kopierar:
 
@@ -280,11 +280,11 @@ Följande villkor kan leda till att ögonblicks bild aktiviteten Miss kopierar:
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
 2. Gå till **alternativet alla resurser**, Välj resurs gruppen för återställnings punkt samling i följande format AzureBackupRG_ `<Geo>` _ _ `<number>` .
 3. I avsnittet **Inställningar** väljer du **Lås** för att Visa låsen.
-4. Om du vill ta bort låset väljer du ellipsen och klickar på **ta bort**.
+4. Om du vill ta bort låset väljer du ellipsen och väljer **ta bort**.
 
     ![Ta bort lås](./media/backup-azure-arm-vms-prepare/delete-lock.png)
 
-### <a name="clean-up-restore-point-collection"></a><a name="clean_up_restore_point_collection"></a>Rensa återställnings punkt samling
+### <a name="clean-up-restore-point-collection"></a><a name="clean_up_restore_point_collection"></a> Rensa återställnings punkt samling
 
 När du har tagit bort låset måste återställnings punkterna rensas.
 
@@ -307,16 +307,16 @@ När du har tagit bort låset utlöser du en säkerhets kopiering på begäran. 
 Om du vill rensa samlingen återställnings punkter manuellt, som inte avmarkeras på grund av resurs gruppens lås, kan du prova följande steg:
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
-2. Klicka på **alla resurser**på menyn **hubb** , Välj resurs gruppen med följande format AZUREBACKUPRG_ `<Geo>` _ `<number>` där den virtuella datorn finns.
+2. Välj **alla resurser**på menyn **hubb** , Välj resurs gruppen med följande format AZUREBACKUPRG_ `<Geo>` _ `<number>` där den virtuella datorn finns.
 
-    ![Ta bort lås](./media/backup-azure-arm-vms-prepare/resource-group.png)
+    ![Välj resurs grupp](./media/backup-azure-arm-vms-prepare/resource-group.png)
 
-3. Klicka på resurs grupp. **översikts** fönstret visas.
+3. Välj resurs grupp. **översikts** fönstret visas.
 4. Välj alternativet **Visa dolda typer** om du vill visa alla dolda resurser. Välj återställnings punkt samlingarna med följande format AzureBackupRG_ `<VMName>` _ _ `<number>` .
 
-    ![Ta bort lås](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
+    ![Välj en återställnings punkt samling](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
 
-5. Rensa återställnings punkts samlingen genom att klicka på **ta bort** .
+5. Välj **ta bort** för att rensa återställnings punkt samlingen.
 6. Försök att säkerhetskopiera igen.
 
 > [!NOTE]

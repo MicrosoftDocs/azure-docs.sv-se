@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Samanage | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Samanage.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: f0db4fb0-7eec-48c2-9c7a-beab1ab49bc2
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 741efbae84e18c811beb6c0579c1949c5ddf619c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 56018ff0be07a48cf9448b9b92de5694ebac18bc
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73160116"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543541"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-samanage"></a>Självstudie: Azure Active Directory integrering med Samanage
 
@@ -33,9 +28,9 @@ Genom att integrera Samanage med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att konfigurera Azure AD-integrering med Samanage behöver du följande:
 
@@ -133,7 +128,7 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Saman
 
 2. Klicka på **Instrumentpanelen** och välj **Konfiguration** i det vänstra navigeringsfönstret.
    
-    ![Paneler](./media/samanage-tutorial/tutorial_samanage_001.png "Instrumentpanel")
+    ![Instrumentpanel](./media/samanage-tutorial/tutorial_samanage_001.png "Instrumentpanel")
 
 3. Klicka på **Enkel inloggning**.
    
@@ -155,7 +150,7 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Saman
  
     f. Öppna ditt base-64-kodade certifikat som du har laddat ned från Azure-portalen i Anteckningar, kopierar innehållet i Urklipp och klistra sedan in den i textrutan **Paste your Identity Provider x.509 Certificate below** (Klistra in x.509-certifikat för din identitetsprovider nedan).
  
-    g. Klicka på **Create users if they do not exist in Samanage** (Skapa användare om de inte finns i Samanage).
+    ex. Klicka på **Create users if they do not exist in Samanage** (Skapa användare om de inte finns i Samanage).
  
     h. Klicka på **Uppdatera**.
 
@@ -177,8 +172,8 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** skriver du **brittasimon\@yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

@@ -58,13 +58,13 @@ az aks use-dev-spaces -g <resource group name> -n <cluster name>
 
 ### <a name="controller-create-failing-because-of-controller-name-length"></a>Styrenheten kunde inte skapas på grund av kontrollantens namn längd
 
-Ett namn på en Azure dev-enhet får inte vara längre än 31 tecken. Om namnet på din kontrollant överstiger 31 tecken när du aktiverar dev Spaces i ett AKS-kluster eller skapar en kontrollant får du ett fel meddelande. Till exempel:
+Ett namn på en Azure dev-enhet får inte vara längre än 31 tecken. Om namnet på din kontrollant överstiger 31 tecken när du aktiverar dev Spaces i ett AKS-kluster eller skapar en kontrollant får du ett fel meddelande. Ett exempel:
 
 ```console
 Failed to create a Dev Spaces controller for cluster 'a-controller-name-that-is-way-too-long-aks-east-us': Azure Dev Spaces Controller name 'a-controller-name-that-is-way-too-long-aks-east-us' is invalid. Constraint(s) violated: Azure Dev Spaces Controller names can only be at most 31 characters long*
 ```
 
-Åtgärda problemet genom att skapa en kontrollant med ett alternativt namn. Till exempel:
+Åtgärda problemet genom att skapa en kontrollant med ett alternativt namn. Ett exempel:
 
 ```cmd
 azds controller create --name my-controller --target-name MyAKS --resource-group MyResourceGroup
@@ -168,7 +168,7 @@ Anta till exempel att du använder ett Helm-kommando för att köra hela program
 
 Azure dev Spaces kan konfigureras så att de pekar på en viss _Dockerfile_ i ditt projekt. Om det verkar som om Azure dev Spaces inte använder den _Dockerfile_ som du förväntar dig att bygga dina behållare, kan du uttryckligen behöva berätta om Azure dev Spaces som Dockerfile ska använda. 
 
-Lös problemet genom att öppna den _azds. yaml_ -fil som Azure dev-utrymmen genererar i projektet. Uppdatera *konfigurationer: utveckla: skapa: Dockerfile* för att peka på den Dockerfile som du vill använda. Till exempel:
+Lös problemet genom att öppna den _azds. yaml_ -fil som Azure dev-utrymmen genererar i projektet. Uppdatera *konfigurationer: utveckla: skapa: Dockerfile* för att peka på den Dockerfile som du vill använda. Ett exempel:
 
 ```yaml
 ...
@@ -215,7 +215,7 @@ install:
 
 Du kanske ser det här felet när det inte går att starta en tjänst kod. Orsaken är ofta i användar kod. Om du vill ha mer diagnostikinformation aktiverar du mer detaljerad loggning när du startar tjänsten.
 
-På kommando raden använder `--verbose` du för att aktivera mer detaljerad loggning. Du kan också ange ett utdataformat med `--output` . Till exempel:
+På kommando raden använder `--verbose` du för att aktivera mer detaljerad loggning. Du kan också ange ett utdataformat med `--output` . Ett exempel:
 
 ```cmd
 azds up --verbose --output json
@@ -326,7 +326,7 @@ Om du vill visa information om den hanterade identiteten kör du följande komma
 az aks show -g <resourcegroup> -n <cluster> -o json --query "{clientId: identityProfile.kubeletidentity.clientId, resourceId: identityProfile.kubeletidentity.resourceId}"
 ```
 
-Kommandot ovan matar ut *clientId* och *resourceId* för den hanterade identiteten. Till exempel:
+Kommandot ovan matar ut *clientId* och *resourceId* för den hanterade identiteten. Ett exempel:
 
 ```json
 {
@@ -367,7 +367,7 @@ kubectl apply -f clusteridentity.yaml
 kubectl apply -f clusteridentitybinding.yaml
 ```
 
-När du har distribuerat *AzureIdentity* -och *AzureIdentityBinding* -objekten kan alla arbets belastningar med etiketten *aadpodidbinding: mitt-etikett-Value* komma åt klustrets hanterade identitet. Lägg till den här etiketten och distribuera om alla arbets belastningar som körs i ett dev-utrymme. Till exempel:
+När du har distribuerat *AzureIdentity* -och *AzureIdentityBinding* -objekten kan alla arbets belastningar med etiketten *aadpodidbinding: mitt-etikett-Value* komma åt klustrets hanterade identitet. Lägg till den här etiketten och distribuera om alla arbets belastningar som körs i ett dev-utrymme. Ett exempel:
 
 ```yaml
 apiVersion: apps/v1
@@ -451,7 +451,7 @@ Så här åtgärdar du problemet:
 
 ### <a name="authorization-error-microsoftdevspacesregisteraction"></a>Auktoriseringsfel "Microsoft. DevSpaces/register/Action"
 
-Du behöver *ägar* -eller *deltagar* åtkomst i din Azure-prenumeration för att kunna hantera Azure dev Spaces. Om du försöker hantera dev Spaces och du inte har *ägare* eller *deltagar* åtkomst till den associerade Azure-prenumerationen kan du se ett auktoriseringsfel. Till exempel:
+Du behöver *ägar* -eller *deltagar* åtkomst i din Azure-prenumeration för att kunna hantera Azure dev Spaces. Om du försöker hantera dev Spaces och du inte har *ägare* eller *deltagar* åtkomst till den associerade Azure-prenumerationen kan du se ett auktoriseringsfel. Ett exempel:
 
 ```output
 The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.

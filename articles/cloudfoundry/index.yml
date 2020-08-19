@@ -3,7 +3,7 @@ title: Dokumentation om Cloud Foundry på Azure
 summary: Cloud Foundry är en plattform som en tjänst (PaaS) med öppen källkod som finns för att skapa, distribuera och använda 12-faktorsprogram som utvecklats i olika språk och ramverk.
 metadata:
   title: Dokumentation om Cloud Foundry på Azure
-  description: Cloud Foundry är en plattform som en tjänst (PaaS) med öppen källkod som finns för att skapa, distribuera och använda 12-faktorsprogram som utvecklats i olika språk och ramverk.
+  description: Cloud Foundry är en PaaS med öppen källkod som finns för att skapa, distribuera och använda 12-faktorsprogram som utvecklats i olika språk och ramverk.
   services: multiple
   ms.service: multiple
   ms.devlang: devops
@@ -11,12 +11,12 @@ metadata:
   author: georgewallace
   ms.author: gwallace
   ms.date: 03/08/2020
-  ms.openlocfilehash: 92fc1fb74316e2a80d0cf4fde912f05db2b3613b
-  ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+  ms.openlocfilehash: 8191a179474db5e9d60e0cd10fb1efff189a3a73
+  ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
   ms.translationtype: HT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 06/12/2020
-  ms.locfileid: "84750343"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88224976"
 landingContent:
 - title: Om Cloud Foundry på Azure
   linkLists:

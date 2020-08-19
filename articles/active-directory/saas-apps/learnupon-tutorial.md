@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med LearnUpon | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och LearnUpon.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b11c6315-c79d-4f34-9610-bd17070ab7c7
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecdcd8c6024b3cacb422b556718bbbdbb5d601c2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9541f2c5f8ee1aac45b6f659547a3ee34c093181
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67098244"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88535177"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>Självstudie: Azure Active Directory integrering med LearnUpon
 
@@ -33,9 +28,9 @@ Genom att integrera LearnUpon med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med LearnUpon behöver du följande objekt:
 
@@ -110,7 +105,7 @@ Utför följande steg för att konfigurera enkel inloggning med LearnUpon i Azur
 
     ![Information om enkel inloggning för LearnUpon-domän och URL: er](common/idp-reply.png)
 
-    Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<companyname>.learnupon.com/saml/consumer`
+    Skriv en URL i text rutan **svars-URL** med följande mönster:  `https://<companyname>.learnupon.com/saml/consumer`
 
     > [!NOTE]
     > Värdet är inte verkligt. Uppdatera värdet för med den faktiska svars-URL:en. Kontakta [LearnUpon client support team](https://www.learnupon.com/features/support/) för att hämta värdet. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -153,11 +148,11 @@ Utför följande steg för att konfigurera enkel inloggning med LearnUpon i Azur
 
     d. I text rutan för **SAML-token post** anger du namnet på begär ande post-parametern till SAML-konsument-URL: en som anges ovan och som innehåller SAML-kontrollen som ska verifieras och autentiseras, till exempel **SAMLResponse**.
 
-    e. I text rutan **namn på ID-format** anger du det värde som anger var i SAML-försäkran användarens identifierare (e-postadress) finns, `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`till exempel.
+    e. I text rutan **namn på ID-format** anger du det värde som anger var i SAML-försäkran användarens identifierare (e-postadress) finns, till exempel `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` .
   
     f. I text rutan **identifiera providerns plats** anger du det värde som anger var användarna skickas till om de klickar på den uppladdade ikonen från din Azure Portal inloggnings skärm.
   
-    g. I text rutan **Logga ut URL** klistrar du in URL-värdet för **utloggning** , som du har kopierat från Azure Portal.
+    ex. I text rutan **Logga ut URL** klistrar du in URL-värdet för **utloggning** , som du har kopierat från Azure Portal.
 
     h. Klicka på **Hantera finger avtryck**och överför sedan finger utskriften av ditt hämtade certifikat.
 
@@ -165,9 +160,9 @@ Utför följande steg för att konfigurera enkel inloggning med LearnUpon i Azur
 
      ![Konfigurera enkel inloggning](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
 
-    a. I text rutan för den **första namn identifieraren** anger du det värde som talar om för oss var i SAML-kontrollen att användarnas FirstName finns, till `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`exempel:.
+    a. I text rutan för den **första namn identifieraren** anger du det värde som talar om för oss var i SAML-kontrollen att användarnas FirstName finns, till exempel: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` .
   
-    b. I text rutan för den **sista namn identifieraren** anger du det värde som talar om för oss var i SAML-försäkran som användare efter namn finns `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`, till exempel:.
+    b. I text rutan för den **sista namn identifieraren** anger du det värde som talar om för oss var i SAML-försäkran som användare efter namn finns, till exempel: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` .
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
 
@@ -187,7 +182,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** `brittasimon@yourcompanydomain.extension`. Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** `brittasimon@yourcompanydomain.extension` . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

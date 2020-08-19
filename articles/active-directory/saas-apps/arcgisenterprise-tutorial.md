@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med ArcGIS Enterprise | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och ArcGIS Enterprise.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 24809e9d-a4aa-4504-95a9-e4fcf484f431
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57eda7e1d5ffedf7d5b867bfa7a59850fbadaf99
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: a544a98b3a9d5c2d30f95240325e91018d2f40c9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905031"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549631"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>Självstudie: Azure Active Directory integrering med ArcGIS Enterprise
 
@@ -48,8 +43,6 @@ För att konfigurera Azure AD-integrering med ArcGIS Enterprise behöver du föl
 ## <a name="scenario-description"></a>Scenariobeskrivning
 
 I den här självstudien konfigurerar och testar du enkel inloggning med Azure AD i en testmiljö.
-
-
 
 * ArcGIS Enterprise stöder **IDP**-initierad enkel inloggning
 * ArcGIS Enterprise stöder **just-in-time**-användaretablering
@@ -113,15 +106,15 @@ Konfigurera enkel inloggning med Azure AD med [Programnamn] genom att utföra f�
 
     ![ArcGIS Enterprise-domän och information om URL:er för enkel inloggning](common/idp-intiated.png)
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`<EXTERNAL_DNS_NAME>.portal`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `<EXTERNAL_DNS_NAME>.portal`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin2`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin2`
 
     c. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     ![ArcGIS Enterprise-domän och information om URL:er för enkel inloggning](common/metadata-upload-additional-signon.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Hämta dessa värden genom att kontakta [supportteamet för ArcGIS Enterprise-klienten](mailto:support@esri.com). Du får identifierarvärdet från avsnittet **Ange identitetsprovider**, som beskrivs senare i den här självstudien.
@@ -132,21 +125,30 @@ Konfigurera enkel inloggning med Azure AD med [Programnamn] genom att utföra f�
 
 ### <a name="configure-arcgis-enterprise-single-sign-on"></a>Konfigurera enkel inloggning för ArcGIS Enterprise
 
-1. I ett annat webbläsarfönster loggar du in på din ArcGIS Enterprise-företagsplats som administratör.
+1. Om du vill automatisera konfigurationen inom ArcGIS Enterprise måste du installera **webb läsar tillägget Mina appar med säker inloggning** genom att klicka på **installera tillägget**.
 
-2. Välj **Organization >EDIT SETTINGS** (Organisation > Redigera inställningar).
+    ![Mina Apps-tillägg](common/install-myappssecure-extension.png)
+
+1. När du har lagt till tillägg i webbläsaren kan du klicka på **Konfigurera ArcGIS Enterprise** för att dirigera dig till ArcGIS Enterprise-programmet. Därifrån anger du administratörsautentiseringsuppgifter för att logga in på ArcGIS Enterprise. Webbläsartillägget konfigurerar automatiskt programmet åt dig och automatiserar steg 3–7.
+
+    ![Konfigurera konfiguration](common/setup-sso.png)
+
+1. Om du vill konfigurera ArcGIS Enterprise manuellt loggar du in på företags platsen för ArcGIS Enterprise som administratör.
+
+
+1. Välj **Organization >EDIT SETTINGS** (Organisation > Redigera inställningar).
 
     ![Konfiguration av ArcGIS Enterprise](./media/arcgisenterprise-tutorial/configure1.png)
 
-3. Välj fliken **Säkerhet**.
+1. Välj fliken **Säkerhet**.
 
     ![Konfiguration av ArcGIS Enterprise](./media/arcgisenterprise-tutorial/configure2.png)
 
-4. Rulla ned till avsnittet **Enterprise Logins via SAML** (Enterprise-inloggningar via SAML) och välj **SET ENTERPRISE LOGIN** (Ange Enterprise-inloggning).
+1. Rulla ned till avsnittet **Enterprise Logins via SAML** (Enterprise-inloggningar via SAML) och välj **SET ENTERPRISE LOGIN** (Ange Enterprise-inloggning).
 
     ![Konfiguration av ArcGIS Enterprise](./media/arcgisenterprise-tutorial/configure3.png)
 
-5. I avsnittet **Set Identity Provider** (Ange identitetsprovider) utför du följande steg:
+1. I avsnittet **Set Identity Provider** (Ange identitetsprovider) utför du följande steg:
 
     ![Konfiguration av ArcGIS Enterprise](./media/arcgisenterprise-tutorial/configure4.png)
 

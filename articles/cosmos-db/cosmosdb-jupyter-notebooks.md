@@ -6,16 +6,16 @@ ms.topic: overview
 ms.date: 05/19/2020
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 53725e7d4c39405e7ba47f8915e7444ce6a2167a
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 0299ab1e76e742adb8d2653b8b5d6923aff2f11f
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118457"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588164"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Inbyggt stöd för Jupyter Notebooks i Azure Cosmos DB (för hands version)
 
-Jupyter Notebook är ett webb program med öppen källkod som gör att du kan skapa och dela dokument som innehåller Live-kod, ekvationer, visualiseringar och beskrivande text. 
+Jupyter Notebook är ett webbprogram med öppen källkod som gör det möjligt att skapa och dela dokument som innehåller kod, formler, visualiseringar och löpande text. 
 
 Azure Cosmos DB inbyggda antecknings böcker för Jupyter är direkt integrerade i Azure Portal och dina Azure Cosmos DB-konton, vilket gör dem praktiska och enkla att använda. Utvecklare, data forskare, ingenjörer och analytiker kan använda välbekanta Jupyter Notebooks-upplevelse för att utföra data utforskning, data rensning, data transformationer, numeriska simuleringar, statistisk modellering, data visualisering och maskin inlärning.
 
@@ -33,7 +33,7 @@ Jupyter-anteckningsböcker utvecklades ursprungligen för data vetenskaps progra
 
 **Kod delning:** Tjänster som GitHub ger olika sätt att dela kod, men de är mycket icke-interaktiva. Med en Jupyter Notebook kan du Visa kod, köra den och visa resultaten direkt i Azure Portal.
 
-**Live-interaktioner med kod:** Kod i en Jupyter Notebook är dynamisk. Du kan redigera den och köra uppdateringarna stegvis i real tid. Du kan också bädda in användar kontroller (till exempel skjutreglage eller text inmatnings fält) som används som inmatnings källor för kod, demonstrationer eller proof of Concepts (POC).
+**Live-interaktioner med kod:** Koden i ett Jupyter Notebook är dynamisk. Du kan redigera den och köra uppdateringarna stegvis i real tid. Du kan också bädda in användar kontroller (till exempel skjutreglage eller text inmatnings fält) som används som inmatnings källor för kod, demonstrationer eller proof of Concepts (POC).
 
 **Dokumentation av kod exempel och resultat för data utforskning:** Om du har en kod i koden och du vill förklara rad för rad hur den fungerar kan du bädda in den i en Jupyter Notebook. Du kan lägga till interaktivitet tillsammans med dokumentationen på samma tid.
 
@@ -53,7 +53,7 @@ Jupyter-anteckningsböcker kan innehålla flera typer av komponenter, som var oc
 
 **Multimedia:** Eftersom Jupyter Notebooks bygger på webb teknik kan de Visa alla typer av multimedia som stöds av en webb sida. Du kan inkludera dem i en bärbar dator som HTML-element, eller så kan du generera dem program mässigt genom att använda `IPython.display` modulen.
 
-**Data:** Du kan importera data från Azure Cosmos-behållare eller resultaten av frågor till en Jupyter-anteckningsbok program mässigt. Använd inbyggda Magic-kommandon för att överföra eller fråga efter data i Azure Cosmos DB. 
+**Data:** Du kan importera data från Azure Cosmos-behållare eller resultaten av frågor till en Jupyter Notebook program mässigt. Använd inbyggda Magic-kommandon för att överföra eller fråga efter data i Azure Cosmos DB. 
 
 ## <a name="next-steps"></a>Nästa steg
 

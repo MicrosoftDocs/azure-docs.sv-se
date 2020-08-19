@@ -3,12 +3,12 @@ title: För hands version – lär dig Azure Policy för Kubernetes
 description: Lär dig hur Azure Policy använder Rego och öppna princip agenten för att hantera kluster som kör Kubernetes i Azure eller lokalt. Det här är en förhandsversion av funktionen.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: dc81d22677eeab16ae06e782c5ae47c121af04c6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e9da5caf13994e1c198345958feec43867c0b5f5
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003497"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509883"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Förstå Azure Policy för Kubernetes-kluster (för hands version)
 
@@ -73,19 +73,19 @@ Innan du installerar Azure Policy tillägg eller aktiverar någon av tjänst fun
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
-   
+
      # Provider register: Register the Azure Kubernetes Service provider
      az provider register --namespace Microsoft.ContainerService
-   
+
      # Provider register: Register the Azure Policy provider
      az provider register --namespace Microsoft.PolicyInsights
-   
+
      # Feature register: enables installing the add-on
      az feature register --namespace Microsoft.ContainerService --name AKS-AzurePolicyAutoApprove
-     
+
      # Use the following to confirm the feature has registered
      az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-AzurePolicyAutoApprove')].   {Name:name,State:properties.state}"
-     
+
      # Once the above shows 'Registered' run the following to propagate the update
      az provider register -n Microsoft.ContainerService
      ```
@@ -135,7 +135,7 @@ När ovanstående nödvändiga steg har slutförts installerar du Azure Policy-t
      <a name="migrate-from-v1"></a>
      > [!NOTE]
      > Om knappen **aktivera tillägg** är nedtonad, har prenumerationen ännu inte lagts till i för hands versionen. Om knappen **Inaktivera tillägg** är aktive rad och ett meddelande om migrerings varning v2 visas, är v1-tillägget installerat och måste tas bort innan du tilldelar v2-princip definitioner. Det _inaktuella_ v1-tillägget ersätts automatiskt med v2-tillägget från 24 augusti 2020. Nya v2-versioner av princip definitionerna måste sedan tilldelas. Följ dessa steg för att uppgradera nu:
-     > 
+     >
      > 1. Verifiera att ditt AKS-kluster har v1-tillägget installerat genom att besöka sidan **principer (förhands granskning)** på ditt AKS-kluster och har "det aktuella klustret använder Azure policy tillägg v1..." meddelande.
      > 1. [Ta bort tillägget](#remove-the-add-on-from-aks).
      > 1. Välj knappen **aktivera tillägg** för att installera v2-versionen av tillägget.
@@ -185,16 +185,16 @@ Innan du installerar Azure Policy tillägg eller aktiverar någon av tjänst fun
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
-     
+
      # Provider register: Register the Azure Policy provider
      az provider register --namespace 'Microsoft.PolicyInsights'
      ```
 
    - Azure PowerShell
-   
+
      ```azurepowershell-interactive
      # Log in first with Connect-AzAccount if you're not using Cloud Shell
-   
+
      # Provider register: Register the Azure Policy provider
      Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
      ```
@@ -205,7 +205,7 @@ Innan du installerar Azure Policy tillägg eller aktiverar någon av tjänst fun
 
 1. Ditt Kubernetes-kluster har Aktiver ATS för Azure-bågen. Mer information finns i [onboarding a Kubernetes Cluster to Azure Arc](../../../azure-arc/kubernetes/connect-cluster.md).
 
-1. Ha det fullständigt kvalificerade Azure-resurs-ID: t för Azure Arc-Kubernetes-klustret. 
+1. Ha det fullständigt kvalificerade Azure-resurs-ID: t för Azure Arc-Kubernetes-klustret.
 
 1. Öppna portar för tillägget. Azure Policy-tillägget använder dessa domäner och portar för att hämta princip definitioner och tilldelningar och rapportera kompatibilitet för klustret tillbaka till Azure Policy.
 
@@ -226,7 +226,7 @@ Innan du installerar Azure Policy tillägg eller aktiverar någon av tjänst fun
 
    - Azure PowerShell
 
-     ```azure powershell-interactive
+     ```azurepowershell-interactive
      $sp = New-AzADServicePrincipal -Role "Policy Insights Data Writer (Preview)" -Scope "/subscriptions/<subscriptionId>/resourceGroups/<rg>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
 
      @{ appId=$sp.ApplicationId;password=[System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($sp.Secret));tenant=(Get-AzContext).Tenant.Id } | ConvertTo-Json
@@ -289,16 +289,16 @@ Innan du installerar Azure Policy tillägg eller aktiverar någon av tjänst fun
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
-     
+
      # Provider register: Register the Azure Policy provider
      az provider register --namespace 'Microsoft.PolicyInsights'
      ```
 
    - Azure PowerShell
-   
+
      ```azurepowershell-interactive
      # Log in first with Connect-AzAccount if you're not using Cloud Shell
-   
+
      # Provider register: Register the Azure Policy provider
      Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
      ```
@@ -310,7 +310,7 @@ Innan du installerar Azure Policy tillägg eller aktiverar någon av tjänst fun
      ```bash
      # Get the kube-apiserver pod name
      kubectl get pods -n kube-system
-   
+
      # Find the aadClientID value
      kubectl exec <kube-apiserver pod name> -n kube-system cat /etc/kubernetes/azure.json
      ```
@@ -393,21 +393,20 @@ Hitta de inbyggda princip definitionerna för att hantera klustret med hjälp av
 
 1. Ange **omfattningen** för hanterings gruppen, prenumerationen eller resurs gruppen för det Kubernetes-kluster där princip tilldelningen ska gälla.
 
-   > [!NOTE]    
+   > [!NOTE]
    > När du tilldelar en Azure Policy för Kubernetes-definitionen måste **omfånget** innehålla kluster resursen. För ett AKS-motor kluster måste **omfattningen** vara resurs gruppen för klustret.
 
-1. Ge princip tilldelningen ett **namn** och en **Beskrivning** som du kan använda för att identifiera det enkelt.    
+1. Ge princip tilldelningen ett **namn** och en **Beskrivning** som du kan använda för att identifiera det enkelt.
 
-1. Ange att [principen ska tvingas](./assignment-structure.md#enforcement-mode) till något av värdena    
-   nedan.   
+1. Ange att [principen ska tvingas](./assignment-structure.md#enforcement-mode) till något av värdena nedan.
 
-   - **Aktive rad** – tillämpa principen på klustret. Kubernetes-begäranden med överträdelser nekas.    
+   - **Aktive rad** – tillämpa principen på klustret. Kubernetes-begäranden med överträdelser nekas.
 
    - **Disabled** – Genomdriv inte principen i klustret. Kubernetes-begäranden med överträdelser nekas inte. Resultat av utvärdering av efterlevnad är fortfarande tillgängliga. När du utvärderar nya princip definitioner för att köra kluster är alternativet _inaktiverat_ användbart för att testa princip definitionen som begär Anden om att överträdelser inte nekas.
 
-1. Välj **Nästa**. 
+1. Välj **Nästa**.
 
-1. Ange **parameter värden** 
+1. Ange **parameter värden**
 
    - Om du vill undanta Kubernetes-namnrymder från princip utvärdering anger du listan över namn områden i undantag för parameter **namn område**. Vi rekommenderar att du undantar: _Kube-system_, _Gatekeeper-system_och _Azure-Arc_.
 

@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med Zscaler Private Access Administrator | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Zscaler privat åtkomst administratör.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c87392a7-e7fe-4cdc-a8e6-afe1ed975172
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 104583522c7041d89d9c63ba67a5633a3bd383f3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5507c25510a84dcfeafc1b2db6c2a774153a59c3
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87016498"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545751"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>Självstudie: Azure Active Directory integration med Zscaler Private Access Administrator
 
@@ -109,9 +104,9 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Zs
 
     ![Zscaler privat åtkomst administratörs domän och enkel inloggnings information för URL: er](common/idp-relay.png)
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://<subdomain>.private.zscaler.com/auth/metadata`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://<subdomain>.private.zscaler.com/auth/metadata`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://<subdomain>.private.zscaler.com/auth/sso`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<subdomain>.private.zscaler.com/auth/sso`
 
     c. Klicka på **Ange ytterligare URL:er**.
 
@@ -121,7 +116,7 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Zs
 
     ![Zscaler privat åtkomst administratörs domän och enkel inloggnings information för URL: er](common/both-signonurl.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<subdomain>.private.zscaler.com/auth/sso`   
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://<subdomain>.private.zscaler.com/auth/sso`   
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [Zscaler Private Access Administrator support team](https://help.zscaler.com/zpa-submit-ticket) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -186,7 +181,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** `brittasimon@yourcompanydomain.extension` . Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** `brittasimon@yourcompanydomain.extension` . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

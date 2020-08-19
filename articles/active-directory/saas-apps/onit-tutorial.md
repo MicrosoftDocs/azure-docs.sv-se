@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Onit | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Onit.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: bc479a28-8fcd-493f-ac53-681975a5149c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e908cb76a57f027494230edc648b69da0730ac27
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0a04b893af41f15d0757b781716909535f43239e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "70164232"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544017"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onit"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Onit
 
@@ -33,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar Onit med Azure Acti
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -109,7 +104,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -155,9 +150,9 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
     
     b. I text rutan för **IDP mål-URL** klistrar du in värdet för **inloggnings-URL: en**som du har kopierat från Azure Portal.
 
-    c. I text rutan för **IDP-utloggnings webb adress** klistrar du in värdet för **URL för utloggning**som du har kopierat från Azure Portal.
+    c. I text rutan för **IDP-utloggnings webb adress** klistrar du in värdet för  **URL för utloggning**som du har kopierat från Azure Portal.
 
-    d. I text rutan **IDP cert finger avtryck (SHA1)** klistrar du in **tumavtrycket** för certifikat, som du har kopierat från Azure Portal.
+    d. I text rutan **IDP cert finger avtryck (SHA1)** klistrar du in  **tumavtrycket** för certifikat, som du har kopierat från Azure Portal.
 
 ### <a name="create-onit-test-user"></a>Skapa Onit test användare
 
@@ -190,10 +185,10 @@ När du klickar på panelen Onit på åtkomst panelen, bör du loggas in automat
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Prova Onit med Azure AD](https://aad.portal.azure.com/)

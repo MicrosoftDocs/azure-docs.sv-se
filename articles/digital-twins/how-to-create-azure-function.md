@@ -7,12 +7,12 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3e284bc76da9ca40341d72f772aa7ee947a11638
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d9f9957209c6df91185059085f57636a16a3961c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124314"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589409"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Anslut Azure Functions appar för bearbetning av data
 
@@ -83,8 +83,8 @@ Mer information om detta finns i [*felsöka Event Grid utlösare lokalt*](../azu
 ### <a name="add-the-azure-digital-twins-sdk-to-your-azure-function-app"></a>Lägg till Azures digitala dubbla SDK i Azure Function-appen
 
 Function-appen interagerar med Azure Digitals sammanflätade med [Azure IoT Digital-klient biblioteket för .net (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). För att kunna använda SDK måste du inkludera följande paket i projektet:
-* `Azure.DigitalTwins.Core`(version `1.0.0-preview.2` )
-* `Azure.Identity`
+* `Azure.DigitalTwins.Core` (version `1.0.0-preview.2` )
+* `Azure.Identity` (version `1.1.1` )
 
 För att konfigurationen av Azure SDK-pipeline ska kunna konfigureras korrekt för Azure Functions, behöver du också:
 * `Azure.Net.Http`

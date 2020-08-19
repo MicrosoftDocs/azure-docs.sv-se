@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med TOPdesk-Public | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och TOPdesk.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 0873299f-ce70-457b-addc-e57c5801275f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
-ms.openlocfilehash: e5575a2e8f776e87fcd4e6f4a7a9244752ebfd9a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a18cb583b246c3cfbf09f43b9921497de37a3613
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71950410"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88524297"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Självstudie: Azure Active Directory integrering med TOPdesk-Public
 
@@ -32,9 +28,9 @@ Genom att integrera TOPdesk-offentliga med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med TOPdesk-Public behöver du följande objekt:
 
@@ -118,9 +114,9 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med TO
 
     ![Information om enkel inloggning för TOPdesk-offentliga domäner och URL: er](common/sp-identifier-reply.png)
 
-    d. I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<companyname>.topdesk.net`
+    d. I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://<companyname>.topdesk.net`
 
-    e. I text rutan **ID för identitets-URL** fyller du i URL: en för TOPdesk metadata som du kan hämta från TOPdesk-konfigurationen. Den bör använda följande mönster:`https://<companyname>.topdesk.net/saml-metadata/<identifier>`
+    e. I text rutan **ID för identitets-URL** fyller du i URL: en för TOPdesk metadata som du kan hämta från TOPdesk-konfigurationen. Den bör använda följande mönster: `https://<companyname>.topdesk.net/saml-metadata/<identifier>`
     
     f. I textrutan **Svars-URL** skriver du en URL med följande mönster: `https://<companyname>.topdesk.net/tas/public/login/verify`
     
@@ -219,7 +215,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** brittasimon@yourcompanydomain.extension. Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** brittasimon@yourcompanydomain.extension . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
@@ -259,7 +255,7 @@ För att Azure AD-användare ska kunna logga in på TOPdesk-offentliga måste de
 
 1. Logga in på din **TOPdesk-offentliga** företags webbplats som administratör.
 
-2. Klicka på ** \> TOPdesk nya \> stödfiler \> **på menyn högst upp.
+2. Klicka på **TOPdesk \> nya \> stödfiler \> **på menyn högst upp.
    
     ![Person](./media/topdesk-public-tutorial/ic790628.png "Person")
 

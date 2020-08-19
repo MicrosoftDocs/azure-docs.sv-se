@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Questetra BPM Suite | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Questetra BPM Suite.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: fb6d5b73-e491-4dd2-92d6-94e5aba21465
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: f58d6cbc6ec04e51e105662dff31c60ff502584c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 11a6df348ae623ccf75e61bc1abbb5e28c832237
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67093365"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548981"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>Självstudie: Azure Active Directory integrering med Questetra BPM Suite
 
@@ -32,9 +28,9 @@ Genom att integrera Questetra BPM Suite med Azure AD får du följande fördelar
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Questetra BPM Suite behöver du följande objekt:
 
@@ -156,11 +152,11 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Qu
     
     d. I text rutan URL för utloggnings **sida** klistrar du in värdet för den **utloggnings-URL** som du har kopierat från Azure Portal.
     
-    e. I text rutan **NameID format** skriver `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`du.
+    e. I text rutan **NameID format** skriver du `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress` .
 
     f. Öppna ditt **bas-64-** kodade certifikat i anteckningar som hämtats från Azure Portal, kopiera innehållet i det till Urklipp och klistra in det i text rutan för **verifierings certifikat** . 
 
-    g. Klicka på **Spara**.
+    ex. Klicka på **Spara**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare 
 
@@ -180,7 +176,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** brittasimon@yourcompanydomain.extension. Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** brittasimon@yourcompanydomain.extension . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
@@ -226,9 +222,9 @@ Syftet med det här avsnittet är att skapa en användare med namnet Britta Simo
    
     ![Skapa test användare][300] 
    
-    a. Skriv **namnet** på användaren britta.simon@contoso.comi text rutan **namn** .
+    a. Skriv **namnet** på användaren i text rutan **namn** britta.simon@contoso.com .
    
-    b. Skriv **e-post** för användaren britta.simon@contoso.comi text rutan **e-post** .
+    b. Skriv **e-post** för användaren i text rutan **e-post** britta.simon@contoso.com .
    
     c. Skriv ett **lösen ord** för användaren i text rutan **lösen ord** .
     

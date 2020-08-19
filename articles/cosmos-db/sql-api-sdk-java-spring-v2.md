@@ -1,22 +1,22 @@
 ---
-title: Vår data Azure Cosmos DB för SQL API-viktig information och resurser
-description: Lär dig allt om vår data Azure Cosmos DB för SQL API, inklusive versions datum, datum för indata och ändringar som gjorts mellan varje version av Azure Cosmos DB SQL async Java SDK.
+title: Viktig information och resurser för vår data Azure Cosmos DB v2 för SQL API
+description: Lär dig allt om våren data Azure Cosmos DB v2 för SQL API, inklusive versions datum, datum för indata och ändringar som gjorts mellan varje version av Azure Cosmos DB SQL async Java SDK.
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: f94ea37966c4942f72ae2d7b701e742891fa6cd2
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 47d9a8ff884e29dc5692c97d5e7867a856d01063
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854309"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590744"
 ---
-# <a name="spring-data-azure-cosmos-db-for-core-sql-api-release-notes-and-resources"></a>Våren data Azure Cosmos DB för Core (SQL) API: viktig information och resurser
+# <a name="spring-data-azure-cosmos-db-v2-for-core-sql-api-release-notes-and-resources"></a>Våren data Azure Cosmos DB v2 för Core (SQL) API: viktig information och resurser
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
@@ -26,7 +26,8 @@ ms.locfileid: "87854309"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Asynkron Java-SDK v2](sql-api-sdk-async-java.md)
 > * [Synkron Java-SDK v2](sql-api-sdk-java.md)
-> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Våren data v2](sql-api-sdk-java-spring-v2.md)
+> * [Våren data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark-anslutning](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -35,14 +36,16 @@ ms.locfileid: "87854309"
 > * [Mass utförar – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Mass utförar – Java](sql-api-sdk-bulk-executor-java.md)
 
-Med våren data Azure Cosmos DB for Core (SQL) kan utvecklare använda Azure Cosmos DB i våren-program. Våren data Azure Cosmos DB visar data gränssnittet våren för att manipulera databaser och samlingar, arbeta med dokument och skicka frågor. Både synkronisering och asynkron (reaktiv) API: er stöds i samma maven-artefakt. 
+Med vår data Azure Cosmos DB v2 för Core (SQL) kan utvecklare använda Azure Cosmos DB i våren-program. Våren data Azure Cosmos DB visar data gränssnittet våren för att manipulera databaser och samlingar, arbeta med dokument och skicka frågor. Både synkronisering och asynkron (reaktiv) API: er stöds i samma maven-artefakt. 
 
 [Våren-ramverket](https://spring.io/projects/spring-framework) är en programmerings-och konfigurations modell som effektiviserar utveckling av Java-program. För att citera organisationens webbplats effektiviserar våren "rör koppling" av program med hjälp av beroende inmatning. Många utvecklare gillar att skapa och testa program blir enklare. [Våren Boot](https://spring.io/projects/spring-boot) utökar den här idén med att hantera rör med ett öga mot webb program och utveckling av mikrotjänster. [Våren data](https://spring.io/projects/spring-data) är en programmerings modell för att få åtkomst till data lager som Azure Cosmos dB från ett våren-eller våren Boot-program. 
 
 Du kan använda vår data Azure Cosmos DB i dina [Azure våren Cloud](https://azure.microsoft.com/services/spring-cloud/) -program.
 
 > [!IMPORTANT]  
-> Den här viktig information gäller endast för Azure Cosmos DB SQL API. 
+> De här viktiga anteckningarna är till för v2 av vår data Azure Cosmos DB. Du hittar v3-viktig information [här](sql-api-sdk-java-spring-v3.md). 
+>
+> Våren data Azure Cosmos DB endast stöder SQL API.
 >
 > Följande guider stöder våren-data på andra Azure Cosmos DB API: er:
 > * [Våren-data för Apache Cassandra med Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)

@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Chargebee | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Chargebee.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 033d413d-1656-4d9c-a606-dd33c23948f9
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/08/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2bbaf3d527ad1e58914c6b3f9c8b5b4ea57ae08
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6358c41ab6d63baa8ed1fa6960d7d887825a1d78
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68931858"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88529494"
 ---
 # <a name="tutorial-integrate-chargebee-with-azure-active-directory"></a>Självstudie: integrera Chargebee med Azure Active Directory
 
@@ -33,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar Chargebee med Azure
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -82,16 +77,16 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://<domainname>.chargebee.com`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://<domainname>.chargebee.com`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://app.chargebee.com/saml/<domainname>/acs`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://app.chargebee.com/saml/<domainname>/acs`
 
 1. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://<domainname>.chargebee.com`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<domainname>.chargebee.com`
 
     > [!NOTE]
-    > `<domainname>`är namnet på den domän som användaren skapar efter att ha gjort anspråk på kontot. Kontakta [support teamet för Chargebee-klienten](mailto:support@chargebee.com)om du har annan information. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
+    > `<domainname>` är namnet på den domän som användaren skapar efter att ha gjort anspråk på kontot. Kontakta [support teamet för Chargebee-klienten](mailto:support@chargebee.com)om du har annan information. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
 
 4. På sidan **Konfigurera enkel inloggning med SAML** , i avsnittet **SAML-signeringscertifikat** , Sök efter **certifikat (base64)** och välj **Ladda ned** för att ladda ned certifikatet och spara det på din dator.
 
@@ -109,7 +104,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -135,7 +130,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 1. Öppna ett nytt webbläsarfönster och logga in på din Chargebee företags webbplats som administratör.
 
-4. Klicka på **Inställningar** > **säkerhets** > **hantering**på vänster sida av menyn.
+4. Klicka på **Inställningar**  >  **säkerhets**  >  **hantering**på vänster sida av menyn.
 
     ![Chargebee-konfiguration](./media/chargebee-tutorial/config01.png)
 
@@ -175,9 +170,9 @@ När du klickar på panelen Chargebee på åtkomst panelen, bör du loggas in au
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

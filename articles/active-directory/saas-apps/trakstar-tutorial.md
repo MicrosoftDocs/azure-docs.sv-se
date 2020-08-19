@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Trakstar | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Trakstar.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 411cb8c3-95c6-4138-acf2-ffc7f663e89a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 06ab8a96e4f2c4bb90afd34952a8e6e78114e7e5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a274718f43a6251e468f8f2a9aaa20125387cb0f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67088327"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552063"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trakstar"></a>Självstudie: Azure Active Directory integrering med Trakstar
 
@@ -32,9 +28,9 @@ Genom att integrera Trakstar med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Trakstar behöver du följande objekt:
 
@@ -107,9 +103,9 @@ Utför följande steg för att konfigurera enkel inloggning med Trakstar i Azure
 
     ![Information om enkel inloggning för Trakstar-domän och URL: er](common/sp-identifier.png)
 
-    a. I text rutan **inloggnings-URL** kopierar du värdet som finns i **ACS-URL (Consumer)** i Trakstar (inställningar > autentisering & SSO) i formatet:`https://app.trakstar.com/auth/saml/callback?namespace=<YOUR_NAMESPACE>`
+    a. I text rutan **inloggnings-URL** kopierar du värdet som finns i **ACS-URL (Consumer)** i Trakstar (inställningar > autentisering & SSO) i formatet: `https://app.trakstar.com/auth/saml/callback?namespace=<YOUR_NAMESPACE>`
 
-    b. I text rutan **identifierare (enhets-ID)** lämnar du standardvärdet:`https://app.trakstar.com`
+    b. I text rutan **identifierare (enhets-ID)** lämnar du standardvärdet: `https://app.trakstar.com`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera dessa värden med faktisk inloggnings-URL och identifierare. Logga in på Trakstar som administratör för att hämta dessa värden.
@@ -151,7 +147,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** brittasimon@yourcompanydomain.extension. Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** brittasimon@yourcompanydomain.extension . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

@@ -1,6 +1,6 @@
 ---
-title: ta med fil
-description: ta med fil
+title: inkludera fil
+description: inkludera fil
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: dececd066597682e240e737727d3bcaf8f8f3619
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 7411b4c000569693335cb0438fe186b290750247
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87375701"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88602357"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Behöver användaren ha hubb och eker med SD-WAN/VPN-enheter för att kunna använda Azure Virtual WAN?
 
@@ -187,7 +187,7 @@ Nej. Virtual WAN kräver inte ExpressRoute från varje plats. Dina platser kan a
 
 ### <a name="is-there-a-network-throughput-or-connection-limit-when-using-azure-virtual-wan"></a>Finns det ett nätverks flöde eller en anslutnings gräns när du använder Azure Virtual WAN?
 
-Nätverks data flöde är per tjänst i en virtuell WAN-hubb. Även om du kan ha så många virtuella WAN-nätverk som du vill, så tillåter varje virtuellt WAN 1 hubb per region. I varje hubb är det sammanställda VPN-dataflödet upp till 20 Gbit/s, ExpressRoute-dataflödet är upp till 20 Gbit/s och det sammanlagda data flödet för VPN-och punkt-till-plats-VPN är upp till 20 Gbps. Routern i den virtuella hubben har stöd för upp till 50 Gbit/s för trafikflöden för VNet-till-VNet och antar totalt 2000 VM-arbetsbelastning över alla virtuella nätverk i virtuella WAN-hubbar.
+Nätverks data flöde är per tjänst i en virtuell WAN-hubb. Även om du kan ha så många virtuella WAN-nätverk som du vill, så tillåter varje virtuellt WAN 1 hubb per region. I varje hubb är det sammanställda VPN-dataflödet upp till 20 Gbit/s, ExpressRoute-dataflödet är upp till 20 Gbit/s och det sammanlagda data flödet för VPN-och punkt-till-plats-VPN är upp till 20 Gbps. Routern i den virtuella hubben har stöd för upp till 50 Gbit/s för trafikflöden för VNet-till-VNet och antar totalt 2000 VM-arbetsbelastning över alla virtuella nätverk som är anslutna till en enda virtuell hubb.
 
 När VPN-platser ansluter till en hubb gör de det med anslutningar. Virtuellt WAN stöder upp till 1000 anslutningar eller 2000 IPsec-tunnlar per virtuell hubb. När fjärran vändare ansluter till en virtuell hubb ansluter de till P2S VPN-gatewayen, som har stöd för upp till 10 000 användare beroende på vilken skalnings enhet (bandbredd) som valts för VPN-gatewayen för P2S i den virtuella hubben.
 
@@ -239,7 +239,7 @@ När flera ExpressRoute-kretsar är anslutna till en virtuell hubb, tillhandahå
 
 ### <a name="does-virtual-wan-prefer-expressroute-over-vpn-for-traffic-egressing-azure"></a>Föredrar Virtual WAN ExpressRoute via VPN för trafik som utgående Azure
 
-Ja 
+Yes 
 
 ### <a name="when-a-virtual-wan-hub-has-an-expressroute-circuit-and-a-vpn-site-connected-to-it-what-would-cause-a-vpn-connection-route-to-be-prefered-over-expressroute"></a>När en virtuell WAN-hubb har en ExpressRoute-krets och en VPN-plats som är ansluten till den, kan det som skulle orsaka att en anslutning till ett VPN-nätverk föredras över ExpressRoute?
 
@@ -256,6 +256,9 @@ IPv6 stöds inte i Virtual WAN Hub och dess gatewayer. Om du har ett VNet som ha
 ### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionality-"></a>Vilken är den rekommenderade API-versionen som ska användas av skript som automatiserar olika virtuella WAN-funktioner?
 
 En lägsta version av 05-01-2020 (kan 1 2020) krävs. 
+
+### <a name="any-virtual-wan-limits"></a>Alla virtuella WAN-gränser?
+Gränser för virtuella WAN-nätverk: https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-wan-limits
 
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Vad är skillnaderna mellan de virtuella WAN-typerna (Basic och standard)?
 

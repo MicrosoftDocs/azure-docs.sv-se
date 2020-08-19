@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med springer-länk | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och springer-länken.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 58cdf029-bdc0-43c4-a469-b921c2a669bd
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 2e93f6d1804dd32e9e0da2c9be98aa523a6faafa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 41713554273ed5d6548a35d0ac956d8ff5c74191
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67089705"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542542"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>Självstudie: Azure Active Directory integrering med springer-länk
 
@@ -32,9 +28,9 @@ Genom att integrera springer-länken med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med springer-länken behöver du följande objekt:
 
@@ -105,7 +101,7 @@ Utför följande steg för att konfigurera enkel inloggning med springer-länken
 
     ![Springer länk domän och URL enkel inloggning information](common/idp-relay.png)
 
-    a. Skriv en URL i text rutan **identifierare** :`https://fsso.springer.com`
+    a. Skriv en URL i text rutan **identifierare** : `https://fsso.springer.com`
 
     b. Skriv en URL i textrutan **Svars-URL**: `https://fsso.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`
 
@@ -117,10 +113,10 @@ Utför följande steg för att konfigurera enkel inloggning med springer-länken
 
     ![Springer länk domän och URL enkel inloggning information](common/both-signonurl.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://fsso.springer.com/saml/login?idp=<entityID>&targetUrl=https://link.springer.com`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://fsso.springer.com/saml/login?idp=<entityID>&targetUrl=https://link.springer.com`
 
     > [!NOTE]
-    > Inloggnings-URL-värdet är inte verkligt. Uppdatera värdet med den faktiska inloggnings-URL:en. `<entityID>`är Azure AD-identifieraren kopierad från avsnittet **Konfigurera springer länk** , som beskrivs senare i självstudierna. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
+    > Inloggnings-URL-värdet är inte verkligt. Uppdatera värdet med den faktiska inloggnings-URL:en. `<entityID>` är Azure AD-identifieraren kopierad från avsnittet **Konfigurera springer länk** , som beskrivs senare i självstudierna. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
 
 6. På sidan **Konfigurera enkel inloggning med SAML** , i avsnittet **SAML-signeringscertifikat** , klickar du på Kopiera-ikonen för att kopiera **URL: en för appens Federations-metadata** och spara den på din dator.
 
@@ -159,7 +155,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **Användarnamn** anger du **brittasimon@yourcompanydomain.extension**  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 

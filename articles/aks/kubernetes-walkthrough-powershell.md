@@ -3,14 +3,14 @@ title: 'Snabb start: Distribuera ett AKS-kluster med hjälp av PowerShell'
 description: Lär dig hur du snabbt skapar ett Kubernetes-kluster, distribuerar ett program och övervakar prestanda i Azure Kubernetes service (AKS) med hjälp av PowerShell.
 services: container-service
 ms.topic: quickstart
-ms.date: 05/26/2020
+ms.date: 08/18/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 219772fd81617dc3e69b452057e0122eedef69f9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4dde1dcd131a497b60a314513df44cc0443d28ed
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499865"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590021"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-powershell"></a>Snabb start: Distribuera ett Azure Kubernetes service-kluster med PowerShell
 
@@ -24,7 +24,7 @@ Den här snabbstarten förutsätter grundläggande kunskaper om Kubernetes-begre
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt](https://azure.microsoft.com/free/) konto innan du börjar.
+Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://azure.microsoft.com/free/) konto innan du börjar.
 
 Om du väljer att använda PowerShell lokalt kräver den här artikeln att du installerar AZ PowerShell-modulen och ansluter till ditt Azure-konto med hjälp av cmdleten [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) . Mer information om hur du installerar AZ PowerShell-modulen finns i [installera Azure PowerShell][install-azure-powershell].
 
@@ -101,10 +101,6 @@ aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.15.10
 ## <a name="run-the-application"></a>Kör programmet
 
 En Kubernetes-manifestfil definierar ett önskat tillstånd för klustret, till exempel vilka containeravbildningar som ska köras. I den här snabbstarten används ett manifest för att skapa alla objekt som behövs för att köra Azure Vote-programmet. Det här manifestet innehåller två [Kubernetes-distributioner][kubernetes-deployment] – en för exemplet på Azure Vote Python-program och den andra för en Redis-instans. Två [Kubernetes Services skapas också – en intern tjänst för Redis-instansen och en extern tjänst för att få åtkomst till Azures röst program från Internet.
-
-> [!TIP]
-> I den här snabbstarten skapar och distribuerar du manuellt applikationsmanifest till AKS-klustret.
-> I verkliga scenarier kan du använda [Azure Dev Spaces][azure-dev-spaces] för att snabbt iterera och felsöka koden direkt i AKS-klustret. Du kan använda Dev Spaces på olika OS-plattformar och i olika utvecklingsmiljöer samt arbeta tillsammans med andra i ditt team.
 
 Skapa en fil med namnet `azure-vote.yaml` och kopiera följande YAML-definition. Om du använder Azure Cloud Shell, kan du skapa filen med `vi` eller `nano` som om du arbetar i ett virtuellt eller fysiskt system:
 

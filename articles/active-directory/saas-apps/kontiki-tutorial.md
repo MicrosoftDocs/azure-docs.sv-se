@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Kontiki | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Kontiki.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8d5e5413-da4c-40d8-b1d0-f03ecfef030b
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfb154bce34b2ceda99b82c7ca3534b8a8ee0a1f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cb652cfdae0ce785d6a076b8b1592d9f700b3383
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67098494"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549985"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>Självstudie: Azure Active Directory integrering med Kontiki
 
@@ -35,7 +30,7 @@ Genom att integrera Kontiki med Azure AD får du följande fördelar:
 
 Mer information om program vara som en tjänst (SaaS) för att integrera appar med Azure AD finns i [enkel inloggning till program i Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Kontiki behöver du följande objekt:
 
@@ -61,7 +56,7 @@ Om du vill integrera Kontiki med Azure AD måste du lägga till Kontiki i listan
 
     ![Alternativet Azure Active Directory](common/select-azuread.png)
 
-1. Välj **företags program** > **alla program**.
+1. Välj **företags program**  >  **alla program**.
 
     ![Fönstret Företagsprogram](common/enterprise-applications.png)
 
@@ -131,7 +126,7 @@ Om du vill konfigurera enkel inloggning på Kontiki-sidan skickar du den hämtad
 
 I det här avsnittet skapar du en testanvändare med namnet Britta Simon i Azure-portalen.
 
-1. I Azure Portal väljer du **Azure Active Directory** > **användare** > **alla användare**.
+1. I Azure Portal väljer du **Azure Active Directory**  >  **användare**  >  **alla användare**.
 
     ![Alternativen användare och alla användare](common/users.png)
 
@@ -143,7 +138,7 @@ I det här avsnittet skapar du en testanvändare med namnet Britta Simon i Azure
 
     1. I rutan **Namn** anger du **BrittaSimon**.
   
-    1. I rutan **användar namn** anger **du brittasimon\@\<till företagets domän>.\< tillägg>**. Till exempel **brittasimon\@contoso.com**.
+    1. I rutan **användar namn** anger du **brittasimon \@ \<your-company-domain> . \<extension> **. Till exempel **brittasimon \@ contoso.com**.
 
     1. Markera kryss rutan **Visa lösen ord** . Skriv ned värdet som visas i rutan **lösen ord** .
 
@@ -155,7 +150,7 @@ I det här avsnittet skapar du en testanvändare med namnet Britta Simon i Azure
 
 I det här avsnittet beviljar du Britta Simon-åtkomst till Kontiki så att hon kan använda enkel inloggning i Azure.
 
-1. I Azure Portal väljer du **företags program** > **alla program** > **Kontiki**.
+1. I Azure Portal väljer du **företags program**  >  **alla program**  >  **Kontiki**.
 
     ![Fönstret Företagsprogram](common/enterprise-applications.png)
 

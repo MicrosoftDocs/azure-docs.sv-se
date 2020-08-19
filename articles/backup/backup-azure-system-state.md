@@ -1,14 +1,14 @@
 ---
 title: Säkerhetskopiera Windows system State till Azure
-description: Lär dig att säkerhetskopiera system tillstånd för Windows Server och/eller Windows-datorer till Azure.
+description: Lär dig hur du säkerhetskopierar system tillstånd för Windows Server-datorer till Azure.
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: ea38b76d9a8b7b8ccc1898ed9450177da2cb2458
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a56e500cc0330a6406b4465ab5baeafa39b544aa
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003842"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263052"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Säkerhetskopiera Windows system State till Azure
 
@@ -24,21 +24,21 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](htt
 
 När du skapar ett Recovery Services-valv ska du alltid kontrollera att lagringsredundansen är konfigurerad på det sätt som du vill.
 
-1. På bladet **Recovery Services-valv** klickar du på det nya valvet.
+1. Välj det nya valvet i fönstret **Recovery Services valv** .
 
     ![Välj det nya valvet i listan över Recovery Services-valv](./media/backup-try-azure-backup-in-10-mins/rs-vault-list.png)
 
-    Om du väljer valvet minimeras bladet **Recovery Services-valv** och bladet Inställningar (*som har namnet på valvet överst*) och bladet med valvinformation öppnas.
+    När du väljer valvet begränsas fönstret **Recovery Services valv** och fönstret inställningar (*som har namnet på valvet överst*) och informations fönstret för valvet öppet.
 
     ![Visa lagringskonfigurationen för det nya valvet](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration-2.png)
-2. På det nya valvets inställningsblad använder du det lodräta reglaget och bläddrar ned till avsnittet Hantera. Där klickar du på **Infrastruktur för säkerhetskopiering**.
-    Bladet Infrastruktur för säkerhetskopiering öppnas.
-3. På bladet Infrastruktur för säkerhetskopiering klickar du på **Konfiguration av säkerhetskopiering** för att öppna bladet **Konfiguration av säkerhetskopiering**.
+2. I fönstret nytt valv inställningar använder du den lodräta bilden för att rulla ned till avsnittet hantera och väljer infrastruktur för **säkerhets kopiering**.
+    Fönstret infrastruktur för säkerhets kopiering öppnas.
+3. I fönstret infrastruktur för säkerhets kopiering väljer du **säkerhets kopierings konfiguration** för att öppna fönstret **säkerhets kopierings konfiguration** .
 
     ![Ange lagringskonfigurationen för det nya valvet](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration.png)
 4. Välj lämpligt alternativ för lagringsreplikering för valvet.
 
-    ![alternativ för lagringskonfiguration](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
+    ![Alternativ för lagrings konfiguration](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
     Valvet använder geo-redundant lagring som standard. Om du använder Azure som primär slutpunkt för lagring av säkerhetskopior fortsätter du att använda **geo-redundant** lagring. Om du inte använder Azure som en slutpunkt för primär lagring av säkerhetskopior väljer du **Lokalt redundant**, vilket minskar kostnaderna för Azure-lagring. Läs mer om alternativen för [geo-redundant](../storage/common/storage-redundancy.md) och [lokalt redundant](../storage/common/storage-redundancy.md) i denna [översikt av lagringsredundans](../storage/common/storage-redundancy.md).
 
@@ -46,47 +46,47 @@ Nu när du har skapat ett valv konfigurerar du det för att säkerhetskopiera Wi
 
 ## <a name="configure-the-vault"></a>Konfigurera valvet
 
-1. På bladet Recovery Services-valv (för valvet som du precis har skapat) klickar du på **Säkerhetskopiering** i avsnittet Komma igång och väljer sedan **Säkerhetskopieringsmål** på bladet **Kom igång med säkerhetskopiering**.
+1. I fönstret Recovery Services valv (för det valv som du nyss skapade) går du till avsnittet Komma igång, väljer **säkerhets kopiering**och väljer sedan **säkerhets kopierings mål**i rutan **komma igång med säkerhets kopia** .
 
-    ![Öppna bladet för säkerhetskopieringsmål](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
+    ![Öppna inställningar för säkerhetskopiering](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
 
-    Bladet **Säkerhetskopieringsmål** öppnas.
+    Fönstret **säkerhets kopierings mål** öppnas.
 
-    ![Öppna bladet för säkerhetskopieringsmål](./media/backup-try-azure-backup-in-10-mins/backup-goal-blade.png)
+    ![Öppna mål rutan för säkerhets kopiering](./media/backup-try-azure-backup-in-10-mins/backup-goal-blade.png)
 
 2. Från listrutan **Var körs din arbetsbelastning?** väljer du **Lokalt**.
 
-    Du väljer **Lokalt** eftersom din Windows Server- eller Windows-dator är en fysisk dator som inte finns i Azure.
+    Du väljer **lokalt** eftersom din Windows Server-eller Windows-dator är en fysisk dator som inte är i Azure.
 
-3. Från menyn **vad vill du säkerhetskopiera? väljer du** **system tillstånd**och klickar på **OK**.
+3. Från menyn **vad vill du säkerhetskopiera? väljer du** **system tillstånd**och väljer **OK**.
 
     ![Konfigurera filer och mappar](./media/backup-azure-system-state/backup-goal-system-state.png)
 
-    När du klickar på OK visas en markering bredvid **Säkerhetskopieringsmål** och bladet **Förbered infrastruktur** öppnas.
+    När du klickar på OK visas en bock bredvid **säkerhets kopierings mål**och fönstret **Förbered infrastruktur** öppnas.
 
     ![När säkerhetskopieringsmålet har konfigurerats går du vidare och förbereder infrastrukturen](./media/backup-try-azure-backup-in-10-mins/backup-goal-configed.png)
 
-4. På bladet **Förbered infrastruktur** klickar du på **Ladda ned agent för Windows Server eller Windows Client**.
+4. I fönstret **Förbered infrastruktur** väljer du **Ladda ned agent för Windows Server eller Windows-klient**.
 
-    ![förbereda infrastrukturen](./media/backup-try-azure-backup-in-10-mins/choose-agent-for-server-client.png)
+    ![Förbered infrastruktur](./media/backup-try-azure-backup-in-10-mins/choose-agent-for-server-client.png)
 
-    Om du använder Windows Server Essential väljer du att hämta agenten för Windows Server Essential. En popup-meny visas och du uppmanas att köra eller spara MARSAgentInstaller.exe.
+    Om du använder Windows Server Essentials väljer du att ladda ned agenten för Windows Server Essentials. En popup-meny visas och du uppmanas att köra eller spara MARSAgentInstaller.exe.
 
     ![Dialogrutan MARSAgentInstaller](./media/backup-try-azure-backup-in-10-mins/mars-installer-run-save.png)
 
-5. På snabbmenyn för hämtningen klickar du på **Spara**.
+5. I popup-menyn Hämta väljer du **Spara**.
 
-    Som standard sparas filen **MARSagentinstaller.exe** i mappen för nedladdningar. När installationsprogrammet har slutförts visas ett popup-fönster och du tillfrågas om du vill köra installationsprogrammet eller öppna mappen.
+    Som standard sparas filen **MARSagentinstaller.exe** i mappen för nedladdningar. När installations programmet har slutförts visas ett popup-fönster där du tillfrågas om du vill köra installations programmet eller öppna mappen.
 
-    ![förbereda infrastrukturen](./media/backup-try-azure-backup-in-10-mins/mars-installer-complete.png)
+    ![MARS-installationsprogrammet har slutförts](./media/backup-try-azure-backup-in-10-mins/mars-installer-complete.png)
 
     Du behöver inte installera agenten än. Du kan installera agenten när du har hämtat valvautentiseringsuppgifterna.
 
-6. Klicka på **Ladda ned** på bladet **Förbered infrastruktur**.
+6. I fönstret **Förbered infrastruktur** väljer du **Hämta**.
 
     ![hämta autentiseringsuppgifter för valvet](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-    Autentiseringsuppgifterna för valvet hämtas till mappen Hämtningsbara filer. När autentiseringsuppgifterna för valvet har hämtats visas ett popup-fönster och du tillfrågas om du vill öppna eller spara autentiseringsuppgifterna. Klicka på **Spara**. Om du råkar klicka på **Öppna** av misstag väntar du tills dialogrutan som försöker öppna autentiseringsuppgifterna för valvet misslyckas. Du kan inte öppna valvautentiseringsuppgifterna. Gå vidare till nästa steg. Valvautentiseringsuppgifterna finns i mappen Hämtade filer.
+    Valvets autentiseringsuppgifter laddas ned till mappen **hämtade filer** . När autentiseringsuppgifterna för valvet har hämtats visas ett popup-fönster där du tillfrågas om du vill öppna eller spara autentiseringsuppgifterna. Välj **Spara**. Om du av misstag väljer **Öppna**, låt dialog rutan som försöker öppna autentiseringsuppgifterna för valvet Miss lyckas. Du kommer inte att kunna öppna autentiseringsuppgifterna för valvet. Fortsätt till nästa steg. Autentiseringsuppgifterna för valvet finns i mappen **hämtade filer** .
 
     ![valvautentiseringsuppgifterna har hämtats](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
    > [!NOTE]
@@ -142,39 +142,39 @@ För att slutföra den första säkerhetskopieringen använder du Microsoft Azur
 
     ![Starta Azure Recovery Services-agenten](./media/backup-try-azure-backup-in-10-mins/snap-in-search.png)
 
-2. Klicka på Recovery Services-agenten och sedan på **Schemalägg säkerhetskopiering**.
+2. I Recovery Services agent väljer du **Schemalägg säkerhets kopiering**.
 
     ![Schemalägga en Windows Server-säkerhetskopiering](./media/backup-try-azure-backup-in-10-mins/schedule-first-backup.png)
 
-3. Klicka på **Nästa** på sidan Komma igång i guiden Schemalägg säkerhetskopiering.
+3. På sidan **komma igång** i guiden Schemalägg säkerhets kopiering väljer du **Nästa**.
 
-4. På sidan Välj objekt som ska säkerhetskopieras klickar du på **Lägg till objekt**.
+4. På sidan **Välj objekt som ska säkerhets kopie ras väljer du** **Lägg till objekt**.
 
-5. Välj **system tillstånd** och klicka sedan på **OK**.
+5. Välj **system tillstånd** och välj sedan **OK**.
 
-6. Klicka på **Nästa**.
+6. Välj **Nästa**.
 
 7. Välj säkerhets kopierings frekvens och bevarande princip för säkerhets kopiering av system tillstånd på efterföljande sidor.
 
-8. Läs informationen på sidan Confirmation (Bekräftelse) och klicka sedan på **Finish** (Slutför).
+8. På sidan bekräftelse granskar du informationen och väljer sedan **Slutför**.
 
-9. När guiden har skapat säkerhetskopieringsschemat klickar du på **Stäng**.
+9. När du har skapat säkerhets kopierings schemat väljer du **Stäng**.
 
 ### <a name="to-back-up-windows-server-system-state-for-the-first-time"></a>Säkerhetskopiera Windows Server System State för första gången
 
 1. Se till att det inte finns några väntande uppdateringar för Windows Server som kräver en omstart.
 
-2. I Recovery Services-agenten klickar du på **Säkerhetskopiera nu** för att slutföra en inledande seeding över nätverket.
+2. I Recovery Services agent väljer du **Säkerhetskopiera nu** för att slutföra den inledande dirigeringen över nätverket.
 
     ![Säkerhetskopiera Windows Server nu](./media/backup-try-azure-backup-in-10-mins/backup-now.png)
 
-3. Välj **system tillstånd** på skärmen **Välj säkerhets kopierings objekt** som visas och klicka på **Nästa**.
+3. Välj **system tillstånd** på skärmen **Välj säkerhets kopierings objekt** som visas och välj **Nästa**.
 
-4. Gå igenom inställningarna på sidan Bekräftelse som guiden Säkerhetskopiera nu ska använda för att säkerhetskopiera datorn. Klicka på **Säkerhetskopiera**.
+4. Gå igenom inställningarna på sidan Bekräftelse som guiden Säkerhetskopiera nu ska använda för att säkerhetskopiera datorn. Välj sedan **säkerhetskopiera**.
 
-5. Stäng guiden genom att klicka på **Stäng**. Om du stänger guiden innan säkerhetskopieringen är klar fortsätter guiden att köras i bakgrunden.
+5. Stäng guiden genom att välja **Stäng** . Om du stänger guiden innan säkerhetskopieringen är klar fortsätter guiden att köras i bakgrunden.
     > [!NOTE]
-    > MARS-agenten utlöser SFC-/verifyonly som en del av förincheckningarna före varje säkerhets kopiering av system tillstånd. Detta görs för att säkerställa att filer som säkerhets kopie ras som en del av system tillstånd har rätt versioner som motsvarar Windows-versionen. Läs mer om system fils Checker (SFC) i [den här artikeln](/windows-server/administration/windows-commands/sfc).
+    > MARS-agenten utlöses `SFC /verifyonly` som en del av förincheckningarna före varje säkerhets kopiering av system tillstånd. Detta görs för att säkerställa att filer som säkerhets kopie ras som en del av system tillstånd har rätt versioner som motsvarar Windows-versionen. Läs mer om system fils Checker (SFC) i [den här artikeln](/windows-server/administration/windows-commands/sfc).
     >
 
 När den första säkerhetskopieringen har slutförts visas statusen **Jobbet har slutförts** i säkerhetskopieringskonsolen.
@@ -183,7 +183,7 @@ När den första säkerhetskopieringen har slutförts visas statusen **Jobbet ha
 
 ## <a name="questions"></a>Har du några frågor?
 
-Om du har frågor eller om du saknar en funktion är du välkommen att [lämna feedback](https://feedback.azure.com/forums/258995-azure-backup).
+Om du har frågor kan du [skicka oss feedback](https://feedback.azure.com/forums/258995-azure-backup).
 
 ## <a name="next-steps"></a>Nästa steg
 

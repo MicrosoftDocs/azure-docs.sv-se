@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med Work.com | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Work.com.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 98e6739e-eb24-46bd-9dd3-20b489839076
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7a6dc16eef1bb36a5bd6cbf0502a83481230bc0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5fe8697327203a84f91b42e8742db75150b6cb19
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67087086"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88541471"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>Självstudie: Azure Active Directory integrering med Work.com
 
@@ -33,9 +28,9 @@ Genom att integrera Work.com med Azure AD får du följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med Work.com behöver du följande objekt:
 
@@ -109,7 +104,7 @@ Utför följande steg för att konfigurera enkel inloggning med Work.com i Azure
 
     ![Information om enkel inloggning för Work.com-domän och URL: er](common/sp-signonurl.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`http://<companyname>.my.salesforce.com`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `http://<companyname>.my.salesforce.com`
 
     > [!NOTE]
     > Värdet är inte verkligt. Uppdatera värdet med den faktiska inloggnings-URL:en. Kontakta [Work.com client support team](https://help.salesforce.com/articleView?id=000159855&type=3) för att hämta värdet. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -175,13 +170,13 @@ Utför följande steg för att konfigurera enkel inloggning med Work.com i Azure
     
     c. Klicka på **Bläddra**om du vill ladda upp det hämtade certifikatet från Azure Portal.
     
-    d. I text rutan **entitets-ID** skriver `https://salesforce-work.com`du.
+    d. I text rutan **entitets-ID** skriver du `https://salesforce-work.com` .
     
     e. Som **SAML-identitets typ**väljer du **Assertion innehåller Federations-ID: t från användarobjektet**.
     
     f. Som **SAML-identitets plats**väljer du **identitet i NameIdentfier-elementet för ämnes instruktionen**.
     
-    g. I text rutan **inloggnings-URL för identitetsprovider** klistrar du in värdet för **inloggnings-URL: en** som du har kopierat från Azure Portal.
+    ex. I text rutan **inloggnings-URL för identitetsprovider** klistrar du in värdet för **inloggnings-URL: en** som du har kopierat från Azure Portal.
 
     h. I text rutan **Logga in URL för identitets leverantör** klistrar du in värdet för den **utloggnings-URL** som du har kopierat från Azure Portal.
     
@@ -219,7 +214,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **Namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** `brittasimon@yourcompanydomain.extension`. Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** `brittasimon@yourcompanydomain.extension` . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
@@ -281,13 +276,13 @@ För att Azure Active Directory användare ska kunna logga in måste de tillhand
     
     c. Skriv **namnet** på användaren **BrittaS**i text rutan **alias** .
     
-    d. Skriv **e-postadressen** för användaren Brittasimon@contoso.comi text rutan för **e-post** .
+    d. Skriv **e-postadressen** för användaren i text rutan för **e-post** Brittasimon@contoso.com .
     
-    e. I text rutan **användar namn** anger du ett användar namn för användaren Brittasimon@contoso.com.
+    e. I text rutan **användar namn** anger du ett användar namn för användaren Brittasimon@contoso.com .
     
     f. I text rutan **namn på Nick** anger du ett Nick- **namn** för User **Simon**.
     
-    g. Välj **roll**, **användar licens**och **profil**.
+    ex. Välj **roll**, **användar licens**och **profil**.
     
     h. Klicka på **Spara**.  
       

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6fd20819d17861ed5171bf61e4c485fcceba7985
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 2032a7c9d9cd9b17da956dc829234462f8b9e726
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006119"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509611"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Använd Microsoft Teams på Windows Virtual Desktop
 
@@ -25,7 +25,7 @@ Microsoft Teams på Windows Virtual Desktop stöder chatt och samarbete. Med med
 
 Med medie optimering för Microsoft team, hanterar Windows Skriv bords klienten ljud och video lokalt för team-samtal och-möten. Du kan fortfarande använda Microsoft Teams på virtuella Windows-datorer med andra klienter utan optimerad samtal och möten. Teams chatt-och samarbets funktioner stöds på alla plattformar. Om du vill omdirigera lokala enheter i fjärrsessionen kan du läsa [anpassa Remote Desktop Protocol egenskaper för en adresspool](#customize-remote-desktop-protocol-properties-for-a-host-pool).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Innan du kan använda Microsoft Teams på Windows Virtual Desktop måste du göra följande saker:
 
@@ -36,7 +36,7 @@ Innan du kan använda Microsoft Teams på Windows Virtual Desktop måste du gör
 
 ## <a name="install-the-teams-desktop-app"></a>Installera Teams Desktop-appen
 
-I det här avsnittet visas hur du installerar Teams Desktop-appen på en VM-avbildning för Windows 10 multi-session eller Windows 10 Enterprise. Om du vill veta mer kan du läsa [Installera eller uppdatera Teams Desktop-appen på VDI](/microsoftteams/teams-for-vdi#install-or-update-the-teams-desktop-app-on-vdi/).
+I det här avsnittet visas hur du installerar Teams Desktop-appen på en VM-avbildning för Windows 10 multi-session eller Windows 10 Enterprise. Om du vill veta mer kan du läsa [Installera eller uppdatera Teams Desktop-appen på VDI](/microsoftteams/teams-for-vdi#install-or-update-the-teams-desktop-app-on-vdi).
 
 ### <a name="prepare-your-image-for-teams"></a>Förbered din avbildning för team
 
@@ -71,17 +71,17 @@ I följande tabell visas de senaste versionerna av WebSocket-tjänsten:
 
 Du kan distribuera Skriv bords appen för team med en installation per dator eller per användare. Så här installerar du Microsoft Teams i din Windows Virtual Desktop-miljö:
 
-1. Ladda ned [Teams MSI-paketet](/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm/) som matchar din miljö. Vi rekommenderar att du använder 64-bitars installations programmet på ett 64-bitars operativ system.
+1. Ladda ned [Teams MSI-paketet](/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm) som matchar din miljö. Vi rekommenderar att du använder 64-bitars installations programmet på ett 64-bitars operativ system.
 
-      > [!NOTE]
-      > Medie optimering för Microsoft Teams kräver Teams Desktop app-version 1.3.00.4461 eller senare.
+      > [!IMPORTANT]
+      > Den senaste uppdateringen av Teams Skriv bords version 1.3.00.21759 har åtgärdat ett problem där team visade UTC-tidszonen i chatt, kanaler och kalender. I den nya versionen av klienten visas tids zonen för fjärrsessionen.
 
 2. Kör något av följande kommandon för att installera MSI på den virtuella värddatorn:
 
     - Installation per användare
 
         ```powershell
-        msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSERS=1
+        msiexec /i <path_to_msi> /l*v <install_logfile_name>
         ```
 
         Den här processen är standard installationen, som installerar team till mappen **% AppData%** User. Team fungerar inte korrekt med installation per användare på en icke-beständig installation.
@@ -89,13 +89,13 @@ Du kan distribuera Skriv bords appen för team med en installation per dator ell
     - Installation per dator
 
         ```powershell
-        msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1 ALLUSERS=1
+        msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1
         ```
 
         Detta installerar Teams till mappen programfiler (x86) på ett 64-bitars operativ system och i mappen program på ett 32-bitars operativ system. I det här läget är installationen av gyllene bilder klar. Installation av team per dator krävs för icke-beständiga installationer.
 
-        Nästa gången du öppnar team i en session uppmanas du att ange dina autentiseringsuppgifter.
-
+        Det finns två flaggor som kan anges när du installerar Team, **ALLUSER = 1** och **allusers = 1**. Det är viktigt att förstå skillnaden mellan dessa parametrar. Parametern **ALLUSER = 1** används endast i VDI-miljöer för att ange en installation per dator. Parametern **allusers = 1** kan användas i non-VDI-och VDI-miljöer. När du anger den här parametern visas alla Teams datorövergripande installations program i program och funktioner i kontroll panelen samt appar & funktioner i Windows-inställningar. Alla användare med administratörs behörighet på datorn kan avinstallera team. 
+       
         > [!NOTE]
         > Användare och administratörer kan inte inaktivera automatisk start för team under inloggningen just nu.
 
@@ -125,12 +125,11 @@ När du har installerat WebSocket-tjänsten och Teams Desktop-appen följer du d
 
 ## <a name="known-issues-and-limitations"></a>Kända problem och begränsningar
 
-Att använda team i en virtualiserad miljö skiljer sig från att använda team i en miljö som inte är virtualiserad. Mer information om begränsningarna för team i virtualiserade miljöer finns i [Teams for virtualiserad Desktop-infrastruktur](/microsoftteams/teams-for-vdi#known-issues-and-limitations/).
+Att använda team i en virtualiserad miljö skiljer sig från att använda team i en miljö som inte är virtualiserad. Mer information om begränsningarna för team i virtualiserade miljöer finns i [Teams for virtualiserad Desktop-infrastruktur](/microsoftteams/teams-for-vdi#known-issues-and-limitations).
 
 ### <a name="client-deployment-installation-and-setup"></a>Klient distribution, installation och installation
 
 - Med installation per dator uppdateras inte team på VDI automatiskt på samma sätt som icke-VDI-team klienter är. Om du vill uppdatera klienten måste du uppdatera den virtuella dator avbildningen genom att installera en ny MSI.
-- Teams visar för närvarande UTC-tidszonen i chatt, kanaler och kalender.
 - Medie optimering för team stöds bara för Windows Desktop-klienten på datorer som kör Windows 10.
 - Det finns inte stöd för användning av explicita HTTP-proxyservrar definierade i en slut punkt.
 
@@ -143,7 +142,7 @@ Att använda team i en virtualiserad miljö skiljer sig från att använda team 
 - På grund av WebRTC-begränsningar är inkommande och utgående video Ströms upplösning begränsad till 720p.
 - Team-appen stöder inte HID-knappar eller leda kontroller med andra enheter.
 
-För kända team problem som inte är relaterade till virtualiserade miljöer, se [support Teams i din organisation](/microsoftteams/known-issues/)
+För kända team problem som inte är relaterade till virtualiserade miljöer, se [support Teams i din organisation](/microsoftteams/known-issues)
 
 ## <a name="uservoice-site"></a>UserVoice-webbplats
 
@@ -165,8 +164,8 @@ Genom att anpassa en värd Pools Remote Desktop Protocol egenskaper (RDP), t. ex
 
 Det krävs ingen aktivering av enhets omdirigering när du använder team med medie optimering. Om du använder team utan medie optimering anger du följande RDP-egenskaper för att aktivera omdirigering av mikrofon och kamera:
 
-- `audiocapturemode:i:1`aktiverar ljud fångst från den lokala enheten och dirigerar om ljud program i fjärrsessionen.
-- `audiomode:i:0`spelar upp ljud på den lokala datorn.
-- `camerastoredirect:s:*`omdirigerar alla kameror.
+- `audiocapturemode:i:1` aktiverar ljud fångst från den lokala enheten och dirigerar om ljud program i fjärrsessionen.
+- `audiomode:i:0` spelar upp ljud på den lokala datorn.
+- `camerastoredirect:s:*` omdirigerar alla kameror.
 
 Läs mer i [anpassa Remote Desktop Protocol egenskaper för en adresspool](customize-rdp-properties.md).

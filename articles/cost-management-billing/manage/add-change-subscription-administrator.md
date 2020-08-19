@@ -8,17 +8,17 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: ddb40f470f9b951c786fdab529336af3eff38e54
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 57a070aa5931349d94597c629a09ab7662e327fb
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87530018"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922463"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Lägg till eller ändra administratörer för en Azure-prenumeration
 
 
-Du måste ha rätt administratörsroll för att hantera åtkomst till Azure-resurser. Azure har ett auktoriseringssystem som kallas [rollbaserad åtkomstkontroll](../../role-based-access-control/overview.md) (RBAC) där du kan välja mellan flera olika inbyggda roller. Du kan tilldela dessa roller för olika omfång, som en hanteringsgrupp, en prenumeration eller en resursgrupp. Som standard kan personen som skapar en ny Azure-prenumeration tilldela andra användare administrativ åtkomst till en prenumeration.
+Du måste ha rätt administratörsroll för att hantera åtkomst till Azure-resurser. Azure har ett auktoriseringssystem som kallas [rollbaserad åtkomstkontroll i Azure](../../role-based-access-control/overview.md) (Azure RBAC) där du kan välja mellan flera olika inbyggda roller. Du kan tilldela dessa roller för olika omfång, som en hanteringsgrupp, en prenumeration eller en resursgrupp. Som standard kan personen som skapar en ny Azure-prenumeration tilldela andra användare administrativ åtkomst till en prenumeration.
 
 I den här artikeln beskrivs hur du lägger till eller ändrar administratörsroller för användare med RBAC i ett prenumerationsomfång.
 

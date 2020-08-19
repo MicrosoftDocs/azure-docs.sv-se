@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 07/30/2020
-ms.openlocfilehash: 999d99b0ed4701eb6758ed0bf7a71ca625e622b5
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 08/14/2020
+ms.openlocfilehash: 409f143ce67e301e3b2a973d8d2db80380fbd50e
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512099"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258631"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Självstudie: Godkänn och ta emot data med Azure Data Share  
 
@@ -23,7 +23,7 @@ I den här självstudien får du lära dig hur du godkänner en data delnings-in
 > * Ange ett mål för dina data
 > * Skapa en prenumeration på din data resurs för schemalagd uppdatering
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 Innan du kan acceptera en inbjudan till en data resurs måste du etablera ett antal Azure-resurser som visas nedan. 
 
 Se till att alla krav är uppfyllda innan du accepterar en inbjudan om data delning. 
@@ -93,38 +93,35 @@ Logga in på [Azure-portalen](https://portal.azure.com/).
 
    I fältet **mottaget resurs namn** kan du lämna standardvärdet som anges av data ange eller ange ett nytt namn för den mottagna resursen. 
 
-   ![Mål data resurs konto](./media/target-data-share.png "Mål data resurs konto") 
-
-1. När du har samtyckt till användnings villkoren och angett en plats för din resurs väljer du *Godkänn och konfigurera*. En resurs prenumeration kommer att skapas.
-
-   För ögonblicks bilds-baserad delning uppmanas du på nästa skärm välja ett mål lagrings konto för dina data som ska kopieras till. 
+   När du har samtyckt till användnings villkoren och angett ett data delnings konto för att hantera din mottagna resurs väljer du **Godkänn och konfigurera**. En resurs prenumeration kommer att skapas. 
 
    ![Godkänn alternativ](./media/accept-options.png "Godkänn alternativ") 
 
-   Om du vill acceptera inbjudan nu men konfigurera mål data lagret vid ett senare tillfälle väljer du *Godkänn och konfigurera senare*. Om du vill fortsätta att konfigurera lagringen senare går du till sidan [Konfigurera data uppsättnings mappningar](how-to-configure-mapping.md) för detaljerade anvisningar om hur du återupptar konfigurationen av data resurser. 
-
-   Mer information om hur du återupptar konfigurationen av data resurser finns på sidan [Konfigurera mappningar](how-to-configure-mapping.md) för data uppsättningar. 
+   Detta gör att du är den mottagna resursen i ditt data resurs konto. 
 
    Om du inte vill acceptera inbjudan väljer du *avvisa*. 
 
-## <a name="configure-storage"></a>Konfigurera lagring
-1. Under *mål lagrings inställningar*väljer du den prenumeration, resurs grupp och det lagrings konto som du vill att data ska skickas till. 
+## <a name="configure-received-share"></a>Konfigurera mottagen resurs
+Följ stegen nedan för att konfigurera var du vill ta emot data.
 
-   ![Mål lagrings inställningar](./media/target-storage-settings.png "Mål lagring") 
+1. Fliken Välj **data uppsättningar** . Markera kryss rutan bredvid den data uppsättning som du vill tilldela ett mål. Välj **+ Mappa till mål** för att välja ett mål data lager. 
 
-1. Se till att aktivera inställningarna för ögonblicks bilder för att få en regelbunden uppdatering av dina data. Observera att du bara ser ett schema för ögonblicks bilds inställningar om data leverantören har inkluderat den i data resursen. 
+   ![Mappa till mål](./media/dataset-map-target.png "Mappa till mål") 
 
-   ![Inställningar för ögonblicks bild](./media/snapshot-settings.png "Inställningar för ögonblicks bild") 
+1. Välj en mål data lager typ som du vill att data ska hamna i. Alla datafiler eller tabeller i mål data lagret med samma sökväg och namn kommer att skrivas över. 
 
-1. Välj *Spara*. 
+   För delning på plats väljer du ett data lager på den angivna platsen. Platsen är Azure Data Center där dataproviderns käll data lager finns. När data uppsättningen har mappats kan du följa länken i mål Sök vägen för att komma åt data.
 
-> [!IMPORTANT]
-> Om du tar emot SQL-baserade data och vill ta emot dessa data till en SQL-baserad källa, kan du gå till [Konfigurera en uppsättning för data uppsättnings mappning](how-to-configure-mapping.md) för att lära dig hur du konfigurerar en SQL Server som mål för din data uppsättning. 
+   ![Mål lagrings konto](./media/dataset-map-target-sql.png "Mål lagring") 
+
+1. För ögonblicks bilds-baserad delning, om dataprovidern har skapat ett ögonblicks bild schema för att tillhandahålla regelbunden uppdatering av data, kan du också aktivera schema för ögonblicks bild genom att välja fliken **ögonblicks** bild schema. Markera kryss rutan bredvid schemat för ögonblicks bilder och välj **+ Aktivera**.
+
+   ![Aktivera schema för ögonblicks bild](./media/enable-snapshot-schedule.png "Aktivera schema för ögonblicks bild")
 
 ## <a name="trigger-a-snapshot"></a>Utlös en ögonblicks bild
 De här stegen gäller endast för Snapshot-baserad delning.
 
-1. Du kan utlösa en ögonblicks bild på fliken mottagna resurser – > information genom att välja **Utlös ögonblicks bild**. Här kan du utlösa en fullständig eller stegvis ögonblicks bild av dina data. Om det är första gången du tar emot data från din dataprovider väljer du fullständig kopia. 
+1. Du kan utlösa en ögonblicks bild genom att välja fliken **information** följt av **Utlös ögonblicks bild**. Här kan du utlösa en fullständig eller stegvis ögonblicks bild av dina data. Om det är första gången du tar emot data från din dataprovider väljer du fullständig kopia. 
 
    ![Utlös ögonblicks bild](./media/trigger-snapshot.png "Utlös ögonblicks bild") 
 
@@ -133,7 +130,7 @@ De här stegen gäller endast för Snapshot-baserad delning.
    ![Konsument data uppsättningar](./media/consumer-datasets.png "Mappning av konsument data uppsättning") 
 
 ## <a name="view-history"></a>Visa historik
-Om du vill visa en historik över dina ögonblicks bilder navigerar du till mottagna resurser-> historik. Här hittar du en historik över alla ögonblicks bilder som har genererats under de senaste 60 dagarna. 
+Det här steget gäller endast för Snapshot-baserad delning. Välj fliken **Historik** för att visa historiken för dina ögonblicks bilder. Här hittar du historiken för alla ögonblicks bilder som har genererats under de senaste 30 dagarna. 
 
 ## <a name="next-steps"></a>Nästa steg
 I den här självstudien har du lärt dig hur du godkänner och tar emot en Azure-Dataresurs. Om du vill veta mer om Azure Data Share-koncept fortsätter du till [koncept: Azure Data Share-terminologi](terminology.md).

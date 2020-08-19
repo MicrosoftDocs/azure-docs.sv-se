@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med ENVI MMIS | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Envi MMIS.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: ab89f8ee-2507-4625-94bc-b24ef3d5e006
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1689517042713e9a3ce75c6ada822cb3d6ff138
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: aababc6ffd84540b99ba68f6bbb449d2aa78ed4b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158267"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551752"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>Självstudie: Azure Active Directory integrering med ENVI MMIS
 
@@ -33,9 +28,9 @@ Integreringen av Envi MMIS med Azure AD medför följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att konfigurera Azure AD-integrering med Envi MMIS behöver du följande:
 
@@ -106,15 +101,15 @@ Utför följande steg för att konfigurera enkel inloggning med Azure AD för En
 
     ![Envi MMIS-domän och information om URL:er för enkel inloggning](common/idp-intiated.png)
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster:`https://www.<CUSTOMER DOMAIN>.com/Account`
+    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://www.<CUSTOMER DOMAIN>.com/Account`
 
-    b. Skriv en URL i text rutan **svars-URL** med följande mönster:`https://www.<CUSTOMER DOMAIN>.com/Account/Acs`
+    b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://www.<CUSTOMER DOMAIN>.com/Account/Acs`
 
 5. Klicka på **Ange ytterligare URL:er** och gör följande om du vill konfigurera appen i **SP**-initierat läge:
 
     ![Envi MMIS-domän och information om URL:er för enkel inloggning](common/metadata-upload-additional-signon.png)
 
-    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:`https://www.<CUSTOMER DOMAIN>.com/Account`
+    I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://www.<CUSTOMER DOMAIN>.com/Account`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [kundsupporten för Envi MMIS](mailto:support@ioscorp.com) och be om dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -185,8 +180,8 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     a. I fältet **namn** anger du **BrittaSimon**.
   
-    b. I fältet **användar namn** skriver du **brittasimon\@yourcompanydomain. extension**  
-    Till exempel, BrittaSimon@contoso.com
+    b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
@@ -238,7 +233,7 @@ För att göra det möjligt för Azure AD-användare att logga in i Envi MMIS m�
 
     ![Lägga till medarbetare](./media/envimmis-tutorial/user3.png)
 
-    a. I text rutan **användar namn** anger du användar namnet för Britta Simon-kontot, t. ex. **brittasimon\@contoso.com**.
+    a. I text rutan **användar namn** anger du användar namnet för Britta Simon-kontot, t. ex. **brittasimon \@ contoso.com**.
     
     b. I textrutan **Förnamn** skriver du förnamnet för BrittaSimon: **Britta**.
 
@@ -246,11 +241,11 @@ För att göra det möjligt för Azure AD-användare att logga in i Envi MMIS m�
 
     d. Ange rubriken för användaren i **rubriken** för textrutan.
     
-    e. I text rutan **e-postadress** skriver du e-postadressen för Britta Simon-konto som **\@brittasimon contoso.com**.
+    e. I text rutan **e-postadress** skriver du e-postadressen för Britta Simon-konto som **brittasimon \@ contoso.com**.
 
-    f. Skriv användar **namnet** för Britta Simon-kontot som **brittasimon\@contoso.com**i text rutan SSO-användarnamn.
+    f. Skriv användar **namnet** för Britta Simon-kontot som **brittasimon \@ contoso.com**i text rutan SSO-användarnamn.
 
-    g. Klicka på **Spara**.
+    ex. Klicka på **Spara**.
 
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning 
 

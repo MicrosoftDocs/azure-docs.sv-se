@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 27c1ad4907b0b16ce6830a6fe787b78f6129eadd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7670d00a2dd25961a51d18c50c102e0f92b30975
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322847"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566156"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Samla in data från Linux-baserade källor med syslog
 
@@ -67,7 +67,7 @@ Mer information finns i [syslog-datakällor i Azure Monitor](../azure-monitor/pl
 
 ### <a name="configure-the-log-analytics-agent"></a>Konfigurera Log Analytics agent
 
-1. Längst ned på bladet syslog-koppling klickar du på länken **Öppna konfiguration av avancerade inställningar >på arbets ytan** .
+1. Längst ned på bladet syslog-koppling klickar du på länken **Öppna konfiguration av avancerade inställningar >på arbets ytan ** .
 
 1. På bladet **Avancerade inställningar** väljer du **data**  >  **syslog**. Lägg sedan till de anläggningar som ska samlas in av kopplingen.
     
@@ -86,6 +86,8 @@ Mer information finns i [syslog-datakällor i Azure Monitor](../azure-monitor/pl
 1. Du kan använda frågeparametrar som beskrivs i [använda funktioner i Azure Monitor logg frågor](../azure-monitor/log-query/functions.md) för att parsa syslog-meddelanden. Du kan sedan spara frågan som en ny Log Analytics-funktion och använda den som en ny datatyp.
 
 > [!NOTE]
+> **Använda samma dator för att vidarebefordra både vanliga syslog- *och* CEF-meddelanden**
+>
 >
 > Du kan använda din befintliga [CEF log forwarder-dator](connect-cef-agent.md) för att samla in och vidarebefordra loggar från även vanliga syslog-källor. Du måste dock utföra följande steg för att undvika att skicka händelser i båda formaten till Azure Sentinel, eftersom det leder till duplicering av händelser.
 >
@@ -111,7 +113,7 @@ Azure Sentinel kan använda Machine Learning (ML) till syslog-data för att iden
  
 Den här identifieringen kräver en speciell konfiguration av syslog-datakopplingen: 
 
-1. I steg 5 i föregående procedur ser du till att både **auth** -och **authpriv** är markerade som anläggningar att övervaka. Behåll standardinställningarna för allvarlighets grad alternativen så att alla är markerade. Till exempel:
+1. I steg 5 i föregående procedur ser du till att både **auth** -och **authpriv** är markerade som anläggningar att övervaka. Behåll standardinställningarna för allvarlighets grad alternativen så att alla är markerade. Exempel:
     
     > [!div class="mx-imgBorder"]
     > ![Anläggningar som krävs för identifiering av avvikande SSH-inloggning](./media/connect-syslog/facilities-ssh-detection.png)

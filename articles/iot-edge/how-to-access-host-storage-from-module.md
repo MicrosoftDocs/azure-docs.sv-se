@@ -4,16 +4,16 @@ description: Använd miljövariabler och skapa alternativ för att aktivera modu
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/18/2019
+ms.date: 08/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 079d5845917e63fadcf0466e5a744ed637d704ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe24cc79d749761b697a8d1a162ec2867da9a649
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75434526"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257486"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Ge moduler åtkomst till en enhets lokala lagring
 
@@ -82,6 +82,12 @@ sudo chmod 700 <HostStoragePath>
 ```
 
 Du hittar mer information om att skapa alternativ från [Docker-dokument](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
+
+## <a name="encrypted-data-in-module-storage"></a>Krypterade data i modul Storage
+
+När moduler anropar IoT Edge daemonens arbets belastnings-API för att kryptera data, härleds Krypterings nyckeln med hjälp av modul-ID och modulens generations-ID. Ett generations-ID används för att skydda hemligheter om en modul tas bort från distributionen och en annan modul med samma modul-ID senare distribueras till samma enhet. Du kan visa en moduls generations-ID med hjälp av Azure CLI-kommandot [AZ IoT Hub module-identitet show](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-module-identity-show).
+
+Om du vill dela filer mellan moduler i flera generationer får de inte innehålla några hemligheter, eller så kommer de inte att kunna dekrypteras.
 
 ## <a name="next-steps"></a>Nästa steg
 

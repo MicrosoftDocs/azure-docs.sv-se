@@ -2,22 +2,22 @@
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
-ms.date: 04/14/2020
-ms.openlocfilehash: de0c8fd674872a48a302a76a3f0951df13041206
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 08/17/2020
+ms.openlocfilehash: 758d288480c8d6a7ef5185cff33a857633c5e95b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82134112"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508565"
 ---
-Den här artikeln innehåller information och exempelkod som hjälper dig att komma igång med att använda Custom Vision-SDK med C# för att skapa en bildklassificeringsmodell. När den har skapats kan du lägga till taggar, ladda upp bilder, träna projektet, hämta slutpunkts-URL:en för projektets standardförutsägelse och använda slutpunkten för att testa en avbildning programmatiskt. Använd det här exemplet som mall för att skapa ditt eget .NET-program. Om du vill gå igenom processen för att skapa och använda en klassificerings modell _utan_ kod, se den [webbläsarbaserade vägledningen](../../getting-started-build-a-classifier.md) i stället.
+Den här artikeln innehåller information och exempel kod som hjälper dig att komma igång med Custom Vision klient biblioteket med C# för att skapa en bild klassificerings modell. När den har skapats kan du lägga till taggar, ladda upp bilder, träna projektet, hämta slutpunkts-URL:en för projektets standardförutsägelse och använda slutpunkten för att testa en avbildning programmatiskt. Använd det här exemplet som mall för att skapa ditt eget .NET-program. Om du vill gå igenom processen för att skapa och använda en klassificerings modell _utan_ kod, se den [webbläsarbaserade vägledningen](../../getting-started-build-a-classifier.md) i stället.
 
 ## <a name="prerequisites"></a>Krav
 
 - En version av [Visual Studio 2015 eller 2017](https://www.visualstudio.com/downloads/)
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="get-the-custom-vision-sdk-and-sample-code"></a>Hämta Custom Vision SDK och exempel kod
+## <a name="get-the-custom-vision-client-library-and-sample-code"></a>Hämta Custom Vision klient bibliotek och exempel kod
 
 Om du vill skriva en .NET-app som använder Custom Vision behöver du Custom Vision NuGet-paketen. De här paketen ingår i det exempel projekt som du hämtar, men du kan komma åt dem separat här.
 
@@ -32,7 +32,7 @@ Det här projektet i Visual Studio skapar ett nytt Custom Vision-projekt med nam
 
 ## <a name="understand-the-code"></a>Förstå koden
 
-Öppna filen _Program.cs_ och granska koden. [Skapa miljövariabler](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) för dina utbildnings-och förutsägelse `CUSTOM_VISION_TRAINING_KEY` nycklar `CUSTOM_VISION_PREDICTION_KEY`med namnet respektive. Skriptet kommer att söka efter dessa variabler.
+Öppna filen _Program.cs_ och granska koden. [Skapa miljövariabler](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) för dina utbildnings-och förutsägelse nycklar med namnet `CUSTOM_VISION_TRAINING_KEY` respektive `CUSTOM_VISION_PREDICTION_KEY` . Skriptet kommer att söka efter dessa variabler.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_keys)]
 

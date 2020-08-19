@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: dylankil
-ms.openlocfilehash: d9bb3a5fb41215f2e839efc7989ea7854f254f16
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ce9d3af8f7517e2acae5264197b842d47085279c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537943"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516375"
 ---
 # <a name="tutorial-start-the-immersive-reader-using-the-swift-ios-code-sample"></a>Självstudie: starta den fördjupade läsaren med exemplet Swift iOS Code
 
@@ -26,7 +26,7 @@ I [översikten](./overview.md)har du lärt dig om vad den fördjupade läsaren �
 > * Hämta en åtkomsttoken.
 > * Starta den fördjupade läsaren med exempel innehåll.
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/cognitive-services/) innan du börjar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 

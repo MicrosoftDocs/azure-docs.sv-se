@@ -2,22 +2,21 @@
 title: PowerShell-exempel – Application Proxy-appar som använder standard domän
 description: PowerShell-exempel som visar alla Azure Active Directory (Azure AD) Application Proxy-program som använder standard domäner (. msappproxy.net).
 services: active-directory
-author: msmimart
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 12/05/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40a9f7ce86981d6f03b25237a7a73869fd5fd4ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9de36d27b592576300728f3720087073c165a672
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75483380"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511209"
 ---
 # <a name="get-all-application-proxy-apps-using-default-domains-msappproxynet"></a>Hämta alla Application Proxy-appar med hjälp av standard domäner (. msappproxy.net)
 
@@ -37,7 +36,7 @@ Det här exemplet kräver [AzureAD v2 PowerShell för Graph module](https://docs
 
 ## <a name="script-explanation"></a>Förklaring av skript
 
-| Kommando | Obs! |
+| Kommando | Anteckningar |
 |---|---|
 |[Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | Hämtar ett huvud namn för tjänsten. |
 |[Get-AzureADApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0) | Hämtar ett Azure AD-program. |

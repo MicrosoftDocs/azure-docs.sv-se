@@ -356,6 +356,8 @@
               href: ./set-up-pyspark-interactive-environment.md
         - name: Utveckla
           items:
+            - name: Optimera frågor med SparkCruise
+              href: ./spark/spark-cruise.md
             - name: Använda ett interaktivt Apache Spark-gränssnitt
               href: ./spark/apache-spark-shell.md
             - name: Fjärrstyra jobb med Apache Livy
@@ -531,6 +533,8 @@
               items:
                 - name: Använda tomma kantnoder
                   href: ./hdinsight-apps-use-edge-node.md
+                - name: Använda gränsnod för att skala HiveServer2
+                  href: ./hdinsight-apps-install-hiveserver2.md
         - name: Felsöka
           items:
             - name: Vanliga problem

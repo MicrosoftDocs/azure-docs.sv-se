@@ -3,12 +3,12 @@ title: Minska tjänste kostnaderna med Azure Advisor
 description: Använd Azure Advisor för att optimera kostnaden för dina Azure-distributioner.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: e8f0e555f71c31bb3286cee59bb7161c3ce3986e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 15f357248a6174de1e0890a4b45e9fa3930a06fe
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284378"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258528"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Minska service kostnaderna genom att använda Azure Advisor
 
@@ -96,6 +96,8 @@ Med en [tillfällig OS-disk](../virtual-machines/ephemeral-os-disks.md) kan du:
 
 Det är bättre att använda en tillfällig OS-disk för IaaS virtuella datorer eller virtuella datorer med tillstånds lösa. Advisor ger rekommendationer för resurser som kan dra nytta av en tillfällig OS-disk.
 
+## <a name="reduce-azure-data-explorer-table-cache-period-policy-for-cluster-cost-optimization-preview"></a>Minska Azure Datautforskaren Table cache-period (princip) för kluster kostnads optimering (för hands version)
+Advisor identifierar resurser där en minskning av Table cache-principen frigör Azure Datautforskaren klusternoder som har låg processor användning, minne och en konfiguration med hög cachestorlek.
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Få åtkomst till kostnads rekommendationer i Azure Advisor
 

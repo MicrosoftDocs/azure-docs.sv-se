@@ -4,12 +4,12 @@ description: Innehåller en översikt över support inställningar och begränsn
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 9d7e3b4f565fac42d0a91d155846e672c7437f2d
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: c7cd3ed863153762e42a0b6420623fec52e779e1
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810470"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566326"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Supportmatris för säkerhetskopiering av virtuella Azure-datorer
 
@@ -49,7 +49,7 @@ Säkerhets kopior per dag (via DPM/MABS) | Två schemalagda säkerhets kopiering
 Månatlig/årlig säkerhets kopiering| Stöds inte vid säkerhets kopiering med Azure VM-tillägg. Endast daglig och veckovis stöds.<br/><br/> Du kan ställa in principen för att behålla dagliga/veckovis säkerhets kopieringar för månatlig/årlig kvarhållningsperiod.
 Automatisk klock justering | Stöds inte.<br/><br/> Azure Backup justeras inte automatiskt för sommar tids ändringar vid säkerhets kopiering av en virtuell dator.<br/><br/>  Ändra principen manuellt efter behov.
 [Säkerhetsfunktioner för Hybrid säkerhets kopiering](./backup-azure-security-feature.md) |Det finns inte stöd för att inaktivera säkerhetsfunktioner.
-Säkerhetskopiera den virtuella datorn vars dator tid ändras | Stöds inte.<br/><br/> Om dator tiden ändras till en framtida datum tid efter att du aktiverat säkerhets kopiering för den virtuella datorn. Men även om tids ändringen har återställts är inte den slutförda säkerhets kopieringen garanterad.
+Säkerhetskopiera den virtuella datorn vars dator tid ändras | Stöds inte.<br/><br/> Om dator tiden ändras till en framtida datum tid efter att du aktiverat säkerhets kopiering för den virtuella datorn. men även om tids ändringen har återställts är inte den slutförda säkerhets kopieringen garanterad.
 Virtuella Azure-datorer i [skalnings uppsättningar för virtuella datorer](../virtual-machine-scale-sets/overview.md) | Säkerhets kopiering och återställning stöds för virtuella datorer med [Orchestration-läge](../virtual-machine-scale-sets/orchestration-modes.md#orchestration-modes) inställt på 3. <br><br>Tillgänglighets uppsättningar stöds inte.
 
 ## <a name="operating-system-support-windows"></a>Stöd för operativ system (Windows)
@@ -107,7 +107,7 @@ Högsta kvarhållningsperiod | Beror på säkerhetskopieringsfrekvensen.
 
 ## <a name="support-for-file-level-restore"></a>Stöd för återställning på filnivå
 
-**Återställa** | **Stöds**
+**Återställa** | **Tillåtna**
 --- | ---
 Återställa filer över operativ system | Du kan återställa filer på alla datorer som har samma (eller kompatibla) OS som den säkerhetskopierade virtuella datorn. Se den [kompatibla OS-tabellen](backup-azure-restore-files-from-vm.md#system-requirements).
 Återställa filer från krypterade virtuella datorer | Stöds inte.
@@ -120,7 +120,7 @@ Högsta kvarhållningsperiod | Beror på säkerhetskopieringsfrekvensen.
 
 I följande tabell sammanfattas stödet för säkerhets kopiering under aktiviteter för hantering av virtuella datorer, till exempel att lägga till eller ersätta VM-diskar.
 
-**Återställa** | **Stöds**
+**Återställa** | **Tillåtna**
 --- | ---
 Återställ över prenumeration/region/zon. | Stöds inte.
 Återställa till en befintlig virtuell dator | Använd alternativet Ersätt disk.
@@ -155,7 +155,7 @@ Säkerhets kopiering av virtuella Azure-datorer med lås | Stöds inte för ohan
 
 **Komponent** | **Support**
 --- | ---
-Datadiskar för virtuella Azure-datorer | Stöd för säkerhets kopiering av virtuella Azure-datorer med upp till 32 diskar finns i offentlig för hands version i alla regioner utom nationella moln (Azure Government, Azure Kina 21Vianet och Azure Germany).<br><br> Stöd för säkerhets kopiering av virtuella Azure-datorer med ohanterade diskar eller klassiska virtuella datorer är bara upp till 16 diskar.
+Datadiskar för virtuella Azure-datorer | Stöd för säkerhets kopiering av virtuella Azure-datorer med upp till 32 diskar finns i offentlig för hands version i alla regioner.<br><br> Stöd för säkerhets kopiering av virtuella Azure-datorer med ohanterade diskar eller klassiska virtuella datorer är bara upp till 16 diskar.
 Data disk storlek | Enskild disk storlek kan vara upp till 32 TB och högst 256 TB kombinerat för alla diskar i en virtuell dator.
 Lagringstyp | Standard HDD Standard SSD Premium SSD.
 Hanterade diskar | Stöds.

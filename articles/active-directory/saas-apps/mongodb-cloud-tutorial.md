@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory-integrering med enkel inloggning (SSO) med MongoDB-molnet | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory-och MongoDB-molnet.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: ef392044-235b-4d80-8a33-eeba9b142849
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/03/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a502a8273aef3df3488764ea7b01c21c512ba43
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 6a59df062adf9b5c2e511db29cb8601d4a4df70e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800238"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554574"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mongodb-cloud"></a>Självstudie: Azure Active Directory-integrering med enkel inloggning (SSO) med MongoDB Cloud
 
@@ -84,13 +80,13 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera programmet i **IDP** initierat läge, anger du värdena för följande fält:
 
-    a. I text rutan **identifierare** anger du en URL som använder följande mönster:`https://www.okta.com/saml2/service-provider/<Customer_Unique>`
+    a. I text rutan **identifierare** anger du en URL som använder följande mönster: `https://www.okta.com/saml2/service-provider/<Customer_Unique>`
 
-    b. I text rutan **svars-URL** anger du en URL som använder följande mönster:`https://auth.mongodb.com/sso/saml2/<Customer_Unique>`
+    b. I text rutan **svars-URL** anger du en URL som använder följande mönster: `https://auth.mongodb.com/sso/saml2/<Customer_Unique>`
 
 1. Välj **Ange ytterligare URL: er**och utför följande steg om du vill konfigurera programmet i **SP** -initierat läge:
 
-    I text rutan **inloggnings-URL** anger du en URL som använder följande mönster:`https://cloud.mongodb.com/sso/<Customer_Unique>`
+    I text rutan **inloggnings-URL** anger du en URL som använder följande mönster:  `https://cloud.mongodb.com/sso/<Customer_Unique>`
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL: en och inloggnings-URL: en. Kontakta [MongoDB Cloud client support team](https://support.mongodb.com/)för att få dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.

@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 03/12/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 8fd670104a04229ed688b365de89e2ffc22b5429
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: adf58b667d17393fc905fbf31261530fce88d9f8
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499389"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272356"
 ---
 # <a name="what-are-durable-functions"></a>Vad är Durable Functions?
 
@@ -25,6 +25,7 @@ Durable Functions stöder för närvarande följande språk:
 * **JavaScript**: stöds endast för version 2.x av Azure Functions-körningen. Kräver version 1.7.0 av Durable Functions-tillägget eller en senare version. 
 * **Python**: kräver version 1.8.5 av Durable Functions-tillägget eller en senare version. 
 * **F#**: både förkompilerade klassbibliotek och F#-skript. F#-skriptet stöds endast för version 1.x av Azure Functions-körningen.
+* **PowerShell**: stöd för Durable Functions finns för närvarande i en offentlig för hands version. Stöds endast för version 3. x av Azure Functions Runtime och PowerShell 7. Kräver version 2.2.2 av Durable Functions-tillägget eller en senare version. Endast följande mönster stöds för närvarande: [funktion länkning](#chaining), [fläkt-ut/fläkt-in](#fan-in-out), [asynkrona http API: er](#async-http).
 
 Durable Functions har som mål att stödja alla [Azure Functions-språk](../supported-languages.md). I [Durable Functions-problemlistan](https://github.com/Azure/azure-functions-durable-extension/issues) finns senaste status för arbetet med att stödja ytterligare språk.
 
@@ -119,6 +120,19 @@ Du kan använda `context` objektet för att anropa andra funktioner efter namn, 
 > [!NOTE]
 > `context`Objektet i python representerar Orchestration-kontexten. Få åtkomst till huvud Azure Functions kontexten med hjälp av `function_context` egenskapen i Orchestration-kontexten.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```PowerShell
+param($Context)
+
+$X = Invoke-ActivityFunction -FunctionName 'F1'
+$Y = Invoke-ActivityFunction -FunctionName 'F2' -Input $X
+$Z = Invoke-ActivityFunction -FunctionName 'F3' -Input $Y
+Invoke-ActivityFunction -FunctionName 'F4' -Input $Z
+```
+
+Du kan använda `Invoke-ActivityFunction` kommandot för att anropa andra funktioner efter namn, pass parametrar och returnera funktions resultat. Varje gång koden anropas `Invoke-ActivityFunction` utan `NoWait` växeln, visar Durable Functions Framework förloppet för den aktuella funktions instansen. Om processen eller den virtuella datorn återvinns mitt i körningen fortsätter funktions instansen från föregående `Invoke-ActivityFunction` anrop. Mer information finns i nästa avsnitt, mönster #2: fläkt ut/fläkt i.
+
 ---
 
 ### <a name="pattern-2-fan-outfan-in"></a><a name="fan-in-out"></a>Mönster #2: fläkt ut/fläkt i
@@ -156,7 +170,7 @@ public static async Task Run(
 }
 ```
 
-Fläkt arbetet distribueras till flera instanser av `F2` funktionen. Arbetet spåras med hjälp av en dynamisk lista med aktiviteter. `Task.WhenAll`anropas för att vänta tills alla anropade funktioner har slutförts. Sedan `F2` aggregeras funktionen utdata från den dynamiska uppgifts listan och skickas till `F3` funktionen.
+Fläkt arbetet distribueras till flera instanser av `F2` funktionen. Arbetet spåras med hjälp av en dynamisk lista med aktiviteter. `Task.WhenAll` anropas för att vänta tills alla anropade funktioner har slutförts. Sedan `F2` aggregeras funktionen utdata från den dynamiska uppgifts listan och skickas till `F3` funktionen.
 
 Den automatiska kontroll punkten som sker vid `await` anropet `Task.WhenAll` innebär att en eventuell halvvägs krasch eller omstart inte kräver att en redan slutförd aktivitet startas om.
 
@@ -182,7 +196,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Fläkt arbetet distribueras till flera instanser av `F2` funktionen. Arbetet spåras med hjälp av en dynamisk lista med aktiviteter. `context.df.Task.all`API anropas för att vänta tills alla anropade funktioner har slutförts. Sedan `F2` aggregeras funktionen utdata från den dynamiska uppgifts listan och skickas till `F3` funktionen.
+Fläkt arbetet distribueras till flera instanser av `F2` funktionen. Arbetet spåras med hjälp av en dynamisk lista med aktiviteter. `context.df.Task.all` API anropas för att vänta tills alla anropade funktioner har slutförts. Sedan `F2` aggregeras funktionen utdata från den dynamiska uppgifts listan och skickas till `F3` funktionen.
 
 Den automatiska kontroll punkten som sker vid `yield` anropet `context.df.Task.all` innebär att en eventuell halvvägs krasch eller omstart inte kräver att en redan slutförd aktivitet startas om.
 
@@ -208,9 +222,33 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 main = df.Orchestrator.create(orchestrator_function)
 ```
 
-Fläkt arbetet distribueras till flera instanser av `F2` funktionen. Arbetet spåras med hjälp av en dynamisk lista med aktiviteter. `context.task_all`API anropas för att vänta tills alla anropade funktioner har slutförts. Sedan `F2` aggregeras funktionen utdata från den dynamiska uppgifts listan och skickas till `F3` funktionen.
+Fläkt arbetet distribueras till flera instanser av `F2` funktionen. Arbetet spåras med hjälp av en dynamisk lista med aktiviteter. `context.task_all` API anropas för att vänta tills alla anropade funktioner har slutförts. Sedan `F2` aggregeras funktionen utdata från den dynamiska uppgifts listan och skickas till `F3` funktionen.
 
 Den automatiska kontroll punkten som sker vid `yield` anropet `context.task_all` innebär att en eventuell halvvägs krasch eller omstart inte kräver att en redan slutförd aktivitet startas om.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```PowerShell
+param($Context)
+
+# Get a list of work items to process in parallel.
+$WorkBatch = Invoke-ActivityFunction -FunctionName 'F1'
+
+$ParallelTasks =
+    foreach ($WorkItem in $WorkBatch) {
+        Invoke-ActivityFunction -FunctionName 'F2' -Input $WorkItem -NoWait
+    }
+
+$Outputs = Wait-ActivityFunction -Task $ParallelTasks
+
+# Aggregate all outputs and send the result to F3.
+$Total = ($Outputs | Measure-Object -Sum).Sum
+Invoke-ActivityFunction -FunctionName 'F3' -Input $Total
+```
+
+Fläkt arbetet distribueras till flera instanser av `F2` funktionen. Observera användningen av `NoWait` växeln på `F2` funktions anropet: med den här växeln kan Orchestrator fortsätta att anropa `F2` utan att aktiviteten slutförs. Arbetet spåras med hjälp av en dynamisk lista med aktiviteter. `Wait-ActivityFunction`Kommandot anropas för att vänta tills alla anropade funktioner har slutförts. Sedan `F2` aggregeras funktionen utdata från den dynamiska uppgifts listan och skickas till `F3` funktionen.
+
+Den automatiska kontroll punkten som sker vid `Wait-ActivityFunction` anropet garanterar att en eventuell halvvägs krasch eller omstart inte kräver att en redan slutförd aktivitet startas om.
 
 ---
 
@@ -357,6 +395,10 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 main = df.Orchestrator.create(orchestrator_function)
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Övervakaren stöds för närvarande inte i PowerShell.
+
 ---
 
 När en begäran tas emot skapas en ny Dirigerings instans för jobb-ID: t. Instansen avsöker en status tills ett villkor uppfylls och loopen avslutas. En varaktig timer styr avsöknings intervallet. Sedan kan du utföra mer arbete, eller så kan dirigeringen avslutas. När `nextCheck` överskrider `expiryTime` övervakaren avslutas övervakaren.
@@ -455,6 +497,10 @@ main = df.Orchestrator.create(orchestrator_function)
 
 Ring om du vill skapa en varaktig timer `context.create_timer` . Meddelandet tas emot av `context.wait_for_external_event` . Sedan `context.task_any` uppmanas du att bestämma om du vill eskalera (tids gräns inträffar först) eller bearbeta godkännandet (godkännandet tas emot före tids gränsen).
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Mänsklig interaktion stöds för närvarande inte i PowerShell.
+
 ---
 
 En extern klient kan leverera händelse meddelandet till en väntande Orchestrator-funktion med hjälp av [inbyggda http-API: er](durable-functions-http-api.md#raise-event):
@@ -501,6 +547,10 @@ async def main(client: str):
     is_approved = True
     await durable_client.raise_event(instance_id, "ApprovalEvent", is_approved)
 ```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Mänsklig interaktion stöds för närvarande inte i PowerShell.
 
 ---
 
@@ -583,6 +633,10 @@ module.exports = df.entity(function(context) {
 
 Varaktiga entiteter stöds för närvarande inte i python.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Det finns för närvarande inte stöd för varaktiga entiteter i PowerShell.
+
 ---
 
 Klienter kan köa *åtgärder* för (kallas även "signalering") en entitets funktion som använder [enhets klient bindningen](durable-functions-bindings.md#entity-client).
@@ -622,6 +676,10 @@ module.exports = async function (context) {
 # <a name="python"></a>[Python](#tab/python)
 
 Varaktiga entiteter stöds för närvarande inte i python.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Det finns för närvarande inte stöd för varaktiga entiteter i PowerShell.
 
 ---
 

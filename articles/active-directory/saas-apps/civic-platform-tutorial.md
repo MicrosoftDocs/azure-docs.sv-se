@@ -2,26 +2,21 @@
 title: 'Självstudie: Azure Active Directory integration med Civic-plattformen | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory-och Civic-plattformen.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 1d790454-143e-40ac-b3cb-5a256977b4db
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ccf124c5a4160715df4e685e405dcd591c49ae7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 47ffaef940b3fe2ffe033405a712195c5c74d774
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68496828"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520391"
 ---
 # <a name="tutorial-integrate-civic-platform-with-azure-active-directory"></a>Självstudie: integrera Civic-plattformen med Azure Active Directory
 
@@ -33,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar Civic-plattformen m
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -89,7 +84,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     a. I textrutan **Inloggnings-URL** anger du en URL enligt följande mönster: `https://<SUBDOMAIN>.accela.com`
 
-    b. I text rutan **identifierare (enhets-ID)** anger du en URL:`civicplatform.accela.com`
+    b. I text rutan **identifierare (enhets-ID)** anger du en URL: `civicplatform.accela.com`
 
     > [!NOTE]
     > Värdet för inloggnings-URL är inte verkligt. Uppdatera värdet med den faktiska inloggnings-URL:en. Kontakta [Civic Platform client support team](mailto:skale@accela.com) för att få det här värdet. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -98,7 +93,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     ![Länk för nedladdning av certifikatet](common/copy-metadataurl.png)
 
-1. Gå till **Azure Active Directory** > **Appregistreringar** i Azure AD och välj ditt program.
+1. Gå till **Azure Active Directory**  >  **Appregistreringar** i Azure AD och välj ditt program.
 
 1. Kopiera **katalog-ID: t** och lagra det i anteckningar.
 
@@ -108,7 +103,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
    ![Kopiera program-ID: t (klient)](media/civic-platform-tutorial/applicationid.png)
 
-1. Gå till **Azure Active Directory** > **Appregistreringar** i Azure AD och välj ditt program. Välj **certifikat & hemligheter**.
+1. Gå till **Azure Active Directory**  >  **Appregistreringar** i Azure AD och välj ditt program. Välj **certifikat & hemligheter**.
 
 1. Välj **klient hemligheter – > ny klient hemlighet**.
 
@@ -129,7 +124,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Skapa ett standard alternativ **ssoconfig**.
 
-1. Sök efter **ssoconfig** och skicka.
+1. Sök efter **ssoconfig**  och skicka.
 
     ![Länk för nedladdning av certifikatet](media/civic-platform-tutorial/sso-config.png)
 
@@ -147,7 +142,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     1. I fältet **directoryId** anger du **katalogens ID-** värde, som du har kopierat från Azure Portal.
 
-    1. Ange idpName. Ex:- `Azure`.
+    1. Ange idpName. Ex:- `Azure` .
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
 
@@ -157,7 +152,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension. Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -191,9 +186,9 @@ När du klickar på panelen Civic plattform på åtkomst panelen, bör du loggas
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Vad är programåtkomst och enkel inloggning med Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Vad är villkorsstyrd åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Vad är villkorlig åtkomst i Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

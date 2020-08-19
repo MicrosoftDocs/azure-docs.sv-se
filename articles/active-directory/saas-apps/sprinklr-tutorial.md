@@ -2,25 +2,21 @@
 title: 'Självstudie: Azure Active Directory integrering med sprinkler | Microsoft Docs'
 description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och sprinkler.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b33938a1-25a5-484c-8e75-7dc6de2d534d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 9e4025d040783bff1cd85fb46d571e3a89967892
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 02b9adcb72b4d26a19b6514d19ce94a70a2415ed
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67089650"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88534225"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>Självstudie: Azure Active Directory integrering med sprinkler
 
@@ -32,9 +28,9 @@ Att integrera sprinkler med Azure AD ger följande fördelar:
 * Du kan hantera dina konton på en central plats – Azure-portalen.
 
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill konfigurera Azure AD-integrering med sprinkler behöver du följande objekt:
 
@@ -130,11 +126,11 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med sp
 
 1. Logga in på din plats för sprinkler företaget som administratör i ett annat webbläsarfönster.
 
-1. Gå till **administrations \> inställningar**.
+1. Gå till **administrations \> Inställningar**.
 
     ![Administration](./media/sprinklr-tutorial/ic782907.png "Administration")
 
-1. Gå till **hantera enkel \> inloggning för partner** i det vänstra fönstret.
+1. Gå till **hantera \> enkel inloggning för partner** i det vänstra fönstret.
 
     ![Hantera partner](./media/sprinklr-tutorial/ic782908.png "Hantera partner")
 
@@ -158,7 +154,7 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med sp
 
     f. Klistra in **URL** -värdet för inloggning som du har kopierat från Azure Portal till text rutan för **inloggnings-URL för identitets leverantör** .
 
-    g. Klistra in **URL** -värdet för utloggning som du har kopierat från Azure Portal till text rutan för **inloggade URL för identitets leverantör** .
+    ex. Klistra in **URL** -värdet för utloggning som du har kopierat från Azure Portal till text rutan för **inloggade URL för identitets leverantör** .
 
     h. Som **SAML-användarens ID-typ**väljer du **Assertion innehåller användarens Sprinklr.com användar namn**.
 
@@ -187,7 +183,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **Användarnamn** anger du **brittasimon@yourcompanydomain.extension**  
-    Till exempel, BrittaSimon@contoso.com
+    Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
@@ -223,7 +219,7 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
 1. Logga in på din plats för sprinkler företaget som administratör.
 
-1. Gå till **administrations \> inställningar**.
+1. Gå till **administrations \> Inställningar**.
 
     ![Administration](./media/sprinklr-tutorial/ic782907.png "Administration")
 
