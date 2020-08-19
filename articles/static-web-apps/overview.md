@@ -32,7 +32,7 @@ Med Azure Static Web Apps separeras statiska tillgångar från en traditionell w
 
 - **Webbvärd** för statiskt innehåll som HTML, CSS, Java Script och bilder.
 - **Inbyggt API** -stöd som tillhandahålls av Azure Functions.
-- **GitHub-integrering i första klass** där lagrings plats ändringar utlöser versioner och distributioner.
+- **GitHub-integrering i första klass** där lagringsplats ändringar utlöser versioner och distributioner.
 - **Globalt distribuerat** statiskt innehåll, vilket gör att innehållet serveras närmare dina användare.
 - **Kostnads fria SSL-certifikat**, som automatiskt förnyas.
 - **Självvalda domäner** för att styrka appens varumärke.
