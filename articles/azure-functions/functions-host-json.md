@@ -1,5 +1,5 @@
 ---
-title: host.jssom referens för Azure Functions 2. x
+title: host.json referens för Azure Functions 2. x
 description: Referens dokumentation för Azure Functions host.jsi filen med v2-körningen.
 ms.topic: conceptual
 ms.date: 04/28/2020
@@ -23,7 +23,7 @@ Filen *host.jspå* metadatafilen innehåller globala konfigurations alternativ s
 
 Andra konfigurations alternativ för Function-appar hanteras i dina [app-inställningar](functions-app-settings.md) (för distribuerade appar) eller [local.settings.jspå](functions-run-local.md#local-settings-file) fil (för lokal utveckling).
 
-Konfigurationer i host.jssom är relaterade till bindningar tillämpas lika med varje funktion i Function-appen. 
+Konfigurationer i host.json är relaterade till bindningar tillämpas lika med varje funktion i Function-appen. 
 
 Du kan även [åsidosätta eller tillämpa inställningar per miljö](#override-hostjson-values) med hjälp av program inställningar.
 
