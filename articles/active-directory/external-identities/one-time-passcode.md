@@ -12,14 +12,14 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15debb69172dba00163950fdd301826c903e5307
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: b9bc7d94cff46b54b81615cf064ed63927b3ec60
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548349"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929301"
 ---
-# <a name="email-one-time-passcode-authentication"></a>E-postautentisering med eng ång slö sen ord
+# <a name="email-one-time-passcode-authentication-preview"></a>E-postautentisering med eng ång slö sen ord (för hands version)
 
 Den här artikeln beskriver hur du aktiverar autentisering med eng ång slö sen ord för B2B-gäst användare. Med funktionen för eng ång slö sen ord autentiseras B2B-gäst användare när de inte kan autentiseras via andra sätt som Azure AD, en Microsoft-konto (MSA) eller Google Federation. Med autentisering med eng ång slö sen ord behöver du inte skapa en Microsoft-konto. När gäst användaren löser in en inbjudan eller får åtkomst till en delad resurs, kan de begära en tillfällig kod som skickas till deras e-postadress. Sedan anger de den här koden för att fortsätta logga in.
 

@@ -1,19 +1,19 @@
 ---
-title: ta med fil
-description: ta med fil
+title: inkludera fil
+description: inkludera fil
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: include
 ms.date: 1/31/2020
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: include file
-ms.openlocfilehash: 751613e7b3b2252b62dff2c3e1adad83bdc8c393
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7d7f765a6a6dd9ef487b0bade7fa064af00f3149
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182713"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929231"
 ---
 Om du inte vill fortsätta använda resurserna som skapats i den här artikeln tar du bort resurs gruppen som du skapade här för att undvika avgifter.
 

@@ -1,17 +1,17 @@
 ---
 title: Ge åtkomst till Azure App konfiguration med Azure Active Directory
 description: Aktivera Azure RBAC för att ge åtkomst till din Azure App konfigurations instans
-author: lisaguthrie
-ms.author: lcozzens
-ms.date: 02/13/2020
+author: AlexandraKemperMS
+ms.author: alkemper
+ms.date: 05/26/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 9c749dbb1cc78bf06dfe665875bc05f75152778b
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 4768dbe292b7c71770ded1e8ad27025bc9944608
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862147"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930270"
 ---
 # <a name="authorize-access-to-azure-app-configuration-using-azure-active-directory"></a>Ge åtkomst till Azure App konfiguration med Azure Active Directory
 Förutom att använda hash-baserade Message Authentication Code (HMAC), kan Azure App konfiguration använda Azure Active Directory (Azure AD) för att auktorisera begär anden till konfigurations instanser för appar.  Med Azure AD kan du använda rollbaserad åtkomst kontroll i Azure (Azure RBAC) för att ge behörighet till ett säkerhets objekt.  Ett säkerhets objekt kan vara en användare, en [hanterad identitet](../active-directory/managed-identities-azure-resources/overview.md) eller ett [huvud namn för program tjänsten](../active-directory/develop/app-objects-and-service-principals.md).  Mer information om roller och roll tilldelningar finns i [förstå olika roller](../role-based-access-control/overview.md).

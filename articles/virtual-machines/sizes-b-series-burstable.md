@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: 819654ef88584cb91d6032e46256258aaed524fd
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ea812df825288eae3822cce01b24ebc82534c541
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500316"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928825"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Storlekar för virtuella datorer i B-serien
 
@@ -132,7 +132,7 @@ S **: Ja**, alla storlekar i B-serien har stöd för Premium Storage data diskar
 
 ### <a name="q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart"></a>F: Varför är min återstående kredit inställd på 0 efter en omdistribution eller en stoppa/starta?
 
-**A** : när en virtuell dator är "REDPLOYED" och den virtuella datorn flyttas till en annan nod går den ackumulerade krediten förlorad. Om den virtuella datorn stoppas/startas, men förblir kvar på samma nod, behåller den virtuella datorn den ackumulerade krediten. När den virtuella datorn startar på nytt på en nod får den en inledande kredit, för Standard_B8ms den är 240.
+**A** : när en virtuell dator distribueras om och den virtuella datorn flyttas till en annan nod går den ackumulerade krediten förlorad. Om den virtuella datorn stoppas/startas, men förblir kvar på samma nod, behåller den virtuella datorn den ackumulerade krediten. När den virtuella datorn startar på nytt på en nod får den en inledande kredit, för Standard_B8ms den är 240.
 
 ### <a name="q-what-happens-if-i-deploy-an-unsupported-os-image-on-b1ls"></a>F: Vad händer om jag distribuerar en OS-avbildning som inte stöds på B1ls?
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: 55651b3201676ee5cddb5412e950791afaa4e87a
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 01af7b251c9ce3bfebb87016c85ea3efd9c0e8ac
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852140"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928774"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Så här ansluter du Azure Data Factory och Azure-avdelningens kontroll
 
@@ -42,6 +42,13 @@ Flera Azure-datafabriker kan ansluta till en enda Azure avdelningens kontroll-Da
 
 ## <a name="create-new-data-factory-connection"></a>Skapa ny Data Factory anslutning
 
+>[!Note]
+>Om du vill lägga till eller ta bort Data Factory anslutningar måste du ha tilldelats någon av avdelningens kontroll-rollerna:
+>- Ägare
+>- Administratör för användaråtkomst
+>
+> Förutom måste användarna vara data fabrikens "ägare" eller "bidrag". 
+
 Följ stegen nedan för att ansluta ett befintligt Data Factory-konto till din avdelningens kontroll-Data Catalog.
 
 1. Välj **hanterings Center** i det vänstra navigerings fönstret.
@@ -70,11 +77,6 @@ Gör så här om du vill ta bort en data fabriks anslutning:
 1. Välj **Bekräfta** i popup-fönstret för att ta bort de valda data fabriks anslutningarna.
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="Skärm bild som visar hur du väljer data fabriker för att ta bort anslutningen." lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
-
->[!Note]
->Om du vill lägga till eller ta bort Data Factory anslutningar måste du ha tilldelats någon av avdelningens kontroll-rollerna:
->- Ägare
->- Administratör för användar åtkomst förutom måste användarna vara data fabrikens "ägare", "deltagare" eller "Data Factory Contributor". 
 
 ## <a name="configure-a-self-hosted-ir-to-collect-lineage-from-on-prem-sql"></a>Konfigurera en egen värd-IR för att samla in härkomst från lokal SQL
 

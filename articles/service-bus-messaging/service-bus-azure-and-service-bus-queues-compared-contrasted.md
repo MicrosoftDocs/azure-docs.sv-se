@@ -3,12 +3,12 @@ title: Jämföra Azure Storage-köer och Service Bus-köer
 description: Analyserar skillnader och likheter mellan två typer av köer som erbjuds av Azure.
 ms.topic: article
 ms.date: 11/04/2020
-ms.openlocfilehash: 5c65cf5ef2d572417ea70d0e0259cf2c03ab590e
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 31992aa2012009c51cbeae78010ae8ced65fc872
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379578"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928315"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage-köer och Service Bus-köer – jämförelser och skillnader
 I den här artikeln analyseras skillnaderna och likheter mellan de två typerna av köer som erbjuds av Microsoft Azure: lagrings köer och Service Bus köer. Med hjälp av den här informationen kan du fatta ett mer informerat beslut om vilken lösning som bäst passar dina behov.
@@ -131,12 +131,12 @@ I det här avsnittet jämförs lagrings köer och Service Bus köer från den [k
 | Maximal meddelande storlek |**64 kB**<br/><br/>(48 KB vid användning av **base64** -kodning)<br/><br/>Azure stöder stora meddelanden genom att kombinera köer och blobbar – där du kan placera upp till 200 GB för ett enda objekt. |**256 KB** eller **1 MB**<br/><br/>(inklusive både sidhuvud och brödtext, maximal sidhuvud storlek: 64 KB).<br/><br/>Är beroende av [tjänst nivån](service-bus-premium-messaging.md). |
 | Maximalt meddelande-TTL |**Oändlig** (API-version 2017-07-27 eller senare) |**TimeSpan. Max** |
 | Maximalt antal köer |**Obegränsat** |**10 000**<br/><br/>(namn område per tjänst) |
-| Maximalt antal samtidiga klienter |**Obegränsat** |**Obegränsat**<br/><br/>(100 samtidiga anslutnings begränsningar gäller endast för TCP-protokoll-baserad kommunikation) |
+| Maximalt antal samtidiga klienter |**Obegränsat** |**5 000** |
 
 ### <a name="additional-information"></a>Ytterligare information
 * Service Bus tillämpar begränsningar för kös Tor lek. Den maximala kös Tor lek anges när du skapar en kö. Det kan vara mellan 1 GB och 80 GB. Om köns storlek når den här gränsen kommer ytterligare inkommande meddelanden att avvisas och anroparen får ett undantag. Mer information om kvoter i Service Bus finns [Service Bus kvoter](service-bus-quotas.md).
 * Partitionering stöds inte på [Premium-nivån](service-bus-premium-messaging.md). På standard-meddelande nivån kan du skapa Service Bus köer och ämnen i 1 (standard), 2, 3, 4 eller 5 GB storlek. När partitionering har Aktiver ATS skapar Service Bus 16 kopior (16 partitioner) för entiteten, var och en av de samma storlek som anges. Om du skapar en kö som är 5 GB stor, med 16 partitioner, blir den maximala kös Tor lek (5 * 16) = 80 GB.  Du kan se den maximala storleken på din partitionerade kö eller ämne i [Azure Portal][Azure portal].
-* Om innehållet i meddelandet inte är XML-säkert i lagrings köer måste det vara **base64** -kodat. Om du **base64** -kodar meddelandet kan användarens nytto Last vara upp till 48 KB, i stället för 64 kB.
+* Om innehållet i meddelandet inte är XML-säkert i lagrings köer måste det vara **base64** -kodat. Om du **base64**-kodar meddelandet kan användarens nytto Last vara upp till 48 KB, i stället för 64 kB.
 * Med Service Bus köer består varje meddelande som lagras i en kö av två delar: ett sidhuvud och en brödtext. Meddelandets totala storlek får inte överskrida den maximala meddelande storleken som stöds av tjänst nivån.
 * När klienter kommunicerar med Service Bus köer över TCP-protokollet, är det maximala antalet samtidiga anslutningar till en enda Service Bus-kö begränsad till 100. Numret delas mellan avsändare och mottagare. Om den här kvoten uppnås avvisas begär Anden om ytterligare anslutningar och ett undantag tas emot av den anropande koden. Den här begränsningen gäller inte för klienter som ansluter till köerna med hjälp av REST-baserade API: er.
 * Om du behöver fler än 10 000 köer i ett enda Service Bus-namnområde kan du kontakta support teamet för Azure och begära en ökning. Om du vill skala bortom 10 000-köer med Service Bus kan du också skapa ytterligare namn områden med hjälp av [Azure Portal][Azure portal].

@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 12/01/2020
+ms.date: 12/09/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: f0cb7d4ebe428da4a370433b3e90a829f30489db
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: a1307aa19c66e3f6fcb71f677e6c67551d2a01f9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512213"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928332"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Vanliga frågor och svar om Microsoft Authenticator-appen
 
@@ -207,6 +207,74 @@ S **: Tryck** på konto panelen för det konto som du vill ta bort från appen f
 **F**: min Apple Watch Companion-app kraschade. Kan jag skicka mina krasch loggar så att du kan undersöka?
 
 S **: du** måste först se till att du har valt att dela din analys med oss. Om du är en TestFlight-användare är du redan registrerad. Annars kan du gå till **inställningar > sekretess > analys** och välja båda alternativen **dela iPhone-& se analys** och **dela med Apps** .<br>När du har registrerat dig kan du försöka återskapa din krasch så att dina krasch loggar skickas automatiskt till oss för att undersöka detta. Men om du inte kan återskapa din krasch kan du manuellt kopiera dina loggfiler och skicka dem till oss.<ol><li>Öppna appen titta på din telefon, gå till **inställningar > allmänt** och klicka sedan på **Kopiera bevaknings analys**.</li><li>Hitta motsvarande krasch under **inställningar > sekretess > analys > analys data** och kopiera sedan hela texten manuellt.</li><li>Öppna autentiseraren på din telefon och klistra in den kopierade texten i text rutan **dela med app-utvecklare** på sidan **skicka loggar** .</li></ol>
+
+## <a name="autofill-for-consumers"></a>Autofyll för konsumenter
+
+**F**: Vad är Autofyll i autentiseraren?
+
+**A**: Authentication-appen lagrar och fyller på lösen ord på ett säkert sätt för appar och webbplatser som du besöker på din telefon. Du kan använda Autofyll för att synkronisera och Autofyll dina lösen ord på dina iOS-och Android-enheter. När du har konfigurerat Authenticator-appen som en Autofyll-Provider på din telefon, kan du spara dina lösen ord när du anger dem på en webbplats eller i appens inloggnings sida. Lösen orden sparas som en del av [din Microsoft-konto](https://account.microsoft.com/account) och är också tillgängliga när du loggar in på Microsoft Edge med ditt Microsoft-konto.
+
+**F**: vilken information kan autoautentiseras för mig?
+
+**A**: autentiseraren kan fylla i användar namn och lösen ord på webbplatser och appar som du besöker på din telefon.
+
+**F**: Hur gör jag för att aktivera Autofyll för lösen ord i autentiseraren på min telefon?
+
+**A**: Följ dessa steg:
+
+1. Öppna Authenticator-appen.
+1. I **Inställningar** under **beta** aktiverar du **Autofyll**.
+1. På fliken **lösen ord** i autentiserare väljer du **Logga in med Microsoft** och loggar in med [ditt Microsoft-konto](https://account.microsoft.com/account). Den här funktionen har för närvarande endast stöd för Microsoft-konton och har ännu inte stöd för arbets-eller skol konton.
+
+**F**: Hur gör jag för att göra autentiseraren till standardprovidern för Autofyll på min telefon?
+
+**A**: Följ dessa steg:
+
+1. Öppna verifierings **Inställningar** och aktivera **Autofyll** under **beta** .
+1. Logga in med [ditt Microsoft-konto](https://account.microsoft.com/account)på fliken **lösen ord** i appen.
+1. Gör något av följande:
+
+   - Under **Inställningar** på iOS väljer du **hur du vill aktivera Autofyll** i avsnittet Inställningar för Autofyll för att lära dig hur du ställer in Authenticator som standardprovider för Autofyll.
+   - På Android, under **Inställningar**, väljer du **Ange som Autofyll Provider** i avsnittet Inställningar för Autofyll för att ange autentiserare som standard-Autofyll-Provider.
+
+**F**: Vad händer om **Autofyll** -växeln är nedtonad för mig i inställningar?
+
+**A**: Autofyll är för närvarande i beta version och har ännu inte Aktiver ATS för alla organisationer eller konto typer. Om växeln **Autofyll** i **Inställningar** är nedtonad för dig, är det troligt att du använder Authenticator-appen med ditt arbets konto. Du kan använda den här funktionen på en enhet där ditt arbets konto inte har lagts till. Om din organisation arbetar med Microsoft aktive ras växeln **Autofyll** även om ett arbets konto läggs till i autentiseraren.
+
+**F**: Hur gör jag för att stoppa synkroniseringen av lösen ord?
+
+**A**: om du vill stoppa synkroniseringen av lösen ord i Authenticator-appen öppnar du **Inställningar**  >  **Autofyll inställningar**  >  **Sync-konto**. På nästa skärm kan du välja **stoppa synkronisering och ta bort alla Autofyll-data**. Detta tar bort lösen ord och andra Autofyll-data från enheten. Att ta bort Autofyll-data påverkar inte Multi-Factor Authentication.
+
+**F**: Hur skyddas mina lösen ord av Authenticator-appen?
+
+**A**: Authenticator-appen tillhandahåller redan en hög säkerhets nivå för Multi-Factor Authentication och konto hantering, och samma höga säkerhets fält utökas också för att hantera dina lösen ord.
+
+- **Stark autentisering krävs av Authenticator-appen**: inloggning till autentisering kräver en andra faktor. Det innebär att dina lösen ord i Authenticator-appen inte kan nås även om någon har Microsoft-konto lösen ord.
+- **Autofyll-data skyddas med biometrik och lösen ord**: innan du kan fylla i lösen ord på en app eller på en webbplats kräver autentiseraren bio metrisk eller enhets lösen ord. Detta säkerställer att även om någon annan har åtkomst till din enhet, kan de inte fylla eller se ditt lösen ord eftersom de inte skulle kunna tillhandahålla bio metrisk eller PIN-kod för enheten. Dessutom kan en användare inte öppna sidan lösen ord om de inte anger bio metrisk eller PIN-kod, även om de inaktiverar app lock i appinställningar.
+- **Krypterade lösen ord på enheten**: lösen ord på enheten är krypterade och krypterings-/dekrypterings nycklar lagras aldrig och genereras alltid i farten. Lösen ord dekrypteras endast när användaren vill, det vill säga under Autofyll eller när användaren vill se lösen ordet, som kräver bio metrisk eller PIN-kod.
+- **Moln-och nätverks säkerhet**: dina lösen ord i molnet krypteras och dekrypteras bara när de når enheten. Lösen ord synkroniseras via en SSL-skyddad HTTPS-anslutning, som ser till att ingen angripare kan eavesdrop på känsliga data när den synkroniseras. Vi garanterar också att vi kontrollerar Sanity för data som synkroniseras över nätverket med hjälp av krypterade hash-funktioner (specifikt hash-baserad meddelande kod).
+
+## <a name="autofill-for-it-admins"></a>Autofyll för IT-administratörer
+
+**F**: kommer mina anställda eller studenter att få använda lösen ord Autofyll i Authenticator-appen?
+
+**A**: Nej. Funktionen Autofyll är för närvarande i beta version och har ännu inte Aktiver ATS för alla organisationer eller konto typer. Om din medarbetare eller student har lagt till sitt arbets-eller skol konto i Microsoft Authenticator-appen kan inte lösen ord fyllas i automatiskt. Ett undantag till den här begränsningen är när din medarbetare eller student lägger till sitt arbets-eller skol konto i Microsoft Cloud-baserad Multi-Factor Authentication som ett [externt konto eller ett konto från tredje part](user-help-auth-app-add-non-ms-account.md).
+
+**F**: kan jag göra Autofyll-funktionen tillgänglig för mina anställda (eller studenter)?
+
+**A**: Ja. Om du vill göra det möjligt för dina anställda eller studenter kan du lägga till ditt företag eller din skola i en lista över tillåtna. Kontakta supporten eller Microsoft-kontakten för att komma åt listan över tillåtna. Om du är IT-administratör för din organisation kan du också fylla i ett formulär för att uttrycka intresset i att gå med i [Tillåt-List Enterprise för Autofyll i autentiseraren](https://aka.ms/RequestAutofillInAuthenticator).
+
+**F**: kommer mina användares lösen ord för arbets-eller skol kontot att synkroniseras automatiskt?
+
+**A**: Nej. Lösen ord för Autofyll synkroniserar inte lösen ord för arbets-eller skol konton för dina användare. När användare besöker en webbplats eller en app, erbjuder autentiseraren att spara lösen ordet för platsen eller appen, och lösen ordet sparas bara när användaren väljer.
+  
+**F**: kan jag endast tillåta vissa användare av min organisation för Autofyll i listan?
+
+**A**: Nej. Företag kan bara aktivera lösen ord Autofyll för alla eller ingen av sina anställda för tillfället. Dessa kontroller kommer att utvidgas gradvis.
+
+**F**: Vad händer om min medarbetare eller student har flera arbets-eller skol konton? Min medarbetare har till exempel konton från flera företag eller skolor i sin Microsoft Authenticator.
+
+**A**: alla företag eller skolor som har lagts till i Authenticator-appen måste vara tillåtna – listat för Autofyll i Authenticator för att appens ägare ska kunna använda den. Ett undantag till den här begränsningen är när din medarbetare eller student lägger till sitt arbets-eller skol konto i Microsoft Cloud-baserad Multi-Factor Authentication som ett [externt konto eller ett konto från tredje part](user-help-auth-app-add-non-ms-account.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -1,21 +1,21 @@
 ---
 title: Självstudie – Lägg till mall funktioner
-description: Lägg till mallar i Azure Resource Manager-mallen för att skapa värden.
+description: Lägg till mallar i din Azure Resource Manager-mall (ARM-mallen) för att skapa värden.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: c6ced832cad6809e7cd016eee132713c6b266480
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67c88e98d966a21163aafefcad8363086d5b3bf4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613857"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931052"
 ---
 # <a name="tutorial-add-template-functions-to-your-arm-template"></a>Självstudie: Lägg till mallar i ARM-mallen
 
-I den här självstudien får du lära dig hur du lägger till [mallar](template-functions.md) i din Azure Resource Manager-mall (arm). Du använder funktioner för att dynamiskt konstruera värden. Förutom dessa funktioner som tillhandahålls av systemet kan du också skapa [användardefinierade funktioner](./template-user-defined-functions.md). Den här självstudien tar **7 minuter** att slutföra.
+I den här självstudien får du lära dig hur du lägger till [mallar](template-functions.md) till din Azure Resource Manager-mall (arm-mall). Du använder funktioner för att dynamiskt konstruera värden. Förutom dessa funktioner som tillhandahålls av systemet kan du också skapa [användardefinierade funktioner](./template-user-defined-functions.md). Den här självstudien tar **7 minuter** att slutföra.
 
 ## <a name="prerequisites"></a>Krav
 
@@ -33,7 +33,7 @@ Platsen för lagrings kontot är hårdkodad till **USA, östra**. Du kan dock be
 
 ## <a name="use-function"></a>Använd funktion
 
-Om du har slutfört den föregående själv studie kursen i den här serien har du redan använt en funktion. När du lade till **"[parameters (' storageName ')]"** användes [parameter](template-functions-deployment.md#parameters) funktionen. Hakparenteserna anger att syntaxen innanför hakparenteserna är ett [mall uttryck](template-expressions.md). Resource Manager matchar syntaxen i stället för att behandla den som ett litteralt värde.
+Om du har slutfört den föregående själv studie kursen i den här serien har du redan använt en funktion. När du har lagt till `"[parameters('storageName')]"` användes [parameter](template-functions-deployment.md#parameters) funktionen. Hakparenteserna anger att syntaxen innanför hakparenteserna är ett [mall uttryck](template-expressions.md). Resource Manager matchar syntaxen i stället för att behandla den som ett litteralt värde.
 
 Funktioner ger dig flexibilitet i mallen genom att dynamiskt hämta värden under distributionen. I den här självstudien använder du en funktion för att hämta platsen för den resurs grupp som du använder för distribution.
 
@@ -81,7 +81,7 @@ az deployment group create \
 Du kan kontrol lera distributionen genom att utforska resurs gruppen från Azure Portal.
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-1. Välj **resurs grupper**på den vänstra menyn.
+1. Välj **resurs grupper** på den vänstra menyn.
 1. Välj den resurs grupp som du har distribuerat till.
 1. Du ser att en lagrings konto resurs har distribuerats och har samma plats som resurs gruppen.
 

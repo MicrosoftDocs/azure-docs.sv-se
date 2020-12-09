@@ -3,19 +3,19 @@ title: Skript exempel för Azure CLI – arbeta med nyckel värden i app Configu
 titleSuffix: Azure App Configuration
 description: Använd Azure CLI-skript för att skapa, Visa, uppdatera och ta bort nyckel värden från konfigurations lager för appar
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/19/2020
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2610d0ee448e274b9bdeb7396393ce47e27e65ef
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 54ad9f389070e1d5d280517a2f6c41e9a0f8f33e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565763"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929998"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Arbeta med nyckelvärden i ett Azure App Configuration-arkiv
 

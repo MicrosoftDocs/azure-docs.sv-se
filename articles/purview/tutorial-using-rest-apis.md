@@ -1,18 +1,18 @@
 ---
 title: 'Självstudie: använda REST-API: er'
 description: 'I den här självstudien beskrivs hur du använder REST-API: er för Azure avdelningens kontroll för att komma åt innehållet i katalogen.'
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: 26a610125434df3bc2df15401b0f5b281d004812
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 7a2e029fbcc1a26da9c8c8cbff5ee3b9bbb849e0
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96603654"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928281"
 ---
 # <a name="tutorial-use-the-rest-apis"></a>Självstudie: använda REST-API: er
 
@@ -31,7 +31,7 @@ I den här guiden får du lära dig att:
 
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Du måste ha ett befintligt Azure avdelningens kontroll-konto för att komma igång. Om du inte har någon katalog kan du läsa [snabb starten för att skapa ett Azure avdelningens kontroll-konto](create-catalog-portal.md).
 
@@ -193,6 +193,7 @@ namespace PurviewCatalogSdkTest
         private static string accountName = "{account-name}";
         private static string servicePrincipalId = "{service-principal-id}";
         private static string servicePrincipalKey = "{service-principal-key}";
+        private static string tenantId = "{tenant-id}";
 
         static void Main(string[] args)
         {
@@ -225,10 +226,11 @@ namespace PurviewCatalogSdkTest
                 { "resource", "73c2949e-da2d-457a-9607-fcc665198967" }
             };
 
+            string authUrl = string.Format("https://login.windows.net/{0}/oauth2/token", tenantId);
             var content = new FormUrlEncodedContent(values);
 
             HttpClient authClient = new HttpClient();
-            var bearerResult = authClient.PostAsync("https://login.windows.net/microsoft.com/oauth2/token", content);
+            var bearerResult = authClient.PostAsync(authUrl, content);
             bearerResult.Wait();
             var resultContent = bearerResult.Result.Content.ReadAsStringAsync();
             resultContent.Wait();

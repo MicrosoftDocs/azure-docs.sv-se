@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 9371feb527bbb2d94d43072bb8a44a6705b45055
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e73ca9e485e6926c30a73ba56b24bcd4dc9a836
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87280230"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929743"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrera till Azure Kubernetes service (AKS)
 
@@ -132,7 +132,7 @@ Om ditt program kan vara värd för flera repliker som pekar på samma fil resur
 * Peka din aktiva trafik till ditt nya AKS-kluster.
 * Koppla bort det gamla klustret.
 
-Om du vill börja med en tom resurs och göra en kopia av data källan kan du använda [`az storage file copy`](/cli/azure/storage/file/copy?view=azure-cli-latest) kommandona för att migrera dina data.
+Om du vill börja med en tom resurs och göra en kopia av data källan kan du använda [`az storage file copy`](/cli/azure/storage/file/copy) kommandona för att migrera dina data.
 
 
 #### <a name="migrating-persistent-volumes"></a>Migrera beständiga volymer
@@ -159,7 +159,7 @@ Vissa verktyg med öppen källkod kan hjälpa dig att skapa hanterade diskar och
 
 ### <a name="deployment-of-your-cluster-configuration"></a>Distribution av kluster konfigurationen
 
-Vi rekommenderar att du använder din befintliga-pipeline för kontinuerlig integrering (CI) och kontinuerlig leverans (CD) för att distribuera en fungerande konfiguration till AKS. Du kan använda Azure-pipelines för att [bygga och distribuera dina program till AKS](/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops). Klona dina befintliga distributions uppgifter och se till att `kubeconfig` de pekar på det nya AKS-klustret.
+Vi rekommenderar att du använder din befintliga-pipeline för kontinuerlig integrering (CI) och kontinuerlig leverans (CD) för att distribuera en fungerande konfiguration till AKS. Du kan använda Azure-pipelines för att [bygga och distribuera dina program till AKS](/azure/devops/pipelines/ecosystems/kubernetes/aks-template). Klona dina befintliga distributions uppgifter och se till att `kubeconfig` de pekar på det nya AKS-klustret.
 
 Om detta inte är möjligt exporterar du resurs definitioner från ditt befintliga Kubernetes-kluster och tillämpar dem sedan på AKS. Du kan använda `kubectl` för att exportera objekt.
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: jingwang
-ms.openlocfilehash: a8cd6386ed6004935b0a1e45a53c01668166c0e4
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 1b3ab569666ea413ba36da0dc00f6c37336c4443
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902263"
+ms.locfileid: "96931318"
 ---
 # <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Kopiera data från och till en REST-slutpunkt genom att använda Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -61,9 +61,9 @@ Följande egenskaper stöds för den REST-länkade tjänsten:
 |:--- |:--- |:--- |
 | typ | Egenskapen **Type** måste anges till **RestService**. | Ja |
 | url | Bas-URL: en för REST-tjänsten. | Ja |
-| enableServerCertificateValidation | Huruvida TLS/SSL-certifikat på Server sidan ska verifieras vid anslutning till slut punkten. | Nej<br /> (Standardvärdet är **Sant**) |
+| enableServerCertificateValidation | Huruvida TLS/SSL-certifikat på Server sidan ska verifieras vid anslutning till slut punkten. | Inga<br /> (Standardvärdet är **Sant**) |
 | authenticationType | Typ av autentisering som används för att ansluta till REST-tjänsten. Tillåtna värden är **Anonymous**, **Basic**, **AadServicePrincipal** och **ManagedServiceIdentity**. Se motsvarande avsnitt nedan om du vill ha fler egenskaper respektive exempel. | Ja |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Läs mer från avsnittet [krav](#prerequisites) . Om detta inte anges använder den här egenskapen standard Azure Integration Runtime. |Nej |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Läs mer från avsnittet [krav](#prerequisites) . Om detta inte anges använder den här egenskapen standard Azure Integration Runtime. |Inga |
 
 ### <a name="use-basic-authentication"></a>Använd grundläggande autentisering
 
@@ -108,7 +108,7 @@ Ange egenskapen **authenticationType** till **AadServicePrincipal**. Förutom de
 | servicePrincipalKey | Ange Azure Active Directory programmets nyckel. Markera det här fältet som **SecureString** för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | tenant | Ange den klient information (domän namn eller klient-ID) som programmet finns under. Hämta det genom att hovra musen i det övre högra hörnet av Azure Portal. | Ja |
 | aadResourceId | Ange den AAD-resurs som du begär auktorisering för, till exempel `https://management.core.windows.net` .| Ja |
-| azureCloudType | För tjänstens huvud namns autentisering anger du vilken typ av Azure-moln miljö som ditt AAD-program är registrerat på. <br/> Tillåtna värden är **AzurePublic**, **AzureChina**, **azureusgovernment eller** och **AzureGermany**. Som standard används data fabrikens moln miljö. | Nej |
+| azureCloudType | För tjänstens huvud namns autentisering anger du vilken typ av Azure-moln miljö som ditt AAD-program är registrerat på. <br/> Tillåtna värden är **AzurePublic**, **AzureChina**, **azureusgovernment eller** och **AzureGermany**. Som standard används data fabrikens moln miljö. | Inga |
 
 **Exempel**
 
@@ -175,7 +175,7 @@ Följande egenskaper stöds för att kopiera data från REST:
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
 | typ | Data uppsättningens **typ** -egenskap måste anges till **RestResource**. | Ja |
-| relativeUrl | En relativ URL till den resurs som innehåller data. När den här egenskapen inte anges används endast den URL som anges i den länkade tjänst definitionen. HTTP-anslutningen kopierar data från den kombinerade URL: en: `[URL specified in linked service]/[relative URL specified in dataset]` . | Nej |
+| relativeUrl | En relativ URL till den resurs som innehåller data. När den här egenskapen inte anges används endast den URL som anges i den länkade tjänst definitionen. HTTP-anslutningen kopierar data från den kombinerade URL: en: `[URL specified in linked service]/[relative URL specified in dataset]` . | Inga |
 
 Om du har angett `requestMethod` , `additionalHeaders` `requestBody` och `paginationRules` i data uppsättning, stöds den fortfarande som den är, medan du föreslås att använda den nya modellen i aktivitet som går framåt.
 
@@ -211,12 +211,12 @@ Följande egenskaper stöds i avsnittet Kopiera aktivitets **källa** :
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
 | typ | **Typ** egenskapen för kopierings aktivitets källan måste anges till **RestSource**. | Ja |
-| requestMethod | HTTP-metoden. Tillåtna värden är **Get** (standard) och **post**. | Nej |
-| additionalHeaders | Ytterligare rubriker för HTTP-begäran. | Nej |
-| requestBody | Bröd texten för HTTP-begäran. | Nej |
-| paginationRules | Sid brytnings regler för att skapa nästa sida begär Anden. Mer information finns i avsnittet om [sid brytnings stöd](#pagination-support) . | Nej |
-| httpRequestTimeout | Timeout ( **TimeSpan** -värdet) för http-begäran för att få ett svar. Det här värdet är tids gränsen för att få ett svar, inte tids gränsen för att läsa svars data. Standardvärdet är **00:01:40**.  | Nej |
-| requestInterval | Vänte tiden innan begäran skickas för nästa sida. Standardvärdet är **00:00:01** |  Nej |
+| requestMethod | HTTP-metoden. Tillåtna värden är **Get** (standard) och **post**. | Inga |
+| additionalHeaders | Ytterligare rubriker för HTTP-begäran. | Inga |
+| requestBody | Bröd texten för HTTP-begäran. | Inga |
+| paginationRules | Sid brytnings regler för att skapa nästa sida begär Anden. Mer information finns i avsnittet om [sid brytnings stöd](#pagination-support) . | Inga |
+| httpRequestTimeout | Timeout ( **TimeSpan** -värdet) för http-begäran för att få ett svar. Det här värdet är tids gränsen för att få ett svar, inte tids gränsen för att läsa svars data. Standardvärdet är **00:01:40**.  | Inga |
+| requestInterval | Vänte tiden innan begäran skickas för nästa sida. Standardvärdet är **00:00:01** |  Inga |
 
 >[!NOTE]
 >REST Connector ignorerar alla "Accept"-huvud som anges i `additionalHeaders` . Eftersom REST Connector endast stöder svar i JSON genererar den automatiskt ett huvud av `Accept: application/json` .
@@ -300,15 +300,22 @@ Följande egenskaper stöds i avsnittet Kopiera aktivitets **mottagare** :
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
 | typ | Egenskapen **Type** för kopierings aktivitetens Sink måste anges till **RestSink**. | Ja |
-| requestMethod | HTTP-metoden. Tillåtna värden är **post** (standard), **placering** och **korrigering**. | Nej |
-| additionalHeaders | Ytterligare rubriker för HTTP-begäran. | Nej |
-| httpRequestTimeout | Timeout ( **TimeSpan** -värdet) för http-begäran för att få ett svar. Det här värdet är tids gränsen för att få ett svar, inte tids gränsen för att skriva data. Standardvärdet är **00:01:40**.  | Nej |
-| requestInterval | Intervall tiden mellan olika begär anden i milisecond. Värdet för begär ande intervall måste vara ett tal mellan [10, 60000]. |  Nej |
-| httpCompressionType | HTTP-komprimerings typ som ska användas när data skickas med optimal komprimerings nivå. Tillåtna värden är **none** och **gzip**. | Nej |
-| writeBatchSize | Antal poster som ska skrivas till REST-Sink per batch. Standardvärdet är 10000. | Nej |
+| requestMethod | HTTP-metoden. Tillåtna värden är **post** (standard), **placering** och **korrigering**. | Inga |
+| additionalHeaders | Ytterligare rubriker för HTTP-begäran. | Inga |
+| httpRequestTimeout | Timeout ( **TimeSpan** -värdet) för http-begäran för att få ett svar. Det här värdet är tids gränsen för att få ett svar, inte tids gränsen för att skriva data. Standardvärdet är **00:01:40**.  | Inga |
+| requestInterval | Intervall tiden mellan olika begär anden i millisekunder. Värdet för begär ande intervall måste vara ett tal mellan [10, 60000]. |  Inga |
+| httpCompressionType | HTTP-komprimerings typ som ska användas när data skickas med optimal komprimerings nivå. Tillåtna värden är **none** och **gzip**. | Inga |
+| writeBatchSize | Antal poster som ska skrivas till REST-Sink per batch. Standardvärdet är 10000. | Inga |
 
->[!NOTE]
->REST-anslutningen som mottagare fungerar med de REST-slutpunkter som accepterar JSON. Data skickas endast i JSON.
+REST-anslutningen som mottagare fungerar med REST-API: er som accepterar JSON. Data kommer att skickas i JSON med följande mönster. Vid behov kan du använda [schema mappningen](copy-activity-schema-and-type-mapping.md#schema-mapping) kopiera aktivitet för att ändra form på källdata så att de överensstämmer med den förväntade nytto lasten av REST API.
+
+```json
+[
+    { <data object> },
+    { <data object> },
+    ...
+]
+```
 
 **Exempel:**
 
@@ -348,7 +355,7 @@ Följande egenskaper stöds i avsnittet Kopiera aktivitets **mottagare** :
 
 ## <a name="pagination-support"></a>Stöd för sid brytning
 
-Normalt begränsar REST API dess svars nytto Last storlek för en enskild begäran under ett rimligt antal. När stora mängder data skulle returneras delas resultatet in på flera sidor och det krävs att anropare skickar efterföljande begär Anden för att hämta nästa sida i resultatet. Vanligt vis är begäran för en sida dynamisk och består av den information som returneras från svars sidan föregående.
+När du kopierar data från REST API: er, begränsar REST API den stora svars nytto Last storleken för en enskild begäran under ett rimligt antal. När stora mängder data skulle returneras delas resultatet in på flera sidor och det krävs att anropare skickar efterföljande begär Anden för att hämta nästa sida i resultatet. Vanligt vis är begäran för en sida dynamisk och består av den information som returneras från svars sidan föregående.
 
 Denna generiska REST-anslutning har stöd för följande sid brytnings mönster: 
 

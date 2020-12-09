@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 8021d659c144bfb68c2714f1680b6ad27a51b56a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: ac4763a2d79059eb2608595b616c945af274627e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522353"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928519"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Vad är en privat Azure-slutpunkt?
 
@@ -28,7 +28,7 @@ Azure Private Endpoint är ett nätverksgränssnitt som ger dig en privat och s�
 |Undernät    |  Under nätet för att distribuera och allokera privata IP-adresser från ett virtuellt nätverk. För under näts krav, se avsnittet begränsningar i den här artikeln.         |
 |Privat länk resurs    |   Den privata länk resursen för att ansluta med resurs-ID eller alias i listan över tillgängliga typer. Ett unikt nätverks-ID skapas för all trafik som skickas till den här resursen.       |
 |Mål under resurs   |      Den under resurs som ska anslutas. Varje privat länk resurs typ har olika alternativ för att välja baserat på preferens.    |
-|Metod för godkännande av anslutning    |  Automatisk eller manuell. Den privata slut punkten kan godkännas automatiskt baserat på Azures rollbaserad åtkomst kontroll (Azure RBAC). Om du försöker ansluta till en privat länk resurs utan Aure RBAC, använder du den manuella metoden för att tillåta resursens ägare att godkänna anslutningen.        |
+|Metod för godkännande av anslutning    |  Automatisk eller manuell. Den privata slut punkten kan godkännas automatiskt baserat på Azures rollbaserad åtkomst kontroll (Azure RBAC). Om du försöker ansluta till en privat länk resurs utan Azure RBAC använder du den manuella metoden för att tillåta resursens ägare att godkänna anslutningen.        |
 |Begär ande meddelande     |  Du kan ange ett meddelande för begärda anslutningar som ska godkännas manuellt. Det här meddelandet kan användas för att identifiera en speciell begäran.        |
 |Anslutningsstatus   |   En skrivskyddad egenskap som anger om den privata slut punkten är aktiv. Endast privata slut punkter i ett godkänt tillstånd kan användas för att skicka trafik. Ytterligare tillstånd är tillgängliga: <br>-**Godkänd**: anslutning har automatiskt eller manuellt godkänts och är redo att användas.</br><br>-**Väntar**: anslutningen skapades manuellt och väntar på att godkännas av ägaren till den privata länk resursen.</br><br>-**Avvisad**: anslutningen avvisades av ägaren till den privata länk resursen.</br><br>-**Frånkopplad**: anslutningen har tagits bort av den privata länkens resurs ägare. Den privata slut punkten blir informativ och bör tas bort för rensning. </br>|
 

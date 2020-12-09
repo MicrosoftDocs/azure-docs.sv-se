@@ -3,16 +3,16 @@ title: Aktivera stegvis distribution av funktioner för mål grupper
 titleSuffix: Azure App Configuration
 description: Lär dig hur du aktiverar stegvis distribution av funktioner för riktade mål grupper
 ms.service: azure-app-configuration
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.topic: conceptual
-ms.date: 8/7/2020
-ms.openlocfilehash: d1574b8a3f8cda3341c0aaf355911e2e93a7bcab
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.date: 11/20/2020
+ms.openlocfilehash: c415eaeab2edd0a1b324bba4266266201cb50cbf
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94558033"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929692"
 ---
 # <a name="enable-staged-rollout-of-features-for-targeted-audiences"></a>Aktivera stegvis distribution av funktioner för mål grupper
 
@@ -144,9 +144,9 @@ Hela *ConfigureServices* -metoden ser ut så här:
 
 1. Välj följande alternativ:
 
-    - **Standard procent** : 0
-    - **Grupper** : Ange ett **namn** på _contoso.com_ och en **procent andel** av _50_
-    - **Användare** : `test@contoso.com`
+    - **Standard procent**: 0
+    - **Grupper**: Ange ett **namn** på _contoso.com_ och en **procent andel** av _50_
+    - **Användare**: `test@contoso.com`
 
     Funktions filtrets skärm ser ut så här:
 

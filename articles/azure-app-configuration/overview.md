@@ -1,17 +1,17 @@
 ---
 title: Vad är Azure App Configuration?
 description: Läs en översikt över Azure App konfigurations tjänsten. Ta reda på varför du vill använda app Configuration och lär dig hur du kan använda den.
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: overview
 ms.date: 02/19/2020
-ms.openlocfilehash: f38b8de37e84cd8a65c5a5caadf8d3b6b71ce455
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9786ff20c1d3f467e217d5fe34518fcc9494863e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88587080"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930117"
 ---
 # <a name="what-is-azure-app-configuration"></a>Vad är Azure App Configuration?
 

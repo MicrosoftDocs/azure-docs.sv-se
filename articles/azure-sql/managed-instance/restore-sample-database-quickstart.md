@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 413786cf8946c1ffbb76bd0e18eae7c7ba16a9c1
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9b2333e38415a2c0ad50ce36c213ead711c70ab4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790754"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928808"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>Snabb start: återställa en databas till en Azure SQL-hanterad instans med SSMS
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -30,7 +30,7 @@ I den här snabb starten använder du SQL Server Management Studio (SSMS) för a
 > Mer information om migrering med hjälp av Azure Database Migration Service finns i [migrering av SQL-hanterad instans med hjälp av Database migration service](../../dms/tutorial-sql-server-to-managed-instance.md).
 > Mer information om olika metoder för migrering finns i [SQL Server migrering till Azure SQL-hanterad instans](migrate-to-instance-from-sql-server.md).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Den här snabbstarten:
 
@@ -51,6 +51,9 @@ I SQL Server Management Studio följer du de här stegen för att återställa W
 1. Öppna SSMS och Anslut till din hanterade instans.
 2. I **Object Explorer** högerklickar du på din hanterade instans och väljer **ny fråga** för att öppna ett nytt frågefönster.
 3. Kör följande SQL-skript, som använder ett förkonfigurerat lagrings konto och SAS-nyckel för att [skapa en autentiseringsuppgift](/sql/t-sql/statements/create-credential-transact-sql) i din hanterade instans.
+ 
+   > [!IMPORTANT]
+   > `CREDENTIAL` måste matcha container Sök vägen, börja med `https` och får inte innehålla ett avslutande snedstreck. `IDENTITY` måste vara `SHARED ACCESS SIGNATURE` . `SECRET` måste vara signatur-token för delad åtkomst och får inte innehålla inledande `?` .
 
    ```sql
    CREATE CREDENTIAL [https://mitutorials.blob.core.windows.net/databases]

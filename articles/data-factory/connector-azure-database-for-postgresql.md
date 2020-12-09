@@ -1,6 +1,6 @@
 ---
-title: Kopiera data till och från Azure Database for PostgreSQL
-description: Lär dig hur du kopierar data till och från Azure Database for PostgreSQL med hjälp av en kopierings aktivitet i en Azure Data Factory pipeline.
+title: Kopiera och transformera data i Azure Database for PostgreSQL
+description: Lär dig hur du kopierar och transformerar data i Azure Database for PostgreSQL med hjälp av Azure Data Factory.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -10,19 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/26/2020
-ms.openlocfilehash: 11e0d3336f085ccae9a7fb83ed050d69a15ce42b
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.date: 12/08/2020
+ms.openlocfilehash: 2537167783f3e68c52c665dafa9378193852acb4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296513"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930423"
 ---
-# <a name="copy-data-to-and-from-azure-database-for-postgresql-by-using-azure-data-factory"></a>Kopiera data till och från Azure Database for PostgreSQL med Azure Data Factory
+# <a name="copy-and-transform-data-in-azure-database-for-postgresql-by-using-azure-data-factory"></a>Kopiera och transformera data i Azure Database for PostgreSQL med Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Den här artikeln beskriver hur du använder funktionen Kopiera aktivitet i Azure Data Factory för att kopiera data från Azure Database for PostgreSQL. Den bygger på [kopierings aktiviteten i Azure Data Factory](copy-activity-overview.md) artikel, som visar en översikt över kopierings aktiviteten.
+Den här artikeln beskriver hur du använder kopierings aktivitet i Azure Data Factory för att kopiera data från och till Azure Database for PostgreSQL och använda data flödet för att transformera data i Azure Database for PostgreSQL. Läs den [inledande artikeln](introduction.md)om du vill veta mer om Azure Data Factory.
 
 Den här anslutningen är specialiserad för den [Azure Database for PostgreSQL tjänsten](../postgresql/overview.md). Om du vill kopiera data från en allmän PostgreSQL-databas som finns lokalt eller i molnet använder du [postgresql-anslutningen](connector-postgresql.md).
 
@@ -31,11 +31,8 @@ Den här anslutningen är specialiserad för den [Azure Database for PostgreSQL 
 Den här Azure Database for PostgreSQL anslutningen stöds för följande aktiviteter:
 
 - [Kopierings aktivitet](copy-activity-overview.md) med en [matris för käll/mottagare som stöds](copy-activity-overview.md)
+- [Mappa data flöde](concepts-data-flow-overview.md)
 - [Söknings aktivitet](control-flow-lookup-activity.md)
-
-Du kan kopiera data från Azure Database for PostgreSQL till alla mottagar data lager som stöds. Du kan också kopiera data från alla käll data lager som stöds till Azure Database for PostgreSQL. En lista över data lager som kopierings aktiviteten stöder som källor och mottagare finns i tabellen [data lager som stöds](copy-activity-overview.md#supported-data-stores-and-formats) .
-
-Azure Data Factory innehåller en inbyggd driv rutin som möjliggör anslutning. Därför behöver du inte installera någon driv rutin manuellt för att använda den här anslutningen.
 
 ## <a name="getting-started"></a>Komma igång
 
@@ -51,14 +48,14 @@ Följande egenskaper stöds för den länkade tjänsten Azure Database for Postg
 |:--- |:--- |:--- |
 | typ | Egenskapen Type måste anges till: **AzurePostgreSql**. | Ja |
 | Begär | En ODBC-anslutningssträng för att ansluta till Azure Database for PostgreSQL.<br/>Du kan också ange ett lösen ord i Azure Key Vault och hämta `password` konfigurationen från anslutnings strängen. Se följande exempel och [lagra autentiseringsuppgifter i Azure Key Vault](store-credentials-in-key-vault.md) för mer information. | Ja |
-| connectVia | Den här egenskapen representerar [integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Du kan använda Azure Integration Runtime eller egen värd Integration Runtime (om ditt data lager finns i privat nätverk). Om inget värde anges används standard Azure Integration Runtime. |Nej |
+| connectVia | Den här egenskapen representerar [integrerings körningen](concepts-integration-runtime.md) som ska användas för att ansluta till data lagret. Du kan använda Azure Integration Runtime eller egen värd Integration Runtime (om ditt data lager finns i privat nätverk). Om inget värde anges används standard Azure Integration Runtime. |Inga |
 
 En typisk anslutnings sträng är `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>` . Här är fler egenskaper som du kan ställa in per ärende:
 
-| Egenskap | Beskrivning | Alternativ | Obligatoriskt |
+| Egenskap | Beskrivning | Alternativ | Obligatorisk |
 |:--- |:--- |:--- |:--- |
-| EncryptionMethod (EM)| Den metod som driv rutinen använder för att kryptera data som skickas mellan driv rutinen och databas servern. Till exempel  `EncryptionMethod=<0/1/6>;`| 0 (ingen kryptering) **(standard)** /1 (SSL)/6 (RequestSSL) | Nej |
-| ValidateServerCertificate (VSC) | Avgör om driv rutinen verifierar certifikatet som skickas av databas servern när SSL-kryptering är aktiverat (krypterings metod = 1). Till exempel  `ValidateServerCertificate=<0/1>;`| 0 (inaktive rad) **(standard)** /1 (aktive rad) | Nej |
+| EncryptionMethod (EM)| Den metod som driv rutinen använder för att kryptera data som skickas mellan driv rutinen och databas servern. Till exempel  `EncryptionMethod=<0/1/6>;`| 0 (ingen kryptering) **(standard)** /1 (SSL)/6 (RequestSSL) | Inga |
+| ValidateServerCertificate (VSC) | Avgör om driv rutinen verifierar certifikatet som skickas av databas servern när SSL-kryptering är aktiverat (krypterings metod = 1). Till exempel  `ValidateServerCertificate=<0/1>;`| 0 (inaktive rad) **(standard)** /1 (aktive rad) | Inga |
 
 **Exempel**:
 
@@ -177,7 +174,7 @@ För att kopiera data till Azure Database for PostgreSQL, stöds följande egens
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
 | typ | Egenskapen Type för kopierings aktivitetens Sink måste anges till **AzurePostgreSQLSink**. | Ja |
-| preCopyScript | Ange en SQL-fråga för kopierings aktiviteten som ska köras innan du skriver data till Azure Database for PostgreSQL i varje körning. Du kan använda den här egenskapen för att rensa de förinstallerade data. | Nej |
+| preCopyScript | Ange en SQL-fråga för kopierings aktiviteten som ska köras innan du skriver data till Azure Database for PostgreSQL i varje körning. Du kan använda den här egenskapen för att rensa de förinstallerade data. | Inga |
 | writeBatchSize | Infogar data i Azure Database for PostgreSQL tabellen när buffertstorleken når writeBatchSize.<br>Tillåtet värde är ett heltal som representerar antalet rader. | Nej (standard är 10 000) |
 | writeBatchTimeout | Vänte tid för att infoga batch-åtgärden ska slutföras innan tids gränsen uppnåddes.<br>Tillåtna värden är TimeSpan-strängar. Ett exempel är 00:30:00 (30 minuter). | Nej (standard är 00:00:30) |
 
@@ -212,6 +209,63 @@ För att kopiera data till Azure Database for PostgreSQL, stöds följande egens
         }
     }
 ]
+```
+
+## <a name="mapping-data-flow-properties"></a>Mappa data flödes egenskaper
+
+När du transformerar data i mappnings data flödet kan du läsa och skriva till tabeller från Azure Database for PostgreSQL. Mer information finns i omvandling av [käll omvandling](data-flow-source.md) och [mottagare](data-flow-sink.md) i mappnings data flöden. Du kan välja att använda en Azure Database for PostgreSQL data uppsättning eller en [infogad data uppsättning](data-flow-source.md#inline-datasets) som källa och mottagar typ.
+
+### <a name="source-transformation"></a>Käll omvandling
+
+I tabellen nedan visas de egenskaper som stöds av Azure Database for PostgreSQL källa. Du kan redigera dessa egenskaper på fliken **käll alternativ** .
+
+| Name | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Tabeller | Om du väljer tabell som indata hämtar data flödet alla data från tabellen som anges i data uppsättningen. | Inga | - |*(endast för infogad data uppsättning)*<br>tableName |
+| Söka i data | Om du väljer fråga som indata anger du en SQL-fråga för att hämta data från källan, vilket åsidosätter alla tabeller som du anger i data uppsättningen. Att använda frågor är ett bra sätt att minska rader för testning eller sökning.<br><br>**Order by** -satsen stöds inte, men du kan ange en fullständig Select from-instruktion. Du kan också använda användardefinierade tabell funktioner. **Select * from udfGetData ()** är en UDF i SQL som returnerar en tabell som du kan använda i data flödet.<br>Exempel på frågor: `select * from mytable where customerId > 1000 and customerId < 2000` eller `select * from "MyTable"` . Observera i PostgreSQL behandlas enhets namnet som Skift läges okänsligt om det inte anges i citat tecken.| Inga | Sträng | DocumentDB |
+| Batchstorlek | Ange en batchstorlek för att segmentera stora data i batchar. | Inga | Integer | batchSize |
+| Isoleringsnivå | Välj någon av följande isolerings nivåer:<br>-Läs bekräftad<br>-Läs-undedikerat (standard)<br>– Upprepnings bar läsning<br>-Serialiserbar<br>-Ingen (ignorera isolerings nivå) | Inga | <small>READ_COMMITTED<br/>READ_UNCOMMITTED<br/>REPEATABLE_READ<br/>SERIALISERA<br/>ALTERNATIVET</small> |isolationLevel |
+
+#### <a name="azure-database-for-postgresql-source-script-example"></a>Skript exempel för Azure Database for PostgreSQLs källa
+
+När du använder Azure Database for PostgreSQL som ursprungs typ är det associerade data flödes skriptet:
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    isolationLevel: 'READ_UNCOMMITTED',
+    query: 'select * from mytable',
+    format: 'query') ~> AzurePostgreSQLSource
+```
+
+### <a name="sink-transformation"></a>Omvandling av mottagare
+
+I tabellen nedan visas de egenskaper som stöds av Azure Database for PostgreSQL Sink. Du kan redigera dessa egenskaper på fliken **mottagar alternativ** .
+
+| Name | Beskrivning | Krävs | Tillåtna värden | Skript egenskap för data flöde |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Uppdaterings metod | Ange vilka åtgärder som tillåts på databas målet. Standardvärdet är att endast tillåta infogningar.<br>Om du vill uppdatera, upsert eller ta bort rader krävs en [Alter Row-omvandling](data-flow-alter-row.md) för att tagga rader för dessa åtgärder. | Ja | `true` eller `false` | bort <br/>infognings bara <br/>uppdaterings bara <br/>upsertable |
+| Nyckel kolumner | För uppdateringar, upsertar och borttagningar måste nyckel kolumnerna anges för att avgöra vilken rad som ska ändras.<br>Kolumn namnet som du väljer som nyckel kommer att användas som en del av den efterföljande uppdateringen, upsert, Delete. Därför måste du välja en kolumn som finns i Sink-mappningen. | Inga | Matris | keys |
+| Hoppa över att skriva nyckel kolumner | Om du inte vill skriva värdet till nyckel kolumnen väljer du hoppa över skrivning av nyckel kolumner. | Inga | `true` eller `false` | skipKeyWrites |
+| Tabell åtgärd |Bestämmer om du vill återskapa eller ta bort alla rader från mål tabellen innan du skriver.<br>- **Ingen**: ingen åtgärd utförs i tabellen.<br>- **Återskapa**: tabellen tas bort och återskapas. Krävs om du skapar en ny tabell dynamiskt.<br>- **Trunkera**: alla rader från mål tabellen tas bort. | Inga | `true` eller `false` | återskapa<br/>truncate |
+| Batchstorlek | Ange hur många rader som skrivs i varje batch. Större batch-storlekar förbättrar komprimeringen och minnes optimeringen, men riskerar att ta bort minnes undantag när data cachelagras. | Inga | Integer | batchSize |
+| För-och-post-SQL-skript | Ange SQL-skript med flera rader som ska köras före (för bearbetning) och efter (efter bearbetning)-data skrivs till din Sink-databas. | Inga | Sträng | preSQLs<br>postSQLs |
+
+#### <a name="azure-database-for-postgresql-sink-script-example"></a>Skript exempel för Azure Database for PostgreSQL mottagare
+
+När du använder Azure Database for PostgreSQL som mottagar typ är det associerade data flödes skriptet:
+
+```
+IncomingStream sink(allowSchemaDrift: true,
+    validateSchema: false,
+    deletable:false,
+    insertable:true,
+    updateable:true,
+    upsertable:true,
+    keys:['keyColumn'],
+    format: 'table',
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> AzurePostgreSQLSink
 ```
 
 ## <a name="lookup-activity-properties"></a>Egenskaper för Sök aktivitet

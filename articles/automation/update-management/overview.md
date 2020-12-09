@@ -3,14 +3,14 @@ title: Översikt över Azure Automation Uppdateringshantering
 description: Den här artikeln innehåller en översikt över den Uppdateringshantering funktionen som implementerar uppdateringar för dina Windows-och Linux-datorer.
 services: automation
 ms.subservice: update-management
-ms.date: 11/30/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 37ab05ce7e963ab7fdc4d2b02e254adaa205446c
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 4b557c9772e76b6b61cdf01799ee30ba6bc11807
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327499"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928434"
 ---
 # <a name="update-management-overview"></a>Översikt över Uppdateringshantering
 
@@ -224,7 +224,7 @@ Nästa tabell definierar de klassificeringar som stöds för Linux-uppdateringar
 >
 > Det finns ingen klassificering av Linux-uppdateringar och rapporteras i kategorin **andra uppdateringar** . Uppdateringshantering använder data som publicerats av de distributioner som stöds, särskilt deras publicerade [oval](https://oval.mitre.org/) (öppna sårbarhets-och utvärderings språk) filer. Eftersom Internet åtkomst är begränsat från dessa nationella moln kan Uppdateringshantering inte komma åt och använda filerna.
 
-För Linux kan Uppdateringshantering skilja mellan kritiska uppdateringar och säkerhets uppdateringar i molnet och Visa utvärderings data på grund av data berikning i molnet. Vid uppdatering Uppdateringshantering förlitar sig på klassificerings data som är tillgängliga på datorn. Till skillnad från andra distributioner har CentOS inte den här informationen tillgänglig i RTM-versionen. Om du har CentOS-datorer som har kon figurer ATS för att returnera säkerhets data för följande kommando kan Uppdateringshantering korrigeras baserat på klassificeringar.
+För Linux kan Uppdateringshantering skilja mellan kritiska uppdateringar och säkerhets uppdateringar i molnet under klassificerings **säkerhet** och **andra**, samtidigt som du visar utvärderings data på grund av data berikning i molnet. Vid uppdatering Uppdateringshantering förlitar sig på klassificerings data som är tillgängliga på datorn. Till skillnad från andra distributioner har CentOS inte den här informationen tillgänglig i RTM-versionen. Om du har CentOS-datorer som har kon figurer ATS för att returnera säkerhets data för följande kommando kan Uppdateringshantering korrigeras baserat på klassificeringar.
 
 ```bash
 sudo yum -q --security check-update
@@ -233,6 +233,10 @@ sudo yum -q --security check-update
 Det finns för närvarande ingen metod som stöds för att aktivera intern klassificerings data tillgänglighet på CentOS. För tillfället ges begränsad support till kunder som kanske har aktiverat den här funktionen på egen hand.
 
 Om du vill klassificera uppdateringar i Red Hat Enterprise version 6 måste du installera plugin-programmet yum-Security. På Red Hat Enterprise Linux 7 är plugin-programmet redan en del av yum och det finns inget behov av att installera något. Mer information finns i följande artiklar om Red Hat- [kunskap](https://access.redhat.com/solutions/10021).
+
+När du schemalägger en uppdatering så att den körs på en Linux-dator är det till exempel konfigurerat att bara installera uppdateringar som matchar **säkerhets** klassificeringen, uppdateringarna som installeras kan skilja sig från eller är en del av de uppdateringar som matchar den här klassificeringen. När en utvärdering av OS-uppdateringar väntar på att din Linux-dator utförs, kan du öppna filen för [sårbarhets-och utvärderings språk](https://oval.mitre.org/) (ovalen) som tillhandahålls av Linux distribution-leverantören genom att använda uppdateringshantering för klassificering.
+
+Kategorisering görs för Linux-uppdateringar som **säkerhet** eller **andra** baserat på oval-filerna, som innehåller uppdateringar som löser säkerhets problem eller sårbarheter. Men när uppdaterings schemat körs körs den på Linux-datorn med lämplig Package Manager som YUM, APT eller ZYPPER för att installera dem. Paket hanteraren för Linux-distribution kan ha en annan mekanism för att klassificera uppdateringar, där resultatet kan skilja sig från de som hämtas från OVAL filen genom att Uppdateringshantering. Om du vill kontrol lera datorn manuellt och ta reda på vilka uppdateringar som är relevanta för din paket hanterare läser du [Felsöka distribution av Linux](../troubleshoot/update-management.md#updates-linux-installed-different)-uppdateringar.
 
 ## <a name="integrate-update-management-with-configuration-manager"></a>Integrera Uppdateringshantering med Configuration Manager
 

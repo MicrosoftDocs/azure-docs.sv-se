@@ -1,21 +1,21 @@
 ---
 title: Använda Azure Key Vault i mallar
-description: Lär dig att använda Azure Key Vault för att skicka säkra parametrar under malldistributionen av Resource Manager
+description: Lär dig hur du använder Azure Key Vault för att skicka säkra parameter värden vid distribution av Azure Resource Manager mall (ARM-mall).
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 73a50c282eee023bff525bc737bd2170938de1dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75eb977559573b72883de3ddbc27391c7e299a6f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119284"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929325"
 ---
-# <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Självstudie: integrera Azure Key Vault i din distribution av ARM-mallar
+# <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Självstudie: Integrera Azure Key Vault i din ARM-malldistribution
 
-Lär dig hur du hämtar hemligheter från ett Azure Key Vault och skickar hemligheterna som parametrar när du distribuerar en Azure Resource Manager-mall (ARM). Parametervärdet exponeras aldrig, eftersom du bara refererar till nyckel valvets ID. Du kan referera till Key Vault-hemligheten genom att använda ett statiskt ID eller ett dynamiskt ID. I den här självstudien används ett statiskt ID. Med den statiska ID-metoden hänvisar du till nyckel valvet i mallens parameter fil, inte mallfilen. Mer information om båda metoderna finns i [använda Azure Key Vault för att skicka ett säkert parameter värde under distributionen](./key-vault-parameter.md).
+Lär dig hur du hämtar hemligheter från ett Azure Key Vault och skickar hemligheterna som parametrar när du distribuerar en Azure Resource Manager-mall (ARM-mall). Parametervärdet exponeras aldrig, eftersom du bara refererar till nyckel valvets ID. Du kan referera till Key Vault-hemligheten genom att använda ett statiskt ID eller ett dynamiskt ID. I den här självstudien används ett statiskt ID. Med den statiska ID-metoden hänvisar du till nyckel valvet i mallens parameter fil, inte mallfilen. Mer information om båda metoderna finns i [använda Azure Key Vault för att skicka ett säkert parameter värde under distributionen](./key-vault-parameter.md).
 
 I självstudien [Ange distributions ordning för resurser](./template-tutorial-create-templates-with-dependent-resources.md) skapar du en virtuell dator (VM). Du måste ange användar namn och lösen ord för VM-administratören. I stället för att ange lösen ordet kan du i förväg lagra lösen ordet i ett Azure Key Vault och sedan anpassa mallen för att hämta lösen ordet från nyckel valvet under distributionen.
 
@@ -37,7 +37,7 @@ Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](ht
 
 För att kunna följa stegen i den här artikeln behöver du:
 
-* Visual Studio Code med Resource Manager Tools-tillägg. Se [snabb start: skapa Azure Resource Manager mallar med Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
+* Visual Studio Code med Resource Manager Tools-tillägg. Se [snabb start: skapa arm-mallar med Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 * Om du vill öka säkerheten använder du ett genererat lösen ord för administratörs kontot för den virtuella datorn. Här är ett exempel på att skapa ett lösen ord:
 
     ```console
@@ -87,7 +87,7 @@ Mallen har ett värde för utdata, som kallas *keyVaultId*. Du kommer att använ
 
 När du kopierar och klistrar in ID: t kan det delas upp i flera rader. Slå samman raderna och trimma extra blank steg.
 
-Verifiera distributionen genom att köra följande PowerShell-kommando i samma Shell-fönster för att hämta den hemliga texten i klartext. Kommandot fungerar bara i samma Shell-session, eftersom variabeln *$keyVaultName*som definieras i föregående PowerShell-skript används.
+Verifiera distributionen genom att köra följande PowerShell-kommando i samma Shell-fönster för att hämta den hemliga texten i klartext. Kommandot fungerar bara i samma Shell-session, eftersom variabeln *$keyVaultName* som definieras i föregående PowerShell-skript används.
 
 ```azurepowershell
 (Get-AzKeyVaultSecret -vaultName $keyVaultName  -name "vmAdminPassword").SecretValueText
@@ -119,7 +119,7 @@ Azure snabb starts mallar är en lagrings plats för ARM-mallar. I stället för
 
    Det är praktiskt att ha lite grundläggande förståelse för mallen innan du anpassar den.
 
-1. Välj **Arkiv**  >  **Spara som**och spara sedan en kopia av filen på den lokala datorn med namnet *azuredeploy.jspå*.
+1. Välj **Arkiv**  >  **Spara som** och spara sedan en kopia av filen på den lokala datorn med namnet *azuredeploy.jspå*.
 
 1. Upprepa steg 1-3 för att öppna följande URL och spara sedan filen som *azuredeploy.parameters.jspå*.
 
@@ -194,7 +194,7 @@ När du har distribuerat den virtuella datorn testar du inloggnings uppgifterna 
 
 1. Välj **resurs grupper**  >  **\<*YourResourceGroupName*>**  >  **simpleWinVM**.
 1. Välj **Anslut** högst upp.
-1. Välj **Ladda ned RDP-fil**och följ sedan anvisningarna för att logga in på den virtuella datorn med hjälp av lösen ordet som lagras i nyckel valvet.
+1. Välj **Ladda ned RDP-fil** och följ sedan anvisningarna för att logga in på den virtuella datorn med hjälp av lösen ordet som lagras i nyckel valvet.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

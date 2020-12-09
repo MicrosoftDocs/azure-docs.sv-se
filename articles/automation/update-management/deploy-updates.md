@@ -3,14 +3,14 @@ title: Så här skapar du uppdaterings distributioner för Azure Automation Uppd
 description: Den här artikeln beskriver hur du schemalägger uppdaterings distributioner och granskar deras status.
 services: automation
 ms.subservice: update-management
-ms.date: 10/27/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 41ccecfb844f11a0d234271bcddc1851d3c02fda
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ec0d6d618edad87b76861ea834adb2f29531e6f5
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742287"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929675"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Så här distribuerar du uppdateringar och granskar resultat
 
@@ -20,7 +20,7 @@ Under varje scenario kan du skapa mål för den valda datorn eller servern, elle
 
 * Operativ systemet väljs automatiskt baserat på datorns operativ system
 * Mål datorn som ska uppdateras är inställd på själva målet automatiskt
-* När du konfigurerar schemat kan du ange **Uppdatera nu** , inträffar en gång eller använda ett återkommande schema.
+* När du konfigurerar schemat kan du ange **Uppdatera nu**, inträffar en gång eller använda ett återkommande schema.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logga in på Azure Portal
 
@@ -43,9 +43,9 @@ Utför följande steg för att schemalägga en ny uppdaterings distribution. Ber
 
 2. Beroende på den resurs du har valt, för att navigera till Uppdateringshantering:
 
-   * Om du har valt ditt Automation-konto går du till **uppdaterings hantering** under **uppdaterings hantering** och väljer sedan **Schemalägg uppdaterings distribution** .
-   * Om du har valt en virtuell Azure-dator går du till **gäst + värd uppdateringar** och väljer sedan **gå till uppdateringshantering** .
-   * Om du har valt en ARC-aktiverad server går du till **uppdateringshantering** och väljer sedan **Schemalägg uppdaterings distribution** .
+   * Om du har valt ditt Automation-konto går du till **uppdaterings hantering** under **uppdaterings hantering** och väljer sedan **Schemalägg uppdaterings distribution**.
+   * Om du har valt en virtuell Azure-dator går du till **gäst + värd uppdateringar** och väljer sedan **gå till uppdateringshantering**.
+   * Om du har valt en ARC-aktiverad server går du till **uppdateringshantering** och väljer sedan **Schemalägg uppdaterings distribution**.
 
 3. Under **ny uppdaterings distribution** anger du ett unikt namn för distributionen i fältet **namn** .
 
@@ -76,12 +76,12 @@ Utför följande steg för att schemalägga en ny uppdaterings distribution. Ber
    > [!NOTE]
    > Du kan inte ange uppdateringar som har ersatts av med i uppdaterings distributionen.
 
-9. Välj **schema inställningar** . Starttiden är som standard 30 minuter efter den aktuella tiden. Du kan ange starttiden till helst från 10 minuter i framtiden.
+9. Välj **schema inställningar**. Starttiden är som standard 30 minuter efter den aktuella tiden. Du kan ange starttiden till helst från 10 minuter i framtiden.
 
     > [!NOTE]
     > Det här alternativet skiljer sig om du har valt en ARC-aktiverad server. Du kan välja **Uppdatera nu** eller en start tid på 20 minuter i framtiden.
 
-10. Använd **upprepningen** för att ange om distributionen ska ske en gång eller använder ett återkommande schema och välj sedan **OK** .
+10. Använd **upprepningen** för att ange om distributionen ska ske en gång eller använder ett återkommande schema och välj sedan **OK**.
 
 11. I området **för skript + efter skript** väljer du de skript som ska köras före och efter distributionen. Läs mer i [Hantera för-skript och post-skript](pre-post-scripts.md).
 
@@ -102,14 +102,14 @@ Utför följande steg för att schemalägga en ny uppdaterings distribution. Ber
     * Endast omstart; Det här alternativet installerar inte uppdateringar
 
     > [!NOTE]
-    > De register nycklar som listas under [register nycklar som används för att hantera omstart](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) kan orsaka händelsen omstart om **alternativen för omstart** är inställd på **Starta aldrig om** .
+    > De register nycklar som listas under [register nycklar som används för att hantera omstart](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) kan orsaka händelsen omstart om **alternativen för omstart** är inställd på **Starta aldrig om**.
 
-14. När du är klar med att konfigurera distributions schemat väljer du **skapa** .
+14. När du är klar med att konfigurera distributions schemat väljer du **skapa**.
 
     ![Inställningsfönster för uppdateringsschema](./media/deploy-updates/manageupdates-schedule-win.png)
 
     > [!NOTE]
-    > När du är klar med att konfigurera distributions schema för en vald Arc-aktiverad server väljer du **Granska + skapa** .
+    > När du är klar med att konfigurera distributions schema för en vald Arc-aktiverad server väljer du **Granska + skapa**.
 
 15. Du kommer tillbaka till statusinstrumentpanelen. Välj **distributions scheman** om du vill visa det distributions schema som du har skapat. Högst 500 scheman visas. Om du har fler än 500 scheman och du vill granska den fullständiga listan, se REST API metoden [program uppdaterings konfiguration – lista](/rest/api/automation/softwareupdateconfigurations/list) . Ange API-version 2019-06-01 eller högre.
 
@@ -121,7 +121,7 @@ Du kan använda en exempel-Runbook för att skapa en veckovis uppdaterings distr
 
 ## <a name="check-deployment-status"></a>Kontrol lera distributions status
 
-När den schemalagda distributionen har startats kan du se dess status på fliken **Historik** under **uppdaterings hantering** . Statusen är **Pågår** när distributionen körs. När distributionen har slutförts ändras statusen till **slutförd** . Om det uppstår fel med en eller flera uppdateringar i distributionen, **Miss** lyckas statusen.
+När den schemalagda distributionen har startats kan du se dess status på fliken **Historik** under **uppdaterings hantering**. Statusen är **Pågår** när distributionen körs. När distributionen har slutförts ändras statusen till **slutförd**. Om det uppstår fel med en eller flera uppdateringar i distributionen, **Miss** lyckas statusen.
 
 ## <a name="view-results-of-a-completed-update-deployment"></a>Visa resultatet av en slutförd uppdaterings distribution
 

@@ -1,21 +1,21 @@
 ---
 title: Självstudie – lägga till parametrar till mallen
-description: Lägg till parametrar till din Azure Resource Manager-mall så att den kan användas igen.
+description: Lägg till parametrar till din Azure Resource Manager-mall (ARM-mall) så att den kan användas igen.
 author: mumian
 ms.date: 03/31/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9e860941c3d782498c12afa12f285f44e7e68f37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d0743d316b9d879017f3b0fbe08ee4dc2b3e1c2
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069449"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931069"
 ---
 # <a name="tutorial-add-parameters-to-your-arm-template"></a>Självstudie: lägga till parametrar i ARM-mallen
 
-I den [föregående själv studie kursen](template-tutorial-add-resource.md)har du lärt dig hur du lägger till ett lagrings konto i mallen och distribuerar det. I den här självstudien får du lära dig hur du förbättrar mallen för Azure Resource Manager (ARM) genom att lägga till parametrar. Den här självstudien tar cirka **14 minuter** att slutföra.
+I den [föregående själv studie kursen](template-tutorial-add-resource.md)har du lärt dig hur du lägger till ett lagrings konto i mallen och distribuerar det. I den här självstudien får du lära dig hur du förbättrar Azure Resource Manager-mallen (ARM-mallen) genom att lägga till parametrar. Den här självstudien tar cirka **14 minuter** att slutföra.
 
 ## <a name="prerequisites"></a>Krav
 

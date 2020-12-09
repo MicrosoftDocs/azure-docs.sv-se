@@ -4,23 +4,22 @@ titleSuffix: Azure App Configuration
 description: I den här självstudien lär du dig att dynamiskt uppdatera konfigurationsdata för ASP.NET Core-appar
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 02/24/2019
-ms.author: lcozzens
+ms.date: 09/1/2020
+ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: f98ec384876da1d30952d1c4edc1d00049e44682
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 1fd495083f5f9be367dd0f125883b181e3bed27b
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077005"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930559"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Självstudie: Använd dynamisk konfiguration i en ASP.NET Core app
 
@@ -34,13 +33,13 @@ Den här självstudien visar hur du kan implementera dynamiska konfigurationsupp
 
 Du kan använda valfri kod redigerare för att utföra stegen i den här självstudien. [Visual Studio Code](https://code.visualstudio.com/) är ett utmärkt alternativ som är tillgängligt på Windows-, MacOS-och Linux-plattformarna.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Konfigurera ditt program för att uppdatera konfigurationen som svar på ändringar i ett konfigurations lager för appar.
 > * Mata in den senaste konfigurationen i dina programs kontrollanter.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill göra den här själv studie kursen installerar du [.net Core SDK](https://dotnet.microsoft.com/download).
 
@@ -53,11 +52,11 @@ Innan du fortsätter måste du först [skapa en ASP.net Core-app med app-konfigu
 En *kontroll nyckel* är en särskild nyckel som används för att signalera när konfigurationen har ändrats. Din app övervakar kontroll nyckeln för ändringar. När en ändring identifieras uppdaterar du alla konfigurations värden. Den här metoden minskar det totala antalet begär Anden som görs av appen till app-konfigurationen, jämfört med övervakning av alla nycklar för ändringar.
 
 1. I Azure Portal väljer du **Configuration Explorer > skapa > nyckel värde**.
-1. För **nyckel**anger du *TestApp: Settings (inställningar: Sentinel*). För **värde**anger du 1. Lämna **etikett** och **innehålls typ** tom.
-1. Välj **Tillämpa**.
+1. För **nyckel** anger du *TestApp: Settings (inställningar: Sentinel*). För **värde** anger du 1. Lämna **etikett** och **innehålls typ** tom.
+1. Välj **Använd**.
 
 > [!NOTE]
-> Om du inte använder en kontroll nyckel måste du registrera varje nyckel som du vill se manuellt.
+> Om du inte använder en kontroll nyckel måste du registrera varje nyckel som du vill se manuellt.
 
 ## <a name="reload-data-from-app-configuration"></a>Läsa in data på nytt från App Configuration
 
@@ -67,7 +66,7 @@ En *kontroll nyckel* är en särskild nyckel som används för att signalera nä
     dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore
     ```
 
-1. Öppna *program.cs*och uppdatera `CreateWebHostBuilder` metoden för att lägga till- `config.AddAzureAppConfiguration()` metoden.
+1. Öppna *program.cs* och uppdatera `CreateWebHostBuilder` metoden för att lägga till- `config.AddAzureAppConfiguration()` metoden.
 
     #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
@@ -138,7 +137,7 @@ En *kontroll nyckel* är en särskild nyckel som används för att signalera nä
     }
     ```
 
-3. Öppna *startup.cs*och Använd `IServiceCollection.Configure<T>` i- `ConfigureServices` metoden för att binda konfigurations data till `Settings` klassen.
+3. Öppna *startup.cs* och Använd `IServiceCollection.Configure<T>` i- `ConfigureServices` metoden för att binda konfigurations data till `Settings` klassen.
 
     #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
@@ -161,7 +160,7 @@ En *kontroll nyckel* är en särskild nyckel som används för att signalera nä
     ```
     ---
     > [!Tip]
-    > Mer information om alternativ mönster när du läser konfigurations värden finns [i alternativ mönster i ASP.net Core](/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1).
+    > Mer information om alternativ mönster när du läser konfigurations värden finns [i alternativ mönster i ASP.net Core](/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1).
 
 4. Uppdatera `Configure` metoden, Lägg till `UseAzureAppConfiguration` mellanprogram för att tillåta att konfigurations inställningarna som registreras för uppdatering uppdateras medan den ASP.net Core webbappen fortsätter att ta emot begär Anden.
 
@@ -221,6 +220,9 @@ En *kontroll nyckel* är en särskild nyckel som används för att signalera nä
     ---
     
     Mellanprogram använder den uppdaterings konfiguration som anges i `AddAzureAppConfiguration` -metoden i `Program.cs` för att utlösa en uppdatering för varje begäran som tas emot av ASP.net Core webbappen. För varje begäran utlöses en uppdaterings åtgärd och klient biblioteket kontrollerar om det cachelagrade värdet för den registrerade konfigurations inställningen har upphört att gälla. Om den har gått ut uppdateras den.
+
+    > [!NOTE]
+    > För att säkerställa att konfigurationen uppdateras ska du lägga till mellanprogram så tidigt som det är lämpligt för din begäran-pipeline så att den inte kortas av något annat mellan program i ditt program.
 
 ## <a name="use-the-latest-configuration-data"></a>Använda senaste konfigurationsdata
 
@@ -327,9 +329,9 @@ En *kontroll nyckel* är en särskild nyckel som används för att signalera nä
 
     ![Starta snabb starts app lokalt](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
-1. Logga in på [Azure-portalen](https://portal.azure.com). Välj **alla resurser**och välj den instans av app Configuration Store som du skapade i snabb starten.
+1. Logga in på [Azure-portalen](https://portal.azure.com). Välj **alla resurser** och välj den instans av app Configuration Store som du skapade i snabb starten.
 
-1. Välj **Configuration Explorer**och uppdatera värdena för följande nycklar:
+1. Välj **Configuration Explorer** och uppdatera värdena för följande nycklar:
 
     | Tangent | Värde |
     |---|---|

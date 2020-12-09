@@ -2,18 +2,18 @@
 title: Skillnader från Azure Data Factory
 description: Lär dig hur data integrerings funktionerna i Azure Synapse Analytics skiljer sig från Azure Data Factory
 services: synapse-analytics
-author: djpmsft
+author: shirleywangmsft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.author: daperlov
+ms.author: shwang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 10f5336dd4c8a02acf623b1b14226ca676006953
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: db5d05e1a211ce14926ee4031054669fff5110d9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357657"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930219"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Data integrering i Azure Synapse Analytics kontra Azure Data Factory
 
@@ -42,7 +42,6 @@ Följande funktioner fungerar antingen annorlunda eller finns inte i Azure-Synap
 
 * **Datatransformering data flöden:** Datatransformering Data Flow-aktiviteten är bara tillgänglig i Azure Data Factory för tillfället.
 * **Galleriet för lösnings mal len:** I Azure Data Factory kan användarna hitta pipeline-mallar i lösnings galleriet. I Synapse-arbetsytor innehåller kunskaps centret en annan uppsättning mallar tillsammans med ytterligare data uppsättningar och SQL-skript. 
-* **Git-integrering och inbyggd CI/CD-lösning:** För närvarande kan en Synapse-arbetsyta inte ansluta till en git-lagringsplats eller följa den löpande integrerings-och leverans processen som Azure Data Factory.
 * **Integrering med Azure Monitor:** Synapse-arbetsytor integreras inte med Azure Monitor som Azure Data Factory gör.
 * **Konfiguration av hybrid integrerings körning:** I en Synapse-arbetsyta kan en användare inte ha både en hanterad VNet IR och en Azure IR. Den här funktionen stöds i Azure Data Factory.
 * **Integration runtime-delning:** Integration runtime med egen värd kan inte delas mellan Synapse-arbetsytor. Den här funktionen stöds i Azure Data Factory.

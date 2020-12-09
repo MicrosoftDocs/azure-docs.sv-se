@@ -1,21 +1,21 @@
 ---
 title: Självstudie – Lägg till taggar till resurser i mallen
-description: Lägg till taggar till resurser som du distribuerar i din Azure Resource Manager-mall. Med taggar kan du logiskt organisera resurser.
+description: Lägg till taggar till resurser som du distribuerar i din Azure Resource Manager-mall (ARM-mall). Med taggar kan du logiskt organisera resurser.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 16fc294784d9d6ff3c2fdd920d053eae5cd4b56d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4084508202fc7db5280d34c157552fe723b1dfba
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613211"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930950"
 ---
 # <a name="tutorial-add-tags-in-your-arm-template"></a>Självstudie: Lägg till taggar i ARM-mallen
 
-I den här självstudien får du lära dig hur du lägger till taggar till resurser i din Azure Resource Manager-mall (ARM). Med [taggar](../management/tag-resources.md) kan du logiskt organisera dina resurser. De märkes värden som visas i kostnads rapporter. Den här självstudien tar **8 minuter** att slutföra.
+I den här självstudien får du lära dig hur du lägger till taggar till resurser i din Azure Resource Manager-mall (ARM-mall). Med [taggar](../management/tag-resources.md) kan du logiskt organisera dina resurser. De märkes värden som visas i kostnads rapporter. Den här självstudien tar **8 minuter** att slutföra.
 
 ## <a name="prerequisites"></a>Krav
 
@@ -79,7 +79,7 @@ az deployment group create \
 Du kan kontrol lera distributionen genom att utforska resurs gruppen från Azure Portal.
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-1. Välj **resurs grupper**på den vänstra menyn.
+1. Välj **resurs grupper** på den vänstra menyn.
 1. Välj den resurs grupp som du har distribuerat till.
 1. Välj en av resurserna, till exempel lagrings konto resursen. Nu ser du att det finns taggar.
 

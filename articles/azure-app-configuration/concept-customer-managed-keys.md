@@ -1,17 +1,17 @@
 ---
 title: Använd Kundhanterade nycklar för att kryptera dina konfigurations data
 description: Kryptera dina konfigurations data med Kundhanterade nycklar
-author: lisaguthrie
-ms.author: lcozzens
-ms.date: 02/18/2020
+author: AlexandraKemperMS
+ms.author: alkemper
+ms.date: 07/28/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 8942c93b7346613b8cfdc97d9afe09f1c473fb10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46a1e99a7bc75efa85fcb5eff649c14af5abd17b
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87384879"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930508"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>Använd Kundhanterade nycklar för att kryptera dina konfigurations data för appar
 Azure App konfiguration [krypterar känslig information i vila](../security/fundamentals/encryption-atrest.md). Användningen av Kundhanterade nycklar ger förbättrat data skydd genom att låta dig hantera dina krypterings nycklar.  När hanterad nyckel kryptering används krypteras all känslig information i appens konfiguration med en Azure Key Vault nyckel för användare som anges.  Detta ger möjlighet att rotera krypterings nyckeln på begäran.  Det ger också möjlighet att återkalla Azure App konfigurationens åtkomst till känslig information genom att återkalla appens konfigurations instans åtkomst till nyckeln.

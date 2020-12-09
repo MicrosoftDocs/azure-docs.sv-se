@@ -2,18 +2,18 @@
 title: Integrera Azure App konfiguration med en kontinuerlig integrering och leverans-pipeline
 description: Lär dig att implementera kontinuerlig integrering och leverans med Azure App konfiguration
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.date: 01/30/2020
-ms.author: lcozzens
-ms.openlocfilehash: b8756db881448edcaac1fda44b60229975350676
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 04/19/2020
+ms.author: alkemper
+ms.openlocfilehash: d076bdf09626ec9ed08fcf43b95fc63d2f4a7dd7
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074744"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928457"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integrera med en CI/CD-pipeline
 
@@ -33,7 +33,7 @@ I följande exempel visas hur du inkluderar konfigurations data för appar som e
 
 Du kan använda valfri kod redigerare för att utföra stegen i den här självstudien. [Visual Studio Code](https://code.visualstudio.com/) är ett utmärkt alternativ som är tillgängligt på Windows-, MacOS-och Linux-plattformarna.
 
-### <a name="prerequisites"></a>Förutsättningar
+### <a name="prerequisites"></a>Krav
 
 Om du skapar lokalt kan du hämta och installera [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) om du inte redan gjort det.
 
@@ -49,7 +49,7 @@ Om du vill göra en moln version kan du till exempel se till att [Azure CLI](/cl
         <Exec WorkingDirectory="$(MSBuildProjectDirectory)" Condition="$(ConnectionString) != ''" Command="az appconfig kv export -d file --path $(OutDir)\azureappconfig.json --format json --separator : --connection-string $(ConnectionString)" />
     </Target>
     ```
-1. Öppna *program.cs*och uppdatera `CreateWebHostBuilder` metoden för att använda den exporterade JSON-filen genom att anropa `config.AddJsonFile()` metoden.  Lägg `System.Reflection` även till namn området.
+1. Öppna *program.cs* och uppdatera `CreateWebHostBuilder` metoden för att använda den exporterade JSON-filen genom att anropa `config.AddJsonFile()` metoden.  Lägg `System.Reflection` även till namn området.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -67,7 +67,7 @@ Om du vill göra en moln version kan du till exempel se till att [Azure CLI](/cl
 
 ### <a name="build-and-run-the-app-locally"></a>Skapa och köra appen lokalt
 
-1. Ange en miljö variabel med namnet **ConnectionString**och ange den till åtkomst nyckeln till appens konfigurations arkiv. 
+1. Ange en miljö variabel med namnet **ConnectionString** och ange den till åtkomst nyckeln till appens konfigurations arkiv. 
     Om du använder kommando tolken i Windows kör du följande kommando och startar om kommando tolken för att ändringarna ska börja gälla:
 
     ```console

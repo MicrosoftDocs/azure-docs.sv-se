@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f7a4d0852edded516b7fbe42f15abfe160e44cd3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0a8e08d0045d0520241341cc08fb800468ed6897
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952802"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928621"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Översikt över användar konton i Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Följande typer av konton är tillgängliga:
 - **Konsument konto** – ett konsument konto används av en användare av de program som du har registrerat med Azure AD B2C. Konsument konton kan skapas av:
   - Användaren går igenom ett registrerings användar flöde i ett Azure AD B2C program
   - Använda Microsoft Graph API
-  - Använda Azure-portalen
+  - Använda Azure Portal
 
 ## <a name="work-account"></a>Arbets konto
 
@@ -50,27 +50,27 @@ När du lägger till ett nytt arbets konto måste du tänka på följande konfig
 Du kan använda följande information för att skapa ett nytt arbets konto:
 
 - [Azure-portalen](../active-directory/fundamentals/add-users-azure-active-directory.md)
-- [Microsoft Graph](/graph/api/user-post-users?view=graph-rest-1.0)
+- [Microsoft Graph](/graph/api/user-post-users)
 
 ### <a name="update-a-user-profile"></a>Uppdatera en användar profil
 
 Du kan använda följande information för att uppdatera profilen för en användare:
 
 - [Azure-portalen](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
-- [Microsoft Graph](/graph/api/user-update?view=graph-rest-1.0)
+- [Microsoft Graph](/graph/api/user-update)
 
 ### <a name="reset-a-password-for-a-user"></a>Återställa ett lösen ord för en användare
 
 Du kan använda följande information för att återställa lösen ordet för en användare:
 
 - [Azure-portalen](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
-- [Microsoft Graph](/graph/api/user-update?view=graph-rest-1.0)
+- [Microsoft Graph](/graph/api/user-update)
 
 ## <a name="guest-user"></a>Gäst användare
 
 Du kan bjuda in externa användare till din klient som gäst användare. Ett typiskt scenario för att bjuda in en gäst användare till din Azure AD B2C klient organisation är att dela administrations ansvar. Ett exempel på hur du använder ett gäst konto finns i [Egenskaper för en Azure Active Directory B2B-samarbets användare](../active-directory/external-identities/user-properties.md).
 
-När du bjuder in en gäst användare till din klient anger du e-postadressen till mottagaren och ett meddelande som beskriver inbjudan. Länken inbjudan tar användaren till sidan för godkännande där knappen **Kom igång** är markerad och granskningen av behörigheter godkänns. Om en inkorg inte är kopplad till e-postadressen kan användaren gå till sidan medgivande genom att gå till en Microsoft-sida med de inbjudna autentiseringsuppgifterna. Användaren tvingas sedan att lösa in inbjudan på samma sätt som om du klickar på länken i e-postmeddelandet. Till exempel: `https://myapps.microsoft.com/B2CTENANTNAME`.
+När du bjuder in en gäst användare till din klient anger du e-postadressen till mottagaren och ett meddelande som beskriver inbjudan. Länken inbjudan tar användaren till sidan för godkännande där knappen **Kom igång** är markerad och granskningen av behörigheter godkänns. Om en inkorg inte är kopplad till e-postadressen kan användaren gå till sidan medgivande genom att gå till en Microsoft-sida med de inbjudna autentiseringsuppgifterna. Användaren tvingas sedan att lösa in inbjudan på samma sätt som om du klickar på länken i e-postmeddelandet. Exempel: `https://myapps.microsoft.com/B2CTENANTNAME`.
 
 Du kan också använda [Microsoft Graph API](/graph/api/invitation-post?view=graph-rest-beta) för att bjuda in en gäst användare.
 

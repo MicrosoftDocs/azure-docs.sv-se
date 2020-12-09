@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: f3a8881b9fe44727caf07b3cc0d5ee19f0444e98
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 66ec0d4b09dc983eb898d63d45b3dd7cab291c4c
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953669"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928672"
 ---
 # <a name="tutorial-for-configuring-jumio-with-azure-active-directory-b2c"></a>Självstudie för att konfigurera Jumio med Azure Active Directory B2C
 
@@ -65,7 +65,7 @@ När du har skapat ett Jumio-konto kan du använda kontot för att konfigurera A
 
 ### <a name="deploy-the-api"></a>Distribuera API: et
 
-Distribuera den tillhandahållna [API-koden](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/API/Jumio.Api) till en Azure-tjänst. Du kan publicera koden från Visual Studio genom att följa [dessa anvisningar](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
+Distribuera den tillhandahållna [API-koden](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/API/Jumio.Api) till en Azure-tjänst. Du kan publicera koden från Visual Studio genom att följa [dessa anvisningar](/visualstudio/deployment/quickstart-deploy-to-azure).
 
 >[!NOTE]
 >Du behöver URL: en för den distribuerade tjänsten för att konfigurera Azure AD med nödvändiga inställningar.
@@ -91,7 +91,7 @@ Distribuera den tillhandahållna [API-koden](https://github.com/azure-ad-b2c/par
 
 Skapa en slumpmässig sträng med en längd på högst 64 tecken som bara innehåller bokstäver och siffror.
 
-Exempel: ``C9CB44D98642A7062A0D39B94B6CDC1E54276F2E7CFFBF44288CEE73C08A8A65``
+Exempelvis: ``C9CB44D98642A7062A0D39B94B6CDC1E54276F2E7CFFBF44288CEE73C08A8A65``
 
 Använd följande PowerShell-skript för att skapa strängen:
 

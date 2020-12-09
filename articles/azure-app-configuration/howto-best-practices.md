@@ -3,21 +3,20 @@ title: Metod tips för Azure App konfiguration | Microsoft Docs
 description: Lär dig metod tips när du använder Azure App-konfiguration. Ämnen som omfattas är nyckel grupperingar, nyckel värdes kompositioner, start för app-konfiguration med mera.
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: c45d1668ad39e9584a89921f46218ba243978a05
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 038d19270fbdb672d397eb2bd56bd27e17ea7af9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078059"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929097"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Metod tips för Azure App konfiguration
 
@@ -42,7 +41,7 @@ Ett viktigt att tänka på är att nycklarna är vad din program kod refererar t
 
 App Configuration behandlar alla nycklar som lagras med den som oberoende entiteter. App-konfigurationen försöker inte härleda någon relation mellan nycklar eller ärva nyckel värden baserat på deras hierarki. Du kan använda flera uppsättningar med nycklar, men med hjälp av etiketter tillsammans med korrekt konfigurations stack i program koden.
 
-Låt oss ta en titt på ett exempel. Anta att du har en inställning med namnet **Asset1**, vars värde kan variera beroende på utvecklings miljön. Du skapar en nyckel med namnet "Asset1" med en tom etikett och en etikett med namnet "Development". I den första etiketten sätter du standardvärdet för **Asset1**och du anger ett särskilt värde för "utveckling" i den senare.
+Låt oss ta en titt på ett exempel. Anta att du har en inställning med namnet **Asset1**, vars värde kan variera beroende på utvecklings miljön. Du skapar en nyckel med namnet "Asset1" med en tom etikett och en etikett med namnet "Development". I den första etiketten sätter du standardvärdet för **Asset1** och du anger ett särskilt värde för "utveckling" i den senare.
 
 I din kod hämtar du först nyckel värden utan några etiketter, och sedan hämtar du samma uppsättning nyckel värden en andra gång med etiketten "utveckling". När du hämtar värdena den andra gången skrivs de tidigare värdena i nycklarna över. Med konfigurations systemet för .NET Core kan du "stacka" flera uppsättningar konfigurations data ovanpå varandra. Om det finns en nyckel i fler än en uppsättning används den sista uppsättningen som innehåller den. Med ett modernt programmerings ramverk, till exempel .NET Core, får du den här stack funktionen kostnads fritt om du använder en inbyggd Konfigurationsprovider för att komma åt appens konfiguration. Följande kodfragment visar hur du kan implementera stackning i ett .NET Core-program:
 
@@ -79,7 +78,7 @@ För många begär anden till app-konfigurationen kan leda till begränsning ell
 
 * Öka tids gränsen för uppdatering, särskilt om dina konfigurations värden inte ändras ofta. Ange en ny tids gräns för uppdatering med hjälp av [ `SetCacheExpiration` metoden](/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.azureappconfigurationrefreshoptions.setcacheexpiration).
 
-* Titta på en enda *kontroll nyckel*i stället för att titta på enskilda nycklar. Uppdatera all konfiguration endast om kontroll nyckeln ändras. Se [Använd dynamisk konfiguration i en ASP.net Core-app](enable-dynamic-configuration-aspnet-core.md) för ett exempel.
+* Titta på en enda *kontroll nyckel* i stället för att titta på enskilda nycklar. Uppdatera all konfiguration endast om kontroll nyckeln ändras. Se [Använd dynamisk konfiguration i en ASP.net Core-app](enable-dynamic-configuration-aspnet-core.md) för ett exempel.
 
 * Använd Azure Event Grid för att ta emot meddelanden när konfigurations ändringar görs, i stället för att hela tiden söka efter ändringar. Mer information finns i [dirigera Azure App konfigurations händelser till en webb slut punkt](./howto-app-configuration-event.md)
 

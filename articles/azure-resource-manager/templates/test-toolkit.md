@@ -1,20 +1,20 @@
 ---
 title: Test verktyg för ARM-mall
-description: Beskriver hur du kör test verktyg för ARM-mallen på din mall. Med verktyget kan du se om du har implementerat rekommenderade metoder.
+description: Beskriver hur du kör test verktyg mal len för Azure Resource Manager mall (ARM-mall) på mallen. Med verktyget kan du se om du har implementerat rekommenderade metoder.
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 73f6db8cbd5e4d7a0670c394f6af338aae8e9e79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29ebe2f0ec4d4c39154272bbbdf4d0c9ede9fd95
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439568"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928196"
 ---
 # <a name="use-arm-template-test-toolkit"></a>Använd test verktyg för ARM-mall
 
-[Test verktyg mal len för Azure Resource Manager (arm)](https://aka.ms/arm-ttk) kontrollerar om mallen använder rekommenderade metoder. När din mall inte är kompatibel med rekommenderade metoder returnerar den en lista med varningar med de föreslagna ändringarna. Med hjälp av test Toolkit kan du lära dig hur du undviker vanliga problem i att utveckla mallar.
+[Test Toolkit för mallen Azure Resource Manager mall (arm-mall)](https://aka.ms/arm-ttk) kontrollerar om mallen använder rekommenderade metoder. När din mall inte är kompatibel med rekommenderade metoder returnerar den en lista med varningar med de föreslagna ändringarna. Med hjälp av test Toolkit kan du lära dig hur du undviker vanliga problem i att utveckla mallar.
 
 Test Toolkit tillhandahåller en [uppsättning standardtester](test-cases.md). Dessa tester är rekommendationer men inte krav. Du kan bestämma vilka tester som är relevanta för dina mål och anpassa vilka tester som körs.
 
@@ -120,7 +120,7 @@ Toolkit är en uppsättning PowerShell-skript som kan köras från ett kommando 
    Test-AzTemplate -TemplatePath /path/to/template
    ```
 
-## <a name="result-format"></a>Resultat format
+## <a name="result-format"></a>Resultatformat
 
 Test som skickas visas i **grönt** och föregås av **[+]**.
 
@@ -282,4 +282,4 @@ I nästa exempel visas hur du kör testerna.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om standardtesterna finns i [test väskor för Toolkit](test-cases.md).
+Mer information om standardtesterna finns i [standardtest-fall för test verktyg för arm-mall](test-cases.md).

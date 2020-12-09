@@ -4,26 +4,26 @@ description: Lista över mått som är tillgängliga för varje resurs typ med A
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 10/01/2020
+ms.date: 12/09/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 3e5dd5c83468e867c746393642a1e40ff07763c4
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 04f6cdae8a7601f94251516cf5c3c1fab07994a6
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921492"
+ms.locfileid: "96929114"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Mått som stöds med Azure Monitor
 
 > [!NOTE]
-> Den här listan genereras i stort sett automatiskt från Azure Monitor mått REST API. Alla ändringar som görs i den här listan via GitHub kan skrivas över utan varning. Kontakta författaren till den här artikeln om du vill ha mer information om hur du gör permanenta uppdateringar.
+> Den här listan genereras i stor skala. Alla ändringar som görs i den här listan via GitHub kan skrivas över utan varning. Kontakta författaren till den här artikeln om du vill ha mer information om hur du gör permanenta uppdateringar.
 
 Azure Monitor tillhandahåller flera olika sätt att interagera med mått, inklusive att lägga till dem i portalen, komma åt dem via REST API eller genom att fråga dem med hjälp av PowerShell eller CLI. 
 
-Den här artikeln är en fullständig lista över alla plattformar (dvs. automatiskt insamlade) mått som för närvarande är tillgängliga med Azure Monitor den konsoliderade mått pipelinen. Listan senast uppdaterades mars 27 2020. Mått som har ändrats eller lagts till efter det här datumet får inte visas nedan. Om du vill fråga efter och komma åt listan över mått program mässigt kan du använda [2018-01-01 API-versionen](/rest/api/monitor/metricdefinitions). Andra mått som inte finns med i listan kan finnas tillgängliga i portalen eller med äldre API: er.
+Den här artikeln är en fullständig lista över alla plattformar (dvs. automatiskt insamlade) mått som för närvarande är tillgängliga med Azure Monitor den konsoliderade mått pipelinen. Mått som har ändrats eller lagts till efter datumet överst i den här artikeln kanske inte visas än. Om du vill fråga efter och komma åt listan över mått program mässigt kan du använda [2018-01-01 API-versionen](/rest/api/monitor/metricdefinitions). Andra mått som inte finns med i listan kan finnas tillgängliga i portalen eller med äldre API: er.
 
-Måtten är ordnade efter resurs leverantörer och resurs typ. En lista över tjänster och resurs leverantörer som hör till dem finns i [Resource providers för Azure-tjänster](../../azure-resource-manager/management/azure-services-resource-providers.md). 
+Måtten är ordnade efter resurs leverantörer och resurs typ. En lista över tjänster och resurs leverantörer och typer som tillhör dem finns i [Resource providers för Azure-tjänster](../../azure-resource-manager/management/azure-services-resource-providers.md).  
 
 ## <a name="exporting-platform-metrics-to-other-locations"></a>Exportera plattforms mått till andra platser
 

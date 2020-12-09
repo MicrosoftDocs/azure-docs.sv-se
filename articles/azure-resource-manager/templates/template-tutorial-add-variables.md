@@ -1,21 +1,21 @@
 ---
 title: Självstudie – Lägg till variabel till mall
-description: Lägg till variabler i Azure Resource Manager-mallen för att förenkla syntaxen.
+description: Lägg till variabler i Azure Resource Manager-mallen (ARM-mallen) för att förenkla syntaxen.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 482608172ac9e6e2b9765f236a4b6d655e2455fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d259510d880cbfc60e9ae80b533af6792cc95536
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613160"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930736"
 ---
 # <a name="tutorial-add-variables-to-your-arm-template"></a>Självstudie: Lägg till variabler i ARM-mallen
 
-I den här självstudien får du lära dig hur du lägger till en variabel i din Azure Resource Manager-mall (ARM). Variabler fören klar dina mallar genom att göra det möjligt att skriva ett uttryck en gång och återanvända det i hela mallen. Den här självstudien tar **7 minuter** att slutföra.
+I den här självstudien får du lära dig hur du lägger till en variabel i din Azure Resource Manager-mall (ARM-mall). Variabler fören klar dina mallar genom att göra det möjligt att skriva ett uttryck en gång och återanvända det i hela mallen. Den här självstudien tar **7 minuter** att slutföra.
 
 ## <a name="prerequisites"></a>Krav
 
@@ -90,7 +90,7 @@ az deployment group create \
 Du kan kontrol lera distributionen genom att utforska resurs gruppen från Azure Portal.
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-1. Välj **resurs grupper**på den vänstra menyn.
+1. Välj **resurs grupper** på den vänstra menyn.
 1. Välj den resurs grupp som du har distribuerat till.
 1. Du ser att en lagrings konto resurs har distribuerats. Namnet på lagrings kontot är **lagrat** plus en sträng med slumpmässiga tecken.
 

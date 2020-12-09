@@ -3,23 +3,22 @@ title: Själv studie kurs om att använda Azure App konfiguration Key Vault refe
 description: I den här självstudien får du lära dig att använda Azure App konfigurations Key Vault referenser från en Java våren Boot-app
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 12/16/2019
-ms.author: lcozzens
+ms.date: 08/11/2020
+ms.author: alkemper
 ms.custom: mvc, devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 921c3b8afdb6b196e001cdb7c190529e6238c1f7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ede8203078a3d496975e208622ef61018997cf8d
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014269"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929228"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Självstudie: använda Key Vault referenser i en Java våren-app
 
@@ -35,13 +34,13 @@ Den här självstudien visar hur du implementerar Key Vault referenser i din kod
 
 Du kan använda valfri kod redigerare för att utföra stegen i den här självstudien. Till exempel är [Visual Studio Code](https://code.visualstudio.com/) en plattforms oberoende kod redigerare som är tillgänglig för operativ systemen Windows, MacOS och Linux.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Skapa en konfigurations nyckel för appen som refererar till ett värde som lagras i Key Vault.
 > * Få åtkomst till värdet för den här nyckeln från ett Java våren-program.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/)
 * En [Java Development Kit (JDK)](/java/azure/jdk) som stöds med version 8.

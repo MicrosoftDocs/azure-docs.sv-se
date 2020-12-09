@@ -1,24 +1,24 @@
 ---
 title: Förstå funktions hantering med hjälp av Azure App konfiguration
 description: Aktivera och inaktivera funktioner med Azure App konfiguration
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: devx-track-dotnet
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: b77f0063b37adbfaecaff68387e858d0077561b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfd676092bcaede58909a3ec1eefeabb4c80f86b
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212660"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930236"
 ---
 # <a name="feature-management-overview"></a>Översikt över funktions hantering
 
 För att leverera en ny program funktion krävs en fullständig omdistribution av själva programmet. Att testa en funktion kräver ofta flera distributioner av programmet.  Varje distribution kan ändra funktionen eller exponera funktionen för olika kunder för testning.  
 
-Funktions hantering är en modern program utvecklings metod som frigör funktions lansering från kod distribution och gör det möjligt att snabbt ändra funktionsens tillgänglighet på begäran. Den använder en teknik som kallas *funktions flaggor* (kallas även för *funktions växlingar*, *funktions växlar*och så vidare) för att dynamiskt administrera en funktions livs cykel.
+Funktions hantering är en modern program utvecklings metod som frigör funktions lansering från kod distribution och gör det möjligt att snabbt ändra funktionsens tillgänglighet på begäran. Den använder en teknik som kallas *funktions flaggor* (kallas även för *funktions växlingar*, *funktions växlar* och så vidare) för att dynamiskt administrera en funktions livs cykel.
 
 Med funktions hantering kan utvecklare lösa följande problem:
 

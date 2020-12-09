@@ -1,17 +1,17 @@
 ---
 title: Synkronisera din GitHub-lagringsplats med app-konfigurationen
 description: Använd GitHub-åtgärder för att automatiskt uppdatera din konfigurations instans när du uppdaterar din GitHub-lagringsplats.
-author: lisaguthrie
-ms.author: lcozzens
-ms.date: 02/20/2020
+author: AlexandraKemperMS
+ms.author: alkemper
+ms.date: 05/28/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 66d0e32e7dfdd5ab2abee5108ac8ce54c5222747
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b2b5f4bcbcc5af07a763ee4dff2d42413750fb7
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87371829"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930287"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>Synkronisera din GitHub-lagringsplats med app-konfigurationen
 
@@ -25,7 +25,7 @@ Ett [arbets flöde](https://help.github.com/articles/about-github-actions#workfl
 GitHub- [dokumentationen](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow) innehåller djupgående visning av GitHub-arbetsflöden och åtgärder. 
 
 ## <a name="enable-github-actions-in-your-repository"></a>Aktivera GitHub-åtgärder i din lagrings plats
-Börja använda den här GitHub-åtgärden genom att gå till din lagrings plats och välja fliken **åtgärder** . Välj **nytt arbets flöde**och skapa sedan **ett arbets flöde själv**. Slutligen söker du efter "Azure App konfigurations synkronisering" på Marketplace.
+Börja använda den här GitHub-åtgärden genom att gå till din lagrings plats och välja fliken **åtgärder** . Välj **nytt arbets flöde** och skapa sedan **ett arbets flöde själv**. Slutligen söker du efter "Azure App konfigurations synkronisering" på Marketplace.
 > [!div class="mx-imgBorder"]
 > ![Välj fliken åtgärd](media/find-github-action.png)
 
@@ -35,7 +35,7 @@ Börja använda den här GitHub-åtgärden genom att gå till din lagrings plats
 ## <a name="sync-configuration-files-after-a-push"></a>Synkronisera konfigurationsfiler efter en push
 Den här åtgärden synkroniserar Azure App konfigurationsfiler när en ändring skickas till `appsettings.json` . När en utvecklare skickar en ändring till `appsettings.json` , uppdaterar synkroniseringen av app Configuration-instansen med de nya värdena.
 
-Det första avsnittet av det här arbets flödet anger att åtgärden utlöses *på* en *push* som innehåller `appsettings.json` *huvud* grenen. I det andra avsnittet visas jobben som körs när åtgärden har Aktiver ATS. Åtgärden kontrollerar de relevanta filerna och uppdaterar konfigurations instansen för appen med hjälp av anslutnings strängen som lagras som en hemlighet i lagrings platsen.  Mer information om hur du använder hemligheter i GitHub finns i [GitHub-artikeln](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) om hur du skapar och använder krypterade hemligheter.
+I det första avsnittet av det här arbets flödet anges att åtgärden utlöses *på* en *push* som innehåller `appsettings.json` till *huvud* grenen. I det andra avsnittet visas jobben som körs när åtgärden har Aktiver ATS. Åtgärden kontrollerar de relevanta filerna och uppdaterar konfigurations instansen för appen med hjälp av anslutnings strängen som lagras som en hemlighet i lagrings platsen.  Mer information om hur du använder hemligheter i GitHub finns i [GitHub-artikeln](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) om hur du skapar och använder krypterade hemligheter.
 
 ```json
 on: 
@@ -177,7 +177,7 @@ jobs:
 ## <a name="use-a-dynamic-label-on-sync"></a>Använd en dynamisk etikett vid synkronisering
 Följande åtgärd infogar en dynamisk etikett vid varje synkronisering, vilket säkerställer att varje synkronisering kan identifieras unikt och tillåter att kod ändringar mappas till konfigurations ändringar.
 
-Det första avsnittet av det här arbets flödet anger att åtgärden utlöses *på* en *push* som innehåller `appsettings.json` *huvud* grenen. Det andra avsnittet kör ett jobb som skapar en unik etikett för konfigurations uppdateringen baserat på commit hash. Jobbet uppdaterar sedan appens konfigurations instans med de nya värdena och den unika etiketten för uppdateringen.
+I det första avsnittet av det här arbets flödet anges att åtgärden utlöses *på* en *push* som innehåller `appsettings.json` till *huvud* grenen. Det andra avsnittet kör ett jobb som skapar en unik etikett för konfigurations uppdateringen baserat på commit hash. Jobbet uppdaterar sedan appens konfigurations instans med de nya värdena och den unika etiketten för uppdateringen.
 
 ```json
 on: 

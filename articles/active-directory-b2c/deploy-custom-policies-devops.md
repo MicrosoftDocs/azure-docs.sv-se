@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2652bd8ed33eb68e228f059fba9daa3c6e7c22da
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 13f5f8da0bd58cef0974e8ea8f5f3c5172daa0ba
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170165"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928740"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Distribuera anpassade principer med Azure-pipeliner
 
@@ -31,7 +31,7 @@ Det finns tre primära steg som krävs för att aktivera Azure-pipelines för at
 > [!IMPORTANT]
 > Hantering av Azure AD B2C anpassade principer med en Azure-pipeline använder för närvarande för **hands versions** åtgärder som är tillgängliga i Microsoft Graph API- `/beta` slutpunkten. Användning av dessa API:er i produktionsprogram stöds inte. Mer information finns i referens för [Microsoft Graph REST API beta-slutpunkt](/graph/api/overview?toc=.%2fref%2ftoc.json&view=graph-rest-beta).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * [Azure AD B2C klient organisation](tutorial-create-tenant.md)och autentiseringsuppgifter för en användare i katalogen med rollen [B2C IEF princip administratör](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator)
 * [Anpassade principer](custom-policy-get-started.md) har laddats upp till din klient
@@ -131,7 +131,7 @@ När du har initierat och fyllt i din databas med dina anpassade principfiler, �
 1. Välj fliken **variabler** .
 1. Lägg till följande variabler under **pipeline-variabler** och ange deras värden enligt vad som anges:
 
-    | Namn | Värde |
+    | Name | Värde |
     | ---- | ----- |
     | `clientId` | **Program (klient) ID** för det program som du registrerade tidigare. |
     | `clientSecret` | Värdet för **klient hemligheten** som du skapade tidigare. <br /> Ändra variabel typen till **hemlighet** (Välj Lås ikonen). |
@@ -212,9 +212,9 @@ Du bör se en meddelande banderoll som säger att en version har placerats i kö
 Läs mer om:
 
 * [Tjänst-till-tjänst-anrop med klientautentiseringsuppgifterna](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)
-* [Azure DevOps Services](/azure/devops/user-guide/?view=azure-devops)
+* [Azure DevOps Services](/azure/devops/user-guide/)
 
 <!-- LINKS - External -->
-[devops]: /azure/devops/?view=azure-devops
-[devops-create-project]:  /azure/devops/organizations/projects/create-project?view=azure-devops
+[devops]: /azure/devops/
+[devops-create-project]:  /azure/devops/organizations/projects/create-project
 [devops-pipelines]: /azure/devops/pipelines

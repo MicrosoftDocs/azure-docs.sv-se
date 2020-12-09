@@ -1,23 +1,23 @@
 ---
 title: Återanvänd mallar över moln
-description: Utveckla Azure Resource Manager mallar som fungerar konsekvent för olika moln miljöer. Skapa nya eller uppdatera befintliga mallar för Azure Stack.
+description: Utveckla Azure Resource Manager mallar (ARM-mallar) som fungerar konsekvent för olika moln miljöer. Skapa nya eller uppdatera befintliga mallar för Azure Stack.
 author: marcvaneijk
 ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: ea010a625c3e3cd6228513299d878733bf3775ce
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 806556a8da97ec84fe8141b95198b4a7da95c062
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744755"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928366"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>Utveckla ARM-mallar för moln konsekvens
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
-En viktig fördel med Azure är konsekvens. Utvecklings investeringar för en plats kan återanvändas i en annan. En mall för Azure Resource Manager (ARM) gör distributionen konsekvent och upprepnings bar över miljöer, inklusive globala Azure-, Azure-suveräna moln och Azure Stack. Om du vill återanvända mallar över moln måste du dock fundera över vilka molnbaserade beroenden som beskrivs i den här hand boken.
+En viktig fördel med Azure är konsekvens. Utvecklings investeringar för en plats kan återanvändas i en annan. En Azure Resource Manager mall (ARM-mall) gör distributionen konsekvent och repeterbar i olika miljöer, inklusive globala Azure-, Azure-suveräna moln och Azure Stack. Om du vill återanvända mallar över moln måste du dock fundera över vilka molnbaserade beroenden som beskrivs i den här hand boken.
 
 Microsoft erbjuder intelligenta, företags färdiga moln tjänster på många platser, inklusive:
 
@@ -205,7 +205,7 @@ För att skapa en artefakts absoluta URI är den bästa metoden att använda fun
 }
 ```
 
-Med den här metoden kan alla distributions artefakter, inklusive konfigurations skript, lagras på samma plats med själva mallen. Om du vill ändra platsen för alla länkar behöver du bara ange en annan bas-URL för ArtifactsLocation- _parametrarna_ .
+Med den här metoden kan alla distributions artefakter, inklusive konfigurations skript, lagras på samma plats med själva mallen. Om du vill ändra platsen för alla länkar behöver du bara ange en annan bas-URL för ArtifactsLocation- _parametrarna_.
 
 ## <a name="factor-in-differing-regional-capabilities"></a>Faktor i olika regionala funktioner
 
@@ -443,8 +443,8 @@ Slut punkts namn rymder kan också användas i utdata från en mall som informat
 
 Undvik i allmänhet hårdkodad-slutpunkter i en mall. Det bästa sättet är att använda funktionen Reference Template för att hämta slut punkterna dynamiskt. Slut punkten vanligaste hårdkodad är till exempel slut punkts namn området för lagrings konton. Varje lagrings konto har ett unikt fullständigt domän namn som skapas genom att namnet på lagrings kontot med slut punktens namn område sammanfogas. Ett Blob Storage-konto med namnet mystorageaccount1 resulterar i olika FQDN beroende på molnet:
 
-* **mystorageaccount1.blob.Core.Windows.net** när de skapas i det globala Azure-molnet.
-* **mystorageaccount1.blob.Core.chinacloudapi.cn** när de skapas i Azure Kina 21Vianet-molnet.
+* `mystorageaccount1.blob.core.windows.net` När det skapas i det globala Azure-molnet.
+* `mystorageaccount1.blob.core.chinacloudapi.cn` När du skapar i Azure Kina 21Vianet-molnet.
 
 Följande Template-funktion hämtar slut punkts namn området från Storage Resource providern:
 
@@ -641,7 +641,7 @@ Varje enskilt tillägg är också en version. Den här versionen visas i `typeHa
         ...
 ```
 
-Om du vill hämta en lista över tillgängliga versioner för ett angivet VM-tillägg använder du cmdleten [Get-AzureRmVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) . I följande exempel hämtas tillgängliga versioner för PowerShell DSC (Desired State Configuration) VM-tillägg från min **plats** :
+Om du vill hämta en lista över tillgängliga versioner för ett angivet VM-tillägg använder du cmdleten [Get-AzureRmVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) . I följande exempel hämtas tillgängliga versioner för PowerShell DSC (Desired State Configuration) VM-tillägg från min **plats**:
 
 ```azurepowershell-interactive
 Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerShell -Type DSC | FT

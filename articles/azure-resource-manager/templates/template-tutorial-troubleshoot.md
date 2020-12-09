@@ -1,20 +1,20 @@
 ---
 title: Felsöka distributioner
-description: Lär dig hur du övervakar och felsöker distributioner av Azure Resource Manager mallar. Visar aktivitets loggar och distributions historik.
+description: Lär dig hur du övervakar och felsöker Azure Resource Manager mall (ARM-mall) distributioner. Visar aktivitets loggar och distributions historik.
 author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0da6c614572e73a00db1087621eaca3bd790aad6
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 7a44edc7cd09709f14415fa0a92e63558001d46d
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891813"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928536"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>Självstudie: Felsöka distributioner av ARM-mallar
 
-Lär dig hur du felsöker distributions fel i ARM-mallar (Azure Resource Manager). I den här självstudien konfigurerar du två fel i en mall och lär dig hur du använder aktivitetsloggar och distributionshistoriken för att lösa problemen.
+Lär dig hur du felsöker distributions fel för Azure Resource Manager mall (ARM-mall). I den här självstudien konfigurerar du två fel i en mall och lär dig hur du använder aktivitetsloggar och distributionshistoriken för att lösa problemen.
 
 Det finns två typer av fel som rör malldistribution:
 
@@ -33,17 +33,17 @@ Den här självstudien omfattar följande uppgifter:
 
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att kunna följa stegen i den här artikeln behöver du:
 
-- Visual Studio Code med Resource Manager Tools-tillägg. Se [snabb start: skapa Azure Resource Manager mallar med Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
+- Visual Studio Code med Resource Manager Tools-tillägg. Se [snabb start: skapa arm-mallar med Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 
 ## <a name="create-a-problematic-template"></a>Skapa en problemmall
 
 Öppna en mall som heter [skapa ett standard lagrings konto](https://azure.microsoft.com/resources/templates/101-storage-account-create/) från [Azure snabb starts mallar](https://azure.microsoft.com/resources/templates/)och konfigurera två problem med mallar.
 
-1. Från Visual Studio **Code väljer du** > **Öppna fil** .
+1. Från Visual Studio **Code väljer du** > **Öppna fil**.
 2. I **Filnamn** klistrar du in följande URL:
 
     ```url
@@ -72,9 +72,9 @@ Du bör få ett fel i gränssnittet som liknar:
 New-AzResourceGroupDeployment : 4:29:24 PM - Error: Code=InvalidRequestContent; Message=The request content was invalid and could not be deserialized: 'Could not find member 'apiVersion1' on object of type 'TemplateResource'. Path 'properties.template.resources[0].apiVersion1', line 36, position 24.'.
 ```
 
-Felmeddelandet indikerar att problemet är med **apiVersion1** .
+Felmeddelandet indikerar att problemet är med **apiVersion1**.
 
-Använd Visual Studio Code för att åtgärda problemet genom att ändra **apiVersion1** till **apiVersion** , och spara sedan mallen.
+Använd Visual Studio Code för att åtgärda problemet genom att ändra **apiVersion1** till **apiVersion**, och spara sedan mallen.
 
 ## <a name="troubleshoot-the-deployment-error"></a>Felsöka distributionsfelet
 
@@ -94,10 +94,10 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 Distributionsfelet kan hittas i Azure-portalen med följande procedur:
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-2. Öppna resursgruppen genom att välja **Resursgrupper** och sedan resursgruppens namn. Du bör se **1 Failed** (misslyckades) under **Distribution** .
+2. Öppna resursgruppen genom att välja **Resursgrupper** och sedan resursgruppens namn. Du bör se **1 Failed** (misslyckades) under **Distribution**.
 
     ![Skärm bild som markerar den misslyckade distributionen.](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
-3. Välj **Felinformation** .
+3. Välj **Felinformation**.
 
     ![Skärm bild som markerar länken fel information.](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-details.png)
 
@@ -108,7 +108,7 @@ Distributionsfelet kan hittas i Azure-portalen med följande procedur:
 Du kan även hitta felet i aktivitetsloggarna:
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-2. Välj **övervaka**  >  **aktivitets logg** .
+2. Välj **övervaka**  >  **aktivitets logg**.
 3. Använd filtren för att hitta loggen.
 
     ![Självstudie om att felsöka Resource Manager](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-activity-log.png)
@@ -122,7 +122,7 @@ En lista över vanliga fel finns i avsnittet om att [felsöka vanliga Azure-dist
 När Azure-resurserna inte längre behövs rensar du de resurser som du har distribuerat genom att ta bort resursgruppen.
 
 1. Från Azure Portal väljer du **resurs grupp** på den vänstra menyn.
-2. Ange resursgruppens namn i fältet **Filtrera efter namn** .
+2. Ange resursgruppens namn i fältet **Filtrera efter namn**.
 3. Välj resursgruppens namn.  Du bör se totalt sex resurser i resursgruppen.
 4. Välj **ta bort resurs grupp** på den översta menyn.
 

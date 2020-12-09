@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 11/19/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: e0a77e1e4757c8951756c3e41479628c293dfd8f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b8bdb216cbe8d359f35c758ae89f4267ab223483
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174840"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928757"
 ---
 # <a name="known-issues-application-provisioning"></a>Kända problem: program etablering
 Kända problem som kan vara medvetna om när du arbetar med app-etablering. Du kan ge feedback om program etablerings tjänsten på UserVoice, se [Azure AD Application-etablering UserVoice](https://aka.ms/appprovisioningfeaturerequest). Vi tittar på UserVoice så att vi kan förbättra tjänsten. 
@@ -56,6 +56,10 @@ Azure AD kan för närvarande inte etablera null-attribut. Om ett attribut är n
 **Max tecken för attribut mappnings uttryck**
 
 Attribut-mappnings uttryck får innehålla högst 10 000 tecken. 
+
+**Omfångs filter som inte stöds**
+
+Katalog tillägg, appRoleAssignments, userType och accountExpires stöds inte som omfångs filter.
 
 
 ## <a name="service-issues"></a>Tjänst-problem 

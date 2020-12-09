@@ -3,13 +3,13 @@ title: Azure Monitor resurs loggar som stöds tjänster och kategorier
 description: Referens för Azure Monitor förstå tjänster och händelse scheman som stöds för Azures resurs loggar.
 ms.subservice: logs
 ms.topic: reference
-ms.date: 06/03/2020
-ms.openlocfilehash: 463b1d9d9c3ed1d94728874ba814554deb4f97c6
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 12/09/2020
+ms.openlocfilehash: c7b2d48b40843930bba78f54d2294769d952daf6
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920833"
+ms.locfileid: "96931239"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Kategorier som stöds för Azure-resurs loggar
 
@@ -23,7 +23,7 @@ En kombination av resurs typen (tillgänglig i `resourceId` egenskapen) och `cat
 
 ## <a name="costs"></a>Kostnader
 
- Det finns kostnader som är kopplade till att skicka och lagra data i till Log Analytics och/eller Händelsehubben. Resurs loggar är en typ av data som du kan skicka till dessa platser. Det finns ytterligare [kostnader för att exportera vissa kategorier av resurs loggar](https://azure.microsoft.com/pricing/details/monitor/). Andra är kostnads fria export kostnader. Information visas i tabellen nedan.
+Det finns kostnader som är kopplade till att skicka och lagra data i Log Analytics Azure Storage och/eller Händelsehubben. Du kan betala för kostnaden för att hämta data till dessa platser och för att hålla dem där.  Resurs loggar är en typ av data som du kan skicka till dessa platser. Det finns ytterligare [kostnader för att exportera vissa kategorier av resurs loggar](https://azure.microsoft.com/pricing/details/monitor/) till dessa platser, medan andra är fria från export kostnader. Exportera kostnads information visas i tabellen nedan.
 
 ## <a name="supported-log-categories-per-resource-type"></a>Logg kategorier som stöds per resurs typ
 

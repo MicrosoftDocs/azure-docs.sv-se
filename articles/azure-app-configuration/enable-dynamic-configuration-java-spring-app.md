@@ -3,18 +3,18 @@ title: Använd dynamisk konfiguration i en våren Boot-app
 titleSuffix: Azure App Configuration
 description: Lär dig hur du dynamiskt uppdaterar konfigurations data för våren Boot Apps
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: tutorial
-ms.date: 3/5/2020
+ms.date: 08/06/2020
 ms.custom: devx-track-java
-ms.author: lcozzens
-ms.openlocfilehash: 653fcb6f6590fd503a97800ec8196025cf14a3b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: alkemper
+ms.openlocfilehash: c32e928bd4a83b4884c99e3ec3a9c647f5433e87
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88121569"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929166"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>Självstudie: Använd dynamisk konfiguration i en Java våren-app
 
@@ -67,7 +67,7 @@ Om du vill använda automatisk uppdatering börjar du med en våren Boot-app som
     curl -X GET http://localhost:8080/
     ```
 
-1. Om du vill testa dynamisk konfiguration öppnar du Azure App konfigurations portal som är kopplad till ditt program. Välj **Configuration Explorer**och uppdatera värdet för nyckeln som visas, till exempel:
+1. Om du vill testa dynamisk konfiguration öppnar du Azure App konfigurations portal som är kopplad till ditt program. Välj **Configuration Explorer** och uppdatera värdet för nyckeln som visas, till exempel:
     | Tangent | Värde |
     |---|---|
     | program/config. Message | Hello-uppdaterat |

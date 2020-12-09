@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: c734c0ceb9c4d5418edc51a2c3ad3c052637ad31
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: fa99920c8e9d8cd532bb6230d6a337a038ee3e31
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696990"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929335"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Använda hanterade identiteter för App Service och Azure Functions
 
@@ -27,7 +27,7 @@ Det här avsnittet visar hur du skapar en hanterad identitet för App Service oc
 
 Att skapa en app med en tilldelad identitet kräver att ytterligare en egenskap anges för programmet.
 
-### <a name="using-the-azure-portal"></a>Använda Azure-portalen
+### <a name="using-the-azure-portal"></a>Använda Azure Portal
 
 För att konfigurera en hanterad identitet i portalen skapar du först ett program som vanligt och aktiverar sedan funktionen.
 
@@ -190,7 +190,7 @@ Om du behöver referera till dessa egenskaper i ett senare skede i mallen kan du
 
 Om du skapar en app med en användardefinierad identitet måste du skapa identiteten och sedan lägga till dess resurs-ID i appens konfiguration.
 
-### <a name="using-the-azure-portal"></a>Använda Azure-portalen
+### <a name="using-the-azure-portal"></a>Använda Azure Portal
 
 Först måste du skapa en användardefinierad identitets resurs.
 
@@ -308,7 +308,7 @@ En app kan använda sin hanterade identitet för att hämta token för att få �
 Du kan behöva konfigurera mål resursen för att tillåta åtkomst från ditt program. Om du till exempel begär en token för att få åtkomst till Key Vault måste du kontrol lera att du har lagt till en åtkomst princip som innehåller programmets identitet. Annars avvisas anrop till Key Vault, även om de inkluderar token. Mer information om vilka resurser som stöder Azure Active Directory tokens finns i [Azure-tjänster som stöder Azure AD-autentisering](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
 > [!IMPORTANT]
-> Server dels tjänsterna för hanterade identiteter upprätthåller en cache per resurs-URI i cirka 8 timmar. Om du uppdaterar åtkomst principen för en viss mål resurs och omedelbart hämtar en token för resursen kan du fortsätta att hämta en cachelagrad token med inaktuella behörigheter tills token upphör att gälla. Det finns för närvarande inget sätt att framtvinga en uppdatering av token.
+> Server dels tjänsterna för hanterade identiteter upprätthåller en cache per resurs-URI i cirka 24 timmar. Om du uppdaterar åtkomst principen för en viss mål resurs och omedelbart hämtar en token för resursen kan du fortsätta att hämta en cachelagrad token med inaktuella behörigheter tills token upphör att gälla. Det finns för närvarande inget sätt att framtvinga en uppdatering av token.
 
 Det finns ett enkelt REST-protokoll för att hämta en token i App Service och Azure Functions. Detta kan användas för alla program och språk. För .NET och Java tillhandahåller Azure SDK en abstraktion över det här protokollet och underlättar en lokal utvecklings upplevelse.
 
