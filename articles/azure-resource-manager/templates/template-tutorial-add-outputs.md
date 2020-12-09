@@ -1,21 +1,21 @@
 ---
 title: Självstudie – Lägg till utdata i mallen
-description: Lägg till utdata i Azure Resource Manager-mallen för att förenkla syntaxen.
+description: Lägg till utdata till din Azure Resource Manager-mall (ARM-mallen) för att förenkla syntaxen.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: abd5fbed4ab19135fb30ec5adda387d839df3ab6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e55638e20bceb6df4b8e74375d67836123167162
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613874"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931749"
 ---
 # <a name="tutorial-add-outputs-to-your-arm-template"></a>Självstudie: Lägg till utdata i ARM-mallen
 
-I den här självstudien får du lära dig hur du returnerar ett värde från din Azure Resource Manager-mall (ARM). Du använder utdata när du behöver ett värde från en distribuerad resurs. Den här självstudien tar **7 minuter** att slutföra.
+I den här självstudien får du lära dig hur du returnerar ett värde från din Azure Resource Manager-mall (ARM-mall). Du använder utdata när du behöver ett värde från en distribuerad resurs. Den här självstudien tar **7 minuter** att slutföra.
 
 ## <a name="prerequisites"></a>Krav
 
@@ -101,7 +101,7 @@ Du har gjort en stor del av de senaste sex självstudierna. Vi tar en stund att 
 Nu ska vi titta på resurs gruppen och distributions historiken.
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-1. Välj **resurs grupper**på den vänstra menyn.
+1. Välj **resurs grupper** på den vänstra menyn.
 1. Välj den resurs grupp som du har distribuerat till.
 1. Beroende på vilka steg du gjorde bör du ha minst ett och kanske flera lagrings konton i resurs gruppen.
 1. Du bör också ha flera lyckade distributioner som listas i historiken. Välj länken.

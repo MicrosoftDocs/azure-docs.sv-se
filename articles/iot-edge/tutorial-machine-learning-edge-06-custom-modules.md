@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2c7503cf51ab74dc486f83de8033bfe4850a8c68
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 25db7104e565a987f3be9e2d6f3b239cf1884ae4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575065"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932344"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Självstudie: skapa och distribuera anpassade IoT Edge-moduler
 
@@ -51,6 +51,15 @@ Följande diagram visar moduler, indata, utdata och IoT Edge hubb vägar för de
 ![Arkitektur diagram för IoT Edge tre moduler](media/tutorial-machine-learning-edge-06-custom-modules/modules-diagram.png)
 
 Stegen i den här artikeln utförs vanligt vis av en molnbaserad utvecklare.
+
+I det här avsnittet av självstudien får du lära dig att:
+
+> [!div class="checklist"]
+>
+> * Skapa en IoT Edge-modul från anpassad kod.
+> * Skapa en Docker-avbildning från din anpassade modul.
+> * Konfigurera om IoT Hub routning för att stödja dina anpassade moduler.
+> * Bygg, publicera och distribuera dina anpassade moduler.
 
 ## <a name="prerequisites"></a>Krav
 
@@ -211,7 +220,7 @@ Modulen router är en viktig del av lösningen som säkerställer att meddelande
 
 1. Spara och Stäng tasks.jspå.
 
-1. Kör skapa med `Ctrl + Shift + B` eller kör build-aktivitet för **Terminal**  >  **Run Build Task**.
+1. Kör skapa med `Ctrl + Shift + B` eller kör build-aktivitet för **Terminal**  >  .
 
 ### <a name="set-up-module-routes"></a>Konfigurera modul vägar
 

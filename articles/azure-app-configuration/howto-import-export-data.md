@@ -2,17 +2,17 @@
 title: Importera eller exportera data med Azure App-konfiguration
 description: Lär dig hur du importerar eller exporterar konfigurations data till eller från Azure App konfiguration. Exchange-data mellan appens konfigurations lager och kod projekt.
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.author: lcozzens
-ms.openlocfilehash: 0e127a11f3821325602a78d46c69b2330bfb8293
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.author: alkemper
+ms.openlocfilehash: 5e4eeb37bb5efa11a656600072e4aa364fc71500
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074625"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931800"
 ---
 # <a name="import-or-export-configuration-data"></a>Importera eller exportera konfigurationsdata
 
@@ -36,7 +36,7 @@ Importera data med hjälp av antingen [Azure Portal](https://portal.azure.com) e
 
     ![Importera fil](./media/import-file.png)
 
-1. Välj en **avgränsare**och ange ett **prefix** som ska användas för importerade nyckel namn.
+1. Välj en **avgränsare** och ange ett **prefix** som ska användas för importerade nyckel namn.
 
 1. Du kan också välja en **etikett**.
 
@@ -52,7 +52,7 @@ Exportera data med hjälp av antingen [Azure Portal](https://portal.azure.com) e
 
 1. Bläddra till appens konfigurations Arkiv och välj **Importera/exportera**.
 
-1. På fliken **Exportera** väljer du **Target service**  >  **konfigurations filen**för mål tjänsten.
+1. På fliken **Exportera** väljer du   >  **konfigurations filen** för mål tjänsten.
 
 1. Du kan också ange ett **prefix** och välja en **etikett** och en tidpunkt för nycklar som ska exporteras.
 

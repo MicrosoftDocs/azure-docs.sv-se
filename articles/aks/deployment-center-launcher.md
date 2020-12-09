@@ -5,12 +5,12 @@ ms.author: puagarw
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
-ms.openlocfilehash: 36b2e829e56cf4d3b5ace64af989fa7f71725c44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15b0413eabcfae7e3a4b28243caf2a708260ccae
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360845"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932225"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Distributions Center för Azure-Kubernetes
 
@@ -56,7 +56,7 @@ I de här självstudierna får du:
 
    ![Skärm bild som visar Azure Portal med en pil som pekar på distributions Center.](media/deployment-center-launcher/settings.png)
 
-1. Välj plats för koden och välj **Nästa**. Välj sedan en av de databaser som stöds för närvarande: **[Azure databaser](/azure/devops/repos/index?view=azure-devops)** eller **GitHub**.
+1. Välj plats för koden och välj **Nästa**. Välj sedan en av de databaser som stöds för närvarande: **[Azure databaser](/azure/devops/repos/index)** eller **GitHub**.
 
     Azure databaser är en uppsättning versions kontroll verktyg som hjälper dig att hantera din kod. Oavsett om ditt program varu projekt är stort eller litet, är det en bra idé att använda versions kontroll så tidigt som möjligt.
 
@@ -77,7 +77,7 @@ I de här självstudierna får du:
 
     ![Skärm bild som visar distributions Center med ett meddelande det gick inte att hitta Dockerfile i lagrings platsen.](media/deployment-center-launcher/dockerfile.png)
 
-1. Välj ett befintligt behållar register eller skapa ett, och välj sedan **Slutför**. Pipelinen skapas automatiskt och köar en version i Azure- [pipeliner](/azure/devops/pipelines/index?view=azure-devops).
+1. Välj ett befintligt behållar register eller skapa ett, och välj sedan **Slutför**. Pipelinen skapas automatiskt och köar en version i Azure- [pipeliner](/azure/devops/pipelines/index).
 
     Azure-pipelines är en moln tjänst som du kan använda för att automatiskt bygga och testa ditt kod projekt och göra det tillgängligt för andra användare. Azure-pipeliner kombinerar kontinuerlig integrering och kontinuerlig leverans för att ständigt testa och bygga koden och skicka den till alla mål.
 
@@ -103,7 +103,7 @@ Distributions Center konfigurerar automatiskt Azure DevOps-organisationens CI/CD
 
 1. Välj namnet på den bygga pipelinen överst i pipelinen.
 
-1. Ändra namnet på din build-pipeline till något mer beskrivande, Välj **spara & kö**och välj sedan **Spara**.
+1. Ändra namnet på din build-pipeline till något mer beskrivande, Välj **spara & kö** och välj sedan **Spara**.
 
 1. Under din build-pipeline väljer du **Historik**. I den här rutan visas en gransknings historik för dina senaste versions ändringar. Azure DevOps övervakar alla ändringar som görs i den bygga pipelinen och gör att du kan jämföra versioner.
 
@@ -115,7 +115,7 @@ Distributions Center konfigurerar automatiskt Azure DevOps-organisationens CI/CD
 
 Distributions Center skapar och konfigurerar automatiskt relationen mellan din Azure DevOps-organisation och din Azure-prenumeration. De steg som ingår är att konfigurera en Azure-tjänst anslutning för att autentisera din Azure-prenumeration med Azure DevOps. Den automatiserade processen skapar också en versions pipeline som ger kontinuerlig leverans till Azure.
 
-1. Välj **pipeliner**och välj sedan **versioner**.
+1. Välj **pipeliner** och välj sedan **versioner**.
 
 1. Om du vill redigera versions pipelinen väljer du **Redigera**.
 
@@ -127,7 +127,7 @@ Distributions Center skapar och konfigurerar automatiskt relationen mellan din A
 
 1. Om du vill visa versions historiken väljer du **Visa versioner**.
 
-1. Välj **version**för att se sammanfattningen. Välj någon av stegen för att utforska flera menyer, till exempel en versions sammanfattning, associerade arbets objekt och tester. 
+1. Välj **version** för att se sammanfattningen. Välj någon av stegen för att utforska flera menyer, till exempel en versions sammanfattning, associerade arbets objekt och tester. 
 
 1. Välj **Incheckningar**. I den här vyn visas kod incheckningar relaterade till den här distributionen. Jämför versioner för att se inchecknings skillnaderna mellan distributioner.
 

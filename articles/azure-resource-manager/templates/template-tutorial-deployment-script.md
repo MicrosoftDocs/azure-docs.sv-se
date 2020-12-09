@@ -1,6 +1,6 @@
 ---
 title: Använd mallar för mall distribution | Microsoft Docs
-description: Lär dig hur du använder distributions skript i Azure Resource Manager mallar.
+description: Lär dig hur du använder distributions skript i Azure Resource Manager mallar (ARM-mallar).
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.date: 08/25/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e1094befcc6b3a6e9d56ba3b603dc45fcb91ba13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc19222cf1e610c6c65d7c721a54f9949bed70ae
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88825502"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931443"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Självstudie: använda distributions skript för att skapa ett självsignerat certifikat (förhands granskning)
 
-Lär dig hur du använder distributions skript i ARM-mallar (Azure Resource Manage). Distributions skript kan användas för att utföra anpassade steg som inte kan utföras av ARM-mallar. Du kan till exempel skapa ett självsignerat certifikat.  I den här självstudien skapar du en mall för att distribuera ett Azure Key Vault och använder sedan en `Microsoft.Resources/deploymentScripts` resurs i samma mall för att skapa ett certifikat och sedan lägga till certifikatet i nyckel valvet. Mer information om distributions skript finns [i använda distributions skript i arm-mallar](./deployment-script-template.md).
+Lär dig hur du använder distributions skript i Azure Resource Manager mallar (ARM-mallar). Distributions skript kan användas för att utföra anpassade steg som inte kan utföras av ARM-mallar. Du kan till exempel skapa ett självsignerat certifikat.  I den här självstudien skapar du en mall för att distribuera ett Azure Key Vault och använder sedan en `Microsoft.Resources/deploymentScripts` resurs i samma mall för att skapa ett certifikat och sedan lägga till certifikatet i nyckel valvet. Mer information om distributions skript finns [i använda distributions skript i arm-mallar](./deployment-script-template.md).
 
 > [!IMPORTANT]
 > Två distributions skript resurser, ett lagrings konto och en behållar instans, skapas i samma resurs grupp för skript körning och fel sökning. Dessa resurser tas vanligt vis bort av skript tjänsten när skript körningen blir i ett Terminal-tillstånd. Du debiteras för resurserna tills resurserna tas bort. Mer information finns i [Rensa distribution skript resurser](./deployment-script-template.md#clean-up-deployment-script-resources).
@@ -40,7 +40,7 @@ Den här självstudien omfattar följande uppgifter:
 
 För att kunna följa stegen i den här artikeln behöver du:
 
-* ** [Visual Studio Code](https://code.visualstudio.com/) med tillägget Resource Manager-verktyg**. Se [snabb start: skapa Azure Resource Manager mallar med Visual Studio Code](./quickstart-create-templates-use-visual-studio-code.md).
+* **[Visual Studio Code](https://code.visualstudio.com/) med tillägget Resource Manager-verktyg**. Se [snabb start: skapa arm-mallar med Visual Studio Code](./quickstart-create-templates-use-visual-studio-code.md).
 
 * **En användardefinierad hanterad identitet med deltagar rollen på prenumerations nivå**. Den här identiteten används för att köra distributions skript. Information om hur du skapar ett finns i [användardefinierad hanterad identitet](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). Du behöver identitets-ID när du distribuerar mallen. Formatet på identiteten är:
 

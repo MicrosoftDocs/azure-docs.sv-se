@@ -9,12 +9,12 @@ ms.date: 08/03/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, amqp, devx-track-csharp
-ms.openlocfilehash: d6bc11f4f468b784b957ded954dc9a1720e89bfd
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 46d3a9e961be0717aba75c1f5845b97b52092510
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964464"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931970"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Självstudie: utveckla en C# IoT Edge-modul för Windows-enheter
 
@@ -53,7 +53,7 @@ Innan du påbörjar den här självstudien bör du ha gått igenom föregående 
 * [Docker Desktop](https://docs.docker.com/docker-for-windows/install/) konfigurerat för att köra Windows-behållare.
 
 > [!TIP]
-> Om du använder Visual Studio 2017 (version 15,7 eller senare) kan plrease hämta och installera [Azure IoT Edge verktyg](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) för vs 2017 från Visual Studio Marketplace
+> Om du använder Visual Studio 2017 (version 15,7 eller senare) kan du ladda ned och installera [Azure IoT Edge verktyg](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vsiotedgetools) för vs 2017 från Visual Studio Marketplace
 
 ## <a name="create-a-module-project"></a>Skapa ett modul-projekt
 
@@ -77,7 +77,7 @@ Azure IoT Edge-verktygen tillhandahåller projektmallar för alla språk som st�
 
    | Fält | Värde |
    | ----- | ----- |
-   | Välj en mall | Välj **C#-modul**. |
+   | Välja en mall | Välj **C#-modul**. |
    | Modulnamn projekt namn | Ge modulen namnet **CSharpModule**. |
    | Docker-avbildningens lagrings plats | En bildlagringsplats innehåller namnet på containerregistret och namnet på containeravbildningen. Behållar avbildningen fylls i automatiskt från värdet för modulens projekt namn. Ersätt **localhost: 5000** med **inloggnings serverns** värde från Azure Container Registry. Du kan hämta inloggnings servern från sidan Översikt i behållar registret i Azure Portal. <br><br> Den slutliga avbildnings lagrings platsen ser ut som \<registry name\> . azurecr.io/csharpmodule. |
 

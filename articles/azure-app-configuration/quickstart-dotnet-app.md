@@ -3,18 +3,18 @@ title: Snabbstart för Azure App Configuration med .NET Framework | Microsoft Do
 description: I den här artikeln skapar du en .NET Framework-app med Azure App konfiguration för att centralisera lagring och hantering av program inställningar separat från din kod.
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
-ms.author: lcozzens
-ms.openlocfilehash: d338ca5cf2c794f15d3eb535b5280208236d1e34
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.author: alkemper
+ms.openlocfilehash: 62516218ed2c0249f829ad8d286e4ad8bbc471f8
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767765"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932099"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Snabb start: skapa en .NET Framework-app med Azure App konfiguration
 
@@ -44,9 +44,9 @@ I den här snabb starten inkluderar du Azure App konfiguration i en .NET Framewo
 
 1. Starta Visual Studio och välj **fil**  >  **nytt**  >  **projekt**.
 
-1. I **skapa ett nytt projekt**filtrerar du på projekt typen **konsol** och klickar på **konsol program (.NET Framework)**. Välj **Nästa**.
+1. I **skapa ett nytt projekt** filtrerar du på projekt typen **konsol** och klickar på **konsol program (.NET Framework)**. Välj **Nästa**.
 
-1. Ange ett projekt namn i **Konfigurera ditt nya projekt**. Under **ramverk**väljer du **.NET Framework 4.7.1** eller högre. Välj **Skapa**.
+1. Ange ett projekt namn i **Konfigurera ditt nya projekt**. Under **ramverk** väljer du **.NET Framework 4.7.1** eller högre. Välj **Skapa**.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Anslut till ett konfigurations Arkiv för appen
 
@@ -80,7 +80,7 @@ I den här snabb starten inkluderar du Azure App konfiguration i en .NET Framewo
 
    Anslutnings strängen för appens konfigurations lager läses från miljövariabeln `ConnectionString` . Lägg till `Environment` konfigurations verktyget före `MyConfigStore` i `configBuilders` egenskapen för `appSettings` avsnittet.
 
-1. Öppna *program.cs*och uppdatera `Main` metoden för att använda app-konfiguration genom att anropa `ConfigurationManager` .
+1. Öppna *program.cs* och uppdatera `Main` metoden för att använda app-konfiguration genom att anropa `ConfigurationManager` .
 
     ```csharp
     static void Main(string[] args)

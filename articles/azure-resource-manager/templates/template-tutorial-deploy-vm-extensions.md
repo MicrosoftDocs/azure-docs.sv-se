@@ -1,21 +1,21 @@
 ---
 title: Distribuera VM-tillägg med mall
-description: Lär dig hur du distribuerar tillägg för virtuell dator med Azure Resource Manager-mallar
+description: Lär dig hur du distribuerar tillägg för virtuella datorer med Azure Resource Manager mallar (ARM-mallar).
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f82e0eb45f4bc7c3260554b1b1120025029336bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49bc1a77e2e25cb069a89812603ff562b8a4c1cd
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89073650"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931460"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>Självstudie: distribuera tillägg för virtuella datorer med ARM-mallar
 
-Lär dig hur du använder [Azure-tillägg för virtuell dator](../../virtual-machines/extensions/features-windows.md) för att utföra konfigurations- och automatiseringsuppgifter efter distribution på virtuella Azure-datorer. Det finns många olika VM-tillägg för användning med virtuella Azure-datorer. I den här självstudien distribuerar du ett anpassat skript tillägg från en Azure Resource Manager-mall (ARM) för att köra ett PowerShell-skript på en virtuell Windows-dator.  Skriptet installerar webbserver på den virtuella datorn.
+Lär dig hur du använder [Azure-tillägg för virtuell dator](../../virtual-machines/extensions/features-windows.md) för att utföra konfigurations- och automatiseringsuppgifter efter distribution på virtuella Azure-datorer. Det finns många olika VM-tillägg för användning med virtuella Azure-datorer. I den här självstudien distribuerar du ett anpassat skript tillägg från en Azure Resource Manager-mall (ARM-mall) för att köra ett PowerShell-skript på en virtuell Windows-dator. Skriptet installerar webbserver på den virtuella datorn.
 
 Den här självstudien omfattar följande uppgifter:
 
@@ -31,14 +31,14 @@ Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](ht
 
 För att kunna följa stegen i den här artikeln behöver du:
 
-* Visual Studio Code med Resource Manager Tools-tillägg. Se [snabb start: skapa Azure Resource Manager mallar med Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
+* Visual Studio Code med Resource Manager Tools-tillägg. Se [snabb start: skapa arm-mallar med Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 * För att förbättra säkerheten bör du använda ett genererat lösenord för den virtuella datorns administratörskonto. Här är ett exempel för att generera ett lösenord:
 
     ```console
     openssl rand -base64 32
     ```
 
-    Azure Key Vault är utformat för att skydda kryptografiska nycklar och andra hemligheter. Mer information finns i [Självstudier: integrera Azure Key Vault i distribution av arm-mallar](./template-tutorial-use-key-vault.md). Vi rekommenderar även att du uppdaterar ditt lösenord var tredje månad.
+    Azure Key Vault är utformat för att skydda kryptografiska nycklar och andra hemligheter. Mer information finns i [Självstudier: integrera Azure Key Vault i din distribution av arm-mallar](./template-tutorial-use-key-vault.md). Vi rekommenderar även att du uppdaterar ditt lösenord var tredje månad.
 
 ## <a name="prepare-a-powershell-script"></a>Förbereda ett PowerShell-skript
 
@@ -110,7 +110,7 @@ Mer information om den här resursdefinitionen finns i [tilläggsreferensen](/az
 * **fileUris**: de platser där skriptfilerna lagras. Om du väljer att inte använda den angivna platsen måste du uppdatera värdena.
 * **commandToExecute**: det här kommandot anropar skriptet.
 
-Om du vill använda infogat skript tar du bort **fileUris**och uppdaterar **commandToExecute** till:
+Om du vill använda infogat skript tar du bort **fileUris** och uppdaterar **commandToExecute** till:
 
 ```powershell
 powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools && powershell.exe remove-item 'C:\\inetpub\\wwwroot\\iisstart.htm' && powershell.exe Add-Content -Path 'C:\\inetpub\\wwwroot\\iisstart.htm' -Value $('Hello World from ' + $env:computername)

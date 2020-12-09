@@ -2,25 +2,25 @@
 title: Snabbstart för Azure App Configuration med ASP.NET Core | Microsoft Docs
 description: Skapa en ASP.NET Core-app med Azure App konfiguration för att centralisera lagring och hantering av program inställningar för ett ASP.NET Core program.
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.devlang: csharp
 ms.custom: devx-track-csharp, contperfq1
 ms.topic: quickstart
 ms.date: 09/25/2020
-ms.author: lcozzens
-ms.openlocfilehash: 13283a9531804502b8a8d72e615be955b413658c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.author: alkemper
+ms.openlocfilehash: fc2b218621fcf91a7d82b0554da79a8b4582c3a2
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075849"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932174"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Snabb start: skapa en ASP.NET Core-app med Azure App konfiguration
 
 I den här snabb starten använder du Azure App konfiguration för att centralisera lagring och hantering av program inställningar för en ASP.NET Core-app. ASP.NET Core skapar ett enda, nyckel-värdebaserade konfigurations objekt med inställningar från en eller flera data källor som anges av en app. Dessa data källor kallas för *konfigurations leverantörer*. Eftersom app Configurations .NET Core-klient implementeras som en Konfigurationsprovider, visas tjänsten som en annan data källa.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/dotnet)
 * [.NET Core SDK](https://dotnet.microsoft.com/download)
@@ -41,7 +41,7 @@ I den här snabb starten använder du Azure App konfiguration för att centralis
     | `TestApp:Settings:FontSize`        | *24.1*                                |
     | `TestApp:Settings:Message`         | *Data från Azure App Configuration* |
 
-    Lämna **etiketten** och **innehålls typen** tom för tillfället. Välj **Tillämpa**.
+    Lämna **etiketten** och **innehålls typen** tom för tillfället. Välj **Använd**.
 
 ## <a name="create-an-aspnet-core-web-app"></a>Skapa en ASP.NET Core-webbapp
 
@@ -76,7 +76,7 @@ dotnet new mvc --no-https --output TestAppConfig
 
     Få åtkomst till den här hemligheten med API för .NET Core-konfiguration. Ett kolon ( `:` ) fungerar i konfigurations namnet med Konfigurations-API: et på alla plattformar som stöds. Mer information finns i [konfigurations nycklar och värden](/aspnet/core/fundamentals/configuration#configuration-keys-and-values).
 
-1. I *program.cs*lägger du till en referens till API-namnrymden för .net Core Configuration:
+1. I *program.cs* lägger du till en referens till API-namnrymden för .net Core Configuration:
 
     ```csharp
     using Microsoft.Extensions.Configuration;
@@ -123,7 +123,7 @@ dotnet new mvc --no-https --output TestAppConfig
 
 Slutför följande steg för att läsa och visa värden som lagras i appens konfigurations arkiv. Konfigurations-API: t för .NET Core kommer att användas för att komma åt butiken. Kniv-syntax kommer att användas för att Visa Nycklarnas värden.
 
-Öppna * \<app root> /views/Home/index.cshtml*och ersätt innehållet med följande kod:
+Öppna *\<app root> /views/Home/index.cshtml* och ersätt innehållet med följande kod:
 
 ```cshtml
 @using Microsoft.Extensions.Configuration

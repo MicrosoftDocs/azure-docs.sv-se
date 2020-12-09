@@ -3,26 +3,25 @@ title: Snabb start för att lära dig att använda Azure App konfiguration
 description: I den här snabb starten skapar du en Java våren-app med Azure App konfiguration för att centralisera lagring och hantering av program inställningar separat från din kod.
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 04/18/2020
 ms.custom: devx-track-java
-ms.author: lcozzens
-ms.openlocfilehash: dd2305e13322540e9e30223f200baed9919d1840
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.author: alkemper
+ms.openlocfilehash: 40c8fae292f465b3ecc8778a21e4903bdf423a3a
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075407"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932038"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Snabb start: skapa en Java våren-app med Azure App konfiguration
 
 I den här snabb starten inkluderar du Azure App konfiguration i en Java våren-app för att centralisera lagring och hantering av program inställningar separat från din kod.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/)
 - En [Java Development Kit (JDK)](/java/azure/jdk) som stöds med version 8.
@@ -40,7 +39,7 @@ I den här snabb starten inkluderar du Azure App konfiguration i en Java våren-
 
     Lämna **etiketten** och **innehålls typen** tom för tillfället.
 
-8. Välj **Tillämpa**.
+8. Välj **Använd**.
 
 ## <a name="create-a-spring-boot-app"></a>Skapa en Spring Boot-app
 
@@ -147,7 +146,7 @@ Använd [vår Initializr](https://start.spring.io/) för att skapa ett nytt fjä
     spring.cloud.azure.appconfiguration.stores[0].connection-string= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-1. Ange en miljö variabel med namnet **APP_CONFIGURATION_CONNECTION_STRING**och ange den som åtkomst nyckel till appens konfigurations arkiv. Kör följande kommando på kommando raden och starta om kommando tolken för att ändringarna ska börja gälla:
+1. Ange en miljö variabel med namnet **APP_CONFIGURATION_CONNECTION_STRING** och ange den som åtkomst nyckel till appens konfigurations arkiv. Kör följande kommando på kommando raden och starta om kommando tolken för att ändringarna ska börja gälla:
 
     ```cmd
     setx APP_CONFIGURATION_CONNECTION_STRING "connection-string-of-your-app-configuration-store"

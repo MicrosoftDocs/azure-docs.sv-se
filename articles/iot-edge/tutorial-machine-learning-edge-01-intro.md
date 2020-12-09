@@ -8,18 +8,29 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d603e5d03480b99eb3d6adb72a3440198fda2e47
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: b23324a7226d4b3de4908bd78a8f19c799e59f06
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575473"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932191"
 ---
 # <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>Självstudie: en lösning från slut punkt till slut punkt med hjälp av Azure Machine Learning och IoT Edge
 
 IoT-program vill ofta dra nytta av det intelligenta molnet och den intelligenta gränsen. I den här självstudien vägleder vi dig genom utbildningen av en maskin inlärnings modell med data som samlas in från IoT-enheter i molnet, distribution av modellen till IoT Edge och underhåll och raffinering av modellen med jämna mellanrum.
 
 Det främsta syftet med den här självstudien är att introducera bearbetningen av IoT-data med Machine Learning, specifikt på gränsen. Medan vi vidrör många aspekter av ett allmänt Machine Learning-arbetsflöde är den här självstudien inte avsedd som en djupgående introduktion till Machine Learning. Som ett litet exempel försöker vi inte skapa en mycket optimerad modell för användnings fallet – vi räcker bara för att illustrera processen med att skapa och använda en praktisk modell för IoT-databearbetning.
+
+Det här avsnittet i själv studie kursen beskriver:
+
+> [!div class="checklist"]
+>
+> * Kraven för att slutföra de efterföljande delarna av självstudien.
+> * Den aktuella mål gruppen för självstudien.
+> * Användnings fall som självstudien simulerar.
+> * Den övergripande processen som vägledningen följer för att uppfylla användnings fallet.
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Krav
 

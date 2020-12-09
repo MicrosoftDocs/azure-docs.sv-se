@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 11/25/2020
-ms.openlocfilehash: 4a58f25e6183c674990d1d7722ce3196cce0f47c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 04efb7bcae11ef6cf377d821b49f9b07d41d347f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350474"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932599"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Skapa och konfigurera lokalt installerad integrationskörning
 
@@ -102,29 +102,28 @@ Dmgcmd.exe ingår i installations programmet för egen värd. Den finns vanligt 
 Använd programmet på följande sätt:
 
 ```powershell
-dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<thumbprint>"] -EnableRemoteAccessInContainer "<port>" ["<thumbprint>"] -DisableRemoteAccess -Key "<AuthenticationKey>" -GenerateBackupFile "<filePath>" "<password>" -ImportBackupFile "<filePath>" "<password>" -Restart -Start -Stop -StartUpgradeService -StopUpgradeService -TurnOnAutoUpdate -TurnOffAutoUpdate -SwitchServiceAccount "<domain\user>" ["<password>"] -Loglevel <logLevel> ]
+dmgcmd ACTION args...
 ```
 
-Här följer information om programmets parametrar och egenskaper: 
+Här följer information om programmets åtgärder och argument: 
 
-| Egenskap                                                    | Beskrivning                                                  | Krävs |
-| ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
-| **RegisterNewNode** "`<AuthenticationKey>`"                     | Registrera en egen värd för integration runtime-noden med den angivna autentiseringsnyckel. | Inga       |
-| **RegisterNewNode** "`<AuthenticationKey>`" "`<NodeName>`"      | Registrera en egen värd för integration runtime-noden med den angivna autentiseringsnyckel och nodnamn. | Inga       |
-| **EnableRemoteAccess** "`<port>`" ["`<thumbprint>`"]            | Aktivera fjärråtkomst på den aktuella noden för att konfigurera ett kluster med hög tillgänglighet. Eller aktivera inställning av autentiseringsuppgifter direkt mot IR med egen värd utan att gå via Azure Data Factory. Du gör det senare med hjälp av cmdleten **New-AzDataFactoryV2LinkedServiceEncryptedCredential** från en fjärrdator i samma nätverk. | Inga       |
-| **EnableRemoteAccessInContainer** "`<port>`" ["`<thumbprint>`"] | Aktivera fjärråtkomst till den aktuella noden när noden körs i en behållare. | Inga       |
-| **DisableRemoteAccess**                                         | Inaktivera fjärråtkomst till den aktuella noden. Fjärråtkomst krävs för installation av multinoder. PowerShell **-cmdleten New-AzDataFactoryV2LinkedServiceEncryptedCredential** fungerar fortfarande även om fjärråtkomst är inaktiverat. Det här beteendet är sant så länge cmdleten körs på samma dator som den lokala IR-noden. | Inga       |
-| **Nyckel** "`<AuthenticationKey>`"                                 | Skriv över eller uppdatera föregående autentiseringsnyckel. Var försiktig med den här åtgärden. Din tidigare IR-nod med egen värd kan gå offline om nyckeln är en ny integrerings körning. | Inga       |
-| **GenerateBackupFile** "`<filePath>`" "`<password>`"            | Skapa en säkerhets kopierings fil för den aktuella noden. Säkerhets kopian innehåller nodens nyckel och autentiseringsuppgifter för data lagring. | Inga       |
-| **ImportBackupFile** "`<filePath>`" "`<password>`"              | Återställ noden från en säkerhets kopia.                          | Inga       |
-| **Starta om**                                                     | Starta om värd tjänsten för integration runtime med egen värd.   | Inga       |
-| **Start**                                                       | Starta värd tjänsten för integration runtime med egen värd.     | Inga       |
-| **Stopp**                                                        | Stoppa värd tjänsten för integration runtime med egen värd.        | Inga       |
-| **StartUpgradeService**                                         | Starta uppgraderings tjänsten för integration runtime med egen värd.       | Inga       |
-| **StopUpgradeService**                                          | Stoppa uppgraderings tjänsten för integration runtime med egen värd.        | Inga       |
-| **TurnOnAutoUpdate**                                            | Aktivera automatisk uppdatering av integrerings körningen med egen värd.        | Inga       |
-| **TurnOffAutoUpdate**                                           | Inaktivera automatisk uppdatering av integrerings körningen med egen värd.       | Inga       |
-| **SwitchServiceAccount** "`<domain\user>`" ["`<password>`"]           | Ange dia Host service som ska köras som ett nytt konto. Använd det tomma lösen ordet "" för system konton och virtuella konton. | Inga       |
+|TGÄRD|args|Beskrivning|
+|------|----|-----------|
+|RN<br/>-RegisterNewNode|"`<AuthenticationKey>`" ["`<NodeName>`"]|Registrera en egen värd för integration runtime-noden med den angivna autentiseringsnyckel och nodnamn.|
+|forsknings<br/>-EnableRemoteAccess|"`<port>`" ["`<thumbprint>`"]|Aktivera fjärråtkomst på den aktuella noden för att konfigurera ett kluster med hög tillgänglighet. Eller aktivera inställning av autentiseringsuppgifter direkt mot IR med egen värd utan att gå via Azure Data Factory. Du gör det senare med hjälp av cmdleten **New-AzDataFactoryV2LinkedServiceEncryptedCredential** från en fjärrdator i samma nätverk.|
+|-erac,<br/>-EnableRemoteAccessInContainer|"`<port>`" ["`<thumbprint>`"]|Aktivera fjärråtkomst till den aktuella noden när noden körs i en behållare.|
+|Dra<br/>-DisableRemoteAccess||Inaktivera fjärråtkomst till den aktuella noden. Fjärråtkomst krävs för installation av multinoder. PowerShell **-cmdleten New-AzDataFactoryV2LinkedServiceEncryptedCredential** fungerar fortfarande även om fjärråtkomst är inaktiverat. Det här beteendet är sant så länge cmdleten körs på samma dator som den lokala IR-noden.|
+|KB<br/>-Nyckel|"`<AuthenticationKey>`"|Skriv över eller uppdatera föregående autentiseringsnyckel. Var försiktig med den här åtgärden. Din tidigare IR-nod med egen värd kan gå offline om nyckeln är en ny integrerings körning.|
+|-gbf,<br/>-GenerateBackupFile|"`<filePath>`" "`<password>`"|Skapa en säkerhets kopierings fil för den aktuella noden. Säkerhets kopian innehåller nodens nyckel och autentiseringsuppgifter för data lagring.|
+|IBF<br/>-ImportBackupFile|"`<filePath>`" "`<password>`"|Återställ noden från en säkerhets kopia.|
+|r<br/>-Restart||Starta om värd tjänsten för integration runtime med egen värd.|
+|na<br/>-Start||Starta värd tjänsten för integration runtime med egen värd.|
+|tera<br/>-Stoppa||Stoppa värd tjänsten för integration runtime med egen värd.|
+|SUS<br/>-StartUpgradeService||Starta uppgraderings tjänsten för integration runtime med egen värd.|
+|antal<br/>-StopUpgradeService||Stoppa uppgraderings tjänsten för integration runtime med egen värd.|
+|-tonau,<br/>-TurnOnAutoUpdate||Aktivera automatisk uppdatering av integrerings körningen med egen värd.|
+|-toffau,<br/>-TurnOffAutoUpdate||Inaktivera automatisk uppdatering av integrerings körningen med egen värd.|
+|skydd<br/>-SwitchServiceAccount|"`<domain\user>`" ["`<password>`"]|Ange dia Host service som ska köras som ett nytt konto. Använd det tomma lösen ordet "" för system konton och virtuella konton.|
 
 
 ## <a name="command-flow-and-data-flow"></a>Kommando flöde och data flöde
@@ -152,7 +151,7 @@ Här följer en översikt över de data flödes steg som krävs för att kopiera
 - Använd integration runtime med egen värd även om data lagret finns i molnet på en virtuell IaaS-dator (Azure Infrastructure as a Service).
 - Aktiviteter kan Miss Miss kan utföras i en integration runtime med egen värd som du har installerat på en Windows Server för vilken FIPS-kompatibel kryptering har Aktiver ATS. För att undvika det här problemet har du två alternativ: lagra autentiseringsuppgifter/hemliga värden i en Azure Key Vault eller inaktivera FIPS-kompatibel kryptering på servern. Om du vill inaktivera FIPS-kompatibel kryptering ändrar du följande register under nyckels värde från 1 (aktiverat) till 0 (inaktiverat): `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled` . Om du använder den lokala [integrerings körningen som proxy för SSIS integration runtime](./self-hosted-integration-runtime-proxy-ssis.md)kan FIPS-kompatibel kryptering aktive ras och används när data flyttas från lokalt till Azure Blob Storage som ett mellanlagringsområde.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - De Windows-versioner som stöds är:
   + Windows 7 Service Pack 1
@@ -331,7 +330,7 @@ På Windows brand Väggs nivå eller på dator nivå är dessa utgående portar 
 
 Se till att du aktiverar brand Väggs regler korrekt i företags brand väggen, Windows-brandväggen för den lokala integration runtime-datorn och själva data lagret. Genom att aktivera de här reglerna kan integrerings körningen med egen värd ansluta till både källa och mottagare. Aktivera regler för varje data lager som ingår i kopierings åtgärden.
 
-Gör så här om du till exempel vill kopiera från ett lokalt data lager till en SQL Database mottagare eller en Azure Synapse Analytics-mottagare (tidigare SQL Data Warehouse):
+Gör så här om du till exempel vill kopiera från ett lokalt data lager till en SQL Database mottagare eller en Azure Synapse Analytics-mottagare:
 
 1. Tillåt utgående TCP-kommunikation på port 1433 för både Windows-brandväggen och företags brand väggen.
 1. Konfigurera brand Väggs inställningarna för SQL Database för att lägga till IP-adressen för den egen värdbaserade integration runtime-datorn i listan över tillåtna IP-adresser.

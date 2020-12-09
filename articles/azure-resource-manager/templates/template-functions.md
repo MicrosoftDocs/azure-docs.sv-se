@@ -1,18 +1,18 @@
 ---
 title: Mallfunktioner
-description: Beskriver de funktioner som används i en Azure Resource Manager mall för att hämta värden, arbeta med strängar och siffror och hämta distributions information.
+description: Beskriver de funktioner som används i en Azure Resource Manager mall (ARM-mall) för att hämta värden, arbeta med strängar och siffror och hämta distributions information.
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: a479b81d0f0bc378f77885cbd644e70d7be1d857
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2d124893cbe1694671231fd206f8e44cc20f6204
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961178"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931715"
 ---
 # <a name="arm-template-functions"></a>ARM-mallens funktioner
 
-I den här artikeln beskrivs alla funktioner som du kan använda i en Azure Resource Manager-mall (ARM). Information om hur du använder funktioner i din mall finns i [syntax för mallar](template-expressions.md).
+I den här artikeln beskrivs alla funktioner som du kan använda i en Azure Resource Manager-mall (ARM-mall). Information om hur du använder funktioner i din mall finns i [syntax för mallar](template-expressions.md).
 
 Information om hur du skapar dina egna funktioner finns i [användardefinierade funktioner](template-syntax.md#functions).
 
@@ -47,7 +47,7 @@ Resource Manager innehåller flera funktioner för att arbeta med matriser.
 * [överlappning](template-functions-array.md#intersection)
 * [pågå](template-functions-array.md#last)
 * [length](template-functions-array.md#length)
-* [minimum](template-functions-array.md#min)
+* [min](template-functions-array.md#min)
 * [bekräftat](template-functions-array.md#max)
 * [intervall](template-functions-array.md#range)
 * [Ignorera](template-functions-array.md#skip)
@@ -67,7 +67,7 @@ Resource Manager innehåller flera funktioner för att göra jämförelser i din
 
 * [coalesce](template-functions-comparison.md#coalesce)
 * [är lika med](template-functions-comparison.md#equals)
-* [mindre än](template-functions-comparison.md#less)
+* [minskad](template-functions-comparison.md#less)
 * [mindre än eller lika med](template-functions-comparison.md#lessorequals)
 * [större än](template-functions-comparison.md#greater)
 * [större än eller lika med](template-functions-comparison.md#greaterorequals)
@@ -130,7 +130,7 @@ Resource Manager innehåller följande funktioner för att arbeta med heltal:
 * [div](template-functions-numeric.md#div)
 * [float](template-functions-numeric.md#float)
 * [int](template-functions-numeric.md#int)
-* [minimum](template-functions-numeric.md#min)
+* [min](template-functions-numeric.md#min)
 * [bekräftat](template-functions-numeric.md#max)
 * [rest](template-functions-numeric.md#mod)
 * [mul](template-functions-numeric.md#mul)
@@ -250,7 +250,7 @@ Resource Manager innehåller följande funktioner för att arbeta med strängar:
 
 ## <a name="next-steps"></a>Nästa steg
 
-* En beskrivning av avsnitten i en ARM-mall finns i [Redigera arm-mallar](template-syntax.md)
-* Om du vill slå samman flera mallar, se [använda länkade mallar med Azure Resource Manager](linked-templates.md)
-* Om du vill iterera ett visst antal gånger när du skapar en typ av resurs, se [skapa flera instanser av resurser i Azure Resource Manager](copy-resources.md).
-* Information om hur du distribuerar mallen som du har skapat finns i [distribuera ett program med ARM-mallar](deploy-powershell.md)
+* En beskrivning av avsnitten i en ARM-mall finns i [förstå strukturen och syntaxen för ARM-mallar](template-syntax.md).
+* Information om hur du sammanfogar flera mallar finns i [använda länkade och kapslade mallar när du distribuerar Azure-resurser](linked-templates.md).
+* Om du vill iterera ett visst antal gånger när du skapar en typ av resurs, se [resurs upprepning i arm-mallar](copy-resources.md).
+* Information om hur du distribuerar mallen som du har skapat finns i [distribuera resurser med ARM-mallar och Azure PowerShell](deploy-powershell.md).

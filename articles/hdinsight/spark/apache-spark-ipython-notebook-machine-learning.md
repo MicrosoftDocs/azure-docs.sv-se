@@ -1,6 +1,6 @@
 ---
 title: 'Självstudie: bygga Spark Machine Learning-app – Azure HDInsight'
-description: Självstudie – stegvisa anvisningar om hur du skapar Apache Spark Machine Learning-program i HDInsight Spark-kluster med hjälp av Jupyter Notebook.
+description: Själv studie kurs – stegvisa anvisningar om hur du skapar Apache Spark Machine Learning-program i HDInsight Spark-kluster med hjälp av Jupyter Notebook.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc, devx-track-python
 ms.date: 04/07/2020
-ms.openlocfilehash: 753f45257f820f87f2e4bfb1893f581bee167a4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6af50bae075e88ac3bbba39cba9c9042eee2000e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230933"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932253"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Självstudie: utveckla ett Apache Spark Machine Learning-program i Azure HDInsight
 
@@ -41,7 +41,7 @@ Programmet använder exempel **HVAC.csv** data som är tillgängliga i alla klus
 
 Det här programmet använder en spark [ml-pipeline](https://spark.apache.org/docs/2.2.0/ml-pipeline.html) för att göra en dokument klassificering. ML pipelines tillhandahåller en enhetlig uppsättning högnivå-API: er som bygger på DataFrames. DataFrames hjälper användarna att skapa och finjustera praktiska pipeliner för Machine Learning. I pipelinen delar du upp dokumentet i ord, konverterar orden till en numerisk funktionsvektor och slutligen skapa en förutsägelsemodell med funktionsvektorer och etiketter. Utför följande steg för att skapa programmet.
 
-1. Skapa en Jupyter-anteckningsbok med PySpark-kerneln. Anvisningar finns i [skapa en Jupyter Notebook-fil](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file).
+1. Skapa en Jupyter Notebook med PySpark-kärnan. Instruktioner finns i [skapa en Jupyter Notebook-fil](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file).
 
 1. Importera de typer som krävs för det här scenariot. Klistra in följande kodfragment i en tom cell och tryck sedan på **SKIFT+RETUR**.
 
@@ -186,7 +186,7 @@ Det här programmet använder en spark [ml-pipeline](https://spark.apache.org/do
 
 ## <a name="use-anaconda-scikit-learn-library-for-spark-machine-learning"></a>Använda Anaconda scikit-bibliotek för Spark machine learning
 
-Apache Spark-kluster i HDInsight innehåller Anaconda-bibliotek. Det innehåller också **scikit-learn**-bibliotek för machine learning. Biblioteket innehåller också olika datauppsättningar som du kan använda för att skapa exempelprogram direkt från en Jupyter Notebook. Exempel på hur du använder scikit – lära-biblioteket finns i [https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html) .
+Apache Spark-kluster i HDInsight innehåller Anaconda-bibliotek. Det innehåller också **scikit-learn**-bibliotek för machine learning. Biblioteket innehåller också olika data uppsättningar som du kan använda för att bygga exempel program direkt från en Jupyter Notebook. Exempel på hur du använder scikit – lära-biblioteket finns i [https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html) .
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

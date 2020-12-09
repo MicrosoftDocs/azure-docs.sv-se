@@ -1,17 +1,17 @@
 ---
 title: Azure App konfiguration REST API-rubriker
 description: Referens sidor för rubriker som används med Azure App konfigurations REST API
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 5e1f92c68004d0197391ab72df775913c0940fec
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 80b20b0b55219766872166685c0b1257f3c39c55
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424521"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932582"
 ---
 # <a name="headers"></a>Sidhuvuden
 
@@ -21,7 +21,7 @@ Den här artikeln innehåller länkar till referens sidor för rubriker som anv�
 
 I följande tabell beskrivs vanliga begärandehuvuden som används i Azure App-konfigurationen.
 
-| Sidhuvud | Beskrivning | Exempel |
+| Huvud | Beskrivning | Exempel |
 |--|--|--|
 | **Auktorisering** | Används för att [autentisera](./rest-api-authentication-index.md) en begäran till tjänsten. Se [avsnitt 14,8](https://tools.ietf.org/html/rfc2616#section-14.8) | `Authorization: HMAC-SHA256 Credential=<Credential>&SignedHeaders=Host;x-ms-date;x-ms-content-sha256&Signature=<Signature>` |
 | **Godkänn** | Informerar servern vilken medietyp som klienten kommer att acceptera i ett HTTP-svar. Se [avsnitt 14,1](https://tools.ietf.org/html/rfc2616#section-14.1) | `Accept: application/vnd.microsoft.appconfig.kv+json;` |
@@ -41,12 +41,12 @@ I följande tabell beskrivs vanliga begärandehuvuden som används i Azure App-k
 
 Servern kan innehålla följande HTTP-huvuden i sina svar.
 
-| Sidhuvud | Beskrivning | Exempel |
+| Huvud | Beskrivning | Exempel |
 |--|--|--|
 | **Innehålls typ** | Innehåller medie typen för innehållet i HTTP-svarets brödtext. Se [avsnitt 14,17](https://tools.ietf.org/html/rfc2616#section-14.17) | `Content-Type: application/vnd.microsoft.appconfig.kv+json; charset=utf-8;` |
 | **ETag** | En ogenomskinlig token som representerar statusen för en specifik resurs. Kan användas i villkorliga åtgärder. Se [avsnitt 14,19](https://tools.ietf.org/html/rfc2616#section-14.19) | `ETag: "4f6dd610dd5e4deebc7fbaef685fb903"` |
 | **Senast ändrad** | Beskriver när den begärda resursen senast ändrades. Formaterat som ett [http-datum](https://tools.ietf.org/html/rfc2616#section-3.3.1). Se [avsnitt 14,29](https://tools.ietf.org/html/rfc2616#section-14.29) | `Last-Modified: Tue, 05 Dec 2017 02:41:26 GMT` |
-| **Operationsföljdslänkkod** | Innehåller länkar till resurser som är relaterade till svaret. Den här rubriken används för växling med hjälp av _Nästa_ länk. Se [RFC 5988](https://tools.ietf.org/html/rfc5988) | `Link: </kv?after={token}>; rel="next"` |
+| **Länk** | Innehåller länkar till resurser som är relaterade till svaret. Den här rubriken används för växling med hjälp av _Nästa_ länk. Se [RFC 5988](https://tools.ietf.org/html/rfc5988) | `Link: </kv?after={token}>; rel="next"` |
 | **Påminnelse-datetime** | Anger att innehållet i ett svar representerar ett tidigare tillstånd. Värdet för den här rubriken är datum/tid för detta tillstånd. Se [RFC 7089](https://tools.ietf.org/html/rfc7089#section-2.1.1) | `Memento-Datetime: Sat, 12 May 2018 02:10:00 GMT` |
 | **försök igen – efter-MS** | Innehåller en föreslagen period (i millisekunder) som klienten ska vänta innan den försöker köra en misslyckad begäran igen. | `retry-after-ms: 10` |
 | **x-MS-Request-ID** | Ett unikt ID som genereras av servern som används för att spåra begäran inom tjänsten. | `x-ms-request-id: 00000000-0000-0000-0000-000000000000` |

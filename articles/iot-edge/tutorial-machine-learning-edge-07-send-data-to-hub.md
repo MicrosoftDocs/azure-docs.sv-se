@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1927ec00df67522563fb063f2cb127fee4c0bcbf
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 50df3424892594a6817d481aa4a3d540a342854f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621050"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932327"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Självstudie: skicka data via transparent Gateway
 
@@ -24,7 +24,15 @@ Vi övervakar IoT Edge enhetens funktion medan den simulerade enheten skickar da
 
 Det här steget utförs vanligt vis av en moln-eller enhets utvecklare.
 
-## <a name="prerequisites"></a>Förutsättningar
+I det här avsnittet av självstudien får du lära dig att:
+
+> [!div class="checklist"]
+>
+> * Skapa och kör en löv enhet.
+> * Verifiera att genererade data lagras i Azure Blob Storage.
+> * Kontrol lera att Machine Learning-modellen har klassificerat enhets data.
+
+## <a name="prerequisites"></a>Krav
 
 Den här artikeln ingår i en serie för självstudier om hur du använder Azure Machine Learning på IoT Edge. Varje artikel i serien bygger på arbetet i föregående artikel. Om du har kommit till den här artikeln direkt kan du gå till den [första artikeln](tutorial-machine-learning-edge-01-intro.md) i serien.
 

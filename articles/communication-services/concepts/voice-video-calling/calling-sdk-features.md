@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f621d11553101c2c0bcfce804b26c218ae58670c
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 5ace6866ef863b2f901c98f9a32a12540a990d0d
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576476"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931919"
 ---
 # <a name="calling-client-library-overview"></a>Översikt över klientbiblioteket för samtal
 
@@ -69,7 +69,7 @@ Följande tabell visar en uppsättning webbläsare och versioner som stöds och 
 
 * Observera att den senaste versionen av Chrome stöds förutom de tidigare två versionerna.<br/>
 
-* * Observera att Safari-versionerna 13.1 + stöds. Utgående video för Safari macOS stöds inte ännu, men stöds i iOS. Delning av utgående skärm stöds endast på Desktop iOS.
+* * Observera att Safari-versionerna 13.1 + stöds. Utgående video för Safari macOS stöds inte ännu, men stöds i iOS. Delning av utgående skärm stöds endast på Desktop iOS. 1:1-och grupp samtal är för närvarande inte tillgängliga i Safari.
 
 ## <a name="calling-client---browser-security-model"></a>Anropa klientens webbläsare säkerhets modell
 

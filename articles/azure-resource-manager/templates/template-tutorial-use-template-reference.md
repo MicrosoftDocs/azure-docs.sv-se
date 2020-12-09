@@ -1,21 +1,21 @@
 ---
 title: Använda mallreferens
-description: Använd referensen Azure Resource Manager mall för att skapa en mall.
+description: Använd referensen Azure Resource Manager mall (ARM-mall) för att skapa en mall.
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 3709511fa8da0a40f4faf4ab2dac9505d69003ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dfd6311fab8d9c65fa7c82d2f707ac96549a32a9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86118519"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931426"
 ---
-# <a name="tutorial-utilize-the-resource-manager-template-reference"></a>Självstudie: Använd Resource Manager-mal len referens
+# <a name="tutorial-utilize-the-arm-template-reference"></a>Självstudie: Använd ARM-mallens referens
 
-Lär dig hur du hittar mallens schema information och använder informationen för att skapa Azure Resource Manager-mallar (ARM).
+Lär dig hur du hittar mallens schema information och använder informationen för att skapa Azure Resource Manager mallar (ARM-mallar).
 
 I den här självstudien använder du en basmall från Azure-snabbstartmallar. Med hjälp av referens dokumentation för mallar kan du anpassa mallen.
 
@@ -36,7 +36,7 @@ Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](ht
 
 För att kunna följa stegen i den här artikeln behöver du:
 
-* Visual Studio Code med Resource Manager Tools-tillägg. Se [snabb start: skapa Azure Resource Manager mallar med Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
+* Visual Studio Code med Resource Manager Tools-tillägg. Se [snabb start: skapa arm-mallar med Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 
 ## <a name="open-a-quickstart-template"></a>Öppna en snabbstartsmall
 
@@ -76,7 +76,7 @@ För att kunna följa stegen i den här artikeln behöver du:
 ## <a name="find-the-template-reference"></a>Leta upp mallreferensen
 
 1. Bläddra till [referens för Azure-mall](/azure/templates/).
-1. I rutan **Filtrera efter rubrik** anger du **lagrings konton**och väljer de första **lagrings kontona** under **referens > lagring**.
+1. I rutan **Filtrera efter rubrik** anger du **lagrings konton** och väljer de första **lagrings kontona** under **referens > lagring**.
 
     ![Resource Manager, mallreferens, lagringskonto](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts.png)
 

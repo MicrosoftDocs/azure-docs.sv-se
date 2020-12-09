@@ -8,12 +8,12 @@ ms.date: 1/20/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4ac7f300fa88d57efe65c6d79645d4e75ca7edd9
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: eef5e60b06eedb1fb07c57aa2e369dd3830fcad5
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575490"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932412"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Självstudie: skapa simulerade enhets data
 
@@ -42,6 +42,14 @@ DeviceHarness-projektet är ett .NET Core-projekt skrivet i C# som består av fy
 De uppgifter som beskrivs i den här artikeln bör ta ungefär 20 minuter att slutföra.
 
 Den verkliga motsvarigheten till arbetet i det här steget skulle förmodligen utföras av enhets utvecklare och moln utvecklare.
+
+I det här avsnittet av självstudien får du lära dig att:
+
+> [!div class="checklist"]
+>
+> * Införliva ett externt projekt i din utvecklings miljö.
+> * Använd samplet DeviceHarness-projektet för att generera simulerade IoT-enhets data.
+> * Visa genererade data i IoT Hub.
 
 ## <a name="prerequisites"></a>Krav
 

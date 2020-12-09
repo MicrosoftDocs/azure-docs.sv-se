@@ -9,18 +9,26 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, devx-track-azurecli
-ms.openlocfilehash: 754b1544f112fb63fae91a52c7e48f25b9790ed2
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: bc62590b9517b2c6d16fdf2637990b845248d2ec
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575099"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932361"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Självstudie: Konfigurera en IoT Edge enhet
 
 I den här artikeln konfigurerar vi en virtuell Azure-dator som kör Linux som en IoT Edge-enhet som fungerar som en transparent Gateway. Med en transparent gateway-konfiguration kan enheter ansluta till Azure IoT Hub via gatewayen utan att veta att gatewayen finns. På samma gång är en användare som interagerar med enheterna i Azure IoT Hub inte medveten om den mellanliggande gateway-enheten. Slutligen kommer vi att lägga till Edge Analytics i vårt system genom att lägga till IoT Edge moduler till den transparenta gatewayen.
 
 Stegen i den här artikeln utförs vanligt vis av en molnbaserad utvecklare.
+
+I det här avsnittet av självstudien får du lära dig att:
+
+> [!div class="checklist"]
+>
+> * Skapa certifikat för att tillåta att din gateway-enhet ansluter säkert till dina underordnade enheter.
+> * Skapa en IoT Edge enhet.
+> * Skapa en virtuell Azure-dator för att simulera din IoT Edge-enhet.
 
 ## <a name="prerequisites"></a>Krav
 
@@ -40,7 +48,7 @@ I det här avsnittet skapar vi de självsignerade certifikaten med hjälp av en 
 
 4. Öppna Visual Studio Code.
 
-5. Välj **File**  >  **Öppna mapp för fil...** och välj **C: \\ Source \\ IoTEdgeAndMlSample \\ CreateCertificates**.
+5. Välj   >  **Öppna mapp för fil...** och välj **C: \\ Source \\ IoTEdgeAndMlSample \\ CreateCertificates**.
 
 6. I Explorer-fönstret högerklickar du på **Dockerfile** och väljer **Bygg avbildning**.
 

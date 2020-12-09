@@ -5,16 +5,16 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 64767f83dfad2b0c2909e8a89b55c849d5c5a9a9
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 1f4e8c0bc6a066e0d82d393474bfc804be5e3fb3
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896998"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931375"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>Självstudie: använda villkor i ARM-mallar
 
-Lär dig hur du distribuerar Azure-resurser baserat på villkor i en Azure Resource Manager-mall (ARM).
+Lär dig hur du distribuerar Azure-resurser baserat på villkor i en Azure Resource Manager-mall (ARM-mall).
 
 I självstudien [Ange resursdistributionsordning](./template-tutorial-create-templates-with-dependent-resources.md) skapar du en virtuell dator, ett virtuellt nätverk och några andra beroende resurser, däribland ett lagringskonto. I stället för att skapa ett nytt lagringskonto varje gång låter du användarna välja mellan att skapa ett nytt lagringskonto eller att använda ett befintligt. För att uppnå det här målet definierar du en extra parameter. Om värdet för parametern är ”new” (nytt) skapas ett nytt lagringskonto. Annars används ett befintligt lagrings konto med det angivna namnet.
 
@@ -37,11 +37,11 @@ Den här kursen täcker bara ett grundläggande scenario med att använda villko
 
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att kunna följa stegen i den här artikeln behöver du:
 
-* Visual Studio Code med Resource Manager Tools-tillägg. Se [snabb start: skapa Azure Resource Manager mallar med Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
+* Visual Studio Code med Resource Manager Tools-tillägg. Se [snabb start: skapa arm-mallar med Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 * För att förbättra säkerheten bör du använda ett genererat lösenord för den virtuella datorns administratörskonto. Här är ett exempel för att generera ett lösenord:
 
     ```console
@@ -54,7 +54,7 @@ För att kunna följa stegen i den här artikeln behöver du:
 
 Azure snabb starts mallar är en lagrings plats för ARM-mallar. I stället för att skapa en mall från början får du en exempelmall som du anpassar. Den mall som används i den här självstudien heter [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Distribuera en enkel virtuell Windows-dator).
 
-1. Från Visual Studio **Code väljer du** > **Öppna fil** .
+1. Från Visual Studio **Code väljer du** > **Öppna fil**.
 1. I **Filnamn** klistrar du in följande URL:
 
     ```url
@@ -73,14 +73,14 @@ Azure snabb starts mallar är en lagrings plats för ARM-mallar. I stället för
 
     Det är bra att granska mal len referens innan du anpassar en mall.
 
-1. Välj **Arkiv** > **Spara som** om du vill spara en kopia av filen på den lokala datorn med namnet **azuredeploy.jspå** .
+1. Välj **Arkiv** > **Spara som** om du vill spara en kopia av filen på den lokala datorn med namnet **azuredeploy.jspå**.
 
 ## <a name="modify-the-template"></a>Ändra mallen
 
 Gör två ändringar av den befintliga mallen:
 
 * Lägg till namnparameter för lagringskonto. Användare kan ange antingen ett nytt lagringskontonamn eller ett befintligt lagringskontonamn.
-* Lägg till en ny parameter med namnet **newOrExisting** . Distributionen använder den här parametern för att avgöra om du ska skapa ett nytt lagrings konto eller använda ett befintligt lagrings konto.
+* Lägg till en ny parameter med namnet **newOrExisting**. Distributionen använder den här parametern för att avgöra om du ska skapa ett nytt lagrings konto eller använda ett befintligt lagrings konto.
 
 Här följer proceduren för att göra ändringarna:
 
@@ -117,7 +117,7 @@ Här följer proceduren för att göra ändringarna:
     "condition": "[equals(parameters('newOrExisting'),'new')]",
     ```
 
-    Villkoret kontrollerar värdet för parametern med namnet **newOrExisting** . Om parametervärdet är **new** (nytt) skapar distributionen lagringskontot.
+    Villkoret kontrollerar värdet för parametern med namnet **newOrExisting**. Om parametervärdet är **new** (nytt) skapar distributionen lagringskontot.
 
     Den uppdaterade lagringskontodefinitionen ser ut så här:
 
@@ -140,7 +140,7 @@ Här följer proceduren för att göra ändringarna:
 
     ![Azure Portal Cloud Shell Ladda upp fil](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. Välj **Ladda upp/ned filer** och välj sedan **Ladda upp** . Se föregående skärmbild. Välj den fil som du sparade i föregående avsnitt. När du har överfört filen kan du använda kommandot **ls** och kommandot **Cat** för att kontrol lera att filen har laddats upp.
+1. Välj **Ladda upp/ned filer** och välj sedan **Ladda upp**. Se föregående skärmbild. Välj den fil som du sparade i föregående avsnitt. När du har överfört filen kan du använda kommandot **ls** och kommandot **Cat** för att kontrol lera att filen har laddats upp.
 
 1. Kör följande PowerShell-skript för att distribuera mallen.
 
@@ -178,7 +178,7 @@ Försök att göra en annan distribution med **newOrExisting** inställd på "be
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När Azure-resurserna inte längre behövs rensar du de resurser som du har distribuerat genom att ta bort resursgruppen. Om du vill ta bort resurs gruppen väljer du **prova** att öppna Cloud Shell. Om du vill klistra in PowerShell-skriptet högerklickar du på fönstret Shell och väljer **Klistra in** .
+När Azure-resurserna inte längre behövs rensar du de resurser som du har distribuerat genom att ta bort resursgruppen. Om du vill ta bort resurs gruppen väljer du **prova** att öppna Cloud Shell. Om du vill klistra in PowerShell-skriptet högerklickar du på fönstret Shell och väljer **Klistra in**.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name you used in the last procedure"

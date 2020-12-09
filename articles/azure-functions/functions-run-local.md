@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 3cf495ca0687e6fa37f619615fb1529659a462dc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: efb91c7b26c67a3672abb3f9cc8992fd45971a25
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020389"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932463"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Arbeta med Azure Functions Core Tools
 
@@ -39,7 +39,7 @@ Det finns tre versioner av Azure Functions Core Tools. Vilken version du använd
 
 Du kan bara installera en version av Core-verktyg på en specifik dator. Om inget annat anges är exemplen i den här artikeln för version 3. x.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Azure Functions Core Tools är för närvarande beroende av Azure CLI för autentisering med ditt Azure-konto. Det innebär att du måste [Installera Azure CLI lokalt](/cli/azure/install-azure-cli) för att kunna [Publicera till Azure](#publish) från Azure Functions Core tools. 
 
@@ -309,7 +309,7 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 Du kan också ange alternativen i kommandot med följande argument:
 
-| Argument     | Description                            |
+| Argument     | Beskrivning                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (Version 2. x och senare versioner.) Genererar samma C#-skript (. CSX) mallar som används i version 1. x och i portalen. |
 | **`--language`**, **`-l`**| Programmeringsspråket för mallar, till exempel C#, F # eller Java Script. Det här alternativet krävs i version 1. x. I version 2. x och senare versioner ska du inte använda det här alternativet eller välja ett språk som matchar Worker-körningen. |
@@ -543,7 +543,7 @@ Följande publicerings alternativ stöds bara för version 2. x och senare versi
 | **`--nozip`** | Stänger av standard `Run-From-Package` läget. |
 | **`--build-native-deps`** | Hoppar över genereringen av. Wheels-mappen när du publicerar python Function-appar. |
 | **`--build`**, **`-b`** | Utför Bygg åtgärd när du distribuerar till en Linux Function-app. Accepterar: `remote` och `local` . |
-| **`--additional-packages`** | Lista över paket som ska installeras när du skapar interna beroenden. Till exempel: `python3-dev libevent-dev`. |
+| **`--additional-packages`** | Lista över paket som ska installeras när du skapar interna beroenden. Exempel: `python3-dev libevent-dev`. |
 | **`--force`** | Ignorera för publicerings verifiering i vissa scenarier. |
 | **`--csx`** | Publicera ett C#-skript (. CSX)-projekt. |
 | **`--no-build`** | Projektet har inte skapats under publiceringen. För python `pip install` utförs inte. |

@@ -1,20 +1,20 @@
 ---
 title: Importera SQL BACPAC-filer med mallar
-description: Lär dig hur du använder Azure SQL Database-tillägg för att importera SQL BACPAC-filer med Azure Resource Manager-mallar.
+description: Lär dig hur du använder Azure SQL Database tillägg för att importera SQL BACPAC-filer med Azure Resource Manager-mallar (ARM-mallar).
 author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6a56602ad5217af07d9e35872a26ddb478146d0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b798e5ceb72ece3989fb81014555f2bc0fea5926
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86101893"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931409"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Självstudie: importera SQL BACPAC-filer med ARM-mallar
 
-Lär dig hur du använder Azure SQL Database tillägg för att importera en BACPAC-fil med Azure Resource Manager ARM-mallar. Distributions artefakter är alla filer, förutom de viktigaste mallarna, som behövs för att slutföra en distribution. BACPAC-filen är en artefakt.
+Lär dig hur du använder Azure SQL Database tillägg för att importera en BACPAC-fil med Azure Resource Manager-mallar (ARM-mallar). Distributions artefakter är alla filer, förutom de viktigaste mallarna, som behövs för att slutföra en distribution. BACPAC-filen är en artefakt.
 
 I den här självstudien skapar du en mall för att distribuera en [logisk SQL-Server](../../azure-sql/database/logical-servers.md) och en enkel databas och importera en BACPAC-fil. Information om hur du distribuerar tillägg för virtuella Azure-datorer med hjälp av ARM-mallar finns i [Självstudier: distribuera tillägg för virtuella datorer med ARM-mallar](./template-tutorial-deploy-vm-extensions.md).
 
@@ -34,7 +34,7 @@ Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](ht
 
 För att kunna följa stegen i den här artikeln behöver du:
 
-* Visual Studio Code med verktygstillägget för Resource Manager. Se [snabb start: skapa Azure Resource Manager mallar med Visual Studio Code](./quickstart-create-templates-use-visual-studio-code.md).
+* Visual Studio Code med verktygstillägget för Resource Manager. Se [snabb start: skapa arm-mallar med Visual Studio Code](./quickstart-create-templates-use-visual-studio-code.md).
 * Om du vill öka säkerheten använder du ett genererat lösen ord för Server administratörs kontot. Här är ett exempel som du kan använda för att generera ett lösen ord:
 
     ```console

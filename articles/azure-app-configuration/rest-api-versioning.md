@@ -1,21 +1,21 @@
 ---
 title: Azure App konfiguration REST API-versions hantering
 description: Referens sidor för versions hantering med hjälp av Azure App konfigurations REST API
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 3a7f50b26d59501d2be3a0147fe89919819b50e6
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: a869531860942e5a8b2b05212e778aca2170c89b
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95246375"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932429"
 ---
 # <a name="versioning"></a>Versionshantering
 
-Varje klientbegäran måste ha en explicit API-version som en frågesträngparametern. Till exempel: `https://{myconfig}.azconfig.io/kv?api-version=1.0`.
+Varje klientbegäran måste ha en explicit API-version som en frågesträngparametern. Exempel: `https://{myconfig}.azconfig.io/kv?api-version=1.0`.
 
 `api-version` uttrycks i formatet SemVer (Major. minor). Intervall-eller versions förhandling stöds inte.
 

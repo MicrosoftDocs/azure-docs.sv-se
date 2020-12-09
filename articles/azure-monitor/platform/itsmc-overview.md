@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: b4e35296a999070a6f536f4a52cfb7c3a1d4f42a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 917eb52a7255527b55aacd488f33125ad853e894
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186498"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932276"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Anslut Azure till ITSM-verktyg med hjälp av Anslutningsprogram för hantering av IT-tjänster (ITSM)
 
@@ -30,7 +30,7 @@ ITSMC stöder anslutningar med följande ITSM-verktyg:
 -   Cherwell
 
    >[!NOTE]
-> Från och med 1 – okt-2020-Cherwell och ITSM-integrering med Azure-avisering kommer inte längre att aktive ras för nya kunder. Det går inte att använda nya ITSM-anslutningar. Befintliga ITSM-anslutningar kommer att stödjas.
+> Vi föreslår våra Cherwell och förstyrker kunder att använda [webhook-åtgärder](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#webhook) för att Cherwell och bevisa slut punkt som en annan lösning på integrationen.
 
 Med ITSMC kan du:
 
@@ -203,7 +203,7 @@ ServiceDeskWorkItemType_s = "incident"
 
 - ServiceDeskConnectionName
 - Service Desk-ID
-- Tillstånd
+- Stat
 - Angelägenhetsgrad
 - Påverkan
 - Prioritet
@@ -237,7 +237,7 @@ ServiceDeskWorkItemType_s = "ändringsbegäran"
 - Rubrik
 - Typ
 - Kategori
-- Tillstånd
+- Stat
 - Eskalering
 - Konflikt status
 - Angelägenhetsgrad
@@ -261,7 +261,7 @@ ServiceDeskWorkItemType_s = "ändringsbegäran"
 | Log Analytics fält | ServiceNow-fält |
 |:--- |:--- |
 | ServiceDeskId_s| Antal |
-| IncidentState_s | Tillstånd |
+| IncidentState_s | Stat |
 | Urgency_s |Angelägenhetsgrad |
 | Impact_s |Påverkan|
 | Priority_s | Prioritet |
@@ -272,7 +272,7 @@ ServiceDeskWorkItemType_s = "ändringsbegäran"
 | AssignedTo_s | Tilldelad  |
 | Category_s | Kategori |
 | Title_s|  Kort beskrivning |
-| Description_s|  Obs! |
+| Description_s|  Kommentarer |
 | CreatedDate_t|  Inleddes |
 | ClosedDate_t| stängd|
 | ResolvedDate_t|Matchat|
@@ -289,7 +289,7 @@ ServiceDeskWorkItemType_s = "ändringsbegäran"
 | Title_s|  Kort beskrivning |
 | Type_s|  Typ |
 | Category_s|  Kategori |
-| CRState_s|  Tillstånd|
+| CRState_s|  Stat|
 | Urgency_s|  Angelägenhetsgrad |
 | Priority_s| Prioritet|
 | Risk_s| Risk|

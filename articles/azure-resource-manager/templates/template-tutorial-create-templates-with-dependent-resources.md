@@ -1,20 +1,20 @@
 ---
 title: Mall med beroende resurser
-description: Lär dig hur du skapar en Azure Resource Manager-mall med flera resurser samt hur du distribuerar den med hjälp av Azure-portalen
+description: Lär dig hur du skapar en Azure Resource Manager mall (ARM-mall) med flera resurser och hur du distribuerar den med hjälp av Azure Portal
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3ed653c511dbd775d124e1abd6f4bb02923edb25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a43fa12e72484e97b828648cd7d610f5cf15ea4e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86102080"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931596"
 ---
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>Självstudie: skapa ARM-mallar med beroende resurser
 
-Lär dig hur du skapar en Azure Resource Manager-mall (ARM) för att distribuera flera resurser och konfigurera distributions ordningen. När du har skapat mallen distribuerar du mallen med hjälp av Cloud Shell från Azure Portal.
+Lär dig hur du skapar en Azure Resource Manager mall (ARM-mall) för att distribuera flera resurser och konfigurera distributions ordningen. När du har skapat mallen distribuerar du mallen med hjälp av Cloud Shell från Azure Portal.
 
 I den här självstudien skapar du ett lagringskonto, en virtuell dator, ett virtuellt nätverk och några andra beroende resurser. Vissa resurser kan inte distribueras förrän en annan resurs finns. Till exempel kan du inte skapa den virtuella datorn förrän dess lagringskonto och nätverksgränssnitt finns. Du kan definiera den här relationen genom att göra en resurs beroende av de andra resurserna. Resource Manager utvärderar beroenden mellan resurser och distribuerar dem i beroendeordning. När resurserna inte är beroende av varandra distribuerar Resource Manager dem parallellt. Mer information finns i [definiera ordningen för att distribuera resurser i arm-mallar](./define-resource-dependency.md).
 
@@ -33,7 +33,7 @@ Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](ht
 
 För att kunna följa stegen i den här artikeln behöver du:
 
-* Visual Studio Code med Resource Manager Tools-tillägg. Se [snabb start: skapa Azure Resource Manager mallar med Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
+* Visual Studio Code med Resource Manager Tools-tillägg. Se [snabb start: skapa arm-mallar med Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 * För att förbättra säkerheten bör du använda ett genererat lösenord för den virtuella datorns administratörskonto. Här är ett exempel för att generera ett lösenord:
 
     ```console
@@ -67,7 +67,7 @@ När du utforskar mallen i det här avsnittet kan du försöka besvara följande
 
 1. Från Visual Studio Code döljer du elementen tills du bara ser elementen på den första och andra nivån i **resurser**:
 
-    ![Azure Resource Manager-mallar i Visual Studio Code](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
+    ![Visual Studio Code ARM-mallar](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
 
     Det finns sex resurser som definieras av mallen:
 
@@ -82,19 +82,19 @@ När du utforskar mallen i det här avsnittet kan du försöka besvara följande
 
 1. Expandera den första resursen. Det är ett lagringskonto. Jämför resurs definitionen med [mal len referens](/azure/templates/Microsoft.Storage/storageAccounts).
 
-    ![Lagringsdefinition för Azure Resource Manager-mallar i Visual Studio Code](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
+    ![Definition av lagrings konto för Visual Studio Code ARM-mallar](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
 
 1. Expandera den andra resursen. Resurstypen är `Microsoft.Network/publicIPAddresses`. Jämför resurs definitionen med [mal len referens](/azure/templates/microsoft.network/publicipaddresses).
 
-    ![Definition av offentlig IP-adress för Azure Resource Manager-mallar i Visual Studio Code](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
+    ![Definition av den offentliga IP-adressen i Visual Studio Code ARM-mallar](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
 
 1. Expandera den tredje resursen. Resurstypen är `Microsoft.Network/networkSecurityGroups`. Jämför resurs definitionen med [mal len referens](/azure/templates/microsoft.network/networksecuritygroups).
 
-    ![Visual Studio Code Azure Resource Manager templates definition av nätverks säkerhets grupp](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-network-security-group-definition.png)
+    ![Visual Studio Code ARM-mallar definition av nätverks säkerhets grupp](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-network-security-group-definition.png)
 
 1. Expandera den fjärde resursen. Resurstypen är `Microsoft.Network/virtualNetworks`:
 
-    ![Visual Studio Code Azure Resource Manager templates Virtual Network dependsOn](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
+    ![Visual Studio Code ARM-mallar virtuellt nätverk dependsOn](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
 
     Med elementet dependsOn kan du definiera en resurs som beroende på en eller flera resurser. Den här resursen är beroende av en annan resurs:
 
@@ -112,7 +112,7 @@ När du utforskar mallen i det här avsnittet kan du försöka besvara följande
 
 Följande diagram illustrerar resurserna och beroendeinformation för den här mallen:
 
-![Azure Resource Manager-mallar i Visual Studio Code – beroendediagram](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependency-diagram.png)
+![Visual Studio Code ARM-mallar beroende diagram](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependency-diagram.png)
 
 Genom att ange beroendena distribuerar Resource Manager effektivt lösningen. Den distribuerar lagringskontot, en offentlig IP-adress och ett virtuellt nätverk parallellt eftersom de inte har några beroenden. När den offentliga IP-adressen och det virtuella nätverket har distribuerats skapas ett nätverksgränssnitt. När alla andra resurser har distribuerats så distribuerar Resource Manager den virtuella datorn.
 
