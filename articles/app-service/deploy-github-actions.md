@@ -7,14 +7,14 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 16a21acabfd199ba16068e507919b564f01a76d5
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: b94e35f504a4c4d6e934ec01b06105f749031e35
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763918"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007389"
 ---
-# <a name="deploy-to-app-service-using-github-actions"></a>Distribuera till App Service med GitHub-åtgärder
+# <a name="deploy-to-app-service-using-github-actions"></a>Distribuera till App Service med GitHub Actions
 
 Kom igång med [GitHub-åtgärder](https://help.github.com/en/articles/about-github-actions) för att automatisera arbets flödet och distribuera till [Azure App Service](overview.md) från GitHub. 
 
@@ -80,7 +80,7 @@ En publicerings profil är en autentiseringsuppgift på program nivå. Konfigure
 
 # <a name="service-principal"></a>[Tjänstens huvudnamn](#tab/userlevel)
 
-Du kan skapa ett [huvud namn för tjänsten](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) med kommandot [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) i [Azure CLI](/cli/azure/). Kör det här kommandot med [Azure Cloud Shell](https://shell.azure.com/) i Azure Portal eller genom att välja knappen **prova** .
+Du kan skapa ett [huvud namn för tjänsten](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) med kommandot [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) i [Azure CLI](/cli/azure/). Kör det här kommandot med [Azure Cloud Shell](https://shell.azure.com/) i Azure Portal eller genom att välja knappen **prova** .
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor \

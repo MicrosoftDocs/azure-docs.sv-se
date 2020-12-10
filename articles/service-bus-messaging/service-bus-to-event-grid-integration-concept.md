@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: f0aaa82db61b5f40e42d6dad641bc09d5add9d0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 621402975411afb63055a7d6a45d86d9e026e284
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078341"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007763"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Översikt över integration av Azure Service Bus till Event Grid
 
@@ -39,7 +39,9 @@ Gå till Service Bus namn området och välj sedan **åtkomst kontroll (IAM)** o
 Service Bus skickar händelser för två scenarier:
 
 * [ActiveMessagesWithNoListenersAvailable](#active-messages-available-event)
-* DeadletterMessagesAvailable
+* [DeadletterMessagesAvailable](#deadletter-messages-available-event)
+* [ActiveMessagesAvailablePeriodicNotifications](#active-messages-available-periodic-notifications)
+* [DeadletterMessagesAvailablePeriodicNotifications](#deadletter-messages-available-periodic-notifications)
 
 Dessutom använder Service Bus standardsäkerhet för Event Grid och [autentiseringsmekanismer](../event-grid/security-authentication.md).
 
@@ -71,7 +73,7 @@ Schemat för den här händelsen är följande:
 }
 ```
 
-#### <a name="dead-letter-messages-available-event"></a>Obeställbara meddelanden, tillgänglig händelse
+#### <a name="deadletter-messages-available-event"></a>Händelse för tillgängliga obeställbara meddelanden kön-meddelanden
 
 Du kan hämta minst en händelse per kö för obeställbara meddelanden, som innehåller meddelanden utan aktiva mottagare.
 
@@ -82,6 +84,58 @@ Schemat för den här händelsen är följande:
   "topic": "/subscriptions/<subscription id>/resourcegroups/DemoGroup/providers/Microsoft.ServiceBus/namespaces/<YOUR SERVICE BUS NAMESPACE WILL SHOW HERE>",
   "subject": "topics/<service bus topic>/subscriptions/<service bus subscription>",
   "eventType": "Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListener",
+  "eventTime": "2018-02-14T05:12:53.4133526Z",
+  "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
+  "data": {
+    "namespaceName": "YOUR SERVICE BUS NAMESPACE WILL SHOW HERE",
+    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.windows.net/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/$deadletterqueue/messages/head",
+    "entityType": "subscriber",
+    "queueName": "QUEUE NAME IF QUEUE",
+    "topicName": "TOPIC NAME IF TOPIC",
+    "subscriptionName": "SUBSCRIPTION NAME"
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1"
+}]
+```
+
+#### <a name="active-messages-available-periodic-notifications"></a>Tillgängliga periodiska meddelanden för aktiva meddelanden
+
+Den här händelsen genereras regelbundet om du har aktiva meddelanden i den aktuella kön eller prenumerationen, även om det finns aktiva lyssnare på den aktuella kön eller prenumerationen.
+
+Schemat för händelsen är följande.
+
+```json
+[{
+  "topic": "/subscriptions/<subscription id>/resourcegroups/DemoGroup/providers/Microsoft.ServiceBus/namespaces/<YOUR SERVICE BUS NAMESPACE WILL SHOW HERE>",
+  "subject": "topics/<service bus topic>/subscriptions/<service bus subscription>",
+  "eventType": "Microsoft.ServiceBus.ActiveMessagesAvailablePeriodicNotifications",
+  "eventTime": "2018-02-14T05:12:53.4133526Z",
+  "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
+  "data": {
+    "namespaceName": "YOUR SERVICE BUS NAMESPACE WILL SHOW HERE",
+    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.windows.net/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/$deadletterqueue/messages/head",
+    "entityType": "subscriber",
+    "queueName": "QUEUE NAME IF QUEUE",
+    "topicName": "TOPIC NAME IF TOPIC",
+    "subscriptionName": "SUBSCRIPTION NAME"
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1"
+}]
+```
+
+#### <a name="deadletter-messages-available-periodic-notifications"></a>Obeställbara meddelanden kön meddelanden tillgängliga periodiska meddelanden
+
+Den här händelsen genereras regelbundet om du har obeställbara meddelanden kön meddelanden i den aktuella kön eller prenumerationen, även om det finns aktiva lyssnare på obeställbara meddelanden kön entiteten för den aktuella kön eller prenumerationen.
+
+Schemat för händelsen är följande.
+
+```json
+[{
+  "topic": "/subscriptions/<subscription id>/resourcegroups/DemoGroup/providers/Microsoft.ServiceBus/namespaces/<YOUR SERVICE BUS NAMESPACE WILL SHOW HERE>",
+  "subject": "topics/<service bus topic>/subscriptions/<service bus subscription>",
+  "eventType": "Microsoft.ServiceBus.DeadletterMessagesAvailablePeriodicNotifications",
   "eventTime": "2018-02-14T05:12:53.4133526Z",
   "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
   "data": {
@@ -132,7 +186,7 @@ Så här skapar du en ny Event Grid-prenumeration:
 
 ## <a name="azure-cli-instructions"></a>Azure CLI-instruktioner
 
-Kontrollera först att du har Azure CLI version 2.0 eller senare installerad. [Hämta installations programmet](/cli/azure/install-azure-cli?view=azure-cli-latest). Välj **Windows + X**och öppna sedan en ny PowerShell-konsol med administratörs behörighet. Du kan också använda en kommandotolk i Azure Portal.
+Kontrollera först att du har Azure CLI version 2.0 eller senare installerad. [Hämta installations programmet](/cli/azure/install-azure-cli?view=azure-cli-latest). Välj **Windows + X** och öppna sedan en ny PowerShell-konsol med administratörs behörighet. Du kan också använda en kommandotolk i Azure Portal.
 
 Kör följande kod:
 

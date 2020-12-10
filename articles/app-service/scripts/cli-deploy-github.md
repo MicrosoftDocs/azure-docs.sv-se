@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: f266a144eb5ac1c4c1af15f7264aec05c249c170
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: ffbbeb9eac94cdc76c8086623bf16488d8a2d9e1
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561683"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97006257"
 ---
 # <a name="create-an-app-service-app-with-deployment-from-github-using-azure-cli"></a>Skapa en App Service-app med distribution från GitHub med Azure CLI
 
@@ -38,10 +38,10 @@ Det här skriptet använder följande kommandon. Varje kommando i tabellen länk
 
 | Kommando | Kommentarer |
 |---|---|
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Skapar en resursgrupp där alla resurser lagras. |
-| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Skapar en App Service-plan. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Skapar en App Service-app. |
-| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config) | Associerar en Azure Service-app med en Git- eller Mercurial-lagringsplats. |
+| [`az group create`](/cli/azure/group#az-group-create) | Skapar en resursgrupp där alla resurser lagras. |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Skapar en App Service-plan. |
+| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Skapar en App Service-app. |
+| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config) | Associerar en Azure Service-app med en Git- eller Mercurial-lagringsplats. |
 
 ## <a name="next-steps"></a>Nästa steg
 

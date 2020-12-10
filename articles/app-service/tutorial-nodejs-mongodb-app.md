@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-js, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 25d5aa3961ad5dabd29ab4501d8f5076362d9df8
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: b3d88c99ab0e9e204eb4d7dd78dc319f889a5e7d
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862283"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005536"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Självstudie: Bygg en Node.js-och MongoDB-app i Azure
 
@@ -43,7 +43,7 @@ Detta får du får lära dig:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här kursen behöver du:
 
@@ -129,7 +129,7 @@ För MongoDB använder den här självstudien [Azure Cosmos DB](/azure/documentd
 > Det finns en kostnad för att skapa Azure Cosmos DB-databaser i den här självstudien i din egen Azure-prenumeration. Om du vill använda ett kostnadsfritt Azure Cosmos DB-konto i sju dagar kan du använda funktionen [Testa Azure Cosmos DB kostnadsfritt](https://azure.microsoft.com/try/cosmosdb/). Klicka bara på knappen **Skapa** i MongoDB-panelen för att skapa en kostnadsfri MongoDB-databas på Azure. När databasen har skapats går du till **Anslutningssträng** i portalen och hämtar din Azure Cosmos DB-anslutningssträng för användning senare i självstudien.
 >
 
-Skapa ett Cosmos DB-konto med kommandot i Cloud Shell [`az cosmosdb create`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-create) .
+Skapa ett Cosmos DB-konto med kommandot i Cloud Shell [`az cosmosdb create`](/cli/azure/cosmosdb#az_cosmosdb_create) .
 
 I följande kommando ersätter du ett unikt Cosmos DB namn för *\<cosmosdb-name>* plats hållaren. Det här namnet används som en del av Cosmos DB-slutpunkten `https://<cosmosdb-name>.documents.azure.com/`, så namnet måste vara unikt för alla Cosmos DB-konton i Azure. Namnet får endast innehålla gemener, siffror och bindestreck och måste vara mellan 3 och 50 tecken långt.
 
@@ -163,7 +163,7 @@ I det här steget, ansluter du ditt MEAN.js-exempelprogram till en Cosmos DB-dat
 
 ### <a name="retrieve-the-database-key"></a>Hämta databasnyckeln
 
-För att ansluta till en Cosmos DB-databas behöver du databasnyckeln. I Cloud Shell använder du [`az cosmosdb list-keys`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-list-keys) kommandot för att hämta den primära nyckeln.
+För att ansluta till en Cosmos DB-databas behöver du databasnyckeln. I Cloud Shell använder du [`az cosmosdb list-keys`](/cli/azure/cosmosdb#az-cosmosdb-list-keys) kommandot för att hämta den primära nyckeln.
 
 ```azurecli-interactive
 az cosmosdb list-keys --name <cosmosdb-name> --resource-group myResourceGroup
@@ -276,7 +276,7 @@ I det här steget distribuerar du ditt MongoDB-anslutna Node.js-program till Azu
 
 Som standard håller MEAN.js-projektet _config/env/local-production.js_ utanför Git-lagringsplatsen. Så för Azure-appen använder du appinställningar för att definiera MongoDB-anslutningssträngen.
 
-Om du vill ange appinställningar använder du [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) kommandot i Cloud Shell. 
+Om du vill ange appinställningar använder du [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) kommandot i Cloud Shell. 
 
 I följande exempel konfigureras appinställningen `MONGODB_URI` i Azure-appen. Ersätt *\<app-name>* *\<cosmosdb-name>* *\<primary-master-key>* plats hållarna,, och.
 
@@ -482,7 +482,7 @@ Om du lade till några artiklar tidigare kan du fortfarande se dem. Befintliga d
 
 När Node.js-appen körs i Azure App Service kan du skicka konsolloggarna till din terminal. På så sätt kan du få samma diagnostikmeddelanden för att felsöka programfel.
 
-Om du vill starta logg strömningen använder du [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) kommandot i Cloud Shell.
+Om du vill starta logg strömningen använder du [`az webapp log tail`](/cli/azure/webapp/log#az-webapp-log-tail) kommandot i Cloud Shell.
 
 ```azurecli-interactive
 az webapp log tail --name <app-name> --resource-group myResourceGroup

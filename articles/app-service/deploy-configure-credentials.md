@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 653110b953b6947254d5063a9e389505d45ea4cb
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: e5793d21f27128162095e2d86e13006c5b6e7b7c
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149020"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008001"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Konfigurera autentiseringsuppgifter för distribution för Azure App Service
 [Azure App Service](./overview.md) stöder två typer av autentiseringsuppgifter för [lokal Git-distribution](deploy-local-git.md) och [FTP/S-distribution](deploy-ftp.md). Autentiseringsuppgifterna är inte desamma som dina autentiseringsuppgifter för Azure-prenumerationen.
@@ -23,7 +23,7 @@ Du kan konfigurera dina autentiseringsuppgifter på användar nivå på alla app
 
 ### <a name="in-the-cloud-shell"></a>I Cloud Shell
 
-Om du vill konfigurera distributions användaren i [Cloud Shell](https://shell.azure.com)kör du kommandot [AZ webapp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) . Ersätt \<username> och \<password> med ett användar namn och lösen ord för distributions användare. 
+Om du vill konfigurera distributions användaren i [Cloud Shell](https://shell.azure.com)kör du kommandot [AZ webapp Deployment User set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) . Ersätt \<username> och \<password> med ett användar namn och lösen ord för distributions användare. 
 
 - Användar namnet måste vara unikt inom Azure, och för lokala git-push-meddelanden får inte innehålla symbolen @. 
 - Lösen ordet måste innehålla minst åtta tecken, med två av följande tre element: bokstäver, siffror och symboler. 
@@ -38,15 +38,15 @@ JSON-utdata visar lösen ordet som `null` . Om du ser felet `'Conflict'. Details
 
 I Azure Portal måste du ha minst en app innan du kan komma åt sidan autentiseringsuppgifter för distribution. Så här konfigurerar du dina autentiseringsuppgifter på användar nivå:
 
-1. I [Azure Portal](https://portal.azure.com)väljer du **app Services**  >  **\<any_app>**  >  **distributions Center**  >  **FTP-**  >  **instrumentpanel**på menyn till vänster.
+1. I [Azure Portal](https://portal.azure.com)väljer du **app Services**  >  **\<any_app>**  >  **distributions Center**  >  **FTP-**  >  **instrumentpanel** på menyn till vänster.
 
     ![Visar hur du kan välja FTP-instrumentpanelen från distributions centret i Azure App Services.](./media/app-service-deployment-credentials/access-no-git.png)
 
-    Eller, om du redan har konfigurerat Git-distribution väljer du **app Services**  >  ** &lt; any_app>**  >  **distributions Center**  >  **FTP/autentiseringsuppgifter**.
+    Eller, om du redan har konfigurerat Git-distribution väljer du **app Services**  >  **&lt; any_app>**  >  **distributions Center**  >  **FTP/autentiseringsuppgifter**.
 
     ![Visar hur du kan välja FTP-instrumentpanelen från distributions centret i Azure App Services för din konfigurerade Git-distribution.](./media/app-service-deployment-credentials/access-with-git.png)
 
-2. Välj **användarautentiseringsuppgifter, konfigurera användar namn**och lösen ord och välj sedan **Spara autentiseringsuppgifter**.
+2. Välj **användarautentiseringsuppgifter, konfigurera användar namn** och lösen ord och välj sedan **Spara autentiseringsuppgifter**.
 
 När du har angett dina autentiseringsuppgifter för distribution kan du hitta användar namnet för *git* -distributionen på appens **översikts** sida.
 
@@ -68,9 +68,9 @@ Eftersom autentiseringsuppgifter på användar nivå är länkade till användar
 ## <a name="get-and-reset-app-level-credentials"></a><a name="appscope"></a>Hämta och Återställ autentiseringsuppgifter på program nivå
 Hämta autentiseringsuppgifter för program nivå:
 
-1. I [Azure Portal](https://portal.azure.com)väljer du **app Services**  >  ** &lt; any_app>**  >  **distributions Center**  >  **FTP/autentiseringsuppgifter**på menyn till vänster.
+1. I [Azure Portal](https://portal.azure.com)väljer du **app Services**  >  **&lt; any_app>**  >  **distributions Center**  >  **FTP/autentiseringsuppgifter** på menyn till vänster.
 
-2. Välj **autentiseringsuppgifter för appen**och kopiera sedan användar namnet eller lösen ordet genom att välja **Kopiera** länk.
+2. Välj **autentiseringsuppgifter för appen** och kopiera sedan användar namnet eller lösen ordet genom att välja **Kopiera** länk.
 
 Om du vill återställa autentiseringsuppgifter för program nivå väljer du **Återställ autentiseringsuppgifter** i samma dialog ruta.
 
@@ -96,7 +96,7 @@ Kör följande CLI-kommando om du vill inaktivera åtkomst till grundläggande a
 az resource update --resource-group <resource-group> --name scm --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
 ```
 
-Om du vill bekräfta att autentiseringsuppgifterna för publicerings profilen är blockerade på WebDeploy kan du försöka [publicera en webbapp med Visual Studio 2019](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019).
+Om du vill bekräfta att autentiseringsuppgifterna för publicerings profilen är blockerade på WebDeploy kan du försöka [publicera en webbapp med Visual Studio 2019](/visualstudio/deployment/quickstart-deploy-to-azure).
 
 ### <a name="disable-access-to-the-api"></a>Inaktivera åtkomst till API: et
 

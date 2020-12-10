@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 31ae4605b6cc9e26c89beea692fe61fcbda49c4c
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 22bdf93e7236ae5220a6bb7c6ead898628bb51a1
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621509"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007593"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure cache för Redis med Azures privata länk (offentlig för hands version)
 I den här artikeln får du lära dig hur du skapar ett virtuellt nätverk och en Azure-cache för Redis-instans med en privat slut punkt med hjälp av Azure Portal. Du får också lära dig hur du lägger till en privat slut punkt i en befintlig Azure-cache för Redis-instansen.
@@ -204,7 +204,7 @@ Följ dessa steg om du vill skapa en privat slut punkt.
 
 13. När meddelandet grön **verifiering har skickats** visas väljer du **skapa**.
 
-## <a name="faq"></a>Vanliga frågor
+## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
 
 ### <a name="why-cant-i-connect-to-a-private-endpoint"></a>Varför kan jag inte ansluta till en privat slut punkt?
 Om cacheminnet redan är ett VNet-inmatat cacheminne kan inte privata slut punkter användas med din cache-instans. Om din cache-instans använder en funktion som inte stöds (visas nedan) kan du inte ansluta till din privata slut punkts instans. Dessutom måste cache-instanser skapas efter 27 juli för att använda privata slut punkter.
@@ -224,7 +224,12 @@ PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/
 ```
 
 ### <a name="are-network-security-groups-nsg-enabled-for-private-endpoints"></a>Är nätverks säkerhets grupper (NSG) aktiverade för privata slut punkter?
-Nej, de är inaktiverade för privata slut punkter. Men om det finns andra resurser i under nätet kommer NSG tvång att gälla för dessa resurser.
+Nej, de är inaktiverade för privata slut punkter. Medan undernät som innehåller den privata slut punkten kan ha NSG kopplade till sig, gäller inte reglerna för trafik som bearbetas av den privata slut punkten. Du måste ha [aktiverat tvingande nätverks principer](../private-link/disable-private-endpoint-network-policy.md) för att distribuera privata slut punkter i ett undernät. NSG tillämpas fortfarande på andra arbets belastningar som finns i samma undernät. Vägar i alla klient under nät kommer att använda ett/32-prefix, men om du ändrar standardvärdet för routning krävs ett liknande UDR. 
+
+Styr trafiken genom att använda NSG regler för utgående trafik på käll klienter. Distribuera enskilda vägar med/32-prefix för att åsidosätta privata slut punkts vägar. NSG flödes loggar och övervaknings information för utgående anslutningar stöds fortfarande och kan användas
+
+### <a name="can-i-use-firewall-rules-with-private-endpoints"></a>Kan jag använda brand Väggs regler med privata slut punkter?
+Nej, det här är en aktuell begränsning för privata slut punkter. Den privata slut punkten kommer inte att fungera korrekt om brand Väggs regler har kon figurer ATS i cachen.
 
 ### <a name="how-can-i-connect-to-a-clustered-cache"></a>Hur kan jag ansluta till en klustrad cache?
 `publicNetworkAccess` måste anges till `Disabled` och det får bara finnas en privat slut punkts anslutning.

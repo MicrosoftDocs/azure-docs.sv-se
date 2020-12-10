@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: b6cadbf5c3a33c1a954a47f37b33ad8703f40b69
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2f1fe7c25327e8ecab9b450cab167391d8949b0a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350746"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008172"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Käll kontroll i Azure Synapse Studio
 
@@ -138,6 +138,24 @@ Om du ansluter till GitHub från Synapse Studio för första gången, följer du
 
 När du följer de här stegen kan arbets ytan ansluta till både offentliga och privata lagrings platser i din organisation. Om du inte kan ansluta kan du försöka rensa webbläsarens cacheminne och försöka igen.
 
+#### <a name="already-connected-to-github-using-a-personal-account"></a>Redan ansluten till GitHub med ett personligt konto
+
+Om du redan har anslutit till GitHub och bara har beviljats behörighet att komma åt ett personligt konto följer du stegen nedan för att ge behörighet till en organisation.
+
+1. Gå till GitHub och öppna **Inställningar**.
+
+    ![Öppna GitHub-inställningar](media/github-settings.png)
+
+1. Välj **program**. På fliken **auktoriserade OAuth-appar** bör du se *Azure-Synapse*.
+
+    ![Auktorisera OAuth-appar](media/authorize-app.png)
+
+1. Välj *Azure-Synapse* och ge åtkomst till din organisation.
+
+    ![Bevilja organisations behörighet](media/grant-organization-permission.png)
+
+När du har slutfört de här stegen kan arbets ytan ansluta till både offentliga och privata lagrings platser i din organisation.
+
 ## <a name="version-control"></a>Versionskontroll
 
 Med versions kontroll system (även kallat _käll kontroll_) kan utvecklare samar beta med kod och spåra ändringar. Käll kontroll är ett viktigt verktyg för projekt med flera utvecklare.
@@ -163,6 +181,7 @@ Som standard genererar Synapse Studio mallarna för arbets ytor och sparar dem i
 ```
 
 Azure Synapse Studio kan bara ha en publicerings gren i taget. När du anger en ny publicerings gren skulle den tidigare publicerings grenen inte tas bort. Om du vill ta bort den tidigare publicerings grenen tar du bort den manuellt.
+
 
 ### <a name="publish-code-changes"></a>Publicera kod ändringar
 
@@ -192,7 +211,7 @@ När du har tagit bort associationen med den aktuella lagrings platsen kan du ko
 
 ## <a name="best-practices-for-git-integration"></a>Metod tips för git-integrering
 
--   **Behörigheter**. När du har en git-lagringsplats ansluten till din arbets yta, kommer alla som har åtkomst till din git-lagrings platsen med vilken roll som helst i din arbets yta att kunna uppdatera artefakter, som SQL-skript, Notebook, Spark jobb definition, data uppsättning, data flöde och pipeline i git-läge. Normalt vill du inte att alla grupp medlemmar ska ha behörighet att uppdatera arbets ytan. Bevilja endast git-lagringsplatsen behörighet till Synapse-ytans artefakt författare. 
+-   **Behörigheter**. När du har en git-lagringsplats ansluten till din arbets yta, kommer alla som har åtkomst till din git-lagrings platsen med vilken roll som helst på arbets ytan att kunna uppdatera artefakter, som SQL-skript, Notebook, Spark jobb definition, data uppsättning, data flöde och pipeline i git-läge. Normalt vill du inte att alla grupp medlemmar ska ha behörighet att uppdatera arbets ytan. Bevilja endast git-lagringsplatsen behörighet till Synapse-ytans artefakt författare. 
 -   **Samarbete**. Vi rekommenderar att du inte tillåter direkta incheckningar till samarbets grenen. Den här begränsningen kan hjälpa till att förhindra buggar som varje incheckning går igenom en gransknings process för pull-begäran som beskrivs i [skapa funktions grenar](source-control.md#creating-feature-branches).
 -   **Synapse live-läge**. När du har publicerat i git-läge visas alla ändringar i Synapse live-läge. I Synapse live-läge är publicering inaktiverat. Och du kan visa, köra artefakter i Live-läge om du har beviljats rätt behörighet. 
 -   **Redigera artefakter i Studio**. Synapse Studio är den enda plats där du kan aktivera käll kontroll för arbets ytan och synkronisera ändringar till git automatiskt. Alla ändringar via SDK, PowerShell, kommer inte att synkroniseras till git. Vi rekommenderar att du alltid redigerar artefakt i Studio när git är aktiverat.

@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: 07e5e64bf064ff55a4723541f487c51a322d8205
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 9b909d041cf6acba0f3b12ad69018ebc371ff599
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561836"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005621"
 ---
 # <a name="scale-an-app-service-app-manually-using-azure-cli"></a>Skala en App Service-app manuellt med hjälp av Azure CLI
 
@@ -38,10 +38,10 @@ I det här skriptet används följande kommandon för att skapa en resursgrupp, 
 
 | Kommando | Kommentarer |
 |---|---|
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Skapar en resursgrupp där alla resurser lagras. |
-| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Skapar en App Service-plan. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Skapar en App Service-app. |
-| [`az appservice plan update`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-update) | Uppdaterar egenskaperna för App Service-planen. |
+| [`az group create`](/cli/azure/group#az-group-create) | Skapar en resursgrupp där alla resurser lagras. |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Skapar en App Service-plan. |
+| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Skapar en App Service-app. |
+| [`az appservice plan update`](/cli/azure/appservice/plan#az-appservice-plan-update) | Uppdaterar egenskaperna för App Service-planen. |
 
 ## <a name="next-steps"></a>Nästa steg
 

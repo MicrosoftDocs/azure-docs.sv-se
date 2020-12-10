@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d014a901791f16ecdcb9c3d5f0858a8626cc1072
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 54988c8bbc4a9c3d448ac35f31e97e2d20228209
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379085"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007576"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Använd moln grupper för att hantera roll tilldelningar i Azure Active Directory (för hands version)
 
@@ -52,14 +52,12 @@ Vi har utformat hur grupper tilldelas roller för att förhindra att den här ty
 
 Följande scenarier stöds inte just nu:  
 
-- Tilldela moln grupper till anpassade Azure AD-roller
-- Tilldela moln grupper till Azure AD-roller (inbyggda eller anpassade) över en administrativ enhet eller ett program omfång.
 - Tilldela lokala grupper till Azure AD-roller (inbyggda eller anpassade)
 
 ## <a name="known-issues"></a>Kända problem
 
 - Funktionen **Aktivera mellanlagrad distribution för hanterad användar inloggning** stöder inte tilldelning via grupp.
-- *Endast Azure AD P2-licensierade kunder* : Tilldela inte en grupp som aktiv till en roll via både Azure AD och PRIVILEGED Identity Management (PIM). Tilldela särskilt en roll till en roll tilldelnings grupp när den skapas *och* tilldela en roll till gruppen med hjälp av PIM senare. Detta leder till problem där användare inte kan se sina aktiva roll tilldelningar i PIM samt möjligheten att ta bort PIM-tilldelningen. Kvalificerade tilldelningar påverkas inte i det här scenariot. Om du försöker utföra den här tilldelningen kan du se oväntad funktion, till exempel:
+- *Endast Azure AD P2-licensierade kunder*: Tilldela inte en grupp som aktiv till en roll via både Azure AD och PRIVILEGED Identity Management (PIM). Tilldela särskilt en roll till en roll tilldelnings grupp när den skapas *och* tilldela en roll till gruppen med hjälp av PIM senare. Detta leder till problem där användare inte kan se sina aktiva roll tilldelningar i PIM samt möjligheten att ta bort PIM-tilldelningen. Kvalificerade tilldelningar påverkas inte i det här scenariot. Om du försöker utföra den här tilldelningen kan du se oväntad funktion, till exempel:
   - Slut tiden för roll tilldelningen kan visas felaktigt.
   - I PIM-portalen kan **Mina roller** endast visa en roll tilldelning, oavsett hur många metoder som tilldelningen beviljas med (via en eller flera grupper och direkt).
 - *Endast Azure AD P2-licensierade kunder* Även om du har tagit bort gruppen visas fortfarande en berättigad medlem av rollen i PIM-ANVÄNDARGRÄNSSNITTET. Det finns inget problem. Det är bara ett cache-problem i Azure Portal.  

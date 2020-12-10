@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure
-ms.date: 07/28/2020
+ms.date: 12/07/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: a42b07254deaf19d253f7523631018bfe7166a57
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 4e29bb0fee496af6a8c0fd30d5559bf865123c39
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339599"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007899"
 ---
 # <a name="azure-dedicated-hosts"></a>Dedikerade Azure-värdar
 
@@ -67,11 +67,6 @@ Exempel mal len Resource Manager som hittas [här](https://github.com/Azure/azur
 
 ## <a name="manual-vs-automatic-placement"></a>Manuell eller automatisk placering 
 
-> [!IMPORTANT]
-> Automatisk placering är för närvarande en offentlig för hands version.
-> Om du vill delta i förhands granskningen slutför du den för hands versionen av undersökningen på [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
-> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 När du skapar en virtuell dator i Azure kan du välja vilken dedikerad värd som ska användas. Du kan också använda alternativet för att automatiskt placera dina virtuella datorer på befintliga värdar i en värd grupp. 
 
 När du skapar en ny värd grupp måste du kontrol lera att inställningen för automatisk VM-placering är markerad. När du skapar den virtuella datorn väljer du värd gruppen och låter Azure välja den bästa värden för den virtuella datorn. 
@@ -91,11 +86,6 @@ Kända problem och begränsningar när du använder automatisk placering av virt
 
 Med skalnings uppsättningar för virtuella datorer kan du behandla en grupp med virtuella datorer som en enda resurs och tillämpa principer för tillgänglighet, hantering, skalning och dirigering som en grupp. Befintliga dedikerade värdar kan också användas för skalnings uppsättningar för virtuella datorer. 
 
-> [!IMPORTANT]
-> Virtual Machine Scale Sets på dedikerade värdar är för närvarande en offentlig för hands version.
-> Om du vill delta i förhands granskningen slutför du den för hands versionen av undersökningen på [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
-> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 När du skapar en skalnings uppsättning för virtuella datorer kan du ange att en befintlig värd grupp ska ha alla VM-instanser som skapats på dedikerade värdar.
 
 Följande krav gäller när du skapar en skalnings uppsättning för en virtuell dator i en särskild värd grupp:
@@ -109,7 +99,7 @@ Följande krav gäller när du skapar en skalnings uppsättning för en virtuell
 - De VM-storlekar som stöds för dina dedikerade värdar ska matcha det som används för din skalnings uppsättning.
 
 Inte alla inställningar för dirigering och optimering av skalnings uppsättning stöds av dedikerade värdar. Använd följande inställningar för din skalnings uppsättning: 
-- Inaktivera överetablering.
+- Överetablering rekommenderas inte och är inaktive rad som standard. Du kan aktivera överetablering, men allokeringen av skalnings uppsättningen kommer att Miss inaktive ras om värd gruppen inte har kapacitet för alla virtuella datorer, inklusive de överetablerade instanserna. 
 - Använda ScaleSetVM Orchestration-läge 
 - Använd inte närhets placerings grupper för samplacering
 
@@ -173,7 +163,7 @@ Storlekarna och maskin varu typerna varierar beroende på region. Mer informatio
 
 Azure övervakar och hanterar dina värdars hälso status. Följande tillstånd kommer att returneras när du frågar din värd:
 
-| Hälso tillstånd   | Beskrivning       |
+| Hälso tillstånd   | Description       |
 |----------|----------------|
 | Värd tillgänglig     | Det finns inga kända problem med värden.   |
 | Värd under undersökning  | Vi har problem med värden som vi tittar på. Detta är ett över gångs tillstånd som krävs för att Azure ska kunna testa och identifiera omfattningen och rotor saken för det problem som identifierats. Virtuella datorer som körs på värden kan påverkas. |

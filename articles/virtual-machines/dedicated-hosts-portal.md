@@ -5,25 +5,19 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 09/04/2020
+ms.date: 12/07/2020
 ms.author: cynthn
-ms.openlocfilehash: a6bef4944207e26f2de93daa89fa1418c5c44c4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b166363a8c64a4a4c5d34efa55dcaefa09d6df49
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91373190"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007950"
 ---
 # <a name="deploy-vms-and-scale-sets-to-dedicated-hosts-using-the-portal"></a>Distribuera virtuella datorer och skalnings uppsättningar till dedikerade värdar med hjälp av portalen 
 
 Den här artikeln vägleder dig genom hur du skapar en dedikerad Azure- [värd](dedicated-hosts.md) som värd för dina virtuella datorer. 
 
-
-> [!IMPORTANT]
-> Den här artikeln beskriver också automatisk placering av virtuella datorer och skalnings uppsättnings instanser. Automatisk placering är för närvarande en offentlig för hands version.
-> Om du vill delta i förhands granskningen slutför du den för hands versionen av undersökningen på [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
-> Om du vill gå till förhands gransknings funktionen i Azure Portal måste du använda den här URL: en: [https://aka.ms/vmssadh](https://aka.ms/vmssadh) .
-> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="limitations"></a>Begränsningar
 
@@ -42,17 +36,17 @@ Du kan också välja att använda både tillgänglighets zoner och fel domäner.
 I det här exemplet ska vi skapa en värd grupp med hjälp av 1 tillgänglighets zon och 2 fel domäner. 
 
 
-1. Öppna Azure [Portal](https://portal.azure.com). Använd den här URL: en om du vill testa för hands versionen för **automatisk placering** [https://aka.ms/vmssadh](https://aka.ms/vmssadh) .
+1. Öppna Azure [Portal](https://portal.azure.com). 
 1. Välj **skapa en resurs** i det övre vänstra hörnet.
 1. Sök efter **värd grupp** och välj sedan **värd grupper** från resultaten.
 1. På sidan **värd grupper** väljer du **skapa**.
 1. Välj den prenumeration som du vill använda och välj sedan **Skapa ny** för att skapa en ny resurs grupp.
 1. Skriv *myDedicatedHostsRG* som **namn** och välj sedan **OK**.
-1. För **värd grupp namn**skriver du *myHostGroup*.
-1. För **plats**väljer du **östra USA**.
-1. För **tillgänglighets zon**väljer du **1**.
-1. För **antal fel domäner**väljer du **2**.
-1. Om du använde URL: en för **automatisk placering** väljer du det här alternativet för att automatiskt tilldela virtuella datorer och skalnings uppsättnings instanser till en tillgänglig värd i gruppen.
+1. För **värd grupp namn** skriver du *myHostGroup*.
+1. För **plats** väljer du **östra USA**.
+1. För **tillgänglighets zon** väljer du **1**.
+1. För **antal fel domäner** väljer du **2**.
+1. Välj **automatisk placering** för att automatiskt tilldela virtuella datorer och skalnings uppsättnings instanser till en tillgänglig värd i gruppen.
 1. Välj **Granska + skapa** och vänta sedan på verifiering.
 1. När du ser meddelandet **valideringen som skickats** väljer du **skapa** för att skapa värd gruppen.
 
@@ -72,8 +66,8 @@ Om du anger ett fel domän antal för värd gruppen uppmanas du att ange fel dom
 1. På sidan **dedikerade värdar** väljer du **skapa**.
 1. Välj den prenumeration som du vill använda.
 1. Välj *myDedicatedHostsRG* som **resurs grupp**.
-1. I **instans information**skriver du in *värd* för **namnet** och väljer *östra USA* för platsen.
-1. I **maskin varu profil**väljer du *standard Es3 Family – typ 1* för **storleks familjen**, väljer *myHostGroup* för **värd gruppen** och väljer sedan *1* för **fel domänen**. Lämna standardvärdena för resten av fälten.
+1. I **instans information** skriver du in *värd* för **namnet** och väljer *östra USA* för platsen.
+1. I **maskin varu profil** väljer du *standard Es3 Family – typ 1* för **storleks familjen**, väljer *myHostGroup* för **värd gruppen** och väljer sedan *1* för **fel domänen**. Lämna standardvärdena för resten av fälten.
 1. När du är färdig väljer du **Granska + skapa** och väntar på verifiering.
 1. När du ser meddelandet **valideringen som skickats** väljer du **skapa** för att skapa värden.
 
@@ -83,36 +77,25 @@ Om du anger ett fel domän antal för värd gruppen uppmanas du att ange fel dom
 1. Sök efter och välj den avbildning som du vill använda i sökrutan ovanför Azure Marketplace-resurser och välj sedan **skapa**.
 1. På fliken **grundläggande** , under **projekt information**, se till att rätt prenumeration är markerad och välj sedan *myDedicatedHostsRG* som **resurs grupp**. 
 1. Under **Instansinformation** skriver du *myVM* för **Namn på virtuell dator** och väljer *USA, östra* som **Plats**.
-1. I **tillgänglighets alternativ** väljer du **tillgänglighets zon**väljer du *1* i list rutan.
-1. Välj **ändra storlek**som storlek. I listan över tillgängliga storlekar väljer du en från Esv3-serien, som **standard E2s v3**. Du kan behöva rensa filtret för att se alla tillgängliga storlekar.
+1. I **tillgänglighets alternativ** väljer du **tillgänglighets zon** väljer du *1* i list rutan.
+1. Välj **ändra storlek** som storlek. I listan över tillgängliga storlekar väljer du en från Esv3-serien, som **standard E2s v3**. Du kan behöva rensa filtret för att se alla tillgängliga storlekar.
 1. Fyll i resten av fälten på fliken **grundläggande** vid behov.
-1. Längst upp på sidan väljer du fliken **Avancerat** och i avsnittet **värd** väljer du *myHostGroup* för **värd grupp** *och värd* **.** 
+1. Om du vill ange vilken värd som ska användas för din virtuella dator väljer du fliken **Avancerat** på sidan och väljer *myHostGroup* för värd **grupp** *och värd* **för värd avsnittet** i avsnittet **värd** . Annars placeras den virtuella datorn automatiskt på en värd med kapacitet.
     ![Välj värd grupp och värd](./media/dedicated-hosts-portal/advanced.png)
 1. Låt de återstående standardinställningarna vara och välj sedan knappen **Granska + skapa** längst ned på sidan.
 1. När du ser meddelandet att valideringen har slutförts väljer du **skapa**.
 
 Det tar några minuter för den virtuella datorn att distribueras.
 
-## <a name="create-a-scale-set-preview"></a>Skapa en skalnings uppsättning (förhands granskning)
-
-> [!IMPORTANT]
-> Virtual Machine Scale Sets på dedikerade värdar är för närvarande en offentlig för hands version.
->
-> Om du vill delta i förhands granskningen slutför du den för hands versionen av undersökningen på [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
->
-> Om du vill gå till förhands gransknings funktionen i Azure Portal måste du använda den här URL: en: [https://aka.ms/vmssadh](https://aka.ms/vmssadh) .
->
-> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. 
->
-> Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+## <a name="create-a-scale-set"></a>Skapa en skalningsuppsättning 
 
 När du distribuerar en skalnings uppsättning anger du värd gruppen.
 
 1. Sök efter *skalnings uppsättning* och välj **skalnings uppsättningar för virtuella datorer** i listan.
 1. Välj **Lägg till** för att skapa en ny skalnings uppsättning.
 1. Fyll i fälten på fliken **grundläggande** som vanligt, men se till att du väljer en VM-storlek från serien som du valde för din dedikerade värd, som **standard E2s v3**.
-1. På fliken **Avancerat** väljer du **maximal spridning**vid **spridnings algoritm** .
-1. I **värd grupp**väljer du värd gruppen i list rutan. Om du nyss skapade gruppen kan det ta en minut att lägga till i listan.
+1. På fliken **Avancerat** väljer du **maximal spridning** vid **spridnings algoritm** .
+1. I **värd grupp** väljer du värd gruppen i list rutan. Om du nyss skapade gruppen kan det ta en minut att lägga till i listan.
 
 ## <a name="add-an-existing-vm"></a>Lägg till en befintlig virtuell dator 
 

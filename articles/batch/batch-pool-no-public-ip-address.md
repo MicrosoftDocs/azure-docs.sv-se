@@ -3,15 +3,15 @@ title: Skapa en Azure Batch-pool utan offentliga IP-adresser
 description: Lär dig hur du skapar en pool utan offentliga IP-adresser
 author: pkshultz
 ms.topic: how-to
-ms.date: 10/08/2020
+ms.date: 12/9/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: 09a5632f969117e69e68bbe0df2bfbab9a8a102b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 806e85fca0a509d56e248fc7779fba0f0a59a61d
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842143"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007678"
 ---
 # <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>Skapa en Azure Batch-pool utan offentliga IP-adresser
 
@@ -25,7 +25,8 @@ Om du vill begränsa åtkomsten till dessa noder och minska identifieringen av d
 
 > [!IMPORTANT]
 > Stöd för pooler utan offentliga IP-adresser i Azure Batch är för närvarande en offentlig för hands version för följande regioner: Frankrike, centrala, Asien, östra, västra centrala USA, södra centrala USA, västra USA 2, östra USA, norra Europa, östra USA 2, centrala USA, västra Europa, norra centrala USA, västra USA, östra Australien, Östra Japan, västra Japan.
-> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade.
+> Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Förutsättningar
 

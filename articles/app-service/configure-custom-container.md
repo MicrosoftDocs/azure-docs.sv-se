@@ -4,12 +4,12 @@ description: Lär dig hur du konfigurerar en anpassad behållare i Azure App Ser
 ms.topic: article
 ms.date: 09/22/2020
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 2aece0550d7b78ac4312e71b2671de4a64e4b86b
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: a7582bbb866a63820abbd959e06628eda5d57e29
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96557934"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007644"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Konfigurera en anpassad container för Azure App Service
 
@@ -345,7 +345,7 @@ SSH möjliggör säker kommunikation mellan en container och en klient. För att
 
 Appar med flera behållare som WordPress behöver beständig lagring för att fungera korrekt. För att aktivera den måste Docker-konfigurationen peka på en lagrings plats *utanför* din behållare. Lagrings platser i din behållare har inte kvar ändringar än starta om appar.
 
-Aktivera beständig lagring genom att ställa in `WEBSITES_ENABLE_APP_SERVICE_STORAGE` appens inställning med hjälp av kommandot [AZ webapp config appSettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) i [Cloud Shell](https://shell.azure.com).
+Aktivera beständig lagring genom att ställa in `WEBSITES_ENABLE_APP_SERVICE_STORAGE` appens inställning med hjälp av kommandot [AZ webapp config appSettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) i [Cloud Shell](https://shell.azure.com).
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE

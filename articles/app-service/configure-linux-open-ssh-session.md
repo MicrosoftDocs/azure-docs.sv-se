@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: d46aacc441b412a117d906e0201a9bed6046a338
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7178b8079bbb2411e0b38c3ef59a9981fb2d55be
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961613"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005247"
 ---
 # <a name="open-an-ssh-session-to-a-linux-container-in-azure-app-service"></a>Öppna en SSH-session till en Linux-behållare i Azure App Service
 
@@ -39,9 +39,9 @@ Se [Konfigurera SSH i en anpassad behållare](configure-custom-container.md#enab
 
 Med TCP-tunnlar kan du skapa en nätverks anslutning mellan din utvecklings dator och Web App for Containers över en autentiserad WebSocket-anslutning. Du kan öppna en SSH-session med din behållare som körs i App Service från valfri klient.
 
-För att komma igång måste du installera [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest). Öppna [Azure Cloud Shell](../cloud-shell/overview.md)om du vill se hur det fungerar utan att installera Azure CLI. 
+För att komma igång måste du installera [Azure CLI](/cli/azure/install-azure-cli). Öppna [Azure Cloud Shell](../cloud-shell/overview.md)om du vill se hur det fungerar utan att installera Azure CLI. 
 
-Öppna en fjärr anslutning till din app med kommandot [AZ webapp Remote-Connection Create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) . Ange _\<subscription-id>_ _\<group-name>_ och \_ \<app-name> _ för din app.
+Öppna en fjärr anslutning till din app med kommandot [AZ webapp Remote-Connection Create](/cli/azure/ext/webapp/webapp/remote-connection#ext-webapp-az-webapp-remote-connection-create) . Ange _\<subscription-id>_ _\<group-name>_ och \_ \<app-name> _ för din app.
 
 ```azurecli-interactive
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &

@@ -7,15 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 10/16/2020
+ms.date: 12/09/2020
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: a5b019068368f1c0c076f5a1ed157c288bb7169c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 06a9a955e8a963f94b1885abf5a920cb96c01940
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479926"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007486"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Visa en lista med Azures roll tilldelningar med hjälp av Azure Portal
 
@@ -26,7 +25,7 @@ ms.locfileid: "92479926"
 
 ## <a name="list-role-assignments-for-a-user-or-group"></a>Lista roll tilldelningar för en användare eller grupp
 
-Det enklaste sättet att se de roller som har tilldelats en användare eller grupp i en prenumeration är att använda fönstret **roll tilldelningar i Azure** .
+Ett snabbt sätt att se de roller som tilldelats en användare eller grupp i en prenumeration är att använda fönstret **roll tilldelningar i Azure** .
 
 1. I Azure Portal väljer du **alla tjänster** på Azure Portal-menyn.
 
@@ -56,19 +55,19 @@ Användare som har tilldelats [ägar](built-in-roles.md#owner) rollen för en pr
 
 1. Bläddra till avsnittet **ägare** om du vill se alla användare som har tilldelats ägar rollen för den här prenumerationen.
 
-   ![Åtkomst kontroll för prenumeration – fliken roll tilldelningar](./media/role-assignments-list-portal/access-control-role-assignments-subscription.png)
+   ![Åtkomst kontroll för prenumeration – fliken roll tilldelningar](./media/role-assignments-list-portal/sub-access-control-role-assignments-owners.png)
 
 ## <a name="list-role-assignments-at-a-scope"></a>Lista roll tilldelningar i ett omfång
 
-1. I Azure Portal klickar du på **alla tjänster** och väljer sedan omfånget. Du kan till exempel välja **hanterings grupper**, **prenumerationer**, **resurs grupper**eller en resurs.
+1. I Azure Portal klickar du på **alla tjänster** och väljer sedan omfånget. Du kan till exempel välja **hanterings grupper**, **prenumerationer**, **resurs grupper** eller en resurs.
 
 1. Klicka på den aktuella resursen.
 
-1. Klicka på **Åtkomstkontroll (IAM)** .
+1. Klicka på **Åtkomstkontroll (IAM)**.
 
 1. Klicka på fliken **roll tilldelningar** för att visa alla roll tilldelningar i det här omfånget.
 
-   ![Åtkomst kontroll – fliken roll tilldelningar](./media/role-assignments-list-portal/access-control-role-assignments.png)
+   ![Åtkomst kontroll – fliken roll tilldelningar](./media/role-assignments-list-portal/rg-access-control-role-assignments.png)
 
    På fliken roll tilldelningar kan du se vem som har åtkomst till det här omfånget. Observera att vissa roller är begränsade till **den här resursen** medan andra är **(Ärvda)** från ett annat omfång. Åtkomst tilldelas antingen specifikt till den här resursen eller ärvts från en tilldelning till det överordnade omfånget.
 
@@ -76,27 +75,31 @@ Användare som har tilldelats [ägar](built-in-roles.md#owner) rollen för en pr
 
 Om du vill visa en lista över åtkomsten för en användare, grupp, tjänstens huvud namn eller en hanterad identitet anger du roll tilldelningarna. Följ dessa steg om du vill visa roll tilldelningarna för en enskild användare, grupp, tjänstens huvud namn eller hanterad identitet i ett visst omfång.
 
-1. I Azure Portal klickar du på **alla tjänster** och väljer sedan omfånget. Du kan till exempel välja **hanterings grupper**, **prenumerationer**, **resurs grupper**eller en resurs.
+1. I Azure Portal klickar du på **alla tjänster** och väljer sedan omfånget. Du kan till exempel välja **hanterings grupper**, **prenumerationer**, **resurs grupper** eller en resurs.
 
 1. Klicka på den aktuella resursen.
 
-1. Klicka på **Åtkomstkontroll (IAM)** .
+1. Klicka på **Åtkomstkontroll (IAM)**.
 
 1. Klicka på fliken **Kontrollera åtkomst**.
 
-    ![Åtkomstkontroll – fliken Kontrollera åtkomst](./media/role-assignments-list-portal/access-control-check-access.png)
+    ![Åtkomst kontroll för resurs grupp-kontrol lera fliken åtkomst](./media/role-assignments-list-portal/rg-access-control-check-access.png)
 
-1. I listan **Hitta** väljer du den typ av säkerhetsprincip som du vill kontrollera åtkomst för.
+1. I listan **Sök** väljer du den användare, grupp, tjänstens huvud namn eller hanterade identitet som du vill kontrol lera åtkomsten för.
 
 1. I sökrutan anger du en sträng för att söka i katalogen efter visningsnamn, e-postadresser eller objektidentifierare.
 
-    ![Välj lista för Kontrollera åtkomst](./media/role-assignments-list-portal/check-access-select.png)
+    ![Välj lista för Kontrollera åtkomst](./media/shared/rg-check-access-select.png)
 
 1. Klicka på säkerhetsprincipen för att öppna fönsterrutan **tilldelningar**.
 
-    ![fönsterrutan tilldelningar](./media/role-assignments-list-portal/check-access-assignments.png)
+    I det här fönstret kan du se åtkomsten för det valda säkerhets objektet i det här omfånget och ärvts till det här omfånget. Tilldelningar i underordnade omfattningar visas inte. Följande tilldelningar visas:
 
-    I den här fönsterrutan kan du se de roller som tilldelats till den valda säkerhetsprincipen och omfånget. Om det finns några nekande tilldelningar i det här omfånget eller som ärvts till det här omfånget visas de.
+    - Roll tilldelningar som har lagts till med Azure RBAC.
+    - Neka tilldelningar som har lagts till med Azure-ritningar eller Azure-hanterade appar.
+    - Klassisk tjänst administratör eller Co-Administrator tilldelningar för klassiska distributioner. 
+
+    ![fönsterrutan tilldelningar](./media/shared/rg-check-access-assignments-user.png)
 
 ## <a name="list-role-assignments-for-a-managed-identity"></a>Lista roll tilldelningar för en hanterad identitet
 
@@ -106,11 +109,11 @@ Du kan lista roll tilldelningar för systemtilldelade och användarspecifika han
 
 1. I Azure Portal öppnar du en systemtilldelad hanterad identitet.
 
-1. Klicka på **identitet**i den vänstra menyn.
+1. Klicka på **identitet** i den vänstra menyn.
 
     ![Systemtilldelad hanterad identitet](./media/shared/identity-system-assigned.png)
 
-1. Under **behörigheter**klickar du på **roll tilldelningar för Azure**.
+1. Under **behörigheter** klickar du på **roll tilldelningar för Azure**.
 
     Du ser en lista över roller som har tilldelats den valda systemtilldelade hanterade identiteten vid olika omfång, till exempel hanterings grupp, prenumeration, resurs grupp eller resurs. Den här listan innehåller alla roll tilldelningar som du har behörighet att läsa.
 
@@ -152,11 +155,11 @@ När du hämtar roll tilldelningar bör du tänka på följande kriterier:
 
 Följ dessa steg om du vill hämta roll tilldelningar i ett omfång.
 
-1. I Azure Portal klickar du på **alla tjänster** och väljer sedan det omfång där du vill hämta roll tilldelningarna. Du kan till exempel välja **hanterings grupper**, **prenumerationer**, **resurs grupper**eller en resurs.
+1. I Azure Portal klickar du på **alla tjänster** och väljer sedan det omfång där du vill hämta roll tilldelningarna. Du kan till exempel välja **hanterings grupper**, **prenumerationer**, **resurs grupper** eller en resurs.
 
 1. Klicka på den aktuella resursen.
 
-1. Klicka på **Åtkomstkontroll (IAM)** .
+1. Klicka på **Åtkomstkontroll (IAM)**.
 
 1. Klicka på **Hämta roll tilldelningar** för att öppna fönstret Hämta roll tilldelningar.
 

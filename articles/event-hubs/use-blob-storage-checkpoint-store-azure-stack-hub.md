@@ -1,25 +1,22 @@
 ---
-title: Använd Blob Storage som kontroll punkts Arkiv på Azure Stack Hub (för hands version)
-description: Den här artikeln beskriver hur du använder Blob Storage som en kontroll punkts lagring i Event Hubs på Azure Stack hubben (för hands version).
+title: Använda Blob Storage som kontrollpunktslager på Azure Stack Hub
+description: Den här artikeln beskriver hur du använder Blob Storage som en kontroll punkts lagring i Event Hubs på Azure Stack hubben.
 ms.topic: how-to
-ms.date: 06/23/2020
-ms.openlocfilehash: 9da525decfb7b972f05af17c259836d0b17bb21e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 12/09/2020
+ms.openlocfilehash: 07d7cf844480a9a88468c17cecc7ca38cca5d176
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021243"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007831"
 ---
-# <a name="use-blob-storage-as-checkpoint-store---event-hubs-on-azure-stack-hub-preview"></a>Använd Blob Storage som kontroll punkts lager-Event Hubs på Azure Stack hubben (för hands version)
+# <a name="use-blob-storage-as-checkpoint-store---event-hubs-on-azure-stack-hub"></a>Använd Blob Storage som kontroll punkts lager-Event Hubs på Azure Stack hubben
 Om du använder Azure Blob Storage som kontroll punkts Arkiv i en miljö som har stöd för en annan version av Storage BLOB SDK än de som vanligt vis är tillgängliga på Azure, måste du använda kod för att ändra Storage Service API-versionen till den version som stöds av den aktuella miljön. Om du till exempel kör [Event Hubs på en Azure Stack hubb version 2002](/azure-stack/user/event-hubs-overview)är den högsta tillgängliga versionen för lagrings tjänsten version 2017-11-09. I så fall måste du använda kod för att rikta Storage Service API-versionen till 2017-11-09. Ett exempel på hur du riktar in en speciell Storage API-version finns i följande exempel på GitHub: 
 
 - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/)
 - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java). 
 - [Java Script](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) eller  [typescript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts) 
 - Python – [synkron](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py), [asynkron](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)
-
-> [!IMPORTANT]
-> Event Hubs på Azure Stack Hub är för närvarande en för [hands version](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) och är kostnads fri. 
 
 Om du kör Event Hubs mottagare som använder Blob Storage som kontroll punkts arkiv utan att behöva rikta den version som Azure Stack Hub har stöd för, får du följande fel meddelande:
 

@@ -3,12 +3,12 @@ title: Köra din app från ett ZIP-paket
 description: Distribuera appens ZIP-paket med Atomicitet. Förbättra förutsägbarheten och tillförlitligheten för appens beteende under ZIP-distributions processen.
 ms.topic: article
 ms.date: 01/14/2020
-ms.openlocfilehash: 5cc909d79b3f5ea2b4c6a3da12bc7250addbe00c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3440653455626af4e3705d89349a66d6bf2fbfc0
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77920730"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008137"
 ---
 # <a name="run-your-app-in-azure-app-service-directly-from-a-zip-package"></a>Kör din app i Azure App Service direkt från ett ZIP-paket
 
@@ -41,13 +41,13 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 
 ## <a name="run-the-package"></a>Kör paketet
 
-Det enklaste sättet att köra ett paket i App Service är med Azure CLI [-distributions källans konfigurations-zip-](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) kommando. Exempel:
+Det enklaste sättet att köra ett paket i App Service är med Azure CLI [-distributions källans konfigurations-zip-](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-zip) kommando. Exempel:
 
 ```azurecli-interactive
 az webapp deployment source config-zip --resource-group <group-name> --name <app-name> --src <filename>.zip
 ```
 
-Eftersom `WEBSITE_RUN_FROM_PACKAGE` appens inställning är inställd extraherar det här kommandot inte paket innehållet till *katalogen d:\home\site\wwwroot* -katalogen för din app. I stället överförs ZIP-filen som-är till *D:\home\data\SitePackages*och skapar en *packagename.txt* i samma katalog som innehåller namnet på zip-paketet som ska läsas in vid körning. Om du överför ZIP-paketet på ett annat sätt (t. ex. [FTP](deploy-ftp.md)) måste du skapa *D:\home\data\SitePackages* -katalogen och *packagename.txt* -filen manuellt.
+Eftersom `WEBSITE_RUN_FROM_PACKAGE` appens inställning är inställd extraherar det här kommandot inte paket innehållet till *katalogen d:\home\site\wwwroot* -katalogen för din app. I stället överförs ZIP-filen som-är till *D:\home\data\SitePackages* och skapar en *packagename.txt* i samma katalog som innehåller namnet på zip-paketet som ska läsas in vid körning. Om du överför ZIP-paketet på ett annat sätt (t. ex. [FTP](deploy-ftp.md)) måste du skapa *D:\home\data\SitePackages* -katalogen och *packagename.txt* -filen manuellt.
 
 Kommandot startar också om appen. Eftersom `WEBSITE_RUN_FROM_PACKAGE` har angetts monterar App Service det överförda paketet som den skrivskyddade *wwwroot* -katalogen och kör appen direkt från den monterade katalogen.
 

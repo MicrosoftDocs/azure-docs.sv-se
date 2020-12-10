@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: b0e9929d851133700e5b0475d5e5aef8b0b4ca18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4d9fc6e597fb51f607a3e2833ae6ddd7d9281fc
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88959758"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97006349"
 ---
 # <a name="connect-an-app-service-app-to-an-azure-cache-for-redis-using-cli"></a>Ansluta en App Service-app till Azure Cache for Redis med hjälp av CLI
 
@@ -36,14 +36,14 @@ Om du väljer att installera och använda CLI-gränssnittet lokalt måste du ha 
 
 I det här skriptet används följande kommandon för att skapa en resursgrupp, App Service-app, Azure Cache for Redis och alla relaterade resurser. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
 
-| Kommando | Obs! |
+| Kommando | Kommentarer |
 |---|---|
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Skapar en resursgrupp där alla resurser lagras. |
-| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Skapar en App Service-plan. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Skapar en App Service-app. |
-| [`az redis create`](/cli/azure/redis?view=azure-cli-latest#az-redis-create) | Skapa ny Azure Cache for Redis-instans. |
-| [`az redis list-keys`](/cli/azure/redis?view=azure-cli-latest#az-redis-list-keys) | Visar åtkomstnycklarna för Azure Cache for Redis-instansen. |
-| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Skapar eller uppdaterar en appinställning för en App Service-app. Appinställningarna visas som miljövariabler för din app. |
+| [`az group create`](/cli/azure/group#az-group-create) | Skapar en resursgrupp där alla resurser lagras. |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Skapar en App Service-plan. |
+| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Skapar en App Service-app. |
+| [`az redis create`](/cli/azure/redis#az-redis-create) | Skapa ny Azure Cache for Redis-instans. |
+| [`az redis list-keys`](/cli/azure/redis#az-redis-list-keys) | Visar åtkomstnycklarna för Azure Cache for Redis-instansen. |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) | Skapar eller uppdaterar en appinställning för en App Service-app. Appinställningarna visas som miljövariabler för din app. |
 
 ## <a name="next-steps"></a>Nästa steg
 

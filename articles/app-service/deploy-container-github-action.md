@@ -7,12 +7,12 @@ ms.date: 12/04/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: 76d82695f0f43638e840589c52d6713ae36c1608
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: ae587b9501c9c68600ff880744d311ba966923ed
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607814"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008035"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Distribuera en anpassad behållare för att App Service med GitHub-åtgärder
 
@@ -22,7 +22,7 @@ Ett arbets flöde definieras av en YAML-fil (. yml) i `/.github/workflows/` sök
 
 För ett arbets flöde för Azure App Service container har filen tre delar:
 
-|Avsnitt  |Uppgifter  |
+|Avsnitt  |Aktiviteter  |
 |---------|---------|
 |**Autentisering** | 1. Hämta ett huvud namn för tjänsten eller en publicerings profil. <br /> 2. skapa en GitHub-hemlighet. |
 |**Skapa** | 1. skapa miljön. <br /> 2. Bygg behållar avbildningen. |
@@ -56,7 +56,7 @@ En publicerings profil är en autentiseringsuppgift på program nivå. Konfigure
 
 # <a name="service-principal"></a>[Tjänstens huvudnamn](#tab/service-principal)
 
-Du kan skapa ett [huvud namn för tjänsten](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) med kommandot [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) i [Azure CLI](/cli/azure/). Kör det här kommandot med [Azure Cloud Shell](https://shell.azure.com/) i Azure Portal eller genom att välja knappen **prova** .
+Du kan skapa ett [huvud namn för tjänsten](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) med kommandot [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) i [Azure CLI](/cli/azure/). Kör det här kommandot med [Azure Cloud Shell](https://shell.azure.com/) i Azure Portal eller genom att välja knappen **prova** .
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor \

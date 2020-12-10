@@ -8,19 +8,19 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 05/07/2020
-ms.openlocfilehash: 9777e4f9b2205d2f6cdf6158b035e2a18403d69f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/08/2020
+ms.openlocfilehash: ea2b44d05d25756a16b6b84f0734966b1f579848
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541466"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007610"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>Förbättra LUIS-appen genom att granska slut punkts yttranden
 
 Processen för att granska slut punkts yttranden för korrekta förutsägelser kallas [aktiv inlärning](luis-concept-review-endpoint-utterances.md). Active Learning samlar in slut punkts frågor och väljer användarens slut punkt yttranden att det är osäkert. Du kan granska dessa yttranden för att välja avsikten och markera entiteter för dessa verkliga yttranden. Acceptera ändringarna till dina exempeltalindata samt träna och publicera. LUIS identifierar sedan yttranden mer noggrant.
 
-## <a name="enable-active-learning"></a>Aktivera aktiv inlärning
+## <a name="log-user-queries-to-enable-active-learning"></a>Logga användar frågor för att aktivera aktiv inlärning
 
 Om du vill aktivera aktiv inlärning måste du logga användar frågor. Detta åstadkommer du genom att anropa [slut punkts frågan](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint) med `log=true` parametern QueryString och värdet.
 
@@ -29,7 +29,7 @@ Använd LUIS-portalen för att skapa rätt slut punkts fråga.
 1. Logga in på [Luis-portalen](https://www.luis.ai)och välj din **prenumerations** -och **redigerings resurs** för att se vilka appar som tilldelats den här redigerings resursen.
 1. Öppna din app genom att välja namnet på sidan **Mina appar** .
 1. Gå till avsnittet **Hantera** och välj sedan **Azure-resurser**.
-1. För den tilldelade förutsägelse resursen väljer du **ändra**frågeparametrar.
+1. För den tilldelade förutsägelse resursen väljer du **ändra** frågeparametrar.
 
     > [!div class="mx-imgBorder"]
     > ![Skärm bild som visar länken Ändra frågeparametrar.](./media/luis-tutorial-review-endpoint-utterances/azure-portal-change-query-url-settings.png)

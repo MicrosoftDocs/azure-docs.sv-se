@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/31/2020
 ms.author: msangapu
 ms.custom: cli-validate, devx-track-azurecli
-ms.openlocfilehash: f2f1713866eb06b4b514ff988ef3e010491e1efc
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e73d681cadaddd32290cec40ae7a9c8f6e8ac758
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131351"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005658"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Självstudie: Skapa en app med flera behållare (förhandsversion) med Web App for Containers
 
@@ -21,7 +21,7 @@ ms.locfileid: "93131351"
 
 Med [Web App for Containers](overview.md#app-service-on-linux) får du ett flexibelt sätt att använda Docker-avbildningar. I den här självstudien lär du dig hur du skapar en app med flera container med hjälp av WordPress och MySQL. Du genomför den här självstudiekursen i Cloud Shell men du kan även köra dessa kommandon lokalt med kommandoradsgränssnittet [Azure CLI](/cli/azure/install-azure-cli) (2.0.32 eller senare).
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 > * Konvertera en Docker Compose-konfiguration så att den fungerar med Web App for Containers
@@ -63,7 +63,7 @@ cd multicontainerwordpress
 
 [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
 
-I Cloud Shell skapar du en resurs grupp med [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) kommandot. I följande exempel skapas en resursgrupp med namnet *myResourceGroup* på platsen *South Central US* (USA, södra centrala). Om du vill se alla platser som stöds för App Service på Linux på **Standard** -nivån kör du kommandot [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations).
+I Cloud Shell skapar du en resurs grupp med [`az group create`](/cli/azure/group#az-group-create) kommandot. I följande exempel skapas en resursgrupp med namnet *myResourceGroup* på platsen *South Central US* (USA, södra centrala). Om du vill se alla platser som stöds för App Service på Linux på **Standard**-nivån kör du kommandot [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice#az-appservice-list-locations).
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "South Central US"
@@ -75,7 +75,7 @@ När kommandot har slutförts visar JSON-utdata resursgruppens egenskaper.
 
 ## <a name="create-an-azure-app-service-plan"></a>Skapa en Azure App Service-plan
 
-I Cloud Shell skapar du ett App Service plan i resurs gruppen med [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) kommandot.
+I Cloud Shell skapar du ett App Service plan i resurs gruppen med [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) kommandot.
 
 <!-- [!INCLUDE [app-service-plan](app-service-plan-linux.md)] -->
 
@@ -109,7 +109,7 @@ När App Service-planen har skapats visas information av Cloud Shell. Informatio
 
 ## <a name="create-a-docker-compose-app"></a>Skapa en Docker Compose-app
 
-I Cloud Shell skapar du en [webbapp](overview.md) med flera containrar i `myAppServicePlan` App Service-planen med kommandot [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). Glöm inte att ersätta _\<app-name>_ med ett unikt namn på appen.
+I Cloud Shell skapar du en [webbapp](overview.md) med flera containrar i `myAppServicePlan` App Service-planen med kommandot [az webapp create](/cli/azure/webapp#az-webapp-create). Glöm inte att ersätta _\<app-name>_ med ett unikt namn på appen.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
@@ -146,7 +146,7 @@ Det är inte rekommenderat att använda databascontainrar i en produktionsmiljö
 
 ### <a name="create-an-azure-database-for-mysql-server"></a>Skapa en Azure Database för MySQL-server
 
-Skapa en Azure Database for MySQL-server med [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) kommandot.
+Skapa en Azure Database for MySQL-server med [`az mysql server create`](/cli/azure/mysql/server#az-mysql-server-create) kommandot.
 
 I följande kommando byter du namn på MySQL-servern där du ser plats hållaren _&lt; MySQL-Server-Name>_ placeholder (giltiga tecken är `a-z` , `0-9` och `-` ). Det här namnet är en del av MySQL-serverns värdnamn (`<mysql-server-name>.database.windows.net`) och den måste vara globalt unik.
 
@@ -171,7 +171,7 @@ Det kan ta några minuter att skapa servern. När MySQL-servern skapas visar Clo
 
 ### <a name="configure-server-firewall"></a>Konfigurera serverbrandväggen
 
-Skapa en brand Väggs regel för MySQL-servern för att tillåta klient anslutningar med hjälp av [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az-mysql-server-firewall-rule-create) kommandot. När både start-IP och slut-IP har angetts till 0.0.0.0 öppnas brandväggen endast för andra Azure-resurser.
+Skapa en brand Väggs regel för MySQL-servern för att tillåta klient anslutningar med hjälp av [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-create) kommandot. När både start-IP och slut-IP har angetts till 0.0.0.0 öppnas brandväggen endast för andra Azure-resurser.
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name allAzureIPs --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
@@ -205,7 +205,7 @@ När databasen skapas visar Cloud Shell information som ser ut ungefär så här
 
 För att ansluta WordPress-appen till den nya MySQL-servern konfigurerar du ett par WordPress-specifika miljövariabler, inklusive sökvägen för certifikatutfärdare för SSL som definieras av `MYSQL_SSL_CA`. [Baltimore CyberTrust Root](https://www.digicert.com/digicert-root-certificates.htm) från [DigiCert](https://www.digicert.com/) tillhandahålls i den [anpassade avbildningen](#use-a-custom-image-for-mysql-ssl-and-other-configurations) nedan.
 
-Du kan göra dessa ändringar med hjälp av kommandot [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) i Cloud Shell. Appinställningar är skifteslägeskänsliga och avgränsas med blanksteg.
+Du kan göra dessa ändringar med hjälp av kommandot [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) i Cloud Shell. Appinställningar är skifteslägeskänsliga och avgränsas med blanksteg.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WORDPRESS_DB_HOST="<mysql-server-name>.mysql.database.azure.com" WORDPRESS_DB_USER="adminuser@<mysql-server-name>" WORDPRESS_DB_PASSWORD="My5up3rStr0ngPaSw0rd!" WORDPRESS_DB_NAME="wordpress" MYSQL_SSL_CA="BaltimoreCyberTrustroot.crt.pem"
@@ -279,7 +279,7 @@ Spara dina ändringar och avsluta nano. Använd kommandot `^O` för att spara oc
 
 ### <a name="update-app-with-new-configuration"></a>Uppdatera appen med en ny konfiguration
 
-I Cloud Shell konfigurerar du om [webappen](overview.md) med flera containrar med kommandot [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set). Glöm inte att ersätta _\<app-name>_ med namnet på den webbapp som du skapade tidigare.
+I Cloud Shell konfigurerar du om [webappen](overview.md) med flera containrar med kommandot [az webapp config container set](/cli/azure/webapp/config/container#az-webapp-config-container-set). Glöm inte att ersätta _\<app-name>_ med namnet på den webbapp som du skapade tidigare.
 
 ```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app-name> --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
@@ -308,7 +308,7 @@ Din app med flera containrar körs nu i Web App for Containers. Men om du instal
 
 ### <a name="configure-environment-variables"></a>Konfigurera miljövariabler
 
-Om du vill använda beständig lagring aktiverar du den här inställningen i App Service. Du kan göra denna ändring med hjälp av kommandot [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) i Cloud Shell. Appinställningar är skifteslägeskänsliga och avgränsas med blanksteg.
+Om du vill använda beständig lagring aktiverar du den här inställningen i App Service. Du kan göra denna ändring med hjälp av kommandot [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) i Cloud Shell. Appinställningar är skifteslägeskänsliga och avgränsas med blanksteg.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
@@ -355,7 +355,7 @@ services:
 
 ### <a name="update-app-with-new-configuration"></a>Uppdatera appen med en ny konfiguration
 
-I Cloud Shell konfigurerar du om [webappen](overview.md) med flera containrar med kommandot [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set). Glöm inte att ersätta _\<app-name>_ med ett unikt namn på appen.
+I Cloud Shell konfigurerar du om [webappen](overview.md) med flera containrar med kommandot [az webapp config container set](/cli/azure/webapp/config/container#az-webapp-config-container-set). Glöm inte att ersätta _\<app-name>_ med ett unikt namn på appen.
 
 ```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app-name> --multicontainer-config-type compose --multicontainer-config-file docker-compose-wordpress.yml
@@ -415,7 +415,7 @@ services:
 
 ### <a name="configure-environment-variables"></a>Konfigurera miljövariabler
 
-Aktivera inställningen `WP_REDIS_HOST` i App Service så att du kan använda Redis. Det här är en *obligatorisk inställning* för att WordPress ska kunna kommunicera med Redis-värden. Du kan göra denna ändring med hjälp av kommandot [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) i Cloud Shell. Appinställningar är skifteslägeskänsliga och avgränsas med blanksteg.
+Aktivera inställningen `WP_REDIS_HOST` i App Service så att du kan använda Redis. Det här är en *obligatorisk inställning* för att WordPress ska kunna kommunicera med Redis-värden. Du kan göra denna ändring med hjälp av kommandot [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) i Cloud Shell. Appinställningar är skifteslägeskänsliga och avgränsas med blanksteg.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WP_REDIS_HOST="redis"
@@ -441,7 +441,7 @@ När appinställningen har skapats visar Cloud Shell information som ser ut unge
 
 ### <a name="update-app-with-new-configuration"></a>Uppdatera appen med en ny konfiguration
 
-I Cloud Shell konfigurerar du om [webappen](overview.md) med flera containrar med kommandot [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set). Glöm inte att ersätta _\<app-name>_ med ett unikt namn på appen.
+I Cloud Shell konfigurerar du om [webappen](overview.md) med flera containrar med kommandot [az webapp config container set](/cli/azure/webapp/config/container#az-webapp-config-container-set). Glöm inte att ersätta _\<app-name>_ med ett unikt namn på appen.
 
 ```azurecli-interactive
 az webapp config container set --resource-group myResourceGroup --name <app-name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml
@@ -466,17 +466,17 @@ Utför stegen och installera WordPress.
 
 ### <a name="connect-wordpress-to-redis"></a>Ansluta WordPress till Redis
 
-Logga in på WordPress-administratören. I det vänstra navigerings fältet väljer du **plugin** -program och väljer sedan **installerade plugin** -program.
+Logga in på WordPress-administratören. I det vänstra navigerings fältet väljer du **plugin**-program och väljer sedan **installerade plugin**-program.
 
 ![Välj WordPress-plugin-program][2]
 
 Visa alla plugin-program här
 
-På sidan för plugin-program letar du rätt på **Redis Object Cache** och klickar på **Aktivera** .
+På sidan för plugin-program letar du rätt på **Redis Object Cache** och klickar på **Aktivera**.
 
 ![Aktivera Redis][3]
 
-Klicka på **Inställningar** .
+Klicka på **Inställningar**.
 
 ![Klicka på Inställningar][4]
 
@@ -488,7 +488,7 @@ WordPress ansluter till Redis-servern. Anslutningens **status** visas på samma 
 
 ![WordPress ansluter till Redis-servern. Anslutningens **status** visas på samma sida.][6]
 
-**Gratulerar!** Du har anslutit WordPress till Redis. Den produktionsklara appen använder nu **Azure Database for MySQL, beständig lagring och Redis** . Nu kan du skala ut din App Service-plan till flera instanser.
+**Gratulerar!** Du har anslutit WordPress till Redis. Den produktionsklara appen använder nu **Azure Database for MySQL, beständig lagring och Redis**. Nu kan du skala ut din App Service-plan till flera instanser.
 
 ## <a name="find-docker-container-logs"></a>Hitta loggar för Docker-containrar
 

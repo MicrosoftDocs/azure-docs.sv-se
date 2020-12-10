@@ -3,12 +3,12 @@ title: Media Graph-koncept – Azure
 description: Med ett medie diagram kan du definiera var mediet ska samlas in, hur det ska bearbetas och var resultatet ska levereras. Den här artikeln innehåller en detaljerad beskrivning av media Graph-konceptet.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 7def82160547b759c7ab4c40c681052747261920
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5efb62440b52d6219373d15ba3d19ddac1a2a834
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567086"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007848"
 ---
 # <a name="media-graph"></a>Mediegraf
 
@@ -41,7 +41,7 @@ Värdena för parametrarna i topologin anges när du skapar diagram instanser so
 Diagrammets livs cykel och diagram instanser visas i följande tillstånds diagram.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/media-graph/graph-topology-lifecycle.svg" alt-text="Mediegraf":::
+> :::image type="content" source="./media/media-graph/graph-topology-lifecycle.svg" alt-text="Graf-topologi och diagram instansen livs cykel":::
 
 Du börjar med att [skapa en diagram sto pol Ogin](direct-methods.md#graphtopologyset). För varje direktsända video flöde som du vill bearbeta med den här topologin [skapar du en diagram instans](direct-methods.md#graphinstanceset). 
 
@@ -70,7 +70,7 @@ Live video analys på IoT Edge stöder följande typer av noder i ett medie diag
 
 #### <a name="rtsp-source"></a>RTSP-källa 
 
-Med en RTSP-källmapp kan du mata in media från en [RTSP](https://tools.ietf.org/html/rfc2326 server). Övervaknings-och IP-baserade kameror överför sina data i ett protokoll som kallas RTSP (Real-Time-Streaming-Protocol) som skiljer sig från andra typer av enheter som telefoner och video kameror. Det här protokollet används för att upprätta och kontrol lera medie sessioner mellan en server (kameran) och en klient. Noden RTSP-källa i ett medie diagram fungerar som en klient och kan upprätta en session med en RTSP-server. Många enheter, till exempel de flesta [IP-kameror](https://en.wikipedia.org/wiki/IP_camera) har en inbyggd RTSP-server. [ONVIF](https://www.onvif.org/) bestämmer att RTSP ska stödjas i sin definition av [profiler G, S & T-](https://www.onvif.org/wp-content/uploads/2019/12/ONVIF_Profile_Feature_overview_v2-3.pdf) kompatibla enheter. RTSP-Källnoden kräver att du anger en RTSP-URL, tillsammans med autentiseringsuppgifter för att aktivera en autentiserad anslutning.
+Med en RTSP-källmapp kan du mata in media från en [RTSP](https://tools.ietf.org/html/rfc2326) -Server. Övervaknings-och IP-baserade kameror överför sina data i ett protokoll som kallas RTSP (Real-Time-Streaming-Protocol) som skiljer sig från andra typer av enheter som telefoner och video kameror. Det här protokollet används för att upprätta och kontrol lera medie sessioner mellan en server (kameran) och en klient. Noden RTSP-källa i ett medie diagram fungerar som en klient och kan upprätta en session med en RTSP-server. Många enheter, till exempel de flesta [IP-kameror](https://en.wikipedia.org/wiki/IP_camera) har en inbyggd RTSP-server. [ONVIF](https://www.onvif.org/) bestämmer att RTSP ska stödjas i sin definition av [profiler G, S & T-](https://www.onvif.org/wp-content/uploads/2019/12/ONVIF_Profile_Feature_overview_v2-3.pdf) kompatibla enheter. RTSP-Källnoden kräver att du anger en RTSP-URL, tillsammans med autentiseringsuppgifter för att aktivera en autentiserad anslutning.
 
 #### <a name="iot-hub-message-source"></a>IoT Hub meddelande källa 
 

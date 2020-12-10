@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: bdf9cbfef7dfdcf80976641b527ddeb61368d50b
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: fa424f7e1f5e1f885dd433b8abc8aae1dc1bc206
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921040"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97006205"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Data integrering med Azure Data Factory och Azure-Dataresurs
 
@@ -26,7 +26,7 @@ I den här workshopen använder du Azure Data Factory (ADF) för att mata in dat
 
 De data som används i det här labbet är New York taxi-data. Om du vill importera den till databasen i SQL Database laddar du ned [taxi-data BACPAC-filen](https://github.com/djpmsft/ADF_Labs/blob/master/sample-data/taxi-data.bacpac).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * **Azure-prenumeration**: Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
 
@@ -72,7 +72,7 @@ I Azure Data Factory länkade tjänster definierar du anslutnings informationen 
     ![Portal konfigurera 3](media/lab-data-flow-data-share/configure3.png)
 1. Den första länkade tjänsten du konfigurerar är en Azure SQL-databas. Du kan använda Sök fältet för att filtrera data lager listan. Klicka på panelen **Azure SQL Database** och klicka på Fortsätt.
 
-    ![Portal konfigurera 4](media/lab-data-flow-data-share/configure4.png)
+    ![Portal konfigurera 4](media/lab-data-flow-data-share/configure-4.png)
 1. I fönstret SQL DB-konfiguration anger du "SQLDB" som namnet på den länkade tjänsten. Ange dina autentiseringsuppgifter så att Data Factory kan ansluta till databasen. Om du använder SQL-autentisering anger du namnet på servern, databasen, ditt användar namn och lösen ord. Du kan kontrol lera att anslutnings informationen är korrekt genom att klicka på **Testa anslutning**. Klicka på **skapa** när du är färdig.
 
     ![Portal konfigurera 5](media/lab-data-flow-data-share/configure5.png)
@@ -81,10 +81,10 @@ I Azure Data Factory länkade tjänster definierar du anslutnings informationen 
 
 1. Upprepa samma process för att lägga till en länkad Azure Synapse Analytics-tjänst. På fliken anslutningar klickar du på **ny**. Välj panelen **Azure Synapse Analytics** och klicka på Fortsätt.
 
-    ![Portal konfigurera 6](media/lab-data-flow-data-share/configure6.png)
+    ![Portal konfigurera 6](media/lab-data-flow-data-share/configure-6.png)
 1. I fönstret konfiguration av länkad tjänst anger du "SQLDW" som namnet på den länkade tjänsten. Ange dina autentiseringsuppgifter så att Data Factory kan ansluta till databasen. Om du använder SQL-autentisering anger du namnet på servern, databasen, ditt användar namn och lösen ord. Du kan kontrol lera att anslutnings informationen är korrekt genom att klicka på **Testa anslutning**. Klicka på **skapa** när du är färdig.
 
-    ![Portal konfigurera 7](media/lab-data-flow-data-share/configure7.png)
+    ![Portal konfigurera 7](media/lab-data-flow-data-share/configure-7.png)
 
 ### <a name="create-an-azure-data-lake-storage-gen2-linked-service"></a>Skapa en Azure Data Lake Storage Gen2 länkad tjänst
 
@@ -128,7 +128,7 @@ I Azure Data Factory är en pipeline en logisk gruppering av aktiviteter som til
     ![Portal kopia 4](media/lab-data-flow-data-share/copy4.png)
 1. Sök efter **Azure SQL Database** och klicka på Fortsätt.
 
-    ![Portal kopia 5](media/lab-data-flow-data-share/copy5.png)
+    ![Portal kopia 5](media/lab-data-flow-data-share/copy-5.png)
 1. Anropa din data uppsättning "TripData". Välj "SQLDB" som länkad tjänst. Markera tabell namnet ' dbo. TripData ' från List rutan tabell namn. Importera schemat **från anslutning/lagring**. Klicka på OK när du är färdig.
 
     ![Portal kopia 6](media/lab-data-flow-data-share/copy6.png)
@@ -211,7 +211,7 @@ Det data flöde som skapats i det här steget inre kopplar samman data uppsättn
     ![Portal data flöde 9](media/lab-data-flow-data-share/dataflow9.png)
 1. Välj panelen **Azure SQL Database** och klicka på Fortsätt. *Obs! Du kanske märker att många av kopplingarna i Data Factory inte stöds i data flödet för mappning. Om du vill transformera data från någon av dessa källor kan du mata in dem i en källa som stöds med hjälp av kopierings aktiviteten*.
 
-    ![Portal data flöde 10](media/lab-data-flow-data-share/dataflow10.png)
+    ![Portal data flöde 10](media/lab-data-flow-data-share/dataflow-10.png)
 1. Anropa din data uppsättning "TripFares". Välj "SQLDB" som länkad tjänst. Markera tabell namnet ' dbo. TripFares ' från List rutan tabell namn. Importera schemat **från anslutning/lagring**. Klicka på OK när du är färdig.
 
     ![Portal data flöde 11](media/lab-data-flow-data-share/dataflow11.png)
@@ -276,7 +276,7 @@ Det data flöde som skapats i det här steget inre kopplar samman data uppsättn
 
 1. Välj panelen **Azure Synapse Analytics** och klicka på Fortsätt.
 
-    ![Portal mottagare 3](media/lab-data-flow-data-share/sink3.png)
+    ![Portal mottagare 3](media/lab-data-flow-data-share/sink-3.png)
 1. Anropa din data uppsättning "AggregatedTaxiData". Välj "SQLDW" som länkad tjänst. Välj **Skapa ny tabell** och namnge den nya tabellen dbo. AggregateTaxiData. Klicka på OK när du är färdig
 
     ![Portal mottagare 4](media/lab-data-flow-data-share/sink4.png)

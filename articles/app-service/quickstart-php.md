@@ -5,12 +5,12 @@ ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 ms.date: 08/01/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 152a000939f74b1852073742e501ac66246389a5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 848b3dd60e4c8ea5ac1fae0b7632fa5a54e07dd1
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015902"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007797"
 ---
 # <a name="create-a-php-web-app-in-azure-app-service"></a>Skapa en PHP-webbapp i Azure App Service
 
@@ -78,9 +78,9 @@ Tryck på **Ctrl+C** i terminalfönstret för att avsluta webbservern.
 
 ## <a name="create-a-web-app"></a>Skapa en webbapp
 
-Skapa i Cloud Shell en webbapp i `myAppServicePlan` App Service-planen med kommandot [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). 
+Skapa i Cloud Shell en webbapp i `myAppServicePlan` App Service-planen med kommandot [`az webapp create`](/cli/azure/webapp#az-webapp-create). 
 
-Ersätt `<app-name>` med ett globalt unikt appnamn (giltiga tecken är `a-z`, `0-9` och `-`) i följande exempel. Körningen har angetts till `PHP|7.4`. Om du vill se alla körningar som stöds kör du [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) . 
+Ersätt `<app-name>` med ett globalt unikt appnamn (giltiga tecken är `a-z`, `0-9` och `-`) i följande exempel. Körningen har angetts till `PHP|7.4`. Om du vill se alla körningar som stöds kör du [`az webapp list-runtimes`](/cli/azure/webapp#az-webapp-list-runtimes) . 
 
 ```azurecli-interactive
 # Bash

@@ -6,18 +6,18 @@ ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 84e257111e8da0546cf104e0cc5d3ac95a9294ba
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 5ed3e858168ce5ad9a7f089b723bb75ca8a49fca
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558682"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007525"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Lokal Git-distribution till Azure App Service
 
 Den här instruktions guiden visar hur du distribuerar appen till [Azure App Service](overview.md) från en git-lagringsplats på den lokala datorn.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Följ stegen i den här instruktions guiden:
 
@@ -45,7 +45,7 @@ Det enklaste sättet att aktivera lokal Git-distribution för din app med kudu A
 
 ### <a name="get-the-deployment-url"></a>Hämta distributions-URL: en
 
-Om du vill hämta URL: en för att aktivera lokal Git-distribution för en befintlig app, kör [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) du i Cloud Shell. Ersätt \<app-name> och \<group-name> med namnet på din app och dess Azure-resurs grupp.
+Om du vill hämta URL: en för att aktivera lokal Git-distribution för en befintlig app, kör [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-local-git) du i Cloud Shell. Ersätt \<app-name> och \<group-name> med namnet på din app och dess Azure-resurs grupp.
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app-name> --resource-group <group-name>
@@ -54,7 +54,7 @@ az webapp deployment source config-local-git --name <app-name> --resource-group 
 > Om du använder en Linux app-service-plan måste du lägga till den här parametern:--Runtime python | 3.7
 
 
-Eller skapa en ny git-aktiverad app genom att köra [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) i Cloud Shell med `--deployment-local-git` parametern. Ersätt \<app-name> , \<group-name> och \<plan-name> med namnen för din nya git-app, dess Azure-adressresurs och dess Azure App Service plan.
+Eller skapa en ny git-aktiverad app genom att köra [`az webapp create`](/cli/azure/webapp#az-webapp-create) i Cloud Shell med `--deployment-local-git` parametern. Ersätt \<app-name> , \<group-name> och \<plan-name> med namnen för din nya git-app, dess Azure-adressresurs och dess Azure App Service plan.
 
 ```azurecli-interactive
 az webapp create --name <app-name> --resource-group <group-name> --plan <plan-name> --deployment-local-git

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 5dbd49312b58dc656e2239e8a0a4acea614023de
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: d38c57a8c8504e1e03406f7cd8a0b61725cb0511
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317192"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008098"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Kontinuerlig integrering och leverans för Azure dataSynapses-arbetsyta
 
@@ -107,7 +107,13 @@ Använd [distributions tillägget Synapse-arbetsyta](https://marketplace.visuals
 
      ![Lägg till tillägg](media/add-extension-task.png)
 
-1.  I uppgiften, ange relaterad git-lagringsplats för **workspace_publish** och Välj resurs grupp, region, namn och moln miljö för mål arbets ytan. Ange parametrar och värden om du behöver.
+1.  I uppgiften väljer du **...** bredvid rutan **mall** för att välja mallfilen.
+
+1. Välj **...** bredvid rutan **mallparametrar** för att välja parameter filen.
+
+1. Välj anslutning, resurs grupp och namn på mål arbets ytan. 
+
+1. Välj **...** bredvid rutan **Åsidosätt mallparametrar** och ange önskade parameter värden för mål arbets ytan. 
 
     ![Distribuera Synapse-arbetsyta](media/create-release-artifacts-deployment.png)
 

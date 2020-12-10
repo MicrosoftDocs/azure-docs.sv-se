@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: 1b72224441741990a1fc94400dfe718ea9d1b0b3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e9c49d472f6cf0b9f0e5b3e2f7728417034059b1
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88961490"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007101"
 ---
 # <a name="app-service-overview"></a>Översikt över App Service
 
@@ -36,7 +36,7 @@ Här följer några funktioner i App Service:
 * **API och mobila funktioner** – App Service ger nyckelfärdigt CORS-stöd för RESTful API-scenarier, och förenklar mobilappscenarier genom att möjliggöra autentisering, synkronisering av offlinedata, push-meddelanden med mera.
 * **Serverlös kod** – kör ett kodfragment eller skript på begäran utan att explicit behöva etablera eller hantera infrastruktur, och betala bara för den beräkningstid som koden faktiskt använder (se [Azure Functions](../azure-functions/index.yml)).
 
-Förutom App Service erbjuder Azure andra tjänster som kan användas till att hantera webbplatser och webbappar. För de flesta scenarier är App Service det bästa valet.  För mikrotjänstens arkitektur bör du tänka på [Azure våren-Cloud Service](../spring-cloud/index.yml) eller [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric).  Om du behöver mer kontroll över de virtuella datorer som koden körs på, bör du tänka på [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/). Mer information om hur du väljer mellan dessa Azure-tjänster hittar du i [Jämförelse mellan Azure App Service, Virtual Machines, Service Fabric och Cloud Services](/azure/architecture/guide/technology-choices/compute-decision-tree).
+Förutom App Service erbjuder Azure andra tjänster som kan användas till att hantera webbplatser och webbappar. För de flesta scenarier är App Service det bästa valet.  För arkitektur för mikrotjänster bör du tänka på [Azure Spring-Cloud service](../spring-cloud/index.yml) eller [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric).  Om du behöver mer kontroll över de virtuella datorer som koden körs på, bör du tänka på [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/). Mer information om hur du väljer mellan dessa Azure-tjänster hittar du i [Jämförelse mellan Azure App Service, Virtual Machines, Service Fabric och Cloud Services](/azure/architecture/guide/technology-choices/compute-decision-tree).
 
 ## <a name="app-service-on-linux"></a>App Service på Linux
 
@@ -44,7 +44,7 @@ App Service kan också vara värd för webbappar internt i Linux för program st
 
 ### <a name="built-in-languages-and-frameworks"></a>Inbyggda språk och ramverk
 
-App Service på Linux stöder ett antal språkspecifika inbyggda avbildningar. Distribuera bara din kod. Språk som stöds är: Node.js, Java (JRE 8 & JRE 11), PHP, python, .NET Core och Ruby. Kör [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) för att visa de senaste språken och de versioner som stöds. Om körningen av programmet kräver att programmet inte stöds i de inbyggda avbildningarna kan du distribuera det med en anpassad behållare.
+App Service på Linux stöder ett antal språkspecifika inbyggda avbildningar. Distribuera bara din kod. Språk som stöds är: Node.js, Java (JRE 8 & JRE 11), PHP, python, .NET Core och Ruby. Kör [`az webapp list-runtimes --linux`](/cli/azure/webapp#az-webapp-list-runtimes) för att visa de senaste språken och de versioner som stöds. Om körningen av programmet kräver att programmet inte stöds i de inbyggda avbildningarna kan du distribuera det med en anpassad behållare.
 
 ### <a name="limitations"></a>Begränsningar
 

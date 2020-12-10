@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: fa99920c8e9d8cd532bb6230d6a337a038ee3e31
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 8e1f7bb2faaf9d2c706e63ae73b9e265eb95d09b
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929335"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007219"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Använda hanterade identiteter för App Service och Azure Functions
 
@@ -109,7 +109,7 @@ Följande steg vägleder dig genom att skapa en app och tilldela den en identite
 
 1. Om det behövs installerar du Azure PowerShell med hjälp av anvisningarna i [Azure PowerShell-guiden](/powershell/azure/)och kör sedan `Login-AzAccount` för att skapa en anslutning till Azure.
 
-2. Skapa en Function-app med hjälp av Azure PowerShell. Fler exempel på hur du använder Azure PowerShell med Azure Functions finns i [AZ. Functions Reference](/powershell/module/az.functions/?view=azps-4.1.0#functions):
+2. Skapa en Function-app med hjälp av Azure PowerShell. Fler exempel på hur du använder Azure PowerShell med Azure Functions finns i [AZ. Functions Reference](/powershell/module/az.functions/#functions):
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -219,7 +219,7 @@ Följande steg vägleder dig genom att skapa en app och tilldela den en identite
 
 1. Om det behövs installerar du Azure PowerShell med hjälp av anvisningarna i [Azure PowerShell-guiden](/powershell/azure/)och kör sedan `Login-AzAccount` för att skapa en anslutning till Azure.
 
-2. Skapa en Function-app med hjälp av Azure PowerShell. Fler exempel på hur du använder Azure PowerShell med Azure Functions finns i [referensen AZ. Functions](/powershell/module/az.functions/?view=azps-4.1.0#functions). Skriptet nedan använder också det `New-AzUserAssignedIdentity` som måste installeras separat som per [skapa, lista eller ta bort en användardefinierad hanterad identitet med hjälp av Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
+2. Skapa en Function-app med hjälp av Azure PowerShell. Fler exempel på hur du använder Azure PowerShell med Azure Functions finns i [referensen AZ. Functions](/powershell/module/az.functions/#functions). Skriptet nedan använder också det `New-AzUserAssignedIdentity` som måste installeras separat som per [skapa, lista eller ta bort en användardefinierad hanterad identitet med hjälp av Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -324,7 +324,7 @@ En app med en hanterad identitet har två miljövariabler definierade:
 
 **IDENTITY_ENDPOINT** är en lokal URL som din app kan begära token från. Om du vill hämta en token för en resurs gör du en HTTP GET-begäran till den här slut punkten, inklusive följande parametrar:
 
-> | Parameternamn    | I     | Beskrivning                                                                                                                                                                                                                                                                                                                                |
+> | Parameternamn    | I     | Description                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | resource          | Söka i data  | Azure AD-resurs-URI för resursen som en token ska hämtas för. Detta kan vara en av de [Azure-tjänster som stöder Azure AD-autentisering](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) eller andra resurs-URI: er.    |
 > | api-version       | Söka i data  | Den version av token API som ska användas. Använd "2019-08-01" eller senare (om du inte använder Linux-förbrukning, som för närvarande bara erbjuder "2017-09-01", se kommentaren ovan).                                                                                                                                                                                                                                                                 |
@@ -338,7 +338,7 @@ En app med en hanterad identitet har två miljövariabler definierade:
 
 Ett lyckat 200 OK-svar innehåller en JSON-text med följande egenskaper:
 
-> | Egenskapsnamn | Beskrivning                                                                                                                                                                                                                                        |
+> | Egenskapsnamn | Description                                                                                                                                                                                                                                        |
 > |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | access_token  | Den begärda åtkomsttoken. Den anropande webb tjänsten kan använda denna token för att autentisera till den mottagande webb tjänsten.                                                                                                                               |
 > | client_id     | Klient-ID för den identitet som användes.                                                                                                                                                                                                       |

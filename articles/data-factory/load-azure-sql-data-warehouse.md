@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/30/2020
-ms.openlocfilehash: dcf3db33818448116da53d8a01d0c62aca7bc1af
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/09/2020
+ms.openlocfilehash: 12630e5e4b332d875a75c59d2fdafecd23be0b17
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000087"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005477"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Läs in data i Azure Synapse Analytics med hjälp av Azure Data Factory
 
@@ -102,7 +102,7 @@ Den här artikeln visar hur du använder verktyget Data Factory Kopiera data fö
 
     a. Klicka på **+ Skapa ny anslutning** för att lägga till en anslutning
 
-    b. Välj **Azure Synapse Analytics (tidigare SQL Data Warehouse)** från galleriet och välj **Fortsätt**. Du kan skriva "SQL" i sökrutan för att filtrera kopplingarna.
+    b. Välj **Azure Synapse Analytics** från galleriet och välj **Fortsätt**.
 
     ![Välj Azure Synapse Analytics](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
 

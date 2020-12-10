@@ -1,15 +1,14 @@
 ---
 title: Vanliga frågor och svar – säkerhetskopiera virtuella Azure-datorer
 description: I den här artikeln hittar du svar på vanliga frågor om hur du säkerhetskopierar virtuella Azure-datorer med tjänsten Azure Backup.
-ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 0f4f990654cc23fde7cf1ad2e37ba1ada76d94e3
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: ba2779305302e91f68cb2664c90f53fdf9a9ca55
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324796"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008358"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Vanliga frågor och svar – säkerhetskopiera virtuella Azure-datorer
 
@@ -163,11 +162,20 @@ När du har ändrat nyckel valvs inställningarna för den krypterade virtuella 
 
 ### <a name="can-i-access-the-vm-once-restored-due-to-a-vm-having-broken-relationship-with-domain-controller"></a>Kan jag få åtkomst till den virtuella datorn när den återställts på grund av en virtuell dator med en skadad relation med domänkontrollanten?
 
-Ja, du får åtkomst till den virtuella datorn när den återställts på grund av en virtuell dator med en bruten relation med domänkontrollanten. Mer information finns i den här [artikeln](./backup-azure-arm-restore-vms.md#post-restore-steps)
+Ja, du får åtkomst till den virtuella datorn när den återställts på grund av en virtuell dator med en bruten relation med domänkontrollanten. Mer information finns i den här [artikeln](./backup-azure-arm-restore-vms.md#post-restore-steps).
+
+### <a name="can-i-cancel-an-in-progress-restore-job"></a>Kan jag avbryta ett pågående återställnings jobb?
+Nej, du kan inte avbryta återställnings jobbet som pågår.
 
 ### <a name="why-restore-operation-is-taking-long-time-to-complete"></a>Varför tar det så lång tid att återställa?
 
 Den totala återställnings tiden beror på antalet in-/utdata-åtgärder per sekund (IOPS) och data flödet för lagrings kontot. Den totala återställnings tiden kan påverkas om mål lagrings kontot har lästs in med andra program Läs-och skriv åtgärder. Om du vill förbättra återställnings åtgärden väljer du ett lagrings konto som inte har lästs in med andra program data.
+
+### <a name="how-do-we-handle-create-new-virtual-machine-restore-type-conflicts-with-governance-policies"></a>Hur hanterar vi "Skapa ny virtuell dator" – återställnings typ konflikter med styrnings principer?
+
+Azure Backup använder "bifoga" diskar från återställnings punkter och tittar inte på dina bild referenser eller gallerier. Så i principen kan du kontrol lera "storageProfile. osDisk. createOption as Attach" och skript villkoret blir:
+
+`if (storageProfile.osDisk.createOption == "Attach") then { exclude <Policy> }`
 
 ## <a name="manage-vm-backups"></a>Hantera säkerhetskopior av virtuella datorer
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 890f9c3d5c3a250bc13270ac685b93349f18fcff
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 43eb2e218eb94ef0d73d6ecd65100706323525ab
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862280"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005825"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-azure-sql-database-app-in-azure-app-service"></a>Självstudie: Bygg en ASP.NET Core-och Azure SQL Database-app i Azure App Service
 
@@ -41,7 +41,7 @@ I den här guiden får du lära dig att:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här kursen behöver du:
 
@@ -95,7 +95,7 @@ För SQL Database används [Azure SQL Database](/azure/sql-database/) i den här
 
 ### <a name="create-a-sql-database-logical-server"></a>Skapa en logisk SQL Database-server
 
-I Cloud Shell skapar du en SQL Database logisk server med [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) kommandot.
+I Cloud Shell skapar du en SQL Database logisk server med [`az sql server create`](/cli/azure/sql/server#az-sql-server-create) kommandot.
 
 Ersätt *\<server-name>* plats hållaren med ett *unikt* SQL Database namn. Det här namnet används som en del av den globalt unika SQL Database slut punkten `<server-name>.database.windows.net` . Giltiga tecken är `a` - `z` , `0` - `9` , `-` . Du kan också ersätta *\<db-username>* och *\<db-password>* med ett användar namn och lösen ord som du själv väljer. 
 
@@ -126,7 +126,7 @@ När den logiska SQL Database-servern har skapats visar Azure CLI information so
 
 ### <a name="configure-a-server-firewall-rule"></a>Konfigurera en serverbrandväggsregel
 
-Skapa en [brandväggsregel på servernivå för Azure SQL Database](../azure-sql/database/firewall-configure.md) via kommandot[`az sql server firewall create`](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az-sql-server-firewall-rule-create). När både start-IP och slut-IP har angetts till 0.0.0.0 öppnas brandväggen endast för andra Azure-resurser. 
+Skapa en [brandväggsregel på servernivå för Azure SQL Database](../azure-sql/database/firewall-configure.md) via kommandot[`az sql server firewall create`](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create). När både start-IP och slut-IP har angetts till 0.0.0.0 öppnas brandväggen endast för andra Azure-resurser. 
 
 ```azurecli-interactive
 az sql server firewall-rule create --resource-group myResourceGroup --server <server-name> --name AllowAzureIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
@@ -144,7 +144,7 @@ az sql server firewall-rule create --name AllowLocalClient --server <server-name
 
 ### <a name="create-a-database"></a>Skapa en databas
 
-Skapa en databas med en [S0-prestandanivå](../azure-sql/database/service-tiers-dtu.md) på servern med kommandot [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create).
+Skapa en databas med en [S0-prestandanivå](../azure-sql/database/service-tiers-dtu.md) på servern med kommandot [`az sql db create`](/cli/azure/sql/db#az-sql-db-create).
 
 ```azurecli-interactive
 az sql db create --resource-group myResourceGroup --server <server-name> --name coreDB --service-objective S0
@@ -152,7 +152,7 @@ az sql db create --resource-group myResourceGroup --server <server-name> --name 
 
 ### <a name="create-connection-string"></a>Skapa anslutningssträng
 
-Hämta anslutnings strängen med hjälp av [`az sql db show-connection-string`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-show-connection-string) kommandot.
+Hämta anslutnings strängen med hjälp av [`az sql db show-connection-string`](/cli/azure/sql/db#az-sql-db-show-connection-string) kommandot.
 
 ```azurecli-interactive
 az sql db show-connection-string --client ado.net --server <server-name> --name coreDB
@@ -263,7 +263,7 @@ I det här steget distribuerar du din SQL Database-anslutna .NET Core-app till A
 
 ### <a name="configure-connection-string"></a>Konfigurera anslutnings sträng
 
-Om du vill ange anslutnings strängar för din Azure-app använder du [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) kommandot i Cloud Shell. I följande kommando ersätter *\<app-name>* du, samt *\<connection-string>* parametern med den anslutnings sträng som du skapade tidigare.
+Om du vill ange anslutnings strängar för din Azure-app använder du [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) kommandot i Cloud Shell. I följande kommando ersätter *\<app-name>* du, samt *\<connection-string>* parametern med den anslutnings sträng som du skapade tidigare.
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app-name> --settings MyDbConnection="<connection-string>" --connection-string-type SQLAzure
@@ -464,7 +464,7 @@ Exempelprojektet följer redan riktlinjerna i [ASP.NET Core-loggning i Azure](/a
 - Innehåller en referens till `Microsoft.Extensions.Logging.AzureAppServices` i *DotNetCoreSqlDb.csproj*.
 - Anrop `loggerFactory.AddAzureWebAppDiagnostics()` i *program.cs*.
 
-För att ange [loggnivå](/aspnet/core/fundamentals/logging#log-level) för ASP.NET Core i App Service till `Information` från standardnivån `Error`använder du kommandot [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) i Cloud Shell.
+För att ange [loggnivå](/aspnet/core/fundamentals/logging#log-level) för ASP.NET Core i App Service till `Information` från standardnivån `Error`använder du kommandot [`az webapp log config`](/cli/azure/webapp/log#az-webapp-log-config) i Cloud Shell.
 
 ```azurecli-interactive
 az webapp log config --name <app-name> --resource-group myResourceGroup --application-logging filesystem --level information
@@ -473,7 +473,7 @@ az webapp log config --name <app-name> --resource-group myResourceGroup --applic
 > [!NOTE]
 > Projektets loggnivå är redan inställd på `Information` i *appsettings.json*.
 
-Om du vill starta logg strömningen använder du [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) kommandot i Cloud Shell.
+Om du vill starta logg strömningen använder du [`az webapp log tail`](/cli/azure/webapp/log#az-webapp-log-tail) kommandot i Cloud Shell.
 
 ```azurecli-interactive
 az webapp log tail --name <app-name> --resource-group myResourceGroup

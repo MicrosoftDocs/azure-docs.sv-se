@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 08/01/2019
+ms.date: 11/12/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 884a9e82dacb2a0dfc6763809a2ccfd2b886df1a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2f8f2d9eb14e1272af126c9a6d6663f41aaee33f
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974183"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005094"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Distribuera virtuella datorer till dedikerade värdar med hjälp av Azure PowerShell
 
@@ -53,10 +53,6 @@ $hostGroup = New-AzHostGroup `
 
 Lägg till `-SupportAutomaticPlacement true` parametern om du vill att de virtuella datorerna och skalnings uppsättnings instanserna automatiskt ska placeras på värdar i en värd grupp. För ytterligare information, se [manuell respektive automatisk placering ](../dedicated-hosts.md#manual-vs-automatic-placement).
 
-> [!IMPORTANT]
-> Automatisk placering är för närvarande en offentlig för hands version.
-> Om du vill delta i förhands granskningen slutför du den för hands versionen av undersökningen på [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
-> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="create-a-host"></a>Skapa en värd
 
@@ -173,12 +169,7 @@ Location               : eastus
 Tags                   : {}
 ```
 
-## <a name="create-a-scale-set-preview"></a>Skapa en skalnings uppsättning (förhands granskning)
-
-> [!IMPORTANT]
-> Virtual Machine Scale Sets på dedikerade värdar är för närvarande en offentlig för hands version.
-> Om du vill delta i förhands granskningen slutför du den för hands versionen av undersökningen på [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
-> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+## <a name="create-a-scale-set"></a>Skapa en skalningsuppsättning 
 
 När du distribuerar en skalnings uppsättning anger du värd gruppen.
 

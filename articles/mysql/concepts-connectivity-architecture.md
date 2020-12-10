@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 5d3842675cf4b36dfaa95ed6041bf8c6f0978a53
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: b23ff9762ef519d66ed55f75f27dcb80e2d18039
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242882"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007253"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Anslutnings arkitektur i Azure Database for MySQL
 Den här artikeln förklarar Azure Database for MySQL anslutnings arkitektur och hur trafiken dirigeras till din Azure Database for MySQL-instans från klienter både inom och utanför Azure.
@@ -50,7 +50,7 @@ I följande tabell visas de primära och sekundära IP-adresserna för Azure Dat
 | Indien, centrala | 104.211.96.159     |
 | Södra Indien | 104.211.224.146  |
 | Indien, västra | 104.211.160.80    |
-| Japan, östra | 13.78.61.196, 191.237.240.43  |
+| Japan, östra | 13.78.61.196, 191.237.240.43, 40.79.192.23 |
 | Japan, västra | 104.214.148.156, 191.238.68.11, 40.74.96.6, 40.74.96.7    |
 | Sydkorea, centrala | 52.231.32.42   |
 | Sydkorea, södra | 52.231.200.86    |

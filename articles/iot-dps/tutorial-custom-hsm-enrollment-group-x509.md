@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 6845923d65b5fbe5a9f010474330ce2bbed948e1
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 25d084b8af148707685b2cbb4368394a12d99db2
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780101"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005315"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>Självstudie: etablera flera X. 509-enheter med hjälp av registrerings grupper
 
@@ -195,7 +195,7 @@ Så här skapar du certifikat kedjan:
 3. Kör följande kommando för att skapa en fullständig certifikat kedja. PEM-fil som innehåller det nya enhets certifikatet.
 
     ```Bash
-    cd ./certs && cat new-device.cert.pem azure-iot-test-only.intermediate.cert.pem azure-iot-test-only.root.ca.cert.pem > new-device-full-chain.cert.pem
+    cd ./certs && cat new-device.cert.pem azure-iot-test-only.intermediate.cert.pem azure-iot-test-only.root.ca.cert.pem > new-device-full-chain.cert.pem && cd ..
     ```
 
     Använd en text redigerare och öppna filen med certifikat kedjan, *./certs/New-Device-full-Chain.cert.pem*. Texten i certifikat kedjan innehåller en fullständig kedja av alla tre certifikaten. Du kommer att använda den här texten som certifikat kedja med den anpassade HSM-koden längre fram i den här självstudien.
@@ -241,48 +241,85 @@ Så här uppdaterar du den anpassade HSM stub-koden för den här självstudien:
     static const char* const COMMON_NAME = "custom-hsm-device-01";
     ```
 
-4. I samma fil uppdaterar du strängvärdet för en `CERTIFICATE` konstant sträng med hjälp av din certifikat kedje text som du sparade i *./certs/New-Device-full-Chain.cert.pem* när du har genererat dina certifikat.
+4. I samma fil måste du uppdatera strängvärdet för en `CERTIFICATE` konstant sträng med hjälp av din certifikat kedje text som du sparade i *./certs/New-Device-full-Chain.cert.pem* när du har genererat dina certifikat.
 
-    > [!IMPORTANT]
-    > När du kopierar texten till Visual Studio kan du märka att texten tolkas och uppdateras med kod avstånd osv. I så fall måste du ta bort det här avståndet och parsningen genom att trycka på **CTRL + Z** en gång.
-
-    Uppdatera certifikat texten så att den följer mönstret nedan utan extra mellanslag eller parsning som gjorts av Visual Studio:
+    Syntaxen för certifikat texten måste följa mönstret nedan utan extra mellanslag eller parsning som gjorts av Visual Studio.
 
     ```c
     // <Device/leaf cert>
     // <intermediates>
     // <root>
     static const char* const CERTIFICATE = "-----BEGIN CERTIFICATE-----\n"
-    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV"
+    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV\n"
         ...
-    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB"
-    "\n-----END CERTIFICATE-----\n"
+    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB\n"
+    "-----END CERTIFICATE-----\n"
     "-----BEGIN CERTIFICATE-----\n"
-    "MIIFPDCCAySgAwIBAgIBATANBgkqhkiG9w0BAQsFADAqMSgwJgYDVQQDDB9BenVy"
+    "MIIFPDCCAySgAwIBAgIBATANBgkqhkiG9w0BAQsFADAqMSgwJgYDVQQDDB9BenVy\n"
         ...
-    "MTEyMjIxMzAzM1owNDEyMDAGA1UEAwwpQXp1cmUgSW9UIEh1YiBJbnRlcm1lZGlh"
-    "\n-----END CERTIFICATE-----\n"
+    "MTEyMjIxMzAzM1owNDEyMDAGA1UEAwwpQXp1cmUgSW9UIEh1YiBJbnRlcm1lZGlh\n"
+    "-----END CERTIFICATE-----\n"
     "-----BEGIN CERTIFICATE-----\n"
-    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV"
+    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV\n"
         ...
-    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB"
-    "\n-----END CERTIFICATE-----";        
+    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB\n"
+    "-----END CERTIFICATE-----";        
     ```
 
-5. I samma fil uppdaterar du strängvärdet för `PRIVATE_KEY` konstant sträng med hjälp av den privata nyckeln för ditt enhets certifikat.
+    Om det här strängvärdet uppdateras korrekt i det här steget kan det vara väldigt omständligt och underkastas fel. Om du vill generera rätt syntax i din git bash-kommandotolk, kopierar du och klistrar in följande bash Shell-kommandon i git bash-Kommandotolken och trycker på **RETUR**. Dessa kommandon genererar syntaxen för det `CERTIFICATE` konstanta värdet för sträng.
 
-    > [!IMPORTANT]
-    > När du kopierar texten till Visual Studio kan du märka att texten tolkas och uppdateras med kod avstånd osv. I så fall måste du ta bort det här avståndet och parsningen genom att trycka på **CTRL + Z** en gång.
+    ```Bash
+    input="./certs/new-device-full-chain.cert.pem"
+    bContinue=true
+    prev=
+    while $bContinue; do
+        if read -r next; then
+          if [ -n "$prev" ]; then   
+            echo "\"$prev\\n\""
+          fi
+          prev=$next  
+        else
+          echo "\"$prev\";"
+          bContinue=false
+        fi  
+    done < "$input"
+    ```
 
-    Uppdatera texten för den privata nyckeln så att den följer mönstret nedan utan extra mellanslag eller parsning som gjorts av Visual Studio:
+    Kopiera och klistra in utmatnings certifikat texten för det nya konstant svärdet. 
+
+
+5. I samma fil måste strängvärdet för `PRIVATE_KEY` konstanten också uppdateras med den privata nyckeln för enhets certifikatet.
+
+    Den privata nyckel textens syntax måste följa mönstret nedan utan extra blank steg eller parsning som gjorts av Visual Studio.
 
     ```c
     static const char* const PRIVATE_KEY = "-----BEGIN RSA PRIVATE KEY-----\n"
-    "MIIJJwIBAAKCAgEAtjvKQjIhp0EE1PoADL1rfF/W6v4vlAzOSifKSQsaPeebqg8U"
+    "MIIJJwIBAAKCAgEAtjvKQjIhp0EE1PoADL1rfF/W6v4vlAzOSifKSQsaPeebqg8U\n"
         ...
-    "X7fi9OZ26QpnkS5QjjPTYI/wwn0J9YAwNfKSlNeXTJDfJ+KpjXBcvaLxeBQbQhij"
-    "\n-----END RSA PRIVATE KEY-----";
+    "X7fi9OZ26QpnkS5QjjPTYI/wwn0J9YAwNfKSlNeXTJDfJ+KpjXBcvaLxeBQbQhij\n"
+    "-----END RSA PRIVATE KEY-----";
     ```
+
+    Om det här strängvärdet uppdateras korrekt i det här steget kan det också vara väldigt omständligt och underkastat fel. Om du vill generera rätt syntax i din git bash-prompt, kopierar du och klistrar in följande bash Shell-kommandon och trycker på **RETUR**. Dessa kommandon genererar syntaxen för det `PRIVATE_KEY` konstanta värdet för sträng.
+
+    ```Bash
+    input="./private/new-device.key.pem"
+    bContinue=true
+    prev=
+    while $bContinue; do
+        if read -r next; then
+          if [ -n "$prev" ]; then   
+            echo "\"$prev\\n\""
+          fi
+          prev=$next  
+        else
+          echo "\"$prev\";"
+          bContinue=false
+        fi  
+    done < "$input"
+    ```
+
+    Kopiera och klistra in text för den privata nyckeln för det nya konstant svärdet. 
 
 6. Spara *custom_hsm_example. c*.
 

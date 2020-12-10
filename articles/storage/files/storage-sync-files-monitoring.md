@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 59c489fac8bf02263cc51833675af414d5de6a52
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 87d0b740ec4f7ffb8966b386c273c023f69c42d8
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686012"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008307"
 ---
 # <a name="monitor-azure-file-sync"></a>Övervaka Azure File Sync
 
@@ -42,14 +42,14 @@ Mått för Azure File Sync är aktiverade som standard och skickas till Azure Mo
 
 Följande mått för Azure File Sync är tillgängliga i Azure Monitor:
 
-| Måttnamn | Beskrivning |
+| Måttnamn | Description |
 |-|-|
 | Byte som har synkroniserats | Storlek på överförda data (uppladdning och nedladdning).<br><br>Enhet: byte<br>Sammansättnings typ: sum<br>Tillämpliga dimensioner: Server slut punkt, namn, synkroniseringsanslutning, namn på Sync-grupp |
 | Återkalla moln nivå | Storlek på data som har återkallats.<br><br>**Obs!** det här måttet tas bort i framtiden. Använd storleks måttet återkalla storlek på moln nivå för att övervaka storleken på data som återkallas.<br><br>Enhet: byte<br>Sammansättnings typ: sum<br>Tillämplig dimension: Server namn |
-| Återställnings storlek för moln nivå | Storlek på data som har återkallats.<br><br>Enhet: byte<br>Sammansättnings typ: sum<br>Tillämplig dimension: Server namn, namn på Sync-grupp |
-| Återställnings storlek för moln skikt per program | Storlek på data som återkallas av program.<br><br>Enhet: byte<br>Sammansättnings typ: sum<br>Tillämplig dimension: program namn, Server namn, namn på Sync-grupp |
-| Återkalla data flöde för moln nivå | Storlek på data återställnings data flöde.<br><br>Enhet: byte<br>Sammansättnings typ: sum<br>Tillämplig dimension: Server namn, namn på Sync-grupp |
-| Filer som inte synkroniseras | Antal filer som inte kan synkroniseras.<br><br>Enhet: antal<br>Sammansättnings typ: sum<br>Tillämpliga dimensioner: Server slut punkt, namn, synkroniseringsanslutning, namn på Sync-grupp |
+| Återställnings storlek för moln nivå | Storlek på data som har återkallats.<br><br>Enhet: byte<br>Sammansättnings typ: sum<br>Tillämpliga dimensioner: Server namn, namn på Sync-grupp |
+| Återställnings storlek för moln skikt per program | Storlek på data som återkallas av program.<br><br>Enhet: byte<br>Sammansättnings typ: sum<br>Tillämpliga dimensioner: program namn, Server namn, namn på Sync-grupp |
+| Återkalla data flöde för moln nivå | Storlek på data återställnings data flöde.<br><br>Enhet: byte<br>Sammansättnings typ: sum<br>Tillämpliga dimensioner: Server namn, namn på Sync-grupp |
+| Filer som inte synkroniseras | Antal filer som inte kan synkroniseras.<br><br>Enhet: antal<br>Samlings typer: Average, sum<br>Tillämpliga dimensioner: Server slut punkt, namn, synkroniseringsanslutning, namn på Sync-grupp |
 | Synkroniserade filer | Antal överförda filer (uppladdning och nedladdning).<br><br>Enhet: antal<br>Sammansättnings typ: sum<br>Tillämpliga dimensioner: Server slut punkt, namn, synkroniseringsanslutning, namn på Sync-grupp |
 | Status för server online | Antal pulsslag som tagits emot från servern.<br><br>Enhet: antal<br>Sammansättnings typ: högsta<br>Tillämplig dimension: Server namn |
 | Resultat av Sync-session | Resultat av synkroniseringsbegäran (1 = lyckad synkroniseringsanslutning, 0 = det gick inte att synkronisera sessionen)<br><br>Enhet: antal<br>Samlings typer: Max<br>Tillämpliga dimensioner: Server slut punkt, namn, synkroniseringsanslutning, namn på Sync-grupp |
@@ -118,7 +118,7 @@ Om du vill visa hälso tillståndet för en **Server slut punkt** i portalen gå
 
 - Följande mått diagram visas i Storage Sync service portal:
 
-  | Måttnamn | Beskrivning | Blad namn |
+  | Måttnamn | Description | Blad namn |
   |-|-|-|
   | Byte som har synkroniserats | Storlek på överförda data (uppladdning och nedladdning) | Synkronisera grupp, Server slut punkt |
   | Återkalla moln nivå | Storlek på data som återkallas | Registrerade servrar |
@@ -178,7 +178,7 @@ Använd Azure File Sync prestanda räknare på servern för att övervaka synkro
 
 Följande prestanda räknare för Azure File Sync är tillgängliga i prestanda övervakaren:
 
-| Object\Counter-namn för prestanda | Beskrivning |
+| Object\Counter-namn för prestanda | Description |
 |-|-|
 | AFS-byte Transferred\Downloaded byte/s | Antal hämtade byte per sekund. |
 | AFS-byte Transferred\Uploaded byte/s | Antal överförda byte per sekund. |

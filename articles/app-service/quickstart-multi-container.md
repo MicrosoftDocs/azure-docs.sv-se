@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: 2920aad07ac54a19962f552debb8cfa809e17294
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 2ba42e5e800ae607631e00aee50954bf2638ae43
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558359"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007151"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Skapa en app med flera containrar (förhandsversion) med hjälp av en Docker Compose-konfiguration
 
@@ -55,7 +55,7 @@ cd multicontainerwordpress
 
 [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
 
-I Cloud Shell skapar du en resurs grupp med [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) kommandot. I följande exempel skapas en resursgrupp med namnet *myResourceGroup* på platsen *South Central US* (USA, södra centrala). Om du vill se alla platser som stöds för App Service på Linux på **Standard**-nivån kör du kommandot [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations).
+I Cloud Shell skapar du en resurs grupp med [`az group create`](/cli/azure/group#az-group-create) kommandot. I följande exempel skapas en resursgrupp med namnet *myResourceGroup* på platsen *South Central US* (USA, södra centrala). Om du vill se alla platser som stöds för App Service på Linux på **Standard**-nivån kör du kommandot [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice#az-appservice-list-locations).
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "South Central US"
@@ -67,7 +67,7 @@ När kommandot har slutförts visar JSON-utdata resursgruppens egenskaper.
 
 ## <a name="create-an-azure-app-service-plan"></a>Skapa en Azure App Service-plan
 
-I Cloud Shell skapar du en App Service plan i resurs gruppen med [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) kommandot.
+I Cloud Shell skapar du en App Service plan i resurs gruppen med [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) kommandot.
 
 I följande exempel skapas en App Service-plan med namnet `myAppServicePlan` i prisnivån **Standard** (`--sku S1`) och i en Linux-containrar (`--is-linux`).
 
@@ -100,7 +100,7 @@ När App Service-planen har skapats visas information av Azure CLI. Informatione
 > [!NOTE]
 > Docker-sammanställning för Azure App Services har för närvarande en gräns på 4 000 tecken för tillfället.
 
-I Cloud Shell-terminalen skapar du en [webbapp](overview.md#app-service-on-linux) med flera containrar i `myAppServicePlan` App Service-planen med kommandot [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). Glöm inte att ersätta _\<app_name>_ med ett unikt app-namn (giltiga tecken är `a-z` , `0-9` och `-` ).
+I Cloud Shell-terminalen skapar du en [webbapp](overview.md#app-service-on-linux) med flera containrar i `myAppServicePlan` App Service-planen med kommandot [az webapp create](/cli/azure/webapp#az-webapp-create). Glöm inte att ersätta _\<app_name>_ med ett unikt app-namn (giltiga tecken är `a-z` , `0-9` och `-` ).
 
 ```azurecli
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml

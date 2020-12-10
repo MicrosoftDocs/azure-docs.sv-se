@@ -4,12 +4,12 @@ description: Konfigurera webbtester i Application Insights. Få aviseringar om e
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 56644a4eb2f91dcce3bc2ee557542da75408ca83
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 82b433407906c09d38a46c842334153525fb3c17
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075151"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007933"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Övervaka tillgängligheten för en webbplats
 
@@ -37,7 +37,7 @@ Från Azure Portal väljer du **skapa en resurs**  >  **utvecklarverktyg**  >  *
 
 Namnet "URL-ping-test" är en bit av en misnomer. För att vara klar kommer det här testet inte att göra någon användning av ICMP (Internet Control Message Protocol) för att kontrol lera din webbplats tillgänglighet. I stället används mer avancerade HTTP-begäranden för att kontrol lera om en slut punkt svarar. Den mäter också de prestanda som är kopplade till svaret och ger möjlighet att ange anpassade framgångs kriterier tillsammans med mer avancerade funktioner som att parsa beroende begär Anden och att tillåta återförsök.
 
-Om du vill skapa din första tillgänglighets förfrågan öppnar du fönstret tillgänglighet och väljer **skapa test** .
+Om du vill skapa din första tillgänglighets förfrågan öppnar du fönstret tillgänglighet och väljer **skapa test**.
 
 ![Fyll åtminstone i URL:en för din webbplats](./media/monitor-web-app-availability/availability-create-test-001.png)
 
@@ -47,14 +47,14 @@ Om du vill skapa din första tillgänglighets förfrågan öppnar du fönstret t
 |----|----|----|
 |**URL** |  URL: en kan vara en webbsida som du vill testa, men den måste vara synlig från Internet. URL: en kan innehålla en frågesträng. Du kan arbeta med din databas om du vill. Om URL-adressen matchar en omdirigering följer vi den upp till tio omdirigeringar.|
 |**Parsa beroende begär Anden**| Testbegäran-bilder, skript, formatfiler och andra filer som ingår i webb sidan under testet. Den registrerade svarstiden innefattar den tid det tar att hämta dessa filer. Testet Miss lyckas om någon av dessa resurser inte kan laddas ned inom tids gränsen för hela testet. Om alternativet inte är markerat begärs endast filen på den URL som du har angett i testet. Att aktivera det här alternativet resulterar i en striktare kontroll. Det kan hända att testet Miss lyckas för fall, vilket inte kan märkas när du bläddrar på platsen manuellt.
-|**Aktivera återförsök**|När testet Miss lyckas görs ett nytt försök efter ett kort intervall. Ett fel rapporteras endast om tre på varandra följande försök misslyckas. Efterföljande tester utförs sedan med den vanliga testfrekvensen. Återförsök pausas tillfälligt tills nästa lyckade test. Den här regeln tillämpas separat på varje testplats. **Vi rekommenderar det här alternativet** . I genomsnitt försvinner ca 80 % av felen vid återförsök.|
+|**Aktivera återförsök**|När testet Miss lyckas görs ett nytt försök efter ett kort intervall. Ett fel rapporteras endast om tre på varandra följande försök misslyckas. Efterföljande tester utförs sedan med den vanliga testfrekvensen. Återförsök pausas tillfälligt tills nästa lyckade test. Den här regeln tillämpas separat på varje testplats. **Vi rekommenderar det här alternativet**. I genomsnitt försvinner ca 80 % av felen vid återförsök.|
 |**Test frekvens**| Anger hur ofta testet körs från varje test plats. Med en standardfrekvens på fem minuter och fem testplatser testas din webbplats i genomsnitt varje minut.|
 |**Test platser**| Är platser där våra servrar skickar webb förfrågningar till din URL. Det **minsta antalet rekommenderade test platser är fem** för att försäkra dig om att du kan särskilja problem på din webbplats från nätverks problem. Du kan välja upp till 16 platser.
 
-**Om din URL inte är synlig från det offentliga Internet kan du välja att selektivt öppna brand väggen för att endast tillåta test transaktionerna genom** . Mer information om brand Väggs undantag för våra tillgänglighets test agenter finns i [IP-adress guiden](./ip-addresses.md#availability-tests).
+**Om din URL inte är synlig från det offentliga Internet kan du välja att selektivt öppna brand väggen för att endast tillåta test transaktionerna genom**. Mer information om brand Väggs undantag för våra tillgänglighets test agenter finns i [IP-adress guiden](./ip-addresses.md#availability-tests).
 
 > [!NOTE]
-> Vi rekommenderar starkt att du testar från flera platser med **minst fem platser** . Detta är för att förhindra falska larm som kan resultera i tillfälliga problem med en angiven plats. Vi har också funnit att den optimala konfigurationen är att **antalet test platser ska vara lika med tröskelvärdet för aviserings plats + 2** .
+> Vi rekommenderar starkt att du testar från flera platser med **minst fem platser**. Detta är för att förhindra falska larm som kan resultera i tillfälliga problem med en angiven plats. Vi har också funnit att den optimala konfigurationen är att **antalet test platser ska vara lika med tröskelvärdet för aviserings plats + 2**.
 
 ### <a name="success-criteria"></a>Lyckade kriterier
 
@@ -86,33 +86,19 @@ Följande befolknings taggar kan användas för attributet Geo-Location när du 
 | USDoD, öst     | usgov-ddeast-AZR    |
 | USDoD Central  | usgov-ddcentral-AZR |
 
-#### <a name="us-sec"></a>US s
-
-| Visningsnamn | Namn på population |
-|--------------|-----------------|
-| USSec väst   | ussec – väst – AZR  |
-| USSec, öst   | ussec – öst – AZR  |
-
-#### <a name="us-nat"></a>AMERIKANSKA NAT
-
-| Visningsnamn | Namn på population |
-|--------------|-----------------|
-| USNat, öst   | usnat – öst – AZR  |
-| USNat väst   | usnat – väst – AZR  |
-
 #### <a name="azure"></a>Azure
 
 | Visningsnamn                           | Namn på population   |
 |----------------------------------------|-------------------|
 | Östra Australien                         | EMEA – au – syd-Edge  |
 | Brasilien, södra                           | Latam-br-Gru-Edge |
-| USA, centrala                             | US-fl-Mia-Edge    |
+| Central US                             | US-fl-Mia-Edge    |
 | Asien, östra                              | APAC-hk-HKN-AZR   |
 | East US                                | US-va-Ash-AZR     |
 | Frankrike, södra (tidigare Frankrike centrala) | EMEA-CH-ZRH-Edge  |
 | Frankrike, centrala                         | EMEA – fr-Pra-Edge  |
 | Japan, östra                             | APAC – JP-KAW-Edge  |
-| Europa, norra                           | EMEA-GB-DB3 – AZR   |
+| Norra Europa                           | EMEA-GB-DB3 – AZR   |
 | USA, norra centrala                       | US-Il-CH1-AZR     |
 | USA, södra centrala                       | US-TX-SN1-AZR     |
 | Sydostasien                         | APAC – SG-sin-AZR   |

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 5c3bfbdf133777f0bc219d1306f80bd4d38b56ea
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 0a59c748dba87765537fc7c9d6382c7d2b726f43
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746275"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008069"
 ---
 # <a name="configure-ddos-attack-mitigation-reports-and-flow-logs"></a>Konfigurera riskreduceringsrapporter och flödesloggar för DDOS-attacker 
 
@@ -80,9 +80,15 @@ Du kan ansluta till Azure Sentinel, Visa och analysera dina data i arbets böcke
 
 ### <a name="azure-ddos-protection-workbook"></a>Azure DDoS Protection arbets bok
 
-Om du vill visa flödes loggar data i Azure Analytics-instrumentpanelen kan du importera exempel instrument panelen från https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Azure%20DDoS%20Protection%20Workbook
+Du kan använda den här Azure Resource Manager-mallen (ARM) för att distribuera en arbets bok för attack analys. I den här arbets boken kan du alltid visualisera angrepps data över flera filter bara paneler för att enkelt förstå vad som är i spel. När du distribuerar den här ARM-mallen måste du fylla i följande:
 
-Flödes loggar har följande fält: 
+* Namn på arbetsyta
+* ResourceGroup för arbets yta
+* Prenumerations-ID för arbets yta
+
+[![Distribuera till Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520DDoS%2520Protection%2520Workbook%2FAzureDDoSWorkbook_ARM.json)
+
+Flödes loggarna innehåller följande fält: 
 - Käll-IP-adress
 - Mål-IP-adress
 - Källport 

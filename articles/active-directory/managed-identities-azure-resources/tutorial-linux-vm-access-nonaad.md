@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/03/2020
+ms.date: 12/09/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cfcaec38a939291090da7d2229c4a95f984bf28
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 01da3c186aa5d2f64028a13e08cb892255d81854
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360474"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007814"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Självstudie: Använda en systemtilldelad hanterad identitet för en virtuell Linux-dator för åtkomst till Azure Key Vault 
 
@@ -36,7 +36,7 @@ Lär dig att:
  
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Förståelse för hanterade identiteter. Om du inte känner till funktionen för hanterade identiteter för Azure-resurser kan du läsa igenom den här [översikten](overview.md). 
+- Grundläggande förståelse för hanterade identiteter. Om du inte känner till funktionen för hanterade identiteter för Azure-resurser kan du läsa igenom den här [översikten](overview.md). 
 - Ett Azure-konto kan du [Registrera dig för ett kostnads fritt konto](https://azure.microsoft.com/free/).
 - Ägarens behörigheter i lämpligt omfång (din prenumeration eller resurs grupp) för att utföra nödvändiga steg för att skapa resurser och roll hantering. Information om rolltilldelning finns i [Använda rollbaserad åtkomstkontroll för att hantera åtkomsten till dina Azure-prenumerationsresurser](../../role-based-access-control/role-assignments-portal.md).
 - Du behöver också en virtuell Linux-dator som har systemtilldelade hanterade identiteter aktiverade.
@@ -121,7 +121,7 @@ För att slutföra de här stegen behöver du en SSH-klient.  Om du använder Wi
     Du kan använda denna åtkomsttoken för att autentisera till Azure Key Vault.  Nästa CURL-begäran visar hur du kan läsa en hemlighet från Key Vault med hjälp av CURL och Key Vault REST API:et.  Du behöver URL:en till ditt Key Vault, som finns i avsnittet **Essentials** på Key Vault-sidan **Översikt**.  Du Behöver också den åtkomsttoken som du fick i det föregående anropet. 
         
     ```bash
-    curl https://<YOUR-KEY-VAULT-URL>/secrets/<secret-name>?api-version=2016-10-01 -H "Authorization: Bearer <ACCESS TOKEN>" 
+    curl 'https://<YOUR-KEY-VAULT-URL>/secrets/<secret-name>?api-version=2016-10-01' -H "Authorization: Bearer <ACCESS TOKEN>" 
     ```
     
     Svaret ser ut såhär: 
@@ -134,7 +134,7 @@ När du har hämtat hemligheten från Key Vault kan du använda den och autentis
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När du vill rensa resurserna går du till [Azure Portal](https://portal.azure.com), väljer **resurs grupper** , letar upp och väljer den resurs grupp som skapades i processen för den här självstudien (till exempel `mi-test` ) och använder sedan kommandot **ta bort resurs grupp** .
+När du vill rensa resurserna går du till [Azure Portal](https://portal.azure.com), väljer **resurs grupper**, letar upp och väljer den resurs grupp som skapades i processen för den här självstudien (till exempel `mi-test` ) och använder sedan kommandot **ta bort resurs grupp** .
 
 Alternativt kan du också göra detta via [PowerShell eller CLI](../../azure-resource-manager/management/delete-resource-group.md)
 

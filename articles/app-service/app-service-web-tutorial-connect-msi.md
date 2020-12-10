@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: e5587c4826fea780c1e379ee1599440b2865dd50
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: e10834c921042f0bfedfc3196b855ce5dc7b0e8f
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862232"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007695"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Självstudie: Säkra Azure SQL Database-anslutningar från App Service med en hanterad identitet
 
@@ -41,7 +41,7 @@ Vad du kommer att lära dig:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Den här artikeln fortsätter där du slutade i [Självstudier: Bygg en ASP.net-app i Azure med SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md) eller [Självstudier: Bygg en ASP.NET Core-och SQL Database-app i Azure App Service](tutorial-dotnetcore-sqldb-app.md). Om du inte redan har gjort det följer du en av de två självstudierna först. Du kan också anpassa stegen för din egen .NET-app med SQL Database.
 
@@ -57,7 +57,7 @@ Börja med att aktivera Azure AD-autentisering till SQL Database genom att tilld
 
 Om din Azure AD-klient inte har en användare ännu, skapar du en genom att följa stegen i [lägga till eller ta bort användare med Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md).
 
-Hitta objekt-ID för Azure AD-användaren med hjälp av [`az ad user list`](/cli/azure/ad/user?view=azure-cli-latest#az-ad-user-list) och Ersätt *\<user-principal-name>* . Resultatet sparas i en variabel.
+Hitta objekt-ID för Azure AD-användaren med hjälp av [`az ad user list`](/cli/azure/ad/user#az-ad-user-list) och Ersätt *\<user-principal-name>* . Resultatet sparas i en variabel.
 
 ```azurecli-interactive
 azureaduser=$(az ad user list --filter "userPrincipalName eq '<user-principal-name>'" --query [].objectId --output tsv)
@@ -66,7 +66,7 @@ azureaduser=$(az ad user list --filter "userPrincipalName eq '<user-principal-na
 > Om du vill se en lista över alla huvud namn för användare i Azure AD kör du `az ad user list --query [].userPrincipalName` .
 >
 
-Lägg till den här Azure AD-användaren som en Active Directory administratör som använder [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin-create) kommandot i Cloud Shell. I följande kommando ersätter *\<server-name>* du med Server namnet (utan `.database.windows.net` suffixet).
+Lägg till den här Azure AD-användaren som en Active Directory administratör som använder [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) kommandot i Cloud Shell. I följande kommando ersätter *\<server-name>* du med Server namnet (utan `.database.windows.net` suffixet).
 
 ```azurecli-interactive
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server-name> --display-name ADMIN --object-id $azureaduser
@@ -79,7 +79,7 @@ Mer information om hur du lägger till en Active Directory-administratör finns 
 ### <a name="windows-client"></a>Windows-klient
 Visual Studio för Windows är integrerat med Azure AD-autentisering. Om du vill aktivera utveckling och fel sökning i Visual Studio lägger du till din Azure AD-användare i Visual Studio genom att välja **fil**  >  **konto inställningar** på menyn och klicka på **Lägg till ett konto**.
 
-Om du vill ställa in Azure AD-användaren för Azure-tjänsteautentisering väljer du **verktyg**  >  **alternativ** på menyn och väljer sedan konto val för **Azure-tjänstens autentisering**  >  **Account Selection**. Välj den Azure AD-användare som du har lagt till och klicka på **OK**.
+Om du vill ställa in Azure AD-användaren för Azure-tjänsteautentisering väljer du **verktyg**  >  **alternativ** på menyn och väljer sedan konto val för **Azure-tjänstens autentisering**  >  . Välj den Azure AD-användare som du har lagt till och klicka på **OK**.
 
 Nu är du redo att utveckla och felsöka din app med SQL Database som Server del, med Azure AD-autentisering.
 
@@ -176,7 +176,7 @@ Sedan konfigurerar du App Service-appen så att den ansluter till SQL Database m
 
 ### <a name="enable-managed-identity-on-app"></a>Aktivera hanterad identitet i appen
 
-När du ska aktivera en hanterad identitet för din Azure-app använder du kommandot [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) i Cloud Shell. I följande kommando ersätter du *\<app-name>* .
+När du ska aktivera en hanterad identitet för din Azure-app använder du kommandot [az webapp identity assign](/cli/azure/webapp/identity#az-webapp-identity-assign) i Cloud Shell. I följande kommando ersätter du *\<app-name>* .
 
 ```azurecli-interactive
 az webapp identity assign --resource-group myResourceGroup --name <app-name>

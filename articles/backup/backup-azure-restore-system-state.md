@@ -3,12 +3,12 @@ title: Återställa system tillstånd till en Windows-Server
 description: Steg för steg-förklaringar för återställning av Windows Server-systemtillstånd från en säkerhets kopia i Azure.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 824ed5e71934af370211bfa8b4c266fe4323b4ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ef23d6ff16c263e310304cc240c2090751640b1
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89377445"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008487"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Återställa system tillstånd till Windows Server
 
@@ -24,7 +24,7 @@ Den här artikeln förklarar hur du återställer säkerhets kopior av Windows S
 
 Följande steg beskriver hur du återställer din Windows Server-konfiguration till ett tidigare tillstånd. Att återställa Server konfigurationen till ett känt, stabilt tillstånd, kan vara mycket värdefull. Följande steg återställer serverns system tillstånd från ett Recovery Services-valv.
 
-1. Öppna snapin-modulen **Microsoft Azure Backup**. Om du inte vet var snapin-modulen har installerats söker du efter **Microsoft Azure Backup**i datorn eller servern.
+1. Öppna snapin-modulen **Microsoft Azure Backup**. Om du inte vet var snapin-modulen har installerats söker du efter **Microsoft Azure Backup** i datorn eller servern.
 
     Skriv bords appen bör visas i Sök resultaten.
 
@@ -88,7 +88,7 @@ Den terminologi som används i dessa steg omfattar:
 6. I fönstret Välj säkerhets kopierings server väljer du *käll datorn* i listan med datorer som visas.
 7. I fönstret Välj återställnings läge väljer du **system tillstånd** och **sedan nästa**.
 
-    ![Search](./media/backup-azure-restore-system-state/recover-type-selection.png)
+    ![Sök](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
 8. I kalendern i fönstret **Välj volym och datum** väljer du en återställnings punkt. Du kan återställa från vilken återställnings punkt som helst. Datum i **fetstil** anger tillgänglighet för minst en återställnings punkt. När du har valt ett datum, om det finns flera återställnings punkter, väljer du den aktuella återställnings punkten från den nedrullningsbara menyn **tid** .
 
@@ -114,7 +114,7 @@ Den terminologi som används i dessa steg omfattar:
 
 När du har återställt system tillstånd som filer med Azure Recovery Services Agent använder du verktyget Windows Server Backup för att tillämpa det återställda system läget på Windows Server. Verktyget Windows Server Backup finns redan på servern. Följande steg beskriver hur du tillämpar det återställda system tillstånd.
 
-1. Öppna snapin-modulen Windows Server Backup. Om du inte vet var snapin-modulen har installerats söker du efter **Windows Server Backup**i datorn eller servern.
+1. Öppna snapin-modulen Windows Server Backup. Om du inte vet var snapin-modulen har installerats söker du efter **Windows Server Backup** i datorn eller servern.
 
     Skriv bords appen visas i Sök resultaten. Om den inte visas, eller om du stöter på fel när du öppnar programmet, måste du installera **Windows Server Backup funktioner**, och beroende komponenter under den, som är tillgängliga i **guiden Lägg till funktioner** i **Serverhanteraren**.
 
@@ -122,9 +122,9 @@ När du har återställt system tillstånd som filer med Azure Recovery Services
 
     ![Välj lokal säkerhets kopia att återställa därifrån](./media/backup-azure-restore-system-state/win-server-backup-local-backup.png)
 
-1. I den lokala säkerhets kopierings konsolen går du till **fönstret åtgärder**och väljer **Återställ** för att öppna återställnings guiden.
+1. I den lokala säkerhets kopierings konsolen går du till **fönstret åtgärder** och väljer **Återställ** för att öppna återställnings guiden.
 
-1. Välj alternativet, **en säkerhets kopia som lagras på en annan plats**och välj **Nästa**.
+1. Välj alternativet, **en säkerhets kopia som lagras på en annan plats** och välj **Nästa**.
 
    ![Välj att återställa till en annan server](./media/backup-azure-restore-system-state/backup-stored-in-diff-location.png)
 
@@ -140,7 +140,7 @@ När du har återställt system tillstånd som filer med Azure Recovery Services
 
 1. I fönstret Välj återställnings typ väljer du **system tillstånd** och **sedan nästa**.
 
-1. För system tillstånds återställningens plats väljer du **ursprunglig plats**och **sedan nästa**.
+1. För system tillstånds återställningens plats väljer du **ursprunglig plats** och **sedan nästa**.
 
     Om du återställer en domänkontrollant visas följande ytterligare alternativ:
 
@@ -201,6 +201,8 @@ Den här artikeln diskuterar bara det första scenariot, som anropar en nonautho
 
 1. När du har slutfört en återställning bör du starta om servern i normalt läge. Öppna en kommando tolk och skriv följande: `bcdedit /deletevalue safeboot`
 1. Starta om servern.
+
+Mer information finns i [säkerhetskopiera och återställa Active Directory domänkontrollanter](active-directory-backup-restore.md).
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>Felsökning av misslyckad återställning av systemtillstånd
 

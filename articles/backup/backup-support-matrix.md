@@ -4,12 +4,12 @@ description: Innehåller en sammanfattning av stödinställningar och begränsni
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 70a81b42ad2fb417902a627afb1651d572844648
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: be0c576da6e38233423a79f562f767de806d7640
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548519"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008375"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Support mat ris för Azure Backup
 
@@ -67,7 +67,7 @@ Här är what's som stöds om du vill säkerhetskopiera virtuella Azure-datorer:
 
 **Dator** | **Vad har säkerhetskopierats** | **Plats** | **Funktioner**
 --- | --- | --- | ---
-**VM-säkerhetskopiering i Azure med hjälp av VM-tillägget** | Hela VM | Säkerhetskopiera till valvet. | Tillägg som installeras när du aktiverar säkerhets kopiering för en virtuell dator.<br/><br/> Säkerhetskopiera en gång om dagen.<br/><br/> App-medveten säkerhets kopiering för virtuella Windows-datorer; filkonsekvent säkerhets kopiering för virtuella Linux-datorer. Du kan konfigurera program konsekvens för Linux-datorer med hjälp av anpassade skript.<br/><br/> Återställ virtuell dator eller disk.<br/><br/> Det går inte att säkerhetskopiera en virtuell Azure-dator till en lokal plats.
+**VM-säkerhetskopiering i Azure med hjälp av VM-tillägget** | Hela VM | Säkerhetskopiera till valvet. | Tillägg som installeras när du aktiverar säkerhets kopiering för en virtuell dator.<br/><br/> Säkerhetskopiera en gång om dagen.<br/><br/> App-medveten säkerhets kopiering för virtuella Windows-datorer; filkonsekvent säkerhets kopiering för virtuella Linux-datorer. Du kan konfigurera program konsekvens för Linux-datorer med hjälp av anpassade skript.<br/><br/> Återställ virtuell dator eller disk.<br/><br/>[Säkerhets kopiering och återställning av Active Directory domänkontrollanter](active-directory-backup-restore.md) stöds.<br><br> Det går inte att säkerhetskopiera en virtuell Azure-dator till en lokal plats.
 **Virtuell Azure VM-säkerhetskopiering med MARS-agenten** | Filer, mappar, systemtillstånd | Säkerhetskopiera till valvet. | Säkerhetskopiera tre gånger per dag.<br/><br/> Om du vill säkerhetskopiera vissa filer eller mappar i stället för hela den virtuella datorn, kan MARS-agenten köras tillsammans med VM-tillägget.
 **Virtuell Azure-dator med DPM** | Filer, mappar, volymer, system tillstånd, AppData | Säkerhetskopiera till lokal lagring av virtuell Azure-dator som kör DPM. DPM säkerhetskopieras sedan till valvet. | App-medvetna ögonblicks bilder.<br/><br/> Fullständig granularitet för säkerhetskopiering och återställning.<br/><br/> Linux stöds för virtuella datorer (Hyper-V/VMware).<br/><br/> Oracle stöds inte.
 **Virtuell Azure-dator med MABS** | Filer, mappar, volymer, system tillstånd, AppData | Säkerhetskopiera till lokal lagring av virtuell Azure-dator som kör MABS. MABS säkerhetskopierar sedan till valvet. | App-medvetna ögonblicks bilder.<br/><br/> Fullständig granularitet för säkerhetskopiering och återställning.<br/><br/> Linux stöds för virtuella datorer (Hyper-V/VMware).<br/><br/> Oracle stöds inte.
@@ -134,7 +134,7 @@ Säkerhets kopiering stöder komprimering av säkerhets kopierings trafik, som s
 
 ## <a name="retention-limits"></a>Gräns för kvarhållning
 
-**Inställning** | **Begränsningar**
+**Inställning** | **Gränser**
 --- | ---
 **Högsta antal återställnings punkter per skyddad instans (dator eller arbets belastning)** | 9 999
 **Maximal förfallo tid för en återställnings punkt** | Obegränsad
@@ -151,9 +151,9 @@ Azure Backup har lagt till funktionen för återställning av kors region för a
 | Typ av säkerhets kopierings hantering | Stöds                                                    | Regioner som stöds |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Ja.   Stöds för krypterade virtuella datorer och virtuella datorer med mindre än 4 TB diskar | Alla offentliga Azure-regioner.  |
-| SQL-/SAP HANA | Ja                                                          | Alla offentliga regioner utom Frankrike |
-| MARS-agent/lokalt  | Nej                                                           | Saknas               |
-| AFS (Azure-filresurser)                 | Nej                                                           | Saknas               |
+| SQL-/SAP HANA | Yes                                                          | Alla offentliga regioner utom Frankrike |
+| MARS-agent/lokalt  | No                                                           | Saknas               |
+| AFS (Azure-filresurser)                 | No                                                           | Saknas               |
 
 ## <a name="next-steps"></a>Nästa steg
 

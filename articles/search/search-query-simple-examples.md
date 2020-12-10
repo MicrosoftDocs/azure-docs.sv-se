@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/05/2020
-ms.openlocfilehash: 834e4fe8c7b3923f40a07c02c0310200db222308
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 12/09/2020
+ms.openlocfilehash: 027852216b3f2055a5a381d00aff94526953b898
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697262"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007882"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Skapa en enkel fråga i Azure Kognitiv sökning
 
@@ -22,6 +22,14 @@ I Azure Kognitiv sökning anropar den [enkla frågesyntaxen](query-simple-syntax
 I den här artikeln använder vi exempel för att illustrera den enkla syntaxen, fylla i `search=` parametern för en [Sök dokument](/rest/api/searchservice/search-documents) åtgärd.
 
 En alternativ frågesyntax är [full Lucene](query-lucene-syntax.md)och stöder mer komplexa frågeuttryck, till exempel Fuzzy-och jokertecken, vilket kan ta ytterligare tid att bearbeta. Mer information och exempel som demonstrerar fullständig syntax finns i [använda fullständig Lucene-syntax](search-query-lucene-examples.md).
+
+Välj bland följande verktyg och API: er för att skicka frågor.
+
+| Metodik | Description |
+|-------------|-------------|
+| [Sökutforskaren (portal)](search-explorer.md) | Innehåller ett sökfält och alternativ för val av index och API-version. Resultat returneras som JSON-dokument. Rekommenderas för undersökning, testning och validering. <br/>[Läs mer.](search-get-started-portal.md#query-index) | 
+| [Postman eller Visual Studio Code](search-get-started-rest.md) | Webb test verktyg är ett utmärkt alternativ för att utforma [Sök dokument](/rest/api/searchservice/search-documents) rest-anrop. REST API har stöd för varje program mässig åtgärd i Azure Kognitiv sökning, så att du kan skicka förfrågningar interaktivt för att fokusera på utforskningen för en speciell uppgift.  |
+| [SearchClient (.NET)](/dotnet/api/azure.search.documents.searchclient) | Klient som kan användas för att skicka frågor till ett Azure Kognitiv sökning-index.  <br/>[Läs mer.](search-howto-dotnet-sdk.md)  |
 
 ## <a name="formulate-requests-in-postman"></a>Formulera förfrågningar i Postman
 

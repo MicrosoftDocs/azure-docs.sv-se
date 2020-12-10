@@ -21,14 +21,8 @@
           displayName: 'assign key, assign resource, add key, add resource, test, deploy, endpoint, query, publish'
     - name: Använda webbläsare
       href: luis-get-started-get-intent-from-browser.md
-    - name: Använda SDK
-      href: azure-sdk-quickstart.md
-    - name: 'Använda REST-API:er'
-      items:
-        - name: Hämta avsikt
-          href: luis-get-started-rest-get-intent.md
-        - name: Ändra modell
-          href: luis-get-started-rest-get-model.md
+    - name: Använda klientbiblioteken och REST-API
+      href: client-libraries-rest-api.md
 - name: Självstudier
   items:
     - name: Bygg en app som kan delas upp

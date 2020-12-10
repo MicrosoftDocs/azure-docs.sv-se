@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 7f177a7801e18bcdb2c2d6ef737f0c790cf6b1d1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e75eef86a4a0c679a44a61267f94d337538daaa8
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075797"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007627"
 ---
 # <a name="access-azure-storage-preview-as-a-network-share-from-a-container-in-app-service"></a>Åtkomst Azure Storage (för hands version) som en nätverks resurs från en behållare i App Service
 
@@ -20,7 +20,7 @@ ms.locfileid: "93075797"
 Den här guiden visar hur du kopplar Azure Storage-filer som en nätverks resurs till en Windows-behållare i App Service. Endast [Azure Files resurser](../storage/files/storage-how-to-use-files-cli.md) och [Premium fil resurser](../storage/files/storage-how-to-create-premium-fileshare.md) stöds. Fördelarna är skyddat innehåll, innehålls portabilitet, åtkomst till flera appar och flera överförings metoder.
 
 > [!NOTE]
->Azure Storage i App Service är **i för hands version** och **stöds inte** för **produktions scenarier** .
+>Azure Storage i App Service är **i för hands version** och **stöds inte** för **produktions scenarier**.
 
 ::: zone-end
 
@@ -29,7 +29,7 @@ Den här guiden visar hur du kopplar Azure Storage-filer som en nätverks resurs
 Den här guiden visar hur du kopplar Azure Storage till en Linux-behållare App Service. Fördelarna är skyddat innehåll, innehålls portabilitet, beständig lagring, åtkomst till flera appar och flera överförings metoder.
 
 > [!NOTE]
->Azure Storage i App Service är **i för hands version** för App Service på Linux och Web App for containers. Det finns **inte stöd** för **produktions scenarier** .
+>Azure Storage i App Service är **i för hands version** för App Service på Linux och Web App for containers. Det finns **inte stöd** för **produktions scenarier**.
 
 ::: zone-end
 
@@ -80,7 +80,7 @@ Den här guiden visar hur du kopplar Azure Storage till en Linux-behållare App 
 
 När du har skapat ditt [Azure Storage-konto, fil resurs och katalog](#prerequisites)kan du nu konfigurera din app med Azure Storage.
 
-Om du vill montera en Azure Files resurs till en katalog i App Service-appen använder du [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) kommandot. Lagrings typen måste vara migreringsåtgärden.
+Om du vill montera en Azure Files resurs till en katalog i App Service-appen använder du [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) kommandot. Lagrings typen måste vara migreringsåtgärden.
 
 ```azurecli
 az webapp config storage-account add --resource-group <group-name> --name <app-name> --custom-id <custom-id> --storage-type AzureFiles --share-name <share-name> --account-name <storage-account-name> --access-key "<access-key>" --mount-path <mount-path-directory of form c:<directory name> >
@@ -94,7 +94,7 @@ Du bör göra detta för alla andra kataloger som ska länkas till en Azure File
 
 När du har skapat ditt [Azure Storage-konto, fil resurs och katalog](#prerequisites)kan du nu konfigurera din app med Azure Storage.
 
-Om du vill montera ett lagrings konto till en katalog i App Service-appen använder du [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) kommandot. Lagrings typen kan vara AzureBlob eller migreringsåtgärden. Migreringsåtgärden används i det här exemplet. Inställningen monterings Sök väg motsvarar mappen i den behållare som du vill montera till Azure Storage. Om den ställs in på "/" monteras hela behållaren till Azure Storage.
+Om du vill montera ett lagrings konto till en katalog i App Service-appen använder du [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) kommandot. Lagrings typen kan vara AzureBlob eller migreringsåtgärden. Migreringsåtgärden används i det här exemplet. Inställningen monterings Sök väg motsvarar mappen i den behållare som du vill montera till Azure Storage. Om den ställs in på "/" monteras hela behållaren till Azure Storage.
 
 
 > [!CAUTION]

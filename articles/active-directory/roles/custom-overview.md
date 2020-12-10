@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f694a46fddbc84968b3267842aa19108d051590
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0876478d638963e7157f7a16a263000eec634db0
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499245"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005127"
 ---
 # <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>Översikt över rollbaserad åtkomst kontroll i Azure Active Directory
 
@@ -30,10 +30,13 @@ Den här artikeln beskriver hur du förstår den rollbaserade åtkomst kontrolle
 Båda systemen innehåller liknande roll definitioner och roll tilldelningar som används. Behörigheter för Azure AD-roller kan dock inte användas i anpassade Azure-roller och vice versa.
 
 ## <a name="understand-azure-ad-role-based-access-control"></a>Förstå rollbaserad åtkomst kontroll i Azure AD
+Azure AD stöder två typer av roll definitioner – 
+* [Inbyggda roller](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference)
+* [Anpassade roller](https://docs.microsoft.com/azure/active-directory/roles/custom-create)
 
-Att bevilja behörighet med anpassade Azure AD-roller är en två stegs process som inbegriper att skapa en anpassad roll definition och sedan tilldela den med en roll tilldelning. En anpassad roll definition är en samling behörigheter som du lägger till från en för inställnings lista. Dessa behörigheter är samma behörigheter som används i de inbyggda rollerna.  
+Inbyggda roller är färdiga roller som har en fast uppsättning behörigheter. Dessa roll definitioner kan inte ändras. Det finns många [inbyggda roller](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference) som Azure AD stöder och listan växer. För att runda av kanterna och uppfylla dina avancerade krav stöder Azure AD även [anpassade roller](https://docs.microsoft.com/azure/active-directory/roles/custom-create). Att bevilja behörighet med anpassade Azure AD-roller är en två stegs process som inbegriper att skapa en anpassad roll definition och sedan tilldela den med en roll tilldelning. En anpassad roll definition är en samling behörigheter som du lägger till från en för inställnings lista. Dessa behörigheter är samma behörigheter som används i de inbyggda rollerna.  
 
-När du har skapat roll definitionen kan du tilldela den till en användare genom att skapa en roll tilldelning. En roll tilldelning ger användaren behörigheten i en roll definition i en angiven omfattning. Med den här två stegs processen kan du skapa en enda roll definition och tilldela den flera gånger i olika omfång. Ett omfång definierar uppsättningen av Azure AD-resurser som roll medlemmen har åtkomst till. Det vanligaste omfånget är hela organisationen (org-wide). En anpassad roll kan tilldelas i hela organisationen, vilket innebär att roll medlemmen har rollen behörigheter för alla resurser i organisationen. En anpassad roll kan också tilldelas i ett objekt område. Ett exempel på ett objekt omfång är ett enda program. Samma roll kan tilldelas till en användare över alla program i organisationen och sedan till en annan användare med endast en omfattning av appen Contosos utgifts rapporter.  
+När du har skapat en anpassad roll definition (eller använt en inbyggd roll) kan du tilldela den till en användare genom att skapa en roll tilldelning. En roll tilldelning ger användaren behörigheten i en roll definition i en angiven omfattning. Med den här två stegs processen kan du skapa en enda roll definition och tilldela den flera gånger i olika omfång. Ett omfång definierar uppsättningen av Azure AD-resurser som roll medlemmen har åtkomst till. Det vanligaste omfånget är hela organisationen (org-wide). En anpassad roll kan tilldelas i hela organisationen, vilket innebär att roll medlemmen har rollen behörigheter för alla resurser i organisationen. En anpassad roll kan också tilldelas i ett objekt område. Ett exempel på ett objekt omfång är ett enda program. Samma roll kan tilldelas till en användare över alla program i organisationen och sedan till en annan användare med endast en omfattning av appen Contosos utgifts rapporter.  
 
 Inbyggda och anpassade Azure AD-roller fungerar på begrepp som liknar [rollbaserad åtkomst kontroll i Azure (Azure RBAC)](../../active-directory-b2c/overview.md). [Skillnaden mellan dessa två rollbaserade åtkomst kontroll system](../../role-based-access-control/rbac-and-directory-admin-roles.md) är att Azure RBAC styr åtkomsten till Azure-resurser, till exempel virtuella datorer eller lagrings utrymme med hjälp av Azure Resource Management, och anpassade Azure AD-roller styr åtkomsten till Azure AD-resurser med hjälp av Graph API. Båda systemen utnyttjar begreppet roll definitioner och roll tilldelningar. Det går inte att ta med RBAC-behörigheter för Azure AD i Azure-roller och vice versa.
 
@@ -80,7 +83,7 @@ Ett omfång är begränsningen av tillåtna åtgärder till en viss Azure AD-res
 
 ## <a name="required-license-plan"></a>Obligatorisk licens plan
 
-[!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
+Användning av inbyggda roller i Azure AD är kostnads fri, medan anpassade roller kräver en Azure AD Premium P1-licens. Hitta rätt licens för dina behov i [Jämför allmänt tillgängliga funktioner i Free, Basic och Premium-utgåvorna](https://azure.microsoft.com/pricing/details/active-directory).
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -6,16 +6,16 @@ ms.assetid: b7d46d6f-44fd-454c-8008-87dab6eefbc1
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 8a214deb0cde5ffd6dee6d31377c3c898a363b27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90c4a30243569c07e1a70ad46c8b2f7e70d493b2
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89073853"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005587"
 ---
 # <a name="upload-files-to-a-web-app-using-ftp"></a>Ladda upp filer till ett webbprogram med hjälp av FTP
 
-Det här exempelskriptet skapar en webbapp i App Service med relaterade resurser och distribuerar sedan webbappkoden med FTP (via [WebClient.UploadFile()](/dotnet/api/system.net.webclient.uploadfile?view=netcore-3.1)).
+Det här exempelskriptet skapar en webbapp i App Service med relaterade resurser och distribuerar sedan webbappkoden med FTP (via [WebClient.UploadFile()](/dotnet/api/system.net.webclient.uploadfile)).
 
 Om det behövs installerar du Azure PowerShell med hjälp av den instruktion som finns i [Azure PowerShell-guiden](/powershell/azure/)och kör sedan `Connect-AzAccount` för att skapa en anslutning till Azure.
 
@@ -37,7 +37,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 Det här skriptet använder följande kommandon. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
 
-| Kommando | Obs! |
+| Kommando | Kommentarer |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Skapar en resursgrupp där alla resurser lagras. |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Skapar en App Service-plan. |
