@@ -9,16 +9,17 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d40637b05a5d398124ee52dbca49d55b3112ec95
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 6f0b5325ff95d2c2f34572239967151986621bcb
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91758412"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937193"
 ---
 # <a name="sms-client-library-overview"></a>Översikt över klientbiblioteket för SMS
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 Azure Communication Services SMS-klient bibliotek kan användas för att lägga till SMS-meddelanden i dina program.
 
@@ -26,7 +27,7 @@ Azure Communication Services SMS-klient bibliotek kan användas för att lägga 
 
 I följande lista visas en uppsättning funktioner som för närvarande är tillgängliga i våra klient bibliotek.
 
-| Grupp med funktioner | Funktion                                                                            | JS  | Java | .NET | Python |
+| Grupp med funktioner | Kapacitet                                                                            | JS  | Java | .NET | Python |
 | ----------------- | ------------------------------------------------------------------------------------- | --- | ---- | ---- | ------ |
 | Kärn funktioner | Skicka och ta emot SMS-meddelanden </br> *Unicode-emojis stöds*                        | ✔️   | ✔️    | ✔️    | ✔️      |
 |                   | Ta emot leverans rapporter för skickade meddelanden                                            | ✔️   | ✔️    | ✔️    | ✔️      |
@@ -34,8 +35,8 @@ I följande lista visas en uppsättning funktioner som för närvarande är till
 |                   | Stöd för långa meddelanden (upp till 2048 tecken)                                           | ✔️   | ✔️    | ✔️    | ✔️      |
 |                   | Automatisk sammanfogning av långa meddelanden                                                   | ✔️   | ✔️    | ✔️    | ✔️      |
 | Händelser            | Använd Event Grid för att konfigurera Webhooks för att ta emot inkommande meddelanden och leverans rapporter | ✔️   | ✔️    | ✔️    | ✔️      |
-| Telefonnummer      | Avgiftsfritt nummer                                                                     | ✔️   | ✔️    | ✔️    | ✔️      |
-| Regler        | Avanmäla hantering                                                                      | ✔️   | ✔️    | ✔️    | ✔️      |
+| Telefonnummer      | Toll-Free nummer                                                                     | ✔️   | ✔️    | ✔️    | ✔️      |
+| Regler        | Opt-Out hantering                                                                      | ✔️   | ✔️    | ✔️    | ✔️      |
 | Övervakning        | Övervaka användning för skickade och mottagna meddelanden                                          | ✔️   | ✔️    | ✔️    | ✔️      |
 | PSTN-anrop      | Lägg till PSTN-anrop till det SMS-aktiverade avgiftsfria numret                    | ✔️   | ✔️    | ✔️    | ✔️      |
 

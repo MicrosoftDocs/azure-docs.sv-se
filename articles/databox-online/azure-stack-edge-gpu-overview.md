@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 3fb4085ba275bda1fe784f368eb5d92ac0c668f0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 059aad8b45aa449f5cd28c97f4ba55e2204c04ce
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448517"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937074"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>Vad är Azure Stack Edge Pro med GPU?
 
@@ -51,7 +51,7 @@ Azure Stack Edge Pro har följande funktioner:
 |Datauppdatering     | Möjlighet att uppdatera lokala filer med det senaste från molnet.|
 |Kryptering    | BitLocker-stöd för lokal kryptering av data och skydda dataöverföring till molnet via *https*.|
 |Bandbredds begränsning| Begränsa bandbredds användningen under hög belastnings tider.|
-<!--|ExpressRoute | Säkerhet har lagts till via ExpressRoute. Använd peering-konfiguration där trafik från lokala enheter till moln lagrings slut punkter överförs över ExpressRoute. Mer information finns i [Översikt över ExpressRoute](../expressroute/expressroute-introduction.md).-->
+<!--|ExpressRoute | Säkerhet har lagts till via ExpressRoute. Använd peering-konfiguration där trafik från lokala enheter till moln lagrings slut punkter överförs över ExpressRoute. Mer information finns i [Översikt över ExpressRoute](../expressroute/expressroute-introduction.md).|-->
 
 ## <a name="components"></a>Komponenter
 

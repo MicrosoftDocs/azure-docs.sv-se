@@ -5,14 +5,14 @@ ms.author: mikben
 ms.date: 10/10/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 820659c513674dc04e914c8f1094afab4f5a89e2
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c191da32444c3eb0315373780c8037f1b45be423
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356468"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96992987"
 ---
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - En fungerande [kommunikations tjänst som anropar en app](../getting-started-with-calling.md).
 - En [team distribution](/deployoffice/teams-install).
@@ -28,79 +28,89 @@ Du måste vara medlem i den ägande organisationen av båda entiteterna för att
 
 ## <a name="add-the-teams-ui-controls"></a>Lägg till Team UI-kontroller
 
-Lägg till en ny text ruta och knapp i HTML-koden. Text rutan används för att ange team Mötes kontexten och knappen kommer att användas för att ansluta till det angivna mötet:
+Ersätt Code i index.html med följande kodfragment.
+Text rutan används för att ange team Mötes kontexten och knappen kommer att användas för att ansluta till det angivna mötet:
 
 ```html
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Communication Client - Calling Sample</title>
-  </head>
-  <body>
+</head>
+<body>
     <h4>Azure Communication Services</h4>
-    <h1>Calling Quickstart</h1>
-    <input 
-      id="callee-id-input"
-      type="text"
-      placeholder="Who would you like to call?"
-      style="margin-bottom:1em; width: 200px;"
-    />
-    <input 
-      id="teams-id-input"
-      type="text"
-      placeholder="Teams meeting context"
-      style="margin-bottom:1em; width: 300px;"
-    />
+    <h1>Teams meeting join quickstart</h1>
+    <input id="teams-link-input" type="text" placeholder="Teams meeting link"
+        style="margin-bottom:1em; width: 300px;" />
+        <p>Call state <span style="font-weight: bold" id="call-state">-</span></p>
     <div>
-      <button id="call-button" type="button" disabled="true">
-        Start Call
-      </button>
-      &nbsp;
-      <button id="hang-up-button" type="button" disabled="true">
-        Hang Up
-      </button>
-         <button id="meeting-button" type="button" disabled="false">
-        Join Teams Meeting
-      </button>
+        <button id="join-meeting-button" type="button" disabled="false">
+            Join Teams Meeting
+        </button>
+        <button id="hang-up-button" type="button" disabled="true">
+            Hang Up
+        </button>
     </div>
     <script src="./bundle.js"></script>
-  </body>
+</body>
+
 </html>
 ```
 
 ## <a name="enable-the-teams-ui-controls"></a>Aktivera UI-kontroller för team
 
-Nu kan vi binda **Mötes knappen Anslut till Team** till den kod som ansluts till de tillhandahållna teamen:
+Ersätt innehållet i client.js-filen med följande kodfragment.
 
 ```javascript
-meetingButton.addEventListener("click", () => {
+import { CallClient } from "@azure/communication-calling";
+import { AzureCommunicationUserCredential } from '@azure/communication-common';
+
+let call;
+let callAgent;
+const meetingLinkInput = document.getElementById('teams-link-input');
+const hangUpButton = document.getElementById('hang-up-button');
+const teamsMeetingJoinButton = document.getElementById('join-meeting-button');
+const callStateElement = document.getElementById('call-state');
+
+async function init() {
+    const callClient = new CallClient();
+    const tokenCredential = new AzureCommunicationUserCredential("<USER ACCESS TOKEN>");
+    callAgent = await callClient.createCallAgent(tokenCredential);
+    teamsMeetingJoinButton.disabled = false;
+}
+init();
+
+hangUpButton.addEventListener("click", async () => {
+    // end the current call
+    await call.hangUp();
+  
+    // toggle button states
+    hangUpButton.disabled = true;
+    teamsMeetingJoinButton.disabled = false;
+    callStateElement.innerText = '-';
+  });
+
+teamsMeetingJoinButton.addEventListener("click", () => {
     
     // set display name in the meeting
-    callAgent.updateDisplayName('YOUR_NAME');
+    callAgent.updateDisplayName('ACS user');
     
     // join with meeting link
-    call = callAgent.join({meetingLink: 'MEETING_LINK'}, {});
-
-     // join with meeting coordinates
-     call = callAgent.join({
-        threadId: 'CHAT_THREAD_ID',
-        organizerId: 'ORGANIZER_ID',
-        tenantId: 'TENANT_ID',
-        messageId: 'MESSAGE_ID'
-    }, {})
+    call = callAgent.join({meetingLink: meetingLinkInput.value}, {});
     
+    call.on('callStateChanged', () => {
+        callStateElement.innerText = call.state;
+    })
     // toggle button states
     hangUpButton.disabled = false;
-    callButton.disabled = true;
-    meetingButton.disabled = true;
+    teamsMeetingJoinButton.disabled = true;
 });
 ```
 
-## <a name="get-the-meeting-context"></a>Hämta Mötes kontexten
+## <a name="get-the-teams-meeting-link"></a>Hämta team Mötes länken
 
-Team-kontexten kan hämtas med Graph API: er. Detta beskrivs i [Graph-dokumentationen](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta).
-
-Du kan också hämta nödvändig Mötes information från URL: en **till** mötets inbjudan i mötesinbjudan.
+Länken Teams möte kan hämtas med Graph API: er. Detta beskrivs i [Graph-dokumentationen](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta).
+Kommunikations tjänsterna som anropar SDK accepterar en länk till en fullständig Teams möte. Den här länken returneras som en del av `onlineMeeting` resursen, som är tillgänglig under [ `joinWebUrl` egenskapen](/graph/api/resources/onlinemeeting?view=graph-rest-beta) . du kan också hämta nödvändig Mötes information från URL: en **till kopplings mötet** i team mötets inbjudan.
 
 ## <a name="run-the-code"></a>Kör koden
 
@@ -112,6 +122,6 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 
 Öppna webbläsaren och gå till http://localhost:8080/ . Du bör se följande:
 
-:::image type="content" source="../media/javascript/calling-javascript-app.png" alt-text="Skärm bild av det färdiga JavaScript-programmet.":::
+:::image type="content" source="../media/javascript/acs-join-teams-meeting-quickstart.PNG" alt-text="Skärm bild av det färdiga JavaScript-programmet.":::
 
 Infoga team-kontexten i text rutan och tryck på *Anslut Teams möte* för att ansluta till teamen i kommunikations tjänst programmet.

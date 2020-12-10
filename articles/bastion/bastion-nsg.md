@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 822a90aa2bd3a19cf3459924e6b577cc416aa3a5
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: afb751e08faea6dabde72b192d246b48735cff53
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616832"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938704"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>Arbeta med NSG-åtkomst och Azure skydds
 
@@ -28,13 +28,13 @@ I det här diagrammet:
 * Ansluta integrering – RDP/SSH-session med enkel klickning i webbläsaren
 * Ingen offentlig IP-adress krävs på den virtuella Azure-datorn.
 
-## <a name="network-security-groups"></a><a name="nsg"></a>Nätverks säkerhets grupper
+## <a name="network-security-groups"></a><a name="nsg"></a>Nätverkssäkerhetsgrupper
 
 I det här avsnittet visas nätverks trafiken mellan användaren och Azure-skydds och för virtuella datorer i det virtuella nätverket:
 
 ### <a name="azurebastionsubnet"></a><a name="apply"></a>AzureBastionSubnet
 
-Azure-skydds distribueras specifikt till * **AzureBastionSubnet** _.
+Azure-skydds distribueras specifikt till ***AzureBastionSubnet** _.
 
 _ **Ingress trafik:**
 

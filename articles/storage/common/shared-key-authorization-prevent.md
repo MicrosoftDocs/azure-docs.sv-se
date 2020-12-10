@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 12/07/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: ce0ea938cac4afa043b8770a4d6a98f08ec145ec
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 6a24713a6027c38d2b9817928f3a82161bd37314
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484897"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936734"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Förhindra auktorisering av delad nyckel för ett Azure Storage konto (förhands granskning)
 
@@ -23,13 +23,11 @@ Varje säker begäran till ett Azure Storage konto måste vara auktoriserad. Som
 Om du inte tillåter autentisering med delad nyckel för ett lagrings konto, Azure Storage neka alla efterföljande begär anden till det kontot som har behörighet till kontots åtkomst nycklar. Endast säkra begär Anden som har auktoriserats med Azure AD kommer att lyckas. Mer information om hur du använder Azure AD finns i [bevilja åtkomst till blobbar och köer med hjälp av Azure Active Directory](storage-auth-aad.md).
 
 > [!WARNING]
-> Azure Storage stöder endast Azure AD-auktorisering för förfrågningar till blob-och Queue-lagring. Om du inte tillåter auktorisering med delad nyckel för ett lagrings konto kommer förfrågningar till Azure Files eller tabell lagring som använder autentisering med delad nyckel att Miss Miss förväntas.
->
-> Under förhands granskningen lyckas förfrågningar till Azure Files-eller tabell lagring som använder sig av SAS-token (signatur för delad åtkomst) som genererades med konto åtkomst nycklarna när autentisering med delad nyckel inte tillåts. Mer information finns i [om förhands granskningen](#about-the-preview).
->
-> Att neka åtkomst till delade nycklar för ett lagrings konto påverkar inte SMB-anslutningar till Azure Files.
+> Azure Storage stöder endast Azure AD-auktorisering för förfrågningar till blob-och Queue-lagring. Om du inte tillåter auktorisering med delad nyckel för ett lagrings konto kommer förfrågningar till Azure Files eller tabell lagring som använder autentisering med delad nyckel att Miss Miss förväntas. Eftersom Azure Portal alltid använder autentisering med delad nyckel för att komma åt fil-och tabell data, och om du inte tillåter auktorisering med delad nyckel för lagrings kontot, kommer du inte att kunna komma åt fil-eller tabell data i Azure Portal.
 >
 > Microsoft rekommenderar att du antingen migrerar Azure Files-eller tabell lagrings data till ett separat lagrings konto innan du tillåter åtkomst till kontot via den delade nyckeln, eller att du inte tillämpar den här inställningen på lagrings konton som stöder Azure Files-eller tabell lagrings arbets belastningar.
+>
+> Att neka åtkomst till delade nycklar för ett lagrings konto påverkar inte SMB-anslutningar till Azure Files.
 
 Den här artikeln beskriver hur du identifierar begär Anden som skickas med autentisering med delad nyckel och hur du kan åtgärda autentisering av delade nycklar för ditt lagrings konto. Information om hur du registrerar för för hands versionen finns i [om för hands versionen](#about-the-preview).
 
@@ -193,15 +191,32 @@ resources
 | project subscriptionId, resourceGroup, name, allowSharedKeyAccess
 ```
 
+## <a name="permissions-for-allowing-or-disallowing-shared-key-access"></a>Behörigheter för att tillåta eller neka åtkomst till delad nyckel
+
+Om du vill ange egenskapen **AllowSharedKeyAccess** för lagrings kontot måste en användare ha behörighet att skapa och hantera lagrings konton. Azure-rollbaserad åtkomst kontroll (Azure RBAC) roller som tillhandahåller dessa behörigheter innefattar åtgärden **Microsoft. Storage/storageAccounts/Write** eller **Microsoft. Storage/storageAccounts/ \** _. Inbyggda roller med den här åtgärden är:
+
+- Rollen Azure Resource Manager [ägare](../../role-based-access-control/built-in-roles.md#owner)
+- Rollen Azure Resource Manager [Contributor](../../role-based-access-control/built-in-roles.md#contributor)
+- Rollen [lagrings konto deltagare](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
+
+Dessa roller ger inte åtkomst till data i ett lagrings konto via Azure Active Directory (Azure AD). De inkluderar dock * Microsoft. Storage/storageAccounts/listnycklar/Action * *, som ger åtkomst till kontots åtkomst nycklar. Med den här behörigheten kan en användare använda kontots åtkomst nycklar för att komma åt alla data i ett lagrings konto.
+
+Roll tilldelningar måste begränsas till lagrings kontots nivå eller högre för att en användare ska kunna tillåta eller neka åtkomst till delad nyckel för lagrings kontot. Mer information om roll omfattning finns i [förstå omfattning för Azure RBAC](../../role-based-access-control/scope-overview.md).
+
+Var noga med att begränsa tilldelningen av rollerna till de som kräver möjlighet att skapa ett lagrings konto eller uppdatera dess egenskaper. Använd principen för minsta behörighet för att se till att användarna har minst de behörigheter som de behöver för att utföra sina uppgifter. Mer information om hur du hanterar åtkomst med Azure RBAC finns i [metod tips för Azure RBAC](../../role-based-access-control/best-practices.md).
+
+> [!NOTE]
+> Administratören för rollen administratör för den klassiska prenumerationen och Co-Administrator innehåller motsvarigheten till Azure Resource Manager [Owner](../../role-based-access-control/built-in-roles.md#owner) -rollen. **Ägar** rollen innehåller alla åtgärder, så en användare med någon av dessa administrativa roller kan också skapa och hantera lagrings konton. Mer information finns i [klassiska prenumerationer på administratörs roller, Azure-roller och Azure AD-administratörer](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
+
 ## <a name="understand-how-disallowing-shared-key-affects-sas-tokens"></a>Förstå hur otillåten delad nyckel påverkar SAS-token
 
-När den delade nyckeln inte är tillåten för lagrings kontot Azure Storage hanterar SAS-token baserat på typen av SAS och tjänsten som begäran riktas mot. Följande tabell visar hur varje typ av SAS är auktoriserad och hur Azure Storage kommer att hantera säkerhets associationen när **AllowSharedKeyAccess** -egenskapen för lagrings kontot är **false**.
+När åtkomsten till den delade nyckeln inte är tillåten för lagrings kontot, Azure Storage hanterar SAS-token baserat på typen av SAS och tjänsten som begäran riktas mot. Följande tabell visar hur varje typ av SAS är auktoriserad och hur Azure Storage kommer att hantera säkerhets associationen när **AllowSharedKeyAccess** -egenskapen för lagrings kontot är **false**.
 
 | Typ av SAS | Typ av auktorisering | Beteende när AllowSharedKeyAccess är falskt |
 |-|-|-|
 | Användar delegering SAS (endast blob-lagring) | Azure AD | Begäran tillåts. Microsoft rekommenderar att du använder en användar Delegerings-SAS när det är möjligt för överlägsen säkerhet. |
-| Tjänstens SAS | Delad nyckel | Begäran nekas för Blob Storage. Begäran tillåts för kö-och tabell lagring och för Azure Files. Mer information finns i [begär Anden med SAS-token tillåts för köer, tabeller och filer när AllowSharedKeyAccess är falskt](#requests-with-sas-tokens-are-permitted-for-queues-tables-and-files-when-allowsharedkeyaccess-is-false) i avsnittet **om för hands versionen** . |
-| Kontots SAS | Delad nyckel | Begäran nekas för Blob Storage. Begäran tillåts för kö-och tabell lagring och för Azure Files. Mer information finns i [begär Anden med SAS-token tillåts för köer, tabeller och filer när AllowSharedKeyAccess är falskt](#requests-with-sas-tokens-are-permitted-for-queues-tables-and-files-when-allowsharedkeyaccess-is-false) i avsnittet **om för hands versionen** . |
+| Tjänstens SAS | Delad nyckel | Begäran nekas för alla Azure Storage-tjänster. |
+| Kontots SAS | Delad nyckel | Begäran nekas för alla Azure Storage-tjänster. |
 
 Mer information om signaturer för delad åtkomst finns i [bevilja begränsad åtkomst till Azure Storage-resurser med hjälp av signaturer för delad åtkomst (SAS)](storage-sas-overview.md).
 
@@ -215,11 +230,11 @@ Vissa Azure-verktyg ger dig möjlighet att använda Azure AD-auktorisering för 
 |-|-|
 | Azure Portal | Stöds. Information om hur du auktoriserar med ditt Azure AD-konto från Azure Portal finns i [Välj hur du godkänner åtkomst till BLOB-data i Azure Portal](../blobs/authorize-data-operations-portal.md). |
 | AzCopy | Stöds för Blob Storage. Information om hur du auktoriserar AzCopy-åtgärder finns i [Välj hur du ska ange autentiseringsuppgifter för auktorisering](storage-use-azcopy-v10.md#choose-how-youll-provide-authorization-credentials) i AzCopy-dokumentationen. |
-| Azure Lagringsutforskaren | Stöds endast för Blob Storage och Azure Data Lake Storage Gen2. Azure AD-åtkomst till Queue Storage stöds inte. Se till att välja rätt Azure AD-klient. Mer information finns i [Kom igång med Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#sign-in-to-azure) |
+| Azure Storage Explorer | Stöds endast för Blob Storage och Azure Data Lake Storage Gen2. Azure AD-åtkomst till Queue Storage stöds inte. Se till att välja rätt Azure AD-klient. Mer information finns i [Kom igång med Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#sign-in-to-azure) |
 | Azure PowerShell | Stöds. Information om hur du auktoriserar PowerShell-kommandon för BLOB-eller Queue-åtgärder med Azure AD finns i [köra PowerShell-kommandon med Azure AD-autentiseringsuppgifter för att få åtkomst till BLOB-data](../blobs/authorize-data-operations-powershell.md) eller [köra PowerShell-kommandon med Azure AD-autentiseringsuppgifter för att komma åt köa data](../queues/authorize-data-operations-powershell.md) |
 | Azure CLI | Stöds. Information om hur du auktoriserar Azure CLI-kommandon med Azure AD för åtkomst till blob-och Queue-data finns i [köra Azure CLI-kommandon med Azure AD-autentiseringsuppgifter för att få åtkomst till BLOB-eller Queue-data](../blobs/authorize-data-operations-cli.md). |
 | Azure IoT Hub | Stöds. Mer information finns i [IoT Hub stöd för virtuella nätverk](../../iot-hub/virtual-network-support.md). |
-| Azure Cloud Shell | Azure Cloud Shell är ett integrerat gränssnitt i Azure Portal. Azure Cloud Shell Hosts-filer för persistence i en Azure-filresurs i ett lagrings konto. De här filerna blir otillgängliga om inte auktorisering av den delade nyckeln är tillåtet för det lagrings kontot. Mer information finns i [Anslut lagringen för Microsoft Azure filer](../../cloud-shell/overview.md#connect-your-microsoft-azure-files-storage). <br /><br /> Om du vill köra kommandon i Azure Cloud Shell för att hantera lagrings konton för vilka åtkomst till delad nyckel inte tillåts, kontrollerar du först att du har beviljats de behörigheter som krävs för dessa konton via rollbaserad åtkomst kontroll i Azure (Azure RBAC). Mer information finns i [Vad är Azure rollbaserad åtkomst kontroll (Azure RBAC)?](../../role-based-access-control/overview.md). |
+| Azure Cloud Shell | Azure Cloud Shell är ett integrerat gränssnitt i Azure Portal. Azure Cloud Shell Hosts-filer för persistence i en Azure-filresurs i ett lagrings konto. De här filerna blir otillgängliga om inte auktorisering av den delade nyckeln är tillåtet för det lagrings kontot. Mer information finns i [Anslut lagringen för Microsoft Azure filer](../../cloud-shell/overview.md#connect-your-microsoft-azure-files-storage). <br /><br /> Om du vill köra kommandon i Azure Cloud Shell för att hantera lagrings konton för vilka åtkomst till den delade nyckeln är otillåten, kontrol lera först att du har beviljats de behörigheter som krävs för dessa konton via Azure RBAC. Mer information finns i [Vad är Azure rollbaserad åtkomst kontroll (Azure RBAC)?](../../role-based-access-control/overview.md). |
 
 ## <a name="about-the-preview"></a>Om för hands versionen
 
@@ -240,10 +255,6 @@ Azures mått och inloggnings Azure Monitor skiljer inte mellan olika typer av si
 - En användar Delegerings-SAS är auktoriserad med Azure AD och kommer att tillåtas på en begäran till Blob Storage när **AllowSharedKeyAccess** -egenskapen har angetts till **false**.
 
 När du utvärderar trafik till ditt lagrings konto bör du tänka på att mått och loggar enligt beskrivningen i [identifiera vilken typ av auktorisering som används av klient program](#detect-the-type-of-authorization-used-by-client-applications) kan innehålla begär Anden som görs med en användar Delegerings-SAS. Mer information om hur Azure Storage svarar på en SAS när egenskapen **AllowSharedKeyAccess** är inställd på **false** finns i [förstå hur otillåten delad nyckel påverkar SAS-token](#understand-how-disallowing-shared-key-affects-sas-tokens).
-
-### <a name="requests-with-sas-tokens-are-permitted-for-queues-tables-and-files-when-allowsharedkeyaccess-is-false"></a>Begär Anden med SAS-token tillåts för köer, tabeller och filer när AllowSharedKeyAccess är falskt
-
-När åtkomsten till den delade nyckeln inte är tillåten för lagrings kontot under förhands granskningen, fortsätter signaturer för delad åtkomst som mål kö, tabell eller Azure Files resurser att tillåtas. Den här begränsningen gäller för både SAS-token för tjänsten och kontots SAS-token. Båda typerna av SAS är auktoriserade med delad nyckel.
 
 ## <a name="next-steps"></a>Nästa steg
 

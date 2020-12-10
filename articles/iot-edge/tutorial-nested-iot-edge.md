@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 0226635fe34244bf09bc92f9fe065593d3a79a5a
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: c1dba383f259e35b143688b2db68f05f1a67def6
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621067"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938229"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Självstudie: skapa en hierarki med IoT Edge enheter (förhands granskning)
 
@@ -45,15 +45,24 @@ I den här självstudien definieras följande nätverks skikt:
 
 I den här självstudien används en hierarki med två enheter för enkelhetens skull. En enhet, **topLayerDevice**, representerar en enhet i hierarkins övre skikt, som kan ansluta direkt till molnet. Enheten kommer även att kallas för den **överordnade enheten**. Den andra enheten, **lowerLayerDevice**, representerar en enhet i den nedre nivån i hierarkin, som inte kan ansluta direkt till molnet. Enheten kommer även att kallas för den **underordnade enheten**. Du kan lägga till ytterligare lägre lager enheter för att representera produktions miljön. Konfigurationen av ytterligare lägre lager enheter kommer att följa **lowerLayerDevice**-konfigurationen.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill skapa en hierarki med IoT Edge enheter behöver du:
 
 * En dator (Windows eller Linux) med Internet anslutning.
-* Två Linux-enheter kan konfigureras som IoT Edge enheter. Om du inte har tillgängliga enheter kan du använda [Azure Virtual Machines](../virtual-machines/linux/index.yml).
 * Ett Azure-konto med en giltig prenumeration. Om du inte har en [Azure-prenumeration](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/) innan du börjar.
 * En kostnads fri eller standard nivå [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) i Azure.
 * Azure CLI v 2.3.1 med Azure IoT-tillägget v 0.10.6 eller senare installerat. I den här självstudien används [Azure Cloud Shell](../cloud-shell/overview.md). Om du inte känner till Azure Cloud Shell kan du [titta på en snabb start för mer information](./quickstart-linux.md#prerequisites).
+* Två Linux-enheter kan konfigureras som IoT Edge enheter. Om du inte har tillgängliga enheter kan du skapa två virtuella Azure-datorer genom att ersätta platshållartexten i följande kommando och köra den två gånger:
+
+   ```azurecli-interactive
+   az vm create \
+    --resource-group <REPLACE_WITH_RESOURCE_GROUP> \
+    --name <REPLACE_WITH_UNIQUE_NAMES_FOR_EACH_VM> \
+    --image UbuntuLTS \
+    --admin-username azureuser \
+    --admin-password <REPLACE_WITH_PASSWORD>
+   ```
 
 Du kan också testa det här scenariot genom att följa exemplet med skript [Azure IoT Edge för industriella IoT-exempel](https://aka.ms/iotedge-nested-sample), som distribuerar virtuella Azure-datorer som förkonfigurerade enheter för att simulera en fabriks miljö.
 
@@ -185,11 +194,11 @@ Installera IoT Edge genom att följa dessa steg på båda enheterna.
    sudo apt-get install moby-engine
    ```
 
-1. Installera hsmlib och IoT Edge daemon <!-- Update with proper image links on release -->
+1. Installera hsmlib och IoT Edge daemon. [Besök GitHub-versionen](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc1)om du vill se till gångarna för andra Linux-distributioner. <!-- Update with proper image links on release -->
 
    ```bash
-   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc2/libiothsm-std_1.2.0.rc2-1-1_debian9_amd64.deb -o libiothsm-std.deb
-   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc2/iotedge_1.2.0_rc2-1_debian9_amd64.deb -o iotedge.deb
+   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/libiothsm-std_1.2.0.rc1-1-1_debian9_amd64.deb -o libiothsm-std.deb
+   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/iotedge_1.2.0_rc1-1_debian9_amd64.deb -o iotedge.deb
    sudo dpkg -i ./libiothsm-std.deb
    sudo dpkg -i ./iotedge.deb
    ```

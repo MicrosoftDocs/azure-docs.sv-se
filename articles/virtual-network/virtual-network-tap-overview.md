@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: ceafbacb4cfc99b5327423ff1a50b82292030893
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c468f289c9dbfe949890c5462dd7c9be3e548d5a
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479263"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938768"
 ---
 # <a name="virtual-network-tap"></a>Virtual Network TAP
 > [!IMPORTANT]
@@ -30,7 +30,7 @@ Med hjälp av Azure Virtual Network-TRYCKNINGen (Terminal Access Point) kan du k
 Följande bild visar hur det virtuella nätverket trycker på Works. Du kan lägga till en tryck konfiguration i ett [nätverks gränssnitt](virtual-network-network-interface.md) som är kopplat till en virtuell dator som distribueras i det virtuella nätverket. Målet är en IP-adress för virtuellt nätverk i samma virtuella nätverk som det övervakade nätverks gränssnittet eller ett [peer](virtual-network-peering-overview.md) -kopplat virtuellt nätverk. Insamlings lösningen för Virtual Network-tryckning kan distribueras bakom en intern Azure-belastningsutjämnare för hög tillgänglighet.
 ![Hur det virtuella nätverket trycker på Works](./media/virtual-network-tap/architecture.png)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Innan du skapar ett virtuellt nätverk trycker du på en bekräftelse som du har registrerat i förhands granskningen och har en eller flera virtuella datorer som skapats med [Azure Resource Manager](../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) distributions modell och en partner lösning för att aggregera trafiken i samma Azure-region. Om du inte har en partner lösning i ditt virtuella nätverk, se [partner lösningar](#virtual-network-tap-partner-solutions) för att distribuera en. Du kan använda samma virtuella nätverk för att aggregera trafik från flera nätverks gränssnitt i samma eller olika prenumerationer. Om de övervakade nätverks gränssnitten finns i olika prenumerationer måste prenumerationerna vara kopplade till samma Azure Active Directory-klient. Dessutom kan de övervakade nätverks gränssnitten och mål slut punkten för att aggregera trafikövervakningen vara i peer-kopplat virtuella nätverk i samma region. Om du använder den här distributions modellen kontrollerar du att [peering av virtuella nätverk](virtual-network-peering-overview.md) är aktiverat innan du konfigurerar det virtuella nätverket.
 
@@ -38,7 +38,7 @@ Innan du skapar ett virtuellt nätverk trycker du på en bekräftelse som du har
 
 De konton som du använder för att tillämpa tryck på konfiguration på nätverks gränssnitt måste tilldelas rollen [nätverks deltagare](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) eller en [anpassad roll](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) som har tilldelats nödvändiga åtgärder från följande tabell:
 
-| Åtgärd | Namn |
+| Action | Name |
 |---|---|
 | Microsoft. Network/virtualNetworkTaps/* | Krävs för att skapa, uppdatera, läsa och ta bort ett virtuellt nätverk tryck på resurs |
 | Microsoft. Network/networkInterfaces/Read | Krävs för att läsa nätverks gränssnitts resursen där TRYCKNINGen ska konfigureras |

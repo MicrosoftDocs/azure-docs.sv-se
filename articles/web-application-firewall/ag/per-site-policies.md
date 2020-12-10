@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 12/09/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: bf6bfd02610e92825d96255e0ee914fada091805
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: ef4337b187500695d9ef1c0b896d6ae8b5663ca6
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932106"
+ms.locfileid: "96938859"
 ---
 # <a name="configure-per-site-waf-policies-using-azure-powershell"></a>Konfigurera WAF-principer per webbplats med hjälp av Azure PowerShell
 
@@ -296,6 +296,8 @@ Add-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $AppGw `
 
 I det här exemplet skapar du en VM-skalningsuppsättning som ska tillhandahålla servrar till serverdelspoolen i programgatewayen. Du tilldelar skalningsuppsättningen till serverdelspoolen när du konfigurerar IP-inställningarna.
 
+Ersätt dina egna värden för `-AdminUsername` och `-AdminPassword` .
+
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
   -ResourceGroupName myResourceGroupAG `
@@ -328,8 +330,8 @@ Set-AzVmssStorageProfile $vmssConfig `
   -OsDiskCreateOption FromImage
 
 Set-AzVmssOsProfile $vmssConfig `
-  -AdminUsername azureuser `
-  -AdminPassword "Azure123456!" `
+  -AdminUsername <username> `
+  -AdminPassword <password> `
   -ComputerNamePrefix myvmss
 
 Add-AzVmssNetworkInterfaceConfiguration `

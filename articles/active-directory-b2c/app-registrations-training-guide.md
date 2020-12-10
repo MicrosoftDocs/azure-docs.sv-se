@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 16b5814835ec5cad6b66087fee37676155196339
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7bb38b382add2a0ea3506c31c5e6e76a985df6a1
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952088"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936479"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Den nya Appregistreringar upplevelsen för Azure Active Directory B2C
 
@@ -63,7 +63,7 @@ I den tidigare versionen har appar alltid skapats som kund program. För dessa a
 > [!NOTE]
 > Det här alternativet krävs för att kunna köra Azure AD B2C användar flöden för att autentisera användare för programmet. Lär dig [hur du registrerar ett program för användning med användar flöden.](tutorial-register-applications.md)
 
-Du kan också använda det här alternativet om du vill använda Azure AD B2C som en SAML-tjänstprovider. [Läs mer](identity-provider-adfs2016-custom.md).
+Du kan också använda det här alternativet om du vill använda Azure AD B2C som en SAML-tjänstprovider. [Läs mer](identity-provider-adfs.md).
 
 ## <a name="applications-for-devops-scenarios"></a>Program för DevOps-scenarier
 Du kan använda de andra konto typerna för att skapa en app för att hantera dina DevOps-scenarier, t. ex. genom att använda Microsoft Graph för att överföra principer för identitets miljö eller etablera användare. Lär dig [hur du registrerar ett Microsoft Graph program för att hantera Azure AD B2C-resurser](microsoft-graph-get-started.md).
@@ -116,5 +116,5 @@ För att komma igång med den nya appens registrerings upplevelse:
 * Lär dig [hur du registrerar ett webb-API](add-web-api-application.md).
 * Lär dig [hur du registrerar ett internt klient program](add-native-application.md).
 * Lär dig [hur du registrerar ett Microsoft Graph program för att hantera Azure AD B2C-resurser](microsoft-graph-get-started.md).
-* Lär dig [hur du använder Azure AD B2C som en SAML-tjänstprovider.](identity-provider-adfs2016-custom.md)
+* Lär dig [hur du använder Azure AD B2C som en SAML-tjänstprovider.](identity-provider-adfs.md)
 * Lär dig mer om [program typer](application-types.md).

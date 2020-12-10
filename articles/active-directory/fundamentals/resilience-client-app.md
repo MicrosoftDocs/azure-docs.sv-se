@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: 9189d4d8cda5f9fcfce7e6ac2097414aa29f0a68
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: fc15176318dcfae99434f50a0b4370f371cec05a
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317477"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938247"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-client-applications-you-develop"></a>Öka återhämtningen av autentisering och auktorisering i klient program som du utvecklar
 
@@ -30,7 +30,9 @@ MSAL cachelagrar tokens och använder ett mönster för tyst token-hämtning. De
 
 ![Bild av enhet med och program som använder MSAL för att anropa Microsoft Identity](media/resilience-client-app/resilience-with-microsoft-authentication-library.png)
 
-När du använder MSAL kan du hämta token caching, uppdatera och tyst token-förvärv med hjälp av följande mönster.
+När du använder MSAL stöds cachelagring av token, uppdatering och tyst hämtning automatiskt. Du kan använda enkla mönster för att hämta de tokens som krävs för modern autentisering. Vi har stöd för många språk och du hittar ett exempel som stämmer överens med ditt språk och din situation på vår [exempel](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code) sida.
+
+## <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 try
@@ -42,6 +44,28 @@ catch(MsalUiRequiredException ex)
     result = await app.AcquireToken(scopes).WithClaims(ex.Claims).ExecuteAsync()
 }
 ```
+
+## <a name="javascript"></a>[Java](#tab/javascript)
+
+```javascript
+return myMSALObj.acquireTokenSilent(request).catch(error => {
+    console.warn("silent token acquisition fails. acquiring token using redirect");
+    if (error instanceof msal.InteractionRequiredAuthError) {
+        // fallback to interaction when silent call fails
+        return myMSALObj.acquireTokenPopup(request).then(tokenResponse => {
+            console.log(tokenResponse);
+
+            return tokenResponse;
+        }).catch(error => {
+            console.error(error);
+        });
+    } else {
+        console.warn(error);
+    }
+});
+```
+
+---
 
 MSAL kan i vissa fall proaktivt uppdatera tokens. När Microsoft Identity utfärdar en token för lång livs längd kan den skicka information till klienten för att den optimala tiden ska uppdatera token ("uppdatera \_ i"). MSAL kommer proaktivt uppdatera token baserat på den här informationen. Appen fortsätter att köras medan den gamla token är giltig men har en längre tids period då en annan lyckad token-hämtning skulle göras.
 
@@ -65,7 +89,9 @@ Utvecklare bör ha en process för att uppdatera till den senaste versionen av M
 
 [Kontrol lera den senaste versionen av Microsoft. Identity. Web och viktig information](https://github.com/AzureAD/microsoft-identity-web/releases)
 
-## <a name="if-not-using-msal-use-these-resilient-patterns-for-token-handling"></a>Om du inte använder MSAL använder du de här elastiska mönstren för token-hantering
+## <a name="use-resilient-patterns-for-token-handling"></a>Använda elastiska mönster för token-hantering
+
+Om du inte använder MSAL kan du använda dessa elastiska mönster för hantering av token. Dessa bästa metoder implementeras automatiskt av MSAL-biblioteket. 
 
 I allmänhet anropar ett program som använder modern autentisering en slut punkt för att hämta tokens som autentiserar användaren eller ger programmet tillåtelse att anropa skyddade API: er. MSAL är avsett att hantera information om autentisering och implementerar flera mönster för att förbättra återhämtningen av den här processen. Använd rikt linjerna i det här avsnittet för att implementera bästa praxis om du väljer att använda ett annat bibliotek än MSAL. Om du använder MSAL får du alla dessa metod tips kostnads fritt, eftersom MSAL implementerar dem automatiskt.
 

@@ -3,12 +3,12 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/25/2020
-ms.openlocfilehash: 55360f2f11196d1f6794edec011c008b813288c1
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 08f574fdfbfb2a74cd095e9672a76c7dfde6dd1c
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94625293"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96992961"
 ---
 Kom igång med Custom Vision klient biblioteket för python. Följ de här stegen för att installera paketet och prova exempel koden för att skapa en bild klassificerings modell. Du skapar ett projekt, lägger till taggar, tränar projektet och använder projektets förutsäga slut punkts-URL för att program mässigt testa det. Använd det här exemplet som mall för att skapa en egen bild igenkännings app.
 
@@ -26,7 +26,7 @@ Använd Custom Vision klient bibliotek för python för att:
 
 [Referens dokumentation](/python/api/overview/azure/cognitiveservices/customvision?view=azure-python)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-customvision/azure/cognitiveservices/vision/customvision)  |  [Paket (pypi)](https://pypi.org/project/azure-cognitiveservices-vision-customvision/)  |  [Exempel](/samples/browse/?languages=python&products=azure&term=vision&terms=vision)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services/)
 * [Python 3.x](https://www.python.org/)
@@ -66,7 +66,7 @@ Skapa variabler för resursens Azure-slut punkts-och prenumerations nycklar.
 
 ## <a name="object-model"></a>Objekt modell
 
-|Namn|Beskrivning|
+|Name|Beskrivning|
 |---|---|
 |[CustomVisionTrainingClient](/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient?view=azure-python) | Den här klassen hanterar skapandet, utbildningen och publiceringen av dina modeller. |
 |[CustomVisionPredictionClient](/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient?view=azure-python)| Den här klassen hanterar frågekörning för modeller för bild klassificerings förutsägelser.|
@@ -111,7 +111,7 @@ Hämta först exempel bilderna för projektet. Spara innehållet i [mappen exemp
 
 Infoga följande kod efter att taggen har skapats för att lägga till exempelbilder i projektet. Den här koden laddar upp varje bild med dess motsvarande tagg. Du kan ladda upp upp till 64 avbildningar i en enda batch.
 
-[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_tags)]
+[!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_upload)]
 
 > [!NOTE]
 > Du måste ändra sökvägen till avbildningarna baserat på var du laddade ned Cognitive Services python SDK-exempel lagrings platsen.
@@ -140,7 +140,7 @@ Om du vill skicka en bild till slutpunkten för förutsägelse och hämta förut
 
 [!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ImageClassification/CustomVisionQuickstart.py?name=snippet_test)]
 
-## <a name="run-the-application"></a>Kör programmet
+## <a name="run-the-application"></a>Köra appen
 
 Kör *CustomVisionQuickstart.py*.
 
@@ -161,7 +161,7 @@ Done!
         Japanese Cherry: 0.01%
 ```
 
-Sedan kan du kontrol lera att test avbildningen (som finns i **<base_image_location>/images/test/** ) är korrekt formaterad. Du kan också gå tillbaka till [Custom Vision-webbplatsen](https://customvision.ai) och se det aktuella tillståndet för det nyskapade projektet.
+Sedan kan du kontrol lera att test avbildningen (som finns i **<base_image_location>/images/test/**) är korrekt formaterad. Du kan också gå tillbaka till [Custom Vision-webbplatsen](https://customvision.ai) och se det aktuella tillståndet för det nyskapade projektet.
 
 [!INCLUDE [clean-ic-project](../../includes/clean-ic-project.md)]
 

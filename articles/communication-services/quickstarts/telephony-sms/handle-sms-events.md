@@ -9,16 +9,17 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e8decbe22f869573bf7a2221099d2bc30c00fc8a
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: d6409c005e006372f55e77aeb4d977e6b1c45832
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888852"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936290"
 ---
 # <a name="quickstart-handle-sms-events"></a>Snabb start: Hantera SMS-händelser
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 Kom igång med Azure Communication Services genom att använda Azure Event Grid för att hantera SMS-händelser för kommunikations tjänster. 
 
@@ -26,7 +27,7 @@ Kom igång med Azure Communication Services genom att använda Azure Event Grid 
 
 [Azure Event Grid](../../../event-grid/overview.md) är en molnbaserad händelse tjänst. I den här artikeln får du lära dig hur du prenumererar på händelser för [kommunikations tjänst händelser](../../concepts/event-handling.md)och utlöser en händelse för att visa resultatet. Normalt kan du skicka händelser till en slutpunkt som bearbetar informationen om händelsen och utför åtgärder. I den här artikeln ska vi skicka händelserna till en webbapp som samlar in och visar meddelandena.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - En Azure Communication service-resurs. Mer information finns i snabb starten för att [skapa en Azure Communication-resurs](../create-communication-resource.md) .
 - Ett SMS-aktiverat telefonnummer. [Hämta ett telefonnummer](./get-phone-number.md).

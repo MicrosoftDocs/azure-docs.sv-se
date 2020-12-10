@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 10/23/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 775075765c8c8eaa94541c0f094c1f7743fe59d9
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 88ad060c1ba28285051a91bd928a2a7116dff1ce
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886795"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937550"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Fel sökning i Azure Communication Services
 
@@ -165,6 +165,25 @@ På Android Studio navigerar du till enhetens fil Utforskaren genom att välja V
    
 
 ---
+
+
+## <a name="calling-client-library-error-codes"></a>Anrops fel koder för klient bibliotek
+
+Azure Communication Services som anropar klient biblioteket använder följande felkoder för att felsöka anrops problem. De här fel koderna exponeras genom `call.callEndReason` egenskapen när ett anrop har slutförts.
+
+| Felkod | Beskrivning | Åtgärd att vidta |
+| -------- | ---------------| ---------------|
+| 403 | Förbjuden/autentiseringsfel. | Se till att din token för kommunikations tjänster är giltig och inte har upphört att gälla. |
+| 404 | Anropet hittades inte. | Kontrol lera att numret du ringer (eller ring du ansluter till) finns. |
+| 408 | Tids gränsen uppnåddes för anrops kontroll. | Tids gränsen för uppringnings styrenheten nåddes i väntan på protokoll meddelanden från användar slut punkter. Se till att klienterna är anslutna och tillgängliga. |
+| 410 | Lokal medie stack eller fel i medie infrastruktur. | Se till att du använder det senaste klient biblioteket i en miljö som stöds. |
+| 430 | Det gick inte att leverera meddelandet till klient programmet. | Kontrol lera att klient programmet körs och är tillgängligt. |
+| 480 | Fjärrklientens slut punkt har inte registrerats. | Se till att Fjärrslutpunkten är tillgänglig. |
+| 481 | Det gick inte att hantera inkommande anrop. | Skicka en support förfrågan via Azure Portal. |
+| 487 | Anropet avbröts, avböjdes lokalt, avslutades på grund av ett problem med slut punkts avvikelse eller kunde inte generera medie erbjudandet. | Förväntat beteende. |
+| 490, 491, 496, 487, 498 | Nätverks problem med lokal slut punkt. | Kontrol lera nätverket. |
+| 500, 503, 504 | Infrastruktur fel i kommunikations tjänster. | Skicka en support förfrågan via Azure Portal. |
+| 603 | Anropet har avvisats globalt av deltagare i fjärr kommunikations tjänster | Förväntat beteende. |
 
 
 ## <a name="related-information"></a>Relaterad information

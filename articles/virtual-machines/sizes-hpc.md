@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 12/03/2020
+ms.date: 12/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 21b1004a347dec3a7f2a6460d8b853350bf36ff0
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 5559e491be15f8f848329405736fc977267c70cc
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571053"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938604"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>Datorer med hög prestanda beräknings storlek
 
@@ -29,6 +29,9 @@ HBv2 VM-funktionen 200 GB/SEK Mellanox HDR InfiniBand, medan både HB-och HC-ser
 [HC-serien](hc-series.md) Virtuella datorer är optimerade för program som drivs av kompakt beräkning, till exempel implicit ändlig analys av element, molekyl Dynamics och beräknings kemi. Virtuella HC-funktioner 44 Intel Xeon platina 8168 processor kärnor, 8 GB RAM-minne per CPU-kärna och ingen hyperthreading. Intel Xeon platina-plattformen stöder Intels omfattande eko system med program varu verktyg som Intel Math kernel-biblioteket.
 
 [H-serien](h-series.md) Virtuella datorer är optimerade för program som drivs av höga CPU-frekvenser eller stora minnen per kärn krav. Virtuella datorer i H-serien 8 eller 16 Intel Xeon E5 2667 v3 processor kärnor, 7 eller 14 GB RAM-minne per CPU-kärna och ingen hyperthreading-funktion. H-seriens funktioner 56 GB/s Mellanox FDR InfiniBand i en icke-blockerande fett träds konfiguration för konsekvent RDMA-prestanda. Virtuella datorer i H-serien har stöd för Intel MPI 5. x och MS-MPI.
+
+> [!NOTE]
+> Alla virtuella datorer i HBv2, HB och HC-serien har exklusiv åtkomst till de fysiska servrarna. Det finns bara en virtuell dator per fysisk server och det finns inga delade flera innehavare med andra virtuella datorer för de här VM-storlekarna.
 
 > [!NOTE]
 > De [virtuella datorerna A8 – A11](./sizes-previous-gen.md#a-series---compute-intensive-instances) planeras för att dra på 3/2021. Mer information finns i [Guide för HPC-migrering](https://azure.microsoft.com/resources/hpc-migration-guide/).

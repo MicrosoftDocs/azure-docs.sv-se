@@ -8,22 +8,22 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 3b0a413db304b4f9d2c50a3d221c480f1e9dc37a
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 57cb1c405e00acb346421d64190a71e9211d21ff
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96553708"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938842"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-purview"></a>Hantera och öka kvoter för resurser med Azure avdelningens kontroll
  
 Azure avdelningens kontroll är en moln tjänst som används av data användare. Du kan använda Azure-avdelningens kontroll för att centralt hantera data styrning över din datafastighet, och sträcker sig över både moln-och lokal miljöer. Med tjänsten kan affärsanalytiker söka efter relevanta data med hjälp av meningsfulla affärs villkor. Kontakta supporten om du vill höja gränserna upp till max gränsen för din prenumeration.
  
-## <a name="azure-purview-limits"></a>Azure avdelningens kontroll-gränser
+## <a name="azure-purview-limits"></a>Azure Purview-gränser
  
 |**Resurs**|  **Standard gräns**  |**Övre gräns**|
 |---|---|---|
-|Avdelningens kontroll-konton per klient (alla prenumerationer kombinerade)|3|Kontakta supporten|
+|Avdelningens kontroll-konton per region, per klient (alla prenumerationer kombinerade)|3|Kontakta supporten|
 |Virtuella kärnor tillgängligt för genomsökning, per konto *|160|160|
 |Samtidiga genomsökningar per konto vid en viss tidpunkt. Gränsen baseras på den typ av data källor som genomsöks *|5 | 10 |
 |Den längsta tid som en genomsökning kan köras för|7 dagar|7 dagar|

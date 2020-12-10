@@ -3,12 +3,12 @@ title: Skydda dina virtuella datorer med Azure VMware-lösningen med Azure Secur
 description: Lär dig hur du skyddar dina virtuella Azure VMware-lösningar med Azures inbyggda säkerhets verktyg från en enda instrument panel i Azure Security Center.
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 53669f2988a7ff7ab1150b155a65c7a187c6f1c8
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: e461e7e49619f7063c0583975f36a2e3dfe5a724
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94370532"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937346"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Skydda dina virtuella datorer med Azure VMware-lösningen med Azure Security Center-integrering
 
@@ -100,7 +100,7 @@ Azure Defender utökar Azure Security Centers avancerade hot skydd i dina hybrid
 
 3. Välj namnet på din resurs. En sida öppnas som visar säkerhets hälso informationen för din resurs.
 
-4. Under **rekommendations lista** väljer du **rekommendationer** , **slutförda utvärderingar** och **otillgängliga bedömningar** för att visa dessa uppgifter.
+4. Under **rekommendations lista** väljer du **rekommendationer**, **slutförda utvärderingar** och **otillgängliga bedömningar** för att visa dessa uppgifter.
 
     :::image type="content" source="media/azure-security-integration/view-recommendations-assessments.png" alt-text="En skärm bild av Azure Security Center som visar säkerhets rekommendationer och utvärderingar.":::
 
@@ -173,7 +173,7 @@ När du har anslutit data källor till Azure Sentinel kan du skapa regler för a
         |where count_ > 3
         ```
         
-    - Mappa entitet
+    - Mappa entiteter
     - Fråga schemaläggning
     - Aviseringströskelvärde
     - Händelse gruppering

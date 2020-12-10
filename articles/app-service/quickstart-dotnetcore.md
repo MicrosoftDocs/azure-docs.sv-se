@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 11/23/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperfq1
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: bf7d911c6f9d90e400e589828c093877875e7d97
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 7aeadaf7b52440504abf541fe6c29a537a92bc08
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96015697"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937278"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Snabb start: skapa en ASP.NET Core webbapp i Azure
 
@@ -21,7 +21,7 @@ I den här snabb starten får du lära dig hur du skapar och distribuerar din f�
 
 När du är klar har du en Azure-resurs grupp som består av en App Service värd plan och en App Service med ett distribuerat webb program.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/dotnet/).
 - Installera <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> med arbets belastningen **ASP.net och webb utveckling** .
@@ -107,7 +107,7 @@ Följ de här stegen för att skapa din App Service och publicera din webbapp:
 
 1. Ange de värden som anges i följande tabell i dialog rutan **värd plan: skapa ny** .
 
-   | Inställning  | Föreslaget värde | Description |
+   | Inställning  | Föreslaget värde | Beskrivning |
    | -------- | --------------- | ----------- |
    | **Värdplan**  | *myFirstAzureWebAppPlan* | Namnet på App Service-planen. |
    | **Plats**      | *Europa, västra* | Datacenter som är värd för webbappen. |
@@ -135,7 +135,7 @@ Följ de här stegen för att skapa din App Service och publicera din webbapp:
 
 Följ dessa steg för att uppdatera och distribuera om din webbapp:
 
-1. Öppna **Solution Explorer** **Pages**  >  **index. cshtml** under ditt projekt i Solution Explorer.
+1. Öppna  **Pages**  >  **index. cshtml** under ditt projekt i Solution Explorer.
 
 1. Ersätt hela `<div>` taggen med följande kod:
 
@@ -322,7 +322,7 @@ await context.Response.WriteAsync("Hello Azure!");
 Spara ändringarna och distribuera sedan om appen med `az webapp up` kommandot igen:
 
 ```azurecli
-az webapp up
+az webapp up --os-type linux
 ```
 
 Det här kommandot använder värden som cachelagras lokalt i *Azure/config* -filen, inklusive app-namn, resurs grupp och App Service plan.

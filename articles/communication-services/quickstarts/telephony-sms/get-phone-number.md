@@ -9,20 +9,21 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: cff39f93f9caddfdbe48788f14b62642a373e2bf
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3c7f171a2b4957b687831ec2777ecc40b5913a15
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148195"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938655"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>Snabb start: Hämta ett telefonnummer med hjälp av Azure Portal
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 Kom igång med Azure Communication Services genom att använda Azure Portal för att köpa ett telefonnummer.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [En Active Communication Services-resurs.](../create-communication-resource.md)
@@ -37,13 +38,13 @@ Om du vill börja etablerings numren går du till kommunikations tjänst resurse
 
 Navigera till bladet med **telefonnummer** på resurs-menyn.
 
-:::image type="content" source="../media/manage-phone-azure-portal-phone-page.png" alt-text="Skärm bild som visar huvud sidan för en kommunikations tjänst resurs.":::
+:::image type="content" source="../media/manage-phone-azure-portal-phone-page.png" alt-text="Skärm bild som visar telefon Sidan för kommunikations tjänst resursen.":::
 
 Tryck på **Get** -knappen för att starta guiden. I guiden på bladet **telefonnummer** får du hjälp med en serie frågor som hjälper dig att välja det telefonnummer som passar bäst för ditt scenario. 
 
 Du måste först välja det **land/den region** där du vill etablera telefonnumret. När du har valt land/region måste du välja det **användnings fall** som bäst motsvarar dina behov. 
 
-:::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="Skärm bild som visar huvud sidan för en kommunikations tjänst resurs.":::
+:::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="Skärm bild som visar vyn Hämta telefonnummer.":::
 
 ### <a name="select-your-phone-number-features"></a>Välj dina telefonnummers funktioner
 
@@ -52,11 +53,11 @@ Konfigurationen av ditt telefonnummer är uppdelad i två steg:
 1. Valet av [siffer typ](../../concepts/telephony-sms/plan-solution.md#phone-number-types-in-azure-communication-services)
 2. Valet av [nummer funktioner](../../concepts/telephony-sms/plan-solution.md#phone-number-features-in-azure-communication-services)
 
-Du kan välja mellan två telefonnummer typer: **geografiska**och **kostnads fria**. När du har valt en siffer typ kan du sedan välja funktionen.
+Du kan välja mellan två telefonnummer typer: **geografiska** och **kostnads fria**. När du har valt en siffer typ kan du sedan välja funktionen.
 
 I vårt exempel har vi valt en **kostnads fri** nummer typ med **utgående samtal** och **inkommande och utgående SMS** -funktioner.
 
-:::image type="content" source="../media/manage-phone-azure-portal-select-plans.png" alt-text="Skärm bild som visar huvud sidan för en kommunikations tjänst resurs.":::
+:::image type="content" source="../media/manage-phone-azure-portal-select-plans.png" alt-text="Skärm bild som visar vyn Välj funktioner.":::
 
 Härifrån klickar du på knappen **Nästa: tal** längst ned på sidan för att anpassa de telefonnummer som du vill etablera.
 
@@ -64,14 +65,14 @@ Härifrån klickar du på knappen **Nästa: tal** längst ned på sidan för att
 
 På sidan **siffror** kommer du att anpassa de telefonnummer som du vill etablera.
 
-:::image type="content" source="../media/manage-phone-azure-portal-select-numbers-start.png" alt-text="Skärm bild som visar huvud sidan för en kommunikations tjänst resurs.":::
+:::image type="content" source="../media/manage-phone-azure-portal-select-numbers-start.png" alt-text="Skärm bild som visar sidan med siffer val.":::
 
 > [!NOTE]
 > Den här snabb starten visar anpassnings flödet för **avgiftsfri** nummer typ. Upplevelsen kan skilja sig något från om du har valt **geografisk** nummer typ, men slut resultatet blir detsamma.
 
 Välj **rikt nummer** i listan över tillgängliga rikt nummer och ange den kvantitet som du vill etablera. Klicka sedan på **Sök** för att hitta siffror som uppfyller de valda kraven. De telefonnummer som motsvarar dina behov visas tillsammans med deras månads kostnad.
 
-:::image type="content" source="../media/manage-phone-azure-portal-found-numbers.png" alt-text="Skärm bild som visar huvud sidan för en kommunikations tjänst resurs.":::
+:::image type="content" source="../media/manage-phone-azure-portal-found-numbers.png" alt-text="Skärm bild som visar sidan för sidnumrering med reserverade nummer.":::
 
 > [!NOTE]
 > Tillgängligheten beror på den siffer typ, plats och de funktioner som du har valt.
@@ -88,7 +89,7 @@ På sidan Sammanfattning visas siffer typ, funktioner, telefonnummer och total m
 
 Klicka slutligen på **Placera order** längst ned på sidan för att bekräfta.
 
-:::image type="content" source="../media/manage-phone-azure-portal-get-numbers-summary.png" alt-text="Skärm bild som visar huvud sidan för en kommunikations tjänst resurs.":::
+:::image type="content" source="../media/manage-phone-azure-portal-get-numbers-summary.png" alt-text="Skärm bild som visar sammanfattnings sidan med nummer typ, funktioner, telefonnummer och den totala månads kostnaden som visas.":::
 
 ## <a name="find-your-phone-numbers-on-the-azure-portal"></a>Hitta dina telefonnummer på Azure Portal
 
@@ -98,7 +99,7 @@ Gå till Azure Communication-resursen på [Azure Portal](https://portal.azure.co
 
 Välj bladet telefonnummer på menyn för att hantera dina telefonnummer.
 
-:::image type="content" source="../media/manage-phone-azure-portal-phones.png" alt-text="Skärm bild som visar huvud sidan för en kommunikations tjänst resurs.":::
+:::image type="content" source="../media/manage-phone-azure-portal-phones.png" alt-text="Skärm bild som visar sidan telefonnummer till kommunikations tjänst resursen.":::
 
 > [!NOTE]
 > Det kan ta några minuter innan de etablerade talen visas på den här sidan.
@@ -108,7 +109,7 @@ Välj bladet telefonnummer på menyn för att hantera dina telefonnummer.
 
 På sidan **siffror** kan du välja ett telefonnummer för att konfigurera det.
 
-:::image type="content" source="../media/manage-phone-azure-portal-capability-update.png" alt-text="Skärm bild som visar huvud sidan för en kommunikations tjänst resurs.":::
+:::image type="content" source="../media/manage-phone-azure-portal-capability-update.png" alt-text="Skärm bild som visar sidan med uppdaterings funktioner.":::
 
 Välj funktionerna i de tillgängliga alternativen och klicka sedan på **Bekräfta** för att tillämpa ditt val.
 

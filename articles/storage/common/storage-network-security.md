@@ -9,12 +9,12 @@ ms.date: 12/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 07ad0714d0294ad90150acb9df14f17bfc1f5f0d
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: c2074402225c8134329e00003e4fbdfd95b5dba6
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905374"
+ms.locfileid: "96938417"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurera brandväggar och virtuella nätverk i Azure Storage
 
@@ -64,7 +64,7 @@ Du kan hantera standard regler för nätverks åtkomst för lagrings konton via 
 
 1. Gå till det lagringskonto som du vill skydda.
 
-1. Klicka på menyn Inställningar, som kallas **brand väggar och virtuella nätverk**.
+1. Klicka på menyn Inställningar som kallas **nätverk**.
 
 1. Om du vill neka åtkomst som standard väljer du att tillåta åtkomst från **valda nätverk**. Om du vill tillåta trafik från alla nätverk väljer du att tillåta åtkomst från **Alla nätverk**.
 
@@ -148,7 +148,7 @@ Du kan hantera virtuella nätverks regler för lagrings konton via Azure Portal,
 
 1. Gå till det lagringskonto som du vill skydda.
 
-1. Klicka på menyn Inställningar, som kallas **brand väggar och virtuella nätverk**.
+1. Klicka på menyn Inställningar som kallas **nätverk**.
 
 1. Kontrol lera att du har valt att tillåta åtkomst från **valda nätverk**.
 
@@ -272,7 +272,7 @@ Du kan hantera IP-nätverks regler för lagrings konton via Azure Portal, PowerS
 
 1. Gå till det lagringskonto som du vill skydda.
 
-1. Klicka på menyn Inställningar, som kallas **brand väggar och virtuella nätverk**.
+1. Klicka på menyn Inställningar som kallas **nätverk**.
 
 1. Kontrol lera att du har valt att tillåta åtkomst från **valda nätverk**.
 
@@ -415,7 +415,7 @@ Du kan hantera nätverks regel undantag via Azure Portal, PowerShell eller Azure
 
 1. Gå till det lagringskonto som du vill skydda.
 
-1. Klicka på menyn Inställningar, som kallas **brand väggar och virtuella nätverk**.
+1. Klicka på menyn Inställningar som kallas **nätverk**.
 
 1. Kontrol lera att du har valt att tillåta åtkomst från **valda nätverk**.
 

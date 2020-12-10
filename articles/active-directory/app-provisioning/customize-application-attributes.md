@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/10/2020
 ms.author: kenwith
-ms.openlocfilehash: 5f6e5de61c9f43d5958e68c545105c4373996f7c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 012038399796a0f2dc87acfb350043542268379a
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175074"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936989"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Självstudie – anpassa användar etablering attribut-mappningar för SaaS-program i Azure Active Directory
 
@@ -115,7 +115,7 @@ Program och system som stöder anpassning av attributlistan är:
 
 
 > [!NOTE]
-> Redigering av listan över attribut som stöds rekommenderas endast för administratörer som har anpassat schemat för sina program och system, och som har första kunskap om hur deras egna attribut har definierats. Detta kräver ibland välbekanthet med de API: er och utvecklingsverktyg som tillhandahålls av ett program eller system.
+> Redigering av listan över attribut som stöds rekommenderas endast för administratörer som har anpassat schemat för sina program och system, och som har första kunskap om hur deras egna attribut har definierats. Detta kräver ibland välbekanthet med de API: er och utvecklingsverktyg som tillhandahålls av ett program eller system. Möjligheten att redigera listan över attribut som stöds är låst som standard, men kunder kan aktivera funktionen genom att gå till följande URL: https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true . Du kan sedan navigera till programmet för att Visa attributlistan enligt beskrivningen [ovan](https://docs.microsoft.com/azure/active-directory/app-provisioning/customize-application-attributes#editing-the-list-of-supported-attributes). 
 
 När du redigerar listan över attribut som stöds anges följande egenskaper:
 

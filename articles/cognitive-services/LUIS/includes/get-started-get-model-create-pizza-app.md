@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: include
 ms.custom: include file
 ms.author: roy-har
-ms.openlocfilehash: 9965e4c856fdef2af17b116264ad5344ebc97eb2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 081b9288d091e26d0e6d30aa849ced18a3c2ffb6
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84466831"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938468"
 ---
 Skapa pizza-appen.
 
@@ -31,7 +31,7 @@ Skapa pizza-appen.
 
 Appen kommer att importeras.
 
-Om du ser en dialog ruta **för att skapa en effektiv Luis-app**stänger du dialog rutan.
+Om du ser en dialog ruta **för att skapa en effektiv Luis-app** stänger du dialog rutan.
 
 ## <a name="train-and-publish-the-pizza-app"></a>Träna och publicera pizza-appen
 
@@ -48,24 +48,24 @@ Sidan **avsikter** bör visas med en lista över syftet i pizza-appen.
 1. Välj **redigerings resurs**.
 1. Välj **ändra redigering av resurs**.
 
-Om du har en redigerings resurs anger du **klient namnet**, **prenumerations namnet**och **Luis resurs namnet** för din redigerings resurs.
+Om du har en redigerings resurs anger du **klient namnet**, **prenumerations namnet** och **Luis resurs namnet** för din redigerings resurs.
 
 Om du inte har någon redigerings resurs:
 
 1. Välj **Skapa ny resurs**.
-1. Ange ett **klient namn**, **resurs namn**, **prenumerations namn**och **namn på Azure-resurs gruppen**.
+1. Ange ett **klient namn**, **resurs namn**, **prenumerations namn** och **namn på Azure-resurs gruppen**.
 
 Din pizza-app är nu redo att användas.
 
 ## <a name="record-the-access-values-for-your-pizza-app"></a>Registrera åtkomst värden för din pizza-app
 
-Om du vill använda den nya pizza-appen behöver du appens ID, redigerings nyckel och redigerings slut punkt för din pizza-app.
+Om du vill använda den nya pizza-appen behöver du appens ID, redigerings nyckel och redigerings slut punkt för din pizza-app. För att få förutsägelser behöver du en separat förutsägelse slut punkt och förutsägelse nyckel.
 
 Så här hittar du dessa värden:
 
-1. Välj **Hantera**på sidan **avsikter** .
+1. Välj **Hantera** på sidan **avsikter** .
 1. På sidan **program inställningar** registrerar du **app-ID: t**.
 1. Välj **Azure-resurser**.
 1. Välj **redigerings resurs**.
-1. På fliken **Authoring-resurs** registrerar du den **primära nyckeln**. Det här värdet är din redigerings nyckel.
+1. Registrera **primär nyckeln** från flikarna **Redigera resurs** och **förutsägelse resurser** . Det här värdet är din redigerings nyckel.
 1. Registrera **slut punkts-URL: en**. Det här värdet är din redigerings slut punkt.

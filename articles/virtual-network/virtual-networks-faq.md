@@ -8,17 +8,17 @@ author: KumudD
 manager: twooley
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 00ef685c755c0fa6f5217d567bfa255ea940d72a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3ee9e165ce9c24968b072d19367e0285f5438259
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015977"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938808"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Vanliga frågor och svar (FAQ) om Azure Virtual Network
 
@@ -95,7 +95,7 @@ Ja. Du kan skapa en routningstabell och koppla den till ett undernät. Mer infor
 Nej. Multicast och broadcast stöds inte.
 
 ### <a name="what-protocols-can-i-use-within-vnets"></a>Vilka protokoll kan jag använda i virtuella nätverk?
-Du kan använda TCP-, UDP-och ICMP TCP/IP-protokoll i virtuella nätverk. Unicast stöds i virtuella nätverk, med undantag för Dynamic Host Configuration Protocol (DHCP) via unicast (källport UDP/68/målport/målport) och UDP-65330 källport som är reserverad för värden. Multicast-, broadcast-, IP-in-IP-inkapslade paket och GRE-paket (Generic Routing Encapsulation) blockeras i virtuella nätverk. 
+Du kan använda TCP-, UDP- och ICMP TCP/IP-protokoll i virtuella nätverk. Unicast stöds i virtuella nätverk, med undantag för Dynamic Host Configuration Protocol (DHCP) via Unicast (UDO-källport 68 och UDP-målport 67) och UDP-källport 65330 som är reserverad för värden. Multicast-, broadcast-, IP-in-IP-kapslade paket och GRE-paket (Generic Routing Encapsulation) blockeras i virtuella nätverk. 
 
 ### <a name="can-i-ping-my-default-routers-within-a-vnet"></a>Kan jag pinga mina standardrouters i ett virtuellt nätverk?
 Nej.
@@ -325,7 +325,7 @@ Det virtuella nätverkets tryck är i för hands version. Det finns inget servic
 
 Du kommer att kunna lägga till en tryck konfiguration på ett nätverks gränssnitt som är kopplat till en virtuell dator som är aktiverat med accelererat nätverk. Men prestandan och svars tiden på den virtuella datorn kommer att påverkas genom att du lägger till tryck på konfiguration eftersom avlastning för spegling av trafik för närvarande inte stöds av Azure accelererat nätverk.
 
-## <a name="virtual-network-service-endpoints"></a>Tjänstslutpunkter för virtuella nätverk
+## <a name="virtual-network-service-endpoints"></a>Tjänstslutpunkter för virtuellt nätverk
 
 ### <a name="what-is-the-right-sequence-of-operations-to-set-up-service-endpoints-to-an-azure-service"></a>Vad är rätt åtgärds ordning för att konfigurera tjänst slut punkter till en Azure-tjänst?
 Det finns två steg för att skydda en Azure service-resurs via tjänst slut punkter:

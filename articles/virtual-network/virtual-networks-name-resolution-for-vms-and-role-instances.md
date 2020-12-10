@@ -7,18 +7,18 @@ documentationcenter: na
 author: rohinkoul
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 46b3a782d93a55ed7f6eee6c76886f27c2652572
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 340ca07ba605359f71c1dbf23ca38abd75d84416
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89469651"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937057"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Namnmatchning för resurser i virtuella nätverk i Azure
 
@@ -113,7 +113,7 @@ Det finns ett antal olika tillgängliga DNS-caching-paket (till exempel dnsmasq)
   * Installera dnsmasq-paketet med `sudo zypper install dnsmasq` .
   * Aktivera dnsmasq-tjänsten med `systemctl enable dnsmasq.service` . 
   * Starta dnsmasq-tjänsten med `systemctl start dnsmasq.service` . 
-  * Redigera **/etc/sysconfig/Network/config**och ändra *NETCONFIG_DNS_FORWARDER = ""* till *dnsmasq*.
+  * Redigera **/etc/sysconfig/Network/config** och ändra *NETCONFIG_DNS_FORWARDER = ""* till *dnsmasq*.
   * Uppdatera matcha. conf med `netconfig update` , för att ställa in cachen som den lokala DNS-matcharen.
 * **CentOS (använder NetworkManager)**:
   * Installera dnsmasq-paketet med `sudo yum install dnsmasq` .

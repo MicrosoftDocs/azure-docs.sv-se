@@ -10,12 +10,12 @@ ms.date: 11/20/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 118aaa368f48838a33d130d8dddc89bb8dce3f3e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d435ced4c8ec56fae5081ede367b593d2b66ef0f
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498191"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936547"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Bevilja begränsad åtkomst till Azure Storage resurser med signaturer för delad åtkomst (SAS)
 
@@ -76,6 +76,9 @@ En signatur för delad åtkomst kan ha något av följande två former:
 ## <a name="how-a-shared-access-signature-works"></a>Så här fungerar en signatur för delad åtkomst
 
 En signatur för delad åtkomst är en signerad URI som pekar på en eller flera lagrings resurser. URI: n innehåller en token som innehåller en speciell uppsättning frågeparametrar. Token anger hur resurserna kan nås av klienten. En av frågeparametrar, signaturen, är konstruerad från SAS-parametrarna och är signerad med den nyckel som användes för att skapa SAS. Den här signaturen används av Azure Storage för att ge åtkomst till lagrings resursen.
+
+> [!NOTE]
+> Det går inte att granska genereringen av SAS-token. Alla användare som har behörighet att skapa en SAS-token, antingen genom att använda konto nyckeln eller via en Azure RBAC-roll tilldelning, kan göra det utan att ha kunskap om lagrings kontots ägare. Var noga med att begränsa behörigheter som tillåter användare att generera SAS-token. För att hindra användare från att skapa en SAS som är signerad med konto nyckeln för blob-och kö-arbetsbelastningar, kan du förhindra åtkomst till lagrings kontot för delad nyckel. Mer information finns i [förhindra auktorisering med delad nyckel](shared-key-authorization-prevent.md).
 
 ### <a name="sas-signature-and-authorization"></a>SAS-signatur och-auktorisering
 

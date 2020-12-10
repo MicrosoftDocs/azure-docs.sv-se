@@ -7,20 +7,30 @@ ms.service: attestation
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: dee9e7596c0a30301d9e0453ef22a6dfe9541522
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: fb8b0f12844ce1057bd3cfc4716a32ee64ec5586
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96020950"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937227"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-cli"></a>Snabb start: Konfigurera Azure-attestering med Azure CLI
 
 Kom igång med Azure-attestering genom att använda Azure CLI för att konfigurera attestering.
 
-[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
-
 ## <a name="get-started"></a>Kom igång
+
+1. Installera det här tillägget med hjälp av följande CLI-kommando
+
+   ```azurecli
+   az extension add --name attestation
+   ```
+   
+1. Kontrol lera versionen
+
+   ```azurecli
+   az extension show --name attestation --query version
+   ```
 
 1. Använd följande kommando för att logga in på Azure:
 
@@ -55,19 +65,16 @@ Kom igång med Azure-attestering genom att använda Azure CLI för att konfigure
 
 Här är kommandon som du kan använda för att skapa och hantera attesterings-providern:
 
-1. Kör kommandot [AZ attestering Create](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_create) för att skapa en attesterings-provider:
+1. Kör kommandot [AZ attestering Create](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_create) för att skapa en attesterings-provider:
 
    ```azurecli
-   az attestation create --resource-group attestationrg --name attestationProvider --location uksouth \
-      --attestation-policy SgxDisableDebugMode --certs-input-path C:\test\policySignersCertificates.pem
+   az attestation create --name "myattestationprovider" --resource-group "MyResourceGroup" --location westus
    ```
-
-   Parametern **--certifikats-Indataparametern** anger en uppsättning betrodda signerings nycklar. Om du anger ett fil namn för den här parametern, måste attesteringsservern endast konfigureras med principer i signerat JWT-format. Annars kan principen konfigureras i text eller i ett osignerat JWT-format. Information om JWT finns i [grundläggande begrepp](basic-concepts.md). För certifikat exempel, se [exempel på ett signerings certifikat för attesterings princip](policy-signer-examples.md).
-
-1. Kör kommandot [AZ attestering show](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_show) för att hämta egenskaper för attesterings leverantör, till exempel status och AttestURI:
+   
+1. Kör kommandot [AZ attestering show](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_show) för att hämta egenskaper för attesterings leverantör, till exempel status och AttestURI:
 
    ```azurecli
-   az attestation show --resource-group attestationrg --name attestationProvider
+   az attestation show --name "myattestationprovider" --resource-group "MyResourceGroup"
    ```
 
    Det här kommandot visar värden som följande utdata:
@@ -84,34 +91,20 @@ Här är kommandon som du kan använda för att skapa och hantera attesterings-p
    TagsTable:
    ```
 
-Du kan ta bort en attesterings leverantör med kommandot [AZ attestering](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_delete) :
+Du kan ta bort en attesterings leverantör med kommandot [AZ attestering](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_delete) :
 
 ```azurecli
-az attestation delete --resource-group attestationrg --name attestationProvider
+az attestation delete --name "myattestationprovider" --resource-group "sample-resource-group"
 ```
 
 ## <a name="policy-management"></a>Principhantering
 
-För att hantera principer kräver en Azure AD-användare följande behörigheter för `Actions` :
+Använd de kommandon som beskrivs här för att tillhandahålla princip hantering för en attesterings leverantör, en attesterings typ i taget.
 
-- `Microsoft.Attestation/attestationProviders/attestation/read`
-- `Microsoft.Attestation/attestationProviders/attestation/write`
-- `Microsoft.Attestation/attestationProviders/attestation/delete`
-
-Dessa behörigheter kan tilldelas till en Azure AD-användare via en roll som `Owner` (behörigheter för jokertecken), `Contributor` (behörigheter för jokertecken) eller `Attestation Contributor` (endast vissa behörigheter för Azure-attestering).  
-
-För att kunna läsa principer kräver en Azure AD-användare följande behörighet för `Actions` :
-
-- `Microsoft.Attestation/attestationProviders/attestation/read`
-
-Den här behörigheten kan tilldelas till en Azure AD-användare via en roll som `Reader` (behörighet som jokertecken) eller `Attestation Reader` (endast vissa behörigheter för Azure-attestering).
-
-Använd de kommandon som beskrivs här för att tillhandahålla princip hantering för en attesterings leverantör, en TEE i taget.
-
-Kommandot [AZ attestering policy show](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_show) returnerar den aktuella principen för den angivna tee:
+Kommandot [AZ attestering policy show](/cli/azure/ext/attestation/attestation/policy?view=azure-cli-latest#ext_attestation_az_attestation_policy_show) returnerar den aktuella principen för den angivna tee:
 
 ```azurecli
-az attestation policy show --resource-group attestationrg --name attestationProvider --tee SgxEnclave
+az attestation policy show --name "myattestationprovider" --resource-group "MyResourceGroup" --attestation-type SGX-IntelSDK
 ```
 
 > [!NOTE]
@@ -119,48 +112,24 @@ az attestation policy show --resource-group attestationrg --name attestationProv
 
 Följande typer av TEE stöds:
 
-- `CyResComponent`
-- `OpenEnclave`
-- `SgxEnclave`
-- `VSMEnclave`
+- `SGX-IntelSDK`
+- `SGX-OpenEnclaveSDK`
+- `TPM`
 
-Använd kommandot [AZ attestering policy set](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_set) för att ange en ny princip för den angivna tee.
+Använd kommandot [AZ attestering policy set](/cli/azure/ext/attestation/attestation/policy?view=azure-cli-latest#ext_attestation_az_attestation_policy_set) för att ange en ny princip för den angivna attesterings typen.
 
-```azurecli
-az attestation policy set --resource-group attestationrg --name attestationProvider --tee SgxEnclave \
-   --new-attestation-policy newAttestationPolicyname
-```
-
-Attesterings principen i JWT-format måste innehålla ett anspråk med namnet `AttestationPolicy` . En signerad princip måste signeras med en nyckel som motsvarar något av de befintliga inloggnings certifikaten för principen.
-
-Princip exempel finns i [exempel på en attesterings princip](policy-examples.md).
-
-Kommandot [AZ policy för attestering av princip](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_reset) anger en ny princip för den angivna tee.
+Ange en princip i text format för en viss typ av attestering med hjälp av fil Sök väg:
 
 ```azurecli
-az attestation policy reset --resource-group attestationrg --name attestationProvider --tee SgxEnclave \
-   --policy-jws "eyJhbGciOiJub25lIn0.."
+az attestation policy set --name testatt1 --resource-group testrg --attestation-type SGX-IntelSDK --new-attestation-policy-file "{file_path}"
 ```
 
-## <a name="policy-signer-certificates-management"></a>Hantering av princip inloggnings certifikat
-
-Använd följande kommandon för att hantera princip signerings certifikat för en attesterings leverantör:
+Ange en princip i JWT-format för en viss typ av attestering med hjälp av fil Sök väg:
 
 ```azurecli
-az attestation signer list --resource-group attestationrg --name attestationProvider
-
-az attestation signer add --resource-group attestationrg --name attestationProvider \
-   --signer "eyAiYWxnIjoiUlMyNTYiLCAie..."
-
-az attestation signer remove --resource-group attestationrg --name attestationProvider \
-   --signer "eyAiYWxnIjoiUlMyNTYiLCAie..."
+az attestation policy set --name "myattestationprovider" --resource-group "MyResourceGroup" \
+--attestation-type SGX-IntelSDK --new-attestation-policy-file "{file_path}" --policy-format JWT
 ```
-
-Ett princip signerings certifikat är ett signerat JWT med ett anspråk med namnet `maa-policyCertificate` . Värdet för anspråket är ett JWK som innehåller den betrodda signerings nyckeln som ska läggas till. JWT måste vara signerat med en privat nyckel som motsvarar något av de befintliga inloggnings certifikaten för principen. Information om JWT och JWK finns i [grundläggande begrepp](basic-concepts.md).
-
-All semantisk manipulering av principens registrerings certifikat måste göras utanför Azure CLI. Så långt som Azure CLI berörs är det en enkel sträng.
-
-För certifikat exempel, se [exempel på ett signerings certifikat för attesterings princip](policy-signer-examples.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

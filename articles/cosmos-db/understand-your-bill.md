@@ -7,24 +7,24 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 3ac90b79053e59047dbe64598688e77b9df059d1
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: b51be165d3d05ae753c7e0e5536a157fbbacf1ab
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358719"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938638"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Förstå Azure Cosmos DB-fakturan
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Som en fullständigt hanterad molnbaserad databas tjänst, Azure Cosmos DB fören klar faktureringen genom att endast debiteras för databas åtgärder och förbrukad lagring. Det finns inga ytterligare licens avgifter, kostnader för maskin vara, verktyg eller kostnader jämfört med lokala eller IaaS alternativ. När du funderar på funktionerna i flera regioner i Azure Cosmos DB ger databas tjänsten en betydande minskning av kostnaderna jämfört med befintliga lokala eller IaaS-lösningar.
 
-- **Databas åtgärder** : hur du debiteras för dina databas åtgärder beror på vilken typ av Azure Cosmos-konto du använder.
+- **Databas åtgärder**: hur du debiteras för dina databas åtgärder beror på vilken typ av Azure Cosmos-konto du använder.
 
-  - **Etablerade data flöde** : du debiteras per timme för det högsta etablerade data flödet för en specifik timme, i steg om 100 ru/s.
-  - Utan **Server** : du debiteras per timme för den totala mängden enheter för programbegäran som används av databas åtgärderna.
+  - **Etablerade data flöde**: du debiteras per timme för det högsta etablerade data flödet för en specifik timme, i steg om 100 ru/s.
+  - Utan **Server**: du debiteras per timme för den totala mängden enheter för programbegäran som används av databas åtgärderna.
 
-- **Lagring** : du debiteras ett fast pris för den totala mängden lagrings utrymme (i GB) som används av dina data och index för en specifik timme.
+- **Lagring**: du debiteras ett fast pris för den totala mängden lagrings utrymme (i GB) som används av dina data och index för en specifik timme.
 
 På [sidan med priser](https://azure.microsoft.com/pricing/details/cosmos-db/) finns den senaste pris informationen.
 
@@ -130,7 +130,7 @@ Vi antar att du skapar en Azure Cosmos-behållare i USA, västra. Behållaren sk
 |**Objekt** |**Användning (månad)**|**Hastighet** |**Månatlig kostnad** |
 |---------|---------|---------|-------|
 |Data flödes faktura för container i USA, västra (alla regioner är skrivbara)       | 10 000 RU/SEK * 24 * 30    |$0,016 per 100 RU/SEK per timme    |$1 152 |
-|Data flödes faktura för 3 ytterligare regioner – östra USA, norra Europa och Asien, östra (alla regioner är skrivbara)        | (3 + 1) * 10 000 RU/SEK * 24 * 30    |$0,016 per 100 RU/SEK per timme   |$4 608 |
+|Data flödes faktura för 3 ytterligare regioner – östra USA, norra Europa och Asien, östra (alla regioner är skrivbara)        | 3 * 10 000 RU/SEK * 24 * 30    |$0,016 per 100 RU/SEK per timme   |$3 456 |
 |Lagrings faktura för behållare i västra USA      | 250 GB    |$0,25/GB  |$62,50|
 |Lagrings faktura för 3 ytterligare regioner – östra USA, norra Europa och Asien, östra      | 3 * 250 GB    |$0,25/GB  |$187,50|
 |**Totalt**     |     |  |**$6 010**|

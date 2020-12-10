@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/02/2020
+ms.date: 12/09/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: f12a899d3b6daa3b233e6a799871afca1e24d046
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 179e60a41a9cd6a2277959b3cd31159c796d845d
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533761"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937295"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Förhindra anonym offentlig Läs behörighet till behållare och blobbar
 
@@ -287,6 +287,23 @@ När du har skapat principen med neka-inställningen och tilldelar den till ett 
 Följande bild visar det fel som uppstår om du försöker skapa ett lagrings konto som tillåter offentlig åtkomst (standard för ett nytt konto) när en princip med en neka-påverkan kräver att offentlig åtkomst inte tillåts.
 
 :::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="Skärm bild som visar felet som inträffar när du skapar ett lagrings konto som strider mot principen":::
+
+## <a name="permissions-for-allowing-or-disallowing-public-access"></a>Behörigheter för att tillåta eller neka offentlig åtkomst
+
+Om du vill ange egenskapen **AllowBlobPublicAccess** för lagrings kontot måste en användare ha behörighet att skapa och hantera lagrings konton. Azure-rollbaserad åtkomst kontroll (Azure RBAC) roller som tillhandahåller dessa behörigheter innefattar åtgärden **Microsoft. Storage/storageAccounts/Write** eller **Microsoft. Storage/storageAccounts/ \** _. Inbyggda roller med den här åtgärden är:
+
+- Rollen Azure Resource Manager [ägare](../../role-based-access-control/built-in-roles.md#owner)
+- Rollen Azure Resource Manager [Contributor](../../role-based-access-control/built-in-roles.md#contributor)
+- Rollen [lagrings konto deltagare](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
+
+Dessa roller ger inte åtkomst till data i ett lagrings konto via Azure Active Directory (Azure AD). De inkluderar dock * Microsoft. Storage/storageAccounts/listnycklar/Action * *, som ger åtkomst till kontots åtkomst nycklar. Med den här behörigheten kan en användare använda kontots åtkomst nycklar för att komma åt alla data i ett lagrings konto.
+
+Roll tilldelningar måste begränsas till lagrings kontots nivå eller högre för att en användare ska kunna tillåta eller neka offentlig åtkomst för lagrings kontot. Mer information om roll omfattning finns i [förstå omfattning för Azure RBAC](../../role-based-access-control/scope-overview.md).
+
+Var noga med att begränsa tilldelningen av rollerna till de som kräver möjlighet att skapa ett lagrings konto eller uppdatera dess egenskaper. Använd principen för minsta behörighet för att se till att användarna har minst de behörigheter som de behöver för att utföra sina uppgifter. Mer information om hur du hanterar åtkomst med Azure RBAC finns i [metod tips för Azure RBAC](../../role-based-access-control/best-practices.md).
+
+> [!NOTE]
+> Administratören för rollen administratör för den klassiska prenumerationen och Co-Administrator innehåller motsvarigheten till Azure Resource Manager [Owner](../../role-based-access-control/built-in-roles.md#owner) -rollen. **Ägar** rollen innehåller alla åtgärder, så en användare med någon av dessa administrativa roller kan också skapa och hantera lagrings konton. Mer information finns i [klassiska prenumerationer på administratörs roller, Azure-roller och Azure AD-administratörer](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
 
 ## <a name="next-steps"></a>Nästa steg
 

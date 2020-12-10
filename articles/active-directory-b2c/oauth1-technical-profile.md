@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6b54cff85da02415bbc9dfa9ead037ced48cb58f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a2cbca8c02dcbfc0e59d31040d1fca7a790cd35
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259449"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936666"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiera en OAuth1 teknisk profil i en Azure Active Directory B2C anpassad princip
 
@@ -92,4 +92,4 @@ När du konfigurerar en omdirigerings-URI för din identitetsprovider anger du `
 
 Exempel:
 
-- [Lägg till Twitter som en OAuth1 identitets leverantör genom att använda anpassade principer](identity-provider-twitter-custom.md)
+- [Lägg till Twitter som en OAuth1 identitets leverantör genom att använda anpassade principer](identity-provider-twitter.md)

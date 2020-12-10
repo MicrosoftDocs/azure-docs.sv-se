@@ -8,15 +8,15 @@ ms.author: chgrego
 ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 11/30/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq2, automl
-ms.openlocfilehash: 43ce1c4865b3458ccd9c0ac17589f8ca5d77d92f
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: a3b3640922daf84357354efc389e20afea78d216
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922077"
+ms.locfileid: "96937720"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Utvärdera resultat från automatiska maskin inlärnings experiment
 
@@ -81,7 +81,7 @@ balanced_accuracy|Balanserade noggrannhet är det aritmetiska medelvärdet för 
 f1_score|F1-Poäng är det harmoniska medelvärdet av precision och återkallande. Det är ett god balanserat mått av både falska positiva identifieringar och falska negativa negativa. Det tar dock inte hänsyn till sant negativ till kontot. <br> <br>**Mål:** Närmare 1 desto bättre <br> **Intervall:** [0, 1]<br> <br>Mått namn som stöds är,<li>  `f1_score_macro`: det aritmetiska medelvärdet av F1-poängen för varje klass. <li> `f1_score_micro`: beräknas genom att räkna antalet sanna positiva identifieringar, falska negativa negativa data och falska positiva identifieringar. <li> `f1_score_weighted`: viktat medelvärde per klass frekvens av F1-Poäng för varje klass.|[Beräkning](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|
 log_loss|Detta är den förlust funktion som används i (MULTINOMIAL) Logistisk regression och tillägg, till exempel neurala Networks, definierad som den negativa logg sannolikheten för de faktiska etiketterna med en Probabilistic klassificerares förutsägelser. <br><br> **Mål:** Närmare 0 desto bättre <br> **Intervall:** [0, inf)|[Beräkning](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|
 norm_macro_recall| Normaliserat makro återkallande är återkalla makro – Genomsnittligt och normaliserat, så att slumpmässiga prestanda har poängen 0, och perfekt prestanda har en poäng på 1. <br> <br>**Mål:** Närmare 1 desto bättre <br> **Intervall:** [0, 1] |`(recall_score_macro - R)`&nbsp;/&nbsp;`(1 - R)` <br><br>där, `R` är det förväntade värdet `recall_score_macro` för för slumpmässiga förutsägelser.<br><br>`R = 0.5`&nbsp;för &nbsp; binär &nbsp; klassificering. <br>`R = (1 / C)` för klassificerings problem i C-klass.|
-Koefficient för Matthews-korrelation | Matthews korrelations koefficient är ett balanserat mått på noggrannhet, som kan användas även om en klass har många fler sampel än en annan. En koefficient på 1 indikerar perfekt förutsägelse, 0 slumpmässig förutsägelse och-1 inverterad förutsägelse.<br><br> **Mål:** Närmare 1 desto bättre <br> **Intervall:** [-1, 1]|[Beräkning](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html)|
+matthews_correlation | Matthews korrelations koefficient är ett balanserat mått på noggrannhet, som kan användas även om en klass har många fler sampel än en annan. En koefficient på 1 indikerar perfekt förutsägelse, 0 slumpmässig förutsägelse och-1 inverterad förutsägelse.<br><br> **Mål:** Närmare 1 desto bättre <br> **Intervall:** [-1, 1]|[Beräkning](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html)|
 precision|Precision är möjligheten för en modell att undvika att etikettera negativa prover som positiva. <br><br> **Mål:** Närmare 1 desto bättre <br> **Intervall:** [0, 1]<br> <br>Mått namn som stöds är, <li> `precision_score_macro`, det aritmetiska medelvärdet för varje klass. <li> `precision_score_micro`, beräknad globalt genom att räkna antalet sanna positiva positiva och falska positiva identifieringar. <li> `precision_score_weighted`, det aritmetiska medelvärdet för varje klass, viktat med antalet sanna instanser i varje klass.|[Beräkning](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|
 träffsäkerhet| Återkallande är möjligheten för en modell att identifiera alla positiva exempel. <br><br> **Mål:** Närmare 1 desto bättre <br> **Intervall:** [0, 1]<br> <br>Mått namn som stöds är, <li>`recall_score_macro`: det aritmetiska medelvärdet för återkallning för varje klass. <li> `recall_score_micro`: beräknas globalt genom att räkna antalet sanna positiva identifieringar, falska negativa negativa och falska positiva identifieringar.<li> `recall_score_weighted`: det aritmetiska medelvärdet för varje klass, viktat med antalet sanna instanser i varje klass.|[Beräkning](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|
 weighted_accuracy|Viktad noggrannhet är exakthet där varje prov viktas av det totala antalet prover som tillhör samma klass. <br><br>**Mål:** Närmare 1 desto bättre <br>**Intervall:** [0, 1]|[Beräkning](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|
@@ -182,7 +182,7 @@ En försäkrad modell är över-predict sannolikheten nära noll och en, vilket 
 
 ## <a name="regressionforecasting-metrics"></a>Regressions-/prognos mått
 
-Med automatisk ML beräknas samma prestanda mått för varje modell som genereras, oavsett om det är ett Regressions-eller prognos experiment. Dessa mått genomgår också normalisering för att möjliggöra jämförelse mellan modeller som har tränats på data med olika intervall. Mer information finns i [mått normalisering](#metric-normalization)  
+Med automatisk ML beräknas samma prestanda mått för varje modell som genereras, oavsett om det är ett Regressions-eller prognos experiment. Dessa mått genomgår också normalisering för att möjliggöra jämförelse mellan modeller som har tränats på data med olika intervall. Mer information finns i [mått normalisering](#metric-normalization).  
 
 I följande tabell sammanfattas de modell prestanda mått som genereras för Regressions-och prognos experiment. Precis som klassificerings mått är de här måtten också baserade på scikit lär dig implementeringar. Lämplig dokumentation om scikit-information länkas enligt detta i **beräknings** fältet.
 

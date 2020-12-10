@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 12/07/2020
-ms.openlocfilehash: 154be7e4340c798ba1d014b210361f666864797e
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: ee314708f0d564bf1af639a3d864ea19472425cf
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921511"
+ms.locfileid: "96937635"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Information om begränsningar och konfiguration för Azure Logic Apps
 
@@ -305,15 +305,15 @@ Varje Azure-prenumeration har följande gränser för integrations kontot:
 
 * 1 000 sammanlagt integrerings konton, inklusive integrations konton i alla [integrerings tjänst miljöer (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) i både [Developer-och Premium-SKU: er](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level).
 
-* Varje ISE, vare sig [utvecklare eller Premium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level), är begränsat till 20 sammanlagt integrations konton:
+* Varje ISE, vare sig [utvecklare eller Premium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level), är begränsat till ett totalt antal integrations konton, men [du kan höja gränsen för ytterligare en kostnad](logic-apps-pricing.md#fixed-pricing):
 
   | ISE SKU | Gränser för integrationskonto |
   |---------|----------------------------|
-  | **Premium** | 20 totalt – [standard](../logic-apps/logic-apps-pricing.md#integration-accounts) konton, inklusive ett standard konto kostnads fritt. Inga kostnads fria eller grundläggande konton är tillåtna. |
-  | **Utvecklare** | 20 totalt – [kostnads fritt](../logic-apps/logic-apps-pricing.md#integration-accounts) (begränsat till 1 konto) och [standard](../logic-apps/logic-apps-pricing.md#integration-accounts) kombinations lager eller alla standard konton. Inga grundläggande konton är tillåtna. Använd [Developer-SKU: n](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) för att experimentera, utveckla och testa, men inte för produktions-eller prestanda testning. |
+  | **Premium** | 20 totalt – [standard](../logic-apps/logic-apps-pricing.md#integration-accounts) konton, inklusive ett standard konto kostnads fritt. Du kan ha [fler integrations konton för ytterligare kostnader](logic-apps-pricing.md#fixed-pricing). Inga kostnads fria eller grundläggande konton är tillåtna. |
+  | **Utvecklare** | 20 totalt – [kostnads fritt](../logic-apps/logic-apps-pricing.md#integration-accounts) (begränsat till 1 konto) och [standard](../logic-apps/logic-apps-pricing.md#integration-accounts) kombinations lager eller alla standard konton. Du kan ha [fler integrations konton för ytterligare kostnader](logic-apps-pricing.md#fixed-pricing). Inga grundläggande konton är tillåtna. Använd [Developer-SKU: n](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) för att experimentera, utveckla och testa, men inte för produktions-eller prestanda testning. |
   |||
 
-Ytterligare kostnader gäller för integrations konton som du lägger till utöver de integrations konton som ingår i en ISE. Information om hur priser och fakturering fungerar för ISEs finns i [pris modellen Logic Apps](../logic-apps/logic-apps-pricing.md#fixed-pricing). Pris nivåer finns i [Logic Apps prissättning](https://azure.microsoft.com/pricing/details/logic-apps/).
+Information om hur priser och fakturering fungerar för ISEs finns i [pris modellen Logic Apps](../logic-apps/logic-apps-pricing.md#fixed-pricing). Pris nivåer finns i [Logic Apps prissättning](https://azure.microsoft.com/pricing/details/logic-apps/).
 
 <a name="artifact-number-limits"></a>
 

@@ -12,12 +12,12 @@ ms.date: 11/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7c6ba79a82fe3d291008f3317ddce7df4adcda0a
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: ad7fe062d30f6858296ad4a2638b62c190862365
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309655"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936445"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrera ett SAML-program i Azure AD B2C
 
@@ -39,7 +39,7 @@ Sammanfatta de två icke-exklusiva huvud scenarierna med SAML:
 | Scenario | Azure AD B2C roll | Så här gör du |
 | -------- | ----------------- | ------- |
 | Mitt program förväntar sig en SAML-kontroll för att slutföra en autentisering. | **Azure AD B2C fungerar som identitets leverantör (IdP)**<br />Azure AD B2C fungerar som en SAML-IdP i programmen. | Den här artikeln. |
-| Mina användare behöver en enkel inloggning med en SAML-kompatibel identitets leverantör som ADFS, Salesforce eller Shibboleth.  | **Azure AD B2C fungerar som tjänst leverantör (SP)**<br />Azure AD B2C fungerar som en tjänst leverantör vid anslutning till SAML Identity Provider. Det är en Federations-proxy mellan ditt program och SAML Identity Provider.  | <ul><li>[Konfigurera inloggning med ADFS som ett SAML-IdP med anpassade principer](identity-provider-adfs2016-custom.md)</li><li>[Konfigurera inloggning med en Salesforce-SAML-Provider med anpassade principer](identity-provider-salesforce-custom.md)</li></ul> |
+| Mina användare behöver en enkel inloggning med en SAML-kompatibel identitets leverantör som ADFS, Salesforce eller Shibboleth.  | **Azure AD B2C fungerar som tjänst leverantör (SP)**<br />Azure AD B2C fungerar som en tjänst leverantör vid anslutning till SAML Identity Provider. Det är en Federations-proxy mellan ditt program och SAML Identity Provider.  | <ul><li>[Konfigurera inloggning med ADFS som ett SAML-IdP med anpassade principer](identity-provider-adfs.md)</li><li>[Konfigurera inloggning med en Salesforce-SAML-Provider med anpassade principer](identity-provider-salesforce.md)</li></ul> |
 
 ## <a name="prerequisites"></a>Krav
 
@@ -270,7 +270,7 @@ Din anpassade princip och Azure AD B2C klient är nu klara. Skapa sedan en progr
 
 ### <a name="41-register-your-application-in-azure-ad-b2c"></a>4,1 registrera ditt program i Azure AD B2C
 
-1. Logga in på [Azure Portal](https://portal.azure.com).
+1. Logga in på [Azure-portalen](https://portal.azure.com).
 1. Välj filtret **katalog + prenumeration** på den översta menyn och välj sedan den katalog som innehåller Azure AD B2C klienten.
 1. På den vänstra menyn väljer du **Azure AD B2C**. Eller Välj **alla tjänster** och Sök efter och välj **Azure AD B2C**.
 1. Välj **Appregistreringar** och välj sedan **ny registrering**.
@@ -393,7 +393,7 @@ Om du vill aktivera Azure AD B2C skicka krypterade intyg anger du **WantsEncrypt
 
 ## <a name="enable-identity-provider-initiated-flow-optional"></a>Aktivera flöde för initierad identitetsprovider (valfritt)
 
-I initierat flöde för identitetsprovider initieras inloggnings processen av identitets leverantören (Azure AD B2C), som skickar ett oönskat SAML-svar till tjänst leverantören (ditt förlitande parts program). Vi stöder för närvarande inte scenarier där den initierande identitets leverantören är en extern identitetsprovider, till exempel [AD-FS](identity-provider-adfs2016-custom.md)eller [Salesforce](identity-provider-salesforce-custom.md).
+I initierat flöde för identitetsprovider initieras inloggnings processen av identitets leverantören (Azure AD B2C), som skickar ett oönskat SAML-svar till tjänst leverantören (ditt förlitande parts program). Vi stöder för närvarande inte scenarier där den initierande identitets leverantören är en extern identitetsprovider, till exempel [AD-FS](identity-provider-adfs.md)eller [Salesforce](identity-provider-salesforce.md).
 
 Om du vill aktivera Identity Provider (Azure AD B2C) initierat flöde anger du **IdpInitiatedProfileEnabled** -objektet till `true` i den [förlitande partens tekniska profil](relyingparty.md#technicalprofile).
 

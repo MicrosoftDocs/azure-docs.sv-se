@@ -10,21 +10,22 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 0420360b70485e49dc6cd06dbeb19400c0f73ef5
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 271d7ce38d50fd21975327eb1f21528aeacc485e
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070358"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937244"
 ---
 # <a name="plan-your-telephony-and-sms-solution"></a>Planera din telefoni- och SMS-lösning
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
+[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 Azure Communication Services gör att du kan använda telefonnummer för att ringa röst samtal och skicka SMS-meddelanden med det offentliga telefonnätet. I det här dokumentet granskar vi telefonnummer typer, konfigurations alternativ och regions tillgänglighet för att planera din telefoni-och SMS-lösning med hjälp av kommunikations tjänster.
 
-[!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
+
+
 
 
 ## <a name="phone-number-types-in-azure-communication-services"></a>Telefonnummer typer i Azure Communication Services
@@ -52,6 +53,8 @@ I tabellen nedan sammanfattas dessa telefonnummer typer:
 
 
 ## <a name="phone-number-features-in-azure-communication-services"></a>Telefonnummer funktioner i Azure Communication Services 
+
+[!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
 För de flesta telefonnummer ger vi dig möjlighet att konfigurera en "a la carte"-uppsättning funktioner. Dessa funktioner kan väljas när du lånar dina telefonnummer i Azure Communication Services.
 

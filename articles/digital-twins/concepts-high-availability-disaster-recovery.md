@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ac75a5b0b59a06855b7ee88d971c269ca915e429
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 35f4aae246f105d832aaf92c5c5797c8a65b44f1
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763175"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938554"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Azure Digitals dubblare hög tillgänglighet och haveri beredskap
 
@@ -38,6 +38,29 @@ Det kan finnas sällsynta situationer när ett Data Center upplever utökade avb
 
 >[!NOTE]
 > Vissa Azure-tjänster tillhandahåller också ytterligare ett alternativ som kallas **kundinitierad redundans**, vilket gör det möjligt för kunder att initiera en redundans just för sin instans, till exempel för att köra en Dr-granskning. Den här mekanismen stöds för närvarande **inte** av digitala Azure-dubbla. 
+
+## <a name="monitor-service-health"></a>Övervaka tjänstens hälsa
+
+Eftersom Azure Digitals dubbla instanser har redundansväxlats och återställts kan du övervaka processen med hjälp av [Azure Service Health](https://docs.microsoft.com/azure/service-health/service-health-overview) -verktyget. Service Health spårar hälso tillståndet för dina Azure-tjänster i olika regioner och prenumerationer och delar service – påverkar kommunikationen med avbrott och drift stopp.
+
+Under en redundansväxling kan Service Health ange när tjänsten är avstängd och när den är säkerhets kopia.
+
+För att Visa Service Health händelser...
+1. Navigera till [service Health](https://portal.azure.com/?feature.customportal=false#blade/Microsoft_Azure_Health/AzureHealthBrowseBlade/serviceIssues) i Azure Portal (du kan använda den här länken eller söka efter den med Portal Sök fältet).
+1. Använd den vänstra menyn för att växla till sidan *hälso historik* .
+1. Leta efter ett *problem namn* som börjar med **Azure Digitals** och markera det.
+
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/navigate.png" alt-text="Skärm bild av Azure Portal som visar hälso historik sidan. Det finns en lista över flera problem från de senaste dagarna och ett problem med namnet &quot;Azure Digitals-Västeuropa – västra Europa-&quot;-dämpat &quot;är markerat." lightbox="media/concepts-high-availability-disaster-recovery/navigate.png":::
+
+1. Allmän information om avbrottet finns på fliken *Sammanfattning* .
+
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/summary.png" alt-text="Fliken Sammanfattning är markerad på sidan hälso historik. Fliken visar allmän information, till exempel den resurs som påverkades, dess region och prenumerationen." lightbox="media/concepts-high-availability-disaster-recovery/summary.png":::
+1. Mer information och uppdateringar av problemet med tiden finns på fliken *problem uppdateringar* .
+
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/issue-updates.png" alt-text="På sidan hälso historik är fliken problem uppdateringar markerad. Fliken visar flera poster som visar aktuell status från en dag sedan." lightbox="media/concepts-high-availability-disaster-recovery/issue-updates.png":::
+
+
+Observera att informationen som visas i det här verktyget inte är unik för en digital Azure-instans. När du har använt Service Health för att ta reda på vad som händer med Azure Digitals dubblare-tjänst i en viss region eller prenumeration kan du övervaka ett steg ytterligare genom att använda [resurs hälso verktyget](troubleshoot-resource-health.md) för att öka detalj nivån i specifika instanser och se om de påverkas.
 
 ## <a name="best-practices"></a>Bästa praxis
 

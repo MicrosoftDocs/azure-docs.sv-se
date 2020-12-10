@@ -7,15 +7,15 @@ ms.service: virtual-machines-windows
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 11/17/2020
 ms.author: cathys
 keywords: VisualStudio
-ms.openlocfilehash: 5ec8e0f6448e725998628e41b917942966d3ef2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 315987060b96312c666bd5aa928588e27d13173b
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836164"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938111"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio-avbildningar i Azure
 Att använda Visual Studio i en förkonfigurerad virtuell dator i Azure är ett snabbt och enkelt sätt att gå från ingenting till en utvecklings miljö som är igång. System avbildningar med olika Visual Studio-konfigurationer är tillgängliga på [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure).
@@ -30,9 +30,9 @@ Avbildningar för de senaste huvud versionerna, Visual Studio 2019, Visual Studi
 
 | Version                                                                                                                                                | Utgåvor              | Produktversion   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
-| [Visual Studio 2019: senaste (version 16,5)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enterprise, community | Version 16.5.4    |
-| Visual Studio 2019: RTW                         | Enterprise | Version 16.0.13    |
-| Visual Studio 2017: senaste (version 15,9)           | Enterprise, community | Version 15.9.22   |
+| [Visual Studio 2019: senaste (version 16,8)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enterprise, community | Version 16.8.0    |
+| Visual Studio 2019: RTW                         | Enterprise | Version 16.0.20    |
+| Visual Studio 2017: senaste (version 15,9)           | Enterprise, community | Version 15.9.29   |
 | Visual Studio 2017: RTW                             | Enterprise, community | Version 15.0.28  |
 | Visual Studio 2015: senaste (uppdatering 3)               | Enterprise, community | Version 14.0.25431.01 |
 

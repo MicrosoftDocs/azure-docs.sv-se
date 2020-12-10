@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 72d774b4ced6471ff7b355b2cb43c3c9127b5975
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f0c9a01e43f12e8fbe597c85c22b79c0994305e3
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658527"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938876"
 ---
 # <a name="supported-postgresql-major-versions"></a>PostgreSQL huvud versioner som stöds
 
@@ -36,12 +36,12 @@ Den aktuella del versionen är 9.5.20. Läs postgresql- [dokumentationen](https:
 > Om du anpassar med postgres policy för Community- [versioner](https://www.postgresql.org/support/versioning/)kommer Azure Database for PostgreSQL att tas ur bruk Postgres version 9,5 den 11 februari 2021. Mer information och begränsningar finns i [Azure Database for PostgreSQL versions policy](concepts-version-policy.md) .
 
 ## <a name="managing-upgrades"></a>Hantera uppgraderingar
-PostgreSQL-projektet utfärdar regelbundet mindre versioner för att åtgärda rapporterade buggar. Azure Database for PostgreSQL automatiskt korrigering av servrar med mindre versioner under tjänstens månatliga distributioner. 
+PostgreSQL-projektet utfärdar regelbundet mindre versioner för att åtgärda rapporterade buggar. Azure Database for PostgreSQL korrigerar automatiskt servrar med delversioner under tjänstens månatliga distributioner. 
 
-Automatiska uppgraderingar på plats för huvud versioner stöds inte. Om du vill uppgradera till nästa högre version kan du 
-   * Se olika metoder för att utföra [större versions uppgraderingar med dump och återställning](./how-to-upgrade-using-dump-and-restore.md)
-   * Använd [pg_dump och pg_restore](./howto-migrate-using-dump-and-restore.md) för att flytta en databas till en server som skapats med den nya motor versionen
-   * Alternativt kan du uppgradera från PostgreSQL 10 till 11 med [Azure Database migration service](..\dms\tutorial-azure-postgresql-to-azure-postgresql-online-portal.md)
+Automatiska uppgraderingar på plats för huvud versioner stöds inte. Om du vill uppgradera till en högre huvud version kan du 
+   * Använd en av metoderna som dokumenteras i [större versions uppgraderingar med dumpa och Återställ](./how-to-upgrade-using-dump-and-restore.md).
+   * Använd [pg_dump och pg_restore](./howto-migrate-using-dump-and-restore.md) för att flytta en databas till en server som skapats med den nya motor versionen.
+   * Använd [Azure Database migration service](..\dms\tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) för att utföra online-uppgraderingar.
 
 ### <a name="version-syntax"></a>Versions syntax
 Innan PostgreSQL version 10 anses den [postgresql versions principen](https://www.postgresql.org/support/versioning/) en _större versions_ uppgradering för att öka det första _eller_ andra numret. 9,5 till 9,6 ansågs till exempel vara en _huvud_ versions uppgradering. Från och med version 10 betraktas bara en ändring i det första talet som en huvud versions uppgradering. Till exempel är 10,0 till 10,1 en _mindre_ versions uppgradering. Version 10 till 11 är en _huvud_ versions uppgradering.

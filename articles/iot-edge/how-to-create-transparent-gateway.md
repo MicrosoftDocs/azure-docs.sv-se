@@ -11,22 +11,37 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 506f6a2025a61b4d9d16918b2a95de620171c46b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 9f81d059c1a71bf6349d0ef9b4aae8f7a47c161f
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147840"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938791"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurera en IoT Edge-enhet till att fungera som en transparent gateway
 
 Den här artikeln innehåller detaljerade anvisningar för hur du konfigurerar en IoT Edge-enhet så att den fungerar som en transparent Gateway för andra enheter att kommunicera med IoT Hub. I den här artikeln används termen *IoT Edge Gateway* för att referera till en IoT Edge enhet som kon figurer ATS som en transparent Gateway. Mer information finns i [så här kan en IoT Edge enhet användas som en gateway](./iot-edge-as-gateway.md).
+
+<!-- 1.0.10 -->
+::: moniker range="iotedge-2018-06"
 
 >[!NOTE]
 >Öppet
 >
 > * Edge-aktiverade enheter kan inte ansluta till IoT Edge gatewayer.
 > * Underordnade enheter kan inte använda fil uppladdning.
+
+::: moniker-end
+
+<!-- 1.2.0 -->
+::: moniker range=">=iotedge-2020-11"
+
+>[!NOTE]
+>Öppet
+>
+> * Underordnade enheter kan inte använda fil uppladdning.
+
+::: moniker-end
 
 Det finns tre allmänna steg för att konfigurera en lyckad transparent Gateway-anslutning. Den här artikeln beskriver det första steget:
 
@@ -45,7 +60,7 @@ Du kan skapa en certifikat infrastruktur som aktiverar det förtroende som kräv
 
 Följande steg vägleder dig genom processen att skapa certifikaten och installera dem på rätt plats på gatewayen. Du kan använda vilken dator som helst för att generera certifikaten och sedan kopiera dem till din IoT Edge-enhet.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 En Linux-eller Windows-enhet med IoT Edge installerat.
 

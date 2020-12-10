@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/03/2020
+ms.date: 12/09/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 683f0e070ad77add62ed76eabd70b42ba15f012e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b6c75bc13bf26510ee72968c5a27407b6b7bfee6
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498140"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937499"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Framtvinga en minsta version av Transport Layer Security (TLS) som krävs för begär anden till ett lagrings konto
 
@@ -339,6 +339,23 @@ När du har skapat principen med neka-resultatet och tilldelar den till ett omf�
 Följande bild visar felet som uppstår om du försöker skapa ett lagrings konto med den lägsta TLS-versionen inställd på TLS 1,0 (standard för ett nytt konto) när en princip med en neka-inverkan kräver att den lägsta TLS-versionen anges till TLS 1,2.
 
 :::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="Skärm bild som visar felet som inträffar när du skapar ett lagrings konto som strider mot principen":::
+
+## <a name="permissions-necessary-to-require-a-minimum-version-of-tls"></a>Behörigheter som krävs för att kräva en lägsta version av TLS
+
+Om du vill ange egenskapen **MinimumTlsVersion** för lagrings kontot måste en användare ha behörighet att skapa och hantera lagrings konton. Azure-rollbaserad åtkomst kontroll (Azure RBAC) roller som tillhandahåller dessa behörigheter innefattar åtgärden **Microsoft. Storage/storageAccounts/Write** eller **Microsoft. Storage/storageAccounts/ \** _. Inbyggda roller med den här åtgärden är:
+
+- Rollen Azure Resource Manager [ägare](../../role-based-access-control/built-in-roles.md#owner)
+- Rollen Azure Resource Manager [Contributor](../../role-based-access-control/built-in-roles.md#contributor)
+- Rollen [lagrings konto deltagare](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
+
+Dessa roller ger inte åtkomst till data i ett lagrings konto via Azure Active Directory (Azure AD). De inkluderar dock * Microsoft. Storage/storageAccounts/listnycklar/Action * *, som ger åtkomst till kontots åtkomst nycklar. Med den här behörigheten kan en användare använda kontots åtkomst nycklar för att komma åt alla data i ett lagrings konto.
+
+Roll tilldelningar måste begränsas till lagrings kontots nivå eller högre för att en användare ska kunna kräva en lägsta TLS-version för lagrings kontot. Mer information om roll omfattning finns i [förstå omfattning för Azure RBAC](../../role-based-access-control/scope-overview.md).
+
+Var noga med att begränsa tilldelningen av rollerna till de som kräver möjlighet att skapa ett lagrings konto eller uppdatera dess egenskaper. Använd principen för minsta behörighet för att se till att användarna har minst de behörigheter som de behöver för att utföra sina uppgifter. Mer information om hur du hanterar åtkomst med Azure RBAC finns i [metod tips för Azure RBAC](../../role-based-access-control/best-practices.md).
+
+> [!NOTE]
+> Administratören för rollen administratör för den klassiska prenumerationen och Co-Administrator innehåller motsvarigheten till Azure Resource Manager [Owner](../../role-based-access-control/built-in-roles.md#owner) -rollen. **Ägar** rollen innehåller alla åtgärder, så en användare med någon av dessa administrativa roller kan också skapa och hantera lagrings konton. Mer information finns i [klassiska prenumerationer på administratörs roller, Azure-roller och Azure AD-administratörer](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
 
 ## <a name="network-considerations"></a>Nätverksöverväganden
 

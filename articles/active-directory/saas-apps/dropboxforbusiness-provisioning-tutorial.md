@@ -11,24 +11,24 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 7bbf9b199b15815127f0ecb26ae027ef7bfa52d2
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 04d17e17ef11696efd52f04ea83639f2a9b81fea
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94355472"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938774"
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Dropbox för företag för automatisk användar etablering
 
 Syftet med den här självstudien är att demonstrera de steg som ska utföras i Dropbox for Business och Azure Active Directory (Azure AD) för att konfigurera Azure AD att automatiskt etablera och avetablera användare och/eller grupper till Dropbox för företag.
 
 > [!IMPORTANT]
-> Microsoft och Dropbox kommer att bli inaktuellt för den gamla Dropbox-integreringen från 04/01/2021. För att undvika avbrott i tjänsten rekommenderar vi att du migrerar till den nya Dropbox-integrering som stöder grupper. Om du vill migrera till den nya Dropbox-integreringen lägger du till och konfigurerar en ny instans av Dropbox för etablering i Azure AD-klienten med hjälp av stegen nedan. När du har konfigurerat den nya Dropbox-integreringen inaktiverar du etableringen av den gamla Dropbox-integreringen för att undvika etablerings konflikter.
+> Microsoft och Dropbox kommer att bli inaktuellt för den gamla Dropbox-integreringen från 04/01/2021. För att undvika avbrott i tjänsten rekommenderar vi att du migrerar till den nya Dropbox-integrering som stöder grupper. Om du vill migrera till den nya Dropbox-integreringen lägger du till och konfigurerar en ny instans av Dropbox för etablering i Azure AD-klienten med hjälp av stegen nedan. När du har konfigurerat den nya Dropbox-integreringen inaktiverar du etableringen av den gamla Dropbox-integreringen för att undvika etablerings konflikter. Mer detaljerad information om hur du migrerar till den nya Dropbox-integrationen finns i [Uppdatera till den senaste Dropbox for Business-appen med hjälp av Azure AD](https://help.dropbox.com/installs-integrations/third-party/update-dropbox-azure-ad-connector).
 
 > [!NOTE]
 > I den här självstudien beskrivs en koppling som skapats ovanpå Azure AD-tjänsten för användar etablering. Viktig information om vad den här tjänsten gör, hur den fungerar och vanliga frågor finns i [Automatisera användaretablering och avetablering för SaaS-program med Azure Active Directory](../app-provisioning/user-provisioning.md).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 
@@ -54,7 +54,7 @@ Innan du konfigurerar Dropbox för företag för automatisk användar etablering
 
     ![Knappen Nytt program](common/add-new-app.png)
 
-4. I sökrutan anger du **Dropbox för företag** , väljer **Dropbox för företag** i resultat panelen och klickar sedan på knappen **Lägg** till för att lägga till programmet.
+4. I sökrutan anger du **Dropbox för företag**, väljer **Dropbox för företag** i resultat panelen och klickar sedan på knappen **Lägg** till för att lägga till programmet.
 
     ![Dropbox for Business i resultatlistan](common/search-new-app.png)
 

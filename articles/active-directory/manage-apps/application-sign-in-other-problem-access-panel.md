@@ -12,12 +12,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: 8cbc683f06b809ec4d9c63a61d73a0c731a92cd7
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 14b49c531ae11c056f9b6970e1ac00adcd68b296
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651626"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937176"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Felsöka problem med att logga in till ett program från Azure AD Mina appar
 
@@ -61,6 +61,7 @@ Här är några saker att kontrol lera om en app visas eller inte visas.
 -   [Kontrol lera en användares Multi-Factor Authentication-status](#check-a-users-multi-factor-authentication-status)
 -   [Kontrol lera en användares kontakt information för autentisering](#check-a-users-authentication-contact-info)
 -   [Kontrol lera en användares grupp medlemskap](#check-a-users-group-memberships)
+-   [Kontrol lera om en användare har fler än 999 roll tilldelningar för appar](#check-if-a-user-has-more-than-999-app-role-assignments)
 -   [Kontrol lera en användares tilldelade licenser](#check-a-users-assigned-licenses)
 -   [Tilldela en licens för en användare](#assign-a-user-a-license)
 
@@ -139,6 +140,16 @@ Följ dessa steg om du vill kontrol lera en användares grupp medlemskap:
 6.  **Sök** efter den användare som du är intresse rad av och **Välj den rad** som du vill välja.
 7.  Välj **grupper** för att se vilka grupper användaren är medlem i.
 
+### <a name="check-if-a-user-has-more-than-999-app-role-assignments"></a>Kontrol lera om en användare har fler än 999 roll tilldelningar för appar
+Om en användare har fler än 999 roll tilldelningar för en användare kanske de inte ser alla sina appar i Mina appar.
+
+Detta beror på att mina appar för närvarande läser upp till 999 program roll tilldelningar för att fastställa vilka appar som användarna tilldelas till. Om en användare är tilldelad fler än 999 appar går det inte att styra vilka appar som ska visas i portalen för Mina appar.
+
+Följ dessa steg om du vill kontrol lera antalet program roll tilldelningar som har beviljats för en användare:
+1. Installera [**Microsoft. Graph**](https://github.com/microsoftgraph/msgraph-sdk-powershell) PowerShell-modulen.
+2. Kör `Connect-MgGraph -Scopes "Directory.Read.All"` och autentisera som **Global administratör.**
+3. Kör `$m = Get-MgUserAppRoleAssignment -UserId "<userId>" | Measure; $m.Count` för att fastställa antalet app Role-tilldelningar som användaren har beviljat.
+
 ### <a name="check-a-users-assigned-licenses"></a>Kontrol lera en användares tilldelade licenser
 Följ dessa steg om du vill kontrol lera en användares tilldelade licenser:
 1.  Öppna [**Azure Portal**](https://portal.azure.com/) och logga in som **Global administratör.**
@@ -172,14 +183,14 @@ Kontrol lera att du har rätt djup länk genom att följa dessa steg:
 1. Öppna [**Azure Portal**](https://portal.azure.com/) och logga in som **Global administratör** eller **medadministratör.**
 2. Öppna **tillägget Azure Active Directory** genom att välja **alla tjänster** överst i huvud menyn till vänster.
 3. Skriv **"Azure Active Directory**" i rutan filtrera sökning och välj **Azure Active Directory** objektet.
-4. Välj **företags program** från Azure Active Directory vänstra navigerings menyn.
-5. Välj **alla program** om du vill visa en lista över alla dina program.
+4. Välj **Företagsprogram** på den vänstra navigeringsmenyn i Azure Active Directory.
+5. Välj **Alla program** för att visa en lista över alla dina program.
    * Om du inte ser det program som du vill visa här använder du **filter** kontrollen längst upp i **listan Alla program** och anger alternativet **Visa** för **alla program.**
 6. Öppna [**Azure Portal**](https://portal.azure.com/) och logga in som **Global administratör** eller **medadministratör.**
 7. Öppna **tillägget Azure Active Directory** genom att välja **alla tjänster** överst i huvud menyn till vänster.
 8. Skriv **"Azure Active Directory**" i rutan filtrera sökning och välj **Azure Active Directory** objektet.
-9. Välj **företags program** från Azure Active Directory vänstra navigerings menyn.
-10. Välj **alla program** om du vill visa en lista över alla dina program.
+9. Välj **Företagsprogram** på den vänstra navigeringsmenyn i Azure Active Directory.
+10. Välj **Alla program** för att visa en lista över alla dina program.
     * Om du inte ser det program som du vill visa här använder du **filter** kontrollen längst upp i **listan Alla program** och anger alternativet **Visa** för **alla program.**
 11. Välj det program som du vill använda för att kontrol lera djup länken för.
 12. Hitta URL: en för etikettens **användar åtkomst**. Din djup länk ska matcha denna URL.

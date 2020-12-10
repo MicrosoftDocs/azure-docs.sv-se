@@ -8,17 +8,17 @@ author: KumudD
 manager: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: aldomel
-ms.openlocfilehash: ad0a5fc5940c36aa5d2d6912987b154532bc80a1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ca6460497fa026feca503df741ad6811a95fb9e3
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000886"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936938"
 ---
 # <a name="virtual-network-traffic-routing"></a>Trafikdirigering i virtuella nätverk
 
@@ -107,7 +107,7 @@ Namnet som visas och refereras för nästa hopptyper är olika för Azure-portal
 |Internet                        |Internet                                        |Internet (inte tillgängligt i klassiska CLI i asm-läge)|
 |Virtuell installation               |VirtualAppliance                                |VirtualAppliance|
 |Inga                            |Inga                                            |Null (inte tillgängligt i klassiska CLI i asm-läge)|
-|Peering för virtuella nätverk         |VNet-peering                                    |Inte tillämpligt|
+|Virtuell nätverkspeering         |VNet-peering                                    |Inte tillämpligt|
 |Tjänstslutpunkt för virtuellt nätverk|VirtualNetworkServiceEndpoint                   |Inte tillämpligt|
 
 ### <a name="border-gateway-protocol"></a>BGP (Border Gateway Protocol)
@@ -207,15 +207,15 @@ Pilarna visar trafikflödet.
 
 Routningstabellen för *Subnet1* på bilden innehåller följande vägar:
 
-|ID  |Källa |Tillstånd  |Adressprefix    |Nästa hopptyp          |Nästa hopp-IP-adress|Namn på användardefinierad väg| 
+|ID  |Källa |Stat  |Adressprefix    |Nästa hopptyp          |Nästa hopp-IP-adress|Namn på användardefinierad väg| 
 |----|-------|-------|------              |-------                |--------           |--------      |
 |1   |Standardvärde|Ogiltig|10.0.0.0/16         |Virtuellt nätverk        |                   |              |
 |2   |Användare   |Aktiv |10.0.0.0/16         |Virtuell installation      |10.0.100.4         |Inom-VNet1  |
 |3   |Användare   |Aktiv |10.0.0.0/24         |Virtuellt nätverk        |                   |Inom-Subnet1|
 |4   |Standardvärde|Ogiltig|10.1.0.0/16         |VNet-peering           |                   |              |
 |5   |Standardvärde|Ogiltig|10.2.0.0/16         |VNet-peering           |                   |              |
-|6   |Användare   |Aktiv |10.1.0.0/16         |Inget                   |                   |ToVNet2-1-Drop|
-|7   |Användare   |Aktiv |10.2.0.0/16         |Inget                   |                   |ToVNet2-2-Drop|
+|6   |Användare   |Aktiv |10.1.0.0/16         |Ingen                   |                   |ToVNet2-1-Drop|
+|7   |Användare   |Aktiv |10.2.0.0/16         |Ingen                   |                   |ToVNet2-2-Drop|
 |8   |Standardvärde|Ogiltig|10.10.0.0/16        |Virtuell nätverksgateway|[X.X.X.X]          |              |
 |9   |Användare   |Aktiv |10.10.0.0/16        |Virtuell installation      |10.0.100.4         |Till lokalt    |
 |10  |Standard|Aktiv |[X.X.X.X]           |VirtualNetworkServiceEndpoint    |         |              |
@@ -241,7 +241,7 @@ En förklaring av varje väg-ID följer:
 
 Routningstabellen för *Subnet2* på bilden innehåller följande vägar:
 
-|Källa  |Tillstånd  |Adressprefix    |Nästa hopptyp             |Nästa hopp-IP-adress|
+|Källa  |Stat  |Adressprefix    |Nästa hopptyp             |Nästa hopp-IP-adress|
 |------- |-------|------              |-------                   |--------           
 |Standard |Aktiv |10.0.0.0/16         |Virtuellt nätverk           |                   |
 |Standard |Aktiv |10.1.0.0/16         |VNet-peering              |                   |

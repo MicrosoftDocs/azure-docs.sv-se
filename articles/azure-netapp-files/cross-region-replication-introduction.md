@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 12/09/2020
 ms.author: b-juche
-ms.openlocfilehash: db1e8ce2e4fe9ae81bc2299ae70e9ff83941b5b4
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 7c78d5fa89d6d4f3c73bdd1fe9b6d2fdae97c011
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95245882"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937482"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Replikering mellan regioner av Azure NetApp Files volymer
 
@@ -38,14 +38,15 @@ Azure NetApp Files Volume Replication är för närvarande tillgänglig i följa
 * Södra centrala USA och östra USA
 * Södra centrala USA och östra USA 2 
 * USA, östra 2 och USA, Central 
-* Nord Europa och Västeuropa
-* Storbritannien, södra och Storbritannien, västra
 * Östra Australien och Australien, sydöstra
 * Kanada, centrala och Kanada, öst
-* Japan, östra och Japan, väst
-* Storbritannien, södra och Tyskland, västra centrala
-* Sydostasien och östra Australien
 * Centrala Indien och södra Indien
+* Tyskland, västra centrala och Tyskland, norra
+* Japan, östra och Japan, väst
+* Nord Europa och Västeuropa
+* Sydostasien och östra Australien
+* Storbritannien, södra och Tyskland, västra centrala
+* Storbritannien, södra och Storbritannien, västra
 
 ## <a name="service-level-objectives"></a>Mål på service nivå
 
@@ -111,11 +112,11 @@ Vanlig Azure NetApp Files lagrings kapacitet för månad 2 gäller för mål vol
 
 ## <a name="next-steps"></a>Nästa steg
 * [Krav och överväganden för att använda replikering över flera regioner](cross-region-replication-requirements-considerations.md)
-* [Skapa volym replikering](cross-region-replication-create-peering.md)
+* [Skapa volymreplikering](cross-region-replication-create-peering.md)
 * [Visa hälsostatus för replikeringsrelation](cross-region-replication-display-health-status.md)
 * [Hantera haveriberedskap](cross-region-replication-manage-disaster-recovery.md)
 * [Mått för volym replikering](azure-netapp-files-metrics.md#replication)
-* [Ta bort volymer eller volymer](cross-region-replication-delete.md)
+* [Ta bort volymreplikeringar eller volymer](cross-region-replication-delete.md)
 * [Felsöka replikering mellan regioner](troubleshoot-cross-region-replication.md)
 
 

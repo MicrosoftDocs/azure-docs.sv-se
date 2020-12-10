@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: f97facd8d184be05cbfd79af92dbcaab3a022ebd
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: d54994a7c64718835e70381f92abed83ef693018
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746309"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938519"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Uppgradera offentliga Azure-Load Balancer
 [Azure standard Load Balancer](load-balancer-overview.md) erbjuder en omfattande uppsättning funktioner och hög tillgänglighet genom zon redundans. Mer information om Load Balancer SKU finns i [jämförelse tabell](./skus.md#skus).
@@ -26,7 +26,7 @@ Det finns två steg i en uppgradering:
 
 Det finns ett Azure PowerShell-skript tillgängligt som gör följande:
 
-* Skapar en standard-SKU-Load Balancer i resurs gruppen och platsen som du anger.
+* Skapar en standard-SKU-Load Balancer med en plats som du anger i samma resurs grupp i Basic-Standard Load Balancer.
 * Uppgraderar den offentliga IP-adressen från Basic SKU till standard-SKU på plats.
 * Kopierar sömlöst konfigurationerna av Basic SKU-Load Balancer till det nya Standard Load Balancer.
 * Skapar en standard regel för utgående trafik som möjliggör utgående anslutning.
@@ -58,7 +58,7 @@ Det finns ett Azure PowerShell-skript tillgängligt som gör följande:
 
 ## <a name="download-the-script"></a>Hämta skriptet
 
-Hämta migrerings skriptet från  [PowerShell-galleriet](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/2.0).
+Hämta migrerings skriptet från  [PowerShell-galleriet](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/4.0).
 ## <a name="use-the-script"></a>Använd skriptet
 
 Det finns två alternativ för dig, beroende på din lokala PowerShell-Miljös konfiguration och inställningar:
@@ -92,14 +92,13 @@ Kör skriptet så här:
 
    * **oldRgName: [sträng]: krävs** – det här är resurs gruppen för din befintliga Basic-Load Balancer som du vill uppgradera. Om du vill hitta strängvärdet navigerar du till Azure Portal, väljer din grundläggande Load Balancer källa och klickar på **översikten** för belastningsutjämnaren. Resurs gruppen finns på sidan.
    * **oldLBName: [sträng]: krävs** – det här är namnet på den befintliga Basic-saldo som du vill uppgradera. 
-   * **newrgName: [sträng]: krävs** – det här är resurs gruppen där standard Load Balancer skapas. Det kan vara en ny resurs grupp eller en befintlig. Om du väljer en befintlig resurs grupp, Observera att namnet på Load Balancer måste vara unikt inom resurs gruppen. 
    * **newLBName: [sträng]: obligatorisk** – det här är namnet på den standard Load Balancer som ska skapas.
 1. Kör skriptet med lämpliga parametrar. Det kan ta fem till sju minuter att slutföra.
 
     **Exempel**
 
    ```azurepowershell
-   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newLbName "LBForUpgrade"
+   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newLbName "LBForUpgrade"
    ```
 
 ### <a name="create-an-outbound-rule-for-outbound-connection"></a>Skapa en utgående regel för utgående anslutning

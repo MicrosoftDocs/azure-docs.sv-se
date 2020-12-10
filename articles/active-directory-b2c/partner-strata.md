@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: bddc4c64feb31f78bed482bbd729ab1c4b8e676e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c7f7f162355b919c395dd0ee6d03b2bc5526e3da
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96171423"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936700"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>Självstudie för att utöka Azure AD B2C för att skydda lokala program med hjälp av Strata
 
@@ -29,7 +29,7 @@ Maverics Identity Orchestrator utökar Azure AD B2C för att skydda lokala progr
 
 - **Enkel konfiguration**: Azure AD B2C ger ett enkelt steg-för-steg-användar gränssnitt för att ansluta Maverics Identity Orchestrator SAML eller OIDC connectors till Azure AD B2C.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att komma igång behöver du:
 
@@ -83,7 +83,7 @@ Kontakta [Strata](https://www.strata.io/contact/)för att få den program vara s
 
    c. Lägg till en omdirigerings-URI för programmet. Denna URI matchar `oauthRedirectURL` parametern för Orchestrator: s Azure AD B2C anslutnings konfiguration, till exempel `https://example.com/oidc-endpoint` .
 
-2. **Skapa ett användar flöde**: skapa ett användar [flöde för inloggning och inloggning](./tutorial-create-user-flows.md).
+2. **Skapa ett användar flöde**: skapa ett [användar flöde för registrering och inloggning](./tutorial-create-user-flows.md).
 
 3. **Lägg till en IDP**: Välj att logga in din användare med antingen ett lokalt konto eller en social-eller företags [IDP](./tutorial-add-identity-providers.md).
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 502d5a5c4b3d13d32fece648ce1de6763d012096
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: a0ef8d9f28f90db77686c3139c8b45eccfb669aa
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932293"
+ms.locfileid: "96938825"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Ansluta ITSM-produkter/-tjänster med anslutningsprogrammet för hantering av IT-tjänster (ITSM)
 Den här artikeln innehåller information om hur du konfigurerar anslutningen mellan din ITSM-produkt/-tjänst och Anslutningsprogram för hantering av IT-tjänster (ITSM) (ITSMC) i Log Analytics för att centralt hantera dina arbets uppgifter. Mer information om ITSMC finns i [Översikt](./itsmc-overview.md).
@@ -309,8 +309,7 @@ Följande avsnitt innehåller information om hur du ansluter din bestyrkande pro
 
 > [!NOTE]
 > 
-> Från och med 1 – okt-2020-ITSM-integrering med Azure-avisering kommer inte längre att vara aktive rad för nya kunder. Det går inte att använda nya ITSM-anslutningar. 
-> Befintliga ITSM-anslutningar kommer att stödjas.
+> Vi föreslår att våra kund styrke kunder använder [webhook-åtgärder](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#webhook) för att Cherwell och bevisa slut punkter som en annan lösning på integrationen.
 
 ### <a name="prerequisites"></a>Krav
 
@@ -367,8 +366,7 @@ Följande avsnitt innehåller information om hur du ansluter din Cherwell-produk
 
 > [!NOTE]
 > 
-> Från och med 1 – okt-2020 Cherwell ITSM-integrering med Azure-avisering kommer inte längre att aktive ras för nya kunder. Det går inte att använda nya ITSM-anslutningar. 
-> Befintliga ITSM-anslutningar kommer att stödjas.
+> Vi föreslår våra Cherwell-kunder att använda [webhook-åtgärder](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#webhook) för att Cherwell och bevisa slut punkter som en annan lösning på integrationen.
 
 ### <a name="prerequisites"></a>Krav
 
