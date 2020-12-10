@@ -29,10 +29,6 @@
           href: learn/quick-collect-windows-computer.md
     - name: Övervakning av program
       items:
-        - name: .NET-program
-          href: learn/quick-monitor-portal.md
-        - name: .NET Core-program
-          href: learn/dotnetcore-quick-start.md
         - name: Node.js-program
           href: learn/nodejs-quick-start.md
         - name: Mobilprogram
@@ -680,8 +676,10 @@
                       href: app/java-standalone-telemetry-processors.md
                     - name: Konfiguration av JVM-argument
                       href: app/java-standalone-arguments.md
-                    - name: Uppgradera från 2.x
+                    - name: Uppgradera från 2.x SDK
                       href: app/java-standalone-upgrade-from-2x.md
+                    - name: Felsökning
+                      href: app/java-standalone-troubleshoot.md
             - name: Lokala servrar
               items:
                 - name: ASP.NET
@@ -1014,6 +1012,8 @@
           href: insights/container-insights-deployment-hpa-metrics.md
         - name: Övervaka beständiga volymer (PVs)
           href: insights/container-insights-persistent-volumes.md
+        - name: Fliken Rapporter
+          href: insights/container-insights-reports.md
         - name: Visa livedata
           items:
             - name: Livedataöversikt (förhandsversion)

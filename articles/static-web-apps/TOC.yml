@@ -66,9 +66,13 @@
   items:
     - name: Utveckla dina färdigheter med Microsoft Learn
       items:
-        - name: 'Publicera en JavaScript-app och ett JavaScript-API i Angular, React, Svelte eller Vue'
+        - name: 'Publicera en JavaScript-app i Angular, React, Svelte eller Vue'
           href: /learn/modules/publish-app-service-static-web-app-api
+        - name: Publicera ett API
+          href: /learn/modules/publish-static-web-app-api-preview-url
         - name: Skapa och publicera en statisk webbapp med Gatsby
           href: /learn/modules/create-deploy-static-webapp-gatsby-app-service
+        - name: Skapa och publicera en statisk webbapp med Blazor
+          href: /learn/modules/publish-app-service-static-web-app-api-dotnet
     - name: Kvoter
       href: quotas.md

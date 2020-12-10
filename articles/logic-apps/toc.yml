@@ -346,6 +346,8 @@
           href: monitor-logic-apps.md
         - name: Övervaka logikappar med Azure Monitor-loggar
           href: monitor-logic-apps-log-analytics.md
+        - name: Övervaka logikappar i Azure Security Center
+          href: healthy-unhealthy-resource.md
         - name: Övervaka B2B-meddelanden med Azure Monitor-loggar
           href: monitor-b2b-messages-log-analytics.md
         - name: Skapa frågor om övervakning och spårning

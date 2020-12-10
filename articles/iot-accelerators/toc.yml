@@ -6,8 +6,6 @@
       href: about-iot-accelerators.md
     - name: AzureIoTSolutions.com
       href: iot-accelerators-permissions.md
-    - name: Fjärrövervakning
-      href: iot-accelerators-remote-monitoring-sample-walkthrough.md
     - name: Branschanpassat IoT
       href: overview-iot-industrial.md
       items:
@@ -21,37 +19,15 @@
           href: iot-accelerators-connected-factory-features.md
     - name: Enhetssimulering
       href: iot-accelerators-device-simulation-overview.md
-    - name: Förebyggande underhåll
-      href: iot-accelerators-predictive-walkthrough.md
 - name: Snabbstarter
-  expanded: true
   items:
-    - name: Testa en fjärrövervakningslösning
-      href: quickstart-remote-monitoring-deploy.md
     - name: Testa en lösning för ansluten fabrik
       href: quickstart-connected-factory-deploy.md
-    - name: Testa en enhetssimuleringslösning
-      href: quickstart-device-simulation-deploy.md
-    - name: Testa en lösning för förutsägande underhåll
-      href: quickstart-predictive-maintenance-deploy.md
+    - name: Distribuera lösningsaccelerator för enhetssimulering
+      href: 'https://github.com/Azure/device-simulation-dotnet/blob/master/README.md'
+  expanded: true
 - name: Självstudier
   items:
-    - name: Fjärrövervakning
-      items:
-        - name: Övervaka IoT-enheter
-          href: iot-accelerators-remote-monitoring-monitor.md
-        - name: Identifiera enhetsproblem
-          href: iot-accelerators-remote-monitoring-automate.md
-        - name: Konfigurera enheter
-          href: iot-accelerators-remote-monitoring-manage.md
-        - name: Utföra en rotorsaksanalys på en avisering
-          href: iot-accelerators-remote-monitoring-root-cause-analysis.md
-        - name: Använda aviseringar och åtgärda enhetsproblem
-          href: iot-accelerators-remote-monitoring-maintain.md
-        - name: Massuppdatera enhetskonfigurationer
-          href: iot-accelerators-remote-monitoring-bulk-configuration-update.md
-        - name: Identifiera avvikelser vid gränsen
-          href: iot-accelerators-remote-monitoring-edge.md
     - name: Enhetssimulering
       items:
         - name: Skapa och köra en simulering
@@ -60,14 +36,6 @@
           href: iot-accelerators-device-simulation-create-custom-device.md
 - name: Begrepp
   items:
-    - name: Fjärrövervakning
-      items:
-        - name: Arkitektur
-          href: iot-accelerators-remote-monitoring-architectural-choices.md
-        - name: Schema för enhetsmodell
-          href: iot-accelerators-remote-monitoring-device-schema.md
-        - name: Beteende för enhetsmodell
-          href: iot-accelerators-remote-monitoring-device-behavior.md
     - name: Branschanpassat IoT
       items:
         - name: Arkitektur för OPC-tvilling
@@ -76,79 +44,6 @@
           href: overview-opc-vault-architecture.md
 - name: Anvisningar
   items:
-    - name: Fjärrövervakning
-      items:
-        - name: Distribuera lösning
-          items:
-            - name: Distribuera användningen av CLI
-              href: iot-accelerators-remote-monitoring-deploy-cli.md
-            - name: Distribuera lokalt med Visual Studio
-              href: iot-accelerators-remote-monitoring-deploy-local.md
-            - name: Distribuera lokalt med VS Code
-              href: iot-accelerators-remote-monitoring-deploy-local-vscode.md
-            - name: Distribuera lokalt med IntelliJ
-              href: iot-accelerators-remote-monitoring-deploy-local-java.md
-            - name: Distribuera lokalt med Docker
-              href: iot-accelerators-remote-monitoring-deploy-local-docker.md
-        - name: Ansluta en verklig enhet
-          items:
-            - name: C i Windows
-              href: iot-accelerators-connecting-devices.md
-            - name: C i Linux
-              href: iot-accelerators-connecting-devices-linux.md
-            - name: C på Raspberry Pi
-              href: iot-accelerators-connecting-pi-c.md
-            - name: Node.js (generisk)
-              href: iot-accelerators-connecting-devices-node.md
-            - name: Node.js på Raspberry Pi
-              href: iot-accelerators-connecting-pi-node.md
-            - name: MXChip IoT DevKit
-              href: iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2.md
-        - name: Simulera en enhet
-          items:
-            - name: Skapa en simulerad enhet
-              href: iot-accelerators-remote-monitoring-create-simulated-device.md
-            - name: Distribuera en simulerad enhet
-              href: iot-accelerators-remote-monitoring-deploy-simulated-device.md
-        - name: Anpassa användargränssnittet
-          href: iot-accelerators-remote-monitoring-customize.md
-          items:
-            - name: Lägg till en sida
-              href: iot-accelerators-remote-monitoring-customize-page.md
-            - name: Lägg till en tjänst
-              href: iot-accelerators-remote-monitoring-customize-service.md
-            - name: Lägg till ett rutnät
-              href: iot-accelerators-remote-monitoring-customize-grid.md
-            - name: Lägg till en utfällbar meny
-              href: iot-accelerators-remote-monitoring-customize-flyout.md
-            - name: Lägg till en panel
-              href: iot-accelerators-remote-monitoring-customize-panel.md
-        - name: Anpassa och distribuera om en mikrotjänst
-          href: iot-accelerators-microservices-example.md
-        - name: Importera konfigurationspaketet för enheter
-          href: iot-accelerators-remote-monitoring-import-adm-package.md
-        - name: Ansluta IoT Edge-enheter
-          items:
-            - name: Lägga till en IoT Edge-enhet
-              href: iot-accelerators-remote-monitoring-add-edge-device.md
-            - name: Importera ett IoT Edge-paket
-              href: iot-accelerators-remote-monitoring-import-edge-package.md
-        - name: Konfigurera e-poståtgärder
-          href: iot-accelerators-remote-monitoring-email-actions.md
-        - name: Konfigurera åtkomstkontroller
-          href: iot-accelerators-remote-monitoring-rbac.md
-        - name: Utforska telemetri
-          items:
-            - name: Visualisera telemetri med Power BI
-              href: iot-accelerators-integrate-data-powerbi.md
-            - name: Integrera Azure Time Series Insights med fjärrövervakning
-              href: iot-accelerators-remote-monitoring-integrate-time-series-insights.md
-            - name: Analysera telemetri med Data Lake
-              href: iot-accelerators-integrate-data-lake.md
-            - name: Ge åtkomst till telemetriutforskare
-              href: iot-accelerators-remote-monitoring-rbac-tsi.md
-        - name: Integrera SIM-data
-          href: iot-accelerators-remote-monitoring-telefonica-sim.md
     - name: Branschanpassat IoT
       items:
         - name: Ansluten fabrik
@@ -193,8 +88,6 @@
           href: iot-accelerators-device-simulation-time-series-insights.md
         - name: Serialisera telemetri med Protobuf
           href: iot-accelerators-device-simulation-protobuf.md
-        - name: Distribuera en anpassad Docker-avbildning
-          href: iot-accelerators-device-simulation-deploy-image.md
 - name: Resurser
   items:
     - name: Alternativ för support och hjälp
@@ -223,20 +116,6 @@
           href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks
         - name: 'SDK:er för IoT-enheter'
           href: ../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks
-    - name: Fjärrövervakning
-      items:
-        - name: Referensguide för utvecklare (.NET)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide'
-        - name: Referensguide för utvecklare (Java)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/wiki/Developer-Reference-Guide'
-        - name: Felsökningsguide för utvecklare
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide'
-        - name: GitHub-lagringsplats (.NET)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet'
-        - name: GitHub-lagringsplats (Java)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java'
-        - name: Vanliga frågor och svar om fjärrövervakning
-          href: iot-accelerators-faq-rm-v2.md
     - name: Branschanpassat IoT
       items:
         - name: GitHub-lagringsplats
@@ -249,24 +128,12 @@
           href: 'https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide'
         - name: GitHub-lagringsplats
           href: 'https://github.com/Azure/device-simulation-dotnet'
-    - name: Förutsägande underhåll för GitHub-lagringsplats
-      href: 'https://github.com/Azure/azure-iot-predictive-maintenance'
     - name: Referensarkitektur
       href: /azure/architecture/reference-architectures/iot
       items:
         - name: Ladda ned
-          href: /azure/architecture/reference-architectures/iot
-        - name: Partnerimplementeringar
-          items:
-            - name: Intel Connected Logistics Platform
-              href: 'https://www.azureiotsolutions.com/Accelerators#description/intel-connected-logistics-platform'
-            - name: Edge Dynamometer Analysis
-              href: 'https://www.azureiotsolutions.com/Accelerators#description/edge-dynamometer-analysis'
-            - name: Digital Signage Solution
-              href: 'https://www.azureiotsolutions.com/Accelerators#description/digital-signage-solution'
+          href: 'https://aka.ms/iotrefarchitecture'
     - name: VANLIGA FRÅGOR OCH SVAR
       href: iot-accelerators-faq.md
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-iot-suite'
-    - name: Fjärrövervakning V1
-      href: /previous-versions/azure/iot-suite/
