@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: pharring
 ms.author: pharring
 ms.date: 11/10/2020
-ms.openlocfilehash: 73fea1e1928cf4e1bd5342aa0a4c885ccb5cf137
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: e4fffe0efa9f6900ef8d83c0a1b150b4249c22b3
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548179"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008579"
 ---
 # <a name="release-notes-for-microsoftapplicationinsightssnapshotcollector"></a>Viktig information för Microsoft. ApplicationInsights. SnapshotCollector
 
@@ -21,6 +21,11 @@ Den här artikeln innehåller viktig information för Microsoft. ApplicationInsi
 För fel rapporter och feedback, öppna ett ärende på GitHub på https://github.com/microsoft/ApplicationInsights-dotnet
 
 ## <a name="release-notes"></a>Viktig information
+
+## <a name="1375"></a>[1.3.7.5](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7.5)
+En punkt version som Backport en korrigering från 1.4.0-Pre.
+### <a name="bug-fixes"></a>Felkorrigeringar
+- Åtgärda [ObjectDisposedException vid avstängning](https://github.com/microsoft/ApplicationInsights-dotnet/issues/2097).
 
 ## <a name="1374"></a>[1.3.7.4](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7.4)
 En punkt version som åtgärdar ett problem som upptäckts i testnings Azure App Service kundens kod för kod kopplings scenario.

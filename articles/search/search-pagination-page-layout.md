@@ -7,19 +7,22 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/01/2020
-ms.openlocfilehash: e583cedc04113615c50cc9906cbd11a99ff48683
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 12/09/2020
+ms.openlocfilehash: 182ec758a8764a959b39296163e63e800cf5108c
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421727"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008493"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Så här arbetar du med Sök resultat i Azure Kognitiv sökning
 
-I den här artikeln förklaras hur du får ett svar på frågan som kommer tillbaka med ett totalt antal matchande dokument, rad brytnings resultat, sorterade resultat och träff markerade termer.
+Den här artikeln förklarar hur du formulerar ett fråge svar i Azure Kognitiv sökning. Strukturen för ett svar bestäms av parametrarna i frågan: [Sök dokument](/rest/api/searchservice/Search-Documents) i REST API-eller [SearchResults-klassen](/dotnet/api/azure.search.documents.models.searchresults-1) i .NET SDK. Parametrar i frågan kan användas för att strukturera resultat uppsättningen på följande sätt:
 
-Strukturen för ett svar bestäms av parametrarna i frågan: [Sök dokument](/rest/api/searchservice/Search-Documents) i REST API-eller [SearchResults-klassen](/dotnet/api/azure.search.documents.models.searchresults-1) i .NET SDK.
++ Begränsa eller gruppera antalet dokument i resultatet (50 som standard)
++ Välj fält som ska tas med i resultaten
++ Order resultat
++ Markera en matchande hel eller partiell term i bröd texten i Sök resultaten
 
 ## <a name="result-composition"></a>Resultat sammansättning
 
@@ -38,6 +41,14 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 
 > [!NOTE]
 > Om du vill ta med bildfiler i ett resultat, t. ex. ett produkt foto eller en logo typ, kan du lagra dem utanför Azure Kognitiv sökning, men inkludera ett fält i indexet för att referera till bild-URL: en i Sök dokumentet. Exempel index som har stöd för bilder i resultatet inkluderar **realestate-exempel-se-** demonstrationen, som finns i den här [snabb](search-create-app-portal.md)starten och i [New York City-appen](https://aka.ms/azjobsdemo).
+
+### <a name="tips-for-unexpected-results"></a>Tips för oväntade resultat
+
+Ibland är ämnet och inte resultat strukturen oväntade. När fråge resultaten är oväntade kan du prova de här frågans ändringar för att se om resultaten förbättras:
+
++ Ändra **`searchMode=any`** (standard) om **`searchMode=all`** du vill kräva matchningar för alla kriterier i stället för något av villkoren. Detta gäller särskilt när booleska operatorer ingår i frågan.
+
++ Experimentera med olika lexikala analyserare eller anpassade analyser för att se om de ändrar resultatet av frågan. Standard analys verktyget kommer att dela upp avstavade ord och minska ord till rot formulär, vilket vanligt vis förbättrar robustheten hos ett fråge svar. Men om du behöver bevara bindestreck, eller om strängar innehåller specialtecken, kan du behöva konfigurera anpassade analyser för att se till att indexet innehåller tokens i rätt format. Mer information finns i [partiell terms ökning och mönster med specialtecken (bindestreck, jokertecken, regex, mönster)](search-query-partial-matching.md).
 
 ## <a name="paging-results"></a>Växla resultat
 
@@ -80,9 +91,9 @@ Observera att dokument 2 hämtas två gånger. Detta beror på att det nya dokum
 
 ## <a name="ordering-results"></a>Ordna resultaten
 
-För fullständiga texts öknings frågor rangordnas resultaten automatiskt efter en Sök poäng, beräknad baserat på term frekvens och närhet i ett dokument, med högre resultat till dokument som har fler eller starkare matchningar på en Sök term. 
+För fullständiga texts öknings frågor rangordnas resultaten automatiskt efter en Sök poäng, beräknad baserat på term frekvens och närhet i ett dokument (härlett från [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)), med högre resultat till dokument som har fler eller starkare matchningar på en Sök term. 
 
-Sök Poäng förmedla allmän känsla av relevans, vilket återspeglar styrkan hos matchning jämfört med andra dokument i samma resultat uppsättning. Poängen är inte alltid konsekventa från en fråga till nästa, så när du arbetar med frågor kan du lägga märke till små skillnader i hur Sök dokumenten beställs. Det finns flera förklaringar till varför detta kan inträffa.
+Sök Poäng förmedla allmän känsla av relevans, vilket återspeglar styrkan hos matchning i förhållande till andra dokument i samma resultat uppsättning. Men poängen är inte alltid konsekventa från en fråga till nästa, så när du arbetar med frågor kan du lägga märke till små skillnader i hur Sök dokumenten beställs. Det finns flera förklaringar till varför detta kan inträffa.
 
 | Orsak | Description |
 |-----------|-------------|
@@ -90,11 +101,11 @@ Sök Poäng förmedla allmän känsla av relevans, vilket återspeglar styrkan h
 | Flera repliker | För tjänster som använder flera repliker utfärdas frågor till varje replik parallellt. Index statistiken som används för att beräkna ett Sök Resultat beräknas per replik, med resultat som sammanfogas och beställs i fråge svaret. Repliker är oftast speglar varandra, men statistik kan skilja sig på grund av små skillnader i tillstånd. En replik kan till exempel ha borttagna dokument som bidrar till sin statistik, som sammanfogades från andra repliker. Normalt sett är skillnader i statistik per replik mer märkbart i mindre index. |
 | Identiska Poäng | Om flera dokument har samma resultat kan något av dem visas först.  |
 
-### <a name="consistent-ordering"></a>Konsekvent sortering
+### <a name="how-to-get-consistent-ordering"></a>Så här får du en konsekvent ordning
 
-Med hänsyn till Flex i resultat ordningen kanske du vill utforska andra alternativ om konsekvens är ett program krav. Den enklaste metoden är att sortera efter ett fält värde, t. ex. klassificering eller datum. För scenarier där du vill sortera efter ett visst fält, till exempel en klassificering eller ett datum, kan du uttryckligen definiera ett [ `$orderby` uttryck](query-odata-filter-orderby-syntax.md)som kan användas för alla fält som är indexerade som **sorterbara**.
+Om konsekvent sortering är ett program krav kan du uttryckligen definiera ett [ **`$orderby`** ]-uttryck (Query-OData-filter-OrderBy-syntax.MD) i ett fält. Endast fält som är indexerade som **`sortable`** kan användas för att beställa resultat. Fälten används vanligt vis i **`$orderby`** fälten bedömning, datum och plats om du anger värdet för **`orderby`** parametern för att inkludera fält namn och anrop till [**`geo.distance()` funktionen**](query-odata-filter-orderby-syntax.md) för geospatiala värden.
 
-Ett annat alternativ är att använda en [anpassad bedömnings profil](index-add-scoring-profiles.md). Med bedömnings profiler får du mer kontroll över rankningen av objekt i Sök resultaten, med möjligheten att öka matchningar som finns i vissa fält. Den ytterligare bedömnings logiken kan hjälpa till att åsidosätta mindre skillnader mellan repliker eftersom Sök poängen för varje dokument ligger längre ifrån varandra. Vi rekommenderar [rangordnings algoritmen](index-ranking-similarity.md) för den här metoden.
+En annan metod som främjar konsekvens använder en [anpassad bedömnings profil](index-add-scoring-profiles.md). Med bedömnings profiler får du mer kontroll över rankningen av objekt i Sök resultaten, med möjligheten att öka matchningar som finns i vissa fält. Den ytterligare bedömnings logiken kan hjälpa till att åsidosätta mindre skillnader mellan repliker eftersom Sök poängen för varje dokument ligger längre ifrån varandra. Vi rekommenderar [rangordnings algoritmen](index-ranking-similarity.md) för den här metoden.
 
 ## <a name="hit-highlighting"></a>Träffmarkering
 

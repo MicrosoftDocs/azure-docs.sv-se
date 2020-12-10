@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, sstein
-ms.date: 07/28/2020
-ms.openlocfilehash: 3b76af2c6c949f2591cee880a1991c6f240806a2
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.date: 12/9/2020
+ms.openlocfilehash: d1ba9445441f38c55b40a8f8ca55471ea8b0a06d
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107903"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008596"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Elastiska pooler hjälper dig att hantera och skala flera databaser i Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -74,38 +74,18 @@ Det här exemplet är idealisk av följande anledningar:
 - Belastningstopparna för varje databas inträffar vid olika tidpunkter.
 - eDTU:er som delas mellan flera databaser.
 
-Priset för en pool är associerat med poolens eDTU:er. Även om eDTU-enhetspriset för en pool är 1,5 gånger större än DTU-enhetspriset för en enkel databas, så kan **pool-DTU:erna delas av många databaser och det behövs färre eDTU:er**. Dessa skillnader i pris och eDTU-delning utgör grunden för de prisbesparingar som pooler kan medföra.
+I inköps modellen DTU är priset för en pool en funktion i poolens eDTU: er. Även om eDTU-enhetspriset för en pool är 1,5 gånger större än DTU-enhetspriset för en enkel databas, så kan **pool-DTU:erna delas av många databaser och det behövs färre eDTU:er**. Dessa skillnader i pris och eDTU-delning utgör grunden för de prisbesparingar som pooler kan medföra.
 
-Följande regler för tummen för antal databaser och databas användning bidrar till att säkerställa att en pool ger lägre kostnad jämfört med att använda beräknings storlekar för enskilda databaser.
-
-### <a name="minimum-number-of-databases"></a>Minsta antal databaser
-
-Om den totala mängden resurser för enskilda databaser är mer än 1,5 x resurserna som behövs för poolen, är en elastisk pool mer kostnads effektiv.
-
-***Exempel på DTU-baserad inköps modell*** Minst två S3-databaser eller minst 15 S0-databaser behövs för att en 100 eDTU-pool ska vara mer kostnads effektiv än att använda beräknings storlekar för enskilda databaser.
-
-### <a name="maximum-number-of-concurrently-peaking-databases"></a>Högsta antal samtidigt databaser med aktivitetstoppar
-
-Genom att dela resurser kan inte alla databaser i en pool samtidigt använda resurser upp till den tillgängliga gränsen för enskilda databaser. Ju färre databaser som är löpande, desto lägre kan poolens resurser anges och den mer kostnads effektiva poolen blir. I allmänhet är inte mer än 2/3 (eller 67%) av databaserna i poolen bör samtidigt ha hög belastning på sin resurs gräns.
-
-***Exempel på DTU-baserad inköps modell*** För att minska kostnaderna för tre S3-databaser i en 200 eDTU-pool, kan de flesta två av dessa databaser samtidigt ha hög belastning i användningen. Annars, om fler än två av dessa fyra S3-databaser har toppar samtidigt, skulle poolen behöva utökas till mer än 200 eDTU:er. Om poolen ändras till mer än 200 eDTU: er, skulle fler S3-databaser behöva läggas till i poolen för att hålla lägre kostnader än beräknings storlekar för enskilda databaser.
-
-Observera att det här exemplet inte förlitar sig på användning av andra databaser i poolen. Om alla databaser har viss belastning vid en given tidpunkt kan mindre än 2/3 (eller 67 %) av databaserna ha aktivitetstoppar samtidigt.
-
-### <a name="resource-utilization-per-database"></a>Resursutnyttjande per databas
-
-En stor skillnad mellan topp- och genomsnittsanvändningen av en databas indikerar långa perioder med låg belastning och korta perioder med hög användning. Det här användningsmönstret är idealisk för delning av resurser mellan databaser. Du bör överväga att lägga till en databas i en pool om dess högsta användning är runt 1,5 gånger större än dess genomsnittliga användning.
-
-***Exempel på DTU-baserad inköps modell*** En S3-databas som är hög till 100 DTU: er och i genomsnitt använder 67 DTU: er eller mindre är en bra kandidat för att dela eDTU: er i en pool. På motsvarande sätt är en S1-databas som använder 20 DTU:er vid hög belastning och som har en genomsnittsanvändning på 13 DTU:er inte lämplig för en pool.
+I vCore inköps modell är vCore-priset för elastiska pooler samma som vCore a-priset för enskilda databaser.
 
 ## <a name="how-do-i-choose-the-correct-pool-size"></a>Hur gör jag för att välja rätt pool-storlek
 
 Den bästa storleken för en pool beror på vilka sammanställda resurser som behövs för alla databaser i poolen. Detta förutsätter att du fastställer följande:
 
-- Maximalt antal resurser som används av alla databaser i poolen (antingen maximalt DTU: er eller maximalt virtuella kärnor beroende på ditt val av inköps modell).
+- Maximala beräknings resurser som används av alla databaser i poolen.  Beräknings resurser indexeras av antingen eDTU: er eller virtuella kärnor beroende på ditt val av inköps modell.
 - Högsta lagringsutrymme i byte som används av alla databaser i poolen.
 
-För tillgängliga tjänst nivåer och begränsningar för varje resurs modell, se den [DTU-baserade inköps modellen](service-tiers-dtu.md) eller den [vCore-baserade inköps modellen](service-tiers-vcore.md).
+För tjänst nivåer och resurs gränser i varje inköps modell, se den [DTU-baserade inköps modellen](service-tiers-dtu.md) eller den [vCore-baserade inköps modellen](service-tiers-vcore.md).
 
 Följande steg kan hjälpa dig att beräkna om en pool är mer kostnads effektiv än enkla databaser:
 
@@ -119,10 +99,10 @@ För vCore-baserad inköps modell:
 
 MAX (<*totala antalet databaser* x *genomsnittlig vCore användning per db*>, <*antal databaser* X *högsta högsta vCore belastning per DB*>)
 
-2. Beräkna hur stort lagringsutrymme som krävs för poolen genom att lägga till antalet byte som behövs för alla databaser i poolen. Fastställ sedan den eDTU-poolstorlek som ger den här mängden lagringsutrymme.
+2. Beräkna det totala lagrings utrymmet som krävs för poolen genom att lägga till den data storlek som behövs för alla databaser i poolen. För inköps modellen DTU tar du reda på storleken på eDTU-poolen som tillhandahåller den här mängden lagring.
 3. För den DTU-baserade inköps modellen tar du den större av eDTU-beräkningarna från steg 1 och steg 2. För den vCore-baserade inköps modellen ska du ta vCore uppskattningen från steg 1.
 4. Se [sidan SQL Database priser](https://azure.microsoft.com/pricing/details/sql-database/) och hitta den minsta pool storlek som är större än uppskattningen från steg 3.
-5. Jämför pool priset från steg 5 till priset för att använda lämpliga beräknings storlekar för enskilda databaser.
+5. Jämför pool priset från steg 4 till priset för att använda lämpliga beräknings storlekar för enskilda databaser.
 
 > [!IMPORTANT]
 > Om antalet databaser i en pool närmar sig det högsta antal som stöds, se till att du funderar på [resurs hantering i kompakta elastiska pooler](elastic-pool-resource-management.md).
@@ -168,7 +148,7 @@ Det finns två sätt att skapa en elastisk pool i Azure Portal.
 
 Poolens tjänst nivå bestämmer vilka funktioner som är tillgängliga för de elastiska i poolen och den maximala mängden resurser som är tillgängliga för varje databas. Mer information finns i resurs gränser för elastiska pooler i [DTU-modellen](resource-limits-dtu-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes). VCore resurs gränser för elastiska pooler finns i [vCore resurs gränser-elastiska pooler](resource-limits-vcore-elastic-pools.md).
 
-Klicka på **Konfigurera pool**om du vill konfigurera resurser och priser för poolen. Välj sedan en tjänst nivå, Lägg till databaser i poolen och konfigurera resurs gränserna för poolen och dess databaser.
+Klicka på **Konfigurera pool** om du vill konfigurera resurser och priser för poolen. Välj sedan en tjänst nivå, Lägg till databaser i poolen och konfigurera resurs gränserna för poolen och dess databaser.
 
 När du har konfigurerat poolen kan du klicka på "Använd", namnge poolen och klicka på OK för att skapa poolen.
 
@@ -176,34 +156,7 @@ När du har konfigurerat poolen kan du klicka på "Använd", namnge poolen och k
 
 I Azure Portal kan du övervaka användningen av en elastisk pool och databaserna i poolen. Du kan också göra en uppsättning ändringar i den elastiska poolen och skicka alla ändringar samtidigt. Ändringarna omfattar att lägga till eller ta bort databaser, ändra inställningarna för elastisk pool eller ändra databas inställningarna.
 
-Starta övervakningen av den elastiska poolen genom att söka efter och öppna en elastisk pool i portalen. Först ser du en skärm som ger dig en översikt över statusen för den elastiska poolen. Det här omfattar:
-
-- Övervaka diagram som visar resursanvändningen i den elastiska poolen
-- Nya aviseringar och rekommendationer, om det är tillgängligt, för den elastiska poolen
-
-Följande bild visar ett exempel på en elastisk pool:
-
-![Vy för pool](./media/elastic-pool-overview/basic.png)
-
-Om du vill ha mer information om poolen kan du klicka på någon av de tillgängliga uppgifterna i den här översikten. Om du klickar **på diagrammet resursutnyttjande** går du till vyn Azure-övervakning där du kan anpassa fönstret mått och tid som visas i diagrammet. Om du klickar på alla tillgängliga meddelanden går du till ett blad som visar den fullständiga informationen om aviseringen eller rekommendationen.
-
-Om du vill övervaka databaserna inuti poolen kan du klicka på **resursutnyttjande i avsnittet** **övervakning** på resurs-menyn till vänster.
-
-![Sidan resursanvändning för databas](./media/elastic-pool-overview/db-utilization.png)
-
-### <a name="to-customize-the-chart-display"></a>Anpassa diagrammets visning
-
-Du kan redigera diagrammet och mått sidan om du vill visa andra mått som processor procent, data IO-procent och logg-i/o-procent som används.
-
-I formuläret **Redigera diagram** kan du välja ett fast tidsintervall eller klicka på **anpassad** för att välja ett 24-timmarsformat under de senaste två veckorna och sedan välja de resurser som ska övervakas.
-
-### <a name="to-select-databases-to-monitor"></a>Välj databaser som ska övervakas
-
-Diagrammet i bladet **databas resurs användning** visar som standard de 5 främsta databaserna av DTU eller CPU (beroende på din tjänst nivå). Du kan växla mellan databaserna i det här diagrammet genom att markera och avmarkera databaser från listan nedanför diagrammet via kryss rutorna till vänster.
-
-Du kan också välja fler mått för att Visa sida vid sida i den här databas tabellen för att få en mer fullständig vy över dina databas prestanda.
-
-Mer information finns i [skapa SQL Database aviseringar i Azure Portal](alerts-insights-configure-portal.md).
+Du kan använda de inbyggda verktygen för [prestanda övervakning](https://docs.microsoft.com/azure/azure-sql/database/performance-guidance) och [avisering](https://docs.microsoft.com/azure/azure-sql/database/alerts-insights-configure-portal), kombinerat med prestanda klassificering.  Dessutom kan SQL Database [generera mått och resurs loggar](https://docs.microsoft.com/azure/azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure?tabs=azure-portal) för enklare övervakning.
 
 ## <a name="customer-case-studies"></a>Kundfallstudier
 

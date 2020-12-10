@@ -8,16 +8,21 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/13/2020
-ms.openlocfilehash: fd7499bd5e216f2a625d87ea13996da851a1889e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 12/07/2020
+ms.openlocfilehash: a58bcff4e39c4a4a907cd8567b47b074ff299bd5
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019219"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008460"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Data lagring och borttagning i Language Understanding (LUIS) Cognitive Services
-LUIS lagrar data som krypterats i ett Azure-datalager som motsvarar den region som anges av nyckeln. Dessa data lagras i 30 dagar. 
+
+LUIS lagrar data som krypterats i ett Azure-datalager som motsvarar [den region](luis-reference-regions.md) som anges av nyckeln. 
+
+* Data som används för att träna modellen, till exempel entiteter, avsikter och yttranden kommer att sparas i LUIS för programmets livs längd. Om en ägare eller deltagare tar bort appen tas dessa data bort med den. Om ett program inte har använts på 90 dagar tas det bort. 
+
+* Program författare kan välja att [Aktivera loggning](luis-how-to-review-endpoint-utterances.md#log-user-queries-to-enable-active-learning) på yttranden som skickas till ett publicerat program. Om aktive rad kommer yttranden att sparas i 30 dagar och kan visas av program författaren. Om loggning inte är aktive rad när programmet publiceras, lagras inte dessa data.
 
 ## <a name="export-and-delete-app"></a>Exportera och ta bort app
 Användare har fullständig kontroll över att [Exportera](luis-how-to-start-new-app.md#export-app) och [ta bort](luis-how-to-start-new-app.md#delete-app) appen. 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c35647a46cd252ce045d10e8dfefcf78236ba74b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2ab39f090124aaf590798795f446bda5b0fe48a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961728"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008562"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Vanliga frågor och svar om Azure App Service on Linux
 
@@ -94,7 +94,7 @@ Ja, inaktivera `perMessageDeflate` i Node.js koden på Server sidan. Om du till 
 
 ```nodejs
 const io = require('socket.io')(server,{
-  perMessageDeflate :false
+  perMessageDeflate :false
 });
 ```
 
@@ -122,7 +122,7 @@ Ange fullständig registrerings-URL, inklusive `http://` eller `https://` .
 
 **Vad är formatet för avbildnings namnet i det privata register alternativet?**
 
-Lägg till det fullständiga avbildnings namnet, inklusive URL: en för den privata registret (till exempel myacr.azurecr.io/dotnet:latest). Avbildnings namn som använder en anpassad port [kan inte anges via portalen](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). `docker-custom-image-name`Använd [ `az` kommando rads verktyget](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)för att ange.
+Lägg till det fullständiga avbildnings namnet, inklusive URL: en för den privata registret (till exempel myacr.azurecr.io/dotnet:latest). Avbildnings namn som använder en anpassad port [kan inte anges via portalen](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). `docker-custom-image-name`Använd [ `az` kommando rads verktyget](/cli/azure/webapp/config/container#az-webapp-config-container-set)för att ange.
 
 **Kan jag exponera fler än en port i min anpassade behållar avbildning?**
 

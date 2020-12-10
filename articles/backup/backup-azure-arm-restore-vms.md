@@ -4,12 +4,12 @@ description: Återställa en virtuell Azure-dator från en återställnings punk
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 1c28de679bd957a472e543489a2dd15b3883aed5
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: baae35c87f306f5773fa8061f27e9793754ccc9c
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327193"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008511"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Så här återställer du Azure VM-data i Azure Portal
 
@@ -213,6 +213,8 @@ Det finns ett antal vanliga scenarier där du kan behöva återställa virtuella
 **Återställa flera virtuella datorer i en enda domän** | Om andra domänkontrollanter i samma domän kan nås över nätverket kan domänkontrollanten återställas på samma sätt som vilken virtuell dator som helst. Om det är den sista återstående domänkontrollanten i domänen, eller om en återställning i ett isolerat nätverk utförs, använder du en [skogs återställning](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery).
 **Återställa en virtuell dator med en virtuell domänkontrollant i en konfiguration för flera domäner** |  Återställa diskarna och skapa en virtuell dator med [hjälp av PowerShell](backup-azure-vms-automation.md#restore-the-disks)  
 **Återställa flera domäner i en skog** | Vi rekommenderar en [skogs återställning](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery).
+
+Mer information finns i [säkerhetskopiera och återställa Active Directory domänkontrollanter](active-directory-backup-restore.md).
 
 ## <a name="track-the-restore-operation"></a>Spåra återställnings åtgärden
 

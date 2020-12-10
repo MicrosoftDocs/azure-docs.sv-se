@@ -4,14 +4,14 @@ description: Distribuera virtuella datorer och skalnings uppsättnings instanser
 author: cynthn
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 09/25/2020
+ms.date: 11/12/2020
 ms.author: cynthn
-ms.openlocfilehash: d99f8c380b486ed818aff64782ca817dab41c916
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d2cf78d328017f96552bd51794ac997c394d18f1
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975289"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008426"
 ---
 # <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>Distribuera till dedikerade värdar med hjälp av Azure CLI
  
@@ -65,14 +65,6 @@ az vm host group create \
 
 Lägg till `--automatic-placement true` parametern om du vill att de virtuella datorerna och skalnings uppsättnings instanserna automatiskt ska placeras på värdar i en värd grupp. För ytterligare information, se [manuell respektive automatisk placering ](../dedicated-hosts.md#manual-vs-automatic-placement).
 
-> [!IMPORTANT]
-> Automatisk placering är för närvarande en offentlig för hands version.
->
-> Om du vill delta i förhands granskningen slutför du den för hands versionen av undersökningen på [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
->
-> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. 
->
-> Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ### <a name="other-examples"></a>Övriga exempel
 
@@ -133,16 +125,7 @@ Om du vill placera den virtuella datorn på en särskild värd använder du `--h
 > [!WARNING]
 > Om du skapar en virtuell dator på en värd som inte har tillräckligt med resurser, kommer den virtuella datorn att skapas i ett felaktigt tillstånd. 
 
-## <a name="create-a-scale-set-preview"></a>Skapa en skalnings uppsättning (förhands granskning)
-
-> [!IMPORTANT]
-> Virtual Machine Scale Sets på dedikerade värdar är för närvarande en offentlig för hands version.
->
-> Om du vill delta i förhands granskningen slutför du den för hands versionen av undersökningen på [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
->
-> Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. 
->
-> Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+## <a name="create-a-scale-set"></a>Skapa en skalningsuppsättning 
 
 När du distribuerar en skalnings uppsättning anger du värd gruppen.
 
