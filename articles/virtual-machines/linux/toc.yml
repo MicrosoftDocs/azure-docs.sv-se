@@ -91,7 +91,7 @@
         - name: Tillgänglighet
           href: ../availability.md
         - name: Samlokalisering
-          href: co-location.md
+          href: ../co-location.md
         - name: Nätverksprestanda
           href: ../..//virtual-network/virtual-network-optimize-network-bandwidth.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: VM-typer och storlekar
