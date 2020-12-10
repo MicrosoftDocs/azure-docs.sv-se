@@ -179,7 +179,7 @@
         - name: Distribuera AKS med Terraform
           href: /azure/developer/terraform/create-k8s-cluster-with-tf-and-aks
           maintainContext: true
-        - name: Använd visningsprogrammet för Kubernetes-resurser (förhandsversion)
+        - name: Resursvyn Azure Portal Kubernetes
           href: kubernetes-portal.md
         - name: Använda Kubernetes-instrumentpanelen
           href: kubernetes-dashboard.md

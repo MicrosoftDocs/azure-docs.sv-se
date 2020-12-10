@@ -55,6 +55,8 @@
               href: manage-vm-extensions-powershell.md
             - name: Distribuera tillägg med en ARM-mall
               href: manage-vm-extensions-template.md
+        - name: Använde hanterade identiteter på servern
+          href: managed-identity-authentication.md
         - name: Hantera agent
           href: manage-agent.md
     - name: Scenarier

@@ -563,10 +563,10 @@
             - name: Beviljande via resursägarens lösenordsautentiseringsuppgifter för OAuth 2.0
               displayName: ROPC
               href: v2-oauth-ropc.md
-            - name: OAuth 2.0 SAML ägartokenförsäkrat flöde
-              href: v2-saml-bearer-assertion.md
             - name: Förnyelse av signeringsnyckel
               href: active-directory-signing-key-rollover.md
+            - name: Scenarier för tokenutbyte
+              href: scenario-token-exchange-saml-oauth.md
             - name: ID-tokens
               href: id-tokens.md
             - name: Åtkomsttokens

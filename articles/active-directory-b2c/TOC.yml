@@ -121,16 +121,48 @@
           href: signin-appauth-ios.md
         - name: Android med App Auth
           href: signin-appauth-android.md
+    - name: Identitetsprovidrar
+      items:
+        - name: Lägga till en identitetsprovider
+          href: add-identity-provider.md
+        - name: AD FS
+          href: identity-provider-adfs.md
+        - name: Amazon
+          href: identity-provider-amazon.md
+        - name: Azure AD (en enda klient)
+          href: identity-provider-azure-ad-single-tenant.md
+        - name: Azure AD (flera klienter)
+          href: identity-provider-azure-ad-multi-tenant.md
+        - name: Facebook
+          href: identity-provider-facebook.md
+        - name: Allmän identitetsprovider
+          href: identity-provider-generic-openid-connect.md
+        - name: GitHub
+          href: identity-provider-github.md
+        - name: Google
+          href: identity-provider-google.md
+        - name: LinkedIn
+          href: identity-provider-linkedin.md
+        - name: Microsoft-konto
+          href: identity-provider-microsoft-account.md
+        - name: QQ
+          href: identity-provider-qq.md
+        - name: Salesforce
+          href: identity-provider-salesforce.md
+        - name: Twitter
+          href: identity-provider-twitter.md
+        - name: WeChat
+          href: identity-provider-wechat.md
+        - name: Weibo
+          href: identity-provider-weibo.md
     - name: Användarflöde
       items:
         - name: Skapa ett flöde
           items:
-            - name: Skapa användarflöden
-              href: create-user-flow.md
+            - name: Registrering eller inloggning
+              href: tutorial-create-user-flows.md
             - name: Autentiseringsuppgifter för lösenord för resursägare
               href: configure-ropc.md
-            - name: Konfigurera telefonautentisering
-              href: phone-authentication-user-flows.md
             - name: Konfigurera återställning av lösenord för självbetjäning
               href: user-flow-self-service-password-reset.md
         - name: Lägg till villkorsstyrd åtkomst
@@ -150,32 +182,6 @@
             - name: Aktivera MFA
               href: custom-policy-multi-factor-authentication.md
               displayName: multi-factor auth
-        - name: Externa identitetsprovidrar
-          items:
-            - name: Amazon
-              href: identity-provider-amazon.md
-            - name: Azure AD (en enda klient)
-              href: identity-provider-azure-ad-single-tenant.md
-            - name: Microsoft-konto
-              href: identity-provider-microsoft-account.md
-            - name: Facebook
-              href: identity-provider-facebook.md
-            - name: GitHub
-              href: identity-provider-github.md
-            - name: Google
-              href: identity-provider-google.md
-            - name: LinkedIn
-              href: identity-provider-linkedin.md
-            - name: QQ
-              href: identity-provider-qq.md
-            - name: Twitter
-              href: identity-provider-twitter.md
-            - name: WeChat
-              href: identity-provider-wechat.md
-            - name: Weibo
-              href: identity-provider-weibo.md
-            - name: Allmän identitetsprovider
-              href: identity-provider-generic-openid-connect.md
         - name: Token och sessionshantering
           items:
             - name: Konfigurera token
@@ -236,32 +242,6 @@
               href: javascript-samples.md
             - name: Lösenordskomplexitet
               href: custom-policy-password-complexity.md
-        - name: Externa identitetsprovidrar
-          items:
-            - name: OIDC-/OAuth2-providrar
-              items:
-                - name: Amazon
-                  href: identity-provider-amazon-custom.md
-                - name: Azure AD (en enda klient)
-                  href: identity-provider-azure-ad-single-tenant-custom.md
-                - name: Azure AD (flera klienter)
-                  href: identity-provider-azure-ad-multi-tenant-custom.md
-                - name: Google
-                  href: identity-provider-google-custom.md
-                - name: LinkedIn
-                  href: identity-provider-linkedin-custom.md
-                - name: Microsoft-konto
-                  href: identity-provider-microsoft-account-custom.md
-                - name: Twitter
-                  href: identity-provider-twitter-custom.md
-            - name: SAML-providrar
-              items:
-                - name: AD FS
-                  href: identity-provider-adfs2016-custom.md
-                  displayName: SAML
-                - name: Salesforce
-                  href: identity-provider-salesforce-custom.md
-                  displayName: SAML
         - name: Token och sessionshantering
           items:
             - name: Anpassa token
