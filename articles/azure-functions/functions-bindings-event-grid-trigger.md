@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 0e2e09bc72991330ccdec7a35400460cbeba26fc
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 0e3ba9aa4eac30c3387bdf6c2890a1172ebef544
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327040"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094734"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Event Grid utlösare för Azure Functions
 
@@ -128,78 +128,6 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-I följande exempel visas en trigger-bindning i en *function.jsi* filen och en [JavaScript-funktion](functions-reference-node.md) som använder bindningen.
-
-Här är bindnings data i *function.jspå* filen:
-
-```json
-{
-  "bindings": [
-    {
-      "type": "eventGridTrigger",
-      "name": "eventGridEvent",
-      "direction": "in"
-    }
-  ],
-  "disabled": false
-}
-```
-
-Här är JavaScript-koden:
-
-```javascript
-module.exports = function (context, eventGridEvent) {
-    context.log("JavaScript Event Grid function processed a request.");
-    context.log("Subject: " + eventGridEvent.subject);
-    context.log("Time: " + eventGridEvent.eventTime);
-    context.log("Data: " + JSON.stringify(eventGridEvent.data));
-    context.done();
-};
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-I följande exempel visas en trigger-bindning i en *function.jsi* filen och en [python-funktion](functions-reference-python.md) som använder bindningen.
-
-Här är bindnings data i *function.jspå* filen:
-
-```json
-{
-  "bindings": [
-    {
-      "type": "eventGridTrigger",
-      "name": "event",
-      "direction": "in"
-    }
-  ],
-  "disabled": false,
-  "scriptFile": "__init__.py"
-}
-```
-
-Här är python-koden:
-
-```python
-import json
-import logging
-
-import azure.functions as func
-
-def main(event: func.EventGridEvent):
-
-    result = json.dumps({
-        'id': event.id,
-        'data': event.get_json(),
-        'topic': event.topic,
-        'subject': event.subject,
-        'event_type': event.event_type,
-    })
-
-    logging.info('Python EventGrid trigger processed an event: %s', result)
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 Det här avsnittet innehåller följande exempel:
@@ -265,6 +193,103 @@ Vid ankomsten avserialiseras händelsens JSON-nyttolast till ```EventSchema``` P
 
 I [Java Functions runtime-biblioteket](/java/api/overview/azure/functions/runtime)använder du `EventGridTrigger` anteckningen för parametrar vars värde kommer från EventGrid. Parametrar med dessa anteckningar gör att funktionen körs när en händelse tas emot.  Den här anteckningen kan användas med inbyggda Java-typer, Pojo eller null-värden med hjälp av `Optional<T>` .
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+I följande exempel visas en trigger-bindning i en *function.jsi* filen och en [JavaScript-funktion](functions-reference-node.md) som använder bindningen.
+
+Här är bindnings data i *function.jspå* filen:
+
+```json
+{
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "eventGridEvent",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+Här är JavaScript-koden:
+
+```javascript
+module.exports = function (context, eventGridEvent) {
+    context.log("JavaScript Event Grid function processed a request.");
+    context.log("Subject: " + eventGridEvent.subject);
+    context.log("Time: " + eventGridEvent.eventTime);
+    context.log("Data: " + JSON.stringify(eventGridEvent.data));
+    context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+I följande exempel visas hur du konfigurerar en Event Grid trigger-bindning i *function.jspå* filen.
+
+```powershell
+{
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "eventGridEvent",
+      "direction": "in"
+    }
+  ]
+}
+```
+
+Event Grid-händelsen görs tillgänglig för funktionen via en parameter med namnet `eventGridEvent` , som du ser i följande PowerShell-exempel.
+
+```powershell
+param($eventGridEvent, $TriggerMetadata)
+
+# Make sure to pass hashtables to Out-String so they're logged correctly
+$eventGridEvent | Out-String | Write-Host
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+I följande exempel visas en trigger-bindning i en *function.jsi* filen och en [python-funktion](functions-reference-python.md) som använder bindningen.
+
+Här är bindnings data i *function.jspå* filen:
+
+```json
+{
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "event",
+      "direction": "in"
+    }
+  ],
+  "disabled": false,
+  "scriptFile": "__init__.py"
+}
+```
+
+Här är python-koden:
+
+```python
+import json
+import logging
+
+import azure.functions as func
+
+def main(event: func.EventGridEvent):
+
+    result = json.dumps({
+        'id': event.id,
+        'data': event.get_json(),
+        'topic': event.topic,
+        'subject': event.subject,
+        'event_type': event.event_type,
+    })
+
+    logging.info('Python EventGrid trigger processed an event: %s', result)
+```
+
 ---
 
 ## <a name="attributes-and-annotations"></a>Attribut och anteckningar
@@ -289,17 +314,21 @@ Ett fullständigt exempel finns i C#-exempel.
 
 Attribut stöds inte av C#-skript.
 
+# <a name="java"></a>[Java](#tab/java)
+
+Med [EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java) -anteckningen kan du konfigurera en Event Grid bindning genom att ange konfigurations värden. Se avsnittet [exempel](#example) och [konfiguration](#configuration) för mer information.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Attribut stöds inte av Java Script.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Attribut stöds inte av PowerShell.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Attribut stöds inte av python.
-
-# <a name="java"></a>[Java](#tab/java)
-
-Med [EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java) -anteckningen kan du konfigurera en Event Grid bindning genom att ange konfigurations värden. Se avsnittet [exempel](#example) och [konfiguration](#configuration) för mer information.
 
 ---
 
@@ -307,7 +336,7 @@ Med [EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blo
 
 I följande tabell förklaras de egenskaper för bindnings konfiguration som du anger i *function.jsi* filen. Det finns inga konstruktorer eller egenskaper att ange i `EventGridTrigger` attributet.
 
-|function.jspå egenskap |Beskrivning|
+|function.jspå egenskap |Description|
 |---------|---------|
 | **bastyp** | Required-måste anges till `eventGridTrigger` . |
 | **position** | Required-måste anges till `in` . |
@@ -343,17 +372,21 @@ I Azure Functions 2. x och högre kan du också välja att använda följande pa
 > [!NOTE]
 > I functions v1 om du försöker binda till `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent` visas ett "föråldrat" meddelande i kompilatorn som gör att du kan använda `Microsoft.Azure.EventGrid.Models.EventGridEvent` i stället. Om du vill använda den nyare typen refererar du till [Microsoft. Azure. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet-paketet och fullständigt kvalificerar `EventGridEvent` typ namnet genom att prefixet `Microsoft.Azure.EventGrid.Models` . Information om hur du refererar till NuGet-paket i en C#-skript funktion finns i [använda NuGet-paket](functions-reference-csharp.md#using-nuget-packages)
 
+# <a name="java"></a>[Java](#tab/java)
+
+Den Event Grid händelse instansen är tillgänglig via den parameter som är kopplad till `EventGridTrigger` attributet, skriven som en `EventSchema` . Se [exemplet](#example) för mer information.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Event Grid-instansen är tillgänglig via den parameter som kon figurer ATS i egenskapen *function.jspå* filen `name` .
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Event Grid-instansen är tillgänglig via den parameter som kon figurer ATS i egenskapen *function.jspå* filen `name` .
 
 # <a name="python"></a>[Python](#tab/python)
 
 Event Grid-instansen är tillgänglig via den parameter som kon figurer ATS i egenskapen *function.jspå* filen `name` , skriven som `func.EventGridEvent` .
-
-# <a name="java"></a>[Java](#tab/java)
-
-Den Event Grid händelse instansen är tillgänglig via den parameter som är kopplad till `EventGridTrigger` attributet, skriven som en `EventSchema` . Se [exemplet](#example) för mer information.
 
 ---
 

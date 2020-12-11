@@ -944,8 +944,6 @@
               href: ../disks-enable-ultra-ssd.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Beräkna benchmark för en disk
               href: disks-benchmarks.md
-            - name: Optimera prestanda
-              href: optimization.md
         - name: Hitta icke anslutna diskar – CLI
           href: find-unattached-disks.md
         - name: Hitta icke anslutna diskar – portalen

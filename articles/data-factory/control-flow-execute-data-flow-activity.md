@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 11/24/2020
-ms.openlocfilehash: c436d75384c527ba7666cd2e6e780b9d8a93eae2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1c0ed7cf38cc01623169216ec45e88d198ede3d2
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003962"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095091"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Data flödes aktivitet i Azure Data Factory
 
@@ -57,11 +57,11 @@ Använd data flödes aktiviteten för att transformera och flytta data via data 
 
 Egenskap | Beskrivning | Tillåtna värden | Obligatorisk
 -------- | ----------- | -------------- | --------
-data flöde | Referens till det data flöde som körs | DataFlowReference | Yes
+dataflöde | Referens till det data flöde som körs | DataFlowReference | Yes
 integrationRuntime | Beräknings miljön som data flödet körs på. Om inget anges används automatisk lösning för Azure integration Runtime. | IntegrationRuntimeReference | No
 Compute. coreCount | Antalet kärnor som används i Spark-klustret. Kan bara anges om automatisk matchning av Azure integration runtime används | 8, 16, 32, 48, 80, 144, 272 | No
 Compute. computeType | Den typ av beräkning som används i Spark-klustret. Kan bara anges om automatisk matchning av Azure integration runtime används | "Allmänt", "ComputeOptimized", "MemoryOptimized" | No
-mellanlagring. linkedService | Om du använder en Azure Synapse Analytics-källa eller mottagare anger du det lagrings konto som används för PolyBase-mellanlagring.<br/><br/>Om din Azure Storage har kon figurer ATS med VNet-tjänstens slut punkt måste du använda hanterad identitetsautentisering med alternativet "Tillåt betrodd Microsoft-tjänst" på lagrings kontot, se [effekten av att använda VNet-tjänstens slut punkter med Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Lär dig även de konfigurationer som krävs för [Azure-Blob](connector-azure-blob-storage.md#managed-identity) respektive [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) .<br/> | LinkedServiceReference | Endast om data flödet läser eller skriver till en Azure Synapse-analys
+mellanlagring. linkedService | Om du använder en Azure Synapse Analytics-källa eller mottagare anger du det lagrings konto som används för PolyBase-mellanlagring.<br/><br/>Om din Azure Storage har kon figurer ATS med VNet-tjänstens slut punkt måste du använda hanterad identitetsautentisering med alternativet "Tillåt betrodd Microsoft-tjänst" på lagrings kontot, se [effekten av att använda VNet-tjänstens slut punkter med Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage). Lär dig även de konfigurationer som krävs för [Azure-Blob](connector-azure-blob-storage.md#managed-identity) respektive [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) .<br/> | LinkedServiceReference | Endast om data flödet läser eller skriver till en Azure Synapse-analys
 mellanlagring. folderPath | Om du använder en Azure Synapse Analytics-källa eller handfat, används mappsökvägen i Blob Storage-kontot för PolyBase-mellanlagring | Sträng | Endast om data flödet läser eller skriver till Azure Synapse Analytics
 traceLevel | Ange loggnings nivå för körning av data flödes aktivitet | Fin, grov, ingen | No
 
@@ -88,7 +88,7 @@ För pipeline-körningar är klustret ett jobb kluster, vilket tar flera minuter
 
 ### <a name="polybase"></a>PolyBase
 
-Om du använder en Azure Synapse-analys (tidigare SQL Data Warehouse) som mottagare eller källa, måste du välja en mellanlagringsplats för grupp inläsningen för PolyBase. PolyBase tillåter satsvis inläsning i bulk i stället för att läsa in data rad för rad. PolyBase minskar drastiskt inläsnings tiden till Azure Synapse Analytics.
+Om du använder en Azure Synapse-analys som mottagare eller källa, måste du välja en mellanlagringsplats för grupp inläsningen för PolyBase. PolyBase tillåter satsvis inläsning i bulk i stället för att läsa in data rad för rad. PolyBase minskar drastiskt inläsnings tiden till Azure Synapse Analytics.
 
 ## <a name="logging-level"></a>Loggnings nivå
 

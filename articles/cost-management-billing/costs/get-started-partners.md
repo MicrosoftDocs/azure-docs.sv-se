@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: d2b90db18a31fff4190be4f84625ad52fcaae578
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: cd3ca4d3ddf73469cd1f1fc065eccb369cf765af
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657320"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905687"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Kom igång med Azure Cost Management för partner
 
@@ -262,7 +262,7 @@ Du kan också gruppera och filtrera efter egenskapen **PartnerEarnedCreditApplie
 
 ## <a name="export-cost-data-to-azure-storage"></a>Exportera kostnadsdata till Azure Storage
 
-Partner med åtkomst till faktureringsomfång i en partnerklientorganisation kan exportera sina kostnader och användningsdata till en Azure Storage-blob. Bloben måste finnas i en prenumeration i partnerklientorganisationen som inte är en delad tjänstprenumeration eller en kunds prenumeration. Om du vill aktivera kostnadsdataexport rekommenderar vi att du ställer in en oberoende prenumeration baserad på betala per användning i partnerklientorganisationen som värd för exporterade kostnadsdata. Exportlagringskontot skapas i Azure Storage-blob som finns i prenumerationen baserad på betala per användning. Utifrån det omfång där partnern skapar exporten, exporteras tillhörande data automatiskt till lagringskontot med återkommande frekvens.
+Partner med åtkomst till faktureringsomfång i en partnerklientorganisation kan exportera sina kostnader och användningsdata till en Azure Storage-blob. Bloben måste finnas i en prenumeration i partnerns klientorganisation som inte är en [delad tjänstprenumeration](/partner-center/shared-services) eller en kunds prenumeration. Om du vill aktivera kostnadsdataexport rekommenderar vi att du ställer in en oberoende prenumeration baserad på betala per användning i partnerklientorganisationen som värd för exporterade kostnadsdata. Exportlagringskontot skapas i Azure Storage-blob som finns i prenumerationen baserad på betala per användning. Utifrån det omfång där partnern skapar exporten, exporteras tillhörande data automatiskt till lagringskontot med återkommande frekvens.
 
 Användare med Azure RBAC-åtkomst till prenumerationen kan också exportera kostnadsdata till en Azure Storage-blob som finns i valfri prenumeration i kundens klientorganisation.
 

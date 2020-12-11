@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: fd773ade0173fc1c238a5ce44e864e1255ed9044
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 9b5b20de1b86eae72de54b3f2c1cf37074fba144
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920643"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095176"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Skapa och hantera åtgärdsgrupper i Azure-portalen
 En åtgärds grupp är en samling aviserings inställningar som definieras av ägaren av en Azure-prenumeration. Azure Monitor-och Service Health-aviseringar använder åtgärds grupper för att meddela användare om att en avisering har utlösts. Olika aviseringar kan använda samma åtgärds grupp eller olika åtgärds grupper beroende på användarens krav. 
@@ -251,8 +251,46 @@ Du kan ha ett begränsat antal SMS-åtgärder i en åtgärds grupp.
 
 Priser för länder/regioner som stöds finns på [sidan Azure Monitor prissättning](https://azure.microsoft.com/pricing/details/monitor/).
 
-**Lista över länder där SMS-avisering stöds** 
-| **Landskod**  |  **Lands namn** | | 61 | Australien | | 43 | Österrike | | 32 | Belgien | | 55 | Brasilien | | 1 | Kanada | | 56 | Chile | | 86 | Kina | | 420 | Tjeckiska republiken | | 45 | Danmark | | 372 | Estland | | 358 | Finland | | 33 | Frankrike | | 49 | Tyskland | | 852 | Hong Kong | | 91 | Indien | | 353 | Irland | | 972 | Israel | | 39 | Italien | | 81 | Japan | | 352 | Luxemburg | | 60 | Malaysia | | 52 | Mexiko | | 31 | Nederländerna | | 64 | Nya Zeeland | | 47 | Norge | | 351 | Portugal | | 1 | Puerto Rico | | 40 | Rumänien | | 65 | Singapore | | 27 | Sydafrika | | 82 | Sydkorea | | 34 | Spanien | | 41 | Schweiz | | 886 | Taiwan | | 44 |  Storbritannien | | 1 | USA |
+**Lista över länder där SMS-avisering stöds**
+
+| Landskod | Landsnamn |
+|:---|:---|
+| 61 | Australien |
+| 43 | Österrike |
+| 32 | Belgien |
+| 55 | Brasilien |
+| 1 |Kanada |
+| 56 | Chile |
+| 86 | Kina |
+| 420 | Tjeckien |
+| 45 | Danmark |
+| 372 | Estland |
+| 358 | Finland |
+| 33 | Frankrike |
+| 49 | Tyskland |
+| 852 | Hongkong |
+| 91 | Indien |
+| 353 | Irland |
+| 972 | Israel |
+| 39 | Italien |
+| 81 | Japan |
+| 352 | Luxemburg |
+| 60 | Malaysia |
+| 52 | Mexico |
+| 31 | Nederländerna |
+| 64 | Nya Zeeland |
+| 47 | Norge |
+| 351 | Portugal |
+| 1 | Puerto Rico |
+| 40 | Rumänien |
+| 65 | Singapore |
+| 27 | Sydafrika |
+| 82 | Sydkorea |
+| 34 | Spanien |
+| 41 | Schweiz |
+| 886 | Taiwan |
+| 44 | Storbritannien |
+| 1 | USA |
 
 ### <a name="voice"></a>Röst
 Mer viktig information finns i artikeln om [pris begränsning](./alerts-rate-limiting.md) .

@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 12/02/2020
 ms.author: banders
-ms.openlocfilehash: 070d105785ee3ab9811188406bda56dbe6ceb558
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 874d5cb022a38b172bb37009bd86b5e6988f3204
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350899"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545612"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Hämta data om reservationskostnader och reservationsanvändning för Enterprise-avtal (EA)
 
@@ -139,6 +139,8 @@ Hämta data om de amorterade kostnaderna och filtrera fram data för en reserver
 1. Visa en uppskattning av kostnaderna för användningsbaserad betalning. Multiplicera värdet för _UnitPrice_ (Enhetspris) med _Quantity_ (Kvantitet) för att beräkna kostnaderna för användningsbaserad betalning, om reservationsrabatten inte gällde för användningen.
 2. Hämta reservationskostnaderna. Summera värdena för _Cost_ (Kostnad) för att hämta penningvärdet för det du betalade för den reserverade instansen. Den innehåller reservationens använda och oanvända kostnader.
 3. Subtrahera reservationskostnader från uppskattade kostnader för användningsbaserad betalning för att beräkna de uppskattade besparingarna.
+
+Om du har en underutnyttjad reservation måste du ha posten _UnusedReservation_ för _ChargeType_ i åtanke. En reservation som utnyttjas fullt ut ger högsta möjliga besparing. En _UnusedReservation_-kvantitet innebär mindre besparingar.
 
 ## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>Köp och amortering av reservationer i kostnadsanalys
 

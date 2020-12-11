@@ -3,12 +3,12 @@ title: Hantera migreringsjobb i skala med Azure Migrate
 description: Lär dig hur du effektivt använder Azure Migrate på delegerade kund resurser.
 ms.date: 12/4/2020
 ms.topic: how-to
-ms.openlocfilehash: d1a01149c80b30f279f7d68551946c3ffe404d5e
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 16b92f3aa4dc3bfcb71eb232170c4df30348f8db
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621577"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095397"
 ---
 # <a name="manage-migration-projects-at-scale-with-azure-migrate"></a>Hantera migreringsjobb i skala med Azure Migrate
 
@@ -39,7 +39,7 @@ Den här metoden minimerar kontext byten för tjänst leverantörer som arbetar 
 Arbets flödet för den här modellen ser ut ungefär så här:
 
 1. Kunden registreras [i Azure-Lighthouse](onboard-customer.md). Den inbyggda rollen deltagare krävs för den identitet som ska användas med Azure Migrate. Se exempel mal len [delegerad-Resource-Management-azmigrate](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-azmigrate) för ett exempel som använder den här rollen.
-1. Den angivna användaren loggar in på hanterings klienten i Azure Portal och går sedan till Azure Migrate. Den här användaren [skapar ett Azure Migrate-projekt](/migrate/create-manage-projects.md)och väljer lämplig delegerad kund prenumeration.
+1. Den angivna användaren loggar in på hanterings klienten i Azure Portal och går sedan till Azure Migrate. Den här användaren [skapar ett Azure Migrate-projekt](/azure/migrate/create-manage-projects)och väljer lämplig delegerad kund prenumeration.
 1. Användaren utför sedan [steg för identifiering och utvärdering](../../migrate/tutorial-discover-vmware.md).
 
    Innan du konfigurerar installations programmet för virtuella VMware-datorer kan du begränsa identifieringen till vCenter Server Data Center, kluster, en mapp med kluster, värdar, en mapp med värdar eller enskilda virtuella datorer. Om du vill ange omfånget tilldelar du behörighet för det konto som enheten använder för att få åtkomst till vCenter Server. Detta är användbart om flera kunders virtuella datorer finns på hypervisorn. Du kan inte begränsa identifierings omfånget för Hyper-V.
@@ -61,7 +61,7 @@ Den här metoden gör det möjligt för tjänste leverantörer att starta identi
 Arbets flödet för den här modellen ser ut ungefär så här:
 
 1. Kunden registreras [i Azure-Lighthouse](onboard-customer.md). Den inbyggda rollen deltagare krävs för den identitet som ska användas med Azure Migrate. Se exempel mal len [delegerad-Resource-Management-azmigrate](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-azmigrate) för ett exempel som använder den här rollen.
-1. Den angivna användaren loggar in på hanterings klienten i Azure Portal och går sedan till Azure Migrate. Den här användaren [skapar ett Azure Migrate-projekt](/migrate/create-manage-projects.md) i en prenumeration som tillhör hanterings klienten.
+1. Den angivna användaren loggar in på hanterings klienten i Azure Portal och går sedan till Azure Migrate. Den här användaren [skapar ett Azure Migrate-projekt](/azure/migrate/create-manage-projects) i en prenumeration som tillhör hanterings klienten.
 1. Användaren utför sedan [steg för identifiering och utvärdering](../../migrate/tutorial-discover-vmware.md). Lokala virtuella datorer identifieras och utvärderas i det migreringsjobb som skapats i hanterings klienten, sedan migreras därifrån.
 
    Om du hanterar flera kunder på samma Hyper-V-värd kan du identifiera alla arbets belastningar samtidigt. Kundspecifika virtuella datorer kan väljas i samma grupp, en utvärdering kan skapas och migrering kan utföras genom att välja rätt kund prenumeration som mål destination. Du behöver inte begränsa identifierings omfånget och du kan ha en fullständig översikt över alla kund arbets belastningar i ett enda migreringsjobb.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7555a0b9d7b3336b1020e8f1d9c3445e09afc6f0
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: 6c03009b08dcf33bf4b84bc91232af96e7ba2c71
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96318399"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095193"
 ---
 # <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>Självstudie för att distribuera F5 stor IP Virtual Edition VM i Azure IaaS för säker hybrid åtkomst
 
@@ -44,7 +44,7 @@ Föregående F5 BIG-IP-upplevelse eller kunskap är inte nödvändigt, men vi re
 
 - Ett jokertecken eller ett alternativt namn för certifikat mottagare (SAN) för att publicera webb program över SSL (Secure Socket Layer). [Vi ska kryptera](https://letsencrypt.org/) erbjudanden som är kostnads fria 90 dagar för testning.
 
-- Ett SSL-certifikat för att skydda BIG-IPs hanterings gränssnittet. Ett certifikat som används för att publicera webbappar kan användas om dess ämne motsvarar det fullständigt kvalificerade domän namnet (FQDN). Ett Wildcard-certifikat som definierats med ett ämne *. contoso.com skulle till exempel vara lämpligt för https://big-ip-vm.contoso.com:8443
+- Ett SSL-certifikat för att skydda BIG-IPs hanterings gränssnittet. Ett certifikat som används för att publicera webbappar kan användas om dess ämne motsvarar det fullständigt kvalificerade domän namnet (FQDN). Ett Wildcard-certifikat som definierats med ett ämne *. contoso.com skulle till exempel vara lämpligt för `https://big-ip-vm.contoso.com:8443`
 
 Konfiguration av virtuella datorer och bas system tar ca. 30 minuter, där din BIG-IP-plattform är redo att implementera något av de SHA-scenarier som anges [här](f5-aad-integration.md).
 
@@ -85,7 +85,7 @@ Utför följande uppgifter för att distribuera BIG-IP VE från [Azure Marketpla
  |Namn på virtuell dator| Exempel på BIG-IP-VM |
  |Region | Rikta in dig på Azure geo för BIG-IP-VM |
  |Alternativ för tillgänglighet| Aktivera endast om virtuell dator används i produktion|
- |Bild| F5 BIG-IP VE – alla (BYOL, 2 start platser)|
+ |Avbildning| F5 BIG-IP VE – alla (BYOL, 2 start platser)|
  |Azure Spot-instans| Nej, men du kan inte aktivera om det är lämpligt |
  |Storlek| Minsta specifikation ska vara 2 virtuella processorer och 8 GB minne|
  |**Administratörs konto**|  |
@@ -107,7 +107,7 @@ Utför följande uppgifter för att distribuera BIG-IP VE från [Azure Marketpla
  |Nätverks säkerhets grupp för nätverkskort| Välj ingen om det Azure-undernät som du valde i föregående steg redan är associerat med en nätverks säkerhets grupp (NSG). annars väljer du grundläggande|
  |Accelerera nätverk| Av |
  |**Belastningsutjämning**|     |
- |Belastningsutjämna virtuell dator| Inga|
+ |Belastningsutjämna virtuell dator| No|
 
 10. Välj **Nästa: hantering** och slutför de här inställningarna.
 
@@ -171,7 +171,7 @@ I den här ordningen tillåter en NSG-regel fjärrtrafik som är avsedd `intrane
 
 9. Om du uppmanas att göra det anger du **SKU** till standard
 
-10. Om du uppmanas att **Tier** ange nivån **Global** och
+10. Om du uppmanas att  ange nivån **Global** och
 
 11. Ange **tilldelnings** alternativet till **statisk** och välj sedan **OK** två gånger
 

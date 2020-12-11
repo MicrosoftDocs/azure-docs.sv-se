@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 45393f116149f6cf16763d2d7033f8425df235bf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fd33ca4c5d637e31230d8c124fdb9ec7c71d2ba7
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998861"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094853"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Blob Storage-utlösare för Azure Functions
 
@@ -322,6 +322,9 @@ Få åtkomst till BLOB-data via parametern som anges som [InputStream](/python/a
 ## <a name="blob-name-patterns"></a>BLOB Name-mönster
 
 Du kan ange ett BLOB Name-mönster i `path` egenskapen i *function.jspå* eller i `BlobTrigger` konstruktorn Attribute. Namn mönstret kan vara ett [filter eller ett bindnings uttryck](./functions-bindings-expressions-patterns.md). I följande avsnitt finns exempel.
+
+> [!TIP]
+> Ett behållar namn får inte innehålla en lösare i namn mönstret.
 
 ### <a name="get-file-name-and-extension"></a>Hämta fil namn och tillägg
 

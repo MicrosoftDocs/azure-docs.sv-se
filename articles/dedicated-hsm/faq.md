@@ -2,7 +2,7 @@
 title: Vanliga frågor och Azure-dedikerad HSM | Microsoft Docs
 description: Få svar på vanliga frågor om Azures särskilda maskinvarubaserade säkerhetsmodul, till exempel grundläggande information, interoperabilitet, hög tillgänglighet och support.
 services: dedicated-hsm
-author: johncdawson
+author: keithp
 manager: rkarlin
 tags: azure-resource-manager
 ms.custom: mvc, seodec18
@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/05/2020
-ms.author: mbaldwin
-ms.openlocfilehash: 0d3309283279c887c00a475ccedfe1edaf311ae5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/10/2020
+ms.author: keithp
+ms.openlocfilehash: 61a9fcc5490c20383a2ae7d5c57b7fda7567c643
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88189869"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095159"
 ---
-# <a name="frequently-asked-questions-faq"></a>Vanliga frågor och svar
+# <a name="frequently-asked-questions-faq"></a>Vanliga frågor och svar (FAQ)
 
 Få svar på vanliga frågor om Microsoft Azure dedikerad HSM.
 
@@ -32,11 +32,11 @@ En modul för maskin varu säkerhet (HSM) är en fysisk dator enhet som används
 
 ### <a name="q-what-is-the-azure-dedicated-hsm-offering"></a>F: Vad är Azure Dedicated HSM-erbjudandet?
 
-Azure Dedicated HSM är en molnbaserad tjänst som tillhandahåller HSM: er som finns i Azure-datacenter som är direkt anslutna till kundens virtuella nätverk. Dessa HSM: er är dedikerade nätverks anordningar (Gemalto SafeNet Network HSM 7 Model A790). De distribueras direkt till kunders privata IP-adressutrymme och Microsoft har ingen åtkomst till de kryptografiska funktionerna i HSM: er. Endast kunden har fullständig administrativ och kryptografisk kontroll över dessa enheter. Kunderna ansvarar för hanteringen av enheten och de kan få fullständiga aktivitets loggar direkt från sina enheter. Dedikerade HSM: er hjälper kunder att uppfylla krav på efterlevnad/bestämmelser som FIPS 140-2 nivå 3, HIPAA, PCI-DSS och eIDAS och många andra.
+Azure Dedicated HSM är en molnbaserad tjänst som tillhandahåller HSM: er som finns i Azure-datacenter som är direkt anslutna till kundens virtuella nätverk. Dessa HSM: er är dedikerade nätverks enheter (Thales Network Luna HSM 7). De distribueras direkt till kunders privata IP-adressutrymme och Microsoft har ingen åtkomst till de kryptografiska funktionerna i HSM: er. Endast kunden har fullständig administrativ och kryptografisk kontroll över dessa enheter. Kunderna ansvarar för hanteringen av enheten och de kan få fullständiga aktivitets loggar direkt från sina enheter. Dedikerade HSM: er hjälper kunder att uppfylla krav på efterlevnad/bestämmelser som FIPS 140-2 nivå 3, HIPAA, PCI-DSS och eIDAS och många andra.
 
 ### <a name="q-what-hardware-is-used-for-dedicated-hsm"></a>F: vilken maskin vara används för dedikerad HSM?
 
-Microsoft samarbetar med Gemalto för att leverera Azures dedikerade HSM-tjänst. Den speciella enhet som används är [SafeNet Luna Network HSM 7 Model A790](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/). Den här enheten tillhandahåller inte bara FIPS 140-2 nivå 3-verifierad inbyggd program vara, men erbjuder även låg latens, höga prestanda och hög kapacitet via 10 partitioner. 
+Microsoft samarbetar med Thales för att leverera Azures dedikerade HSM-tjänst. Den speciella enhet som används är [Thales Network Luna HSM 7](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms). Den här enheten tillhandahåller inte bara FIPS 140-2 nivå 3-verifierad inbyggd program vara, men erbjuder även låg latens, höga prestanda och hög kapacitet via 10 partitioner. 
 
 ### <a name="q-what-is-an-hsm-used-for"></a>F: Vad används en HSM för?
 
@@ -44,11 +44,18 @@ HSM: er används för att lagra kryptografiska nycklar som används för krypter
 
 ### <a name="q-how-does-dedicated-hsm-work"></a>F: Hur fungerar dedikerad HSM?
 
-Kunder kan etablera HSM: er i vissa regioner med PowerShell eller kommando rads gränssnittet. Kunden anger vilka virtuella nätverk som HSM: er ska anslutas till och när HSM: er har allokerats blir de tillgängliga i det angivna under nätet vid tilldelade IP-adresser i kundens privata IP-adressutrymme. Sedan kan kunderna ansluta till HSM: er med SSH för hantering och administration av HSM, konfigurera HSM-klientanslutningar, initiera HSM: er, skapa partitioner, definiera och tilldela roller som partitions chef, kryptografi befäl och kryptografi användare. Sedan använder kunden Gemalto-klient verktyg/SDK/program vara för att utföra kryptografiska åtgärder från sina program.
+Kunder kan etablera HSM: er i vissa regioner med PowerShell eller kommando rads gränssnittet. Kunden anger vilka virtuella nätverk som HSM: er ska anslutas till och när HSM: er har allokerats blir de tillgängliga i det angivna under nätet vid tilldelade IP-adresser i kundens privata IP-adressutrymme. Sedan kan kunderna ansluta till HSM: er med SSH för hantering och administration av HSM, konfigurera HSM-klientanslutningar, initiera HSM: er, skapa partitioner, definiera och tilldela roller som partitions chef, kryptografi befäl och kryptografi användare. Sedan använder kunden Thales-klient verktyg/SDK/program vara för att utföra kryptografiska åtgärder från sina program.
 
 ### <a name="q-what-software-is-provided-with-the-dedicated-hsm-service"></a>F: vilken program vara medföljer den dedikerade HSM-tjänsten?
 
-Gemalto tillhandahåller all program vara för HSM-enheten när den har tillhandahållits av Microsoft. Program varan är tillgänglig på [Gemalto kund support Portal](https://supportportal.gemalto.com/csm/). Kunder som använder dedikerad HSM-tjänst måste registreras för Gemalto-support och ha ett kund-ID som ger åtkomst till och nedladdning av relevant program vara. Den klient program vara som stöds är version 7,2, som är kompatibel med den validerade 7.0.3-versionen av FIPS 140-2 nivå 3. 
+Thales tillhandahåller all program vara för HSM-enheten när den har tillhandahållits av Microsoft. Program varan är tillgänglig på [Thales kund support Portal](https://supportportal.gemalto.com/csm/). Kunder som använder dedikerad HSM-tjänst måste registreras för Thales-support och ha ett kund-ID som ger åtkomst till och nedladdning av relevant program vara. Den klient program vara som stöds är version 7,2, som är kompatibel med den validerade 7.0.3-versionen av FIPS 140-2 nivå 3. 
+
+### <a name="q-what-extra-costs-may-be-incurred-with-dedicated-hsm-service"></a>F: vilka extra kostnader kan uppstå med dedikerad HSM-tjänst?
+
+Följande objekt medför extra kostnad när den dedikerade HSM-tjänsten används. 
+* Användning av dedikerad lokal säkerhets kopierings enhet är möjlig att använda med dedikerad HSM-tjänst, men detta kommer att medföra en extra kostnad och bör startas direkt från Thales.
+* Dedikerad HSM ingår i en 10-partitions licens. Om en kund behöver fler partitioner, kommer detta att innebära en extra kostnad för ytterligare licenser som direkt debiteras från Thales.
+* Dedikerad HSM kräver nätverks infrastruktur (VNET, VPN Gateway osv.) och resurser, till exempel virtuella datorer för enhets konfiguration. Dessa ytterligare resurser debiteras extra kostnader och ingår inte i priset för dedikerad HSM-tjänst.
 
 ### <a name="q-does-azure-dedicated-hsm-offer-password-based-and-ped-based-authentication"></a>F: erbjuder Azure Dedicated HSM lösen ords-och INMATNINGSENHET-baserad autentisering?
 
@@ -56,11 +63,11 @@ För närvarande ger Azure Dedicated HSM endast HSM: er med lösenordsbaserad au
 
 ### <a name="q-will-azure-dedicated-hsm-host-my-hsms-for-me"></a>F: är Azures dedikerade HSM-värd mitt HSM: er åt mig?
 
-Microsoft erbjuder endast Gemalto SafeNet Luna Network HSM via den dedikerade HSM-tjänsten och kan inte vara värd för alla enheter som tillhandahålls av kunden.
+Microsoft erbjuder endast Thales Network Luna HSM 7 via den dedikerade HSM-tjänsten och kan inte vara värd för alla enheter som tillhandahålls av kunden.
 
 ### <a name="q-does-azure-dedicated-hsm-support-payment-pineft-features"></a>F: fungerar Azure-funktioner för dedikerad HSM-support (PIN/EFT)?
 
-Azure Dedicated HSM-tjänsten använder SafeNet Luna Network HSM 7-enheter (modell A790). Dessa enheter har inte stöd för att betala HSM-speciella funktioner (till exempel PIN-kod eller EFT) eller certifieringar. Om du vill att Azures dedikerade HSM-tjänst ska stödja betalnings HSM: er i framtiden, kan du skicka feedback till din Microsoft-konto representant.
+Azure Dedicated HSM-tjänsten använder Thales Network Luna HSM 7-enheter. Dessa enheter har inte stöd för funktionen för att betala HSM-speciella funktioner (till exempel PIN-kod eller EFT) eller certifieringar. Om du vill att Azures dedikerade HSM-tjänst ska stödja betalnings HSM: er i framtiden, kan du skicka feedback till din Microsoft-konto representant.
 
 ### <a name="q-which-azure-regions-is-dedicated-hsm-available-in"></a>F: vilka Azure-regioner är dedikerade HSM tillgängliga i?
 
@@ -94,7 +101,7 @@ Från och med sent mars 2019 är dedikerad HSM tillgänglig i de 14 regionerna s
 
 ### <a name="q-how-does-my-application-connect-to-a-dedicated-hsm"></a>F: Hur ansluter mitt program till en dedikerad HSM?
 
-Du använder Gemalto som tillhandahålls HSM-klient verktyg/SDK/program vara för att utföra kryptografiska åtgärder från dina program. Program varan är tillgänglig på [Gemalto kund support Portal](https://supportportal.gemalto.com/csm/). Kunder som använder dedikerad HSM-tjänst måste registreras för Gemalto-support och ha ett kund-ID som ger åtkomst till och nedladdning av relevant program vara.
+Du använder Thales som tillhandahålls HSM-klient verktyg/SDK/program vara för att utföra kryptografiska åtgärder från dina program. Program varan är tillgänglig på [Thales kund support Portal](https://supportportal.gemalto.com/csm/). Kunder som använder dedikerad HSM-tjänst måste registreras för Thales-support och ha ett kund-ID som ger åtkomst till och nedladdning av relevant program vara.
 
 ### <a name="q-can-an-application-connect-to-dedicated-hsm-from-a-different-vnet-in-or-across-regions"></a>F: kan ett program ansluta till dedikerad HSM från ett annat VNET i eller mellan regioner?
 
@@ -110,7 +117,7 @@ Nej. De dedikerade Azure-HSM: er är bara tillgängliga i det virtuella nätverk
 
 ### <a name="q-can-i-import-keys-from-an-existing-on-premises-hsm-to-dedicated-hsm"></a>F: kan jag importera nycklar från en befintlig lokal HSM till dedikerad HSM?
 
-Ja, om du har lokala Gemalto-SafeNet-HSM: er. Det finns flera metoder. Se Gemalto HSM-dokumentationen.
+Ja, om du har lokalt Thales Network Luna HSM 7 HSM: er. Det finns flera metoder. Se [Thales HSM-dokumentationen](https://thalesdocs.com/gphsm/luna/7.2/docs/network/Content/Home_network.htm).
 
 ### <a name="q-what-operating-systems-are-supported-by-dedicated-hsm-client-software"></a>F: vilka operativ system stöds av dedikerade klient program vara för HSM?
 
@@ -119,7 +126,7 @@ Ja, om du har lokala Gemalto-SafeNet-HSM: er. Det finns flera metoder. Se Gemalt
 
 ### <a name="q-how-do-i-configure-my-client-application-to-create-a-high-availability-configuration-with-multiple-partitions-from-multiple-hsms"></a>F: Hur gör jag för att konfigurera mitt klient program för att skapa en konfiguration med hög tillgänglighet med flera partitioner från flera HSM: er?
 
-Om du vill ha hög tillgänglighet måste du konfigurera din HSM-klients program konfiguration för att använda partitioner från varje HSM. Läs dokumentationen om Gemalto HSM-klientprogramvaran.
+Om du vill ha hög tillgänglighet måste du konfigurera din HSM-klients program konfiguration för att använda partitioner från varje HSM. Läs dokumentationen om Thales HSM-klientprogramvaran.
 
 ### <a name="q-what-authentication-mechanisms-are-supported-by-dedicated-hsm"></a>F: vilka autentiseringsmekanismer stöds av dedikerad HSM?
 
@@ -131,7 +138,7 @@ PKCS # 11, Java (JCA/gemensamt), Microsoft CAPI och CNG, OpenSSL
 
 ### <a name="q-can-i-importmigrate-keys-from-luna-56-hsms-to-azure-dedicated-hsms"></a>F: kan jag importera/migrera nycklar från Luna 5/6 HSM: er till Azure Dedicated HSM: er?
 
-Ja. Läs guiden för Gemalto-migrering. 
+Ja. Kontakta din Thales-representant för lämplig Thales migration-guide. 
 
 ## <a name="using-your-hsm"></a>Använda din HSM
 
@@ -156,7 +163,7 @@ Nej. Dedikerad HSM tillhandahålls direkt till kundens privata IP-adressutrymme 
 
 ## <a name="administration-access-and-control"></a>Administration, åtkomst och kontroll
 
-### <a name="q-does-the-customer-get-full-exclusive-control-over-the-hsms-with-dedicated-hsms"></a>F: får kunden fullständig kontroll över HSM: er med dedikerade HSM: er?
+### <a name="q-does-the-customer-get-full-exclusive-control-over-the-hsms-with-dedicated-"></a>F: får kunden fullständig kontroll över HSM: er med dedikerat?
 
 Ja. Varje HSM-installation är fullständigt dedikerad till en enda kund och ingen annan har administrativ kontroll när den har kon figurer ATS och administratörs lösen ordet har ändrats.
 
@@ -164,9 +171,9 @@ Ja. Varje HSM-installation är fullständigt dedikerad till en enda kund och ing
 
 Microsoft har ingen administrativ eller kryptografisk kontroll över HSM. Microsoft har åtkomst till övervaknings nivå via seriell port anslutning för att hämta grundläggande telemetri, till exempel temperatur och komponent hälsa. Detta gör att Microsoft kan tillhandahålla proaktiv avisering om hälso problem. Vid behov kan kunden inaktivera det här kontot.
 
-### <a name="q-what-is-the-tenantadmin-account-microsoft-uses-i-am-used-to-the-admin-user-being-admin-on-safenet-hsms"></a>F: Vad är "TenantAdmin"-kontot som Microsoft använder, jag används för administratörs användare som "admin" på SafeNet HSM: er?
+### <a name="q-what-is-the-tenant-admin-account-microsoft-uses-i-am-used-to-the-admin-user-being-admin-on-thales-luna-hsms"></a>F: Vad är kontot "innehavaradministratör" som Microsoft använder, jag används för administratörs användare som "admin" på Thales Luna HSM: er?
 
-HSM-enheten levereras med en standard användare av administratör med det vanliga standard lösen ordet. Microsoft vill inte ha standard lösen ord som används när en enhet är i en pool som väntar på att tillhandahållas av kunderna. Detta uppfyller inte våra strikta säkerhets krav. Därför ställer vi in ett starkt lösen ord som tas bort vid etablerings tiden. Vid etablerings tiden skapar vi också en ny användare i administratörs rollen som kallas "TenantAdmin". Den här användaren har standard lösen ordet och kunderna ändrar detta som första åtgärd vid första inloggningen till den nyligen etablerade enheten. Den här processen säkerställer höga säkerhets nivåer och upprätthåller vårt löfte om ensam administratörs kontroll för våra kunder. Det bör noteras att "TenantAdmin"-användaren kan användas för att återställa administratörs lösen ordet om en kund föredrar att använda det kontot. 
+HSM-enheten levereras med en standard användare av administratör med det vanliga standard lösen ordet. Microsoft vill inte ha standard lösen ord som används när en enhet är i en pool som väntar på att tillhandahållas av kunderna. Detta uppfyller inte våra strikta säkerhets krav. Därför ställer vi in ett starkt lösen ord som tas bort vid etablerings tiden. Vid etablerings tiden skapar vi också en ny användare i administratörs rollen som kallas "innehavaradministratör". Den här användaren har standard lösen ordet och kunderna ändrar detta som första åtgärd vid första inloggningen till den nyligen etablerade enheten. Den här processen säkerställer höga säkerhets nivåer och upprätthåller vårt löfte om ensam administratörs kontroll för våra kunder. Det bör noteras att användaren "innehavaradministratör" kan användas för att återställa administratörs lösen ordet om en kund föredrar att använda det kontot. 
 
 ### <a name="q-can-microsoft-or-anyone-at-microsoft-access-keys-in-my-dedicated-hsm"></a>F: kan Microsoft eller någon på Microsoft Access-nycklar i min dedikerad HSM?
 
@@ -174,7 +181,7 @@ Nej. Microsoft har ingen åtkomst till nycklarna som lagras i en dedikerad HSM-k
 
 ### <a name="q-can-i-upgrade-softwarefirmware-on-hsms-allocated-to-me"></a>F: kan jag uppgradera program vara/inbyggd program vara på HSM: er som tilldelats mig?
 
-För att få bästa möjliga support rekommenderar Microsoft starkt att inte uppgradera program vara/inbyggd program vara på HSM. Kunden har dock fullständig administrativ kontroll, inklusive uppgradering av program vara/inbyggd program vara om specifika funktioner krävs från olika versioner av den inbyggda program varan. Innan du gör några ändringar måste konsekvenserna betraktas som detta kan till exempel påverka FIPS-validerad status. 
+Kunden har fullständig administrativ kontroll, inklusive uppgradering av program vara/inbyggd program vara om specifika funktioner krävs från olika versioner av den inbyggda program varan. Innan du gör några ändringar bör du kontakta Microsoft om uppgraderingen genom att kontakta HSMRequest@microsoft.com  
 
 ### <a name="q-how-do-i-manage-dedicated-hsm"></a>F: Hur gör jag för att hantera dedikerad HSM?
 
@@ -182,7 +189,7 @@ Du kan hantera dedikerade HSM: er genom att använda SSH.
 
 ### <a name="q-how-do-i-manage-partitions-on-the-dedicated-hsm"></a>F: Hur gör jag för att hantera partitioner på dedikerad HSM?
 
-Gemalto HSM-klientprogramvaran används för att hantera HSM: er och partitioner.
+Thales HSM-klientprogramvaran används för att hantera HSM: er och partitioner.
 
 ### <a name="q-how-do-i-monitor-my-hsm"></a>F: Hur gör jag för att övervaka min HSM?
 
@@ -196,7 +203,7 @@ Ja. Du kan skicka loggar från HSM-enheten till en Syslog-server
 
 ### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>F: är det möjligt att konfigurera hög tillgänglighet i samma region eller i flera regioner?
 
-Ja. Konfiguration och inställningar för hög tillgänglighet utförs i HSM-klientprogramvaran som tillhandahålls av Gemalto. HSM: er från samma VNET eller andra virtuella nätverk i samma region eller i flera regioner, eller lokalt HSM: er som är anslutna till ett VNET med hjälp av plats-till-plats-eller punkt-till-plats-VPN kan läggas till i samma konfiguration för hög tillgänglighet. Det bör noteras att detta bara synkroniserar nyckel material och inte vissa konfigurations objekt, till exempel roller.
+Ja. Konfiguration och inställningar för hög tillgänglighet utförs i HSM-klientprogramvaran som tillhandahålls av Thales. HSM: er från samma VNET eller andra virtuella nätverk i samma region eller i flera regioner, eller lokalt HSM: er som är anslutna till ett VNET med hjälp av plats-till-plats-eller punkt-till-plats-VPN kan läggas till i samma konfiguration för hög tillgänglighet. Det bör noteras att detta bara synkroniserar nyckel material och inte vissa konfigurations objekt, till exempel roller.
 
 ### <a name="q-can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>F: kan jag lägga till HSM: er från mitt lokala nätverk till en grupp med hög tillgänglighet med Azure Dedicated HSM?
 
@@ -222,7 +229,7 @@ Azure-datacenter har omfattande fysiska och stegvisa säkerhets kontroller. För
 
 ### <a name="q-what-happens-if-there-is-a-security-breach-or-hardware-tampering-event"></a>F: Vad händer om det uppstår ett säkerhets intrång eller en maskin varu manipulations händelse?
 
-Dedikerad HSM-tjänst använder SafeNet Network HSM 7-enheter. Dessa apparater stöder fysisk och logisk manipulation. Om det finns en ändrings händelse av HSM: er nollställs automatiskt.
+Dedikerad HSM-tjänst använder Thales Network Luna HSM 7-enheter. Dessa apparater stöder fysisk och logisk manipulation. Om det finns en ändrings händelse av HSM: er nollställs automatiskt.
 
 ### <a name="q-how-do-i-ensure-that-keys-in-my-dedicated-hsms-are-not-lost-due-to-error-or-a-malicious-insider-attack"></a>F: Hur gör jag för att kontrol lera att nycklarna i mina dedikerade HSM: er inte går förlorade på grund av ett fel eller ett skadligt Insider angrepp?
 
@@ -230,13 +237,13 @@ Vi rekommenderar starkt att du använder en lokal HSM backup-enhet för att utf�
 
 ### <a name="q-how-do-i-get-support-for-dedicated-hsm"></a>F: Hur gör jag för att få stöd för dedikerad HSM?
 
-Support tillhandahålls av både Microsoft och Gemalto.  Om du har problem med maskin varan eller nätverks åtkomsten kan du generera en supportbegäran med Microsoft och om du har problem med HSM-konfiguration, program vara och program utveckling får du en supportbegäran med Gemalto. Om du har ett avidentifierat problem, kan du generera en supportbegäran med Microsoft och sedan kan Gemalto användas som obligatorisk. 
+Support tillhandahålls av både Microsoft och Thales.  Om du har problem med maskin varan eller nätverks åtkomsten kan du generera en supportbegäran med Microsoft och om du har problem med HSM-konfiguration, program vara och program utveckling får du en supportbegäran med Thales. Om du har ett avidentifierat problem, kan du generera en supportbegäran med Microsoft och sedan kan Thales användas som obligatorisk. 
 
-### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-safenet-luna-7-hsm"></a>F: Hur gör jag för att hämta klient program vara, dokumentation och åtkomst till integrations vägledning för SafeNet Luna 7 HSM?
+### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-thales-network-luna-hsm-7"></a>F: Hur gör jag för att hämta klient program vara, dokumentation och åtkomst till integrerings vägledning för Thales Network Luna HSM 7?
 
-När du har registrerat dig för tjänsten får du ett Gemalto kund-ID som möjliggör registrering i Gemalto kund support Portal. Detta ger åtkomst till all program vara och dokumentation samt att aktivera support förfrågningar direkt med Gemalto.
+När du har registrerat dig för tjänsten får du ett Thales kund-ID som möjliggör registrering i Thales kund support Portal. Detta ger åtkomst till all program vara och dokumentation samt att aktivera support förfrågningar direkt med Thales.
 
-### <a name="q-if-there-is-a-security-vulnerability-found-and-a-patch-is-released-by-gemalto-who-is-responsible-for-upgradingpatching-osfirmware"></a>F: om det finns ett säkerhets problem och en korrigering släpps av Gemalto, som ansvarar för uppgradering/korrigering av OS/inbyggd program vara?
+### <a name="q-if-there-is-a-security-vulnerability-found-and-a-patch-is-released-by-thales-who-is-responsible-for-upgradingpatching-osfirmware"></a>F: om det finns ett säkerhets problem och en korrigering släpps av Thales, som ansvarar för uppgradering/korrigering av OS/inbyggd program vara?
 
 Microsoft har inte möjlighet att ansluta till HSM: er som har tilldelats till kunder. Kunderna måste uppgradera och korrigera sina HSM: er.
 
@@ -248,11 +255,11 @@ HSM har ett alternativ för omstart av kommando rad, men vi har problem där oms
 
 ### <a name="q-is-it-safe-to-store-encryption-keys-for-my-most-important-data-in-dedicated-hsm"></a>F: är det säkert att lagra krypterings nycklar för mina viktigaste data i dedikerad HSM?
 
-Ja, dedikerade HSM-bestämmelser SafeNet Network HSM 7-enheter som använder FIPS 140-2 nivå 3-verifierade HSM: er. 
+Ja, dedikerade HSM-bestämmelser Thales Network Luna HSM 7-enheter som använder FIPS 140-2 nivå 3-verifierade HSM: er. 
 
 ### <a name="q-what-cryptographic-keys-and-algorithms-are-supported-by-dedicated-hsm"></a>F: vilka kryptografiska nycklar och algoritmer stöds av dedikerad HSM?
 
-Dedikerad HSM-tjänst etablerar SafeNet Network HSM 7-enheter. De har stöd för ett brett utbud av kryptografiska nyckel typer och algoritmer, inklusive: fullständig Suite B stöd
+Dedikerad HSM-tjänst tillhandahåller Thales Network Luna HSM 7-enheter. De har stöd för ett brett utbud av kryptografiska nyckel typer och algoritmer, inklusive: fullständig Suite B stöd
 
 * Asymmetric
   * RSA
@@ -276,21 +283,21 @@ Dedikerad HSM-tjänst etablerar SafeNet Network HSM 7-enheter. De har stöd för
 
 ### <a name="q-is-dedicated-hsm-fips-140-2-level-3-validated"></a>F: är dedikerad HSM FIPS 140-2 Level 3 verifierad?
 
-Ja. Dedikerad HSM-tjänst tillhandahåller SafeNet Network HSM 7-enheter som använder FIPS 140-2 nivå 3-verifierade HSM: er.
+Ja. Dedikerad HSM-tjänst etablerar Thales Network Luna HSM 7-enheter som använder FIPS 140-2 nivå 3-verifierade HSM: er.
 
 ### <a name="q-what-do-i-need-to-do-to-make-sure-i-operate-dedicated-hsm-in-fips-140-2-level-3-validated-mode"></a>F: Vad behöver jag göra för att se till att jag använder dedikerad HSM i FIPS 140-2 nivå 3-validerat läge?
 
-Dedikerad HSM-tjänst etablerar SafeNet Luna Network HSM 7-enheter. Dessa apparater använder FIPS 140-2 nivå 3-verifierade HSM: er. Den distribuerade standard konfigurationen, operativ systemet och den inbyggda program varan är också FIPS-verifierad. Du behöver inte vidta några åtgärder för kompatibilitet på FIPS 140-2 nivå 3.
+Dedikerad HSM-tjänst etablerar Thales Network Luna HSM 7-enheter. Dessa apparater använder FIPS 140-2 nivå 3-verifierade HSM: er. Den distribuerade standard konfigurationen, operativ systemet och den inbyggda program varan är också FIPS-verifierad. Du behöver inte vidta några åtgärder för kompatibilitet på FIPS 140-2 nivå 3.
 
 ### <a name="q-how-does-a-customer-ensure-that-when-an-hsm-is-deprovisioned-all-the-key-material-is-wiped-out"></a>F: Hur ser en kund till att när en HSM avetableras rensas alla viktiga material?
 
-Innan du begär avetablering måste kunden ha nollställt HSM med hjälp av Gemalto-klient verktyg som tillhandahålls av HSM.
+Innan du begär avetablering måste kunden ha nollställt HSM med hjälp av Thales-klient verktyg som tillhandahålls av HSM.
 
 ## <a name="performance-and-scale"></a>Prestanda och skalning
 
 ### <a name="q-how-many-cryptographic-operations-are-supported-per-second-with-dedicated-hsm"></a>F: hur många kryptografiska åtgärder som stöds per sekund med dedikerad HSM?
 
-Dedikerade HSM-bestämmelser SafeNet Network HSM 7-enheter (modell A790). Här är en sammanfattning av högsta prestanda för vissa åtgärder: 
+Dedikerade HSM-bestämmelser Thales Network Luna HSM 7 HSM: er. Här är en sammanfattning av högsta prestanda för vissa åtgärder: 
 
 * RSA-2048:10 000 transaktioner per sekund
 * ECC-P256:20 000 transaktioner per sekund

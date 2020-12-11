@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 963f0698b921caa413c61059ad69284c41b4f265
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 86d4eb68866e35300738a15cbd3549485c3cbafb
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999469"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97096437"
 ---
 Genom att använda regional VNet-integrering kan din app komma åt:
 
@@ -96,7 +96,17 @@ Border Gateway Protocol (BGP) vägar påverkar också din app-trafik. Om du har 
 
 ### <a name="azure-dns-private-zones"></a>Azure DNS Private Zones 
 
-När din app har integrerats med ditt VNet, använder den samma DNS-server som ditt VNet har kon figurer ATS med. Du kan åsidosätta det här beteendet i appen genom att konfigurera appens inställning WEBSITE_DNS_SERVER med adressen till önskad DNS-server. Om du har konfigurerat en anpassad DNS-server som har kon figurer ATS med ditt VNet men vill att appen ska använda Azure DNS privata zoner, bör du ange WEBSITE_DNS_SERVER med värdet 168.63.129.16. 
+När din app har integrerats med ditt VNet, använder den samma DNS-server som ditt VNet har kon figurer ATS med. Som standard fungerar inte appen med Azure DNS Private Zones. Om du vill arbeta med Azure DNS Private Zones måste du lägga till följande appinställningar:
+
+
+1. WEBSITE_DNS_SERVER med värdet 168.63.129.16 1. WEBSITE_DNS_SERVER med värdet 168.63.129.16
+1. WEBSITE_VNET_ROUTE_ALL med värdet 1 1. WEBSITE_VNET_ROUTE_ALL med värdet 1
+
+
+De här inställningarna kommer att skicka alla utgående samtal från din app till ditt VNet, förutom att aktivera din app för att använda Azure DNS privata zoner.   De här inställningarna kommer att skicka alla utgående samtal från din app till ditt VNet. Dessutom kommer appen att tillåta att appen använder Azure DNS genom att fråga zonen Privat DNS på arbets nivå. Den här funktionen ska användas när en app som körs har åtkomst till en Privat DNS zon.
+
+> [!NOTE]
+>Det går inte att lägga till en anpassad domän i en webbapp som använder Privat DNS zon med VNET-integration. Anpassad domän verifiering görs på styrenhets nivå, inte på arbets nivå, vilket förhindrar att DNS-poster visas. Om du vill använda en anpassad domän från en Privat DNS zon måste verifieringen kringgås med en Application Gateway-eller ILB-App Service-miljön.
 
 ### <a name="private-endpoints"></a>Privata slut punkter
 

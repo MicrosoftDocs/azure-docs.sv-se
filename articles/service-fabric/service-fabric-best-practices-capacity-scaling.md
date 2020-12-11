@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 96cd460ddfea863eb27a1087ff59f3b87acf65d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41cfff11e44a3d052614aa3c81a4623f59bbbbf5
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531312"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095295"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Kapacitets planering och skalning för Azure Service Fabric
 
@@ -50,21 +50,11 @@ Om du använder automatisk skalning via skalnings uppsättningar för virtuella 
 > [!NOTE]
 > Den primära nodtypen som är värd för tillstånds känsliga Service Fabric system tjänster måste vara silver hållbarhets nivå eller större. När du har aktiverat silver tålighet är kluster åtgärder som uppgraderingar, tillägg eller borttagning av noder och så vidare långsammare eftersom systemet optimerar för data säkerhet över åtgärds hastigheten.
 
-Vertikal skalning en skalnings uppsättning för en virtuell dator är en destruktiv åtgärd. Skala i stället horisontellt klustret genom att lägga till en ny skalnings uppsättning med önskad SKU. Migrera sedan dina tjänster till önskad SKU för att slutföra en säker vertikal skalnings åtgärd. Att ändra en resurs-SKU för en virtuell dators skalnings uppsättning är en destruktiv åtgärd eftersom den avbildningen av värdarna, vilket tar bort allt lokalt sparat tillstånd.
+Vertikal skalning en skalnings uppsättning för virtuella datorer genom att helt enkelt ändra resurs-SKU: n är en destruktiv åtgärd, eftersom den återavbildning av värdarna på så vis tar bort alla lokalt sparade tillstånd. I stället vill du skala klustret vågrätt genom att lägga till en ny skalnings uppsättning med önskad SKU och sedan migrera dina tjänster till den nya skalnings uppsättningen för att slutföra en säker lodrät skalnings åtgärd.
 
-Klustret använder Service Fabric- [nodens egenskaper och placerings begränsningar](./service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints) för att bestämma var du ska vara värd för programmets tjänster. När du skalar den primära nodtypen lodrätt måste du deklarera identiska egenskaps värden för `"nodeTypeRef"` . Du hittar dessa värden i Service Fabric-tillägget för skalnings uppsättningar för virtuella datorer. 
-
-Följande kodfragment i en Resource Manager-mall visar de egenskaper som du deklarerar. Det har samma värde för de nyligen etablerade skalnings uppsättningar som du skalar till och stöds bara som en tillfällig tillstånds känslig tjänst för klustret.
-
-```json
-"settings": {
-   "nodeTypeRef": ["[parameters('primaryNodetypeName')]"]
-}
-```
+Klustret använder Service Fabric- [nodens egenskaper och placerings begränsningar](./service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints) för att bestämma var du ska vara värd för programmets tjänster. När du skalar en primär nodtyp lodrätt, distribuerar du en andra primär nodtyp och anger sedan ( `"isPrimary": false` ) på den ursprungliga primära nodtypen och fortsätter att inaktivera dess noder och tar bort dess skalnings uppsättning och dess relaterade resurser. Mer information finns i [skala upp en Service Fabric primär nodtyp för kluster](service-fabric-scale-up-primary-node-type.md).
 
 > [!NOTE]
-> Lämna inte klustret som körs med flera skalnings uppsättningar som använder samma `nodeTypeRef` egenskaps värde längre än vad som krävs för att slutföra en lyckad lodrät skalnings åtgärd.
->
 > Verifiera alltid åtgärder i test miljöer innan du försöker göra ändringar i produktions miljön. Som standard har Service Fabric kluster system tjänster en placerings begränsning som bara är den primära nodtypen för målet.
 
 Med de egenskaper för Node och placering som deklarerats utför du följande steg en VM-instans i taget. Detta gör att system tjänsterna (och dina tillstånds känsliga tjänster) kan stängas av på ett smidigt sätt på den virtuella dator instans som du tar bort när nya repliker skapas någon annan stans.

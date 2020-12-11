@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 10/06/2020
+ms.date: 12/10/2020
 ms.author: rolyon
-ms.openlocfilehash: ad0ba3c63f6f0ef6e7e02051031cf215c2e72cce
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 92b27690ab1f2ca8d98eb2231c5a27bc508613f8
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648250"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095431"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Överföra en Azure-prenumeration till en annan Azure AD-katalog
 
@@ -53,7 +53,12 @@ Här följer några orsaker till varför du kanske vill överföra en prenumerat
 - En del av din verksamhet har delats i ett separat företag och du måste flytta några av dina resurser till en annan Azure AD-katalog.
 - Du vill hantera vissa resurser i en annan Azure AD-katalog för säkerhets isolering.
 
-Att överföra en prenumeration kräver stillestånds tid för att slutföra processen. Beroende på ditt scenario kan det vara bättre att bara återskapa resurserna och kopiera data till mål katalogen och prenumerationen.
+### <a name="alternate-approaches"></a>Alternativa metoder
+
+Överföring av en prenumeration kräver stillestånds tid för att slutföra processen. Beroende på ditt scenario kan du överväga följande alternativa metoder:
+
+- Återskapa resurserna och kopiera data till mål katalogen och prenumerationen.
+- Anta en arkitektur för flera kataloger och lämna prenumerationen i käll katalogen. Använd Azure-Lighthouse för att delegera resurser så att användare i mål katalogen kan komma åt prenumerationen i käll katalogen. Mer information finns i [Azure Lighthouse i Enterprise-scenarier](../lighthouse/concepts/enterprise.md).
 
 ### <a name="understand-the-impact-of-transferring-a-subscription"></a>Förstå effekten av överföring av en prenumeration
 
@@ -364,9 +369,9 @@ I det här avsnittet beskrivs de grundläggande stegen för att uppdatera nyckel
 
 Även om roll tilldelningar tas bort under överföringen kan användare i det ursprungliga ägar kontot fortsätta att ha åtkomst till prenumerationen via andra säkerhets metoder, inklusive:
 
-- Åtkomstnycklar för tjänster såsom Storage.
+- Åtkomstnycklar för tjänster som Storage.
 - [Hanterings certifikat](../cloud-services/cloud-services-certs-create.md) som ger användare administratörs åtkomst till prenumerations resurser.
-- Autentiseringsuppgifter för fjärråtkomst för tjänster såsom Azure Virtual Machines.
+- Autentiseringsuppgifter för fjärråtkomst för tjänster som Azure Virtual Machines.
 
 Om avsikten är att ta bort åtkomst från användare i käll katalogen så att de inte har åtkomst till mål katalogen, bör du överväga att rotera eventuella autentiseringsuppgifter. Användarna fortsätter att ha åtkomst efter överföringen tills autentiseringsuppgifterna har uppdaterats.
 
@@ -383,3 +388,4 @@ Om avsikten är att ta bort åtkomst från användare i käll katalogen så att 
 - [Överföra faktureringsägarskap för en Azure-prenumeration till ett annat konto](../cost-management-billing/manage/billing-subscription-transfer.md)
 - [Överför Azure-prenumerationer mellan prenumeranter och molnlösningsleverantörer](../cost-management-billing/manage/transfer-subscriptions-subscribers-csp.md)
 - [Associera eller lägga till en Azure-prenumeration till Azure Active Directory-klienten](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
+- [Azure Lighthouse i företagsscenarier](../lighthouse/concepts/enterprise.md)

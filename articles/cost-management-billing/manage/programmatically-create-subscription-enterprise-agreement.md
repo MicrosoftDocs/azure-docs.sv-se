@@ -9,12 +9,12 @@ ms.date: 11/17/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 34fe909c7fca3c91845c58b41abb0d8885e156e6
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 0cdd25b2937dd1fb2cc70ef7b1c5a9e9ddaef375
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94850948"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780628"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>Skapa prenumerationer på Azure Enterprise-avtal via programmering med de senaste API:erna
 
@@ -89,7 +89,7 @@ API-svaret visar alla registreringskonton som du har åtkomst till:
 
 ```
 
-Notera `id` från ett av dina `enrollmentAccounts`. Det är det faktureringsomfång där en begäran om att skapa en prenumeration initieras. 
+Värdet för ett faktureringsomfång och `id` är samma sak. `id` för ditt registreringskonto är det faktureringsomfång som prenumerationsbegäran initieras i. Det är viktigt att känna till ID:t eftersom det är en obligatorisk parameter som du ska använda senare i artikeln för att skapa en prenumeration.
 
 <!-- 
 ### [PowerShell](#tab/azure-powershell-getEnrollments)
@@ -130,6 +130,8 @@ I begärandetexten anger du `id` från ett av dina `enrollmentAccounts` som `bil
   }
 }
 ```
+
+Tillåtna värden för `Workload` är `Production` och `DevTest`.
 
 #### <a name="response"></a>Svarsåtgärder
 

@@ -14,18 +14,18 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 06/01/2020
-ms.openlocfilehash: 21410f7137a76b43f57ca7a1e037908410eae365
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: e4c87d8579b06cdfb37c1635a25db5ce67aa3545
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844530"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094802"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-net"></a>Snabb start: skicka telemetri från en enhet till en IoT-hubb och Läs den med ett Server dels program (.NET)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-service-application-net"></a>Snabb start: skicka telemetri från en enhet till en IoT-hubb och Läs den med ett tjänst program (.NET)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
-IoT Hub är en Azure-tjänst som gör att du kan mata in stora mängder telemetri från IoT-enheter i molnet för lagring eller bearbetning. I den här snabbstarten skickar du telemetri från ett simulerat enhetsprogram via IoT Hub till ett serverdelsprogram för bearbetning.
+IoT Hub är en Azure-tjänst som gör att du kan mata in stora mängder telemetri från IoT-enheter i molnet för lagring eller bearbetning. I den här snabb starten skickar du telemetri från ett simulerat enhets program, via IoT Hub, till ett tjänst program för bearbetning.
 
 Snabbstarten använder två färdiga C#-program – ett för att skicka telemetrin och ett för att läsa telemetrin från hubben. Innan du kör dessa två program skapar du en IoT-hubb och registrerar en enhet med navet.
 
@@ -33,7 +33,7 @@ Snabbstarten använder två färdiga C#-program – ett för att skicka telemetr
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* De två exempelprogram som du kör i den här snabbstarten skrivs med C#. Du behöver .NET Core SDK 3,0 eller mer på din utvecklings dator.
+* De två exempelprogram som du kör i den här snabbstarten skrivs med C#. Du behöver .NET Core SDK 3,1 eller mer på din utvecklings dator.
 
     Du kan ladda ned .NET Core-SDK:n för flera plattformar från [.NET](https://www.microsoft.com/net/download/all).
 
@@ -44,7 +44,7 @@ Snabbstarten använder två färdiga C#-program – ett för att skicka telemetr
     ```
 
     > [!NOTE]
-    > .NET Core SDK 3,0 eller senare rekommenderas att kompilera Event Hubs Service-koden som används för att läsa telemetri i den här snabb starten. Du kan använda .NET Core SDK 2,1 om du anger språk versionen för Service koden som ska förhandsgranskas enligt vad som anges i avsnittet [läsa telemetri från hubb](#read-the-telemetry-from-your-hub) .
+    > .NET Core SDK 3,1 eller senare rekommenderas att kompilera Event Hubs Service-koden som används för att läsa telemetri i den här snabb starten.
 
 
 * Ladda ned Azure IoT C#-exempel från [https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) och EXTRAHERA zip-arkivet.
@@ -87,7 +87,7 @@ En enhet måste vara registrerad vid din IoT-hubb innan den kan ansluta. I den h
 
     Du kommer att använda det här värdet senare i snabb starten.
 
-3. Du behöver också _Event Hubs-kompatibel slut punkt_, _Event Hubs-kompatibel sökväg_ och _tjänstens primära nyckel_ från din IoT Hub för att aktivera backend-programmet för att ansluta till din IoT-hubb och hämta meddelandena. Följande kommandon hämtar dessa värden för din IoT-hubb:
+3. Du behöver också _Event Hubs-kompatibel slut punkt_, _Event Hubs-kompatibel sökväg_ och _tjänstens primära nyckel_ från din IoT-hubb för att aktivera tjänst programmet för att ansluta till din IoT-hubb och hämta meddelandena. Följande kommandon hämtar dessa värden för din IoT-hubb:
 
    **YourIoTHubName** : Ersätt platshållaren nedan med det namn du väljer för din IoT-hubb.
 
@@ -105,22 +105,18 @@ En enhet måste vara registrerad vid din IoT-hubb innan den kan ansluta. I den h
 
 Det simulerade enhetsprogrammet ansluter till en enhetsspecifik slutpunkt på din IoT-hubb och skickar simulerad telemetri om temperatur och luftfuktighet.
 
-1. Navigera till C#-exempelprojektets rotmapp i ett lokalt terminalfönster. Gå sedan till mappen **iot-hub\Quickstarts\simulated-device**.
+1. Navigera till C#-exempelprojektets rotmapp i ett lokalt terminalfönster. Navigera sedan till mappen **IoT-hub\Quickstarts\SimulatedDevice**
 
-2. Öppna filen **SimulatedDevice.cs** i en valfri textredigerare.
-
-    Ersätt värdet för `s_connectionString` variabeln med enhets anslutnings strängen som du antecknade tidigare. Spara sedan ändringarna i **SimulatedDevice.cs**.
-
-3. Installera de paket som krävs för programmet för simulerad enhet genom att köra följande kommandon i det lokala terminalfönstret:
+2. Installera de paket som krävs för programmet för simulerad enhet genom att köra följande kommandon i det lokala terminalfönstret:
 
     ```cmd/sh
     dotnet restore
     ```
 
-4. Kör programmet för simulerad enhet genom att skapa och köra följande kommandon i det lokala terminalfönstret:
+3. I det lokala terminalfönstret kör du följande kommando för att skapa och köra det simulerade enhets programmet med enhets anslutnings strängen som du antecknade tidigare:
 
     ```cmd/sh
-    dotnet run
+    dotnet run -- {DeviceConnectionString}
     ```
 
     Följande skärmbild visar utdata när det simulerade enhetsprogrammet skickar telemetri till din IoT-hubb:
@@ -129,36 +125,37 @@ Det simulerade enhetsprogrammet ansluter till en enhetsspecifik slutpunkt på di
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Läs telemetrin från din hubb
 
-Serverdelsprogrammet ansluter till **Events**-slutpunkten för tjänstsidan på din IoT-hubb. Programmet tar emot enhet-till-moln-meddelanden som skickats från din simulerade enhet. Ett IoT Hub-serverprogram körs normalt i molnet för att ta emot och bearbeta enhet-till-molnet-meddelanden.
+Tjänst programmet ansluter till slut punkten för **händelser** på tjänst sidan på din IoT Hub. Programmet tar emot enhet-till-moln-meddelanden som skickats från din simulerade enhet. Ett IoT Hub tjänst program körs vanligt vis i molnet för att ta emot och bearbeta meddelanden från enheten till molnet.
 
-1. Navigera till C#-exempelprojektets rotmapp i ett annat lokalt terminalfönster. Gå sedan till mappen **iot-hub\Quickstarts\read-d2c-messages**.
+1. Navigera till C#-exempelprojektets rotmapp i ett annat lokalt terminalfönster. Navigera sedan till mappen **IoT-hub\Quickstarts\ReadD2cMessages**
 
-2. Öppna filen **ReadDeviceToCloudMessages.cs** i en valfri textredigerare. Uppdatera följande variabler och spara ändringarna i filen.
-
-    | Variabel | Värde |
-    | -------- | ----------- |
-    | `EventHubsCompatibleEndpoint` | Ersätt värdet för variabeln med den Event Hubs-kompatibla slut punkten som du antecknade tidigare. |
-    | `EventHubName`                | Ersätt värdet för variabeln med Event Hubs-kompatibel sökväg som du antecknade tidigare. |
-    | `IotHubSasKey`                | Ersätt värdet för variabeln med tjänstens primära nyckel som du gjorde en anteckning om tidigare. |
-
-    > [!NOTE]
-    > Om du använder .NET Core SDK 2,1 måste du ange språk versionen som ska förhands granskningen för att kompilera koden. Det gör du genom att öppna filen **Read-D2C-Messages. CSPROJ** och ange värdet för `<LangVersion>` elementet till `preview` .
-
-3. Installera de bibliotek som krävs för serverdelsprogrammet genom att köra följande kommandon i det lokala terminalfönstret:
+2. I det lokala terminalfönstret kör du följande kommando för att installera de bibliotek som krävs för programmet:
 
     ```cmd/sh
     dotnet restore
     ```
 
-4. Skapa och kör serverdelsprogrammet genom att köra följande kommandon i det lokala terminalfönstret:
+3. I det lokala terminalfönstret kör du följande kommando för att se parameter alternativen.
 
     ```cmd/sh
     dotnet run
     ```
 
-    Följande skärmbild visar utdata när serverdelsprogrammet tar emot telemetri som skickats av den simulerade enheten till hubben:
+4. I det lokala terminalfönstret kör du ett av följande kommando för att skapa och köra programmet med:
 
-    ![Kör serverdelsprogrammet](media/quickstart-send-telemetry-dotnet/read-device-to-cloud.png)
+    ```cmd/sh
+    dotnet run -- -c {EventHubConnectionString}
+    ```
+
+    eller
+
+    ```cmd/sh
+    dotnet run -- -e {EventHubCompatibleEndpoint} -n {EventHubName} -s {SharedAccessKey}
+    ```
+
+    Följande skärm bild visar resultatet när tjänst programmet tar emot telemetri som skickas av den simulerade enheten till hubben:
+
+    ![Köra tjänst programmet](media/quickstart-send-telemetry-dotnet/read-device-to-cloud.png)
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
@@ -166,9 +163,9 @@ Serverdelsprogrammet ansluter till **Events**-slutpunkten för tjänstsidan på 
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten skapar du en IoT-hubb, registrerat en enhet, skickade simulerad telemetri till hubben med hjälp av ett C#-program och läser Telemetrin från hubben med hjälp av ett enkelt Server dels program.
+I den här snabb starten skapar du en IoT-hubb, registrerat en enhet, skickade simulerad telemetri till hubben med hjälp av ett C#-program och läser Telemetrin från hubben med hjälp av ett enkelt tjänst program.
 
-Om du vill veta hur du kan styra den simulerade enheten från ett serverdelsprogram fortsätter du till nästa snabbstart.
+Om du vill veta hur du styr den simulerade enheten från ett tjänst program fortsätter du till nästa snabb start.
 
 > [!div class="nextstepaction"]
 > [Snabbstart: Kontrollera en enhet ansluten till en IoT-hubb](quickstart-control-device-dotnet.md)

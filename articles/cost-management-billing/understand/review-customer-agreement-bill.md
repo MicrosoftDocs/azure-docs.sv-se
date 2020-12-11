@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: tutorial
-ms.date: 08/20/2020
+ms.date: 12/02/2020
 ms.author: banders
-ms.openlocfilehash: 619dec1b2246b7e74b058e570df4021888196b0c
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: b5de81f5eaf76c16c1ea8fc78075c4567c77aeee
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447543"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531993"
 ---
 # <a name="tutorial-review-your-microsoft-customer-agreement-invoice"></a>Självstudier: Granska fakturan för ditt Microsoft-kundavtal
 
@@ -54,6 +54,8 @@ Om du bara har åtkomst till ett faktureringsomfång väljer du **Egenskaper** t
 ![Skärmbild som visar Microsoft-kundavtal på egenskapssidan](./media/review-customer-agreement-bill/billing-mca-property.png)
 
 Om du har åtkomst till flera faktureringsomfång kontrollerar du typen i kolumnen Faktureringskonto. Du har åtkomst till ett faktureringskonto för ett Microsoft-kundavtal om faktureringskontotypen för något av omfången är **Microsoft Customer Agreement**.
+
+På sidan för faktureringsomfång väljer du **Faktureringsomfattningar**. Välj sedan det faktureringskonto som ska användas för att betala för användningen av prenumerationerna. Faktureringskontot bör vara ett **Microsoft-kundavtal**.
 
 ![Skärmbild som visar Microsoft-kundavtal på sidan med en lista över faktureringskonton](./media/review-customer-agreement-bill/billing-mca-in-the-list.png)
 
@@ -146,7 +148,7 @@ Använd CSV-filen med Azure-användning och avgifter när du ska analysera dina 
 
 ### <a name="download-your-invoice-and-usage-details"></a>Ladda ned din faktura och användningsinformation
 
-Beroende på din åtkomst kan du behöva välja ett faktureringskonto eller en faktureringsprofil i Kostnadshantering + fakturering. Välj **Fakturor** under **Fakturering** i den vänstra menyn. I fakturarutnätet letar du upp raden för den faktura som du vill ladda ned. Klicka på nedladdningssymbolen eller ellipsen (...) i slutet av raden. I rutan **Ladda ned** laddar du ned filen med användningsinformation och fakturan.
+Beroende på din åtkomst kan du behöva välja ett faktureringskonto eller en faktureringsprofil i Kostnadshantering + fakturering. Välj **Fakturor** under **Fakturering** i den vänstra menyn. I fakturarutnätet letar du upp raden för den faktura som du vill ladda ned. Välj nedladdningssymbolen eller ellipsen (...) i slutet av raden. I rutan **Ladda ned** laddar du ned filen med användningsinformation och fakturan.
 
 ### <a name="view-detailed-usage-by-invoice-section"></a>Visa detaljerad användning per fakturaavsnitt
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: d889c82142cda60b920f7b29bd91755cbc34f525
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 48ff32655b107958a3e8e42dbd7de0f405a6fffa
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701457"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094870"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Åtkomstkontroll i Azure Data Lake Storage Gen1
 
@@ -33,8 +33,6 @@ Det finns två sorters åtkomstkontrollistor (ACL:er), **Åtkomst-ACL:er** och *
 
 
 Både åtkomst-ACL:er och standard-ACL:er har samma struktur.
-
-
 
 > [!NOTE]
 > Att ändra standard-ACL på ett överordnat objekt påverkar inte åtkomst-ACL eller standard-ACL för underordnade objekt som redan finns.
@@ -74,7 +72,7 @@ Nedan följer några vanliga scenarier som hjälper dig att förstå vilka behö
 | Åtgärd | Objekt              |    /      | Stockholm   | Portland   | Data.txt       |
 |-----------|---------------------|-----------|------------|-------------|----------------|
 | Läs      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
-| Lägg till i | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| Lägg till i | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `-W-`          |
 | Ta bort    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | Skapa    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | Lista      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |

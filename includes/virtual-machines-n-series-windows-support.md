@@ -1,6 +1,6 @@
 ---
-title: ta med fil
-description: ta med fil
+title: inkludera fil
+description: inkludera fil
 services: virtual-machines-windows
 author: cynthn
 ms.service: virtual-machines-windows
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: caad292f06710fca8d6f64476eead5dfcb164e9d
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: f99aedc21c3b51975649f8944ab53536d365a7d1
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96536933"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97096364"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>Operativsystem och drivrutiner som stöds
 
@@ -34,7 +34,9 @@ NVIDIA Tesla-drivrutiner (CUDA) för NC, NCv2, NCv3, NCasT4_v3, ND och NDv2-seri
 
 Microsoft distribuerar NVIDIA GRID-drivrutiner installations program för virtuella datorer i NV-och NVv3-serien som används som virtuella arbets stationer eller för virtuella program. Installera endast dessa RUTNÄTs driv rutiner på virtuella datorer i Azure NV-serien, bara på de operativ system som anges i följande tabell. Dessa driv rutiner inkluderar licensiering för virtuella GPU-program i Azure i Azure. Du behöver inte konfigurera en program licens Server för NVIDIA vGPU.
 
-RUTNÄTs driv rutinerna som distribueras med Azure fungerar inte på virtuella datorer som inte är NV-serien, till exempel NC, NCv2, NCv3, ND och NDv2-seriens virtuella datorer. Det enda undantaget är NCas_T4_V3 VM-serien där RUTNÄTs driv rutinerna ska aktivera grafik funktionerna som liknar NV-serien.
+RUTNÄTs driv rutiner som distribueras om av Azure fungerar inte på virtuella datorer som inte är NV-filer som NCv2, NCv3, ND och NDv2-seriens virtuella datorer. Det enda undantaget är NCas_T4_V3 VM-serien där RUTNÄTs driv rutinerna ska aktivera grafik funktionerna som liknar NV-serien.
+
+NC-Series med NVIDIA K80-GPU: er stöder inte rutnät/grafik program.  
 
 Observera att NVIDIA-tillägget alltid kommer att installera den senaste driv rutinen. Vi tillhandahåller länkar till den tidigare versionen här för kunder, som har beroende av en äldre version.
 

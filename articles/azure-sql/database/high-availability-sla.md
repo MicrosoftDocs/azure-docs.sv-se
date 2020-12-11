@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: sstein, sashan
 ms.date: 10/28/2020
-ms.openlocfilehash: e5e58f8592fcf8627870c3a574335bbe34394064
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 15067a046d8adc0ba38101bbe24cdc48cd433d56
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452454"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095448"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Hög tillgänglighet för Azure SQL Database-och SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -122,7 +122,7 @@ En redundansväxling kan initieras med PowerShell, REST API eller Azure CLI:
 
 |Distributions typ|PowerShell|REST-API| Azure CLI|
 |:---|:---|:---|:---|
-|Databas|[Invoke-AzSqlDatabaseFailover](/powershell/module/az.sql/invoke-azsqldatabasefailover)|[Redundansväxling av databas](/rest/api/sql/databases(failover)/failover/)|[AZ rest](/cli/azure/reference-index#az-rest) kan användas för att anropa ett REST API-anrop från Azure CLI|
+|Databas|[Invoke-AzSqlDatabaseFailover](/powershell/module/az.sql/invoke-azsqldatabasefailover)|[Redundansväxling av databas](/rest/api/sql/databases/failover)|[AZ rest](/cli/azure/reference-index#az-rest) kan användas för att anropa ett REST API-anrop från Azure CLI|
 |Elastisk pool|[Invoke-AzSqlElasticPoolFailover](/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[Redundans för elastisk pool](/rest/api/sql/elasticpools(failover)/failover/)|[AZ rest](/cli/azure/reference-index#az-rest) kan användas för att anropa ett REST API-anrop från Azure CLI|
 |Managed Instance|[Invoke-AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[Hanterade instanser – redundans](/rest/api/sql/managed%20instances%20-%20failover/failover)|[AZ SQL mi redundans](/cli/azure/sql/mi/#az-sql-mi-failover)|
 

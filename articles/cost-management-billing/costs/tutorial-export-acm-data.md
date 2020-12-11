@@ -3,18 +3,18 @@ title: Självstudie – Skapa och hantera exporterade data från Azure Cost Mana
 description: Den här artikeln visar hur du kan skapa en hantera exporterade Azure Cost Management-data så att du kan använda dem i externa system.
 author: bandersmsft
 ms.author: banders
-ms.date: 11/20/2020
+ms.date: 12/7/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.custom: seodec18
-ms.openlocfilehash: dcf9b925e7f0ce691a5a50850a30f723d48ec50b
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: 32989b4d5c595416f82fc9d3f1cec2eddec1d6ee
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "96007230"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929267"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Självstudier: Skapa och hantera exporterade data
 
@@ -58,20 +58,20 @@ Om du vill skapa eller visa en dataexport, eller om du vill schemalägga en expo
 > - Utöver prenumerationer kan du skapa exporter för resursgrupper, hanteringsgrupper, avdelningar och registreringar. Mer information om omfång finns i [Förstå och arbeta med omfång](understand-work-scopes.md).
 >- När du är inloggad som partner i faktureringskontots omfång eller i en kunds klientorganisation kan du exportera data till ett Azure Storage-konto som är länkat till ditt partnerlagringskonto. Du måste dock ha en aktiv prenumeration i din CSP-klientorganisation.
 
-1. Välj **Lägg till** och skriv ett namn för exporten. 
+1. Välj **Lägg till** och skriv ett namn för exporten.
 1. Välj **Mått**:
     - **Verklig kostnad (användning och inköp)** – välj för att exportera standardanvändning och standardinköp
     - **Periodiserad kostnad (användning och inköp)** – välj för att exportera periodiserade kostnader för inköp som Azure-reservationer
 1. Välj **Exporttyp**:
     - **Daglig export av kostnader hittills under månaden** – tillhandahåller en ny exportfil varje dag för dina kostnader hittills under månaden. Den senaste informationen sammanställs från tidigare dagliga exporter.
-    - **Veckovis export av kostnad under de senaste sju dagarna** – skapar en veckovis export av dina kostnader under de senaste sju dagarna från det valda startdatumet för exporten.  
-    - **Månatlig export av den senaste månadens kostnader** – ger dig en export av den senaste månadens kostnader jämfört med den aktuella månad då du skapar exporten. Om vi ser framåt kör schemat en export den femte dagen i varje ny månad med kostnaderna för den senaste månaden.  
-    - **Engångsexport** – du kan välja ett datumintervall för historiska data som ska exporteras till Azure Blob Storage. Du kan exportera högst 90 dagars historiska kostnader från den dag du väljer. Den här exporten körs omedelbart och är tillgänglig i ditt lagringskonto inom två timmar.  
+    - **Veckovis export av kostnad under de senaste sju dagarna** – skapar en veckovis export av dina kostnader under de senaste sju dagarna från det valda startdatumet för exporten.
+    - **Månatlig export av den senaste månadens kostnader** – ger dig en export av den senaste månadens kostnader jämfört med den aktuella månad då du skapar exporten. Om vi ser framåt kör schemat en export den femte dagen i varje ny månad med kostnaderna för den senaste månaden.
+    - **Engångsexport** – du kan välja ett datumintervall för historiska data som ska exporteras till Azure Blob Storage. Du kan exportera högst 90 dagars historiska kostnader från den dag du väljer. Den här exporten körs omedelbart och är tillgänglig i ditt lagringskonto inom två timmar.
         Beroende på exporttyp väljer du antingen ett startdatum eller väljer datum för **Från** och **Till**.
-1. Ange prenumerationen för ditt Azure Storage-konto och välj sedan en resursgrupp eller skapa en ny resursgrupp. 
-1. Välj lagringskontots namn eller skapa ett nytt lagringskonto. 
+1. Ange prenumerationen för ditt Azure Storage-konto och välj sedan en resursgrupp eller skapa en ny resursgrupp.
+1. Välj lagringskontots namn eller skapa ett nytt lagringskonto.
 1. Välj plats (Azure-region).
-1. Ange den lagringscontainer och den katalogsökväg som du vill att exportfilen ska gå till. 
+1. Ange den lagringscontainer och den katalogsökväg som du vill att exportfilen ska gå till.
     :::image type="content" source="./media/tutorial-export-acm-data/basics_exports.png" alt-text="Nytt exportexempel" lightbox="./media/tutorial-export-acm-data/basics_exports.png":::
 1. Granska exportinformationen och välj **Skapa**.
 
@@ -132,7 +132,7 @@ Börja med att förbereda din miljö för Azure CLI:
 1. Du kan uppdatera en export med hjälp av kommandot [az costmanagement export update](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_update):
 
    ```azurecli
-   az costmanagement export update --name DemoExport 
+   az costmanagement export update --name DemoExport
       --scope "subscriptions/00000000-0000-0000-0000-000000000000" --storage-directory demodirectory02
    ```
 
@@ -145,6 +145,89 @@ Du kan ta bort en export med hjälp av kommandot [az costmanagement export delet
 
 ```azurecli
 az costmanagement export delete --name DemoExport --scope "subscriptions/00000000-0000-0000-0000-000000000000"
+```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Börja med att förbereda din miljö för Azure PowerShell:
+
+[!INCLUDE [azure-powershell-requirements-no-header.md](../../../includes/azure-powershell-requirements-no-header.md)]
+
+* > [!IMPORTANT]
+  > Så länge PowerShell-modulen **Az.CostManagement** finns i en förhandsversion måste du installera den separat med hjälp av cmdleten `Install-Module`. När modulen blir allmänt tillgänglig kommer den att ingå i framtida versioner av Az PowerShell-modulen och vara tillgänglig som standard i Azure Cloud Shell.
+
+  ```azurepowershell-interactive
+  Install-Module -Name Az.CostManagement
+  ```
+
+1. När du har loggat in kan du visa dina aktuella exporter genom att köra cmdleten [Get-AzCostManagementExport](/powershell/module/Az.CostManagement/get-azcostmanagementexport):
+
+   ```azurepowershell-interactive
+   Get-AzCostManagementExport -Scope 'subscriptions/00000000-0000-0000-0000-000000000000'
+   ```
+
+   >[!NOTE]
+   >
+   >* Förutom prenumerationer kan du skapa exporter för resursgrupper och hanteringsgrupper. Mer information om omfång finns i [Förstå och arbeta med omfång](understand-work-scopes.md).
+   >* När du är inloggad som partner i faktureringskontots omfång eller i en kunds klientorganisation kan du exportera data till ett Azure Storage-konto som är länkat till ditt partnerlagringskonto. Du måste dock ha en aktiv prenumeration i din CSP-klientorganisation.
+
+1. Skapa en resursgrupp eller använd en befintlig resursgrupp. Du kan skapa en resursgrupp genom att köra cmdleten [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup):
+
+   ```azurepowershell-interactive
+   New-AzResourceGroup -Name TreyNetwork -Location eastus
+   ```
+
+1. Skapa ett lagringskonto för att ta emot exporterna eller använd ett befintligt lagringskonto. Du kan skapa ett lagringskonto genom att köra cmdleten [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount):
+
+   ```azurepowershell-interactive
+   New-AzStorageAccount -ResourceGroupName TreyNetwork -AccountName cmdemo -SkuName Standard_RAGRS -Location eastus
+   ```
+
+1. Du kan skapa exporten genom att köra cmdleten [New-AzCostManagementExport](/powershell/module/Az.CostManagement/new-azcostmanagementexport):
+
+   ```azurepowershell-interactive
+   $Params = @{
+     Name = 'DemoExport'
+     DefinitionType = 'ActualCost'
+     Scope = 'subscriptions/00000000-0000-0000-0000-000000000000'
+     DestinationResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/treynetwork/providers/Microsoft.Storage/storageAccounts/cmdemo'
+     DestinationContainer = 'democontainer'
+     DefinitionTimeframe = 'MonthToDate'
+     ScheduleRecurrence = 'Daily'
+     RecurrencePeriodFrom = '2020-06-01T00:00:00Z'
+     RecurrencePeriodTo = '2020-10-31T00:00:00Z'
+     ScheduleStatus = 'Active'
+     DestinationRootFolderPath = 'demodirectory'
+     Format = 'Csv'
+   }
+   New-AzCostManagementExport @Params
+   ```
+
+   Du kan välja `ActualCost`, `AmortizedCost` eller `Usage` för parametern **DefinitionType**.
+
+   I det här exemplet används `MonthToDate`. Exporten skapar en exportfil varje dag för dina kostnader hittills under månaden. Den senaste informationen sammanställs från tidigare dagliga exporter under månaden.
+
+1. Du kan visa information om exporten genom att köra cmdleten `Get-AzCostManagementExport`:
+
+   ```azurepowershell-interactive
+   Get-AzCostManagementExport -Scope 'subscriptions/00000000-0000-0000-0000-000000000000'
+   ```
+
+1. Du kan uppdatera en export genom att köra cmdleten [Update-AzCostManagementExport](/powershell/module/Az.CostManagement/update-azcostmanagementexport):
+
+   ```azurepowershell-interactive
+   Update-AzCostManagementExport -Name DemoExport -Scope 'subscriptions/00000000-0000-0000-0000-000000000000' -DestinationRootFolderPath demodirectory02
+   ```
+
+   I det här exemplet ändras utdatakatalogen.
+
+>[!NOTE]
+>Först kan det ta 12–24 timmar innan exporten körs. Men det kan ta längre tid innan data visas i de exporterade filerna.
+
+Du kan ta bort en export genom att köra cmdleten [Remove-AzCostManagementExport](/powershell/module/Az.CostManagement/remove-azcostmanagementexport):
+
+```azurepowershell-interactive
+Remove-AzCostManagementExport -Name DemoExport -Scope 'subscriptions/00000000-0000-0000-0000-000000000000'
 ```
 
 ---
@@ -162,9 +245,9 @@ Om du har ett Enterprise-avtal kan du använda en hanteringsgrupp för att aggre
 Export av hanteringsgrupper av andra prenumerationstyper stöds inte.
 
 1. Om du inte redan har skapat en hanteringsgrupp skapar du en hanteringsgrupp och tilldelar prenumerationer till den.
-1. I kostnadsanalysen anger du omfattningen för hanteringsgruppen och väljer **Välj den här hanteringsgruppen**.  
+1. I kostnadsanalysen anger du omfattningen för hanteringsgruppen och väljer **Välj den här hanteringsgruppen**.
     :::image type="content" source="./media/tutorial-export-acm-data/management-group-scope.png" alt-text="Exempel som visar alternativet Välj den här hanteringsgruppen" lightbox="./media/tutorial-export-acm-data/management-group-scope.png":::
-1. Skapa en export i omfånget för att hämta kostnadshanteringsdata för prenumerationerna i hanteringsgruppen.  
+1. Skapa en export i omfånget för att hämta kostnadshanteringsdata för prenumerationerna i hanteringsgruppen.
     :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="Exempel som visar alternativet Skapa ny export med ett hanteringsgruppsomfång":::
 
 ## <a name="verify-that-data-is-collected"></a>Kontrollera att data samlas in
@@ -196,7 +279,7 @@ Du kan också ladda ned den exporterade CSV-filen i Azure-portalen. Följande st
 
 [![Exempel på exportnedladdning](./media/tutorial-export-acm-data/download-export.png)](./media/tutorial-export-acm-data/download-export.png#lightbox)
 
-## <a name="view-export-run-history"></a>Visa körningshistorik för export  
+## <a name="view-export-run-history"></a>Visa körningshistorik för export
 
 Du kan visa körningshistoriken för din schemalagda export genom att välja en enskild export på sidan med exportlistor. På sidan med exportlistor kan du även snabbt se körningstiderna för dina tidigare exporter och se när en export kommer att köras nästa gång. Här är ett exempel som visar körningshistoriken.
 

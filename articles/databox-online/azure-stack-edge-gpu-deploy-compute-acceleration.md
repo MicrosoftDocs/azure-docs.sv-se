@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 11/05/2020
 ms.author: alkohli
-ms.openlocfilehash: 0aaad18ba5bf98ca2ad53bd86605dfc6cce3e52c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: cf70b24dae70ad2e64f3443e4c4d959d46fb4ea4
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96467154"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095040"
 ---
 # <a name="use-compute-acceleration-on-azure-stack-edge-pro-gpu-for-kubernetes-deployment"></a>Använd beräknings acceleration på Azure Stack Edge Pro GPU för Kubernetes-distribution
 
@@ -28,8 +28,8 @@ Beräknings acceleration är en term som används specifikt för Azure Stack gr�
 
 Artikeln diskuterar beräknings acceleration endast med GPU eller VPU för följande enheter:
 
-- **Azure Stack Edge Pro GPU** – dessa enheter kan ha 1 eller 2 NVIDIA T4-processors KÄRN-GPU. Mer information finns i [NVIDIA-T4](https://www.nvidia.com/data-center/tesla-t4/).
-- **Azure Stack Edge Pro R** – de här enheterna har en NVIDIA T4-plattform för processor kärnor. Mer information finns i [NVIDIA-T4](https://www.nvidia.com/data-center/tesla-t4/).
+- **Azure Stack Edge Pro GPU** – dessa enheter kan ha 1 eller 2 NVIDIA T4-processors KÄRN-GPU. Mer information finns i [NVIDIA-T4](https://www.nvidia.com/en-us/data-center/tesla-t4/).
+- **Azure Stack Edge Pro R** – de här enheterna har en NVIDIA T4-plattform för processor kärnor. Mer information finns i [NVIDIA-T4](https://www.nvidia.com/en-us/data-center/tesla-t4/).
 - **Azure Stack Edge Mini R** – de här enheterna har 1 Intel Movidius MYRIADEN X VPU. Mer information finns i [Intel Movidius myriaden X VPU](https://www.movidius.com/MyriadX).
 
 

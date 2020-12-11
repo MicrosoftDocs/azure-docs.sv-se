@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: f424a2c3102f7b270a64c612a91d645ab71461fc
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f221237bee441ec78d726dabf476d1085a27071d
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184101"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095312"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Använda kund hanterade lagrings konton i Azure Monitor Log Analytics
 
@@ -22,7 +22,7 @@ Log Analytics förlitar sig på Azure Storage i många olika scenarier. Den här
 
 ## <a name="ingesting-azure-diagnostics-extension-logs-wadlad"></a>Mata in Azure-diagnostik anknytnings loggar (WAD/LAD)
 Azure-diagnostik tilläggs agenter (kallas även WAD och LAD för Windows respektive Linux-agenter) samlar in olika operativ system loggar och lagrar dem på ett kundhanterat lagrings konto. Du kan sedan mata in dessa loggar i Log Analytics för att granska och analysera dem.
-Hur du samlar in Azure-diagnostik tilläggs loggar från ditt lagrings konto ansluter lagrings kontot till arbets ytan Log Analytics som en lagrings data källa med hjälp av [Azure Portal](./diagnostics-extension-logs.md#collect-logs-from-azure-storage) eller genom att anropa [API: et för Storage Insights](/rest/api/loganalytics/connectedsources/storage%20insights/createorupdate).
+Hur du samlar in Azure-diagnostik tilläggs loggar från ditt lagrings konto ansluter lagrings kontot till arbets ytan Log Analytics som en lagrings data källa med hjälp av [Azure Portal](./diagnostics-extension-logs.md#collect-logs-from-azure-storage) eller genom att anropa [API: et för Storage Insights](/rest/api/loganalytics/storage%20insights/createorupdate).
 
 Data typer som stöds:
 * Syslog

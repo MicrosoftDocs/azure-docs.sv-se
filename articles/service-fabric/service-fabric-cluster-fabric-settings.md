@@ -3,12 +3,12 @@ title: Ändra kluster inställningar för Azure Service Fabric
 description: I den här artikeln beskrivs de infrastruktur inställningar och de uppgraderings principer för infrastruktur resurser som du kan anpassa.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 1f16e89dd1131f6aea64e5e72a342b3b737f3728
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c055ad1dad8b9574c8d811284a34619ee3648a10
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187229"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095278"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Anpassa Service Fabric-klusterinställningar
 I den här artikeln beskrivs de olika infrastruktur inställningarna för ditt Service Fabric-kluster som du kan anpassa. För kluster som finns i Azure kan du anpassa inställningarna via [Azure Portal](https://portal.azure.com) eller genom att använda en Azure Resource Manager mall. Mer information finns i [Uppgradera konfigurationen av ett Azure-kluster](service-fabric-cluster-config-upgrade-azure.md). För fristående kluster anpassar du inställningarna genom att uppdatera *ClusterConfig.jspå* filen och utföra en konfigurations uppgradering i klustret. Mer information finns i [Uppgradera konfigurationen av ett fristående kluster](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -760,7 +760,7 @@ Följande är en lista över infrastruktur inställningar som du kan anpassa, or
 |PropertyWriteBatch |sträng, standardvärdet är "admin" |Dynamisk|Säkerhetskonfigurationer för namngivning av egenskaps Skriv åtgärder. |
 |ProvisionApplicationType |sträng, standardvärdet är "admin" |Dynamisk| Säkerhets konfiguration för etablering av program typ. |
 |ProvisionFabric |sträng, standardvärdet är "admin" |Dynamisk| Säkerhets konfiguration för MSI och/eller kluster manifest etablering. |
-|Fråga |sträng är standard "administratörs \| \| användare" |Dynamisk| Säkerhets konfiguration för frågor. |
+|Söka i data |sträng är standard "administratörs \| \| användare" |Dynamisk| Säkerhets konfiguration för frågor. |
 |RecoverPartition |sträng, standardvärdet är "admin" | Dynamisk|Säkerhets konfiguration för återställning av en partition. |
 |RecoverPartitions |sträng, standardvärdet är "admin" | Dynamisk|Säkerhets konfiguration för återställning av partitioner. |
 |RecoverServicePartitions |sträng, standardvärdet är "admin" |Dynamisk| Säkerhets konfiguration för återställning av tjänst partitioner. |
@@ -877,7 +877,7 @@ Följande är en lista över infrastruktur inställningar som du kan anpassa, or
 | --- | --- | --- | --- |
 |ConnectionOpenTimeout|TimeSpan, standard är gemensamt:: TimeSpan:: FromSeconds (60)|Statisk|Ange TimeSpan i sekunder. Tids gränsen för anslutnings installationen på både inkommande och mottagande sida (inklusive säkerhets förhandling i säkert läge) |
 |FrameHeaderErrorCheckingEnabled|bool, standard är sant|Statisk|Standardinställning för fel kontroll i ram rubriken i icke-säkert läge. komponent inställningen åsidosätter detta. |
-|MessageErrorCheckingEnabled|bool, standard är falskt|Statisk|Standardinställning för fel kontroll av meddelande huvud och brödtext i icke-säkert läge. komponent inställningen åsidosätter detta. |
+|MessageErrorCheckingEnabled|bool, standard är sant|Statisk|Standardinställning för fel kontroll av meddelande huvud och brödtext i icke-säkert läge. komponent inställningen åsidosätter detta. |
 |ResolveOption|sträng, standard är "ospecificerad"|Statisk|Anger hur FQDN matchas.  Giltiga värden är "ospecificerade/IPv4/IPv6". |
 |SendTimeout|TimeSpan, standard är gemensamt:: TimeSpan:: FromSeconds (300)|Dynamisk|Ange TimeSpan i sekunder. Sändnings tids gräns för att identifiera fastnad anslutning. TCP-felrapporter är inte tillförlitliga i vissa miljöer. Detta kan behöva justeras enligt tillgänglig nätverks bandbredd och storlek på utgående data ( \* MaxMessageSize \/ \* SendQueueSizeLimit). |
 
