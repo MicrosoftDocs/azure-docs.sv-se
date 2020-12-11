@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: e93c0c6bb689980cab1b41e529c491cdf3920260
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: e188c00840a4d043e94f94f9db565e2d4e06aaba
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591724"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031070"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Snabb start: lägga till inloggning med Microsoft i en Java-webbapp
 
@@ -47,25 +47,22 @@ Om du vill köra det här exemplet behöver du:
 >
 > Följ dessa steg om du vill registrera ditt program och manuellt lägga till appens registrerings information i programmet:
 >
-> 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
-> 1. Om ditt konto ger dig tillgång till fler än en klientorganisation väljer du ditt konto i det övre högra hörnet och ställer in din portalsession på önskad Azure AD-klientorganisation.
->
-> 1. Gå till sidan Microsoft Identity Platform för utvecklare [Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) .
-> 1. Välj **ny registrering**.
-> 1. När sidan **Registrera ett program** visas anger du programmets registreringsinformation:
->    - I avsnittet **Namn** anger du ett beskrivande programnamn som ska visas för appens användare, till exempel `java-webapp`.
->    - Välj **Register** (Registrera).
-> 1. På sidan **Översikt** hittar du program- **ID: t** och **katalogens ID-** värden för programmet. Kopiera dessa värden för senare.
-> 1. Välj **autentiseringen** på menyn och Lägg till följande information:
->    - Lägg till **webb** plattforms konfigurationen.  Lägg till dessa `https://localhost:8443/msal4jsample/secure/aad` och `https://localhost:8443/msal4jsample/graph/me` som **omdirigerings-URI: er**..
->    - Välj **Spara**.
-> 1. Välj **certifikaten & hemligheter** på menyn och klicka på **ny klient hemlighet** i avsnittet **klient hemligheter** :
->
->    - Ange en nyckel Beskrivning (för instansens program hemlighet).
->    - Välj en nyckel varaktighet **i ett år**.
->    - Nyckelvärdet visas när du väljer **Lägg till**.
->    - Kopiera värdet för nyckeln för senare. Det här nyckelvärdet visas inte igen eller kan inte hämtas på något annat sätt, så du kan registrera det så snart det visas från Azure Portal.
->
+> 1. Logga in på [Azure-portalen](https://portal.azure.com).
+> 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
+> 1. Sök efter och välj **Azure Active Directory**.
+> 1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.
+> 1. Ange ett **namn** för programmet, till exempel `java-webapp` . Användare av appen kan se det här namnet och du kan ändra det senare.
+> 1. Välj **Register** (Registrera).
+> 1. På sidan **Översikt** noterar du program- **ID: t** och **katalog (klient)-ID:** t för senare användning.
+> 1. Under **Hantera** väljer du **autentisering**.
+> 1. Välj **Lägg till en plattforms**  >  **webbplats**.
+> 1. Lägg till i avsnittet **omdirigerings-URI: er** `https://localhost:8443/msal4jsample/secure/aad` .
+> 1. Välj **Konfigurera**.
+> 1. Från **webb** avsnittet lägger du till `https://localhost:8443/msal4jsample/graph/me` som en andra **omdirigerings-URI**.
+> 1. Under **Hantera** väljer du **certifikaten & hemligheter**. I avsnittet **klient hemligheter** väljer du **ny klient hemlighet**.
+> 1. Ange en nyckel Beskrivning (till exempel appens hemlighet), lämna standard förfallo datum och välj **Lägg till**.
+> 1. Notera **värdet** för **klient hemligheten** för senare användning.
+
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Steg 1: Konfigurera din app i Azure-portalen
 >
@@ -110,7 +107,7 @@ Om du vill köra det här exemplet behöver du:
 > #### <a name="step-3-configure-the-code-sample"></a>Steg 3: Konfigurera kod exemplet
 > 1. Extrahera zip-filen till en lokal mapp.
 > 1. Om du använder en Integrated Development Environment öppnar du exemplet i din favorit IDE (valfritt).
-> 1. Öppna filen Application. properties, som finns i src/main/Resources/Folder och Ersätt värdet för fälten *AAD. clientId* , *AAD. Authority* och *AAD. SecretKey* med respektive värde för **program-ID** , **klient-ID** och **klient hemlighet** som följande:
+> 1. Öppna filen Application. properties, som finns i src/main/Resources/Folder och Ersätt värdet för fälten *AAD. clientId*, *AAD. Authority* och *AAD. SecretKey* med respektive värde för **program-ID**, **klient-ID** och **klient hemlighet** som följande:
 >
 >    ```file
 >    aad.clientId=Enter_the_Application_Id_here
@@ -120,7 +117,7 @@ Om du vill köra det här exemplet behöver du:
 >    aad.redirectUriGraph=https://localhost:8443/msal4jsample/graph/me
 >    aad.msGraphEndpointHost="https://graph.microsoft.com/"
 >    ```
-> Där:
+> Plats:
 >
 > - `Enter_the_Application_Id_here` – är program-Id för programmet som du har registrerat.
 > - `Enter_the_Client_Secret_Here` – är den **klient hemlighet** som du skapade i **certifikat & hemligheter** för det program som du har registrerat.
@@ -150,13 +147,13 @@ Kör den direkt från din IDE genom att använda den inbäddade våren-startserv
 
 ##### <a name="running-from-ide"></a>Köra från IDE
 
-Om du kör webb programmet från en IDE klickar du på Kör och navigerar sedan till projektets start sida. För det här exemplet är standard start sidans URL https://localhost:8443
+Om du kör webb programmet från en IDE väljer du kör och navigerar sedan till projektets start sida. För det här exemplet är standard start sidans URL https://localhost:8443 .
 
 1. På den första sidan väljer du knappen **Logga in** för att omdirigera till Azure Active Directory och uppmana användaren att ange sina autentiseringsuppgifter.
 
 1. När användaren har autentiserats omdirigeras de till *https://localhost:8443/msal4jsample/secure/aad* . De är nu inloggade och sidan visar information om det inloggade kontot. Exempel gränssnittet har följande knappar:
-    - *Logga ut* : loggar den aktuella användaren från programmet och dirigerar om dem till start sidan.
-    - *Visa användar information* : hämtar en token för Microsoft Graph och anropar Microsoft Graph med en begäran som innehåller token, som returnerar grundläggande information om den inloggade användaren.
+    - *Logga ut*: loggar den aktuella användaren från programmet och dirigerar om dem till start sidan.
+    - *Visa användar information*: hämtar en token för Microsoft Graph och anropar Microsoft Graph med en begäran som innehåller token, som returnerar grundläggande information om den inloggade användaren.
 
 ##### <a name="running-from-tomcat"></a>Körs från Tomcat
 

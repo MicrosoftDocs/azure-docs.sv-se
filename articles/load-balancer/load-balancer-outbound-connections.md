@@ -5,15 +5,15 @@ services: load-balancer
 author: asudbring
 ms.service: load-balancer
 ms.topic: conceptual
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: d0fad3a257b6d1b3723cdf337179573b4667b054
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: d30998e0d99ba7b1eeb55bdc47cd5cc54690156f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780118"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032923"
 ---
 # <a name="using-snat-for-outbound-connections"></a>Använda SNAT för utgående anslutningar
 
@@ -66,7 +66,7 @@ När du har konfigurerat [Scenario 2](#scenario2) nedan, kommer värden för var
  | Offentlig belastningsutjämnare eller fristående | [SNAT (käll nätverks adress översättning)](#snat) </br> används inte. | TCP (Transmission Control Protocol) </br> UDP (User Datagram Protocol) </br> ICMP (Internet Control Message Protocol) </br> ESP (Encapsulating Security Payload) |
 
 
- #### <a name="description"></a>Beskrivning
+ #### <a name="description"></a>Description
 
 
  Azure använder den offentliga IP-adress som tilldelats IP-konfigurationen av instansens nätverkskort för alla utgående flöden. Instansen har alla tillfälliga portar tillgängliga. Det spelar ingen roll om den virtuella datorn är belastningsutjämnad eller inte. Det här scenariot prioriteras framför de andra. 
@@ -83,7 +83,7 @@ När du har konfigurerat [Scenario 2](#scenario2) nedan, kommer värden för var
  | Offentlig lastbalanserare | Användning av IP-adresser för belastningsutjämnare för [SNAT](#snat).| TCP </br> UDP |
 
 
- #### <a name="description"></a>Beskrivning
+ #### <a name="description"></a>Description
 
 
  Belastnings Utjämnings resursen har kon figurer ATS med en utgående regel eller en regel för belastnings utjämning som aktiverar standard SNAT. Den här regeln används för att skapa en länk mellan den offentliga IP-klient delen med backend-poolen. 
@@ -109,9 +109,9 @@ När du har konfigurerat [Scenario 2](#scenario2) nedan, kommer värden för var
 
  | Typer | Metod | IP-protokoll |
  | ------------ | ------ | ------------ |
- |Inget </br> Basic Load Balancer | [SNAT](#snat) med dynamisk IP-adress på instans nivå| TCP </br> UDP | 
+ |Ingen </br> Basic Load Balancer | [SNAT](#snat) med dynamisk IP-adress på instans nivå| TCP </br> UDP | 
 
- #### <a name="description"></a>Beskrivning
+ #### <a name="description"></a>Description
 
 
  När den virtuella datorn skapar ett utgående flöde översätter Azure käll-IP-adressen till en dynamiskt allokerad offentlig käll-IP-adress. Den här offentliga IP-adressen kan **inte konfigureras** och kan inte reserveras. Den här adressen räknas inte mot prenumerationens offentliga IP-adressresurs. 

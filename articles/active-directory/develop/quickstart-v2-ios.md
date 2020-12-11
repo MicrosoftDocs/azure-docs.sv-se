@@ -13,12 +13,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 3ea3c3990a9319a81c841de8a7109850fcab5179
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: d1a3965fef6966f70a829cd66d6ce10a01d7af98
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95993915"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030900"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Snabb start: Logga in användare och anropa Microsoft Graph API från en iOS-eller macOS-app
 
@@ -55,16 +55,17 @@ Snabb starten gäller både iOS-och macOS-appar. Vissa steg behövs bara för iO
 > #### <a name="step-1-register-your-application"></a>Steg 1: Registrera ditt program
 > Du registrerar programmet och lägger till appens registreringsinformationen i lösningen manuellt med hjälp av följande steg:
 >
-> 1. Gå till sidan Microsoft Identity Platform för utvecklare [Appregistreringar](https://aka.ms/MobileAppReg) .
-> 1. Välj **ny registrering**.
-> 1. När sidan **Registrera ett program** visas anger du programmets registreringsinformation:
->      - I avsnittet **namn** anger du ett meningsfullt program namn som ska visas för användarna av appen när de loggar in eller medgivande till din app.
->      - Hoppa över andra konfigurationer på den här sidan.
->      - Välj `Register`.
-> 1. I avsnittet **Hantera** väljer du `Authentication`  >  `Add Platform`  >  `iOS` .
->      - Ange **_paket-ID_* _ för ditt program. Paket-ID: t är bara en unik sträng som unikt identifierar ditt program, till exempel `com.<yourname>.identitysample.MSALMacOS` . Anteckna värdet du använder.
->      - Observera att iOS-konfigurationen även gäller för macOS-program.
-> 1. Välj `Configure` och spara _*_konfigurations_*_ informationen för MSAL för senare i den här snabb starten.
+> 1. Logga in på [Azure-portalen](https://portal.azure.com).
+> 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
+> 1. Sök efter och välj **Azure Active Directory**.    
+> 1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.
+> 1. Ange ett **namn** för ditt program. Användare av appen kan se det här namnet och du kan ändra det senare.
+> 1. Välj **Register** (Registrera).
+> 1. Under **Hantera** väljer du **autentisering**  >  **Lägg till plattform**  >  **iOS**.
+> 1. Ange **paket-ID** : t för ditt program. Paket-ID: t är en unik sträng som unikt identifierar ditt program, till exempel `com.<yourname>.identitysample.MSALMacOS` . Anteckna värdet du använder. Observera att iOS-konfigurationen även gäller för macOS-program.
+> 1. Välj **Konfigurera** och spara **konfigurations** informationen för MSAL för senare i den här snabb starten.
+> 1. Välj **Klar**.
+
 > [!div renderon="portal" class="sxs-lookup"]
 >
 > #### <a name="step-1-configure-your-application"></a>Steg 1: Konfigurera programmet
@@ -101,7 +102,7 @@ I ett terminalfönster navigerar du till mappen med det nedladdade kod exemplet 
 >#### <a name="step-4-configure-your-project"></a>Steg 4: Konfigurera ditt projekt
 > Om du valde alternativ 1 ovan kan du hoppa över de här stegen.
 > 1. Extrahera zip-filen och öppna projektet i XCode.
-> 1. Redigera _ *ViewController. SWIFT** och ersätt raden som börjar med "Låt kClientID" med följande kodfragment. Kom ihåg att uppdatera värdet för `kClientID` med clientID som du sparade när du registrerade din app i portalen tidigare i den här snabb starten:
+> 1. Redigera **ViewController. SWIFT** och ersätt raden som börjar med "Låt kClientID" med följande kodfragment. Kom ihåg att uppdatera värdet för `kClientID` med clientID som du sparade när du registrerade din app i portalen tidigare i den här snabb starten:
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```

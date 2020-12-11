@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/03/2020
 ms.author: marsma
-ms.custom: aaddev, contperfq1
+ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 72d66bd4c738ed60bbaefc123daae90ecc0db163
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4ebae7e97f9128bb9302e9076e71dd3164f0c29e
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89442171"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030968"
 ---
 # <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>Snabb start: Konfigurera ett program för att exponera ett webb-API
 
@@ -45,9 +45,9 @@ Koden i ett klient program begär behörighet att utföra åtgärder som definie
 
 Börja med att följa de här stegen för att skapa ett exempel omfång med namnet `Employees.Read.All` :
 
-1. Logga in på [Azure Portal](https://portal.azure.com).
+1. Logga in på [Azure-portalen](https://portal.azure.com).
 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/quickstart-configure-app-expose-web-apis/portal-01-directory-subscription-filter.png" border="false"::: på den översta menyn och väljer den klient som innehåller klient appens registrering.
-1. Välj **Azure Active Directory**  >  **Appregistreringar**och välj sedan ditt API: s app-registrering.
+1. Välj **Azure Active Directory**  >  **Appregistreringar** och välj sedan ditt API: s app-registrering.
 1. Välj **exponera ett API**  >  **Lägg till ett omfång**.
 
     :::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-02-expose-api.png" alt-text="En app-registrering visar ett API-fönster i Azure Portal":::
@@ -67,12 +67,12 @@ Börja med att följa de här stegen för att skapa ett exempel omfång med namn
     | **Visningsnamn för användarmedgivande** | En kort beskrivning av Omfattningens syfte. Visas endast för användare om du anger **vem som kan** godkänna **Administratörer och användare**. | `Read-only access to your Employee records` |
     | **Beskrivning av användarmedgivande** | En mer detaljerad beskrivning av behörigheten som beviljats av omfånget. Visas endast för användare om du anger **vem som kan** godkänna **Administratörer och användare**. | `Allow the application to have read-only access to your Employee data.` |
 
-1. Ange **statusen** **aktive rad**och välj sedan **Lägg till omfång**.
+1. Ange **statusen** **aktive rad** och välj sedan **Lägg till omfång**.
 
 1. Valfritt Om du vill förhindra att användare av din app godkänner medgivande till de omfattningar som du har definierat kan du *förauktorisera* klient programmet för åtkomst till ditt webb-API. Förauktoriserar *bara* de klient program som du litar på eftersom användarna inte har möjlighet att avstå från medgivande.
-    1. Under **auktoriserade klient program**väljer du **Lägg till ett klient program**
+    1. Under **auktoriserade klient program** väljer du **Lägg till ett klient program**
     1. Ange **program-ID** för det klient program som du vill förauktorisera. Till exempel för ett webb program som du har registrerat tidigare.
-    1. Under **godkända omfattningar**väljer du de omfattningar som du vill utelämna medgivande frågor för och väljer sedan **Lägg till program**.
+    1. Under **godkända omfattningar** väljer du de omfattningar som du vill utelämna medgivande frågor för och väljer sedan **Lägg till program**.
 
     Om du följde det här valfria steget är klient appen nu en förauktoriserad klient app (PCA) och användarna uppmanas inte att ange sitt medgivande när de loggar in på den.
 
@@ -95,7 +95,7 @@ Om du vill lägga till `Employees.Write.All` exempel området följer du stegen 
 
 Om du har lagt till båda exempel omfattningarna som beskrivs i föregående avsnitt visas de i fönstret **exponera ett API** för din webb-API: s app-registrering, ungefär som den här avbildningen:
 
-:::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-03-scopes-list.png" alt-text="En app-registrering visar ett API-fönster i Azure Portal":::
+:::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-03-scopes-list.png" alt-text="Skärm bild av fönstret exponera ett API som visar två exponerade omfång.":::
 
 Som du ser i bilden är en omfattnings fullständiga sträng sammanfogningen av URL: en för webb-API **: n** och omfångets omfångs **namn**.
 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 00b5d220cdbc511a309d55cfca2049508049fa30
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 0895e84363d40bdbf30408f2b2a0d95f951eb303
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549012"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032566"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Viktig information om Azure HDInsight
 
@@ -64,3 +64,18 @@ HDInsight fortsätter att göra kluster tillförlitlighet och prestanda förbät
 
 ## <a name="component-version-change"></a>Komponent versions ändring
 Ingen komponent versions ändring för den här versionen. Du hittar de aktuella komponent versionerna för HDInsight 4,0 och HDInsight 3,6 i [det här dokumentet](./hdinsight-component-versioning.md).
+
+## <a name="known-issues"></a>Kända problem
+### <a name="prevent-hdinsight-cluster-vms-from-rebooting-periodically"></a>Förhindra att HDInsight-kluster virtuella datorer startar om regelbundet
+
+Från och med mitten november 2020 kan du ha lagt märke till att virtuella datorer i HDInsight-klustret startar om regelbundet. Detta kan bero på att:
+
+1.  Clamav har Aktiver ATS i klustret. Det nya azsec-clamav-paketet förbrukar stora mängder minne som utlöser omstart av nod. 
+2.  Ett CRON-jobb schemaläggs dagligen som övervakar ändringar i listan över certifikat utfärdare (ca) som används av Azure-tjänster. När ett nytt CA-certifikat är tillgängligt lägger skriptet till certifikatet i JDK förtroende lager och schemalägger en omstart.
+
+HDInsight distribuerar korrigeringar och tillämpar korrigering för alla aktiva kluster för båda problemen. Om du vill tillämpa korrigeringen direkt och undvika oväntade omstarter av virtuella datorer kan du köra skript åtgärder på alla klusternoder som en beständig skript åtgärd. HDInsight kommer att publicera ett annat meddelande när korrigeringen och korrigeringen har slutförts.
+```
+https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/replace_cacert_script.sh
+https://healingscriptssa.blob.core.windows.net/healingscripts/ChangeOOMPolicyAndApplyLatestConfigForClamav.sh
+```
+

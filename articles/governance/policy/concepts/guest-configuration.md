@@ -3,12 +3,12 @@ title: Lär dig att granska innehållet i virtuella datorer
 description: Lär dig hur Azure Policy använder gäst konfigurations agenten för att granska inställningar i virtuella datorer.
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: a956d5e8dcfa82f85020928e1427a08ac8fe7a69
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 2fd1f17d38b0a58fbf64670849a8d5e13bb00cf8
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906258"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032719"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Om Azure Policys gästkonfiguration
 
@@ -60,7 +60,7 @@ Klienten för gäst konfiguration söker efter nytt innehåll var 5: e minut. N�
 
 Princip definitioner för gäst konfiguration inkluderar nya versioner. Äldre versioner av operativ system som är tillgängliga i Azure Marketplace ingår inte om gäst konfigurations agenten inte är kompatibel. I följande tabell visas en lista över operativ system som stöds på Azure-avbildningar:
 
-|Publisher|Namn|Versioner|
+|Publisher|Name|Versioner|
 |-|-|-|
 |Canonical|Ubuntu Server|14,04 – 18,04|
 |Credativ|Debian|8 och senare|
@@ -84,7 +84,7 @@ Virtuella datorer som använder virtuella nätverk för kommunikation kommer att
 
 ### <a name="communicate-over-private-link-in-azure"></a>Kommunicera via privat länk i Azure
 
-Virtuella datorer kan använda [privat länk](../../../private-link/private-link-overview.md) för kommunikation till gäst konfigurations tjänsten. Använd taggen med namnet `EnablePrivateNeworkGC` och värdet `TRUE` för att aktivera den här funktionen. Taggen kan tillämpas före eller efter princip definitioner för gäst konfiguration som tillämpas på datorn.
+Virtuella datorer kan använda [privat länk](../../../private-link/private-link-overview.md) för kommunikation till gäst konfigurations tjänsten. Använd taggen med namnet `EnablePrivateNetworkGC` och värdet `TRUE` för att aktivera den här funktionen. Taggen kan tillämpas före eller efter princip definitioner för gäst konfiguration som tillämpas på datorn.
 
 Trafiken dirigeras med hjälp av den [offentliga Azure-IP-adressen](../../../virtual-network/what-is-ip-address-168-63-129-16.md) för att upprätta en säker, autentiserad kanal med Azures plattforms resurser.
 

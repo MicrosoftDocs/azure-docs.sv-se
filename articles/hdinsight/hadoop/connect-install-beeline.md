@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.date: 05/27/2020
-ms.openlocfilehash: be33c968499052b2b254754f37e5163012bcadd0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a0a693b2dc2c236cbac79ec4789b2a480ce65427
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547596"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028945"
 ---
 # <a name="connect-to-apache-beeline-on-hdinsight-or-install-it-locally"></a>Anslut till Apache Beeline på HDInsight eller installera det lokalt
 
@@ -128,7 +128,7 @@ När du ansluter direkt från klustrets huvud nod, eller från en resurs i samma
         export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
         ```
 
-        Tryck sedan på **CTRL + X** , sedan på **Y** och sedan Retur.
+        Tryck sedan på **CTRL + X**, sedan på **Y** och sedan Retur.
 
 1. Hämta Hadoop-och Beeline-Arkiv och ange följande kommandon:
 
@@ -156,7 +156,7 @@ När du ansluter direkt från klustrets huvud nod, eller från en resurs i samma
         PATH=$PATH:$HIVE_HOME/bin
         ```
 
-    1. Tryck sedan på **CTRL + X** , sedan på **Y** och sedan Retur.
+    1. Tryck sedan på **CTRL + X**, sedan på **Y** och sedan Retur.
 
 1. Stäng och öppna sedan bash-sessionen igen.
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
-ms.custom: identityplatformtop40, contperfq2
-ms.openlocfilehash: 3f18913bb0d05c45ae57152d438b229b8bcc1d48
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.custom: identityplatformtop40, contperf-fy21q2
+ms.openlocfilehash: e5a9292097933ff35eb8b77445f07f10def6e5c3
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94627922"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029625"
 ---
 # <a name="what-is-the-microsoft-identity-platform"></a>Vad är Microsofts identitetsplattform?
 
@@ -30,10 +30,10 @@ Det finns flera komponenter som utgör Microsofts identitets plattform:
   - Arbets-eller skol konton, etablerade via Azure AD
   - Personliga Microsoft-konto, t. ex. Skype, Xbox och Outlook.com
   - Sociala eller lokala konton, genom att använda Azure AD B2C
-- **Bibliotek med öppen källkod** : Microsoft Authentication libraries (MSAL) och stöd för andra standard bibliotek
-- **Program hanterings Portal** : en registrerings-och konfigurations upplevelse i Azure Portal, tillsammans med de andra hanterings funktionerna för Azure.
-- **API för program konfiguration och PowerShell** : program mässigt konfiguration av dina program via Microsoft Graph API och PowerShell så att du kan automatisera dina DevOps-uppgifter.
-- **Utvecklarens innehåll** : teknisk dokumentation inklusive snabb starter, självstudier, instruktions guider och kod exempel.
+- **Bibliotek med öppen källkod**: Microsoft Authentication libraries (MSAL) och stöd för andra standard bibliotek
+- **Program hanterings Portal**: en registrerings-och konfigurations upplevelse i Azure Portal, tillsammans med de andra hanterings funktionerna för Azure.
+- **API för program konfiguration och PowerShell**: program mässigt konfiguration av dina program via Microsoft Graph API och PowerShell så att du kan automatisera dina DevOps-uppgifter.
+- **Utvecklarens innehåll**: teknisk dokumentation inklusive snabb starter, självstudier, instruktions guider och kod exempel.
 
 För utvecklare erbjuder Microsoft Identity Platform integrering av moderna innovationer i identitets-och säkerhets utrymmet som lösenordsbaserad autentisering, stegvis autentisering och villkorlig åtkomst. Du behöver inte implementera sådana funktioner själv: program som är integrerade med Microsofts identitets plattform har internt möjlighet att utnyttja sådana innovationer.
 

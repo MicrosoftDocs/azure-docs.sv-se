@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: aa0a001f9c35202939eeb4a7752803b998a3acf7
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: e85e433e1b1b31470fc8d7dee24353fd719b64e2
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562023"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031189"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-microsoft-identity-platform"></a>Snabb start: skydda ett ASP.NET Core webb-API med Microsoft Identity Platform
 
@@ -38,19 +38,17 @@ I den här snabb starten laddar du ned ett ASP.NET Core webb-API kod exempel och
 > 1. Logga in på [Azure-portalen](https://portal.azure.com).
 > 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
 > 1. Sök efter och välj **Azure Active Directory**.
-> 1. Under **Hantera** väljer du **Appregistreringar** och sedan **ny registrering**.
+> 1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.
 > 1. Ange ett **namn** för programmet, till exempel `AspNetCoreWebApi-Quickstart` . Användare av appen kan se det här namnet och du kan ändra det senare.
 > 1. Välj **Register** (Registrera).
-> 1. Under **Hantera** väljer du **exponera ett API**
-> 1. Välj **Lägg till ett omfång** och välj **Spara och fortsätt** att acceptera standardvärdet för **program-ID: t**.
-> 1. I fönstret **Lägg till ett omfång** anger du följande värden:
->    - **Omfattnings namn** : `access_as_user`
->    - **Vem kan godkänna?** : **Administratörer och användare**
->    - **Visnings namn för administratörs medgivande** : `Access AspNetCoreWebApi-Quickstart`
->    - **Beskrivning av administratörs medgivande** : `Allows the app to access AspNetCoreWebApi-Quickstart as the signed-in user.`
->    - **Visnings namn för användarens medgivande** : `Access AspNetCoreWebApi-Quickstart`
->    - **Beskrivning av användar medgivande** : `Allow the application to access AspNetCoreWebApi-Quickstart on your behalf.`
->    - **Tillstånd** : **aktiverat**
+> 1. Under **Hantera** väljer du **exponera ett API**  >  **Lägg till ett omfång**. Godkänn standard **program-ID-URI: n** genom att välja **Spara och fortsätt** och ange följande information:
+>    - **Omfattnings namn**: `access_as_user`
+>    - **Vem kan godkänna?**: **Administratörer och användare**
+>    - **Visnings namn för administratörs medgivande**: `Access AspNetCoreWebApi-Quickstart`
+>    - **Beskrivning av administratörs medgivande**: `Allows the app to access AspNetCoreWebApi-Quickstart as the signed-in user.`
+>    - **Visnings namn för användarens medgivande**: `Access AspNetCoreWebApi-Quickstart`
+>    - **Beskrivning av användar medgivande**: `Allow the application to access AspNetCoreWebApi-Quickstart on your behalf.`
+>    - **Tillstånd**: **aktiverat**
 > 1. Välj **Lägg till omfattning** för att slutföra omfångs tillägget.
 
 ## <a name="step-2-download-the-aspnet-core-project"></a>Steg 2: Ladda ned ASP.NET Core-projektet
@@ -76,7 +74,7 @@ I den här snabb starten laddar du ned ett ASP.NET Core webb-API kod exempel och
 >    - Ersätt `Enter_the_Tenant_Info_Here` med något av följande:
 >       - Om ditt program bara har stöd **för konton i den här organisations katalogen** ersätter du det här värdet med **katalogen (klient) ID** (ett GUID) eller **klient namn** (till exempel `contoso.onmicrosoft.com` ). Du hittar **klient-ID: t för katalogen (klient)** på appens **översikts** sida.
 >       - Om ditt program stöder **Konton i valfri organisationskatalog** ersätter du värdet med `organizations`
->       - Om programmet har stöd för **alla Microsoft-konto användare** , lämna det här värdet som `common`
+>       - Om programmet har stöd för **alla Microsoft-konto användare**, lämna det här värdet som `common`
 >
 > I den här snabb starten ska du inte ändra andra värden i *appsettings.js* i filen.
 
@@ -100,7 +98,7 @@ Mellanprogram *Microsoft. AspNetCore. Authentication* använder en `Startup` kla
 
 Raden som innehåller `.AddMicrosoftIdentityWebApi` lägger till Microsoft Identity Platform-auktorisering i ditt webb-API. Den konfigureras sedan för att verifiera åtkomsttoken som utfärdats av Microsoft Identity Platform-slutpunkten baserat på informationen i `AzureAD` avsnittet i *appsettings.jsi* konfigurations filen:
 
-| *appsettings.jspå* nyckel | Beskrivning                                                                                                                                                          |
+| *appsettings.jspå* nyckel | Description                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ClientId`             | **Program-ID** för programmet som är registrerat i Azure Portal.                                                                                       |
 | `Instance`             | STS-slutpunkt (Security Token Service) för användaren att autentisera. Det här värdet är vanligt vis `https://login.microsoftonline.com/` som anger det offentliga Azure-molnet. |

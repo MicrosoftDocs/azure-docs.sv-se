@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/28/2020
-ms.custom: contperfq1, contperfq2
-ms.openlocfilehash: 756c87299db85e426b4793d51bea833aa694a830
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.custom: contperf-fy21q1, contperf-fy21q2
+ms.openlocfilehash: 70fbbdfc5d8f1bac5fa27175ea25be1503a77594
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145964"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031903"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Använda Apache Beeline-klienten med Apache Hive
 
@@ -56,7 +56,7 @@ Det här exemplet baseras på användningen av Beeline-klienten från en SSH-ans
     show tables;
     ```
 
-    I ett nytt kluster visas endast en tabell: **hivesampletable** .
+    I ett nytt kluster visas endast en tabell: **hivesampletable**.
 
 4. Använd följande kommando för att visa schemat för hivesampletable:
 
@@ -113,7 +113,7 @@ Det här exemplet baseras på användningen av Beeline-klienten från en SSH-ans
     |SKAPA EXTERN TABELL|Skapar en **extern** tabell i Hive. Externa tabeller lagrar bara tabell definitionen i Hive. Data finns kvar på den ursprungliga platsen.|
     |RAD FORMAT|Hur data formateras. I det här fallet separeras fälten i varje logg med ett blank steg.|
     |LAGRAD SOM TEXTFILE-PLATS|Var data lagras och i vilket fil format.|
-    |SELECT|Väljer ett antal rader där kolumnen **T4** innehåller värdet **[Error]** . Den här frågan returnerar värdet **3** eftersom det finns tre rader som innehåller det här värdet.|
+    |SELECT|Väljer ett antal rader där kolumnen **T4** innehåller värdet **[Error]**. Den här frågan returnerar värdet **3** eftersom det finns tre rader som innehåller det här värdet.|
     |INPUT__FILE__NAME som%. log|Hive försöker tillämpa schemat på alla filer i katalogen. I det här fallet innehåller katalogen filer som inte matchar schemat. För att förhindra skräp data i resultaten anger den här instruktionen Hive att den bara ska returnera data från filer som slutar med. log.|
 
    > [!NOTE]  
@@ -157,13 +157,13 @@ Det här exemplet baseras på användningen av Beeline-klienten från en SSH-ans
 
 Det här exemplet är en fortsättning från föregående exempel. Använd följande steg för att skapa en fil och kör den med hjälp av Beeline.
 
-1. Använd följande kommando för att skapa en fil med namnet **Query. HQL** :
+1. Använd följande kommando för att skapa en fil med namnet **Query. HQL**:
 
     ```bash
     nano query.hql
     ```
 
-1. Använd följande text som filens innehåll. Den här frågan skapar en ny intern tabell med namnet **errorLogs** :
+1. Använd följande text som filens innehåll. Den här frågan skapar en ny intern tabell med namnet **errorLogs**:
 
     ```hiveql
     CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
@@ -181,7 +181,7 @@ Det här exemplet är en fortsättning från föregående exempel. Använd följ
     > [!NOTE]  
     > Till skillnad från externa tabeller, tar en intern tabell bort även underliggande data.
 
-1. Om du vill spara filen använder du **CTRL** + **X** och anger sedan **Y** och slutligen **RETUR** .
+1. Om du vill spara filen använder du **CTRL** + **X** och anger sedan **Y** och slutligen **RETUR**.
 
 1. Använd följande för att köra filen med Beeline:
 
@@ -192,7 +192,7 @@ Det här exemplet är en fortsättning från föregående exempel. Använd följ
     > [!NOTE]  
     > `-i`Parametern startar Beeline och kör instruktionerna i `query.hql` filen. När frågan har slutförts kommer du till `jdbc:hive2://headnodehost:10001/>` prompten. Du kan också köra en fil med hjälp av `-f` parametern som avslutar Beeline när frågan har slutförts.
 
-1. Verifiera att tabellen **errorLogs** har skapats genom att använda följande instruktion för att returnera alla rader från **errorLogs** :
+1. Verifiera att tabellen **errorLogs** har skapats genom att använda följande instruktion för att returnera alla rader från **errorLogs**:
 
     ```hiveql
     SELECT * from errorLogs;

@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 88b3879a648117329f2485012542b48d6a7a7755
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 56a350f886229cfb5479b5adae52a9c871f5bb65
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752693"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032345"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>Migrera virtuella VMware-datorer till Azure (utan agent)
 
@@ -148,7 +148,7 @@ När delta-replikering börjar kan du köra en testmigrering för de virtuella d
 Gör en testmigrering enligt följande:
 
 
-1. I Server för **migrerings mål**  >  **Servers**  >  **Azure Migrate: Server migrering** klickar du på **test migrerade servrar**.
+1. I Server för **migrerings mål**  >    >  **Azure Migrate: Server migrering** klickar du på **test migrerade servrar**.
 
      ![Testmigrerade servrar](./media/tutorial-migrate-vmware/test-migrated-servers.png)
 
@@ -182,7 +182,7 @@ När du har kontrollerat att testmigreringen fungerar som förväntat kan du mig
 ## <a name="complete-the-migration"></a>Slutföra migreringen
 
 1. När migreringen är färdig högerklickar du på den virtuella datorn > **stoppar replikeringen**. Detta stoppar replikeringen för den lokala datorn och rensar information om replikeringstillståndet för den virtuella datorn.
-2. Installera [Azure VM-](../virtual-machines/extensions/agent-windows.md) eller [Linux](../virtual-machines/extensions/agent-linux.md) -agenten på de migrerade datorerna.
+2. Installera Azure VM [Linux](../virtual-machines/extensions/agent-linux.md) -agenten på de migrerade datorerna om datorn har Linux OS. Vi installerar automatiskt VM-agenten för virtuella Windows-datorer under migreringen.
 3. Utför alla finjusteringar av appen efter migreringen som att uppdatera databasanslutningssträngar och webbserverkonfigurationer.
 4. Utför slutlig program- och migreringsacceptanstestning på det migrerade programmet som nu körs i Azure.
 5. Klipp ut över trafik till den migrerade virtuella Azure-instansen.

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 6e2df9168b880e565ea9b70c82c2c0c1b55b4db8
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 2f5c16fce68213b291b970c11921a17b39527270
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94737251"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032125"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Självstudie: Distribuera Azure våren Cloud i Azure Virtual Network (VNet-insprutning)
 
@@ -42,7 +42,7 @@ Det virtuella nätverk som du distribuerar din Azure våren moln tjänst instans
     * En för service runtime
     * En för dina våren Boot-mikrotjänstprogram. 
     * Det finns en 1-till-1-relation mellan dessa undernät och en Azure våren Cloud Service-instans. Du måste använda ett nytt undernät för varje tjänst instans som du distribuerar och varje undernät kan bara innehålla en enda tjänst instans.
-* **Adress utrymme**: ett CIDR-block upp till/28 för service runtime-undernätet och ett annat CIDR-block upp till/24 för våren Boot Boot mikroservice Applications-undernät.
+* **Adress utrymme**: CIDR-blocken är upp till **/28** för både service runtime-undernät och våren Boot-program med mikrotjänstprogram.
 * **Routningstabell**: under näten får inte ha någon befintlig routningstabell kopplad.
 
 Följande procedurer beskriver hur du installerar det virtuella nätverket som innehåller instansen av Azure våren Cloud.
@@ -54,20 +54,20 @@ Om du redan har ett virtuellt nätverk som värd för Azure våren Cloud Service
 
 1. I dialog rutan **Skapa virtuellt nätverk** anger eller väljer du följande information:
 
-    |Inställningen          |Värde                                             |
+    |Inställning          |Värde                                             |
     |-----------------|--------------------------------------------------|
     |Prenumeration     |Välj din prenumeration.                         |
     |Resursgrupp   |Välj en resurs grupp eller skapa en ny.  |
-    |Namn             |Ange *Azure-våren-Cloud-VNet*                   |
+    |Name             |Ange *Azure-våren-Cloud-VNet*                   |
     |Plats         |Välj **USA, östra**                                |
 
 1. Klicka på **Nästa: IP-adresser >**. 
  
 1. För IPv4-adress utrymme anger du 10.1.0.0/16.
 
-1. Välj **Lägg till undernät** och ange sedan *service-runtime-Subnet* för **under nätets namn** och 10.1.0.0/24 för **under nätets adress intervall**. Klicka sedan på **Lägg till**.
+1. Välj **Lägg till undernät** och ange sedan *service-runtime-Subnet* för **under nätets namn** och 10.1.0.0/28 för **under nätets adress intervall**. Klicka sedan på **Lägg till**.
 
-1. Välj **Lägg till undernät** igen och ange **under nätets namn** och **under nätets adress intervall**, till exempel *appar – undernät* och 10.1.1.0/24.  Klicka på **Lägg till**.
+1. Välj **Lägg till undernät** igen och ange **under nätets namn** och **under nätets adress intervall**, till exempel *Apps-Subnet* och 10.1.1.0/28.  Klicka på **Lägg till**.
 
 1. Klicka på **Granska + skapa**. Lämna resten som standard och klicka på **skapa**.
 
@@ -81,7 +81,7 @@ Välj det virtuella nätverket *Azure-våren-Cloud-VNet* som du skapade tidigare
 
 2. I dialog rutan **Lägg till roll tilldelning** anger eller väljer du den här informationen:
 
-    |Inställningen  |Värde                                             |
+    |Inställning  |Värde                                             |
     |---------|--------------------------------------------------|
     |Roll     |Välj **ägare**                                  |
     |Välj   |Ange *Azure våren Cloud Resource Provider*      |
@@ -107,7 +107,7 @@ az role assignment create \
 
 ## <a name="deploy-azure-spring-cloud-service-instance-in-the-virtual-network"></a>Distribuera Azure våren Cloud Service-instansen i det virtuella nätverket
 
-1. Öppna Azure Portal med på https://ms.portal.azure.com .
+1. Öppna Azure Portal med på https://portal.azure.com .
 
 1. Sök efter **Azure våren Cloud** i den översta sökrutan och välj **Azure våren Cloud** från resultatet.
 
@@ -121,7 +121,7 @@ az role assignment create \
 
 1. Välj fliken **nätverk** och välj följande:
 
-    |Inställningen                                |Värde                                             |
+    |Inställning                                |Värde                                             |
     |---------------------------------------|--------------------------------------------------|
     |Distribuera i ditt eget virtuella nätverk     |Välj **Ja**                                    |
     |Virtuellt nätverk                        |Välj *Azure-våren-Cloud-VNet*                  |
@@ -133,6 +133,8 @@ az role assignment create \
 1. Klicka på **Granska och skapa**.
 
 1. Kontrol lera dina specifikationer och klicka på **skapa**.
+
+    ![Kontrol lera specifikationer](./media/spring-cloud-v-net-injection/verify-specifications.png)
 
 Efter distributionen skapas två ytterligare resurs grupper i din prenumeration som värd för nätverks resurserna för Azure våren Cloud Service-instansen.  Gå till **Start** och välj **resurs grupper** från de översta meny alternativen för att hitta följande nya resurs grupper.
 
@@ -150,6 +152,18 @@ Nätverks resurserna är anslutna till ditt virtuella nätverk som du skapade ov
 
    > [!Important]
    > Resurs grupperna hanteras fullständigt av Azure våren Cloud service. Ta inte bort eller ändra någon resurs i den manuellt.
+
+## <a name="limitations"></a>Begränsningar
+
+Litet under näts intervall sparar IP-adresser, men ger begränsningar till det maximala antalet App-instanser som Azure våren-molnet kan hantera. 
+
+| CIDR | Totalt antal IP-adresser | Tillgängliga IP-adresser | Maximalt antal App-instanser                                        |
+| ---- | --------- | ------------- | ------------------------------------------------------------ |
+| /28  | 16        | 8             | <p> App med 1 kärna: 96 <br/> App med 2 kärnor: 48<br/>  App med 3 kärnor: 32 <br/> App med 4 kärnor: 24 </p> |
+| /27  | 32        | 24            | <p> App med 1 kärna: 228<br/> App med 2 kärnor: 144<br/>  App med 3 kärnor: 96 <br/>  App med 4 kärnor: 72</p> |
+| /26  | 64        | 56            | <p> App med 1 kärna: 500<br/> App med 2 kärnor: 336<br/>  App med 3 kärnor: 224<br/>  App med 4 kärnor: 168</p> |
+| /25  | 128       | 120           | <p> App med 1 kärna: 500<br> App med 2 kärnor: 500<br>  App med 3 kärnor: 480<br>  App med 4 kärnor: 360</p> |
+| /24  | 256       | 248           | <p> App med 1 kärna: 500<br/> App med 2 kärnor: 500<br/>  App med 3 kärnor: 500<br/>  App med 4 kärnor: 500</p> |
 
 ## <a name="next-steps"></a>Nästa steg
 

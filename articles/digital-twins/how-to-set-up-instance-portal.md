@@ -7,19 +7,19 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.custom: contperfq2
-ms.openlocfilehash: bd8fec0ae5b6ece1626049953b1f4afd3a581d97
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 90a425fe64424c946a02f3c113889b62b58fbeb4
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280587"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032328"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Konfigurera en digital Azure-instans och autentisering (portal)
 
 [!INCLUDE [digital-twins-setup-selector.md](../../includes/digital-twins-setup-selector.md)]
 
-Den här artikeln beskriver steg för steg hur du **konfigurerar en ny Azure Digital-instansen** , inklusive hur du skapar instansen och konfigurerar autentisering. När du har slutfört den här artikeln har du en Azure Digital-instansen som är redo att starta programmering mot.
+Den här artikeln beskriver steg för steg hur du **konfigurerar en ny Azure Digital-instansen**, inklusive hur du skapar instansen och konfigurerar autentisering. När du har slutfört den här artikeln har du en Azure Digital-instansen som är redo att starta programmering mot.
 
 Den här versionen av den här artikeln går igenom de här stegen manuellt, en i taget, med hjälp av Azure Portal. Azure-portalen är en webbaserad, enhetlig konsol som ger ett alternativ till kommandoradsverktyg.
 * Om du vill gå igenom dessa steg manuellt med hjälp av CLI, se CLI-versionen av den här artikeln: [*anvisningar: Konfigurera en instans och autentisering (CLI)*](how-to-set-up-instance-cli.md).
@@ -41,10 +41,10 @@ Sök efter *Azure Digital-dubbla* i sökrutan och välj tjänsten **Azure Digita
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="Välj &quot;skapa&quot; från sidan Azure Digitals dubblare tjänst":::
 
 Fyll i värdena som visas nedan på sidan *skapa resurs* :
-* **Prenumeration** : den Azure-prenumeration du använder
-  - **Resurs grupp** : en resurs grupp där instansen ska distribueras. Om du inte redan har en befintlig resurs grupp i åtanke kan du skapa en här genom att välja länken *Skapa ny* och ange ett namn för en ny resurs grupp
-* **Plats** : en Azure Digital-aktiverad region för distributionen. Mer information om regional support finns i [*Azure-produkter som är tillgängliga per region (Azure Digitals)*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
-* **Resurs namn** : ett namn för din Azure Digital-instansen. Namnet på den nya instansen måste vara unikt inom regionen för din prenumeration (vilket innebär att om din prenumeration har en annan Azure Digital-instans i den region som redan använder det namn du väljer, blir du ombedd att välja ett annat namn).
+* **Prenumeration**: den Azure-prenumeration du använder
+  - **Resurs grupp**: en resurs grupp där instansen ska distribueras. Om du inte redan har en befintlig resurs grupp i åtanke kan du skapa en här genom att välja länken *Skapa ny* och ange ett namn för en ny resurs grupp
+* **Plats**: en Azure Digital-aktiverad region för distributionen. Mer information om regional support finns i [*Azure-produkter som är tillgängliga per region (Azure Digitals)*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
+* **Resurs namn**: ett namn för din Azure Digital-instansen. Namnet på den nya instansen måste vara unikt inom regionen för din prenumeration (vilket innebär att om din prenumeration har en annan Azure Digital-instans i den region som redan använder det namn du väljer, blir du ombedd att välja ett annat namn).
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="Fylla i de beskrivna värdena för att skapa en Azure Digital-resurs med dubbla resurser":::
 
@@ -61,7 +61,7 @@ Alternativt, om distributionen Miss lyckas, indikerar meddelandet varför. Obser
 >[!TIP]
 >När du har skapat din instans kan du när som helst gå tillbaka till sidan genom att söka efter namnet på din instans i Azure Portal Sök fältet.
 
-På *översikts* sidan för instansen noterar du *namnet* , *resurs gruppen* och *värd namnet*. Detta är alla viktiga värden som du kan behöva när du fortsätter att arbeta med din Azure Digital-instansen. Om andra användare kommer att program mera mot instansen bör du dela dessa värden med dem.
+På *översikts* sidan för instansen noterar du *namnet*, *resurs gruppen* och *värd namnet*. Detta är alla viktiga värden som du kan behöva när du fortsätter att arbeta med din Azure Digital-instansen. Om andra användare kommer att program mera mot instansen bör du dela dessa värden med dem.
 
 :::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Markera viktiga värden från instansens översikts sida":::
 
@@ -76,9 +76,9 @@ Nu har du en Azure Digital-instansen som är redo att sätta igång. Sedan ger d
 :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="Välja att lägga till en roll tilldelning från sidan åtkomst kontroll (IAM)":::
 
 På följande sida för *Lägg till roll tilldelning* fyller du i värdena (måste slutföras av en användare med [tillräckliga behörigheter](#prerequisites-permission-requirements) i Azure-prenumerationen):
-* **Roll** : Välj *Azure Digitals sammanflätade data ägare* från List menyn
-* **Tilldela åtkomst till** : Välj *Azure AD-användare, grupp eller tjänstens huvud namn* i list menyn
-* **Välj** : Sök efter namnet eller e-postadressen för den användare som ska tilldelas. När du väljer resultatet visas användaren i avsnittet *markerade medlemmar* .
+* **Roll**: Välj *Azure Digitals sammanflätade data ägare* från List menyn
+* **Tilldela åtkomst till**: Välj *Azure AD-användare, grupp eller tjänstens huvud namn* i list menyn
+* **Välj**: Sök efter namnet eller e-postadressen för den användare som ska tilldelas. När du väljer resultatet visas användaren i avsnittet *markerade medlemmar* .
 
 :::row:::
     :::column:::

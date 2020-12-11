@@ -3,12 +3,12 @@ title: Azure Resource Health vanliga frågor och svar
 description: Översikt över Azure Resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: c8089e907f555ac970fea06361a2ab1bbc944778
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5ad8867b110039e4dcc34b20c8a61fccfd39eaf
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536502"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032872"
 ---
 # <a name="azure-resource-health-faq"></a>Azure Resource Health vanliga frågor och svar
 Lär dig svaren på vanliga frågor om Azure Resource Health.
@@ -51,8 +51,7 @@ Resource Health [stöder](resource-health-alert-arm-template-guide.md) avisering
 ## <a name="where-do-i-find-resource-health"></a>Var hittar jag Resource Health?
 När du har loggat in på Azure Portal kan du komma åt Resource Health på flera sätt:
 - Navigera till din resurs. I det vänstra navigerings fältet väljer du **resurs hälsa**
-- Gå till bladet Azure Service Health.  Välj **resurs hälsa**i det vänstra navigerings fältet.
-- Öppna bladet **Hjälp + Support** genom att välja frågetecknet i det övre högra hörnet i portalen och sedan välja **Hjälp + Support**. När bladet öppnas väljer du **resurs hälsa**
+- Gå till bladet Azure Service Health.  Välj **resurs hälsa** i det vänstra navigerings fältet.
 
 Du kan också använda Resource Health-API: et för att få information om hälsan för dina resurser.
 
@@ -69,8 +68,6 @@ Resource Health är tillgängligt i alla Azure-geografiska områden.
 Den information som tillhandahålls av Resource Health är mer detaljerad än vad som tillhandahålls av Azure-status eller Service Health instrument panel.
 
 Medan [Azures status](https://status.azure.com) och service Health instrument panelen meddelar dig om tjänst problem som påverkar en rad olika kunder (till exempel en Azure-region), Resource Health visar mer detaljerade händelser som bara är relevanta för den specifika resursen. Om en värd t. ex. startar om, Resource Health bara de kunder vars virtuella datorer körs på värden.
-
-Det är viktigt att du ser att du har fullständig visning av händelser som påverkar dina resurser, Resource Health också riktar in händelser som publiceras i Service Health instrument panelen.
 
 ## <a name="do-i-need-to-activate-resource-health-for-each-resource"></a>Måste jag aktivera Resource Health för varje resurs?
 Nej, hälso information är tillgänglig för alla resurs typer som är tillgängliga via Resource Health. 

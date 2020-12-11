@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 7df04bd75f3fd11b1caa702655cbd204fc2b4fda
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 9e2210cdbcc2916723c8c2e2ed1ef514d427c9d6
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854890"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032192"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Lösningar för övervakning av Azure-nätverk i Azure Monitor
 
@@ -120,6 +120,8 @@ Fliken "Visa detaljerade mått" öppnar den förifyllda arbets boken som sammanf
 * Om du vill rensa Azure Gateway Analytics-lösningen från din arbets yta kan du ta bort lösningen från lösnings resurs sidan.
 
 [![Skärm bild av alternativet ta bort för Azure Application Gateway Analytics-lösning.](media/azure-networking-analytics/azure-appgw-analytics-delete.png)](media/azure-networking-analytics/application-gateway-analytics-delete.png#lightbox)
+
+Om du vill ha mer information om funktionerna i den nya arbets boks lösningen checka ut [arbets böcker – översikt](../platform/workbooks-overview.md)
 
 ## <a name="azure-network-security-group-analytics-solution-in-azure-monitor"></a>Azure Network Security Group Analytics-lösning i Azure Monitor
 

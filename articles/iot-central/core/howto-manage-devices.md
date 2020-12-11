@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.custom: contperfq2
-ms.openlocfilehash: cbe3bedb188b563bb29ad1aa6e6e53e3039f1d51
-ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 2f0b6feea5e586c87191b22f42e3ab86e85ba7b3
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170339"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032532"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Hantera enheter i ditt Azure IoT Central-program
 
@@ -50,7 +50,7 @@ Så här lägger du till en enhet till ditt Azure IoT Central-program:
 
 1. Välj + **ny**.
 
-1. Aktivera **eller** **inaktivera**den **simulerade** växlingen. En riktig enhet är för en fysisk enhet som du ansluter till ditt Azure IoT Central-program. En simulerad enhet innehåller exempel data som genererats av Azure IoT Central.
+1. Aktivera **eller** **inaktivera** den **simulerade** växlingen. En riktig enhet är för en fysisk enhet som du ansluter till ditt Azure IoT Central-program. En simulerad enhet innehåller exempel data som genererats av Azure IoT Central.
 
 1. Välj **Skapa**.
 
@@ -93,7 +93,7 @@ Om du registrerar enheter genom att starta importen under **alla enheter**, skap
 
 1. Välj **enheter** i den vänstra rutan.
 
-1. Välj **alla enheter**i den vänstra panelen:
+1. Välj **alla enheter** i den vänstra panelen:
 
     ![Avassocierade enheter](./media/howto-manage-devices/unassociateddevices1a.png)
 

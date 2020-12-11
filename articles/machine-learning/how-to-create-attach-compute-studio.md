@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq1
-ms.openlocfilehash: 6cb455880852295d7176e813208a93919a2c14bb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, contperf-fy21q1
+ms.openlocfilehash: ab7a74166e85f2ba9fd73e7323cf9cd200cf32e4
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318269"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031036"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Skapa beräknings mål för modell utbildning och distribution i Azure Machine Learning Studio
 
@@ -93,7 +93,7 @@ Använd [stegen ovan](#portal-create) för att skapa beräknings instansen.  Fyl
 |Typ av virtuell dator |  Välj processor eller GPU. Det går inte att ändra den här typen när den har skapats     |
 |Storlek för virtuell dator     |  Storleken på virtuella datorer som stöds kan vara begränsad i din region. Kontrol lera [tillgänglighets listan](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
 |Aktivera/inaktivera SSH-åtkomst     |   SSH-åtkomst är inaktive rad som standard.  SSH-åtkomst får inte vara. ändras efter att den har skapats. Se till att aktivera åtkomst om du planerar att felsöka interaktivt med [vs Code Remote](how-to-set-up-vs-code-remote.md)   |
-|Avancerade inställningar     |  Valfritt. Konfigurera ett virtuellt nätverk. Ange **resurs gruppen** , det **virtuella nätverket** och **under nätet** för att skapa beräknings instansen i ett Azure-Virtual Network (VNet). Mer information finns i [nätverks kraven](./how-to-secure-training-vnet.md) för VNet.  |
+|Avancerade inställningar     |  Valfritt. Konfigurera ett virtuellt nätverk. Ange **resurs gruppen**, det **virtuella nätverket** och **under nätet** för att skapa beräknings instansen i ett Azure-Virtual Network (VNet). Mer information finns i [nätverks kraven](./how-to-secure-training-vnet.md) för VNet.  |
 
 ### <a name="compute-clusters"></a><a name="amlcompute"></a> Beräknings kluster
 
@@ -108,7 +108,7 @@ Skapa ett beräknings kluster med en enda eller flera noder för din utbildning,
 |Storlek för virtuell dator     |  Storleken på virtuella datorer som stöds kan vara begränsad i din region. Kontrol lera [tillgänglighets listan](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
 |Minsta antalet noder | Minsta antal noder som du vill etablera. Om du vill ha ett dedikerat antal noder anger du detta antal här. Spara pengar genom att ange minimivärdet till 0 så att du inte betalar för några noder när klustret är inaktivt. |
 |Maximalt antal noder | Maximalt antal noder som du vill etablera. Beräkningen skalas automatiskt till maximalt antal noder när ett jobb skickas. |
-|Avancerade inställningar     |  Valfritt. Konfigurera ett virtuellt nätverk. Ange **resurs gruppen** , det **virtuella nätverket** och **under nätet** för att skapa beräknings instansen i ett Azure-Virtual Network (VNet). Mer information finns i [nätverks kraven](./how-to-secure-training-vnet.md) för VNet.   Bifoga även [hanterade identiteter](#managed-identity) för att ge åtkomst till resurser     |
+|Avancerade inställningar     |  Valfritt. Konfigurera ett virtuellt nätverk. Ange **resurs gruppen**, det **virtuella nätverket** och **under nätet** för att skapa beräknings instansen i ett Azure-Virtual Network (VNet). Mer information finns i [nätverks kraven](./how-to-secure-training-vnet.md) för VNet.   Bifoga även [hanterade identiteter](#managed-identity) för att ge åtkomst till resurser     |
 
 #### <a name="set-up-managed-identity"></a><a name="managed-identity"></a> Konfigurera hanterad identitet
 

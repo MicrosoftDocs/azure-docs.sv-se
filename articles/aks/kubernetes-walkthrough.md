@@ -12,13 +12,13 @@ ms.custom:
 - seo-javascript-october2019
 - seo-python-october2019
 - devx-track-azurecli
-- contperfq1
-ms.openlocfilehash: c3aa2c77141c599348c4ce939114bff4c81a9773
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+- contperf-fy21q1
+ms.openlocfilehash: e69db59789dbaf45c0830ba6e6ac3afbe87f9a19
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887475"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029455"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>Snabb start: Distribuera ett Azure Kubernetes service-kluster med Azure CLI
 
@@ -122,7 +122,7 @@ NAME                       STATUS   ROLES   AGE     VERSION
 aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 ```
 
-## <a name="run-the-application"></a>Kör programmet
+## <a name="run-the-application"></a>Köra appen
 
 En [manifest fil för Kubernetes][kubernetes-deployment] definierar ett önskat tillstånd för klustret, till exempel vilka behållar avbildningar som ska köras. I den här snabb starten används ett manifest för att skapa alla objekt som behövs för att köra [Azures röst program][azure-vote-app]. Det här manifestet innehåller två [Kubernetes-distributioner][kubernetes-deployment] – en för exemplet på Azure Vote Python-program och den andra för en Redis-instans. Två [Kubernetes-tjänster][kubernetes-service] skapas också – en intern tjänst för Redis-instansen och en extern tjänst för att komma åt Azure Vote-programmet från Internet.
 
