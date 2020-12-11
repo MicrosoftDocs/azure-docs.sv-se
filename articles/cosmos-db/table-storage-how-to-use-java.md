@@ -5,24 +5,28 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: Java
 ms.topic: sample
-ms.date: 07/23/2020
-author: sakash279
-ms.author: akshanka
+ms.date: 12/10/2020
+author: ThomasWeiss
+ms.author: thweiss
 ms.custom: devx-track-java
-ms.openlocfilehash: 1f3f5a35beeac6c683aeb6db16a417b897755666
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a5da5e1717f897d2236fd73f0fff525e157f7a0e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079775"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093697"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Så använder du Azure Table Storage eller Azure Cosmos DB Table API från Java
+
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-Den här artikeln visar hur du skapar tabeller, lagrar data och utför CRUD-åtgärder på data. Välj antingen Azure-Table service eller Azure Cosmos DB Tabell-API. Exemplen är skrivna i Java och använder [Azure Storage SDK för Java][Azure Storage SDK for Java]. De scenarier som behandlas beskriver hur du **skapar** , **listar** och **tar bort** tabeller samt hur du **infogar** , **kör frågor mot** , **modifierar** och **tar bort** poster i en tabell. Mer information om tabeller finns i avsnittet [Nästa steg](#next-steps).
+Den här artikeln visar hur du skapar tabeller, lagrar data och utför CRUD-åtgärder på data. Välj antingen Azure-Table service eller Azure Cosmos DB Tabell-API. Exemplen är skrivna i Java och använder [Azure Storage SDK-V8 för Java][Azure Storage SDK for Java]. De scenarier som behandlas beskriver hur du **skapar**, **listar** och **tar bort** tabeller samt hur du **infogar**, **kör frågor mot**, **modifierar** och **tar bort** poster i en tabell. Mer information om tabeller finns i avsnittet [Nästa steg](#next-steps).
+
+> [!IMPORTANT]
+> Den senaste versionen av Azure Storage SDK som stöder Table Storage är [V8][Azure Storage SDK for Java]. En ny version av Table Storage SDK för Java kommer snart.
 
 > [!NOTE]
 > En SDK finns tillgänglig för utvecklare som använder Azure Storage på Android-enheter. Mer information finns i [Azure Storage SDK för Android][Azure Storage SDK for Android].
@@ -63,7 +67,7 @@ Du kan antingen ansluta till Azure Storage-kontot eller Azure Cosmos DB Tabell-A
 
 ### <a name="add-an-azure-storage-connection-string"></a>Lägga till en Azure Storage-anslutningssträng
 
-En Azure Storage-klient använder en förvaringsanslutningssträng för att lagra slutpunkter och autentiseringsuppgifter för åtkomst av datahanteringstjänster. När den körs i ett klientprogram måste du ange anslutningssträngen för lagring i följande format, med namnet på ditt lagringskonto och den primära åtkomstnyckel för lagringskontot som anges i [Azure-portalen](https://portal.azure.com) för värdena **AccountName** och **AccountKey** . 
+En Azure Storage-klient använder en förvaringsanslutningssträng för att lagra slutpunkter och autentiseringsuppgifter för åtkomst av datahanteringstjänster. När den körs i ett klientprogram måste du ange anslutningssträngen för lagring i följande format, med namnet på ditt lagringskonto och den primära åtkomstnyckel för lagringskontot som anges i [Azure-portalen](https://portal.azure.com) för värdena **AccountName** och **AccountKey**. 
 
 Det här exemplet visar hur du kan deklarera ett statiskt fält för lagring av anslutningssträngen:
 
@@ -77,7 +81,7 @@ public static final String storageConnectionString =
 
 ### <a name="add-an-azure-cosmos-db-table-api-connection-string"></a>Lägga till en Azure Cosmos DB Table API-anslutningssträng
 
-Ett Azure Cosmos DB-konto använder en anslutningssträng för att lagra tabellslutpunkten och dina autentiseringsuppgifter. När den körs i ett klientprogram måste du ange Azure Cosmos DB-anslutningssträngen i följande format, med namnet på ditt Azure Cosmos DB-konto och den primära åtkomstnyckel för kontot som anges i [Azure-portalen](https://portal.azure.com) för värdena **AccountName** och **AccountKey** . 
+Ett Azure Cosmos DB-konto använder en anslutningssträng för att lagra tabellslutpunkten och dina autentiseringsuppgifter. När den körs i ett klientprogram måste du ange Azure Cosmos DB-anslutningssträngen i följande format, med namnet på ditt Azure Cosmos DB-konto och den primära åtkomstnyckel för kontot som anges i [Azure-portalen](https://portal.azure.com) för värdena **AccountName** och **AccountKey**. 
 
 Det här exemplet visar hur du kan deklarera ett statiskt fält för lagring av Azure Cosmos DB-anslutningssträngen:
 
@@ -89,7 +93,7 @@ public static final String storageConnectionString =
     "TableEndpoint=https://your_endpoint;" ;
 ```
 
-I ett program som körs inuti en roll i Azure kan du lagra den här strängen i tjänstkonfigurationsfilen *ServiceConfiguration.cscfg* , och du kan komma åt den med ett anrop till metoden **RoleEnvironment.getConfigurationSettings** . Här är ett exempel på hur anslutningssträngen från ett **inställningselement** med namnet *StorageConnectionString* i tjänstkonfigurationsfilen kan hämtas:
+I ett program som körs inuti en roll i Azure kan du lagra den här strängen i tjänstkonfigurationsfilen *ServiceConfiguration.cscfg*, och du kan komma åt den med ett anrop till metoden **RoleEnvironment.getConfigurationSettings**. Här är ett exempel på hur anslutningssträngen från ett **inställningselement** med namnet *StorageConnectionString* i tjänstkonfigurationsfilen kan hämtas:
 
 ```java
 // Retrieve storage account from connection-string.
@@ -435,7 +439,7 @@ catch (Exception e)
 
 ## <a name="modify-an-entity"></a>Ändra en entitet
 
-Om du vill ändra en entitet hämtar du den från Table Storage, ändrar entitetsobjektet och sparar ändringarna till Table Storage igen med en replace- eller en merge-åtgärd. Följande kod ändrar en befintlig kunds telefonnummer. I stället för att anropa **TableOperation.insert** , som vi gjorde för att infoga, anropar den här koden **TableOperation.replace** . Metoden **CloudTable.execute** anropar Table Service, och entiteten ersätts såvida inte ett annat program ändrade den under den tid sedan det här programmet hämtade den. När det utlöses ett undantag och entiteten måste hämtas, ändras och sparas igen. Detta optimistiska återförsöksmönster för samtidighet är vanligt i ett distribuerat lagringssystem.
+Om du vill ändra en entitet hämtar du den från Table Storage, ändrar entitetsobjektet och sparar ändringarna till Table Storage igen med en replace- eller en merge-åtgärd. Följande kod ändrar en befintlig kunds telefonnummer. I stället för att anropa **TableOperation.insert**, som vi gjorde för att infoga, anropar den här koden **TableOperation.replace**. Metoden **CloudTable.execute** anropar Table Service, och entiteten ersätts såvida inte ett annat program ändrade den under den tid sedan det här programmet hämtade den. När det utlöses ett undantag och entiteten måste hämtas, ändras och sparas igen. Detta optimistiska återförsöksmönster för samtidighet är vanligt i ett distribuerat lagringssystem.
 
 ```java
 try
@@ -519,7 +523,7 @@ catch (Exception e)
 
 ## <a name="insert-or-replace-an-entity"></a>Infoga eller ersätta en entitet
 
-Ofta finns det ett behov av att lägga till en entitet i en tabell utan kännedom om huruvida den redan finns i tabellen. Med en INSERT-eller-replace-åtgärd kan du skapa en enskild begäran, som kommer att infoga entiteten om den inte finns eller ersätta den befintliga om den gör det. Följande kod bygger på föregående exempel och infogar eller ersätter entiteten för ”Walter Harp”. När du har skapat en ny entitet anropar koden metoden **TableOperation.insertOrReplace** . Den här koden anropar sedan **körning** av **moln tabell** objekt med tabellen och åtgärden infoga eller Ersätt tabell som parametrar. Om du vill uppdatera endast en del av en entitet går det att använda metoden **TableOperation.insertOrMerge** i stället. INSERT-eller-replace stöds inte i den lokala lagringsprovidern, så den här koden körs bara när du använder ett konto i tabell tjänsten. Du kan lära dig mer om INSERT-eller-replace-och INSERT-eller-merge i detta [Azure-tabeller: Introduktion av upsert och frågekörning] [Azure tables: Introduktion av upsert och frågans projektion].
+Ofta finns det ett behov av att lägga till en entitet i en tabell utan kännedom om huruvida den redan finns i tabellen. Med en INSERT-eller-replace-åtgärd kan du skapa en enskild begäran, som kommer att infoga entiteten om den inte finns eller ersätta den befintliga om den gör det. Följande kod bygger på föregående exempel och infogar eller ersätter entiteten för ”Walter Harp”. När du har skapat en ny entitet anropar koden metoden **TableOperation.insertOrReplace**. Den här koden anropar sedan **körning** av **moln tabell** objekt med tabellen och åtgärden infoga eller Ersätt tabell som parametrar. Om du vill uppdatera endast en del av en entitet går det att använda metoden **TableOperation.insertOrMerge** i stället. INSERT-eller-replace stöds inte i den lokala lagringsprovidern, så den här koden körs bara när du använder ett konto i tabell tjänsten. Du kan lära dig mer om INSERT-eller-replace-och INSERT-eller-merge i detta [Azure-tabeller: Introduktion av upsert och frågekörning] [Azure tables: Introduktion av upsert och frågans projektion].
 
 ```java
 try
@@ -628,7 +632,7 @@ catch (Exception e)
 Mer information finns i [Azure för Java-utvecklare](/java/azure).
 
 [Azure SDK for Java]: https://go.microsoft.com/fwlink/?LinkID=525671
-[Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
+[Azure Storage SDK for Java]: https://github.com/Azure/azure-storage-java/tree/v8.6.5
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
 [Azure Storage Client SDK-referens]: https://azure.github.io/azure-storage-java/
 [Azure Storage REST API]: /rest/api/storageservices/

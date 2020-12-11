@@ -4,14 +4,14 @@ description: Lär dig hur du hanterar projekt-metadata, projektfiler, projektets
 ms.topic: how-to
 ms.date: 02/28/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 7674c2151922d26e069b5cd285cb311d7a18fa98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb106132cf0dfb14dc41c1d4b480fd3a1d7fd7fe
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852811"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093544"
 ---
-# <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" /> Hantera och konfigurera projekt i Azure Notebooks för hands version
+# <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a>Hantera och konfigurera projekt i Azure Notebooks för hands version
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
@@ -36,7 +36,7 @@ Som standard körs projekt på den **kostnads fria beräknings** nivån, som är
 
 ## <a name="edit-project-metadata"></a>Redigera metadata för projektet
 
-På instrument panelen för projektet väljer du **projekt inställningar**och väljer sedan fliken **information** som innehåller projektets metadata enligt beskrivningen i följande tabell. Du kan ändra projektets metadata när som helst.
+På instrument panelen för projektet väljer du **projekt inställningar** och väljer sedan fliken **information** som innehåller projektets metadata enligt beskrivningen i följande tabell. Du kan ändra projektets metadata när som helst.
 
 | Inställning | Beskrivning |
 | --- | --- |
@@ -57,7 +57,7 @@ Instrument panelen för projektet visar innehållet i projektets mapp system. Du
 
 Kommandot **+ New** (kortkommando: n) skapar nya filer eller mappar. När du använder kommandot väljer du först den typ av objekt som ska skapas:
 
-| Objekt typ | Beskrivning | Kommando beteende |
+| Objekt typ | Description | Kommando beteende |
 | --- | --- | --- |
 | **Notebook-fil** | En Jupyter Notebook | Visar ett popup-fönster där du kan ange antecknings bokens fil namn och språk. |
 | **Mapp** | En undermapp | Skapar ett redigerings fält i projektets fillista där du anger mappnamnet. |
@@ -117,11 +117,11 @@ Första gången Azure Notebooks skapar en server för projektet söker den efter
 
 Du kan använda projektets miljö inställningar för att skapa enskilda steg som konfigurerar miljön.
 
-På instrument panelen för projektet väljer du **projekt inställningar**och väljer sedan fliken **miljö** där du lägger till, tar bort och ändrar installations stegen för projektet:
+På instrument panelen för projektet väljer du **projekt inställningar** och väljer sedan fliken **miljö** där du lägger till, tar bort och ändrar installations stegen för projektet:
 
 ![Popup-fliken för projekt inställningar med fliken miljö vald](media/project-settings-environment-steps.png)
 
-Om du vill lägga till ett steg väljer du **+ Lägg till**och väljer sedan en stegtyp i list rutan **åtgärd** :
+Om du vill lägga till ett steg väljer du **+ Lägg till** och väljer sedan en stegtyp i list rutan **åtgärd** :
 
 ![Åtgärds väljare för det nya installations steget för miljön](media/project-settings-environment-details.png)
 
@@ -145,7 +145,7 @@ På instrument panelen för projektet öppnar **Terminal** -kommandot en Linux-t
 > [!Note]
 > Om du har start skript i projekt miljön kan det hända att när du öppnar terminalen visas ett meddelande som anger att installationen fortfarande pågår.
 
-Du kan utfärda alla vanliga Linux-kommandon i terminalen. Du kan också använda `ls` i arbetsmappen för att se de olika miljöer som finns på den virtuella datorn, till exempel *anaconda2_501*, *anaconda3_420*, *anaconda3_501*, *IfSharp*och *R*, tillsammans med en *projektmapp* som innehåller projektet:
+Du kan utfärda alla vanliga Linux-kommandon i terminalen. Du kan också använda `ls` i arbetsmappen för att se de olika miljöer som finns på den virtuella datorn, till exempel *anaconda2_501*, *anaconda3_420*, *anaconda3_501*, *IfSharp* och *R*, tillsammans med en *projektmapp* som innehåller projektet:
 
 ![Projektets Terminal i Azure Notebooks](media/project-terminal.png)
 

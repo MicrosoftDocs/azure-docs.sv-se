@@ -1,6 +1,6 @@
 ---
 title: Kontrollera en enhet från Azure IoT Hub (.NET) | Microsoft Docs
-description: I den här snabbstarten kör du två C#-exempelprogram. Ett program är en serverdelsprogram som kan fjärrstyra enheter som är anslutna till hubben. Det andra programmet simulerar en enhet ansluten till din hubb och som kan fjärrstyras.
+description: I den här snabbstarten kör du två C#-exempelprogram. Det enda programmet är ett tjänstprogram som kan fjärrstyra enheter som är anslutna till hubben. Det andra programmet simulerar en enhet ansluten till din hubb och som kan fjärrstyras.
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 03/04/2020
-ms.openlocfilehash: aac03cad9dc6b83e7831b35ac2873ddaae6eda75
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 39cfa64b756ef6bf20f8cbf3d6e8f8a25e81c674
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843119"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092898"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>Snabbstart: Kontrollera en enhet ansluten till en IoT Hub (.NET)
 
@@ -29,15 +29,15 @@ IoT Hub är en Azure-tjänst som gör att du kan hantera dina IoT-enheter från 
 
 Snabbstarten använder två färdiga .NET-program:
 
-* Ett simulerat enhetsprogram som svarar på direkta metoder anropas från ett serverdelsprogram. För att kunna ta emot direkta metodanrop ansluter det här programmet till en enhetsspecifik slutpunkt på din IoT-hubb.
+* Ett simulerat enhets program som svarar på direkta metoder som anropas från ett tjänst program. För att kunna ta emot direkta metodanrop ansluter det här programmet till en enhetsspecifik slutpunkt på din IoT-hubb.
 
-* Ett serverdelsprogram som anropar de dirEkta metoderna på den simulerade enheten. För att kunna anropa en direkt metod på en enhet ansluter det här programmet till en serverdelsslutpunkt på din IoT-hubb.
+* Ett tjänst program som anropar de direkta metoderna på den simulerade enheten. För att kunna anropa en direkt metod på en enhet ansluter det här programmet till en serverdelsslutpunkt på din IoT-hubb.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* De två exempelprogram som du kör i den här snabbstarten skrivs med C#. Du måste ha .NET Core SDK 2.1.0 eller senare på utvecklingsdatorn.
+* De två exempelprogram som du kör i den här snabbstarten skrivs med C#. Du behöver .NET Core SDK 3,1 eller mer på din utvecklings dator.
 
     Du kan ladda ned .NET Core-SDK:n för flera plattformar från [.NET](https://www.microsoft.com/net/download/all).
 
@@ -96,7 +96,7 @@ En enhet måste vara registrerad vid din IoT-hubb innan den kan ansluta. I den h
 
 ## <a name="retrieve-the-service-connection-string"></a>Hämta anslutningssträngen för tjänsten
 
-Du behöver också din _tjänstanslutningssträng_ för IoT-hubben för att kunna aktivera serverdelsprogrammet och ansluta till hubben och hämta meddelanden. Följande kommando hämtar tjänstanslutningssträngen för din IoT-hubb:
+Du behöver också anslutnings strängen för IoT Hub _-tjänsten_ för att aktivera tjänst programmet för att ansluta till hubben och hämta meddelandena. Följande kommando hämtar tjänstanslutningssträngen för din IoT-hubb:
 
 ```azurecli-interactive
 az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
@@ -112,22 +112,18 @@ Du kommer att använda det här värdet senare i snabbstarten. Den här tjänst 
 
 Det simulerade enhetsprogrammet ansluter till en enhetsspecifik slutpunkt på din IoT-hubb, skickar simulerad telemetri och lyssnar efter direkta metodanrop från din hubb. I den här snabbstarten uppmanar det direkta metodanropet från hubben enheten att ändra det intervall med vilket den skickar telemetri. Den simulerade enheten skickar en bekräftelse tillbaka till hubben när den har kört den direkta metoden.
 
-1. Navigera till C#-exempelprojektets rotmapp i ett lokalt terminalfönster. Gå sedan till mappen **iot-hub\Quickstarts\simulated-device-2**.
+1. Navigera till C#-exempelprojektets rotmapp i ett lokalt terminalfönster. Navigera sedan till mappen **IoT-hub\Quickstarts\SimulatedDeviceWithCommand**
 
-2. Öppna filen **SimulatedDevice.cs** i en valfri textredigerare.
-
-    Ersätt värdet för `s_connectionString` variabeln med enhets anslutnings strängen som du antecknade tidigare. Spara sedan ändringarna i **SimulatedDevice.cs**.
-
-3. Installera de paket som krävs för programmet för simulerad enhet genom att köra följande kommandon i det lokala terminalfönstret:
+2. Installera de paket som krävs för programmet för simulerad enhet genom att köra följande kommandon i det lokala terminalfönstret:
 
     ```cmd/sh
     dotnet restore
     ```
 
-4. Kör programmet för simulerad enhet genom att skapa och köra följande kommandon i det lokala terminalfönstret:
+3. I det lokala terminalfönstret kör du följande kommando för att skapa och köra det simulerade enhets programmet, ersätta `{DeviceConnectionString}` med den enhets anslutnings sträng som du antecknade tidigare:
 
     ```cmd/sh
-    dotnet run
+    dotnet run -- {DeviceConnectionString}
     ```
 
     Följande skärmbild visar utdata när det simulerade enhetsprogrammet skickar telemetri till din IoT-hubb:
@@ -136,31 +132,27 @@ Det simulerade enhetsprogrammet ansluter till en enhetsspecifik slutpunkt på di
 
 ## <a name="call-the-direct-method"></a>Anropa den direkta metoden
 
-Serverdelsprogrammet ansluter till en slutpunkt på tjänstsidan på din IoT-hubb. Programmet gör direkta metod anrop till en enhet via din IoT Hub och lyssnar efter bekräftelser. Ett IoT Hub-serverdelsprogram körs normalt i molnet.
+Tjänstprogrammet ansluter till en slutpunkt på tjänstsidan på din IoT-hubb. Programmet gör direkta metod anrop till en enhet via din IoT Hub och lyssnar efter bekräftelser. Ett IoT Hub tjänst program körs vanligt vis i molnet.
 
-1. Navigera till C#-exempelprojektets rotmapp i ett annat lokalt terminalfönster. Gå sedan till mappen **Quickstarts\back-end-application**.
+1. Navigera till C#-exempelprojektets rotmapp i ett annat lokalt terminalfönster. Navigera sedan till mappen **IoT-hub\Quickstarts\InvokeDeviceMethod**
 
-2. Öppna filen **BackEndApplication.cs** i en valfri textredigerare.
-
-    Ersätt värdet för `s_connectionString` variabeln med tjänst anslutnings strängen som du gjorde en anteckning om tidigare. Spara sedan ändringarna i **BackEndApplication.cs**.
-
-3. Installera de bibliotek som krävs för serverdelsprogrammet genom att köra följande kommandon i det lokala terminalfönstret:
+2. I det lokala terminalfönstret kör du följande kommandon för att installera de bibliotek som krävs för tjänst programmet:
 
     ```cmd/sh
     dotnet restore
     ```
 
-4. Skapa och kör serverdelsprogrammet genom att köra följande kommandon i det lokala terminalfönstret:
+3. I det lokala terminalfönstret kör du följande kommandon för att skapa och köra tjänst programmet, och ersätter `{ServiceConnectionString}` med anslutnings strängen för tjänsten som du antecknade tidigare:
 
     ```cmd/sh
-    dotnet run
+    dotnet run -- {ServiceConnectionString}
     ```
 
     Följande skärm bild visar resultatet när programmet gör ett direkt metod anrop till enheten och får en bekräftelse:
 
-    ![Kör serverdelsprogrammet](./media/quickstart-control-device-dotnet/BackEndApplication.png)
+    ![Köra tjänst programmet](./media/quickstart-control-device-dotnet/BackEndApplication.png)
 
-    När du har kört serverdelsprogrammet visas ett meddelande i det konsolfönster som kör den simulerade enheten och hastigheten med vilken den skickar meddelandeändringar:
+    När du har kört tjänst programmet visas ett meddelande i konsol fönstret som kör den simulerade enheten och den hastighet som den skickar ändringar i meddelanden:
 
     ![Ändring i den simulerade klienten](./media/quickstart-control-device-dotnet/SimulatedDevice-2.png)
 
@@ -170,7 +162,7 @@ Serverdelsprogrammet ansluter till en slutpunkt på tjänstsidan på din IoT-hub
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabbstarten har du anropat en direktmetod på en enhet från ett serverdelsprogram och svarat på det direkta metodanropet i ett simulerat enhetsprogram.
+I den här snabb starten kallades du en direkt metod på en enhet från ett tjänst program och svarade på det direkta metod anropet i ett simulerat enhets program.
 
 Om du vill lära dig mer om hur man skickar enhet-till-molnet-meddelanden till olika mål i molnet går du vidare till nästa självstudier.
 

@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/24/2020
-ms.openlocfilehash: 4b19ae1b584a2d300e4144e79ef76245c71035cf
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 6a6baa14d7521f4a85350af7b08b5fcbe82ddf6b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96127087"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033884"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -27,7 +27,7 @@ När du kör exemplet för att ansluta till IoT Central, används enhets etabler
 
 `main`Metoden:
 
-* Skapar ett- `client` objekt och anger `dtmi:com:example:Thermostat;1` modell-ID: t innan det öppnar anslutningen.
+* Skapar ett- `client` objekt och anger `dtmi:com:example:Thermostat;1` modell-ID: t innan det öppnar anslutningen. IoT Central använder modell-ID: t för att identifiera eller generera enhets mal len för den här enheten. Mer information finns i [associera en enhet med en enhets mall](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template).
 * Skapar en kommando hanterare.
 * Startar en slinga för att skicka temperatur telemetri var 10: e sekund.
 * Skickar `maxTempSinceLastReboot` egenskapen till IoT Central. IoT Central ignorerar `serialNumber` egenskapen eftersom den inte är en del av enhets modellen.
@@ -83,7 +83,7 @@ async function main() {
 }
 ```
 
-`provisionDevice`Funktionen visar hur enheten använder DPS för att registrera och ansluta till IoT Central. Nytto lasten inkluderar modell-ID:
+`provisionDevice`Funktionen visar hur enheten använder DPS för att registrera och ansluta till IoT Central. Nytto lasten innehåller modell-ID: t som IoT Central använder för att [associera enheten med en enhets mall](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template):
 
 ```javascript
 async function provisionDevice(payload) {

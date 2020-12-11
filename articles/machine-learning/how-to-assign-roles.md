@@ -10,13 +10,13 @@ ms.reviewer: Blackmist
 ms.author: nigup
 author: nishankgu
 ms.date: 11/09/2020
-ms.custom: how-to, seodec18, devx-track-azurecli, contperfq2
-ms.openlocfilehash: 0719f2d9200741798c798aca4b4196812f1229c9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.custom: how-to, seodec18, devx-track-azurecli, contperf-fy21q2
+ms.openlocfilehash: 636f63b3f7e43bd8f27d1df58ab82d24bd19a616
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458439"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033756"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Hantera åtkomst till en Azure Machine Learning-arbetsyta
 
@@ -55,7 +55,7 @@ Om du är ägare till en arbets yta kan du lägga till och ta bort roller för a
 - [PowerShell](../role-based-access-control/role-assignments-powershell.md)
 - [Azure CLI](../role-based-access-control/role-assignments-cli.md)
 - [REST-API](../role-based-access-control/role-assignments-rest.md)
-- [Azure Resource Manager mallar](../role-based-access-control/role-assignments-template.md)
+- [Azure Resource Manager-mallar](../role-based-access-control/role-assignments-template.md)
 
 Om du har installerat [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md)kan du använda CLI-kommandon för att tilldela roller till användare:
 

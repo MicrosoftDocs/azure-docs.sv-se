@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vladvino
 ms.author: apimpm
 ms.date: 11/27/2020
-ms.openlocfilehash: fca98414a87f3b8a4f3c0969a28ee95c7ed47dc3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 72e91715398b4920c62afae5f36aa09954a577f9
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501647"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092150"
 ---
 # <a name="api-management-soft-delete-preview"></a>API Management mjuk borttagning (förhands granskning)
 
@@ -29,7 +29,7 @@ Funktionen mjuk borttagning är tillgänglig via [REST API](/rest/api/apimanagem
 
 | Åtgärd | Description | API Management namnrymd | Lägsta API-version |
 |--|--|--|--|
-| [Skapa eller uppdatera](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) | Skapar eller uppdaterar en API Management-tjänst.  | API Management tjänst | Alla |
+| [Skapa eller uppdatera](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) | Skapar eller uppdaterar en API Management-tjänst.  | API Management tjänst | Valfri |
 | [Skapa eller uppdatera](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) med `restore` egenskap inställd på **True** | Tar bort API Management-tjänsten om den tidigare varit mjuk – borttagen. Om `restore` har angetts och angetts till `true` alla andra egenskaper kommer att ignoreras.  | API Management tjänst |  2020-06-01 – för hands version |
 | [Ta bort](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/delete) | Tar bort en befintlig API Management-tjänst. | API Management tjänst | 2020-01-01 – för hands version|
 | [Hämta efter namn](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) | Hämta mjuk-borttagen API Management-tjänst efter namn. | Borttagna tjänster | 2020-06-01 – för hands version |
@@ -48,7 +48,7 @@ Om din APIM-instans inte återställs inom 48 timmar tas den bort (kan inte åte
 
 ## <a name="list-deleted-apim-instances"></a>Lista över borttagna APIM-instanser
 
-Du kan kontrol lera att det finns en mjuk borttagnings instans av APIM som kan återställas (ångra borttagning) med antingen de borttagna tjänsterna [Get efter namn](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) eller [lista efter prenumerations](/deletedservices/listbysubscription) åtgärder.
+Du kan kontrol lera att det finns en mjuk borttagnings instans av APIM som kan återställas (ångra borttagning) med antingen de borttagna tjänsterna [Get efter namn](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) eller [lista efter prenumerations](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription) åtgärder.
 
 ### <a name="get-a-soft-deleted-instance-by-name"></a>Hämta en mjuk borttagen instans med namn
 
@@ -76,7 +76,7 @@ Om det är tillgängligt för borttagning returnerar Azure en post av APIM-insta
 
 ### <a name="list-all-soft-deleted-instances-for-a-given-subscription"></a>Lista alla mjuka borttagna instanser för en specifik prenumeration
 
-Använd prenumerations åtgärden API Managements [lista efter prenumeration](/deletedservices/listbysubscription) och Ersätt `{subscriptionId}` med ditt prenumerations-ID:
+Använd prenumerations åtgärden API Managements [lista efter prenumeration](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription) och Ersätt `{subscriptionId}` med ditt prenumerations-ID:
 
 ```rest
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/deletedservices?api-version=2020-06-01-preview

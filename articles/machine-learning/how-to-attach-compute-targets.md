@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 44f6d700ff25f0c2f2cb8bedc5c2d15ad2adcb83
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, devx-track-python, contperf-fy21q1
+ms.openlocfilehash: c25f3965775c6518629c92ccc371855d9178e648
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320829"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033722"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>Konfigurera beräknings mål för modell utbildning och distribution
 
@@ -70,14 +70,14 @@ Du kan använda en systemskapad Conda-miljö, en redan befintlig python-miljö e
 
 Använd Azure-Data Science Virtual Machine (DSVM) som den virtuella Azure-dator som du väljer för det här scenariot. Den här virtuella datorn är en förkonfigurerad miljö för data vetenskap och AI-utveckling i Azure. Den virtuella datorn innehåller ett granskat val av verktyg och ramverk för hela livs cykeln för Machine Learning-utveckling. Mer information om hur du använder DSVM med Azure Machine Learning finns i [Konfigurera en utvecklings miljö](./how-to-configure-environment.md#dsvm).
 
-1. **Skapa** : skapa en DSVM innan du använder den för att träna din modell. Information om hur du skapar den här resursen finns i [etablera data science Virtual Machine för Linux (Ubuntu)](./data-science-virtual-machine/dsvm-ubuntu-intro.md).
+1. **Skapa**: skapa en DSVM innan du använder den för att träna din modell. Information om hur du skapar den här resursen finns i [etablera data science Virtual Machine för Linux (Ubuntu)](./data-science-virtual-machine/dsvm-ubuntu-intro.md).
 
     > [!WARNING]
     > Azure Machine Learning stöder bara virtuella datorer som kör **Ubuntu**. När du skapar en virtuell dator eller väljer en befintlig virtuell dator måste du välja en virtuell dator som använder Ubuntu.
     > 
     > Azure Machine Learning kräver också att den virtuella datorn har en __offentlig IP-adress__.
 
-1. **Bifoga** : om du vill koppla en befintlig virtuell dator som ett beräknings mål måste du ange resurs-ID, användar namn och lösen ord för den virtuella datorn. Resurs-ID: t för den virtuella datorn kan konstrueras med prenumerations-ID, resurs grupp namn och namn på virtuell dator med följande sträng format: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`
+1. **Bifoga**: om du vill koppla en befintlig virtuell dator som ett beräknings mål måste du ange resurs-ID, användar namn och lösen ord för den virtuella datorn. Resurs-ID: t för den virtuella datorn kan konstrueras med prenumerations-ID, resurs grupp namn och namn på virtuell dator med följande sträng format: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`
 
  
    ```python
@@ -102,7 +102,7 @@ Använd Azure-Data Science Virtual Machine (DSVM) som den virtuella Azure-dator 
     > [!WARNING]
     > Skapa inte flera, samtidiga bilagor till samma DSVM från din arbets yta. Varje ny bilaga kommer att dela upp de tidigare befintliga bifogade filerna.
 
-1. **Konfigurera** : skapa en körnings konfiguration för DSVM Compute Target. Docker och Conda används för att skapa och konfigurera utbildnings miljön på DSVM.
+1. **Konfigurera**: skapa en körnings konfiguration för DSVM Compute Target. Docker och Conda används för att skapa och konfigurera utbildnings miljön på DSVM.
 
    ```python
    from azureml.core import ScriptRunConfig
@@ -128,7 +128,7 @@ Använd Azure-Data Science Virtual Machine (DSVM) som den virtuella Azure-dator 
 
 Azure HDInsight är en populär plattform för stor data analys. Plattformen ger Apache Spark som kan användas för att träna din modell.
 
-1. **Skapa** : skapa HDInsight-klustret innan du använder det för att träna din modell. Information om hur du skapar ett spark på HDInsight-kluster finns i [skapa ett Spark-kluster i HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
+1. **Skapa**: skapa HDInsight-klustret innan du använder det för att träna din modell. Information om hur du skapar ett spark på HDInsight-kluster finns i [skapa ett Spark-kluster i HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
 
     > [!WARNING]
     > Azure Machine Learning kräver att HDInsight-klustret har en __offentlig IP-adress__.
@@ -137,7 +137,7 @@ Azure HDInsight är en populär plattform för stor data analys. Plattformen ger
     
     När klustret har skapats ansluter du till det med hostname \<clustername> -SSH.azurehdinsight.net, där \<clustername> är det namn som du har angett för klustret. 
 
-1. **Bifoga** : om du vill ansluta ett HDInsight-kluster som ett beräknings mål måste du ange resurs-ID, användar namn och lösen ord för HDInsight-klustret. Resurs-ID för HDInsight-klustret kan konstrueras med prenumerations-ID, resurs grupp namn och HDInsight-kluster namn med följande sträng format: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
+1. **Bifoga**: om du vill ansluta ett HDInsight-kluster som ett beräknings mål måste du ange resurs-ID, användar namn och lösen ord för HDInsight-klustret. Resurs-ID för HDInsight-klustret kan konstrueras med prenumerations-ID, resurs grupp namn och HDInsight-kluster namn med följande sträng format: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
 
     ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
@@ -165,7 +165,7 @@ Azure HDInsight är en populär plattform för stor data analys. Plattformen ger
     > [!WARNING]
     > Skapa inte flera, samtidiga bilagor till samma HDInsight från din arbets yta. Varje ny bilaga kommer att dela upp de tidigare befintliga bifogade filerna.
 
-1. **Konfigurera** : skapa en körnings konfiguration för HDI Compute Target. 
+1. **Konfigurera**: skapa en körnings konfiguration för HDI Compute Target. 
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 
@@ -178,9 +178,9 @@ Azure Batch används för att köra storskaliga parallella program och HPC-progr
 
 Om du vill bifoga Azure Batch som ett beräknings mål måste du använda Azure Machine Learning SDK och ange följande information:
 
--    **Azure Batch Compute Name** : ett eget namn som ska användas för data bearbetningen inom arbets ytan
--    **Azure Batch konto namn** : namnet på det Azure Batch kontot
--    **Resurs grupp** : den resurs grupp som innehåller det Azure Batch kontot.
+-    **Azure Batch Compute Name**: ett eget namn som ska användas för data bearbetningen inom arbets ytan
+-    **Azure Batch konto namn**: namnet på det Azure Batch kontot
+-    **Resurs grupp**: den resurs grupp som innehåller det Azure Batch kontot.
 
 Följande kod visar hur du kopplar Azure Batch som ett beräknings mål:
 
@@ -223,11 +223,11 @@ Skapa en Azure Databricks arbets yta innan du använder den. Information om hur 
 
 Om du vill bifoga Azure Databricks som ett beräknings mål anger du följande information:
 
-* __Databricks Compute Name__ : det namn som du vill tilldela till den här beräknings resursen.
-* __Databricks namn på arbets yta__ : namnet på arbets ytan Azure Databricks.
-* __Databricks__ : åtkomst-token som används för att autentisera till Azure Databricks. Om du vill generera en åtkomsttoken, se [Authentication](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html) -dokumentet.
+* __Databricks Compute Name__: det namn som du vill tilldela till den här beräknings resursen.
+* __Databricks namn på arbets yta__: namnet på arbets ytan Azure Databricks.
+* __Databricks__: åtkomst-token som används för att autentisera till Azure Databricks. Om du vill generera en åtkomsttoken, se [Authentication](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html) -dokumentet.
 
-Följande kod visar hur du kopplar Azure Databricks som ett beräknings mål med Azure Machine Learning SDK (Databricks- __arbetsytan måste finnas i samma prenumeration som din AML-arbetsyta__ ):
+Följande kod visar hur du kopplar Azure Databricks som ett beräknings mål med Azure Machine Learning SDK (Databricks-__arbetsytan måste finnas i samma prenumeration som din AML-arbetsyta__):
 
 ```python
 import os
@@ -279,9 +279,9 @@ Skapa ett Azure Data Lake Analytics konto innan du använder det. Information om
 
 Om du vill bifoga Data Lake Analytics som ett beräknings mål måste du använda Azure Machine Learning SDK och ange följande information:
 
-* __Compute-namn__ : det namn som du vill tilldela till den här beräknings resursen.
-* __Resurs grupp__ : den resurs grupp som innehåller det data Lake Analytics kontot.
-* __Konto namn__ : namnet på data Lake Analytics kontot.
+* __Compute-namn__: det namn som du vill tilldela till den här beräknings resursen.
+* __Resurs grupp__: den resurs grupp som innehåller det data Lake Analytics kontot.
+* __Konto namn__: namnet på data Lake Analytics kontot.
 
 Följande kod visar hur du kopplar Data Lake Analytics som ett beräknings mål:
 

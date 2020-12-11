@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.date: 08/21/2020
-ms.openlocfilehash: 02192f3960b8021ee32203620893620c7b96f076
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5be4ce97e6087847f084f9b9ec2a6b8b0df84e14
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024001"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033518"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Självstudie: Skapa ett Scala Maven-program för Apache Spark i HDInsight med hjälp av IntelliJ
 
@@ -25,7 +25,7 @@ I den här självstudien lär du dig att skapa ett Apache Spark-program som skri
 * Generera en jar-fil som kan skickas till HDInsight Spark-kluster.
 * Kör programmet på ett Spark-kluster med Livy.
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 > [!div class="checklist"]
 > * Installera plugin-programmet Scala för IntelliJ IDEA
 > * Använda IntelliJ till att utveckla ett Scala Maven-program
@@ -203,7 +203,7 @@ Utför följande steg för att installera Scala-plugin-programmet:
 
         Se till att kryss rutan **inkludera i Project build** är markerad. Det här alternativet säkerställer att jar skapas varje gång projektet byggs eller uppdateras. Välj **Applicera** och sedan **OK**.
 
-    7. Om du vill skapa en jar-version navigerar **du till skapa**  >  **build-artefakter**  >  **Build**. Projektet kompileras inom cirka 30 sekunder.  Utdatans jar-fil skapas under **\out\artifacts**.
+    7. Om du vill skapa en jar-version navigerar **du till skapa**  >  **build-artefakter**  >  . Projektet kompileras inom cirka 30 sekunder.  Utdatans jar-fil skapas under **\out\artifacts**.
 
         ![IntelliJ idé projekt artefakt utdata](./media/apache-spark-create-standalone-application/hdi-artifact-output-jar.png)
 

@@ -8,19 +8,22 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/04/2020
+ms.date: 12/10/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 5d0b2df551c73e8c9b24d80280bbc993d9b361b7
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: a15ac2b5632cb881b094ca2c333dfca55a689062
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928475"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092626"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Självstudie: Lägg till ett lokalt program för fjärråtkomst via Application Proxy i Azure Active Directory
 
 Azure Active Directory (Azure AD) innehåller en programproxytjänst som gör att användarna kan komma åt lokala program genom att logga in med sitt Azure AD-konto. Den här självstudien förbereder din miljö för användning med programproxy. När din miljö är redo använder du Azure-portalen för att lägga till ett lokalt program till Azure AD-klientorganisationen.
+
+Kopplingar är en viktig del av programproxyn. Mer information om anslutningar finns i [förstå Azure AD-programproxy-kopplingar](application-proxy-connectors.md).
 
 I den här självstudien:
 
@@ -31,7 +34,7 @@ I den här självstudien:
 > * Lägger till ett lokalt program till Azure AD-klientorganisationen
 > * Verifierar att en test användare kan logga in på programmet med hjälp av ett Azure AD-konto
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill lägga till ett lokalt program i Azure AD behöver du:
 
@@ -191,7 +194,7 @@ Nu när du har förberett din miljö och installerat ett anslutningsprogram är 
 1. Logga in som administratör i [Azure-portalen](https://portal.azure.com/).
 2. I den vänstra navigerings panelen väljer du **Azure Active Directory**.
 3. Välj **företags program** och välj sedan **nytt program**.
-4. I avsnittet **skapa ett eget program** väljer du **Konfigurera Application Proxy för säker fjärråtkomst till ett lokalt program**.
+4. Välj **Lägg till en lokal program** knapp som visas om halva sidan i avsnittet **lokala program** . Alternativt kan du välja **skapa ett eget program** överst på sidan och sedan välja **Konfigurera programproxy för säker fjärråtkomst till ett lokalt program**.
 5. I avsnittet **Lägg till ett eget lokalt program** anger du följande information om ditt program:
 
     | Fält | Beskrivning |

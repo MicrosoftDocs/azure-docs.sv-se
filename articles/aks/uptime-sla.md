@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 0d1c2304f68f5e24c45390dca2cc0deb6e8dede2
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 51430a37f34600d3191a646df7c1890b6d94f481
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931953"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033025"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>SLA för Azure Kubernetes service (AKS) drift tid
 
@@ -28,13 +28,6 @@ Kunder kan ändå skapa obegränsat antal kostnads fria kluster med ett service 
 SLA för drift tid är tillgängligt i offentliga regioner och Azure Government regioner där [AKS stöds](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
 
 ## <a name="limitations"></a>Begränsningar
-
-Privata kluster stöds bara i följande regioner:
- *  East US
- *  USA, västra
- *  USA, västra 2
- *  USA, norra centrala
- *  USA, västra centrala
 
 ## <a name="sla-terms-and-conditions"></a>Villkor för SLA
 

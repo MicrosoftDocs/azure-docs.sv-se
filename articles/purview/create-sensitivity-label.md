@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: 195ddfcc3c781c1866a7751f989c9460463edbb9
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: c824e0abea7320a20441e51caa2a05d534ff61b3
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558172"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092694"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Etikettera data automatiskt i Azure avdelningens kontroll
 
@@ -190,7 +190,6 @@ Mer information om hur du konfigurerar genomsökningar på olika till gångar i 
 |**Azure Blob Storage**     |[Registrera och skanna Azure-Blob Storage](register-scan-azure-blob-storage-source.md)         |
 |**Azure Data Lake Storage**     |[Registrera och skanna Azure Data Lake Storage Gen1](register-scan-adls-gen1.md) </br>[Registrera och skanna Azure Data Lake Storage Gen2](register-scan-adls-gen2.md)         |
 |**Azure SQL Databases**|[Registrera och skanna en Azure SQL Database](register-scan-azure-sql-database.md) </br>[Registrera och skanna en Azure SQL Database Hanterad instans](register-scan-azure-sql-database-managed-instance.md)|
-|**Lagrings konton bakom brand väggar**     |[Sök igenom lagrings konton bakom en brand vägg i Azure avdelningens kontroll](scan-sqlresource-firewall.md)         |
 | | |
 
 ## <a name="view-labels-on-assets"></a>Visa etiketter på till gångar

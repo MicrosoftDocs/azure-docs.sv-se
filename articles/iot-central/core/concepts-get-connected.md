@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 1a050daa3a4b3ae9be5ef40961c40adaa90dc72b
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 90246459663980de25e301817f651e7719e8f380
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96121814"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033193"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Ansluta till Azure IoT Central
 
@@ -178,11 +178,21 @@ Den här metoden är användbar när du experimenterar med IoT Central eller tes
 
 ## <a name="associate-a-device-with-a-device-template"></a>Koppla en enhet till en enhets mall
 
-IoT Central associerar automatiskt en enhet med en enhets mall när enheten ansluter. En enhet skickar ett modell-ID när den ansluter. IoT Central använder modell-ID: t för att identifiera enhets mal len för den aktuella enhets modellen. Identifierings processen fungerar på följande sätt:
+IoT Central associerar automatiskt en enhet med en enhets mall när enheten ansluter. En enhet skickar ett [modell-ID](../../iot-pnp/iot-plug-and-play-glossary.md#model-id) när den ansluter. IoT Central använder modell-ID: t för att identifiera enhets mal len för den aktuella enhets modellen. Identifierings processen fungerar på följande sätt:
 
 1. Om enhets mal len redan har publicerats i IoT Central-programmet är enheten kopplad till enhets mal len.
-1. Om enhets mal len inte redan har publicerats i IoT Central-programmet söker IoT Central efter enhets modellen i den offentliga modellens lagrings plats. Om IoT Central hittar modellen används den för att generera en grundläggande enhets mall.
+1. Om enhets mal len inte redan har publicerats i IoT Central-programmet söker IoT Central efter enhets modellen i den [offentliga modellens lagrings plats](https://github.com/Azure/iot-plugandplay-models). Om IoT Central hittar modellen används den för att generera en grundläggande enhets mall.
 1. Om IoT Central inte hittar modellen i den offentliga modellens lagrings plats markeras enheten som **associerad**. En operatör kan skapa en enhets mall för enheten och sedan migrera den anslutna enheten till den nya enhets mal len.
+
+Följande skärm bild visar hur du visar modell-ID för en enhets mall i IoT Central. I en enhets mall väljer du en komponent och väljer sedan **Visa identitet**:
+
+:::image type="content" source="media/concepts-get-connected/model-id.png" alt-text="Skärm bild som visar modell-ID i termostat enhets mall.":::
+
+Du kan visa [termostat-modellen](https://github.com/Azure/iot-plugandplay-models/blob/main/dtmi/com/example/thermostat-1.json) i den offentliga modellens lagrings plats. Definitionen av modell-ID: t ser ut så här:
+
+```json
+"@id": "dtmi:com:example:Thermostat;1"
+```
 
 ## <a name="device-status-values"></a>Enhets status värden
 
@@ -205,7 +215,7 @@ När en riktig enhet ansluter till ditt IoT Central-program ändras enhetens sta
 
     Operatören kan koppla en enhet till en enhets mall från sidan **enheter** med knappen **migrera** .
 
-## <a name="best-practices"></a>Rekommenderade metoder
+## <a name="best-practices"></a>Bästa praxis
 
 Behåll eller cachelagra inte enhets anslutnings strängen som DPS returnerar när du först ansluter enheten. Om du vill återansluta en enhet går du igenom standard enhets registrerings flödet för att få rätt anslutnings sträng för enheten. Om enheten cachelagrar anslutnings strängen, körs enhetens program vara i risken att en inaktuell anslutnings sträng används. Om IoT Central uppdaterar den underliggande Azure IoT-hubben som används kan en enhet med en inaktuell anslutnings sträng inte ansluta.
 

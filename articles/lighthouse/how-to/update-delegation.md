@@ -3,12 +3,12 @@ title: Uppdatera en delegering
 description: Lär dig hur du uppdaterar en delegering för en kund som tidigare har publicerats till Azure-Lighthouse.
 ms.date: 12/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 90827281ac9b05105700298494af0b60b0fa511f
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: e204d1f3546e6e978f91c7e808065a388a4af4b3
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96610918"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093425"
 ---
 # <a name="update-a-delegation"></a>Uppdatera en delegering
 
@@ -17,7 +17,7 @@ När du har publicerat en prenumeration (eller resurs grupp) till Azure-Lighthou
 > [!TIP]
 > Även om vi refererar till tjänst leverantörer och kunder i det här avsnittet kan [företag som hanterar flera klienter](../concepts/enterprise.md) använda samma process för att konfigurera Azure-Lighthouse och konsolidera sina hanterings upplevelser.
 
-Om du har publicerat [din kund via Azure Resource Manager (arm) Mallar](onboard-customer.md)måste en ny distribution utföras för kunden. Beroende på vad du ändrar, kanske du vill uppdatera det ursprungliga erbjudandet eller ta bort det ursprungliga erbjudandet och skapa ett nytt.
+Om du har publicerat [din kund via Azure Resource Manager mallar (arm-mallar)](onboard-customer.md)måste en ny distribution utföras för kunden. Beroende på vad du ändrar, kanske du vill uppdatera det ursprungliga erbjudandet eller ta bort det ursprungliga erbjudandet och skapa ett nytt.
 
 - **Om du ändrar endast auktoriseringar**: du kan uppdatera din delegering genom att bara ändra avsnittet **AUKTORISERINGar** i arm-mallen.
 - **Om du ändrar hanterings klient organisationen**: du måste skapa en ny arm-mall med en annan **mspOfferName** än ditt tidigare erbjudande.

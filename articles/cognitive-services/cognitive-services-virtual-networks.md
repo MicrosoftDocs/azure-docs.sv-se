@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 10/07/2020
+ms.date: 12/04/2020
 ms.author: aahi
-ms.openlocfilehash: f79cfce514b81c5829ee7791c18e24d3bc6563b5
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 3b6c2a5a50cedadd8818eae735df55b661e794ef
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369383"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97034028"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Konfigurera virtuella nätverk för Azure Cognitive Services
 
@@ -49,19 +49,22 @@ Virtuella nätverk (virtuella nätverk) stöds i [regioner där Cognitive Servic
 > * Custom Vision
 > * Ansikte
 > * Formigenkänning
+> * Avancerad läsare
 > * Language Understanding (LUIS)
 > * Personanpassning
+> * Speech Services
 > * Textanalys
 > * QnA Maker
 > * Translator Text
-> * Avancerad läsare
+
 
 > [!NOTE]
 > Om du använder LUIS kan du med **CognitiveServicesManagement** -taggen bara använda tjänsten med SDK eller REST API. För att få åtkomst till och använda LUIS-portalen från ett virtuellt nätverk måste du använda följande Taggar:  
-> * **AzureResourceManager** 
-> * **CognitiveServicesManagement**
 > * **AzureActiveDirectory**
 > * **AzureFrontDoor. frontend**
+> * **AzureResourceManager** 
+> * **CognitiveServicesManagement**
+
 
 
 ## <a name="change-the-default-network-access-rule"></a>Ändra standardåtkomstregeln för nätverk
@@ -491,13 +494,13 @@ Med privata slut punkter för Cognitive Services resurser kan du:
 
 En privat slut punkt är ett särskilt nätverks gränssnitt för en Azure-resurs i ditt [VNet](../virtual-network/virtual-networks-overview.md). Att skapa en privat slut punkt för din Cognitive Services-resurs ger säker anslutning mellan klienter i ditt VNet och din resurs. Den privata slut punkten tilldelas en IP-adress från det virtuella nätverkets IP-adressintervall. Anslutningen mellan den privata slut punkten och Cognitive Services tjänsten använder en säker privat länk.
 
-Program i det virtuella nätverket kan ansluta till tjänsten via den privata slut punkten sömlöst med samma anslutnings strängar och auktoriseringsbeslut som de skulle använda i övrigt. Undantaget är tal tjänsten som kräver en separat slut punkt. Se avsnittet om [privata slut punkter med tal tjänsten](#private-endpoints-with-the-speech-service). Privata slut punkter kan användas med alla protokoll som stöds av den Cognitive Services resursen, inklusive REST.
+Program i det virtuella nätverket kan ansluta till tjänsten via den privata slut punkten sömlöst med samma anslutnings strängar och auktoriseringsbeslut som de skulle använda i övrigt. Undantaget är tal tjänsterna, som kräver en separat slut punkt. Se avsnittet om [privata slut punkter med tal tjänsterna](#private-endpoints-with-the-speech-services). Privata slut punkter kan användas med alla protokoll som stöds av den Cognitive Services resursen, inklusive REST.
 
 Privata slut punkter kan skapas i undernät som använder [tjänst slut punkter](../virtual-network/virtual-network-service-endpoints-overview.md). Klienter i ett undernät kan ansluta till en Cognitive Services resurs med hjälp av privat slut punkt och använda tjänst slut punkter för att få åtkomst till andra.
 
 När du skapar en privat slut punkt för en Cognitive Services-resurs i ditt VNet, skickas en begäran om godkännande till Cognitive Services resurs ägare. Om användaren som begär att den privata slut punkten ska skapas även är ägare till resursen, godkänns den här medgivande förfrågningen automatiskt.
 
-Cognitive Services resurs ägare kan hantera medgivande förfrågningar och privata slut punkter via fliken " *privata slut punkter* " för resursen Cognitive Services i [Azure Portal](https://portal.azure.com).
+Cognitive Services resurs ägare kan hantera medgivande förfrågningar och privata slut punkter via fliken "*privata slut punkter*" för resursen Cognitive Services i [Azure Portal](https://portal.azure.com).
 
 ### <a name="private-endpoints"></a>Privata slut punkter
 
@@ -509,17 +512,17 @@ När du skapar den privata slut punkten måste du ange Cognitive Services resurs
 
 ### <a name="connecting-to-private-endpoints"></a>Ansluter till privata slut punkter
 
-Klienter i ett VNet som använder den privata slut punkten bör använda samma anslutnings sträng för Cognitive Services resursen som klienter som ansluter till den offentliga slut punkten. Undantaget är tal tjänsten som kräver en separat slut punkt. Se avsnittet om [privata slut punkter med tal tjänsten](#private-endpoints-with-the-speech-service). Vi förlitar sig på DNS-matchning för att automatiskt dirigera anslutningarna från VNet till Cognitive Services resurs via en privat länk. Tal tjänsten 
+Klienter i ett VNet som använder den privata slut punkten bör använda samma anslutnings sträng för Cognitive Services resursen som klienter som ansluter till den offentliga slut punkten. Undantaget är tal tjänsterna, som kräver en separat slut punkt. Se avsnittet om [privata slut punkter med tal tjänsterna](#private-endpoints-with-the-speech-services). Vi förlitar sig på DNS-matchning för att automatiskt dirigera anslutningarna från VNet till Cognitive Services resurs via en privat länk. 
 
 Vi skapar en [privat DNS-zon](../dns/private-dns-overview.md) som är kopplad till det virtuella nätverket med nödvändiga uppdateringar för privata slut punkter som standard. Men om du använder en egen DNS-server kan du behöva göra ytterligare ändringar i DNS-konfigurationen. Avsnittet om [DNS-ändringar](#dns-changes-for-private-endpoints) nedan beskriver de uppdateringar som krävs för privata slut punkter.
 
-### <a name="private-endpoints-with-the-speech-service"></a>Privata slut punkter med tal tjänsten
+### <a name="private-endpoints-with-the-speech-services"></a>Privata slut punkter med tal tjänsterna
 
-När du använder privata slut punkter med tal tjänsten måste du använda en anpassad slut punkt för att anropa tal tjänsten. Du kan inte använda den globala slut punkten. Slut punkten måste följa det här mönstret: `{account}.{stt|tts|voice|dls}.speech.microsoft.com` .
+Se [använda tal tjänster med privata slut punkter från Azures privata länk](Speech-Service/speech-services-private-link.md).
 
 ### <a name="dns-changes-for-private-endpoints"></a>DNS-ändringar för privata slut punkter
 
-När du skapar en privat slut punkt uppdateras DNS CNAME-resursposten för Cognitive Services resursen till ett alias i en under domän med prefixet " *privatelink* ". Som standard skapar vi också en [privat DNS-zon](../dns/private-dns-overview.md)som motsvarar under domänen " *privatelink* " med DNS a-resursposter för de privata slut punkterna.
+När du skapar en privat slut punkt uppdateras DNS CNAME-resursposten för Cognitive Services resursen till ett alias i en under domän med prefixet "*privatelink*". Som standard skapar vi också en [privat DNS-zon](../dns/private-dns-overview.md)som motsvarar under domänen "*privatelink*" med DNS a-resursposter för de privata slut punkterna.
 
 När du löser slut punkts-URL: en från utanför VNet med den privata slut punkten matchas den offentliga slut punkten för Cognitive Services resursen. Vid matchning från det VNet som är värd för den privata slut punkten matchas slut punktens URL till den privata slut punktens IP-adress.
 

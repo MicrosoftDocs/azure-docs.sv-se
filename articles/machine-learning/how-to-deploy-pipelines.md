@@ -10,13 +10,13 @@ ms.author: laobri
 author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq1
-ms.openlocfilehash: 75d013b863671246e6249f367676e4de86bc1de8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.custom: how-to, contperf-fy21q1
+ms.openlocfilehash: 9eb07721f9d507d69de10b6de6c8c2a358dab020
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94960028"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97034096"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>Publicera och spåra maskin inlärnings pipeliner
 
@@ -26,7 +26,7 @@ Den här artikeln visar hur du kan dela en pipeline för maskin inlärning med d
 
 Maskin inlärnings pipeliner är återanvändbara arbets flöden för Machine Learning-uppgifter. En fördel med pipelines har ökat samarbete. Du kan också versions pipelines, så att kunderna kan använda den aktuella modellen när du arbetar med en ny version. 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Skapa en [Azure Machine Learning arbets yta](how-to-manage-workspace.md) för att lagra alla dina pipeline-resurser
 
@@ -90,7 +90,7 @@ response = requests.post(published_pipeline1.endpoint,
 
 `json`Argumentet till post-begäran måste innehålla, för `ParameterAssignments` nyckeln, en ord lista som innehåller pipeline-parametrarna och deras värden. Dessutom `json` kan argumentet innehålla följande nycklar:
 
-| Nyckel | Beskrivning |
+| Nyckel | Description |
 | --- | --- | 
 | `ExperimentName` | Namnet på experimentet som är associerat med den här slut punkten |
 | `Description` | Fri hands text som beskriver slut punkten | 

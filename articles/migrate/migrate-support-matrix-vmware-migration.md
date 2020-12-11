@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 0dfb518a22fd84e0280577382715d6e554e914e8
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: fa8f9ad2d15730d2a0a2c1a722aa3970bbc8f173
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754002"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033994"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Support mat ris för VMware-migrering
 
@@ -73,7 +73,7 @@ I tabellen sammanfattas kraven för att migrera utan agent för virtuella VMware
 **IPv6** | Stöds inte.
 **Mål disk** | Virtuella datorer kan bara migreras till Managed disks (standard-HDD, standard SSD, Premium SSD) i Azure.
 **Samtidig replikering** | 300 virtuella datorer per vCenter Server. Om du har fler kan du migrera dem i batchar på 300.
-
+**Automatisk installation av Azure VM-agenten (Windows-agent)** | Stöds för Windows Server 2008 R2 och senare.
 
 ### <a name="appliance-requirements-agentless"></a>Installations krav (utan agent)
 

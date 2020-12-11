@@ -3,15 +3,15 @@ title: Konfigurera Azure multifaktor-autentisering för Windows Virtual Desktop 
 description: Konfigurera Azure multifaktor-autentisering för ökad säkerhet i Windows Virtual Desktop.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 10/20/2020
+ms.date: 12/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 35af8191cfe237175cbd6669797d1744ac3ecd49
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 00aba5d169a05eab25dcc63ca813955e71d09598
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312654"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092388"
 ---
 # <a name="enable-azure-multifactor-authentication-for-windows-virtual-desktop"></a>Aktivera Azure multifaktor-autentisering för Windows Virtual Desktop
 
@@ -44,9 +44,9 @@ Så här skapar du en princip för villkorlig åtkomst som kräver multifaktorau
 3. Välj **ny princip**.
 4. Ge principen ett namn. Vi rekommenderar att organisationer skapar en meningsfull standard för namnen på deras principer.
 5. Under **Tilldelningar** väljer du **Användare och grupper**.
-6. Under **Inkludera**väljer du **Välj användare och grupper**  >  **användare och grupper** > väljer den grupp som du skapade i [krav](#prerequisites) stadiet.
-7. Välj **Done** (Klar).
-8. Under **molnappar eller åtgärder**  >  **inkluderar**väljer du **Välj appar**.
+6. Under **Inkludera** väljer du **Välj användare och grupper**  >  **användare och grupper** > väljer den grupp som du skapade i [krav](#prerequisites) stadiet.
+7. Välj **Klar**.
+8. Under **molnappar eller åtgärder**  >  **inkluderar** väljer du **Välj appar**.
 9. Välj en av följande appar baserat på vilken version av Windows Virtual Desktop som du använder.
    
    - Om du använder Windows Virtual Desktop (klassisk) väljer du de här apparna:
@@ -67,7 +67,7 @@ Så här skapar du en princip för villkorlig åtkomst som kräver multifaktorau
    > 
    > Om du använder Windows Virtual Desktop (klassisk), och om principen för villkorlig åtkomst blockerar all åtkomst och bara undantar Windows-ID: n för virtuella Skriv bords program, kan du åtgärda detta genom att lägga till app-ID-9cdead84-a844-4324-93f2-b2e6bb768d07 till principen. Om du inte lägger till det här app-ID: t blockeras feed-identifiering av klassiska Windows-resurser.
 
-10. Gå till **villkor**  >  -**klient program**och välj sedan var du vill tillämpa principen på:
+10. Gå till **villkor**  >  -**klient program** och välj sedan var du vill tillämpa principen på:
     
     - Välj **webbläsare** om du vill att principen ska tillämpas på webb klienten.
     - Välj **mobilappar och skriv bords klienter** om du vill tillämpa principen på andra klienter.
@@ -76,7 +76,7 @@ Så här skapar du en princip för villkorlig åtkomst som kräver multifaktorau
     > [!div class="mx-imgBorder"]
     > ![En skärm bild av sidan klient program. Användaren har markerat kryss rutan mobilappar och skriv bords klienter.](media/select-apply.png)
 
-11. När du har valt din app väljer du **Välj**och väljer sedan **klar**.
+11. När du har valt din app väljer du **Välj** och väljer sedan **klar**.
 
     > [!div class="mx-imgBorder"]
     > ![En skärm bild av sidan molnappar eller åtgärder. Klient program för virtuella Windows-datorer och Windows-appar för virtuella skriv bord är markerade i rött.](media/cloud-apps-enterprise.png)
@@ -84,10 +84,13 @@ Så här skapar du en princip för villkorlig åtkomst som kräver multifaktorau
     >[!NOTE]
     >Om du vill hitta app-ID: t för den app som du vill välja går du till **företags program** och väljer **Microsoft-program** i den nedrullningsbara menyn program typ.
 
-12. Under **åtkomst kontroller**  >  **tilldelar**väljer du **bevilja åtkomst**, **kräver Multi-Factor Authentication**och **väljer**sedan.
-13. Under **Access Controls**  >  -**session**väljer du **inloggnings frekvens**, anger värdet till den tid som du vill ha mellan prompterna och väljer sedan **Välj**. Om du till exempel ställer in värdet på **1** och enheten till **timmar**kräver multifaktorautentisering autentisering om en anslutning startas en timme efter den sista.
+12. Under **åtkomst kontroller**  >  **tilldelar** väljer du **bevilja åtkomst**, **kräver Multi-Factor Authentication** och **väljer** sedan.
+13. Under **Access Controls**  >  -**session** väljer du **inloggnings frekvens**, anger värdet till den tid som du vill ha mellan prompterna och väljer sedan **Välj**. Om du till exempel ställer in värdet på **1** och enheten till **timmar** kräver multifaktorautentisering autentisering om en anslutning startas en timme efter den sista.
 14. Bekräfta inställningarna och ange **Aktivera princip** till **på**.
 15. Välj **skapa** för att aktivera principen.
+
+>[!NOTE]
+>När du använder webb klienten för att logga in på Windows Virtual Desktop via webbläsaren, visar loggen klientens app-ID som a85cf173-4192-42F8-81fa-777a763e6e2c (Windows Virtual Desktop Client). Detta beror på att klient appen är internt länkad till Server App-ID: t där principen för villkorlig åtkomst har angetts. 
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -7,13 +7,13 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: duau
-ms.custom: contperfq1
-ms.openlocfilehash: bb0d3cebd9382ef2c81b217417cfbcb6198b6ebb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 2742b03bcacd73e7e602666b898417f295905f19
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565931"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97034079"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>Arbetsflöden i ExpressRoute för kretsetablering och kretstillstånd
 
@@ -108,7 +108,7 @@ Aktivera detta för att få åtkomst till Microsoft onlinetjänster, till exempe
 I följande avsnitt beskrivs olika ExpressRoute-krets lägen för ExpressRoute-partnerns anslutnings modell.
 Varje ExpressRoute partner krets har två tillstånd:
 
-* **ServiceProviderProvisioningState** representerar statusen på anslutnings leverantörens sida. Det kan antingen vara *NotProvisioned*, *etablering*eller *etablerad*. ExpressRoute-kretsen måste vara i ett etablerings tillstånd för att du ska kunna konfigurera peering. **Det här läget gäller bara för ExpressRoute-partner kretsar och visas inte i egenskaperna för en ExpressRoute Direct-krets**.
+* **ServiceProviderProvisioningState** representerar statusen på anslutnings leverantörens sida. Det kan antingen vara *NotProvisioned*, *etablering* eller *etablerad*. ExpressRoute-kretsen måste vara i ett etablerings tillstånd för att du ska kunna konfigurera peering. **Det här läget gäller bara för ExpressRoute-partner kretsar och visas inte i egenskaperna för en ExpressRoute Direct-krets**.
 
 * **Status** representerar Microsofts etablerings status. Den här egenskapen anges till aktive rad när du skapar en ExpressRoute-krets
 

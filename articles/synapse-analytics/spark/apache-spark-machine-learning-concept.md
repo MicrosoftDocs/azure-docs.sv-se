@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 11/13/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: ced78955c71f37a5a6f5231f61e5327428834f00
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ca55186a53b228aa97cc82d33a09aa3ffe455eee
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919804"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092014"
 ---
 # <a name="machine-learning-with-apache-spark"></a>Maskin inlärning med Apache Spark
 
@@ -43,8 +43,8 @@ Lär dig mer om Machine Learning-funktionerna genom att läsa artikeln om hur du
 ### <a name="sparkml-and-mllib"></a>SparkML och MLlib
 Spark: s InMemory-distribuerade beräknings funktioner gör det ett bra val för de iterativa algoritmerna som används i maskin inlärnings-och diagram beräkningar. ```spark.ml``` tillhandahåller en enhetlig uppsättning med högnivå-API: er som hjälper användarna att skapa och finjustera pipeliner för maskin inlärning. Om du vill veta mer om ```spark.ml``` kan du gå till [programmerings guiden för Apache Spark ml](https://spark.apache.org/docs/1.2.2/ml-guide.html).
 
-### <a name="azure-machine-learning-automl"></a>Azure Machine Learning AutoML
-[Azure Machine Learning AutoML](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) (Automatisk maskin inlärning) hjälper till att automatisera processen med att utveckla maskin inlärnings modeller. Det gör det möjligt för data experter, analytiker och utvecklare att bygga ML-modeller med hög skalbarhet, effektivitet och produktivitet samtidigt som modell kvaliteten försämras. Komponenterna för att köra Azure Machine Learning AutoML SDK skapas direkt i Synapse-körningsmiljön.
+### <a name="azure-machine-learning-automated-ml"></a>Azure Machine Learning automatisk ML
+[Azure Machine Learning automatisk ml](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) (Automatisk maskin inlärning) hjälper dig att automatisera processen med att utveckla maskin inlärnings modeller. Det gör det möjligt för data experter, analytiker och utvecklare att bygga ML-modeller med hög skalbarhet, effektivitet och produktivitet samtidigt som modell kvaliteten försämras. Komponenterna för att köra Azure Machine Learning automatiserade ML SDK skapas direkt i Synapse-körningsmiljön.
 
 ### <a name="open-source-libraries"></a>Bibliotek med öppen källkod
 Varje Apache Spark pool i Azure Synapse Analytics levereras med en uppsättning förinstallerade och populära Machine Learning-bibliotek.  Några av de relevanta Machine Learning-biblioteken som ingår som standard är:
@@ -68,7 +68,7 @@ Genom att registrera en modell kan du lagra, version och spåra metadata om mode
 Kom igång med Machine Learning i Azure Synapse Analytics genom att kolla in följande Självstudier:
 - [Analysera data med Azure Synapse-anteckningsböcker](../spark/apache-spark-data-visualization-tutorial.md)
 
-- [Träna en Machine Learning-modell med AutoML](../spark/apache-spark-azure-machine-learning-tutorial.md)
+- [Träna en Machine Learning-modell med automatisk ML](../spark/apache-spark-azure-machine-learning-tutorial.md)
 
 - [Träna en maskin inlärnings modell med Apache Spark MLlib](../spark/apache-spark-machine-learning-mllib-notebook.md)
   

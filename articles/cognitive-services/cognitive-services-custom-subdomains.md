@@ -7,14 +7,14 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 12/04/2020
 ms.author: erhopf
-ms.openlocfilehash: 95f3de0fe26678f6b4bcd97a78c06e92b72a7135
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 4746aad2d7cd62cb309a1823f8c50487e6f7e87c
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368822"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032974"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Anpassade under domän namn för Cognitive Services
 
@@ -39,7 +39,7 @@ Nej. Den regionala slut punkten fortsätter att fungera för nya och befintliga 
 ## <a name="what-if-an-sdk-asks-me-for-the-region-for-a-resource"></a>Vad händer om ett SDK ber mig om en resurs region?
 
 > [!WARNING]
-> Tal tjänsterna stöder **inte** anpassade under domäner för tillfället. Använd de regionala slut punkterna när du använder tal tjänsterna och associerade SDK: er.
+> Tal tjänster använder **bara** anpassade under domäner med [privata slut punkter](Speech-Service/speech-services-private-link.md) . I alla andra fall använder vi **regionala slut punkter** med tal tjänster och associerade SDK: er.
 
 Regionala slut punkter och anpassade under domän namn stöds både och kan användas utbytbart. Den fullständiga slut punkten krävs dock.
 

@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: d5d182276cd77493be5184503a1afc47934bf8ea
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 43d7a697b3cb013a73a0b14db8ec1758244ae3b9
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344201"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092201"
 ---
 # <a name="use-jupyter-notebook-to-hunt-for-security-threats"></a>Använd Jupyter Notebook för att efter säkerhetshot
 
@@ -23,7 +23,7 @@ Stiftelsen i Azure Sentinel är data lagret. den kombinerar högpresterande frå
 
 ![exempel antecknings bok](./media/notebooks/sentinel-notebooks-map.png)
 
-Vi har integrerat Jupyter-upplevelsen i Azure Portal, vilket gör det enkelt för dig att skapa och köra antecknings böcker för att analysera dina data. *Kqlmagic* -biblioteket ger ett lim som gör det möjligt att ta frågor från Azure Sentinel och köra dem direkt i en bärbar dator. Frågor använder [Kusto-frågespråket](https://kusto.azurewebsites.net/docs/query/index.html). Flera antecknings böcker, som har utvecklats av några av Microsofts säkerhetsanalytiker, paketeras med Azure Sentinel. Några av dessa antecknings böcker är utformade för ett visst scenario och kan användas som de är. Andra är avsedda som exempel för att illustrera tekniker och funktioner som du kan kopiera eller anpassa för användning i dina egna antecknings böcker. Andra antecknings böcker kan också importeras från community-GitHub för Azure Sentinel.
+Vi har integrerat Jupyter-upplevelsen i Azure Portal, vilket gör det enkelt för dig att skapa och köra antecknings böcker för att analysera dina data. *Kqlmagic* -biblioteket ger ett lim som gör det möjligt att ta frågor från Azure Sentinel och köra dem direkt i en bärbar dator. Frågor använder [Kusto-frågespråket](https://kusto.azurewebsites.net/docs/kusto/query/index.html). Flera antecknings böcker, som har utvecklats av några av Microsofts säkerhetsanalytiker, paketeras med Azure Sentinel. Några av dessa antecknings böcker är utformade för ett visst scenario och kan användas som de är. Andra är avsedda som exempel för att illustrera tekniker och funktioner som du kan kopiera eller anpassa för användning i dina egna antecknings böcker. Andra antecknings böcker kan också importeras från community-GitHub för Azure Sentinel.
 
 Den integrerade Jupyter-miljön använder [Azure Notebooks](https://notebooks.azure.com/) för att lagra, dela och köra antecknings böcker. Du kan också köra dessa antecknings böcker lokalt om du har en python-miljö och Jupyter på din dator eller i andra JupterHub-miljöer som Azure Databricks.
 
@@ -49,7 +49,7 @@ Om du vill använda antecknings böckerna måste du först skapa en arbets yta f
 
 ## <a name="create-an-azure-ml-workspace"></a>Skapa en Azure ML-arbetsyta
 
-1. Från Azure Portal navigerar du till **Azure Sentinel**  >  **Threat management**  >  **antecknings böcker** för Azure Sentinel Threat Management och väljer sedan **Starta antecknings bok**.
+1. Från Azure Portal navigerar du till   >    >  **antecknings böcker** för Azure Sentinel Threat Management och väljer sedan **Starta antecknings bok**.
 
     > [!div class="mx-imgBorder"]
     > ![Starta Notebook för att starta Azure ml-arbetsytan](./media/notebooks/sentinel-notebooks-launch.png)
@@ -89,7 +89,7 @@ När distributionen är klar kan du starta antecknings böcker i din nya Azure M
 
 ## <a name="launch-a-notebook-using-your-azure-ml-workspace"></a>Starta en bärbar dator med din Azure ML-arbetsyta
 
-1. Från Azure Portal navigerar du till **Azure Sentinel**  >  **Threat management**  >  **antecknings böcker** för Azure Sentinel Threat Management, där du kan se antecknings böcker som Azure Sentinel tillhandahåller.
+1. Från Azure Portal navigerar du till   >    >  **antecknings böcker** för Azure Sentinel Threat Management, där du kan se antecknings böcker som Azure Sentinel tillhandahåller.
 
     > [!TIP]
     > Välj **guider & feedback** för att öppna ett fönster med ytterligare hjälp och vägledning om antecknings böcker.

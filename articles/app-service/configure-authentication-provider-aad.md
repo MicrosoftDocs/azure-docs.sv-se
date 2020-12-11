@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 2968fd84febdd3b98aa5d8b42cbf3fb66cad2036
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 0c06cb11d916b417cf577b7b8f3578749feddd62
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289788"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092235"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Konfigurera din App Service-eller Azure Functions-app för att använda Azure AD-inloggning
 
@@ -36,7 +36,7 @@ Följ dessa rekommendationer när du konfigurerar din app och autentisering:
 > **Express** alternativet är inte tillgängligt för offentliga moln.
 
 1. I [Azure Portal]söker du efter och väljer **app Services** och väljer sedan din app.
-2. Välj **autentisering/auktorisering** på i det vänstra navigerings fältet  >  **On**.
+2. Välj **autentisering/auktorisering** på i det vänstra navigerings fältet  >  .
 3. Välj **Azure Active Directory**  >  **Express**.
 
    Om du vill välja en befintlig app-registrering i stället:
@@ -44,15 +44,17 @@ Följ dessa rekommendationer när du konfigurerar din app och autentisering:
    1. Välj **Välj befintlig AD-App** och klicka sedan på **Azure AD App**.
    2. Välj en befintlig app-registrering och klicka på **OK**.
 
-3. Välj **OK** för att registrera App Service-appen i Azure Active Directory. En ny app-registrering skapas.
+4. Välj **OK** för att registrera App Service-appen i Azure Active Directory. En ny app-registrering skapas.
 
     ![Express inställningar i Azure Active Directory](./media/configure-authentication-provider-aad/express-settings.png)
 
-4. Valfritt Som standard tillhandahåller App Service autentisering, men begränsar inte tillåten åtkomst till webbplatsens innehåll och API: er. Du måste auktorisera användare i din app-kod. Om du vill begränsa åtkomsten till appar enbart till användare som autentiserats av Azure Active Directory anger du **åtgärd som ska vidtas när begäran inte autentiseras** att **logga in med Azure Active Directory**. När du ställer in den här funktionen kräver appen att alla begär Anden ska autentiseras. Det omdirigerar också all oautentiserad till Azure Active Directory för autentisering.
+5. Valfritt Som standard tillhandahåller App Service autentisering, men begränsar inte tillåten åtkomst till webbplatsens innehåll och API: er. Du måste auktorisera användare i din app-kod. Om du vill begränsa åtkomsten till appar enbart till användare som autentiserats av Azure Active Directory anger du **åtgärd som ska vidtas när begäran inte autentiseras** att **logga in med Azure Active Directory**. När du ställer in den här funktionen kräver appen att alla begär Anden ska autentiseras. Det omdirigerar också all oautentiserad till Azure Active Directory för autentisering.
 
     > [!CAUTION]
     > Att begränsa åtkomsten på det här sättet gäller alla anrop till appen, vilket kanske inte är önskvärt för appar som har en offentligt tillgänglig start sida, som i många program med en enda sida. För sådana program kan du **tillåta anonyma begär Anden (ingen åtgärd)** , med appen manuellt startar inloggningen. Mer information finns i [Authentication Flow](overview-authentication-authorization.md#authentication-flow).
-5. Välj **Spara**.
+6. Välj **Spara**.
+
+Ett exempel på hur du konfigurerar Azure AD-inloggning för en webbapp som har åtkomst till Azure Storage och Microsoft Graph finns i [den här självstudien](scenario-secure-app-authentication-app-service.md).
 
 ## <a name="configure-with-advanced-settings"></a><a name="advanced"> </a>Konfigurera med avancerade inställningar
 
@@ -66,7 +68,7 @@ Du kan konfigurera inställningar för appar manuellt om du vill använda en app
 Du behöver följande information när du konfigurerar din App Service-app:
 
 - Klient-ID
-- Klient-ID:t
+- Klientorganisations-ID
 - Klient hemlighet (valfritt)
 - Program-ID-URI
 
@@ -78,9 +80,9 @@ Utför följande steg:
 1. I **omdirigerings-URI** väljer du **webb** och typ `<app-url>/.auth/login/aad/callback` . Exempelvis `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
 1. Välj **Skapa**.
 1. När appens registrering har skapats kopierar du **program-ID: t** och **katalogen (klient)-ID:** t för senare.
-1. Välj **Autentisering**. Under **implicit beviljande** , aktiverar du **ID-token** för att tillåta OpenID Connect-användarkonton från App Service.
+1. Välj **Autentisering**. Under **implicit beviljande**, aktiverar du **ID-token** för att tillåta OpenID Connect-användarkonton från App Service.
 1. Valfritt Välj **anpassning**. På **Start sidans URL** anger du URL: en för din app service-app och väljer **Spara**.
-1. Välj **exponera en API** -  >  **uppsättning**. För en app med en klient, klistra in URL: en för din App Service-app och välj **Spara** och för appar för flera klient organisationer klistrar du in webb adressen som baseras på en av klientens verifierade domäner och väljer sedan **Spara**.
+1. Välj **exponera en API**-  >  **uppsättning**. För en app med en klient, klistra in URL: en för din App Service-app och välj **Spara** och för appar för flera klient organisationer klistrar du in webb adressen som baseras på en av klientens verifierade domäner och väljer sedan **Spara**.
 
    > [!NOTE]
    > Det här värdet är **program-ID-URI: n** för appens registrering. Om din webbapp kräver åtkomst till ett API i molnet behöver du **program-ID-URI: n** för webbappen när du konfigurerar Cloud App Service-resursen. Du kan använda detta, till exempel om du vill att moln tjänsten uttryckligen ska bevilja åtkomst till webbappen.
@@ -95,7 +97,7 @@ Utför följande steg:
 ### <a name="enable-azure-active-directory-in-your-app-service-app"></a><a name="secrets"> </a>Aktivera Azure Active Directory i App Service-appen
 
 1. I [Azure Portal]söker du efter och väljer **app Services** och väljer sedan din app.
-1. Välj **autentisering/auktorisering** på i den vänstra rutan under **Inställningar**  >  **On**.
+1. Välj **autentisering/auktorisering** på i den vänstra rutan under **Inställningar**  >  .
 1. Valfritt Som standard tillåter App Service autentisering oautentiserad åtkomst till din app. Om du vill framtvinga användarautentisering anger du **åtgärden som ska vidtas när begäran inte autentiseras** att **logga in med Azure Active Directory**.
 1. Under **autentiseringsproviders** väljer du **Azure Active Directory**.
 1. I **hanterings läge** väljer du **avancerat** och konfigurerar app service autentisering enligt följande tabell:
@@ -157,6 +159,7 @@ Nu har du konfigurerat ett daemon-klientcertifikat som kan komma åt din App Ser
 ## <a name="next-steps"></a><a name="related-content"> </a>Nästa steg
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
+* [Självstudie: autentisera och auktorisera användare i en webbapp som har åtkomst till Azure Storage och Microsoft Graph](scenario-secure-app-authentication-app-service.md)
 * [Självstudie: Autentisera och auktorisera användare från slutpunkt till slutpunkt i Azure App Service](tutorial-auth-aad.md)
 <!-- URLs. -->
 

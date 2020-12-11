@@ -7,13 +7,13 @@ ms.topic: how-to
 author: trkeya
 ms.author: trkeya
 ms.date: 10/27/2020
-ms.custom: contperfq2
-ms.openlocfilehash: 3d96973d4d1e37ae3fee21eb70e3e32a45867f0c
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 26ceee828bae7ea3fe2d78ec1393f308556b8401
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491961"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033365"
 ---
 # <a name="update-existing-offers-in-the-commercial-marketplace"></a>Uppdatera befintliga erbjudanden på den kommersiella Marketplace
 
@@ -23,13 +23,13 @@ Den här artikeln förklarar hur du gör uppdateringar av befintliga erbjudanden
 
 Följ dessa steg om du vill uppdatera ett erbjudande som har publicerats i för hands versionen eller i Live-tillstånd.
 
-1. Välj namnet på erbjudandet som du vill uppdatera. Status för erbjudandet kan visas som för **hands version** , **Live** , **publicering** pågår, **utkast** , **åtgärd krävs** eller **inte tillgängligt** (om du tidigare har valt att sluta sälja erbjudandet). När du har valt så öppnas sidan **erbjudande översikt** för det erbjudandet.
-1. Välj den erbjudande sida som du vill uppdatera, till exempel **Egenskaper** , **erbjudande lista** eller för **hands version** (eller Välj **Uppdatera** från lämpligt kort på sidan **erbjudande översikt** ).
+1. Välj namnet på erbjudandet som du vill uppdatera. Status för erbjudandet kan visas som för **hands version**, **Live**, **publicering** pågår, **utkast**, **åtgärd krävs** eller **inte tillgängligt** (om du tidigare har valt att sluta sälja erbjudandet). När du har valt så öppnas sidan **erbjudande översikt** för det erbjudandet.
+1. Välj den erbjudande sida som du vill uppdatera, till exempel **Egenskaper**, **erbjudande lista** eller för **hands version** (eller Välj **Uppdatera** från lämpligt kort på sidan **erbjudande översikt** ).
 1. Gör dina ändringar och välj **Spara utkast**. Upprepa processen tills alla ändringar har slutförts.
 1. Granska ändringarna på sidan **[Jämför](#compare-changes-to-your-offer)** .
 1. När du är redo att publicera ditt uppdaterade erbjudande väljer du **Granska och publicera** från vilken sida som helst. Sidan **Granska och publicera** öppnas. På den här sidan visas slut för ande status för avsnitten i erbjudandet som du uppdaterade: 
-    - **Opublicerade ändringar** : avsnittet har uppdaterats och är klart. Alla begärda data har angetts och inga fel infördes i uppdateringarna.
-    - **Ofullständig** : uppdateringar som görs i avsnittet introducerade fel som måste åtgärdas eller som kräver mer information.
+    - **Opublicerade ändringar**: avsnittet har uppdaterats och är klart. Alla begärda data har angetts och inga fel infördes i uppdateringarna.
+    - **Ofullständig**: uppdateringar som görs i avsnittet introducerade fel som måste åtgärdas eller som kräver mer information.
 2. Välj **publicera** för att skicka det uppdaterade publicerings erbjudandet. Ditt erbjudande kommer sedan att gå igenom standard [validerings-och publicerings stegen](../review-publish-offer.md#validation-and-publishing-steps).
 
 > [!IMPORTANT]
@@ -49,7 +49,7 @@ Slutför de här stegen för att lägga till en ny plan till ett erbjudande som 
 Utför de här stegen för att göra ändringar i en plan för ett erbjudande som du redan har publicerat.
 
 1. På sidan **erbjudande översikt** för det befintliga erbjudandet väljer du den plan som du vill ändra. Om planen inte är tillgänglig från listan **plan översikt** väljer du **Se alla planer**.
-1. Välj plan **namn** , **pris modell** eller **tillgänglighet**. *För närvarande är planer bara tillgängliga på engelska (USA)*.
+1. Välj plan **namn**, **pris modell** eller **tillgänglighet**. *För närvarande är planer bara tillgängliga på engelska (USA)*.
 1. Välj **Spara utkast** när du har ändrat plan namn, beskrivning eller tillgänglighet för mål gruppen.
 1. Välj **Granska och publicera** när du är redo att publicera dina uppdateringar. Sidan **[Granska och publicera](../review-publish-offer.md)** öppnas och ger en slut för ande status för dina uppdateringar.
 1. Välj **publicera** för att skicka den uppdaterade planen för publicering. Vi skickar e-post till dig när en för hands version av det uppdaterade erbjudandet kan granskas och godkännas.
@@ -102,7 +102,7 @@ Innan du publicerar uppdateringar i Live-eller [Preview](#compare-changes-to-a-p
   ![Filter för att jämföra uppdateringar med ditt publicerade eller för hands versions erbjudande](./media/compare-changes-marketplace.png)
 
 >[!NOTE]
-> Följande sidor stöder för närvarande inte **jämförelse** :
+> Följande sidor stöder för närvarande inte **jämförelse**:
 >- CSP åter försäljarens publik
 >- Teknisk konfiguration för test enhet
 >- Testa enhetens Marketplace-lista

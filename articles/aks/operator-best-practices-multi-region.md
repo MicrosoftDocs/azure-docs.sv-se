@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 110a25fca0b0e764650665635dbe545de7a350cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b53c0002af3680567aabf0955f6bb4e0d99c2ab1
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654004"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093442"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Metod tips för verksamhets kontinuitet och haveri beredskap i Azure Kubernetes service (AKS)
 
@@ -113,7 +113,7 @@ Dina program kan använda Azure Storage för sina data. Eftersom dina program sp
 
 Dina program kan kräva beständig lagring även efter att en pod har tagits bort. I Kubernetes kan du använda beständiga volymer för att bevara data lagring. Beständiga volymer monteras till en virtuell nod och exponeras sedan för poddar. Beständiga volymer följer poddar även om poddar flyttas till en annan nod i samma kluster.
 
-Vilken replikeringsprincip du använder beror på din lagrings lösning. Vanliga lagrings lösningar som [Gluster](https://docs.gluster.org/en/latest/Administrator%20Guide/Geo%20Replication/), [Ceph](https://docs.ceph.com/docs/master/cephfs/disaster-recovery/), [Rook](https://rook.io/docs/rook/v1.2/ceph-disaster-recovery.html)och [Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps) ger egen vägledning om haveri beredskap och replikering.
+Vilken replikeringsprincip du använder beror på din lagrings lösning. Vanliga lagrings lösningar som [Gluster](https://docs.gluster.org/en/latest/Administrator-Guide/Geo-Replication/), [Ceph](https://docs.ceph.com/docs/master/cephfs/disaster-recovery/), [Rook](https://rook.io/docs/rook/v1.2/ceph-disaster-recovery.html)och [Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps) ger egen vägledning om haveri beredskap och replikering.
 
 Den typiska strategin är att tillhandahålla en gemensam lagrings plats där program kan skriva sina data. Dessa data replikeras sedan över flera regioner och sedan öppnas lokalt.
 

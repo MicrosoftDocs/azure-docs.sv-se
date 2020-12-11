@@ -1,6 +1,6 @@
 ---
-title: 'Självstudie: köra experiment med Azures automatiserad ML'
-description: En själv studie kurs om hur du kör Machine Learning-experiment med Apache Spark och Azures automatiserade ML
+title: 'Självstudie: träna en modell i python med automatisk ML'
+description: Självstudie om hur du tränar en Machine Learning-modell i python i Azure Synapse med hjälp av Apache Spark och automatisk ML.
 services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: b2fbc74304cdb71d9cb3e1ea476af8c92eb99b7e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: abb7266d90171abc628739aa8f50f1760a32f68d
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458833"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093340"
 ---
-# <a name="tutorial-run-experiments-using-azure-automated-ml-and-apache-spark"></a>Självstudie: köra experiment med Azures automatiserade ML och Apache Spark
+# <a name="tutorial-train-a-machine-learning-model-in-python-in-azure-synapse-with-apache-spark-and-automated-ml"></a>Självstudie: träna en maskin inlärnings modell i python i Azure Synapse med Apache Spark och automatiserad ML
 
 Azure Machine Learning är en molnbaserad miljö som gör det möjligt att träna, distribuera, automatisera, hantera och spåra maskin inlärnings modeller. 
 
@@ -155,11 +155,11 @@ Följande kod hämtar den befintliga arbets ytan och förvalda Azure Machine Lea
 import pandas 
 from azureml.core import Dataset
 
-# Get the AML Default Datastore
+# Get the Azure Machine Learning Default Datastore
 datastore = ws.get_default_datastore()
 training_pd = training_data.toPandas().to_csv('training_pd.csv', index=False)
 
-# Convert into AML Tabular Dataset
+# Convert into Azure Machine Learning Tabular Dataset
 datastore.upload_files(files = ['training_pd.csv'],
                        target_path = 'train-dataset/tabular/',
                        overwrite = True,
@@ -168,7 +168,7 @@ dataset_training = Dataset.Tabular.from_delimited_files(path = [(datastore, 'tra
 ```
 ![Bild av överförd data uppsättning.](./media/azure-machine-learning-spark-notebook/upload-dataset.png)
 
-## <a name="submit-an-automl-experiment"></a>Skicka ett AutoML-experiment
+## <a name="submit-an-automated-ml-experiment"></a>Skicka ett automatiskt ML-experiment
 
 #### <a name="define-training-settings"></a>Definiera utbildnings inställningar
 1. För att skicka ett experiment måste du definiera experiment parametern och modell inställningarna för träning. Du kan visa en fullständig lista med inställningar [här](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train).
@@ -221,7 +221,7 @@ När experimentet har slutförts returnerar utdata information om slutförda ite
 ![Skärm bild av modellens utdata.](./media/azure-machine-learning-spark-notebook/model-output.png)
 
 > [!NOTE]
-> När det har skickats körs olika iterationer och modell typer av AutoML-experimentet. Den här körningen tar vanligt vis 1 – 1,5 timmar. 
+> När det automatiserade ML-experimentet har skickats körs olika iterationer och modell typer. Den här körningen tar vanligt vis 1 – 1,5 timmar. 
 
 #### <a name="retrieve-the-best-model"></a>Hämta den bästa modellen
 För att välja den bästa modellen från dina iterationer använder vi ```get_output``` funktionen för att returnera den bästa körningen och den monterade modellen. Koden nedan hämtar den bästa körnings-och den monterade modellen för alla inloggade mått eller en viss iteration.
@@ -325,7 +325,7 @@ plt.show()
 När vi har verifierat vår bästa modell kan vi registrera modellen till Azure Machine Learning. När du har registrerat modellen kan du ladda ned eller distribuera den registrerade modellen och ta emot alla filer som du har registrerat.
 
 ```python
-description = 'My AutoML Model'
+description = 'My automated ML model'
 model_path='outputs/model.pkl'
 model = best_run.register_model(model_name = 'NYCGreenTaxiModel', model_path = model_path, description = description)
 print(model.name, model.version)
@@ -336,7 +336,7 @@ NYCGreenTaxiModel 1
 ## <a name="view-results-in-azure-machine-learning"></a>Visa resultat i Azure Machine Learning
 Du kan också få åtkomst till resultatet av iterationerna genom att gå till experimentet i Azure Machine Learning-arbetsyta. Här kommer du att kunna ta del av ytterligare information om status för dina körningar, försöks modeller och andra modell mått. 
 
-![Skärm bild av AML-arbetsytan.](./media/azure-machine-learning-spark-notebook/azure-machine-learning-workspace.png)
+![Skärm bild av Azure Machine Learning-arbetsyta.](./media/azure-machine-learning-spark-notebook/azure-machine-learning-workspace.png)
 
 ## <a name="next-steps"></a>Nästa steg
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

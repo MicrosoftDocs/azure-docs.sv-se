@@ -3,19 +3,19 @@ title: Ange Service Fabric tjänst slut punkter
 description: Så här beskriver du slut punkts resurser i ett tjänst manifest, inklusive hur du konfigurerar HTTPS-slutpunkter
 ms.topic: conceptual
 ms.date: 09/16/2020
-ms.custom: contperfq1
-ms.openlocfilehash: 5e8f39fe25011d02b989614fdc6538cd92c12d4e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 0ed5a4aa8993f52d42b97288cd143e6114ff36ff
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313574"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033314"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Ange resurser i ett tjänst manifest
 ## <a name="overview"></a>Översikt
 Service Fabric program och tjänster definieras och versions hantering med hjälp av MANIFEST-filer. En mer övergripande översikt över ServiceManifest.xml och ApplicationManifest.xml finns i [Service Fabric program-och tjänst manifest](service-fabric-application-and-service-manifests.md).
 
-Tjänst manifestet gör det möjligt för resurser som används av tjänsten att deklareras eller ändras, utan att den kompilerade koden ändras. Service Fabric stöder konfiguration av slut punkts resurser för tjänsten. Åtkomst till de resurser som anges i tjänst manifestet kan styras via SecurityGroup i applikations manifestet. Resurs deklarationen gör att dessa resurser kan ändras vid distributions tillfället, vilket innebär att tjänsten inte behöver införa en ny konfigurations funktion. Schema definitionen för ServiceManifest.xml-filen installeras med Service Fabric SDK och verktyg för att *C:\Program\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*och dokumenteras i [ServiceFabricServiceModel. xsd schema-dokumentation](service-fabric-service-model-schema.md).
+Tjänst manifestet gör det möjligt för resurser som används av tjänsten att deklareras eller ändras, utan att den kompilerade koden ändras. Service Fabric stöder konfiguration av slut punkts resurser för tjänsten. Åtkomst till de resurser som anges i tjänst manifestet kan styras via SecurityGroup i applikations manifestet. Resurs deklarationen gör att dessa resurser kan ändras vid distributions tillfället, vilket innebär att tjänsten inte behöver införa en ny konfigurations funktion. Schema definitionen för ServiceManifest.xml-filen installeras med Service Fabric SDK och verktyg för att *C:\Program\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd* och dokumenteras i [ServiceFabricServiceModel. xsd schema-dokumentation](service-fabric-service-model-schema.md).
 
 ## <a name="endpoints"></a>Slutpunkter
 När en slut punkts resurs definieras i tjänst manifestet tilldelar Service Fabric portar från det reserverade programmets port intervall när en port inte anges explicit. Titta till exempel på slut punkts *ServiceEndpoint1* som anges i manifestet som anges efter detta stycke. Dessutom kan tjänster även begära en speciell port i en resurs. Tjänst repliker som körs på olika klusternoder kan tilldelas olika port nummer, medan repliker av en tjänst som körs på samma nod delar porten. Tjänste replikerna kan sedan använda dessa portar vid behov för replikering och lyssna efter klient begär Anden.
@@ -223,7 +223,7 @@ Antag att värdet PORT1 och Protocol1 för program parametrarna är null eller t
 
 Anta att du anger ett felaktigt värde. Anta att du har angett ett sträng värde "foo" i stället för en int.  New-ServiceFabricApplication kommandot Miss fungerar med ett fel: `The override parameter with name 'ServiceEndpoint1' attribute 'Port1' in section 'ResourceOverrides' is invalid. The value specified is 'Foo' and required is 'int'.`
 
-## <a name="next-steps"></a>Efterföljande moment
+## <a name="next-steps"></a>Nästa steg
 
 I den här artikeln förklaras hur du definierar slut punkter i Service Fabric tjänst manifest. Mer detaljerade exempel finns i:
 

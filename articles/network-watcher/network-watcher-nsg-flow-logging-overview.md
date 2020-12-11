@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: b6f66813ea23f6c9d4b47a3733d0c72c683d0676
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 03ef75f43d8c8c854c3803ceb30f31b292d566c3
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493992"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033433"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Introduktion till flödesloggning för nätverkssäkerhetsgrupper
 
@@ -48,7 +48,7 @@ Flödes loggar är källan till sanningen för all nätverks aktivitet i din mol
 **Nyckel egenskaper**
 
 - Flödes loggar körs på [nivå 4](https://en.wikipedia.org/wiki/OSI_model#Layer_4:_Transport_Layer) och spelar in alla IP-flöden som går in och ut ur en NSG
-- Loggar samlas in via Azure-plattformen och påverkar inte kund resurser eller nätverks prestanda på något sätt.
+- Loggar samlas in med **1-minuters intervall** via Azure-plattformen och påverkar inte kund resurser eller nätverks prestanda på något sätt.
 - Loggarna skrivs i JSON-format och visar utgående och inkommande flöden per NSG-regel.
 - Varje loggpost innehåller det nätverks gränssnitt (NIC) som flödet avser, 5-tuple-information, trafik beslut & (endast version 2) data flödes information. Se _logg formatet_ nedan för fullständig information.
 - Flödes loggar har en kvarhållning som gör det möjligt att automatiskt ta bort loggar upp till ett år efter att de skapats. 
@@ -361,6 +361,8 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **Inkommande flöden som loggats från Internet-IP-adresser till virtuella datorer utan offentliga** IP-adresser: virtuella datorer som inte har en offentlig IP-adress som tilldelats via en offentlig IP-adress som är kopplad till nätverkskortet som en offentlig IP-adress på instans nivå eller som är en del av en grundläggande belastningsutjämnare, använder [standard SNAT](../load-balancer/load-balancer-outbound-connections.md) och har en IP-adress som tilldelats av Azure för att under lätta Därför kan du se flödes logg poster för flöden från Internet-IP-adresser, om flödet är avsett för en port i intervallet för de portar som tilldelats för SNAT. Även om Azure inte tillåter dessa flöden till den virtuella datorn, loggas försöket och visas i Network Watcher flödes loggen för NSG efter design. Vi rekommenderar att oönskad inkommande Internet trafik uttryckligen blockeras med NSG.
 
+**Problem med Application Gateway v2-UNDERNÄT NSG**: flödes loggning på undernät för Application Gateway v2-NSG [stöds inte](https://docs.microsoft.com/azure/application-gateway/application-gateway-faq#are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet) för närvarande. Det här problemet påverkar inte Application Gateway v1.
+
 **Inkompatibla tjänster**: på grund av aktuella plattforms begränsningar stöds inte en liten uppsättning Azure-tjänster av NSG Flow-loggar. Den aktuella listan över inkompatibla tjänster är
 - [Azure Kubernetes Services (AKS)](https://azure.microsoft.com/services/kubernetes-service/)
 - [Logic Apps](https://azure.microsoft.com/services/logic-apps/) 
@@ -371,7 +373,11 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **Aktivera NSG flödes loggning på alla NSG: er som är kopplade till en resurs**: flödes loggning i Azure konfigureras på NSG-resursen. Ett flöde kommer bara att associeras med en NSG-regel. I scenarier där flera NSG: er används rekommenderar vi att du aktiverar NSG flödes loggar på alla NSG: er använder en resurss undernät eller nätverks gränssnitt för att säkerställa att all trafik registreras. Mer information finns i [hur trafiken utvärderas](../virtual-network/network-security-group-how-it-works.md) i nätverks säkerhets grupper.
 
+**Ha NSG på både NIC-och under näts nivå**: om NSG har kon figurer ATS på nätverkskortet samt under näts nivån måste flödes loggning aktive ras på både NSG: er. 
+
 **Lagrings etablering**: lagringen bör tillhandahållas i finjustera med den förväntade flödes logg volymen.
+
+**Namn**: namnet på NSG måste vara upp till 80 tecken och NSG-regel namnen får innehålla mer än 65 tecken. Om namnen överskrider tecken gränsen kan de trunkeras vid loggning.
 
 ## <a name="troubleshooting-common-issues"></a>Felsöka vanliga problem
 

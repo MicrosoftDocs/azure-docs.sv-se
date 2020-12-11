@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: fa9723b466045ebe7b932f837e0fa7c45c898b6b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 405a7bc3b653ca7bca026d3318763a4922244e88
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353892"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093714"
 ---
 # <a name="tutorial-configure-ipass-smartconnect-for-automatic-user-provisioning"></a>Självstudie: Konfigurera iPass SmartConnect för automatisk användar etablering
 
@@ -82,7 +82,7 @@ Om du vill konfigurera iPass-SmartConnect för automatisk användar etablering m
 Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Provisioning-tjänsten för att skapa, uppdatera och inaktivera användare och/eller grupper i iPass-SmartConnect baserat på användar-och/eller grupp tilldelningar i Azure AD.
 
 > [!TIP]
->  Du kan också välja att aktivera SAML-baserad enkel inloggning för BitaBIZ, genom att följa anvisningarna i [självstudien om IPass SmartConnect enkel inloggning](ipasssmartconnect-tutorial.md). Enkel inloggning kan konfigureras oberoende av automatisk användar etablering, även om dessa två funktioner är gemensamt.
+>  Du kan också välja att aktivera SAML-baserad enkel inloggning för iPass SmartConnect, enligt anvisningarna i [självstudien IPass SmartConnect Single Sign-on](ipasssmartconnect-tutorial.md). Enkel inloggning kan konfigureras oberoende av automatisk användar etablering, även om dessa två funktioner är gemensamt.
 
 ### <a name="to-configure-automatic-user-provisioning-for-ipass-smartconnect-in-azure-ad"></a>Konfigurera automatisk användar etablering för iPass-SmartConnect i Azure AD:
 

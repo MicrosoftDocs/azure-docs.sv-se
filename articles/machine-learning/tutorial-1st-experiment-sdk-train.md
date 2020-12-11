@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 17bf7b3f457ff6046d92012ffd679ed4b9315530
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: a2f76df05878151405d56b1bff5e588f426d9d92
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574130"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093561"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Självstudie: träna din första Machine Learning-modell (del 3 av 4)
 
@@ -38,7 +38,7 @@ I den här kursen får du:
 > * Logga mått till Azure Machine Learning.
 > * Visa dina mått i molnet.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Slut för ande av [del 2](tutorial-1st-experiment-hello-world.md) av serien.
 * Introduktions kunskap om python-språket och Machine Learning-arbetsflöden.
@@ -133,7 +133,7 @@ Skapa en ny python-fil i `tutorial` katalogen `04-run-pytorch.py` :
 :::row-end:::
 
 > [!div class="nextstepaction"]
-> [Jag skapade kontroll skriptet som](?success=control-script#submit) [Jag stötte på ett problem](https://www.research.net/r/7CTJQQ?issue=control-script)
+> [Jag skapade kontroll skriptet som](?success=control-script#submit) [Jag stötte på ett problem](https://www.research.net/r/7CTJQQN?issue=control-script)
 
 
 ## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit"></a> Skicka in körningen till Azure Machine Learning
@@ -186,7 +186,7 @@ Azure Machine Learning också ha en samling av granskade miljöer. Dessa miljöe
 I korthet kan du spara tid med registrerade miljöer! Läs om [hur du använder miljöer](./how-to-use-environments.md) för mer information.
 
 > [!div class="nextstepaction"]
-> [Jag har skickat in körningen](?success=test-w-environment#log) [Jag stötte på ett problem](https://www.research.net/r/7CTJQQ?issue=test-w-environment)
+> [Jag har skickat in körningen](?success=test-w-environment#log) [Jag stötte på ett problem](https://www.research.net/r/7CTJQQN?issue=test-w-environment)
 
 ## <a name="log-training-metrics"></a><a name="log"></a> Logga utbildnings mått
 
@@ -221,7 +221,7 @@ Mått i Azure Machine Learning:
 - Utformad för skalning, så du behåller dessa förmåner även om du kör hundratals experiment.
 
 > [!div class="nextstepaction"]
-> [Jag ändrade Train.py ](?success=modify-train#log) [Jag stötte på ett problem](https://www.research.net/r/7CTJQQ?issue=modify-train)
+> [Jag ändrade Train.py ](?success=modify-train#log) [Jag stötte på ett problem](https://www.research.net/r/7CTJQQN?issue=modify-train)
 
 ### <a name="update-the-conda-environment-file"></a>Uppdatera miljö filen för Conda
 
@@ -230,7 +230,7 @@ Mått i Azure Machine Learning:
 :::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/configuration/pytorch-aml-env.yml":::
 
 > [!div class="nextstepaction"]
-> [Jag har uppdaterat miljö filen som](?success=update-environment#submit-again) [Jag stötte på ett problem](https://www.research.net/r/7CTJQQ?issue=update-environment)
+> [Jag har uppdaterat miljö filen som](?success=update-environment#submit-again) [Jag stötte på ett problem](https://www.research.net/r/7CTJQQN?issue=update-environment)
 
 ### <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit-again"></a> Skicka in körningen till Azure Machine Learning
 Skicka skriptet en gång till:
@@ -244,7 +244,7 @@ När du besöker Studio går du till fliken **mått** där du nu kan se live-upp
 :::image type="content" source="media/tutorial-1st-experiment-sdk-train/logging-metrics.png" alt-text="Diagram över kurs förlust på fliken mått.":::
 
 > [!div class="nextstepaction"]
-> [Jag skickade om körningen som](?success=resubmit-with-logging#next-steps) [Jag stötte på ett problem](https://www.research.net/r/7CTJQQ?issue=resubmit-with-logging)
+> [Jag skickade om körningen som](?success=resubmit-with-logging#next-steps) [Jag stötte på ett problem](https://www.research.net/r/7CTJQQN?issue=resubmit-with-logging)
 
 ## <a name="next-steps"></a>Nästa steg
 

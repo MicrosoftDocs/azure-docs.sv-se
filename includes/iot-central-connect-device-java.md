@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/24/2020
-ms.openlocfilehash: 5ad69fb6743676189de409df16c046d5361a5a91
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: ad305202daf09258bbd439e824fc07f1eed1c5af
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96127073"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033887"
 ---
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -28,7 +28,7 @@ När du kör exemplet för att ansluta till IoT Central, används enhets etabler
 
 `main`Metoden:
 
-* Anrop `initializeAndProvisionDevice` för att ange `dtmi:com:example:Thermostat;1` modell-ID: t, Använd DPS för att etablera och registrera enheten, skapa en **DeviceClient** -instans och ansluta till ditt IoT Central-program.
+* Anrop `initializeAndProvisionDevice` för att ange `dtmi:com:example:Thermostat;1` modell-ID: t, Använd DPS för att etablera och registrera enheten, skapa en **DeviceClient** -instans och ansluta till ditt IoT Central-program. IoT Central använder modell-ID: t för att identifiera eller generera enhets mal len för den här enheten. Mer information finns i [associera en enhet med en enhets mall](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template).
 * Skapar en kommando hanterare för `getMaxMinReport` kommandot.
 * Skapar en egenskaps uppdaterings hanterare för den skrivbara `targetTemperature` egenskapen.
 * Startar en tråd för att skicka temperatur telemetri och uppdatera `maxTempSinceLastReboot` egenskapen var femte sekund.
@@ -90,7 +90,7 @@ public static void main(String[] args) throws URISyntaxException, IOException, P
 }
 ```
 
-`initializeAndProvisionDevice`Metoden visar hur enheten använder DPS för att registrera och ansluta till IoT Central. Nytto lasten inkluderar modell-ID:
+`initializeAndProvisionDevice`Metoden visar hur enheten använder DPS för att registrera och ansluta till IoT Central. Nytto lasten innehåller modell-ID: t som IoT Central använder för att [associera enheten med en enhets mall](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template).:
 
 ```java
 private static void initializeAndProvisionDevice() throws ProvisioningDeviceClientException, IOException, URISyntaxException, InterruptedException {

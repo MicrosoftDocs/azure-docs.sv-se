@@ -3,14 +3,14 @@ title: Hantera Ändringsspårning och inventering i Azure Automation
 description: Den här artikeln beskriver hur du använder Ändringsspårning och inventering för att spåra program-och Microsoft-tjänsteändringar i din miljö.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 11/02/2020
+ms.date: 12/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 99cdc4191320efb37b37e4ec38e808f3961a1207
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 636dbf95567f761aee19bd567b0835173ce36ccc
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288748"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093629"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Hantera ändringsspårning och inventering
 
@@ -35,7 +35,7 @@ Du kan använda Ändringsspårning och inventering för att spåra ändringar i 
 
 Använd följande steg för att konfigurera fil spårning på Windows-datorer:
 
-1. Logga in på [Azure Portal](https://portal.azure.com).
+1. Logga in på [Azure-portalen](https://portal.azure.com).
 
 2. Välj **Alla tjänster** i Azure-portalen. I listan över resurser skriver du **Automation**. När du börjar skriva filtreras listan enligt dina inaktuella inmatnings förslag. Välj **Automation-konton**.
 
@@ -53,7 +53,7 @@ Använd följande steg för att konfigurera fil spårning på Windows-datorer:
     |---------|---------|
     |Enabled     | Sant om inställningen tillämpas och annars FALSE.        |
     |Objektnamn     | Eget namn på filen som ska spåras.        |
-    |Group     | Ett grupp namn för logisk gruppering av filer.        |
+    |Grupp     | Ett grupp namn för logisk gruppering av filer.        |
     |Ange sökväg     | Sökvägen för att söka efter filen, till exempel **c:\Temp \\ \* . txt**. Du kan också använda miljövariabler, till exempel `%winDir%\System32\\\*.*` .       |
     |Sökvägstyp     | Typ av sökväg. Möjliga värden är File och Folder.        |    
     |Rekursion     | Sant om rekursion används vid sökning efter objektet som ska spåras och falskt annars.        |    
@@ -82,7 +82,7 @@ Använd följande steg för att konfigurera fil spårning på Linux-datorer:
     |---------|---------|
     |Enabled     | Sant om inställningen tillämpas och annars FALSE.        |
     |Objektnamn     | Eget namn på filen som ska spåras.        |
-    |Group     | Ett grupp namn för logisk gruppering av filer.        |
+    |Grupp     | Ett grupp namn för logisk gruppering av filer.        |
     |Ange sökväg     | Sökvägen för att söka efter filen, till exempel **/etc/*. conf**.       |
     |Sökvägstyp     | Typ av sökväg. Möjliga värden är fil och katalog.        |
     |Rekursion     | Sant om rekursion används vid sökning efter objektet som ska spåras och falskt annars.        |
@@ -99,6 +99,7 @@ Använd följande steg för att konfigurera fil spårning på Linux-datorer:
 Med fil innehålls spårning kan du visa innehållet i en fil före och efter en spårad ändring. Funktionen sparar fil innehållet till ett [lagrings konto](../../storage/common/storage-account-overview.md) när varje ändring sker. Här följer några regler som du följer när du spårar fil innehåll:
 
 * Ett standard lagrings konto som använder distributions modellen för Resource Manager krävs för att lagra fil innehåll.
+* Som standard godkänner lagringskonton anslutningar från klienter i alla nätverk. Om du har skyddat ditt lagrings konto så att det bara tillåter viss trafik, måste du ändra konfigurations reglerna så att ditt Automation-konto kan ansluta till det. Se [konfigurera Azure Storage brand väggar och virtuella nätverk](../../storage/common/storage-network-security.md).
 * Använd inte lagrings konton för Premium-och klassiska distributions modeller. Se [om Azure Storage-konton](../../storage/common/storage-account-create.md).
 * Du kan bara ansluta lagrings kontot till ett Automation-konto.
 * Ändringsspårning och inventering måste vara aktiverat i ditt Automation-konto.
@@ -151,14 +152,14 @@ Använd följande steg för att konfigurera register nyckel spårning på Window
     |---------|---------|
     |Enabled     | Sant om en inställning tillämpas och annars FALSE.        |
     |Objektnamn     | Eget namn på register nyckeln som ska spåras.        |
-    |Group     | Grupp namn för register nycklar för logisk gruppering.        |
+    |Grupp     | Grupp namn för register nycklar för logisk gruppering.        |
     |Windows-registernyckel   | Nyckel namn med sökväg, till exempel `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup` .      |
 
 ## <a name="search-logs-for-change-records"></a>Sök efter loggar för ändrings poster
 
 Du kan utföra olika sökningar mot Azure Monitor loggar för ändrings poster. När sidan ändrings spårning är öppen klickar du på **Log Analytics** för att öppna sidan loggar. Följande tabell innehåller exempel på loggs ökningar för ändrings poster.
 
-|Söka i data  |Beskrivning  |
+|Söka i data  |Description  |
 |---------|---------|
 |`ConfigurationData`<br>&#124; `where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124; `where SvcState == "Stopped"`<br>&#124; `summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | Visar de senaste inventerings posterna för Microsoft-tjänster som har ställts in på auto men som har rapporter ATS som stoppade. Resultaten är begränsade till den senaste posten för det angivna program namnet och datorn.    |
 |`ConfigurationChange`<br>&#124; `where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124; `order by TimeGenerated desc`|Visar ändrings poster för borttagen program vara.|

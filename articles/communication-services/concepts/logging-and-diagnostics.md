@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d8afa769c90c5cf9450343cda1a65809062468fb
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: c4c9808813de80beea55e083c5bd80667ae2861f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888699"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033127"
 ---
 # <a name="communication-services-logs"></a>Kommunikations tjänst loggar
 
@@ -39,6 +39,7 @@ Kommunikations tjänsterna erbjuder tre typer av loggar som du kan aktivera:
 * **Användnings loggar** – tillhandahåller användnings data som är associerade med varje fakturerings tjänst erbjudande
 * **Chat-operativa loggar** – innehåller grundläggande information om chatt tjänsten
 * **SMS-operativa loggar** – innehåller grundläggande information som rör SMS-tjänsten
+* **Drift loggar med autentisering** – innehåller grundläggande information om Autentiseringstjänsten
 
 ### <a name="usage-logs-schema"></a>Schema för användnings loggar
 
@@ -53,7 +54,7 @@ Kommunikations tjänsterna erbjuder tre typer av loggar som du kan aktivera:
 | Post-ID | Unikt ID för en specifik användnings post. |
 | Användningstyp | Användnings läge. (till exempel chatt, PSTN, NAT osv.) |
 | Enhets typ | Den typ av enhet som användningen baseras på för ett angivet användnings läge. (till exempel minuter, megabyte, meddelanden osv.). |
-| Quantity | Antalet enheter som används eller används för den här posten. |
+| Kvantitet | Antalet enheter som används eller används för den här posten. |
 
 ### <a name="chat-operational-logs"></a>Chat-operativa loggar
 
@@ -100,3 +101,23 @@ Kommunikations tjänsterna erbjuder tre typer av loggar som du kan aktivera:
 | SdkType | Den SDK-typ som används i begäran. |
 | PlatformType | Den plattforms typ som används i begäran. |
 | Metod | Den metod som används i begäran. |
+
+### <a name="authentication-operational-logs"></a>Fungerande loggar för autentisering
+
+| Egenskap | Beskrivning |
+| -------- | ---------------|
+| TimeGenerated | Tidsstämpeln (UTC) för när loggen genererades. |
+| OperationName | Åtgärden som är kopplad till logg posten. |
+| CorrelationID | ID för korrelerade händelser. Kan användas för att identifiera korrelerade händelser mellan flera tabeller. |
+| OperationVersion | Den `api-version` som är associerad med åtgärden, om den `operationName` utfördes med hjälp av ett API. Om det inte finns något API som motsvarar den här åtgärden representerar-versionen den åtgärd som är associerad med åtgärden i framtiden. |
+| Kategori | Händelsens logg kategori. Kategori är den granularitet som du kan använda för att aktivera eller inaktivera loggar för en viss resurs. Egenskaperna som visas i en händelses egenskaps-BLOB är desamma inom en viss logg kategori och resurs typ. |
+| ResultType | Status för åtgärden. |
+| ResultSignature | Åtgärdens under status. Om den här åtgärden motsvarar ett REST API-anrop är det här fältet HTTP-statuskod för motsvarande REST-anrop. |
+| DurationMs | Åtgärdens varaktighet i millisekunder. |
+| CallerIpAddress | IP-adressen för anroparen, om åtgärden motsvarar ett API-anrop som kommer från en entitet med en offentligt tillgänglig IP-adress. |
+| Nivå | Händelsens allvarlighets grad. |
+| URI | URI för begäran. |
+| SdkType | Den SDK-typ som används i begäran. |
+| PlatformType | Den plattforms typ som används i begäran. |
+| Identitet | Kommunikations tjänstens identitet som är relaterad till åtgärden. |
+| Omfattningar | De kommunikations tjänst omfattningar som finns i åtkomsttoken. |

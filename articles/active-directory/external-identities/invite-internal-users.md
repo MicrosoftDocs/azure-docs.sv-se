@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c03c2c55988df04cc45ef4a1d66d959513c1626d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75839893d0048841440f2c790df7d23ad825d962
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87910082"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093476"
 ---
 # <a name="invite-internal-users-to-b2b-collaboration"></a>Bjud in interna användare till B2B-samarbete
 
@@ -32,7 +32,7 @@ Genom att skicka en inbjudan till ett befintligt internt konto kan du behålla a
 
 I en offentlig för hands version kan metoden som beskrivs i den här artikeln för att bjuda in interna användare till B2B-samarbete inte användas i följande instanser:
 
-- Den interna användaren har redan tilldelats en Exchange-licens.
+- Den interna användaren har en tilldelad Exchange-licens.
 - Användaren är från en domän som har kon figurer ATS för direkt Federation i din katalog.
 - Den interna användaren är ett moln konto och deras huvud konto finns inte i Azure AD.
 

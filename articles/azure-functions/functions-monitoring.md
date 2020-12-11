@@ -4,13 +4,13 @@ description: Lär dig hur du använder Azure Application insikter med Azure Func
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.custom: devx-track-csharp, fasttrack-edit, contperfq2, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: b27fb14341e07683d66418485158a94c18e7a997
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: devx-track-csharp, fasttrack-edit, contperf-fy21q2, devx-track-js
+ms.openlocfilehash: 7dbaa8712e09de9084e2bcb66d43f2181af292a0
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748156"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033042"
 ---
 # <a name="monitor-azure-functions"></a>Övervaka Azure Functions
 
@@ -33,7 +33,7 @@ Den fullständiga listan med Application Insights funktioner som är tillgängli
 
 ## <a name="application-insights-integration"></a>Application Insights-integrering
 
-Normalt skapar du en Application Insights-instans när du skapar din Function-app. I det här fallet har Instrumentation-nyckeln som krävs för integrering redan angetts som en program inställning med namnet *APPINSIGHTS_INSTRUMENTATIONKEY* . Om det av någon anledning inte finns någon Instrumentation-nyckel angiven, måste du [aktivera Application Insights-integrering](configure-monitoring.md#enable-application-insights-integration).  
+Normalt skapar du en Application Insights-instans när du skapar din Function-app. I det här fallet har Instrumentation-nyckeln som krävs för integrering redan angetts som en program inställning med namnet *APPINSIGHTS_INSTRUMENTATIONKEY*. Om det av någon anledning inte finns någon Instrumentation-nyckel angiven, måste du [aktivera Application Insights-integrering](configure-monitoring.md#enable-application-insights-integration).  
 
 ## <a name="collecting-telemetry-data"></a>Samlar in telemetridata
 
@@ -95,15 +95,15 @@ När du utvecklar ett program vill du ofta se vad som skrivs till loggarna i nä
 
 Det finns två sätt att visa en ström av loggdata som genereras av dina funktions körningar.
 
-* **Inbyggd logg strömning** : app Services plattformen gör att du kan visa en ström med dina program loggs-filer. Den här strömmen motsvarar de utdata som visas när du felsöker dina funktioner under [lokal utveckling](functions-develop-local.md) och när du använder fliken **test** i portalen. All logg-baserad information visas. Mer information finns i [Stream-loggar](../app-service/troubleshoot-diagnostic-logs.md#stream-logs). Den här streaming-metoden har endast stöd för en enda instans och kan inte användas med en app som körs på Linux i en förbruknings plan.
+* **Inbyggd logg strömning**: app Services plattformen gör att du kan visa en ström med dina program loggs-filer. Den här strömmen motsvarar de utdata som visas när du felsöker dina funktioner under [lokal utveckling](functions-develop-local.md) och när du använder fliken **test** i portalen. All logg-baserad information visas. Mer information finns i [Stream-loggar](../app-service/troubleshoot-diagnostic-logs.md#stream-logs). Den här streaming-metoden har endast stöd för en enda instans och kan inte användas med en app som körs på Linux i en förbruknings plan.
 
-* **Live Metrics Stream** : när din Function-app är [ansluten till Application Insights](configure-monitoring.md#enable-application-insights-integration)kan du Visa loggdata och andra mått i nära real tid i Azure Portal med hjälp av [Live Metrics Stream](../azure-monitor/app/live-stream.md). Använd den här metoden när du övervakar funktioner som körs på flera instanser eller i Linux i en förbruknings plan. Den här metoden använder [exempel data](configure-monitoring.md#configure-sampling).
+* **Live Metrics Stream**: när din Function-app är [ansluten till Application Insights](configure-monitoring.md#enable-application-insights-integration)kan du Visa loggdata och andra mått i nära real tid i Azure Portal med hjälp av [Live Metrics Stream](../azure-monitor/app/live-stream.md). Använd den här metoden när du övervakar funktioner som körs på flera instanser eller i Linux i en förbruknings plan. Den här metoden använder [exempel data](configure-monitoring.md#configure-sampling).
 
 Logg strömmar kan visas både i portalen och i de flesta lokala utvecklings miljöer. Information om hur du aktiverar logg strömmar finns i [Aktivera strömnings körnings loggar i Azure Functions](streaming-logs.md).
 
 ## <a name="diagnostic-logs"></a>Diagnostikloggar
 
-_Den här funktionen är i för hands version._ 
+_Den här funktionen är i förhandsversion._ 
 
 Med Application Insights kan du exportera telemetridata till långsiktig lagring eller andra Analysis Services.  
 
@@ -111,7 +111,7 @@ Eftersom Functions även integreras med Azure Monitor, kan du också använda di
 
 ## <a name="scale-controller-logs"></a>Loggar för skalnings styrenhet
 
-_Den här funktionen är i för hands version._ 
+_Den här funktionen är i förhandsversion._ 
 
 Den [Azure Functions skalnings styrenheten](./functions-scale.md#runtime-scaling) övervakar instanser av Azure Functions värden som appen körs på. Den här kontrollanten fattar beslut om när du ska lägga till eller ta bort instanser utifrån aktuella prestanda. Du kan låta skalnings styrenheten generera loggar till Application Insights för att bättre förstå de beslut som skalnings styrenheten gör för din Function-app. Du kan också lagra de genererade loggarna i Blob Storage för analys av en annan tjänst. 
 

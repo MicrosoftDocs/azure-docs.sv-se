@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
-ms.custom: mvc, devx-track-azurecli, contperfq2
+ms.custom: mvc, devx-track-azurecli, contperf-fy21q2
 ms.date: 11/23/2020
-ms.openlocfilehash: f5b8497772a14e9613977c9cdc22025e8e58b92c
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: bc172fd1702addf8f4e34094452a779b09320a4d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95509463"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033382"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>Snabb start: skapa och hantera Logic Apps med Azure CLI
 
@@ -272,7 +272,7 @@ Du kan använda följande valfria globala Azure CLI-parametrar med dina `az logi
 | Verbose | `--verbose` | Visa utförliga loggar. |
 | Felsökning | `--debug` | Visar alla fel söknings loggar. |
 | Hjälp meddelande | `--help -h` | Visa hjälp dialog ruta. |
-| Fråga | `--query` | Ange en JMESPath-frågesträng för JSON-utdata. |
+| Söka i data | `--query` | Ange en JMESPath-frågesträng för JSON-utdata. |
 
 ## <a name="next-steps"></a>Nästa steg
 

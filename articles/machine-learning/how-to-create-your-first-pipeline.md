@@ -10,13 +10,13 @@ ms.author: nilsp
 author: NilsPohlmann
 ms.date: 10/21/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 2b534f82aeda438b1d2bd5d60eeb4871acffc54a
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.custom: how-to, devx-track-python, contperf-fy21q1
+ms.openlocfilehash: fe36b7789be6e885f3fbe0fa4ede044c0593f5ef
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902025"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033399"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Skapa och kör maskin inlärnings pipeliner med Azure Machine Learning SDK
 
@@ -30,7 +30,7 @@ ML pipelines körs på beräknings mål (se [Vad är beräknings mål i Azure Ma
 
 Om du inte har någon Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar. Prova den [kostnads fria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Skapa en [Azure Machine Learning arbets yta](how-to-manage-workspace.md) för att lagra alla dina pipeline-resurser.
 

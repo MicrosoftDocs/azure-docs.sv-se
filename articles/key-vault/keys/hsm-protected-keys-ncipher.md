@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: f5d58f89aa87a39d12b2d6f6a3a91254a653a088
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8a1f3b5e80152fb0fb9458aef0d3524dd2d6f5eb
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784668"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092337"
 ---
 # <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>Importera HSM-skyddade nycklar för Key Vault (hjälp programmet nCipher)
 
@@ -61,7 +61,7 @@ I följande tabell finns en lista över förutsättningar för att ta med din eg
 | --- | --- |
 | En prenumeration på Azure |Om du vill skapa en Azure Key Vault behöver du en Azure-prenumeration: [Registrera dig för en kostnads fri utvärderings version](https://azure.microsoft.com/pricing/free-trial/) |
 | Tjänst nivån Azure Key Vault Premium som stöder HSM-skyddade nycklar |Mer information om tjänst nivåer och funktioner för Azure Key Vault finns på webbplatsen för [Azure Key Vault prissättning](https://azure.microsoft.com/pricing/details/key-vault/) . |
-| Hjälp programmet nCipher nshield maskinvarusäkerhetsmodul HSM: er, SmartCards och support Software |Du måste ha åtkomst till en hjälp programmet nCipher för maskin vara och grundläggande operativa kunskaper om hjälp programmet nCipher nshield maskinvarusäkerhetsmodul HSM: er. Se [Hjälp programmet nCipher nshield maskinvarusäkerhetsmodul Hardware Security Module](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/how-to-buy) i listan över kompatibla modeller eller Köp en HSM om du inte har någon. |
+| Hjälp programmet nCipher nshield maskinvarusäkerhetsmodul HSM: er, SmartCards och support Software |Du måste ha åtkomst till en hjälp programmet nCipher för maskin vara och grundläggande operativa kunskaper om hjälp programmet nCipher nshield maskinvarusäkerhetsmodul HSM: er. Se [Hjälp programmet nCipher nshield maskinvarusäkerhetsmodul Hardware Security Module](https://go.ncipher.com/rs/104-QOX-775/images/nCipher_nShield_Family_Brochure.pdf?_ga=2.106120835.1607422418.1590478092-577009923.1587131206) i listan över kompatibla modeller eller Köp en HSM om du inte har någon. |
 | Följande maskin-och program vara:<ol><li>En offline x64-arbets station med minst Windows-operativsystem av Windows 7-och hjälp programmet nCipher nshield maskinvarusäkerhetsmodul-programvara som är minst version 11,50.<br/><br/>Om den här arbets stationen kör Windows 7 måste du [installera Microsoft .NET Framework 4,5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>En arbets station som är ansluten till Internet och som har minst Windows-operativsystemet Windows 7 och [Azure PowerShell](/powershell/azure/?view=azps-1.2.0) **lägsta version 1.1.0** installerad.</li><li>En USB-enhet eller annan bärbar lagrings enhet som har minst 16 MB ledigt utrymme.</li></ol> |Av säkerhetsskäl rekommenderar vi att den första arbetsstationen inte är ansluten till ett nätverk. Den här rekommendationen tillämpas dock inte program mässigt.<br/><br/>I instruktionerna som följer kallas den frånkopplade arbets stationen.</p></blockquote><br/>Om din klient nyckel är för ett produktions nätverk, rekommenderar vi dessutom att du använder en andra, separat arbets station för att ladda ned verktygs uppsättningen och laddar upp klient nyckeln. För testsyften kan du emellertid använda samma arbetsstation som den första.<br/><br/>I anvisningarna som följer kallas den här andra arbets stationen som den Internet-anslutna arbets stationen.</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>Generera och överför din nyckel till Azure Key Vault HSM
@@ -255,7 +255,7 @@ För det här andra steget utför du följande procedurer på arbets stationen s
 
 Installera hjälp programmet nCipher Support Software på en Windows-dator och Anslut sedan en hjälp programmet nCipher nshield maskinvarusäkerhetsmodul HSM till den datorn.
 
-Se till att hjälp programmet nCipher-verktygen finns i sökvägen ( **% nfast_home% \ bin** ). Ange till exempel följande:
+Se till att hjälp programmet nCipher-verktygen finns i sökvägen (**% nfast_home% \ bin**). Ange till exempel följande:
 
   ```cmd
   set PATH=%PATH%;"%nfast_home%\bin"
@@ -416,7 +416,7 @@ Verifiera det hämtade paketet:
      >
 2. Bekräfta att du ser följande, vilket indikerar att verifieringen lyckades: **resultat: lyckades**
 
-Det här skriptet validerar den som loggar in till rot nyckeln för nshield maskinvarusäkerhetsmodul. Hashen för den här rotnyckeln är inbäddad i skriptet och dess värde bör vara **59178a47 de508c3f 291277ee 184f46c4 f1d9c639** . Du kan också bekräfta det här värdet separat genom att besöka [Hjälp programmet nCipher-webbplatsen](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/validation).
+Det här skriptet validerar den som loggar in till rot nyckeln för nshield maskinvarusäkerhetsmodul. Hashen för den här rotnyckeln är inbäddad i skriptet och dess värde bör vara **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**. Du kan också bekräfta det här värdet separat genom att besöka [Hjälp programmet nCipher-webbplatsen](https://www.ncipher.com).
 
 Nu är du redo att skapa en ny nyckel.
 
@@ -432,11 +432,11 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
 
 Använd följande anvisningar när du kör det här kommandot:
 
-* Parametern *protect* måste anges till värdet **module** , så som det visas. Detta skapar en modulskyddad nyckel. BYOK-verktygen har inte stöd för OCS-skyddade nycklar.
+* Parametern *protect* måste anges till värdet **module**, så som det visas. Detta skapar en modulskyddad nyckel. BYOK-verktygen har inte stöd för OCS-skyddade nycklar.
 * Ersätt värdet för *contosokey* för **ident** och **plainname** med valfritt strängvärde. För att minimera de administrativa omkostnaderna och minska risken för fel rekommenderar vi att du använder samma värde för båda. Värdet för **identitet** får bara innehålla siffror, bindestreck och gemener.
-* Pubexp lämnas tomt (standard) i det här exemplet, men du kan ange specifika värden. Mer information finns i hjälp programmet nCipher- [dokumentationen.](https://www.ncipher.com/resources/solution-briefs/protect-sensitive-data-rest-and-use-across-premises-and-azure-based)
+* Pubexp lämnas tomt (standard) i det här exemplet, men du kan ange specifika värden. Mer information finns i hjälp programmet nCipher- [dokumentationen.](https://www.entrust.com/-/media/documentation/brochures/entrust-nshield-general-purpose-hsms-br-a4.pdf)
 
-Det här kommandot skapar en nyckel fil med nycklar i mappen% NFAST_KMDATA% \ Local med ett namn som börjar med **key_simple_** följt av den **identitet** som angavs i kommandot. Exempel: **key_simple_contosokey** . Den här filen innehåller en krypterad nyckel.
+Det här kommandot skapar en nyckel fil med nycklar i mappen% NFAST_KMDATA% \ Local med ett namn som börjar med **key_simple_** följt av den **identitet** som angavs i kommandot. Exempel: **key_simple_contosokey**. Den här filen innehåller en krypterad nyckel.
 
 Säkerhetskopiera filen för tokeniserad nyckel till en säker plats.
 
@@ -668,7 +668,7 @@ Använd följande anvisningar när du kör det här kommandot:
 * Ersätt *SubscriptionID* med ID: t för den Azure-prenumeration som innehåller ditt nyckel valv. Du har hämtat det här värdet tidigare i **steg 1,2: Hämta ditt Azure-prenumerations-ID** från steget [förbereda din Internet-anslutna arbets Station](#step-1-prepare-your-internet-connected-workstation) .
 * Ersätt *ContosoFirstHSMKey* med en etikett som används för fil namnet för utdatafilen.
 
-När detta har slutförts visas **resultatet: lyckades** och det finns en ny fil i den aktuella mappen med följande namn: KeyTransferPackage- *ContosoFirstHSMkey* . BYOK
+När detta har slutförts visas **resultatet: lyckades** och det finns en ny fil i den aktuella mappen med följande namn: KeyTransferPackage-*ContosoFirstHSMkey*. BYOK
 
 ### <a name="step-43-copy-your-key-transfer-package-to-the-internet-connected-workstation"></a>Steg 4,3: kopiera ditt nyckel överförings paket till den Internet-anslutna arbets stationen
 
