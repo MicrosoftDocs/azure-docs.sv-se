@@ -11,20 +11,28 @@ ms.topic: reference
 ms.date: 08/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 868d99a82009dc8545fc24ad1cfa1da3959da131
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0bbe40a2329143b9abd4554ec715c64e5c26d4eb
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88852077"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028112"
 ---
 # <a name="page-layout-versions"></a>Sidlayoutversioner
 
 Sid inlayout-paket uppdateras regelbundet för att inkludera korrigeringar och förbättringar i sina sid element. Följande ändrings logg anger de ändringar som införs i varje version.
 
-[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
-
 ## <a name="self-asserted-page-selfasserted"></a>Själv kontrollerad sida (selfasserted)
+
+**punkt**
+
+- Du har lagt till en UXString `heading` förutom `intro` att visa på sidan som en rubrik. Detta är dolt som standard.
+- Stöd har lagts till för att spara lösen ord till iCloud-nyckelring.
+- Stöd har lagts till för användning av princip eller parametern QueryString `pageFlavor` för att välja layouten (klassisk, oceanBlue eller slateGray).
+- Frispråk har lagts till på en egen kontrollerad sida.
+- Fokus placeras nu i det första redigerbara fältet när sidan läses in.
+- Fokus placeras nu i det första fel fältet när flera fält innehåller fel.
+- Fokus placeras nu på knappen "ändra" när e-postverifierings koden har verifierats.
 
 **2.1.0**
 
@@ -38,12 +46,16 @@ Sid inlayout-paket uppdateras regelbundet för att inkludera korrigeringar och f
 
 - Fälten användar namn/e-post och lösen ord använder nu `form` HTML-elementet för att tillåta att Edge och Internet Explorer (IE) sparar informationen på rätt sätt.
 - Har lagt till en konfigurerbar verifierings fördröjning för användarindata för förbättrad användar upplevelse.
-- Hjälpmedels korrigeringar
+- Ett funktions problem har åtgärd ATS så att fel meddelanden nu läses av skärm läsaren. 
+- Fokus placeras nu i fältet lösen ord när e-postmeddelandet har verifierats.
+- Har tagits bort `autofocus` från kryss Rute kontrollen. 
+- Stöd har lagts till för en visnings-widget för verifiering av telefonnummer.
 - Nu kan du lägga till `data-preload="true"` attributet [i dina HTML-taggar](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) för att kontrol lera inläsnings ordningen för CSS och Java Script.
   - Läs in länkade CSS-filer samtidigt som din HTML-mall så att den inte flimrar mellan att läsa in filerna.
   - Styra i vilken ordning `script` taggarna ska hämtas och köras före sid inläsningen.
-- E-postfältet är nu `type=email` och mobila tangent bord ger rätt förslag
-- Stöd för Chrome-Översättning
+- E-postfältet är nu `type=email` och mobila tangent bord kommer att ange rätt förslag.
+- Stöd för Chrome-översättning.
+- Stöd har lagts till för klient anpassning på användar flödes sidor.
 
 **1.1.0**
 
@@ -58,6 +70,15 @@ Sid inlayout-paket uppdateras regelbundet för att inkludera korrigeringar och f
 
 ## <a name="unified-sign-in-sign-up-page-with-password-reset-link-unifiedssp"></a>Sidan enhetlig inloggning med lösen ords återställning (unifiedssp)
 
+**punkt**
+- Du har lagt till en UXString `heading` förutom `intro` att visa på sidan som en rubrik. Detta är dolt som standard.
+- Stöd har lagts till för användning av princip eller parametern QueryString `pageFlavor` för att välja layouten (klassisk, oceanBlue eller slateGray).
+- Stöd har lagts till för att spara lösen ord till iCloud-nyckelring.
+- Fokus placeras nu i det första fel fältet när flera fält innehåller fel.
+- Fokus placeras nu i det första redigerbara fältet när sidan läses in.
+- Lade till en ny plats för anspråks leverantörens urvals länk `bottomUnderFormClaimsProviderSelections` .
+- Tog bort UXStrings som inte längre används.
+
 **2.1.0**
 
 - Stöd har lagts till för flera registrerings länkar.
@@ -66,12 +87,13 @@ Sid inlayout-paket uppdateras regelbundet för att inkludera korrigeringar och f
 **1.2.0**
 
 - Fälten användar namn/e-post och lösen ord använder nu `form` HTML-elementet för att tillåta att Edge och Internet Explorer (IE) sparar informationen på rätt sätt.
-- Hjälpmedels korrigeringar
+- Tillgänglighets korrigeringar.
 - Nu kan du lägga till `data-preload="true"` attributet [i dina HTML-taggar](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) för att kontrol lera inläsnings ordningen för CSS och Java Script.
   - Läs in länkade CSS-filer samtidigt som din HTML-mall så att den inte flimrar mellan att läsa in filerna.
   - Styra i vilken ordning `script` taggarna ska hämtas och köras före sid inläsningen.
-- E-postfältet är nu `type=email` och mobila tangent bord ger rätt förslag
-- Stöd för Chrome-Översättning
+- E-postfältet är nu `type=email` och mobila tangent bord kommer att ange rätt förslag.
+- Stöd för Chrome-översättning.
+- Stöd har lagts till för klient anpassning på användar flödes sidor.
 
 **1.1.0**
 
@@ -82,6 +104,12 @@ Sid inlayout-paket uppdateras regelbundet för att inkludera korrigeringar och f
 - Första utgåvan
 
 ## <a name="mfa-page-multifactor"></a>MFA-sida (multifaktor)
+
+**1.2.2**
+- Åtgärdade ett problem med att fylla verifierings koden automatiskt när du använder iOS.
+- Ett problem har åtgärd ATS vid omdirigering av en token till den förlitande parten från Android webbvy. 
+- Du har lagt till en UXString `heading` förutom `intro` att visa på sidan som en rubrik. Detta är dolt som standard.  
+- Stöd har lagts till för användning av princip eller parametern QueryString `pageFlavor` för att välja layouten (klassisk, oceanBlue eller slateGray).
 
 **1.2.1**
 
@@ -94,7 +122,8 @@ Sid inlayout-paket uppdateras regelbundet för att inkludera korrigeringar och f
   - Läs in länkade CSS-filer samtidigt som din HTML-mall så att den inte flimrar mellan att läsa in filerna.
   - Styra i vilken ordning `script` taggarna ska hämtas och köras före sid inläsningen.
 - E-postfältet är nu `type=email` och mobila tangent bord ger rätt förslag
-- Stöd för Chrome-Översättning
+- Stöd för Chrome-översättning.
+- Stöd har lagts till för klient anpassning på användar flödes sidor.
 
 **1.1.0**
 

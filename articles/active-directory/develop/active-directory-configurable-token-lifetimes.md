@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: ryanwi
-ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperfq1
+ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 4dab75a4e95a7561bc86176816cb402c10de781e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 12d74e2f21678fdbb02719c29a31c0fcdc4fa132
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077429"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030153"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurerbara livstider för token i Microsoft Identity Platform (för hands version)
 
@@ -32,7 +32,7 @@ ms.locfileid: "93077429"
 ## <a name="configurable-token-lifetime-properties-after-the-retirement"></a>Konfigurerbara egenskaper för token-livstid efter pensionering
 Konfiguration av och sessionstoken påverkas av följande egenskaper och deras värden. Efter indragningen av konfigurationen och konfigurationen av sessionstoken kommer Azure AD endast att följa standardvärdet som beskrivs nedan, oavsett om principer har anpassade värden konfigurerade konfigurerade anpassade värden. Du kan fortfarande konfigurera livstid för åtkomsttoken efter indragningen. 
 
-|Egenskap   |Princip egenskaps sträng    |Nätverk |Default |
+|Egenskap   |Princip egenskaps sträng    |Nätverk |Standardvärde |
 |----------|-----------|------------|------------|
 |Maximal inaktiv tid för uppdateringstoken |MaxInactiveTime  |Uppdatera token |90 dagar  |
 |Högsta ålder för Single-Factor uppdaterad token  |MaxAgeSingleFactor  |Uppdatera tokens (för alla användare)  |Tills den har återkallats  |
@@ -127,7 +127,7 @@ Du kan använda en princip för att ställa in tiden efter att den första sessi
 En livs längds princip för token är en typ av princip objekt som innehåller livs längds regler för token. Använd egenskaperna för principen för att kontrol lera angivna livstider för token. Om ingen princip har angetts tillämpar systemet standard livstid svärdet.
 
 ### <a name="configurable-token-lifetime-properties"></a>Egenskaper för konfigurerbar token-livstid
-| Egenskap | Princip egenskaps sträng | Nätverk | Default | Minimum | Maximal |
+| Egenskap | Princip egenskaps sträng | Nätverk | Standardvärde | Minimum | Maximal |
 | --- | --- | --- | --- | --- | --- |
 | Livstid för åtkomsttoken |AccessTokenLifetime<sup>2</sup> |Åtkomsttoken, ID-token, SAML2-token |1 timme |10 minuter |1 dag |
 | Maximal inaktiv tid för uppdateringstoken |MaxInactiveTime |Uppdatera token |90 dagar |10 minuter |90 dagar |
@@ -140,7 +140,7 @@ En livs längds princip för token är en typ av princip objekt som innehåller 
 * <sup>2</sup> För att säkerställa att Microsoft Teams webb klienten fungerar rekommenderar vi att du håller AccessTokenLifetime till mer än 15 minuter för Microsoft Teams.
 
 ### <a name="exceptions"></a>Undantag
-| Egenskap | Nätverk | Default |
+| Egenskap | Nätverk | Standardvärde |
 | --- | --- | --- |
 | Uppdatera token max ålder (utfärdat för federerade användare som har otillräcklig åter kallelse information<sup>1</sup>) |Uppdatera tokens (utfärdat för federerade användare som har otillräcklig återkallnings information<sup>1</sup>) |12 timmar |
 | Maximal inaktiv tid för uppdateringstoken (utfärdat för konfidentiella klienter) |Uppdatera tokens (utfärdat för konfidentiella klienter) |90 dagar |

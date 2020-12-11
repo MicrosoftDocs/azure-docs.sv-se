@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f63dbad398afcd0a9756cc1e9d4f70f1303d00b0
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: bc7c6022f8ed95a69dcb877252fd8c5eff49ce28
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95993864"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030492"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Snabbstart: Hämta en token och anropa Microsoft Graph API från en Windows-skrivbordsapp
 
@@ -45,16 +45,17 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 > #### <a name="step-1-register-your-application"></a>Steg 1: Registrera ditt program
 > Du registrerar programmet och lägger till appens registreringsinformationen i lösningen manuellt med hjälp av följande steg:
 >
-> 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
-> 1. Om ditt konto ger dig tillgång till fler än en klientorganisation väljer du ditt konto i det övre högra hörnet och ställer in din portalsession på önskad Azure AD-klientorganisation.
-> 1. Gå till bladet [Appregistreringar](https://aka.ms/MobileAppReg) för Azure Active Directory i Azure Portal.
-> 1. Välj **ny registrering**.
->      - I avsnittet **Namn** anger du ett beskrivande programnamn som ska visas för appens användare, till exempel `Win-App-calling-MsGraph`.
->      - I avsnittet **Kontotyper som stöds** väljer du **Konton alla organisationskataloger och personliga Microsoft-konton (till exempel Skype, Xbox och Outlook.com)**.
->      - Välj **Registrera** för att skapa programmet.
-> 1. I listan över sidor för appen väljer du **Autentisering**.
-> 1. I avsnittet **omdirigerings-URI: er**  |  **föreslagna omdirigerings-URI: er för offentliga klienter (mobil, stationär)** använder du **https://login.microsoftonline.com/common/oauth2/nativeclient** .
-> 1. Välj **Spara**.
+> 1. Logga in på [Azure-portalen](https://portal.azure.com).
+> 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
+> 1. Sök efter och välj **Azure Active Directory**.
+> 1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.
+> 1. Ange ett **namn** för programmet, till exempel `Win-App-calling-MsGraph` . Användare av appen kan se det här namnet och du kan ändra det senare.
+> 1. I avsnittet **Kontotyper som stöds** väljer du **Konton alla organisationskataloger och personliga Microsoft-konton (till exempel Skype, Xbox och Outlook.com)**.
+> 1. Välj **Registrera** för att skapa programmet.
+> 1. Under **Hantera** väljer du **autentisering**.
+> 1. Välj **Lägg till en plattform**  >  **mobil-och skriv bords program**.
+> 1. I avsnittet **omdirigerings-URI** väljer du `https://login.microsoftonline.com/common/oauth2/nativeclient` .
+> 1. Välj **Konfigurera**.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Steg 1: Konfigurera din app i Azure-portalen

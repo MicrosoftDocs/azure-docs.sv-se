@@ -10,13 +10,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 02/05/2020
 ms.author: kenwith
-ms.custom: contperfq2
-ms.openlocfilehash: a1d83f91ad82bddacb7e806e31151b8e4a7ab612
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: fe18513bbfc69fb63f8b1b248b7cf02ad55b467d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344937"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027381"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-ad"></a>Referens för att skriva uttryck för mappningar av attribut i Azure AD
 
@@ -38,7 +38,7 @@ Syntaxen för-uttryck för attributmappning är reminiscent av Visual Basic for 
 
 ## <a name="list-of-functions"></a>Lista över funktioner
 
-[Lägg](#append) &nbsp; &nbsp; till &nbsp; &nbsp; [BitAnd](#bitand) &nbsp; &nbsp; BitAnd &nbsp; &nbsp; [CBool](#cbool) &nbsp; &nbsp; CBool &nbsp; &nbsp; [Coalesce](#coalesce) &nbsp; &nbsp; Sammanslagning &nbsp; &nbsp; [ConvertToBase64](#converttobase64) &nbsp; &nbsp; ConvertToBase64 &nbsp; &nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp; &nbsp; ConvertToUTF8Hex &nbsp; &nbsp; [Count](#count) &nbsp; &nbsp; Antal &nbsp; &nbsp; [CStr](#cstr) &nbsp; &nbsp; CStr &nbsp; &nbsp; [DateFromNum](#datefromnum) &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; FormatDateTime &nbsp; &nbsp; [Guid](#guid) &nbsp; &nbsp; GUID &nbsp; &nbsp; [IIF](#iif) &nbsp; &nbsp; IIF &nbsp; &nbsp; [InStr](#instr) &nbsp; &nbsp; Instr &nbsp; &nbsp; [IsNull](#isnull) &nbsp; &nbsp; IsNull &nbsp; &nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp; &nbsp; IsNullOrEmpty &nbsp; &nbsp; [IsPresent](#ispresent) &nbsp; &nbsp; IsPresent &nbsp; &nbsp; [IsString](#isstring) &nbsp; &nbsp; IsString &nbsp; &nbsp; [Item](#item) &nbsp; &nbsp; Objekt &nbsp; &nbsp; [Join](#join) &nbsp; &nbsp; Anslut &nbsp; &nbsp; [Left](#left) &nbsp; &nbsp; Vänster &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [inte](#not) &nbsp; &nbsp; &nbsp; &nbsp; [RemoveDuplicates](#removeduplicates) &nbsp; &nbsp; &nbsp; &nbsp; [Replace](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [Split](#split) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [switch](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper) &nbsp; &nbsp; &nbsp; &nbsp; [Word](#word)
+[Lägg](#append) &nbsp; &nbsp; till &nbsp; &nbsp; [](#bitand) &nbsp; &nbsp; BitAnd &nbsp; &nbsp; [](#cbool) &nbsp; &nbsp; CBool &nbsp; &nbsp; [](#coalesce) &nbsp; &nbsp; Sammanslagning &nbsp; &nbsp; [](#converttobase64) &nbsp; &nbsp; ConvertToBase64 &nbsp; &nbsp; [](#converttoutf8hex) &nbsp; &nbsp; ConvertToUTF8Hex &nbsp; &nbsp; [](#count) &nbsp; &nbsp; Antal &nbsp; &nbsp; [](#cstr) &nbsp; &nbsp; CStr &nbsp; &nbsp; [DateFromNum](#datefromnum) &nbsp; [](#formatdatetime) &nbsp; &nbsp; FormatDateTime &nbsp; &nbsp; [](#guid) &nbsp; &nbsp; GUID &nbsp; &nbsp; [](#iif) &nbsp; &nbsp; IIF &nbsp; &nbsp; [](#instr) &nbsp; &nbsp; Instr &nbsp; &nbsp; [](#isnull) &nbsp; &nbsp; IsNull &nbsp; &nbsp; [](#isnullorempty) &nbsp; &nbsp; IsNullOrEmpty &nbsp; &nbsp; [](#ispresent) &nbsp; &nbsp; IsPresent &nbsp; &nbsp; [](#isstring) &nbsp; &nbsp; IsString &nbsp; &nbsp; [](#item) &nbsp; &nbsp; Objekt &nbsp; &nbsp; [](#join) &nbsp; &nbsp; Anslut &nbsp; &nbsp; [](#left) &nbsp; &nbsp; Vänster &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [inte](#not) &nbsp; &nbsp; &nbsp; &nbsp; [RemoveDuplicates](#removeduplicates) &nbsp; &nbsp; &nbsp; &nbsp; [](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [Split](#split) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [switch](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper) &nbsp; &nbsp; &nbsp; &nbsp; [Word](#word)
 
 ---
 ### <a name="append"></a>Lägg till
@@ -181,7 +181,7 @@ Returnerar "CN = Johan, DC = contoso, DC = com"
 
 | Name | Krävs/upprepas | Typ | Kommentarer |
 | --- | --- | --- | --- |
-| **värde** |Obligatorisk | Datum | AD-datum som ska konverteras till DateTime-typ |
+| **värde** |Obligatorisk | Date | AD-datum som ska konverteras till DateTime-typ |
 
 **Exempel**
 `DateFromNum([lastLogonTimestamp])`
@@ -542,7 +542,7 @@ Returnerar "Joh".
 | --- | --- | --- | --- |
 | **källicensservern** |Obligatorisk |Sträng |**Käll** värde att uppdatera. |
 | **Standar** |Valfritt |Sträng |Standardvärdet som ska användas när källan inte matchar några nycklar. Kan vara en tom sträng (""). |
-| **key** |Obligatorisk |Sträng |**Nyckel** att jämföra **käll** värde med. |
+| **knapp** |Obligatorisk |Sträng |**Nyckel** att jämföra **käll** värde med. |
 | **värde** |Obligatorisk |Sträng |Ersättnings värde för den **källa** som matchar nyckeln. |
 
 ---

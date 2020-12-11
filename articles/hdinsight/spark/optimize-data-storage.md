@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.custom: contperfq1
-ms.openlocfilehash: 092757728e791f60616d9dceca43e109e7f0019e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: ad09cdc2c0054c9d9a58e6bfa00252862f1e8c0f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88757820"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028231"
 ---
 # <a name="data-storage-optimization-for-apache-spark"></a>Data lagrings optimering för Apache Spark
 
@@ -57,11 +57,11 @@ När du skapar ett nytt Spark-kluster kan du välja Azure Blob Storage eller Azu
 
 | Butikstyp | Filsystem | Hastighet | Tillfälliga | Användningsfall |
 | --- | --- | --- | --- | --- |
-| Azure Blob Storage | **wasb:**//URL/ | **Standard** | Ja | Tillfälligt kluster |
-| Azure Blob Storage (säker) | **wasbs:**//URL/ | **Standard** | Ja | Tillfälligt kluster |
-| Azure Data Lake Storage Gen 2| **ABFS:**//URL/ | **Tid** | Ja | Tillfälligt kluster |
-| Azure Data Lake Storage Gen 1| **ADL:**//URL/ | **Tid** | Ja | Tillfälligt kluster |
-| Lokal HDFS | **HDFS:**//URL/ | **Snabbaste** | Inga | Interaktivt 24/7-kluster |
+| Azure Blob Storage | **wasb:**//URL/ | **Standard** | Yes | Tillfälligt kluster |
+| Azure Blob Storage (säker) | **wasbs:**//URL/ | **Standard** | Yes | Tillfälligt kluster |
+| Azure Data Lake Storage Gen 2| **ABFS:**//URL/ | **Tid** | Yes | Tillfälligt kluster |
+| Azure Data Lake Storage Gen 1| **ADL:**//URL/ | **Tid** | Yes | Tillfälligt kluster |
+| Lokal HDFS | **HDFS:**//URL/ | **Snabbaste** | No | Interaktivt 24/7-kluster |
 
 En fullständig beskrivning av lagrings alternativ finns i [jämföra lagrings alternativ för användning med Azure HDInsight-kluster](../hdinsight-hadoop-compare-storage-options.md).
 

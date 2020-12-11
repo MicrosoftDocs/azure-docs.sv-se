@@ -11,13 +11,13 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.custom: contperfq4
-ms.openlocfilehash: c26cbf55c1e3883605d4c65659511af20cf02c7f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.custom: contperf-fy20q4
+ms.openlocfilehash: 9c912b7122a40ae39bcbb703e1387af25fff2bc8
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996686"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029914"
 ---
 # <a name="what-are-security-defaults"></a>Vad är säkerhets inställningar?
 

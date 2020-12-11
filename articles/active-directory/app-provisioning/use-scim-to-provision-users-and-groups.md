@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.custom: contperfq2
-ms.openlocfilehash: ddce982f43a3c730d8c25527f4354983c36e89e8
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: c9738d25fdcb1c0ccda70ec116eb369f8b50e980
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530841"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027483"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Självstudie – Bygg en SCIM-slutpunkt och konfigurera användar etablering med Azure AD
 
@@ -102,12 +102,12 @@ Du kan sedan använda tabellen nedan för att förstå hur attributen som progra
 |Anställnings|urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: employeeNumber|
 | Facsimile-TelephoneNumber |phoneNumbers [Type EQ "fax"]. värde |
 | förnamn |name.givenName |
-| Befattning |title |
+| jobTitle |title |
 | e-post |emails[type eq "work"].value |
 | mailNickname |externalId |
 | manager |urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: Manager |
 | mobil |phoneNumbers[type eq "mobile"].value |
-| Post nummer |adresser [Type EQ "Work"]. Postnr |
+| postalCode |adresser [Type EQ "Work"]. Postnr |
 | Proxy-adresser |e-postmeddelanden [Type EQ "other"]. Värde |
 | fysisk leverans – OfficeName |adresser [Type EQ "other"]. Formatera |
 | streetAddress |adresser [Type EQ "Work"]. streetAddress |
@@ -196,23 +196,23 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
 > Information om hur och när Azure AD-tjänsten för användar etablering avger de åtgärder som beskrivs nedan finns i avsnittet [etablerings cykler: initial och stegvisa](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) [anvisningar för hur etablering fungerar](how-provisioning-works.md).
 
 [Användar åtgärder](#user-operations)
-  - [Skapa användare](#create-user) ([Request](#request)  /  [svar](#response)på begäran)
-  - [Hämta användare](#get-user) ([Request](#request-1)  /  [svar](#response-1)på begäran)
+  - [Skapa användare](#create-user) ([](#request)  /  [svar](#response)på begäran)
+  - [Hämta användare](#get-user) ([](#request-1)  /  [svar](#response-1)på begäran)
   - [Hämta användare efter fråga](#get-user-by-query) ([begär](#request-2)  /  [svar](#response-2))
   - [Hämta användare efter fråga – noll resultat](#get-user-by-query---zero-results) ([begär](#request-3)  /  [svar](#response-3))
   - [Uppdatera användare [Egenskaper för flera värden]](#update-user-multi-valued-properties) ([begär](#request-4)  /  [svar](#response-4))
   - [Uppdatera användare [Egenskaper för enstaka värde]](#update-user-single-valued-properties) ([begär](#request-5)  /  [svar](#response-5)) 
-  - [Inaktivera användare](#disable-user) ([Request](#request-14)  /  [svar](#response-14)på begäran)
-  - [Ta bort användare](#delete-user) (svar på[begäran](#request-6)  /  [Response](#response-6))
+  - [Inaktivera användare](#disable-user) ([](#request-14)  /  [svar](#response-14)på begäran)
+  - [Ta bort användare](#delete-user) (svar på[begäran](#request-6)  /  [](#response-6))
 
 
 [Grupp åtgärder](#group-operations)
   - [Skapa grupp](#create-group) ([begär](#request-7)  /  [svar](#response-7))
   - [Hämta grupp](#get-group) ([Request](#request-8)  /  [Response](#response-8))
-  - [Hämta grupp efter DisplayName](#get-group-by-displayname) ([Request](#request-9)  /  [svar](#response-9)på begäran)
+  - [Hämta grupp efter DisplayName](#get-group-by-displayname) ([](#request-9)  /  [svar](#response-9)på begäran)
   - [Uppdaterings grupp [attribut för icke-medlem]](#update-group-non-member-attributes) ([begär](#request-10)  /  [svar](#response-10))
   - [Uppdatera grupp [Lägg till medlemmar]](#update-group-add-members) ([begär](#request-11)  /  [svar](#response-11))
-  - [Uppdaterings grupp [ta bort medlemmar]](#update-group-remove-members) (svar på[begäran](#request-12)  /  [Response](#response-12))
+  - [Uppdaterings grupp [ta bort medlemmar]](#update-group-remove-members) (svar på[begäran](#request-12)  /  [](#response-12))
   - [Ta bort grupp](#delete-group) ([begär](#request-13)  /  [svar](#response-13))
 
 ### <a name="user-operations"></a>Användar åtgärder

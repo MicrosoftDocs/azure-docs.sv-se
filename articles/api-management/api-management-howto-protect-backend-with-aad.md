@@ -8,20 +8,20 @@ ms.service: api-management
 ms.topic: article
 ms.date: 09/23/2020
 ms.author: apimpm
-ms.custom: contperfq1
-ms.openlocfilehash: 9892c311651df39b882c3aa38596a905d22a42ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: face4beab450e92be76b2bb90e45625e025de6ee
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618785"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027925"
 ---
 # <a name="protect-a-web-api-backend-in-azure-api-management-by-using-oauth-20-authorization-with-azure-ad"></a>Skydda en webb-API-Server del i Azure API Management med hjälp av OAuth 2,0-auktorisering med Azure AD 
 
 Den här guiden visar hur du konfigurerar [Azure API Management](api-management-key-concepts.md) -instansen för att skydda ett API genom att använda [OAuth 2,0-protokollet med Azure Active Directory (Azure AD)](../active-directory/develop/active-directory-v2-protocols.md). 
 
 > [!NOTE]
-> Den här funktionen är tillgänglig i API Managements nivåer för **utvecklare**, **Basic**, **standard**och **Premium** .
+> Den här funktionen är tillgänglig i API Managements nivåer för **utvecklare**, **Basic**, **standard** och **Premium** .
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -93,9 +93,9 @@ Så här registrerar du ett annat program i Azure AD för att representera Devel
 
 1. Skapa en klient hemlighet för det här programmet som ska användas i ett senare steg.
 
-   1. I listan med sidor för din klient app väljer du **certifikat & hemligheter**och väljer **ny klient hemlighet**.
+   1. I listan med sidor för din klient app väljer du **certifikat & hemligheter** och väljer **ny klient hemlighet**.
 
-   1. Under **Lägg till en klient hemlighet**anger du en **Beskrivning**. Välj när nyckeln ska förfalla och välj **Lägg till**.
+   1. Under **Lägg till en klient hemlighet** anger du en **Beskrivning**. Välj när nyckeln ska förfalla och välj **Lägg till**.
 
 När hemligheten skapas noterar du nyckel värdet för användning i ett senare steg. 
 
@@ -105,13 +105,13 @@ Nu när du har registrerat två program som ska representera API: et och Develop
 
 1. Gå till [Azure Portal](https://portal.azure.com) om du vill bevilja behörighet till klient programmet. Sök efter och välj **Appregistreringar**.
 
-1. Välj klient programmet. Välj sedan **API-behörigheter**i listan över sidor för appen.
+1. Välj klient programmet. Välj sedan **API-behörigheter** i listan över sidor för appen.
 
 1. Välj **Lägg till en behörighet**.
 
-1. Under **Välj ett API**väljer du **Mina API: er**och letar sedan upp och väljer din backend-app.
+1. Under **Välj ett API** väljer du **Mina API: er** och letar sedan upp och väljer din backend-app.
 
-1. Under **delegerade behörigheter**väljer du lämpliga behörigheter till Server delen – appen och väljer sedan **Lägg till behörigheter**.
+1. Under **delegerade behörigheter** väljer du lämpliga behörigheter till Server delen – appen och väljer sedan **Lägg till behörigheter**.
 
 1. Om du vill kan du på sidan **API-behörigheter** välja **bevilja administrativt medgivande \<your-tenant-name> för** att bevilja medgivande åt alla användare i den här katalogen. 
 
@@ -129,14 +129,14 @@ I det här exemplet är Developer-konsolen klient-app. I följande steg beskrivs
 
 1. Ange ett värde för plats hållare för **klient registrerings sidans URL**, till exempel `http://localhost` . **URL: en för klient registrerings sidan** pekar på en sida som användarna kan använda för att skapa och konfigurera sina egna konton för OAuth 2,0-leverantörer som stöder detta. I det här exemplet skapar och konfigurerar användarna inte sina egna konton, så du kan använda en plats hållare i stället.
 
-1. För **godkännande typer för auktorisering**väljer du **auktoriseringskod**.
+1. För **godkännande typer för auktorisering** väljer du **auktoriseringskod**.
 
 1. Ange URL för **Auktoriseringens slut punkt** och **token slut punkt**. Hämta de här värdena från sidan **slut punkter** i din Azure AD-klient. Bläddra till **Appregistreringar** sidan igen och välj **slut punkter**.
 
 
-1. Kopiera **OAuth 2,0 Authorization-slutpunkten**och klistra in den i text rutan **URL för behörighets slut punkt** . Välj **post** under metod för begäran om godkännande.
+1. Kopiera **OAuth 2,0 Authorization-slutpunkten** och klistra in den i text rutan **URL för behörighets slut punkt** . Välj **post** under metod för begäran om godkännande.
 
-1. Kopiera **OAuth 2,0-token-slutpunkten**och klistra in den i text rutan **URL för token-slutpunkt** . 
+1. Kopiera **OAuth 2,0-token-slutpunkten** och klistra in den i text rutan **URL för token-slutpunkt** . 
 
    >[!IMPORTANT]
    > Använd antingen **v1** -eller **v2** -slutpunkter. Men beroende på vilken version du väljer är steget nedan olika. Vi rekommenderar att du använder v2-slutpunkter. 
@@ -147,9 +147,9 @@ I det här exemplet är Developer-konsolen klient-app. I följande steg beskrivs
 
 1. Ange sedan klientens autentiseringsuppgifter. Detta är autentiseringsuppgifterna för klient-app.
 
-1. För **klient-ID**använder du **program-ID: t** för klient-app.
+1. För **klient-ID** använder du **program-ID: t** för klient-app.
 
-1. För **klient hemlighet**använder du nyckeln som du skapade för klient-app tidigare. 
+1. För **klient hemlighet** använder du nyckeln som du skapade för klient-app tidigare. 
 
 1. Direkt efter klient hemligheten är **redirect_url** för typen av auktoriseringskod. Anteckna denna URL.
 
@@ -157,7 +157,7 @@ I det här exemplet är Developer-konsolen klient-app. I följande steg beskrivs
 
 1. Gå tillbaka till din klient-app-registrering i Azure Active Directory och välj **autentisering**.
 
-1. Under **plattforms konfiguration** klickar du på **Lägg till en plattform**och väljer typen **som webb**, klistrar in **redirect_url** under **omdirigerings-URI**, och klickar sedan på knappen **Konfigurera** för att spara.
+1. Under **plattforms konfiguration** klickar du på **Lägg till en plattform** och väljer typen **som webb**, klistrar in **redirect_url** under **omdirigerings-URI**, och klickar sedan på knappen **Konfigurera** för att spara.
 
 Nu när du har konfigurerat en OAuth 2,0-Authorization-Server kan Developer-konsolen Hämta åtkomsttoken från Azure AD. 
 
@@ -169,7 +169,7 @@ Nästa steg är att aktivera OAuth 2,0-användarauktorisering för ditt API. På
 
 1. Gå till **Inställningar**.
 
-1. Under **säkerhet**väljer du **OAuth 2,0**och väljer den OAuth 2,0-server som du konfigurerade tidigare. 
+1. Under **säkerhet** väljer du **OAuth 2,0** och väljer den OAuth 2,0-server som du konfigurerade tidigare. 
 
 1. Välj **Spara**.
 

@@ -4,19 +4,19 @@ description: Skapa en enda databas i Azure SQL Database med hjälp av Azure Port
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: contperfq1, devx-track-azurecli
+ms.custom: contperf-fy21q1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/03/2020
-ms.openlocfilehash: ab920a05f255e38905f9ff79f08f2bfa0c6540b6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 21ccbc83c80e1b659dd240973a609d624f270835
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791519"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028520"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Snabb start: skapa en Azure SQL Database enskild databas
 
@@ -37,24 +37,24 @@ Den här snabb starten skapar en enskild databas i [Server lös beräknings niv�
 Om du vill skapa en enskild databas i Azure Portal den här snabb starten starta på Azure SQL-sidan.
 
 1. Bläddra till [alternativ sidan Välj SQL-distribution](https://portal.azure.com/#create/Microsoft.AzureSQL) .
-1. Under **SQL-databaser** , lämna **resurs typ** inställt på **en enskild databas** och välj **skapa** .
+1. Under **SQL-databaser**, lämna **resurs typ** inställt på **en enskild databas** och välj **skapa**.
 
    ![Lägg till i Azure SQL](./media/single-database-create-quickstart/select-deployment.png)
 
-1. På fliken **grundläggande** i formuläret **skapa SQL Database** går du till **projekt information** och väljer önskad Azure- **prenumeration** .
-1. För **resurs grupp** väljer du **Skapa ny** , anger *myResourceGroup* och väljer **OK** .
+1. På fliken **grundläggande** i formuläret **skapa SQL Database** går du till **projekt information** och väljer önskad Azure- **prenumeration**.
+1. För **resurs grupp** väljer du **Skapa ny**, anger *myResourceGroup* och väljer **OK**.
 1. Ange *mySampleDatabase* för **databas namnet** .
 1. För **Server** väljer du **Skapa ny** och fyller i formuläret för den **nya servern** med följande värden:
-   - **Server namn** : ange *SQLServer* och Lägg till några tecken för unikhet. Vi kan inte ange ett exakt Server namn som ska användas eftersom Server namn måste vara globalt unika för alla servrar i Azure, inte bara unika inom en prenumeration. Därför kan du ange något som mysqlserver12345, så kan du använda portalen för att se om den är tillgänglig eller inte.
-   - **Inloggning för Server administratör** : ange *azureuser* .
-   - **Lösen ord** : Ange ett lösen ord som uppfyller kraven och ange det igen i fältet **Bekräfta lösen ord** .
-   - **Plats** : Välj en plats i list rutan.
+   - **Server namn**: ange *SQLServer* och Lägg till några tecken för unikhet. Vi kan inte ange ett exakt Server namn som ska användas eftersom Server namn måste vara globalt unika för alla servrar i Azure, inte bara unika inom en prenumeration. Därför kan du ange något som mysqlserver12345, så kan du använda portalen för att se om den är tillgänglig eller inte.
+   - **Inloggning för Server administratör**: ange *azureuser*.
+   - **Lösen ord**: Ange ett lösen ord som uppfyller kraven och ange det igen i fältet **Bekräfta lösen ord** .
+   - **Plats**: Välj en plats i list rutan.
 
-   Välj **OK** .
+   Välj **OK**.
 
-1. Om **du inte vill använda elastisk SQL-pool** väljer du **Nej** .
-1. Under **Beräkning och lagring** väljer du **Konfigurera databas** .
-1. Den här snabb starten använder en server lös databas, så välj **Server** lös, och välj sedan **Använd** . 
+1. Om **du inte vill använda elastisk SQL-pool** väljer du **Nej**.
+1. Under **Beräkning och lagring** väljer du **Konfigurera databas**.
+1. Den här snabb starten använder en server lös databas, så välj **Server** lös, och välj sedan **Använd**. 
 
       ![Konfigurera Server lös databas](./media/single-database-create-quickstart/configure-database.png)
 
@@ -62,19 +62,19 @@ Om du vill skapa en enskild databas i Azure Portal den här snabb starten starta
 
    ![Ny SQL-databas – fliken grundläggande](./media/single-database-create-quickstart/new-sql-database-basics.png)
 
-1. På fliken **nätverk** , för **anslutnings metod** , väljer du **offentlig slut punkt** .
-1. För **brand Väggs regler** anger du **Lägg till aktuell klient-IP-adress** till **Ja** . Lämna **Tillåt att Azure-tjänster och-resurser har åtkomst till den här servern** **.**
+1. På fliken **nätverk** , för **anslutnings metod**, väljer du **offentlig slut punkt**.
+1. För **brand Väggs regler** anger du **Lägg till aktuell klient-IP-adress** till **Ja**. Lämna **Tillåt att Azure-tjänster och-resurser har åtkomst till den här servern** **.**
 1. Välj **Nästa: ytterligare inställningar** längst ned på sidan.
 
    ![Fliken nätverk](./media/single-database-create-quickstart/networking.png)
   
 
-1. På fliken **ytterligare inställningar** , i avsnittet **data källa** , för att **använda befintliga data** , väljer du **exempel** . Detta skapar en AdventureWorksLT-exempel databas så att det finns några tabeller och data att fråga och experimentera med, i stället för en tom tom databas.
+1. På fliken **ytterligare inställningar** , i avsnittet **data källa** , för att **använda befintliga data**, väljer du **exempel**. Detta skapar en AdventureWorksLT-exempel databas så att det finns några tabeller och data att fråga och experimentera med, i stället för en tom tom databas.
 1. Välj **Granska + skapa** längst ned på sidan:
 
    ![Fliken Ytterligare inställningar](./media/single-database-create-quickstart/additional-settings.png)
 
-1. På sidan **Granska och skapa** efter granskning väljer du **skapa** .
+1. På sidan **Granska och skapa** efter granskning väljer du **skapa**.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -258,11 +258,11 @@ När databasen har skapats kan du använda **Frågeredigeraren (förhands gransk
 
 1. I portalen söker du efter och väljer **SQL-databaser** och väljer sedan din databas i listan.
 1. På sidan för din databas väljer du **Frågeredigeraren (för hands version)** på den vänstra menyn.
-1. Ange inloggnings information för Server administratören och välj **OK** .
+1. Ange inloggnings information för Server administratören och välj **OK**.
 
    ![Logga in på Frågeredigeraren](./media/single-database-create-quickstart/query-editor-login.png)
 
-1. Skriv följande fråga i fönstret **Frågeredigeraren** .
+1. Skriv följande fråga i fönstret **Frågeredigeraren**.
 
    ```sql
    SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
@@ -271,7 +271,7 @@ När databasen har skapats kan du använda **Frågeredigeraren (förhands gransk
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-1. Välj **Kör** och granska sedan frågeresultaten i fönstret **Resultat** .
+1. Välj **Kör** och granska sedan frågeresultaten i fönstret **Resultat**.
 
    ![Resultat från Frågeredigeraren](./media/single-database-create-quickstart/query-editor-results.png)
 
@@ -288,8 +288,8 @@ När du är klar med de här resurserna kan du ta bort resurs gruppen som du ska
 Så här tar du bort **myResourceGroup** och alla dess resurser med hjälp av Azure Portal:
 
 1. I portalen söker du efter och väljer **resurs grupper** och väljer sedan **myResourceGroup** i listan.
-1. På sidan resurs grupp väljer du **ta bort resurs grupp** .
-1. Under **Ange resurs gruppens namn** skriver du *myResourceGroup* och väljer sedan **ta bort** .
+1. På sidan resurs grupp väljer du **ta bort resurs grupp**.
+1. Under **Ange resurs gruppens namn** skriver du *myResourceGroup* och väljer sedan **ta bort**.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

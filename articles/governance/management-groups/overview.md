@@ -3,13 +3,13 @@ title: Organisera dina resurser med hanterings grupper – Azure-styrning
 description: Läs om hanteringsgrupperna, hur behörigheterna fungerar och hur du använder dem.
 ms.date: 11/17/2020
 ms.topic: overview
-ms.custom: contperfq1
-ms.openlocfilehash: c48361e7f3d67c6d3eec40d5acb47917f7835db5
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 9f23a279733169f17f0f82cb80aa08bfafcd45d0
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699601"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030679"
 ---
 # <a name="what-are-azure-management-groups"></a>Vad är hanteringsgrupper i Azure?
 

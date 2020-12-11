@@ -6,14 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.date: 06/21/2019
-ms.openlocfilehash: 6353fe988b9b94c27ab777741bf63d3869579d9e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 8d591bb9c4b2ef8100946082f19115b99b30dde1
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124449"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027500"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Konfigurera aviseringar för Azure Stream Analytics jobb
 
@@ -30,15 +30,15 @@ I följande exempel visas hur du konfigurerar aviseringar för när jobbet över
 
 2. Gå till avsnittet **övervakning** på sidan **jobb** .  
 
-3. Välj **mått** och sedan **ny varnings regel** .
+3. Välj **mått** och sedan **ny varnings regel**.
 
    ![Installation av Azure Portal Stream Analytics-varningar](./media/stream-analytics-set-up-alerts/stream-analytics-set-up-alerts.png)  
 
-4. Ditt Stream Analytics jobb namn ska visas automatiskt under **resurs** . Klicka på **Lägg till villkor** och välj **alla administrativa åtgärder** under **Konfigurera signal logik** .
+4. Ditt Stream Analytics jobb namn ska visas automatiskt under **resurs**. Klicka på **Lägg till villkor** och välj **alla administrativa åtgärder** under **Konfigurera signal logik**.
 
    ![Välj signal namn för Stream Analytics avisering](./media/stream-analytics-set-up-alerts/stream-analytics-condition-signal.png)  
 
-5. Under **Konfigurera signal logik** , ändra **händelse nivå** till **alla** och ändra **status** till **misslyckades** . Lämna **händelsen som initierad av** tomt och välj **färdig** .
+5. Under **Konfigurera signal logik**, ändra **händelse nivå** till **alla** och ändra **status** till **misslyckades**. Lämna **händelsen som initierad av** tomt och välj **färdig**.
 
    ![Konfigurera signal logik för Stream Analytics avisering](./media/stream-analytics-set-up-alerts/stream-analytics-configure-signal-logic.png) 
 
@@ -46,11 +46,11 @@ I följande exempel visas hur du konfigurerar aviseringar för när jobbet över
 
    ![Konfigurera en avisering för ett Azure streaming Analytics-jobb](./media/stream-analytics-set-up-alerts/stream-analytics-add-group-email-action.png)
 
-7. **Resurs** , **villkor** och **Åtgärds grupper** måste ha en post. Observera att de villkor som definierats måste uppfyllas för att aviseringarna ska kunna utlösas. Du kan till exempel mäta medelvärdet för ett mått för de senaste 15 minuterna, var femte minut.
+7. **Resurs**, **villkor** och **Åtgärds grupper** måste ha en post. Observera att de villkor som definierats måste uppfyllas för att aviseringarna ska kunna utlösas. Du kan till exempel mäta medelvärdet för ett mått för de senaste 15 minuterna, var femte minut.
 
    ![Skärm bild som visar dialog rutan skapa regel med resurs, villkor och ÅTGÄRDs grupp.](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
 
-   Lägg till en **varnings regel namn** , **Beskrivning** och din **resurs grupp** i **aviserings informationen** och klicka på **skapa aviserings regel** för att skapa regeln för ditt Stream Analytics jobb.
+   Lägg till en **varnings regel namn**, **Beskrivning** och din **resurs grupp** i **aviserings informationen** och klicka på **skapa aviserings regel** för att skapa regeln för ditt Stream Analytics jobb.
 
    ![Skärm bild som visar dialog rutan skapa regel med AVISERINGs information.](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
    
@@ -58,7 +58,7 @@ I följande exempel visas hur du konfigurerar aviseringar för när jobbet över
 
 Följande aviseringar rekommenderas för att övervaka Stream Analytics jobbets prestanda. Dessa mått bör utvärderas varje minut under den senaste 5-minuters perioden.
 
-|Mått|Condition (Väderförhållanden)|Tids mängd|Tröskelvärde|Korrigerande åtgärder|
+|Mått|Villkor|Tids mängd|Tröskelvärde|Korrigerande åtgärder|
 |-|-|-|-|-|
 |SU%-användning|Större än|Maximal|80|Det finns flera faktorer som ökar SU-användningen. Du kan skala med Query parallellisering eller öka antalet enheter för strömning. Mer information finns i [Utnyttja frågeparallellisering i Azure Stream Analytics](stream-analytics-parallelization.md).|
 |Körnings fel|Större än|Totalt|0|Granska aktivitets-eller resurs loggarna och gör lämpliga ändringar i indata, frågor eller utdata.|

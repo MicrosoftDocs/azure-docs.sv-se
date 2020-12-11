@@ -10,13 +10,13 @@ ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
-ms.custom: contperfq4, tracking-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: fcaf8f62dcdc43a48ff2ae7ff790ac14ab42e8b6
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
+ms.openlocfilehash: ba5dd0ccc06a443378f87cfb92da76616ad67263
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532898"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029523"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Skydda en Azure Machine Learning inferencing-miljö med virtuella nätverk
 
@@ -36,7 +36,7 @@ I den här artikeln får du lära dig att skydda följande inferencing-resurser 
 > - Azure Container Instances (ACI)
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 + Läs artikeln [Översikt över nätverks säkerhet](how-to-network-security-overview.md) för att förstå vanliga scenarier för virtuella nätverk och övergripande arkitektur för virtuella nätverk.
 

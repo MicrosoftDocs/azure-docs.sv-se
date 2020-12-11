@@ -1,20 +1,20 @@
 ---
-title: 'Snabb start: skapa din första statiska webbapp med Azures statiska Web Apps'
-description: Lär dig att bygga en Azure-statisk Web Apps webbplats.
+title: 'Snabb start: skapa din första statiska plats med Azures statiska Web Apps'
+description: Lär dig att distribuera en statisk plats till Azure static Web Apps.
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: a78f74b4aadd26af141ed84ca99a092693f56af5
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 226e8ca6848fc2e29b73a2586f37965c0a031b19
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369570"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030475"
 ---
-# <a name="quickstart-building-your-first-static-web-app"></a>Snabb start: skapa din första statiska webbapp
+# <a name="quickstart-building-your-first-static-site-with-azure-static-web-apps"></a>Snabb start: skapa din första statiska plats med Azures statiska Web Apps
 
 Azures statiska Web Apps publicerar en webbplats i en produktions miljö genom att bygga appar från en GitHub-lagringsplats. I den här snabb starten distribuerar du ett webb program till Azures statiska webbappar med Visual Studio Code-tillägget.
 

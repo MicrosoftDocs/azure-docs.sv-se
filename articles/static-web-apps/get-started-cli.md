@@ -1,20 +1,20 @@
 ---
-title: 'Snabb start: skapa din första statiska webbapp med Azures statiska Web Apps med Azure CLI'
-description: Lär dig att bygga en statisk Azure-Web Apps instans med Azures statiska Web Apps CLI.
+title: 'Snabb start: skapa din första statiska plats med Azures statiska Web Apps med hjälp av CLI'
+description: Lär dig att distribuera en statisk plats till Azures statiska Web Apps med Azure CLI.
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: ed49892284b53844c5c578b752a598cdbdd9b946
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ca05194c0d8e63290a9cab8d9f7903daa192069b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320332"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030356"
 ---
-# <a name="quickstart-building-your-first-static-web-app-using-the-azure-cli"></a>Snabb start: skapa din första statiska webbapp med Azure CLI
+# <a name="quickstart-building-your-first-static-site-using-the-azure-cli"></a>Snabb start: skapa din första statiska plats med Azure CLI
 
 Azures statiska Web Apps publicerar en webbplats i en produktions miljö genom att bygga appar från en GitHub-lagringsplats. I den här snabb starten distribuerar du ett webb program till Azures statiska webb program med hjälp av Azure CLI.
 
@@ -109,7 +109,7 @@ Nu när du har skapat databasen kan du skapa en statisk webbapp från Azure CLI.
 
     - `<YOUR_GITHUB_ACCOUNT_NAME>`: Ersätt det här värdet med ditt GitHub-användarnamn.
 
-    - `<LOCATION>`: Ersätt det här värdet med platsen närmast dig. Alternativen är: _Central_, _asienöstra_, _EastUS2_, _WestEurope_och _WestUS2_.
+    - `<LOCATION>`: Ersätt det här värdet med platsen närmast dig. Alternativen är: _Central_, _asienöstra_, _EastUS2_, _WestEurope_ och _WestUS2_.
 
     - `<YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>`: Ersätt det här värdet med [GitHub-personliga](https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token) åtkomsttoken som du skapade tidigare.
 

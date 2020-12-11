@@ -10,20 +10,20 @@ ms.subservice: team-data-science-process
 ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: 44b5baa074b62a072873d8097de184a2813b54ec
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
+ms.openlocfilehash: 7cf97edcb2f2f7a23d5c899194d497deade1f507
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322021"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031869"
 ---
 # <a name="feature-engineering-in-data-science"></a>Funktions teknik i data vetenskap
 
 I den här artikeln får du lära dig mer om funktions teknik och dess roll i att förbättra data i Machine Learning. Lär dig mer om exempel som ritats från [Azure Machine Learning Studio (klassiska)](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) experiment. 
 
-* **Funktions teknik** : processen för att skapa nya funktioner från rå data för att öka den förutsägande kraften hos inlärnings algoritmen. De funktioner som är tillverkade bör fånga ytterligare information som inte är lätt att hitta i den ursprungliga funktions uppsättningen.
-* **Val av funktion** : processen att välja en nyckel del uppsättning av funktioner för att minska inlärnings problemets dimensionalitet.
+* **Funktions teknik**: processen för att skapa nya funktioner från rå data för att öka den förutsägande kraften hos inlärnings algoritmen. De funktioner som är tillverkade bör fånga ytterligare information som inte är lätt att hitta i den ursprungliga funktions uppsättningen.
+* **Val av funktion**: processen att välja en nyckel del uppsättning av funktioner för att minska inlärnings problemets dimensionalitet.
 
 Normalt implementeras **funktions teknik** först för att generera ytterligare funktioner, och **funktions val** görs för att eliminera irrelevanta, redundanta eller mycket korrelerade funktioner.
 

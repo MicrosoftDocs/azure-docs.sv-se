@@ -6,13 +6,13 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 09/17/2020
-ms.custom: contperfq1
-ms.openlocfilehash: 67abcea1b5d7657ffcd342d4cddb9a96bdd8c63a
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 2579326e92144149472874611b5307920a93c049
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030891"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031444"
 ---
 # <a name="command-line-and-powershell-reference-for-azure-cosmos-db-emulator"></a>Kommando rads-och PowerShell-referens för Azure Cosmos DB emulator
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -144,7 +144,7 @@ Kör följande steg för att ändra antalet behållare som är tillgängliga i A
 
 1. Installera den senaste versionen av [Azure Cosmos DB-emulatorn](https://aka.ms/cosmosdb-emulator).
 
-1. Starta emulatorn med PartitionCount-flaggan genom att ställa in ett värde <= 250. Till exempel: `C:\Program Files\Azure Cosmos DB Emulator> Microsoft.Azure.Cosmos.Emulator.exe /PartitionCount=100`.
+1. Starta emulatorn med PartitionCount-flaggan genom att ställa in ett värde <= 250. Exempel: `C:\Program Files\Azure Cosmos DB Emulator> Microsoft.Azure.Cosmos.Emulator.exe /PartitionCount=100`.
  
 ## <a name="next-steps"></a>Nästa steg
 

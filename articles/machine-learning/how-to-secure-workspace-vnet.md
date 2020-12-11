@@ -10,13 +10,13 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 8082694b9f08023653d47e1f7fb442219cf8b475
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, contperf-fy20q4, tracking-python, contperf-fy21q1
+ms.openlocfilehash: 07b8c130a2a22554e4cd5b33996d5a5ee967d47f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316704"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029540"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Skydda en Azure Machine Learning arbets yta med virtuella nätverk
 

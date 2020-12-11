@@ -11,13 +11,13 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.custom: contperfq4
-ms.openlocfilehash: 964cd77a24a7a73bf1151ba9e6ab43509e664b9f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.custom: contperf-fy20q4
+ms.openlocfilehash: 209125a5cc8d86c1af07966d52681aa91ea7dc19
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743079"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027007"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Konfigurera inställningar för Azure AD-Multi-Factor Authentication
 
@@ -50,7 +50,7 @@ Följande inställningar är tillgängliga:
 Konfigurera utelåsnings inställningarna för kontot genom att utföra följande inställningar:
 
 1. Logga in på [Azure Portal](https://portal.azure.com) som administratör.
-1. Bläddra till **Azure Active Directory**  >  **säkerhets**  >  **MFA**  >  **konto utelåsning** för MFA.
+1. Bläddra till **Azure Active Directory**  >  **säkerhets**  >    >  **konto utelåsning** för MFA.
 1. Ange de krävda värdena för din miljö och välj sedan **Spara**.
 
     ![Skärm bild av inställningarna för konto utelåsning i Azure Portal](./media/howto-mfa-mfasettings/account-lockout-settings.png)
@@ -100,7 +100,7 @@ Utför följande steg för att aktivera och konfigurera bedrägeri aviseringar:
 
 ### <a name="view-fraud-reports"></a>Visa bedrägerier-rapporter
 
-Välj **Azure Active Directory**  >  **Sign-ins**  >  **information om** Azure Active Directory inloggningar. Bedrägeri rapporten är nu en del av standard rapporten för Azure AD-inloggningar och visas i **"resultat information"** som MFA nekad, bedrägeri kod angiven.
+Välj   >    >  **information om** Azure Active Directory inloggningar. Bedrägeri rapporten är nu en del av standard rapporten för Azure AD-inloggningar och visas i **"resultat information"** som MFA nekad, bedrägeri kod angiven.
  
 ## <a name="notifications"></a>Meddelanden
 
@@ -229,7 +229,7 @@ Utför följande steg för att använda dina egna anpassade meddelanden:
 
 Inställningar för applösenord, tillförlitliga IP-adresser, verifierings alternativ och kom ihåg Multi-Factor Authentication för Azure AD Multi-Factor Authentication finns i tjänst inställningar. Detta är mer av en äldre Portal och ingår inte i den vanliga Azure AD-portalen.
 
-Du kan komma åt tjänst inställningar från Azure Portal genom att bläddra till **Azure Active Directory**  >  **Security**  >  **säkerhetsmfa**  >  **komma igång**  >  **Konfigurera**  >  **ytterligare molnbaserade MFA-inställningar**. Ett nytt fönster eller en ny flik öppnas med ytterligare alternativ för *tjänst inställningar* .
+Du kan komma åt tjänst inställningar från Azure Portal genom att bläddra till **Azure Active Directory**  >    >  **säkerhetsmfa**  >  **komma igång**  >  **Konfigurera**  >  **ytterligare molnbaserade MFA-inställningar**. Ett nytt fönster eller en ny flik öppnas med ytterligare alternativ för *tjänst inställningar* .
 
 ## <a name="trusted-ips"></a>Tillförlitliga IP-adresser
 
@@ -263,7 +263,7 @@ Oavsett om betrodd IP definieras krävs Multi-Factor Authentication för webb l�
 
 Du kan använda regler för villkorlig åtkomst för att definiera namngivna platser med hjälp av följande steg:
 
-1. I Azure Portal söker du efter och väljer **Azure Active Directory** och bläddrar sedan till **Security**  >  **Conditional Access**  >  **namngivna platser** för säkerhets villkorlig åtkomst.
+1. I Azure Portal söker du efter och väljer **Azure Active Directory** och bläddrar sedan till   >    >  **namngivna platser** för säkerhets villkorlig åtkomst.
 1. Välj **ny plats**.
 1. Ange ett namn på platsen.
 1. Välj **Markera som betrodd plats**.
@@ -274,7 +274,7 @@ Du kan använda regler för villkorlig åtkomst för att definiera namngivna pla
 
 Utför följande steg för att aktivera betrodda IP-adresser med villkorliga åtkomst principer:
 
-1. I Azure Portal söker du efter och väljer **Azure Active Directory** och bläddrar sedan till **Security**  >   **Conditional Access**  >  **namngivna platser** för säkerhets villkorlig åtkomst.
+1. I Azure Portal söker du efter och väljer **Azure Active Directory** och bläddrar sedan till   >     >  **namngivna platser** för säkerhets villkorlig åtkomst.
 1. Välj **Konfigurera MFA-betrodda IP-adresser**.
 1. På sidan **tjänst inställningar** under **betrodda IP-adresser** väljer du något av följande två alternativ:
 

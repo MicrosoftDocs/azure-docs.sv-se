@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.date: 08/21/2020
-ms.openlocfilehash: 657c29b79c98adf1041c49c0315edfd4e9363a36
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 7f4d820b33f36c295c294000d33a0ca5177fc4d1
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91804069"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028078"
 ---
 # <a name="what-is-azure-hdinsight"></a>Vad är Azure HDInsight?
 
@@ -79,7 +79,7 @@ Med HDInsight kan du utöka din befintliga lokala infrastruktur för stordata ti
 
 HDInsight omfattar specifika klustertyper och anpassningsmöjligheter för klustret, till exempel funktioner för att lägga till komponenter, verktyg och språk. HDInsight erbjuder följande klustertyper:
 
-|Typ av kluster | Beskrivning |
+|Typ av kluster | Description |
 |---|---|
 |[Apache Hadoop](./hadoop/apache-hadoop-introduction.md)|Ett ramverk som använder HDFS, YARN-resurshantering och en enkel MapReduce-programmeringsmodell för att behandla och analysera batchdata parallellt.|
 |[Apache Spark](./spark/apache-spark-overview.md)|Ett ramverk för parallellbearbetning med öppen källkod som stöder intern bearbetning för att höja prestandan hos program för stordataanalys. Se [Vad är Apache Spark i HDInsight?](./spark/apache-spark-overview.md).|

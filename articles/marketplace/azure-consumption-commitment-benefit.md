@@ -7,13 +7,13 @@ ms.topic: article
 author: emuench
 ms.author: mingshen
 ms.date: 10/15/2020
-ms.custom: contperfq2
-ms.openlocfilehash: c4fdf8e986b9c98588689a57bde8ca9464667abe
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: aeee13152364c31d82f674df784a27114035a041
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129549"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028554"
 ---
 # <a name="azure-consumption-commitment-benefit"></a>Azure-förbrukningsåtagandeförmån
 
@@ -45,10 +45,10 @@ Om du är osäker på om din organisation har ett kvalificerings avtal loggar du
  
 3. Erbjudanden blir märkta med Azure- **förmånen** för att ytterligare ange att de program-och IP-kostnader som är kopplade till det här erbjudandet bidrar till din organisations engagemang i Azure-konsumtionen på alla Azure-tjänster som faktureras till din organisation.
 
-    :::image type="content" source="media/azure-benefit/azure-benefit-eligible-badge.png" alt-text="Azure Benefits-berättigade Badge.&quot;:::
+    :::image type="content" source="media/azure-benefit/azure-benefit-eligible-badge.png" alt-text="Azure Benefits-berättigade Badge.":::
 
    > [!NOTE]
-   > Microsoft Azure tjänster som debiteras din organisation via en distribution av Azure Marketplace bidrar till att bidra till din organisations engagemang. Den extra fördelen med erbjudanden för &quot;Azure-förmån" är att program vara/IP-kostnader som skickas via tredje parts leverantör kommer också att bidra till 100% av din Azure Marketplace-faktura.
+   > Microsoft Azure tjänster som debiteras din organisation via en distribution av Azure Marketplace bidrar till att bidra till din organisations engagemang. Den extra fördelen med erbjudanden för "Azure-förmån" är att program vara/IP-kostnader som skickas via tredje parts leverantör kommer också att bidra till 100% av din Azure Marketplace-faktura.
 
 4. Köp/skapa erbjudandet direkt via Azure Marketplace. Microsoft kommer att bidra 100% av kvalificerings erbjudanden till din organisations åtagande för Azure-förbrukning vid varje faktura period, inklusive program vara/IP-kostnader.
 

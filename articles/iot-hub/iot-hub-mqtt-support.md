@@ -12,15 +12,15 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-- contperfq1
+- contperf-fy21q1
 - fasttrack-edit
 - iot
-ms.openlocfilehash: 4e06edaf6323c13b3a5af037b5b85b5b0acecc79
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: d206f40380ddb60a53ec8af2802a65af94f5820d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505656"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027806"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunicera med IoT-hubben med MQTT-protokollet
 
@@ -81,11 +81,11 @@ För att säkerställa att en klient-IoT Hub anslutning förblir aktiv skickar b
 
 |Språk  |Standard intervall för Keep-Alive  |Konfigurerbar  |
 |---------|---------|---------|
-|Node.js     |   180 sekunder      |     Inga    |
-|Java     |    230 sekunder     |     Inga    |
+|Node.js     |   180 sekunder      |     No    |
+|Java     |    230 sekunder     |     No    |
 |C     | 240 sekunder |  [Ja](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
 |C#     | 300 sekunder |  [Ja](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
-|Python   | 60 sekunder |  Inga   |
+|Python   | 60 sekunder |  No   |
 
 I [MQTT-specifikationen](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)är IoT Hub Keep-Alive-pingverktyget 1,5 gånger klienten Keep-Alive-värde. IoT Hub begränsar dock den maximala tids gränsen på Server sidan till 29,45 minuter (1767 sekunder) eftersom alla Azure-tjänster är kopplade till Azure Load Balancer TCP timeout för inaktivitet, som är 29,45 minuter. 
 
@@ -145,7 +145,7 @@ Om en enhet inte kan använda enhets-SDK: erna kan den fortfarande ansluta till 
 
 * För fältet **username** använder du `{iothubhostname}/{device_id}/?api-version=2018-06-30` , där `{iothubhostname}` är det fullständiga CNAME för IoT Hub.
 
-    Om namnet på din IoT Hub t. ex. är **contoso.Azure-Devices.net** och om namnet på enheten är **MyDevice01** , ska fältet fullständigt **användar namn** innehålla:
+    Om namnet på din IoT Hub t. ex. är **contoso.Azure-Devices.net** och om namnet på enheten är **MyDevice01**, ska fältet fullständigt **användar namn** innehålla:
 
     `contoso.azure-devices.net/MyDevice01/?api-version=2018-06-30`
 
@@ -296,7 +296,7 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 Följande är en lista över IoT Hub implementations-speciella beteenden:
 
-* IoT Hub stöder inte QoS 2-meddelanden. Om en enhets app publicerar ett meddelande med **QoS 2** , stänger IoT Hub nätverks anslutningen.
+* IoT Hub stöder inte QoS 2-meddelanden. Om en enhets app publicerar ett meddelande med **QoS 2**, stänger IoT Hub nätverks anslutningen.
 
 * IoT Hub bevarar inte Kvarhåll meddelanden. Om en enhet skickar ett meddelande med flaggan **Behåll** flagga inställd på IoT Hub 1 läggs **MQTT** till i meddelandet. I det här fallet i stället för att behålla det kvarhållna meddelandet skickar IoT Hub det till backend-appen.
 
@@ -311,23 +311,23 @@ Om du vill ta emot meddelanden från IoT Hub bör en enhet prenumerera på `devi
 
 Enheten får inga meddelanden från IoT Hub förrän den har prenumererat på den enhetsspecifika slut punkten som representeras av `devices/{device_id}/messages/devicebound/#` ämnes filtret. När en prenumeration har upprättats tar enheten emot meddelanden från molnet till enheten som skickades till den efter prenumerations tiden. Om enheten ansluter med flaggan **CleanSession** inställd på **0** behålls prenumerationen mellan olika sessioner. I det här fallet, nästa gången enheten ansluter med **CleanSession 0** , tar den emot eventuella väntande meddelanden som skickas till den medan den kopplades från. Om enheten använder **CleanSession** -flaggan inställd på **1** , tar den inte emot några meddelanden från IoT Hub förrän den prenumererar på sin enhets slut punkt.
 
-IoT Hub levererar meddelanden med **ämnes namnet** `devices/{device_id}/messages/devicebound/` eller `devices/{device_id}/messages/devicebound/{property_bag}` när det finns meddelande egenskaper. `{property_bag}` innehåller URL-kodade nyckel/värde-par med meddelande egenskaper. Endast program egenskaper och system egenskaper som kan anges av användaren (till exempel **messageId** eller **correlationId** ) ingår i egenskaps uppsättningen. System egenskaps namn har prefixet **$** , program egenskaperna använder det ursprungliga egenskaps namnet utan prefix. Mer information om formatet för egenskaps uppsättningen finns i [skicka meddelanden från enhet till moln](#sending-device-to-cloud-messages).
+IoT Hub levererar meddelanden med **ämnes namnet** `devices/{device_id}/messages/devicebound/` eller `devices/{device_id}/messages/devicebound/{property_bag}` när det finns meddelande egenskaper. `{property_bag}` innehåller URL-kodade nyckel/värde-par med meddelande egenskaper. Endast program egenskaper och system egenskaper som kan anges av användaren (till exempel **messageId** eller **correlationId**) ingår i egenskaps uppsättningen. System egenskaps namn har prefixet **$** , program egenskaperna använder det ursprungliga egenskaps namnet utan prefix. Mer information om formatet för egenskaps uppsättningen finns i [skicka meddelanden från enhet till moln](#sending-device-to-cloud-messages).
 
 I meddelanden från moln till enhet visas värdena i egenskaps uppsättningen som i följande tabell:
 
-| Egenskaps värde | Bilden | Beskrivning |
+| Egenskaps värde | Bilden | Description |
 |----|----|----|
 | `null` | `key` | Endast nyckeln visas i egenskaps uppsättningen |
 | tom sträng | `key=` | Nyckeln följt av ett likhets tecken utan värde |
 | icke-null, icke-tomt värde | `key=value` | Nyckeln följt av ett likhets tecken och värdet |
 
-I följande exempel visas en egenskaps uppsättning som innehåller tre program egenskaper: **prop1** med värdet `null` ; **prop2** , en tom sträng (""); och **prop3** med värdet "en sträng".
+I följande exempel visas en egenskaps uppsättning som innehåller tre program egenskaper: **prop1** med värdet `null` ; **prop2**, en tom sträng (""); och **prop3** med värdet "en sträng".
 
 ```mqtt
 /?prop1&prop2=&prop3=a%20string
 ```
 
-När en enhets app prenumererar på ett ämne med **QoS 2** , tilldelar IoT Hub högsta QoS-nivå 1 i **SUBACK** -paketet. Därefter levererar IoT Hub meddelanden till enheten med QoS 1.
+När en enhets app prenumererar på ett ämne med **QoS 2**, tilldelar IoT Hub högsta QoS-nivå 1 i **SUBACK** -paketet. Därefter levererar IoT Hub meddelanden till enheten med QoS 1.
 
 ## <a name="retrieving-a-device-twins-properties"></a>Hämta en enhets dubbla egenskaper
 
@@ -355,7 +355,7 @@ Möjliga status koder är:
 
 |Status | Beskrivning |
 | ----- | ----------- |
-| 200 | Klart |
+| 200 | Success |
 | 429 | För många begär Anden (begränsas) enligt [IoT Hub begränsning](iot-hub-devguide-quotas-throttling.md) |
 | 5 * * | Serverfel |
 

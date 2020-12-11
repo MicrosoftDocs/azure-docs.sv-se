@@ -7,13 +7,13 @@ ms.date: 11/10/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: contperfq2
-ms.openlocfilehash: 55607527ced2e5d93a61cfd85477758482f18daa
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: b0a86a32148086a3b644d0bf147d12be0d812536
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95495431"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030323"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Installera och använda Azure IoT Explorer
 
@@ -28,7 +28,7 @@ Mer allmän information om hur du använder verktyget finns i Readme- [filen](ht
 
 Om du vill använda Azure IoT Explorer-verktyget behöver du:
 
-- En Azure IoT-hubb. Det finns många sätt att lägga till en IoT-hubb i din Azure-prenumeration, till exempel [skapa en IoT-hubb med hjälp av Azure CLI](../iot-hub/iot-hub-create-using-cli.md). Du behöver den IoT Hub-anslutningssträngen för att köra Azure IoT Explorer-verktyget. Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+- En Azure IoT-hubb. Det finns många sätt att lägga till en IoT-hubb i din Azure-prenumeration, till exempel [skapa en IoT-hubb med hjälp av Azure CLI](../iot-hub/iot-hub-create-using-cli.md). Du behöver den IoT Hub-anslutningssträngen för att köra Azure IoT Explorer-verktyget. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 - En enhet som är registrerad i IoT Hub. Du kan använda IoT Explorer för att skapa och hantera enhets registreringar i IoT Hub.
 
 ## <a name="install-azure-iot-explorer"></a>Installera Azure IoT Explorer

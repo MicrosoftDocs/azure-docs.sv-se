@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 11/05/2020
 ms.topic: conceptual
-ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperfq2
-ms.openlocfilehash: a9bf03fd59e6088ce1c1b09a41b2bf55d1f45455
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperf-fy21q2
+ms.openlocfilehash: 27c8a0b80068124613af15565f387f15ac6b8e57
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532966"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027262"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Konfigurera autentisering för Azure Machine Learning-resurser och -arbetsflöden
 
@@ -32,7 +32,7 @@ Lär dig hur du konfigurerar autentisering till din Azure Machine Learning-arbet
 > [!IMPORTANT]
 > Oavsett vilket arbets flöde för autentisering som används, används Azures rollbaserade åtkomst kontroll (Azure RBAC) för att begränsa den åtkomst nivå som tillåts för resurserna. En administratörs-eller Automation-process kan till exempel ha åtkomst för att skapa en beräknings instans, men inte använda den, medan en data expert kan använda den, men inte ta bort eller skapa den. Mer information finns i [Hantera åtkomst till Azure Machine Learning-arbetsyta](how-to-assign-roles.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Skapa en [Azure Machine Learning-arbetsyta](how-to-manage-workspace.md).
 * [Konfigurera utvecklings miljön](how-to-configure-environment.md) för att installera Azure Machine Learning SDK eller använd en [Azure Machine Learning beräknings instans](concept-azure-machine-learning-architecture.md#compute-instance) med SDK redan installerad.

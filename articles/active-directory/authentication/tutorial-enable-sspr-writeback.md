@@ -10,13 +10,13 @@ ms.author: justinha
 author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.custom: contperfq4
-ms.openlocfilehash: fc5291544f1cd64caa7e4ab1dd7d541604706920
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.custom: contperf-fy20q4
+ms.openlocfilehash: 444ca19732921b336cae32a9b1eb5755a08e4bd3
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741175"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028061"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Självstudie: Aktivera Azure Active Directory självbetjäning för återställning av lösen ord till en lokal miljö
 
@@ -71,7 +71,7 @@ Utför följande steg för att ställa in rätt behörigheter för tillbakaskriv
 
 1. I din lokala AD DS-miljö öppnar du **Active Directory användare och datorer** med ett konto som har rätt *domän administratörs* behörighet.
 1. I menyn **Visa** ser du till att **avancerade funktioner** är aktiverade.
-1. I den vänstra rutan högerklickar du på det objekt som representerar roten för domänen och väljer **Egenskaper**  >  **Security**  >  **Avancerad** säkerhet.
+1. I den vänstra rutan högerklickar du på det objekt som representerar roten för domänen och väljer **Egenskaper**  >    >  **Avancerad** säkerhet.
 1. På fliken **behörigheter** väljer du **Lägg till**.
 1. För **huvud** konto väljer du det konto som behörigheter ska tillämpas på (kontot som används av Azure AD Connect).
 1. I list rutan **gäller väljer du** **underordnade användar objekt**.

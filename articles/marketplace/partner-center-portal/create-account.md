@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 11/02/2020
 author: parthpandyaMSFT
 ms.author: parthp
-ms.custom: contperfq2
-ms.openlocfilehash: 39a9b363c847b615bfbe049b4b47628e8688c607
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: d88e2b18d4e4f9df0606832356e383aaaf51cf73
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458124"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028452"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Skapa ett kommersiellt marknads plats konto i Partner Center
 

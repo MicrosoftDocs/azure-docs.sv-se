@@ -3,13 +3,13 @@ title: Analysera Azure Functions telemetri i Application Insights
 description: Lär dig att visa och fråga efter Azure Functions telemetridata som samlas in av och lagras i Azure Application insikter.
 ms.topic: how-to
 ms.date: 10/14/2020
-ms.custom: contperfq2
-ms.openlocfilehash: 9091d59cbc3a4cf841e28505531c89c83e705c46
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 1d8d9cc9a7a4111e98b1d9141957769d6f157d45
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217311"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027738"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>Analysera Azure Functions telemetri i Application Insights 
 
@@ -50,7 +50,7 @@ Mer information finns i [query telemetri-data](#query-telemetry-data) senare i d
 
 1. Välj **Application Insights** under **Inställningar** på den vänstra sidan. 
 
-1. Om det här är första gången du använder Application Insights med din prenumeration uppmanas du att aktivera den. Om du vill göra det väljer du **aktivera Application Insights**och väljer sedan **Använd** på nästa sida.
+1. Om det här är första gången du använder Application Insights med din prenumeration uppmanas du att aktivera den. Om du vill göra det väljer du **aktivera Application Insights** och väljer sedan **Använd** på nästa sida.
 
 ![Öppna Application Insights från översikts sidan för Function-appen](media/functions-monitoring/ai-link.png)
 
@@ -61,12 +61,12 @@ Information om hur du använder Application Insights finns i Application Insight
 Följande områden i Application Insights kan vara användbara när du ska utvärdera beteende, prestanda och fel i dina funktioner:
 
 | Undersök
- | Beskrivning |
+ | Description |
 | ---- | ----------- |
 | **[Fel](../azure-monitor/app/asp-net-exceptions.md)** |  Skapa diagram och aviseringar baserat på funktions fel och Server undantag. **Åtgärds namnet** är funktions namnet. Felen i beroenden visas inte om du inte implementerar anpassad telemetri för beroenden. |
 | **[Prestanda](../azure-monitor/app/performance-counters.md)** | Analysera prestanda problem genom att Visa resursutnyttjande och data flöde per **moln roll instanser**. Dessa prestanda data kan vara användbara för fel sökning av scenarier där funktioner bogging de underliggande resurserna. |
 | **[Mått](../azure-monitor/platform/metrics-charts.md)** | Skapa diagram och aviseringar som baseras på mått. Mått inkluderar antalet funktions anrop, körnings tid och lyckade kostnader. |
-| **[Live-mått    ](../azure-monitor/app/live-stream.md)** | Visa mått data när de skapas i nära real tid. |
+| **[Live-mått](../azure-monitor/app/live-stream.md)** | Visa mått data när de skapas i nära real tid. |
 
 ## <a name="query-telemetry-data"></a>Fråga telemetri-data
 

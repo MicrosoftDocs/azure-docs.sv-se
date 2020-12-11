@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/07/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: ab8942b473ad980da22d451116bea6a759aeb461
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 0398056c3182ec50a1ec170f64ff079633f70c68
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95995122"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030560"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Snabbstart: Anropa Microsoft Graph API från en UWP-app (Universell Windows-plattform)
 
@@ -40,20 +40,19 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Alternativ 1: Registrera och konfigurera appen automatiskt och ladda sedan ned ditt kodexempel
 >
 > 1. Gå till fönstret ny [Azure Portal-Appregistreringar](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/UwpQuickstartPage/sourceType/docs) .
-> 1. Ange ett namn för programmet och klicka på **Registrera**.
+> 1. Ange ett namn för programmet och välj **Registrera**.
 > 1. Följ anvisningarna för att ladda ned och konfigurera det nya programmet automatiskt med ett enda klick.
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Alternativ 2: Registrera och konfigurera programmet och kodexemplet
 > [!div renderon="docs"]
 > #### <a name="step-1-register-your-application"></a>Steg 1: Registrera ditt program
 > Du registrerar programmet och lägger till appens registreringsinformationen i lösningen med hjälp av följande steg:
-> 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
-> 1. Om ditt konto ger dig tillgång till fler än en klientorganisation väljer du ditt konto i det övre högra hörnet och ställer in din portalsession på önskad Azure AD-klientorganisation.
-> 1. Gå till sidan Microsoft Identity Platform för utvecklare [Appregistreringar](https://aka.ms/MobileAppReg) .
-> 1. Välj **ny registrering**.
-> 1. I **Registrera ett program** anger du programmets registrerings information:
->      - I avsnittet **Namn** anger du ett beskrivande programnamn som ska visas för appens användare, till exempel `UWP-App-calling-MsGraph`.
->      - I avsnittet **Kontotyper som stöds** väljer du **Konton alla organisationskataloger och personliga Microsoft-konton (till exempel Skype, Xbox och Outlook.com)**.
+> 1. Logga in på [Azure-portalen](https://portal.azure.com).
+> 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
+> 1. Sök efter och välj **Azure Active Directory**.
+> 1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.
+> 1. Ange ett **namn** för programmet, till exempel `UWP-App-calling-MsGraph` . Användare av appen kan se det här namnet och du kan ändra det senare.
+> 1. I avsnittet **Kontotyper som stöds** väljer du **Konton alla organisationskataloger och personliga Microsoft-konton (till exempel Skype, Xbox och Outlook.com)**.
 > 1. Välj **Registrera** för att skapa programmet och registrera sedan **program-ID: t (klient)** som ska användas i ett senare steg.
 > 1. Under **Hantera** väljer du **autentisering**.
 > 1. Välj **Lägg till en plattform**  >  **mobil-och skriv bords program**.

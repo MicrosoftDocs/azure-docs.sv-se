@@ -10,13 +10,13 @@ ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
-ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 2b0a56bac1652881e9d1733bcb52b02610e27e9e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
+ms.openlocfilehash: 131feaf6ff01659b7d126604a5d081275e64508f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314171"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029574"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Skydda en Azure Machine Learning utbildnings miljö med virtuella nätverk
 
@@ -123,7 +123,7 @@ Regel konfigurationen för NSG i Azure Portal visas i följande bild:
 [![Utgående NSG-regler för Machine Learning-beräkning](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png)](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png#lightbox)
 
 > [!NOTE]
-> Om du planerar att använda standard Docker-avbildningar som tillhandahålls av Microsoft och aktiverar hanterade beroenden, måste du också använda följande __service märken__ :
+> Om du planerar att använda standard Docker-avbildningar som tillhandahålls av Microsoft och aktiverar hanterade beroenden, måste du också använda följande __service märken__:
 >
 > * __MicrosoftContainerRegistry__
 > * __AzureFrontDoor.FirstParty__

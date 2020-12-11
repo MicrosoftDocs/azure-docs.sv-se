@@ -5,18 +5,18 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 12/10/2020
 ms.author: jgao
-ms.openlocfilehash: dcc968353edf0e9cf3d63408d02baf94c6cabd9f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4ec6796cd0ed91987c1ef52fb5e9494a3142e00e
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95902465"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030458"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Använda distributions skript i mallar (förhands granskning)
 
-Lär dig hur du använder distributions skript i Azure Resource templates. Med en ny resurs typ som kallas kan `Microsoft.Resources/deploymentScripts` användare köra distributions skript i mallar distributioner och granska körnings resultat. Dessa skript kan användas för att utföra anpassade steg som:
+Lär dig hur du använder distributions skript i Azure Resource templates. Med en ny resurs typ som kallas `Microsoft.Resources/deploymentScripts` kan användare köra skript i mallar distributioner och granska körnings resultat. Dessa skript kan användas för att utföra anpassade steg som:
 
 - lägga till användare i en katalog
 - utför data Plans åtgärder, till exempel kopiera blobbar eller Dirigerings databas
@@ -29,7 +29,6 @@ Fördelarna med distributions skript:
 
 - Enkelt att koda, använda och felsöka. Du kan utveckla distributions skript i dina favorit utvecklings miljöer. Skripten kan bäddas in i mallar eller i externa skriptfiler.
 - Du kan ange språk och plattform för skript. För närvarande stöds Azure PowerShell-och Azure CLI-distributions skript i Linux-miljön.
-- Tillåt att du anger de identiteter som används för att köra skripten. För närvarande stöds endast [Azure User-tilldelade hanterade identiteter](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) .
 - Tillåt att kommando rads argument skickas till skriptet.
 - Kan ange utdata för skript och skicka tillbaka dem till distributionen.
 
@@ -38,12 +37,13 @@ Distributions skript resursen är bara tillgänglig i de regioner där Azure Con
 > [!IMPORTANT]
 > Ett lagrings konto och en behållar instans krävs för skript körning och fel sökning. Du har möjlighet att ange ett befintligt lagrings konto, annars skapas lagrings kontot tillsammans med behållar instansen automatiskt av skript tjänsten. De två automatiskt skapade resurserna tas vanligt vis bort av skript tjänsten när distributions skript körningen blir i ett Terminal-tillstånd. Du debiteras för resurserna tills resurserna tas bort. Läs mer i avsnittet om hur du [säkerhetskopierar skript resurser](#clean-up-deployment-script-resources).
 
+> [!IMPORTANT]
+> DeploymentScripts Resource API version 2020-10-01 stöder [OnBehalfofTokens (OBO)](../../active-directory/develop/v2-oauth2-on-behalf-of-flow.md). Genom att använda OBO använder distributions skript tjänsten distributions huvudets token för att skapa de underliggande resurserna för att köra distributions skript, som innehåller Azure Container instance, Azure Storage-konto och roll tilldelningar för den hanterade identiteten. I äldre API-version används den hanterade identiteten för att skapa dessa resurser.
+> Omprövnings logik för Azure-inloggning är nu inbyggt i omslutnings skriptet. Om du beviljar behörigheter i samma mall där du kör distributions skript.  Distributions skript tjänsten försöker logga in i 10 minuter med 10 sekunders tid tills tilldelningen av den hanterade identitets rollen replikeras.
+
 ## <a name="prerequisites"></a>Förutsättningar
 
-- **En användardefinierad hanterad identitet med deltagar rollen till mål resurs gruppen**. Den här identiteten används för att köra distributions skript. Om du vill utföra åtgärder utanför resurs gruppen måste du bevilja ytterligare behörighet. Du kan till exempel tilldela identiteten till prenumerations nivån om du vill skapa en ny resurs grupp.
-
-  > [!NOTE]
-  > Skript tjänsten skapar ett lagrings konto (om du inte anger ett befintligt lagrings konto) och en behållar instans i bakgrunden.  En användardefinierad hanterad identitet med deltagar rollen på prenumerations nivå krävs om prenumerationen inte har registrerat Azure Storage-kontot (Microsoft. Storage) och Azure Container Instance (Microsoft. ContainerInstance)-resurs leverantörer.
+- **(Valfritt) en användardefinierad hanterad identitet med nödvändiga behörigheter för att utföra åtgärderna i skriptet**. För distributions skript-API version 2020-10-01 eller senare används distributions objekt för att skapa underliggande resurser. Om skriptet behöver autentisera till Azure och utföra Azure-åtgärder, rekommenderar vi att du tillhandahåller skriptet med en användardefinierad hanterad identitet. Den hanterade identiteten måste ha nödvändig åtkomst i mål resurs gruppen för att slutföra åtgärden i skriptet. Du kan också logga in på Azure i distributions skriptet. Om du vill utföra åtgärder utanför resurs gruppen måste du bevilja ytterligare behörighet. Du kan till exempel tilldela identiteten till prenumerations nivån om du vill skapa en ny resurs grupp. 
 
   Information om hur du skapar en identitet finns i [skapa en användardefinierad hanterad identitet med hjälp av Azure Portal](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md), eller med [hjälp av Azure CLI](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)eller [genom att använda Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md). Du behöver identitets-ID när du distribuerar mallen. Formatet på identiteten är:
 
@@ -135,7 +135,7 @@ Följande JSON är ett exempel.  Du hittar det senaste mallnamnet [här](/azure/
 
 Information om egenskaps värde:
 
-- **Identitet**: distributions skript tjänsten använder en användardefinierad hanterad identitet för att köra skripten. För närvarande stöds endast användardefinierad hanterad identitet.
+- **Identitet**: för distribution script-API version 2020-10-01 eller senare är en användardefinierad hanterad identitet valfri, om du inte behöver utföra några Azure-åtgärder i skriptet.  För API-versionen 2019-10-01 – för hands version krävs en hanterad identitet som distributions skript tjänsten använder den för att köra skripten. För närvarande stöds endast användardefinierad hanterad identitet.
 - **typ**: ange typ av skript. För närvarande stöds Azure PowerShell-och Azure CLI-skript. Värdena är **AzurePowerShell** och **AzureCLI**.
 - **forceUpdateTag**: om du ändrar det här värdet mellan mallens distributioner tvingas distributions skriptet att köras igen. Om du använder funktionen newGuid () eller utcNow () kan båda funktionerna endast användas i standardvärdet för en parameter. Mer information finns i [Kör skript mer än en gång](#run-script-more-than-once).
 - **containerSettings**: Ange inställningarna för att anpassa Azure Container instance.  **containerGroupName** används för att ange behållar gruppens namn.  Om inget anges skapas grupp namnet automatiskt.
@@ -169,14 +169,11 @@ Information om egenskaps värde:
 - [Exempel 2](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-subscription.json): skapa en resurs grupp på prenumerations nivån, skapa ett nyckel valv i resurs gruppen och Använd sedan distributions skriptet för att tilldela ett certifikat till nyckel valvet.
 - [Exempel 3](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-mi.json): skapa en användardefinierad hanterad identitet, tilldela deltagar rollen till identiteten på resurs grupps nivå, skapa ett nyckel valv och Använd sedan distributions skriptet för att tilldela ett certifikat till nyckel valvet.
 
-> [!NOTE]
-> Vi rekommenderar att du skapar en användardefinierad identitet och beviljar behörigheter i förväg. Du kan få inloggnings-och behörighets relaterade fel om du skapar identiteten och beviljar behörigheter i samma mall där du kör distributions skript. Det tar lite tid innan behörigheterna börjar gälla.
-
 ## <a name="use-inline-scripts"></a>Använd infogade skript
 
 Följande mall har en resurs definierad med `Microsoft.Resources/deploymentScripts` typen. Den markerade delen är det infogade skriptet.
 
-:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-helloworld.json" range="1-54" highlight="34-40":::
+:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-helloworld.json" range="1-44" highlight="24-30":::
 
 > [!NOTE]
 > Eftersom de infogade distributions skripten omges av dubbla citat tecken måste strängarna i distributions skripten undantas genom att använda en **&#92;** eller omges av enkla citat tecken. Du kan också överväga att använda sträng ersättning som det visas i föregående JSON-exempel.
@@ -188,11 +185,10 @@ Om du vill köra skriptet väljer du **prova** att öppna Cloud Shell och klistr
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the name of the resource group to be created"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$id = Read-Host -Prompt "Enter the user-assigned managed identity ID"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.json" -identity $id
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.json"
 
 Write-Host "Press [ENTER] to continue ..."
 ```
@@ -239,7 +235,7 @@ De stödfiler som kopieras kopieras till azscripts/azscriptinput vid körningen.
 
 Följande mall visar hur du överför värden mellan två deploymentScripts-resurser:
 
-:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-basic.json" range="1-84" highlight="39-40,66":::
+:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-basic.json" range="1-68" highlight="30-31,50":::
 
 I den första resursen definierar du en variabel som heter **$DeploymentScriptOutputs** och använder den för att lagra värdena för utdata. Använd följande för att få åtkomst till resultatvärdet från en annan resurs i mallen:
 
@@ -276,7 +272,7 @@ Ett lagrings konto och en behållar instans krävs för skript körning och fel 
 
     Dessa kombinationer stöder fil resurs.  Mer information finns i [skapa en Azure-filresurs](../../storage/files/storage-how-to-create-file-share.md) och [typer av lagrings konton](../../storage/common/storage-account-overview.md).
 - Brand Väggs regler för lagrings konto stöds inte än. Mer information finns i [Konfigurera Azure Storage-brandväggar och virtuella nätverk](../../storage/common/storage-network-security.md).
-- Distributions skriptets tilldelade hanterade identitet måste ha behörighet att hantera lagrings kontot, som innehåller läsa, skapa, ta bort fil resurser.
+- Distributions huvud kontot måste ha behörighet att hantera lagrings kontot, som innehåller läsa, skapa, ta bort fil resurser.
 
 Om du vill ange ett befintligt lagrings konto lägger du till följande JSON till egenskaps elementet för `Microsoft.Resources/deploymentScripts` :
 
@@ -539,6 +535,8 @@ Livs cykeln för de här resurserna styrs av följande egenskaper i mallen:
 
 > [!NOTE]
 > Vi rekommenderar inte att du använder lagrings kontot och behållar instansen som genereras av skript tjänsten för andra skäl. De två resurserna kan tas bort beroende på skript livs cykeln.
+
+Om du vill behålla behållar instansen och lagrings kontot för fel sökning kan du lägga till ett vila-kommando i skriptet.  Till exempel [Start-vilo läge](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep).
 
 ## <a name="run-script-more-than-once"></a>Kör skript mer än en gång
 

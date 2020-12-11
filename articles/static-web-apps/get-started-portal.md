@@ -1,20 +1,20 @@
 ---
 title: 'Snabb start: skapa din första statiska webbapp med Azures statiska Web Apps med hjälp av Azure Portal'
-description: Lär dig att bygga en statisk Azure Web Apps-instans med Azure Portal.
+description: Lär dig att distribuera en statisk plats till Azures statiska Web Apps med Azure Portal.
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: b009b34be69e48ae6205cd9ab88d1583ca9c6561
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aab99721b61ababe218e509ab1078198b5f4152b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91280578"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030373"
 ---
-# <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>Snabb start: skapa din första statiska webbapp i Azure Portal
+# <a name="quickstart-building-your-first-static-site-in-the-azure-portal"></a>Snabb start: skapa din första statiska plats i Azure Portal
 
 Azures statiska Web Apps publicerar en webbplats i en produktions miljö genom att bygga appar från en GitHub-lagringsplats. I den här snabb starten distribuerar du ett webb program till Azures statiska webbappar med hjälp av Azure Portal.
 
@@ -51,14 +51,14 @@ I avsnittet _grundläggande_ börjar du med att konfigurera din nya app och län
 
 När du har loggat in med GitHub anger du lagrings plats informationen.
 
-:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="Avsnittet grundläggande":::
+:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="Lagrings information":::
 
 1. Välj önskad _organisation_
 1. Välj **min-första-webb-statisk-app** från List rutan _databas_
 1. Välj **original** i list rutan _gren_
 
 > [!NOTE]
-> Om du inte ser några databaser kan du behöva auktorisera Azures statiska Web Apps i GitHub. Bläddra till GitHub-lagringsplatsen och gå till **inställningar > program > auktoriserade OAuth-appar**, Välj **Azure static Web Apps**och välj sedan **bevilja**. Du måste vara ägare till organisationen för att kunna bevilja behörighet för organisations databaser.
+> Om du inte ser några databaser kan du behöva auktorisera Azures statiska Web Apps i GitHub. Bläddra till GitHub-lagringsplatsen och gå till **inställningar > program > auktoriserade OAuth-appar**, Välj **Azure static Web Apps** och välj sedan **bevilja**. Du måste vara ägare till organisationen för att kunna bevilja behörighet för organisations databaser.
 
 1. I avsnittet _skapa information_ lägger du till konfigurations information som är specifika för ditt prioriterade front-end-ramverk.
 
@@ -94,18 +94,18 @@ När du har loggat in med GitHub anger du lagrings plats informationen.
 
 1. Välj **Granska + skapa**.
 
-    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="Avsnittet grundläggande":::
+    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="Knappen granska skapande":::
 
     > [!NOTE]
     > Du kan redigera [arbets flödes filen](github-actions-workflow.md) om du vill ändra dessa värden när du har skapat appen.
 
 1. Välj **Skapa**.
 
-    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="Avsnittet grundläggande":::
+    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="Knappen Skapa":::
 
 1. Välj **Gå till resurs**.
 
-    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="Avsnittet grundläggande":::
+    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="Knappen Gå till resurs":::
 
 [!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
 

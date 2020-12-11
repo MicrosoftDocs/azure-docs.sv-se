@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 1a8d851d2e70850155950786c6aa67c1d5086eb2
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 383f7f37e93b4705419ba1f93f509c86eaab192b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95993881"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030645"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Snabb start: lägga till inloggning med Microsoft i en python-webbapp
 
@@ -50,31 +50,25 @@ Se [hur exemplet fungerar](#how-the-sample-works) för en illustration.
 >
 > Du registrerar programmet och lägger till appens registreringsinformationen i lösningen manuellt med hjälp av följande steg:
 >
-> 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
-> 1. Om ditt konto ger dig tillgång till fler än en klientorganisation väljer du ditt konto i det övre högra hörnet och ställer in din portalsession på önskad Azure AD-klientorganisation.
-> 1. Gå till sidan Microsoft Identity Platform för utvecklare [Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) .
-> 1. Välj **ny registrering**.
-> 1. När sidan **Registrera ett program** visas anger du programmets registreringsinformation:
->      - I avsnittet **Namn** anger du ett beskrivande programnamn som ska visas för appens användare, till exempel `python-webapp`.
->      - Under **Kontotyper som stöds** väljer du **Accounts in any organizational directory and personal Microsoft accounts** (Konton i alla organisationskataloger och personliga Microsoft-konton).
->      - Välj **Register** (Registrera).
->      - På sidan **Översikt över** appar noterar du **programmets (klient) ID-** värde för senare användning.
-> 1. Välj **autentiseringen** på menyn och Lägg till följande information:
->    - Lägg till **webb** plattforms konfigurationen. Lägg till `http://localhost:5000/getAToken` som **omdirigerings-URI**.
->    - Välj **Spara**.
-> 1. På den vänstra menyn väljer du **certifikat & hemligheter** och klickar på **ny klient hemlighet** i avsnittet **klient hemligheter** :
->
->      - Ange en nyckel Beskrivning (av instansens program hemlighet).
->      - Välj en nyckel varaktighet på om **1 år**.
->      - När du klickar på **Lägg till** visas nyckelvärdet.
->      - Kopiera värdet för nyckeln. Du behöver den senare.
-> 1. Välj avsnittet **API-behörigheter**
->
->      - Klicka på knappen **Lägg till en behörighet** och sedan
->      - Se till att fliken **Microsoft API: er** är vald
->      - I avsnittet *vanliga API: er för Microsoft* klickar du på **Microsoft Graph**
->      - I avsnittet **delegerade behörigheter** kontrollerar du att rätt behörigheter är markerade: **User. ReadBasic. all**. Använd Sök fältet om det behövs.
->      - Välj knappen **Lägg till behörigheter**
+> 1. Logga in på [Azure-portalen](https://portal.azure.com).
+> 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
+> 1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.
+> 1. Ange ett **namn** för programmet, till exempel `python-webapp` . Användare av appen kan se det här namnet och du kan ändra det senare.
+> 1. Under **Kontotyper som stöds** väljer du **Accounts in any organizational directory and personal Microsoft accounts** (Konton i alla organisationskataloger och personliga Microsoft-konton).
+> 1. Välj **Register** (Registrera).
+> 1. På sidan **Översikt över** appar noterar du **programmets (klient) ID-** värde för senare användning.
+> 1. Under **Hantera** väljer du **autentisering**.
+> 1. Välj **Lägg till en plattforms**  >  **webbplats**.
+> 1. Lägg till `http://localhost:5000/getAToken` som **omdirigerings-URI**.
+> 1. Välj **Konfigurera**.
+> 1. Under **Hantera** väljer du **certifikat & hemligheter**  och i avsnittet **klient hemligheter** väljer du **ny klient hemlighet**.
+> 1. Ange en nyckel Beskrivning (till exempel appens hemlighet), lämna standard förfallo datum och välj **Lägg till**.
+> 1. Notera **värdet** för **klient hemligheten** för senare användning.
+> 1. Under **Hantera** väljer du **API-behörigheter**  >  **Lägg till en behörighet**.
+>1.  Se till att fliken **Microsoft API: er** är markerad.
+> 1. I avsnittet *vanliga API: er för Microsoft* väljer du **Microsoft Graph**.
+> 1. I avsnittet **delegerade behörigheter** kontrollerar du att rätt behörigheter är markerade: **User. ReadBasic. all**. Använd Sök fältet om det behövs.
+> 1. Välj knappen **Lägg till behörigheter** .
 >
 > [!div class="sxs-lookup" renderon="portal"]
 >

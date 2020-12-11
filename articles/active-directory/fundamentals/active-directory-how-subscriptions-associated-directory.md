@@ -11,14 +11,14 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
-ms.custom: it-pro, seodec18, contperfq4
+ms.custom: it-pro, seodec18, contperf-fy20q4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ed68211d034a133b923b6a2eec20ad6f1a0ffe2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c7a39340f44e2c6eeae5b5f1a8e687bc73b3b0fe
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541034"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028418"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Associera eller lägga till en Azure-prenumeration till Azure Active Directory-klienten
 
@@ -63,11 +63,11 @@ Följ dessa steg om du vill associera en befintlig prenumeration till din Azure 
 
 1. Logga in och välj den prenumeration som du vill använda från [sidan prenumerationer i Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 
-1. Välj **ändra katalog** .
+1. Välj **ändra katalog**.
 
    ![Sidan prenumerationer med alternativet för att ändra katalog är markerat](media/active-directory-how-subscriptions-associated-directory/change-directory-in-azure-subscriptions.png)
 
-1. Granska eventuella varningar som visas och välj sedan **ändra** .
+1. Granska eventuella varningar som visas och välj sedan **ändra**.
 
    ![Ändra katalog sidan, som visar katalogen som ska ändras till](media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.png)
 
@@ -77,7 +77,7 @@ Följ dessa steg om du vill associera en befintlig prenumeration till din Azure 
 
    ![Sidan katalog växlaren med exempel information](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 
-   Det kan ta flera timmar innan allting visas korrekt. Om det verkar ta för lång tid, kontrol lera det **globala prenumerations filtret** . Kontrol lera att den flyttade prenumerationen inte är dold. Du kan behöva logga ut från Azure Portal och logga in igen för att se den nya katalogen.
+   Det kan ta flera timmar innan allting visas korrekt. Om det verkar ta för lång tid, kontrol lera det **globala prenumerations filtret**. Kontrol lera att den flyttade prenumerationen inte är dold. Du kan behöva logga ut från Azure Portal och logga in igen för att se den nya katalogen.
 
 Att ändra prenumerations katalogen är en åtgärd på tjänst nivå, så den påverkar inte prenumerationens fakturerings ägande. Om du vill ta bort den ursprungliga katalogen måste du överföra prenumerations fakturerings ägarskapet till en ny konto administratör. Mer information om hur du överför fakturerings ägarskap finns i [överföra ägarskap för en Azure-prenumeration till ett annat konto](../../cost-management-billing/manage/billing-subscription-transfer.md).
 

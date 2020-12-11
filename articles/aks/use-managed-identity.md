@@ -4,12 +4,12 @@ description: Lär dig hur du använder hanterade identiteter i Azure Kubernetes 
 services: container-service
 ms.topic: article
 ms.date: 12/06/2020
-ms.openlocfilehash: e2a80ea869e17665e8a6d4fbd6960c3ccc8c1042
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 68d8111da5ec10f23d14b375a18229bca075da84
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751282"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97026837"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Använda hanterade identiteter i Azure Kubernetes-tjänsten
 
@@ -34,20 +34,20 @@ Du måste ha följande resurs installerad:
 
 AKS använder flera hanterade identiteter för inbyggda tjänster och tillägg.
 
-| Identitet                       | Namn    | Användningsfall | Standard behörigheter | Ta med din egen identitet
+| Identitet                       | Name    | Användningsfall | Standard behörigheter | Ta med din egen identitet
 |----------------------------|-----------|----------|
 | Kontrollplan | inte synlig | Används av AKS Control plan-komponenter för att hantera kluster resurser, inklusive belastnings utjämning och AKS-hanterade offentliga IP-adresser och åtgärder för automatisk skalnings åtgärd i klustret | Deltagar roll för nod resurs grupp | Förhandsgranskning
 | Kubelet | AKS-kluster namn – agentpoolegenskap | Autentisering med Azure Container Registry (ACR) | NA (för Kubernetes v 1.15 +) | Stöds för närvarande inte
-| Tillägg | AzureNPM | Ingen identitet krävs | NA | Nej
-| Tillägg | AzureCNI nätverks övervakning | Ingen identitet krävs | NA | Nej
-| Tillägg | Azure-policy (Gatekeeper) | Ingen identitet krävs | NA | Nej
-| Tillägg | Azure-princip | Ingen identitet krävs | NA | Nej
-| Tillägg | Calico | Ingen identitet krävs | NA | Nej
-| Tillägg | Instrumentpanel | Ingen identitet krävs | NA | Nej
-| Tillägg | HTTPApplicationRouting | Hanterar nödvändiga nätverks resurser | Läsar roll för nod resurs grupp, deltagar roll för DNS-zon | Nej
-| Tillägg | Ingress Application Gateway | Hanterar nödvändiga nätverks resurser| Deltagar roll för nod resurs grupp | Nej
-| Tillägg | omsagent | Används för att skicka AKS-mått till Azure Monitor | Övervaknings mått utgivar rollen | Nej
-| Tillägg | Virtual-Node (ACIConnector) | Hanterar nödvändiga nätverks resurser för Azure Container Instances (ACI) | Deltagar roll för nod resurs grupp | Nej
+| Tillägg | AzureNPM | Ingen identitet krävs | NA | No
+| Tillägg | AzureCNI nätverks övervakning | Ingen identitet krävs | NA | No
+| Tillägg | Azure-policy (Gatekeeper) | Ingen identitet krävs | NA | No
+| Tillägg | Azure-princip | Ingen identitet krävs | NA | No
+| Tillägg | Calico | Ingen identitet krävs | NA | No
+| Tillägg | Instrumentpanel | Ingen identitet krävs | NA | No
+| Tillägg | HTTPApplicationRouting | Hanterar nödvändiga nätverks resurser | Läsar roll för nod resurs grupp, deltagar roll för DNS-zon | No
+| Tillägg | Ingress Application Gateway | Hanterar nödvändiga nätverks resurser| Deltagar roll för nod resurs grupp | No
+| Tillägg | omsagent | Används för att skicka AKS-mått till Azure Monitor | Övervaknings mått utgivar rollen | No
+| Tillägg | Virtual-Node (ACIConnector) | Hanterar nödvändiga nätverks resurser för Azure Container Instances (ACI) | Deltagar roll för nod resurs grupp | No
 | OSS-projekt | AAD-Pod – identitet | Gör det möjligt för program att komma åt moln resurser på ett säkert sätt med Azure Active Directory (AAD) | NA | Steg för att bevilja behörighet på https://github.com/Azure/aad-pod-identity#role-assignment .
 
 ## <a name="create-an-aks-cluster-with-managed-identities"></a>Skapa ett AKS-kluster med hanterade identiteter
@@ -119,7 +119,7 @@ Uppdatera den systemtilldelade identiteten:
 az aks update -g <RGName> -n <AKSName> --enable-managed-identity
 ```
 
-Uppdatera den användare som tilldelats identiteten:
+Registrera funktions flaggan för användarens tilldelade identitet:
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.ContainerService -n UserAssignedIdentityPreview

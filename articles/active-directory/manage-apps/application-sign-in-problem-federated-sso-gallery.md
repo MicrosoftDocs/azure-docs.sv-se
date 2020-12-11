@@ -1,5 +1,5 @@
 ---
-title: Problem med att logga in till SAML-baserade enkel inloggning konfigurerade appar
+title: Problem med att logga in på SAML-baserade appar som konfigurerats för enkel inloggning
 description: Vägledning för de specifika felen vid inloggning i ett program som du har konfigurerat för SAML-baserad federerad enkel inloggning med Azure Active Directory
 services: active-directory
 author: kenwith
@@ -11,32 +11,32 @@ ms.topic: troubleshooting
 ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
-ms.custom: contperfq2
-ms.openlocfilehash: e75669c70c67d55c94642a0f6dbe3c9dbc3376e6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: e6d3674aaa4c89f42c2e7b87a6be6cdc8ecabf64
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651557"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028282"
 ---
-# <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>Problem med att logga in till SAML-baserade enkel inloggning konfigurerade appar
+# <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>Problem med att logga in på SAML-baserade appar som konfigurerats för enkel inloggning
 För att felsöka inloggnings problemen nedan rekommenderar vi följande för att bättre diagnostisera och automatisera lösnings stegen:
 
-- Installera [tillägget Mina appar säker webbläsare](./access-panel-deployment-plan.md) för att hjälpa Azure Active Directory (Azure AD) för att ge bättre diagnos och lösningar när du använder test miljön i Azure Portal.
-- Återskapa felet med hjälp av test upplevelsen på sidan konfiguration av app i Azure Portal. Läs mer om [Debug SAML-baserade enkla inloggnings program](./debug-saml-sso-issues.md)
+- Installera [tillägget säker webbläsare för mina appar](./access-panel-deployment-plan.md) för att hjälpa Azure Active Directory (Azure AD) att ge bättre diagnoser och lösningar när du använder testmiljön i Azure Portal.
+- Återskapa felet med hjälp av testfunktionen på appkonfigurationssidan i Azure Portal. Läs mer om [Debug SAML-baserade enkla inloggnings program](./debug-saml-sso-issues.md)
 
 Om du använder [test upplevelsen](./debug-saml-sso-issues.md) i Azure Portal med tillägget mina appars säkra webbläsare, behöver du inte manuellt följa stegen nedan för att öppna konfigurations sidan för SAML-baserad enkel inloggning.
 
-Öppna konfigurations sidan för SAML-baserad enkel inloggning:
+Så här öppnar du konfigurationssidan för SAML-baserad enkel inloggning:
 1.  Öppna [**Azure Portal**](https://portal.azure.com/) och logga in som **Global administratör** eller **administratör**.
 1.  Öppna **tillägget Azure Active Directory** genom att välja **alla tjänster** överst i huvud menyn till vänster.
 1.  Skriv **"Azure Active Directory"** i rutan filtrera sökning och välj **Azure Active Directory** objektet.
-1.  Välj **företags program** från Azure Active Directory vänstra navigerings menyn.
-1.  Välj **alla program** om du vill visa en lista över alla dina program.
-    Om du inte ser det program som du vill visa här använder du **filter** kontrollen längst upp i **listan Alla program** och anger alternativet **Visa** för **alla program**.
-1.  Välj det program som du vill konfigurera för enkel inloggning.
+1.  Välj **Företagsprogram** på den vänstra navigeringsmenyn i Azure Active Directory.
+1.  Välj **Alla program** för att visa en lista över alla dina program.
+    Om du inte ser programmet du behöver kan du använda **filterkontrollen** överst i **listan med alla program** och ställa in alternativet **Visa** på **Alla program**.
+1.  Välj programmet du vill konfigurera för enkel inloggning.
 1. När programmet har lästs in väljer du **enkel inloggning** från programmets vänstra navigerings meny.
-1. Välj SAML-baserad SSO.
+1. Välj SAML-baserad enkel inloggning.
 
 ## <a name="application-not-found-in-directory"></a>Programmet hittades inte i katalogen
 `Error AADSTS70001: Application with Identifier 'https:\//contoso.com' was not found in the directory.`
