@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f757d8f59c06d573d71099941530dfc28174ac42
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 9a3e2dd1ac58c89060fc3e09e97617cb2a68d8ac
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420498"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094581"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory sömlös enkel inloggning: vanliga frågor och svar
 
@@ -54,7 +54,7 @@ Dessutom får användarna en tyst inloggnings upplevelse om ett program skickar 
 | Programnamn | Programmets URL som ska användas |
 | -- | -- |
 | sharepoint online | https: \/ /contoso.SharePoint.com |
-| Azure-portalen | https: \/ /Portal.Azure.com/contoso.com |
+| Azure Portal | https: \/ /Portal.Azure.com/contoso.com |
 
 I tabellerna ovan ersätter du "contoso.com" med ditt domän namn för att komma till rätt program-URL: er för din klient.
 
@@ -66,7 +66,7 @@ Ja. Sömlös SSO stöder `Alternate ID` som användar namn när det konfigureras
 
 **F: Vad är skillnaden mellan enkel inloggnings upplevelsen från [Azure AD Join](../devices/overview.md) och sömlös enkel inloggning?**
 
-[Azure AD Join](../devices/overview.md) ger enkel inloggning till användare om deras enheter har registrerats med Azure AD. Dessa enheter behöver inte nödvändigt vis vara domänanslutna. SSO tillhandahålls med *primära uppdateringstoken* eller *PRTs* , och inte Kerberos. Användar upplevelsen är mest optimal för Windows 10-enheter. SSO sker automatiskt i Microsoft Edge-webbläsaren. Det fungerar också på Chrome med att använda ett webb läsar tillägg.
+[Azure AD Join](../devices/overview.md) ger enkel inloggning till användare om deras enheter har registrerats med Azure AD. Dessa enheter behöver inte nödvändigt vis vara domänanslutna. SSO tillhandahålls med *primära uppdateringstoken* eller *PRTs*, och inte Kerberos. Användar upplevelsen är mest optimal för Windows 10-enheter. SSO sker automatiskt i Microsoft Edge-webbläsaren. Det fungerar också på Chrome med att använda ett webb läsar tillägg.
 
 Du kan använda både Azure AD Join och sömlös SSO på din klient. Dessa två funktioner är kompletterande. Om båda funktionerna är aktiverade prioriteras SSO från Azure AD Join framför sömlös SSO.
 
@@ -82,6 +82,9 @@ Det är viktigt att ofta rulla över Kerberos-dekrypterings nyckeln för `AZUREA
 >Vi rekommenderar starkt att du går igenom Kerberos-dekrypterings nyckeln minst var 30: e dag.
 
 Följ de här stegen på den lokala server där du kör Azure AD Connect:
+
+   > [!NOTE]
+   >Du behöver både domän administratör och global administratörs behörighet för stegen nedan.
 
    **Steg 1. Hämta en lista över AD-skogar där sömlös enkel inloggning har Aktiver ATS**
 

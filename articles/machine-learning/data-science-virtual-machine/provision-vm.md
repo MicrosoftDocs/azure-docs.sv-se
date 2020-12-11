@@ -8,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: 3b5f96e60e088f94561bf3398469ec913a71bba6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b36e6ce09cd4356a9892a5be9cbe7046cf7fd40e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322441"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094564"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Snabb start: Konfigurera Data Science Virtual Machine för Windows
 
@@ -36,14 +36,14 @@ Så här skapar du en DSVM-instans:
 1. Du bör omdirigeras till bladet "skapa en virtuell dator".
 
 1. Fyll i fliken **grundläggande** :
-      * **Prenumeration** : om du har mer än en prenumeration väljer du den som datorn ska skapas i och faktureras. Du måste ha behörighet att skapa resurser för prenumerationen.
-      * **Resurs grupp** : skapa en ny grupp eller Använd en befintlig grupp.
-      * **Namn på virtuell dator** : Ange namnet på den virtuella datorn. Så här kommer det att visas i Azure Portal.
-      * **Plats** : Välj det data Center som är lämpligast. För snabbast nätverks åtkomst är det data Center som har de flesta data eller som är närmast din fysiska plats. Lär dig mer om [Azure-regioner](https://azure.microsoft.com/global-infrastructure/regions/).
-      * **Bild** : låt standardvärdet vara kvar.
-      * **Storlek** : detta bör fyllas i automatiskt med en storlek som passar för allmänna arbets belastningar. Läs mer om [storlekar för virtuella Windows-datorer i Azure](../../virtual-machines/sizes.md).
-      * **Användar namn** : Ange administratörens användar namn. Detta är det användar namn som du ska använda för att logga in på den virtuella datorn och behöver inte vara samma som ditt Azure-användarnamn.
-      * **Lösen ord** : Ange det lösen ord som du ska använda för att logga in på den virtuella datorn.    
+      * **Prenumeration**: om du har mer än en prenumeration väljer du den som datorn ska skapas i och faktureras. Du måste ha behörighet att skapa resurser för prenumerationen.
+      * **Resurs grupp**: skapa en ny grupp eller Använd en befintlig grupp.
+      * **Namn på virtuell dator**: Ange namnet på den virtuella datorn. Så här kommer det att visas i Azure Portal.
+      * **Plats**: Välj det data Center som är lämpligast. För snabbast nätverks åtkomst är det data Center som har de flesta data eller som är närmast din fysiska plats. Lär dig mer om [Azure-regioner](https://azure.microsoft.com/global-infrastructure/regions/).
+      * **Bild**: låt standardvärdet vara kvar.
+      * **Storlek**: detta bör fyllas i automatiskt med en storlek som passar för allmänna arbets belastningar. Läs mer om [storlekar för virtuella Windows-datorer i Azure](../../virtual-machines/sizes.md).
+      * **Användar namn**: Ange administratörens användar namn. Detta är det användar namn som du ska använda för att logga in på den virtuella datorn och behöver inte vara samma som ditt Azure-användarnamn.
+      * **Lösen ord**: Ange det lösen ord som du ska använda för att logga in på den virtuella datorn.    
 1. Välj **Granska + skapa**.
 1. **Granska + skapa**
    * Kontrol lera att all information som du har angett är korrekt. 
@@ -60,7 +60,7 @@ När den virtuella datorn har skapats och allokerats följer du stegen som visas
 
 Du är redo att börja använda de verktyg som är installerade och konfigurerade på den virtuella datorn. Många av verktygen kan nås via **Start** -menyns paneler och skriv bords ikoner.
 
-Du kan också bifoga en DSVM till Azure Notebooks för att köra Jupyter-anteckningsböcker på den virtuella datorn och kringgå begränsningarna i den kostnads fria tjänst nivån. Mer information finns i [Hantera och konfigurera antecknings projekt](../../notebooks/configure-manage-azure-notebooks-projects.md#manage-and-configure-projects).
+Du kan också bifoga en DSVM till Azure Notebooks för att köra Jupyter-anteckningsböcker på den virtuella datorn och kringgå begränsningarna i den kostnads fria tjänst nivån. Mer information finns i [Hantera och konfigurera antecknings projekt](../../notebooks/configure-manage-azure-notebooks-projects.md).
 
 <a name="tools"></a>
 

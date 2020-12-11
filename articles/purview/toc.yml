@@ -93,9 +93,6 @@ items:
               - name: Azure SQL Database
                 href: register-scan-azure-sql-database.md
                 displayName: Register and scan Azure SQL DB
-              - name: Azure SQL Database med en brandvägg
-                href: scan-sqlresource-firewall.md
-                displayName: Register and scan Azure SQL DB with a firewall
               - name: Hanterad Azure SQL Database-instans
                 href: register-scan-azure-sql-database-managed-instance.md
                 displayName: Register and scan Azure SQL DB Managed Instance

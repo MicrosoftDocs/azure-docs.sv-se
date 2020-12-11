@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 5109139c7168026c74a475128832fbb0733ce832
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7bc15b369bfa4964384d4f7910d6953bdfeaa664
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447119"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094173"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure privat länk för Azure SQL Database och Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -177,7 +177,7 @@ Om du vill upprätta en anslutning från en lokal miljö till databasen i SQL Da
 
 ## <a name="connecting-from-azure-synapse-analytics-to-azure-storage-using-polybase-and-the-copy-statement"></a>Ansluta från Azure Synapse Analytics till Azure Storage med PolyBase och KOPIERINGs instruktionen
 
-PolyBase och KOPIERINGs instruktionen används ofta för att läsa in data i Azure Synapse Analytics från Azure Storage-konton. Om Azure Storage konto som du läser in data från begränsar åtkomsten till en uppsättning virtuella nätverks under nät via privata slut punkter, tjänst slut punkter eller IP-baserade brand väggar, kommer anslutningen från PolyBase och KOPIERINGs instruktionen till kontot att avbrytas. Om du vill aktivera både import-och export scenarier med Azure Synapse Analytics ansluter du till Azure Storage som är skyddade till ett virtuellt nätverk följer du stegen som visas [här](vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). 
+PolyBase och KOPIERINGs instruktionen används ofta för att läsa in data i Azure Synapse Analytics från Azure Storage-konton. Om Azure Storage konto som du läser in data från begränsar åtkomsten till en uppsättning virtuella nätverks under nät via privata slut punkter, tjänst slut punkter eller IP-baserade brand väggar, kommer anslutningen från PolyBase och KOPIERINGs instruktionen till kontot att avbrytas. Om du vill aktivera både import-och export scenarier med Azure Synapse Analytics ansluter du till Azure Storage som är skyddade till ett virtuellt nätverk följer du stegen som visas [här](vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage). 
 
 ## <a name="next-steps"></a>Nästa steg
 

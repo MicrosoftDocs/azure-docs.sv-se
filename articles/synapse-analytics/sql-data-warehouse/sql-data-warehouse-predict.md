@@ -11,12 +11,12 @@ ms.date: 07/21/2020
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: ce77a169e28e21aa37be2a49997a58ee42c93807
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: b1a2e802f66132a88060fb74831781055897b077
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510836"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093663"
 ---
 # <a name="score-machine-learning-models-with-predict"></a>Score Machine Learning-modeller med PREDICT
 
@@ -35,7 +35,7 @@ Dedikerad SQL-pool förväntar sig en förtränad modell. Tänk på följande fa
 
 - Dedikerad SQL-pool stöder endast ONNX format modeller. ONNX är ett modell format med öppen källkod som gör att du kan utbyta modeller mellan olika ramverk för att aktivera samverkan. Du kan konvertera befintliga modeller till ONNX-format med hjälp av ramverk som antingen stöder det internt eller som har konverterings paket tillgängliga. Till exempel [sklearn-Onnx](https://github.com/onnx/sklearn-onnx) -paketet convert scikit – lär dig modeller till Onnx. [ONNX GitHub-lagringsplatsen](https://github.com/onnx/tutorials#converting-to-onnx-format) innehåller en lista över ramverk som stöds och exempel.
 
-   Om du använder [Automatisk ml](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) -utbildning måste du ange *ENABLE_ONNX_COMPATIBLE_MODELS* parametern till true för att skapa en Onnx format modell. [Automatiserad Machine Learning Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) visar ett exempel på hur du kan använda AutoML för att skapa en Machine Learning-modell med ONNX-format.
+   Om du använder [Automatisk ml](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) -utbildning måste du ange *ENABLE_ONNX_COMPATIBLE_MODELS* parametern till true för att skapa en Onnx format modell. [Automatiserad Machine Learning Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) visar ett exempel på hur du använder automatisk ml för att skapa en Machine Learning-modell med ONNX-format.
 
 - Följande data typer stöds för indata:
     - int, bigint, Real, Float

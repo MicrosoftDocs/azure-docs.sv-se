@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: 5aa379f6601bc324bd08c53f251b2097141eec69
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 87cdecd29d684c712853970c8246002132d274ac
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911642"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094343"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics data säkerhet
 Det här dokumentet är avsett att ge information som är speciell för Log Analytics, som är en funktion i Azure Monitor, för att komplettera informationen på [Azure Säkerhetscenter](https://www.microsoft.com/en-us/trust-center?rtc=1).  
@@ -79,7 +79,7 @@ I följande tabell visas exempel på data typer:
 | Händelse |EventId, EventOriginalID, BaseManagedEntityInternalId, RuleId, PublisherId, PublisherName, FullNumber, Number, Category, ChannelLevel, LoggingComputer, EventData, EventParameters, TimeGenerated, TimeAdded <br>**Obs:** När du skriver händelser med anpassade fält i till händelse loggen i Windows samlar Log Analytics in dem. |
 | Metadata |BaseManagedEntityId, ObjectStatus, OrganizationalUnit, ActiveDirectoryObjectSid, PhysicalProcessors, NetworkName, IPAddress, ForestDNSName, NetbiosComputerName, VirtualMachineName, LastInventoryDate, HostServerNameIsVirtualMachine, IP-adress, NetbiosDomainName, LogicalProcessors, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, PrincipalName, OffsetInMinuteFromGreenwichTime |
 | Prestanda |ObjectName, CounterName, PerfmonInstanceName, PerformanceDataId, PerformanceSourceInternalID, SampleValue, TimeSampled, TimeAdded |
-| Tillstånd |StateChangeEventId, StateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, MonitorId,, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
+| Stat |StateChangeEventId, StateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, MonitorId,, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
 
 ## <a name="physical-security"></a>Fysisk säkerhet
 Tjänsten Log Analytics hanteras av Microsoft-personal och alla aktiviteter loggas och kan granskas. Log Analytics körs som en Azure-tjänst och uppfyller alla krav för Azure-efterlevnad och säkerhet. Du kan visa information om den fysiska säkerheten för Azure-tillgångar på sidan 18 i [Microsoft Azure säkerhets översikt](https://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Fysiska åtkomst rättigheter till säkra områden har ändrats inom en arbets dag för alla som inte längre har ansvar för tjänsten Log Analytics, inklusive överföring och uppsägning. Du kan läsa om den globala fysiska infrastrukturen som vi använder på [Microsoft Data Center](https://azure.microsoft.com/global-infrastructure/).
@@ -127,7 +127,7 @@ Azure Log Analytics uppfyller följande krav:
 * [ISO 22301](https://azure.microsoft.com/blog/iso22301/)
 * [Payment Card Industry (PCI-kompatibel) data säkerhets standard (PCI DSS)](https://www.microsoft.com/en-us/TrustCenter/Compliance/PCI) av PCI Security Standards-rådet.
 * [Service Organization Controls (SOC) 1 typ 1 och SOC 2 typ 1](https://www.microsoft.com/en-us/TrustCenter/Compliance/SOC1-and-2) är kompatibel
-* [HIPAA och HITECH](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa) för företag som har ett HIPAA affärs associerat avtal
+* [HIPAA och HITECH](/compliance/regulatory/offering-hipaa-hitech) för företag som har ett HIPAA affärs associerat avtal
 * Kriterier för Windows common Engineering
 * Microsoft-säker dator användning
 * Som Azure-tjänst uppfyller de komponenter som Log Analytics använder sig av för att uppfylla Azures krav på efterlevnad. Du kan läsa mer på [Microsoft Trust Center-kompatibilitet](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx).

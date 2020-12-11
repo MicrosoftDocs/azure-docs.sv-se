@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: personanpassare, Azure-personanpassare, maskin inlärning
-ms.openlocfilehash: f843e7bfa014ad8391e20efff83a3c21a9de11b9
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 28aae130d062eaf57a66a9b90a6602c3874f1494
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96171967"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094156"
 ---
 # <a name="what-is-personalizer"></a>Vad är Personanpassning?
 
@@ -116,7 +116,7 @@ När du har fått en chans att komma igång med tjänsten för anpassning kan du
 ## <a name="reference"></a>Referens 
 
 * [/.NET-distribution. SDK för personanpassa C#](/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet)
-* [Personanpassa go SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/personalizer/v1.0/personalizer)
+* [Personanpassa go SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview)
 * [SDK för anpassnings-Java Script](/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest)
 * [Personanpassa python SDK](/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python)
 * [REST API:er](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank)

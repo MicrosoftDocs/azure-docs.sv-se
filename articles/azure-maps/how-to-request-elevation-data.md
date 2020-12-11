@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: af3653d9e4509b1aa31a377dfc22cb6b6b2ff34e
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 76232a917e8856a06645fabc0ab4716195c5c0e1
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906071"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094207"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>Begär höjnings data med hjälp av Azure Maps höjnings tjänsten (för hands version)
 
@@ -24,7 +24,7 @@ ms.locfileid: "96906071"
 
 Tjänsten Azure Maps [höjning](https://docs.microsoft.com/rest/api/maps/elevation) innehåller API: er för att fråga höjnings data var som helst på jordens yta. Du kan begära exempel på höjnings data längs sökvägar, inom en definierad avgränsnings ruta eller vid vissa koordinater. Du kan också använda [rendera v2 – Hämta API för kart panel](https://docs.microsoft.com/rest/api/maps/renderv2) för att hämta höjnings data i panel format. Panelerna levereras i GeoTIFF raster-format. Den här artikeln visar hur du använder Azure Maps-höjnings tjänsten och API: t för att hämta kart panel för att begära utökade data. Det går att begära höjnings data i både formaten interjson och GeoTiff.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 1. [Skapa ett Azure Maps konto i pris nivån S1](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Hämta en primär prenumerations nyckel](quick-demo-map-app.md#get-the-primary-key-for-your-account), även kallat primär nyckel eller prenumerations nyckel.
@@ -56,8 +56,8 @@ Om du vill begära höjnings data i raster panels format använder du [kart pane
 
 Använd API: erna för upphöjnings tjänsten (för hands version) för att begära höjnings data i det interjson-formatet. I det här avsnittet visas var och en av de tre API: erna:
 
-* [Hämta data för punkter](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
-* [Publicera data för Poäng](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates)
+* [Hämta data för punkter](/rest/api/maps/elevation/getdataforpoints)
+* [Publicera data för Poäng](/rest/api/maps/elevation/postdataforpoints)
 * [Hämta data för polyline](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
 * [Publicera data för polylinje](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline)
 * [Hämta data för markerings ram](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
@@ -67,7 +67,7 @@ Använd API: erna för upphöjnings tjänsten (för hands version) för att beg�
 
 ### <a name="request-elevation-data-for-points"></a>Begär höjnings data för punkter
 
-I det här exemplet ska vi använda [API: t hämta data för punkter](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates) för att begära höjnings data vid Mt. Everest och Chamlang berg. Sedan kommer vi att använda [data för Poäng-API: et för](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates) att begära höjnings data med samma två punkter. Latituder och longituder i URL-adressen förväntas vara i WGS84 (Geodetic System) decimaler.
+I det här exemplet ska vi använda [API: t hämta data för punkter](/rest/api/maps/elevation/getdataforpoints) för att begära höjnings data vid Mt. Everest och Chamlang berg. Sedan kommer vi att använda [data för Poäng-API: et för](/rest/api/maps/elevation/postdataforpoints) att begära höjnings data med samma två punkter. Latituder och longituder i URL-adressen förväntas vara i WGS84 (Geodetic System) decimaler.
 
  >[!IMPORTANT]
  >På grund av längden på URL: en för tecken längd på 2048 går det inte att skicka fler än 100 koordinater som en avgränsad pipeline-sträng i en URL GET-begäran. Om du vill skicka fler än 100 koordinater som en avgränsad pipeline-sträng använder du POST-data för punkter.
@@ -103,7 +103,7 @@ I det här exemplet ska vi använda [API: t hämta data för punkter](https://do
     }
     ```
 
-4. Nu ska vi anropa data [för Points-API: et](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates) för att få utökade data för samma två punkter. Välj metoden **post** http på fliken Builder och ange följande URL. För den här begäran och andra begär Anden som nämns i den här artikeln ersätter `{Azure-Maps-Primary-Subscription-key}` du med den primära prenumerations nyckeln.
+4. Nu ska vi anropa data [för Points-API: et](/rest/api/maps/elevation/postdataforpoints) för att få utökade data för samma två punkter. Välj metoden **post** http på fliken Builder och ange följande URL. För den här begäran och andra begär Anden som nämns i den här artikeln ersätter `{Azure-Maps-Primary-Subscription-key}` du med den primära prenumerations nyckeln.
 
     ```http
     https://atlas.microsoft.com/elevation/point/json?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0
@@ -485,7 +485,7 @@ Se <a href='https://codepen.io/azuremaps/pen/7bee08e5cb13d05cb0a11636b60f14ca'>T
 För att ytterligare utforska API: erna för Azure Maps höjning (för hands version), se:
 
 > [!div class="nextstepaction"]
-> [Höjning (för hands version) – Hämta data för lat-långa koordinater](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
+> [Höjning (för hands version) – Hämta data för lat-långa koordinater](/rest/api/maps/elevation/getdataforpoints)
 
 > [!div class="nextstepaction"]
 > [Höjning (för hands version) – Hämta data för markerings ram](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)

@@ -7,12 +7,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: f50c84212e62fae378d9d95e8990e084c82bb99a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4067d157a13618b008e2cb1a5fee31259bfd43a9
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000376"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094360"
 ---
 # <a name="use-azure-iot-dps-ip-connection-filters"></a>Använda IP-anslutningsfilter för Azure IoT DPS
 
@@ -135,7 +135,7 @@ Uppdatera mallens attribut för IP-filterregler baserat på dina krav.
 
 | Attribut                | Beskrivning |
 | ------------------------ | ----------- |
-| **FilterName**           | Ange ett namn för IP-filterregeln. Namnet måste vara en unik, skiftlägeskänslig, alfanumerisk sträng på upp till 128 tecken. Du kan endast använda 7-bitars alfanumeriska ASCII-tecken samt {'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}. |
+| **FilterName**           | Ange ett namn för IP-filterregeln. Namnet måste vara en unik, skiftlägeskänslig, alfanumerisk sträng på upp till 128 tecken. Endast ASCII 7-bitars alfanumeriska tecken plus  `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}`   godkänns. |
 | **Åtgärd**               | Värden som stöds är **Acceptera** eller  **Avvisa** som åtgärden för IP-filterregeln. |
 | **ipMask**               | Ange en enskild IPv4-adress eller ett block med IP-adresser i CIDR-notation. I CIDR-notation representerar exempelvis 192.168.100.0/22 de 1 024 IPv4-adresserna från 192.168.100.0 till 192.168.103.255. |
 
