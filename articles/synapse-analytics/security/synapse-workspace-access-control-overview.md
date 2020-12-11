@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 36c4ce34d6b0c4df119d5531cda725605cfd0bc1
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 256fec97819cde0f6f62d59b34416c92e1edfd20
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523787"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109614"
 ---
 # <a name="synapse-access-control"></a>Synapse åtkomst kontroll 
 
@@ -34,14 +34,14 @@ Synapse-roller tillhandahåller uppsättningar med behörigheter som kan tilläm
 
 ## <a name="access-control-elements"></a>Åtkomst kontroll element
 
-### <a name="creating-and-managing-synapse-resources"></a>Skapa och hantera Synapse-resurser
+### <a name="creating-and-managing-synapse-compute-resources"></a>Skapa och hantera Synapse-beräknings resurser
 
 Azure-roller används för att styra hanteringen av: 
 - Dedikerade SQL-pooler, 
 - Apache Spark pooler och 
 - Integrerings körningar. 
 
-Om du vill skapa dessa resurser måste du vara en Azure-ägare eller deltagare i resurs gruppen.  För att kunna hantera dem måste du vara en Azure-ägare eller deltagare i antingen resurs gruppen eller enskilda resurser. 
+Om du vill *skapa* dessa resurser måste du vara en Azure-ägare eller deltagare i resurs gruppen.  Om du vill *Hantera* dem när du har skapat måste du vara en Azure-ägare eller deltagare i antingen resurs gruppen eller enskilda resurser. 
 
 ### <a name="developing-and-executing-code-in-synapse"></a>Utveckla och köra kod i Synapse 
 
@@ -82,7 +82,7 @@ Se [hur du konfigurerar Synapse Access Control](./how-to-set-up-access-control.m
 
  ### <a name="accessing-system-managed-data-in-storage"></a>Åtkomst till systemhanterade data i lagring
 
-SQL-pooler utan server och Apache Spark tabeller lagrar sina data i en ADLS Gen2 behållare som är kopplad till arbets ytan.  Användare och MSI-ytan för arbets ytan måste beviljas åtkomst till Storage BLOB data-deltagare till den här ADLS Gen2 lagrings behållaren.  
+SQL-pooler utan server och Apache Spark tabeller lagrar sina data i en ADLS Gen2 behållare som är associerad med arbets ytans användardefinierade Apache Spark bibliotek hanteras också i samma lagrings konto.  Om du vill aktivera dessa användnings fall måste användare och MSI-yta beviljas **Storage BLOB data Contributor** -åtkomst till den här arbets ytan ADLS Gen2 lagrings behållare.  
 
 ## <a name="using-security-groups-as-a-best-practice"></a>Använd säkerhets grupper som bästa praxis
 

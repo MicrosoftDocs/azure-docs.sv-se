@@ -4,12 +4,12 @@ description: I den här artikeln beskrivs populära allmänna frågor om Azure S
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 3da86eead5b927a2a71d7b1a28bc5966bf5f8840
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: add5874dc828f05c7c51f0f378988c94cbd42486
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369445"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109563"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Allmänna frågor om Azure Site Recovery
 
@@ -272,6 +272,9 @@ Site Recovery skapar en kraschad återställnings punkt var femte minut.
 Programkonsekventa återställnings punkter skapas från programkonsekventa ögonblicks bilder. Programkonsekventa återställnings punkter fångar samma data som kraschbaserade ögonblicks bilder samtidigt som data i minnet och alla transaktioner i processen fångas.
 
 På grund av det extra innehållet är programkonsekventa ögonblicks bilder de mest inblandade och ta den längsta. Vi rekommenderar programkonsekventa återställnings punkter för databas operativ system och program som SQL Server.
+
+>[!Note]
+>Det går inte att skapa programkonsekventa återställnings punkter på Windows-datorer om det finns fler än 64 volymer.
 
 ### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>Vad är effekten av programkonsekventa återställnings punkter för program prestanda?
 

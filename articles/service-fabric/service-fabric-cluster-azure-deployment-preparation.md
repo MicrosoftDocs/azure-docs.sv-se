@@ -3,12 +3,12 @@ title: Planera distribution av Azure Service Fabric-kluster
 description: Lär dig mer om att planera och förbereda för en produktions Service Fabric kluster distribution till Azure.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 1064e59491b7144aafade24bd50131478fe025eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9de59811397eb47809c6d71f608e43beae5bfadb
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87281335"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109631"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Planera och förbereda för en kluster distribution
 
@@ -89,8 +89,6 @@ Tillfälliga OS-diskar är inte en speciell Service Fabric funktion, utan i stä
 
 > [!NOTE]
 > Användar program får inte ha några beroenden/filer/artefakter på OS-disken eftersom operativ system disken skulle förloras vid en uppgradering av operativ systemet.
-> Därför rekommenderar vi inte att du använder [PatchOrchestrationApplication](https://github.com/microsoft/Service-Fabric-POA) med tillfälliga diskar.
->
 
 > [!NOTE]
 > Det går inte att uppgradera befintliga icke-tillfälliga VMSS på plats för att använda tillfälliga diskar.

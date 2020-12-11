@@ -3,14 +3,14 @@ title: Läs Azure Event Hubs fångade data från en python-app (senaste)
 description: Den här artikeln visar hur du skriver python-kod för att avbilda data som skickas till en händelsehubben och läsa insamlade händelse data från ett Azure Storage-konto.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: cb7165565516136a8425c4c77748c2e13715edb7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f513b35e300141f16ee4c4880bc54aaf37945d65
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88927875"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109920"
 ---
-# <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>Avbilda Event Hubs data i Azure Storage och läsa den med hjälp av python (Azure-eventhub version 5)
+# <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub"></a>Avbilda Event Hubs data i Azure Storage och läsa den med hjälp av python (Azure-eventhub)
 
 Du kan konfigurera en Event Hub så att data som skickas till en Event Hub samlas in i ett Azure Storage-konto eller Azure Data Lake Storage gen 1 eller gen 2. Den här artikeln visar hur du skriver python-kod för att skicka händelser till en händelsehubben och läsa insamlade data från **Azure Blob Storage**. Mer information om den här funktionen finns i [Översikt över Event Hubs avbildnings funktionen](event-hubs-capture-overview.md).
 
@@ -87,7 +87,7 @@ I det här avsnittet skapar du ett Python-skript som skickar 200-händelser (10 
 ## <a name="create-a-python-script-to-read-your-capture-files"></a>Skapa ett Python-skript för att läsa dina insamlingsfiler
 I det här exemplet lagras insamlade data i Azure Blob Storage. Skriptet i det här avsnittet läser insamlade datafiler från ditt Azure Storage-konto och genererar CSV-filer så att du enkelt kan öppna och visa dem. 10 filer visas i den aktuella arbets katalogen i programmet. De här filerna kommer att innehålla miljö avläsningar för 10 enheter. 
 
-1. Skapa ett skript med namnet *capturereader.py*i python-redigeraren. Det här skriptet läser de fångade filerna och skapar en fil för varje enhet för att skriva data enbart för den enheten.
+1. Skapa ett skript med namnet *capturereader.py* i python-redigeraren. Det här skriptet läser de fångade filerna och skapar en fil för varje enhet för att skriva data enbart för den enheten.
 2. Klistra in följande kod i *capturereader.py*. 
    
     ```python
@@ -155,7 +155,7 @@ I det här exemplet lagras insamlade data i Azure Blob Storage. Skriptet i det h
    pip install azure-eventhub
    pip install avro-python3
    ```
-2. Ändra katalogen till den katalog där du sparade *Sender.py* och *capturereader.py*och kör följande kommando:
+2. Ändra katalogen till den katalog där du sparade *Sender.py* och *capturereader.py* och kör följande kommando:
    
    ```
    python sender.py

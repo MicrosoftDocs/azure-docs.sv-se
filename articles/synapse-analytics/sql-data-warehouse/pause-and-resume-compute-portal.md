@@ -1,6 +1,6 @@
 ---
-title: 'Snabb start: pausa och återuppta beräkning i dedikerad SQL-pool (tidigare SQL DW) via Azure Portal'
-description: Använd Azure Portal för att pausa beräkning för SQL-poolen för att spara kostnader. Återuppta beräkning när du är redo att använda data lagret.
+title: 'Snabb start: pausa och återuppta beräkning i dedikerad SQL-pool via Azure Portal'
+description: Använd Azure Portal för att pausa beräkningen för dedikerad SQL-pool för att spara kostnader. Återuppta beräkning när du är redo att använda data lagret.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 88f6782a0f81b94977b37bd8f87bf26a0d4c8a72
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7d258243dae06461d21e9b5f0346e419f034eea9
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457691"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109715"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-formerly-sql-dw-via-the-azure-portal"></a>Snabb start: pausa och återuppta beräkning i dedikerad SQL-pool (tidigare SQL DW) via Azure Portal
+# <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-via-the-azure-portal"></a>Snabb start: pausa och återuppta beräkning i dedikerad SQL-pool via Azure Portal
 
-Du kan använda Azure Portal för att pausa och återuppta den dedikerade SQL-poolen (tidigare SQL DW) Compute-resurser. Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://azure.microsoft.com/free/) konto innan du börjar.
+Du kan använda Azure Portal för att pausa och återuppta de dedikerade beräknings resurserna för SQL-poolen. Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://azure.microsoft.com/free/) konto innan du börjar.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logga in på Azure Portal
 
@@ -40,9 +40,8 @@ För att minska kostnaderna kan du pausa och återuppta beräknings resurser på
 Följ dessa steg om du vill pausa en dedikerad SQL-pool:
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
-2. Klicka på **dedikerad SQL-pool (tidigare SQL DW)** på den vänstra navigerings sidan i Azure Portal.
-2. Välj **mySampleDataWarehouse** från sidan **dedikerad SQL-pool (tidigare SQL DW)** för att öppna SQL-poolen. 
-3. Meddelande **status** är **online** på sidan **mySampleDataWarehouse** .
+2. Öppna SQL-poolen genom att gå till sidan för **dedikerad SQL-pool** . 
+3. Meddelandets **status** är **online**.
 
     ![Beräkna online](././media/pause-and-resume-compute-portal/compute-online.png)
 
@@ -62,8 +61,7 @@ Följ dessa steg om du vill pausa en dedikerad SQL-pool:
 
 Följ dessa steg om du vill återuppta en dedikerad SQL-pool.
 
-1. Klicka på **dedikerad SQL-pool (tidigare SQL DW)** på den vänstra sidan i Azure Portal.
-2. Öppna sidan SQL-pool genom att välja **mySampleDataWarehouse** från den **dedikerade SQL-poolen (tidigare SQL DW))** . 
+1. Öppna SQL-poolen genom att gå till sidan för **dedikerad SQL-pool** .
 3. På sidan **mySampleDataWarehouse** har meddelande **status** **pausats**.
 
     ![Beräkna offline](././media/pause-and-resume-compute-portal/compute-offline.png)

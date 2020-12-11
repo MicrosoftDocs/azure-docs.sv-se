@@ -3,12 +3,12 @@ title: Azure Event Grid säkerhet och autentisering
 description: Beskriver Azure Event Grid och dess begrepp.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 5a1e4af17c2f4335ed26490bfc2408c66f4aee6b
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 24954ce0a0dc54a04720c0d0b495d14e950a2f71
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328733"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109597"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>Auktorisera åtkomst till Event Grid resurser
 Med Azure Event Grid kan du kontrol lera åtkomst nivån som ges till olika användare för att utföra olika **hanterings åtgärder** , till exempel lista händelse prenumerationer, skapa nya och generera nycklar. Event Grid använder rollbaserad åtkomst kontroll i Azure (Azure RBAC).
@@ -17,17 +17,18 @@ Med Azure Event Grid kan du kontrol lera åtkomst nivån som ges till olika anv�
 > EventGrid stöder inte Azure RBAC för publicering av händelser till Event Grid ämnen eller domäner. Använd en signatur för delad åtkomst (SAS) eller token för att autentisera klienter som publicerar händelser. Mer information finns i [autentisera publicerings klienter](security-authenticate-publishing-clients.md). 
 
 ## <a name="operation-types"></a>Åtgärds typer
+Kör följande Azure CLI-kommando om du vill ha en lista över åtgärder som stöds av Azure Event Grid: 
 
-Event Grid stöder följande åtgärder:
+```azurecli-interactive
+az provider operation show --namespace Microsoft.EventGrid
+```
 
-* Microsoft. EventGrid/*/Read
-* Microsoft. EventGrid/*/Write
-* Microsoft. EventGrid/*/Delete
+Följande åtgärder returnerar potentiellt hemlig information som filtreras bort från normala Läs åtgärder. Vi rekommenderar att du begränsar åtkomsten till dessa åtgärder. 
+
 * Microsoft. EventGrid/eventSubscriptions/getFullUrl/Action
 * Microsoft. EventGrid/ämnen/Listnycklar/åtgärd
 * Microsoft. EventGrid/ämnen/regenerateKey/åtgärd
 
-De sista tre åtgärderna returnerar potentiellt hemlig information som filtreras bort från normala Läs åtgärder. Vi rekommenderar att du begränsar åtkomsten till dessa åtgärder. 
 
 ## <a name="built-in-roles"></a>Inbyggda roller
 

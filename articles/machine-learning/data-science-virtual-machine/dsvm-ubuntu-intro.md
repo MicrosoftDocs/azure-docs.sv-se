@@ -8,12 +8,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: quickstart
 ms.date: 03/10/2020
-ms.openlocfilehash: 97283a096d1b1549b2c7fa8f34a32b4bb4dca1eb
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 4a414b706dffae76eaa9841ee7b1fe6bcc1ac0d3
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349060"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109852"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Snabb start: Konfigurera Data Science Virtual Machine för Linux (Ubuntu)
 
@@ -39,25 +39,25 @@ Här följer stegen för att skapa en instans av Data Science Virtual Machine Ub
    
 1. Ange följande information för att konfigurera varje steg i guiden:
 
-    1. **Grunder** :
+    1. **Grunder**:
     
-       * **Prenumeration** : om du har mer än en prenumeration väljer du den som datorn ska skapas i och faktureras. Du måste ha behörighet att skapa resurser för prenumerationen.
-       * **Resurs grupp** : skapa en ny grupp eller Använd en befintlig grupp.
-       * **Namn på virtuell dator** : Ange namnet på den virtuella datorn. Det här namnet kommer att användas i Azure Portal.
-       * **Region** : Välj det data Center som är lämpligast. För snabbast nätverks åtkomst är det data Center som har de flesta data eller som är närmast din fysiska plats. Lär dig mer om [Azure-regioner](https://azure.microsoft.com/global-infrastructure/regions/).
-       * **Bild** : låt standardvärdet vara kvar.
-       * **Storlek** : det här alternativet ska fyllas i automatiskt med en storlek som passar för allmänna arbets belastningar. Läs mer om [storlekar för virtuella Linux-datorer i Azure](../../virtual-machines/sizes.md).
-       * **Autentiseringstyp** : Välj "lösen ord" för snabbare installation. 
+       * **Prenumeration**: om du har mer än en prenumeration väljer du den som datorn ska skapas i och faktureras. Du måste ha behörighet att skapa resurser för prenumerationen.
+       * **Resurs grupp**: skapa en ny grupp eller Använd en befintlig grupp.
+       * **Namn på virtuell dator**: Ange namnet på den virtuella datorn. Det här namnet kommer att användas i Azure Portal.
+       * **Region**: Välj det data Center som är lämpligast. För snabbast nätverks åtkomst är det data Center som har de flesta data eller som är närmast din fysiska plats. Lär dig mer om [Azure-regioner](https://azure.microsoft.com/global-infrastructure/regions/).
+       * **Bild**: låt standardvärdet vara kvar.
+       * **Storlek**: det här alternativet ska fyllas i automatiskt med en storlek som passar för allmänna arbets belastningar. Läs mer om [storlekar för virtuella Linux-datorer i Azure](../../virtual-machines/sizes.md).
+       * **Autentiseringstyp**: Välj "lösen ord" för snabbare installation. 
          
          > [!NOTE]
          > Om du tänker använda JupyterHub väljer du "Password", eftersom JupyterHub *inte* har kon figurer ATS för att använda offentliga SSH-nycklar.
 
-       * **Användar namn** : Ange administratörens användar namn. Du använder det här användar namnet för att logga in på den virtuella datorn. Det här användar namnet behöver inte vara detsamma som ditt Azure-användarnamn. Använd *inte* versala bokstäver.
+       * **Användar namn**: Ange administratörens användar namn. Du använder det här användar namnet för att logga in på den virtuella datorn. Det här användar namnet behöver inte vara detsamma som ditt Azure-användarnamn. Använd *inte* versala bokstäver.
          
          > [!IMPORTANT]
          > Om du använder versaler i ditt användar namn kommer JupyterHub inte att fungera och det uppstår ett internt 500-server fel.
 
-       * **Lösen ord** : Ange det lösen ord som du använder för att logga in på den virtuella datorn.    
+       * **Lösen ord**: Ange det lösen ord som du använder för att logga in på den virtuella datorn.    
     
    1. Välj **Granska + skapa**.
    1. **Granska + skapa**
@@ -73,8 +73,6 @@ Du kan komma åt Ubuntu-DSVM på ett av tre sätt:
   * SSH för terminalsessioner
   * X2Go för grafiska sessioner
   * JupyterHub och JupyterLab för Jupyter Notebook
-
-Du kan också bifoga en Data Science Virtual Machine till Azure Notebooks för att köra Jupyter-anteckningsböcker på den virtuella datorn och kringgå begränsningarna i den kostnads fria tjänst nivån. Mer information finns i [Hantera och konfigurera Azure Notebooks projekt](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
 
 ### <a name="ssh"></a>SSH
 
@@ -95,13 +93,13 @@ Den virtuella Linux-datorn är redan etablerad med X2Go-servern och redo att ta 
 1. Kör X2Go-klienten. Om fönstret "ny session" inte visas automatiskt går du till session-> ny session.
 
 1. I konfigurationsfönstret anger du följande konfigurationsparametrar:
-   * **Fliken Session** :
-     * **Värd** : Ange IP-adressen för din virtuella dator, som du antecknade tidigare.
-     * **Logga in** : Ange användarnamnet på den virtuella Linux-datorn.
-     * **SSH Port** : Lämna det på 22, standardvärdet.
-     * **Sessionstyp** : Ändra värdet till **XFCE**. Den virtuella Linux-datorn har för närvarande endast stöd för XFCE Desktop.
-   * **Fliken Media** : Du kan stänga av ljudsupporten och klientutskrift om du inte behöver använda dem.
-   * **Delade mappar** : Använd den här fliken för att lägga till den klient dator katalog som du vill montera på den virtuella datorn. 
+   * **Fliken Session**:
+     * **Värd**: Ange IP-adressen för din virtuella dator, som du antecknade tidigare.
+     * **Logga in**: Ange användarnamnet på den virtuella Linux-datorn.
+     * **SSH Port**: Lämna det på 22, standardvärdet.
+     * **Sessionstyp**: Ändra värdet till **XFCE**. Den virtuella Linux-datorn har för närvarande endast stöd för XFCE Desktop.
+   * **Fliken Media**: Du kan stänga av ljudsupporten och klientutskrift om du inte behöver använda dem.
+   * **Delade mappar**: Använd den här fliken för att lägga till den klient dator katalog som du vill montera på den virtuella datorn. 
 
    ![X2go-konfiguration](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
 1. Välj **OK**.

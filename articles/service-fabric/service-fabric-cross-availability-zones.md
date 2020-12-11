@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 56f7224d93293a0a26d09692996d2c4a4ace344b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8e4a9201c14e71520bd58ff1017b700ca47fa21
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803746"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109830"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Distribuera ett Azure Service Fabric-kluster över Tillgänglighetszoner
 Tillgänglighetszoner i Azure är ett erbjudande med hög tillgänglighet som skyddar dina program och data från data Center problem. En tillgänglighets zon är en unik fysisk plats utrustad med oberoende strömförsörjning, kylning och nätverk inom en Azure-region.
@@ -37,7 +37,7 @@ Den rekommenderade topologin för den primära nodtypen kräver de resurser som 
 
  ![Arkitektur för Azure Service Fabric tillgänglighets zon][sf-architecture]
 
-## <a name="networking-requirements"></a>Nätverks krav
+## <a name="networking-requirements"></a>Nätverkskrav
 ### <a name="public-ip-and-load-balancer-resource"></a>Offentlig IP-adress och Load Balancer resurs
 Om du vill aktivera egenskapen zoner i en resurs för skalnings uppsättning för virtuella datorer måste den belastningsutjämnare och den IP-resurs som den virtuella datorns skalnings uppsättning refererar till använda en *standard* -SKU. Genom att skapa en belastningsutjämnare eller en IP-resurs utan SKU-egenskapen skapas en grundläggande SKU, som inte stöder Tillgänglighetszoner. En standard-SKU-belastningsutjämnare blockerar all trafik från utsidan som standard. Om du vill tillåta yttre trafik måste en NSG distribueras till under nätet.
 
@@ -332,4 +332,96 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 
 ```
 
+## <a name="preview-enable-multiple-availability-zones-in-single-virtual-machine-scale-set"></a>Förhandsgranskningsvyn Aktivera flera tillgänglighets zoner i en skalnings uppsättning för en virtuell dator
+
+Den tidigare nämnda lösningen använder en nodeType per AZ. Med följande lösning kan användarna distribuera tre AZ i samma nodeType.
+
+Fullständig exempel mal len finns [här](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-Windows-Multiple-AZ-Secure).
+
+![Arkitektur för Azure Service Fabric tillgänglighets zon][sf-multi-az-arch]
+
+### <a name="configuring-zones-on-a-virtual-machine-scale-set"></a>Konfigurera zoner på en skalnings uppsättning för virtuella datorer
+Om du vill aktivera zoner i en skalnings uppsättning för virtuella datorer måste du inkludera följande tre värden i den virtuella datorns skalnings uppsättnings resurs.
+
+* Det första värdet är egenskapen **zoner** , som anger Tillgänglighetszoner som finns i skalnings uppsättningen för den virtuella datorn.
+* Det andra värdet är egenskapen "singlePlacementGroup", som måste vara inställd på True.
+* Det tredje värdet är "zoneBalance" och är valfritt, vilket garanterar strikt zon utjämning om värdet är true. Läs om [zoneBalancing](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing).
+* Åsidosättningar av Faulydomain och UpgradeDomain måste inte konfigureras.
+
+```json
+{
+    "apiVersion": "2018-10-01",
+    "type": "Microsoft.Compute/virtualMachineScaleSets",
+    "name": "[parameters('vmNodeType1Name')]",
+    "location": "[parameters('computeLocation')]",
+    "zones": ["1", "2", "3"],
+    "properties": {
+        "singlePlacementGroup": "true",
+        "zoneBalance": false
+    }
+}
+```
+
+>[!NOTE]
+> * **SF-kluster måste ha minst en primär nodeType. DurabilityLevel för primär nodeTypes bör vara silver eller högre.**
+> * Den AZ som sträcker sig över skalnings uppsättningen för den virtuella datorn ska konfigureras med minst tre tillgänglighets zoner oberoende av durabilityLevel.
+> * AZ som spänner över virtuell dators skalnings uppsättning med silver tålighet (eller högre) bör ha minst 15 virtuella datorer.
+> * AZ som sträcker sig över en virtuell dators skalnings uppsättning med brons hållbarhet bör ha minst 6 virtuella datorer.
+
+### <a name="enabling-the-support-for-multiple-zones-in-the-service-fabric-nodetype"></a>Aktivera stöd för flera zoner i Service Fabric nodeType
+Service Fabric nodeType måste vara aktive rad för att stödja flera tillgänglighets zoner.
+
+* Det första värdet är **multipleAvailabilityZones** som ska anges till sant för nodeType.
+* Det andra värdet är **sfZonalUpgradeMode** och är valfritt. Den här egenskapen kan inte ändras om en NodeType med flera AZ redan finns i klustret.
+      Egenskapen styr den logiska grupperingen av virtuella datorer i uppgraderings domäner.
+          Om värdet är inställt på falskt (fast läge): virtuella datorer under nodtypen kommer att grupperas i UD som ignorerar zon informationen i 5 UDs.
+          Om värdet utelämnas eller anges till sant (hierarkiskt läge) kommer de virtuella datorerna att grupperas för att avspegla zonindelade-distributionen i upp till 15 UDs. Var och en av de tre zonerna kommer att ha 5 UDs.
+          Den här egenskapen definierar bara uppgraderings beteendet för ServiceFabric program och kod uppgraderingar. De underliggande uppgraderingarna av skalnings uppsättningen för virtuella datorer är fortfarande parallella i alla AZ.
+      Den här egenskapen påverkar inte UD-distributionen för nodtyper som inte har flera zoner aktiverade.
+* Det tredje värdet är **vmssZonalUpgradeMode = Parallel**. Detta är en *obligatorisk* egenskap som ska konfigureras i klustret, om en nodeType med flera AZS läggs till. Den här egenskapen definierar uppgraderings läget för de uppdateringar av skalnings uppsättningen för virtuella datorer som sker parallellt i alla AZ på en gång.
+      Just nu kan den här egenskapen bara ställas in på Parallel.
+* Service Fabric kluster resursens API version ska vara "2020-12-01-för hands version" eller högre.
+* Kluster kod versionen ska vara "7.2.445" eller högre.
+
+```json
+{
+    "apiVersion": "2020-12-01-preview",
+    "type": "Microsoft.ServiceFabric/clusters",
+    "name": "[parameters('clusterName')]",
+    "location": "[parameters('clusterLocation')]",
+    "dependsOn": [
+        "[concat('Microsoft.Storage/storageAccounts/', parameters('supportLogStorageAccountName'))]"
+    ],
+    "properties": {
+        "SFZonalUpgradeMode": "Hierarchical",
+        "VMSSZonalUpgradeMode": "Parallel",
+        "nodeTypes": [
+          {
+                "name": "[parameters('vmNodeType0Name')]",
+                "multipleAvailabilityZones": true,
+          }
+        ]
+}
+```
+
+>[!NOTE]
+> * Offentliga IP-adresser och Load Balancer resurser ska använda standard-SKU: n enligt beskrivningen ovan i artikeln.
+> * Egenskapen "multipleAvailabilityZones" på nodeType kan bara definieras vid skapande av nodeType och kan inte ändras senare. Därför kan inte befintliga nodeTypes konfigureras med den här egenskapen.
+> * När "hierarchicalUpgradeDomain" utelämnas eller är inställt på Sant går kluster-och program distributionen långsammare eftersom det finns fler uppgraderings domäner i klustret. Det är viktigt att du ändrar tids gränsen för uppgraderings principen till att omfatta varaktigheten för uppgraderings tiden för 15 uppgraderings domäner.
+> * Vi rekommenderar att du ställer in Tillförlitlighets nivån för klustret på platina för att säkerställa att klustret finns kvar i scenariot med en zon.
+
+>[!NOTE]
+> För bästa praxis rekommenderar vi att hierarchicalUpgradeDomain anges till sant eller utelämnas. Distributionen kommer att följa zonindelade-distributionen av virtuella datorer som påverkar en mindre mängd repliker och/eller instanser som gör dem säkrare.
+> Använd hierarchicalUpgradeDomain inställt på false om distributions hastigheten är en prioritet eller endast tillstånds lös arbets belastning körs på nodtypen med flera AZ. Detta leder till att UD-ingången inträffar parallellt i alla AZ.
+
+### <a name="migration-to-the-node-type-with-multiple-availability-zones"></a>Migrering till nodtypen med flera Tillgänglighetszoner
+För alla migreringsåtgärder måste en ny nodeType läggas till som har stöd för flera tillgänglighets zoner. Det går inte att migrera en befintlig nodeType för att stödja flera zoner.
+Artikeln [här](https://docs.microsoft.com/azure/service-fabric/service-fabric-scale-up-primary-node-type ) samlar in detaljerade anvisningar om hur du lägger till en ny NodeType och lägger även till de andra resurser som krävs för den nya NodeType som IP-och lb-resurserna. Samma artikel beskriver också nu för att dra tillbaka den befintliga nodeType efter att nodeType med flera tillgänglighets zoner har lagts till i klustret.
+
+* Migrering från en nodeType som använder Basic LB-och IP-resurser: Detta är redan beskrivet [här för lösningen](https://docs.microsoft.com/azure/service-fabric/service-fabric-cross-availability-zones#migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip) med en nodtyp per AZ. 
+    För den nya nodtypen är den enda skillnaden att det bara finns en skalnings uppsättning för virtuella datorer och 1 NodeType för alla AZ i stället för 1 varje per AZ.
+* Migrering från en nodeType som använder standard-SKU: er och IP-resurser med NSG: Följ samma procedur som beskrivs ovan med undantaget att det inte behövs att lägga till nya LB-, IP-och NSG-resurser och samma resurser kan återanvändas i den nya nodeType.
+
+
 [sf-architecture]: ./media/service-fabric-cross-availability-zones/sf-cross-az-topology.png
+[sf-multi-az-arch]: ./media/service-fabric-cross-availability-zones/sf-multi-az-topology.png

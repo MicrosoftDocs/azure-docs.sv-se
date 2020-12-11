@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: aadc8e817eb2b5de856ac73cfd010b48d0531bfc
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 9735293c182e7fe67a498529425459c13a199101
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523626"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109801"
 ---
 # <a name="understand-the-roles-required-to-perform-common-tasks-in-synapse"></a>Förstå de roller som krävs för att utföra vanliga uppgifter i Synapse
 
@@ -58,6 +58,7 @@ I tabellen nedan visas vanliga aktiviteter och för varje aktivitet, Synapse RBA
 
 >[!Note]
 >- Synapse-administratören visas inte för varje aktivitet om det inte är den enda rollen som ger nödvändig behörighet.  En Synapse-administratör kan utföra alla uppgifter som aktive ras av andra Synapse RBAC-roller.</br>
+>- Den minsta Synapse RBAC-rollen som krävs visas.
 >- Alla Synapse RBAC-roller vid valfri omfattning ger dig Synapse användar behörighet på arbets ytan
 >- Alla Synapse RBAC-behörigheter/åtgärder som visas i tabellen är prefixen Microsoft/Synapse/arbetsyte/... </br>
 
@@ -69,51 +70,50 @@ Uppgift (jag vill...) |Roll (jag måste vara...)|Synapse RBAC-behörighet/åtgä
 |Lista SQL-pooler, Apache Spark pooler, integrations körningar och åtkomst till konfigurations information|Synapse-användare eller|läsa|
 ||Azure-ägare, deltagare eller läsare på arbets ytan|inget
 |Lista länkade tjänster, autentiseringsuppgifter, hanterade privata slut punkter|Synapse-användare|läsa
-**SQL-pooler**||
+SQL-POOLER|
 Skapa en dedikerad SQL-pool eller en server lös SQL-pool|Azure-ägare eller deltagare på arbets ytan|inget
 Hantera (pausa, skala eller ta bort) en dedikerad SQL-pool|Azure-ägare eller deltagare i SQL-poolen eller arbets ytan|inget
-Skapa ett SQL-skript</br>|Synapse-användare eller </br>Azure-ägare eller deltagare på arbets ytan, </br>*Ytterligare SQL-behörigheter krävs för att köra ett SQL-skript*.|
+Skapa ett SQL-skript</br>|Synapse-användare eller </br>Azure-ägare eller deltagare på arbets ytan, </br>*Ytterligare SQL-behörigheter krävs för att köra ett SQL-skript, publicera eller genomför ändringar*.|
 Visa och öppna eventuella publicerade SQL-skript| Synapse artefakt användare, artefakt utgivare, Synapse-deltagare|artefakter/läsningar
 Köra ett SQL-skript på en server lös SQL-pool|SQL-behörigheter för poolen (beviljas automatiskt till en Synapse-administratör)|inget
-Köra ett SQL-skript på en dedikerad SQL-pool|Kräver SQL-behörighet för poolen|inget
+Köra ett SQL-skript på en dedikerad SQL-pool|SQL-behörigheter för poolen|inget
 Publicera ett nytt, uppdaterat eller Borttaget SQL-skript|Synapse artefakt utgivare, Synapse-deltagare|sqlScripts/skriva, ta bort
-Spara ändringar i ett SQL-skript till en git-lagrings platsen|Kräver git-behörigheter på lagrings platsen|
+Spara ändringar i ett SQL-skript till git-lagrings platsen|Kräver git-behörigheter på lagrings platsen|
 Tilldela Active Directory administratör på arbets ytan (via arbets ytans egenskaper i Azure Portal)|Azure-ägare eller deltagare på arbets ytan |
-**Apache Spark pooler**||
+APACHE SPARK-POOLER|
 Skapa en Apache Spark pool|Azure-ägare eller deltagare på arbets ytan|
 Övervaka Apache Spark program| Synapse-användare|läsa
 Visa loggfilerna för Notebook och jobb körning |Synapse Compute-operator|
 Avbryt alla Notebook-eller Spark-jobb som körs på en Apache Spark pool|Synapse Compute-operator i Apache Spark-poolen.|bigDataPools/useCompute
-Skapa en antecknings bok eller en jobb definition|Synapse användare eller Azure-ägare, deltagare eller läsare på arbets ytan</br> *Ytterligare behörigheter krävs för att köra, publicera eller Spara*|läsa
+Skapa en antecknings bok eller en jobb definition|Synapse-användare eller </br>Azure-ägare, deltagare eller läsare på arbets ytan</br> *Ytterligare behörigheter krävs för att köra, publicera eller bekräfta ändringar*|läsa</br></br></br></br></br> 
 Visa och öppna en publicerad antecknings bok eller jobb definition, inklusive Granska sparade utdata|Synapse artefakt användare, Synapse artefakt utgivare, Synapse Contributor på arbets ytan|artefakter/läsningar
 Kör en bärbar dator och granska dess utdata|Synapse Apache Spark-administratör, Synapse Compute-operator på den valda Apache Spark poolen|bigDataPools/useCompute 
 Publicera eller ta bort en antecknings bok eller jobb definition (inklusive utdata) till tjänsten|Artefakt utgivare på arbets ytan, Synapse Apache Spark administratör|antecknings böcker/skriva, ta bort
-Genomför ändringar i en bärbar dator eller jobb definition på git-arbetsgrenen|Git-behörigheter|inget
-**Pipelines, integrerings körningar, data flöden, data uppsättningar och utlösare**||
+Genomför ändringar i en bärbar dator eller jobb definition på git-lagrings platsen|Git-behörigheter|inget
+PIPELINES, INTEGRERINGS KÖRNINGAR, DATA FLÖDEN, DATA UPPSÄTTNINGAR & UTLÖSARE|
 Skapa, uppdatera eller ta bort en integrerings körning|Azure-ägare eller deltagare på arbets ytan|
 Övervaka status för integration runtime|Synapse-användare|läsa, pipeliner/viewOutputs
 Granska pipeline-körningar|Synapse artefakt utgivare/Synapse-deltagare|läsa, pipeliner/viewOutputs 
-Skapa en pipeline |Synapse-användare </br>[**_under överväganden + Synapse Credential-användare på WorkspaceSystemIdentity_* _]</br>_Additional behörigheter krävs för att publicera eller Spara *|läsa, autentiseringsuppgifter/UseSecret/åtgärd
-Skapa ett data flöde, en data uppsättning eller en utlösare |Synapse-användare</br>*Ytterligare behörigheter krävs för att publicera eller Spara*|läsa
+Skapa en pipeline |Synapse-användare</br>*Ytterligare Synapse-behörigheter krävs för att felsöka, lägga till utlösare, publicera eller Spara ändringar*|läsa
+Skapa ett data flöde eller en data uppsättning |Synapse-användare</br>*Ytterligare Synapse-behörigheter krävs för att publicera eller Spara ändringar*|läsa
 Visa och öppna en publicerad pipeline |Synapse artefakt användare | artefakter/läsningar
 Förhandsgranska data uppsättnings data|Synapse användare + Synapse Credential User på WorkspaceSystemIdentity| 
 Felsöka en pipeline med standard integrerings körningen|Synapse användare + Synapse Credential User på WorkspaceSystemIdentity-autentiseringsuppgiften|Läs </br>autentiseringsuppgifter/useSecret
-Skapa en utlösare, inklusive utlösare nu|Synapse användare + Synapse Credential User på WorkspaceSystemIdentity|läsa, autentiseringsuppgifter/useSecret/åtgärd
+Skapa en utlösare, inklusive utlösare nu (kräver behörighet att köra pipelinen)|Synapse användare + Synapse Credential User på WorkspaceSystemIdentity|läsa, autentiseringsuppgifter/useSecret/åtgärd
+Kör/kör en pipeline|Synapse användare + Synapse Credential User på WorkspaceSystemIdentity|läsa, autentiseringsuppgifter/useSecret/åtgärd
 Kopiera data med hjälp av Kopiera data-verktyget|Synapse användare + Synapse Credential User på arbets ytans system identitet|läsa, autentiseringsuppgifter/useSecret/åtgärd
 Mata in data (med ett schema)|Synapse Author + Synapse Credential User på arbets ytans system identitet|läsa, autentiseringsuppgifter/useSecret/åtgärd
-Publicera en ny, uppdaterad eller borttagen pipeline, data flöde eller utlösare för tjänsten|Synapse artefakt utgivare på arbets ytan|pipeline/Skriv, ta bort</br>data flöden-skrivning, ta bort</br>utlösare/skriva, ta bort
-Publicera ett nytt, uppdaterat eller Borttaget data flöde, data uppsättning eller utlösare för tjänsten|Artefakt utgivare på arbets ytan|utlösare/skriva, ta bort
-Spara (genomför) ändringar av pipelines, data flöden, data uppsättningar, utlösare till git-lagrings platsen |Git-behörigheter|inget 
-**Länkade tjänster**||
-Skapa en länkad tjänst (inklusive tilldela autentiseringsuppgifter)|Synapse-användare</br>*Ytterligare behörigheter krävs för att köra, publicera eller Spara*|läsa
+Publicera en ny, uppdaterad eller borttagen pipeline, data flöde eller utlösare för tjänsten|Synapse artefakt utgivare på arbets ytan|pipeline/Skriv, ta bort</br>data flöden/skriva, ta bort</br>utlösare/skriva, ta bort
+Genomför ändringar av pipelines, data flöden, data uppsättningar eller utlösare för git-lagrings platsen |Git-behörigheter|inget 
+LÄNKADE TJÄNSTER|
+Skapa en länkad tjänst (inklusive tilldela autentiseringsuppgifter)|Synapse-användare</br>*Ytterligare behörigheter krävs för att använda en länkad tjänst med autentiseringsuppgifter, eller för att publicera eller Spara ändringar*|läsa
 Visa och öppna en publicerad länkad tjänst|Synapse artefakt användare|linkedServices/skriva, ta bort  
-Testa anslutningen till en länkad tjänst som skyddas av en autentiseringsuppgift|Synapse användare och Synapse Credential User|autentiseringsuppgifter/useSecret/åtgärd|
-Publicera en länkad tjänst|Synapse artefakt utgivare|linkedServices/skriva, ta bort
-Spara (genomför) länkade tjänst definitioner till git-lagrings platsen|Git-behörigheter|inget
-**Åtkomsthantering**||
+Testa anslutningen till en länkad tjänst som skyddas av en autentiseringsuppgift|Synapse användare + Synapse Credential User|autentiseringsuppgifter/useSecret/åtgärd|
+Publicera en länkad tjänst|Synapse artefakt utgivare, Synapse länkade Data Manager|linkedServices/skriva, ta bort
+Genomför länkade tjänst definitioner till git-lagrings platsen|Git-behörigheter|inget
+ÅTKOMST HANTERING|
 Granska Synapse RBAC-roll tilldelningar i valfri omfattning|Synapse-användare|läsa
-Tilldela och ta bort Synapse RBAC-roll tilldelningar för användare, grupper och tjänstens huvud namn| Synapse-administratör på arbets ytan eller på en bestämd arbets ytans objekt omfång|roleAssignments/skriva, ta bort
-Skapa eller ta bort Synapse RBAC-åtkomst till kod artefakter|Synapse-administratör vid arbets ytans omfång|roleAssignments/skriva, ta bort   
+Tilldela och ta bort Synapse RBAC-roll tilldelningar för användare, grupper och tjänstens huvud namn| Synapse-administratör på arbets ytan eller på en bestämd arbets ytans objekt omfång|roleAssignments/skriva, ta bort 
 
 >[!Note]
 >Gäst användare från en annan klient organisation kan inte granska, lägga till eller ändra roll tilldelningar oavsett vilken roll de har tilldelats. 

@@ -4,12 +4,12 @@ description: Visar hur du hanterar stora uppsättningar av ämnen i Azure Event 
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 277db97211b196c9853470c2d12cc2246a4005b2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: e6861e89def10eec391bf302b1ddc726b38bb98c
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330085"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109903"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Hantera ämnen och publicera händelser med hjälp av händelse domäner
 
@@ -22,12 +22,6 @@ Den här artikeln visar hur du:
 
 Mer information om händelse domäner finns i [förstå händelse domäner för att hantera Event Grid ämnen](event-domains.md).
 
-[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
-
-## <a name="install-preview-feature"></a>Installera förhandsversionsfunktionen
-
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
-
 ## <a name="create-an-event-domain"></a>Skapa en händelse domän
 
 Skapa en händelse domän för att hantera stora avsnitts uppsättningar.
@@ -35,10 +29,6 @@ Skapa en händelse domän för att hantera stora avsnitts uppsättningar.
 # <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
 ```azurecli-interactive
-# If you haven't already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
 az eventgrid domain create \
   -g <my-resource-group> \
   --name <my-domain-name> \
@@ -47,11 +37,7 @@ az eventgrid domain create \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```azurepowershell-interactive
-# If you have not already installed the module, do it now.
-# This module is required for preview features.
-Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
-
-New-AzureRmEventGridDomain `
+New-AzEventGridDomain `
   -ResourceGroupName <my-resource-group> `
   -Name <my-domain-name> `
   -Location <location>
@@ -97,7 +83,7 @@ az role assignment create \
 Följande PowerShell-kommando begränsar `alice@contoso.com` för att skapa och ta bort händelse prenumerationer endast i avsnittet `demotopic1` :
 
 ```azurepowershell-interactive
-New-AzureRmRoleAssignment `
+New-AzRoleAssignment `
   -SignInName alice@contoso.com `
   -RoleDefinitionName "EventGrid EventSubscription Contributor (Preview)" `
   -Scope /subscriptions/<sub-id>/resourceGroups/<my-resource-group>/providers/Microsoft.EventGrid/domains/<my-domain-name>/topics/demotopic1
@@ -126,7 +112,7 @@ az eventgrid event-subscription create \
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```azurepowershell-interactive
-New-AzureRmEventGridSubscription `
+New-AzEventGridSubscription `
   -ResourceId "/subscriptions/<sub-id>/resourceGroups/<my-resource-group>/providers/Microsoft.EventGrid/domains/<my-domain-name>/topics/demotopic1" `
   -EventSubscriptionName <event-subscription> `
   -Endpoint https://contoso.azurewebsites.net/api/updates
@@ -138,7 +124,7 @@ Om du behöver en test slut punkt för att prenumerera på dina händelser till 
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to Deploy to Aquent." /></a>
 
-Behörigheter som har angetts för ett ämne lagras i Azure Active Directory och måste tas bort uttryckligen. Om du tar bort en händelse prenumeration återkallar inte en användare åtkomst till att skapa händelse prenumerationer om de har Skriv behörighet för ett ämne.
+Behörigheter som har angetts för ett ämne lagras i Azure Active Directory och måste tas bort uttryckligen. Om du tar bort en händelse prenumeration återkallar inte en användare åtkomst till att skapa händelse prenumerationer om de har Skriv behörighet i ett ämne.
 
 
 ## <a name="publish-events-to-an-event-grid-domain"></a>Publicera händelser till en Event Grid domän
@@ -193,7 +179,7 @@ az eventgrid domain key list \
 Använd för att hämta domän slut punkten med PowerShell
 
 ```azurepowershell-interactive
-Get-AzureRmEventGridDomain `
+Get-AzEventGridDomain `
   -ResourceGroupName <my-resource-group> `
   -Name <my-domain>
 ```
@@ -201,13 +187,27 @@ Get-AzureRmEventGridDomain `
 Använd följande för att hämta nycklar för en domän:
 
 ```azurepowershell-interactive
-Get-AzureRmEventGridDomainKey `
+Get-AzEventGridDomainKey `
   -ResourceGroupName <my-resource-group> `
   -Name <my-domain>
 ```
 ---
 
 Och Använd sedan din favorit metod för att göra ett HTTP-inlägg för att publicera dina händelser till din Event Grid-domän.
+
+## <a name="search-lists-of-topics-or-subscriptions"></a>Sök i listor med ämnen eller prenumerationer
+
+Om du vill söka efter och hantera ett stort antal ämnen eller prenumerationer Event Grid programmets API: er som stöder listor och sid brytning.
+
+### <a name="using-cli"></a>Använda CLI
+Följande kommando visar till exempel alla ämnen med namn som innehåller `mytopic` . 
+
+```azurecli-interactive
+az eventgrid topic list --odata-query "contains(name, 'mytopic')"
+```
+
+Mer information om det här kommandot finns i [`az eventgrid topic list`](/cli/azure/eventgrid/topic?#az_eventgrid_topic_list) . 
+
 
 ## <a name="next-steps"></a>Nästa steg
 
