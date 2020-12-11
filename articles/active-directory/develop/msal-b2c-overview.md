@@ -13,12 +13,12 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev devx-track-js
-ms.openlocfilehash: 327280c193c3c2fb829e468bccfc352f35edfdb5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: ef1c0003978251dd2637915e56dc396e85f4438f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92673502"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107880"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Använd Microsoft Authentication Library för Java Script för att arbeta med Azure AD B2C
 
@@ -169,7 +169,7 @@ Följande steg förutsätter att du redan har följt stegen i avsnittet föregå
 
 ### <a name="step-2-catch-and-handle-authentication-errors-in-your-login-method"></a>Steg 2: fånga och hantera autentiseringsfel i inloggnings metoden
 
-När användaren väljer **glömt lösen ord** , genererar programmet ett fel som du bör fånga i din kod och sedan hanterar genom att presentera lämpligt användar flöde. I det här fallet `b2c_1_reset` flödet för lösen ords återställning.
+När användaren väljer **glömt lösen ord**, genererar programmet ett fel som du bör fånga i din kod och sedan hanterar genom att presentera lämpligt användar flöde. I det här fallet `b2c_1_reset` flödet för lösen ords återställning.
 
 1. Utöka din inloggnings metod enligt följande:
 
@@ -207,14 +207,14 @@ När användaren väljer **glömt lösen ord** , genererar programmet ett fel so
 
     När du har återställt lösen ordet återgår användaren tillbaka till programmet för att logga in igen.
 
-    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Inloggnings skärmen visas av Azure AD B2C" border="false":::
+    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Flödes skärmarna för lösen ords återställning visade Azure AD B2C" border="false":::
 
-    Mer information om felkoder och hantering av undantag finns i [MSAL-fel och undantags koder](msal-handling-exceptions.md).
+    Mer information om felkoder och hantering av undantag finns i [MSAL-fel och undantags koder](msal-error-handling-js.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
 Lär dig mer om dessa Azure AD B2C koncept:
 
-- [Användar flöden](../../active-directory-b2c/tutorial-create-user-flows.md)
+- [Användarflöden](../../active-directory-b2c/tutorial-create-user-flows.md)
 - [Anpassade principer](../../active-directory-b2c/custom-policy-get-started.md)
-- [UX-anpassning](../../active-directory-b2c/custom-policy-configure-user-input.md)
+- [UX-anpassning](../../active-directory-b2c/configure-user-input.md)

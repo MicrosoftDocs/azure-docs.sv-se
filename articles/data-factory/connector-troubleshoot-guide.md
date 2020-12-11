@@ -5,16 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 12/02/2020
+ms.date: 12/09/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: c90b7ce86e06669696a4b9f7e0b2f5287e9dd97e
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: a7a81a742922d45be965c7f73e3cb910d0ef989a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533204"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109303"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Felsöka Azure Data Factory-anslutningsprogram
 
@@ -46,6 +46,15 @@ Den här artikeln visar vanliga fel söknings metoder för anslutningar i Azure 
 ### <a name="error-code--azurestorageoperationfailedconcurrentwrite"></a>Felkod: AzureStorageOperationFailedConcurrentWrite
 
 - **Meddelande**: `Error occurred when trying to upload a file. It's possible because you have multiple concurrent copy activities runs writing to the same file '%name;'. Check your ADF configuration.`
+
+
+### <a name="invalid-property-during-copy-activity"></a>Ogiltig egenskap vid kopierings aktivitet
+
+- **Meddelande**:  `Copy activity <Activity Name> has an invalid "source" property. The source type is not compatible with the dataset <Dataset Name> and its linked service <Linked Service Name>. Please verify your input against.`
+
+- **Orsak**: den typ som definierats i data uppsättningen stämmer inte med den typ av källa/mottagare som definierats i kopierings aktiviteten.
+
+- **Lösning**: redigera data uppsättningen eller pipeline-JSON-definitionen för att göra typerna konsekventa och kör om distributionen.
 
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
@@ -159,6 +168,32 @@ Den här artikeln visar vanliga fel söknings metoder för anslutningar i Azure 
 ### <a name="error-code-adlsgen2timeouterror"></a>Felkod: AdlsGen2TimeoutError
 
 - **Meddelande**: `Request to ADLS Gen2 account '%account;' met timeout error. It is mostly caused by the poor network between the Self-hosted IR machine and the ADLS Gen2 account. Check the network to resolve such error.`
+
+
+### <a name="request-to-adls-gen2-account-met-timeout-error"></a>Begäran till ADLS Gen2 konto uppfyllt tids gräns fel
+
+- **Meddelande**: felkod = `UserErrorFailedBlobFSOperation` , fel meddelande = `BlobFS operation failed for: A task was canceled` .
+
+- **Orsak**: problemet orsakas av timeout-felet för ADLS Gen2 Sink, som oftast inträffar på den lokala IR-datorn.
+
+- **Rekommendation**: 
+
+    1. Placera din egen IR-dator och mål ADLS Gen2 konto i samma region om det är möjligt. Detta kan undvika slumpmässiga tids gräns fel och få bättre prestanda.
+
+    1. Kontrol lera om det finns någon speciell nätverks inställning som ExpressRoute och se till att nätverket har tillräckligt med bandbredd. Vi rekommenderar att du sänker inställningen för IR-arbetsjobb med egen värd när den totala bandbredden är låg, genom vilken kan undvika nätverks resurs konkurrens mellan flera samtidiga jobb.
+
+    1. Använd mindre block storlek för icke-binär kopia för att minimera tids gräns felet om fil storleken är måttlig eller liten. Se [Blob Storage skicka block](https://docs.microsoft.com/rest/api/storageservices/put-block).
+
+       Om du vill ange den anpassade block storleken kan du redigera egenskapen i. JSON-redigeraren:
+    ```
+    "sink": {
+        "type": "DelimitedTextSink",
+        "storeSettings": {
+            "type": "AzureBlobFSWriteSettings",
+            "blockSizeInMB": 8
+        }
+    }
+    ```
 
 
 ## <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
@@ -372,6 +407,7 @@ Den här artikeln visar vanliga fel söknings metoder för anslutningar i Azure 
 
 - **Lösning**: ange alternativet **Använd typ standard** som falskt under PolyBase Settings i kopierings aktivitets handfat.
 
+
 ### <a name="error-message-expected-data-type-decimalxx-offending-value"></a>Fel meddelande: förväntad datatyp: DECIMAL (x, x), felaktigt värde
 
 - **Symptom**: när du kopierar data från tabell data källa (till exempel SQL Server) till Azure Synapse Analytics med hjälp av mellanlagrad kopiering och PolyBase, träffas följande fel:
@@ -387,6 +423,7 @@ Den här artikeln visar vanliga fel söknings metoder för anslutningar i Azure 
 - **Orsak**: Azure Synapse Analytics PolyBase kan inte infoga en tom sträng (null-värde) i decimal kolumnen.
 
 - **Lösning**: ange alternativet **Använd typ standard** som falskt under PolyBase Settings i kopierings aktivitets handfat.
+
 
 ### <a name="error-message-java-exception-message-hdfsbridgecreaterecordreader"></a>Fel meddelande: Java-undantags meddelande: HdfsBridge:: CreateRecordReader
 
@@ -421,6 +458,7 @@ Den här artikeln visar vanliga fel söknings metoder för anslutningar i Azure 
 
 - Eller Använd Mass infognings metod genom att inaktivera PolyBase
 
+
 ### <a name="error-message-the-condition-specified-using-http-conditional-headers-is-not-met"></a>Fel meddelande: villkoret som anges med HTTP-villkorliga huvud (a) är inte uppfyllt
 
 - **Symptom**: du använder SQL-fråga för att hämta data från Azure Synapse Analytics och följande fel meddelande visas:
@@ -433,6 +471,58 @@ Den här artikeln visar vanliga fel söknings metoder för anslutningar i Azure 
 
 - **Lösning**: kör samma fråga i SSMS och kontrol lera om samma resultat visas. Om ja, öppna ett support ärende till Azure Synapse Analytics och ange din Azure Synapse Analytics-Server och databas namn för ytterligare fel sökning.
             
+
+### <a name="low-performance-when-load-data-into-azure-sql"></a>Låg prestanda vid inläsning av data i Azure SQL
+
+- **Symptom**: kopiering av data i Azure SQL blir långsam.
+
+- **Orsak**: den grundläggande orsaken till problemet utlöses oftast av flask halsen för Azure SQL-sidan. Här följer några möjliga orsaker:
+
+    1. Azure DB-nivån är inte tillräckligt hög.
+
+    1. Användning av Azure DB DTU är nära 100%. Du kan [övervaka prestanda](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview) och överväga att uppgradera DB-nivån.
+
+    1. Indexen har inte angetts korrekt. Ta bort alla index innan data inläsningen och återskapa dem när belastningen är klar.
+
+    1. WriteBatchSize är inte tillräckligt stor för att rymma schema rad storleken. Försök att förstora egenskapen för problemet.
+
+    1. I stället för Mass indrag används den lagrade proceduren, vilket förväntas ha sämre prestanda. 
+
+- **Lösning**: se TSG för [kopierings aktivitetens prestanda](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting)
+
+
+### <a name="performance-tier-is-low-and-leads-to-copy-failure"></a>Prestanda nivån är låg och leads kan inte kopieras
+
+- **Symptom**: nedan visas ett fel meddelande när data kopierades till Azure SQL: `Database operation failed. Error message from database execution : ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.`
+
+- **Orsak**: Azure SQL S1 används, vilket träffar i/o-gränser i detta fall.
+
+- **Lösning**: uppgradera prestanda nivån för Azure SQL för att åtgärda problemet. 
+
+
+### <a name="sql-table-cannot-be-found"></a>Det går inte att hitta SQL-tabellen 
+
+- **Symptom**: ett fel inträffade vid kopiering av data från hybrid till lokal SQL Server tabell:`Cannot find the object "dbo.Contoso" because it does not exist or you do not have permissions.`
+
+- **Orsak**: det aktuella SQL-kontot har inte tillräcklig behörighet för att köra förfrågningar som utfärdats av .net SqlBulkCopy. WriteToServer.
+
+- **Lösning**: växla till ett mer PRIVILEGIE rad SQL-konto.
+
+
+### <a name="string-or-binary-data-would-be-truncated"></a>Sträng data eller binära data skulle trunkeras
+
+- **Symptom**: ett fel uppstod när data kopierades till lokal/Azure SQL Server tabell: 
+
+- **Orsak**: CX SQL Table schema definition har en eller flera kolumner med kortare längd än förväntat.
+
+- **Lösning**: prova följande steg för att åtgärda problemet:
+
+    1. Använd [fel tolerans](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance), särskilt "redirectIncompatibleRowSettings" för att felsöka vilka rader som har problemet.
+
+    1. Markera kryss rutan Omdirigerad data med SQL Table schema kolumn längd för att se vilka kolumner som behöver uppdateras.
+
+    1. Uppdatera tabell schema enligt detta.
+
 
 ## <a name="delimited-text-format"></a>Avgränsat text format
 
@@ -453,7 +543,7 @@ Den här artikeln visar vanliga fel söknings metoder för anslutningar i Azure 
 
 - **Rekommendation**: Hämta rad antalet i fel meddelandet, kontrol lera radens kolumn och korrigera data.
 
-- **Orsak**: om det förväntade kolumn antalet är "1" i fel meddelande, är det möjligt att du har angett fel komprimerings-eller format inställningar, vilket ledde till att ADF kunde tolka dina filer felaktigt.
+- **Orsak**: om det förväntade kolumn antalet är "1" i fel meddelandet kanske du har angett fel komprimerings-eller format inställningar. ADF parsade därför fil (er) felaktigt.
 
 - **Rekommendation**: kontrol lera format inställningarna för att se till att de matchar dina källfiler.
 
@@ -488,6 +578,16 @@ Den här artikeln visar vanliga fel söknings metoder för anslutningar i Azure 
 
 - **Rekommendation**: kör pipelinen igen. Försök att minska parallellitet om du inte kan fortsätta. Kontakta Dynamics support om det fortfarande inte fungerar.
 
+
+### <a name="columns-are-missing-when-previewingimporting-schema"></a>Kolumner saknas vid för hands visning/import av schema
+
+- **Symptom**: några av kolumnerna visar sig att saknas när du importerar schema eller för hands Grans kar data. Fel meddelande: `The valid structure information (column name and type) are required for Dynamics source.`
+
+- **Orsak**: det här problemet är i princip design, eftersom ADF inte kan visa kolumner som inte har något värde i de första 10 posterna. Kontrol lera att de kolumner som du har lagt till har rätt format. 
+
+- **Rekommendation**: Lägg till kolumner på fliken mappning manuellt.
+
+
 ## <a name="excel-format"></a>Excel-format
 
 ### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>Tids gräns eller dåliga prestanda vid parsning av stor Excel-fil
@@ -495,7 +595,8 @@ Den här artikeln visar vanliga fel söknings metoder för anslutningar i Azure 
 - **Symptom**:
 
     1. När du skapar Excel-datauppsättningen och importera schema från anslutning/butik, förhandsgranska data, lista eller uppdatera kalkyl blad, kan du trycka på timeout-fel om Excel-filen är stor i storlek.
-    2. När du använder kopierings aktivitet för att kopiera data från stor Excel-fil (>= 100 MB) till ett annat data lager, kan det uppstå problem med långsam prestanda eller OOM.
+
+    1. När du använder kopierings aktivitet för att kopiera data från stor Excel-fil (>= 100 MB) till ett annat data lager, kan det uppstå problem med långsam prestanda eller OOM.
 
 - **Orsak**: 
 
@@ -507,9 +608,23 @@ Den här artikeln visar vanliga fel söknings metoder för anslutningar i Azure 
 
     1. När du importerar schema kan du generera en mindre exempel fil som är en del av original filen och välja importera schema från exempel fil i stället för "Importera schema från anslutning/butik".
 
-    2. För att Visa workseet, i list rutan kalkyl blad, kan du klicka på "redigera" och ange bladets namn/index i stället.
+    2. För List kalkyl bladet, i list rutan kalkyl blad, kan du klicka på "redigera" och ange bladets namn/index i stället.
 
     3. Om du vill kopiera en stor Excel-fil (>100 MB) till en annan lagrings plats kan du använda Excel-källan för data flöde som sport-direktuppspelning och fungerar bättre.
+
+
+## <a name="hdinsight"></a>HDInsight
+
+### <a name="ssl-error-when-adf-linked-service-using-hdinsight-esp-cluster"></a>SSL-fel vid länkad ADF-tjänst med HDInsight ESP-kluster
+
+- **Meddelande**: `Failed to connect to HDInsight cluster: 'ERROR [HY000] [Microsoft][DriverSupport] (1100) SSL certificate verification failed because the certificate is missing or incorrect.`
+
+- **Orsak**: problemet är förmodligen relaterat till system Trust Store.
+
+- **Lösning**: du kan gå till sökvägen **Microsoft integration RUNTIME\4.0\SHARED\ODBC Drivers\Microsoft Hive ODBC Driver\lib** och öppna DriverConfiguration64.exe för att ändra inställningen.
+
+    ![Avmarkera Använd system förtroende lager](./media/connector-troubleshoot-guide/system-trust-store-setting.png)
+
 
 ## <a name="json-format"></a>JSON-format
 
@@ -548,6 +663,20 @@ Den här artikeln visar vanliga fel söknings metoder för anslutningar i Azure 
 - **Meddelande**: `Error occurred when deserializing source JSON file '%fileName;'. The JSON format doesn't allow mixed arrays and objects.`
 
 
+## <a name="oracle"></a>Oracle
+
+### <a name="error-code-argumentoutofrangeexception"></a>Felkod: ArgumentOutOfRangeException
+
+- **Meddelande**: `Hour, Minute, and Second parameters describe an un-representable DateTime.`
+
+- **Orsak**: i ADF stöds datetime-värden i intervallet från 0001-01-01 00:00:00 till 9999-12-31 23:59:59. Oracle stöder dock större intervall av DateTime-värde (som BC-Century eller min/SEK>59), vilket leder till att det inte går att använda ADF.
+
+- **Rekommendation**: 
+
+    Kör `select dump(<column name>)` för att kontrol lera om värdet i Oracle är i ADF-intervallet. 
+
+    Om du vill veta byte-sekvensen i resultatet kontrollerar du https://stackoverflow.com/questions/13568193/how-are-dates-stored-in-oracle .
+
 
 ## <a name="parquet-format"></a>Parquet-format
 
@@ -570,7 +699,7 @@ Den här artikeln visar vanliga fel söknings metoder för anslutningar i Azure 
 
 ### <a name="error-code--parquetinvalidfile"></a>Felkod: ParquetInvalidFile
 
-- **Meddelande**: `File is not a valid parquet file.`
+- **Meddelande**: `File is not a valid Parquet file.`
 
 - **Orsak**: Parquet fil problem.
 
@@ -651,7 +780,7 @@ Den här artikeln visar vanliga fel söknings metoder för anslutningar i Azure 
 
 ### <a name="error-code--parquetunsupportedinterpretation"></a>Felkod: ParquetUnsupportedInterpretation
 
-- **Meddelande**: `The given interpretation '%interpretation;' of parquet format is not supported.`
+- **Meddelande**: `The given interpretation '%interpretation;' of Parquet format is not supported.`
 
 - **Orsak**: scenario som inte stöds
 
@@ -665,6 +794,45 @@ Den här artikeln visar vanliga fel söknings metoder för anslutningar i Azure 
 - **Orsak**: scenario som inte stöds
 
 - **Rekommendation**: ta bort CompressionType i nytto lasten.
+
+
+### <a name="error-code--usererrorjniexception"></a>Felkod: UserErrorJniException
+
+- **Meddelande**: `Cannot create JVM: JNI return code [-6][JNI call failed: Invalid arguments.]`
+
+- **Orsak**: det går inte att skapa JVM eftersom vissa ogiltiga (globala) argument har angetts.
+
+- **Rekommendation**: Logga in på datorn som är värd för **varje nod** i din egen värd-IR. Kontrol lera att systemvariabeln är korrekt inställd så här: `_JAVA_OPTIONS "-Xms256m -Xmx16g" with memory bigger than 8 G` . Starta om alla IR-noder och kör sedan pipelinen igen.
+
+
+### <a name="arithmetic-overflow"></a>Aritmetiskt spill
+
+- **Symptom**: fel meddelande inträffade vid kopiering av Parquet-filer: `Message = Arithmetic Overflow., Source = Microsoft.DataTransfer.Common`
+
+- **Orsak**: för närvarande är bara decimaler av precision <= 38 och längden på heltals delen <= 20 som stöds när du kopierar filer från Oracle till Parquet. 
+
+- **Lösning**: du kan konvertera kolumner med det här problemet till varchar2 som en lösning.
+
+
+### <a name="no-enum-constant"></a>Ingen Enum-konstant
+
+- **Symptom**: fel meddelande inträffade vid kopiering av data till Parquet-format: `java.lang.IllegalArgumentException:field ended by &apos;;&apos;` , eller: `java.lang.IllegalArgumentException:No enum constant org.apache.parquet.schema.OriginalType.test` .
+
+- **Orsak**: 
+
+    Problemet kan bero på blank steg eller tecken som inte stöds (t. ex.,; {} () \n\t =) i kolumn namn, eftersom Parquet inte stöder sådant format. 
+
+    Kolumn namn som *contoso (test)* kommer till exempel att parsa typen inom hakparenteser från [kod](https://github.com/apache/parquet-mr/blob/master/parquet-column/src/main/java/org/apache/parquet/schema/MessageTypeParser.java) `Tokenizer st = new Tokenizer(schemaString, " ;{}()\n\t");` . Felet aktive ras eftersom det inte finns någon sådan "test"-typ.
+
+    Om du vill kontrol lera vilka typer som stöds kan du kontrol lera dem [här](https://github.com/apache/parquet-mr/blob/master/parquet-column/src/main/java/org/apache/parquet/schema/OriginalType.java).
+
+- **Lösning**: 
+
+    1. Dubbel kontroll om det finns blank steg i namn på mottagar kolumn.
+
+    1. Dubbel kontroll om den första raden med vita blank steg används som kolumn namn.
+
+    1. Dubbel kontroll av typen OriginalType stöds eller inte. Försök att undvika dessa särskilda symboler `,;{}()\n\t=` . 
 
 
 ## <a name="rest"></a>REST
@@ -689,6 +857,114 @@ Den här artikeln visar vanliga fel söknings metoder för anslutningar i Azure 
     - Observera att "sväng" kanske inte lämpar sig för att återskapa verifierings problemet för SSL-certifikat. I vissa fall kördes "klammer"-kommandot utan att några validerings problem med SSL-certifikatet har påträffats. Men när samma URL körs i webbläsaren, returneras inget SSL-certifikat i den första platsen där klienten kan upprätta förtroende med servern.
 
       Verktyg som **Postman** och **Fiddler** rekommenderas för ovanstående fall.
+
+
+## <a name="sftp"></a>SFTP
+
+### <a name="invalid-sftp-credential-provided-for-sshpublickey-authentication-type"></a>Ogiltiga SFTP-autentiseringsuppgifter har angetts för autentiseringstypen ' SSHPublicKey '
+
+- **Symptom**: autentisering med offentlig SSH-nyckel används när ogiltiga SFTP-autentiseringsuppgifter har angetts för autentiseringstypen ' SshPublicKey '.
+
+- **Orsak**: det här felet kan bero på tre möjliga orsaker:
+
+    1. Innehåll för privat nyckel hämtas från AKV/SDK, men kodas inte korrekt.
+
+    1. Fel format för nyckel innehåll har valts.
+
+    1. Ogiltig autentiseringsuppgift eller privat nyckel innehåll.
+
+- **Lösning**: 
+
+    1. För **Orsak 1**:
+
+       Om privat nyckel innehåll kommer från AKV och den ursprungliga nyckel filen kan fungera om kunden laddar upp den direkt till SFTP-länkad tjänst
+
+       Se https://docs.microsoft.com/azure/data-factory/connector-sftp#using-ssh-public-key-authentication PrivateKey-innehållet är en Base64-kodad SSH-nyckel innehåll.
+
+       Koda **hela innehållet i den ursprungliga privata nyckel filen** med base64-kodning och lagra den kodade STRÄNGEN i akv. Den ursprungliga privata nyckel filen är den som kan fungera på en länkad SFTP-tjänst om du klickar på överför från fil.
+
+       Här är några exempel som används för att generera strängen:
+
+       - Använd C#-kod:
+       ```
+       byte[] keyContentBytes = File.ReadAllBytes(Private Key Path);
+       string keyContent = Convert.ToBase64String(keyContentBytes, Base64FormattingOptions.None);
+       ```
+
+       - Använd python-kod:
+       ```
+       import base64
+       rfd = open(r'{Private Key Path}', 'rb')
+       keyContent = rfd.read()
+       rfd.close()
+       print base64.b64encode(Key Content)
+       ```
+
+       - Använd base64-konverterings verktyg från tredje part
+
+         Verktyg som https://www.base64encode.org/ rekommenderas.
+
+    1. För **Orsak 2**:
+
+       Om PKCS # 8-format använder den privata SSH-nyckeln
+
+       PKCS # 8-format privat SSH-nyckel (börja med "-----starta KRYPTERAd privat nyckel-----") stöds för närvarande inte för att komma åt SFTP-servern i ADF. 
+
+       Kör följande kommandon för att konvertera nyckeln till traditionellt SSH-nyckelpar (börja med "-----påbörja privat RSA-nyckel-----"):
+
+       ```
+       openssl pkcs8 -in pkcs8_format_key_file -out traditional_format_key_file
+       chmod 600 traditional_format_key_file
+       ssh-keygen -f traditional_format_key_file -p
+       ```
+    1. För **Orsak 3**:
+
+       Kontrol lera med verktyg som WinSCP för att se om nyckel filen eller lösen ordet är korrekt.
+
+
+### <a name="incorrect-linked-service-type-is-used"></a>En felaktig länkad tjänst typ används
+
+- **Symptom**: det går inte att nå FTP/SFTP-servern.
+
+- **Orsak**: felaktig länkad tjänst typ används för FTP-eller SFTP-server, som att använda en LÄNKad FTP-tjänst för att ansluta till en SFTP-server eller i omvänd ordning.
+
+- **Lösning**: kontrol lera porten på mål servern. Som standard använder FTP port 21 och SFTP port 22.
+
+
+### <a name="sftp-copy-activity-failed"></a>Det gick inte att kopiera SFTP
+
+- **Symptom**: felkod: UserErrorInvalidColumnMappingColumnNotFound. Fel meddelande: `Column &apos;AccMngr&apos; specified in column mapping cannot be found in source data.`
+
+- **Orsak**: källan innehåller inte en kolumn med namnet "AccMngr".
+
+- **Lösning**: dubbelt kontrol lera hur din data uppsättning konfigureras genom att mappa kolumnen mål data mängd för att bekräfta om det finns en sådan "AccMngr"-kolumn.
+
+
+### <a name="sftp-server-connection-throttling"></a>Anslutnings begränsning för SFTP-server
+
+- **Symptom**: serverns svar innehåller inte SSH-protokoll identifiering och kunde inte kopieras.
+
+- **Orsak**: ADF skapar flera anslutningar för att ladda ned från SFTP-servern parallellt, och ibland kommer den att nå en begränsning på SFTP-servern. Praktiskt taget returnerar en annan server ett annat fel när du träffar på begränsningen.
+
+- **Lösning**: 
+
+    Ange maximalt antal samtidiga anslutningar för SFTP-datauppsättningen till 1 och kör kopian igen. Om det lyckas kan vi vara säker på att begränsningen är orsaken.
+
+    Kontakta SFTP-administratören om du vill höja gränsen för antalet samtidiga anslutningar, eller Lägg till under IP för att tillåta listan:
+
+    - Om du använder hanterad IR måste du lägga till [IP-intervall för Azure-datacenter](https://www.microsoft.com/download/details.aspx?id=41653).
+      Du kan också installera IR med egen värd om du inte vill lägga till en stor lista med IP-intervall i listan över tillåtna i SFTP-servern.
+
+    - Om du använder IR med egen värd lägger du till den dator-IP som installerade SHIR i listan över tillåtna.
+
+
+### <a name="error-code-sftprenameoperationfail"></a>Felkod: SftpRenameOperationFail
+
+- **Symptom**: pipelinen kunde inte kopiera data från blob till SFTP med följande fel: `Operation on target Copy_5xe failed: Failure happened on 'Sink' side. ErrorCode=SftpRenameOperationFail,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException` .
+
+- **Orsak**: alternativet useTempFileRename angavs som sant när data kopierades. Detta gör det möjligt för processen att använda temporära filer. Felet aktive ras om en eller flera temporära filer togs bort innan hela data kopieras.
+
+- **Lösning**: ange alternativet för UseTempFileName till false.
 
 
 ## <a name="general-copy-activity-error"></a>Fel vid allmän kopierings aktivitet

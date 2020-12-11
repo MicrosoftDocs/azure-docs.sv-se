@@ -3,12 +3,12 @@ title: Hantera Azure Arc-aktiverade servrar-agenten
 description: I den här artikeln beskrivs de olika hanterings aktiviteter som du vanligt vis utför under livs cykeln för Azure Arc-aktiverade servrar som är anslutna till dator agenten.
 ms.date: 10/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 63db1177b193cad66208964ec377fab0779f23ba
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9e17bf58d1e94b64d1cdc6ff0b57b1b6a81be180
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130977"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107200"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Hantera och underhålla den anslutna dator agenten
 
@@ -160,14 +160,14 @@ Azcmagent-verktyget (Azcmagent.exe) används för att konfigurera Azure Arc-akti
 
 * **-h eller--help** – visar tillgängliga kommando rads parametrar
 
-    Om du till exempel vill visa detaljerad hjälp för parametern **reconnect** skriver du `azcmagent reconnect -h` . 
+    Om du till exempel vill visa detaljerad hjälp för parametern **Connect** skriver du `azcmagent connect -h` . 
 
 * **-v eller--utförlig** -Aktivera utförlig loggning
 
 Du kan utföra en **anslutning** och koppla **från** manuellt när du är inloggad interaktivt eller automatisera med samma tjänst huvud namn som du använde för att publicera flera agenter eller med [en åtkomsttoken för Microsoft Identity Platform.](../../active-directory/develop/access-tokens.md) Om du inte använde ett huvud namn för tjänsten för att registrera datorn med Azure Arc-aktiverade servrar, kan du läsa följande [artikel](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) för att skapa ett huvud namn för tjänsten.
 
 >[!NOTE]
->Du måste ha *rot* åtkomst behörighet på Linux-datorer för att kunna köra **azcmagent** .
+>Du måste ha *rot* åtkomst behörighet på Linux-datorer för att kunna köra **azcmagent**.
 
 ### <a name="connect"></a>Ansluta
 
@@ -219,8 +219,8 @@ Följande metoder tar bort agenten, men tar inte bort mappen *C:\Program Files\A
 1. Om du vill avinstallera Windows-agenten från datorn gör du följande:
 
     a. Logga in på datorn med ett konto som har administratörs behörighet.  
-    b. Välj **program och funktioner** på **kontroll panelen** .  
-    c. I **program och funktioner** väljer du **Azure Connected Machine agent** , väljer **Avinstallera** och väljer sedan **Ja** .  
+    b. Välj **program och funktioner** på **kontroll panelen**.  
+    c. I **program och funktioner** väljer du **Azure Connected Machine agent**, väljer **Avinstallera** och väljer sedan **Ja**.  
 
     >[!NOTE]
     > Du kan också köra installations guiden för agenten genom att dubbelklicka på installations paketet för **AzureConnectedMachineAgent.msi** .
@@ -281,7 +281,7 @@ Om du planerar att sluta hantera datorn med stöd tjänster i Azure utför du f�
 
 1. Öppna Azure Arc-aktiverade servrar genom att gå till [Azure Portal](https://aka.ms/hybridmachineportal).
 
-2. Välj datorn i listan, Välj ellipsen (.. **.** ) och välj sedan **ta bort** .
+2. Välj datorn i listan, Välj ellipsen (..**.**) och välj sedan **ta bort**.
 
 ## <a name="update-or-remove-proxy-settings"></a>Uppdatera eller ta bort proxyinställningar
 

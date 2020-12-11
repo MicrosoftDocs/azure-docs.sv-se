@@ -5,12 +5,12 @@ description: Lär dig metod tipsen för kluster operatorn för att använda avan
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: c0c1f587b4e52607e9466300f976a52874c9e5ad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1a8138b4b2fdab2cdef8d2cb4c27de8d12ef38cd
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993711"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107354"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Bästa praxis för avancerade schemaläggningsfunktioner i Azure Kubernetes Service (AKS)
 
@@ -131,7 +131,7 @@ Mer information om hur du använder Node-väljare finns i [tilldela poddar till 
 
 ### <a name="node-affinity"></a>Node-tillhörighet
 
-En Node-selektor är ett grundläggande sätt att tilldela poddar till en specifik nod. Mer flexibilitet är tillgänglig med hjälp av *Node tillhörighet*. Med Node Affinity definierar du vad som händer om Pod inte kan matchas med en nod. Du kan *kräva* att Kubernetes Scheduler matchar en POD med en etikettad värd. Du kan också *föredra* en matchning men tillåta att Pod schemaläggs på en annan värd om den inte matchar är tillgänglig.
+En Node-selektor är ett grundläggande sätt att tilldela poddar till en specifik nod. Mer flexibilitet är tillgänglig med hjälp av *Node tillhörighet*. Med Node Affinity definierar du vad som händer om Pod inte kan matchas med en nod. Du kan *kräva* att Kubernetes Scheduler matchar en POD med en etikettad värd. Du kan också *föredra* en matchning men tillåta att Pod schemaläggs på en annan värd om ingen matchning är tillgänglig.
 
 I följande exempel anges nodens tillhörighet till *requiredDuringSchedulingIgnoredDuringExecution*. Den här tillhörigheten kräver att Kubernetes-schemat använder en nod med en matchande etikett. Om ingen nod är tillgänglig, måste Pod vänta på schemaläggning för att fortsätta. Om du vill tillåta att Pod schemaläggs på en annan nod kan du i stället ange värdet till *preferredDuringSchedulingIgnoreDuringExecution*:
 

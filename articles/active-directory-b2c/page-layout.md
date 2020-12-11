@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0bbe40a2329143b9abd4554ec715c64e5c26d4eb
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: beb38be985457ea36b2cea9a6dc337ba305d503f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028112"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108509"
 ---
 # <a name="page-layout-versions"></a>Sidlayoutversioner
 
@@ -46,16 +46,17 @@ Sid inlayout-paket uppdateras regelbundet för att inkludera korrigeringar och f
 
 - Fälten användar namn/e-post och lösen ord använder nu `form` HTML-elementet för att tillåta att Edge och Internet Explorer (IE) sparar informationen på rätt sätt.
 - Har lagt till en konfigurerbar verifierings fördröjning för användarindata för förbättrad användar upplevelse.
+- Hjälpmedels korrigeringar
 - Ett funktions problem har åtgärd ATS så att fel meddelanden nu läses av skärm läsaren. 
 - Fokus placeras nu i fältet lösen ord när e-postmeddelandet har verifierats.
 - Har tagits bort `autofocus` från kryss Rute kontrollen. 
-- Stöd har lagts till för en visnings-widget för verifiering av telefonnummer.
-- Nu kan du lägga till `data-preload="true"` attributet [i dina HTML-taggar](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) för att kontrol lera inläsnings ordningen för CSS och Java Script.
+- Stöd har lagts till för en visnings kontroll för verifiering av telefonnummer.
+- Nu kan du lägga till `data-preload="true"` attributet [i dina HTML-taggar] (anpassa-UI-with-html. MD # rikt linjer – för
   - Läs in länkade CSS-filer samtidigt som din HTML-mall så att den inte flimrar mellan att läsa in filerna.
   - Styra i vilken ordning `script` taggarna ska hämtas och köras före sid inläsningen.
 - E-postfältet är nu `type=email` och mobila tangent bord kommer att ange rätt förslag.
 - Stöd för Chrome-översättning.
-- Stöd har lagts till för klient anpassning på användar flödes sidor.
+- Stöd har lagts till för företags anpassning på användar flödes sidor.
 
 **1.1.0**
 
@@ -87,8 +88,8 @@ Sid inlayout-paket uppdateras regelbundet för att inkludera korrigeringar och f
 **1.2.0**
 
 - Fälten användar namn/e-post och lösen ord använder nu `form` HTML-elementet för att tillåta att Edge och Internet Explorer (IE) sparar informationen på rätt sätt.
-- Tillgänglighets korrigeringar.
-- Nu kan du lägga till `data-preload="true"` attributet [i dina HTML-taggar](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) för att kontrol lera inläsnings ordningen för CSS och Java Script.
+- Hjälpmedels korrigeringar
+- Nu kan du lägga till `data-preload="true"` attributet [i dina HTML-taggar](customize-ui-with-html.md#guidelines-for-using-custom-page-content) för att kontrol lera inläsnings ordningen för CSS och Java Script.
   - Läs in länkade CSS-filer samtidigt som din HTML-mall så att den inte flimrar mellan att läsa in filerna.
   - Styra i vilken ordning `script` taggarna ska hämtas och köras före sid inläsningen.
 - E-postfältet är nu `type=email` och mobila tangent bord kommer att ange rätt förslag.
@@ -118,7 +119,7 @@ Sid inlayout-paket uppdateras regelbundet för att inkludera korrigeringar och f
 **1.2.0**
 
 - Hjälpmedels korrigeringar
-- Nu kan du lägga till `data-preload="true"` attributet [i dina HTML-taggar](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) för att kontrol lera inläsnings ordningen för CSS och Java Script.
+- Nu kan du lägga till `data-preload="true"` attributet [i dina HTML-taggar](customize-ui-with-html.md#guidelines-for-using-custom-page-content) för att kontrol lera inläsnings ordningen för CSS och Java Script.
   - Läs in länkade CSS-filer samtidigt som din HTML-mall så att den inte flimrar mellan att läsa in filerna.
   - Styra i vilken ordning `script` taggarna ska hämtas och köras före sid inläsningen.
 - E-postfältet är nu `type=email` och mobila tangent bord ger rätt förslag
@@ -144,7 +145,7 @@ Sid inlayout-paket uppdateras regelbundet för att inkludera korrigeringar och f
 **1.2.0**
 
 - Hjälpmedels korrigeringar
-- Nu kan du lägga till `data-preload="true"` attributet [i dina HTML-taggar](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) för att kontrol lera inläsnings ordningen för CSS och Java Script.
+- Nu kan du lägga till `data-preload="true"` attributet [i dina HTML-taggar](customize-ui-with-html.md#guidelines-for-using-custom-page-content) för att kontrol lera inläsnings ordningen för CSS och Java Script.
   - Läs in länkade CSS-filer samtidigt som din HTML-mall så att den inte flimrar mellan att läsa in filerna.
   - Styra i vilken ordning `script` taggarna ska hämtas och köras före sid inläsningen.
 - E-postfältet är nu `type=email` och mobila tangent bord ger rätt förslag
@@ -165,7 +166,7 @@ Sid inlayout-paket uppdateras regelbundet för att inkludera korrigeringar och f
 **1.2.0**
 
 - Hjälpmedels korrigeringar
-- Nu kan du lägga till `data-preload="true"` attributet [i dina HTML-taggar](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) för att kontrol lera inläsnings ordningen för CSS och Java Script.
+- Nu kan du lägga till `data-preload="true"` attributet [i dina HTML-taggar](customize-ui-with-html.md#guidelines-for-using-custom-page-content) för att kontrol lera inläsnings ordningen för CSS och Java Script.
   - Läs in länkade CSS-filer samtidigt som din HTML-mall så att den inte flimrar mellan att läsa in filerna.
   - Styra i vilken ordning `script` taggarna ska hämtas och köras före sid inläsningen.
 - E-postfältet är nu `type=email` och mobila tangent bord ger rätt förslag
@@ -177,4 +178,4 @@ Sid inlayout-paket uppdateras regelbundet för att inkludera korrigeringar och f
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om hur du anpassar användar gränssnittet för dina program i anpassade principer finns i [Anpassa användar gränssnittet för ditt program med hjälp av en anpassad princip](custom-policy-ui-customization.md).
+Mer information om hur du anpassar användar gränssnittet för dina program i anpassade principer finns i [Anpassa användar gränssnittet för ditt program med hjälp av en anpassad princip](customize-ui-with-html.md).

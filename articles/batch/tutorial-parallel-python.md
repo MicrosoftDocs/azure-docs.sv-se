@@ -1,16 +1,16 @@
 ---
-title: 'Köra en parallell arbets belastning med python-API: et'
+title: 'Självstudie – köra en parallell arbets belastning med python-API: et'
 description: Självstudie – Bearbeta mediefiler parallellt med ffmpeg i Azure Batch med hjälp av klientbiblioteket Batch Python
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 34cea5e0b60c0a7ee8c3d31dd02a6f7e975de738
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7013ef1e9b6dda4554b665fa8199edb86a8a9adb
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87853338"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106520"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Självstudie: Köra en parallell arbetsbelastning med Azure Batch med hjälp av Python API
 
@@ -28,7 +28,7 @@ I den här självstudien konverterar du MP4-mediefiler parallellt till MP3-forma
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * [Python 2.7 eller 3.3 eller senare](https://www.python.org/downloads/)
 
@@ -268,7 +268,7 @@ När de inte längre behövs tar du bort resursgruppen, Batch-kontot och lagring
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudien lärde du dig att:
+I den här självstudiekursen lärde du dig att:
 
 > [!div class="checklist"]
 > * autentisera med Batch- och Storage-konton

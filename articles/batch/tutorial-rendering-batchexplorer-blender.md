@@ -1,16 +1,16 @@
 ---
-title: Rendera en Blender-scen med Azure Batch och Batch Explorer
+title: Självstudie – återge en blandnings-scen med Azure Batch och Batch Explorer
 description: Självstudie – Så här renderar du flera bildrutor från en Blender-scen med Azure Batch och Batch Explorer-klientprogrammet
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: 65baff827417cebe2289cc821df94acd38a1ae61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c015e4e83b0505a45690e92c1d732f74b6f6b0e
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85964812"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106480"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Självstudie: Rendera en Blender-scen med Batch Explorer
 
@@ -23,7 +23,7 @@ I den här guiden får du lära dig att:
 > * Rendera flera bildrutor
 > * Visa och ladda ned de renderade bildrutefilerna
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du behöver en användningsbaserad prenumeration eller annat Azure-köpalternativ för att använda renderingsprogram i Batch för betalning per användningstillfälle. Användningsbaserad licensiering stöds inte om du använder ett kostnadsfritt Azure-erbjudande som ger penningkredit.
 
@@ -93,6 +93,7 @@ Statusen för poolen och de virtuella datorerna kan övervakas i vyn ”Pools”
 ## <a name="create-a-rendering-job"></a>Skapa ett renderingsjobb
 
 Skapa ett renderingsjobb för att rendera några bildrutor med poolen som har skapats:
+
 * Välj menyalternativet ”Gallery” (Galleri) i huvudmenyn på vänster sida.
 * Välj objektet ”Blender” för listan med programobjekt.
 * Välj objekt för rendering av bildrutor på Windows Server.
@@ -137,6 +138,18 @@ När alla uppgifter har slutförts markeras jobbet som klart: ![Jobbet och alla 
 * Högerklicka och välj ”Delete” (Ta bort) eller välj papperskorgsikonen ovanför poolen
 
 ## <a name="next-steps"></a>Nästa steg
-* I avsnittet ”Gallery” (Galleri) utforskar du renderingsprogrammen som är tillgängliga via Batch Explorer.
-* För varje program finns det flera tillgängliga mallar, som utökas med tiden.  Till exempel kan du för Blender-mallar dela upp en enda bild i olika rutor, så delar av en bild kan renderas parallellt.
-* En heltäckande beskrivning av renderingsfunktioner finns i artiklarna [här](./batch-rendering-service.md).
+
+I den här självstudiekursen lärde du dig att:
+
+> [!div class="checklist"]
+> * Ladda upp en Blender-scen till Azure Storage
+> * Skapa en Batch-pool med flera noder för att utföra renderingen
+> * Rendera flera bildrutor
+> * Visa och ladda ned de renderade bildrutefilerna
+
+Fortsätt genom att utforska åter givnings programmen som är tillgängliga via Batch Explorer i avsnittet **Galleri** . För varje program finns det flera tillgängliga mallar, som utökas med tiden. Till exempel kan du för Blender-mallar dela upp en enda bild i olika rutor, så delar av en bild kan renderas parallellt.
+
+Mer information om rendering i molnskala finns bland alternativ för Batch Rendering-tjänsten.
+
+> [!div class="nextstepaction"]
+> [Batch-tjänsten för återgivning](batch-rendering-service.md)

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 519e2da902e1121220bcbb28c4cb18a68001293b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: fef192ab273a0e53958cda315932f91b427a5d7d
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840565"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108391"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Teknisk och funktions översikt över Azure Active Directory B2C
 
@@ -162,7 +162,7 @@ I Azure AD B2C kan du utforma användarnas identitets upplevelser så att de sid
 
 ![Skärm dum par av varumärkes anpassad inloggnings inloggnings sida](media/technical-overview/seamless-ux.png)
 
-Information om hur du anpassar gränssnitt finns [i avsnittet om anpassning av användar gränssnitt i Azure Active Directory B2C](customize-ui-overview.md).
+Information om hur du anpassar gränssnitt finns [i avsnittet om anpassning av användar gränssnitt i Azure Active Directory B2C](customize-ui-with-html.md).
 
 ## <a name="localization"></a>Lokalisering
 
@@ -170,7 +170,7 @@ Med språk anpassning i Azure AD B2C kan du hantera olika språk som passar dina
 
 ![Tre inloggnings sidor som visar användar gränssnitts text på olika språk](media/technical-overview/localization.png)
 
-Se hur lokalisering fungerar i [språk anpassning i Azure Active Directory B2C](user-flow-language-customization.md).
+Se hur lokalisering fungerar i [språk anpassning i Azure Active Directory B2C](language-customization.md).
 
 ## <a name="add-your-own-business-logic"></a>Lägg till din egen affärslogik
 
@@ -221,7 +221,7 @@ Mer information om Azure AD-roller, inklusive Azure AD B2C administrations roll 
 
 Azure AD B2C Multi-Factor Authentication (MFA) hjälper till att skydda åtkomsten till data och program samtidigt som användarnas skull bibehålls. Den ger ytterligare säkerhet genom att kräva en andra form av autentisering och ger stark autentisering genom att erbjuda en mängd användarvänliga autentiseringsmetoder. Dina användare kan kanske inte anropas för MFA baserat på konfigurations beslut som du kan göra som administratör.
 
-Se Aktivera MFA i användar flöden i [Aktivera Multi-Factor Authentication i Azure Active Directory B2C](custom-policy-multi-factor-authentication.md).
+Se Aktivera MFA i användar flöden i [Aktivera Multi-Factor Authentication i Azure Active Directory B2C](multi-factor-authentication.md).
 
 ### <a name="smart-account-lockout"></a>Utelåsning av Smart konto
 
@@ -235,7 +235,7 @@ Mer information om hur du hanterar lösen ords skydds inställningar finns i [Ha
 
 Under registreringen eller lösen ords återställning måste användarna ange ett lösen ord som uppfyller komplexitets reglerna. Som standard tillämpar Azure AD B2C en stark lösen ords princip. Azure AD B2C innehåller också konfigurations alternativ för att ange komplexitets kraven för de lösen ord som kunderna använder.
 
-Du kan konfigurera krav för lösen ords komplexitet i både [användar flöden](user-flow-password-complexity.md) och [anpassade principer](custom-policy-password-complexity.md).
+Du kan konfigurera krav för lösen ords komplexitet i både [användar flöden](password-complexity.md) och [anpassade principer](password-complexity.md).
 
 ## <a name="auditing-and-logs"></a>Granskning och loggar
 

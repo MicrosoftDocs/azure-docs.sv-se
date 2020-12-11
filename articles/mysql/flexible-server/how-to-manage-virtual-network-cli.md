@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 70cb1297c4b47f22f9eb5cc6992e6fcd6c58b364
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a41cd2ce14ceb452d783b472955de347199d0870
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545046"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109478"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-mysql---flexible-server-using-the-azure-cli"></a>Skapa och hantera virtuella nätverk för Azure Database for MySQL flexibel server med hjälp av Azure CLI
 
@@ -25,7 +25,7 @@ Azure Database for MySQL – flexibel server stöder två typer av ömsesidigt u
 
 I den här artikeln fokuserar vi på att skapa MySQL-server med **privat åtkomst (VNet-integrering)** med Azure CLI. Med *privat åtkomst (VNet-integrering)* kan du distribuera din flexibla server till din egen [Azure-Virtual Network](../../virtual-network/virtual-networks-overview.md). Virtuella Azure-nätverk tillhandahåller privat och säker nätverkskommunikation. I privat åtkomst är anslutningarna till MySQL-servern begränsade till endast inom det virtuella nätverket. Mer information om det finns i [privat åtkomst (VNet-integrering)](./concepts-networking.md#private-access-vnet-integration).
 
-I Azure Database for MySQL flexibel Server kan du bara distribuera servern till ett virtuellt nätverk och undernät när du skapar servern. När den flexibla servern har distribuerats till ett virtuellt nätverk och undernät kan du inte flytta den till ett annat virtuellt nätverk, undernät eller till *offentlig åtkomst (tillåtna IP-adresser)* .
+I Azure Database for MySQL flexibel Server kan du bara distribuera servern till ett virtuellt nätverk och undernät när du skapar servern. När den flexibla servern har distribuerats till ett virtuellt nätverk och undernät kan du inte flytta den till ett annat virtuellt nätverk, undernät eller till *offentlig åtkomst (tillåtna IP-adresser)*.
 
 ## <a name="launch-azure-cloud-shell"></a>Starta Azure Cloud Shell
 
@@ -50,10 +50,10 @@ az account set --subscription <subscription id>
 ```
 
 ## <a name="create-azure-database-for-mysql-flexible-server-using-cli"></a>Skapa Azure Database for MySQL flexibel server med CLI
-Du kan använda `az mysql flexible-server` kommandot för att skapa en flexibel server med *privat åtkomst (VNet-integrering)* . Det här kommandot använder privat åtkomst (VNet-integrering) som standard metod för anslutning. Ett virtuellt nätverk och undernät kommer att skapas åt dig om inget anges. Du kan också ange det befintliga virtuella nätverket och under nätet med hjälp av undernät-ID. <!-- You can provide the **vnet**,**subnet**,**vnet-address-prefix** or**subnet-address-prefix** to customize the virtual network and subnet.--> Det finns olika alternativ för att skapa en flexibel server med CLI som visas i exemplen nedan.
+Du kan använda `az mysql flexible-server` kommandot för att skapa en flexibel server med *privat åtkomst (VNet-integrering)*. Det här kommandot använder privat åtkomst (VNet-integrering) som standard metod för anslutning. Ett virtuellt nätverk och undernät kommer att skapas åt dig om inget anges. Du kan också ange det befintliga virtuella nätverket och under nätet med hjälp av undernät-ID. <!-- You can provide the **vnet**,**subnet**,**vnet-address-prefix** or**subnet-address-prefix** to customize the virtual network and subnet.--> Det finns olika alternativ för att skapa en flexibel server med CLI som visas i exemplen nedan.
 
 >[!Important]
-> Genom att använda det här kommandot delegeras under nätet till **Microsoft. DBforMySQL/flexibleServers** . Delegeringen innebär att endast flexibla Azure Database for MySQL-servrar kan använda det här undernätet. Inga andra Azure-resurstyper kan finnas i det delegerade undernätet.
+> Genom att använda det här kommandot delegeras under nätet till **Microsoft. DBforMySQL/flexibleServers**. Delegeringen innebär att endast flexibla Azure Database for MySQL-servrar kan använda det här undernätet. Inga andra Azure-resurstyper kan finnas i det delegerade undernätet.
 >
 
 I [referens dokumentationen](/cli/azure/mysql/flexible-server) för Azure CLI hittar du en fullständig lista över KONFIGURERBARa CLI-parametrar. I nedanstående kommandon kan du till exempel välja resurs gruppen.
@@ -62,21 +62,22 @@ I [referens dokumentationen](/cli/azure/mysql/flexible-server) för Azure CLI hi
     ```azurecli-interactive
     az mysql flexible-server create
     ```
-<!--- Create a flexible server using already existing virtual network and subnet
+- Skapa en flexibel server med redan befintligt virtuellt nätverk och undernät. Om det angivna virtuella nätverket och under nätet inte finns skapas det virtuella nätverket och under nätet med standard-adressprefix.
     ```azurecli-interactive
     az mysql flexible-server create --vnet myVnet --subnet mySubnet
-    ```-->
-- Skapa en flexibel server med redan befintligt virtuellt nätverk, undernät och med hjälp av undernät-ID: t. Det tillhandahållna under nätet ska inte ha någon annan resurs som har distribuerats i det och det här under nätet delegeras till **Microsoft. DBforMySQL/flexibleServers** , om det inte redan har delegerats.
+    ```
+
+- Skapa en flexibel server med redan befintligt virtuellt nätverk, undernät och med hjälp av undernät-ID: t. Det tillhandahållna under nätet ska inte ha någon annan resurs som har distribuerats i det och det här under nätet delegeras till **Microsoft. DBforMySQL/flexibleServers**, om det inte redan har delegerats.
     ```azurecli-interactive
     az mysql flexible-server create --subnet /subscriptions/{SubID}/resourceGroups/{ResourceGroup}/providers/Microsoft.Network/virtualNetworks/{VNetName}/subnets/{SubnetName}
     ```
     > [!Note]
     > Det virtuella nätverket och under nätet måste finnas i samma region och prenumeration som din flexibla Server.
-<!--
-- Create a flexible server using new virtual network, subnet with non-default address prefix
+<
+- Skapa en flexibel server med ett nytt virtuellt nätverk, undernät med adressprefix som inte är standard.
     ```azurecli-interactive
-    az mysql flexible-server create --vnet myVnet --vnet-address-prefix 10.0.0.0/24 --subnet mySubnet --subnet-address-prefix 10.0.0.0/24
-    ```-->
+    az mysql flexible-server create --vnet myVnet --address-prefixes 10.0.0.0/24 --subnet mySubnet --subnet-prefixes 10.0.0.0/24
+    ```
 I [referens dokumentationen](/cli/azure/mysql/flexible-server) för Azure CLI hittar du en fullständig lista över KONFIGURERBARa CLI-parametrar.
 
 

@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7bb38b382add2a0ea3506c31c5e6e76a985df6a1
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 7c9e3344ed819f607feeab88ac43a9dc286a61e0
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936479"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109104"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Den nya Appregistreringar upplevelsen för Azure Active Directory B2C
 
@@ -97,7 +97,7 @@ I den nya upplevelsen i stället för **nycklar** använder du bladet **certifik
 ## <a name="features-not-applicable-in-azure-ad-b2c-tenants"></a>Funktioner som inte är tillämpliga i Azure AD B2C-klienter
 Följande funktioner i Azure AD App Registration är inte tillämpliga på eller tillgängliga i Azure AD B2C klienter:
 - **Roller och administratörer** – för närvarande inte tillgängligt för Azure AD B2C.
-- **Anpassning – UI** /UX-anpassning konfigureras i **företags anpassnings** miljön eller som en del av ett användar flöde. Lär dig hur du [anpassar användar gränssnittet i Azure Active Directory B2C](customize-ui-overview.md).
+- **Anpassning – UI** /UX-anpassning konfigureras i **företags anpassnings** miljön eller som en del av ett användar flöde. Lär dig hur du [anpassar användar gränssnittet i Azure Active Directory B2C](customize-ui-with-html.md).
 - **Domän verifiering i Publisher** – appen är registrerad på *. onmicrosoft.com*, vilket inte är en verifierad domän. Dessutom används Publisher-domänen främst för att bevilja användar medgivande, som inte gäller för Azure AD B2C appar för användarautentisering. [Läs mer om Publisher-domän](../active-directory/develop/howto-configure-publisher-domain.md).
 - **Token-konfiguration** – token är konfigurerad som en del av ett användar flöde i stället för en app.
 - **Snabb** starten är för närvarande inte tillgänglig för Azure AD B2C klienter.

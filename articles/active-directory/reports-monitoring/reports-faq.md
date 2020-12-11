@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1984e2f0bb55115c7d700b91f564d9f01c145151
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c274424641ee0173d68f0de9061415815b0df588
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90015338"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107438"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Vanliga frågor och svar kring Azure Active Directory rapporter
 
@@ -37,7 +37,7 @@ Den här artikeln innehåller svar på vanliga frågor om Azure Active Directory
 
 **F: Jag använder för närvarande `https://graph.windows.net/<tenant-name>/reports/` slut punkts-API: er för att hämta Azure AD-säkerhetsrapporter (vissa typer av identifieringar, till exempel läckta autentiseringsuppgifter eller inloggningar från anonyma IP-adresser) till våra rapporterings system program mässigt. Vad ska jag byta till?**
 
-**A:** Du kan använda [identitets skyddets identifierings-API](../identity-protection/howto-identity-protection-graph-api.md)   för att få åtkomst till säkerhets identifieringar via Microsoft Graph. Det nya formatet ger större flexibilitet i hur du kan fråga data, med avancerad filtrering, val av fält med mera och standardisera risk identifieringar till en typ för enklare integrering i Siem och andra data insamlings verktyg. Eftersom data har ett annat format kan du inte ersätta en ny fråga för dina gamla frågor. [Det nya API: et använder dock Microsoft Graph](/graph/api/resources/identityriskevent?view=graph-rest-beta), som är Microsoft-standarden för sådana API: er som Microsoft 365 eller Azure AD. Det arbete som krävs kan antingen utöka dina nuvarande Microsoft Graph investeringar eller hjälpa dig att börja över gången till den nya standard plattformen.
+**A:** Du kan använda [identitets skyddets identifierings-API](../identity-protection/howto-identity-protection-graph-api.md) för att få åtkomst till säkerhets identifieringar via Microsoft Graph. Det nya formatet ger större flexibilitet i hur du kan fråga data, med avancerad filtrering, val av fält med mera och standardisera risk identifieringar till en typ för enklare integrering i Siem och andra data insamlings verktyg. Eftersom data har ett annat format kan du inte ersätta en ny fråga för dina gamla frågor. [Det nya API: et använder dock Microsoft Graph](/graph/api/resources/identityriskevent?view=graph-rest-beta), som är Microsoft-standarden för sådana API: er som Microsoft 365 eller Azure AD. Det arbete som krävs kan antingen utöka dina nuvarande Microsoft Graph investeringar eller hjälpa dig att börja över gången till den nya standard plattformen.
 
 ---
 
@@ -49,7 +49,7 @@ Den här artikeln innehåller svar på vanliga frågor om Azure Active Directory
 
 **F: hur snart ska jag se aktivitets data när de har skaffat en Premium-licens?**
 
-**A:** Om du redan har aktivitets data som en kostnads fri licens kan du se den direkt. Om du inte har några data, tar det en eller två dagar innan data visas i rapporterna.
+**A:** Om du redan har aktivitets data som en kostnads fri licens kan du se den direkt. Om du inte har några data tar det upp till tre dagar innan data visas i rapporterna.
 
 ---
 

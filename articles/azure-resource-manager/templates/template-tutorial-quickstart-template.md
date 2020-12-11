@@ -6,18 +6,18 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 445e7ce2d6e609d75bff38bb3d049a87f184be12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46b32ae7aeb971c9391a69e3ca3d01f669774248
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613602"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106911"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>Självstudie: Använd Azure snabb starts mallar
 
 [Azure snabb starts-mallar](https://azure.microsoft.com/resources/templates/) är en lagrings plats för community-mallar. Du kan använda exempel mallarna i din mall utveckling. I den här självstudien hittar du en resurs definition för webbplatsen och lägger till den i din egen mall. Det tar ungefär **12 minuter** att slutföra.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Vi rekommenderar att du slutför [självstudien om exporterade mallar](template-tutorial-export-template.md), men det är inte obligatoriskt.
 
@@ -34,10 +34,10 @@ Den här mallen används för att distribuera lagrings konton och App Service-pl
 ## <a name="find-template"></a>Hitta mall
 
 1. Öppna [Azure snabb starts mallar](https://azure.microsoft.com/resources/templates/)
-1. I **Sök**anger du **distribuera Linux-webbapp**.
-1. Välj den som innehåller rubriken **distribuera en grundläggande Linux-webbapp**. Om du har problem med att hitta det här är den [direkta länken](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/).
+1. I **Sök** anger du _distribuera Linux-webbapp_.
+1. Välj panelen med rubriken **distribuera en grundläggande Linux-webbapp**. Om du har problem med att hitta det här är den [direkta länken](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/).
 1. Välj **Bläddra på GitHub**.
-1. Välj **azuredeploy.jspå**.
+1. Välj _azuredeploy.jspå_.
 1. Granska mallen. Leta särskilt efter `Microsoft.Web/sites` resursen.
 
     ![Snabb starts webbplats för Resource Manager-mall](./media/template-tutorial-quickstart-template/resource-manager-template-quickstart-template-web-site.png)
@@ -48,15 +48,15 @@ Slå samman snabb starts mal len med den befintliga mallen:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json" range="1-108" highlight="32-45,49,85-100":::
 
-Webb program namnet måste vara unikt i Azure. För att förhindra dubblettnamn har **webAppPortalName** -variabeln uppdaterats från **"webAppPortalName": "[concat (parameters (" webAppName "),"-webapp ")]"** till **"webAppPortalName": "[concat (parameters (" webAppName "), uniqueString (resourceGroup (). ID)]]"**.
+Webb program namnet måste vara unikt i Azure. `webAppPortalName`Variabeln har uppdaterats från till för att förhindra dubblettnamn `"webAppPortalName": "[concat(parameters('webAppName'), '-webapp')]"` `"webAppPortalName": "[concat(parameters('webAppName'), uniqueString(resourceGroup().id))]"` .
 
 Lägg till ett kommatecken i slutet av `Microsoft.Web/serverfarms` definitionen för att avgränsa resurs definitionen från `Microsoft.Web/sites` definitionen.
 
 Det finns några viktiga funktioner att notera i den här nya resursen.
 
-Observera att det har ett element med namnet **dependsOn** som är inställt på App Service-planen. Den här inställningen är obligatorisk eftersom det måste finnas en app service-plan innan webbappen skapas. **DependsOn** -elementet visar Resource Manager så att du kan beställa resurser för distribution.
+Observera att det finns ett element med namnet `dependsOn` som är inställt på App Service-planen. Den här inställningen är obligatorisk eftersom det måste finnas en app service-plan innan webbappen skapas. - `dependsOn` Elementet anger Resource Manager för att beställa resurser för distribution.
 
-Egenskapen **serverFarmId** använder [resourceId](template-functions-resource.md#resourceid) -funktionen. Den här funktionen hämtar den unika identifieraren för en resurs. I det här fallet får den unika identifieraren för App Service-planen. Webbappen är associerad med en speciell App Service-plan.
+`serverFarmId`Egenskapen använder [resourceId](template-functions-resource.md#resourceid) -funktionen. Den här funktionen hämtar den unika identifieraren för en resurs. I det här fallet får den unika identifieraren för App Service-planen. Webbappen är associerad med en speciell App Service-plan.
 
 ## <a name="deploy-template"></a>Distribuera mallen
 
@@ -91,7 +91,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Om distributionen misslyckades använder du **utförlig** växeln för att hämta information om de resurser som skapas. Använd **fel söknings** växeln för att få mer information om fel sökning.
+> Om distributionen misslyckades använder du `verbose` växeln för att hämta information om de resurser som skapas. Använd `debug` växeln för att få mer information om fel sökning.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

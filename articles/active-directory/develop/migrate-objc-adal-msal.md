@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 13923596b7ad0f6d3fdef24e847f469645b448ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb66d8a4bf97a6f8a10534c9c4459123ad6a2654
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119937"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107928"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>Migrera program till MSAL för iOS och macOS
 
@@ -75,7 +75,7 @@ Det finns två sätt att tillhandahålla omfång i MSAL:
 
 Detta är det inbyggda omfånget för varje program. Den refererar till den statiska listan med behörigheter som kon figurer ATS när programmet registrerades. Det fungerar på samma sätt som för `resource` . Detta kan vara användbart när du migrerar för att säkerställa att en liknande uppsättning omfång och användar upplevelse upprätthålls.
 
-Om du vill använda `/.default` omfånget lägger du till i `/.default` resurs identifieraren. Exempel: `https://graph.microsoft.com/.default`. Om resursen slutar med ett snedstreck ( `/` ) bör du fortfarande lägga till `/.default` , inklusive det inledande snedstrecket, vilket resulterar i en omfattning som har ett dubbelt snedstreck ( `//` ).
+Om du vill använda `/.default` omfånget lägger du till i `/.default` resurs identifieraren. Till exempel: `https://graph.microsoft.com/.default`. Om resursen slutar med ett snedstreck ( `/` ) bör du fortfarande lägga till `/.default` , inklusive det inledande snedstrecket, vilket resulterar i en omfattning som har ett dubbelt snedstreck ( `//` ).
 
 Du kan läsa mer om hur du använder området "/.default" [här](./v2-permissions-and-consent.md#the-default-scope)
 
@@ -136,7 +136,7 @@ MSAL ger mer skärpa mellan fel som kan hanteras av din app och de som kräver �
 
 Att hantera alla andra fel i [ `MSALError` listan](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128) är valfritt. Du kan använda informationen i dessa fel för att förbättra användar upplevelsen.
 
-Mer information om hantering av MSAL-fel finns i [Hantera undantag och fel med hjälp av MSAL](msal-handling-exceptions.md) .
+Mer information om hantering av MSAL-fel finns i [Hantera undantag och fel med hjälp av MSAL](msal-error-handling-ios.md) .
 
 ### <a name="broker-support"></a>Stöd för Broker
 
@@ -280,7 +280,7 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplication.Op
 }
 ```
 
-**Om du använder Xcode 11**bör du placera MSAL-återanrop i `SceneDelegate` filen i stället.
+**Om du använder Xcode 11** bör du placera MSAL-återanrop i `SceneDelegate` filen i stället.
 Om du har stöd för både UISceneDelegate och UIApplicationDelegate för kompatibilitet med äldre iOS måste MSAL-återanropet placeras i båda filerna.
 
 Mål-C:

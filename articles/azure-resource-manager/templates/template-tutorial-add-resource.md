@@ -1,23 +1,23 @@
 ---
 title: Självstudie – Lägg till resurs till mall
-description: Beskriver stegen för att skapa din första Azure Resource Manager-mall. Du lär dig mer om mallens syntax och hur du distribuerar ett lagrings konto.
+description: Beskriver stegen för att skapa din första Azure Resource Manager-mall (ARM-mall). Du lär dig mer om mallens syntax och hur du distribuerar ett lagrings konto.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 58a6423944abca703a42b68044e58d86187457bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49cee5c98c4099e214a732371269e935db353152
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614384"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106979"
 ---
 # <a name="tutorial-add-a-resource-to-your-arm-template"></a>Självstudie: Lägg till en resurs i ARM-mallen
 
-I den [föregående själv studie kursen](template-tutorial-create-first-template.md)har du lärt dig hur du skapar en tom mall och distribuerar den. Nu är du redo att distribuera en faktisk resurs. I den här självstudien lägger du till ett lagrings konto. Det tar ungefär **9 minuter** att slutföra den här kursen.
+I den [föregående själv studie kursen](template-tutorial-create-first-template.md)har du lärt dig hur du skapar en tom Azure Resource Manager-mall (arm-mall) och distribuerar den. Nu är du redo att distribuera en faktisk resurs. I den här självstudien lägger du till ett lagrings konto. Det tar ungefär **9 minuter** att slutföra den här kursen.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Vi rekommenderar att du slutför [introduktions kursen om mallar](template-tutorial-create-first-template.md), men det är inte obligatoriskt.
 
@@ -27,7 +27,7 @@ Du måste ha Visual Studio Code med Resource Manager Tools-tillägget och anting
 
 Om du vill lägga till en lagrings konto definition i den befintliga mallen tittar du på den markerade JSON-filen i följande exempel. I stället för att försöka kopiera avsnitt i mallen kopierar du hela filen och ersätter mallen med dess innehåll.
 
-Ersätt **{ge-Unique-Name}** (inklusive klammerparenteser) med ett unikt lagrings konto namn.
+Ersätt `{provide-unique-name}` och typografiska klammerparenteser `{}` med ett unikt lagrings konto namn.
 
 > [!IMPORTANT]
 > Namnet på lagringskontot måste vara unikt i Azure. Namnet får bara innehålla gemena bokstäver eller siffror. Det får inte vara längre än 24 tecken. Du kan prova ett namngivnings mönster som att använda **store1** som prefix och sedan lägga till dina initialer och dagens datum. Till exempel kan namnet som du använder se ut som **store1abc09092019**.
@@ -42,15 +42,15 @@ Du kanske undrar hur du hittar de egenskaper som ska användas för varje resurs
 
 Varje resurs som du distribuerar har minst följande tre egenskaper:
 
-- **typ**: resursens typ. Det här värdet är en kombination av resurs leverantörens namn område och resurs typ (till exempel Microsoft. Storage/storageAccounts).
-- **API version**: den Version av REST API som ska användas för att skapa resursen. Varje resurs leverantör har publicerat sina egna API-versioner, så det här värdet är specifika för typen.
-- **namn**: resursens namn.
+- `type`: Typ av resurs. Det här värdet är en kombination av resurs leverantörens namn område och resurs typ, till exempel `Microsoft.Storage/storageAccounts` .
+- `apiVersion`: Den version av REST API som ska användas för att skapa resursen. Varje resurs leverantör publicerar sina egna API-versioner, så det här värdet är specifika för typen.
+- `name`: Resursens namn.
 
-De flesta resurser har också egenskapen **location** , som anger den region där resursen distribueras.
+De flesta resurser har också en `location` egenskap som anger den region där resursen distribueras.
 
 De andra egenskaperna varierar beroende på resurs typ och API-version. Det är viktigt att förstå anslutningen mellan API-versionen och de tillgängliga egenskaperna, så vi går vidare till mer information.
 
-I den här självstudien har du lagt till ett lagrings konto till mallen. Du kan se att API-versionen är på [storageAccounts 2019-04-01](/azure/templates/microsoft.storage/2019-04-01/storageaccounts). Observera att du inte har lagt till alla egenskaper i mallen. Många av egenskaperna är valfria. Microsoft. Storage Resource Provider kan lansera en ny API-version, men den version som du distribuerar behöver inte ändras. Du kan fortsätta att använda den versionen och veta att resultatet av distributionen blir konsekvent.
+I den här självstudien har du lagt till ett lagrings konto till mallen. Du kan se att API-versionen är på [storageAccounts 2019-04-01](/azure/templates/microsoft.storage/2019-04-01/storageaccounts). Observera att du inte har lagt till alla egenskaper i mallen. Många av egenskaperna är valfria. `Microsoft.Storage`Resurs leverantören kan frigöra en ny API-version, men den version som du distribuerar behöver inte ändras. Du kan fortsätta att använda den versionen och veta att resultatet av distributionen blir konsekvent.
 
 Om du visar en äldre API-version, till exempel [storageAccounts 2016-05-01](/azure/templates/microsoft.storage/2016-05-01/storageaccounts), ser du att en mindre uppsättning egenskaper är tillgängliga.
 
@@ -60,7 +60,7 @@ Om du bestämmer dig för att ändra API-versionen för en resurs, se till att d
 
 Du kan distribuera mallen för att skapa lagrings kontot. Ge distributionen ett annat namn så att du enkelt kan hitta den i historiken.
 
-Om du inte har skapat resurs gruppen, se [skapa resurs grupp](template-tutorial-create-first-template.md#create-resource-group). Exemplet förutsätter att du har angett **templateFile** -variabeln till sökvägen till mallfilen, som du ser i den [första självstudien](template-tutorial-create-first-template.md#deploy-template).
+Om du inte har skapat resurs gruppen, se [skapa resurs grupp](template-tutorial-create-first-template.md#create-resource-group). Exemplet förutsätter att du har angett `templateFile` variabeln till sökvägen till mallfilen, som du ser i den [första självstudien](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -85,15 +85,15 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Om distributionen misslyckades använder du **utförlig** växeln för att hämta information om de resurser som skapas. Använd **fel söknings** växeln för att få mer information om fel sökning.
+> Om distributionen misslyckades använder du `verbose` växeln för att hämta information om de resurser som skapas. Använd `debug` växeln för att få mer information om fel sökning.
 
 Två möjliga distributions problem som kan uppstå:
 
-- Fel: kod = AccountNameInvalid; Meddelande = {ange-Unique-Name} är inte ett giltigt lagrings konto namn. Lagrings kontots namn måste vara mellan 3 och 24 tecken långt och får bara innehålla siffror och gemena bokstäver.
+- `Error: Code=AccountNameInvalid; Message={provide-unique-name}` är inte ett giltigt lagrings konto namn. Lagrings kontots namn måste vara mellan 3 och 24 tecken långt och får bara innehålla siffror och gemena bokstäver.
 
-    Ersätt **{ge-Unique-Name}** i mallen med ett unikt lagrings konto namn.  Se [Lägg till resurs](#add-resource).
+    Ersätt `{provide-unique-name}` med ett unikt lagrings konto namn i mallen. Se [Lägg till resurs](#add-resource).
 
-- Fel: kod = StorageAccountAlreadyTaken; Meddelande = det lagrings konto som heter store1abc09092019 är redan upptaget.
+- `Error: Code=StorageAccountAlreadyTaken; Message=The storage account named store1abc09092019` är redan upptaget.
 
     Försök med ett annat lagrings konto namn i mallen.
 
@@ -104,7 +104,7 @@ Distributionen tar längre tid än distributionen av tomma mallar eftersom lagri
 Du kan kontrol lera distributionen genom att utforska resurs gruppen från Azure Portal.
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-1. Välj **resurs grupper**på den vänstra menyn.
+1. Välj **resurs grupper** på den vänstra menyn.
 1. Välj den resurs grupp som du har distribuerat till.
 1. Du ser att ett lagrings konto har distribuerats.
 1. Observera att distributions etiketten nu säger: **distributioner: 2 lyckades**.
@@ -122,7 +122,7 @@ Om du stoppar nu kanske du vill rensa de resurser som du har distribuerat genom 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Du har skapat en enkel mall för att distribuera ett Azure Storage-konto.  I senare självstudier får du lära dig hur du lägger till parametrar, variabler, resurser och utdata i en mall. Dessa funktioner är Bygg stenar för mycket mer avancerade mallar.
+Du har skapat en enkel mall för att distribuera ett Azure Storage-konto. I senare självstudier får du lära dig hur du lägger till parametrar, variabler, resurser och utdata i en mall. Dessa funktioner är Bygg stenar för mycket mer avancerade mallar.
 
 > [!div class="nextstepaction"]
 > [Lägga till parametrar](template-tutorial-add-parameters.md)

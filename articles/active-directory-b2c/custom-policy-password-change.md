@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1c942d52bbcdad711115d81a78395979c507784b
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: a471f510f60eeb6428c5c4e8ec7cccd1e0804d10
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131759"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108866"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurera ändring av lösen ord med anpassade principer i Azure Active Directory B2C
 
@@ -171,16 +171,16 @@ När du testar dina program i Azure AD B2C kan det vara praktiskt att ha Azure A
 3. Välj **Alla tjänster** på menyn högst upp till vänster i Azure-portalen och sök efter och välj **Azure AD B2C**.
 4. Välj **ramverk för identitets upplevelse**.
 5. På sidan anpassade principer klickar du på **Ladda upp princip**.
-6. Välj **Skriv över principen om den finns**och Sök sedan efter och välj den *TrustframeworkExtensions.xml* filen.
+6. Välj **Skriv över principen om den finns** och Sök sedan efter och välj den *TrustframeworkExtensions.xml* filen.
 7. Klicka på **Överför**.
 8. Upprepa steg 5 till 7 för den förlitande part filen, till exempel *ProfileEditPasswordChange.xml*.
 
 ### <a name="run-the-policy"></a>Kör principen
 
 1. Öppna den princip som du har ändrat. Till exempel *B2C_1A_profile_edit_password_change*.
-2. För **program**väljer du ditt program som du har registrerat tidigare. Om du vill se token ska **svars-URL:** en visas `https://jwt.ms` .
+2. För **program** väljer du ditt program som du har registrerat tidigare. Om du vill se token ska **svars-URL:** en visas `https://jwt.ms` .
 3. Klicka på **Kör nu**. Logga in med det konto som du skapade tidigare. Du bör nu ha möjlighet att ändra lösen ordet.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig mer om hur du kan [Konfigurera lösen ords komplexitet med anpassade principer i Azure Active Directory B2C](custom-policy-password-complexity.md).
+- Lär dig mer om hur du kan [Konfigurera lösen ords komplexitet med anpassade principer i Azure Active Directory B2C](password-complexity.md).

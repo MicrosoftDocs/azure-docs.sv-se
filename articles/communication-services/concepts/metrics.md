@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 05/19/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 25c7016f6639df46a9279ef9a9aab2736efd4f95
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 460cca051d743102e734971cf45069362e24c147
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888665"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106011"
 ---
 # <a name="metrics-overview"></a>Mått översikt
 
@@ -76,6 +76,17 @@ Följande åtgärder är tillgängliga på SMS API-begäran mått:
 
 
 :::image type="content" source="./media/sms-metric.png" alt-text="Mått för SMS API-begäran.":::
+
+### <a name="authentication-api-requests"></a>API-begäranden för autentisering
+
+Följande åtgärder är tillgängliga i mått för autentiserings-API-begär Anden:
+
+| Åtgärd/väg    | Beskrivning                                                                                    |
+| -------------------- | ---------------------------------------------------------------------------------------------- |
+| CreateIdentity       | Skapar en identitet som representerar en enskild användare. |
+| DeleteIdentity       | Tar bort en identitet. |
+| Skapatoken          | Skapar en åtkomsttoken. |
+| RevokeToken          | Återkallar alla åtkomsttoken som skapats för en identitet före angiven tid. |
 
 ## <a name="next-steps"></a>Nästa steg
 

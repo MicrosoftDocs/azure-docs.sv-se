@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60bfac3b80e772e7b359b1e926d5fb84e447a8fb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0c120f343ec539783f04fe35e96891c5372c5d39
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89271613"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109087"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Lägg till villkorlig åtkomst till användar flöden i Azure Active Directory B2C
 
@@ -31,24 +31,24 @@ Villkorlig åtkomst stöds i de senaste versionerna av användar flöden. Du kan
 
 - **Multi-Factor Authentication (MFA)**: användare kan nu använda en engångs kod via SMS eller Voice, eller ett eng ång slö sen ord via e-post för Multi-Factor Authentication. MFA-inställningar är oberoende av inställningarna för villkorlig åtkomst. Du kan ställa in MFA **så att MFA alltid krävs** , oavsett konfigurationen för villkorlig åtkomst. Du kan också ange MFA till **villkorligt** så att MFA endast krävs när en aktiv princip för villkorlig åtkomst kräver det.
 
-- **Villkorlig åtkomst**: den här inställningen bör alltid vara **aktive**ras. Normalt aktiverar du bara den **här inställningen vid** fel sökning eller migrering, eller för äldre implementeringar.
+- **Villkorlig åtkomst**: den här inställningen bör alltid vara **aktive** ras. Normalt aktiverar du bara den **här inställningen vid** fel sökning eller migrering, eller för äldre implementeringar.
 
 Läs mer om [identitets skydd och villkorlig åtkomst](conditional-access-identity-protection-overview.md) i Azure AD B2C eller i [så här konfigurerar du det](conditional-access-identity-protection-setup.md).
 
 ## <a name="add-conditional-access-to-a-new-user-flow"></a>Lägg till villkorlig åtkomst till ett nytt användar flöde
 
-1. Logga in på [Azure Portal](https://portal.azure.com).
+1. Logga in på [Azure-portalen](https://portal.azure.com).
 1. Välj ikonen **katalog + prenumeration** i portalens verktygsfält och välj sedan den katalog som innehåller Azure AD B2C klienten.
 1. I Azure Portal söker du efter och väljer **Azure AD B2C**.
-1. Under **principer**väljer du **användar flöden**och väljer sedan **nytt användar flöde**.
+1. Under **principer** väljer du **användar flöden** och väljer sedan **nytt användar flöde**.
 1. På sidan **skapa ett användar flöde** väljer du typ av användar flöde.
-1. Under **Välj en version**väljer du **rekommenderas**och väljer sedan **skapa**. ([Läs mer](user-flow-versions.md) om användar flödes versioner.)
+1. Under **Välj en version** väljer du **rekommenderas** och väljer sedan **skapa**. ([Läs mer](user-flow-versions.md) om användar flödes versioner.)
 
     ![Sidan skapa användar flöde i Azure Portal med egenskaper markerat](./media/tutorial-create-user-flows/select-version.png)
 
 1. Ange ett **Namn** för användarflödet. Till exempel *signupsignin1*.
 1. I avsnittet **identitets leverantörer** väljer du de identitets leverantörer som du vill tillåta för det här användar flödet.
-2. I avsnittet **multifaktorautentisering** väljer du önskad **MFA-metod**och under **MFA Enforcement** Select **villkorlig (rekommenderas)**.
+2. I avsnittet **multifaktorautentisering** väljer du önskad **MFA-metod** och under **MFA Enforcement** Select **villkorlig (rekommenderas)**.
  
    ![Konfigurera multifaktorautentisering](media/conditional-access-user-flow/configure-mfa.png)
 
@@ -56,7 +56,7 @@ Läs mer om [identitets skydd och villkorlig åtkomst](conditional-access-identi
 
    ![Konfigurera inställningar för villkorlig åtkomst](media/conditional-access-user-flow/configure-conditional-access.png)
 
-1. I avsnittet **användarattribut och anspråk** väljer du de anspråk och attribut som du vill samla in och skicka från användaren under registreringen. Välj till exempel **Visa mer**och välj sedan attribut och anspråk för **land/region** och **visnings namn**. Välj **OK**.
+1. I avsnittet **användarattribut och anspråk** väljer du de anspråk och attribut som du vill samla in och skicka från användaren under registreringen. Välj till exempel **Visa mer** och välj sedan attribut och anspråk för **land/region** och **visnings namn**. Välj **OK**.
 
     ![Sidan för attribut och val av anspråk med tre anspråk valda](./media/conditional-access-user-flow/configure-user-attributes-claims.png)
 
@@ -67,19 +67,19 @@ Läs mer om [identitets skydd och villkorlig åtkomst](conditional-access-identi
 > [!NOTE]
 > Det befintliga användar flödet måste vara en version som stöder villkorlig åtkomst. Dessa användar flödes versioner är märkta som **rekommenderas**.
 
-1. Logga in på [Azure Portal](https://portal.azure.com).
+1. Logga in på [Azure-portalen](https://portal.azure.com).
 
 1. Välj ikonen **katalog + prenumeration** i portalens verktygsfält och välj sedan den katalog som innehåller Azure AD B2C klienten.
 
 1. I Azure Portal söker du efter och väljer **Azure AD B2C**.
 
-1. Under **principer**väljer du **användar flöden**. Välj sedan användar flödet.
+1. Under **principer** väljer du **användar flöden**. Välj sedan användar flödet.
 
-1. Välj **Egenskaper** och kontrol lera att användar flödet stöder villkorlig åtkomst genom att välja **Egenskaper** och leta efter den **villkorliga åtkomst**inställningen.
+1. Välj **Egenskaper** och kontrol lera att användar flödet stöder villkorlig åtkomst genom att välja **Egenskaper** och leta efter den **villkorliga åtkomst** inställningen.
  
    ![Konfigurera MFA och villkorlig åtkomst i egenskaper](media/conditional-access-user-flow/add-conditional-access.png)
 
-1. I avsnittet **multifaktorautentisering** väljer du önskad **MFA-metod**och under **MFA Enforcement** Select **villkorlig (rekommenderas)**.
+1. I avsnittet **multifaktorautentisering** väljer du önskad **MFA-metod** och under **MFA Enforcement** Select **villkorlig (rekommenderas)**.
  
 1. I avsnittet **villkorlig åtkomst** markerar du kryss rutan **tillämpa villkorliga åtkomst principer** .
 
@@ -96,16 +96,16 @@ Om du vill testa villkorlig åtkomst i ditt användar flöde [skapar du en princ
 - Om du vill simulera en riskfylld inloggning laddar du ned TOR webbläsaren och försöker logga in på användar flödets slut punkt.
 - [Skapa en princip för villkorlig åtkomst](conditional-access-identity-protection-setup.md)med följande inställningar:
    
-   - För **användare och grupper**väljer du test användaren (Välj inte **alla användare** eller blockera dig själv från att logga in).
-   - För **molnappar eller åtgärder**väljer du **Välj appar**och väljer sedan ditt förlitande parts program.
-   - För villkor väljer du **inloggnings risk** , **hög**, **medel**och **låg** risk nivå.
-   - För **beviljande**väljer du **blockera åtkomst**.
+   - För **användare och grupper** väljer du test användaren (Välj inte **alla användare** eller blockera dig själv från att logga in).
+   - För **molnappar eller åtgärder** väljer du **Välj appar** och väljer sedan ditt förlitande parts program.
+   - För villkor väljer du **inloggnings risk** , **hög**, **medel** och **låg** risk nivå.
+   - För **beviljande** väljer du **blockera åtkomst**.
 
       ![Riskidentifieringar](media/conditional-access-identity-protection-setup/test-conditional-access-policy.png)
 
 ### <a name="run-the-user-flow"></a>Kör användar flödet
 
-1. Välj det användar flöde som du skapade för att öppna sidan Översikt och välj sedan **Kör användar flöde**. Under **program**väljer du *webapp1*. **Svars-URL: en** ska visas `https://jwt.ms` .
+1. Välj det användar flöde som du skapade för att öppna sidan Översikt och välj sedan **Kör användar flöde**. Under **program** väljer du *webapp1*. **Svars-URL: en** ska visas `https://jwt.ms` .
 
    ![Sidan kör användar flöde i portalen med knappen Kör användar flöde markerat](./media/tutorial-create-user-flows/signup-signin-run-now.PNG)
 
@@ -119,4 +119,4 @@ Om du vill testa villkorlig åtkomst i ditt användar flöde [skapar du en princ
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Anpassa användar gränssnittet i ett Azure AD B2C användar flöde](customize-ui-overview.md)
+[Anpassa användar gränssnittet i ett Azure AD B2C användar flöde](customize-ui-with-html.md)

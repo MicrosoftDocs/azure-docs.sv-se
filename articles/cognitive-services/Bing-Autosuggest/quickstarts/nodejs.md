@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 4a69a9fa712aaa9d4c02243d28dcae8b72c3db73
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 03545aafa1cbf6efa82ae063e7e966443b1d5e8b
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348287"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106129"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-nodejs"></a>Snabb start: föreslå Sök frågor med Automatiska förslag i Bing REST API och Node.js
 
@@ -86,14 +86,13 @@ Följ den här snabb starten om du vill lära dig att ringa till API för automa
         //...
         let req = https.request(request_params, response_handler);
         req.end();
-        ```
+    ```
 
-## Create a search handler
+## <a name="create-a-search-handler"></a>Skapa en Sök hanterare
 
-1. Define a function named `response_handler` that takes an HTTP call, `response`, as a parameter. 
-Do the following steps within this function:
+1. Definiera en funktion med namnet `response_handler` som tar ett HTTP-anrop, `response`, som parameter. Utför följande steg inom den här funktionen:
     
-    1. Define a variable to contain the body of the JSON response.  
+    1. Definiera en variabel så att den innehåller brödtexten i JSON-svaret.  
 
         ```javascript
         let response_handler = function (response) {
@@ -101,7 +100,7 @@ Do the following steps within this function:
         };
         ```
 
-    2. Store the body of the response when the `data` flag is called
+    2. Lagra bröd texten i svaret när `data` flaggan anropas
         
         ```javascript
         response.on ('data', function (d) {
@@ -109,7 +108,7 @@ Do the following steps within this function:
         });
         ```
 
-    3. When an `end` flag is signaled, use `JSON.parse()` and `JSON.stringify()` to print the response.
+    3. När en `end` flagga signaleras använder du `JSON.parse()` och `JSON.stringify()` för att skriva ut svaret.
     
         ```javascript
         response.on ('end', function () {
@@ -122,11 +121,11 @@ Do the following steps within this function:
         });
         ```
 
-2. Call `get_suggestions()` to send the request to the Bing Autosuggest API.
+2. Anropa `get_suggestions()` för att skicka begäran till API för automatiska förslag i Bing.
 
-## Example JSON response
+## <a name="example-json-response"></a>Exempel på JSON-svar
 
-A successful response is returned in JSON, as shown in the following example: 
+Ett svar som anger att åtgärden lyckades returneras i JSON, som du ser i följande exempel: 
 
 ```json
 {

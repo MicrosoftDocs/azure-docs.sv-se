@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: jgao
-ms.openlocfilehash: 3a229d1e6752eabd099a5bc60ef93f1d4e85a26b
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 7566235cf92965d5d3de1ec7f40353430ec7e0c6
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092762"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107149"
 ---
 # <a name="use-deployment-scripts-in-arm-templates-preview"></a>Använda distributions skript i ARM-mallar (för hands version)
 
@@ -536,7 +536,7 @@ Livs cykeln för de här resurserna styrs av följande egenskaper i mallen:
 > [!NOTE]
 > Vi rekommenderar inte att du använder lagrings kontot och behållar instansen som genereras av skript tjänsten för andra skäl. De två resurserna kan tas bort beroende på skript livs cykeln.
 
-Om du vill behålla behållar instansen och lagrings kontot för fel sökning kan du lägga till ett vila-kommando i skriptet.  Använd till exempel [Start-vilo läge](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep).
+Behållar instansen och lagrings kontot tas bort enligt **cleanupPreference**. Men om skriptet Miss lyckas och **cleanupPreference** inte är inställt på **Always**, håller distributions processen automatiskt behållaren som körs i en timme. Du kan använda den här timmen för att felsöka skriptet. Om du vill behålla behållaren som körs efter lyckade distributioner lägger du till ett vilo läge i skriptet. Lägg till exempel till [Start-sömn](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep) i slutet av skriptet. Om du inte lägger till vilo läge är behållaren inställd på ett Terminal-tillstånd och kan inte nås även om den inte har tagits bort än.
 
 ## <a name="run-script-more-than-once"></a>Kör skript mer än en gång
 
@@ -560,7 +560,7 @@ När skriptet har testats kan du använda det som ett distributions skript i mal
 
 ## <a name="deployment-script-error-codes"></a>Fel koder för distributions skript
 
-| Felkod | Description |
+| Felkod | Beskrivning |
 |------------|-------------|
 | DeploymentScriptInvalidOperation | Resurs definitionen för distributions skriptet i mallen innehåller ogiltiga egenskaps namn. |
 | DeploymentScriptResourceConflict | Det går inte att ta bort en distributions skript resurs som är i icke-terminal-tillstånd och körningen har inte överskridit 1 timme. Eller också kan du inte köra samma distributions skript igen med samma resurs-ID (samma prenumeration, resurs grupp namn och resurs namn), men olika skript texts innehåll på samma tid. |

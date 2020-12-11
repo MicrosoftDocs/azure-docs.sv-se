@@ -1,21 +1,29 @@
 ---
-title: Utlös ett batch-jobb med Azure Functions
+title: Självstudie – utlösa ett batch-jobb med Azure Functions
 description: Självstudie – Använd OCR för skannade dokument när de läggs till i en Storage-BLOB
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: peshultz
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 6e481219c6be68f9e9da06d92b6c28998cc7a6e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b441b4c4fcbeb089cef24c3a84fa33021e7840de
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88930102"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106390"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>Självstudie: utlösa ett batch-jobb med Azure Functions
 
-I den här självstudien får du lära dig hur du utlöser ett batch-jobb med hjälp av Azure Functions. Vi går igenom ett exempel där dokument som har lagts till i en Azure Storage BLOB-behållare har optisk tecken igenkänning (OCR) som tillämpas på dem via Azure Batch. För att förenkla OCR-bearbetningen konfigurerar vi en Azure-funktion som kör ett batch-OCR-jobb varje gång en fil läggs till i BLOB-behållaren.
+I den här självstudien får du lära dig hur du utlöser ett batch-jobb med hjälp av [Azure Functions](../azure-functions/functions-overview.md). Vi går igenom ett exempel där dokument som har lagts till i en Azure Storage BLOB-behållare har optisk tecken igenkänning (OCR) som tillämpas på dem via Azure Batch. För att förenkla OCR-bearbetningen konfigurerar vi en Azure-funktion som kör ett batch-OCR-jobb varje gång en fil läggs till i BLOB-behållaren. Lär dig att:
+
+> [!div class="checklist"]
+> * Använd Batch Explorer för att skapa pooler och jobb
+> * Använd Storage Explorer för att skapa BLOB-behållare och en signatur för delad åtkomst (SAS)
+> * Skapa en BLOB-utlöst Azure-funktion
+> * ladda upp indatafiler till Storage
+> * övervaka körningen av uppgiften
+> * hämta utdatafilerna.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -37,7 +45,7 @@ I det här avsnittet ska du använda Batch Explorer för att skapa batch-poolen 
 1. Logga in för att Batch Explorer med dina Azure-autentiseringsuppgifter.
 1. Skapa en pool genom att välja **pooler** i det vänstra fältet och sedan knappen **Lägg till** ovanför Sök formuläret. 
     1. Välj ett ID och visnings namn. Vi ska använda `ocr-pool` det här exemplet.
-    1. Ange skalnings typen till **fast storlek**och ange antalet dedikerade noder till 3.
+    1. Ange skalnings typen till **fast storlek** och ange antalet dedikerade noder till 3.
     1. Välj **Ubuntu 18,04-LTS** som operativ system.
     1. Välj `Standard_f2s_v2` som storlek på den virtuella datorn.
     1. Aktivera start uppgiften och Lägg till kommandot `/bin/bash -c "sudo update-locale LC_ALL=C.UTF-8 LANG=C.UTF-8; sudo apt-get update; sudo apt-get -y install ocrmypdf"` . Se till att ange användar identiteten som **Standard användare för aktiviteten (admin)**, vilket gör att start aktiviteter kan innehålla kommandon med `sudo` .
@@ -62,7 +70,7 @@ I det här exemplet är indatafilen namngiven `input` och är där alla dokument
     * Indatafilen är där alla dokument utan OCR laddas upp första gången.  
     * Behållaren utdata är där batch-jobbet skriver dokument med OCR.  
 
-Skapa en signatur för delad åtkomst för din utmatnings behållare i Storage Explorer. Det gör du genom att högerklicka på behållaren utdata och välja **Hämta signatur för delad åtkomst...**. Under **behörigheter**kontrollerar du **Skriv**. Inga andra behörigheter krävs.  
+Skapa en signatur för delad åtkomst för din utmatnings behållare i Storage Explorer. Det gör du genom att högerklicka på behållaren utdata och välja **Hämta signatur för delad åtkomst...**. Under **behörigheter** kontrollerar du **Skriv**. Inga andra behörigheter krävs.  
 
 ## <a name="create-an-azure-function"></a>Skapa en Azure-funktion
 
@@ -97,9 +105,13 @@ Om du vill ladda ned utdatafilerna från Storage Explorer till din lokala dator 
 > [!TIP]
 > De hämtade filerna är sökbara om de öppnas i en PDF-läsare.
 
+## <a name="clean-up-resources"></a>Rensa resurser
+
+Du debiteras för poolen medan noderna körs, även om inga jobb är schemalagda. Ta bort poolen när du inte längre behöver den. I kontovyn väljer du **Pooler** och namnet på poolen. Välj sedan **Ta bort**. När du tar bort poolen raderas alla aktivitetsutdata på noderna. Utdatafilerna ligger däremot kvar i lagringskontot. När du inte längre behöver kan du även ta bort batch-kontot och lagrings kontot.
+
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudiekursen lärde du dig att: 
+I den här självstudiekursen lärde du dig att:
 
 > [!div class="checklist"]
 > * Använd Batch Explorer för att skapa pooler och jobb
@@ -109,6 +121,10 @@ I den här självstudiekursen lärde du dig att:
 > * övervaka körningen av uppgiften
 > * hämta utdatafilerna.
 
-* Fler exempel på hur du använder .NET API för att schemalägga och bearbeta batch-arbetsbelastningar finns i [exemplen på GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp). 
 
-* Om du vill se fler Azure Functions utlösare som du kan använda för att köra batch-arbetsbelastningar, se [Azure Functions-dokumentationen](../azure-functions/functions-triggers-bindings.md).
+Fortsätt genom att utforska åter givnings programmen som är tillgängliga via Batch Explorer i avsnittet **Galleri** . För varje program finns det flera tillgängliga mallar, som utökas med tiden. Till exempel kan du för Blender-mallar dela upp en enda bild i olika rutor, så delar av en bild kan renderas parallellt.
+
+Fler exempel på hur du använder .NET API till att schemalägga och bearbeta Batch-arbetsbelastningar finns i exemplen på GitHub.
+
+> [!div class="nextstepaction"]
+> [Batch C#-exempel](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)

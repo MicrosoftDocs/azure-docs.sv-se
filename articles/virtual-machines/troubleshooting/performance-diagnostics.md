@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: 04b70e593e8b1bee8beb72ac88bc8441bc38bb9a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: fb0928c75b8fee567e9d0f03489794bd9f65e91e
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963252"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109444"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Prestandadiagnostik för virtuella Azure-datorer
 
@@ -48,12 +48,12 @@ Du kan köra prestandadiagnostik direkt från Azure Portal, där du också kan g
 
     | Distribution               | Version                                         |
     |----------------------------|-------------------------------------------------|
-    | Oracle Linux Server        | 6,10 [ `*` ], 7,3, 7,6, 7,5 |
-    | CentOS                     | 6,5 [ `*` ], 7,6                                    |
-    | RHEL                       | 7,2, 7,5, 8,0 [ `*` ]                               |
+    | Oracle Linux Server        | 6,10 [ `*` ], 7,3, 7,5, 7,6, 7,7, 7,8 |
+    | CentOS                     | 6,5 [ `*` ], 7,6, 7,7, 7,8                                    |
+    | RHEL                       | 7,2, 7,5, 8,0 [ `*` ], 8,1, 8,2                               |
     | Ubuntu                     | 14,04, 16,04, 18,04, 20,04                               |
     | Debian                     | 8, 9, 10 [ `*` ]                                    |
-    | SLES                       | 12 SP4 [ `*` ]                                      |
+    | SLES                       | 12 SP4 [ `*` ], 12 SP5 [ `*` ], 15 [ `*` ], 15 SP1 [ `*` ], 15 SP2 [ `*` ]                                      |
     |                            |                                                   |
 
 >[!Note]
@@ -188,7 +188,7 @@ Du kan visa informationen om lagrings kontot med hjälp av knappen Inställninga
 Det finns flera sätt att dela den diagnostiska rapporten med Microsoft.
 
 **Alternativ 1:** Dela den senaste rapporten automatiskt  
-När du öppnar ett support ärende med Microsoft är det viktigt att du delar rapporten prestanda diagnostik. Om du har valt att dela den här informationen med Microsoft samtidigt som du kör diagnostiken (genom att markera kryss rutan**Jag accepterar att information om att dela diagnostikinformation med Microsoft**) kommer Microsoft att kunna komma åt rapporten från ditt lagrings konto med en SAS-länk till zip-filen för utdata i upp till 30 dagar från körnings datumet. Endast den senaste rapporten är tillgänglig för support teknikern.
+När du öppnar ett support ärende med Microsoft är det viktigt att du delar rapporten prestanda diagnostik. Om du har valt att dela den här informationen med Microsoft samtidigt som du kör diagnostiken (genom att markera kryss rutan **Jag accepterar att information om att dela diagnostikinformation med Microsoft**) kommer Microsoft att kunna komma åt rapporten från ditt lagrings konto med en SAS-länk till zip-filen för utdata i upp till 30 dagar från körnings datumet. Endast den senaste rapporten är tillgänglig för support teknikern.
 
 **Alternativ 2:** Generera en signatur för delad åtkomst för den komprimerade filen för den diagnostiska rapporten  
 Du kan dela en länk till den komprimerade filen rapporter med hjälp av signaturer för delad åtkomst. Det gör du genom att följa dessa steg:
@@ -199,7 +199,7 @@ Du kan dela en länk till den komprimerade filen rapporter med hjälp av signatu
 1. Välj den komprimerade fil för prestanda diagnostik som du vill dela.
 1. På fliken **skapa SAS** väljer du villkoren för delning.
 1. Klicka på **generera BLOB SAS-token och URL**.
-1. Kopiera **URL: en för blobb-SAS**och dela den med support teknikern.
+1. Kopiera **URL: en för blobb-SAS** och dela den med support teknikern.
 
 **Alternativ 3:** Ladda ned rapporten från lagrings kontot
 

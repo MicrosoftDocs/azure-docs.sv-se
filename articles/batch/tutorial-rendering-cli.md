@@ -1,15 +1,15 @@
 ---
-title: Rendera en scen i molnet
+title: Självstudie – återge en scen i molnet
 description: Självstudie – Så renderar du en Autodesk 3ds Max-scen med Arnold med hjälp av Batch Rendering Service och kommandoradsgränssnittet i Azure
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 579a5446cb199bb73f98e2e1cbb0948f062470a8
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: e0858e838ba73862ef7f15040915c5f5cd3c751b
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542396"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106350"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Självstudie: Rendera en scen med Azure Batch 
 
@@ -57,7 +57,7 @@ az storage account create \
     --location eastus2 \
     --sku Standard_LRS
 ```
-Skapa ett Batch-konto med kommandot [az batch account create](/cli/azure/batch/account#az-batch-account-create). I följande exempel skapas ett Batch-konto med namnet *mybatchaccount* i *myResourceGroup* , med en länk till det lagringskonto du skapade.  
+Skapa ett Batch-konto med kommandot [az batch account create](/cli/azure/batch/account#az-batch-account-create). I följande exempel skapas ett Batch-konto med namnet *mybatchaccount* i *myResourceGroup*, med en länk till det lagringskonto du skapade.  
 
 ```azurecli-interactive 
 az batch account create \
@@ -278,7 +278,7 @@ az storage blob download \
 
 ## <a name="scale-the-pool"></a>Skala ut poolen
 
-Ändra nu poolen så att den är redo för ett större renderingsjobb med flera bildrutor. Batch har ett antal olika sätt att skala beräkningsresurser, till exempel [autoskalning](batch-automatic-scaling.md) där noder läggs till eller tas bort när uppgiftsbehoven ändras. I det här enkla exemplet används kommandot [az batch pool resize](/cli/azure/batch/pool#az-batch-pool-resize) till att öka antalet noder med låg prioritet i poolen till *6* :
+Ändra nu poolen så att den är redo för ett större renderingsjobb med flera bildrutor. Batch har ett antal olika sätt att skala beräkningsresurser, till exempel [autoskalning](batch-automatic-scaling.md) där noder läggs till eller tas bort när uppgiftsbehoven ändras. I det här enkla exemplet används kommandot [az batch pool resize](/cli/azure/batch/pool#az-batch-pool-resize) till att öka antalet noder med låg prioritet i poolen till *6*:
 
 ```azurecli-interactive
 az batch pool resize --pool-id myrenderpool --target-dedicated-nodes 0 --target-low-priority-nodes 6
@@ -346,7 +346,7 @@ I den här självstudien lärde du dig att:
 > * skala poolen och rendera en scen med flera bildrutor
 > * ladda ned renderade utdata.
 
-Mer information om rendering i molnskala finns bland alternativ för Batch Rendering-tjänsten. 
+Mer information om åter givning i moln skala finns i dokumentationen för batch-rendering.
 
 > [!div class="nextstepaction"]
 > [Batch-tjänsten för återgivning](batch-rendering-service.md)

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 333bb42643539cedec04d37680749c749a003536
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cf0437b985865248393e9f68da264fcae5af7f12
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994068"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108560"
 ---
 # <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>Självstudie för att konfigurera Arkose Labs med Azure Active Directory B2C
 
@@ -147,9 +147,9 @@ Hämta git-bash och följ stegen nedan:
 
 1. Skapa ett användar flöde baserat på informationen [här](tutorial-create-user-flows.md). Stoppa när du når avsnittet **testa användar flödet**.
 
-2. Aktivera Java Script i ditt [användar flöde](user-flow-javascript-overview.md).
+2. Aktivera Java Script i ditt [användar flöde](javascript-and-page-layout.md).
 
-3. På sidan samma användar flöde aktiverar du anpassad sid-URL: gå till sidan layout för **användar flöde**  >  **page layout**  >  **Använd anpassat sid innehåll**  =  **Ja**  >  **Infoga anpassad sid-URL**.
+3. På sidan samma användar flöde aktiverar du anpassad sid-URL: gå till sidan layout för **användar flöde**  >    >  **Använd anpassat sid innehåll**  =  **Ja**  >  **Infoga anpassad sid-URL**.
 Den här anpassade sid-URL: en hämtas från platsen för index.html-filen i blob-lagringen  
 
    ![Skärm bild som visar Arkose Labs Storage-URL](media/partner-arkose-labs/arkose-storage-url.png)

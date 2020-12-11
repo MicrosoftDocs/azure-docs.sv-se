@@ -3,22 +3,16 @@ title: Mappa ett anpassat fält till Azure Event Grid schema
 description: I den här artikeln beskrivs hur du konverterar det anpassade schemat till Azure Event Grid-schemat när dina händelse data inte matchar Event Grid schema.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 836e7b340c5c89100207e2f9409710b8dfa5e3bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34381782c9337631b0aa04e47eb5897a8071139a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86105531"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109206"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Mappa anpassade fält till ett Event Grid-schema
 
 Om dina händelse data inte matchar det förväntade [Event Grid schemat](event-schema.md)kan du fortfarande använda Event Grid för att dirigera händelser till prenumeranter. I den här artikeln beskrivs hur du mappar schemat till Event Grid schema.
-
-[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
-
-## <a name="install-preview-feature"></a>Installera förhandsversionsfunktionen
-
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="original-event-schema"></a>Ursprungligt händelse schema
 
@@ -40,7 +34,7 @@ Vi antar att du har ett program som skickar händelser i följande format:
 
 När du skapar ett anpassat ämne anger du hur du mappar fält från din ursprungliga händelse till Event Grid-schemat. Det finns tre värden som du kan använda för att anpassa mappningen:
 
-* Värdet för **indatavärdet** anger typ av schema. De tillgängliga alternativen är CloudEvents-schema, anpassat händelse schema eller Event Grid schema. Standardvärdet är Event Grid schema. När du skapar en anpassad mappning mellan schemat och event Grid-schemat använder du anpassade händelse scheman. Använd Cloudevents-schemat när händelser finns i CloudEvents-schemat.
+* Värdet för **indatavärdet** anger typ av schema. De tillgängliga alternativen är CloudEvents-schema, anpassat händelse schema eller Event Grid schema. Standardvärdet är Event Grid schema. När du skapar en anpassad mappning mellan schemat och event Grid-schemat använder du anpassade händelse scheman. Använd CloudEvents-schemat när händelser är i CloudEvents-format.
 
 * Egenskapen **Mappning av standardvärden** anger standardvärden för fält i Event Grid schemat. Du kan ange standardvärden för `subject` , `eventtype` och `dataversion` . Normalt använder du den här parametern när det anpassade schemat inte innehåller ett fält som motsvarar något av dessa tre fält. Du kan till exempel ange att data versionen alltid är inställd på **1,0**.
 
@@ -49,10 +43,6 @@ När du skapar ett anpassat ämne anger du hur du mappar fält från din ursprun
 Om du vill skapa ett anpassat ämne med Azure CLI använder du:
 
 ```azurecli-interactive
-# If you have not already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
 az eventgrid topic create \
   -n demotopic \
   -l eastus2 \
@@ -65,11 +55,7 @@ az eventgrid topic create \
 Om du använder PowerShell använder du:
 
 ```azurepowershell-interactive
-# If you have not already installed the module, do it now.
-# This module is required for preview features.
-Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
-
-New-AzureRmEventGridTopic `
+New-AzEventGridTopic `
   -ResourceGroupName myResourceGroup `
   -Name demotopic `
   -Location eastus2 `
@@ -107,9 +93,9 @@ az eventgrid event-subscription create \
 Följande exempel prenumererar på ett event Grid-ämne och använder Event Grid-schemat. Om du använder PowerShell använder du:
 
 ```azurepowershell-interactive
-$topicid = (Get-AzureRmEventGridTopic -ResourceGroupName myResourceGroup -Name demoTopic).Id
+$topicid = (Get-AzEventGridTopic -ResourceGroupName myResourceGroup -Name demoTopic).Id
 
-New-AzureRmEventGridSubscription `
+New-AzEventGridSubscription `
   -ResourceId $topicid `
   -EventSubscriptionName eventsub1 `
   -EndpointType webhook `
@@ -120,7 +106,7 @@ New-AzureRmEventGridSubscription `
 I nästa exempel används ingångs schema för händelsen:
 
 ```azurepowershell-interactive
-New-AzureRmEventGridSubscription `
+New-AzEventGridSubscription `
   -ResourceId $topicid `
   -EventSubscriptionName eventsub2 `
   -EndpointType webhook `
@@ -146,8 +132,8 @@ curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
 Om du använder PowerShell använder du:
 
 ```azurepowershell-interactive
-$endpoint = (Get-AzureRmEventGridTopic -ResourceGroupName myResourceGroup -Name demotopic).Endpoint
-$keys = Get-AzureRmEventGridTopicKey -ResourceGroupName myResourceGroup -Name demotopic
+$endpoint = (Get-AzEventGridTopic -ResourceGroupName myResourceGroup -Name demotopic).Endpoint
+$keys = Get-AzEventGridTopicKey -ResourceGroupName myResourceGroup -Name demotopic
 
 $htbody = @{
     myEventTypeField="Created"

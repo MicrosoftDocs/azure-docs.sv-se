@@ -1,18 +1,18 @@
 ---
 title: Skicka eller ta emot händelser från Azure Event Hubs med hjälp av Java Script (senaste)
-description: Den här artikeln innehåller en genom gång av hur du skapar ett JavaScript-program som skickar/tar emot händelser till/från Azure Event Hubs med hjälp av de senaste Azure/Event-Hub version 5-paketet.
+description: Den här artikeln innehåller en genom gång av hur du skapar ett JavaScript-program som skickar/tar emot händelser till/från Azure Event Hubs med hjälp av det senaste Azure/Event-Hub-paketet.
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 01516f29e727b5be2a81d3d8dd473808b6ea60f7
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 2e5f297d5edb9a271843db060f948209dd076074
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728955"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106095"
 ---
-# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>Skicka händelser till eller ta emot händelser från Event Hub med hjälp av Java Script (Azure/Event-Hub version 5)
-Den här snabb starten visar hur du skickar händelser till och tar emot händelser från en händelsehubben med hjälp av JavaScript-paketet **Azure/Event-Hubbs version 5** . 
+# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs"></a>Skicka händelser till eller ta emot händelser från Event Hub med hjälp av Java Script (Azure/Event-Hub)
+Den här snabb starten visar hur du skickar händelser till och tar emot händelser från en händelsehubben med hjälp av JavaScript **-paketet Azure/Event-Hub** . 
 
 
 ## <a name="prerequisites"></a>Förutsättningar
@@ -25,7 +25,7 @@ För att slutföra den här snabbstarten, behöver du följande förhandskrav:
 - Visual Studio Code (rekommenderas) eller andra Integrated Development Environment (IDE).  
 - Ett aktivt Event Hubs namn område och händelsehubben. Gör så här för att skapa dem: 
 
-   1. Skapa ett namn område av typen *Event Hubs*i [Azure Portal](https://portal.azure.com)och hämta sedan de autentiseringsuppgifter för hantering som programmet behöver för att kommunicera med händelsehubben. 
+   1. Skapa ett namn område av typen *Event Hubs* i [Azure Portal](https://portal.azure.com)och hämta sedan de autentiseringsuppgifter för hantering som programmet behöver för att kommunicera med händelsehubben. 
    1. Om du vill skapa namn området och händelsehubben följer du anvisningarna i [snabb start: skapa en Event Hub med hjälp av Azure Portal](event-hubs-create.md).
    1. Fortsätt genom att följa anvisningarna i den här snabb starten. 
    1. Följ anvisningarna i [Hämta anslutnings sträng](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)för att hämta anslutnings strängen för Event Hub-namnområdet. Registrera anslutnings strängen som ska användas senare i den här snabb starten.
@@ -55,7 +55,7 @@ npm install @azure/eventhubs-checkpointstore-blob
 I det här avsnittet skapar du ett JavaScript-program som skickar händelser till en Event Hub.
 
 1. Öppna din favorit redigerare, till exempel [Visual Studio Code](https://code.visualstudio.com).
-1. Skapa en fil med namnet *send.js*och klistra in följande kod i den:
+1. Skapa en fil med namnet *send.js* och klistra in följande kod i den:
 
     ```javascript
     const { EventHubProducerClient } = require("@azure/event-hubs");
@@ -122,7 +122,7 @@ Se till att du registrerar anslutnings strängen och behållar namnet för senar
 ### <a name="write-code-to-receive-events"></a>Skriva kod för att ta emot händelser
 
 1. Öppna din favorit redigerare, till exempel [Visual Studio Code](https://code.visualstudio.com).
-1. Skapa en fil med namnet *receive.js*och klistra in följande kod i den:
+1. Skapa en fil med namnet *receive.js* och klistra in följande kod i den:
 
     ```javascript
     const { EventHubConsumerClient } = require("@azure/event-hubs");

@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a9ca6d91be95bfb1a47f85b20f3775a57518ffcf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 036e9e6bf58d837c698a6092770ef581f77bc20c
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87922140"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108254"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Självstudie: anpassa gränssnittet för användar upplevelser i Azure Active Directory B2C
 
-För vanliga användar upplevelser, till exempel registrering, inloggning och profil redigering, kan du använda [användar flöden](user-flow-overview.md) i Azure Active Directory B2C (Azure AD B2C). Informationen i den här självstudien hjälper dig att lära dig hur du [anpassar användar gränssnittet (UI)](customize-ui-overview.md) för dessa upplevelser med hjälp av dina egna HTML-och CSS-filer.
+För vanliga användar upplevelser, till exempel registrering, inloggning och profil redigering, kan du använda [användar flöden](user-flow-overview.md) i Azure Active Directory B2C (Azure AD B2C). Informationen i den här självstudien hjälper dig att lära dig hur du [anpassar användar gränssnittet (UI)](customize-ui-with-html.md) för dessa upplevelser med hjälp av dina egna HTML-och CSS-filer.
 
 I den här artikeln kan du se hur du:
 
@@ -29,17 +29,17 @@ I den här artikeln kan du se hur du:
 > * Uppdatera användar flödet för att använda filerna
 > * Testa det anpassade användar gränssnittet
 
-Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
-[Skapa ett användar flöde](tutorial-create-user-flows.md) så att användarna kan registrera sig och logga in i programmet.
+[Skapa ett användarflöde](tutorial-create-user-flows.md) så att användare kan registrera sig och logga in i ditt program.
 
 ## <a name="create-customization-files"></a>Skapa anpassnings filer
 
 Du skapar ett Azure Storage-konto och en behållare och placerar sedan grundläggande HTML-och CSS-filer i behållaren.
 
-### <a name="create-a-storage-account"></a>skapar ett lagringskonto
+### <a name="create-a-storage-account"></a>Skapa ett lagringskonto
 
 Även om du kan lagra dina filer på många sätt kan du i den här självstudien lagra dem i [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md).
 
@@ -47,10 +47,10 @@ Du skapar ett Azure Storage-konto och en behållare och placerar sedan grundläg
 2. Kontrol lera att du använder den katalog som innehåller din Azure-prenumeration. Välj **katalog + prenumerations** filter på den översta menyn och välj den katalog som innehåller din prenumeration. Den här katalogen skiljer sig åt från den som innehåller din Azure B2C-klient.
 3. Välj alla tjänster i det övre vänstra hörnet av Azure Portal, Sök efter och välj **lagrings konton**.
 4. Välj **Lägg till**.
-5. Under **resurs grupp**väljer du **Skapa ny**, anger ett namn för den nya resurs gruppen och klickar sedan på **OK**.
+5. Under **resurs grupp** väljer du **Skapa ny**, anger ett namn för den nya resurs gruppen och klickar sedan på **OK**.
 6. Ange ett namn för lagringskontot. Namnet du väljer måste vara unikt för Azure, mellan 3 och 24 tecken långt och får endast innehålla siffror och gemener.
 7. Välj platsen för lagrings kontot eller acceptera standard platsen.
-8. Acceptera alla andra standardvärden, Välj **Granska + skapa**och klicka sedan på **skapa**.
+8. Acceptera alla andra standardvärden, Välj **Granska + skapa** och klicka sedan på **skapa**.
 9. När lagrings kontot har skapats väljer **du gå till resurs**.
 
 ### <a name="create-a-container"></a>Skapa en container
@@ -63,10 +63,10 @@ Du skapar ett Azure Storage-konto och en behållare och placerar sedan grundläg
  Azure AD B2C kod i en webbläsare använder en modern och standard metod för att läsa in anpassat innehåll från en URL som du anger i ett användar flöde. Resurs delning mellan ursprung (CORS) gör att begränsade resurser på en webb sida kan begäras från andra domäner.
 
 1. I menyn väljer du **CORS**.
-2. För **tillåtna ursprung**anger du `https://your-tenant-name.b2clogin.com` . Ersätt `your-tenant-name` med namnet på din Azure AD B2C-klient. Exempelvis `https://fabrikam.b2clogin.com`. Du måste använda små bokstäver när du anger ditt klient namn.
-3. För **tillåtna metoder**väljer `GET` du, `PUT` och `OPTIONS` .
-4. För **tillåtna huvuden**anger du en asterisk (*).
-5. För **exponerade rubriker**anger du en asterisk (*).
+2. För **tillåtna ursprung** anger du `https://your-tenant-name.b2clogin.com` . Ersätt `your-tenant-name` med namnet på din Azure AD B2C-klient. Ett exempel är `https://fabrikam.b2clogin.com`. Du måste använda små bokstäver när du anger ditt klient namn.
+3. För **tillåtna metoder** väljer `GET` du, `PUT` och `OPTIONS` .
+4. För **tillåtna huvuden** anger du en asterisk (*).
+5. För **exponerade rubriker** anger du en asterisk (*).
 6. Ange 200 för **högsta ålder**.
 
     ![Konfigurations sidan CORS i Azure Blob Storage i Azure Portal](./media/tutorial-customize-ui/enable-cors.png)
@@ -75,9 +75,9 @@ Du skapar ett Azure Storage-konto och en behållare och placerar sedan grundläg
 
 ### <a name="create-the-customization-files"></a>Skapa anpassnings filerna
 
-Om du vill anpassa gränssnittet för registrerings upplevelsen börjar du med att skapa en enkel HTML-och CSS-fil. Du kan konfigurera HTML-koden som du vill, men den måste ha ett **div** -element med en identifierare för `api` . Exempelvis `<div id="api"></div>`. Azure AD B2C infogar element i `api` behållaren när sidan visas.
+Om du vill anpassa gränssnittet för registrerings upplevelsen börjar du med att skapa en enkel HTML-och CSS-fil. Du kan konfigurera HTML-koden som du vill, men den måste ha ett **div** -element med en identifierare för `api` . Ett exempel är `<div id="api"></div>`. Azure AD B2C infogar element i `api` behållaren när sidan visas.
 
-1. Skapa följande fil i en lokal mapp och se till att du byter namn på `your-storage-account` lagrings kontot och `your-container` till namnet på den behållare som du har skapat. Exempelvis `https://store1.blob.core.windows.net/b2c/style.css`.
+1. Skapa följande fil i en lokal mapp och se till att du byter namn på `your-storage-account` lagrings kontot och `your-container` till namnet på den behållare som du har skapat. Ett exempel är `https://store1.blob.core.windows.net/b2c/style.css`.
 
     ```html
     <!DOCTYPE html>
@@ -128,7 +128,7 @@ Om du vill anpassa gränssnittet för registrerings upplevelsen börjar du med a
 I den här självstudien lagrar du de filer som du skapade i lagrings kontot så att Azure AD B2C kan komma åt dem.
 
 1. Välj **alla tjänster** i det övre vänstra hörnet av Azure Portal, Sök efter och välj **lagrings konton**.
-2. Välj det lagrings konto som du har skapat, Välj **blobbar**och välj sedan den behållare som du skapade.
+2. Välj det lagrings konto som du har skapat, Välj **blobbar** och välj sedan den behållare som du skapade.
 3. Välj **överför**, navigera till och markera *custom-ui.html* -filen och klicka sedan på **överför**.
 
     ![Ladda upp BLOB-sidan i portalen med knappen Ladda upp och filer markerade](./media/tutorial-customize-ui/upload-blob.png)
@@ -139,15 +139,15 @@ I den här självstudien lagrar du de filer som du skapade i lagrings kontot så
 ## <a name="update-the-user-flow"></a>Uppdatera användar flödet
 
 1. Välj **Alla tjänster** på menyn högst upp till vänster i Azure-portalen och sök efter och välj **Azure AD B2C**.
-2. Välj **användar flöden**och välj sedan *B2C_1_signupsignin1* användar flödet.
-3. Välj **sidlayouter**och klicka sedan på **Ja** under **enhetlig registrering eller inloggnings sida**för att **använda anpassat sid innehåll**.
+2. Välj **användar flöden** och välj sedan *B2C_1_signupsignin1* användar flödet.
+3. Välj **sidlayouter** och klicka sedan på **Ja** under **enhetlig registrering eller inloggnings sida** för att **använda anpassat sid innehåll**.
 4. Ange URI: n för den *custom-ui.html* -fil som du tidigare spelat in i **URI för anpassad sida**.
-5. Välj **Spara**längst upp på sidan.
+5. Välj **Spara** längst upp på sidan.
 
 ## <a name="test-the-user-flow"></a>Testa användar flödet
 
 1. I Azure AD B2C klient väljer du **användar flöden** och väljer *B2C_1_signupsignin1* användar flödet.
-2. Klicka på **Kör användar flöde**längst upp på sidan.
+2. Klicka på **Kör användar flöde** längst upp på sidan.
 3. Klicka på knappen **Kör användar flöde** .
 
     ![Sidan kör användar flöde för användar flödet för registrering eller inloggning](./media/tutorial-customize-ui/run-user-flow.png)
@@ -166,4 +166,4 @@ I den här artikeln lärde du dig att:
 > * Testa det anpassade användar gränssnittet
 
 > [!div class="nextstepaction"]
-> [Anpassa användar gränssnittet i Azure Active Directory B2C](customize-ui-overview.md)
+> [Anpassa användar gränssnittet i Azure Active Directory B2C](customize-ui-with-html.md)

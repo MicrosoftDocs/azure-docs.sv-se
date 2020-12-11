@@ -1,15 +1,15 @@
 ---
 title: Snabb start – kör ditt första batch-jobb med Azure CLI
-description: Lär dig snabbt att skapa ett batch-konto och köra ett batch-jobb med Azure CLI.
+description: Den här snabb starten visar hur du skapar ett batch-konto och kör ett batch-jobb med Azure CLI.
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: eb5bb4a627ff26250519651f5e6d47ddd6f5a776
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 297af47b6280381646e654eaededfe8b71a5d874
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562312"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106690"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Snabbstart: Kör ditt första Batch-jobb med Azure CLI
 
@@ -35,7 +35,7 @@ az group create \
     --location eastus2
 ```
 
-## <a name="create-a-storage-account"></a>skapar ett lagringskonto
+## <a name="create-a-storage-account"></a>Skapa ett lagringskonto
 
 Du kan länka ett Azure Storage-konto till Batch-kontot. Även om det inte krävs för den här snabbstarten, är lagringskontot användbart för att distribuera program och lagra indata och utdata för de flesta verkliga arbetsbelastningarna. Skapa ett lagringskonto i resursgruppen med kommandot [az storage account create](/cli/azure/storage/account#az-storage-account-create).
 
@@ -105,7 +105,7 @@ az batch job create \
 
 Använd nu kommandot [az batch task create](/cli/azure/batch/task#az-batch-task-create) för att skapa några aktiviteter att köra i jobbet. I det här exemplet skapar du fyra identiska aktiviteter. Varje aktivitet kör en `command-line` för att visa Batch-miljövariablerna på en beräkningsnod och väntar sedan i 90 sekunder. När du använder Batch är det på den här kommandoraden som anger du din app eller ditt skript. Batch tillhandahåller ett antal sätt att distribuera appar och skript till beräkningsnoder.
 
-Följande Bash-skript skapar 4 parallella aktiviteter( *mytask1* till *mytask4* ).
+Följande Bash-skript skapar 4 parallella aktiviteter(*mytask1* till *mytask4*).
 
 ```azurecli-interactive
 for i in {1..4}
@@ -135,7 +135,7 @@ Kommandoutdata innehåller många detaljer, men observera `exitCode` på kommand
 
 ## <a name="view-task-output"></a>Visa aktivitetens utdata
 
-Om du vill visa en lista över filer som skapas av en aktivitet på en beräkningsnod ska du använda kommandot [az batch task file list](/cli/azure/batch/task). Följande kommando visar filer som skapas av *mytask1* :
+Om du vill visa en lista över filer som skapas av en aktivitet på en beräkningsnod ska du använda kommandot [az batch task file list](/cli/azure/batch/task). Följande kommando visar filer som skapas av *mytask1*:
 
 ```azurecli-interactive
 az batch task file list \

@@ -6,18 +6,18 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 67c88e98d966a21163aafefcad8363086d5b3bf4
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 52b5bd0650b3a069adc3ef7f101c48a4674deaab
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931052"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107115"
 ---
 # <a name="tutorial-add-template-functions-to-your-arm-template"></a>Självstudie: Lägg till mallar i ARM-mallen
 
 I den här självstudien får du lära dig hur du lägger till [mallar](template-functions.md) till din Azure Resource Manager-mall (arm-mall). Du använder funktioner för att dynamiskt konstruera värden. Förutom dessa funktioner som tillhandahålls av systemet kan du också skapa [användardefinierade funktioner](./template-user-defined-functions.md). Den här självstudien tar **7 minuter** att slutföra.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Vi rekommenderar att du slutför [självstudien om parametrar](template-tutorial-add-parameters.md), men det är inte obligatoriskt.
 
@@ -33,11 +33,11 @@ Platsen för lagrings kontot är hårdkodad till **USA, östra**. Du kan dock be
 
 ## <a name="use-function"></a>Använd funktion
 
-Om du har slutfört den föregående själv studie kursen i den här serien har du redan använt en funktion. När du har lagt till `"[parameters('storageName')]"` användes [parameter](template-functions-deployment.md#parameters) funktionen. Hakparenteserna anger att syntaxen innanför hakparenteserna är ett [mall uttryck](template-expressions.md). Resource Manager matchar syntaxen i stället för att behandla den som ett litteralt värde.
+Om du har slutfört den föregående själv studie kursen i den här serien har du redan använt en funktion. När du har lagt till `"[parameters('storageName')]"` du använt funktionen [parametrar](template-functions-deployment.md#parameters) . Hakparenteserna anger att syntaxen innanför hakparenteserna är ett [mall uttryck](template-expressions.md). Resource Manager matchar syntaxen i stället för att behandla den som ett litteralt värde.
 
 Funktioner ger dig flexibilitet i mallen genom att dynamiskt hämta värden under distributionen. I den här självstudien använder du en funktion för att hämta platsen för den resurs grupp som du använder för distribution.
 
-I följande exempel visas ändringarna för att lägga till en parameter med namnet **plats**.  Standardvärdet för parametern anropar funktionen [resourceGroup](template-functions-resource.md#resourcegroup) . Den här funktionen returnerar ett objekt med information om resurs gruppen som används för distribution. En av egenskaperna för objektet är en plats egenskap. När du använder standardvärdet har lagrings konto platsen samma plats som resurs gruppen. Resurserna i en resurs grupp behöver inte dela samma plats. Du kan också ange en annan plats när det behövs.
+I följande exempel visas ändringarna för att lägga till en parameter med namnet `location` . Standardvärdet för parametern anropar funktionen [resourceGroup](template-functions-resource.md#resourcegroup) . Den här funktionen returnerar ett objekt med information om resurs gruppen som används för distribution. En av egenskaperna för objektet är en plats egenskap. När du använder standardvärdet har lagrings konto platsen samma plats som resurs gruppen. Resurserna i en resurs grupp behöver inte dela samma plats. Du kan också ange en annan plats när det behövs.
 
 Kopiera hela filen och ersätt din mall med dess innehåll.
 
@@ -47,7 +47,7 @@ Kopiera hela filen och ersätt din mall med dess innehåll.
 
 I de föregående självstudierna skapade du ett lagrings konto i östra USA, men resurs gruppen skapades i Central USA. I den här självstudien skapas ditt lagrings konto i samma region som resurs gruppen. Använd standardvärdet för plats, så du behöver inte ange detta parameter värde. Du måste ange ett nytt namn för lagrings kontot eftersom du skapar ett lagrings konto på en annan plats. Använd till exempel **store2** som prefix i stället för **store1**.
 
-Om du inte har skapat resurs gruppen, se [skapa resurs grupp](template-tutorial-create-first-template.md#create-resource-group). Exemplet förutsätter att du har angett **templateFile** -variabeln till sökvägen till mallfilen, som du ser i den [första självstudien](template-tutorial-create-first-template.md#deploy-template).
+Om du inte har skapat resurs gruppen, se [skapa resurs grupp](template-tutorial-create-first-template.md#create-resource-group). Exemplet förutsätter att du har angett `templateFile` variabeln till sökvägen till mallfilen, som du ser i den [första självstudien](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -74,7 +74,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Om distributionen misslyckades använder du **utförlig** växeln för att hämta information om de resurser som skapas. Använd **fel söknings** växeln för att få mer information om fel sökning.
+> Om distributionen misslyckades använder du `verbose` växeln för att hämta information om de resurser som skapas. Använd `debug` växeln för att få mer information om fel sökning.
 
 ## <a name="verify-deployment"></a>Verifiera distributionen
 

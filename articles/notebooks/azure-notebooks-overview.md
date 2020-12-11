@@ -3,12 +3,12 @@ title: Översikt över Azure Notebooks för hands version
 description: Kör Jupyter Notebooks i molnet med den kostnads fria Azure Notebooks för hands versions tjänsten, där ingen konfiguration eller konfiguration krävs.
 ms.topic: overview
 ms.date: 04/05/2019
-ms.openlocfilehash: d59faaf85a1fdbad776e954e974bafa300f93d85
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ef0a033c5125b3a359d281be30dd0ec2a2aa1747
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94845143"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109495"
 ---
 # <a name="overview-of-azure-notebooks-preview"></a>Översikt över Azure Notebooks för hands version
 
@@ -49,7 +49,7 @@ Kort sagt hjälper Azure Notebooks dig att utföra ditt arbete effektivare och d
 
 Azure Notebooks är en kostnadsfri tjänst, men varje projekt är begränsat till 4 GB minne och 1 GB data för att förhindra missbruk. Legitima användare som överskrider dessa gränser får en Captcha-utmaning för att fortsätta köra notebook-filer.
 
-Släpp alla gränser genom att logga in på Azure Notebooks med ett konto med Azure Active Directory (till exempel ett företagskonto). Om kontot är associerat med en Azure-prenumeration kan du ansluta till valfria Azure Data Science Virtual Machine-instanser i den prenumerationen. Mer information finns i avsnittet om att [hantera och konfigurera projekt på beräkningsnivån](configure-manage-azure-notebooks-projects.md#compute-tier).
+Släpp alla gränser genom att logga in på Azure Notebooks med ett konto med Azure Active Directory (till exempel ett företagskonto). Om kontot är associerat med en Azure-prenumeration kan du ansluta till valfria Azure Data Science Virtual Machine-instanser i den prenumerationen. 
 
 Notebook-servrar garanterar att de finns i högst 8 timmar. I de flesta fall omfattas din behållare inte av denna gräns och fortsätter att köras efter den här tiden, men långvariga sessioner kan ibland stängas av för system stabilitet.
 
@@ -65,7 +65,7 @@ För varje notebook-fil väljer du den kernel (det vill säga körningsmiljö) s
 
 Azure Notebooks innehåller även extra paket utöver de grundläggande distributionerna. Python-kernlarna innehåller till exempel biblioteken numpy, pandas, scikit-learn, matplotlib och bokeh.
 
-Du kan även anpassa ett projekt för att skapa en miljö för alla de notebook-filer i projektet. Mer information finns i [Snabbstart: Skapa ett projekt med en anpassad miljö](quickstart-create-jupyter-notebook-project-environment.md).
+Du kan även anpassa ett projekt för att skapa en miljö för alla de notebook-filer i projektet.
 
 Utöver de grundläggande distributionerna levereras Azure Notebooks förinstallerat med många extra paket som är användbara för dataexperter. Du kan även installera egna paket med hjälp av den typiska processen för varje språk.
 
@@ -73,7 +73,7 @@ Utöver de grundläggande distributionerna levereras Azure Notebooks förinstall
 
 Azure Notebooks är förkonfigurerat med följande Jupyter-tillägg:
 
-- [RISE](https://github.com/damianavila/RISE): Ett Jupyter-tillägg för bildspel (kallas även live_reveal). Mer information finns i avsnittet om att [köra ett notebook-bildspel](present-jupyter-notebooks-slideshow.md).
+- [RISE](https://github.com/damianavila/RISE): Ett Jupyter-tillägg för bildspel (kallas även live_reveal).
 - [JupyterLab](https://github.com/jupyterlab/jupyterlab): En fullständig beräkningsmiljö för att arbeta med Jupyter-notebooks.
 - [Altair](https://github.com/ellisonbg/altair): Ett bibliotek för visualisering av deklarativ statistisk för Python.
 - [BQPlot](https://github.com/bloomberg/bqplot): Ett interaktivt ritningsramverk för Jupyter Notebooks.
@@ -89,26 +89,7 @@ Om du vill diskutera frågor om Azure Notebooks kan du rapportera ett problem p�
 
 ## <a name="next-steps"></a>Nästa steg  
 
-- [Utforska notebook-exempelfiler](azure-notebooks-samples.md)
-
 - Snabbstarter:
 
-  - [Skapa och dela en bärbar dator](quickstart-create-share-jupyter-notebook.md)
-  - [Klona en bärbar dator](quickstart-clone-jupyter-notebook.md)
-  - [Migrera en lokal Jupyter-anteckningsbok](quickstart-migrate-local-jupyter-notebook.md)
-  - [Använda en anpassad miljö](quickstart-create-jupyter-notebook-project-environment.md)
   - [Logga in och ange ett användar-ID](quickstart-sign-in-azure-notebooks.md)
-
-- Självstudier:
-
-  - [Skapa och kör en notebook-fil](tutorial-create-run-jupyter-notebook.md  )
-
-- Instruktionsartiklar:
-  
-  - [Skapa och klona projekt](create-clone-jupyter-notebooks.md)
-  - [Konfigurera och hantera projekt](configure-manage-azure-notebooks-projects.md)
-  - [Installera paket inifrån en notebook-fil](install-packages-jupyter-notebook.md)
-  - [Presentera ett bildspel](present-jupyter-notebooks-slideshow.md)
-  - [Arbeta med datafiler](work-with-project-data-files.md)
-  - [Få åtkomst till dataresurser](access-data-resources-jupyter-notebooks.md)
-  - [Använd Azure Machine Learning](../machine-learning/samples-notebooks.md)
+  - [Exportera en Jupyter Notebook](quickstart-export-jupyter-notebook-project.md)

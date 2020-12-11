@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 06/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 6f62675d27310a15c434baba8e3451a3cd81f058
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 68617d86fda940c5d3752f2389088a8c729aebec
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953533"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108356"
 ---
 # <a name="tutorial-for-configuring-typingdna-with-azure-active-directory-b2c"></a>Självstudie för att konfigurera TypingDNA med Azure Active Directory B2C
 
@@ -36,7 +36,7 @@ I den här genom gången lär du dig att integrera en exempel-app för online-be
 
 2. När användaren skickar sidan, kommer TypingDNA-biblioteket att beräkna användarens Skriv egenskaper. Sedan infogar du informationen i ett dolt textfält som Azure AD B2C har Render ATS. Det här fältet är dolt med CSS.  
 
-    [Exemplet innehåller HTML-filer](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/TypingDNA/source-code/selfAssertedSignUp.cshtml) med Java Script-och CSS-ändringar och refereras till av `api.selfasserted.tdnasignin` `api.selfasserted.tdnasignup` innehålls definitionerna och. Läs om [hur du använder sid innehållet](./custom-policy-ui-customization.md#hosting-the-page-content) som värd för dina HTML-filer.
+    [Exemplet innehåller HTML-filer](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/TypingDNA/source-code/selfAssertedSignUp.cshtml) med Java Script-och CSS-ändringar och refereras till av `api.selfasserted.tdnasignin` `api.selfasserted.tdnasignup` innehålls definitionerna och. Läs om [hur du använder sid innehållet](./customize-ui-with-html.md#hosting-the-page-content) som värd för dina HTML-filer.
 
 3. Azure AD B2C har nu Skriv mönstret inom anspråks säcken när användaren skickar sina autentiseringsuppgifter. Det måste anropa ett API (ditt) för att skicka dessa data till TypingDNA REST API-slutpunkten. Detta API ingår i [exemplet (typingDNA-API-Interface)](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface).
 4. API för mellanlager skickar sedan inmatnings mönster data till TypingDNA REST API. Vid registreringen uppmanas du att [kontrol lera användar slut punkten](https://api.typingdna.com/index.html#api-API_Services-GetUser) för att bekräfta att användaren inte fanns och sedan anropas slut punkten [Spara mönster](https://api.typingdna.com/index.html#api-API_Services-saveUserPattern) för att spara användarens första Skriv mönster.
@@ -160,7 +160,7 @@ Dessa tröskelvärden bör justeras i användnings fallet.
 
 1. Vara värd för det [TypingDNA-API-gränssnitt](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface) som är värd leverantören som du väljer
 2. Ersätt alla instanser av `apiKey` och `apiSecret` i [TypingDNA-API-gränssnitts](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface) lösning med autentiseringsuppgifterna från din TypingDNA-instrumentpanel
-3. Var värd för HTML-filerna i din leverantör som du väljer efter CORS-kraven [här](./custom-policy-ui-customization.md#3-configure-cors)
+3. Var värd för HTML-filerna i din leverantör som du väljer efter CORS-kraven [här](./customize-ui-with-html.md#3-configure-cors)
 4. Ersätt LoadURI-elementen för `api.selfasserted.tdnasignup` `api.selfasserted.tdnasignin` -och-innehålls definitionerna i `TrustFrameworkExtensions.xml` filen till URI: n för dina värdbaserade HTML-filer.
 5. Skapa en B2C-princip under ramverk för identitets upplevelse i Azure AD-bladet i **Azure Portal**. Använd `Generate` alternativet och namnge den här nyckeln `tdnaHashedId` .
 6. Ersätt TenantId i principfiler

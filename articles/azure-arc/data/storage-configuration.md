@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: uc-msft
 ms.author: umajay
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: c420652a6385be2cade9723c20cff7c32a4a60b0
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 7b683029b7fd05078755d4e8cd027f55c805f991
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127241"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107268"
 ---
 # <a name="storage-configuration"></a>Storage-konfiguration
 
@@ -28,13 +28,13 @@ Kubernetes är ett sätt för providers för lagrings infrastruktur att anslutas
 
 Du kan se vilka lagrings klasser som har kon figurer ATS i ditt Kubernetes-kluster genom att köra det här kommandot:
 
-``` terminal
+```console
 kubectl get storageclass
 ```
 
 Exempel på utdata från ett Azure Kubernetes service-kluster (AKS):
 
-``` terminal
+```console
 NAME                PROVISIONER                AGE
 azurefile           kubernetes.io/azure-file   15d
 azurefile-premium   kubernetes.io/azure-file   15d
@@ -44,13 +44,13 @@ managed-premium     kubernetes.io/azure-disk   4d3h
 
 Du kan få information om en lagrings klass genom att köra det här kommandot:
 
-``` terminal
-kubectl describe storageclass\<storage class name>
+```console
+kubectl describe storageclass/<storage class name>
 ```
 
 Exempel:
 
-``` terminal
+```console
 kubectl describe storageclass/azurefile
 
 Name:            azurefile
@@ -69,7 +69,7 @@ Events:                <none>
 
 Du kan se de allokerade permanenta volymerna och beständiga volym anspråk genom att köra följande kommandon:
 
-``` terminal
+```console
 kubectl get persistentvolumes -n <namespace>
 
 kubectl get persistentvolumeclaims -n <namespace>
@@ -77,7 +77,7 @@ kubectl get persistentvolumeclaims -n <namespace>
 
 Exempel på hur du visar beständiga volymer:
 
-``` terminal
+```console
 
 kubectl get persistentvolumes -n arc
 
@@ -98,7 +98,7 @@ pvc-ecd7d07f-2c2c-421d-98d7-711ec5d4a0cd   15Gi       RWO            Delete     
 
 Exempel på att Visa beständiga volym anspråk:
 
-``` terminal
+```console
 
 kubectl get persistentvolumeclaims -n arc
 
@@ -120,12 +120,12 @@ sqldemo11-logs-claim   Bound    pvc-41b33bbd-debb-4153-9a41-02ce2bf9c665   10Gi 
 
 ## <a name="factors-to-consider-when-choosing-your-storage-configuration"></a>Faktorer att tänka på när du väljer lagrings konfiguration
 
-Att välja rätt lagrings klass är mycket viktigt för data återhämtning och prestanda. Om du väljer fel lagrings klass kan du ge dina data risk för total data förlust vid ett maskin varu fel eller orsaka mindre optimala prestanda.
+Att välja rätt lagrings klass är viktigt för data återhämtning och prestanda. Om du väljer fel lagrings klass kan du ge dina data risk för total data förlust vid ett maskin varu fel eller orsaka mindre optimala prestanda.
 
 Det finns vanligt vis två typer av lagring:
 
-- **Lokal lagring** – lagring som är etablerad på lokala hård diskar på en specifik nod. Den här typen av lagring kan vara idealisk vad gäller prestanda, men kräver särskilt design av dataredundans genom att replikera data mellan flera noder.
-- **Fjärran sluten, delad lagring** – lagring som är etablerad på en viss lagrings enhet – t. ex. en San-, NAS-eller moln lagrings tjänst som EBS eller Azure Files. Den här typen av lagring tillhandahåller vanligt vis dataredundans automatiskt, men är vanligt vis inte lika snabb som lokal lagring kan vara.
+- **Lokal lagring** – lagring som har allokerats på lokala hård diskar på en specifik nod. Den här typen av lagring kan vara idealisk vad gäller prestanda, men kräver särskilt design av dataredundans genom att replikera data mellan flera noder.
+- **Fjärran sluten, delad lagring** – lagrings utrymme som har allokerats på en fjärran sluten lagrings enhet, till exempel en San-, NAS-eller moln lagrings tjänst som EBS eller Azure Files. Den här typen av lagring tillhandahåller vanligt vis dataredundans automatiskt, men är inte lika snabb som lokal lagring kan vara.
 
 > [!NOTE]
 > Om du använder NFS måste du nu ange allowRunAsRoot till true i din distributions profil fil innan du distribuerar Azure Arc-datakontrollanten.
@@ -143,7 +143,7 @@ Vissa tjänster i Azure-bågen för data tjänster är beroende av att konfigure
 
 När data styrenheten är etablerad anges den lagrings klass som ska användas för var och en av dessa permanenta volymer genom att antingen skicka--Storage-klassen | -SC-parameter till `azdata arc dc create` kommandot eller genom att ange lagrings klasserna i control.jspå den distributions mal len som används.
 
-De mallar för distribution som anges i rutan har en standard lagrings klass som är lämplig för mål miljön, men den kan åsidosättas vid distributions tillfället. Se de detaljerade stegen för att ändra [distributions profilen](create-data-controller.md) för att ändra lagrings klass konfigurationen för datakontrollantens poddar vid distributions tillfället.
+De mallar för distribution som anges i rutan har en standard lagrings klass som är lämplig för mål miljön, men den kan åsidosättas under distributionen. Se de detaljerade stegen för att ändra [distributions profilen](create-data-controller.md) för att ändra lagrings klass konfigurationen för datakontrollantens poddar vid distributions tillfället.
 
 Om du ställer in lagrings klassen med hjälp av--Storage-Class | -SC-parameter som lagrings klassen ska användas för både logg-och data lagrings klasser. Om du ställer in lagrings klasser i mallen för distributions mal len kan du ange olika lagrings klasser för loggar och data.
 
@@ -151,8 +151,8 @@ Viktiga faktorer att tänka på när du väljer en lagrings klass för datakontr
 
 - Du **måste** använda en fjärran sluten, delad lagrings klass för att säkerställa data hållbarheten och så att om en POD eller nod översätts som när Pod har säkerhetskopierats kan den ansluta igen till den permanenta volymen.
 - Data som skrivs till Controller SQL-instansen, Metrics DB och logs DB är vanligt vis ganska låga och inte känsliga för svars tider, vilket innebär att Ultra-snabba prestanda lagring inte är kritiskt. Om du har användare som ofta använder Grafana-och Kibana-gränssnitten och du har ett stort antal databas instanser kan användarna få möjlighet att snabbare utföra lagringen.
-- Den lagrings kapacitet som krävs är en variabel med antalet databas instanser som du har distribuerat eftersom loggar och mått samlas in för varje databas instans. Data bevaras i loggarna och måtten DB i 2 veckor innan de rensas. 
-- Att ändra lagrings klassens post distribution är mycket svårt, inte dokumenterat och stöds inte. Se till att välja lagrings klassen korrekt vid distributions tiden.
+- Den lagrings kapacitet som krävs är en variabel med antalet databas instanser som du har distribuerat eftersom loggar och mått samlas in för varje databas instans. Data bevaras i loggarna och måtten DB i två (2) veckor innan de rensas. 
+- Att ändra lagrings klassens post distribution är svårt, inte dokumenterat och stöds inte. Se till att välja lagrings klassen korrekt vid distributions tiden.
 
 > [!NOTE]
 > Om ingen lagrings klass anges används standard lagrings klassen. Det kan bara finnas en standard lagrings klass per Kubernetes-kluster. Du kan [ändra standard lagrings klass](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/).
@@ -161,7 +161,7 @@ Viktiga faktorer att tänka på när du väljer en lagrings klass för datakontr
 
 Varje databas instans har data, loggar och säkerhets kopierings beständiga volymer. Du kan ange lagrings klasserna för dessa permanenta volymer vid distributions tiden. Om ingen lagrings klass anges används standard lagrings klassen.
 
-När du skapar en instans med `azdata arc sql mi create` eller- `azdata arc postgres server create` kommandon finns det två parametrar som kan användas för att ange lagrings klasser:
+När du skapar en instans med antingen `azdata arc sql mi create` eller `azdata arc postgres server create` , finns det två parametrar som kan användas för att ange lagrings klasser:
 
 > [!NOTE]
 > Några av dessa parametrar är under utveckling och kommer att bli tillgängliga på `azdata arc sql mi create` och `azdata arc postgres server create` i kommande versioner.
@@ -199,9 +199,9 @@ Om det finns flera databaser på en specifik databas instans, kommer alla databa
 
 Viktiga faktorer att tänka på när du väljer en lagrings klass för databas instansen poddar:
 
-- Databas instanser kan distribueras i antingen ett enda Pod-mönster eller ett flera Pod-mönster. Ett exempel på ett enda Pod-mönster är en Developer-instans av en hanterad Azure SQL-instans eller en allmän pris nivå för Azure SQL. Ett exempel på ett flera Pod-mönster är en affärs kritisk pris nivå med hög tillgänglighet för Azure SQL-hanterad instans. (Obs! pris nivåer ingår i utvecklingen och är inte tillgängliga för kunder ännu.)  Databas instanser som distribueras med det enskilda Pod-mönstret **måste** använda en fjärran sluten, delad lagrings klass för att säkerställa data hållbarheten och så att om en POD eller nod översätts som när Pod har säkerhetskopierats kan den ansluta igen till den permanenta volymen. En Azure SQL-hanterad instans med hög tillgänglighet använder däremot alltid i tillgänglighets grupper för att replikera data från en instans till en annan antingen synkront eller asynkront. Särskilt i de fall då data replikeras synkront finns det alltid flera kopior av data, vanligt vis 3 kopior. Därför är det möjligt att använda lokala lagrings klasser eller fjärranslutna lagrings klasser för data-och loggfiler. Om du använder lokal lagring bevaras fortfarande data även om det finns en misslyckad pod, nod eller lagrings maskin vara. Med tanke på den här flexibiliteten kan du välja att använda lokal lagring för bättre prestanda.
-- Databas prestanda är i stort sett en funktion i I/O-dataflödet för en specifik lagrings enhet. Om databasen är tungt belastad eller tung skriver bör du välja en lagrings klass som har maskin vara som är avsedd för den typen av arbets belastning. Om din databas exempelvis används för skrivningar kan du välja lokal lagring med RAID 0. Om databasen huvudsakligen används för läsning av en liten mängd "frekventa data", men det finns en stor övergripande lagrings volym av kall data, kan du välja en SAN-enhet som kan hantera lagrings utrymme. Att välja rätt lagrings klass är mycket annorlunda än att välja vilken typ av lagring som du vill använda för alla databaser.
-- Om du använder en lokal lagrings volym Provisioning bör du se till att de lokala volymer som är etablerade för data, loggar och säkerhets kopieringar varje landning på olika underliggande lagrings enheter för att undvika konkurrens på disk-I/O. Operativ systemet bör också finnas på en volym som monteras på en separat disk (er). Detta är i princip samma vägledning som skulle följas för en databas instans på fysisk maskin vara.
+- Databas instanser kan distribueras i antingen ett enda Pod-mönster eller ett flera Pod-mönster. Ett exempel på ett enda Pod-mönster är en Developer-instans av en hanterad Azure SQL-instans eller en allmän pris nivå för Azure SQL. Ett exempel på ett flera Pod-mönster är en affärs kritisk pris nivå med hög tillgänglighet för Azure SQL-hanterad instans. (Obs! pris nivåer ingår i utvecklingen och är inte tillgängliga för kunder ännu.)  Databas instanser som distribueras med det enskilda Pod-mönstret **måste** använda en fjärran sluten, delad lagrings klass för att säkerställa data hållbarheten och så att om en POD eller nod översätts som när Pod har säkerhetskopierats kan den ansluta igen till den permanenta volymen. En Azure SQL-hanterad instans med hög tillgänglighet använder däremot alltid i tillgänglighets grupper för att replikera data från en instans till en annan antingen synkront eller asynkront. Särskilt i de fall då data replikeras synkront finns det alltid flera kopior av data, vanligt vis tre (3) kopior. Därför är det möjligt att använda lokala lagrings klasser eller fjärranslutna lagrings klasser för data-och loggfiler. Om du använder lokal lagring, bevaras fortfarande data även om det finns en misslyckad pod, nod eller lagrings maskin vara. Med tanke på den här flexibiliteten kan du välja att använda lokal lagring för bättre prestanda.
+- Databas prestanda är i stort sett en funktion i I/O-dataflödet för en specifik lagrings enhet. Om databasen är tungt läst eller tungt beskrivet, bör du välja en lagrings klass med maskin vara som är avsedd för den typen av arbets belastning. Om din databas exempelvis används för skrivningar kan du välja lokal lagring med RAID 0. Om databasen huvudsakligen används för läsning av en liten mängd "frekventa data", men det finns en stor övergripande lagrings volym av kall data, kan du välja en SAN-enhet som kan hantera lagrings utrymme. Att välja rätt lagrings klass skiljer sig från att välja den typ av lagring som du vill använda för alla databaser.
+- Om du använder en lokal lagrings volym Provisioning kontrollerar du att de lokala volymer som är etablerade för data, loggar och säkerhets kopieringar varje landning på olika underliggande lagrings enheter för att undvika konkurrens på disk-I/O. Operativ systemet bör också finnas på en volym som monteras på en separat disk (er). Detta är i princip samma vägledning som skulle följas för en databas instans på fysisk maskin vara.
 - Eftersom alla databaser på en specifik instans delar ett beständigt volym anspråk och permanent volym bör du se till att inte samplacera upptagna databas instanser på samma databas instans. Om möjligt kan du dela upp upptagna databaser på sina egna databas instanser för att undvika I/O-konkurrens. Du kan också använda Node-etiketten för att rikta in databas instanser på olika noder för att distribuera den övergripande I/O-trafiken över flera noder. Om du använder virtualisering bör du se till att distribuera I/O-trafik inte bara på nodnivå, utan även den kombinerade I/O-aktiviteten som sker av alla noder på en specifik fysisk värd.
 
 ## <a name="estimating-storage-requirements"></a>Beräkna lagrings kraven
@@ -222,9 +222,9 @@ Tabellen nedan visar det totala antalet permanenta volymer som krävs för en ex
 |Hanterad Azure SQL-instans|5|5 * 2 = 10|
 |Azure Database for PostgreSQL instans|5| 5 * 2 = 10|
 |Azure PostgreSQL-storskalig|2 (antal arbetare = 4 per instans)|2 * 2 * (1 + 4) = 20|
-|***Totalt antal beständiga volymer***||8 + 10 + 10 + 20 = 48|
+|***Totalt antal beständiga volymer** _||8 + 10 + 10 + 20 = 48|
 
-Den här beräkningen kan användas för att planera lagringen för ditt Kubernetes-kluster baserat på lagrings etableringen eller miljön. Om t. ex. en lokal lagrings enhet används för ett Kubernetes-kluster med 5 noder, krävs minst lagring för 10 permanenta volymer för exempel distributionen ovan varje nod. På samma sätt är det viktigt att när du konfigurerar ett Azure Kubernetes service-kluster (AKS) med 5 noder som ska plocka en lämplig VM-storlek för Node-poolen, så att 10 data diskar kan kopplas. Mer information om hur du kan ändra storlek på noderna för lagrings behov för AKS-noder finns [här](../../aks/operator-best-practices-storage.md#size-the-nodes-for-storage-needs).
+Den här beräkningen kan användas för att planera lagringen för ditt Kubernetes-kluster baserat på lagrings etableringen eller miljön. Om den lokala lagrings platsen till exempel används för ett Kubernetes-kluster med fem (5) noder för exempel distributionen ovan varje nod kräver minst lagrings utrymme för 10 permanenta volymer. När du konfigurerar ett Azure Kubernetes service-kluster (AKS) med fem (5) noder, plockar du en lämplig VM-storlek för Node-poolen så att 10 data diskar kan anslutas är kritiskt. Mer information om hur du kan ändra storlek på noderna för lagrings behov för AKS-noder finns [här](../../aks/operator-best-practices-storage.md#size-the-nodes-for-storage-needs).
 
 ## <a name="choosing-the-right-storage-class"></a>Välja rätt lagrings klass
 
@@ -238,6 +238,6 @@ Vi kan göra följande rekommendationer för offentliga molnbaserade, hanterade 
 
 |Offentlig moln tjänst|Rekommendation|
 |---|---|
-|**Azure Kubernetes Service (AKS)**|Azure Kubernetes service (AKS) har två typer av lagrings Azure Files och Azure Managed Disks. Varje typ av lagring har två pris-/prestanda nivåer – standard (HDD) och Premium (SSD). Därför är de fyra lagrings klasserna i AKS `azurefile` (Azure Files standard nivå), `azurefile-premium` (Azure Files Premium nivå), `default` (Azure disks standard nivå) och `managed-premium` (Azure disks Premium-nivå). Standard lagrings klassen är `default` (standard nivån för Azure-diskar). Det finns betydande **[pris skillnader](https://azure.microsoft.com/en-us/pricing/details/storage/)** mellan de typer och nivåer som bör delas in i ditt beslut. För produktions arbets belastningar med höga prestanda krav rekommenderar vi att du använder `managed-premium` för alla lagrings klasser. För arbets belastningar för utveckling/testning, bevis på koncept osv. där kostnad är ett övervägande `azurefile` är det minst dyra alternativet. Alla fyra av alternativen kan användas för situationer som kräver fjärran sluten, delad lagring som alla nätverksanslutna lagrings enheter i Azure. Läs mer om [AKS-lagring](../../aks/concepts-storage.md).|
+|_ *Azure Kubernetes service (AKS)**|Azure Kubernetes service (AKS) har två typer av lagrings Azure Files och Azure Managed Disks. Varje typ av lagring har två pris-/prestanda nivåer – standard (HDD) och Premium (SSD). Därför är de fyra lagrings klasserna i AKS `azurefile` (Azure Files standard nivå), `azurefile-premium` (Azure Files Premium nivå), `default` (Azure disks standard nivå) och `managed-premium` (Azure disks Premium-nivå). Standard lagrings klassen är `default` (standard nivån för Azure-diskar). Det finns betydande **[pris skillnader](https://azure.microsoft.com/en-us/pricing/details/storage/)** mellan de typer och nivåer som bör delas in i ditt beslut. För produktions arbets belastningar med höga prestanda krav rekommenderar vi att du använder `managed-premium` för alla lagrings klasser. För arbets belastningar för utveckling/testning, bevis på koncept osv. där kostnad är ett övervägande `azurefile` är det minst dyra alternativet. Alla fyra av alternativen kan användas för situationer som kräver fjärran sluten, delad lagring som alla nätverksanslutna lagrings enheter i Azure. Läs mer om [AKS-lagring](../../aks/concepts-storage.md).|
 |**AWS Elastic Kubernetes Service (EKS)**| Amazon: s elastiska Kubernetes-tjänst har en primär lagrings klass baserad på [EBS CSI-lagringsenheten](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html). Detta rekommenderas för produktions arbets belastningar. Det finns en ny lagrings driv rutin – [EFS CSI-lagringsenhet](https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html) – som kan läggas till i ett EKS-kluster, men den är för närvarande i ett beta steg och kan komma att ändras. Även om AWS säger att den här lagrings driv rutinen stöds för produktion rekommenderar vi inte att du använder den eftersom den fortfarande är i beta syfte och kan komma att ändras. Lagrings klassen EBS är standard och kallas `gp2` . Läs mer om [EKS-lagring](https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html).|
-|**Google Kubernetes Engine (GKE)**|Google Kubernetes Engine (GKE) har bara en lagrings klass med namnet `standard` som används för [GCE-beständiga diskar](https://kubernetes.io/docs/concepts/storage/volumes/#gcepersistentdisk). Det är bara det enda, det är också standardvärdet. Även om det finns en [lokal, statisk volym](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd#run-local-volume-static-provisioner) för GKE som du kan använda med direktansluten SSD rekommenderar vi inte att du använder den eftersom den inte hanteras eller stöds av Google. Läs mer om [GKE-lagring](https://cloud.google.com/kubernetes-engine/docs/concepts/persistent-volumes).
+|**Google Kubernetes Engine (GKE)**|Google Kubernetes Engine (GKE) har bara en lagrings klass `standard` som kallas, som används för [GCE-beständiga diskar](https://kubernetes.io/docs/concepts/storage/volumes/#gcepersistentdisk). Det är bara det enda, det är också standardvärdet. Även om det finns en [lokal, statisk volym](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd#run-local-volume-static-provisioner) för GKE som du kan använda med direktansluten SSD rekommenderar vi inte att du använder den eftersom den inte hanteras eller stöds av Google. Läs mer om [GKE-lagring](https://cloud.google.com/kubernetes-engine/docs/concepts/persistent-volumes).

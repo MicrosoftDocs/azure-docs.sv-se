@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fd2f7d46df09085d19b19709c7f45cd3d6566988
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 018d90db06948f3fd6a34b56c65088641a9ca874
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628668"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108985"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -90,7 +90,7 @@ Metadata för den **LocalAccountSignUpWithLogonEmail** självkontrollerade tekni
 
 ### <a name="select-a-page-layout"></a>Välj en sidlayout
 
-Du kan aktivera [JavaScript-kod på klient sidan](javascript-samples.md) genom att infoga `contract` mellan `elements` och sid typen. Till exempel `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
+Du kan aktivera [JavaScript-kod på klient sidan](javascript-and-page-layout.md) genom att infoga `contract` mellan `elements` och sid typen. Ett exempel är `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
@@ -111,7 +111,7 @@ I följande exempel visas **DataUri** för `selfasserted` version `1.2.0` :
 
 #### <a name="migrating-to-page-layout"></a>Migrera till sidlayouten
 
-Formatet för värdet måste innehålla ordet `contract` : _urn: com: Microsoft: AAD: B2C: Elements: **kontrakt** :p ålder-Name: version_ . Om du vill ange en sidlayout i dina anpassade principer som använder ett gammalt **DataUri** -värde, använder du följande tabell för att migrera till det nya formatet.
+Formatet för värdet måste innehålla ordet `contract` : _urn: com: Microsoft: AAD: B2C: Elements:**kontrakt**:p ålder-Name: version_. Om du vill ange en sidlayout i dina anpassade principer som använder ett gammalt **DataUri** -värde, använder du följande tabell för att migrera till det nya formatet.
 
 | Gammalt DataUri-värde | Nytt DataUri-värde |
 | ----------------- | ----------------- |
@@ -238,4 +238,4 @@ ID-attributet för **ContentDefinition** -elementet anger vilken typ av sida som
 
 Ett exempel på hur du anpassar användar gränssnittet med hjälp av innehålls definitioner finns i:
 
-[Anpassa ditt programs användar gränssnitt med hjälp av en anpassad princip](custom-policy-ui-customization.md)
+[Anpassa ditt programs användar gränssnitt med hjälp av en anpassad princip](customize-ui-with-html.md)

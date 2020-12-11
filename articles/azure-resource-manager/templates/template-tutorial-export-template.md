@@ -6,18 +6,18 @@ ms.date: 09/09/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 310637ce099aca7b8b9057a674d6b2094b008a87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba1797da5a78eeebd25f5df1b6e37eb92470f584
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613619"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106928"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Självstudie: Använd exporterad mall från Azure Portal
 
 I den här själv studie serien har du skapat en mall för att distribuera ett Azure Storage-konto. I de kommande två självstudierna lägger du till en *App Service plan* och en *webbplats*. I stället för att skapa mallar från grunden får du lära dig hur du exporterar mallar från Azure Portal och hur du använder exempel mallar från [Azures snabb starts mallar](https://azure.microsoft.com/resources/templates/). Du anpassar mallarna efter din användning. Den här självstudien fokuserar på att exportera mallar och anpassa resultatet för din mall. Det tar ungefär **14 minuter** att slutföra.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Vi rekommenderar att du slutför [självstudien om utdata](template-tutorial-add-outputs.md), men det är inte obligatoriskt.
 
@@ -35,9 +35,9 @@ Den här mallen fungerar bra för att distribuera lagrings konton, men du kanske
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 1. Välj **Skapa en resurs**.
-1. I **Sök på Marketplace**anger **App Service plan**och väljer sedan **App Service plan**.  Välj inte **App Service plan (klassisk)**
+1. I **Sök på Marketplace** anger **App Service plan** och väljer sedan **App Service plan**.  Välj inte **App Service plan (klassisk)**
 1. Välj **Skapa**.
-1. Ange:
+1. Skriv:
 
     - **Prenumeration**: Välj din Azure-prenumeration.
     - **Resurs grupp**: Välj **Skapa ny** och ange sedan ett namn. Ange ett annat resurs grupps namn än det som du har använt i den här själv studie serien.
@@ -62,12 +62,12 @@ Den här mallen fungerar bra för att distribuera lagrings konton, men du kanske
 
    Funktionen Exportera mall tar det aktuella läget för en resurs och skapar en mall för att distribuera den. Att exportera en mall kan vara ett användbart sätt att snabbt hämta den JSON du behöver för att distribuera en resurs.
 
-1. Titta på **Microsoft. Web/Server grupper** -definitionen och parameter definitionen i den exporterade mallen. Du behöver inte kopiera dessa avsnitt. Du kan bara använda den här exporterade mallen som ett exempel på hur du vill lägga till den här resursen i mallen.
+1. Titta på `Microsoft.Web/serverfarms` definitionen och parameter definitionen i den exporterade mallen. Du behöver inte kopiera dessa avsnitt. Du kan bara använda den här exporterade mallen som ett exempel på hur du vill lägga till den här resursen i mallen.
 
     ![Exportera mall för mall i Resource Manager-mall](./media/template-tutorial-export-template/resource-manager-template-exported-template.png)
 
 > [!IMPORTANT]
-> Normalt är den exporterade mallen mer utförlig än du kanske vill när du skapar en mall. Till exempel har SKU-objektet i den exporterade mallen fem egenskaper. Den här mallen fungerar, men du kan bara använda egenskapen **namn** . Du kan börja med den exporterade mallen och sedan ändra den så att den passar dina behov.
+> Normalt är den exporterade mallen mer utförlig än du kanske vill när du skapar en mall. Till exempel har SKU-objektet i den exporterade mallen fem egenskaper. Den här mallen fungerar, men du kan bara använda `name` egenskapen. Du kan börja med den exporterade mallen och sedan ändra den så att den passar dina behov.
 
 ## <a name="revise-existing-template"></a>Ändra befintlig mall
 
@@ -83,7 +83,7 @@ Kopiera hela filen och ersätt din mall med dess innehåll.
 
 Använd antingen Azure CLI eller Azure PowerShell för att distribuera en mall.
 
-Om du inte har skapat resurs gruppen, se [skapa resurs grupp](template-tutorial-create-first-template.md#create-resource-group). Exemplet förutsätter att du har angett **templateFile** -variabeln till sökvägen till mallfilen, som du ser i den [första självstudien](template-tutorial-create-first-template.md#deploy-template).
+Om du inte har skapat resurs gruppen, se [skapa resurs grupp](template-tutorial-create-first-template.md#create-resource-group). Exemplet förutsätter att du har angett `templateFile` variabeln till sökvägen till mallfilen, som du ser i den [första självstudien](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -111,14 +111,14 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Om distributionen misslyckades använder du **utförlig** växeln för att hämta information om de resurser som skapas. Använd **fel söknings** växeln för att få mer information om fel sökning.
+> Om distributionen misslyckades använder du `verbose` växeln för att hämta information om de resurser som skapas. Använd `debug` växeln för att få mer information om fel sökning.
 
 ## <a name="verify-deployment"></a>Verifiera distributionen
 
 Du kan kontrol lera distributionen genom att utforska resurs gruppen från Azure Portal.
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-1. Välj **resurs grupper**på den vänstra menyn.
+1. Välj **resurs grupper** på den vänstra menyn.
 1. Välj den resurs grupp som du har distribuerat till.
 1. Resurs gruppen innehåller ett lagrings konto och en App Service plan.
 

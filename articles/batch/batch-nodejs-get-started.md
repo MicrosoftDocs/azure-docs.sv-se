@@ -1,44 +1,45 @@
 ---
-title: Självstudie – Använd Azure Batch klient biblioteket för Node.js
+title: Använd Azure Batch klient bibliotek för Node.js
 description: Lär dig de grundläggande principerna för Azure Batch och skapa en enkel lösning med Node.js.
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 10/08/2020
-ms.openlocfilehash: 33ca65421802cdbe31497f3a19ba5992961daa12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d34d5bbb302e3781aabdd697de11d3d492b879a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850616"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106707"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Kom igång med Batch SDK för Node.js
 
 Lär dig grunderna i att bygga en Batch-klient i Node.js med [Azure Batch Node.js SDK](/javascript/api/overview/azure/batch). Vi går igenom ett scenario med ett batch-program, steg för steg, och utför sedan en konfigurering med en Node.js-klient.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
+
 Den här artikeln förutsätter att du har kunskaper om Node.js och att du är bekant med Linux. Den förutsätter också att du har ett Azure-konto med behörighet att skapa batch- och lagringstjänster.
 
 Vi rekommenderar att du läser [Azure Batch, teknisk översikt](batch-technical-overview.md) innan du går igenom stegen som beskrivs i den här artikeln.
 
-## <a name="the-tutorial-scenario"></a>Självstudiescenario
-Vi börjar med att gå igenom själva scenariot för batch-arbetsflödet. Vi har ett enkelt skript skrivet i Python som laddar ned alla CSV-filer från en Azure Blob Storage-container och konverterar dem till JSON-format. Om du vill bearbeta flera Storage- kontocontainrar parallellt med varandra kan vi distribuera skriptet som ett Azure Batch-jobb.
+## <a name="understand-the-scenario"></a>Förstå scenariot
 
-## <a name="azure-batch-architecture"></a>Azure Batch-arkitektur
+Här har vi ett enkelt skript skrivet i python som laddar ned alla CSV-filer från en Azure Blob Storage-behållare och konverterar dem till JSON. Om du vill bearbeta flera Storage- kontocontainrar parallellt med varandra kan vi distribuera skriptet som ett Azure Batch-jobb.
+
+## <a name="azure-batch-architecture"></a>Azure Batch arkitektur
+
 Följande diagram visar hur vi kan skala Python-skriptet med Azure Batch och en Node.js-klient.
 
-![Azure Batch-scenario](./media/batch-nodejs-get-started/BatchScenario.png)
+![Diagram som visar scenario arkitektur.](./media/batch-nodejs-get-started/BatchScenario.png)
 
 Node.js-klienten distribuerar ett batch-jobb med en förberedande aktivitet (beskrivs i detalj senare) och en uppsättning aktiviteter beroende på antalet containrar i lagringskontot. Du kan ladda ned skripten från GitHub-lagringsplatsen.
 
-* [Node.js-klient](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/nodejs_batch_client_sample.js)
-* [Förberedande aktivitet – kommandoskript](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/startup_prereq.sh)
-* [Processor för konvertering från CSV-format (Python) till JSON-format](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/processcsv.py)
+- [Node.js-klient](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/nodejs_batch_client_sample.js)
+- [Förberedande aktivitet – kommandoskript](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/startup_prereq.sh)
+- [Processor för konvertering från CSV-format (Python) till JSON-format](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/processcsv.py)
 
 > [!TIP]
 > Node.js-klienten i den angivna länken innehåller ingen kod som kan distribueras som en Azure-funktionsapp. Se följande länkar för att få anvisningar om hur du skapar en sådan.
 > - [Skapa funktionsappen](../azure-functions/functions-create-first-azure-function.md)
 > - [Skapa timerutlösare](../azure-functions/functions-bindings-timer.md)
->
->
 
 ## <a name="build-the-application"></a>Skapa programmet
 
@@ -54,8 +55,6 @@ Med hjälp av det här kommandot installerar du den senaste versionen av azure-b
 
 >[!Tip]
 > Om du använder en Azure-funktionsapp går du till Kudu-konsolen på Azure-funktionens inställningsflik för att köra installationskommandot npm. I det här fallet är syftet att installera Azure Batch SDK för Node.js.
->
->
 
 ### <a name="step-2-create-an-azure-batch-account"></a>Steg 2: Skapa ett Azure Batch-konto
 
@@ -78,6 +77,7 @@ Varje Batch-konto har motsvarande åtkomstnycklar. Dessa nycklar behövs för at
 Kopiera och lagra nyckeln som ska användas i efterföljande steg.
 
 ### <a name="step-3-create-an-azure-batch-service-client"></a>Steg 3: Skapa en Azure Batch-tjänsteklient
+
 Följande kodfragment importerar först azure-batch Node.js-modulen och skapar sedan en Batch-tjänsteklient. Du måste först skapa ett SharedKeyCredentials-objekt med hjälp av den nyckel för Batch-kontot som kopierades i det föregående steget.
 
 ```nodejs
@@ -109,19 +109,16 @@ Se skärmbilden:
 
 ![URI för Azure Batch](./media/batch-nodejs-get-started/azurebatchuri.png)
 
-
-
 ### <a name="step-4-create-an-azure-batch-pool"></a>Steg 4: Skapa en Azure Batch-pool
+
 En Azure Batch-pool består av flera virtuella datorer (även kallade batchnoder). Azure Batch-tjänsten distribuerar aktiviteterna på noderna och hanterar dem. Följande konfigurationsparametrar kan definieras för din pool.
 
-* Typ av virtuell datoravbildning
-* Storlek på de virtuella datornoderna
-* Antal virtuella datornoder
+- Typ av virtuell datoravbildning
+- Storlek på de virtuella datornoderna
+- Antal virtuella datornoder
 
-> [!Tip]
+> [!TIP]
 > Storlekar och antalet virtuella noder beror huvudsakligen på antalet aktiviteter som du vill köra parallellt samt själva uppgiften som ska utföras. Vi rekommenderar tester för att bäst kunna avgöra det bästa antalet och perfekta storlekar.
->
->
 
 Följande kodfragment skapar konfigurationsparameterobjekten.
 
@@ -139,10 +136,8 @@ var vmSize = "STANDARD_F4"
 var numVMs = 4
 ```
 
-> [!Tip]
+> [!TIP]
 > En lista över virtuella datoravbildningar med Linux och deras SKU ID:n finns i [Lista över virtuella datoravbildningar](batch-linux-nodes.md#list-of-virtual-machine-images).
->
->
 
 När poolkonfigurationen har definierats kan du skapa Azure Batch-poolen. Batch-poolkommandot skapar virtuella Azure-datornoder och förbereder dem för att kunna ta emot och köra aktiviteter. I alla efterföljande steg ska det finnas ett unikt referens-ID.
 
@@ -245,40 +240,37 @@ Följande är ett exempel på ett resultatobjekt som returnerats av funktionen p
   taskSchedulingPolicy: { nodeFillType: 'Spread' } }
 ```
 
-
 ### <a name="step-4-submit-an-azure-batch-job"></a>Steg 4: Skicka ett Azure Batch-jobb
+
 Azure Batch-jobbet består av en logisk grupp av snarlika uppgifter. I vårt exempel är det ”Process csv to JSON” (konvertering från CSV-format till JSON-format). Varje aktivitet här kan bearbeta de CSV-filer som finns i respektive Azure Storage-container.
 
 Dessa uppgifter körs parallellt och distribueras över flera noder, och allt detta samordnas av Azure Batch-tjänsten.
 
-> [!Tip]
+> [!TIP]
 > Du kan använda egenskapen [taskSlotsPerNode](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) för att ange det maximala antalet uppgifter som kan köras samtidigt på en enda nod.
->
->
 
 #### <a name="preparation-task"></a>Förberedande aktivitet
 
 De VM-noder som skapas är tomma Ubuntu-noder. Oftast måste du installera en obligatorisk uppsättning program.
 Om du använder Linux-noder har du normalt sett ett kommandoskript som installerar alla obligatoriska program innan de faktiska aktiviteterna körs. Det kan röra sig om vilka körbara filer som helst.
+
 [Kommandoskriptet](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/startup_prereq.sh) i det här exemplet installerar Python-pip och Azure Storage SDK för Python.
 
 Du kan ladda upp skriptet på Azure Storage-kontot och generera en SAS-URI för att komma åt skriptet. Den här processen kan också automatiseras med hjälp av Azure Storage Node.js SDK.
 
-> [!Tip]
+> [!TIP]
 > Förberedande aktiviteter för ett jobb kan endast köras på de virtuella datornoder där en viss aktivitet ska köras. Om du vill att de obligatoriska programmen ska installeras på alla noder, oavsett vilka aktiviteter som körs på dem, kan du använda egenskapen [startTask](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) när du lägger till poolen. Du kan använda följande definition för förberedande aktiviteter som referens.
->
->
 
 En förberedande aktivitet anges vid överföring av Azure Batch-jobbet. Här följer konfigurationsparametrar för den förberedande aktiviteten:
 
-* **ID**: En unik identifierare för den förberedande aktiviteten
-* **commandLine**: Den kommandorad som exekverar den körbara filen
-* **resourceFiles**: En uppsättning objekt som tillhandahåller detaljerad information om de filer som måste laddas ned innan aktiviteten kan köras.  Här visas alternativen
-    - blobSource: SAS-URI för filen.
-    - filePath: Lokal sökväg för nedladdning och sparande av filen.
-    - fileMode: fileMode har ett oktalt format med standardvärdet 0770 (gäller endast Linux-noder).
-* **waitForSuccess**: Om värdet är satt till sant går det inte att köra aktiviteten om den förberedande aktiviteten misslyckas.
-* **runElevated**: Sätt värdet till sant om det krävs utökad behörighet för att få köra uppgiften.
+- **ID**: En unik identifierare för den förberedande aktiviteten
+- **commandLine**: Den kommandorad som exekverar den körbara filen
+- **resourceFiles**: En uppsättning objekt som tillhandahåller detaljerad information om de filer som måste laddas ned innan aktiviteten kan köras.  Här visas alternativen
+  - blobSource: SAS-URI för filen.
+  - filePath: Lokal sökväg för nedladdning och sparande av filen.
+  - fileMode: fileMode har ett oktalt format med standardvärdet 0770 (gäller endast Linux-noder).
+- **waitForSuccess**: Om värdet är satt till sant går det inte att köra aktiviteten om den förberedande aktiviteten misslyckas.
+- **runElevated**: Sätt värdet till sant om det krävs utökad behörighet för att få köra uppgiften.
 
 Följande kodfragment innehåller ett exempel på skriptkonfigurering för den förberedande aktiviteten:
 
@@ -302,15 +294,14 @@ Om det inte finns några obligatoriska program att installera före aktivitetsk�
      }});
 ```
 
-
 ### <a name="step-5-submit-azure-batch-tasks-for-a-job"></a>Steg 5: Skicka Azure Batch-aktiviteter för ett jobb
 
 Nu när vi har skapat ett jobb för bearbetning av CSV-filer kan vi börja skapa aktiviteter för jobbet i fråga. Anta att vi har fyra containrar och vill skapa fyra aktiviteter – en för varje container.
 
 Om vi tittar på [Python-skriptet](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/processcsv.py) så godtas två möjliga parametrar:
 
-* container name: Den Storage-behållare som du vill ladda ned filer från
-* pattern: En valfri parameter för filnamnsmönster
+- container name: Den Storage-behållare som du vill ladda ned filer från
+- pattern: En valfri parameter för filnamnsmönster
 
 Anta att vi har fyra containrar – ”con1”, ”con2”, ”con3” och ”con4”. Följande kod visar hur man skickar aktiviteter till Azure Batch-jobbet ”process csv” som vi skapade tidigare.
 
@@ -347,4 +338,3 @@ Portalen har detaljerade vyer för aktiviteter och jobbstatusar. Du kan också a
 
 - Lär dig mer om [batch-tjänstens arbets flöde och primära resurser](batch-service-workflow-features.md) som pooler, noder, jobb och aktiviteter.
 - Se [Batch Node.js-referens](/javascript/api/overview/azure/batch) om du vill utforska Batch API.
-

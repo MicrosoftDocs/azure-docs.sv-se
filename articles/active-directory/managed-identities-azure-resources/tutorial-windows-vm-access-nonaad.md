@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/03/2020
+ms.date: 12/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa17a18de8e71b099d6ed717974486203c4379f4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 668d3cb044512220ff7afbc165c77da704a9a5d7
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180514"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107523"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Självstudie: Använda en systemtilldelad hanterad identitet för en virtuell Windows-dator för åtkomst till Azure Key Vault 
 
@@ -61,6 +61,20 @@ Börja med att skapa ett Key Vault och bevilja den virtuella datorns systemtilld
 1. Välj **Granska + skapa**
 1. Välj **Skapa**
 
+### <a name="create-a-secret"></a>Skapa en hemlighet
+
+Lägg sedan till en hemlighet till Key Vault så att du kan hämta den senare med hjälp av kod som körs i den virtuella datorn. I den här självstudien använder vi PowerShell men samma koncept gäller för all kod som körs på den här virtuella datorn.
+
+1. Navigera till din nyligen skapade Key Vault.
+1. Välj **Hemligheter** och klicka på **Lägg till**.
+1. Välj **generera/importera**
+1. I fönstret **skapa en hemlig** skärm från **överförings alternativ** lämnar du **manuellt** markerat.
+1. Ange ett namn och värde för hemligheten.  Värdet kan vara vad du vill. 
+1. Låt aktiveringsdatum och förfallodatum vara tomt och sätt **Aktiverad** som **Ja**. 
+1. Klicka på **Skapa** och skapa hemligheten.
+
+   ![Skapa en hemlighet](./media/msi-tutorial-windows-vm-access-nonaad/create-secret.png)
+
 ## <a name="grant-access"></a>Bevilja åtkomst
 
 Den hanterade identitet som används av den virtuella datorn måste beviljas åtkomst för att läsa hemligheten som vi lagrar i Key Vault.
@@ -76,19 +90,6 @@ Den hanterade identitet som används av den virtuella datorn måste beviljas åt
 1. Välj **Lägg till**
 1. Välj **Spara**.
 
-## <a name="create-a-secret"></a>Skapa en hemlighet
-
-Lägg sedan till en hemlighet till Key Vault så att du kan hämta den senare med hjälp av kod som körs i den virtuella datorn. I den här självstudien använder vi PowerShell men samma koncept gäller för all kod som körs på den här virtuella datorn.
-
-1. Navigera till din nyligen skapade Key Vault.
-1. Välj **Hemligheter** och klicka på **Lägg till**.
-1. Välj **generera/importera**
-1. I fönstret **skapa en hemlig** skärm från **överförings alternativ** lämnar du **manuellt** markerat.
-1. Ange ett namn och värde för hemligheten.  Värdet kan vara vad du vill. 
-1. Låt aktiveringsdatum och förfallodatum vara tomt och sätt **Aktiverad** som **Ja**. 
-1. Klicka på **Skapa** och skapa hemligheten.
-
-   ![Skapa en hemlighet](./media/msi-tutorial-windows-vm-access-nonaad/create-secret.png)
 
 ## <a name="access-data"></a>Åtkomst till data  
 

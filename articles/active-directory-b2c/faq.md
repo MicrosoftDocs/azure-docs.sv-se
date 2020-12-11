@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 384f178481f7a6ff202d5363ba09c242b1fc366d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 30b7788419695db7ee5d4b81714bf55248a41b4a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951799"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108730"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: vanliga frågor och svar
 
@@ -78,7 +78,7 @@ E-postsignaturen innehåller Azure AD B2C klientens namn som du angav när du f�
 
 1. Logga in på [Azure Portal](https://portal.azure.com/) som global administratör.
 1. Öppna **Azure Active Directory**-bladet.
-1. Klicka på fliken **Egenskaper** .
+1. Klicka på fliken **Egenskaper**.
 1. Ändra fältet **namn** .
 1. Klicka på **Spara** längst upp på sidan.
 
@@ -124,7 +124,7 @@ Nej, Azure AD B2C har inte stöd för samma uppsättning rapporter som Azure AD 
 
 ### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Kan jag lokalisera användar gränssnittet för sidor som hanteras av Azure AD B2C? Vilka språk stöds?
 
-Ja, se [språk anpassning](user-flow-language-customization.md). Vi tillhandahåller översättningar för 36-språk och du kan åsidosätta valfri sträng för att passa dina behov.
+Ja, se [språk anpassning](language-customization.md). Vi tillhandahåller översättningar för 36-språk och du kan åsidosätta valfri sträng för att passa dina behov.
 
 ### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-contosob2clogincom-to-logincontosocom"></a>Kan jag använda mina egna URL: er på mina registrerings-och inloggnings sidor som hanteras av Azure AD B2C? Kan jag till exempel ändra URL: en från contoso.b2clogin.com till login.contoso.com?
 

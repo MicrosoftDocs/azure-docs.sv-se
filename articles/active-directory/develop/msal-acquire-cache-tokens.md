@@ -13,12 +13,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: da79a74121318993f807ec3bde101b652a8b49da
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 34cdaa42f3a41ae04c73c570bb4fede01a786af2
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628143"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107846"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Hämta och cachelagra token med Microsoft Authentication Library (MSAL)
 
@@ -122,6 +122,8 @@ När klienten begär en åtkomsttoken, returnerar Azure AD även ett verifiering
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du använder MSAL för Java kan du läsa mer om [anpassad cachelagring av token i MSAL för Java](msal-java-token-cache-serialization.md).
-
-Lär dig mer om att [hantera fel och undantag](msal-handling-exceptions.md).
+Flera av plattformarna som stöds av MSAL har ytterligare token cache-relaterad information i dokumentationen för plattformens bibliotek. Exempel:
+- [Hämta en token från token-cachen med MSAL.NET](msal-net-acquire-token-silently.md)
+- [Enkel inloggning med MSAL.js](msal-js-sso.md)
+- [Anpassad token cache-serialisering i MSAL för python](msal-python-token-cache-serialization.md)
+- [Anpassad token cache-serialisering i MSAL för Java](msal-java-token-cache-serialization.md)

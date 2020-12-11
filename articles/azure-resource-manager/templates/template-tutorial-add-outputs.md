@@ -6,18 +6,18 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: e55638e20bceb6df4b8e74375d67836123167162
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 7acfb168462354017168ee333ea0b1ecaea434c1
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931749"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107132"
 ---
 # <a name="tutorial-add-outputs-to-your-arm-template"></a>Självstudie: Lägg till utdata i ARM-mallen
 
 I den här självstudien får du lära dig hur du returnerar ett värde från din Azure Resource Manager-mall (ARM-mall). Du använder utdata när du behöver ett värde från en distribuerad resurs. Den här självstudien tar **7 minuter** att slutföra.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Vi rekommenderar att du slutför [självstudien om variabler](template-tutorial-add-variables.md), men det är inte obligatoriskt.
 
@@ -41,17 +41,17 @@ I följande exempel visas ändringarna i mallen för att lägga till ett utmatni
 
 Det finns några viktiga saker att notera om det utdata som du har lagt till.
 
-Det returnerade värdets typ är inställt på **objekt**, vilket innebär att det returnerar ett JSON-objekt.
+Det returnerade värdets typ är inställt på `object` , vilket innebär att det returnerar ett JSON-objekt.
 
 Funktionen [Reference](template-functions-resource.md#reference) används för att hämta lagrings kontots körnings tillstånd. Om du vill hämta körnings status för en resurs skickar du namnet eller ID: t för en resurs. I det här fallet använder du samma variabel som du använde för att skapa namnet på lagrings kontot.
 
-Slutligen returnerar den egenskapen **blobar** från lagrings kontot
+Slutligen returnerar den `primaryEndpoints` egenskapen från lagrings kontot
 
 ## <a name="deploy-template"></a>Distribuera mallen
 
 Du är redo att distribuera mallen och titta på det returnerade värdet.
 
-Om du inte har skapat resurs gruppen, se [skapa resurs grupp](template-tutorial-create-first-template.md#create-resource-group). Exemplet förutsätter att du har angett **templateFile** -variabeln till sökvägen till mallfilen, som du ser i den [första självstudien](template-tutorial-create-first-template.md#deploy-template).
+Om du inte har skapat resurs gruppen, se [skapa resurs grupp](template-tutorial-create-first-template.md#create-resource-group). Exemplet förutsätter att du har angett `templateFile` variabeln till sökvägen till mallfilen, som du ser i den [första självstudien](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -92,7 +92,7 @@ I utdata för kommandot distribution ser du ett objekt som liknar följande exem
 ```
 
 > [!NOTE]
-> Om distributionen misslyckades använder du **utförlig** växeln för att hämta information om de resurser som skapas. Använd **fel söknings** växeln för att få mer information om fel sökning.
+> Om distributionen misslyckades använder du `verbose` växeln för att hämta information om de resurser som skapas. Använd `debug` växeln för att få mer information om fel sökning.
 
 ## <a name="review-your-work"></a>Granska ditt arbete
 

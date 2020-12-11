@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 4befcaf6b8c6b6bc4fddacb179883551609f7e19
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 5f408699cae9580188a3780fc8f8654eaa97c26b
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928655"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108441"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>Självstudie för att konfigurera LexisNexis med Azure Active Directory B2C
 
@@ -27,7 +27,7 @@ Den här integrationen tillhandahåller profilering baserat på några få delar
 - Telefonnummer
 - Profilering av information som samlas in från användarens dator
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du:
 
@@ -95,7 +95,7 @@ Program inställningar kan [konfigureras i App Service i Azure](../app-service/c
 
 Den här lösningen använder anpassade UI-mallar som läses in av Azure AD B2C. Dessa UI-mallar utför profilering som skickas direkt till ThreatMetrix-tjänsten.
 
-Se de här [anvisningarna](./custom-policy-ui-customization.md#custom-page-content-walkthrough) för att distribuera de inkluderade [UI-filerna](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template) till ett Blob Storage-konto. Anvisningarna är att konfigurera ett Blob Storage-konto, konfigurera CORS och aktivera offentlig åtkomst.
+Se de här [anvisningarna](./customize-ui-with-html.md#custom-page-content-walkthrough) för att distribuera de inkluderade [UI-filerna](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template) till ett Blob Storage-konto. Anvisningarna är att konfigurera ett Blob Storage-konto, konfigurera CORS och aktivera offentlig åtkomst.
 
 Användar gränssnittet baseras på den [blå mallen för havs](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template/ocean_blue). Alla länkar i användar gränssnittet bör uppdateras för att referera till den distribuerade platsen. I mappen UI söker du efter och ersätter https://yourblobstorage/blobcontainer med den distribuerade platsen.
 

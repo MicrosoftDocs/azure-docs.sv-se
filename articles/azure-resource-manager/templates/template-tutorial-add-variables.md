@@ -6,18 +6,18 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: d259510d880cbfc60e9ae80b533af6792cc95536
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 46ed1fc55a108bf80089d249abc58bc5d1a6479a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930736"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106962"
 ---
 # <a name="tutorial-add-variables-to-your-arm-template"></a>Självstudie: Lägg till variabler i ARM-mallen
 
 I den här självstudien får du lära dig hur du lägger till en variabel i din Azure Resource Manager-mall (ARM-mall). Variabler fören klar dina mallar genom att göra det möjligt att skriva ett uttryck en gång och återanvända det i hela mallen. Den här självstudien tar **7 minuter** att slutföra.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Vi rekommenderar att du slutför [självstudien om functions](template-tutorial-add-functions.md), men det är inte obligatoriskt.
 
@@ -37,17 +37,17 @@ I följande exempel visas ändringarna för att lägga till en variabel i mallen
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json" range="1-47" highlight="5-9,29-31,36":::
 
-Observera att det innehåller en variabel med namnet **uniqueStorageName**. Den här variabeln använder fyra funktioner för att skapa ett sträng värde.
+Observera att den innehåller en variabel med namnet `uniqueStorageName` . Den här variabeln använder fyra funktioner för att skapa ett sträng värde.
 
 Du är redan bekant med [parameter](template-functions-deployment.md#parameters) funktionen, så vi kommer inte att undersöka den.
 
-Du är också bekant med funktionen [resourceGroup](template-functions-resource.md#resourcegroup) . I det här fallet får du egenskapen **ID** i stället för egenskapen **location** , som du ser i den föregående själv studie kursen. Egenskapen **ID** returnerar resurs gruppens fullständiga identifierare, inklusive PRENUMERATIONS-ID och resurs grupps namn.
+Du är också bekant med funktionen [resourceGroup](template-functions-resource.md#resourcegroup) . I det här fallet får du `id` egenskapen i stället för `location` egenskapen, som du ser i föregående självstudie. `id`Egenskapen returnerar resurs gruppens fullständiga identifierare, inklusive prenumerations-ID och resurs gruppens namn.
 
 Funktionen [uniqueString](template-functions-string.md#uniquestring) skapar en 13-siffrig hash-värde. Det returnerade värdet bestäms av de parametrar som du skickar i. I den här självstudien använder du resurs gruppens ID som inmatad för hash-värdet. Det innebär att du kan distribuera den här mallen till olika resurs grupper och hämta ett annat unikt sträng värde. Men du får samma värde om du distribuerar till samma resurs grupp.
 
-Funktionen [concat](template-functions-string.md#concat) tar värden och kombinerar dem. För den här variabeln tar den strängen från parametern och strängen från uniqueString-funktionen och kombinerar dem till en sträng.
+Funktionen [concat](template-functions-string.md#concat) tar värden och kombinerar dem. För den här variabeln tar den strängen från parametern och strängen från `uniqueString` funktionen och kombinerar dem till en sträng.
 
-Med parametern **storagePrefix** kan du skicka ett prefix som hjälper dig att identifiera lagrings konton. Du kan skapa en egen namngivnings konvention som gör det lättare att identifiera lagrings konton efter distribution från en lång lista med resurser.
+Med den `storagePrefix` här parametern kan du skicka ett prefix som hjälper dig att identifiera lagrings konton. Du kan skapa en egen namngivnings konvention som gör det lättare att identifiera lagrings konton efter distribution från en lång lista med resurser.
 
 Lägg slutligen märke till att lagrings namnet nu är inställt på variabeln i stället för en parameter.
 
@@ -55,7 +55,7 @@ Lägg slutligen märke till att lagrings namnet nu är inställt på variabeln i
 
 Nu ska vi distribuera mallen. Att distribuera den här mallen är enklare än tidigare mallar eftersom du bara anger prefixet för lagrings namnet.
 
-Om du inte har skapat resurs gruppen, se [skapa resurs grupp](template-tutorial-create-first-template.md#create-resource-group). Exemplet förutsätter att du har angett **templateFile** -variabeln till sökvägen till mallfilen, som du ser i den [första självstudien](template-tutorial-create-first-template.md#deploy-template).
+Om du inte har skapat resurs gruppen, se [skapa resurs grupp](template-tutorial-create-first-template.md#create-resource-group). Exemplet förutsätter att du har angett `templateFile` variabeln till sökvägen till mallfilen, som du ser i den [första självstudien](template-tutorial-create-first-template.md#deploy-template).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -83,7 +83,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Om distributionen misslyckades använder du **utförlig** växeln för att hämta information om de resurser som skapas. Använd **fel söknings** växeln för att få mer information om fel sökning.
+> Om distributionen misslyckades använder du `verbose` växeln för att hämta information om de resurser som skapas. Använd `debug` växeln för att få mer information om fel sökning.
 
 ## <a name="verify-deployment"></a>Verifiera distributionen
 

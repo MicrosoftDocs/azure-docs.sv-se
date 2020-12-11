@@ -1,22 +1,24 @@
 ---
 title: Vad är nytt i Azure Migrate
 description: Lär dig mer om nyheter och nya uppdateringar i tjänsten Azure Migrate.
-author: bsiva
-ms.author: bsiva
-ms.manager: abhemraj
 ms.topic: overview
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: e39b8f7ee7b76a1955e02a7140524f812be086b5
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 4d87602ccd0ff576c0580f9cc20b475335ee577f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752455"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109189"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Vad är nytt i Azure Migrate
 
 [Azure Migrate](migrate-services-overview.md) hjälper dig att identifiera, utvärdera och migrera lokala servrar, appar och data till Microsoft Azure molnet. I den här artikeln sammanfattas nya versioner och funktioner i Azure Migrate.
+## <a name="update-december-2020"></a>Uppdatering (december 2020)
+- Azure Migrate installerar nu automatiskt Azure VM-agenten på de virtuella VMware-datorerna samtidigt som de migrerar dem till Azure med hjälp av metoden för att VMware-migreringen ska gå
 
 ## <a name="update-september-2020"></a>Uppdatering (september 2020)
 - Migrering av servrar till Tillgänglighetszoner stöds nu.
@@ -25,7 +27,7 @@ ms.locfileid: "96752455"
 - Beroende analys (utan agent) kan nu köras samtidigt på en 1000-VM.
 - Beroende analys (utan agent) kan nu aktive ras eller inaktive ras i skala med hjälp av PowerShell-skript. [Läs mer.](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
 - Visualisera nätverks anslutningar i Power BI att använda data som samlas in med hjälp av beroende analys (utan agent) [Läs mer.](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
-- Migrering av virtuella VMware-datorer med data disk storleken på upp till 32 TB stöds nu med hjälp av Azure Migrate: Server Migration agent utan VMware-migrering. 
+- Migrering av virtuella VMware-datorer med data disk storleken på upp till 32 TB stöds nu med hjälp av Azure Migrate: Server Migration agent utan VMware-migrering.
 
 ## <a name="update-august-2020"></a>Uppdatering (augusti 2020)
 

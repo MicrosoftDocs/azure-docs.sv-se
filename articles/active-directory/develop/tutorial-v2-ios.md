@@ -13,12 +13,12 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: aff89d49dec9bafedb3c9a5a76abdeb803740a12
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 5260ca049f971cce07659f12b54ce30304dd826d
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95746735"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107642"
 ---
 # <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>Självstudie: Logga in användare och anropa Microsoft Graph från en iOS-eller macOS-app
 
@@ -520,7 +520,7 @@ Följande kodfragment hämtar en token för första gången genom att skapa ett 
 
 1. Skapar `MSALInteractiveTokenParameters` med omfång.
 2. Anropar `acquireToken()` med de skapade parametrarna.
-3. Hanterar fel. Mer information finns i [MSAL för iOS-och MacOS-fel hanterings guide](msal-handling-exceptions.md).
+3. Hanterar fel. Mer information finns i [MSAL för iOS-och MacOS-fel hanterings guide](msal-error-handling-ios.md).
 4. Hanterar det framgångna ärendet.
 
 Lägg till följande kod i klassen `ViewController`.
@@ -844,7 +844,7 @@ Använd följande kod för att läsa den aktuella enhets konfigurationen, inklus
 
 Den här appen har skapats för ett scenario med ett enda konto. MSAL har också stöd för flera konto scenarier, men det krävs ytterligare arbete från appar. Du måste skapa ett användar gränssnitt för att hjälpa användarna att välja vilket konto de vill använda för varje åtgärd som kräver tokens. Alternativt kan din app implementera en heuristik för att välja vilket konto som ska användas genom att fråga alla konton från MSAL. Se till exempel `accountsFromDeviceForParameters:completionBlock:` [API](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALPublicClientApplication.html#/c:objc(cs)MSALPublicClientApplication(im)accountsFromDeviceForParameters:completionBlock:)
 
-## <a name="test-your-app"></a>Testa din app
+## <a name="test-your-app"></a>Testa appen
 
 Bygg och distribuera appen till en test enhet eller Simulator. Du bör kunna logga in och hämta token för Azure AD eller personliga Microsoft-konton.
 

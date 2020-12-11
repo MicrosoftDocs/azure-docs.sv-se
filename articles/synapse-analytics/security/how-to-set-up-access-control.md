@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7243d24204c8e15ae4246718cafb24d31f804d02
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 62c30356017b5ea5d93351e6f22b8b7b0c22718c
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96519186"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109274"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>Så här konfigurerar du åtkomst kontroll för din Synapse-arbetsyta 
 
@@ -54,7 +54,7 @@ I det här dokumentet används standard namn för att förenkla anvisningarna. E
 ## <a name="step-1-set-up-security-groups"></a>STEG 1: Konfigurera säkerhets grupper
 
 >[!Note] 
->Under förhands granskningen rekommenderades att skapa säkerhets grupper som har mappats till Synapse **SYNAPSE SQL-administratör** och **Synapse Apache Spark administratörs** roller.  Vi rekommenderar att du använder dessa nya funktioner för att kontrol lera åtkomsten till din arbets yta med introduktionen av nya, mer detaljerade Synapse RBAC-roller och-omfång.  De här nya rollerna och omfattningarna ger större flexibilitet i konfigurationen och känner av att utvecklarna ofta använder en blandning av SQL och spark i att skapa analys program och kan behöva beviljas åtkomst till vissa resurser i arbets ytan. [Läs mer](./synapse-workspace-synapse-rbac.md).
+>Under förhands granskningen rekommenderades att skapa säkerhets grupper som har mappats till Synapse **SYNAPSE SQL-administratör** och **Synapse Apache Spark administratörs** roller.  Vi rekommenderar att du använder dessa nya funktioner för att kontrol lera åtkomsten till din arbets yta med introduktionen av nya, mer detaljerade Synapse RBAC-roller och-omfång.  De här nya rollerna och omfattningarna ger större flexibilitet i konfigurationen och känner av att utvecklarna ofta använder en blandning av SQL och spark i att skapa analys program och kan behöva beviljas åtkomst till vissa resurser i stället för hela arbets ytan. [Läs mer](./synapse-workspace-synapse-rbac.md) om Synapse RBAC.
 
 Skapa följande säkerhets grupper för din arbets yta:
 
@@ -66,9 +66,9 @@ Skapa följande säkerhets grupper för din arbets yta:
 Du tilldelar Synapse roller till dessa grupper i området för arbets ytan inom kort.  
 
 Skapa även den här säkerhets gruppen: 
-- **`workspace1_SQLAdministrators`**, grupp för användare som behöver Active Directory administratörs behörighet inom SQL-pooler på arbets ytan. 
+- **`workspace1_SQLAdmins`**, grupp för användare som behöver SQL Active Directory admin-auktoritet inom SQL-pooler på arbets ytan. 
 
-`workspace1_SynapseSQLAdministrators`Gruppen kommer att användas när du konfigurerar SQL-behörigheter i SQL-pooler när du skapar dem. 
+`workspace1_SQLAdmins`Gruppen kommer att användas när du konfigurerar SQL-behörigheter i SQL-pooler när du skapar dem. 
 
 För en grundläggande installation är dessa fem grupper tillräckliga. Senare kan du lägga till säkerhets grupper för att hantera användare som behöver mer specialiserad åtkomst eller ge användare endast åtkomst till specifika resurser.
 
@@ -84,6 +84,7 @@ För en grundläggande installation är dessa fem grupper tillräckliga. Senare 
 En Synapse-arbetsyta använder en standard lagrings behållare för:
   - Lagra säkerhetskopieringsfilerna för Spark-tabeller
   - Körnings loggar för Spark-jobb
+  - Hantera bibliotek som du väljer att installera
 
 Identifiera följande information om din lagring:
 
@@ -94,7 +95,7 @@ Identifiera följande information om din lagring:
 
   - Tilldela rollen **Storage BLOB data Contributor** till `workspace1_SynapseAdmins` 
   - Tilldela rollen **Storage BLOB data Contributor** till `workspace1_SynapseContributors`
-  - Tilldela rollen **Storage BLOB data Contributor** för att `workspace1_SynapseComputeOperators` **<< verifiera**  
+  - Tilldela rollen **Storage BLOB data Contributor** till `workspace1_SynapseComputeOperators`
 
 ## <a name="step-3-create-and-configure-your-synapse-workspace"></a>STEG 3: skapa och konfigurera din Synapse-arbetsyta
 
@@ -106,14 +107,14 @@ I Azure Portal skapar du en arbets yta för Synapse:
 - Välj `storage1` för lagrings kontot
 - Välj `container1` för den behållare som används som "filesystem".
 - Öppna WS1 i Synapse Studio
-- Navigera till **Hantera**  >  **Access Control** och tilldela följande Synapse-roller på *arbets ytans omfång* till säkerhets grupperna.
+- Navigera till **Hantera**  >  **Access Control** och tilldela Synapse-roller på *arbets ytans omfång* till säkerhets grupperna enligt följande:
   - Tilldela rollen **Synapse administratör** till `workspace1_SynapseAdministrators` 
   - Tilldela rollen **Synapse Contributor** till `workspace1_SynapseContributors` 
-  - Tilldela rollen **SYNAPSE SQL Compute-operatör** till `workspace1_SynapseComputeOperators`
+  - Tilldela rollen **Synapse Compute-operator** till `workspace1_SynapseComputeOperators`
 
 ## <a name="step-4-grant-the-workspace-msi-access-to-the-default-storage-container"></a>STEG 4: bevilja MSI-åtkomst till arbets ytan till standard lagrings behållaren
 
-Om du vill köra pipeliner och utföra system uppgifter kräver Synapse att MSI-filen för arbets ytans hanterade tjänst identitet måste ha åtkomst till `container1` i standard ADLS Gen2s kontot.
+Om du vill köra pipeliner och utföra system uppgifter kräver Synapse att MSI-filen (Managed Service Identity) för arbets ytan behöver åtkomst till `container1` i standard ADLS Gen2s kontot.
 
 - Öppna Azure-portalen
 - Leta upp lagrings kontot, `storage1` och sedan `container1`
@@ -121,9 +122,9 @@ Om du vill köra pipeliner och utföra system uppgifter kräver Synapse att MSI-
   - Tilldela den om den inte är tilldelad.
   - MSI har samma namn som arbets ytan. I den här artikeln skulle det vara `workspace1` .
 
-## <a name="step-5-grant-the-synapse-administrators-the-azure-contributor-role-on-the-workspace"></a>STEG 5: bevilja Synapse-administratörer rollen Azure Contributor på arbets ytan 
+## <a name="step-5-grant-synapse-administrators-the-azure-contributor-role-on-the-workspace"></a>STEG 5: bevilja Synapse-administratörer rollen Azure Contributor på arbets ytan 
 
-För att kunna skapa SQL-pooler, Apache Spark pooler och integrerings körningar, måste användarna ha minst Azure Contributor-åtkomst på arbets ytan. Deltagar rollen tillåter också att dessa användare hanterar resurserna, inklusive pausa och skala.
+För att kunna skapa SQL-pooler, Apache Spark pooler och integrerings körningar, måste användarna ha minst Azure Contributor-åtkomst till arbets ytan. Deltagar rollen tillåter också att dessa användare hanterar resurserna, inklusive pausa och skala.
 
 - Öppna Azure-portalen
 - Leta upp arbets ytan, `workspace1`
@@ -131,44 +132,44 @@ För att kunna skapa SQL-pooler, Apache Spark pooler och integrerings körningar
 
 ## <a name="step-6-assign-sql-active-directory-admin-role"></a>STEG 6: tilldela administratörs rollen för SQL Active Directory
 
-Arbets stationens skapare konfigureras automatiskt som Active Directory administratör för arbets ytan.  Endast en enskild användare eller grupp kan tilldelas den här rollen. I det här steget tilldelar du Active Directory-administratören på arbets ytan till `workspace1_SynapseSQLAdministrators` säkerhets gruppen.  Om du tilldelar den här rollen får du den här gruppen privilegierad administratör åtkomst till alla SQL-pooler.   
+Arbets stationens skapare konfigureras automatiskt som SQL Active Directory-administratör för arbets ytan.  Endast en enskild användare eller grupp kan tilldelas den här rollen. I det här steget tilldelar du SQL Active Directory-administratören på arbets ytan till `workspace1_SQLAdmins` säkerhets gruppen.  Genom att tilldela den här rollen får du den här gruppen hög privilegie rad administratörs åtkomst till alla SQL-pooler och databaser i arbets ytan.   
 
 - Öppna Azure-portalen
 - Navigera till `workspace1`
 - Under **Inställningar** väljer du **SQL Active Directory admin**
-- Välj **Ange administratör** och välj **`workspace1_SynapseSQLAdministrators`**
+- Välj **Ange administratör** och välj **`workspace1_SQLAdmins`**
 
 >[!Note]
->Det här är valfritt.  Du kan välja att bevilja gruppen SQL-administratörer en mindre privilegie rad roll. Om du vill tilldela `db_owner` eller andra SQL-roller måste du köra skript på varje SQL-databas. 
+>Steg 6 är valfritt.  Du kan välja att ge `workspace1_SQLAdmins` gruppen en mindre privilegie rad roll. Om du vill tilldela `db_owner` eller andra SQL-roller måste du köra skript på varje SQL-databas. 
 
 ## <a name="step-7-grant-access-to-sql-pools"></a>STEG 7: bevilja åtkomst till SQL-pooler
 
-Som standard tilldelas alla användare som tilldelats rollen Synapse administratör också SQL `db_owner` -rollen på SQL-poolen utan server, inbyggd.
+Som standard tilldelas alla användare som tilldelats rollen Synapse administratör också SQL `db_owner` -rollen på SQL-poolen utan server, inbyggda och alla dess databaser.
 
-Åtkomst till SQL-pooler för andra användare och för arbets ytans MSI kontrol leras med hjälp av SQL-behörigheter.  För att tilldela SQL-behörigheter krävs att SQL-skript körs på varje SQL-pool när den har skapats.  Det finns tre fall där du måste köra skripten:
-1. Ge andra användare åtkomst till den serverbaserade SQL-poolen, inbyggd
-2. Bevilja användare åtkomst till dedikerade pooler
-3. Beviljar MSI-åtkomst till en SQL-pool för arbets ytan för att aktivera pipelines som kräver att SQL-adresspoolen har åtkomst.
+Åtkomst till SQL-pooler för andra användare och för arbets ytans MSI kontrol leras med hjälp av SQL-behörigheter.  Att tilldela SQL-behörigheter kräver att SQL-skript körs på varje SQL-databas när den har skapats.  Det finns tre fall där du måste köra skripten:
+1. Ge andra användare åtkomst till den serverbaserade SQL-poolen, "inbyggd" och dess databas
+2. Bevilja alla användare åtkomst till databaser med dedikerade pooler
+3. Beviljar MSI-åtkomst till en SQL-adresspool för att aktivera pipelines som kräver att SQL-adresspoolen har åtkomst.
 
 Exempel på SQL-skript finns nedan.
 
-Om du vill bevilja åtkomst till en dedikerad SQL-pool kan skripten köras av arbets ytans skapare eller någon annan medlem i `workspace1_SynapseSQL Administrators` gruppen.  
+Om du vill bevilja åtkomst till en dedikerad databas för SQL-pooler kan skripten köras av arbets ytans skapare eller någon annan medlem i `workspace1_SQLAdmins` gruppen.  
 
-För att bevilja åtkomst till den serverbaserade SQL-poolen, "inbyggd", kan skripten dessutom köras av valfri medlem i  `workspace1_SynapseAdministrators` gruppen. 
+För att bevilja åtkomst till den serverbaserade SQL-poolen, "inbyggd", kan skripten köras av vilken medlem som helst i `workspace1_SQLAdmins` gruppen eller  `workspace1_SynapseAdministrators` gruppen. 
 
 > [!TIP]
-> Stegen nedan måste köras för **varje** SQL-pool för att ge användarna åtkomst till alla SQL-databaser, förutom i avsnittet [arbets ytan-begränsad behörighet](#workspace-scoped-permission) där du kan tilldela användare en sysadmin-roll.
+> Stegen nedan måste köras för **varje** SQL-pool för att ge användarna åtkomst till alla SQL-databaser, förutom i avsnittet [arbets ytan-begränsad behörighet](#workspace-scoped-permission) där du kan tilldela en användare en sysadmin-roll på arbets ytans nivå.
 
-### <a name="step-71-serverless-sql-pools"></a>STEG 7,1: SQL-pooler utan Server
+### <a name="step-71-serverless-sql-pool-built-in"></a>STEG 7,1: SQL-pool utan server, inbyggd
 
-I det här avsnittet hittar du exempel på hur du ger en användare behörighet till en viss databas eller fullständiga Server behörigheter.
+I det här avsnittet finns skript exempel som visar hur du ger en användare behörighet att komma åt en viss databas eller alla databaser i SQL-poolen utan server, inbyggd.
 
 > [!NOTE]
 > I skript exemplen ersätter du *alias* med alias för den användare eller grupp som beviljas åtkomst och *domän* med den företags domän som du använder.
 
-#### <a name="pool-scoped-permission"></a>Pool-begränsad behörighet
+#### <a name="database-scoped-permission"></a>Databas – begränsad behörighet
 
-Följ stegen i det här exemplet om du vill bevilja åtkomst till en användare till en **enskild** server utan server SQL-pool:
+Följ stegen i det här exemplet om du vill bevilja åtkomst till en användare till en **enskild** server utan server SQL Database:
 
 1. Skapa inloggning
 
@@ -182,7 +183,7 @@ Följ stegen i det här exemplet om du vill bevilja åtkomst till en användare 
 2. Skapa användare
 
     ```sql
-    use yourdb -- Use your DB name
+    use yourdb -- Use your database name
     go
     CREATE USER alias FROM LOGIN [alias@domain.com];
     ```
@@ -190,7 +191,7 @@ Följ stegen i det här exemplet om du vill bevilja åtkomst till en användare 
 3. Lägg till användare till medlemmar i den angivna rollen
 
     ```sql
-    use yourdb -- Use your DB name
+    use yourdb -- Use your database name
     go
     alter role db_owner Add member alias -- Type USER name from step 2
     ```
@@ -200,25 +201,27 @@ Följ stegen i det här exemplet om du vill bevilja åtkomst till en användare 
 Om du vill ge fullständig åtkomst till **alla** SQL-pooler utan server på arbets ytan använder du skriptet i det här exemplet:
 
 ```sql
+use master
+go
 CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
-ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
+ALTER SERVER ROLE sysadmin ADD MEMBER [alias@domain.com];
 ```
 
 ### <a name="step-72-dedicated-sql-pools"></a>STEG 7,2: dedikerade SQL-pooler
 
-Om du vill bevilja åtkomst till en **enda** dedikerad SQL-pool följer du de här stegen i Synapse SQL Script Editor:
+Om du vill bevilja åtkomst till en **enda** dedikerad SQL-pool, följer du dessa steg i Synapse SQL-skript redigeraren:
 
 1. Skapa användaren i databasen genom att köra följande kommando på mål databasen som väljs med hjälp av list rutan *Anslut till* :
 
     ```sql
-    --Create user in SQL DB
+    --Create user in the database
     CREATE USER [<alias@domain.com>] FROM EXTERNAL PROVIDER;
     ```
 
 2. Ge användaren en roll för att få åtkomst till databasen:
 
     ```sql
-    --Create user in SQL DB
+    --Grant role to the user in the database
     EXEC sp_addrolemember 'db_owner', '<alias@domain.com>';
     ```
 
@@ -226,32 +229,35 @@ Om du vill bevilja åtkomst till en **enda** dedikerad SQL-pool följer du de h�
 > *db_datareader* och *db_datawriter* kan arbeta med Läs-/Skriv behörighet om du inte vill tilldela *db_owner* behörighet.
 > För att en spark-användare ska kunna läsa och skriva direkt från Spark till eller från en SQL-pool krävs *db_owner* behörighet.
 
-När du har skapat användarna kontrollerar du att SQL-poolen utan server kan fråga lagrings kontot.
+När du har skapat användarna kör du frågor för att kontrol lera att SQL-poolen utan server kan fråga lagrings kontot.
 
-### <a name="step-73-sl-access-control-for-workspace-pipeline-runs"></a>STEG 7,3: SL-åtkomstkontroll för arbets ytans pipelines körs
+### <a name="step-73-sql-access-control-for-synapse-pipeline-runs"></a>STEG 7,3: SQL-åtkomst kontroll för Synapse-pipeline-körningar
 
 ### <a name="workspace-managed-identity"></a>Hanterad identitet för arbets yta
 
 > [!IMPORTANT]
 > Om du vill köra pipeliner som innehåller data uppsättningar eller aktiviteter som refererar till en SQL-pool måste arbets ytans identitet beviljas åtkomst till SQL-poolen.
 
-Kör följande kommandon på varje SQL-pool för att tillåta att den arbetsytans hanterade identiteten kör pipeliner på SQL-poolens databas:
+Kör följande kommandon på varje SQL-pool för att tillåta att arbets ytans hanterade system identitet kör pipelines på SQL-poolens databas (er):  
+
+>[!note]
+>I skripten nedan är databasename detsamma som poolnamn för en dedikerad SQL-adresspool.  För en databas i den serverbaserade SQL-poolen "inbyggd", är databasename namnet på databasen.
 
 ```sql
---Create user in DB
+--Create a SQL user for the workspace MSI in database
 CREATE USER [<workspacename>] FROM EXTERNAL PROVIDER;
 
 --Granting permission to the identity
-GRANT CONTROL ON DATABASE::<SQLpoolname> TO <workspacename>;
+GRANT CONTROL ON DATABASE::<databasename> TO <workspacename>;
 ```
 
 Du kan ta bort den här behörigheten genom att köra följande skript i samma SQL-pool:
 
 ```sql
---Revoking permission to the identity
-REVOKE CONTROL ON DATABASE::<SQLpoolname> TO <workspacename>;
+--Revoke permission granted to the workspace MSI
+REVOKE CONTROL ON DATABASE::<databasename> TO <workspacename>;
 
---Deleting the user in the DB
+--Delete the workspace MSI user in the database
 DROP USER [<workspacename>];
 ```
 

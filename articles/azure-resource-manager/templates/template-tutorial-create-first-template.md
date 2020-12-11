@@ -1,17 +1,17 @@
 ---
 title: Självstudie – Skapa & distribuera mall
-description: Skapa din första Azure Resource Manager-mall. I självstudien får du lära dig mer om mallens syntax och hur du distribuerar ett lagrings konto.
+description: Skapa din första Azure Resource Manager-mall (ARM-mall). I självstudien får du lära dig mer om mallens syntax och hur du distribuerar ett lagrings konto.
 author: mumian
 ms.date: 09/28/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 25ddcc2c3a890b407b2116f64ebab577e30c9457
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 191eacbc9cc66ccfb9b378cb5e8a90b4e0fb20e6
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613194"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107031"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Självstudie: skapa och distribuera din första ARM-mall
 
@@ -19,7 +19,7 @@ I den här självstudien beskrivs Azure Resource Manager mallar (ARM-mallar). De
 
 Den här självstudien är den första i en serie. När du går igenom serien ändrar du stegvisa start mal len tills du har utforskat alla kärn delar av en ARM-mall. Dessa element är Bygg stenarna för mycket mer komplexa mallar. Vi hoppas i slutet av serien och du är säker på att du har skapat dina egna mallar och kan automatisera dina distributioner med mallar.
 
-Om du vill lära dig mer om fördelarna med att använda mallar och varför du bör automatisera distributionen med mallar, se [Azure Resource Manager mallar](overview.md).
+Om du vill lära dig mer om fördelarna med att använda mallar och varför du bör automatisera distributionen med mallar, se [Översikt över arm-mall](overview.md).
 
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
@@ -29,7 +29,7 @@ Låt oss börja med att kontrol lera att du har de verktyg du behöver för att 
 
 ### <a name="editor"></a>Redigerare
 
-Mallar är JSON-filer. Om du vill skapa mallar behöver du en lämplig JSON-redigerare. Vi rekommenderar Visual Studio Code med Resource Manager Tools-tillägget. Om du behöver installera dessa verktyg går du till [snabb start: skapa Azure Resource Manager mallar med Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
+Mallar är JSON-filer. Om du vill skapa mallar behöver du en lämplig JSON-redigerare. Vi rekommenderar Visual Studio Code med Resource Manager Tools-tillägget. Om du behöver installera dessa verktyg, se [snabb start: skapa arm-mallar med Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 
 ### <a name="command-line-deployment"></a>Kommando rads distribution
 
@@ -51,8 +51,8 @@ OK, du är redo att börja lära dig om mallar.
 
 1. Öppna Visual Studio Code med tillägget Resource Manager Tools installerat.
 1. I menyn **Arkiv** väljer du **ny fil** för att skapa en ny fil.
-1. Välj **Spara som**på **Arkiv** -menyn.
-1. Ge filen namnet **azuredeploy** och välj tillägget **JSON** -fil. Det fullständiga namnet på filen **azuredeploy.jspå**.
+1. Välj **Spara som** på **Arkiv** -menyn.
+1. Ge filen namnet _azuredeploy_ och välj tillägget _JSON_ -fil. Det fullständiga namnet på filen är _azuredeploy.jspå_.
 1. Spara filen på din arbets Station. Välj en sökväg som är lätt att komma ihåg eftersom du kommer att ange den sökvägen senare när du distribuerar mallen.
 1. Kopiera och klistra in följande JSON i filen:
 
@@ -64,17 +64,17 @@ OK, du är redo att börja lära dig om mallar.
     }
     ```
 
-    Så här ser din VS Code-miljö ut:
+    Så här ser din Visual Studio Code-miljö ut:
 
-    ![Resource Manager-mall, första mallen för Visual Studio Code](./media/template-tutorial-create-first-template/resource-manager-visual-studio-code-first-template.png)
+    ![Den första mallen för ARM-mallens Visual Studio Code](./media/template-tutorial-create-first-template/resource-manager-visual-studio-code-first-template.png)
 
     Den här mallen distribuerar inga resurser. Vi börjar med en tom mall så att du kan bekanta dig med stegen för att distribuera en mall och minimera risken för att något går fel.
 
     JSON-filen innehåller följande element:
 
-    - **$schema**: anger platsen för JSON schema filen. Schema filen beskriver de egenskaper som är tillgängliga i en mall. Schemat definierar till exempel **resurser** som en av de giltiga egenskaperna för en mall. Bry dig inte om att datumet för schemat är 2019-04-01. Den här schema versionen är aktuell och innehåller alla de senaste funktionerna. Schema datumet har inte ändrats på grund av att det inte har skett några ändringar sedan introduktionen.
-    - **contentVersion**: anger versionen för mallen (till exempel 1.0.0.0). Du kan ange valfritt värde för det här elementet. Använd det här värdet om du vill dokumentera viktiga ändringar i mallen. När du distribuerar resurser med hjälp av mallen kan det här värdet användas för att se till att rätt mall används.
-    - **resurser**: innehåller de resurser som du vill distribuera eller uppdatera. För närvarande är det tomt, men du kommer att lägga till resurser senare.
+    - `$schema`: Anger platsen för JSON-schemafilen. Schema filen beskriver de egenskaper som är tillgängliga i en mall. Till exempel definierar schemat `resources` som en av de giltiga egenskaperna för en mall. Bry dig inte om att datumet för schemat är 2019-04-01. Den här schema versionen är aktuell och innehåller alla de senaste funktionerna. Schema datumet har inte ändrats på grund av att det inte har skett några ändringar sedan introduktionen.
+    - `contentVersion`: Anger versionen för mallen (till exempel 1.0.0.0). Du kan ange valfritt värde för det här elementet. Använd det här värdet om du vill dokumentera viktiga ändringar i mallen. När du distribuerar resurser med hjälp av mallen kan det här värdet användas för att se till att rätt mall används.
+    - `resources`: Innehåller de resurser som du vill distribuera eller uppdatera. För närvarande är det tomt, men du kommer att lägga till resurser senare.
 
 1. Spara filen.
 
@@ -83,6 +83,8 @@ Grattis, du har skapat din första mall.
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 
 Logga in med dina Azure-autentiseringsuppgifter om du vill börja arbeta med Azure PowerShell/Azure CLI.
+
+Välj flikarna i följande kod avsnitt om du vill välja mellan Azure PowerShell och Azure CLI. CLI-exemplen i den här artikeln är skrivna för bash-gränssnittet.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -98,7 +100,7 @@ az login
 
 ---
 
-Om du har flera Azure-prenumerationer väljer du den prenumeration som du vill använda:
+Om du har flera Azure-prenumerationer väljer du den prenumeration som du vill använda. Ersätt `[SubscriptionID/SubscriptionName]` och hakparenteserna `[]` med din prenumerations information:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -114,10 +116,9 @@ az account set --subscription [SubscriptionID/SubscriptionName]
 
 ---
 
-
 ## <a name="create-resource-group"></a>Skapa resursgrupp
 
-När du distribuerar en mall anger du en resurs grupp som ska innehålla resurserna. Innan du kör distributions kommandot skapar du resurs gruppen med antingen Azure CLI eller Azure PowerShell. Välj flikarna i följande kod avsnitt om du vill välja mellan Azure PowerShell och Azure CLI. CLI-exemplen i den här artikeln är skrivna för bash-gränssnittet.
+När du distribuerar en mall anger du en resurs grupp som ska innehålla resurserna. Innan du kör distributionskommandot skapar du resursgruppen med antingen Azure CLI eller Azure PowerShell.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -139,7 +140,7 @@ az group create \
 
 ## <a name="deploy-template"></a>Distribuera mallen
 
-Om du vill distribuera mallen använder du antingen Azure CLI eller Azure PowerShell. Använd den resurs grupp som du skapade. Ge distributionen ett namn så att du enkelt kan identifiera den i distributions historiken. För enkelhetens skull kan du också skapa en variabel som lagrar sökvägen till mallfilen. Den här variabeln gör det enklare för dig att köra distributionskommandon eftersom du inte behöver ange sökvägen varje gång du distribuerar.
+Om du vill distribuera mallen använder du antingen Azure CLI eller Azure PowerShell. Använd den resurs grupp som du skapade. Ge distributionen ett namn så att du enkelt kan identifiera den i distributions historiken. För enkelhetens skull kan du också skapa en variabel som lagrar sökvägen till mallfilen. Den här variabeln gör det enklare för dig att köra distributionskommandon eftersom du inte behöver ange sökvägen varje gång du distribuerar. Ersätt `{provide-the-path-to-the-template-file}` och typografiska klammerparenteser `{}` med sökvägen till mallfilen.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -178,7 +179,7 @@ Distributions kommandot returnerar resultat. Leta efter för `ProvisioningState`
 ---
 
 > [!NOTE]
-> Om distributionen misslyckades använder du **utförlig** växeln för att hämta information om de resurser som skapas. Använd **fel söknings** växeln för att få mer information om fel sökning.
+> Om distributionen misslyckades använder du `verbose` växeln för att hämta information om de resurser som skapas. Använd `debug` växeln för att få mer information om fel sökning.
 
 ## <a name="verify-deployment"></a>Verifiera distributionen
 
@@ -186,7 +187,7 @@ Du kan kontrol lera distributionen genom att utforska resurs gruppen från Azure
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 
-1. Välj **resurs grupper**på den vänstra menyn.
+1. Välj **resurs grupper** på den vänstra menyn.
 
 1. Välj resurs grupps distributionen i den senaste proceduren. Standard namnet är **myResourceGroup**. Du får inte se någon resurs som distribuerats i resurs gruppen.
 

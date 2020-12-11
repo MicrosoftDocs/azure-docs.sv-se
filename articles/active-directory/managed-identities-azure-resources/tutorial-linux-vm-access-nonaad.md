@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/09/2020
+ms.date: 12/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01da3c186aa5d2f64028a13e08cb892255d81854
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 5151f97386ebb6b06be2320505771dc8f47d59a0
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007814"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107540"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Självstudie: Använda en systemtilldelad hanterad identitet för en virtuell Linux-dator för åtkomst till Azure Key Vault 
 
@@ -62,6 +62,20 @@ Börja med att skapa ett Key Vault och bevilja den virtuella datorns systemtilld
 1. Välj **Granska + skapa**
 1. Välj **Skapa**
 
+### <a name="create-a-secret"></a>Skapa en hemlighet
+
+Lägg sedan till en hemlighet till Key Vault så att du kan hämta den senare med hjälp av kod som körs i den virtuella datorn. I den här självstudien använder vi PowerShell men samma koncept gäller för all kod som körs på den här virtuella datorn.
+
+1. Navigera till din nyligen skapade Key Vault.
+1. Välj **Hemligheter** och klicka på **Lägg till**.
+1. Välj **generera/importera**
+1. I fönstret **skapa en hemlig** skärm från **överförings alternativ** lämnar du **manuellt** markerat.
+1. Ange ett namn och värde för hemligheten.  Värdet kan vara vad du vill. 
+1. Låt aktiveringsdatum och förfallodatum vara tomt och sätt **Aktiverad** som **Ja**. 
+1. Klicka på **Skapa** och skapa hemligheten.
+
+   ![Skapa en hemlighet](./media/tutorial-linux-vm-access-nonaad/create-secret.png)
+
 ## <a name="grant-access"></a>Bevilja åtkomst
 
 Den hanterade identitet som används av den virtuella datorn måste beviljas åtkomst för att läsa hemligheten som vi lagrar i Key Vault.
@@ -77,20 +91,6 @@ Den hanterade identitet som används av den virtuella datorn måste beviljas åt
 1. Välj **Lägg till**
 1. Välj **Spara**.
 
-## <a name="create-a-secret"></a>Skapa en hemlighet
-
-Lägg sedan till en hemlighet till Key Vault så att du kan hämta den senare med hjälp av kod som körs i den virtuella datorn. I den här självstudien använder vi PowerShell men samma koncept gäller för all kod som körs på den här virtuella datorn.
-
-1. Navigera till din nyligen skapade Key Vault.
-1. Välj **Hemligheter** och klicka på **Lägg till**.
-1. Välj **generera/importera**
-1. I fönstret **skapa en hemlig** skärm från **överförings alternativ** lämnar du **manuellt** markerat.
-1. Ange ett namn och värde för hemligheten.  Värdet kan vara vad du vill. 
-1. Låt aktiveringsdatum och förfallodatum vara tomt och sätt **Aktiverad** som **Ja**. 
-1. Klicka på **Skapa** och skapa hemligheten.
-
-   ![Skapa en hemlighet](./media/tutorial-linux-vm-access-nonaad/create-secret.png)
- 
 ## <a name="access-data"></a>Åtkomst till data
 
 För att slutföra de här stegen behöver du en SSH-klient.  Om du använder Windows kan du använda SSH-klienten i [Windows-undersystemet för Linux](/windows/wsl/about). Om du behöver hjälp att konfigurera SSH-klientens nycklar läser du [Så här använder du SSH-nycklar med Windows i Azure](../../virtual-machines/linux/ssh-from-windows.md) eller [How to create and use an SSH public and private key pair for Linux VMs in Azure](../../virtual-machines/linux/mac-create-ssh-keys.md) (Skapa och använda SSH-nyckelpar med privata och offentliga nycklar för virtuella Linux-datorer i Azure).

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b01f1edd4305c09a874b177e4bca373991c9162e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46f04c55b40d4f1bdbbf5fd55eb648d1d3294056
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85203817"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108424"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predikat och PredicateValidations
 
@@ -46,14 +46,14 @@ I följande diagram visas relationen mellan elementen:
 | --------- | -------- | ----------- |
 | Id | Ja | En identifierare som används för predikatet. Andra element kan använda den här identifieraren i principen. |
 | Metod | Ja | Den typ av metod som ska användas för verifiering. Möjliga värden: [IsLengthRange](#islengthrange), [MatchesRegex](#matchesregex), [IncludesCharacters](#includescharacters)eller [IsDateRange](#isdaterange).  |
-| HelpText | Inga | Ett fel meddelande för användare om kontrollen Miss lyckas. Den här strängen kan lokaliseras med hjälp av [språk anpassning](localization.md) |
+| HelpText | Nej | Ett fel meddelande för användare om kontrollen Miss lyckas. Den här strängen kan lokaliseras med hjälp av [språk anpassning](localization.md) |
 
 **Predikatet predikat** innehåller följande element:
 
 | Element | Förekomster | Beskrivning |
 | ------- | ----------- | ----------- |
 | UserHelpText | 0:1 | Föråldrad Ett fel meddelande för användare om kontrollen Miss lyckas. |
-| Parametrar | 1:1 | Parametrarna för metod typen för sträng validering. |
+| Parameters (Parametrar) | 1:1 | Parametrarna för metod typen för sträng validering. |
 
 Elementet **Parameters** innehåller följande element:
 
@@ -211,7 +211,7 @@ I följande exempel visas en `IsDateRange` metod med parametrarna `Minimum` och 
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| MatchAtLeast | Inga | Anger att värdet måste matcha minst det antal predikat som ska godkännas. Om inget värde anges måste värdet matcha alla predikat-definitioner. |
+| MatchAtLeast | Nej | Anger att värdet måste matcha minst det antal predikat som ska godkännas. Om inget värde anges måste värdet matcha alla predikat-definitioner. |
 
 **PredicateReferences** -elementet innehåller följande element:
 
@@ -428,4 +428,4 @@ I anspråks typen lägger du till **PredicateValidationReference** -element och 
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig hur du [konfigurerar lösen ords komplexitet med anpassade principer i Azure Active Directory B2C](custom-policy-password-complexity.md) att använda predikat valideringar.
+- Lär dig hur du [konfigurerar lösen ords komplexitet med anpassade principer i Azure Active Directory B2C](password-complexity.md) att använda predikat valideringar.

@@ -1,16 +1,16 @@
 ---
-title: Parallell R-simulering med Azure Batch
+title: Självstudie – köra en parallell R-simulering med Azure Batch
 description: Självstudie – Stegvisa instruktioner för hur du kör en finansiell Monte Carlo-simulering i Azure Batch med R-paketet doAzureParallel
 ms.devlang: r
 ms.topic: tutorial
 ms.date: 10/08/2020
 ms.custom: mvc
-ms.openlocfilehash: 3ce4cff94bb565ce3dd9bc4e9307a2b21c4c0ac5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f157a3596992fc9d40179653cc1f9a070c6ef803
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851143"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106369"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Självstudie: Kör en parallell R-simulering med Azure Batch
 
@@ -24,7 +24,7 @@ I den här självstudien visas hur du distribuerar en Batch-pool och kör ett pa
 > * skapa en Batch-pool som en parallell serverdel för R-sessionen
 > * köra en parallell exempelsimulering på poolen.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * En installerad [R](https://www.r-project.org/)-distribution, som [Microsoft R Open](https://mran.microsoft.com/open). Använd version 3.3.1 eller senare av R.
 
@@ -251,7 +251,7 @@ stopCluster(cluster)
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-I den här självstudien lärde du dig att:
+I den här självstudiekursen lärde du dig att:
 
 > [!div class="checklist"]
 > installera doAzureParallel och konfigurera det för att komma åt dina Batch- och Storage-konton
@@ -263,7 +263,3 @@ Mer information om doAzureParallel finns i dokumentation och i exemplen på GitH
 
 > [!div class="nextstepaction"]
 > [Paketet doAzureParallel](https://github.com/Azure/doAzureParallel/)
-
-
-
-

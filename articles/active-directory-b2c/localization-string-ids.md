@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 11/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4fa0f4d87567bd77faacfd2373dba0d2b8996446
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 81a1263d0eacbffa77e2e35e4594e23235394183
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873377"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108679"
 ---
 # <a name="localization-string-ids"></a>Sträng-ID för lokalisering
 
@@ -442,7 +442,7 @@ Följande är ID: n för [RESTful-tjänstens tekniska profil](restful-technical-
 
 ## <a name="azure-ad-mfa-error-messages"></a>Fel meddelanden i Azure AD MFA
 
-Följande är ID: n för fel meddelanden i [Azure AD MFA Technical Profile](multi-factor-auth-technical-profile.md) :
+Följande är ID: n för ett fel meddelande i [Azure AD MFA Technical Profile](multi-factor-auth-technical-profile.md) :
 
 | ID | Standardvärde |
 | -- | ------------- |
@@ -547,5 +547,5 @@ Följande är ID: n för fel meddelanden för anspråks omvandlingar:
 
 Se följande artiklar om lokaliserings exempel:
 
-- [Språk anpassning med anpassad princip i Azure Active Directory B2C](custom-policy-localization.md)
-- [Språk anpassning med användar flöden i Azure Active Directory B2C](user-flow-language-customization.md)
+- [Språk anpassning med anpassad princip i Azure Active Directory B2C](language-customization.md)
+- [Språk anpassning med användar flöden i Azure Active Directory B2C](language-customization.md)

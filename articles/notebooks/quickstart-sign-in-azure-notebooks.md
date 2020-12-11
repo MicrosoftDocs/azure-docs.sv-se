@@ -3,12 +3,12 @@ title: Logga in på Azure Notebooks för hands version
 description: Logga in snabbt i Azure Notebooks för hands version och ange ett användar-ID, vilket ger dig möjlighet att komma åt sparade projekt och dela antecknings böcker med andra.
 ms.topic: quickstart
 ms.date: 04/15/2019
-ms.openlocfilehash: 8a2d9836cd005ab11106c569929a6776d605da50
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 168da5d4d36cd4cfadb4ef120ddfabbd261cafaf
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85830425"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109461"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id-for-azure-notebooks-preview"></a>Snabb start: Logga in och ange ett användar-ID för Azure Notebooks för hands version
 
@@ -41,7 +41,7 @@ ms.locfileid: "85830425"
 
     ![Uppmana att ange ett användar-ID för Azure Notebooks](media/accounts/create-user-id.png)
 
-    Om du väljer **Nej tack**fortsätter Azure Notebooks att uppmana dig att ange ett användar-ID varje gången du loggar in. Ditt användar-ID kan också ställas in när som helst i din [användar profil](azure-notebooks-user-profile.md).
+    Om du väljer **Nej tack** fortsätter Azure Notebooks att uppmana dig att ange ett användar-ID varje gången du loggar in. Ditt användar-ID kan också ställas in när som helst i din [användar profil](azure-notebooks-user-profile.md).
 
 1. När du har loggat in går Azure Notebooks till din offentliga profil sida där du kan välja **Redigera profil information** för att fylla i resten av din information (mer information finns i [din profil och ditt användar-ID](azure-notebooks-user-profile.md)):
 
@@ -59,4 +59,4 @@ Om du vill logga ut väljer du ditt användar namn längst upp till höger på s
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Snabb start: skapa och dela en bärbar dator](quickstart-create-share-jupyter-notebook.md)
+> [Snabb start: exportera ett Jupyter Notebook-projekt](quickstart-export-jupyter-notebook-project.md)

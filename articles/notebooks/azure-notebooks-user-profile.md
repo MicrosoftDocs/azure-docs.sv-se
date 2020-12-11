@@ -3,12 +3,12 @@ title: Användar profil och ID för användning med Azure Notebooks för hands v
 description: 'Hur du skapar och hanterar din användar profil och ditt användar-ID med Azure Notebooks, som blir en del av URL: en för delade antecknings böcker.'
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: 9a1ff7f92faec21f537f068f0a33473700ddfed8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30d70365fcc0c72df01b4dc059b6e0f4cc607bba
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85831360"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109512"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks-preview"></a>Din profil och ditt användar-ID för Azure Notebooks för hands version
 
@@ -49,16 +49,16 @@ Din profil består av offentligt synlig information på URL: en `https://noteboo
 
 Om du vill redigera din profil använder du kommandot **Redigera profil information** på din profil sida. Avsnitten i profilen är följande:
 
-| Section | Innehåll |
+| Avsnitt | Innehåll |
 | --- | --- |
 | Profil foto | En bild som visas på din profil sida. |
 | Kontoinformation | Ditt visnings namn, användar-ID och offentliga e-postkonto. E-postkontot här ger andra användare ett medel att kontakta dig och kan skilja sig från det [konto](azure-notebooks-user-account.md) som du använder för att logga in på Azure Notebooks. |
 | Profil information | Plats, företag, befattning, webbplats och en kort beskrivning av sig själv. |
-| Sociala profiler | Dina GItHub-, Twitter-och Facebook-ID: n, om du vill dela dem. |
+| Sociala profiler | Dina GitHub-, Twitter-och Facebook-ID: n, om du vill dela dem. |
 | Sekretessinställningar | Innehåller två kommandon:<ul><li>**Exportera min profil**: skapar och laddar ned en *. zip* -fil som innehåller all information som Azure Notebooks sparar i din profil, inklusive ditt fotografi, profil information och säkerhets loggar.</li><li>**Ta bort mitt konto**: all personlig information som lagras i Azure Notebooks tas bort permanent.</li></ul> |
 | Aktivera plats funktioner | Gör att du kan styra aspekter av beteendet för Azure Notebooks:<ul><li>**Enhetlig klient del för bärbara datorer**: möjliggör snabbare start av antecknings böcker och bättre beständighet.</li><li>**Kör i JupyterLab som standard**: Azure Notebooks tillhandahåller ett enkelt användar gränssnitt som är lämpligt för de flesta användare. JupyterLab ger ett mer omfattande men mer komplicerat gränssnitt för erfarna användare.</li><li>**VNext webbplats**: aktiverar den moderna Webblayouten som visas i den här dokumentationen.</li></ul> |
 
 ## <a name="next-steps"></a>Nästa steg  
 
 > [!div class="nextstepaction"]
-> [Självstudie: skapa och kör en Jupyter-anteckningsbok för linjär regression](tutorial-create-run-jupyter-notebook.md)
+> [Snabb start: exportera ett Jupyter Notebook-projekt](quickstart-export-jupyter-notebook-project.md)

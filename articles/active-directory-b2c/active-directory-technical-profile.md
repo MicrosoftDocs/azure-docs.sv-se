@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 67acf675c6636c5d1066d4fe25310d875fa7c064
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49d8e83c158cd14357a74b9dde4af1daba26dc36
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85201522"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109121"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiera en Azure Active Directory teknisk profil i en Azure Active Directory B2C anpassad princip
 
@@ -60,9 +60,9 @@ I följande exempel visas **AAD – vanlig** teknisk profil:
 
 InputClaims-elementet innehåller ett anspråk, som används för att leta upp ett konto i katalogen eller skapa ett nytt. Det måste finnas exakt ett InputClaim-element i den inloggade anspråks samlingen för alla Azure AD-tekniska profiler. Du kan behöva mappa namnet på det anspråk som definierats i principen till det namn som definierats i Azure Active Directory.
 
-Om du vill läsa, uppdatera eller ta bort ett befintligt användar konto är indata-anspråk en nyckel som unikt identifierar kontot i Azure AD-katalogen. Till exempel **ObjectID**, **userPrincipalName**, **signInNames. EmailAddress**, **signInNames. username**eller **alternativeSecurityId**. 
+Om du vill läsa, uppdatera eller ta bort ett befintligt användar konto är indata-anspråk en nyckel som unikt identifierar kontot i Azure AD-katalogen. Till exempel **ObjectID**, **userPrincipalName**, **signInNames. EmailAddress**, **signInNames. username** eller **alternativeSecurityId**. 
 
-Om du vill skapa ett nytt användar konto är indata-anspråk en nyckel som unikt identifierar ett lokalt eller federerat konto. Till exempel lokalt konto: **signInNames. EmailAddress**eller **signInNames. username**. För ett federerat konto: **alternativeSecurityId**.
+Om du vill skapa ett nytt användar konto är indata-anspråk en nyckel som unikt identifierar ett lokalt eller federerat konto. Till exempel lokalt konto: **signInNames. EmailAddress** eller **signInNames. username**. För ett federerat konto: **alternativeSecurityId**.
 
 [InputClaimsTransformations](technicalprofiles.md#inputclaimstransformations) -elementet kan innehålla en samling ingångs anspråk för omvandlings element som används för att ändra det inloggade anspråket eller skapa ett nytt.
 
@@ -249,11 +249,11 @@ Följande tekniska profil tar bort ett socialt användar konto med **alternative
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
 | Åtgärd | Ja | Åtgärden som ska utföras. Möjliga värden: `Read` , `Write` , `DeleteClaims` eller `DeleteClaimsPrincipal` . |
-| RaiseErrorIfClaimsPrincipalDoesNotExist | Inga | Generera ett fel om objektet användare inte finns i katalogen. Möjliga värden: `true` eller `false` . |
-| RaiseErrorIfClaimsPrincipalAlreadyExists | Inga | Generera ett fel om det redan finns ett användar objekt. Möjliga värden: `true` eller `false` .|
-| ApplicationObjectId | Inga | Programobjekts-ID för tilläggets attribut. Värde: ObjectId för ett program. Mer information finns i [använda anpassade attribut i en anpassad profil redigerings princip](custom-policy-custom-attributes.md). |
-| ClientId | Inga | Klient identifieraren för åtkomst till klienten som en tredje part. Mer information finns i [använda anpassade attribut i en anpassad profil redigerings princip](custom-policy-custom-attributes.md) |
-| IncludeClaimResolvingInClaimsHandling  | Inga | För indata-och utgående anspråk anges om [anspråks matchning](claim-resolver-overview.md) ingår i den tekniska profilen. Möjliga värden: `true` , eller `false`   (standard). Om du vill använda en anspråks lösare i den tekniska profilen ställer du in den på `true` . |
+| RaiseErrorIfClaimsPrincipalDoesNotExist | Nej | Generera ett fel om objektet användare inte finns i katalogen. Möjliga värden: `true` eller `false` . |
+| RaiseErrorIfClaimsPrincipalAlreadyExists | Nej | Generera ett fel om det redan finns ett användar objekt. Möjliga värden: `true` eller `false` .|
+| ApplicationObjectId | Nej | Programobjekts-ID för tilläggets attribut. Värde: ObjectId för ett program. Mer information finns i [använda anpassade attribut i en anpassad profil redigerings princip](custom-policy-custom-attributes.md). |
+| ClientId | Nej | Klient identifieraren för åtkomst till klienten som en tredje part. Mer information finns i [använda anpassade attribut i en anpassad profil redigerings princip](custom-policy-custom-attributes.md) |
+| IncludeClaimResolvingInClaimsHandling  | Nej | För indata-och utgående anspråk anges om [anspråks matchning](claim-resolver-overview.md) ingår i den tekniska profilen. Möjliga värden: `true` , eller `false` (standard). Om du vill använda en anspråks lösare i den tekniska profilen ställer du in den på `true` . |
 
 ### <a name="ui-elements"></a>Element för användargränssnitt
  
@@ -261,15 +261,15 @@ Följande inställningar kan användas för att konfigurera fel meddelandet som 
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| UserMessageIfClaimsPrincipalAlreadyExists | Inga | Om ett fel ska höjas (se RaiseErrorIfClaimsPrincipalAlreadyExists-Attribute Description) anger du det meddelande som ska visas för användaren om användar objekt redan finns. |
-| UserMessageIfClaimsPrincipalDoesNotExist | Inga | Om ett fel ska höjas (se beskrivningen av RaiseErrorIfClaimsPrincipalDoesNotExist) anger du det meddelande som ska visas för användaren om användar objekt inte finns. |
+| UserMessageIfClaimsPrincipalAlreadyExists | Nej | Om ett fel ska höjas (se RaiseErrorIfClaimsPrincipalAlreadyExists-Attribute Description) anger du det meddelande som ska visas för användaren om användar objekt redan finns. |
+| UserMessageIfClaimsPrincipalDoesNotExist | Nej | Om ett fel ska höjas (se beskrivningen av RaiseErrorIfClaimsPrincipalDoesNotExist) anger du det meddelande som ska visas för användaren om användar objekt inte finns. |
 
 
 ## <a name="next-steps"></a>Nästa steg
 
 Se följande artikel, till exempel om du använder teknisk profil för Azure AD:
 
-- [Lägg till anspråk och anpassa användarindata med anpassade principer i Azure Active Directory B2C](custom-policy-configure-user-input.md)
+- [Lägg till anspråk och anpassa användarindata med anpassade principer i Azure Active Directory B2C](configure-user-input.md)
 
 
 

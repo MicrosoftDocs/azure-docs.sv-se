@@ -1,23 +1,23 @@
 ---
 title: Självstudie – Använd parameter fil för att distribuera mallen
-description: Använd parameterstyrda filer som innehåller de värden som ska användas för att distribuera din Azure Resource Manager-mall.
+description: Använd parameterstyrda filer som innehåller de värden som ska användas för att distribuera Azure Resource Manager-mallen (ARM-mallen).
 author: mumian
 ms.date: 09/10/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: de72f9f32a3b08ad1742ee2055efce5b93cab899
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8dc625237c03cf38f9fe2eb0446c55dcf96f5f3a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069517"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106775"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>Självstudie: använda parameter-filer för att distribuera ARM-mallen
 
 I den här självstudien får du lära dig hur du använder [parameter-filer](parameter-files.md) för att lagra de värden som du skickar i under distributionen. I de föregående självstudierna använde du infogade parametrar med ditt distributions kommando. Den här metoden fungerade för att testa din Azure Resource Manager-mall (ARM-mall), men när du automatiserar distributioner kan det vara lättare att skicka en uppsättning värden för din miljö. Parameter-filer gör det lättare att paketera parameter värden för en speciell miljö. I den här självstudien skapar du parameterstyrda filer för utvecklings-och produktions miljöer. Det tar ungefär **12 minuter** att slutföra.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Vi rekommenderar att du slutför [självstudien om Taggar](template-tutorial-add-tags.md), men det är inte obligatoriskt.
 
@@ -41,23 +41,25 @@ Du behöver inte ange ett värde för varje parameter. Om en ospecificerad param
 
 Du kan inte ange ett parameter namn i parameter filen som inte matchar ett parameter namn i mallen. Du får ett fel meddelande när du har angett okända parametrar.
 
-I VS Code skapar du en ny fil med följande innehåll. Spara filen med namnet **azuredeploy.parameters.dev.jspå**.
+Skapa en ny fil med följande innehåll i Visual Studio Code. Spara filen med namnet _azuredeploy.parameters.dev.jspå_.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json":::
 
-Den här filen är din parameter fil för utvecklings miljön. Observera att den använder Standard_LRS för lagrings kontot, namnger resurser med ett **dev** -prefix och ställer in **miljö** tag gen på **dev**.
+Den här filen är din parameter fil för utvecklings miljön. Observera att den använder **Standard_LRS** för lagrings kontot, namnger resurser med ett **dev** -prefix och anger `Environment` taggen till **dev**.
 
-Skapa en ny fil med följande innehåll. Spara filen med namnet **azuredeploy.parameters.prod.jspå**.
+Skapa en ny fil med följande innehåll. Spara filen med namnet _azuredeploy.parameters.prod.jspå_.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json":::
 
-Den här filen är parameter filen för produktions miljön. Observera att den använder Standard_GRS för lagrings kontot, namnger resurser med ett **contoso** -prefix och ställer in **miljö** tag gen på **produktion**. I en verklig produktions miljö vill du också använda en app service med en annan SKU än kostnads fri, men vi fortsätter att använda SKU: n för den här självstudien.
+Den här filen är parameter filen för produktions miljön. Observera att den använder **Standard_GRS** för lagrings kontot, namnger resurser med ett **contoso** -prefix och ställer in _miljö_ tag gen på **produktion**. I en verklig produktions miljö vill du också använda en app service med en annan SKU än kostnads fri, men vi fortsätter att använda SKU: n för den här självstudien.
 
 ## <a name="deploy-template"></a>Distribuera mallen
 
 Använd antingen Azure CLI eller Azure PowerShell för att distribuera mallen.
 
 Vi skapar två nya resurs grupper som ett slutligt test av din mall. En för utvecklings miljön och en för produktions miljön.
+
+För mall-och parameter-variablerna ersätter du, `{path-to-the-template-file}` `{path-to-azuredeploy.parameters.dev.json}` , `{path-to-azuredeploy.parameters.prod.json}` och klammerparenteserna `{}` med mallen och sökvägen till parameter filen.
 
 Först ska vi distribuera till utvecklings miljön.
 
@@ -128,21 +130,21 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Om distributionen misslyckades använder du **utförlig** växeln för att hämta information om de resurser som skapas. Använd **fel söknings** växeln för att få mer information om fel sökning.
+> Om distributionen misslyckades använder du `verbose` växeln för att hämta information om de resurser som skapas. Använd `debug` växeln för att få mer information om fel sökning.
 
 ## <a name="verify-deployment"></a>Verifiera distributionen
 
 Du kan kontrol lera distributionen genom att utforska resurs grupperna från Azure Portal.
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-1. Välj **resurs grupper**på den vänstra menyn.
+1. Välj **resurs grupper** på den vänstra menyn.
 1. Du ser de två nya resurs grupper som du har distribuerat i den här självstudien.
 1. Välj antingen resurs grupp och Visa de distribuerade resurserna. Observera att de stämmer överens med de värden som du har angett i parameter filen för den miljön.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
 1. Från Azure Portal väljer du **resurs grupp** på den vänstra menyn.
-2. Ange resursgruppens namn i fältet **Filtrera efter namn**. Om du har slutfört den här serien har du tre resurs grupper för att ta bort-myResourceGroup, myResourceGroupDev och myResourceGroupProd.
+2. Ange resursgruppens namn i fältet **Filtrera efter namn**. Om du har slutfört den här serien har du tre resurs grupper för att ta bort- **myResourceGroup**, **myResourceGroupDev** och **myResourceGroupProd**.
 3. Välj resursgruppens namn.
 4. Välj **ta bort resurs grupp** på den översta menyn.
 

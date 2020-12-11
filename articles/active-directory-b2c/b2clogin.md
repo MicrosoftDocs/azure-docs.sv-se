@@ -11,22 +11,22 @@ ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b82edf39185067e4c761c7598b159a655dfc370c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 20df5fc3a4d7c392be62df2b7778854d1e2e1cba
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735398"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109070"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Ange omdirigerings-URL: er till b2clogin.com för Azure Active Directory B2C
 
-När du konfigurerar en identitets leverantör för registrering och inloggning i ditt Azure Active Directory B2C (Azure AD B2C) måste du ange en omdirigerings-URL. Du bör inte längre referera till *login.microsoftonline.com* i dina program och API: er för att autentisera användare med Azure AD B2C. Använd i stället *b2clogin.com* för alla nya program och migrera befintliga program från *login.microsoftonline.com* till *b2clogin.com* .
+När du konfigurerar en identitets leverantör för registrering och inloggning i ditt Azure Active Directory B2C (Azure AD B2C) måste du ange en omdirigerings-URL. Du bör inte längre referera till *login.microsoftonline.com* i dina program och API: er för att autentisera användare med Azure AD B2C. Använd i stället *b2clogin.com* för alla nya program och migrera befintliga program från *login.microsoftonline.com* till *b2clogin.com*.
 
 ## <a name="deprecation-of-loginmicrosoftonlinecom"></a>Utfasning av login.microsoftonline.com
 
 **Uppdatering från oktober 2020:** Vi utökar en respitperiod för klienter som inte kan uppfylla det ursprungligen presenterade utfasnings datumet 04 december 2020. Pensionering av login.microsoftonline.com kommer nu inte att ske tidigare än **14 januari 2021.**
 
-**Bakgrund** : den 04 december 2019 [presenterade](https://azure.microsoft.com/updates/b2c-deprecate-msol/) vi ursprungligen den schemalagda indragningen av login.microsoftonline.com-support i Azure AD B2C den 04 december 2020. Detta tillhandahöll befintliga klienter ett (1) år att migrera till b2clogin.com. Nya klienter som skapats efter 04 december 2019 accepterar inte förfrågningar från login.microsoftonline.com. Alla funktioner förblir desamma på b2clogin.com-slutpunkten.
+**Bakgrund**: den 04 december 2019 [presenterade](https://azure.microsoft.com/updates/b2c-deprecate-msol/) vi ursprungligen den schemalagda indragningen av login.microsoftonline.com-support i Azure AD B2C den 04 december 2020. Detta tillhandahöll befintliga klienter ett (1) år att migrera till b2clogin.com. Nya klienter som skapats efter 04 december 2019 accepterar inte förfrågningar från login.microsoftonline.com. Alla funktioner förblir desamma på b2clogin.com-slutpunkten.
 
 Utfasningen av login.microsoftonline.com påverkar inte Azure Active Directory klienter. Endast Azure Active Directory B2C klienter påverkas av den här ändringen.
 
@@ -45,7 +45,7 @@ Alternativt kan du `<policy-name>` skicka den som en frågeparameter:
 > [!IMPORTANT]
 > Slut punkter som använder parametern "princip" måste uppdateras samt [omdirigerings-URL: er för identitetsprovider](#change-identity-provider-redirect-urls).
 
-Vissa Azure AD B2C-kunder använder delade funktioner i Azure AD Enterprise-klienter som OAuth 2,0-klient autentiseringsuppgifter för att tilldela ett flöde. Dessa funktioner nås med hjälp av Azure ADs login.microsoftonline.com-slutpunkter, *som inte innehåller någon princip parameter* . __Dessa slut punkter påverkas inte__ .
+Vissa Azure AD B2C-kunder använder delade funktioner i Azure AD Enterprise-klienter som OAuth 2,0-klient autentiseringsuppgifter för att tilldela ett flöde. Dessa funktioner nås med hjälp av Azure ADs login.microsoftonline.com-slutpunkter, *som inte innehåller någon princip parameter*. __Dessa slut punkter påverkas inte__.
 
 ## <a name="benefits-of-b2clogincom"></a>Fördelar med b2clogin.com
 
@@ -53,15 +53,15 @@ När du använder *b2clogin.com* som omdirigerings-URL:
 
 * Förbrukat utrymme i cookie-huvudet av Microsoft-tjänster minskas.
 * Dina omdirigerings-URL: er behöver inte längre innehålla en referens till Microsoft.
-* Java Script-kod på klient sidan stöds (för närvarande i för [hands version](user-flow-javascript-overview.md)) på anpassade sidor. På grund av säkerhets begränsningar tas JavaScript-kod och HTML-formulär element bort från anpassade sidor om du använder *login.microsoftonline.com* .
+* Java Script-kod på klient sidan stöds (för närvarande i för [hands version](javascript-and-page-layout.md)) på anpassade sidor. På grund av säkerhets begränsningar tas JavaScript-kod och HTML-formulär element bort från anpassade sidor om du använder *login.microsoftonline.com*.
 
 ## <a name="overview-of-required-changes"></a>Översikt över nödvändiga ändringar
 
-Det finns flera ändringar som du kan behöva göra för att migrera dina program till *b2clogin.com* :
+Det finns flera ändringar som du kan behöva göra för att migrera dina program till *b2clogin.com*:
 
-* Ändra omdirigerings-URL: en i din Identitetsproviders program till Reference *b2clogin.com* .
+* Ändra omdirigerings-URL: en i din Identitetsproviders program till Reference *b2clogin.com*.
 * Uppdatera dina Azure AD B2C program så att de använder *b2clogin.com* i sina användar flöden och token slut punkts referenser. Detta kan inkludera uppdatering av ditt användnings bibliotek som Microsoft Authentication Library (MSAL).
-* Uppdatera eventuella **tillåtna ursprung** som du har DEFINIERAT i CORS-inställningarna för [anpassning av användar gränssnitt](custom-policy-ui-customization.md).
+* Uppdatera eventuella **tillåtna ursprung** som du har DEFINIERAT i CORS-inställningarna för [anpassning av användar gränssnitt](customize-ui-with-html.md).
 
 En gammal slut punkt kan se ut så här:
 - <b><code>https://login.microsoft.com/</b>\<tenant-name\>.onmicrosoft.com/\<policy-name\>/oauth2/v2.0/authorize</code>
@@ -72,7 +72,7 @@ En motsvarande uppdaterad slut punkt skulle se ut så här:
 
 ## <a name="change-identity-provider-redirect-urls"></a>Ändra omdirigerings-URL: er för identitetsprovider
 
-På varje identitets leverantörs webbplats där du har skapat ett program, ändra alla betrodda URL: er som ska omdirigeras till `your-tenant-name.b2clogin.com` i stället för *login.microsoftonline.com* .
+På varje identitets leverantörs webbplats där du har skapat ett program, ändra alla betrodda URL: er som ska omdirigeras till `your-tenant-name.b2clogin.com` i stället för *login.microsoftonline.com*.
 
 Det finns två format som du kan använda för dina b2clogin.com-omdirigerings-URL: er. Det första ger fördelen att du inte har "Microsoft" visas var som helst i URL: en genom att använda klient-ID: t (en GUID) i stället för domän namnet för din klient organisation:
 
@@ -113,7 +113,7 @@ Information om hur du migrerar Azure API Management API: er som skyddas av Azure
 
 ### <a name="msalnet-validateauthority-property"></a>MSAL.NET ValidateAuthority-egenskap
 
-Om du använder [MSAL.net][msal-dotnet] v2 eller tidigare anger du egenskapen **ValidateAuthority** till `false` på klientens instansiering för att tillåta omdirigering till *b2clogin.com* . Det krävs inget värde för att ange det här värdet `false` för MSAL.net v3 och senare.
+Om du använder [MSAL.net][msal-dotnet] v2 eller tidigare anger du egenskapen **ValidateAuthority** till `false` på klientens instansiering för att tillåta omdirigering till *b2clogin.com*. Det krävs inget värde för att ange det här värdet `false` för MSAL.net v3 och senare.
 
 ```csharp
 ConfidentialClientApplication client = new ConfidentialClientApplication(...); // Can also be PublicClientApplication

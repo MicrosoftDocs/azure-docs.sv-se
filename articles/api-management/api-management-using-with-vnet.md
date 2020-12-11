@@ -10,15 +10,15 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/22/2020
+ms.date: 12/10/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: 7af15552a489f36d87204bfefe47e579cc19f6dc
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: e36f7c6085908630d5e7aa2593fe4d57202d6ee7
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778816"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107659"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Använda Azure API Management med virtuella nätverk
 Med virtuella Azure-nätverk (VNET) kan du placera valfria Azure-resurser i ett dirigerbart icke-Internetbaserat nätverk som du kontrollerar åtkomsten till. Dessa nätverk kan sedan anslutas till dina lokala nätverk med hjälp av olika VPN-tekniker. Om du vill veta mer om virtuella Azure-nätverk börjar du med informationen här: [Azure Virtual Network-översikt](../virtual-network/virtual-networks-overview.md).
@@ -109,15 +109,16 @@ Nedan följer en lista över vanliga fel konfigurations problem som kan uppstå 
 
 * **Portar som krävs för API Management**: inkommande och utgående trafik till under nätet där API Management distribueras kan kontrol leras med hjälp av [nätverks säkerhets gruppen][Network Security Group]. Om någon av dessa portar är otillgänglig kanske API Management inte fungerar korrekt och kan bli oåtkomlig. En eller flera av dessa portar blockeras är ett annat vanligt problem med fel konfiguration vid användning av API Management med ett VNET.
 
-<a name="required-ports"> </a> När en API Management tjänst instans finns i ett VNet används portarna i följande tabell.
+<a name="required-ports"></a> När en API Management tjänst instans finns i ett VNet används portarna i följande tabell.
 
 | Käll-/mål Port (er) | Riktning          | Transport protokoll |   [Service märken](../virtual-network/network-security-groups-overview.md#service-tags) <br> Källa/mål   | Syfte ( \* )                                                 | Virtual Network typ |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | */[80], 443                  | Inbound (Inkommande)            | TCP                | INTERNET/VIRTUAL_NETWORK            | Klient kommunikation till API Management                      | Extern             |
 | */3443                     | Inbound (Inkommande)            | TCP                | API Management/VIRTUAL_NETWORK       | Hanterings slut punkt för Azure Portal och PowerShell         | Externt & internt  |
 | */443                  | Outbound (Utgående)           | TCP                | VIRTUAL_NETWORK/lagring             | **Beroende av Azure Storage**                             | Externt & internt  |
-| */443                  | Outbound (Utgående)           | TCP                | VIRTUAL_NETWORK/AzureActiveDirectory | [Azure Active Directory](api-management-howto-aad.md) (i förekommande fall)                   | Externt & internt  |
+| */443                  | Outbound (Utgående)           | TCP                | VIRTUAL_NETWORK/AzureActiveDirectory | Beroende av [Azure Active Directory](api-management-howto-aad.md) och Azure-valv                  | Externt & internt  |
 | */1433                     | Outbound (Utgående)           | TCP                | VIRTUAL_NETWORK/SQL                 | **Åtkomst till Azure SQL-slutpunkter**                           | Externt & internt  |
+| */433                     | Outbound (Utgående)           | TCP                | VIRTUAL_NETWORK/AzureKeyVault                 | **Åtkomst till Azure-valv**                           | Externt & internt  |
 | */5671, 5672, 443          | Outbound (Utgående)           | TCP                | VIRTUAL_NETWORK/EventHub            | Beroende för [logg till Event Hub-princip](api-management-howto-log-event-hubs.md) och övervaknings agent | Externt & internt  |
 | */445                      | Outbound (Utgående)           | TCP                | VIRTUAL_NETWORK/lagring             | Beroende av Azure-filresurs för [git](api-management-configuration-repository-git.md)                      | Externt & internt  |
 | */443, 12000                     | Outbound (Utgående)           | TCP                | VIRTUAL_NETWORK/AzureCloud            | Hälso-och övervaknings tillägg         | Externt & internt  |
@@ -191,7 +192,7 @@ Läs igenom [vanliga problem med nätverks konfigurationen](#network-configurati
 
 * **Länkar till resurs navigering**: när du distribuerar till ett VNet-undernät i Resource Manager-format API Management reserverar under nätet genom att skapa en resurs navigerings länk. Om under nätet redan innehåller en resurs från en annan provider, kommer distributionen att **Miss** förfalla. När du flyttar en API Management-tjänst till ett annat undernät eller tar bort den, kommer vi att ta bort resurs navigerings länken.
 
-## <a name="subnet-size-requirement"></a><a name="subnet-size"> </a> Krav för under näts storlek
+## <a name="subnet-size-requirement"></a><a name="subnet-size"></a> Krav för under näts storlek
 Azure reserverar vissa IP-adresser i varje undernät och de här adresserna kan inte användas. De första och sista IP-adresserna i under näten är reserverade för protokoll överensstämmelse, tillsammans med tre fler adresser som används för Azure-tjänster. Mer information finns i finns [det några begränsningar för att använda IP-adresser i dessa undernät?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
 
 Förutom de IP-adresser som används av Azure VNET-infrastrukturen använder varje API Management-instans i under nätet två IP-adresser per enhet av Premium-SKU eller en IP-adress för Developer-SKU: n. Varje instans reserverar en ytterligare IP-adress för den externa belastningsutjämnaren. När du distribuerar till ett internt virtuellt nätverk kräver det ytterligare en IP-adress för den interna belastningsutjämnaren.
@@ -200,7 +201,7 @@ Beräkningen ovanför under nätets minsta storlek, där API Management kan dist
 
 För varje extra skalnings enhet med API Management krävs ytterligare två IP-adresser.
 
-## <a name="routing"></a><a name="routing"> </a> Routning
+## <a name="routing"></a><a name="routing"></a> Routning
 + En belastningsutjämnad offentlig IP-adress (VIP) är reserverad för att ge åtkomst till alla tjänst slut punkter.
 + En IP-adress från ett undernäts IP-intervall (DIP) används för att komma åt resurser i VNet och en offentlig IP-adress (VIP) kommer att användas för att få åtkomst till resurser utanför VNet.
 + Belastningsutjämnad offentlig IP-adress hittar du på bladet översikt/Essentials i Azure Portal.
@@ -212,7 +213,7 @@ För varje extra skalnings enhet med API Management krävs ytterligare två IP-a
 * För API Management distributioner i flera regioner som kon figurer ATS i internt virtuellt nätverks läge ansvarar användarna för att hantera belastnings utjämning över flera regioner, när de äger routningen.
 * Anslutning från en resurs i ett globalt peer-nätverk i en annan region till API Management tjänsten i det interna läget fungerar inte på grund av en plattforms begränsning. Mer information finns i [resurser i ett virtuellt nätverk kan inte kommunicera med Azures interna belastningsutjämnare i peer-kopplat virtuellt nätverk](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)
 
-## <a name="control-plane-ip-addresses"></a><a name="control-plane-ips"> </a> Kontroll PLANENS IP-adresser
+## <a name="control-plane-ip-addresses"></a><a name="control-plane-ips"></a> Kontroll PLANENS IP-adresser
 
 IP-adresserna delas av **Azure-miljön**. När du tillåter inkommande begär Anden IP-adress som marker ATS med **Global** måste tillåtas tillsammans med den **region** som är en speciell IP-adress.
 

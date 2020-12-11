@@ -1,16 +1,16 @@
 ---
-title: 'Köra en parallell arbets belastning med .NET-API: et'
+title: 'Självstudie – köra en parallell arbets belastning med .NET-API: et'
 description: Självstudie – Omkoda mediefiler parallellt med ffmpeg i Azure Batch med hjälp av klientbiblioteket Batch .NET
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 09/29/2020
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 396d0f6a2ef9a8c24fc92b641c889ef9e1a7df49
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: a990a5480a8a6462bb6ef9f84070b78768628fd0
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578305"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106554"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Självstudie: Kör en parallell arbetsbelastning med Azure Batch med hjälp av .NET API
 
@@ -317,7 +317,7 @@ När de inte längre behövs tar du bort resursgruppen, Batch-kontot och lagring
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudien lärde du dig att:
+I den här självstudiekursen lärde du dig att:
 
 > [!div class="checklist"]
 > * lägga till ett programpaket i Batch-kontot
@@ -332,6 +332,3 @@ Fler exempel på hur du använder .NET API till att schemalägga och bearbeta Ba
 
 > [!div class="nextstepaction"]
 > [Batch C#-exempel](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)
-
-
-Om du ställer in instans variabeln LowPriorityNodeCount = 0 och DedicatedNodeCount = 5 åtgärdades problemet och det tillåtna jobbet slutförs.

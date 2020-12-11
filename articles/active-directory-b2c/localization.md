@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 27a00c69a4423e45b46b9c3d0340bb7cd1a35d65
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 88244ec3ba4bbebe7d6096fa3ac49bd4f1b8f661
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92095908"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108630"
 ---
 # <a name="localization-element"></a>Lokaliserings element
 
@@ -354,5 +354,5 @@ I avsnittet metadata i en självkontrollerad teknisk profil måste det refererad
 
 Se följande artiklar om lokaliserings exempel:
 
-- [Språk anpassning med anpassad princip i Azure Active Directory B2C](custom-policy-localization.md)
-- [Språk anpassning med användar flöden i Azure Active Directory B2C](user-flow-language-customization.md)
+- [Språk anpassning med anpassad princip i Azure Active Directory B2C](language-customization.md)
+- [Språk anpassning med användar flöden i Azure Active Directory B2C](language-customization.md)
