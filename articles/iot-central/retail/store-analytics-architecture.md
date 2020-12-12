@@ -9,15 +9,14 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: f1f83fdd73816e6e30c5cac7d193719591bb8dc1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3486b636325393f9c8e96669ba3d21e7d489efee
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "80999025"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347990"
 ---
 # <a name="in-store-analytics-architecture"></a>Arkitektur för i Store Analytics
-
 
 
 Med lagrings analys lösningar kan du övervaka olika villkor i detalj handels miljön. Dessa lösningar kan skapas med hjälp av en av Programmallarna i IoT Central och arkitekturen nedan som vägledning.
@@ -55,4 +54,4 @@ IoT-data kan användas för att driva olika typer av affärs program som distrib
 
 ## <a name="next-steps"></a>Nästa steg
 * Kom igång med att [checka in-Store Analytics](https://aka.ms/checkouttemplate) och [in-Store Analytics-villkor för övervakning](https://aka.ms/conditiontemplate) . 
-* Ta en titt på [självstudien från slut punkt till slut punkt](https://aka.ms/storeanalytics-tutorial) som vägleder dig genom hur du skapar en lösning med hjälp av en av mallarna i Store Analytics-programmallar.
+* Ta en titt på [kursen om slut punkt till slut punkt](https://aka.ms/storeanalytics-tutorial) som vägleder dig genom hur du skapar en lösning med hjälp av en av In-Store Analytics-Programmallarna.

@@ -12,12 +12,12 @@ ms.date: 07/14/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 50a0859b58e2db0d3f644db01cfcde8c533b6871
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0895cfc14b0237db8f2f762602fee949354e6cb
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86518138"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347463"
 ---
 # <a name="supported-account-types"></a>Kontotyper som stöds
 
@@ -43,7 +43,7 @@ I det Microsoft Azure offentliga molnet kan de flesta typer av appar logga in an
 Vissa konto typer kan inte användas med vissa autentiseringsscheman. Till exempel, i Desktop-, UWP-eller daemon-program:
 
 - Daemon-program kan bara användas med Azure AD-organisationer. Det är inte bra att försöka använda daemon-program för att manipulera Microsoft-personliga konton. Administratörs medgivande kommer aldrig att beviljas.
-- Du kan bara använda det integrerade Windows-autentiseringsschemat med arbets-eller skol konton (i din organisation eller i en organisation). Integrerad Windows-autentisering fungerar med domän konton och kräver att datorerna är domänanslutna eller Azure AD-ansluten. Det här flödet passar inte för personliga Microsoft-konton.
+- Du kan bara använda det integrerade Windows-autentiseringsschemat med arbets-eller skol konton (i din organisation eller i en organisation). Integrerad Windows-autentisering fungerar med domän konton och kräver att datorerna är domänanslutna eller anslutna till Azure AD. Det här flödet passar inte för personliga Microsoft-konton.
 - [Tilldelningen av lösen ord för resurs ägare](./v2-oauth-ropc.md) (username/Password) kan inte användas med personliga Microsoft-konton. Personliga Microsoft-konton kräver att användaren godkänner åtkomst till personliga resurser vid varje inloggnings session. Det är därför det här beteendet inte är kompatibelt med icke-interaktiva flöden.
 
 ## <a name="account-types-in-national-clouds"></a>Konto typer i nationella moln

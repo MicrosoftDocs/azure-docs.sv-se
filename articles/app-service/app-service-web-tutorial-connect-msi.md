@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: e10834c921042f0bfedfc3196b855ce5dc7b0e8f
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 1f6757a9f78e3c400d92fd65a0795ceae7570c99
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007695"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347582"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Självstudie: Säkra Azure SQL Database-anslutningar från App Service med en hanterad identitet
 
@@ -251,7 +251,7 @@ Klicka på **Publicera** på publiceringssidan.
 
 ```bash
 git commit -am "configure managed identity"
-git push azure main
+git push azure master
 ```
 
 När du ser din att göra-lista på den nya webbsidan ansluter din app till databasen med hjälp av den hanterade identiteten.

@@ -13,12 +13,12 @@ ms.date: 07/22/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: e4325303f5a10fa1df670495dd6d8190167182e8
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: b08f00730e15dd0c7415a28adf85b87c95d7b1ed
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861110"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347153"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Objekt för program och tjänstens huvudnamn i Azure Active Directory
 
@@ -47,9 +47,9 @@ Bladet **Appregistreringar** i [Azure Portal][AZURE-Portal] används för att vi
 ## <a name="service-principal-object"></a>Tjänstens huvud namns objekt
 För att få åtkomst till resurser som skyddas av en Azure AD-klient måste den entitet som kräver åtkomst representeras av ett säkerhets objekt. Detta krav gäller både för både användare (användarens huvud namn) och program (tjänstens huvud namn). Säkerhets principen definierar åtkomst principen och behörigheter för användaren/programmet i Azure AD-klienten. Detta möjliggör kärn funktioner som autentisering av användaren/programmet vid inloggning och auktorisering under resurs åtkomst.
 
-Ett huvud namn för tjänsten är den lokala representationen eller program instansen för ett globalt program objekt i en enda klient eller katalog. Ett huvud namn för tjänsten är en konkret instans som skapas från programobjektet och ärver vissa egenskaper från det program objektet.  Ett huvud namn för tjänsten skapas i varje klient där programmet används och refererar till det globalt unika app-objektet.  Tjänstens huvud objekt definierar vad appen faktiskt kan göra i den angivna klienten, vem som har åtkomst till appen och vilka resurser appen kan komma åt.
+Ett huvud namn för tjänsten är den lokala representationen eller program instansen för ett globalt program objekt i en enda klient eller katalog. Ett huvud namn för tjänsten är en konkret instans som skapas från programobjektet och ärver vissa egenskaper från det program objektet. Ett huvud namn för tjänsten skapas i varje klient där programmet används och refererar till det globalt unika app-objektet.  Tjänstens huvud objekt definierar vad appen faktiskt kan göra i den angivna klienten, vem som har åtkomst till appen och vilka resurser appen kan komma åt.
 
-När ett program har behörighet att komma åt resurser i en klient organisation (vid registrering eller [medgivande](developer-glossary.md#consent)) skapas ett huvud objekt för tjänsten. Du kan också skapa tjänstens huvud namns objekt i en klient med hjälp av [Azure PowerShell](howto-authenticate-service-principal-powershell.md), [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli), [Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?tabs=http), [Azure Portal][AZURE-Portal]och andra verktyg.  När du använder portalen skapas ett huvud namn för tjänsten automatiskt när du registrerar ett program.
+När ett program har behörighet att komma åt resurser i en klient organisation (vid registrering eller [medgivande](developer-glossary.md#consent)) skapas ett huvud objekt för tjänsten. Du kan också skapa tjänst huvud objekt i en klient med hjälp av [Azure PowerShell](howto-authenticate-service-principal-powershell.md), [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli), [Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?tabs=http), [Azure Portal][AZURE-Portal]och andra verktyg. När du använder portalen skapas ett huvud namn för tjänsten automatiskt när du registrerar ett program.
 
 Bladet **företags program** i portalen används för att visa och hantera tjänstens huvud namn i en klient organisation. Du kan se tjänstens huvud namn, användare som har skickat behörigheter, vilka användare som har gjort detta medgivande, logga in information med mera.
 

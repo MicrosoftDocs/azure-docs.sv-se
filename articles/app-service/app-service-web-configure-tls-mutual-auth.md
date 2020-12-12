@@ -3,14 +3,14 @@ title: Konfigurera ömsesidig TLS-autentisering
 description: Lär dig hur du autentiserade klient certifikat på TLS. Azure App Service kan göra klient certifikatet tillgängligt för verifiering av appens kod.
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
-ms.date: 10/01/2019
+ms.date: 12/11/2020
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 145b999d7bf8597c06d6e3d4a36d01b182c8ae68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ceeb3d31652c04eb9a69c1c8bb4b114e6f38d52
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213638"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347738"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Konfigurera ömsesidig TLS-autentisering för Azure App Service
 
@@ -24,20 +24,33 @@ Du kan begränsa åtkomsten till Azure App Service-appen genom att aktivera olik
 
 ## <a name="enable-client-certificates"></a>Aktivera klient certifikat
 
-Om du vill konfigurera din app så att den kräver klient certifikat, kan **du växla till** Kräv inkommande certifikat genom att välja **konfiguration**av  >  **allmänna inställningar** från Azure Portal eller så måste du ange `clientCertEnabled` inställningen för din app till `true` . Ange inställningen genom att köra följande kommando i [Cloud Shell](https://shell.azure.com).
+Så här konfigurerar du din app så att den kräver klient certifikat:
+
+1. Välj **konfiguration**  >  **allmänna inställningar** i det vänstra navigerings fältet på appens hanterings sida.
+
+1. Ange det **klient certifikat läge** som **krävs**. Klicka på **Spara** längst upp på sidan.
+
+Om du vill göra samma sak med Azure CLI kör du följande kommando i [Cloud Shell](https://shell.azure.com):
 
 ```azurecli-interactive
-az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
+az webapp update --set clientCertEnabled=true --name <app-name> --resource-group <group-name>
 ```
 
 ## <a name="exclude-paths-from-requiring-authentication"></a>Uteslut sökvägar från att kräva autentisering
 
-När du aktiverar ömsesidig autentisering för ditt program, kräver alla sökvägar under appens rot ett klient certifikat för åtkomst. Om du vill tillåta att vissa sökvägar är öppna för anonym åtkomst kan du definiera undantags Sök vägar som en del av program konfigurationen.
+När du aktiverar ömsesidig autentisering för ditt program kräver alla sökvägar under appens rot ett klient certifikat för åtkomst. Om du vill ta bort detta krav för vissa sökvägar definierar du undantags Sök vägar som en del av program konfigurationen.
 
-Du kan konfigurera undantags Sök vägar genom att välja **konfiguration**  >  **allmänna inställningar** och definiera en sökväg för undantag. I det här exemplet skulle något under `/public` sökvägen för ditt program inte begära ett klient certifikat.
+1. Välj **konfiguration**  >  **allmänna inställningar** i det vänstra navigerings fältet på appens hanterings sida.
+
+1. Klicka på ikonen Redigera bredvid **klient undantags Sök vägar**.
+
+1. Klicka på **ny sökväg**, ange en sökväg och klicka på **OK**.
+
+1. Klicka på **Spara** längst upp på sidan.
+
+I följande skärm bild begär allt under `/public` appens sökväg inte något klient certifikat.
 
 ![Sökvägar för certifikat undantag][exclusion-paths]
-
 
 ## <a name="access-client-certificate"></a>Åtkomst till klient certifikat
 

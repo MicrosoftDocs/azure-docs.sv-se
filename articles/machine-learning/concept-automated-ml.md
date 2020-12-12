@@ -11,16 +11,16 @@ author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
 ms.custom: automl
-ms.openlocfilehash: ca0cfd7c38dde5e7307c31989791aa3906b9cbe5
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 2d759a8ed58d5b323f9894a5127c222ce1f75c52
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357291"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97345984"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Vad är automatisk maskin inlärning (AutoML)?
 
-Automatisk maskin inlärning, som också kallas automatisk ML eller AutoML, är en process för att automatisera tids krävande, repetitiva uppgifter om utveckling av maskin inlärnings modeller. Det gör det möjligt för data experter, analytiker och utvecklare att bygga ML-modeller med hög skalbarhet, effektivitet och produktivitet samtidigt som modell kvaliteten försämras. Automatisk ML baseras på en Ban brytande från vår [Microsoft Research-avdelning](https://www.microsoft.com/research/project/automl/).
+Automatisk maskin inlärning, som också kallas automatisk ML eller AutoML, är en process för att automatisera tids krävande, repetitiva uppgifter om utveckling av maskin inlärnings modeller. Det gör det möjligt för data experter, analytiker och utvecklare att bygga ML-modeller med hög skalbarhet, effektivitet och produktivitet samtidigt som modell kvaliteten försämras. Automatiserad ML i Azure Machine Learning baseras på en Ban brytande från vår [Microsoft Research-avdelning](https://www.microsoft.com/research/project/automl/).
 
 Traditionell miljö utveckling för maskin inlärning är resurs intensiv, vilket kräver betydande domän kunskap och tid för att producera och jämföra dussin tals modeller. Med automatisk maskin inlärning kan du påskynda den tid det tar att få produktions klara ML-modeller med mycket enkelt och effektivt.
 
@@ -67,7 +67,7 @@ Konfiguration av avancerad prognos omfattar:
 
 Se exempel på regression och automatiserad maskin inlärning för förutsägelser i de här python-antecknings böckerna: [försäljnings prognoser](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb), [prognoser för efter frågan](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)och [dryckens produktions prognos](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb).
 
-## <a name="how-automl-works"></a>Så här fungerar AutoML
+## <a name="how-automated-ml-works"></a>Så här fungerar automatisk ML
 
 Under utbildningen skapar Azure Machine Learning ett antal pipelines parallellt som testar olika algoritmer och parametrar. Tjänsten itererar genom ML-algoritmer med funktions val där varje iteration genererar en modell med en utbildnings poäng. Ju högre poäng, desto bättre blir modellen att "passa" dina data.  Det stoppas när det träffar de slut kriterier som definierats i experimentet. 
 
@@ -75,14 +75,14 @@ Med hjälp av **Azure Machine Learning** kan du utforma och köra dina AUTOMATIS
 
 1. **Identifiera det ml-problem** som ska lösas: klassificering, Prognosticering eller regression
 
-1. **Välj om du vill använda python SDK eller Studio Web Experience** : Lär dig mer om pariteten mellan [webb upplevelsen python SDK och Studio](#parity).
+1. **Välj om du vill använda python SDK eller Studio Web Experience**: Lär dig mer om pariteten mellan [webb upplevelsen python SDK och Studio](#parity).
 
    * För begränsad eller ingen kod upplevelse kan du prova Azure Machine Learning Studio-webbupplevelsen på [https://ml.azure.com](https://ml.azure.com/)  
    * För python-utvecklare kan du ta en titt på [Azure Machine Learning python SDK](how-to-configure-auto-train.md) 
     
-1. **Ange källa och format för etiketten utbildnings data** : numpy-matriser eller Pandas-dataframe
+1. **Ange källa och format för etiketten utbildnings data**: numpy-matriser eller Pandas-dataframe
 
-1. **Konfigurera beräknings målet för modell träning** , till exempel din [lokala dator, Azure Machine Learning beräkningar, fjärranslutna virtuella datorer eller Azure Databricks](how-to-set-up-training-targets.md).  Lär dig mer om automatisk utbildning [på en fjär resurs](how-to-auto-train-remote.md).
+1. **Konfigurera beräknings målet för modell träning**, till exempel din [lokala dator, Azure Machine Learning beräkningar, fjärranslutna virtuella datorer eller Azure Databricks](how-to-set-up-training-targets.md).  Lär dig mer om automatisk utbildning [på en fjär resurs](how-to-auto-train-remote.md).
 
 1. **Konfigurera de automatiserade Machine Learning-parametrarna** som avgör hur många iterationer över olika modeller, inställningar för funktionalisering, avancerade förbearbetnings-/och vilka mått som ska visas när du bestämmer den bästa modellen.  
 1. **Skicka in utbildnings körningen.**
@@ -141,8 +141,8 @@ Aktivera den här inställningen med:
 
 Automatisk Machine Learning stöder Ensemble-modeller som är aktiverade som standard. Ensemble-inlärningen förbättrar maskin inlärnings resultatet och förutsäger prestanda genom att kombinera flera modeller i stället för att använda enskilda modeller. Ensemble-iterationerna visas som de slutliga iterationerna av din körning. Automatiserad Machine Learning använder både röstnings-och stack-Ensemble-metoder för att kombinera modeller:
 
-* **Röstning** : förutsäger baserat på viktat medelvärde för förutsebara klass sannolikheter (för klassificerings aktiviteter) eller förutsägande Regressions mål (för Regressions aktiviteter).
-* **Stackning** : stackning kombinerar heterogena modeller och tågen en meta-modell som baseras på utdata från de enskilda modellerna. De aktuella standard-meta-modellerna är LogisticRegression för klassificerings uppgifter och ElasticNet för Regressions-/prognos uppgifter.
+* **Röstning**: förutsäger baserat på viktat medelvärde för förutsebara klass sannolikheter (för klassificerings aktiviteter) eller förutsägande Regressions mål (för Regressions aktiviteter).
+* **Stackning**: stackning kombinerar heterogena modeller och tågen en meta-modell som baseras på utdata från de enskilda modellerna. De aktuella standard-meta-modellerna är LogisticRegression för klassificerings uppgifter och ElasticNet för Regressions-/prognos uppgifter.
 
 [Caruana Ensemble-algoritmen](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf) med sorterad Ensemble-initiering används för att bestämma vilka modeller som ska användas i ensemblen. På hög nivå initierar den här algoritmen ensemblen med upp till fem modeller med de bästa enskilda poängen, och kontrollerar att dessa modeller är inom tröskelvärdet 5% för att undvika en dålig inledande ensemble. För varje Ensemble-iteration läggs en ny modell till i den befintliga ensemblen och den resulterande poängen beräknas. Om en ny modell förbättrar den befintliga Ensemble-poängen uppdateras ensemblen för att inkludera den nya modellen.
 
@@ -152,14 +152,14 @@ Se [hur du](how-to-configure-auto-train.md#ensemble) ändrar standardinställnin
 
 Webb gränssnittet för automatisk ML använder alltid ett [fjärrberäknings mål](concept-compute-target.md).  Men när du använder python SDK väljer du antingen en lokal beräkning eller ett fjärrberäknings mål för automatisk ML-utbildning.
 
-* **Lokal beräkning** : träning sker på din lokala bärbara eller VM-beräkning. 
-* **Fjärrberäkning** : utbildning sker på Machine Learning beräknings kluster.  
+* **Lokal beräkning**: träning sker på din lokala bärbara eller VM-beräkning. 
+* **Fjärrberäkning**: utbildning sker på Machine Learning beräknings kluster.  
 
 ### <a name="choose-compute-target"></a>Välj Compute Target
 Tänk på följande faktorer när du väljer Compute-målet:
 
- * **Välj en lokal beräkning** : om ditt scenario är om inledande utforskningar eller demonstrationer som använder små data och korta tåg (t. ex. sekunder eller ett par minuter per underordnad körning) kan utbildning på din lokala dator vara ett bättre alternativ.  Det finns ingen konfigurations tid, infrastruktur resurserna (din dator eller VM) är direkt tillgängliga.
- * **Välj ett fjärran slutet ml-beräknings kluster** : om du tränar med större data uppsättningar som i produktions träning skapar modeller som behöver längre tåg, ger fjärrberäkningen mycket bättre prestanda för slut punkt till slut punkt eftersom `AutoML` kommer att parallellisera tågen över klustrets noder. Vid en fjärrberäkning kommer start tiden för den interna infrastrukturen att läggas till cirka 1,5 minuter per underordnad körning, plus ytterligare minuter för kluster infrastrukturen om de virtuella datorerna inte är igång ännu.
+ * **Välj en lokal beräkning**: om ditt scenario är om inledande utforskningar eller demonstrationer som använder små data och korta tåg (t. ex. sekunder eller ett par minuter per underordnad körning) kan utbildning på din lokala dator vara ett bättre alternativ.  Det finns ingen konfigurations tid, infrastruktur resurserna (din dator eller VM) är direkt tillgängliga.
+ * **Välj ett fjärran slutet ml-beräknings kluster**: om du tränar med större data uppsättningar som i produktions träning skapar modeller som behöver längre tåg, ger fjärrberäkningen mycket bättre prestanda för slut punkt till slut punkt eftersom `AutoML` kommer att parallellisera tågen över klustrets noder. Vid en fjärrberäkning kommer start tiden för den interna infrastrukturen att läggas till cirka 1,5 minuter per underordnad körning, plus ytterligare minuter för kluster infrastrukturen om de virtuella datorerna inte är igång ännu.
 
 ### <a name="pros-and-cons"></a>-Och nack delar
 Överväg dessa tekniker och nack delar när du väljer att använda lokala kontra fjärranslutna.

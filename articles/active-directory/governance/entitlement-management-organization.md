@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 09/28/2020
+ms.date: 12/11/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1cdf983dc8fed64c7d283ac216eb803746add95
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 6299f9ad660252ae39903401672d493b1c1ad52c
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029378"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347497"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Lägga till en ansluten organisation i hantering av Azure AD-rättigheter
 
@@ -29,7 +29,13 @@ Med Azure Active Directory (Azure AD) hantering av rättigheter kan du samar bet
 
 ## <a name="what-is-a-connected-organization"></a>Vad är en ansluten organisation?
 
-En ansluten organisation är en extern Azure AD-katalog eller domän som du har en relation med.
+En ansluten organisation är en annan organisation som du har en relation till.  För att användarna i organisationen ska kunna komma åt dina resurser, t. ex. dina SharePoint Online-webbplatser eller-appar, behöver du en representation av organisationens användare i den katalogen.  Eftersom användarna i de flesta fall inte redan finns i din Azure AD-katalog kan du använda rättighets hantering för att ta dem till din Azure AD-katalog vid behov.  
+
+Det finns tre sätt som hanterings hantering gör det möjligt för dig att ange de användare som utgör en ansluten organisation.  Det kan vara
+
+* användare i en annan Azure AD-katalog,
+* användare i en annan icke-Azure AD-katalog som har kon figurer ATS för direkt Federation eller
+* användare i en annan icke-Azure AD-katalog, vars e-postadresser har samma domän namn gemensamt.
 
 Anta till exempel att du arbetar på Sparbanken och vill samar beta med två externa organisationer. Dessa två organisationer har olika konfigurationer:
 

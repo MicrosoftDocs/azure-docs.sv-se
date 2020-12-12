@@ -3,12 +3,12 @@ title: Aktivera din Azure VMware-lösnings resurs
 description: Lär dig hur du skickar en support förfrågan för att aktivera din Azure VMware-lösnings resurs. Du kan också begära fler värdar i ditt befintliga Azure VMware-lösningar privata moln.
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: 526d6b38f4b4e3f6c4806b71b4728dee90cf558a
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 8bcb61c07a3f0310754cd50931f4576e836deffb
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325085"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346545"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>Så här aktiverar du Azure VMware-lösnings resurser
 Lär dig hur du skickar en support förfrågan för att aktivera din [Azure VMware-lösnings](introduction.md) resurs. Du kan också begära fler värdar i ditt befintliga Azure VMware-lösningar privata moln.
@@ -18,7 +18,7 @@ Lär dig hur du skickar en support förfrågan för att aktivera din [Azure VMwa
 Du behöver ett Azure-konto i en Azure-prenumeration. Azure-prenumerationen måste vara kompatibel med något av följande kriterier:
 
 * En prenumeration under ett [Azure-Enterprise-avtal (EA)](../cost-management-billing/manage/ea-portal-agreements.md) med Microsoft.
-* En prenumeration på en moln lösnings leverantör (CSP) som hanteras i en Azure-plan.
+* En prenumeration på moln lösnings leverantör (CSP) som har hanterats under ett befintligt Azure-erbjudande för Azure eller en Azure-plan.
 
 
 ## <a name="enable-azure-vmware-solution-for-ea-customers"></a>Aktivera Azure VMware-lösningen för EA-kunder
@@ -61,7 +61,7 @@ Innan du skapar din Azure VMware-lösning måste du skicka in ett support ärend
 
 ## <a name="enable-azure-vmware-solution-for-csp-customers"></a>Aktivera Azure VMware-lösningen för CSP-kunder 
 
-Kryptografiproviders måste använda [Microsoft Partner Center](https://partner.microsoft.com) för att aktivera Azure VMware-lösningen för sina kunder. 
+Kryptografiproviders måste använda [Microsoft Partner Center](https://partner.microsoft.com) för att aktivera Azure VMware-lösningen för sina kunder. I den här artikeln används [CSP Azure-plan](/partner-center/azure-plan-lp.md) som ett exempel för att illustrera inköps proceduren för partner.
 
    >[!IMPORTANT] 
    >Azure VMware Solution service ger inget krav på flera innehavare. Det finns inte stöd för värd partner som kräver det. 
@@ -76,9 +76,9 @@ Kryptografiproviders måste använda [Microsoft Partner Center](https://partner.
 
 1. Välj **Azure-plan** och välj sedan **Lägg till i kundvagn**. 
 
-1. Granska och slutför de allmänna inställningarna för Azure plan-prenumerationen för din kund. Mer information finns i [dokumentationen till Microsoft Partner Center](/partner-center/azure-plan-manage).
+1. Granska och slutför de allmänna inställningarna för Azure plan-prenumerationen för din kund. Mer information finns i [dokumentationen till Microsoft Partner Center](/partner-center/azure-plan-manage.md).
 
-När du har konfigurerat Azure-planen och de nödvändiga vSphere RBAC-behörigheterna är på plats som en CSP, kommer du att engagera Microsoft för att aktivera kvoten för en Azure plan-prenumeration. Åtkomst Azure Portal från Partner Center med hjälp av **admin på uppdrag av** (administrate)-proceduren.
+När du har konfigurerat Azure-planen och de nödvändiga [Azure RBAC-behörigheterna](/partner-center/azure-plan-manage.md) finns för prenumerationen ska du delta i Microsoft för att aktivera kvoten för en Azure plan-prenumeration. Åtkomst Azure Portal från [Microsoft Partner Center](https://partner.microsoft.com) med hjälp av **admin på uppdrag av** (administrate) procedur.
 
 1. Logga in på [partner Center](https://partner.microsoft.com).
 

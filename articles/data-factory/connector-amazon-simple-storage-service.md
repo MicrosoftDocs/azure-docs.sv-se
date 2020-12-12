@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/08/2020
-ms.openlocfilehash: 10859423d90f7ea55dded00522de34d94493eec1
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 925a0270c50d20790c093eaf193d66e0acd4cd11
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902304"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347412"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Kopiera data från tjänsten Amazon Simple Storage med hjälp av Azure Data Factory
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -185,7 +185,7 @@ Följande egenskaper stöds för Amazon S3 under `storeSettings` Inställningar 
 | ALTERNATIV 1: statisk sökväg<br> | Kopiera från den angivna Bucket-eller mappen/fil Sök vägen som anges i data uppsättningen. Om du vill kopiera alla filer från en Bucket eller mapp, anger du också `wildcardFileName` som `_` . |  |
 | ALTERNATIV 2: S3-prefix<br>-prefix | Prefix för S3-nyckel namnet under den angivna Bucket som kon figurer ATS i en data uppsättning för att filtrera källa S3-filer. S3-nycklar vars namn börjar med `bucket_in_dataset/this_prefix` väljs. Den använder S3's service filter, som ger bättre prestanda än ett Wildcard-filter.<br/><br/>När du använder prefix och väljer att kopiera till filbaserad mottagare med bevara hierarkin, noterar du under Sök vägen efter att det sista "/"-prefixet är bevarat. Du kan till exempel ha källa  `bucket/folder/subfolder/file.txt` och konfigurera prefixet som `folder/sub` , och den bevarade fil Sök vägen är `subfolder/file.txt` . | Nej |
 | ALTERNATIV 3: jokertecken<br>- wildcardFolderPath | Mappsökvägen med jokertecken under den angivna Bucket som kon figurer ATS i en data uppsättning för att filtrera källmappen. <br>Tillåtna jokertecken är: `*` (matchar noll eller flera tecken) och `?` (matchar inget eller ett enskilt tecken). Används `^` för att kringgå om ditt mappnamn har ett jokertecken eller detta escape-tecken inuti. <br>Se fler exempel i [exempel på mapp-och fil filter](#folder-and-file-filter-examples). | Nej                                            |
-| ALTERNATIV 3: jokertecken<br>- wildcardFileName | Fil namnet med jokertecken under den angivna Bucket och mappsökvägen (eller sökvägen till jokertecken) för att filtrera källfiler. <br>Tillåtna jokertecken är: `*` (matchar noll eller flera tecken) och `?` (matchar inget eller ett enskilt tecken). Används `^` för att kringgå om ditt mappnamn har ett jokertecken eller detta escape-tecken inuti.  Se fler exempel i [exempel på mapp-och fil filter](#folder-and-file-filter-examples). | Ja |
+| ALTERNATIV 3: jokertecken<br>- wildcardFileName | Fil namnet med jokertecken under den angivna Bucket och mappsökvägen (eller sökvägen till jokertecken) för att filtrera källfiler. <br>Tillåtna jokertecken är: `*` (matchar noll eller flera tecken) och `?` (matchar inget eller ett enskilt tecken). Används `^` för att kringgå om fil namnet har ett jokertecken eller detta escape-tecken i.  Se fler exempel i [exempel på mapp-och fil filter](#folder-and-file-filter-examples). | Ja |
 | ALTERNATIV 4: en lista över filer<br>- fileListPath | Anger om du vill kopiera en angiven fil uppsättning. Peka på en textfil som innehåller en lista över filer som du vill kopiera, en fil per rad, som är den relativa sökvägen till den sökväg som kon figurer ATS i data uppsättningen.<br/>När du använder det här alternativet ska du inte ange ett fil namn i data uppsättningen. Se fler exempel i [fil List exempel](#file-list-examples). |Nej |
 | ***Ytterligare inställningar:** _ |  | |
 | rekursiva | Anger om data ska läsas rekursivt från undermapparna eller endast från den angivna mappen. Observera att när _ *recursive** har angetts till **True** och sinken är en filbaserad lagring, kopieras inte en tom mapp eller undermapp till mottagaren. <br>Tillåtna värden är **True** (standard) och **false**.<br>Den här egenskapen gäller inte när du konfigurerar `fileListPath` . |Nej |

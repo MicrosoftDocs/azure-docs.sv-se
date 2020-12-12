@@ -1,21 +1,21 @@
 ---
 title: Konfigurera appar i portalen
-description: Lär dig att konfigurera vanliga inställningar för en App Service-app i Azure Portal. Appinställningar, anslutnings strängar, plattform, språk stack, behållare osv.
+description: Lär dig att konfigurera vanliga inställningar för en App Service-app i Azure Portal. Appinställningar, app config, anslutnings strängar, plattform, språk stack, behållare osv.
 keywords: Azure App Service, webbapp, app-inställningar, miljövariabler
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
-ms.date: 08/13/2019
+ms.date: 12/07/2020
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
-ms.openlocfilehash: 76cfefa3f104ecef69e28fecd1c37fc336b0ce8c
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 4594a3a7ac7af7acf75fa5c47e2eab3246fc00e7
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854656"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346775"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurera en App Service-app i Azure Portal
 
-I det här avsnittet beskrivs hur du konfigurerar vanliga inställningar för webbappar, mobil Server delen eller API-appen med hjälp av [Azure Portal].
+Den här artikeln förklarar hur du konfigurerar vanliga inställningar för webbappar, mobil Server del eller API-app med hjälp av [Azure Portal].
 
 ## <a name="configure-app-settings"></a>Konfigurera appinställningar
 
@@ -118,7 +118,10 @@ I [Azure Portal]söker du efter och väljer **app Services** och väljer sedan d
 
 För ASP.NET-och ASP.NET Core-utvecklare ställer du in anslutnings strängar i App Service som att ställa in dem i `<connectionStrings>` i *Web.config*, men värdena som du anger i App Service åsidosätter de i *Web.config*. Du kan behålla utvecklings inställningarna (till exempel en databas fil) i *Web.config* och produktions hemligheter (till exempel SQL Database autentiseringsuppgifter) på ett säkert sätt i App Service. Samma kod använder utvecklings inställningarna när du felsöker lokalt, och den använder dina produktions hemligheter när de distribueras till Azure.
 
-För andra språk stackar är det bättre att använda [appinställningar](#configure-app-settings) istället, eftersom anslutnings strängar kräver speciell formatering i variabel nycklar för att få åtkomst till värdena. Här är ett undantag, men vissa Azure Database-typer säkerhets kopie ras tillsammans med appen om du konfigurerar anslutnings strängar i appen. Mer information finns i [vad säkerhets kopie ras](manage-backup.md#what-gets-backed-up). Om du inte behöver denna automatiserade säkerhets kopiering ska du använda inställningarna för appen.
+För andra språk stackar är det bättre att använda [appinställningar](#configure-app-settings) istället, eftersom anslutnings strängar kräver speciell formatering i variabel nycklar för att få åtkomst till värdena. 
+
+> [!NOTE]
+> Det finns ett fall där du kanske vill använda anslutnings strängar i stället för appinställningar för non-.NET språk: vissa Azure Database-typer säkerhets kopie ras tillsammans med appen _endast_ om du konfigurerar en anslutnings sträng för databasen i App Service-appen. Mer information finns i [vad säkerhets kopie ras](manage-backup.md#what-gets-backed-up). Om du inte behöver denna automatiserade säkerhets kopiering ska du använda inställningarna för appen.
 
 Vid körning är anslutnings strängar tillgängliga som miljövariabler, som har prefixet till följande anslutnings typer:
 
@@ -228,21 +231,27 @@ I [Azure Portal]söker du efter och väljer **app Services** och väljer sedan d
 
 ![Sök vägs mappningar](./media/configure-common/open-path.png)
 
-På sidan **Sök vägs mappningar** visas olika saker baserade på typen av operativ system.
+> [!NOTE] 
+> Fliken **Sök vägs mappningar** kan visa OS-inställningar som skiljer sig från exemplet som visas här.
 
 ### <a name="windows-apps-uncontainerized"></a>Windows-appar (inte container)
 
 För Windows-appar kan du anpassa mappningar för IIS-hanteraren och virtuella program och kataloger.
 
-Med mappningar för hanterare kan du lägga till anpassade skript processorer för att hantera begär Anden för vissa fil namns tillägg. Om du vill lägga till en anpassad hanterare klickar du på **ny hanterare**. Konfigurera hanteraren på följande sätt:
+Med mappningar för hanterare kan du lägga till anpassade skript processorer för att hantera begär Anden för vissa fil namns tillägg. Om du vill lägga till en anpassad hanterare klickar du på **ny hanterarmappning**. Konfigurera hanteraren på följande sätt:
 
 - **Tillägg**. Det fil namns tillägg som du vill hantera, till exempel *\* . php* eller *hanterare. FCGI*.
 - **Skript processor**. Den absoluta sökvägen till skript processorn till dig. Begär anden till filer som matchar fil namns tillägget bearbetas av skript processorn. Använd sökvägen `D:\home\site\wwwroot` för att referera till appens rot Katalog.
 - **Argument**. Valfria kommando rads argument för skript processorn.
 
-Varje app har standard rot Sök vägen ( `/` ) mappad till `D:\home\site\wwwroot` , där din kod distribueras som standard. Om din app-rot finns i en annan mapp, eller om din lagrings plats har fler än ett program, kan du redigera eller lägga till virtuella program och kataloger här. Klicka på **nytt virtuellt program eller katalog**.
+Varje app har standard rot Sök vägen ( `/` ) mappad till `D:\home\site\wwwroot` , där din kod distribueras som standard. Om din app-rot finns i en annan mapp, eller om din lagrings plats har fler än ett program, kan du redigera eller lägga till virtuella program och kataloger här. 
 
-Om du vill konfigurera virtuella program och kataloger anger du varje virtuell katalog och dess motsvarande fysiska sökväg i förhållande till webbplatsens rot ( `D:\home` ). Du kan också markera kryss rutan **program** för att markera en virtuell katalog som ett program.
+På fliken **Sök vägs mappningar** klickar du på **nytt virtuellt program eller katalog**. 
+
+- Om du vill mappa en virtuell katalog till en fysisk sökväg låter du kryss rutan **katalog** vara markerad. Ange den virtuella katalogen och motsvarande relativa (fysiska) sökväg till webbplatsens rot ( `D:\home` ).
+- Om du vill markera en virtuell katalog som ett webb program avmarkerar du kryss rutan **katalog** .
+  
+  ![Kryss ruta för katalog](./media/configure-common/directory-check-box.png)
 
 ### <a name="containerized-apps"></a>Appar i behållare
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/31/2020
-ms.openlocfilehash: a96cbd709fb5678e97202e222a7a335140b4da9a
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e788fc5ff95f8c3dac1e90956908cb2ef950dd4b
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637844"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347378"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory"></a>Kopiera data till eller från Azure Data Lake Storage Gen1 med Azure Data Factory
 
@@ -63,7 +63,7 @@ Följande egenskaper stöds för den länkade tjänsten Azure Data Lake Store:
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | `type`Egenskapen måste anges till **AzureDataLakeStore** . | Ja |
+| typ | `type`Egenskapen måste anges till **AzureDataLakeStore**. | Ja |
 | dataLakeStoreUri | Information om Azure Data Lake Store-kontot. Den här informationen tar något av följande format: `https://[accountname].azuredatalakestore.net/webhdfs/v1` eller `adl://[accountname].azuredatalakestore.net/` . | Ja |
 | subscriptionId | ID för Azure-prenumerationen som Data Lake Store kontot tillhör. | Krävs för Sink |
 | resourceGroupName | Namnet på den Azure-resurs grupp som Data Lake Store kontot tillhör. | Krävs för Sink |
@@ -81,8 +81,8 @@ Följ dessa steg om du vill använda autentisering av tjänstens huvud namn.
 
 2. Ge tjänstens huvud behörighet rätt behörighet. Se exempel på hur behörigheten fungerar i Data Lake Storage Gen1 från [åtkomst kontroll i Azure Data Lake Storage gen1](../data-lake-store/data-lake-store-access-control.md#common-scenarios-related-to-permissions).
 
-    - **Som källa** : i **Data Explorer**  >  - **åtkomst** , beviljar du minst **Kör** behörighet för alla överordnade mappar, inklusive roten, tillsammans med **Läs** behörighet för de filer som ska kopieras. Du kan välja att lägga till i **den här mappen och alla underordnade objekt** för rekursivt, och lägga till som **åtkomst behörighet och en standard behörighets post** . Det finns inget krav på konto nivå åtkomst kontroll (IAM).
-    - **Som mottagare** : i **Data Explorer**  >  - **åtkomst** beviljar du minst **Kör** behörighet för alla överordnade mappar, inklusive roten, tillsammans med **Skriv** behörighet för mappen mottagare. Du kan välja att lägga till i **den här mappen och alla underordnade objekt** för rekursivt, och lägga till som **åtkomst behörighet och en standard behörighets post** .
+    - **Som källa**: i **Data Explorer**  >  -**åtkomst**, beviljar du minst **Kör** behörighet för alla överordnade mappar, inklusive roten, tillsammans med **Läs** behörighet för de filer som ska kopieras. Du kan välja att lägga till i **den här mappen och alla underordnade objekt** för rekursivt, och lägga till som **åtkomst behörighet och en standard behörighets post**. Det finns inget krav på konto nivå åtkomst kontroll (IAM).
+    - **Som mottagare**: i **Data Explorer**  >  -**åtkomst** beviljar du minst **Kör** behörighet för alla överordnade mappar, inklusive roten, tillsammans med **Skriv** behörighet för mappen mottagare. Du kan välja att lägga till i **den här mappen och alla underordnade objekt** för rekursivt, och lägga till som **åtkomst behörighet och en standard behörighets post**.
 
 Följande egenskaper stöds:
 
@@ -91,7 +91,7 @@ Följande egenskaper stöds:
 | servicePrincipalId | Ange programmets klient-ID. | Ja |
 | servicePrincipalKey | Ange programmets nyckel. Markera det här fältet som en `SecureString` för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | tenant | Ange klient information, till exempel domän namn eller klient-ID, under vilken ditt program finns. Du kan hämta det genom att hovra musen i det övre högra hörnet av Azure Portal. | Ja |
-| azureCloudType | För tjänstens huvud namns autentisering anger du vilken typ av Azure-moln miljö som Azure Active Directory programmet ska registreras i. <br/> Tillåtna värden är **AzurePublic** , **AzureChina** , **azureusgovernment eller** och **AzureGermany** . Som standard används data fabrikens moln miljö. | Nej |
+| azureCloudType | För tjänstens huvud namns autentisering anger du vilken typ av Azure-moln miljö som Azure Active Directory programmet ska registreras i. <br/> Tillåtna värden är **AzurePublic**, **AzureChina**, **azureusgovernment eller** och **AzureGermany**. Som standard används data fabrikens moln miljö. | Nej |
 
 **Exempel:**
 
@@ -129,8 +129,8 @@ Följ dessa steg om du vill använda hanterade identiteter för autentisering me
 
 2. Ge åtkomst till hanterad identitet till Data Lake Store. Se exempel på hur behörigheten fungerar i Data Lake Storage Gen1 från [åtkomst kontroll i Azure Data Lake Storage gen1](../data-lake-store/data-lake-store-access-control.md#common-scenarios-related-to-permissions).
 
-    - **Som källa** : i **Data Explorer**  >  - **åtkomst** , beviljar du minst **Kör** behörighet för alla överordnade mappar, inklusive roten, tillsammans med **Läs** behörighet för de filer som ska kopieras. Du kan välja att lägga till i **den här mappen och alla underordnade objekt** för rekursivt, och lägga till som **åtkomst behörighet och en standard behörighets post** . Det finns inget krav på konto nivå åtkomst kontroll (IAM).
-    - **Som mottagare** : i **Data Explorer**  >  - **åtkomst** beviljar du minst **Kör** behörighet för alla överordnade mappar, inklusive roten, tillsammans med **Skriv** behörighet för mappen mottagare. Du kan välja att lägga till i **den här mappen och alla underordnade objekt** för rekursivt, och lägga till som **åtkomst behörighet och en standard behörighets post** .
+    - **Som källa**: i **Data Explorer**  >  -**åtkomst**, beviljar du minst **Kör** behörighet för alla överordnade mappar, inklusive roten, tillsammans med **Läs** behörighet för de filer som ska kopieras. Du kan välja att lägga till i **den här mappen och alla underordnade objekt** för rekursivt, och lägga till som **åtkomst behörighet och en standard behörighets post**. Det finns inget krav på konto nivå åtkomst kontroll (IAM).
+    - **Som mottagare**: i **Data Explorer**  >  -**åtkomst** beviljar du minst **Kör** behörighet för alla överordnade mappar, inklusive roten, tillsammans med **Skriv** behörighet för mappen mottagare. Du kan välja att lägga till i **den här mappen och alla underordnade objekt** för rekursivt, och lägga till som **åtkomst behörighet och en standard behörighets post**.
 
 I Azure Data Factory behöver du inte ange några egenskaper förutom den allmänna Data Lake Store informationen i den länkade tjänsten.
 
@@ -164,7 +164,7 @@ Följande egenskaper stöds för Azure Data Lake Store gen1 under `location` Ins
 
 | Egenskap   | Beskrivning                                                  | Krävs |
 | ---------- | ------------------------------------------------------------ | -------- |
-| typ       | Egenskapen Type under `location` i data uppsättningen måste anges till **AzureDataLakeStoreLocation** . | Ja      |
+| typ       | Egenskapen Type under `location` i data uppsättningen måste anges till **AzureDataLakeStoreLocation**. | Ja      |
 | folderPath | Sökvägen till en mapp. Om du vill använda ett jokertecken för att filtrera mappar, hoppar du över den här inställningen och anger den i aktivitets källans inställningar. | Nej       |
 | fileName   | Fil namnet under den aktuella folderPath. Om du vill använda ett jokertecken för att filtrera filer, hoppar du över den här inställningen och anger den i aktivitets källans inställningar. | Nej       |
 
@@ -206,20 +206,20 @@ Följande egenskaper stöds för Azure Data Lake Store gen1 under `storeSettings
 
 | Egenskap                 | Beskrivning                                                  | Krävs                                     |
 | ------------------------ | ------------------------------------------------------------ | -------------------------------------------- |
-| typ                     | Typ egenskapen under `storeSettings` måste anges till **AzureDataLakeStoreReadSettings** . | Ja                                          |
+| typ                     | Typ egenskapen under `storeSettings` måste anges till **AzureDataLakeStoreReadSettings**. | Ja                                          |
 | **_Leta upp de filer som ska kopieras:_* _ |  |  |
 | ALTERNATIV 1: statisk sökväg<br> | Kopiera från den angivna mappen/fil Sök vägen som anges i data uppsättningen. Om du vill kopiera alla filer från en mapp anger du även `wildcardFileName` som `_` . |  |
 | ALTERNATIV 2: namn intervall<br>- listAfter | Hämta mapparna/filerna vars namn är efter det här värdet alfabetiskt (exklusiv). Det använder filter på service sidan för ADLS Gen1, vilket ger bättre prestanda än ett Wildcard-filter. <br/>Data Factory tillämpar det här filtret på den sökväg som definierats i data uppsättningen och endast en enhets nivå stöds. Se fler exempel i [namn intervall filter exempel](#name-range-filter-examples). | Nej |
 | ALTERNATIV 2: namn intervall<br/>- listBefore | Hämta mapparna/filerna vars namn är före det här värdet i alfabetisk ordning (inklusive). Det använder filter på service sidan för ADLS Gen1, vilket ger bättre prestanda än ett Wildcard-filter.<br>Data Factory tillämpar det här filtret på den sökväg som definierats i data uppsättningen och endast en enhets nivå stöds. Se fler exempel i [namn intervall filter exempel](#name-range-filter-examples). | Nej |
 | ALTERNATIV 3: jokertecken<br>- wildcardFolderPath | Mappsökvägen med jokertecken för att filtrera källmappen. <br>Tillåtna jokertecken är: `*` (matchar noll eller flera tecken) och `?` (matchar inget eller enstaka tecken). Använd `^` om du vill använda Escape om det faktiska mappnamnet har jokertecken eller detta escape-tecken inuti. <br>Se fler exempel i [exempel på mapp-och fil filter](#folder-and-file-filter-examples). | Nej                                            |
-| ALTERNATIV 3: jokertecken<br>- wildcardFileName | Fil namnet med jokertecken under den aktuella folderPath/wildcardFolderPath för att filtrera källfiler. <br>Tillåtna jokertecken är: `*` (matchar noll eller flera tecken) och `?` (matchar inget eller enstaka tecken). Använd `^` om du vill använda Escape om det faktiska mappnamnet har jokertecken eller detta escape-tecken inuti.  Se fler exempel i [exempel på mapp-och fil filter](#folder-and-file-filter-examples). | Ja |
+| ALTERNATIV 3: jokertecken<br>- wildcardFileName | Fil namnet med jokertecken under den aktuella folderPath/wildcardFolderPath för att filtrera källfiler. <br>Tillåtna jokertecken är: `*` (matchar noll eller flera tecken) och `?` (matchar inget eller enstaka tecken). Använd `^` om du vill använda Escape om det faktiska fil namnet har jokertecken eller detta escape-tecken inuti.  Se fler exempel i [exempel på mapp-och fil filter](#folder-and-file-filter-examples). | Ja |
 | ALTERNATIV 4: en lista över filer<br>- fileListPath | Anger om du vill kopiera en angiven fil uppsättning. Peka på en textfil som innehåller en lista över filer som du vill kopiera, en fil per rad, som är den relativa sökvägen till den sökväg som kon figurer ATS i data uppsättningen.<br/>När du använder det här alternativet ska du inte ange fil namn i data uppsättning. Se fler exempel i [fil List exempel](#file-list-examples). |Nej |
 | ***Ytterligare inställningar:** _ |  | |
-| rekursiva | Anger om data ska läsas rekursivt från undermapparna eller endast från den angivna mappen. Observera att när rekursivt har angetts till true och sinken är en filbaserad lagring, kopieras inte en tom mapp eller undermapp till mottagaren. <br>Tillåtna värden är _ *True* * (default) och **false** .<br>Den här egenskapen gäller inte när du konfigurerar `fileListPath` . |Nej |
+| rekursiva | Anger om data ska läsas rekursivt från undermapparna eller endast från den angivna mappen. Observera att när rekursivt har angetts till true och sinken är en filbaserad lagring, kopieras inte en tom mapp eller undermapp till mottagaren. <br>Tillåtna värden är _ *True** (default) och **false**.<br>Den här egenskapen gäller inte när du konfigurerar `fileListPath` . |Nej |
 | deleteFilesAfterCompletion | Anger om de binära filerna kommer att tas bort från käll arkivet efter att du har flyttat till mål lagret. Filen som ska tas bort är per fil, så när kopierings aktiviteten Miss lyckas visas några filer som redan har kopierats till målet och tagits bort från källan, medan andra fortfarande är kvar på käll arkivet. <br/>Den här egenskapen är endast giltig i ett binärt fil kopierings scenario. Standardvärdet: false. |Nej |
 | modifiedDatetimeStart    | Filter för filer baserat på attributet: senast ändrad. <br>Filerna väljs om deras senaste ändrings tid ligger inom tidsintervallet mellan `modifiedDatetimeStart` och `modifiedDatetimeEnd` . Tiden tillämpas på UTC-tidszonen i formatet "2018-12-01T05:00:00Z". <br> Egenskaperna kan vara NULL, vilket innebär att inget attribut filter används för data uppsättningen.  När `modifiedDatetimeStart` har datetime-värde men `modifiedDatetimeEnd` är null, innebär det att filerna vars senast ändrade attribut är större än eller lika med värdet för datetime väljs.  När `modifiedDatetimeEnd` har ett datetime-värde men `modifiedDatetimeStart` är null, innebär det att filerna vars senast ändrade attribut är mindre än värdet för datetime väljs.<br/>Den här egenskapen gäller inte när du konfigurerar `fileListPath` . | Nej                                            |
 | modifiedDatetimeEnd      | Samma som ovan.                                               | Nej                                           |
-| enablePartitionDiscovery | För filer som är partitionerade anger du om du vill parsa partitionerna från fil Sök vägen och lägga till dem som ytterligare käll kolumner.<br/>Tillåtna värden är **false** (standard) och **True** . | Nej                                            |
+| enablePartitionDiscovery | För filer som är partitionerade anger du om du vill parsa partitionerna från fil Sök vägen och lägga till dem som ytterligare käll kolumner.<br/>Tillåtna värden är **false** (standard) och **True**. | Nej                                            |
 | partitionRootPath | När partitions identifiering har Aktiver ATS anger du den absoluta rot Sök vägen för att kunna läsa partitionerade mappar som data kolumner.<br/><br/>Om den inte anges, som standard,<br/>– När du använder fil Sök vägen i data uppsättningen eller en lista med filer på källan, är partitionens rot Sök väg den sökväg som kon figurer ATS i data uppsättningen.<br/>– När du använder mapp-filter med jokertecken är partitionens rot Sök väg den underordnade sökvägen före det första jokertecknet.<br/><br/>Anta till exempel att du konfigurerar sökvägen i dataset som "rot/mapp/år = 2020/månad = 08/Day = 27":<br/>– Om du anger partitionens rot Sök väg som "rot/mapp/år = 2020" genererar kopierings aktiviteten två kolumner `month` och `day` värdet "08" respektive "27", förutom kolumnerna inuti filerna.<br/>-Om partitionens rot Sök väg inte anges genereras ingen extra kolumn. | Nej                                            |
 | maxConcurrentConnections | Antalet anslutningar för att ansluta till lagrings lager samtidigt. Ange bara när du vill begränsa den samtidiga anslutningen till data lagret. | Nej                                           |
 
@@ -272,7 +272,7 @@ Följande egenskaper stöds för Azure Data Lake Store gen1 under `storeSettings
 
 | Egenskap                 | Beskrivning                                                  | Krävs |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| typ                     | Typ egenskapen under `storeSettings` måste anges till **AzureDataLakeStoreWriteSettings** . | Ja      |
+| typ                     | Typ egenskapen under `storeSettings` måste anges till **AzureDataLakeStoreWriteSettings**. | Ja      |
 | copyBehavior             | Definierar kopierings beteendet när källan är filer från ett filbaserat data lager.<br/><br/>Tillåtna värden är:<br/><b>-PreserveHierarchy (standard)</b>: bevarar filens hierarki i målmappen. Den relativa sökvägen till käll filen till källmappen är identisk med den relativa sökvägen till mål filen i målmappen.<br/><b>-FlattenHierarchy</b>: alla filer från källmappen är på den första nivån i målmappen. Filerna har automatiskt genererade namn. <br/><b>-MergeFiles</b>: sammanfogar alla filer från källmappen till en fil. Om fil namnet anges, är det sammanslagna fil namnet det angivna namnet. Annars är det ett automatiskt genererat fil namn. | Nej       |
 | expiryDateTime | Anger utgångs tiden för de skrivna filerna. Tiden tillämpas på UTC-tiden i formatet "2020-03-01T08:00:00Z". Som standard är den NULL, vilket innebär att de skrivna filerna aldrig upphör att gälla. | Nej |
 | maxConcurrentConnections | Antalet anslutningar för att ansluta till data lagret samtidigt. Ange bara när du vill begränsa den samtidiga anslutningen till data lagret. | Nej       |
@@ -439,11 +439,11 @@ I omvandling av mottagare kan du skriva till antingen en behållare eller mapp i
 **Rensa mappen:** Anger om målmappen ska rensas innan data skrivs.
 
 **Fil namns alternativ:** Anger hur målfiler namnges i målmappen. Fil namns alternativen är:
-   * **Standard** : Tillåt Spark att namnge filer baserat på del standarder.
-   * **Mönster** : Ange ett mönster som räknar upp dina utdatafiler per partition. Till exempel kommer **lån [n]. csv** att skapa loans1.csv, loans2.csv och så vidare.
-   * **Per partition** : Ange ett fil namn per partition.
-   * **Som data i kolumnen** : Ange utdatafilen till värdet för en kolumn. Sökvägen är relativ i förhållande till data uppsättnings behållaren, inte målmappen. Om du har en mappsökväg i din data uppsättning kommer den att åsidosättas.
-   * **Utdata till en enda fil** : kombinera de partitionerade utdatafilerna till en enda namngiven fil. Sökvägen är relativ i förhållande till dataset-mappen. Tänk på att det kan hända att te-sammanfognings åtgärder inte fungerar baserat på Node-storlek. Det här alternativet rekommenderas inte för stora data uppsättningar.
+   * **Standard**: Tillåt Spark att namnge filer baserat på del standarder.
+   * **Mönster**: Ange ett mönster som räknar upp dina utdatafiler per partition. Till exempel kommer **lån [n]. csv** att skapa loans1.csv, loans2.csv och så vidare.
+   * **Per partition**: Ange ett fil namn per partition.
+   * **Som data i kolumnen**: Ange utdatafilen till värdet för en kolumn. Sökvägen är relativ i förhållande till data uppsättnings behållaren, inte målmappen. Om du har en mappsökväg i din data uppsättning kommer den att åsidosättas.
+   * **Utdata till en enda fil**: kombinera de partitionerade utdatafilerna till en enda namngiven fil. Sökvägen är relativ i förhållande till dataset-mappen. Tänk på att det kan hända att te-sammanfognings åtgärder inte fungerar baserat på Node-storlek. Det här alternativet rekommenderas inte för stora data uppsättningar.
 
 **Offert alla:** Anger om alla värden ska anges i citat tecken
 
@@ -468,13 +468,13 @@ Om du vill veta mer om egenskaperna kontrollerar du [ta bort aktivitet](delete-a
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Data uppsättningens typ-egenskap måste anges till **AzureDataLakeStoreFile** . |Ja |
+| typ | Data uppsättningens typ-egenskap måste anges till **AzureDataLakeStoreFile**. |Ja |
 | folderPath | Sökväg till mappen i Data Lake Store. Om detta inte anges pekar den på roten. <br/><br/>Wildcard-filtret stöds. Tillåtna jokertecken är `*` (matchar noll eller flera tecken) och `?` (matchar inget eller ett enskilt tecken). Används `^` för att kringgå om det faktiska mappnamnet har ett jokertecken eller detta escape-tecken inuti. <br/><br/>Till exempel: RootFolder/undermapp/. Se fler exempel i [exempel på mapp-och fil filter](#folder-and-file-filter-examples). |Nej |
-| fileName | Namn eller Wildcard-filter för filerna under den angivna "folderPath". Om du inte anger ett värde för den här egenskapen pekar data uppsättningen på alla filer i mappen. <br/><br/>För filter är tillåtna jokertecken `*` (matchar noll eller flera tecken) och `?` (matchar inget eller ett enskilt tecken).<br/>– Exempel 1: `"fileName": "*.csv"`<br/>– Exempel 2: `"fileName": "???20180427.txt"`<br/>Används `^` för att kringgå om det faktiska fil namnet har ett jokertecken eller detta escape-tecken inuti.<br/><br/>När fil namnet inte har angetts för en data uppsättning för utdata och **preserveHierarchy** inte har angetts i aktivitets mottagaren genererar kopierings aktiviteten automatiskt fil namnet med följande mönster: " *data. [ aktivitetens körnings-ID GUID]. [GUID om FlattenHierarchy]. [format om det är konfigurerat]. [komprimering om konfigurerad]* ", till exempel" Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. gz ". Om du kopierar från en tabell källa med ett tabell namn i stället för en fråga, är namn mönstret " *[tabell namn]. [ format]. [komprimering om konfigurerad]* ", till exempel" MyTable.csv ". |Nej |
+| fileName | Namn eller Wildcard-filter för filerna under den angivna "folderPath". Om du inte anger ett värde för den här egenskapen pekar data uppsättningen på alla filer i mappen. <br/><br/>För filter är tillåtna jokertecken `*` (matchar noll eller flera tecken) och `?` (matchar inget eller ett enskilt tecken).<br/>– Exempel 1: `"fileName": "*.csv"`<br/>– Exempel 2: `"fileName": "???20180427.txt"`<br/>Används `^` för att kringgå om det faktiska fil namnet har ett jokertecken eller detta escape-tecken inuti.<br/><br/>När fil namnet inte har angetts för en data uppsättning för utdata och **preserveHierarchy** inte har angetts i aktivitets mottagaren genererar kopierings aktiviteten automatiskt fil namnet med följande mönster: "*data. [ aktivitetens körnings-ID GUID]. [GUID om FlattenHierarchy]. [format om det är konfigurerat]. [komprimering om konfigurerad]*", till exempel" Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. gz ". Om du kopierar från en tabell källa med ett tabell namn i stället för en fråga, är namn mönstret "*[tabell namn]. [ format]. [komprimering om konfigurerad]*", till exempel" MyTable.csv ". |Nej |
 | modifiedDatetimeStart | Filter för filer baserat på det senast ändrade attributet. Filerna väljs om deras senaste ändrings tid ligger inom tidsintervallet mellan `modifiedDatetimeStart` och `modifiedDatetimeEnd` . Tiden tillämpas på UTC-tidszonen i formatet "2018-12-01T05:00:00Z". <br/><br/> Den övergripande prestandan för data förflyttning påverkas om du aktiverar den här inställningen när du vill göra fil filter till stora mängder filer. <br/><br/> Egenskaperna kan vara NULL, vilket innebär att inget attribut filter används för data uppsättningen. När `modifiedDatetimeStart` har ett datetime-värde men `modifiedDatetimeEnd` är null, innebär det att filerna vars senast ändrade attribut är större än eller lika med värdet för datetime är markerade. När `modifiedDatetimeEnd` har ett datetime-värde men `modifiedDatetimeStart` är null, innebär det att filerna vars senast ändrade attribut är mindre än värdet för datetime är markerat.| Nej |
 | modifiedDatetimeEnd | Filter för filer baserat på det senast ändrade attributet. Filerna väljs om deras senaste ändrings tid ligger inom tidsintervallet mellan `modifiedDatetimeStart` och `modifiedDatetimeEnd` . Tiden tillämpas på UTC-tidszonen i formatet "2018-12-01T05:00:00Z". <br/><br/> Den övergripande prestandan för data förflyttning påverkas om du aktiverar den här inställningen när du vill göra fil filter till stora mängder filer. <br/><br/> Egenskaperna kan vara NULL, vilket innebär att inget attribut filter används för data uppsättningen. När `modifiedDatetimeStart` har ett datetime-värde men `modifiedDatetimeEnd` är null, innebär det att filerna vars senast ändrade attribut är större än eller lika med värdet för datetime är markerade. När `modifiedDatetimeEnd` har ett datetime-värde men `modifiedDatetimeStart` är null, innebär det att filerna vars senast ändrade attribut är mindre än värdet för datetime är markerat.| Nej |
-| format | Om du vill kopiera filer som är mellan filbaserade arkiv (binär kopia) hoppar du över avsnittet format i definitionerna för både indata och utdata.<br/><br/>Om du vill parsa eller generera filer med ett särskilt format stöds följande fil format **typer: text** format, **JsonFormat** , **AvroFormat** , **OrcFormat** och **ParquetFormat** . Ange egenskapen **Type** under **format** till något av dessa värden. Mer information finns i avsnitten [text format](supported-file-formats-and-compression-codecs-legacy.md#text-format), [JSON-format](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Avro format](supported-file-formats-and-compression-codecs-legacy.md#avro-format), [Orc format](supported-file-formats-and-compression-codecs-legacy.md#orc-format)och [Parquet format](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) . |Nej (endast för binär kopierings scenario) |
-| komprimering | Ange typ och nivå för komprimeringen för data. Mer information finns i [fil format och komprimerings-codecar som stöds](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>Typer som stöds är **gzip** , **DEFLATE** , **BZip2** och **ZipDeflate** .<br/>De nivåer som stöds är **optimala** och **snabbaste** . |Nej |
+| format | Om du vill kopiera filer som är mellan filbaserade arkiv (binär kopia) hoppar du över avsnittet format i definitionerna för både indata och utdata.<br/><br/>Om du vill parsa eller generera filer med ett särskilt format stöds följande fil format **typer: text** format, **JsonFormat**, **AvroFormat**, **OrcFormat** och **ParquetFormat**. Ange egenskapen **Type** under **format** till något av dessa värden. Mer information finns i avsnitten [text format](supported-file-formats-and-compression-codecs-legacy.md#text-format), [JSON-format](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Avro format](supported-file-formats-and-compression-codecs-legacy.md#avro-format), [Orc format](supported-file-formats-and-compression-codecs-legacy.md#orc-format)och [Parquet format](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) . |Nej (endast för binär kopierings scenario) |
+| komprimering | Ange typ och nivå för komprimeringen för data. Mer information finns i [fil format och komprimerings-codecar som stöds](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>Typer som stöds är **gzip**, **DEFLATE**, **BZip2** och **ZipDeflate**.<br/>De nivåer som stöds är **optimala** och **snabbaste**. |Nej |
 
 >[!TIP]
 >Om du vill kopiera alla filer under en mapp anger du endast **folderPath** .<br>Om du vill kopiera en enskild fil med ett visst namn anger du **folderPath** med en mapp **och ett fil namn** med ett fil namn.<br>Om du vill kopiera en delmängd av filer under en mapp anger du **folderPath** med en mapp och ett **fil namn** med ett Wildcard-filter. 
@@ -513,8 +513,8 @@ Om du vill veta mer om egenskaperna kontrollerar du [ta bort aktivitet](delete-a
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | `type`Egenskapen för kopierings aktivitets källan måste anges till **AzureDataLakeStoreSource** . |Ja |
-| rekursiva | Anger om data ska läsas rekursivt från undermapparna eller endast från den angivna mappen. Om `recursive` är inställt på sant och mottagaren är en filbaserad lagring, kopieras eller skapas inte en tom mapp eller undermapp till mottagaren. Tillåtna värden är **True** (standard) och **false** . | Nej |
+| typ | `type`Egenskapen för kopierings aktivitets källan måste anges till **AzureDataLakeStoreSource**. |Ja |
+| rekursiva | Anger om data ska läsas rekursivt från undermapparna eller endast från den angivna mappen. Om `recursive` är inställt på sant och mottagaren är en filbaserad lagring, kopieras eller skapas inte en tom mapp eller undermapp till mottagaren. Tillåtna värden är **True** (standard) och **false**. | Nej |
 | maxConcurrentConnections | Antalet anslutningar för att ansluta till data lagret samtidigt. Ange bara när du vill begränsa den samtidiga anslutningen till data lagret. | Nej |
 
 **Exempel:**
@@ -553,7 +553,7 @@ Om du vill veta mer om egenskaperna kontrollerar du [ta bort aktivitet](delete-a
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | `type`Egenskapen för kopierings aktivitetens Sink måste anges till **AzureDataLakeStoreSink** . |Ja |
+| typ | `type`Egenskapen för kopierings aktivitetens Sink måste anges till **AzureDataLakeStoreSink**. |Ja |
 | copyBehavior | Definierar kopierings beteendet när källan är filer från ett filbaserat data lager.<br/><br/>Tillåtna värden är:<br/><b>-PreserveHierarchy (standard)</b>: bevarar filens hierarki i målmappen. Den relativa sökvägen till käll filen till källmappen är identisk med den relativa sökvägen till mål filen i målmappen.<br/><b>-FlattenHierarchy</b>: alla filer från källmappen är på den första nivån i målmappen. Filerna har automatiskt genererade namn. <br/><b>-MergeFiles</b>: sammanfogar alla filer från källmappen till en fil. Om fil namnet anges, är det sammanslagna fil namnet det angivna namnet. Annars genereras fil namnet automatiskt. | Nej |
 | maxConcurrentConnections | Antalet anslutningar för att ansluta till data lagret samtidigt. Ange bara när du vill begränsa den samtidiga anslutningen till data lagret. | Nej |
 

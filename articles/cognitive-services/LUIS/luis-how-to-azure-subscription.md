@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a71c1a0df1a72e3831fa54a041539f62b38a0aca
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 19c27dc80f9af013c458663c9c7afb0033683acd
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95999917"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97348075"
 ---
 # <a name="create-luis-resources"></a>Skapa LUIS-resurser
 
@@ -51,16 +51,13 @@ Om du vill ändra ägarskap för en resurs kan du utföra någon av följande å
 * Överför prenumerationens [ägare](../../cost-management-billing/manage/billing-subscription-transfer.md) .
 * Exportera LUIS-appen som en fil och importera sedan appen på en annan prenumeration. Export är tillgängligt på sidan **Mina appar** i Luis-portalen.
 
-
-## <a name="resource-limits"></a>Resursgränser
+## <a name="resource-limits"></a>Resursbegränsningar
 
 ### <a name="authoring-key-creation-limits"></a>Redigerings gränser för att skapa nycklar
 
-Du kan skapa så många som 10 redigerings nycklar per region, per prenumeration.
+Du kan skapa så många som 10 redigerings nycklar per region, per prenumeration. Publicerings regioner skiljer sig från redigerings områden. Se till att du skapar en app i den redigerings region som motsvarar den publicerings region där du vill att ditt klient program ska finnas. Information om hur du skapar redigerings områden för att publicera regioner finns i [redigerings-och publicerings regioner](luis-reference-regions.md). 
 
-Mer information finns i [nyckel gränser](luis-limits.md#key-limits) och [Azure-regioner](luis-reference-regions.md).
-
-Publicerings regioner skiljer sig från redigerings områden. Se till att du skapar en app i den redigerings region som motsvarar den publicerings region där du vill att ditt klient program ska finnas.
+Mer information om nyckel gränser finns i [nyckel gränser](luis-limits.md#key-limits).
 
 ### <a name="errors-for-key-usage-limits"></a>Fel för nyckel användnings gränser
 

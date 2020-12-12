@@ -9,12 +9,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: b0d030240ebe22886826b7a25bd5ca7b8f54e358
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9a0d91677770e89f3e249fc699057332cccaa323
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81000429"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347480"
 ---
 # <a name="micro-fulfillment-center-architecture"></a>Arkitektur för Micro-uppfyllelse Center
 
@@ -22,11 +22,11 @@ Med lösningar för Micro-uppfyllelse Center kan du ansluta, övervaka och hante
 
 ![Azure IoT Central Store Analytics](./media/architecture/micro-fulfillment-center-architecture-frame.png)
 
-- Uppsättning IoT-sensorer som skickar telemetridata till en gateway-enhet
-- Gateway-enheter skickar telemetri och sammanställda insikter till IoT Central
-- Kontinuerlig data export till önskad Azure-tjänst för manipulering
-- Data kan struktureras i det önskade formatet och skickas till en lagrings tjänst
-- Företags program kan fråga data och generera insikter som Power Retail-åtgärder
+1. Uppsättning IoT-sensorer som skickar telemetridata till en gateway-enhet
+2. Gateway-enheter skickar telemetri och sammanställda insikter till IoT Central
+3. Kontinuerlig data export till önskad Azure-tjänst för manipulering
+4. Data kan struktureras i det önskade formatet och skickas till en lagrings tjänst
+5. Företags program kan fråga data och generera insikter som Power Retail-åtgärder
  
 Låt oss ta en titt på viktiga komponenter som vanligt vis spelar en del i en lösning för Micro-uppfyllelse Center.
 

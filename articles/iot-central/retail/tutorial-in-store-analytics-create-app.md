@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: a15ccd6d67b4819ba5dd6233a2a001015037c404
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: fc8928c9f64e323aafb29c9b1e717cc5c2ab6691
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165680"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346715"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Självstudie: skapa ett in-Store Analytics-program i Azure IoT Central
 
@@ -34,7 +34,7 @@ Du utvecklar en lösning för utcheckning och villkors övervakning i tre delar:
 * Anpassa instrument panelen för att aktivera operatörer för att övervaka och hantera enheter
 * Konfigurera data export så att butiks hanterare kan köra analyser och visualisera insikter
 
-I de här självstudierna får du lära dig att
+I den här guiden får du lära dig att:
 > [!div class="checklist"]
 > * Använd Azure IoT Central **in-Store Analytics-** betalningsmall för att skapa ett Retail Store-program
 > * Anpassa program inställningarna
@@ -71,7 +71,7 @@ Skapa ett nytt program för BA-utcheckning i butiken:
 1. Du kan också välja ett eget **program namn**. Det här programmet baseras på ett fiktivt butiks lager med namnet contoso. Självstudien använder **program namnet** *contoso check*. Program mal len baseras på det fiktiva företaget Northwind. I den här självstudien använder du Contoso för att lära dig hur du anpassar programmet.
 
     > [!NOTE]
-    > Om du använder ett eget **program namn**måste du fortfarande använda ett unikt värde för programmets **URL**.
+    > Om du använder ett eget **program namn** måste du fortfarande använda ett unikt värde för programmets **URL**.
 
 1. Om du har en Azure-prenumeration anger du din *katalog, din Azure-prenumeration och region*. Om du inte har någon prenumeration kan du aktivera den **kostnads fria utvärderings versionen på 7 dagar** och slutföra den kontakt information som krävs.  
 
@@ -111,7 +111,7 @@ Skapa ett anpassat tema:
 
 1. Använd knappen **ändra** för att välja en **ikon för en webb läsar ikon** som visas på flikar i webbläsaren.
 
-1. Du kan också ersätta standard **webbläsarens färger** genom att lägga till HTML-hexadecimala färg koder. Lägg till *#008575*i **sidhuvudet**.  Lägg till *#A1F3EA*för den **accenten**. 
+1. Du kan också ersätta standard **webbläsarens färger** genom att lägga till HTML-hexadecimala färg koder. Lägg till *#008575* i **sidhuvudet**.  Lägg till *#A1F3EA* för den **accenten**. 
 
 1. Välj **Spara**. 
 
@@ -236,7 +236,7 @@ Slutför stegen i följande två artiklar för att ansluta en riktig Rigado-gate
 ## <a name="add-rules-and-actions"></a>Lägg till regler och åtgärder
 Som en del av att använda sensorer i ditt Azure IoT Central-program för att övervaka villkor, kan du skapa regler för att köra åtgärder när vissa villkor är uppfyllda. En regel är kopplad till en enhets mall och en eller flera enheter och innehåller villkor som måste uppfyllas utifrån enhetens telemetri eller händelser. En regel har också en eller flera associerade åtgärder. Åtgärderna kan omfatta att skicka e-postmeddelanden eller utlösa en webhook-åtgärd för att skicka data till andra tjänster. Program mal len **BA-utcheckning i butiken** innehåller några fördefinierade regler för enheterna i programmet.
 
-I det här avsnittet skapar du en ny regel som kontrollerar den högsta relativa fuktighets nivån baserat på RuuviTag sensor telemetri. Du lägger till en åtgärd i regeln så att om fuktigheten överskrider det högsta antalet skickar programmet e-post. 
+I det här avsnittet skapar du en ny regel som kontrollerar den högsta relativa fuktighets nivån baserat på RuuviTag sensor telemetri. Du lägger till en åtgärd i regeln så att om fuktigheten överskrider det högsta antalet skickar programmet ett e-postmeddelande. 
 
 Så här skapar du en regel: 
 

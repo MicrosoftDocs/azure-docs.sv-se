@@ -11,17 +11,17 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 47edaec54a2470e9b657b2f214be923439e1e8a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5165f7d6e16e0d136dbf8d4507090c78372185cb
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81000121"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97348058"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>Självstudie: anpassa instrument panelen för operatör och hantera enheter i Azure IoT Central
 
 
-I den här självstudien får du lära dig att anpassa instrument panelen för operatören i Azure IoT Central i Store Analytics-program. Program operatörer kan använda den anpassade instrument panelen för att köra programmet och hantera anslutna enheter.
+I den här självstudien, som ett verktyg, lär du dig att anpassa instrument panelen för operatören i Azure IoT Central i Store Analytics-program. Program operatörer kan använda den anpassade instrument panelen för att köra programmet och hantera anslutna enheter.
 
 I den här guiden får du lära dig att:
 > [!div class="checklist"]
@@ -32,7 +32,7 @@ I den här guiden får du lära dig att:
 > * Lägg till egenskaps paneler för att Visa enhets information
 > * Lägg till kommando paneler för att köra kommandon
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Verktyget bör slutföra självstudien för att skapa Azure IoT Central i Store Analytics-program och lägga till enheter:
 
@@ -80,13 +80,13 @@ Anpassa bild panelen som visar en varumärkes bild på instrument panelen:
 
     ![Azure IoT Central Spara varumärkes avbildning](./media/tutorial-in-store-analytics-customize-dashboard/brand-image-save.png)
 
-1. Du kan också välja **Konfigurera** i panelen med namnet **dokumentation**och ange en URL för support innehåll. 
+1. Du kan också välja **Konfigurera** i panelen med namnet **dokumentation** och ange en URL för support innehåll. 
 
 För att anpassa bild panelen som visar en karta över sensor zonerna i butiken:
 
 1. Välj **Konfigurera** på panelen avbildning som visar standard kartan för lagrings zon. 
 
-1. Välj **bild**och Använd dialog rutan för att ladda upp en anpassad avbildning av en lagrings zon karta. 
+1. Välj **bild** och Använd dialog rutan för att ladda upp en anpassad avbildning av en lagrings zon karta. 
 
 1. Välj **uppdaterings konfiguration**.
 
@@ -107,13 +107,13 @@ Ta bort paneler som du inte planerar att använda i ditt program:
 
 1. Välj **Redigera** i instrument panelens verktygsfält. 
 
-1. Välj **X ta** bort för att ta bort följande paneler: **tillbaka till alla zoner**, **gå till butiks instrument panel**, **vänte tid**och alla tre paneler som är kopplade till **utcheckning 3**. Contoso Store-instrumentpanelen använder inte dessa paneler. 
+1. Välj **X ta** bort för att ta bort följande paneler: **tillbaka till alla zoner**, **gå till butiks instrument panel**, **vänte tid** och alla tre paneler som är kopplade till **utcheckning 3**. Contoso Store-instrumentpanelen använder inte dessa paneler. 
 
     ![Ta bort paneler i Azure IoT Central](./media/tutorial-in-store-analytics-customize-dashboard/delete-tiles.png)
 
 1. Rulla för att visa de återstående instrument panelerna i vyn.
 
-1. Välj **X ta** bort om du vill ta bort följande paneler: varm ställnings **zon**, **avkylnings zon**, **beläggnings sensor inställningar**, **termostat sensor inställningar**och **miljö förhållanden**. 
+1. Välj **X ta** bort om du vill ta bort följande paneler: varm ställnings **zon**, **avkylnings zon**, **beläggnings sensor inställningar**, **termostat sensor inställningar** och **miljö förhållanden**. 
 
    ![Ta bort återstående paneler i Azure IoT Central](./media/tutorial-in-store-analytics-customize-dashboard/delete-tiles-2.png)
 
@@ -182,13 +182,13 @@ Så här redigerar du panelen **personers trafik** för att Visa telemetri för 
 
 1. Välj **Konfigurera** på **personens trafik** panel.
 
-1. I **telemetri** väljer du **antal 1**, **antal 2**och **antal 3**. 
+1. I **telemetri** väljer du **antal 1**, **antal 2** och **antal 3**. 
 
 1. Välj **uppdaterings konfiguration**. Den befintliga konfigurationen på panelen rensas. 
 
 1. Välj **Konfigurera** igen på **personens trafik** panel.
 
-1. I **telemetri** väljer du **antal 1**och **antal 2**. 
+1. I **telemetri** väljer du **antal 1** och **antal 2**. 
 
 1. Välj **uppdaterings konfiguration**. 
 

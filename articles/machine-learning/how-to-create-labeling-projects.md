@@ -8,12 +8,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 74e9224b30ccee274eaf52ba47a0ec05573c2e9d
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.custom: data4ml
+ms.openlocfilehash: 5abb222a6211e2f3f92c002a49987ac54edc78e2
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558733"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346664"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Skapa ett projekt med data etiketter och exportera etiketter 
 
@@ -39,7 +40,7 @@ I den här artikeln får du lära dig att:
 > * Exportera etiketterna
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * De data som du vill märka, antingen i lokala filer eller i Azure Blob Storage.
 * Den uppsättning etiketter som du vill använda.
@@ -103,7 +104,7 @@ Så här överför du dina data direkt:
 
 Data överförs till standard-BLOB-arkivet ("workspaceblobstore") på din Machine Learning-arbetsyta.
 
-## <a name="configure-incremental-refresh"></a><a name="incremental-refresh"> </a> Konfigurera stegvis uppdatering
+## <a name="configure-incremental-refresh"></a><a name="incremental-refresh"></a> Konfigurera stegvis uppdatering
 
 Om du planerar att lägga till nya avbildningar i data uppsättningen använder du stegvis uppdatering för att lägga till dessa nya bilder i projektet.   När **stegvis uppdatering** har Aktiver ATS kontrol leras data uppsättningen regelbundet för nya avbildningar som ska läggas till i ett projekt, baserat på slut för ande frekvensen för etiketter.   Sök efter nya data stoppas när projektet innehåller maximalt 500 000 bilder.
 

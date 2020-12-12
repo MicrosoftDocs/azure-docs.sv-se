@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e3503a9eef5c11db35684ca61fb1ee39525a465d
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 9f2b0dccde0532646457a0841fc2798e103d8cc7
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427606"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347956"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Konfigurera objekt replikering för block-blobar
 
@@ -291,7 +291,7 @@ Följ dessa steg om du vill konfigurera objekt replikering på mål kontot med e
 Du kan sedan hämta en JSON-fil som innehåller princip definitionen som du kan ge till en annan användare att konfigurera käll kontot. Följ dessa steg om du vill ladda ned denna JSON-fil:
 
 1. Navigera till inställningarna för **objekt replikering** för mål kontot i Azure Portal.
-1. Välj knappen **mer** bredvid den princip som du vill ladda ned och välj sedan **Hämta regler** , som du ser i följande bild.
+1. Välj knappen **mer** bredvid den princip som du vill ladda ned och välj sedan **Hämta regler**, som du ser i följande bild.
 
     :::image type="content" source="media/object-replication-configure/replication-rules-download-portal.png" alt-text="Skärm bild som visar hur du laddar ned regler för replikering till en JSON-fil":::
 
@@ -314,7 +314,7 @@ $destPolicy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 $destPolicy | ConvertTo-Json -Depth 5 > c:\temp\json.txt
 ```
 
-Om du vill använda JSON-filen för att konfigurera replikeringsprincipen på käll kontot med PowerShell hämtar du den lokala filen och konverterar från JSON till ett objekt. Anropa sedan kommandot [set-AzStorageObjectReplicationPolicy](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) för att konfigurera principen för käll kontot, som du ser i följande exempel. Kom ihåg att ersätta värden inom vinkelparenteser och fil Sök vägen med dina egna värden:
+Om du vill använda JSON-filen för att definiera replikeringsprincipen på käll kontot med PowerShell hämtar du den lokala filen och konverterar från JSON till ett objekt. Anropa sedan kommandot [set-AzStorageObjectReplicationPolicy](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) för att konfigurera principen för käll kontot, som du ser i följande exempel. Kom ihåg att ersätta värden inom vinkelparenteser och fil Sök vägen med dina egna värden:
 
 ```powershell
 $object = Get-Content -Path C:\temp\json.txt | ConvertFrom-Json

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/03/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ca4b5486b54de28497ea41765337bfa19f12e3d7
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 780324d1a6f7d9edfb552377c3e966e6a186c231
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573127"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347939"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Lägga till språk paket i en Windows 10-avbildning för flera sessioner
 
@@ -24,7 +24,7 @@ Det finns två sätt som du kan använda för att hantera användarnas språk be
 
 Den sistnämnda metoden är mycket mer effektiv och kostnads effektiv. Det är dock upp till dig att bestämma vilken metod som passar bäst för dina behov. I den här artikeln får du lära dig hur du anpassar språk för dina avbildningar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Du behöver följande för att anpassa dina Windows 10 Enterprise multi-session-avbildningar för att lägga till flera språk:
 
@@ -52,6 +52,7 @@ Du behöver följande för att anpassa dina Windows 10 Enterprise multi-session-
           - [Windows 10, version 2004 eller 20H2 **9b** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_64_ARM64_MultiLang_LangPckAll_LIP_LXP_ONLY)
           - [Windows 10, version 2004 eller 20H2 **9c** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_32_64_ARM64_MultiLng_LngPkAll_LIP_9C_LXP_ONLY)
           - [Windows 10, version 2004 eller 20H2 **10C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2010C.iso)
+          - [Windows 10, version 2004 eller 20H2 **11C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2011C.iso)
 
 - En Azure Files resurs eller en fil resurs på en virtuell Windows-fil Server
 
@@ -173,7 +174,7 @@ Set-WinUserLanguageList $LanguageList -force
 
 Skriptet kan ta ett tag beroende på hur många språk du behöver installera.
 
-När skriptet har körts kan du kontrol lera att språk paketen har installerats korrekt genom att gå till **Start**  >  **Inställningar**  >  **tid & språk**  >  **Language**. Om språkfilerna finns där är det klart.
+När skriptet har körts kan du kontrol lera att språk paketen har installerats korrekt genom att gå till **Start**  >  **Inställningar**  >  **tid & språk**  >  . Om språkfilerna finns där är det klart.
 
 När du har lagt till ytterligare språk i Windows-avbildningen måste apparna i Inkorgen också uppdateras för att stödja de språk som har lagts till. Det kan du göra genom att uppdatera de förinstallerade apparna med innehållet från inkorg-apparna ISO. Om du vill utföra den här uppdateringen i en frånkopplad miljö (ingen Internet åtkomst från den virtuella datorn) kan du använda följande PowerShell-skript för att automatisera processen.
 

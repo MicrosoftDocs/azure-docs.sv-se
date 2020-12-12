@@ -4,27 +4,27 @@ description: Använd Azures privata länk för att på ett säkert sätt ansluta
 author: mgoedtel
 ms.author: magoedte
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 12/11/2020
 ms.subservice: ''
-ms.openlocfilehash: a4985784a17f2e0350a7b2c7a4f62f574862d50c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26e7dbf3f5629d4691211b6c9b82446ba4035421
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714352"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347636"
 ---
-# <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation-preview"></a>Använd Azures privata länk för att ansluta nätverk på ett säkert sätt till Azure Automation (för hands version)
+# <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation"></a>Använd Azures privata länk för att på ett säkert sätt ansluta nätverk till Azure Automation
 
 Azure Private Endpoint är ett nätverksgränssnitt som ger dig en privat och säker anslutning till en tjänst som drivs av Azure Private Link. Privat slut punkt använder en privat IP-adress från ditt VNet, vilket effektivt tar automatiserings tjänsten till ditt VNet. Nätverks trafiken mellan datorerna i VNet och automation-kontot passerar över VNet och en privat länk i Microsoft stamnät nätverket, vilket eliminerar exponering från det offentliga Internet.
 
 Du har till exempel ett VNet där du har inaktiverat utgående Internet åtkomst. Men du vill ha åtkomst till ditt Automation-konto privat och använda automatiserings funktioner som Webhooks, tillstånds konfiguration och Runbook-jobb i hybrid Runbook Worker. Dessutom vill du att användarna ska ha åtkomst till Automation-kontot enbart via VNET.  Distribution av privat slut punkt uppnår dessa mål.
 
-Den här artikeln beskriver när du ska använda och hur du konfigurerar en privat slut punkt med ditt Automation-konto (för hands version).
+Den här artikeln beskriver när du ska använda och hur du konfigurerar en privat slut punkt med ditt Automation-konto.
 
 ![Konceptuell översikt över privat länk för Azure Automation](./media/private-link-security/private-endpoints-automation.png)
 
 >[!NOTE]
-> Stöd för privata länkar med Azure Automation (förhands granskning) är endast tillgängligt i moln i Azures kommersiella och Azure-myndigheter.
+> Stöd för privata länkar med Azure Automation är endast tillgängligt i molnet Azures kommersiella och Azure-myndigheter.
 
 ## <a name="advantages"></a>Fördelar
 
@@ -34,7 +34,7 @@ Med privat länk kan du:
 - Anslut privat till Azure Monitor Log Analytics arbets yta utan att öppna någon offentlig nätverks åtkomst.
 
     >[!NOTE]
-    >Detta krävs om ditt Automation-konto är länkat till en Log Analytics-arbetsyta för att vidarebefordra jobb data och när du har aktiverat funktioner som Uppdateringshantering, Ändringsspårning och inventering, tillstånds konfiguration eller Starta/stoppa virtuella datorer när de inte används. Mer information om privat länk för Azure Monitor finns i [Använd Azure Private Link för att ansluta nätverk på ett säkert sätt till Azure Monitor](../../azure-monitor/platform/private-link-security.md).
+    >En separat privat slut punkt för din Log Analytics-arbetsyta krävs om ditt Automation-konto är länkat till en Log Analytics arbets yta för att vidarebefordra jobb data och när du har aktiverat funktioner som Uppdateringshantering, Ändringsspårning och inventering, tillstånds konfiguration eller Starta/stoppa virtuella datorer när de inte används. Mer information om privat länk för Azure Monitor finns i [Använd Azure Private Link för att ansluta nätverk på ett säkert sätt till Azure Monitor](../../azure-monitor/platform/private-link-security.md).
 
 - Se till att dina Automation-data endast nås via auktoriserade privata nätverk.
 - Förhindra data exfiltrering från dina privata nätverk genom att definiera din Azure Automation-resurs som ansluter via din privata slut punkt.
@@ -43,17 +43,45 @@ Med privat länk kan du:
 
 Mer information finns i  [viktiga fördelar med privat länk](../../private-link/private-link-overview.md#key-benefits).
 
+## <a name="limitations"></a>Begränsningar
+
+- I den aktuella implementeringen av privat länk går det inte att komma åt Azure-resurser som skyddas med privat slut punkt i moln jobb för Automation-kontot. Till exempel Azure Key Vault, Azure SQL, Azure Storage-konto osv. Använd en [hybrid Runbook Worker](../automation-hybrid-runbook-worker.md) i stället för att undvika detta.
+- Du måste använda den senaste versionen av [Log Analytics agent](../../azure-monitor/platform/log-analytics-agent.md) för Windows eller Linux.
+- [Log Analytics Gateway](../../azure-monitor/platform/gateway.md) stöder inte privat länk.
+
 ## <a name="how-it-works"></a>Så här fungerar det
 
-Azure Automation Private Link ansluter en eller flera privata slut punkter (och därmed de virtuella nätverk som de finns i) till din Automation-konto resurs. Dessa slut punkter är datorer som använder Webhooks för att starta en Runbook, datorer som är värdar för Hybrid Runbook Worker-rollen och DSC-noder.
+Azure Automation Private Link ansluter en eller flera privata slut punkter (och därmed de virtuella nätverk som de finns i) till din Automation-konto resurs. Dessa slut punkter är datorer som använder Webhooks för att starta en Runbook, datorer som är värdar för Hybrid Runbook Worker-rollen och DSC-noder (Desired State Configuration).
 
-När du har skapat privata slut punkter för Automation, mappas var och en av de offentliga URL: erna för Automation, som du eller en dator kan kontakta, mappas till en privat slut punkt i ditt VNet.
-
-Som en del av för hands versionen kan ett Automation-konto inte komma åt Azure-resurser som skyddas med privat slut punkt. Till exempel Azure Key Vault, Azure SQL, Azure Storage-konto osv.
+När du har skapat privata slut punkter för Automation mappas var och en av de offentliga URL: erna för Automation till en privat slut punkt i ditt VNet. Du eller en dator kan kontakta automations webb adresser direkt.
 
 ### <a name="webhook-scenario"></a>Webhook-scenario
 
 Du kan starta runbooks genom att göra ett inlägg på webhook-URL: en. URL: en ser till exempel ut så här: `https://<automationAccountId>.webhooks.<region>.azure-automation.net/webhooks?token=gzGMz4SMpqNo8gidqPxAJ3E%3d`
+
+### <a name="hybrid-runbook-worker-scenario"></a>Hybrid Runbook Worker scenario
+
+Med användar Hybrid Runbook Worker funktionen i Azure Automation kan du köra Runbooks direkt på Azure-eller icke-Azure-datorer, inklusive servrar som är registrerade med Azure Arc-aktiverade servrar. Från datorn eller servern som är värd för rollen kan du köra Runbooks direkt på den och mot resurser i miljön för att hantera de lokala resurserna.
+
+En JRDS-slutpunkt används av hybrid Worker för att starta/stoppa Runbooks, ladda ned Runbooks till Worker och skicka jobb logg strömmen tillbaka till Automation-tjänsten.När du har aktiverat JRDS-slutpunkten skulle URL: en se ut så här: `https://<automationaccountID>.jobruntimedata.<region>.azure-automation.net` . Detta säkerställer att Runbook-körningen på Hybrid Worker som är ansluten till Azure Virtual Network kan köra jobb utan att behöva öppna en utgående anslutning till Internet.  
+
+> [!NOTE]
+>Med den aktuella implementeringen av privata Länkar för Azure Automation, stöder den bara körning av jobb på Hybrid Runbook Worker som är anslutna till ett virtuellt Azure-nätverk och stöder inte moln jobb.
+
+## <a name="hybrid-worker-scenario-for-update-management"></a>Hybrid Worker scenario för Uppdateringshantering  
+
+System Hybrid Runbook Worker stöder en uppsättning dolda Runbooks som används av Uppdateringshantering-funktionen som har utformats för att installera användardefinierade uppdateringar på Windows-och Linux-datorer. När Azure Automation Uppdateringshantering är aktive rad konfigureras alla datorer som är anslutna till din Log Analytics-arbetsyta automatiskt som en system Hybrid Runbook Worker.
+
+För att förstå & konfigurera Uppdateringshantering granskning av [uppdateringshantering](../update-management/overview.md). Uppdateringshantering funktionen har ett beroende på en Log Analytics arbets yta och måste därför länka arbets ytan till ett Automation-konto. En Log Analytics-arbetsyta lagrar data som samlas in av lösningen och som värd för loggs ökningar och vyer.
+
+Om du vill att dina datorer ska konfigureras för uppdaterings hantering för att ansluta till Automation & Log Analytics arbets yta på ett säkert sätt via en privat länk kanal, måste du aktivera privat länk för Log Analytics arbets ytan som är länkad till Automation-kontot som kon figurer ATS med privat länk.
+
+Du kan styra hur en Log Analytics arbets yta kan nås utanför de privata länk omfattningarna genom att följa stegen som beskrivs i [konfigurera Log Analytics](../../azure-monitor/platform/private-link-security.md#configure-log-analytics). Om du ställer in **Tillåt offentligt nätverks åtkomst för** inmatning till **Nej** kan inte datorer utanför de anslutna omfattningarna Ladda upp data till den här arbets ytan. Om du ställer in **Tillåt offentlig nätverks åtkomst för frågor** till **Nej**, kan datorer utanför omfattningarna inte komma åt data på den här arbets ytan.
+
+Använd **DSCAndHybridWorker** Target-underresurs för att aktivera privat länk för användare & system hybrid Worker.
+
+> [!NOTE]
+> Datorer som ligger utanför Azure och som hanteras av Uppdateringshantering och är anslutna till Azure VNet via ExpressRoute privat peering, VPN-tunnlar och peer-kopplade virtuella nätverk som använder privata slut punkter stöder privat länk.
 
 ### <a name="state-configuration-agentsvc-scenario"></a>Scenario för tillstånds konfiguration (agentsvc)
 
@@ -73,11 +101,11 @@ Skapa en privat slut punkt för att ansluta vårt nätverk. Du kan skapa den i d
 
 I det här avsnittet ska du skapa en privat slut punkt för ditt Automation-konto.
 
-1. På den övre vänstra sidan av skärmen väljer du **skapa en resurs > nätverk > Private Link Center (för hands version)**.
+1. På den övre vänstra sidan av skärmen väljer du **skapa en resurs > nätverk > Private Link Center**.
 
 2. I **privat länk Center – översikt**, på alternativet för att **skapa en privat anslutning till en tjänst**, väljer du **Start**.
 
-3. I **skapa en virtuell dator – grunderna**anger eller väljer du följande information:
+3. I **skapa en virtuell dator – grunderna** anger eller väljer du följande information:
 
     | Inställning | Värde |
     | ------- | ----- |
@@ -104,7 +132,7 @@ I det här avsnittet ska du skapa en privat slut punkt för ditt Automation-kont
 
 6. Välj **Nästa: konfiguration**.
 
-7. I **skapa en privat slut punkt – konfiguration**anger eller väljer du följande information:
+7. I **skapa en privat slut punkt – konfiguration** anger eller väljer du följande information:
 
     | Inställning | Värde |
     | ------- | ----- |
@@ -120,7 +148,7 @@ I det här avsnittet ska du skapa en privat slut punkt för ditt Automation-kont
 
 9. När du ser ett meddelande som anger att **valideringen har slutförts** klickar du på **Skapa**.
 
-I **Private Link Center (för hands version)** väljer du **privata slut punkter** för att visa din privata länk resurs.
+I det **privata länk centret** väljer du **privata slut punkter** för att visa din privata länk resurs.
 
 ![Privat länk till Automation-resurs](./media/private-link-security/private-link-automation-resource.png)
 
@@ -134,7 +162,7 @@ Om tjänste konsumenten har Azure RBAC-behörighet för Automation-resursen kan 
 
 Du kan konfigurera ett Automation-konto för att neka alla offentliga konfigurationer och bara tillåta anslutningar via privata slut punkter för att ytterligare förbättra nätverks säkerheten. Om du vill begränsa åtkomsten till Automation-kontot enbart från det virtuella nätverket och inte tillåta åtkomst från offentliga Internet kan du ange `publicNetworkAccess` egenskapen till `$false` .
 
-När åtkomst inställningen för **offentligt nätverk** är inställt på `$false` tillåts bara anslutningar via privata slut punkter och alla anslutningar via offentliga slut punkter nekas med ett Unathorized-fel meddelande och HTTP-status 401. 
+När åtkomst inställningen för **offentligt nätverk** är inställt på `$false` tillåts bara anslutningar via privata slut punkter och alla anslutningar via offentliga slut punkter nekas med ett obehörigt fel meddelande och HTTP-statusen 401.
 
 Följande PowerShell-skript visar hur du `Get` och `Set` den **offentliga nätverks åtkomst** egenskapen på Automation-konto nivån:
 
@@ -144,6 +172,10 @@ $account.Properties | Add-Member -Name 'publicNetworkAccess' -Type NoteProperty 
 $account | Set-AzResource -Force -ApiVersion "2020-01-13-preview"
 ```
 
+Du kan också styra den offentliga nätverks åtkomst egenskapen från Azure Portal. Från ditt Automation-konto väljer du **nätverks isolering** i rutan till vänster under avsnittet **konto inställningar** . När inställningen för offentlig nätverks åtkomst är inställd på **Nej** tillåts bara anslutningar via privata slut punkter och alla anslutningar över offentliga slut punkter nekas.
+
+![Inställningar för offentlig nätverks åtkomst](./media/private-link-security/allow-public-network-access.png)
+
 ## <a name="dns-configuration"></a>DNS-konfiguration
 
 När du ansluter till en privat länk resurs med hjälp av ett fullständigt kvalificerat domän namn (FQDN) som en del av anslutnings strängen, är det viktigt att konfigurera dina DNS-inställningar på rätt sätt för att matcha den allokerade privata IP-adressen. Befintliga Azure-tjänster kanske redan har en DNS-konfiguration som ska användas vid anslutning via en offentlig slut punkt. DNS-konfigurationen bör granskas och uppdateras för att ansluta med hjälp av din privata slut punkt.
@@ -152,7 +184,7 @@ Nätverks gränssnittet som är kopplat till den privata slut punkten innehålle
 
 Du kan använda följande alternativ för att konfigurera dina DNS-inställningar för privata slut punkter:
 
-* Använd värd filen (rekommenderas endast för testning). Du kan använda värd filen på en virtuell dator för att åsidosätta användningen av DNS för namn matchning först.
+* Använd värd filen (rekommenderas endast för testning). Du kan använda värd filen på en virtuell dator för att åsidosätta användningen av DNS för namn matchning först. DNS-posten bör se ut som i följande exempel: `privatelinkFQDN.jrds.sea.azure-automation.net` .
 
 * Använd en [privat DNS-zon](../../dns/private-dns-privatednszone.md). Du kan använda privata DNS-zoner för att åsidosätta DNS-matchningen för en viss privat slut punkt. En privat DNS-zon kan länkas till det virtuella nätverket för att lösa vissa domäner. Om du vill aktivera agenten på den virtuella datorn för att kommunicera över den privata slut punkten skapar du en Privat DNS-post som `privatelink.azure-automation.net` . Lägg till en ny DNS *a* -post mappning till den privata slut punktens IP-adress.
 

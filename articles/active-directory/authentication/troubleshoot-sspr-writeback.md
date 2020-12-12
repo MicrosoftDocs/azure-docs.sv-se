@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a3044127aacb5910a270d40d94d3255031a71a2
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 4d6bf4df1499d919cead0a184054e5ba0db9c06e
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741311"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346608"
 ---
 # <a name="troubleshoot-self-service-password-reset-writeback-in-azure-active-directory"></a>Felsöka tillbakaskrivning av lösen ord för självbetjänings återställning i Azure Active Directory
 
@@ -42,6 +42,11 @@ För Azure AD Connect version *1.1.443.0* och senare krävs *utgående https* -�
 
 * *\*. passwordreset.microsoftonline.com*
 * *\*. servicebus.windows.net*
+
+Azure [gov-slutpunkter](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#guidance-for-developers):
+
+* *\*. passwordreset.microsoftonline.us*
+* *\*. servicebus.usgovcloudapi.net*
 
 Om du behöver mer detaljerad information, se [listan över Microsoft Azure Data Center IP-intervall](https://www.microsoft.com/download/details.aspx?id=41653). Den här listan uppdateras varje onsdag och börjar gälla nästa måndag.
 
@@ -150,7 +155,7 @@ Ett bra tips när du felsöker problem med tillbakaskrivning av lösen ord är a
 
 ### <a name="if-the-source-of-the-event-is-adsync"></a>Om händelsens källa är ADSync
 
-| Kod | Namn eller meddelande | Description |
+| Kod | Namn eller meddelande | Beskrivning |
 | --- | --- | --- |
 | 6329 | BAIL: MMS (4924) 0x80230619: "en begränsning förhindrar att lösen ordet ändras till den aktuella som anges." | Den här händelsen inträffar när tjänsten för tillbakaskrivning av lösen ord försöker att ange ett lösen ord för din lokala katalog som inte uppfyller lösen ordets ålder, historik, komplexitet eller filtrerings krav för domänen. <br> <br> Om du har en lägsta ålder för lösen ord och nyligen har ändrat lösen ordet inom tids perioden kan du inte ändra lösen ordet igen förrän det når den angivna åldern i din domän. För test ändamål ska den lägsta åldern anges till 0. <br> <br> Om du har krav på lösen ords historik aktive rad måste du välja ett lösen ord som inte har använts under de senaste *N* tiderna, där *N* är inställningen för lösen ords historik. Om du väljer ett lösen ord som har använts under de senaste *N* tiderna visas ett problem i det här fallet. I test syfte ska lösen ords historiken anges till 0. <br> <br> Om du har krav på lösen ords komplexitet tillämpas alla dem när användaren försöker ändra eller återställa ett lösen ord. <br> <br> Om du har aktiverat lösen ords filter och en användare väljer ett lösen ord som inte uppfyller filtrerings villkoren, Miss lyckas återställnings-eller ändrings åtgärden. |
 | 6329 | MMS (3040): admaexport. cpp (2837): servern innehåller inte princip kontrollen LDAP-lösenord. | Det här problemet uppstår om LDAP_SERVER_POLICY_HINTS_OID kontroll (1.2.840.113556.1.4.2066) inte är aktive rad i domänkontrollanten. Om du vill använda funktionen för tillbakaskrivning av lösen ord måste du aktivera kontrollen. För att göra det måste DCs vara på Windows Server 2008R2 eller senare. |
@@ -158,7 +163,7 @@ Ett bra tips när du felsöker problem med tillbakaskrivning av lösen ord är a
 
 ### <a name="if-the-source-of-the-event-is-passwordresetservice"></a>Om händelsens källa är PasswordResetService
 
-| Kod | Namn eller meddelande | Description |
+| Kod | Namn eller meddelande | Beskrivning |
 | --- | --- | --- |
 | 31001 | PasswordResetStart | Den här händelsen indikerar att den lokala tjänsten har identifierat en begäran om lösen ords återställning för en federerad, direktautentisering eller en lösenordsskyddad användare som kommer från molnet. Den här händelsen är den första händelsen vid varje tillbakaskrivning av lösen ords återställning. |
 | 31002 | PasswordResetSuccess | Den här händelsen anger att en användare har valt ett nytt lösen ord under en åtgärd för lösen ords återställning. Vi har fastställt att det här lösen ordet uppfyller företagets lösen ords krav. Lösen ordet har skrivits tillbaka till den lokala Active Directorys miljön. |

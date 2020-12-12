@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 134148fa3ea73212d85393cc433d60f7ddeecd17
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8644040565bd46800b888a32653b6c8bbf89f096
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837132"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347446"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Logga in på den virtuella Windows-datorn i Azure med Azure Active Directory autentisering (för hands version)
 
@@ -157,6 +157,9 @@ Det finns flera sätt att konfigurera roll tilldelningar för virtuella datorer:
 - Använda Azure AD Portal-upplevelsen
 - Använda Azure Cloud Shell upplevelse
 
+> [!NOTE]
+> Den virtuella datorns Administratörs inloggning och användar inloggnings roller för virtuell dator använder dataActions och kan därför inte tilldelas i hanterings gruppens omfattning. För närvarande kan de här rollerna bara tilldelas i prenumerations omfånget.
+
 ### <a name="using-azure-ad-portal-experience"></a>Använda Azure AD Portal-upplevelse
 
 Konfigurera roll tilldelningar för dina Azure AD-aktiverade Windows Server 2019 datacenter-virtuella datorer:
@@ -177,8 +180,8 @@ Efter en liten stund tilldelas säkerhets objekt rollen i det valda omfånget.
 I följande exempel används [AZ roll tilldelning skapa](/cli/azure/role/assignment#az-role-assignment-create) för att tilldela den virtuella datorns administratörs inloggnings roll till den virtuella datorn för din aktuella Azure-användare. Användar namnet för ditt aktiva Azure-konto hämtas med [AZ-kontot show](/cli/azure/account#az-account-show), och omfånget ställs in på den virtuella datorn som skapades i ett föregående steg med [AZ VM show](/cli/azure/vm#az-vm-show). Omfattningen kan också tilldelas till en resurs grupp eller prenumerations nivå och normala behörigheter för Azure RBAC-arv gäller. Mer information finns i [Logga in på en virtuell Linux-dator i Azure med Azure Active Directory autentisering](../../virtual-machines/linux/login-using-aad.md).
 
 ```   AzureCLI
-username=$(az account show --query user.name --output tsv)
-vm=$(az vm show --resource-group myResourceGroup --name myVM --query id -o tsv)
+$username=$(az account show --query user.name --output tsv)
+$vm=$(az vm show --resource-group myResourceGroup --name myVM --query id -o tsv)
 
 az role assignment create \
     --role "Virtual Machine Administrator Login" \

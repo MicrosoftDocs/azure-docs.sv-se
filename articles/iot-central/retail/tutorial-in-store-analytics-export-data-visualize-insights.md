@@ -11,15 +11,14 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: f00448f19cc0a2118477a9527005548fea25537e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: fca9a72fa237a11a02b6d4fbe30ebba5857384cf
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187280"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346375"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Självstudie: exportera data från Azure IoT Central och visualisera insikter i Power BI
-
 
 
 I de två föregående självstudierna har du skapat och anpassat ett IoT Central-program med hjälp av programmallen **för BA-utcheckning i butiken** . I den här självstudien konfigurerar du IoT Central-programmet för att exportera telemetri som samlats in från enheterna. Du använder sedan Power BI för att skapa en anpassad instrument panel för Store Manager för att visualisera de insikter som härletts från Telemetrin.
@@ -35,7 +34,7 @@ I den här självstudien får du lära dig hur man:
 För att slutföra den här kursen behöver du:
 
 * För att slutföra de två föregående självstudierna [skapar du ett in-Store Analytics-program i Azure IoT Central](./tutorial-in-store-analytics-create-app.md) och [anpassar instrument panelen för operatören och hanterar enheter i Azure IoT Central](./tutorial-in-store-analytics-customize-dashboard.md).
-* En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+* En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 * Ett Power BI-konto. Om du inte har ett Power BI konto kan du registrera dig för en [kostnads fri Power BI Pro utvärdering](https://app.powerbi.com/signupredirect?pbi_source=web) innan du börjar.
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
@@ -438,7 +437,7 @@ Nu har du telemetri som flödar från ditt IoT Central-program via händelsehubb
 
 Lägg till fyra linje diagram paneler för att Visa temperaturen och fukten från de två miljö sensorerna. Använd informationen i följande tabell för att skapa panelerna. Om du vill lägga till varje panel börjar du med att välja **... (Fler alternativ) > Lägg till panel**. Välj **anpassade strömmande data** och välj sedan **Nästa**:
 
-| Inställningen | Diagram #1 | Diagram #2 | Diagram #3 | Diagram #4 |
+| Inställning | Diagram #1 | Diagram #2 | Diagram #3 | Diagram #4 |
 | ------- | -------- | -------- | -------- | -------- |
 | Datamängd | Zon 1 sensor | Zon 1 sensor | Zon 2 sensor | Zon 2 sensor |
 | Typ av visualisering | Linjediagram | Linjediagram | Linjediagram | Linjediagram |
@@ -456,7 +455,7 @@ Följande skärm bild visar inställningarna för det första diagrammet:
 
 Lägg till fyra kort paneler för att visa de senaste temperatur-och fuktighets värdena från de två miljö sensorerna. Använd informationen i följande tabell för att skapa panelerna. Om du vill lägga till varje panel börjar du med att välja **... (Fler alternativ) > Lägg till panel**. Välj **anpassade strömmande data** och välj sedan **Nästa**:
 
-| Inställningen | Kort #1 | Kort #2 | Kort #3 | Kort #4 |
+| Inställning | Kort #1 | Kort #2 | Kort #3 | Kort #4 |
 | ------- | ------- | ------- | ------- | ------- |
 | Datamängd | Zon 1 sensor | Zon 1 sensor | Zon 2 sensor | Zon 2 sensor |
 | Typ av visualisering | Kort | Kort | Kort | Kort |
@@ -472,7 +471,7 @@ Följande skärm bild visar inställningarna för det första kortet:
 
 Lägg till fyra kort paneler för att Visa Kölängd och bostads tid för de två utcheckningarna i butiken. Använd informationen i följande tabell för att skapa panelerna. Om du vill lägga till varje panel börjar du med att välja **... (Fler alternativ) > Lägg till panel**. Välj **anpassade strömmande data** och välj sedan **Nästa**:
 
-| Inställningen | Kort #1 | Kort #2 | Kort #3 | Kort #4 |
+| Inställning | Kort #1 | Kort #2 | Kort #3 | Kort #4 |
 | ------- | ------- | ------- | ------- | ------- |
 | Datamängd | Beläggnings sensor | Beläggnings sensor | Beläggnings sensor | Beläggnings sensor |
 | Typ av visualisering | Grupperat stående stapeldiagram | Grupperat stående stapeldiagram | Mätare | Mätare |

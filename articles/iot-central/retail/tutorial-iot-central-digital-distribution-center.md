@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: d19310dbd54c8bd5f9854ff86af051b68c5cd378
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 59b688803260220866fc331506429a5990c8760a
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463284"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346205"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Självstudie: Distribuera och gå igenom en app-mall för digital distributions Center
 
@@ -35,10 +35,9 @@ Du kan skapa program med följande steg
 1. Gå till webbplatsen för Azure IoT Central Application Manager. Välj **Bygg** i det vänstra navigerings fältet och klicka sedan på fliken **detalj handel** .
 
     :::image type="content" source="media/tutorial-iot-central-ddc/iotc-retail-homepage.png" alt-text="App-mall för digital distributions Center":::
+1. Välj fliken **butik** och välj **skapa app** under appen **digital distribution Center**
 
-2. Välj fliken **butik** och välj **skapa app** under appen **digital distribution Center**
-
-3. **Skapa app** öppnar nytt program formulär och fyller i den begärda informationen som visas nedan.
+1. **Skapa app** öppnar nytt program formulär och fyller i den begärda informationen som visas nedan.
    **Program namn**: du kan använda det föreslagna standard namnet eller ange ett eget program namn.
    **URL**: du kan använda den föreslagna standard-URL: en eller ange en egen, unik minnes adress. Sedan rekommenderas standardinställningen om du redan har en Azure-prenumeration. Du kan börja med en kostnads fri utvärderings prenumerations plan på 7 dagar och välja att konvertera till en standard pris plan när som helst innan det kostnads fria slutet går ut.
    **Fakturerings information**: katalog, Azure-prenumeration och regions information krävs för att etablera resurserna.

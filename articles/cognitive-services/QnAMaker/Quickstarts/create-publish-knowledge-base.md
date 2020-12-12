@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: efe1b212ab45da3cddc038957f83991defd65e41
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 1ed74f5678a1b1c5d5ded525da0c3e7e7a75b902
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937737"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347544"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Snabb start: skapa, träna och publicera QnA Maker kunskaps bas
 
@@ -48,7 +48,7 @@ Du kan skapa en QnA Maker-kunskapsbas (KB) av eget innehåll, till exempel vanli
     |--|--|
     |**Aktivera extrahering av flera adresser från URL: er, PDF-eller docx-filer.**|Markerad|
     |**Standard text för flera sätt**| Välj och alternativ|
-    |**+ Lägg till URL**|`https://azure.microsoft.com/en-us/support/faq/`|
+    |**+ Lägg till URL**|`https://www.microsoft.com/software-download/faq`|
     |**Chit-chat**|Välj **Professional**|
 
 7. I **steg 5** väljer **du skapa din KB**.
@@ -83,7 +83,7 @@ Du kan skapa en QnA Maker-kunskapsbas (KB) av eget innehåll, till exempel vanli
     |--|--|
     |**Aktivera extrahering av flera adresser från URL: er, PDF-eller docx-filer.**|Markerad|
     |**Standard text för flera sätt**| Välj och alternativ|
-    |**+ Lägg till URL**|`https://azure.microsoft.com/en-us/support/faq/`|
+    |**+ Lägg till fil**| Hämta den bärbara datorns manual från: https://download.microsoft.com/download/7/B/1/7B10C82E-F520-4080-8516-5CF0D803EEE0/surface-book-user-guide-EN.pdf 
     |**Chit-chat**|Välj **Professional**|
 
 8. I **steg 5** väljer **du skapa din KB**.
@@ -122,9 +122,9 @@ I det övre högra hörnet väljer du **Spara och träna** för att spara dina �
 1. I den QnA Maker portalen, i det övre högra hörnet, väljer du **test** för att testa att ändringarna du gjort har genomförts.
 2. Ange ett exempel på en användar fråga i text rutan.
 
-    `How many Azure services are used by a knowledge base?`
+    `I want to know the difference between 32 bit and 64 bit Windows`
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="Ange ett exempel på en användar fråga i text rutan.":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/query-dialogue.png" alt-text="Ange ett exempel på en användar fråga i text rutan.":::
 
 3. Välj **Granska** för att undersöka svaret i detalj. Test fönstret används för att testa dina ändringar i kunskaps basen innan du publicerar din kunskaps bas.
 

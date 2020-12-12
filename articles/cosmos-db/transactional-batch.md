@@ -7,17 +7,17 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 1f541b947c04619892291e47002ea9b0dbb6d38d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9f6692db2da3722507136a468d1dcbdc2985e73f
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340574"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347565"
 ---
 # <a name="transactional-batch-operations-in-azure-cosmos-db-using-the-net-sdk"></a>Transaktionella batch-åtgärder i Azure Cosmos DB med hjälp av .NET SDK
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Transaktionell batch beskriver en grupp punkt åtgärder som måste utföras eller Miss lyckas tillsammans med samma partitionsnyckel i en behållare. I .NET SDK `TranscationalBatch` används klassen för att definiera den här batchen med åtgärder. Om alla åtgärder lyckas i den ordning som de beskrivs i transaktions batch-åtgärden, kommer transaktionen att bekräftas. Men om en åtgärd Miss lyckas återställs hela transaktionen.
+Transaktionell batch beskriver en grupp punkt åtgärder som måste utföras eller Miss lyckas tillsammans med samma partitionsnyckel i en behållare. I .NET SDK `TransactionalBatch` används klassen för att definiera den här batchen med åtgärder. Om alla åtgärder lyckas i den ordning som de beskrivs i transaktions batch-åtgärden, kommer transaktionen att bekräftas. Men om en åtgärd Miss lyckas återställs hela transaktionen.
 
 ## <a name="whats-a-transaction-in-azure-cosmos-db"></a>Vad är en transaktion i Azure Cosmos DB
 
@@ -35,7 +35,7 @@ Azure Cosmos DB stöder för närvarande lagrade procedurer, som även tillhanda
 
 * **Språk alternativ** – transaktionell batch stöds på SDK och språk som du arbetar med redan, medan lagrade procedurer måste skrivas i Java Script.
 * **Kod versions** hantering – versions program kod och att publicera den på din CI/CD-pipeline är mycket mer naturlig än att dirigera uppdateringen av en lagrad procedur och se till att överrullningen sker vid rätt tidpunkt. Det gör det också enklare att återställa ändringar.
-* **Prestanda** – minskat svars tiden för motsvarande åtgärder upp till 30% jämfört med den lagrade procedur körningen.
+* **Prestanda** – minskad latens för motsvarande åtgärder med upp till 30% jämfört med den lagrade procedur körningen.
 * **Innehålls serialisering** – varje åtgärd i en transaktions grupp kan använda anpassade serialiserings alternativ för nytto lasten.
 
 ## <a name="how-to-create-a-transactional-batch-operation"></a>Så här skapar du en transaktionell batch-åtgärd
@@ -51,13 +51,13 @@ TransactionalBatch batch = container.CreateTransactionalBatch(new PartitionKey(p
   .CreateItem<ChildClass>(child);
 ```
 
-Sedan måste du anropa `ExecuteAsync` :
+Sedan måste du anropa `ExecuteAsync` batchen:
 
 ```csharp
 TransactionalBatchResponse batchResponse = await batch.ExecuteAsync();
 ```
 
-När svaret har tagits emot måste du kontrol lera om det lyckas eller inte och extrahera resultatet:
+När svaret har tagits emot kontrollerar du om det lyckas eller inte och extraherar resultaten:
 
 ```csharp
 using (batchResponse)
@@ -72,7 +72,7 @@ using (batchResponse)
 }
 ```
 
-Om det uppstår ett fel kommer den misslyckade åtgärden att ha en status kod för sitt motsvarande fel. Alla andra åtgärder kommer att ha en 424-status kod (misslyckat beroende). I exemplet nedan Miss lyckas åtgärden eftersom den försöker skapa ett objekt som redan finns (409 HttpStatusCode. konflikt). Status koder gör det lättare att identifiera orsaken till transaktions felet.
+Om det uppstår ett fel kommer den misslyckade åtgärden att ha en status kod för sitt motsvarande fel. Alla andra åtgärder har en 424-status kod (misslyckat beroende). I exemplet nedan Miss lyckas åtgärden eftersom den försöker skapa ett objekt som redan finns (409 HttpStatusCode. konflikt). Status koden gör att det går att identifiera orsaken till transaktions felet.
 
 ```csharp
 // Parent's birthday!
@@ -100,7 +100,7 @@ using (failedBatchResponse)
 
 När `ExecuteAsync` metoden anropas grupperas alla åtgärder i `TransactionalBatch` objektet, serialiseras till en enda nytto last och skickas som en enskild begäran till tjänsten Azure Cosmos dB.
 
-Tjänsten tar emot begäran och kör alla åtgärder inom en transaktions omfattning och returnerar ett svar med samma serialiserings protokoll. Detta svar är antingen lyckat eller misslyckat och innehåller alla enskilda åtgärds svar internt.
+Tjänsten tar emot begäran och kör alla åtgärder inom en transaktions omfattning och returnerar ett svar med samma serialiserings protokoll. Detta svar är antingen lyckat eller misslyckat, och tillhandahåller enskilda åtgärds svar per åtgärd.
 
 SDK visar svaret för att verifiera resultatet och eventuellt extrahera var och en av de interna åtgärds resultaten.
 
@@ -108,7 +108,7 @@ SDK visar svaret för att verifiera resultatet och eventuellt extrahera var och 
 
 Det finns för närvarande två kända begränsningar:
 
-* Storleks gränsen för Azure Cosmos DB-begäran anger storleken på `TransactionalBatch` nytto lasten får inte överskrida 2 MB och den maximala körnings tiden är 5 sekunder.
+* Storleks gränsen för Azure Cosmos DB-begäran begränsar `TransactionalBatch` nytto lastens storlek till inte överstiger 2 MB och den maximala körnings tiden är 5 sekunder.
 * Det finns en aktuell gräns på 100 åtgärder per `TransactionalBatch` för att säkerställa att prestandan är som förväntat och inom service avtal.
 
 ## <a name="next-steps"></a>Nästa steg

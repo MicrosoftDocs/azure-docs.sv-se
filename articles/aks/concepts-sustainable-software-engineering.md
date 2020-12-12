@@ -4,16 +4,16 @@ description: Lär dig mer om hållbara program varu tekniker i Azure Kubernetes 
 services: container-service
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: 2457de7bdaa94a6e2269515fafe6689d44960625
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 700723041855fdae4f994480d180292fdfd12e15
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984971"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346902"
 ---
 # <a name="sustainable-software-engineering-principles-in-azure-kubernetes-service-aks"></a>Hållbara principer för program varu teknik i Azure Kubernetes service (AKS)
 
-De hållbara principerna för program varu teknik är en uppsättning kompetenser som hjälper dig att definiera, bygga och köra hållbara program. Det övergripande målet är att minska ditt kol avtryck för varje aspekt av ditt program. I policys [. grönt-projektet][principles-green] finns en översikt över principerna för en hållbar program varu teknik.
+De hållbara principerna för program varu teknik är en uppsättning kompetenser som hjälper dig att definiera, bygga och köra hållbara program. Det övergripande målet är att minska ditt kol avtryck för varje aspekt av ditt program. [Principerna för en hållbar program varu teknik][principles-sse] har en översikt över principerna för en hållbar program varu teknik.
 
 En viktig idé att förstå om hållbar program varu teknik är att det är en förändring i prioriteringar och fokus. I många fall är program vara utformat och körs på ett sätt som fokuserar på snabba prestanda och låg latens. En hållbar program varu teknik fokuserar på att minska så mycket kol utsläpp som möjligt. I vissa fall kan du få snabbare prestanda eller lägre svars tid genom att tillämpa hållbara principer för program varu teknik, till exempel genom att sänka den totala nätverks resan. I andra fall kan minskning av kol utsläpp orsaka sämre prestanda eller ökad latens, till exempel att fördröja arbets belastningar med låg prioritet. Innan du överväger att använda hållbara policys för program varu teknik för ditt program bör du granska prioriteringar, behov och program varor.
 
@@ -32,7 +32,7 @@ När du har granskat klustrets användning kan du överväga att använda de fun
 
 Att öka användningen kan också minska överskotts noder, vilket minskar den energi som används av [resurs reservationer på varje nod][resource-reservations].
 
-Granska även processor-och minnes *förfrågningar* och *begränsningar* i Kubernetes-manifesten för dina program. När du sänker dessa värden för minne och CPU är mer minne och CPU tillgängligt för klustret för att köra andra arbets belastningar. När du kör fler arbets belastningar med lägre processor och minne blir klustret mer tätt allokerat vilket ökar din användning. När du minskar CPU och minne för dina program kan beteendet för dina program bli försämrat eller instabilt om du anger dessa värden för lågt. Innan du ändrar processor-och minnes *förfrågningar* och- *gränser*bör du överväga att köra vissa prestandatester för att förstå om dessa värden är korrekt inställda. Dessutom minskar aldrig värdena till punkten när programmet blir instabilt.
+Granska även processor-och minnes *förfrågningar* och *begränsningar* i Kubernetes-manifesten för dina program. När du sänker dessa värden för minne och CPU är mer minne och CPU tillgängligt för klustret för att köra andra arbets belastningar. När du kör fler arbets belastningar med lägre processor och minne blir klustret mer tätt allokerat vilket ökar din användning. När du minskar CPU och minne för dina program kan beteendet för dina program bli försämrat eller instabilt om du anger dessa värden för lågt. Innan du ändrar processor-och minnes *förfrågningar* och- *gränser* bör du överväga att köra vissa prestandatester för att förstå om dessa värden är korrekt inställda. Dessutom minskar aldrig värdena till punkten när programmet blir instabilt.
 
 ## <a name="reduce-network-travel"></a>Minska nätverks resor
 
@@ -74,4 +74,4 @@ Läs mer om funktionerna i AKS som nämns i den här artikeln:
 [node-sizing]: use-multiple-node-pools.md#specify-a-vm-size-for-a-node-pool
 [sustainability-calculator]: https://azure.microsoft.com/blog/microsoft-sustainability-calculator-helps-enterprises-analyze-the-carbon-emissions-of-their-it-infrastructure/
 [system-pools]: use-system-pools.md
-[principles-green]: https://principles.green/
+[principles-sse]: https://docs.microsoft.com/learn/modules/sustainable-software-engineering-overview/

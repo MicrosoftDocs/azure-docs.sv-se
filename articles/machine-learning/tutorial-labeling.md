@@ -10,12 +10,13 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 36c5f0103908ea150cbe6eb373e25f7d741127f5
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.custom: data4ml
+ms.openlocfilehash: 5aec3d6bb2afeadda64ac19563f8334a6aef3b77
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913270"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347514"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Självstudie: skapa ett etikett projekt för bild klassificering med flera klasser 
 
@@ -58,19 +59,19 @@ Härnäst ska du hantera projektet för data etiketter i Azure Machine Learning 
 
 Azure Machine Learning data lager används för att lagra anslutnings information, t. ex. prenumerations-ID och token-auktorisering. Här använder du ett data lager för att ansluta till det lagrings konto som innehåller avbildningarna för den här självstudien.
 
-1. På vänster sida av arbets ytan väljer du **data lager** .
+1. På vänster sida av arbets ytan väljer du **data lager**.
 
-1. Välj **+ nytt data lager** .
+1. Välj **+ nytt data lager**.
 
 1. Fyll i formuläret med följande inställningar:
 
     Fält|Beskrivning 
     ---|---
-    Data lager namn | Ge data lagret ett namn.  Här använder vi **labeling_tutorial** .
-    Data lager typ | Välj lagrings typ.  Här använder vi **Azure Blob Storage** , den önskade lagringen för avbildningar.
-    Val av konto | Välj **ange manuellt** .
+    Data lager namn | Ge data lagret ett namn.  Här använder vi **labeling_tutorial**.
+    Data lager typ | Välj lagrings typ.  Här använder vi **Azure Blob Storage**, den önskade lagringen för avbildningar.
+    Val av konto | Välj **ange manuellt**.
     URL | `https://azureopendatastorage.blob.core.windows.net/openimagescontainer`
-    Autentiseringstyp | Välj **SAS-token** .
+    Autentiseringstyp | Välj **SAS-token**.
     Kontonyckel | `?sv=2019-02-02&ss=bfqt&srt=sco&sp=rl&se=2025-03-25T04:51:17Z&st=2020-03-24T20:51:17Z&spr=https&sig=7D7SdkQidGT6pURQ9R4SUzWGxZ%2BHlNPCstoSRRVg8OY%3D`
 
 1. Välj **skapa** för att skapa data lagret.
@@ -81,7 +82,7 @@ Nu när du har åtkomst till de data som du vill ha med etikett, skapar du ett e
 
 1. Välj **projekt** längst upp på sidan.
 
-1. Välj **+ Lägg till projekt** .
+1. Välj **+ Lägg till projekt**.
 
     :::image type="content" source="media/tutorial-labeling/create-project.png" alt-text="Skapa ett projekt":::
 
@@ -91,22 +92,22 @@ Nu när du har åtkomst till de data som du vill ha med etikett, skapar du ett e
 
     Fält|Beskrivning 
     ---|---
-    Projektnamn | Ge ditt projekt ett namn.  Här kommer vi att använda **självstudie – katter-n-hundar** .
-    Etikettering av uppgifts typ | Välj **bild klassificering flera klasser** .  
+    Projektnamn | Ge ditt projekt ett namn.  Här kommer vi att använda **självstudie – katter-n-hundar**.
+    Etikettering av uppgifts typ | Välj **bild klassificering flera klasser**.  
     
     Välj **Nästa** för att fortsätta skapa projektet.
 
 ### <a name="select-or-create-a-dataset"></a>Välj eller skapa en data uppsättning
 
-1.   I formuläret **Välj eller skapa en data uppsättning** väljer du det andra alternativet, **skapar en data uppsättning** och väljer sedan länken **från data lagret** .
+1.   I formuläret **Välj eller skapa en data uppsättning** väljer du det andra alternativet, **skapar en data uppsättning** och väljer sedan länken **från data lagret**.
 
 1. Använd följande indata för formuläret **skapa data uppsättning från data lager** :
 
-    1. I formuläret **grundläggande information** lägger du till ett namn. här kommer vi att använda **bilder för självstudier** .  Lägg till en beskrivning om du vill.  Välj sedan **Nästa** .
-    1. Använd List rutan i **urvals formuläret för data lager** för att välja ditt **tidigare skapade data lager** , till exempel **tutorial_images (Azure Blob Storage)**
-    1. Sedan väljer du **Bläddra** i formuläret lagrings **område** och väljer sedan **DogsCats** .  Välj **Spara** för att använda **/MultiClass-DogsCats** som sökväg.
+    1. I formuläret **grundläggande information** lägger du till ett namn. här kommer vi att använda **bilder för självstudier**.  Lägg till en beskrivning om du vill.  Välj sedan **Nästa**.
+    1. Använd List rutan i **urvals formuläret för data lager** för att välja ditt **tidigare skapade data lager**, till exempel **tutorial_images (Azure Blob Storage)**
+    1. Sedan väljer du **Bläddra** i formuläret lagrings **område** och väljer sedan **DogsCats**.  Välj **Spara** för att använda **/MultiClass-DogsCats** som sökväg.
     1. Välj **Nästa** för att bekräfta informationen och **skapa** sedan för att skapa data uppsättningen.
-    1. Välj cirkeln bredvid data uppsättningens namn i listan, till exempel **bilder – självstudier** .
+    1. Välj cirkeln bredvid data uppsättningens namn i listan, till exempel **bilder – självstudier**.
 
 1. Välj **Nästa** för att fortsätta skapa projektet.
 
@@ -114,11 +115,11 @@ Nu när du har åtkomst till de data som du vill ha med etikett, skapar du ett e
 
 Om du planerar att lägga till nya avbildningar i din data uppsättning kommer den stegvisa uppdateringen att hitta dessa nya avbildningar och lägga till dem i projektet.  När du aktiverar den här funktionen kommer projektet att regelbundet söka efter nya avbildningar.  Du kommer inte att lägga till nya avbildningar i data lagret för den här själv studie kursen, så lämna den här funktionen omarkerad.
 
-Fortsätt genom att välja **Nästa** .
+Fortsätt genom att välja **Nästa**.
 
 ### <a name="label-classes"></a>Etikett klasser
 
-1. I formuläret **etikett klasser** anger du ett etikett namn och väljer sedan **+ Lägg till etikett** för att skriva nästa etikett.  För det här projektet är etiketterna **katt** , **hund** och **osäkra** .
+1. I formuläret **etikett klasser** anger du ett etikett namn och väljer sedan **+ Lägg till etikett** för att skriva nästa etikett.  För det här projektet är etiketterna **katt**, **hund** och **osäkra**.
 
 1. Välj **Nästa** när du har lagt till alla etiketter.
 
@@ -128,13 +129,13 @@ Fortsätt genom att välja **Nästa** .
 
 1. Du kan också lägga till en kort beskrivning av uppgiften direkt i formuläret.  Vägledning för typ **Etiketter – katter & hundar.**
 
-1. Välj **Nästa** .
+1. Välj **Nästa**.
 
 1. Lämna kryss rutan omarkerad i avsnittet **ml-märkning** . ML-etiketter kräver mer data än vad du kommer att använda i den här självstudien.
 
-1. Välj **Skapa projekt** .
+1. Välj **Skapa projekt**.
 
-Den här sidan uppdateras inte automatiskt. Efter en paus uppdaterar du sidan manuellt tills projektets status ändras till **skapad** .
+Den här sidan uppdateras inte automatiskt. Efter en paus uppdaterar du sidan manuellt tills projektets status ändras till **skapad**.
 
 ## <a name="start-labeling"></a>Starta märkning
 
@@ -142,13 +143,13 @@ Nu har du konfigurerat dina Azure-resurser och konfigurerat ett projekt med data
 
 ### <a name="tag-the-images"></a>Tagga bilderna
 
-I den här delen av självstudien byter du roller från *projekt administratören* till en *Labeler* .  Alla som har deltagar åtkomst till din arbets yta kan bli en Labeler.
+I den här delen av självstudien byter du roller från *projekt administratören* till en *Labeler*.  Alla som har deltagar åtkomst till din arbets yta kan bli en Labeler.
 
 1. I [Machine Learning Studio](https://ml.azure.com)väljer du **data etiketter** till vänster för att hitta ditt projekt.  
 
 1. Välj **etikett länk** för projektet.
 
-1. Läs anvisningarna och välj sedan **uppgifter** .
+1. Läs anvisningarna och välj sedan **uppgifter**.
 
 1. Välj en miniatyr bild till höger om du vill visa hur många bilder du vill etikettera i en go. Du måste märka alla de här bilderna innan du kan gå vidare. Växla bara layouter när du har en ny sida med omärkta data. När du växlar layouter rensas sidans pågående märknings arbete.
 
@@ -194,7 +195,7 @@ Bild etiketter kan exporteras i [Coco-format](http://cocodataset.org/#format-dat
 
 1. Välj länken projekt namn.
 
-1. Välj **Exportera** och välj **Exportera som Azure ml-datauppsättning** . 
+1. Välj **Exportera** och välj **Exportera som Azure ml-datauppsättning**. 
 
     Status för exporten visas strax under knappen **Exportera** . 
 

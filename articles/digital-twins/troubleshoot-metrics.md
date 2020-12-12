@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5b689ef15c247cea1887948ae271802294bbd0fc
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 4b72bb8bac8f9949c83d0bbc85a0995f790c437d
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763256"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347905"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Felsöka Azure Digitals dubbla: mått
 
@@ -48,6 +48,17 @@ Mått är aktiverat som standard. Du kan visa Azure Digitals dubbla mått från 
 Azure Digitals dubbla innehåller flera mått för att ge dig en översikt över hälso tillståndet för din instans och dess tillhör ande resurser. Du kan också kombinera information från flera mått för att måla en större bild av instansens tillstånd. 
 
 I följande tabeller beskrivs de mått som spåras av varje Azure Digital-instansen och hur varje mått relaterar till den övergripande statusen för din instans.
+
+#### <a name="metrics-for-tracking-service-limits"></a>Mått för spårning av tjänst begränsningar
+
+Du kan konfigurera dessa mått för att spåra när du närmar dig en [publicerad tjänst gräns](reference-service-limits.md#functional-limits) för någon aspekt av din lösning. 
+
+Använd [aviserings](troubleshoot-alerts.md) funktionen i Azure Monitor om du vill konfigurera detta. Du kan definiera tröskelvärden för dessa mått så att du får en avisering när ett mått når en viss procent andel av den publicerade gränsen.
+
+| Mått | Mått visnings namn | Enhet | Sammansättningstyp| Beskrivning | Dimensioner |
+| --- | --- | --- | --- | --- | --- |
+| TwinCount | Antal dubbla (för hands version) | Antal | Totalt | Totalt antal dubbla i Azure Digitals-instansen. Använd det här måttet för att avgöra om du närmar dig [tjänst gränsen](reference-service-limits.md#functional-limits) för högsta antal tillåtna gränser per instans. |  Inga |
+| ModelCount | Modell antal (för hands version) | Antal | Totalt | Totalt antal modeller i Azure Digitals dubbla instansen. Använd det här måttet för att avgöra om du närmar dig [tjänst gränsen](reference-service-limits.md#functional-limits) för högsta antal modeller som tillåts per instans. | Inga |
 
 #### <a name="api-request-metrics"></a>API-begärans mått
 

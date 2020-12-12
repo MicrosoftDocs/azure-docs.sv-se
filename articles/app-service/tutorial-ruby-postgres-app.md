@@ -5,12 +5,12 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
-ms.openlocfilehash: b3c172584c42e1ed1d7ca94b6cd51bedd4e49dae
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: f565fcef60b2cb4726b180eb67e6ac1fcaefc24b
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862300"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347854"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Skapa en Ruby- och Postgres-app i Azure App Service på Linux
 
@@ -30,7 +30,7 @@ I den här guiden får du lära dig att:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här kursen behöver du:
 
@@ -291,7 +291,7 @@ git remote add azure <paste-copied-url-here>
 Skicka till Azure-fjärrdatabasen för att distribuera Ruby on Rails-appen. Du uppmanas att ange lösenordet du angav tidigare. Det behövs för att skapa distributionsanvändaren.
 
 ```bash
-git push azure main
+git push azure master
 ```
 
 Under distributionen meddelar Azure App Service förloppet till Git.
@@ -302,7 +302,7 @@ Delta compression using up to 8 threads.
 Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
 Total 3 (delta 2), reused 0 (delta 0)
-remote: Updating branch 'main'.
+remote: Updating branch 'master'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id 'a5e076db9c'.
 remote: Running custom deployment command...
@@ -421,7 +421,7 @@ Genomför alla ändringar på Git och skicka sedan kodändringarna till Azure.
 ```bash
 git add .
 git commit -m "added complete checkbox"
-git push azure main
+git push azure master
 ```
 
 När `git push` har slutförts så kan du gå till Azure-appen och prova de nya funktionerna.

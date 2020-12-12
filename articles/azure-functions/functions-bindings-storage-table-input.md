@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 7f5db2a2df7314c89f2ebba8e7e54ebe24126386
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 20dc6cde9cce6a9d57047940a38adb5cf004ae6a
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92098252"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347684"
 ---
 # <a name="azure-table-storage-input-bindings-for-azure-functions"></a>Data bindningar för Azure Table Storage för Azure Functions
 
@@ -23,7 +23,7 @@ Använd data bindningen för Azure Table Storage för att läsa en tabell i ett 
 
 ### <a name="one-entity"></a>En entitet
 
-I följande exempel visas en [C#-funktion](functions-dotnet-class-library.md) som läser en enskild tabell rad. För varje meddelande som skickas till kön aktive ras funktionen.
+I följande exempel visas en [C#-funktion](functions-dotnet-class-library.md) som läser en enskild tabell rad. För varje meddelande som skickas till kön utlöses funktionen.
 
 Rad nyckel svärdet {queueTrigger} anger att rad nyckeln kommer från köns meddelande sträng.
 
@@ -542,9 +542,9 @@ I följande tabell förklaras de egenskaper för bindnings konfiguration som du 
 
 |function.jspå egenskap | Attributets egenskap |Beskrivning|
 |---------|---------|----------------------|
-|**bastyp** | Saknas | Måste anges till `table` . Den här egenskapen anges automatiskt när du skapar bindningen i Azure Portal.|
-|**position** | Saknas | Måste anges till `in` . Den här egenskapen anges automatiskt när du skapar bindningen i Azure Portal. |
-|**Namn** | Saknas | Namnet på variabeln som representerar tabellen eller entiteten i funktions koden. | 
+|**bastyp** | saknas | Måste anges till `table` . Den här egenskapen anges automatiskt när du skapar bindningen i Azure Portal.|
+|**position** | saknas | Måste anges till `in` . Den här egenskapen anges automatiskt när du skapar bindningen i Azure Portal. |
+|**Namn** | saknas | Namnet på variabeln som representerar tabellen eller entiteten i funktions koden. | 
 |**tableName** | **TableName** | Namnet på tabellen.| 
 |**partitionKey** | **PartitionKey** |Valfritt. Partitionsnyckel för den tabell entitet som ska läsas. I avsnittet [användning](#usage) finns information om hur du använder den här egenskapen.| 
 |**rowKey** |**RowKey** | Valfritt. Rad nyckeln för den tabell entitet som ska läsas. I avsnittet [användning](#usage) finns information om hur du använder den här egenskapen.| 

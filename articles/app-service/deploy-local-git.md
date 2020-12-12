@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 5ed3e858168ce5ad9a7f089b723bb75ca8a49fca
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 26fd8bc73fad3ea313641fc4b1e0f454ee2c0813
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007525"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347786"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Lokal Git-distribution till Azure App Service
 
@@ -80,7 +80,7 @@ Använd den URL som används för att distribuera din app i nästa steg.
    git remote add azure <url>
    ```
    
-1. Skicka till Azure-fjärrservern med `git push azure main` . 
+1. Skicka till Azure-fjärrservern med `git push azure master` . 
    
 1. I fönstret **git Credential Manager** anger du ditt [distributions användar lösen ord](#configure-a-deployment-user), inte ditt Azures inloggnings lösen ord.
    
@@ -131,7 +131,7 @@ Så här aktiverar du lokal Git-distribution för din app med Azure-pipeliner (f
    git remote add azure <url>
    ```
    
-1. Skicka till Azure-fjärrservern med `git push azure main` . 
+1. Skicka till Azure-fjärrservern med `git push azure master` . 
    
 1. Logga in med ditt visualstudio.com-användarnamn på sidan **git Credential Manager** . Andra autentiseringsmetoder finns i [Översikt över Azure DevOps Services-autentisering](/vsts/git/auth-overview?view=vsts).
    
@@ -149,9 +149,9 @@ Följande vanliga fel meddelanden kan visas när du använder Git för att publi
 ---|---|---|
 |`Unable to access '[siteURL]': Failed to connect to [scmAddress]`|Appen är inte igång.|Starta appen i Azure Portal. Git-distribution är inte tillgängligt när webbappen har stoppats.|
 |`Couldn't resolve host 'hostname'`|Adress informationen för fjärran slutet av Azure är felaktig.|Använd `git remote -v` kommandot för att lista alla fjärranslutna, tillsammans med tillhör ande URL. Kontrol lera att URL: en för "Azure"-fjärrplatsen är korrekt. Om det behövs tar du bort och återskapar denna fjärr anslutning med rätt URL.|
-|`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'main'.`|Du har inte angett någon gren under `git push` eller så har du inte angett `push.default` värdet i `.gitconfig` .|Kör `git push` igen och ange huvud grenen: `git push azure main` .|
-|`src refspec [branchname] does not match any.`|Du försökte skicka till en annan gren än main på Azure-fjärrplatsen.|Kör `git push` igen och ange huvud grenen: `git push azure main` .|
-|`RPC failed; result=22, HTTP code = 5xx.`|Det här felet kan inträffa om du försöker skicka en stor git-lagringsplats via HTTPS.|Ändra git-konfigurationen på den lokala datorn så att den blir `postBuffer` större. Exempel: `git config --global http.postBuffer 524288000`.|
+|`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'main'.`|Du har inte angett någon gren under `git push` eller så har du inte angett `push.default` värdet i `.gitconfig` .|Kör `git push` igen och ange huvud grenen: `git push azure master` .|
+|`src refspec [branchname] does not match any.`|Du försökte skicka till en annan gren än main på Azure-fjärrplatsen.|Kör `git push` igen och ange huvud grenen: `git push azure master` .|
+|`RPC failed; result=22, HTTP code = 5xx.`|Det här felet kan inträffa om du försöker skicka en stor git-lagringsplats via HTTPS.|Ändra git-konfigurationen på den lokala datorn så att den blir `postBuffer` större. Till exempel: `git config --global http.postBuffer 524288000`.|
 |`Error - Changes committed to remote repository but your web app not updated.`|Du har distribuerat en Node.js-app med en _package.jspå_ en fil som anger ytterligare nödvändiga moduler.|Granska `npm ERR!` fel meddelandena före det här felet för mer information om felet. Följande är kända orsaker till det här felet och motsvarande `npm ERR!` meddelanden:<br /><br />**Felaktig package.jspå fil**: `npm ERR! Couldn't read dependencies.`<br /><br />**Den ursprungliga modulen har ingen binär distribution för Windows**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />eller <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 
 ## <a name="additional-resources"></a>Ytterligare resurser

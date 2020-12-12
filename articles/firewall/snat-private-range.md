@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: victorh
-ms.openlocfilehash: 858343b6c5081b52d9e93909f9d52eaccd88a584
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: c5613dda7adbbc47f989bc2a772777e716620b3c
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660278"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97348041"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Azure Firewall SNAT privata IP-adressintervall
 
@@ -35,9 +35,22 @@ Du kan använda Azure PowerShell för att ange privata IP-adressintervall för b
 
 ### <a name="new-firewall"></a>Ny brand vägg
 
-För en ny brand vägg är Azure PowerShell kommandot:
+För en ny brand vägg är Azure PowerShell cmdlet:
 
-`New-AzFirewall -Name $GatewayName -ResourceGroupName $RG -Location $Location -VirtualNetworkName $vnet.Name -PublicIpName $LBPip.Name -PrivateRange @("IANAPrivateRanges","IPRange1", "IPRange2")`
+```azurepowershell
+$azFw = @{
+    Name               = '<fw-name>'
+    ResourceGroupName  = '<resourcegroup-name>'
+    Location           = '<location>'
+    VirtualNetworkName = '<vnet-name>'
+    PublicIpName       = '<public-ip-name>'
+    PrivateRange       = @("IANAPrivateRanges", "192.168.1.0/24", "192.168.1.10")
+}
+
+New-AzFirewall @azFw
+```
+> [!NOTE]
+> Distribution av Azure-brandväggen med `New-AzFirewall` kräver ett befintligt virtuellt nätverk och en offentlig IP-adress. Se [distribuera och konfigurera Azure-brandväggen med hjälp av Azure PowerShell](deploy-ps.md) för en fullständig distributions guide.
 
 > [!NOTE]
 > IANAPrivateRanges utökas till aktuella standardinställningar i Azure-brandväggen medan de andra intervallen läggs till i den. För att behålla IANAPrivateRanges-standardvärdet i ditt privata intervall, måste det finnas i din `PrivateRange` specifikation, som du ser i följande exempel.
@@ -46,22 +59,54 @@ Mer information finns i [New-AzFirewall](/powershell/module/az.network/new-azfir
 
 ### <a name="existing-firewall"></a>Befintlig brand vägg
 
-Om du vill konfigurera en befintlig brand vägg använder du följande Azure PowerShell-kommandon:
+Om du vill konfigurera en befintlig brand vägg använder du följande Azure PowerShell-cmdlet: ar:
 
 ```azurepowershell
-$azfw = Get-AzFirewall -ResourceGroupName "Firewall Resource Group name"
-$azfw.PrivateRange = @("IANAPrivateRanges","IPRange1", "IPRange2")
+$azfw = Get-AzFirewall -Name '<fw-name>' -ResourceGroupName '<resourcegroup-name>'
+$azfw.PrivateRange = @("IANAPrivateRanges","192.168.1.0/24", "192.168.1.10")
 Set-AzFirewall -AzureFirewall $azfw
 ```
 
-### <a name="templates"></a>Mallar
+## <a name="configure-snat-private-ip-address-ranges---azure-cli"></a>Konfigurera SNAT privata IP-adressintervall – Azure CLI
 
-Du kan lägga till följande i `additionalProperties` avsnittet:
+Du kan använda Azure CLI för att ange privata IP-adressintervall för brand väggen.
 
+### <a name="new-firewall"></a>Ny brand vägg
+
+För en ny brand vägg är Azure CLI-kommandot:
+
+```azurecli-interactive
+az network firewall create \
+-n <fw-name> \
+-g <resourcegroup-name> \
+--private-ranges 192.168.1.0/24 192.168.1.10 IANAPrivateRanges
 ```
+
+> [!NOTE]
+> Distribution av Azure-brandväggen med Azure CLI-kommandot `az network firewall create` kräver ytterligare konfigurations steg för att skapa offentliga IP-adresser och IP-konfiguration. Se [distribuera och konfigurera Azure-brandväggen med Azure CLI](deploy-cli.md) för en fullständig distributions guide.
+
+> [!NOTE]
+> IANAPrivateRanges utökas till aktuella standardinställningar i Azure-brandväggen medan de andra intervallen läggs till i den. För att behålla IANAPrivateRanges-standardvärdet i ditt privata intervall, måste det finnas i din `PrivateRange` specifikation, som du ser i följande exempel.
+
+### <a name="existing-firewall"></a>Befintlig brand vägg
+
+Om du vill konfigurera en befintlig brand vägg är Azure CLI-kommandot:
+
+```azurecli-interactive
+az network firewall update \
+-n <fw-name> \
+-g <resourcegroup-name> \
+--private-ranges 192.168.1.0/24 192.168.1.10 IANAPrivateRanges
+```
+
+## <a name="configure-snat-private-ip-address-ranges---arm-template"></a>Konfigurera SNAT-privata IP-adressintervall – ARM-mall
+
+Om du vill konfigurera SNAT under ARM-Malldistribution kan du lägga till följande i `additionalProperties` egenskapen:
+
+```json
 "additionalProperties": {
-                    "Network.SNAT.PrivateRanges": "IANAPrivateRanges , IPRange1, IPRange2"
-                },
+   "Network.SNAT.PrivateRanges": "IANAPrivateRanges , IPRange1, IPRange2"
+},
 ```
 
 ## <a name="configure-snat-private-ip-address-ranges---azure-portal"></a>Konfigurera SNAT-privata IP-adressintervall – Azure Portal

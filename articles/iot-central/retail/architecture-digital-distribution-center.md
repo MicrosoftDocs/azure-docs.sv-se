@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: b73d065b43aff5f9793e642a102ff8bb2a7be036
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b2e6993cd8dc77ccb9b43a3d5aef7b25fd9d7250
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81000450"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347123"
 ---
 # <a name="architecture-of-iot-central-digital-distribution-center-application-template"></a>Arkitektur för IoT Central app-mall för digital distributions Center
 
@@ -26,7 +26,7 @@ Partner och kunder kan använda appens mall & följande rikt linjer för att utv
 1. Uppsättning IoT-sensorer som skickar telemetridata till en gateway-enhet
 2. Gateway-enheter skickar telemetri och sammanställda insikter till IoT Central
 3. Data dirigeras till önskad Azure-tjänst för manipulering
-4. Azure-tjänster som ASA eller Azure Functions kan användas för att formatera om data strömmar och skicka till önskade lagrings konton 
+4. Azure-tjänster som ASA eller Azure Functions kan användas för att formatera om data strömmar och skicka till önskade lagrings konton
 5. Bearbetade data lagras i frekvent lagring för nära real tids åtgärder eller kall lagring för ytterligare Insight-förbättringar som baseras på ML-eller batch-analys. 
 6. Logic Apps kan användas för att driva olika arbets flöden i affärs program för slutanvändare
 

@@ -4,12 +4,12 @@ description: Den här artikeln beskriver real tids visningen av Kubernetes-logga
 ms.topic: conceptual
 ms.date: 12/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: a97d7ed5fe513798f4265498f4efa60098ea15c6
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 3bfc9aa0f0238d99d9336abe592fa721459f4220
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920726"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346839"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Så här visar du Kubernetes-loggar, händelser och Pod-mått i real tid
 
@@ -35,7 +35,7 @@ Använd följande procedur för att Visa Live-loggar för distributioner som ing
 
 5. Välj en POD för att starta insamling av Live-data.
 
-    ![Distribuera Live-loggar](./media/container-insights-livedata-overview/live-data-deployment.png)
+    [![Distribuera Live-loggar](./media/container-insights-livedata-overview/live-data-deployment.png)](./media/container-insights-livedata-overview/live-data-deployment.png#lightbox)
 
 ## <a name="view-logs"></a>Visa loggar
 
@@ -107,16 +107,22 @@ När du har autentiserat visas konsol fönstret Live data (förhands granskning)
 ## <a name="using-live-data-views"></a>Använda Live data-vyer
 I följande avsnitt beskrivs funktioner som du kan använda i olika vyer för Live-data.
 
-### <a name="search"></a>Sök
+### <a name="search"></a>Search
 Funktionen Live data (för hands version) innehåller Sök funktioner. I **Sök** fältet kan du filtrera resultaten genom att skriva ett nyckel ord eller en term, och eventuella matchande resultat markeras för att tillåta snabb granskning. När du visar händelser kan du dessutom begränsa resultaten med hjälp av **filtret** Pill som finns till höger om Sök fältet. Beroende på vilken resurs du har valt visar Pill en pod, ett namn område eller ett kluster att välja från.
 
 ![Filter exempel för Live data konsol fönster](./media/container-insights-livedata-overview/livedata-pane-filter-example.png)
+
+![Filter exempel för Live data konsol fönster för distribution](./media/container-insights-livedata-overview/live-data-deployment-search.png)
 
 ### <a name="scroll-lock-and-pause"></a>Rulla låset och pausa
 
 Om du vill pausa autorullningen och kontrol lera beteendet för fönstret, så att du kan bläddra manuellt genom de nya data som lästs, kan du använda **rullnings** alternativet. Om du vill aktivera autorullning igen väljer du bara **rullnings** alternativet igen. Du kan också pausa hämtningen av logg-eller händelse data genom att välja alternativet **pausa** och när du är redo att återuppta väljer du **spela** bara.
 
 ![Fönstret Live data konsol pausa Live-vyn](./media/container-insights-livedata-overview/livedata-pane-scroll-pause-example.png)
+
+![Fönstret Live data konsol pausa Live-vyn för distribution](./media/container-insights-livedata-overview/live-data-deployment-pause.png)
+
+
 
 >[!IMPORTANT]
 >Vi rekommenderar att du bara pausar eller pausar den här snabb rullningen under en kort tids period när du felsöker ett problem. Dessa förfrågningar kan påverka tillgängligheten och begränsningen av Kubernetes-API: et i klustret.
