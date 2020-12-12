@@ -13,12 +13,12 @@ ms.date: 07/22/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: b08f00730e15dd0c7415a28adf85b87c95d7b1ed
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: a18e3cb65b2ef70a04ca1d7e74dd9d5f42e3a933
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347153"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355774"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Objekt för program och tjänstens huvudnamn i Azure Active Directory
 
@@ -66,7 +66,7 @@ Programobjektet fungerar som mallen som vanliga och standardinställda egenskape
 Ett huvud namn för tjänsten måste skapas i varje klient där programmet används, vilket gör det möjligt att upprätta en identitet för inloggning och/eller åtkomst till resurser som skyddas av klienten. Ett program för enskild klient har bara ett tjänsthuvudnamn (i dess startklientorganisation), som skapas och godkänns vid programregistrering. Ett webb program/API för flera innehavare har också ett tjänst huvud namn som skapats i varje klient organisation där en användare från den klienten har samtyckt till användningen.
 
 > [!NOTE]
-> Alla ändringar du gör i ditt program objekt visas också i dess tjänst huvud objekt i programmets hem klient (den klient där det registrerades). För program med flera klient organisationer avspeglas inte ändringar i programobjektet i någon konsument innehavares tjänst huvud objekt, tills åtkomsten tas bort via [program åtkomst panelen](https://myapps.microsoft.com) och beviljats igen.
+> Eventuella ändringar som du gör i program objekt avspeglas också i dess tjänst huvud objekt i programmets hem klient (den klient där det registrerades). För program med flera klient organisationer avspeglas inte ändringar i programobjektet i någon konsument innehavares tjänst huvud objekt, tills åtkomsten tas bort via [program åtkomst panelen](https://myapps.microsoft.com) och beviljats igen.
 >
 > Observera också att interna program registreras som flera klienter som standard.
 

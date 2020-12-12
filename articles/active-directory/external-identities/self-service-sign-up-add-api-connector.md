@@ -11,16 +11,19 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d121e6280b83265a742736f9b8dd3aee96a8b32e
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: f34ca47d5ff6c809eef40f89ee0049285cfd7d42
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351767"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355401"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Lägga till en API-anslutning till ett användar flöde
 
 Om du vill använda en [API-anslutning](api-connectors-overview.md)skapar du först API-anslutningen och aktiverar den sedan i ett användar flöde.
+
+> [!IMPORTANT]
+>Från och med den **4 januari 2021** är Google [inaktuell WebView-inloggning support](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html). Om du använder Google Federation eller självbetjänings registrering med Gmail bör du [testa dina verksamhetsbaserade interna program för kompatibilitet](google-federation.md#deprecation-of-webview-sign-in-support).
 
 ## <a name="create-an-api-connector"></a>Skapa en API-anslutning
 
@@ -248,8 +251,8 @@ Content-type: application/json
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | version                                            | Sträng            | Ja      | API-versionen.                                                                                                                                                                                                                                                                |
 | åtgärd                                             | Sträng            | Ja      | Värdet måste vara `Continue` .                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | Inga       | Värden kan lagras i katalogen om de har valts som ett _-*anspråk för att ta emot** i konfigurationen för API- **anslutningen och användarattribut** för ett användar flöde. Värdena kan returneras i token om de väljs som ett **program anspråk**.                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Inga       | Det returnerade anspråket behöver inte innehålla `_<extensions-app-id>_` . Värdena lagras i katalogen om de valts som ett **anspråk att ta emot** i API-kopplingens konfiguration och **användarattribut** för ett användar flöde. Det går inte att skicka anpassade attribut tillbaka i token. |
+| \<builtInUserAttribute>                            | \<attribute-type> | Nej       | Värden kan lagras i katalogen om de har valts som ett _-*anspråk för att ta emot** i konfigurationen för API- **anslutningen och användarattribut** för ett användar flöde. Värdena kan returneras i token om de väljs som ett **program anspråk**.                                              |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Nej       | Det returnerade anspråket behöver inte innehålla `_<extensions-app-id>_` . Värdena lagras i katalogen om de valts som ett **anspråk att ta emot** i API-kopplingens konfiguration och **användarattribut** för ett användar flöde. Det går inte att skicka anpassade attribut tillbaka i token. |
 
 ### <a name="example-of-a-blocking-response"></a>Exempel på ett blockerande svar
 
@@ -271,7 +274,7 @@ Content-type: application/json
 | version     | Sträng | Ja      | API-versionen.                                                    |
 | åtgärd      | Sträng | Ja      | Värdet måste vara `ShowBlockPage`                                              |
 | userMessage | Sträng | Ja      | Meddelande som ska visas för användaren.                                            |
-| kod        | Sträng | Inga       | Felkod. Kan användas för fel söknings syfte. Visas inte för användaren. |
+| kod        | Sträng | Nej       | Felkod. Kan användas för fel söknings syfte. Visas inte för användaren. |
 
 **Slut användar upplevelse med ett blockerande svar**
 
@@ -298,7 +301,7 @@ Content-type: application/json
 | åtgärd      | Sträng  | Ja      | Värdet måste vara `ValidationError` .                                           |
 | status      | Integer | Ja      | Måste vara `400` ett värde för ett ValidationError-svar.                        |
 | userMessage | Sträng  | Ja      | Meddelande som ska visas för användaren.                                            |
-| kod        | Sträng  | Inga       | Felkod. Kan användas för fel söknings syfte. Visas inte för användaren. |
+| kod        | Sträng  | Nej       | Felkod. Kan användas för fel söknings syfte. Visas inte för användaren. |
 
 **Slut användar upplevelse med ett verifierings fel svar**
 

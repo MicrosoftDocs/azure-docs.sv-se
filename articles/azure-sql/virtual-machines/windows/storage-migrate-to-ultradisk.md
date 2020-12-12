@@ -8,18 +8,19 @@ editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 12ba0900f2499965f7843672183310dfecfbab2b
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 42d7760d25f6ab591c19889eb2159711d6de1b07
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146679"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356760"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>Migrera logg disken till Ultra disk
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -44,15 +45,15 @@ Följ dessa steg om du vill aktivera kompatibilitet:
 
 1. Gå till den virtuella datorn i [Azure Portal](https://portal.azure.com/). 
 1. Stoppa/frigör den virtuella datorn. 
-1. Välj **diskar** under **Inställningar** och välj sedan **ytterligare inställningar** . 
+1. Välj **diskar** under **Inställningar** och välj sedan **ytterligare inställningar**. 
 
    :::image type="content" source="media/storage-migrate-to-ultradisk/additional-disks-settings-azure-portal.png" alt-text="Välj ytterligare inställningar för diskar under Inställningar i Azure Portal":::
 
-1. Välj **Ja** om du vill **Aktivera Ultra disk-kompatibilitet** . 
+1. Välj **Ja** om du vill **Aktivera Ultra disk-kompatibilitet**. 
 
-   :::image type="content" source="../../../virtual-machines/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="Välj ytterligare inställningar för diskar under Inställningar i Azure Portal":::
+   :::image type="content" source="../../../virtual-machines/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="Skärm bild som visar alternativet Ja.":::
 
-1. Välj **Spara** . 
+1. Välj **Spara**. 
 
 
 
@@ -83,7 +84,7 @@ Konfigurera SQL Server att använda den nya logg enheten. Du kan göra det med h
 1. Verifiera det tjänst konto som används av SQL Server. Du kan göra detta med hjälp av Konfigurationshanteraren för SQL Server eller Services. msc.
 1. Navigera till den nya disken. 
 1. Skapa en mapp (eller flera mappar) som ska användas för logg filen. 
-1. Högerklicka på mappen och välj **Egenskaper** .
+1. Högerklicka på mappen och välj **Egenskaper**.
 1. På fliken **säkerhet** beviljar du fullständig behörighet till SQL Server tjänst konto. 
 1. Välj **OK**  för att spara inställningarna. 
 1. Upprepa detta för varje mapp på rotnivå där du planerar att ha SQL-data. 
@@ -143,14 +144,14 @@ I det här läget kommer databasen att vara online med loggen på den nya platse
 Använd SSMS för att flytta befintliga filer till en ny plats:
 
 1. Anslut till databasen i SQL Server Management Studio (SSMS). 
-1. Högerklicka på databasen, Välj **Egenskaper** och välj sedan **filer** . 
+1. Högerklicka på databasen, Välj **Egenskaper** och välj sedan **filer**. 
 1. Anteckna sökvägen till de befintliga filerna. 
 1. Välj **OK** för att stänga dialogrutan. 
-1. Högerklicka på databasen, Välj **aktiviteter**  >  **Koppla från** . 
+1. Högerklicka på databasen, Välj **aktiviteter**  >  **Koppla från**. 
 1. Ta bort databasen genom att följa guiden. 
 1. Använd Utforskaren för att manuellt flytta logg filen till den nya platsen.
 1. Bifoga databasen i SQL Server Management Studio
-   1. Högerklicka på **databaser** i **Object Explorer** och välj **bifoga databas** . 
+   1. Högerklicka på **databaser** i **Object Explorer** och välj **bifoga databas**. 
    1. Använd dialog rutan för att lägga till varje fil, inklusive logg filen på den nya platsen. 
    1. Välj **OK** för att bifoga databasen. 
 

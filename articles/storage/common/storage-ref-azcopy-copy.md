@@ -4,16 +4,16 @@ description: Den här artikeln innehåller referensinformation för kommandot Az
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 07/24/2020
+ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: fd71f4eb56974b93637c23eddc81e5f33ce788b8
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 6390aafca4937a480e4d92ff04003a294b9c0e20
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512162"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356182"
 ---
 # <a name="azcopy-copy"></a>azcopy kopiera
 
@@ -276,13 +276,15 @@ Kopiera en delmängd av buckets med hjälp av en symbol för jokertecken (*) i B
 
 **--include-efter** sträng inkluderar endast de filer som har ändrats på eller efter det datum/tid som angetts. Värdet ska vara i ISO8601-format. Om ingen tidszon anges antas värdet vara i den lokala tids zonen på den dator som kör AzCopy. till exempel `2020-08-19T15:04:00Z` för en UTC-tid eller `2020-08-19` för midnatt (00:00) i den lokala tids zonen. Som vid AzCopy 10,5 gäller den här flaggan bara för filer, inte mappar, så att mappegenskaper inte kopieras när du använder den här flaggan med `--preserve-smb-info` eller `--preserve-smb-permissions` .
 
+ **--include-före-** sträng inkluderar endast de filer som har ändrats före eller efter angivet datum/tid. Värdet ska vara i ISO8601-format. Om ingen tidszon anges antas värdet vara i den lokala tids zonen på den dator som kör AzCopy. T.ex. `2020-08-19T15:04:00Z` för en UTC-tid, eller `2020-08-19` för midnatt (00:00) i den lokala tids zonen. Från och med AzCopy 10,7 gäller den här flaggan endast filer, inte mappar, så att mappegenskaper inte kopieras när du använder den här flaggan med `--preserve-smb-info` eller `--preserve-smb-permissions` .
+
 **--include-attribut** sträng (endast Windows) inkluderar filer vars attribut matchar attributlistan. Till exempel: A; Na R
 
 **--include-Path-** sträng innehåller bara dessa sökvägar vid kopiering. Det här alternativet stöder inte jokertecken (*). Kontrollerar prefix för relativ sökväg (till exempel: `myFolder;myFolder/subDirName/file.pdf` ).
 
 **--Inkludera-mönster** sträng inkludera endast dessa filer vid kopiering. Det här alternativet stöder jokertecken (*). Separera filer med hjälp av en `;` .
 
-**--list-of-versions** -sträng anger en fil där varje versions-ID visas på en separat rad. Se till att källan måste peka på en enskild blob och att alla versions-ID: n som anges i filen med den här flaggan endast tillhör käll-bloben. AzCopy kommer att hämta de angivna versionerna i den angivna målmappen. Mer information finns i [Hämta tidigare versioner av en BLOB](storage-use-azcopy-blobs.md#download-previous-versions-of-a-blob).
+**--list-of-versions** -sträng anger en fil där varje VERSIONS-ID visas på en separat rad. Se till att källan måste peka på en enskild blob och att alla versions-ID: n som anges i filen med den här flaggan endast tillhör käll-bloben. AzCopy kommer att hämta de angivna versionerna i den angivna målmappen. Mer information finns i [Hämta tidigare versioner av en BLOB](storage-use-azcopy-blobs.md#download-previous-versions-of-a-blob).
 
 **--sträng på loggnivå** definierar loggens utförlighet för logg filen, tillgängliga nivåer: info (alla begär Anden/svar), varning (långsamma svar), fel (endast misslyckade förfrågningar) och ingen (inga utgående loggar). (standard `INFO` ). 
 

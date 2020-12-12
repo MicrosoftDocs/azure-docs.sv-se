@@ -7,18 +7,19 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.custom: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 01f9ee1ad134c14150d16569fd57e658b160784c
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 6ed5e11a8492314e99b9f105d259fa910dcdb77d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556326"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357815"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>Skapa en FCI med Lagringsdirigering (SQL Server på virtuella Azure-datorer)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -96,7 +97,7 @@ Verifiera klustret med hjälp av användar gränssnittet genom att göra följan
 1. Under **Välj servrar eller ett kluster** anger du namnen på de båda virtuella datorerna.
 1. Under **test alternativ** väljer **du kör endast test som jag väljer**. 
 1. Välj **Nästa**.
-1. Under **Val av test** väljer du alla tester förutom **lagring** , som du ser här:
+1. Under **Val av test** väljer du alla tester förutom **lagring**, som du ser här:
 
    ![Välj kluster verifierings test](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/10-validate-cluster-test.png)
 

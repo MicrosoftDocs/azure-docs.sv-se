@@ -7,17 +7,18 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: d5bd2fc150ee1d35127eeb9dbf3dc1eeffdc9659
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 33be57832d9364b859042cd38349c2437bcfcb18
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685944"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358154"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Instanser av kluster för växling vid fel med SQL Server på Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -40,7 +41,7 @@ Instanser av redundanskluster med SQL Server på Azure Virtual Machines stöd f�
 Mer information finns i [metod tips för kvorum med SQL Server virtuella datorer i Azure](hadr-cluster-best-practices.md#quorum). 
 
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Lagring
 
 I traditionella lokala klustrade miljöer använder ett Windows-redundanskluster en storage area network (SAN) som är tillgänglig för båda noderna som den delade lagringen. SQL Server filer finns i den delade lagringen och bara den aktiva noden kan komma åt filerna samtidigt. 
 
@@ -50,7 +51,7 @@ SQL Server på virtuella Azure-datorer erbjuder olika alternativ som en lösning
 |---------|---------|---------|---------|
 |**Lägsta version av operativsystemet**| Alla |Windows Server 2012|Windows Server 2016|
 |**Lägsta SQL Server-version**|Alla|SQL Server 2012|SQL Server 2016|
-|**Tillgänglighet för VM som stöds** |Tillgänglighets uppsättningar med närhets placerings grupper |Tillgänglighets uppsättningar och tillgänglighets zoner|Tillgänglighetsuppsättningar |
+|**Tillgänglighet för VM som stöds** |Tillgänglighets uppsättningar med närhets placerings grupper (för Premium SSD) </br> Samma tillgänglighets zon (för Ultra SSD) |Tillgänglighets uppsättningar och tillgänglighets zoner|Tillgänglighetsuppsättningar |
 |**Stöder FileStream**|Ja|Nej|Ja |
 |**Azure Blob-cache**|Nej|Nej|Ja|
 
@@ -69,12 +70,16 @@ Resten av det här avsnittet visar fördelarna och begränsningarna för varje l
 - Har stöd för delade Azure-Premium SSD och Azure Ultra disk Storage.
 - Kan använda en enda delad disk eller Stripa flera delade diskar för att skapa en delad lagringspool. 
 - Stöder FILESTREAM.
+- Premium-SSD har stöd för tillgänglighets uppsättningar. 
 
 
 **Begränsningar**: 
-- Virtuella datorer måste placeras i samma tillgänglighets uppsättning och närhets placerings grupp.
-- Tillgänglighets zoner stöds inte.
+- Vi rekommenderar att du placerar de virtuella datorerna i samma tillgänglighets uppsättning och närhets placerings grupp.
+- Ultra disks stöder inte tillgänglighets uppsättningar. 
+- Tillgänglighets zoner stöds för Ultra disks, men de virtuella datorerna måste finnas i samma tillgänglighets zon, vilket minskar tillgängligheten för den virtuella datorn. 
+- Oavsett den valda maskin varu tillgänglighets lösningen är tillgängligheten för redundansklustret alltid 99,9% när du använder Azure delade diskar. 
 - Premium SSD diskcachelagring stöds inte.
+
  
 Information om hur du kommer igång finns [SQL Server kluster instans med Azure delade diskar](failover-cluster-instance-azure-shared-disks-manually-configure.md). 
 

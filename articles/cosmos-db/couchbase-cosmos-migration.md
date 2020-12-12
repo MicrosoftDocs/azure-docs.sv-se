@@ -8,12 +8,12 @@ ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
-ms.openlocfilehash: 73d6fe0233eccea9ebf1d82beb509c56fb45f4da
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e84b80233d87ac4ae5e2281b506e225c4ab1bd9d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339520"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357610"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migrera från CouchBase till Azure Cosmos DB SQL API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -39,7 +39,7 @@ Följande är viktiga funktioner som fungerar annorlunda i Azure Cosmos DB jämf
 
 * I Azure Cosmos DB krävs det inte för att hierarkin på den översta nivån ska beteckna samlingen, eftersom samlings namnet redan finns. Den här funktionen gör JSON-strukturen mycket enklare. Följande är ett exempel som visar skillnader i data modellen mellan Couchbase och Azure Cosmos DB:
 
-   **Couchbase** : dokument-ID = "99FF4444"
+   **Couchbase**: dokument-ID = "99FF4444"
 
     ```json
     {
@@ -69,7 +69,7 @@ Följande är viktiga funktioner som fungerar annorlunda i Azure Cosmos DB jämf
     }
    ```
 
-   **Azure Cosmos DB** : se "ID" i dokumentet på det sätt som visas nedan
+   **Azure Cosmos DB**: se "ID" i dokumentet på det sätt som visas nedan
 
     ```json
     {
@@ -181,7 +181,7 @@ Du kan läsa dokumentet med eller utan att ange partitionsnyckel. Om du inte ang
 * ```_repo.findByIdAndName(objDoc.getId(),objDoc.getName());```
 * ```_repo.findAllByStatus(objDoc.getStatus());```
 
-Nu kan du använda ditt program med Azure Cosmos DB. Fullständigt kod exempel för det exempel som beskrivs i det här dokumentet finns i [CouchbaseToCosmosDB-SpringCosmos](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/SpringCosmos) GitHub lagrings platsen.
+Nu kan du använda ditt program med Azure Cosmos DB. Fullständigt kod exempel för det exempel som beskrivs i det här dokumentet finns i [CouchbaseToCosmosDB-SpringCosmos](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/main/SpringCosmos) GitHub lagrings platsen.
 
 ## <a name="couchbase-as-a-document-repository--using-n1ql-queries"></a>Couchbase som en dokument lagrings plats & att använda N1QL-frågor
 
@@ -222,9 +222,9 @@ Använd asynkron Java SDK med följande steg:
     
    if(client==null)
     client= CosmosClient.builder()
-        .endpoint(Host)//(Host, MasterKey, dbName, collName).Builder()
+        .endpoint(Host)//(Host, PrimaryKey, dbName, collName).Builder()
         .connectionPolicy(cp)
-        .key(MasterKey)
+        .key(PrimaryKey)
         .consistencyLevel(ConsistencyLevel.EVENTUAL)
         .build();   
    
@@ -305,7 +305,7 @@ CosmosItem objItem= container.getItem(doc.Id, doc.Tenant);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```
 
-Prenumerera sedan på svartvit, se avsnittet mono-prenumeration i INSERT-åtgärden. Det fullständiga kod exemplet är tillgängligt i [CouchbaseToCosmosDB-AsyncInSpring GitHub-](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncInSpring) lagrings platsen.
+Prenumerera sedan på svartvit, se avsnittet mono-prenumeration i INSERT-åtgärden. Det fullständiga kod exemplet är tillgängligt i [CouchbaseToCosmosDB-AsyncInSpring GitHub-](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/main/AsyncInSpring) lagrings platsen.
 
 ## <a name="couchbase-as-a-keyvalue-pair"></a>Couchbase som ett nyckel/värde-par
 
@@ -313,7 +313,7 @@ Det här är en enkel typ av arbets belastning där du kan utföra sökningar i 
 
 1. Överväg att använda "/ID" som primär nyckel, vilket ser till att du kan utföra söknings åtgärder direkt i den angivna partitionen. Skapa en samling och ange "/ID" som partitionsnyckel.
 
-1. Stäng av indexeringen helt. Eftersom du kommer att köra söknings åtgärder finns det ingen punkt för att utföra indexerings kostnader. Om du vill stänga av indexeringen loggar du in på Azure Portal, goto Azure Cosmos DB-konto. Öppna **datautforskaren** , välj din **databas** och **behållaren**. Öppna fliken **skalnings & inställningar** och välj  **indexerings princip**. Index princip som är för närvarande ser ut så här:
+1. Stäng av indexeringen helt. Eftersom du kommer att köra söknings åtgärder finns det ingen punkt för att utföra indexerings kostnader. Om du vill stänga av indexeringen loggar du in på Azure Portal, goto Azure Cosmos DB-konto. Öppna **datautforskaren**, välj din **databas** och **behållaren**. Öppna fliken **skalnings & inställningar** och välj  **indexerings princip**. Index princip som är för närvarande ser ut så här:
     
    ```json
    {
@@ -351,9 +351,9 @@ Det här är en enkel typ av arbets belastning där du kan utföra sökningar i 
    
    if(client==null)
     client= CosmosClient.builder()
-        .endpoint(Host)//(Host, MasterKey, dbName, collName).Builder()
+        .endpoint(Host)//(Host, PrimaryKey, dbName, collName).Builder()
         .connectionPolicy(cp)
-        .key(MasterKey)
+        .key(PrimaryKey)
         .consistencyLevel(ConsistencyLevel.EVENTUAL)
         .build();
     
@@ -427,7 +427,7 @@ CosmosItem objItem= container.getItem(id, id);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```
 
-Prenumerera sedan på svartvit, se avsnittet mono-prenumeration i INSERT-åtgärden. Det fullständiga kod exemplet är tillgängligt i [CouchbaseToCosmosDB-AsyncKeyValue GitHub-](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncKeyValue) lagrings platsen.
+Prenumerera sedan på svartvit, se avsnittet mono-prenumeration i INSERT-åtgärden. Det fullständiga kod exemplet är tillgängligt i [CouchbaseToCosmosDB-AsyncKeyValue GitHub-](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/main/AsyncKeyValue) lagrings platsen.
 
 ## <a name="data-migration"></a>Datamigrering
 

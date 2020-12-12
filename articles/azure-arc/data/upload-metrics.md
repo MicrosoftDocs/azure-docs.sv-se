@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: f31cf22ae8814975dcee92c33026d223275cf121
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f319f912520a69a0c68f89a3d4178f63cc45ca1f
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92378130"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356556"
 ---
 # <a name="upload-metrics-to-azure-monitor"></a>Ladda upp mått till Azure Monitor
 
@@ -26,7 +26,7 @@ Du kan regelbundet exportera övervaknings mått och sedan ladda upp dem till Az
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du fortsätter kontrollerar du att du har skapat den nödvändiga tjänstens huvud namn och tilldelats den till en lämplig roll. Mer information finns i:
 * [Skapa tjänstens huvud namn](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal).
@@ -47,7 +47,7 @@ Ange URL: en för SPN-auktoritet i en miljö variabel:
 ::: zone pivot="client-operating-system-windows-command"
 
 ```console
-SET SPN_AUTHORITY='https://login.microsoftonline.com'
+SET SPN_AUTHORITY=https://login.microsoftonline.com
 ```
 
 ::: zone-end

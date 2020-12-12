@@ -1,23 +1,23 @@
 ---
-title: skapar ett lagringskonto
+title: Skapa ett lagringskonto
 titleSuffix: Azure Storage
 description: Lär dig att skapa ett lagrings konto för att lagra blobar, filer, köer och tabeller. Ett Azure Storage-konto tillhandahåller ett unikt namn område i Microsoft Azure för att läsa och skriva data.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 12/11/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b7faec5023abe37802d8b08980f216934d70a6ac
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c8d07e53e259fff28e662f0c1ca3934eabf015e8
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005561"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357457"
 ---
-# <a name="create-a-storage-account"></a>skapar ett lagringskonto
+# <a name="create-a-storage-account"></a>Skapa ett lagringskonto
 
 Ett Azure Storage-konto innehåller alla dina Azure Storage data objekt: blobbar, filer, köer, tabeller och diskar. Lagrings kontot tillhandahåller ett unikt namn område för dina Azure Storage data som är tillgängliga från var som helst i världen via HTTP eller HTTPS. Data i ditt Azure Storage-konto är tåliga och mycket tillgängliga, säkra och enorma skalbara.
 
@@ -102,7 +102,7 @@ Ej tillämpligt
 
 ---
 
-## <a name="create-a-storage-account"></a>skapar ett lagringskonto
+## <a name="create-a-storage-account"></a>Skapa ett lagringskonto
 
 Varje lagringskonto måste tillhöra en Azure-resursgrupp. En resursgrupp är en logisk container där Azure-resurserna grupperas. När du skapar ett lagringskonto kan du antingen skapa en ny resursgrupp eller använda en befintlig resursgrupp. Den här artikeln visar hur du skapar en ny resurs grupp.
 
@@ -286,3 +286,4 @@ Alternativt kan du ta bort resurs gruppen, vilket innebär att lagrings kontot o
 - [Översikt över lagringskonto](storage-account-overview.md)
 - [Uppgradera till ett V2-lagringskonto för generell användning](storage-account-upgrade.md)
 - [Flytta ett Azure Storage-konto till en annan region](storage-account-move.md)
+- [Återställa ett borttaget lagringskonto](storage-account-recover.md)

@@ -1,5 +1,5 @@
 ---
-title: SQL Database-migration-guide för DB2
+title: 'DB2 till SQL Database: migrations guide'
 description: Följ den här guiden för att migrera dina DB2-databaser till Azure SQL Database.
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 369f17a39b9d7b2f85fffb8b72a293558d16416e
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 3e216c4aeb8d1206011ff9cca2d80900c23b2399
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325170"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356352"
 ---
 # <a name="migration-guide-db2-to-sql-database"></a>Migration guide: DB2 till SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -61,7 +61,7 @@ Följ dessa steg om du vill skapa en utvärdering:
 
 1. Granska HTML-rapporten för att förstå konverterings statistik och eventuella fel eller varningar. Du kan också öppna rapporten i Excel för att få en inventering av DB2-objekt och den insats som krävs för att utföra schema konverteringar. Standard platsen för rapporten finns i rapportmappen i SSMAProjects.
 
-   Exempel: `drive:\<username>\Documents\SSMAProjects\MyDB2Migration\report\report_<date>`. 
+   Till exempel: `drive:\<username>\Documents\SSMAProjects\MyDB2Migration\report\report_<date>`. 
 
    :::image type="content" source="media/db2-to-sql-database-guide/report.png" alt-text="Granska rapporten för att identifiera eventuella fel eller varningar":::
 

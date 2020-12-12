@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8eb8de2424012d12f216f154eb077028a8f82d76
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a89a456b5d9ee36909d5d742a7880d72e5ed86fd
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173710"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355879"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Krav för Azure AD Connect-molnetablering
 Den här artikeln innehåller rikt linjer för hur du väljer och använder Azure Active Directory (Azure AD) Anslut moln etablering som din identitets lösning.
@@ -51,11 +51,23 @@ Kör [IdFix-verktyget](/office365/enterprise/prepare-directory-attributes-for-sy
 
 ### <a name="in-your-on-premises-environment"></a>I din lokala miljö
 
-1. Identifiera en domänansluten värd server som kör Windows Server 2012 R2 eller senare med minst 4 GB RAM-minne och .NET 4.7.1 + Runtime.
+ 1. Identifiera en domänansluten värd server som kör Windows Server 2012 R2 eller senare med minst 4 GB RAM-minne och .NET 4.7.1 + Runtime.
 
-1. Körnings principen för PowerShell på den lokala servern måste vara inställd på odefinierad eller RemoteSigned.
+ >[!NOTE]
+ > Tänk på att om du definierar ett omfångs filter förorsakas en minnes kostnad på värd servern.  Om inget omfångs filter används finns det ingen extra minnes kostnad. Minimi kravet för 4 GB stöder synkronisering för upp till 12 organisations enheter som definieras i omfångs filtret. Om du behöver synkronisera ytterligare organisationsenheter måste du öka den minsta mängden minne. Använd följande tabell som en guide:
+ >
+ >  
+ >  | Antal ou i omfångs filter| minsta mängd minne som krävs|
+ >  | --- | --- |
+ >  | 12| 4 GB|
+ >  | 18|5,5 GB|
+ >  | 28|10 + GB|
+ >
+ > 
 
-1. Om det finns en brand vägg mellan dina servrar och Azure AD konfigurerar du följande objekt:
+ 2. Körnings principen för PowerShell på den lokala servern måste vara inställd på odefinierad eller RemoteSigned.
+
+ 3. Om det finns en brand vägg mellan dina servrar och Azure AD konfigurerar du följande objekt:
    - Se till att agenter kan göra *utgående* begär anden till Azure AD över följande portar:
 
         | Portnummer | Hur den används |
@@ -100,7 +112,20 @@ Följ dessa steg om du vill aktivera TLS 1,2.
 
 1. Starta om servern.
 
+## <a name="known-limitations"></a>Kända begränsningar
+Följande är kända begränsningar:
 
+### <a name="delta-synchronization"></a>Deltasynkronisering
+
+- Grupp definitions filtrering för delta-synkronisering stöder inte fler än 1500 medlemmar.
+- När du tar bort en grupp som används som en del av ett grupp omfångs filter, tas inte användare som är medlemmar i gruppen bort. 
+- När du byter namn på ORGANISATIONSENHETen eller gruppen som är inom omfånget tar delta synkronisering inte bort användarna.
+
+### <a name="provisioning-logs"></a>Etableringsloggar
+- Etablerings loggar skiljer sig inte tydligt mellan åtgärderna skapa och uppdatera.  Du kan se en skapa-åtgärd för en uppdatering och en uppdaterings åtgärd för en Create.
+
+### <a name="group-re-naming-or-ou-re-naming"></a>Namnbyte för grupper eller ORGANISATIONSENHET
+- Om du byter namn på en grupp eller OU i AD som är inom omfånget för en specifik konfiguration kommer moln etablerings jobbet inte att kunna identifiera namn ändringen i AD. Jobbet hamnar inte i karantän och fortsätter att vara felfritt.
 
 
 ## <a name="next-steps"></a>Nästa steg 

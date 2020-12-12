@@ -1,22 +1,25 @@
 ---
-title: Anslut till Common Data Service
-description: Skapa och hantera Common Data Service poster med Azure Logic Apps
+title: Anslut till Common Data Service (Microsoft Dataverse)
+description: Skapa och hantera Common Data Service-poster (Microsoft Dataverse) med hjälp av Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 12/11/2020
 tags: connectors
-ms.openlocfilehash: de85a61cbd699ec9ac2669f8abb6217254038de9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b17c3d54b7065a18e015363a0362766f844e4e10
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334590"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355128"
 ---
-# <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>Skapa och hantera poster i Common Data Service med Azure Logic Apps
+# <a name="create-and-manage-records-in-common-data-service-microsoft-dataverse-by-using-azure-logic-apps"></a>Skapa och hantera poster i Common Data Service (Microsoft Dataverse) med hjälp av Azure Logic Apps
 
-Med [Azure Logic Apps](../logic-apps/logic-apps-overview.md) och [common data service Connector](/connectors/commondataservice/)kan du bygga automatiserade arbets flöden som hanterar poster i din [common data service](/powerapps/maker/common-data-service/data-platform-intro) databas. Dessa arbets flöden kan skapa poster, uppdatera poster och utföra andra åtgärder. Du kan också hämta information från Common Data Service-databasen och göra utdata tillgängliga för andra åtgärder som ska användas i din Logic app. När en post till exempel uppdateras i Common Data Service-databasen kan du skicka ett e-postmeddelande med hjälp av Office 365 Outlook Connector.
+> [!NOTE]
+> I november 2020 har Common Data Service bytt namn till Microsoft Dataverse.
+
+Med [Azure Logic Apps](../logic-apps/logic-apps-overview.md) och [common data service Connector](/connectors/commondataservice/)kan du bygga automatiserade arbets flöden som hanterar poster i din [common data service, nu Microsoft Dataverse](/powerapps/maker/common-data-service/data-platform-intro) Database. Dessa arbets flöden kan skapa poster, uppdatera poster och utföra andra åtgärder. Du kan också hämta information från Common Data Service-databasen och göra utdata tillgängliga för andra åtgärder som ska användas i din Logic app. När en post till exempel uppdateras i Common Data Service-databasen kan du skicka ett e-postmeddelande med hjälp av Office 365 Outlook Connector.
 
 Den här artikeln visar hur du kan skapa en Logic app som skapar en uppgifts post när en ny leadpost skapas.
 
@@ -100,7 +103,7 @@ Lägg nu till en Common Data Service-åtgärd som skapar en uppgifts post för e
 
 1. Spara logikappen. I verktygsfältet designer väljer du **Spara**.
 
-1. Starta Logic-appen manuellt genom att klicka på **Kör**i verktygsfältet i designern. Om du vill testa din Logic-app skapar du en ny "leads"-post.
+1. Starta Logic-appen manuellt genom att klicka på **Kör** i verktygsfältet i designern. Om du vill testa din Logic-app skapar du en ny "leads"-post.
 
 ## <a name="trigger-only-on-updated-attributes"></a>Utlös endast för uppdaterade attribut
 
@@ -110,7 +113,7 @@ För utlösare som körs när poster uppdateras, t. ex. **när en post uppdatera
 
    ![Skärm bild som visar åtgärden "när en post uppdateras" och den öppnade listan "Lägg till ny parameter" med egenskapen "Attribute filter" vald.](./media/connect-common-data-service/when-record-updated-trigger-add-attribute-filters.png)
 
-1. För varje **attribut filter objekt**väljer du det attribut som du vill övervaka för uppdateringar, till exempel:
+1. För varje **attribut filter objekt** väljer du det attribut som du vill övervaka för uppdateringar, till exempel:
 
    ![Lägg till egenskapen "Attribute filters"](./media/connect-common-data-service/when-record-updated-trigger-select-attribute-filter.png)
 
@@ -148,7 +151,7 @@ Oavsett om du anger ett värde manuellt eller väljer ett värde i listan med dy
 
 I den här tabellen beskrivs några fält typer och de data typer som fälten kräver för sina värden.
 
-| Field | Datatyp | Beskrivning |
+| Fält | Datatyp | Beskrivning |
 |-------|-----------|-------------|
 | Textfält | Enskild rad med text | Kräver antingen en enskild rad med text eller dynamiskt innehåll som har data typen text, till exempel följande egenskaper: <p><p>- **Beteckning** <br>- **Kategori** |
 | Heltals fält | Heltal | Kräver antingen ett heltal eller dynamiskt innehåll som har data typen Integer, till exempel följande egenskaper: <p><p>- **Procent slutfört** <br>- **Giltighet** |

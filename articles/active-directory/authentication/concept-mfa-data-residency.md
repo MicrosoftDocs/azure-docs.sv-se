@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/24/2020
+ms.date: 12/11/2020
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40751b7864cc62d17836ab6d57cd106f6904f64a
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 788512db242bf1a1c6f18ffc0ee773bd3372aa42
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744116"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355880"
 ---
 # <a name="data-residency-and-customer-data-for-azure-ad-multi-factor-authentication"></a>Data placering och kund information för Azure AD Multi-Factor Authentication
 
@@ -57,7 +57,7 @@ För offentliga Azure-moln, förutom Azure B2C-autentisering, NPS-tillägg och W
 | Microsoft Authenticator meddelande | I Multi-Factor Authentication loggar<br />Data lager för Multi-Factor Authentication aktivitets rapport<br />Blockerade användare om bedrägeri rapporteras<br />Ändrings begär anden när Microsoft Authenticator enhets-token ändras |
 
 > [!NOTE]
-> Data lagret för Multi-Factor Authentication aktivitets rapporten lagras i USA för alla moln, oavsett vilken region som bearbetar autentiseringsbegäran. Microsoft Azure Tyskland, Microsoft Azure drivs av 21Vianet och Microsoft myndighets moln har sina egna oberoende data lager åtskilda från data lager i den offentliga moln regionen, men dessa data lagras alltid i USA.
+> Data lagret för Multi-Factor Authentication aktivitets rapporten lagras i USA för alla moln, oavsett vilken region som bearbetar autentiseringsbegäran. Microsoft Azure Tyskland, Microsoft Azure drivs av 21Vianet och Microsoft myndighets moln har sina egna oberoende data lager åtskilda från data lager i den offentliga moln regionen, men dessa data lagras alltid i USA. Dessa data lager innehåller personligt identifierbar information (PII) som User Principal Name (UPN) och fullständigt telefonnummer. 
 
 För Microsoft Azure Government, Microsoft Azure Tyskland, Microsoft Azure som drivs av 21Vianet, Azure B2C-autentisering, NPS-tillägg och Windows Server 2016 eller 2019 AD FS adapter, lagras följande personliga data:
 

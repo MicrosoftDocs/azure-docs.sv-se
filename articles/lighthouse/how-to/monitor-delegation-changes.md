@@ -1,14 +1,14 @@
 ---
 title: Övervaka Delegerings ändringar i hanterings klienten
 description: Lär dig hur du övervakar Delegerings aktivitet från kund klienter till din hanterings klient.
-ms.date: 09/08/2020
+ms.date: 12/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 15e96939d4115bd93260687f637143cc798a4331
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d254c90881d23255dda5c38a868eb61e51b4f08
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336606"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356420"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Övervaka Delegerings ändringar i hanterings klienten
 
@@ -175,9 +175,10 @@ Användare som har tilldelats den inbyggda rollen övervakare Azure i rot omfån
 1. Gå till sidan **Mina kunder** och välj sedan **aktivitets logg** på den vänstra navigerings menyn.
 1. Se till att **katalog aktivitet** är markerad i filtret längst upp på skärmen.
 
-En lista över Delegerings ändringar kommer att visas. Du kan välja **Redigera kolumner** om du vill visa eller **dölja status**, **händelse kategori**, tid **, tidstämpel**, **prenumeration**, **händelse som initieras av**, **resurs grupp**, **resurs typ**och **resurs** värden. **Time**
+En lista över Delegerings ändringar kommer att visas. Du kan välja **Redigera kolumner** om du vill visa eller **dölja status**, **händelse kategori**, tid **, tidstämpel**, **prenumeration**, **händelse som initieras av**, **resurs grupp**, **resurs typ** och **resurs** värden. 
 
 ## <a name="next-steps"></a>Nästa steg
 
 - Lär dig hur du kan publicera kunder till [Azure Lighthouse](../concepts/azure-delegated-resource-management.md).
 - Läs mer om [Azure Monitor](../../azure-monitor/index.yml) och [Azure aktivitets logg](../../azure-monitor/platform/platform-logs-overview.md).
+- Granska [aktivitets loggarna efter domän](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) exempel arbets bok för att lära dig hur du visar Azure-aktivitets loggar över prenumerationer med ett alternativ för att filtrera dem efter domän namn.

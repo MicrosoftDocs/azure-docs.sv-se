@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/17/2020
+ms.date: 12/11/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 7008cfcdeb4615b42839f92a6df71357f9acf911
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 2c9c4cd643e2e4b89f9a7d8f44a6569d0dde2b37
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484999"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357389"
 ---
 # <a name="storage-account-overview"></a>Översikt över lagringskonto
 
@@ -54,7 +54,7 @@ Generella v1-lagrings konton ger till gång till alla Azure Storage-tjänster, m
 - Köer
 - Tabeller
 
-Du bör använda General-Purpose v2-konton i de flesta fall. Du kan använda generella v1-konton i följande scenarier:
+Microsoft rekommenderar General-Purpose v2-konton för de flesta scenarier. Du kan använda generella v1-konton i följande scenarier:
 
 - Dina program kräver den klassiska Azure-distributions modellen. Allmänna-Purpose v2-konton och Blob Storage-konton stöder bara Azure Resource Manager distributions modellen.
 
@@ -152,7 +152,7 @@ Du kan bevilja åtkomst till data i ditt lagrings konto med någon av följande 
 
 - **Azure Active Directory:** Använd Azure Active Directory (Azure AD) autentiseringsuppgifter för att autentisera en användare, grupp eller annan identitet för åtkomst till blob-och Queue-data. Om autentiseringen av en identitet lyckas returnerar Azure AD en token som ska användas för att auktorisera begäran till Azure Blob Storage eller Queue Storage. Mer information finns i [autentisera åtkomst till Azure Storage med hjälp av Azure Active Directory](storage-auth-aad.md).
 - **Auktorisering av delad nyckel:** Använd din åtkomst nyckel för lagrings kontot för att skapa en anslutnings sträng som programmet använder vid körning för att få åtkomst till Azure Storage. Värdena i anslutnings strängen används för att skapa ett *Authorization* -huvud som skickas till Azure Storage. Mer information finns i [Konfigurera anslutnings strängar för Azure Storage](storage-configure-connection-string.md).
-- **Signatur för delad åtkomst:** Använd en signatur för delad åtkomst för att delegera åtkomst till resurser i ditt lagrings konto, om du inte använder Azure AD-auktorisering. En signatur för delad åtkomst är en token som kapslar in all information som behövs för att auktorisera en begäran till Azure Storage på URL: en. Du kan ange lagrings resursen, de behörigheter som beviljats och det intervall med vilket behörigheterna är giltiga som en del av signaturen för delad åtkomst. Mer information finns i [använda signaturer för delad åtkomst (SAS)](storage-sas-overview.md).
+- **Signatur för delad åtkomst:** En signatur för delad åtkomst (SAS) är en token som tillåter delegerad åtkomst till resurser i ditt lagrings konto. SAS-token kapslar in all information som krävs för att auktorisera en begäran om att Azure Storage på URL: en. När du skapar en SAS kan du ange vilka behörigheter som SAS ger till en resurs och intervallet som behörigheterna är giltiga för. En SAS-token kan signeras med antingen Azure AD-autentiseringsuppgifter eller med delad nyckel. Mer information finns i [bevilja begränsad åtkomst till Azure Storage-resurser med hjälp av signaturer för delad åtkomst (SAS)](storage-sas-overview.md).
 
 > [!NOTE]
 > Autentisering av användare eller program som använder Azure AD-autentiseringsuppgifter ger överlägsen säkerhet och lätt att använda för andra auktoriserings metoder. Även om du kan fortsätta att använda autentisering med delad nyckel med dina program kan du använda Azure AD för att kringgå behovet av att lagra din konto åtkomst nyckel med din kod. Du kan även fortsätta att använda signaturer för delad åtkomst (SAS) för att ge detaljerad åtkomst till resurser i ditt lagrings konto, men Azure AD erbjuder liknande funktioner utan att behöva hantera SAS-token eller oroa dig för att återkalla en komprometterad SAS.
@@ -192,3 +192,5 @@ Mer information om Azure Storage REST API finns i [Azure Storage Services REST A
 
 - [Skapa ett lagringskonto](storage-account-create.md)
 - [Skapa ett blockblobslagringskonto](../blobs/storage-blob-create-account-block-blob.md)
+- [Uppgradera till ett V2-lagringskonto för generell användning](storage-account-upgrade.md)
+- [Återställa ett borttaget lagringskonto](storage-account-recover.md)

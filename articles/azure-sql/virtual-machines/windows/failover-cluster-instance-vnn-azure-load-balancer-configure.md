@@ -7,6 +7,7 @@ author: MashaMSFT
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -14,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8f8513746271fff0ab52603e31b75304d5ebc1bf
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 5670a29e86eb201a707e5ceef28043aafe4839d9
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168985"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357984"
 ---
 # <a name="configure-azure-load-balancer-for-failover-cluster-instance-vnn"></a>Konfigurera Azure Load Balancer för kluster instans för växling vid fel VNN
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -71,11 +72,11 @@ Använd [Azure Portal](https://portal.azure.com) för att skapa belastningsutjä
 
 1. Gå tillbaka till den Azure-resurs grupp som innehåller de virtuella datorerna och leta upp den nya belastningsutjämnaren. Du kan behöva uppdatera vyn i resurs gruppen. Markera belastningsutjämnaren.
 
-1. Välj **backend-pooler**och välj sedan **Lägg till**.
+1. Välj **backend-pooler** och välj sedan **Lägg till**.
 
 1. Koppla backend-poolen till den tillgänglighets uppsättning som innehåller de virtuella datorerna.
 
-1. Under **mål nätverkets IP-konfigurationer**väljer du **virtuell dator** och väljer de virtuella datorer som ska ingå som klusternoder. Se till att ta med alla virtuella datorer som ska vara värdar för FCI eller tillgänglighets gruppen.
+1. Under **mål nätverkets IP-konfigurationer** väljer du **virtuell dator** och väljer de virtuella datorer som ska ingå som klusternoder. Se till att ta med alla virtuella datorer som ska vara värdar för FCI eller tillgänglighets gruppen.
 
 1. Välj **OK** för att skapa backend-poolen.
 
@@ -85,13 +86,13 @@ Använd [Azure Portal](https://portal.azure.com) för att skapa belastningsutjä
 
 1. Välj **Lägg till**.
 
-1. I fönstret **Lägg till hälso avsökning** <span id="probe"> </span> anger du följande parametrar för hälso avsökning:
+1. I fönstret **Lägg till hälso avsökning** <span id="probe"></span> anger du följande parametrar för hälso avsökning:
 
    - **Namn**: ett namn för hälso avsökningen.
    - **Protokoll**: TCP.
    - **Port**: den port som du skapade i brand väggen för hälso avsökningen [när du förbereder den virtuella datorn](failover-cluster-instance-prepare-vm.md#uninstall-sql-server-1). I den här artikeln använder exemplet TCP-port `59999` .
    - **Intervall**: 5 sekunder.
-   - **Tröskelvärde**för fel: 2 efterföljande fel.
+   - **Tröskelvärde** för fel: 2 efterföljande fel.
 
 1. Välj **OK**.
 
@@ -104,7 +105,7 @@ Använd [Azure Portal](https://portal.azure.com) för att skapa belastningsutjä
 1. Ange parametrar för belastnings Utjämnings regler:
 
    - **Namn**: ett namn för reglerna för belastnings utjämning.
-   - **IP-adress för klient**del: IP-adressen för SQL Server FCI eller AG-lyssnarens klustrade nätverks resurs.
+   - **IP-adress för klient** del: IP-adressen för SQL Server FCI eller AG-lyssnarens klustrade nätverks resurs.
    - **Port**: SQL Server TCP-port. Standard instans porten är 1433.
    - **Backend-port**: samma port som **port** värde när du aktiverar **flytande IP (direkt Server retur)**.
    - **Backend-pool**: det namn på backend-poolen som du konfigurerade tidigare.
@@ -137,10 +138,10 @@ I följande tabell beskrivs de värden som du behöver uppdatera:
 
 |**Värde**|**Beskrivning**|
 |---------|---------|
-|`Cluster Network Name`| Kluster namnet för Windows Server-redundansklustret för nätverket. I **Klusterhanteraren för växling vid fel**  >  **nätverk**högerklickar du på nätverket och väljer **Egenskaper**. Det korrekta värdet finns under **namn** på fliken **Allmänt** .|
-|`SQL Server FCI/AG listener IP Address Resource Name`|Resurs namnet för den SQL Server FCI eller AG-lyssnarens IP-adress. I **Klusterhanteraren för växling vid fel**  >  **roller**, under rollen SQL Server FCI, under **Server namn**högerklickar du på IP-adressresursen och väljer **Egenskaper**. Det korrekta värdet finns under **namn** på fliken **Allmänt** .|
+|`Cluster Network Name`| Kluster namnet för Windows Server-redundansklustret för nätverket. I **Klusterhanteraren för växling vid fel**  >  **nätverk** högerklickar du på nätverket och väljer **Egenskaper**. Det korrekta värdet finns under **namn** på fliken **Allmänt** .|
+|`SQL Server FCI/AG listener IP Address Resource Name`|Resurs namnet för den SQL Server FCI eller AG-lyssnarens IP-adress. I **Klusterhanteraren för växling vid fel**  >  **roller**, under rollen SQL Server FCI, under **Server namn** högerklickar du på IP-adressresursen och väljer **Egenskaper**. Det korrekta värdet finns under **namn** på fliken **Allmänt** .|
 |`ILBIP`|IP-adressen för den interna belastningsutjämnaren (ILB). Den här adressen är konfigurerad i Azure Portal som ILB-frontend-adress. Detta är också den SQL Server FCI IP-adress. Du hittar den i **Klusterhanteraren för växling vid fel** på samma egenskaps sida där du placerade `<SQL Server FCI/AG listener IP Address Resource Name>` .|
-|`nnnnn`|Avsöknings porten som du konfigurerade i belastningsutjämnarens hälso avsökning. En oanvänd TCP-port är giltig.|
+|`nnnnn`|Avsöknings porten som du konfigurerade i belastningsutjämnarens hälso avsökning. Alla oanvända TCP-portar är giltiga.|
 |Nätmask| Nät masken för kluster parametern. Det måste vara TCP IP-broadcast-adressen: `255.255.255.255` .| 
 
 
@@ -156,12 +157,12 @@ Get-ClusterResource $IPResourceName | Get-ClusterParameter
 
 Testa redundansväxlingen för den klustrade resursen för att verifiera kluster funktionen. 
 
-Gör så här:
+Utför följande steg:
 
 1. Anslut till en av SQL Server klusternoder med hjälp av RDP.
 1. Öppna **Klusterhanteraren för växling vid fel**. Välj **roller**. Lägg märke till vilken nod som äger rollen SQL Server FCI.
 1. Högerklicka på rollen SQL Server FCI. 
-1. Välj **Flytta**och välj sedan **bästa möjliga nod**.
+1. Välj **Flytta** och välj sedan **bästa möjliga nod**.
 
 **Klusterhanteraren för växling vid fel** visar rollen och dess resurser går offline. Resurserna flyttar sedan och kommer tillbaka online på den andra noden.
 

@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: c113a252363d3b94131ac423f795f6efb13b1975
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 14b6d6ecc6523199102fd3ef9370fe901c4ff51d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029557"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355706"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Behörigheter och medgivande i slutpunkten för Microsoft Identity Platform
 
@@ -89,7 +89,7 @@ Om en app utför inloggning med hjälp av [OpenID Connect](active-directory-v2-p
 [ `offline_access` Omfånget](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) ger din app åtkomst till resurser för användarens räkning under en längre tid. På sidan medgivande visas denna omfattning som "Behåll åtkomst till data som du har gett dem behörighet till". När en användare godkänner `offline_access` omfånget kan din app ta emot uppdateringstoken från slut punkten för Microsoft Identity Platform-token. Uppdateringstoken är lång. Din app kan hämta nya åtkomsttoken när äldre upphör att gälla.
 
 > [!NOTE]
-> Den här behörigheten visas på alla godkännande skärmar idag, även för flöden som inte tillhandahåller en uppdateringstoken (det [implicita flödet](v2-oauth2-implicit-grant-flow.md)).  Detta avser scenarier där en klient kan börja i det implicita flödet och sedan övergå till det kod flöde där en uppdateringstoken förväntas.
+> Den här behörigheten visas på alla godkännande skärmar idag, även för flöden som inte tillhandahåller en uppdateringstoken (det [implicita flödet](v2-oauth2-implicit-grant-flow.md)). Detta gäller scenarier där en klient kan börja i det implicita flödet och sedan flyttas till det kod flöde där en uppdateringstoken förväntas.
 
 På Microsoft Identity Platform (begär Anden som gjorts till v 2.0-slutpunkten) måste appen uttryckligen begära `offline_access` omfånget för att ta emot uppdateringstoken. Det innebär att när du löser in en auktoriseringskod i [OAuth 2,0-Authorization Code Flow](active-directory-v2-protocols.md)får du bara en åtkomsttoken från `/token` slut punkten. Åtkomsttoken är giltig under en kort tid. Åtkomsttoken går vanligt vis ut om en timme. Vid det här tillfället måste appen omdirigera användaren tillbaka till `/authorize` slut punkten för att få en ny auktoriseringskod. Under omdirigeringen, beroende på typ av app, kan användaren behöva ange sina autentiseringsuppgifter igen eller ge tillstånd igen till behörigheter.
 

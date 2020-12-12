@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bbcb3367f4a1b99ae6689a5d9fa33b7629145ead
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 4592742b99d7c3e915c31ca5a202355d32e76d68
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092602"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356131"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV-partner
 
@@ -51,6 +51,7 @@ Microsoft samarbetar med följande ISV: er för MFA-och lösenordsbaserad autent
 |:-------------------------|:--------------|
 | ![Skärm bild av en hypr-logotyp](./media/partner-gallery/hypr-logo.png) | [Hypr](./partner-hypr.md) är en lösenordsskyddad autentiseringsprovider som ersätter lösen ord med krypteringar med offentliga nycklar som eliminerar bedrägerier, nätfiske och åter användning av autentiseringsuppgifter. |
 | ![Skärm bild av en itsme-logotyp](./media/partner-gallery/itsme-logo.png) | [itsme](./partner-itsme.md) är en eiDAS-kompatibel (Electronic Identification, Authentication and Trust Services) Digital ID-lösning som gör att användarna kan logga in på ett säkert sätt utan kort läsare, lösen ord, tvåfaktorautentisering och flera PIN-koder. |
+| ![Skärm bild av en Nevis-logotyp](./media/partner-gallery/nevis-logo.png) | [Nevis](./partner-nevis.md) möjliggör lösenordsautentisering utan lösen ord och ger en mobil-och helt anpassad slut användar upplevelse med Nevis-åtkomst-appen för stark kundautentisering och för att uppfylla PSD2 transaktions krav. |
 | ![Skärm bild av en trusona-logotyp](./media/partner-gallery/trusona-logo.png) | [Trusona](./partner-trusona.md) -integreringen hjälper dig att logga in på ett säkert sätt och möjliggör autentisering med lösen ords avsökning, MFA och digital License. |
 | ![Skärm bild av en Twilio-logotyp.](./media/partner-gallery/twilio-logo.png) | [Twilio verifiera app](./partner-twilio.md) tillhandahåller flera lösningar för att aktivera MFA via SMS eng ång slö sen ord (eng ång slö sen ord), tidsbaserat eng ång slö sen ord (TOTP mobilapp) och push-meddelanden och för att uppfylla SCA-kraven för PSD2. |
 | ![Skärm bild av en typingDNA-logotyp](./media/partner-gallery/typingdna-logo.png) | [TypingDNA](./partner-twilio.md) möjliggör stark kundautentisering genom att analysera en användares Skriv mönster. Det hjälper företag att aktivera en tyst MFA och uppfylla SCA-kraven för PSD2. |

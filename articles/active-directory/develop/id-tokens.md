@@ -14,16 +14,16 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 2059c473c8429e7498992e26c0a2c90ea835c537
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 784f1cc7b7e063166dc1f24851ab217cef8d831a
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89646606"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355655"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity Platform ID-token
 
-`id_tokens` skickas till klient programmet som en del av ett [OpenID Connect](v2-protocols-oidc.md) -flöde (OIDC). De kan skickas på sidan eller i stället för en åtkomsttoken och används av klienten för att autentisera användaren.
+`id_tokens` skickas till klient programmet som en del av ett [OpenID Connect](v2-protocols-oidc.md) -flöde (OIDC). De kan skickas tillsammans med eller i stället för en åtkomsttoken och används av klienten för att autentisera användaren.
 
 ## <a name="using-the-id_token"></a>Använda id_token
 
@@ -96,7 +96,7 @@ I den här listan visas de JWT-anspråk som är i de flesta id_tokens som standa
 
 ### <a name="using-claims-to-reliably-identify-a-user-subject-and-object-id"></a>Använda anspråk för att identifiera en användare på ett tillförlitligt sätt (ämne och objekt-ID)
 
-När du identifierar en användare (t. ex. genom att titta på dem i en databas eller bestämma vilka behörigheter de har) är det viktigt att du använder information som är konstant och unik över tid.  Äldre program använder ibland fält som e-postadress, telefonnummer eller UPN.  Alla dessa kan ändras över tid och kan också återanvändas över tid – när en anställd ändrar sitt namn eller om en medarbetare får en e-postadress som matchar den tidigare, inte längre är anställd). Det är därför **viktigt** att ditt program inte använder data som kan läsas av människor för att identifiera en användare som är mänskligt läsbar, vilket innebär att någon kommer att läsa det och vill ändra det.  Använd i stället de anspråk som tillhandahålls av OIDC-standarden eller de tillägg anspråk som tillhandahålls av Microsoft-- `sub` och- `oid` anspråk.
+När du identifierar en användare (t. ex. genom att titta på dem i en databas eller bestämma vilka behörigheter de har) är det viktigt att du använder information som är konstant och unik över tid. Äldre program använder ibland fält som e-postadress, telefonnummer eller UPN.  Alla dessa kan ändras över tid och kan också återanvändas över tid – när en anställd ändrar sitt namn eller om en medarbetare får en e-postadress som matchar den tidigare, inte längre är anställd). Det är därför **viktigt** att ditt program inte använder data som kan läsas av människor för att identifiera en användare som är mänskligt läsbar, vilket innebär att någon kommer att läsa det och vill ändra det. Använd i stället de anspråk som tillhandahålls av OIDC-standarden eller de tillägg anspråk som tillhandahålls av Microsoft-- `sub` och- `oid` anspråk.
 
 För att korrekt lagra information per användare, använder `sub` eller `oid` ensamma (som GUID: er är unika), med `tid` används för routning eller horisontell partitionering vid behov.  Om du behöver dela data mellan tjänster `oid` + `tid` är det bäst att alla appar får samma `oid` och `tid` anspråk för en specifik användare.  `sub`Anspråket i Microsoft Identity Platform är "par-klokt" – det är unikt baserat på en kombination av token mottagare, klient organisation och användare.  Därför får två appar som begär ID-token för en specifik användare olika `sub` anspråk, men samma `oid` anspråk för den användaren.
 

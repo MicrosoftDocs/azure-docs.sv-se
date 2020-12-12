@@ -7,17 +7,18 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: ca782e9949f990857db408919cac342d7f712d2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c92aa3b35240831fad14919dc73609d803c610a
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272624"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358222"
 ---
 # <a name="feature-interoperability-with-sql-server-fci--dnn"></a>Funktions samverkan med SQL Server FCI & DNN
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -86,7 +87,7 @@ Anta till exempel att du har en utgivare som är konfigurerad som en FCI med DNN
 
 Använd det fullständiga instans namnet för en namngiven instans, t. ex. följande avbildnings exempel: 
 
-:::image type="content" source="media/failover-cluster-instance-dnn-interoperability/alias-named-instance-configuration-manager.png" alt-text="Konfigurera DNS-namnet DNN som det alias som använder Konfigurationshanteraren för SQL Server." :::
+:::image type="content" source="media/failover-cluster-instance-dnn-interoperability/alias-named-instance-configuration-manager.png" alt-text="Använd det fullständiga instans namnet när du konfigurerar ett nätverks Ali Aset för en namngiven instans." :::
 
 ## <a name="database-mirroring"></a>Databasspegling
 

@@ -3,12 +3,12 @@ title: Självstudie – distribuera och konfigurera VMware HCX
 description: Lär dig hur du distribuerar och konfigurerar en VMware HCX-lösning för ditt privata moln i Azure VMware-lösningen.
 ms.topic: tutorial
 ms.date: 11/25/2020
-ms.openlocfilehash: e50454c2299ed0f7e249563eecac1935a29a9c47
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: a792f8dbc646f61377cf0a88e1a6e386340f23e8
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352479"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357899"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>Distribuera och konfigurera VMware HCX
 
@@ -163,7 +163,7 @@ När tjänsterna har startats om visas vCenter som visas som grönt på skärmen
 
 :::image type="content" source="media/tutorial-vmware-hcx/activation-done.png" alt-text="Skärm bild av instrument panelen med grön vCenter-status." lightbox="media/tutorial-vmware-hcx/activation-done.png":::  
 
-En översikt över slut punkt till slut punkt för den här proceduren finns i [Azure VMware-lösningen: Aktivera HCX](https://www.youtube.com/embed/jzQZawslF8w) video.
+En översikt över slut punkt till slut punkt för den här proceduren finns i [Azure VMware-lösningen: Aktivera HCX](https://www.youtube.com/embed/PnVg6SZkQsY?rel=0&amp;vq=hd720) video.
 
    > [!IMPORTANT]
    > Oavsett om du använder VMware HCX Advanced eller VMware HCX Enterprise kan du behöva installera korrigeringen från VMwares KB- [artikel 81558](https://kb.vmware.com/s/article/81558). 
@@ -192,7 +192,7 @@ Du kan ansluta eller para ihop VMware HCX Cloud Manager i Azure VMware-lösninge
 
    :::image type="content" source="media/tutorial-vmware-hcx/site-pairing-complete.png" alt-text="Skärm bild som visar länkning av HCX Manager i Azure VMware-lösning och VMware HCX-anslutningen.":::
 
-En översikt över slut punkt till slut punkt av den här proceduren finns i [Azure VMware-lösningen: HCX site ihopparning](https://www.youtube.com/embed/iTJtjbiwvsw) video.
+En översikt över slut punkt till slut punkt av den här proceduren finns i [Azure VMware-lösningen: HCX site ihopparning](https://www.youtube.com/embed/jXOmYUnbWZY?rel=0&amp;vq=hd720) video.
 
 ### <a name="create-network-profiles"></a>Skapa nätverks profiler
 
@@ -205,7 +205,7 @@ Du skapar fyra nätverks profiler:
    - Replikering
    - Ordna
 
-1. Under **infrastruktur** väljer du **Interconnect**  >  nätverks profiler för **multipl-site service nät**  >  **Network Profiles**  >  **skapa nätverks profil**.
+1. Under **infrastruktur** väljer du **Interconnect**  >  nätverks profiler för **multipl-site service nät**  >    >  **skapa nätverks profil**.
 
    :::image type="content" source="media/tutorial-vmware-hcx/network-profile-start.png" alt-text="Skärm bild av val för att börja skapa en nätverks profil." lightbox="media/tutorial-vmware-hcx/network-profile-start.png":::
 

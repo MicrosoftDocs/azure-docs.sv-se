@@ -1,14 +1,14 @@
 ---
 title: Visa tjänstleverantörsaktivitet
 description: Kunder kan visa loggad aktivitet för att se åtgärder som utförs av tjänst leverantörer via Azure-delegerad resurs hantering.
-ms.date: 10/12/2020
+ms.date: 12/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 56c8b88274909aa55e19a4b364aaa3ace2a0c26d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: dcf177cc41dac846d096607445ff4c3d433620ca
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371094"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356386"
 ---
 # <a name="view-service-provider-activity"></a>Visa tjänstleverantörsaktivitet
 
@@ -42,6 +42,12 @@ Mer information finns i [skapa och hantera aktivitets logg aviseringar](../../az
 Du kan skapa frågor för att analysera din loggade aktivitet eller fokusera på vissa objekt. T. ex. kanske en granskning kräver att du rapporterar om alla åtgärder på administrativ nivå som utförs på en prenumeration. Du kan skapa en fråga för att filtrera på de här åtgärderna och sortera resultaten efter användare, datum eller annat värde.
 
 Mer information finns i [Översikt över logg frågor i Azure Monitor](../../azure-monitor/log-query/log-query-overview.md).
+
+## <a name="view-user-activity-across-domains"></a>Visa användar aktivitet över domäner
+
+Du kan visa aktiviteter från enskilda användare över flera domäner med hjälp av [aktivitets loggarna efter domän](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) exempel arbets bok.
+
+Resultaten kan filtreras efter domän namn. Du kan också använda ytterligare filter som kategori, nivå eller resurs grupp.
 
 ## <a name="next-steps"></a>Nästa steg
 

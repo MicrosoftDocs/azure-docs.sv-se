@@ -7,18 +7,19 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f8bee990074debf09cc9bfd19f96470a029b50c9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 28b68178b98e53b7a7d4192ad20c05a667344969
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793134"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356743"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Ansluta till en SQL Server virtuell dator på Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,7 +34,7 @@ Om du hellre vill ha en fullständig genom gång av både etablering och anslutn
 
 Hur en klient ansluter till en SQL Server VM varierar beroende på klientens plats och nätverks konfigurationen.
 
-Om du etablerar en SQL Server VM i Azure Portal har du möjlighet att ange typen av **SQL-anslutning** .
+Om du etablerar en SQL Server VM i Azure Portal har du möjlighet att ange typen av **SQL-anslutning**.
 
 ![Alternativ för offentlig SQL-anslutning under etableringen](./media/ways-to-connect-to-sql/sql-vm-portal-connectivity.png)
 
@@ -65,7 +66,7 @@ Alla klienter med Internet åtkomst kan ansluta till SQL Server-instansen genom 
 Server=sqlvmlabel.eastus.cloudapp.azure.com;Integrated Security=false;User ID=<login_name>;Password=<your_password>
 ```
 
-Även om den här strängen möjliggör anslutning för klienter över Internet innebär detta inte att vem som helst kan ansluta till din SQL Server-instans. Externa klienter måste använda rätt användar namn och lösen ord. För ytterligare säkerhet kan du dock undvika den välkända porten 1433. Om du till exempel skulle konfigurera SQL Server att lyssna på port 1500 och upprätta rätt regler för brand vägg och nätverks säkerhets grupper, kan du ansluta genom att lägga till port numret till Server namnet. I följande exempel ändras föregående genom att lägga till ett anpassat port nummer, **1500** , till Server namnet:
+Även om den här strängen möjliggör anslutning för klienter över Internet innebär detta inte att vem som helst kan ansluta till din SQL Server-instans. Externa klienter måste använda rätt användar namn och lösen ord. För ytterligare säkerhet kan du dock undvika den välkända porten 1433. Om du till exempel skulle konfigurera SQL Server att lyssna på port 1500 och upprätta rätt regler för brand vägg och nätverks säkerhets grupper, kan du ansluta genom att lägga till port numret till Server namnet. I följande exempel ändras föregående genom att lägga till ett anpassat port nummer, **1500**, till Server namnet:
 
 ```
 Server=sqlvmlabel.eastus.cloudapp.azure.com,1500;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
@@ -76,7 +77,7 @@ Server=sqlvmlabel.eastus.cloudapp.azure.com,1500;Integrated Security=false;User 
 
 ## <a name="connect-to-sql-server-within-a-virtual-network"></a>Ansluta till SQL Server i ett virtuellt nätverk
 
-När du väljer **privat** för **SQL-anslutnings** typen i portalen, konfigurerar Azure de flesta inställningar som är identiska med **offentliga** . Den enda skillnaden är att det inte finns någon regel för nätverks säkerhets grupper som tillåter yttre trafik på SQL Server porten (standard 1433).
+När du väljer **privat** för **SQL-anslutnings** typen i portalen, konfigurerar Azure de flesta inställningar som är identiska med **offentliga**. Den enda skillnaden är att det inte finns någon regel för nätverks säkerhets grupper som tillåter yttre trafik på SQL Server porten (standard 1433).
 
 > [!IMPORTANT]
 > Avbildningarna av virtuella datorer för SQL Server Developer-och Express-versioner aktiverar inte TCP/IP-protokollet automatiskt. För Developer-och Express-versioner måste du använda Konfigurationshanteraren för SQL Server för att [manuellt Aktivera TCP/IP-protokollet](#manualtcp) när du har skapat den virtuella datorn.
@@ -97,11 +98,11 @@ Server=mysqlvm;Integrated Security=true
 
 Du kan ändra anslutnings inställningarna för den SQL Server virtuella datorn i Azure Portal.
 
-1. I Azure Portal väljer du **virtuella SQL-datorer** .
+1. I Azure Portal väljer du **virtuella SQL-datorer**.
 
 2. Välj din SQL Server VM.
 
-3. Under **Inställningar** väljer du **säkerhet** .
+3. Under **Inställningar** väljer du **säkerhet**.
 
 4. Ändra **SQL-anslutnings nivån** till inställningen som krävs. Du kan också använda det här avsnittet för att ändra SQL Server port eller inställningarna för SQL-autentisering.
 
@@ -119,7 +120,7 @@ Anslut först till SQL Server virtuella datorn med fjärr skrivbord.
 
 [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-remote-desktop-connect.md)]
 
-Sedan aktiverar du TCP/IP-protokollet med **Konfigurationshanteraren för SQL Server** .
+Sedan aktiverar du TCP/IP-protokollet med **Konfigurationshanteraren för SQL Server**.
 
 [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-connection-tcp-protocol.md)]
 

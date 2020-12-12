@@ -9,16 +9,17 @@ ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
+ms.subservice: management
 ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 37f6e60aea033dee8adfd66839c82b9fd165c879
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: da136c1f3ce36bf85592c3c73c9e8f92c41c7442
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556266"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357916"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Ändra licensmodellen för en virtuell SQL-dator i Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -75,7 +76,7 @@ Du kan ändra licens modellen direkt från portalen:
 
 Du kan använda Azure CLI för att ändra din licens modell.  
 
-Ange följande värden för **licens typ** :
+Ange följande värden för **licens typ**:
 - `AHUB` för Azure Hybrid-förmån
 - `PAYG` för betala per användning
 - `DR` så här aktiverar du den kostnads fria HA/DR-replikeringen
@@ -91,7 +92,7 @@ az sql vm update -n <VMName> -g <ResourceGroupName> --license-type <license-type
 
 Du kan använda PowerShell för att ändra din licens modell.
 
-Ange följande värden för **licens typ** :
+Ange följande värden för **licens typ**:
 - `AHUB` för Azure Hybrid-förmån
 - `PAYG` för betala per användning
 - `DR` så här aktiverar du den kostnads fria HA/DR-replikeringen

@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9433945ffe1181b62ee193baf1c2dd0b89ec14c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0acef468aa53e456cd6fb416fe45558aee064699
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856814"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355825"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Vad är Azure AD Connect-molnetablering?
 Azure AD Connect Cloud etableringen är en ny Microsoft-Agent som är utformad för att möta och uppnå dina hybrid identitets mål för synkronisering av användare, grupper och kontakter till Azure AD.  Den kan användas tillsammans med Azure AD Connect Sync och ger följande fördelar:
@@ -32,7 +32,7 @@ Azure AD Connect Cloud etableringen är en ny Microsoft-Agent som är utformad f
 Med Azure AD Connect Cloud etableringen dirigeras etableringen från AD till Azure AD till Microsoft Online Services. En organisation behöver bara distribuera, i sin lokala och IaaS miljö, en Lightweight-agent som fungerar som en brygga mellan Azure AD och AD. Etablerings konfigurationen lagras i Azure AD och hanteras som en del av tjänsten.
 
 ## <a name="azure-ad-connect-cloud-provisioning-video"></a>Video om Azure AD Connect Cloud Provisioning
-Följande korta video ger en utmärkt overveiw av Azure AD Connect Cloud-etablering:
+Följande korta video ger en utmärkt översikt över Azure AD Connect Cloud-etablering:
 
 > [!VIDEO https://youtube.com/embed/mOT3ID02_YQ]
 
@@ -54,7 +54,7 @@ Följande tabell innehåller en jämförelse mellan Azure AD Connect och Azure A
 | Stöd för kontakt objekt |● |● |
 | Stöd för enhets objekt |● | |
 | Tillåt grundläggande anpassning av Attribute-flöden |● |● |
-| Sychronize Exchange Online-attribut |● |● |
+| Synkronisera Exchange Online-attribut |● |● |
 | Synkronisera tilläggets attribut 1-15 |● |● |
 | Synkronisera kunddefinierade AD-attribut (katalog tillägg) |● | |
 | Stöd för synkronisering av lösen ords-hash |●|●|
@@ -72,6 +72,7 @@ Följande tabell innehåller en jämförelse mellan Azure AD Connect och Azure A
 | Azure AD Domain Services support|● | |
 | [Exchange hybrid tillbakaskrivning](../hybrid/reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) |● | |
 | Stöd för fler än 50 000 objekt per AD-domän |● | |
+| Kors domän referenser|● | |
 
 ## <a name="next-steps"></a>Nästa steg 
 

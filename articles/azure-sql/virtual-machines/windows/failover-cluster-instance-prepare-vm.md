@@ -7,17 +7,18 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: a9289fad6f7ae1030628bedcf1a62cacc0b1e23a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 52d6bc97245423a4add392ab05634d21bcf83a0d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564488"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358020"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>Förbereda virtuella datorer för en FCI (SQL Server på virtuella Azure-datorer)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -47,19 +48,22 @@ Funktionen kluster för växling vid fel kräver att virtuella datorer placeras 
 
 Välj noga alternativet tillgänglighet för virtuell dator som matchar den avsedda kluster konfigurationen: 
 
- - **Azure delade diskar** : [tillgänglighets uppsättningen](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) som kon figurer ATS med fel domänen och uppdaterings domänen har angetts till 1 och placerats i en [närhets placerings grupp](../../../virtual-machines/windows/proximity-placement-groups-portal.md).
- - **Premium-fil resurser** : [tillgänglighets uppsättning](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) eller [tillgänglighets zon](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address). Premium fil resurser är det enda delade lagrings alternativet om du väljer tillgänglighets zoner som tillgänglighets konfiguration för dina virtuella datorer. 
- - **Lagringsdirigering** : [tillgänglighets uppsättning](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set).
+- **Azure delade diskar**: tillgänglighets alternativet varierar om du använder Premium SSD eller UltraDisk:
+   - Premium SSD: [tillgänglighets uppsättning](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) i olika fel-/uppdaterings domäner för Premium-SSD placeras inuti en [närhets placerings grupp](../../../virtual-machines/windows/proximity-placement-groups-portal.md).
+   - Ultra disk: [tillgänglighets zon](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address) men de virtuella datorerna måste placeras i samma tillgänglighets zon som minskar klustrets tillgänglighet till 99,9%. 
+- **Premium-fil resurser**: [tillgänglighets uppsättning](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) eller [tillgänglighets zon](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address).
+- **Lagringsdirigering**: [tillgänglighets uppsättning](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set).
 
->[!IMPORTANT]
->Du kan inte ange eller ändra tillgänglighets uppsättningen när du har skapat en virtuell dator.
+> [!IMPORTANT]
+> Du kan inte ange eller ändra tillgänglighets uppsättningen när du har skapat en virtuell dator.
 
 ## <a name="create-the-virtual-machines"></a>Skapa de virtuella datorerna
 
 När du har konfigurerat din VM-tillgänglighet är du redo att skapa virtuella datorer. Du kan välja att använda en Azure Marketplace-avbildning som inte har SQL Server redan är installerad på den. Men om du väljer en avbildning för SQL Server på virtuella Azure-datorer måste du avinstallera SQL Server från den virtuella datorn innan du konfigurerar instansen av redundanskluster. 
 
 ### <a name="considerations"></a>Överväganden
-Om du har ett redundanskluster på en virtuell Azure IaaS-gästdator, rekommenderar vi ett enda nätverkskort per server (klusternod) och ett enda undernät. Azure-nätverk har fysisk redundans, vilket gör att ytterligare nätverkskort och undernät inte behövs på ett gäst kluster för en Azure IaaS-dator. Även om klustrets verifieringsrapport utfärdar en varning om att noderna endast kan nås i ett enda nätverk, kan varningen ignoreras för redundanskluster på virtuella Azure IaaS-gästdatorer.
+
+På ett gäst kluster för virtuella Azure-datorer rekommenderar vi ett enda nätverkskort per server (klusternod) och ett enda undernät. Azure-nätverk har fysisk redundans, vilket gör att ytterligare nätverkskort och undernät inte behövs på ett gäst kluster för en Azure IaaS-dator. Även om klustrets verifieringsrapport utfärdar en varning om att noderna endast kan nås i ett enda nätverk, kan varningen ignoreras för redundanskluster på virtuella Azure IaaS-gästdatorer.
 
 Placera båda virtuella datorerna:
 
@@ -109,9 +113,9 @@ Den här tabellen innehåller information om de portar som du kan behöva öppna
 
    | Syfte | Port | Kommentarer
    | ------ | ------ | ------
-   | SQL Server | TCP 1433 | Normal port för standard instanser av SQL Server. Om du använde en avbildning från galleriet öppnas porten automatiskt. </br> </br> **Används av** : alla FCI-konfigurationer. |
-   | Hälsoavsökning | TCP 59999 | Alla öppna TCP-portar. Konfigurera belastnings utjämningens [hälso avsökning](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe) och klustret för att använda den här porten. </br> </br> **Används av** : FCI med Load Balancer. |
-   | Filresurs | UDP 445 | Port som fil resurs tjänsten använder. </br> </br> **Används av** : FCI med Premium-filresurs. |
+   | SQL Server | TCP 1433 | Normal port för standard instanser av SQL Server. Om du använde en avbildning från galleriet öppnas porten automatiskt. </br> </br> **Används av**: alla FCI-konfigurationer. |
+   | Hälsoavsökning | TCP 59999 | Alla öppna TCP-portar. Konfigurera belastnings utjämningens [hälso avsökning](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe) och klustret för att använda den här porten. </br> </br> **Används av**: FCI med Load Balancer. |
+   | Filresurs | UDP 445 | Port som fil resurs tjänsten använder. </br> </br> **Används av**: FCI med Premium-filresurs. |
 
 ## <a name="join-the-domain"></a>Anslut till domänen
 

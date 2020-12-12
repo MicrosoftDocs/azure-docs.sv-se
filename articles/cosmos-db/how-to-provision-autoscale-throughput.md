@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/15/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 615ce7da3ec480b766ceaeb307c50f7cb759fd4a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 52904296df77d9097a6180345388e8e702e2bca0
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100124"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357642"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db---sql-api"></a>Etablera data flöde för autoskalning på databas eller behållare i Azure Cosmos DB-SQL API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -34,7 +34,7 @@ Om du använder ett annat API, se [API för MongoDB](how-to-provision-throughput
 
    :::image type="content" source="./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png" alt-text="Skapa en behållare och konfigurera autoskalning av allokerat data flöde":::
 
-1. Välj **OK** .
+1. Välj **OK**.
 
 Om du vill etablera autoskalning på den delade data flödes databasen väljer du **data flödes alternativet etablera databas** när du skapar en ny databas. 
 
@@ -49,9 +49,9 @@ Om du vill etablera autoskalning på den delade data flödes databasen väljer d
 
 1. Välj **skalning och inställningar** för din behållare eller **skala** för din databas.
 
-1. Under **skala** väljer du alternativet för **autoskalning** och **Spara** .
+1. Under **skala** väljer du alternativet för **autoskalning** och **Spara**.
 
-   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="Skapa en behållare och konfigurera autoskalning av allokerat data flöde":::
+   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="Aktivera autoskalning på en befintlig behållare":::
 
 > [!NOTE]
 > När du aktiverar autoskalning på en befintlig databas eller behållare, bestäms startvärdet för max RU/s av systemet, baserat på dina aktuella manuella etablerade data flödes inställningar och lagrings utrymme. När åtgärden har slutförts kan du ändra Max RU/s vid behov. [Läs mer.](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 
@@ -128,7 +128,7 @@ Du kan använda [version 4,0 eller senare](https://mvnrepository.com/artifact/co
 // Create instance of CosmosClient
 CosmosAsyncClient client = new CosmosClientBuilder()
     .setEndpoint(HOST)
-    .setKey(MASTER)
+    .setKey(PRIMARYKEY)
     .setConnectionPolicy(CONNECTIONPOLICY)
     .buildAsyncClient();
 
@@ -145,7 +145,7 @@ CosmosAsyncDatabase database = client.createDatabase(databaseName, autoscaleThro
 // Create instance of CosmosClient
 CosmosClient client = new CosmosClientBuilder()
     .setEndpoint(HOST)
-    .setKey(MASTER)
+    .setKey(PRIMARYKEY)
     .setConnectionPolicy(CONNECTIONPOLICY)
     .buildClient();
 

@@ -7,6 +7,7 @@ author: MashaMSFT
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -14,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: dff6d69a107091a0ce030065da0f70a3d68c5841
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 8549592ace00e712929ebc76045a32531b9db659
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168914"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358324"
 ---
 # <a name="configure-a-dnn-for-failover-cluster-instance"></a>Konfigurera en DNN för instansen av redundanskluster
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -131,14 +132,14 @@ Följ dessa steg om du vill uppdatera möjliga ägare:
 
 1. Avmarkera kryss rutan för alla noder som inte ingår i instansen av redundanskluster. Listan över möjliga ägare för DNN-resursen ska matcha listan över möjliga ägare för den SQL Server instans resursen. Om du till exempel antar att DATA3 inte ingår i FCI, är följande bild ett exempel på att ta bort DATA3 från listan över möjliga ägare för DNN-resursen: 
 
-   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/clear-check-for-nodes-not-in-fci.png" alt-text="Snabb menyn för DNN-resursen med kommandot Egenskaper markerat.":::
+   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/clear-check-for-nodes-not-in-fci.png" alt-text="Avmarkera kryss rutan bredvid de noder som inte ingår i FCI för möjliga ägare till DNN-resursen":::
 
 1. Spara inställningarna genom att välja **OK**. 
 
 
 ## <a name="restart-sql-server-instance"></a>Starta om SQL Server instans 
 
-Använd Klusterhanteraren för växling vid fel för att starta om SQL Server-instansen. Följ de här stegen:
+Använd Klusterhanteraren för växling vid fel för att starta om SQL Server-instansen. Gör så här:
 
 1. Gå till din SQL Server-resurs i Klusterhanteraren för växling vid fel.
 1. Högerklicka på SQL Server resursen och ta den offline. 
@@ -161,7 +162,7 @@ Följ dessa steg om du vill testa redundans:
 1. Anslut till en av SQL Server klusternoder med hjälp av RDP.
 1. Öppna **Klusterhanteraren för växling vid fel**. Välj **roller**. Lägg märke till vilken nod som äger rollen SQL Server FCI.
 1. Högerklicka på rollen SQL Server FCI. 
-1. Välj **Flytta**och välj sedan **bästa möjliga nod**.
+1. Välj **Flytta** och välj sedan **bästa möjliga nod**.
 
 **Klusterhanteraren för växling vid fel** visar rollen och dess resurser går offline. Resurserna flyttar sedan och kommer tillbaka online på den andra noden.
 
@@ -182,7 +183,7 @@ Konfigurera en APIPA-adress eller ett dedikerat nätverkskort för att reservera
 
 ### <a name="apipa-address"></a>APIPA-adress
 
-Om du vill undvika att använda dubbla IP-adresser konfigurerar du en APIPA-adress (kallas även länk lokal adress). Det gör du genom att köra följande kommando:
+Om du vill undvika att använda dubbla IP-adresser konfigurerar du en APIPA-adress (kallas även länk lokal adress). Detta gör du genom att köra följande kommando:
 
 ```powershell
 Get-ClusterResource "virtual IP address" | Set-ClusterParameter 

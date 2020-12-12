@@ -7,16 +7,19 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 57e740e6c47d9518c12a49473e103d0abe772618
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1fb5396fae4676d85f67e98bb333cd58324d5a4e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337021"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357577"
 ---
 # <a name="quickstart-use-github-actions-to-connect-to-azure-mysql"></a>Snabb start: använda GitHub-åtgärder för att ansluta till Azure MySQL
 
-Kom igång med [GitHub-åtgärder](https://docs.github.com/en/actions) genom att använda ett arbets flöde för att distribuera databas uppdateringar till [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/). 
+**Gäller för**: :::image type="icon" source="./media/applies-to/yes.png" border="false"::: Azure Database for PostgreSQL-en server :::image type="icon" source="./media/applies-to/yes.png" border="false"::: Azure Database for PostgreSQL – flexibel Server
+
+Kom igång med [GitHub-åtgärder](https://docs.github.com/en/actions) genom att använda ett arbets flöde för att distribuera databas uppdateringar till [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/).
+
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -32,7 +35,7 @@ Ett arbets flöde för GitHub-åtgärder definieras av en YAML-fil (. yml) i `/.
 
 Filen har två avsnitt:
 
-|Section  |Aktiviteter  |
+|Avsnitt  |Aktiviteter  |
 |---------|---------|
 |**Autentisering** | 1. definiera ett huvud namn för tjänsten. <br /> 2. skapa en GitHub-hemlighet. |
 |**Distribuera** | 1. distribuera databasen. |
@@ -66,7 +69,12 @@ Utdata är ett JSON-objekt med roll tilldelningens autentiseringsuppgifter som g
 
 ## <a name="copy-the-mysql-connection-string"></a>Kopiera anslutnings strängen MySQL 
 
-I Azure Portal går du till Azure Database for MySQL-servern och öppnar **Inställningar**  >  **anslutnings strängar**. Exempel på **ADO.NET** -anslutningssträng. Ersätt plats hållarnas värden för `your_database` och `your_password` . Anslutnings strängen kommer att se ut ungefär så här. 
+I Azure Portal går du till Azure Database for MySQL-servern och öppnar **Inställningar**  >  **anslutnings strängar**. Exempel på **ADO.NET**-anslutningssträng. Ersätt plats hållarnas värden för `your_database` och `your_password` . Anslutnings strängen kommer att se ut ungefär så här. 
+
+> [!IMPORTANT]
+> - För en enskild server använder du **UID = adminusername@servername**. Observera att det **@servername** är obligatoriskt.
+> - För flexibel Server använder du **UID = AdminUsername** utan @servername . Observera att MySQL-flexibla Server är en för hands version. 
+
 
 ```output
    Server=my-mysql-server.mysql.database.azure.com; Port=3306; Database={your_database}; Uid=adminname@my-mysql-server; Pwd={your_password}; SslMode=Preferred;
