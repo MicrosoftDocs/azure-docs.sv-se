@@ -1,5 +1,5 @@
 ---
-title: Översikt över SQL Server till SQL-hanterad instans – migrering
+title: 'SQL Server till SQL-hanterad instans: översikt över migrering'
 description: Lär dig mer om de olika verktygen och alternativen som är tillgängliga för att migrera dina SQL Server-databaser till Azure SQL-hanterad instans.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 878d59445dde839ca9e702ac0c49af676e48a42f
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: d1360589fe2c2ec13c341dd14793db0ca8b809c4
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531198"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358885"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Översikt över migrering: SQL Server till SQL-hanterad instans
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -183,7 +183,7 @@ Du kan också använda PowerShell- [verktyget](https://github.com/microsoft/Data
 
 #### <a name="encryption"></a>Kryptering
 
-När du migrerar databaser som skyddas av  [Transparent datakryptering](../../database/transparent-data-encryption-tde-overview.md)   till en hanterad instans med hjälp av intern återställnings alternativ [migrerar du motsvarande certifikat](../../managed-instance/tde-certificate-migrate.md) från käll *before* SQL Server till den SQL-hanterade instans som ska hanteras av databasen. 
+När du migrerar databaser som skyddas av [Transparent datakryptering](../../database/transparent-data-encryption-tde-overview.md)   till en hanterad instans med hjälp av intern återställnings alternativ [migrerar du motsvarande certifikat](../../managed-instance/tde-certificate-migrate.md) från käll  SQL Server till den SQL-hanterade instans som ska hanteras av databasen. 
 
 #### <a name="system-databases"></a>System databaser
 

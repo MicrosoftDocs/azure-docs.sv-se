@@ -7,6 +7,7 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
+ms.subservice: migration
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
@@ -14,12 +15,12 @@ ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ae89091eb57eade39f8b7581fc5df7ad449e8590
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 789554121af1c83d9077e6153ca9db01477bde25
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553564"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360160"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>Flytta en SQL Server VM till en annan region inom Azure med Azure Site Recovery
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -64,7 +65,7 @@ Förbered både käll SQL Server VM och mål region för flytten.
     - Azure Site Recovery identifierar och skapar automatiskt ett virtuellt nätverk när du aktiverar replikering för den virtuella käll datorn. Du kan också skapa ett nätverk i förväg och tilldela det till den virtuella datorn i användar flödet för att aktivera replikering. Du måste manuellt skapa andra resurser i mål regionen.
 - Information om hur du skapar de vanligaste nätverks resurserna som är relevanta för dig baserat på konfigurationen av den virtuella käll datorn finns i följande dokumentation: 
     - [Nätverkssäkerhetsgrupper](../../../virtual-network/tutorial-filter-network-traffic.md) 
-    - [Belastningsutjämnare](../../../load-balancer/quickstart-load-balancer-standard-internal-portal.md)
+    - [Lastbalanserare](../../../load-balancer/quickstart-load-balancer-standard-internal-portal.md)
     - [Offentlig IP-adress](../../../virtual-network/virtual-network-public-ip-address.md)
     - Ytterligare nätverks komponenter finns i [dokumentationen till nätverket](../../../virtual-network/virtual-networks-overview.md).
 - Skapa ett nätverk för icke-produktion manuellt i mål regionen om du vill testa konfigurationen innan du utför den slutliga flyttningen till mål regionen. Vi rekommenderar det här steget eftersom det garanterar minimal interferens med produktions nätverket. 
@@ -76,7 +77,7 @@ Följande steg visar hur du använder Azure Site Recovery för att kopiera data 
 1. Logga in på [Azure-portalen](https://portal.azure.com). 
 1. Välj att **skapa en resurs** i det övre vänstra hörnet i navigerings fönstret. 
 1. Välj **den & hanterings verktyg** och välj sedan **säkerhets kopiering och Site Recovery**. 
-1. På fliken **grundläggande** , under **projekt information** , skapar du antingen en ny resurs grupp i mål regionen eller väljer en befintlig resurs grupp i mål regionen. 
+1. På fliken **grundläggande** , under **projekt information**, skapar du antingen en ny resurs grupp i mål regionen eller väljer en befintlig resurs grupp i mål regionen. 
 1. Under **instans information** anger du ett namn för valvet och väljer sedan mål **regionen** i list rutan. 
 1. Välj **Granska + skapa** för att skapa ditt Recovery Services-valv. 
 1. Välj **alla tjänster** i det övre vänstra hörnet i navigerings fönstret och i rutan Sök `recovery services` . 
@@ -114,14 +115,14 @@ Följande steg visar hur du använder Azure Site Recovery för att testa flytt p
    ![Övervaka test förlopp för redundans](./media/move-sql-vm-different-region/monitor-failover-test-job.png)
 
 1. När testet är klart navigerar du till **virtuella datorer** i portalen och granskar den nya virtuella datorn. Kontrol lera att SQL Server VM körs, har rätt storlek och är ansluten till rätt nätverk. 
-1. Ta bort den virtuella datorn som skapades som en del av testet, eftersom alternativet **redundans** är nedtonat tills test resurserna för redundans har rensats. Navigera tillbaka till valvet, Välj **replikerade objekt** , välj SQL Server VM och välj sedan **Rensa redundanstest**. Spela in och spara alla observationer som är kopplade till testet i avsnittet **anteckningar** och markera kryss rutan bredvid **testningen är klar. Ta bort redundanstest för virtuella datorer**. Välj **OK** för att rensa resurser efter testet. 
+1. Ta bort den virtuella datorn som skapades som en del av testet, eftersom alternativet **redundans** är nedtonat tills test resurserna för redundans har rensats. Navigera tillbaka till valvet, Välj **replikerade objekt**, välj SQL Server VM och välj sedan **Rensa redundanstest**. Spela in och spara alla observationer som är kopplade till testet i avsnittet **anteckningar** och markera kryss rutan bredvid **testningen är klar. Ta bort redundanstest för virtuella datorer**. Välj **OK** för att rensa resurser efter testet. 
 
    ![Rensa objekt efter ett redundanstest](./media/move-sql-vm-different-region/cleanup-test-items.png)
 
 ## <a name="move-the-sql-server-vm"></a>Flytta SQL Server VM 
 Följande steg visar hur du flyttar SQL Server VM från käll regionen till mål regionen. 
 
-1. Navigera till **Recovery Services** valvet, Välj **replikerade objekt** , Välj den virtuella datorn och välj sedan **redundans**. 
+1. Navigera till **Recovery Services** valvet, Välj **replikerade objekt**, Välj den virtuella datorn och välj sedan **redundans**. 
 
    ![Initiera redundans](./media/move-sql-vm-different-region/initiate-failover.png)
 
@@ -130,7 +131,7 @@ Följande steg visar hur du flyttar SQL Server VM från käll regionen till mål
 1. Välj **OK** för att starta redundansväxlingen.
 1. Du kan övervaka redundansväxlingen från sidan **Site Recovery jobb** som du visade när du övervakade redundansväxlingen i föregående avsnitt. 
 1. När jobbet har slutförts kontrollerar du att SQL Server VM visas i mål regionen som förväntat. 
-1. Navigera tillbaka till valvet, Välj **replikerade objekt** , välj SQL Server VM och välj sedan **genomför** för att slutföra flyttnings processen till mål regionen. Vänta tills commit-jobbet har slutförts. 
+1. Navigera tillbaka till valvet, Välj **replikerade objekt**, välj SQL Server VM och välj sedan **genomför** för att slutföra flyttnings processen till mål regionen. Vänta tills commit-jobbet har slutförts. 
 1. Registrera din SQL Server VM med SQL IaaS agent-tillägget för att möjliggöra hanterbarheten för **virtuella SQL-datorer** i Azure Portal och funktioner som är kopplade till tillägget. Mer information finns i [registrera SQL Server VM med agent tillägget för SQL-IaaS](sql-agent-extension-manually-register-single-vm.md). 
 
   > [!WARNING]

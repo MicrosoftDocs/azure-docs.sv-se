@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: c9e0b155a4cf34373bb6d851241dc62ddd661045
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 06e62f49b996eac09b9a0a6cb9001eb362833168
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602389"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359306"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Snabb start: skapa ett Azure avdelningens kontroll-konto i Azure Portal
 
@@ -30,6 +30,10 @@ I den här snabb starten skapar du ett Azure avdelningens kontroll-konto.
 * Ditt konto måste ha behörighet att skapa resurser i prenumerationen
 
 * Om du **Azure policy** blockera alla program från att skapa **lagrings konto** och **EventHub-namnområde** måste du göra princip undantag med hjälp av taggen, som kan anges under processen för att skapa ett avdelningens kontroll-konto. Huvud orsaken är att för varje avdelningens kontroll-konto måste det skapas en hanterad resurs grupp och inom den här resurs gruppen, ett lagrings konto och ett EventHub-namnområde.
+
+    > [!important]
+    > Du behöver inte följa det här steget om du inte har Azure Policy eller om en befintlig Azure Policy inte blockerar skapandet av **lagrings konto** och **EventHub-namnområde**.
+
     1. Navigera till Azure Portal och Sök efter **princip**
     1. Följ [skapa en anpassad princip definition](https://docs.microsoft.com/azure/governance/policy/tutorials/create-custom-policy-definition) eller ändra en befintlig princip om du vill lägga till två undantag med `not` operatorn och `resourceBypass` taggen:
 
@@ -151,7 +155,7 @@ Om du klickar på Lägg till visas två val som visar både markerade (inaktiver
 
 1. Välj **Lägg till rolltilldelning**.
 
-1. För roll typen i **avdelningens kontroll data curator roll** eller **avdelningens kontroll rollen administratör för data källa** beroende på vad tjänstens huvud namn ska användas för (se [katalog behörigheter](catalog-permissions.md) för mer information).
+1. För roll typen i **avdelningens kontroll data curator roll** eller **avdelningens kontroll rollen administratör för data källa** , beroende på vad säkerhets objekt ska användas för (se [katalog behörigheter](catalog-permissions.md) och [program-och tjänst huvud objekt i Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) för mer information).
 
 1. För **tilldela behörighet att** lämna kvar standard-, **användar-, grupp-eller tjänstens huvud namn**.
 

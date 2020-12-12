@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: f7b7b8c7b1106bd3c0a6732867946c42df8438c1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 49cf54bda985f7d97b2db6a3ada7859aee829cff
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097285"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359548"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Självstudie: Bygg en Node.js-webbapp med hjälp av Java Script SDK för att hantera ett SQL API-konto i Azure Cosmos DB 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -71,7 +71,7 @@ Nu ska vi skapa ett grundläggande Hello World Node.js-projekt med Express-ramve
    express todo
    ```
 
-1. Öppna **todo** -katalogen och installera beroenden.
+1. Öppna **todo**-katalogen och installera beroenden.
 
    ```bash
    cd todo
@@ -106,7 +106,7 @@ Nu när du har slutfört den första installationen och konfigurationen kommer d
 ### <a name="create-the-model"></a>Skapa modellen
 1. Skapa en ny katalog med namnet **modeller** i roten i projekt katalogen.  
 
-2. I katalogen **models** skapar du en ny fil med namnet **taskDao.js** . Den här filen innehåller den kod som krävs för att skapa databasen och containern. Den definierar även metoder för att läsa, uppdatera, skapa och hitta aktiviteter i Azure Cosmos DB. 
+2. I katalogen **models** skapar du en ny fil med namnet **taskDao.js**. Den här filen innehåller den kod som krävs för att skapa databasen och containern. Den definierar även metoder för att läsa, uppdatera, skapa och hitta aktiviteter i Azure Cosmos DB. 
 
 3. Kopiera följande kod till **taskDao.js** -filen:
 
@@ -185,13 +185,13 @@ Nu när du har slutfört den första installationen och konfigurationen kommer d
 
     module.exports = TaskDao
    ```
-4. Spara och stäng filen **taskDao.js** .  
+4. Spara och stäng filen **taskDao.js**.  
 
 ### <a name="create-the-controller"></a>Skapa styrningen
 
-1. I projektets **routes** -katalog skapar du en ny fil med namnet **tasklist.js** .  
+1. I projektets **routes**-katalog skapar du en ny fil med namnet **tasklist.js**.  
 
-2. Lägg till följande kod i **tasklist.js** . Den här koden läser in modulerna CosmosClient och async, som används av **tasklist.js** . Koden definierar även klassen **TaskList** , som skickas som en instans av det **TaskDao** -objekt som vi definierade tidigare:
+2. Lägg till följande kod i **tasklist.js**. Den här koden läser in modulerna CosmosClient och async, som används av **tasklist.js**. Koden definierar även klassen **TaskList**, som skickas som en instans av det **TaskDao**-objekt som vi definierade tidigare:
    
    ```javascript
     const TaskDao = require("../models/TaskDao");
@@ -246,13 +246,13 @@ Nu när du har slutfört den första installationen och konfigurationen kommer d
     module.exports = TaskList;
    ```
 
-3. Spara och stäng filen **tasklist.js** .
+3. Spara och stäng filen **tasklist.js**.
 
 ### <a name="add-configjs"></a>Lägg till config.js
 
-1. Vid roten av projektkatalogen skapar du en ny fil med namnet **config.js** . 
+1. Vid roten av projektkatalogen skapar du en ny fil med namnet **config.js**. 
 
-2. Lägg till följande kod i filen **config.js** . Den här koden definierar konfigurationsinställningar och värden som behövs i appen.
+2. Lägg till följande kod i filen **config.js**. Den här koden definierar konfigurationsinställningar och värden som behövs i appen.
    
    ```javascript
    const config = {};
@@ -275,13 +275,13 @@ Nu när du har slutfört den första installationen och konfigurationen kommer d
 
 3. I filen **config.js** uppdaterar du värdena för HOST och AUTH_KEY med hjälp av värdena på sidan Nycklar i Azure Cosmos DB-kontot på [Azure Portal](https://portal.azure.com). 
 
-4. Spara och stäng filen **config.js** .
+4. Spara och stäng filen **config.js**.
 
 ### <a name="modify-appjs"></a>Ändra app.js
 
 1. Öppna filen **app.js** i projektkatalogen. Den här filen skapades tidigare när Express-webbappen skapades.  
 
-2. Lägg till följande kod i filen **app.js** . Den här koden definierar den konfigurationsfil som ska användas och läser in värdena till några variabler som du använder i kommande avsnitt. 
+2. Lägg till följande kod i filen **app.js**. Den här koden definierar den konfigurationsfil som ska användas och läser in värdena till några variabler som du använder i kommande avsnitt. 
    
    ```javascript
     const CosmosClient = require('@azure/cosmos').CosmosClient
@@ -356,13 +356,13 @@ Nu när du har slutfört den första installationen och konfigurationen kommer d
     module.exports = app
    ```
 
-3. Avsluta med att spara och stänga filen **app.js** .
+3. Avsluta med att spara och stänga filen **app.js**.
 
 ## <a name="build-a-user-interface"></a><a name="_Toc395783181"></a>Skapa ett användargränssnitt
 
 Nu ska vi bygga användar gränssnittet så att en användare kan interagera med programmet. Det Express-program som vi skapade i föregående avsnitt använder **Jade** som visningsmotor.
 
-1. Filen **layout.jade** i katalogen **views** används som en global mall för andra **.jade** -filer. I det här steget ändrar du den så att den använder Twitter Bootstrap, vilket är en verktygslåda som används för att utforma webbplatser.  
+1. Filen **layout.jade** i katalogen **views** används som en global mall för andra **.jade**-filer. I det här steget ändrar du den så att den använder Twitter Bootstrap, vilket är en verktygslåda som används för att utforma webbplatser.  
 
 2. Öppna filen **layout.jade** i mappen **views** och ersätt innehållet med följande kod:
 
@@ -382,9 +382,9 @@ Nu ska vi bygga användar gränssnittet så att en användare kan interagera med
        script(src='//ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/bootstrap.min.js')
    ```
 
-    Koden instruerar **Jade** -motorn att rendera HTML för vårt program. Dessutom skapas ett **block** med namnet **content** , där vi kan ha layouten för våra innehållssidor. Spara och stäng filen **layout.jade** .
+    Koden instruerar **Jade**-motorn att rendera HTML för vårt program. Dessutom skapas ett **block** med namnet **content**, där vi kan ha layouten för våra innehållssidor. Spara och stäng filen **layout.jade**.
 
-3. Öppna nu filen **index.jade** , den vy som ska användas av vårt program, och ersätt innehållet i filen med följande kod:
+3. Öppna nu filen **index.jade**, den vy som ska användas av vårt program, och ersätt innehållet i filen med följande kod:
 
    ```html
    extends layout
@@ -428,7 +428,7 @@ Nu ska vi bygga användar gränssnittet så att en användare kan interagera med
           button.btn(type="submit") Add item
    ```
 
-Den här koden utökar layouten och ger innehåll för platshållaren **content** som vi såg i filen **layout.jade** . I den här layouten skapade vi två HTML-formulär.
+Den här koden utökar layouten och ger innehåll för platshållaren **content** som vi såg i filen **layout.jade**. I den här layouten skapade vi två HTML-formulär.
 
 Det första formuläret innehåller en tabell för dina data och en knapp som gör att du kan uppdatera objekt genom att publicera till metoden **/completeTask** i kontrollanten.
     
@@ -440,18 +440,18 @@ Nu när du har skapat programmet kan du köra det lokalt genom att använda föl
 
 1. Om du vill testa programmet på din lokala dator kör du `npm start` i terminalen för att starta programmet. Uppdatera sedan `http://localhost:3000`-webbläsarsidan. Sidan bör ser ut så som på följande skärmbild:
    
-    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png" alt-text="Lär dig använda Node.js – Skärmdump av programmet Hello World i ett webbläsarfönster":::
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png" alt-text="Skärmdump av programmet MyTodo List i ett webbläsarfönster":::
 
     > [!TIP]
     > Om du får ett felmeddelande om indrag i layout.jade- eller index.jade-filen, kontrollerar du att de första två raderna i båda filerna är vänsterjusterade, utan blanksteg. Om det finns blanksteg före de två första raderna tar du bort dem. Spara filerna och uppdatera sedan webbläsarfönstret. 
 
-2. Använd fälten objekt, objekt namn och kategori för att ange en ny uppgift och välj sedan **Lägg till objekt** . Då skapas ett dokument i Azure Cosmos DB med dessa egenskaper. 
+2. Använd fälten objekt, objekt namn och kategori för att ange en ny uppgift och välj sedan **Lägg till objekt**. Då skapas ett dokument i Azure Cosmos DB med dessa egenskaper. 
 
 3. Sidan bör uppdateras och visa det nya objektet i ToDo-listan.
    
-    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="Lär dig använda Node.js – Skärmdump av programmet Hello World i ett webbläsarfönster":::
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="Skärmdump av programmet med ett nytt objekt i ToDo-listan":::
 
-4. Du slutför en aktivitet genom att markera kryssrutan i kolumnen Slutför. Klicka sedan på **Uppdatera uppgifter** . Då uppdateras det dokument som du redan har skapat och tas bort från vyn.
+4. Du slutför en aktivitet genom att markera kryssrutan i kolumnen Slutför. Klicka sedan på **Uppdatera uppgifter**. Då uppdateras det dokument som du redan har skapat och tas bort från vyn.
 
 5. För att stoppa programmet trycker du på CTRL+C i terminalfönstret och väljer sedan **Y** för att avbryta batch-jobbet.
 
@@ -470,7 +470,7 @@ När ditt program fungerar lokalt, kan du distribuera det till Azure med hjälp 
 3. Distribuera programmet genom att push-överföra det till fjärranslutningen.
    
    ```bash
-   git push azure master
+   git push azure main
    ```
 
 4. Efter några sekunder publiceras webbappen och startas i en webbläsare.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: df50583e650d3d44e702c0f7d1596f2a733a4445
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 244fae9f8611acd21f2ee6cd7dafa45b88606456
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556394"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359361"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Skapa en FCI med Azure Shared disks (SQL Server på virtuella Azure-datorer)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,7 +33,7 @@ Mer information finns i Översikt över [FCI med SQL Server på Azure VM](failov
 Innan du slutför instruktionerna i den här artikeln bör du redan ha:
 
 - En Azure-prenumeration. Kom igång [kostnads fritt](https://azure.microsoft.com/free/). 
-- [Två eller flera virtuella Windows Azure-datorer](failover-cluster-instance-prepare-vm.md). [Tillgänglighets uppsättningar](../../../virtual-machines/windows/tutorial-availability-sets.md) och [närhets placerings grupper](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) (PPGs) stöds båda. Om du använder en PPG måste alla noder finnas i samma grupp.
+- [Två eller flera virtuella Windows Azure-datorer](failover-cluster-instance-prepare-vm.md). [Tillgänglighets uppsättningar](../../../virtual-machines/windows/tutorial-availability-sets.md) och [närhets placerings grupper](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) (PPGs) som stöds för Premium SSD-och [tillgänglighets zoner](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address) stöds för Ultra disks. Om du använder en PPG måste alla noder finnas i samma grupp.
 - Ett konto som har behörighet att skapa objekt både på virtuella Azure-datorer och i Active Directory.
 - Den senaste versionen av [PowerShell](/powershell/azure/install-az-ps). 
 
@@ -44,7 +44,7 @@ Distribuera en hanterad Premium SSD disk med funktionen för delad disk aktive r
 Lägg till en Azure-delad disk genom att göra följande: 
 
 
-1. Spara följande skript som *SharedDiskConfig.jspå* : 
+1. Spara följande skript som *SharedDiskConfig.jspå*: 
 
    ```JSON
    { 

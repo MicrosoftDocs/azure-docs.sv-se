@@ -8,12 +8,12 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: f557794265f3bbf48fae97fc04e5e9b068b54f63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c545fa7d58d925dfcb9fa98b301c3bb0a20833e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540416"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358579"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Självstudie: använda Video Indexer med Logic app och Power automatisering
 
@@ -35,7 +35,7 @@ Den här självstudien använder Logic app för att visa hur du:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * För att börja med behöver du ett Video Indexer konto tillsammans med [åtkomst till API: erna via API-nyckeln](video-indexer-use-apis.md). 
 * Du måste också ha ett Azure Storage-konto. Tänk på åtkomst nyckeln för ditt lagrings konto. Skapa två behållare – en för att lagra videor i och en för att lagra insikter som genererats av Video Indexer i.  
@@ -80,7 +80,7 @@ Du lämnar återanrops-URL: en tom för tillfället. Du lägger bara till den n�
 
 Du kan använda standardvärdet för de andra parametrarna eller ange dem efter dina behov. 
 
-Klicka på **Spara**och låt oss fortsätta att konfigurera det andra flödet för att extrahera insikterna när överföringen och indexeringen har slutförts. 
+Klicka på **Spara** och låt oss fortsätta att konfigurera det andra flödet för att extrahera insikterna när överföringen och indexeringen har slutförts. 
 
 ## <a name="set-up-the-second-flow---json-extraction"></a>Konfigurera den andra Flow-JSON-extraktionen  
 
@@ -136,3 +136,5 @@ Den här självstudien visade bara ett exempel på en Video Indexer-anslutning. 
 
 > [!div class="nextstepaction"]
 > [Använda Video Indexer-API:et](video-indexer-use-apis.md)
+
+Mer resurser finns i det här dokumentet på [video Indexer.](https://docs.microsoft.com/connectors/videoindexer-v2/)

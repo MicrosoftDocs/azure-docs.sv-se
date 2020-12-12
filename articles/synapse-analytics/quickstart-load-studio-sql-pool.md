@@ -6,15 +6,15 @@ author: kevinvngo
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: quickstart
-ms.date: 11/16/2020
+ms.date: 12/11/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 312c57c103bf733bc72c5de1d22ab3239d5b5e96
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 86ef610af605c657868824eefe2e6e706f6963ac
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484715"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360194"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-sql"></a>Snabb start: Mass inläsning med Synapse SQL
 
@@ -39,26 +39,25 @@ Du kan enkelt Mass inläsning av data med hjälp av dedikerade SQL-pooler med en
 
 ### <a name="steps"></a>Steg
 
-1. Välj det lagrings konto och den fil eller mapp som du läser in från panelen käll lagrings plats. Guiden kommer automatiskt att försöka identifiera Parquet-filer. Om filtypen Parquet inte kan bekräftas används den avgränsade texten som standard.
+1. Välj det lagrings konto och den fil eller mapp som du läser in från panelen käll lagrings plats. Guiden försöker automatiskt identifiera Parquet-filer samt avgränsade textfiler (CSV), inklusive att mappa käll fälten från filen till rätt mål SQL-datatyper. 
 
    ![Välja käll plats](./sql/media/bulk-load/bulk-load-source-location.png)
 
-2. Välj fil formats inställningar, inklusive det lagrings konto där du vill skriva avvisade rader (felfilen). För närvarande stöds endast CSV-och Parquet-filer.
+2. Välj fil formats inställningar, inklusive fel inställningarna för när det finns avvisade rader under Mass inläsnings processen. Du kan också välja "Förhandsgranska data" för att se hur KOPIERINGs instruktionen kommer att parsa filen för att hjälpa dig att konfigurera fil formats inställningarna. Välj förhands gransknings data varje gång du ändrar fil formats inställningen för att se hur KOPIERINGs instruktionen kommer att parsa filen med den uppdaterade inställningen:
 
-    ![Välja fil formats inställningar](./sql/media/bulk-load/bulk-load-file-format-settings.png)
-
-3. Du kan välja "Förhandsgranska data" för att se hur KOPIERINGs instruktionen kommer att parsa filen för att hjälpa dig att konfigurera fil formats inställningarna. Välj förhands gransknings data varje gång du ändrar fil formats inställningen för att se hur KOPIERINGs instruktionen kommer att parsa filen med den uppdaterade inställningen: för hands version av ![ data](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
+   ![För hands Visa data](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
 
 > [!NOTE]  
 >
 > - För hands version av data med fält som innehåller flera bokstäver stöds inte i guiden för Mass inläsning. Guiden för Mass inläsning förhands granskning av data i en enskild kolumn när en avslutning med flera tecken har angetts. 
-> - Det finns stöd för att ange rader med flera rader i KOPIERINGs instruktionen. Detta stöds dock inte i guiden för Mass inläsning där ett fel kommer att returneras.
+> - När du väljer "Härled kolumn Names" kommer guiden för Mass inläsning att parsa kolumn namnen från den första raden som anges i fältet "första raden". Guiden för Mass inläsning ökar automatiskt FIRSTROW-värdet i COPY-instruktionen med 1 för att ignorera denna rubrik rad. 
+> - Det finns stöd för att ange rader med flera rader i KOPIERINGs instruktionen. Detta stöds dock inte i guiden för Mass inläsning där ett fel kommer att genereras.
 
-4. Välj den dedikerade SQL-pool som du använder för att läsa in, inklusive om belastningen kommer att användas för en befintlig tabell eller ny tabell: Välj ![ mål plats](./sql/media/bulk-load/bulk-load-target-location.png)
+3. Välj den dedikerade SQL-pool som du använder för att läsa in, inklusive om belastningen kommer att användas för en befintlig tabell eller ny tabell: Välj ![ mål plats](./sql/media/bulk-load/bulk-load-target-location.png)
+4. Välj "Konfigurera kolumn mappning" för att kontrol lera att du har rätt kolumn mappning. Observera att kolumn namn identifieras automatiskt om "Härled kolumn namn" har Aktiver ATS. För nya tabeller är det viktigt att konfigurera kolumn mappningen för att uppdatera mål kolumnens data typer:
 
-5. Välj "Konfigurera kolumn mappning" för att kontrol lera att du har rätt kolumn mappning. Observera att kolumn namn identifieras automatiskt om "Härled kolumn namn" har Aktiver ATS. För nya tabeller är det viktigt att konfigurera kolumn mappningen för att uppdatera mål kolumnens data typer: ![ Konfigurera kolumn mappning](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
-
-6. Välj "öppna skript" och ett T-SQL-skript genereras med KOPIERINGs instruktionen att läsa in från data Lake: ![ Öppna SQL-skriptet](./sql/media/bulk-load/bulk-load-target-final-script.png)
+   ![Konfigurerar kolumn mappning](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
+5. Välj "öppna skript" och ett T-SQL-skript genereras med KOPIERINGs instruktionen att läsa in från data Lake: ![ Öppna SQL-skriptet](./sql/media/bulk-load/bulk-load-target-final-script.png)
 
 ## <a name="next-steps"></a>Nästa steg
 

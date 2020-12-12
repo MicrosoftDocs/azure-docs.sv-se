@@ -7,18 +7,19 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: ebd23868-821c-475b-b867-06d4a2e310c7
 ms.service: virtual-machines-sql
+ms.subservice: backup
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 78b422cd41f4cea72b74257fe70c09471e9d2d5b
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: f41614d54dc4320f683f406b2882a7b388bb4c3d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556592"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358426"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatisk säkerhets kopiering v2 för Azure Virtual Machines (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,18 +35,18 @@ Automatisk säkerhets kopiering v2 konfigurerar automatiskt [hanterad säkerhets
 ## <a name="prerequisites"></a>Förutsättningar
 Om du vill använda automatisk säkerhets kopiering v2 granskar du följande krav:
 
-**Operativ system** :
+**Operativ system**:
 
 - Windows Server 2012 R2 eller senare
 
-**SQL Server version/utgåva** :
+**SQL Server version/utgåva**:
 
 - SQL Server 2016 eller högre: Developer, standard eller Enterprise
 
 > [!NOTE]
 > För SQL Server 2014, se [Automatisk säkerhets kopiering för SQL Server 2014](automated-backup-sql-2014.md).
 
-**Databas konfiguration** :
+**Databas konfiguration**:
 
 - Mål _användar_ databaser måste använda den fullständiga återställnings modellen. System databaser behöver inte använda den fullständiga återställnings modellen. Om du kräver att logg säkerhets kopior ska vidtas för modellen eller MSDB måste du dock använda den fullständiga återställnings modellen. Mer information om effekten av den fullständiga återställnings modellen för säkerhets kopieringar finns i [säkerhets kopiering under den fullständiga återställnings modellen](/previous-versions/sql/sql-server-2008-r2/ms190217(v=sql.105)). 
 - SQL Server VM har registrerats med SQL IaaS agent-tillägget i [fullständigt hanterings läge](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full). 
@@ -158,7 +159,7 @@ $resourcegroupname = "resourcegroupname"
 
 Om tillägget SQL Server IaaS-agent är installerat ska du se det som "Sqliaasagent är" eller "SQLIaaSExtension". **ProvisioningState** för tillägget ska också Visa "lyckades". 
 
-Om den inte är installerad eller om den inte har kon figurer ATS kan du installera den med följande kommando. Förutom namnet på den virtuella datorn och resurs gruppen måste du också ange den region ( **$region** ) som den virtuella datorn finns i.
+Om den inte är installerad eller om den inte har kon figurer ATS kan du installera den med följande kommando. Förutom namnet på den virtuella datorn och resurs gruppen måste du också ange den region (**$region**) som den virtuella datorn finns i.
 
 ```powershell
 $region = "EASTUS2"
@@ -215,7 +216,7 @@ If (-Not $storage)
 > [!NOTE]
 > Automatisk säkerhets kopiering stöder inte lagring av säkerhets kopior i Premium Storage, men det kan ta säkerhets kopior från virtuella dator diskar som använder Premium Storage.
 
-Använd sedan kommandot **New-AzVMSqlServerAutoBackupConfig** för att aktivera och konfigurera inställningarna för automatisk säkerhets kopiering v2 för lagring av säkerhets kopior i Azure Storage-kontot. I det här exemplet är säkerhets kopiorna inställda för att behållas i 10 dagar. Säkerhets kopieringar av system databaser är aktiverade. Fullständiga säkerhets kopieringar är schemalagda för varje vecka med ett tidsfönster som börjar på 20:00 i två timmar. Logg säkerhets kopior är schemalagda för var 30: e minut. Det andra kommandot, **set-AzVMSqlServerExtension** , uppdaterar den angivna virtuella Azure-datorn med de här inställningarna.
+Använd sedan kommandot **New-AzVMSqlServerAutoBackupConfig** för att aktivera och konfigurera inställningarna för automatisk säkerhets kopiering v2 för lagring av säkerhets kopior i Azure Storage-kontot. I det här exemplet är säkerhets kopiorna inställda för att behållas i 10 dagar. Säkerhets kopieringar av system databaser är aktiverade. Fullständiga säkerhets kopieringar är schemalagda för varje vecka med ett tidsfönster som börjar på 20:00 i två timmar. Logg säkerhets kopior är schemalagda för var 30: e minut. Det andra kommandot, **set-AzVMSqlServerExtension**, uppdaterar den angivna virtuella Azure-datorn med de här inställningarna.
 
 ```powershell
 $autobackupconfig = New-AzVMSqlServerAutoBackupConfig -Enable `

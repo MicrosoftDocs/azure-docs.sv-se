@@ -8,6 +8,7 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: effe4e2f-35b5-490a-b5ef-b06746083da4
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -16,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 572363f429cb828d44c9dd12ba2424930c94fefe
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: e8268630b2c108dc95ded059ce41866a14fadd0e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553547"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359259"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>Automatisera hanteringen med SQL Server IaaS agent-tillägg
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,13 +36,13 @@ Den här artikeln innehåller en översikt över tillägget. Om du vill installe
 
 Tillägget SQL Server IaaS-agent ger ett antal fördelar för SQL Server på virtuella Azure-datorer: 
 
-- **Funktions förmåner** : tillägget låser upp ett antal funktioner för automatiserings funktioner, till exempel portal hantering, licens flexibilitet, automatisk säkerhets kopiering, automatiserad uppdatering och mer. Mer information finns i [funktions förmånerna](#feature-benefits) längre fram i den här artikeln. 
+- **Funktions förmåner**: tillägget låser upp ett antal funktioner för automatiserings funktioner, till exempel portal hantering, licens flexibilitet, automatisk säkerhets kopiering, automatiserad uppdatering och mer. Mer information finns i [funktions förmånerna](#feature-benefits) längre fram i den här artikeln. 
 
-- **Kompatibilitet** : tillägget ger en förenklad metod för att uppfylla kravet på att meddela Microsoft att Azure Hybrid-förmån har Aktiver ATS som anges i produkt villkoren. Den här processen är en negation som behöver hantera licens registrerings formulär för varje resurs.  
+- **Kompatibilitet**: tillägget ger en förenklad metod för att uppfylla kravet på att meddela Microsoft att Azure Hybrid-förmån har Aktiver ATS som anges i produkt villkoren. Den här processen är en negation som behöver hantera licens registrerings formulär för varje resurs.  
 
-- **Kostnads fri** : tillägget i alla tre hanterbarhets lägen är helt kostnads fritt. Det finns ingen ytterligare kostnad som är kopplad till tillägget eller med ändring av hanterings lägen. 
+- **Kostnads fri**: tillägget i alla tre hanterbarhets lägen är helt kostnads fritt. Det finns ingen ytterligare kostnad som är kopplad till tillägget eller med ändring av hanterings lägen. 
 
-- **Förenklad licens hantering** : tillägget fören klar SQL Server licens hantering, och gör att du snabbt kan identifiera SQL Server virtuella datorer med Azure Hybrid-förmån aktiverat med hjälp av [Azure Portal](manage-sql-vm-portal.md), Azure CLI eller PowerShell: 
+- **Förenklad licens hantering**: tillägget fören klar SQL Server licens hantering, och gör att du snabbt kan identifiera SQL Server virtuella datorer med Azure Hybrid-förmån aktiverat med hjälp av [Azure Portal](manage-sql-vm-portal.md), Azure CLI eller PowerShell: 
 
    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -129,7 +130,7 @@ Du kan också använda en namngiven instans med en Azure Marketplace SQL Server-
 
 Använd Azure Portal eller Azure PowerShell för att kontrol lera status för tillägget. 
 
-### <a name="azure-portal"></a>Azure-portalen
+### <a name="azure-portal"></a>Azure Portal
 
 Kontrol lera att tillägget är installerat i Azure Portal. 
 

@@ -8,18 +8,19 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 388c464e-a16e-4c9d-a0d5-bb7cf5974689
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 335cc707cb1192d3dbf08f51e78d4e82441dd05a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 60bb5ac652a80b5ae52c91f91fa0c80440e9cc82
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93094492"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359089"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>Konfigurera en SQL Server Always on-tillgänglighets grupp i olika Azure-regioner
 
@@ -96,7 +97,7 @@ Gör så här om du vill skapa en replik i ett fjärranslutet Data Center:
 
 1. Lägg till en IP-adressresurs i klustret.
 
-   Du kan skapa IP-adressresursen i Klusterhanteraren för växling vid fel. Välj namnet på klustret, högerklicka sedan på kluster namnet under **kluster kärn resurser** och välj **Egenskaper** : 
+   Du kan skapa IP-adressresursen i Klusterhanteraren för växling vid fel. Välj namnet på klustret, högerklicka sedan på kluster namnet under **kluster kärn resurser** och välj **Egenskaper**: 
 
    ![Skärm bild som visar "Klusterhanteraren för växling vid fel" med ett kluster namn, "Server namn" och "Properties" markerat.](./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png)
 
@@ -113,7 +114,7 @@ Gör så här om du vill skapa en replik i ett fjärranslutet Data Center:
 
 1. Lägg till en IP-adressresurs i tillgänglighets grupps rollen i klustret. 
 
-   Högerklicka på rollen tillgänglighets grupp i Klusterhanteraren för växling vid fel, Välj **Lägg till resurs** , **fler resurser** och välj **IP-adress** .
+   Högerklicka på rollen tillgänglighets grupp i Klusterhanteraren för växling vid fel, Välj **Lägg till resurs**, **fler resurser** och välj **IP-adress**.
 
    ![Skapa IP-adress](./media/availability-group-manually-configure-multiple-regions/20-add-ip-resource.png)
 
@@ -170,16 +171,16 @@ Om du inte kan ändra anslutnings strängarna kan du konfigurera cachelagring av
 Om du vill testa lyssnare anslutningen till fjärrregionen kan du växla över repliken till den fjärranslutna regionen. När repliken är asynkron är redundansväxlingen sårbar för potentiell data förlust. Om du vill redundansväxla utan data förlust ändrar du tillgänglighets läget till synkront och anger läget för redundans till automatisk. Gör så här:
 
 1. I **Object Explorer** ansluter du till den instans av SQL Server som är värd för den primära repliken.
-1. Under **AlwaysOn-tillgänglighetsgrupper** , **tillgänglighets grupper** , högerklickar du på din tillgänglighets grupp och väljer **Egenskaper** .
-1. På sidan **Allmänt** , under **tillgänglighets repliker** , anger du den sekundära repliken på Dr-platsen så att den använder **synkront genomförande** läge för tillgänglighet och **automatiskt** växlings läge.
-1. Om du har en sekundär replik på samma plats som din primära replik för hög tillgänglighet anger du den här repliken till **asynkron incheckning** och **manuell** .
+1. Under **AlwaysOn-tillgänglighetsgrupper**, **tillgänglighets grupper**, högerklickar du på din tillgänglighets grupp och väljer **Egenskaper**.
+1. På sidan **Allmänt** , under **tillgänglighets repliker**, anger du den sekundära repliken på Dr-platsen så att den använder **synkront genomförande** läge för tillgänglighet och **automatiskt** växlings läge.
+1. Om du har en sekundär replik på samma plats som din primära replik för hög tillgänglighet anger du den här repliken till **asynkron incheckning** och **manuell**.
 1. Välj OK.
-1. I **Object Explorer** högerklickar du på tillgänglighets gruppen och väljer **Visa instrument panel** .
+1. I **Object Explorer** högerklickar du på tillgänglighets gruppen och väljer **Visa instrument panel**.
 1. På instrument panelen kontrollerar du att repliken på DR-platsen är synkroniserad.
-1. I **Object Explorer** högerklickar du på tillgänglighets gruppen och väljer **redundans...** . SQL Server Management Studios öppnar en guide för att redundansväxla SQL Server.  
+1. I **Object Explorer** högerklickar du på tillgänglighets gruppen och väljer **redundans...**. SQL Server Management Studios öppnar en guide för att redundansväxla SQL Server.  
 1. Välj **Nästa** och välj SQL Server-instansen på Dr-platsen. Välj **Nästa** igen.
-1. Anslut till SQL Server-instansen på DR-platsen och välj **Nästa** .
-1. På sidan **Sammanfattning** kontrollerar du inställningarna och väljer **Slutför** .
+1. Anslut till SQL Server-instansen på DR-platsen och välj **Nästa**.
+1. På sidan **Sammanfattning** kontrollerar du inställningarna och väljer **Slutför**.
 
 När du har testat anslutningen flyttar du tillbaka den primära repliken till ditt primära Data Center och återställer tillgänglighets läget till sina normala drift inställningar. I följande tabell visas de normala drift inställningarna för den arkitektur som beskrivs i det här dokumentet:
 

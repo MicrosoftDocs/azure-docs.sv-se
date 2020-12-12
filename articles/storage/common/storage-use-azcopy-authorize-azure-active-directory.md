@@ -4,15 +4,15 @@ description: Du kan ange autentiseringsuppgifter för AzCopy-åtgärder med hjä
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/03/2020
+ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: b13b5e1e27e9717066ff8f1aa8e245e8d9f54bbb
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 43002fdfbdce146b52774aa4182445bf34dd7199
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498123"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360296"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>Auktorisera åtkomst till blobbar med AzCopy och Azure Active Directory (Azure AD)
 
@@ -73,7 +73,7 @@ Det här kommandot returnerar en autentiseringsnyckel och URL: en för en webbpl
 
 Ett inloggnings fönster visas. I det fönstret loggar du in på ditt Azure-konto med hjälp av dina autentiseringsuppgifter för Azure-kontot. När du har loggat in kan du stänga webbläsarfönstret och börja använda AzCopy.
 
-<a id="service-principal"></a>
+<a id="managed-identity"></a>
 
 ## <a name="authorize-a-managed-identity"></a>Auktorisera en hanterad identitet
 
@@ -116,6 +116,8 @@ azcopy login --identity --identity-resource-id "<resource-id>"
 ```
 
 Ersätt `<resource-id>` plats hållaren med resurs-ID för den användare som tilldelats den hanterade identiteten.
+
+<a id="service-principal"></a>
 
 ## <a name="authorize-a-service-principal"></a>Auktorisera ett huvud namn för tjänsten
 
@@ -181,8 +183,113 @@ Ersätt `<path-to-certificate-file>` plats hållaren med den relativa eller full
 > [!NOTE]
 > Överväg att använda en prompt som du ser i det här exemplet. På så sätt visas inte lösen ordet i konsolens kommando historik. 
 
-<a id="managed-identity"></a>
+## <a name="authorize-without-a-keyring-linux"></a>Auktorisera utan en nyckel Ring (Linux)
 
+Om operativ systemet inte har något hemligt Arkiv, till exempel en *nyckel* ring, `azcopy login` fungerar inte kommandot. I stället kan du ange minnesbaserade variabler i minnet innan du kör varje åtgärd. Dessa värden försvinner från minnet när åtgärden har slutförts, så du måste ange dessa variabler varje gång du kör ett AzCopy-kommando.
+
+### <a name="authorize-a-user-identity"></a>Auktorisera en användar identitet
+
+När du har kontrollerat att din användar identitet har fått den nödvändiga behörighets nivån skriver du följande kommando och trycker sedan på RETUR-tangenten.
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=DEVICE
+```
+
+Kör sedan valfritt AzCopy-kommando (till exempel: `azcopy list https://contoso.blob.core.windows.net` ).
+
+Det här kommandot returnerar en autentiseringsnyckel och URL: en för en webbplats. Öppna webbplatsen, ange koden och välj sedan knappen **Nästa** .
+
+![Skapa en container](media/storage-use-azcopy-v10/azcopy-login.png)
+
+Ett inloggnings fönster visas. I det fönstret loggar du in på ditt Azure-konto med hjälp av dina autentiseringsuppgifter för Azure-kontot. När du har loggat in kan åtgärden slutföras.
+
+### <a name="authorize-by-using-a-system-wide-managed-identity"></a>Auktorisera genom att använda en systemomfattande hanterad identitet
+
+Kontrol lera först att du har aktiverat en systemomfattande hanterad identitet på den virtuella datorn. Se [systemtilldelad hanterad identitet](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity).
+
+Skriv följande kommando och tryck sedan på RETUR-tangenten.
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=MSI
+```
+
+Kör sedan valfritt AzCopy-kommando (till exempel: `azcopy list https://contoso.blob.core.windows.net` ).
+
+### <a name="authorize-by-using-a-user-assigned-managed-identity"></a>Auktorisera med hjälp av en användardefinierad hanterad identitet
+
+Kontrol lera först att du har aktiverat en användardefinierad hanterad identitet på den virtuella datorn. Se [användarens tilldelade hanterade identitet](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity).
+
+Skriv följande kommando och tryck sedan på RETUR-tangenten.
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=MSI
+```
+
+Skriv sedan något av följande kommandon och tryck sedan på RETUR-tangenten.
+
+```bash
+export AZCOPY_MSI_CLIENT_ID=<client-id>
+```
+
+Ersätt `<client-id>` plats hållaren med klient-ID: t för den användarspecifika hanterade identiteten.
+
+```bash
+export AZCOPY_MSI_OBJECT_ID=<object-id>
+```
+
+Ersätt `<object-id>` plats hållaren med objekt-ID: t för den användarspecifika hanterade identiteten.
+
+```bash
+export AZCOPY_MSI_RESOURCE_STRING=<resource-id>
+```
+
+Ersätt `<resource-id>` plats hållaren med resurs-ID för den användare som tilldelats den hanterade identiteten.
+
+När du har angett dessa variabler kan du köra valfritt AzCopy-kommando (till exempel: `azcopy list https://contoso.blob.core.windows.net` ).
+
+### <a name="authorize-a-service-principal"></a>Auktorisera ett huvud namn för tjänsten
+
+Innan du kör ett skript måste du logga in interaktivt minst en stund så att du kan ange AzCopy med autentiseringsuppgifterna för tjänstens huvud namn.  Dessa autentiseringsuppgifter lagras i en säker och krypterad fil så att ditt skript inte behöver ange den känsliga informationen.
+
+Du kan logga in på ditt konto med hjälp av en klient hemlighet eller genom att använda lösen ordet för ett certifikat som är kopplat till tjänstens huvud namn för appens registrering.
+
+#### <a name="authorize-a-service-principal-by-using-a-client-secret"></a>Auktorisera ett huvud namn för tjänsten med hjälp av en klient hemlighet
+
+Skriv följande kommando och tryck sedan på RETUR-tangenten.
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=SPN
+export AZCOPY_SPA_APPLICATION_ID=<application-id>
+export AZCOPY_SPA_CLIENT_SECRET=<client-secret>
+```
+
+Ersätt `<application-id>` plats hållaren med program-ID: t för tjänstens huvud namn för appens registrering. Ersätt `<client-secret>` plats hållaren med klient hemligheten.
+
+> [!NOTE]
+> Överväg att använda en uppvarning för att samla in lösen ordet från användaren. På så sätt visas inte ditt lösen ord i kommando historiken. 
+
+Kör sedan valfritt AzCopy-kommando (till exempel: `azcopy list https://contoso.blob.core.windows.net` ).
+
+#### <a name="authorize-a-service-principal-by-using-a-certificate"></a>Auktorisera ett huvud namn för tjänsten med hjälp av ett certifikat
+
+Om du föredrar att använda dina egna autentiseringsuppgifter för auktorisering kan du ladda upp ett certifikat till appens registrering och sedan använda det certifikatet för att logga in.
+
+Förutom att ladda upp ditt certifikat till din app-registrering måste du också ha en kopia av certifikatet som har sparats på datorn eller den virtuella dator där AzCopy ska köras. Den här kopian av certifikatet bör vara i. PFX eller. PEM-format och måste innehålla den privata nyckeln. Den privata nyckeln bör vara lösenordsskyddad. 
+
+Skriv följande kommando och tryck sedan på RETUR-tangenten.
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=SPN
+export AZCOPY_SPA_CERT_PATH=<path-to-certificate-file>
+export AZCOPY_SPA_CERT_PASSWORD=<certificate-password>
+```
+
+Ersätt `<path-to-certificate-file>` plats hållaren med den relativa eller fullständigt kvalificerade sökvägen till certifikat filen. AzCopy sparar sökvägen till det här certifikatet, men det sparar inte en kopia av certifikatet, så se till att hålla certifikatet på plats. Ersätt `<certificate-password>` plats hållaren med lösen ordet för certifikatet.
+
+> [!NOTE]
+> Överväg att använda en uppvarning för att samla in lösen ordet från användaren. På så sätt visas inte ditt lösen ord i kommando historiken. 
+
+Kör sedan valfritt AzCopy-kommando (till exempel: `azcopy list https://contoso.blob.core.windows.net` ).
 
 ## <a name="next-steps"></a>Nästa steg
 

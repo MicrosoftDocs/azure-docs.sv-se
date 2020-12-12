@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 6c5ef4f0ee0d68e2eae755f000423db4620b834d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: a9bea0664f99a21ac734de666c802e9875ff00b5
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341390"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359336"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Skydda Azure Cosmos-nycklar med Azure Key Vault 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -45,7 +45,7 @@ Följande steg krävs för att lagra och läsa Azure Cosmos DB åtkomst nycklar 
 
 ## <a name="add-azure-cosmos-db-access-keys-to-the-key-vault"></a>Lägg till Azure Cosmos DB åtkomst nycklar till Key Vault.
 1. Navigera till Key Vault som du skapade i föregående steg, öppna fliken **hemligheter** .  
-2. Välj **+ generera/importera** , 
+2. Välj **+ generera/importera**, 
 
    * Välj **manuell** för **överförings alternativ**.
    * Ange ett **namn** för din hemlighet
@@ -59,7 +59,7 @@ Följande steg krävs för att lagra och läsa Azure Cosmos DB åtkomst nycklar 
 
 ## <a name="create-an-azure-web-application"></a>Skapa ett Azure-webbprogram
 
-1. Skapa ett Azure-webbprogram eller så kan du ladda ned appen från [GitHub-lagringsplatsen](https://github.com/Azure/azure-cosmosdb-dotnet/tree/master/Demo/keyvaultdemo). Det är ett enkelt MVC-program.  
+1. Skapa ett Azure-webbprogram eller så kan du ladda ned appen från [GitHub-lagringsplatsen](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/Demo/keyvaultdemo). Det är ett enkelt MVC-program.  
 
 2. Zippa upp det hämtade programmet och öppna filen **HomeController.cs** . Uppdatera det hemliga ID: t på följande rad:
 
@@ -82,7 +82,7 @@ I det här avsnittet registrerar du programmet med Azure Active Directory och ge
 
 1. Navigera till Azure Portal och öppna **Key Vault** som du skapade i föregående avsnitt.  
 
-2. Öppna **åtkomst principer** , Välj **+ Lägg till ny** hitta den webbapp som du har distribuerat, Välj behörigheter och välj **OK**.  
+2. Öppna **åtkomst principer**, Välj **+ Lägg till ny** hitta den webbapp som du har distribuerat, Välj behörigheter och välj **OK**.  
 
    :::image type="content" source="./media/access-secrets-from-keyvault/add-access-policy.png" alt-text="Lägg till åtkomst princip":::
 

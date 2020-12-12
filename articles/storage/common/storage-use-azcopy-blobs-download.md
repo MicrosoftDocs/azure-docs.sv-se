@@ -4,16 +4,16 @@ description: Den här artikeln innehåller en samling av AzCopy-exempel kommando
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 0a2490a104d18f77a0ec326933f463eb4ebb4339
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: ea8300447b9aa596e8678038982771263a4c76f6
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96923971"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358783"
 ---
 # <a name="download-blobs-from-azure-blob-storage-by-using-azcopy-v10"></a>Ladda ned blobbar från Azure Blob Storage med hjälp av AzCopy v10
 
@@ -28,7 +28,7 @@ Se artikeln [Kom igång med AZCopy](storage-use-azcopy-v10.md) för att ladda ne
 > [!NOTE] 
 > I exemplen i den här artikeln förutsätter vi att du har angett autentiseringsuppgifter för auktorisering genom att använda Azure Active Directory (Azure AD).
 >
-> Om du hellre vill använda en SAS-token för att auktorisera åtkomst till BLOB-data kan du lägga till denna token i resurs-URL: en i varje AzCopy-kommando. Exempel: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
+> Om du hellre vill använda en SAS-token för att auktorisera åtkomst till BLOB-data kan du lägga till denna token i resurs-URL: en i varje AzCopy-kommando. Till exempel: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
 
 ## <a name="download-a-blob"></a>Ladda ned en blob
 
@@ -113,9 +113,11 @@ Du kan också utesluta blobbar med hjälp av `--exclude-pattern` alternativet. M
 
 `--include-pattern`Alternativen och `--exclude-pattern` gäller endast för BLOB-namn och inte sökvägen.  Om du vill kopiera alla textfiler (blobbar) som finns i ett katalog träd, använder du `–recursive` alternativet för att hämta hela katalog trädet och använder sedan `–include-pattern` och anger `*.txt` för att hämta alla textfiler.
 
-#### <a name="download-blobs-that-were-modified-after-a-date-and-time"></a>Ladda ned blobbar som ändrades efter ett datum och en tid 
+#### <a name="download-blobs-that-were-modified-before-or-after-a-date-and-time"></a>Ladda ned blobbar som ändrades före eller efter ett datum och en tid 
 
-Använd [AzCopy Copy](storage-ref-azcopy-copy.md) -kommandot med `--include-after` alternativet. Ange ett datum och en tid i ISO-8601-format (till exempel: `2020-08-19T15:04:00Z` ). 
+Använd [AzCopy Copy](storage-ref-azcopy-copy.md) -kommandot med `--include-before` alternativet eller `--include-after` . Ange ett datum och en tid i ISO-8601-format (till exempel: `2020-08-19T15:04:00Z` ). 
+
+I följande exempel hämtas filer som ändrades på eller efter det angivna datumet.
 
 |    |     |
 |--------|-----------|
@@ -150,7 +152,7 @@ Du kan ladda ned en [BLOB-ögonblicksbild](/azure/storage/blobs/snapshots-overvi
 | **Exempel** (hierarkiskt namn område) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt?sharesnapshot=2020-09-23T08:21:07.0000000Z' 'C:\myDirectory\myTextFile.txt'` |
 
 > [!NOTE]
-> Om du använder en SAS-token för att auktorisera åtkomst till BLOB-data ska du lägga till **datetime-datum** efter SAS-token. Exempel: `'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z'`.
+> Om du använder en SAS-token för att auktorisera åtkomst till BLOB-data ska du lägga till **datetime-datum** efter SAS-token. Till exempel: `'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D&sharesnapshot=2020-09-23T08:21:07.0000000Z'`.
 
 ## <a name="download-with-optional-flags"></a>Hämta med valfria flaggor
 
@@ -168,10 +170,10 @@ En fullständig lista finns i [alternativ](storage-ref-azcopy-copy.md#options).
 
 Hitta fler exempel i de här artiklarna:
 
-- [Exempel: upload](storage-use-azcopy-blobs-upload.md)
+- [Exempel: Ladda upp](storage-use-azcopy-blobs-upload.md)
 - [Exempel: kopiera mellan konto](storage-use-azcopy-blobs-copy.md)
-- [Exempel: synkronisera](storage-use-azcopy-blobs-synchronize.md)
-- [Exempel: Amazon S3-buckets](storage-use-azcopy-s3.md)
+- [Exempel: Synkronisera](storage-use-azcopy-blobs-synchronize.md)
+- [Exempel: Amazon S3-bucketar](storage-use-azcopy-s3.md)
 - [Exempel: Azure Files](storage-use-azcopy-files.md)
 - [Självstudie: Migrera lokala data till molnlagring med AzCopy](storage-use-azcopy-migrate-on-premises-data.md)
 - [Konfigurera, optimera och felsöka AzCopy](storage-use-azcopy-configure.md)

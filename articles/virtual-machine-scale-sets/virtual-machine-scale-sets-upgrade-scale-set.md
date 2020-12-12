@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 7577c8510746d1140c1f8b70081f600d992ae512
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c255a3d68b1a24e25c1c0e308faa3fd364a15861
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016683"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358749"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Skapa en VM-skalningsuppsättning
 
@@ -350,12 +350,12 @@ Vissa egenskaper kan ändras, med undantag beroende på det aktuella värdet. Bl
 
 - **singlePlacementGroup** – om singlePlacementGroup är sant kan den ändras till false. Om singlePlacementGroup är false kan det dock **inte** ändras till sant.
 - **undernät** – under nätet för en skalnings uppsättning kan ändras så länge det ursprungliga under nätet och det nya under nätet finns i samma virtuella nätverk.
+- **imageReferenceSku** -image Reference SKU kan uppdateras för de signerade [Linux-distributioner](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros), Windows Server/Client-avbildningar och avbildningar utan [information om planer](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage#view-plan-properties). 
 
 ### <a name="properties-that-require-deallocation-to-change"></a>Egenskaper som kräver att tilldelningen ändras
 Vissa egenskaper kan bara ändras till vissa värden om de virtuella datorerna i skalnings uppsättningen är friallokerade. Bland dessa egenskaper finns:
 
-- **SKU-namn**– om den nya VM-SKU: n inte stöds på den maskin vara som skalnings uppsättningen är på, måste du frigöra de virtuella datorerna i skalnings uppsättningen innan du ändrar SKU-namnet. Mer information finns i [så här ändrar du storlek på en virtuell Azure-dator](../virtual-machines/windows/resize-vm.md).
-
+- **SKU-namn**– om den nya VM-SKU: n inte stöds på den maskin vara som skalnings uppsättningen är på, måste du frigöra de virtuella datorerna i skalnings uppsättningen innan du ändrar SKU-namnet. Mer information finns i [så här ändrar du storlek på en virtuell Azure-dator](../virtual-machines/windows/resize-vm.md). 
 
 ## <a name="vm-specific-updates"></a>VM-/regionsspecifika uppdateringar
 Vissa ändringar kan tillämpas på specifika virtuella datorer i stället för globala skalnings uppsättnings egenskaper. För närvarande är den enda VM-anpassade uppdateringen som stöds att ansluta/koppla från data diskar till/från virtuella datorer i skalnings uppsättningen. Den här funktionen är en förhandsversion. Mer information finns i [förhands gransknings dokumentationen](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk).

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 79cf0ef059d96ac66f5918605e999d3936d589d2
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 168dcf994d00ba1cb2070665ada5a55cf86cfa4a
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95486525"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359820"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Säkerhetskopiera och återställa formulär igenkännings modeller
 
@@ -69,7 +69,7 @@ POST https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/cust
 Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
-Bröd texten i begäran måste ha följande format. Du måste ange resurs-ID och region namn för mål resursen. Du behöver också modell-ID, åtkomsttoken och förfallo värde som du kopierade från föregående steg.
+Bröd texten i begäran måste ha följande format. Du måste ange resurs-ID och region namn för mål resursen. Du hittar resurs-ID på fliken **Egenskaper** för resursen i Azure Portal och du kan hitta regions namnet på fliken **nycklar och slut punkt** . Du behöver också modell-ID, åtkomsttoken och förfallo värde som du kopierade från föregående steg.
 
 ```json
 {

@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 2fd7a3e512b79651fdcf6a6ac0c14822361fc263
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b8f9759d19089f74d62def41b205d862ce9a7d43
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350202"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359735"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Översikt över Azure HDInsight 4,0
 
@@ -38,7 +38,12 @@ Hive stöder nu dynamiska, materialiserade vyer eller för beräkning av relevan
 
 ### <a name="hive-transactional-tables"></a>Transaktionstabeller i Hive
 
-HDI 4,0 innehåller Apache Hive 3. Hive 3 kräver Atomicitet, konsekvens, isolering och livs längd för transaktionella tabeller som är aktiva i Hive-lagret. ACID-kompatibla tabeller och tabelldata nås och hanteras av Hive. Data i Create-, Hämta-, Update-och Delete (CRUD)-tabeller måste vara i fil formatet optimerad rad kolumn (ORC). Tabeller med endast infogning stöder alla fil format.
+HDI 4,0 innehåller Apache Hive 3. Hive 3 kräver Atomicitet, konsekvens, isolering och livs längd för transaktionella tabeller som är aktiva i Hive-lagret. ACID-kompatibla tabeller och tabelldata nås och hanteras av Hive. Data i Create-, Hämta-, Update-och Delete (CRUD)-tabeller måste vara i fil formatet optimerad rad kolumn (ORC). Tabeller med endast infogning stöder alla fil format. 
+
+> [!Note]
+> Stöd för syra/transaktionella fungerar endast för hanterade tabeller och inte för externa tabeller. Hive externa tabeller är utformade så att externa parter kan läsa och skriva tabell data, utan Hive perfoming eventuella ändringar av underliggande data. I sur tabeller kan Hive ändra underliggande data med komprimering och transaktioner.
+
+Några av fördelarna med sur tabeller är följande:
 
 * ACID v2 har prestandaförbättringar både för lagringsformat och för körningsmotorn.
 

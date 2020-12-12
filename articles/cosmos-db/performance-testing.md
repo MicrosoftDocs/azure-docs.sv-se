@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: f27e4f9f8e9f027233db89838614b523c5d0fe1f
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: cb0dd8eb879c5511da3c79a3dee6a715fb1275e4
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341781"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358681"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Prestanda-och skalnings testning med Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -27,7 +27,7 @@ När du har läst den här artikeln kan du svara på följande frågor:
 * Var kan jag hitta ett exempel på ett .NET-klient program för prestanda testning av Azure Cosmos DB? 
 * Hur gör jag för att uppnå höga data flödes nivåer med Azure Cosmos DB från mitt klient program?
 
-Kom igång med kod genom att ladda ned projektet från [Azure Cosmos DB exempel på prestandatest](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark). 
+Kom igång med kod genom att ladda ned projektet från [Azure Cosmos DB exempel på prestandatest](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/documentdb-benchmark). 
 
 > [!NOTE]
 > Syftet med det här programmet är att demonstrera hur du får bästa möjliga prestanda från Azure Cosmos DB med ett litet antal klient datorer. Syftet med exemplet är inte att uppnå den högsta data flödes kapaciteten för Azure Cosmos DB (som kan skalas utan gränser).
@@ -37,7 +37,7 @@ Om du letar efter konfigurations alternativ på klient sidan för att förbättr
 ## <a name="run-the-performance-testing-application"></a>Kör programmet för prestanda testning
 Det snabbaste sättet att komma igång är att kompilera och köra .NET-exemplet, vilket beskrivs i följande steg. Du kan också granska käll koden och implementera liknande konfigurationer i dina egna klient program.
 
-**Steg 1:** Hämta projektet från [Azure Cosmos DB exempel på prestandatest](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)eller förgrening av GitHub-lagringsplatsen.
+**Steg 1:** Hämta projektet från [Azure Cosmos DB exempel på prestandatest](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/documentdb-benchmark)eller förgrening av GitHub-lagringsplatsen.
 
 **Steg 2:** Ändra inställningarna för EndpointUrl, AuthorizationKey, CollectionThroughput och DocumentTemplate (valfritt) i App.config.
 
@@ -97,7 +97,7 @@ När du har kört appen kan du prova olika [indexerings principer](index-policy.
 
 I den här artikeln har vi tittat på hur du kan utföra prestanda-och skalnings testning med Azure Cosmos DB med hjälp av en .NET-konsol program. Mer information finns i följande artiklar:
 
-* [Exempel på Azure Cosmos DB prestanda testning](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
+* [Exempel på Azure Cosmos DB prestanda testning](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/documentdb-benchmark)
 * [Alternativ för klient konfiguration för att förbättra Azure Cosmos DB prestanda](performance-tips.md)
 * [Partitionering på Server sidan i Azure Cosmos DB](partitioning-overview.md)
 

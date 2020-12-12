@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/24/2019
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: e003c45aa1e7d75b709b7fbf99532fb1302fcbb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04c9bc429d9663f7ac36b6ba8f40abf225eb71c6
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797657"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359123"
 ---
 # <a name="add-your-work-or-school-account-to-the-microsoft-authenticator-app"></a>Lägg till ditt arbets-eller skol konto i Microsoft Authenticator-appen
 
@@ -27,30 +27,49 @@ Om din organisation använder tvåstegsverifiering kan du konfigurera ditt arbet
 
 ## <a name="add-your-work-or-school-account"></a>Lägga till ditt arbets- eller skolkonto
 
-1. På datorn går du till sidan [ytterligare säkerhets verifiering](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) .
+Du kan lägga till ditt arbets-eller skol konto i Microsoft Authenticator-appen genom att göra något av följande:
 
-    >[!Note]
-    >Om du inte ser sidan **ytterligare säkerhets verifiering** är det möjligt att administratören har aktiverat säkerhets information (för hands versionen). Om så är fallet bör du följa anvisningarna i avsnittet [Konfigurera säkerhets information för att använda en Authenticator-app](security-info-setup-auth-app.md) . Om så inte är fallet måste du kontakta din organisations supportavdelning om du behöver hjälp. Mer information om säkerhets information finns i [Översikt över säkerhets information (för hands version)](./security-info-setup-signin.md).
+- Logga in på ditt arbets-eller skolkonto autentiseringsuppgifter (förhands granskning)
+- Skanna en QR-kod
 
-2. Markera kryss rutan bredvid **Authenticator-app**och välj sedan **Konfigurera**.
+### <a name="sign-in-with-your-credentials"></a>Logga in med dina inloggningsuppgifter
 
-    Sidan **Konfigurera mobilapp** visas.
+>[!Note]
+>Den här funktionen kan bara användas av användare vars administratörer har aktiverat telefonin loggning med hjälp av Authenticator-appen för dem.
 
-    ![Skärm som tillhandahåller QR-koden](./media/user-help-auth-app-download-install/auth-app-barcode.png)
+För att lägga till ett konto genom att logga in på ditt arbets-eller skol konto med dina autentiseringsuppgifter:
 
-3. Öppna appen Microsoft Authenticator, Välj **Lägg till konto** från ikonen **Anpassa och kontrol lera** längst upp till höger och välj sedan arbets- **eller skol konto**.
+1. Öppna appen Microsoft Authenticator och välj till **+** knappen och tryck på **Lägg till arbets-eller skol konto**. Välj **Logga in**.
 
-    >[!Note]
-    >Om det här är första gången du konfigurerar Microsoft Authenticator-appen kan du få en fråga om du vill tillåta att appen får åtkomst till kameran (iOS) eller tillåter att appen tar bilder och spelar in video (Android). Du måste välja **Tillåt** så att Authenticator-appen kan komma åt kameran för att ta en bild av QR-koden i nästa steg. Om du inte tillåter kameran kan du fortfarande konfigurera Authenticator-appen, men du måste lägga till kod informationen manuellt. Information om hur du lägger till koden manuellt finns i [Lägg till ett konto manuellt i appen](user-help-auth-app-add-account-manual.md).
+1. Ange autentiseringsuppgifterna för ditt arbets-eller skol konto. Om du har ett tillfälligt åtkomst pass (tryck) kan du använda det för att logga in. I det här läget kan du eventuellt blockeras från att fortsätta med något av följande villkor:
 
-4. Använd enhetens kamera för att skanna QR-koden från skärmen **Konfigurera mobilappen** på datorn och välj sedan **Slutför**.
+   - Om du inte har tillräckligt med autentiseringsmetoder på ditt konto för att få en stark autentiseringstoken, kan du inte fortsätta att lägga till ett konto.
 
-    >[!Note]
-    >Om kameran inte kan avbilda QR-koden kan du manuellt lägga till din konto information i Microsoft Authenticator-appen för tvåstegsverifiering. Mer information och hur du gör det finns i [Lägg till ditt konto manuellt](user-help-auth-app-add-account-manual.md).
+   - Om du får meddelandet `You might be signing in from a location that is restricted by your admin` blockeras du och behöver en administratör för att avblockera dig i [säkerhets information](https://mysignins.microsoft.com/security-info).
 
-5. Granska skärmen **konton** i appen på din enhet för att se till att ditt konto är rätt och att det finns en tillhör ande sexsiffriga verifierings kod. För ytterligare säkerhet ändras verifierings koden var 30: e sekund som hindrar någon från att använda en kod flera gånger.
+   - Om du inte är blockerad för telefonin loggning med hjälp av autentiseraren av administratören kan du gå igenom enhets registreringen för att komma igång med lösen ords lös inloggning och Azure Multi-Factor Authentication (MFA).
 
-    ![Skärmen konton](./media/user-help-auth-app-download-install/auth-app-accounts.png)
+1. Nu kan du uppmanas att skanna en QR-kod från din organisation för att konfigurera ett lokalt Multi-Factor Authentication-konto i appen. Du behöver bara göra detta om din organisation använder en lokal MFA-Server.
+
+1. På din enhet trycker du på kontot och kontrollerar i hel skärms läge att ditt konto är korrekt och att det finns en associerad, sexsiffriga verifierings kod. För ytterligare säkerhet ändras verifierings koden var 30: e sekund som hindrar någon från att använda en kod flera gånger.
+
+## <a name="sign-in-with-a-qr-code"></a>Logga in med en QR-kod
+
+Om du vill lägga till ett konto genom att skanna en QR-kod gör du följande:
+
+1. På datorn går du till sidan **ytterligare säkerhets verifiering** .
+
+   >[!Note]
+   >Om du inte ser sidan **ytterligare säkerhets verifiering** är det möjligt att administratören har aktiverat säkerhets information (för hands versionen). Om så är fallet bör du följa anvisningarna i avsnittet [Konfigurera säkerhets information för att använda en Authenticator-app](security-info-setup-auth-app.md) . Om så inte är fallet måste du kontakta din organisations supportavdelning om du behöver hjälp. Mer information om säkerhets information finns i [Konfigurera din säkerhets information från en inloggnings tolk](security-info-setup-signin.md).
+
+1. Markera kryss rutan bredvid Authenticator-appen och välj sedan **Konfigurera**. Sidan **Konfigurera mobilapp** visas.
+
+   ![Skärm som tillhandahåller en QR-kod](./media/user-help-auth-app-add-work-school-account/auth-app-barcode.png)
+
+1. Öppna appen Microsoft Authenticator, Välj plus ikonen ![ och välj plus ikonen på antingen iOS-eller Android-enheter ](media/user-help-auth-app-add-work-school-account/plus-icon.png) och välj **Lägg till konto** och välj sedan **arbets-eller skol konto,** följt av **skanna en QR-kod**.
+   Om du inte har ett konto som har kon figurer ATS i Authenticator-appen visas en stor blå knapp med texten **Lägg till konto**.
+
+Om du inte uppmanas att använda kameran för att skanna en QR-kod, kontrollerar du i telefonens inställningar att appen autentiserare har åtkomst till telefon kameran.
 
 ## <a name="next-steps"></a>Nästa steg
 

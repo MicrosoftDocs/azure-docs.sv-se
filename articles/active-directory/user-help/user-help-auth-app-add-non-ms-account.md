@@ -8,19 +8,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/24/2019
+ms.date: 11/02/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: cba8837fc738884fc187b13083487c2ab62d25f0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 21c8e75ac81a443b1dd9d4a0f43263bbf40bee88
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020100"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359208"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Lägg till konton som inte kommer från Microsoft i Microsoft Authenticator-appen
 
-Lägg till konton som inte kommer från Microsoft, t. ex. för Google, Facebook eller GitHub till Microsoft Authenticator-appen för tvåstegsverifiering. Microsoft Authenticator-appen fungerar med alla appar som använder tvåfaktorsverifiering och alla konton som har stöd för tidsbaserade engångslösenord (TOTP).
+Om du har konton som inte kommer från Microsoft, t. ex. för Google, Facebook eller GitHub, kan du lägga till dem i Microsoft Authenticator-appen för tvåstegsverifiering. Microsoft Authenticator-appen fungerar med en app som använder tvåstegsverifiering och alla konton som stöder tidsbaserad eng ång slö sen ord (TOTP mobilapp)-standarder.
 
 >[!Important]
 >Innan du kan lägga till ditt konto måste du ladda ned och installera Microsoft Authenticator-appen. Om du inte har gjort det än följer du stegen i artikeln [Hämta och installera appen](user-help-auth-app-download-install.md) .
@@ -130,7 +130,7 @@ Lägg till GitHub-kontot genom att aktivera tvåstegsverifiering och sedan lägg
 
 1. På sidan med **tvåfaktorautentisering** på datorn väljer du **Konfigurera med hjälp av en app**.
 
-2. Spara återställnings koderna så att du kan gå tillbaka till ditt konto om du förlorar åtkomsten och välj sedan **Nästa**. 
+2. Spara återställnings koderna så att du kan gå tillbaka till ditt konto om du förlorar åtkomsten och välj sedan **Nästa**.
 
     Du kan spara dina koder genom att hämta dem till enheten, genom att skriva ut en hård kopia eller genom att kopiera dem till ett verktyg för lösen ords hanteraren.
 

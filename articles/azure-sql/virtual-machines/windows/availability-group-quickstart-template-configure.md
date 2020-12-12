@@ -7,6 +7,7 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
@@ -14,12 +15,12 @@ ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e52925acb099190305e1f0609ac389565336e24b
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: d7dfe010a3f4a1559454c49545af81eb14797bf1
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556513"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359922"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Använd Azures snabb starts mallar för att konfigurera en tillgänglighets grupp för SQL Server på Azure VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -66,7 +67,7 @@ Om du lägger till SQL Server virtuella datorer i resurs gruppen *SqlVirtualMach
    | **Prenumeration** |  Den prenumeration där SQL Server virtuella datorer finns. |
    |**Resursgrupp** | Resurs gruppen där dina SQL Server virtuella datorer finns. | 
    |**Kluster namn för växling vid fel** | Det namn som du vill använda för det nya Windows-redundansklustret. |
-   | **Befintlig VM-lista** | De SQL Server virtuella datorer som du vill delta i tillgänglighets gruppen och vara en del av det nya klustret. Avgränsa dessa värden med kommatecken och blank steg (till exempel: *SQLVM1, SQLVM2* ). |
+   | **Befintlig VM-lista** | De SQL Server virtuella datorer som du vill delta i tillgänglighets gruppen och vara en del av det nya klustret. Avgränsa dessa värden med kommatecken och blank steg (till exempel: *SQLVM1, SQLVM2*). |
    | **SQL Server version** | SQL Server versionen av dina SQL Server virtuella datorer. Välj den i list rutan. För närvarande stöds endast SQL Server 2016 och SQL Server 2017-avbildningar. |
    | **Befintligt fullständigt kvalificerat domän namn** | Det befintliga fullständiga domän namnet för den domän där SQL Server virtuella datorerna finns. |
    | **Befintligt domän konto** | Ett befintligt domän användar konto som har behörighet att **skapa dator objekt** i domänen när [CNO: t](/windows-server/failover-clustering/prestage-cluster-adds) skapas när mallen distribueras. Till exempel har ett domän administratörs konto vanligt vis tillräcklig behörighet (till exempel: account@domain.com ). *Detta konto bör också vara en del av den lokala administratörs gruppen på varje virtuell dator för att skapa klustret.*| 
@@ -116,14 +117,14 @@ Du behöver bara skapa den interna belastningsutjämnaren. I steg 4 hanterar sna
 
 1. Öppna den resurs grupp som innehåller de SQL Server virtuella datorerna i Azure Portal. 
 2. I resurs gruppen väljer du **Lägg till**.
-3. Sök efter **belastningsutjämnare**. I Sök resultaten väljer du **Load Balancer** , som publiceras av **Microsoft**.
+3. Sök efter **belastningsutjämnare**. I Sök resultaten väljer du **Load Balancer**, som publiceras av **Microsoft**.
 4. På bladet **Load Balancer** väljer du **skapa**.
 5. I dialog rutan **skapa belastnings utjämning** konfigurerar du belastningsutjämnaren enligt följande:
 
    | Inställning | Värde |
    | --- | --- |
    | **Namn** |Ange ett text namn som representerar belastningsutjämnaren. Skriv till exempel **sqlLB**. |
-   | **Typ** |**Internt** : de flesta implementeringar använder en intern belastningsutjämnare som gör det möjligt för program i samma virtuella nätverk att ansluta till tillgänglighets gruppen.  </br> **Externt** : tillåter att program ansluter till tillgänglighets gruppen via en offentlig Internet anslutning. |
+   | **Typ** |**Internt**: de flesta implementeringar använder en intern belastningsutjämnare som gör det möjligt för program i samma virtuella nätverk att ansluta till tillgänglighets gruppen.  </br> **Externt**: tillåter att program ansluter till tillgänglighets gruppen via en offentlig Internet anslutning. |
    | **Virtuellt nätverk** | Välj det virtuella nätverk som SQL Servers instanserna finns i. |
    | **Undernät** | Välj det undernät som de SQL Server instanserna finns i. |
    | **Tilldelning av IP-adress** |**Statiskt** |
@@ -137,7 +138,7 @@ Du behöver bara skapa den interna belastningsutjämnaren. I steg 4 hanterar sna
 
 
 >[!IMPORTANT]
-> Den offentliga IP-resursen för varje SQL Server VM måste ha en standard-SKU för att vara kompatibel med standard belastnings utjämningen. Ta reda på SKU: n för den virtuella datorns offentliga IP-resurs genom att gå till **resurs grupp** , välja din **offentliga IP** -adressresurs för SQL Server VM och leta upp värdet under **SKU** i fönstret **Översikt** . 
+> Den offentliga IP-resursen för varje SQL Server VM måste ha en standard-SKU för att vara kompatibel med standard belastnings utjämningen. Ta reda på SKU: n för den virtuella datorns offentliga IP-resurs genom att gå till **resurs grupp**, välja din **offentliga IP** -adressresurs för SQL Server VM och leta upp värdet under **SKU** i fönstret **Översikt** . 
 
 ## <a name="create-listener"></a>Skapa lyssnare 
 
@@ -163,11 +164,11 @@ Gör så här för att konfigurera den interna belastningsutjämnaren och skapa 
    |**Resursgrupp** | Resurs gruppen där SQL Server VM och tillgänglighets grupp finns. | 
    |**Befintligt kluster namn för växling vid fel** | Namnet på det kluster som dina SQL Server virtuella datorer är anslutna till. |
    | **Befintlig SQL-tillgänglighets grupp**| Namnet på den tillgänglighets grupp som dina SQL Server virtuella datorer ingår i. |
-   | **Befintlig VM-lista** | Namnen på de SQL Server virtuella datorer som ingår i den tidigare nämnda tillgänglighets gruppen. Avgränsa namnen med kommatecken och blank steg (till exempel: *SQLVM1, SQLVM2* ). |
+   | **Befintlig VM-lista** | Namnen på de SQL Server virtuella datorer som ingår i den tidigare nämnda tillgänglighets gruppen. Avgränsa namnen med kommatecken och blank steg (till exempel: *SQLVM1, SQLVM2*). |
    | **Lyssnare** | Det DNS-namn som du vill tilldela lyssnaren. Som standard anger den här mallen namnet "aglistener", men du kan ändra den. Namnet får inte överskrida 15 tecken. |
    | **Lyssnar port** | Den port som du vill att lyssnaren ska använda. Normalt ska den här porten vara standardvärdet 1433. Detta är port numret som mallen anger. Men om standard porten har ändrats bör lyssnar porten använda det värdet i stället. | 
    | **Lyssnare-IP** | Den IP-adress som du vill att lyssnaren ska använda. Den här adressen skapas när mallen distribueras, så ange en som inte redan används.  |
-   | **Befintligt undernät** | Namnet på det interna under nätet för SQL Server virtuella datorer (till exempel: *standard* ). Du kan fastställa det här värdet genom att gå till **resurs grupp** , välja ditt virtuella nätverk, välja **undernät** i fönstret **Inställningar** och kopiera värdet under **namn**. |
+   | **Befintligt undernät** | Namnet på det interna under nätet för SQL Server virtuella datorer (till exempel: *standard*). Du kan fastställa det här värdet genom att gå till **resurs grupp**, välja ditt virtuella nätverk, välja **undernät** i fönstret **Inställningar** och kopiera värdet under **namn**. |
    | **Befintliga interna Load Balancer** | Namnet på den interna belastningsutjämnare som du skapade i steg 3. |
    | **Avsöknings port** | Avsöknings porten som du vill att den interna belastningsutjämnaren ska använda. Mallen använder 59999 som standard, men du kan ändra det här värdet. |
    | &nbsp; | &nbsp; |

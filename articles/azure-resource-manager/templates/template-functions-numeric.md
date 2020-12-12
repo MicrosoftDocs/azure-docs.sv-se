@@ -3,12 +3,12 @@ title: Template Functions-numeric
 description: Beskriver de funktioner som används i en Azure Resource Manager mall (ARM-mall) för att arbeta med siffror.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 1484826b2377fe2adb2ac6ae2ab3ee6243b26c2c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: f3687581d94f80cc923614a0655da1813bd5c97b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920476"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359718"
 ---
 # <a name="numeric-functions-for-arm-templates"></a>Numeriska funktioner för ARM-mallar
 
@@ -108,8 +108,8 @@ Returnerar indexet för en upprepnings slinga.
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| loopName | Inga | sträng | Namnet på slingan för att hämta iterationen. |
-| offset |Inga |int |Talet som ska läggas till i det nollbaserade upprepning svärdet. |
+| loopName | Nej | sträng | Namnet på slingan för att hämta iterationen. |
+| offset |Nej |int |Talet som ska läggas till i det nollbaserade upprepning svärdet. |
 
 ### <a name="remarks"></a>Kommentarer
 
@@ -247,7 +247,7 @@ Utdata från föregående exempel med standardvärdena är:
 
 `float(arg1)`
 
-Konverterar värdet till ett flytt ALS nummer. Du använder bara den här funktionen när du skickar anpassade parametrar till ett program, till exempel en Logic app. `float`Funktionen stöds inte i Becip.  Se [stöd för andra numeriska typer än 32 32-heltal](https://github.com/Azure/bicep/issues/486).
+Konverterar värdet till ett flytt ALS nummer. Du använder bara den här funktionen när du skickar anpassade parametrar till ett program, till exempel en Logic app. `float`Funktionen stöds inte i bicep.  Se [stöd för andra numeriska typer än 32 32-heltal](https://github.com/Azure/bicep/issues/486).
 
 ### <a name="parameters"></a>Parametrar
 

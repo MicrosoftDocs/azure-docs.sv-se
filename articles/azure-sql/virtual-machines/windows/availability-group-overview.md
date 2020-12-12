@@ -8,18 +8,19 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 601eebb1-fc2c-4f5b-9c05-0e6ffd0e5334
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8573e45270dfd1ff984eae3dc5fbf1dc5f2fc6da
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: f39380e253d3fa9e86bfea3a8c436862738ff8e3
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600871"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359939"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Always on-tillgänglighetsgrupper på SQL Server på virtuella Azure-datorer
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -81,17 +82,17 @@ Följande tabell innehåller en jämförelse av tillgängliga alternativ:
 |**SQL Server-version** |2016 + |2016 +|2016 +|2012 +|
 |**SQL Server-utgåva** |Enterprise |Enterprise |Enterprise |Enterprise, standard|
 |**Windows Server-version**| 2016 + | 2016 + | 2016 + | Alla|
-|**Skapar klustret åt dig**|Ja|Ja | Ja |Inga|
-|**Skapar tillgänglighets gruppen åt dig** |Ja |Inga|Inga|Inga|
-|**Skapar lyssnare och belastningsutjämnare separat** |Inga|Inga|Inga|Ja|
-|**Möjligt att skapa DNN-lyssnare med den här metoden?**|Inga|Inga|Inga|Ja|
+|**Skapar klustret åt dig**|Ja|Ja | Ja |Nej|
+|**Skapar tillgänglighets gruppen åt dig** |Ja |Nej|Nej|Nej|
+|**Skapar lyssnare och belastningsutjämnare separat** |Nej|Nej|Nej|Ja|
+|**Möjligt att skapa DNN-lyssnare med den här metoden?**|Nej|Nej|Nej|Ja|
 |**Konfiguration av WSFC-kvorum**|Molnvittne|Molnvittne|Molnvittne|Alla|
-|**DR med flera regioner** |Inga|Inga|Inga|Ja|
+|**DR med flera regioner** |Nej|Nej|Nej|Ja|
 |**Stöd för multinätet** |Ja|Ja|Ja|Ja|
 |**Stöd för en befintlig AD**|Ja|Ja|Ja|Ja|
 |**DR med flera zoner i samma region**|Ja|Ja|Ja|Ja|
-|**Distribuerad AG utan AD**|Inga|Inga|Inga|Ja|
-|**Distribuerad AG utan kluster** |Inga|Inga|Inga|Ja|
+|**Distribuerad AG utan AD**|Nej|Nej|Nej|Ja|
+|**Distribuerad AG utan kluster** |Nej|Nej|Nej|Ja|
 
 Mer information finns i [Azure Portal](availability-group-azure-portal-configure.md), [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md), [snabb starts mallar](availability-group-quickstart-template-configure.md)och [manuell](availability-group-manually-configure-prerequisites-tutorial.md).
 

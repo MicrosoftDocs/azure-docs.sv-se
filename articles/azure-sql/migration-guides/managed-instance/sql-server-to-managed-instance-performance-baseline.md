@@ -1,5 +1,5 @@
 ---
-title: SQL Server till SQL-hanterad instans – prestanda analys
+title: 'SQL Server till SQL-hanterad instans: prestanda analys'
 description: Lär dig att skapa och jämföra en bas linje för prestanda när du migrerar SQL Server-databaser till Azure SQL-hanterad instans.
 ms.service: sql-database
 ms.subservice: migration
@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mokabiru
 ms.date: 11/06/2020
-ms.openlocfilehash: c47e4c1278f222feac35a2c6ab0b067c916c0217
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 2b6f9bef445cc07a3aa00377b41010a536855935
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326853"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358868"
 ---
 # <a name="migration-performance-sql-server-to-sql-managed-instance-performance-analysis"></a>Migrerings prestanda: SQL Server till prestanda analys av SQL-hanterade instanser
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]

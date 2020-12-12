@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec5888ba596579c6bbbf6891ca5e578e80003d80
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: d1164c14b406fb66638e6a5333fe38180272aa14
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333281"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359344"
 ---
 # <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Självstudie: utveckla mobil program med Xamarin och Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "93333281"
 
 De flesta mobilappar måste lagra data i molnet och Azure Cosmos DB är en molndatabas för mobilappar. Det har allt som krävs av Mobile Developer. Den är en fullständigt hanterad databas som en tjänst som kan skalas på begäran. Den överför dina data till tillämpningsprogrammet transparent, oavsett var dina användare befinner sig i världen. Med hjälp av [Azure Cosmos DB .NET Core SDK](sql-api-sdk-dotnet-core.md) kan du aktivera Xamarin-mobilappar så att de kan interagera direkt med Azure Cosmos DB, utan mellannivå.
 
-Den här artikeln innehåller en självstudiekurs för att skapa mobilappar med Xamarin och Azure Cosmos DB. Du hittar källkoden för hela självstudiekursen på [Xamarin och Azure Cosmos DB på GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin), inklusive information om hur du hanterar användare och behörigheter.
+Den här artikeln innehåller en självstudiekurs för att skapa mobilappar med Xamarin och Azure Cosmos DB. Du hittar källkoden för hela självstudiekursen på [Xamarin och Azure Cosmos DB på GitHub](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/xamarin), inklusive information om hur du hanterar användare och behörigheter.
 
 ## <a name="azure-cosmos-db-capabilities-for-mobile-apps"></a>Azure Cosmos DB-funktioner för mobilappar
 Azure Cosmos DB innehåller följande viktiga funktioner för utvecklare av mobilappar:
@@ -40,12 +40,12 @@ Azure Cosmos DB innehåller följande viktiga funktioner för utvecklare av mobi
 * Högt dataflöde. Det tar bara några millisekunder att läsa och skriva dokument med Azure Cosmos DB. Utvecklare kan specificera vilket dataflöde de behöver och Azure Cosmos DB erbjuder ett serviceavtal med 99,99 % tillgänglighet för alla konton med tillgång till en eller flera regioner med konsekvensmodellen ”relaxed” (avslappnad), samt 99,999 % läsningstillgänglighet för alla databaskonton med tillgång till flera regioner.
 * Obegränsad skalning. Dina Azure Cosmos-behållare [växer när din app växer](partitioning-overview.md). Du kan starta med ett liten datastorlek och ett dataflöde på ett par hundra förfrågningar per sekund. Dina samlingar eller databaser kan växa till flera petabyte data och ett högt dataflöde med hundratals miljoner förfrågningar per sekund.
 * Globalt distribuerad. Användare av mobilappar är ofta på resande fot över hela världen. Azure Cosmos DB är en [globalt distribuerad databas](distribute-data-globally.md). Klicka på kartan för att göra data tillgängliga för användarna.
-* Inbyggd omfattande autentisering. Med Azure Cosmos DB kan du enkelt implementera populära mönster som [data per användare](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems) eller delade data för flera användare utan kod för komplex anpassad autentisering.
+* Inbyggd omfattande autentisering. Med Azure Cosmos DB kan du enkelt implementera populära mönster som [data per användare](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/xamarin/UserItems) eller delade data för flera användare utan kod för komplex anpassad autentisering.
 * Geospatiala frågor. Många mobilappar erbjuder idag geo-baserade upplevelser. Med förstklassigt stöd för [geospatiala typer](./sql-query-geospatial-intro.md) gör Azure Cosmos DB det enkelt att skapa sådana upplevelser.
 * Binära bilagor. Dina appdata innehåller ofta binära blobar. Inbyggt stöd för bifogade filer gör Azure Cosmos DB till det enda du behöver för din app.
 
 ## <a name="azure-cosmos-db-and-xamarin-tutorial"></a>Självstudiekurs för Azure Cosmos DB och Xamarin
-Följande självstudiekurs visar hur du skapar en mobilapp med Xamarin och Azure Cosmos DB. Du hittar källkoden för hela självstudiekursen på [Xamarin och Azure Cosmos DB på GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin).
+Följande självstudiekurs visar hur du skapar en mobilapp med Xamarin och Azure Cosmos DB. Du hittar källkoden för hela självstudiekursen på [Xamarin och Azure Cosmos DB på GitHub](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/xamarin).
 
 ### <a name="get-started"></a>Kom igång
 Det är lätt att komma igång med Azure Cosmos DB. Gå till Azure Portal och skapa ett nytt Azure Cosmos DB-konto. Klicka på fliken **snabb start** . Ladda ned Xamarin formulär att göra-listan som redan är ansluten till ditt Azure Cosmos DB-konto. 
@@ -73,7 +73,7 @@ Du kan använda språkintegrerade frågor över schemalösa data i dina Xamarin-
         Items.AddRange(await query.ExecuteNextAsync<TodoItem>());
     }
 ```
-### <a name="add-users"></a>Lägg till användare
+### <a name="add-users"></a>Lägga till användare
 Precis som många kom igång-exempel, Azure Cosmos DB exemplet som du laddade ned autentiseringen till tjänsten med hjälp av en primär nyckel hårdkodad i appens kod. Den här standardinställningen är inte bra för appar du tänker dig ska kunna köras var som helst utom på din lokala emulator. Om en obehörig användare erhöll den primära nyckeln kan alla data på ditt Azure Cosmos DBs konto komprometteras. Istället vill du att appen bara ska få åtkomst till poster som hör till den inloggade användaren. Azure Cosmos DB gör att utvecklare kan bevilja läsbehörighet eller läs- och skrivbehörighet för programmet till en samling, en uppsättning dokument grupperade efter en partitionsnyckel eller ett visst dokument. 
 
 Följ dessa anvisningar om du vill ändra att göra-appen till en app med en att göra-lista för flera användare: 
@@ -86,7 +86,7 @@ Följ dessa anvisningar om du vill ändra att göra-appen till en app med en att
 
   4. Ändra appen så att den asynkrona meddelandekön för resurstoken autentiseras med Facebook och begär resurstoken för inloggade Facebook-användare. Du kan sedan komma åt deras data i samlingen UserItems.  
 
-Du hittar en fullständig kodsamling för det här mönstret under den [asynkrona meddelandekön för resurstoken på GitHub](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems). Det här diagrammet visar lösningen:
+Du hittar en fullständig kodsamling för det här mönstret under den [asynkrona meddelandekön för resurstoken på GitHub](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/xamarin/UserItems). Det här diagrammet visar lösningen:
 
 :::image type="content" source="media/mobile-apps-with-xamarin/documentdb-resource-token-broker.png" alt-text="Azure DB Cosmos-användare och asynkron meddelandekö för behörigheter" border="false":::
 
@@ -105,7 +105,7 @@ Allt eftersom din app blir populärare kan du få användare över hela världen
 Grattis! Du har slutfört lösningen och har en mobilapp med Xamarin och Azure Cosmos DB. Cordova-appar byggs på liknande sätt med hjälp av Azure Cosmos DB JavaScript SDK och inbyggda iOS-/Android-appar med hjälp av Azure Cosmos DB REST API:er.
 
 ## <a name="next-steps"></a>Nästa steg
-* Visa källkoden för [Xamarin och Azure Cosmos DB på GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin).
+* Visa källkoden för [Xamarin och Azure Cosmos DB på GitHub](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/xamarin).
 * Ladda ned [Cosmos Azure DB .NET Core SDK](sql-api-sdk-dotnet-core.md).
 * Hitta fler kodexempel för [.NET-program](sql-api-dotnet-samples.md).
 * Lär dig mer om [Azure Cosmos DB omfattande frågefunktioner](./sql-query-getting-started.md).

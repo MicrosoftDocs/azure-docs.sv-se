@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/21/2020
+ms.date: 12/11/2020
 ms.author: alkohli
-ms.openlocfilehash: 04e4394e6a439c923558ef90e13c14c0adaa4020
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1035f7fb34ed5b2b11e3ef472ccda7cccc30f652
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88142119"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359038"
 ---
 # <a name="tutorial-return-azure-data-box-preview"></a>Självstudie: returnera Azure Data Box (för hands version)
 
@@ -45,7 +45,7 @@ Nästa steg beror på var du returnerar enheten.
 
 ## <a name="ship-data-box-back"></a>Skicka tillbaka Data Box
 
-Kontrol lera att data kopieringen från enheten är klar och att **Förbered för att skicka** körningen har slutförts. Stegen skiljer sig beroende på i vilken region du skickar enheten.
+Kontrol lera att data kopieringen från enheten är klar och att **Förbered för att skicka** körningen har slutförts. Proceduren skiljer sig från den region där du levererar enheten.
 
 ## <a name="us-canada-europe"></a>[USA, Kanada, Europa](#tab/in-us-canada-europe)
 
@@ -53,12 +53,12 @@ Utför följande steg om du returnerar enheten i USA, Kanada eller Europa.
 
 1. Kontrollera att enheten är avstängd och att kablarna har tagits bort. 
 2. Rulla upp strömkabeln som levererades med enheten och placera kabeln säkert på baksidan av enheten.
-3. Kontrollera att adressetiketten visas på E-ink-skärmen och boka hämtning hos ett transportföretag. Om etiketten är skadad, tappas bort eller inte visas på skärmen för E-ink kontaktar du Microsoft-supporten. Om supporten föreslår det kan du gå till **Översikt > Ladda ned adressetikett** på Azure-portalen. Ladda ned en adressetikett och fäst den på enheten. 
+3. Se till att leverans etiketten visas på E-Penn visningen och Schemalägg en upphämtning med operatören. Om etiketten är skadad eller förlorad eller inte visas i visningen av E-pennan kontaktar du Microsoft Support. Om supporten föreslår det kan du gå till **Översikt > Ladda ned adressetikett** i Azure-portalen. Hämta skeppnings etiketten och fäst den på enheten. 
 4. Om du returnerar enheten bokar du upphämtning med UPS. Så här schemalägger du en upphämtning:
 
-    - Ring din lokala UPS (lands-/regionspecifikt avgiftsfritt nummer).
-    - Uppge spårningsnumret för returförsändelsen som visas på skärmen E-ink (E-bläck) eller på den utskrivna etiketten.
-    - Om du inte uppger spårningsnumret kräver UPS att du betalar en extra avgift vid upphämtningen.
+   - Ring din lokala UPS (lands-/regionspecifikt avgiftsfritt nummer).
+   - Uppge spårningsnumret för returförsändelsen som visas på skärmen E-ink (E-bläck) eller på den utskrivna etiketten. Om du inte citerar spårnings numret krävs en extra kostnad vid hämtningen.
+   - Om några problem uppstår när du schemalägger en upphämtning, eller om du ombeds att betala ytterligare avgifter, kan du kontakta Azure Data Box åtgärder. Skicka ett e-postmeddelande till [adbops@microsoft.com](mailto:adbops@microsoft.com).
 
     I stället för att schemalägga upphämtningen kan du även lämna in Data Box-enheten på närmaste inlämningsställe.
 4. Nära Data Box-enheten hämtas och skannas av transportföretaget uppdateras orderstatusen i portalen till **hämtad**. Du får också ett spårnings-ID.
@@ -67,7 +67,7 @@ Utför följande steg om du returnerar enheten i USA, Kanada eller Europa.
 
 Azure-datacenter i Australien kräver ytterligare en säkerhetsavisering. För alla inkommande leveranser krävs en särskild avisering. Följ stegen nedan vid leveranser i Australien.
 
-1. Returnera enheten i originalkartongen.
+1. Behåll den ursprungliga rutan som används för att leverera enheten för retur leverans.
 2. Kontrollera att datakopieringen till enheten är klar och att **Förbered för att skicka** lyckades.
 3. Stäng av enheten och avlägsna kablarna.
 4. Rulla ihop strömkabeln som levererades med enheten och placera kabeln säkert på baksidan av enheten.
@@ -75,7 +75,7 @@ Azure-datacenter i Australien kräver ytterligare en säkerhetsavisering. För a
 
 ## <a name="japan"></a>[Japan](#tab/in-japan)
 
-1. Returnera enheten i originalkartongen.
+1. Behåll den ursprungliga rutan som används för att leverera enheten för retur leverans.
 2. Stäng av enheten och avlägsna kablarna.
 3. Rulla ihop strömkabeln som levererades med enheten och placera kabeln säkert på baksidan av enheten.
 4. Skriv företagets namn och adressuppgifter på fraktsedeln som din avsändarinformation.
@@ -105,7 +105,7 @@ Vid behov kan du kontakta Quantium Solutions support (på japanska) med följand
 
 ## <a name="singapore"></a>[Singapore](#tab/in-singapore)
 
-1. Returnera enheten i originalkartongen.
+1. Behåll den ursprungliga rutan som används för att leverera enheten för retur leverans.
 2. Skriv ned spårningsnumret (visas som referensnummer på sidan Förbereda för att skicka i det lokala webbgränssnittet för Data Box). Detta är tillgängligt när steget Förbered för att skicka har slutförts. Hämta frakthandlingen på den här sidan och klistra fast den på förpackningen.
 3. Stäng av enheten och avlägsna kablarna.
 4. Rulla ihop strömkabeln som levererades med enheten och placera kabeln säkert på baksidan av enheten. 
@@ -145,9 +145,9 @@ Vid behov kan du kontakta Quantium Solutions support (på japanska) med följand
       *  Requested pickup date: yyyy/mm/dd;time:HH MM
     ```
 
-    * Du kan också lämna in paketet på närmaste DHL-servicepunkt.
+    * I stället kan du ta bort paketet på den närmaste DHL-platsen.
 
-5. Om du stöter på problem skickar du ett e-postmeddelande till [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com). Beskriv problemet och ange numret på fraktsedeln på ämnesraden. Du kan också ringa +27 (0) 119 21 39 02.
+5. Om du stöter på problem, e-post [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) med information om de problem som du påträffat och anger frakt sedels numret i raden Ämne:. Du kan också ringa +27 (0) 119 21 39 02.
 
 ## <a name="hong-kong"></a>[Hongkong](#tab/in-hk)
 
@@ -157,7 +157,7 @@ Vid behov kan du kontakta Quantium Solutions support (på japanska) med följand
 4. Rulla ihop strömkabeln som levererades med enheten och placera kabeln säkert på baksidan av enheten.
 5. Ring **Quantium Solutions** direktnummer på **(852) 23 18 12 13** under kontorstid (måndag till fredag mellan kl. 09.00 och 18.00).  
 6. Ange att det gäller en Microsoft Azure-upphämtning och uppge referens- och spårningsnumret (ovanför streckkoden) på fraktsedeln för att boka upphämtningen.
-7. Du får en muntlig bekräftelse för upphämtningsschemat. Om fraktföretaget inte anländer för upphämtning ringer du direktnumret till Quantium Solutions International för alternativa lösningar.
+7. Du får en muntlig bekräftelse för upphämtningsschemat. Om courier inte tar emot insamlingen kan du ringa Quantium-lösningar, Hotline för alternativa arrangemang.
 8. När du har bokat en upphämtning med Quantium skickar du bekräftelsen till [Microsoft Data Box Operations Asia](mailto:adbo@microsoft.com) genom att använda följande mall:
 
     ```output
@@ -172,7 +172,7 @@ Vid behov kan du kontakta Quantium Solutions support (på japanska) med följand
        * Pickup time:
     ```
 
-Om du stöter på problem kan du använda e-postData Box-enhet åtgärder för Asien som [adbo@microsoft.com](mailto:adbo@microsoft.com) tillhandahåller jobb namnet i ämnes rubriken och problemet påträffades.
+Om du kommer över alla problem, e-Data Box-enhet åtgärder för Asien som [adbo@microsoft.com](mailto:adbo@microsoft.com) tillhandahåller jobb namnet i ämnes rubriken och problemet påträffades.
 
 ## <a name="self-managed"></a>[Egenhanterad](#tab/in-selfmanaged)
 
@@ -180,7 +180,7 @@ Om du använder Data Box i Japan, Singapore, Korea, Indien, Sydafrika eller Väs
 
 1. Skriv ned auktoriseringskoden på sidan Förbereda för att leverera i det lokala webbgränssnittet för Data Box efter att det här steget har slutförts.
 2. Stäng av enheten och avlägsna kablarna. Rulla ihop strömkabeln som levererades med enheten och sätt fast kabeln ordentligt på baksidan av enheten.
-3. Skicka ett e-postmeddelande till Azure Data Box-driftsteamet med hjälp av mallen nedan när du är redo att returnera enheten.
+3. Skicka ett e-postmeddelande till Azure Data Box Operations-teamet med hjälp av nedanstående mall när du är redo att returnera enheten.
     
     ```
     To: adbops@microsoft.com 
@@ -194,7 +194,7 @@ Om du använder Data Box i Japan, Singapore, Korea, Indien, Sydafrika eller Väs
 ---
 
 ## <a name="erasure-of-data-from-data-box"></a>Radera data från Data Box
- 
+
 När enheten når Azure-datacenter raderar Data Box-enhet data på sina diskar enligt [rikt linjerna i NIST SP 800-88 Revision 1](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi).
 
 ## <a name="next-steps"></a>Nästa steg
@@ -202,7 +202,7 @@ När enheten når Azure-datacenter raderar Data Box-enhet data på sina diskar e
 I den här självstudien har du lärt dig om ämnen som:
 
 > [!div class="checklist"]
-> * Krav
+> * Förutsättningar
 > * Förbereda för att skicka
 > * Skicka Data Box till Microsoft
 > * Radera data från Data Box

@@ -8,17 +8,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 5714a2fd79d01f4cbc445c1ec1a726209ab6d427
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 0f194101720481f71434709c467d0e3130a0f1f9
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124942"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359463"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Konfigurera en tillgänglighets grupp för arbets gruppen 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -48,19 +49,19 @@ För referens används följande parametrar i den här artikeln, men kan ändras
 
 ## <a name="set-a-dns-suffix"></a>Ange ett DNS-suffix 
 
-I det här steget konfigurerar du DNS-suffixet för båda servrarna. Till exempel `ag.wgcluster.example.com`. På så sätt kan du använda namnet på det objekt som du vill ansluta till som en fullständigt kvalificerad adress i nätverket, till exempel `AGNode1.ag.wgcluster.example.com` . 
+I det här steget konfigurerar du DNS-suffixet för båda servrarna. Ett exempel är `ag.wgcluster.example.com`. På så sätt kan du använda namnet på det objekt som du vill ansluta till som en fullständigt kvalificerad adress i nätverket, till exempel `AGNode1.ag.wgcluster.example.com` . 
 
 Följ dessa steg om du vill konfigurera DNS-suffixet:
 
 1. RDP in till din första nod och öppna Serverhanteraren. 
-1. Välj **lokal server** och välj sedan namnet på den virtuella datorn under **dator namn** . 
-1. Välj **ändra..** . under **för att byta namn på den här datorn.** .. 
+1. Välj **lokal server** och välj sedan namnet på den virtuella datorn under **dator namn**. 
+1. Välj **ändra..** . under **för att byta namn på den här datorn.**.. 
 1. Ändra namnet på arbets grupps namnet så att det är något meningsfullt, till exempel `AGWORKGROUP` : 
 
    ![Ändra arbets grupps namn](./media/availability-group-clusterless-workgroup-configure/1-change-workgroup-name.png)
 
 1. Välj **mer...** för att öppna dialog rutan **DNS-suffix och NetBIOS-** datornamn. 
-1. Skriv namnet på ditt DNS-suffix under **primärt DNS-suffix för den här datorn** , till exempel `ag.wgcluster.example.com` och välj sedan **OK** : 
+1. Skriv namnet på ditt DNS-suffix under **primärt DNS-suffix för den här datorn**, till exempel `ag.wgcluster.example.com` och välj sedan **OK**: 
 
    ![Skärm bild som visar dialog rutan D N S suffix och NetBIOS-datornamn där du kan ange värdet.](./media/availability-group-clusterless-workgroup-configure/2-add-dns-suffix.png)
 
@@ -111,16 +112,16 @@ Viktiga skillnader mellan självstudien och vad som ska göras för ett arbets g
 - När du lägger till noderna i klustret lägger du till det fullständigt kvalificerade namnet, till exempel:
    - `AGNode1.ag.wgcluster.example.com`
    - `AGNode2.ag.wgcluster.example.com`
-- Avmarkera **Lägg till alla tillgängliga lagrings enheter i klustret** . 
+- Avmarkera **Lägg till alla tillgängliga lagrings enheter i klustret**. 
 
 När klustret har skapats tilldelar du en statisk kluster-IP-adress. Det gör du på följande sätt:
 
-1. Öppna **Klusterhanteraren för växling vid fel** på en av noderna, Välj klustret, högerklicka på **namnet: \<ClusterNam>** under **kluster kärn resurser** och välj sedan **Egenskaper** . 
+1. Öppna **Klusterhanteraren för växling vid fel** på en av noderna, Välj klustret, högerklicka på **namnet: \<ClusterNam>** under **kluster kärn resurser** och välj sedan **Egenskaper**. 
 
    ![Start egenskaper för kluster namnet](./media/availability-group-clusterless-workgroup-configure/5-launch-cluster-name-properties.png)
 
-1. Välj IP-adressen under **IP-adresser** och välj **Redigera** . 
-1. Välj **Använd statisk** , ange IP-adressen för klustret och välj sedan **OK** : 
+1. Välj IP-adressen under **IP-adresser** och välj **Redigera**. 
+1. Välj **Använd statisk**, ange IP-adressen för klustret och välj sedan **OK**: 
 
    ![Ange en statisk IP-adress för klustret](./media/availability-group-clusterless-workgroup-configure/6-provide-static-ip-for-cluster.png)
 
@@ -184,7 +185,7 @@ Följ dessa steg om du vill konfigurera den första noden:
 
 Följ dessa steg om du vill konfigurera den andra noden: 
 
-1. Anslut till den andra noden med **SQL Server Management Studio** , till exempel `AGNode2` . 
+1. Anslut till den andra noden med **SQL Server Management Studio**, till exempel `AGNode2` . 
 1. I ett **nytt frågefönster** kör du följande Transact-SQL-uttryck (T-SQL) efter att ha uppdaterat till ett komplext och säkert lösen ord: 
 
    ```sql

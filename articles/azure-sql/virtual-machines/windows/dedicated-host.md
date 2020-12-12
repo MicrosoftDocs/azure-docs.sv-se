@@ -6,6 +6,7 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -13,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: bb80abc35aedcdf0b46cefa279e477739cf1df6b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 957e458bf21eb4a95b1faba1daf0459271648310
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789802"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358698"
 ---
 # <a name="run-sql-server-vm-on-an-azure-dedicated-host"></a>Kör SQL Server VM på en dedikerad Azure-värd 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,8 +37,8 @@ Den [dedikerade Azure-värden](../../../virtual-machines/dedicated-hosts.md) är
 
 Du kan välja mellan två olika licensierings alternativ när du placerar SQL Server VM på en dedikerad Azure-värd. 
 
-  - **SQL VM-licensiering** : Detta är det befintliga licensierings alternativet, där du betalar för varje SQL Server VM-licens individuellt. 
-  - **Dedikerad värd licensiering** : den nya licensierings modellen som är tillgänglig för den dedikerade Azure-värden, där SQL Server licenser paketeras och betalas för på värdnivå. 
+  - **SQL VM-licensiering**: Detta är det befintliga licensierings alternativet, där du betalar för varje SQL Server VM-licens individuellt. 
+  - **Dedikerad värd licensiering**: den nya licensierings modellen som är tillgänglig för den dedikerade Azure-värden, där SQL Server licenser paketeras och betalas för på värdnivå. 
 
 
 Alternativ på värdnivå för att använda befintliga SQL Server-licenser: 
@@ -64,7 +65,7 @@ En av fördelarna med en dedikerad värd är obegränsad virtualisering. Du kan 
 
 Eftersom eftersom det är din värd, är du berättigad att ställa in virtualiseringen med 1:2-förhållandet. 
 
-## <a name="faq"></a>Vanliga frågor
+## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
 
 **F: Hur fungerar Azure Hybrid-förmån för Windows Server/SQL Server-licenser på en särskild Azure-värd?**
 

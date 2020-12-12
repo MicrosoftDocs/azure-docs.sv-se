@@ -7,18 +7,19 @@ author: MashaMSFT
 editor: monicar
 ms.assetid: d1f291e9-9af2-41ba-9d29-9541e3adcfcf
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4af7e10b573743602fea609264c73d58a1e6a7d1
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9fa23ca2ae655a11d7aaa4be67e08a6b3fa44394
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790006"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359395"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Konfigurera en belastningsutjämnare för en SQL Server Always on-tillgänglighetsgrupper i Azure Virtual Machines
 
@@ -59,19 +60,19 @@ Skapa först belastningsutjämnaren.
 
 1. Öppna den resurs grupp som innehåller de SQL Server virtuella datorerna i Azure Portal. 
 
-2. I resurs gruppen väljer du **Lägg till** .
+2. I resurs gruppen väljer du **Lägg till**.
 
-3. Sök efter **belastningsutjämnare** . Välj **Load Balancer** (publiceras av **Microsoft** ) i Sök resultaten.
+3. Sök efter **belastningsutjämnare**. Välj **Load Balancer** (publiceras av **Microsoft**) i Sök resultaten.
 
-4. På bladet **Load Balancer** väljer du **skapa** .
+4. På bladet **Load Balancer** väljer du **skapa**.
 
 5. I dialog rutan **skapa belastnings utjämning** konfigurerar du belastningsutjämnaren enligt följande:
 
    | Inställning | Värde |
    | --- | --- |
-   | **Namn** |Ett text namn som representerar belastningsutjämnaren. Till exempel **sqlLB** . |
-   | **Typ** |**Internt** : de flesta implementeringar använder en intern belastningsutjämnare som gör det möjligt för program i samma virtuella nätverk att ansluta till tillgänglighets gruppen.  </br> **Externt** : tillåter att program ansluter till tillgänglighets gruppen via en offentlig Internet anslutning. |
-   | **SKU** |**Basic** : standard alternativet. Endast giltigt om SQL Server instanser finns i samma tillgänglighets uppsättning. </br> **Standard** : föredra. Giltig om SQL Server instanser finns i samma tillgänglighets uppsättning. Krävs om SQL Server instanserna finns i olika tillgänglighets zoner. |
+   | **Namn** |Ett text namn som representerar belastningsutjämnaren. Till exempel **sqlLB**. |
+   | **Typ** |**Internt**: de flesta implementeringar använder en intern belastningsutjämnare som gör det möjligt för program i samma virtuella nätverk att ansluta till tillgänglighets gruppen.  </br> **Externt**: tillåter att program ansluter till tillgänglighets gruppen via en offentlig Internet anslutning. |
+   | **SKU** |**Basic**: standard alternativet. Endast giltigt om SQL Server instanser finns i samma tillgänglighets uppsättning. </br> **Standard**: föredra. Giltig om SQL Server instanser finns i samma tillgänglighets uppsättning. Krävs om SQL Server instanserna finns i olika tillgänglighets zoner. |
    | **Virtuellt nätverk** |Välj det virtuella nätverk som SQL Servers instanserna finns i. |
    | **Undernät** |Välj det undernät som de SQL Server instanserna finns i. |
    | **Tilldelning av IP-adress** |**Statiskt** |
@@ -80,7 +81,7 @@ Skapa först belastningsutjämnaren.
    | **Resursgrupp** |Välj den resurs grupp som SQL Server instanserna finns i. |
    | **Plats** |Välj den Azure-plats som SQL Server instanserna finns i. |
 
-6. Välj **Skapa** . 
+6. Välj **Skapa**. 
 
 Azure skapar belastningsutjämnaren. Belastningsutjämnaren tillhör ett särskilt nätverk, undernät, resurs grupp och plats. När Azure har slutfört aktiviteten kontrollerar du inställningarna för belastningsutjämnare i Azure. 
 
@@ -90,19 +91,19 @@ Azure anropar *backend-adresspoolen* för backend-adresspoolen. I det här falle
 
 1. I resurs gruppen väljer du den belastningsutjämnare som du har skapat. 
 
-2. I **Inställningar** väljer du **backend-pooler** .
+2. I **Inställningar** väljer du **backend-pooler**.
 
 3. På **backend-pooler** väljer du **Lägg till** för att skapa en backend-adresspool. 
 
-4. I **Lägg till backend-pool** , under **namn** , anger du ett namn för backend-poolen.
+4. I **Lägg till backend-pool**, under **namn**, anger du ett namn för backend-poolen.
 
-5. Under **virtuella datorer** väljer du **Lägg till en virtuell dator** . 
+5. Under **virtuella datorer** väljer du **Lägg till en virtuell dator**. 
 
 6. Under **Välj virtuella datorer** väljer du **Välj en tillgänglighets uppsättning** och anger sedan den tillgänglighets uppsättning som SQL Server virtuella datorerna tillhör.
 
-7. När du har valt tillgänglighets uppsättningen väljer du **Välj de virtuella datorerna** , väljer de två virtuella datorer som är värdar för de SQL Server instanserna i tillgänglighets gruppen och väljer sedan **Välj** . 
+7. När du har valt tillgänglighets uppsättningen väljer du **Välj de virtuella datorerna**, väljer de två virtuella datorer som är värdar för de SQL Server instanserna i tillgänglighets gruppen och väljer sedan **Välj**. 
 
-8. Välj **OK** för att stänga bladen för **Välj virtuella datorer** och **Lägg till en backend-pool** . 
+8. Välj **OK** för att stänga bladen för **Välj virtuella datorer** och **Lägg till en backend-pool**. 
 
 Azure uppdaterar inställningarna för backend-adresspoolen. Nu har din tillgänglighets uppsättning en pool med två SQL Server instanser.
 
@@ -110,7 +111,7 @@ Azure uppdaterar inställningarna för backend-adresspoolen. Nu har din tillgän
 
 Avsökningen definierar hur Azure verifierar vilken av de SQL Server instanser som för närvarande äger tillgänglighets gruppens lyssnare. Azure avsöker tjänsten baserat på IP-adressen på en port som du anger när du skapar avsökningen.
 
-1. På bladet **Inställningar** för belastnings utjämning väljer du **hälso avsökningar** . 
+1. På bladet **Inställningar** för belastnings utjämning väljer du **hälso avsökningar**. 
 
 2. Välj **Lägg till** på bladet **hälso avsökningar** .
 
@@ -118,13 +119,13 @@ Avsökningen definierar hur Azure verifierar vilken av de SQL Server instanser s
 
    | Inställning | Värde |
    | --- | --- |
-   | **Namn** |Ett text namn som representerar avsökningen. Till exempel **SQLAlwaysOnEndPointProbe** . |
+   | **Namn** |Ett text namn som representerar avsökningen. Till exempel **SQLAlwaysOnEndPointProbe**. |
    | **Protokoll** |**TCP** |
-   | **Port** |Du kan använda valfri tillgänglig port. Till exempel *59999* . |
+   | **Port** |Du kan använda valfri tillgänglig port. Till exempel *59999*. |
    | **Intervall** |*5* |
    | **Tröskelvärde för ej felfri** |*2* |
 
-4.  Välj **OK** . 
+4.  Välj **OK**. 
 
 > [!NOTE]
 > Kontrol lera att den port du anger är öppen i brand väggen för båda SQL Server instanser. Båda instanserna kräver en regel för inkommande trafik för TCP-porten som du använder. Mer information finns i [Lägg till eller redigera brand Väggs regel](/previous-versions/orphan-topics/ws.11/cc753558(v=ws.11)). 
@@ -136,7 +137,7 @@ Azure skapar avsökningen och använder den för att testa vilken SQL Server ins
 
 Reglerna för belastnings utjämning anger hur belastningsutjämnaren dirigerar trafik till SQL Server instanser. För den här belastningsutjämnaren aktiverar du direkt Server retur eftersom endast en av de två SQL Server instanserna äger tillgänglighets gruppens lyssnar resurs i taget.
 
-1. På bladet **Inställningar** för belastningsutjämnare väljer du **belastnings Utjämnings regler** . 
+1. På bladet **Inställningar** för belastningsutjämnare väljer du **belastnings Utjämnings regler**. 
 
 2. Välj **Lägg till** på bladet **belastnings Utjämnings regler** .
 
@@ -144,10 +145,10 @@ Reglerna för belastnings utjämning anger hur belastningsutjämnaren dirigerar 
 
    | Inställning | Värde |
    | --- | --- |
-   | **Namn** |Ett text namn som representerar reglerna för belastnings utjämning. Till exempel **SQLAlwaysOnEndPointListener** . |
+   | **Namn** |Ett text namn som representerar reglerna för belastnings utjämning. Till exempel **SQLAlwaysOnEndPointListener**. |
    | **Protokoll** |**TCP** |
    | **Port** |*1433* |
-   | **Backend-port** |*1433* . det här värdet ignoreras eftersom den här regeln använder **flytande IP (direkt Server retur)** . |
+   | **Backend-port** |*1433*. det här värdet ignoreras eftersom den här regeln använder **flytande IP (direkt Server retur)**. |
    | **Avsökning** |Använd namnet på avsökningen som du skapade för den här belastningsutjämnaren. |
    | **Sessionspermanens** |**Ingen** |
    | **Tids gräns för inaktivitet (minuter)** |*4* |
@@ -157,7 +158,7 @@ Reglerna för belastnings utjämning anger hur belastningsutjämnaren dirigerar 
    > Du kan behöva bläddra nedåt i bladet för att visa alla inställningar.
    > 
 
-4. Välj **OK** . 
+4. Välj **OK**. 
 
 5. Azure konfigurerar belastnings Utjämnings regeln. Nu konfigureras belastningsutjämnaren för att dirigera trafik till den SQL Server-instans som är värd för lyssnaren för tillgänglighets gruppen. 
 
@@ -187,13 +188,13 @@ Om kluster resurserna och beroendena är korrekt konfigurerade bör du kunna vis
 
 1. Starta SQL Server Management Studio och Anslut sedan till den primära repliken.
 
-2. Gå till **AlwaysOn High Availability** tillgänglighets  >  **Availability Groups**  >  **grupps lyssnare** för tillgänglighets grupper med hög tillgänglighet för AlwaysOn.  
+2. Gå till tillgänglighets  >    >  **grupps lyssnare** för tillgänglighets grupper med hög tillgänglighet för AlwaysOn.  
 
     Du bör nu se det lyssnar namn som du skapade i Klusterhanteraren för växling vid fel. 
 
-3. Högerklicka på namnet på lyssnaren och välj sedan **Egenskaper** .
+3. Högerklicka på namnet på lyssnaren och välj sedan **Egenskaper**.
 
-4. I rutan **port** anger du Port numret för tillgänglighets gruppens lyssnare genom att använda $EndpointPort som du använde tidigare (1433 var standard) och väljer sedan **OK** .
+4. I rutan **port** anger du Port numret för tillgänglighets gruppens lyssnare genom att använda $EndpointPort som du använde tidigare (1433 var standard) och väljer sedan **OK**.
 
 Nu har du en tillgänglighets grupp i Azure virtuella datorer som körs i Resource Manager-läge. 
 
@@ -219,7 +220,7 @@ Gör så här om du vill lägga till en IP-adress till en belastningsutjämnare 
 
 1. I Azure Portal öppnar du resurs gruppen som innehåller belastningsutjämnaren och väljer sedan belastningsutjämnaren. 
 
-2. Under **Inställningar** väljer du **klient delens IP-pool** och väljer sedan **Lägg till** . 
+2. Under **Inställningar** väljer du **klient delens IP-pool** och väljer sedan **Lägg till**. 
 
 3. Under **Lägg till IP-adress för klient** del tilldelar du ett namn för klient delen. 
 
@@ -244,7 +245,7 @@ Gör så här om du vill lägga till en IP-adress till en belastningsutjämnare 
 
 8. Välj **OK** för att spara avsökningen. 
 
-9. Skapa en regel för belastnings utjämning. Välj **belastnings Utjämnings regler** och välj sedan **Lägg till** .
+9. Skapa en regel för belastnings utjämning. Välj **belastnings Utjämnings regler** och välj sedan **Lägg till**.
 
 10. Konfigurera den nya regeln för belastnings utjämning med följande inställningar:
 
@@ -254,10 +255,10 @@ Gör så här om du vill lägga till en IP-adress till en belastningsutjämnare 
     |**Klientdelens IP-adress** |Välj den IP-adress som du skapade. 
     |**Protokoll** |TCP
     |**Port** |Använd porten som SQL Server instanser använder. En standard instans använder port 1433, om du inte har ändrat den. 
-    |**Serverdelsport** |Använd samma värde som **port** .
+    |**Serverdelsport** |Använd samma värde som **port**.
     |**Serverdelspool** |Poolen som innehåller de virtuella datorerna med SQL Server instanser. 
     |**Hälsoavsökning** |Välj den avsökning som du har skapat.
-    |**Sessionspermanens** |Inget
+    |**Sessionspermanens** |Inga
     |**Tids gräns för inaktivitet (minuter)** |Standard (4)
     |**Flytande IP (direkt Server retur)** | Enabled
 
@@ -293,7 +294,7 @@ Om en tillgänglighets grupp deltar i en distribuerad tillgänglighets grupp beh
 
 1. På varje server som ingår i den distribuerade tillgänglighets gruppen skapar du en regel för inkommande trafik på den distribuerade tillgänglighets gruppens lyssnare TCP-port. I många exempel använder dokumentationen 5022. 
 
-1. I Azure Portal väljer du på belastningsutjämnaren och väljer **belastnings Utjämnings regler** . Välj sedan **+ Lägg till** . 
+1. I Azure Portal väljer du på belastningsutjämnaren och väljer **belastnings Utjämnings regler**. Välj sedan **+ Lägg till**. 
 
 1. Skapa belastnings Utjämnings regeln med följande inställningar:
 
@@ -303,10 +304,10 @@ Om en tillgänglighets grupp deltar i en distribuerad tillgänglighets grupp beh
    |**Klientdelens IP-adress** |Använd samma IP-adress för klient delen som tillgänglighets gruppen.
    |**Protokoll** |TCP
    |**Port** |5022 – porten för [slut punkten för den distribuerade tillgänglighets gruppen](/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups).</br> Kan vara vilken tillgänglig port som helst.  
-   |**Serverdelsport** | 5022 – Använd samma värde som **port** .
+   |**Serverdelsport** | 5022 – Använd samma värde som **port**.
    |**Serverdelspool** |Poolen som innehåller de virtuella datorerna med SQL Server instanser. 
    |**Hälsoavsökning** |Välj den avsökning som du har skapat.
-   |**Sessionspermanens** |Inget
+   |**Sessionspermanens** |Inga
    |**Tids gräns för inaktivitet (minuter)** |Standard (4)
    |**Flytande IP (direkt Server retur)** | Enabled
 

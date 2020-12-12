@@ -7,16 +7,17 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 11/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 31ad9450c775e5e4e7ae543241b48f8c372ad9ee
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 7713b7596b21e02e941a19f64d3658ab0f5f51f5
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96749270"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359021"
 ---
 # <a name="tutorial-deploy-wordpress-app-on-aks-with-azure-database-for-mysql---flexible-server"></a>Självstudie: Distribuera WordPress-app på AKS med Azure Database for MySQL-flexibel Server
 
-I den här snabb starten distribuerar du ett WordPress-program på Azure Kubernetes service (AKS)-kluster med Azure Database for MySQL-flexibel Server (för hands version) med Azure CLI. [AKS](../../aks/intro-kubernetes.md) är en hanterad Kubernetes-tjänst som gör att du snabbt kan distribuera och hantera kluster. [Azure Database for MySQL-flexibel Server (för hands version)](overview.md) är en fullständigt hanterad databas tjänst som är utformad för att ge mer detaljerad kontroll och flexibilitet för funktioner i databas hantering och konfigurations inställningar. Den flexibla servern är i för hands version.
+I den här snabb starten distribuerar du ett WordPress-program på Azure Kubernetes service (AKS)-kluster med Azure Database for MySQL-flexibel Server (för hands version) med Azure CLI. 
+**[AKS](../../aks/intro-kubernetes.md)** är en hanterad Kubernetes-tjänst som gör att du snabbt kan distribuera och hantera kluster. **[Azure Database for MySQL-flexibel Server (för hands version)](overview.md)** är en fullständigt hanterad databas tjänst som är utformad för att ge mer detaljerad kontroll och flexibilitet för funktioner i databas hantering och konfigurations inställningar. Den flexibla servern är i för hands version.
 
 > [!NOTE]
 > - Azure Database for MySQL flexibel Server är för närvarande en offentlig för hands version
@@ -115,7 +116,7 @@ Servern som har skapats har följande attribut:
 - Eftersom kommandot använder en lokal kontext skapas servern i resurs gruppen ```wordpress-project``` och i regionen ```eastus``` .
 
 
-## <a name="build-your-wordpress-docker-image"></a>Bygg din WordPress Docker-avbildning
+### <a name="build-your-wordpress-docker-image"></a>Bygg din WordPress Docker-avbildning
 
 Hämta den [senaste WordPress](https://wordpress.org/download/) -versionen. Skapa en ny katalog ```my-wordpress-app``` för projektet och Använd den här enkla mappstrukturen
 
@@ -173,6 +174,7 @@ define('DB_COLLATE', '');
 define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
 ```
 
+### <a name="create-a-dockerfile"></a>Hur du skapar en Dockerfile
 Skapa en ny Dockerfile och kopiera det här kodfragmentet. Den här Dockerfile konfigurerar Apache-webbservern med PHP och aktiverar mysqli-tillägget.
 
 ```docker
@@ -182,12 +184,12 @@ RUN docker-php-ext-install mysqli
 RUN docker-php-ext-enable mysqli
 ```
 
-## <a name="build-your-docker-image"></a>Bygg din Docker-avbildning
-Se till att du befinner dig i katalogen ```my-wordpress-app``` i en Terminal med hjälp av ```cd``` kommandot. Kör följande kommando för att skapa en anslags tavla-avbildning:
+### <a name="build-your-docker-image"></a>Bygg din Docker-avbildning
+Se till att du befinner dig i katalogen ```my-wordpress-app``` i en Terminal med hjälp av ```cd``` kommandot. Kör följande kommando för att skapa avbildningen:
 
 ``` bash
 
-docker build --tag myblog:latest . 
+docker build --tag myblog:latest .
 
 ```
 
@@ -272,8 +274,6 @@ Följande exempelutdata visar de distributioner och tjänster som skapats:
 
 ```output
 deployment "wordpress-blog" created
-service "php-svc" created
-deployment "azure-vote-front" created
 service "php-svc" created
 ```
 

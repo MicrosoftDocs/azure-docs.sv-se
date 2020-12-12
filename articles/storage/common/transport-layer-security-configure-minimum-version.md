@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/09/2020
+ms.date: 12/11/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: b6c75bc13bf26510ee72968c5a27407b6b7bfee6
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 558f4792a055fc491f15600ecc5502c3a114a94b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937499"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360228"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Framtvinga en minsta version av Transport Layer Security (TLS) som krävs för begär anden till ett lagrings konto
 
@@ -86,6 +86,9 @@ StorageBlobLogs
 ## <a name="remediate-security-risks-with-a-minimum-version-of-tls"></a>Åtgärda säkerhets risker med en lägsta version av TLS
 
 När du är säker på att trafik från klienter som använder äldre versioner av TLS är minimal, eller om det är acceptabelt att misslyckade begär Anden som görs med en äldre version av TLS, kan du börja verkställa en lägsta TLS-version på ditt lagrings konto. Att kräva att klienter använder en lägsta version av TLS för att göra förfrågningar mot ett lagrings konto är en del av en strategi för att minimera säkerhets riskerna för dina data.
+
+> [!IMPORTANT]
+> Om du använder en tjänst som ansluter till Azure Storage, se till att tjänsten använder rätt version av TLS för att skicka begär anden till Azure Storage innan du anger den lägsta version som krävs för ett lagrings konto.
 
 ### <a name="configure-the-minimum-tls-version-for-a-storage-account"></a>Konfigurera den lägsta TLS-versionen för ett lagrings konto
 

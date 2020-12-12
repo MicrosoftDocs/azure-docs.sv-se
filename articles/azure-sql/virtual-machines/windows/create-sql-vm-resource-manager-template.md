@@ -7,12 +7,13 @@ ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
-ms.openlocfilehash: 9d0dd8ee1b99ddd2abf4fad154c70315a3d33c83
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.subservice: deployment
+ms.openlocfilehash: a20cb27ac91a0b01ed9cc3a5ac4c5c57f90ceda1
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556428"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359650"
 ---
 # <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>Snabb start: skapa SQL Server VM med en ARM-mall
 
@@ -58,24 +59,24 @@ Mer SQL Server på mallar för virtuella Azure-datorer finns i [galleriet snabb 
 
 2. Välj eller ange följande värden.
 
-    * **Prenumeration** : Välj en Azure-prenumeration.
-    * **Resurs grupp** : den för beredda resurs gruppen för din SQL Server VM. 
-    * **Region** : Välj en region.  Välj till exempel **USA, centrala**.
-    * **Namn på virtuell dator** : Ange ett namn för SQL Server virtuell dator. 
-    * **Storlek på virtuell dator** : Välj lämplig storlek för den virtuella datorn i list rutan.
-    * **Befintligt Virtual Network namn** : Ange namnet på det för beredda virtuella nätverket för din SQL Server VM. 
-    * **Befintlig VNet-resurs grupp** : Ange resurs gruppen där ditt virtuella nätverk har förberetts. 
-    * **Befintligt under näts namn** : namnet på ditt för beredda undernät. 
-    * **Bild erbjudande** : välj den SQL Server och Windows Server-avbildning som passar dina affärs behov bäst. 
-    * **SQL SKU** : Välj den version av SQL Server SKU som passar dina affärs behov bäst. 
-    * **Admin-användar namn** : användar namnet för den virtuella datorns administratör. 
-    * **Administratörs lösen ord** : lösen ordet som används av administratörs kontot för den virtuella datorn. 
-    * **Typ av lagrings arbets belastning** : den typ av lagring för arbets belastningen som bäst matchar ditt företag. 
-    * **Antal SQL-data diskar** : antalet diskar SQL Server används för datafiler.  
-    * **Data Sök väg** : sökvägen till SQL Server-datafilerna. 
-    * **Antal diskar i SQL-loggen** : antalet diskar SQL Server används för loggfiler. 
-    * **Logg Sök väg** : sökvägen till SQL Server loggfilerna. 
-    * **Plats** : platsen för alla resurser, det här värdet ska vara standardvärdet `[resourceGroup().location]` . 
+    * **Prenumeration**: Välj en Azure-prenumeration.
+    * **Resurs grupp**: den för beredda resurs gruppen för din SQL Server VM. 
+    * **Region**: Välj en region.  Välj till exempel **USA, centrala**.
+    * **Namn på virtuell dator**: Ange ett namn för SQL Server virtuell dator. 
+    * **Storlek på virtuell dator**: Välj lämplig storlek för den virtuella datorn i list rutan.
+    * **Befintligt Virtual Network namn**: Ange namnet på det för beredda virtuella nätverket för din SQL Server VM. 
+    * **Befintlig VNet-resurs grupp**: Ange resurs gruppen där ditt virtuella nätverk har förberetts. 
+    * **Befintligt under näts namn**: namnet på ditt för beredda undernät. 
+    * **Bild erbjudande**: välj den SQL Server och Windows Server-avbildning som passar dina affärs behov bäst. 
+    * **SQL SKU**: Välj den version av SQL Server SKU som passar dina affärs behov bäst. 
+    * **Admin-användar namn**: användar namnet för den virtuella datorns administratör. 
+    * **Administratörs lösen ord**: lösen ordet som används av administratörs kontot för den virtuella datorn. 
+    * **Typ av lagrings arbets belastning**: den typ av lagring för arbets belastningen som bäst matchar ditt företag. 
+    * **Antal SQL-data diskar**: antalet diskar SQL Server används för datafiler.  
+    * **Data Sök väg**: sökvägen till SQL Server-datafilerna. 
+    * **Antal diskar i SQL-loggen**: antalet diskar SQL Server används för loggfiler. 
+    * **Logg Sök väg**: sökvägen till SQL Server loggfilerna. 
+    * **Plats**: platsen för alla resurser, det här värdet ska vara standardvärdet `[resourceGroup().location]` . 
 
 3. Välj **Granska + skapa**. När SQL Server VM har distribuerats får du ett meddelande.
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/30/2020
+ms.date: 12/11/2020
 ms.author: alkohli
-ms.openlocfilehash: 8d17528728c5519244210217b35d6cd6a3afe715
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 004c84387c51233542b1bbbf11d33cdff42259af
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449129"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359157"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>Uppdatera Azure Stack Edge Pro GPU 
 
@@ -22,9 +22,14 @@ I den här artikeln beskrivs de steg som krävs för att installera uppdateringe
 Proceduren som beskrivs i den här artikeln har utförts med en annan version av program varan, men processen är densamma för den aktuella program versionen.
 
 > [!IMPORTANT]
-> - Uppdatering **2011** är den aktuella uppdateringen. <!--and corresponds to **2.1.1377.2170** software version on your device.--> Information om den här uppdateringen finns i [viktig information](azure-stack-edge-gpu-2011-release-notes.md).
->
-> - Kom ihåg enheten startas om när du installerar en uppdatering eller korrigering. Den här uppdateringen innehåller enhets program uppdateringar och Kubernetes-uppdateringar. Med tanke på att Azure Stack Edge Pro är en enda Node-enhet avbryts alla i/O-åtgärder och enheten upplever en stillestånds tid på upp till 30 minuter för uppdateringen.
+> - Uppdatering **2012** är den aktuella uppdateringen och motsvarar:
+>   - Enhetens program varu version – **2.2.1438.2470**
+>   - Kubernetes Server version – **v 1.17.3**
+>   - IoT Edge version: **0.1.0-beta10**
+>    
+>    Information om vad som är nytt i den här uppdateringen finns i [viktig information](azure-stack-edge-gpu-2012-release-notes.md).
+> - Om du vill tillämpa 2012-uppdateringen måste enheten köra 2010.
+> - Kom ihåg enheten startas om när du installerar en uppdatering eller korrigering. Den här uppdateringen innehåller enhets program uppdateringar och Kubernetes-uppdateringar. Med tanke på att Azure Stack Edge Pro är en enda Node-enhet avbryts alla i/O-åtgärder och enheten upplever en stillestånds tid på upp till 1,5 timmar för uppdateringen.
 
 Om du vill installera uppdateringar på enheten måste du först konfigurera platsen för uppdaterings servern. När uppdaterings servern har kon figurer ATS kan du tillämpa uppdateringarna via Azure Portal gränssnittet eller det lokala webb gränssnittet.
 
@@ -161,7 +166,7 @@ Utför följande steg för att ladda ned uppdateringen från Microsoft Update ka
 
 2. I rutan Sök i Microsoft Updates katalogen anger du Knowledge Base-numret för snabb korrigeringen eller villkoren för den uppdatering som du vill ladda ned. Ange till exempel **Azure Stack Edge Pro** och klicka sedan på **Sök**.
    
-    Uppdaterings listan visas som **Azure Stack Edge update 2011**.
+    Uppdaterings listan visas som **Azure Stack Edge update 2012**.
    
     <!--![Search catalog 2](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)-->
 
@@ -196,7 +201,7 @@ Den här proceduren tar cirka 20 minuter att slutföra. Utför följande steg f�
 
 5. Uppdateringen startar. När enheten har uppdaterats startas den om. Det lokala användar gränssnittet är inte tillgängligt under denna varaktighet.
    
-6. När omstarten är klar tas du till **inloggnings** sidan. Kontrol lera att enhetens program vara har uppdaterats genom att gå till **Underhåll**  >  **program uppdatering** i det lokala webb gränssnittet. Den program varu version som visas ska vara **Azure Stack Edge 2011** för den aktuella versionen.
+6. När omstarten är klar tas du till **inloggnings** sidan. Kontrol lera att enhetens program vara har uppdaterats genom att gå till **Underhåll**  >  **program uppdatering** i det lokala webb gränssnittet. Den program varu version som visas ska vara **Azure Stack Edge 2012** för den aktuella versionen.
 
    <!--![update device 6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png)--> 
 

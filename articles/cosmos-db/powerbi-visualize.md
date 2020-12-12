@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 3b47c7e8f31b51d51f5fad20cc068debb1dc2927
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b27bab9ea3029264143caaacf094f0a799894356
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339741"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359871"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Visualisera Azure Cosmos DB-data med hjälp av anslutningsprogrammet för Power BI
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -27,12 +27,12 @@ Den här artikeln beskriver de steg som krävs för att ansluta ett Azure Cosmos
 > [!NOTE]
 > Att ansluta till Azure Cosmos DB med Power BI Connector stöds för närvarande endast för Azure Cosmos DB SQL API-och Gremlin API-konton.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 Innan du följer anvisningarna i den här Power BI själv studie kursen, se till att du har åtkomst till följande resurser:
 
 * [Ladda ned den senaste versionen av Power BI Desktop](https://powerbi.microsoft.com/desktop).
 
-* Ladda ned [exempel Volcano-data](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/master/SampleData/VolcanoData.json) från GitHub.
+* Ladda ned [exempel Volcano-data](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/main/SampleData/VolcanoData.json) från GitHub.
 
 * [Skapa ett Azure Cosmos Database-konto](create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account) och importera Volcano-data med hjälp av [verktyget Azure Cosmos DB datamigrering](import-data.md). När du importerar data bör du tänka på följande inställningar för källan och målen i verktyget datamigrering:
 
@@ -76,13 +76,13 @@ Du hämtar Volcano-data från Azure Cosmos DB-kontot och visualiserar data i en 
 
 1. Kör Power BI Desktop.
 
-2. Du kan **Hämta data** , se de **senaste källorna** eller **öppna andra rapporter** direkt från välkomst skärmen. Välj "X" i det övre högra hörnet för att stänga skärmen. **Rapportvyn** för Power BI Desktop visas.
+2. Du kan **Hämta data**, se de **senaste källorna** eller **öppna andra rapporter** direkt från välkomst skärmen. Välj "X" i det övre högra hörnet för att stänga skärmen. **Rapportvyn** för Power BI Desktop visas.
    
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbireportview.png" alt-text="Power BI Desktop Report View-Power BI koppling":::
 
 3. Välj menyfliksområdet **Start** och klicka på **Hämta data**.  Fönstret **Hämta data** ska visas.
 
-4. Klicka på **Azure** , Välj **Azure Cosmos dB (beta)** och klicka sedan på **Anslut**. 
+4. Klicka på **Azure**, Välj **Azure Cosmos dB (beta)** och klicka sedan på **Anslut**. 
 
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbigetdata.png" alt-text="Power BI Desktop hämta data Power BIs koppling":::
 

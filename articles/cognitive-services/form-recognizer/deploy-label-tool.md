@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: abc8cffa3d5b9dffb55beabc90cdaecb3adc647f
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 985f9e741a1491a812c1d2b20de96381f8af3fa4
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852531"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359854"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Distribuera exempeletikettverktyget
 
@@ -86,7 +86,7 @@ Följ de här stegen för att skapa en ny resurs med hjälp av Azure Portal:
    * Server-URL – ange detta till `https://mcr.microsoft.com`
    * Användar namn (valfritt) – skapa ett användar namn. 
    * Lösen ord (valfritt) – skapa ett säkert lösen ord som du kommer ihåg.
-   * Bild och tagg – ange detta till `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview`
+   * Bild och tagg – ange detta till `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview`
    * Kontinuerlig distribution – ange detta till **på** om du vill få automatiska uppdateringar när utvecklings teamet gör ändringar i exempel etikett verktyget.
    * Start kommando – ange detta till `./run.sh eula=accept`
     

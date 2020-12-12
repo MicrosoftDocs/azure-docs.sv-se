@@ -8,12 +8,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: a9a90fbb2eedd6db2873d4ac2a5fea94c05c7eed
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4e895cdba1bfc16eac0450bd05271f0e41985b7b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005664"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359767"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Azure HDInsight Double Encryption för vilande data
 
@@ -119,15 +119,24 @@ HDInsight har endast stöd för Azure Key Vault. Om du har ett eget nyckel valv 
 
 Nu är du redo att skapa ett nytt HDInsight-kluster. Kundhanterade nycklar kan bara tillämpas på nya kluster när klustret skapas. Det går inte att ta bort kryptering från kund hanterade nyckel kluster och Kundhanterade nycklar kan inte läggas till i befintliga kluster.
 
-#### <a name="using-the-azure-portal"></a>Använda Azure Portal
+Från och med [November 2020-utgåvan](hdinsight-release-notes.md#release-date-11182020)stöder HDInsight skapandet av kluster med hjälp av både versions-och versions lösa nyckel-URI: er. Om du skapar klustret med en versions lös nyckel-URI kommer HDInsight-klustret att försöka utföra automatisk rotation när nyckeln uppdateras i Azure Key Vault. Om du skapar klustret med en versions nyckel-URI måste du utföra en manuell nyckel rotation enligt beskrivningen i [rotationen av krypterings nyckeln](#rotating-the-encryption-key).
 
-Ange den fullständiga **nyckel identifieraren**, inklusive nyckel versionen, när klustret skapas. Exempelvis `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Du måste också tilldela den hanterade identiteten till klustret och ange nyckel-URI: n.
+För kluster som skapats före november 2020-versionen måste du utföra nyckel rotation manuellt med den versions bara nyckel-URI: n.
+
+#### <a name="using-the-azure-portal"></a>Använda Azure-portalen
+
+När klustret skapas kan du antingen använda en versions nyckel eller en versions hanterings nyckel på följande sätt:
+
+- **Versions hantering** – ange den fullständiga **nyckel identifieraren**, inklusive nyckel versionen, under skapandet av klustret. Ett exempel är `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`.
+- **Versions hantering** – ange endast **nyckel-ID** när klustret skapas. Ett exempel är `https://contoso-kv.vault.azure.net/keys/myClusterKey`.
+
+Du måste också tilldela den hanterade identiteten till klustret.
 
 ![Skapa nytt kluster](./media/disk-encryption/create-cluster-portal.png)
 
 #### <a name="using-azure-cli"></a>Använda Azure CLI
 
-I följande exempel visas hur du använder Azure CLI för att skapa ett nytt Apache Spark kluster med disk kryptering aktiverat. Mer information finns i [Azure CLI AZ HDInsight Create](/cli/azure/hdinsight#az-hdinsight-create).
+I följande exempel visas hur du använder Azure CLI för att skapa ett nytt Apache Spark kluster med disk kryptering aktiverat. Mer information finns i [Azure CLI AZ HDInsight Create](/cli/azure/hdinsight#az-hdinsight-create). Parametern `encryption-key-version` är valfri.
 
 ```azurecli
 az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
@@ -141,7 +150,7 @@ az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
 
 #### <a name="using-azure-resource-manager-templates"></a>Använda Azure Resource Manager-mallar
 
-I följande exempel visas hur du använder en Azure Resource Manager mall för att skapa ett nytt Apache Spark kluster med disk kryptering aktiverat. Mer information finns i [Vad är arm-mallar?](../azure-resource-manager/templates/overview.md).
+I följande exempel visas hur du använder en Azure Resource Manager mall för att skapa ett nytt Apache Spark kluster med disk kryptering aktiverat. Mer information finns i [Vad är arm-mallar?](../azure-resource-manager/templates/overview.md). Egenskapen Resource Manager-mall `diskEncryptionKeyVersion` är valfri.
 
 I det här exemplet används PowerShell för att anropa mallen.
 
@@ -355,9 +364,9 @@ Innehållet i resurs hanterings mal len `azuredeploy.json` :
 
 ### <a name="rotating-the-encryption-key"></a>Rotera krypterings nyckeln
 
-Det kan finnas scenarier där du kanske vill ändra de krypterings nycklar som används av HDInsight-klustret när det har skapats. Detta kan enkelt ske via portalen. För den här åtgärden måste klustret ha åtkomst till både den aktuella nyckeln och den avsedda nya nyckeln, annars går det inte att rotera nyckeln.
+Du kan ändra de krypterings nycklar som används i det kluster som körs med hjälp av Azure Portal eller Azure CLI. För den här åtgärden måste klustret ha åtkomst till både den aktuella nyckeln och den avsedda nya nyckeln, annars går det inte att rotera nyckeln. För kluster som skapats efter versionen från november 2020 kan du välja om du vill att din nya nyckel ska ha en version eller inte. För kluster som skapats före versionen från november 2020 måste du använda en versions nyckel när du roterar krypterings nyckeln.
 
-#### <a name="using-the-azure-portal"></a>Använda Azure Portal
+#### <a name="using-the-azure-portal"></a>Använda Azure-portalen
 
 Om du vill rotera nyckeln behöver du URI för bas nyckel valvet. När du har gjort det går du till avsnittet HDInsight-kluster egenskaper i portalen och klickar på **ändra nyckel** under **URL för disk krypterings nyckel**. Ange den nya nyckel-URL: en och skicka för att rotera nyckeln.
 
