@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 38ab16fbadee245810a4486170dd54922c0c38f9
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 4c87dd905ae842647e7ec2e365abf450caf352b0
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558920"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369335"
 ---
 # <a name="security-control-v2-network-security"></a>Säkerhets kontroll v2: nätverks säkerhet
 
@@ -20,7 +20,7 @@ Nätverks säkerhet täcker kontroller för att skydda och skydda Azure-nätverk
 
 ## <a name="ns-1-implement-security-for-internal-traffic"></a>NS-1: implementera säkerhet för intern trafik
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | NS-1 | 9,2, 9,4, 14,1, 14,2, 14,3 | AC-4, CA-3, SC-7 |
 
@@ -52,9 +52,9 @@ Använd Azure Sentinel för att identifiera användningen av äldre oskyddade pr
 
 ## <a name="ns-2-connect-private-networks-together"></a>NS-2: Anslut privata nätverk till varandra
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
-| NS-2 | Saknas | CA-3, AC-17, MA-4 |
+| NS-2 | Ej tillämpligt | CA-3, AC-17, MA-4 |
 
 Använd Azure ExpressRoute eller Azure Virtual Private Network (VPN) för att skapa privata anslutningar mellan Azure-datacenter och lokal infrastruktur i en miljö med en valfri plats. ExpressRoute-anslutningar går inte via det offentliga Internet och de ger högre tillförlitlighet, snabbare hastigheter och lägre fördröjning än vanliga Internet anslutningar. För punkt-till-plats-VPN och plats-till-plats-VPN kan du ansluta lokala enheter eller nätverk till ett virtuellt nätverk med valfri kombination av de här VPN-alternativen och Azure-ExpressRoute.
 
@@ -80,7 +80,7 @@ Om du vill ansluta två eller flera virtuella nätverk i Azure tillsammans anvä
 
 ## <a name="ns-3-establish-private-network-access-to-azure-services"></a>NS-3: Upprätta privat nätverksåtkomst till Azure-tjänster
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | NS-3 | 14,1 | AC-4, CA-3, SC-7 |
 
@@ -104,7 +104,7 @@ Privat åtkomst är ett extra försvar i djupet, förutom autentiserings-och tra
 
 ## <a name="ns-4-protect-applications-and-services-from-external-network-attacks"></a>NS-4: skydda program och tjänster från externa nätverks attacker
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | NS-4 | 9,5, 12,3, 12,9 | SC-5, SC-7 |
 
@@ -134,7 +134,7 @@ Skydda Azure-resurser mot attacker från externa nätverk, inklusive DDoS-attack
 
 ## <a name="ns-5-deploy-intrusion-detectionintrusion-prevention-systems-idsips"></a>NS-5: Distribuera intrångs identifiering/intrångs skydd system (ID/IP-adresser)
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | NS-5 | 12,6, 12,7 | SI-4 |
 
@@ -160,7 +160,7 @@ Obs! Om du har en regel eller annat krav för ID/IP-adresser kan du se till att 
 
 ## <a name="ns-6-simplify-network-security-rules"></a>NS-6: förenkla nätverks säkerhets regler
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | NS-6 | 1.5 | IA-4 |
 
@@ -186,9 +186,9 @@ Du kan också använda program säkerhets grupper för att förenkla komplex sä
 
 ## <a name="ns-7-secure-domain-name-service-dns"></a>NS-7: säker Domain Name Service (DNS)
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
-| NS-7 | Saknas | SC-20, SC – 21 |
+| NS-7 | Ej tillämpligt | SC-20, SC – 21 |
 
 Följ metod tipsen för DNS-säkerhet för att undvika vanliga attacker som Dangling DNS, DNS-utlösnings attacker, DNS-förgiftning och förfalskning osv. 
 
