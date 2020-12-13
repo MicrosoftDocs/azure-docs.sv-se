@@ -1,22 +1,22 @@
 ---
 title: Självstudie – distribuera en lokal Azure Resource Manager-mall
-description: Lär dig hur du distribuerar en Azure Resource Manager-mall från den lokala datorn
+description: Lär dig hur du distribuerar en Azure Resource Manager-mall (ARM-mall) från den lokala datorn
 ms.date: 05/20/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: fe13376ced428713703f2bd5cf33941129dec1d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 640d314711e34119dac5e1c5bf9fa245685b6f38
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611630"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368144"
 ---
-# <a name="tutorial-deploy-a-local-azure-resource-manager-template"></a>Självstudie: Distribuera en lokal Azure Resource Manager-mall
+# <a name="tutorial-deploy-a-local-arm-template"></a>Självstudie: Distribuera en lokal ARM-mall
 
-Lär dig hur du distribuerar en Azure Resource Manager-mall från den lokala datorn. Det tar ungefär **8 minuter** att slutföra.
+Lär dig hur du distribuerar en Azure Resource Manager-mall (ARM-mall) från den lokala datorn. Det tar ungefär **8 minuter** att slutföra.
 
-Den här självstudien är den första i en serie. När du går igenom serien modularize du mallen genom att skapa en länkad mall. du lagrar den länkade mallen i ett lagrings konto och skyddar den länkade mallen med hjälp av SAS-token och du får lära dig hur du skapar en DevOp-pipeline för att distribuera mallar. Den här serien fokuserar på mall-distribution.  Om du vill lära dig att utveckla mallar kan du läsa mer i [nybörjar självstudierna](./template-tutorial-create-first-template.md).
+Den här självstudien är den första i en serie. När du går igenom serien modularize du mallen genom att skapa en länkad mall. du lagrar den länkade mallen i ett lagrings konto och skyddar den länkade mallen med hjälp av SAS-token och du får lära dig hur du skapar en DevOps-pipeline för att distribuera mallar. Den här serien fokuserar på mall-distribution. Om du vill lära dig att utveckla mallar kan du läsa mer i [nybörjar självstudierna](./template-tutorial-create-first-template.md).
 
 ## <a name="get-tools"></a>Hämta verktyg
 
@@ -29,12 +29,13 @@ Du behöver antingen Azure PowerShell eller Azure CLI för att distribuera malle
 - [Installera Azure PowerShell](/powershell/azure/install-az-ps)
 - [Installera Azure CLI på Windows](/cli/azure/install-azure-cli-windows)
 - [Installera Azure CLI på Linux](/cli/azure/install-azure-cli-linux)
+- [Installera Azure CLI på macOS](/cli/azure/install-azure-cli-macos)
 
 När du har installerat antingen Azure PowerShell eller Azure CLI kontrollerar du att du loggar in för första gången. Mer information finns i [Logga in-PowerShell](/powershell/azure/install-az-ps#sign-in) eller [Logga in – Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in).
 
 ### <a name="editor-optional"></a>Redigerare (valfritt)
 
-Mallar är JSON-filer. Om du vill granska/redigera mallar behöver du en lämplig JSON-redigerare. Vi rekommenderar Visual Studio Code med Resource Manager Tools-tillägget. Om du behöver installera dessa verktyg går du till [snabb start: skapa Azure Resource Manager mallar med Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
+Mallar är JSON-filer. Om du vill granska/redigera mallar behöver du en lämplig JSON-redigerare. Vi rekommenderar Visual Studio Code med Resource Manager Tools-tillägget. Om du behöver installera dessa verktyg, se [snabb start: skapa arm-mallar med Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 
 ## <a name="review-template"></a>Granska mall
 
@@ -43,9 +44,9 @@ Mallen distribuerar ett lagrings konto, en app service-plan och en webbapp. Om d
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/local-template/azuredeploy.json":::
 
 > [!IMPORTANT]
-> Lagrings konto namn måste innehålla mellan 3 och 24 tecken och får inte innehålla siffror och gemener. Namnet måste vara unikt. I mallen är lagrings kontots namn det projekt namn där "Store" har lagts till och projekt namnet måste innehålla mellan 3 och 11 tecken. Projekt namnet måste uppfylla kraven på lagrings kontots namn och innehålla färre än 11 tecken.
+> Lagrings konto namn måste innehålla mellan 3 och 24 tecken och får inte innehålla siffror och gemener. Namnet måste vara unikt. I mallen är lagrings kontots namn det projekt namn där **Store** lagts till och projekt namnet måste innehålla mellan 3 och 11 tecken. Projekt namnet måste uppfylla kraven på lagrings kontots namn och innehålla färre än 11 tecken.
 
-Spara en kopia av mallen på din lokala dator med. JSON-tillägget, till exempel azuredeploy.jspå. Du distribuerar den här mallen senare i självstudien.
+Spara en kopia av mallen på din lokala dator med _. JSON_ -tillägget, till exempel _azuredeploy.jspå_. Du distribuerar den här mallen senare i självstudien.
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 
@@ -65,7 +66,7 @@ az login
 
 ---
 
-Om du har flera Azure-prenumerationer väljer du den prenumeration som du vill använda:
+Om du har flera Azure-prenumerationer väljer du den prenumeration som du vill använda. Ersätt `[SubscriptionID/SubscriptionName]` och hakparenteserna `[]` med din prenumerations information:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -83,7 +84,7 @@ az account set --subscription [SubscriptionID/SubscriptionName]
 
 ## <a name="create-resource-group"></a>Skapa resursgrupp
 
-När du distribuerar en mall anger du en resurs grupp som ska innehålla resurserna. Innan du kör distributions kommandot skapar du resurs gruppen med antingen Azure CLI eller Azure PowerShell. Välj flikarna i följande kod avsnitt om du vill välja mellan Azure PowerShell och Azure CLI. CLI-exemplen i den här artikeln är skrivna för bash-gränssnittet.
+När du distribuerar en mall anger du en resurs grupp som ska innehålla resurserna. Innan du kör distributionskommandot skapar du resursgruppen med antingen Azure CLI eller Azure PowerShell. Välj flikarna i följande kod avsnitt om du vill välja mellan Azure PowerShell och Azure CLI. CLI-exemplen i den här artikeln är skrivna för bash-gränssnittet.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -129,7 +130,7 @@ New-AzResourceGroupDeployment `
   -verbose
 ```
 
-Mer information om hur du distribuerar mallar med hjälp av Azure PowerShell finns i [distribuera resurser med Resource Manager-mallar och Azure PowerShell](./deploy-powershell.md).
+Mer information om hur du distribuerar mallar med hjälp av Azure PowerShell finns i [distribuera resurser med ARM-mallar och Azure PowerShell](./deploy-powershell.md).
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -148,7 +149,7 @@ az deployment group create \
   --verbose
 ```
 
-Mer information om hur du distribuerar mallar med hjälp av Azure CLI finns i [distribuera resurser med Resource Manager-mallar och Azure CLI](./deploy-cli.md).
+Mer information om hur du distribuerar mallar med hjälp av Azure CLI finns i [distribuera resurser med ARM-mallar och Azure CLI](./deploy-cli.md).
 
 ---
 

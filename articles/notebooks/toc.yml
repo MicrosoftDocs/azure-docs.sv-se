@@ -8,43 +8,11 @@
   items:
     - name: Logga in och ange ett användar-ID
       href: quickstart-sign-in-azure-notebooks.md
-    - name: Skapa och dela en notebook-fil
-      href: quickstart-create-share-jupyter-notebook.md
-    - name: Skapa en notebook-fil
-      href: quickstart-clone-jupyter-notebook.md
-    - name: Migrera en lokal Jupyter Notebook
-      href: quickstart-migrate-local-jupyter-notebook.md
-    - name: Använda en anpassad miljö
-      href: quickstart-create-jupyter-notebook-project-environment.md
     - name: Exportera ditt projekt
       href: quickstart-export-jupyter-notebook-project.md
-- name: Självstudier
-  items:
-    - name: Skapa och kör en notebook-fil
-      href: tutorial-create-run-jupyter-notebook.md
-- name: Exempel
-  items:
-    - name: Exempel på notebook-filer
-      href: azure-notebooks-samples.md
 - name: Begrepp
   items:
     - name: Konton
       href: azure-notebooks-user-account.md
     - name: Profiler
       href: azure-notebooks-user-profile.md
-- name: Anvisningar
-  items:
-    - name: Skapa och klona projekt
-      href: create-clone-jupyter-notebooks.md
-    - name: Hantera och konfigurera projekt
-      href: configure-manage-azure-notebooks-projects.md
-    - name: Installera paket på en notebook-fil
-      href: install-packages-jupyter-notebook.md
-    - name: Presentera ett bildspel
-      href: present-jupyter-notebooks-slideshow.md
-    - name: Arbeta med datafiler
-      href: work-with-project-data-files.md
-    - name: Få åtkomst till dataresurser
-      href: access-data-resources-jupyter-notebooks.md
-    - name: Använda Data Science Virtual Machines
-      href: use-data-science-virtual-machine.md

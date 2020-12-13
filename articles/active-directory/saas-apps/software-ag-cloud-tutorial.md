@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/20/2020
+ms.date: 12/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 4acc4c0cec530b8f83648042cd7a417992257543
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 144263835e129c3571dcc5c2f8e8bde03dca9a0e
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602078"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369352"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med program-AG-molnet
 
@@ -99,7 +99,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Exempelvis `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -145,15 +145,12 @@ I det här avsnittet skapas en användare som kallas Britta Simon i Software AG-
 
 ## <a name="test-sso"></a>Testa SSO 
 
-I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ. 
+I det här avsnittet testar du konfigurationen av enkel inloggning med Azure AD med följande alternativ. 
 
-* Om du antar att Microsoft Azure har kon figurer ATS som en provider i Software AG-molnet navigerar du till `www.softwareag.cloud` och klickar på knappen Logga in och anger miljö namnet. Klicka på länken Logga in med på nästa skärm <IDP NAME> och ange autentiseringsuppgifterna. När du har autentiserat dig är du inloggad och tas till program varan AG-molnets start sida.
-
-* Gå till Software AG-inloggnings-URL för moln inloggning direkt och starta inloggnings flödet därifrån.
-
-* Du kan använda Microsoft Mina appar. När du klickar på moln panelen programs AG i Mina appar omdirigeras det till URL: en för moln inloggning i program varan AG. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
-
+Om du antar att Microsoft Azure har kon figurer ATS som en provider i Software AG-molnet navigerar du till `www.softwareag.cloud` och klickar på knappen Logga in och anger miljö namnet. Klicka på länken Logga in med på nästa skärm <IDP NAME> och ange autentiseringsuppgifterna. När du har autentiserat dig är du inloggad och tas till program varan AG-molnets start sida.
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du har konfigurerat Software AG-molnet kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+När du har konfigurerat Software AG-molnet kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+

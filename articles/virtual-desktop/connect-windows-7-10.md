@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c9da2acac0957d7fe06d0249775fbed73b5f458d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59379dd9c3a41729466de269b52dfd3fb206eea9
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287346"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368723"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Ansluta med Windows-skrivbordsklienten
 
@@ -46,7 +46,7 @@ Du kan prenumerera på en arbets yta på två sätt. Klienten kan försöka iden
 
 ### <a name="subscribe-with-a-user-account"></a>Prenumerera med ett användar konto
 
-1. Välj **Prenumerera**på klientens huvud sida.
+1. Välj **Prenumerera** på klientens huvud sida.
 2. Logga in med ditt användar konto när du uppmanas till det.
 3. Resurserna kommer att visas i anslutnings Center och grupperas efter arbets yta.
 
@@ -57,7 +57,7 @@ Du kan prenumerera på en arbets yta på två sätt. Klienten kan försöka iden
 
 1. Från klientens huvud sida väljer du **Prenumerera med URL**.
 2. Ange arbets ytans URL eller din e-post adress:
-   - Om du använder **URL: en för arbets ytan**använder du den som din administratör fick. Om du får åtkomst till resurser från virtuella Windows-datorer kan du använda någon av följande URL: er:
+   - Om du använder **URL: en för arbets ytan** använder du den som din administratör fick. Om du får åtkomst till resurser från virtuella Windows-datorer kan du använda någon av följande URL: er:
      - Windows Virtual Desktop (klassisk): `https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
      - Virtuellt Windows-skrivbord: `https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
      - Windows Virtual Desktop (US Gov): `https://rdweb.wvd.azure.us/api/arm/feeddiscovery`
@@ -69,3 +69,5 @@ Du kan prenumerera på en arbets yta på två sätt. Klienten kan försöka iden
 ## <a name="next-steps"></a>Nästa steg
 
 Om du vill veta mer om hur du använder Windows-skrivbordet kan du läsa [komma igång med Windows Skriv bords klienten](/windows-server/remote/remote-desktop-services/clients/windowsdesktop/).
+
+Om du är en administratör som vill veta mer om hur du använder Windows-skrivbordet kan du läsa mer i [Windows Skriv bords klient för administratörer](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-admin).

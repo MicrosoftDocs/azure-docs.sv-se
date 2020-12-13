@@ -7,45 +7,45 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2b21bea924ee8eaed37246ce55feaf8243e3e7d4
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 33f5dff65fa7ad8274051f784f2e61dc8366d389
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408745"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368859"
 ---
 # <a name="security-control-v2-identity-management"></a>Säkerhets kontroll v2: identitets hantering
 
 Identitets hantering täcker kontroller för att upprätta en säker identitets-och åtkomst kontroll med hjälp av Azure Active Directory. Detta inkluderar användning av enkel inloggning, starka autentiseringar, hanterade identiteter (och tjänst principer) för program, villkorlig åtkomst och övervakning av konto avvikelser.
 
-## <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1: standardisera Azure Active Directory som system för central identitets-och autentisering
+## <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1: Standardisera Azure Active Directory som centralt system för identiteter och autentisering
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | IM-1 | 16,1, 16,2, 16,4, 16,5 | IA-2, IA-8, AC-2, AC-3 |
 
-Azure Active Directory (Azure AD) är Azures standard tjänst för identitets-och åtkomst hantering. Du bör standardisera Azure AD för att styra organisationens identitets-och åtkomst hantering i:
+Azure Active Directory (Azure AD) är Azures standard tjänst för identitets-och åtkomst hantering. Du bör standardisera Azure AD för att styra organisationens identitets- och åtkomsthantering i:
 - Microsoft Cloud-resurser, till exempel Azure Portal, Azure Storage, Azure Virtual Machines (Linux och Windows), Azure Key Vault, PaaS och SaaS-program.
 
-- Organisationens resurser, till exempel program i Azure eller företagets nätverks resurser.
+- Organisationens resurser, till exempel program i Azure eller företagets nätverksresurser.
 
-Att skydda Azure AD bör vara en hög prioritet i din organisations säkerhets praxis för molnet. Azure AD ger en identitets säker Poäng för att hjälpa dig att utvärdera din position för identiteter i relation till Microsofts rekommendationer för bästa praxis. Använd poängen för att mäta hur nära konfigurationen matchar rekommendationerna för bästa praxis och för att göra förbättringar i din säkerhets position.
+Att skydda Azure AD bör vara en hög prioritet i din organisations rutiner för molnsäkerhet. Azure AD tillhandahåller en identitetssäkerhetspoäng för att hjälpa dig att utvärdera din status i fråga om identitetssäkerhet i relation till Microsofts rekommendationer för bästa praxis. Använd poängen för att mäta hur nära konfigurationen matchar rekommendationerna för bästa praxis och för att göra förbättringar i din säkerhetsstatus.
 
-Obs! Azure AD har stöd för externa identitets leverantörer, vilket gör det möjligt för användare utan Microsoft-konto att logga in på sina program och resurser med sin externa identitet.
+Obs! Azure AD har stöd för externa identitetsleverantörer, vilket gör det möjligt för användare utan Microsoft-konto att logga in på sina program och resurser med sin externa identitet.
 
 - [Innehav i Azure AD](../../active-directory/develop/single-and-multi-tenant-apps.md)
 
-- [Så här skapar och konfigurerar du en Azure AD-instans](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [Så skapar och konfigurerar du en Azure AD-instans](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-- [Definiera Azure AD-klienter](https://azure.microsoft.com/resources/securing-azure-environments-with-azure-active-directory/)  
+- [Definiera Azure AD-klientorganisationer](https://azure.microsoft.com/resources/securing-azure-environments-with-azure-active-directory/)  
 
-- [Använda externa identitets leverantörer för ett program](../../active-directory/external-identities/identity-providers.md)
+- [Använda externa identitetsprovidrar för ett program](../../active-directory/external-identities/identity-providers.md)
 
-- [Vad är en säker identitet i Azure AD](../../active-directory/fundamentals/identity-secure-score.md)
+- [Vad är identitetssäkerhetspoäng i Azure AD](../../active-directory/fundamentals/identity-secure-score.md)
 
-**Ansvar** : kund
+**Ansvar**: Kund
 
-**Kund säkerhets intressenter** ( [Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Kund säkerhets intressenter** ([Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Identitets-och nyckel hantering](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys) 
 
@@ -55,11 +55,11 @@ Obs! Azure AD har stöd för externa identitets leverantörer, vilket gör det m
 
 - [Statushantering](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-## <a name="im-2-manage-application-identities-securely-and-automatically"></a>IM-2: hantera program identiteter säkert och automatiskt
+## <a name="im-2-manage-application-identities-securely-and-automatically"></a>IM-2: Hantera appidentiteter säkert och automatiskt
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
-| IM-2 | Saknas | AC-2, AC-3, IA-2, IA-4, IA-9 |
+| IM-2 | Ej tillämpligt | AC-2, AC-3, IA-2, IA-4, IA-9 |
 
 För icke-mänskliga konton som tjänster eller automatisering använder du Azure Managed Identities, i stället för att skapa ett mer kraftfullt humant konto för att få åtkomst till resurser eller köra kod. Azure Managed identiteter kan autentiseras för Azure-tjänster och-resurser som stöder Azure AD-autentisering. Autentisering aktive ras via fördefinierade regler för åtkomst beviljande, Undvik hårdkodade autentiseringsuppgifter i källkod eller konfigurationsfiler. 
 
@@ -75,17 +75,17 @@ För tjänster som inte har stöd för hanterade identiteter använder du Azure 
 
 Använd Azure Key Vault för säkerhets objekts registrering: autentisering # auktorisera-a-Security-huvud-till-åtkomst-nyckel-valv
 
-**Ansvar** : kund
+**Ansvar**: Kund
 
-**Kund säkerhets intressenter** ( [Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Kund säkerhets intressenter** ([Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Identitets-och nyckel hantering](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
 - [Programsäkerhet och DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-## <a name="im-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>IM-3: Använd enkel inloggning för Azure AD (SSO) för program åtkomst
+## <a name="im-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>IM-3: Använd enkel inloggning i Azure AD (SSO) för åtkomst till appar
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | IM-3 | 4.4 | IA-2, IA-4 |
 
@@ -95,9 +95,9 @@ Använd enkel inloggning för Azure AD för att hantera och skydda åtkomsten ti
 
 - [Förstå Application SSO med Azure AD](../../active-directory/manage-apps/what-is-single-sign-on.md)
 
-**Ansvar** : kund
+**Ansvar**: Kund
 
-**Kund säkerhets intressenter** ( [Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Kund säkerhets intressenter** ([Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Säkerhetsarkitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -105,9 +105,9 @@ Använd enkel inloggning för Azure AD för att hantera och skydda åtkomsten ti
 
 - [Programsäkerhet och DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-## <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4: Använd starka verifierings kontroller för alla Azure Active Directory-baserade åtkomst
+## <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4: Använd kraftfulla verifieringskontroller för all Azure Active Directory-baserad åtkomst
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | IM-4 | 4,2, 4,4 4,5, 11,5, 12,11, 16,3 | AC-2, AC-3, IA-2, IA-4 |
 
@@ -122,17 +122,17 @@ Om äldre lösenordsbaserad autentisering fortfarande används för Azure AD-aut
 
 Obs! autentisering baserat på enbart autentiseringsuppgifter för lösen ord är känsligt för populära angrepps metoder. För högre säkerhet använder du stark autentisering, till exempel MFA och en princip för starka lösen ord. För program från tredje part och Marketplace-tjänster som kan ha standard lösen ord bör du ändra dem under installationen av den inledande tjänsten. 
 
-- [Så här aktiverar du MFA i Azure](../../active-directory/authentication/howto-mfa-getstarted.md)
+- [Aktivera MFA i Azure](../../active-directory/authentication/howto-mfa-getstarted.md)
 
-- [Introduktion till alternativ för lösen ords lös autentisering för Azure Active Directory](../../active-directory/authentication/concept-authentication-passwordless.md)
+- [Introduktion till alternativ för lösenordsfri autentisering för Azure Active Directory](../../active-directory/authentication/concept-authentication-passwordless.md)
 
-- [Standard lösen ords princip för Azure AD](../../active-directory/authentication/concept-sspr-policy.md#password-policies-that-only-apply-to-cloud-user-accounts)
+- [Standardprincip för lösenord för Azure AD](../../active-directory/authentication/concept-sspr-policy.md#password-policies-that-only-apply-to-cloud-user-accounts)
 
-- [Eliminera Felaktiga lösen ord med Azure AD Password Protection](../../active-directory/authentication/concept-password-ban-bad.md)
+- [Eliminera felaktiga lösen ord med Azure AD-lösenordsskydd](../../active-directory/authentication/concept-password-ban-bad.md)
 
-**Ansvar** : kund
+**Ansvar**: Kund
 
-**Kund säkerhets intressenter** ( [Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Kund säkerhets intressenter** ([Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Säkerhetsarkitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -140,14 +140,14 @@ Obs! autentisering baserat på enbart autentiseringsuppgifter för lösen ord ä
 
 - [Programsäkerhet och DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-## <a name="im-5-monitor-and-alert-on-account-anomalies"></a>IM-5: övervaka och Varna vid konto avvikelser
+## <a name="im-5-monitor-and-alert-on-account-anomalies"></a>IM-5: Övervaka och skicka aviseringar vid kontoavvikelser
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | SNABB MEDDELANDE – 5 | 4,8, 4,9, 16,12, 16,13 | AC-2, AC-3, AC-7, AU-6 |
 
 Azure AD tillhandahåller följande data Källor: 
--   Inloggningar – inloggnings rapporten innehåller information om användningen av hanterade program och användar inloggnings aktiviteter.
+-   Inloggningsaktiviteter – Rapporten för inloggningsaktiviteter ger information om användningen av hanterade program och användares inloggningsaktiviteter.
 
 -   Gransknings loggar – ger spårning genom loggar för alla ändringar som görs via olika funktioner i Azure AD. Exempel på gransknings loggar för loggade ändringar omfattar att lägga till eller ta bort användare, appar, grupper, roller och principer.
 
@@ -155,7 +155,7 @@ Azure AD tillhandahåller följande data Källor:
 
 -   Användare som har flaggats för risk – En användare som har flaggats för risk indikerar att ett användarkonto kan ha komprometterats.
 
-Dessa data källor kan integreras med Azure Monitor, Azure Sentinel eller SIEM system från tredje part.
+Dessa datakällor kan integreras med Azure Monitor, Azure Sentinel eller SIEM-system från tredje part.
 
 Azure Security Center kan även Varna vid vissa misstänkta aktiviteter, till exempel ett högt antal misslyckade autentiseringsförsök och föråldrade konton i prenumerationen. 
 
@@ -163,13 +163,13 @@ Azure Advanced Threat Protection (ATP) är en säkerhetslösning som kan använd
 
 - [Granska aktivitets rapporter i Azure AD](../../active-directory/reports-monitoring/concept-audit-logs.md)
 
-- [Visa Azure AD-riskfyllda inloggningar](../../active-directory/identity-protection/overview-identity-protection.md)
+- [Så visar du riskfyllda inloggningar för Azure AD](../../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Så här identifierar du Azure AD-användare som har flaggats för riskfylld aktivitet](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Övervaka användarnas identitets-och åtkomst aktiviteter i Azure Security Center](../../security-center/security-center-identity-access.md)
+- [Så här övervakar du användarnas identitets- och åtkomstrelaterade aktiviteter i Azure Security Center](../../security-center/security-center-identity-access.md)
 
-- [Aviseringar i Azure Security Center hot Intelligence Protection-modulen](../../security-center/alerts-reference.md)
+- [Aviseringar i skyddsmodulen för hotinformation i Azure Security Center](../../security-center/alerts-reference.md)
 
 - [Så här integrerar du Azures aktivitets loggar i Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -177,19 +177,19 @@ Azure Advanced Threat Protection (ATP) är en säkerhetslösning som kan använd
 
 - [Azure Advanced Threat Protection](/azure-advanced-threat-protection/what-is-atp)
 
-**Ansvar** : kund
+**Ansvar**: Kund
 
-**Kund säkerhets intressenter** ( [Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Kund säkerhets intressenter** ([Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Programsäkerhet och DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 - [Statushantering](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-## <a name="im-6-restrict-azure-resource-access-based-on-conditions"></a>IM-6: begränsa åtkomsten till Azure-resursen baserat på villkor
+## <a name="im-6-restrict-azure-resource-access-based-on-conditions"></a>IM-6: Begränsa åtkomsten till Azure-resurser baserat på villkor
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
-| IM-6 | Saknas | AC-2, AC-3 |
+| IM-6 | Ej tillämpligt | AC-2, AC-3 |
 
 Använd villkorlig åtkomst i Azure AD för mer detaljerad åtkomst kontroll baserat på användardefinierade villkor, till exempel att kräva användar inloggningar från vissa IP-intervall för att använda MFA. En detaljerad hantering av autentiseringsbegäranden kan också användas via en princip för villkorlig åtkomst i Azure AD för olika användnings fall. 
 
@@ -199,9 +199,9 @@ Använd villkorlig åtkomst i Azure AD för mer detaljerad åtkomst kontroll bas
 
 - [Konfigurera autentiseringsessionshantering med villkorsstyrd åtkomst](../../active-directory/conditional-access/howto-conditional-access-session-lifetime.md)
 
-**Ansvar** : kund
+**Ansvar**: Kund
 
-**Kund säkerhets intressenter** ( [Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Kund säkerhets intressenter** ([Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Identitets-och nyckel hantering](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
@@ -209,25 +209,25 @@ Använd villkorlig åtkomst i Azure AD för mer detaljerad åtkomst kontroll bas
 
 - [Statushantering](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-- [Hotinformation](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
+- [Hot information](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
-## <a name="im-7-eliminate-unintended-credential-exposure"></a>IM-7: eliminera oavsiktlig exponering för autentiseringsuppgifter
+## <a name="im-7-eliminate-unintended-credential-exposure"></a>IM-7: Eliminera oavsiktlig exponering av autentiseringsuppgifter
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | IM-7 | 18,1, 18,7 | IA-5 |
 
 Implementera Azure DevOps Credential scanner för att identifiera autentiseringsuppgifter i koden. Med scannern för autentiseringsuppgifter kan du också flytta identifierade autentiseringsuppgifter till säkrare platser som Azure Key Vault.
 
-För GitHub kan du använda intern hemlighet-genomsökning för att identifiera autentiseringsuppgifter eller annan form av hemligheter i koden.
+För GitHub kan du använda funktionen för identifiering av interna hemligheter till att identifiera autentiseringsuppgifter och andra hemligheter i koden.
 
 - [Konfigurera inloggnings skannern](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-- [GitHub Secret-genomsökning](https://docs.github.com/github/administering-a-repository/about-secret-scanning)
+- [Identifiering av hemligheter i GitHub](https://docs.github.com/github/administering-a-repository/about-secret-scanning)
 
-**Ansvar** : kund
+**Ansvar**: Kund
 
-**Kund säkerhets intressenter** ( [Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Kund säkerhets intressenter** ([Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Programsäkerhet och DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -235,7 +235,7 @@ För GitHub kan du använda intern hemlighet-genomsökning för att identifiera 
 
 ## <a name="im-8-secure-user-access-to-legacy-applications"></a>IM-8: säker användar åtkomst till äldre program
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | IM-8 | 14,6 | AC-2, AC-3, SC-11 |
 
@@ -245,13 +245,13 @@ Med Azure AD-programproxy kan du publicera äldre lokala program till fjärransl
 
 Alternativt är Microsoft Cloud App Security en CASB-tjänst (Cloud Access Security Broker) som kan tillhandahålla kontroller för att övervaka en användares programsessioner och blockera åtgärder (för både äldre lokala program och SaaS-program (Cloud program vara som en tjänst). 
 
-- [Azure AD Programproxy](../../active-directory/manage-apps/application-proxy.md#what-is-application-proxy)
+- [Azure-AD-programproxy](../../active-directory/manage-apps/application-proxy.md#what-is-application-proxy)
 
 - [Metod tips för Microsoft Cloud App Security](/cloud-app-security/best-practices)
 
-**Ansvar** : kund
+**Ansvar**: Kund
 
-**Kund säkerhets intressenter** ( [Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Kund säkerhets intressenter** ([Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Säkerhetsarkitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

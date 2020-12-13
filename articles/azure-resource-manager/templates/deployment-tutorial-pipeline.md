@@ -4,12 +4,12 @@ description: Lär dig hur du kontinuerligt skapar, testar och distribuerar Azure
 ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d7688a4e4838cb591bcd3ac0045a5ed22180c063
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 1b9e60ec1b3f7626a3cb67a673bf12d14d7d259b
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906360"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368213"
 ---
 # <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>Självstudie: kontinuerlig integrering av ARM-mallar med Azure-pipelines
 
@@ -19,7 +19,7 @@ Azure DevOps tillhandahåller utvecklartjänster som stöd för team för att pl
 
 > [!NOTE]
 > Välj ett projekt namn. När du går igenom självstudien ersätter du någon av **AzureRmPipeline** med ditt projekt namn.
-> Det här projekt namnet används för att generera resurs namn.  En av resurserna är ett lagrings konto. Lagrings konto namn måste innehålla mellan 3 och 24 tecken och får inte innehålla siffror och gemener. Namnet måste vara unikt. I mallen är lagrings kontots namn det projekt namn där "Store" har lagts till och projekt namnet måste innehålla mellan 3 och 11 tecken. Projekt namnet måste uppfylla kraven på lagrings kontots namn och innehålla färre än 11 tecken.
+> Det här projekt namnet används för att generera resurs namn.  En av resurserna är ett lagrings konto. Lagrings konto namn måste innehålla mellan 3 och 24 tecken och får inte innehålla siffror och gemener. Namnet måste vara unikt. I mallen är lagrings kontots namn det projekt namn där **Store** lagts till och projekt namnet måste innehålla mellan 3 och 11 tecken. Projekt namnet måste uppfylla kraven på lagrings kontots namn och innehålla färre än 11 tecken.
 
 Den här självstudien omfattar följande uppgifter:
 
@@ -33,12 +33,12 @@ Den här självstudien omfattar följande uppgifter:
 
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att kunna följa stegen i den här artikeln behöver du:
 
 * **Ett GitHub-konto** där du använder det för att skapa en lagrings plats för mallarna. Om du inte har något konto kan du [skapa ett utan kostnad](https://github.com). Mer information om hur du använder GitHub-databaser finns i [bygga GitHub-databaser](/azure/devops/pipelines/repos/github).
-* **Installera git**. I den här självstudien används *git bash* eller *git-gränssnittet*. Anvisningar finns i [Installera git]( https://www.atlassian.com/git/tutorials/install-git).
+* **Installera git**. I den här självstudien används *git bash* eller *git-gränssnittet*. Anvisningar finns i [Installera git](https://www.atlassian.com/git/tutorials/install-git).
 * **En Azure DevOps-organisation**. Om du inte har något konto kan du skapa ett utan kostnad. Se [skapa en organisation eller en projekt samling](/azure/devops/organizations/accounts/create-organization?view=azure-devops).
 * valfritt **Visual Studio Code med Resource Manager Tools-tillägg**. Se [snabb start: skapa arm-mallar med Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 
@@ -57,13 +57,13 @@ Om du inte har ett GitHub-konto, se [krav](#prerequisites).
 
 1. Välj **nytt**, en grön knapp.
 1. I **databas namn** anger du ett namn på databasen.  Till exempel **AzureRmPipeline-lagrings platsen**. Kom ihåg att ersätta **AzureRmPipeline** med ditt projekt namn. Du kan välja antingen **offentlig** eller **privat** för att gå igenom den här självstudien. Och välj sedan **skapa lagrings plats**.
-1. Skriv ner URL: en. URL: en för databasen har följande format: **`https://github.com/[YourAccountName]/[YourRepositoryName]`** .
+1. Skriv ner URL: en. URL: en för databasen har följande format: `https://github.com/[YourAccountName]/[YourRepositoryName]` .
 
-Den här lagrings platsen kallas för en *fjärrlagringsplats*. Varje utvecklare av samma projekt kan klona sin egen *lokala lagrings plats* och sammanfoga ändringarna till fjärrlagringsplatsen.
+Den här lagrings platsen kallas för en *fjärrlagringsplats*. Alla utvecklare av samma projekt kan klona sina egna *lokala lagrings* platser och sammanfoga ändringarna till fjärrlagringsplatsen.
 
 ### <a name="clone-the-remote-repository"></a>Klona fjärrlagringsplatsen
 
-1. Öppna git-Shell eller git-bash.  Se [krav](#prerequisites).
+1. Öppna git-Shell eller git-bash. Se [krav](#prerequisites).
 1. Kontrol lera att din aktuella mapp är **GitHub**.
 1. Kör följande kommando:
 
@@ -75,26 +75,26 @@ Den här lagrings platsen kallas för en *fjärrlagringsplats*. Varje utvecklare
     pwd
     ```
 
-    Ersätt **[YourAccountName]** med namnet på ditt GitHub-konto och Ersätt **[YourGitHubRepositoryName]** med ditt databas namn som du skapade i föregående procedur.
+    Ersätt `[YourAccountName]` med ditt GitHub-kontonamn och Ersätt `[YourGitHubRepositoryName]` med ditt databas namn som du skapade i föregående procedur.
 
-Mappen **CreateWebApp** är den mapp där mallen lagras. Kommandot **PWD** visar mappsökvägen. Sökvägen är den plats där du sparar mallen i följande procedur.
+Mappen _CreateWebApp_ är den mapp där mallen lagras. `pwd`Kommandot visar mappsökvägen. Sökvägen är den plats där du sparar mallen i följande procedur.
 
 ### <a name="download-a-quickstart-template"></a>Hämta en snabb starts mall
 
-I stället för att skapa mallarna kan du hämta mallarna och spara dem i mappen **CreateWebApp** .
+I stället för att skapa mallarna kan du hämta mallarna och spara dem i mappen _CreateWebApp_ .
 
 * Huvud mal len: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/azuredeploy.json
 * Den länkade mallen: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json
 
-Både mappnamnet och fil namnen används som de är i pipelinen.  Om du ändrar namnen måste du uppdatera namnen som används i pipelinen.
+Både mappnamnet och fil namnen används som de är i pipelinen. Om du ändrar namnen måste du uppdatera namnen som används i pipelinen.
 
 ### <a name="push-the-template-to-the-remote-repository"></a>Skicka mallen till fjärrlagringsplatsen
 
-azuredeploy.jspå har lagts till i den lokala lagrings platsen. Sedan laddar du upp mallen till fjärrlagringsplatsen.
+_azuredeploy.jspå_ har lagts till i den lokala lagrings platsen. Sedan laddar du upp mallen till fjärrlagringsplatsen.
 
 1. Öppna *git-Shell* eller *git-bash*, om den inte är öppen.
-1. Ändra katalogen till mappen CreateWebApp på din lokala lagrings plats.
-1. Kontrol lera att **azuredeploy.js** filen finns i mappen.
+1. Ändra katalogen till mappen _CreateWebApp_ på din lokala lagrings plats.
+1. Kontrol lera att _azuredeploy.js_ filen finns i mappen.
 1. Kör följande kommando:
 
     ```bash
@@ -104,16 +104,17 @@ azuredeploy.jspå har lagts till i den lokala lagrings platsen. Sedan laddar du 
     ```
 
     Du kan få en varning om LF. Du kan ignorera varningen. **Master** är huvud grenen.  Du skapar vanligt vis en gren för varje uppdatering. För att förenkla självstudien använder du huvud grenen direkt.
-1. Bläddra till GitHub-lagringsplatsen från en webbläsare.  URL: en är **`https://github.com/[YourAccountName]/[YourGitHubRepository]`** . Du ser mappen **CreateWebApp** och de tre filerna i mappen.
-1. Välj **linkedStorageAccount.jspå** för att öppna mallen.
-1. Välj **RAW** -knappen. URL: en startas med **RAW.githubusercontent.com**.
-1. Skapa en kopia av URL:en.  Du måste ange det här värdet när du konfigurerar pipelinen senare i självstudien.
+
+1. Bläddra till GitHub-lagringsplatsen från en webbläsare. URL: en är `https://github.com/[YourAccountName]/[YourGitHubRepository]` . Du ser mappen _CreateWebApp_ och de tre filerna i mappen.
+1. Välj _linkedStorageAccount.jspå_ för att öppna mallen.
+1. Välj **RAW** -knappen. URL: en börjar med `https://raw.githubusercontent.com` .
+1. Skapa en kopia av URL:en. Du måste ange det här värdet när du konfigurerar pipelinen senare i självstudien.
 
 Hittills har du skapat en GitHub-lagringsplats och laddat upp mallarna till lagrings platsen.
 
 ## <a name="create-a-devops-project"></a>Skapa ett DevOps-projekt
 
-En DevOps-organisation krävs innan du kan fortsätta till nästa procedur.  Om du inte har en sådan, se [krav](#prerequisites).
+En DevOps-organisation krävs innan du kan fortsätta till nästa procedur. Om du inte har en sådan, se [krav](#prerequisites).
 
 1. Logga in på [Azure-DevOps](https://dev.azure.com).
 1. Välj en DevOps organisation från vänster.
@@ -148,7 +149,7 @@ Skapa en tjänst anslutning som används för att distribuera projekt till Azure
 
 Tills nu har du slutfört följande uppgifter.  Om du hoppar över föregående avsnitt eftersom du är van vid GitHub och DevOps måste du slutföra uppgifterna innan du fortsätter.
 
-* Skapa en GitHub-lagringsplats och spara mallarna i mappen **CreateWebApp** i lagrings platsen.
+* Skapa en GitHub-lagringsplats och spara mallarna i mappen _CreateWebApp_ i lagrings platsen.
 * Skapa ett DevOps-projekt och skapa en Azure Resource Manager tjänst anslutning.
 
 Så här skapar du en pipeline med ett steg för att distribuera en mall:
@@ -159,24 +160,24 @@ Så här skapar du en pipeline med ett steg för att distribuera en mall:
 
     ![Azure Resource Manager Azure DevOps Azure-pipeliner Välj bara databaser](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-only-select-repositories.png)
 
-1. Välj din lagrings plats på fliken **Välj** .  Standard namnet är **[YourAccountName]/[YourGitHubRepositoryName]**.
-1. På fliken **Konfigurera** väljer du **starter pipeline**. Den visar pipeline-filen **Azure-pipelines. yml** med två skript steg.
-1. Ta bort de två skript stegen från YML-filen.
+1. Välj din lagrings plats på fliken **Välj** . Standard namnet är `[YourAccountName]/[YourGitHubRepositoryName]` .
+1. På fliken **Konfigurera** väljer du **starter pipeline**. Den visar pipeline-filen _Azure-pipelines. yml_ med två skript steg.
+1. Ta bort de två skript stegen från _. yml_ -filen.
 1. Flytta markören till raden efter **steg:**.
 1. Välj **Visa assistenten** till höger på skärmen för att öppna fönstret **uppgifter** .
 1. Välj **distribution av arm-mall**.
 1. Ange följande värden:
 
-    * **deploymentScope**: Välj **resurs grupp**.. Mer information om omfattningarna finns i [distributions omfång](deploy-rest.md#deployment-scope).
+    * **deploymentScope**: Välj **resurs grupp**. Mer information om omfattningarna finns i [distributions omfång](deploy-rest.md#deployment-scope).
     * **Azure Resource Manager anslutning**: Välj namnet på tjänst anslutningen som du skapade tidigare.
     * **Prenumeration**: Ange PRENUMERATIONS-ID för mål.
     * **Åtgärd**: Välj åtgärden **skapa eller uppdatera resurs grupp** utför 2 åtgärder-1. skapa en resurs grupp om ett nytt resurs grupps namn har angetts. 11.2. distribuera den angivna mallen.
     * **Resurs grupp**: Ange ett nytt resurs grupps namn. Till exempel **AzureRmPipeline-RG**.
     * **Plats**: Välj en plats för resurs gruppen, till exempel **centrala USA**.
     * **Mallens plats**: Välj **länkad artefakt**, vilket innebär att aktiviteten söker efter mallfilen direkt från den anslutna lagrings platsen.
-    * **Mall**: ange **CreateWebApp/azuredeploy.jspå**. Om du har ändrat mappnamnet och fil namnet måste du ändra det här värdet.
+    * **Mall**: ange _CreateWebApp/azuredeploy.jspå_. Om du har ändrat mappnamnet och fil namnet måste du ändra det här värdet.
     * **Mallparametrar**: lämna fältet tomt. Du kommer att ange parameter värden i **parametrarna för åsidosättning-mallen**.
-    * **Åsidosätt mallparametrar**: Enter **-projectName [EnterAProjectName]-linkedTemplateUri [EnterTheLinkedTemplateURL]**. Ersätt projekt namnet och den länkade mallens URL. Den länkade mallens URL är det du skrev ned i slutet av [skapa en GitHub-lagringsplats](#create-a-github-repository). Den börjar med **https://raw.githubusercontent.com** .
+    * **Åsidosätt mallparametrar**: ange `-projectName [EnterAProjectName] -linkedTemplateUri [EnterTheLinkedTemplateURL]` . Ersätt projekt namnet och den länkade mallens URL. Den länkade mallens URL är det du skrev ned i slutet av [skapa en GitHub-lagringsplats](#create-a-github-repository). Den börjar med `https://raw.githubusercontent.com` .
     * **Distributions läge**: Välj **stegvis**.
     * **Distributions namn**: ange **DeployPipelineTemplate**. Välj **Avancerat** innan du kan se **distributions namnet**.
 
@@ -186,9 +187,9 @@ Så här skapar du en pipeline med ett steg för att distribuera en mall:
 
     Mer information om uppgiften finns i [distributions uppgiften för Azure Resource Group](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)och [Azure Resource Manager för mall distribution](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md)
 
-    YML-filen skall likna följande:
+    _. Yml_ -filen ser ut ungefär så här:
 
-    ![Skärm bild som visar sidan Granska med den nya pipeline-titeln granska din pipeline YAML.](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-yml.png)
+    ![Skärm bild som visar sidan Granska med den nya pipelinen granska din pipeline-YAML.](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-yml.png)
 
 1. Välj **Spara och kör**.
 1. I fönstret **Spara och köra** väljer du **Spara och kör** igen. En kopia av YAML-filen sparas i den anslutna lagrings platsen. Du kan se YAML-filen genom att bläddra till din lagrings plats.
@@ -199,7 +200,7 @@ Så här skapar du en pipeline med ett steg för att distribuera en mall:
 ## <a name="verify-the-deployment"></a>Verifiera distributionen
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-1. Öppna resurs gruppen. Namnet är det du angav i YAML-filen för pipelinen.  Du ska se ett lagrings konto som skapats.  Lagrings kontots namn börjar med **Store**.
+1. Öppna resurs gruppen. Namnet är det du angav i YAML-filen för pipelinen. Du ska se ett lagrings konto som skapats. Lagrings kontots namn börjar med **Store**.
 1. Välj lagrings kontots namn för att öppna det.
 1. Välj **Egenskaper**. Observera att **replikeringen** är **lokalt REDUNDANT lagring (LRS)**.
 
@@ -207,7 +208,7 @@ Så här skapar du en pipeline med ett steg för att distribuera en mall:
 
 När du uppdaterar mallen och push-överför ändringarna till fjärrlagringsplatsen uppdaterar pipelinen automatiskt resurserna, lagrings kontot i det här fallet.
 
-1. Öppna **linkedStorageAccount.jspå** från din lokala lagrings plats i Visual Studio Code eller någon text redigerare.
+1. Öppna _linkedStorageAccount.jspå_ från din lokala lagrings plats i Visual Studio Code eller någon text redigerare.
 1. Uppdatera **DefaultValue** för **storageAccountType** till **Standard_GRS**. Se följande skärmbild:
 
     ![Azure Resource Manager Azure DevOps Azure-pipeline uppdatera yaml](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-update-yml.png)
@@ -222,11 +223,11 @@ När du uppdaterar mallen och push-överför ändringarna till fjärrlagringspla
     git push origin master
     ```
 
-    Det första kommandot (pull) synkroniserar den lokala lagrings platsen med fjärrlagringsplatsen. Pipelinen YAML-filen lades bara till i fjärrlagringsplatsen. Genom att köra pull-kommandot hämtas en kopia av YAML-filen till den lokala grenen.
+    Det första kommandot ( `pull` ) synkroniserar den lokala lagrings platsen med fjärrlagringsplatsen. Pipelinen YAML-filen lades bara till i fjärrlagringsplatsen. Att köra `pull` kommandot laddar ned en kopia av yaml-filen till den lokala grenen.
 
-    Det fjärde kommandot (push) överför den ändrade linkedStorageAccount.jspå filen till fjärrlagringsplatsen. När huvud delen av fjärrlagringsplatsen har uppdaterats, utlöses pipelinen igen.
+    Det fjärde kommandot ( `push` ) laddar upp den ändrade _linkedStorageAccount.jspå_ filen till fjärrlagringsplatsen. När huvud delen av fjärrlagringsplatsen har uppdaterats, utlöses pipelinen igen.
 
-Du kan kontrol lera ändringarna genom att kontrol lera egenskapen replikering för lagrings kontot.  Se [Verifiera distributionen](#verify-the-deployment).
+Du kan kontrol lera ändringarna genom att kontrol lera egenskapen replikering för lagrings kontot. Se [Verifiera distributionen](#verify-the-deployment).
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

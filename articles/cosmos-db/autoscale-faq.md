@@ -5,13 +5,13 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/10/2020
-ms.openlocfilehash: 58e7d54750da86b8a700a4f2195bc4cfa012ae4b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 12/11/2020
+ms.openlocfilehash: a740ad62dacc9a29cab1cc144f1789e125ec2e89
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092695"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368587"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Vanliga frågor om autoskalning av allokerat data flöde i Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -43,7 +43,7 @@ I ett konto med en Skriv region är autoskalning per 100 RU/s 1,5 x frekvensen s
 I konton med flera Skriv regioner är autoskalning per 100 RU/s samma som priset för standard (manuell) etablerad data flöde för flera Skriv regioner. På din faktura visas den befintliga mätaren för flera Skriv åtgärder. Eftersom priserna är desamma, kan du se samma kvantitet som med standard data flödet om du använder autoskalning.
 
 ### <a name="does-autoscale-work-with-reserved-capacity"></a>Skalar jag ut arbetet med reserverad kapacitet?
-Ja. När du köper reserverad kapacitet för konton med flera Skriv regioner, tillämpas reservations rabatten för automatiska skalnings resurser på din mätnings användning enligt förhållandet 1,5 * [förhållandet mellan den aktuella regionen](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region). 
+Ja. När du köper reserverad kapacitet för konton med enkla Skriv regioner, tillämpas reservations rabatten för automatiska skalnings resurser på din mätnings användning enligt förhållandet 1,5 * [förhållandet mellan den angivna regionen](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region). 
 
 Reserverad kapacitet för flera Skriv regioner fungerar på samma sätt för autoskalning och standard (manuellt) allokerat data flöde. Se [Azure Cosmos DB reserverad kapacitet](cosmos-db-reserved-capacity.md)
 
@@ -109,9 +109,9 @@ När du skickar en begäran om att öka Max antalet RU/s `Tmax` , beroende på a
 #### <a name="lowering-the-max-rus"></a>Sänker Max RU/s
 När du sänker Max RU/s-värdet kan du ange det som: `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100)` , avrundat till närmaste 1000 ru/s. 
 
-Exempel #1: anta att du har en behållare för autoskalning med högst RU/s av 20 000 RU/s (skalar mellan 2000-20 000 RU/s) och 50 GB lagrings utrymme. Det lägsta, lägsta värdet som du kan ange max RU/s till är: MAX (4000, 20 000/10, **50 * 100** ) = 5000 ru/s (skalas mellan 500-5000 ru/s).
+Exempel #1: anta att du har en behållare för autoskalning med högst RU/s av 20 000 RU/s (skalar mellan 2000-20 000 RU/s) och 50 GB lagrings utrymme. Det lägsta, lägsta värdet som du kan ange max RU/s till är: MAX (4000, 20 000/10, **50 * 100**) = 5000 ru/s (skalas mellan 500-5000 ru/s).
 
-Exempel #2: anta att du har en behållare för autoskalning med högst RU/s av 100 000 RU/s och 100 GB lagrings utrymme. Nu skalar du Max RU/s till 150 000 RU/s (skalar mellan 15 000-150 000 RU/s). Det lägsta, lägsta värdet du kan nu ange max RU/s till: MAX (4000, **150 000/10** , 100 * 100) = 15 000 ru/s (skalas mellan 1500-15 000 ru/s). 
+Exempel #2: anta att du har en behållare för autoskalning med högst RU/s av 100 000 RU/s och 100 GB lagrings utrymme. Nu skalar du Max RU/s till 150 000 RU/s (skalar mellan 15 000-150 000 RU/s). Det lägsta, lägsta värdet du kan nu ange max RU/s till: MAX (4000, **150 000/10**, 100 * 100) = 15 000 ru/s (skalas mellan 1500-15 000 ru/s). 
 
 När du sänker Max-värdet RU/s för en delad data flödes databas kan du ange det som: `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100,  4000 + (MAX(Container count - 25, 0) * 1000))` , avrundat till närmaste 1000 ru/s.  
 

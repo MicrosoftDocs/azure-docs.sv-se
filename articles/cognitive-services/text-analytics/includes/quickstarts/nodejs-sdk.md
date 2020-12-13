@@ -6,16 +6,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 10/07/2020
+ms.date: 12/11/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
 ms.custom: devx-track-js
-ms.openlocfilehash: 3de8954bcbe648fcb7f5cb0f50d9694de92baeb4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 69a7e63a5dcd892c1085367bd9747ffae9a835bf
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979439"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97366479"
 ---
 <a name="HOLTop"></a>
 
@@ -35,13 +35,14 @@ ms.locfileid: "94979439"
 
 ---
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services)
 * Den aktuella versionen av [Node.js](https://nodejs.org/).
 * När du har en Azure-prenumeration <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" skapar du en textanalys resurs "  target="_blank"> skapa en textanalys resurs <span class="docon docon-navigate-external x-hidden-focus"></span> </a> i Azure Portal för att hämta din nyckel och slut punkt. När den har distribuerats klickar **du på gå till resurs**.
     * Du behöver nyckeln och slut punkten från den resurs som du skapar för att ansluta ditt program till API för textanalys. Du klistrar in nyckeln och slut punkten i koden nedan i snabb starten.
     * Du kan använda den kostnads fria pris nivån ( `F0` ) för att testa tjänsten och senare uppgradera till en betald nivå för produktion.
+* Om du vill använda funktionen analysera behöver du en Textanalys resurs med pris nivån standard (S).
 
 ## <a name="setting-up"></a>Konfigurera
 
@@ -67,7 +68,7 @@ npm init
 Installera `@azure/ai-text-analytics` NPM-paketen:
 
 ```console
-npm install --save @azure/ai-text-analytics@5.1.0-beta.1
+npm install --save @azure/ai-text-analytics@5.1.0-beta.3
 ```
 
 > [!TIP]
@@ -150,11 +151,11 @@ Objektet Response är en lista som innehåller analys informationen för varje d
 * [Klientautentisering](#client-authentication)
 * [Attitydanalys](#sentiment-analysis) 
 * [Åsikts utvinning](#opinion-mining)
-* [Språk identifiering](#language-detection)
+* [Språkidentifiering](#language-detection)
 * [Igenkänning av namngiven entitet](#named-entity-recognition-ner)
 * [Länkning av entitet](#entity-linking)
 * Personligt identifierbar information
-* [Extrahering av nyckel fraser](#key-phrase-extraction)
+* [Extrahering av nyckelfraser](#key-phrase-extraction)
 
 ## <a name="client-authentication"></a>Klientautentisering
 
@@ -827,7 +828,72 @@ Kör din kod med `node index.js` i konsol fönstret.
 
 ---
 
-## <a name="run-the-application"></a>Kör programmet
+## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>Använd API asynkront med analys åtgärden
+
+# <a name="version-31-preview"></a>[Version 3,1 Preview](#tab/version-3-1)
+
+> [!CAUTION]
+> Om du vill använda analys åtgärder måste du använda en Textanalys resurs med pris nivån standard (S).  
+
+Skapa en ny funktion `analyze_example()` som kallas, som anropar `beginAnalyze()` funktionen. Resultatet blir en tids krävande åtgärd som kommer att avsökas efter resultat.
+
+```javascript
+const documents = [
+  "Microsoft was founded by Bill Gates and Paul Allen.",
+];
+
+async function analyze_example(client) {
+  console.log("== Analyze Sample ==");
+
+  const tasks = {
+    entityRecognitionTasks: [{ modelVersion: "latest" }]
+  };
+  const poller = await client.beginAnalyze(documents, tasks);
+  const resultPages = await poller.pollUntilDone();
+
+  for await (const page of resultPages) {
+    const entitiesResults = page.entitiesRecognitionResults![0];
+    for (const doc of entitiesResults) {
+      console.log(`- Document ${doc.id}`);
+      if (!doc.error) {
+        console.log("\tEntities:");
+        for (const entity of doc.entities) {
+          console.log(`\t- Entity ${entity.text} of type ${entity.category}`);
+        }
+      } else {
+        console.error("  Error:", doc.error);
+      }
+    }
+  }
+}
+
+analyze_example(textAnalyticsClient);
+```
+
+### <a name="output"></a>Utdata
+
+```console
+== Analyze Sample ==
+- Document 0
+        Entities:
+        - Entity Microsoft of type Organization
+        - Entity Bill Gates of type Person
+        - Entity Paul Allen of type Person
+```
+
+Du kan också använda analys åtgärden för att identifiera personligt identifierbar information och extrahering av nyckel fraser. Se analysera exempel för [Java Script](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/textanalytics/ai-text-analytics/samples/javascript/beginAnalyze.js) och [typescript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/textanalytics/ai-text-analytics/samples/typescript/src/beginAnalyze.ts) på GitHub.
+
+# <a name="version-30"></a>[Version 3,0](#tab/version-3)
+
+Den här funktionen är inte tillgänglig i version 3,0.
+
+# <a name="version-21"></a>[Version 2,1](#tab/version-2)
+
+Den här funktionen är inte tillgänglig i version 2,1.
+
+---
+
+## <a name="run-the-application"></a>Köra appen
 
 Kör programmet med `node` kommandot på snabb starts filen.
 

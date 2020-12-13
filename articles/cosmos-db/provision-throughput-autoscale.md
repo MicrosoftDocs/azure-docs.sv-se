@@ -5,14 +5,14 @@ author: kirillg
 ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/04/2020
+ms.date: 12/11/2020
 ms.custom: seo-nov-2020
-ms.openlocfilehash: aaedca5acf7861db05f0ec724e05449316379829
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: ba0dd347c4ee2cb41b34c2fc34f1848a7295dc3a
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337550"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368672"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Skapa Azure Cosmos-behållare och databaser med autoskalning av data flöde
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -59,7 +59,7 @@ Start punkten för autoskalning av maximalt data flöde `Tmax` börjar på 4000 
 
 ## <a name="enable-autoscale-on-existing-resources"></a>Aktivera autoskalning på befintliga resurser
 
-Använd [Azure Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container) för att aktivera autoskalning på en befintlig databas eller behållare. Du kan växla mellan autoskalning och standard (manuellt) allokerat data flöde när som helst. Mer information finns i den här [dokumentationen](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) . För närvarande kan du endast använda Azure Portal för att aktivera autoskalning på befintliga resurser för alla API: er.
+Använd [Azure Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container), [Azure Resource Manager mall](how-to-provision-autoscale-throughput.md#azure-resource-manager), [CLI](how-to-provision-autoscale-throughput.md#azure-cli) eller [PowerShell](how-to-provision-autoscale-throughput.md#azure-powershell) för att aktivera autoskalning på en befintlig databas eller behållare. Du kan växla mellan autoskalning och standard (manuellt) allokerat data flöde när som helst. Mer information finns i den här [dokumentationen](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) .
 
 ## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a> Data flödes-och lagrings gränser för autoskalning
 

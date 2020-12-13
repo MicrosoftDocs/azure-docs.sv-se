@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: baf2734c2f3c4de86b75a20239ecf7440c61a632
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 0cad8fcdf58f4827f28b40550ae93e607e0c0858
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96534054"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369012"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-release-notes"></a>Dedikerad SQL-pool (tidigare SQL DW) i versions information för Azure Synapse Analytics
 
@@ -59,7 +59,7 @@ För verktygs förbättringar kontrollerar du att rätt version är installerad 
 | Förbättringar av tjänsten | Information |
 | --- | --- |
 |**Arbets belastnings hantering – Portal upplevelse**|Användare kan konfigurera och hantera sina inställningar för hantering av arbets belastning via Azure Portal. Möjligheten att konfigurera [arbets belastnings grupper](/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-portal) och [klassificerare för arbets belastningar](/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal) med betydelse är möjliga.|
-|**Förbättrad katalogvy för tabell mappning**|Den nya vyn katalog [sys.pdw_permanent_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=sqlallproducts-allversions) mappar **object_ids** av permanenta användar tabeller till deras fysiska tabell namn.|
+|**Förbättrad katalogvy för tabell mappning**|Den nya vyn katalog [sys.pdw_permanent_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql) mappar **object_ids** av permanenta användar tabeller till deras fysiska tabell namn.|
 
 ## <a name="july-2020"></a>Juli 2020
 

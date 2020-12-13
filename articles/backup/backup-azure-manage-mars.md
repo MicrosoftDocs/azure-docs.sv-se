@@ -4,12 +4,12 @@ description: Lär dig hur du hanterar och övervakar säkerhets kopior av Micros
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: b3b648ca27a407640b42932fe2ed7c32f5109114
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25f0c41b535f9403d0a7027687cc5261cd437275
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89145577"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368604"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Hantera säkerhets kopior av Microsoft Azure Recovery Services (MARS) med hjälp av tjänsten Azure Backup
 
@@ -29,7 +29,7 @@ När du ändrar säkerhets kopierings policyn kan du lägga till nya objekt, ta 
 
 ### <a name="add-new-items-to-existing-policy"></a>Lägg till nya objekt i den befintliga principen
 
-1. I **åtgärder**väljer du **Schemalägg säkerhets kopiering**.
+1. I **åtgärder** väljer du **Schemalägg säkerhets kopiering**.
 
     ![Schemalägga en Windows Server-säkerhetskopiering](./media/backup-configure-vault/schedule-first-backup.png)
 
@@ -59,11 +59,11 @@ Du kan lägga till undantags regler för att hoppa över filer och mappar som du
 
     ![Undantags inställningar](./media/backup-azure-manage-mars/select-exclusion-settings.png)
 
-2. I **undantags inställningar**väljer du **Lägg till undantag**.
+2. I **undantags inställningar** väljer du **Lägg till undantag**.
 
     ![Lägg till undantag](./media/backup-azure-manage-mars/add-exclusion.png)
 
-3. Bläddra bland filerna och mapparna i **Välj objekt**som ska undantas och välj de objekt som du vill undanta och välj **OK**.
+3. Bläddra bland filerna och mapparna i **Välj objekt** som ska undantas och välj de objekt som du vill undanta och välj **OK**.
 
     ![Markera de objekt som ska undantas](./media/backup-azure-manage-mars/select-items-exclude.png)
 
@@ -100,7 +100,7 @@ Det finns två sätt att sluta skydda säkerhets kopior av filer och mappar:
 
 ### <a name="stop-protection-and-retain-backup-data"></a>Stoppa skyddet och behåll säkerhets kopierings data
 
-1. Öppna hanterings konsolen för MARS, gå till **Åtgärds fönstret**och **Välj Schemalägg säkerhets kopiering**.
+1. Öppna hanterings konsolen för MARS, gå till **Åtgärds fönstret** och **Välj Schemalägg säkerhets kopiering**.
 
     ![Välj Schemalägg säkerhets kopiering](./media/backup-azure-manage-mars/mars-actions.png)
 1. På sidan **Välj princip objekt** väljer du **ändra ett schema för säkerhets kopiering för dina filer och mappar** och väljer **Nästa**.
@@ -109,10 +109,10 @@ Det finns två sätt att sluta skydda säkerhets kopior av filer och mappar:
 1. På sidan **ändra eller stoppa en schemalagd säkerhets kopiering** väljer du **sluta använda detta schema för säkerhets kopiering, men Behåll de lagrade säkerhets kopiorna tills ett schema aktive ras igen**. Välj **Nästa**.
 
     ![Stoppa en schemalagd säkerhets kopiering.](./media/backup-azure-manage-mars/stop-schedule-backup.png)
-1. I **pausa schemalagd säkerhets kopiering**granskar du informationen och väljer **Slutför**.
+1. I **pausa schemalagd säkerhets kopiering** granskar du informationen och väljer **Slutför**.
 
     ![Pausa en schemalagd säkerhets kopiering.](./media/backup-azure-manage-mars/pause-schedule-backup.png)
-1. I **ändra säkerhets kopierings förlopp**kontrollerar du att säkerhets kopieringen av schemat har pausats och väljer **Stäng** för att slutföra.
+1. I **ändra säkerhets kopierings förlopp** kontrollerar du att säkerhets kopieringen av schemat har pausats och väljer **Stäng** för att slutföra.
 
 ### <a name="stop-protection-and-delete-backup-data"></a>Stoppa skyddet och ta bort säkerhets kopierings data
 
@@ -125,8 +125,8 @@ Det finns två sätt att sluta skydda säkerhets kopior av filer och mappar:
 
     ![Stoppa en schemalagd säkerhets kopiering och välj Slutför](./media/backup-azure-delete-vault/stop-schedule-backup.png)
 4. Du uppmanas att ange en PIN-kod för säkerhet (personal Identification Number) som du måste generera manuellt. Det gör du genom att först logga in på Azure Portal.
-5. Gå till inställningar för **Recovery Services valv**  >  **Settings**  >  **Properties**.
-6. Under **säkerhets-PIN**väljer du **generera**. Kopiera den här PIN-koden. PIN-koden är bara giltig i fem minuter.
+5. Gå till inställningar för **Recovery Services valv**  >    >  .
+6. Under **säkerhets-PIN** väljer du **generera**. Kopiera den här PIN-koden. PIN-koden är bara giltig i fem minuter.
 7. I hanterings konsolen klistrar du in PIN-koden och väljer sedan **OK**.
 
     ![Skapa en säkerhets kod.](./media/backup-azure-delete-vault/security-pin.png)
@@ -148,8 +148,8 @@ Om du har stoppat skyddet och bevarar data och valt att återuppta skyddet kan d
 1. I **Välj objekt som ska säkerhets kopie ras väljer du** **Nästa**.
 
     ![Välj objekt som ska säkerhets kopie ras](./media/backup-azure-manage-mars/re-enable-next.png)
-1. I **Ange schema för säkerhets kopiering**anger du schemat för säkerhets kopiering och väljer **Nästa**.
-1. I **Välj bevarande princip**anger du kvarhållning varaktighet och väljer **Nästa**.
+1. I **Ange schema för säkerhets kopiering** anger du schemat för säkerhets kopiering och väljer **Nästa**.
+1. I **Välj bevarande princip** anger du kvarhållning varaktighet och väljer **Nästa**.
 1. Slutligen på **bekräftelse** skärmen granskar du princip informationen och väljer **Slutför**.
 
 ## <a name="re-generate-passphrase"></a>Återskapa lösen fras
@@ -189,6 +189,19 @@ Hantering av säkerhets kopierings principen för MARS görs via MARS-konsolen o
   1. Installera agenten och registrera den på nytt i samma valv och med samma lösen fras
   1. Starta MARS-klienten för att förlänga Retentions tiden enligt dina krav
 - Den nyligen återställda datorn, som skyddas med MARS, fortsätter att ta säkerhets kopior.  
+
+## <a name="configuring-antivirus-for-the-mars-agent"></a>Konfigurera antivirus program för MARS-agenten
+
+Vi rekommenderar följande konfiguration för antivirus programmet för att undvika konflikter med MARS-agentens funktion.
+
+1. **Lägg till undantag för sökväg**: Undvik att försämra prestanda och möjliga konflikter genom att undanta följande sökvägar från övervakning i real tid av antivirus programmet:
+    1. `%ProgramFiles%\Microsoft Azure Recovery Services Agent` och undermappar
+    1. **Scratch-mapp**: om den tillfälliga mappen inte finns på standard platsen lägger du även till den till undantagen.  [Mer information om](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible) hur du tar reda på platsen för den tillfälliga mappen finns här.
+1. **Lägg till binära undantag**: för att undvika försämring av säkerhets kopierings-och konsol aktiviteter, Uteslut processer för följande binärfiler från övervakning i real tid från antivirus programmet:
+    1. `%ProgramFiles%\Microsoft Azure Recovery Services Agent\bin\cbengine.exe`
+
+>[!NOTE]
+>Även om dessa sökvägar är tillräckliga för de flesta antivirus program, kan vissa fortfarande störa MARS agent-åtgärder. Om du får oväntade fel bör du avinstallera antivirus programmet tillfälligt och övervaka för att se om problemet försvinner. Om detta löser problemet kontaktar du leverantören av antivirus programmet för att få hjälp med korrekt konfiguration av produkten.
 
 ## <a name="next-steps"></a>Nästa steg
 

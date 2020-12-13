@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 5cd518828668ed20a4fa7be0cd6c9798a013055a
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 799475db567c88f067192d027589e9185ee1782b
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909598"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369182"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-powershell"></a>Skapa eller uppdatera Azure-anpassade roller med hjälp av Azure PowerShell
 
@@ -163,7 +163,7 @@ Start Virtual Machine                          Microsoft.Compute/virtualMachines
 
 När du använder PowerShell för att skapa en anpassad roll kan du använda en av de [inbyggda rollerna](built-in-roles.md) som start punkt eller så kan du börja från början. Det första exemplet i det här avsnittet börjar med en inbyggd roll och anpassar sedan den med fler behörigheter. Redigera attributen för att lägga till den `Actions` , `NotActions` eller så `AssignableScopes` du vill, och spara sedan ändringarna som en ny roll.
 
-Följande exempel börjar med den inbyggda rollen [virtuell dator deltagare](built-in-roles.md#virtual-machine-contributor) för att skapa en anpassad roll med namnet *Virtual Machine-operator* . Den nya rollen beviljar åtkomst till alla Läs åtgärder i *Microsoft. Compute* , *Microsoft. Storage* och *Microsoft. Network* Resource providers och ger åtkomst till Start, omstart och övervakning av virtuella datorer. Den anpassade rollen kan användas i två prenumerationer.
+Följande exempel börjar med den inbyggda rollen [virtuell dator deltagare](built-in-roles.md#virtual-machine-contributor) för att skapa en anpassad roll med namnet *Virtual Machine-operator*. Den nya rollen beviljar åtkomst till alla Läs åtgärder i *Microsoft. Compute*, *Microsoft. Storage* och *Microsoft. Network* Resource providers och ger åtkomst till Start, omstart och övervakning av virtuella datorer. Den anpassade rollen kan användas i två prenumerationer.
 
 ```azurepowershell
 $role = Get-AzRoleDefinition "Virtual Machine Contributor"
@@ -403,4 +403,4 @@ Are you sure you want to remove role definition with name 'Virtual Machine Opera
 
 - [Självstudie: skapa en anpassad Azure-roll med hjälp av Azure PowerShell](tutorial-custom-role-powershell.md)
 - [Anpassade roller i Azure](custom-roles.md)
-- [Åtgärder för resursprovidern Azure Resource Manager](resource-provider-operations.md)
+- [Azure Resource Provider-åtgärder](resource-provider-operations.md)

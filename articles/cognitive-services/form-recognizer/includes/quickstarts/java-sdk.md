@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: d53863ccf71970cca3900707c844a2e5add050fa
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 23d76f441178238ae6527c2fa5440c4ab7b1d4e3
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356519"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97366486"
 ---
 > [!IMPORTANT]
 > Koden i den här artikeln använder synkrona metoder och icke-säkrade inloggnings uppgifter för att förenkla orsaker.
@@ -120,7 +120,7 @@ I programmets **FormRecognizer** -klass skapar du variabler för resursens nycke
 
 I programmets **main** -metod lägger du till anrop för de metoder som används i den här snabb starten. Du definierar dessa senare. Du måste också lägga till referenser till URL: erna för din utbildning och testa data.
 
-* Om du vill hämta SAS-URL: en för din anpassade modell inlärnings data öppnar du Microsoft Azure Storage Explorer, högerklickar på behållaren och väljer **Hämta signatur för delad åtkomst**. Kontrol lera att **Läs** -och **list** behörigheterna är markerade och klicka på **skapa**. Kopiera sedan värdet i **URL** -avsnittet. Det bör ha formatet: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
 * Om du vill få en URL för ett formulär att testa kan du använda ovanstående steg för att hämta SAS-URL: en för ett enskilt dokument i Blob Storage. Eller ta med URL: en för ett dokument som finns på annan plats.
 * Använd metoden ovan för att hämta URL: en för en kvitto bild.
 
@@ -462,7 +462,7 @@ Du kan också ta bort en modell från ditt konto genom att referera till dess ID
 
 
 
-## <a name="run-the-application"></a>Kör programmet
+## <a name="run-the-application"></a>Köra appen
 
 Gå tillbaka till huvud projekt katalogen. Bygg sedan appen med följande kommando:
 

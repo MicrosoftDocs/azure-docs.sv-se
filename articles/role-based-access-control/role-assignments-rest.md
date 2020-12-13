@@ -15,18 +15,18 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d66b4c8e9f41f661cfc399f72a9ad97405a860fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: feb647cc42c878778b4326c9ee76a32809751314
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84790854"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369318"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-rest-api"></a>Lägga till eller ta bort Azure-rolltilldelningar med hjälp av REST API
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] I den här artikeln beskrivs hur du tilldelar roller med hjälp av REST API.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill lägga till eller ta bort roll tilldelningar måste du ha:
 
@@ -65,7 +65,7 @@ I Azure RBAC för att bevilja åtkomst lägger du till en roll tilldelning. Om d
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resursgrupp |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/microsoft.web/sites/mysite1` | Resurs |
 
-    I föregående exempel är Microsoft. Web en resurs leverantör som refererar till en App Service instans. På samma sätt kan du använda andra resurs leverantörer och ange omfånget. Mer information finns i [Azure Resource providers och typer](../azure-resource-manager/management/resource-providers-and-types.md) som stöds [Azure Resource Manager Resource Provider-åtgärder](resource-provider-operations.md).  
+    I föregående exempel är Microsoft. Web en resurs leverantör som refererar till en App Service instans. På samma sätt kan du använda andra resurs leverantörer och ange omfånget. Mer information finns i [Azure Resource providers och-typer](../azure-resource-manager/management/resource-providers-and-types.md) och [Azure Resource Provider-åtgärder](resource-provider-operations.md)som stöds.  
 
 1. Ersätt *{roleAssignmentId}* med GUID-identifieraren för roll tilldelningen.
 

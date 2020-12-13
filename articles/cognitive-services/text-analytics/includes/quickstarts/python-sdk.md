@@ -3,14 +3,14 @@ author: aahill
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 10/07/2020
+ms.date: 12/11/2020
 ms.author: aahi
-ms.openlocfilehash: ab9824b8880c5d2a994481bf4917efb368ed09a9
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: da5aae933de1317dd97f74c97f9c08ca6cc1d090
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980974"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97366474"
 ---
 <a name="HOLTop"></a>
 
@@ -28,13 +28,14 @@ ms.locfileid: "94980974"
 
 ---
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services)
 * [Python 3.x](https://www.python.org/)
 * När du har en Azure-prenumeration <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" skapar du en textanalys resurs "  target="_blank"> skapa en textanalys resurs <span class="docon docon-navigate-external x-hidden-focus"></span> </a> i Azure Portal för att hämta din nyckel och slut punkt. När den har distribuerats klickar **du på gå till resurs**.
     * Du behöver nyckeln och slut punkten från den resurs som du skapar för att ansluta ditt program till API för textanalys. Du klistrar in nyckeln och slut punkten i koden nedan i snabb starten.
     * Du kan använda den kostnads fria pris nivån ( `F0` ) för att testa tjänsten och senare uppgradera till en betald nivå för produktion.
+* Om du vill använda funktionen analysera behöver du en Textanalys resurs med pris nivån standard (S).
 
 ## <a name="setting-up"></a>Konfigurera
 
@@ -118,30 +119,30 @@ De här kodfragmenten visar hur du utför följande uppgifter med Textanalys kli
 * [Autentisera klienten](#authenticate-the-client)
 * [Attitydanalys](#sentiment-analysis)
 * [Åsikts utvinning](#opinion-mining)
-* [Språk identifiering](#language-detection)
+* [Språkidentifiering](#language-detection)
 * [Igenkänning av namngiven entitet](#named-entity-recognition-ner) 
 * [Personligt identifierbar informations igenkänning](#personally-identifiable-information-recognition) 
 * [Länkning av entitet](#entity-linking)
-* [Extrahering av nyckel fraser](#key-phrase-extraction)
+* [Extrahering av nyckelfraser](#key-phrase-extraction)
 
 
 # <a name="version-30"></a>[Version 3,0](#tab/version-3)
 
 * [Autentisera klienten](#authenticate-the-client)
 * [Attitydanalys](#sentiment-analysis)
-* [Språk identifiering](#language-detection)
+* [Språkidentifiering](#language-detection)
 * [Igenkänning av namngiven entitet](#named-entity-recognition-ner) 
 * [Länkning av entitet](#entity-linking)
-* [Extrahering av nyckel fraser](#key-phrase-extraction)
+* [Extrahering av nyckelfraser](#key-phrase-extraction)
 
 # <a name="version-21"></a>[Version 2,1](#tab/version-2)
 
 * [Autentisera klienten](#authenticate-the-client)
 * [Attitydanalys](#sentiment-analysis)
-* [Språk identifiering](#language-detection)
+* [Språkidentifiering](#language-detection)
 * [Igenkänning av namngiven entitet](#named-entity-recognition-ner) 
 * [Länkning av entitet](#entity-linking)
-* [Extrahering av nyckel fraser](#key-phrase-extraction)
+* [Extrahering av nyckelfraser](#key-phrase-extraction)
 
 ---
 
@@ -916,5 +917,77 @@ Document ID: 4
          Key phrases:
                 fútbol
 ```
+
+---
+
+## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>Använd API asynkront med analys åtgärden
+
+# <a name="version-31-preview"></a>[Version 3,1 Preview](#tab/version-3-1)
+
+> [!CAUTION]
+> Om du vill använda analys åtgärder måste du använda en Textanalys resurs med pris nivån standard (S).  
+
+Skapa en ny funktion `analyze_example()` som tar klienten som ett argument och anropar sedan `begin_analyze()` funktionen. Resultatet blir en tids krävande åtgärd som kommer att avsökas efter resultat.
+
+```python
+    def analyze_example(client):
+        documents = [
+            "Microsoft was founded by Bill Gates and Paul Allen."
+        ]
+
+        poller = text_analytics_client.begin_analyze(
+            documents,
+            display_name="Sample Text Analysis",
+            entities_recognition_tasks=[EntitiesRecognitionTask()]
+        )
+
+        result = poller.result()
+
+        for page in result:
+            for task in page.entities_recognition_results:
+                print("Results of Entities Recognition task:")
+                
+                docs = [doc for doc in task.results if not doc.is_error]
+                for idx, doc in enumerate(docs):
+                    print("\nDocument text: {}".format(documents[idx]))
+                    for entity in doc.entities:
+                        print("Entity: {}".format(entity.text))
+                        print("...Category: {}".format(entity.category))
+                        print("...Confidence Score: {}".format(entity.confidence_score))
+                        print("...Offset: {}".format(entity.offset))
+                    print("------------------------------------------")
+
+analyze_example(client)
+```
+
+### <a name="output"></a>Utdata
+
+```console
+Results of Entities Recognition task:
+Document text: Microsoft was founded by Bill Gates and Paul Allen.
+Entity: Microsoft
+...Category: Organization
+...Confidence Score: 0.83
+...Offset: 0
+Entity: Bill Gates
+...Category: Person
+...Confidence Score: 0.85
+...Offset: 25
+Entity: Paul Allen
+...Category: Person
+...Confidence Score: 0.9
+...Offset: 40
+------------------------------------------
+```
+
+Du kan också använda analys åtgärden för att identifiera personligt identifierbar information och extrahering av nyckel fraser. Se [analys exemplet](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/textanalytics/azure-ai-textanalytics/samples/async_samples/sample_analyze_async.py) på GitHub.
+
+# <a name="version-30"></a>[Version 3,0](#tab/version-3)
+
+Den här funktionen är inte tillgänglig i version 3,0.
+
+# <a name="version-21"></a>[Version 2,1](#tab/version-2)
+
+Den här funktionen är inte tillgänglig i version 2,1.
 
 ---

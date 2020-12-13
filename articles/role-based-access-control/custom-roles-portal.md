@@ -6,18 +6,16 @@ documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/13/2020
+ms.date: 12/11/2020
 ms.author: rolyon
-ms.openlocfilehash: 9ab6561b1dc0e8b977fc69d259c5f26366f355ce
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ecda0edcd34999e8cbb6c7ab9039953d17c119e5
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92481337"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369234"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Skapa eller uppdatera anpassade roller i Azure med Microsoft Azure-portalen
 
@@ -31,14 +29,12 @@ Om du vill skapa anpassade roller behöver du:
 
 ## <a name="step-1-determine-the-permissions-you-need"></a>Steg 1: Bestäm vilka behörigheter du behöver
 
-Azure har tusentals behörigheter som du kan inkludera i din anpassade roll. Här följer fyra sätt som du kan använda för att fastställa de behörigheter som du vill lägga till i din anpassade roll:
+Azure har tusentals behörigheter som du kan inkludera i din anpassade roll. Här följer några metoder som kan hjälpa dig att avgöra vilka behörigheter som du vill lägga till i din anpassade roll:
 
-| Metod | Beskrivning |
-| --- | --- |
-| Titta på befintliga roller | Du kan titta på befintliga roller för att se vilka behörigheter som används. Mer information finns i [Inbyggda roller i Azure](built-in-roles.md). |
-| Sök efter behörigheter med nyckelord | När du skapar en anpassad roll med hjälp av Azure Portal kan du söka efter behörigheter med hjälp av nyckelord. Du kan till exempel söka efter *virtuella datorer* eller *fakturerings* behörigheter. Den här Sök funktionen beskrivs senare i [steg 4: behörigheter](#step-4-permissions). |
-| Hämta alla behörigheter | När du skapar en anpassad roll med hjälp av Azure Portal kan du ladda ned alla behörigheter som en CSV-fil och sedan söka i filen. I fönstret **Lägg till behörigheter** klickar du på knappen **Hämta alla behörigheter** för att ladda ned alla behörigheter. Mer information om fönstret Lägg till behörigheter finns i [steg 4: behörigheter](#step-4-permissions). |
-| Visa behörigheterna i dokumenten | Du kan visa tillgängliga behörigheter i [Azure Resource Manager Resource Provider-åtgärder](resource-provider-operations.md). |
+- Titta på befintliga [inbyggda roller](built-in-roles.md).
+- Lista de Azure-tjänster som du vill bevilja åtkomst till.
+- Bestäm vilka [resurs leverantörer som ska mappas till Azure-tjänsterna](../azure-resource-manager/management/azure-services-resource-providers.md). En Sök metod beskrivs senare i [steg 4: behörigheter](#step-4-permissions).
+- Sök efter de behörigheter som du vill inkludera i de [tillgängliga behörigheterna](resource-provider-operations.md) . En Sök metod beskrivs senare i [steg 4: behörigheter](#step-4-permissions).
 
 ## <a name="step-2-choose-how-to-start"></a>Steg 2: Välj hur du vill starta
 
@@ -261,7 +257,7 @@ På fliken **tilldelnings bara omfattningar** anger du var den anpassade rollen 
 
 På fliken **JSON** visas din anpassade roll som är FORMATERAD i JSON. Om du vill kan du redigera JSON direkt. Om du vill lägga till en wildcard ( `*` )-behörighet måste du använda den här fliken.
 
-1. Klicka på **Redigera**om du vill redigera JSON.
+1. Klicka på **Redigera** om du vill redigera JSON.
 
     ![Fliken JSON visar den anpassade rollen](./media/custom-roles-portal/json.png)
 
@@ -269,7 +265,7 @@ På fliken **JSON** visas din anpassade roll som är FORMATERAD i JSON. Om du vi
 
     Om JSON-filen inte är korrekt formaterad visas en röd Taggad linje och en indikator i den lodräta fästmarginal.
 
-1. Klicka på **Spara**när du är klar med redigeringen.
+1. Klicka på **Spara** när du är klar med redigeringen.
 
 ## <a name="step-7-review--create"></a>Steg 7: granska + skapa
 
@@ -339,4 +335,4 @@ Följ de här stegen om du vill visa dina anpassade roller.
 
 - [Självstudie: skapa en anpassad Azure-roll med hjälp av Azure PowerShell](tutorial-custom-role-powershell.md)
 - [Anpassade roller i Azure](custom-roles.md)
-- [Åtgärder för resursprovidern Azure Resource Manager](resource-provider-operations.md)
+- [Azure Resource Provider-åtgärder](resource-provider-operations.md)

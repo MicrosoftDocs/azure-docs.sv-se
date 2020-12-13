@@ -7,20 +7,20 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d6676187f87cecb7f876150d1582cde9051dd251
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f6c990b3ce5edaab4d2ce6600c0291272058e092
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367490"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369301"
 ---
 # <a name="security-control-v2-privileged-access"></a>Säkerhets kontroll v2: privilegie rad åtkomst
 
 Privilegie rad åtkomst täcker kontroller för att skydda privilegie rad åtkomst till din Azure-klient och dina resurser. Detta inkluderar ett antal kontroller för att skydda din administrativa modell, administrativa konton och arbets stationer med privilegie rad åtkomst mot avsiktliga och oavsiktliga risker.
 
-## <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1: skydda och begränsa privilegierade användare
+## <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1: Skydda och begränsa privilegierade användare
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | PA-1 | 4,3, 4,8 | AC-2 |
 
@@ -32,15 +32,15 @@ Begränsa antalet starkt privilegierade användar konton och skydda dessa konton
 
 Obs! Du kan ha andra viktiga roller som behöver regleras om du använder anpassade roller med vissa privilegierade behörigheter tilldelade. Och du kanske också vill använda liknande kontroller för administratörs kontot för kritiska företags till gångar.  
 
-Du kan aktivera just-in-Time (JIT) privilegie rad åtkomst till Azure-resurser och Azure AD med hjälp av Azure AD Privileged Identity Management (PIM). JIT beviljar temporära behörigheter för att utföra privilegierade uppgifter endast när användarna behöver det. PIM kan också generera säkerhets aviseringar när det finns misstänkt eller osäker aktivitet i din Azure AD-organisation.
+Du kan aktivera just-in-time (JIT)-privilegierad åtkomst till Azure-resurser och Azure AD med hjälp av Azure AD Privileged Identity Management (PIM). JIT beviljar temporära behörigheter för att utföra privilegierade uppgifter endast när användarna behöver det. PIM kan också generera säkerhetsaviseringar när det finns misstänkt eller osäker aktivitet i din Azure AD-organisation.
 
-- [Administratörs roll behörigheter i Azure AD](../../active-directory/roles/permissions-reference.md)
+- [Behörigheter för administratörsrollen i Azure AD](../../active-directory/roles/permissions-reference.md)
 
-- [Använd Azure Privileged Identity Management säkerhets aviseringar](../../active-directory/privileged-identity-management/pim-how-to-configure-security-alerts.md)
+- [Använda säkerhetsaviseringar från Privileged Identity Management i Azure](../../active-directory/privileged-identity-management/pim-how-to-configure-security-alerts.md)
 
 - [Skydda privilegierad åtkomst för hybrid- och molndistributioner i Azure AD](../../active-directory/roles/security-planning.md)
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 **Kund säkerhets intressenter** ([Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -52,9 +52,9 @@ Du kan aktivera just-in-Time (JIT) privilegie rad åtkomst till Azure-resurser o
 
 - [Säkerhets åtgärder](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
-## <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2: begränsa administrativ åtkomst till verksamhets kritiska system
+## <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2: Begränsa administrativ åtkomst till affärskritiska system
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | PA-2 | 13,2, 2,10 | AC-2, SC-3, SC-7 |
 
@@ -70,7 +70,7 @@ Se till att tilldela separata privilegierade konton som skiljer sig från de sta
 
 - [Administratörer för Azure-prenumeration](../../cost-management-billing/manage/add-change-subscription-administrator.md)
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 **Kund säkerhets intressenter** ([Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -80,9 +80,9 @@ Se till att tilldela separata privilegierade konton som skiljer sig från de sta
 
 - [Säkerhetsarkitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-## <a name="pa-3-review-and-reconcile-user-access-regularly"></a>PA-3: granska och Stäm av användar åtkomst regelbundet
+## <a name="pa-3-review-and-reconcile-user-access-regularly"></a>PA-3: Granska och stäm av användarnas åtkomst regelbundet
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | PA-3 | 4,1, 16,9, 16,10 | AC-2 |
 
@@ -93,9 +93,9 @@ Obs! vissa Azure-tjänster har stöd för lokala användare och roller som inte 
 
 - [Skapa en åtkomst granskning av Azure Resource roles i Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-resource-roles-start-access-review.md)
 
-- [Använda Azure AD-identitets-och åtkomst granskningar](../../active-directory/governance/access-reviews-overview.md)
+- [Så här använder du identitets- och åtkomstgranskningar i Azure AD](../../active-directory/governance/access-reviews-overview.md)
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 **Kund säkerhets intressenter** ([Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -105,18 +105,18 @@ Obs! vissa Azure-tjänster har stöd för lokala användare och roller som inte 
 
 - [Hantering av säkerhetskompatibilitet](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-## <a name="pa-4-set-up-emergency-access-in-azure-ad"></a>PA-4: Konfigurera nöd åtkomst i Azure AD
+## <a name="pa-4-set-up-emergency-access-in-azure-ad"></a>PA-4: Konfigurera nödåtkomst i Azure AD
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | PA-4 | 16 | AC-2, CP-2 |
 
-För att förhindra oavsiktligt låst av din Azure AD-organisation konfigurerar du ett konto för nöd åtkomst för åtkomst när normala administrativa konton inte kan användas. Konton för nöd åtkomst är ofta mycket privilegierade och de bör inte tilldelas vissa individer. Konton för nöd åtkomst är begränsade till nöd situationer eller "Break glas"-scenarier där normala administrativa konton inte kan användas.
-Du bör se till att autentiseringsuppgifterna (till exempel lösen ord, certifikat eller smartkort) för konton för nöd åtkomst hålls skyddade och endast kända för personer som har behörighet att använda dem endast i nödfall.
+För att förhindra oavsiktligt låst av din Azure AD-organisation konfigurerar du ett konto för nöd åtkomst för åtkomst när normala administrativa konton inte kan användas. Konton för nödåtkomst har ofta hög behörighet och bör inte tilldelas till specifika individer. Konton för nödåtkomst är begränsade till nödsituationer där du inte kan använda normala administratörskonton.
+Du bör se till att autentiseringsuppgifterna (som lösenord, certifikat eller smartkort) för nödåtkomstkonton är skyddade och bara kända av personer som har behörighet att använda dem i nödfall.
 
-- [Hantera konton för nöd åtkomst i Azure AD](../../active-directory/roles/security-emergency-access.md)
+- [Hantera konton för nödåtkomst i Azure AD](../../active-directory/roles/security-emergency-access.md)
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 **Kund säkerhets intressenter** ([Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -130,7 +130,7 @@ Du bör se till att autentiseringsuppgifterna (till exempel lösen ord, certifik
 
 ## <a name="pa-5-automate-entitlement-management"></a>PA-5: automatisera rättighets hantering
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | PA-5 | 16 | AC-2, AC-5, PM-10 |
 
@@ -139,7 +139,7 @@ Använd funktioner för hantering av Azure AD-rättighet för att automatisera �
 
 - [Vad är hantering av Azure AD-berättigande](../../active-directory/governance/entitlement-management-overview.md)
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 **Kund säkerhets intressenter** ([Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -149,19 +149,19 @@ Använd funktioner för hantering av Azure AD-rättighet för att automatisera �
 
 - [Hantering av säkerhetskompatibilitet](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-## <a name="pa-6-use-privileged-access-workstations"></a>PA-6: Använd arbets stationer med privilegie rad åtkomst
+## <a name="pa-6-use-privileged-access-workstations"></a>PA-6: Använd arbetsstationer med privilegierad åtkomst
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | PA-6 | 4,6, 11,6, 12,12 | AC-2, SC-3, SC-7 |
 
-Skyddade, isolerade arbets stationer är mycket viktiga för att skydda känsliga roller som administratörer, utvecklare och kritiska tjänst operatörer. Använd hög säkra användar arbets stationer och/eller Azure-skydds för administrativa uppgifter. Använd Azure Active Directory, Microsoft Defender Avancerat skydd (ATP) och/eller Microsoft Intune för att distribuera en säker och hanterad användar arbets station för administrativa uppgifter. De skyddade arbets stationerna kan hanteras centralt för att upprätthålla säker konfiguration, inklusive stark autentisering, program vara och maskin varu bas linjer och begränsad logisk och nätverks åtkomst. 
+Skyddade, isolerade arbets stationer är mycket viktiga för att skydda känsliga roller som administratörer, utvecklare och kritiska tjänst operatörer. Använd hög säkra användar arbets stationer och/eller Azure-skydds för administrativa uppgifter. Använd Azure Active Directory, Microsoft Defender Avancerat skydd (ATP) och Microsoft Intune när du ska distribuera en säker och hanterad arbetsstation för administrativa uppgifter. De skyddade arbets stationerna kan hanteras centralt för att upprätthålla säker konfiguration, inklusive stark autentisering, program vara och maskin varu bas linjer och begränsad logisk och nätverks åtkomst. 
 
 - [Förstå arbets stationer med privilegie rad åtkomst](../../active-directory/devices/concept-azure-managed-workstation.md)
 
-- [Distribuera en privilegie rad åtkomst arbets Station](../../active-directory/devices/howto-azure-managed-workstation.md)
+- [Distribuera en arbetsstation med privilegierad åtkomst](../../active-directory/devices/howto-azure-managed-workstation.md)
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 **Kund säkerhets intressenter** ([Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -171,22 +171,22 @@ Skyddade, isolerade arbets stationer är mycket viktiga för att skydda känslig
 
 - [Identitets-och nyckel hantering](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
-## <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7: Följ bara tillräckligt med administration (princip för minsta behörighet)
+## <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7: Följ JEA (Just Enough Administration, precis tillräcklig administration) (principen om minsta behörighet)
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | PA-7 | 14,6 | AC-2, AC-3, SC-3 |
 
 Med rollbaserad åtkomst kontroll i Azure (Azure RBAC) kan du hantera Azure Resource Access via roll tilldelningar. Du kan tilldela dessa roller till användare, grupp tjänstens huvud namn och hanterade identiteter. Det finns fördefinierade inbyggda roller för vissa resurser och dessa roller kan inventeras eller frågas via verktyg som Azure CLI, Azure PowerShell och Azure Portal. De behörigheter som du tilldelar resurser via Azure RBAC bör alltid vara begränsade till vad som krävs av rollerna. Begränsade privilegier kompletterar JIT-metoden (just in Time) för Azure AD Privileged Identity Management (PIM) och dessa privilegier bör granskas regelbundet.
-Använd inbyggda roller för att allokera behörighet och endast skapa en anpassad roll vid behov. 
+Använd inbyggda roller för att allokera behörighet och skapa bara en anpassad roll vid behov. 
 
 - [Vad är Azure rollbaserad åtkomst kontroll (Azure RBAC)](../../role-based-access-control/overview.md)
 
 - [Så här konfigurerar du Azure RBAC](../../role-based-access-control/role-assignments-portal.md)
 
-- [Använda Azure AD-identitets-och åtkomst granskningar](../../active-directory/governance/access-reviews-overview.md)
+- [Så här använder du identitets- och åtkomstgranskningar i Azure AD](../../active-directory/governance/access-reviews-overview.md)
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 **Kund säkerhets intressenter** ([Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -200,7 +200,7 @@ Använd inbyggda roller för att allokera behörighet och endast skapa en anpass
 
 ## <a name="pa-8-choose-approval-process-for-microsoft-support"></a>PA-8: Välj godkännande process för Microsoft Support 
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | PA-8 | 16 | AC-2, AC-3, AC-4 |
 
@@ -208,7 +208,7 @@ I support scenarier där Microsoft behöver åtkomst till kund information, Cust
 
 - [Förstå Customer Lockbox](../fundamentals/customer-lockbox-overview.md)
 
-**Ansvar**: kund
+**Ansvar**: Kund
 
 **Kund säkerhets intressenter** ([Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 

@@ -6,12 +6,12 @@ ms.date: 09/10/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8dc625237c03cf38f9fe2eb0446c55dcf96f5f3a
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: b6257161017afc9dab692c43fcc64e5d961a90ba
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106775"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368434"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>Självstudie: använda parameter-filer för att distribuera ARM-mallen
 
@@ -51,7 +51,7 @@ Skapa en ny fil med följande innehåll. Spara filen med namnet _azuredeploy.par
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json":::
 
-Den här filen är parameter filen för produktions miljön. Observera att den använder **Standard_GRS** för lagrings kontot, namnger resurser med ett **contoso** -prefix och ställer in _miljö_ tag gen på **produktion**. I en verklig produktions miljö vill du också använda en app service med en annan SKU än kostnads fri, men vi fortsätter att använda SKU: n för den här självstudien.
+Den här filen är parameter filen för produktions miljön. Observera att den använder **Standard_GRS** för lagrings kontot, namnger resurser med ett **contoso** -prefix och anger `Environment` taggen till **produktion**. I en verklig produktions miljö vill du också använda en app service med en annan SKU än kostnads fri, men vi fortsätter att använda SKU: n för den här självstudien.
 
 ## <a name="deploy-template"></a>Distribuera mallen
 

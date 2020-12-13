@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: 8aedc59fc34278bf84983d78bf0e9a31fe38ee93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b1815e7598410cd709572d93082d5dee5e0b0fb
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82735597"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369250"
 ---
 # <a name="tutorial-create-an-azure-custom-role-using-azure-powershell"></a>Självstudie: skapa en anpassad Azure-roll med hjälp av Azure PowerShell
 
@@ -32,11 +32,11 @@ I den här guiden får du lära dig att:
 > * Uppdatera en anpassad roll
 > * Ta bort en anpassad roll
 
-Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att kunna genomföra den här kursen behöver du följande:
 
@@ -51,7 +51,7 @@ Logga in på [Azure PowerShell](/powershell/azure/authenticate-azureps).
 
 Det enklaste sättet att skapa en anpassad roll är att utgå från en inbyggd roll, redigera den och sedan skapa en ny roll.
 
-1. I PowerShell använder du kommandot [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) för att hämta listan över åtgärder för resursprovidern Microsoft.Support. Det är bra att känna till de åtgärder som är tillgängliga för att skapa dina behörigheter. Det finns även en lista över alla åtgärder på [Azure Resource Manager resource provider operations](resource-provider-operations.md#microsoftsupport) (Åtgärder för Azure Resource Manager-resursprovider).
+1. I PowerShell använder du kommandot [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) för att hämta listan över åtgärder för resursprovidern Microsoft.Support. Det är bra att känna till de åtgärder som är tillgängliga för att skapa dina behörigheter. Du kan också se en lista över alla åtgärder vid [Azure Resource Provider-åtgärder](resource-provider-operations.md#microsoftsupport).
 
     ```azurepowershell
     Get-AzProviderOperation "Microsoft.Support/*" | FT Operation, Description -AutoSize

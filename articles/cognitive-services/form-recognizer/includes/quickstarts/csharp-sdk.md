@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: d7577668d87ecaf2d769136d64990f95fc212fe6
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 48a895875edab56e062320321d82b43da15234d0
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356536"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97366355"
 ---
 > [!IMPORTANT]
 > Koden i den här artikeln använder synkrona metoder och icke-säkrade inloggnings uppgifter för att förenkla orsaker.
@@ -168,8 +168,8 @@ Upprepa stegen ovan för en ny metod som autentiserar en utbildnings klient.
 
 Du måste också lägga till referenser till URL: erna för din utbildning och testa data. Lägg till dessa i roten för **program** klassen.
 
-* Om du vill hämta SAS-URL: en för din anpassade modell inlärnings data öppnar du Microsoft Azure Storage Explorer, högerklickar på behållaren och väljer **Hämta signatur för delad åtkomst**. Kontrol lera att **Läs** -och **list** behörigheterna är markerade och klicka på **skapa**. Kopiera sedan värdet i **URL** -avsnittet. Det bör ha formatet: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
-* Använd sedan stegen ovan för att hämta SAS-URL: en för ett enskilt dokument i Blob Storage.
+* [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
+* Upprepa sedan stegen ovan för att hämta SAS-URL: en för ett enskilt dokument i Blob Storage-behållare. Spara den på en tillfällig plats även.
 * Spara slutligen URL: en för de exempel bilder som ingår nedan (finns också på [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms)). 
 
 #### <a name="version-30"></a>[version 3,0](#tab/ga)
@@ -630,7 +630,7 @@ Du kan också ta bort en modell från ditt konto genom att referera till dess ID
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_manage_model_delete)]
 
 
-## <a name="run-the-application"></a>Kör programmet
+## <a name="run-the-application"></a>Köra appen
 
 Kör programmet från program katalogen med `dotnet run` kommandot.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, mqtt, devx-track-csharp
-ms.openlocfilehash: 133be436853ee8c2b04df2f943368513108b226b
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: c0c3a452c93b88483ac7027405665c26ceab8183
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444315"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368519"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Förstå Azure IoT Edge Runtime och dess arkitektur
 
@@ -81,7 +81,7 @@ IoT Edge hubben är inte en fullständig version av IoT Hub som körs lokalt. Io
 
 För att minska bandbredden som IoT Edge-lösningen använder optimerar IoT Edge Hub hur många faktiska anslutningar som görs till molnet. IoT Edge hub tar logiska anslutningar från moduler eller underordnade enheter och kombinerar dem för en enda fysisk anslutning till molnet. Informationen om den här processen är transparent för resten av lösningen. Klienterna tror att de har sin egen anslutning till molnet även om de skickas över samma anslutning. IoT Edge hubben kan antingen använda AMQP-eller MQTT-protokollet för att kommunicera överordnade med molnet, oberoende av protokoll som används av underordnade enheter. IoT Edge Hub stöder för närvarande bara att kombinera logiska anslutningar till en enda fysisk anslutning genom att använda AMQP som överordnat protokoll och dess funktioner för multiplexering. AMQP är standard protokollet för överordnad.
 
-![IoT Edge Hub är en gateway mellan fysiska enheter och IoT Hub](./media/iot-edge-runtime/Gateway.png)
+![IoT Edge Hub är en gateway mellan fysiska enheter och IoT Hub](./media/iot-edge-runtime/gateway-communication.png)
 
 IoT Edge Hub kan avgöra om det är anslutet till IoT Hub. Om anslutningen bryts sparar IoT Edge hubben meddelanden eller dubbla uppdateringar lokalt. När en anslutning har återupprättats synkroniseras alla data. Den plats som används för den här tillfälliga cachen bestäms av en egenskap hos den IoT Edge hubbens modul, dubbla. Storleken på cachen är inte begränsad och kommer att växa så länge enheten har lagrings kapacitet. Mer information finns i [offline-funktioner](offline-capabilities.md).
 
@@ -94,7 +94,7 @@ IoT Edge hubb underlättar modulen kommunikation. Om du använder IoT Edge hubbe
 
 ![IoT Edge hubb underlättar kommunikation mellan moduler och moduler](./media/iot-edge-runtime/module-endpoints.png)
 
-För att skicka data till IoT Edge Hub anropar en modul metoden SendEventAsync. Det första argumentet anger på vilka utdata som meddelandet ska skickas. Följande pseudocode skickar ett meddelande på **output1** :
+För att skicka data till IoT Edge Hub anropar en modul metoden SendEventAsync. Det första argumentet anger på vilka utdata som meddelandet ska skickas. Följande pseudocode skickar ett meddelande på **output1**:
 
    ```csharp
    ModuleClient client = await ModuleClient.CreateFromEnvironmentAsync(transportSettings);
@@ -102,7 +102,7 @@ För att skicka data till IoT Edge Hub anropar en modul metoden SendEventAsync. 
    await client.SendEventAsync("output1", message);
    ```
 
-Om du vill ta emot ett meddelande registrerar du ett återanrop som bearbetar meddelanden som kommer i en speciell Indatatyp. Följande pseudocode registrerar funktionen messageProcessor som ska användas för bearbetning av alla meddelanden som tas emot på **INPUT1** :
+Om du vill ta emot ett meddelande registrerar du ett återanrop som bearbetar meddelanden som kommer i en speciell Indatatyp. Följande pseudocode registrerar funktionen messageProcessor som ska användas för bearbetning av alla meddelanden som tas emot på **INPUT1**:
 
    ```csharp
    await client.SetInputMessageHandlerAsync("input1", messageProcessor, userContext);
@@ -112,7 +112,7 @@ Mer information om klassen ModuleClient och dess kommunikations metoder finns i 
 
 Lösnings utvecklaren ansvarar för att ange regler som avgör hur IoT Edge Hub skickar meddelanden mellan moduler. Routningsregler definieras i molnet och flyttas ned till IoT Edge Hub i sin modul. Samma syntax för IoT Hub vägar används för att definiera vägar mellan moduler i Azure IoT Edge. Mer information finns i [Lär dig hur du distribuerar moduler och etablerar vägar i IoT Edge](module-composition.md).
 
-![Vägar mellan moduler går till IoT Edge hubb](./media/iot-edge-runtime/module-endpoints-with-routes.png)
+![Vägar mellan moduler går till IoT Edge hubb](./media/iot-edge-runtime/module-endpoints-routing.png)
 ::: moniker-end
 
 <!-- <1.2> -->
@@ -134,7 +134,7 @@ IoT Edge Hub stöder två Utjämnings metoder:
 
 Den första Broker-mekanismen utnyttjar samma routningsfunktioner som IoT Hub för att ange hur meddelanden ska skickas mellan enheter eller moduler. De första enheterna eller modulerna anger vilka indata som de accepterar meddelanden och de utdata som de skriver meddelanden till. Sedan kan en lösnings utvecklare dirigera meddelanden mellan en källa, t. ex. utdata och ett mål, t. ex. indata, med potentiella filter.
 
-![Vägar mellan moduler går till IoT Edge hubb](./media/iot-edge-runtime/module-endpoints-with-routes.png)
+![Vägar mellan moduler går till IoT Edge hubb](./media/iot-edge-runtime/module-endpoints-routing.png)
 
 Routning kan användas av enheter eller moduler som skapats med Azure IoT-enhetens SDK: er antingen via AMQP eller MQTT-protokollet. Alla meddelande IoT Hub primitiver, t. ex. telemetri, direkta metoder, C2D, dubbla, stöds men kommunikation över användardefinierade ämnen stöds inte.
 
@@ -235,7 +235,7 @@ IoT Edge agent samlar in Telemetrin varje timme och skickar ett meddelande till 
 
 Om du inte vill avanmäla körnings telemetri från dina enheter kan du göra det på två sätt:
 
-* Ange `SendRuntimeQualityTelemetry` miljövariabeln till `false` för **edgeAgent** , eller
+* Ange `SendRuntimeQualityTelemetry` miljövariabeln till `false` för **edgeAgent**, eller
 * Avmarkera alternativet i Azure Portal under distributionen.
 
 ## <a name="next-steps"></a>Nästa steg

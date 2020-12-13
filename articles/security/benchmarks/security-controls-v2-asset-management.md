@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 8602450ef7df7f728fc5bdcda4f46ae30058fc94
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f0c2fe78c32357798e1f9acb43f5867df9148b38
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487804"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368910"
 ---
 # <a name="security-control-v2-asset-management"></a>Säkerhets kontroll v2: till gångs hantering
 
@@ -20,7 +20,7 @@ Till gångs hantering omfattar kontroller för att säkerställa ökad säkerhet
 
 ## <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1: Se till att säkerhetsteamet har insyn i risker gällande tillgångar
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | AM-1 | 1,1, 1,2 | CM – 8, PM-5 |
 
@@ -46,7 +46,7 @@ Obs! Ytterligare behörigheter kan krävas för att få insyn i arbetsbelastning
 
 ## <a name="am-2-ensure-security-team-has-access-to-asset-inventory-and-metadata"></a>AM-2: Se till att säkerhetsteamet har åtkomst till tillgångsinventering och metadata
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | AM-2 | 1,1, 1,2, 1,4, 1,5, 9,1, 12,1 | CM – 8, PM-5 |
 
@@ -72,7 +72,7 @@ Organisera tillgångar logiskt enligt organisationens taxonomi med hjälp av tag
 
 ## <a name="am-3-use-only-approved-azure-services"></a>AM-3: Använd bara godkända Azure-tjänster
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | AM-3 | 2,3, 2,4 | CM – 7, CM-8 |
 
@@ -94,7 +94,7 @@ Använd Azure Policy till att granska och begränsa vilka tjänster användarna 
 
 ## <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>AM-4: Garantera säker livscykelhantering för tillgångar
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | AM-4 | 2,3, 2,4, 2,5 | CM – 7, CM-8, CM-10, CM-11 |
 
@@ -116,7 +116,7 @@ Ta bort Azure-resurser när de inte längre behövs.
 
 ## <a name="am-5-limit-users-ability-to-interact-with-azure-resource-manager"></a>AM-5: begränsa användarnas möjlighet att interagera med Azure Resource Manager
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | AM-5 | 2.9 | AC-3 |
 
@@ -134,7 +134,7 @@ Använd villkorlig åtkomst för Azure AD för att begränsa användarnas möjli
 
 ## <a name="am-6-use-only-approved-applications-in-compute-resources"></a>AM-6: Använd endast godkända program i beräknings resurser
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | AM-6 | 2,6, 2,7 | AC-3, CM-7, CM-8, CM-10, CM-11 |
 

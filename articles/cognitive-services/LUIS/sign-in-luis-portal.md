@@ -9,14 +9,16 @@ ms.date: 09/08/2020
 ms.topic: how-to
 ms.author: nitinme
 author: nitinme
-ms.openlocfilehash: 3235f6285edb99776b42014678cd2b6c60d17f62
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: b8382b76496976054ebb452e39866765d986ccbb
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763863"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368192"
 ---
 # <a name="sign-in-to-luis-portal"></a>Logga in på LUIS-portalen
+
+[!INCLUDE [LUIS Free account](includes/luis-portal-note.md)]
 
 Använd den här artikeln för att komma igång med LUIS-portalen och skapa en redigerings resurs. När du har slutfört stegen i den här artikeln kommer du att kunna skapa och publicera LUIS-appar.
 

@@ -1,6 +1,6 @@
 ---
-title: ta med fil
-description: ta med fil
+title: inkludera fil
+description: inkludera fil
 services: networking
 author: anavinahar
 ms.service: networking
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 0d5c9c4a0191c6d5effd8f6067cb6602ed239125
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 9751bd082947e66b3fc5ea47448857558301a1e7
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329529"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97366400"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Nätverks gränser – Azure Resource Manager
 Följande begränsningar gäller endast för nätverks resurser som hanteras via **Azure Resource Manager** per region per prenumeration. Lär dig hur du [visar din aktuella resursanvändning mot dina prenumerations gränser](../articles/networking/check-usage-against-limits.md).
@@ -73,7 +73,7 @@ Följande begränsningar gäller endast för nätverksresurser som hanteras via 
 | Regler per nätverkskort (över alla IP-adresser på ett nätverkskort) | 300                           |
 | IP-konfigurationer för klient del              | 600                           |
 | Storlek på serverdelspool                       | 1 000 IP-konfigurationer, enskilt virtuellt nätverk |
-| Server dels resurser per Load Balancer <sup> 1<sup> | 150                   |
+| Server dels resurser per Load Balancer <sup> 1<sup> | 250                   |
 | Portar med hög tillgänglighet                 | 1 per intern klient del       |
 | Utgående regler per Load Balancer        | 600                           |
 | Belastnings utjämning per virtuell dator                   | 2 (1 offentlig och 1 intern)   |

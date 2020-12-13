@@ -9,14 +9,14 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: ambapat
-ms.openlocfilehash: 76eedaabf52cf2d56b2feaa6dc2748c25bf7696c
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: b483ffc480f9ad750f8d9901d6bec382db2378c2
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424505"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368927"
 ---
-# <a name="key-types-algorithms-and-operations"></a>Nyckel typer, algoritmer och åtgärder
+# <a name="key-types-algorithms-and-operations"></a>Viktiga typer, algoritmer och åtgärder
 
 Key Vault stöder två resurs typer: valv och hanterade HSM: er. Båda resurs typerna stöder olika krypterings nycklar. För att se en översikt över vilka nyckel typer som stöds, skydds typer per resurs typ, se [om nycklar](about-keys.md).
 
@@ -66,9 +66,9 @@ Följande tabell innehåller en översikt över nyckel typer och algoritmer som 
 -   **RSNULL** – se [RFC2437](https://tools.ietf.org/html/rfc2437), ett specialiserat användnings fall för att aktivera vissa TLS-scenarier.  
 
 ##  <a name="symmetric-key-algorithms"></a>Algoritmer för symmetrisk nyckel
-- **AES-kW** – AES Key wrap ( [RFC3394](https://tools.ietf.org/html/rfc3394)).
-- **AES-GCM** -AES-kryptering i Galois Counter mode ( [NIST SP800-38d](https://csrc.nist.gov/publications/sp800))
-- **AES-CBC** -AES-kryptering i läget cipher block Chaining ( [NIST SP800-38a](https://csrc.nist.gov/publications/sp800))
+- **AES-kW** – AES Key wrap ([RFC3394](https://tools.ietf.org/html/rfc3394)).
+- **AES-GCM** -AES-kryptering i Galois Counter mode ([NIST SP 800-38d](https://csrc.nist.gov/publications/sp800))
+- **AES-CBC** -AES-kryptering i läget cipher block Chaining ([NIST SP 800-38a](https://csrc.nist.gov/publications/sp800))
 
 > [!NOTE] 
 > Den aktuella AES-GCM-implementeringen och motsvarande API: er är experimentella. Implementeringen och API: erna kan ändras väsentligen i framtida iterationer. 
@@ -77,23 +77,23 @@ Följande tabell innehåller en översikt över nyckel typer och algoritmer som 
 
 Hanterad HSM stöder följande åtgärder på nyckel objekt:  
 
--   **Skapa** : tillåter att en klient skapar en nyckel i Key Vault. Nyckelns värde genereras av Key Vault och lagras, och frigörs inte till klienten. Asymmetriska nycklar kan skapas i Key Vault.  
--   **Importera** : tillåter att en klient importerar en befintlig nyckel till Key Vault. Asymmetriska nycklar kan importeras till Key Vault att använda ett antal olika förpacknings metoder inom en JWK-konstruktion. 
--   **Uppdatera** : tillåter en klient med tillräcklig behörighet att ändra de metadata (nyckelattribut) som är associerade med en nyckel som tidigare lagrats i Key Vault.  
--   **Ta bort** : tillåter en klient med tillräcklig behörighet att ta bort en nyckel från Key Vault.  
--   **Lista** : tillåter att en klient listar alla nycklar i en specifik Key Vault.  
--   **List versioner** : tillåter att en klient listar alla versioner av en specifik nyckel i en specifik Key Vault.  
--   **Get** : tillåter att en klient hämtar offentliga delar av en viss nyckel i en Key Vault.  
--   **Säkerhets kopiering** : exporterar en nyckel i ett skyddat formulär.  
--   **Återställ** : importerar en tidigare säkerhetskopierad nyckel.  
+-   **Skapa**: tillåter att en klient skapar en nyckel i Key Vault. Nyckelns värde genereras av Key Vault och lagras, och frigörs inte till klienten. Asymmetriska nycklar kan skapas i Key Vault.  
+-   **Importera**: tillåter att en klient importerar en befintlig nyckel till Key Vault. Asymmetriska nycklar kan importeras till Key Vault att använda ett antal olika förpacknings metoder inom en JWK-konstruktion. 
+-   **Uppdatera**: tillåter en klient med tillräcklig behörighet att ändra de metadata (nyckelattribut) som är associerade med en nyckel som tidigare lagrats i Key Vault.  
+-   **Ta bort**: tillåter en klient med tillräcklig behörighet att ta bort en nyckel från Key Vault.  
+-   **Lista**: tillåter att en klient listar alla nycklar i en specifik Key Vault.  
+-   **List versioner**: tillåter att en klient listar alla versioner av en specifik nyckel i en specifik Key Vault.  
+-   **Get**: tillåter att en klient hämtar offentliga delar av en viss nyckel i en Key Vault.  
+-   **Säkerhets kopiering**: exporterar en nyckel i ett skyddat formulär.  
+-   **Återställ**: importerar en tidigare säkerhetskopierad nyckel.  
 
 Mer information finns i [nyckel åtgärder i referensen Key Vault REST API](/rest/api/keyvault).  
 
 När en nyckel har skapats i Key Vault kan följande kryptografiska åtgärder utföras med nyckeln:  
 
--   **Logga och verifiera** : den här åtgärden är "signera hash" eller "verifiera hash", eftersom Key Vault inte stöder hashing av innehåll som en del av att skapa signaturer. Program ska Hasha data för att signeras lokalt och sedan begära att Key Vault signera hashen. Verifiering av signerade hash-värden stöds som en bekvämlighets åtgärd för program som kanske inte har åtkomst till [offentligt] nyckel material. För bästa program prestanda bör du kontrol lera att åtgärder utförs lokalt.  
--   **Nyckel kryptering/inbäddning** : en nyckel som lagras i Key Vault kan användas för att skydda en annan nyckel, vanligt vis en symmetrisk innehålls krypterings nyckel (CEK). När nyckeln i Key Vault är asymmetrisk, används nyckel kryptering. Till exempel motsvarar RSA-OAEP och WRAPKEY/UNWRAPKEY-åtgärderna dekryptera/DEKRYPTERA. När nyckeln i Key Vault är symmetrisk används nyckel brytning. Till exempel AES-KW. WRAPKEY-åtgärden stöds som en bekvämlighet för program som kanske inte har åtkomst till [offentligt] nyckel material. För bästa prestanda bör WRAPKEY åtgärder utföras lokalt.  
--   **Kryptera och dekryptera** : en nyckel som lagras i Key Vault kan användas för att kryptera eller dekryptera ett enda data block. Storleken på blocket bestäms av nyckel typen och den valda krypteringsalgoritmen. Krypterings åtgärden tillhandahålls för enkelhetens skull, för program som kanske inte har åtkomst till [offentligt] nyckel material. För bästa prestanda bör KRYPTERINGs åtgärder utföras lokalt.  
+-   **Logga och verifiera**: den här åtgärden är "signera hash" eller "verifiera hash", eftersom Key Vault inte stöder hashing av innehåll som en del av att skapa signaturer. Program ska Hasha data för att signeras lokalt och sedan begära att Key Vault signera hashen. Verifiering av signerade hash-värden stöds som en bekvämlighets åtgärd för program som kanske inte har åtkomst till [offentligt] nyckel material. För bästa program prestanda bör du kontrol lera att åtgärder utförs lokalt.  
+-   **Nyckel kryptering/inbäddning**: en nyckel som lagras i Key Vault kan användas för att skydda en annan nyckel, vanligt vis en symmetrisk innehålls krypterings nyckel (CEK). När nyckeln i Key Vault är asymmetrisk, används nyckel kryptering. Till exempel motsvarar RSA-OAEP och WRAPKEY/UNWRAPKEY-åtgärderna dekryptera/DEKRYPTERA. När nyckeln i Key Vault är symmetrisk används nyckel brytning. Till exempel AES-KW. WRAPKEY-åtgärden stöds som en bekvämlighet för program som kanske inte har åtkomst till [offentligt] nyckel material. För bästa prestanda bör WRAPKEY åtgärder utföras lokalt.  
+-   **Kryptera och dekryptera**: en nyckel som lagras i Key Vault kan användas för att kryptera eller dekryptera ett enda data block. Storleken på blocket bestäms av nyckel typen och den valda krypteringsalgoritmen. Krypterings åtgärden tillhandahålls för enkelhetens skull, för program som kanske inte har åtkomst till [offentligt] nyckel material. För bästa prestanda bör KRYPTERINGs åtgärder utföras lokalt.  
 
 Även om WRAPKEY/UNWRAPKEY med asymmetriska nycklar kan verka överflödig (eftersom åtgärden motsvarar kryptering/dekryptering) är det viktigt att använda DISTINCT-åtgärder. Distinktionen ger semantisk och avskiljande av dessa åtgärder och konsekvens när andra nyckel typer stöds av tjänsten.  
 
@@ -107,20 +107,20 @@ Mer information om JWK-objekt finns i [JSON-webbnyckel (JWK)](https://tools.ietf
 
 Utöver nyckelmaterialet kan följande attribut anges. I en JSON-begäran krävs attributen nyckelord och klammerparenteser, {}, även om det inte finns några angivna attribut.  
 
-- *aktive rad* : boolesk, valfritt, standardvärdet är **True**. Anger om nyckeln är aktive rad och användbar för kryptografiska åtgärder. Det *aktiverade* attributet används tillsammans med *NBF* och *exp*. När en åtgärd sker mellan *NBF* och *exp* , tillåts den endast om *aktive rad* är inställd på **True**. Åtgärder utanför *NBF*  /  *exp* -fönstret tillåts inte automatiskt, förutom vissa åtgärds typer under [vissa förhållanden](#date-time-controlled-operations).
-- *NBF* : IntDate, valfritt, standard är nu. Attributet *NBF* (inte före) anger tiden före vilken nyckeln inte får användas för kryptografiska åtgärder, förutom vissa åtgärds typer under [särskilda villkor](#date-time-controlled-operations). Bearbetningen av *NBF* -attributet kräver att aktuellt datum/tid måste vara efter eller lika med det icke-före-datum/-tid som anges i *NBF* -attributet. Key Vault kan ge vissa små Leeway, vanligt vis inte fler än några minuter, för att kontona ska kunna användas för klock skevning. Värdet måste vara ett tal som innehåller ett IntDate-värde.  
-- *exp* : IntDate, valfritt, standard är "alltid". Attributet *exp* (förfallo tid) anger förfallo tid för eller efter vilken nyckeln inte får användas för kryptografisk drift, förutom vissa åtgärds typer under [särskilda villkor](#date-time-controlled-operations). Bearbetningen av *exp* -attributet kräver att aktuellt datum/tid måste vara före det datum/tid som anges i attributet *exp* . Key Vault kan vara en del liten Leeway, vanligt vis inte mer än några minuter, för att kunna använda klock skevning. Värdet måste vara ett tal som innehåller ett IntDate-värde.  
+- *aktive rad*: boolesk, valfritt, standardvärdet är **True**. Anger om nyckeln är aktive rad och användbar för kryptografiska åtgärder. Det *aktiverade* attributet används tillsammans med *NBF* och *exp*. När en åtgärd sker mellan *NBF* och *exp*, tillåts den endast om *aktive rad* är inställd på **True**. Åtgärder utanför *NBF*  /  *exp* -fönstret tillåts inte automatiskt, förutom vissa åtgärds typer under [vissa förhållanden](#date-time-controlled-operations).
+- *NBF*: IntDate, valfritt, standard är nu. Attributet *NBF* (inte före) anger tiden före vilken nyckeln inte får användas för kryptografiska åtgärder, förutom vissa åtgärds typer under [särskilda villkor](#date-time-controlled-operations). Bearbetningen av *NBF* -attributet kräver att aktuellt datum/tid måste vara efter eller lika med det icke-före-datum/-tid som anges i *NBF* -attributet. Key Vault kan ge vissa små Leeway, vanligt vis inte fler än några minuter, för att kontona ska kunna användas för klock skevning. Värdet måste vara ett tal som innehåller ett IntDate-värde.  
+- *exp*: IntDate, valfritt, standard är "alltid". Attributet *exp* (förfallo tid) anger förfallo tid för eller efter vilken nyckeln inte får användas för kryptografisk drift, förutom vissa åtgärds typer under [särskilda villkor](#date-time-controlled-operations). Bearbetningen av *exp* -attributet kräver att aktuellt datum/tid måste vara före det datum/tid som anges i attributet *exp* . Key Vault kan vara en del liten Leeway, vanligt vis inte mer än några minuter, för att kunna använda klock skevning. Värdet måste vara ett tal som innehåller ett IntDate-värde.  
 
 Det finns ytterligare skrivskyddade attribut som ingår i alla svar som innehåller viktiga attribut:  
 
-- *skapad* : IntDate, valfritt. Attributet *create* anger när den här versionen av nyckeln skapades. Värdet är null för nycklar som skapats innan det här attributet läggs till. Värdet måste vara ett tal som innehåller ett IntDate-värde.  
-- *uppdaterad* : IntDate, valfritt. Det *uppdaterade* attributet indikerar när den här versionen av nyckeln uppdaterades. Värdet är null för nycklar som senast uppdaterades innan det här attributet lades till. Värdet måste vara ett tal som innehåller ett IntDate-värde.  
+- *skapad*: IntDate, valfritt. Attributet *create* anger när den här versionen av nyckeln skapades. Värdet är null för nycklar som skapats innan det här attributet läggs till. Värdet måste vara ett tal som innehåller ett IntDate-värde.  
+- *uppdaterad*: IntDate, valfritt. Det *uppdaterade* attributet indikerar när den här versionen av nyckeln uppdaterades. Värdet är null för nycklar som senast uppdaterades innan det här attributet lades till. Värdet måste vara ett tal som innehåller ett IntDate-värde.  
 
 Mer information om IntDate och andra data typer finns i [om nycklar, hemligheter och certifikat: [data typer](../general/about-keys-secrets-certificates.md#data-types).
 
 ### <a name="date-time-controlled-operations"></a>Kontrollerade åtgärder för datum/tid
 
-Nycklar som inte är giltiga och som har upphört att gälla utanför *NBF*  /  *exp* -fönstret fungerar för att **dekryptera** , **packa** upp och **Verifiera** åtgärder (returnerar inte 403, förbjudet). Rationellt för att använda tillstånd som inte är giltigt är att tillåta att en nyckel testas före produktions användningen. Rationellt för att använda tillståndet upphör att gälla är att tillåta återställnings åtgärder för data som skapades när nyckeln var giltig. Du kan också inaktivera åtkomst till en nyckel med Key Vault-principer eller genom att uppdatera det *aktiverade* nyckelattributet till **falskt**.
+Nycklar som inte är giltiga och som har upphört att gälla utanför *NBF*  /  *exp* -fönstret fungerar för att **dekryptera**, **packa** upp och **Verifiera** åtgärder (returnerar inte 403, förbjudet). Rationellt för att använda tillstånd som inte är giltigt är att tillåta att en nyckel testas före produktions användningen. Rationellt för att använda tillståndet upphör att gälla är att tillåta återställnings åtgärder för data som skapades när nyckeln var giltig. Du kan också inaktivera åtkomst till en nyckel med Key Vault-principer eller genom att uppdatera det *aktiverade* nyckelattributet till **falskt**.
 
 Mer information om data typer finns i [data typer](../general/about-keys-secrets-certificates.md#data-types).
 
@@ -140,26 +140,26 @@ Du kan ange ytterligare programspecifika metadata i form av taggar. Key Vault st
 Följande behörigheter kan beviljas, per användare/tjänstens huvud konto, i åtkomst kontroll posten i ett valv. Dessa behörigheter speglar noggrant de åtgärder som tillåts för ett nyckel objekt.  Att bevilja åtkomst till ett huvud namn för tjänsten i Key Vault är en Databasmigrering-åtgärd och det förblir detsamma för alla Azure-prenumerationer. Du kan använda den för att distribuera så många certifikat som du vill. 
 
 - Behörigheter för nyckel hanterings åtgärder
-  - *Hämta* : Läs den offentliga delen av en nyckel, plus dess attribut
-  - *lista* : visar nycklar eller versioner av en nyckel som lagras i ett nyckel valv
-  - *Uppdatera* : uppdatera attributen för en nyckel
-  - *skapa* : skapa nya nycklar
-  - *Importera* : importera en nyckel till ett nyckel valv
-  - *ta bort* : ta bort nyckelobjektet
-  - *återställa* : Återställ en borttagen nyckel
-  - *säkerhets kopiering* : säkerhetskopiera en nyckel i ett nyckel valv
-  - *återställning* : återställa en säkerhets kopie rad nyckel till ett nyckel valv
+  - *Hämta*: Läs den offentliga delen av en nyckel, plus dess attribut
+  - *lista*: visar nycklar eller versioner av en nyckel som lagras i ett nyckel valv
+  - *Uppdatera*: uppdatera attributen för en nyckel
+  - *skapa*: skapa nya nycklar
+  - *Importera*: importera en nyckel till ett nyckel valv
+  - *ta bort*: ta bort nyckelobjektet
+  - *återställa*: Återställ en borttagen nyckel
+  - *säkerhets kopiering*: säkerhetskopiera en nyckel i ett nyckel valv
+  - *återställning*: återställa en säkerhets kopie rad nyckel till ett nyckel valv
 
 - Behörigheter för kryptografiska åtgärder
-  - *dekryptera* : Använd nyckeln för att ta bort skyddet för en sekvens med byte
-  - *kryptera* : Använd nyckeln för att skydda en godtycklig sekvens med byte
-  - *unwrapKey* : Använd nyckeln för att ta bort skyddet för figursatta symmetriska nycklar
-  - *wrapKey* : Använd nyckeln för att skydda en symmetrisk nyckel
-  - *Verifiera* : Använd nyckeln för att verifiera sammandrag  
-  - *tecken* : Använd nyckeln för att signera sammandrag
+  - *dekryptera*: Använd nyckeln för att ta bort skyddet för en sekvens med byte
+  - *kryptera*: Använd nyckeln för att skydda en godtycklig sekvens med byte
+  - *unwrapKey*: Använd nyckeln för att ta bort skyddet för figursatta symmetriska nycklar
+  - *wrapKey*: Använd nyckeln för att skydda en symmetrisk nyckel
+  - *Verifiera*: Använd nyckeln för att verifiera sammandrag  
+  - *tecken*: Använd nyckeln för att signera sammandrag
     
 - Behörigheter för privilegierade åtgärder
-  - *Rensa* : Rensa (ta bort permanent) en borttagen nyckel
+  - *Rensa*: Rensa (ta bort permanent) en borttagen nyckel
 
 Mer information om hur du arbetar med nycklar finns [i nyckel åtgärder i Key Vault REST API referens](/rest/api/keyvault). Information om hur du etablerar behörigheter finns i [valv – skapa eller uppdatera](/rest/api/keyvault/vaults/createorupdate) och [valv – uppdatera åtkomst princip](/rest/api/keyvault/vaults/updateaccesspolicy). 
 

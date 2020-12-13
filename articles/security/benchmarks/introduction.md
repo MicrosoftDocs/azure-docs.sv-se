@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f3b492534bedde50d2413b88fa38cd6325ed5df7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32aa64a9343a8e3c62af4322b3320b28ce805064
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328266"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369199"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Introduktion till Azure Security benchmark
 
@@ -27,7 +27,7 @@ Azures säkerhets benchmark innehåller en samling med högkvalitativa säkerhet
 - **Tjänste bas linjer**: dessa gäller för enskilda Azure-tjänster för att tillhandahålla rekommendationer för den tjänstens säkerhets konfiguration.
 
 ## <a name="implement-the-azure-security-benchmark"></a>Implementera Azures säkerhets benchmark
-- **Planera** implementeringen av din Azure-säkerhet genom att granska [dokumentationen](overview.md) för företags kontrollerna och de tjänstspecifika bas linjerna för att planera kontroll ramverket och hur det mappas till vägledning som CIS (kontroll v 7.1) och NIST (SP800-53).
+- **Planera** implementeringen av din Azure-säkerhet genom att granska [dokumentationen](overview.md) för företags kontrollerna och de tjänstspecifika bas linjerna för att planera kontroll ramverket och hur det mappas till vägledning som CIS (kontroll v 7.1) och NIST (SP 800-53) Framework.
 - **Övervaka** din efterlevnad med Azures säkerhets status för säkerhet (och andra kontroll uppsättningar) med hjälp av [instrument panelen](../../security-center/security-center-compliance-dashboard.md)för Azure Security Center övervakning av regelefterlevnad.
 - **Upprätta guardrails** för att automatisera säkra konfigurationer och upprätthålla efterlevnaden av Azures säkerhets benchmark (och andra krav i din organisation) med Azure-ritningar och Azure policy.
  

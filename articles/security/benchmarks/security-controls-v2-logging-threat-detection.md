@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 99e7a8fcb34c963cfab366f1913508a7ff3f4a51
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: c5a855ffe06a17d8ec1bfe249dbe7bc41d1166af
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408710"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369080"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>Säkerhets kontroll v2: loggning och hot identifiering
 
@@ -20,7 +20,7 @@ Loggning och hot identifiering omfattar kontroller för att identifiera hot på 
 
 ## <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1: Aktivera hot identifiering för Azure-resurser
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | LT-1 | 6.7 | AU-3, AU-6, AU-12, SI-4 |
 
@@ -38,30 +38,30 @@ Använd dessutom Azure Sentinel för att bygga analys regler, som rör hot som m
 
 - [Cyberhot Hot information med Azure Sentinel](/azure/architecture/example-scenario/data/sentinel-threat-intelligence)
 
-**Ansvar** : kund
+**Ansvar**: Kund
 
-**Kund säkerhets intressenter** ( [Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Kund säkerhets intressenter** ([Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktur- och slutpunktssäkerhet](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [Säkerhets åtgärder](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Säkerhetsåtgärder](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Statushantering](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
 - [Program säkerhet och DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
-- [Hotinformation](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
+- [Hot information](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
-## <a name="lt-2-enable-threat-detection-for-azure-identity-and-access-management"></a>LT-2: Aktivera hot identifiering för Azure Identity and Access Management
+## <a name="lt-2-enable-threat-detection-for-azure-identity-and-access-management"></a>LT-2: Aktivera hotidentifiering i hanteringen av identiteter och åtkomst i Azure
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | LT-2 | 6.8 | AU-3, AU-6, AU-12, SI-4 |
 
 Azure AD innehåller följande användar loggar som kan visas i Azure AD repor ting eller integreras med Azure Monitor, Azure Sentinel eller andra SIEM/övervaknings verktyg för mer avancerade övervaknings-och analys användnings fall: 
--   Inloggningar – inloggnings rapporten innehåller information om användningen av hanterade program och användar inloggnings aktiviteter.
+-   Inloggningsaktiviteter – Rapporten för inloggningsaktiviteter ger information om användningen av hanterade program och användares inloggningsaktiviteter.
 
--   Granskningsloggar – Ger spårbarhet via loggar för alla ändringar som gjorts via olika funktioner i Azure AD. Exempel på gransknings loggar är ändringar som har gjorts i alla resurser i Azure AD, till exempel att lägga till eller ta bort användare, appar, grupper, roller och principer.
+-   Granskningsloggar – Ger spårbarhet via loggar för alla ändringar som gjorts via olika funktioner i Azure AD. Exempel på granskningsloggar är de resursändringar som görs i Azure AD, som att lägga till eller ta bort användare, appar, grupper, roller och principer.
 
 -   Riskfyllda inloggningar – En riskfylld inloggning indikerar ett potentiellt inloggningsförsök av någon annan än användarkontots ägare.
 
@@ -75,23 +75,23 @@ Azure Security Center kan även Varna vid vissa misstänkta aktiviteter, till ex
 
 - [Skydd mot hot i Azure Security Center](../../security-center/azure-defender.md)
 
-**Ansvar** : kund
+**Ansvar**: Kund
 
-**Kund säkerhets intressenter** ( [Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Kund säkerhets intressenter** ([Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktur- och slutpunktssäkerhet](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [Säkerhets åtgärder](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Säkerhetsåtgärder](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Statushantering](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
 - [Program säkerhet och DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
-- [Hotinformation](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
+- [Hot information](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
-## <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3: Aktivera loggning för Azure nätverks aktiviteter
+## <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3: Aktivera loggning av nätverksaktiviteter i Azure
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | LT-3 | 9,3, 12,2, 12,5, 12,8 | AU-3, AU-6, AU-12, SI-4 |
 
@@ -109,23 +109,23 @@ Aktivera och samla in resurs loggar för nätverks säkerhets grupper (NSG), NSG
 
 - [Samla in insikter om din DNS-infrastruktur med DNS-analys-lösningen](../../azure-monitor/insights/dns-analytics.md)
 
-**Ansvar** : kund
+**Ansvar**: Kund
 
-**Kund säkerhets intressenter** ( [Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Kund säkerhets intressenter** ([Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktur- och slutpunktssäkerhet](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [Säkerhets åtgärder](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Säkerhetsåtgärder](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Statushantering](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
 - [Program säkerhet och DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
-- [Hotinformation](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
+- [Hot information](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
 ## <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4: Aktivera loggning för Azure-resurser
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | LT-4 | 6,2, 6,3, 8,8 | AU-3, AU-12 |
 
@@ -137,21 +137,21 @@ Du kan använda Azure Security Center och Azure Policy för att aktivera resurs 
 
 - [Förstå Azure Security Center insamling av data](../../security-center/security-center-enable-data-collection.md)
 
-**Ansvars område** : delat
+**Ansvar**: Delad
 
-**Kund säkerhets intressenter** ( [Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Kund säkerhets intressenter** ([Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Säkerhets åtgärder](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Säkerhetsåtgärder](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 Infrastruktur- och slutpunktssäkerhet 
 
 - [Program säkerhet och DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
-- [Hotinformation](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
+- [Hot information](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
-## <a name="lt-5-centralize-security-log-management-and-analysis"></a>LT-5: centralisera hantering av säkerhets loggar och analys
+## <a name="lt-5-centralize-security-log-management-and-analysis"></a>LT-5: Central hantering och analys av säkerhetsloggar
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | LT-5 | 6,5, 6,6 | AU-3, SI-4 |
 
@@ -167,9 +167,9 @@ Många organisationer väljer att använda Azure Sentinel för "heta" data som a
 
 - [Publicera Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
-**Ansvar** : kund
+**Ansvar**: Kund
 
-**Kund säkerhets intressenter** ( [Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Kund säkerhets intressenter** ([Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Säkerhetsarkitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -177,9 +177,9 @@ Många organisationer väljer att använda Azure Sentinel för "heta" data som a
 
 - [Infrastruktur- och slutpunktssäkerhet](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-## <a name="lt-6-configure-log-storage-retention"></a>LT-6: Konfigurera kvarhållning av logg lagring
+## <a name="lt-6-configure-log-storage-retention"></a>LT-6: Konfigurera kvarhållning av loggar
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | LT-6 | 6.4 | AU-3, AU-11 |
 
@@ -193,21 +193,21 @@ I Azure Monitor kan du Log Analytics ange arbets ytans lagrings period enligt or
 
 - [Azure Security Center aviseringar och rekommendationer exportera](../../security-center/continuous-export.md)
 
-**Ansvar** : kund
+**Ansvar**: Kund
 
-**Kund säkerhets intressenter** ( [Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Kund säkerhets intressenter** ([Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Säkerhetsarkitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
 - [Program säkerhet och DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
-- [Säkerhets åtgärder](/azure/cloud-adoption-framework/organize/cloud-security-operations-center) 
+- [Säkerhetsåtgärder](/azure/cloud-adoption-framework/organize/cloud-security-operations-center) 
 
 - [Hantering av säkerhetsefterlevnad](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
 ## <a name="lt-7-use-approved-time-synchronization-sources"></a>LT-7: Använd godkända tids källor för synkronisering
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | LT-7 | 6.1 | AU-8 |
 
@@ -221,9 +221,9 @@ Alla loggar som genereras av resurser i Azure tillhandahåller tidsstämplar med
 
 - [Så här inaktiverar du inkommande UDP för Azure-tjänster](https://support.microsoft.com/help/4558520/how-to-disable-inbound-udp-for-azure-services)
 
-**Ansvars område** : delat
+**Ansvar**: Delad
 
-**Kund säkerhets intressenter** ( [Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Kund säkerhets intressenter** ([Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Principer och standarder](/azure/cloud-adoption-framework/organize/cloud-security-policy-standards)
 

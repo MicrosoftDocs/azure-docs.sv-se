@@ -180,6 +180,8 @@
       href: ./policy-reference.md
 - name: Resurser
   items:
+    - name: Utveckla dina färdigheter med Microsoft Learn
+      href: /learn/browse/?products=azure-resource-manager
     - name: Azure-översikt
       href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
     - name: Priskalkylator

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 8fa77f13b99564246c048e7b7a8129f9fc141c47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31dabcf77f0db76047919fa76d00f1c5ed3c96d6
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84984177"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369148"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-cli"></a>Skapa eller uppdatera anpassade Azure-roller med Azure CLI
 
@@ -32,7 +32,7 @@ Om de [inbyggda Azure-rollerna](built-in-roles.md) inte uppfyller organisationen
 
 En stegvis själv studie kurs om hur du skapar en anpassad roll finns i [Självstudier: skapa en anpassad Azure-roll med hjälp av Azure CLI](tutorial-custom-role-cli.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill skapa anpassade roller behöver du:
 
@@ -146,7 +146,7 @@ Använd [AZ roll definition Create](/cli/azure/role/definition#az-role-definitio
 az role definition create --role-definition {roleDefinition}
 ```
 
-I följande exempel skapas en anpassad roll med namnet *Virtual Machine-operator*. Den här anpassade rollen tilldelar åtkomst till alla Läs åtgärder för *Microsoft. Compute*, *Microsoft. Storage*och *Microsoft. Network* Resource providers och tilldelar åtkomst till Start, omstart och övervakning av virtuella datorer. Den här anpassade rollen kan användas i två prenumerationer. I det här exemplet används en JSON-fil som indata.
+I följande exempel skapas en anpassad roll med namnet *Virtual Machine-operator*. Den här anpassade rollen tilldelar åtkomst till alla Läs åtgärder för *Microsoft. Compute*, *Microsoft. Storage* och *Microsoft. Network* Resource providers och tilldelar åtkomst till Start, omstart och övervakning av virtuella datorer. Den här anpassade rollen kan användas i två prenumerationer. I det här exemplet används en JSON-fil som indata.
 
 vmoperator.jspå
 
@@ -244,4 +244,4 @@ az role definition delete --name "Virtual Machine Operator"
 
 - [Självstudie: skapa en anpassad Azure-roll med hjälp av Azure CLI](tutorial-custom-role-cli.md)
 - [Anpassade roller i Azure](custom-roles.md)
-- [Åtgärder för resursprovidern Azure Resource Manager](resource-provider-operations.md)
+- [Azure Resource Provider-åtgärder](resource-provider-operations.md)

@@ -5,18 +5,18 @@ ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: a90bb90c90206ffe00f8b4f2d035c0ea844b5c47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a5872f94a2d267ed2a0e17815e84cec5b02c613
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611681"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368111"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>Självstudie: Distribuera en länkad mall
 
 I de [föregående självstudierna](./deployment-tutorial-local-template.md)har du lärt dig hur du distribuerar en mall som lagras på din lokala dator. Om du vill distribuera komplexa lösningar kan du dela upp en mall i flera mallar och distribuera dessa mallar via en huvud-mall. I den här självstudien får du lära dig hur du distribuerar en huvud-mall som innehåller referensen till en länkad mall. När huvudmallen distribueras utlöser den den länkade mallens distribution. Du lär dig också hur du lagrar och skyddar den länkade mallen med hjälp av SAS-token. Det tar ungefär **12 minuter** att slutföra.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Vi rekommenderar att du slutför den föregående själv studie kursen, men det är inget krav.
 
@@ -32,11 +32,11 @@ Du kan dela upp lagrings konto resursen i en länkad mall:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/linkedStorageAccount.json":::
 
-Följande mall är huvud mal len.  Det markerade objektet **Microsoft. Resources/distributions-** objektet visar hur du anropar en länkad mall. Den länkade mallen kan inte lagras som en lokal fil eller en fil som bara är tillgänglig i det lokala nätverket. Du kan bara ange ett URI-värde som innehåller antingen *http* eller *https*. Resource Manager måste kunna komma åt mallen. Ett alternativ är att placera din länkade mall i ett lagrings konto och använda URI: n för objektet. URI: n skickas till mallen med hjälp av en parameter. Se den markerade parameter definitionen.
+Följande mall är huvud mal len. Det markerade `Microsoft.Resources/deployments` objektet visar hur du anropar en länkad mall. Den länkade mallen kan inte lagras som en lokal fil eller en fil som bara är tillgänglig i det lokala nätverket. Du kan bara ange ett URI-värde som innehåller antingen `HTTP` eller `HTTPS` . Resource Manager måste kunna komma åt mallen. Ett alternativ är att placera din länkade mall i ett lagrings konto och använda URI: n för objektet. URI: n skickas till mallen med hjälp av en parameter. Se den markerade parameter definitionen.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/azuredeploy.json" highlight="27-32,40-58":::
 
-Spara en kopia av huvudmallen på din lokala dator med. JSON-tillägget, till exempel azuredeploy.jspå. Du behöver inte spara en kopia av den länkade mallen.  Den länkade mallen kommer att kopieras från en GitHub-lagringsplats till ett lagrings konto.
+Spara en kopia av huvudmallen på din lokala dator med _. JSON_ -tillägget, till exempel _azuredeploy.jspå_. Du behöver inte spara en kopia av den länkade mallen. Den länkade mallen kommer att kopieras från en GitHub-lagringsplats till ett lagrings konto.
 
 ## <a name="store-the-linked-template"></a>Lagra den länkade mallen
 
@@ -45,7 +45,7 @@ Följande PowerShell-skript skapar ett lagrings konto, skapar en behållare och 
 Välj **försök –** öppna Cloud Shell, Välj **Kopiera** för att kopiera PowerShell-skriptet och högerklicka på Shell-fönstret för att klistra in skriptet:
 
 > [!IMPORTANT]
-> Lagrings konto namn måste innehålla mellan 3 och 24 tecken och får inte innehålla siffror och gemener. Namnet måste vara unikt. I mallen är lagrings kontots namn det projekt namn där "Store" har lagts till och projekt namnet måste innehålla mellan 3 och 11 tecken. Projekt namnet måste uppfylla kraven på lagrings kontots namn och innehålla färre än 11 tecken.
+> Lagrings konto namn måste innehålla mellan 3 och 24 tecken och får inte innehålla siffror och gemener. Namnet måste vara unikt. I mallen är lagrings kontots namn det projekt namn där **Store** lagts till och projekt namnet måste innehålla mellan 3 och 11 tecken. Projekt namnet måste uppfylla kraven på lagrings kontots namn och innehålla färre än 11 tecken.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name:"   # This name is used to generate names for Azure resources, such as storage account name.
@@ -93,7 +93,7 @@ Om du vill distribuera en privat mall i ett lagrings konto genererar du en SAS-t
 Om du inte har skapat resurs gruppen, se [skapa resurs grupp](./deployment-tutorial-local-template.md#create-resource-group).
 
 > [!NOTE]
-> I följande Azure CLI-kod skulle datum parametern-d vara ett ogiltigt argument i macOS. Så macOS-användare vill lägga till 2 timmar till den aktuella tiden i terminalen på macOS bör du använda-v + 2H.
+> I följande Azure CLI-kod `date` är parametern `-d` ett ogiltigt argument i MacOS. Så att macOS-användare lägger till 2 timmar till den aktuella tiden i terminalen på macOS som du bör använda `-v+2H` .
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -176,7 +176,7 @@ Rensa de resurser som du har distribuerat genom att ta bort resurs gruppen.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Du har lärt dig hur du distribuerar en länkad mall. I nästa självstudie får du lära dig hur du skapar en DevOp-pipeline för att distribuera en mall.
+Du har lärt dig hur du distribuerar en länkad mall. I nästa självstudie får du lära dig hur du skapar en DevOps-pipeline för att distribuera en mall.
 
 > [!div class="nextstepaction"]
 > [Skapa en pipeline](./deployment-tutorial-pipeline.md)

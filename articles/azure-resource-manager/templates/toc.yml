@@ -515,6 +515,8 @@
       href: /python/api/overview/azure/resources?view=azure-python
 - name: Resurser
   items:
+    - name: Utveckla dina färdigheter med Microsoft Learn
+      href: /learn/paths/deploy-manage-resource-manager-templates/
     - name: Azure-snabbstartmallar
       href: 'https://azure.microsoft.com/resources/templates/'
     - name: Azure-översikt

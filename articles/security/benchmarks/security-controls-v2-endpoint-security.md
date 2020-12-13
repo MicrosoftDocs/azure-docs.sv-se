@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e74994847608b7fb59a1bf507691f02cf02b714a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 937d0b379c4f669e5b57e5053d5e3bffeb091e78
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408897"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368961"
 ---
 # <a name="security-control-v2-endpoint-security"></a>Säkerhets kontroll v2: slut punkts säkerhet
 
@@ -20,7 +20,7 @@ Slut punkts säkerhet täcker kontroller i slut punkts identifiering och-svar. D
 
 ## <a name="es-1-use-endpoint-detection-and-response-edr"></a>ES-1: Använd slut punkts identifiering och-svar (EDR)
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | ES-1 | 8.1 | SI-2, SI-3, SC-3 |
 
@@ -34,13 +34,13 @@ Microsoft Defender Avancerat skydd tillhandahåller EDR-funktioner som en del av
 
 - [Microsoft Defender ATP-tjänsten för icke-Windows-servrar](/windows/security/threat-protection/microsoft-defender-atp/configure-endpoints-non-windows)
 
-**Ansvar** : kund
+**Ansvar**: Kund
 
-**Kund säkerhets intressenter** ( [Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Kund säkerhets intressenter** ([Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktur- och slutpunktssäkerhet](/azure/cloud-adoption-framework/organize/cloud-security)
 
-- [Hotinformation](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
+- [Hot information](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
 - [Hantering av säkerhetskompatibilitet](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -48,7 +48,7 @@ Microsoft Defender Avancerat skydd tillhandahåller EDR-funktioner som en del av
 
 ## <a name="es-2-use-centrally-managed-modern-anti-malware-software"></a>ES-2: Använd centralt hanterade moderna program mot skadlig kod
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | ES-2 | 8.1 | SI-2, SI-3, SC-3 |
 
@@ -62,13 +62,13 @@ Microsoft Antimalware för Azure Cloud Services är standard skyddet mot skadlig
 
 - [Slut punkts skydds lösningar som stöds](../../security-center/security-center-services.md?tabs=features-windows#supported-endpoint-protection-solutions-)
 
-**Ansvar** : kund
+**Ansvar**: Kund
 
-**Kund säkerhets intressenter** ( [Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Kund säkerhets intressenter** ([Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktur- och slutpunktssäkerhet](/azure/cloud-adoption-framework/organize/cloud-security)
 
-- [Hotinformation](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
+- [Hot information](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
 - [Hantering av säkerhetskompatibilitet](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -76,7 +76,7 @@ Microsoft Antimalware för Azure Cloud Services är standard skyddet mot skadlig
 
 ## <a name="es-3-ensure-anti-malware-software-and-signatures-are-updated"></a>ES-3: se till att program och signaturer för skadlig program vara uppdateras
 
-| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP800 – 53 R4-ID: n |
+| Azure-ID | CIS-kontroller v 7.1-ID: n | NIST SP 800-53 R4-ID: n |
 |--|--|--|--|
 | ES-3 | 8,2 | SI-2, SI-3 |
 
@@ -86,13 +86,13 @@ Följ rekommendationerna i Azure Security Center: "Compute &amp; Apps" för att 
 
 - [Så här distribuerar du Microsoft Antimalware för Azure Cloud Services och Virtual Machines](../fundamentals/antimalware.md)
 
-**Ansvar** : kund
+**Ansvar**: Kund
 
-**Kund säkerhets intressenter** ( [Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Kund säkerhets intressenter** ([Läs mer](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastruktur- och slutpunktssäkerhet](/azure/cloud-adoption-framework/organize/cloud-security)
 
-- [Hotinformation](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
+- [Hot information](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
 - [Hantering av säkerhetskompatibilitet](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 

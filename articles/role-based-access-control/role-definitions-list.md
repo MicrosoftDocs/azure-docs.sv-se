@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f5421efc96b957f5ae96515bbcf17c8a773397c9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 9dad8ffc9971894a2777e8bda9bcf6d78eee00a9
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368255"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369284"
 ---
 # <a name="list-azure-role-definitions"></a>Visa lista över Azure-roll definitioner
 
@@ -33,11 +33,11 @@ En lista över administratörs roller för Azure Active Directory finns [i admin
 
 Följ dessa steg om du vill visa en lista över alla roller i Azure Portal.
 
-1. I Azure Portal klickar du på **alla tjänster** och väljer sedan en omfattning. Du kan till exempel välja **hanterings grupper**, **prenumerationer**, **resurs grupper**eller en resurs.
+1. I Azure Portal klickar du på **alla tjänster** och väljer sedan en omfattning. Du kan till exempel välja **hanterings grupper**, **prenumerationer**, **resurs grupper** eller en resurs.
 
 1. Klicka på den aktuella resursen.
 
-1. Klicka på **Åtkomstkontroll (IAM)** .
+1. Klicka på **Åtkomstkontroll (IAM)**.
 
 1. Klicka på fliken **roller** om du vill se en lista över alla inbyggda och anpassade roller.
 
@@ -351,12 +351,12 @@ Om du vill lista roll definitioner använder du [roll definitionerna-list](/rest
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resursgrupp |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | Resurs |
 
-    I föregående exempel är Microsoft. Web en resurs leverantör som refererar till en App Service instans. På samma sätt kan du använda andra resurs leverantörer och ange omfånget. Mer information finns i [Azure Resource providers och typer](../azure-resource-manager/management/resource-providers-and-types.md) som stöds [Azure Resource Manager Resource Provider-åtgärder](resource-provider-operations.md).  
+    I föregående exempel är Microsoft. Web en resurs leverantör som refererar till en App Service instans. På samma sätt kan du använda andra resurs leverantörer och ange omfånget. Mer information finns i [Azure Resource providers och-typer](../azure-resource-manager/management/resource-providers-and-types.md) och [Azure Resource Provider-åtgärder](resource-provider-operations.md)som stöds.  
      
 1. Ersätt *{filter}* med villkoret som du vill använda för att filtrera roll definitions listan.
 
     > [!div class="mx-tableFixed"]
-    > | Filter | Beskrivning |
+    > | Filtrera | Beskrivning |
     > | --- | --- |
     > | `$filter=atScopeAndBelow()` | Visar en lista över roll definitioner för det angivna omfånget och eventuella under omfattningar. |
     > | `$filter=type+eq+'{type}'` | Visar en lista med roll definitioner av den angivna typen. Typ av roll kan vara `CustomRole` eller `BuiltInRole` . |

@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bb9d9e7c60344a2a4c538c6d3bf59e337e4569c
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 75f797c40a276323cea9983c5340d2d854160c83
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836333"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368485"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory direktautentisering: vanliga frågor och svar
 
@@ -137,10 +137,6 @@ För de flesta kunder räcker två eller tre autentiseringsscheman för hög til
 
 >[!NOTE]
 >Det finns en system gräns på 40-autentiseringspaket per klient.
-
-## <a name="can-i-install-the-first-pass-through-authentication-agent-on-a-server-other-than-the-one-that-runs-azure-ad-connect"></a>Kan jag installera den första genom strömnings agenten på en annan server än den som kör Azure AD Connect?
-
-Nej, det här scenariot stöds _inte_ .
 
 ## <a name="why-do-i-need-a-cloud-only-global-administrator-account-to-enable-pass-through-authentication"></a>Varför behöver jag ett globalt administratörs konto med enbart moln för att möjliggöra direktautentisering?
 

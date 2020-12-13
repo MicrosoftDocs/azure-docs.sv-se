@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: keithp
-ms.openlocfilehash: 61a9fcc5490c20383a2ae7d5c57b7fda7567c643
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 1f349931fb479be3b3ba936b3d0a665427357f29
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095159"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369046"
 ---
 # <a name="frequently-asked-questions-faq"></a>Vanliga frågor och svar (FAQ)
 
@@ -277,8 +277,8 @@ Dedikerad HSM-tjänst tillhandahåller Thales Network Luna HSM 7-enheter. De har
   * RC5
   * CAST
   * Hash/meddelande sammandrag/HMAC: SHA-1, SHA-2, SM3
-  * Nyckel härledning: SP800 – 108 Counter mode
-  * Nyckel brytning: SP800-38F
+  * Nyckel härledning: SP 800-108-räknar läge
+  * Nyckel brytning: SP 800 – 38F
   * Slumptalsgenerering: FIPS 140-2-godkänd DRBG (SP 800-90-läge), uppfyller BSI DRG. 4
 
 ### <a name="q-is-dedicated-hsm-fips-140-2-level-3-validated"></a>F: är dedikerad HSM FIPS 140-2 Level 3 verifierad?
