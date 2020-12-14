@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/12/2020
-ms.openlocfilehash: 51d36211c7ffa0507a186c9a1e1f2b52d478fe4e
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: ff9495e37a499b5502d8f8ced79b69608fa9552a
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369110"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401754"
 ---
 # <a name="use-the-simple-search-syntax-in-azure-cognitive-search"></a>Använd den "enkla" Söksyntaxen i Azure Kognitiv sökning
 
@@ -60,9 +60,7 @@ För interaktiva frågor behöver du inte ange något: enkelt är standardvärde
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2020-06-30
 {
-    "count": true,
-    "queryType": "simple",
-    "search": "*"
+    "queryType": "simple"
 }
 ```
 
@@ -337,5 +335,5 @@ Ytterligare syntax-referens, fråga arkitektur och exempel finns i följande lä
 + [Exempel på Lucene-syntax för att skapa avancerade frågor](search-query-lucene-examples.md)
 + [Så här fungerar fulltextsökning i Azure Cognitive Search](search-lucene-query-architecture.md)
 + [Enkel frågesyntax](query-simple-syntax.md)
-+ [Fullständig Lucene-frågesyntax](query-lucene-syntax.md)
++ [Fullständigt Lucene-frågesyntax](query-lucene-syntax.md)
 + [Filter-syntax](search-query-odata-filter.md)

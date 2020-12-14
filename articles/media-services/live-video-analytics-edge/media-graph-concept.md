@@ -3,12 +3,12 @@ title: Media Graph-koncept – Azure
 description: Med ett medie diagram kan du definiera var mediet ska samlas in, hur det ska bearbetas och var resultatet ska levereras. Den här artikeln innehåller en detaljerad beskrivning av media Graph-konceptet.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 5efb62440b52d6219373d15ba3d19ddac1a2a834
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 6f23e7db8cecb46106a63fdecdb6ba04dbd99682
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007848"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401108"
 ---
 # <a name="media-graph"></a>Mediegraf
 
@@ -87,6 +87,8 @@ Med noden motion-identifiering kan du identifiera rörelse i live video. Den und
 #### <a name="frame-rate-filter-processor"></a>Filter processor för RAM hastighet  
 
 Med filtret för RAM hastighet filtrera processor kan du sampla ramar från den inkommande video strömmen med en angiven hastighet. På så sätt kan du minska antalet ramar som skickas till nedströms komponenter (till exempel noden HTTP-tilläggsbegäranden) för vidare bearbetning.
+>[!WARNING]
+> Den här processorn är **föråldrad** i den senaste versionen av Live Video Analytics i IoT Edge modul. Hantering av ram frekvens stöds nu i själva diagram tilläggs processorerna.
 
 #### <a name="http-extension-processor"></a>Processor för HTTP-tillägg
 
@@ -108,8 +110,9 @@ Med noden till gångs mottagare kan du skriva medie data (video och/eller ljud) 
 
 #### <a name="file-sink"></a>Fil mottagare  
 
-Med noden fil mottagare kan du skriva medie data (video och/eller ljud) till en plats i det lokala fil systemet på den IoT Edge enheten. Det får bara finnas en filsink-nod i ett medie diagram och den måste ligga bakom en signal grind processor. Detta begränsar varaktigheten för utdatafilerna till värden som anges i egenskaperna för signal porten processor.
-
+Med noden fil mottagare kan du skriva medie data (video och/eller ljud) till en plats i det lokala fil systemet på den IoT Edge enheten. Det får bara finnas en filsink-nod i ett medie diagram och den måste ligga bakom en signal grind processor. Detta begränsar varaktigheten för utdatafilerna till värden som anges i egenskaperna för signal porten processor. För att se till att din Edge-enhet inte tar slut på disk utrymme kan du också ange den maximala storlek som video analysen i IoT Edge modul kan använda för att lagra data.  
+> [!NOTE]
+Om filsinken är full börjar live video analys på IoT Edge-modulen ta bort de äldsta data och ersätter dem med den nya.
 #### <a name="iot-hub-message-sink"></a>IoT Hub meddelande mottagare  
 
 Med noden IoT Hub meddelande mottagare kan du publicera händelser till IoT Edge Hub. IoT Edge Hub kan sedan dirigera data till andra moduler eller appar på gräns enheten eller till IoT Hub i molnet (per vägar som anges i distributions manifestet). Noden IoT Hub meddelande mottagare kan acceptera händelser från överordnade processorer, till exempel en nod för identifiering av rörelser, eller från en extern härlednings tjänst via en HTTP-tilläggsprovider.

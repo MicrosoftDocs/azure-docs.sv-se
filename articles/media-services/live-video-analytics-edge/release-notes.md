@@ -3,12 +3,12 @@ title: Video analys i real tid för IoT Edge viktig information – Azure
 description: Det här avsnittet innehåller viktig information om real tids analys av IoT Edge-versioner, förbättringar, fel korrigeringar och kända problem.
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 18da50fe763ef7c5fc3c06ac00052679c488cae7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 2800d41340e45867ea4126733cdb5968cf8b91c5
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015642"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400853"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Viktig information om live video analys i IoT Edge
 
@@ -23,9 +23,23 @@ Den här artikeln innehåller information om:
 
 <hr width=100%>
 
+## <a name="december-14-2020"></a>14 december 2020
+Den här versionen är den offentliga för hands versionen av video analys på IoT Edge. Versions tag gen är
+
+```
+     mcr.microsoft.com/media/live-video-analytics:2.0.0
+```
+### <a name="module-updates"></a>Uppdatera modul
+* Stöd har lagts till för användning av fler än en HTTP-tilläggs processor och gRPC förlängnings processor per diagram-topologi.
+* Stöd har lagts till för disk utrymmes hantering för Sink-noder.
+* `MediaGraphGrpcExtension` Node stöder nu [extensionConfiguration](grpc-extension-protocol.md) -egenskapen för att använda flera AI-modeller på en enda gRPC-Server.
+* Stöd för insamling av mått för Live Video Analytics-modul i [Prometheus-format](https://prometheus.io/docs/practices/naming/) har lagts till 
+* Filter processor för RAM hastighet är **inaktuell**.  
+    * Ram frekvens hantering är nu tillgängligt i själva diagram tillägget processor.
+
 ## <a name="september-22-2020"></a>Den 22 september 2020
 
-Den här versions tag gen för uppdateringen september 2020 för modulen är:
+Den här versions tag gen är för uppdateringen september 2020 för modulen:
 
 ```
 mcr.microsoft.com/media/live-video-analytics:1.0.4
@@ -48,7 +62,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.4
 
 ## <a name="august-19-2020"></a>19 augusti 2020
 
-Den här versions tag gen för uppdateringen augusti 2020 för modulen är:
+Den här versions tag gen är för uppdateringen augusti 2020 för modulen:
 
 ```
 mcr.microsoft.com/media/live-video-analytics:1.0.3
@@ -73,7 +87,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.3
 
 ## <a name="july-13-2020"></a>13 juli 2020
 
-Den här versions tag gen för uppdateringen från juli 2020 för modulen är:
+Den här versions tag gen är för uppdatering juli 2020 för modulen:
 
 ```
 mcr.microsoft.com/media/live-video-analytics:1.0.2

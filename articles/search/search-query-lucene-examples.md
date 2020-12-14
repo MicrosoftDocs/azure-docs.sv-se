@@ -9,12 +9,12 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 406233fd93ca76a683cf9f9a9e857de9099705ef
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: df26cfc3b220f40a7e73ff1c750d2b2ae37e7625
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368553"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401465"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>Använd den fullständiga Söksyntaxen för Lucene (avancerade frågor i Azure Kognitiv sökning)
 
@@ -66,9 +66,7 @@ Lägg till **`queryType=full`** för att anropa fullständig frågesyntax och å
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2020-06-30
 {
-    "count": true,
-    "queryType": "full",
-    "search": "*"
+    "queryType": "full"
 }
 ```
 
@@ -285,5 +283,5 @@ Ytterligare syntax-referens, fråga arkitektur och exempel finns i följande lä
 + [Exempel på Lucene-syntax för att skapa avancerade frågor](search-query-lucene-examples.md)
 + [Så här fungerar fulltextsökning i Azure Cognitive Search](search-lucene-query-architecture.md)
 + [Enkel frågesyntax](query-simple-syntax.md)
-+ [Fullständig Lucene-frågesyntax](query-lucene-syntax.md)
++ [Fullständigt Lucene-frågesyntax](query-lucene-syntax.md)
 + [Filter-syntax](search-query-odata-filter.md)

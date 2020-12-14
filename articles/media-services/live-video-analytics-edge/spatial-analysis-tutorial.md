@@ -3,12 +3,12 @@ title: Analysera direktsänd video med Visuellt innehåll för rums analys – A
 description: Den här självstudien visar hur du använder real tids analys tillsammans med Visuellt innehåll AI-funktionen för spatial analys från Azure Cognitive Services för att analysera en Live-videofeed från en (simulerad) IP-kamera.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 0dc89eaddf5cabc3063744dfe2c9f0236c70438c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5cebedec11b91f5b0b94df25a860da3d517bb997
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015693"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400542"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Analysera direktsänd video med Visuellt innehåll för rums analys (för hands version)
 
@@ -35,7 +35,7 @@ Läs de här artiklarna innan du börjar:
 * [Självstudie: utveckla en IoT Edge-modul](../../iot-edge/tutorial-develop-for-linux.md)
 * [Distribuera video analys i real tid på Azure Stack Edge](deploy-azure-stack-edge-how-to.md) 
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Följande är förutsättningar för att ansluta modulen för spatial analys till modulen för video analys i real tid.
 
@@ -51,7 +51,7 @@ Följande är förutsättningar för att ansluta modulen för spatial analys til
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/spatial-analysis-tutorial/overview.png" alt-text="Översikt över rums analys":::
  
-Det här diagrammet visar hur signal flödet i den här självstudien. En [Edge-modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simulerar en IP-kamera som är värd för en RTSP-server (Real-Time Streaming Protocol). En [RTSP-källmapp](media-graph-concept.md#rtsp-source) hämtar videofeeden från den här servern och skickar video bild rutor till den [RAM hastighet filter processor](media-graph-concept.md#frame-rate-filter-processor) noden. Den här processorn begränsar bild hastigheten för video strömmen som når MediaGraphCognitiveServicesVisionExtension processor-noden.
+Det här diagrammet visar hur signal flödet i den här självstudien. En [Edge-modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simulerar en IP-kamera som är värd för en RTSP-server (Real-Time Streaming Protocol). En [RTSP-källmapp](media-graph-concept.md#rtsp-source) hämtar video flödet från den här servern och skickar video ramar till `MediaGraphCognitiveServicesVisionExtension` noden processor.
 
 MediaGraphCognitiveServicesVisionExtension-noden spelar rollen för en proxy. Den konverterar video bild rutorna till den angivna bild typen. Sedan vidarebefordrar den avbildningen över **delat minne** till en annan Edge-modul som kör AI-åtgärder bakom en gRPC-slutpunkt. I det här exemplet är modulen för spatial analys. MediaGraphCognitiveServicesVisionExtension processor-noden gör två saker:
 
@@ -71,7 +71,7 @@ Det finns tre primära parametrar för alla Cognitive Services behållare som kr
 En nyckel används för att starta behållaren för spatial analys och är tillgänglig på Azure Portalens `Keys and Endpoint` sida för motsvarande kognitiva tjänst resurs. Navigera till sidan och hitta nycklarna och slut punkts-URI: n.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/spatial-analysis-tutorial/keys-endpoint.png" alt-text="Översikt över rums analys":::
+> :::image type="content" source="./media/spatial-analysis-tutorial/keys-endpoint.png" alt-text="Slut punkts-URI":::
 
 ## <a name="set-up-azure-stack-edge"></a>Konfigurera Azure Stack Edge
 
@@ -169,17 +169,17 @@ Följ de här stegen för att generera manifestet från mallfilen och distribuer
 1. Bredvid fönstret AZURE IOT HUB väljer du ikonen fler åtgärder för att ange IoT Hub anslutnings sträng. Du kan kopiera strängen från filen src/Cloud-to-Device-console-app/appsettings.jsi filen.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/connection-string.png" alt-text="Översikt över rums analys":::
+    > :::image type="content" source="./media/spatial-analysis-tutorial/connection-string.png" alt-text="Rums analys: anslutnings sträng":::
 1. Högerklicka `src/edge/deployment.spatialAnalysis.template.json` och välj generera IoT Edge distributions manifest.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-template-json.png" alt-text="Översikt över rums analys":::
+    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-template-json.png" alt-text="Rums analys: distribution av amd64 JSON":::
     
     Den här åtgärden ska skapa en manifest fil med namnet deployment.amd64.jspå i mappen src/Edge/config.
 1. Högerklicka `src/edge/config/deployment.spatialAnalysis.amd64.json` , Välj Skapa distribution för en enskild enhet och välj sedan namnet på din Edge-enhet.
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-amd64-json.png" alt-text="Översikt över rums analys":::   
+    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-amd64-json.png" alt-text="Rums analys: distributions mal Lav JSON":::   
 1. När du uppmanas att välja en IoT Hub enhet väljer du Azure Stack kant namn på den nedrullningsbara menyn.
 1. Efter cirka 30 sekunder, i det nedre vänstra hörnet i fönstret, uppdaterar du Azure IoT Hub. Gräns enheten visar nu följande distribuerade moduler:
     
@@ -204,17 +204,17 @@ Följ dessa steg om du vill se de här händelserna:
 1. Högerklicka och välj **Inställningar för tillägg**.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Översikt över rums analys":::
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Tilläggs inställningar":::
 1. Sök och aktivera "Visa utförligt meddelande".
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Översikt över rums analys":::
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Visa utförligt meddelande":::
 1. Öppna fönstret Utforskaren och leta efter Azure-IoT Hub i det nedre vänstra hörnet.
 1. Expandera noden enheter.
 1. Högerklicka på Azure Stack Edge och välj Starta övervakning inbyggd händelse slut punkt.
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/start-monitoring.png" alt-text="Översikt över rums analys":::
+    > :::image type="content" source="./media/spatial-analysis-tutorial/start-monitoring.png" alt-text="Rums analys: starta övervakning":::
      
 ## <a name="run-the-program"></a>Köra programmet
 
@@ -265,11 +265,11 @@ I operations.jspå:
 
 `topologyUrl` : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/lva-spatial-analysis/topology.json"
 
-Under **GraphInstanceSet**redigerar du namnet på diagram sto pol Ogin så att den matchar värdet i föregående länk:
+Under **GraphInstanceSet** redigerar du namnet på diagram sto pol Ogin så att den matchar värdet i föregående länk:
 
 `topologyName` : InferencingWithCVExtension
 
-Under **GraphTopologyDelete**redigerar du namnet:
+Under **GraphTopologyDelete** redigerar du namnet:
 
 `name`: InferencingWithCVExtension
 

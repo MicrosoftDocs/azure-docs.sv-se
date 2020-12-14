@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 2f5c16fce68213b291b970c11921a17b39527270
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 1e16c984e48c11961dba0c977d3bdbddbd6bdf36
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032125"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400327"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Självstudie: Distribuera Azure våren Cloud i Azure Virtual Network (VNet-insprutning)
 
@@ -26,7 +26,7 @@ Distributionen gör det möjligt att:
 * Azure våren Cloud-interaktion med system i lokala data Center och/eller Azure-tjänster i andra virtuella nätverk
 * Bemyndiga kunder att kontrol lera inkommande och utgående nätverkskommunikation för Azure våren Cloud
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 Du måste registrera Azure våren Cloud Resource Provider *Microsoft. AppPlatform* och *Microsoft. container service* enligt anvisningarna [Registrera resurs leverantören på Azure Portal](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) eller genom att köra följande AZ CLI-kommando:
 
 ```azurecli
@@ -58,7 +58,7 @@ Om du redan har ett virtuellt nätverk som värd för Azure våren Cloud Service
     |-----------------|--------------------------------------------------|
     |Prenumeration     |Välj din prenumeration.                         |
     |Resursgrupp   |Välj en resurs grupp eller skapa en ny.  |
-    |Name             |Ange *Azure-våren-Cloud-VNet*                   |
+    |Namn             |Ange *Azure-våren-Cloud-VNet*                   |
     |Plats         |Välj **USA, östra**                                |
 
 1. Klicka på **Nästa: IP-adresser >**. 
@@ -157,14 +157,17 @@ Nätverks resurserna är anslutna till ditt virtuella nätverk som du skapade ov
 
 Litet under näts intervall sparar IP-adresser, men ger begränsningar till det maximala antalet App-instanser som Azure våren-molnet kan hantera. 
 
-| CIDR | Totalt antal IP-adresser | Tillgängliga IP-adresser | Maximalt antal App-instanser                                        |
-| ---- | --------- | ------------- | ------------------------------------------------------------ |
-| /28  | 16        | 8             | <p> App med 1 kärna: 96 <br/> App med 2 kärnor: 48<br/>  App med 3 kärnor: 32 <br/> App med 4 kärnor: 24 </p> |
-| /27  | 32        | 24            | <p> App med 1 kärna: 228<br/> App med 2 kärnor: 144<br/>  App med 3 kärnor: 96 <br/>  App med 4 kärnor: 72</p> |
-| /26  | 64        | 56            | <p> App med 1 kärna: 500<br/> App med 2 kärnor: 336<br/>  App med 3 kärnor: 224<br/>  App med 4 kärnor: 168</p> |
-| /25  | 128       | 120           | <p> App med 1 kärna: 500<br> App med 2 kärnor: 500<br>  App med 3 kärnor: 480<br>  App med 4 kärnor: 360</p> |
-| /24  | 256       | 248           | <p> App med 1 kärna: 500<br/> App med 2 kärnor: 500<br/>  App med 3 kärnor: 500<br/>  App med 4 kärnor: 500</p> |
+| App-undernät, CIDR | Totalt antal IP-adresser | Tillgängliga IP-adresser | Maximalt antal App-instanser                                        |
+| --------------- | --------- | ------------- | ------------------------------------------------------------ |
+| /28             | 16        | 8             | <p> App med 1 kärna: 96 <br/> App med 2 kärnor: 48<br/>  App med 3 kärnor: 32 <br/> App med 4 kärnor: 24 </p> |
+| /27             | 32        | 24            | <p> App med 1 kärna: 228<br/> App med 2 kärnor: 144<br/>  App med 3 kärnor: 96 <br/>  App med 4 kärnor: 72</p> |
+| /26             | 64        | 56            | <p> App med 1 kärna: 500<br/> App med 2 kärnor: 336<br/>  App med 3 kärnor: 224<br/>  App med 4 kärnor: 168</p> |
+| /25             | 128       | 120           | <p> App med 1 kärna: 500<br> App med 2 kärnor: 500<br>  App med 3 kärnor: 480<br>  App med 4 kärnor: 360</p> |
+| /24             | 256       | 248           | <p> App med 1 kärna: 500<br/> App med 2 kärnor: 500<br/>  App med 3 kärnor: 500<br/>  App med 4 kärnor: 500</p> |
 
+För undernät är 5 IP-adresser reserverade av Azure och minst 4 adresser krävs av Azure våren Cloud. Minst 9 IP-adresser krävs, så/29 och/30 fungerar inte.
+
+För service runtime-undernätet är den minsta storleken a/28 och detta har ingen betydelse för antalet App-instanser.
 ## <a name="next-steps"></a>Nästa steg
 
 [Distribuera program till Azure våren Cloud i ditt VNet](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/02-deploy-application-to-azure-spring-cloud-in-your-vnet.md)

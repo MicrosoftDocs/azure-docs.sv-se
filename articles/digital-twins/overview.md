@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: f0c19130312db4e6ef500a0750f40359931d48d2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 49b7bae1a0cc224b92f292b891fae210f2cffa4e
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099121"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400615"
 ---
 # <a name="what-is-azure-digital-twins"></a>Vad är Azure Digital Twins?
 
@@ -52,7 +52,7 @@ Så här ser exempel visualiseringen ut:
 
 Azure Digitals dubbla är ett omfattande **händelse system** för att hålla diagrammet aktuellt med data behandling och affärs logik. Du kan ansluta externa beräknings resurser, till exempel [Azure Functions](../azure-functions/functions-overview.md), för att köra den här data bearbetningen på ett flexibelt och anpassat sätt.
 
-Du kan också extrahera insikter från miljön för Live-körning med hjälp av Azure Digitals "kraftfulla **fråge-API** . Med API: et kan du fråga med omfattande Sök villkor, inklusive egenskaps värden, relationer, Relations egenskaper, modell information och mycket annat. Du kan också kombinera frågor, samla in en mängd olika insikter om din miljö och besvara anpassade frågor som är viktiga för dig.
+Du kan också extrahera insikter från miljön för Live-körning med hjälp av Azure Digitals "kraftfulla **fråge-API**. Med API: et kan du fråga med omfattande Sök villkor, inklusive egenskaps värden, relationer, Relations egenskaper, modell information och mycket annat. Du kan också kombinera frågor, samla in en mängd olika insikter om din miljö och besvara anpassade frågor som är viktiga för dig.
 
 ### <a name="input-from-iot-and-business-systems"></a>Mata in från IoT och företags system
 
@@ -64,7 +64,7 @@ Du kan också köra Azure Digitals-enheter från andra data källor med hjälp a
 
 ### <a name="output-to-tsi-storage-and-analytics"></a>Utdata till TSD, Storage och Analytics
 
-Data i din Azure Digital-modell med dubbla modeller kan dirigeras till underordnade Azure-tjänster för ytterligare analys eller lagring. Detta tillhandahålls via **händelse vägar** , som använder [händelsehubben](../event-hubs/event-hubs-about.md), [Event Grid](../event-grid/overview.md)eller [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) för att driva dina önskade data flöden.
+Data i din Azure Digital-modell med dubbla modeller kan dirigeras till underordnade Azure-tjänster för ytterligare analys eller lagring. Detta tillhandahålls via **händelse vägar**, som använder [händelsehubben](../event-hubs/event-hubs-about.md), [Event Grid](../event-grid/overview.md)eller [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) för att driva dina önskade data flöden.
 
 Några saker du kan göra med händelse vägar är:
 * Lagra Azure Digitals dubbla data i [Azure Data Lake](../storage/blobs/data-lake-storage-introduction.md)
@@ -88,7 +88,7 @@ En komplett lösning som använder digitala Azure-dubbla, kan innehålla följan
 
 Följande diagram visar var Azure Digitals dubbla är i sammanhanget för en större Azure IoT-lösning.
 
-:::image type="content" source="media/overview/solution-context.png" alt-text="Skärm bild av exempel programmet för Azure Digitals flätad Utforskare som visar ett diagram över noder som representerar digitala dubbla" border="false" lightbox="media/overview/solution-context.png":::
+:::image type="content" source="media/overview/solution-context.png" alt-text="Diagram över inmatnings källor, utgående tjänster och tvåvägs kommunikation med både klient-och externa beräknings resurser." border="false" lightbox="media/overview/solution-context.png":::
 
 ## <a name="service-limits"></a>Tjänstbegränsningar
 
@@ -96,9 +96,6 @@ En lista över gränser för digital Digitals dubbla gränser finns i [*referens
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du har arbetat med den första för hands versionen av Azure Digitals (oktober 2018), lär du dig vad som har ändrats:
-* [*Översikt: skillnader från första versionen*](overview-differences.md)
+Om du har arbetat med den första för hands versionen av Azure Digitals (oktober 2018), lär du dig vad som har ändrats: [*Översikt: skillnader från den första versionen*](overview-differences.md).
 
-Eller så kan du gå vidare och komma igång med Azure Digitals dubbla med den första självstudien:
-
-[*Självstudie: koda en klient app*](tutorial-code.md)
+Du kan också gå vidare och lära dig att arbeta med Azure Digitals dubbla med snabb start: [*snabb start: utforska ett exempel scenario*](quickstart-adt-explorer.md).

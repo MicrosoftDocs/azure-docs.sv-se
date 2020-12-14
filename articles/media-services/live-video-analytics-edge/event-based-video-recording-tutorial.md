@@ -3,12 +3,12 @@ title: Händelsebaserade videoinspelningar till molnet och uppspelningen från m
 description: I den här självstudien får du lära dig hur du använder Azure Live Video Analytics på Azure IoT Edge för att registrera en Event-baserad videoinspelning i molnet och spela upp den från molnet igen.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 84f6ef813fb1b2cc425e096212010717d0561aef
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8f3ecdf7e4260d700f31663852abbb39474cd474
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498310"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401684"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Självstudie: Event-baserad videoinspelning till molnet och uppspelningen från molnet
 
@@ -36,7 +36,7 @@ Läs de här artiklarna innan du börjar:
 * [Så här redigerar du Deployment. * .template.jspå](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
 * Avsnitt om [hur du deklarerar vägar i IoT Edge distributions manifest](../../iot-edge/module-composition.md#declare-routes)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Krav för den här självstudien är:
 
@@ -68,13 +68,13 @@ Alternativt kan du bara utlösa registrering när en inferencing-tjänst identif
 Diagrammet är en bild representation av ett [medie diagram](media-graph-concept.md) och ytterligare moduler som utför det önskade scenariot. Fyra IoT Edge-moduler är involverade:
 
 * Video analys i real tid i en IoT Edge-modul.
-* En Edge-modul som kör en AI-modell bakom en HTTP-slutpunkt. Den här AI-modulen använder [Yolo v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) -modellen, som kan identifiera många typer av objekt.
+* En Edge-modul som kör en AI-modell bakom en HTTP-slutpunkt. Den här AI-modulen använder [YOLOv3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) -modellen, som kan identifiera många typer av objekt.
 * En anpassad modul för att räkna och filtrera objekt, vilket kallas en objekt räknare i diagrammet. Du skapar en objekt räknare och distribuerar den i den här självstudien.
 * En [RTSP Simulator-modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) för att simulera en RTSP-kamera.
     
 När diagrammet visas använder du en [RTSP-källmapp](media-graph-concept.md#rtsp-source) i medie grafen för att samla in den simulerade direktsänd videon om trafik på en väg och skicka videon till två sökvägar:
 
-* Den första sökvägen är till en [filter processor](media-graph-concept.md#frame-rate-filter-processor) för bildskärms hastighet som visar video bild rutor med den angivna (reducerade) bild frekvensen. De video bild rutorna skickas till en HTTP-tilläggsprovider. Noden vidarebefordrar sedan bild rutorna, som bilder, till AI-modulen YOLO v3, som är en objekt detektor. Noden tar emot resultatet, som är de objekt (fordon i trafik) som identifieras av modellen. Noden HTTP-tillägg publicerar sedan resultaten via noden IoT Hub meddelande mottagare till IoT Edge Hub.
+* Den första sökvägen är till en HTTP-tilläggsprovider. Noden samplar video bild rutorna till ett värde som anges av dig med hjälp av `samplingOptions` fältet och vidarebefordrar sedan bild rutorna, som bilder, till AI-modulen YOLOv3, som är en objekt detektor. Noden tar emot resultatet, som är de objekt (fordon i trafik) som identifieras av modellen. Noden HTTP-tillägg publicerar sedan resultaten via noden IoT Hub meddelande mottagare till IoT Edge Hub.
 * ObjectCounter-modulen har kon figurer ATS för att ta emot meddelanden från IoT Edge Hub, bland annat objekt identifierings resultat (fordon i trafik). Modulen kontrollerar dessa meddelanden och söker efter objekt av en viss typ, som har kon figurer ATS via en inställning. När ett sådant objekt hittas skickar den här modulen ett meddelande till IoT Edge Hub. De "objekt som hittas"-Meddelanden dirigeras sedan till noden IoT Hub källa i medie diagrammet. När du tar emot ett sådant meddelande, utlöser noden för [signal grind](media-graph-concept.md#signal-gate-processor) av noden IoT Hub källa i medie diagrammet. Noden signal grind processor öppnas sedan under en konfigurerad tids period. Video flödar genom porten till till gångs mottagarens nod under den varaktigheten. Den delen av Live Stream registreras sedan via noden [till gångs mottagare](media-graph-concept.md#asset-sink) till en [till gång](terminology.md#asset) i ditt Azure Media Services konto.
 
 ## <a name="set-up-your-development-environment"></a>Ställt in din utvecklingsmiljö

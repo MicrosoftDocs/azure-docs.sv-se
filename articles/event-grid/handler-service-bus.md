@@ -3,12 +3,12 @@ title: Service Bus köer och ämnen som händelse hanterare för Azure Event Gri
 description: Beskriver hur du kan använda Service Bus köer och ämnen som händelse hanterare för Azure Event Grid händelser.
 ms.topic: conceptual
 ms.date: 09/03/2020
-ms.openlocfilehash: 2b18009f8fb31f1a5f057c7395781f63f182847f
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 12b72420e3475b46a4cd61ce5032b478af740dde
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "96024222"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399867"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>Service Bus köer och ämnen som händelse hanterare för Azure Event Grid händelser
 En händelse hanterare är den plats där händelsen skickas. Hanteraren vidtar ytterligare åtgärder för att bearbeta händelsen. Flera Azure-tjänster konfigureras automatiskt för att hantera händelser och **Azure Service Bus** är en av dem. 
@@ -40,7 +40,7 @@ När du skapar en händelse prenumeration i Azure Portal väljer du **Service Bu
 
 ### <a name="using-cli-to-add-a-service-bus-topic-handler"></a>Använda CLI för att lägga till en Service Bus ämnes hanterare
 
-I följande exempel prenumererar och ansluter ett event Grid-ämne till en Service Bus kö för Azure CLI:
+I följande exempel prenumererar och ansluter ett event Grid-ämne till ett Service Bus ämne för Azure CLI:
 
 ```azurecli-interactive
 az eventgrid event-subscription create \

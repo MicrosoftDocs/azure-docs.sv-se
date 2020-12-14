@@ -4,12 +4,12 @@ description: Lär dig hur du använder Azure Custom Vision för att bygga en beh
 ms.topic: tutorial
 ms.date: 09/08/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: b4d9f82d99542bde216f0eaa1459d0f6c1a52659
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 614c4e401579eda68d8030dc2d2a42b2c4736031
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498344"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401703"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Självstudie: analysera direktsänd video med real tids video analys på IoT Edge och Azure Custom Vision
 
@@ -49,7 +49,7 @@ Läs igenom följande artiklar innan du börjar:
 * [Självstudie: utveckla en IoT Edge-modul](../../iot-edge/tutorial-develop-for-linux.md)
 * [Så här redigerar du Deployment. * .template.jspå](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 
 ::: zone pivot="programming-language-csharp"
@@ -69,9 +69,9 @@ I den här självstudien används en video fil för [leksaks bilar](https://lvam
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/custom-vision-tutorial/topology-custom-vision.svg" alt-text="Diagram som visar en Custom Vision översikt.":::
 
-Det här diagrammet visar hur signal flödet i den här självstudien. En [Edge-modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simulerar en IP-kamera som är värd för en RTSP-server (Real-Time Streaming Protocol). En [RTSP-källmapp](media-graph-concept.md#rtsp-source) hämtar videofeeden från den här servern och skickar video bild rutor till den [RAM hastighet filter processor](media-graph-concept.md#frame-rate-filter-processor) noden. Den här processorn begränsar bild hastigheten för video strömmen som når noden för [http-tilläggsbegäranden](media-graph-concept.md#http-extension-processor) .
+Det här diagrammet visar hur signal flödet i den här självstudien. En [Edge-modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simulerar en IP-kamera som är värd för en RTSP-server (Real-Time Streaming Protocol). En [RTSP-källmapp](media-graph-concept.md#rtsp-source) hämtar video flödet från den här servern och skickar video ramar till noden [http-tilläggsbegäranden](media-graph-concept.md#http-extension-processor) .
 
-Noden HTTP-tillägg spelar rollen för en proxy. Den konverterar video bild rutorna till den angivna bild typen. Sedan vidarebefordrar avbildningen över REST till en annan Edge-modul som kör en AI-modell bakom en HTTP-slutpunkt. I det här exemplet är den Edge-modulen leksakens detektor modell som skapats med hjälp av Custom Vision. Noden för HTTP-tilläggsbegäranden samlar in identifierings resultaten och publicerar händelser till [Azure IoT Hub Sink](media-graph-concept.md#iot-hub-message-sink) -noden. Noden skickar sedan händelserna till [IoT Edge Hub](../../iot-edge/iot-edge-glossary.md#iot-edge-hub).
+Noden HTTP-tillägg spelar rollen för en proxy.  Den samplar de inkommande video bild rutorna som du har angett genom att använda `samplingOptions` fältet och konverterar även video bild rutorna till den angivna bild typen. Sedan vidarebefordrar avbildningen över REST till en annan Edge-modul som kör en AI-modell bakom en HTTP-slutpunkt. I det här exemplet är den Edge-modulen leksakens detektor modell som skapats med hjälp av Custom Vision. Noden för HTTP-tilläggsbegäranden samlar in identifierings resultaten och publicerar händelser till [Azure IoT Hub Sink](media-graph-concept.md#iot-hub-message-sink) -noden. Noden skickar sedan händelserna till [IoT Edge Hub](../../iot-edge/iot-edge-glossary.md#iot-edge-hub).
 
 ## <a name="build-and-deploy-a-custom-vision-toy-detection-model"></a>Bygg och distribuera en identifierings modell för Custom Vision leksak 
 

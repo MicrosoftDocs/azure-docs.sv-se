@@ -6,13 +6,13 @@ ms.author: wesmc
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
-ms.date: 03/12/2020
-ms.openlocfilehash: 4067d157a13618b008e2cb1a5fee31259bfd43a9
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.date: 12/14/2020
+ms.openlocfilehash: 6ff5731e7d346c954253ec4186357595461b7678
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094360"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400269"
 ---
 # <a name="use-azure-iot-dps-ip-connection-filters"></a>Använda IP-anslutningsfilter för Azure IoT DPS
 
@@ -58,7 +58,7 @@ När du har fyllt i fälten sparar du regeln genom att välja **Spara**. Ett med
 
 ![Meddelande när en IP-filterregel sparas](./media/iot-dps-ip-filtering/ip-filter-save-new-rule.png)
 
-Alternativet **Lägg till** inaktiveras när du når den högsta gränsen på tio IP-filterregler.
+Alternativet **Lägg till** är inaktiverat när du når Max gränsen på 100 IP-filter.
 
 Om du vill redigera en befintlig regel väljer du de data som du vill ändra, gör ändringen och sparar sedan ändringen genom att välja **Spara**.
 

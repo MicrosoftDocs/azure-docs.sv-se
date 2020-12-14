@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/13/2020
+ms.date: 12/14/2020
 ms.author: memildin
-ms.openlocfilehash: 8734c43ecb92faf37f1d95b1a24d1c99db3e86d5
-ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
+ms.openlocfilehash: 63ae35da973525a8331eeeb463eb09e36e8b6e26
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/14/2020
-ms.locfileid: "97371925"
+ms.locfileid: "97398940"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Viktiga kommande ändringar i Azure Security Center
 
@@ -31,11 +31,44 @@ Om du letar efter den senaste versions informationen hittar du dem i [vad som ä
 
 ## <a name="planned-changes"></a>Planerade ändringar
 
+- ["Ej tillämpligt" resurser som ska rapporteras som "kompatibla" i Azure Policy bedömningar](#not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments)
+- [35 för hands versioner har lagts till för att öka täckningen av Azures säkerhets prestanda](#35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
+
 ### <a name="not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments"></a>"Ej tillämpligt" resurser som ska rapporteras som "kompatibla" i Azure Policy bedömningar
 
 **Beräknat datum för ändring:** Januari 2021
 
 För närvarande visas resurser som utvärderas för en rekommendation och som inte är **tillämpliga** i Azure policy som "icke-kompatibla". Inga användar åtgärder kan ändra deras status till "kompatibel". Från den här planerade ändringen rapporteras de som "kompatibla" för förbättrad klarhet.
+
+
+### <a name="35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>35 för hands versioner har lagts till för att öka täckningen av Azures säkerhets prestanda
+
+**Beräknat datum för ändring:** December 2020
+
+Azures säkerhets prestanda är Microsofts-skapade, Azure-/regionsspecifika uppsättning rikt linjer för säkerhets-och efterlevnads metod tips baserade på vanliga ramverk för efterlevnad. [Läs mer om Azure Security Benchmark](../security/benchmarks/introduction.md).
+
+Följande 35 för hands versions rekommendationer har lagts till Security Center för att öka omfattningen av detta benchmark.
+
+För hands versions rekommendationer återger inte en resurs som inte är felfri och ingår inte i beräkningarna av dina säkra poäng. Åtgärda dem när så är möjligt, så att när förhands gransknings perioden är slut bidrar de till dina poäng. Lär dig mer om hur du svarar på dessa rekommendationer i att [åtgärda rekommendationer i Azure Security Center](security-center-remediate-recommendations.md).
+
+| Säkerhets kontroll                     | Nya rekommendationer                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|--------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Aktivera kryptering i vila            | -Azure Cosmos DB konton ska använda Kundhanterade nycklar för att kryptera data i vila<br>-Azure Machine Learning arbets ytor ska vara krypterade med en kundhanterad nyckel (CMK)<br>– Ta med din egen nyckel data skydd måste vara aktiverat för MySQL-servrar<br>– Ta med din egen nyckel data skydd måste vara aktiverat för PostgreSQL-servrar<br>-Cognitive Services konton ska aktivera data kryptering med en kundhanterad nyckel (CMK)<br>– Behållar register ska krypteras med en kundhanterad nyckel (CMK)<br>-SQL-hanterade instanser bör använda Kundhanterade nycklar för att kryptera data i vila<br>– SQL-servrar bör använda Kundhanterade nycklar för att kryptera data i vila<br>-Lagrings konton ska använda kundhanterad nyckel (CMK) för kryptering                                                                                                                                                              |
+| Implementera rekommenderade säkerhets metoder    | -Prenumerationer måste ha en e-postadress till en kontakt med säkerhets problem<br> – Automatisk etablering av den Log Analytics agenten ska vara aktive rad för din prenumeration<br> – E-postmeddelande för aviseringar med hög allvarlighets grad ska aktive ras<br> – E-postmeddelande till Prenumerationens ägare för aviseringar med hög allvarlighets grad måste vara aktiverat<br> – Nyckel valv ska ha rensnings skyddet aktiverat<br> – Nyckel valv ska ha mjuk borttagning aktiverat |
+| Hantera åtkomst och behörigheter        | -Funktions appar ska ha "klient certifikat (inkommande klient certifikat)" aktiverat |
+| Skydda program mot DDoS-attacker | – Brand vägg för webbaserade program (WAF) måste vara aktive rad för Application Gateway<br> – Brand vägg för webbaserade program (WAF) ska vara aktive rad för Azure-tjänsten för front dörr tjänsten |
+| Begränsa obehörig nätverks åtkomst | – Brand väggen ska vara aktive rad på Key Vault<br> -Privat slut punkt ska konfigureras för Key Vault<br> – App-konfigurationen ska använda privat länk<br> – Azure cache för Redis bör finnas i ett virtuellt nätverk<br> -Azure Event Grid domäner ska använda privat länk<br> -Azure Event Grid ämnen ska använda privat länk<br> -Azure Machine Learning arbets ytor ska använda privat länk<br> – Azure SignalR-tjänsten bör använda privat länk<br> – Azure våren Cloud ska använda nätverks inmatning<br> – Behållar register ska inte tillåta obegränsad nätverks åtkomst<br> – Behållar register ska använda privat länk<br> – Åtkomst till offentligt nätverk ska inaktive ras för MariaDB-servrar<br> – Åtkomst till offentligt nätverk ska inaktive ras för MySQL-servrar<br> – Åtkomst till offentligt nätverk ska inaktive ras för PostgreSQL-servrar<br> – Lagrings kontot bör använda en anslutning för privat anslutning<br> -Lagrings konton bör begränsa nätverks åtkomst med hjälp av regler för virtuella nätverk<br> -VM Image Builder-mallar ska använda privat länk|
+|                                      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+
+Relaterade länkar:
+
+- [Läs mer om Azures säkerhets prestanda](../security/benchmarks/introduction.md)
+- [Läs mer om Azure Database for MariaDB](../mariadb/overview.md)
+- [Läs mer om Azure Database for MySQL](../mysql/overview.md)
+- [Läs mer om Azure Database for PostgreSQL](../postgresql/overview.md)
+
+
+
 
 
 ## <a name="next-steps"></a>Nästa steg

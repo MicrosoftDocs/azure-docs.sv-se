@@ -1,18 +1,18 @@
 ---
 title: 'Självstudie: Bläddra till resurser i Azure avdelningens kontroll och visa deras härkomst'
 description: I den här självstudien beskrivs hur du bläddrar efter till gångar i katalogen och visar data härkomst.
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 8f548261f180209ff3a6f664f03163e6e7a5c523
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: ab51e604412e79fb706190fef769ad76c694fd6c
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96555874"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399442"
 ---
 # <a name="tutorial-browse-assets-in-azure-purview-preview-and-view-their-lineage"></a>Självstudie: Bläddra till resurser i Azure avdelningens kontroll (för hands version) och visa deras härkomst
 

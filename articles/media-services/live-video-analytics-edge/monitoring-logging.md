@@ -3,12 +3,12 @@ title: Övervakning och loggning – Azure
 description: Den här artikeln innehåller en översikt över video analys på IoT Edge övervakning och loggning.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: ef00517fc61ac532bdd99c1e887dfd93d56a8c4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ae455a4157cd649f610620e486323ac2c0a5744
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89567562"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401057"
 ---
 # <a name="monitoring-and-logging"></a>Övervakning och loggning
 
@@ -21,7 +21,7 @@ Du får också lära dig hur du kan kontrol lera vilka loggar som genereras av m
 Real tids analys på IoT Edge avger händelser eller telemetridata enligt följande taxonomi.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="Händelsetaxonomi&quot;:::
+> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="Händelsetaxonomi":::
 
 * Drift: händelser som genereras som en del av åtgärder som utförs av en användare eller under körningen av ett [medie diagram](media-graph-concept.md).
    
@@ -32,16 +32,16 @@ Real tids analys på IoT Edge avger händelser eller telemetridata enligt följa
       
       ```
       {
-        &quot;body&quot;: {
-          &quot;outputType&quot;: &quot;assetName&quot;,
-          &quot;outputLocation&quot;: &quot;sampleAssetFromEVR-LVAEdge-20200512T233309Z&quot;
+        "body": {
+          "outputType": "assetName",
+          "outputLocation": "sampleAssetFromEVR-LVAEdge-20200512T233309Z"
         },
-        &quot;applicationProperties&quot;: {
-          &quot;topic&quot;: &quot;/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/<my-resource-group>/providers/microsoft.media/mediaservices/<ams-account-name>&quot;,
-          &quot;subject&quot;: &quot;/graphInstances/Sample-Graph-2/sinks/assetSink&quot;,
-          &quot;eventType&quot;: &quot;Microsoft.Media.Graph.Operational.RecordingStarted&quot;,
-          &quot;eventTime&quot;: &quot;2020-05-12T23:33:10.392Z&quot;,
-          &quot;dataVersion&quot;: &quot;1.0"
+        "applicationProperties": {
+          "topic": "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/<my-resource-group>/providers/microsoft.media/mediaservices/<ams-account-name>",
+          "subject": "/graphInstances/Sample-Graph-2/sinks/assetSink",
+          "eventType": "Microsoft.Media.Graph.Operational.RecordingStarted",
+          "eventTime": "2020-05-12T23:33:10.392Z",
+          "dataVersion": "1.0"
         }
       }
       ```
@@ -168,7 +168,7 @@ Varje händelse, vid observation via IoT Hub, har en uppsättning gemensamma ege
 |---|---|---|---|
 |meddelande-ID |säker |guid|  Unikt händelse-ID.|
 |ämne| applicationProperty |sträng|    Azure Resource Manager sökväg för Media Servicess kontot.|
-|motiv|   applicationProperty |sträng|    Under Sök väg till den enhet som avger händelsen.|
+|Ämne|   applicationProperty |sträng|    Under Sök väg till den enhet som avger händelsen.|
 |Händelsetid| applicationProperty|    sträng| Tiden då händelsen skapades.|
 |Händelsetyp| applicationProperty |sträng|    Händelse typ identifierare (se nedan).|
 |body|body  |objekt|    Specifika händelse data.|
@@ -186,7 +186,7 @@ Representerar Azure Media Service-kontot som är associerat med grafen.
 
 `/subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Media/mediaServices/{accountName}`
 
-#### <a name="subject"></a>motiv
+#### <a name="subject"></a>Ämne
 
 Enhet som avger händelsen:
 
@@ -223,6 +223,85 @@ Exempel:
 
 Händelse tiden beskrivs i ISO8601-strängen och den tidpunkt då händelsen inträffade.
 
+### <a name="azure-monitor-collection-using-telegraf"></a>Azure Monitor samling med hjälp av teleympkvistar
+
+De här måtten kommer att rapporteras direkt video analys i IoT Edge modul:  
+
+|Måttnamn|Typ|Etikett|Beskrivning|
+|-----------|----|-----|-----------|
+|lva_active_graph_instances|Mätare|iothub, edge_device, module_name, graph_topology|Totalt antal aktiva diagram per topologi.|
+|lva_received_bytes_total|Räknare|iothub, edge_device, module_name, graph_topology, graph_instance, graph_node|Det totala antalet byte som tagits emot av en nod. Stöds endast för RTSP-källor|
+|lva_data_dropped_total|Räknare|iothub, edge_device, module_name, graph_topology, graph_instance, graph_node, data_kind|Räknare för data som släppts (händelser, medier osv.)|
+
+> [!NOTE]
+> En [Prometheus-slutpunkt](https://prometheus.io/docs/practices/naming/) exponeras i Port **9600** för behållaren. Om du namnger din video analys i IoT Edge-modulen "lvaEdge" skulle de kunna komma åt mått genom att skicka en GET-begäran till http://lvaEdge:9600/metrics .   
+
+Följ dessa steg om du vill aktivera insamling av mått från Live Video Analytics i IoT Edge modul:
+
+1. Skapa en mapp på din utvecklings dator och navigera till den mappen
+
+1. I mappen skapar du `telegraf.toml` en fil med följande innehåll
+    ```
+    [agent]
+        interval = "30s"
+        omit_hostname = true
+
+    [[inputs.prometheus]]
+      metric_version = 2
+      urls = ["http://edgeHub:9600/metrics", "http://edgeAgent:9600/metrics", "http://{LVA_EDGE_MODULE_NAME}:9600/metrics"]
+
+    [[outputs.azure_monitor]]
+      namespace_prefix = ""
+      region = "westus"
+      resource_id = "/subscriptions/{SUBSCRIPTON_ID}/resourceGroups/{RESOURCE_GROUP}/providers/Microsoft.Devices/IotHubs/{IOT_HUB_NAME}"
+    ```
+    > [!IMPORTANT]
+    > Se till att du ersätter variablerna (markerade med `{ }` ) i innehålls filen
+
+1. I den mappen skapar du en `.dockerfile` med följande innehåll
+    ```
+        FROM telegraf:1.15.3-alpine
+        COPY telegraf.toml /etc/telegraf/telegraf.conf
+    ```
+
+1. Nu kan du använda Docker CLI-kommandot för att **bygga Docker-filen** och publicera avbildningen till Azure Container Registry.
+    1. Lär dig att [skicka och hämta Docker-avbildningar – Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli).  Mer Azure Container Registry (ACR) hittar du [här](https://docs.microsoft.com/azure/container-registry/).
+
+
+1. När push-ACR har slutförts lägger du till följande nod i distributions manifest filen:
+    ```
+    "telegraf": 
+    {
+      "settings": 
+        {
+            "image": "{ACR_LINK_TO_YOUR_TELEGRAF_IMAGE}"
+        },
+      "type": "docker",
+      "version": "1.0",
+      "status": "running",
+      "restartPolicy": "always",
+      "env": 
+        {
+            "AZURE_TENANT_ID": { "value": "{YOUR_TENANT_ID}" },
+            "AZURE_CLIENT_ID": { "value": "{YOUR CLIENT_ID}" },
+            "AZURE_CLIENT_SECRET": { "value": "{YOUR_CLIENT_SECRET}" }
+        }
+    ``` 
+    > [!IMPORTANT]
+    > Se till att du ersätter variablerna (markerade med `{ }` ) i innehålls filen
+
+
+1. **Autentisering**
+    1. Azure Monitor kan [autentiseras av tjänstens huvud namn](https://github.com/influxdata/telegraf/blob/master/plugins/outputs/azure_monitor/README.md#azure-authentication).
+        1. Azure Monitorin ympkvistar-plugin-programmet visar [flera metoder för autentisering](https://github.com/influxdata/telegraf/blob/master/plugins/outputs/azure_monitor/README.md#azure-authentication). Följande miljövariabler måste anges för att använda tjänstens huvud namns autentisering.  
+            • AZURE_TENANT_ID: anger den klient som ska autentiseras.  
+            • AZURE_CLIENT_ID: anger det app-klient-ID som ska användas.  
+            • AZURE_CLIENT_SECRET: anger den app-hemlighet som ska användas.  
+    >[!TIP]
+    > Tjänstens huvud namn kan tilldelas rollen "**övervakning av mått utfärdare**".
+
+1. När modulerna har distribuerats visas måtten i Azure Monitor under ett enda namn område med mått namn som matchar de som har spridits av Prometheus. 
+    1. I det här fallet navigerar du till IoT Hub i Azure Portal och klickar på länken "**mått**" i det vänstra navigerings fönstret. Du bör se måtten där.
 ## <a name="logging"></a>Loggning
 
 Precis som med andra IoT Edge moduler kan du också [Granska behållar loggarna](../../iot-edge/troubleshoot.md#check-container-logs-for-issues) på gräns enheten. Informationen som skrivs till loggarna kan styras av [Följande modul, dubbla](module-twin-configuration-schema.md) egenskaper:

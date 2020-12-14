@@ -4,12 +4,12 @@ description: Den här artikeln innehåller en genom gång av hur du skapar ett .
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7962e28ecdc7e2c04fefeb0faf6feb5b730d979c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1f626eb6cc21fdf9097a49381de8c973ad290392
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024542"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401363"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>Skicka händelser till och ta emot händelser från Azure Event Hubs-.NET (Azure. Messaging. EventHubs) 
 Den här snabb starten visar hur du skickar händelser till och tar emot händelser från en händelsehubben med hjälp av **Azure. Messaging. EventHubs** .net-biblioteket. 
@@ -19,7 +19,7 @@ Den här snabb starten visar hur du skickar händelser till och tar emot händel
 
 
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 Om du inte har använt Azure Event Hubs tidigare, se [Event Hubs översikt](event-hubs-about.md) innan du gör den här snabb starten. 
 
 För att slutföra den här snabbstarten, behöver du följande förhandskrav:
@@ -201,7 +201,7 @@ I den här snabb starten använder du Azure Storage som kontroll punkts arkiv. F
         static async Task ProcessEventHandler(ProcessEventArgs eventArgs)
         {
             // Write the body of the event to the console window
-            Console.WriteLine("\tRecevied event: {0}", Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray()));
+            Console.WriteLine("\tReceived event: {0}", Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray()));
 
             // Update checkpoint in the blob storage so that the app receives only new events the next time it's run
             await eventArgs.UpdateCheckpointAsync(eventArgs.CancellationToken);

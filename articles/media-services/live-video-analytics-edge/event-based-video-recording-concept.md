@@ -3,12 +3,12 @@ title: Händelse baserad video inspelning – Azure
 description: Event-based Video Recording (EVR) syftar på att spela in videon som utlöses av en händelse. Händelsen i fråga kunde ha sitt ursprung på grund av bearbetning av själva video signalen (till exempel identifiering av rörelse) eller kan komma från en oberoende källa (till exempel öppning av en dörr).  Några användnings fall som rör händelsebaserade videoinspelningar beskrivs i den här artikeln.
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: f3efd2b9be41928ab4721d6db4aa84c0f1f57e2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a5f4873b2cfef8d9a6594916d82cd30a3bc1cc2
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89568524"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401616"
 ---
 # <a name="event-based-video-recording"></a>Händelsebaserad videoinspelning  
  
@@ -46,7 +46,7 @@ En händelse från rörelse detektor-noden utlöser noden signal grind processor
 I det här användnings fallet kan signaler från en annan IoT-sensor användas för att utlösa inspelning av video. Diagrammet nedan visar en grafisk representation av ett medie diagram som hanterar det här användnings fallet. JSON-representationen av diagram sto pol Ogin för ett sådant medie diagram finns [här](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-hubMessage-files/topology.json).
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/event-based-video-recording/other-sources.svg" alt-text="Video inspelning baserad på rörelse identifiering":::
+> :::image type="content" source="./media/event-based-video-recording/other-sources.svg" alt-text="Videoinspelning baserat på händelser från andra källor":::
 
 I diagrammet skickar den externa sensorn händelser till IoT Edge Hub. Händelserna dirigeras sedan till noden signal grind processor via noden [IoT Hub-meddelande källa](media-graph-concept.md#iot-hub-message-source) . Beteendet för signal porten processor är detsamma som i föregående användnings fall – den öppnas och gör att Live-videofeeden flödar från noden RTSP-källa till filen Sink-noden (eller till gångs mottagarens nod) när den utlöses av den externa händelsen. 
 
@@ -57,13 +57,13 @@ Om du använder en fil mottagar nod, registreras videon i det lokala fil systeme
 I detta fall kan du spela in videoklipp baserat på en signal från ett externt logik system. Ett exempel på ett sådant användnings fall kan bara spela in ett videoklipp när en Last bil upptäcks i video flödet för trafik på en väg. Diagrammet nedan visar en grafisk representation av ett medie diagram som hanterar det här användnings fallet. JSON-representationen av diagram sto pol Ogin för ett sådant medie diagram finns [här](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json).
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/event-based-video-recording/external-inferencing-module.svg" alt-text="Video inspelning baserad på rörelse identifiering":::
+> :::image type="content" source="./media/event-based-video-recording/external-inferencing-module.svg" alt-text="Video inspelning baserad på en extern inferencing-modul":::
 
-I diagrammet fångar RTSP-Källnoden Live-videofeeden från kameran och levererar den till två grenar: en har en [signal grind processor](media-graph-concept.md#signal-gate-processor) , och den andra använder en [http-tilläggsprovider](media-graph-concept.md) för att skicka data till en extern Logic-modul. Med noden HTTP-tillägg kan Media grafen skicka bild ramar (i JPEG-, BMP-eller PNG-format) till en extern tjänst Överlagrings tjänst över REST. Den här signal Sök vägen kan vanligt vis bara stödja låga bild hastigheter (<5fps). Du kan använda en [filter processor för RAM hastighet](media-graph-concept.md#frame-rate-filter-processor) för att sänka bild Rute frekvensen för videon till http-tillägget.
+I diagrammet fångar RTSP-Källnoden Live-videofeeden från kameran och levererar den till två grenar: en har en [signal grind processor](media-graph-concept.md#signal-gate-processor) , och den andra använder en [http-tilläggsprovider](media-graph-concept.md) för att skicka data till en extern Logic-modul. Med noden HTTP-tillägg kan Media grafen skicka bild ramar (i JPEG-, BMP-eller PNG-format) till en extern tjänst Överlagrings tjänst över REST. Den här signal Sök vägen kan vanligt vis bara stödja låga bild hastigheter (<5fps). Du kan använda noden för HTTP-tilläggsbegäranden för att sänka bild Rute frekvensen för videon som går till den externa inferencing-modulen.
 
 Resultaten från den externa härlednings tjänsten hämtas av HTTP-tillägget och vidarebefordras till IoT Edge Hub via noden IoT Hub meddelande mottagare där de kan bearbetas ytterligare av modulen extern logik. Om härlednings tjänsten kan identifiera fordon, kan Logic-modulen söka efter ett speciellt fordon, till exempel en buss eller en Last bil. När Logic-modulen identifierar ett objekt av intresse, kan den utlösa noden signal grind processor genom att skicka en händelse via IoT Edge hubben till noden IoT Hub meddelande källa i grafen. Utdata från signal porten visas för att gå till antingen en fil mottagare-nod eller en nod för till gångs mottagare. I det förra fallet kommer videon att registreras i det lokala fil systemet på gräns enheten. I det senare fallet kommer videon att spelas in till en till gång.
 
-En förbättring av det här exemplet är att använda en rörelse detektor processor före noden för RAM hastighet filter processor. Detta minskar belastningen på härlednings tjänsten, till exempel Nighttime om det kan finnas långa tids perioder när det inte finns några fordon på motorväg. 
+En förbättring i det här exemplet är att använda en rörelse detektor processor före noden HTTP-tilläggsbegäranden. Detta minskar belastningen på härlednings tjänsten, till exempel Nighttime om det kan finnas långa tids perioder när det inte finns några fordon på motorväg. 
 
 ## <a name="next-steps"></a>Nästa steg
 

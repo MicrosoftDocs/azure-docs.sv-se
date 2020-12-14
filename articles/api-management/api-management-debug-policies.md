@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 4eb32243df219d721d7baae80984c45d0fc4cf25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8ed834c9ab093ae063e386978bca4d73fa46543
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91345129"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400734"
 ---
 # <a name="debug-azure-api-management-policies-in-visual-studio-code"></a>Felsöka Azure API Management-principer i Visual Studio Code
 
@@ -28,11 +28,13 @@ I den här artikeln beskrivs hur du felsöker API Management principer med [Azur
 > [!NOTE]
 > Den här funktionen är en allmänt tillgänglig förhandsversion.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
-Skapa en instans av API Management Developer-Tier genom att följa den här [självstudien](get-started-create-service-instance.md) först.
+* Skapa en instans av API Management Developer-Tier genom att följa den här [snabb](get-started-create-service-instance.md) starten först.
 
-Installera [Visual Studio Code](https://code.visualstudio.com/) och den senaste versionen av [Azure API Management-tillägget för Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement). 
+* Installera [Visual Studio Code](https://code.visualstudio.com/) och den senaste versionen av [Azure API Management-tillägget för Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement). 
+
+* Importera ett API till API Management-instansen. Till exempel steg, se [Självstudier: använd API Management tillägget för Visual Studio Code för att importera och hantera API: er](visual-studio-code-tutorial.md).
 
 ## <a name="restrictions-and-limitations"></a>Begränsningar och begränsningar
 

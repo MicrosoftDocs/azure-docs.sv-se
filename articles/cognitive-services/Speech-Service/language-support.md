@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 9ef585d83c0606bedaf4c0a05c6c87fd52423b9a
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 12c9777449d3f360b8f08d99aca7b916856139d4
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575541"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400190"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Språk-och röst stöd för tal tjänsten
 
@@ -141,73 +141,119 @@ Neurala röster kan användas för att göra interaktioner med chattrobotar och 
 | Språk | Nationell inställning | Kön | Röst namn | Format stöd |
 |---|---|---|---|---|
 | Arabiska (Egypten) | `ar-EG` | Kvinna | `ar-EG-SalmaNeural` | Allmänt |
+| Arabiska (Egypten) | `ar-EG` | Man | `ar-EG-ShakirNeural` <sup>Nytt</sup> | Allmänt |
 | Arabiska (Saudiarabien) | `ar-SA` | Kvinna | `ar-SA-ZariyahNeural` | Allmänt |
-| Bulgariska (Bulgary) | `bg-BG` | Kvinna | `bg-BG-KalinaNeural` <sup>Nytt</sup> | Allmänt |
+| Arabiska (Saudiarabien) | `ar-SA` | Man | `ar-SA-HamedNeural` <sup>Nytt</sup> | Allmänt |
+| Bulgariska (Bulgary) | `bg-BG` | Kvinna | `bg-BG-KalinaNeural` | Allmänt |
+| Bulgariska (Bulgary) | `bg-BG` | Man | `bg-BG-BorislavNeural` <sup>Nytt</sup> | Allmänt |
 | Katalanska (Spanien) | `ca-ES` | Kvinna | `ca-ES-AlbaNeural` | Allmänt |
+| Katalanska (Spanien) | `ca-ES` | Kvinna | `ca-ES-JoanaNeural` <sup>Nytt</sup> | Allmänt |
+| Katalanska (Spanien) | `ca-ES` | Man | `ca-ES-EnricNeural` <sup>Nytt</sup> | Allmänt |
 | Kinesiska (kantonesiska, traditionell) | `zh-HK` | Kvinna | `zh-HK-HiuGaaiNeural` | Allmänt |
-| Kinesiska (mandariner, förenklad) | `zh-CN` | Kvinna | `zh-CN-XiaoxiaoNeural` | Allmänt, flera röst format som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Kinesiska (kantonesiska, traditionell) | `zh-HK` | Kvinna | `zh-HK-HiuMaanNeural` <sup>Nytt</sup> | Allmänt |
+| Kinesiska (kantonesiska, traditionell) | `zh-HK` | Man | `zh-HK-WanLungNeural` <sup>Nytt</sup> | Allmänt |
+| Kinesiska (mandariner, förenklad) | `zh-CN` | Kvinna | `zh-CN-XiaoxiaoNeural` | Allmänt, flera röst format som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles)  |
 | Kinesiska (mandariner, förenklad) | `zh-CN` | Kvinna | `zh-CN-XiaoyouNeural` | Röst för barn, optimerad för artikel-berättarröst |
-| Kinesiska (mandariner, förenklad) | `zh-CN` | Man   | `zh-CN-YunyangNeural` | Optimerad för läsning av nyheter,<br /> flera röst typer som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
-| Kinesiska (mandariner, förenklad) | `zh-CN` | Man   | `zh-CN-YunyeNeural` | Optimerad för artikel-berättarröst |
+| Kinesiska (mandariner, förenklad) | `zh-CN` | Man | `zh-CN-YunyangNeural` | Optimerad för läsning av nyheter,<br /> flera röst typer som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Kinesiska (mandariner, förenklad) | `zh-CN` | Man | `zh-CN-YunyeNeural` | Optimerad för artikel-berättarröst  |
+| Kinesiska (Taiwan-mandariner) | `zh-TW` | Kvinna | `zh-TW-HsiaoChenNeural` <sup>Nytt</sup> | Allmänt |
 | Kinesiska (Taiwan-mandariner) | `zh-TW` | Kvinna | `zh-TW-HsiaoYuNeural` | Allmänt |
-| Kroatiska (Kroatien) | `hr-HR` | Kvinna | `hr-HR-GabrijelaNeural` <sup>Nytt</sup> | Allmänt |
-| Tjeckiska (Tjeckien) | `cs-CZ` | Kvinna | `cs-CZ-VlastaNeural` <sup>Nytt</sup>    | Allmänt |
+| Kinesiska (Taiwan-mandariner) | `zh-TW` | Man | `zh-TW-YunJheNeural` <sup>Nytt</sup> | Allmänt |
+| Kroatiska (Kroatien) | `hr-HR` | Kvinna | `hr-HR-GabrijelaNeural` | Allmänt |
+| Kroatiska (Kroatien) | `hr-HR` | Man | `hr-HR-SreckoNeural` <sup>Nytt</sup> | Allmänt |
+| Tjeckiska (Tjeckien) | `cs-CZ` | Kvinna | `cs-CZ-VlastaNeural` | Allmänt |
+| Tjeckiska (Tjeckien) | `cs-CZ` | Man | `cs-CZ-AntoninNeural` <sup>Nytt</sup> | Allmänt |
 | Danska (Danmark) | `da-DK` | Kvinna | `da-DK-ChristelNeural` | Allmänt |
+| Danska (Danmark) | `da-DK` | Man | `da-DK-JeppeNeural` <sup>Nytt</sup> | Allmänt |
 | Nederländska (Nederländerna) | `nl-NL` | Kvinna | `nl-NL-ColetteNeural` | Allmänt |
+| Nederländska (Nederländerna) | `nl-NL` | Kvinna | `nl-NL-FennaNeural` <sup>Nytt</sup> | Allmänt |
+| Nederländska (Nederländerna) | `nl-NL` | Man | `nl-NL-MaartenNeural` <sup>Nytt</sup> | Allmänt |
 | Engelska (Australien) | `en-AU` | Kvinna | `en-AU-NatashaNeural` | Allmänt |
-| Engelska (Australien) | `en-AU` | Man   | `en-AU-WilliamNeural` <sup>Nytt</sup>  | Allmänt |
+| Engelska (Australien) | `en-AU` | Man | `en-AU-WilliamNeural` | Allmänt |
 | Engelska (Kanada) | `en-CA` | Kvinna | `en-CA-ClaraNeural` | Allmänt |
+| Engelska (Kanada) | `en-CA` | Man | `en-CA-LiamNeural` <sup>Nytt</sup> | Allmänt |
 | Engelska (Indien) | `en-IN` | Kvinna | `en-IN-NeerjaNeural` | Allmänt |
-| Engelska (Irland) | `en-IE` | Kvinna | `en-IE-EmilyNeural` <sup>Nytt</sup> | Allmänt |
+| Engelska (Indien) | `en-IN` | Man | `en-IN-PrabhatNeural` <sup>Nytt</sup> | Allmänt |
+| Engelska (Irland) | `en-IE` | Kvinna | `en-IE-EmilyNeural` | Allmänt |
+| Engelska (Irland) | `en-IE` | Man | `en-IE-ConnorNeural` <sup>Nytt</sup> | Allmänt |
 | Engelska (Storbritannien) | `en-GB` | Kvinna | `en-GB-LibbyNeural` | Allmänt |
 | Engelska (Storbritannien) | `en-GB` | Kvinna | `en-GB-MiaNeural` | Allmänt |
-| Engelska (Storbritannien) | `en-GB` | Man | `en-GB-RyanNeural` <sup>Nytt</sup> | Allmänt |
-| Engelska (USA) | `en-US` | Kvinna | `en-US-AriaNeural` | Allmänt, flera röst format som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Engelska (Storbritannien) | `en-GB` | Man | `en-GB-RyanNeural` | Allmänt |
+| Engelska (USA) | `en-US` | Kvinna | `en-US-AriaNeural` | Allmänt, flera röst format som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles)  |
+| Engelska (USA) | `en-US` | Kvinna | `en-US-JennyNeural` | Allmänt |
 | Engelska (USA) | `en-US` | Man | `en-US-GuyNeural` | Allmänt |
-| Engelska (USA) | `en-US` | Kvinna | `en-US-JennyNeural` <sup>Nytt</sup> | Allmänt, flera röst format som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
 | Finska (Finland) | `fi-FI` | Kvinna | `fi-FI-NooraNeural` | Allmänt |
+| Finska (Finland) | `fi-FI` | Kvinna | `fi-FI-SelmaNeural` <sup>Nytt</sup> | Allmänt |
+| Finska (Finland) | `fi-FI` | Man | `fi-FI-HarriNeural` <sup>Nytt</sup> | Allmänt |
 | Franska (Kanada) | `fr-CA` | Kvinna | `fr-CA-SylvieNeural` | Allmänt |
-| Franska (Kanada) | `fr-CA` | Man | `fr-CA-JeanNeural` <sup>Nytt</sup> | Allmänt |
+| Franska (Kanada) | `fr-CA` | Man | `fr-CA-JeanNeural` | Allmänt |
 | Franska (Frankrike) | `fr-FR` | Kvinna | `fr-FR-DeniseNeural` | Allmänt |
-| Franska (Frankrike) | `fr-FR` | Man | `fr-FR-HenriNeural` <sup>Nytt</sup> | Allmänt |
-| Franska (Schweiz) | `fr-CH` | Kvinna | `fr-CH-ArianeNeural` <sup>Nytt</sup> | Allmänt |
-| Tyska (Österrike) | `de-AT` | Kvinna | `de-AT-IngridNeural` <sup>Nytt</sup> | Allmänt |
+| Franska (Frankrike) | `fr-FR` | Man | `fr-FR-HenriNeural` | Allmänt |
+| Franska (Schweiz) | `fr-CH` | Kvinna | `fr-CH-ArianeNeural` | Allmänt |
+| Franska (Schweiz) | `fr-CH` | Man | `fr-CH-FabriceNeural` <sup>Nytt</sup> | Allmänt |
+| Tyska (Österrike) | `de-AT` | Kvinna | `de-AT-IngridNeural` | Allmänt |
+| Tyska (Österrike) | `de-AT` | Man | `de-AT-JonasNeural` <sup>Nytt</sup> | Allmänt |
 | Tyska (Tyskland) | `de-DE` | Kvinna | `de-DE-KatjaNeural` | Allmänt |
-| Tyska (Tyskland) | `de-DE` | Man | `de-DE-ConradNeural` <sup>Nytt</sup> | Allmänt |
-| Tyska (Schweiz) | `de-CH` | Kvinna | `de-CH-LeniNeural` <sup>Nytt</sup> | Allmänt |
-| Grekiska (Grekland) | `el-GR` | Kvinna | `el-GR-AthinaNeural` <sup>Nytt</sup> | Allmänt |
-| Hebreiska (Israel) | `he-IL` | Kvinna | `he-IL-HilaNeural` <sup>Nytt</sup> | Allmänt |
+| Tyska (Tyskland) | `de-DE` | Man | `de-DE-ConradNeural` | Allmänt |
+| Tyska (Schweiz) | `de-CH` | Kvinna | `de-CH-LeniNeural` | Allmänt |
+| Tyska (Schweiz) | `de-CH` | Man | `de-CH-JanNeural` <sup>Nytt</sup> | Allmänt |
+| Grekiska (Grekland) | `el-GR` | Kvinna | `el-GR-AthinaNeural` | Allmänt |
+| Grekiska (Grekland) | `el-GR` | Man | `el-GR-NestorasNeural` <sup>Nytt</sup> | Allmänt |
+| Hebreiska (Israel) | `he-IL` | Kvinna | `he-IL-HilaNeural` | Allmänt |
+| Hebreiska (Israel) | `he-IL` | Man | `he-IL-AvriNeural` <sup>Nytt</sup> | Allmänt |
 | Hindi (Indien) | `hi-IN` | Kvinna | `hi-IN-SwaraNeural` | Allmänt |
-| Ungerska (Ungern) | `hu-HU` | Kvinna | `hu-HU-NoemiNeural` <sup>Nytt</sup> | Allmänt |
-| Indonesiska (Indonesien) | `id-ID` | Man | `id-ID-ArdiNeural` <sup>Nytt</sup> | Allmänt |
+| Hindi (Indien) | `hi-IN` | Man | `hi-IN-MadhurNeural` <sup>Nytt</sup> | Allmänt |
+| Ungerska (Ungern) | `hu-HU` | Kvinna | `hu-HU-NoemiNeural` | Allmänt |
+| Ungerska (Ungern) | `hu-HU` | Man | `hu-HU-TamasNeural` <sup>Nytt</sup> | Allmänt |
+| Indonesiska (Indonesien) | `id-ID` | Kvinna | `id-ID-GadisNeural` <sup>Nytt</sup> | Allmänt |
+| Indonesiska (Indonesien) | `id-ID` | Man | `id-ID-ArdiNeural` | Allmänt |
 | Italienska (Italien) | `it-IT` | Kvinna | `it-IT-ElsaNeural` | Allmänt |
-| Italienska (Italien) | `it-IT` | Kvinna | `it-IT-IsabellaNeural` <sup>Nytt</sup> | Allmänt |
-| Italienska (Italien) | `it-IT` | Man | `it-IT-DiegoNeural` <sup>Nytt</sup> | Allmänt |
+| Italienska (Italien) | `it-IT` | Kvinna | `it-IT-IsabellaNeural` | Allmänt |
+| Italienska (Italien) | `it-IT` | Man | `it-IT-DiegoNeural` | Allmänt |
 | Japanska (Japan) | `ja-JP` | Kvinna | `ja-JP-NanamiNeural` | Allmänt |
-| Japanska (Japan) | `ja-JP` | Man | `ja-JP-KeitaNeural` <sup>Nytt</sup> | Allmänt |
+| Japanska (Japan) | `ja-JP` | Man | `ja-JP-KeitaNeural` | Allmänt |
 | Koreanska (Korea) | `ko-KR` | Kvinna | `ko-KR-SunHiNeural` | Allmänt |
-| Koreanska (Korea) | `ko-KR` | Man | `ko-KR-InJoonNeural` <sup>Nytt</sup> | Allmänt |
-| Malajiska (Malaysia) | `ms-MY` | Kvinna | `ms-MY-YasminNeural` <sup>Nytt</sup> | Allmänt |
+| Koreanska (Korea) | `ko-KR` | Man | `ko-KR-InJoonNeural` | Allmänt |
+| Malajiska (Malaysia) | `ms-MY` | Kvinna | `ms-MY-YasminNeural` | Allmänt |
+| Malajiska (Malaysia) | `ms-MY` | Man | `ms-MY-OsmanNeural` <sup>Nytt</sup> | Allmänt |
 | norska (Bokmål, Norge) | `nb-NO` | Kvinna | `nb-NO-IselinNeural` | Allmänt |
+| norska (Bokmål, Norge) | `nb-NO` | Kvinna | `nb-NO-PernilleNeural` <sup>Nytt</sup> | Allmänt |
+| norska (Bokmål, Norge) | `nb-NO` | Man | `nb-NO-FinnNeural` <sup>Nytt</sup> | Allmänt |
+| Polska (Polen) | `pl-PL` | Kvinna | `pl-PL-AgnieszkaNeural` <sup>Nytt</sup> | Allmänt |
 | Polska (Polen) | `pl-PL` | Kvinna | `pl-PL-ZofiaNeural` | Allmänt |
-| Portugisiska (Brasilien) | `pt-BR` | Kvinna | `pt-BR-FranciscaNeural` | Allmänt, flera röst format som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
-| Portugisiska (Brasilien) | `pt-BR` | Man | `pt-BR-AntonioNeural` <sup>Nytt</sup> | Allmänt |
+| Polska (Polen) | `pl-PL` | Man | `pl-PL-MarekNeural` <sup>Nytt</sup> | Allmänt |
+| Portugisiska (Brasilien) | `pt-BR` | Kvinna | `pt-BR-FranciscaNeural` | Allmänt, flera röst format som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles)  |
+| Portugisiska (Brasilien) | `pt-BR` | Man | `pt-BR-AntonioNeural` | Allmänt |
 | Portugisiska (Portugal) | `pt-PT` | Kvinna | `pt-PT-FernandaNeural` | Allmänt |
-| Rumänska (Rumänien) | `ro-RO` | Kvinna | `ro-RO-AlinaNeural` <sup>Nytt</sup> | Allmänt |
+| Portugisiska (Portugal) | `pt-PT` | Kvinna | `pt-PT-RaquelNeural` <sup>Nytt</sup> | Allmänt |
+| Portugisiska (Portugal) | `pt-PT` | Man | `pt-PT-DuarteNeural` <sup>Nytt</sup> | Allmänt |
+| Rumänska (Rumänien) | `ro-RO` | Kvinna | `ro-RO-AlinaNeural` | Allmänt |
+| Rumänska (Rumänien) | `ro-RO` | Man | `ro-RO-EmilNeural` <sup>Nytt</sup> | Allmänt |
 | Ryska (Ryssland) | `ru-RU` | Kvinna | `ru-RU-DariyaNeural` | Allmänt |
-| Slovakiska (Slovakien) | `sk-SK` | Kvinna | `sk-SK-ViktoriaNeural` <sup>Nytt</sup> | Allmänt |
-| Slovenska (Slovenien) | `sl-SI` | Kvinna | `sl-SI-PetraNeural` <sup>Nytt</sup> | Allmänt |
+| Ryska (Ryssland) | `ru-RU` | Kvinna | `ru-RU-SvetlanaNeural` <sup>Nytt</sup> | Allmänt |
+| Ryska (Ryssland) | `ru-RU` | Man | `ru-RU-DmitryNeural` <sup>Nytt</sup> | Allmänt |
+| Slovakiska (Slovakien) | `sk-SK` | Kvinna | `sk-SK-ViktoriaNeural` | Allmänt |
+| Slovakiska (Slovakien) | `sk-SK` | Man | `sk-SK-LukasNeural` <sup>Nytt</sup> | Allmänt |
+| Slovenska (Slovenien) | `sl-SI` | Kvinna | `sl-SI-PetraNeural` | Allmänt |
+| Slovenska (Slovenien) | `sl-SI` | Man | `sl-SI-RokNeural` <sup>Nytt</sup> | Allmänt |
 | Spanska (Mexiko) | `es-MX` | Kvinna | `es-MX-DaliaNeural` | Allmänt |
-| Spanska (Mexiko) | `es-MX` | Man | `es-MX-JorgeNeural` <sup>Nytt</sup> | Allmänt |
+| Spanska (Mexiko) | `es-MX` | Man | `es-MX-JorgeNeural` | Allmänt |
 | Spanska (Spanien) | `es-ES` | Kvinna | `es-ES-ElviraNeural` | Allmänt |
-| Spanska (Spanien) | `es-ES` | Man | `es-ES-AlvaroNeural` <sup>Nytt</sup> | Allmänt |
+| Spanska (Spanien) | `es-ES` | Man | `es-ES-AlvaroNeural` | Allmänt |
 | Svenska (Sverige) | `sv-SE` | Kvinna | `sv-SE-HilleviNeural` | Allmänt |
-| Tamiliska (Indien) | `ta-IN` | Kvinna | `ta-IN-PallaviNeural` <sup>Nytt</sup> | Allmänt |
-| Telugu (Indien) | `te-IN` | Kvinna | `te-IN-ShrutiNeural` <sup>Nytt</sup> | Allmänt |
+| Svenska (Sverige) | `sv-SE` | Kvinna | `sv-SE-SofieNeural` <sup>Nytt</sup> | Allmänt |
+| Svenska (Sverige) | `sv-SE` | Man | `sv-SE-MattiasNeural` <sup>Nytt</sup> | Allmänt |
+| Tamiliska (Indien) | `ta-IN` | Kvinna | `ta-IN-PallaviNeural` | Allmänt |
+| Tamiliska (Indien) | `ta-IN` | Man | `ta-IN-ValluvarNeural` <sup>Nytt</sup> | Allmänt |
+| Telugu (Indien) | `te-IN` | Kvinna | `te-IN-ShrutiNeural` | Allmänt |
+| Telugu (Indien) | `te-IN` | Man | `te-IN-MohanNeural` <sup>Nytt</sup> | Allmänt |
 | Thailändska (Thailand) | `th-TH` | Kvinna | `th-TH-AcharaNeural` | Allmänt |
-| Thailändska (Thailand) | `th-TH` | Kvinna | `th-TH-PremwadeeNeural` <sup>Nytt</sup> | Allmänt |
+| Thailändska (Thailand) | `th-TH` | Kvinna | `th-TH-PremwadeeNeural` | Allmänt |
+| Thailändska (Thailand) | `th-TH` | Man | `th-TH-NiwatNeural` <sup>Nytt</sup> | Allmänt |
 | Turkiska (Turkiet) | `tr-TR` | Kvinna | `tr-TR-EmelNeural` | Allmänt |
-| Vietnamesiska (Vietnam) | `vi-VN` <sup>Nytt</sup> | Kvinna | `vi-VN-HoaiMyNeural` | Allmänt|
+| Turkiska (Turkiet) | `tr-TR` | Man | `tr-TR-AhmetNeural` <sup>Nytt</sup> | Allmänt |
+| Vietnamesiska (Vietnam) | `vi-VN` | Kvinna | `vi-VN-HoaiMyNeural` | Allmänt |
+| Vietnamesiska (Vietnam) | `vi-VN` | Man | `vi-VN-NamMinhNeural` <sup>Nytt</sup> | Allmänt |
 
 #### <a name="neural-voices-in-preview"></a>Neurala-röster i för hands versionen
 
@@ -215,16 +261,21 @@ Nedan finns neurala-röster i offentlig för hands version.
 
 | Språk                         | Nationell inställning  | Kön | Röst namn                             | Format stöd |
 |----------------------------------|---------|--------|----------------------------------------|---------------|
-| Kinesiska (mandariner, förenklad) | `zh-CN` | Man   | `zh-CN-YunxiNeural` <sup>Nytt</sup> | Allmänt, flera format som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
-| Kinesiska (mandariner, förenklad) | `zh-CN` | Kvinna | `zh-CN-XiaohanNeural` <sup>Nytt</sup> | Allmänt, flera format som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
-| Kinesiska (mandariner, förenklad) | `zh-CN` | Kvinna | `zh-CN-XiaoxuanNeural` <sup>Nytt</sup> | Allmänt, flera roll spel och [format som är tillgängliga med SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
-| Kinesiska (mandariner, förenklad) | `zh-CN` | Kvinna | `zh-CN-XiaomoNeural` <sup>Nytt</sup> | Allmänt, flera roll spel och [format som är tillgängliga med SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
-| Kinesiska (mandariner, förenklad) | `zh-CN` | Kvinna | `zh-CN-XiaoruiNeural` <sup>Nytt</sup> | Senior-röst, flera stilar som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
-| Estniska (Estland) | `et-EE` | Kvinna | `et-EE-AnuNeural` <sup>Nytt</sup> | Allmänt |
-| Gaeliska (Irland) | `ga-IE` | Kvinna | `ga-IE-OrlaNeural` <sup>Nytt</sup> | Allmänt |
-| Litauiska (Litauen) | `lt-LT` | Kvinna | `lt-LT-OnaNeural` <sup>Nytt</sup> | Allmänt |
-| Lettiska (Lettland) | `lv-LV` | Kvinna | `lv-LV-EveritaNeural` <sup>Nytt</sup> | Allmänt |
-| Maltesiska (Malta) | `mt-MT` | Kvinna | `mt-MT-GraceNeural` <sup>Nytt</sup> | Allmänt |
+| Kinesiska (mandariner, förenklad) | `zh-CN` | Kvinna | `zh-CN-XiaohanNeural` | Allmänt, flera format som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Kinesiska (mandariner, förenklad) | `zh-CN` | Kvinna | `zh-CN-XiaomoNeural` | Allmänt, flera roll spel och format som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Kinesiska (mandariner, förenklad) | `zh-CN` | Kvinna | `zh-CN-XiaoruiNeural` | Senior-röst, flera stilar som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Kinesiska (mandariner, förenklad) | `zh-CN` | Kvinna | `zh-CN-XiaoxuanNeural` | Allmänt, flera roll spel och format som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Kinesiska (mandariner, förenklad) | `zh-CN` | Man   | `zh-CN-YunxiNeural` | Allmänt, flera format som är tillgängliga [med SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Estniska (Estland) | `et-EE` | Kvinna | `et-EE-AnuNeural` | Allmänt |
+| Estniska (Estland) | `et-EE` | Man | `et-EE-KertNeural` <sup>Nytt</sup> | Allmänt |
+| Irländskt (Irland) | `ga-IE` | Kvinna | `ga-IE-OrlaNeural` | Allmänt |
+| Irländskt (Irland) | `ga-IE` | Man | `ga-IE-ColmNeural` <sup>Nytt</sup> | Allmänt |
+| Lettiska (Lettland) | `lv-LV` | Kvinna | `lv-LV-EveritaNeural` | Allmänt |
+| Lettiska (Lettland) | `lv-LV` | Man | `lv-LV-NilsNeural` <sup>Nytt</sup> | Allmänt |
+| Litauiska (Litauen) | `lt-LT` | Kvinna | `lt-LT-OnaNeural` | Allmänt |
+| Litauiska (Litauen) | `lt-LT` | Man | `lt-LT-LeonasNeural` <sup>Nytt</sup> | Allmänt |
+| Maltesiska (Malta) | `mt-MT` | Kvinna | `mt-MT-GraceNeural` | Allmänt |
+| Maltesiska (Malta) | `mt-MT` | Man | `mt-MT-JosephNeural` <sup>Nytt</sup> | Allmänt |
 
 > [!IMPORTANT]
 > Röster i offentlig för hands version är bara tillgängliga i tre tjänste regioner: USA, västra Europa och Sydostasien.

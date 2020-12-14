@@ -8,26 +8,26 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: ad572905d9864083466049fd602e24d9f3632ea3
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: a02d51d66b9d2b8bf3c08d4515713ecb062e0c8e
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387436"
+ms.locfileid: "97400224"
 ---
 # <a name="create-a-query-in-azure-cognitive-search"></a>Skapa en fråga i Azure Kognitiv sökning
 
-Lär dig mer om verktyg och API: er för att skapa en fråga, vilka metoder som används för att skapa en fråga och hur index struktur och innehåll kan påverka frågeresultat. För en introduktion till hur en fråge förfrågan ser ut, börjar du med [frågetyper och sammansättningar](search-query-overview.md).
+Om du skapar en fråga för första gången beskriver den här artikeln de verktyg och API: er som du behöver, vilka metoder som används för att skapa en fråga och hur index struktur och innehåll kan påverka frågeresultat. För en introduktion till hur en fråge förfrågan ser ut, börjar du med [frågetyper och sammansättningar](search-query-overview.md).
 
 ## <a name="choose-tools-and-apis"></a>Välj verktyg och API: er
 
-Du kan använda något av följande verktyg och API: er för att skapa frågor för testning eller produktions arbets belastningar.
+Du behöver ett verktyg eller ett API för att skapa en fråga. Något av följande förslag är användbart för testning och produktions arbets belastningar.
 
 | Metodik | Beskrivning |
 |-------------|-------------|
-| Portalen| [Sök Utforskaren (portalen)](search-explorer.md) är ett frågespråk i Azure Portal som kan användas för att köra frågor mot index i den underliggande Sök tjänsten. Portalen gör REST API samtal bakom kulisserna. Du kan välja valfritt index och alla REST API versioner som stöds, inklusive för hands versioner. En frågesträng kan vara enkel och fullständig syntax, och kan innehålla filter uttryck, facets, Select-och searchField-uttryck och searchMode. När du öppnar ett index i portalen kan du arbeta med Sök Utforskaren tillsammans med index-JSON-definitionen i sida-vid-sida-flikar för enkel åtkomst till fältattribut. Du kan kontrol lera vilka fält som är sökbara, sorterbara, filtrerings bara och fasettiska när du testar frågor. Rekommenderas för tidig undersökning, testning och validering. <br/>[Läs mer.](search-explorer.md) |
-| Webb test verktyg| [Postman eller Visual Studio Code](search-get-started-rest.md) är starka val för att utforma en begäran om [Sök dokument](/rest/api/searchservice/search-documents) i rest. REST API har stöd för varje program mässig åtgärd i Azure Kognitiv sökning, och när du använder ett verktyg som Postman eller Visual Studio Code kan du skicka förfrågningar interaktivt för att förstå hur det fungerar innan du investerar i kod. Ett webb test verktyg är ett bra alternativ om du inte har deltagar-eller administratörs rättigheter i Azure Portal. Så länge du har en Sök-URL och en fråge-API-nyckel kan du använda verktygen för att köra frågor mot ett befintligt index. |
-| Azure SDK | När du är redo att skriva kod kan du använda klient biblioteken Azure.Search.Document i Azure SDK: er för .NET, python, java script eller Java. Varje SDK är i ett eget versions schema, men du kan skapa och fråga index i alla. <br/><br/>[SearchClient (.net)](/dotnet/api/azure.search.documents.searchclient) kan användas för att fråga ett Sök index i C#.  [Läs mer.](search-howto-dotnet-sdk.md)<br/><br/>[SearchClient (python)](/dotnet/api/azure.search.documents.searchclient) kan användas för att fråga ett Sök index i python. [Läs mer.](search-get-started-python.md) <br/><br/> [SearchClient (Java Script)](/dotnet/api/azure.search.documents.searchclient) kan användas för att fråga ett Sök index i Java Script. [Läs mer.](search-get-started-javascript.md) |
+| Portalen| [Sök Utforskaren (portalen)](search-explorer.md) är ett frågespråk i Azure Portal som kör frågor mot index i den underliggande Sök tjänsten. Portalen gör REST API samtal bakom bakgrunden till åtgärden [Sök dokument](/rest/api/searchservice/search-documents) , men kan inte anropa Autoavsluta, förslag eller dokuments ökning.<br/><br/> Du kan välja valfritt index och REST API version, inklusive för hands version. En frågesträng kan använda enkel eller fullständig syntax, med stöd för alla frågeparametrar (filter, Select, searchFields och så vidare). När du öppnar ett index i portalen kan du arbeta med Sök Utforskaren tillsammans med index-JSON-definitionen i sida-vid-sida-flikar för enkel åtkomst till fältattribut. Kontrol lera vilka fält som är sökbara, sorterbara, kan filtreras och fasettiska vid testning av frågor. <br/>Rekommenderas för tidig undersökning, testning och validering. [Läs mer.](search-explorer.md) |
+| Webb test verktyg| [Postman eller Visual Studio Code](search-get-started-rest.md) är starka val för att utforma en begäran om [sökning av dokument](/rest/api/searchservice/search-documents) och andra förfrågningar i vila. REST-API: er har stöd för varje möjlig programmerings åtgärd i Azure Kognitiv sökning, och när du använder ett verktyg som Postman eller Visual Studio Code kan du skicka förfrågningar interaktivt för att förstå hur funktionen fungerar innan du investerar i kod. Ett webb test verktyg är ett bra alternativ om du inte har deltagar-eller administratörs rättigheter i Azure Portal. Så länge du har en Sök-URL och en fråge-API-nyckel kan du använda verktygen för att köra frågor mot ett befintligt index. |
+| Azure SDK | När du är redo att skriva kod kan du använda klient biblioteken Azure.Search.Document i Azure SDK: er för .NET, python, java script eller Java. Varje SDK är i ett eget versions schema, men du kan skapa och fråga index i alla. <br/><br/>[SearchClient (.net)](/dotnet/api/azure.search.documents.searchclient) kan användas för att fråga ett Sök index i C#.  [Läs mer.](search-howto-dotnet-sdk.md)<br/><br/>[SearchClient (python)](/dotnet/api/azure.search.documents.searchclient) kan användas för att fråga ett Sök index i python. [Läs mer.](search-get-started-python.md)<br/><br/>[SearchClient (Java Script)](/dotnet/api/azure.search.documents.searchclient) kan användas för att fråga ett Sök index i Java Script. [Läs mer.](search-get-started-javascript.md) |
 
 ## <a name="set-up-a-search-client"></a>Konfigurera en Sök klient
 

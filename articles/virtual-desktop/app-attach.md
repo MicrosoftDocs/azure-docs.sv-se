@@ -1,210 +1,43 @@
 ---
-title: Windows Virtual Desktop MSIX-appen Attach-Azure
-description: Så här konfigurerar du MSIX-appen Anslut för Windows Virtual Desktop.
+title: Konfigurera Windows Virtual Desktop MSIX-appen bifoga PowerShell-skript – Azure
+description: Så här skapar du PowerShell-skript för MSIX-appen Anslut för Windows Virtual Desktop.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3b02be8f35ff33f758aebe03c89287c51c9ffef7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f625b7dd68d4b5a5e1af68aeb53dac453ff8cbfd
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91816327"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400836"
 ---
-# <a name="set-up-msix-app-attach"></a>Konfigurera MSIX-appbifogning
+# <a name="create-powershell-scripts-for-msix-app-attach-preview"></a>Skapa PowerShell-skript för MSIX app attach (för hands version)
 
 > [!IMPORTANT]
 > MSIX app Attach är för närvarande en offentlig för hands version.
 > Den här för hands versionen tillhandahålls utan service nivå avtal och vi rekommenderar inte att du använder den för produktions arbets belastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade.
 > Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Det här avsnittet beskriver hur du konfigurerar MSIX app Attach i en Windows Virtual Desktop-miljö.
+Det här avsnittet beskriver hur du konfigurerar PowerShell-skript för MSIX app Attach.
 
-## <a name="requirements"></a>Krav
-
-Innan du börjar måste du konfigurera MSIX app Attach:
-
-- Åtkomst till Windows Insider-portalen för att hämta versionen av Windows 10 med stöd för MSIX-appen bifoga API: er.
-- En fungerande distribution av virtuella Windows-datorer. Information om hur du distribuerar virtuella Windows-datorer (klassisk) finns i [skapa en klient i Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Information om hur du distribuerar virtuella Windows-datorer med Azure Resource Manager-integrering finns i [skapa en adresspool med Azure Portal](./create-host-pools-azure-marketplace.md).
-- MSIX-packnings verktyget.
-- En nätverks resurs i Windows-distributionen för virtuella skriv bord där MSIX-paketet ska lagras.
-
-## <a name="get-the-os-image"></a>Hämta operativ system avbildningen
-
-Först måste du hämta operativ system avbildningen. Du kan hämta operativ system avbildningen genom Azure Portal. Men om du är medlem i Windows Insider-programmet har du möjlighet att använda Windows Insider-portalen i stället.
-
-### <a name="get-the-os-image-from-the-azure-portal"></a>Hämta operativ system avbildningen från Azure Portal
-
-Hämta operativ system avbildningen från Azure Portal:
-
-1. Öppna [Azure Portal](https://portal.azure.com) och logga in.
-
-2. Gå till **skapa en virtuell dator**.
-
-3. På fliken **grundläggande** väljer du **Windows 10 Enterprise multi-session, version 2004**.
-
-4. Följ resten av anvisningarna för att slutföra skapandet av den virtuella datorn.
-
-     >[!NOTE]
-     >Du kan använda den här virtuella datorn för att direkt testa MSIX app Attach. Om du vill veta mer kan du gå vidare till [skapa ett VHD-eller VHDX-paket för MSIX](#generate-a-vhd-or-vhdx-package-for-msix). Annars fortsätter du att läsa det här avsnittet.
-
-### <a name="get-the-os-image-from-the-windows-insider-portal"></a>Hämta operativ system avbildningen från Windows Insider-portalen
-
-Hämta operativ system avbildningen från Windows Insider-portalen:
-
-1. Öppna [Windows Insider-portalen](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0) och logga in.
-
-     >[!NOTE]
-     >Du måste vara medlem i Windows Insider-programmet för att få åtkomst till Windows Insider-portalen. Om du vill veta mer om Windows Insider program kan du läsa vår [Windows Insider-dokumentation](/windows-insider/at-home/).
-
-2. Rulla ned till avsnittet **Välj utgåva** och välj **Windows 10 Insider Preview Enterprise (snabb) – build 19041** eller senare.
-
-3. Välj **Bekräfta**och välj sedan det språk som du vill använda och välj sedan **Bekräfta** igen.
-
-     >[!NOTE]
-     >För tillfället är engelska det enda språk som har testats med funktionen. Du kan välja andra språk, men de visas kanske inte som de ska.
-
-4. När nedladdnings länken skapas väljer du den **64-bitars hämtningen** och sparar den på den lokala hård disken.
-
-## <a name="prepare-the-vhd-image-for-azure"></a>Förbered VHD-avbildningen för Azure
-
-Därefter måste du skapa en huvud-VHD-avbildning. Om du inte har skapat din huvud hård disk avbildning ännu går du till [förbereda och anpassa en huvud-VHD-avbildning](set-up-customize-master-image.md) och följer anvisningarna där.
-
-När du har skapat din huvud hård disk avbildning måste du inaktivera automatiska uppdateringar för MSIX app attaching Applications. Om du vill inaktivera automatiska uppdateringar måste du köra följande kommandon i en upphöjd kommando tolk:
-
-```cmd
-rem Disable Store auto update:
-
-reg add HKLM\Software\Policies\Microsoft\WindowsStore /v AutoDownload /t REG_DWORD /d 0 /f
-Schtasks /Change /Tn "\Microsoft\Windows\WindowsUpdate\Automatic app update" /Disable
-Schtasks /Change /Tn "\Microsoft\Windows\WindowsUpdate\Scheduled Start" /Disable
-
-rem Disable Content Delivery auto download apps that they want to promote to users:
-
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager /v PreInstalledAppsEnabled /t REG_DWORD /d 0 /f
-
-reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Debug /v ContentDeliveryAllowedOverride /t REG_DWORD /d 0x2 /f
-
-rem Disable Windows Update:
-
-sc config wuauserv start=disabled
-```
-
-När du har inaktiverat automatiska uppdateringar måste du aktivera Hyper-V eftersom du ska använda kommandot Mount-VHD för att mellanlagra och demontera-VHD för destage.
-
-```powershell
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
-```
->[!NOTE]
->Den här ändringen kräver att du startar om den virtuella datorn.
-
-Förbered sedan VM VHD för Azure och överför den resulterande VHD-disken till Azure. Mer information finns i [förbereda och anpassa en huvud-VHD-avbildning](set-up-customize-master-image.md).
-
-När du har laddat upp den virtuella hård disken till Azure skapar du en adresspool som baseras på den här nya avbildningen genom att följa anvisningarna i guiden [skapa en värddator med hjälp av Azure Marketplace](create-host-pools-azure-marketplace.md) -kursen.
-
-## <a name="prepare-the-application-for-msix-app-attach"></a>Förbereda programmet för MSIX-appen Attach
-
-Om du redan har ett MSIX-paket kan du gå vidare till [Konfigurera infrastrukturen för virtuella Windows-datorer](#configure-windows-virtual-desktop-infrastructure). Om du vill testa äldre program följer du instruktionerna i [skapa ett MSIX-paket från ett Skriv bords installations program på en virtuell dator](/windows/msix/packaging-tool/create-app-package-msi-vm/) för att konvertera det äldre programmet till ett MSIX-paket.
-
-## <a name="generate-a-vhd-or-vhdx-package-for-msix"></a>Generera ett VHD-eller VHDX-paket för MSIX
-
-Paket är i VHD-eller VHDX-format för att optimera prestanda. MSIX kräver att VHD-eller VHDX-paket fungerar korrekt.
-
-Så här skapar du ett VHD-eller VHDX-paket för MSIX:
-
-1. [Ladda ned msixmgr-verktyget](https://aka.ms/msixmgr) och spara zip-mappen i en mapp i en VM-session.
-
-2. Zippa upp mappen msixmgr-verktyget. zip.
-
-3. Lägg till käll MSIX-paketet i samma mapp där du zippade msixmgr-verktyget.
-
-4. Kör följande cmdlet i PowerShell för att skapa en virtuell hård disk:
-
-    ```powershell
-    New-VHD -SizeBytes <size>MB -Path c:\temp\<name>.vhd -Dynamic -Confirm:$false
-    ```
-
-    >[!NOTE]
-    >Se till att storleken på den virtuella hård disken är tillräckligt stor för att rymma den utökade MSIX. *
-
-5. Kör följande cmdlet för att montera den nyligen skapade virtuella hård disken:
-
-    ```powershell
-    $vhdObject = Mount-VHD c:\temp\<name>.vhd -Passthru
-    ```
-
-6. Kör denna cmdlet för att initiera den virtuella hård disken:
-
-    ```powershell
-    $disk = Initialize-Disk -Passthru -Number $vhdObject.Number
-    ```
-
-7. Kör denna cmdlet för att skapa en ny partition:
-
-    ```powershell
-    $partition = New-Partition -AssignDriveLetter -UseMaximumSize -DiskNumber $disk.Number
-    ```
-
-8. Kör denna cmdlet för att formatera partitionen:
-
-    ```powershell
-    Format-Volume -FileSystem NTFS -Confirm:$false -DriveLetter $partition.DriveLetter -Force
-    ```
-
-9. Skapa en överordnad mapp på den monterade virtuella hård disken. Det här steget är obligatoriskt eftersom MSIX-appen ansluter kräver en överordnad mapp. Du kan namnge den överordnade mappen oavsett vad du vill.
-
-### <a name="expand-msix"></a>Expandera MSIX
-
-Därefter måste du expandera MSIX-avbildningen genom att packa upp den. Packa upp MSIX-avbildningen:
-
-1. Öppna en kommando tolk som administratör och navigera till den mapp där du laddade ned och zippa upp msixmgr-verktyget.
-
-2. Kör följande cmdlet för att packa upp MSIX i den virtuella hård disk som du skapade och monterade i föregående avsnitt.
-
-    ```powershell
-    msixmgr.exe -Unpack -packagePath <package>.msix -destination "f:\<name of folder you created earlier>" -applyacls
-    ```
-
-    Följande meddelande ska visas när uppackning är slutförd:
-
-    `Successfully unpacked and applied ACLs for package: <package name>.msix`
-
-    >[!NOTE]
-    > Om du använder paket från Microsoft Store för företag (eller utbildning) i nätverket, eller på enheter som inte är anslutna till Internet, måste du skaffa paket licenser från butiken och installera dem för att köra appen. Se [använda paket offline](#use-packages-offline).
-
-3. Navigera till den monterade virtuella hård disken och öppna mappen app och bekräfta att paket innehållet finns.
-
-4. Demontera den virtuella hårddisken.
-
-## <a name="configure-windows-virtual-desktop-infrastructure"></a>Konfigurera infrastrukturen för virtuella Windows-datorer
-
-Enligt design kan ett enda MSIX-expanderat paket (den virtuella hård disk som du skapade i föregående avsnitt) delas mellan flera virtuella datorers VM-datorer som de virtuella hård diskarna är i skrivskyddat läge.
-
-Innan du börjar kontrollerar du att nätverks resursen uppfyller följande krav:
-
-- Resursen är SMB-kompatibel.
-- De virtuella datorerna som ingår i sessionen är NTFS-behörigheter till resursen.
-
-### <a name="set-up-an-msix-app-attach-share"></a>Konfigurera en MSIX app Attach-resurs
-
-I din Windows Virtual Desktop-miljö skapar du en nätverks resurs och flyttar paketet dit.
-
->[!NOTE]
-> Den bästa metoden för att skapa MSIX nätverks resurser är att konfigurera nätverks resursen med skrivskyddad NTFS-behörighet.
+>[!IMPORTANT]
+>Innan du börjar ska du fylla i och skicka [det här formuläret](https://aka.ms/enablemsixappattach) för att aktivera MSIX app Attach i din prenumeration. Om du inte har en godkänd begäran fungerar inte MSIX-appens koppling. Godkännande av förfrågningar kan ta upp till 24 timmar under arbets dagar. Du får ett e-postmeddelande när din begäran har godkänts och slutförts.
 
 ## <a name="install-certificates"></a>Installera certifikat
+
+Du måste installera certifikat på alla värddatorer i den modempool som ska vara värd för åtkomst punkterna från MSIX-appen bifoga paket.
 
 Om din app använder ett certifikat som inte är offentligt betrott eller själv signerat, så gör du så här för att installera det:
 
 1. Högerklicka på paketet och välj **Egenskaper**.
 2. I fönstret som visas väljer du fliken **digitala signaturer** . Det får bara finnas ett objekt i listan på fliken, som du ser i följande bild. Markera objektet för att markera objektet och välj sedan **information**.
-3. När fönstret information om digital signatur visas väljer du fliken **Allmänt** och sedan **Visa certifikat**och väljer sedan **Installera certifikat**.
+3. När fönstret information om digital signatur visas väljer du fliken **Allmänt** och sedan **Visa certifikat** och väljer sedan **Installera certifikat**.
 4. När installations programmet öppnas väljer du **lokal dator** som lagrings plats och väljer sedan **Nästa**.
 5. Om du tillfrågas om du vill tillåta att appen gör ändringar på enheten väljer du **Ja**.
-6. Välj **Placera alla certifikat i följande Arkiv**och välj **Bläddra**.
-7. När fönstret Välj certifikat Arkiv visas väljer du **Betrodda personer**och väljer sedan **OK**.
+6. Välj **Placera alla certifikat i följande Arkiv** och välj **Bläddra**.
+7. När fönstret Välj certifikat Arkiv visas väljer du **Betrodda personer** och väljer sedan **OK**.
 8. Välj **Nästa** och **Slutför**.
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>Förbereda PowerShell-skript för MSIX app Attach
@@ -233,7 +66,7 @@ Innan du uppdaterar PowerShell-skripten ser du till att du har volymens GUID fö
 
 4.  Öppna den överordnade mappen. Om den är korrekt expanderad visas en mapp med samma namn som paketet. Uppdatera variabeln **$PackageName** så att den matchar namnet på den här mappen.
 
-    Exempelvis `VSCodeUserSetup-x64-1.38.1_1.38.1.0_x64__8wekyb3d8bbwe`.
+    Ett exempel är `VSCodeUserSetup-x64-1.38.1_1.38.1.0_x64__8wekyb3d8bbwe`.
 
 5.  Öppna en kommando tolk och ange **mountvol**. Det här kommandot visar en lista över volymer och deras GUID. Kopiera GUID för volymen där enhets beteckningen matchar den enhet som du monterade din virtuella hård disk till i steg 2.
 
@@ -243,7 +76,7 @@ Innan du uppdaterar PowerShell-skripten ser du till att du har volymens GUID fö
     Possible values for VolumeName along with current mount points are:
 
     \\?\Volume{a12b3456-0000-0000-0000-10000000000}\
-    *** NO MOUNT POINTS ***
+    **_ NO MOUNT POINTS _*_
 
     \\?\Volume{c78d9012-0000-0000-0000-20000000000}\
         E:\
@@ -254,7 +87,7 @@ Innan du uppdaterar PowerShell-skripten ser du till att du har volymens GUID fö
     ```
 
 
-6.  Uppdatera variabeln **$volumeGuid** med volym-GUID som du nyss kopierade.
+6.  Uppdatera variabeln _ *$volumeGuid** med volym-GUID som du nyss kopierade.
 
 7. Öppna en admin PowerShell-prompt och uppdatera följande PowerShell-skript med de variabler som gäller för din miljö.
 

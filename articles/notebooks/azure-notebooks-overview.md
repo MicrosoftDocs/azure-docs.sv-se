@@ -3,18 +3,18 @@ title: Översikt över Azure Notebooks för hands version
 description: Kör Jupyter Notebooks i molnet med den kostnads fria Azure Notebooks för hands versions tjänsten, där ingen konfiguration eller konfiguration krävs.
 ms.topic: overview
 ms.date: 04/05/2019
-ms.openlocfilehash: ef0a033c5125b3a359d281be30dd0ec2a2aa1747
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 7e622bdef785085384395bb0c8ac3efba2b2053a
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109495"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400290"
 ---
 # <a name="overview-of-azure-notebooks-preview"></a>Översikt över Azure Notebooks för hands version
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-Azure Notebooks är en kostnadsfri värdbaserad tjänst som används för att utveckla och köra Jupyter Notebooks i molnet utan installation. [Jupyter](https://jupyter.org/) (tidigare ipython) är ett projekt med öppen källkod som gör att du enkelt kan kombinera markdown text, körbar kod, beständiga data, grafik och visualiseringar på en enda, delbar arbets yta, som kallas *Notebook* (avbildnings uppsättning Jupyter.org):
+Azure Notebooks är en kostnads fri värdbaserad tjänst för att utveckla och köra Jupyter-anteckningsböcker i molnet utan installation. [Jupyter](https://jupyter.org/) (tidigare ipython) är ett projekt med öppen källkod som gör att du enkelt kan kombinera markdown text, körbar kod, beständiga data, grafik och visualiseringar på en enda, delbar arbets yta, som kallas *Notebook* (avbildnings uppsättning Jupyter.org):
 
 [![Exempel på Jupyter-anteckningsböcker](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
@@ -74,7 +74,7 @@ Utöver de grundläggande distributionerna levereras Azure Notebooks förinstall
 Azure Notebooks är förkonfigurerat med följande Jupyter-tillägg:
 
 - [RISE](https://github.com/damianavila/RISE): Ett Jupyter-tillägg för bildspel (kallas även live_reveal).
-- [JupyterLab](https://github.com/jupyterlab/jupyterlab): En fullständig beräkningsmiljö för att arbeta med Jupyter-notebooks.
+- [JupyterLab](https://github.com/jupyterlab/jupyterlab): en fullständig beräknings miljö för att arbeta med Jupyter-anteckningsböcker.
 - [Altair](https://github.com/ellisonbg/altair): Ett bibliotek för visualisering av deklarativ statistisk för Python.
 - [BQPlot](https://github.com/bloomberg/bqplot): Ett interaktivt ritningsramverk för Jupyter Notebooks.
 - [IpyWidgets](https://github.com/jupyter-widgets/ipywidgets): Interaktiva HTML-widgetar för Jupyter Notebooks.

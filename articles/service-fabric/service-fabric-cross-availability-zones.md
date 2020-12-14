@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: d8e4a9201c14e71520bd58ff1017b700ca47fa21
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 73a3be62e57991b63525372f008e15d8e4f36a74
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109830"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401737"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Distribuera ett Azure Service Fabric-kluster över Tillgänglighetszoner
 Tillgänglighetszoner i Azure är ett erbjudande med hög tillgänglighet som skyddar dina program och data från data Center problem. En tillgänglighets zon är en unik fysisk plats utrustad med oberoende strömförsörjning, kylning och nätverk inom en Azure-region.
@@ -407,12 +407,12 @@ Service Fabric nodeType måste vara aktive rad för att stödja flera tillgängl
 >[!NOTE]
 > * Offentliga IP-adresser och Load Balancer resurser ska använda standard-SKU: n enligt beskrivningen ovan i artikeln.
 > * Egenskapen "multipleAvailabilityZones" på nodeType kan bara definieras vid skapande av nodeType och kan inte ändras senare. Därför kan inte befintliga nodeTypes konfigureras med den här egenskapen.
-> * När "hierarchicalUpgradeDomain" utelämnas eller är inställt på Sant går kluster-och program distributionen långsammare eftersom det finns fler uppgraderings domäner i klustret. Det är viktigt att du ändrar tids gränsen för uppgraderings principen till att omfatta varaktigheten för uppgraderings tiden för 15 uppgraderings domäner.
+> * När "sfZonalUpgradeMode" utelämnas eller anges till "hierarkisk" kommer kluster-och program distributionen att gå långsammare eftersom det finns fler uppgraderings domäner i klustret. Det är viktigt att du ändrar tids gränsen för uppgraderings principen till att omfatta varaktigheten för uppgraderings tiden för 15 uppgraderings domäner.
 > * Vi rekommenderar att du ställer in Tillförlitlighets nivån för klustret på platina för att säkerställa att klustret finns kvar i scenariot med en zon.
 
 >[!NOTE]
-> För bästa praxis rekommenderar vi att hierarchicalUpgradeDomain anges till sant eller utelämnas. Distributionen kommer att följa zonindelade-distributionen av virtuella datorer som påverkar en mindre mängd repliker och/eller instanser som gör dem säkrare.
-> Använd hierarchicalUpgradeDomain inställt på false om distributions hastigheten är en prioritet eller endast tillstånds lös arbets belastning körs på nodtypen med flera AZ. Detta leder till att UD-ingången inträffar parallellt i alla AZ.
+> För bästa praxis rekommenderar vi att sfZonalUpgradeMode anges till hierarkiskt eller utelämnas. Distributionen kommer att följa zonindelade-distributionen av virtuella datorer som påverkar en mindre mängd repliker och/eller instanser som gör dem säkrare.
+> Använd sfZonalUpgradeMode inställt på parallell om distributions hastigheten är en prioritet eller endast tillstånds lös arbets belastning körs på nodtypen med flera AZ. Detta leder till att UD-ingången inträffar parallellt i alla AZ.
 
 ### <a name="migration-to-the-node-type-with-multiple-availability-zones"></a>Migrering till nodtypen med flera Tillgänglighetszoner
 För alla migreringsåtgärder måste en ny nodeType läggas till som har stöd för flera tillgänglighets zoner. Det går inte att migrera en befintlig nodeType för att stödja flera zoner.

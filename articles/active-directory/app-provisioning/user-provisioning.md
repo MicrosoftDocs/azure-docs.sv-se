@@ -11,16 +11,18 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: 5b593add9c9d7be446798eecdd03b396c3fe513a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 486add54a6d41493c54bd7b0b0339804f6c31847
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174738"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400003"
 ---
 # <a name="what-is-automated-saas-app-user-provisioning-in-azure-ad"></a>Vad är automatiserad SaaS app User-etablering i Azure AD?
 
 I Azure Active Directory (Azure AD), avser termen **app-etablering** att automatiskt skapa användar identiteter och roller i molnet ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) som användarna behöver åtkomst till. Förutom att skapa användar identiteter omfattar automatisk etablering underhåll och borttagning av användar identiteter som status eller roller ändras. Vanliga scenarier innefattar etablering av en Azure AD-användare i program som [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md), [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)och mycket annat.
+
+Om du vill veta mer om SCIM och delta i Tech community-konversationen går du till [etablering med scim Tech community](https://aka.ms/scimoverview).
 
 ![Översikts diagram för etablering](./media/user-provisioning/provisioning-overview.png)
 

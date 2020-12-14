@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
-ms.openlocfilehash: 8eb163c95fb1426ebae8956d50f6d8f6aec6fd7f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1a6b328bc076ffa619921a8698549e95e6f15c60
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013657"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400768"
 ---
 # <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>Utföra logg frågor i Azure Monitor som sträcker sig över arbets ytor och appar
 
@@ -22,7 +22,7 @@ Det finns två metoder för att fråga data som lagras i flera arbets ytor och a
 2. Implicit användning av [resurs kontext frågor](../platform/design-logs-deployment.md#access-mode). När du frågar i kontexten för en resurs, resurs grupp eller en prenumeration hämtas relevanta data från alla arbets ytor som innehåller data för dessa resurser. Application Insights data som lagras i appar kommer inte att hämtas.
 
 > [!IMPORTANT]
-> Om du använder en [arbets yta som baseras på arbets ytans Application Insights resurs](../app/create-workspace-resource.md) telemetri lagras i en Log Analytics arbets yta med alla andra loggdata. Använd log ()-uttrycket för att skriva en fråga som inkluderar program i flera arbets ytor. För flera program i samma arbets yta behöver du inte en fråga om flera arbets ytor.
+> Om du använder en [arbets yta som baseras på arbets ytans Application Insights resurs](../app/create-workspace-resource.md) telemetri lagras i en Log Analytics arbets yta med alla andra loggdata. Använd uttrycket arbets yta () för att skriva en fråga som inkluderar program i flera arbets ytor. För flera program i samma arbets yta behöver du inte en fråga om flera arbets ytor.
 
 
 ## <a name="cross-resource-query-limits"></a>Begränsningar för kors resurs frågor 

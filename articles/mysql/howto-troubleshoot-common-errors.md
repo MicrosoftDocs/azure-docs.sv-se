@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: 8f735ecd4f8b79b4f5bd0c95d0bfb9f280d93833
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 39e058487effea432369b74a9e638f30722ef089
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387351"
+ms.locfileid: "97401720"
 ---
 # <a name="common-errors"></a>Vanliga fel
 
@@ -73,8 +73,30 @@ Ovanstående fel kan uppstå när du kör skapa vy med definar-instruktioner som
 > [!Tip] 
 > Använd sed eller perl för att ändra en dumpfil eller SQL-skript för att ersätta definar =-instruktionen
 
+## <a name="common-connection-errors-for-server-admin-login"></a>Vanliga anslutnings fel för inloggning för Server administratör
+
+När en Azure Database for MySQL-server skapas tillhandahålls en inloggning av Server administratören av slutanvändaren när servern skapas. Med inloggningen Server administratör kan du skapa nya databaser, lägga till nya användare och bevilja behörigheter. Om Server administratörs inloggningen tas bort, eller om dess lösen ord ändras, kan du börja se anslutnings fel i programmet samtidigt som anslutningarna. Nedan följer några vanliga fel
+
+#### <a name="error-1045-28000-access-denied-for-user-usernameip-address-using-password-yes"></a>FEL 1045 (28000): åtkomst nekad för användare ' username ' @ ' IP-adress ' (Använd lösen ord: Ja)
+
+Ovanstående fel inträffar om:
+
+* Användar namnet finns inte
+* Användar namnet för användaren har tagits bort
+* lösen ordet har ändrats eller återställts
+
+Fel lösningens lösning är 
+
+**Lösning**: 
+* Verifiera om "username" finns som en giltig användare på servern eller har tagits bort av misstag. Du kan köra följande fråga genom att logga in på den Azure Database for MySQL användaren:
+  ```sql
+  select user from mysql.user;
+  ```
+* Om du inte kan logga in på MySQL för att köra ovanstående fråga, rekommenderar vi att du [återställer administratörs lösen ordet med hjälp av Azure Portal](howto-create-manage-server-portal.md). Med alternativet Återställ lösen ord från Azure Portal kan du återskapa användaren, återställa lösen ordet och återställa administratörs behörigheterna, vilket gör att du kan logga in med Server administratören och utföra ytterligare åtgärder.
+
 ## <a name="next-steps"></a>Nästa steg
-Om du inte har hittat det svar du letade efter kan du tänka på följande:
+Om du inte hittar det svar du söker efter kan du tänka på följande:
+
 - Publicera din fråga på [Microsoft Q&en fråge sida](/answers/topics/azure-database-mysql.html) eller [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).
 - Skicka ett e-postmeddelande till Azure Database for MySQLs gruppen [ @Ask Azure dB för MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com). Den här e-postadressen är inte ett alias för teknisk support.
 - Kontakta Azure-supporten, [File a Ticket from the Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Om du vill åtgärda ett problem med ditt konto, skickar du in ett [supportärende](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) i Azure-portalen.

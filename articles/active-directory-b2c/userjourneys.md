@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/13/2020
+ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5b89126b837f9c197a8babf81abb17bfd98002e4
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ce41edd2c0048a20368dd02c2dd6101248e26c14
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345005"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400021"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -43,7 +43,38 @@ För att definiera användar resan som stöds av principen läggs ett **UserJour
 
 | Element | Förekomster | Beskrivning |
 | ------- | ----------- | ----------- |
+| AuthorizationTechnicalProfiles | 0:1 | Lista över tekniska profiler för auktorisering. | 
 | OrchestrationSteps | 1: n | En Orchestration-sekvens som måste följas av för en lyckad transaktion. Varje användar resa består av en ordnad lista över Orchestration-steg som körs i följd. Om ett steg Miss lyckas, Miss lyckas transaktionen. |
+
+## <a name="authorizationtechnicalprofiles"></a>AuthorizationTechnicalProfiles
+
+Anta att en användare har slutfört en UserJourney och erhållit en åtkomst eller en ID-token. Användaren måste identifieras för att kunna hantera ytterligare resurser, t. ex. [UserInfo-slutpunkten](userinfo-endpoint.md). För att starta den här processen måste användaren presentera åtkomsttoken som utfärdats tidigare som bevis på att de ursprungligen autentiserades av en giltig Azure AD B2C-princip. En giltig token för användaren måste alltid vara närvarande under den här processen för att se till att användaren får göra denna begäran. De tekniska profilerna för auktorisering validerar inkommande token och extraherar anspråk från token.
+
+**AuthorizationTechnicalProfiles** -elementet innehåller följande element:
+
+| Element | Förekomster | Beskrivning |
+| ------- | ----------- | ----------- |
+| AuthorizationTechnicalProfile | 0:1 | Lista över tekniska profiler för auktorisering. | 
+
+**AuthorizationTechnicalProfile** -elementet innehåller följande attribut:
+
+| Attribut | Krävs | Beskrivning |
+| --------- | -------- | ----------- |
+| TechnicalProfileReferenceId | Ja | Identifieraren för den tekniska profil som ska köras. |
+
+I följande exempel visas ett användar resa-element med tekniska profiler för auktorisering:
+
+```xml
+<UserJourney Id="UserInfoJourney" DefaultCpimIssuerTechnicalProfileReferenceId="UserInfoIssuer">
+  <Authorization>
+    <AuthorizationTechnicalProfiles>
+      <AuthorizationTechnicalProfile ReferenceId="UserInfoAuthorization" />
+    </AuthorizationTechnicalProfiles>
+  </Authorization>
+  <OrchestrationSteps>
+    <OrchestrationStep Order="1" Type="ClaimsExchange">
+     ...
+```
 
 ## <a name="orchestrationsteps"></a>OrchestrationSteps
 
@@ -143,7 +174,7 @@ Villkor kan kontrol lera flera villkor. I följande exempel kontrol leras om "ob
 ```xml
 <OrchestrationStep Order="4" Type="ClaimsExchange">
   <Preconditions>
-  <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
+    <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
       <Value>objectId</Value>
       <Action>SkipThisOrchestrationStep</Action>
     </Precondition>
@@ -187,17 +218,17 @@ I följande Orchestration-steg kan användaren välja att logga in med Facebook,
 
 ```xml
 <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
-    <ClaimsProviderSelections>
+  <ClaimsProviderSelections>
     <ClaimsProviderSelection TargetClaimsExchangeId="FacebookExchange" />
     <ClaimsProviderSelection TargetClaimsExchangeId="LinkedInExchange" />
     <ClaimsProviderSelection TargetClaimsExchangeId="TwitterExchange" />
     <ClaimsProviderSelection TargetClaimsExchangeId="GoogleExchange" />
     <ClaimsProviderSelection ValidationClaimsExchangeId="LocalAccountSigninEmailExchange" />
-    </ClaimsProviderSelections>
-    <ClaimsExchanges>
-    <ClaimsExchange Id="LocalAccountSigninEmailExchange"
-                    TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
-    </ClaimsExchanges>
+  </ClaimsProviderSelections>
+  <ClaimsExchanges>
+  <ClaimsExchange Id="LocalAccountSigninEmailExchange"
+        TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
+  </ClaimsExchanges>
 </OrchestrationStep>
 
 
@@ -211,7 +242,7 @@ I följande Orchestration-steg kan användaren välja att logga in med Facebook,
   <ClaimsExchanges>
     <ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />
     <ClaimsExchange Id="SignUpWithLogonEmailExchange" TechnicalProfileReferenceId="LocalAccountSignUpWithLogonEmail" />
-    <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
+  <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
     <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
     <ClaimsExchange Id="TwitterExchange" TechnicalProfileReferenceId="Twitter-OAUTH1" />
   </ClaimsExchanges>

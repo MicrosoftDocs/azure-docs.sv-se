@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: 11c3de703a4b37318b7b99f60d74190fe8ec8610
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 47c837e7a2ee859c7805d6b2e11058bcc02e6c22
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077378"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400581"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Översikt över resursbegränsningar för SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -65,7 +65,7 @@ SQL-hanterad instans har två tjänst nivåer: [generell användning](../databas
 > [!Important]
 > Affärskritisk Service Tier tillhandahåller en ytterligare inbyggd kopia av SQL-hanterad instans (sekundär replik) som kan användas för skrivskyddade arbets belastningar. Om du kan separera Skriv-och analys-/rapporterings frågor får du två gånger virtuella kärnor och minne för samma pris. Den sekundära repliken kan vänta några sekunder bakom den primära instansen, så den är utformad för att avlasta rapporter/analytiska arbets belastningar som inte behöver exakt det aktuella data läget. I tabellen nedan är **skrivskyddade frågor** de frågor som körs på den sekundära repliken.
 
-| **Visning av aktuellt objekt** | **Generell användning** | **Affärskritisk** |
+| **Funktion** | **Generell användning** | **Affärskritisk** |
 | --- | --- | --- |
 | Antal v-kärnor\* | Gen4:8, 16, 24<br/>Gen5:4, 8, 16, 24, 32, 40, 64, 80 | Gen4:8, 16, 24 <br/> Gen5:4, 8, 16, 24, 32, 40, 64, 80 <br/>\*Samma antal virtuella kärnor är dedicerat för skrivskyddade frågor. |
 | Högsta mängd minne | Gen4:56 GB-168 GB (7GB/vCore)<br/>Gen5:20,4 GB-408 GB (5,1 GB/vCore)<br/>Lägg till fler virtuella kärnor för att få mer minne. | Gen4:56 GB-168 GB (7GB/vCore)<br/>Gen5:20,4 GB-408 GB (5,1 GB/vCore) för Läs-och skriv frågor<br/>+ ytterligare 20,4 GB-408 GB (5,1 GB/vCore) för skrivskyddade frågor.<br/>Lägg till fler virtuella kärnor för att få mer minne. |
@@ -108,7 +108,7 @@ I Generell användning tjänst nivån varje databas fil får dedikerad IOPS och 
 
 Om du märker en lång IO-fördröjning på en viss databas fil eller om du ser att IOPS/data flödet når gränsen kan du förbättra prestandan genom [att öka fil storleken](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337).
 
-Det finns också en gräns på instans nivå av det maximala logg skrivnings flödet (som är 22 MB/s), så du kanske inte kan komma åt den maximala filen i logg filen eftersom du påträffar instans data flödes gränsen.
+Det finns också en begränsning på instans nivå av det maximala logg skrivnings flödet (se ovan för värden, t. ex. 22 MB/s), så du kanske inte kan komma åt Max filen i logg filen eftersom du påträffar instans data flödes gränsen.
 
 ## <a name="supported-regions"></a>Regioner som stöds
 
@@ -132,8 +132,8 @@ SQL-hanterad instans har för närvarande endast stöd för distribution av föl
 
 Prenumerations typer som stöds kan innehålla ett begränsat antal resurser per region. SQL-hanterad instans har två standard gränser per Azure-region (som kan ökas på begäran genom att skapa en särskild [supportbegäran i Azure Portal](../database/quota-increase-request.md) beroende på typ av prenumerations typ:
 
-- **Under näts gräns** : det maximala antalet undernät där instanser av SQL-hanterad instans distribueras i en enda region.
-- **vCore-enhets gräns** : det maximala antalet vCore-enheter som kan distribueras över alla instanser i en enda region. En GP-vCore använder en vCore-enhet och en BC-vCore tar 4 vCore-enheter. Det totala antalet instanser är inte begränsat så länge det ligger inom gränsen för vCore-enheten.
+- **Under näts gräns**: det maximala antalet undernät där instanser av SQL-hanterad instans distribueras i en enda region.
+- **vCore-enhets gräns**: det maximala antalet vCore-enheter som kan distribueras över alla instanser i en enda region. En GP-vCore använder en vCore-enhet och en BC-vCore tar 4 vCore-enheter. Det totala antalet instanser är inte begränsat så länge det ligger inom gränsen för vCore-enheten.
 
 > [!Note]
 > Dessa gränser är standardinställningar och inte tekniska begränsningar. Gränserna kan ökas på begäran genom att en särskild [supportbegäran skapas i Azure Portal](../database/quota-increase-request.md) om du behöver fler instanser i den aktuella regionen. Alternativt kan du skapa nya instanser av SQL-hanterad instans i en annan Azure-region utan att skicka support förfrågningar.
@@ -150,7 +150,7 @@ Följande tabell visar de **regionala standard gränserna** för prenumerations 
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional och MSDN-plattformar|2|32|
 
-\* Vid planering av distributioner bör du tänka på att Affärskritisk (BC) tjänst nivån kräver fyra (4) gånger mer vCore-kapacitet än Generell användning (GP). Exempel: 1 GP-vCore = 1 vCore-enhet och 1 BC-vCore = 4 vCore-enheter. För att förenkla förbruknings analysen mot standard gränserna, sammanfatta vCore-enheterna över alla undernät i den region där SQL-hanterad instans distribueras och jämför resultaten med instans enhets gränserna för din prenumerations typ. Gränsen **för antalet vCore-enheter** gäller för varje prenumeration i en region. Det finns ingen gräns per enskilda undernät förutom att summan av alla virtuella kärnor som distribueras över flera undernät måste vara lägre eller lika med **Max antalet vCore-enheter** .
+\* Vid planering av distributioner bör du tänka på att Affärskritisk (BC) tjänst nivån kräver fyra (4) gånger mer vCore-kapacitet än Generell användning (GP). Exempel: 1 GP-vCore = 1 vCore-enhet och 1 BC-vCore = 4 vCore-enheter. För att förenkla förbruknings analysen mot standard gränserna, sammanfatta vCore-enheterna över alla undernät i den region där SQL-hanterad instans distribueras och jämför resultaten med instans enhets gränserna för din prenumerations typ. Gränsen **för antalet vCore-enheter** gäller för varje prenumeration i en region. Det finns ingen gräns per enskilda undernät förutom att summan av alla virtuella kärnor som distribueras över flera undernät måste vara lägre eller lika med **Max antalet vCore-enheter**.
 
 \*\* Större gränser för undernät och vCore är tillgängliga i följande regioner: östra Australien, östra USA, östra USA 2, norra Europa, södra centrala USA, Sydostasien, Storbritannien, södra, Västeuropa, västra USA 2.
 

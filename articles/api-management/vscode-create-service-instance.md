@@ -7,12 +7,12 @@ author: vladvino
 ms.author: apimpm
 ms.topic: quickstart
 ms.date: 09/14/2020
-ms.openlocfilehash: 19080679291b88b693c95bd71f8ddc0e59286356
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fdf7e842959e09a8ec35017031f745cb16d13c6d
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90057426"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400411"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-using-visual-studio-code"></a>Snabb start: skapa en ny Azure API Management-tjänstinstans med Visual Studio Code
 
@@ -20,7 +20,7 @@ Azure API Management (APIM) hjälper organisationer att publicera API:er till ex
 
 I den här snabb starten beskrivs stegen för att skapa en ny API Management-instans med hjälp av *Azure API Management-tillägget för hands version* för Visual Studio Code. Du kan också använda tillägget för att utföra vanliga hanterings åtgärder på din API Management-instans.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -51,11 +51,11 @@ I fönstret som öppnas anger du ett namn för den nya API Management-instansen.
 En ny API Management instans (och överordnad resurs grupp) skapas med det angivna namnet. Som standard skapas instansen i regionen *västra USA* med *förbruknings* -SKU.
 
 > [!TIP]
-> Om du aktiverar **Avancerad generering** i *inställningarna för Azure API Management-tillägget*kan du också ange en [API Management SKU](https://azure.microsoft.com/pricing/details/api-management/), [Azure-region](https://status.azure.com/en-us/status)och en [resurs grupp](../azure-resource-manager/management/overview.md) för att distribuera din API Management-instans.
+> Om du aktiverar **Avancerad generering** i *inställningarna för Azure API Management-tillägget* kan du också ange en [API Management SKU](https://azure.microsoft.com/pricing/details/api-management/), [Azure-region](https://status.azure.com/en-us/status)och en [resurs grupp](../azure-resource-manager/management/overview.md) för att distribuera din API Management-instans.
 >
 > Även om *förbruknings* -SKU: n tar mindre än en minut att etablera, tar det vanligt vis 30-40 minuter att skapa andra SKU: er.
 
-Nu är du redo att importera och publicera ditt första API. Du kan göra det och även utföra vanliga API Management åtgärder i tillägget för Visual Studio Code. Mer information finns i [API Management tillägget för Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview) -dokumentationen.
+Nu är du redo att importera och publicera ditt första API. Du kan göra det och även utföra vanliga API Management åtgärder i tillägget för Visual Studio Code. Mer information finns i [självstudien](visual-studio-code-tutorial.md) .
 
 ![Nyligen skapad API Management instans i VS Code API Management förlängnings fönstret](./media/vscode-create-service-instance/vscode-apim-instance.png)
 
@@ -70,4 +70,4 @@ Alternativt kan du välja **ta bort API Management** för att bara ta bort API M
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Importera och publicera ditt första API](import-and-publish.md)
+> [Importera och hantera API: er med API Management-tillägget](visual-studio-code-tutorial.md)

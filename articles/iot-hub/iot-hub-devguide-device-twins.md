@@ -11,12 +11,12 @@ ms.date: 09/29/2020
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: ef1d6787ab3d4083ee6418694d1965ea0f90f730
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: b83faecb16ac09a47a0ade25474f7a5b3ecd4296
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996121"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400936"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Förstå och Använd enheten dubbla i IoT Hub
 
@@ -122,7 +122,7 @@ I föregående exempel innehåller enheten dubbla en `batteryLevel` egenskap som
 
 ### <a name="desired-property-example"></a>Exempel på önskad egenskap
 
-I föregående exempel `telemetryConfig` används enhetens dubbla önskade och rapporterade egenskaper av lösningens Server del och Device-appen för att synkronisera telemetri-konfigurationen för den här enheten. Till exempel:
+I föregående exempel `telemetryConfig` används enhetens dubbla önskade och rapporterade egenskaper av lösningens Server del och Device-appen för att synkronisera telemetri-konfigurationen för den här enheten. Exempel:
 
 1. Server delen för lösningen anger önskad egenskap med det önskade konfiguration svärdet. Här är den del av dokumentet med önskad egenskaps uppsättning:
 
@@ -185,7 +185,7 @@ Lösningens Server del fungerar på enheten med dubbla med hjälp av följande a
 
   - Egenskaper
 
-    | Name | Värde |
+    | Namn | Värde |
     | --- | --- |
     $content-typ | application/json |
     $iothub-enqueuedtime |  Tid när meddelandet skickades |
@@ -310,7 +310,7 @@ IoT Hub avvisar alla åtgärder som skulle öka storleken på `tags` , `properti
 
 IoT Hub behåller tidsstämpeln för den senaste uppdateringen för varje JSON-objekt i enhetens dubbla önskade och rapporterade egenskaper. Tidsstämplar anges i UTC och kodas i [iso8601](https://en.wikipedia.org/wiki/ISO_8601) -format `YYYY-MM-DDTHH:MM:SS.mmmZ` .
 
-Till exempel:
+Exempel:
 
 ```json
 {
@@ -339,7 +339,9 @@ Till exempel:
             "batteryLevel": "55%",
             "$metadata": {
                 "telemetryConfig": {
-                    "sendFrequency": "5m",
+                    "sendFrequency": {
+                        "$lastUpdated": "2016-03-31T16:35:48.789Z"
+                    },
                     "status": {
                         "$lastUpdated": "2016-03-31T16:35:48.789Z"
                     },

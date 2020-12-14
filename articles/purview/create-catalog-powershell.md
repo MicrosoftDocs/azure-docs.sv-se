@@ -1,18 +1,18 @@
 ---
 title: 'Snabb start: skapa ett Azure avdelningens kontroll-konto med Azure PowerShell/Azure CLI (för hands version)'
 description: I den här snabb starten beskrivs hur du skapar ett Azure avdelningens kontroll-konto med hjälp av Azure PowerShell/Azure CLI.
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 11/23/2020
-ms.openlocfilehash: d03e343e9158f237ee786ff1b1d06436bdd2d6e7
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 7db546ec9038403bd9e34f637e9d9de368277d52
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96555984"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400310"
 ---
 # <a name="quickstart-create-an-azure-purview-account-using-azure-powershellazure-cli"></a>Snabb start: skapa ett Azure avdelningens kontroll-konto med Azure PowerShell/Azure CLI
 
@@ -27,7 +27,7 @@ I den här snabb starten skapar du ett Azure avdelningens kontroll-konto med hj�
 
 * Det användar konto som du använder för att logga in på Azure måste vara medlem i rollen deltagare eller ägare, eller en administratör för Azure-prenumerationen.
 
-* Din egen [Azure Active Directory klient](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).
+* En egen [klientorganisation i Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).
 
 * Installera antingen Azure PowerShell eller Azure CLI på klient datorn för att distribuera mallen: [distribution av kommando raden](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template?tabs=azure-cli#command-line-deployment)
 

@@ -3,25 +3,29 @@ title: gRPC Extension Protocol – Azure
 description: I den här artikeln får du lära dig mer om att använda gRPC-tilläggsprogram för att skicka meddelanden mellan Live Video Analytics-modulen och ditt AI eller ka anpassade tillägg.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 288dcd1a11c7c42d8796d3b17f2bfd56f562aaf1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7f21ff358b8dd5ac540de8c39c37c52e98977e59
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89448385"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401635"
 ---
 # <a name="grpc-extension-protocol"></a>Protokoll för gRPC-tillägg
 
+Med live video analys på IoT Edge kan du utöka medie diagrammets bearbetnings funktioner via en [nod i diagram tillägget](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/media-graph-extension-concept?branch=release-lva-dec-update). Om du använder gRPC Extension-processorn som tilläggsprovider är kommunikationen mellan Live Video Analytics-modulen och din AI-eller ka-modul över gRPC-baserade, högpresterande strukturerat protokoll.
+
 I den här artikeln får du lära dig mer om att använda gRPC-tilläggsprogram för att skicka meddelanden mellan Live Video Analytics-modulen och ditt AI eller ka anpassade tillägg.
 
-gRPC är ett modernt, högpresterande RPC-ramverk med öppen källkod som körs i vilken miljö som helst. GRPC transport service använder HTTP/2 dubbelriktad strömning mellan:
+gRPC är ett modernt, högpresterande RPC-ramverk med öppen källkod som körs i valfri miljö och stöder plattforms oberoende och kommunikation mellan olika språk. GRPC transport service använder HTTP/2 dubbelriktad strömning mellan:
 
 * gRPC-klienten (direktsänd video analys i IoT Edge modul) och 
 * gRPC-servern (ditt anpassade tillägg).
 
 En gRPC-session är en enskild anslutning från gRPC-klienten till gRPC-servern via TCP/TLS-porten. 
 
-I en enda session: klienten skickar en Media Stream-Beskrivning följt av video bild rutor till servern som ett [protobuf](https://github.com/Azure/live-video-analytics/tree/master/contracts/grpc) -meddelande över gRPC Stream-sessionen. Servern verifierar Stream-beskrivningen, analyserar video ramen och returnerar utöknings resultat som ett protobuf-meddelande.
+I en enda session: klienten skickar en Media Stream-Beskrivning följt av video bild rutor till servern som ett [protobuf](https://github.com/Azure/live-video-analytics/tree/master/contracts/grpc) -meddelande över gRPC Stream-sessionen. Servern verifierar Stream-beskrivningen, analyserar video ramen och returnerar utöknings resultat som ett protobuf-meddelande. 
+
+Vi rekommenderar starkt att svaren returneras med giltiga JSON-dokument efter det företablerade schemat som definierats enligt [schema objekt modellen för härledning av metadata](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/inference-metadata-schema?branch=release-lva-dec-update). Detta säkerställer bättre samverkan med andra komponenter och möjliga framtida funktioner som läggs till i modulen för video analys i real tid.
 
 ![kontrakt för gRPC-tillägg](./media/grpc-extension-protocol/grpc.png)
 
@@ -32,9 +36,10 @@ I en enda session: klienten skickar en Media Stream-Beskrivning följt av video 
 Det anpassade tillägget måste implementera följande gRPC-tjänst:
 
 ```
-service MediaGraphExtension {
-  rpc ProcessMediaStream(stream MediaStreamMessage) returns (stream MediaStreamMessage);
-}
+service MediaGraphExtension
+    {
+        rpc ProcessMediaStream(stream MediaStreamMessage) returns (stream MediaStreamMessage);
+    }
 ```
 
 När detta anropas öppnas en dubbelriktad ström för meddelanden som flödar mellan gRPC-tillägget och video analys diagrammet i real tid. Det första meddelandet som skickas i den här strömmen av varje part innehåller en MediaStreamDescriptor som definierar vilken information som ska skickas i följande MediaSamples.
@@ -45,18 +50,23 @@ Till exempel kan Graph-tillägget skicka meddelandet (anges här i JSON) för at
  {
     "sequence_number": 1,
     "ack_sequence_number": 0,
-    "media_stream_descriptor": {
-        "graph_identifier": {
+    "media_stream_descriptor": 
+    {
+        "graph_identifier": 
+        {
             "media_services_arm_id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/microsoft.media/mediaservices/mediaAccountName",
             "graph_instance_name": "mediaGraphName",
             "graph_node_name": "grpcExtension"
         },
-        "media_descriptor": {
+        "media_descriptor": 
+        {
             "timescale": 90000,
-            "video_frame_sample_format": {
+            "video_frame_sample_format": 
+            {
                 "encoding": "RAW",
                 "pixel_format": "RGB24",
-                "dimensions": {
+                "dimensions": 
+                {
                     "width": 416,
                     "height": 416
                 },
@@ -73,13 +83,17 @@ Det anpassade tillägget skulle, i svar, skicka följande meddelande för att in
 {
     "sequence_number": 1,
     "ack_sequence_number": 1,
-    "media_stream_descriptor": {
-        "extension_identifier": "customExtensionName"    }
+    "media_stream_descriptor": 
+    {
+        "extension_identifier": "customExtensionName"    
+    }
 }
 ```
 
 Nu när båda sidorna har Exchange Media-beskrivningar börjar Real video analys att skicka ramar till tillägget.
 
+> [!NOTE]
+> Implementeringen av gRPC på Server sidan kan göras i valfritt programmeringsspråk.
 ### <a name="sequence-numbers"></a>Sekvensnummer
 
 Både gRPC-tillägget och det anpassade tillägget upprätthåller en separat uppsättning sekvensnummer som är tilldelade till deras meddelanden. Dessa sekvensnummer ska monotont från 1. `ack_sequence_number` kan ignoreras om inget meddelande bekräftas, vilket kan inträffa när det första meddelandet skickas.
@@ -106,7 +120,8 @@ Mottagaren öppnar sedan filen `/dev/shm/inference_client_share_memory_214698900
 ```
 {
     "timestamp": 143598615750000,
-    "content_reference": {
+    "content_reference": 
+    {
         "address_offset": 519168,
         "length_bytes": 173056
     }
@@ -123,25 +138,27 @@ För att Live Video Analytics-behållaren ska kommunicera över delat minne mås
 Det här kan se ut som i enheten, med det första alternativet ovan.
 
 ```
-"liveVideoAnalytics": {
+"liveVideoAnalytics": 
+{
   "version": "1.0",
   "type": "docker",
   "status": "running",
   "restartPolicy": "always",
-  "settings": {
+  "settings": 
+  {
     "image": "mcr.microsoft.com/media/live-video-analytics:1",
     "createOptions": 
-      "HostConfig": {
+      "HostConfig": 
+      {
         "IpcMode": "host"
       }
-    }
   }
 }
 ```
 
 Mer information om IPC-lägen finns i https://docs.docker.com/engine/reference/run/#ipc-settings---ipc .
 
-## <a name="media-graph-grpc-extension-contract-definitions"></a>Kontrakts definitioner för gRPC-tillägg för media Graph
+## <a name="mediagraph-grpc-extension-contract-definitions"></a>MediaGraph gRPC tillägg kontrakts definitioner
 
 Det här avsnittet definierar gRPC-kontraktet som definierar data flödet.
 
@@ -159,10 +176,12 @@ Autentiseringsuppgifter för användar namn/lösen ord kan användas för att å
 {
   "@type": "#Microsoft.Media.MediaGraphGrpcExtension",
   "name": "{moduleIdentifier}",
-  "endpoint": {
+  "endpoint": 
+  {
     "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
     "url": "tcp://customExtension:8081",
-    "credentials": {
+    "credentials": 
+    {
       "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
       "username": "username",
       "password": "password"
@@ -175,6 +194,35 @@ Autentiseringsuppgifter för användar namn/lösen ord kan användas för att å
 När gRPC-begäran skickas kommer följande huvud att ingå i metadata för begäran, mimicking HTTP Basic-autentisering.
 
 `x-ms-authentication: Basic (Base64 Encoded username:password)`
+
+
+## <a name="configuring-inference-server-for-each-mediagraph-over-grpc-extension"></a>Konfigurera en härlednings Server för varje MediaGraph över gRPC-tillägg
+När du konfigurerar en härlednings server behöver du inte exponera exponera en nod för varje AI-modell som är paketerad i en härlednings Server. I stället kan du använda `extensionConfiguration` `MediaGraphGrpcExtension` nodens egenskap och definiera hur du väljer AI-modell (er) för en diagram instans. Under körningen skickar LVA strängen till inferencing-servern som kan använda den för att anropa den önskade AI-modellen. Den här `extensionConfiguration` egenskapen är en valfri egenskap och är Server Specific. Egenskapen kan användas som nedan:
+```
+{
+  "@type": "#Microsoft.Media.MediaGraphGrpcExtension",
+  "name": "{moduleIdentifier}",
+  "endpoint": 
+  {
+    "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
+    "url": "${grpcExtensionAddress}",
+    "credentials": 
+    {
+      "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
+      "username": "${grpcExtensionUserName}",
+      "password": "${grpcExtensionPassword}"
+    }
+  },
+    // Optional server configuration string. This is server specific 
+  "extensionConfiguration": "{Optional extension specific string}",
+  "dataTransfer": 
+  {
+    "mode": "sharedMemory",
+    "SharedMemorySizeMiB": "5"
+  }
+    //Other fields omitted
+}
+```
 
 ## <a name="using-grpc-over-tls"></a>Använda gRPC över TLS
 

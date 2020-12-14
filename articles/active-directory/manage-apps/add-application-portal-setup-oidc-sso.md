@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: c0253dc3c9dc029cd964fb32b148be1405e7fbad
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 2ff35a8d86534a99b8957a9272f9a1eb59fc27ab
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780186"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399986"
 ---
 # <a name="quickstart-set-up-oidc-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Snabb start: Konfigurera OIDC-baserad enkel inloggning (SSO) för ett program i din Azure Active Directory (Azure AD)-klient
 
@@ -23,7 +23,7 @@ Kom igång med förenklade användar inloggningar genom att konfigurera enkel in
 
 Mer information om OIDC-baserad SSO finns i [förstå OIDC-baserad enkel inloggning](configure-oidc-single-sign-on.md).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill konfigurera SSO för ett program som du har lagt till i din Azure AD-klient behöver du:
 
@@ -49,7 +49,7 @@ Så här konfigurerar du enkel inloggning för ett program:
     :::image type="content" source="media/add-application-portal-setup-oidc-sso/sign-up-oidc-sso.png" alt-text="Skärm bild som visar alternativet enkel inloggning och registrerings knappen." lightbox="media/add-application-portal-setup-oidc-sso/sign-up-oidc-sso.png":::
 
 
-2. Välj **registrering** så kommer du att få inloggnings sidan för appens utvecklare. Logga in med Azure Active Directory inloggnings uppgifter. 
+2. Välj **registrering** så kommer du till inloggnings sidan för appens utvecklare. Logga in med Azure Active Directory inloggnings uppgifter. 
 
    > [!IMPORTANT]
     > Om du redan har en prenumeration på programmet kommer verifieringen av användar information och klient-och katalog information att ske. Om programmet inte kan verifiera användaren kommer du att omdirigera dig för att registrera dig för program tjänsten eller på fel sidan.

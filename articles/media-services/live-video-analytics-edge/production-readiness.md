@@ -3,12 +3,12 @@ title: Produktions beredskap och bästa praxis – Azure
 description: Den här artikeln innehåller rikt linjer för hur du konfigurerar och distribuerar live video analys på IoT Edge modul i produktions miljöer.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 215427e3524861a842349b197668d92167960e5c
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 56982d84b7ffac718072683076657d56a2691d6c
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906343"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400564"
 ---
 # <a name="production-readiness-and-best-practices"></a>Produktionsberedskap och bästa praxis
 
@@ -109,7 +109,11 @@ Om du tittar på exempel medie diagrammen för snabb start och självstudier, t.
 
 ### <a name="naming-video-assets-or-files"></a>Namnge videotillgångar eller filer
 
-Med medie diagram kan du skapa till gångar i molnet eller MP4-filerna på gränsen. Medie till gångar kan genereras av [kontinuerlig video inspelning](continuous-video-recording-tutorial.md) eller av [händelsebaserade videoinspelningar](event-based-video-recording-tutorial.md). Även om dessa till gångar och filer kan namnges som du vill, är den rekommenderade namngivnings strukturen för kontinuerlig videoinspelnings baserad medie till gång " &lt; anytext &gt; -$ {system. GraphTopologyName}-$ {system. GraphInstanceName}". Som exempel kan du ange assetNamePattern på till gångs mottagaren på följande sätt:
+Med medie diagram kan du skapa till gångar i molnet eller MP4-filerna på gränsen. Medie till gångar kan genereras av [kontinuerlig video inspelning](continuous-video-recording-tutorial.md) eller av [händelsebaserade videoinspelningar](event-based-video-recording-tutorial.md). Även om dessa till gångar och filer kan namnges som du vill, är den rekommenderade namngivnings strukturen för kontinuerlig videoinspelnings baserad medie till gång " &lt; anytext &gt; -$ {system. GraphTopologyName}-$ {system. GraphInstanceName}".   
+
+Ersättnings mönstret definieras av $-tecknet följt av klammerparenteser: **$ {variableName}**.  
+
+Som exempel kan du ange assetNamePattern på till gångs mottagaren på följande sätt:
 
 ```
 "assetNamePattern": "sampleAsset-${System.GraphTopologyName}-${System.GraphInstanceName}
@@ -130,15 +134,29 @@ Om du kör flera instanser av samma graf kan du använda grafens Topology-namn o
 För händelsebaserade videoinspelning – genererade MP4-videoklipp på gränsen bör det rekommenderade namngivnings mönstret innehålla DateTime och för flera instanser av samma graf rekommenderar att du använder systemvariablerna GraphTopologyName och GraphInstanceName. Som exempel kan du ange filePathPattern på fil mottagare på följande sätt: 
 
 ```
-"filePathPattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}-${System.DateTime}"
+"fileNamePattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}-${System.DateTime}"
 ```
 
 Eller 
 
 ```
-"filePathPattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}--${System.GraphTopologyName}-${System.GraphInstanceName} ${System.DateTime}"
+"fileNamePattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}--${System.GraphTopologyName}-${System.GraphInstanceName} ${System.DateTime}"
 ```
+>[!NOTE]
+> I exemplet ovan är variabeln **fileSinkOutputName** ett exempel variabel namn som du definierar i diagram sto pol Ogin. Detta är **inte** en system variabel. 
 
+#### <a name="system-variables"></a>Systemvariabler
+Vissa systemdefinierade variabler som du kan använda är:
+
+|System variabel|Beskrivning|Exempel|
+|-----------|-----------|-----------|
+|System. DateTime|UTC-datum/tid i ISO8601-filkompatibelt format (grundläggande representation YYYYMMDDThhmmss).|20200222T173200Z|
+|System. PreciseDateTime|UTC-datum/tid i ISO8601-filkompatibelt format med millisekunder (grundläggande representation av YYYYMMDDThhmmss. SSS).|20200222T 173200.123 Z|
+|System. GraphTopologyName|Användarens angivna namn för den körnings diagram sto pol Ogin.|IngestAndRecord|
+|System. GraphInstanceName|Användardefinierat namn för den pågående graf-instansen.|camera001|
+
+>[!TIP]
+> System. PreciseDateTime kan inte användas när du namnger till gångar på grund av "." i namnet
 ### <a name="keeping-your-vm-clean"></a>Hålla den virtuella datorn ren
 
 Den virtuella Linux-datorn som du använder som en gräns enhet kan sluta svara om den inte hanteras regelbundet. Det är viktigt att hålla cacheminnena rena, ta bort onödiga paket och även ta bort oanvända behållare från den virtuella datorn. För att göra detta är en uppsättning rekommenderade kommandon som du kan använda på din virtuella dator i Edge.
@@ -153,7 +171,7 @@ Den virtuella Linux-datorn som du använder som en gräns enhet kan sluta svara 
 
     Alternativet ta bort automatiskt tar bort paket som installerades automatiskt på grund av att ett annat paket krävdes, men med att de andra paketen tagits bort behövs de inte längre
 1. `sudo docker image ls` – Innehåller en lista över Docker-avbildningar i Edge-systemet
-1. `sudo docker system prune `
+1. `sudo docker system prune`
 
     Docker tar en försiktig metod för att rensa oanvända objekt (kallas ofta skräp insamling), till exempel bilder, behållare, volymer och nätverk: dessa objekt tas normalt inte bort om du inte uttryckligen ber Dockaren att göra det. Detta kan göra att Docker kan använda extra disk utrymme. För varje typ av objekt ger Dockare ett kommando för att rensa. Dessutom kan du använda Docker system Clean för att rensa flera typer av objekt samtidigt. Mer information finns i [Rensa oanvända Docker-objekt](https://docs.docker.com/config/pruning/).
 1. `sudo docker rmi REPOSITORY:TAG`

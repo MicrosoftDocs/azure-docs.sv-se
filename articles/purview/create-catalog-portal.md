@@ -1,18 +1,18 @@
 ---
 title: 'Snabb start: skapa ett Azure avdelningens kontroll-konto i Azure Portal (för hands version)'
 description: I den här snabb starten beskrivs hur du skapar ett Azure avdelningens kontroll-konto och konfigurerar behörigheter för att börja använda det.
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: 06e62f49b996eac09b9a0a6cb9001eb362833168
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 3119152e4a7d0dc799dfe273722101c95c11c0c9
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359306"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400394"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Snabb start: skapa ett Azure avdelningens kontroll-konto i Azure Portal
 
@@ -21,11 +21,11 @@ ms.locfileid: "97359306"
 
 I den här snabb starten skapar du ett Azure avdelningens kontroll-konto.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Din egen [Azure Active Directory klient](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).
+* En egen [klientorganisation i Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).
 
 * Ditt konto måste ha behörighet att skapa resurser i prenumerationen
 

@@ -4,12 +4,12 @@ description: I den här självstudien använder du en AI-modell server som tillh
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: a15984917b854a9f3e2dbc80dd0775989c80bf81
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 82906111e64bd278d4371d1c3497fefc4510bbbd
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483686"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401222"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Självstudie: analysera direktsänd video med hjälp av poly™ Model Server – AI-tillägg från Intel 
 
@@ -20,7 +20,7 @@ Den här självstudien använder en virtuell Azure-dator som en IoT Edge enhet o
 > [!NOTE]
 > Den här självstudien kräver att en x86-64-dator används som din gräns enhet.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Ett Azure-konto som innehåller en aktiv prenumeration. [Skapa ett konto utan kostnad](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) om du inte redan har ett.
 * [Visual Studio Code](https://code.visualstudio.com/)med följande tillägg:
@@ -45,9 +45,9 @@ I den här snabb starten ska du använda video analys i real tid för IoT Edge t
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/use-intel-openvino-tutorial/http-extension-with-vino.svg" alt-text="Översikt":::
 
-Det här diagrammet visar hur signal flödet i den här snabb starten. En [Edge-modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simulerar en IP-kamera som är värd för en RTSP-server (Real-Time Streaming Protocol). En [RTSP-källmapp](media-graph-concept.md#rtsp-source) hämtar videofeeden från den här servern och skickar video bild rutor till den [RAM hastighet filter processor](media-graph-concept.md#frame-rate-filter-processor) noden. Den här processorn begränsar bild hastigheten för video strömmen som når noden för [http-tilläggsbegäranden](media-graph-concept.md#http-extension-processor) . 
+Det här diagrammet visar hur signal flödet i den här snabb starten. En [Edge-modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simulerar en IP-kamera som är värd för en RTSP-server (Real-Time Streaming Protocol). En [RTSP-källmapp](media-graph-concept.md#rtsp-source) hämtar video flödet från den här servern och skickar video ramar till noden [http-tilläggsbegäranden](media-graph-concept.md#http-extension-processor) . 
 
-Noden HTTP-tillägg spelar rollen för en proxy. Den konverterar video bild rutorna till den angivna bild typen. Sedan vidarebefordrar avbildningen över REST till en annan Edge-modul som kör AI-modeller bakom en HTTP-slutpunkt. I det här exemplet är Edge-modulen Open™ modell Server – AI-tillägget från Intel. Noden för HTTP-tilläggsbegäranden samlar in identifierings resultaten och publicerar händelser till noden [IoT Hub mottagare](media-graph-concept.md#iot-hub-message-sink) . Noden skickar sedan händelserna till [IoT Edge Hub](../../iot-edge/iot-edge-glossary.md#iot-edge-hub).
+Noden HTTP-tillägg spelar rollen för en proxy. Det samplar de inkommande video bild rutorna som angetts av ditt `samplingOptions` fält och konverterar även video bild rutorna till den angivna bild typen. Sedan vidarebefordrar avbildningen över REST till en annan Edge-modul som kör AI-modeller bakom en HTTP-slutpunkt. I det här exemplet är Edge-modulen Open™ modell Server – AI-tillägget från Intel. Noden för HTTP-tilläggsbegäranden samlar in identifierings resultaten och publicerar händelser till noden [IoT Hub mottagare](media-graph-concept.md#iot-hub-message-sink) . Noden skickar sedan händelserna till [IoT Edge Hub](../../iot-edge/iot-edge-glossary.md#iot-edge-hub).
 
 I de här självstudierna får du:
 

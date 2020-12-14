@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 631aaf3c6a99e093f6ed59089f7ce99803f3f054
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6eff662ac0140e7a64cc3bab28856178708cb9b2
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446618"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400683"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Kontrol lera åtkomsten till lagrings kontot för SQL-poolen utan server i Azure Synapse Analytics
 
 En server utan SQL-pool läser filer direkt från Azure Storage. Behörigheter för att komma åt filerna i Azure Storage styrs på två nivåer:
 - **Lagrings nivå** – användaren bör ha behörighet att komma åt underliggande lagringsfiler. Lagrings administratören ska tillåta att Azure AD-huvudobjektet läser/skriver filer, eller genererar SAS-nyckel som används för åtkomst till lagring.
-- **SQL Service Level** -användaren ska ha `SELECT` behörighet att läsa data från den [externa tabellen](develop-tables-external-tables.md) eller `ADMINISTER BULK ADMIN` behörighet att köra `OPENROWSET` och även behörighet att använda autentiseringsuppgifter som ska användas för åtkomst till lagring.
+- **SQL Service nivå** – användaren ska ha beviljats behörighet att läsa data med hjälp av en [extern tabell](develop-tables-external-tables.md) eller köra `OPENROWSET` funktionen. Läs mer om [de behörigheter som krävs i det här avsnittet](develop-storage-files-overview.md#permissions).
 
 Den här artikeln beskriver de typer av autentiseringsuppgifter som du kan använda och hur sökning efter autentiseringsuppgifter registreras för SQL-och Azure AD-användare.
 
@@ -83,9 +83,9 @@ Du kan använda följande kombinationer av auktoriserings-och Azure Storage type
 
 | Auktoriseringstyp  | Blob Storage   | ADLS Gen1        | ADLS Gen2     |
 | ------------------- | ------------   | --------------   | -----------   |
-| [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)    | Stöds\*      | Stöds inte   | Stöds\*     |
+| [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)    | Tillåtna\*      | Stöds inte   | Tillåtna\*     |
 | [Hanterad identitet](?tabs=managed-identity#supported-storage-authorization-types) | Stöds      | Stöds        | Stöds     |
-| [Användar identitet](?tabs=user-identity#supported-storage-authorization-types)    | Stöds\*      | Stöds\*        | Stöds\*     |
+| [Användar identitet](?tabs=user-identity#supported-storage-authorization-types)    | Tillåtna\*      | Tillåtna\*        | Tillåtna\*     |
 
 \* SAS-token och Azure AD-identitet kan användas för att få åtkomst till lagring som inte skyddas med brand väggen.
 

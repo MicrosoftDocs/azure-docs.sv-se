@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/02/2020
+ms.date: 12/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 396d6f69673f8758d8d1302f8d10b8a92e5f50b4
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 37d9c24d58e0dd9fb10db607ef1b96de0a44eb78
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530769"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399374"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Publicera din app i Azure AD App-galleriet
 
@@ -89,14 +89,14 @@ Om du vill visa ett program i Azure AD App-galleriet måste du implementera mins
 
 I följande tabell jämförs huvud standarder: Open Authentication 2,0 (OAuth 2,0) med OpenID Connect (OIDC), Security Assertion Markup Language (SAML) och Web Services Federation (WS-utfodras).
 
-| Kapacitet| OAuth/OIDC| SAML/WS-Fed |
+| Funktion| OAuth/OIDC| SAML/WS-Fed |
 | - |-|-|
 | Webbaserad enkel inloggning| √| √ |
 | Webbaserad enkel utloggning| √| √ |
 | Mobil-baserad enkel inloggning| √| √* |
 | Mobil-baserad enkel utloggning| √| √* |
-| Principer för villkorlig åtkomst för mobila program| √| X |
-| Sömlös MFA-upplevelse för mobila program| √| X |
+| Principer för villkorlig åtkomst för mobila program| √| √* |
+| Sömlös MFA-upplevelse för mobila program| √| √* |
 | SCIM-etablering| √| √ |
 | Åtkomst Microsoft Graph| √| X |
 

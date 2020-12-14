@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2020
 ms.author: yelevin
-ms.openlocfilehash: b685f716688cfbe732fa7d3566e1af97cc81272a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 390d2c8488fd2b35c775eabe43677b9349b547a1
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94652118"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401652"
 ---
 # <a name="tutorial-create-custom-analytics-rules-to-detect-threats"></a>Självstudie: skapa anpassade analys regler för att identifiera hot
 
@@ -145,7 +145,13 @@ Du kan skapa anpassade analys regler som hjälper dig att söka efter de typer a
 
 ## <a name="troubleshooting"></a>Felsökning
 
-### <a name="a-scheduled-rule-failed-to-execute-or-appears-with-auto-disabled-added-to-the-name"></a>En schemalagd regel kunde inte köras eller visas med automatiskt inaktive rad tillagd i namnet
+### <a name="issue-no-events-appear-in-query-results"></a>Problem: inga händelser visas i frågeresultaten
+
+Om **händelse gruppering** är inställt på att **utlösa en avisering för varje händelse**, kan det hända att inga frågeresultat visas i vissa situationer när du visar frågeresultaten vid ett senare tillfälle (till exempel vid pivotering av aviseringar från en incident). Detta beror på att händelsens anslutning till aviseringen uppnås genom hashing av den specifika händelsens information och inkludering av hash i frågan. Om frågeresultaten har ändrats sedan aviseringen genererades, kommer hashvärdet inte längre att vara giltigt och inga resultat visas. 
+
+Om du vill se händelserna tar du bort raden manuellt med hash-värdet från regelns fråga och kör frågan.
+
+### <a name="issue-a-scheduled-rule-failed-to-execute-or-appears-with-auto-disabled-added-to-the-name"></a>Problem: en schemalagd regel kunde inte köras eller visas med automatiskt inaktive rad tillagd till namnet
 
 Det är en sällsynt förekomst att en schemalagd frågeregel inte kan köras, men det kan inträffa. Azure Sentinel klassificerar ett problem som antingen är tillfälligt eller permanent, baserat på den särskilda typen av haveri och de förhållanden som ledde till den.
 

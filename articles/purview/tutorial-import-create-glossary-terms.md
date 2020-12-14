@@ -1,18 +1,18 @@
 ---
 title: 'Självstudie: skapa och importera ord listans villkor i Azure avdelningens kontroll (för hands version)'
 description: I den här självstudien beskrivs hur du skapar ord listans villkor, lägger till ord lista i en till gång och importerar ord listans villkor.
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 3a81d9480dfb07703d5f1ccfb495d069f140dd71
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 4dc8dd84c22d094c87c82f5a920015f886780df2
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96555840"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399816"
 ---
 # <a name="tutorial-create-and-import-glossary-terms-in-azure-purview-preview"></a>Självstudie: skapa och importera ord listans villkor i Azure avdelningens kontroll (för hands version)
 
@@ -39,7 +39,7 @@ I den här guiden får du lära dig att:
 
 Logga in på [Azure-portalen](https://portal.azure.com).
 
-## <a name="create-glossary-terms"></a>Skapa ord listas villkor
+## <a name="create-glossary-terms"></a>Skapa ordlistetermer
 
 Du kan skapa affärs-eller tekniska villkor i ord listan. Du kan också kommentera dina till gångar genom att använda villkor.
 
