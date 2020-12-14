@@ -54,6 +54,8 @@ items:
         href: concept-business-glossary.md
       - name: Datainsikter
         href: concept-insights.md
+      - name: Webbläsare som stöds
+        href: supported-browsers.md
       - name: Vanliga frågor och svar
         href: frequently-asked-questions.md
   - name: Anvisningar
@@ -110,6 +112,8 @@ items:
             href: how-to-create-import-export-glossary.md
           - name: Hantera termmallar
             href: how-to-manage-term-templates.md
+          - name: Massredigera tillgångar för att tilldela ordlistans villkor
+            href: how-to-bulk-edit-assets.md
       - name: Klassificera
         items:
           - name: Skapa en anpassad klassificering och klassificeringsregel

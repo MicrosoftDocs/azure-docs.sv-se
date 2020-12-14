@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Dokumentation om förhandsversionen av Azure Notebooks
-summary: Den 15 januari 2021 kommer Azure Notebooks offentliga förhandsgranskningssida att tas ur bruk och ersättas med integrerade tjänster från Visual Studio, Azure och GitHub. Läs om dina alternativ och Microsofts andra lösningar för bärbara datorer på https://notebooks.azure.com/Content/alternatives.html.
+summary: Den 15 januari 2021 kommer sidan för den allmänt tillgängliga förhandsversionen av Azure Notebooks att tas ur bruk och ersättas med integrerade tjänster från Visual Studio, Azure och GitHub. Läs om dina alternativ och Microsofts andra lösningar för bärbara datorer på https://notebooks.azure.com/Content/alternatives.html.
 metadata:
   title: Dokumentation om förhandsversionen av Azure Notebooks
   description: Lär dig hur du skapar, kör och delar Jupyter Notebooks via den värdbaserade förhandsversionstjänsten för Azure Notebooks.
@@ -9,12 +9,12 @@ metadata:
   author: JoshuaPartlow
   ms.author: joshuapa
   ms.date: 06/17/2020
-  ms.openlocfilehash: 3f89d249e126cfeb65b141e39d6a6a998e4d1758
-  ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+  ms.openlocfilehash: c729e93f48a0b3ef382edd32a9322ec5c0174b3b
+  ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
   ms.translationtype: HT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 10/19/2020
-  ms.locfileid: "92207758"
+  ms.lasthandoff: 12/11/2020
+  ms.locfileid: "97109410"
 landingContent:
 - title: Om Azure Notebooks
   linkLists:
@@ -22,49 +22,15 @@ landingContent:
     links:
     - text: Vad är tjänsten Azure Notebooks?
       url: azure-notebooks-overview.md
-  - linkListType: deploy
-    links:
-    - text: Azure Notebooks-exempel
-      url: azure-notebooks-samples.md
   - linkListType: get-started
     links:
     - text: Få åtkomst till Azure Notebooks-filer
       url: https://notebooks.azure.com/
 - title: Kom igång med Azure Notebooks
   linkLists:
-  - linkListType: learn
-    links:
-    - text: Analysera klimatdata med Azure Notebooks
-      url: /learn/modules/analyze-climate-data-with-azure-notebooks/
-  - linkListType: tutorial
-    links:
-    - text: Skapa och köra en Jupyter Notebook med Python
-      url: tutorial-create-run-jupyter-notebook.md
   - linkListType: quickstart
     links:
     - text: Logga in och ange ett användar-ID
       url: quickstart-sign-in-azure-notebooks.md
-    - text: Skapa och dela en notebook-fil
-      url: quickstart-create-share-jupyter-notebook.md
-    - text: Klona en notebook-fil
-      url: quickstart-clone-jupyter-notebook.md
-    - text: Migrera en lokal Jupyter Notebook
-      url: quickstart-migrate-local-jupyter-notebook.md
-    - text: Skapa ett projekt med en anpassad miljö
-      url: quickstart-create-jupyter-notebook-project-environment.md
     - text: Exportera ditt projekt
       url: quickstart-export-jupyter-notebook-project.md
-- title: Viktiga aktiviteter dig för Azure Notebooks
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Hantera och konfigurera projekt
-      url: configure-manage-azure-notebooks-projects.md
-    - text: Arbeta med datafiler
-      url: work-with-project-data-files.md
-    - text: Skapa och klona projekt
-      url: create-clone-jupyter-notebooks.md
-    - text: Komma åt molndata i en notebook-fil
-      url: access-data-resources-jupyter-notebooks.md
-    - text: Installera paket i en notebook-fil
-      url: install-packages-jupyter-notebook.md

@@ -12,6 +12,10 @@
           href: concepts-certificate-rotation.md
 - name: Delad dokumentation
   items:
+    - name: Databasdistribution
+      items:
+        - name: GitHub-åtgärder
+          href: how-to-deploy-github-action.md
     - name: Migrering
       items:
         - name: Migrera data med pg_dump och pg_restore
@@ -202,6 +206,8 @@
               displayName: 'query store, performance, optimize, recommendations'
         - name: Apputveckling
           items:
+            - name: Bästa praxis
+              href: application-best-practices.md
             - name: Anslutningsbibliotek
               href: concepts-connection-libraries.md
               displayName: 'libraries, drivers'
@@ -416,10 +422,16 @@
               href: flexible-server/connect-python.md
     - name: Självstudier
       items:
-        - name: Skapa en webbapp i ett virtuellt nätverk
-          href: flexible-server/tutorial-webapp-server-vnet.md
-        - name: Distribuera en Django-app
-          href: flexible-server/tutorial-django-app-service-postgres.md
+        - name: Skapa med AKS
+          items:
+            - name: Distribuera Python-app på Kubernetes
+              href: flexible-server/tutorial-django-aks-database.md
+        - name: Skapa med App Services
+          items:
+            - name: Skapa en webbapp i ett virtuellt nätverk
+              href: flexible-server/tutorial-webapp-server-vnet.md
+            - name: Distribuera en Django-app på App Service
+              href: flexible-server/tutorial-django-app-service-postgres.md
     - name: Begrepp
       items:
         - name: Servrar
@@ -466,6 +478,8 @@
               href: flexible-server/how-to-manage-server-portal.md
             - name: Azure CLI
               href: flexible-server/how-to-manage-server-cli.md
+            - name: Anslut och fråga guide
+              href: flexible-server/how-to-connect-query-guide.md
         - name: Schemalagt underhåll
           items:
             - name: Azure Portal

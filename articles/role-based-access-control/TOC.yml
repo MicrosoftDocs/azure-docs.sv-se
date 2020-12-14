@@ -9,7 +9,7 @@
       href: rbac-and-directory-admin-roles.md
 - name: Snabbstarter
   items:
-    - name: Visa åtkomst för en användare
+    - name: Kontrollera åtkomst för en användare
       href: check-access.md
     - name: ARM-mall
       displayName: Resource Manager

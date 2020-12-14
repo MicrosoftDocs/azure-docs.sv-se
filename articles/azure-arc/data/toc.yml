@@ -42,13 +42,13 @@
               href: /sql/azdata/install/deploy-install-azdata-pip?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
     - name: Skapa datakontrollant
       items:
-        - name: Skapa datakontrollant (Azure Data Studio)
+        - name: Azure Data Studio
           href: create-data-controller-azure-data-studio.md
-        - name: Skapa datakontrollantresurs (portal)
+        - name: Azure Portal
           href: create-data-controller-resource-in-azure-portal.md
-        - name: Skapa datakontrollant (Azure Data CLI)
+        - name: Azure Data CLI (azdata)
           href: create-data-controller-using-azdata.md
-        - name: Skapa datakontrollant med Kubernetes
+        - name: Kubernetes-verktyg
           href: create-data-controller-using-kubernetes-native-tools.md
     - name: Vanliga upplevelser i Azure Arc-aktiverade datatjänster
       items:
@@ -80,6 +80,8 @@
           href: view-arc-data-services-inventory-in-azure-portal.md
         - name: Hämta användarnamn och lösenord för datakontrollant
           href: retrieve-the-username-password-for-data-controller.md
+        - name: Uppdatera autentiseringsuppgifter för tjänstens huvudnamn
+          href: update-service-principal-credentials.md
     - name: Felsökning
       items:
         - name: Guide

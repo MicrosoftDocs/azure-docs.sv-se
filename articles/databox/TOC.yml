@@ -90,6 +90,8 @@
               href: data-box-local-web-ui-admin.md
             - name: Använd självhanterad frakt
               href: data-box-portal-customer-managed-shipping.md
+            - name: Ta med dina egna certifikat
+              href: data-box-bring-your-own-certificates.md
             - name: Aktivera kundhanterad nyckel
               href: data-box-customer-managed-encryption-key-portal.md
             - name: Använda Customer Lockbox

@@ -285,8 +285,8 @@
               href: azure-stack-edge-contact-microsoft-support.md
     - name: Delad viktig information
       items:
-        - name: 2011 – Aktuell
-          href: azure-stack-edge-gpu-2011-release-notes.md
+        - name: 2012 – Aktuell
+          href: azure-stack-edge-gpu-2012-release-notes.md
         - name: 2010
           href: azure-stack-edge-gpu-2009-release-notes.md
         - name: 2008

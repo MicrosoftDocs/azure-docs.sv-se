@@ -12,6 +12,10 @@
           href: concepts-certificate-rotation.md
 - name: Delad dokumentation
   items:
+    - name: Databasdistribution
+      items:
+        - name: GitHub Actions
+          href: quickstart-mysql-github-actions.md
     - name: Migrering
       items:
         - name: Migrera data med mysqldump eller phpmyadmin
@@ -88,8 +92,6 @@
               href: connect-cpp.md
             - name: Go
               href: connect-go.md
-            - name: GitHub Actions
-              href: quickstart-mysql-github-actions.md
     - name: Självstudier
       items:
         - name: Utforma en databas

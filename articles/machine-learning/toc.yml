@@ -84,16 +84,33 @@
           href: tutorial-setup-vscode-extension.md
         - name: Träna och distribuera en TensorFlow-modell för avbildningsklassificering
           href: tutorial-train-deploy-image-classification-model-vscode.md
+    - name: Microsoft Power BI integration
+      items:
+        - name: 'Del 1: Träna och distribuera modeller'
+          items:
+            - name: Använda Notebooks (kod)
+              href: tutorial-power-bi-custom-model.md
+            - name: Använda designer
+              href: tutorial-power-bi-designer-model.md
+            - name: Använda automatisk ML
+              href: tutorial-power-bi-automated-model.md
+        - name: 'Del 2: Förbruka i Power BI'
+          href: /power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context
 - name: Exempel
   items:
     - name: Jupyter Notebook
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
+    - name: Exempellagringsplats
+      displayName: 'example, examples, jupyter, python, notebook, github'
+      href: 'https://github.com/Azure/azureml-examples'
     - name: Designerexempel och datauppsättningar
       displayName: 'example, examples, studio, pipelines, data sets, modules'
       href: samples-designer.md
+    - name: MLOps-exempel från slutpunkt till slutpunkt
+      href: 'https://github.com/microsoft/MLOps'
     - name: Open Datasets (offentlig version)
-      href: ../open-datasets/samples.md?context=%2fazure%2fmachine-learning%2fcontext%2fml-context
+      href: /azure/open-datasets/samples?context=azure/machine-learning/context/ml-context
 - name: Begrepp
   items:
     - name: Planera och hantera kostnader
@@ -155,8 +172,6 @@
         - name: Översikt över Enterprise Security
           displayName: authorization authentication encryption aad azure active directory
           href: concept-enterprise-security.md
-        - name: Datakryptering
-          href: concept-data-encryption.md
         - name: Säkerhetsbaslinje
           href: security-baseline.md
     - name: Ansvarsfull ML
@@ -179,17 +194,14 @@
       items:
         - name: Identitets- och åtkomsthantering
           items:
-            - name: Autentisering av arbetsyta
+            - name: Konfigurera autentisering
               displayName: 'authentication, auth, oauth'
               href: how-to-setup-authentication.md
-            - name: Autentisering av webbtjänst
-              displayName: 'authentication, model, web service'
-              href: how-to-authenticate-web-service.md
-            - name: Hantera åtkomst (auktorisering)
+            - name: Hantera användare och roller
               href: how-to-assign-roles.md
-            - name: Hanterade identiteter för åtkomstkontroll
+            - name: Använda hanterade identiteter för åtkomstkontroll
               href: how-to-use-managed-identities.md
-            - name: Azure AD-identitet i AKS-distributioner
+            - name: Använda Azure AD-identitet i AKS-distributioner
               href: how-to-use-azure-ad-identity.md
         - name: Nätverkssäkerhet
           items:
@@ -399,9 +411,6 @@
         - name: Använd fjärrberäkningsmål
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
-        - name: Använd automatiserad ML med Databricks
-          displayName: automl
-          href: how-to-configure-databricks-automl-environment.md
         - name: Träna prognosmodeller automatiskt
           displayName: time series
           href: how-to-auto-train-forecast.md
@@ -448,15 +457,11 @@
               href: how-to-deploy-model-cognitive-search.md
             - name: Använda anpassad Docker-avbildning
               href: how-to-deploy-custom-docker-image.md
-            - name: Lokal dator
-              href: how-to-deploy-local.md
             - name: IoT Edge
-              href: ../iot-edge/tutorial-deploy-machine-learning.md?context=%2fazure%2fmachine-learning%2fservice%2fcontext%2fml-context
+              href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
             - name: FPGA-inferens
               href: how-to-deploy-fpga-web-service.md
-        - name: Felsöka (lokalt)
-          href: how-to-troubleshoot-deployment-local.md
-        - name: Felsöka (distans)
+        - name: Felsöka
           href: how-to-troubleshoot-deployment.md
         - name: Använda webbtjänst
           displayName: create client consume request response synchronous
@@ -534,7 +539,7 @@
           href: how-to-debug-parallel-run-step.md
     - name: Azure-pipelines för CI/CD
       displayName: 'continuous, integration, delivery'
-      href: /azure/devops/pipelines/targets/azure-machine-learning?context=%2fazure/machine-learning/context/ml-context
+      href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/context/ml-context
     - name: GitHub Actions för CI/CD
       href: how-to-github-actions-machine-learning.md
     - name: Hantera resurskvoter
@@ -556,7 +561,7 @@
   items:
     - name: Python SDK
       displayName: 'api, core, package, python, class'
-      href: /python/api/overview/azure/ml/intro?view=azure-ml-py
+      href: 'https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py'
     - name: R SDK
       displayName: 'api, core, package, R, class'
       href: 'https://azure.github.io/azureml-sdk-for-r/reference/index.html'
@@ -564,7 +569,7 @@
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
     - name: REST-API
-      href: /rest/api/azureml/
+      href: 'https://docs.microsoft.com/rest/api/azureml/'
     - name: Referens för designermodul
       displayName: 'module, reference, algorithm, studio'
       href: algorithm-module-reference/module-reference.md
@@ -595,11 +600,11 @@
       displayName: 'bugs, errors, troubleshoot'
       href: resource-known-issues.md
     - name: Användarforum
-      href: /answers/topics/azure-machine-learning.html
+      href: 'https://docs.microsoft.com/answers/topics/azure-machine-learning.html'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning-service'
     - name: Jämför våra ML-produkter
-      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=%2fazure/machine-learning/context/ml-context
+      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/context/ml-context
     - name: Vad har hänt med Workbench?
       displayName: 'desktop, ui, Workbench, upgrade, update, transfer'
       href: overview-what-happened-to-workbench.md

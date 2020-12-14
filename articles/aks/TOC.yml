@@ -333,8 +333,10 @@
           href: spark-job.md
         - name: 'Använda GPU:er'
           href: gpu-cluster.md
-        - name: Använda Azure Database for PostgreSQL
-          href: ../postgresql/concepts-aks.md
+        - name: Skapa app med PostgreSQL
+          href: ../postgresql/flexible-server/tutorial-django-aks-database.md
+        - name: Skapa app med MySQL
+          href: ../mysql/flexible-server/tutorial-deploy-wordpress-on-aks.md
           maintainContext: true
         - name: Använda Azure API Management
           href: ../api-management/api-management-kubernetes.md

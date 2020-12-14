@@ -41,17 +41,17 @@
       href: concept-generating-thumbnails.md
     - name: Identifiering av innehåll som är olämpligt för barn
       href: concept-detecting-adult-content.md
-- name: Ansvarsfull AI
+- name: Ansvarsfull användning av AI
   items:
     - name: Rumslig analys
       items:
-        - name: Transparensinformation
+        - name: Information om transparens
           items:
             - name: Introduktion till rumslig analys
               href: /legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
             - name: Egenskaper och begränsningar
               href: /legal/cognitive-services/computer-vision/accuracy-and-limitations?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
-        - name: Riktlinjer för distribution
+        - name: Integrering och ansvarsfull användning
           items:
             - name: Ansvarig användning för AI-distribution
               href: /legal/cognitive-services/computer-vision/responsible-use-deployment?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext

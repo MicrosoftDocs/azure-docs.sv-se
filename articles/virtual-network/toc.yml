@@ -39,6 +39,8 @@
       href: template-samples.md
 - name: Begrepp
   items:
+    - name: Begrepp och bästa praxis
+      href: concepts-and-best-practices.md
     - name: Verksamhetskontinuitet
       href: virtual-network-disaster-recovery-guidance.md
     - name: Anslutning

@@ -251,7 +251,7 @@
               href: log-query/query-audit.md
             - name: Optimera frågor
               href: log-query/query-optimization.md
-            - name: Funktioner
+            - name: Functions (Funktioner)
               href: log-query/functions.md
             - name: Parsa textdata
               href: log-query/parse-text.md
@@ -1175,6 +1175,8 @@
               href: platform/workbooks-automate.md
             - name: Grupper
               href: platform/workbooks-groups.md
+            - name: Ta med din egen lagring
+              href: platform/workbooks-bring-your-own-storage.md
             - name: Transformera JSON-data med JSONPath
               href: platform/workbooks-jsonpath.md
             - name: Flytta arbetsböcker till en annan region

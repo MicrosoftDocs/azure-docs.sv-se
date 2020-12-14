@@ -155,6 +155,25 @@
           href: identity-provider-wechat.md
         - name: Weibo
           href: identity-provider-weibo.md
+    - name: UX-anpassning
+      items:
+        - name: Konfigurera användarinmatning
+          href: configure-user-input.md
+        - name: Anpassa användargränssnittet med varumärkesprofilering
+          href: company-branding.md
+        - name: Anpassa användargränssnittet med en HTML-mall
+          href: customize-ui-with-html.md
+        - name: JavaScript och sidlayouter
+          href: javascript-and-page-layout.md
+        - name: Anpassa språk
+          href: language-customization.md
+        - name: Lösenordskomplexitet
+          href: password-complexity.md
+        - name: Inaktivera e-postverifiering
+          href: disable-email-verification.md
+        - name: Aktivera MFA
+          href: multi-factor-authentication.md
+          displayName: multi-factor auth
     - name: Användarflöde
       items:
         - name: Skapa ett flöde
@@ -167,21 +186,6 @@
               href: user-flow-self-service-password-reset.md
         - name: Lägg till villkorsstyrd åtkomst
           href: conditional-access-user-flow.md
-        - name: UX-anpassning
-          items:
-            - name: Anpassa användargränssnittet
-              href: customize-ui-overview.md
-            - name: JavaScript och sidlayouter
-              href: user-flow-javascript-overview.md
-            - name: Anpassa språk
-              href: user-flow-language-customization.md
-            - name: Lösenordskomplexitet
-              href: user-flow-password-complexity.md
-            - name: Inaktivera e-postverifiering
-              href: user-flow-disable-email-verification.md
-            - name: Aktivera MFA
-              href: custom-policy-multi-factor-authentication.md
-              displayName: multi-factor auth
         - name: Token och sessionshantering
           items:
             - name: Konfigurera token
@@ -219,29 +223,13 @@
             - name: Telefonregistrering och -inloggning
               href: phone-authentication.md
               displayName: 'otp, passwordless, phone number'
-        - name: UX-anpassning
+        - name: Anpassa e-postverifiering
           items:
-            - name: Konfigurera användarinmatning
-              href: custom-policy-configure-user-input.md
-              displayName: 'ui, ux'
-            - name: Anpassa användargränssnittet
-              href: custom-policy-ui-customization.md
-              displayName: 'ux, input, cors, html, css'
-            - name: Anpassa språk
-              href: custom-policy-localization.md
-            - name: Anpassa e-postverifiering
-              items:
-                - name: Mailjet
-                  href: custom-email-mailjet.md
-                - name: SendGrid
-                  href: custom-email-sendgrid.md
-              displayName: verification
-            - name: Inaktivera e-postverifiering
-              href: custom-policy-disable-email-verification.md
-            - name: Aktivera JavaScript
-              href: javascript-samples.md
-            - name: Lösenordskomplexitet
-              href: custom-policy-password-complexity.md
+            - name: Mailjet
+              href: custom-email-mailjet.md
+            - name: SendGrid
+              href: custom-email-sendgrid.md
+          displayName: verification
         - name: Token och sessionshantering
           items:
             - name: Anpassa token

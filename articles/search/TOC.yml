@@ -256,9 +256,11 @@
       items:
         - name: Frågetyper och sammansättning
           href: search-query-overview.md
-        - name: Skapa en enkel fråga
+        - name: Skapa en grundläggande fråga
+          href: search-query-create.md
+        - name: Använd enkel syntax (exempel)
           href: search-query-simple-examples.md
-        - name: Använda fullständig Lucene-syntax
+        - name: Använda fullständig Lucene (exempel)
           href: search-query-lucene-examples.md
         - name: Specialtecken och delvisa termer
           href: search-query-partial-matching.md
@@ -536,6 +538,8 @@
           href: 'https://wolterskluwereap.azurewebsites.net/'
         - name: JFK-filer – demo
           href: 'https://www.microsoft.com/en-us/ai/ai-lab-jfk-files'
+        - name: Jobb i New York – demo
+          href: 'https://azjobsdemo.azurewebsites.net/'
     - name: Utbildning
       items:
         - name: Introduktion (Microsoft Learn)
@@ -548,5 +552,5 @@
       href: search-faq-frequently-asked-questions.md
     - name: Prissättning
       href: 'https://azure.microsoft.com/pricing/details/search/'
-    - name: Video
+    - name: Videoklipp
       href: 'https://azure.microsoft.com/resources/videos/index/?services=search'

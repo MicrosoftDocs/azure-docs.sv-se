@@ -134,7 +134,7 @@
                   href: ./security/synapse-workspace-understand-what-role-you-need.md
                 - name: Synapse-arbetsytehanterad identitet
                   href: ./security/synapse-workspace-managed-identity.md
-    - name: Instruktionsguider
+    - name: Anvisningar
       items:
         - name: Hantera och övervaka
           items:
@@ -1095,9 +1095,9 @@
         - name: Använda bedömningsguiden för dedikerade SQL-pooler
           href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
           displayname: machine learning
-        - name: Träna en modell utan kod med Azure AutoML
+        - name: Träna en modell utan kod med automatiserad ML
           href: ./machine-learning/tutorial-automl.md
-        - name: Träna en modell i Python med Azure AutoML
+        - name: Träna en modell i Python med automatiserad ML
           href: ./spark/apache-spark-azure-machine-learning-tutorial.md
           displayname: machine learning
         - name: Skapa en modell med Apache Spark MLlib

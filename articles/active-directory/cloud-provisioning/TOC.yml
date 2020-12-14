@@ -48,6 +48,8 @@
       items:
         - name: Automatisk agentuppgradering
           href: how-to-automatic-upgrade.md
+        - name: Alternativ för agentregistrering
+          href: how-to-manage-registry-options.md
     - name: Utveckla
       items:
         - name: Transformeringar
