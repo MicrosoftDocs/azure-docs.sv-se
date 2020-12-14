@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2020
-ms.openlocfilehash: 9cac0a0026a7007e227607e04e03a77e4df99ecd
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 9ce0ab34aac1a3dda823c9270f4eacebfb99166f
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368130"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387674"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Fråga i Azure Kognitiv sökning
 
-Azure Kognitiv sökning erbjuder ett mycket frågespråk som stöd för ett brett utbud av scenarier, från kostnads fri formulärs ökning till mönster med hög angiven fråga. Den här artikeln sammanfattar de typer av frågor som du kan skapa.
+Azure Kognitiv sökning erbjuder ett omfattande frågespråk för att stödja ett brett utbud av scenarier, från fritext sökning, till mönster med hög angiven fråga. Den här artikeln sammanfattar de typer av frågor som du kan skapa.
 
 I Kognitiv sökning är en fråga en fullständig specifikation av en tur och retur- **`search`** åtgärd, med parametrar som både informerar frågekörningen och formar svaret som kommer tillbaka. Parametrar och parser bestämmer vilken typ av fråga som begärs. I följande fråge exempel används [Sökdokumenten (REST API)](/rest/api/searchservice/search-documents)som mål för [hotell demonstrations indexet](search-get-started-portal.md).
 
@@ -38,7 +38,7 @@ Parametrar som används vid frågekörningen:
 
 + **`queryType`** ställer in parsern, som är antingen [standardvärdet för enkel fråga](search-query-simple-examples.md) (optimal för full texts ökning) eller den [fullständiga Lucene-frågeuttrycket](search-query-lucene-examples.md) som används för avancerade fråge konstruktioner som reguljära uttryck, närhets sökning, fuzzy och jokertecken, för att ge några.
 
-+ **`search`** innehåller matchnings kriterier, vanligt vis hela termer eller fraser, med eller utan operatorer. Alla fält som har attribut som *sökbara* i index schemat är en kandidat för den här parametern. 
++ **`search`** innehåller matchnings kriterier, vanligt vis hela termer eller fraser, med eller utan operatorer. Alla fält som har attribut som *sökbara* i index schemat är en kandidat för den här parametern.
 
 + **`searchFields`** begränsar frågans körning till vissa sökbara fält.
 
@@ -110,10 +110,8 @@ Ett avancerat fråge formulär är beroende av en fullständig Lucene-parser och
 
 ## <a name="next-steps"></a>Nästa steg
 
-Använd portalen eller ett annat verktyg som Postman eller Visual Studio Code, eller en av SDK: erna för att utforska frågor i mer djup. Följande länkar hjälper dig att komma igång.
+Granska exemplen för varje syntax för en närmare titt på frågekörningen. Om du är nybörjare på full texts ökning kan du titta närmare på vad frågemotor kan vara ett lika bra val.
 
-+ [Sök Utforskaren](search-explorer.md)
-+ [Fråga i REST](search-get-started-rest.md)
-+ [Så här frågar du i .NET](search-get-started-dotnet.md)
-+ [Fråga i python](search-get-started-python.md)
-+ [Fråga i Java Script](search-get-started-javascript.md)
++ [Enkla exempelfrågor](search-query-simple-examples.md)
++ [Exempel på Lucene-syntax för att skapa avancerade frågor](search-query-lucene-examples.md)
++ [Så här fungerar fulltextsökning i Azure Cognitive Search](search-lucene-query-architecture.md)

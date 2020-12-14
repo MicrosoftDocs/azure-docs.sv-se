@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 11/27/2018
-ms.openlocfilehash: 4d62619fe2641ec1aded39650b47b53cf4269d8b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f20af5ea9628dd6c8aa732ac1d09625156eed0c4
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368884"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387549"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Transformera data med hjälp av aktiviteten SQL Server lagrad procedur i Azure Data Factory
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -33,7 +33,7 @@ Du använder data omvandlings aktiviteter i en Data Factory [pipeline](concepts-
 Du kan använda den lagrade procedur aktiviteten för att anropa en lagrad procedur i något av följande data lager i företaget eller på en virtuell Azure-dator (VM): 
 
 - Azure SQL Database
-- Azure Synapse Analytics (tidigare SQL Data Warehouse)
+- Azure Synapse Analytics
 - SQL Server databas.  Om du använder SQL Server ska du installera integration runtime med egen värd på samma dator som är värd för databasen eller på en annan dator som har åtkomst till databasen. Self-Hosted integration runtime är en komponent som ansluter data källor lokalt/på virtuella Azure-datorer med moln tjänster på ett säkert och hanterat sätt. Mer information finns i artikeln om [integration runtime med egen värd](create-self-hosted-integration-runtime.md) .
 
 > [!IMPORTANT]
@@ -71,11 +71,11 @@ Följande tabell beskriver de här JSON-egenskaperna:
 | Egenskap                  | Beskrivning                              | Krävs |
 | ------------------------- | ---------------------------------------- | -------- |
 | name                      | Namn på aktiviteten                     | Ja      |
-| description               | Text som beskriver vad aktiviteten används för | Nej       |
+| description               | Text som beskriver vad aktiviteten används för | Inga       |
 | typ                      | För lagrad procedur aktivitet är aktivitets typen **SqlServerStoredProcedure** | Ja      |
 | linkedServiceName         | Referens till **Azure SQL Database** -eller **Azure Synapse Analytics** -eller **SQL Server** som registrerats som en länkad tjänst i Data Factory. Mer information om den här länkade tjänsten finns i artikeln [Compute-länkade tjänster](compute-linked-services.md) . | Ja      |
 | storedProcedureName       | Ange namnet på den lagrade proceduren som ska anropas. | Ja      |
-| storedProcedureParameters | Ange värdena för parametrar för lagrad procedur. Används `"param1": { "value": "param1Value","type":"param1Type" }` för att skicka parameter värden och deras typ som stöds av data källan. Om du behöver skicka null för en parameter använder du `"param1": { "value": null }` (alla gemener). | Nej       |
+| storedProcedureParameters | Ange värdena för parametrar för lagrad procedur. Används `"param1": { "value": "param1Value","type":"param1Type" }` för att skicka parameter värden och deras typ som stöds av data källan. Om du behöver skicka null för en parameter använder du `"param1": { "value": null }` (alla gemener). | Inga       |
 
 ## <a name="parameter-data-type-mapping"></a>Parameter data typs mappning
 Den datatyp som du anger för parametern är den Azure Data Factorys typ som mappar till data typen i data källan som du använder. Du kan hitta data typs mappningar för data källan i kopplings avsnittet. Några exempel är
@@ -88,9 +88,7 @@ Den datatyp som du anger för parametern är den Azure Data Factorys typ som map
 | SQL Server           | https://docs.microsoft.com/azure/data-factory/connector-sql-server#data-type-mapping-for-sql-server |
 
 
-## <a name="error-info"></a>Fel information
 
-När en lagrad procedur Miss lyckas och returnerar fel information kan du inte samla in fel informationen direkt i aktivitetens utdata. Dock Data Factory pumpar alla dess aktivitet körnings händelser till Azure Monitor. Bland de händelser som Data Factory pumpar för att Azure Monitor, push-överför den fel information där. Du kan till exempel ställa in e-postaviseringar från dessa händelser. Mer information finns i [avisering och övervaka data fabriker med hjälp av Azure Monitor](monitor-using-azure-monitor.md).
 
 ## <a name="next-steps"></a>Nästa steg
 Se följande artiklar som förklarar hur du omformar data på andra sätt: 
@@ -102,5 +100,5 @@ Se följande artiklar som förklarar hur du omformar data på andra sätt:
 * [Hadoop streaming-aktivitet](transform-data-using-hadoop-streaming.md)
 * [Spark-aktivitet](transform-data-using-spark.md)
 * [.NET-anpassad aktivitet](transform-data-using-dotnet-custom-activity.md)
-* [Azure Machine Learning Studio (klassisk) batch execution Activity](transform-data-using-machine-learning.md)
+* [Batch-körningsaktivitet i Azure Machine Learning Studio (klassisk)](transform-data-using-machine-learning.md)
 * [Lagrad procedur aktivitet](transform-data-using-stored-procedure.md)

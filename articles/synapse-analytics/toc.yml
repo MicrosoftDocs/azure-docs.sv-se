@@ -96,8 +96,6 @@
           href: ./cicd/continuous-integration-deployment.md
         - name: Säkerhet
           items:
-            - name: Säkerhetsbaslinje
-              href: security-baseline.md
             - name: Kryptering
               href: ./security/workspaces-encryption.md
             - name: Nätverkssäkerhet
@@ -134,7 +132,7 @@
                   href: ./security/synapse-workspace-understand-what-role-you-need.md
                 - name: Synapse-arbetsytehanterad identitet
                   href: ./security/synapse-workspace-managed-identity.md
-    - name: Anvisningar
+    - name: Instruktionsguider
       items:
         - name: Hantera och övervaka
           items:
@@ -566,7 +564,7 @@
           href: ./spark/apache-spark-delta-lake-overview.md
         - name: Hantera bibliotek
           href: ./spark/apache-spark-azure-portal-add-libraries.md
-        - name: Använda anteckningsböcker
+        - name: Använda notebook-filer och IDE-verktyg
           items:
             - name: Hantera anteckningsböcker
               href: ./spark/apache-spark-development-using-notebooks.md

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: 185cb24d5edd08438c56603b602448226ce31f0b
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 06f738ea88093ea8de45efebea983fd7fa13216e
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360258"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387827"
 ---
 # <a name="tutorial-use-the-rest-apis"></a>Självstudie: använda REST-API: er
 
@@ -31,7 +31,7 @@ I den här guiden får du lära dig att:
 
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Du måste ha ett befintligt Azure avdelningens kontroll-konto för att komma igång. Om du inte har någon katalog kan du läsa [snabb starten för att skapa ett Azure avdelningens kontroll-konto](create-catalog-portal.md).
 
@@ -113,7 +113,7 @@ Hitta och spara följande värden:
   * I avsnittet **Hantera** i det vänstra fönstret väljer du **Egenskaper**, letar efter **klient-ID** och väljer sedan ikonen **Kopiera till Urklipp** för att spara dess värde.
 * Atlas slut punkt:
   * På [sidan för Azure avdelningens kontroll-konton på sidan](https://aka.ms/purviewportal) Azure Portal letar du upp och väljer ditt Azure avdelningens kontroll-konto i listan.
-  * Välj **Översikt**, hitta **Atlas slut punkt** och välj sedan ikonen **Kopiera till Urklipp** för att spara dess värde. Ta bort *https://* delen av strängen när du använder den senare.
+  * Välj **Egenskaper**, hitta **Atlas slut punkt** och välj sedan ikonen **Kopiera till Urklipp** för att spara dess värde. Ta bort *https://* delen av strängen när du använder den senare.
 * Konto namn:
   * Extrahera namnet på din katalog från Atlas slut punkts strängen. Till exempel, om din Atlas-slutpunkt är `https://ThisIsMyCatalog.catalog.purview.azure.com` , är ditt konto namn `ThisIsMyCatalog` .
 

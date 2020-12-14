@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 29eddbcfb7c0da98e5438f968dd3976b77a44680
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 354c6f9710b7cbd70e0631bc973b2482ea8d8bb3
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85203103"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97386892"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -62,27 +62,15 @@ I följande exempel visas hur du anger **TrustFrameworkPolicy** -elementet:
    PublicPolicyUri="http://mytenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
 ```
 
-## <a name="inheritance-model"></a>Arvs modell
+**TrustFrameworkPolicy** -elementet innehåller följande element:
 
-Dessa typer av principfiler används vanligt vis i en användar resa:
-
-- En **bas** fil som innehåller de flesta av definitionerna. Om du vill ha hjälp med att felsöka och långsiktigt underhåll av dina principer, rekommenderar vi att du gör ett minsta antal ändringar i den här filen.
-- En **tilläggs** fil som innehåller de unika konfigurations ändringarna för din klient. Den här princip filen är härledd från bas filen. Använd den här filen för att lägga till nya funktioner eller åsidosätta befintliga funktioner. Använd till exempel den här filen för att federera med nya identitets leverantörer.
-- En **förlitande parts fil (RP)** som är den enda aktivitets fokuserade filen som anropas direkt av den förlitande parten, t. ex. dina webb-, mobil-eller Skriv bords program. Varje unik aktivitet, till exempel registrering eller inloggning, återställning av lösen ord eller profil redigering, kräver en egen RP-princip fil. Den här princip filen är härledd från tilläggs filen.
-
-Ett förlitande part-program anropar RP-principagenten för att köra en specifik uppgift. Till exempel för att initiera inloggnings flödet. Ramverket för identitets upplevelse i Azure AD B2C lägger till alla element först från bas filen och sedan från tilläggs filen och slutligen från RP-princip filen för att sammanställa den aktuella principen. Element av samma typ och namn i RP-filen åsidosätter dessa element i tilläggen och tilläggen åsidosätter bas. I följande diagram visas relationen mellan principfiler och de förlitande part programmen.
-
-![Diagram som visar förtroende ramverkets princip arvs modell](./media/trustframeworkpolicy/custom-policy-Inheritance-model.png)
-
-Arvs modellen ser ut så här:
-
-- Den överordnade principen och den underordnade principen är av samma schema.
-- Den underordnade principen på alla nivåer kan ärva från den överordnade principen och utöka den genom att lägga till nya element.
-- Det finns ingen gräns för antalet nivåer.
-
-Mer information finns i [Kom igång med anpassade principer](custom-policy-get-started.md).
-
-## <a name="base-policy"></a>Grundläggande princip
+| Element | Förekomster | Beskrivning |
+| ------- | ----------- | ----------- |
+| BasePolicy| 0:1| Identifieraren för en bas princip. |
+| [BuildingBlocks](buildingblocks.md) | 0:1 | Bygg stenarna i principen. |
+| [ClaimsProviders](claimsproviders.md) | 0:1 | En samling av anspråks leverantörer. |
+| [UserJourneys](userjourneys.md) | 0:1 | En samling användar resor. |
+| [RelyingParty](relyingparty.md) | 0:1 | En definition av en princip för förlitande part. |
 
 Om du vill ärva en princip från en annan princip måste ett **BasePolicy** -element deklareras under **TrustFrameworkPolicy** -elementet i princip filen. **BasePolicy** -elementet är en referens till den grundläggande princip som den här principen härleds från.
 
@@ -114,46 +102,3 @@ I följande exempel visas hur du anger en bas princip. Den här **B2C_1A_TrustFr
 </TrustFrameworkPolicy>
 ```
 
-## <a name="policy-execution"></a>Princip körning
-
-Ett förlitande parts program, till exempel ett webb-, mobil-eller Skriv bords program, anropar [principen för förlitande part (RP)](relyingparty.md). RP-principagenten kör en speciell uppgift, som att logga in, återställa ett lösen ord eller redigera en profil. RP-principen konfigurerar listan över anspråk som programmet för förlitande part tar emot som en del av den token som utfärdas. Flera program kan använda samma princip. Alla program får samma token med anspråk, och användaren går igenom samma användar resa. Ett enda program kan använda flera principer.
-
-I RP-princip filen anger du **DefaultUserJourney** -elementet, som pekar på [UserJourney](userjourneys.md). Användar resan definieras vanligt vis i bas-eller tilläggs principen.
-
-B2C_1A_signup_signin princip:
-
-```xml
-<RelyingParty>
-  <DefaultUserJourney ReferenceId="SignUpOrSignIn">
-  ...
-```
-
-B2C_1A_TrustFrameWorkBase eller B2C_1A_TrustFrameworkExtensionPolicy:
-
-```xml
-<UserJourneys>
-  <UserJourney Id="SignUpOrSignIn">
-  ...
-```
-
-En användar resa definierar affärs logiken för vad en användare går igenom. Varje användar resa är en uppsättning Dirigerings steg som utför en serie åtgärder i ordningsföljd för autentiserings-och informations insamling.
-
-**SocialAndLocalAccounts** -princip filen i [startpaketet](custom-policy-get-started.md#custom-policy-starter-pack) innehåller SignUpOrSignIn, ProfileEdit, PasswordReset original användar resor. Du kan lägga till fler användar resor för andra scenarier, till exempel ändra en e-postadress eller länka och ta bort länkar till ett socialt konto.
-
-Orchestration-stegen kan anropa en [teknisk profil](technicalprofiles.md). En teknisk profil är ett ramverk med en inbyggd mekanism för att kommunicera med olika typer av parter. En teknisk profil kan till exempel utföra dessa åtgärder bland andra:
-
-- Återge en användar upplevelse.
-- Tillåt att användare loggar in med sociala eller ett företags konto, till exempel Facebook, Microsoft-konto, Google, Salesforce eller någon annan identitets leverantör.
-- Konfigurera telefon verifiering för MFA.
-- Läsa och skriva data till och från ett Azure AD B2C identitets lager.
-- Anropa en anpassad RESTful-API-tjänst.
-
-![Diagram som visar körnings flödet för principen](./media/trustframeworkpolicy/custom-policy-execution.png)
-
- **TrustFrameworkPolicy** -elementet innehåller följande element:
-
-- BasePolicy som anges ovan
-- [BuildingBlocks](buildingblocks.md)
-- [ClaimsProviders](claimsproviders.md)
-- [UserJourneys](userjourneys.md)
-- [RelyingParty](relyingparty.md)

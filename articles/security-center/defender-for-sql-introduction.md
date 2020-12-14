@@ -3,17 +3,17 @@ title: Azure Defender för SQL – fördelar och funktioner
 description: Lär dig mer om fördelarna och funktionerna i Azure Defender för SQL.
 author: memildin
 ms.author: memildin
-ms.date: 11/30/2020
+ms.date: 12/13/2020
 ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: c2fc1bf065bce3ca844c5284168d8ff96fa065bf
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: e9a2259f1e15a94ad1f2a9eabf7d3a2f3ed419f1
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512247"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387810"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Introduktion till Azure Defender för SQL
 
@@ -28,7 +28,7 @@ Azure Defender för SQL innehåller två Azure Defender-planer som utökar Azure
 |Versions tillstånd:|**Azure Defender för Azure SQL Database-servrar** – allmänt tillgängliga (ga)<br>**Azure Defender för SQL-servrar på datorer** – allmänt tillgängliga (ga) |
 |Priset|De två planer som utgör **Azure Defender för SQL** debiteras enligt [pris sidan](security-center-pricing.md)|
 |Skyddade SQL-versioner:|[SQL på virtuella Azure-datorer](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)<br>[Azure Arc-aktiverade SQL-servrar](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)<br>Lokala SQL-servrar på Windows-datorer utan Azure Arc<br>Enkla Azure SQL- [databaser](../azure-sql/database/single-database-overview.md) och [elastiska pooler](../azure-sql/database/elastic-pool-overview.md)<br>[Hanterad Azure SQL-instans](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure Synapse Analytics (tidigare SQL DW) dedikerad SQL-pool](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
-|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nej](./media/icons/no-icon.png) Kina gov, andra gov|
+|Moln|![Ja ](./media/icons/yes-icon.png) kommersiella moln<br>![Ja ](./media/icons/yes-icon.png) US gov<br>![Ja ](./media/icons/yes-icon.png) Kina gov (**partiell**: delmängd av aviseringar och sårbarhets bedömning för SQL-servrar. Beteendet hot skydd är inte tillgängligt.)|
 |||
 
 ## <a name="what-does-azure-defender-for-sql-protect"></a>Vad skyddar Azure Defender för SQL?

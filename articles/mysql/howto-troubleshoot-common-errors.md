@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: f64d4d2b9acbe0e6585ca546c915b82d2d1dbbc4
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8f735ecd4f8b79b4f5bd0c95d0bfb9f280d93833
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737189"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387351"
 ---
 # <a name="common-errors"></a>Vanliga fel
 
@@ -36,13 +36,13 @@ BEGIN
 END;
 ```
 
-**Lösning** : Lös problemet genom att ange log_bin_trust_function_creators till 1 från [Server parametrar](howto-server-parameters.md) -bladet i portalen, köra DDL-instruktionerna eller importera schemat för att skapa önskade objekt och återställa log_bin_trust_function_creators-parametern till det tidigare värdet efter att det har skapats.
+**Lösning**: Lös problemet genom att ange log_bin_trust_function_creators till 1 från [Server parametrar](howto-server-parameters.md) -bladet i portalen, köra DDL-instruktionerna eller importera schemat för att skapa önskade objekt och återställa log_bin_trust_function_creators-parametern till det tidigare värdet efter att det har skapats.
 
 #### <a name="error-1227-42000-at-line-101-access-denied-you-need-at-least-one-of-the-super-privileges-for-this-operation-operation-failed-with-exitcode-1"></a>FEL 1227 (42000) på rad 101: åtkomst nekad; du behöver (minst en av) superprivilegierna för den här åtgärden. Åtgärden misslyckades med ExitCode 1
 
 Ovanstående fel kan uppstå när du importerar en dumpfil eller skapar en procedur som innehåller [avfinare](https://dev.mysql.com/doc/refman/5.7/en/create-procedure.html). 
 
-**Lösning** : för att lösa det här felet kan administratörs användaren bevilja behörighet att skapa eller köra procedurer genom att köra kommandot Grant som i följande exempel:
+**Lösning**: för att lösa det här felet kan administratörs användaren bevilja behörighet att skapa eller köra procedurer genom att köra kommandot Grant som i följande exempel:
 
 ```sql
 GRANT CREATE ROUTINE ON mydb.* TO 'someuser'@'somehost';
@@ -61,8 +61,19 @@ DELIMITER ;;
 /*!50003 CREATE*/ /*!50017 DEFINER=`AdminUserName`@`ServerName`*/ /*!50003
 DELIMITER ;
 ```
+#### <a name="error-1227-42000-at-line-295-access-denied-you-need-at-least-one-of-the-super-or-set_user_id-privileges-for-this-operation"></a>FEL 1227 (42000) på rad 295: åtkomst nekad; du behöver (minst en av) Super-eller SET_USER_ID behörigheterna för den här åtgärden
 
-## <a name="next-steps"></a>Efterföljande moment
+Ovanstående fel kan uppstå när du kör skapa vy med definar-instruktioner som en del av att importera en dumpfil eller köra ett skript. Azure Database for MySQL tillåter inte SUPER-privilegier eller SET_USER_ID behörighet till någon användare. 
+
+**Lösning**: 
+* Använd avrundare användare för att köra skapa vy om möjligt. Det är troligt att det finns många vyer med olika definare som har olika behörigheter, så det kan vara omöjligt att göra det.  ELLER
+* Redigera dumpfilen eller skapa Visa skript och ta bort definar =-instruktionen från dumpfilen eller 
+* Redigera dumpfilen eller skapa Visa skript och ersätt avgränsarna med användare med administratörs behörighet som utför importen eller kör skript filen.
+
+> [!Tip] 
+> Använd sed eller perl för att ändra en dumpfil eller SQL-skript för att ersätta definar =-instruktionen
+
+## <a name="next-steps"></a>Nästa steg
 Om du inte har hittat det svar du letade efter kan du tänka på följande:
 - Publicera din fråga på [Microsoft Q&en fråge sida](/answers/topics/azure-database-mysql.html) eller [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).
 - Skicka ett e-postmeddelande till Azure Database for MySQLs gruppen [ @Ask Azure dB för MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com). Den här e-postadressen är inte ett alias för teknisk support.

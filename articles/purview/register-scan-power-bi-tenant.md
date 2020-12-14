@@ -7,19 +7,19 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: ce23119e568347fff2ad270cfea7f8b563cae529
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 1f08bfd6b7c0439dd08a3091b5ea927781af9b84
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905000"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387589"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Registrera och skanna en Power BI klient (förhands granskning)
 
 Den här artikeln visar hur du använder Azure avdelningens kontroll-portalen för att registrera och skanna en Power BI klient.
 
 > [!Note]
-> Om avdelningens kontroll-instansen och Power BI klienten finns i samma Azure-klient kan du bara använda autentisering med hanterad identitet (MSI) för att konfigurera en genomsökning av en Power BI klient. Om avdelningens kontroll-instansen och Power BI klienten finns i olika Azure-klienter, måste du autentisera med delegerad autentisering och du måste använda PowerShell för att konfigurera dina genomsökningar. Se [använda PowerShell för att registrera och skanna Power BI](powershell-register-scan-power-bi.md).
+> Om avdelningens kontroll-instansen och Power BI klienten finns i samma Azure-klient kan du bara använda autentisering med hanterad identitet (MSI) för att konfigurera en genomsökning av en Power BI klient. 
 
 ## <a name="create-a-security-group-for-permissions"></a>Skapa en säkerhets grupp för behörigheter
 

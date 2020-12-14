@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: makromer
 ms.reviewer: jrasnick
-ms.openlocfilehash: a8fd0ef006b246e30c02cfb321c72b4e070f54de
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 8818d4db489cef8203ae515c18c61e215d577033
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109155"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387623"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Data integrering i Azure Synapse Analytics kontra Azure Data Factory
 
 I Azure Synapse Analytics baseras data integrerings funktionerna som Synapse-pipeliner och data flöden på Azure Data Factory. Mer information finns i [Vad är Azure Data Factory](../../data-factory/introduction.md).
 
 
-## <a name="available-features-in-azure-data-factory-and-azure-synapse-analytics"></a>Tillgängliga funktioner i Azure Data Factory och Azure Synapse Analytics
+## <a name="available-features-in-adf--azure-synapse-analytics"></a>Tillgängliga funktioner i ADF & Azure Synapse Analytics
 
 Sök efter tillgänglighet för funktioner i tabellen nedan:
 

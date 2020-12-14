@@ -7,19 +7,19 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/15/2020
+ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6609dabe9bd507751bd131a4effe24295e2aac04
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 8f037d4283b4b05081ef47e7223495f6e19d460e
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952465"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97386875"
 ---
-# <a name="subjourneys"></a>Under transporter
+# <a name="sub-journeys"></a>Under transporter
 
-Under transporter kan användas för att organisera och förenkla flödet av Orchestration-steg i en användar resa. [Användar resan](userjourneys.md) anger explicita sökvägar genom vilka en princip tillåter ett förlitande parts program att hämta önskade anspråk för en användare. Användaren tas via dessa sökvägar för att hämta de anspråk som ska visas för den förlitande parten. Med andra ord definierar användar resan affärs logiken för vad en användare går igenom när ramverket för Azure AD B2C Identity Experience bearbetar begäran. En användar resa representeras som en Orchestration-sekvens som måste följas av för en lyckad transaktion. [ClaimsExchange](userjourneys.md#claimsexchanges) -elementet i ett Orchestration-steg är knutet till en enskild [teknisk profil](technical-profiles-overview.md) som körs.
+Under transporter kan användas för att organisera och förenkla flödet av Orchestration-steg i en användar resa. [Användar resan](userjourneys.md) anger explicita sökvägar genom vilka en princip tillåter ett förlitande parts program att hämta önskade anspråk för en användare. Användaren tas via dessa sökvägar för att hämta de anspråk som ska visas för den förlitande parten. Med andra ord definierar användar resan affärs logiken för vad en användare går igenom när ramverket för Azure AD B2C Identity Experience bearbetar begäran. En användar resa representeras som en Orchestration-sekvens som måste följas av för en lyckad transaktion. [ClaimsExchange](userjourneys.md#claimsexchanges) -elementet i ett Orchestration-steg är knutet till en enskild [teknisk profil](technicalprofiles.md) som körs.
 
 En under resa är en gruppering av Orchestration-steg som kan anropas när som helst inom en användar resa. Du kan använda under transporter för att skapa återanvändbara steg sekvenser eller implementera branchning för att bättre representera affärs logiken.
 
@@ -27,9 +27,9 @@ En under resa är en gruppering av Orchestration-steg som kan anropas när som h
 
 ## <a name="user-journey-branching"></a>Användar resa, förgrening
 
-Under transporter beter sig som [användar resor](userjourneys.md), eftersom båda representeras som en Orchestration-sekvens som måste följas av för en lyckad transaktion. Användar resor kan anropas på egen hand och kräver ett SendClaims-steg för att köra. Under transporter är komponenter för användar resor och kan inte anropas separat, och de anropas alltid från en användar resa.
+Under transporter beter sig som [användar resor](userjourneys.md), eftersom båda representeras som en Orchestration-sekvens som måste följas av för en lyckad transaktion. Användar resor kan anropas på egen hand och kräver ett SendClaims-steg för att köra. Under transporter är komponenter för användar resor och kan inte anropas oberoende, och de anropas alltid från en användar resa.
 
-Huvud delen av branchning är att möjliggöra bättre affärs logik bearbetning i en användar resa. Vanliga Orchestration-steg grupperas i enskilda delar som anropas separat. En under resa kan förenkla en resa där flera Dirigerings steg kombineras (med samma förutsättningar). En under resa anropas bara från en användar resa. det får inte anropa en annan under resa.
+Huvud delen av branchning är att möjliggöra bättre affärs logik bearbetning i en användar resa. Vanliga Orchestration-steg grupperas i enskilda delar som anropas separat. En under resa kan förenkla en resa där flera Dirigerings steg kombineras (med samma förutsättningar). En under resa anropas bara från en användar resa, den får inte anropa en annan under resa.
 
 Det finns två typer av under transporter:
 
@@ -38,7 +38,7 @@ Det finns två typer av under transporter:
 
 ## <a name="example-scenarios"></a>Exempelscenarier
 
-### <a name="call-subjourney"></a>Samtals under resa
+### <a name="call-sub-journey"></a>Samtals under resa
 
 En samtals under resa är användbar i följande scenarier:
 
@@ -46,14 +46,14 @@ En samtals under resa är användbar i följande scenarier:
 - Överordnat medgivande: förgreningar gör det möjligt för dig att delta i den överordnade godkännande designen genom att tillåta oss att få åtkomst till anspråk från användar resan den mindre utförda, tillsammans med att kunna förgrena till en användare som har ett överordnat medgivande när användaren har beviljat sitt medgivande. 
 - Registrera dig för att logga in: Överväg ett scenario där en användare redan finns i katalogen, men kan ha glömt att de hade skapat ett konto. Det kan vara önskvärt i stället för att meddela användaren att autentiseringsuppgifterna som de har angett redan finns och tvinga användaren att starta om resan att principen kan utföra en växel från ett registrerings flöde till ett inloggnings flöde för användaren.  
 
-### <a name="transfer-subjourney"></a>Överförings under resa
+### <a name="transfer-sub-journey"></a>Överföring under resa
 
 En överförings under resa är användbar i följande scenarier:
 
 - Visar en block sida.
 - A/B-testning genom att vidarebefordra begäran till en under resa för att köra och utfärda en token.
 
-## <a name="adding-a-subjourney-element"></a>Lägga till ett under transport element
+## <a name="adding-a-subjourneys-element"></a>Lägga till ett under transport element
 
 Följande är ett exempel på ett `SubJourney` element av typen `Call` , som återgår tillbaka till användar resan.
 
@@ -95,7 +95,7 @@ Följande är ett exempel på ett `SubJourney` element av typen `Transfer` , som
 </SubJourneys>
 ```
 
-### <a name="invoke-a-subjourney-step"></a>Anropa ett under transport steg
+### <a name="invoke-a-sub-journey-step"></a>Anropa ett under transport steg
 
 Ett nytt Orchestration-steg av typen `InvokeSubJourney` används för att köra en under resa. Följande är ett exempel som visar alla körnings element i det här Orchestration-steget.
 
@@ -124,7 +124,7 @@ Om du vill definiera de under transporter som stöds av principen lägger du til
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| Id | Ja | Den under transport identifierare som kan användas av användar resan för att referera till under resan i principen. Elementet **SubJourneyReferenceId** i [kandidat](userjourneys.md#journeylist) elementet pekar på det här attributet. |
+| Id | Ja | Under res-ID som kan användas av användar resan för att referera till under resan i principen. Elementet **SubJourneyReferenceId** i [kandidat](userjourneys.md#journeylist) elementet pekar på det här attributet. |
 | Typ | Ja | Möjliga värden: `Call` , eller `Transfer` . Mer information finns i [användar resa branchning](#user-journey-branching)|
 
 **Subtransport** -elementet innehåller följande element:
@@ -139,4 +139,4 @@ En fullständig lista över steg för Orchestration-steg finns i [UserJourneys](
 
 ## <a name="next-steps"></a>Nästa steg
 
-[UserJourneys](userjourneys.md)
+Lär dig mer om [UserJourneys](userjourneys.md)

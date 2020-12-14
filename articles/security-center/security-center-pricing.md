@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2020
+ms.date: 12/13/2020
 ms.author: memildin
-ms.openlocfilehash: d92047a5b24f04ee7e0d08454867ec9e1a52a8b1
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: d3492685efbf70b69e5bafba919d38a4f06fb666
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754390"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387478"
 ---
 # <a name="pricing-of-azure-security-center"></a>Prissättning för Azure Security Center
 Azure Security Center har en enhetlig säkerhetshantering och avancerat skydd mot hot för arbetsbelastningar som körs i Azure, lokalt och i andra moln. Den ger insyn och kontroll över hybrid moln arbets belastningar, aktiva försvar som minskar exponeringen för hot och intelligent identifiering som hjälper dig att hålla jämna steg med snabbt växande cyberhot-risker.
@@ -68,12 +68,24 @@ Nedan visas pris sidan för en exempel prenumeration. Du märker att varje plan 
 
 ## <a name="faq---pricing-and-billing"></a>Vanliga frågor och svar – priser och fakturering 
 
-### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-azure-security-center"></a>Hur kan jag spåra vem i organisationen aktiverade Azure Defender-ändringar i Azure Security Center
+- [Hur kan jag spåra vem i organisationen aktiverade Azure Defender-ändringar i Azure Security Center?](#how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center)
+- [Vilka är de planer som erbjuds av Security Center?](#what-are-the-plans-offered-by-security-center)
+- [Hur aktiverar jag Azure Defender för min prenumeration?](#how-do-i-enable-azure-defender-for-my-subscription)
+- [Kan jag aktivera Azure Defender för en delmängd av servrarna i min prenumeration?](#can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription)
+- [Min prenumeration har Azure Defender för servrar aktiverat, betalar jag för servrar som inte är igång?](#my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers)
+- [Kommer jag att debiteras för datorer utan att Log Analytics-agenten är installerad?](#will-i-be-charged-for-machines-without-the-log-analytics-agent-installed)
+- [Kommer jag att debiteras två gånger om en Log Analytics agent rapporterar till flera arbets ytor?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
+- [Om en Log Analytics agent rapporterar till flera arbets ytor, är 500 MB kostnads fri data inmatning tillgänglig på alla?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them)
+- [Beräknas den 500 MB lediga data inmatningen för en hel arbets yta eller exakt per dator?](#is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine)
+
+### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center"></a>Hur kan jag spåra vem i organisationen aktiverade Azure Defender-ändringar i Security Center?
 Azure-prenumerationer kan ha flera administratörer som har behörighet att ändra pris inställningarna. Om du vill ta reda på vilken användare som har gjort en ändring använder du Azure-aktivitets loggen.
 
-Om användarens info inte visas i kolumnen **händelse som initieras av** , undersöker du händelsen för att se om det finns relevant information.
+:::image type="content" source="media/security-center-pricing/logged-change-to-pricing.png" alt-text="Azure aktivitets loggen visar en händelse för pris ändring":::
 
-:::image type="content" source="media/security-center-pricing/logged-change-to-pricing.png" alt-text="Händelse loggen i Azure visar en händelse för pris ändring":::
+Om användarens info inte visas i kolumnen **händelse som initieras av** , undersöker du händelsens JSON för att se om det finns mer information.
+
+:::image type="content" source="media/security-center-pricing/tracking-pricing-changes-in-activity-log.png" alt-text="Azure aktivitets logg JSON-Utforskare":::
 
 
 ### <a name="what-are-the-plans-offered-by-security-center"></a>Vilka är de planer som erbjuds av Security Center? 
@@ -115,6 +127,10 @@ Ja. Om du har konfigurerat Log Analytics-agenten för att skicka data till två 
 ### <a name="if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them"></a>Om en Log Analytics agent rapporterar till flera arbets ytor, är 500 MB kostnads fri data inmatning tillgänglig på alla?
 Ja. Om du har konfigurerat Log Analytics-agenten för att skicka data till två eller flera olika Log Analytics arbets ytor (Multi-värdar) får du 500 MB kostnads fri data inmatning. Den beräknas per nod, per rapporterad arbets yta, per dag och tillgänglig för alla arbets ytor som har en säkerhets-eller Antiskadlig kod-lösning installerad. Du debiteras för alla data som matas in över 500 MB.
 
+### <a name="is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine"></a>Beräknas den 500 MB lediga data inmatningen för en hel arbets yta eller exakt per dator?
+Du får 500 MB kostnads fri data inmatning per dag för varje dator som är ansluten till arbets ytan. Specifikt för säkerhets data typer som samlas in direkt av Azure Security Center.
+
+Dessa data är en daglig genomsnittlig hastighet för alla noder. Så även om vissa datorer skickar 100-MB och andra skickar 800-MB, om summan inte överstiger **[antal datorer] x 500-MB** fri gräns, debiteras du inte extra.
 
 ## <a name="next-steps"></a>Nästa steg
 I den här artikeln förklaras Security Center pris alternativ. För relaterat material, se:

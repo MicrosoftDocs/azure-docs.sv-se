@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/12/2020
+ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 950c159ed4d2c57796f33b9505e6931dbec983ba
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 441a77823c77305e567e9e1436715bc51ca48c11
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532383"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387062"
 ---
 # <a name="display-controls"></a>Visa kontroller
 
@@ -28,7 +28,7 @@ Följande bild illustrerar en självkontrollerad registrerings sida med två vis
 
 ![Exempel på renderad visnings kontroll](media/display-controls/display-control-email.png)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
  I avsnittet [metadata](self-asserted-technical-profile.md#metadata) i en [självkontrollerad teknisk profil](self-asserted-technical-profile.md)måste den refererade [ContentDefinition](contentdefinitions.md) ha `DataUri` ställts in på sid kontrakt version 2.0.0 eller högre. Exempel:
 
@@ -53,9 +53,9 @@ Elementet Visa poster innehåller **följande element:**
 
 | Element | Förekomster | Beskrivning |
 | ------- | ----------- | ----------- |
-| InputClaims | 0:1 | **InputClaims** används för att förkonfigurera värdet för de anspråk som ska samlas in från användaren. Mer information finns i [InputClaims](technicalprofiles.md#inputclaims) -element. |
+| InputClaims | 0:1 | **InputClaims** används för att förkonfigurera värdet för de anspråk som ska samlas in från användaren. Mer information finns i [InputClaims](technicalprofiles.md#input-claims) -element. |
 | DisplayClaims | 0:1 | **DisplayClaims** används för att representera anspråk som ska samlas in från användaren. Mer information finns i [DisplayClaim](technicalprofiles.md#displayclaim) -element.|
-| OutputClaims | 0:1 | **OutputClaims** används för att representera anspråk som ska sparas temporärt för **den här** visaren. Mer information finns i [OutputClaims](technicalprofiles.md#outputclaims) -element.|
+| OutputClaims | 0:1 | **OutputClaims** används för att representera anspråk som ska sparas temporärt för **den här** visaren. Mer information finns i [OutputClaims](technicalprofiles.md#output-claims) -element.|
 | Åtgärder | 0:1 | **Åtgärder** används för att visa en lista med de tekniska profilerna som ska anropas för användar åtgärder på klient sidan. |
 
 ### <a name="input-claims"></a>Inmatade anspråk
@@ -94,7 +94,7 @@ Om du vill bubbla ut anspråk till nästa Orchestration-steg använder du **Outp
 
 **Åtgärder** för en visnings kontroll är procedurer som inträffar i Azure AD B2C Server del när en användare utför en viss åtgärd på klient sidan (webbläsaren). Det kan till exempel vara verifieringar som ska utföras när användaren väljer en knapp på sidan.
 
-En åtgärd definierar en lista över **tekniska verifierings profiler**. De används för att verifiera vissa eller alla visnings anspråk för visnings kontrollen. Den tekniska verifierings profilen verifierar indata från användaren och kan returnera ett fel till användaren. Du kan använda **ContinueOnError** , **ContinueOnSuccess** och **villkor** i visnings kontroll åtgärden som liknar det sätt som de används för att [validera tekniska profiler](validation-technical-profile.md) i en egen kontrollerad teknisk profil.
+En åtgärd definierar en lista över **tekniska verifierings profiler**. De används för att verifiera vissa eller alla visnings anspråk för visnings kontrollen. Den tekniska verifierings profilen verifierar indata från användaren och kan returnera ett fel till användaren. Du kan använda **ContinueOnError**, **ContinueOnSuccess** och **villkor** i visnings kontroll åtgärden som liknar det sätt som de används för att [validera tekniska profiler](validation-technical-profile.md) i en egen kontrollerad teknisk profil.
 
 #### <a name="actions"></a>Åtgärder
 

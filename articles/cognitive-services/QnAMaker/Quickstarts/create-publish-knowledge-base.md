@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: 1ed74f5678a1b1c5d5ded525da0c3e7e7a75b902
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 1fe1ad14dc1cc8f5ff5171ef517d23363969be4d
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347544"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387793"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Snabb start: skapa, träna och publicera QnA Maker kunskaps bas
 
@@ -48,7 +48,7 @@ Du kan skapa en QnA Maker-kunskapsbas (KB) av eget innehåll, till exempel vanli
     |--|--|
     |**Aktivera extrahering av flera adresser från URL: er, PDF-eller docx-filer.**|Markerad|
     |**Standard text för flera sätt**| Välj och alternativ|
-    |**+ Lägg till URL**|`https://www.microsoft.com/software-download/faq`|
+    |**+ Lägg till URL**|`https://www.microsoft.com/en-us/software-download/faq`|
     |**Chit-chat**|Välj **Professional**|
 
 7. I **steg 5** väljer **du skapa din KB**.

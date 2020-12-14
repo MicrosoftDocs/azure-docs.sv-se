@@ -7,43 +7,61 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/12/2020
-ms.openlocfilehash: ace887396bacf264f0ffbd186ef1349e96496786
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.date: 12/14/2020
+ms.openlocfilehash: ad572905d9864083466049fd602e24d9f3632ea3
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97371223"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387436"
 ---
-# <a name="create-a-basic-query-in-azure-cognitive-search"></a>Skapa en grundläggande fråga i Azure Kognitiv sökning
+# <a name="create-a-query-in-azure-cognitive-search"></a>Skapa en fråga i Azure Kognitiv sökning
 
-I den här artikeln förklaras hur du steg för steg visar frågor. Exempel finns i REST så att du kan kopiera strängar till **Sök Utforskaren** i portalen eller utveckla frågor interaktivt med Postman eller Visual Studio Code. Du kan använda valfri nivå eller version av Kognitiv sökning i exemplen i den här artikeln.
+Lär dig mer om verktyg och API: er för att skapa en fråga, vilka metoder som används för att skapa en fråga och hur index struktur och innehåll kan påverka frågeresultat. För en introduktion till hur en fråge förfrågan ser ut, börjar du med [frågetyper och sammansättningar](search-query-overview.md).
 
-## <a name="choose-a-tool-or-api"></a>Välj ett verktyg eller en API
+## <a name="choose-tools-and-apis"></a>Välj verktyg och API: er
 
-Välj bland följande verktyg och API: er för att skapa frågor för testning eller produktions arbets belastningar.
+Du kan använda något av följande verktyg och API: er för att skapa frågor för testning eller produktions arbets belastningar.
 
 | Metodik | Beskrivning |
 |-------------|-------------|
-| Portalen| [Sök Utforskaren (portalen)](search-explorer.md) innehåller ett sökfält och alternativ för val av index och API-version. Resultat returneras som JSON-dokument. Rekommenderas för tidig undersökning, testning och validering. <br/>[Läs mer.](search-explorer.md) |
-| Webb test verktyg| [Postman eller Visual Studio Code](search-get-started-rest.md) är starka val för att utforma [Sök dokument](/rest/api/searchservice/search-documents) rest-anrop. REST API har stöd för varje program mässig åtgärd i Azure Kognitiv sökning, så att du kan skicka förfrågningar interaktivt för att förstå hur det fungerar innan du investerar i kod.  |
-| Azure SDK | [SearchClient (.net)](/dotnet/api/azure.search.documents.searchclient) kan användas för att fråga ett Sök index i C#.  [Läs mer.](search-howto-dotnet-sdk.md) <br/><br/>[SearchClient (python)](/dotnet/api/azure.search.documents.searchclient) kan användas för att fråga ett Sök index i python. [Läs mer.](search-get-started-python.md) <br/><br/> [SearchClient (Java Script)](/dotnet/api/azure.search.documents.searchclient) kan användas för att fråga ett Sök index i Java Script. [Läs mer.](search-get-started-javascript.md)  |
+| Portalen| [Sök Utforskaren (portalen)](search-explorer.md) är ett frågespråk i Azure Portal som kan användas för att köra frågor mot index i den underliggande Sök tjänsten. Portalen gör REST API samtal bakom kulisserna. Du kan välja valfritt index och alla REST API versioner som stöds, inklusive för hands versioner. En frågesträng kan vara enkel och fullständig syntax, och kan innehålla filter uttryck, facets, Select-och searchField-uttryck och searchMode. När du öppnar ett index i portalen kan du arbeta med Sök Utforskaren tillsammans med index-JSON-definitionen i sida-vid-sida-flikar för enkel åtkomst till fältattribut. Du kan kontrol lera vilka fält som är sökbara, sorterbara, filtrerings bara och fasettiska när du testar frågor. Rekommenderas för tidig undersökning, testning och validering. <br/>[Läs mer.](search-explorer.md) |
+| Webb test verktyg| [Postman eller Visual Studio Code](search-get-started-rest.md) är starka val för att utforma en begäran om [Sök dokument](/rest/api/searchservice/search-documents) i rest. REST API har stöd för varje program mässig åtgärd i Azure Kognitiv sökning, och när du använder ett verktyg som Postman eller Visual Studio Code kan du skicka förfrågningar interaktivt för att förstå hur det fungerar innan du investerar i kod. Ett webb test verktyg är ett bra alternativ om du inte har deltagar-eller administratörs rättigheter i Azure Portal. Så länge du har en Sök-URL och en fråge-API-nyckel kan du använda verktygen för att köra frågor mot ett befintligt index. |
+| Azure SDK | När du är redo att skriva kod kan du använda klient biblioteken Azure.Search.Document i Azure SDK: er för .NET, python, java script eller Java. Varje SDK är i ett eget versions schema, men du kan skapa och fråga index i alla. <br/><br/>[SearchClient (.net)](/dotnet/api/azure.search.documents.searchclient) kan användas för att fråga ett Sök index i C#.  [Läs mer.](search-howto-dotnet-sdk.md)<br/><br/>[SearchClient (python)](/dotnet/api/azure.search.documents.searchclient) kan användas för att fråga ett Sök index i python. [Läs mer.](search-get-started-python.md) <br/><br/> [SearchClient (Java Script)](/dotnet/api/azure.search.documents.searchclient) kan användas för att fråga ett Sök index i Java Script. [Läs mer.](search-get-started-javascript.md) |
 
 ## <a name="set-up-a-search-client"></a>Konfigurera en Sök klient
 
-En Sök klient autentiserar till Sök tjänsten, skickar begär Anden och hanterar svar. Frågor dirigeras alltid i dokument samlingen för ett enda index. Du kan inte ansluta index eller skapa anpassade eller tillfälliga data strukturer som mål för frågor.
+En Sök klient autentiserar till Sök tjänsten, skickar begär Anden och hanterar svar. Oavsett vilket verktyg eller API du använder måste en Sök klient ha följande:
+
+| Egenskaper | Beskrivning |
+|------------|-------------|
+| Slutpunkt | En Sök tjänst är URL-adresserad i det här formatet: `https://[service-name].search.windows.net` . |
+| API-åtkomst nyckel (administratör eller fråga) | Autentiserar begäran till Sök tjänsten. |
+| Index namn | Frågor dirigeras alltid i dokument samlingen för ett enda index. Du kan inte ansluta index eller skapa anpassade eller tillfälliga data strukturer som mål för frågor. |
+| API-version | REST-anrop kräver uttryckligen `api-version` på begäran. Klient bibliotek i Azure SDK har däremot versions hantering mot en bestämd REST API-version. För SDK: er `api-version` är implicit. |
 
 ### <a name="in-the-portal"></a>I portalen
 
-Sök Utforskaren och andra Portal verktyg har en inbyggd klient anslutning till tjänsten med direkt åtkomst index och andra objekt från Portal sidor. Åtkomst till verktyg, guider och objekt förutsätter att du har administratörs behörighet för tjänsten. Med Sök Utforskaren kan du fokusera på att ange Sök sträng och andra parametrar. 
+Sök Utforskaren och andra Portal verktyg har en inbyggd klient anslutning till tjänsten med direkt åtkomst index och andra objekt från Portal sidor. Åtkomst till verktyg, guider och objekt kräver medlemskap i deltagar rollen eller ovanför tjänsten. 
 
 ### <a name="using-rest"></a>Använda REST
 
-För REST-anrop kan du använda [Postman eller liknande verktyg](search-get-started-rest.md) som klienten för att ange en begäran om [sökning av dokument](/rest/api/searchservice/search-documents) . Varje begäran är fristående, så du måste ange slut punkten (URL till tjänsten) och en administratörs-eller API-nyckel för åtkomst. Beroende på begäran kan URL: en även innehålla index namnet, dokument samlingen och andra egenskaper. Några få egenskaper, till exempel innehålls typ och API-nyckel, skickas till begär ande huvudet. Andra parametrar kan skickas till URL: en eller i bröd texten i begäran. Alla REST-anrop kräver en API-nyckel för autentisering och en API-version.
+För REST-anrop kan du använda [Postman eller liknande verktyg](search-get-started-rest.md) som klienten för att ange en begäran om [sökning av dokument](/rest/api/searchservice/search-documents) . Varje begäran är fristående, så du måste ange slut punkten, index namnet och API-versionen på varje begäran. Andra egenskaper, innehålls typ och API-nyckel skickas till begär ande huvudet. 
+
+Du kan använda POST eller GET för att fråga ett index. POST, med parametrar som anges i begär ande texten, är enklare att arbeta med. Om du använder POST ska du se till att ta med `docs/search` i URL: en:
+
+```http
+POST https://myservice.search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
+{
+    "count": true,
+    "queryType": "simple",
+    "search": "*"
+}
+```
 
 ### <a name="using-azure-sdks"></a>Använda Azure SDK: er
 
-Azure-SDK: er tillhandahåller Sök klienter som kan spara tillstånd, så att anslutningen kan återanvändas. För frågor om åtgärder instansieras du en SearchClient och anger värden för följande egenskaper: slut punkt, nyckel, index. Sedan kan du anropa Sök metoden för att ange frågesträngen. 
+Om du använder ett Azure SDK skapar du klienten i kod. Alla SDK: er tillhandahåller Sök klienter som kan spara tillstånd, så att anslutningen kan återanvändas. För frågor om operationer instansieras du en **`SearchClient`** och ger värden för följande egenskaper: slut punkt, nyckel, index. Sedan kan du anropa **`Search method`** för att skicka in frågesträngen. 
 
 | Språk | Klient | Exempel |
 |----------|--------|---------|
@@ -54,11 +72,11 @@ Azure-SDK: er tillhandahåller Sök klienter som kan spara tillstånd, så att a
 
 ## <a name="choose-a-parser-simple--full"></a>Välj en parser: enkel | fullständig
 
-Med Azure Kognitiv sökning kan du välja mellan två fråge tolkare för hantering av typiska och specialiserade frågor. Begär Anden som använder den enkla parsern är vanligt vis fullständiga texts öknings frågor, formulerade med hjälp av [enkel frågesyntax](query-simple-syntax.md), valt som standard för dess hastighet och effektivitet i kostnads fria formulär text frågor. Den här syntaxen stöder ett antal vanliga Sök operatorer som operatörerna AND, OR, NOT, fras, suffix och prioritet.
+Om frågan är full texts ökning används en parser för att bearbeta innehållet i Sök parametern. Azure Kognitiv sökning erbjuder två fråge tolkare. Den enkla parsern förstår den [enkla frågesyntaxen](query-simple-syntax.md). Den här parsern valdes som standard för dess hastighet och effektivitet i kostnads fria formulär text frågor. Syntaxen stöder vanliga Sök operatorer (och, eller, inte) för term-och fras sökningar och prefix ( `*` )-sökning (som i "Sea *" för Seattle och Seaside). En allmän rekommendation är att testa den enkla parsern först och sedan gå vidare till fullständig parser om program kraven kräver mer kraftfulla frågor.
 
-Den [fullständiga Lucene-frågesyntaxen](query-Lucene-syntax.md#bkmk_syntax), som aktive ras när du lägger till `queryType=full` begäran, exponerar det vanligaste och lättfattliga programspecifika-frågespråket som utvecklats som en del av [Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). Fullständig syntax utökar den enkla syntaxen. Alla frågor som du skriver för den enkla syntaxen körs under hela Lucene-parsern. 
+[Fullständig Lucene-frågesyntax](query-Lucene-syntax.md#bkmk_syntax), som aktive ras när du lägger till i `queryType=full` begäran, baseras på [Apache Lucene-parsern](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html).
 
-I följande exempel visas punkten: samma fråga, men med olika **`queryType`** Inställningar, vilket ger olika resultat. I den första frågan `^3` `historic` behandlas efter som en del av Sök termen. Det översta resultatet för den här frågan är "Marquis Plaza & Suitess", *som har 10* i beskrivningen.
+Fullständig syntax är en utökning av den enkla syntaxen, med fler operatorer så att du kan skapa avancerade frågor, till exempel suddig sökning, sökning med jokertecken, närhets sökning och reguljära uttryck. I följande exempel visas punkten: samma fråga, men med olika **`queryType`** Inställningar, vilket ger olika resultat. I den första enkla frågan `^3` `historic` behandlas efter som en del av Sök termen. Det översta resultatet för den här frågan är "Marquis Plaza & Suitess", *som har 10* i beskrivningen.
 
 ```http
 POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
@@ -84,20 +102,40 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 }
 ```
 
-## <a name="enable-query-behaviors-in-an-index"></a>Aktivera fråge beteenden i ett index
+## <a name="choose-query-methods"></a>Välj fråge metoder
 
-Index design och fråge design är nära kopplade i Azure Kognitiv sökning. *Index schemat*, med attribut för varje fält, bestämmer vilken typ av fråga som du kan bygga.
+Sökningen är i grunden en användar driven övning där termer eller fraser samlas in från en sökruta eller från klicknings händelser på en sida. I följande tabell sammanfattas de mekanismer som du kan använda för att samla in användarindata, tillsammans med den förväntade Sök upplevelsen.
 
-Indexattribut i ett fält ange tillåtna åtgärder – om ett fält är *sökbart* i indexet, kan *hämtas* i resultat, *sorterbart*, *filtrerat* och så vidare. I exempel frågorna `"$orderby": "Rating desc"` fungerar endast eftersom fältet klassificering är markerat som *sorterbart* i index schemat.
+| Indata | Erfarenhet |
+|-------|---------|
+| [Sök metod](/rest/api/searchservice/search-documents) | En användare skriver in termer eller fraser i en sökruta, med eller utan operatorer, och klickar på Sök för att skicka begäran. Sökningen kan användas med filter på samma begäran, men inte med Autoavsluta eller förslag. |
+| [Metoden komplettera automatiskt](/rest/api/searchservice/autocomplete) | En användare skriver några tecken och frågor initieras efter att varje nytt tecken har skrivits. Svaret är en slutförd sträng från indexet. Om den angivna strängen är giltig klickar användaren på Sök för att skicka frågan till tjänsten. |
+| [Förslags metod](/rest/api/searchservice/suggestions) | Precis som med automatisk komplettering skapas en användare som skriver några tecken och stegvisa frågor. Svaret är en listruta med matchande dokument, som vanligt vis representeras av några unika eller beskrivande fält. Om något av valen är giltigt klickar användaren på ett och det matchande dokumentet returneras. |
+| [Aspektbaserad navigering](/rest/api/searchservice/search-documents#query-parameters) | En sida visar klicknings bara navigerings länkar eller spår som begränsar Sök omfånget. En aspektad navigerings struktur sammanställs dynamiskt baserat på en inledande fråga. Om du till exempel `search=*` vill fylla i ett fasett navigerings träd som består av varje möjlig kategori. En fasett-navigerings struktur skapas från ett fråge svar, men det är också en mekanism för att uttrycka nästa fråga. n REST API referens `facets` är dokumenterad som en frågeparameter för en Sök dokument åtgärd, men den kan användas utan `search` parametern.|
+| [Filter metod](/rest/api/searchservice/search-documents#query-parameters) | Filter används med Faces för att begränsa resultaten. Du kan också implementera ett filter bakom sidan, till exempel för att initiera sidan med språkspecifika fält. I REST API referens `$filter` dokumenteras som en frågeparameter för en Sök dokument åtgärd, men den kan användas utan `search` parametern.|
+
+## <a name="know-your-field-attributes"></a>Känn till dina fältattribut
+
+Om du tidigare har granskat [grunderna i en fråga](search-query-overview.md), kan du komma ihåg att parametrarna på fråge förfrågningen är beroende av hur fälten attributas i ett index. Om du till exempel vill använda i en fråga, filtrera eller sortera ordning måste ett fält vara *sökbart*, *filtrerat* och *sorterbart*. På samma sätt kan endast fält som har marker ATS som *hämtnings* bara visas i resultat. När du börjar ange `search` `filter` parametrarna,, och `orderby` i din begäran måste du kontrol lera attributen när du går för att undvika oväntade resultat.
+
+I portalens skärm bild nedan av [exempel indexet Hotels](search-get-started-portal.md), kan endast de två sista fälten "LastRenovationDate" och "klassificering" användas i en `"$orderby"` enda sats.
 
 ![Index definition för hotellet-exemplet](./media/search-query-overview/hotel-sample-index-definition.png "Index definition för hotellet-exemplet")
 
-Skärm bilden ovan är en ofullständig lista över indexattribut för [exempel indexet Hotels](search-get-started-portal.md). Du kan skapa och Visa hela index schemat i portalen. Mer information om indexattribut finns i [skapa index (REST API)](/rest/api/searchservice/create-index).
+En beskrivning av fältattribut finns i [create index (REST API)](/rest/api/searchservice/create-index).
+
+## <a name="know-your-tokens"></a>Ta reda på dina tokens
+
+Vid indexering använder frågemotor en analys för att utföra text analyser på strängar, vilket maximerar risken för matchning vid tidpunkten för frågan. Som minst är strängarna lägre-bokstäver, men de kan också genomgå lemmatisering och stoppa borttagning av ord. Större strängar eller sammansatta ord delas vanligt vis upp efter blank steg, bindestreck eller tank streck och indexeras som separata tokens. 
+
+Den punkt som ska tas bort här är att det du tror att ditt index innehåller, och vad som faktiskt finns i det, kan vara olika. Om frågor inte returnerar förväntade resultat kan du granska de token som skapats av analysen genom att [analysera texten (REST API)](/rest/api/searchservice/test-analyzer). Mer information om tokenisering och hur du kan påverka frågor finns i [partiell terms ökning och mönster med specialtecken](search-query-partial-matching.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu när du förstår hur begäran är konstruerad kan du prova med att använda både den enkla och fullständiga syntaxen.
+Nu när du har en bättre förståelse för hur en fråge förfrågan är konstruerad, kan du prova följande snabb starter för praktisk erfarenhet.
 
-+ [Enkla exempelfrågor](search-query-simple-examples.md)
-+ [Exempel på Lucene-syntax för att skapa avancerade frågor](search-query-lucene-examples.md)
-+ [Så här fungerar fulltextsökning i Azure Cognitive Search](search-lucene-query-architecture.md)
++ [Sök Utforskaren](search-explorer.md)
++ [Fråga i REST](search-get-started-rest.md)
++ [Så här frågar du i .NET](search-get-started-dotnet.md)
++ [Fråga i python](search-get-started-python.md)
++ [Fråga i Java Script](search-get-started-javascript.md)
