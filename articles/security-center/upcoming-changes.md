@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/09/2020
+ms.date: 12/13/2020
 ms.author: memildin
-ms.openlocfilehash: 9bdda9b78e103f02d91c81cb3dc28c957d313436
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 8734c43ecb92faf37f1d95b1a24d1c99db3e86d5
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95321450"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371925"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Viktiga kommande ändringar i Azure Security Center
 
@@ -31,7 +31,11 @@ Om du letar efter den senaste versions informationen hittar du dem i [vad som ä
 
 ## <a name="planned-changes"></a>Planerade ändringar
 
-Det finns inga kommande viktiga ändringar som kräver förhands meddelande för tillfället. 
+### <a name="not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments"></a>"Ej tillämpligt" resurser som ska rapporteras som "kompatibla" i Azure Policy bedömningar
+
+**Beräknat datum för ändring:** Januari 2021
+
+För närvarande visas resurser som utvärderas för en rekommendation och som inte är **tillämpliga** i Azure policy som "icke-kompatibla". Inga användar åtgärder kan ändra deras status till "kompatibel". Från den här planerade ändringen rapporteras de som "kompatibla" för förbättrad klarhet.
 
 
 ## <a name="next-steps"></a>Nästa steg

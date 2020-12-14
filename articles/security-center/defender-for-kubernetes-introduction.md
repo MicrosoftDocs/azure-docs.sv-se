@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a815295c4f2ab78cbd3aff82949d7c28197afd82
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a0dd00709dbe8a1b0e037fe22750adea7e071162
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791927"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97372010"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Introduktion till Azure Defender för Kubernetes
 
@@ -20,7 +20,7 @@ Azure Kubernetes service (AKS) är Microsofts hanterade tjänst för utveckling,
 
 Azure Security Center och AKS utgör det bästa molnet Kubernetes säkerhets erbjudande och tillsammans de ger miljö härdning, skydd av arbets belastning och kör tids skydd som beskrivs nedan.
 
-För hot identifiering för dina Kubernetes-kluster aktiverar du **Azure Defender för Kubernetes** .
+För hot identifiering för dina Kubernetes-kluster aktiverar du **Azure Defender för Kubernetes**.
 
 Hot identifiering på värdnivå för dina Linux AKS-noder är tillgängligt om du aktiverar [Azure Defender för servrar](defender-for-servers-introduction.md).
 
@@ -31,7 +31,7 @@ Hot identifiering på värdnivå för dina Linux AKS-noder är tillgängligt om 
 |Versions tillstånd:|Allmänt tillgänglig (GA)|
 |Priset|**Azure Defender for Kubernetes** faktureras så som det visas på [sidan med priser](security-center-pricing.md)|
 |Nödvändiga roller och behörigheter:|**Säkerhets administratören** kan stänga aviseringar.<br>**Säkerhets läsaren** kan visa resultat.|
-|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Nej](./media/icons/no-icon.png) National/suverän (US Gov, Kina gov, andra gov)|
+|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) Kina, gov<br>![Nej](./media/icons/no-icon.png) US Gov, annan gov|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-kubernetes"></a>Vilka är fördelarna med Azure Defender för Kubernetes?
@@ -72,7 +72,7 @@ Du kan se att de objekt som har tagits emot och analyseras av Security Center in
 - gransknings loggar från API-servern
 - rå säkerhets händelser från Log Analytics agent
 - kluster konfigurations information från AKS-klustret
-- arbets belastnings konfiguration från Azure Policy (via **Azure policy-tillägget för Kubernetes** ). [Lär dig mer om bästa metoder för arbets belastnings skydd med Kubernetes-åtkomstkontroll](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)
+- arbets belastnings konfiguration från Azure Policy (via **Azure policy-tillägget för Kubernetes**). [Lär dig mer om bästa metoder för arbets belastnings skydd med Kubernetes-åtkomstkontroll](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)
 
 :::image type="content" source="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png" alt-text="Övergripande arkitektur av interaktionen mellan Azure Security Center, Azure Kubernetes-tjänsten och Azure Policy" lightbox="./media/defender-for-kubernetes-intro/kubernetes-service-security-center-integration-detailed.png":::
 

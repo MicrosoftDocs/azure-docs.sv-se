@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 917eb52a7255527b55aacd488f33125ad853e894
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 6c9e2ae420e56c5ef99ff79cdcb49592bc7e049e
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932276"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371993"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Anslut Azure till ITSM-verktyg med hjälp av Anslutningsprogram för hantering av IT-tjänster (ITSM)
 
@@ -42,9 +42,12 @@ Information om juridiska villkor och sekretess policyn finns i [Microsofts sekre
 Du kan börja använda ITSMC genom att utföra följande steg:
 
 1.  [Lägg till ITSMC.](#add-it-service-management-connector)
-2.  [Skapa en ITSM-anslutning.](#create-an-itsm-connection)
-3.  [Använd anslutningen.](#use-itsmc)
-
+2. [Ansluta ITSM-produkter/-tjänster med anslutningsprogrammet för hantering av IT-tjänster (ITSM)](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-connections)
+3.  [Skapa en ITSM-anslutning.](#create-an-itsm-connection)
+4.  [Använd anslutningen.](#use-itsmc)
+   
+   >[!NOTE]
+> Du måste följa stegen i den här ordningen annars får du ett fel meddelande.
 
 ##  <a name="add-it-service-management-connector"></a>Lägg till Anslutningsprogram för hantering av IT-tjänster (ITSM)
 

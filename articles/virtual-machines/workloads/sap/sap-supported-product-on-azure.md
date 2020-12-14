@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/21/2020
+ms.date: 12/12/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a02c30423ab3c6de87eac7d34b5f0004e54a8d5d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 28d47b61bce7e154da6c6adb4b74e2b5cf1f3f3d
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957817"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371857"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Vilken SAP-programvara stöds för Azure-distributioner
 Den här artikeln beskriver hur du kan ta reda på vilka SAP-program som stöds för Azure-distributioner och vilka operativ Systems utgåvor eller DBMS-versioner som behövs.
@@ -82,6 +82,12 @@ Operativ systemet, Oracle-DBMS-versioner och Oracle-funktioner som stöds i Azur
 - SAP-system som inte stöder Unicode stöds bara med program servrar som kör med Windows gäst operativ system. Gäst operativ systemet för DBMS kan vara Oracle Linux eller Windows. Orsaken till den här begränsningen är uppenbar när du kontrollerar SAP-matrisen för produkt tillgänglighet (PAM). För Oracle Linux frisläppte SAP aldrig icke-Unicode SAP-kernel
 
 Om du vet vilka DBMS-versioner som stöds med den riktade Azure-infrastrukturen måste du kontrol lera matrisen för tillgänglighet för SAP-produkter på om de OS-versioner och DBMS som krävs stöds med dina SAP-produktsortiment som du avsåg att köra. 
+
+## <a name="oracle-linux"></a>Oracle Linux
+De mest framträdande frågorna runt Oracle Linux är om SAP stöder Red Hat-kärnan som är integrerad del av Oracle Linux också. Mer information finns i [#1565179 för SAP-support](https://launchpad.support.sap.com/#/notes/1565179).
+
+## <a name="other-database-than-sap-hana"></a>Annan databas än SAP HANA
+Stöd för icke-HANA-databaser för SAP-arbetsbelastningar dokumenteras i [SAP support note #1928533](https://launchpad.support.sap.com/#/notes/1928533).
 
 
 ## <a name="sap-hana-support"></a>SAP HANA support

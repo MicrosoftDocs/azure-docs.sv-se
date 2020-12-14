@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 4b29e5375c10fc3c1aaa203df720fdd24090d11e
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 3cab22c2271fd5874b4b094be65c36f5b5f3a22d
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601143"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371891"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Java-kodad program övervakning Azure Monitor Application Insights
 
@@ -143,12 +143,12 @@ Tabellen nedan representerar anpassade typer av anpassade telemetri som stöds f
 
 |                     | Micrometer | Log4j, logback, JUL | 2. x SDK |
 |---------------------|------------|---------------------|---------|
-| **Anpassade händelser**   |            |                     |  Yes    |
+| **Anpassade händelser**   |            |                     |  Ja    |
 | **Anpassade mått**  |  Ja       |                     |  Ja    |
-| **Beroenden**    |            |                     |  Yes    |
+| **Beroenden**    |            |                     |  Ja    |
 | **Undantag**      |            |  Ja                |  Ja    |
-| **Sid visningar**      |            |                     |  Yes    |
-| **Begäranden**        |            |                     |  Yes    |
+| **Sid visningar**      |            |                     |  Ja    |
+| **Begäranden**        |            |                     |  Ja    |
 | **Spårningar**          |            |  Ja                |  Ja    |
 
 Vi planerar inte att lansera en SDK med Application Insights 3,0 för tillfället.
@@ -186,17 +186,17 @@ Log4j, logback och Java. util. logging är automatiskt instrumenterade och loggn
 Som standard samlas loggning endast in när loggningen utförs på informations nivån eller över.
 Se [konfigurations alternativen](./java-standalone-config.md#auto-collected-logging) för hur du ändrar den här nivån.
 
-Om du vill koppla anpassade dimensioner till dina loggar kan du använda [log4j 1 MDC](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html), [log4j 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)eller [logback MDC](http://logback.qos.ch/manual/mdc.html), och Application Insights Java 3,0 samlar automatiskt in dessa MDC egenskaper som anpassade dimensioner för telemetri och undantag.
+Om du vill koppla anpassade dimensioner till dina loggar kan du använda [Log4j 1,2 MDC](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html), [log4j 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)eller [logback MDC](http://logback.qos.ch/manual/mdc.html), och Application Insights Java 3,0 samlar automatiskt in dessa MDC egenskaper som anpassade dimensioner för telemetri och undantag.
 
 ### <a name="send-custom-telemetry-using-application-insights-java-2x-sdk"></a>Skicka anpassad telemetri med Application Insights Java 2. x SDK
 
-Lägg till `applicationinsights-core-2.6.0.jar` i ditt program (alla 2. x-versioner stöds av Application Insights Java 3,0, men det är värt att använda det senaste om du har ett val):
+Lägg till `applicationinsights-core-2.6.2.jar` i ditt program (alla 2. x-versioner stöds av Application Insights Java 3,0, men det är värt att använda det senaste om du har ett val):
 
 ```xml
 <dependency>
   <groupId>com.microsoft.azure</groupId>
   <artifactId>applicationinsights-core</artifactId>
-  <version>2.6.0</version>
+  <version>2.6.2</version>
 </dependency>
 ```
 

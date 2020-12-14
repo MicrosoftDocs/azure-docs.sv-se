@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: d2e93ccfaf3ff2c5b74ceef1f6a274f71ee52c4e
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 4155cda1e1de6f15aefa6d5fc960988eba15068d
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309842"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371976"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics arbets ytans data export i Azure Monitor (förhands granskning)
 Med Log Analytics data export för arbets yta i Azure Monitor kan du kontinuerligt exportera data från valda tabeller i din Log Analytics arbets yta till ett Azure Storage-konto eller Azure-Event Hubs som det samlas in. Den här artikeln innehåller information om den här funktionen och hur du konfigurerar data export i dina arbets ytor.
@@ -48,7 +48,7 @@ Log Analytics data export för arbets ytan exporterar kontinuerligt data från e
 > [!NOTE]
 > Log Analytics data export skriver data som en bifogad blob som för närvarande är en för hands version av Azure Data Lake Storage Gen2. Du måste öppna en supportbegäran innan du konfigurerar export till den här lagringen. Använd följande information för den här begäran.
 > - Ärendetyp: Teknisk
-> - Prenumeration: din prenumeration
+> - Prenumeration: Din prenumeration
 > - Tjänst: Data Lake Storage Gen2
 > - Resurs: ditt resurs namn
 > - Sammanfattning: begär prenumerations registrering för att acceptera data från Log Analytics data export.
@@ -58,7 +58,7 @@ Log Analytics data export för arbets ytan exporterar kontinuerligt data från e
 ## <a name="data-completeness"></a>Data fullständighet
 Data exporten kommer att fortsätta att försöka skicka data i upp till 30 minuter om målet inte är tillgängligt. Om det fortfarande inte är tillgängligt efter 30 minuter tas data bort tills målet blir tillgängligt.
 
-## <a name="cost"></a>Cost
+## <a name="cost"></a>Kostnad
 Det finns för närvarande inga ytterligare avgifter för data export funktionen. Prissättningen för data export kommer att meddelas i framtiden och ett meddelande som tillhandahålls innan faktureringen påbörjas. Om du väljer att fortsätta använda data export efter meddelande perioden debiteras du enligt tillämplig taxa.
 
 ## <a name="export-destinations"></a>Exportera mål
@@ -81,7 +81,7 @@ Data skickas till händelsehubben i nära real tid när den når Azure Monitor. 
 1. Den grundläggande Event Hub-SKU: n stöder lägre storleks [gräns](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-tiers) för händelser och vissa loggar på din arbets yta kan överstiga den och tas bort. Vi rekommenderar att du använder "standard" eller "dedikerad" händelsehubben som export mål.
 2. Volymen för exporterade data ökar ofta med tiden och skalningen av Event Hub måste ökas för att hantera större överföringshastigheter och undvika begränsnings scenarier och data fördröjning. Du bör använda funktionen för automatisk ökning i Event Hubs för att automatiskt skala upp och öka antalet data flödes enheter och uppfylla användnings behoven. Mer information finns i [skala upp Azure Event Hubs data flödes enheter automatiskt](../../event-hubs/event-hubs-auto-inflate.md) .
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 Följande är förutsättningar som måste slutföras innan du konfigurerar Log Analytics data export.
 
 - Lagrings kontot och händelsehubben måste redan skapas och måste finnas i samma region som Log Analytics-arbetsytan. Om du behöver replikera dina data till andra lagrings konton kan du använda något av [alternativen för Azure Storage redundans](../../storage/common/storage-redundancy.md).  
@@ -122,6 +122,10 @@ En data export regel definierar data som ska exporteras för en uppsättning tab
 
 Ej tillämpligt
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Ej tillämpligt
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Använd följande CLI-kommando för att visa tabeller i din arbets yta. Den kan hjälpa dig att kopiera de tabeller som du vill ha och ta med i data export regeln.
@@ -133,13 +137,22 @@ az monitor log-analytics workspace table list -resource-group resourceGroupName 
 Använd följande kommando för att skapa en data export regel till ett lagrings konto med hjälp av CLI.
 
 ```azurecli
-az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $storageAccountId
+$storageAccountResourceId = '/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.Storage/storageAccounts/storage-account-name'
+az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $storageAccountResourceId
 ```
 
-Använd följande kommando för att skapa en data export regel till en händelsehubben med hjälp av CLI.
+Använd följande kommando för att skapa en data export regel till en händelsehubben med hjälp av CLI. En separat händelsehubben skapas för varje tabell.
 
 ```azurecli
-az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $eventHubsNamespacesId
+$eventHubsNamespacesResourceId = '/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.EventHub/namespaces/namespaces-name'
+az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $eventHubsNamespacesResourceId
+```
+
+Använd följande kommando för att skapa en data export regel för en speciell händelsehubben med hjälp av CLI. Alla tabeller exporteras till det angivna händelsehubben. 
+
+```azurecli
+$eventHubResourceId = '/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.EventHub/namespaces/namespaces-name/eventHubName/eventhub-name'
+az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $eventHubResourceId
 ```
 
 # <a name="rest"></a>[REST](#tab/rest)
@@ -205,9 +218,13 @@ Följande är en exempel text för REST-begäran för en Event Hub där Event Hu
 ```
 ---
 
-## <a name="view-data-export-configuration"></a>Visa data export konfiguration
+## <a name="view-data-export-rule-configuration"></a>Visa data export regel konfiguration
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
+
+Ej tillämpligt
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Ej tillämpligt
 
@@ -231,6 +248,10 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ## <a name="disable-an-export-rule"></a>Inaktivera en export regel
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
+
+Ej tillämpligt
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Ej tillämpligt
 
@@ -272,6 +293,10 @@ Content-type: application/json
 
 Ej tillämpligt
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Ej tillämpligt
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Använd följande kommando för att ta bort en data export regel med CLI.
@@ -295,6 +320,10 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 
 Ej tillämpligt
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Ej tillämpligt
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Använd följande kommando för att visa alla data export regler i en arbets yta med CLI.
@@ -315,14 +344,14 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ## <a name="unsupported-tables"></a>Tabeller som inte stöds
 Om data export regeln innehåller en tabell som inte stöds kommer konfigurationen att lyckas, men inga data exporteras för tabellen. Om tabellen senare stöds, kommer dess data att exporteras vid denna tidpunkt.
 
-Om data export regeln innehåller en tabell som inte finns, kommer den inte att fungera med felet ```Table <tableName> does not exist in the workspace.```
+Om data export regeln innehåller en tabell som inte finns kommer den inte att fungera med felet "tabellen <tableName> finns inte i arbets ytan".
 
 
 ## <a name="supported-tables"></a>Tabeller som stöds
 Tabeller som stöds är för närvarande begränsade till dem som anges nedan. Alla data från tabellen exporteras om inte begränsningar anges. Den här listan kommer att uppdateras när stöd för ytterligare tabeller läggs till.
 
 
-| Tabell | Begränsningar |
+| Tabeller | Begränsningar |
 |:---|:---|
 | AADDomainServicesAccountLogon | |
 | AADDomainServicesAccountManagement | |
