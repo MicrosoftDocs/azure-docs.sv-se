@@ -5,35 +5,35 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: article
-ms.date: 11/1/2018
+ms.date: 12/14/2020
 ms.author: duau
-ms.openlocfilehash: fd1cad4031d83fd0e17286bfaabb77aa746b646a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 254f5909e7ed8db4dc18ade2677a3213b268cf41
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202335"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511271"
 ---
 # <a name="configure-bfd-over-expressroute"></a>Konfigurera BFD över ExpressRoute
 
-ExpressRoute stöder identifiering av dubbelriktad vidarebefordran (BFD) både över privat och Microsoft-peering. Genom att aktivera BFD över ExpressRoute kan du påskynda identifieringen av länkar mellan Microsoft Enterprise Edge-enheter (MSEE: N) och de routrar som du avslutar ExpressRoute-kretsen på (CE/PE). Du kan säga upp ExpressRoute över kund gräns enheter eller routnings enheter för klient sidan (om du gick med i den hanterade Layer 3-anslutnings tjänsten). Det här dokumentet vägleder dig genom behovet av BFD och hur du aktiverar BFD över ExpressRoute.
+ExpressRoute stöder identifiering av dubbelriktad vidarebefordran (BFD) både över privat och Microsoft-peering. När du aktiverar BFD över ExpressRoute kan du påskynda hämtningen av länkfel mellan Microsoft Enterprise Edge-enheter (MSEE: N) och de routrar som din ExpressRoute-krets har konfigurerat (CE/PE). Du kan konfigurera ExpressRoute över dina Edge-routningsservrar eller dina partner gräns enheter för routning (om du gick med i den hanterade Layer 3-anslutnings tjänsten). Det här dokumentet vägleder dig genom behovet av BFD och hur du aktiverar BFD över ExpressRoute.
 
 ## <a name="need-for-bfd"></a>Behov av BFD
 
 Följande diagram visar fördelarna med att aktivera BFD över ExpressRoute-kretsen: [![1]][1]
 
-Du kan aktivera ExpressRoute-kretsen antingen via Layer 2 anslutningar eller hanterade Layer 3-anslutningar. I båda fallen finns det ansvar för att identifiera eventuella länkfel i sökvägen, om det finns en eller flera Layer-2-enheter i ExpressRoute-anslutnings Sök väg.
+Du kan aktivera ExpressRoute-kretsen antingen via Layer 2 anslutningar eller hanterade Layer 3-anslutningar. I båda fallen, om det finns fler än en nivå 2-enheter i ExpressRoute anslutnings Sök väg, är ansvaret för att identifiera eventuella länkfel i sökvägen med den överliggande BGP-sessionen.
 
-BGP keepalive-och MSEE: N-enheter är vanligt vis konfigurerade som 60 respektive 180 sekunder. Därför kan det ta upp till tre minuter att identifiera eventuella länkfel och byta trafik till en annan anslutning efter en länk som misslyckats.
+På MSEE: N-enheterna är BGP Keep-Alive och Hold-Time vanligt vis konfigurerade som 60 respektive 180 sekunder. Av den anledningen kan det ta upp till tre minuter att identifiera eventuella länkfel och växla trafik till en annan anslutning om det uppstår ett länkfel.
 
-Du kan kontrol lera BGP-tidsövervakarna genom att konfigurera lägre BGP keepalive-och Hold-Time på kundens Edge-peering-enhet. Om BGP-tidsintervallen är felaktiga mellan de två peering-enheterna, använder BGP-sessionen mellan peer-datorerna det nedre timer-värdet. BGP keepalive kan anges till tre sekunder, och Hold-tiden i storleksordningen på flera sekunder. Att ställa in BGP-timers är dock mindre lämpligt eftersom protokollet är process intensivt.
+Du kan kontrol lera BGP-tidslägena genom att konfigurera en lägre BGP Keep-Alive och Hold-Time på din Edge peering-enhet. Om BGP-tidsutrustningen inte är samma mellan de två peering-enheterna, upprättas BGP-sessionen med det lägre tids värdet. BGP Keep-Alive kan anges till så lite som tre sekunder, och Hold-Time så lågt som 10 sekunder. Att ställa in en mycket aggressiv BGP-timer rekommenderas dock inte eftersom protokollet är process intensivt.
 
 I det här scenariot kan BFD hjälpa dig. BFD ger låg overheadkostnad för länkfel i ett under sekunds tidsintervall. 
 
 
 ## <a name="enabling-bfd"></a>Aktivera BFD
 
-BFD konfigureras som standard under alla nyligen skapade ExpressRoute privata peering-gränssnitt på msee. För att aktivera BFD behöver du därför bara konfigurera BFD på din CEs/Parameterentiteter (både på dina primära och sekundära enheter). Att konfigurera BFD är två stegs process: du måste konfigurera BFD på gränssnittet och sedan länka det till BGP-sessionen.
+BFD konfigureras som standard under alla nyligen skapade ExpressRoute privata peering-gränssnitt på msee. Därför behöver du bara konfigurera BFD på både dina primära och sekundära enheter för att aktivera BFD. Konfiguration av BFD är två stegs process. Du konfigurerar BFD på gränssnittet och länkar det sedan till BGP-sessionen.
 
 Ett exempel på CE/PE-konfiguration (med Cisco IOS XE) visas nedan. 
 
@@ -62,13 +62,13 @@ router bgp 65020
 
 ## <a name="bfd-timer-negotiation"></a>BFD timer-förhandling
 
-Mellan BFD-peer-datorer fastställer överföringshastigheten för de två peer-datorerna. Msee BFD-överföring/mottagnings intervall anges till 300 millisekunder. I vissa fall kan intervallet anges till ett högre värde på 750 millisekunder. Genom att konfigurera högre värden kan du tvinga dessa intervall att vara längre. men inte kortare.
+Mellan BFD-peer-datorer fastställer överföringshastigheten för de två peer-datorerna. Msee BFD-överföring/mottagnings intervall anges till 300 millisekunder. I vissa fall kan intervallet anges till ett högre värde på 750 millisekunder. Genom att konfigurera ett högre värde kan du tvinga dessa intervall att vara längre, men det går inte att göra dem kortare.
 
 >[!NOTE]
->Om du har konfigurerat geo-redundanta ExpressRoute-kretsar eller använda VPN-anslutning från plats till plats som säkerhets kopiering, aktivering av BFD skulle hjälpa till att växla snabbare efter ett ExpressRoute anslutnings fel. 
+>Om du har konfigurerat geo-redundanta ExpressRoute-kretsar eller använda VPN-anslutning från plats till plats som säkerhets kopiering. Aktivering av BFD skulle hjälpa till att växla snabbare efter ett ExpressRoute anslutnings fel. 
 >
 
-## <a name="next-steps"></a>Efterföljande moment
+## <a name="next-steps"></a>Nästa steg
 
 Mer information eller hjälp finns i följande länkar:
 

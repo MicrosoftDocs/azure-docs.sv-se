@@ -3,19 +3,19 @@ title: Lägg till ägare och användare i Azure DevTest Labs | Microsoft Docs
 description: Lägg till ägare och användare i Azure DevTest Labs med antingen Azure Portal eller PowerShell
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6d6af68cd663e88af90d690375a4d45c538aad1d
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 2ca6a1ffa66ab294e34a1b4866953a393aba4d6d
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330197"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511985"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Lägg till ägare och användare i Azure DevTest Labs
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
 > 
 > 
 
-Åtkomst i Azure DevTest Labs styrs av [rollbaserad åtkomst kontroll i Azure (Azure RBAC)](../role-based-access-control/overview.md). Med hjälp av Azure RBAC kan du åtskilja uppgifter i ditt team i *roller* där du endast beviljas den mängd åtkomst som krävs för att användarna ska kunna utföra sina jobb. Tre av dessa Azure-roller är *ägare*, *DevTest Labs-användare*och *deltagare*. I den här artikeln får du lära dig vilka åtgärder som kan utföras i de tre viktigaste Azure-rollerna. Därifrån får du lära dig hur du lägger till användare i ett labb – både via portalen och via ett PowerShell-skript och hur du lägger till användare på prenumerations nivå.
+Åtkomst i Azure DevTest Labs styrs av [rollbaserad åtkomst kontroll i Azure (Azure RBAC)](../role-based-access-control/overview.md). Med hjälp av Azure RBAC kan du åtskilja uppgifter i ditt team i *roller* där du endast beviljas den mängd åtkomst som krävs för att användarna ska kunna utföra sina jobb. Tre av dessa Azure-roller är *ägare*, *DevTest Labs-användare* och *deltagare*. I den här artikeln får du lära dig vilka åtgärder som kan utföras i de tre viktigaste Azure-rollerna. Därifrån får du lära dig hur du lägger till användare i ett labb – både via portalen och via ett PowerShell-skript och hur du lägger till användare på prenumerations nivå.
 
 ## <a name="actions-that-can-be-performed-in-each-role"></a>Åtgärder som kan utföras i varje roll
 Det finns tre huvud roller som du kan tilldela en användare:
@@ -34,7 +34,7 @@ Följande tabell visar de åtgärder som kan utföras av användare i var och en
 | **Bas uppgifter för virtuella datorer** | | | |
 | Lägga till och ta bort anpassade avbildningar |Nej |Ja |Ja |
 | Lägga till, uppdatera och ta bort formler |Ja |Ja |Ja |
-| Vitlista Azure Marketplace-avbildningar |Nej |Ja |Ja |
+| Aktivera Marketplace-avbildningar |Nej |Ja |Ja |
 | **VM-aktiviteter** | | | |
 | Skapa VM:ar |Ja |Ja |Ja |
 | Starta, stoppa och ta bort virtuella datorer |Endast virtuella datorer som har skapats av användaren |Ja |Ja |
@@ -54,7 +54,7 @@ Följande tabell visar de åtgärder som kan utföras av användare i var och en
 Följande steg vägleder dig genom processen att lägga till en ägare eller användare till ett labb i Azure DevTest Labs:
 
 1. Logga in på [Azure-portalen](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-2. Välj **alla tjänster**och välj sedan **DevTest Labs** i listan.
+2. Välj **alla tjänster** och välj sedan **DevTest Labs** i listan.
 3. I listan med labb väljer du önskat labb.
 4. På labb bladet väljer du **konfiguration och principer**. 
 5. På sidan **konfiguration och principer** väljer du **åtkomst kontroll (IAM)** på menyn till vänster. 
@@ -111,12 +111,12 @@ Du kan lägga till ytterligare ägare till ett labb via Labbets blad i [Azure Po
 Följ dessa steg om du vill lägga till en ägare till en Azure-prenumeration:
 
 1. Logga in på [Azure-portalen](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-2. Välj **alla tjänster**och välj sedan **prenumerationer** i listan.
+2. Välj **alla tjänster** och välj sedan **prenumerationer** i listan.
 3. Välj önskad prenumeration.
 4. Välj **åtkomst** ikon. 
    
     ![Åtkomst till användare](./media/devtest-lab-add-devtest-user/access-users.png)
-5. Välj **Lägg till**på bladet **användare** .
+5. Välj **Lägg till** på bladet **användare** .
    
     ![Lägg till användare](./media/devtest-lab-add-devtest-user/devtest-users-blade.png)
 6. På bladet **Välj en roll** väljer du **ägare**.

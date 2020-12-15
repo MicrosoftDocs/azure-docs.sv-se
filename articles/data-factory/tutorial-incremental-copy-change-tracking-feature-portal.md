@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: c5f87e693d2592f830ec785f2163c232915544d1
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 3ea231258f7a60ce90ec119803b5abc8b6e525fe
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561139"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510625"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>Läs in data stegvis från Azure SQL Database till Azure Blob Storage med hjälp av ändrings spårnings information med hjälp av Azure Portal
 
@@ -69,7 +69,7 @@ I den här självstudien skapar du två pipelines som utför följande två åtg
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://azure.microsoft.com/free/) konto innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 * **Azure SQL Database**. Du använder databasen som **källa** för datalagringen. Om du inte har en databas i Azure SQL Database går du till artikeln [skapa en databas i Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) för steg för att skapa en.
 * **Azure Storage konto**. Du kan använda blob-lagringen som **mottagare** för datalagringen. Om du inte har ett Azure Storage-konto kan du läsa artikeln [skapa ett lagrings konto](../storage/common/storage-account-create.md) för steg för att skapa ett. Skapa en container med namnet **adftutorial**. 
 
@@ -140,8 +140,8 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://a
 
     BEGIN
 
-        UPDATE table_store_ChangeTracking_version
-        SET [SYS_CHANGE_VERSION] = @CurrentTrackingVersion
+    UPDATE table_store_ChangeTracking_version
+    SET [SYS_CHANGE_VERSION] = @CurrentTrackingVersion
     WHERE [TableName] = @TableName
 
     END    
@@ -156,7 +156,7 @@ Installera de senaste Azure PowerShell-modulerna genom att följa anvisningarna 
 ## <a name="create-a-data-factory"></a>Skapa en datafabrik
 
 1. Starta webbläsaren **Microsoft Edge** eller **Google Chrome**. Användargränssnittet för Data Factory stöds för närvarande bara i webbläsarna Microsoft Edge och Google Chrome.
-1. På den vänstra menyn väljer du **skapa en resurs**  >  **data och analys**  >  **Data Factory** :
+1. På den vänstra menyn väljer du **skapa en resurs**  >  **data och analys**  >  **Data Factory**:
 
    ![Valet Data Factory i fönstret Nytt](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -167,7 +167,7 @@ Installera de senaste Azure PowerShell-modulerna genom att följa anvisningarna 
    Namnet på Azure Data Factory måste vara **globalt unikt**. Om följande fel returneras ändrar du namnet på datafabriken (till exempel dittnamnADFTutorialDataFactory) och provar att skapa fabriken igen. Se artikeln [Data Factory – namnregler](naming-rules.md) för namnregler för Data Factory-artefakter.
 
    *Data fabriks namnet "ADFTutorialDataFactory" är inte tillgängligt*
-3. Välj den Azure- **prenumeration** som du vill skapa den nya datafabriken i.
+3. Välj den Azure-**prenumeration** som du vill skapa den nya datafabriken i.
 4. För **resursgruppen** utför du något av följande steg:
 
       - Välj **Använd befintlig** och välj en befintlig resurs grupp i den nedrullningsbara listan.
@@ -403,13 +403,13 @@ I det här steget skapar du en pipeline med följande aktiviteter och kör den m
 9. Växla till fliken **Mottagare** och markera **SinkDataset** för fältet för **datauppsättning för mottagare**.
 
     ![Kopiera aktivitet – inställningar för mottagare](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-sink-settings.png)
-10. **Ansluta båda sökningsaktiviteterna till aktiviteten Kopiera** , en i taget. Dra den **gröna** knappen som är kopplad till aktiviteten **Sökning** till aktiviteten **Kopiera**.
+10. **Ansluta båda sökningsaktiviteterna till aktiviteten Kopiera**, en i taget. Dra den **gröna** knappen som är kopplad till aktiviteten **Sökning** till aktiviteten **Kopiera**.
 
     ![Ansluta sökning- och kopieringsaktiviteter](./media/tutorial-incremental-copy-change-tracking-feature-portal/connect-lookup-and-copy.png)
 11. Dra och släpp aktiviteten **Lagrad procedur** från verktygslådan **Aktiviteter** till pipelinedesignytan. Ange aktivitetens namn som **StoredProceduretoUpdateChangeTrackingActivity**. Den här aktiviteten uppdaterar ändringsspårningsversionen i tabellen **table_store_ChangeTracking_version**.
 
     ![Lagrad proceduraktivitet – namn](./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-activity-name.png)
-12. Växla till fliken *SQL-konto* * och välj **AzureSqlDatabaseLinkedService** som **Länkad tjänst**.
+12. Växla till fliken *SQL-konto** och välj **AzureSqlDatabaseLinkedService** som **Länkad tjänst**.
 
     ![Lagrad proceduraktivitet – SQL-konto](./media/tutorial-incremental-copy-change-tracking-feature-portal/sql-account-tab.png)
 13. Växla till fliken **Lagrad procedur** och gör följande:
@@ -466,13 +466,12 @@ De första tre kolumnerna är ändrade data från data_source_table. De sista tv
 ==================================================================
 PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 ==================================================================
-1        update  10     2                     U
-6        new     50     1                     I
+1        update  10            2                                 U
+6        new     50            1                                 I
 ```
-
 
 ## <a name="next-steps"></a>Nästa steg
 Fortsätt till följande självstudie och lär dig mer om hur du kopierar nya och ändrade filer endast baserat på deras LastModifiedDate:
 
 > [!div class="nextstepaction"]
->[Kopiera nya filer efter lastmodifieddate](tutorial-incremental-copy-lastmodified-copy-data-tool.md)
+> [Kopiera nya filer efter lastmodifieddate](tutorial-incremental-copy-lastmodified-copy-data-tool.md)

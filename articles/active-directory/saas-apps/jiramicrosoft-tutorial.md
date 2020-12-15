@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 3a188189b39311734a25a2fc98ea78a62bbe0cff
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 621bbac6bc9ff3cb147110942060c8268fd86989
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108849"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511186"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med JIRA SAML SSO från Microsoft
 
@@ -32,7 +32,7 @@ Mer information om SaaS app integration med Azure AD finns i [Vad är program å
 
 Använd ditt Microsoft Azure Active Directory-konto med Atlassian JIRA-servern för att aktivera enkel inloggning. På så sätt kan alla organisations användare använda Azure AD-autentiseringsuppgifterna för att logga in i JIRA-programmet. Det här plugin-programmet använder SAML 2.0 för federation.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att konfigurera Azure AD-integrering med JIRA SAML SSO från Microsoft behöver du följande:
 
@@ -40,7 +40,7 @@ För att konfigurera Azure AD-integrering med JIRA SAML SSO från Microsoft beh�
 - JIRA Core och program vara 6,4 till 8.14.0 eller JIRA Service Desk 3,0 till 4.11.1 bör installeras och konfigureras på Windows 64-bitars version
 - JIRA-servern är HTTPS-aktiverad
 - Observera att de versioner som stöds för JIRA-plugin-programmet anges i avsnittet nedan.
-- JIRA-servern kan nås via Internet, särskilt för Azure AD-inloggningssidan för autentisering, och bör kunna ta emot token från Azure AD
+- JIRA-servern kan kontaktas på Internet, särskilt på inloggnings sidan för Azure AD för autentisering och ska kunna ta emot token från Azure AD
 - Administratörsautentiseringsuppgifter konfigureras i JIRA
 - WebSudo är inaktiverat i JIRA
 - Testanvändare har skapats i JIRA-serverprogrammet

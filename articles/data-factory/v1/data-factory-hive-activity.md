@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 6a337ad4d623ef73657d473974248cbefd016ba3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8a44838076b80c1b745937cf44f241c40ce6e5c2
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495556"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510166"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Transformera data med Hive-aktivitet i Azure Data Factory 
 > [!div class="op_single_selector" title1="Omvandlings aktiviteter"]
@@ -74,15 +74,15 @@ HDInsight Hive-aktiviteten i en Data Factory [pipelinen](data-factory-create-pip
 ## <a name="syntax-details"></a>Information om syntax
 | Egenskap | Beskrivning | Krävs |
 | --- | --- | --- |
-| name |Namn på aktiviteten |Yes |
-| beskrivning |Text som beskriver vad aktiviteten används för |No |
-| typ |HDinsightHive |Yes |
-| tillför |Indata som används av Hive-aktiviteten |No |
-| utdata |Utdata som produceras av Hive-aktiviteten |Yes |
-| linkedServiceName |Referens till HDInsight-klustret som registrerats som en länkad tjänst i Data Factory |Yes |
-| skript |Ange Hive-skriptet infogat |No |
-| scriptPath |Lagra Hive-skriptet i en Azure Blob-lagring och ange sökvägen till filen. Använd script-eller scriptPath-egenskapen. Båda kan inte användas tillsammans. Fil namnet är Skift läges känsligt. |No |
-| definierar |Ange parametrar som nyckel/värde-par för referenser i Hive-skriptet med hjälp av "hiveconf" |No |
+| name |Namn på aktiviteten |Ja |
+| description |Text som beskriver vad aktiviteten används för |Nej |
+| typ |HDinsightHive |Ja |
+| tillför |Indata som används av Hive-aktiviteten |Nej |
+| utdata |Utdata som produceras av Hive-aktiviteten |Ja |
+| linkedServiceName |Referens till HDInsight-klustret som registrerats som en länkad tjänst i Data Factory |Ja |
+| skript |Ange Hive-skriptet infogat |Nej |
+| scriptPath |Lagra Hive-skriptet i en Azure Blob-lagring och ange sökvägen till filen. Använd script-eller scriptPath-egenskapen. Båda kan inte användas tillsammans. Fil namnet är Skift läges känsligt. |Nej |
+| definierar |Ange parametrar som nyckel/värde-par för referenser i Hive-skriptet med hjälp av "hiveconf" |Nej |
 
 ## <a name="example"></a>Exempel
 Nu ska vi titta på ett exempel på spel loggar för att identifiera hur lång tid det tar för användare att spela spel som lanserats av ditt företag. 
@@ -137,38 +137,39 @@ Om du vill köra det här Hive-skriptet i en Data Factory pipeline måste du gö
    > 
 5. Skapa en pipeline med HDInsightHive-aktiviteten. Aktivitets processerna/transformerar data.
 
-    ```JSON   
-    {   
-        "name": "HiveActivitySamplePipeline",
-        "properties": {
-        "activities": [
-            {
-                "name": "HiveActivitySample",
-                "type": "HDInsightHive",
-                "inputs": [
-                {
-                    "name": "HiveSampleIn"
-                }
-                ],
-                "outputs": [
-                {
-                    "name": "HiveSampleOut"
-                }
-                ],
-                "linkedServiceName": "HDInsightLinkedService",
-                "typeproperties": {
-                    "scriptPath": "adfwalkthrough\\scripts\\samplehive.hql",
-                    "scriptLinkedService": "StorageLinkedService"
-                },
-                "scheduler": {
-                    "frequency": "Hour",
-                    "interval": 1
-                }
-            }
-            ]
+  ```json
+  {
+    "name": "HiveActivitySamplePipeline",
+       "properties": {
+    "activities": [
+      {
+        "name": "HiveActivitySample",
+        "type": "HDInsightHive",
+        "inputs": [
+        {
+          "name": "HiveSampleIn"
         }
+        ],
+             "outputs": [
+               {
+                "name": "HiveSampleOut"
+               }
+             ],
+             "linkedServiceName": "HDInsightLinkedService",
+             "typeproperties": {
+                 "scriptPath": "adfwalkthrough\\scripts\\samplehive.hql",
+                 "scriptLinkedService": "StorageLinkedService"
+             },
+              "scheduler": {
+          "frequency": "Hour",
+                   "interval": 1
+             }
+           }
+      ]
     }
-    ```
+  }
+  ```
+
 6. Distribuera pipelinen. Mer information finns i artikeln om att [skapa pipeliner](data-factory-create-pipelines.md) . 
 7. Övervaka pipelinen med hjälp av vyerna för övervakning och hantering av data fabrik. Mer information finns i artikeln [övervaka och hantera data Factory pipelines](data-factory-monitor-manage-pipelines.md) . 
 
@@ -179,7 +180,7 @@ Gör följande om du vill använda parametriserade Hive-skript
 
 * Definiera parametrarna i **definierar**.
 
-    ```JSON  
+  ```JSON  
     {
         "name": "HiveActivitySamplePipeline",
           "properties": {

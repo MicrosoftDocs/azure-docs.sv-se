@@ -14,12 +14,12 @@ ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
-ms.openlocfilehash: 7fe788677a084575d41f2f28154b74b28ea9d3d8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5254d83c18ddc9f2a5518ed4f711d4cd73ab6de7
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955743"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510948"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC-tillägg
 
@@ -74,7 +74,7 @@ Följande JSON visar schemat för inställnings delen av DSC-tillägget i en Azu
         "advancedOptions": {
             "forcePullAndApply": false,
             "downloadMappings": {
-                "specificDependencyKey": "https://myCustomDependencyLocation"
+             "specificDependencyKey": "https://myCustomDependencyLocation"
             }
         } 
     },
@@ -100,7 +100,7 @@ Följande JSON visar schemat för inställnings delen av DSC-tillägget i en Azu
 
 | Namn | Värde/exempel | Datatyp |
 | ---- | ---- | ---- |
-| apiVersion | 2018-10-01 | datum |
+| apiVersion | 2018-10-01 | date |
 | utgivare | Microsoft. PowerShell. DSC | sträng |
 | typ | DSC | sträng |
 | typeHandlerVersion | 2,77 | int |
@@ -136,7 +136,7 @@ En exempel Resource Manager-mall som innehåller DSC-tillägget för Windows fin
 
 ## <a name="troubleshoot-and-support"></a>Felsöka och support
 
-### <a name="troubleshoot"></a>Felsöka
+### <a name="troubleshoot"></a>Felsök
 
 Data om tillstånd för tilläggs distributioner kan hämtas från Azure Portal och med hjälp av Azure CLI. Om du vill se distributions statusen för tillägg för en virtuell dator kör du följande kommando med hjälp av Azure CLI.
 

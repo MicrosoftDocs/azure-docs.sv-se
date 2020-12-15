@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 10/7/2020
 ms.subservice: alerts
-ms.openlocfilehash: e5f78c8b58cc3100d746957094ddfd9bab2b29fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51ae97567e9c3720c7e36a81bfa7bff44935aac6
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91813227"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511628"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Skapa en måttvarning med en Resource Manager-mall
 
@@ -270,7 +270,7 @@ az login
 
 az deployment group create \
     --name AlertDeployment \
-    --resource-group ResourceGroupofTargetResource \
+    --resource-group ResourceGroupOfTargetResource \
     --template-file simplestaticmetricalert.json \
     --parameters @simplestaticmetricalert.parameters.json
 ```
@@ -377,7 +377,7 @@ Spara JSON-filen nedan som simpledynamicmetricalert.jsi för den här genom gån
                 "description": "The number of unhealthy periods to alert on (must be lower or equal to numberOfEvaluationPeriods)."
             }
         },
-    "ignoreDataBefore": {
+        "ignoreDataBefore": {
             "type": "string",
             "defaultValue": "",
             "metadata": {
@@ -518,7 +518,7 @@ Spara JSON nedan som simpledynamicmetricalert.parameters.jspå och ändra den ef
         "minFailingPeriodsToAlert": {
             "value": "3"
         },
-    "ignoreDataBefore": {
+        "ignoreDataBefore": {
             "value": ""
         },
         "timeAggregation": {
@@ -570,7 +570,6 @@ Observera följande begränsningar när du använder dimensioner i en varnings r
 - Du kan inte använda " \* " som ett dimensions värde.
 - När mått som kon figurer ATS i olika villkor stöder samma dimension måste ett konfigurerat dimensions värde uttryckligen anges på samma sätt för alla dessa mått (i de relevanta kriterierna).
     - I exemplet nedan, eftersom både **transaktionerna** och **SuccessE2ELatency** -mått har en **ApiName** -dimension, och *Criterion1* anger värdet *"GetBlob"* för **ApiName** -dimensionen, måste *criterion2* även ange ett *"GetBlob"* -värde för **ApiName** -dimensionen.
-
 
 Spara JSON-filen nedan som advancedstaticmetricalert.jsi för den här genom gången.
 
@@ -976,7 +975,7 @@ Spara och ändra JSON nedan som multidimensionalstaticmetricalert.parameters.jsi
                             "values": ["*"]
                         },
                         {
-                "name":"ApiName",
+                            "name":"ApiName",
                             "operator": "Include",
                             "values": ["GetBlob", "PutBlob"]    
                         }

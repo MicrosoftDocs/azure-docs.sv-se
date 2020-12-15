@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cd4c70354920655507f987f43a542e4b474803e1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: e4463b932c95e224981b74093effbb355de24f6b
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170947"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509826"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>Microsoft Graph åtgärder som är tillgängliga för Azure AD B2C
 
@@ -107,7 +107,7 @@ Resursen på den översta nivån för princip nycklar i Microsoft Graph API är 
 
 - [Egenskaper för List tillägg](/graph/api/application-list-extensionproperty)
 
-Azure AD B2C tillhandahåller en katalog som kan innehålla 100 anpassade attribut per användare. För användar flöden hanteras de här tilläggs egenskaperna [med hjälp av Azure Portal](custom-policy-custom-attributes.md). För anpassade principer skapar Azure AD B2C egenskapen åt dig, första gången principen skriver ett värde för egenskapen Extension.
+Azure AD B2C tillhandahåller en katalog som kan innehålla 100 anpassade attribut per användare. För användar flöden hanteras de här tilläggs egenskaperna [med hjälp av Azure Portal](user-flow-custom-attributes.md). För anpassade principer skapar Azure AD B2C egenskapen åt dig, första gången principen skriver ett värde för egenskapen Extension.
 
 ## <a name="audit-logs"></a>Granskningsloggar
 

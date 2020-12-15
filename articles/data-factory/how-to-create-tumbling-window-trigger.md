@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/25/2020
-ms.openlocfilehash: 07af7f7f716a83ee9fa47619c1334a29786818d7
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 4c40d394e48cb0cd8bc02ef7b37e7ed2b27e13c4
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033093"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511560"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Skapa en utlösare som kör en pipeline på ett rullande fönster
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -94,20 +94,20 @@ Ett rullande-fönster har följande egenskaper för utlösnings typ:
 
 Följande tabell innehåller en översikt över de viktigaste JSON-elementen som är relaterade till upprepning och schemaläggning av en utlösare för rullande fönster:
 
-| JSON-element | Beskrivning | Typ | Tillåtna värden | Obligatorisk |
+| JSON-element | Beskrivning | Typ | Tillåtna värden | Krävs |
 |:--- |:--- |:--- |:--- |:--- |
-| **bastyp** | Typ av utlösare. Typen är det fasta värdet "TumblingWindowTrigger". | Sträng | "TumblingWindowTrigger" | Yes |
-| **runtimeState** | Det aktuella läget för utlösarens körnings tid.<br/>**Obs!** det här elementet är \<readOnly> . | Sträng | "Startat", "stoppad", "inaktive rad" | Yes |
-| **frequency** | En sträng som representerar frekvens enheten (minuter eller timmar) då utlösaren upprepas. Om värdena för **StartTime** -datum är mer detaljerade än **frekvens** svärdet beaktas **StartTime** -datum när fönster gränserna beräknas. Om värdet för **frekvens** till exempel är per timme och **StartTime** -värdet är 2017-09-01T10:10:10Z, är det första fönstret (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z). | Sträng | "minut", "timme"  | Yes |
-| **intervall** | Ett positivt heltal som anger intervallet för värdet för **frequency** och som avgör hur ofta utlösaren körs. Om **intervallet** till exempel är 3 och **frekvensen** är "timme" upprepas utlösaren var 3: e timme. <br/>**Obs!** det minsta fönster intervallet är 5 minuter. | Integer | Ett positivt heltal. | Yes |
-| **/St**| Den första förekomsten, som kan vara i det förflutna. Det första **Utlösar intervallet är**(**StartTime**,  +  **Interval**). | DateTime | Ett DateTime-värde. | Yes |
-| **endTime**| Den sista förekomsten, som kan vara i det förflutna. | DateTime | Ett DateTime-värde. | Yes |
-| **förskjutning** | Hur lång tid det tar att fördröja starten av data bearbetningen för fönstret. Pipeline-körningen startas efter den förväntade körnings tiden plus **fördröjnings** mängden. **Fördröjningen** definierar hur länge utlösaren ska vänta efter förfallo tiden innan en ny körning utlöses. **Fördröjningen** ändrar inte fönstret **StartTime**. Till exempel innebär ett **fördröjnings** värde på 00:10:00 en fördröjning på 10 minuter. | Tidsintervall<br/>(hh: mm: SS)  | Ett TimeSpan-värde där standardvärdet är 00:00:00. | No |
-| **maxConcurrency** | Antal körningar av samtidiga utlösare som utlöses för Windows som är klara. Om du till exempel vill köra en hel timmes körning i igår resulterar det i 24 fönster. Om **maxConcurrency** = 10, utlöses Utlös ande händelser endast för de första 10 windows (00:00-01:00-09:00-10:00). När de första 10 utlösta pipeline-körningarna har slutförts utlöses utlösare för nästa 10 Windows (10:00-11:00-19:00-20:00). Om du fortsätter med det här exemplet på **maxConcurrency** = 10, om det finns 10 Windows Ready, så finns det 10 totala pipelinen körs. Om det bara är ett fönster som är klart finns det bara en pipeline-körning. | Integer | Ett heltal mellan 1 och 50. | Yes |
-| **retryPolicy: antal** | Antalet återförsök innan pipeline-körningen har marker ATS som "misslyckades".  | Integer | Ett heltal där standardvärdet är 0 (inga återförsök). | No |
-| **retryPolicy: intervalInSeconds** | Fördröjningen mellan återförsök som anges i sekunder. | Integer | Antalet sekunder, där standardvärdet är 30. | No |
-| **dependsOn: typ** | Typ av TumblingWindowTriggerReference. Krävs om ett beroende har angetts. | Sträng |  "TumblingWindowTriggerDependencyReference", "SelfDependencyTumblingWindowTriggerReference" | No |
-| **dependsOn: storlek** | Storleken på fönstret beroende rullande. | Tidsintervall<br/>(hh: mm: SS)  | Ett positivt TimeSpan-värde där standardvärdet är fönster storleken för den underordnade utlösaren  | No |
+| **bastyp** | Typ av utlösare. Typen är det fasta värdet "TumblingWindowTrigger". | Sträng | "TumblingWindowTrigger" | Ja |
+| **runtimeState** | Det aktuella läget för utlösarens körnings tid.<br/>**Obs!** det här elementet är \<readOnly> . | Sträng | "Startat", "stoppad", "inaktive rad" | Ja |
+| **frekvens** | En sträng som representerar frekvens enheten (minuter eller timmar) då utlösaren upprepas. Om värdena för **StartTime** -datum är mer detaljerade än **frekvens** svärdet beaktas **StartTime** -datum när fönster gränserna beräknas. Om värdet för **frekvens** till exempel är per timme och **StartTime** -värdet är 2017-09-01T10:10:10Z, är det första fönstret (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z). | Sträng | "minut", "timme"  | Ja |
+| **intervall** | Ett positivt heltal som anger intervallet för värdet för **frequency** och som avgör hur ofta utlösaren körs. Om **intervallet** till exempel är 3 och **frekvensen** är "timme" upprepas utlösaren var 3: e timme. <br/>**Obs!** det minsta fönster intervallet är 5 minuter. | Integer | Ett positivt heltal. | Ja |
+| **/St**| Den första förekomsten, som kan vara i det förflutna. Det första **Utlösar intervallet är**(**StartTime**,  +  **Interval**). | DateTime | Ett DateTime-värde. | Ja |
+| **endTime**| Den sista förekomsten, som kan vara i det förflutna. | DateTime | Ett DateTime-värde. | Ja |
+| **förskjutning** | Hur lång tid det tar att fördröja starten av data bearbetningen för fönstret. Pipeline-körningen startas efter den förväntade körnings tiden plus **fördröjnings** mängden. **Fördröjningen** definierar hur länge utlösaren ska vänta efter förfallo tiden innan en ny körning utlöses. **Fördröjningen** ändrar inte fönstret **StartTime**. Till exempel innebär ett **fördröjnings** värde på 00:10:00 en fördröjning på 10 minuter. | Tidsintervall<br/>(hh: mm: SS)  | Ett TimeSpan-värde där standardvärdet är 00:00:00. | Nej |
+| **maxConcurrency** | Antal körningar av samtidiga utlösare som utlöses för Windows som är klara. Om du till exempel vill köra en hel timmes körning i igår resulterar det i 24 fönster. Om **maxConcurrency** = 10, utlöses Utlös ande händelser endast för de första 10 windows (00:00-01:00-09:00-10:00). När de första 10 utlösta pipeline-körningarna har slutförts utlöses utlösare för nästa 10 Windows (10:00-11:00-19:00-20:00). Om du fortsätter med det här exemplet på **maxConcurrency** = 10, om det finns 10 Windows Ready, så finns det 10 totala pipelinen körs. Om det bara är ett fönster som är klart finns det bara en pipeline-körning. | Integer | Ett heltal mellan 1 och 50. | Ja |
+| **retryPolicy: antal** | Antalet återförsök innan pipeline-körningen har marker ATS som "misslyckades".  | Integer | Ett heltal där standardvärdet är 0 (inga återförsök). | Nej |
+| **retryPolicy: intervalInSeconds** | Fördröjningen mellan återförsök som anges i sekunder. | Integer | Antalet sekunder, där standardvärdet är 30. | Nej |
+| **dependsOn: typ** | Typ av TumblingWindowTriggerReference. Krävs om ett beroende har angetts. | Sträng |  "TumblingWindowTriggerDependencyReference", "SelfDependencyTumblingWindowTriggerReference" | Nej |
+| **dependsOn: storlek** | Storleken på fönstret beroende rullande. | Tidsintervall<br/>(hh: mm: SS)  | Ett positivt TimeSpan-värde där standardvärdet är fönster storleken för den underordnade utlösaren  | Nej |
 | **dependsOn: förskjutning** | Offset för beroende utlösare. | Tidsintervall<br/>(hh: mm: SS) |  Ett TimeSpan-värde som måste vara negativt i ett själv-beroende. Om inget värde anges är fönstret detsamma som själva utlösaren. | Själv-beroende: Ja<br/>Övrigt: Nej  |
 
 > [!NOTE]

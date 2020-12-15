@@ -11,12 +11,12 @@ ms.date: 11/11/2020
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: references_regions
-ms.openlocfilehash: d46f8b518476cdf2f68b51ed93498cf822f8d8a5
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 4ecf8a578343a10e7c1ddb0ac5e9345a652bc9af
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504159"
+ms.locfileid: "97511713"
 ---
 # <a name="enabling-synapse-workspace-features-on-a-dedicated-sql-pool-formerly-sql-dw-in-your-region"></a>Aktivera funktioner för Synapse-arbetsyta på en dedikerad SQL-pool (tidigare SQL DW) i din region.
 
@@ -39,7 +39,7 @@ Följande tabell sammanfattas efter region där möjligheten att aktivera Synaps
  
  
 > [!NOTE]
-> Ovanstående region lista relaterar bara till regioner där funktioner för Synapse-arbetsyta inte är tillgängliga för tillfället. 
+> Ovanstående region lista relaterar bara till regioner där funktioner för Synapse-arbetsyta inte är tillgänglig för tillfället. 
 
 ## <a name="next-steps"></a>Nästa steg
 Komma igång med [Synapse-arbetsyta och Studio](../get-started.md).

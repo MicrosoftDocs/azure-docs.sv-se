@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6ca0513f95bc490087f3c84eeecc4ea623f64604
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 421fb7b0c91171756f55ad25c918955870054e3e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517095"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511288"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Utveckla säkra program på Azure
 I den här artikeln presenterar vi säkerhets aktiviteter och kontroller för att tänka på när du utvecklar program för molnet. Säkerhets frågor och koncept som du bör tänka på under implementerings-och verifierings faserna i Microsoft [Security Development Lifecycle (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) omfattas. Målet är att hjälpa dig att definiera aktiviteter och Azure-tjänster som du kan använda för att utveckla ett säkrare program.
@@ -38,7 +38,7 @@ Innan du checkar in kod kan du göra [kod granskningar](/azure/devops/learn/devo
 
 ### <a name="perform-static-code-analysis"></a>Utföra analys av statisk kod
 
-[Statisk kod analys](https://owasp.org/www-community/controls/Static_Code_Analysis) (även kallat *käll kods analys* ) utförs vanligt vis som en del av en kod granskning. Statisk kod analys avser ofta att köra statiska kod analys verktyg för att hitta potentiella sårbarheter i kod som inte körs genom att använda metoder som [bismaks kontroll](https://en.wikipedia.org/wiki/Taint_checking) och [data flödes analys](https://en.wikipedia.org/wiki/Data-flow_analysis).
+[Statisk kod analys](https://owasp.org/www-community/controls/Static_Code_Analysis) (även kallat *käll kods analys*) utförs vanligt vis som en del av en kod granskning. Statisk kod analys avser ofta att köra statiska kod analys verktyg för att hitta potentiella sårbarheter i kod som inte körs genom att använda metoder som [bismaks kontroll](https://en.wikipedia.org/wiki/Taint_checking) och [data flödes analys](https://en.wikipedia.org/wiki/Data-flow_analysis).
 
 Azure Marketplace erbjuder [utvecklingsverktyg](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1&search=code%20review) som utför statisk kod analys och hjälper till med kod granskningar.
 
@@ -48,21 +48,21 @@ Behandla alla inmatade som ej betrodda för att skydda ditt program mot de vanli
 
 Verifiera indata tidigt i data flödet för att säkerställa att endast korrekt utformade data anges i arbets flödet. Du vill inte att felaktiga data ska sparas i databasen eller utlösa fel i en underordnad komponent.
 
-Svartlista och vit listning är två allmänna metoder för att utföra verifiering av indatamängden:
+Blocklisting och allowlisting är två allmänna metoder för att utföra verifiering av indatamängds-syntax:
 
-  - Svartlistade försök för att kontrol lera att en viss användar indata inte innehåller "känt som skadlig"-innehåll.
+  - Blocklisting försöker kontrol lera att en viss användarindata inte innehåller innehåll som är känt som skadligt.
 
-  - Vit listning försöker kontrol lera att en viss användar inmatning matchar en uppsättning "kända fungerande" indata. Character-baserad vit listning är en form av vit listning där ett program kontrollerar att användarindata endast innehåller "kända fungerande" tecken eller att indata matchar ett känt format.
+  - Allowlisting försöker kontrol lera att en viss användar inmatning matchar en uppsättning "kända fungerande" indata. Character-baserad allowlisting är en form av allowlisting där ett program kontrollerar att användarindata endast innehåller "kända fungerande" tecken eller att indata matchar ett känt format.
     Detta kan t. ex. innebära en kontroll av att ett användar namn bara innehåller alfanumeriska tecken eller att det innehåller exakt två siffror.
 
-Vit listning är det bästa sättet att skapa säkra program.
-Listering är känslig för fel eftersom det är omöjligt att tänka på en fullständig lista över potentiellt Felaktiga indatatyper.
+Allowlisting är det bästa sättet att skapa säkra program.
+Blocklisting kan inte användas eftersom det är omöjligt att tänka på en fullständig lista över potentiellt Felaktiga indatatyper.
 
 Detta fungerar på servern, inte på klient sidan (eller på-servern och på klient sidan).
 
 ### <a name="verify-your-applications-outputs"></a>Verifiera programmets utdata
 
-Alla utdata som du visar antingen visuellt eller i ett dokument bör alltid kodas och undantas. [Undantag](https://owasp.org/www-community/Injection_Theory#Escaping_.28aka_Output_Encoding.29), även kallat *utkodning av utdata* , används för att säkerställa att ej betrodda data inte är ett fordon för inmatning-angrepp. Undantag, kombinerat med data verifiering, tillhandahåller försvars försvars nivåer för att öka säkerheten för systemet som helhet.
+Alla utdata som du visar antingen visuellt eller i ett dokument bör alltid kodas och undantas. [Undantag](https://owasp.org/www-community/Injection_Theory#Escaping_.28aka_Output_Encoding.29), även kallat *utkodning av utdata*, används för att säkerställa att ej betrodda data inte är ett fordon för inmatning-angrepp. Undantag, kombinerat med data verifiering, tillhandahåller försvars försvars nivåer för att öka säkerheten för systemet som helhet.
 
 Med undantag ser du till att allt visas som *utdata.* Med hjälp av undantag kan tolkaren veta att data inte är avsedda att utföras och detta förhindrar attacker från att fungera. Detta är en annan vanlig angrepps teknik som kallas XSS ( *Cross-Site Scripting* ).
 

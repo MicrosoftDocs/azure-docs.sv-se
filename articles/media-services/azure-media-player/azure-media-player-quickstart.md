@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: quickstart
 ms.date: 04/20/2020
-ms.openlocfilehash: ac81832765f674e58ad6b3213238e9c68e04d2dc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3d8ff1d2f121501152673c8375ef3d26aab10f1a
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81726468"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511747"
 ---
 # <a name="azure-media-player-quickstart"></a>Snabbstart för Azure Media Player
 Azure Media Player är enkelt att konfigurera. Det tar bara några minuter att få en grundläggande uppspelning av medie innehåll från ditt Azure Media Services-konto. I det här avsnittet visas de grundläggande stegen utan mer detaljerad information. I avsnitten som följer får du information om hur du konfigurerar och konfigurerar Azure Media Player.  Lägg bara till följande inkluderingar i dokumentets `<head>`:
@@ -63,4 +63,4 @@ Om du inte vill använda automatisk installation kan du utelämna `data-setup` a
 
 ## <a name="next-steps"></a>Nästa steg ##
 
-- [Azure Media Player snabb start](azure-media-player-quickstart.md)
+- [Azure Media Player fullständig installation](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-full-setup)

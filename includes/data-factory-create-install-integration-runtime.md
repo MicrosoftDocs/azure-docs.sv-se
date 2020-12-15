@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 20397339c1675686f2a670dc60899bfd4bd4c3ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0a0b44b3de088539a070f1182248c4e6db7303f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86050271"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510285"
 ---
 ## <a name="create-a-self-hosted-integration-runtime"></a>Skapa en lokal Integration Runtime
 
@@ -28,7 +28,7 @@ I det här avsnittet kan du skapa en lokal Integration Runtime och koppla den ti
 
    Här är exempel på utdata:
 
-   ```json
+   ```console
     Name              : <Integration Runtime name>
     Type              : SelfHosted
     ResourceGroupName : <ResourceGroupName>
@@ -45,7 +45,7 @@ I det här avsnittet kan du skapa en lokal Integration Runtime och koppla den ti
 
    Här är exempel på utdata:
 
-   ```json  
+   ```console  
    State                     : NeedRegistration
    Version                   : 
    CreateTime                : 9/24/2019 6:00:00 AM
@@ -97,7 +97,7 @@ I det här avsnittet kan du skapa en lokal Integration Runtime och koppla den ti
 
 6. På sidan **Klar att installera Microsoft Integration Runtime** väljer du **Installera**.
 
-7. På sidan **Slutfört installationen av Microsoft Integration Runtime ** väljer du **Slutför**.
+7. På sidan **Slutfört installationen av Microsoft Integration Runtime** väljer du **Slutför**.
 
 8. Klistra in den nyckel som du sparade i föregående avsnitt på sidan **Registrera Integration Runtime (lokal installation)** och välj **Registrera**. 
 
@@ -121,7 +121,7 @@ I det här avsnittet kan du skapa en lokal Integration Runtime och koppla den ti
 
     a. I fönstret **Konfigurationshanteraren** växlar du till fliken **Diagnostik**.
 
-    b. Välj**SqlServer** som typ av datakälla.
+    b. Välj **SqlServer** som typ av datakälla.
 
     c. Ange servernamnet.
 

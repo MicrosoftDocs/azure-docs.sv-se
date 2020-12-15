@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: sandeo
-ms.openlocfilehash: 4c11e8c9cbd767bb95e094535a8a6cd7c8fe84fc
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b4fc6b9facc79db109c5ce5be09576b16a2abdc7
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340891"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510897"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>För hands version: Logga in på en virtuell Linux-dator i Azure med Azure Active Directory autentisering
 
@@ -119,7 +119,7 @@ Azures rollbaserade åtkomst kontroll (Azure RBAC) policy avgör vem som kan log
 - **Användar inloggning för virtuell dator**: användare med den här rollen tilldelad kan logga in på en virtuell Azure-dator med vanliga användar behörigheter.
 
 > [!NOTE]
-> Om du vill tillåta att en användare loggar in på den virtuella datorn via SSH måste du tilldela antingen rollen *Administratörs inloggning för virtuell dator* eller *användar inloggning för virtuell dator* . En Azure-användare med rollen *ägare* eller *deltagare* som har tilldelats en virtuell dator har inte automatiskt behörighet att logga in på den virtuella datorn via SSH.
+> Om du vill tillåta att en användare loggar in på den virtuella datorn via SSH måste du tilldela antingen rollen *Administratörs inloggning för virtuell dator* eller *användar inloggning för virtuell dator* . Den virtuella datorns Administratörs inloggning och användar inloggnings roller för virtuell dator använder dataActions och kan därför inte tilldelas i hanterings gruppens omfattning. För närvarande kan de här rollerna bara tilldelas till prenumerationen, resurs gruppen eller resurs omfånget. En Azure-användare med rollen *ägare* eller *deltagare* som har tilldelats en virtuell dator har inte automatiskt behörighet att logga in på den virtuella datorn via SSH. 
 
 I följande exempel används [AZ roll tilldelning skapa](/cli/azure/role/assignment#az-role-assignment-create) för att tilldela den *virtuella datorns administratörs inloggnings* roll till den virtuella datorn för din aktuella Azure-användare. Användar namnet för ditt aktiva Azure-konto hämtas med [AZ-kontot show](/cli/azure/account#az-account-show), och *omfånget* ställs in på den virtuella datorn som skapades i ett föregående steg med [AZ VM show](/cli/azure/vm#az-vm-show). Omfattningen kan också tilldelas till en resurs grupp eller prenumerations nivå och normala behörigheter för Azure RBAC-arv gäller. Mer information finns i [Azure RBAC](../../role-based-access-control/overview.md)
 
@@ -138,7 +138,12 @@ az role assignment create \
 
 Mer information om hur du använder Azure RBAC för att hantera åtkomst till dina Azure-prenumerations resurser finns i använda [Azure CLI](../../role-based-access-control/role-assignments-cli.md), [Azure Portal](../../role-based-access-control/role-assignments-portal.md)eller [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 
-Du kan också konfigurera Azure AD så att Multi-Factor Authentication krävs för att en särskild användare ska kunna logga in på den virtuella Linux-datorn. Mer information finns i [Kom igång med Azure AD Multi-Factor Authentication i molnet](../../active-directory/authentication/howto-mfa-getstarted.md).
+## <a name="using-conditional-access"></a>Använda villkorlig åtkomst
+
+Du kan tillämpa principer för villkorlig åtkomst, till exempel Multi-Factor Authentication eller användar inloggnings risker innan du auktoriserar åtkomsten till virtuella Linux-datorer i Azure som är aktiverade med Azure AD-inloggning. Om du vill tillämpa principen för villkorlig åtkomst måste du välja "Azure Linux VM Sign-in"-appen från modulen molnappar eller åtgärder tilldelning och sedan använda inloggnings risker som ett villkor och/eller kräva multifaktorautentisering som en bevilja åtkomst kontroll. 
+
+> [!WARNING]
+> Per användare aktiverat/Tvingad Azure AD-Multi-Factor Authentication stöds inte för VM-inloggning.
 
 ## <a name="log-in-to-the-linux-virtual-machine"></a>Logga in på den virtuella Linux-datorn
 
@@ -195,6 +200,8 @@ Using keyboard-interactive authentication.
 Access denied:  to sign-in you be assigned a role with action 'Microsoft.Compute/virtualMachines/login/action', for example 'Virtual Machine User Login'
 Access denied
 ```
+> [!NOTE]
+> Om du får problem med Azures roll tilldelningar läser du [Felsöka Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#azure-role-assignments-limit).
 
 ### <a name="continued-ssh-sign-in-prompts"></a>Kontinuerliga inloggnings meddelanden i SSH
 

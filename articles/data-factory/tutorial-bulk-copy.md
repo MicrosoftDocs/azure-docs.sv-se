@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 84a9a5f6a4644717227d0b659407e9ba0bc56675
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bf40353a8f29200ab2a33859473dbc504c29bf7d
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452410"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510442"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-using-powershell"></a>Kopiera flera tabeller i bulk genom att använda Azure Data Factory med hjälp av PowerShell
 
@@ -46,7 +46,7 @@ I det här scenariot har vi ett antal tabeller i Azure SQL Database som vi vill 
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://azure.microsoft.com/free/) konto innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -146,7 +146,7 @@ I den här självstudien skapar du tre länkade tjänster för käll-, mottagar-
 
     Här är exempel på utdata:
 
-    ```json
+    ```console
     LinkedServiceName : AzureSqlDatabaseLinkedService
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -180,7 +180,7 @@ I den här självstudien skapar du tre länkade tjänster för käll-, mottagar-
 
     Här är exempel på utdata:
 
-    ```json
+    ```console
     LinkedServiceName : AzureSqlDWLinkedService
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -216,7 +216,7 @@ I den här självstudien använder du Azure Blob Storage som ett mellanlagringsu
 
     Här är exempel på utdata:
 
-    ```json
+    ```console
     LinkedServiceName : AzureStorageLinkedService
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -255,7 +255,7 @@ I den här självstudien skapar du datauppsättningar för källa och mottagare 
 
     Här är exempel på utdata:
 
-    ```json
+    ```console
     DatasetName       : AzureSqlDatabaseDataset
     ResourceGroupName : <resourceGroupname>
     DataFactoryName   : <dataFactoryName>
@@ -299,7 +299,7 @@ I den här självstudien skapar du datauppsättningar för källa och mottagare 
 
     Här är exempel på utdata:
 
-    ```json
+    ```console
     DatasetName       : AzureSqlDWDataset
     ResourceGroupName : <resourceGroupname>
     DataFactoryName   : <dataFactoryName>
@@ -391,7 +391,7 @@ Den här pipelinen tar en lista med tabeller som en parameter. För varje tabell
 
     Här är exempel på utdata:
 
-    ```json
+    ```console
     PipelineName      : IterateAndCopySQLTables
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -467,7 +467,7 @@ Den här pipelinen utför två steg:
 
     Här är exempel på utdata:
 
-    ```json
+    ```console
     PipelineName      : GetTableListAndTriggerCopyData
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -509,7 +509,7 @@ Den här pipelinen utför två steg:
 
     Här är utdata för exempelkörningen:
 
-    ```json
+    ```console
     Pipeline run details:
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>

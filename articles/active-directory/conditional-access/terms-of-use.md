@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
 ms.topic: how-to
-ms.date: 10/16/2020
+ms.date: 12/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c1b07534c702e509b2b664fbee585aa2cff69f6
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b1829c69510568b0f9a8cec7fb7d2d57be8515d3
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837608"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509996"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory användnings villkor
 
-Användnings villkoren för Azure AD är en enkel metod som organisationer kan använda för att presentera information för slutanvändare. Den här presentationen gör att användare kan se relevanta ansvarsfriskrivningar för juridiska krav eller efterlevnadskrav. Den här artikeln beskriver hur du kommer igång med användnings villkoren.
+Användnings villkoren för Azure AD är en enkel metod som organisationer kan använda för att presentera information för slutanvändare. Den här presentationen gör att användare kan se relevanta ansvarsfriskrivningar för juridiska krav eller efterlevnadskrav. Den här artikeln beskriver hur du kommer igång med användnings villkoren (ToU).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
@@ -52,7 +52,7 @@ Användnings villkoren för Azure AD har följande funktioner:
 - Visa en logg med villkor för användnings aktivitet för efterlevnad och granskning.
 - Skapa och hantera användnings villkor med hjälp av [Microsoft Graph API: er](/graph/api/resources/agreement?view=graph-rest-beta) (för närvarande i för hands version).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill använda och konfigurera användnings villkor för Azure AD måste du ha:
 
@@ -104,14 +104,14 @@ När du har slutfört användnings villkoren använder du följande procedur fö
    | Anna | 1 jan | Feb 1 | Mar 1 | Apr 1 |
    | Bob | 15 jan | Feb 1 | Mar 1 | Apr 1 |
 
-1. Använd inställningen **tid innan godkännande krävs (dagar)** för att ange antalet dagar innan användaren måste godkänna användnings villkoren igen. Detta gör att användarna kan följa sitt eget schema. Om du till exempel ställer in varaktigheten på **30** dagar så är det hur förfallo datum kan uppstå för två användare:
+1. Använd inställningen **varaktighet före godkännande kräver (dagar)** för att ange antalet dagar innan användaren måste godkänna användnings villkoren igen. Detta gör att användarna kan följa sitt eget schema. Om du till exempel ställer in varaktigheten på **30** dagar så är det hur förfallo datum kan uppstå för två användare:
 
    | Användare | Första godkännande datum | Första utgångs datum | Förfallo datum för andra | Datum för tredje utgångs datum |
    | --- | --- | --- | --- | --- |
    | Anna | 1 jan | 31 januari | Mar 2 | Apr 1 |
    | Bob | 15 jan | Feb 14 | Mar 16 | April 15 |
 
-   Det går att använda **förfallna** **godkännanden och varaktighet innan omgodkännandet kräver (dagar)** inställningar tillsammans, men vanligt vis använder du en eller ett annat.
+   Det går att använda **förfallna godkännanden** och **varaktighet innan omgodkännandet kräver (dagar)** inställningar tillsammans, men vanligt vis använder du en eller ett annat.
 
 1. Under **villkorlig åtkomst** använder du listan **tillämpa med princip mal len för villkorlig åtkomst** för att välja den mall som ska användas för användnings villkoren.
 
@@ -119,8 +119,8 @@ När du har slutfört användnings villkoren använder du följande procedur fö
 
    | Mall | Beskrivning |
    | --- | --- |
-   | **Åtkomst till molnappar för alla gäster** | En princip för villkorlig åtkomst skapas för alla gäster och molnappar. Den här principen påverkar Azure Portal. När detta har skapats kan du behöva logga in och logga in. |
-   | **Åtkomst till molnappar för alla användare** | En princip för villkorlig åtkomst skapas för alla användare och alla molnappar. Den här principen påverkar Azure Portal. När detta har skapats måste du logga ut och logga in. |
+   | **Åtkomst till molnappar för alla gäster** | En princip för villkorlig åtkomst skapas för alla gäster och molnappar. Den här principen påverkar Azure Portal. När detta har skapats kan du behöva logga ut och logga in. |
+   | **Åtkomst till molnappar för alla användare** | En princip för villkorlig åtkomst skapas för alla användare och alla molnappar. Den här principen påverkar Azure Portal. När det har skapats måste du logga ut och logga in. |
    | **Anpassad princip** | Välj de användare, grupper och appar som de här användnings villkoren ska tillämpas på. |
    | **Skapa en princip för villkorlig åtkomst senare** | De här användnings villkoren visas i listan bevilja kontroll när du skapar en princip för villkorlig åtkomst. |
 
@@ -219,15 +219,55 @@ Du kan redigera viss information om användnings villkoren, men du kan inte änd
 1. Logga in på Azure och gå till **Användningsvillkoren** på [https://aka.ms/catou](https://aka.ms/catou).
 1. Välj de användnings villkor som du vill redigera.
 1. Klicka på **Redigera villkor**.
-1. I rutan Redigera användnings villkor ändrar du namn, visnings namn eller kräver att användare expanderar värden.
+1. I rutan Redigera användnings villkor kan du ändra följande:
+     - **Namn** – det här är det interna namnet på ToU som inte delas med slutanvändare
+     - **Visnings namn** – det här är det namn som slutanvändarna kan se när de visar ToU
+     - **Kräv att användarna expanderar** användnings villkoren – om du anger detta till **på** , tvingas slutanvändaren att expandera användnings villkoren innan det accepteras.
+     - Förhandsgranskningsvyn Du kan **Uppdatera ett befintligt dokument med användnings villkor**
+     - Du kan lägga till ett språk i en befintlig ToU
 
    Om det finns andra inställningar som du vill ändra, t. ex. PDF-dokument, kräver att användare godkänner varje enhet, upphör att gälla, varaktighet före godkännande eller princip för villkorlig åtkomst måste du skapa en ny användnings villkor.
 
-   ![Redigera användnings villkors fönstret som visar namn och visnings alternativ](./media/terms-of-use/edit-tou.png)
+    ![Redigera visar olika språk alternativ ](./media/terms-of-use/edit-terms-use.png)
 
-1. Klicka på **Spara** för att spara ändringarna.
+1. När du är färdig klickar du på **Spara** för att spara ändringarna.
 
-   När du har sparat ändringarna behöver användarna inte acceptera dessa ändringar igen.
+## <a name="update-the-version-or-pdf-of-an-existing-terms-of-use"></a>Uppdatera versionen eller PDF-filen för befintliga användnings villkor
+
+1.  Logga in på Azure och navigera till [användningsvillkor](https://aka.ms/catou)
+2.  Välj de användnings villkor som du vill redigera.
+3.  Klicka på **Redigera villkor**.
+4.  För det språk som du vill uppdatera en ny version klickar du på **Uppdatera** under kolumnen åtgärd
+ 
+     ![Redigera användnings villkors fönstret som visar namn och visnings alternativ](./media/terms-of-use/edit-terms-use.png)
+
+5.  I rutan till höger laddar du upp PDF-filen för den nya versionen
+6.  Det finns också ett växlings alternativ här kräver att du **godkänner** igen om du vill kräva att användarna accepterar den nya versionen nästa gången de loggar in. Om du vill att användarna ska kunna godkänna igen kommer de att uppmanas att godkänna den nya versionen nästa gång de försöker komma åt resursen som definierats i principen för villkorlig åtkomst. Om du inte vill att användarna ska godkänna igen förblir deras tidigare medgivande aktuella och endast nya användare som inte har meddelats innan eller vars medgivande upphör att gälla kommer att se den nya versionen.
+
+    ![Redigera användnings villkoren för att acceptera igen markeras](./media/terms-of-use/re-accept.png)
+
+7.  När du har laddat upp den nya PDF-filen och valt att godkänna, klickar du på Lägg till längst ned i fönstret.
+8.  Du ser nu den senaste versionen under kolumnen Document.
+
+## <a name="view-previous-versions-of-a-terms-of-use"></a>Visa tidigare versioner av användnings villkor
+
+1.  Logga in på Azure och gå till **Användningsvillkoren** på https://aka.ms/catou.
+2.  Välj de användnings villkor som du vill visa en versions historik för.
+3.  Klicka på **språk och versions historik**
+4.  Klicka på **Visa tidigare versioner.**
+
+    ![dokument information inklusive språk versioner](./media/terms-of-use/document-details.png)
+
+5.  Du kan klicka på namnet på dokumentet för att ladda ned den versionen
+
+## <a name="see-who-has-accepted-each-version"></a>Se vem som har godkänt varje version
+
+1.  Logga in på Azure och gå till **Användningsvillkoren** på https://aka.ms/catou.
+2.  Om du vill se vem som för närvarande har godkänt ToU klickar du på siffran under kolumnen **accepterad** för den ToU som du vill använda.
+3.  Som standard visar nästa sida det aktuella tillståndet för varje användare som godkänner ToU
+4.  Om du vill se de tidigare medgivande händelserna kan du välja **alla** från List rutan **aktuella tillstånd** . Nu kan du se varje användares händelser i information om varje version och vad som hände.
+5.  Alternativt kan du välja en annan version i list rutan **version**  för att se vem som har accepterat den aktuella versionen.
+
 
 ## <a name="add-a-terms-of-use-language"></a>Lägg till ett språk för användnings villkor
 
@@ -235,14 +275,14 @@ Följande procedur beskriver hur du lägger till ett språk för användnings vi
 
 1. Logga in på Azure och gå till **Användningsvillkoren** på [https://aka.ms/catou](https://aka.ms/catou).
 1. Välj de användnings villkor som du vill redigera.
-1. I informations fönstret klickar du på fliken **språk** .
-
-   ![Användningsvillkor markerat och visar fliken språk i informations fönstret](./media/terms-of-use/languages-tou.png)
-
-1. Klicka på **Lägg till språk**.
+1. Klicka på **Redigera villkor**
+1. Klicka på **Lägg till språk** längst ned på sidan.
 1. I fönstret Lägg till användnings villkors språk laddar du upp din lokaliserade PDF och väljer språket.
 
-   ![Lägg till användnings villkors språk fönstret med alternativ för att överföra lokaliserade PDF-filer](./media/terms-of-use/language-add-tou.png)
+   ![Användningsvillkor markerat och visar fliken språk i informations fönstret](./media/terms-of-use/select-language.png)
+
+1. Klicka på **Lägg till språk**.
+1. Klicka på **Spara**
 
 1. Klicka på **Lägg till** för att lägga till språket.
 
@@ -318,7 +358,7 @@ Principer för villkorlig åtkomst börjar gälla omedelbart. När detta inträf
 > - en princip för villkorlig åtkomst är aktive rad i användnings villkor
 > - eller andra användningsvillkor skapas
 
-## <a name="b2b-guests-preview"></a>B2B-gäster (för hands version)
+## <a name="b2b-guests"></a>B2B-gäster
 
 De flesta organisationer har en process på plats för sina anställda att godkänna sin organisations användnings villkor och sekretess policy. Men hur kan du tvinga samma medgivanden för Azure AD Business-to-Business (B2B)-gäster när de läggs till via SharePoint eller team? Med villkorlig åtkomst och användnings villkor kan du genomdriva en princip direkt mot B2B-gäst användare. Under inbjudan till inlösen av inbjudan visas användaren användnings villkoren. Detta stöd är för närvarande en för hands version.
 
@@ -326,7 +366,7 @@ Användningsvillkor visas bara när användaren har ett gäst konto i Azure AD. 
 
 ![Fönstret användare och grupper – fliken inkludera med alternativet alla gäst användare har marker ATS](./media/terms-of-use/b2b-guests.png)
 
-## <a name="support-for-cloud-apps-preview"></a>Stöd för molnappar (för hands version)
+## <a name="support-for-cloud-apps"></a>Stöd för molnappar
 
 Användningsvillkor kan användas för olika molnappar, till exempel Azure Information Protection och Microsoft Intune. Detta stöd är för närvarande en för hands version.
 

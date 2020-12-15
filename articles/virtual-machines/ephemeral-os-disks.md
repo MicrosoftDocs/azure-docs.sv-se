@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: f915652110524aac06d641d636155bc6a5fcd256
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 52071b964412071d820745b173e8835c6f9e7d0e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927931"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510999"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Tillfälliga OS-diskar för virtuella Azure-datorer
 
@@ -86,7 +86,7 @@ az vm create \
 
 För skalnings uppsättningar använder du samma `--ephemeral-os-disk true` parameter för [AZ-VMSS-Create](/cli/azure/vmss#az-vmss-create) och anger `--os-disk-caching` parametern till `ReadOnly` .
 
-## <a name="portal"></a>Portalen   
+## <a name="portal"></a>Portalen
 
 I Azure Portal kan du välja att använda tillfälliga diskar när du distribuerar en virtuell dator genom att öppna avsnittet **Avancerat** på fliken **diskar** . Välj **Ja** om du vill **använda en tillfällig OS-disk** .
 
@@ -120,7 +120,7 @@ Processen för att skapa en skalnings uppsättning som använder en tillfällig 
        "storageProfile": { 
         "osDisk": { 
           "diffDiskSettings": { 
-                "option": "Local" 
+            "option": "Local" 
           }, 
           "caching": "ReadOnly", 
           "createOption": "FromImage" 

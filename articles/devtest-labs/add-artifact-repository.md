@@ -3,12 +3,12 @@ title: Lägga till en artefakt lagrings plats i labbet i Azure DevTest Labs | Mi
 description: Lär dig hur du anger din egen artefakt lagring för ditt labb i Azure DevTest Labs till Store-verktyg som inte är tillgängliga i den offentliga artefakt lagrings platsen.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7553f6b1afa416a5428577a8313bdadb669e32c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dd7d89020bf077e29b177f6871f43b52467b0d8
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88270996"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97512019"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Lägga till en artefakt lagrings plats i labbet i DevTest Labs
 Med DevTest Labs kan du ange en artefakt som ska läggas till i en virtuell dator vid tidpunkten för att skapa den virtuella datorn eller efter att den virtuella datorn har skapats. Den här artefakten kan vara ett verktyg eller ett program som du vill installera på den virtuella datorn. Artefakter definieras i en JSON-fil som läses in från en GitHub-eller Azure DevOps git-lagringsplats.
@@ -19,7 +19,7 @@ Den här artikeln innehåller information om hur du lägger till din anpassade a
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 Om du vill lägga till en lagrings plats i labbet hämtar du först viktig information från din lagrings plats. I följande avsnitt beskrivs hur du hämtar den information som krävs för databaser som finns på **GitHub** eller **Azure DevOps**.
 
 ### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>Hämta URL för kloning av GitHub-lagringsplats och personlig åtkomst-token
@@ -31,7 +31,7 @@ Om du vill lägga till en lagrings plats i labbet hämtar du först viktig infor
 5. I menyn **personliga inställningar** till vänster väljer du inställningar för **utvecklare**.
 6. Välj **personliga** åtkomsttoken på den vänstra menyn.
 7. Välj **generera ny token**.
-8. På sidan **ny personlig åtkomst-token** under **token-Beskrivning**anger du en beskrivning. Godkänn standard objekt under **Välj omfång**och välj sedan **skapa token**.
+8. På sidan **ny personlig åtkomst-token** under **token-Beskrivning** anger du en beskrivning. Godkänn standard objekt under **Välj omfång** och välj sedan **skapa token**.
 9. Spara den genererade token. Du använder token senare.
 10. Stäng GitHub.   
 
@@ -46,17 +46,17 @@ Om du vill lägga till en lagrings plats i labbet hämtar du först viktig infor
 8. På sidan **skapa en ny personlig åtkomst-token** :
    1. Ange ett **namn** för token.
    2. I listan **organisation** väljer du **alla tillgängliga organisationer**.
-   3. I listan **förfallo datum (UTC)** väljer du **90 dagar**eller en anpassad definierad förfallo period.
+   3. I listan **förfallo datum (UTC)** väljer du **90 dagar** eller en anpassad definierad förfallo period.
    4. Välj alternativet **fullständig åtkomst** för omfattningar.
    5. Välj **Skapa**.
-9. Den nya token visas i listan med **personliga åtkomst-token** . Välj **Kopiera token**och spara sedan token-värdet för senare användning.
+9. Den nya token visas i listan med **personliga åtkomst-token** . Välj **Kopiera token** och spara sedan token-värdet för senare användning.
 10. Fortsätt till avsnittet Anslut ditt labb till databasen.
 
 ## <a name="use-azure-portal"></a>Använda Azure-portalen
 Det här avsnittet innehåller steg för att lägga till en artefakt lagrings plats i ett labb i Azure Portal.
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-2. Välj **fler tjänster**och välj sedan **DevTest Labs** i listan över tjänster.
+2. Välj **fler tjänster** och välj sedan **DevTest Labs** i listan över tjänster.
 3. I listan med labb väljer du ditt labb.
 4. Välj **konfiguration och principer** på den vänstra menyn.
 5. Avsnittet Välj **databaser** under **externa resurser** på den vänstra menyn.
@@ -360,7 +360,7 @@ if ($ArtifactRepositoryName -eq $null){
 
 ### <a name="powershell-commands-used-in-the-script"></a>PowerShell-kommandon som används i skriptet
 
-| PowerShell-kommando | Obs! |
+| PowerShell-kommando | Kommentarer |
 | ------------------ | ----- |
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | Det här kommandot används för att hämta information om labbet, till exempel dess plats. |
 | [New-AzResource](/powershell/module/az.resources/new-azresource) | Det finns inget speciellt kommando för att lägga till artefakt databaser. Den allmänna [New-AzResource-](/powershell/module/az.resources/new-azresource) cmdleten utför jobbet. Denna cmdlet kräver antingen **ResourceID** -eller **resourceName** -och **resourcetype** -paret för att veta vilken typ av resurs som ska skapas. Det här exempel skriptet använder paret resurs namn och resurs typ. <br/><br/>Observera att du skapar artefakt lager källan på samma plats och under samma resurs grupp som labbet.|

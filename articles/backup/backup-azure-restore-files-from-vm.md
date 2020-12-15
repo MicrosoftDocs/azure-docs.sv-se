@@ -2,16 +2,16 @@
 title: Återställa filer och mappar från virtuell Azure-säkerhetskopiering
 description: I den här artikeln lär du dig hur du återställer filer och mappar från en återställnings punkt för en virtuell Azure-dator.
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: b9d5c90634dac3229e756ad93c10db91b268080c
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4d34fc48e5d16275d0225a1cef4b5fa63f0b66d6
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841170"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511662"
 ---
-# <a name="recover-files-from-azure-virtual-machine-backup"></a>Återställa filer från säkerhets kopiering av virtuella Azure-datorer
+# <a name="recover-files-from-azure-virtual-machine-backup"></a>Återställa filer från en säkerhetskopia av en virtuell Azure-dator
 
 Azure Backup ger möjlighet att återställa [virtuella Azure-datorer (VM) och diskar](./backup-azure-arm-restore-vms.md) från virtuella Azure-säkerhetskopieringar, även kallade återställnings punkter. Den här artikeln förklarar hur du återställer filer och mappar från en virtuell Azure-säkerhetskopiering. Det går bara att återställa filer och mappar för virtuella Azure-datorer som distribueras med Resource Manager-modellen och skyddas till ett Recovery Services-valv.
 
@@ -156,7 +156,7 @@ När du kör den körbara filen monterar operativ systemet de nya volymerna och 
 
    ![Anslutna återställnings volymer](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
-**För säkerhetskopierade virtuella datorer med stora diskar (Windows)**
+#### <a name="for-backed-up-vms-with-large-disks-windows"></a>För säkerhetskopierade virtuella datorer med stora diskar (Windows)
 
 Om fil återställnings processen låser sig efter att du kört fil återställnings skriptet (till exempel om diskarna aldrig monteras eller om de är monterade men volymerna inte visas) utför du följande steg:
   
@@ -182,7 +182,7 @@ I Linux monteras volymerna för återställnings punkten på den mapp där skrip
   ![Fil återställnings meny för Linux](./media/backup-azure-restore-files-from-vm/linux-mount-paths.png)
 
 
-**För säkerhetskopierade virtuella datorer med stora diskar (Linux)**
+#### <a name="for-backed-up-vms-with-large-disks-linux"></a>För säkerhetskopierade virtuella datorer med stora diskar (Linux) * *
 
 Om fil återställnings processen låser sig efter att du kört fil återställnings skriptet (till exempel om diskarna aldrig monteras eller om de är monterade men volymerna inte visas) utför du följande steg:
 

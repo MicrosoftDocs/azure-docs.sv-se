@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: cd64c19e7e9af05becd7a6978ceb4d0306112170
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e2c71e028225c22ab0355ff4cda77dacadf94095
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351903"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97512053"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Azure-resurser för QnA Maker
 
@@ -65,7 +65,7 @@ I följande tabell får du några rikt linjer på hög nivå.
 |                            | QnA Maker hantering | App Service | Azure Cognitive Search | Begränsningar                      |
 | -------------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
 | **Experimentering**        | Kostnads fri SKU             | Kostnads fri nivå   | Kostnads fri nivå    | Publicera upp till 2 KB, 50 MB storlek  |
-| **Utvecklings-och test miljö**   | Standard-SKU         | Delad      | Basic        | Publicera upp till 14 KB, 2 GB storlek    |
+| **Utvecklings-och test miljö**   | Standard-SKU         | Delad      | Grundläggande        | Publicera upp till 14 KB, 2 GB storlek    |
 | **Produktions miljö** | Standard-SKU         | Basic       | Standard     | Publicera upp till 49 KB, 25 GB storlek |
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker hanterad (för hands version)](#tab/v2)
@@ -93,7 +93,7 @@ I följande tabell får du några rikt linjer på hög nivå.
 |                            |Azure Cognitive Search | Begränsningar                      |
 | -------------------------- |------------ | -------------------------------- |
 | **Experimentering**        |Kostnads fri nivå    | Publicera upp till 2 KB, 50 MB storlek  |
-| **Utvecklings-och test miljö**   |Basic        | Publicera upp till 14 KB, 2 GB storlek    |
+| **Utvecklings-och test miljö**   |Grundläggande        | Publicera upp till 14 KB, 2 GB storlek    |
 | **Produktions miljö** |Standard     | Publicera upp till 49 KB, 25 GB storlek |
 
 ---
@@ -104,11 +104,11 @@ I följande tabell får du några rikt linjer på hög nivå.
 
 |Mål frågor per sekund | App Service | Azure Cognitive Search |
 | -------------------- | ----------- | ------------ |
-| 3             | S1, 1 instans   | S1, 1 instans    |
-| 50         | S3, 10 instanser       | S1, 12 instanser         |
-| 80         | S3, 10 instanser      |  S3, 12 instanser  |
-| 100         | P3V2, 10 instanser  | S3, 12 instanser, 3 partitioner   |
-| 200 till 250         | P3V2, 20 instanser | S3, 12 instanser, 3 partitioner    |
+| 3             | S1, 1 replik   | S1, 1 replik    |
+| 50         | S3, 10 repliker       | S1, 12 repliker         |
+| 80         | S3, 10 repliker      |  S3, 12 repliker  |
+| 100         | P3V2, 10 repliker  | S3, 12 repliker, 3 partitioner   |
+| 200 till 250         | P3V2, 20 repliker | S3, 12 repliker, 3 partitioner    |
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker hanterad (för hands version)](#tab/v2)
 

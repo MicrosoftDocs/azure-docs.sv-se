@@ -3,12 +3,12 @@ title: Identifiera rörelse, spela in video till Azure Media Services
 description: Den här snabb starten visar hur du använder real tids analys på IoT Edge för att identifiera rörelse i en video ström i real tid och spela in videoklipp i Azure Media Services.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 861351e16120c3f46612ba35518135fbfaf4c81b
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 8872c9aefa0ed748cbed93d0f7376586859be9df
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776484"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511900"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Snabb start: identifiera rörelse, spela in video till Media Services
 
@@ -44,11 +44,11 @@ Du kan använda modulen för att analysera direktuppspelade video strömmar geno
 1. Högerklicka och välj **Inställningar för tillägg**.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Event-baserad videoinspelning till till gångar baserat på rörelse händelser":::
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Tilläggs inställningar":::
 1. Sök och aktivera "Visa utförligt meddelande".
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Event-baserad videoinspelning till till gångar baserat på rörelse händelser":::
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Visa utförligt meddelande":::
 
 ### <a name="invoke-graphtopologylist"></a>Anropa GraphTopologyList
 Det här steget räknar upp alla [Graph-topologier](media-graph-concept.md#media-graph-topologies-and-instances) i modulen.
@@ -59,7 +59,7 @@ Det här steget räknar upp alla [Graph-topologier](media-graph-concept.md#media
     
 ```
 {
-    "@apiVersion" : "1.0"
+    "@apiVersion" : "2.0"
 }
 ```
 
@@ -84,7 +84,7 @@ Med samma steg som de som beskrivs för att anropa GraphTopologyList, kan du anr
 
 ```
 {
-    "@apiVersion": "1.0",
+    "@apiVersion": "2.0",
     "name": "EVRtoAssetsOnMotionDetection",
     "properties": {
       "description": "Event-based video recording to Assets based on motion events",
@@ -331,7 +331,7 @@ Anropar nu GraphTopologyGet med följande nytto Last
 ```
 
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "EVRtoAssetsOnMotionDetection"
 }
 ```
@@ -474,7 +474,7 @@ Anropa nu metoden GraphInstanceSet Direct med följande nytto last:
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2",
     "properties" : {
         "topologyName" : "EVRtoAssetsOnMotionDetection",
@@ -556,7 +556,7 @@ Aktivera nu graf-instansen – som startar flödet av direktsänd video via modu
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2"
 }
 ```
@@ -580,7 +580,7 @@ Anropa nu metoden GraphInstanceGet Direct med följande nytto last:
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2"
 }
 ```
@@ -759,7 +759,7 @@ Anropa metoden GraphInstanceDeactivate Direct med följande nytto last:
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2"
 }
 ```
@@ -787,7 +787,7 @@ Anropa den direkta metoden GraphInstanceDelete med följande nytto Last
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2"
 }
 ```
@@ -811,7 +811,7 @@ Anropa metoden GraphTopologyDelete Direct med följande nytto last:
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "EVRtoAssetsOnMotionDetection"
 }
 ```

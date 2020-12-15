@@ -3,12 +3,12 @@ title: Bästa praxis
 description: Lär dig metod tips och användbara tips för att utveckla dina Azure Batch-lösningar.
 ms.date: 11/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6aaed76ad398b5278850dd66ce1da6d5bd33807f
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 1eaa34e02a4c505691662e9fc29334cb823a3185
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95254671"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511220"
 ---
 # <a name="azure-batch-best-practices"></a>Metod tips för Azure Batch
 
@@ -87,7 +87,7 @@ Ett jobb flyttas inte automatiskt till slutfört tillstånd om det inte uttryckl
 
 Det finns ett [aktivt standard jobb och en kvot för jobb schema](batch-quota-limit.md#resource-quotas). Jobb och jobb scheman i slutfört tillstånd räknas inte över till den här kvoten.
 
-## <a name="tasks"></a>Uppgifter
+## <a name="tasks"></a>Aktiviteter
 
 [Aktiviteter](jobs-and-tasks.md#tasks) är enskilda enheter av arbete som utgör ett jobb. Aktiviteter skickas av användaren och schemaläggs av batch på för att beräkna noder. Det finns flera design aspekter att fatta när du skapar och kör uppgifter. I följande avsnitt beskrivs vanliga scenarier och hur du utformar dina aktiviteter för att hantera problem och utföra effektiva åtgärder.
 
@@ -140,6 +140,10 @@ En [Compute-nod](nodes-and-pools.md#nodes) är en virtuell Azure-dator (VM) elle
 ### <a name="idempotent-start-tasks"></a>Idempotenta start uppgifter
 
 Precis som med andra uppgifter ska nodens [Start aktivitet](jobs-and-tasks.md#start-task) vara idempotenta, eftersom den kommer att köras varje gång noden startas. En idempotenta-uppgift är bara en som ger ett konsekvent resultat vid körning flera gånger.
+
+### <a name="isolated-nodes"></a>Isolerade noder
+
+Överväg att använda isolerad VM-storlek för arbets belastningar med efterlevnads-eller reglerings krav. De isolerade storlekar som stöds i konfigurations läget för den virtuella datorn är `Standard_E64i_v3` ,,,, `Standard_E80ids_v4` `Standard_F72s_v2` `Standard_G5` `Standard_GS5` och `Standard_M128ms` . Mer information om isolerade VM-storlekar finns i [isolering av virtuella datorer i Azure](https://docs.microsoft.com/azure/virtual-machines/isolation).
 
 ### <a name="manage-long-running-services-via-the-operating-system-services-interface"></a>Hantera tids krävande tjänster via gränssnittet för operativ system tjänster
 

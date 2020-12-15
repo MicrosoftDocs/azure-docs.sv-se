@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: d1ab8990d0e5c389e0454c23a31989a71b0cd9a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdc7668b06308bd5532f4885d0e1365fc34ae989
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87843784"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511254"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Prenumerationer i Azure API Management
 
@@ -33,7 +33,7 @@ En prenumeration krävs för att få en prenumerations nyckel för åtkomst till
 > API Management stöder också andra metoder för att skydda åtkomsten till API: er, inklusive följande exempel:
 > - [OAuth 2.0](api-management-howto-protect-backend-with-aad.md)
 > - [Klient certifikat](api-management-howto-mutual-certificates-for-clients.md)
-> - [IP-vit listning](./api-management-access-restriction-policies.md#RestrictCallerIPs)
+> - [Begränsa anropare IP-adresser](./api-management-access-restriction-policies.md#RestrictCallerIPs)
 
 ## <a name="scope-of-subscriptions"></a>Prenumerations omfång
 
@@ -43,7 +43,7 @@ Prenumerationer kan kopplas till olika scope: produkt, alla API: er eller en ens
 
 Traditionellt var prenumerationer i API Management alltid kopplade till en enda [API-produkt](api-management-terminology.md) omfattning. Utvecklare hittade listan över produkter på Developer-portalen. Sedan skickar de prenumerations begär Anden för de produkter de ville använda. När en prenumerations förfrågan har godkänts, antingen automatiskt eller av API-utgivare, kan utvecklaren använda nycklarna i den för att få åtkomst till alla API: er i produkten. För närvarande visar Developer-portalen endast produkt omfattnings prenumerationer i avsnittet användar profil. 
 
-![Produkt prenumerationer](./media/api-management-subscriptions/product-subscription.png)
+![Produktprenumerationer](./media/api-management-subscriptions/product-subscription.png)
 
 > [!TIP]
 > Under vissa scenarier kanske API-utgivare vill publicera en API-produkt till allmänheten utan krav på prenumerationer. De kan avmarkera alternativet **Kräv prenumeration** på sidan **Inställningar** för produkten i Azure Portal. Därför kan alla API: er under produkten nås utan API-nyckel.

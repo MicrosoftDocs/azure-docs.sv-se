@@ -11,12 +11,12 @@ ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: dbfeefc14059785ba82cbf245a60e5e72759db76
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 48c60878a6a58b2f4629768b81af894a741dab1c
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840414"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509809"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webb inloggning med OpenID Connect i Azure Active Directory B2C
 
@@ -262,7 +262,7 @@ Fel svar ser ut så här:
 
 ## <a name="send-a-sign-out-request"></a>Skicka en inloggningsbegäran
 
-När du vill signera användaren från programmet räcker det inte att ta bort programmets cookies eller på annat sätt avsluta sessionen med användaren. Omdirigera användaren till Azure AD B2C för att logga ut. Om du inte gör det kan det hända att användaren kan autentisera till programmet igen utan att ange sina autentiseringsuppgifter igen. Mer information finns i [Azure AD B2C session](session-overview.md).
+När du vill signera användaren från programmet räcker det inte att ta bort programmets cookies eller på annat sätt avsluta sessionen med användaren. Omdirigera användaren till Azure AD B2C för att logga ut. Om du inte gör det kan det hända att användaren kan autentisera till programmet igen utan att ange sina autentiseringsuppgifter igen. Mer information finns i [Azure AD B2C session](session-behavior.md).
 
 Om du vill logga ut användaren omdirigerar du användaren till den `end_session` slut punkt som anges i dokumentet OpenID Connect-metadata som beskrivs ovan:
 
@@ -283,8 +283,8 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 
 Efter utloggning omdirigeras användaren till den URI som anges i `post_logout_redirect_uri` parametern, oavsett vilka svars-URL: er som har angetts för programmet. Men om ett giltigt `id_token_hint` värde skickas och **Kräv ID-token i utloggnings begär Anden** aktive ras, verifierar Azure AD B2C att värdet för `post_logout_redirect_uri` matchar ett av programmets konfigurerade omdirigerings-URI: er innan omdirigeringen utförs. Om ingen matchande svars-URL har kon figurer ATS för programmet visas ett fel meddelande och användaren omdirigeras inte.
 
-Om du vill ange den obligatoriska ID-token i utloggnings begär Anden, se [Konfigurera sessionens beteende i Azure Active Directory B2C](session-behavior-custom-policy.md#secure-your-logout-redirect)och [Konfigurera sessionens beteende med anpassade principer i Azure Active Directory B2C](session-behavior-custom-policy.md#secure-your-logout-redirect).
+Information om hur du anger obligatorisk ID-token i utloggnings begär Anden finns i [Konfigurera sessionens beteende i Azure Active Directory B2C](session-behavior.md#secure-your-logout-redirect).
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer om [Azure AD B2C-sessionen](session-overview.md).
+- Läs mer om [Azure AD B2C-sessionen](session-behavior.md).

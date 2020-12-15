@@ -4,12 +4,12 @@ description: Den här artikeln visar hur du autentiserar åtkomst till Event Hub
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e5d52b82ad6bbcb8dc7c028d3eba25a584590840
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 26c921213168e1028f311eabaa417efdb76f5c97
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332441"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510098"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Autentisera åtkomst till Event Hubs resurser med signaturer för delad åtkomst (SAS)
 Signaturen för delad åtkomst (SAS) ger dig detaljerad kontroll över vilken typ av åtkomst du beviljar till de klienter som har signaturen för delad åtkomst. Här följer några av de kontroller som du kan ange i en SAS: 
@@ -212,7 +212,7 @@ Om du till exempel vill definiera auktoriseringsregler som är begränsade till 
 >
 > När klienten skickar data till en händelsehubben, taggar den begäran med token. För att förhindra att en angripare åsidosätter och stjäla token måste kommunikationen mellan klienten och händelsehubben ske över en krypterad kanal.
 > 
-> Om ett token stjäls av en angripare kan angriparen imitera klienten vars token har blivit stulen. Om du svartlistar en utgivare, återges klienten oanvändbar tills den får en ny token som använder en annan utgivare.
+> Om ett token stjäls av en angripare kan angriparen imitera klienten vars token har blivit stulen. Blocklisting en utgivare, återger klienten oanvändbar tills den får en ny token som använder en annan utgivare.
 
 
 ## <a name="authenticating-event-hubs-consumers-with-sas"></a>Autentisera Event Hubs konsumenter med SAS 

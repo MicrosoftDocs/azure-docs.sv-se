@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8b33c7f76cc2ac7a2012dc9d8c854a1dde46c3ea
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 9c50bd71f4e2e5bbe12518f5a5d1cd486af9723a
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399136"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509759"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -153,8 +153,8 @@ I följande exempel visas en förlitande part med [UserInfo-slutpunkten](userinf
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
 | Omfång | Ja | Omfattningen av det enkla inloggnings beteendet. Möjliga värden: `Suppressed` , `Tenant` , `Application` eller `Policy` . `Suppressed`Värdet anger att beteendet ignoreras och att användaren alltid uppmanas att ange ett val av identitetsprovider.  `Tenant`Värdet anger att beteendet tillämpas på alla principer i klienten. Till exempel behöver en användare som navigerar genom två princip resor för en klient inte uppmanas att välja ett val av identitetsprovider. `Application`Värdet anger att beteendet tillämpas på alla principer för programmet som gör begäran. Till exempel behöver en användare som navigerar genom två princip resor för ett program inte ange något val av en identitetsprovider. `Policy`Värdet anger att beteendet bara gäller för en princip. Till exempel, en användare som navigerar genom två princip resor för ett förtroende Framework, uppmanas du att ange en identitets leverantör när du växlar mellan principer. |
-| KeepAliveInDays | Ja | Styr hur länge användaren förblir inloggad. Om du anger värdet 0 inaktive ras KMSI avgör-funktionen. Mer information finns i [Håll mig inloggad](custom-policy-keep-me-signed-in.md). |
-|EnforceIdTokenHintOnLogout| Inga|  Tvinga att skicka en tidigare utfärdad ID-token till utloggnings slut punkten som ett tips om slutanvändarens aktuella autentiserade session med-klienten. Möjliga värden: `false` (standard) eller `true` . Mer information finns i [webb inloggning med OpenID Connect](openid-connect.md).  |
+| KeepAliveInDays | Ja | Styr hur länge användaren förblir inloggad. Om du anger värdet 0 inaktive ras KMSI avgör-funktionen. Mer information finns i [Håll mig inloggad](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi). |
+|EnforceIdTokenHintOnLogout| Nej|  Tvinga att skicka en tidigare utfärdad ID-token till utloggnings slut punkten som ett tips om slutanvändarens aktuella autentiserade session med-klienten. Möjliga värden: `false` (standard) eller `true` . Mer information finns i [webb inloggning med OpenID Connect](openid-connect.md).  |
 
 
 ## <a name="journeyinsights"></a>JourneyInsights
@@ -225,12 +225,12 @@ När protokollet är `SAML` , innehåller ett metadataelement följande element.
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| IdpInitiatedProfileEnabled | Inga | Anger om flödet som initieras av IDP stöds. Möjliga värden: `true` eller `false` (standard). | 
-| XmlSignatureAlgorithm | Inga | Metoden som Azure AD B2C använder för att signera SAML-svaret. Möjliga värden: `Sha256` , `Sha384` , `Sha512` eller `Sha1` . Se till att du konfigurerar signeringsalgoritmen på båda sidor med samma värde. Använd bara den algoritm som ditt certifikat stöder. Information om hur du konfigurerar SAML-kontroll finns i [metadata för SAML Issuer Technical Profile](saml-issuer-technical-profile.md#metadata). |
-| DataEncryptionMethod | Inga | Anger den metod som Azure AD B2C använder för att kryptera data med hjälp av algoritmen Advanced Encryption Standard (AES). Metadata styr värdet för `<EncryptedData>` elementet i SAML-svaret. Möjliga värden: `Aes256` (standard), `Aes192` , `Sha512` , eller ` Aes128` . |
-| KeyEncryptionMethod| Inga | Anger den metod som Azure AD B2C använder för att kryptera kopian av nyckeln som användes för att kryptera data. Metadata styr värdet för  `<EncryptedKey>` elementet i SAML-svaret. Möjliga värden: ` Rsa15` (standard)-RSA (Public Key Cryptography Standard) Version 1,5 algorithm, ` RsaOaep` -RSA optimal OAEP-krypteringsalgoritm (Asymmetric Encryption Encryption utfyllnad). |
-| UseDetachedKeys | Inga |  Möjliga värden: `true` , eller `false` (standard). När värdet är inställt på `true` Azure AD B2C ändrar formatet för de krypterade förändringarna. Om du använder frånkopplade nycklar läggs den krypterade försäkran som underordnad till EncrytedAssertion i stället för EncryptedData. |
-| WantsSignedResponses| Inga | Anger om Azure AD B2C signerar `Response` avsnittet i SAML-svaret. Möjliga värden: `true` (standard) eller `false` .  |
+| IdpInitiatedProfileEnabled | Nej | Anger om flödet som initieras av IDP stöds. Möjliga värden: `true` eller `false` (standard). | 
+| XmlSignatureAlgorithm | Nej | Metoden som Azure AD B2C använder för att signera SAML-svaret. Möjliga värden: `Sha256` , `Sha384` , `Sha512` eller `Sha1` . Se till att du konfigurerar signeringsalgoritmen på båda sidor med samma värde. Använd bara den algoritm som ditt certifikat stöder. Information om hur du konfigurerar SAML-kontroll finns i [metadata för SAML Issuer Technical Profile](saml-issuer-technical-profile.md#metadata). |
+| DataEncryptionMethod | Nej | Anger den metod som Azure AD B2C använder för att kryptera data med hjälp av algoritmen Advanced Encryption Standard (AES). Metadata styr värdet för `<EncryptedData>` elementet i SAML-svaret. Möjliga värden: `Aes256` (standard), `Aes192` , `Sha512` , eller ` Aes128` . |
+| KeyEncryptionMethod| Nej | Anger den metod som Azure AD B2C använder för att kryptera kopian av nyckeln som användes för att kryptera data. Metadata styr värdet för  `<EncryptedKey>` elementet i SAML-svaret. Möjliga värden: ` Rsa15` (standard)-RSA (Public Key Cryptography Standard) Version 1,5 algorithm, ` RsaOaep` -RSA optimal OAEP-krypteringsalgoritm (Asymmetric Encryption Encryption utfyllnad). |
+| UseDetachedKeys | Nej |  Möjliga värden: `true` , eller `false` (standard). När värdet är inställt på `true` Azure AD B2C ändrar formatet för de krypterade förändringarna. Om du använder frånkopplade nycklar läggs den krypterade försäkran som underordnad till EncrytedAssertion i stället för EncryptedData. |
+| WantsSignedResponses| Nej | Anger om Azure AD B2C signerar `Response` avsnittet i SAML-svaret. Möjliga värden: `true` (standard) eller `false` .  |
 
 ### <a name="outputclaims"></a>OutputClaims
 
@@ -245,8 +245,8 @@ När protokollet är `SAML` , innehåller ett metadataelement följande element.
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ja | En referens till en **claimType** som redan har definierats i **ClaimsSchema** -avsnittet i princip filen. |
-| Standar | Inga | Ett standardvärde som kan användas om anspråks värdet är tomt. |
-| PartnerClaimType | Inga | Skickar anspråket i ett annat namn som har kon figurer ATS i definitions definitionen för ClaimType. |
+| Standar | Nej | Ett standardvärde som kan användas om anspråks värdet är tomt. |
+| PartnerClaimType | Nej | Skickar anspråket i ett annat namn som har kon figurer ATS i definitions definitionen för ClaimType. |
 
 ### <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
@@ -259,7 +259,7 @@ Med **SubjectNameingInfo** -elementet kan du styra värdet för token-ämnet:
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
 | ClaimType | Ja | En referens till ett utgående anspråks **PartnerClaimType**. De utgående anspråken måste definieras i **OutputClaims** -samlingen för förlitande part princip. |
-| Format | Inga | Används för SAML-förlitande parter för att ange det **NameId-format** som returnerades i SAML-kontrollen. |
+| Format | Nej | Används för SAML-förlitande parter för att ange det **NameId-format** som returnerades i SAML-kontrollen. |
 
 I följande exempel visas hur du definierar en OpenID Connect-förlitande part. Ämnes namnets information konfigureras som `objectId` :
 

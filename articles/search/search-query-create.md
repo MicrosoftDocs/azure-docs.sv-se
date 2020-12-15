@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: a02d51d66b9d2b8bf3c08d4515713ecb062e0c8e
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: db36a77d93735b151ad893b7e25ba86f104e7b90
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400224"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510472"
 ---
 # <a name="create-a-query-in-azure-cognitive-search"></a>Skapa en fråga i Azure Kognitiv sökning
 
@@ -76,31 +76,7 @@ Om frågan är full texts ökning används en parser för att bearbeta innehåll
 
 [Fullständig Lucene-frågesyntax](query-Lucene-syntax.md#bkmk_syntax), som aktive ras när du lägger till i `queryType=full` begäran, baseras på [Apache Lucene-parsern](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html).
 
-Fullständig syntax är en utökning av den enkla syntaxen, med fler operatorer så att du kan skapa avancerade frågor, till exempel suddig sökning, sökning med jokertecken, närhets sökning och reguljära uttryck. I följande exempel visas punkten: samma fråga, men med olika **`queryType`** Inställningar, vilket ger olika resultat. I den första enkla frågan `^3` `historic` behandlas efter som en del av Sök termen. Det översta resultatet för den här frågan är "Marquis Plaza & Suitess", *som har 10* i beskrivningen.
-
-```http
-POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
-{
-    "count": true,
-    "queryType": "simple",
-    "search": "ocean historic^3",
-    "searchFields": "Description",
-    "select": "HotelId, HotelName, Tags, Description",
-}
-```
-
-Samma fråga som använder den fullständiga Lucene-parsern tolkar `^3` som en term förstärkning i fält. När du växlar parser ändras rangordningen, med resultat som innehåller den *historiska* termen flytta högst upp.
-
-```http
-POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
-{
-    "count": true,
-    "queryType": "full",
-    "search": "ocean historic^3",
-    "searchFields": "Description",
-    "select": "HotelId, HotelName, Tags, Description",
-}
-```
+Fullständig syntax och enkel syntax överlappar den utsträckning som båda stöder samma prefix och booleska åtgärder, men den fullständiga syntaxen innehåller fler operatorer. Det finns dessutom fler operatorer för booleska uttryck och fler operatorer för avancerade frågor, till exempel suddig sökning, sökning med jokertecken, närhets sökning och reguljära uttryck.
 
 ## <a name="choose-query-methods"></a>Välj fråge metoder
 

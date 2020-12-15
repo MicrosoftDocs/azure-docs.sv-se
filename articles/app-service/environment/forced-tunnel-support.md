@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: c8a4b6998d1471a79dd789ed6528e22b07f2015c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 95a4d00a27a0da363561f469b4c5e9e2ad16463c
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540983"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510506"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>Konfigurera App Service Environment med tvingande dirigering
 
@@ -95,7 +95,7 @@ Utför följande steg för att tunnla all utgående trafik från din ASE, förut
 
 3. Hämta de adresser som ska användas för all utgående trafik från din App Service Environment till Internet. Om du dirigerar trafiken lokalt är dessa adresser dina NAT- eller gateway-IP-adresser. Om du vill dirigera den utgående trafiken för App Service Environment genom en NVA är den utgående adressen den offentliga IP-adressen för NVA.
 
-4. _Ange utgående adresser i en befintlig App Service-miljön:_ Gå till resources.azure.com och gå till Subscription/ \<subscription id> /ResourceGroups/ \<ase resource group> /providers/Microsoft.Web/hostingEnvironments/ \<ase name> . Du kan då se den JSON som beskriver App Service Environment. Kontrollera att det står **läsa/skriva** längst upp. Välj **Redigera** . Gå längst ned på sidan. Ändra värdet i **userWhitelistedIpRanges** från **null** till något som liknar följande. Använd de adresser som du vill ange som utgående adressintervall. 
+4. _Ange utgående adresser i en befintlig App Service-miljön:_ Gå till resources.azure.com och gå till Subscription/ \<subscription id> /ResourceGroups/ \<ase resource group> /providers/Microsoft.Web/hostingEnvironments/ \<ase name> . Du kan då se den JSON som beskriver App Service Environment. Kontrollera att det står **läsa/skriva** längst upp. Välj **Redigera**. Gå längst ned på sidan. Ändra värdet i **userWhitelistedIpRanges** från **null** till något som liknar följande. Använd de adresser som du vill ange som utgående adressintervall. 
 
     ```json
     "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"]
@@ -103,7 +103,7 @@ Utför följande steg för att tunnla all utgående trafik från din ASE, förut
 
    Välj **PUT** längst upp. Det här alternativet utlöser en skalningsåtgärd i App Service Environment och justerar brandväggen.
 
-_Skapa din ASE med utgående adresser_ : Följ instruktionerna i [Skapa en App Service Environment med en mall][template] och hämta lämplig mall.  Redigera avsnittet ”resurser” i filen azuredeploy.json, men inte i blocket ”egenskaper”, och inkludera en rad för **userWhitelistedIpRanges** med dina värden.
+_Skapa din ASE med utgående adresser_: Följ instruktionerna i [Skapa en App Service Environment med en mall][template] och hämta lämplig mall.  Redigera avsnittet ”resurser” i filen azuredeploy.json, men inte i blocket ”egenskaper”, och inkludera en rad för **userWhitelistedIpRanges** med dina värden.
 
 ```json
 "resources": [
@@ -131,7 +131,7 @@ _Skapa din ASE med utgående adresser_ : Följ instruktionerna i [Skapa en App S
 
 Dessa ändringar skickar trafik till Azure Storage direkt från ASE:n och tillåter åtkomst till Azure SQL från fler adresser än VIP för ASE.
 
-   ![Tvingad tunneltrafik med SQL-vitlistan][3]
+   ![Tvingad tunnel med SQL-tillåten][3]
 
 ## <a name="preventing-issues"></a>Förhindra problem ##
 

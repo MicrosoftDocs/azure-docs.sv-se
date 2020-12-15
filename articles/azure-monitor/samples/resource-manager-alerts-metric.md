@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: 4340bd0ffc4a060b1eb8884efa8078aaf18e1e28
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: c05f9a326fcbe75a3348e58987d57e106094cf56
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893989"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510574"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>Exempel på Resource Manager-mallar för mått varnings regler i Azure Monitor
 
@@ -343,7 +343,7 @@ Spara JSON-filen nedan som simpledynamicmetricalert.jsi för den här genom gån
                 "description": "The number of unhealthy periods to alert on (must be lower or equal to numberOfEvaluationPeriods)."
             }
         },
-    "ignoreDataBefore": {
+        "ignoreDataBefore": {
             "type": "string",
             "defaultValue": "",
             "metadata": {
@@ -480,7 +480,7 @@ Spara JSON-filen nedan som simpledynamicmetricalert.jsi för den här genom gån
         "minFailingPeriodsToAlert": {
             "value": "3"
         },
-    "ignoreDataBefore": {
+        "ignoreDataBefore": {
             "value": ""
         },
         "timeAggregation": {
@@ -712,10 +712,10 @@ I det här exemplet övervakar varnings regeln dimensions värde kombinationer f
 2. **ApiName** – en annan tids serie övervakas endast för **GetBlob** -och **PutBlob** -dimensionsvärdena.
 
 Till exempel är några av de tänkbara tids serier som övervakas av den här aviserings regeln:
-- Metric = *transaktioner* , ResponseType = *lyckades* , ApiName = *GetBlob*
-- Metric = *transaktioner* , ResponseType = *lyckades* , ApiName = *PutBlob*
-- Metric = *Transactions* , ResponseType = *Server-timeout* , ApiName = *GetBlob*
-- Metric = *Transactions* , ResponseType = *Server-timeout* , ApiName = *PutBlob*
+- Metric = *transaktioner*, ResponseType = *lyckades*, ApiName = *GetBlob*
+- Metric = *transaktioner*, ResponseType = *lyckades*, ApiName = *PutBlob*
+- Metric = *Transactions*, ResponseType = *Server-timeout*, ApiName = *GetBlob*
+- Metric = *Transactions*, ResponseType = *Server-timeout*, ApiName = *PutBlob*
 
 ### <a name="template-file"></a>Mallfil
 
@@ -875,7 +875,7 @@ Till exempel är några av de tänkbara tids serier som övervakas av den här a
                             "values": ["*"]
                         },
                         {
-                "name":"ApiName",
+                            "name":"ApiName",
                             "operator": "Include",
                             "values": ["GetBlob", "PutBlob"]    
                         }
@@ -903,10 +903,10 @@ I det här exemplet övervakar varnings regeln dimensions värde kombinationer f
 2. **ApiName** – en annan tids serie övervakas endast för **GetBlob** -och **PutBlob** -dimensionsvärdena.
 
 Till exempel är några av de tänkbara tids serier som övervakas av den här aviserings regeln:
-- Metric = *transaktioner* , ResponseType = *lyckades* , ApiName = *GetBlob*
-- Metric = *transaktioner* , ResponseType = *lyckades* , ApiName = *PutBlob*
-- Metric = *Transactions* , ResponseType = *Server-timeout* , ApiName = *GetBlob*
-- Metric = *Transactions* , ResponseType = *Server-timeout* , ApiName = *PutBlob*
+- Metric = *transaktioner*, ResponseType = *lyckades*, ApiName = *GetBlob*
+- Metric = *transaktioner*, ResponseType = *lyckades*, ApiName = *PutBlob*
+- Metric = *Transactions*, ResponseType = *Server-timeout*, ApiName = *GetBlob*
+- Metric = *Transactions*, ResponseType = *Server-timeout*, ApiName = *PutBlob*
 
 >[!NOTE]
 > Flera kriterier stöds för närvarande inte för mått varnings regler som använder dynamiska tröskelvärden.

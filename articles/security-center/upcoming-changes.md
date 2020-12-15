@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/14/2020
 ms.author: memildin
-ms.openlocfilehash: fcdcda8aaa6d48b24c346d87a402f6966ab11cf5
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 052758079d8d413f7b0fead2a5abf3b47b9a691e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505502"
+ms.locfileid: "97511339"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Viktiga kommande ändringar i Azure Security Center
 
@@ -32,7 +32,7 @@ Om du letar efter den senaste versions informationen hittar du dem i [vad som ä
 ## <a name="planned-changes"></a>Planerade ändringar
 
 - ["Ej tillämpligt" resurser som ska rapporteras som "kompatibla" i Azure Policy bedömningar](#not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments)
-- [35 för hands versioner har lagts till för att öka täckningen av Azures säkerhets prestanda](#35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
+- [35 för hands versioner har lagts till för att öka täckningen av Azures säkerhets prestanda](#35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark)
 
 ### <a name="not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments"></a>"Ej tillämpligt" resurser som ska rapporteras som "kompatibla" i Azure Policy bedömningar
 
@@ -42,13 +42,13 @@ För närvarande visas resurser som utvärderas för en rekommendation och som i
 
 Den enda påverkan visas i Azure Policy där antalet kompatibla resurser kommer att öka. Det kommer inte att påverka dina säkra poäng i Azure Security Center.
 
-### <a name="35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>35 för hands versioner har lagts till för att öka täckningen av Azures säkerhets prestanda
+### <a name="35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark"></a>35 för hands versions rekommendationer läggs till för att öka täckningen av Azures säkerhets prestanda
 
 **Beräknat datum för ändring:** December 2020
 
 Azures säkerhets prestanda är Microsofts-skapade, Azure-/regionsspecifika uppsättning rikt linjer för säkerhets-och efterlevnads metod tips baserade på vanliga ramverk för efterlevnad. [Läs mer om Azure Security Benchmark](../security/benchmarks/introduction.md).
 
-Följande 35 för hands versions rekommendationer har lagts till Security Center för att öka omfattningen av detta benchmark.
+Följande 35 för hands versions rekommendationer kommer att läggas till Security Center för att öka täckningen för detta benchmark.
 
 För hands versions rekommendationer återger inte en resurs som inte är felfri och ingår inte i beräkningarna av dina säkra poäng. Åtgärda dem när så är möjligt, så att när förhands gransknings perioden är slut bidrar de till dina poäng. Lär dig mer om hur du svarar på dessa rekommendationer i att [åtgärda rekommendationer i Azure Security Center](security-center-remediate-recommendations.md).
 

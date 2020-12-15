@@ -3,15 +3,15 @@ title: Bästa praxis för Windows Virtual Desktop-säkerhet – Azure
 description: Metod tips för att skydda din Windows-miljö för virtuella skriv bord.
 author: heidilohr
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d3033af32229be238831740c11a1112513259a43
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8cf5504e44239fed6a4a4b82d0064d49f5c5a99f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023164"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511543"
 ---
 # <a name="security-best-practices"></a>Metodtips för säkerhet
 
@@ -29,16 +29,16 @@ Här är de säkerhets behov som du är ansvarig för i distributionen av Window
 
 | Säkerhets behov | Är kunden ansvarig för detta? |
 |---------------|:-------------------------:|
-|Identitet|Yes|
-|Användar enheter (mobil och PC)|Yes|
-|App Security|Yes|
-|Sessionens värd operativ system|Yes|
-|Distributions konfiguration|Yes|
-|Nätverkskontroller|Yes|
-|Kontroll plan för nätverksvirtualisering|No|
-|Fysiska värdar|No|
-|Fysiskt nätverk|No|
-|Fysiskt Data Center|No|
+|Identitet|Ja|
+|Användar enheter (mobil och PC)|Ja|
+|App Security|Ja|
+|Sessionens värd operativ system|Ja|
+|Distributions konfiguration|Ja|
+|Nätverkskontroller|Ja|
+|Kontroll plan för nätverksvirtualisering|Nej|
+|Fysiska värdar|Nej|
+|Fysiskt nätverk|Nej|
+|Fysiskt Data Center|Nej|
 
 Säkerheten behöver kunden är inte ansvarig för hanteras av Microsoft.
 
@@ -80,7 +80,7 @@ Genom att aktivera [villkorlig åtkomst](../active-directory/conditional-access/
 
 Genom att aktivera Gransknings logg samling kan du Visa användar-och administratörs aktivitet som är relaterad till Windows Virtual Desktop. Några exempel på nyckel gransknings loggar är:
 
--   [Azure-aktivitetslogg](../azure-monitor/platform/activity-log.md)
+-   [Azure aktivitets logg](../azure-monitor/platform/activity-log.md)
 -   [Azure Active Directory aktivitets logg](../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)
 -   [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
 -   [Värdar för sessioner](../azure-monitor/platform/agent-windows.md)
@@ -98,6 +98,25 @@ När du väljer en distributions modell kan du antingen ge fjärran vändare åt
 ## <a name="session-host-security-best-practices"></a>Rekommenderade säkerhets metoder för Session Host
 
 Sessions-värdar är virtuella datorer som körs i en Azure-prenumeration och ett virtuellt nätverk. Den övergripande säkerheten för din Windows-distribution för Windows är beroende av de säkerhets kontroller som du har gjort på dina sessions-värdar. I det här avsnittet beskrivs de bästa metoderna för att hålla värdarna för dina sessioner säkra.
+
+### <a name="enable-screen-capture-protection-preview"></a>Aktivera skärm dum skydd (för hands version)
+
+Funktionen skärm dum skydd förhindrar att känslig information samlas in på klientens slut punkter. När du aktiverar den här funktionen kommer fjärrinnehåll att blockeras automatiskt eller döljas i skärm bilder och skärm resurser. Den kommer också att vara dold för skadlig program vara som kan fånga din skärms innehåll kontinuerligt.
+
+Den här principen tillämpas på värdnivå genom att konfigurera en register nyckel. Om du vill aktivera den här principen öppnar du PowerShell och anger register nyckeln **fEnableScreenCaptureProtection** genom att köra denna cmdlet:
+
+```powershell
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnableScreenCaptureProtection /t REG_DWORD /d 1
+```
+
+Testa den här nya funktionen:
+
+- Se till att dina lagringspooler är etablerade i validerings miljön.
+- Kontrol lera att du har laddat ned och installerat Windows Desktop-klienten, version 1.2.1526 eller senare.
+
+>[!NOTE]
+>Under för hands versionen stöder endast fullständiga Skriv bords anslutningar från Windows 10-slutpunkter den här funktionen.
+
 
 ### <a name="enable-endpoint-protection"></a>Aktivera Endpoint Protection
 

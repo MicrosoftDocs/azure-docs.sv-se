@@ -11,138 +11,139 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: f213ae3aeb482cd9c7cbb708fdc2457d9e55b1a3
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 6599abd6282d0d1eb7cb81002c34ddd5158dab6b
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96907783"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511067"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-awarego"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med AwareGo
+# <a name="tutorial-azure-active-directory-single-sign-on-integration-with-awarego"></a>Självstudie: Azure Active Directory integration med enkel inloggning med AwareGo
 
 I den här självstudien får du lära dig hur du integrerar AwareGo med Azure Active Directory (Azure AD). När du integrerar AwareGo med Azure AD kan du:
 
 * Kontroll i Azure AD som har åtkomst till AwareGo.
-* Gör det möjligt för användarna att logga in automatiskt till AwareGo med sina Azure AD-konton.
-* Hantera dina konton på en central plats – Azure Portal.
+* Gör det möjligt för användarna att logga in automatiskt på AwareGo med sina Azure AD-konton.
+* Hantera dina konton på en central plats, Azure Portal.
 
 ## <a name="prerequisites"></a>Krav
 
 För att komma igång behöver du följande objekt:
 
 * En Azure AD-prenumeration. Om du inte har någon prenumeration kan du få ett [kostnads fritt konto](https://azure.microsoft.com/free/).
-* AwareGo för enkel inloggning (SSO) aktive rad.
+* En AwareGo-aktiverad prenumeration med enkel inloggning (SSO).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
 
-I den här självstudien konfigurerar och testar du Azure AD SSO i en test miljö.
-
-* AwareGo stöder **SP** -INITIERAd SSO
+I den här självstudien konfigurerar och testar du Azure AD SSO i en test miljö. AwareGo stöder en Service Provider (SP)-initierad SSO.
 
 
 ## <a name="adding-awarego-from-the-gallery"></a>Lägga till AwareGo från galleriet
 
-Om du vill konfigurera integreringen av AwareGo i Azure AD måste du lägga till AwareGo från galleriet i listan över hanterade SaaS-appar.
+Om du vill konfigurera integreringen av AwareGo i Azure AD måste du lägga till AwareGo från galleriet till din lista över hanterade program som en tjänst (SaaS).
 
-1. Logga in på Azure Portal med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
-1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
-1. Navigera till **företags program** och välj sedan **alla program**.
+1. Logga in på Azure Portal med ett arbets konto, ett skol konto eller en personlig Microsoft-konto.
+1. I den vänstra rutan väljer du tjänsten **Azure Active Directory** .
+1. Välj **företags program**  >  **alla program**.
 1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , skriver du **AwareGo** i sökrutan.
-1. Välj **AwareGo** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
+1. I resultat fönstret väljer du **AwareGo** och lägger sedan till appen. Om några sekunder läggs appen till i din klient organisation.
 
 
 ## <a name="configure-and-test-azure-ad-sso-for-awarego"></a>Konfigurera och testa Azure AD SSO för AwareGo
 
 Konfigurera och testa Azure AD SSO med AwareGo med hjälp av en test användare som heter **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i AwareGo.
 
-Utför följande steg för att konfigurera och testa Azure AD SSO med AwareGo:
+Om du vill konfigurera och testa Azure AD SSO med AwareGo gör du följande:
 
-1. **[Konfigurera Azure AD SSO](#configure-azure-ad-sso)** – så att användarna kan använda den här funktionen.
-    1. **[Skapa en Azure AD-test](#create-an-azure-ad-test-user)** för att testa enkel inloggning med Azure AD med B. Simon.
-    1. **[Tilldela Azure AD-testuser](#assign-the-azure-ad-test-user)** -för att aktivera B. Simon för att använda enkel inloggning med Azure AD.
-1. **[Konfigurera AWAREGO SSO](#configure-awarego-sso)** – för att konfigurera inställningarna för enkel inloggning på program sidan.
-    1. **[Skapa AwareGo test User](#create-awarego-test-user)** -om du vill ha en motsvarighet till B. Simon i AwareGo som är länkad till Azure AD-representation av användare.
-1. **[Testa SSO](#test-sso)** – för att kontrol lera om konfigurationen fungerar.
+1. **[Konfigurera Azure AD SSO](#configure-azure-ad-sso)** så att användarna kan använda den här funktionen.  
+
+    a. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)** för att testa enkel inloggning med Azure AD med User B. Simon.  
+    b. **[Tilldela Azure AD-testanvändaren](#assign-the-azure-ad-test-user)** att aktivera användare B. Simon för att använda enkel inloggning i Azure AD.  
+
+1. **[Konfigurera AWAREGO SSO](#configure-awarego-sso)** för att konfigurera inställningarna för enkel inloggning på program sidan.
+
+    a. **[Skapa en AwareGo-testanvändare](#create-an-awarego-test-user)** som ska ha en motsvarighet till B. Simon i AwareGo som är länkad till Azure AD-representation av användaren.  
+    b. **[Testa SSO](#test-sso)** för att verifiera att konfigurationen fungerar.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurera Azure AD SSO
 
-Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
+Gör så här om du vill aktivera Azure AD SSO i Azure Portal:
 
-1. I Azure Portal går du till sidan för program integrering i **AwareGo** , letar upp avsnittet **Hantera** och väljer **enkel inloggning**.
+1. I Azure Portal går du till sidan för program integrering i **AwareGo** under **Hantera** och väljer **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
-1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
+1. Om du vill redigera inställningarna väljer du knappen **Redigera** i fönstret **Konfigurera enskilda Sign-On med SAML** .
 
-   ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
+   ![Skärm bild av knappen Redigera för grundläggande SAML-konfiguration.](common/edit-urls.png)
 
-1. I avsnittet **grundläggande SAML-konfiguration** anger du värden för följande fält:
+1. I fönstret Redigera, under **grundläggande SAML-konfiguration**, gör du följande:
 
-    a. I text rutan **inloggnings-URL** skriver du en av följande URL: er:
+    a. I rutan **inloggnings-URL** anger du någon av följande URL: er:
 
-    | Inloggnings-URL |
-    |-------------|
-    | `https://lms.awarego.com/auth/signin/` |
-    | `https://my.awarego.com/auth/signin/` |
+    * `https://lms.awarego.com/auth/signin/` 
+    * `https://my.awarego.com/auth/signin/`
 
-    b. I textrutan **Identifierare (entitets-ID)** anger du en URL enligt följande mönster: `https://<SUBDOMAIN>.awarego.com`
+    b. I rutan **identifierare (enhets-ID)** anger du en URL i följande format: `https://<SUBDOMAIN>.awarego.com`
 
-    c. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<SUBDOMAIN>.awarego.com/auth/sso/callback`
+    c. I rutan **svars-URL** anger du en URL i följande format: `https://<SUBDOMAIN>.awarego.com/auth/sso/callback`
 
     > [!NOTE]
-    > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska identifieraren och svars-URL. Kontakta [AwareGo client support team](mailto:support@awarego.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
+    > Föregående värden är inte verkliga. Uppdatera dem med den faktiska identifieraren och svars-URL: erna. Kontakta [AwareGo-klientens support team](mailto:support@awarego.com)för att få till gång till värdena. Du kan också se exemplen i avsnittet **grundläggande SAML-konfiguration** i Azure Portal.
 
-1. På sidan **Konfigurera enkel inloggning med SAML** , i avsnittet **SAML-signeringscertifikat** , Sök efter **certifikat (base64)** och välj **Ladda ned** för att ladda ned certifikatet och spara det på din dator.
+1. På sidan **Konfigurera enkel inloggning med SAML** , i avsnittet **SAML-signeringscertifikat** , bredvid **certifikat (base64)** väljer du **Hämta** för att ladda ned certifikatet och spara det på datorn.
 
-    ![Länk för nedladdning av certifikatet](common/certificatebase64.png)
+    ![Skärm bild av länken för certifikatet "Ladda ned" i certifikat fönstret för SAML-signering.](common/certificatebase64.png)
 
-1. I avsnittet **Konfigurera AwareGo** kopierar du lämpliga URL: er baserat på ditt krav.
+1. I avsnittet **Konfigurera AwareGo** kopierar du en eller flera webb adresser, beroende på dina behov.
 
-    ![Kopiera konfigurations-URL:er](common/copy-configuration-urls.png)
+    ![Skärm bild av fönstret "Ställ in AwareGo" för att kopiera konfigurations-URL: er.](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
 
-I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
+I det här avsnittet skapar du en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory** och väljer sedan **användare**  >  **alla användare**.
 1. Välj **ny användare** överst på skärmen.
-1. I **användar** egenskaperna följer du de här stegen:
-   1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Exempelvis `B.Simon@contoso.com`.
-   1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
-   1. Klicka på **Skapa**.
+1. I fönstret **användar** egenskaper gör du följande:
+
+   a. I rutan **namn** anger du **B. Simon**.  
+   b. I rutan **användar namn** anger du användar namnet i följande format: (till `<username>@<companydomain>.<extension>` exempel B.Simon@contoso.com ).  
+   c. Markera kryss rutan **Visa lösen ord** och anteckna värdet som visas i rutan **lösen ord** för senare användning.  
+   d. Välj **Skapa**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
-I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till AwareGo.
+I det här avsnittet aktiverar du användare B. Simon för att använda Azure SSO genom att bevilja åtkomst till AwareGo.
 
-1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
-1. I listan program väljer du **AwareGo**.
-1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
-1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
-1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
-1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
-1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
+1. I Azure Portal väljer du **företags program**  >  **alla program**.
+1. I listan **program** väljer du **AwareGo**.
+1. På sidan Översikt för appen i avsnittet **Hantera** väljer du **användare och grupper**.
+1. Välj **Lägg till användare** och sedan i fönstret **Lägg till tilldelning** väljer **du användare och grupper**.
+1. I fönstret **användare och grupper** väljer du **B. Simon** i listan **användare** och väljer sedan knappen **Välj** .
+1. Om du förväntar dig att tilldela en roll till användarna kan du välja den i list rutan **Välj en roll** . Om ingen roll har ställts in för den här appen väljs standard rollen för *åtkomst* .
+1. I fönstret **Lägg till tilldelning** väljer du knappen **tilldela** .
 
 ## <a name="configure-awarego-sso"></a>Konfigurera AwareGo SSO
 
-Om du vill konfigurera enkel inloggning på **AwareGo** sida måste du skicka det hämtade **certifikatet (base64)** och lämpliga kopierade url: er från Azure Portal till [support teamet för AwareGo](mailto:support@awarego.com). De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
+Om du vill konfigurera enkel inloggning på **AwareGo** -sidan skickar du certifikatet **(base64)** som du laddade ned tidigare och de URL: er som du kopierade tidigare från Azure Portal till [support teamet för AwareGo](mailto:support@awarego.com). Support teamet skapar den här inställningen för att upprätta en SAML SSO-anslutning korrekt på båda sidor.
 
-### <a name="create-awarego-test-user"></a>Skapa AwareGo test användare
+### <a name="create-an-awarego-test-user"></a>Skapa en AwareGo-test användare
 
-I det här avsnittet skapar du en användare som heter Britta Simon i AwareGo. Arbeta med [AwareGo support team](mailto:support@awarego.com) för att lägga till användare i AwareGo-plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning.
+I det här avsnittet skapar du en användare som heter Britta Simon i AwareGo. Arbeta med [AwareGo support team](mailto:support@awarego.com) för att lägga till användare i AwareGo-plattformen. Du måste skapa och aktivera användarna innan du kan använda enkel inloggning.
 
 ## <a name="test-sso"></a>Testa SSO 
 
-I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ. 
+I det här avsnittet kan du testa konfigurationen för enkel inloggning med Azure AD genom att göra något av följande: 
 
-* Klicka på **testa det här programmet** i Azure Portal. Detta omdirigeras till AwareGo-inloggnings-URL där du kan starta inloggnings flödet. 
+* I Azure Portal väljer du **testa det här programmet**. Detta omdirigerar dig till inloggnings sidan för AwareGo där du kan initiera inloggnings flödet. 
 
-* Gå till AwareGo-inloggnings-URL: en direkt och starta inloggnings flödet därifrån.
+* Gå till AwareGo-inloggnings sidan direkt och initiera inloggnings flödet därifrån.
 
-* Du kan använda Microsoft Mina appar. När du klickar på panelen AwareGo i Mina appar omdirigeras det till AwareGo-inloggnings-URL. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Gå till Microsoft Mina appar. När du väljer panelen **AwareGo** i Mina appar omdirigeras du till AwareGo-inloggnings sidan. Mer information finns i [Logga in och starta appar från portalen Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du har konfigurerat AwareGo kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+När du har konfigurerat AwareGo kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från Appkontroll för villkorsstyrd åtkomst. Mer information finns i [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 
