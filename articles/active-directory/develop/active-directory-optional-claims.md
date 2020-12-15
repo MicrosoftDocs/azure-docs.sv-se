@@ -12,12 +12,12 @@ ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 3fd91bb86b32a958344dc366cfcd142bff369c1f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: e0185cc8786dc101375262ddfd187c5d8e7e054f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108152"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509571"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Gör så här: Ange valfria anspråk för din app
 
@@ -37,7 +37,7 @@ Listor över standard anspråk finns i [åtkomsttoken](access-tokens.md) och [id
 
 | Kontotyp               | v 1.0-token | v 2.0-token |
 |----------------------------|-------------|-------------|
-| Personlig Microsoft-konto | Ej tillämpligt         | Stöds   |
+| Personlig Microsoft-konto | Saknas         | Stöds   |
 | Azure AD-konto           | Stöds   | Stöds   |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>v 1.0 och v 2.0 valfria anspråks uppsättningar
@@ -124,15 +124,16 @@ Detta OptionalClaims-objekt gör att ID-token returneras till klienten för att 
 
 Du kan konfigurera valfria anspråk för ditt program via användar gränssnittet eller applikations manifestet.
 
-1. Öppna [Azure-portalen](https://portal.azure.com). Sök efter och välj **Azure Active Directory**.
-1. I avsnittet **Hantera** väljer du **Appregistreringar**.
+1. Öppna [Azure-portalen](https://portal.azure.com). 
+1. Sök efter och välj **Azure Active Directory**.
+1. Välj **Appregistreringar** under **Hantera**.
 1. Välj det program som du vill konfigurera valfria anspråk för i listan.
 
 **Konfigurera valfria anspråk genom användar gränssnittet:**
 
 [![Konfigurera valfria anspråk i användar gränssnittet](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
 
-1. I avsnittet **Hantera** väljer du **token-konfiguration**.
+1. Under **Hantera** väljer du **token-konfiguration**.
 1. Välj **Lägg till valfritt anspråk**.
 1. Välj den tokentyp som du vill konfigurera.
 1. Välj de valfria anspråk som ska läggas till.
@@ -145,7 +146,7 @@ Du kan konfigurera valfria anspråk för ditt program via användar gränssnitte
 
 [![Visar hur du konfigurerar valfria anspråk med hjälp av app-manifestet](./media/active-directory-optional-claims/app-manifest.png)](./media/active-directory-optional-claims/app-manifest.png)
 
-1. I avsnittet **Hantera** väljer du **manifest**. En webbaserad manifest redigerare öppnas, så att du kan redigera manifestet. Du kan också välja **Ladda ned** och redigera manifestet lokalt, och sedan använda **Ladda upp** för att tillämpa det på appen igen. Mer information om applikations manifestet finns i [artikeln förstå program manifestet för Azure AD](reference-app-manifest.md).
+1. Under **Hantera** väljer du **manifest**. En webbaserad manifest redigerare öppnas, så att du kan redigera manifestet. Du kan också välja **Ladda ned** och redigera manifestet lokalt, och sedan använda **Ladda upp** för att tillämpa det på appen igen. Mer information om applikations manifestet finns i [artikeln förstå program manifestet för Azure AD](reference-app-manifest.md).
 
     Följande program manifest post lägger till de auth_time, ipaddr och UPN valfria anspråk till ID, Access och SAML-token.
 
@@ -225,22 +226,19 @@ I SAML-token genereras dessa anspråk med följande URI-format: `http://schemas.
 
 ## <a name="configuring-groups-optional-claims"></a>Konfigurera grupper valfria anspråk
 
-   > [!NOTE]
-   > Möjligheten att generera grupp namn för användare och grupper som synkroniseras från lokal är offentlig för hands version.
-
 Det här avsnittet beskriver konfigurations alternativen under valfria anspråk för att ändra de Gruppattribut som används i grupp anspråk från standard gruppen objectID till attribut som synkroniseras från lokala Windows-Active Directory. Du kan konfigurera grupper valfria anspråk för ditt program via användar gränssnittet eller applikations manifestet.
 
 > [!IMPORTANT]
-> Mer information, inklusive viktiga varningar om den offentliga för hands versionen av grupp anspråk från lokala attribut, finns i [Konfigurera grupp anspråk för program med Azure AD](../hybrid/how-to-connect-fed-group-claims.md).
+> Mer information, inklusive viktiga varningar för grupp anspråk från lokala attribut, finns i [Konfigurera grupp anspråk för program med Azure AD](../hybrid/how-to-connect-fed-group-claims.md).
 
 **Konfigurera grupper valfria anspråk genom användar gränssnittet:**
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 1. När du har autentiserat väljer du din Azure AD-klient genom att välja den från det övre högra hörnet på sidan.
-1. Välj **Azure Active Directory** på menyn till vänster.
-1. Under avsnittet **Hantera** väljer du **Appregistreringar**.
+1. Sök efter och välj **Azure Active Directory**.
+1. Välj **Appregistreringar** under **Hantera**.
 1. Välj det program som du vill konfigurera valfria anspråk för i listan.
-1. Under avsnittet **Hantera** väljer du **token-konfiguration**.
+1. Under **Hantera** väljer du **token-konfiguration**.
 1. Välj **Lägg till grupp anspråk**.
 1. Välj de grupp typer som ska returneras (**säkerhets grupper** eller **katalog roller**, **alla grupper** och/eller **grupper som har tilldelats till programmet**). De **grupper som har tilldelats program** alternativet inkluderar endast grupper som tilldelats programmet. Alternativet **alla grupper** innehåller **SecurityGroup**, **DirectoryRole** och **DistributionList**, men inte **grupper som är kopplade till programmet**. 
 1. Valfritt: Välj egenskaperna för den speciella tokentypen för att ändra värdet för grupp anspråk till att innehålla lokala Gruppattribut eller ändra anspråks typen till en roll.
@@ -250,9 +248,9 @@ Det här avsnittet beskriver konfigurations alternativen under valfria anspråk 
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 1. När du har autentiserat väljer du din Azure AD-klient genom att välja den från det övre högra hörnet på sidan.
-1. Välj **Azure Active Directory** på menyn till vänster.
+1. Sök efter och välj **Azure Active Directory**.
 1. Välj det program som du vill konfigurera valfria anspråk för i listan.
-1. Under avsnittet **Hantera** väljer du **manifest**.
+1. Under **Hantera** väljer du **manifest**.
 1. Lägg till följande post med hjälp av manifest redigeraren:
 
    Giltiga värden är:
@@ -262,7 +260,7 @@ Det här avsnittet beskriver konfigurations alternativen under valfria anspråk 
    - "DirectoryRole"
    - "Variabeln applicationgroup" (det här alternativet inkluderar endast grupper som är kopplade till programmet)
 
-   Exempel:
+   Till exempel:
 
     ```json
     "groupMembershipClaims": "SecurityGroup"
@@ -382,13 +380,13 @@ I exemplet nedan använder du användar gränssnittet för **token-konfiguration
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 1. När du har autentiserat väljer du din Azure AD-klient genom att välja den från det övre högra hörnet på sidan.
 
-1. Välj **Azure Active Directory** på menyn till vänster.
+1. Sök efter och välj **Azure Active Directory**.
 
-1. Under avsnittet **Hantera** väljer du **Appregistreringar**.
+1. Välj **Appregistreringar** under **Hantera**.
 
 1. Hitta det program som du vill konfigurera valfria anspråk för i listan och markera det.
 
-1. Under avsnittet **Hantera** väljer du **token-konfiguration**.
+1. Under **Hantera** väljer du **token-konfiguration**.
 
 1. Välj **Lägg till valfritt anspråk**, Välj typ av **ID-** token, Välj **UPN** i listan över anspråk och välj sedan **Lägg till**.
 
@@ -404,9 +402,9 @@ I exemplet nedan använder du användar gränssnittet för **token-konfiguration
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 1. När du har autentiserat väljer du din Azure AD-klient genom att välja den från det övre högra hörnet på sidan.
-1. Välj **Azure Active Directory** på menyn till vänster.
+1. Sök efter och välj **Azure Active Directory**.
 1. Hitta det program som du vill konfigurera valfria anspråk för i listan och markera det.
-1. Under avsnittet **Hantera** väljer du **manifest** för att öppna den infogade manifest redigeraren.
+1. Under **Hantera** väljer du **manifest** för att öppna den infogade manifest redigeraren.
 1. Du kan redigera manifestet direkt med hjälp av den här redigeraren. Manifestet följer schemat för [programmets entitet](./reference-app-manifest.md)och formaterar automatiskt manifestet när det har sparats. Nya element kommer att läggas till i `OptionalClaims` egenskapen.
 
     ```json

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 108bdf057cd375e28b10a6838ec5c8c6f57749a8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fb91a09ed31658c2d547a7b46cf2f986bfbd0e50
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019590"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508296"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Flytta data från SAP Business Warehouse med Azure Data Factory
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -61,14 +61,14 @@ I följande avsnitt finns information om JSON-egenskaper som används för att d
 ## <a name="linked-service-properties"></a>Egenskaper för länkad tjänst
 Följande tabell innehåller en beskrivning av JSON-element som är specifika för SAP Business Warehouse (BW)-länkad tjänst.
 
-Egenskap | Beskrivning | Tillåtna värden | Obligatorisk
+Egenskap | Beskrivning | Tillåtna värden | Krävs
 -------- | ----------- | -------------- | --------
-server | Namnet på den server där SAP BW-instansen finns. | sträng | Yes
-systemNumber | System numret för det SAP BW systemet. | Tvåsiffrigt decimal tal representeras som en sträng. | Yes
-ClientID | Klient-ID för klienten i SAP W-systemet. | Tresiffrigt decimal tal representeras som en sträng. | Yes
-användarnamn | Namnet på den användare som har åtkomst till SAP-servern | sträng | Yes
-password | Lösenordet för användaren. | sträng | Yes
-gatewayName | Namnet på den gateway som Data Factorys tjänsten ska använda för att ansluta till den lokala SAP BW-instansen. | sträng | Yes
+server | Namnet på den server där SAP BW-instansen finns. | sträng | Ja
+systemNumber | System numret för det SAP BW systemet. | Tvåsiffrigt decimal tal representeras som en sträng. | Ja
+ClientID | Klient-ID för klienten i SAP W-systemet. | Tresiffrigt decimal tal representeras som en sträng. | Ja
+användarnamn | Namnet på den användare som har åtkomst till SAP-servern | sträng | Ja
+password | Lösenordet för användaren. | sträng | Ja
+gatewayName | Namnet på den gateway som Data Factorys tjänsten ska använda för att ansluta till den lokala SAP BW-instansen. | sträng | Ja
 encryptedCredential | Krypterad Credential-sträng. | sträng | No
 
 ## <a name="dataset-properties"></a>Egenskaper för datamängd
@@ -84,9 +84,9 @@ De egenskaper som är tillgängliga i avsnittet **typeProperties** i aktiviteten
 
 När källan i kopierings aktiviteten är av typen **RelationalSource** (som innehåller SAP BW) finns följande egenskaper i avsnittet typeProperties:
 
-| Egenskap | Beskrivning | Tillåtna värden | Obligatorisk |
+| Egenskap | Beskrivning | Tillåtna värden | Krävs |
 | --- | --- | --- | --- |
-| DocumentDB | Anger MDX-frågan för att läsa data från SAP BW-instansen. | MDX-fråga. | Yes |
+| DocumentDB | Anger MDX-frågan för att läsa data från SAP BW-instansen. | MDX-fråga. | Ja |
 
 
 ## <a name="json-example-copy-data-from-sap-business-warehouse-to-azure-blob"></a>JSON-exempel: kopiera data från SAP Business Warehouse till Azure Blob
@@ -277,8 +277,6 @@ Pipelinen innehåller en kopierings aktivitet som har kon figurer ATS för att a
     }
 }
 ```
-
-
 
 ### <a name="type-mapping-for-sap-bw"></a>Typ mappning för SAP BW
 Som anges i artikeln [data förflyttnings aktiviteter](data-factory-data-movement-activities.md) utför kopierings aktiviteten automatiska typ konverteringar från käll typer till mottagar typer med följande två stegs metod:

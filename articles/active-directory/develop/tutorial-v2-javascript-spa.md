@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: ded54628a307f3cf4441e804f7f1025a0e943b51
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 4eb3c2905f3c1ccfa63da1bb4a8c81decdbc2f2b
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979954"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507735"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Självstudie: Logga in användare och anropa Microsoft Graph API från ett Java Script (Single-Side Application)
 
@@ -265,16 +265,17 @@ Nu har du en enkel server som kan hantera din SPA. Den avsedda mappstrukturen i 
 
 Registrera ditt program på **Azure Active Directory** innan du fortsätter med autentiseringen.
 
-1. Logga in på [Azure-portalen](https://portal.azure.com/).
-1. Om ditt konto ger dig åtkomst till fler än en klient väljer du kontot längst upp till höger och anger sedan din portal-session till den Azure AD-klient som du vill använda.
-1. Gå till sidan Microsoft Identity Platform för utvecklare [Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) .
-1. När sidan **Registrera ett program** visas anger du ett namn för programmet.
+1. Logga in på [Azure-portalen](https://portal.azure.com).
+1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
+1. Sök efter och välj **Azure Active Directory**.
+1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.
+1. Ange ett **namn** för ditt program. Användare av appen kan se det här namnet och du kan ändra det senare.
 1. Under **Kontotyper som stöds** väljer du **Accounts in any organizational directory and personal Microsoft accounts** (Konton i alla organisationskataloger och personliga Microsoft-konton).
 1. I avsnittet **omdirigerings-URI** väljer du **webb** plattformen i list rutan och anger sedan värdet till den program-URL som är baserad på din webb server.
 1. Välj **Register** (Registrera).
 1. På sidan **Översikt över** appar noterar du **programmets (klient) ID-** värde för senare användning.
-1. Den här snabbstarten kräver att [flödet för implicit beviljande](v2-oauth2-implicit-grant-flow.md) aktiveras. I det vänstra fönstret i det registrerade programmet väljer du **autentisering**.
-1. I **Avancerade inställningar**, under **implicit tilldelning**, markerar du kryss rutorna **ID-token** och **åtkomst-token** . ID-token och åtkomsttoken krävs eftersom den här appen måste logga in användare och anropa ett API.
+1. Under **Hantera** väljer du **autentisering**.
+1. I avsnittet **implicit beviljande** väljer du **ID-tokens** och **åtkomsttoken**. ID-token och åtkomsttoken krävs eftersom den här appen måste logga in användare och anropa ett API.
 1. Välj **Spara**.
 
 > ### <a name="set-a-redirect-url-for-nodejs"></a>Ange en omdirigerings-URL för Node.js

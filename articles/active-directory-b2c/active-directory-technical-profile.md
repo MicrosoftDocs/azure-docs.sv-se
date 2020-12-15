@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c8f4c91070d87e9e6e3cdbb5534b988063eaba14
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 3f92bfe98a45117264c957481a75493de652abc9
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387184"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508109"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiera en Azure Active Directory teknisk profil i en Azure Active Directory B2C anpassad princip
 
@@ -249,11 +249,11 @@ Följande tekniska profil tar bort ett socialt användar konto med **alternative
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
 | Åtgärd | Ja | Åtgärden som ska utföras. Möjliga värden: `Read` , `Write` , `DeleteClaims` eller `DeleteClaimsPrincipal` . |
-| RaiseErrorIfClaimsPrincipalDoesNotExist | Inga | Generera ett fel om objektet användare inte finns i katalogen. Möjliga värden: `true` eller `false` . |
-| RaiseErrorIfClaimsPrincipalAlreadyExists | Inga | Generera ett fel om det redan finns ett användar objekt. Möjliga värden: `true` eller `false` .|
-| ApplicationObjectId | Inga | Programobjekts-ID för tilläggets attribut. Värde: ObjectId för ett program. Mer information finns i [använda anpassade attribut i en anpassad profil redigerings princip](custom-policy-custom-attributes.md). |
-| ClientId | Inga | Klient identifieraren för åtkomst till klienten som en tredje part. Mer information finns i [använda anpassade attribut i en anpassad profil redigerings princip](custom-policy-custom-attributes.md) |
-| IncludeClaimResolvingInClaimsHandling  | Inga | För indata-och utgående anspråk anges om [anspråks matchning](claim-resolver-overview.md) ingår i den tekniska profilen. Möjliga värden: `true` , eller `false` (standard). Om du vill använda en anspråks lösare i den tekniska profilen ställer du in den på `true` . |
+| RaiseErrorIfClaimsPrincipalDoesNotExist | Nej | Generera ett fel om objektet användare inte finns i katalogen. Möjliga värden: `true` eller `false` . |
+| RaiseErrorIfClaimsPrincipalAlreadyExists | Nej | Generera ett fel om det redan finns ett användar objekt. Möjliga värden: `true` eller `false` .|
+| ApplicationObjectId | Nej | Programobjekts-ID för tilläggets attribut. Värde: ObjectId för ett program. Mer information finns i [använda anpassade attribut](user-flow-custom-attributes.md?pivots=b2c-custom-policy). |
+| ClientId | Nej | Klient identifieraren för åtkomst till klienten som en tredje part. Mer information finns i [använda anpassade attribut i en anpassad profil redigerings princip](user-flow-custom-attributes.md?pivots=b2c-custom-policy) |
+| IncludeClaimResolvingInClaimsHandling  | Nej | För indata-och utgående anspråk anges om [anspråks matchning](claim-resolver-overview.md) ingår i den tekniska profilen. Möjliga värden: `true` , eller `false` (standard). Om du vill använda en anspråks lösare i den tekniska profilen ställer du in den på `true` . |
 
 ### <a name="ui-elements"></a>Element för användargränssnitt
  
@@ -261,8 +261,8 @@ Följande inställningar kan användas för att konfigurera fel meddelandet som 
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| UserMessageIfClaimsPrincipalAlreadyExists | Inga | Om ett fel ska höjas (se RaiseErrorIfClaimsPrincipalAlreadyExists-Attribute Description) anger du det meddelande som ska visas för användaren om användar objekt redan finns. |
-| UserMessageIfClaimsPrincipalDoesNotExist | Inga | Om ett fel ska höjas (se beskrivningen av RaiseErrorIfClaimsPrincipalDoesNotExist) anger du det meddelande som ska visas för användaren om användar objekt inte finns. |
+| UserMessageIfClaimsPrincipalAlreadyExists | Nej | Om ett fel ska höjas (se RaiseErrorIfClaimsPrincipalAlreadyExists-Attribute Description) anger du det meddelande som ska visas för användaren om användar objekt redan finns. |
+| UserMessageIfClaimsPrincipalDoesNotExist | Nej | Om ett fel ska höjas (se beskrivningen av RaiseErrorIfClaimsPrincipalDoesNotExist) anger du det meddelande som ska visas för användaren om användar objekt inte finns. |
 
 
 ## <a name="next-steps"></a>Nästa steg

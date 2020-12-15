@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: 065cfe6695d7651d3cda49ad32428127633b834c
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: f3060a7308d728b31266008d75e18470883e4480
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555455"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508602"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>Läs in data stegvis från flera tabeller i SQL Server till en databas i Azure SQL Database med hjälp av Azure Portal
 
@@ -50,7 +50,7 @@ Här är några viktiga steg för att skapa den här lösningen:
     
     I den här självstudien lagrar du storleksgränsen i en SQL-databas.
 
-1. **Skapa en pipeline med följande aktiviteter** : 
+1. **Skapa en pipeline med följande aktiviteter**: 
     
     a. Skapa en ForEach-aktivitet som upprepas över en lista med namn på källtabeller och som skickas som en parameter till pipelinen. För varje källtabell anropas följande aktiviteter som utför deltainläsningen för tabellen.
 
@@ -67,7 +67,7 @@ Här är några viktiga steg för att skapa den här lösningen:
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://azure.microsoft.com/free/) konto innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 * **SQL Server**. Du använder en SQL Server databas som käll data lager i den här självstudien. 
 * **Azure SQL Database**. Du använder en databas i Azure SQL Database som data lager för mottagare. Om du inte har en databas i SQL Database, se [skapa en databas i Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) för att skapa en. 
 
@@ -168,8 +168,8 @@ AS
 
 BEGIN
 
-    UPDATE watermarktable
-    SET [WatermarkValue] = @LastModifiedtime 
+UPDATE watermarktable
+SET [WatermarkValue] = @LastModifiedtime 
 WHERE [TableName] = @TableName
 
 END
@@ -236,7 +236,7 @@ END
 ## <a name="create-a-data-factory"></a>Skapa en datafabrik
 
 1. Starta webbläsaren **Microsoft Edge** eller **Google Chrome**. Användargränssnittet för Data Factory stöds för närvarande bara i webbläsarna Microsoft Edge och Google Chrome.
-2. På den vänstra menyn väljer du **skapa en resurs**  >  **integrations**  >  **Data Factory** : 
+2. På den vänstra menyn väljer du **skapa en resurs**  >  **integrations**  >  **Data Factory**: 
    
    ![Valet Data Factory i fönstret Nytt](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -246,7 +246,7 @@ END
   
    `Data factory name "ADFIncCopyTutorialDF" is not available`
 
-4. Välj den Azure- **prenumeration** som du vill skapa den nya datafabriken i. 
+4. Välj den Azure-**prenumeration** som du vill skapa den nya datafabriken i. 
 5. För **resursgruppen** utför du något av följande steg:
      
     - Välj **Använd befintlig** och välj en befintlig resurs grupp i den nedrullningsbara listan. 
@@ -336,7 +336,7 @@ I det här steget skapar du datauppsättningar som representerar datakällan, da
 
 1. I den vänstra rutan klickar du på **+ (plus)** och sedan på **Datauppsättning**.
 
-1. I fönstret **ny data uppsättning** väljer du **SQL Server** , klicka på **Fortsätt**. 
+1. I fönstret **ny data uppsättning** väljer du **SQL Server**, klicka på **Fortsätt**. 
 
 1. Du ser en ny flik öppnas i webbläsaren för att konfigurera datauppsättningen. Du ser också en data uppsättning i trädvyn. Längst ned på fliken **Allmänt** i fönstret Egenskaper skriver du **SourceDataset** som **namn**. 
 
@@ -355,7 +355,7 @@ I det här steget skapar du datauppsättningar som representerar datakällan, da
 1. Växla till fliken **Parameters** (Parametrar) i fönstret Egenskaper och utför följande steg: 
 
     1. Klicka på **+ Ny** i avsnittet för att **skapa/uppdatera parametrar**. 
-    1. Ange **SinkTableName** som **namn** , och **String** som **typ**. Den här datauppsättningen tar **SinkTableName** som en parameter. Parametern SinkTableName anges dynamiskt vid körning av pipelinen. ForEach-aktiviteten i pipelinen upprepas över en lista med tabellnamn och skickar tabellnamnet till datamängden i varje iteration.
+    1. Ange **SinkTableName** som **namn**, och **String** som **typ**. Den här datauppsättningen tar **SinkTableName** som en parameter. Parametern SinkTableName anges dynamiskt vid körning av pipelinen. ForEach-aktiviteten i pipelinen upprepas över en lista med tabellnamn och skickar tabellnamnet till datamängden i varje iteration.
    
         ![Mottagardatauppsättning – egenskaper](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png)
 1. Växla till fliken **anslutning** i fönstret Egenskaper och välj **AzureSqlDatabaseLinkedService** för **länkad tjänst**. För egenskapen **Table** (Tabell) klickar du på **Add dynamic content** (Lägg till dynamiskt innehåll).   
@@ -440,10 +440,10 @@ Den här pipelinen tar en lista med tabellnamn som en parameter. ForEach-aktivit
         ![Andra Lookup-aktiviteten – inställningar](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-settings.png)
 1. Dra och släpp aktiviteten **Copy** (Kopiera) från verktygslådan **Aktiviteter** och ange **IncrementalCopyActivity** som **namn**. 
 
-1. Koppla aktiviteterna **Lookup** (Sökning) till aktiviteten **Copy** (Kopiering), en i taget. Koppla genom att börja dra den **gröna** rutan som hör till **Lookup** -aktiviteten och släpp den på **Copy** -aktiviteten. Släpp musknappen när du ser att kantlinjefärgen för kopieringsaktiviteten ändras till **blått**.
+1. Koppla aktiviteterna **Lookup** (Sökning) till aktiviteten **Copy** (Kopiering), en i taget. Koppla genom att börja dra den **gröna** rutan som hör till **Lookup**-aktiviteten och släpp den på **Copy**-aktiviteten. Släpp musknappen när du ser att kantlinjefärgen för kopieringsaktiviteten ändras till **blått**.
 
     ![Koppla sökningsaktiviteter till kopieringsaktivitet](./media/tutorial-incremental-copy-multiple-tables-portal/connect-lookup-to-copy.png)
-1. Markera **Copy** -aktiviteten i pipeline. Växla till fliken **Source** (Käll) i **egenskapsfönstret**. 
+1. Markera **Copy**-aktiviteten i pipeline. Växla till fliken **Source** (Käll) i **egenskapsfönstret**. 
 
     1. Markera **SourceDataset** för **Källdatauppsättning**. 
     1. Välj **Fråga** för **Använd fråga**. 
@@ -458,7 +458,7 @@ Den här pipelinen tar en lista med tabellnamn som en parameter. ForEach-aktivit
         
 1. Gör så här:
 
-    1. I **egenskaperna för data uppsättningen** , för parametern **SinkTableName** , anger du `@{item().TABLE_NAME}` .
+    1. I **egenskaperna för data uppsättningen**, för parametern **SinkTableName** , anger du `@{item().TABLE_NAME}` .
     1. Som egenskap för **lagrad procedur namn** anger du `@{item().StoredProcedureNameForMergeOperation}` .
     1. För egenskapen **tabell typ** anger du `@{item().TableType}` .
     1. För **tabell typ parameter namn** anger du `@{item().TABLE_NAME}` .

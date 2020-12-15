@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 481b801d481f32ef84279be2d8bd6089670a01b1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c65ef2eb25f330f645048cdc73371d98d8c2ce91
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496527"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508480"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>Skapa förutsägande pipelines med Azure Machine Learning Studio (klassisk) och Azure Data Factory
 
@@ -35,7 +35,6 @@ ms.locfileid: "96496527"
 ## <a name="introduction"></a>Introduktion
 > [!NOTE]
 > Den här artikeln gäller för version 1 av Data Factory. Om du använder den aktuella versionen av tjänsten Data Factory, se [transformera data med hjälp av maskin inlärning i Data Factory](../transform-data-using-machine-learning.md).
-
 
 ### <a name="azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klassisk)
 [Azure Machine Learning Studio (klassisk)](https://azure.microsoft.com/documentation/services/machine-learning/) ger dig möjlighet att bygga, testa och distribuera lösningar för förutsägelse analys. Från en överblick på hög nivå görs det i tre steg:
@@ -86,7 +85,7 @@ I det här scenariot gör Studio (klassisk)-webb tjänsten förutsägelser med d
 >
 >
 
-```JSON
+```json
 {
   "name": "PredictivePipeline",
   "properties": {
@@ -127,6 +126,7 @@ I det här scenariot gör Studio (klassisk)-webb tjänsten förutsägelser med d
   }
 }
 ```
+
 > [!NOTE]
 > Endast indata och utdata för AzureMLBatchExecution-aktiviteten kan skickas som parametrar till webb tjänsten. I ovanstående JSON-kodfragment är DecisionTreeInputBlob till exempel inpasset i AzureMLBatchExecution-aktiviteten, som skickas som en indatamängd till webb tjänsten via WebServiceInputActivity-parametern.
 >
@@ -139,115 +139,119 @@ Vi rekommenderar att du går igenom den [första pipelinen med Data Factory][adf
 
 1. Skapa en **länkad tjänst** för **Azure Storage**. Om indata-och utdatafilerna finns i olika lagrings konton behöver du två länkade tjänster. Här är ett JSON-exempel:
 
-    ```JSON
-    {
-      "name": "StorageLinkedService",
-      "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-          "connectionString": "DefaultEndpointsProtocol=https;AccountName=[acctName];AccountKey=[acctKey]"
-        }
-      }
-    }
-    ```
+   ```json
+   {
+     "name": "StorageLinkedService",
+     "properties": {
+       "type": "AzureStorage",
+       "typeProperties": {
+         "connectionString": "DefaultEndpointsProtocol=https;AccountName= [acctName];AccountKey=[acctKey]"
+       }
+     }
+   }
+   ```
+
 2. Skapa data **uppsättningen** för **indata** Azure Data Factory. Till skillnad från andra Data Factory data uppsättningar, måste dessa data uppsättningar innehålla både **folderPath** -och **filename** -värden. Du kan använda partitionering för att köra varje batch-körning (varje data sektor) för att bearbeta eller skapa unika indata-och utdatafiler. Du kan behöva ta med en del överströms aktivitet för att transformera indata till CSV-filformat och placera dem i lagrings kontot för varje sektor. I så fall inkluderar du inte de **externa** och **extern Aldata** -inställningarna som visas i följande exempel, och din DecisionTreeInputBlob skulle vara den utgående data uppsättningen för en annan aktivitet.
 
-    ```JSON
-    {
-      "name": "DecisionTreeInputBlob",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "azuremltesting/input",
-          "fileName": "in.csv",
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": ","
-          }
-        },
-        "external": true,
-        "availability": {
-          "frequency": "Day",
-          "interval": 1
-        },
-        "policy": {
-          "externalData": {
-            "retryInterval": "00:01:00",
-            "retryTimeout": "00:10:00",
-            "maximumRetry": 3
-          }
-        }
-      }
-    }
-    ```
+   ```json
+   {
+     "name": "DecisionTreeInputBlob",
+     "properties": {
+       "type": "AzureBlob",
+       "linkedServiceName": "StorageLinkedService",
+       "typeProperties": {
+         "folderPath": "azuremltesting/input",
+         "fileName": "in.csv",
+         "format": {
+           "type": "TextFormat",
+           "columnDelimiter": ","
+         }
+       },
+       "external": true,
+       "availability": {
+         "frequency": "Day",
+         "interval": 1
+       },
+       "policy": {
+         "externalData": {
+           "retryInterval": "00:01:00",
+           "retryTimeout": "00:10:00",
+           "maximumRetry": 3
+         }
+       }
+     }
+   }
+   ```
 
-    CSV-filen med indata måste ha kolumn rubrik raden. Om du använder **kopierings aktiviteten** för att skapa/flytta CSV-filen till blob-lagringen bör du ange egenskapen **blobWriterAddHeader** till **True**. Exempel:
+   CSV-filen med indata måste ha kolumn rubrik raden. Om du använder **kopierings aktiviteten** för att skapa/flytta CSV-filen till blob-lagringen bör du ange egenskapen **blobWriterAddHeader** till **True**. Till exempel:
 
-    ```JSON
-    sink:
-    {
-        "type": "BlobSink",
-        "blobWriterAddHeader": true
-    }
-    ```
+   ```json
+   sink:
+   {
+     "type": "BlobSink",
+     "blobWriterAddHeader": true
+     }
+   ```
 
-    Om CSV-filen inte har raden rubrik kan du se följande fel: **fel i aktivitet: fel vid läsning av sträng. Oväntad token: StartObject. Sökväg ' ', rad 1, position 1**.
+   Om CSV-filen inte har raden rubrik kan du se följande fel: **fel i aktivitet: fel vid läsning av sträng. Oväntad token: StartObject. Sökväg ' ', rad 1, position 1**.
+
 3. Skapa **data uppsättningen** för **utdata** Azure Data Factory. I det här exemplet används partitionering för att skapa en unik utgående sökväg för varje sektor körning. Utan partitionering skulle aktiviteten skriva över filen.
 
-    ```JSON
-    {
-      "name": "DecisionTreeResultBlob",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "azuremltesting/scored/{folderpart}/",
-          "fileName": "{filepart}result.csv",
-          "partitionedBy": [
-            {
-              "name": "folderpart",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "yyyyMMdd"
-              }
-            },
-            {
-              "name": "filepart",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "HHmmss"
-              }
-            }
-          ],
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": ","
-          }
-        },
-        "availability": {
-          "frequency": "Day",
-          "interval": 15
-        }
-      }
-    }
-    ```
+   ```json
+   {
+     "name": "DecisionTreeResultBlob",
+     "properties": {
+       "type": "AzureBlob",
+       "linkedServiceName": "StorageLinkedService",
+       "typeProperties": {
+         "folderPath": "azuremltesting/scored/{folderpart}/",
+         "fileName": "{filepart}result.csv",
+         "partitionedBy": [
+           {
+             "name": "folderpart",
+             "value": {
+               "type": "DateTime",
+               "date": "SliceStart",
+               "format": "yyyyMMdd"
+             }
+           },
+           {
+             "name": "filepart",
+             "value": {
+               "type": "DateTime",
+               "date": "SliceStart",
+               "format": "HHmmss"
+             }
+           }
+         ],
+         "format": {
+           "type": "TextFormat",
+           "columnDelimiter": ","
+         }
+       },
+       "availability": {
+         "frequency": "Day",
+         "interval": 15
+       }
+     }
+   }
+   ```
+
 4. Skapa en **länkad tjänst** av typen: **AzureMLLinkedService**, och ange URL: en för API-nyckel och körning av modell grupp.
 
-    ```JSON
-    {
-      "name": "MyAzureMLLinkedService",
-      "properties": {
-        "type": "AzureML",
-        "typeProperties": {
-          "mlEndpoint": "https://[batch execution endpoint]/jobs",
-          "apiKey": "[apikey]"
-        }
-      }
-    }
-    ```
+   ```json
+   {
+     "name": "MyAzureMLLinkedService",
+     "properties": {
+       "type": "AzureML",
+       "typeProperties": {
+         "mlEndpoint": "https://[batch execution endpoint]/jobs",
+         "apiKey": "[apikey]"
+       }
+     }
+   }
+   ```
+
 5. Slutligen skapar du en pipeline som innehåller en **AzureMLBatchExecution** -aktivitet. Vid körning utför pipelinen följande steg:
 
    1. Hämtar platsen för indatafilen från dina indata-datauppsättningar.
@@ -259,45 +263,45 @@ Vi rekommenderar att du går igenom den [första pipelinen med Data Factory][adf
       >
       >
 
-      ```JSON
+      ```json
       {
         "name": "PredictivePipeline",
         "properties": {
-            "description": "use AzureML model",
-            "activities": [
-            {
-                "name": "MLActivity",
-                "type": "AzureMLBatchExecution",
-                "description": "prediction analysis on batch input",
-                "inputs": [
+          "description": "use AzureML model",
+          "activities": [
+              {
+              "name": "MLActivity",
+              "type": "AzureMLBatchExecution",
+              "description": "prediction analysis on batch input",
+              "inputs": [
                 {
-                    "name": "DecisionTreeInputBlob"
+                  "name": "DecisionTreeInputBlob"
                 }
                 ],
-                "outputs": [
+              "outputs": [
                 {
-                    "name": "DecisionTreeResultBlob"
+                  "name": "DecisionTreeResultBlob"
                 }
                 ],
-                "linkedServiceName": "MyAzureMLLinkedService",
-                "typeProperties":
+              "linkedServiceName": "MyAzureMLLinkedService",
+              "typeProperties":
                 {
-                    "webServiceInput": "DecisionTreeInputBlob",
-                    "webServiceOutputs": {
-                        "output1": "DecisionTreeResultBlob"
-                    }
+                "webServiceInput": "DecisionTreeInputBlob",
+                "webServiceOutputs": {
+                  "output1": "DecisionTreeResultBlob"
+                }
                 },
-                "policy": {
-                    "concurrency": 3,
-                    "executionPriorityOrder": "NewestFirst",
-                    "retry": 1,
-                    "timeout": "02:00:00"
-                }
+              "policy": {
+                "concurrency": 3,
+                "executionPriorityOrder": "NewestFirst",
+                "retry": 1,
+                "timeout": "02:00:00"
+              }
             }
-            ],
-            "start": "2016-02-13T00:00:00Z",
-            "end": "2016-02-14T00:00:00Z"
-        }
+          ],
+          "start": "2016-02-13T00:00:00Z",
+          "end": "2016-02-14T00:00:00Z"
+          }
       }
       ```
 
@@ -320,7 +324,7 @@ När du använder Reader-och Writer-modulerna är det bra att använda en webb t
 
 Nu ska vi titta på ett scenario för att använda webb tjänst parametrar. Du har en distribuerad Studio (klassisk) webb tjänst som använder en läsar modul för att läsa data från en av de data källor som stöds av Studio (klassisk) (till exempel: Azure SQL Database). När batch-körningen har utförts skrivs resultatet med en Writer-modul (Azure SQL Database).  Inga indata och utdata för webb tjänsten definieras i experimenten. I det här fallet rekommenderar vi att du konfigurerar relevanta webb tjänst parametrar för modulerna läsare och skrivare. Med den här konfigurationen kan läsaren/skrivar-modulerna konfigureras när du använder AzureMLBatchExecution-aktiviteten. Du anger webb tjänst parametrar i **Dublettparameternamnet** -avsnittet i AKTIVITETS-JSON på följande sätt.
 
-```JSON
+```json
 "typeProperties": {
     "globalParameters": {
         "Param 1": "Value 1",
@@ -331,7 +335,7 @@ Nu ska vi titta på ett scenario för att använda webb tjänst parametrar. Du h
 
 Du kan också använda [Data Factory funktioner](data-factory-functions-variables.md) i skicka värden för webb tjänst parametrarna som visas i följande exempel:
 
-```JSON
+```json
 "typeProperties": {
     "globalParameters": {
        "Database query": "$$Text.Format('SELECT * FROM myTable WHERE timeColumn = \\'{0:yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(WindowStart, 0))"

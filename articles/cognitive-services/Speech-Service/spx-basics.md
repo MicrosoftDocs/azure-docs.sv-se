@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: acc19d9a04909dcf0e79c93e0c8a3fb8225ee1b4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1b92d1b5853d6b794ebdcf0e2052b8f15081d608
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546921"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507582"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Lär dig grunderna i tal-CLI
 
@@ -87,7 +87,7 @@ I det här kommandot anger du både källan (språk att översätta **från**) o
 
 ### <a name="configuration-files-in-the-datastore"></a>Konfigurationsfiler i data lagret
 
-Tal CLI-beteendet kan vara beroende av inställningar i konfigurationsfiler, som du kan referera till i tal CLI-anrop med en @-symbol.
+Tal CLI-beteendet kan vara beroende av inställningar i konfigurationsfiler, som du kan referera till i tal CLI-anrop med hjälp av en \@ symbol.
 Tal-CLI sparar en ny inställning i en ny under `./spx/data` katalog som skapas i den aktuella arbets katalogen.
 När du söker efter ett konfigurations värde, ser tal-CLI ut i din aktuella arbets katalog, sedan i data lagret på `./spx/data` och sedan i andra data lager, inklusive ett slutgiltigt skrivskyddat data lager i `spx` binärfilen.
 Tidigare använde du data lagret för att spara dina `@key` och `@region` -värden, så du behöver inte ange dem med varje kommando rads anrop.

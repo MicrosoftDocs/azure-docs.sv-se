@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/24/2020
-ms.openlocfilehash: 3eb43c98ae2697ece5ded8ae0df451a6cf5f272d
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: c7e8f96e7917173aaec308b8ae5218684a722483
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96007213"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507480"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>Kopiera data till och från Azure Databricks delta Lake med hjälp av Azure Data Factory
 
@@ -37,7 +37,7 @@ I allmänhet stöder Azure Data Factory delta sjö med följande funktioner för
 - [Mappnings data flödet](concepts-data-flow-overview.md) stöder allmänt [delta-format](format-delta.md) på Azure Storage som källa och mottagare för att läsa och skriva delta-filer för kod fri ETL, och körs på hanterade Azure integration Runtime.
 - [Databricks-aktiviteter](transform-data-databricks-notebook.md) har stöd för att dirigera din kodbaserade ETL-eller Machine Learning-arbetsbelastning ovanpå delta Lake.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill använda den här Azure Databricks delta Lake Connector måste du konfigurera ett kluster i Azure Databricks.
 
@@ -81,11 +81,11 @@ Följande egenskaper stöds för en länkad Azure Databricks delta Lake-tjänst.
 
 | Egenskap    | Beskrivning                                                  | Krävs |
 | :---------- | :----------------------------------------------------------- | :------- |
-| typ        | Egenskapen Type måste anges till **AzureDatabricksDeltaLake**. | Yes      |
+| typ        | Egenskapen Type måste anges till **AzureDatabricksDeltaLake**. | Ja      |
 | domän      | Ange Azure Databricks arbets ytans URL, t `https://adb-xxxxxxxxx.xx.azuredatabricks.net` . ex.. |          |
 | clusterId   | Ange kluster-ID för ett befintligt kluster. Det bör vara ett interaktivt kluster som redan skapats. <br>Du hittar kluster-ID: t för ett interaktivt kluster på Databricks-arbetsytan – > kluster – > interaktivt kluster namn-> konfigurations > taggar. [Läs mer](/azure/databricks/clusters/configure#cluster-tags). |          |
 | accessToken | Åtkomsttoken krävs för att Data Factory ska kunna autentisera till Azure Databricks. Åtkomsttoken måste genereras från arbets ytan databricks. Mer detaljerade anvisningar om hur du hittar åtkomsttoken finns [här](/azure/databricks/dev-tools/api/latest/authentication#generate-token). |          |
-| connectVia  | [Integrerings körningen](concepts-integration-runtime.md) som används för att ansluta till data lagret. Du kan använda Azure integration runtime eller en lokal integration Runtime (om ditt data lager finns i ett privat nätverk). Om inget värde anges används standard Azure integration Runtime. | No       |
+| connectVia  | [Integrerings körningen](concepts-integration-runtime.md) som används för att ansluta till data lagret. Du kan använda Azure integration runtime eller en lokal integration Runtime (om ditt data lager finns i ett privat nätverk). Om inget värde anges används standard Azure integration Runtime. | Nej       |
 
 **Exempel:**
 
@@ -114,7 +114,7 @@ Följande egenskaper stöds för Azure Databricks delta Lake-datauppsättningen.
 
 | Egenskap  | Beskrivning                                                  | Krävs                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| typ      | Data uppsättningens typ-egenskap måste anges till **AzureDatabricksDeltaLakeDataset**. | Yes                         |
+| typ      | Data uppsättningens typ-egenskap måste anges till **AzureDatabricksDeltaLakeDataset**. | Ja                         |
 | databas | Namnet på databasen. |Nej för källa, Ja för mottagare  |
 | tabell | Namn på delta tabellen. |Nej för källa, Ja för mottagare  |
 
@@ -148,13 +148,13 @@ Om du vill kopiera data från Azure Databricks delta Lake stöds följande egens
 
 | Egenskap                     | Beskrivning                                                  | Krävs |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
-| typ                         | Typ egenskapen för kopierings aktivitets källan måste anges till **AzureDatabricksDeltaLakeSource**. | Yes      |
-| DocumentDB          | Ange SQL-frågan för att läsa data. För tids resans kontroll följer du mönstret nedan:<br>- `SELECT * FROM events TIMESTAMP AS OF timestamp_expression`<br>- `SELECT * FROM events VERSION AS OF version` | No       |
-| exportSettings | Avancerade inställningar som används för att hämta data från delta tabell. | No       |
+| typ                         | Typ egenskapen för kopierings aktivitets källan måste anges till **AzureDatabricksDeltaLakeSource**. | Ja      |
+| DocumentDB          | Ange SQL-frågan för att läsa data. För tids resans kontroll följer du mönstret nedan:<br>- `SELECT * FROM events TIMESTAMP AS OF timestamp_expression`<br>- `SELECT * FROM events VERSION AS OF version` | Nej       |
+| exportSettings | Avancerade inställningar som används för att hämta data från delta tabell. | Nej       |
 | ***Under `exportSettings` :** _ |  |  |
-| typ | Typ av export kommando, anges till _ * AzureDatabricksDeltaLakeExportCommand * *. | Yes |
-| dateFormat | Formatera datum typ till sträng med datum format. Anpassade datum format följer format vid [datetime-mönster](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Om inget värde anges används standardvärdet `yyyy-MM-dd` . | No |
-| timestampFormat | Formatera timestamp-typ till en sträng med ett tidsstämpel-format. Anpassade datum format följer format vid [datetime-mönster](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Om inget värde anges används standardvärdet `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | No |
+| typ | Typ av export kommando, anges till _ * AzureDatabricksDeltaLakeExportCommand * *. | Ja |
+| dateFormat | Formatera datum typ till sträng med datum format. Anpassade datum format följer format vid [datetime-mönster](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Om inget värde anges används standardvärdet `yyyy-MM-dd` . | Nej |
+| timestampFormat | Formatera timestamp-typ till en sträng med ett tidsstämpel-format. Anpassade datum format följer format vid [datetime-mönster](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Om inget värde anges används standardvärdet `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | Nej |
 
 #### <a name="direct-copy-from-delta-lake"></a>Direkt kopiering från delta Lake
 
@@ -262,13 +262,13 @@ Om du vill kopiera data till Azure Databricks delta Lake stöds följande egensk
 
 | Egenskap      | Beskrivning                                                  | Krävs |
 | :------------ | :----------------------------------------------------------- | :------- |
-| typ          | Egenskapen Type för kopierings aktivitetens Sink, anges till **AzureDatabricksDeltaLakeSink**. | Yes      |
-| preCopyScript | Ange en SQL-fråga för kopierings aktiviteten som ska köras innan data skrivs till Databricks delta-tabellen i varje körning. Du kan använda den här egenskapen för att rensa förinstallerade data eller lägga till en Trunkerande tabell eller vakuum-instruktion. | No       |
-| importSettings | Avancerade inställningar som används för att skriva data till en delta tabell. | No |
+| typ          | Egenskapen Type för kopierings aktivitetens Sink, anges till **AzureDatabricksDeltaLakeSink**. | Ja      |
+| preCopyScript | Ange en SQL-fråga för kopierings aktiviteten som ska köras innan data skrivs till Databricks delta-tabellen i varje körning. Du kan använda den här egenskapen för att rensa förinstallerade data eller lägga till en Trunkerande tabell eller vakuum-instruktion. | Nej       |
+| importSettings | Avancerade inställningar som används för att skriva data till en delta tabell. | Nej |
 | **_Under `importSettings` :_* _ |                                                              |  |
-| typ | Typ av import kommando, anges till _ * AzureDatabricksDeltaLakeImportCommand * *. | Yes |
-| dateFormat | Formatera strängen till Date-typ med ett datum format. Anpassade datum format följer format vid [datetime-mönster](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Om inget värde anges används standardvärdet `yyyy-MM-dd` . | No |
-| timestampFormat | Formatera sträng till timestamp-typ med ett tidsstämpel-format. Anpassade datum format följer format vid [datetime-mönster](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Om inget värde anges används standardvärdet `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | No |
+| typ | Typ av import kommando, anges till _ * AzureDatabricksDeltaLakeImportCommand * *. | Ja |
+| dateFormat | Formatera strängen till Date-typ med ett datum format. Anpassade datum format följer format vid [datetime-mönster](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Om inget värde anges används standardvärdet `yyyy-MM-dd` . | Nej |
+| timestampFormat | Formatera sträng till timestamp-typ med ett tidsstämpel-format. Anpassade datum format följer format vid [datetime-mönster](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html). Om inget värde anges används standardvärdet `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` . | Nej |
 
 #### <a name="direct-copy-to-delta-lake"></a>Direkt kopiering till delta Lake
 

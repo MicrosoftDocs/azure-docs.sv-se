@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: e73381ef0e646f697f5195cb3df7f4c2733cccaf
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f702633f6311d4ae4a79452e9b1c9176125c56f9
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456916"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508412"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server lagrad procedur aktivitet
 > [!div class="op_single_selector" title1="Omvandlings aktiviteter"]
@@ -305,13 +305,13 @@ Följande tabell beskriver de här JSON-egenskaperna:
 
 | Egenskap | Beskrivning | Krävs |
 | --- | --- | --- |
-| name | Namn på aktiviteten |Yes |
-| beskrivning |Text som beskriver vad aktiviteten används för |No |
-| typ | Måste vara inställt på: **SqlServerStoredProcedure** | Yes |
-| tillför | Valfritt. Om du anger en indata-datauppsättning måste den vara tillgänglig (i klar status) för att den lagrade procedur aktiviteten ska kunna köras. Det går inte att konsumera indata-dataset i den lagrade proceduren som en parameter. Den används endast för att kontrol lera beroendet innan den lagrade procedur aktiviteten startas. |No |
-| utdata | Du måste ange en data uppsättning för utdata för en lagrad procedur aktivitet. Data uppsättningen för utdata anger **schemat** för aktiviteten för lagrad procedur (varje timme, varje vecka, varje månad osv.). <br/><br/>Data uppsättningen för utdata måste använda en **länkad tjänst** som refererar till en Azure SQL Database eller Azure Synapse Analytics eller en SQL Server databas där du vill att den lagrade proceduren ska köras. <br/><br/>Data uppsättningen för utdata kan fungera som ett sätt att skicka resultatet av den lagrade proceduren för efterföljande bearbetning av en annan aktivitet ([länkning av aktiviteter](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) i pipelinen. Data Factory skriver dock inte automatiskt utdata från en lagrad procedur till den här data uppsättningen. Det är den lagrade proceduren som skriver till en SQL-tabell som den resulterande data uppsättningen pekar på. <br/><br/>I vissa fall kan data uppsättningen för utdata vara en **dummy-datauppsättning**, som endast används för att ange schemat för körning av den lagrade procedur aktiviteten. |Yes |
-| storedProcedureName |Ange namnet på den lagrade proceduren i Azure SQL Database, Azure Synapse Analytics eller SQL Server som representeras av den länkade tjänsten som används i utdatatabellen. |Yes |
-| storedProcedureParameters |Ange värden för parametrar för lagrad procedur. Om du behöver skicka null för en parameter använder du syntaxen: "param1": null (alla gemener). I följande exempel hittar du information om hur du använder den här egenskapen. |No |
+| name | Namn på aktiviteten |Ja |
+| description |Text som beskriver vad aktiviteten används för |Nej |
+| typ | Måste vara inställt på: **SqlServerStoredProcedure** | Ja |
+| tillför | Valfritt. Om du anger en indata-datauppsättning måste den vara tillgänglig (i klar status) för att den lagrade procedur aktiviteten ska kunna köras. Det går inte att konsumera indata-dataset i den lagrade proceduren som en parameter. Den används endast för att kontrol lera beroendet innan den lagrade procedur aktiviteten startas. |Nej |
+| utdata | Du måste ange en data uppsättning för utdata för en lagrad procedur aktivitet. Data uppsättningen för utdata anger **schemat** för aktiviteten för lagrad procedur (varje timme, varje vecka, varje månad osv.). <br/><br/>Data uppsättningen för utdata måste använda en **länkad tjänst** som refererar till en Azure SQL Database eller Azure Synapse Analytics eller en SQL Server databas där du vill att den lagrade proceduren ska köras. <br/><br/>Data uppsättningen för utdata kan fungera som ett sätt att skicka resultatet av den lagrade proceduren för efterföljande bearbetning av en annan aktivitet ([länkning av aktiviteter](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) i pipelinen. Data Factory skriver dock inte automatiskt utdata från en lagrad procedur till den här data uppsättningen. Det är den lagrade proceduren som skriver till en SQL-tabell som den resulterande data uppsättningen pekar på. <br/><br/>I vissa fall kan data uppsättningen för utdata vara en **dummy-datauppsättning**, som endast används för att ange schemat för körning av den lagrade procedur aktiviteten. |Ja |
+| storedProcedureName |Ange namnet på den lagrade proceduren i Azure SQL Database, Azure Synapse Analytics eller SQL Server som representeras av den länkade tjänsten som används i utdatatabellen. |Ja |
+| storedProcedureParameters |Ange värden för parametrar för lagrad procedur. Om du behöver skicka null för en parameter använder du syntaxen: "param1": null (alla gemener). I följande exempel hittar du information om hur du använder den här egenskapen. |Nej |
 
 ## <a name="passing-a-static-value"></a>Överför ett statiskt värde
 Nu ska vi överväga att lägga till en annan kolumn med namnet "scenario" i tabellen som innehåller ett statiskt värde med namnet "Document Sample".

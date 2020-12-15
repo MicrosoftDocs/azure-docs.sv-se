@@ -12,12 +12,12 @@ ms.date: 08/03/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a5fcbf80850fd9de77e6f9a431afea6d48cb14d1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 6abc3316e18fc70a2969bc220fd75e10e10f0e6e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949419"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507786"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Hantera Azure AD B2C användar konton med Microsoft Graph
 
@@ -115,9 +115,9 @@ Om de konton som du vill migrera har en mindre lösen ords styrka än den [stark
 
 ### <a name="extension-properties"></a>Tilläggs egenskaper
 
-Varje kundriktad app har unika krav för att informationen ska samlas in. Din Azure AD B2C klient har en inbyggd uppsättning information som lagras i egenskaper, t. ex. namn, efter namn, stad och post nummer. Med Azure AD B2C kan du utöka uppsättningen med egenskaper som lagras i varje kund konto. Mer information om hur du definierar anpassade attribut finns i [anpassade attribut (användar flöden)](user-flow-custom-attributes.md) och [anpassade attribut (anpassade principer)](custom-policy-custom-attributes.md).
+Varje kundriktad app har unika krav för att informationen ska samlas in. Din Azure AD B2C klient har en inbyggd uppsättning information som lagras i egenskaper, t. ex. namn, efter namn, stad och post nummer. Med Azure AD B2C kan du utöka uppsättningen med egenskaper som lagras i varje kund konto. Mer information om hur du definierar anpassade attribut finns i [anpassade attribut](user-flow-custom-attributes.md).
 
-Microsoft Graph API har stöd för att skapa och uppdatera en användare med attribut för tillägg. Attribut för tillägg i Graph API namnges med hjälp av konventionen `extension_ApplicationClientID_attributename` , där `ApplicationClientID` är **programmets (klient) ID** för `b2c-extensions-app` programmet (hittas i **Appregistreringar**  >  **alla program** i Azure Portal). Observera att **program-ID: t (klient)** som det visas i attributets namn för tillägg inte innehåller några bindestreck. Exempel:
+Microsoft Graph API har stöd för att skapa och uppdatera en användare med attribut för tillägg. Attribut för tillägg i Graph API namnges med hjälp av konventionen `extension_ApplicationClientID_attributename` , där `ApplicationClientID` är **programmets (klient) ID** för `b2c-extensions-app` programmet (hittas i **Appregistreringar**  >  **alla program** i Azure Portal). Observera att **program-ID: t (klient)** som det visas i attributets namn för tillägg inte innehåller några bindestreck. Till exempel:
 
 ```json
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"

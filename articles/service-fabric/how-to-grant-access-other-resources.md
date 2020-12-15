@@ -3,12 +3,12 @@ title: Ge program åtkomst till andra Azure-resurser
 description: I den här artikeln förklaras hur du beviljar åtkomst till hanterade identiteter Service Fabric program till andra Azure-resurser som stöder Azure Active Directory-baserad autentisering.
 ms.topic: article
 ms.date: 12/09/2019
-ms.openlocfilehash: a1d963c49f9522000028b00c138b2e5731a9ccca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7560294fbf6d122396b6a5a8ffd3ee93bc89048
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333638"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507463"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources"></a>Bevilja åtkomst till Azure-resurser Service Fabric programmets hanterade identitet
 

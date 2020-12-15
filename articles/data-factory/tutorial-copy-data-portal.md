@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 11/11/2020
+ms.date: 12/14/2020
 ms.author: jingwang
-ms.openlocfilehash: ef9ac29735289d5c7a60ff0fca3b9e9f360f6e08
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 34eb34a86948a2b4c043d5d9b58b50958855e449
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005137"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508722"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>Kopiera data från Azure Blob Storage till en databas i Azure SQL Database genom att använda Azure Data Factory
 
@@ -26,7 +26,7 @@ ms.locfileid: "96005137"
 I den här självstudiekursen skapar du en datafabrik med Azure Data Factory-användargränssnittet. Pipelinen i den här data fabriken kopierar data från Azure Blob Storage till en databas i Azure SQL Database. Konfigurationsmönstret i den här självstudien gäller kopiering av ett filbaserat datalager till ett relationsdatalager. En lista över datakällor som stöds som källor och mottagare finns i tabellen över [datalager som stöds](copy-activity-overview.md#supported-data-stores-and-formats).
 
 > [!NOTE]
-> - Om du inte har använt datafabriken tidigare kan du läsa [Introduktion till Azure Data Factory](introduction.md).
+> Om du inte har använt datafabriken tidigare kan du läsa [Introduktion till Azure Data Factory](introduction.md).
 
 I den här självstudien får du göra följande:
 
@@ -38,7 +38,7 @@ I den här självstudien får du göra följande:
 > * Utlös pipelinen enligt ett schema.
 > * Övervaka pipelinen och aktivitetskörningarna.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 * **Azure-prenumeration**. Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt Azure-konto](https://azure.microsoft.com/free/) innan du börjar.
 * **Azure Storage-konto**. Du kan använda Blob Storage som *källa* för datalagringen. Om du inte har ett lagringskonto finns det anvisningar om hur du skapar ett i [Skapa ett Azure Storage-konto](../storage/common/storage-account-create.md).
 * **Azure SQL Database**. Du använder databasen som *mottagare* för datalagringen. Om du inte har en databas i Azure SQL Database kan du gå till [skapa en databas i Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) för att skapa en.
@@ -82,24 +82,26 @@ I det här steget skapar du en datafabrik och startar sedan användargränssnitt
 
 1. Öppna **Microsoft Edge** eller **Google Chrome**. Användargränssnittet för Data Factory stöds för närvarande bara i webbläsarna Microsoft Edge och Google Chrome.
 2. På den vänstra menyn väljer du **skapa en resurs**  >  **integration**  >  **Data Factory**.
-3. I fönstret **Ny datafabrik**, under **Namn** anger du **ADFTutorialDataFactory**.
+3. På sidan **skapa Data Factory** under fliken **grundläggande** väljer du den Azure- **prenumeration** där du vill skapa data fabriken.
+4. Gör något av följande för **Resursgrupp**:
+
+    a. Välj en befintlig resurs grupp i den nedrullningsbara listan.
+
+    b. Välj **Skapa ny** och ange namnet på en ny resurs grupp.
+    
+    Mer information om resursgrupper finns i [Använda resursgrupper för att hantera Azure-resurser](../azure-resource-manager/management/overview.md). 
+5. Under **region** väljer du en plats för data fabriken. Endast platser som stöds visas i listrutan. Datalagren (t.ex. Azure Storage och SQL-databas) och beräkningarna (t.ex. Azure HDInsight) som används i datafabriken kan finnas i andra regioner.
+6. Under **namn** anger du **ADFTutorialDataFactory**.
 
    Namnet på Azure Data Factory måste vara *globalt unikt*. Ange ett annat namn för datafabriken om du får ett felmeddelande om namnvärdet. (till exempel Dittnamnadftutorialdatafactory). Se artikeln [Namnregler för Data Factory](naming-rules.md) för namnregler för Data Factory-artefakter.
 
      ![Ny datafabrik](./media/doc-common-process/name-not-available-error.png)
-4. Välj den Azure-**prenumeration** som du vill skapa den nya datafabriken i.
-5. Gör något av följande för **Resursgrupp**:
 
-    a. Välj **Använd befintlig** och välj en befintlig resurs grupp i den nedrullningsbara listan.
-
-    b. Välj **Skapa ny** och ange namnet på en resurs grupp. 
-         
-    Mer information om resursgrupper finns i [Använda resursgrupper för att hantera Azure-resurser](../azure-resource-manager/management/overview.md). 
-6. Under **Version** väljer du **V2**.
-7. Under **Plats** väljer du en plats för datafabriken. Endast platser som stöds visas i listrutan. Datalagren (t.ex. Azure Storage och SQL-databas) och beräkningarna (t.ex. Azure HDInsight) som används i datafabriken kan finnas i andra regioner.
-8. Välj **Skapa**.
-9. När du har skapat meddelandet visas meddelandet i Notifications Center. Välj **gå till resurs** för att navigera till sidan data fabrik.
-10. Klicka på **Författare och övervakare** för att starta användargränssnittet för datafabriken på en separat flik.
+7. Under **Version** väljer du **V2**.
+8. Välj fliken **git-konfiguration** högst upp och markera kryss rutan **Konfigurera git senare** .
+9. Välj **Granska + skapa** och välj **skapa** när verifieringen har slutförts.
+10. När du har skapat meddelandet visas meddelandet i Notifications Center. Välj **gå till resurs** för att navigera till sidan data fabrik.
+11. Välj **författar & övervakare** för att starta användar gränssnittet för Azure Data Factory på en separat flik.
 
 
 ## <a name="create-a-pipeline"></a>Skapa en pipeline
@@ -115,7 +117,7 @@ I denna självstudie börjar du med att skapa pipelinen. Sedan skapar du länkad
 
    ![Skapa pipeline](./media/doc-common-process/get-started-page.png)
 
-1. 1. I panelen Allmänt under **Egenskaper** anger du **CopyPipeline** som **namn**. Komprimera sedan panelen genom att klicka på egenskaps ikonen i det övre högra hörnet.
+1. I panelen Allmänt under **Egenskaper** anger du **CopyPipeline** som **namn**. Komprimera sedan panelen genom att klicka på egenskaps ikonen i det övre högra hörnet.
 
 1. I rutan **aktiviteter** , expanderar du kategorin **flytta och transformera** och drar och släpper **Kopiera data** -aktiviteten från verktygs rutan till pipelinens design yta. Ange **CopyFromBlobToSql** som **Namn**.
 

@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bdfb1ca21860f1dc338f85a82caf643f9f7be6d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 31bdfc7e3eca2a2678b75b80973a1680448737d1
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973209"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507684"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory direktautentisering: snabb start
 
@@ -72,7 +72,7 @@ Se till att följande krav är uppfyllda.
      | **8080** (valfritt) | Authentication agents rapporterar status var tionde minut via port 8080, om port 443 inte är tillgänglig. Den här statusen visas på Azure AD-portalen. Port 8080 används _inte_ för användar inloggningar. |
      
      Om brand väggen tillämpar regler enligt de ursprungliga användarna öppnar du portarna för trafik från Windows-tjänster som körs som en nätverks tjänst.
-   - Om din brand vägg eller proxy tillåter DNS-vit listning, lägger du till anslutningar till **\* . msappproxy.net** och **\* . ServiceBus.Windows.net**. Om inte, Tillåt åtkomst till [Azure datacenter IP-intervall](https://www.microsoft.com/download/details.aspx?id=41653)som uppdateras varje vecka.
+   - Om din brand vägg eller proxy låter dig lägga till DNS-poster i en tillåten, lägger du till anslutningar till **\* . msappproxy.net** och **\* . ServiceBus.Windows.net**. Om inte, Tillåt åtkomst till [Azure datacenter IP-intervall](https://www.microsoft.com/download/details.aspx?id=41653)som uppdateras varje vecka.
    - Dina autentiserings agenter behöver åtkomst till **login.Windows.net** och **login.microsoftonline.com** för inledande registrering. Öppna brand väggen för dessa URL: er även.
     - För certifikat validering, avblockera följande URL: er: **crl3.DigiCert.com:80**, **crl4.DigiCert.com:80**, **ocsp.digicert.com:80**, **www \. d-trust.net:80**, **root-C3-CA2-2009.OCSP.d-Trust.net:80**, **CRL.Microsoft.com:80**, **oneocsp.Microsoft.com:80** och **OCSP.msocsp.com:80**. Eftersom dessa URL: er används för certifikat validering med andra Microsoft-produkter kan dessa URL: er vara avblockerade.
 

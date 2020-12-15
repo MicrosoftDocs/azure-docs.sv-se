@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 672c9f0d5403ae27a26d58617dca44f0f1121411
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b83201ae864d1f1eb9124af5268360bb1748f6c8
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904159"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507616"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>Självstudie: synkronisera data från SQL Edge till Azure Blob Storage med hjälp av Azure Data Factory
 
@@ -59,8 +59,11 @@ Kör de här kommandona på SQL Edge-instansen:
     CREATE PROCEDURE usp_write_watermark @timestamp datetime, @TableName varchar(50)  
     AS  
     BEGIN
+    
     UPDATE [dbo].[watermarktable]
-    SET [WatermarkValue] = @timestamp WHERE [TableName] = @TableName
+    SET [WatermarkValue] = @timestamp
+    WHERE [TableName] = @TableName
+
     END
     Go
 ```
@@ -87,15 +90,15 @@ Skapa en data fabrik genom att följa anvisningarna i [den här självstudien](.
 
 4. Växla till fliken **Inställningar** och välj **nytt** för **käll data uppsättning**. Nu ska du skapa en data uppsättning som representerar data i vatten märkes tabellen. Den här tabellen innehåller den gamla vattenstämpeln som användes i den tidigare kopieringen.
 
-5. I fönstret **ny data uppsättning** väljer du **Azure SQL Server**och väljer sedan **Fortsätt**.  
+5. I fönstret **ny data uppsättning** väljer du **Azure SQL Server** och väljer sedan **Fortsätt**.  
 
-6. I fönstret **Ange egenskaper** för data uppsättningen under **namn**anger du **WatermarkDataset**.
+6. I fönstret **Ange egenskaper** för data uppsättningen under **namn** anger du **WatermarkDataset**.
 
-7. För **länkad tjänst**väljer du **ny**och slutför sedan de här stegen:
+7. För **länkad tjänst** väljer du **ny** och slutför sedan de här stegen:
 
-    1. Under **namn**anger du **SQLDBEdgeLinkedService**.
+    1. Under **namn** anger du **SQLDBEdgeLinkedService**.
 
-    2. Under **Server namn**anger du information om SQL Edge-servern.
+    2. Under **Server namn** anger du information om SQL Edge-servern.
 
     3. Välj ditt **databas namn** i listan.
 
@@ -119,11 +122,11 @@ Skapa en data fabrik genom att följa anvisningarna i [den här självstudien](.
 
 12. I fönstret Egenskaper för den andra söknings aktiviteten växlar du till fliken **Inställningar** och väljer **ny** för att skapa en data uppsättning som pekar på den käll tabell som innehåller det nya värdet för vattenstämpeln.
 
-13. I fönstret **ny data uppsättning** väljer du **SQL Edge-instans**och väljer sedan **Fortsätt**.
+13. I fönstret **ny data uppsättning** väljer du **SQL Edge-instans** och väljer sedan **Fortsätt**.
 
-    1. I fönstret **Ange egenskaper** , under **namn**, anger du **SourceDataset**. Under **länkad tjänst**väljer du **SQLDBEdgeLinkedService**.
+    1. I fönstret **Ange egenskaper** , under **namn**, anger du **SourceDataset**. Under **länkad tjänst** väljer du **SQLDBEdgeLinkedService**.
 
-    2. Under **tabell**väljer du den tabell som du vill synkronisera. Du kan också ange en fråga för den här data uppsättningen, enligt beskrivningen längre fram i den här självstudien. Frågan prioriteras framför tabellen som du anger i det här steget.
+    2. Under **tabell** väljer du den tabell som du vill synkronisera. Du kan också ange en fråga för den här data uppsättningen, enligt beskrivningen längre fram i den här självstudien. Frågan prioriteras framför tabellen som du anger i det här steget.
 
     3. Välj **OK**.
 
@@ -147,7 +150,7 @@ Skapa en data fabrik genom att följa anvisningarna i [den här självstudien](.
 
     1. I rutan **käll data uppsättning** väljer du **SourceDataset**.
 
-    2. Under **Använd fråga**väljer du **fråga**.
+    2. Under **Använd fråga** väljer du **fråga**.
 
     3. Ange SQL-frågan i rutan **fråga** . Här är en exempel fråga:
 
@@ -157,17 +160,17 @@ Skapa en data fabrik genom att följa anvisningarna i [den här självstudien](.
 
 20. På fliken **mottagare** väljer du **ny** under **data uppsättning för mottagare**.
 
-21. I den här självstudien är mottagar data lagret ett Azure Blob Storage-data lager. Välj **Azure Blob Storage**och välj sedan **Fortsätt** i fönstret **ny data uppsättning** .
+21. I den här självstudien är mottagar data lagret ett Azure Blob Storage-data lager. Välj **Azure Blob Storage** och välj sedan **Fortsätt** i fönstret **ny data uppsättning** .
 
 22. I fönstret **Välj format** väljer du formatet för dina data och väljer sedan **Fortsätt**.
 
-23. I fönstret **Ange egenskaper** , under **namn**, anger du **SinkDataset**. Under **länkad tjänst**väljer du **ny**. Nu ska du skapa en anslutning (en länkad tjänst) till Azure Blob Storage.
+23. I fönstret **Ange egenskaper** , under **namn**, anger du **SinkDataset**. Under **länkad tjänst** väljer du **ny**. Nu ska du skapa en anslutning (en länkad tjänst) till Azure Blob Storage.
 
 24. I fönstret **ny länkad tjänst (Azure Blob Storage)** utför du följande steg:
 
     1. I rutan **namn** anger du **AzureStorageLinkedService**.
 
-    2. Under **lagrings konto namn**väljer du Azure Storage-kontot för din Azure-prenumeration.
+    2. Under **lagrings konto namn** väljer du Azure Storage-kontot för din Azure-prenumeration.
 
     3. Testa anslutningen och välj sedan **Slutför**.
 
@@ -177,9 +180,9 @@ Skapa en data fabrik genom att följa anvisningarna i [den här självstudien](.
 
 27. Gå till fliken **anslutning** i SinkDataset och utför följande steg:
 
-    1. Under **fil Sök väg**anger du *asdedatasync/incrementalcopy*, där *asdedatasync* är BLOB-containerns namn och *incrementalcopy* är mappnamnet. Skapa behållaren om den inte finns eller Använd namnet på en befintlig. Azure Data Factory skapar automatiskt mappen utdata *incrementalcopy* om den inte finns. Du kan också använda knappen **Bläddra** för **Filsökväg** för att navigera till en mapp i en blobcontainer.
+    1. Under **fil Sök väg** anger du *asdedatasync/incrementalcopy*, där *asdedatasync* är BLOB-containerns namn och *incrementalcopy* är mappnamnet. Skapa behållaren om den inte finns eller Använd namnet på en befintlig. Azure Data Factory skapar automatiskt mappen utdata *incrementalcopy* om den inte finns. Du kan också använda knappen **Bläddra** för **Filsökväg** för att navigera till en mapp i en blobcontainer.
 
-    2. För **fil** delen av **fil Sök vägen**väljer du **Lägg till dynamiskt innehåll [ALT + P]** och anger sedan ** @CONCAT ("stegvis-", pipeline (). RunId, '. txt ')** i fönstret som öppnas. Välj **Slutför**. Fil namnet genereras dynamiskt av uttrycket. Varje pipelinekörning har ett unikt ID. Kopieringsaktiviteten använder körnings-ID för att generera filnamnet.
+    2. För **fil** delen av **fil Sök vägen** väljer du **Lägg till dynamiskt innehåll [ALT + P]** och anger sedan **@CONCAT ("stegvis-", pipeline (). RunId, '. txt ')** i fönstret som öppnas. Välj **Slutför**. Fil namnet genereras dynamiskt av uttrycket. Varje pipelinekörning har ett unikt ID. Kopieringsaktiviteten använder körnings-ID för att generera filnamnet.
 
 28. Växla till pipeline-redigeraren genom att välja fliken pipeline överst eller genom att välja namnet på pipelinen i trädvyn till vänster.
 
@@ -187,11 +190,11 @@ Skapa en data fabrik genom att följa anvisningarna i [den här självstudien](.
 
 30. Välj **aktivitet för lagrad procedur** i pipeline-designern och ändra dess namn till **SPtoUpdateWatermarkActivity**.
 
-31. Växla till fliken **SQL-konto** och välj ***QLDBEdgeLinkedService** under **länkad tjänst**.
+31. Växla till fliken **SQL-konto** och välj **_QLDBEdgeLinkedService_* under **länkad tjänst**.
 
 32. Växla till fliken **lagrad procedur** och slutför de här stegen:
 
-    1. Under **lagrad procedur namn**väljer du **[dbo]. [ usp_write_watermark]**.
+    1. Under **lagrad procedur namn** väljer du **[dbo]. [ usp_write_watermark]**.
 
     2. Om du vill ange värden för parametrarna för den lagrade proceduren väljer du **Importera parameter** och anger följande värden för parametrarna:
 
@@ -206,9 +209,9 @@ Skapa en data fabrik genom att följa anvisningarna i [den här självstudien](.
 
 ## <a name="trigger-a-pipeline-based-on-a-schedule"></a>Utlös en pipeline baserat på ett schema
 
-1. I pipeline-verktygsfältet väljer du **Lägg till utlösare**, Välj **ny/redigera**och välj sedan **ny**.
+1. I pipeline-verktygsfältet väljer du **Lägg till utlösare**, Välj **ny/redigera** och välj sedan **ny**.
 
-2. Ge utlösaren **HourlySync**. Välj **schema**under **typ**. Ställ in **upprepningen** på varannan timme.
+2. Ge utlösaren **HourlySync**. Välj **schema** under **typ**. Ställ in **upprepningen** på varannan timme.
 
 3. Välj **OK**.
 

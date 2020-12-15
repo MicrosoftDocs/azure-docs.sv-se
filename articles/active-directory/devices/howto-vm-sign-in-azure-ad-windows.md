@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8644040565bd46800b888a32653b6c8bbf89f096
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 3c42495ceab7108d20b0f0dedbf0cf94f5f9352d
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347446"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509316"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Logga in på den virtuella Windows-datorn i Azure med Azure Active Directory autentisering (för hands version)
 
@@ -158,7 +158,7 @@ Det finns flera sätt att konfigurera roll tilldelningar för virtuella datorer:
 - Använda Azure Cloud Shell upplevelse
 
 > [!NOTE]
-> Den virtuella datorns Administratörs inloggning och användar inloggnings roller för virtuell dator använder dataActions och kan därför inte tilldelas i hanterings gruppens omfattning. För närvarande kan de här rollerna bara tilldelas i prenumerations omfånget.
+> Den virtuella datorns Administratörs inloggning och användar inloggnings roller för virtuell dator använder dataActions och kan därför inte tilldelas i hanterings gruppens omfattning. För närvarande kan de här rollerna bara tilldelas till prenumerationen, resurs gruppen eller resurs omfånget.
 
 ### <a name="using-azure-ad-portal-experience"></a>Använda Azure AD Portal-upplevelse
 
@@ -227,7 +227,7 @@ Du är nu inloggad på den virtuella Windows Server 2019 Azure-datorn med roll b
 > [!NOTE]
 > Du kan spara. RDP-fil lokalt på datorn för att starta framtida fjärr skrivbords anslutningar till den virtuella datorn i stället för att behöva gå till översikts sidan för den virtuella datorn i Azure Portal och med alternativet Connect.
 
-## <a name="troubleshoot"></a>Felsöka
+## <a name="troubleshoot"></a>Felsök
 
 ### <a name="troubleshoot-deployment-issues"></a>Felsöka distributionsproblem
 

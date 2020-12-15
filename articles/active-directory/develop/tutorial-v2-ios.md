@@ -13,12 +13,12 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5260ca049f971cce07659f12b54ce30304dd826d
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: f04a8aa96b51ac9330e4302c3afcc48f7d305b39
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107642"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507718"
 ---
 # <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>Självstudie: Logga in användare och anropa Microsoft Graph från en iOS-eller macOS-app
 
@@ -35,7 +35,7 @@ I de här självstudierna har du
 > * Lägg till kod för att anropa API: et för Microsoft Graph
 > * Testa appen
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - [Xcode 11. x +](https://developer.apple.com/xcode/)
 
@@ -71,16 +71,17 @@ Om du vill ladda ned en slutförd version av appen som du skapar i den här sjä
 
 ## <a name="register-your-application"></a>Registrera ditt program
 
-1. Gå till [Azure Portal](https://aka.ms/MobileAppReg)
-2. Öppna bladet Appregistreringar och välj **+ ny registrering**.
-3. Ange ett **namn** för din app och sedan utan att ange en omdirigerings-URI.
-4. Välj **konton i valfri organisations katalog (alla Azure AD Directory-flera klienter) och personliga Microsoft-konton (t. ex. Skype, Xbox)** under **konto typer som stöds**
-5. Välj **register**
-6. I avsnittet **Hantera** i fönstret som visas väljer du **autentisering**.
-
-7. Välj **prova den nya upplevelsen** längst upp på skärmen för att öppna den nya appens registrerings upplevelse och välj sedan **+ ny registrering**  >  **+ Lägg till en plattforms**  >  **-iOS/MacOS**.
-    - Ange ditt projekts paket-ID. Om du har hämtat koden är detta `com.microsoft.identitysample.MSALiOS` . Om du skapar ett eget projekt väljer du ditt projekt i Xcode och öppnar fliken **Allmänt** . Paket-ID visas i avsnittet **identitet** .
-8. Välj `Configure` och spara **MSAL-konfigurationen** som visas på sidan **MSAL konfiguration** så att du kan ange den när du konfigurerar appen senare. Välj **Klar**.
+1. Logga in på [Azure-portalen](https://portal.azure.com).
+1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
+1. Sök efter och välj **Azure Active Directory**.
+1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.
+1. Ange ett **namn** för ditt program. Användare av appen kan se det här namnet och du kan ändra det senare.
+1. Välj **konton i valfri organisations katalog (alla Azure AD Directory-flera klienter) och personliga Microsoft-konton (t. ex. Skype, Xbox)** under **konto typer som stöds**.
+1. Välj **Register** (Registrera).
+1. Under **Hantera** väljer du **autentisering**  >  **Lägg till en plattform**  >  **iOS/MacOS**.
+1. Ange ditt projekts paket-ID. Om du har hämtat koden är detta `com.microsoft.identitysample.MSALiOS` . Om du skapar ett eget projekt väljer du ditt projekt i Xcode och öppnar fliken **Allmänt** . Paket-ID visas i avsnittet **identitet** .
+1. Välj **Konfigurera** och spara **MSAL-konfigurationen** som visas på sidan **MSAL konfiguration** så att du kan ange den när du konfigurerar appen senare. 
+1. Välj **Klar**.
 
 ## <a name="add-msal"></a>Lägg till MSAL
 

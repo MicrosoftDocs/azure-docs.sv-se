@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 11/09/2020
-ms.openlocfilehash: 6dba148f0cde81905bc66f7750ff5e04edc948aa
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: d1a7f47b1cdccb02952bd7d9d333855f5eec27d5
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566403"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508534"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Läs in data stegvis från Azure SQL Database till Azure Blob Storage med hjälp av Azure Portal
 
@@ -53,7 +53,7 @@ Här är några viktiga steg för att skapa den här lösningen:
 
 2. **Förbered datalagringen för att lagra värdet för vattenstämpeln**. I den här självstudien lagrar du storleksgränsen i en SQL-databas.
 
-3. **Skapa en pipeline med följande arbets flöde** :
+3. **Skapa en pipeline med följande arbets flöde**:
 
     Pipelinen i den här lösningen har följande aktiviteter:
 
@@ -64,7 +64,7 @@ Här är några viktiga steg för att skapa den här lösningen:
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://azure.microsoft.com/free/) konto innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 * **Azure SQL Database**. Du använder databasen som källa för datalagringen. Om du inte har en databas i Azure SQL Database, se [skapa en databas i Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) för att skapa en.
 * **Azure Storage**. Du kan använda blob-lagringen som mottagare för datalagringen. Om du inte har ett lagringskonto finns det anvisningar om hur du skapar ett i [Skapa ett lagringskonto](../storage/common/storage-account-create.md). Skapa en container med namnet adftutorial. 
 
@@ -143,8 +143,8 @@ AS
 
 BEGIN
 
-    UPDATE watermarktable
-    SET [WatermarkValue] = @LastModifiedtime
+UPDATE watermarktable
+SET [WatermarkValue] = @LastModifiedtime
 WHERE [TableName] = @TableName
 
 END
@@ -153,7 +153,7 @@ END
 ## <a name="create-a-data-factory"></a>Skapa en datafabrik
 
 1. Starta webbläsaren **Microsoft Edge** eller **Google Chrome**. Användargränssnittet för Data Factory stöds för närvarande bara i webbläsarna Microsoft Edge och Google Chrome.
-2. På den vänstra menyn väljer du **skapa en resurs**  >  **integrations**  >  **Data Factory** :
+2. På den vänstra menyn väljer du **skapa en resurs**  >  **integrations**  >  **Data Factory**:
 
    ![Valet Data Factory i fönstret Nytt](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -162,7 +162,7 @@ END
    Namnet på Azure Data Factory måste vara **globalt unikt**. Om du ser ett rött utropstecken med följande fel ändrar du namnet på datafabriken (till exempel dittnamnADFIncCopyTutorialDF) och provar att skapa fabriken igen. Se artikeln [Data Factory – namnregler](naming-rules.md) för namnregler för Data Factory-artefakter.
 
     *Data fabriks namnet "ADFIncCopyTutorialDF" är inte tillgängligt*
-4. Välj den Azure- **prenumeration** som du vill skapa den nya datafabriken i.
+4. Välj den Azure-**prenumeration** som du vill skapa den nya datafabriken i.
 5. För **resursgruppen** utför du något av följande steg:
 
       - Välj **Använd befintlig** och välj en befintlig resurs grupp i den nedrullningsbara listan.
@@ -199,7 +199,7 @@ I den här självstudien skapar du en pipeline med två sökningsaktiviteter, en
     1. Ange **AzureSqlDatabaseLinkedService** som **namn**.
     2. Välj servern som **Server namn**.
     3. Välj ditt **databas namn** i list rutan.
-    4. Ange lösen ordet för **användar namnet**  &  **Password**.
+    4. Ange lösen ordet för **användar namnet**  &  .
     5. Om du vill testa anslutningen till din SQL-databas klickar du på **Testa anslutning**.
     6. Klicka på **Finish**.
     7. Bekräfta att **AzureSqlDatabaseLinkedService** har valts för den **länkade tjänsten**.
@@ -261,7 +261,7 @@ I den här självstudien skapar du en pipeline med två sökningsaktiviteter, en
     1. I fältet **fil Sök väg** anger du **adftutorial/incrementalcopy**. **adftutorial** är blobcontainerns namn och **incrementalcopy** är mappens namn. Det här kodfragmentet förutsätter att du har en blobcontainer med namnet adftutorial i din blob-lagring. Skapa containern om den inte finns, eller ställ in den för namnet på en befintlig. Azure Data Factory skapar automatiskt utdatamappen **incrementalcopy** om den inte finns. Du kan också använda knappen **Bläddra** för **Filsökväg** för att navigera till en mapp i en blobcontainer.
     2. För **fil** delen av fältet **fil Sök väg** väljer du **Lägg till dynamiskt innehåll [ALT + P]** och anger sedan `@CONCAT('Incremental-', pipeline().RunId, '.txt')` i det öppnade fönstret. Välj sedan **Slutför**. Filnamnet genereras dynamiskt med uttrycket. Varje pipelinekörning har ett unikt ID. Kopieringsaktiviteten använder körnings-ID för att generera filnamnet.
 
-28. Växla till **pipeline** -redigeringsprogrammet genom att klicka på pipelinefliken högst upp eller på pipelinenamnet i trädvyn till vänster.
+28. Växla till **pipeline**-redigeringsprogrammet genom att klicka på pipelinefliken högst upp eller på pipelinenamnet i trädvyn till vänster.
 29. I verktygslådan **Aktiviteter** expanderar du **Allmänt** och drar och släpper aktiviteten **Lagrad procedur** från verktygslådan **Aktiviteter** till pipelinedesignerytan. **Anslut** gröna utdata (lyckades) från aktiviteten **Kopiera** till den **lagrade proceduraktiviteten**.
 
 24. Välj **Lagrad proceduraktivitet** i pipelinedesignern och ändra dess namn till **StoredProceduretoWriteWatermarkActivity**.
@@ -297,7 +297,7 @@ I den här självstudien skapar du en pipeline med två sökningsaktiviteter, en
 
 
 ## <a name="review-the-results"></a>Granska resultaten
-1. Anslut till Azure Storage-kontot med verktyg som [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/). Kontrollera att en utdatafil har skapats i mappen **incrementalcopy** i **adftutorial** -containern.
+1. Anslut till Azure Storage-kontot med verktyg som [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/). Kontrollera att en utdatafil har skapats i mappen **incrementalcopy** i **adftutorial**-containern.
 
     ![Den första utdatafilen](./media/tutorial-incremental-copy-portal/first-output-file.png)
 2. Öppna utdatafilen och notera att alla data har kopierats från **data_source_table** till blobfilen.

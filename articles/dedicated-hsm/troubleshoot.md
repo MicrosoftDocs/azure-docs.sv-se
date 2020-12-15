@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: b911181abea06894873e64da51afbb8799f1066a
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 42bfa52721160a469db2aa0507dadfa85ff41389
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927846"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508279"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Felsöka Azure Dedicated HSM-tjänsten
 
@@ -29,7 +29,7 @@ Azure Dedicated HSM-tjänsten har två distinkta facets. För det första är re
 
 ## <a name="hsm-registration"></a>HSM-registrering
 
-Dedikerad HSM är inte tillgängligt för användning eftersom den levererar maskin varu resurser i molnet och är därför en värdefull resurs som behöver skydda sig. Vi använder därför en vit listning-process via e-post med hjälp av HSMrequest@microsoft.com . 
+Dedikerad HSM är inte tillgängligt för användning eftersom den levererar maskin varu resurser i molnet och är därför en värdefull resurs som behöver skydda sig. Vi använder därför en allowlisting-process via e-post med hjälp av HSMrequest@microsoft.com . 
 
 ### <a name="getting-access-to-dedicated-hsm"></a>Få åtkomst till dedikerad HSM
 
@@ -69,7 +69,7 @@ Distributioner kan inte utföras om du överskrider 2 HSM: er per Stamp och 4 HS
 När en viss stämpel eller region blir full, är det nästan alla kostnads fria HSM: er, vilket kan leda till distributions problem. Varje stämpel har 11 HSM: er tillgängligt för kunder, vilket innebär 22 per region. Det finns även 3 reserv delar och 1 testen het i varje stämpel. Om du tror att du har nått gränsen och sedan skickar e-post HSMrequest@microsoft.com för information om fyllnads nivån för vissa stämplar.
 
 ###  <a name="how-do-i-see-hsms-when-provisioned"></a>Hur gör jag för att se HSM: er vid etablering?
-Eftersom dedikerad HSM är en vit listas-tjänst betraktas den som en "dold typ" i Azure Portal. Om du vill se HSM-resurserna måste du markera kryss rutan Visa dolda typer som visas nedan. NIC-resursen följer alltid HSM och är en bra plats för att ta reda på IP-adressen för HSM innan du använder SSH för att ansluta.
+Eftersom en dedikerad HSM är en allowlisted-tjänst betraktas den som en "dold typ" i Azure Portal. Om du vill se HSM-resurserna måste du markera kryss rutan Visa dolda typer som visas nedan. NIC-resursen följer alltid HSM och är en bra plats för att ta reda på IP-adressen för HSM innan du använder SSH för att ansluta.
 
 ![Skärm bild som markerar kryss rutan Visa dolda typer](./media/troubleshoot/hsm-provisioned.png)
 

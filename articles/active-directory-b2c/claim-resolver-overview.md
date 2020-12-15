@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e55bb9ba49cfcaf07e8d3dc17dc13e30036e100f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 682b83d7016a89b27b5c936853abda1438f59c28
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109053"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508024"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Om anspråk matchare i Azure Active Directory B2C anpassade principer
 
@@ -66,16 +66,16 @@ I följande avsnitt listas tillgängliga anspråks lösningar.
 
 | Begär | Beskrivning | Exempel |
 | ----- | ----------- | --------|
-| {OIDC: AuthenticationContextReferences} |Frågesträngparametern `acr_values` . | Ej tillämpligt |
+| {OIDC: AuthenticationContextReferences} |Frågesträngparametern `acr_values` . | Saknas |
 | {OIDC: ClientId} |Frågesträngparametern `client_id`  . | 00000000-0000-0000-0000-000000000000 |
 | {OIDC: DomainHint} |Frågesträngparametern `domain_hint`  . | facebook.com |
 | {OIDC: LoginHint} |  Frågesträngparametern `login_hint` . | someone@contoso.com |
-| {OIDC: MaxAge} | `max_age`. | Ej tillämpligt |
+| {OIDC: MaxAge} | `max_age`. | Saknas |
 | {OIDC: nonce} |Frågesträngparametern `Nonce`  . | defaultNonce |
 | {OIDC: lösen ord}| [Autentiseringsuppgifter för resurs ägarens lösen ord flödar](ropc-custom.md) användarens lösen ord.| password1| 
 | {OIDC: prompt} | Frågesträngparametern `prompt` . | inloggning |
 | {OIDC: RedirectUri} |Frågesträngparametern `redirect_uri`  . | https://jwt.ms |
-| {OIDC: resurs} |Frågesträngparametern `resource`  . | Ej tillämpligt |
+| {OIDC: resurs} |Frågesträngparametern `resource`  . | Saknas |
 | {OIDC: omfång} |Frågesträngparametern `scope`  . | OpenID |
 | {OIDC: username}| [Autentiseringsuppgifter för resurs ägar lösen ord flöda](ropc-custom.md) användarens användar namn.| emily@contoso.com| 
 
@@ -88,7 +88,7 @@ I följande avsnitt listas tillgängliga anspråks lösningar.
 | {Context: DateTimeInUtc} |Datum tid i UTC.  | 10/10/2018 12:00:00 PM |
 | {Context: DeploymentMode} |Princip distributions läget.  | Produktion |
 | {Context: IPAddress} | Användarens IP-adress. | 11.111.111.11 |
-| {Context: KMSI avgör} | Anger om kryss rutan [Behåll mig inloggad](custom-policy-keep-me-signed-in.md) är markerad. |  true |
+| {Context: KMSI avgör} | Anger om kryss rutan [Behåll mig inloggad](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) är markerad. |  true |
 
 ### <a name="claims"></a>Anspråk 
 
@@ -106,14 +106,14 @@ Alla parameter namn som ingår i en OIDC-eller OAuth2-begäran kan mappas till e
 | {OAUTH-KV: campaignId} | En frågesträngparametern. | Hawaii |
 | {OAUTH-KV: app_session} | En frågesträngparametern. | A3C5R |
 | {OAUTH-KV: loyalty_number} | En frågesträngparametern. | 1234 |
-| {OAUTH-KV: valfri anpassad frågesträng} | En frågesträngparametern. | Ej tillämpligt |
+| {OAUTH-KV: valfri anpassad frågesträng} | En frågesträngparametern. | Saknas |
 
 ### <a name="oauth2"></a>OAuth2
 
 | Begär | Beskrivning | Exempel |
 | ----- | ----------------------- | --------|
-| {OAuth2: access_token} | Åtkomsttoken. | Ej tillämpligt |
-| {OAuth2: refresh_token} | Refresh-token. | Ej tillämpligt |
+| {OAuth2: access_token} | Åtkomsttoken. | Saknas |
+| {OAuth2: refresh_token} | Refresh-token. | Saknas |
 
 
 ### <a name="saml"></a>SAML

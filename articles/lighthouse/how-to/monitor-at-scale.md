@@ -1,14 +1,14 @@
 ---
 title: Övervaka delegerade resurser i stor skala
 description: Lär dig hur du effektivt använder Azure Monitor loggar på ett skalbart sätt över de kund innehavare som du hanterar.
-ms.date: 10/26/2020
+ms.date: 12/14/2020
 ms.topic: how-to
-ms.openlocfilehash: 96ca05faf2b3da8f214c14ae57eb186c7b71e1b3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6c1cbde696ccf9131797a05db33553b8505216a4
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461518"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509282"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Övervaka delegerade resurser i stor skala
 
@@ -40,7 +40,25 @@ När du har bestämt vilka principer som ska distribueras kan du [distribuera de
 
 ## <a name="analyze-the-gathered-data"></a>Analysera insamlade data
 
-När du har distribuerat dina principer kommer data att loggas i Log Analytics arbets ytor som du har skapat i varje kund klient organisation. För att få insikter över alla hanterade kunder kan du använda verktyg som [Azure Monitor arbets böcker](../../azure-monitor/platform/workbooks-overview.md) för att samla in och analysera information från flera data källor. 
+När du har distribuerat dina principer kommer data att loggas i Log Analytics arbets ytor som du har skapat i varje kund klient organisation. För att få insikter över alla hanterade kunder kan du använda verktyg som [Azure Monitor arbets böcker](../../azure-monitor/platform/workbooks-overview.md) för att samla in och analysera information från flera data källor.
+
+## <a name="view-alerts-across-customers"></a>Visa aviseringar över kunder
+
+Du kan visa [aviseringar](../../azure-monitor/platform/alerts-overview.md) för de delegerade prenumerationerna på kund klienter som din hantering.
+
+Om du vill uppdatera aviseringar automatiskt över flera kunder använder du en [Azure Resource Graph](../../governance/resource-graph/overview.md) -fråga för att filtrera efter aviseringar. Du kan fästa frågan på din instrument panel och välja alla lämpliga kunder och prenumerationer.
+
+Följande exempel fråga visar allvarlighets grad 0 och 1 aviseringar, som uppdateras var 60: e minut.
+
+```kusto
+alertsmanagementresources
+| where type == "microsoft.alertsmanagement/alerts"
+| where properties.essentials.severity =~ "Sev0" or properties.essentials.severity =~ "Sev1"
+| where properties.essentials.monitorCondition == "Fired"
+| where properties.essentials.startDateTime > ago(60m)
+| project StartTime=properties.essentials.startDateTime,name,Description=properties.essentials.description, Severity=properties.essentials.severity, subscriptionId
+| sort by tostring(StartTime)
+```
 
 ## <a name="next-steps"></a>Nästa steg
 

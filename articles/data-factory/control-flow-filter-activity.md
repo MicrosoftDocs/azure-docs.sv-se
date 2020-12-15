@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.openlocfilehash: 650d55ede8e6099252858c9118c8705f59ab6780
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 2026bdd1898df460bfed2ae9d5544f90c532308f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498548"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507446"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Filtrera aktivitet i Azure Data Factory
 Du kan använda en filter aktivitet i en pipeline för att tillämpa ett filter uttryck på en indatakälla. 
@@ -37,12 +37,12 @@ Du kan använda en filter aktivitet i en pipeline för att tillämpa ett filter 
 
 ## <a name="type-properties"></a>Typ egenskaper
 
-Egenskap | Beskrivning | Tillåtna värden | Obligatorisk
+Egenskap | Beskrivning | Tillåtna värden | Krävs
 -------- | ----------- | -------------- | --------
-name | `Filter`Aktivitetens namn. | Sträng | Yes
-typ | Måste vara inställd på **filter**. | Sträng | Yes
-moduletype | Villkor som ska användas för att filtrera indatatypen. | Uttryck | Yes
-objekt | Ange matrisen som filtret ska tillämpas på. | Uttryck | Yes
+name | `Filter`Aktivitetens namn. | Sträng | Ja
+typ | Måste vara inställd på **filter**. | Sträng | Ja
+moduletype | Villkor som ska användas för att filtrera indatatypen. | Uttryck | Ja
+objekt | Ange matrisen som filtret ska tillämpas på. | Uttryck | Ja
 
 ## <a name="example"></a>Exempel
 

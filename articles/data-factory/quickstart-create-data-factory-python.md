@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 1ebeae8e16acf4ca2b82270cc6ec40151794ad58
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: cc25ce4aa51535bbfd03d99ed413afa66a184fdb
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497341"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508789"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Snabbstart: Skapa en datafabrik och pipeline med Python
 
@@ -34,7 +34,7 @@ Azure Data Factory är en molnbaserad data integrerings tjänst som gör att du 
 
 Pipelines kan mata in data från olika data lager. Pipelines bearbetar eller transformerar data med hjälp av beräknings tjänster som Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics och Azure Machine Learning. Pipelines publicerar utdata till data lager som Azure Synapse Analytics för Business Intelligence-program (BI).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Ett Azure-konto med en aktiv prenumeration. [Skapa ett kostnads fritt](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -421,7 +421,7 @@ Konsolen skriver ut förloppet för skapandet av datafabriken, den länkade tjä
 
 Här är exempel på utdata:
 
-```json
+```console
 Name: <data factory name>
 Id: /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.DataFactory/factories/<data factory name>
 Location: eastus

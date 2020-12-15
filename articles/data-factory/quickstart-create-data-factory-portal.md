@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 11/09/2020
+ms.date: 12/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 9d3c3dc3b9a83973e41bf5d7dd204316508c2cb4
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 76a490ed28f940620db7835c4cec145740f48503
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96013402"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509027"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Snabbstart: Skapa en datafabrik via gränssnittet i Azure Data Factory 
 
@@ -40,47 +40,47 @@ Om du tittar på den här videon får du hjälp med att förstå Data Factory-an
 ## <a name="create-a-data-factory"></a>Skapa en datafabrik
 
 1. Starta webbläsaren **Microsoft Edge** eller **Google Chrome**. Användargränssnittet för Data Factory stöds för närvarande bara i webbläsarna Microsoft Edge och Google Chrome.
-1. Gå till [Azure-portalen](https://portal.azure.com). 
+1. Öppna [Azure-portalen](https://portal.azure.com). 
 1. I menyn i Azure-portalen väljer du **Skapa en resurs**.
 1. Välj **integration** och välj sedan **Data Factory**. 
    
    ![Valet Data Factory i fönstret Nytt](./media/doc-common-process/new-azure-data-factory-menu.png)
-1. På sidan **Ny datafabrik** anger du **ADFTutorialDataFactory** som **Namn**. 
+1. På sidan **skapa Data Factory** under fliken **grundläggande** väljer du din Azure- **prenumeration** där du vill skapa data fabriken.
+1. Gör något av följande för **Resursgrupp**:
+
+    a. Välj en befintlig resurs grupp i den nedrullningsbara listan.
+
+    b. Välj **Skapa ny** och ange namnet på en ny resurs grupp.
+    
+    Mer information om resursgrupper finns i [Använda resursgrupper för att hantera Azure-resurser](../azure-resource-manager/management/overview.md). 
+
+1. För **region** väljer du platsen för data fabriken.
+
+   I listan visas endast platser som Data Factory har stöd för och var dina Azure Data Factory-metadata kommer att lagras. De associerade data lag ren (t. ex. Azure Storage och Azure SQL Database) och beräkningarna (som Azure HDInsight) som Data Factory använder kan köras i andra regioner.
  
+1. Som **namn** anger du **ADFTutorialDataFactory**.
    Namnet på Azure Data Factory måste vara *globalt unikt*. Om du ser följande fel ändrar du namnet på data fabriken (till exempel **&lt; dittnamn &gt; ADFTutorialDataFactory**) och försöker skapa igen. Namngivningsregler för Data Factory-artefakter finns i artikeln [Data Factory – namnregler](naming-rules.md).
   
    ![Fel när ett namn inte är tillgängligt](./media/doc-common-process/name-not-available-error.png)
-1. Välj den Azure-prenumeration där du vill skapa den nya datafabriken för **Prenumeration**. 
-1. För **Resursgrupp** utför du något av följande steg:
-     
-   - Välj **Använd befintlig** och välj en befintlig resursgrupp från listan. 
-   - Välj **Skapa ny** och ange namnet på en resurs grupp.   
-         
-   Mer information om resursgrupper finns i [Använda resursgrupper till att hantera Azure-resurser](../azure-resource-manager/management/overview.md).  
+
 1. För **Version** väljer du **V2**.
-1. För **Plats** väljer du en plats för datafabriken.
 
-   I listan visas endast platser som Data Factory har stöd för och var dina Azure Data Factory-metadata kommer att lagras. De associerade data lag ren (t. ex. Azure Storage och Azure SQL Database) och beräkningarna (som Azure HDInsight) som Data Factory använder kan köras i andra regioner.
+1. Välj **Nästa: git-konfiguration** och välj sedan kryss rutan **Konfigurera git senare** .
 
-1. Välj **Nästa: git-konfiguration** och välj sedan **Konfigurera git senare**.
+1. Välj **Granska + skapa** och välj **skapa** när verifieringen har slutförts. När du har skapat filen väljer du **gå till resurs** för att gå till sidan **Data Factory** . 
 
-1. Välj **Skapa**. När du har skapat filen väljer du **gå till resurs** för att gå till sidan **Data Factory** . 
-
-1. Välj panelen **Författare och övervakare** för att starta användargränssnittet för Azure Data Factory på en separat flik.
+1. Välj panelen **författare & Monitor** för att starta programmet Azure Data Factory användar gränssnitt (UI) på en separat flik i webbläsaren.
    
    ![Startsidan för datafabriken med panelen Författare och övervakare](./media/doc-common-process/data-factory-home-page.png)
    
    > [!NOTE]
    > Om du ser att webbläsaren har fastnat vid "auktorisering" avmarkerar du kryss rutan **blockera cookies från tredje part och plats data** . Eller behåll det markerat, skapa ett undantag för **login.microsoftonline.com** och försök sedan att öppna appen igen.
    
-1. På sidan **Nu sätter vi igång** växlar du till fliken **Författare** i den vänstra panelen. 
-
-    ![Sidan ”Nu sätter vi igång”](./media/doc-common-process/get-started-page-author-button.png)
 
 ## <a name="create-a-linked-service"></a>Skapa en länkad tjänst
 I den här proceduren skapar du en länkad tjänst för att länka ditt Azure Storage-konto till data fabriken. Den länkade tjänsten har anslutningsinformationen som Data Factory-tjänsten använder vid körning för att ansluta till den.
 
-1. Öppna [fliken Hantera](./author-management-hub.md) i det vänstra fönstret.
+1. Öppna fliken [**Hantera**](./author-management-hub.md) i det vänstra fönstret på sidan Azure Data Factory UI.
 
 1. På sidan länkade tjänster väljer du **+ ny** för att skapa en ny länkad tjänst.
 
@@ -109,10 +109,13 @@ Datauppsättningen för indata representerar källdata i indatamappen. I definit
 Datauppsättningen för utdata representerar de data som kopieras till målet. I definitionen av datauppsättningen för utdata anger du blobcontainern (**adftutorial**), mappen (**output**) och filen som data ska kopieras till. Varje pipelinekörning har ett unikt ID tilldelat. Du kan komma åt detta ID via systemvariabeln **RunId**. Namnet på utdatafilen utvärderas dynamiskt baserat på pipelinens körnings-ID.   
 
 I de länkade tjänst inställningarna angav du det Azure Storage konto som innehåller källdata. I inställningarna för källdatauppsättningen anger du exakt var källdata finns (blobcontainer, mapp och fil). I inställningarna för mottagaruppsättningen anger du var du vill kopiera data (blobcontainer, mapp och fil). 
- 
+
+1. Välj fliken **författare** i det vänstra fönstret.
+
 1. Välj **+** knappen (plus) och välj sedan **data uppsättning**.
 
    ![Meny för att skapa en datauppsättning](./media/quickstart-create-data-factory-portal/new-dataset-menu.png)
+
 1. På sidan **ny data uppsättning** väljer du **Azure Blob Storage** och väljer sedan **Fortsätt**. 
 
 1. På sidan **Välj format** väljer du format typ för dina data och väljer sedan **Fortsätt**. I det här fallet väljer du **binär** när du kopierar filer som-är utan att parsa innehållet.
@@ -163,7 +166,7 @@ I den här proceduren skapar och verifierar du en pipeline med en kopieringsakti
 
 1. Växla till fliken **Mottagare** i inställningarna för kopieringsaktiviteten och välj **OutputDataset** som **Datauppsättning för mottagare**.
 
-1. Verifiera pipelineinställningarna genom att klicka på **Verifiera** i verktygsfältet för pipelinen. Bekräfta att pipelinen har verifierats. Klicka på **>>** knappen (högerpil) för att stänga verifierings resultatet. 
+1. Verifiera pipelineinställningarna genom att klicka på **Verifiera** i verktygsfältet för pipelinen. Bekräfta att pipelinen har verifierats. Om du vill stänga verifierings resultatet väljer du verifierings knappen i det övre högra hörnet. 
 
    ![Verifiera en pipeline](./media/quickstart-create-data-factory-portal/pipeline-validate.png)
 
@@ -185,7 +188,7 @@ I den här proceduren distribuerar du entiteter (länkade tjänster, datauppsät
 
     ![Publicera alla](./media/quickstart-create-data-factory-portal/publish-all.png)
 
-1. Om du vill utlösa pipelinen manuellt väljer du **Lägg till utlösare** i pipeline-verktygsfältet och väljer sedan **Utlös nu**. På sidan **pipeline-körning** väljer du **Slutför**.
+1. Om du vill utlösa pipelinen manuellt väljer du **Lägg till utlösare** i pipeline-verktygsfältet och väljer sedan **Utlös nu**. På sidan för **pipeline-körning** väljer du **OK**.
 
 ## <a name="monitor-the-pipeline"></a>Övervaka pipeline
 

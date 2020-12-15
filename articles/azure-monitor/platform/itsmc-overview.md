@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 6c9e2ae420e56c5ef99ff79cdcb49592bc7e049e
-ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
+ms.openlocfilehash: 3d4e5ad0b24b7163072d7e3110a523dad9608923
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97371993"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507379"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Anslut Azure till ITSM-verktyg med hjälp av Anslutningsprogram för hantering av IT-tjänster (ITSM)
 
@@ -152,12 +152,12 @@ Använd följande procedur för att skapa arbets objekt:
 
 9. Om du väljer **skapa enskilda arbets objekt för varje konfigurations objekt** kommer varje konfigurations objekt ha sitt eget arbets objekt. Det kommer att finnas ett arbets objekt per konfigurations objekt. Det kommer att uppdateras enligt de aviseringar som kommer att skapas.
 
-   * I ett fall som du väljer i list rutan "incident" eller "varning" i arbets objekt: om du avmarkerar kryss rutan **skapa enskilda arbets objekt för varje konfigurations objekt** skapas ett nytt arbets objekt i varje avisering. Det kan finnas mer än en avisering per konfigurations objekt.
+    * I ett fall som du väljer i list rutan "incident" eller "varning" i arbets objekt: om du avmarkerar kryss rutan **skapa enskilda arbets objekt för varje konfigurations objekt** skapas ett nytt arbets objekt i varje avisering. Det kan finnas mer än en avisering per konfigurations objekt.
 
-   ![Skärm bild som visar ITSM Ticket-fönstret.](media/itsmc-overview/itsm-action-configuration.png)
-   
-   * I ett fall som du väljer i list rutan arbets objekt "händelse": om du väljer **skapa enskilda arbets objekt för varje loggpost** i alternativ knappar, kommer varje avisering att skapa ett nytt arbets objekt. Om du väljer **skapa enskilda arbets objekt för varje konfigurations objekt** i alternativet alternativ knappar, kommer varje konfigurations objekt ha sitt eget arbets objekt.
-   ![Skärm bild som visar ITSM Ticket-fönstret.](media/itsmc-overview/itsm-action-configuration-event.png)
+       ![Skärm bild som visar fönstret ITSM incident.](media/itsmc-overview/itsm-action-configuration.png)
+
+    * I ett fall som du väljer i list rutan arbets objekt "händelse": om du väljer **skapa enskilda arbets objekt för varje loggpost** i alternativ knappar, kommer varje avisering att skapa ett nytt arbets objekt. Om du väljer **skapa enskilda arbets objekt för varje konfigurations objekt** i alternativet alternativ knappar, kommer varje konfigurations objekt ha sitt eget arbets objekt.
+   ![Skärm bild som visar händelse fönstret för ITSM.](media/itsmc-overview/itsm-action-configuration-event.png)
 
 10. Välj **OK**.
 
@@ -169,26 +169,6 @@ När du skapar eller redigerar en regel för Azure-avisering använder du en åt
 >
 >
 >- Fältet kort beskrivning i varnings regel definitionen är begränsat till 40 tecken när du skickar det med hjälp av åtgärden ITSM.
-
-
-## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Visualisera och analysera incidenter och data för ändringsbegäran
-
-Beroende på din konfiguration när du konfigurerar en anslutning kan ITSMC synkronisera upp till 120 dagar av incidenten och data för ändringsbegäran. Schemat för logg poster för dessa data finns i [Nästa avsnitt](#additional-information) i den här artikeln.
-
-Du kan visualisera incident-och ändrings begär ande data med hjälp av ITSMC-instrument panelen:
-
-![Skärm bild som visar ITSMC-instrumentpanelen.](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
-
-Instrument panelen innehåller också information om anslutnings status, som du kan använda som utgångs punkt för att analysera problem med anslutningarna.
-
-Du kan också visualisera de incidenter som synkroniseras mot de berörda datorerna i Tjänstkarta.
-
-Tjänstkarta identifierar automatiskt program komponenterna i Windows-och Linux-system och mappar kommunikationen mellan tjänsterna. Du kan visa dina servrar när du ser dem: som sammankopplade system som levererar kritiska tjänster. Tjänstkarta visar anslutningar mellan servrar, processer och portar i alla TCP-anslutna arkitekturer. Förutom installationen av en agent krävs ingen konfiguration. Mer information finns i [använda tjänstkarta](../insights/service-map.md).
-
-Om du använder Tjänstkarta kan du Visa Service Desk-objekten som skapats i ITSM-lösningar, som du ser här:
-
-![Skärm bild som visar Log Analytics skärmen.](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
-
 
 ## <a name="additional-information"></a>Ytterligare information
 
@@ -263,7 +243,7 @@ ServiceDeskWorkItemType_s = "ändringsbegäran"
 
 | Log Analytics fält | ServiceNow-fält |
 |:--- |:--- |
-| ServiceDeskId_s| Antal |
+| ServiceDeskId_s| Tal |
 | IncidentState_s | Stat |
 | Urgency_s |Angelägenhetsgrad |
 | Impact_s |Påverkan|
@@ -285,7 +265,7 @@ ServiceDeskWorkItemType_s = "ändringsbegäran"
 
 | Log Analytics | ServiceNow-fält |
 |:--- |:--- |
-| ServiceDeskId_s| Antal |
+| ServiceDeskId_s| Tal |
 | CreatedBy_s | Begärd av |
 | ClosedBy_s | Stängd av |
 | AssignedTo_s | Tilldelad  |
@@ -299,32 +279,12 @@ ServiceDeskWorkItemType_s = "ändringsbegäran"
 | Impact_s| Påverkan|
 | RequestedDate_t  | Begärd efter datum |
 | ClosedDate_t | Stängnings datum |
-| PlannedStartDate_t  |     Planerat start datum |
-| PlannedEndDate_t  |   Planerat slutdatum |
+| PlannedStartDate_t  | Planerat start datum |
+| PlannedEndDate_t  | Planerat slutdatum |
 | WorkStartDate_t  | Verkligt start datum |
 | WorkEndDate_t | Verkligt slutdatum|
 | Description_s | Beskrivning |
 | Dator  | Konfigurations objekt |
-
-
-## <a name="troubleshoot-itsm-connections"></a>Felsöka ITSM-anslutningar
-- Gör så här om en anslutning Miss lyckas från den anslutna källans användar gränssnitt och du får ett **fel när du sparar anslutnings** meddelandet:
-   - För ServiceNow-, Cherwell-och upphandlings anslutningar:  
-     - Kontrol lera att du har angett användar namn, lösen ord, klient-ID och klient hemlighet korrekt för varje anslutning.  
-     - Se till att du har tillräcklig behörighet i motsvarande ITSM-produkt för att upprätta anslutningen.  
-   - För Service Manager anslutningar:  
-     - Se till att webbappen har distribuerats och att hybrid anslutningen har skapats. Om du vill kontrol lera att anslutningen har upprättats med den lokala Service Manager datorn går du till webbappens URL enligt beskrivningen i dokumentationen för att skapa en [hybrid anslutning](./itsmc-connections.md#configure-the-hybrid-connection).  
-
-- Om data från ServiceNow inte kommer att synkroniseras till Log Analytics, se till att ServiceNow-instansen inte är i vilo läge. ServiceNow dev-instanser går ibland till vilo läge när de är inaktiva under en längre tid. Rapportera problemet om det inte är vad som händer.
-- Om Log Analytics-aviseringar för brand men arbets objekt inte skapas i ITSM-produkten, om konfigurations objekt inte skapas/länkas till arbets objekt, eller för annan information, se följande resurser:
-   -  ITSMC: lösningen visar en sammanfattning av anslutningar, arbets objekt, datorer med mera. Välj den panel som har etiketten **kopplings status** . Då kommer du att **Logga sökningen** med den relevanta frågan. Titta på logg poster med en `LogType_S` av `ERROR` för mer information.
-   - Sidan **loggs ökning** : Visa fel och relaterad information direkt med hjälp av frågan `*ServiceDeskLog_CL*` .
-
-## <a name="troubleshoot-service-manager-web-app-deployment"></a>Felsöka Service Manager Web App-distribution
--   Om du har problem med att distribuera webbappar kontrollerar du att du har behörighet att skapa/distribuera resurser i prenumerationen.
--   Om du får en **objekt referens som inte är inställt på en instans av ett objekt** fel när du kör [skriptet](itsmc-service-manager-script.md), måste du se till att du har angett giltiga värden i avsnittet **användar konfiguration** .
--   Om du inte kan skapa Service Bus Relay-namnområdet kontrollerar du att den nödvändiga resurs leverantören är registrerad i prenumerationen. Om den inte är registrerad skapar du Service Bus Relay-namnområdet manuellt från Azure Portal. Du kan också skapa den när du [skapar hybrid anslutningen](./itsmc-connections.md#configure-the-hybrid-connection) i Azure Portal.
-
 
 ## <a name="contact-us"></a>Kontakta oss
 

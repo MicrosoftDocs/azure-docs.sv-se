@@ -9,22 +9,22 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/23/2020
+ms.date: 12/14/2020
 ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 2815041f32ebd7c2dae235229d1ca19aad253f7d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: e663cdd3846e804d1dcf96076c07b9a3db84272c
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503629"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507752"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a>Konfigurera livs längd principer för token (förhands granskning)
 Många scenarier är möjliga i Azure AD när du kan skapa och hantera livs längder för token för appar, tjänstens huvud namn och din övergripande organisation.  
 
 > [!IMPORTANT]
-> Efter den 30 januari 2021 kommer klienter inte längre att kunna konfigurera uppdateringar och livstider för sessionstoken och Azure AD slutar att svara på befintlig uppdatering och sessionstoken i principer efter det datumet. Du kan fortfarande konfigurera livstid för åtkomsttoken efter utfasningen.  Om du vill veta mer kan du läsa om [livstiden för token i Microsoft Identity Platform](active-directory-configurable-token-lifetimes.md).
+> Efter den 2020 kommer klient organisationer inte längre att kunna konfigurera livstid för uppdatering och sessionstoken.  Azure Active Directory slutar att svara på befintlig konfiguration och sessionstoken i principer efter 30 januari 2021. Du kan fortfarande konfigurera livstid för åtkomsttoken efter utfasningen.  Om du vill veta mer kan du läsa om [livstiden för token i Microsoft Identity Platform](active-directory-configurable-token-lifetimes.md).
 > Vi har implementerat [hanterings funktioner för autentisering](../conditional-access/howto-conditional-access-session-lifetime.md)   i Azure AD villkorlig åtkomst. Du kan använda den här nya funktionen för att konfigurera livstid för uppdateringstoken genom att ange inloggnings frekvens.
 
 
@@ -41,7 +41,7 @@ I exemplen får du lära dig att:
 * Skapa en princip för en intern app som anropar ett webb-API
 * Hantera en avancerad princip
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 I följande exempel kan du skapa, uppdatera, länka och ta bort principer för appar, tjänstens huvud namn och din övergripande organisation. Om du är nybörjare på Azure AD rekommenderar vi att du lär dig [hur du skaffar en Azure AD-klient](quickstart-create-new-tenant.md) innan du fortsätter med de här exemplen.  
 
 Gör så här för att komma igång:
@@ -88,7 +88,7 @@ I det här exemplet skapar du en princip som gör det möjligt för användarna 
         Get-AzureADPolicy -id | set-azureadpolicy -Definition @($((Get-AzureADPolicy -id ).Replace(" ","")))
         ```
 
-    1. Om du vill se den nya principen och hämta principens **ObjectID**kör du följande kommando:
+    1. Om du vill se den nya principen och hämta principens **ObjectID** kör du följande kommando:
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
@@ -116,7 +116,7 @@ I det här exemplet skapar du en princip som kräver att användare autentiseras
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
-    1. Om du vill se den nya principen och hämta principen **ObjectID**kör du cmdleten [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) :
+    1. Om du vill se den nya principen och hämta principen **ObjectID** kör du cmdleten [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) :
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
@@ -153,7 +153,7 @@ I det här exemplet skapar du en princip som kräver att användare autentiseras
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-1. Tilldela principen till ditt webb-API. Du måste också hämta **ObjectID** för ditt program. Använd cmdleten [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) för att hitta appens **ObjectId**eller Använd [Azure Portal](https://portal.azure.com/).
+1. Tilldela principen till ditt webb-API. Du måste också hämta **ObjectID** för ditt program. Använd cmdleten [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) för att hitta appens **ObjectId** eller Använd [Azure Portal](https://portal.azure.com/).
 
     Hämta **ObjectID** för appen och tilldela principen:
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: 8594250d72754e6b7d2a6d8c27d3d5bcd0e9c8e4
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 16b924f486215d972477e93c4e199e7076a0a531
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920877"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508891"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Kopiera flera tabeller i bulk genom att använda Azure Data Factory i Azure Portal
 
@@ -25,7 +25,7 @@ ms.locfileid: "96920877"
 Den här självstudien visar hur **du kopierar ett antal tabeller från Azure SQL Database till Azure Synapse Analytics**. Du kan även använda samma mönster i andra kopieringssituationer. Du kan till exempel kopiera tabeller från SQL Server/Oracle till Azure SQL Database/Azure Synapse Analytics/Azure blob och kopiera olika sökvägar från blob till Azure SQL Database tabeller.
 
 > [!NOTE]
-> - Om du inte har använt Azure Data Factory tidigare kan du läsa [Introduktion till Azure Data Factory](introduction.md).
+> Om du inte har använt Azure Data Factory tidigare kan du läsa [Introduktion till Azure Data Factory](introduction.md).
 
 Sett på en hög nivå ingår följande steg i självstudierna:
 
@@ -99,9 +99,7 @@ Om du vill kontrol lera och aktivera den här inställningen går du till Server
 1. När du har skapat filen väljer du **gå till resurs** för att gå till sidan **Data Factory** . 
    
 1. Klicka på panelen **Författare och övervakare** för att starta användargränssnittet för Data Factory på en separat flik.
-1. På sidan **nu sätter vi igång** växlar du till fliken **författare** i den vänstra panelen, som du ser i följande bild:
 
-     ![Sidan Kom igång](./media/doc-common-process/get-started-page-author-button.png)
 
 ## <a name="create-linked-services"></a>Skapa länkade tjänster
 Du kan skapa länkade tjänster för att länka dina datalager och beräkna till en datafabrik. En länkad tjänst har anslutningsinformationen som Data Factory-tjänsten använder för att ansluta till datalagret i körningsfasen. 
@@ -177,7 +175,9 @@ I den här självstudien är käll- och måltabellerna i SQL inte hårdkodade i 
 
 ### <a name="create-a-dataset-for-source-sql-database"></a>Skapa en datauppsättning för SQL Database-källan
 
-1. Klicka på **+ (plus)** i den vänstra rutan och klicka sedan på **data uppsättning**. 
+1. Välj fliken **författare** i det vänstra fönstret.
+
+1. Välj **+** (plus) i den vänstra rutan och välj sedan **data uppsättning**. 
 
     ![Menyn Ny datauppsättning](./media/tutorial-bulk-copy-portal/new-dataset-menu.png)
 1. I fönstret **ny data uppsättning** väljer du **Azure SQL Database** och klickar sedan på **Fortsätt**. 
@@ -277,7 +277,7 @@ I den här självstudien skapar du två pipeliner: **IterateAndCopySQLTables** o
     1. Markera kryss rutan för **att aktivera mellanlagring**.
     1. Välj **AzureStorageLinkedService** för **Store Account Linked Service** (Länkad tjänst för lagringskonto).
 
-1. Verifiera pipelineinställningarna genom att klicka på **Verifiera** i verktygsfältet för pipelinen. Kontrol lera att det inte finns något validerings fel. Om du vill stänga **verifieringsrapporten för pipeline** klickar du på **>>**.
+1. Verifiera pipelineinställningarna genom att klicka på **Verifiera** i verktygsfältet för pipelinen. Kontrol lera att det inte finns något validerings fel. Om du vill stänga **verifierings rapporten för pipeline** klickar du på vinkelparenteser med dubbla vinklar **>>** .
 
 ### <a name="create-the-pipeline-gettablelistandtriggercopydata"></a>Skapa pipelinen GetTableListAndTriggerCopyData
 
@@ -285,6 +285,8 @@ Den här pipelinen gör två åtgärder:
 
 * Den söker i Azure SQL Database-systemtabellen för att få fram listan med tabeller som ska kopieras
 * den utlöser pipelinen ”IterateAndCopySQLTables” för att utföra den faktiska kopieringen.
+
+Här följer stegen för att skapa pipelinen:
 
 1. I den vänstra rutan klickar du på **+ (plus)** och sedan på **Pipeline**.
 1. I panelen Allmänt under **Egenskaper** ändrar du namnet på pipelinen till **GetTableListAndTriggerCopyData**. 

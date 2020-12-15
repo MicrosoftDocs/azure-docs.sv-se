@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 6b522f234343cc6a50d76607d1629c46cd180b7d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: df6a4053eb70c02e27599bbd9086dfa32b0bcc65
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95894022"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508840"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Förbättra syntesen med SSML (Speech syntes Markup Language)
 
@@ -58,9 +58,9 @@ Varje SSML-dokument skapas med SSML-element (eller taggar). Dessa element använ
 
 | Attribut | Beskrivning | Obligatorisk/valfri |
 |-----------|-------------|---------------------|
-| `version` | Anger den version av SSML-specifikationen som används för att tolka dokument markeringen. Den aktuella versionen är 1,0. | Obligatorisk |
-| `xml:lang` | Anger språket för rot dokumentet. Värdet får innehålla gemener, gemener och versaler (t. ex. `en` ) eller språk koden och land/region (t. ex. `en-US` ). | Obligatorisk |
-| `xmlns` | Anger den URI till dokumentet som definierar ord listan (element typerna och attributnamnet) för SSML-dokumentet. Aktuell URI är http://www.w3.org/2001/10/synthesis . | Obligatorisk |
+| `version` | Anger den version av SSML-specifikationen som används för att tolka dokument markeringen. Den aktuella versionen är 1,0. | Krävs |
+| `xml:lang` | Anger språket för rot dokumentet. Värdet får innehålla gemener, gemener och versaler (t. ex. `en` ) eller språk koden och land/region (t. ex. `en-US` ). | Krävs |
+| `xmlns` | Anger den URI till dokumentet som definierar ord listan (element typerna och attributnamnet) för SSML-dokumentet. Aktuell URI är http://www.w3.org/2001/10/synthesis . | Krävs |
 
 ## <a name="choose-a-voice-for-text-to-speech"></a>Välj röst för text till tal
 
@@ -78,7 +78,7 @@ Varje SSML-dokument skapas med SSML-element (eller taggar). Dessa element använ
 
 | Attribut | Beskrivning | Obligatorisk/valfri |
 |-----------|-------------|---------------------|
-| `name` | Identifierar rösten som används för text till tal-utdata. En fullständig lista över vilka röster som stöds finns i [språk stöd](language-support.md#text-to-speech). | Obligatorisk |
+| `name` | Identifierar rösten som används för text till tal-utdata. En fullständig lista över vilka röster som stöds finns i [språk stöd](language-support.md#text-to-speech). | Krävs |
 
 **Exempel**
 
@@ -101,7 +101,7 @@ I `speak` -elementet kan du ange flera röster för text till tal-utdata. Dessa 
 
 | Attribut | Beskrivning | Obligatorisk/valfri |
 |-----------|-------------|---------------------|
-| `name` | Identifierar rösten som används för text till tal-utdata. En fullständig lista över vilka röster som stöds finns i [språk stöd](language-support.md#text-to-speech). | Obligatorisk |
+| `name` | Identifierar rösten som används för text till tal-utdata. En fullständig lista över vilka röster som stöds finns i [språk stöd](language-support.md#text-to-speech). | Krävs |
 
 > [!IMPORTANT]
 > Flera röster är inkompatibla med ord gränsens funktion. Ord gränsen måste inaktive ras för att flera röster ska kunna användas.
@@ -200,6 +200,7 @@ För närvarande stöds anpassning av format justeringar för dessa neurala-rös
 * `en-US-GuyNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
+* `zh-CN-YunyeNeural`
 * `zh-CN-YunxiNeural` Förhandsgranskningsvyn
 * `zh-CN-XiaohanNeural` Förhandsgranskningsvyn
 * `zh-CN-XiaomoNeural` Förhandsgranskningsvyn
@@ -243,7 +244,7 @@ Ovanstående ändringar tillämpas på menings nivå, och format och roll-spelar
 
 Använd den här tabellen för att avgöra vilka tal format som stöds för varje neurala röst.
 
-| Röst                   | Format                     | Description                                                 |
+| Röst                   | Format                     | Beskrivning                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
 | `en-US-AriaNeural`      | `style="newscast-formal"` | Uttrycker en formell, trygg och auktoritativ ton för nyhets leverans |
 |                         | `style="newscast-casual"` | Uttrycker en mångsidig och vardaglig ton för allmän nyhets leverans        |
@@ -271,7 +272,14 @@ Använd den här tabellen för att avgöra vilka tal format som stöds för varj
 |                         | `style="gentle"`          | Uttrycker en viss, avslutningen och Pleasant ton, med lägre färgdjup och Vocal energi         |   
 |                         | `style="lyrical"`         | Uttrycker känslor i ett Melodic-och sentimental-sätt         |   
 | `zh-CN-YunyangNeural`   | `style="customerservice"` | Uttrycker en vänlig och användbar ton för kund support  | 
-| `zh-CN-YunxiNeural`    | `style="cheerful"`        | Uttrycker en takt och entusiastisk ton, med högre färgdjup och Vocal energi                         |
+| `zh-CN-YunyeNeural`     | `style="calm"`            | Uttrycker en häftig, samlad och bestående attityd när du talar. Ton, färgdjup och prosody är mycket mer enhetligt jämfört med andra typer av tal.    | 
+|                         | `style="cheerful"`        | Uttrycker en takt och entusiastisk ton, med högre färgdjup och Vocal energi                         |
+|                         | `style="sad"`             | Uttrycker en sorrowful-ton, med högre avstånd, mindre intensitet och lägre Vocal energi. Vanliga indikatorer för den här känslo skulle vara whimpers eller grått under tal.            |
+|                         | `style="angry"`           | Uttrycker en Angry-och uppretad-ton, med lägre färgdjup, högre intensitet och högre Vocal energi. Högtalaren är i ett tillstånd att vara Irate, avstängt och felfritt.       |
+|                         | `style="fearful"`         | Uttrycker en Scared-och nerv ton, med högre färgdjup, högre Vocal energi och snabbare hastighet. Högtalaren är i läget tenseness och uneasiness.                          |
+|                         | `style="disgruntled"`     | Uttrycker en disdainful och en klagad ton. Tal för den här känslo visar avnöjes och bevarar.              |
+|                         | `style="serious"`         | Uttrycker en strikt och kommando rads ton. Talare låter ofta styvare och mycket mindre avslappnad med fast takt.          |
+| `zh-CN-YunxiNeural`     | `style="cheerful"`        | Uttrycker en takt och entusiastisk ton, med högre färgdjup och Vocal energi                         |
 |                         | `style="sad"`             | Uttrycker en sorrowful-ton, med högre avstånd, mindre intensitet och lägre Vocal energi. Vanliga indikatorer för den här känslo skulle vara whimpers eller grått under tal.            |
 |                         | `style="angry"`           | Uttrycker en Angry-och uppretad-ton, med lägre färgdjup, högre intensitet och högre Vocal energi. Högtalaren är i ett tillstånd att vara Irate, avstängt och felfritt.       |
 |                         | `style="fearful"`         | Uttrycker en Scared-och nerv ton, med högre färgdjup, högre Vocal energi och snabbare hastighet. Högtalaren är i läget tenseness och uneasiness.                          |
@@ -383,7 +391,7 @@ Använd `break` elementet för att infoga pauser (eller brytningar) mellan ord, 
 | `strength` | Anger den relativa varaktigheten för en paus med något av följande värden:<ul><li>inget</li><li>x-svaga</li><li>svaga</li><li>medel (standard)</li><li>kraftfull</li><li>x – stark</li></ul> | Valfritt |
 | `time` | Anger den absoluta varaktigheten för en paus i sekunder eller millisekunder. värdet ska vara mindre än 5000ms. Exempel på giltiga värden är `2s` och `500ms` | Valfritt |
 
-| Styrka                      | Description |
+| Styrka                      | Beskrivning |
 |-------------------------------|-------------|
 | Ingen, eller om inget värde anges | 0 MS        |
 | x-svaga                        | 250 MS      |
@@ -419,8 +427,8 @@ Använd `mstts:silence` elementet för att infoga pauser före eller efter text,
 
 | Attribut | Beskrivning | Obligatorisk/valfri |
 |-----------|-------------|---------------------|
-| `type` | Anger platsen för tystnad som ska läggas till: <ul><li>Ledande – i början av texten </li><li>Svans – i slutet av texten </li><li>Sentenceboundary – mellan intilliggande meningar </li></ul> | Obligatorisk |
-| `Value` | Anger den absoluta varaktigheten för en paus i sekunder eller millisekunder. värdet ska vara mindre än 5000ms. Exempel på giltiga värden är `2s` och `500ms` | Obligatorisk |
+| `type` | Anger platsen för tystnad som ska läggas till: <ul><li>Ledande – i början av texten </li><li>Svans – i slutet av texten </li><li>Sentenceboundary – mellan intilliggande meningar </li></ul> | Krävs |
+| `Value` | Anger den absoluta varaktigheten för en paus i sekunder eller millisekunder. värdet ska vara mindre än 5000ms. Exempel på giltiga värden är `2s` och `500ms` | Krävs |
 
 **Exempel** I det här exemplet `mtts:silence` används för att lägga till 200 MS av tystnaden mellan två meningar.
 ```xml
@@ -561,7 +569,7 @@ Om du vill definiera hur flera entiteter ska läsas kan du skapa ett anpassat le
 
 `lexicon`Elementet innehåller minst ett- `lexeme` element. Varje `lexeme` -element innehåller minst ett `grapheme` element och ett eller flera `grapheme` element `alias` , och `phoneme` . `grapheme`Elementet innehåller text som beskriver <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Orthography </a>. `alias`Elementen används för att ange uttal av en akronym eller en förkortad term. `phoneme`Elementet innehåller text som beskriver hur `lexeme` uttalas.
 
-Det är viktigt att Observera att du inte kan ange uttal av en fras direkt med hjälp av det anpassade lexikonet. Om du behöver ange uttal för en akronym eller en förkortad term, anger du först ett `alias` och sedan associerar du `phoneme` med det `alias` . Exempel:
+Det är viktigt att Observera att du inte kan ange uttal av en fras direkt med hjälp av det anpassade lexikonet. Om du behöver ange uttal för en akronym eller en förkortad term, anger du först ett `alias` och sedan associerar du `phoneme` med det `alias` . Till exempel:
 
 ```xml
   <lexeme>
@@ -574,7 +582,7 @@ Det är viktigt att Observera att du inte kan ange uttal av en fras direkt med h
   </lexeme>
 ```
 
-Du kan också ange ett förväntat `alias` eller förkortat villkor för förkortningen. Exempel:
+Du kan också ange ett förväntat `alias` eller förkortat villkor för förkortningen. Till exempel:
 ```xml
   <lexeme>
     <grapheme>Scotland MV</grapheme> 
@@ -657,8 +665,8 @@ Eftersom prosodic-attributvärden kan variera över ett brett intervall, tolkar 
 
 | Attribut | Beskrivning | Obligatorisk/valfri |
 |-----------|-------------|---------------------|
-| `pitch` | Anger textens bas linje bredd. Du kan uttrycka bredden som:<ul><li>Ett absolut värde, uttryckt som ett tal följt av "Hz" (Hertz). Exempelvis `<prosody pitch="600Hz">some text</prosody>`.</li><li>Ett relativt värde, uttryckt som ett tal som föregås av "+" eller "-" och följt av "Hz" eller "St", som anger ett belopp för att ändra bredden. Till exempel: `<prosody pitch="+80Hz">some text</prosody>` eller `<prosody pitch="-2st">some text</prosody>` . "St" anger att ändrings enheten är semitone, som är hälften av en ton (ett halv steg) i standard skalan för diatonic.</li><li>Ett konstant värde:<ul><li>x-låg</li><li>börjar</li><li>medel</li><li>hög</li><li>x – hög</li><li>standard</li></ul></li></ul> | Valfritt |
-| `contour` |Kon turen stöder nu både neurala-och standard röster. Kontur representerar ändringar i färgdjup. Dessa ändringar visas som en matris med mål vid angivna tids positioner i tal utmatningen. Varje mål definieras av uppsättningar av parameter par. Exempel: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Det första värdet i varje parameter uppsättning anger platsen för bredd ändringen som en procent andel av längden på texten. Det andra värdet anger hur mycket du vill höja eller sänka avståndet med ett relativt värde eller ett uppräknings värde för färgdjup (se `pitch` ). | Valfritt |
+| `pitch` | Anger textens bas linje bredd. Du kan uttrycka bredden som:<ul><li>Ett absolut värde, uttryckt som ett tal följt av "Hz" (Hertz). Ett exempel är `<prosody pitch="600Hz">some text</prosody>`.</li><li>Ett relativt värde, uttryckt som ett tal som föregås av "+" eller "-" och följt av "Hz" eller "St", som anger ett belopp för att ändra bredden. Till exempel: `<prosody pitch="+80Hz">some text</prosody>` eller `<prosody pitch="-2st">some text</prosody>` . "St" anger att ändrings enheten är semitone, som är hälften av en ton (ett halv steg) i standard skalan för diatonic.</li><li>Ett konstant värde:<ul><li>x-låg</li><li>börjar</li><li>medel</li><li>hög</li><li>x – hög</li><li>standard</li></ul></li></ul> | Valfritt |
+| `contour` |Kon turen stöder nu både neurala-och standard röster. Kontur representerar ändringar i färgdjup. Dessa ändringar visas som en matris med mål vid angivna tids positioner i tal utmatningen. Varje mål definieras av uppsättningar av parameter par. Till exempel: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Det första värdet i varje parameter uppsättning anger platsen för bredd ändringen som en procent andel av längden på texten. Det andra värdet anger hur mycket du vill höja eller sänka avståndet med ett relativt värde eller ett uppräknings värde för färgdjup (se `pitch` ). | Valfritt |
 | `range` | Ett värde som representerar text områdets avstånd. Du kan uttrycka `range` använda samma absoluta värden, relativa värden eller uppräknings värden som används för att beskriva `pitch` . | Valfritt |
 | `rate` | Anger textens tal hastighet. Du kan uttrycka `rate` som:<ul><li>Ett relativt värde, uttryckt som ett tal som fungerar som en multiplikator för standardvärdet. Värdet *1* resulterar till exempel i ingen ändring av hastigheten. Värdet *0,5* resulterar i en halving av hastigheten. Värdet *3* resulterar i en rese frekvens.</li><li>Ett konstant värde:<ul><li>x – långsam</li><li>långsam</li><li>medel</li><li>snabb</li><li>x-fast</li><li>standard</li></ul></li></ul> | Valfritt |
 | `duration` | Tids perioden som ska förflyta när tal syntes tjänsten läser texten, i sekunder eller millisekunder. Till exempel *2s* eller *1800ms*. Varaktighet stöder endast standard röster.| Valfritt |
@@ -740,7 +748,7 @@ Du kan ändra bredden på standard-röster på ord-eller menings nivå. Föränd
 
 | Attribut | Beskrivning | Obligatorisk/valfri |
 |-----------|-------------|---------------------|
-| `interpret-as` | Anger innehålls typen för elementets text. En lista med typer finns i tabellen nedan. | Obligatorisk |
+| `interpret-as` | Anger innehålls typen för elementets text. En lista med typer finns i tabellen nedan. | Krävs |
 | `format` | Innehåller ytterligare information om den exakta formateringen av elementets text för innehålls typer som kan ha tvetydiga format. SSML definierar format för innehålls typer som använder dem (se tabellen nedan). | Valfritt |
 | `detail` | Anger detalj nivån som ska läsas. Det här attributet kan till exempel begära att tal syntes motorn uttalar skiljetecken. Inga standard värden har definierats för `detail` . | Valfritt |
 

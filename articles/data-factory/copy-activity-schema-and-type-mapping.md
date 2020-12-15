@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: 96667dcdd43eb801542a4be8fa4f21ff8d1317b7
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 2b54ee29b1b03bab5af8410a3fae06438180299d
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637266"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507531"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Schema-och data typs mappning i kopierings aktiviteten
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -170,7 +170,7 @@ Om du till exempel har ett käll MongoDB-dokument med följande innehåll:
 }
 ```
 
-Och du vill kopiera den till en textfil i följande format med rubrik rad genom att förenkla data i matrisen *(order_pd och order_price)* och korsa kopplingen med den gemensamma rot informationen *(nummer, datum och ort)* :
+Och du vill kopiera den till en textfil i följande format med rubrik rad genom att förenkla data i matrisen *(order_pd och order_price)* och korsa kopplingen med den gemensamma rot informationen *(nummer, datum och ort)*:
 
 | orderNumber | Datum | order_pd | order_price | city    |
 | ----------- | --------- | -------- | ----------- | ------- |
@@ -182,13 +182,13 @@ Du kan definiera en sådan mappning på Data Factory redigerings gränssnitt:
 
 1. På fliken Kopiera aktivitet – > mappning klickar du på knappen **Importera schema** för att importera både käll-och mottagar scheman. Som Data Factory exempel på de mest populära objekten när du importerar schemat, om något fält inte visas, kan du lägga till det i rätt lager i hierarkin-hovring på ett befintligt fält namn och välja att lägga till en nod, ett objekt eller en matris.
 
-2. Välj den matris som du vill iterera och extrahera data från. Den fylls i automatiskt som **samlings referens** . Observera att endast en enskild matris stöds för den här åtgärden.
+2. Välj den matris som du vill iterera och extrahera data från. Den fylls i automatiskt som **samlings referens**. Observera att endast en enskild matris stöds för den här åtgärden.
 
 3. Mappa de fält som behövs till Sink. Data Factory identifierar automatiskt motsvarande JSON-sökvägar för den hierarkiska sidan.
 
 ![Mappa hierarkiskt till tabell med hjälp av användar gränssnittet](media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-ui.png)
 
-Du kan också växla till **avancerad redigerare** , i så fall kan du direkt se och redigera fälten JSON-sökvägar. Om du väljer att lägga till en ny mappning i den här vyn anger du JSON-sökvägen.
+Du kan också växla till **avancerad redigerare**, i så fall kan du direkt se och redigera fälten JSON-sökvägar. Om du väljer att lägga till en ny mappning i den här vyn anger du JSON-sökvägen.
 
 ![Mappa hierarkiskt till tabell med avancerad redigerare](media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-advanced-editor.png)
 
@@ -356,7 +356,7 @@ Följande egenskaper stöds i kopierings aktivitet för konvertering av data typ
 
 ### <a name="alternative-column-mapping-legacy-model"></a>Alternativ kolumn – mappning (äldre modell)
 
-Du kan ange kopierings aktivitet – > `translator`  ->  `columnMappings` för att mappa mellan tabellbaserade data. I det här fallet krävs avsnittet "struktur" för både data uppsättningar för indata och utdata. Kolumn mappning stöder **Mappning av alla eller delmängd av kolumner i käll data uppsättningens struktur till alla kolumner i data uppsättningen för Sink-datauppsättningen** . Följande är fel villkor som resulterar i ett undantag:
+Du kan ange kopierings aktivitet – > `translator`  ->  `columnMappings` för att mappa mellan tabellbaserade data. I det här fallet krävs avsnittet "struktur" för både data uppsättningar för indata och utdata. Kolumn mappning stöder **Mappning av alla eller delmängd av kolumner i käll data uppsättningens struktur till alla kolumner i data uppsättningen för Sink-datauppsättningen**. Följande är fel villkor som resulterar i ett undantag:
 
 - Frågeresultatet för käll data lagret har inget kolumn namn som är angivet i avsnittet struktur för indata-DataSet.
 - Sink-datalagret (om med fördefinierat schema) inte har något kolumn namn som anges i "struktur"-avsnittet för utdata-datauppsättningen.
@@ -455,7 +455,7 @@ Du kan ange kopierings aktivitets-> `translator`  ->  `schemaMapping` för att m
 | Egenskap            | Beskrivning                                                  | Krävs |
 | :------------------ | :----------------------------------------------------------- | :------- |
 | typ                | Typ egenskapen för kopierings aktivitets översättaren måste anges till: **TabularTranslator** | Ja      |
-| schemaMapping       | En samling nyckel/värde-par som representerar mappnings relationen **från käll sidan till mottagar sidan** .<br/>- **Nyckel:** representerar källa. För **tabell källa** anger du kolumn namnet som definierats i data uppsättnings strukturen. för **hierarkisk källa** anger du JSON-sökvägar för varje fält som ska extraheras och mappas.<br>- **Värde:** representerar mottagare. För **tabell mottagare** anger du kolumn namnet enligt definitionen i data uppsättnings strukturen. för **hierarkisk mottagare** anger du JSON-sökvägar för varje fält som ska extraheras och mappas. <br>Om det finns hierarkiska data för fält under rot objekt börjar JSON-sökvägen med roten $; för fält i matrisen som valts av `collectionReference` egenskap börjar JSON-sökvägen från mat ris elementet. | Ja      |
+| schemaMapping       | En samling nyckel/värde-par som representerar mappnings relationen **från käll sidan till mottagar sidan**.<br/>- **Nyckel:** representerar källa. För **tabell källa** anger du kolumn namnet som definierats i data uppsättnings strukturen. för **hierarkisk källa** anger du JSON-sökvägar för varje fält som ska extraheras och mappas.<br>- **Värde:** representerar mottagare. För **tabell mottagare** anger du kolumn namnet enligt definitionen i data uppsättnings strukturen. för **hierarkisk mottagare** anger du JSON-sökvägar för varje fält som ska extraheras och mappas. <br>Om det finns hierarkiska data för fält under rot objekt börjar JSON-sökvägen med roten $; för fält i matrisen som valts av `collectionReference` egenskap börjar JSON-sökvägen från mat ris elementet. | Ja      |
 | collectionReference | Om du vill iterera och extrahera data från objekten **inuti ett mat ris fält** med samma mönster och konvertera till per rad per objekt, anger du JSON-sökvägen för den matrisen för att göra kors koppling. Den här egenskapen stöds endast när hierarkiska data är källa. | Nej       |
 
 **Exempel: kopiera från MongoDB till Oracle:**
@@ -487,7 +487,7 @@ Om du till exempel har MongoDB-dokument med följande innehåll:
 }
 ```
 
-och du vill kopiera den till en Azure SQL-tabell i följande format, genom att förenkla data i matrisen *(order_pd och order_price)* och korsa anslutning med den gemensamma rot informationen *(nummer, datum och ort)* :
+och du vill kopiera den till en Azure SQL-tabell i följande format, genom att förenkla data i matrisen *(order_pd och order_price)* och korsa anslutning med den gemensamma rot informationen *(nummer, datum och ort)*:
 
 | orderNumber | Datum | order_pd | order_price | city    |
 | ----------- | --------- | -------- | ----------- | ------- |

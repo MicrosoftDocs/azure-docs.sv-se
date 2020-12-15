@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 774c17af88e45e25cf1e8edc0df60ab55fe53e0e
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: dce2cd0d77ff0a98d4d68e1c99edb472e61ce8a5
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95974344"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509469"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Självstudie: anropa Microsoft Graph API från ett Universell Windows-plattform-program (UWP)
 
@@ -34,7 +34,7 @@ I de här självstudierna har du
 > * Lägg till kod för anrop Microsoft Graph API
 > * Testa appen
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) med arbets belastningen [universell Windows-plattform utveckling](/windows/uwp/get-started/get-set-up) installerad
 
@@ -48,7 +48,7 @@ Den här guiden skapar ett exempel på ett UWP-program som frågar Microsoft Gra
 
 I den här guiden används följande NuGet-paket:
 
-|Bibliotek|Description|
+|Bibliotek|Beskrivning|
 |---|---|
 |[Microsoft. Identity. client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsofts autentiseringsbibliotek|
 |[Microsoft. Graph](https://www.nuget.org/packages/Microsoft.Graph)|Microsoft Graph klient bibliotek|
@@ -347,21 +347,23 @@ private async Task DisplayMessageAsync(string message)
 Nu måste du registrera ditt program:
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-1. Välj **Azure Active Directory**  >  **Appregistreringar**.
-1. Välj **ny registrering**. Ange ett meningsfullt program namn som ska visas för användarna av appen, till exempel *UWP-app-Calling-MSGraph*.
-1. Under **konto typer som stöds** väljer du **konton i valfri organisations katalog och personliga Microsoft-konton (t. ex. Skype, Xbox)**. Välj **Registrera** för att fortsätta.
+1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
+1. Sök efter och välj **Azure Active Directory**.
+1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.
+1. Ange ett **namn** för programmet, till exempel `UWP-App-calling-MSGraph` . Användare av appen kan se det här namnet och du kan ändra det senare.
+1. Under **konto typer som stöds** väljer du **konton i valfri organisations katalog (alla Azure AD-klienter-flera klienter) och personliga Microsoft-konton (t. ex. Skype, Xbox)**. 
+1. Välj **Register** (Registrera).
 1. På sidan Översikt hittar du **ID-värdet för programmet (klienten)** och kopierar det. Gå tillbaka till Visual Studio, öppna *mainpage.XAML.cs* och Ersätt värdet för `ClientId` med det här värdet.
 
 Konfigurera autentisering för ditt program:
 
-1. Gå tillbaka till [Azure Portal](https://portal.azure.com)under **Hantera** och välj **autentisering**.
-1. I avsnittet **omdirigerings-URI: er**  |  **föreslagna omdirigerings-URI: er för offentliga klienter (Mobile, Desktop)** kontrollerar du https://login.microsoftonline.com/common/oauth2/nativeclient .
-1. Välj **Spara**.
+1. Gå tillbaka till [Azure Portal](https://portal.azure.com), under **Hantera**, Välj **autentisering**  >  **Lägg till en plattform** och välj sedan **mobil-och skriv bords program**.
+1. I avsnittet **omdirigerings-URI: er** , kontrollerar du **https://login.microsoftonline.com/common/oauth2/nativeclient** .
+1. Välj **Konfigurera**.
 
 Konfigurera API-behörigheter för ditt program:
 
-1. Under **Hantera**, Välj **API-behörigheter**.
-1. Välj **Lägg till en behörighet** och kontrol lera att du har valt **Microsoft API: er**.
+1. Under **Hantera** väljer du **API-behörigheter**  >  **Lägg till en behörighet**.
 1. Välj **Microsoft Graph**.
 1. Välj **delegerade behörigheter**, Sök efter *användare. Läs* och kontrol lera att **User. Read** är markerat.
 1. Om du har gjort några ändringar väljer du **Lägg till behörigheter** för att spara dem.
@@ -464,7 +466,7 @@ Du ser information om användar profiler som returneras av Microsoft Graph API-a
 
 Du ser också grundläggande information om den token som hämtats via `AcquireTokenInteractive` eller `AcquireTokenSilent` i rutan **token-information** :
 
-|Egenskap  |Format  |Description |
+|Egenskap  |Format  |Beskrivning |
 |---------|---------|---------|
 |`Username` |`user@domain.com` |Det användar namn som identifierar användaren.|
 |`Token Expires` |`DateTime` |Tiden då token upphör att gälla. Microsoft Authentication Library utökar förfallo datumet genom att förnya token vid behov.|

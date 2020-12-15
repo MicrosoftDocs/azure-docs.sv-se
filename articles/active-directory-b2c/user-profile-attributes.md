@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85030285810433dc77d1f466d160c50d1f89770e
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 31926653950594b986aca19e2db2877cd655ca24
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750415"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509605"
 ---
 # <a name="user-profile-attributes"></a>Attribut för användarprofil
 
@@ -46,7 +46,7 @@ I tabellen nedan visas de egenskaper för [användar resurs typ](/graph/api/reso
 |land         |Sträng|Landet/regionen där användaren finns. Exempel: "oss" eller "Storbritannien". Maxlängd 128.|Ja|Ja|Bestående, utdata|
 |createdDateTime|DateTime|Det datum då användarobjektet skapades. Skrivskyddad.|Nej|Nej|Bestående, utdata|
 |creationType    |Sträng|Om användar kontot har skapats som ett lokalt konto för en Azure Active Directory B2C klient, är värdet LocalAccount eller nameCoexistence. Skrivskyddad.|Nej|Nej|Bestående, utdata|
-|dateOfBirth     |Datum|Födelsedatum.|Nej|Nej|Bestående, utdata|
+|dateOfBirth     |Date|Födelsedatum.|Nej|Nej|Bestående, utdata|
 |avdelning      |Sträng|Namnet på den avdelning där användaren arbetar. Maxlängd 64.|Ja|Nej|Bestående, utdata|
 |displayName     |Sträng|Användarens visnings namn. Maxlängd 256.|Ja|Ja|Bestående, utdata|
 |facsimileTelephoneNumber<sup>1</sup>|Sträng|Telefonnumret till användarens företags Fax maskin.|Ja|Nej|Bestående, utdata|
@@ -62,15 +62,15 @@ I tabellen nedan visas de egenskaper för [användar resurs typ](/graph/api/reso
 |objectId        |Sträng|En globalt unik identifierare (GUID) som är den unika identifieraren för användaren. Exempel: 12345678-9ABC-def0-1234-56789abcde. Skrivskyddad, oföränderlig.|Skrivskyddad|Ja|Indata, bestående, utdata|
 |otherMails      |Sträng samling|En lista med ytterligare e-postadresser för användaren. Exempel: [" bob@contoso.com ", " Robert@fabrikam.com "].|Ja (alternativ e-post)|Nej|Bestående, utdata|
 |password        |Sträng|Lösen ordet för det lokala kontot när användaren skapas.|Nej|Nej|Beständiga|
-|passwordPolicies     |Sträng|Princip för lösen ordet. Det är en sträng som består av ett annat princip namn, avgränsat med kommatecken. t. ex. "DisablePasswordExpiration, DisableStrongPassword".|Nej|Nej|Bestående, utdata|
+|passwordPolicies     |Sträng|Princip för lösen ordet. Det är en sträng som består av ett annat princip namn, avgränsat med kommatecken. Till exempel "DisablePasswordExpiration, DisableStrongPassword".|Nej|Nej|Bestående, utdata|
 |physicalDeliveryOfficeName (officeLocation)|Sträng|Arbets platsen på användarens arbets plats. Maxlängd 128.|Ja|Nej|Bestående, utdata|
 |postalCode      |Sträng|Post numret för användarens post adress. Post numret är speciellt för användarens land/region. I USA i Amerika innehåller det här attributet post numret. Maxlängd 40.|Ja|Nej|Bestående, utdata|
 |preferredLanguage    |Sträng|Det föredragna språket för användaren. Bör följa ISO 639-1-koden. Exempel: "en-US".|Nej|Nej|Bestående, utdata|
-|refreshTokensValidFromDateTime|DateTime|Alla uppdateringstoken som utfärdats före den här tiden är ogiltiga och program får ett fel meddelande när en ogiltig uppdateringstoken används för att hämta en ny åtkomsttoken. Om detta händer måste programmet skaffa en ny uppdateringstoken genom att göra en begäran till behörighets slut punkten. Skrivskyddad.|Nej|Nej|Resultat|
-|signInNames ([identiteter](manage-user-accounts-graph-api.md#identities-property)) |Sträng|Det unika inloggnings namnet för den lokala konto användaren av valfri typ i katalogen. Använd detta för att få en användare med inloggnings värde utan att ange den lokala konto typen.|Nej|Nej|Indata|
-|signInNames. userName ([identiteter](manage-user-accounts-graph-api.md#identities-property)) |Sträng|Unikt användar namn för den lokala konto användaren i katalogen. Använd detta för att skapa eller hämta en användare med ett särskilt inloggnings användar namn. Om du anger detta i PersistedClaims under korrigerings åtgärden tas andra typer av signInNames bort. Om du vill lägga till en ny typ av signInNames måste du också behålla befintlig signInNames.|Nej|Nej|Indata, bestående, utdata|
-|signInNames. telefonnummer ([identiteter](manage-user-accounts-graph-api.md#identities-property)) |Sträng|Det unika telefonnumret för den lokala konto användaren i katalogen. Använd detta för att skapa eller hämta en användare med ett särskilt inloggnings telefonnummer. Om du anger detta i PersistedClaims under korrigerings åtgärden tas andra typer av signInNames bort. Om du vill lägga till en ny typ av signInNames måste du också behålla befintlig signInNames.|Nej|Nej|Indata, bestående, utdata|
-|signInNames. emailAddress ([identiteter](manage-user-accounts-graph-api.md#identities-property))|Sträng|Den unika e-postadressen för den lokala konto användaren i katalogen. Använd detta för att skapa eller hämta en användare med en speciell e-postadress för inloggning. Om du anger detta i PersistedClaims under korrigerings åtgärden tas andra typer av signInNames bort. Om du vill lägga till en ny typ av signInNames måste du också behålla befintlig signInNames.|Nej|Nej|Indata, bestående, utdata|
+|refreshTokensValidFromDateTime|DateTime|Alla uppdateringstoken som utfärdats före den här tiden är ogiltiga och program får ett fel meddelande när en ogiltig uppdateringstoken används för att hämta en ny åtkomsttoken. Om detta händer måste programmet skaffa en ny uppdateringstoken genom att göra en begäran till behörighets slut punkten. Skrivskyddad.|Nej|Nej|Utdata|
+|signInNames ([identiteter](manage-user-accounts-graph-api.md#identities-property)) |Sträng|Det unika inloggnings namnet för den lokala konto användaren av valfri typ i katalogen. Använd det här attributet för att få en användare med inloggnings värde utan att ange den lokala konto typen.|Nej|Nej|Indata|
+|signInNames. userName ([identiteter](manage-user-accounts-graph-api.md#identities-property)) |Sträng|Unikt användar namn för den lokala konto användaren i katalogen. Använd det här attributet för att skapa eller hämta en användare med ett särskilt inloggnings användar namn. Om du anger detta i PersistedClaims under korrigerings åtgärden tas andra typer av signInNames bort. Om du vill lägga till en ny typ av signInNames måste du också behålla befintlig signInNames.|Nej|Nej|Indata, bestående, utdata|
+|signInNames. telefonnummer ([identiteter](manage-user-accounts-graph-api.md#identities-property)) |Sträng|Det unika telefonnumret för den lokala konto användaren i katalogen. Använd det här attributet för att skapa eller hämta en användare med ett särskilt inloggnings telefonnummer. Om du anger det här attributet i PersistedClaims under korrigerings åtgärden tas andra typer av signInNames bort. Om du vill lägga till en ny typ av signInNames måste du också behålla befintlig signInNames.|Nej|Nej|Indata, bestående, utdata|
+|signInNames. emailAddress ([identiteter](manage-user-accounts-graph-api.md#identities-property))|Sträng|Den unika e-postadressen för den lokala konto användaren i katalogen. Använd detta för att skapa eller hämta en användare med en speciell e-postadress för inloggning. Om du anger det här attributet i PersistedClaims under korrigerings åtgärden tas andra typer av signInNames bort. Om du vill lägga till en ny typ av signInNames måste du också behålla befintlig signInNames.|Nej|Nej|Indata, bestående, utdata|
 |state           |Sträng|Region i användarens adress. Maxlängd 128.|Ja|Ja|Bestående, utdata|
 |streetAddress   |Sträng|Gatuadressen till användarens arbets plats. Maxlängd 1024.|Ja|Ja|Bestående, utdata|
 |strongAuthentication AlternativePhoneNumber<sup>1</sup>|Sträng|Användarens sekundära telefonnummer, som används för Multi-Factor Authentication.|Ja|Nej|Bestående, utdata|
@@ -120,5 +120,4 @@ Följande data typer stöds när du definierar en egenskap i ett schema tillägg
 ## <a name="next-steps"></a>Nästa steg
 Läs mer om attribut för tillägg:
 - [Schemautökningar](/graph/extensibility-overview#schema-extensions)
-- [Definiera anpassade attribut med användar flöde](user-flow-custom-attributes.md)
-- [Definiera anpassade attribut med anpassad princip](custom-policy-custom-attributes.md)
+- [Definiera anpassade attribut](user-flow-custom-attributes.md)

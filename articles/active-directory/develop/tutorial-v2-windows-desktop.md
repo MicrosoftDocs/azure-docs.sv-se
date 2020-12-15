@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d205cff71b962afb9ead8271ee0c220fa1e2242f
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 5fb7c0df653048adcffceda4d8a384be823b5c3a
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518778"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507701"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Självstudie: anropa Microsoft Graph-API: et från en Windows Desktop-app
 
@@ -104,18 +104,17 @@ Du kan snabbt registrera ditt program genom att göra följande:
 ### <a name="option-2-advanced-mode"></a>Alternativ 2: Avancerat läge
 
 Du registrerar programmet och lägger till programregistreringsinformationen i din lösning genom att göra följande:
-1. Logga in på [Azure-portalen](https://portal.azure.com) med ett arbets- eller skolkonto eller ett personligt Microsoft-konto.
-1. Om ditt konto ger dig tillgång till fler än en klientorganisation väljer du ditt konto i det övre högra hörnet och ställer in din portalsession på önskad Azure AD-klientorganisation.
-1. Gå till sidan Microsoft Identity Platform för utvecklare [Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) .
-1. Välj **ny registrering**.
-   - I avsnittet **Namn** anger du ett beskrivande programnamn som ska visas för appens användare, till exempel `Win-App-calling-MsGraph`.
-   - I avsnittet **Kontotyper som stöds** väljer du **Konton alla organisationskataloger och personliga Microsoft-konton (till exempel Skype, Xbox och Outlook.com)**.
-   - Välj **Registrera** för att skapa programmet.
-1. I listan över sidor för appen väljer du **Autentisering**.
-   1. I avsnittet **omdirigerings-URI** : er i listan omdirigerings-URI: er:
-   1. I kolumnen **typ** väljer du **offentlig klient/ursprunglig (mobil & Desktop)**.
-   1. I kolumnen **omdirigerings-URI** , anger du `https://login.microsoftonline.com/common/oauth2/nativeclient`
+1. Logga in på [Azure-portalen](https://portal.azure.com).
+1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
+1. Sök efter och välj **Azure Active Directory**.
+1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.
+1. Ange ett **namn** för programmet, till exempel `Win-App-calling-MsGraph` . Användare av appen kan se det här namnet och du kan ändra det senare.
+1. I avsnittet **konto typer som stöds** väljer du **konton i valfri organisations katalog (alla Azure AD Directory-flera klienter) och personliga Microsoft-konton (t. ex. Skype, Xbox)**.
 1. Välj **Register** (Registrera).
+1. Under **Hantera** väljer du **autentisering**  >  **Lägg till en plattform**.
+1. Välj **mobil-och skriv bords program**.
+1. I avsnittet **omdirigerings-URI** väljer du **https://login.microsoftonline.com/common/oauth2/nativeclient** .
+1. Välj **Konfigurera**.
 1. Gå till Visual Studio, öppna filen *app.XAML.cs* och Ersätt `Enter_the_Application_Id_here` i kodfragmentet nedan med det program-ID som du precis registrerade och kopierade.
 
     ```csharp

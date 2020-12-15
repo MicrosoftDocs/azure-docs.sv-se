@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 11/19/2020
+ms.date: 12/14/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: b8bdb216cbe8d359f35c758ae89f4267ab223483
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 78e9d7355b8c96295456f8aa9cb80b1d3bdd2fab
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928757"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509554"
 ---
 # <a name="known-issues-application-provisioning"></a>Kända problem: program etablering
 Kända problem som kan vara medvetna om när du arbetar med app-etablering. Du kan ge feedback om program etablerings tjänsten på UserVoice, se [Azure AD Application-etablering UserVoice](https://aka.ms/appprovisioningfeaturerequest). Vi tittar på UserVoice så att vi kan förbättra tjänsten. 
@@ -68,7 +68,8 @@ Katalog tillägg, appRoleAssignments, userType och accountExpires stöds inte so
 
 - Det finns inte stöd för att konfigurera lösen ord. 
 - Det finns inte stöd för etablering av kapslade grupper. 
-- Etablering av B2C-klienter stöds inte på grund av innehavarens storlek. 
+- Etablering av B2C-klienter stöds inte på grund av innehavarens storlek.
+- Alla etablerings appar är inte tillgängliga i alla moln. Till exempel är Atlassian ännu inte tillgängligt i det offentliga molnet. Vi arbetar med utvecklare av appar för att publicera sina appar till alla moln.
 
 **Automatisk etablering är inte tillgängligt i mitt OIDC-baserade program**
 

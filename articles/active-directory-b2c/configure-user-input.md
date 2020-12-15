@@ -12,12 +12,12 @@ ms.date: 12/10/2020
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 698864a4dc1081cb8cad9036ff1cfc737a17473c
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 53f5346030e3c5a247d1ad2a73b23882e83ed41a
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111478"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508126"
 ---
 #  <a name="add-user-attributes-and-customize-user-input-in-azure-active-directory-b2c"></a>Lägg till användarattribut och anpassa användarindata i Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ ms.locfileid: "97111478"
 
 I den här artikeln samlar du in ett nytt attribut under din inloggnings resa i Azure Active Directory B2C (Azure AD B2C). Du får användarnas stad, konfigurerar den som en nedrullningsbar listruta och anger om den måste anges.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -129,7 +129,7 @@ För att tillhandahålla en uppsättning med värden för attributet City:
 ::: zone pivot="b2c-custom-policy"
 
 > [!NOTE]
-> I det här exemplet används det inbyggda anspråket "ort". I stället kan du välja ett av de [Azure AD B2C inbyggda attributen](user-profile-attributes.md) eller ett anpassat attribut som stöds. [Aktivera anpassade attribut i principen](custom-policy-custom-attributes.md)om du vill använda ett anpassat attribut. Om du vill använda ett annat inbyggt eller anpassat attribut ersätter du "ort" med attributet som du väljer, till exempel det inbyggda attributet *befattning* eller ett anpassat attribut som *extension_loyaltyId*.  
+> I det här exemplet används det inbyggda anspråket "ort". I stället kan du välja ett av de [Azure AD B2C inbyggda attributen](user-profile-attributes.md) eller ett anpassat attribut som stöds. [Aktivera anpassade attribut](user-flow-custom-attributes.md)om du vill använda ett anpassat attribut. Om du vill använda ett annat inbyggt eller anpassat attribut ersätter du "ort" med attributet som du väljer, till exempel det inbyggda attributet *befattning* eller ett anpassat attribut som *extension_loyaltyId*.  
 
 Du kan samla in inledande data från dina användare med hjälp av användar resan för registrering eller inloggning. Ytterligare anspråk kan samlas in senare med hjälp av en profil redigera användar resa. När Azure AD B2C samlar in information direkt från användaren interaktivt används den [självkontrollerade tekniska profilen](self-asserted-technical-profile.md). I det här exemplet:
 
@@ -342,6 +342,6 @@ Den token som skickas tillbaka till programmet inkluderar `city` anspråket.
 ## <a name="next-steps"></a>Nästa steg
 
 - Läs mer om [ClaimsSchema](claimsschema.md) -ELEMENTET i IEF-referensen.
-- Lär dig hur du [använder anpassade attribut i en anpassad profil redigerings princip](custom-policy-custom-attributes.md).
+- Lär dig hur du [använder anpassade attribut i Azure AD B2C](user-flow-custom-attributes.md).
 
 ::: zone-end

@@ -4,12 +4,12 @@ description: Lär dig hur du felsöker Java-agenten för Azure Monitor Applicati
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1ccfd583b58d129268af2a94e3072200e58308cd
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 14644f76b7de53b2b6ee3f04131daaf59267a5ff
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347838"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507650"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Fel söknings guide: Azure Monitor Application Insights för Java
 
@@ -34,6 +34,14 @@ Dessa ändringar omfattar:
 -  Konfigurations filens namn har ändrats från `ApplicationInsights.json` till `applicationinsights.json` .
 -  `instrumentationSettings`Noden finns inte längre. Allt innehåll i `instrumentationSettings` flyttas till rot nivån. 
 -  Konfigurations noder som `sampling` ,, `jmxMetrics` `instrumentation` och `heartbeat` flyttas ut från `preview` till rot nivån.
+
+## <a name="some-logging-is-not-auto-collected"></a>Vissa loggningar samlas inte in automatiskt
+
+Loggning registreras endast om det stämmer överens med det konfigurerade tröskelvärdet för loggnings ramverk, och den andra uppfyller även det Application Insights konfigurerade tröskelvärdet.
+
+Det bästa sättet att veta om ett visst loggnings uttryck uppfyller det konfigurerade tröskelvärdet för loggnings ramverk är att bekräfta att det visas i din normala program logg (t. ex. fil eller konsol).
+
+Se den [automatiskt insamlade loggnings konfigurationen](./java-standalone-config.md#auto-collected-logging) för mer information.
 
 ## <a name="import-ssl-certificates"></a>Importera SSL-certifikat
 

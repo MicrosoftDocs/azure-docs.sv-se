@@ -9,23 +9,23 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/29/2020
+ms.date: 12/14/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 12d74e2f21678fdbb02719c29a31c0fcdc4fa132
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: f73186612fe79af88e84956bb4d0f0b374f4c986
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030153"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507803"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurerbara livstider för token i Microsoft Identity Platform (för hands version)
 
 > [!IMPORTANT]
-> Efter den 30 januari 2021 kommer klient organisationer inte längre att kunna konfigurera livstider för uppdatering och sessionstoken och Azure Active Directory slutar att svara på uppdatering och sessionens token-konfiguration i principer efter det datumet.
+> Efter den 2020 kommer klient organisationer inte längre att kunna konfigurera livstid för uppdatering och sessionstoken.  Azure Active Directory slutar att svara på befintlig konfiguration och sessionstoken i principer efter 30 januari 2021. Du kan fortfarande konfigurera livstid för åtkomsttoken efter utfasningen.
 >
-> Om du behöver fortsätta att definiera tids perioden innan en användare uppmanas att logga in igen, konfigurerar du inloggnings frekvensen i villkorlig åtkomst. Mer information om villkorlig åtkomst finns på [prissättnings sidan för Azure AD](https://azure.microsoft.com/en-us/pricing/details/active-directory/).
+> Om du behöver fortsätta att definiera tids perioden innan en användare uppmanas att logga in igen, konfigurerar du inloggnings frekvensen i villkorlig åtkomst. Om du vill veta mer om villkorlig åtkomst kan du gå till [Konfigurera hantering av autentisering med villkorlig åtkomst](/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime).
 >
 > För klienter som inte vill använda villkorlig åtkomst efter indragnings datumet kan de förväntas vara att Azure AD följer standard konfigurationen som beskrivs i nästa avsnitt.
 

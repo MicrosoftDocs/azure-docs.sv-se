@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: b24b95423adb271b8a4016430e7d2b381c386cd2
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e055287f069c477318a54aedf3d9a2fe22343367
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443763"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509163"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>En webbapp som anropar webb-API: er kod konfiguration
 
@@ -99,7 +99,7 @@ I stället för en klient hemlighet kan du ange ett klient certifikat. Följande
 
 ## <a name="startupcs"></a>Startup.cs
 
-Din webbapp måste hämta en token för det underordnade API: et. Du anger det genom att lägga till `.EnableTokenAcquisitionToCallDownstreamApi()` raden efter `.AddMicrosoftIdentityWebApi(Configuration)` . Den här raden visar `ITokenAcquisition` tjänsten som du kan använda i din styrenhet och sid åtgärder. Men eftersom du ser i följande två alternativ kan det göras mer enkelt. Du måste också välja en implementation av tokenbaserad cache, till exempel `.AddInMemoryTokenCaches()` i *startup.cs* :
+Din webbapp måste hämta en token för det underordnade API: et. Du anger det genom att lägga till `.EnableTokenAcquisitionToCallDownstreamApi()` raden efter `.AddMicrosoftIdentityWebApi(Configuration)` . Den här raden visar `ITokenAcquisition` tjänsten som du kan använda i din styrenhet och sid åtgärder. Men eftersom du ser i följande två alternativ kan det göras mer enkelt. Du måste också välja en implementation av tokenbaserad cache, till exempel `.AddInMemoryTokenCaches()` i *startup.cs*:
 
    ```csharp
    using Microsoft.Identity.Web;
@@ -110,7 +110,7 @@ Din webbapp måste hämta en token för det underordnade API: et. Du anger det g
      public void ConfigureServices(IServiceCollection services)
      {
      // ...
-     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+     services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
              .AddMicrosoftIdentityWebApp(Configuration, Configuration.GetSection("AzureAd"))
                .EnableTokenAcquisitionToCallDownstreamApi(new string[]{"user.read" })
                .AddInMemoryTokenCaches();
@@ -126,7 +126,7 @@ Om du inte vill hämta token själv ger *Microsoft. Identity. Web* två mekanism
 
 ### <a name="option-1-call-microsoft-graph"></a>Alternativ 1: anropa Microsoft Graph
 
-Om du vill anropa Microsoft Graph kan du *Microsoft.Identity.Web* direkt använda `GraphServiceClient` (som exponeras av Microsoft Graph SDK) i dina API-åtgärder med hjälp av Microsoft. Identity. Web. För att exponera Microsoft Graph:
+Om du vill anropa Microsoft Graph kan du  direkt använda `GraphServiceClient` (som exponeras av Microsoft Graph SDK) i dina API-åtgärder med hjälp av Microsoft. Identity. Web. För att exponera Microsoft Graph:
 
 1. Lägg till [Microsoft. Identity. Web. MicrosoftGraph NuGet-](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) paketet i projektet.
 1. Lägg till `.AddMicrosoftGraph()` efter `.EnableTokenAcquisitionToCallDownstreamApi()` i *startup.cs* -filen. `.AddMicrosoftGraph()` har flera åsidosättningar. Med den åsidosättning som tar ett konfigurations avsnitt som en parameter blir koden:
@@ -140,7 +140,7 @@ Om du vill anropa Microsoft Graph kan du *Microsoft.Identity.Web* direkt använd
      public void ConfigureServices(IServiceCollection services)
      {
      // ...
-     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+     services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
              .AddMicrosoftIdentityWebApp(Configuration, Configuration.GetSection("AzureAd"))
                .EnableTokenAcquisitionToCallDownstreamApi(new string[]{"user.read" })
                   .AddMicrosoftGraph(Configuration.GetSection("GraphBeta"))
@@ -164,7 +164,7 @@ Om du vill anropa ett webb-API förutom Microsoft Graph tillhandahåller *Micros
      public void ConfigureServices(IServiceCollection services)
      {
      // ...
-     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+     services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
              .AddMicrosoftIdentityWebApp(Configuration, "AzureAd")
                .EnableTokenAcquisitionToCallDownstreamApi(new string[]{"user.read" })
                   .AddDownstreamWebApi("MyApi", Configuration.GetSection("GraphBeta"))

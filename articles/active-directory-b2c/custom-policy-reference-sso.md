@@ -11,24 +11,24 @@ ms.topic: reference
 ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3e47eda29b0ad1c47edad08195b2ffd0fe3835af
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 453042766c427b05ec1ee1090a0702f64065542d
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750484"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508058"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Hantering av enkel inloggning i Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Hantering av [enkel inloggning (SSO)](session-overview.md) använder samma semantik som andra tekniska profiler i anpassade principer. När ett Orchestration-steg körs, frågas den tekniska profilen som är associerad med steget för en `UseTechnicalProfileForSessionManagement` referens. Om det finns en sådan, kontrol leras den refererade SSO-replikeringsprovidern sedan för att se om användaren är en session-deltagare. I så fall, används SSO-replikeringsprovidern för att fylla i sessionen igen. När körningen av ett Dirigerings steg har slutförts används providern för att lagra information i sessionen om en SSO-replikeringsprovider har angetts.
+Hantering av [enkel inloggning (SSO)](session-behavior.md) använder samma semantik som andra tekniska profiler i anpassade principer. När ett Orchestration-steg körs, frågas den tekniska profilen som är associerad med steget för en `UseTechnicalProfileForSessionManagement` referens. Om det finns en sådan, kontrol leras den refererade SSO-replikeringsprovidern sedan för att se om användaren är en session-deltagare. I så fall, används SSO-replikeringsprovidern för att fylla i sessionen igen. När körningen av ett Dirigerings steg har slutförts används providern för att lagra information i sessionen om en SSO-replikeringsprovider har angetts.
 
 Azure AD B2C har definierat ett antal SSO-användarsessioner som kan användas:
 
 |Replikeringsprovider  |Omfång  |
 |---------|---------|
-|[NoopSSOSessionProvider](#noopssosessionprovider)     |  Ingen       |       
+|[NoopSSOSessionProvider](#noopssosessionprovider)     |  Inga       |       
 |[DefaultSSOSessionProvider](#defaultssosessionprovider)    | Azure AD B2C intern sessionshanteraren.      |       
 |[ExternalLoginSSOSessionProvider](#externalloginssosessionprovider)     | Mellan Azure AD B2C och OAuth1, OAuth2 eller OpenId Connect Identity Provider.        |         |
 |[OAuthSSOSessionProvider](#oauthssosessionprovider)     | Mellan ett OAuth2-eller OpenId Connect-program för förlitande part och Azure AD B2C.        |        
@@ -168,5 +168,4 @@ Följande `SM-Saml-issuer` tekniska profil används av den [tekniska profilen f�
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer om [Azure AD B2C-sessionen](session-overview.md).
-- Lär dig hur du [konfigurerar sessionens beteende i anpassade principer](session-behavior-custom-policy.md).
+Lär dig hur du [konfigurerar sessionens beteende](session-behavior.md).

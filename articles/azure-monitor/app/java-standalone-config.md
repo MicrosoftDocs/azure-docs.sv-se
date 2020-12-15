@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: b5c1ab7db818daa91497728299d2247f612fe21b
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 73e3d8834fcb41f863fe2e3d686b812bb6174e70
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387759"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507667"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurations alternativ – Azure Monitor Application Insights för Java
 
@@ -184,9 +184,9 @@ Mer information finns i dokumentationen om [telemetri-processorn](./java-standal
 
 Log4j, logback och Java. util. logging är automatiskt instrumenterade och loggning som utförs via dessa loggnings ramverk samlas automatiskt in.
 
-Som standard samlas loggning endast in när loggningen utförs på `INFO` nivån eller över.
+Loggning registreras endast om det stämmer överens med det konfigurerade tröskelvärdet för loggnings ramverk, och den andra uppfyller även det Application Insights konfigurerade tröskelvärdet.
 
-Om du vill ändra den här samlings nivån:
+Standard Application Insights tröskelvärdet är `INFO` . Om du vill ändra den här nivån:
 
 ```json
 {

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
 ms.date: 01/22/2018
-ms.openlocfilehash: 3bd18f697c25f7e81f227e7e1456ba0b3d2150c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85fabb540180adb1848285f4c40f944225db2760
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541755"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508585"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-powershell"></a>Läs in data stegvis från Azure SQL Database till Azure Blob Storage använda ändrings spårnings information med hjälp av PowerShell
 
@@ -79,7 +79,7 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://a
 
 ### <a name="create-a-data-source-table-in-your-database"></a>Skapa en data käll tabell i databasen
 
-1. Starta **SQL Server Management Studio**och anslut till SQL Database.
+1. Starta **SQL Server Management Studio** och anslut till SQL Database.
 2. I **Server Explorer** högerklickar du på **databasen** och väljer **Ny fråga**.
 3. Kör följande SQL-kommando mot databasen för att skapa en tabell med namnet `data_source_table` som data käll arkiv.  
 
@@ -143,8 +143,8 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://a
 
     BEGIN
 
-        UPDATE table_store_ChangeTracking_version
-        SET [SYS_CHANGE_VERSION] = @CurrentTrackingVersion
+    UPDATE table_store_ChangeTracking_version
+    SET [SYS_CHANGE_VERSION] = @CurrentTrackingVersion
     WHERE [TableName] = @TableName
 
     END    
@@ -154,7 +154,7 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://a
 Installera de senaste Azure PowerShell-modulerna genom att följa anvisningarna i [så här installerar och konfigurerar du Azure PowerShell](/powershell/azure/install-Az-ps).
 
 ## <a name="create-a-data-factory"></a>Skapa en datafabrik
-1. Definiera en variabel för resursgruppens namn som du kan använda senare i PowerShell-kommandon. Kopiera följande kommandotext till PowerShell, ange ett namn för [Azure-resursgruppen](../azure-resource-manager/management/overview.md), sätt dubbla citattecken omkring namnet och kör sedan kommandot. Exempel: `"adfrg"`. 
+1. Definiera en variabel för resursgruppens namn som du kan använda senare i PowerShell-kommandon. Kopiera följande kommandotext till PowerShell, ange ett namn för [Azure-resursgruppen](../azure-resource-manager/management/overview.md), sätt dubbla citattecken omkring namnet och kör sedan kommandot. Till exempel: `"adfrg"`. 
    
      ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";
@@ -216,7 +216,7 @@ I det här steget länkar du ditt Azure-lagringskonto till datafabriken.
         }
     }
     ```
-2. I **Azure PowerShell**växlar du till mappen **C:\ADFTutorials\IncCopyChangeTrackingTutorial**
+2. I **Azure PowerShell** växlar du till mappen **C:\ADFTutorials\IncCopyChangeTrackingTutorial**
 3. Kör cmdleten **set-AzDataFactoryV2LinkedService** för att skapa den länkade tjänsten: **AzureStorageLinkedService**. I följande exempel skickar du värden för parametrarna **ResourceGroupName** och **DataFactoryName**.
 
     ```powershell
@@ -225,7 +225,7 @@ I det här steget länkar du ditt Azure-lagringskonto till datafabriken.
 
     Här är exempel på utdata:
 
-    ```json
+    ```console
     LinkedServiceName : AzureStorageLinkedService
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : IncCopyChgTrackingDF
@@ -235,7 +235,7 @@ I det här steget länkar du ditt Azure-lagringskonto till datafabriken.
 ### <a name="create-azure-sql-database-linked-service"></a>Skapa länkad Azure SQL Database-tjänst.
 I det här steget länkar du databasen till data fabriken.
 
-1. Skapa en JSON-fil med namnet **AzureSQLDatabaseLinkedService.jspå** i **C:\ADFTutorials\IncCopyChangeTrackingTutorial** -mappen med följande innehåll: Ersätt ** &lt; serverns &gt; &lt; databas namn &gt; , &lt; användar-ID &gt; och &lt; lösen ord &gt; ** med namnet på servern, namnet på din databas, ditt användar-ID och lösen ord innan du sparar filen.
+1. Skapa en JSON-fil med namnet **AzureSQLDatabaseLinkedService.jspå** i **C:\ADFTutorials\IncCopyChangeTrackingTutorial** -mappen med följande innehåll: Ersätt **&lt; serverns &gt; &lt; databas namn &gt; , &lt; användar-ID &gt; och &lt; lösen ord &gt;** med namnet på servern, namnet på din databas, ditt användar-ID och lösen ord innan du sparar filen.
 
     ```json
     {
@@ -248,7 +248,7 @@ I det här steget länkar du databasen till data fabriken.
         }
     }
     ```
-2. I **Azure PowerShell**kör du cmdleten **set-AzDataFactoryV2LinkedService** för att skapa den länkade tjänsten: **AzureSQLDatabaseLinkedService**.
+2. I **Azure PowerShell** kör du cmdleten **set-AzDataFactoryV2LinkedService** för att skapa den länkade tjänsten: **AzureSQLDatabaseLinkedService**.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
@@ -256,7 +256,7 @@ I det här steget länkar du databasen till data fabriken.
 
     Här är exempel på utdata:
 
-    ```json
+    ```console
     LinkedServiceName : AzureSQLDatabaseLinkedService
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : IncCopyChgTrackingDF
@@ -424,7 +424,7 @@ I det här steget skapar du en pipeline med en kopieringsaktivitet som kopierar 
 
    Här är exempel på utdata:
 
-   ```json
+   ```console
     PipelineName      : FullCopyPipeline
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : IncCopyChgTrackingDF
@@ -498,113 +498,110 @@ I det här steget skapar du en pipeline med följande aktiviteter och kör den m
 
     ```json
     {
-            "name": "IncrementalCopyPipeline",
-            "properties": {
-                "activities": [
+        "name": "IncrementalCopyPipeline",
+        "properties": {
+            "activities": [
                 {
-                        "name": "LookupLastChangeTrackingVersionActivity",
-                        "type": "Lookup",
-                        "typeProperties": {
+                    "name": "LookupLastChangeTrackingVersionActivity",
+                    "type": "Lookup",
+                    "typeProperties": {
                         "source": {
                             "type": "SqlSource",
                             "sqlReaderQuery": "select * from table_store_ChangeTracking_version"
-                            },
-
-                            "dataset": {
+                        },
+                        "dataset": {
                             "referenceName": "ChangeTrackingDataset",
                             "type": "DatasetReference"
-                            }
                         }
-                    },
-                    {
-                        "name": "LookupCurrentChangeTrackingVersionActivity",
-                        "type": "Lookup",
-                        "typeProperties": {
-                            "source": {
-                                "type": "SqlSource",
-                                "sqlReaderQuery": "SELECT CHANGE_TRACKING_CURRENT_VERSION() as CurrentChangeTrackingVersion"
+                    }
+                },
+                {
+                    "name": "LookupCurrentChangeTrackingVersionActivity",
+                    "type": "Lookup",
+                    "typeProperties": {
+                        "source": {
+                            "type": "SqlSource",
+                            "sqlReaderQuery": "SELECT CHANGE_TRACKING_CURRENT_VERSION() as CurrentChangeTrackingVersion"
                         },
-
-                            "dataset": {
+                        "dataset": {
                             "referenceName": "SourceDataset",
                             "type": "DatasetReference"
-                            }
                         }
-                    },
-
-                    {
-                        "name": "IncrementalCopyActivity",
-                        "type": "Copy",
-                        "typeProperties": {
-                            "source": {
-                                "type": "SqlSource",
-                                "sqlReaderQuery": "select data_source_table.PersonID,data_source_table.Name,data_source_table.Age, CT.SYS_CHANGE_VERSION, SYS_CHANGE_OPERATION from data_source_table RIGHT OUTER JOIN CHANGETABLE(CHANGES data_source_table, @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.SYS_CHANGE_VERSION}) as CT on data_source_table.PersonID = CT.PersonID where CT.SYS_CHANGE_VERSION <= @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}"
-                            },
-                            "sink": {
-                                "type": "BlobSink"
-                            }
-                        },
-                        "dependsOn": [
-                            {
-                                "activity": "LookupLastChangeTrackingVersionActivity",
-                                "dependencyConditions": [
-                                    "Succeeded"
-                                ]
-                            },
-                            {
-                                "activity": "LookupCurrentChangeTrackingVersionActivity",
-                                "dependencyConditions": [
-                                    "Succeeded"
-                                ]
-                        }
-                        ],
-
-                        "inputs": [
-                            {
-                            "referenceName": "SourceDataset",
-                                "type": "DatasetReference"
-                        }
-                        ],
-                        "outputs": [
-                            {
-                                "referenceName": "SinkDataset",
-                                "type": "DatasetReference"
-                            }
-                        ]
-                    },
-
-                {
-                        "name": "StoredProceduretoUpdateChangeTrackingActivity",
-                        "type": "SqlServerStoredProcedure",
-                        "typeProperties": {
-
-                            "storedProcedureName": "Update_ChangeTracking_Version",
-                            "storedProcedureParameters": {
-                            "CurrentTrackingVersion": {"value": "@{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}", "type": "INT64" },
-                                "TableName":  { "value":"@{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName}", "type":"String"}
-                            }
-                    },
-
-                        "linkedServiceName": {
-                        "referenceName": "AzureSQLDatabaseLinkedService",
-                            "type": "LinkedServiceReference"
-                        },
-
-                        "dependsOn": [
-                        {
-                                "activity": "IncrementalCopyActivity",
-                            "dependencyConditions": [
-                                    "Succeeded"
-                                ]
-                            }
-                        ]
                     }
-                ]
-
-            }
+                },
+                {
+                    "name": "IncrementalCopyActivity",
+                    "type": "Copy",
+                    "typeProperties": {
+                        "source": {
+                            "type": "SqlSource",
+                            "sqlReaderQuery": "select data_source_table.PersonID,data_source_table.Name,data_source_table.Age, CT.SYS_CHANGE_VERSION, SYS_CHANGE_OPERATION from data_source_table RIGHT OUTER JOIN CHANGETABLE(CHANGES data_source_table, @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.SYS_CHANGE_VERSION}) as CT on data_source_table.PersonID = CT.PersonID where CT.SYS_CHANGE_VERSION <= @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}"
+                        },
+                        "sink": {
+                            "type": "BlobSink"
+                        }
+                    },
+                    "dependsOn": [
+                        {
+                            "activity": "LookupLastChangeTrackingVersionActivity",
+                            "dependencyConditions": [
+                                "Succeeded"
+                            ]
+                        },
+                        {
+                            "activity": "LookupCurrentChangeTrackingVersionActivity",
+                            "dependencyConditions": [
+                                "Succeeded"
+                            ]
+                        }
+                    ],
+                    "inputs": [
+                        {
+                            "referenceName": "SourceDataset",
+                            "type": "DatasetReference"
+                        }
+                    ],
+                    "outputs": [
+                        {
+                            "referenceName": "SinkDataset",
+                            "type": "DatasetReference"
+                        }
+                    ]
+                },
+                {
+                    "name": "StoredProceduretoUpdateChangeTrackingActivity",
+                    "type": "SqlServerStoredProcedure",
+                    "typeProperties": {
+                        "storedProcedureName": "Update_ChangeTracking_Version",
+                        "storedProcedureParameters": {
+                            "CurrentTrackingVersion": {
+                                "value": "@{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion}",
+                                "type": "INT64"
+                            },
+                            "TableName": {
+                                "value": "@{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName}",
+                                "type": "String"
+                            }
+                        }
+                    },
+                    "linkedServiceName": {
+                        "referenceName": "AzureSQLDatabaseLinkedService",
+                        "type": "LinkedServiceReference"
+                    },
+                    "dependsOn": [
+                        {
+                            "activity": "IncrementalCopyActivity",
+                            "dependencyConditions": [
+                                "Succeeded"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
     }
-
     ```
+
 2. Kör cmdleten Set-AzDataFactoryV2Pipeline för att skapa pipelinen: FullCopyPipeline.
 
    ```powershell
@@ -613,7 +610,7 @@ I det här steget skapar du en pipeline med följande aktiviteter och kör den m
 
    Här är exempel på utdata:
 
-   ```json
+   ```console
     PipelineName      : IncrementalCopyPipeline
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : IncCopyChgTrackingDF
@@ -655,8 +652,8 @@ De första tre kolumnerna är ändrade data från data_source_table. De sista tv
 ==================================================================
 PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 ==================================================================
-1        update  10     2                     U
-6        new     50     1                     I
+1        update  10            2                                 U
+6        new     50            1                                 I
 ```
 
 

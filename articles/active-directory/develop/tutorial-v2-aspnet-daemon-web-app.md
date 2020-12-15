@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 031ee9a6d945d923279fd3025c32212c3ead98ed
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: c1d448fe9da72654ac1600009e66c88c5e7b93b4
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95406607"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509435"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Självstudie: utveckla en daemon för flera innehavare som använder Microsoft Identity Platform
 
@@ -33,7 +33,7 @@ I de här självstudierna har du
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - [Visual Studio 2017 eller 2019](https://visualstudio.microsoft.com/downloads/).
 - En Azure AD-klientorganisation. Mer information finns i [så här hämtar du en Azure AD-klient](quickstart-create-new-tenant.md).
@@ -65,7 +65,7 @@ Eller [Ladda ned exemplet i en zip-fil](https://github.com/Azure-Samples/ms-iden
 
 Det här exemplet har ett projekt. Om du vill registrera programmet med din Azure AD-klient kan du antingen:
 
-- Följ stegen i [Registrera exemplet med Azure Active Directory klient](#register-your-application) och [Konfigurera exemplet för att använda Azure AD-klienten](#choose-the-azure-ad-tenant).
+- Följ stegen i [Registrera exemplet med Azure Active Directory klient](#register-the-client-app-dotnet-web-daemon-v2) och [Konfigurera exemplet för att använda Azure AD-klienten](#choose-the-azure-ad-tenant).
 - Använd PowerShell-skript som:
   - Skapa *automatiskt* Azure AD-program och relaterade objekt (lösen ord, behörigheter, beroenden) åt dig.
   - Ändra konfigurationsfilerna för Visual Studio-projekt.
@@ -93,40 +93,34 @@ Om du inte vill använda Automation följer du stegen i följande avsnitt.
 
 ### <a name="choose-the-azure-ad-tenant"></a>Välj Azure AD-klient
 
-1. Logga in på [Azure Portal](https://portal.azure.com) med ett arbets-eller skol konto eller en personlig Microsoft-konto.
-1. Om ditt konto finns i fler än en Azure AD-klient väljer du din profil på menyn längst upp på sidan och väljer sedan **Växla katalog**.
-1. Ändra din portal-session till önskad Azure AD-klient.
+1. Logga in på [Azure-portalen](https://portal.azure.com).
+1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
+
 
 ### <a name="register-the-client-app-dotnet-web-daemon-v2"></a>Registrera klient programmet (dotNet-Web-daemon-v2)
 
-1. Gå till sidan [Appregistreringar](https://go.microsoft.com/fwlink/?linkid=2083908) i Microsoft Identity Platform för utvecklare.
-1. Välj **ny registrering**.
-1. När sidan **Registrera ett program** visas anger du programmets registreringsinformation:
-   - I avsnittet **namn** anger du ett meningsfullt program namn som ska visas för användare av appen. Ange till exempel **dotNet-Web-daemon-v2**.
-   - I avsnittet **konto typer som stöds** väljer du **konton i valfri organisations katalog**.
-   - I avsnittet **omdirigerings-URI (valfritt)** väljer du webb i kombinations rutan och anger följande omdirigerings **-** URI: er:
-       - **https://localhost:44316/**
-       - **https://localhost:44316/Account/GrantPermissions**
+1. Sök efter och välj **Azure Active Directory**.
+1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.
+1. Ange ett **namn** för programmet, till exempel `dotnet-web-daemon-v2` . Användare av appen kan se det här namnet och du kan ändra det senare.
+1. I avsnittet **konto typer som stöds** väljer du **konton i valfri organisations katalog**.
+1. I avsnittet **omdirigerings-URI (valfritt)** väljer du **webb** i kombinations rutan och anger `https://localhost:44316/` och `https://localhost:44316/Account/GrantPermissions` som omdirigerings-URI: er.
 
-     Om det finns fler än två omdirigerings-URI: er måste du lägga till dem från fliken **autentisering** senare, när appen har skapats.
+    Om det finns fler än två omdirigerings-URI: er måste du lägga till dem från fliken **autentisering** senare, när appen har skapats.
 1. Välj **Registrera** för att skapa programmet.
-1. På sidan **Översikt** för appen letar du reda på **programmets (klient) ID-** värde och registrerar det för senare. Du behöver den för att konfigurera Visual Studio-konfigurationsfilen för projektet.
-1. I listan över sidor för appen väljer du **Autentisering**. Efter det:
-   - I avsnittet **Avancerade inställningar** anger du **utloggnings-URL** till **https://localhost:44316/Account/EndSession** .
-   - I avsnittet **Avancerade inställningar** för  >  **implicit beviljande** väljer du **åtkomsttoken** och **ID-token**. Det här exemplet kräver att det [implicita tilldelnings flödet](v2-oauth2-implicit-grant-flow.md) är aktiverat för att logga in användaren och anropa ett API.
+1. På sidan **Översikt** för appen letar du reda på **programmets (klient) ID-** värde och spelar in det för senare användning. Du behöver den för att konfigurera Visual Studio-konfigurationsfilen för projektet.
+1. Under **Hantera** väljer du **autentisering**.
+1. Ange **utloggnings-URL** till `https://localhost:44316/Account/EndSession` .
+1. I avsnittet **implicit beviljande** väljer du **åtkomsttoken** och **ID-token**. Det här exemplet kräver att det [implicita tilldelnings flödet](v2-oauth2-implicit-grant-flow.md) är aktiverat för att logga in användaren och anropa ett API.
 1. Välj **Spara**.
-1. På sidan **certifikat & hemligheter** väljer du **ny klient hemlighet** i avsnittet **klient hemligheter** . Efter det:
-
-   1. Ange en nyckel Beskrivning (till exempel **app Secret**),
-   1. Välj en nyckel varaktighet på **minst ett år**, **i två år** eller **upphör aldrig att gälla**.
-   1. Välj knappen **Lägg till**.
-   1. När nyckelvärdet visas kopierar du och sparar det på en säker plats. Du behöver den här nyckeln senare för att konfigurera projektet i Visual Studio. Den visas inte igen eller kan hämtas på annat sätt.
-1. I listan över sidor för appen väljer du API- **behörigheter**. Efter det:
-   1. Välj knappen **Lägg till en behörighet**.
-   1. Se till att fliken **Microsoft API: er** är markerad.
-   1. I avsnittet **vanliga API: er för Microsoft** väljer du **Microsoft Graph**.
-   1. I avsnittet **program behörigheter** kontrollerar du att rätt behörigheter är markerade: **User. Read. all**.
-   1. Välj knappen **Lägg till behörigheter** .
+1. Välj **Certifikat och hemligheter** under **Hantera**.
+1. I avsnittet **klient hemligheter** väljer du **ny klient hemlighet**. 
+1. Ange en nyckel Beskrivning (till exempel **app Secret**).
+1. Välj en nyckel varaktighet på **minst ett år**, **i två år** eller **upphör aldrig att gälla**.
+1. Välj **Lägg till**. Registrera nyckel svärdet på en säker plats. Du behöver den här nyckeln senare för att konfigurera projektet i Visual Studio.
+1. Under **Hantera** väljer du **API-behörigheter**  >  **Lägg till en behörighet**.
+1. I avsnittet **vanliga API: er för Microsoft** väljer du **Microsoft Graph**.
+1. I avsnittet **program behörigheter** kontrollerar du att rätt behörigheter är markerade: **User. Read. all**.
+1. Välj **Lägg till behörigheter**.
 
 ## <a name="configure-the-sample-to-use-your-azure-ad-tenant"></a>Konfigurera exemplet så att Azure AD-klienten används
 
@@ -236,7 +230,7 @@ Visual Studio kommer att publicera projektet och automatiskt öppna en webbläsa
 1. På sidan **autentisering** för ditt program uppdaterar du URL-fälten för **utloggning** med adressen för din tjänst. Använd till exempel `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`.
 1. Från **anpassnings** menyn uppdaterar du **Start sidans URL** till adressen till din tjänst. Använd till exempel `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`.
 1. Spara konfigurationen.
-1. Lägg till samma URL i listan med värden i menyn för **Authentication**  >  **omdirigering** av autentisering. Om du har flera omdirigerings-URL: er, se till att det finns en ny post som använder App Service-URI: n för varje omdirigerings-URL.
+1. Lägg till samma URL i listan med värden i menyn för   >  **omdirigering** av autentisering. Om du har flera omdirigerings-URL: er, se till att det finns en ny post som använder App Service-URI: n för varje omdirigerings-URL.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 Ta bort app-objektet som du skapade i steget [Registrera ditt program](#register-your-application) när de inte längre behövs.  Ta bort programmet genom att följa anvisningarna i [ta bort ett program som skapats av dig eller din organisation](quickstart-remove-app.md#remove-an-application-authored-by-you-or-your-organization).

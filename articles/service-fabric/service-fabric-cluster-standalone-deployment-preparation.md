@@ -3,12 +3,12 @@ title: Förberedelse av fristående kluster distribution
 description: Dokumentation som rör förberedelse av miljön och skapandet av kluster konfigurationen som ska övervägas innan du distribuerar ett kluster som är avsett för hantering av produktions belastningar.
 ms.topic: conceptual
 ms.date: 9/11/2018
-ms.openlocfilehash: 9e5ad37d803b2042fd57b0a325570e69d7b73038
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 277c7e047815b3b4171f7cced203ecbe5b68b155
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842962"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509180"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Planera och förbereda din Service Fabric fristående kluster distribution
 
@@ -103,7 +103,7 @@ När en kluster administratör konfigurerar ett Service Fabric fristående klust
 5. Om kluster datorerna inte är Internet-tillgängliga, ställer du in följande i kluster konfigurationen:
    * Inaktivera telemetri: under *Egenskaper* ange *"enableTelemetry": falskt*
    * Inaktivera automatisk hantering av infrastruktur resurser & meddelanden som den aktuella kluster versionen närmar sig slutet på supporten: under *Egenskaper* set *"fabricClusterAutoupgradeEnabled": false*
-   * Alternativt, om nätverks Internet åtkomst är begränsad till vita domäner i listan, krävs nedanstående domäner för automatisk uppgradering: go.microsoft.com download.microsoft.com
+   * Alternativt, om nätverks Internet åtkomst är begränsad till allowlisted-domäner, krävs nedanstående domäner för automatisk uppgradering: go.microsoft.com download.microsoft.com
 
 6. Ange lämpliga Service Fabric Antivirus undantag:
 

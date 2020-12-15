@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 60dff717fbd86fa83821575ac90c9dac36dbc4d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d680da7a5f09a55bec5d791642b80fd76c6088e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85383979"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509622"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>Migrera användare till Azure AD B2C
 
@@ -90,7 +90,7 @@ All information i den äldre identitets leverantören bör inte migreras till di
 
 Innan du påbörjar migreringsprocessen, kan du ta chansen att rensa katalogen.
 
-- Identifiera den uppsättning användarattribut som ska lagras i Azure AD B2C och migrera bara vad du behöver. Om det behövs kan du skapa [anpassade attribut](custom-policy-custom-attributes.md) för att lagra mer data om en användare.
+- Identifiera den uppsättning användarattribut som ska lagras i Azure AD B2C och migrera bara vad du behöver. Om det behövs kan du skapa [anpassade attribut](user-flow-custom-attributes.md) för att lagra mer data om en användare.
 - Om du migrerar från en miljö med flera källor för autentisering (till exempel varje program har en egen användar katalog), migrera till ett enhetligt konto i Azure AD B2C.
 - Om flera program har olika användar namn kan du lagra dem i ett Azure AD B2C användar konto med hjälp av samlingen identiteter. Med avseende på lösen ordet kan användaren välja en och ange den i katalogen. Med den sömlösa migreringen ska du till exempel bara lagra det valda lösen ordet i Azure AD B2C-kontot.
 - Ta bort oanvända användar konton före migrering eller migrera inte inaktuella konton.

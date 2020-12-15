@@ -11,12 +11,12 @@ ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 62f2869bfe1110dd5bf8459c9f6f6b21701dc934
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 95f41283b78c39ed2cf3b4abb75275902d8cf7bd
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97425965"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509588"
 ---
 # <a name="userinfo-endpoint"></a>UserInfo-slutpunkt
 
@@ -103,7 +103,7 @@ UserJourney för användar information anger:
 
 1. Avsnittet outputClaims i den UserInfoIssuer tekniska profilen anger de attribut som du vill returnera. Den tekniska UserInfoIssuer-profilen anropas i slutet av användar resan. 
 1. Den tekniska profilen UserInfoAuthorization verifierar signaturen, utfärdarens namn och token-målgruppen och extraherar anspråket från den inkommande token. Ändra följande metadata för att avspegla din miljö:
-    1. **utfärdare** – det här värdet måste vara identiskt med `iss` anspråket inom åtkomsttoken för åtkomsttoken. Token som utfärdats av Azure AD B2C använda en utfärdare i formatet `https://yourtenant.b2clogin.com/your-tenant-id/v2.0/` . Läs mer om att [Anpassa token](configure-tokens-custom-policy.md).
+    1. **utfärdare** – det här värdet måste vara identiskt med `iss` anspråket inom åtkomsttoken för åtkomsttoken. Token som utfärdats av Azure AD B2C använda en utfärdare i formatet `https://yourtenant.b2clogin.com/your-tenant-id/v2.0/` . Läs mer om att [Anpassa token](configure-tokens.md).
     1. **IdTokenAudience** – måste vara identiskt med `aud` anspråket inom åtkomsttoken för åtkomsttoken. I Azure AD B2C `aud` är anspråket ID för ditt förlitande parts program. Det här värdet är en samling och stöder flera värden med hjälp av en komma-avgränsare.
 
 I följande åtkomsttoken `iss` är anspråk svärdet `https://contoso.b2clogin.com/11111111-1111-1111-1111-111111111111/v2.0/` . `aud`Anspråks värde är `22222222-2222-2222-2222-222222222222` .

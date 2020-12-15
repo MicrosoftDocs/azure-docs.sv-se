@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/03/2020
-ms.openlocfilehash: 4a99865e13e029dcea478cf6085d71c465918b14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 221f8bd7908613812a728d420a68b747051e095b
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89421851"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508806"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Skapa ett beroende för utlösare för rullande fönster
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -31,7 +31,7 @@ En demonstration om hur du skapar beroende pipelines i Azure Data Factory med ut
 
 ## <a name="create-a-dependency-in-the-data-factory-ui"></a>Skapa ett beroende i Data Factory gränssnittet
 
-Om du vill skapa ett beroende på en utlösare väljer du **Utlösare > avancerad > nytt**och väljer sedan utlösaren så att den är beroende av lämplig förskjutning och storlek. Välj **Slutför** och publicera data Factory-ändringarna för att beroendena ska börja gälla.
+Om du vill skapa ett beroende på en utlösare väljer du **Utlösare > avancerad > nytt** och väljer sedan utlösaren så att den är beroende av lämplig förskjutning och storlek. Välj **Slutför** och publicera data Factory-ändringarna för att beroendena ska börja gälla.
 
 ![Beroende skapande](media/tumbling-window-trigger-dependency/tumbling-window-dependency-01.png "Beroende skapande")
 
@@ -83,7 +83,7 @@ Följande tabell innehåller en lista med attribut som behövs för att definier
 |---|---|---|---|
 | typ  | Alla befintliga rullande fönster-utlösare visas i den här List rutan. Välj utlösaren att ta beroende av.  | TumblingWindowTriggerDependencyReference eller SelfDependencyTumblingWindowTriggerReference | Ja |
 | offset | Förskjutning av beroende utlösare. Ange ett värde i intervall format och både negativa och positiva förskjutningar tillåts. Den här egenskapen är obligatorisk om utlösaren är beroende av sig själv och i alla andra fall är den valfri. Self-Dependency måste alltid vara en negativ förskjutning. Om inget värde anges är fönstret detsamma som själva utlösaren. | Tidsintervall<br/>(hh: mm: SS) | Själv-beroende: Ja<br/>Övrigt: Nej |
-| size | Storlek på fönstret beroende rullande. Ange ett positivt TimeSpan-värde. Den här egenskapen är valfri. | Tidsintervall<br/>(hh: mm: SS) | Inga  |
+| ikoner | Storlek på fönstret beroende rullande. Ange ett positivt TimeSpan-värde. Den här egenskapen är valfri. | Tidsintervall<br/>(hh: mm: SS) | Nej  |
 
 > [!NOTE]
 > En utlösare för rullande fönster kan vara beroende av högst fem andra utlösare.

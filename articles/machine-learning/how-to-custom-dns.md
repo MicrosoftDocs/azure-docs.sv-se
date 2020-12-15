@@ -11,12 +11,12 @@ author: jhirono
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: c67dcbbe2ca6dea533260f59831556c4338374ba
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 07ff656c5eacbbcdc16c6c7cf098478ca6baf745
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95013000"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509299"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Så här använder du din arbetsyta med en anpassad DNS-server
 
@@ -25,7 +25,7 @@ När du använder en Azure Machine Learning-arbetsyta med en privat slut punkt f
 > [!IMPORTANT]
 > Den här artikeln beskriver bara hur du hittar det fullständigt kvalificerade domän namnet (FQDN) och IP-adresser för dessa poster. det ger inte information om hur du konfigurerar DNS-poster för dessa objekt. I dokumentationen för DNS-programvaran finns information om hur du lägger till poster.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - En Azure-Virtual Network som använder [din egen DNS-Server](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 
@@ -41,6 +41,7 @@ När du använder en Azure Machine Learning-arbetsyta med en privat slut punkt f
 
 I följande lista visas de fullständigt kvalificerade domän namnen (FQDN) som används av din arbets yta och privat slut punkt:
 
+* `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
 * `<workspace-GUID>.workspace.<region>.api.azureml.ms`
 * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
 * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
@@ -90,6 +91,7 @@ Informationen som returneras från alla metoder är densamma. en lista över FQD
 > [!IMPORTANT]
 > Vissa FQDN visas inte i listan av den privata slut punkten, men krävs av arbets ytan. Dessa FQDN visas i följande tabell och måste också läggas till i DNS-servern:
 >
+> * `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
 > * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
 > * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
 > * `<workspace-GUID>.workspace.<region>.aether.ms`

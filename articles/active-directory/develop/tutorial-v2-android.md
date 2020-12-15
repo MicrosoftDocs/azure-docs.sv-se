@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 08ee000d8f801559fcf572b8ab489161fd090b77
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 7ba15e66cca7baefdf8cca5cabd5e5d5b1e2c7f7
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95996210"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507820"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>Självstudie: Logga in användare och anropa Microsoft Graph API från ett Android-program
 
@@ -35,7 +35,7 @@ I de här självstudierna har du
 > * Lägg till kod för att anropa API: et för Microsoft Graph
 > * Testa appen
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Android Studio 3.5 +
 
@@ -75,24 +75,28 @@ Om du inte redan har ett Android-program följer du dessa steg för att skapa et
 
 ### <a name="register-your-application"></a>Registrera ditt program
 
-1. Gå till [Azure-portalen](https://aka.ms/MobileAppReg).
-2. Öppna [bladet Appregistreringar](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) och klicka på **+ ny registrering**.
-3. Ange ett **namn** för din app och klicka sedan på **Registrera** **utan att** ange en omdirigerings-URI.
-4. I avsnittet **Hantera** i fönstret som visas väljer du **autentisering**  >  **+ Lägg till en plattforms**-  >  **Android**. (Du kanske måste välja "växla till den nya upplevelsen" nära överst på bladet för att se det här avsnittet)
-5. Ange ditt projekts paket namn. Om du har hämtat koden är det här värdet `com.azuresamples.msalandroidapp` .
-6. I avsnittet **Signature hash** på sidan **Konfigurera din Android-app** klickar du på **skapa en hash för utvecklings signaturen.** och kopiera det kommando kommando som ska användas för din plattform.
+1. Logga in på [Azure-portalen](https://portal.azure.com).
+1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
+1. Sök efter och välj **Azure Active Directory**.
+1. Under **Hantera** väljer du **Appregistreringar**  >  **ny registrering**.
+1. Ange ett **namn** för ditt program. Användare av appen kan se det här namnet och du kan ändra det senare.
+1. Välj **Register** (Registrera).
+1. Under **Hantera** väljer du **autentisering**  >  **Lägg till en plattforms**-  >  **Android**.
+1. Ange ditt projekts paket namn. Om du har hämtat koden är det här värdet `com.azuresamples.msalandroidapp` .
+1. I avsnittet **Signature hash** på sidan **Konfigurera din Android-app** väljer du **skapa en hash för utvecklings signaturen.** och kopiera det kommando kommando som ska användas för din plattform.
 
    > [!Note]
    > KeyTool.exe installeras som en del av Java Development Kit (JDK). Du måste också installera OpenSSL-verktyget för att köra kommandot. Läs Android- [dokumentationen om hur du genererar en nyckel](https://developer.android.com/studio/publish/app-signing#generate-key) för mer information.
 
-7. Ange **signatur-hashen** som genereras av ett-verktyg.
-8. Klicka på `Configure` och spara **MSAL-konfigurationen** som visas på sidan med **Android-konfiguration** så att du kan ange den när du konfigurerar appen senare.  Klicka på **Klar**.
+1. Ange **signatur-hashen** som genereras av ett-verktyg.
+1. Välj **Konfigurera** och spara **MSAL-konfigurationen** som visas på sidan med **Android-konfiguration** så att du kan ange den när du konfigurerar appen senare.  
+1. Välj **Klar**.
 
 ### <a name="configure-your-application"></a>Konfigurera ditt program
 
 1. I Android Studio projekt fönstret navigerar du till **app\src\main\res**.
-2. Högerklicka på **res** och välj **ny**  >  **katalog**. Ange `raw` som det nya katalog namnet och klicka på **OK**.
-3. I **app**  >  **src**  >  **main**  >  **res**  >  **RAW** skapar du en ny JSON-fil med namnet `auth_config_single_account.json` och klistrar in MSAL-konfigurationen som du sparade tidigare.
+1. Högerklicka på **res** och välj **ny**  >  **katalog**. Ange `raw` som det nya katalog namnet och klicka på **OK**.
+1. I **app**  >  **src**  >  **main**  >  **res**  >  **RAW** skapar du en ny JSON-fil med namnet `auth_config_single_account.json` och klistrar in MSAL-konfigurationen som du sparade tidigare.
 
     Under omdirigerings-URI: n klistrar du in:
     ```json
@@ -121,7 +125,7 @@ Om du inte redan har ett Android-program följer du dessa steg för att skapa et
    >[!NOTE]
    >Den här kursen visar bara hur du konfigurerar en app i ett enda konto läge. Läs dokumentationen om du vill ha mer information om [Single vs. Multiple Account mode](./single-multi-account.md) och [Konfigurera appen](./msal-configuration.md)
 
-4. **app**  >  **src**  >  **main**  >  **** Lägg till `BrowserTabActivity` aktiviteten under program texten i appens huvudAndroidManifest.xml. Med den här posten kan Microsoft anropa programmet igen när autentiseringen är klar:
+4.   >    >    >  **** Lägg till `BrowserTabActivity` aktiviteten under program texten i appens huvudAndroidManifest.xml. Med den här posten kan Microsoft anropa programmet igen när autentiseringen är klar:
 
     ```xml
     <!--Intent filter to capture System Browser or Authenticator calling back to our app after sign-in-->
@@ -566,7 +570,7 @@ Exempel `activity_main.xml` fil för att Visa knappar och text rutor.
 </LinearLayout>
 ```
 
-## <a name="test-your-app"></a>Testa din app
+## <a name="test-your-app"></a>Testa appen
 
 ### <a name="run-locally"></a>Lokal körning
 
