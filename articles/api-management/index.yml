@@ -10,12 +10,12 @@ metadata:
   author: georgewallace
   ms.author: gwallace
   ms.date: 03/08/2020
-  ms.openlocfilehash: ba4e1c4d1083894b5de2df635414cc30ca3745c0
-  ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+  ms.openlocfilehash: 5a3b09c3835e09d734c1083f84893224c3fe8cfd
+  ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
   ms.translationtype: HT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 11/19/2020
-  ms.locfileid: "94917757"
+  ms.lasthandoff: 12/14/2020
+  ms.locfileid: "97399102"
 landingContent:
 - title: Om API Management
   linkLists:
@@ -35,7 +35,7 @@ landingContent:
       url: get-started-create-service-instance.md
     - text: Azure PowerShell
       url: powershell-create-service-instance.md
-    - text: Visuell Studio-kod
+    - text: Visual Studio-koden
       url: vscode-create-service-instance.md
     - text: ARM-mall
       url: quickstart-arm-template.md
@@ -61,6 +61,8 @@ landingContent:
       url: api-management-get-started-publish-versions.md
     - text: 9. Anpassa stilen på utvecklarportalens sidor
       url: api-management-howto-developer-portal-customize.md
+    - text: 10. Hantera API:er i Visual Studio Code
+      url: visual-studio-code-tutorial.md
 - title: Exempel
   linkLists:
   - linkListType: sample

@@ -42,6 +42,8 @@
       href: api-management-get-started-publish-versions.md
     - name: 9 – Anpassa utvecklarportalen
       href: api-management-howto-developer-portal-customize.md
+    - name: '10 – Hantera API:er i Visual Studio Code'
+      href: visual-studio-code-tutorial.md
 - name: Exempel
   items:
     - name: Principer
@@ -216,7 +218,7 @@
           href: api-management-sample-flexible-throttling.md
         - name: Använda externa tjänster
           href: api-management-sample-send-request.md
-        - name: Hantera hemligheter med hjälp av egenskaper
+        - name: Hantera hemligheter med hjälp av namngivna värden
           href: api-management-howto-properties.md
         - name: Principer för begränsning av åtkomst
           href: api-management-access-restriction-policies.md

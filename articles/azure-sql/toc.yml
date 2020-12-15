@@ -69,6 +69,8 @@
                   href: database/sql-vulnerability-assessment.md
                 - name: Sårbarhetsbedömningsregler
                   href: database/sql-database-vulnerability-assessment-rules.md
+                - name: Ändringslogg för sårbarhetsbedömningsregler
+                  href: database/sql-database-vulnerability-assessment-rules-changelog.md
                 - name: Lagra sårbarhetsgenomsökningar i lagring
                   href: database/sql-database-vulnerability-assessment-storage.md
             - name: 'Inloggningar, användarkonton, roller och behörigheter'

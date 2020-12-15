@@ -92,8 +92,18 @@
           href: diagnostics-log-analytics.md
     - name: Publicera inbyggda appar
       href: publish-apps.md
-    - name: Konfigurera MSIX-appbifogning
-      href: app-attach.md
+    - name: Använda MSIX-appbifogning
+      items:
+        - name: Konfigurera MSIX-appbifogning med Azure Portal
+          href: app-attach-azure-portal.md
+        - name: Konfigurera MSIX-appbifogning med PowerShell
+          href: app-attach-powershell.md
+        - name: Skapa PowerShell-skript
+          href: app-attach.md
+        - name: Förbereda en MSIX-avbildning
+          href: app-attach-image-prep.md
+        - name: Konfigurera en filresurs
+          href: app-attach-file-share.md
     - name: Använda Microsoft Teams
       href: teams-on-wvd.md
     - name: Konfigurera Azure AD-multifaktorautentisering

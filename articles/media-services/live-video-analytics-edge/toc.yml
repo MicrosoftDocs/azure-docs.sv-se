@@ -66,6 +66,7 @@
     - name: Mediegraf
       href: media-graph-concept.md
     - name: Mediegraftillägg
+      displayName: AI
       href: media-graph-extension-concept.md
     - name: Videoinspelning
       href: video-recording-concept.md
@@ -99,6 +100,10 @@
       href: configure-signal-gate-how-to.md
     - name: Felsöka
       href: troubleshoot-how-to.md
+    - name: Uppgradera
+      href: upgrading-lva-module.md
+    - name: Utveckla och distribuera en gRPC-inferensserver
+      href: develop-deploy-grpc-inference-srv-how-to.md
 - name: Referens
   items:
     - name: Protokoll för HTTP-tillägg

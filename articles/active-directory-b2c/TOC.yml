@@ -95,8 +95,6 @@
       href: user-overview.md
     - name: Attribut för användarprofil
       href: user-profile-attributes.md
-    - name: Sessioner för enkel inloggning
-      href: session-overview.md
     - name: Identitetsskydd och villkorsstyrd åtkomst
       href: conditional-access-identity-protection-overview.md
 - name: Anvisningar
@@ -174,6 +172,24 @@
         - name: Aktivera MFA
           href: multi-factor-authentication.md
           displayName: multi-factor auth
+        - name: Ställ in direkt inloggning
+          href: direct-signin.md
+    - name: Token och sessionshantering
+      items:
+        - name: Konfigurera sessionsbeteende
+          href: session-behavior.md
+        - name: Konfigurera token
+          href: configure-tokens.md
+    - name: Definiera anpassade attribut
+      href: user-flow-custom-attributes.md
+    - name: Identitetsskydd och villkorsstyrd åtkomst
+      items:
+        - name: Konfigurera identitetsskydd och villkorsstyrd åtkomst
+          href: conditional-access-identity-protection-setup.md
+        - name: Lägg till villkorsstyrd åtkomst
+          href: conditional-access-user-flow.md
+    - name: Konfigurera åldershantering
+      href: basic-age-gating.md
     - name: Användarflöde
       items:
         - name: Skapa ett flöde
@@ -184,18 +200,6 @@
               href: configure-ropc.md
             - name: Konfigurera återställning av lösenord för självbetjäning
               href: user-flow-self-service-password-reset.md
-        - name: Lägg till villkorsstyrd åtkomst
-          href: conditional-access-user-flow.md
-        - name: Token och sessionshantering
-          items:
-            - name: Konfigurera token
-              href: configure-tokens.md
-            - name: Konfigurera sessionsbeteende
-              href: session-behavior.md
-        - name: Konfigurera åldershantering
-          href: basic-age-gating.md
-        - name: Definiera anpassade attribut
-          href: user-flow-custom-attributes.md
         - name: API-anslutningsprogram (förhandsversion)
           items:
             - name: Översikt
@@ -204,20 +208,17 @@
               href: add-api-connector.md
         - name: Skicka externa IdP-token
           href: idp-pass-through-user-flow.md
-    - name: Identitetsskydd och villkorsstyrd åtkomst
-      href: conditional-access-identity-protection-setup.md
     - name: Anpassad princip
       items:
+        - name: Översikt över anpassad princip
+          href: custom-policy-trust-frameworks.md
+        - name: Kom igång med anpassade principer
+          href: custom-policy-get-started.md
         - name: Skapa en princip
           items:
-            - name: Kom igång med anpassade principer
-              href: custom-policy-get-started.md
             - name: Autentiseringsuppgifter för lösenord för resursägare
               href: ropc-custom.md
               displayName: ropc
-            - name: Aktivera ”Håll mig inloggad”
-              href: custom-policy-keep-me-signed-in.md
-              displayName: kmsi
             - name: Lösenordsändring
               href: custom-policy-password-change.md
             - name: Telefonregistrering och -inloggning
@@ -230,18 +231,8 @@
             - name: SendGrid
               href: custom-email-sendgrid.md
           displayName: verification
-        - name: Token och sessionshantering
-          items:
-            - name: Anpassa token
-              href: configure-tokens-custom-policy.md
-            - name: Konfigurera sessionsbeteende
-              href: session-behavior-custom-policy.md
         - name: Skicka externa IdP-token
           href: idp-pass-through-custom.md
-        - name: Anpassningsbar upplevelse
-          items:
-            - name: Ställ in direkt inloggning
-              href: direct-signin.md
         - name: Lägg till din egen affärslogik
           items:
             - name: Integrera REST API
@@ -254,8 +245,6 @@
               displayName: rest claims exchange
             - name: Säker REST API
               href: secure-rest-api.md
-        - name: Definiera anpassade attribut
-          href: custom-policy-custom-attributes.md
         - name: Felsökning
           items:
             - name: Samla in loggar med Application Insights
@@ -268,8 +257,6 @@
           href: analytics-with-application-insights.md
         - name: Referens
           items:
-            - name: Definition av betrott ramverk
-              href: custom-policy-trust-frameworks.md
             - name: TrustFrameworkPolicy
               href: trustframeworkpolicy.md
             - name: BuildingBlocks
@@ -315,11 +302,9 @@
             - name: ClaimsProviders
               href: claimsproviders.md
               items:
-                - name: TechnicalProfiles
+                - name: Tekniska profiler
                   href: technicalprofiles.md
                   items:
-                    - name: Om tekniska profiler
-                      href: technical-profiles-overview.md
                     - name: Om tekniska profiler för validering
                       href: validation-technical-profile.md
                     - name: Application Insights
@@ -370,6 +355,8 @@
               href: relyingparty.md
             - name: Anspråkslösare
               href: claim-resolver-overview.md
+    - name: UserInfo-slutpunkt
+      href: userinfo-endpoint.md
     - name: Partnerintegration
       items:
         - name: Partnergalleri för Azure AD B2C

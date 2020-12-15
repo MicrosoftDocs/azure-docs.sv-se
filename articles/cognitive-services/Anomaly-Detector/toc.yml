@@ -30,6 +30,8 @@
   items:
     - name: Identifiera avvikelser i dina data
       href: how-to/identify-anomalies.md
+    - name: Distribuera till IoT Edge
+      href: how-to/deploy-anomaly-detection-on-iot-edge.md
     - name: Använda containrar
       items:
         - name: Installera och köra containrar
