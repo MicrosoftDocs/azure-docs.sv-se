@@ -5,18 +5,21 @@ ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
 ms.date: 08/11/2020
-ms.openlocfilehash: a13713f01a6bdb0ffcd787ef9c1d2f9a0336f63c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ae3ef2e1f35be432558769c512845543867ef27a
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369564"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505417"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview-with-debezium-for-change-data-capture"></a>Integrera Apache Kafka Connect-support på Azure Event Hubs (för hands version) med Debezium för registrering av ändrings data
 
 **Registrering av ändrings data (CDC)** är en teknik som används för att spåra ändringar på rad nivå i databas tabeller som svar på åtgärder för att skapa, uppdatera och ta bort. [Debezium](https://debezium.io/) är en distribuerad plattform som bygger på funktionerna för insamling av ändrings data i olika databaser (till exempel [logisk avkodning i postgresql](https://www.postgresql.org/docs/current/static/logicaldecoding-explanation.html)). Den innehåller en uppsättning [Kafka Connect-kopplingar](https://debezium.io/documentation/reference/1.2/connectors/index.html) som används för ändringar på radnivå i databas tabeller och konverterar dem till händelse strömmar som sedan skickas till [Apache Kafka](https://kafka.apache.org/).
 
 Den här självstudien vägleder dig genom hur du konfigurerar ett samlat system för ändrings data i Azure med hjälp av [azure Event Hubs](./event-hubs-about.md?WT.mc_id=devto-blog-abhishgu) (för Kafka), [Azure dB för postgresql](../postgresql/overview.md) och Debezium. Den använder [Debezium postgresql-anslutningen](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html) för att strömma databas ändringar från postgresql till Kafka ämnen i Azure Event Hubs
+
+> [!NOTE]
+> Den här artikeln innehåller referenser till termen *vitlista*, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
 
 I den här självstudien gör du följande:
 

@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/08/2020
-ms.openlocfilehash: f41a43e76993a03554d32fc7f3ce3149848989a9
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.date: 12/14/2020
+ms.openlocfilehash: 427bdec2b5e5ab14d566375d5ad8f9da9dc3e81b
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94687155"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505604"
 ---
 # <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-preview"></a>Konfigurera övervakning i Azure Monitor for VMs gäst hälsa (för hands version)
 Azure Monitor for VMs gäst hälsa kan du se hälso tillståndet för en virtuell dator så som den definieras av en uppsättning prestanda mätningar som samplas med jämna mellanrum. I den här artikeln beskrivs hur du kan ändra standard övervakning med hjälp av Azure Portal. Det beskriver också grundläggande koncept för Övervakare som krävs för att [Konfigurera övervakning med en data insamlings regel](vminsights-health-configure-dcr.md).
@@ -24,20 +24,26 @@ Azure Monitor for VMs gäst hälsa kan du se hälso tillståndet för en virtuel
 ## <a name="enable-or-disable-monitors"></a>Aktivera eller inaktivera övervakare
 Både enhets övervakare och sammanställda övervakare har status inställningar för **hälso tillstånd** som gör att du kan aktivera eller inaktivera övervakaren. När en övervakare är aktive rad visas dess hälsa och används för att ställa in hälso tillståndet för den virtuella datorn. När en övervakare är inaktive rad beräknas inte dess hälsa och används inte för att ange hälso tillståndet för den virtuella datorn.
 
-| Inställningen | Beskrivning |
+| Inställning | Beskrivning |
 |:---|:---|
 | Enabled | Övervakaren är aktive rad oavsett inställningen för dess överordnade. |
 | Inaktiverad | Övervakaren är inaktive rad oavsett inställningen för dess överordnade. |
 | Samma som överordnad | Övervakaren kommer att aktive ras eller inaktive ras beroende på inställningen för dess överordnade. |
 
-När en övervakare är inaktive ring visas alla villkor som de inte är tillgängliga som de visas i följande exempel.
+När en övervakare är inaktive rad visas alla villkor som de inte är tillgängliga som de visas i följande exempel.
 
 ![Övervakaren är inaktive rad](media/vminsights-health-configure/disabled-monitor.png)
+
+
+> [!NOTE]
+> Om en överordnad övervakare har inaktiverats inaktive ras även alla underordnade övervakare. Om du aktiverar den underordnade övervakaren explicit, aktive ras den överordnade även, men dess konfigurations status förblir densamma. I det här fallet visas följande meddelande i den överordnade övervakaren.
+>
+> *Det finns en avvikelse som övervakarens konfigurerade status är inaktive rad men hälso tillståndet visar inte att. Detta beror på att de konfigurerade ändringarna sprids eller att alla dess underordnade övervakare uttryckligen har Aktiver ATS.*
 
 ## <a name="enable-or-disable-virtual-machine"></a>Aktivera eller inaktivera virtuell dator
 Du kan inaktivera övervakning för en virtuell dator för att tillfälligt stoppa alla Övervakare. Du kan till exempel inaktivera övervakning för en virtuell dator, till exempel när du utför underhåll på den.
 
-| Inställningen | Beskrivning |
+| Inställning | Beskrivning |
 |:---|:---|
 | Enabled  | Datorns hälso tillstånd visas. |
 | Inaktiverad | Datorns hälso tillstånd visas som **inaktiverat**. Aviseringar skapas inte. |

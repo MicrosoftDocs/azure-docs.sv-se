@@ -5,20 +5,20 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: 232a1ae5d125a2ea1d5723e85073fb3dd02420cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a7f21410bb97db0a7974870efb812c9954ac241
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87294477"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503564"
 ---
-# <a name="configure-development-environment-for-deployment-scripts-in-templates-preview"></a>Konfigurera utvecklings miljö för distributions skript i mallar (för hands version)
+# <a name="configure-development-environment-for-deployment-scripts-in-templates"></a>Konfigurera utvecklings miljön för distributions skript i mallar
 
 Lär dig hur du skapar en utvecklings miljö för att utveckla och testa distributions skript med en distributions skript avbildning. Du kan antingen skapa en [Azure Container instance](../../container-instances/container-instances-overview.md) eller använda [Docker](https://docs.docker.com/get-docker/). Båda beskrivs i den här artikeln.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du inte har ett distributions skript kan du skapa en **hello.ps1** -fil med följande innehåll:
 
@@ -197,7 +197,7 @@ Du kan också ladda upp filen med hjälp av Azure Portal och Azure CLI.
 
     ![instans av distributions skriptets Connect-behållare](./media/deployment-script-template-configure-dev/deployment-script-container-instance-connect.png)
 
-1. Välj **Anslut**och välj sedan **Anslut**. Om du inte kan ansluta till behållar instansen startar du om behållar gruppen och försöker igen.
+1. Välj **Anslut** och välj sedan **Anslut**. Om du inte kan ansluta till behållar instansen startar du om behållar gruppen och försöker igen.
 1. Kör följande kommandon i konsol fönstret:
 
     ```
@@ -237,7 +237,7 @@ Du måste också konfigurera fildelning för att montera katalogen som innehåll
     docker run -v <host drive letter>:/<host directory name>:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3
     ```
 
-    Ersätt ** &lt; värd driv rutins beteckningen>** och ** &lt; värd katalog namnet>** med en befintlig mapp på den delade enheten.  Mappen mappas till mappen **/data** i behållaren. Till exempel för att mappa D:\docker:
+    Ersätt **&lt; värd driv rutins beteckningen>** och **&lt; värd katalog namnet>** med en befintlig mapp på den delade enheten.  Mappen mappas till mappen **/data** i behållaren. Till exempel för att mappa D:\docker:
 
     ```command
     docker run -v d:/docker:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3

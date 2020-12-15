@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5ace6866ef863b2f901c98f9a32a12540a990d0d
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f47ee36c0e7806afc10f8f0907825378c2d24410
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931919"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505553"
 ---
 # <a name="calling-client-library-overview"></a>Översikt över klientbiblioteket för samtal
 
@@ -28,7 +28,7 @@ Tjänst klient biblioteken är inte tillgängliga än och ger till gång till pl
 
 I följande lista presenteras de funktioner som för närvarande är tillgängliga i Azure Communication Services som anropar klient bibliotek.
 
-| Grupp med funktioner | Kapacitet                                                                                                          | JS  | Java (Android) | Objective-C (iOS) 
+| Grupp med funktioner | Funktion                                                                                                          | JS  | Java (Android) | Objective-C (iOS) 
 | ----------------- | ------------------------------------------------------------------------------------------------------------------- | ---  | -------------- | -------------
 | Kärn funktioner | Placera ett ett-till-ett-samtal mellan två användare                                                                           | ✔️   | ✔️            | ✔️  
 |                   | Placera ett grupp samtal med fler än två användare (upp till 350 användare)                                                       | ✔️   | ✔️            | ✔️ 
@@ -90,6 +90,15 @@ Denna IFRAME tillåter till exempel både kamera-och mikrofon åtkomst:
 ```html
 <iframe allow="camera *; microphone *">
 ```
+
+## <a name="calling-client-library-streaming-support"></a>Anropar stöd för strömning av klient bibliotek
+Kommunikations tjänsterna som anropar klient biblioteket stöder följande strömmande konfigurationer:
+
+|           |Webb | Android/iOS|
+|-----------|----|------------|
+|Antal utgående strömmar som kan skickas samtidigt |1 video och en skärm delning | 1 video och en skärm delning|
+|Antal inkommande strömmar som kan renderas samtidigt |1 video och en skärm delning| 6 video-och 1-bildskärms delning |
+
 
 ## <a name="next-steps"></a>Nästa steg
 

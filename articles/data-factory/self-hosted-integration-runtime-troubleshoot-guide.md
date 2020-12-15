@@ -7,43 +7,49 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 11/17/2020
 ms.author: lle
-ms.openlocfilehash: 635178999398287649d8630fc5262a385afc48b2
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ccebdbf428180f8ff4ab10dc6007c3ec35a66362
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96341792"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503598"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Felsöka integration runtime med egen värd
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Den här artikeln utforskar vanliga fel söknings metoder för integration runtime med egen värd i Azure Data Factory.
+Den här artikeln visar vanliga fel söknings metoder för integration Runtime (IR) med egen värd i Azure Data Factory.
 
 ## <a name="gather-self-hosted-ir-logs-from-azure-data-factory"></a>Samla in IR-loggar med egen värd från Azure Data Factory
 
-Azure Data Factory stöder visning och överföring av fel loggar för misslyckade aktiviteter som körs på IR/delad IR/delad IR. Du kan följa stegen nedan för att hämta fel rapportens ID och sedan skriva in rapport-ID: t för att hitta relaterade kända problem.
+För misslyckade aktiviteter som körs på en IR eller en delad IR-överföring stöder Azure Data Factory att visa och ladda upp fel loggar. Hämta fel rapportens ID genom att följa anvisningarna här och ange sedan rapport-ID för att söka efter relaterade kända problem.
 
-1. Gå till sidan **aktivitets körningar** .
+1. I Data Factory väljer du **pipeline-körningar**.
 
-1. Under kolumnen **fel** klickar du på knappen nedan.
+1. Under **aktivitets körningar** i kolumnen **fel** väljer du den markerade knappen för att Visa aktivitets loggarna, som du ser på följande skärm bild:
 
-    ![Sidan aktivitets körningar](media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page.png)
+    ![Skärm bild av avsnittet "aktivitets körningar" i fönstret "alla pipeline-körningar".](media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page.png)
 
-1. Du kommer att se relaterade loggar för körningen av misslyckad aktivitet. Klicka på **skicka loggar** om du vill ha mer hjälp.
+    Aktivitets loggarna visas för körning av misslyckad aktivitet.
 
-    ![Skicka loggar](media/self-hosted-integration-runtime-troubleshoot-guide/send-logs.png)
+    ![Skärm bild av aktivitets loggarna för den misslyckade aktiviteten.](media/self-hosted-integration-runtime-troubleshoot-guide/send-logs.png) 
+    
+1. Om du behöver ytterligare hjälp väljer du **skicka loggar**.
+ 
+   **Delningen av IR-loggarna (egen värd för integrering Runtime) med Microsoft** öppnas.
 
-1. Du kan välja vilka loggar du vill skicka. För *IR med egen värd* kan du överföra loggar relaterade till misslyckad aktivitet eller alla loggar på IR-noden med egen värd. För *delad IR* kan du bara ladda upp loggar som är relaterade till misslyckad aktivitet.
+    ![Skärm bild av fönstret "dela den egna värdbaserade integrerings körningen (IR) med Microsoft".](media/self-hosted-integration-runtime-troubleshoot-guide/choose-logs.png)
 
-    ![Välj loggar](media/self-hosted-integration-runtime-troubleshoot-guide/choose-logs.png)
+1. Välj vilka loggar du vill skicka. 
+    * För en *IR med egen värd* kan du överföra loggar som är relaterade till den misslyckade aktiviteten eller alla loggar på IR-noden med egen värd. 
+    * För en *delad IR* kan du bara överföra loggar som är relaterade till den misslyckade aktiviteten.
 
-1. När loggarna laddas upp ska du behålla en post med rapport-ID om du behöver hjälp med att lösa problemet.
+1. När loggarna har laddats upp ska du behålla en post med rapport-ID: t för senare användning om du behöver hjälp med att lösa problemet.
 
-    ![Ladda upp loggar](media/self-hosted-integration-runtime-troubleshoot-guide/upload-logs.png)
+    ![Skärm bild av det visade rapport-ID: t i fönstret för överförings förloppet för IR-loggar.](media/self-hosted-integration-runtime-troubleshoot-guide/upload-logs.png)
 
 > [!NOTE]
-> Logg visning och uppladdning av begär Anden körs på alla online-IR-instanser online. Kontrol lera att alla egna IR-instanser är online om det finns saknade loggar som saknas. 
+> Logg visning och överförings begär Anden körs på alla online-IR-instanser online. Om några loggar saknas, se till att alla IR-instanser med egen värd är online. 
 
 
 ## <a name="self-hosted-ir-general-failure-or-error"></a>Allmänt fel eller fel i lokalt installerad IR
@@ -52,77 +58,86 @@ Azure Data Factory stöder visning och överföring av fel loggar för misslycka
 
 #### <a name="symptoms"></a>Symtom
 
-Problemet "OutOfMemoryException" inträffar när du försöker köra en söknings aktivitet med länkad IR eller lokal IR.
+Ett OutOfMemoryException-fel (OOM) inträffar när du försöker köra en söknings aktivitet med en länkad IR eller en lokal IR-åtgärd.
 
 #### <a name="cause"></a>Orsak
 
-Ny aktivitet kan mötas med OOM-problemet (OutOfMemory) om IR-datorn har en hög minnes användning för tillfället. Problemet kan orsakas av en stor skala för körning av samtidiga aktiviteter och felet är avsiktligt.
+En ny aktivitet kan utlösa ett OOM-fel om IR-datorn upplever en momentant hög minnes användning. Problemet kan bero på en stor mängd samtidig aktivitet och felet är avsiktligt.
 
 #### <a name="resolution"></a>Lösning
 
-Kontrol lera resursanvändningen och körningen av samtidiga aktiviteter på IR-noden. Justera den interna och Utlös ande tiden för aktivitets körningar för att undvika för mycket körning på samma IR-nod på samma tid.
+Kontrol lera resursanvändningen och körningen av samtidiga aktiviteter på IR-noden. Justera den interna och Utlös ande tiden för aktivitets körningar för att undvika för mycket körning på en enskild IR-nod på samma gång.
 
 
-### <a name="tlsssl-certificate-issue"></a>TLS/SSL-certifikatproblem
+### <a name="ssltls-certificate-issue"></a>Problem med SSL/TLS-certifikat
 
 #### <a name="symptoms"></a>Symtom
 
-När du försöker aktivera TLS/SSL-certifikat (avancerat) från **Konfigurationshanterare för lokalt installerad IR** -> **Fjärråtkomst från intranät**, efter att ha valt TLS/SSL-certifikat, visas följande fel:
+När du försöker aktivera ett Secure Sockets Layer (SSL)/Transport Layer Security (TLS)-certifikat (avancerat) genom att välja certifikatet (när du har valt **IR-Configuration Manager**  >  **fjärråtkomst från intranätet**) får du följande fel meddelande:
 
-`Remote access settings are invalid. Identity check failed for outgoing message. The expected DNS identity of the remote endpoint was ‘abc.microsoft.com’ but the remote endpoint provided DNS claim ‘microsoft.com’. If this is a legitimate remote endpoint, you can fix the problem by explicitly specifying DNS identity ‘microsoft.com’ as the Identity property of EndpointAddress when creating channel proxy.`
+"Inställningar för fjärråtkomst är ogiltiga. Identitets kontrollen misslyckades för utgående meddelande. Den förväntade DNS-identiteten för Fjärrslutpunkten var ' abc.microsoft.com ', men Fjärrslutpunkten tillhandahöll DNS-anspråket ' microsoft.com '. Om det här är en legitim fjärrslutpunkt kan du åtgärda problemet genom att uttryckligen ange DNS-identiteten "microsoft.com" som identitets egenskap för EndpointAddress när du skapar en kanal-proxy. "
 
-I ovanstående fall använder användaren certifikat med ”microsoft.com” som sista objekt.
+I föregående exempel har det valda certifikatet "microsoft.com" bifogat till det.
 
 #### <a name="cause"></a>Orsak
 
-Det här är ett känt problem i WCF: WCF TLS/SSL-valideringen kontrollerar endast senaste DNSName i SAN. 
+Detta är ett känt problem i Windows Communication Foundation (WCF). Verifieringen av WCF SSL/TLS kontrollerar bara för de senaste DNSName i fältet **Alternativt namn för certifikat mottagare** (San). 
 
 #### <a name="resolution"></a>Lösning
 
-Jokerteckencertifikat stöds i Azure Data Factory v2 – lokalt installerad IR. Det här problemet beror vanligtvis på att SSL-certifikatet inte är korrekt. Senaste DNSName i SAN ska vara giltigt. Följ stegen nedan för att kontrollera det. 
-1.  Öppna hanterings konsolen, markera både *ämne* och *alternativt ämnes namn* i certifikat informationen. I ovanstående fall är till exempel det sista objektet i *Alternativt namn för certifikat mottagare*, som är "DNS-namn = Microsoft.com.com", inte giltigt.
-2.  Kontakta företaget för certifikat utfärdare för att ta bort fel DNS-namn.
+Ett jokertecken stöds i Azure Data Factory v2-IR med egen värd. Det här problemet beror vanligt vis på att SSL-certifikatet är felaktigt. Den senaste DNSName i SAN ska vara giltig. 
+
+Så här kontrollerar du och korrigerar DNSName: 
+
+1. Öppna hanterings konsolen.
+1. Under **certifikat information**, dubbelklickar du på värdet i rutorna namn på **ämne** och **mottagar namn** . Till exempel är "DNS-namn = microsoft.com.com" inte ett giltigt namn.
+1. Kontakta företaget för certifikat utfärdaren om du vill att felaktiga DNSName ska tas bort.
 
 ### <a name="concurrent-jobs-limit-issue"></a>Problem med gräns för samtidiga jobb
 
 #### <a name="symptoms"></a>Symtom
 
-När du försöker öka gränsen för samtidiga jobb från Azure Data Factory-gränssnittet, låser det sig som *uppdaterar* under lång tid.
-Det maximala värdet för samtidiga jobb har angetts till 24 och du vill öka antalet så att jobben kan köras snabbare. Det minsta värde som du kan ange är 3 och det högsta värdet som du kan ange är 32. Du har ökat värdet från 24 till 32 och klickar på knappen *Uppdatera* i det användar gränssnitt som det har fastnat i *uppdateringen* som du ser nedan. Efter uppdateringen såg kunden fortfarande värdet 24 och det uppdaterades aldrig till 32.
+När du försöker öka gränsen för antalet samtidiga jobb från Azure Data Factory-gränssnittet låser sig processen under *uppdaterings* status.
 
-![Uppdaterar status](media/self-hosted-integration-runtime-troubleshoot-guide/updating-status.png)
+Exempel scenario: det maximala värdet för samtidiga jobb är för närvarande 24 och du vill öka antalet så att jobben kan köras snabbare. Det minsta värde som du kan ange är 3 och det maximala värdet är 32. Du ökar värdet från 24 till 32 och väljer sedan knappen **Uppdatera** . Processen har fastnat i *uppdaterings* statusen, som visas i följande skärm bild. Du uppdaterar sidan och värdet visas fortfarande som 24. Den har inte uppdaterats till 32 eftersom du förväntade dig.
+
+![Skärm bild av fönstret noder i integration runtime, som visar processen som har fastnat i status uppdatering.](media/self-hosted-integration-runtime-troubleshoot-guide/updating-status.png)
 
 #### <a name="cause"></a>Orsak
 
-Det finns en begränsning för inställningen eftersom värdet beror på datorns logicCore och minne, men du kan justera det till ett mindre värde, till exempel 24, och se resultatet.
+Gränsen för antalet samtidiga jobb beror på datorns logik kärna och minne. Försök att justera värdet nedåt till ett värde, till exempel 24, och Visa sedan resultatet.
 
 > [!TIP] 
-> - Mer information om vad Logic Core-antalet är och hur du hittar vår dators Logic Core-antal finns i [den här artikeln](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/).
-> - Mer information om hur du beräknar matematik. log finns i [den här artikeln](https://www.rapidtables.com/calc/math/Log_Calculator.html).
+> - Om du vill veta mer om Logic Core-antal och fastställa din dators logiska kärn antal, se [fyra sätt att hitta antalet kärnor i din CPU i Windows 10](https://www.top-password.com/blog/find-number-of-cores-in-your-cpu-on-windows-10/).
+> - Om du vill veta hur du beräknar matematik. log går du till [logaritmen](https://www.rapidtables.com/calc/math/Log_Calculator.html).
 
 
-### <a name="self-hosted-ir-ha-ssl-certificate-issue"></a>Problem med HA SSL-certifikat för lokalt installerad IR
+### <a name="self-hosted-ir-high-availability-ha-ssl-certificate-issue"></a>SSL-certifikat med egen värd för IR-certifikat med hög tillgänglighet
 
 #### <a name="symptoms"></a>Symtom
 
-En arbetsnod för lokalt installerad IR rapporterade felet nedan:
+Den egna IR-arbetsnoden har rapporterat följande fel:
 
-`Failed to pull shared states from primary node net.tcp://abc.cloud.corp.Microsoft.com:8060/ExternalService.svc/. Activity ID: XXXXX The X.509 certificate CN=abc.cloud.corp.Microsoft.com, OU=test, O=Microsoft chain building failed. The certificate that was used has a trust chain that cannot be verified. Replace the certificate or change the certificateValidationMode. The revocation function was unable to check revocation because the revocation server was offline.`
+"Det gick inte att hämta delade tillstånd från den primära noden net. TCP://abc.cloud.corp.Microsoft.com: 8060/ExternalService. svc/. Aktivitets-ID: XXXXX X. 509-certifikatet CN = ABC. Cloud. Corp. Microsoft. com, OU = test, O = Microsoft kedja Building misslyckades. Certifikatet som användes har en förtroende kedja som inte kan verifieras. Ersätt certifikatet eller ändra certificateValidationMode. Återkallnings funktionen kunde inte kontrol lera återkallning eftersom åter kallelse servern var offline.
 
 #### <a name="cause"></a>Orsak
 
-När vi hanterar fall som rör SSL/TLS-handskakning kan vi stöta på problem som rör verifiering av certifikatkedjan. 
+När du hanterar ärenden som är relaterade till en SSL/TLS-handskakning kan du stöta på problem som rör verifiering av certifikat kedjan. 
 
 #### <a name="resolution"></a>Lösning
 
-- Här är ett snabbt och intuitivt sätt att felsöka X. 509-certifikat kedjans build-fel.
+- Här är ett snabbt och intuitivt sätt att felsöka ett X. 509-certifikat kedjans build-fel:
  
-    1. Exportera certifikatet, som måste verifieras. Gå till Hantera datorcertifikat och leta upp det certifikat som du vill kontrollera och högerklicka på **Alla uppgifter** -> **Exportera**.
+    1. Exportera certifikatet, som måste verifieras. Gör så här:
     
-        ![Exportera uppgifter](media/self-hosted-integration-runtime-troubleshoot-guide/export-tasks.png)
+       a. I Windows väljer du **Start**, börjar skriva **certifikat** och väljer sedan **Hantera dator certifikat**.
+       
+       b. I Utforskaren i det vänstra fönstret söker du efter det certifikat som du vill kontrol lera, högerklickar på det och väljer sedan **alla aktiviteter**  >  **Exportera**.
+    
+        ![Skärm bild av kontrollen "alla aktiviteter" > export för ett certifikat i fönstret "hantera dator certifikat".](media/self-hosted-integration-runtime-troubleshoot-guide/export-tasks.png)
 
     2. Kopiera det exporterade certifikatet till klient datorn. 
-    3. Kör kommandot nedan i CMD på klientsidan. Kontrol lera att du har ersatt under *\<certificate path>* och *\<output txt file path>* plats hållare med relaterade sökvägar.
+    3. Kör följande kommando på klient sidan i kommando tolkens fönster. Se till att ersätta *\<certificate path>* och *\<output txt file path>* med de faktiska Sök vägarna.
     
         ```
         Certutil -verify -urlfetch    <certificate path>   >     <output txt file path> 
@@ -133,387 +148,400 @@ När vi hanterar fall som rör SSL/TLS-handskakning kan vi stöta på problem so
         ```
         Certutil -verify -urlfetch c:\users\test\desktop\servercert02.cer > c:\users\test\desktop\Certinfo.txt
         ```
-    4. Kontrollera om det finns något fel i txt-utdatafilen. Du hittar felsammanfattningen i slutet av txt-filen.
+    4. Sök efter fel i output TXT-filen. Du kan hitta fel sammanfattningen i slutet av TXT-filen.
 
         Exempel: 
 
-        ![Fel Sammanfattning](media/self-hosted-integration-runtime-troubleshoot-guide/error-summary.png)
+        ![Skärm bild av en fel Sammanfattning i slutet av TXT-filen.](media/self-hosted-integration-runtime-troubleshoot-guide/error-summary.png)
 
-        Om du inte ser något fel i slutet av logg filen som visas nedan, kan du tänka på att certifikat kedjan har skapats på klient datorn.
+        Om du inte ser ett fel i slutet av logg filen, som du ser i följande skärm bild, kan du tänka på att certifikat kedjan har skapats på klient datorn.
         
-        ![Inget fel i logg filen](media/self-hosted-integration-runtime-troubleshoot-guide/log-file.png)      
+        ![Skärm bild av en loggfil som visar inga fel.](media/self-hosted-integration-runtime-troubleshoot-guide/log-file.png)      
 
-- Om det finns AIA, CDP och OCSP konfigurerat i certifikat filen. Vi kan kontrol lera det på ett mer intuitivt sätt.
+- Om en AIA (åtkomst till auktoritets information), CDP (CRL distributions plats) eller OCSP (Online Certificate Status Protocol) fil namns tillägg har kon figurer ATS i certifikat filen, kan du kontrol lera det på ett mer intuitivt sätt:
  
-    1. Du kan hämta den här informationen genom att kontrol lera information om ett certifikat.
+    1. Hämta den här informationen genom att kontrol lera certifikat informationen, som visas på följande skärm bild:
     
-        ![Certifikat information](media/self-hosted-integration-runtime-troubleshoot-guide/certificate-detail.png)
-    1. Kör kommandot nedan. Kontrol lera att du har ersatt *\<certificate path>* plats hållaren med en relaterad sökväg till certifikatet.
+        ![Skärm bild av certifikat information.](media/self-hosted-integration-runtime-troubleshoot-guide/certificate-detail.png)
+    
+    1. Kör följande kommando. Se till att ersätta *\<certificate path>* med den faktiska sökvägen till certifikatet.
     
         ```
           Certutil   -URL    <certificate path> 
         ```
-    1. Därefter öppnas **URL-hämtningsverktyget**. Du kan verifiera certifikat från AIA, CDP och OCSP genom att klicka på knappen **Hämta**.
+    
+        URL-filhämtnings verktyget öppnas. 
+        
+    1. Om du vill verifiera certifikat med AIA-, CDP-och OCSP-filnamnstillägg väljer du **Hämta**.
 
-        ![Hämtnings knapp](media/self-hosted-integration-runtime-troubleshoot-guide/retrieval-button.png)
+        ![Skärm bild av verktyget URL-hämtning och knappen Hämta.](media/self-hosted-integration-runtime-troubleshoot-guide/retrieval-button.png)
  
-        Certifikatkedjan kan skapas om certifikatet från AIA är ”verifierat” och certifikatet från CDP eller OCSP är ”verifierat”.
+        Du har skapat certifikat kedjan om certifikat statusen från AIA *verifieras* och certifikat status från CDP eller OCSP *verifieras*.
 
-        Om du ser ett fel när du hämtar AIA eller CDP kan du samarbeta med nätverksteamet för att förbereda klientdatorn för att ansluta till mål-URL:en. Det är tillräckligt om antingen http-sökvägen eller LDAP-sökvägen kan verifieras.
+        Om du inte kan hämta AIA eller CDP, arbetar du med nätverks teamet för att ansluta klient datorn så att den kan ansluta till mål-URL: en. Det blir tillräckligt om antingen HTTP-sökvägen eller LDAP-sökvägen (Lightweight Directory Access Protocol) kan verifieras.
 
 ### <a name="self-hosted-ir-could-not-load-file-or-assembly"></a>Lokalt installerad IR kunde inte läsa in filen eller sammansättningen
 
 #### <a name="symptoms"></a>Symtom
 
-`Could not load file or assembly 'XXXXXXXXXXXXXXXX, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
- 
-Exempel: 
+Du får följande fel meddelande:
 
-`Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
+"Det gick inte att läsa in filen eller sammansättningen" XXXXXXXXXXXXXXXX, version = 4.0.2.0, Culture = neutral, PublicKeyToken = XXXXXXXXX "eller något av dess beroenden. Det går inte att hitta den angivna filen. Aktivitets-ID: 92693b45-B4BF-4FC8-89da-2d3dc56f27c3 "
+ 
+Här är ett mer specificerat fel meddelande: 
+
+"Det gick inte att läsa in filen eller sammansättningen" system. ValueTuple, version = 4.0.2.0, Culture = neutral, PublicKeyToken = XXXXXXXXX "eller något av dess beroenden. Det går inte att hitta den angivna filen. Aktivitets-ID: 92693b45-B4BF-4FC8-89da-2d3dc56f27c3 "
 
 #### <a name="cause"></a>Orsak
 
-Om du tar Process Monitor kan du se följande resultat:
+I Process Monitor kan du se följande resultat:
 
-[![Process övervakare](media/self-hosted-integration-runtime-troubleshoot-guide/process-monitor.png)](media/self-hosted-integration-runtime-troubleshoot-guide/process-monitor.png#lightbox)
+[![Skärm bild av listan sökvägar i process övervakaren.](media/self-hosted-integration-runtime-troubleshoot-guide/process-monitor.png)](media/self-hosted-integration-runtime-troubleshoot-guide/process-monitor.png#lightbox)
 
 > [!TIP] 
-> Du kan ange filter så som visas i skärm bilden nedan.
-> Det meddelar oss att dll- **systemet. ValueTuple** inte finns i GAC-relaterade mappar, eller i *C:\Program Files\Microsoft integration Runtime\4.0\Gateway* eller i *c:\Program Files\Microsoft integration Runtime\4.0\Shared* Folder.
-> I princip kommer den att läsa in dll-filen från *GAC*-mappen först och sedan från *Delas* och slutligen från mappen *Gateway*. Därför kan du placera dll-filen på valfri sökväg som kan vara till hjälp.
+> I Process Monitor kan du ange filter som visas i följande skärm bild.
+>
+> Föregående fel meddelande anger att DLL-systemet system. ValueTuple inte finns i den relaterade mappen *Global Assembly Cache* (GAC) i mappen *c:\Program\Microsoft integration Runtime\4.0\Gateway* , eller i mappen *c:\Program Files\Microsoft integration Runtime\4.0\Shared* .
+>
+> I princip laddar processen först DLL-filen från *GAC* -mappen, sedan från den *delade* mappen och slutligen från *Gateway* -mappen. Därför kan du läsa in DLL-filen från alla sökvägar som är användbara.
 
-![Konfigurera filter](media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png)
+<br>
+
+![Skärm bild av sidan "Process Monitor filter" som visar filter för DLL-filen.](media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png)
 
 #### <a name="resolution"></a>Lösning
 
-Du kan se att **System.ValueTuple.dll** finns i *C:\Program Files\Microsoft integration Runtime\4.0\Gateway\DataScan* -mappen. Kopiera **System.ValueTuple.dll** till mappen *c:\Program\Microsoft integration Runtime\4.0\Gateway* för att lösa problemet.
+Du hittar *System.ValueTuple.dll* -filen i mappen *C:\Program Files\Microsoft integration Runtime\4.0\Gateway\DataScan* . Lös problemet genom att kopiera *System.ValueTuple.dll* -filen till mappen *c:\Program\Microsoft integration Runtime\4.0\Gateway* .
 
-Du kan använda samma metod för att lösa andra problem med en saknad fil eller sammansättning.
+Du kan använda samma metod för att lösa andra problem som saknas i filen eller sammansättningen.
 
-#### <a name="more-information"></a>Mer information
+#### <a name="more-information-about-this-issue"></a>Mer information om det här problemet
 
-Anledningen till att du ser System.ValueTuple.dll under *%windir%\Microsoft.NET\assembly* och *%windir%\assembly* är att det är ett .net-beteende. 
+Anledningen till att du ser *System.ValueTuple.dll* under *%windir%\Microsoft.NET\assembly* och *%windir%\assembly* är att detta är ett .net-beteende. 
 
-Från felet nedan kan du tydligt se sammansättnings *systemet ValueTuple.* Det här problemet uppstår när programmet försöker kontrol lera sammansättnings *System.ValueTuple.dll*.
+I följande fel kan du tydligt se att sammansättningen *system. ValueTuple* saknas. Det här problemet uppstår när programmet försöker kontrol lera *System.ValueTuple.dll* sammansättningen.
  
-`<LogProperties><ErrorInfo>[{"Code":0,"Message":"The type initializer for 'Npgsql.PoolManager' threw an exception.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.TypeInitializationException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[{"Code":0,"Message":"Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.IO.FileNotFoundException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[]}]}]</ErrorInfo></LogProperties>`
+" \<LogProperties> \<ErrorInfo> [{" Code ": 0," meddelande ":" typ initieraren för "Npgsql. PoolManager" utlöste ett undantag. "," EventType ": 0," kategori ": 5," data ": {} ," MsgId ": null," undantag ":" system. TypeInitializationException "," källa ":" Npgsql "," stacktrace ":" "," InnerEventInfos ": [{" Code ": 0," meddelande ":" Det gick inte att läsa in filen eller sammansättningen system. ValueTuple, version = 4.0.2.0, Culture = neutral, PublicKeyToken = xxxxxxxxx eller något av dess beroenden. Det går inte att hitta den angivna filen. ", EventType": 0, "kategori": 5, "data": {} , "MsgId":null, "ExceptionType":"system. io. FileNotFoundException", "source": "Npgsql", "stacktrace": "", "InnerEventInfos": []}]}] \</ErrorInfo> \</LogProperties> "
  
-Mer information om GAC finns i [den här artikeln](/dotnet/framework/app-domains/gac).
+Mer information om GAC finns i [Global Assembly Cache](https://docs.microsoft.com/dotnet/framework/app-domains/gac).
 
 
-### <a name="how-to-audit-self-hosted-ir-key-missing"></a>Så här granskar du nyckel för lokalt installerad IR som saknas
+### <a name="self-hosted-integration-runtime-authentication-key-is-missing"></a>Autentisering med egen värd för integration runtime saknas
 
 #### <a name="symptoms"></a>Symtom
 
-Den egna värdbaserade integreringskörningen kopplas plötsligt från utan nyckel, medan felmeddelandet nedan visas i händelseloggen: `Authentication Key is not assigned yet`
+Den egen värdbaserade integrerings körningen är plötsligt offline utan en autentiseringsnyckel, och händelse loggen visar följande fel meddelande: 
 
-![Autentiseringsnyckel saknas](media/self-hosted-integration-runtime-troubleshoot-guide/key-missing.png)
+"Autentiseringsnyckel är inte tilldelad än"
+
+![Skärm bild av händelse fönstret för integration runtime som visar att nyckeln inte har tilldelats än.](media/self-hosted-integration-runtime-troubleshoot-guide/key-missing.png)
 
 #### <a name="cause"></a>Orsak
 
-- Noden för lokalt installerad IR eller logisk lokalt installerad IR i portalen tas bort.
-- En ren avinstallation görs.
+- Den egna IR-noden eller den logiska, egna IR-noden i Azure Portal har tagits bort.
+- En ren avinstallation utfördes.
 
 #### <a name="resolution"></a>Lösning
 
-Om inget av ovanstående orsaker gäller kan du gå till mappen: *%programdata%\Microsoft\Data Transfer\DataManagementGateway* och kontrol lera om filen med namnet **konfigurationer** har tagits bort. Om den är borttagen följer du anvisningarna [här](https://www.netwrix.com/how_to_detect_who_deleted_file.html) för att se efter vem som tagit bort filen.
+Om ingen av föregående orsaker gäller kan du gå till mappen *%programdata%\Microsoft\Data Transfer\DataManagementGateway* för att se om *konfigurations* filen har tagits bort. Om den har tagits bort följer du anvisningarna i artikeln Netwrix [identifiera vem som tog bort en fil från dina Windows-filservrar](https://www.netwrix.com/how_to_detect_who_deleted_file.html).
 
-![Kontrol lera konfigurations filen](media/self-hosted-integration-runtime-troubleshoot-guide/configurations-file.png)
+![Skärm bild av händelse logg informations fönstret för att kontrol lera konfigurations filen.](media/self-hosted-integration-runtime-troubleshoot-guide/configurations-file.png)
 
 
-### <a name="cannot-use-self-hosted-ir-to-bridge-two-on-premises-data-stores"></a>Det går inte att använda lokalt installerad IR för att överbrygga två lokala datalager
+### <a name="cant-use-self-hosted-ir-to-bridge-two-on-premises-datastores"></a>Det går inte att använda IR med egen värd för att överbrygga två lokala data lager
 
 #### <a name="symptoms"></a>Symtom
 
-När du har skapat lokalt installerad IR för både käll- och måldatalager, behöver du ansluta dina två IR för att slutföra en kopia. Om data butikerna har kon figurer ATS i olika virtuella nätverk, eller om de inte kan förstå Gateway-mekanismen, kommer du att trycka på fel som: *det går inte att hitta driv rutinen för källan i målet IR*. *källan kan inte nås av mål-IR*.
+När du har skapat en egen organisation för både käll-och mål data lagret vill du ansluta de två IRs till att slutföra en kopierings aktivitet. Om data lagringen har kon figurer ATS i olika virtuella nätverk, eller om data lagret inte kan förstå Gateway-mekanismen, får du något av följande fel: 
+
+* "Det går inte att hitta driv rutinen för källan i målets IR-rutin"
+* "Källan kan inte nås av mål-IR-filen"
  
 #### <a name="cause"></a>Orsak
 
-Lokalt installerad IR är utformad som en central nod i en kopieringsaktivitet, inte en klientagent som behöver installeras för varje datalager.
+IR med egen värd är utformad som en central nod i en kopierings aktivitet, inte en klient agent som behöver installeras för varje data lager.
  
-I ovanstående fall bör den länkade tjänsten för varje datalager skapas med samma IR, och IR bör kunna komma åt båda datalagren via nätverk. Oavsett om IR installeras med källdatalager, måldatalager eller på en tredje dator, gäller att om två länkade tjänster har skapats med olika IR, men som används i samma kopieringsaktivitet, används mål-IR, och drivrutinerna för båda datalagren måste installeras på IR-datorn för målet.
+I det här fallet bör du skapa den länkade tjänsten för varje data lager med samma IR och IR: en ska kunna komma åt både data lagret via nätverket. Det spelar ingen roll om IR har installerats på käll data lagret eller på mål data lagret eller på en tredje dator. Om två länkade tjänster skapas med en annan IRs men används i samma kopierings aktivitet, används mål-IR och du måste installera driv rutinerna för båda data lagrings enheterna på IR-datorn för målet.
 
 #### <a name="resolution"></a>Lösning
 
-Installera drivrutiner för både källa och mål på mål-IR och se till att den kan komma åt källdatalagret.
+Installera driv rutiner för både käll-och mål data lager på mål-IR och se till att de kan komma åt käll data lagret.
  
-Om trafiken inte kan passera genom nätverket mellan två datalager (till exempel att de har konfigurerats i två virtuella nätverk) kan du kanske inte slutföra kopieringen i en aktivitet även med IR installerad. I så fall kan du skapa två kopieringsaktiviteter med två IR, var och en i ett virtuellt nätverk: 1 IR för att kopiera från datalager 1 till Azure Blob Storage, och en annan för att kopiera från Azure Blob Storage till datalager 2. Detta kan simulera kravet att använda IR för att skapa en brygga som ansluter två frånkopplade datalager.
+Om trafiken inte kan passera nätverket mellan två data lager (till exempel att de har kon figurer ATS i två virtuella nätverk) kan du inte slutföra kopieringen i en aktivitet även om IR är installerat. Om du inte kan slutföra kopieringen i en enskild aktivitet, kan du skapa två kopierings aktiviteter med två IRs, var och en i en ventilation: 
+* Kopiera en IR från data lagret 1 till Azure Blob Storage
+* Kopiera en annan IR från Azure Blob Storage till ddatastore 2. 
+
+Den här lösningen kan simulera kravet på att använda IR för att skapa en brygga som ansluter två frånkopplade data lager.
 
 
-### <a name="credential-sync-issue-causes-credential-lost-from-ha"></a>Problem med synkronisering av autentiseringsuppgifter medför att autentiseringsuppgiften förloras från HA
+### <a name="credential-sync-issue-causes-credential-loss-from-ha"></a>Problem med synkronisering av autentiseringsuppgifter medför förlust av autentiseringsuppgifter från HA
 
 #### <a name="symptoms"></a>Symtom
 
-Autentiseringsuppgifterna för datakällan ”XXXXXXXXXX” tas bort från den aktuella Integration Runtime-noden med nyttolasten ”när du tar bort länktjänsten på Azure Portal, eller uppgifter har fel nyttolast, ska du på nytt skapa en ny länktjänst med dina autentiseringsuppgifter”.
+Om data källans autentiseringsuppgiften "XXXXXXXXXX" tas bort från den aktuella noden för integration runtime med nytto Last får du följande fel meddelande:
+
+"När du tar bort länk tjänsten på Azure Portal, eller om aktiviteten har fel nytto Last, skapar du en ny länk tjänst med dina autentiseringsuppgifter igen."
 
 #### <a name="cause"></a>Orsak
 
-Din lokalt installerade IR har skapats i HA-läge med två noder, men de är inte i ett synkroniseringstillstånd för autentiseringsuppgifter, vilket innebär att autentiseringsuppgifterna som lagras i dispatcher-noden inte synkroniseras till andra arbetsnoder. Om redundansväxling sker från dispatcher-noden till arbetsnoden, men autentiseringsuppgifterna bara fanns i den tidigare dispatcher-noden, misslyckas uppgiften vid försök att få åtkomst till autentiseringsuppgifter och du kommer att få ovanstående fel.
+Din egen värd-IR har skapats i HA-läge med två noder, men noderna är inte i ett synkroniseringstillstånd för autentiseringsuppgifter. Det innebär att autentiseringsuppgifterna som lagras i dispatcher-noden inte synkroniseras med andra arbetsnoder. Om redundansväxlingen sker från dispatcher-noden till arbetsnoden, och autentiseringsuppgifterna endast finns i den tidigare noden dispatcher, kommer aktiviteten inte att fungera när du försöker få åtkomst till autentiseringsuppgifterna, och du får föregående fel.
 
 #### <a name="resolution"></a>Lösning
 
-Det enda sättet att undvika det här problemet är att se till att två noder är i synkroniseringsläge för autentiseringsuppgifter. Annars måste du ange autentiseringsuppgifter igen för en ny dispatcher.
+Det enda sättet att undvika det här problemet är att se till att de två noderna är i Sync-läget för autentiseringsuppgifter. Om de inte är synkroniserade måste du ange autentiseringsuppgifterna för den nya Dispatchern igen.
 
 
-### <a name="cannot-choose-the-certificate-due-to-private-key-missing"></a>Det går inte att välja certifikatet eftersom privat nyckel saknas
+### <a name="cant-choose-the-certificate-because-the-private-key-is-missing"></a>Det går inte att välja certifikatet eftersom den privata nyckeln saknas
 
 #### <a name="symptoms"></a>Symtom
 
-1.  Importera en PFX-fil till certifikatarkivet.
-2.  När du väljer certifikatet via IR Configuration Manager-gränssnittet visas följande fel:
+* Du har importerat en PFX-fil till certifikat arkivet.
+* När du har valt certifikatet via IR Configuration Manager-ANVÄNDARGRÄNSSNITTET fick du följande fel meddelande:
 
-    ![Privat nyckel saknas](media/self-hosted-integration-runtime-troubleshoot-guide/private-key-missing.png)
+   "Det gick inte att ändra krypterings läget för intranäts kommunikation. Det är sannolikt att certifikatet \<*certificate name*> inte har en privat nyckel som kan användas med nyckel utbyte eller att processen inte har åtkomst behörighet för den privata nyckeln. Mer information finns i ursprungs undantaget. "
+
+    ![Skärm bild av fel meddelandet "privat nyckel saknas" i rutan Integration Runtime Configuration Managers inställningar.](media/self-hosted-integration-runtime-troubleshoot-guide/private-key-missing.png)
 
 #### <a name="cause"></a>Orsak
 
-- Användarkontot har låg behörighet och kan inte komma åt den privata nyckeln.
-- Certifikatet genererades som signatur, men inte som nyckelutbyte.
+- Användar kontot har låg behörighets nivå och kan inte komma åt den privata nyckeln.
+- Certifikatet genererades som en signatur, men inte som nyckel utbyte.
 
 #### <a name="resolution"></a>Lösning
 
-1.  Använd ett konto med privilegier som kan komma åt den privata nyckeln för att hantera användargränssnittet.
-2.  Kör följande kommando för att importera certifikatet:
+* Använd ett konto med rätt behörighet för att komma åt den privata nyckeln för att hantera användar gränssnittet.  
+* Importera certifikatet genom att köra följande kommando:
     
     ```
     certutil -importpfx FILENAME.pfx AT_KEYEXCHANGE
     ```
 
-
 ## <a name="self-hosted-ir-setup"></a>IR-installation med egen värd
 
-### <a name="the-integration-runtime-registration-error"></a>Integration Runtime registrerings fel 
+### <a name="integration-runtime-registration-error"></a>Registrerings fel för integration runtime 
 
 #### <a name="symptoms"></a>Symtom
 
-Ibland vill vi köra IR med egen värd i ett annat konto av följande orsaker:
+Ibland kanske du vill köra en egen värd-IR i ett annat konto av någon av följande orsaker:
 - Företags principen tillåter inte tjänst kontot.
 - Viss autentisering krävs.
 
-När du har ändrat tjänst kontot i panelen tjänst kanske du upptäcker att Integration Runtime slutar fungera.
+När du har ändrat tjänst kontot i fönstret tjänst kan du se att integration runtime slutar fungera och du får följande fel meddelande:
 
-![IR-registrerings fel](media/self-hosted-integration-runtime-troubleshoot-guide/ir-registration-error.png)
+"Integration Runtime (lokal installation)-noden har påträffat ett fel under registreringen. Det går inte att ansluta till Integration Runtime (lokal installation) värd tjänsten. "
+
+![Skärm bild av fönstret Integration Runtime Configuration Manager som visar ett IR-registrerings fel.](media/self-hosted-integration-runtime-troubleshoot-guide/ir-registration-error.png)
 
 #### <a name="cause"></a>Orsak
 
-Det finns många resurser som endast beviljas till tjänst kontot. När du ändrar tjänst kontot till ett annat konto förblir behörigheten för alla beroende resurser samma.
+Många resurser beviljas enbart till tjänst kontot. När du ändrar tjänst kontot till ett annat konto förblir behörigheterna för alla beroende resurser oförändrade.
 
 #### <a name="resolution"></a>Lösning
 
-Gå till händelse loggen för Integration Runtime för att kontrol lera felet.
+Gå till händelse loggen för integration runtime för att kontrol lera felet.
 
-![IR-händelseloggen](media/self-hosted-integration-runtime-troubleshoot-guide/ir-event-log.png)
+![Skärm bild av IR-händelseloggen som visar att ett körnings fel har inträffat.](media/self-hosted-integration-runtime-troubleshoot-guide/ir-event-log.png)
 
-Om felet visas som ovan *UnauthorizedAccessException* följer du anvisningarna nedan:
+* Om felet i händelse loggen är "UnauthorizedAccessException" gör du följande:
 
+    1. Kontrol lera inloggnings tjänst kontot för *dia Host service* på panelen Windows-tjänst.
 
-1. Kontrol lera inloggnings tjänst kontot för *dia Host service* på panelen Windows-tjänst.
+        ![Skärm bild av fönstret Egenskaper för inloggnings tjänstens konto.](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
 
-    ![Konto för inloggnings tjänst](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
+    1. Kontrol lera om inloggnings tjänst kontot har Läs-/Skriv behörighet för *%programdata%\Microsoft\DataTransfer\DataManagementGateway* -mappen.
 
-2. Kontrol lera om kontot för inloggnings tjänsten har behörigheten R/W för mappen: *%programdata%\Microsoft\DataTransfer\DataManagementGateway*.
+        - Om tjänst inloggnings kontot inte har ändrats bör som standard ha läs-/skriv behörighet.
 
-    - Om tjänst inloggnings kontot inte har ändrats bör som standard ha behörigheten R/W.
+            ![Skärm bild av fönstret tjänst behörigheter.](media/self-hosted-integration-runtime-troubleshoot-guide/service-permission.png)
 
-        ![Tjänst behörighet](media/self-hosted-integration-runtime-troubleshoot-guide/service-permission.png)
+        - Om du har ändrat tjänst inloggnings kontot kan du åtgärda problemet genom att göra följande:
+ 
+            a. Utför en ren avinstallation av den aktuella IR-filen med egen värd.   
+            b. Installera IR-BITS med egen värd.  
+            c. Ändra tjänst kontot genom att göra följande:  
 
-    - Om du har ändrat tjänst inloggnings kontot följer du stegen nedan för att åtgärda problemet:
-        1. Rensa den aktuella IR-filen med egen värd.
-        1. Installera IR-BITS med egen värd.
-        1. Följ anvisningarna nedan om du vill ändra tjänst kontot: 
-            1. Gå till installationsmappen för den egna värdbaserade IR-filen och växla till mappen: *Microsoft integration Runtime\4.0\Shared*.
-            1. Starta en kommando rad med utökade privilegier. Ersätt *\<user>* och *\<password>* med ditt eget användar namn och lösen ord och kör sedan följande kommando:
-                       
-                ```
-                dmgcmd.exe -SwitchServiceAccount "<user>" "<password>"
-                ```
-            1. Om du vill ändra till LocalSystem-konto måste du ange ett korrekt format för det här kontot. Nedan visas ett exempel på rätt format:
+             i. Gå till mappen för IR-installation i egen värd och växla sedan till *Microsoft integration Runtime\4.0\Shared* -mappen.  
+             ii. Öppna ett kommando tolks fönster med utökade privilegier. Ersätt *\<user>* och *\<password>* med ditt eget användar namn och lösen ord och kör sedan följande kommando:   
+                `dmgcmd.exe -SwitchServiceAccount "<user>" "<password>"`  
+             iii. Om du vill ändra till LocalSystem-kontot måste du använda rätt format för det här kontot: `dmgcmd.exe -SwitchServiceAccount "NT Authority\System" ""`  
+                Använd *inte* det här formatet: `dmgcmd.exe -SwitchServiceAccount "LocalSystem" ""`     
+             a. Alternativt, eftersom det lokala systemet har högre privilegier än administratör, kan du också ändra det direkt i "tjänster".  
+             v. Du kan använda en lokal/domän användare för inloggnings kontot för IR-tjänsten.            
 
-                ```
-                dmgcmd.exe -SwitchServiceAccount "NT Authority\System" ""
-                ```         
-                Använd **inte** det format som visas nedan:
+            d. Registrera integration Runtime.
 
-                ```
-                dmgcmd.exe -SwitchServiceAccount "LocalSystem" ""
-                ```              
-            1. För alternativ, eftersom det lokala systemet har högre privilegier än administratör, kan du också ändra det direkt i "tjänster".
-            1. Du kan använda en lokal/domän användare för inloggnings kontot för IR-tjänsten.            
-        1. Registrera Integration Runtime.
+* Om felet är "tjänsten Integration Runtime tjänsten (dia Host service) inte kunde starta. Kontrol lera att du har behörighet att starta system tjänster, "gör följande:
 
-Om felet visas som: *Det gick inte att starta tjänsten integration runtime tjänsten (dia Host service). Kontrol lera att du har behörighet att starta system tjänster*, följ instruktionerna nedan:
+    1. Kontrol lera inloggnings tjänst kontot för *dia Host service* på panelen Windows-tjänst.
+    
+        ![Skärm bild av tjänst kontots inloggnings fönster.](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
 
-1. Kontrol lera inloggnings tjänst kontot för *dia Host service* på panelen Windows-tjänst.
-   
-    ![Konto för inloggnings tjänst](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
+    1. Kontrol lera om inloggnings tjänst kontot har **Logga in som tjänst** behörighet för att starta Windows-tjänsten:
 
-2. Kontrol lera om inloggnings tjänst kontot har behörigheten **Logga in som tjänst** för att starta Windows-tjänsten:
-
-    ![Logga in som tjänst](media/self-hosted-integration-runtime-troubleshoot-guide/logon-as-service.png)
+        ![Skärm bild av egenskaps rutan "logga in som tjänst".](media/self-hosted-integration-runtime-troubleshoot-guide/logon-as-service.png)
 
 #### <a name="more-information"></a>Mer information
 
-Om inget av ovanstående matchnings mönster gäller i ditt fall försöker du samla in under Windows-händelseloggar: 
-- Program-och tjänst loggar – > Integration Runtime
-- Windows-loggar – > program
+Om inget av de föregående två lösnings mönstren används i ditt fall försöker du samla in följande Windows-händelse loggar: 
+- > Integration Runtime för program-och tjänst loggar
+- Windows-loggar > program
 
-### <a name="cannot-find-register-button-to-register-a-self-hosted-ir"></a>Det gick inte att hitta knappen Registrera för att registrera en IR med egen värd    
+### <a name="cant-find-the-register-button-to-register-a-self-hosted-ir"></a>Det går inte att hitta knappen Registrera för att registrera en IR med egen värd    
 
 #### <a name="symptoms"></a>Symtom
 
-Det gick inte att hitta knappen **Registrera** i Configuration Manager UI när du registrerade en lokal IR.
+När du registrerar en IR med egen värd visas inte knappen **Registrera** i fönstret Configuration Manager.
 
-![Knappen ingen registrering](media/self-hosted-integration-runtime-troubleshoot-guide/no-register-button.png)
+![Skärm bild av fönstret Configuration Manager som visar ett meddelande om att integration runtime-noden inte är registrerad.](media/self-hosted-integration-runtime-troubleshoot-guide/no-register-button.png)
 
 #### <a name="cause"></a>Orsak
 
-Eftersom lanseringen av *Integration Runtime 3,0* har du tagit bort **register** knappen på en befintlig integration runtime-nod för att aktivera en renare och säkrare miljö. Om en nod har registrerats på någon Integration Runtime (oavsett om den är online eller inte), för att omregistrera den till en annan Integration Runtime, måste du avinstallera den tidigare noden och sedan installera och registrera noden.
+Från och med lanseringen av Integration Runtime 3,0 har knappen **Registrera** på befintliga noder för integration runtime tagits bort för att möjliggöra en renare och säkrare miljö. Om en nod har registrerats i en integration runtime, oavsett om den är online eller inte, omregistrera den till en annan integrerings körning genom att avinstallera den tidigare noden och sedan installera och registrera noden.
 
 #### <a name="resolution"></a>Lösning
 
-1. Gå till kontroll panelen för att avinstallera den befintliga Integration Runtime.
+1. Avinstallera den befintliga integrerings körningen på kontroll panelen.
 
     > [!IMPORTANT] 
-    > I processen nedan väljer du Ja. Behåll inte data under avinstallations processen.
+    > I följande process väljer du **Ja**. Behåll inte data under avinstallations processen.
 
-    ![Ta bort data](media/self-hosted-integration-runtime-troubleshoot-guide/delete-data.png)
+    ![Skärm bild av knappen "Ja" för att ta bort alla användar data från integration Runtime.](media/self-hosted-integration-runtime-troubleshoot-guide/delete-data.png)
 
-1. Om du inte har installations-MSI för integration runtime går du till [Download Center](https://www.microsoft.com/en-sg/download/details.aspx?id=39717) för att hämta den senaste integration Runtime.
-1. Installera MSI och registrera Integration Runtime.
+1. Om du inte har MSI-filen för integration runtime-installationsprogrammet går du till [Download Center](https://www.microsoft.com/en-sg/download/details.aspx?id=39717) för att ladda ned den senaste integrerings körningen.
+1. Installera MSI-filen och registrera integrerings körningen.
 
 
-### <a name="unable-to-register-the-self-hosted-ir-due-to-localhost"></a>Det går inte att registrera en lokalt installerad IR på grund av localhost    
+### <a name="unable-to-register-the-self-hosted-ir-because-of-localhost"></a>Det gick inte att registrera IR på egen värd på grund av localhost    
 
 #### <a name="symptoms"></a>Symtom
 
-Det går inte att registrera IR med egen värd på en ny dator när get_LoopbackIpOrName.
+Det går inte att registrera IR med egen värd på en ny dator när du använder get_LoopbackIpOrName.
 
 **Fel sökning:** Ett körnings fel har inträffat.
-Typ initieraren för "Microsoft. DataTransfer. DIAgentHost. DataSourceCache" utlöste ett undantag.
+Typinitieraren för Microsoft.DataTransfer.DIAgentHost.DataSourceCache utlöste ett undantag.
 Ett oåterkalleligt fel inträffade under en databas sökning.
  
 **Undantags information:** System. TypeInitializationException: typ initieraren för "Microsoft. DataTransfer. DIAgentHost. DataSourceCache" utlöste ett undantag. ---> system .net. Sockets. SocketException: ett oåterkalleligt fel inträffade under en databas sökning på system .net. DNS. GetAddrInfo (sträng namn).
 
 #### <a name="cause"></a>Orsak
 
-Problemet uppstår vanligt vis när du löser in localhost.
+Problemet uppstår vanligt vis när localhost är löst.
 
 #### <a name="resolution"></a>Lösning
 
-Använd localhost 127.0.0.1 som värd för filen och Lös problemet.
-
+Använd localhost IP-adress 127.0.0.1 som värd för filen och Lös problemet.
 
 ### <a name="self-hosted-setup-failed"></a>Installation av egen värd misslyckades    
 
 #### <a name="symptoms"></a>Symtom
 
-Det går inte att avinstallera en befintlig IR eller installera en ny IR eller uppgradera en befintlig IR till en ny IR.
+Det går inte att avinstallera en befintlig IR, installera en ny IR eller uppgradera en befintlig IR till en ny IR.
 
 #### <a name="cause"></a>Orsak
 
-Installationen beror på Windows Installer tjänsten. Det finns varianter av orsaker som kan orsaka installations problem:
-- Det finns inte tillräckligt med disk utrymme
-- Saknar behörighet
-- NT-tjänsten är låst av någon anledning
-- PROCESSOR användningen är för hög
-- MSI-filen finns på en långsam nätverks plats
-- Vissa systemfiler eller register har berörings av oavsiktligt
+Installationen av integration runtime beror på Windows Installer tjänsten. Installations problem kan uppstå av följande orsaker:
+- Otillräckligt med ledigt disk utrymme.
+- Saknar behörighet.
+- Windows NT-tjänsten är låst.
+- PROCESSOR användningen är för hög.
+- MSI-filen finns på en långsam nätverks plats.
+- Vissa systemfiler eller register har berörings av oavsiktligt.
 
-
-### <a name="ir-service-account-failed-to-fetch-certificate-access"></a>Kontot för IR-tjänsten kunde inte hämta certifikat åtkomst
+### <a name="the-ir-service-account-failed-to-fetch-certificate-access"></a>Kontot för IR-tjänsten kunde inte hämta certifikat åtkomst
 
 #### <a name="symptoms"></a>Symtom
 
-När du installerar IR med egen värd via Microsoft Integration Runtime Configuration Manager genereras ett certifikat med en betrodd certifikat utfärdare. Certifikatet kunde inte användas för att kryptera kommunikationen mellan två noder. 
+När du installerar en IR med egen värd via Microsoft Integration Runtime Configuration Manager genereras ett certifikat med en betrodd certifikat utfärdare (CA). Det gick inte att använda certifikatet för att kryptera kommunikationen mellan två noder och följande fel meddelande visas: 
 
-Fel informationen visas som nedan: 
+"Det gick inte att ändra krypterings läget för intranäts kommunikation: det gick inte att tilldela Integration Runtime tjänst kontot åtkomsten till certifikatet \<*certificate name*> . Felkod 103 "
 
-`Failed to change Intranet communication encryption mode: Failed to grant Integration Runtime service account the access of to the certificate 'XXXXXXXXXX'. Error code 103`
-
-![Det gick inte att bevilja åtkomst till IR-tjänstkontot](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-account-certificate-error.png)
+![Skärm bild som visar fel meddelandet "... Det gick inte att bevilja åtkomst till Integration Runtime tjänst konto certifikat.](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-account-certificate-error.png)
 
 #### <a name="cause"></a>Orsak
 
-Certifikatet använder KSP (Key Storage Provider), vilket inte stöds ännu. SHIR har bara stöd för CSP-certifikat (Cryptographic Service Provider) hittills.
+Certifikatet använder KSP-lagring (Key Storage Provider), vilket inte stöds ännu. Till-datum stöder IR-baserad (Cryptographic Service Provider) endast lagring med egen värd.
 
 #### <a name="resolution"></a>Lösning
 
-CSP-certifikat rekommenderas för det här fallet.
+Vi rekommenderar att du använder CSP-certifikat i det här fallet.
 
-**Lösning 1:** Använd kommandot nedan för att importera certifikatet:
+**Lösning 1** 
 
-```
-Certutil.exe -CSP "CSP or KSP" -ImportPFX FILENAME.pfx 
-```
+Kör följande kommando för att importera certifikatet:
 
-![Använd certutil](media/self-hosted-integration-runtime-troubleshoot-guide/use-certutil.png)
+`Certutil.exe -CSP "CSP or KSP" -ImportPFX FILENAME.pfx`
 
-**Lösning 2:** Konvertering av certifikat:
+![Skärm bild av Certutil-kommandot för att importera certifikatet.](media/self-hosted-integration-runtime-troubleshoot-guide/use-certutil.png)
 
-openssl PKCS12-in .\xxxx.pfx. \ xxxx_new. pem-Password pass:*\<EnterPassword>*
+**Lösning 2** 
 
-openssl PKCS12-export-in. \ xxxx_new. pem-out xxxx_new. pfx
+Om du vill konvertera certifikatet kör du följande kommandon:
+
+`openssl pkcs12 -in .\xxxx.pfx -out .\xxxx_new.pem -password pass: <EnterPassword>`
+`openssl pkcs12 -export -in .\xxxx_new.pem -out xxxx_new.pfx`
 
 Före och efter konvertering:
 
-![Innan certifikat ändringen](media/self-hosted-integration-runtime-troubleshoot-guide/before-certificate-change.png)
+![Skärm bild av resultatet före certifikat konverteringen.](media/self-hosted-integration-runtime-troubleshoot-guide/before-certificate-change.png)
 
-![Efter ändring av certifikat](media/self-hosted-integration-runtime-troubleshoot-guide/after-certificate-change.png)
+![Skärm bild av resultatet efter certifikat konverteringen.](media/self-hosted-integration-runtime-troubleshoot-guide/after-certificate-change.png)
 
-### <a name="self-hosted-integration-runtime-version-5x"></a>Egen värd Integration Runtime version 5. x
-För uppgraderingen till version 5. x av Azure Data Factory integration runtime med egen värd, kräver vi **.NET Framework runtime-4.7.2** eller senare. I nedladdnings sidan kommer du att ladda ned Länkar för de nyaste 4. x-versionerna och de nyaste två 5. x versionerna. 
+### <a name="self-hosted-integration-runtime-version-5x"></a>Egen värd för integration runtime, version 5. x
+För uppgraderingen till version 5. x av Azure Data Factory integration runtime med egen värd, kräver vi **.NET Framework runtime 4.7.2** eller senare. På sidan Hämta hittar du hämtnings Länkar för de senaste 4. x-versionerna och de senaste två 5. x versionerna. 
+
+För Azure Data Factory v2-kunder:
+- Om automatisk uppdatering är aktiverat och du redan har uppgraderat .NET Framework runtime till 4.7.2 eller senare, uppgraderas den lokala integrerings körningen automatiskt till den senaste 5. x-versionen.
+- Om automatisk uppdatering är aktiverat och du inte har uppgraderat .NET Framework runtime till 4.7.2 eller senare, uppgraderas inte den lokala integrerings körningen automatiskt till den senaste 5. x-versionen. Integration runtime med egen värd förblir i den aktuella 4. x-versionen. Du kan se en varning för en .NET Framework runtime-uppgradering i portalen och klienten för lokal integration Runtime.
+- Om automatisk uppdatering är inaktiverat och du redan har uppgraderat .NET Framework runtime till 4.7.2 eller senare, kan du manuellt hämta det senaste 5. x och installera det på din dator.
+- Om automatisk uppdatering är inaktive rad och du inte har uppgraderat .NET Framework runtime till 4.7.2 eller senare. När du försöker installera den automatiskt värdbaserade integrerings körningen 5. x och registrera nyckeln måste du först uppgradera .NET Framework runtime-versionen.
 
 
-För ADF v2-kunder:
-- Om automatisk uppdatering är aktiverat och du redan har uppgraderat .NET Framework-körningsmiljön till 4.7.2 eller senare, uppgraderas den lokala integrerings körningen automatiskt till den senaste 5. x-versionen.
-- Om automatisk uppdatering är aktiverat och du inte har uppgraderat .NET Framework-körningsmiljön till 4.7.2 eller senare, uppgraderas inte den lokala integrerings körningen automatiskt till den senaste 5. x-versionen. Integration runtime med egen värd finns kvar i den aktuella 4. x-versionen. Du kan se en varning för runtime-uppgraderingen av .NET Framework i portalen och klienten för lokal integration Runtime.
-- Om automatisk uppdatering är inaktiverat och du redan har uppgraderat .NET Framework-körningsmiljön till 4.7.2 eller senare, kan du hämta det senaste 5. x manuellt och installera det på datorn.
-- Om automatisk uppdatering är inaktive rad och du inte har uppgraderat .NET Framework-körningsmiljön till 4.7.2 eller senare. När du försöker installera SHIR 5. x och registrera nyckeln måste du först uppgradera .NET Framework-körningsmiljön.
-
-
-För ADF v1-kunder:
-- Integration runtime 5 med egen värd stöder inte ADF v1.
-- Den egna värdbaserade integrerings körningen uppgraderas automatiskt till den senaste versionen av 4. x. Och den senaste versionen av 4. x upphör inte att gälla. 
-- Om du försöker installera den automatiskt värdbaserade integrerings körningen 5. x och registrera nyckeln får du ett meddelande om att integrerings körningen för egen värd är 5. x inte stöder v1.
+För Azure Data Factory v1-kunder:
+- Integration runtime 5. X med egen värd stöder inte Azure Data Factory v1.
+- Den egna värdbaserade integrerings körningen uppgraderas automatiskt till den senaste versionen av 4. x. Och den senaste versionen av 4. x upphör att gälla. 
+- Om du försöker installera den automatiskt värdbaserade integrerings körningen 5. x och registrera nyckeln får du ett meddelande om att integration runtime 5. x med egen värd inte stöder Azure Data Factory v1.
 
 
 ## <a name="self-hosted-ir-connectivity-issues"></a>Problem med IR-anslutning via egen värd
 
-### <a name="self-hosted-integration-runtime-cant-connect-to-cloud-service"></a>Integration runtime med egen värd kan inte ansluta till moln tjänsten
+### <a name="self-hosted-integration-runtime-cant-connect-to-the-cloud-service"></a>Integration runtime med egen värd kan inte ansluta till moln tjänsten
 
 #### <a name="symptoms"></a>Symtom
 
-![Problem med IR-anslutning via egen värd](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
+När du försöker registrera integration runtime med egen värd visas följande fel meddelande i Configuration Manager:
+
+"Integration Runtime (lokal installation)-noden har påträffat ett fel under registreringen."
+
+![Skärm bild av meddelandet "Integration Runtime (lokal installation)-noden har påträffat ett fel under registreringen".](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
 
 #### <a name="cause"></a>Orsak 
 
-Den egna värdbaserade integrerings körningen kan inte ansluta till Data Factory tjänsten (backend). Det här problemet orsakas vanligt vis av nätverks inställningar i brand väggen.
+IR med egen värd kan inte ansluta till Server delen för Azure Data Factory Server. Det här problemet orsakas vanligt vis av nätverks inställningar i brand väggen.
 
 #### <a name="resolution"></a>Lösning
 
-1. Kontrol lera om integration runtime-tjänsten körs.
+1. Kontrol lera om integration runtime-tjänsten körs. Om så är fallet går du till steg 2.
     
-   ![Status för IR-tjänsten med egen värd](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-running-status.png)
+   ![Skärm bild som visar att den egen värdbaserade IR-tjänsten körs.](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-running-status.png)
     
-1. Om tjänsten körs går du vidare till steg 3.
-
-1. Om ingen proxy har kon figurer ATS på den lokala integrerings körningen (vilket är standardinställningen) kör du följande PowerShell-kommando på den dator där den lokala integrerings körningen är installerad:
+1. Om ingen proxy har kon figurer ATS på den lokala IR-enheten, vilket är standardinställningen, kör du följande PowerShell-kommando på den dator där den lokala integrerings körningen är installerad:
 
     ```powershell
     (New-Object System.Net.WebClient).DownloadString("https://wu2.frontend.clouddatahub.net/")
     ```
         
    > [!NOTE]     
-   > URL: en för tjänsten kan variera beroende på din Data Factory plats. Du hittar tjänst-URL: en **ADF UI** under  >  **Connections**  >  **integrerings körningar** i ADF UI  >  **-anslutningar redigera egen värd för IR**  >  **Nodes**  >  **-noder Visa tjänst-URL: er**.
+   > URL: en för tjänsten kan variera beroende på var Data Factory-instansen finns. Om du vill hitta tjänstens URL väljer du **ADF UI**-  >  **anslutningar**  >  **integrerings körningar**  >  **Redigera egen värd IR**  >    >  **-noder Visa tjänst-URL: er**.
             
     Följande är det förväntade svaret:
             
-    ![PowerShell-kommando svar](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
+    ![Skärm bild av PowerShell-kommandots svar.](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
             
-1. Om du inte får det förväntade svaret använder du någon av följande metoder som passar din situation:
+1. Om du inte får det svar du förväntade dig kan du använda någon av följande metoder:
             
     * Om du får ett meddelande om att det inte gick att lösa problemet, finns det ett Domain Name System (DNS-problem). Kontakta nätverks teamet för att åtgärda problemet.
-    * Om du får ett meddelande om att SSL/TLS-certifikat inte är betrott, kontrollerar du om certifikatet för https://wu2.frontend.clouddatahub.net/ är betrott på datorn och installerar sedan det offentliga certifikatet med hjälp av certifikat hanteraren. Den här åtgärden bör minimera problemet.
-    * Gå till **Windows**  >  **logg boken (loggar)**  >  **program-och tjänst loggar**  >  **integration runtime** och kontrol lera eventuella problem som orsakas av DNS, brand Väggs regel eller företagets nätverks inställningar. (Om du upptäcker ett sådant problem stänger du anslutningen.) Eftersom alla företag har anpassade nätverks inställningar kan du kontakta nätverks teamet för att felsöka problemen.
+    * Om du får ett meddelande om att SSL/TLS-certifikat inte är betrott kan du [kontrol lera certifikatet](https://wu2.frontend.clouddatahub.net/) för att se om det är betrott på datorn och sedan installera det offentliga certifikatet med hjälp av certifikat hanteraren. Den här åtgärden bör minimera problemet.
+    * Gå till **Windows**  >  **logg boken (loggar)**  >  **program-och tjänst loggar**  >  **integration runtime** och kontrol lera om det finns några problem som orsakas av DNS, brand Väggs regel eller företagets nätverks inställningar. Om du upptäcker ett sådant problem ska du stänga anslutningen. Eftersom alla företag har egna anpassade nätverks inställningar, kontaktar du nätverks teamet för att felsöka problemen.
 
 1. Om proxyn har kon figurer ATS på integration runtime med egen värd, kontrollerar du att proxyservern kan komma åt tjänstens slut punkt. Ett exempel kommando finns i [PowerShell, webb förfrågningar och proxyservrar](https://stackoverflow.com/questions/571429/powershell-web-requests-and-proxies).    
                 
@@ -536,29 +564,29 @@ Den egna värdbaserade integrerings körningen kan inte ansluta till Data Factor
 
 Följande är det förväntade svaret:
             
-![PowerShell-kommando svar 2](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
+![Skärm bild av förväntat PowerShell-kommando svar.](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
 
 > [!NOTE] 
 > Synpunkter på proxy:
-> *    Kontrol lera om proxyservern måste placeras i listan Betrodda mottagare. Om så är fallet ser du till att [dessa domäner](./data-movement-security-considerations.md#firewall-requirements-for-on-premisesprivate-network) finns i listan Betrodda mottagare.
-> *    Kontrol lera om TLS/SSL-certifikatet "wu2.frontend.clouddatahub.net/" är betrott på proxyservern.
-> *    Om du använder Active Directory autentisering på proxyn ändrar du tjänst kontot till det användar konto som har åtkomst till proxyn som "Integration Runtime tjänst".
+> * Kontrol lera om proxyservern måste placeras i listan Betrodda mottagare. Om så är fallet ser du till att [dessa domäner](./data-movement-security-considerations.md#firewall-requirements-for-on-premisesprivate-network) finns i listan Betrodda mottagare.
+> * Se efter om SSL/TLS-certifikatet "wu2.frontend.clouddatahub.net/" är betrott på proxyservern.
+> * Om du använder Active Directory autentisering på proxyn ändrar du tjänst kontot till det användar konto som har åtkomst till proxyn som "Integration Runtime tjänst".
 
-### <a name="error-message-self-hosted-integration-runtime-node-logical-shir-is-in-inactive-running-limited-state"></a>Fel meddelande: egen värd för integration runtime-noden/logiska SHIR är i ett inaktivt/"kör (begränsat)" tillstånd
+### <a name="error-message-self-hosted-integration-runtime-nodelogical-self-hosted-ir-is-in-inactive-running-limited-state"></a>Fel meddelande: egen värd för integration runtime-noden/den logiska egna IR-noden som är inaktiv/"körs (begränsad)"
 
 #### <a name="cause"></a>Orsak 
 
-Den egna värdbaserade integrerade runtime-noden kan ha en **inaktiv** status, som visas på följande skärm bild:
+Den egna värdbaserade integrerade runtime-noden kan ha statusen **inaktiv**, som visas på följande skärm bild:
 
-![Inaktiv Self-Hosted IR-nod](media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png)
+![Skärm bild av den egna värdbaserade integrerade runtime-noden med inaktiv status](media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png)
 
 Det här problemet uppstår när noder inte kan kommunicera med varandra.
 
 #### <a name="resolution"></a>Lösning
 
-1. Logga in på den nod-värdbaserade virtuella datorn. Under **program-och tjänst loggar**  >  **integration runtime** öppnar du Loggboken och filtrerar alla fel loggar.
+1. Logga in på den nod-värdbaserade virtuella datorn (VM). Under **program-och tjänst loggar**  >  **integration runtime** öppnar du Loggboken och filtrerar fel loggarna.
 
-1. Kontrol lera om fel loggen innehåller följande fel: 
+1. Kontrol lera om det finns följande fel i fel loggen: 
     
     ```
     System.ServiceModel.EndpointNotFoundException: Could not connect to net.tcp://xxxxxxx.bwld.com:8060/ExternalService.svc/WorkerManager. The connection attempt lasted for a time span of 00:00:00.9940994. TCP error code 10061: No connection could be made because the target machine actively refused it 10.2.4.10:8060. 
@@ -569,17 +597,17 @@ Det här problemet uppstår när noder inte kan kommunicera med varandra.
     at System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
     ```
        
-1. Om du ser det här felet kör du följande på en kommando rad: 
+1. Om det här felet visas kör du följande kommando i ett kommando tolks fönster: 
 
    ```
    telnet 10.2.4.10 8060
    ```
    
-1. Om du får följande fel meddelande kan du kontakta IT-avdelningen för att få hjälp med att åtgärda problemet. När du har lyckats använda Telnet kontaktar du Microsoft Support om du fortfarande har problem med status för integrerande-noden.
+1. Om du får den "Det gick inte att öppna anslutningen till värd kommandot" som visas på följande skärm bild kan du kontakta IT-avdelningen för att få hjälp med att åtgärda problemet. När du har lyckats använda Telnet kontaktar du Microsoft Support om du fortfarande har problem med integration runtime-nodens status.
         
-   ![Kommando rads fel](media/self-hosted-integration-runtime-troubleshoot-guide/command-line-error.png)
+   ![Skärm bild av kommando rads felet "Det gick inte att öppna anslutningen till värden".](media/self-hosted-integration-runtime-troubleshoot-guide/command-line-error.png)
         
-1. Kontrol lera om fel loggen innehåller följande:
+1. Kontrol lera om fel loggen innehåller följande post:
 
     ```
     Error log: Cannot connect to worker manager: net.tcp://xxxxxx:8060/ExternalService.svc/ No DNS entries exist for host azranlcir01r1. No such host is known Exception detail: System.ServiceModel.EndpointNotFoundException: No DNS entries exist for host xxxxx. ---> System.Net.Sockets.SocketException: No such host is known at System.Net.Dns.GetAddrInfo(String name) at System.Net.Dns.InternalGetHostByName(String hostName, Boolean includeIPv6) at System.Net.Dns.GetHostEntry(String hostNameOrAddress) at System.ServiceModel.Channels.DnsCache.Resolve(Uri uri) --- End of inner exception stack trace --- Server stack trace: at System.ServiceModel.Channels.DnsCache.Resolve(Uri uri)
@@ -589,42 +617,44 @@ Det här problemet uppstår när noder inte kan kommunicera med varandra.
     - Lägg till alla noder i samma domän.
     - Lägg till IP-adressen som värd mappning i alla värdar för den värdbaserade virtuella datorn.
 
-### <a name="connectivity-issue-between-self-hosted-ir-and-data-factory-or-self-hosted-ir-and-data-sourcesink"></a>Anslutnings problem mellan IR med egen värd och Data Factory eller egen IR och data källa/mottagare
+### <a name="connectivity-issue-between-the-self-hosted-ir-and-your-data-factory-instance-or-the-self-hosted-ir-and-the-data-source-or-sink"></a>Anslutnings problem mellan den egen värdbaserade IR-instansen, din Data Factory-instans eller den egna IR-instansen och data källan eller sinken
 
-För att felsöka problem med nätverks anslutningen bör du veta hur du samlar in nätverks spårningen, förstår hur du använder det och [analyserar Netmon-spårningen](#how-to-analyze-netmon-trace) innan du använder Netmon-verktygen i reala fall från egen värd-IR.
+För att felsöka problem med nätverks anslutningen bör du veta hur du samlar in nätverks spårningen, hur du använder det och [analyserar Microsoft Network Monitor (Netmon)-spårningen](#analyze-the-netmon-trace) innan du använder Netmon-verktygen i reala fall från den egna IR-enheten.
 
 #### <a name="symptoms"></a>Symtom
 
-Ibland kan vi vid fel sökning av anslutnings problem, till exempel under en mellan egen värd-IR och Data Factory: 
+Ibland kan du behöva felsöka vissa anslutnings problem mellan IR och din Data Factory-instans, som du ser i följande skärm bild eller mellan den egna IR-IR-filen och data källan eller sinken. 
 
-![HTTP-begäran misslyckades](media/self-hosted-integration-runtime-troubleshoot-guide/http-request-error.png)
+![Skärm bild av meddelandet "behandlade HTTP-begäran misslyckades"](media/self-hosted-integration-runtime-troubleshoot-guide/http-request-error.png)
 
-Eller en mellan egen värd-IR och data källa/mottagare kommer vi att stöta på följande fel:
+I båda instanserna kan du stöta på följande fel:
 
-`Copy failed with error:Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Cannot connect to SQL Server: ‘IP address’`
+* "Kopieringen misslyckades med felet: typ = Microsoft. DataTransfer. Common. Shared. HybridDeliveryException, Message = det går inte att ansluta till SQL Server:" IP-adress ""
 
-`One or more errors occurred. An error occurred while sending the request. The underlying connection was closed: An unexpected error occurred on a receive. Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. An existing connection was forcibly closed by the remote host Activity ID.`
+* Ett eller flera fel inträffade. Ett fel uppstod när begäran skickades. Den underliggande anslutningen stängdes: ett oväntat fel inträffade vid mottagning. Det gick inte att läsa data från transport anslutningen: en befintlig anslutning tvingades stänga av den fjärranslutna värden. En befintlig anslutning tvingades stängas av fjärrvärdets aktivitets-ID. "
 
-#### <a name="resolution"></a>Lösning:
+#### <a name="resolution"></a>Lösning
 
-När du påträffar ovanstående problem kan du läsa följande instruktioner för att felsöka ytterligare:
+När du stöter på föregående fel kan du felsöka dem genom att följa anvisningarna i det här avsnittet.
 
-Ta Netmon-spårningen och analysera vidare.
-- För det första kan du ange filtret för att se eventuell återställning där från servern till klient sidan. I följande exempel kan du se server sidan Data Factory-Server.
+- Samla in en Netmon-spårning för analys: 
 
-    ![Data Factory-Server](media/self-hosted-integration-runtime-troubleshoot-guide/data-factory-server.png)
+    1. Du kan ställa in filtret för att se en återställning från servern till klient sidan. I följande exempel skärm bild kan du se att Server sidan är Data Factory-servern.
 
-- När du hämtar återställnings paketet kan du hitta konversationen genom att följa TCP.
+        ![Skärm bild av Data Factory-servern.](media/self-hosted-integration-runtime-troubleshoot-guide/data-factory-server.png)
 
-    ![Hitta konversation](media/self-hosted-integration-runtime-troubleshoot-guide/find-conversation.png)
+    1. När du hämtar återställnings paketet kan du hitta konversationen genom att följa Transmission Control Protocol (TCP).
 
-- Sedan kan du hämta konverteringen mellan klienten och Data Factory servern nedan genom att ta bort filtret.
+        ![Skärm bild av TCP-konversationen.](media/self-hosted-integration-runtime-troubleshoot-guide/find-conversation.png)
 
-    ![Hämta konversation](media/self-hosted-integration-runtime-troubleshoot-guide/get-conversation.png)
-- Baserat på den insamlade Netmon-spårningen kan vi se att det totala TTL-värdet (TimeToLive) är 64. Enligt standard- **TTL-och hopp gräns värden** som anges i [den här artikeln](https://packetpushers.net/ip-time-to-live-and-hop-limit-basics/) (som extraheras nedan) kan vi se att det är det Linux-system som återställer paketet och orsakar från koppling.
+    1. Hämta konversationen mellan klienten och Data Factory servern nedan genom att ta bort filtret.
 
-    Standardvärden för TTL och hopp varierar mellan olika operativ system, här är standardinställningarna för några få:
-    - Linux kernel 2,4 (circa 2001): 255 för TCP, UDP och ICMP
+        ![Skärm bild av konversations information.](media/self-hosted-integration-runtime-troubleshoot-guide/get-conversation.png)
+
+- En analys av NetMon-spåret som du har samlat in visar att den totala Time to Live (TTL) är 64. Enligt de värden som anges i artikeln [grundläggande om IP-Time to Live (TTL) och antal hopp gränser](https://packetpushers.net/ip-time-to-live-and-hop-limit-basics/) , som extraheras i följande lista, kan du se att det är Linux-systemet som återställer paketet och orsakar från koppling.
+
+    Standardvärden för TTL och hopp varierar mellan olika operativ system, vilket visas här:
+    - Linux kernel 2,4 (circa 2001): 255 för TCP, User Datagram Protocol (UDP) och Internet Control Message Protocol (ICMP)
     - Linux kernel 4,10 (2015): 64 för TCP, UDP och ICMP
     - Windows XP (2001): 128 för TCP, UDP och ICMP
     - Windows 10 (2015): 128 för TCP, UDP och ICMP
@@ -632,149 +662,160 @@ Ta Netmon-spårningen och analysera vidare.
     - Windows Server 2019 (2018): 128 för TCP, UDP och ICMP
     - macOS (2001): 64 för TCP, UDP och ICMP
 
-    ![TTL 61](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-61.png)
+    ![Skärm bild som visar ett TTL-värde på 61.](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-61.png)
     
-    Den visas dock som 61 i stället för 64 i exemplet ovan, eftersom när nätverks paketet når målet måste det gå igenom olika hopp som routrar/nätverks enheter. Antalet routrar/nätverks enheter kommer att dras av i det slutliga TTL-värdet.
-    I det här fallet kan vi se att återställningen kan skickas från Linux-systemet med TTL 64.
+    I föregående exempel visas TTL-värdet som 61 i stället för 64, eftersom när nätverks paketet når målet måste det gå igenom olika hopp, till exempel routrar eller nätverks enheter. Antalet routrar eller nätverks enheter dras av för att producera det slutliga TTL-värdet.
+    
+    I så fall kan du se att en återställning kan skickas från Linux-systemet med TTL 64.
 
-- Vi måste kontrol lera det fjärde hoppet från egen värd-IR för att kontrol lera var återställnings enheten kan komma från.
+-  Om du vill kontrol lera var återställnings enheten kan komma från kontrollerar du det fjärde hoppet från den egna IR-enheten.
  
     *Nätverks paket från Linux system A med TTL 64-> B TTL 64 minus 1 = 63-> C TTL 63 minus 1 = 62-> TTL 62 minus 1 = 61 lokal IR*
 
-- I ideal fallet är TTL 128, vilket innebär att Windows system kör vår Data Factory. Som du ser i exemplet nedan, *128 – 107 = 21 hopp*, vilket innebär att 21 hopp för paketet har skickats från Data Factory till IR med egen värd under TCP 3-handskakningen.
+- I en idealisk situation skulle TTL-hoppnummer vara 128, vilket innebär att operativ systemet Windows kör din Data Factory-instans. Som du ser i följande exempel, *128 minus 107 = 21 hopp*, vilket innebär att 21 hopp för paketet har skickats från Data Factory-instansen till den egna IR-instansen i TCP 3-hand skakningen.
  
-    ![TTL 107](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png)
+    ![Skärm bild som visar ett TTL-värde på 107.](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png)
 
-    Därför måste du engagera nätverks teamet för att kontrol lera vad det fjärde hoppet är från IR med egen värd. Om det är en brand vägg som Linux-system kan du kontrol lera eventuella loggar på varför enheten återställer paketet efter TCP 3-handskakningen. Men om du inte är säker på var du ska göra undersökningen kan du försöka hämta Netmon-spårningen från IR och brand vägg med egen värd under den problematiska tiden för att ta reda på vilken enhet som kan återställa det här paketet och orsaka från koppling. I så fall måste du också engagera ditt nätverks team för att gå vidare.
+    Därför måste du be nätverks teamet att kontrol lera för att se vad det fjärde hoppet är från det egna IR-nätverket. Om det är brand väggen, som i Linux-systemet, kontrollerar du eventuella loggar för att se varför enheten återställer paketet efter TCP 3-handskakningen. 
+    
+    Om du är osäker på var du ska undersöka kan du försöka hämta Netmon-spåret från både den egna IR-IR-filen och brand väggen under den problematiska tiden. Den här metoden hjälper dig att ta reda på vilken enhet som kan ha återställt paketet och orsakade anslutningen. I så fall måste du också engagera ditt nätverks team för att gå vidare.
 
-### <a name="how-to-analyze-netmon-trace"></a>Analysera Netmon-spårning
+### <a name="analyze-the-netmon-trace"></a>Analysera Netmon-spårningen
 
 > [!NOTE] 
-> Nedan följer en instruktion för Netmon-spårning. Eftersom Netmon-spårningen för närvarande inte stöds kan du utnyttja wireshark som samma.
+> Följande instruktioner gäller för Netmon-spårningen. Eftersom Netmon-spårningen för närvarande inte stöds kan du använda wireshark för detta ändamål.
 
-När du försöker använda Telnet **8.8.8.8 888** med Netmon-spårningen, ska du se följande spårning:
+När du försöker Telnet **8.8.8.8 888** med det insamlade Netmon-spåret bör du se spårningen i följande skärm bilder:
 
-![Netmon-spårning 1](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-1.png)
+![Skärm bild som visar fel meddelandet "Det gick inte att öppna anslutningen till värden på port 888".](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-1.png)
 
-![Netmon spårning 2](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-2.png)
+![Skärm bild som visar en beskrivning av NetMon-spåret.](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-2.png)
  
 
-Det innebär att du inte kan göra TCP-anslutning till **8.8.8.8** -Server sidan baserat på port **888**, så att du ser två **SynReTransmit** ytterligare paket där. Eftersom källan **Self-HOST2** inte kunde ansluta till **8.8.8.8** i det första paketet, kommer den att fortsätta att upprätta anslutningen.
+Föregående bilder visar att du inte kunde upprätta en TCP-anslutning till **8.8.8.8** -Server sidan på port **888**, så att du ser två **SynReTransmit** ytterligare paket där. Eftersom käll **-HOST2** inte kunde ansluta till **8.8.8.8** med det första paketet fortsätter det att försöka upprätta anslutningen.
 
 > [!TIP]
-> - Du kan klicka på **load filter**  ->  **standard filter**  ->  **adresser**  ->  **IPv4-adresser**.
-> - Ange **IPv4. address = = 8.8.8.8** som filter och klicka på **tillämpa**. Därefter kan du bara se kommunikationen från den lokala datorn till mål- **8.8.8.8**.
+> Prova följande lösning för att upprätta anslutningen:
+> 1. Välj **load filter**  >  **standard filter**  >  **adresser**  >  **IPv4-adresser**.
+> 1. Om du vill använda filtret anger du **IPv4. address = = 8.8.8.8** och väljer sedan **Använd**. Du bör sedan se kommunikationen från den lokala datorn till målet **8.8.8.8**.
 
-![Filtrera adresser 1](media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-1.png)
+![Skärm bild som visar filter adresser.](media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-1.png)
         
-![Filtrera adresser 2](media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-2.png)
+![Skärm bild som visar fler filter adresser.](media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-2.png)
 
-Nedan visas ett exempel på hur ett bra scenario skulle se ut. 
+Lyckade scenarier visas i följande exempel: 
 
-- Om Telnet **8.8.8.8 53** fungerar utan problem kan du se att TCP 3 hand skakning sker och att sessionen slutförs med TCP 4-handskakningen.
+- Om du kan Telnet **8.8.8.8 53** utan problem finns det en lyckad TCP 3-handskakning, och sessionen slutförs med en TCP 4-handskakning.
 
-    ![Bästa scenario exempel 1](media/self-hosted-integration-runtime-troubleshoot-guide/good-scenario-1.png)
+    ![Skärm bild som visar ett lyckat anslutnings scenario.](media/self-hosted-integration-runtime-troubleshoot-guide/good-scenario-1.png)
      
-    ![exempel på bästa scenario 2](media/self-hosted-integration-runtime-troubleshoot-guide/good-scenario-2.png)
+    ![Skärm bild som visar information om ett lyckat anslutnings scenario.](media/self-hosted-integration-runtime-troubleshoot-guide/good-scenario-2.png)
 
-- Baserat på ovanstående TCP 3-handskakning kan du se arbets flödet nedan:
+- Föregående TCP 3-handskakning skapar följande arbets flöde:
 
-    ![Arbets flöde för TCP 3 hand skakning](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-3-handshake-workflow.png)
+    ![Diagram över ett arbets flöde för en TCP 3 hand skakning.](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-3-handshake-workflow.png)
  
-- TCP 4-handskakningen för att avsluta sessionen och arbets flödet visas enligt följande:
+- TCP 4-handskakningen för att avsluta sessionen illustreras av följande arbets flöden:
 
-    ![TCP 4-handskakning](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake.png)
+    ![Skärm bild av information om TCP 4 hand skakning.](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake.png)
 
-    ![Arbets flöde för TCP 4 hand skakning](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake-workflow.png) 
+    ![Diagram över ett arbets flöde för TCP 4-handskakningen.](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake-workflow.png) 
 
+### <a name="microsoft-email-notification-about-updating-your-network-configuration"></a>Microsoft e-postavisering om uppdatering av din nätverks konfiguration
 
-### <a name="receiving-email-to-update-the-network-configuration-to-allow-communication-with-new-ip-addresses"></a>Ta emot e-post för att uppdatera nätverks konfigurationen för att tillåta kommunikation med nya IP-adresser
+Du kan få följande e-postavisering, som rekommenderar att du uppdaterar nätverks konfigurationen för att tillåta kommunikation med nya IP-adresser för Azure Data Factory med 8 november 2020:
 
-#### <a name="email-notification-from-microsoft"></a>E-postavisering från Microsoft
+   ![Skärm bild av Microsoft-e-postaviseringar som begär uppdatering av nätverks konfiguration.](media/self-hosted-integration-runtime-troubleshoot-guide/email-notification.png)
 
-Du kan få e-postaviseringar via e-post, som rekommenderar att du uppdaterar nätverks konfigurationen för att tillåta kommunikation med nya IP-adresser för Azure Data Factory med 8 november 2020:
+#### <a name="determine-whether-this-notification-affects-you"></a>Ta reda på om det här meddelandet påverkar dig
 
-   ![E-postavisering](media/self-hosted-integration-runtime-troubleshoot-guide/email-notification.png)
+Detta meddelande gäller följande scenarier:
 
-#### <a name="how-to-determine-if-you-are-impacted-by-this-notification"></a>Så här avgör du om du påverkas av det här meddelandet
+##### <a name="scenario-1-outbound-communication-from-a-self-hosted-integration-runtime-thats-running-on-premises-behind-a-corporate-firewall"></a>Scenario 1: utgående kommunikation från en egen värd för integration runtime som körs lokalt bakom en företags brand vägg
 
-Detta meddelande påverkar följande scenarier:
-##### <a name="scenario-1-outbound-communication-from-self-hosted-integration-runtime-running-on-premises-behind-the-corporate-firewall"></a>Scenario 1: utgående kommunikation från egen värd Integration Runtime som körs lokalt bakom företags brand väggen
-Så här avgör du om du påverkas:
-- Du påverkas inte om du definierar brand Väggs regler baserat på FQDN-namn med hjälp av metoden som beskrivs i det här dokumentet: [brand Väggs konfiguration och inställningar för att konfigurera för IP-adress](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway).
-- Du kommer dock att påverkas om du uttryckligen aktiverar listan över tillåtna för utgående IP-adresser i företags brand väggen.
+Så här avgör du om du har påverkat:
 
-Åtgärd som ska vidtas om du påverkas: meddela nätverks infrastrukturens team att du vill uppdatera nätverks konfigurationen så att den använder de senaste Data Factory IP-adresserna senast den 8 november 2020.  Hämta de senaste IP-adresserna genom att gå till [service Tags IP-intervall nedladdnings länk](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
+- Du påverkas *inte* om du definierar brand Väggs regler baserade på fullständigt kvalificerade domän namn (FQDN) som använder den metod som beskrivs i [Konfigurera en brand Väggs konfiguration och listan över tillåtna IP-adresser](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway).
 
-##### <a name="scenario-2-outbound-communication-from-self-hosted-integration-runtime-running-on-an-azure-vm-inside-customer-managed-azure-virtual-network"></a>Scenario 2: utgående kommunikation från egen värd Integration Runtime som körs på en virtuell Azure-dator i ett kund hanterat Azure Virtual Network
-Så här avgör du om du påverkas:
-- Kontrol lera om du har regler för utgående NSG i ditt privata nätverk som innehåller Integration Runtime med egen värd. Om det inte finns några utgående begränsningar påverkas ingen påverkan.
-- Om du har regler för utgående trafik kontrollerar du om du använder service tag eller inte. Om du använder service tag-koden behöver du inte ändra eller lägga till något som nya IP-adressintervall är under befintligt service tag. 
- ![Mål kontroll](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
-- Du kommer dock att påverkas om du uttryckligen aktiverar listan över tillåtna för utgående IP-adresser i NSG-regler på det virtuella Azure-nätverket.
+- Du *påverkas om du uttryckligen* aktiverar listan över tillåtna för utgående IP-adresser i företags brand väggen.
 
-Åtgärd som ska vidtas om du påverkas: meddela din nätverks infrastrukturs team att uppdatera NSG-regler i din Azure Virtual Network-konfiguration för att använda de senaste Data Factory IP-adresserna senast den 8 november 2020.  Hämta de senaste IP-adresserna genom att gå till [service Tags IP-intervall nedladdnings länk](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
+   Om du påverkas kan du vidta följande åtgärder: senast den 8 november 2020, meddela din nätverks infrastruktur team att uppdatera nätverks konfigurationen så att den använder de senaste Data Factory-IP-adresserna. Om du vill hämta de senaste IP-adresserna går du till [identifiera tjänst etiketter med hjälp av nedladdnings bara JSON-filer](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
 
-##### <a name="scenario-3-outbound-communication-from-ssis-integration-runtime-in-customer-managed-azure-virtual-network"></a>Scenario 3: utgående kommunikation från SSIS Integration Runtime i kundens hanterade Azure Virtual Network
-- Kontrol lera om du har utgående NSG-regler i ditt privata nätverk som innehåller SSIS Integration Runtime. Om det inte finns några utgående begränsningar påverkas ingen påverkan.
-- Om du har regler för utgående trafik kontrollerar du om du använder service tag eller inte. Om du använder service tag-koden behöver du inte ändra eller lägga till något som nya IP-adressintervall är under befintligt service tag.
-- Du kommer dock att påverkas om du uttryckligen aktiverar listan över tillåtna för utgående IP-adresser på din NSG-regel på det virtuella Azure-nätverket.
+##### <a name="scenario-2-outbound-communication-from-a-self-hosted-integration-runtime-thats-running-on-an-azure-vm-inside-a-customer-managed-azure-virtual-network"></a>Scenario 2: utgående kommunikation från en egen värd för integration runtime som körs på en virtuell Azure-dator i ett kundhanterat Azure Virtual Network
 
-Åtgärd som ska vidtas om du påverkas: meddela din nätverks infrastrukturs team att uppdatera NSG-regler i din Azure Virtual Network-konfiguration för att använda de senaste Data Factory IP-adresserna senast den 8 november 2020.  Hämta de senaste IP-adresserna genom att gå till [service Tags IP-intervall nedladdnings länk](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
+Så här avgör du om du har påverkat:
 
-### <a name="could-not-establish-trust-relationship-for-the-ssltls-secure-channel"></a>Det gick inte att upprätta en förtroende relation för den säkra SSLTLS-kanalen 
+- Kontrol lera om du har regler för utgående nätverks säkerhets grupper (NSG) i ett privat nätverk som innehåller integration runtime med egen värd. Om det inte finns några utgående begränsningar påverkas inte.
+
+- Om du har regler för utgående trafik kontrollerar du om du använder tjänst taggar. Om du använder service märken påverkas inte du. Du behöver inte ändra eller lägga till något eftersom det nya IP-intervallet är under dina befintliga service märken. 
+
+  ![Skärm bild av en mål kontroll som visar DataFactory som mål.](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
+
+- Du *påverkas om du uttryckligen* aktiverar listan över tillåtna för utgående IP-adresser i NSG-regler på det virtuella Azure-nätverket.
+
+   Om du påverkas kan du vidta följande åtgärder: senast den 8 november 2020, meddela din nätverks infrastruktur team att uppdatera NSG-reglerna i din Azure Virtual Network-konfiguration så att de använder de senaste IP-adresserna för Data Factory. Om du vill hämta de senaste IP-adresserna går du till [identifiera tjänst etiketter med hjälp av nedladdnings bara JSON-filer](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
+
+##### <a name="scenario-3-outbound-communication-from-ssis-integration-runtime-in-a-customer-managed-azure-virtual-network"></a>Scenario 3: utgående kommunikation från SSIS Integration Runtime i ett kundhanterat Azure Virtual Network
+
+Så här avgör du om du har påverkat:
+
+- Kontrol lera om det finns utgående NSG-regler i ett privat nätverk som innehåller SQL Server Integration Services (SSIS) Integration Runtime. Om det inte finns några utgående begränsningar påverkas inte.
+
+- Om du har regler för utgående trafik kontrollerar du om du använder tjänst taggar. Om du använder service märken påverkas inte du. Du behöver inte ändra eller lägga till något eftersom det nya IP-intervallet finns under dina befintliga service märken.
+
+- Du *påverkas om du uttryckligen* aktiverar listan över tillåtna för utgående IP-adresser i NSG-regler på det virtuella Azure-nätverket.
+
+  Om du påverkas kan du vidta följande åtgärder: senast den 8 november 2020, meddela din nätverks infrastruktur team att uppdatera NSG-reglerna i din Azure Virtual Network-konfiguration så att de använder de senaste IP-adresserna för Data Factory. Om du vill hämta de senaste IP-adresserna går du till [identifiera tjänst etiketter med hjälp av nedladdnings bara JSON-filer](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
+
+### <a name="couldnt-establish-a-trust-relationship-for-the-ssltls-secure-channel"></a>Det gick inte att upprätta en förtroende relation för den säkra SSL/TLS-kanalen 
 
 #### <a name="symptoms"></a>Symtom
 
-IR med egen värd kan inte ansluta till ADF-tjänsten.
+Det gick inte att ansluta till den Azure Data Factory tjänsten via den egna värd tjänsten.
 
-Genom att kontrol lera händelse loggen för SHIR eller klient meddelande loggarna i CustomLogEvent-tabellen, hittas följande fel meddelande:
+När du kontrollerar IR-händelseloggen med egen värd eller klient meddelande loggarna i tabellen CustomLogEvent, visas följande fel meddelande:
 
-`The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.The remote certificate is invalid according to the validation procedure.`
+"Den underliggande anslutningen stängdes: det gick inte att upprätta en förtroende relation för den säkra SSL/TLS-kanalen. Fjärrcertifikatet är ogiltigt enligt validerings proceduren. "
 
-Kontrol lera Server certifikatet för ADF-tjänsten:
+Det enklaste sättet att kontrol lera Server certifikatet för tjänsten Data Factory är att öppna URL: en för Data Factory tjänst i webbläsaren. Du kan till exempel öppna [länken kontrol lera Server certifikat](https://eu.frontend.clouddatahub.net/) på den dator där den lokala IR-enheten är installerad och sedan Visa information om Server certifikatet.
 
-Det enklaste sättet är att öppna ADF-tjänstens URL i webbläsare, till exempel öppna https://eu.frontend.clouddatahub.net/ på den dator där SHIR är installerat och sedan Visa Server certifikat informationen:
+  ![Skärm bild av fönstret kontrol lera Server certifikat i Azure Data Factorys tjänsten.](media/self-hosted-integration-runtime-troubleshoot-guide/server-certificate.png)
 
-  ![Kontrol lera Server certifikatet för ADF-tjänsten](media/self-hosted-integration-runtime-troubleshoot-guide/server-certificate.png)
-
-  ![Kontrol lera Server certifikat Sök väg](media/self-hosted-integration-runtime-troubleshoot-guide/certificate-path.png)
+  ![Skärm bild av fönstret för att kontrol lera Server certifierings Sök vägen.](media/self-hosted-integration-runtime-troubleshoot-guide/certificate-path.png)
 
 #### <a name="cause"></a>Orsak
 
-Två möjliga orsaker till det här problemet:
+Det finns två möjliga orsaker till det här problemet:
 
-- Rot certifikat utfärdaren för ADF service Server-certifikatet är inte betrott på den dator där SHIR är installerat. 
-- Du använder proxy i din miljö och Server certifikatet för ADF-tjänsten ersätts av proxyservern, medan det ersatta Server certifikatet inte är betrott av den dator där SHIR är installerat.
+- Orsak 1: rot-CA: n för det Data Factory tjänst Server certifikatet är inte betrott på den dator där den lokala IR-enheten är installerad. 
+- Orsak 2: du använder en proxyserver i din miljö, Server certifikatet för tjänsten Data Factory ersätts av proxyservern och det ersatta Server certifikatet är inte betrott av den dator där IR för lokal installation är installerad.
 
 #### <a name="resolution"></a>Lösning
 
-- För orsak 1 kontrollerar du att ADF-servercertifikatet och certifikat kedjan är betrodd av den dator där SHIR är installerat.
-- För orsak 2 kan du antingen lita på den ersatta rot certifikat utfärdaren på SHIR dator eller konfigurera proxyn så att den inte ersätter ADF-servercertifikat.
+- För orsak 1: se till att det Data Factory Server certifikatet och dess certifikat kedja är betrodda av den dator där IR för egen värd är installerad.
+- Orsak 2: lita antingen på den ersatta rot certifikat utfärdaren på den lokala IR-datorn eller konfigurera proxyn så att den inte ersätter Data Factory Server certifikatet.
 
-Se [den här artikeln](/skype-sdk/sdn/articles/installing-the-trusted-root-certificate) för information om att lita på ett certifikat i Windows.
+Mer information om att lita på certifikat i Windows finns i [installera det betrodda rot certifikatet](/skype-sdk/sdn/articles/installing-the-trusted-root-certificate).
 
-#### <a name="additional-info"></a>Ytterligare info
-Vi håller på att lansera ett nytt SSL-certifikat, som är signerat från DigiCert, kontrol lera om DigiCert globala rot G2 är i den betrodda rot certifikat utfärdaren.
+#### <a name="additional-information"></a>Ytterligare information
+Vi har lanserat ett nytt SSL-certifikat, som är signerat från DigiCert. Kontrol lera om den globala rot-DigiCert finns i den betrodda rot certifikat utfärdaren.
 
-  ![DigiCert global root G2](media/self-hosted-integration-runtime-troubleshoot-guide/trusted-root-ca-check.png)
+  ![Skärm bild som visar mappen DigiCert global root G2 i katalogen betrodda rot certifikat utfärdare.](media/self-hosted-integration-runtime-troubleshoot-guide/trusted-root-ca-check.png)
 
-Om inte, laddar du ned det [här](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt ). 
+Om den inte finns i den betrodda rot certifikat utfärdaren kan [du ladda ned den här](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt ). 
 
 
 ## <a name="self-hosted-ir-sharing"></a>Delning av lokalt installerad integrationskörning (IR)
 
-### <a name="share-self-hosted-ir-from-a-different-tenant-is-not-supported"></a>Det finns inte stöd för att dela egen värd-IR från en annan klient 
+### <a name="sharing-a-self-hosted-ir-from-a-different-tenant-is-not-supported"></a>Det finns inte stöd för att dela en lokal IR-anslutning från en annan klient 
 
 #### <a name="symptoms"></a>Symtom
 
-Du kan märka andra data fabriker (på olika klienter) vid försök att dela den lokala IR-filen från Azure Data Factory-gränssnittet, men kan inte dela den lokala IR-filen över data fabriker som finns på olika klienter.
+Du kan märka andra data fabriker (på olika klienter) när du försöker dela IR-IR från Azure Data Factory-gränssnittet, men du kan inte dela den över data fabriker som finns på olika klienter.
 
 #### <a name="cause"></a>Orsak
 
 IR med egen värd kan inte delas mellan klienter.
-
-
 
 ## <a name="next-steps"></a>Nästa steg
 
@@ -783,7 +824,7 @@ Om du behöver hjälp med fel sökning kan du prova följande resurser:
 *  [Data Factory blogg](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory funktions begär Anden](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure-videor](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [Sidan Microsoft Q&en fråga](/answers/topics/azure-data-factory.html)
+*  [Microsoft Q&en sida](/answers/topics/azure-data-factory.html)
 *  [Stack Overflow-forum för Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Twitter-information om Data Factory](https://twitter.com/hashtag/DataFactory)
 *  [Prestanda guide för att mappa data flöden](concepts-data-flow-performance.md)

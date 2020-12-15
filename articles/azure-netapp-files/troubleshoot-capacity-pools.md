@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/06/2020
 ms.author: b-juche
-ms.openlocfilehash: c6194469837997108964feda82d406c9108641b9
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: a07898692c8af70fab0d2634ed1513f0f3666a4d
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369247"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505468"
 ---
 # <a name="troubleshoot-capacity-pool-issues"></a>Felsöka problem med kapacitetspooler
 
@@ -33,7 +33,7 @@ I den här artikeln beskrivs lösningar på problem som du kan ha när du hanter
 | Problem med att ta bort en pool med kapacitet  |  Se till att du tar bort alla Azure NetApp Files volymer och ögonblicks bilder i prenumerationen där du försöker ta bort kapacitets gruppen. <br> Om du redan har tagit bort alla volymer och ögonblicks bilder och du fortfarande inte kan ta bort kapacitets gruppen kan det fortfarande finnas referenser till resurser utan att visas i portalen. I det här fallet, File a Support Ticket och ange att du har utfört ovanstående rekommenderade steg. |
 | Det går inte att skapa eller ändra volym med `Requested throughput not available` fel | Tillgängligt data flöde för en volym bestäms av poolens storlek och tjänst nivå. Om du inte har tillräckligt med data flöde bör du öka Poolens storlek eller justera det befintliga volym data flödet. | 
 
-## <a name="issues-moving-a-capacity-pool"></a>Problem med att flytta en pool med kapacitet 
+## <a name="issues-when-changing-the-capacity-pool-of-a-volume"></a>Problem vid ändring av poolens kapacitets enhet 
 
 > [!IMPORTANT] 
 > Den [dynamiskt ändrade Service nivån för en volym offentlig för](dynamic-change-volume-service-level.md) hands versions registrering är stoppad tills vidare meddelande.

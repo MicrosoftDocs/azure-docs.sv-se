@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/14/2020
 ms.author: memildin
-ms.openlocfilehash: 63ae35da973525a8331eeeb463eb09e36e8b6e26
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: fcdcda8aaa6d48b24c346d87a402f6966ab11cf5
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97398940"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505502"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Viktiga kommande ändringar i Azure Security Center
 
@@ -40,6 +40,7 @@ Om du letar efter den senaste versions informationen hittar du dem i [vad som ä
 
 För närvarande visas resurser som utvärderas för en rekommendation och som inte är **tillämpliga** i Azure policy som "icke-kompatibla". Inga användar åtgärder kan ändra deras status till "kompatibel". Från den här planerade ändringen rapporteras de som "kompatibla" för förbättrad klarhet.
 
+Den enda påverkan visas i Azure Policy där antalet kompatibla resurser kommer att öka. Det kommer inte att påverka dina säkra poäng i Azure Security Center.
 
 ### <a name="35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>35 för hands versioner har lagts till för att öka täckningen av Azures säkerhets prestanda
 

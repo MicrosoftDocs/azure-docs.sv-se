@@ -4,13 +4,13 @@ description: Beskriver hur du kan visa support förfrågningar, skicka meddeland
 tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.topic: how-to
-ms.date: 06/30/2020
-ms.openlocfilehash: 882dfaa802638efd98eaf6f12a33a77a9727adc2
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.date: 12/14/2020
+ms.openlocfilehash: 8110f87401da1352309fb55615093d49981c754d
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359072"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504822"
 ---
 # <a name="manage-an-azure-support-request"></a>Hantera en Azure-supportbegäran
 
@@ -119,9 +119,17 @@ Följ dessa rikt linjer när du använder fil överförings alternativet:
 | -           | -     | -           | -     | -        | -          | .zix    |
 | -           | -     | -           | -     | -        | -          | . zzz    |
 
+## <a name="close-a-support-request"></a>Stänga en support förfrågan
+
+Om du behöver stänga en support förfrågan, [Skicka ett meddelande](#send-a-message) som frågar att begäran ska stängas.
+
 ## <a name="reopen-a-closed-request"></a>Öppna en stängd begäran igen
 
 Om du behöver öppna en stängd supportbegäran igen, skapar du ett [nytt meddelande](#send-a-message)som automatiskt öppnar begäran på nytt.
+
+## <a name="cancel-a-support-plan"></a>Avbryta en Support plan
+
+Om du behöver avbryta ett support avtal kan du läsa mer i [avbryta en Support plan](../../cost-management-billing/manage/cancel-azure-subscription.md#cancel-a-support-plan).
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 2349939d4997ddc57d0c0c56a21eeec0357bf0ec
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
-ms.translationtype: MT
+ms.openlocfilehash: 8319de85cdd8b3527fc6bfb13dd9ed1e8f6fc0fa
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91828789"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97486855"
 ---
 Följ de här stegen för att köra exempel koden:
 
@@ -16,7 +16,57 @@ Följ de här stegen för att köra exempel koden:
 1. Sök och aktivera "Visa utförligt meddelande".
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="Tilläggs inställningar"
+    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="Visa utförligt meddelande":::
+1. I Visual Studio Code går du till *src/Cloud-to-Device-console-app/operations.jspå*.
+1. Se till att du ser följande värde på **GraphTopologySet** -noden:
+
+    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/motion-detection/2.0/topology.json"`
+1. På **GraphInstanceSet** -och **GraphTopologyDelete**  -noderna kontrollerar du att värdet för `topologyName` motsvarar värdet för `name` egenskapen i graf-topologin:
+
+    `"topologyName" : "MotionDetection"`
+    
+1. Starta en felsökningssession genom att välja F5-nyckeln. I **terminalfönstret** visas vissa meddelanden.
+1. *operations.jspå* filen börjar med anrop till `GraphTopologyList` och `GraphInstanceList` . Om du har rensat resurser efter att du har avslutat tidigare snabb starter, returnerar den här processen tomma listor och pausar sedan. Fortsätt genom att välja retur nyckeln.
+
+    ```
+    --------------------------------------------------------------------------
+    Executing operation GraphTopologyList
+    -----------------------  Request: GraphTopologyList  --------------------------------------------------
+    {
+        "@apiVersion": "1.0"
+    }
+    ---------------  Response: GraphTopologyList - Status: 200  ---------------
+    {
+        "value": []
+    }
+    --------------------------------------------------------------------------
+    Executing operation WaitForInput
+    Press Enter to continue
+    ```
+    
+    **Terminalfönstret** visar nästa uppsättning med direkta metod anrop:
+     * Ett anrop till `GraphTopologySet` som använder föregående `topologyUrl`
+     * Ett anrop till `GraphInstanceSet` som använder följande text:
+         
+    ```
+    {
+      "@apiVersion": "1.0",
+      "name": "Sample-Graph",
+      "properties": {
+        "topologyName": "MotionDetection",
+        "description": "Sample graph description",
+        "parameters": [
+          {
+            "name": "rtspUrl",
+            "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
+          },
+          {
+            "name": "rtspUserName",
+            "value": "testuser"
+          },
+          {
+            "name": "rtspPassword",
+            "value": "testpassword"
           }
         ]
       }

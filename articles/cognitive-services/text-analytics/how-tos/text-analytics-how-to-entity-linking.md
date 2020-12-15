@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: 804d739efa5ac96c0b2d7228573f031f324e590e
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 5b064365a6f0bd8a544f57d67cd6e4beb98bb404
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558988"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505247"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Använda namngiven enhets igenkänning i Textanalys
 
@@ -83,7 +83,7 @@ Igenkänning av namngivna enheter `v3.1-preview.3` använder separata slut punkt
 
 [Namngiven enhets igenkännings version 3,1 – för hands versions referens för `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesLinking)
 
-**Igenkänning av namngiven entitet**
+**Igenkänning av namngiven enhet**
 * Allmänna entiteter – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/general`
 
 [Namngiven enhets igenkännings version 3,1 – för hands versions referens för `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionGeneral)
@@ -108,7 +108,7 @@ Med namnet entitets igenkänning v3 används separata slut punkter för NER och 
 
 [Version 3,0-referens för namngiven enhets igenkänning `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
 
-**Igenkänning av namngiven entitet**
+**Igenkänning av namngiven enhet**
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
 
 [Version 3,0-referens för namngiven enhets igenkänning `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
@@ -309,5 +309,5 @@ I den här artikeln har du lärt dig begrepp och arbets flöde för entitets lä
 ## <a name="next-steps"></a>Nästa steg
 
 * [Översikt över Textanalys](../overview.md)
-* [Använda klient biblioteket för Textanalys](../quickstarts/text-analytics-sdk.md)
+* [Använda klient biblioteket för Textanalys](../quickstarts/client-libraries-rest-api.md)
 * [Nyheter](../whats-new.md)

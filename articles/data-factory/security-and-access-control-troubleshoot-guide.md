@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 11/19/2020
 ms.author: lle
 ms.reviewer: craigg
-ms.openlocfilehash: 99c03ae4430d1a4caf575bdb9900200af0217bf1
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 51cb1a1a8151748fc9c6cd4c81da967424b52868
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109779"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505162"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Felsöka problem med Azure Data Factory säkerhet och åtkomst kontroll
 
@@ -23,114 +23,113 @@ Den här artikeln utforskar vanliga fel söknings metoder för säkerhet och åt
 
 ## <a name="common-errors-and-messages"></a>Vanliga fel och meddelanden
 
-
-### <a name="connectivity-issue-of-copy-activity-in-cloud-data-store"></a>Anslutnings problem för kopierings aktivitet i moln data lager
+### <a name="connectivity-issue-in-the-copy-activity-of-the-cloud-datastore"></a>Anslutnings problem i kopierings aktiviteten för moln data lagret
 
 #### <a name="symptoms"></a>Symtom
 
-Olika typer av fel meddelanden kan returneras när ett anslutnings problem uppstod för käll-/mottagar data lagret.
+Olika fel meddelanden kan returneras när anslutnings problem uppstår i käll-eller Sink-datalagret.
 
 #### <a name="cause"></a>Orsak 
 
-Problemet orsakas oftast av följande faktorer:
+Problemet orsakas vanligt vis av något av följande faktorer:
 
-1. Proxyinställningar i den egna IR-noden (om du använder IR med egen värd)
+* Proxyinställningarna i IR-noden (egen värd för integration Runtime) om du använder en IR-anslutning med egen värd.
 
-1. Brand Väggs inställning i nodens IR-nod (om du använder IR med egen värd)
+* Brand Väggs inställningen i den egna IR-noden, om du använder en lokal IR-anslutning.
 
-1. Brand Väggs inställning i moln data lager
+* Brand Väggs inställningen i moln data lagret.
 
 #### <a name="resolution"></a>Lösning
 
-1. Kontrol lera följande saker först för att se till att problemet orsakas av anslutnings problem:
+* Kontrol lera följande saker för att säkerställa att det här är ett anslutnings problem:
 
-   - Felet genereras från källan/Sink-anslutningarna.
+   - Felet genereras från källan eller Sink-anslutningarna.
+   - Problemet är i början av kopierings aktiviteten.
+   - Felet är konsekvent för Azure IR eller den infraröda IR-filen med en nod, eftersom det kan vara ett slumpmässigt fel i en lokal IR-värd med flera noder om bara några av noderna har problem.
 
-   - Det går inte att utföra aktiviteten i början av kopian
+* Om du använder en **IR med egen värd** kontrollerar du proxy-, brand Väggs-och nätverks inställningarna, eftersom det kan gå att ansluta till samma data lager om du använder en Azure IR. För att felsöka det här scenariot, se:
 
-   - Det är ett konsekvent fel för Azure IR eller lokal IR med en nod, eftersom det kan vara ett slumpmässigt fel för en lokal IR-värd med flera noder, om bara en del av noderna har problem.
-
-1. Kontrol lera proxy-, brand Väggs-och nätverks inställningarna om du använder **IR med egen värd** och att det går att köra till samma data lager i Azure IR. Se följande länkar för fel sökning:
-
-   [IR-portar och brand väggar](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#ports-and-firewalls) 
-    med egen värd [ADLS-anslutning](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store)
+   * [IR-portar och brand väggar med egen värd](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#ports-and-firewalls)
+   * [Azure Data Lake Storage koppling](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store)
   
-1. Om du använder **Azure IR** kan du prova med att inaktivera brand Väggs inställningen för data lager. På så sätt kan problemet i följande två omständigheter åtgärdas:
+* Om du använder en **Azure IR** kan du försöka inaktivera brand Väggs inställningen för data lagret. Den här metoden kan lösa problemen i följande två situationer:
   
-   * [Azure IR IP-adresser](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses) finns inte i listan över tillåtna.
+   * [Azure IR IP-adresser](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses) finns inte med i listan över tillåtna.
+   * Funktionen *Tillåt betrodda Microsoft-tjänster för att få åtkomst till det här lagrings kontot* är inaktive rad för [Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#supported-capabilities) och [Azure Data Lake Storage gen 2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#supported-capabilities).
+   * Inställningen *Tillåt åtkomst till Azure-tjänster* är inte aktive rad för Azure Data Lake Storage gen1.
 
-   * *Tillåt att betrodda Microsoft-tjänster har åtkomst till den här lagrings konto* funktionen är inaktive rad för [Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#supported-capabilities) och [ADLS gen 2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#supported-capabilities).
-
-   * *Tillåt åtkomst till Azure-tjänster* är inte aktiverat för ADLS gen1.
-
-1. Kontakta Microsoft om du behöver hjälp om ovanstående metoder inte fungerar.
+Om ingen av föregående metoder fungerar kontaktar du Microsoft om du behöver hjälp.
 
 
 ### <a name="invalid-or-empty-authentication-key-issue-after-public-network-access-is-disabled"></a>Ogiltigt eller tomt problem med autentiserings nyckel efter att offentlig nätverks åtkomst har inaktiverats
 
 #### <a name="symptoms"></a>Symtom
 
-När du har inaktiverat den offentliga nätverks åtkomsten för Data Factory, eftersom integration runtime med egen värd genererar följande fel: "autentiseringsnyckel är ogiltig eller tom."
+När du har inaktiverat offentlig nätverks åtkomst för Data Factory, genererar den egen värdbaserade integrerings körningen följande fel: "nyckeln för autentisering är ogiltig eller tom."
 
 #### <a name="cause"></a>Orsak
 
-Problemet beror troligen på problem med DNS-matchning, eftersom inaktive ring av offentliga anslutningar och etablering av en privat slut punkt inte hjälper till att återansluta.
+Problemet orsakas troligen av ett problem med en Domain Name System (DNS), eftersom inaktive ring av offentliga anslutningar och etablering av en privat slut punkt förhindrar åter anslutning.
 
-Du kan följa stegen nedan för att kontrol lera om Data Factory FQDN har matchats till den offentliga IP-adressen:
+Gör så här för att kontrol lera om Data Factory fullständiga domän namnet (FQDN) matchas med den offentliga IP-adressen:
 
-1. Bekräfta att du har skapat den virtuella Azure-datorn i samma VNET som Data Factory privata slut punkten.
+1. Bekräfta att du har skapat den virtuella Azure-datorn (VM) i samma virtuella nätverk som den Data Factory privata slut punkten.
 
-2. Kör PsPing och ping från virtuell Azure-dator till Data Factory FQDN:
-
-   `ping <dataFactoryName>.<region>.datafactory.azure.net`
+2. Kör PsPing och ping från den virtuella Azure-datorn till Data Factory FQDN:
 
    `psping.exe <dataFactoryName>.<region>.datafactory.azure.net:443`
+   `ping <dataFactoryName>.<region>.datafactory.azure.net`
 
    > [!Note]
-   > En port måste anges för PsPing-kommandot, medan 443-porten inte är en måste.
+   > Du måste ange en port för PsPing-kommandot. Port 443 visas här men krävs inte.
 
-3. Kontrol lera om båda kommandona har matchats till en offentlig ADF-IP-adress som baseras på specificerad region (format xxx. xxx. xxx. 0).
+3. Kontrol lera om båda kommandona matchar en Azure Data Factory offentliga IP-adress som baseras på en angiven region. IP-adressen ska ha följande format: `xxx.xxx.xxx.0`
 
 #### <a name="resolution"></a>Lösning
 
-- Du kan referera till artikeln i den [privata Azure-länken för Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-private-link#dns-changes-for-private-endpoints). Instruktionen är att konfigurera den privata DNS-zonen/-servern att matcha Data Factory FQDN till privat IP-adress.
+Lös problemet genom att göra följande:
+- Se den [privata Azure-länken för Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-private-link#dns-changes-for-private-endpoints) artikeln. Instruktionen är att konfigurera den privata DNS-zonen eller-servern för att matcha Data Factory-FQDN till en privat IP-adress.
 
-- Om du inte vill konfigurera den privata DNS-zonen/-servern för närvarande ska du följa stegen nedan som temporär lösning. Anpassad DNS rekommenderas dock fortfarande som långsiktig lösning.
+- Vi rekommenderar att du använder en anpassad DNS som långsiktig lösning. Men om du inte vill konfigurera den privata DNS-zonen eller-servern kan du prova med följande tillfälliga lösning:
 
-  1. Ändra värd filen i Windows och mappa privat IP (ADF, privat slut punkt) till ADF FQDN.
+  1. Ändra värd filen i Windows och mappa den privata IP-adressen (den Azure Data Factory privata slut punkten) till Azure Data Factory FQDN.
   
-     Gå till sökvägen "C:\Windows\System32\drivers\etc" i Azure VM och öppna **värd** filen med anteckningar. Lägg till raden med mappningens privata IP-adress i FQDN i slutet av filen och spara ändringen.
+     I den virtuella Azure-datorn går du till `C:\Windows\System32\drivers\etc` och öppnar *värd* filen i anteckningar. Lägg till raden som mappar den privata IP-adressen till FQDN i slutet av filen och spara ändringen.
      
-     ![Lägg till mappning till värden](media/self-hosted-integration-runtime-troubleshoot-guide/add-mapping-to-host.png)
+     ![Skärm bild av den privata IP-adressen till värden.](media/self-hosted-integration-runtime-troubleshoot-guide/add-mapping-to-host.png)
 
-  1. Kör samma kommandon i ovanstående verifierings steg för att kontrol lera svaret, som ska innehålla den privata IP-adressen.
+  1. Kör samma kommandon på samma sätt som i föregående verifierings steg för att kontrol lera svaret, som ska innehålla den privata IP-adressen.
 
-  1. Registrera den egna värdbaserade integrerings körningen igen så bör du lösa problemet.
- 
+  1. Registrera den egna värdbaserade integrerings körningen igen så bör problemet lösas.
 
 ### <a name="unable-to-register-ir-authentication-key-on-self-hosted-vms-due-to-private-link"></a>Det går inte att registrera IR-autentisering på lokala datorer med egen värd på grund av en privat länk
 
 #### <a name="symptoms"></a>Symtom
 
-Det går inte att registrera IR-autentisering på den lokala virtuella datorn på grund av att en privat länk är aktive rad.
+Det går inte att registrera IR-autentiseringsnyckel på den virtuella datorn med egen värd eftersom den privata länken är aktive rad. Du får följande fel meddelande:
 
-Fel informationen visas som nedan:
-
-`
-Failed to get service token from ADF service with key *************** and time cost is: 0.1250079 seconds, the error code is: InvalidGatewayKey, activityId is: XXXXXXX and detailed error message is Client IP address is not valid private ip Cause Data factory couldn’t access the public network thereby not able to reach out to the cloud to make the successful connection.
-`
+"Det gick inte att hämta tjänstens token från ADF-tjänsten med nyckeln * * * * * * * * * * * * * * och tids kostnaden är: 0,1250079 sekunder: felkoden är: InvalidGatewayKey, activityId är: XXXXXXX och detaljerat fel meddelande är klientens IP-adress är inte giltig privat IP-orsak Data Factory kunde inte komma åt det offentliga nätverket och kan därför inte nå ut till molnet för att göra anslutningen korrekt."
 
 #### <a name="cause"></a>Orsak
 
-Problemet kan bero på att den virtuella datorn som du försöker installera IR med egen värd är installerad på. För att ansluta till molnet bör du se till att åtkomst till offentligt nätverk är aktiverat.
+Problemet kan orsakas av den virtuella dator som du försöker installera IR med egen värd. För att ansluta till molnet, se till att åtkomst till offentligt nätverk är aktiverat.
 
 #### <a name="resolution"></a>Lösning
 
- **Lösning 1:** Du kan följa stegen nedan för att lösa problemet:
+**Lösning 1**
+ 
+Lös problemet genom att göra följande:
 
 1. Gå till sidan [fabriker – uppdatera](https://docs.microsoft.com/rest/api/datafactory/Factories/Update) .
 
 1. I det övre högra hörnet väljer du knappen **prova** .
+1. Under **parametrar**, Fyll i den information som krävs. 
+1. Under **brödtext** klistrar du in följande egenskap:
+
+    ```
+    { "tags": { "publicNetworkAccess":"Enabled" } }
+    ```
+1. Välj **Kör** för att köra funktionen. 
 
 1. Under **parametrar**, Fyll i den information som krävs. 
 
@@ -140,19 +139,18 @@ Problemet kan bero på att den virtuella datorn som du försöker installera IR 
     ``` 
 
 1. Välj **Kör** för att köra funktionen. 
-
 1. Bekräfta att **svars koden: 200** visas. Den egenskap du klistrade in ska även visas i JSON-definitionen.
 
 1. Lägg till IR-autentiseringsnyckel igen i integration Runtime.
 
 
-**Lösning 2:** Du kan läsa följande artikel för lösningen:
+**Lösning 2**
 
-https://docs.microsoft.com/azure/data-factory/data-factory-private-link
+Lös problemet genom att gå till [Azures privata länk för Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-private-link).
 
 Försök att aktivera offentlig nätverks åtkomst i användar gränssnittet, som visas på följande skärm bild:
 
-![Aktivera offentlig nätverks åtkomst](media/self-hosted-integration-runtime-troubleshoot-guide/enable-public-network-access.png)
+![Skärm bild av "Enabled"-kontrollen för "Tillåt offentlig nätverks åtkomst" i fönstret nätverk.](media/self-hosted-integration-runtime-troubleshoot-guide/enable-public-network-access.png)
 
 ## <a name="next-steps"></a>Nästa steg
 

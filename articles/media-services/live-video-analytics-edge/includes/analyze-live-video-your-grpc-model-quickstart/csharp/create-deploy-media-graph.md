@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: df409af61556dfa113327302be9c1464e1427a14
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: de72e3e033dfa91ae1448bd8c378fd1db5229e4c
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91828923"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97486871"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>Granska och redigera exempelfilerna
 
@@ -26,7 +26,7 @@ Som en del av förutsättningarna hämtade du exempel koden till en mapp. Följ 
 1. Redigera *operations.jspå* filen:
  
     * Ändra länken till graf-topologin:
-    * `"topologyUrl"` : `"https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/grpcExtension/topology.json"`
+    * `"topologyUrl"` : `"https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/grpcExtension/2.0/topology.json"`
     * Under GraphInstanceSet redigerar du namnet på diagram sto pol Ogin så att den matchar värdet i föregående länk:
     * `"topologyName"` : `"InferencingWithGrpcExtension"`
     * Under GraphTopologyDelete redigerar du namnet:
@@ -97,7 +97,7 @@ Som en del av förutsättningarna hämtade du exempel koden till en mapp. Följ 
     * **Rtspsim** -modulen, som simulerar en RTSP-server och fungerar som källa för en Live-videofeed.
 
         > [!NOTE]
-        > Om du använder en egen Edge-enhet i stället för den som har skapats av vårt installations skript, går du till din Edge-enhet och kör följande kommandon med **administratörs behörighet**för att hämta och lagra exempel video filen som används för den här snabb starten:  
+        > Om du använder en egen Edge-enhet i stället för den som har skapats av vårt installations skript, går du till din Edge-enhet och kör följande kommandon med **administratörs behörighet** för att hämta och lagra exempel video filen som används för den här snabb starten:  
 
         ```
         mkdir /home/lvaadmin/samples
@@ -119,7 +119,7 @@ Som en del av förutsättningarna hämtade du exempel koden till en mapp. Följ 
 1. Sök och aktivera "Visa utförligt meddelande".
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="Tilläggs inställningar":::
+    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="Visa utförligt meddelande":::
 1. Högerklicka på Live Video Analytics-enheten och välj **starta övervakning inbyggd händelse slut punkt**. Du behöver det här steget för att övervaka IoT Hub händelser i fönstret **utdata** i Visual Studio Code.
 
    ![Starta övervakning](../../../media/quickstarts/start-monitoring-built-event-endpoint-grpc.png)

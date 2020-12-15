@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7bd9560399a2b2b377cb543a4f829883bcbdf7c8
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7feac3ccb94cd8b4b0fab509477d4dbf772df2ae
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183778"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505536"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Översikt över Hybrid Runbook Worker
 
@@ -92,7 +92,7 @@ Azure Automation Hybrid Runbook Worker kan användas i Azure Government för att
 
 * [Isolerad virtuell dator](../azure-government/documentation-government-impact-level-5.md#isolated-virtual-machines). När de distribueras använder de hela den fysiska värden för den datorn, vilket ger den nödvändiga isolerings nivån som krävs för att stödja IL5-arbetsbelastningar.
 
-* [Dedikerade Azure-värdar](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-hosts), som tillhandahåller fysiska servrar som kan vara värdar för en eller flera virtuella datorer, dedikerade till en Azure-prenumeration.
+* [Dedikerade Azure-värdar](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-host), som tillhandahåller fysiska servrar som kan vara värdar för en eller flera virtuella datorer, dedikerade till en Azure-prenumeration.
 
 >[!NOTE]
 >Beräknings isolering med Hybrid Runbook Worker-rollen är tillgänglig för moln för kommersiella och amerikanska myndigheter i Azure. 

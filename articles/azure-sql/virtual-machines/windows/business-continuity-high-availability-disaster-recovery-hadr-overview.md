@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: dbe5fba838e7c4ad9487a29889eab11d4e42671f
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 1a0d1018991be9d78623b0826aeab3d13958e996
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358938"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504142"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Affärs kontinuitet och HADR för SQL Server på Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -85,20 +85,13 @@ Du kan ha en katastrof återställnings lösning för dina SQL Server-databaser 
 
 Om du har [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3)kan du implementera återställnings planer för Hybrid haveri beredskap (Dr) med SQL Server utan att det uppstår ytterligare licens kostnader för den passiva haveri beredskaps instansen.
 
-Du kan till exempel ha en aktiv primär lokal och en fri passiv sekundär för DR i Azure: 
-
-![Gratis sekundär passiv i Azure](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/failover-with-secondary-in-azure.png)
-
-I den föregående bilden använder installations programmet SQL Server som körs på en virtuell Azure-dator som använder 12 kärnor som en katastrof återställnings replik för en lokal SQL Server-distribution som använder 12 kärnor. Tidigare var du tvungen att licensiera 12 kärnor av SQL Server för den lokala distributionen och Azure Virtual Machines-distributionen. Den nya fördelen ger passiv replik-fördelar för att köra på en virtuell Azure-dator. Nu behöver du bara licensiera 12 kärnor i SQL Server som körs lokalt, så länge Disaster Recovery-kriterierna för den passiva repliken på Azure Virtual Machines är uppfyllda.
-
-Du kan också ha två kostnads fria passiva sekundär zoner när alla tre repliker finns i Azure: 
+Du kan till exempel ha två kostnads fria passiva sekundär zoner när alla tre repliker finns i Azure: 
 
 ![Två kostnads fria passiva passiva när allt i Azure](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/failover-with-primary-in-azure.png)
 
-Eller så kan du konfigurera en hybrid växlings miljö med en licensierad primär lokal, ett kostnads fritt passivt för HA och två kostnads fria passiver för DR: 
+Eller så kan du konfigurera en hybrid växlings miljö med en licensierad primär lokal, ett kostnads fritt passivt för HA, en kostnads fri passiv passiv för DR lokalt och en kostnads fri passiv passiv för DR i Azure:
 
 ![Tre kostnads fria passiva datorer när miljön är hybrid med en primär lokal replik](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/hybrid-with-primary-on-prem.png)
-
 
 Mer information finns i avsnittet om [villkor för produktlicensiering](https://www.microsoft.com/licensing/product-licensing/products). 
 

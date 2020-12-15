@@ -5,17 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 09/01/2020
+ms.date: 12/14/2020
 ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c120f343ec539783f04fe35e96891c5372c5d39
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: 466b9e389beb94ff527cbce014ca39f85de8d5bd
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109087"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503632"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Lägg till villkorlig åtkomst till användar flöden i Azure Active Directory B2C
 
@@ -34,6 +35,22 @@ Villkorlig åtkomst stöds i de senaste versionerna av användar flöden. Du kan
 - **Villkorlig åtkomst**: den här inställningen bör alltid vara **aktive** ras. Normalt aktiverar du bara den **här inställningen vid** fel sökning eller migrering, eller för äldre implementeringar.
 
 Läs mer om [identitets skydd och villkorlig åtkomst](conditional-access-identity-protection-overview.md) i Azure AD B2C eller i [så här konfigurerar du det](conditional-access-identity-protection-setup.md).
+
+## <a name="prerequisites"></a>Krav
+
+- Azure AD B2C Premium 2 krävs för att skapa riskfyllda inloggnings principer. Premium P1-klienter kan skapa plats-, app-eller gruppbaserade principer.
+- I test syfte kan du [Registrera test webb programmet](tutorial-register-applications.md) `https://jwt.ms` , som är ett Microsoft-ägda webb program som visar det avkodade innehållet i en token (innehållet i token aldrig lämnar webbläsaren). 
+- Om du vill simulera en riskfylld inloggning laddar du ned TOR webbläsaren och försöker logga in på användar flödets slut punkt.
+- [Skapa en princip för villkorlig åtkomst](conditional-access-identity-protection-setup.md)med följande inställningar:
+   
+  - För **användare och grupper** väljer du test användaren (Välj inte **alla användare** eller blockera dig själv från att logga in).
+  - För **molnappar eller åtgärder** väljer du **Välj appar** och väljer sedan ditt förlitande parts program.
+  - För villkor väljer du **inloggnings risk** , **hög**, **medel** och **låg** risk nivå.
+  - För **beviljande** väljer du **blockera åtkomst**.
+
+      ![Riskidentifieringar](media/conditional-access-identity-protection-setup/test-conditional-access-policy.png)
+
+::: zone pivot="b2c-user-flow"
 
 ## <a name="add-conditional-access-to-a-new-user-flow"></a>Lägg till villkorlig åtkomst till ett nytt användar flöde
 
@@ -89,19 +106,6 @@ Läs mer om [identitets skydd och villkorlig åtkomst](conditional-access-identi
 
 Om du vill testa villkorlig åtkomst i ditt användar flöde [skapar du en princip för villkorlig åtkomst](conditional-access-identity-protection-setup.md) och aktiverar villkorlig åtkomst i ditt användar flöde enligt beskrivningen ovan. 
 
-### <a name="prerequisites"></a>Förutsättningar
-
-- Azure AD B2C Premium 2 krävs för att skapa riskfyllda inloggnings principer. Premium P1-klienter kan skapa plats-, app-eller gruppbaserade principer.
-- I test syfte kan du [Registrera test webb programmet](tutorial-register-applications.md) `https://jwt.ms` , som är ett Microsoft-ägda webb program som visar det avkodade innehållet i en token (innehållet i token aldrig lämnar webbläsaren). 
-- Om du vill simulera en riskfylld inloggning laddar du ned TOR webbläsaren och försöker logga in på användar flödets slut punkt.
-- [Skapa en princip för villkorlig åtkomst](conditional-access-identity-protection-setup.md)med följande inställningar:
-   
-   - För **användare och grupper** väljer du test användaren (Välj inte **alla användare** eller blockera dig själv från att logga in).
-   - För **molnappar eller åtgärder** väljer du **Välj appar** och väljer sedan ditt förlitande parts program.
-   - För villkor väljer du **inloggnings risk** , **hög**, **medel** och **låg** risk nivå.
-   - För **beviljande** väljer du **blockera åtkomst**.
-
-      ![Riskidentifieringar](media/conditional-access-identity-protection-setup/test-conditional-access-policy.png)
 
 ### <a name="run-the-user-flow"></a>Kör användar flödet
 
@@ -116,6 +120,16 @@ Om du vill testa villkorlig åtkomst i ditt användar flöde [skapar du en princ
 1. Ange den begärda informationen på inloggnings sidan och försök sedan logga in. Token returneras till `https://jwt.ms` och ska visas för dig. I jwt.ms-kodad token bör du se att inloggningen blockerades:
 
    ![Testa en blockerad inloggning](media/conditional-access-identity-protection-setup/test-blocked-sign-in.png)
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+## <a name="add-conditional-access-to-your-policy"></a>Lägg till villkorlig åtkomst till principen
+
+Du kan hitta ett exempel på en princip för villkorlig åtkomst på [GitHub](https://github.com/azure-ad-b2c/samples/tree/master/policies/conditional-access).
+
+::: zone-end
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
-ms.openlocfilehash: d94a4858b4c4fa99a09acc2bec88f94a64686c2d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7fa3355ff7e61d624d57da68d0f835faa7ca3736
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539147"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505434"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Använd Microsoft Cognitive Toolkit djup inlärnings modell med Azure HDInsight Spark kluster
 
@@ -23,7 +23,7 @@ I den här artikeln utför du följande steg.
 
 2. Ladda upp en [Jupyter Notebook](https://jupyter.org/) till [Apache Spark](https://spark.apache.org/) -klustret för att se hur du använder en utbildad Microsoft Cognitive Toolkit djup inlärnings modell för filer i ett Azure Blob Storage [-konto med Spark python API (PySpark)](https://spark.apache.org/docs/latest/api/python/index.html)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Ett Apache Spark-kluster i HDInsight. Se [skapa ett Apache Spark-kluster](./apache-spark-jupyter-spark-sql-use-portal.md).
 
@@ -31,10 +31,10 @@ I den här artikeln utför du följande steg.
 
 ## <a name="how-does-this-solution-flow"></a>Hur flödar den här lösningen?
 
-Den här lösningen är uppdelad mellan den här artikeln och en Jupyter-anteckningsbok som du laddar upp som en del av den här artikeln. I den här artikeln slutför du följande steg:
+Den här lösningen är uppdelad mellan den här artikeln och en Jupyter Notebook som du laddar upp som en del av den här artikeln. I den här artikeln slutför du följande steg:
 
 * Kör en skript åtgärd på ett HDInsight Spark-kluster för att installera Microsoft Cognitive Toolkit-och python-paket.
-* Ladda upp den bärbara datorn Jupyter som kör lösningen till HDInsight Spark-klustret.
+* Överför Jupyter Notebook som kör lösningen till HDInsight Spark-klustret.
 
 Följande återstående steg beskrivs i Jupyter Notebook.
 
@@ -68,7 +68,7 @@ Instruktioner för hur du använder Azure Portal för att köra skript åtgärde
 
 ## <a name="upload-the-jupyter-notebook-to-azure-hdinsight-spark-cluster"></a>Ladda upp Jupyter Notebook till Azure HDInsight Spark-kluster
 
-Om du vill använda Microsoft Cognitive Toolkit med Azure HDInsight Spark-klustret måste du läsa in Jupyter Notebook **CNTK_model_scoring_on_Spark_walkthrough. ipynb** i Azure HDInsight Spark klustret. Den här antecknings boken finns på GitHub på [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) .
+Om du vill använda Microsoft Cognitive Toolkit med Azure HDInsight Spark-klustret måste du läsa in Jupyter Notebook **CNTK_model_scoring_on_Spark_walkthrough. ipynb** till Azure HDInsight Spark-klustret. Den här antecknings boken finns på GitHub på [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) .
 
 1. Ladda ned och zippa upp [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) .
 
@@ -104,7 +104,7 @@ Om du vill använda Microsoft Cognitive Toolkit med Azure HDInsight Spark-klustr
 * [Använda HDInsight Tools-plugin för IntelliJ IDEA till att skapa och skicka Spark Scala-appar](apache-spark-intellij-tool-plugin.md)
 * [Använd HDInsight tools-plugin för IntelliJ-idé för att felsöka Apache Spark program via fjärr anslutning](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Använda Apache Zeppelin-anteckningsböcker med ett Apache Spark-kluster i HDInsight](apache-spark-zeppelin-notebook.md)
-* [Kernels tillgängliga för Jupyter Notebook i Apache Spark kluster för HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Kernels som är tillgängliga för Jupyter Notebook i Apache Spark-kluster för HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Använda externa paket med Jupyter-anteckningsböcker](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Installera Jupyter på datorn och ansluta till ett HDInsight Spark-kluster](apache-spark-jupyter-notebook-install-locally.md)
 

@@ -2,13 +2,13 @@
 title: Vad är nytt med Azure Arc-aktiverade Server agenter
 description: Den här artikeln innehåller viktig information om Azure Arc-aktiverade Server agenter. För många av de sammanfattade problemen finns det länkar till ytterligare information.
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: 5322a92bfc67d9f80c2271a3ef9b5626455e9ad7
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.date: 12/14/2020
+ms.openlocfilehash: 3a01113d0d6416fb050f5c66191d5c420b7ac137
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445293"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505655"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Vad är nytt med Azure Arc-aktiverade Server agenter
 
@@ -17,6 +17,16 @@ Azure Arc-aktiverade servrar som är anslutna till dator agenten får fort löp 
 - De senaste versionerna
 - Kända problem
 - Felkorrigeringar
+
+## <a name="december-2020"></a>December 2020
+
+### <a name="new-feature"></a>Ny funktion
+
+Stöd har lagts till för Windows Server 2008 R2
+
+### <a name="fixed"></a>Fast
+
+Löst problem med att förhindra att det anpassade skript tillägget på Linux installeras korrekt.
 
 ## <a name="november-2020"></a>November 2020
 
@@ -41,7 +51,7 @@ Version: 1,0 (allmän tillgänglighet)
 
 - Stöd för förhands gransknings agenter (alla versioner som är äldre än 1,0) tas bort i en framtida tjänst uppdatering.
 - Stöd har tagits bort för återställnings slut punkt `.azure-automation.net` . Om du har en proxyserver måste du tillåta slut punkten `*.his.arc.azure.com` .
-- Om den anslutna dator agenten är installerad på en virtuell dator som finns i Azure, kan VM-tillägg inte installeras eller ändras från resursen för Arc-aktiverade servrar. Detta är för att undvika motstridiga tilläggs åtgärder som utförs från den virtuella datorns **Microsoft. Compute** -och **Microsoft. HybridCompute** -resurs. Använd **Microsoft. Compute** -resursen för datorn för alla förlängnings åtgärder.
+- Om den anslutna dator agenten är installerad på en virtuell dator som finns i Azure, kan VM-tillägg inte installeras eller ändras från resursen Arc-aktiverade servrar. Detta är för att undvika motstridiga tilläggs åtgärder som utförs från den virtuella datorns **Microsoft. Compute** -och **Microsoft. HybridCompute** -resurs. Använd **Microsoft. Compute** -resursen för datorn för alla förlängnings åtgärder.
 - Namnet på gäst konfigurations processen har ändrats från *GCD* till *gcad* på Linux och *gcservice* till *gcarcservice* i Windows.
 
 ### <a name="new-feature"></a>Ny funktion
@@ -71,7 +81,7 @@ Version: 0,11
 
 ### <a name="known-issues"></a>Kända problem
 
-Om du använder en äldre version av Linux-agenten och konfigurerat den för att använda en proxyserver måste du konfigurera om inställningen för proxyservern efter uppgraderingen. Det gör du genom att köra `sudo azcmagent_proxy add http://proxyserver.local:83` .
+Om du använder en äldre version av Linux-agenten och den har kon figurer ATS för att använda en proxyserver måste du konfigurera om inställningen för proxyservern efter uppgraderingen. Det gör du genom att köra `sudo azcmagent_proxy add http://proxyserver.local:83` .
 
 ## <a name="next-steps"></a>Nästa steg
 

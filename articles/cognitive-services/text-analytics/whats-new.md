@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 157bef31b375db54f294284ca0a5d97cd7035b17
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: c304c2aad3ba40d7b3a044f0e3222e31bb013648
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558971"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503989"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Vad är nytt i API:et för textanalys?
 
@@ -61,7 +61,7 @@ API för textanalys uppdateras regelbundet. Den här artikeln innehåller inform
     * v 3.0 – för hands version. 1
     
 > [!div class="nextstepaction"]
-> [Läs mer om API för textanalys v 3.1 – för hands version. 2](quickstarts/text-analytics-sdk.md)
+> [Läs mer om API för textanalys v 3.1 – för hands version. 2](quickstarts/client-libraries-rest-api.md)
 
 ### <a name="text-analytics-for-health-container-updates"></a>Textanalys för uppdateringar av hälso container
 
@@ -178,13 +178,13 @@ Namnen på följande egenskaper i JSON-svaret har ändrats, i tillämpliga fall:
 ### <a name="sdk-support-for-text-analytics-api-v3-public-preview"></a>SDK-stöd för API för textanalys v3 offentlig för hands version
 
 Som en del av den [enhetliga Azure SDK-versionen](https://techcommunity.microsoft.com/t5/azure-sdk/january-2020-unified-azure-sdk-release/ba-p/1097290)är API för TEXTANALYS v3 SDK nu tillgängligt som en offentlig för hands version för följande programmeringsspråk:
-   * [C#](./quickstarts/text-analytics-sdk.md?pivots=programming-language-csharp&tabs=version-3)
-   * [Python](./quickstarts/text-analytics-sdk.md?pivots=programming-language-python&tabs=version-3)
-   * [JavaScript (Node.js)](./quickstarts/text-analytics-sdk.md?pivots=programming-language-javascript&tabs=version-3)
-   * [Java](./quickstarts/text-analytics-sdk.md?pivots=programming-language-java&tabs=version-3)
+   * [C#](./quickstarts/client-libraries-rest-api.md?pivots=programming-language-csharp&tabs=version-3)
+   * [Python](./quickstarts/client-libraries-rest-api.md?pivots=programming-language-python&tabs=version-3)
+   * [JavaScript (Node.js)](./quickstarts/client-libraries-rest-api.md?pivots=programming-language-javascript&tabs=version-3)
+   * [Java](./quickstarts/client-libraries-rest-api.md?pivots=programming-language-java&tabs=version-3)
    
 > [!div class="nextstepaction"]
-> [Läs mer om API för textanalys v3 SDK](./quickstarts/text-analytics-sdk.md?tabs=version-3)
+> [Läs mer om API för textanalys v3 SDK](./quickstarts/client-libraries-rest-api.md?tabs=version-3)
 
 ### <a name="named-entity-recognition-v3-public-preview"></a>Namngiven enhets igenkänning v3 offentlig för hands version
 
@@ -242,6 +242,6 @@ Det stöder engelska ( `en` ), japanska ( `ja` ), kinesiska (förenklad) `zh-Han
 * [Vad är API för textanalys?](overview.md)  
 * [Exempel på användarscenarier](text-analytics-user-scenarios.md)
 * [Sentiment-analys](how-tos/text-analytics-how-to-sentiment-analysis.md)
-* [Språkidentifiering](how-tos/text-analytics-how-to-language-detection.md)
-* [Igenkänning av enhet](how-tos/text-analytics-how-to-entity-linking.md)
-* [Extrahering av nyckelfraser](how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Språk identifiering](how-tos/text-analytics-how-to-language-detection.md)
+* [Enhets igenkänning](how-tos/text-analytics-how-to-entity-linking.md)
+* [Extrahering av nyckel fraser](how-tos/text-analytics-how-to-keyword-extraction.md)

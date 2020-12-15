@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 4f540c7e853efe370c84b7c4d0a7d74911b8cd6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a4c551a6e9b8d79fdeb7b5219f311c7c7c969757
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91823943"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505366"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Exempel på användar scenarier för API för textanalys
 
@@ -61,4 +61,4 @@ Gruppera åsikter som rör specifika aspekter av en produkt eller tjänst i unde
 ## <a name="next-steps"></a>Nästa steg
 
 * [Vad är API för textanalys?](overview.md)
-* [Skicka en begäran till API för textanalys med hjälp av klient biblioteket](quickstarts/text-analytics-sdk.md)
+* [Skicka en begäran till API för textanalys med hjälp av klient biblioteket](quickstarts/client-libraries-rest-api.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 2ce5ac43af57b82f912b10eeacf285a688888e9d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4851dfb4a96ab2ca19ba6ea67139772f9c091a69
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180888"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504584"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Självstudie: Konfigurera G Suite för automatisk användar etablering
 
@@ -32,6 +32,9 @@ I den här självstudien beskrivs de steg du behöver utföra i både G-serien o
 > * Uppdaterade G Suite-målattribut för att matcha vad som definieras [här](https://developers.google.com/admin-sdk/directory).
 > * Uppdaterade mappningar av standardattribut.
 
+> [!NOTE]
+> Den här artikeln innehåller referenser till termen *vitlista*, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
+
 ## <a name="capabilities-supported"></a>Funktioner som stöds
 > [!div class="checklist"]
 > * Skapa användare i G Suite
@@ -40,7 +43,7 @@ I den här självstudien beskrivs de steg du behöver utföra i både G-serien o
 > * Etablera grupper och grupp medlemskap i G Suite
 > * [Enkel inloggning](./google-apps-tutorial.md) till G Suite (rekommenderas)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 
@@ -247,7 +250,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
       |e-post|Sträng|
       |Medlemmar|Sträng|
       |name|Sträng|
-      |beskrivning|Sträng|
+      |description|Sträng|
 
 12. Information om hur du konfigurerar omfångsfilter finns i följande instruktioner i [självstudien för omfångsfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 

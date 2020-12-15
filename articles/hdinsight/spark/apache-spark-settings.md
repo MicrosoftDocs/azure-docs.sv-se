@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 231ab5cc93d98d7356d47472b7e160ddd3ade790
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c2e2daf6d8c9afa6ffef03b088ec9a7dc144cf47
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545947"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504941"
 ---
 # <a name="configure-apache-spark-settings"></a>Konfigurera Apache Spark-inställningar
 
@@ -60,7 +60,7 @@ Verifiera de aktuella inställningarna för HDInsight-klustret innan du utför p
 
 Apache Ambari Web UI visas med en instrument panel med användnings mått för nyckel kluster resurser.  Ambari-instrumentpanelen visar Apache Spark konfiguration och andra installerade tjänster. På instrument panelen finns fliken **konfigurations historik** där du kan visa information om installerade tjänster, inklusive Spark.
 
-Om du vill se konfigurations värden för Apache Spark väljer du **konfigurations historik** och väljer sedan **Spark2** .  Välj fliken **konfigurationer** och välj sedan `Spark` länken (eller `Spark2` , beroende på din version) i tjänst listan.  Du ser en lista över konfigurations värden för klustret:
+Om du vill se konfigurations värden för Apache Spark väljer du **konfigurations historik** och väljer sedan **Spark2**.  Välj fliken **konfigurationer** och välj sedan `Spark` länken (eller `Spark2` , beroende på din version) i tjänst listan.  Du ser en lista över konfigurations värden för klustret:
 
 ![Spark-konfigurationer](./media/apache-spark-settings/spark-configurations.png)
 

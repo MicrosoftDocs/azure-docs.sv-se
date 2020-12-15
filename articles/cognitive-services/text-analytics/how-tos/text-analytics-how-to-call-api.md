@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: aahi
-ms.openlocfilehash: 3d3c452dd883316520e0c28f01c241af74d597c8
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 7b035af85e250d97fb05625bf386bec8dc94a74c
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602792"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505264"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Så här anropar du Textanalys REST API
 
@@ -48,7 +48,7 @@ Se tabellen nedan för att se vilka funktioner som kan användas asynkront. Obse
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 
 > [!NOTE]
@@ -241,10 +241,10 @@ När du har slut punkten, i Postman (eller något annat verktyg för webb-API-te
 
 5. Klistra in vissa JSON-dokument i ett giltigt format. Använd exemplen i avsnittet **API Request format** ovan och mer information och exempel finns i avsnitten nedan:
 
-      + [Språkidentifiering](text-analytics-how-to-language-detection.md)
-      + [Extrahering av nyckelfraser](text-analytics-how-to-keyword-extraction.md)
+      + [Språk identifiering](text-analytics-how-to-language-detection.md)
+      + [Extrahering av nyckel fraser](text-analytics-how-to-keyword-extraction.md)
       + [Sentiment-analys](text-analytics-how-to-sentiment-analysis.md)
-      + [Igenkänning av enhet](text-analytics-how-to-entity-linking.md)
+      + [Enhets igenkänning](text-analytics-how-to-entity-linking.md)
 
 ## <a name="send-the-request"></a>Skicka begäran
 
@@ -269,17 +269,17 @@ Observera att `/analyze` `/health` resultaten från get-begäran i steg 2 är ti
 
 Svaren på den synkrona slut punkten varierar beroende på vilken slut punkt du använder. Se följande artiklar för exempel svar.
 
-+ [Språkidentifiering](text-analytics-how-to-language-detection.md#step-3-view-the-results)
-+ [Extrahering av nyckelfraser](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
++ [Språk identifiering](text-analytics-how-to-language-detection.md#step-3-view-the-results)
++ [Extrahering av nyckel fraser](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
 + [Sentiment-analys](text-analytics-how-to-sentiment-analysis.md#view-the-results)
-+ [Igenkänning av enhet](text-analytics-how-to-entity-linking.md#view-results)
++ [Enhets igenkänning](text-analytics-how-to-entity-linking.md#view-results)
 
 # <a name="analyze"></a>[Analysera](#tab/analyze)
 
 Om det lyckas, kommer GET-begäran till `/analyze` slut punkten returnera ett objekt som innehåller de tilldelade aktiviteterna. Till exempel `keyPhraseExtractionTasks`. Dessa aktiviteter innehåller objektet Response från lämplig Textanalys funktion. Se följande artiklar för mer information.
 
-+ [Extrahering av nyckelfraser](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
-+ [Igenkänning av enhet](text-analytics-how-to-entity-linking.md#view-results)
++ [Extrahering av nyckel fraser](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
++ [Enhets igenkänning](text-analytics-how-to-entity-linking.md#view-results)
 
 
 ```json
@@ -346,5 +346,5 @@ I följande artikel finns mer information om det asynkrona API-svaret Textanalys
 * [Översikt över Textanalys](../overview.md)
 * [Vanliga frågor och svar (FAQ)](../text-analytics-resource-faq.md)</br>
 * [Produktsida för textanalys](//go.microsoft.com/fwlink/?LinkID=759712)
-* [Använda klient biblioteket för Textanalys](../quickstarts/text-analytics-sdk.md)
+* [Använda klient biblioteket för Textanalys](../quickstarts/client-libraries-rest-api.md)
 * [Nyheter](../whats-new.md)

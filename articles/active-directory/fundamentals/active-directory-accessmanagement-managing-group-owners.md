@@ -12,17 +12,17 @@ ms.date: 09/11/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 358a551908a7263f3258f47dfe1cceeffe2307b1
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: b255f64547c3bae56d31415dc94a751989ca1f45
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860498"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504907"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Lägg till eller ta bort grupp ägare i Azure Active Directory
 Azure Active Directory (Azure AD) grupper ägs och hanteras av grupp ägare. Grupp ägare kan vara användare eller tjänstens huvud namn och kan hantera gruppen inklusive medlemskap. Endast befintliga grupp ägare eller grupp hanterings administratörer kan tilldela grupp ägare. Grupp ägare måste inte vara medlemmar i gruppen.
 
-När en grupp saknar ägare kan grupp hanterings administratörer fortfarande hantera gruppen. Vi rekommenderar att varje grupp har minst en ägare. När ägarna är koppla till en grupp kan inte den sista ägaren av gruppen tas bort. Var noga med att välja en annan ägare innan du tar bort den sista ägaren från gruppen.
+När en grupp saknar ägare kan grupp hanterings administratörer fortfarande hantera gruppen. Vi rekommenderar att varje grupp har minst en ägare. När ägarna har tilldelats en grupp kan inte den sista ägaren av gruppen tas bort. Var noga med att välja en annan ägare innan du tar bort den sista ägaren från gruppen.
 
 ## <a name="add-an-owner-to-a-group"></a>Lägg till en ägare i en grupp
 Nedan visas instruktioner för att lägga till en användare som ägare till en grupp med hjälp av Azure AD-portalen. Om du vill lägga till ett huvud namn för tjänsten som ägare av en grupp följer du anvisningarna för att göra det med hjälp av [PowerShell](/powershell/module/Azuread/Add-AzureADGroupOwner).

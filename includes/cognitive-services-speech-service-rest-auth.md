@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: b5a3ec1d6e33c08b460088c9aeb4fd18f6bf29ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 410b73d3f9011f9384fafa18394d9318e3eafa67
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88864853"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504499"
 ---
 ## <a name="authentication"></a>Autentisering
 
@@ -151,7 +151,7 @@ def get_token(subscription_key):
 
 Åtkomsttoken ska skickas till tjänsten som `Authorization: Bearer <TOKEN>` rubrik. Varje åtkomsttoken är giltig i 10 minuter. Du kan när som helst hämta en ny token för att minimera nätverks trafiken och svars tiden, men vi rekommenderar att du använder samma token i nio minuter.
 
-Här är ett exempel på en HTTP-begäran till text-till-tal-REST API:
+Här är ett HTTP-exempel på tal-till-text-REST API för kort ljud:
 
 ```http
 POST /cognitiveservices/v1 HTTP/1.1

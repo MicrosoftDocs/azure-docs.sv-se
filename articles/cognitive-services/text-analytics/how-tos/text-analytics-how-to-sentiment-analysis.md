@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 12/02/2020
+ms.date: 12/04/2020
 ms.author: aahi
-ms.openlocfilehash: 0437704709e863cdbc62321c8a4b79015564e362
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 4f5c47000355a004f8d76d8b740b705618748380
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558767"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505230"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>Gör så här: sentiment analys och avyttrande
 
@@ -51,7 +51,7 @@ Förtroendet sträcker sig från 1 till 0. Resultat närmare 1 anger en högre e
 
 ## <a name="opinion-mining"></a>Åsikts utvinning
 
-Åsikts utvinning är en funktion i Attitydanalys, från och med version 3,1 – för hands version. 1. Den här funktionen är även känd som Aspect-baserad Attitydanalys i naturlig språk bearbetning (NLP) och ger mer detaljerad information om de åsikter som rör aspekter (till exempel attributen för produkter eller tjänster) i text. 
+Åsikts utvinning är en funktion i Attitydanalys, med början i för hands versionen av version 3,1. Den här funktionen är även känd som Aspect-baserad Attitydanalys i naturlig språk bearbetning (NLP) och ger mer detaljerad information om de åsikter som rör aspekter (till exempel attributen för produkter eller tjänster) i text.
 
 Om en kund till exempel lämnar feedback om ett hotell, till exempel "rummet var fantastiskt, men personalen var friendd.", skall yttrandet för att hitta aspekter i texten och deras associerade åsikter och sentiment. Attitydanalys kan bara rapportera ett negativt sentiment.
 
@@ -74,7 +74,7 @@ Dokument storleken måste vara under 5 120 tecken per dokument. Det maximala ant
 
 Skicka en POST-begäran. Du kan [använda Postman](text-analytics-how-to-call-api.md) eller **konsolen för API-testning** i följande referens länkar för att snabbt strukturera och skicka en. 
 
-#### <a name="version-31-preview2"></a>[Version 3,1 – för hands version. 2](#tab/version-3-1)
+#### <a name="version-31-preview3"></a>[Version 3,1 – för hands version. 3](#tab/version-3-1)
 
 [Attitydanalys v 3.1-referens](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Sentiment)
 
@@ -91,17 +91,17 @@ Ange HTTPS-slutpunkten för sentiment-analys genom att antingen använda en Text
 > [!NOTE]
 > Du kan hitta din nyckel och slut punkt för din Textanalys resurs på Azure Portal. De kommer att finnas på resursens **snabb start** sida under **resurs hantering**. 
 
-#### <a name="version-31-preview2"></a>[Version 3,1 – för hands version. 2](#tab/version-3-1)
+#### <a name="version-31-preview3"></a>[Version 3,1 – för hands version. 3](#tab/version-3-1)
 
 **Attitydanalys**
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/sentiment`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment`
 
 **Åsikts utvinning**
 
 Du måste inkludera parametern för att få ett utgångs resultat för utåsikts utvinning `opinionMining=true` . Exempel:
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/sentiment?opinionMining=true`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment?opinionMining=true`
 
 Den här parametern är inställd på `false` som standard. 
 
@@ -144,7 +144,7 @@ API för textanalys är tillstånds lös. Inga data lagras i ditt konto och resu
 
 Utdata returneras direkt. Du kan strömma resultaten till ett program som accepterar JSON eller spara utdata till en fil på det lokala systemet. Importera sedan utdata till ett program som du kan använda för att sortera, söka och ändra data. På grund av stöd för flerspråkig och emoji kan svaret innehålla text förskjutningar. Mer information finns i [så här bearbetar du förskjutningar](../concepts/text-offsets.md) .
 
-#### <a name="version-31-preview2"></a>[Version 3,1 – för hands version. 2](#tab/version-3-1)
+#### <a name="version-31-preview3"></a>[Version 3,1 – för hands version. 3](#tab/version-3-1)
 
 ### <a name="sentiment-analysis-and-opinion-mining-example-response"></a>Svar på Attitydanalys och avyttrande av utvinnings exempel
 
@@ -302,5 +302,5 @@ I den här artikeln har du lärt dig begrepp och arbets flöde för sentiment-an
 ## <a name="see-also"></a>Se även
 
 * [Översikt över Textanalys](../overview.md)
-* [Använda klient biblioteket för Textanalys](../quickstarts/text-analytics-sdk.md)
+* [Använda klient biblioteket för Textanalys](../quickstarts/client-libraries-rest-api.md)
 * [Nyheter](../whats-new.md)

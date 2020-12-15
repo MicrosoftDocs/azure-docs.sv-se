@@ -7,17 +7,20 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/18/2018
+ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a9e7c537e85039675f27fa3e276b6b964ce1679b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: f3b918fdf753cef75782a47ef157c282ef47e1ed
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388603"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503649"
 ---
 # <a name="set-up-direct-sign-in-using-azure-active-directory-b2c"></a>Konfigurera direkt inloggning med hjälp av Azure Active Directory B2C
+
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
 När du konfigurerar inloggning för ditt program med hjälp av Azure Active Directory (AD) B2C, kan du fylla i inloggnings namnet eller dirigera inloggningen till en specifik social identitetsprovider, till exempel Facebook, LinkedIn eller en Microsoft-konto.
 
@@ -29,7 +32,9 @@ Under en inloggnings användare kan ett förlitande parts program riktas mot ett
 
 Användaren kan ändra värdet i text rutan för inloggning.
 
-Om du använder en anpassad princip åsidosätter du den `SelfAsserted-LocalAccountSignin-Email` tekniska profilen. I `<InputClaims>` avsnittet anger du DefaultValue för signInName-anspråket till `{OIDC:LoginHint}` . `{OIDC:LoginHint}`Variabeln innehåller värdet för `login_hint` parametern. Azure AD B2C läser värdet för signInName-anspråket och fyller i text rutan signInName.
+::: zone pivot="b2c-custom-policy"
+
+Åsidosätt den tekniska profilen för att stödja inloggnings tips parameter `SelfAsserted-LocalAccountSignin-Email` . I `<InputClaims>` avsnittet anger du DefaultValue för signInName-anspråket till `{OIDC:LoginHint}` . `{OIDC:LoginHint}`Variabeln innehåller värdet för `login_hint` parametern. Azure AD B2C läser värdet för signInName-anspråket och fyller i text rutan signInName.
 
 ```xml
 <ClaimsProvider>
@@ -45,13 +50,35 @@ Om du använder en anpassad princip åsidosätter du den `SelfAsserted-LocalAcco
 </ClaimsProvider>
 ```
 
+::: zone-end
+
 ## <a name="redirect-sign-in-to-a-social-provider"></a>Omdirigera inloggning till en social leverantör
 
 Om du konfigurerade inloggnings resan för ditt program att inkludera sociala konton, till exempel Facebook, LinkedIn eller Google, kan du ange `domain_hint` parametern. Den här Frågeparametern ger en ledtråd för Azure AD B2C om den sociala identitets leverantör som ska användas för inloggning. Om programmet till exempel anger `domain_hint=facebook.com` skickas inloggningen direkt till Facebook-inloggnings sidan.
 
 ![Registrera inloggnings sidan med domain_hint frågeparametrar markerad i URL](./media/direct-signin/domain-hint.png)
 
-Om du använder en anpassad princip kan du konfigurera domän namnet med hjälp av `<Domain>domain name</Domain>` XML-elementet i any `<ClaimsProvider>` .
+::: zone pivot="b2c-user-flow"
+
+Frågesträngparametern för domän tipset kan anges till någon av följande domäner:
+
+- amazon.com
+- facebook.com
+- github.com
+- google.com
+- linkedin.com
+- microsoft.com
+- qq.com
+- twitter.com
+- wechat.com
+- weibo.com 
+- För [allmän OpenID-anslutning](identity-provider-generic-openid-connect.md), se [domän tips](identity-provider-generic-openid-connect.md#response-mode).
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+För att stödja en domän gångjärns parameter kan du konfigurera domän namnet med hjälp av `<Domain>domain name</Domain>` XML-elementet i any `<ClaimsProvider>` .
 
 ```xml
 <ClaimsProvider>
@@ -62,4 +89,5 @@ Om du använder en anpassad princip kan du konfigurera domän namnet med hjälp 
     ...
 ```
 
+::: zone-end
 

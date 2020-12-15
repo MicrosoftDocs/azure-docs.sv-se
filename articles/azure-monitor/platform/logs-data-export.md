@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 4155cda1e1de6f15aefa6d5fc960988eba15068d
-ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
+ms.openlocfilehash: 8fa823620d6d1306260d719cbabaa3d815cc0d09
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97371976"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505451"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics arbets ytans data export i Azure Monitor (förhands granskning)
 Med Log Analytics data export för arbets yta i Azure Monitor kan du kontinuerligt exportera data från valda tabeller i din Log Analytics arbets yta till ett Azure Storage-konto eller Azure-Event Hubs som det samlas in. Den här artikeln innehåller information om den här funktionen och hur du konfigurerar data export i dina arbets ytor.
@@ -81,7 +81,7 @@ Data skickas till händelsehubben i nära real tid när den når Azure Monitor. 
 1. Den grundläggande Event Hub-SKU: n stöder lägre storleks [gräns](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-tiers) för händelser och vissa loggar på din arbets yta kan överstiga den och tas bort. Vi rekommenderar att du använder "standard" eller "dedikerad" händelsehubben som export mål.
 2. Volymen för exporterade data ökar ofta med tiden och skalningen av Event Hub måste ökas för att hantera större överföringshastigheter och undvika begränsnings scenarier och data fördröjning. Du bör använda funktionen för automatisk ökning i Event Hubs för att automatiskt skala upp och öka antalet data flödes enheter och uppfylla användnings behoven. Mer information finns i [skala upp Azure Event Hubs data flödes enheter automatiskt](../../event-hubs/event-hubs-auto-inflate.md) .
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 Följande är förutsättningar som måste slutföras innan du konfigurerar Log Analytics data export.
 
 - Lagrings kontot och händelsehubben måste redan skapas och måste finnas i samma region som Log Analytics-arbetsytan. Om du behöver replikera dina data till andra lagrings konton kan du använda något av [alternativen för Azure Storage redundans](../../storage/common/storage-redundancy.md).  
@@ -120,18 +120,18 @@ En data export regel definierar data som ska exporteras för en uppsättning tab
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Ej tillämpligt
+Saknas
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Ej tillämpligt
+Saknas
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Använd följande CLI-kommando för att visa tabeller i din arbets yta. Den kan hjälpa dig att kopiera de tabeller som du vill ha och ta med i data export regeln.
 
 ```azurecli
-az monitor log-analytics workspace table list -resource-group resourceGroupName --workspace-name workspaceName --query [].name --output table
+az monitor log-analytics workspace table list --resource-group resourceGroupName --workspace-name workspaceName --query [].name --output table
 ```
 
 Använd följande kommando för att skapa en data export regel till ett lagrings konto med hjälp av CLI.
@@ -222,11 +222,11 @@ Följande är en exempel text för REST-begäran för en Event Hub där Event Hu
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Ej tillämpligt
+Saknas
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Ej tillämpligt
+Saknas
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -249,11 +249,11 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Ej tillämpligt
+Saknas
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Ej tillämpligt
+Saknas
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -291,11 +291,11 @@ Content-type: application/json
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Ej tillämpligt
+Saknas
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Ej tillämpligt
+Saknas
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -318,11 +318,11 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Ej tillämpligt
+Saknas
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Ej tillämpligt
+Saknas
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

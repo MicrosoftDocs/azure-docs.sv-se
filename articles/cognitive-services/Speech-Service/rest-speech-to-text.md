@@ -8,35 +8,66 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 12/10/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dff7ff0afd6c236645731dc7edd936b0b808716b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c746666d58e21c2705a2ef1d6a17d0d1196f7590
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483928"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504482"
 ---
 # <a name="speech-to-text-rest-api"></a>REST API för tal-till-text
 
-Som ett alternativ till [tal-SDK](speech-sdk.md)gör röst tjänsten det möjligt för dig att konvertera tal till text med hjälp av en REST API. Varje tillgänglig slut punkt är associerad med en region. Ditt program kräver en prenumerations nyckel för den slut punkt som du planerar att använda. REST API är mycket begränsad och bör endast användas i fall där [tal-SDK: n](speech-sdk.md) inte kan användas.
+Tal till text har två olika REST-API: er. Varje API hanterar sitt särskilda syfte och använder olika uppsättningar av slut punkter.
 
-Tänk på följande innan du använder tal-till-text-REST API:
+REST-API: er från tal till text är:
+- [Tal-till-text REST API v 3.0](#speech-to-text-rest-api-v30) används för [batch-avskrifter](batch-transcription.md) och [Custom Speech](custom-speech-overview.md). v 3.0 är en [efterföljande aktivitet för v 2.0](/azure/cognitive-services/speech-service/migrate-v2-to-v3).
+- [Tal-till-text-REST API för kort ljud](#speech-to-text-rest-api-for-short-audio) används för att avskrifta online som ett alternativ till [tal-SDK](speech-sdk.md). Begär Anden som använder detta API kan bara skicka upp till 60 sekunders ljud per begäran. 
 
-* Begär Anden som använder REST API och sändning av ljud direkt får bara innehålla upp till 60 sekunders ljud.
-* Tal-till-text-REST API returnerar bara slutgiltiga resultat. Ofullständiga resultat har inte angetts.
+## <a name="speech-to-text-rest-api-v30"></a>Tal till text REST API v 3.0
 
-Om det är ett krav för ditt program att skicka längre ljud bör du överväga att använda [talet SDK](speech-sdk.md) eller en filbaserad REST API, t. ex. [batch-avskriftering](batch-transcription.md).
+Tal-till-text REST API v 3.0 används för [batch-avskrifter](batch-transcription.md) och [Custom Speech](custom-speech-overview.md). Om du behöver kommunicera med OnLine-avskriften via REST använder [du tal-till-text-REST API för kort ljud](#speech-to-text-rest-api-for-short-audio).
+
+Använd REST API v 3.0 för att:
+- Kopiera modeller till andra prenumerationer om du vill att kollegor ska ha åtkomst till en modell som du har skapat, eller i de fall där du vill distribuera en modell till mer än en region
+- Skriv över data från en behållare (Mass avskrift) och ange flera URL: er för ljud filen
+- Ladda upp data från Azure Storage konton genom att använda SAS-URI
+- Hämta loggar per slut punkt om loggarna har begärts för den slut punkten
+- Begär manifestet för de modeller som du skapar, i syfte att konfigurera lokala behållare
+
+REST API v 3.0 innehåller sådana funktioner som:
+- **Meddelanden – Webhooks**– alla aktiva processer för tjänsten har nu stöd för webhook-aviseringar. REST API v 3.0 tillhandahåller anrop så att du kan registrera dina webhookar där meddelanden skickas
+- **Uppdatera modeller bakom slut punkter** 
+- **Modell anpassning med flera data uppsättningar**– anpassa en modell med hjälp av flera data uppsättnings kombinationer av ljud-, språk-och uttals data
+- **Ta med din egen lagring**– Använd dina egna lagrings konton för loggar, avskrifts-filer och andra data
+
+Se exempel på hur du använder REST API v 3.0 med batch-avskriften i [den här artikeln](batch-transcription.md).
+
+Om du använder tal-till-text REST API v 2.0, se hur du kan migrera till v 3.0 i [den här guiden](/azure/cognitive-services/speech-service/migrate-v2-to-v3).
+
+Se den fullständiga referensen för tal-till-text REST API v 3.0 [här](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0).
+
+## <a name="speech-to-text-rest-api-for-short-audio"></a>Tal till text REST API för kort ljud
+
+Som ett alternativ till [tal-SDK](speech-sdk.md)gör röst tjänsten det möjligt för dig att konvertera tal till text med hjälp av en REST API. Varje tillgänglig slut punkt är associerad med en region. Ditt program kräver en prenumerations nyckel för den slut punkt som du planerar att använda. REST API för kort ljud är mycket begränsat och bör endast användas i fall där [tal-SDK: n](speech-sdk.md) inte kan användas.
+
+Tänk på följande innan du använder tal-till-text-REST API för kort ljud:
+
+* Begär Anden som använder REST API för kort ljud och sändning av ljud direkt får bara innehålla upp till 60 sekunders ljud.
+* Tal-till-text-REST API för kort ljud returnerar bara slutgiltiga resultat. Ofullständiga resultat har inte angetts.
+
+Om det är ett krav för ditt program att skicka längre ljud kan du överväga att använda [tal-SDK](speech-sdk.md) eller [tal-till-text REST API v 3.0](#speech-to-text-rest-api-v30).
 
 > [!TIP]
 > Se Azures myndighets [dokumentation](../../azure-government/compare-azure-government-global-azure.md) för FairFax-slutpunkter (myndigheter).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
-## <a name="regions-and-endpoints"></a>Regioner och slut punkter
+### <a name="regions-and-endpoints"></a>Regioner och slut punkter
 
-Slut punkten för REST API har följande format:
+Slut punkten för REST API för kort ljud har följande format:
 
 ```
 https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
@@ -49,7 +80,7 @@ Ersätt `<REGION_IDENTIFIER>` med den identifierare som matchar regionen för di
 > [!NOTE]
 > Språk parametern måste läggas till i URL: en för att undvika att ett HTTP-4xx-fel tas emot. Till exempel är språket inställt på amerikansk engelska med slut punkten västra USA: `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US` .
 
-## <a name="query-parameters"></a>Frågeparametrar
+### <a name="query-parameters"></a>Frågeparametrar
 
 Dessa parametrar kan ingå i frågesträngen för REST-begäran.
 
@@ -60,11 +91,11 @@ Dessa parametrar kan ingå i frågesträngen för REST-begäran.
 | `profanity` | Anger hur du hanterar svordomar i igenkännings resultat. Godkända värden är `masked` , som ersätter svordomar med asterisker, `removed` som tar bort alla svordomar från resultatet, eller `raw` som innehåller svordomarna i resultatet. Standardinställningen är `masked`. | Valfritt |
 | `cid` | När du använder [Custom Speech Portal](./custom-speech-overview.md) för att skapa anpassade modeller kan du använda anpassade modeller via deras **slut punkts-ID** som finns på **distributions** sidan. Använd **slut punkts-ID** som argument för `cid` parametern frågesträng. | Valfritt |
 
-## <a name="request-headers"></a>Begärandehuvuden
+### <a name="request-headers"></a>Begärandehuvuden
 
 I den här tabellen listas obligatoriska och valfria sidhuvuden för begäran om tal till text.
 
-|Huvud| Description | Obligatorisk/valfri |
+|Huvud| Beskrivning | Obligatorisk/valfri |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | Din prenumerations nyckel för röst tjänst. | Antingen den här rubriken eller `Authorization` krävs. |
 | `Authorization` | En autentiseringstoken föregås av ordet `Bearer` . Mer information finns i [Autentisering](#authentication). | Antingen den här rubriken eller `Ocp-Apim-Subscription-Key` krävs. |
@@ -74,7 +105,7 @@ I den här tabellen listas obligatoriska och valfria sidhuvuden för begäran om
 | `Expect` | Skicka om du använder segmenterad överföring `Expect: 100-continue` . Tal tjänsten bekräftar den första begäran och väntar på ytterligare data.| Krävs om du skickar segmenterade ljud data. |
 | `Accept` | Om det anges måste det vara `application/json` . Tal tjänsten ger resultat i JSON. Vissa ramverk för begäran tillhandahåller ett inkompatibelt standardvärde. Det är en bra idé att alltid inkludera `Accept` . | Valfritt, men rekommenderas. |
 
-## <a name="audio-formats"></a>Ljud format
+### <a name="audio-formats"></a>Ljud format
 
 Ljud skickas i bröd texten i HTTP- `POST` begäran. Det måste vara i något av formaten i den här tabellen:
 
@@ -84,9 +115,9 @@ Ljud skickas i bröd texten i HTTP- `POST` begäran. Det måste vara i något av
 | OGG    | OPUS  | 256 Kpbs | 16 kHz, mono |
 
 >[!NOTE]
->Ovanstående format stöds via REST API och WebSocket i tal-tjänsten. [Talet SDK](speech-sdk.md) stöder för närvarande WAV-formatet med PCM-kodek och [andra format](how-to-use-codec-compressed-audio-input-streams.md).
+>Ovanstående format stöds via REST API för kort ljud och WebSocket i tal tjänsten. [Talet SDK](speech-sdk.md) stöder för närvarande WAV-formatet med PCM-kodek och [andra format](how-to-use-codec-compressed-audio-input-streams.md).
 
-## <a name="pronunciation-assessment-parameters"></a>Parametrar för uttal-bedömning
+### <a name="pronunciation-assessment-parameters"></a>Parametrar för uttal-bedömning
 
 I den här tabellen listas obligatoriska och valfria parametrar för uttal-utvärdering.
 
@@ -123,7 +154,7 @@ Vi rekommenderar starkt strömning (segmenterad) uppladdning när du skickar lju
 >[!NOTE]
 >Funktionen för ututtals bedömning är för närvarande bara tillgänglig i `westus` `eastasia` och `centralindia` regioner. Och den här funktionen är för närvarande bara tillgänglig på `en-US` språket.
 
-## <a name="sample-request"></a>Exempel förfrågan
+### <a name="sample-request"></a>Exempel förfrågan
 
 Exemplet nedan innehåller värd namnet och de huvuden som krävs. Det är viktigt att Observera att tjänsten också förväntar sig ljud data, som inte ingår i det här exemplet. Som nämnts tidigare rekommenderas Chunking, men det är inte obligatoriskt.
 
@@ -143,7 +174,7 @@ Om du vill aktivera uttal av uttal kan du lägga till under rubrik. Se [uttal av
 Pronunciation-Assessment: eyJSZWZlcm...
 ```
 
-## <a name="http-status-codes"></a>HTTP-statuskoder
+### <a name="http-status-codes"></a>HTTP-statuskoder
 
 HTTP-statuskoden för varje svar visar att de lyckas eller vanliga fel.
 
@@ -155,9 +186,9 @@ HTTP-statuskoden för varje svar visar att de lyckas eller vanliga fel.
 | `401` | Behörighet saknas | Prenumerations nyckel eller autentiseringstoken är ogiltig i den angivna regionen eller ogiltig slut punkt. |
 | `403` | Förbjudet | Prenumerations nyckel eller autentiseringstoken saknas. |
 
-## <a name="chunked-transfer"></a>Segmenterad överföring
+### <a name="chunked-transfer"></a>Segmenterad överföring
 
-Segmenterad överföring ( `Transfer-Encoding: chunked` ) kan hjälpa till att minska svars tiden för igenkänning. Det gör att röst tjänsten kan börja bearbeta ljud filen medan den överförs. REST API innehåller inte partiella eller interimistiska resultat.
+Segmenterad överföring ( `Transfer-Encoding: chunked` ) kan hjälpa till att minska svars tiden för igenkänning. Det gör att röst tjänsten kan börja bearbeta ljud filen medan den överförs. REST API för kort ljud ger inte partiella eller tillfälliga resultat.
 
 I det här kod exemplet visas hur du skickar ljud i segment. Endast det första segmentet ska innehålla ljud filens rubrik. `request` är ett `HttpWebRequest` objekt som är kopplat till lämplig REST-slutpunkt. `audioFile` är sökvägen till en ljudfil på disk.
 
@@ -191,7 +222,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 }
 ```
 
-## <a name="response-parameters"></a>Svars parametrar
+### <a name="response-parameters"></a>Svars parametrar
 
 Resultat tillhandahålls som JSON. `simple`Formatet innehåller dessa fält på den översta nivån.
 
@@ -233,7 +264,7 @@ Objektet i `NBest` listan kan innehålla:
 | `PronScore` | Totalt antal poäng som anger uttal av det tal som anges. Detta sammanställs från `AccuracyScore` `FluencyScore` och `CompletenessScore` med vikt. |
 | `ErrorType` | Det här värdet anger om ett ord utelämnas, infogas eller blir dåligt uttalad jämfört med `ReferenceText` . Möjliga värden är `None` (vilket innebär inget fel på det här ordet), `Omission` `Insertion` och `Mispronunciation` . |
 
-## <a name="sample-responses"></a>Exempel svar
+### <a name="sample-responses"></a>Exempel svar
 
 Ett typiskt svar för `simple` igenkänning:
 
@@ -309,3 +340,4 @@ Ett typiskt svar för igenkänning av uttal av uttal:
 - [Skapa ett kostnadsfritt Azure-konto](https://azure.microsoft.com/free/cognitive-services/)
 - [Anpassa akustiska modeller](./how-to-custom-speech-train-model.md)
 - [Anpassa språkmodeller](./how-to-custom-speech-train-model.md)
+- [Bekanta dig med batch-avskriftering](batch-transcription.md)

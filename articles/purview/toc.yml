@@ -104,8 +104,6 @@ items:
                 href: register-scan-on-premises-sql-server.md
               - name: Power BI-klientorganisation – Portalen
                 href: register-scan-power-bi-tenant.md
-              - name: Power BI-klientorganisation – PowerShell
-                href: powershell-register-scan-power-bi.md
       - name: Företagsordlistan
         items:
           - name: 'Skapa, importera och exportera termer från en ordlista'

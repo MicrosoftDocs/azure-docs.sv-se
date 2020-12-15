@@ -1,5 +1,5 @@
 ---
-title: Använda avdelningens kontroll Studio
+title: Använda Purview Studio
 description: Den här konceptuella artikeln beskriver hur du använder Azure avdelningens kontroll Studio.
 author: nayenama
 ms.author: nayenama
@@ -7,14 +7,14 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 1b2d371153d6612f454e1bf51b78c6b6189a08b2
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: d8e6c4b2addf9745b2ddabe8f6fdad9d82dce59f
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96553852"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503958"
 ---
-# <a name="use-purview-studio"></a>Använda avdelningens kontroll Studio
+# <a name="use-purview-studio"></a>Använda Purview Studio
 
 Den här artikeln ger en översikt över några av de viktigaste funktionerna i Azure dataavdelningens kontrolls.
 
@@ -44,21 +44,22 @@ I följande lista sammanfattas huvud funktionerna på **Start sidan**. Varje num
     - Användare, grupper och program
     - Datakällor
     - Tillgångar
-    - Ord listans villkor
+    - Ordlistetermer
 
 3. Med sökrutan kan du söka efter data till gångar i data katalogen.
 
 4. Knapparna för snabb åtkomst ger åtkomst till ofta använda funktioner i programmet. De knappar som visas beror på vilken roll som tilldelats ditt användar konto.
 
-    - För *data käll administratör* är knapparna snabb åtkomst: **registrera data källor** och **kunskaps Center**.
     - För *data curator* är knapparna **kunskaps Center**, **Bläddra till gångar**, **Hantera ord lista** och **Visa insikter**.
     - För *data läsare* är de aktuella knapparna **kunskaps Center**, **Bläddra till gångar**, **Visa ord lista** och **Visa insikter**.
+    - För *data källans administratörs*  +  *data curator* är de aktuella knapparna **kunskaps Center**, **registrera data källor**, **Bläddra till gångar** och **Hantera ord lista**.
+    - För *data källans administratörs*  +  *data läsare* är de aktuella knapparna **kunskaps Center**, **registrera data källor**, **Bläddra till till gångar** och **Visa ord lista**.
 
 5. I det vänstra navigerings fältet kan du hitta programmets huvud sidor. De knappar som visas beror på vilken roll som tilldelats ditt användar konto.
 
-    - För *data källans administratör* är knapparna  **Start**, **källor** och **hanterings Center**.
     - För *data curator* är knapparna **Home**, **ordbok**, **insikter** och **Management Center**.
     - För *data läsare* är knapparna **Home**, **ordbok**, **insikter** och **Management Center**.
+    - För *data källans administratörs*  +  *data curator/Reader* är knapparna **Home**, **SOURCES**, **ordbok**, **Insights** och **Management Center**.
   
 6. Fliken **senast använda** visar en lista över nyligen använda data till gångar. Information om hur du kommer åt till gångar finns i [sök Data Catalog](how-to-search-catalog.md) och [Bläddra efter typ av till gång](how-to-browse-catalog.md#browse-experience).  Fliken **Mina objekt** är en lista över data till gångar som ägs av den inloggade användaren.
 7. **Användbara länkar** innehåller länkar till region status, dokumentation, prissättning, översikt och avdelningens kontroll status
@@ -73,6 +74,9 @@ Kunskaps Center är där du hittar alla videor och självstudier som är relater
 Varje UX i Azure avdelningens kontroll Studio har guidade visningar för att ge en översikt över sidan. Starta guidad visning genom att välja **Hjälp** i det översta fältet och välja **guidade visningar**.
 
 :::image type="content" source="./media/use-purview-studio/guided-tour.png" alt-text="Skärm bild av guidad visning.":::
+
+> [!Important]
+   > Rollen som administratör för data källa har inte till gång till avdelningens kontroll Studio.
 
 ## <a name="next-steps"></a>Nästa steg
 

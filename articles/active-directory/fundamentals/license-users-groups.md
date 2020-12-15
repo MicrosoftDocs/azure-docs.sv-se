@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/06/2018
+ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50e0fe1cf3bb628c40e774423e45ea88d6ab78a5
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b6900647acf7182529f34c8cc065dbb039de38be
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359721"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504414"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Tilldela eller ta bort licenser i Azure Active Directorys portalen
 
@@ -47,13 +47,20 @@ Du kan visa dina tillgängliga Service planer, inklusive de enskilda licenserna,
 
 1. Logga in på [Azure Portal](https://portal.azure.com/) med ett licens administratörs konto i din Azure AD-organisation.
 
-1. Välj **Azure Active Directory**och välj sedan **licenser**.
+1. Välj **Azure Active Directory** och välj sedan **licenser**.
 
-    ![Sidan licenser, med antal köpta tjänster och tilldelade licenser](media/license-users-groups/license-details-blade.png)
+    :::image type="content" source="media/license-users-groups/license-details-blade.png" alt-text="Sidan licenser, med antal köpta tjänster och tilldelade licenser":::
 
-1. Välj den **inköpta** länken för att visa sidan **produkter** och för att se de **tilldelade**, **tillgängliga**och **sista giltighets** siffrorna för dina licens planer.
+1. Välj **alla produkter** om du vill visa sidan alla produkter och för att se de **totala**, **tilldelade**, **tillgängliga** och **sista giltighets** siffrorna för dina licens planer.
 
-    ![Sidan tjänster med service licens planer och tillhör ande licens information](media/license-users-groups/license-products-blade-with-products.png)
+    :::image type="content" source="media/license-users-groups/license-products-blade-with-products.png" alt-text="Sidan tjänster – med service licens planer – associerad licens information":::
+
+    > [!NOTE]
+    > Siffrorna definieras som: 
+    > - Totalt: totalt antal köpta licenser
+    > - Tilldelad: antal licenser tilldelade till användare
+    > - Tillgängligt: antal licenser som är tillgängliga för tilldelning, inklusive upphör snart att gälla
+    > - Förfaller snart: antalet licenser som upphör att gälla snart
 
 1. Välj ett schema namn om du vill visa dess licensierade användare och grupper.
 
@@ -71,7 +78,7 @@ Se till att alla som behöver använda en licensierad Azure AD-tjänst har rätt
 
     ![Sidan tjänster med markerat alternativet tilldela](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
-1. På sidan **tilldela** väljer du **användare och grupper**och sedan söker du efter och väljer den användare som du tilldelar licensen.
+1. På sidan **tilldela** väljer du **användare och grupper** och sedan söker du efter och väljer den användare som du tilldelar licensen.
 
     ![Sidan Tilldela licens, med markerad sökning och välj alternativ](media/license-users-groups/assign-license-blade-with-highlight.png)
 
@@ -100,7 +107,7 @@ Se till att alla som behöver använda en licensierad Azure AD-tjänst har rätt
 
     ![Sidan produkter med markerat alternativet tilldela](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
-1. På sidan **tilldela** väljer du **användare och grupper**och sedan söker du efter och väljer den grupp som du vill tilldela licensen.
+1. På sidan **tilldela** väljer du **användare och grupper** och sedan söker du efter och väljer den grupp som du vill tilldela licensen.
 
     ![Sidan Tilldela licens, med markerad sökning och välj alternativ 2](media/license-users-groups/assign-group-license-blade-with-highlight.png)
 
