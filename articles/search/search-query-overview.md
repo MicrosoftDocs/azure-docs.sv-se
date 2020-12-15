@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/11/2020
-ms.openlocfilehash: 9ce0ab34aac1a3dda823c9270f4eacebfb99166f
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.date: 12/14/2020
+ms.openlocfilehash: 7277ad060c57b44d633054c4fc4d29d151bd7192
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387674"
+ms.locfileid: "97400819"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Fråga i Azure Kognitiv sökning
 
-Azure Kognitiv sökning erbjuder ett omfattande frågespråk för att stödja ett brett utbud av scenarier, från fritext sökning, till mönster med hög angiven fråga. Den här artikeln sammanfattar de typer av frågor som du kan skapa.
+Azure Kognitiv sökning erbjuder ett omfattande frågespråk för att stödja ett brett utbud av scenarier, från fritext sökning, till mönster med hög angiven fråga. Den här artikeln beskriver fråge förfrågningar och vilka typer av frågor som du kan skapa.
 
-I Kognitiv sökning är en fråga en fullständig specifikation av en tur och retur- **`search`** åtgärd, med parametrar som både informerar frågekörningen och formar svaret som kommer tillbaka. Parametrar och parser bestämmer vilken typ av fråga som begärs. I följande fråge exempel används [Sökdokumenten (REST API)](/rest/api/searchservice/search-documents)som mål för [hotell demonstrations indexet](search-get-started-portal.md).
+I Kognitiv sökning är en fråga en fullständig specifikation av en tur och retur- **`search`** åtgärd, med parametrar som både informerar frågekörningen och formar svaret som kommer tillbaka. Parametrar och parser bestämmer vilken typ av fråga som begärs. Följande exempel är en text fråga med en boolesk operator med hjälp av [Sök dokumenten (REST API)](/rest/api/searchservice/search-documents)som riktar in samlingen [hotell-exempel-index](search-get-started-portal.md) dokument.
 
 ```http
 POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
@@ -34,7 +34,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 }
 ```
 
-Parametrar som används vid frågekörningen:
+Parametrar som används vid frågekörningen är:
 
 + **`queryType`** ställer in parsern, som är antingen [standardvärdet för enkel fråga](search-query-simple-examples.md) (optimal för full texts ökning) eller den [fullständiga Lucene-frågeuttrycket](search-query-lucene-examples.md) som används för avancerade fråge konstruktioner som reguljära uttryck, närhets sökning, fuzzy och jokertecken, för att ge några.
 
@@ -66,7 +66,7 @@ Om din Sök-App innehåller en sökruta som samlar in term indata, är full text
 
 I Kognitiv sökning skapas full texts ökning på Apache Lucene-frågespråket. Frågesträngar i full texts ökning genomgår lexikal analys för att göra genomsökningar mer effektiva. Analysen innehåller gemener och versaler, och tar bort stopp ord som "The" och minskar termerna till primitiva rot formulär. Standard Analyzer är standard Lucene.
 
-När matchnings termer påträffas, utbildar frågemotor ett sökdokument som innehåller matchningen, rangordnar dokumenten efter relevans och returnerar de översta 50 (som standard) i svaret.
+När matchnings termer påträffas utgör frågespråket ett sökdokument som innehåller matchningen med hjälp av dokument nyckeln eller ID: t för att sätta samman fält värden, rangordna dokumenten efter relevans och returnerar de översta 50 (som standard) i svaret eller ett annat nummer om du har angett **`top`** .
 
 Om du implementerar fullständig texts ökning kan du förstå hur ditt innehåll är uppfyllt för att felsöka eventuella avvikelser i frågan. Frågor över avstavade strängar eller specialtecken kan krävas med hjälp av en annan analys än standard-Lucene för att säkerställa att indexet innehåller rätt tokens. Du kan åsidosätta standardvärdet med [språk analys](index-add-language-analyzers.md#language-analyzer-list) verktyg eller [särskilda analyser](index-add-custom-analyzers.md#AnalyzerTable) som ändrar lexikalisk analys. Ett exempel är ett [nyckelord](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) som behandlar hela innehållet i ett fält som en enskild token. Detta är användbart för data som post nummer, ID: n och vissa produkt namn. Mer information finns i [partiell terms ökning och mönster med specialtecken](search-query-partial-matching.md).
 
@@ -78,7 +78,7 @@ Om du förväntar dig kraftig användning av booleska operatorer, vilket är mer
 
 ## <a name="filter-search"></a>Filtrera sökning
 
-Filter används ofta i appar som innehåller Kognitiv sökning. På program sidor visualiseras ofta filter som FACET i länk navigerings strukturer för användar riktad filtrering. Filter används också internt för att exponera segment med indexerat innehåll. Du kan till exempel filtrera på ett språk om ett index innehåller fält på både engelska och franska. 
+Filter används ofta i appar som innehåller Kognitiv sökning. På program sidor visualiseras ofta filter som FACET i länk navigerings strukturer för användar riktad filtrering. Filter används också internt för att exponera segment med indexerat innehåll. Du kan till exempel initiera en Sök sida med ett filter i en produkt kategori, eller ett språk om ett index innehåller fält på både engelska och franska.
 
 Du kan också behöva filter för att anropa ett specialiserat fråge formulär, enligt beskrivningen i följande tabell. Du kan använda ett filter med en ospecificerad sökning ( **`search=*`** ) eller med en frågesträng som innehåller termer, fraser, operatorer och mönster.
 

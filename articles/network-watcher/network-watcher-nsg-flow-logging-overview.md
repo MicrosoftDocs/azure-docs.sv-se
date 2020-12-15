@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 03ef75f43d8c8c854c3803ceb30f31b292d566c3
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 79f442c5ab7db92e69f5396f3f9205212bdf4d4d
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033433"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399255"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Introduktion till flödesloggning för nätverkssäkerhetsgrupper
 
@@ -371,9 +371,11 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **Aktivera för kritiska virtuella nätverk/undernät**: flödes loggar ska aktive ras på alla kritiska virtuella nätverk/undernät i din prenumeration som bästa praxis för granskning och säkerhet. 
 
-**Aktivera NSG flödes loggning på alla NSG: er som är kopplade till en resurs**: flödes loggning i Azure konfigureras på NSG-resursen. Ett flöde kommer bara att associeras med en NSG-regel. I scenarier där flera NSG: er används rekommenderar vi att du aktiverar NSG flödes loggar på alla NSG: er använder en resurss undernät eller nätverks gränssnitt för att säkerställa att all trafik registreras. Mer information finns i [hur trafiken utvärderas](../virtual-network/network-security-group-how-it-works.md) i nätverks säkerhets grupper.
+**Aktivera NSG flödes loggning på alla NSG: er som är kopplade till en resurs**: flödes loggning i Azure konfigureras på NSG-resursen. Ett flöde kommer bara att associeras med en NSG-regel. I scenarier där flera NSG: er används rekommenderar vi att du aktiverar NSG flödes loggar på alla NSG: er som tillämpas på resursens undernät eller nätverks gränssnitt för att säkerställa att all trafik registreras. Mer information finns i [hur trafiken utvärderas](../virtual-network/network-security-group-how-it-works.md) i nätverks säkerhets grupper. 
 
-**Ha NSG på både NIC-och under näts nivå**: om NSG har kon figurer ATS på nätverkskortet samt under näts nivån måste flödes loggning aktive ras på både NSG: er. 
+Några vanliga scenarier:
+1. **Flera NSG på ett nätverkskort**: om flera NSG: er är kopplade till ett nätverkskort måste flödes loggning aktive ras på alla
+1. **Ha NSG på både NIC-och under näts nivå**: om NSG har kon figurer ATS på nätverkskortet samt under näts nivån måste flödes loggning aktive ras på både NSG: er. 
 
 **Lagrings etablering**: lagringen bör tillhandahållas i finjustera med den förväntade flödes logg volymen.
 

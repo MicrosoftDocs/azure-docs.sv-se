@@ -11,14 +11,57 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: c6cc033e4814553020957310224a8ed4cdacbc8e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 2db93ec6806d4b9cc8c8ac17cfb2c15458bf4dc9
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483962"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401159"
 ---
 # <a name="speech-service-release-notes"></a>Viktig information om Speech service
+
+## <a name="text-to-speech-2020-december-release"></a>Text till tal 2020 – december version
+
+**Nya neurala-röster i GA och Preview**
+
+Lanserade 51 nya röster för totalt 129 neurala-röster över 54-språk/-språk:
+
+- **46 nya röster i ga-nationella inställningar**: Shakir i `ar-EG` arabiska (Egypten), hamed i `ar-SA` arabiska (Saudiarabien), Borislav i `bg-BG` bulgariska (Bulgarien), Joana i `ca-ES` katalanska (Spanien). Antonin i `cs-CZ` tjeckiska (Tjeckien), Jeppe i `da-DK` danska (Danmark), Jonas på `de-AT` tyska (Österrike), Jan på `de-CH` tyska (Schweiz), Nestoras i `el-GR` grekiska (Grekland), Liam på `en-CA` engelska (Kanada), Connor på `en-IE` engelska (Irland), Madhur i `en-IN` hindi (Indien), Mohan i `en-IN` Telugu (Indien), Prabhat på `en-IN` engelska (Indien). Valluvar i `en-IN` Tamil (Indien), Enric i `es-ES` katalanska (Spanien), kert i `et-EE` estniska (Estland), Harri i `fi-FI` finska (Finland), Selma i `fi-FI` finska (Finland), Fabrice på `fr-CH` franska (Schweiz), Colm i `ga-IE` irländska (Irland), Avri i `he-IL` hebreiska (Israel), Srecko i `hr-HR` kroatiska (Kroatien), Tamas i `hu-HU` ungerska (Ungern), Gadis i `id-ID` Indonesiska (Indonesien), Leonas i `lt-LT` Litauiska (Litauen), Nils i `lv-LV` lettiska (Lettland), Osman i `ms-MY` malajiska (Malaysia), Joseph i `mt-MT` maltesiskhet (Malta) , Finsk i `nb-NO` norska, bokmål (Norge), Pernille i `nb-NO` norska, bokmål (Norge), Fenna i `nl-NL` nederländska (Nederländerna), Maarten i `nl-NL` nederländska (Nederländerna), Agnieszka i `pl-PL` polska (Polen), Marek i `pl-PL` polska (Polen), Duarte i `pt-BR` portugisiska (Brasilien), Raquel i `pt-PT` portugisiska (Potugal), Emil i `ro-RO` rumänska (Rumänien), Dmitry i `ru-RU` ryska (Ryssland). Svetlana i Ryssland `ru-RU` (Ryssland), Lukas i `sk-SK` slovakiska (Slovakien), Rok i `sl-SI` Slovenska (Slovenien), Mattias i `sv-SE` svenska (Sverige), Sofie i `sv-SE` svenska (Sverige), Niwat i `th-TH` thailändska (Thailand), Ahmet i `tr-TR` turkiska (Turkiet), NamMinh i `vi-VN` vietnamesiska (Vietnam), HsiaoChen i `zh-TW` taiwanesiska mandariner (Taiwan), YunJhe i `zh-TW` taiwanesiska mandariner (Taiwan), HiuMaan i `zh-HK` kinesiska kantonesiska (Hongkong), WanLung i `zh-HK` kinesiska kantonesiska (Hongkong).
+
+- **fem nya röster i för hands versioner**: kert i `et-EE` estniska (Estland), Colm i `ga-IE` irländska (Irland), Nils i `lv-LV` lettiska (Lettland), Leonas i `lt-LT` Litauiska (Litauen), Joseph i `mt-MT` maltesiskhet (Malta).
+
+I den här versionen har vi nu stöd för totalt 129 neurala-röster över 54-språk/-språk. Dessutom finns över 70 standard röster i 49-språk/-språk. Gå till [språk stöd](language-support.md#text-to-speech) för den fullständiga listan.
+
+**Uppdateringar för skapande av ljud innehåll**
+- Förbättrat röst markerings gränssnitt med röst kategorier och detaljerade röst beskrivningar. 
+- Aktiverade intonation-justering för alla neurala-röster på olika språk.
+- Automatisera UI-localizaiton baserat på språket i webbläsaren.
+- Aktiverade `StyleDegree` kontroller för alla `zh-CN` neurala-röster.
+Gå till [verktyget för att skapa ljud innehåll](https://speech.microsoft.com/audiocontentcreation) och ta en titt på de nya funktionerna. 
+
+**Uppdateringar för zh-CN-röster**
+- Uppdaterade alla `zh-CN` neurala-röster för att stödja engelska inläsning.
+- Aktiverade alla `zh-CN` neurala-röster för att stödja intonation-justering. Verktyget för att skapa SSML eller ljud innehåll kan användas för att justera för bästa möjliga intonation.
+- Uppdaterade alla `zh-CN` neurala-röster med flera stilar för att stödja `StyleDegree` kontrollen. Känslo-intensitet (Soft eller Strong) är justerbar.
+- Uppdaterat `zh-CN-YunyeNeural` med stöd för flera stilar som kan utföra olika känslor.
+
+## <a name="text-to-speech-2020-november-release"></a>Text till tal 2020 – november release
+
+**Nya språk och röster i för hands versionen**
+- **Fem nya röster och språk** introduceras i neurala TTS-portföljen. De är: Grace i maltesiska (Malta), på i litauiska (Litauen), Anu i estniska (Estland), Orla i irländska (Irland) och everita i lettiska (Lettland).
+- **Fem nya `zh-CN` röster med flera stilar och roller stöder**: Xiaohan, Xiaomo, Xiaorui, Xiaoxuan och Yunxi.
+
+> Dessa röster är tillgängliga i en offentlig för hands version i tre Azure-regioner: öster, Sydostasien och WestEurope.
+
+**Neurala TTS-behållare GA**
+- Med neurala TTS-behållare kan utvecklare köra tal syntes med de mest naturliga digitala rösterna i sin egen miljö för specifika säkerhets-och data styrnings krav. Se [hur du installerar tal behållare](speech-container-howto.md). 
+
+**Nya funktioner**
+- **Anpassad röst**: enabed-användare kan kopiera en röst modell från en region till en annan. slut punkts avstängning som stöds och återupptas. Gå till [portalen](https://speech.microsoft.com/customvoice) här.
+- Stöd för [SSML](speech-synthesis-markup.md#add-silence) . 
+- Förbättringar av tal röst kvalitet i tal: förbättrad precision på ord nivå i NB-nej. Minskat 53% uttal-fel.
+
+> Läs mer på [den här Tech-bloggen](https://techcommunity.microsoft.com/t5/azure-ai/neural-text-to-speech-previews-five-new-languages-with/ba-p/1907604).
 
 ## <a name="text-to-speech-2020-october-release"></a>Text till tal 2020 – utgåva från oktober
 
