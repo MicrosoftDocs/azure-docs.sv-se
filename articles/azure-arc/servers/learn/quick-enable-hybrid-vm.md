@@ -2,13 +2,13 @@
 title: Ansluta hybrid dator med Azure Arc-aktiverade servrar
 description: Lär dig hur du ansluter och registrerar en hybrid dator med Azure Arc-aktiverade servrar.
 ms.topic: quickstart
-ms.date: 11/12/2020
-ms.openlocfilehash: 3779d95ac138e83b1d953f744e07ae553890a5d7
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 12/15/2020
+ms.openlocfilehash: 68869854cbfcf6d7297137e6239b2229a20c04a1
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576834"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516789"
 ---
 # <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers"></a>Snabb start: ansluta hybrid dator med Azure Arc-aktiverade servrar
 
@@ -29,6 +29,9 @@ Med [Azure Arc-aktiverade servrar](../overview.md) kan du hantera och styra dina
     * Om datorn ansluter via en brand vägg eller proxyserver för kommunikation via Internet kontrollerar du att URL: erna i [listan](../agent-overview.md#networking-configuration) inte är blockerade.
 
     * Azure Arc-aktiverade servrar stöder bara de regioner som anges [här](../overview.md#supported-regions).
+
+> [!WARNING]
+> Linux-värdnamnet eller Windows-datornamnet kan inte använda ett av de reserverade orden eller varumärkena i namnet, annars försöker registreringen av den anslutna datorn i Azure Miss lyckas. Se [lösa fel i reserverat resurs namn](../../../azure-resource-manager/templates/error-reserved-resource-name.md) för en lista över reserverade ord.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 

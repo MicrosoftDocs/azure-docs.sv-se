@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3e3245053fcc9943814268835fa5ac0f40a6f94c
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: f6907db7f6e53247a8f2fc0042e8c8e6b081dbd3
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750517"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516368"
 ---
 # <a name="secure-your-restful-services"></a>Skydda dina RESTful-tjänster 
 
@@ -28,7 +28,7 @@ Lär dig hur du integrerar en REST API inom Azure AD B2C användar resa i artikl
 
 I den här artikeln får du lära dig hur du skyddar REST API med antingen HTTP Basic, klient certifikat eller OAuth2-autentisering. 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Slutför stegen i någon av följande rikt linjer:
 
@@ -230,7 +230,7 @@ Ett anspråk ger tillfällig lagring av data under en Azure AD B2C princip körn
 
 ### <a name="acquiring-an-access-token"></a>Förvärva en åtkomsttoken 
 
-Du kan få en åtkomsttoken på ett av flera sätt: genom att hämta den [från en federerad identitetsprovider](idp-pass-through-custom.md), genom att anropa en REST API som returnerar en åtkomsttoken, genom att använda ett [ROPC-flöde](../active-directory/develop/v2-oauth-ropc.md)eller genom att använda flödet för [klientautentiseringsuppgifter](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md).  
+Du kan få en åtkomsttoken på ett av flera sätt: genom att hämta den [från en federerad identitetsprovider](idp-pass-through-user-flow.md), genom att anropa en REST API som returnerar en åtkomsttoken, genom att använda ett [ROPC-flöde](../active-directory/develop/v2-oauth-ropc.md)eller genom att använda flödet för [klientautentiseringsuppgifter](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md).  
 
 I följande exempel används en REST API teknisk profil för att göra en begäran till Azure AD-token-slutpunkten med de klientautentiseringsuppgifter som skickas som HTTP Basic-autentisering. Om du vill konfigurera detta i Azure AD, se [Microsoft Identity Platform och OAuth 2,0-klientens autentiseringsuppgifter Flow](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md). Du kan behöva ändra detta till ett gränssnitt med din identitets leverantör. 
 
@@ -320,7 +320,7 @@ Om du vill konfigurera en REST API teknisk profil med en OAuth2 Bearer-token hä
 1. På sidan Översikt väljer du **ID för identitets miljö**.
 1. Välj **princip nycklar** och välj sedan **Lägg till**.
 1. För **alternativ** väljer du `Manual` .
-1. Ange ett **namn** för princip nyckeln. Exempelvis `RestApiBearerToken`. Prefixet `B2C_1A_` läggs till automatiskt till namnet på din nyckel.
+1. Ange ett **namn** för princip nyckeln. Ett exempel är `RestApiBearerToken`. Prefixet `B2C_1A_` läggs till automatiskt till namnet på din nyckel.
 1. I **hemlighet** anger du din klient hemlighet som du tidigare har spelat in.
 1. För **nyckel användning** väljer du `Encryption` .
 1. Välj **Skapa**.

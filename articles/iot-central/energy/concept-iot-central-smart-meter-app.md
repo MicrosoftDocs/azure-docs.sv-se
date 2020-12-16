@@ -3,21 +3,19 @@ title: Arkitektur koncept i Azure IoT Central – smart mätare | Microsoft Docs
 description: Den här artikeln beskriver viktiga begrepp som rör arkitekturen i Azure IoT Central Energy app-mall
 author: op-ravi
 ms.author: omravi
-ms.date: 10/22/2019
+ms.date: 12/11/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 9f5e1ba52390191409d8da4bc4c41faaa859a4a8
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: f9167df3ce56116e02addec411d5f720ea366ea0
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125619"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516665"
 ---
 # <a name="azure-iot-central---smart-meter-app-architecture"></a>Azure IoT Central – arkitektur för smart avläsning av program vara
-
-
 
 Den här artikeln innehåller en översikt över arkitekturen för appar för smart avläsning av övervakning. Diagrammet nedan visar en arkitektur för smart avläsning av appar på Azure med hjälp av IoT Centrals plattform.
 
@@ -30,11 +28,9 @@ Den här arkitekturen består av följande komponenter. Vissa lösningar kanske 
 
 En smart mätare är en av de viktigaste enheterna bland alla energi till gångar. Den registrerar och kommunicerar energi förbruknings data till verktyg för övervakning och andra användnings fall, till exempel fakturerings-och svars tid för begäran. Baserat på mätar typen kan den ansluta till IoT Central antingen med hjälp av gatewayer eller andra mellanliggande enheter eller system, t. ex. enheter och huvud system. Skapa IoT Central enhets brygga för att ansluta enheter, som inte kan anslutas direkt. IoT Central Device Bridge är en lösning med öppen källkod och du hittar den fullständiga informationen [här](../core/howto-build-iotc-device-bridge.md). 
 
-
 ## <a name="iot-central-platform"></a>IoT Central plattform
 
 Azure IoT Central är en plattform som fören klar skapandet av IoT-lösningen och hjälper till att minska belastningen och kostnaderna för IoT-hantering, åtgärder och utveckling. Med IoT Central kan du enkelt ansluta, övervaka och hantera dina Sakernas Internet (IoT)-till gångar i stor skala. När du har anslutit dina smart-mätare till IoT Central använder app-mallen inbyggda funktioner, till exempel enhets modeller, kommandon och instrument paneler. App-mallen använder också IoT Central lagring för varma sökvägar, till exempel data övervakning, analys, regler och visualisering i nära real tid. 
-
 
 ## <a name="extensibility-options-to-build-with-iot-central"></a>Utöknings alternativ för att bygga med IoT Central
 IoT Centrals plattformen innehåller två alternativ för utöknings barhet: kontinuerlig data export (CDE) och API: er. Kunder och partner kan välja mellan de här alternativen för att anpassa sina lösningar efter speciella behov. Till exempel är en av våra partner konfigurerade CDE med Azure Data Lake Storage (ADLS). De använder ADLS för långsiktig datakvarhållning och andra lagrings scenarier för kall vägar, t. ex. batch-bearbetning, granskning och rapportering. 

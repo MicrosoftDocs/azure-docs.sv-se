@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 94da22fbb2940bddaad1324bedc8759706eca37b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 47c3c091e767cac63bb814469397ef1a0aeca3a4
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173574"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516497"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Metod tips och rekommendationer för Microsoft Identity Platform
 
@@ -28,9 +28,9 @@ Om du precis har kommit igång kan du läsa dokumentationen om autentisering i [
 Använd följande check lista för att se till att programmet är effektivt integrerat med [Microsoft Identity Platform](./index.yml).
 
 > [!TIP]
-> *Integrations assistenten* i Azure Portal kan hjälpa dig att använda många av de rekommenderade metoderna och rekommendationerna. Välj någon av dina [app-registreringar](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) i Azure Portal och välj sedan meny alternativet **integration Assistant (förhands granskning)** för att komma igång med assistenten.
+> *Integrations assistenten* i Azure Portal kan hjälpa dig att använda många av de rekommenderade metoderna och rekommendationerna. Välj någon av dina [program registreringar](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) i Azure Portal och välj sedan meny alternativet **integrations assistenten** för att komma igång med assistenten.
 
-## <a name="basics"></a>Grundläggande inställningar
+## <a name="basics"></a>Grunder
 
 ![kryss rutan ](./media/active-directory-integration-checklist/checkbox-two.svg) läsa och förstå [Microsofts plattforms principer](/legal/microsoft-identity-platform/terms-of-use). Se till att ditt program följer de villkor som har utformats för att skydda användare och plattform.
 

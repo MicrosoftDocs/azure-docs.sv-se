@@ -1,18 +1,18 @@
 ---
 title: Registrera en kund i Azure Lighthouse
 description: Lär dig hur du kan publicera en kund i Azure Lighthouse, så att deras resurser kan nås och hanteras via din egen klient med Azure-delegerad resurs hantering.
-ms.date: 12/04/2020
+ms.date: 12/15/2020
 ms.topic: how-to
-ms.openlocfilehash: b353a8194b9f5dd48b315340435669531359e8d5
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 023b44a77cb38a14df8aa6a885ff137c02942061
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608477"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516138"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Registrera en kund i Azure Lighthouse
 
-Den här artikeln förklarar hur du, som en tjänst leverantör, kan publicera en kund till Azure Lighthouse. När du gör det kan kundens delegerade resurser (prenumerationer och/eller resurs grupper) nås och hanteras via din egen Azure Active Directory-klient (Azure AD) med hjälp av [Azure-delegerad resurs hantering](../concepts/azure-delegated-resource-management.md).
+Den här artikeln förklarar hur du, som en tjänst leverantör, kan publicera en kund till Azure Lighthouse. När du gör det kan delegerade resurser (prenumerationer och/eller resurs grupper) i kundens Azure Active Directory-klient (Azure AD) hanteras via din egen klient med hjälp av [Azure-delegerad resurs hantering](../concepts/azure-delegated-resource-management.md).
 
 > [!TIP]
 > Även om vi refererar till tjänst leverantörer och kunder i det här avsnittet kan [företag som hanterar flera klienter](../concepts/enterprise.md) använda samma process för att konfigurera Azure-Lighthouse och konsolidera sina hanterings upplevelser.
@@ -22,7 +22,7 @@ Du kan upprepa onboarding-processen för flera kunder. När en användare med r�
 Om du vill spåra din påverkan på kund engagemang och få erkännande, associerar du ditt Microsoft Partner Network (MPN) ID med minst ett användar konto som har åtkomst till var och en av dina inbyggda prenumerationer. Du måste utföra den här associationen i din tjänst leverantörs klient. Vi rekommenderar att du skapar ett tjänst huvud konto i din klient som är associerat med ditt MPN-ID och sedan inkluderar tjänstens huvud namn varje gång du registrerar en kund. Mer information finns i [Länka ditt partner-ID för att aktivera intjänad partner kredit på delegerade resurser](partner-earned-credit.md).
 
 > [!NOTE]
-> Kunder kan också publiceras på Azure-Lighthouse när de köper ett hanterat tjänst erbjudande (offentligt eller privat) som du [publicerar på Azure Marketplace](publish-managed-services-offers.md). Du kan också använda onboarding-processen som beskrivs här tillsammans med erbjudanden som publicerats på Azure Marketplace.
+> Kunder kan alternativt registreras i Azure Lighthouse när de köper ett hanterat tjänst erbjudande (offentligt eller privat) som du [publicerar på Azure Marketplace](publish-managed-services-offers.md). Du kan också använda onboarding-processen som beskrivs här tillsammans med erbjudanden som publicerats på Azure Marketplace.
 
 Onboarding-processen kräver att åtgärder tas från både tjänst leverantörens klient organisation och kundens klient organisation. Alla dessa steg beskrivs i den här artikeln.
 
@@ -303,7 +303,19 @@ az account list
 
 Om du behöver göra ändringar när kunden har publicerats kan du [Uppdatera delegeringen](update-delegation.md). Du kan också [ta bort åtkomsten till delegeringen](remove-delegation.md) helt.
 
+## <a name="troubleshooting"></a>Felsökning
+
+Om du inte kan publicera kunden eller om dina användare har problem med att komma åt de delegerade resurserna kontrollerar du följande tips och krav och försöker igen.
+
+- `managedbyTenantId`Värdet får inte vara samma som klient-ID: t för den prenumeration som registreras.
+- Det går inte att ha flera tilldelningar i samma definitions område `mspOfferName` . 
+- **Microsoft. ManagedServices** -resurs leverantören måste vara registrerad för den delegerade prenumerationen. Detta bör ske automatiskt under distributionen, men om inte kan du [registrera den manuellt](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
+- Auktoriseringar får inte innehålla några användare med den inbyggda rollen [ägare](../../role-based-access-control/built-in-roles.md#owner) eller någon inbyggd roll med [DataActions](../../role-based-access-control/role-definitions.md#dataactions).
+- Grupper måste skapas med en [**grupp typ**](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md#group-types) som **säkerhet** och inte **Microsoft 365**.
+- Användare som behöver visa resurser i Azure Portal måste ha rollen [läsare](../../role-based-access-control/built-in-roles.md#reader) (eller en annan inbyggd roll som inkluderar läsar åtkomst).
+
 ## <a name="next-steps"></a>Nästa steg
 
 - Lär dig mer om [hanterings upplevelser mellan flera innehavare](../concepts/cross-tenant-management-experience.md).
 - [Visa och hantera kunder](view-manage-customers.md) genom att gå till **mina kunder** i Azure Portal.
+- Lär dig hur du [uppdaterar](update-delegation.md) eller [tar bort](remove-delegation.md) en delegering.

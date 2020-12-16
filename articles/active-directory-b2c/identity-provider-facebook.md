@@ -8,18 +8,31 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/26/2019
+ms.date: 12/07/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 62956000e143f5504d32dae26953bcf877ce96a6
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: 37fc33ae8084a2b4e99e7b5dc417eac70060eef5
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628583"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516204"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett Facebook-konto med hjälp av Azure Active Directory B2C
+
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+::: zone pivot="b2c-custom-policy"
+
+[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+
+::: zone-end
+
+## <a name="prerequisites"></a>Förutsättningar
+
+[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-facebook-application"></a>Skapa ett Facebook-program
 
@@ -27,31 +40,81 @@ Om du vill använda ett Facebook-konto som [identitets leverantör](authorizatio
 
 1. Logga in på [Facebook för utvecklare](https://developers.facebook.com/) med dina Facebook-kontoautentiseringsuppgifter.
 1. Om du inte redan har gjort det måste du registrera dig som en Facebook-utvecklare. Om du vill göra det väljer du **Kom igång** i det övre högra hörnet på sidan, accepterar Facebook-principer och slutför registrerings stegen.
-1. Välj **Mina appar** och sedan **skapa app** .
-1. Välj **Bygg anslutna upplevelser** .
-1. Ange ett **visnings namn** och en giltig **kontakt-e-postadress** .
-1. Välj **skapa app-ID** . Detta kan kräva att du accepterar Facebook-plattforms principer och slutför en säkerhets kontroll online.
-1. Välj **Inställningar**  >  **Basic** .
-    1. Välj en **kategori** , till exempel `Business and Pages` . Det här värdet krävs av Facebook, men används inte för Azure AD B2C.
-    1. Ange en URL för URL: en för **tjänst villkoren** , till exempel `http://www.contoso.com/tos` . Princip-URL: en är en sida som du upprätthåller för att tillhandahålla villkor för ditt program.
-    1. Ange en URL för **Sekretess policyns URL** , till exempel `http://www.contoso.com/privacy` . Princip-URL: en är en sida som du upprätthåller för att tillhandahålla sekretess information för ditt program.
-1. Längst ned på sidan väljer du **Lägg till plattform** och väljer sedan **webbplats** .
+1. Välj **Mina appar** och sedan **skapa app**.
+1. Välj **Bygg anslutna upplevelser**.
+1. Ange ett **visnings namn** och en giltig **kontakt-e-postadress**.
+1. Välj **skapa app-ID**. Detta kan kräva att du accepterar Facebook-plattforms principer och slutför en säkerhets kontroll online.
+1. Välj **Inställningar**  >  **Basic**.
+    1. Välj en **kategori**, till exempel `Business and Pages` . Det här värdet krävs av Facebook, men används inte för Azure AD B2C.
+    1. Ange en URL för URL: en för **tjänst villkoren**, till exempel `http://www.contoso.com/tos` . Princip-URL: en är en sida som du upprätthåller för att tillhandahålla villkor för ditt program.
+    1. Ange en URL för **Sekretess policyns URL**, till exempel `http://www.contoso.com/privacy` . Princip-URL: en är en sida som du upprätthåller för att tillhandahålla sekretess information för ditt program.
+1. Längst ned på sidan väljer du **Lägg till plattform** och väljer sedan **webbplats**.
 1. I **webbplats-URL** anger du adressen till din webbplats, till exempel `https://contoso.com` . 
-1. Välj **Spara ändringar** .
+1. Välj **Spara ändringar**.
 1. Kopiera värdet för **app-ID** överst på sidan.
-1. Välj **Visa** och kopiera värdet för **appens hemlighet** . Du använder båda alternativen för att konfigurera Facebook som en identitets leverantör i din klient organisation. **App Secret** är en viktig säkerhets autentiseringsuppgift.
-1. Från menyn väljer du **plus** tecknet bredvid **produkter** . Under **Lägg till produkter till din app** väljer du **Konfigurera** under **Facebook-inloggning** .
-1. I menyn väljer du **Facebook-inloggning** och sedan **Inställningar** .
+1. Välj **Visa** och kopiera värdet för **appens hemlighet**. Du använder båda alternativen för att konfigurera Facebook som en identitets leverantör i din klient organisation. **App Secret** är en viktig säkerhets autentiseringsuppgift.
+1. Från menyn väljer du **plus** tecknet bredvid **produkter**. Under **Lägg till produkter till din app** väljer du **Konfigurera** under **Facebook-inloggning**.
+1. I menyn väljer du **Facebook-inloggning** och sedan **Inställningar**.
 1. I **giltiga OAuth-omdirigerings-URI: er** anger du `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Ersätt `your-tenant-name` med namnet på din klient. Välj **Spara ändringar** längst ned på sidan.
-1. Om du vill göra ditt Facebook-program tillgängligt för Azure AD B2C väljer du status väljaren längst upp till höger på sidan och **aktiverar det för att göra** programmet offentligt och väljer sedan **Växla läge** .  I det här läget bör statusen ändras från **utveckling** till **Live** .
+1. Om du vill göra ditt Facebook-program tillgängligt för Azure AD B2C väljer du status väljaren längst upp till höger på sidan och **aktiverar det för att göra** programmet offentligt och väljer sedan **Växla läge**.  I det här läget bör statusen ändras från **utveckling** till **Live**.
+
+::: zone pivot="b2c-user-flow"
 
 ## <a name="configure-a-facebook-account-as-an-identity-provider"></a>Konfigurera ett Facebook-konto som en identitets leverantör
 
 1. Logga in på [Azure Portal](https://portal.azure.com/) som global administratör för Azure AD B2C-klientorganisationen.
 1. Kontrol lera att du använder den katalog som innehåller din Azure AD B2C klient genom att välja filtret **katalog + prenumeration** på den översta menyn och välja den katalog som innehåller din klient.
-1. Välj **Alla tjänster** på menyn högst upp till vänster i Azure-portalen och sök efter och välj **Azure AD B2C** .
-1. Välj **identitets leverantörer** och välj sedan **Facebook** .
-1. Ange ett **namn** . Till exempel *Facebook* .
+1. Välj **Alla tjänster** på menyn högst upp till vänster i Azure-portalen och sök efter och välj **Azure AD B2C**.
+1. Välj **identitets leverantörer** och välj sedan **Facebook**.
+1. Ange ett **namn**. Till exempel *Facebook*.
 1. För **klient-ID** anger du app-ID: t för det Facebook-program som du skapade tidigare.
 1. För **klient hemligheten** anger du appens hemlighet som du har spelat in.
-1. Välj **Spara** .
+1. Välj **Spara**.
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+## <a name="add-facebook-as-an-identity-provider"></a>Lägg till Facebook som en identitets leverantör
+
+1. `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** Ersätt värdet för `client_id` med Facebook-programmets ID i filen:
+
+   ```xml
+   <TechnicalProfile Id="Facebook-OAUTH">
+     <Metadata>
+     <!--Replace the value of client_id in this technical profile with the Facebook app ID"-->
+       <Item Key="client_id">00000000000000</Item>
+   ```
+
+::: zone-end
+
+::: zone pivot="b2c-user-flow"
+
+## <a name="add-facebook-identity-provider-to-a-user-flow"></a>Lägg till Facebook Identity Provider i ett användar flöde 
+
+1. Välj **användar flöden** i Azure AD B2C klient.
+1. Klicka på det användar flöde som du vill använda för Facebook Identity Provider.
+1. Under **leverantörer av sociala identitet** väljer du **Facebook**.
+1. Välj **Spara**.
+1. Om du vill testa principen väljer du **Kör användar flöde**.
+1. För **program** väljer du det webb program som heter *testapp1* som du tidigare har registrerat. **Svars-URL: en** ska visas `https://jwt.ms` .
+1. Klicka på **Kör användar flöde**
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+## <a name="upload-and-test-the-policy"></a>Ladda upp och testa principen
+
+Uppdatera den förlitande parten (RP) som initierar användar resan som du har skapat.
+
+1. Ladda upp *TrustFrameworkExtensions.xml* -filen till din klient organisation.
+1. Under **anpassade principer** väljer du **B2C_1A_signup_signin**.
+1. För **Välj program** väljer du det webb program som heter *testapp1* som du tidigare har registrerat. **Svars-URL: en** ska visas `https://jwt.ms` .
+1. Välj **Kör nu** och välj Facebook för att logga in med Facebook och testa den anpassade principen.
+
+::: zone-end
+
+## <a name="next-steps"></a>Nästa steg
+
+Lär dig hur du [skickar Facebook-token till ditt program](idp-pass-through-user-flow.md).

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: thvankra
 ms.reviewer: thvankra
-ms.openlocfilehash: 827abcdb9eb2eb8b7328eb3e3a78f49d51e87e6b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 74088d749279ab72851e714a50b558dc2adbc0d7
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349188"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516551"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-azure-databricks"></a>Migrera data från Cassandra till Azure Cosmos DB API för Cassandra konto med Azure Databricks
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -42,7 +42,7 @@ Det finns olika sätt att migrera databas arbets belastningar från en plattform
 
 ## <a name="provision-an-azure-databricks-cluster"></a>Etablera ett Azure Databricks kluster
 
-Du kan följa anvisningarna för att [etablera ett Azure Databricks kluster](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal). Observera dock att Apache Spark 3. x för närvarande inte stöds för Apache Cassandra-anslutningen. Du måste tillhandahålla en Databricks-körning med en v2. x-version som stöds av Apache Spark. Vi rekommenderar version 6,6 av Databricks Runtime:
+Du kan följa anvisningarna för att [etablera ett Azure Databricks kluster](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal). Observera dock att Apache Spark 3. x för närvarande inte stöds för Apache Cassandra-anslutningen. Du måste tillhandahålla en Databricks-körning med en v2. x-version som stöds av Apache Spark. Vi rekommenderar att du väljer en version av Databricks runtime som stöder den senaste versionen av Spark 2. x, med en senare version än Scala version 2,11:
 
 :::image type="content" source="./media/cassandra-migrate-cosmos-db-databricks/databricks-runtime.png" alt-text="Databricks-körning":::
 

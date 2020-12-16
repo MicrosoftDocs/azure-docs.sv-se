@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: alexeyo
-ms.openlocfilehash: c88a7820518d0a73bfb0e93d3b364190207b8f90
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 01a0171ed2b660fbabebf4276a74f8a3ea631bde
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97051233"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516526"
 ---
 # <a name="using-speech-services-with-private-endpoints-provided-by-azure-private-link"></a>Använda tal tjänster med privata slut punkter från Azures privata länk
 
@@ -53,11 +53,11 @@ Privata slut punkter kräver användning av [Cognitive Services anpassade under 
 - En ny panel visas med instruktioner för att skapa en unik anpassad under domän för din resurs
 > [!WARNING]
 > När du har skapat ett anpassat domän namn **går det inte att** ändra. Mer information finns i varningen ovan.
-- När åtgärden har slutförts kanske du vill välja *nycklar och slut punkt* (*resurs hanterings* grupp) och kontrol lera resursens nya slut punkts namn i formatet `{your custom name}.cognitiveservices.azure.com`
+- När åtgärden har slutförts kanske du vill välja *nycklar och slut punkt* (*resurs hanterings* grupp) och kontrol lera resursens nya slut punkts namn i formatet <p />`{your custom name}.cognitiveservices.azure.com`
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Det här avsnittet kräver att du kör PowerShell version 7. x eller senare med Azure PowerShell-modul version 5.1.0 eller senare. Kör `Get-Module -ListAvailable Az` för att hitta den installerade versionen. Om du behöver installera eller uppgradera kan du läsa [installera Azure PowerShell-modulen](/powershell/azure/install-Az-ps) .
+Det här avsnittet kräver att du kör PowerShell version 7. x eller senare med Azure PowerShell-modul version 5.1.0 eller senare. Kör `Get-Module -ListAvailable Az` för att hitta den installerade versionen. Om du behöver installera eller uppgradera kan du läsa [Install Azure PowerShell module](/powershell/azure/install-Az-ps) (Installera Azure PowerShell-modul).
 
 Innan du fortsätter att köra nästa steg `Connect-AzAccount` för att skapa en anslutning till Azure.
 
@@ -275,10 +275,10 @@ Tal tjänster har REST API för [tal till text](rest-speech-to-text.md) och [tex
 Tal till text har två olika REST-API: er. Varje API fungerar på ett annat sätt, använder olika slut punkter och kräver en annan metod när du använder enkel inloggning i scenariot för privat slut punkt aktiverat.
 
 REST-API: er från tal till text är:
-- [v 1.0](rest-speech-to-text.md) används för on-line-avskrifter
-- v 3.0 används för [batch-avskrifter](batch-transcription.md) och [Custom Speech](custom-speech-overview.md). (Se [fullständig referens](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0))
+- [Tal-till-text REST API v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) används för [batch-avskrifter](batch-transcription.md) och [Custom Speech](custom-speech-overview.md). v 3.0 är en [efterföljande aktivitet för v 2.0](/azure/cognitive-services/speech-service/migrate-v2-to-v3).
+- [Tal-till-text-REST API för kort ljud](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) används för att avskrifta online. 
 
-Användning av tal-till-text v 1.0 och text till tal-REST API i det privata slut punkts scenariot är samma som motsvarande [tal SDK-fall](#speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-speech-sdk) som beskrivs längre fram i den här artikeln. 
+Användning av tal-till-text-REST API för kort ljud-och text till tal-REST API i det privata slut punkt scenariot är detsamma och motsvarande [tal SDK-fall](#speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-speech-sdk) som beskrivs längre fram i den här artikeln. 
 
 Tal-till-text REST API v 3.0 använder en annan uppsättning slut punkter och kräver därför en annan metod för scenariot med privat slut punkt aktiverat.
 
@@ -287,7 +287,7 @@ Båda fallen beskrivs i nästa avsnitt.
 
 ##### <a name="speech-to-text-rest-api-v30"></a>Tal till text REST API v 3.0
 
-Normalt använder tal resurser [Cognitive Services regionala slut punkter](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) för att kommunicera med [tal-till-text REST API v 3.0](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0). Dessa resurser har följande namngivnings format: <p/>`{region}.api.cognitive.microsoft.com`
+Normalt använder tal resurser [Cognitive Services regionala slut punkter](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) för att kommunicera med [tal-till-text REST API v 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30). Dessa resurser har följande namngivnings format: <p/>`{region}.api.cognitive.microsoft.com`
 
 Detta är en URL för exempel förfrågan:
 
@@ -311,15 +311,18 @@ I allmänhet när du har aktiverat anpassat domän namn för en tal resurs måst
 >
 > Anpassat domän namn för tal resurs innehåller **ingen** information om den region där resursen har distribuerats. Den program logik som beskrivs ovan kommer **inte** att fungera och måste ändras.
 
-##### <a name="speech-to-text-rest-api-v10-and-text-to-speech-rest-api"></a>Tal-till-text REST API v 1.0 och text till tal-REST API
+##### <a name="speech-to-text-rest-api-for-short-audio-and-text-to-speech-rest-api"></a>Tal-till-text-REST API för kort ljud-och text till tal-REST API
 
-[Tal-till-Text REST API v 1.0](rest-speech-to-text.md) och [text till tal REST API](rest-text-to-speech.md) använder två typer av slut punkter:
+[Tal-till-text-REST API för kort ljud](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) [-och text till tal-REST API](rest-text-to-speech.md) använder två typer av slut punkter:
 - [Cognitive Services regionala slut punkter](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) för att kommunicera med Cognitive Services-REST API för att hämta en autentiseringstoken
 - Särskilda slut punkter för alla andra åtgärder
 
 Den detaljerade beskrivningen av särskilda slut punkter och hur deras URL ska transformeras för en privat slut punkt som är aktive rad i [den här underavsnittet](#general-principle) i avsnittet "användning med tal-SDK" nedan. Samma princip som beskrivs för SDK gäller för tal-till-text v 1.0 och text till tal-REST API.
 
-Bekanta dig med materialet i underavsnittet som nämns i föregående stycke och se följande exempel. (Exemplet beskriver text-till-tal-REST API; användningen av tal-till-text v 1.0 REST API är helt likvärdig)
+Bekanta dig med materialet i underavsnittet som nämns i föregående stycke och se följande exempel. (Exemplet beskriver text-till-tal-REST API; användningen av tal-till-text-REST API för kort ljud är helt likvärdig)
+
+> [!NOTE]
+> När du använder **tal-till-text-REST API för kort ljud** i scenarier med privata slut punkter, måste du använda token som [skickas via](rest-speech-to-text.md#request-headers) `Authorization` [sidhuvudet](rest-speech-to-text.md#request-headers). det går inte att skicka tal prenumerations nyckeln till den särskilda slut punkten via `Ocp-Apim-Subscription-Key` huvudet och genererar fel 401. 
 
 **Exempel på text till tal-REST API användning.**
 
@@ -342,7 +345,7 @@ För den privata slut punkten Enabled Speech-resurs måste slut punkts-URL: er f
 ```http
 https://my-private-link-speech.cognitiveservices.azure.com/v1.0/issuetoken
 ```
-(se detaljerad förklaring i underavsnittet [om tal-till-Text REST API v 3.0](#speech-to-text-rest-api-v30) ovan)
+(se detaljerad förklaring i underavsnittet [om tal-till-text REST API v 3.0](#speech-to-text-rest-api-v30) ovan)
 - Hämta listan över röster med hjälp av den hämtade token via
 ```http
 https://my-private-link-speech.cognitiveservices.azure.com/tts/cognitiveservices/voices/list
@@ -497,14 +500,16 @@ Jämför den med utdata från [det här avsnittet](#optional-check-dns-resolutio
 
 Användning av tal-till-text REST API v 3.0 är helt likvärdig med fallet för de [tal resurser som är aktiverade för privata slut punkter](#speech-to-text-rest-api-v30).
 
-##### <a name="speech-to-text-rest-api-v10-and-text-to-speech-rest-api"></a>Tal-till-text REST API v 1.0 och text till tal-REST API
+##### <a name="speech-to-text-rest-api-for-short-audio-and-text-to-speech-rest-api"></a>Tal-till-text-REST API för kort ljud-och text till tal-REST API
 
-I det här fallet är tal-till-text REST API v 1.0 och text till tal REST API användningen inga skillnader i det allmänna fallet och bör användas som det beskrivs i [tal-till-text REST API v 1.0](rest-speech-to-text.md) och [text till tal REST API](rest-text-to-speech.md) dokumentation.
+I det här fallet är tal-till-text-REST API för kort ljud-och text till tal-REST API användning har inga skillnader i det allmänna fallet med ett undantag för tal-till-text-REST API för kort ljud (se OBS! nedan). Båda API: erna bör användas enligt beskrivningen i [tal-till-text-REST API för kort](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) [text och text till tal REST API-](rest-text-to-speech.md) dokumentation.
 
+> [!NOTE]
+> När du använder **tal-till-text-REST API för kort ljud** i anpassade domän scenarier, behöver du använda autentiseringstoken som [skickas genom](rest-speech-to-text.md#request-headers) `Authorization` [sidhuvudet](rest-speech-to-text.md#request-headers). den resulterande tal prenumerations nyckeln skickas till den särskilda slut punkten via `Ocp-Apim-Subscription-Key` rubrik fungerar **inte** och genererar fel 401.
 
 #### <a name="speech-resource-with-custom-domain-name-without-private-endpoints-usage-with-speech-sdk"></a>Tal resurs med eget domän namn utan privata slut punkter. Användning med tal-SDK
 
-Genom att använda tal-SDK med anpassat domän namn aktiverat tal resurser **utan** privata slut punkter måste du granska och troligt vis ändra program koden. Observera att dessa ändringar är **olika** jämfört med en [privat slut punkt som är aktive rad tal resurs](#speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-speech-sdk). Vi arbetar på sömlöst stöd för privat slut punkt/anpassad domän.
+Genom att använda tal-SDK med anpassat domän namn aktiverat tal resurser **utan** privata slut punkter måste du granska och troligt vis ändra program koden. Observera att dessa ändringar är **olika** jämfört med en [privat slut punkt som är aktive rad tal resurs](#speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-speech-sdk). Vi arbetar på mer sömlöst stöd för privata slut punkter/anpassat domän scenario.
 
 Vi kommer att använda `my-private-link-speech.cognitiveservices.azure.com` som exempel på tal resursens DNS-namn (anpassad domän) för det här avsnittet.
 

@@ -3,21 +3,19 @@ title: 'Självstudie: skapa en övervaknings-app på en sol panel med IoT Centra
 description: 'Självstudie: Lär dig hur du skapar ett sol panel program med hjälp av Azure IoT Central programmallar.'
 author: op-ravi
 ms.author: omravi
-ms.date: 11/12/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 145aefbe5a31d71ae614826c63d285c37ac03571
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: d006bae8290c1f6ea564f9985727f4d6ff70bb04
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123933"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516760"
 ---
 # <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>Självstudie: skapa och gå igenom en mall för övervakning av solpanels program 
-
-
 
 Den här självstudien vägleder dig genom processen för att skapa övervaknings programmet för sol panelen, som innehåller en exempel enhets modell med simulerade data. I den här självstudiekursen lär du dig:
 
@@ -31,8 +29,8 @@ Den här självstudien vägleder dig genom processen för att skapa övervakning
 Om du inte har någon prenumeration kan du [skapa ett kostnads fritt utvärderings konto](https://azure.microsoft.com/free)
 
 ## <a name="prerequisites"></a>Förutsättningar
-- Inga
-- Azure-prenumeration rekommenderas, men du behöver inte testa
+* Ingen
+* Azure-prenumeration rekommenderas, men du behöver inte testa
 
 
 ## <a name="create-a-solar-panel-monitoring-app"></a>Skapa en app för solpanelsövervakning 
@@ -41,12 +39,12 @@ Du kan skapa det här programmet i tre enkla steg:
 
 1. Öppna [Azure IoT Central start sida](https://apps.azureiotcentral.com) och klicka på **skapa** för att skapa ett nytt program. 
 
-2. Välj fliken **energi** och klicka på **skapa app** i övervaknings program panelen i **sol panelen** . 
+1. Välj fliken **energi** och klicka på **skapa app** i övervaknings program panelen i **sol panelen** . 
 
     > [!div class="mx-imgBorder"]
     > ![Bygg app](media/tutorial-iot-central-solar-panel/solar-panel-build.png)
   
-3. **Skapa app** öppnar **nytt program** formulär. Fyll i den begärda informationen som visas i bilden nedan:
+1. **Skapa app** öppnar **nytt program** formulär. Fyll i den begärda informationen som visas i bilden nedan:
     * **Program namn**: Välj ett namn för IoT Central programmet. 
     * **URL**: välj en IoT Central URL, plattformen verifierar att den är unik.
     * **7-dagars kostnads fri utvärderings version**: om du redan har en Azure-prenumeration rekommenderas standardinställningen. Om du inte har en Azure-prenumeration börjar du med den kostnads fria utvärderings versionen.
@@ -100,7 +98,7 @@ Klicka på fliken **enhets mallar** om du vill se enhets modellen för sol panel
 Om du väljer att inte fortsätta använda programmet tar du bort programmet med följande steg:
 
 1. Öppna fliken Administration i den vänstra rutan
-2. Välj program inställningar och klicka på knappen Ta bort längst ned på sidan. 
+1. Välj program inställningar och klicka på knappen Ta bort längst ned på sidan. 
 
     > [!div class="mx-imgBorder"]
     > ![Ta bort program](media/tutorial-iot-central-solar-panel/solar-panel-delete-app.png)

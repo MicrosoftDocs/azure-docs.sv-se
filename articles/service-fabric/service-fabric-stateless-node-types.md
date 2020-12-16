@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: d3ce6e888c937676027f2b71578c38b56f3bd6af
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 266c04a049cab574576f781c397aee566efe5372
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97388030"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516623"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>Distribuera ett Azure Service Fabric-kluster med endast tillstånds lösa Node-typer (för hands version)
 Service Fabric Node-typer levereras med ett förutsättnings antagande som vid en viss tidpunkt kan tillstånds känsliga tjänster placeras på noderna. Tillstånds lösa nodtyper sänker detta antagande för en nodtyp, vilket innebär att nodtypen kan använda andra funktioner, till exempel snabbare skalnings åtgärder, stöd för automatiska operativ system uppgraderingar på brons-hållbarhet och skalbarhet till fler än 100 noder i en enda skalnings uppsättning för virtuella datorer.
@@ -24,6 +24,8 @@ Exempel på mallar är tillgängliga: [Service Fabric mall för tillstånds lös
 
 ## <a name="enabling-stateless-node-types-in-service-fabric-cluster"></a>Aktivera tillstånds lösa nodtyper i Service Fabric kluster
 Om du vill ange en eller flera nodtyper som tillstånds lösa i en kluster resurs anger du egenskapen **isStateless** till "true". När du distribuerar ett Service Fabric kluster med tillstånds lösa nodtyper måste du komma ihåg att ha minst en primär nodtyp i kluster resursen.
+
+* Service Fabric kluster resursens API version ska vara "2020-12-01-för hands version" eller högre.
 
 ```json
 {
@@ -238,6 +240,8 @@ Standard Load Balancer och standard offentlig IP introducerar nya funktioner och
 
 
 ### <a name="migrate-to-using-stateless-node-types-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip"></a>Migrera till att använda tillstånds lösa nodtyper från ett kluster med hjälp av en Basic SKU-Load Balancer och en grundläggande SKU-IP
+För alla migreringsåtgärder måste en ny tillstånds lös nodtyp läggas till. Det går inte att migrera den befintliga nodtypen till endast tillstånds lös läge.
+
 Om du vill migrera ett kluster som använde en Load Balancer och en IP-adress med en grundläggande SKU måste du först skapa en helt ny Load Balancer och IP-resurs med standard-SKU: n. Det går inte att uppdatera resurserna på plats.
 
 Den nya LB och IP ska refereras till i de nya tillstånds lösa nodtyper som du vill använda. I exemplet ovan läggs en ny virtuell dators skalnings uppsättnings resurser till som ska användas för tillstånds lösa nodtyper. De här referenserna för den virtuella datorns skalnings uppsättningar innehåller den nyligen skapade LB och IP och har marker ATS som tillstånds lösa nodtyper i Service Fabric kluster resursen.
@@ -247,28 +251,8 @@ För att börja måste du lägga till de nya resurserna i din befintliga Resourc
 * En Load Balancer resurs med standard-SKU.
 * En NSG som refereras till av under nätet som du distribuerar dina skalnings uppsättningar för virtuella datorer i.
 
-
-Du hittar ett exempel på dessa resurser i [exempel mal len](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/10-VM-2-NodeTypes-Windows-Stateless-Secure).
-
-```powershell
-New-AzureRmResourceGroupDeployment `
-    -ResourceGroupName $ResourceGroupName `
-    -TemplateFile $Template `
-    -TemplateParameterFile $Parameters
-```
-
 När resurserna har distribuerats kan du börja inaktivera noderna i nodtypen som du vill ta bort från det ursprungliga klustret.
 
-```powershell
-Connect-ServiceFabricCluster -ConnectionEndpoint $ClusterName `
-    -KeepAliveIntervalInSec 10 `
-    -X509Credential `
-    -ServerCertThumbprint $thumb  `
-    -FindType FindByThumbprint `
-    -FindValue $thumb `
-    -StoreLocation CurrentUser `
-    -StoreName My 
-```
 
 ## <a name="next-steps"></a>Nästa steg 
 * [Reliable Services](service-fabric-reliable-services-introduction.md)

@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/08/2020
+ms.date: 12/11/2020
 ms.author: alkohli
-ms.openlocfilehash: dab34b26d8237d743e22149ed0da2dd9471d7431
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: deb52c8716f97874beae4accbf6f34f72e20ca04
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97096207"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516471"
 ---
 # <a name="use-your-own-certificates-with-data-box-and-data-box-heavy-devices"></a>Använd dina egna certifikat med Data Box-enhet och Data Box Heavy enheter
 
@@ -95,11 +95,12 @@ Följ dessa steg om du vill lägga till ditt eget certifikat på enheten:
 
    ![Error after a new Local web UI certificate is added to a Data Box device](media/data-box-bring-your-own-certificates/certificates-unable-to-communicate-error.png) TEST. RESTORE IF ERROR IS REPRODUCED.-->
 
-6. Installera det nya certifikatet på klient datorn som du använder för att få åtkomst till det lokala webb gränssnittet. Instruktioner finns i [Importera certifikat till klienten](#import-certificates-to-client)nedan.
-
-7. Om du har ändrat certifikatet för det lokala webb gränssnittet måste du starta om webbläsaren och sedan det lokala webb gränssnittet. Det här steget krävs för att undvika SSL-cache-problem.
+6. Om du har ändrat certifikatet för det lokala webb gränssnittet måste du starta om webbläsaren och sedan det lokala webb gränssnittet. Det här steget krävs för att undvika SSL-cache-problem.
 
   <!-- TESTING THIS - The communication error should be gone from the **Certificates** screen.-->
+
+7. Installera det nya certifikatet på klient datorn som du använder för att få åtkomst till det lokala webb gränssnittet. Instruktioner finns i [Importera certifikat till klienten](#import-certificates-to-client)nedan.
+
 
 ## <a name="import-certificates-to-client"></a>Importera certifikat till klienten
 

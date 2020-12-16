@@ -7,20 +7,20 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/01/2020
+ms.date: 12/15/2020
 ms.custom: references_regions
-ms.openlocfilehash: f314394d3a0ac453d525079e096162d8739f67cf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 118ee6ffb189b7a5558477912bd6b27ea739afde
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011803"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516160"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Säkerhet i Azure Kognitiv sökning – översikt
 
 I den här artikeln beskrivs viktiga säkerhetsfunktioner i Azure Kognitiv sökning som kan skydda innehåll och åtgärder.
 
-+ Vid lagrings nivån är krypteringen i vila inbyggd för allt tjänst hanterat innehåll som sparas till disk, inklusive index, synonym mappningar och definitioner av indexerare, data källor och färdighetsuppsättningar. Azure Kognitiv sökning stöder även tillägg av Kundhanterade nycklar (CMK) för kompletterande kryptering av indexerat innehåll. För tjänster som skapats efter 1 2020 augusti utökas CMK-kryptering till data på temporära diskar för fullständig dubbel kryptering av indexerat innehåll.
++ Vid lagrings nivån är kryptering vid vila inbyggt för allt tjänst hanterat innehåll som sparas på disk, inklusive index, synonym mappningar och definitioner av indexerare, data källor och färdighetsuppsättningar. Azure Kognitiv sökning stöder även tillägg av Kundhanterade nycklar (CMK) för kompletterande kryptering av indexerat innehåll. För tjänster som skapats efter 1 2020 augusti utökas CMK-kryptering till data på temporära diskar för fullständig dubbel kryptering av indexerat innehåll.
 
 + Inkommande säkerhet skyddar Sök tjänstens slut punkt på ökade säkerhets nivåer: från API-nycklar på begäran till inkommande regler i brand väggen till privata slut punkter som helt skyddar din tjänst från det offentliga Internet.
 
@@ -76,7 +76,7 @@ Inkommande säkerhetsfunktioner skyddar Sök tjänstens slut punkt genom att ök
 
 ### <a name="public-access-using-api-keys"></a>Offentlig åtkomst med API-nycklar
 
-Som standard nås en Sök tjänst via det offentliga molnet med hjälp av nyckelbaserad autentisering för administratörs-eller frågans åtkomst till Sök tjänstens slut punkt. En API-nyckel är en sträng som består av slumpmässigt genererade siffror och bokstäver. Typ av nyckel (administratör eller fråga) fastställer åtkomst nivån. Inlämning av en giltig nyckel betraktas som bevis för att begäran härstammar från en betrodd entitet.
+Som standard nås en Sök tjänst via det offentliga molnet med hjälp av nyckelbaserad autentisering för administratörs-eller frågans åtkomst till Sök tjänstens slut punkt. En [API-nyckel](search-security-rbac.md) är en sträng som består av slumpmässigt genererade siffror och bokstäver. Typ av nyckel (administratör eller fråga) fastställer åtkomst nivån. Inlämning av en giltig nyckel betraktas som bevis för att begäran härstammar från en betrodd entitet.
 
 Det finns två åtkomst nivåer till din Sök tjänst, som aktive ras med följande API-nycklar:
 
@@ -114,15 +114,15 @@ Den privata slut punkten använder en IP-adress från det virtuella nätverkets 
 
 I Azure Kognitiv sökning är ett enskilt index inte ett skydds Bart objekt. I stället fastställs åtkomst till ett index på tjänst lagret (Läs-eller skriv åtkomst till tjänsten), tillsammans med kontexten för en åtgärd.
 
-För slut användar åtkomst kan du strukturera förfrågningar om att ansluta med hjälp av en frågegrupp, som gör begäran skrivskyddad och inkludera det särskilda index som används av din app. I en förfrågan finns det ingen idé att koppla index eller att komma åt flera index samtidigt, så att alla begär Anden är riktade mot ett enda index med definition. Därför definierar själva begäran (en nyckel plus ett enskilt mål index) säkerhets gränserna.
+För slut användar åtkomst kan du strukturera förfrågningar om att ansluta med hjälp av en [frågegrupp](search-security-rbac.md), som gör begäran skrivskyddad och inkludera det särskilda index som används av din app. I en förfrågan finns det ingen idé att koppla index eller att komma åt flera index samtidigt, så att alla begär Anden är riktade mot ett enda index med definition. Därför definierar själva begäran (en nyckel plus ett enskilt mål index) säkerhets gränserna.
 
-Administratörs-och utvecklarens åtkomst till index är inte differentierad: båda behöver Skriv behörighet för att skapa, ta bort och uppdatera objekt som hanteras av tjänsten. Alla med en administratörs nyckel till din tjänst kan läsa, ändra eller ta bort alla index i samma tjänst. För att skydda mot oavsiktlig eller skadlig borttagning av index, är din interna käll kontroll för kod till gångar en påföljd för att återföra en oönskad index borttagning eller ändring. Azure Kognitiv sökning har redundans i klustret för att säkerställa tillgängligheten, men den lagrar eller kör inte din egna kod som används för att skapa eller läsa in index.
+Administratörs-och utvecklarens åtkomst till index är inte differentierad: båda behöver Skriv behörighet för att skapa, ta bort och uppdatera objekt som hanteras av tjänsten. Alla med en [Administratörs nyckel](search-security-rbac.md) till din tjänst kan läsa, ändra eller ta bort alla index i samma tjänst. För att skydda mot oavsiktlig eller skadlig borttagning av index, är din interna käll kontroll för kod till gångar en påföljd för att återföra en oönskad index borttagning eller ändring. Azure Kognitiv sökning har redundans i klustret för att säkerställa tillgängligheten, men den lagrar eller kör inte din egna kod som används för att skapa eller läsa in index.
 
 För lösningar med flera innehavare som kräver säkerhets gränser på index nivån omfattar sådana lösningar vanligt vis en mellan nivå, som kunder använder för att hantera index isolering. Mer information om användnings fallet för flera innehavare finns i [design mönster för SaaS-program för flera innehavare och Azure kognitiv sökning](search-modeling-multitenant-saas-applications.md).
 
 ## <a name="user-access"></a>Användaråtkomst
 
-Hur en användare kommer åt ett index och andra objekt bestäms av typen av API-nyckel i begäran. De flesta utvecklare skapar och tilldelar [*frågeinställningar*](search-security-api-keys.md) för Sök begär Anden på klient sidan. En frågegrupp beviljar skrivskyddad åtkomst till sökbart innehåll i indexet.
+Hur en användare kommer åt ett index och andra objekt bestäms av typen av API-nyckel i begäran. De flesta utvecklare skapar och tilldelar [frågeinställningar](search-security-api-keys.md) för Sök begär Anden på klient sidan. En frågegrupp beviljar skrivskyddad åtkomst till sökbart innehåll i indexet.
 
 Om du behöver detaljerad kontroll över varje användare över Sök resultat kan du bygga säkerhets filter på dina frågor och returnera dokument som är associerade med en viss säkerhets identitet. I stället för fördefinierade roller och roll tilldelningar implementeras identitetsbaserade åtkomst kontroller som ett *filter* som trimmar Sök Resultat för dokument och innehåll baserat på identiteter. I följande tabell beskrivs två metoder för att trimma Sök Resultat av obehörigt innehåll.
 

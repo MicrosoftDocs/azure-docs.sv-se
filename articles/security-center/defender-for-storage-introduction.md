@@ -7,18 +7,19 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 9b2855f82927b6f1707fd748f097dd357818ac4b
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 8979e315f188a5c21cce206c24f195f72096d438
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341982"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516508"
 ---
-# <a name="introduction-to-azure-defender-for-storage"></a>Introduktion till Azure Defender för lagring
+# <a name="introduction-to-azure-defender-for-storage"></a>Introduktion till Azure Defender för Storage
 
-**Azure Defender för lagring** identifierar potentiellt skadlig aktivitet på dina Azure Storage-konton. Dina data kan skyddas oavsett om de lagras som BLOB-behållare, fil resurser eller data sjöar.
 
-Det här skydds lagret gör att du kan åtgärda hot *utan* att du behöver vara säkerhets expert, och hjälper dig att hantera dina säkerhets övervaknings system.
+**Azure Defender för lagring** är ett Azure-ursprungligt informations lager som identifierar ovanliga och potentiellt skadliga försök att komma åt eller utnyttja dina lagrings konton. Den använder avancerade funktioner i Security AI och [Microsoft Threat Intelligence](https://go.microsoft.com/fwlink/?linkid=2128684) för att tillhandahålla sammanhangsbaserade säkerhets aviseringar och rekommendationer.
+
+Säkerhets varningar utlöses när avvikelser i aktivitet inträffar. Dessa aviseringar är integrerade med Azure Security Center och skickas också via e-post till prenumerations administratörer med information om misstänkt aktivitet och rekommendationer om hur du undersöker och reparerar hot.
 
 
 ## <a name="availability"></a>Tillgänglighet
@@ -28,7 +29,7 @@ Det här skydds lagret gör att du kan åtgärda hot *utan* att du behöver vara
 |Versions tillstånd:|Allmänt tillgänglig (GA)|
 |Priset|**Azure Defender för lagring** faktureras så som visas på [sidan med priser](security-center-pricing.md)|
 |Skyddade lagrings typer:|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure Files](../storage/files/storage-files-introduction.md)<br>[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)|
-|Moln|![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nej](./media/icons/no-icon.png) Kina gov, andra gov|
+|Moln|![Yes](./media/icons/yes-icon.png) Kommersiella moln<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Kina gov, andra gov|
 |||
 
 
@@ -36,14 +37,14 @@ Det här skydds lagret gör att du kan åtgärda hot *utan* att du behöver vara
 
 Säkerhets aviseringar utlöses när det finns:
 
-- **Misstänkt aktivitet** – till exempel har lagrings kontot åtkomst till från en IP-adress som kallas en aktiv stängningsmodul för Tor
-- **Avvikande beteende** – till exempel ändringar i åtkomst mönstret till ett lagrings konto
-- **Potentiell överförd skadlig kod** – identifierad hash-rykte visar att en överförd fil innehåller skadlig kod
+- **Misstänkta åtkomst mönster** – till exempel lyckad åtkomst från en Tor-nod eller från en IP-adress som anses misstänkt av Microsoft Threat Intelligence
+- **Misstänkta aktiviteter** – till exempel avvikande data extrahering eller ovanliga ändringar av åtkomst behörigheter
+- **Överföring av skadligt innehåll** – till exempel potentiellt skadliga filer (baserat på hash-rykte) eller värdskap för nät fiske innehåll
 
-Aviseringar innehåller information om den incident som utlöste dem, samt rekommendationer om hur du undersöker och åtgärdar hot.
+Aviseringar innehåller information om den incident som utlöste dem, samt rekommendationer om hur du undersöker och åtgärdar hot. Aviseringar kan exporteras till Azure Sentinel eller från tredje parts SIEM eller andra externa verktyg.
 
 > [!TIP]
-> Du kan simulera lagrings aviseringar genom att följa anvisningarna i [det här blogg inlägget](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131).
+> Vi rekommenderar att du [konfigurerar Azure Defender för lagring](https://docs.microsoft.com/azure/storage/common/azure-defender-storage-configure?tabs=azure-security-center) på prenumerations nivån, men du kan också [Konfigurera det på enskilda lagrings konton](https://docs.microsoft.com/azure/storage/common/azure-defender-storage-configure?tabs=azure-portal).
 
 
 ## <a name="what-is-hash-reputation-analysis-for-malware"></a>Vad är hash-ryktes analys för skadlig kod?

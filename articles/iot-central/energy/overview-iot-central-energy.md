@@ -3,22 +3,19 @@ title: Bygg energi lösningar med IoT Central | Microsoft Docs
 description: Lär dig att bygga energi lösningar med Azure IoT Central programmallar.
 author: op-ravi
 ms.author: omravi
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 0cc9fd5836371a925be531de773ea9c2e276c0eb
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: ff7b98908296714a59aa9a24767e80e212e00e68
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127360"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516646"
 ---
 # <a name="build-energy-solutions-with-iot-central"></a>Skapa energilösningar med IoT Central 
-
-
-
 
 Smarta mätare och sol paneler spelar en viktig roll i energi branschens omvandling. De smarta mätarna ger fler kontroller och insikter i real tid om energi förbrukning och energi förbrukning, och tillväxt av sol panelerna är kraftiga i förnybar energi. Övervaknings appar för smart mätare och solpanel är exempel på mallar för att visa de olika funktionerna. Partner kan utnyttja dessa mallar för att bygga energi lösningar med IoT Central för sina specifika behov. Ingen ny kod och ingen ytterligare kostnad krävs för att distribuera och använda dessa program. Lär dig mer om Energy Application-mallar och deras funktioner.
 

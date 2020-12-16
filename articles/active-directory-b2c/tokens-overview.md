@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a0ad14481673f0061fb0170e60869109c87a6829
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: b4e268d35a2e31db0ce92ff61e66fd23bce68e38
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379794"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516352"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Översikt över tokens i Azure Active Directory B2C
 
@@ -91,13 +91,13 @@ Följande egenskaper används för att [Hantera token-kompatibilitet](configure-
 
 - Certifikat **utfärdare (ISS)-anspråk** – den här egenskapen identifierar den Azure AD B2C klient som utfärdade token. Standardvärdet är `https://<domain>/{B2C tenant GUID}/v2.0/`. Värdet för `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/` innehåller ID: n för både den Azure AD B2C klienten och det användar flöde som användes i Tokenbegäran. Om ditt program eller bibliotek behöver Azure AD B2C vara kompatibelt med [OpenID Connect Discovery Discovery 1,0-specifikationen](https://openid.net/specs/openid-connect-discovery-1_0.html)använder du det här värdet.
 
-- **Subject (sub)-anspråk** – den här egenskapen identifierar den entitet som token kontrollerar information om. Standardvärdet är **ObjectID** , som fyller på `sub` anspråket i token med objekt-ID: t för användaren. Värdet som **inte stöds** anges bara för bakåtkompatibilitet. Vi rekommenderar att du växlar till **ObjectID** så snart du kan.
+- **Subject (sub)-anspråk** – den här egenskapen identifierar den entitet som token kontrollerar information om. Standardvärdet är **ObjectID**, som fyller på `sub` anspråket i token med objekt-ID: t för användaren. Värdet som **inte stöds** anges bara för bakåtkompatibilitet. Vi rekommenderar att du växlar till **ObjectID** så snart du kan.
 
 - **Anspråk som representerar princip-ID** – den här egenskapen identifierar anspråks typen där princip namnet som används i Tokenbegäran fylls i. Standardvärdet är `tfp`. Värdet för `acr` anges bara för bakåtkompatibilitet.
 
 ## <a name="pass-through"></a>Direkt
 
-När en användar resa startar, Azure AD B2C ta emot en åtkomsttoken från en identitets leverantör. Azure AD B2C använder denna token för att hämta information om användaren. Du [aktiverar ett anspråk i ditt användar flöde](idp-pass-through-user-flow.md) eller [definierar ett anspråk i den anpassade principen](idp-pass-through-custom.md) för att skicka token till de program som du registrerar i Azure AD B2C. Ditt program måste använda ett [rekommenderat användar flöde](user-flow-versions.md) för att kunna dra nytta av att skicka token som ett anspråk.
+När en användar resa startar, Azure AD B2C ta emot en åtkomsttoken från en identitets leverantör. Azure AD B2C använder denna token för att hämta information om användaren. Du aktiverar ett anspråk i ditt användar flöde för att [Skicka token](idp-pass-through-user-flow.md) till de program som du registrerar i Azure AD B2C. Ditt program måste använda ett [rekommenderat användar flöde](user-flow-versions.md) för att kunna dra nytta av att skicka token som ett anspråk.
 
 Azure AD B2C stöder för närvarande bara att skicka åtkomsttoken för OAuth 2,0-identitets leverantörer, som innehåller Facebook och Google. För alla andra identitets leverantörer returneras anspråket tomt.
 
@@ -107,7 +107,7 @@ För att validera en token bör programmet kontrol lera både signaturen och ans
 
 ### <a name="validate-signature"></a>Verifiera signatur
 
-En JWT innehåller tre segment, ett *sidhuvud* , en *brödtext* och en *signatur*. Du kan använda signatur segmentet för att verifiera tokens äkthet så att den kan vara betrodd av ditt program. Azure AD B2C tokens signeras med hjälp av algoritmer för asymmetrisk kryptering i bransch standard, till exempel RSA 256.
+En JWT innehåller tre segment, ett *sidhuvud*, en *brödtext* och en *signatur*. Du kan använda signatur segmentet för att verifiera tokens äkthet så att den kan vara betrodd av ditt program. Azure AD B2C tokens signeras med hjälp av algoritmer för asymmetrisk kryptering i bransch standard, till exempel RSA 256.
 
 Rubriken för token innehåller information om nyckeln och krypterings metoden som används för att signera token:
 
@@ -121,7 +121,7 @@ Rubriken för token innehåller information om nyckeln och krypterings metoden s
 
 Värdet för **alg** -anspråket är algoritmen som användes för att signera token. Värdet för **barn** -anspråket är den offentliga nyckel som användes för att signera token. Vid en angiven tidpunkt kan Azure AD B2C signera en token med hjälp av någon av en uppsättning offentliga privata nyckel par. Azure AD B2C roterar den möjliga uppsättningen nycklar med jämna mellanrum. Programmet ska skrivas för att hantera dessa nycklar automatiskt. En rimlig frekvens för att söka efter uppdateringar av de offentliga nycklar som används av Azure AD B2C är var 24: e timme. Om du vill hantera oväntade nyckel ändringar ska programmet skrivas för att hämta de offentliga nycklarna igen om det får ett oväntat **barn** värde.
 
-Azure AD B2C har en slut punkt för OpenID Connect-metadata. Med den här slut punkten kan program begära information om Azure AD B2C vid körning. Den här informationen omfattar slut punkter, token innehåll och signerings nycklar för token. Din Azure AD B2C klient innehåller ett JSON-Metadatadokumentet för varje princip. Metadatadokumentet är ett JSON-objekt som innehåller flera användbara informations delar. Metadata innehåller **jwks_uri** , vilket ger platsen för den uppsättning offentliga nycklar som används för att signera token. Platsen finns här, men det är bäst att hämta platsen dynamiskt med hjälp av Metadatadokumentet och parsa **jwks_uri** :
+Azure AD B2C har en slut punkt för OpenID Connect-metadata. Med den här slut punkten kan program begära information om Azure AD B2C vid körning. Den här informationen omfattar slut punkter, token innehåll och signerings nycklar för token. Din Azure AD B2C klient innehåller ett JSON-Metadatadokumentet för varje princip. Metadatadokumentet är ett JSON-objekt som innehåller flera användbara informations delar. Metadata innehåller **jwks_uri**, vilket ger platsen för den uppsättning offentliga nycklar som används för att signera token. Platsen finns här, men det är bäst att hämta platsen dynamiskt med hjälp av Metadatadokumentet och parsa **jwks_uri**:
 
 ```
 https://contoso.b2clogin.com/contoso.onmicrosoft.com/b2c_1_signupsignin1/discovery/v2.0/keys

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 0e209e8114d8f1791a00e87894fa12206edcf34e
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 29a314553584843ed6241b9311e9d72b42ec8705
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700230"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516408"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Skapa och hantera API-nycklar för en Azure Kognitiv sökning-tjänst
 
@@ -27,13 +27,13 @@ Nycklar skapas med Sök tjänsten under tjänst etableringen. Du kan visa och h�
 
 :::image type="content" source="media/search-manage/azure-search-view-keys.png" alt-text="Portal sida, Hämta inställningar, nycklar avsnitt" border="false":::
 
-## <a name="what-is-an-api-key"></a>Vad är en API-nyckel
+## <a name="what-is-an-api-key"></a>Vad är en API-nyckel?
 
 En API-nyckel är en sträng som består av slumpmässigt genererade siffror och bokstäver. Genom [rollbaserade behörigheter](search-security-rbac.md)kan du ta bort eller läsa nycklarna, men du kan inte ersätta en nyckel med ett användardefinierat lösen ord eller använda Active Directory som primär autentiseringsmetod för att få åtkomst till Sök åtgärder. 
 
 Två typer av nycklar används för att få åtkomst till din Sök tjänst: administratör (Läs-och Skriv behörighet) och fråga (skrivskyddad).
 
-|Nyckel|Beskrivning|Gränser|  
+|Nyckel|Description|Gränser|  
 |---------|-----------------|------------|  
 |Administratör|Ger fullständig behörighet till alla åtgärder, inklusive möjligheten att hantera tjänsten, skapa och ta bort index, indexerare och data källor.<br /><br /> Två administratörs nycklar, som kallas *primära* och *sekundära* nycklar i portalen, genereras när tjänsten skapas och kan återskapas individuellt på begäran. Med två nycklar kan du rulla över en nyckel när du använder den andra nyckeln för fortsatt åtkomst till tjänsten.<br /><br /> Administratörs nycklar anges bara i huvuden för HTTP-begäran. Du kan inte placera en Admin-API-nyckel i en URL.|Högst 2 per tjänst|  
 |Söka i data|Ger skrivskyddad åtkomst till index och dokument, och distribueras vanligt vis till klient program som utfärdar Sök begär Anden.<br /><br /> Frågeinställningar skapas på begäran. Du kan skapa dem manuellt i portalen eller via programmering via [hanterings REST API](/rest/api/searchmanagement/).<br /><br /> Du kan ange frågeinställningar i ett HTTP-begärandehuvuden för Sök-, förslags-eller söknings åtgärder. Du kan också skicka en sessionsnyckel som en parameter på en URL. Beroende på hur ditt klient program formulerar begäran kan det vara lättare att skicka nyckeln som en frågeparameter:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2020-06-30&api-key=[query key]`|50 per tjänst|  
@@ -88,6 +88,7 @@ Du kan fortfarande komma åt tjänsten via portalen eller hanterings lagret ([RE
 När du har skapat nya nycklar via portalen eller hanterings lagret återställs åtkomsten till ditt innehåll (index, indexerare, data källor, synonym mappningar) när du har de nya nycklarna och anger dessa nycklar för förfrågningar.
 
 ## <a name="secure-api-keys"></a>Secure API – nycklar
+
 Nyckel säkerhet säkerställs genom att begränsa åtkomst via portal-eller Resource Manager-gränssnitten (PowerShell eller kommando rads gränssnittet). Som anges kan prenumerations administratörer Visa och återskapa alla API-nycklar. Som en försiktighets åtgärd granskar du roll tilldelningarna för att förstå vem som har åtkomst till administratörs nycklarna.
 
 + I instrument panelen för tjänsten klickar du på **åtkomst kontroll (IAM)** och sedan på fliken **roll tilldelningar** för att Visa roll tilldelningar för din tjänst.

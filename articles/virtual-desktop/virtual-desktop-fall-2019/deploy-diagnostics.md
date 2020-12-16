@@ -3,25 +3,20 @@ title: Distribuera diagnostikverktyget för Windows Virtual Desktop (klassisk) �
 description: Distribuera verktyget Diagnostics UX för Windows Virtual Desktop (klassisk).
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 729e22f8ad94d2119d0f3f3e9fc474cc83a493a8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 9672d18fe99d8baae3c73fa3782531eb84114713
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023079"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97515645"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Distribuera diagnostikverktyget för Windows Virtual Desktop (klassiskt)
 
 >[!IMPORTANT]
 >Det här innehållet gäller för virtuella Windows-datorer (klassisk), vilket inte stöder Azure Resource Manager virtuella Skriv bords objekt i Windows.
-
->[!IMPORTANT]
->Från och med den 16 mars 2020 har vi tillfälligt inaktiverat diagnostiska frågor som påverkat användar upplevelsen på grund av ökad efter frågan på tjänsten. Detta gör att verktyget slutar fungera eftersom det är beroende av de frågor som ska fungera. Vi uppdaterar den här artikeln när diagnostiska frågor är tillgängliga igen.
->
->Fram till dess rekommenderar vi starkt att du [använder Log Analytics](diagnostics-log-analytics-2019.md) för fortsatt övervakning.
 
 Så här kan du använda diagnostikverktyget för virtuella Windows-datorer:
 
@@ -43,8 +38,8 @@ Du måste skapa en Azure Active Directory app-registrering och en Log Analytics 
 
 Du måste också installera dessa två PowerShell-moduler innan du börjar:
 
-- [Azure PowerShell-modul](/powershell/azure/install-az-ps?view=azps-2.4.0/)
-- [Azure AD-modul](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/)
+- [Azure PowerShell-modul](/powershell/azure/install-az-ps?view=azps-2.4.0/&preserve-view=true)
+- [Azure AD-modul](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/&preserve-view=true)
 
 Se till att du har ditt prenumerations-ID klart för när du loggar in.
 

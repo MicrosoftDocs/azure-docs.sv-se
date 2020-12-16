@@ -3,21 +3,19 @@ title: 'Självstudie: skapa en Smart meter analys app med IoT Central'
 description: 'Självstudie: Lär dig hur du skapar ett program för smart avläsning av övervakning med hjälp av Azure IoT Central programmallar.'
 author: op-ravi
 ms.author: omravi
-ms.date: 11/12/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: af4940ae6b0dc001667602b8729faaa3a10d19da
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: a95f1befcdc9b59293eb97330ba7ceae3034a74b
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127139"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516764"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Självstudie: skapa och gå igenom App-mallen för smart avläsning av övervakning 
-
-
 
 Den här självstudien vägleder dig genom processen att skapa ett program för smart avläsning av övervakning, som innehåller en exempel enhets modell med simulerade data. I den här självstudiekursen lär du dig:
 
@@ -30,7 +28,7 @@ Den här självstudien vägleder dig genom processen att skapa ett program för 
 Om du inte har någon prenumeration kan du [skapa ett kostnads fritt utvärderings konto](https://azure.microsoft.com/free)
 
 ## <a name="prerequisites"></a>Förutsättningar
-- Inga
+- Ingen
 - Azure-prenumeration rekommenderas, men du behöver inte testa
 
 ## <a name="create-a-smart-meter-monitoring-app"></a>Skapa en app för smart mätarövervakning 
@@ -38,14 +36,13 @@ Om du inte har någon prenumeration kan du [skapa ett kostnads fritt utvärderin
 Du kan skapa det här programmet i tre enkla steg:
 
 1. Öppna [Azure IoT Central start sida](https://apps.azureiotcentral.com) och klicka på **skapa** för att skapa ett nytt program. 
-
-2. Välj fliken **energi** och klicka på **skapa app** under fönster panel för **övervakning av smarta Mät** värden.
+1. Välj fliken **energi** och klicka på **skapa app** under fönster panel för **övervakning av smarta Mät** värden.
 
     > [!div class="mx-imgBorder"]
     > ![Bygg app](media/tutorial-iot-central-smart-meter/smart-meter-build.png)
     
 
-3. **Skapa app** öppnar formuläret **ny** app. Fyll i den begärda informationen som visas i bilden nedan:
+1. **Skapa app** öppnar formuläret **ny** app. Fyll i den begärda informationen som visas i bilden nedan:
     * **Program namn**: Välj ett namn för IoT Central programmet. 
     * **URL**: välj en IoT Central URL, plattformen verifierar att den är unik.
     * **7-dagars kostnads fri utvärderings version**: om du redan har en Azure-prenumeration rekommenderas standardinställningen. Om du inte har en Azure-prenumeration börjar du med den kostnads fria utvärderings versionen.
@@ -55,7 +52,6 @@ Du kan skapa det här programmet i tre enkla steg:
         ![Formuläret för nya program](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app.png)
 
         ![Fakturerings information för ny program form](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app-billinginfo.png)
-
 
 ### <a name="verify-the-application-and-simulated-data"></a>Verifiera programmet och simulerade data
 
@@ -99,7 +95,7 @@ Klicka på fliken **enhets mallar** om du vill se enhets modellen för smart mä
 Om du väljer att inte fortsätta använda programmet tar du bort programmet med följande steg:
 
 1. Öppna fliken Administration i den vänstra rutan
-2. Välj program inställningar och klicka på knappen Ta bort längst ned på sidan. 
+1. Välj program inställningar och klicka på knappen Ta bort längst ned på sidan. 
 
     > [!div class="mx-imgBorder"]
     > ![Ta bort program](media/tutorial-iot-central-smart-meter/smart-meter-delete-app.png)

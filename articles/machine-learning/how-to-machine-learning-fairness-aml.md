@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 3fbd4990fd330960bb8dbce2e2a8d1bcb578cf2a
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 17b0564b4b73f5a5032343dcb78669cbf4cabd5a
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701192"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516155"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>Använd Azure Machine Learning med Fairlearn-paketet med öppen källkod för att utvärdera skälighet för ML-modeller (för hands version)
 
@@ -38,80 +38,99 @@ Använd följande kommandon för att installera- `azureml-contrib-fairness` och-
 pip install azureml-contrib-fairness
 pip install fairlearn==0.4.6
 ```
+Senare versioner av Fairlearn bör också fungera i följande exempel kod.
 
 
 
 ## <a name="upload-fairness-insights-for-a-single-model"></a>Ladda upp skälighet Insights för en enskild modell
 
-I följande exempel visas hur du använder skälighet-paketet för att överföra modell skälighet Insights till Azure Machine Learning och se instrument panelen för skälighet-utvärdering i Azure Machine Learning Studio.
+I följande exempel visas hur du använder skälighet-paketet. Vi kommer att överföra modell skälighet Insights till Azure Machine Learning och se instrument panelen för skälighet-utvärdering i Azure Machine Learning Studio.
 
 1. Träna en exempel modell i en Jupyter Notebook. 
 
-    För data uppsättningen använder vi den välkända data uppsättningen från den välkända uppsättningen, som vi läser in med `shap` (för enkelhetens skull). I det här exemplet behandlar vi den här data uppsättningen som ett beslut om lån och Föreställ dig att etiketten visar om varje person återbetalade ett lån tidigare. Vi kommer att använda data för att träna en förväntare att förutse om tidigare osett personer kommer att återbetala ett lån eller inte. Antagande är att modell förutsägelserna används för att avgöra om en individ ska erbjudas ett lån.
+    För data uppsättningen använder vi den välkända data uppsättningen från den välkända uppsättningen, som vi hämtar från OpenML. Vi Föreställ dig att vi har ett problem med besluts fattandet med etiketten som visar om en person har återbetalat ett tidigare lån. Vi kommer att träna en modell att förutse om tidigare osett-individer kommer att återbetala ett lån. Sådan modell kan användas för att fatta beslut om lån.
 
     ```python
-    from sklearn.model_selection import train_test_split
-    from fairlearn.widget import FairlearnDashboard
-    from sklearn.linear_model import LogisticRegression
-    from sklearn.preprocessing import LabelEncoder, StandardScaler
+    import copy
+    import numpy as np
     import pandas as pd
-    import shap
+
+    from sklearn.compose import ColumnTransformer
+    from sklearn.datasets import fetch_openml
+    from sklearn.impute import SimpleImputer
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.model_selection import train_test_split
+    from sklearn.preprocessing import StandardScaler, OneHotEncoder
+    from sklearn.compose import make_column_selector as selector
+    from sklearn.pipeline import Pipeline
+    
+    from fairlearn.widget import FairlearnDashboard
 
     # Load the census dataset
-    X_raw, Y = shap.datasets.adult()
-    X_raw["Race"].value_counts().to_dict()
+    data = fetch_openml(data_id=1590, as_frame=True)
+    X_raw = data.data
+    y = (data.target == ">50K") * 1
     
-
     # (Optional) Separate the "sex" and "race" sensitive features out and drop them from the main data prior to training your model
-    A = X_raw[['Sex','Race']]
-    X = X_raw.drop(labels=['Sex', 'Race'],axis = 1)
-    X = pd.get_dummies(X)
+    X_raw = data.data
+    y = (data.target == ">50K") * 1
+    A = X_raw[["race", "sex"]]
+    X = X_raw.drop(labels=['sex', 'race'],axis = 1)
     
-    sc = StandardScaler()
-    X_scaled = sc.fit_transform(X)
-    X_scaled = pd.DataFrame(X_scaled, columns=X.columns)
+    # Split the data in "train" and "test" sets
+    (X_train, X_test, y_train, y_test, A_train, A_test) = train_test_split(
+        X_raw, y, A, test_size=0.3, random_state=12345, stratify=y
+    )
 
-    # Perform some standard data preprocessing steps to convert the data into a format suitable for the ML algorithms
-    le = LabelEncoder()
-    Y = le.fit_transform(Y)
-
-    # Split data into train and test
-    from sklearn.model_selection import train_test_split
-    from sklearn.model_selection import train_test_split
-    X_train, X_test, Y_train, Y_test, A_train, A_test = train_test_split(X_scaled, 
-                                                        Y, 
-                                                        A,
-                                                        test_size = 0.2,
-                                                        random_state=0,
-                                                        stratify=Y)
-
-    # Work around indexing issue
+    # Ensure indices are aligned between X, y and A,
+    # after all the slicing and splitting of DataFrames
+    # and Series
     X_train = X_train.reset_index(drop=True)
-    A_train = A_train.reset_index(drop=True)
     X_test = X_test.reset_index(drop=True)
+    y_train = y_train.reset_index(drop=True)
+    y_test = y_test.reset_index(drop=True)
+    A_train = A_train.reset_index(drop=True)
     A_test = A_test.reset_index(drop=True)
 
-    # Improve labels
-    A_test.Sex.loc[(A_test['Sex'] == 0)] = 'female'
-    A_test.Sex.loc[(A_test['Sex'] == 1)] = 'male'
+    # Define a processing pipeline. This happens after the split to avoid data leakage
+    numeric_transformer = Pipeline(
+        steps=[
+            ("impute", SimpleImputer()),
+            ("scaler", StandardScaler()),
+        ]
+    )
+    categorical_transformer = Pipeline(
+        [
+            ("impute", SimpleImputer(strategy="most_frequent")),
+            ("ohe", OneHotEncoder(handle_unknown="ignore")),
+        ]
+    )
+    preprocessor = ColumnTransformer(
+        transformers=[
+            ("num", numeric_transformer, selector(dtype_exclude="category")),
+            ("cat", categorical_transformer, selector(dtype_include="category")),
+        ]
+    )
 
+    # Put an estimator onto the end of the pipeline
+    lr_predictor = Pipeline(
+        steps=[
+            ("preprocessor", copy.deepcopy(preprocessor)),
+            (
+                "classifier",
+                LogisticRegression(solver="liblinear", fit_intercept=True),
+            ),
+        ]
+    )
 
-    A_test.Race.loc[(A_test['Race'] == 0)] = 'Amer-Indian-Eskimo'
-    A_test.Race.loc[(A_test['Race'] == 1)] = 'Asian-Pac-Islander'
-    A_test.Race.loc[(A_test['Race'] == 2)] = 'Black'
-    A_test.Race.loc[(A_test['Race'] == 3)] = 'Other'
-    A_test.Race.loc[(A_test['Race'] == 4)] = 'White'
-
-
-    # Train a classification model
-    lr_predictor = LogisticRegression(solver='liblinear', fit_intercept=True)
-    lr_predictor.fit(X_train, Y_train)
+    # Train the model on the test data
+    lr_predictor.fit(X_train, y_train)
 
     # (Optional) View this model in Fairlearn's fairness dashboard, and see the disparities which appear:
     from fairlearn.widget import FairlearnDashboard
     FairlearnDashboard(sensitive_features=A_test, 
-                       sensitive_feature_names=['Sex', 'Race'],
-                       y_true=Y_test,
+                       sensitive_feature_names=['Race', 'Sex'],
+                       y_true=y_test,
                        y_pred={"lr_model": lr_predictor.predict(X_test)})
     ```
 
@@ -149,11 +168,11 @@ I följande exempel visas hur du använder skälighet-paketet för att överför
 
     ```python
     #  Create a dictionary of model(s) you want to assess for fairness 
-    sf = { 'Race': A_test.Race, 'Sex': A_test.Sex}
+    sf = { 'Race': A_test.race, 'Sex': A_test.sex}
     ys_pred = { lr_reg_id:lr_predictor.predict(X_test) }
     from fairlearn.metrics._group_metric_set import _create_group_metric_set
 
-    dash_dict = _create_group_metric_set(y_true=Y_test,
+    dash_dict = _create_group_metric_set(y_true=y_test,
                                         predictions=ys_pred,
                                         sensitive_features=sf,
                                         prediction_type='binary_classification')
@@ -203,32 +222,37 @@ I följande exempel visas hur du använder skälighet-paketet för att överför
     1. Om du har registrerat din ursprungliga modell genom att följa föregående steg kan du välja **modeller** i det vänstra fönstret för att visa den.
     1. Välj en modell och klicka sedan på fliken **skälighet** för att visa instrument panelen för förklarings visualisering.
 
-    Om du vill veta mer om instrument panelen för visualiseringar och vad den innehåller kan du checka ut Fairlearn [Användar handbok](https://fairlearn.github.io/master/user_guide/assessment.html#fairlearn-dashboard).
+    Om du vill veta mer om instrument panelen för visualiseringar och vad den innehåller kan du kolla Fairlearn [user guide](https://fairlearn.github.io/master/user_guide/assessment.html#fairlearn-dashboard).
 
 ## <a name="upload-fairness-insights-for-multiple-models"></a>Ladda upp skälighet Insights för flera modeller
 
-Om du är intresse rad av att jämföra flera modeller och se hur deras skälighet-utvärdering skiljer sig åt, kan du skicka mer än en modell till instrument panelen för visualiseringar och navigera i deras skälighet-kompromisser.
+Om du vill jämföra flera modeller och se hur deras skälighet-utvärdering skiljer sig åt, kan du skicka mer än en modell till instrument panelen för visualiseringar och jämföra sina skälighet-kompromisser.
 
 1. Träna dina modeller:
     
-    Förutom den tidigare logistik Regressions modellen skapar vi nu en andra klassificerare, baserat på en utvärderings version av en support Vector-dator och laddar upp en skälighet-instrumentpanel med hjälp av Fairlearn- `metrics` paketet. Observera att vi hoppar över stegen för att läsa in och Förbearbeta data och gå direkt till modell inlärnings fasen.
+    Nu skapar vi en andra klassificerare baserat på en support Vectors dator uppskattning och laddar upp en skälighet-instrumentpanel med hjälp av Fairlearn- `metrics` paketet. Vi förutsätter att den tidigare tränade modellen fortfarande är tillgänglig.
 
 
     ```python
-    # Train your first classification model
-    from sklearn.linear_model import LogisticRegression
-    lr_predictor = LogisticRegression(solver='liblinear', fit_intercept=True)
-    lr_predictor.fit(X_train, Y_train)
+    # Put an SVM predictor onto the preprocessing pipeline
+    from sklearn import svm
+    svm_predictor = Pipeline(
+        steps=[
+            ("preprocessor", copy.deepcopy(preprocessor)),
+            (
+                "classifier",
+                svm.SVC(),
+            ),
+        ]
+    )
 
     # Train your second classification model
-    from sklearn import svm
-    svm_predictor = svm.SVC()
-    svm_predictor.fit(X_train, Y_train)
+    svm_predictor.fit(X_train, y_train)
     ```
 
 2. Registrera dina modeller
 
-    Nästa registrera båda modellerna i Azure Machine Learning. För att under lätta efterföljande metod anrop lagrar du resultatet i en ord lista, som mappar den `id` registrerade modellen (en sträng i `name:version` formatet) till själva för själva rollen:
+    Nästa registrera båda modellerna i Azure Machine Learning. För enkelhetens skull kan du lagra resultaten i en ord lista, som mappar `id` i den registrerade modellen (en sträng i `name:version` formatet) till själva för dikteringen:
 
     ```python
     model_dict = {}
@@ -255,8 +279,8 @@ Om du är intresse rad av att jämföra flera modeller och se hur deras skäligh
     from fairlearn.widget import FairlearnDashboard
 
     FairlearnDashboard(sensitive_features=A_test, 
-                    sensitive_feature_names=['Sex', 'Race'],
-                    y_true=Y_test.tolist(),
+                    sensitive_feature_names=['Race', 'Sex'],
+                    y_true=y_test.tolist(),
                     y_pred=ys_pred)
     ```
 
@@ -265,7 +289,7 @@ Om du är intresse rad av att jämföra flera modeller och se hur deras skäligh
     Skapa en instrument panels ord lista med Fairlearn- `metrics` paketet.
 
     ```python
-    sf = { 'Race': A_test.Race, 'Sex': A_test.Sex }
+    sf = { 'Race': A_test.race, 'Sex': A_test.sex }
 
     from fairlearn.metrics._group_metric_set import _create_group_metric_set
 
@@ -309,11 +333,11 @@ Om du är intresse rad av att jämföra flera modeller och se hur deras skäligh
 
 ## <a name="upload-unmitigated-and-mitigated-fairness-insights"></a>Ladda upp minimerade och minimerade skälighet-insikter
 
-Du kan använda Fairlearn för [mitigation algorithms](https://fairlearn.github.io/master/user_guide/mitigation.html)att jämföra deras genererade, försämrade modell (er) till den ursprungliga minimerade modellen och navigera i prestanda-/skälighet-kompromisser mellan jämförda modeller.
+Du kan använda Fairlearn för [](https://fairlearn.github.io/master/user_guide/mitigation.html)att jämföra deras genererade, försämrade modell (er) till den ursprungliga minimerade modellen och navigera i prestanda-/skälighet-kompromisser mellan jämförda modeller.
 
-För att se ett exempel som demonstrerar användningen av algoritmen för [Rutnäts sökning](https://fairlearn.github.io/master/user_guide/mitigation.html#grid-search) (som skapar en samling av minimerade modeller med olika skälighet och prestanda handeln) kan du kolla in den här [exempel antecknings boken](https://github.com/Azure/MachineLearningNotebooks/blob/master/contrib/fairness/fairlearn-azureml-mitigation.ipynb). 
+Om du vill se ett exempel som demonstrerar användningen av algoritmen för [Rutnäts sökning](https://fairlearn.github.io/master/user_guide/mitigation.html#grid-search) (som skapar en samling av minimerade modeller med olika skälighet och prestanda handeln) kan du kolla in den här [exempel antecknings boken](https://github.com/Azure/MachineLearningNotebooks/blob/master/contrib/fairness/fairlearn-azureml-mitigation.ipynb). 
 
-Att ladda upp flera modeller skälighet insikter i en enda körning möjliggör jämförelse av modeller med avseende på skälighet och prestanda. Du kan också klicka på någon av de modeller som visas i modell jämförelse diagrammet för att se detaljerade skälighet insikter om den aktuella modellen.
+Genom att överföra flera modeller skälighet insikter i en enda körning kan du jämföra modeller med avseende på skälighet och prestanda. Du kan klicka på någon av de modeller som visas i modell jämförelse diagrammet för att se detaljerade skälighet insikter för den aktuella modellen.
 
 
 [![Modell jämförelse Fairlearn-instrumentpanel](./media/how-to-machine-learning-fairness-aml/multi-model-dashboard.png)](./media/how-to-machine-learning-fairness-aml/multi-model-dashboard.png#lightbox)

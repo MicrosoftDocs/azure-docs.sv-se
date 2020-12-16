@@ -7,20 +7,20 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: c991559d550b351ce70bcc5834f96f313f856a82
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 30004306d9ff44df04a26640a2bd7a09256fce25
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96553444"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516680"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Autentiseringsuppgifter för Source Authentication i Azure avdelningens kontroll
 
 I den här artikeln beskrivs hur du kan skapa autentiseringsuppgifter i Azure avdelningens kontroll för att snabbt kunna återanvända och använda Sparad autentiseringsinformation för dina data källor.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
-* Azure Key Vault. Om du inte redan har en sådan här (Infoga länk till KV-generering) för att skapa ett.
+* Ett Azure Key Vault. Information om hur du skapar ett finns i [snabb start: skapa ett nyckel valv med hjälp av Azure Portal](../key-vault/general/quick-create-portal.md).
 
 ## <a name="introduction"></a>Introduktion
 En autentiseringsuppgift är autentiseringsinformation som Azure avdelningens kontroll kan använda för att autentisera till dina registrerade data källor. Du kan skapa ett Credential-objekt för olika typer av autentiserings scenarier (till exempel grundläggande autentisering som kräver användar namn/lösen ord) och hämta den information som krävs baserat på den valda typen av autentiseringsmetod. Autentiseringsuppgifterna använder dina befintliga Azure Key Vaults-hemligheter för att hämta känslig autentiseringsinformation under processen för skapande av autentiseringsuppgifter.
@@ -32,7 +32,7 @@ Om du använder den avdelningens kontroll-hanterade identiteten för att konfigu
 - [Azure Data Lake Storage Gen1](register-scan-adls-gen1.md#setting-up-authentication-for-a-scan)
 - [Azure Data Lake Storage Gen2](register-scan-adls-gen2.md#setting-up-authentication-for-a-scan)
 - [Azure SQL Database](register-scan-azure-sql-database.md)
-- [Azure SQL Database Hanterad instans](register-scan-azure-sql-database-managed-instance.md#setting-up-authentication-for-a-scan)
+- [Hanterad Azure SQL Database-instans](register-scan-azure-sql-database-managed-instance.md#setting-up-authentication-for-a-scan)
 - [Azure Synapse Analytics](register-scan-azure-synapse-analytics.md#setting-up-authentication-for-a-scan)
 
 ## <a name="create-azure-key-vaults-connections-in-your-azure-purview-account"></a>Skapa Azure Key Vault-anslutningar i ditt Azure avdelningens kontroll-konto

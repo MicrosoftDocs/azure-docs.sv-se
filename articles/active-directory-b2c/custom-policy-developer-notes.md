@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 68526fd542d8bc891358a36d031af3314edab4c2
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 68e282f192b87b9f2217e0727753e7d37ff1aeb1
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507990"
+ms.locfileid: "97516104"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Developer-kommentarer för anpassade principer i Azure Active Directory B2C
 
@@ -116,7 +116,7 @@ Funktioner för anpassad princip/identitets upplevelse Framework är under konst
 | Frågesträngparametern `login_hint` |  |  | X | Tillgängligt som anspråk kan skickas till IDP. |
 | Infoga JSON i användar resa via `client_assertion` | X |  |  | Är föråldrad. |
 | Infoga JSON i användar resa som `id_token_hint` |  | X |  | Go-Forward-metoden för att skicka JSON. |
-| [Skicka Identity Provider-token till programmet](idp-pass-through-custom.md) |  | X |  | Till exempel från Facebook till app. |
+| [Skicka Identity Provider-token till programmet](idp-pass-through-user-flow.md) |  | X |  | Till exempel från Facebook till app. |
 
 
 ### <a name="session-management"></a>Sessionshantering

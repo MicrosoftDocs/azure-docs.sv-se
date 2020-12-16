@@ -3,19 +3,19 @@ title: Översikt över den anslutna datorns Windows-agent
 description: Den här artikeln innehåller en detaljerad översikt över Azure Arc-aktiverade Server Agent som har stöd för övervakning av virtuella datorer i hybrid miljöer.
 ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1bc9546e6db35153424ba670f8157adb86d19b71
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 277e6616ce1bf90ada83516cb71f9cb55de1b7b0
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452960"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516800"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Översikt över Azure Arc-aktiverade Server Agent
 
 Azure Arc-aktiverade servrar som är anslutna till dator agenten gör att du kan hantera dina Windows-och Linux-datorer utanför Azure i företags nätverket eller någon annan moln leverantör. Den här artikeln innehåller en detaljerad översikt över agent-, system-och nätverks krav och olika distributions metoder.
 
 >[!NOTE]
->Från och med den allmänna versionen av Azure Arc-aktiverade servrar i september 2020 inaktive ras alla för hands versioner av Azures anslutna dator agenter (agenter med lägre versioner än **deprecated** 1,0) den **2 februari 2021**.  Med den här tids ramen kan du uppgradera till version 1,0 eller högre innan de förinstallerade agenterna inte längre kan kommunicera med tjänsten Azure Arc-aktiverade servrar.
+>Från och med den allmänna versionen av Azure Arc-aktiverade servrar i september 2020 inaktive ras alla för hands versioner av Azures anslutna dator agenter (agenter med lägre versioner än  1,0) den **2 februari 2021**.  Med den här tids ramen kan du uppgradera till version 1,0 eller högre innan de förinstallerade agenterna inte längre kan kommunicera med tjänsten Azure Arc-aktiverade servrar.
 
 ## <a name="agent-component-details"></a>Information om agent komponent
 
@@ -55,6 +55,9 @@ Följande versioner av operativ systemet Windows och Linux stöds officiellt fö
 - SUSE Linux Enterprise Server (SLES) 15 (x64)
 - Red Hat Enterprise Linux (RHEL) 7 (x64)
 - Amazon Linux 2 (x64)
+
+> [!WARNING]
+> Linux-värdnamnet eller Windows-datornamnet kan inte använda ett av de reserverade orden eller varumärkena i namnet, annars försöker registreringen av den anslutna datorn i Azure Miss lyckas. Se [lösa fel i reserverat resurs namn](../../azure-resource-manager/templates/error-reserved-resource-name.md) för en lista över reserverade ord.
 
 ### <a name="required-permissions"></a>Behörigheter som krävs
 
@@ -190,7 +193,7 @@ När du har installerat den anslutna dator agenten för Windows tillämpas följ
 
 * Det finns flera loggfiler tillgängliga för fel sökning. De beskrivs i följande tabell.
 
-    |Logga |Description |
+    |Loggas |Description |
     |----|------------|
     |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |Innehåller information om agenternas (HIMDS) tjänst och interaktion med Azure.|
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |Innehåller utdata från azcmagent-verktygets kommandon när argumentet verbose (-v) används.|
@@ -234,7 +237,7 @@ När du har installerat den anslutna dator agenten för Linux tillämpas följan
 
 * Det finns flera loggfiler tillgängliga för fel sökning. De beskrivs i följande tabell.
 
-    |Logga |Description |
+    |Loggas |Description |
     |----|------------|
     |/var/opt/azcmagent/log/himds.log |Innehåller information om agenternas (HIMDS) tjänst och interaktion med Azure.|
     |/var/opt/azcmagent/log/azcmagent.log |Innehåller utdata från azcmagent-verktygets kommandon när argumentet verbose (-v) används.|
