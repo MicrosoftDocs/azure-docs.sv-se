@@ -3,12 +3,12 @@ title: Självstudie – distribuera grupp med flera behållare – YAML
 description: I den här självstudien får du lära dig hur du distribuerar en behållar grupp med flera behållare i Azure Container Instances genom att använda en YAML-fil med Azure CLI.
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: 8f1f13d4fa7e32b76988cdf356d5d1bb0528f824
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6f9dda7735587dfee1dde86c85375efcf057daa7
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091301"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605169"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>Självstudie: Distribuera en grupp med flera behållare med hjälp av en YAML-fil
 
@@ -37,7 +37,7 @@ I den här självstudien följer du steg för steg hur du kör en enkel sidvagn-
 
 Om du vill distribuera en grupp med flera behållare med kommandot [AZ container Create][az-container-create] i Azure CLI måste du ange behållar grupps konfigurationen i en yaml-fil. Skicka sedan YAML-filen som en parameter till kommandot.
 
-Börja med att kopiera följande YAML till en ny fil med namnet **Deploy-ACI. yaml** . I Azure Cloud Shell kan du använda Visual Studio Code för att skapa filen i din arbets katalog:
+Börja med att kopiera följande YAML till en ny fil med namnet **Deploy-ACI. yaml**. I Azure Cloud Shell kan du använda Visual Studio Code för att skapa filen i din arbets katalog:
 
 ```
 code deploy-aci.yaml
@@ -178,7 +178,6 @@ I den här självstudien använde du en YAML-fil för att distribuera en grupp m
 Du kan också ange en grupp med flera behållare med hjälp av en [Resource Manager-mall](container-instances-multi-container-group.md). En Resource Manager-mall kan enkelt anpassas för scenarier när du behöver distribuera ytterligare Azure-tjänst resurser med behållar gruppen.
 
 <!-- LINKS - External -->
-
 
 <!-- LINKS - Internal -->
 [aci-tutorial]: ./container-instances-tutorial-prepare-app.md

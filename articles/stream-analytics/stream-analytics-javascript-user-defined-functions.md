@@ -7,13 +7,13 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-js
-ms.date: 06/16/2020
-ms.openlocfilehash: dcbb82dafc5f4c51299e4bcca7947e2f38f502ff
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.date: 12/15/2020
+ms.openlocfilehash: 085ac8c2ca7cfafcf0e40152458acf68dd847937
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585487"
+ms.locfileid: "97605538"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Användardefinierade JavaScript-funktioner i Azure Stream Analytics
  
@@ -215,7 +215,7 @@ Utdata från den här frågan blir indata-datetime i **de-de** med de angivna al
 Samstag, 28. Dezember 2019
 ```
 
-### <a name="user-logging"></a>Användar loggning
+## <a name="user-logging"></a>Användar loggning
 Med loggnings metoden kan du samla in anpassad information medan ett jobb körs. Du kan använda loggdata för att felsöka eller utvärdera rätthet för den anpassade koden i real tid. Den här mekanismen är tillgänglig via Console. log ()-metoden.
 
 ```javascript

@@ -1,6 +1,6 @@
 ---
-title: 'Självstudie: Azure Active Directory enkel inloggning (SSO) med Cequence program säkerhet | Microsoft Docs'
-description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Cequence program säkerhet.
+title: 'Självstudie: Azure Active Directory enkel inloggning (SSO) med Cequence program säkerhets plattform | Microsoft Docs'
+description: Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Cequence program säkerhets plattform.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,69 +9,69 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/03/2020
+ms.date: 11/25/2020
 ms.author: jeedes
-ms.openlocfilehash: c8d3147f6b327b0aa835418516417f2f54ba17dc
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: af1c2fc3c7dcafe538f87527e04d1c3a78ab1a28
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96179970"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607872"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cequence-application-security"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med Cequence program säkerhet
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cequence-application-security-platform"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med Cequence program säkerhets plattform
 
-I den här självstudien får du lära dig hur du integrerar Cequence program säkerhet med Azure Active Directory (Azure AD). När du integrerar Cequence program säkerhet med Azure AD kan du:
+I den här självstudien får du lära dig hur du integrerar Cequence program säkerhets plattform med Azure Active Directory (Azure AD). När du integrerar Cequence program säkerhets plattform med Azure AD kan du:
 
-* Kontroll i Azure AD som har åtkomst till Cequence program säkerhet.
-* Gör det möjligt för användarna att logga in automatiskt för att Cequence program säkerhet med sina Azure AD-konton.
+* Kontroll i Azure AD som har åtkomst till Cequence program säkerhets plattform.
+* Gör det möjligt för användarna att logga in automatiskt för att Cequence program säkerhets plattformen med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att komma igång behöver du följande objekt:
 
 * En Azure AD-prenumeration. Om du inte har någon prenumeration kan du få ett [kostnads fritt konto](https://azure.microsoft.com/free/).
-* Cequence-prenumeration med enkel inloggning (SSO) för program säkerhet.
+* Cequence-prenumeration med enkel inloggning (SSO) för program säkerhets plattformen.
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
 
 I den här självstudien konfigurerar och testar du Azure AD SSO i en test miljö.
 
-* Cequence program säkerhet stöder **SP** -INITIERAd SSO
+* Cequence program säkerhets plattform stöder **SP** -INITIERAd SSO
 
-* Cequence program säkerhet stöder **just-in-Time** User-etablering
+* Cequence program säkerhets plattform stöder **just-in-Time** User-etablering
 
 
-## <a name="adding-cequence-application-security-from-the-gallery"></a>Lägga till Cequence program säkerhet från galleriet
+## <a name="adding-cequence-application-security-platform-from-the-gallery"></a>Lägga till Cequence program säkerhets plattform från galleriet
 
-Om du vill konfigurera integreringen av Cequence-programsäkerhet i Azure AD måste du lägga till Cequence program säkerhet från galleriet i listan över hanterade SaaS-appar.
+Om du vill konfigurera integreringen av Cequence-plattformen för program säkerhet i Azure AD måste du lägga till Cequence program säkerhets plattform från galleriet till listan över hanterade SaaS-appar.
 
 1. Logga in på Azure Portal med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
 1. Välj **nytt program** om du vill lägga till ett nytt program.
-1. I avsnittet **Lägg till från galleriet** , Skriv **Cequence program säkerhet** i sökrutan.
-1. Välj **Cequence program säkerhet** från panelen resultat och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
+1. I avsnittet **Lägg till från galleriet** , Skriv **Cequence Application Security Platform** i sökrutan.
+1. Välj **Cequence program säkerhets plattform** från panelen resultat och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
 
-## <a name="configure-and-test-azure-ad-sso-for-cequence-application-security"></a>Konfigurera och testa Azure AD SSO för Cequence program säkerhet
+## <a name="configure-and-test-azure-ad-sso-for-cequence-application-security-platform"></a>Konfigurera och testa Azure AD SSO för Cequence program säkerhets plattform
 
-Konfigurera och testa Azure AD SSO med Cequence program säkerhet med en test användare som heter **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i Cequence program säkerhet.
+Konfigurera och testa Azure AD SSO med Cequence program säkerhets plattform med hjälp av en test användare som heter **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och en relaterad användare i Cequence program säkerhets plattform.
 
-Utför följande steg för att konfigurera och testa Azure AD SSO med Cequence program säkerhet:
+Utför följande steg för att konfigurera och testa Azure AD SSO med Cequence program säkerhets plattform:
 
 1. **[Konfigurera Azure AD SSO](#configure-azure-ad-sso)** – så att användarna kan använda den här funktionen.
     1. **[Skapa en Azure AD-test](#create-an-azure-ad-test-user)** för att testa enkel inloggning med Azure AD med B. Simon.
     1. **[Tilldela Azure AD-testuser](#assign-the-azure-ad-test-user)** -för att aktivera B. Simon för att använda enkel inloggning med Azure AD.
-1. **[Konfigurera Cequence Application Security SSO](#configure-cequence-application-security-sso)** – för att konfigurera inställningarna för enkel inloggning på program sidan.
-    1. **[Skapa Cequence Application Security test User](#create-cequence-application-security-test-user)** – för att få en motsvarighet till B. Simon i Cequence program säkerhet som är länkad till Azure AD-representation av användare.
+1. **[Konfigurera Cequence Application Security Platform SSO](#configure-cequence-application-security-platform-sso)** – för att konfigurera inställningarna för enkel inloggning på program sidan.
+    1. **[Skapa Cequence Application Security Platform test User](#create-cequence-application-security-platform-test-user)** – om du vill ha en motsvarighet till B. Simon i Cequence program säkerhets plattform som är länkad till Azure AD-representation av användare.
 1. **[Testa SSO](#test-sso)** – för att kontrol lera om konfigurationen fungerar.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurera Azure AD SSO
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-1. I Azure Portal går du till sidan för program integrering i **Cequence program** och letar upp avsnittet **Hantera** och väljer **enkel inloggning**.
+1. I Azure Portal på sidan **Cequence Application Security Platform** Application Integration letar du upp avsnittet **Hantera** och väljer **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
 1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
@@ -79,20 +79,20 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. I avsnittet **grundläggande SAML-konfiguration** anger du värden för följande fält:
 
-    a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://<CUSTOMERNAME>.s.cequence.cloud`
+    a. I textrutan **Inloggnings-URL** anger du en URL enligt följande mönster: `https://<CUSTOMERNAME>.s.cequence.cloud`
 
     b. I textrutan **Identifierare (entitets-ID)** anger du en URL enligt följande mönster: `https://<CUSTOMERNAME>.s.cequence.cloud:443/saml/metadata`
 
     > [!NOTE]
-    > Dessa värden är inte verkliga. Uppdatera dessa värden med faktisk inloggnings-URL och identifierare. Kontakta [Cequence Application Security Support-teamet](mailto:support@cequence.ai) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
+    > Dessa värden är inte verkliga. Uppdatera dessa värden med faktisk inloggnings-URL och identifierare. Kontakta [Cequence Application Security Platform client support team](mailto:support@cequence.ai) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
 
-1. Cequence program säkerhets program förväntar sig SAML-intyg i ett särskilt format, vilket kräver att du lägger till anpassade mappningar av attribut i konfigurationen för SAML-token. I följande skärmbild visas listan över standardattribut.
+1. Cequence program säkerhets plattforms program förväntar sig SAML-intyg i ett särskilt format, vilket kräver att du lägger till anpassade mappningar av attribut i konfigurationen för SAML-token. I följande skärmbild visas listan över standardattribut.
 
     ![image](common/default-attributes.png)
 
-1. Utöver ovan förväntar sig Cequence program säkerhets program att fler attribut skickas tillbaka i SAML-svar, som visas nedan. Dessa attribut är också förifyllda, men du kan granska dem enligt dina krav.
+1. Utöver ovan förväntar sig Cequence program säkerhets plattform att några fler attribut skickas tillbaka i SAML-svar som visas nedan. Dessa attribut är också förifyllda, men du kan granska dem enligt dina krav.
     
-    | Namn |  Källattribut|
+    | Name |  Källattribut|
     | --------------- | --------- |
     | Grupp | användare. grupper |
 
@@ -107,41 +107,43 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Exempelvis `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
-I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Cequence program säkerhet.
+I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Cequence program säkerhets plattform.
 
 1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
-1. I listan program väljer du **Cequence program säkerhet**.
+1. I listan program väljer du **Cequence program säkerhets plattform**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
 1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
 1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
 
-## <a name="configure-cequence-application-security-sso"></a>Konfigurera Cequence program säkerhet SSO
+## <a name="configure-cequence-application-security-platform-sso"></a>Konfigurera Cequence program säkerhets plattform SSO
 
-Om du vill konfigurera enkel inloggning på **Cequence program säkerhets** sidan måste du skicka **URL: en för appens Federations-metadata** till [Cequence program Security Support Team](mailto:support@cequence.ai). De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
+Om du vill konfigurera enkel inloggning på **Cequence-plattform för program säkerhet** måste du skicka **URL: en för appens Federations-metadata** till [Cequence program Security Platform support team](mailto:support@cequence.ai). De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
 
-### <a name="create-cequence-application-security-test-user"></a>Skapa Cequence program säkerhets test användare
+### <a name="create-cequence-application-security-platform-test-user"></a>Skapa Cequence-test användare av program säkerhets plattform
 
-I det här avsnittet skapas en användare som kallas Britta Simon i Cequence program säkerhet. Cequence program säkerhet stöder just-in-Time-etablering, som är aktiverat som standard. Det finns inget åtgärdsobjekt för dig i det här avsnittet. Om en användare inte redan finns i Cequence program säkerhet, skapas en ny efter autentiseringen.
+I det här avsnittet skapas en användare som kallas Britta Simon i Cequence-programmets säkerhets plattform. Cequence program säkerhets plattform stöder just-in-Time-etablering, som är aktiverat som standard. Det finns inget åtgärdsobjekt för dig i det här avsnittet. Om en användare inte redan finns i Cequence program säkerhets plattform skapas en ny efter autentiseringen.
 
 ## <a name="test-sso"></a>Testa SSO 
 
 I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ. 
 
-1. Klicka på **testa det här programmet** i Azure Portal. Detta omdirigeras till Cequence för program säkerhetens inloggnings-URL där du kan starta inloggnings flödet. 
+1. Klicka på **testa det här programmet** i Azure Portal. Detta omdirigeras till Cequence för program säkerhets plattform där du kan starta inloggnings flödet. 
 
-2. Gå till Cequence för program säkerhets inloggning direkt och starta inloggnings flödet därifrån.
+2. Gå till Cequence för program säkerhets plattform inloggnings-URL direkt och starta inloggnings flödet därifrån.
 
-3. Du kan använda Microsoft Access-panelen. När du klickar på Cequence program säkerhets panelen på åtkomst panelen omdirigeras den till Cequence-URL för program säkerhet. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](../user-help/my-apps-portal-end-user-access.md).
+3. Du kan använda Microsoft Access-panelen. När du klickar på panelen Cequence-plattform för program säkerhet på åtkomst panelen omdirigeras det till Cequence för program säkerhets plattformens inloggnings-URL. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du har konfigurerat Cequence-programsäkerheten kan du framtvinga kontroll av sessioner, vilket skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+När du har konfigurerat Cequence program säkerhets plattform kan du framtvinga sessionshantering, vilket skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+

@@ -6,12 +6,12 @@ ms.author: alkemper
 ms.date: 05/28/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: cd644ed4a3edb1110f2cef60c2bb9170a81fe8d7
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 588efd692119c9e2831e16c1ce26c2759898a1e5
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584076"
+ms.locfileid: "97607372"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>Synkronisera din GitHub-lagringsplats med app-konfigurationen
 
@@ -20,9 +20,9 @@ Team som vill fortsätta använda sina befintliga käll kontroll metoder kan anv
 &nbsp;&nbsp;&nbsp;&nbsp;• Uppdatera konfigurationen utan att distribuera om hela appen <br>
 &nbsp;&nbsp;&nbsp;&nbsp;• Integrering med tjänster som Azure App Service och funktioner. 
 
-Ett [arbets flöde](https://help.github.com/articles/about-github-actions#workflow) för GitHub-åtgärder definierar en automatiserad process i en GitHub-lagringsplats. Åtgärden *Azure App Sync-konfiguration* utlöser uppdateringar till en konfigurations instans för appar när ändringar görs i käll lagrings platsen. Den använder en YAML-fil (. yml) som finns i `/.github/workflows/` sökvägen till lagrings platsen för att definiera stegen och parametrarna. Du kan utlösa konfigurations uppdateringar när du skickar, granska eller förgrena appars konfigurationsfiler precis som du gör med app-kod.
+Ett [arbets flöde](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) för GitHub-åtgärder definierar en automatiserad process i en GitHub-lagringsplats. Åtgärden *Azure App Sync-konfiguration* utlöser uppdateringar till en konfigurations instans för appar när ändringar görs i käll lagrings platsen. Den använder en YAML-fil (. yml) som finns i `/.github/workflows/` sökvägen till lagrings platsen för att definiera stegen och parametrarna. Du kan utlösa konfigurations uppdateringar när du skickar, granska eller förgrena appars konfigurationsfiler precis som du gör med app-kod.
 
-GitHub- [dokumentationen](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow) innehåller djupgående visning av GitHub-arbetsflöden och åtgärder. 
+GitHub- [dokumentationen](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions) innehåller djupgående visning av GitHub-arbetsflöden och åtgärder. 
 
 ## <a name="enable-github-actions-in-your-repository"></a>Aktivera GitHub-åtgärder i din lagrings plats
 Börja använda den här GitHub-åtgärden genom att gå till din lagrings plats och välja fliken **åtgärder** . Välj **nytt arbets flöde** och skapa sedan **ett arbets flöde själv**. Slutligen söker du efter "Azure App konfigurations synkronisering" på Marketplace.
@@ -35,7 +35,7 @@ Börja använda den här GitHub-åtgärden genom att gå till din lagrings plats
 ## <a name="sync-configuration-files-after-a-push"></a>Synkronisera konfigurationsfiler efter en push
 Den här åtgärden synkroniserar Azure App konfigurationsfiler när en ändring skickas till `appsettings.json` . När en utvecklare skickar en ändring till `appsettings.json` , uppdaterar synkroniseringen av app Configuration-instansen med de nya värdena.
 
-I det första avsnittet av det här arbets flödet anges att åtgärden utlöses *på* en *push* som innehåller `appsettings.json` till *huvud* grenen. I det andra avsnittet visas jobben som körs när åtgärden har Aktiver ATS. Åtgärden kontrollerar de relevanta filerna och uppdaterar konfigurations instansen för appen med hjälp av anslutnings strängen som lagras som en hemlighet i lagrings platsen.  Mer information om hur du använder hemligheter i GitHub finns i [GitHub-artikeln](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) om hur du skapar och använder krypterade hemligheter.
+I det första avsnittet av det här arbets flödet anges att åtgärden utlöses *på* en *push* som innehåller `appsettings.json` till *huvud* grenen. I det andra avsnittet visas jobben som körs när åtgärden har Aktiver ATS. Åtgärden kontrollerar de relevanta filerna och uppdaterar konfigurations instansen för appen med hjälp av anslutnings strängen som lagras som en hemlighet i lagrings platsen.  Mer information om hur du använder hemligheter i GitHub finns i [GitHub-artikeln](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets) om hur du skapar och använder krypterade hemligheter.
 
 ```json
 on: 
@@ -300,7 +300,7 @@ Med ett djup på 2 returnerar exemplet ovan följande nyckel/värde-par:
 | Objekt: inre | {"InnerKey":"InnerValue"} |
 
 ## <a name="understand-action-inputs"></a>Förstå åtgärds inmatningar
-Indataparametrar anger data som används av åtgärden under körning.  Följande tabell innehåller indataparametrar som har godkänts av app Configuration Sync och de förväntade värdena för var och en.  Mer information om åtgärds inmatningar för GitHub-åtgärder finns i GitHub- [dokumentationen](https://help.github.com/actions/automating-your-workflow-with-github-actions/metadata-syntax-for-github-actions#inputs).
+Indataparametrar anger data som används av åtgärden under körning.  Följande tabell innehåller indataparametrar som har godkänts av app Configuration Sync och de förväntade värdena för var och en.  Mer information om åtgärds inmatningar för GitHub-åtgärder finns i GitHub- [dokumentationen](https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/metadata-syntax-for-github-actions#inputs).
 
 > [!Note]
 > Indatamängds-ID: n är Skift läges okänsliga.

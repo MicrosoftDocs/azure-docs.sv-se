@@ -3,12 +3,12 @@ title: Distribuerad samarbets utveckling för Azure DevTest Labs resurser
 description: Innehåller metod tips för att skapa en distribuerad och samarbets utvecklings miljö för att utveckla DevTest Labs-resurser.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c18bbbfd3ad727811cc28c424381e5caf32b1cfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ef6d7aa7d3cfd4fcc64eaa45259684dfcb9ccee
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85483813"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592372"
 ---
 # <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Metod tips för distribuerad och samverkande utveckling av Azure DevTest Labs resurser
 Distribuerad samarbets utveckling gör att olika team eller personer kan utveckla och underhålla en kodbas. För att lyckas, är utvecklings processen beroende av möjligheten att skapa, dela och integrera information. Den här nyckel utvecklings principen kan användas i Azure DevTest Labs. Det finns flera typer av resurser i ett labb som ofta distribueras mellan olika labb i ett företag. De olika typerna av resurser fokuserar på två områden:
@@ -45,7 +45,7 @@ Följande diagram visar två databaser: en företags lagrings plats som underhå
 
 ![En exempel distributions miljö och samarbets miljö](./media/best-practices-distributive-collaborative-dev-env/distributive-collaborative-dev-env.png)
    
-Med den här lager strukturen kan du utveckla och upprätthålla en högre nivå av kvalitet vid huvud grenen samtidigt som flera databaser är anslutna till ett labb och ger större flexibilitet.
+Med den här lager strukturen kan du utveckla och upprätthålla en högre nivå av kvalitet i huvud grenen samtidigt som flera databaser är anslutna till ett labb och ger större flexibilitet.
 
 ## <a name="next-steps"></a>Nästa steg    
 Se följande artiklar:

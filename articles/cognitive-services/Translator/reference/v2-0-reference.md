@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: swmachan
-ms.openlocfilehash: fd0dbe5912b7c4df3c666c648dbf9a92d5398cf1
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 25dda63c6450040e396de9ee0d3fb0a459416343
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369519"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606836"
 ---
 # <a name="translator-v20"></a>Translator v 2.0
 
@@ -51,9 +51,9 @@ Om du vill förhindra svordomar i översättningen även om den är i käll text
 
 |ProfanityAction    |Åtgärd |Exempel källa (japanska)  |Exempel översättning (engelska)  |
 |:--|:--|:--|:--|
-|Noaction   |Standard. Samma som att inte ställa in alternativet. Svordomar skickas från källa till mål.        |彼はジャッカスです från en omfattande     |Han är en Jackass.   |
-|Klassificera     |Svordomar ord omges av XML-taggar \<profanity> och \</profanity> .       |彼はジャッカスです från en omfattande |Han är en \<profanity> Jackass \</profanity> .  |
-|Borttagen    |Svordomar ord tas bort från utdata utan ersättning.     |彼はジャッカスです från en omfattande |Han är en.   |
+|Noaction   |Standard. Samma som att inte ställa in alternativet. Svordomar skickas från källa till mål. |彼はジャッカスです från en omfattande |Han är en Jackass.  |
+|Klassificera |Svordomar ord omges av XML-taggar \<profanity> och \</profanity> . |彼はジャッカスです från en omfattande   |Han är en \<profanity> Jackass \</profanity> .  |
+|Borttagen    |Svordomar ord tas bort från utdata utan ersättning. |彼はジャッカスです från en omfattande |Han är en.   |
 
     
 ## <a name="excluding-content-from-translation"></a>Undanta innehåll från översättning
@@ -607,11 +607,11 @@ Bröd texten i begäran inkluderar det valfria `TranslationOptions` objektet, so
 
 * `Category`: En sträng som innehåller en kategori (domän) för översättningen. Standardvärdet är `general`.
 * `ContentType`: Det enda alternativ som stöds och standardvärdet är `text/plain` .
-* `IncludeMultipleMTAlternatives`: En boolesk flagga för att ange om mer än ett alternativ ska returneras från MT-motorn. Giltiga värden är `true` och `false` (Skift läges känsliga). Standardvärdet är `false` , som bara returnerar ett alternativ. Genom att ställa in flaggan kan du `true` skapa artificiella alternativ som är helt integrerade med CTF (Collaborative Translation Framework). Funktionen gör det möjligt att returnera alternativ för meningar som inte har några översättningar i CTF genom att lägga till artificiella alternativ från den *n* -bästa listan över avkodaren.
+* `IncludeMultipleMTAlternatives`: En boolesk flagga för att ange om mer än ett alternativ ska returneras från MT-motorn. Giltiga värden är `true` och `false` (Skift läges känsliga). Standardvärdet är `false` , som bara returnerar ett alternativ. Genom att ställa in flaggan kan du `true` skapa artificiella alternativ som är helt integrerade med CTF (Collaborative Translation Framework). Funktionen gör det möjligt att returnera alternativ för meningar som inte har några översättningar i CTF genom att lägga till artificiella alternativ från den *n*-bästa listan över avkodaren.
     - Drivande. Klassificeringen tillämpas så här: 
          - Den bästa automatiska översättningen har en klassificering på 5.
        - Alternativen från CTF reflekterar behörigheten hos granskaren. De sträcker sig från-10 till + 10.
-       - De automatiskt genererade översättnings alternativen ( *n* -Best) har en klassificering på 0 och en matchnings grad på 100.
+       - De automatiskt genererade översättnings alternativen (*n*-Best) har en klassificering på 0 och en matchnings grad på 100.
     - Antal alternativ. Antalet returnerade alternativ kan vara lika högt som det värde som anges i `maxTranslations` , men det kan vara lägre.
     - Språk par. Den här funktionen är inte tillgänglig för översättningar mellan förenklad kinesiska och traditionell kinesiska, i båda riktningarna. Den är tillgänglig för alla andra språk par som stöds av Microsoft Translator.
 * `State`: Användar tillstånd som hjälper till att korrelera begäran och svar. Samma innehåll kommer att returneras i svaret.
@@ -719,11 +719,11 @@ Här är formatet för begär ande texten:
 * `Options`Valfritt. Ett `Options` objekt som innehåller följande värden. De är valfria och standard för de vanligaste inställningarna. De angivna elementen måste anges i alfabetisk ordning.
     - `Category`: En sträng som innehåller en kategori (domän) för översättningen. Standardvärdet är `general`.
     - `ContentType`: Det enda alternativ som stöds och standardvärdet är `text/plain` .
-    - `IncludeMultipleMTAlternatives`: En boolesk flagga för att ange om mer än ett alternativ ska returneras från MT-motorn. Giltiga värden är `true` och `false` (Skift läges känsliga). Standardvärdet är `false` , som bara returnerar ett alternativ. Att ställa in flaggan så att det `true` går att skapa artificiella alternativ i översättning, helt integrerat med CTF (Collaborative Translation Framework). Funktionen gör det möjligt att returnera alternativ för meningar som inte har några alternativ i CTF genom att lägga till artificiella alternativ från den *n* -bästa listan över avkodaren.
+    - `IncludeMultipleMTAlternatives`: En boolesk flagga för att ange om mer än ett alternativ ska returneras från MT-motorn. Giltiga värden är `true` och `false` (Skift läges känsliga). Standardvärdet är `false` , som bara returnerar ett alternativ. Att ställa in flaggan så att det `true` går att skapa artificiella alternativ i översättning, helt integrerat med CTF (Collaborative Translation Framework). Funktionen gör det möjligt att returnera alternativ för meningar som inte har några alternativ i CTF genom att lägga till artificiella alternativ från den *n*-bästa listan över avkodaren.
         - Klassificeringen tillämpas på följande sätt:
           - Den bästa automatiska översättningen har en klassificering på 5.
           - Alternativen från CTF reflekterar behörigheten hos granskaren. De sträcker sig från-10 till + 10.
-          - De automatiskt genererade översättnings alternativen ( *n* -Best) har en klassificering på 0 och en matchnings grad på 100.
+          - De automatiskt genererade översättnings alternativen (*n*-Best) har en klassificering på 0 och en matchnings grad på 100.
         - Antal alternativ. Antalet returnerade alternativ kan vara lika högt som det värde som anges i `maxTranslations` , men det kan vara lägre.
         - Språk par. Den här funktionen är inte tillgänglig för översättningar mellan förenklad kinesiska och traditionell kinesiska, i båda riktningarna. Den är tillgänglig för alla andra språk par som stöds av Microsoft Translator.
 * `State`: Användar tillstånd som hjälper till att korrelera begäran och svar. Samma innehåll kommer att returneras i svaret.

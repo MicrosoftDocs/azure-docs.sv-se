@@ -4,16 +4,16 @@ description: Beskriver hur du distribuerar Azure Resource Manager-mallar (ARM-ma
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 4cda8307d417880469e6043b84c3ac55ed30071c
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: f8c669393d38d7af2af4f63f251740d8ad72edf7
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905850"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607311"
 ---
 # <a name="deploy-arm-templates-by-using-github-actions"></a>Distribuera ARM-mallar med hjälp av GitHub-åtgärder
 
-[GitHub-åtgärder](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions) är en uppsättning funktioner i GitHub för att automatisera dina arbets flöden för program utveckling på samma plats som du lagrar kod och samarbetar om pull-begäranden och-problem.
+[GitHub-åtgärder](https://docs.github.com/en/free-pro-team@latest/actions) är en uppsättning funktioner i GitHub för att automatisera dina arbets flöden för program utveckling på samma plats som du lagrar kod och samarbetar om pull-begäranden och-problem.
 
 Använd [åtgärden distribuera Azure Resource Manager mall](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template) för att automatisera distributionen av en Azure Resource Manager-mall (arm-mall) till Azure.
 
@@ -21,7 +21,7 @@ Använd [åtgärden distribuera Azure Resource Manager mall](https://github.com/
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Ett GitHub-konto. Om du inte har någon kan du registrera dig [kostnads fritt](https://github.com/join).
-    - En GitHub-lagringsplats där du kan lagra dina Resource Manager-mallar och dina arbetsflödes-filer. Information om hur du skapar [en ny databas finns i skapa en ny lagrings plats](https://help.github.com/en/enterprise/2.14/user/articles/creating-a-new-repository).
+    - En GitHub-lagringsplats där du kan lagra dina Resource Manager-mallar och dina arbetsflödes-filer. Information om hur du skapar [en ny databas finns i skapa en ny lagrings plats](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-new-repository).
 
 
 ## <a name="workflow-file-overview"></a>Översikt över arbets flödes fil

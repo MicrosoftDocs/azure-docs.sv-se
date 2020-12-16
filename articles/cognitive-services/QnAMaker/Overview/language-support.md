@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2019
-ms.openlocfilehash: 5035a81838ace0678f0cbb68ad2b9325de498003
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 1edd5ffc2578a27a53c7e9a46a4a5f1cf61331ff
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353127"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605067"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Språk stöd för en QnA Maker resurs-och kunskaps baser
 
@@ -83,61 +83,61 @@ Om du behöver stöd för ett kunskaps bas system, som innehåller flera språk,
 
 Följande lista innehåller de språk som stöds för en QnA Maker-resurs. 
 
-|Språk|
+| Språk |
 |--|
-|Arabiska|
-|Armeniska|
-|Bangla|
-|Baskiska|
-|Bulgariska|
-|Katalanska|
-|Chinese_Simplified|
-|Chinese_Traditional|
-|Kroatiska|
-|Tjeckiska|
-|Danska|
-|Nederländska|
-|Engelska|
-|Estniska|
-|Finska|
-|Franska|
-|Galiciska|
-|Tyska|
-|Grekiska|
-|Gujarati|
-|Hebreiska|
-|Hindi|
-|Ungerska|
-|Isländska|
-|Indonesiska|
-|Iriska|
-|Italienska|
-|Japanska|
-|Kannada|
-|Koreanska|
-|Lettiska|
-|Litauiska|
-|Malayalam|
-|Malajiska|
-|Norska|
-|Polska|
-|Portugisiska|
-|Punjabi|
-|Rumänska|
-|Ryska|
-|Serbian_Cyrillic|
-|Serbian_Latin|
-|Slovakiska|
-|Slovenska|
-|Spanska|
-|Svenska|
-|Tamilska|
-|Telugu|
-|Thailändska|
-|Turkiska|
-|Ukrainska|
-|Urdu|
-|Vietnamesiska|
+| Arabiska |
+| Armeniska |
+| Bangla |
+| Baskiska |
+| Bulgariska |
+| Katalanska |
+| Chinese_Simplified |
+| Chinese_Traditional |
+| Kroatiska |
+| Tjeckiska |
+| Danska |
+| Nederländska |
+| Engelska |
+| Estniska |
+| Finska |
+| Franska |
+| Galiciska |
+| Tyska |
+| Grekiska |
+| Gujarati |
+| Hebreiska |
+| Hindi |
+| Ungerska |
+| Isländska |
+| Indonesiska |
+| Iriska |
+| Italienska |
+| Japanska |
+| Kannada |
+| Koreanska |
+| Lettiska |
+| Litauiska |
+| Malayalam |
+| Malajiska |
+| Norska |
+| Polska |
+| Portugisiska |
+| Punjabi |
+| Rumänska |
+| Ryska |
+| Serbian_Cyrillic |
+| Serbian_Latin |
+| Slovakiska |
+| Slovenska |
+| Spanska |
+| Svenska |
+| Tamilska |
+| Telugu |
+| Thailändska |
+| Turkiska |
+| Ukrainska |
+| Urdu |
+| Vietnamesiska |
 
 ## <a name="query-matching-and-relevance"></a>Fråga matchning och relevans
 QnA Maker är beroende av [Azure kognitiv sökning språk analys](/rest/api/searchservice/language-support) verktyg för att ge resultat.

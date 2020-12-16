@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 9884b109db3f3a34ceb323bef9fba1d5bfc23147
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ce8c32b1afdf4178e3ffdc09e9c9176436fa771b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150251"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605084"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Distribuera din app till Azure App Service med FTP/S
 
@@ -29,7 +29,7 @@ FTP/S-slutpunkten för din app är redan aktiv. Ingen konfiguration krävs för 
 
     ![Välj din app.](media/app-service-continuous-deployment/select-your-app.png)
 
-3. Välj **Deployment Center**  >  **FTP-**  >  **instrumentpanel**för distributions Center.
+3. Välj   >  **FTP-**  >  **instrumentpanel** för distributions Center.
 
     ![Öppna FTP-instrumentpanel](./media/app-service-deploy-ftp/open-dashboard.png)
 
@@ -39,7 +39,7 @@ I FTP-instrumentpanelen väljer du **Kopiera** för att kopiera FTPS slut punkt 
 
 ![Kopiera FTP-information](./media/app-service-deploy-ftp/ftp-dashboard.png)
 
-Vi rekommenderar att du använder **autentiseringsuppgifter för appen** för att distribuera till din app eftersom den är unik för varje app. Om du klickar på användarautentiseringsuppgifter kan du dock ange **autentiseringsuppgifter på användar**nivå som du kan använda för FTP/S-inloggning till alla App Service appar i din prenumeration.
+Vi rekommenderar att du använder **autentiseringsuppgifter för appen** för att distribuera till din app eftersom den är unik för varje app. Om du klickar på användarautentiseringsuppgifter kan du dock ange **autentiseringsuppgifter på användar** nivå som du kan använda för FTP/S-inloggning till alla App Service appar i din prenumeration.
 
 > [!NOTE]
 > Autentisering till en FTP/FTPS-slutpunkt med autentiseringsuppgifter på användar nivå kräver ett användar namn i följande format: 
@@ -69,9 +69,9 @@ Vi rekommenderar att du använder **autentiseringsuppgifter för appen** för at
 
 För ökad säkerhet bör du endast tillåta FTP över TLS/SSL. Du kan också inaktivera både FTP-och FTPS om du inte använder FTP-distribution.
 
-På din apps resurs sida i [Azure Portal](https://portal.azure.com)väljer du **konfiguration**  >  av**allmänna inställningar** i det vänstra navigerings fältet.
+På din apps resurs sida i [Azure Portal](https://portal.azure.com)väljer du **konfiguration**  >  av **allmänna inställningar** i det vänstra navigerings fältet.
 
-Om du vill inaktivera okrypterad FTP väljer du **FTPS endast** i **FTP-tillstånd**. Om du vill inaktivera både FTP-och FTPS helt väljer du **inaktive rad**. När det är klart klickar du på **Spara**. Om du **bara använder FTPS**måste du framtvinga TLS 1,2 eller högre genom att gå till bladet **TLS/SSL-inställningar** i din webbapp. TLS 1,0 och 1,1 stöds inte med **FTPS**.
+Om du vill inaktivera okrypterad FTP väljer du **FTPS endast** i **FTP-tillstånd**. Om du vill inaktivera både FTP-och FTPS helt väljer du **inaktive rad**. När det är klart klickar du på **Spara**. Om du **bara använder FTPS** måste du framtvinga TLS 1,2 eller högre genom att gå till bladet **TLS/SSL-inställningar** i din webbapp. TLS 1,0 och 1,1 stöds inte med **FTPS**.
 
 ![Inaktivera FTP/S](./media/app-service-deploy-ftp/disable-ftp.png)
 
@@ -85,9 +85,18 @@ För FTP-distribution med hjälp av [Azure PowerShell](/cli/azure), se [Ladda up
 
 ## <a name="troubleshoot-ftp-deployment"></a>Felsöka FTP-distribution
 
-- [Hur kan jag felsöka FTP-distribution?](#how-can-i-troubleshoot-ftp-deployment)
-- [Jag kan inte FTP och publicera min kod. Hur kan jag lösa problemet?](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
-- [Hur kan jag ansluta till FTP i Azure App Service via passivt läge?](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
+- [Distribuera din app till Azure App Service med FTP/S](#deploy-your-app-to-azure-app-service-using-ftps)
+  - [Öppna FTP-instrumentpanel](#open-ftp-dashboard)
+  - [Hämta information om FTP-anslutning](#get-ftp-connection-information)
+  - [Distribuera filer till Azure](#deploy-files-to-azure)
+  - [Framtvinga FTPS](#enforce-ftps)
+  - [Automatisera med skript](#automate-with-scripts)
+  - [Felsöka FTP-distribution](#troubleshoot-ftp-deployment)
+    - [Hur kan jag felsöka FTP-distribution?](#how-can-i-troubleshoot-ftp-deployment)
+    - [Jag kan inte FTP och publicera min kod. Hur kan jag lösa problemet?](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
+    - [Hur kan jag ansluta till FTP i Azure App Service via passivt läge?](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
+  - [Nästa steg](#next-steps)
+  - [Fler resurser](#more-resources)
 
 ### <a name="how-can-i-troubleshoot-ftp-deployment"></a>Hur kan jag felsöka FTP-distribution?
 

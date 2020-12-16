@@ -13,12 +13,12 @@ ms.author: abnarain
 ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: b3391727b19e9e8e88646f72667545f1df7fe5a7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0ef6c97f7924c890bb6665100259970372f1cd26
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012875"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606954"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>Använd anpassade aktiviteter i en Azure Data Factory version 1-pipeline
 > [!div class="op_single_selector" title1="Välj den version av Data Factory-tjänsten som du använder:"]
@@ -43,7 +43,7 @@ Följande genom gång innehåller stegvisa instruktioner för hur du skapar en a
 > - Det går inte att använda en Data Management Gateway från en anpassad aktivitet för att komma åt lokala data källor. För närvarande stöder [Data Management Gateway](data-factory-data-management-gateway.md) endast aktiviteten Kopiera aktivitet och lagrad procedur i Data Factory.
 
 ## <a name="walkthrough-create-a-custom-activity"></a>Genom gång: skapa en anpassad aktivitet
-### <a name="prerequisites"></a>Förutsättningar
+### <a name="prerequisites"></a>Krav
 * Visual Studio 2012/2013/2015/2017
 * Ladda ned och installera [Azure .NET SDK](https://azure.microsoft.com/downloads/)
 
@@ -98,8 +98,10 @@ Metoden kräver fyra parametrar:
 Metoden returnerar en ord lista som kan användas för att kedja samman anpassade aktiviteter i framtiden. Den här funktionen har inte implementerats ännu, så returnera en tom ord lista från-metoden.
 
 ### <a name="procedure"></a>Procedur
+
 1. Skapa ett **biblioteks** projekt för .NET-klass.
-   <ol type="a">
+   
+    <ol type="a">
      <li>Starta Visual Studio.</li>
      <li>Klicka på <b>Arkiv</b>, peka på <b>Nytt</b> och klicka på <b>Projekt</b>.</li>
      <li>Expandera <b>Mallar</b> och välj <b>Visual C#</b>. I den här genom gången använder du C#, men du kan använda valfritt .NET-språk för att utveckla den anpassade aktiviteten.</li>
@@ -116,6 +118,7 @@ Metoden returnerar en ord lista som kan användas för att kedja samman anpassad
     ```powershell
     Install-Package Microsoft.Azure.Management.DataFactories
     ```
+
 4. Importera **Azure Storage** NuGet-paketet till projektet.
 
     ```powershell
@@ -149,16 +152,19 @@ Metoden returnerar en ord lista som kan användas för att kedja samman anpassad
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
+
 6. Ändra namn **området** till **MyDotNetActivityNS**.
 
     ```csharp
     namespace MyDotNetActivityNS
     ```
+
 7. Ändra namnet på klassen till **MyDotNetActivity** och Härled den från **IDotNetActivity** -gränssnittet som visas i följande kodfragment:
 
     ```csharp
     public class MyDotNetActivity : IDotNetActivity
     ```
+
 8. Implementera (Lägg till) metoden **execute** för **IDotNetActivity** -gränssnittet till klassen **MyDotNetActivity** och kopiera följande exempel kod till-metoden.
 
     I följande exempel räknas antalet förekomster av Sök termen ("Microsoft") i varje blob som är associerad med en data sektor.
@@ -279,6 +285,7 @@ Metoden returnerar en ord lista som kan användas för att kedja samman anpassad
         return new Dictionary<string, string>();
     }
     ```
+
 9. Lägg till följande hjälp metoder:
 
     ```csharp
@@ -367,25 +374,30 @@ Metoden returnerar en ord lista som kan användas för att kedja samman anpassad
     ```
 
     Metoden beräkna beräknar antalet instanser av nyckelordet Microsoft i indatafilerna (blobbar i mappen). Sök termen ("Microsoft") är hårdkodad i koden.
+
 10. Kompilera projektet. Klicka på **build** på menyn och klicka på **build-lösning**.
 
     > [!IMPORTANT]
     > Ange 4.5.2-version av .NET Framework som mål ramverk för projektet: Högerklicka på projektet och klicka på **Egenskaper** för att ange mål ramverk. Data Factory stöder inte anpassade aktiviteter som kompilerats mot .NET Framework versioner senare än 4.5.2.
 
 11. Starta **Utforskaren** och gå till mappen **bin\debug** eller **bin\release** beroende på typ av version.
+
 12. Skapa en zip-fil **MyDotNetActivity.zip** som innehåller alla binärfiler i \<project folder\> mappen \bin\Debug Ta med **MyDotNetActivity. pdb** -filen så att du får ytterligare information, till exempel rad nummer i käll koden som orsakade problemet om det uppstod ett fel.
 
     > [!IMPORTANT]
     > Alla filer i zip-filen för den anpassade aktiviteten måste vara på den **översta nivån** utan undermappar.
 
     ![Filer för binär utdatafil](./media/data-factory-use-custom-activities/Binaries.png)
-14. Skapa en BLOB-behållare med namnet **customactivitycontainer** om den inte redan finns.
-15. Ladda upp MyDotNetActivity.zip som en blob till customactivitycontainer i en **allmän** Azure Blob Storage (inte varmt/cool Blob Storage) som kallas av AzureStorageLinkedService.
+
+13. Skapa en BLOB-behållare med namnet **customactivitycontainer** om den inte redan finns.
+
+14. Ladda upp MyDotNetActivity.zip som en blob till customactivitycontainer i en **allmän** Azure Blob Storage (inte varmt/cool Blob Storage) som kallas av AzureStorageLinkedService.
 
 > [!IMPORTANT]
 > Om du lägger till detta .NET-aktivitets projekt i en lösning i Visual Studio som innehåller ett Data Factory-projekt och lägger till en referens till .NET-aktivitets projekt från Data Factory-programprojektet, behöver du inte utföra de två sista stegen för att manuellt skapa zip-filen och ladda upp den till Azure Blob Storage i allmänt syfte. När du publicerar Data Factory entiteter med hjälp av Visual Studio utförs dessa steg automatiskt av publicerings processen. Mer information finns i avsnittet [Data Factory projekt i Visual Studio](#data-factory-project-in-visual-studio) .
 
 ## <a name="create-a-pipeline-with-custom-activity"></a>Skapa en pipeline med anpassad aktivitet
+
 Du har skapat en anpassad aktivitet och överfört zip-filen med binärfiler till en BLOB-behållare i ett **allmänt** Azure Storage konto. I det här avsnittet skapar du en Azure-datafabrik med en pipeline som använder den anpassade aktiviteten.
 
 Data uppsättningen för den anpassade aktiviteten representerar blobbar (filer) i mappen customactivityinput i adftutorial-behållaren i blob-lagringen. Data uppsättningen för utdata för aktiviteten representerar utgående blobbar i mappen customactivityoutput i adftutorial-behållaren i blob-lagringen.

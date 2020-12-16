@@ -10,12 +10,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.date: 05/08/2019
-ms.openlocfilehash: a454c1297b0f25c64b11217811999d4331148205
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: f2a0784b2795b82131880d73a6d9217acc1d72d3
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96022470"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606223"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Beräknings miljöer som stöds av Azure Data Factory
 
@@ -32,7 +32,7 @@ Följande tabell innehåller en lista över beräknings miljöer som stöds av D
 | [Azure Machine Learning Studio (klassisk)](#azure-machine-learning-studio-classic-linked-service) | [Machine Learning Studio (klassisk) aktiviteter: batch-körning och uppdaterings resurs](transform-data-using-machine-learning.md) |
 | [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning kör pipeline](transform-data-machine-learning-service.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
-| [Azure SQL](#azure-sql-database-linked-service), [Azure Synapse Analytics (tidigare SQL Data Warehouse)](#azure-synapse-analytics-linked-service) [SQL Server](#sql-server-linked-service) | [Lagrad procedur](transform-data-using-stored-procedure.md) |
+| [Azure SQL](#azure-sql-database-linked-service), [Azure Synapse Analytics](#azure-synapse-analytics-linked-service), [SQL Server](#sql-server-linked-service) | [Lagrad procedur](transform-data-using-stored-procedure.md) |
 | [Azure Databricks](#azure-databricks-linked-service)         | [Notebook](transform-data-databricks-notebook.md), [jar](transform-data-databricks-jar.md), [python](transform-data-databricks-python.md) |
 | [Azure-funktion](#azure-function-linked-service)         | [Azure Function-aktivitet](control-flow-azure-function-activity.md)
 >  
@@ -41,7 +41,7 @@ Följande tabell innehåller en lista över beräknings miljöer som stöds av D
 
 Se tabellen nedan för information om de länkade tjänst typerna som stöds för konfiguration på begäran och BYOC (ta med din egen beräknings miljö).
 
-| I Compute-länkad tjänst | Egenskapsnamn                | Description                                                  | Blob | ADLS Gen2 | Azure SQL-databas | ADLS Gen 1 |
+| I Compute-länkad tjänst | Egenskapsnamn                | Beskrivning                                                  | Blob | ADLS Gen2 | Azure SQL-databas | ADLS Gen 1 |
 | ------------------------- | ---------------------------- | ------------------------------------------------------------ | ---- | --------- | ------------ | ---------- |
 | På begäran                 | linkedServiceName            | Azure Storage länkad tjänst som ska användas av klustret på begäran för att lagra och bearbeta data. | Ja  | Ja       | Nej           | Nej         |
 |                           | additionalLinkedServiceNames | Anger ytterligare lagrings konton för den länkade HDInsight-tjänsten så att tjänsten Data Factory kan registrera dem åt dig. | Ja  | Nej        | Nej           | Nej         |
@@ -253,7 +253,7 @@ Om du vill skapa värden för D4 size-Head och Worker, anger du **Standard_D4** 
 "dataNodeSize": "Standard_D4",
 ```
 
-Om du anger ett felaktigt värde för dessa egenskaper kan du få följande **fel meddelande:** det gick inte att skapa klustret. Undantag: Unable to complete the cluster create operation. (Det går inte att slutföra åtgärden att skapa ett kluster.) Operation failed with code '400'. (Åtgärden misslyckades med koden 400). Cluster left behind state: 'Error'. (Klustret efterlämnade status: Fel.) Meddelande: ' PreClusterCreationValidationFailure '. När du får det här felet måste du kontrol lera att du använder **cmdleten & API: er** namn i tabellen i [Virtual Machiness artikel storlek](../virtual-machines/sizes.md) .          
+Om du anger ett felaktigt värde för dessa egenskaper kan du få följande **fel meddelande:** det gick inte att skapa klustret. Undantag: Unable to complete the cluster create operation. (Det går inte att slutföra åtgärden att skapa ett kluster.) Operation failed with code '400'. (Åtgärden misslyckades med koden 400). Cluster left behind state: 'Error'. (Klustret efterlämnade status: Fel.) Meddelande: ' PreClusterCreationValidationFailure '. När du får det här felet måste du kontrol lera att du använder **cmdleten & API: er** namn i tabellen i [Virtual Machiness artikel storlek](../virtual-machines/sizes.md) .
 
 ### <a name="bring-your-own-compute-environment"></a>Ta med din egen beräknings miljö
 I den här typen av konfiguration kan användarna registrera en redan befintlig dator miljö som en länkad tjänst i Data Factory. Dator miljön hanteras av användaren och den Data Factory tjänsten använder den för att köra aktiviteterna.
@@ -564,7 +564,7 @@ Du skapar en länkad Azure SQL-tjänst och använder den med den [lagrade proced
 
 ## <a name="azure-synapse-analytics-linked-service"></a>Länkad Azure Synapse Analytics-tjänst
 
-Du skapar en länkad Azure Synapse Analytics-tjänst (tidigare SQL Data Warehouse) och använder den med den [lagrade procedur aktiviteten](transform-data-using-stored-procedure.md) för att anropa en lagrad procedur från en Data Factory pipeline. Mer information om den här länkade tjänsten finns i artikeln [Azure Synapse Analytics (tidigare SQL Data Warehouse) Connector](connector-azure-sql-data-warehouse.md#linked-service-properties) .
+Du skapar en länkad Azure Synapse Analytics-tjänst och använder den med den [lagrade procedur aktiviteten](transform-data-using-stored-procedure.md) för att anropa en lagrad procedur från en Data Factory pipeline. Se artikeln om [Azure Synapse Analytics Connector](connector-azure-sql-data-warehouse.md#linked-service-properties) för information om den här länkade tjänsten.
 
 ## <a name="sql-server-linked-service"></a>SQL Server länkad tjänst
 
@@ -576,8 +576,8 @@ Du skapar en länkad Azure Function-tjänst och använder den med [Azure Functio
 
 | **Egenskap** | **Beskrivning** | **Obligatoriskt** |
 | --- | --- | --- |
-| typ   | Egenskapen Type måste anges till: **AzureFunction** | yes |
-| URL till Function-app | URL för Azure-Funktionsapp. Formatet är `https://<accountname>.azurewebsites.net` . URL: en är värdet under **URL** -avsnittet när du visar Funktionsapp i Azure Portal  | yes |
+| typ   | Egenskapen Type måste anges till: **AzureFunction** | ja |
+| URL till Function-app | URL för Azure-Funktionsapp. Formatet är `https://<accountname>.azurewebsites.net` . URL: en är värdet under **URL** -avsnittet när du visar Funktionsapp i Azure Portal  | ja |
 | funktions nyckel | Åtkomst nyckel för Azure-funktionen. Klicka på **Hantera** -avsnittet för respektive funktion och kopiera antingen **funktions nyckeln** eller **värd nyckeln**. Läs mer här: [Azure Functions HTTP-utlösare och bindningar](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) | ja |
 |   |   |   |
 

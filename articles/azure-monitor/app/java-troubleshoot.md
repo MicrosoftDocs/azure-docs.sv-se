@@ -6,12 +6,12 @@ ms.date: 03/14/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: dbc9e48987f527c9579decc3db84091a432a17e5
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 6b578cd03daa6e996a69c03afd327097d6123045
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601024"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607906"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>Fel sökning och frågor och svar för Application Insights för Java SDK
 
@@ -63,7 +63,6 @@ Du har konfigurerat appen så att du kan skicka telemetri från servern. Nu är 
 Alternativt, om din klient är en app på en [telefon eller en annan enhet][platforms], kan du skicka telemetri därifrån.
 
 Använd samma Instrumentation-nyckel för att konfigurera både din klient-och Server telemetri. Data visas i samma Application Insights resurs och du kan korrelera händelser från klient och server.
-
 
 ## <a name="disabling-telemetry"></a>Inaktivera telemetri
 **Hur kan jag Inaktivera telemetri-samlingen?**
@@ -183,7 +182,6 @@ Application Insights använder `org.apache.http` . Detta finns i Application Ins
 
 >[!NOTE]
 >Om du aktiverar loggning av fel SÖKNINGs nivå för alla namn områden i appen, kommer den att följas av alla moduler som körs, inklusive `org.apache.http` omdöpt till `com.microsoft.applicationinsights.core.dependencies.http` . Application Insights kan inte använda filtrering för dessa anrop eftersom logg anropet görs av Apache-biblioteket. Loggning av fel SÖKNINGs nivå ger en stor mängd loggdata och rekommenderas inte för direktsända produktions instanser.
-
 
 ## <a name="next-steps"></a>Nästa steg
 **Jag har konfigurerat Application Insights för My Java Server-appen. Vad mer kan jag göra?**

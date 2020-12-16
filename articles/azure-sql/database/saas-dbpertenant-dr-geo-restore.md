@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: daccbd9dfb3ed628d8a3e604cbb9af4045f1ebe6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3fe6095595f5270b18536e6ef46afe4a0a5b3268
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780894"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607719"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Använd geo-återställning för att återställa ett SaaS-program med flera innehavare från databas säkerhets kopior
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -163,7 +163,7 @@ Låt PowerShell-fönstret köras i bakgrunden och fortsätt med resten av den h�
 
     * Klient databaser kan nås av programmet så snart de är markerade online i katalogen.
 
-    * En summa av ROWVERSION-värden i klient databasen lagras i katalogen. Den här summan fungerar som ett finger avtryck som gör att Repatriation-processen kan avgöra om databasen har uppdaterats i återställnings regionen.       
+    * En summa av ROWVERSION-värden i klient databasen lagras i katalogen. Den här summan fungerar som ett finger avtryck som gör att Repatriation-processen kan avgöra om databasen har uppdaterats i återställnings regionen.
 
 ## <a name="run-the-recovery-script"></a>Kör återställnings skriptet
 

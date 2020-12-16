@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 1376dcb76c22bcd70937f533d337ee9679e9dc59
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 832c08123904b9fb889231faa86c1308704a2581
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455855"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606427"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-loginradius"></a>Självstudie: Azure Active Directory integrering med LoginRadius
 
@@ -32,7 +32,7 @@ Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsn
 
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill konfigurera Azure AD-integrering med LoginRadius behöver du följande objekt:
 
@@ -151,7 +151,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i administration
        - Kommando för att hämta certifikat nyckeln för SP: `openssl genrsa -out lr.hub.loginradius.com.key 2048`
 
        - Kommando för att hämta certifikatet för SP: `openssl req -new -x509 -key lr.hub.loginradius.com.key -out lr.hub.loginradius.com.cert -days 3650 -subj /CN=lr.hub.loginradius.com`
-     
+
        > [!NOTE]
        > Se till att ange certifikat-och certifikat nyckel värden med sidhuvud och sidfot:
        > - Exempel format för certifikat värde: `-----BEGIN CERTIFICATE-----<certifciate value>-----END CERTIFICATE-----`
@@ -188,7 +188,7 @@ Syftet med det här avsnittet är att skapa en test användare som kallas Britta
 
    1. I fältet **namn** anger du **BrittaSimon**.
   
-   1. I fältet **användar namn** anger du `brittasimon@yourcompanydomain.extension` . Exempelvis BrittaSimon@contoso.com.
+   1. I fältet **användar namn** anger du `brittasimon@yourcompanydomain.extension` . Ett exempel är BrittaSimon@contoso.com.
 
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
 

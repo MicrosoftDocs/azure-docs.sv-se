@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: bdd12b5c866ee723547513e35a5adcfabb59dab9
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: c7e859b05450b95cf9c75421599dd9c54a639cdc
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364433"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606852"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Språk-och region stöd för text-och tal Översättning
 
@@ -34,88 +34,88 @@ Translator stöder följande språk för text översättning av text.
 
 [Visa referens dokumentation för översättnings åtgärd](reference/v3-0-translate.md)
 
-|Språk|  Språkkod|
-|:-----|:-----:|
-|Afrikaans| `af`|
-|Arabiska|    `ar`    |
-|Assamesiska|  `as`    |
-|Bangla|    `bn`    |
-|Bosniska (latinsk)|   `bs`    |
-|Bulgariska| `bg`    |
-|Kantonesiska (traditionell)|   `yue`|
-|Katalanska|   `ca`    |
-|Kinesiska, förenklad|    `zh-Hans`|
-|Kinesiska, traditionell|   `zh-Hant`       |
-|Kroatiska|  `hr`    |
-|Tjeckiska| `cs`    |
-|Dari|  `prs`   |
-|Danska|    `da`        |
-|Nederländska| `nl`|
-|Engelska|   `en`    |
-|Estniska|  `et`    |
-|Fijian|    `fj`    |
-|Filipino|  `fil`   |
-|Finska|   `fi`    |
-|Franska|    `fr`    |
-|Franska (Kanada)|   `fr-ca` |
-|Tyska|    `de`    |
-|Grekiska| `el`    |
-|Gujarati|  `gu`    |
-|Haitiska|    `ht`        |
-|Hebreiska |`he`   |
-|Hindi| `hi`    |
-|Hmong Daw| `mww`   |
-|Ungerska| `hu`    |
-|Isländska| `is`    |
-|Indonesiska|    `id`    |
-|Iriska | `ga`|
-|Italienska|   `it`    |
-|Japanska|  `ja`    |
-|Kannada|`kn`|
-|Kazakiska|`kk`|
-|Klingon|   `tlh-Latn`  |
-|Klingon (plqaD)|   `tlh-Piqd`  |
-|Koreanska |`ko`   |
-|Kurdiska (Central)  |`ku`   |
-|Kurdiska (norra) |`kmr`  |
-|Lettiska|   `lv`    |
-|Litauiska|    `lt`    |
-|Madagaskisk|  `mg`    |
-|Malajiska| `ms`        |
-|Malayalam| `ml` |
-|Maltesiska|   `mt`    |
-|Maori| `mi`  |
-|Marathi| `mr`  |
-|Norska| `nb`    |
-|Odia|  `or`    |
-|Afghanska|    `ps`    |
-|Persiska|   `fa`    |
-|Polska|    `pl`    |
-|Portugisiska (Brasilien)|   `pt-br` |
-|Portugisiska (Portugal)| `pt-pt` |
-|Punjabi|`pa`|
-|Queretaro Otomi|   `otq`   |
-|Rumänska|  `ro`    |
-|Ryska|   `ru`    |
-|Samoan|    `sm`    |
-|Serbiska (kyrillisk)|    `sr-Cyrl`|
-|Serbiska (latinsk) (Serbien)|   `sr-Latn`       |
-|Slovakiska|    `sk`    |
-|Slovenska| `sl`    |
-|Spanska|   `es`    |
-|Swahili|   `sw`    |
-|Svenska|   `sv`    |
-|Tahitian|  `ty`    |
-|Tamilska| `ta`    |
-|Telugu|    `te`    |
-|Thailändska|  `th`    |
-|Tonganska|    `to`    |
-|Turkiska|   `tr`        |
-|Ukrainska| `uk`    |
-|Urdu|  `ur`    |
-|Vietnamesiska|    `vi`    |
-|Walesiska| `cy`    |
-|Yucatec Maya|  `yua`   |
+| Språk | Språkkod |
+|:-|:-:|
+| Afrikaans | `af` |
+| Arabiska | `ar` |
+| Assamesiska | `as` |
+| Bangla | `bn` |
+| Bosniska (latinsk) | `bs` |
+| Bulgariska | `bg` |
+| Kantonesiska (traditionell) | `yue` |
+| Katalanska | `ca` |
+| Kinesiska, förenklad | `zh-Hans` |
+| Kinesiska, traditionell | `zh-Hant` |
+| Kroatiska | `hr` |
+| Tjeckiska | `cs` |
+| Dari | `prs` |
+| Danska | `da` |
+| Nederländska | `nl` |
+| Engelska | `en` |
+| Estniska | `et` |
+| Fijian | `fj` |
+| Filipino | `fil` |
+| Finska | `fi` |
+| Franska | `fr` |
+| Franska (Kanada) | `fr-ca` |
+| Tyska | `de` |
+| Grekiska | `el` |
+| Gujarati | `gu` |
+| Haitiska | `ht` |
+| Hebreiska | `he` |
+| Hindi | `hi` |
+| Hmong Daw | `mww` |
+| Ungerska | `hu` |
+| Isländska | `is` |
+| Indonesiska | `id` |
+| Iriska | `ga` |
+| Italienska | `it` |
+| Japanska | `ja` |
+| Kannada | `kn` |
+| Kazakiska | `kk` |
+| Klingon | `tlh-Latn` |
+| Klingon (plqaD) | `tlh-Piqd` |
+| Koreanska | `ko` |
+| Kurdiska (Central) | `ku` |
+| Kurdiska (norra) | `kmr` |
+| Lettiska | `lv` |
+| Litauiska | `lt` |
+| Madagaskisk | `mg` |
+| Malajiska | `ms` |
+| Malayalam | `ml` |
+| Maltesiska | `mt` |
+| Maori | `mi` |
+| Marathi | `mr` |
+| Norska | `nb` |
+| Odia | `or` |
+| Afghanska | `ps` |
+| Persiska | `fa` |
+| Polska | `pl` |
+| Portugisiska (Brasilien) | `pt-br` |
+| Portugisiska (Portugal) | `pt-pt` |
+| Punjabi | `pa` |
+| Queretaro Otomi | `otq` |
+| Rumänska | `ro` |
+| Ryska | `ru` |
+| Samoan | `sm` |
+| Serbiska (kyrillisk) | `sr-Cyrl` |
+| Serbiska (latinsk) (Serbien) | `sr-Latn` |
+| Slovakiska | `sk` |
+| Slovenska | `sl` |
+| Spanska | `es` |
+| Swahili | `sw` |
+| Svenska | `sv` |
+| Tahitian | `ty` |
+| Tamilska | `ta` |
+| Telugu | `te` |
+| Thailändska | `th` |
+| Tonganska | `to` |
+| Turkiska | `tr` |
+| Ukrainska | `uk` |
+| Urdu | `ur` |
+| Vietnamesiska | `vi` |
+| Walesiska | `cy` |
+| Yucatec Maya | `yua` |
 
 > [!NOTE]
 > Språk koden är `pt` som standard `pt-br` portugisiska (Brasilien).
@@ -126,63 +126,63 @@ Translator identifierar följande språk för översättning och transkriberings
 
 [Visa referens dokumentation för identifierings åtgärd](reference/v3-0-detect.md)
 
-|Språk|  Språkkod|
-|:-----|:-----:|
-|Afrikaans| `af`|
-|Arabiska|    `ar`    |
-|Bulgariska| `bg`    |
-|Katalanska|   `ca`    |
-|Kinesiska, förenklad|    `zh-Hans`|
-|Kinesiska, traditionell|   `zh-Hant`       |
-|Kroatiska|  `hr`    |
-|Tjeckiska| `cs`    |
-|Danska|    `da`        |
-|Nederländska| `nl`|
-|Engelska|   `en`    |
-|Estniska|  `et`    |
-|Finska|   `fi`    |
-|Franska|    `fr`    |
-|Tyska|    `de`    |
-|Grekiska| `el`    |
-|Gujarati|  `gu`    |
-|Haitiska|    `ht`        |
-|Hebreiska |`he`   |
-|Hindi| `hi`    |
-|Ungerska| `hu`    |
-|Isländska| `is`    |
-|Indonesiska|    `id`    |
-|Iriska | `ga`|
-|Italienska|   `it`    |
-|Japanska|  `ja`    |
-|Klingon|   `tlh-Latn`  |
-|Koreanska |`ko`   |
-|Kurdiska (Central)  |`ku-Arab`  |
-|Lettiska|   `lv`    |
-|Litauiska|    `lt`    |
-|Malajiska| `ms`        |
-|Maltesiska|   `mt`    |
-|Norska| `nb`    |
-|Afghanska|    `ps`    |
-|Persiska|   `fa`    |
-|Polska|    `pl`    |
-|Portugisiska|    `pt`    |
-|Rumänska|  `ro`    |
-|Ryska|   `ru`    |
-|Serbiska (kyrillisk)|    `sr-Cyrl`|
-|Serbiska (latinsk) (Serbien)|   `sr-Latn`       |
-|Slovakiska|    `sk`    |
-|Slovenska| `sl`    |
-|Spanska|   `es`    |
-|Swahili|   `sw`    |
-|Svenska|   `sv`    |
-|Tahitian|  `ty`    |
-|Thailändska|  `th`    |
-|Turkiska|   `tr`        |
-|Ukrainska| `uk`    |
-|Urdu|  `ur`    |
-|Vietnamesiska|    `vi`    |
-|Walesiska| `cy`    |
-|Yucatec Maya|  `yua`   |
+| Språk | Språkkod |
+|:-|:-:|
+| Afrikaans | `af` |
+| Arabiska | `ar` |
+| Bulgariska | `bg` |
+| Katalanska | `ca` |
+| Kinesiska, förenklad | `zh-Hans` |
+| Kinesiska, traditionell | `zh-Hant` |
+| Kroatiska | `hr` |
+| Tjeckiska | `cs` |
+| Danska | `da` |
+| Nederländska | `nl` |
+| Engelska | `en` |
+| Estniska | `et` |
+| Finska | `fi` |
+| Franska | `fr` |
+| Tyska | `de` |
+| Grekiska | `el` |
+| Gujarati | `gu` |
+| Haitiska | `ht` |
+| Hebreiska | `he` |
+| Hindi | `hi` |
+| Ungerska | `hu` |
+| Isländska | `is` |
+| Indonesiska | `id` |
+| Iriska | `ga` |
+| Italienska | `it` |
+| Japanska | `ja` |
+| Klingon | `tlh-Latn` |
+| Koreanska | `ko` |
+| Kurdiska (Central) | `ku-Arab` |
+| Lettiska | `lv` |
+| Litauiska | `lt` |
+| Malajiska | `ms` |
+| Maltesiska | `mt` |
+| Norska | `nb` |
+| Afghanska | `ps` |
+| Persiska | `fa` |
+| Polska | `pl` |
+| Portugisiska | `pt` |
+| Rumänska | `ro` |
+| Ryska | `ru` |
+| Serbiska (kyrillisk) | `sr-Cyrl` |
+| Serbiska (latinsk) (Serbien) | `sr-Latn` |
+| Slovakiska | `sk` |
+| Slovenska | `sl` |
+| Spanska | `es` |
+| Swahili | `sw` |
+| Svenska | `sv` |
+| Tahitian | `ty` |
+| Thailändska | `th` |
+| Turkiska | `tr` |
+| Ukrainska | `uk` |
+| Urdu | `ur` |
+| Vietnamesiska | `vi` |
+| Walesiska | `cy` |
+| Yucatec Maya | `yua` |
 
 ### <a name="transliterate"></a>Transkribera
 
@@ -319,7 +319,7 @@ Följande språk är tillgängliga för anpassning till eller från engelska med
 | Lettiska      | `lv`          |
 | Litauiska      | `lt`          |
 | Madagaskisk| `mg`    |
-| Malajiska|    `ms`        |
+| Malajiska|    `ms` |
 |Maltesiska|   `mt`    |
 | Maori| `mi`  |
 | Marathi| `mr`  |
@@ -387,47 +387,47 @@ Konvertera tal till text för att översätta till valfritt språk. Tal-till-tex
 ### <a name="text-to-speech"></a>Text till tal
 Omvandla text till tal. Text till tal används för att lägga till ljud utmatning av översättnings resultat eller för tal till tal-översättning när de används med tal till text. 
 
-| Språk    |
-|:----------- |
-|Arabiska|
-|Bulgariska|
-|Kantonesiska (traditionell)|
-|Katalanska|
-|Kinesiska, förenklad|
-|Kinesiska, traditionell|
-|Kroatiska|
-|Tjeckiska|
-|Danska|
-|Nederländska|
-|Engelska|
-|Finska|
-|Franska|
-|Franska (Kanada)|
-|Tyska|
-|Grekiska|
-|Hebreiska|
-|Hindi|
-|Ungerska|
-|Indonesiska|
-|Italienska|
-|Japanska|
-|Koreanska|
-|Malajiska|
-|Norska|
-|Polska|
-|Portugisiska (Brasilien)|
-|Portugisiska (Portugal)|
-|Rumänska|
-|Ryska|
-|Slovakiska|
-|Slovenska|
-|Spanska|
-|Svenska|
-|Tamilska|
-|Telugu|
-|Thailändska|
-|Turkiska|
-|Vietnamesiska|
+| Språk |
+|:-|
+| Arabiska |
+| Bulgariska |
+| Kantonesiska (traditionell) |
+| Katalanska |
+| Kinesiska, förenklad |
+| Kinesiska, traditionell |
+| Kroatiska |
+| Tjeckiska |
+| Danska |
+| Nederländska |
+| Engelska |
+| Finska |
+| Franska |
+| Franska (Kanada) |
+| Tyska |
+| Grekiska |
+| Hebreiska |
+| Hindi |
+| Ungerska |
+| Indonesiska |
+| Italienska |
+| Japanska |
+| Koreanska |
+| Malajiska |
+| Norska |
+| Polska |
+| Portugisiska (Brasilien) |
+| Portugisiska (Portugal) |
+| Rumänska |
+| Ryska |
+| Slovakiska |
+| Slovenska |
+| Spanska |
+| Svenska |
+| Tamilska |
+| Telugu |
+| Thailändska |
+| Turkiska |
+| Vietnamesiska |
 
 ## <a name="view-the-language-list-on-the-microsoft-translator-website"></a>Visa språk listan på webbplatsen för Microsoft Translator
 

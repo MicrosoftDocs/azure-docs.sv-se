@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: cc17dcef7a554bee2715c79ba7d0c2356db2c6b3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 55ad9c90129a5d732f377ac1b6c905c14de319dc
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185665"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607431"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Fel söknings guide för Azure SignalR service vanliga problem
 
@@ -144,11 +144,17 @@ När [klient anslutningen](#client_connection_drop)går ur ASP.net SignalR, åte
 
 ## <a name="429-too-many-requests-returned-for-client-requests"></a>429 (för många begär Anden) returnerades för klient begär Anden
 
-429 returnerar om antalet **samtidiga** anslutningar överskrider gränsen.
+Det finns två fall.
+
+### <a name="concurrent-connection-count-exceeds-limit"></a>Antalet **samtidiga** anslutningar överskrider gränsen.
 
 För **lediga** instanser är gränsen för **samtidiga** anslutningar 20 för **standard** instanser, gränsen för antal **samtidiga** anslutningar **per enhet** är 1 K, vilket innebär att Unit100 tillåter 100 samtidiga anslutningar.
 
 Anslutningarna omfattar både klient-och Server anslutningar. Sök [efter](./signalr-concept-messages-and-connections.md#how-connections-are-counted) hur anslutningar räknas.
+
+### <a name="too-many-negotiate-requests-at-the-same-time"></a>För många Negotiate-begäranden på samma tidpunkt.
+
+Vi rekommenderar att du har en slumpmässig fördröjning innan du [ansluter igen.](#restart_connection) Sök efter försök igen.
 
 ## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>500 fel vid Negotiate: Azure SignalR-tjänsten är inte ansluten ännu, försök igen senare.
 
@@ -257,7 +263,7 @@ SignalR klient anslutning har `DisposeAsync` aldrig anropats. anslutningen förb
 
 Kontrol lera om du stänger anslutningen. Anropa manuellt `HubConnection.DisposeAsync()` för att stoppa anslutningen när du har använt den.
 
-Ett exempel:
+Exempel:
 
 ```C#
 var connection = new HubConnectionBuilder()

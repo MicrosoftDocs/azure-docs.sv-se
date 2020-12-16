@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 09/18/2020
 ms.author: sajaya
-ms.openlocfilehash: a2cddc9bbe868a2d18ee8111aabf6db7dc8643cf
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 055f039d5bba0dba2906e1d3b8410af00c5600ef
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347003"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606291"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Vanliga frågor och svar om Azure Container Registry
 
@@ -111,6 +111,7 @@ Det tar lite tid att sprida ändringar av brand Väggs regeln. När du har ändr
 - [Hur gör jag för att bevilja du åtkomst till pull-eller push-avbildningar utan behörighet att hantera register resursen?](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
 - [Hur gör jag för att aktivera automatisk avbildnings karantän för ett register?](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
 - [Hur gör jag för att aktivera anonym pull-åtkomst?](#how-do-i-enable-anonymous-pull-access)
+- [Hur gör jag för att push-överförda ej distribuerbara lager till ett register?](#how-do-i-push-non-distributable-layers-to-a-registry)
 
 ### <a name="how-do-i-access-docker-registry-http-api-v2"></a>Hur gör jag för att Access Docker Registry HTTP API v2?
 
@@ -264,6 +265,33 @@ Att konfigurera ett Azure Container Registry för anonym (offentlig) pull-åtkom
 > [!NOTE]
 > * Det går bara att komma åt anonyma API: er som krävs för att hämta en känd bild. Inga andra API: er för åtgärder som tagg lista eller lagrings plats lista kan användas anonymt.
 > * Innan du försöker utföra en anonym pull-åtgärd `docker logout` ska du köra för att se till att du rensar eventuella befintliga Docker-autentiseringsuppgifter.
+
+### <a name="how-do-i-push-non-distributable-layers-to-a-registry"></a>Hur gör jag för att push-överförda ej distribuerbara lager till ett register?
+
+Ett icke-Distribuerbart lager i ett manifest innehåller en URL-parameter som innehållet kan hämtas från. En del möjliga användnings fall för att aktivera icke-distribuerbara lager push-meddelanden är för nätverks begränsade register, gapped register med begränsad åtkomst eller för register utan Internet anslutning.
+
+Om du till exempel har NSG regler som har kon figurer ATS så att en virtuell dator bara kan hämta avbildningar från ditt Azure Container Registry, kommer Docker att ta emot problem för externa/icke-distribuerbara lager. En Windows Server Core-avbildning skulle till exempel innehålla referenser till externa lager till Azure Container Registry i manifestet och kan inte hämta i det här scenariot.
+
+Så här aktiverar du push-överföring av icke-distribuerbara lager:
+
+1. Redigera `daemon.json` filen, som finns i `/etc/docker/` på Linux-värdar och på `C:\ProgramData\docker\config\daemon.json` Windows Server. Anta att filen var tom tidigare, Lägg till följande innehåll:
+
+   ```json
+   {
+     "allow-nondistributable-artifacts": ["myregistry.azurecr.io"]
+   }
+   ```
+   > [!NOTE]
+   > Värdet är en matris med register adresser, avgränsade med kommatecken.
+
+2. Spara och avsluta filen.
+
+3. Starta om Docker.
+
+När du push-överför avbildningar till registren i listan skickas deras icke-distribuerbara lager till registret.
+
+> [!WARNING]
+> Icke-distribuerbara artefakter har vanligt vis begränsningar för hur och var de kan distribueras och delas. Använd endast den här funktionen för att skicka artefakter till privata register. Se till att du följer alla villkor som behandlar distribution av icke-distribuerbara artefakter.
 
 ## <a name="diagnostics-and-health-checks"></a>Diagnostik-och hälso kontroller
 
@@ -457,7 +485,7 @@ För fullständiga namngivnings regler för databaser, se [distributions specifi
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Hur gör jag för att samla in http-spårningar i Windows?
 
-#### <a name="prerequisites"></a>Förutsättningar
+#### <a name="prerequisites"></a>Krav
 
 - Aktivera dekryptering av https i Fiddler:  <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
 - Aktivera Docker att använda en proxy via Docker-gränssnittet: <https://docs.docker.com/docker-for-windows/#proxies>

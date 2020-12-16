@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 7e8746d9b29b0b4af30ba799628328acc3fd8bc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17c0e63b02d61b3aecf70624bc97a468d18f66fe
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941541"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607515"
 ---
 # <a name="what-is-azure-arc-enabled-postgresql-hyperscale"></a>Vad är Azure Arc aktiverat PostgreSQL-skalning?
 
@@ -43,14 +43,14 @@ Detta är den storskaliga form faktorn för postgres-databasmotorn som är tillg
 
 ## <a name="azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc Enabled PostgreSQL-skalning
 
-:::image type="content" source="media/postgres-hyperscale/postgresql-hyperscale-arc.png" alt-text="Azure SQL Database för PostgreSQL-storskalig (citus)":::
+:::image type="content" source="media/postgres-hyperscale/postgresql-hyperscale-arc.png" alt-text="Azure Arc Enabled PostgreSQL-skalning":::
 
 Detta är den storskaliga form faktorn för postgres-databasmotorn som är tillgänglig med Azure Arc-aktiverade data tjänster. Den drivs också av citus-tillägget som möjliggör skalnings upplevelsen. I den här formulärs faktorn tillhandahåller våra kunder den infrastruktur som är värd för systemen och använder dem.
 
 ## <a name="next-steps"></a>Nästa steg
 - **Skapa**
-   > **Vill du bara testa saker?**  
-   > Kom igång snabbt med [Azure Arc-rivstart med](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) på Azure Kubernetes service (AKS), AWS elastisk Kubernetes service (EKS), Google Cloud Kubernetes Engine (GKE) eller i en virtuell Azure-dator.
+   > **Vill du bara testa saker? Har du inte något Kubernetes-kluster tillgängligt? Vi ger dig ett begränsat läge:**  
+   > Kom igång snabbt med [Azure Arc-rivstart med](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) på Azure Kubernetes service (AKS), AWS elastisk Kubernetes service (EKS), Google Cloud Kubernetes Engine (GKE) eller i en virtuell Azure-dator.
 
    - **Fram**
       - [Installera klient verktyg](install-client-tools.md)

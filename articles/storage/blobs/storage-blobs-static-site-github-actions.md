@@ -9,22 +9,22 @@ ms.reviewer: dineshm
 ms.date: 09/11/2020
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 799c0dbc3ddb673cafe0fe4962f7346a841bd4b7
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 544b22e3395cacf0cc2e7a21e4b86325a8f4d236
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95543110"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605266"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>Konfigurera ett GitHub-åtgärds arbets flöde för att distribuera din statiska webbplats i Azure Storage
 
-Kom igång med [GitHub-åtgärder](https://docs.github.com/en/actions) genom att använda ett arbets flöde för att distribuera en statisk plats till ett Azure Storage-konto. När du har skapat ett arbets flöde för GitHub-åtgärder kommer du att kunna distribuera din webbplats automatiskt till Azure från GitHub när du gör ändringar i din plats kod.
+Kom igång med [GitHub-åtgärder](https://docs.github.com/en/free-pro-team@latest/actions) genom att använda ett arbets flöde för att distribuera en statisk plats till ett Azure Storage-konto. När du har skapat ett arbets flöde för GitHub-åtgärder kommer du att kunna distribuera din webbplats automatiskt till Azure från GitHub när du gör ändringar i din plats kod.
 
 > [!NOTE]
 > Om du använder [Azures statiska Web Apps](../../static-web-apps/index.yml)behöver du inte konfigurera ett arbets flöde för GitHub-åtgärder manuellt.
 > Azures statiska Web Apps skapar automatiskt ett GitHub åtgärds arbets flöde åt dig. 
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Ett Azure-prenumerations-och GitHub-konto. 
 

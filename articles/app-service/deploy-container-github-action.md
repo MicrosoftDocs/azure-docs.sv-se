@@ -7,16 +7,16 @@ ms.date: 12/04/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: ae587b9501c9c68600ff880744d311ba966923ed
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 4f5deb33218c336da7a477b4f39cd45f7386debf
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008035"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97604982"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Distribuera en anpassad behållare för att App Service med GitHub-åtgärder
 
-[GitHub-åtgärder](https://help.github.com/en/articles/about-github-actions) ger dig flexibiliteten att bygga ett automatiserat arbets flöde för program utveckling. Med [åtgärden Azure Web Deploy](https://github.com/Azure/webapps-deploy)kan du automatisera arbets flödet för att distribuera anpassade behållare till [App Service](overview.md) med GitHub-åtgärder.
+[GitHub-åtgärder](https://docs.github.com/en/free-pro-team@latest/actions) ger dig flexibiliteten att bygga ett automatiserat arbets flöde för program utveckling. Med [åtgärden Azure Web Deploy](https://github.com/Azure/webapps-deploy)kan du automatisera arbets flödet för att distribuera anpassade behållare till [App Service](overview.md) med GitHub-åtgärder.
 
 Ett arbets flöde definieras av en YAML-fil (. yml) i `/.github/workflows/` sökvägen i lagrings platsen. Den här definitionen innehåller de olika stegen och parametrarna i arbets flödet.
 
@@ -28,7 +28,7 @@ För ett arbets flöde för Azure App Service container har filen tre delar:
 |**Skapa** | 1. skapa miljön. <br /> 2. Bygg behållar avbildningen. |
 |**Distribuera** | 1. distribuera behållar avbildningen. |
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - Ett GitHub-konto. Om du inte har någon kan du registrera dig [kostnads fritt](https://github.com/join). Du måste ha kod i en GitHub-lagringsplats för att distribuera till Azure App Service. 
@@ -39,7 +39,7 @@ För ett arbets flöde för Azure App Service container har filen tre delar:
 
 Det rekommenderade sättet att autentisera med Azure App tjänster för GitHub-åtgärder är med en publicerings profil. Du kan också autentisera med ett huvud namn för tjänsten, men processen kräver fler steg. 
 
-Spara dina autentiseringsuppgifter för din publicerings profil eller tjänstens huvud namn som [GitHub-hemlighet](https://docs.github.com/en/actions/reference/encrypted-secrets) för att autentisera med Azure. Du kommer att få åtkomst till hemligheten i ditt arbets flöde. 
+Spara dina autentiseringsuppgifter för din publicerings profil eller tjänstens huvud namn som [GitHub-hemlighet](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets) för att autentisera med Azure. Du kommer att få åtkomst till hemligheten i ditt arbets flöde. 
 
 # <a name="publish-profile"></a>[Publicera profil](#tab/publish-profile)
 
@@ -273,7 +273,7 @@ Du hittar vår uppsättning åtgärder grupperade i olika databaser på GitHub, 
 
 - [Docker-inloggning/utloggning](https://github.com/Azure/docker-login)
 
-- [Händelser som utlöser arbetsflöden](https://help.github.com/en/articles/events-that-trigger-workflows)
+- [Händelser som utlöser arbetsflöden](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
 
 - [K8s-distribution](https://github.com/Azure/k8s-deploy)
 

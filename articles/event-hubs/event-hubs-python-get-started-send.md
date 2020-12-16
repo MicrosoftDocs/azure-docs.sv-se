@@ -3,17 +3,17 @@ title: Skicka eller ta emot händelser från Azure Event Hubs med python (senast
 description: Den här artikeln innehåller en genom gång av hur du skapar ett python-program som skickar/tar emot händelser till/från Azure Event Hubs med det senaste Azure-eventhub-paketet.
 ms.topic: quickstart
 ms.date: 02/11/2020
-ms.openlocfilehash: 4850dc9119f6ef43e687f476f66928f13713f051
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: f05f546f19a7944c049b97ba18065159db6fab67
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97105959"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605572"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub"></a>Skicka händelser till eller ta emot händelser från Event Hub med python (Azure-eventhub)
 Den här snabb starten visar hur du skickar händelser till och tar emot händelser från en händelsehubben med hjälp av **Azure-eventhub python-** paketet.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 Om du inte har använt Azure Event Hubs tidigare, se [Event Hubs översikt](event-hubs-about.md) innan du gör den här snabb starten. 
 
 För att slutföra den här snabbstarten, behöver du följande förhandskrav:
@@ -50,7 +50,7 @@ I det här avsnittet skapar du ett Python-skript för att skicka händelser till
     async def run():
         # Create a producer client to send messages to the event hub.
         # Specify a connection string to your event hubs namespace and
-            # the event hub name.
+        # the event hub name.
         producer = EventHubProducerClient.from_connection_string(conn_str="EVENT HUBS NAMESPACE - CONNECTION STRING", eventhub_name="EVENT HUB NAME")
         async with producer:
             # Create a batch.

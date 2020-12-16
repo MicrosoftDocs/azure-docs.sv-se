@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: b59a764510b93daf358e00a4d75bcefd31d2980f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7ca566c554c02d20d21bd7eba87dfbcbf1f746da
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460248"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606495"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>Självstudie: Azure Active Directory integrering med Infogix Data3Sixty-regler
 
@@ -30,7 +30,7 @@ Att integrera Infogix Data3Sixty-regler med Azure AD ger följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill konfigurera Azure AD-integrering med Infogix Data3Sixty-regler behöver du följande objekt:
 
@@ -64,7 +64,7 @@ Om du vill konfigurera integrationen av Infogix-Data3Sixty i Azure AD måste du 
 
 4. I sökrutan skriver du **Infogix Data3Sixty-regler**, väljer **Infogix Data3Sixty styr** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
 
-     ![Infogix Data3Sixty-regler i resultat listan](common/search-new-app.png)
+    ![Infogix Data3Sixty-regler i resultat listan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -86,7 +86,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning i Azure AD med Infogix Data3Sixty-regler:
 
-1. Välj **enkel inloggning**på sidan **Infogix Data3Sixty** på program integration i [Azure Portal](https://portal.azure.com/).
+1. Välj **enkel inloggning** på sidan **Infogix Data3Sixty** på program integration i [Azure Portal](https://portal.azure.com/).
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -124,8 +124,8 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Infog
     | Name | Källattribut|
     | -----------| -------------- |
     | förnamn  | user.givenname |
-    | efternamn   | user.surname |
-    | användarnamn   | user.mail    |
+    | efternamn | user.surname |
+    | användarnamn | user.mail |
 
     a. Klicka på **Lägg till nytt anspråk** för att öppna dialogrutan **Hantera användaranspråk**.
 
@@ -180,7 +180,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **Användarnamn** anger du **brittasimon@yourcompanydomain.extension**  
     Till exempel BrittaSimon@contoso.com
 
@@ -192,7 +192,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Infogix Data3Sixty-regler.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Infogix Data3Sixty-regler**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Infogix Data3Sixty-regler**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

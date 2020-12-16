@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 11/06/2020
 ms.author: atulmal
 ms.custom: github-actions-azure
-ms.openlocfilehash: b17d005afa4b14a7895dbc7c9d7f9a67c680e320
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: d03acab340e593a925f042ca41f9e8967b468858
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560363"
+ms.locfileid: "97605453"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>GitHub-åtgärder för att distribuera till Kubernetes-tjänsten
 
-[GitHub-åtgärder](https://help.github.com/en/articles/about-github-actions) ger dig flexibiliteten att bygga ett arbets flöde för automatiserad livs cykel för program utveckling. Du kan använda flera Kubernetes-åtgärder för att distribuera till behållare från Azure Container Registry till Azure Kubernetes-tjänsten med GitHub-åtgärder. 
+[GitHub-åtgärder](https://docs.github.com/en/free-pro-team@latest/actions) ger dig flexibiliteten att bygga ett arbets flöde för automatiserad livs cykel för program utveckling. Du kan använda flera Kubernetes-åtgärder för att distribuera till behållare från Azure Container Registry till Azure Kubernetes-tjänsten med GitHub-åtgärder. 
 
-## <a name="prerequisites"></a>Förutsättningar 
+## <a name="prerequisites"></a>Krav 
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Ett GitHub-konto. Om du inte har någon kan du registrera dig [kostnads fritt](https://github.com/join).  

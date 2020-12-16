@@ -9,12 +9,12 @@ ms.subservice: disk
 ms.topic: troubleshooting
 ms.date: 06/17/2019
 ms.author: alkohli
-ms.openlocfilehash: 7225b04908753bb7c07ac89510859bac9db5b89c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b53cf607bdf60c785c7324d9ede526a0983b7e6
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85565016"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605283"
 ---
 # <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>Förstå loggar för att felsöka problem med data uppladdning i Azure Data Box Disk
 
@@ -117,39 +117,39 @@ Fel filen i det här fallet har ett `Summary` avsnitt och ett annat avsnitt som 
 `Summary`Innehåller `ValidationErrors` och `CopyErrors` . I det här fallet överfördes 8 filer eller mappar till Azure och det fanns inga verifierings fel. När data kopierades till Azure Storage kontot har 5 filer eller mappar laddats upp. De återstående 3 filerna eller mapparna bytte namn enligt namngivnings konventionerna för Azure Container och laddades upp till Azure.
 
 Fil nivåns status är i `BlobStatus` som beskriver alla åtgärder som vidtagits för att ladda upp blobarna. I det här fallet byter du namn på tre behållare eftersom mappar som data har kopierats till inte stämmer överens med namngivnings konventionerna i Azure för behållare. För blobbar som laddats upp i dessa behållare, det nya container namnet, sökvägen till blobben i Azure, den ursprungliga ogiltiga fil Sök vägen och blob-storleken ingår.
-    
+  
 ```xml
  <?xml version="1.0" encoding="utf-8"?>
-    <DriveLog Version="2018-10-01">
-      <DriveId>18041C582D7E</DriveId>
-      <Summary>
+  <DriveLog Version="2018-10-01">
+    <DriveId>18041C582D7E</DriveId>
+    <Summary>
      <!--Summary for validation and data copy to Azure -->
-        <ValidationErrors>
-          <None Count="8" />
-        </ValidationErrors>
-        <CopyErrors>
-          <Completed Count="5" Description="No errors encountered" />
-          <ContainerRenamed Count="3" Description="Renamed the container as the original container name does not follow Azure conventions." />
-        </CopyErrors>
-      </Summary>
+      <ValidationErrors>
+        <None Count="8" />
+      </ValidationErrors>
+      <CopyErrors>
+        <Completed Count="5" Description="No errors encountered" />
+        <ContainerRenamed Count="3" Description="Renamed the container as the original container name does not follow Azure conventions." />
+      </CopyErrors>
+    </Summary>
     <!--List of renamed containers with the new names, new file path in Azure, original invalid file path, and size -->
-      <Blob Status="ContainerRenamed">
-        <BlobPath>databox-c2073fd1cc379d83e03d6b7acce23a6cf29d1eef/private.vhd</BlobPath>
-        <OriginalFilePath>\PageBlob\pageblob test\private.vhd</OriginalFilePath>
-        <SizeInBytes>10490880</SizeInBytes>
-      </Blob>
-      <Blob Status="ContainerRenamed">
-        <BlobPath>databox-c2073fd1cc379d83e03d6b7acce23a6cf29d1eef/resource.vhd</BlobPath>
-        <OriginalFilePath>\PageBlob\pageblob test\resource.vhd</OriginalFilePath>
-        <SizeInBytes>71528448</SizeInBytes>
-      </Blob>
-      <Blob Status="ContainerRenamed">
-        <BlobPath>databox-c2073fd1cc379d83e03d6b7acce23a6cf29d1eef/role.vhd</BlobPath>
-        <OriginalFilePath>\PageBlob\pageblob test\role.vhd</OriginalFilePath>
-        <SizeInBytes>10490880</SizeInBytes>
-      </Blob>
-      <Status>CompletedWithErrors</Status>
-    </DriveLog>
+    <Blob Status="ContainerRenamed">
+      <BlobPath>databox-c2073fd1cc379d83e03d6b7acce23a6cf29d1eef/private.vhd</BlobPath>
+      <OriginalFilePath>\PageBlob\pageblob test\private.vhd</OriginalFilePath>
+      <SizeInBytes>10490880</SizeInBytes>
+    </Blob>
+    <Blob Status="ContainerRenamed">
+      <BlobPath>databox-c2073fd1cc379d83e03d6b7acce23a6cf29d1eef/resource.vhd</BlobPath>
+      <OriginalFilePath>\PageBlob\pageblob test\resource.vhd</OriginalFilePath>
+      <SizeInBytes>71528448</SizeInBytes>
+    </Blob>
+    <Blob Status="ContainerRenamed">
+      <BlobPath>databox-c2073fd1cc379d83e03d6b7acce23a6cf29d1eef/role.vhd</BlobPath>
+      <OriginalFilePath>\PageBlob\pageblob test\role.vhd</OriginalFilePath>
+      <SizeInBytes>10490880</SizeInBytes>
+    </Blob>
+    <Status>CompletedWithErrors</Status>
+  </DriveLog>
 ```
 
 ## <a name="data-upload-errors"></a>Data överförings fel

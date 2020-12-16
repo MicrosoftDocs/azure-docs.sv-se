@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: b04a5535ada9532d62d395f7070d9bcd8aa4380c
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: cef2e2ca9c7ad4640014d9b5a9a7da42d308ef7c
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591787"
+ms.locfileid: "97605152"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Använd uppföljande frågor för att skapa en längre konversation
 
@@ -38,7 +38,6 @@ Med flera turn hanterar en chat-robot en konversation med en användare för att
 I föregående bild har en användare startat en konversation genom att ange **mitt konto**. Kunskaps basen har tre länkade fråga-och-svar-par. Användaren kan förfina svaret genom att välja ett av de tre alternativen i kunskaps basen. Frågan (#1) har tre uppföljnings anvisningar som visas i Chat-roboten som tre alternativ (#2).
 
 När användaren väljer ett alternativ (#3) visas nästa lista över raffinerings alternativ (#4). Den här sekvensen fortsätter (#5) tills användaren bestämmer rätt, slut svar (#6).
-
 
 ### <a name="use-multi-turn-in-a-bot"></a>Använda multi-turn i en robot
 
@@ -79,7 +78,6 @@ När du lägger till ett hierarkiskt dokument bestämmer QnA Maker uppföljnings
 > [!Caution]
 > Stöd för att använda en exporterad TSV eller XLS-fil med flera inaktiverade kunskaps bas som data källa för en ny eller tom kunskaps bas stöds inte. Du måste **Importera** den filtypen från sidan **Inställningar** på QNA Maker-portalen för att kunna lägga till exporterade prompter med flera turn i en kunskaps bas.
 
-
 ## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Skapa kunskaps bas med flera turn-prompter med Create API
 
 Du kan skapa ett kunskaps ärende med flera turn-prompter med hjälp av [QNA Maker skapa API](/rest/api/cognitiveservices/qnamaker/knowledgebase/create). Prompterna läggs till i `context` egenskaps `prompts` mat ris.
@@ -116,7 +114,6 @@ Lägg till en uppföljnings fråga till ett befintligt fråga-och-svar-par som i
     |Endast Sammanhangs beroende| Markera den här kryss rutan. Ett svar returneras bara om frågan anger sammanhang.|
     |Länk till svar|Ange **Använd inloggnings skärmen** för att hitta det befintliga fråga-och-svar-paret.|
 
-
 1.  En matchning returneras. Välj det här svaret som uppföljning och välj sedan **Spara**.
 
     ![Sidan "uppföljnings prompt (förhands granskning)"](../media/conversational-context/search-follow-up-prompt-for-existing-answer.png)
@@ -137,7 +134,6 @@ När en uppföljnings fråga skapas och ett befintligt fråga-och-svar-par anges
 1. När du är klar med att redigera visnings texten väljer du **Spara**.
 1. I det övre navigerings fältet **sparar och tränar** du.
 
-
 ## <a name="add-a-new-question-and-answer-pair-as-a-follow-up-prompt"></a>Lägg till ett nytt fråga-och-svar-par som en uppföljnings fråga
 
 När du lägger till ett nytt fråga-och-svar-par i kunskaps basen ska varje par länkas till en befintlig fråga som en uppföljnings fråga.
@@ -155,7 +151,6 @@ När du lägger till ett nytt fråga-och-svar-par i kunskaps basen ska varje par
     |||
 
     ![Skapa en ny fråga och svara på frågor](../media/conversational-context/create-child-prompt-from-parent.png)
-
 
 1. Välj **Skapa ny** och välj sedan **Spara**.
 
@@ -353,7 +348,6 @@ _GenerateAnswer_ JSON-svaret innehåller följande prompter i `context` egenskap
 ## <a name="query-the-knowledge-base-with-the-qna-maker-id"></a>Fråga kunskaps basen med QnA Maker-ID
 
 Om du skapar ett anpassat program med hjälp av funktionen för flera sätt. Vid den första frågans svar returneras eventuella uppföljnings frågor och dess associerade `qnaId` . Nu när du har ID: t kan du skicka detta i begär ande texten för uppföljnings frågan. Om texten i begäran innehåller `qnaId` , och objektet context (som innehåller föregående QNA Maker egenskaper), returnerar GenerateAnswer den exakta frågan efter ID, i stället för att använda rangordnings algoritmen för att hitta svaret från frågetexten.
-
 
 ## <a name="display-order-is-supported-in-the-update-api"></a>Visnings ordningen stöds i uppdaterings-API: et
 

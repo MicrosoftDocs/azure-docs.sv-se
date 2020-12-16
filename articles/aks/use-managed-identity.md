@@ -3,13 +3,13 @@ title: Använda hanterade identiteter i Azure Kubernetes-tjänsten
 description: Lär dig hur du använder hanterade identiteter i Azure Kubernetes service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 12/06/2020
-ms.openlocfilehash: 68d8111da5ec10f23d14b375a18229bca075da84
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.date: 12/16/2020
+ms.openlocfilehash: 948a189e1c6e03efca046b6d43dddcaf3d141957
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97026837"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607294"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Använda hanterade identiteter i Azure Kubernetes-tjänsten
 
@@ -36,7 +36,7 @@ AKS använder flera hanterade identiteter för inbyggda tjänster och tillägg.
 
 | Identitet                       | Name    | Användningsfall | Standard behörigheter | Ta med din egen identitet
 |----------------------------|-----------|----------|
-| Kontrollplan | inte synlig | Används av AKS Control plan-komponenter för att hantera kluster resurser, inklusive belastnings utjämning och AKS-hanterade offentliga IP-adresser och åtgärder för automatisk skalnings åtgärd i klustret | Deltagar roll för nod resurs grupp | Förhandsgranskning
+| Kontrollplan | inte synlig | Används av AKS Control plan-komponenter för att hantera kluster resurser, inklusive belastnings utjämning och AKS-hanterade offentliga IP-adresser och åtgärder för automatisk skalnings åtgärd i klustret | Deltagar roll för nod resurs grupp | stöds
 | Kubelet | AKS-kluster namn – agentpoolegenskap | Autentisering med Azure Container Registry (ACR) | NA (för Kubernetes v 1.15 +) | Stöds för närvarande inte
 | Tillägg | AzureNPM | Ingen identitet krävs | NA | No
 | Tillägg | AzureCNI nätverks övervakning | Ingen identitet krävs | NA | No

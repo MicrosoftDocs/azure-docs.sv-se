@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 439714f8fe4a6373f2ffce80e744802dd19b67f0
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: ab9e2a5483f0699ad7bfca991539025adff34b11
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928791"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606920"
 ---
 # <a name="configure-an-aks-cluster"></a>Konfigurera ett AKS-kluster
 
@@ -173,7 +173,7 @@ Om du vill skapa Node-pooler med Moby-körningsmiljön (Docker) kan du göra det
 * Du kan inte längre komma åt Docker-motorn `/var/run/docker.sock` eller använda Docker-in-Docker (DinD).
   * Om du för närvarande extraherar program loggar eller övervakar data från Docker-motorn, bör du använda något som [Azure Monitor för behållare](../azure-monitor/insights/container-insights-enable-new-cluster.md) i stället. Dessutom har AKS inte stöd för att köra out-of-band-kommandon på de agent-noder som kan orsaka instabilitet.
   * Även om du använder Moby/Docker kan det vara starkt att skapa avbildningar och direkt dra nytta av Docker-motorn via metoderna ovan. Kubernetes är inte helt medvetna om dessa förbrukade resurser och dessa metoder visar flera problem som beskrivs [här](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/) och [här](https://securityboulevard.com/2018/05/escaping-the-whale-things-you-probably-shouldnt-do-with-docker-part-1/), till exempel.
-* Skapa bilder – den rekommenderade metoden för att skapa bilder är att använda [ACR-uppgifter](../container-registry/container-registry-quickstart-task-cli.md). En annan metod är att använda säkrare kluster alternativ som [Docker buildx](https://github.com/docker/buildx).
+* Skapa avbildningar – du kan fortsätta att använda ditt nuvarande Docker build-arbetsflöde som vanligt, såvida du inte skapar imagages i ditt AKS-kluster. I detta fall bör du överväga att växla till den rekommenderade metoden för att skapa bilder med hjälp av [ACR-uppgifter](../container-registry/container-registry-quickstart-task-cli.md)eller ett säkrare kluster alternativ som [Docker-buildx](https://github.com/docker/buildx).
 
 ## <a name="generation-2-virtual-machines-preview"></a>Virtuella datorer i generation 2 (för hands version)
 

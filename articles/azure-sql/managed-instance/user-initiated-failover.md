@@ -9,15 +9,15 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 08/31/2020
-ms.openlocfilehash: 51e9e66e2fd8ff60dd20c275a66fd13c047cc629
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.date: 12/16/2020
+ms.openlocfilehash: 7f30ff70e0219a803051b0f8e1208740c359863a
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985526"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605402"
 ---
-# <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Användarinitierade manuell redundans på SQL-hanterad instans
+# <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Användarinitierad manuell redundansväxling på SQL Managed Instance
 
 Den här artikeln förklarar hur du manuellt redundansväxlas en primär nod på SQL-hanterad instans Generell användning (GP) och Affärskritisk (BC) service nivåer och hur du manuellt redundansväxlas en sekundär skrivskyddad replik-nod på BC-tjänstnivå.
 
@@ -140,7 +140,7 @@ Du kommer inte att kunna se samma utdata med GP-tjänstens nivå som den som ang
 
 > [!IMPORTANT]
 > Funktionella begränsningar för manuell redundansväxling i användaren är:
-> - En (1) redundansväxling kan initieras på samma hanterade instans var **30: e minut**.
+> - En (1) redundansväxling kan initieras på samma hanterade instans var **15: e minut**.
 > - För BC-instanser måste det finnas kvorum med repliker för att redundansväxlingen ska godkännas.
 > - För BC-instanser går det inte att ange vilken läsbar sekundär replik som ska initiera redundansväxlingen.
 

@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 02/20/2020
 ms.topic: article
 keywords: Azure, Kinect, specifikationer, maskin vara, DK, funktioner, djup, färg, RGB, IMU, matris, djup, multi, synkronisering
-ms.openlocfilehash: 7c79101de5e5455ae2ff9fd8b5d8369a3832631c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30961152b31a659cb27e91a99d6806490998d18d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361168"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592287"
 ---
 # <a name="synchronize-multiple-azure-kinect-dk-devices"></a>Synkronisera flera Azure Kinect DK-enheter
 
@@ -83,11 +83,14 @@ För varje djup kamera avbildning blir lasern på nio gånger och aktiv för end
 
 Dessutom ökar skillnaderna mellan kamera klockan och den inbyggda enhetens timer den minsta förskjutningen till 160 &mu; s. Om du vill beräkna en mer exakt förskjutning för konfigurationen noterar du det djupgående läge som du använder och läser [tabellen djup sensorns rå tids inställning](hardware-specification.md#depth-sensor-raw-timing). Genom att använda data från den här tabellen kan du beräkna den minsta förskjutningen (exponerings tiden för varje kamera) med hjälp av följande ekvation:
 
-> *Exponerings tid* = (*IR Pulse* &times; *puls bredd*) + (*inaktiv* &times; *tid*i vilo läge)
+> *Exponerings tid* = (*IR Pulse* &times; *puls bredd*) + (*inaktiv* &times; *tid* i vilo läge)
 
 När du använder en förskjutning på 160 &mu; s kan du konfigurera upp till nio ytterligare djup kameror så att varje laser blir aktiv medan de andra lasererna är inaktiva.
 
 I program varan använder ```depth_delay_off_color_usec``` eller ```subordinate_delay_off_master_usec``` för att se till att varje IR-laser utlöses i ett eget 160- &mu; fönster eller har ett annat fält i vyn.
+
+> [!NOTE]  
+> Den faktiska puls bredden är 125us men vi anger 160us för vissa Leeway. Om du tar NFOV UNBINNED som ett exempel följs varje 125us puls av 1450 inaktiv. Total summan – (9 x 125) + (8 x 1450) – ger exponerings tiden på 12,8 ms. Garderoben du kan överlåta exponeringen för 2 enheter är att den första pulsen för den andra kameran ska falla under den första inaktiva tiden för den första kameran. Fördröjningen mellan den första och den andra kamerorna kan vara så lite som 125us (bredden på en puls) men vi rekommenderar att vissa Leeway därför är 160us. Med den angivna 160us kan du översätta exponerings perioder på högst 10 kameror.
 
 ## <a name="prepare-your-devices-and-other-hardware"></a>Förbered dina enheter och annan maskin vara
 
@@ -160,17 +163,17 @@ Använd [Azure Kinect Viewer](azure-kinect-viewer.md)för att kontrol lera att e
 > I den här proceduren måste du känna till serie numret för varje Azure Kinect DK.
 
 1. Öppna två instanser av Azure Kinect Viewer.
-1. Under **Öppna enhet**väljer du serie numret för den underordnade enhet som du vill testa.  
+1. Under **Öppna enhet** väljer du serie numret för den underordnade enhet som du vill testa.  
    ![Öppna enhet](./media/open-devices.png)
    > [!IMPORTANT]  
    > Om du vill få exakt bild hämtnings justering mellan alla enheter måste du starta huvud enheten sist.  
-1. Under **extern synkronisering**väljer du **Sub**.  
+1. Under **extern synkronisering** väljer du **Sub**.  
    ![Start av underordnad kamera](./media/sub-device-start.png)
 1.  Välj **Starta**.  
     > [!NOTE]  
     > Eftersom det här är en underordnad enhet visar inte Azure Kinect Viewer en avbildning när enheten har startats. Ingen bild visas förrän den underordnade enheten tar emot en synkroniseringsanslutning från huvud enheten.
 1. När den underordnade enheten har startat använder du den andra instansen av Azure Kinect Viewer för att öppna huvud enheten.
-1. Under **extern synkronisering**väljer du **huvud**.
+1. Under **extern synkronisering** väljer du **huvud**.
 1. Välj **Starta**.
 
 När Azure Kinect-enheten startar ska båda instanserna av Azure Kinect Viewer Visa bilder.

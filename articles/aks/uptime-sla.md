@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 51430a37f34600d3191a646df7c1890b6d94f481
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: d9d22b54ef2534cf0adb205175fdc3f1c57205fb
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033025"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607347"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>SLA för Azure Kubernetes service (AKS) drift tid
 
@@ -25,9 +25,8 @@ Kunder kan ändå skapa obegränsat antal kostnads fria kluster med ett service 
 
 ## <a name="region-availability"></a>Regional tillgänglighet
 
-SLA för drift tid är tillgängligt i offentliga regioner och Azure Government regioner där [AKS stöds](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
-
-## <a name="limitations"></a>Begränsningar
+* SLA för drift tid är tillgängligt i offentliga regioner och Azure Government regioner där [AKS stöds](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
+* SLA för drift tid är tillgängligt för [privata AKS-kluster][private-clusters] i alla regioner där AKS stöds.
 
 ## <a name="sla-terms-and-conditions"></a>Villkor för SLA
 
@@ -138,3 +137,4 @@ Konfigurera klustret för att [begränsa utgående trafik](limit-egress-traffic.
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [az-aks-nodepool-update]: /cli/azure/aks/nodepool?#az-aks-nodepool-update
 [az-group-delete]: /cli/azure/group#az-group-delete
+[private-clusters]: private-clusters.md

@@ -7,19 +7,19 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: af8d768ceeaacdf1c8a0f6cdc8be0041e4ae4ed1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fb0d3e3c57a26f7ca14b74edc42cb657ba6074c3
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099087"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605013"
 ---
 # <a name="what-is-the-new-azure-digital-twins-how-is-it-different-from-the-previous-version-2018"></a>Vad är den nya digitala Azure-gruppen? Hur skiljer den sig från den tidigare versionen (2018)?
 
 Den första offentliga för hands versionen av Azure Digitals, släpptes i oktober 2018. Även om kärn begreppen från den första versionen har överförts till den nya tjänsten, har många av gränssnitten och implementerings detaljerna ändrats för att göra tjänsten mer flexibel och tillgänglig. Ändringarna har motiverats av kundfeedback.
 
 > [!IMPORTANT]
-> Med hänsyn till de nya tjänsternas utökade funktioner kommer den tidigare Azure Digital-tjänsten att dras tillbaka i slutet av år 2020.
+> Med hänsyn till de nya tjänsternas utökade funktioner kommer den tidigare Azure Digital-tjänsten att dras tillbaka, med API: er och associerade data som inte längre är tillgängliga från och med 18 januari 2021.
 
 Om du använde den första versionen av Azure Digitals dubbla i den första offentliga för hands versionen kan du använda informationen och metod tipsen i den här artikeln för att lära dig hur du arbetar med den nya tjänsten och hur du utnyttjar dess funktioner.
 
@@ -27,7 +27,7 @@ Om du använde den första versionen av Azure Digitals dubbla i den första offe
 
 I diagrammet nedan visas en sida-vid-sida-vy över koncept som har ändrats mellan den tidigare versionen av tjänsten och den nya (aktuella) tjänsten.
 
-| Avsnitt | I tidigare version | I ny version |
+| Ämne | I tidigare version | I ny version |
 | --- | --- | --- | --- |
 | **Modellering**<br>*Mer flexibelt* | Den tidigare versionen har utformats runt smarta utrymmen, så den följde med en inbyggd vokabulär för byggnader. | De nya Azure Digital-nyheterna är domän-oberoende. Du kan definiera en egen anpassad vokabulär och anpassade modeller för din lösning, för att representera fler typer av miljöer på mer flexibla sätt.<br><br>Lär dig mer i [*begrepp: anpassade modeller*](concepts-models.md). |
 | **Topologi**<br>*Mer flexibelt*| Den tidigare versionen stödde en träd data struktur som är anpassad till smarta utrymmen. Digitala dubbla band var anslutna med hierarkiska relationer. | Med den nya versionen kan dina digitala dubbla, vara anslutna till valfria grafer, som du också har ordnat. Detta ger dig större flexibilitet att uttrycka de komplexa relationerna i verkligheten.<br><br>Lär dig mer i [*begrepp: Digital-och dubbel diagram*](concepts-twins-graph.md). |

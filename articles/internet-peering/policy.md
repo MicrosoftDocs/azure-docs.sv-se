@@ -6,14 +6,14 @@ services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: conceptual
-ms.date: 11/27/2019
+ms.date: 12/15/2020
 ms.author: prmitiki
-ms.openlocfilehash: 20f25e0add5d05bb2dcf7f3ebdc86ccd5ae889d0
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: bee41bb8e5beb4df3086ab50499cb185a83e4efe
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510795"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592338"
 ---
 # <a name="peering-policy"></a>Peering-policy
 Microsoft har en selektiv peering-policy som är utformad för att säkerställa bästa möjliga kund upplevelse som backas upp av bransch standarder och bästa praxis, skalning för framtida behov och strategisk placering av peering. Microsoft förbehåller sig rätten att göra undantag till principen som bedömt nödvändigt. Microsofts allmänna krav från nätverket beskrivs i avsnitten nedan. Dessa gäller både direkt peering-och Exchange peering-begäranden. 

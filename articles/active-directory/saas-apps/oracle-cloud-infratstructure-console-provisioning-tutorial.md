@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 203af02841e6d17546d254ed83868c859ba3ac0d
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 94de0ca0a5393c891e567e558cbbadd0ca1f453b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938944"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608008"
 ---
 # <a name="tutorial-configure-oracle-cloud-infrastructure-console-for-automatic-user-provisioning"></a>Självstudie: Konfigurera en Oracle Cloud Infrastructure-konsol för automatisk användar etablering
 
@@ -120,40 +120,40 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
 9. Granska de användarattribut som synkroniseras från Azure AD till Oracle Cloud Infrastructure-konsolen i avsnittet **attribut-mappning** . Attributen som väljs som **matchande** egenskaper används för att matcha användar kontona i Oracle Cloud Infrastructure-konsolen för uppdaterings åtgärder. Om du väljer att ändra [matchande målattribut](../app-provisioning/customize-application-attributes.md)måste du se till att Oracle Cloud Infrastructure Console API stöder filtrering av användare baserat på det attributet. Välj knappen **Spara** för att spara ändringarna.
 
-      |Attribut|Typ|
-      |---|---|
-      |displayName|Sträng|
-      |userName|Sträng|
-      |aktiv|Boolesk|
-      |title|Sträng|
-      |emails[type eq "work"].value|Sträng|
-      |preferredLanguage|Sträng|
-      |name.givenName|Sträng|
-      |name.familyName|Sträng|
-      |adresser [Type EQ "Work"]. formaterad|Sträng|
-      |adresser [Type EQ "Work"]. plats|Sträng|
-      |adresser [Type EQ "Work"]. region|Sträng|
-      |adresser [Type EQ "Work"]. Postnr|Sträng|
-      |adresser [Type EQ "Work"]. land|Sträng|
-      |adresser [Type EQ "Work"]. streetAddress|Sträng|
-      |urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: employeeNumber|Sträng|
-      |urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: avdelning|Sträng|
-      |urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: costCenter|Sträng|
-      |urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: Division|Sträng|
-      |urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: Manager|Referens|
-      |urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: organisation|Sträng|
-      |urn: IETF: params: scim: schemas: Oracle: idcs: tillägg: användare: användare: bypassNotification|Boolesk|
-      |urn: IETF: params: scim: schemas: Oracle: idcs: tillägg: användare: användare: isFederatedUser|Boolesk|
+    |Attribut|Typ|
+    |---|---|
+    |displayName|Sträng|
+    |userName|Sträng|
+    |aktiv|Boolesk|
+    |title|Sträng|
+    |emails[type eq "work"].value|Sträng|
+    |preferredLanguage|Sträng|
+    |name.givenName|Sträng|
+    |name.familyName|Sträng|
+    |adresser [Type EQ "Work"]. formaterad|Sträng|
+    |adresser [Type EQ "Work"]. plats|Sträng|
+    |adresser [Type EQ "Work"]. region|Sträng|
+    |adresser [Type EQ "Work"]. Postnr|Sträng|
+    |adresser [Type EQ "Work"]. land|Sträng|
+    |adresser [Type EQ "Work"]. streetAddress|Sträng|
+    |urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: employeeNumber|Sträng|
+    |urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: avdelning|Sträng|
+    |urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: costCenter|Sträng|
+    |urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: Division|Sträng|
+    |urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: Manager|Referens|
+    |urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: organisation|Sträng|
+    |urn: IETF: params: scim: schemas: Oracle: idcs: tillägg: användare: användare: bypassNotification|Boolesk|
+    |urn: IETF: params: scim: schemas: Oracle: idcs: tillägg: användare: användare: isFederatedUser|Boolesk|
 
 10. Under avsnittet **mappningar** väljer du **Synkronisera Azure Active Directory grupper till Oracle Cloud Infrastructure-konsolen**.
 
 11. Granska gruppattributen som synkroniseras från Azure AD till Oracle Cloud Infrastructure console i avsnittet **attribut-mappning** . Attributen som väljs som **matchande** egenskaper används för att matcha grupperna i Oracle Cloud Infrastructure-konsolen för uppdaterings åtgärder. Välj knappen **Spara** för att spara ändringarna.
 
-      |Attribut|Typ|
-      |---|---|
-      |displayName|Sträng|
-      |externalId|Sträng|
-      |medlemmar|Referens|
+    | Attribut | Typ |
+    |--|--|
+    | displayName | Sträng |
+    | externalId | Sträng |
+    | medlemmar | Referens |
 
 12. Information om hur du konfigurerar omfångsfilter finns i följande instruktioner i [självstudien för omfångsfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 

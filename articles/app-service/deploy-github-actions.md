@@ -7,16 +7,16 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 3c2f90403afbc581f80312be2271d802f4d719a8
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 0c10cc683d8c8c2496ca8fdbd00f0e5065e2db35
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584246"
+ms.locfileid: "97604931"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Distribuera till App Service med GitHub Actions
 
-Kom igång med [GitHub-åtgärder](https://help.github.com/en/articles/about-github-actions) för att automatisera arbets flödet och distribuera till [Azure App Service](overview.md) från GitHub. 
+Kom igång med [GitHub-åtgärder](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions) för att automatisera arbets flödet och distribuera till [Azure App Service](overview.md) från GitHub. 
 
 ## <a name="prerequisites"></a>Krav 
 
@@ -63,7 +63,7 @@ Du kan också distribuera ett arbets flöde utan att använda distributions Cent
 
 Det rekommenderade sättet att autentisera med Azure App tjänster för GitHub-åtgärder är med en publicerings profil. Du kan också autentisera med ett huvud namn för tjänsten, men processen kräver fler steg. 
 
-Spara dina autentiseringsuppgifter för din publicerings profil eller tjänstens huvud namn som [GitHub-hemlighet](https://docs.github.com/en/actions/reference/encrypted-secrets) för att autentisera med Azure. Du kommer att få åtkomst till hemligheten i ditt arbets flöde. 
+Spara dina autentiseringsuppgifter för din publicerings profil eller tjänstens huvud namn som [GitHub-hemlighet](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets) för att autentisera med Azure. Du kommer att få åtkomst till hemligheten i ditt arbets flöde. 
 
 # <a name="publish-profile"></a>[Publicera profil](#tab/applevel)
 
@@ -746,7 +746,7 @@ Du hittar vår uppsättning åtgärder grupperade i olika databaser på GitHub, 
 
 - [Docker-inloggning/utloggning](https://github.com/Azure/docker-login)
 
-- [Händelser som utlöser arbetsflöden](https://help.github.com/en/articles/events-that-trigger-workflows)
+- [Händelser som utlöser arbetsflöden](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
 
 - [K8s-distribution](https://github.com/Azure/k8s-deploy)
 

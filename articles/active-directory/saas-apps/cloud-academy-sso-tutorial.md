@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 12/15/2020
 ms.author: jeedes
-ms.openlocfilehash: 822e28402d0b7829b835ad03a3b3cf7d05c3d343
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 96c4eba31013b868fa7afb41544d5d8cbcc1cdc6
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181012"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607226"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-cloud-academy---sso"></a>Självstudie: Azure Active Directory integration med enkel inloggning med Cloud Academy – SSO
 
@@ -26,9 +26,7 @@ I den här självstudien får du lära dig hur du integrerar Cloud Academy-SSO m
 * Gör det möjligt för användarna att logga in automatiskt till Cloud Academy-SSO med sina Azure AD-konton.
 * Hantera dina konton på en central plats: Azure Portal.
 
-Mer information om SaaS app integration med Azure AD finns i [Vad är enkel inloggning?](../manage-apps/what-is-single-sign-on.md).
-
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att komma igång behöver du följande objekt:
 
@@ -39,15 +37,14 @@ För att komma igång behöver du följande objekt:
 
 I den här självstudien konfigurerar och testar du Azure AD SSO i en test miljö.
 
-Cloud Academy – SSO stöder SP-initierad SSO.
-
-När du har konfigurerat Cloud Academy-SSO kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Sessions kontroller utökas från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
+* Cloud Academy – SSO stöder **SP** -INITIERAd SSO
+* Cloud Academy – SSO stöder **just-in-Time** User-etablering
 
 ## <a name="add-cloud-academy---sso-from-the-gallery"></a>Lägg till Cloud Academy – SSO från galleriet
 
 Om du vill konfigurera integrering av Cloud Academy-SSO i Azure AD måste du lägga till Cloud Academy-SSO från galleriet i listan över hanterade SaaS-appar:
 
-1. Logga in på [Azure Portal](https://portal.azure.com) med ett arbets-eller skol konto eller med en personlig Microsoft-konto.
+1. Logga in på Azure Portal med ett arbets-eller skol konto eller med en personlig Microsoft-konto.
 1. Välj **Azure Active Directory** i den vänstra rutan.
 1. Gå till **företags program** och välj sedan **alla program**.
 1. Välj **nytt program** om du vill lägga till ett program.
@@ -72,14 +69,29 @@ Om du vill konfigurera och testa Azure AD SSO med Cloud Academy-SSO, slutför du
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal:
 
-1. I [Azure Portal](https://portal.azure.com/)på sidan **Cloud Academy-SSO-** program integration i avsnittet **Hantera** väljer du **enkel inloggning**.
+1. I Azure Portal på sidan **Cloud Academy-SSO-** program integration i avsnittet **Hantera** väljer du **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
 1. På sidan **Konfigurera en enskild Sign-On med SAML** väljer du Penn knappen för **grundläggande SAML-konfiguration** för att redigera inställningarna:
 
    ![Skärm bild som visar Penn knappen för att redigera den grundläggande SAML-konfigurationen.](common/edit-urls.png)
 
-1. I avsnittet **grundläggande SAML-konfiguration** i rutan **inloggnings-URL** anger du `https://cloudacademy.com/login/enterprise/` .
+1. I avsnittet **grundläggande SAML-konfiguration** utför du följande steg:
 
+    a. I text rutan **inloggnings-URL** skriver du en av följande URL: er:
+    
+    | Inloggnings-URL |
+    |--------------|
+    | `https://cloudacademy.com/login/enterprise/` |
+    | `https://app.qa.com/login/enterprise/` |
+    |
+    
+    b. I text rutan **svars-URL** skriver du en av följande URL: er:
+    
+    | Svars-URL |
+    |--------------|
+    | `https://cloudacademy.com/labs/social/complete/saml/` |
+    | `https://app.qa.com/labs/social/complete/saml/` |
+    |
 1. På sidan **Konfigurera en enskild Sign-On med SAML** , i avsnittet **SAML-signeringscertifikat** , väljer du kopierings knappen för att kopiera **URL: en för appens federationens metadata**. Spara URL: en.
 
     ![Skärm bild som visar kopierings knappen för URL: en för app Federation-metadata.](common/copy-metadataurl.png)
@@ -92,7 +104,7 @@ I det här avsnittet ska du skapa en test användare som heter B. Simon i Azure 
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna slutför du de här stegen:
    1. I rutan **namn** anger du **B. Simon**.  
-   1. I rutan **användar namn** anger du \<username> @ \<companydomain> . \<extension> . Exempelvis `B.Simon@contoso.com`.
+   1. I rutan **användar namn** anger du \<username> @ \<companydomain> . \<extension> . Ett exempel är `B.Simon@contoso.com`.
    1. Välj **Visa lösen ord** och skriv sedan ned värdet som visas i rutan **lösen ord** .
    1. Välj **Skapa**.
 
@@ -103,15 +115,9 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **Cloud Academy-SSO**.
 1. I avsnittet **Hantera** på appens översikts sida väljer du **användare och grupper**:
-
-   ![Skärm bild som visar alternativet användare och grupper.](common/users-groups-blade.png)
-
 1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** :
-
-    ![Skärm bild som visar knappen Lägg till användare.](common/add-assign-user.png)
-
 1. I dialog rutan **användare och grupper** väljer du **B. Simon** i listan **användare** och klickar sedan på knappen **Välj** längst ned på skärmen.
-1. Om du förväntar dig ett roll värde i SAML-intyget väljer du lämplig roll för användaren i listan i dialog rutan **Välj roll** . Klicka på knappen **Välj** längst ned på skärmen.
+1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
 1. I dialogrutan **Lägg till tilldelning** väljer du **Tilldela**.
 
 ## <a name="configure-single-sign-on-for-cloud-academy"></a>Konfigurera enkel inloggning för Cloud Academy
@@ -145,36 +151,19 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 ### <a name="create-a-cloud-academy-test-user"></a>Skapa en test användare i Cloud Academy
 
-1. Logga in på Cloud Academy – SSO.
-
-1. Välj företagets namn och välj sedan **medlemmar** på menyn som visas:
-
-    ![Skärm bild som visar alternativet medlemmar.](./media/cloud-academy-sso-tutorial/create-user.PNG)
-
-1. Välj **Bjud in medlemmar** och välj sedan **Bjud in en enskild medlem**:
-
-    ![Skärm bild som visar alternativet Bjud in en enskild medlem.](./media/cloud-academy-sso-tutorial/create-user-1.PNG)
-
-1. Ange värden i de obligatoriska fälten och välj sedan **Bjud in**:
-
-    ![Skärm bild som visar en dialog ruta för att bjuda in en medlem.](./media/cloud-academy-sso-tutorial/create-user-2.PNG)
+I det här avsnittet skapas en användare som heter Britta Simon i Cloud Academy-SSO. Cloud Academy – SSO har stöd för just-in-Time User-etablering, som är aktiverat som standard. Det finns inget åtgärdsobjekt för dig i det här avsnittet. Om en användare inte redan finns i Cloud Academy-SSO, skapas en ny efter autentiseringen.
 
 ## <a name="test-sso"></a>Testa SSO 
 
-Nu ska du testa din Azure AD SSO-konfiguration med hjälp av åtkomst panelen.
+I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ. 
 
-När du väljer panelen Cloud Academy-SSO i åtkomst panelen, bör du loggas in automatiskt på den moln Academy-SSO-instans som du ställer in SSO för. Mer information finns i [Introduktion till åtkomst panelen](../user-help/my-apps-portal-end-user-access.md).
+* Klicka på **testa det här programmet** i Azure Portal. Detta omdirigeras till Cloud Academy-inloggnings-URL där du kan starta inloggnings flödet. 
 
-## <a name="additional-resources"></a>Ytterligare resurser
+* Gå till Cloud Academy-inloggnings-URL: en direkt och starta inloggnings flödet därifrån.
 
-- [Självstudier om hur du integrerar SaaS-appar med Azure Active Directory](./tutorial-list.md)
+* Du kan använda Microsoft Mina appar. När du klickar på panelen Cloud Academy-SSO i Mina appar omdirigeras den till URL: en för webb adress för inloggning i molnet Academy. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Vad är villkorlig åtkomst i Azure Active Directory?](../conditional-access/overview.md)
+## <a name="next-steps"></a>Nästa steg
 
-- [Testa Cloud Academy – SSO med Azure AD](https://aad.portal.azure.com/)
-
-- [Vad är session Control i Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
-
-- [Skydda Cloud Academy-SSO med hjälp av avancerad synlighet och kontroller](/cloud-app-security/proxy-intro-aad)
+När du har konfigurerat Cloud Academy-SSO kan du genomdriva session Control, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

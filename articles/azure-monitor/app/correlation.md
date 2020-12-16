@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 7a206d61124b2524feae0cf155083c1939696e18
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 20e9ed7e83ff3359651acebc11a939a998f2889d
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853330"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607923"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetri korrelation i Application Insights
 
@@ -79,7 +79,6 @@ Application Insights definierar också [tillägget](https://github.com/lmolkova/
 | `Operation_Id`                         | [spårnings-ID](https://w3c.github.io/trace-context/#trace-id)                                           |
 | `Operation_ParentId`                   | [överordnat ID](https://w3c.github.io/trace-context/#parent-id) för det här intervallets överordnade omfång. Om detta är ett rot intervall måste det här fältet vara tomt.     |
 
-
 Mer information finns i [Application Insights telemetri data Model](../../azure-monitor/app/data-model.md).
 
 ### <a name="enable-w3c-distributed-tracing-support-for-net-apps"></a>Aktivera stöd för distribuerad W3C-spårning för .NET-appar
@@ -103,7 +102,7 @@ W3C spåra tracecontext-baserad distribuerad spårning är aktiverat som standar
        <Param name ="enableW3CBackCompat" value = "true" />
     </Add>
     ```
-    
+
   - För våren Boot Apps lägger du till följande egenskaper:
 
     - `azure.application-insights.web.enable-W3C=true`
@@ -139,7 +138,7 @@ Lägg till följande konfiguration:
   ```JavaScript
     distributedTracingMode: DistributedTracingModes.W3C
   ```
-  
+
 - **[Kodfragment-baserad installation](./javascript.md#snippet-based-setup)**
 
 Lägg till följande konfiguration:

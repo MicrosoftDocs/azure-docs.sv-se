@@ -4,12 +4,12 @@ description: En detaljerad analys av inställningarna för autoskalning och hur 
 ms.topic: conceptual
 ms.date: 12/18/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 6d6b868f745803263339e6b27e2610aaca8f63fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a914f6d71c013acea8dfde0f6578985bc009bb26
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87317475"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605248"
 ---
 # <a name="understand-autoscale-settings"></a>Förstå inställningarna för automatisk skalning
 Med inställningarna för automatisk skalning kan du se till att du har rätt mängd resurser som körs för att hantera belastningen på ditt program. Du kan konfigurera inställningar för automatisk skalning som ska utlösas baserat på mått som indikerar belastning eller prestanda eller som utlöses vid schemalagd tidpunkt och tidpunkt. Den här artikeln tar en detaljerad titt på konfigurationen av en inställning för autoskalning. Artikeln börjar med schema och egenskaper för en inställning och går sedan igenom de olika profil typerna som kan konfigureras. Slutligen diskuterar artikeln hur funktionen för autoskalning i Azure utvärderar vilken profil som ska köras vid en specifik tidpunkt.
@@ -60,7 +60,7 @@ För att illustrera schemat för autoskalning av inställningar används följan
               "cooldown": "PT5M"
             }
           },
-    {
+          {
             "metricTrigger": {
               "metricName": "Percentage CPU",
               "metricResourceUri": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachineScaleSets/vmss1",
@@ -85,7 +85,7 @@ För att illustrera schemat för autoskalning av inställningar används följan
 }
 ```
 
-| Section | Elementnamn | Beskrivning |
+| Avsnitt | Elementnamn | Beskrivning |
 | --- | --- | --- |
 | Inställningen | ID | Resurs-ID för den autoskalningsinställning. Inställningarna för autoskalning är en Azure Resource Manager resurs. |
 | Inställningen | name | Namnet på den automatiska skalnings inställningen. |
@@ -119,34 +119,41 @@ Det finns tre typer av profiler för autoskalning:
 
 - **Fast datum profil:** Den här profilen är för särskilda fall. Anta till exempel att du har en viktig händelse som kommer upp den 26 december 2017 (PST). Du vill att den minsta och högsta kapaciteten för din resurs ska vara en annan dag, men fortfarande skala på samma mått. I det här fallet bör du lägga till en fast datum profil i din inställnings lista med profiler. Profilen är konfigurerad att endast köras på händelsens dag. För en annan dag använder autoskalning den vanliga profilen.
 
-    ``` JSON
-    "profiles": [{
-    "name": " regularProfile",
-    "capacity": {
-    ...
-    },
-    "rules": [{
-    ...
-    },
-    {
-    ...
-    }]
-    },
-    {
-    "name": "eventProfile",
-    "capacity": {
-    ...
-    },
-    "rules": [{
-    ...
-    }, {
-    ...
-    }],
-    "fixedDate": {
-        "timeZone": "Pacific Standard Time",
-               "start": "2017-12-26T00:00:00",
-               "end": "2017-12-26T23:59:00"
-    }}
+    ```json
+    "profiles": [
+        {
+            "name": " regularProfile",
+            "capacity": {
+                ...
+            },
+            "rules": [
+                {
+                ...
+                },
+                {
+                ...
+                }
+            ]
+        },
+        {
+            "name": "eventProfile",
+            "capacity": {
+            ...
+            },
+            "rules": [
+                {
+                ...
+                }, 
+                {
+                ...
+                }
+            ],
+            "fixedDate": {
+                "timeZone": "Pacific Standard Time",
+                "start": "2017-12-26T00:00:00",
+                "end": "2017-12-26T23:59:00"
+            }
+        }
     ]
     ```
     

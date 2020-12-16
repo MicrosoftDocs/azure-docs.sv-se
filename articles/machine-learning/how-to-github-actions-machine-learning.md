@@ -1,5 +1,5 @@
 ---
-title: GitHub-åtgärder för CI/CD
+title: GitHub Actions för CI/CD
 titleSuffix: Azure Machine Learning
 description: Lär dig mer om hur du skapar ett GitHub-åtgärds arbets flöde för att träna en modell på Azure Machine Learning
 services: machine-learning
@@ -10,21 +10,21 @@ ms.author: jukullam
 ms.date: 10/19/2020
 ms.topic: conceptual
 ms.custom: github-actions-azure
-ms.openlocfilehash: 4336827dc7f8cb45f04e4cef94d79d1e6409d5c0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e7f6066cb7ed5c166d3e2bdc3f895073b05b92b9
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92795340"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605033"
 ---
 # <a name="use-github-actions-with-azure-machine-learning"></a>Använda GitHub-åtgärder med Azure Machine Learning
 
-Kom igång med [GitHub-åtgärder](https://help.github.com/en/articles/about-github-actions) för att träna en modell på Azure Machine Learning. 
+Kom igång med [GitHub-åtgärder](https://docs.github.com/en/free-pro-team@latest/actions) för att träna en modell på Azure Machine Learning. 
 
 > [!NOTE]
 > GitHub-åtgärder för Azure Machine Learning tillhandahålls i befintligt skick och stöds inte fullt ut av Microsoft. Om du stöter på problem med en speciell åtgärd öppnar du ett ärende i databasen för åtgärden. Om du till exempel stöter på problem med åtgärden AML-Deploy rapporterar du problemet i [https://github.com/Azure/aml-deploy]( https://github.com/Azure/aml-deploy) lagrings platsen.
 
-## <a name="prerequisites"></a>Förutsättningar 
+## <a name="prerequisites"></a>Krav 
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Ett GitHub-konto. Om du inte har någon kan du registrera dig [kostnads fritt](https://github.com/join).  
@@ -35,7 +35,7 @@ Ett arbets flöde definieras av en YAML-fil (. yml) i `/.github/workflows/` sök
 
 Filen har fyra avsnitt:
 
-|Section  |Aktiviteter  |
+|Avsnitt  |Aktiviteter  |
 |---------|---------|
 |**Autentisering** | 1. definiera ett huvud namn för tjänsten. <br /> 2. skapa en GitHub-hemlighet. |
 |**Anslut** | 1. Anslut till Machine Learning-arbetsytan. <br /> 2. Anslut till ett beräknings mål. |
@@ -47,7 +47,7 @@ Filen har fyra avsnitt:
 Skapa en ny lagrings plats av [ml-Ops med GitHub-åtgärder och Azure Machine Learning mall](https://github.com/machine-learning-apps/ml-template-azure). 
 
 1. Öppna [mallen](https://github.com/machine-learning-apps/ml-template-azure) på GitHub. 
-2. Välj **Använd den här mallen** . 
+2. Välj **Använd den här mallen**. 
 
     :::image type="content" source="media/how-to-github-actions-machine-learning/gh-actions-use-template.png" alt-text="Välj Använd den här mallen":::
 3. Skapa en ny lagrings plats från mallen. Ange ett namn på lagrings platsen `ml-learning` eller valfritt namn. 
@@ -77,7 +77,7 @@ I exemplet ovan ersätter du plats hållarna med ditt prenumerations-ID, resurs 
 
 ## <a name="configure-the-github-secret"></a>Konfigurera GitHub-hemligheten
 
-1. I [GitHub](https://github.com/), bläddra i din lagrings plats, välj **inställningar > hemligheter > Lägg till en ny hemlighet** .
+1. I [GitHub](https://github.com/), bläddra i din lagrings plats, välj **inställningar > hemligheter > Lägg till en ny hemlighet**.
 
 2. Klistra in hela JSON-utdata från Azure CLI-kommandot i fältet hemligt värde. Ge hemligheten namnet `AZURE_CREDENTIALS` .
 

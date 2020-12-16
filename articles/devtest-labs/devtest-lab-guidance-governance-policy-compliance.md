@@ -4,12 +4,12 @@ description: Den här artikeln innehåller vägledning om hur du styr företaget
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: fe370ec882fd0462bba6afdf11c718cf46618f0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89fe380c3a8e0e0a82cc806bf19f9a3454041d94
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85480940"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592355"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Styrning av Azure DevTest Labs infrastruktur – företagets policy och efterlevnad
 Den här artikeln innehåller vägledning om hur du styr företagets policy och efterlevnad för Azure DevTest Labs infrastruktur. 
@@ -37,7 +37,7 @@ Som en del av din organisations övergripande styrnings-och konfigurations hante
 - Associera Azure-databaser med samma Azure Active Directory klient som Azure-prenumerationen använder för autentisering och auktorisering.
 - Skapa en grupp med namnet **alla DevTest Labs-utvecklare** i Azure Active Directory som hanteras centralt. Alla utvecklare som bidrar till artefakt utveckling bör placeras i den här gruppen.
 - Samma Azure Active Directorys grupp kan användas för att ge åtkomst till Azure databaser-lagringsplatsen och till labbet.
-- I Azure databaser bör branchning eller förgreningar användas för att separera ett utvecklings lager från den primära produktions lagrings platsen. Innehåll läggs bara till i huvud grenen med en pull-begäran efter en korrekt kod granskning. När kod granskaren godkänner ändringen är en lead-utvecklare, som ansvarar för underhåll av huvud grenen, sammanslagning av den uppdaterade koden. 
+- I Azure databaser bör branchning eller förgreningar användas för att separera ett utvecklings lager från den primära produktions lagrings platsen. Innehåll läggs bara till i huvud grenen med en pull-begäran efter en korrekt kod granskning. När kod granskaren godkänner ändringen, en lead-utvecklare, som ansvarar för underhåll av huvud grenen, sammanfogar den uppdaterade koden. 
 
 ## <a name="corporate-security-policies"></a>Företags säkerhets principer
 

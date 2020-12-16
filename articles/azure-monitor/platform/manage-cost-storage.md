@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/22/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: b84d24174771e8395677874c9dac863fa6f27a54
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a6b92d1b7f36b73d91b8e0e8e519981b936d8735
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185920"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592440"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Hantera användning och kostnader med Azure Monitor-loggar    
 
@@ -150,11 +150,11 @@ Kvarhållning kan också [ställas in via Azure Resource Manager](../samples/res
 
 Arbets ytor med en lagring på 30 dagar kan faktiskt behålla data i 31 dagar. Om det är absolut nödvändigt att data sparas i 30 dagar kan du använda Azure Resource Manager för att ange kvarhållning till 30 dagar och med `immediatePurgeDataOn30Days` parametern.  
 
-Två data typer-- `Usage` och `AzureActivity` --bevaras i minst 90 dagar som standard och det kostar inget att debitera för denna 90-dagars kvarhållning. Om kvarhållning av arbets yta höjs över 90 dagar, kommer kvarhållning av dessa data typer också att öka.  Dessa data typer är också kostnads fria från data inmatnings kostnader. 
+Två data typer-- `Usage` och `AzureActivity` --bevaras i minst 90 dagar som standard och det kostar inget att ta betalt för denna 90-dagars kvarhållning. Om kvarhållning av arbets yta höjs över 90 dagar, kommer kvarhållning av dessa data typer också att öka.  Dessa data typer är också kostnads fria från data inmatnings kostnader. 
 
 Data typer från arbets ytans baserade Application Insights resurser (,,,,,,,, `AppAvailabilityResults` `AppBrowserTimings` `AppDependencies` `AppExceptions` `AppEvents` `AppMetrics` `AppPageViews` `AppPerformanceCounters` `AppRequests` `AppSystemEvents` och `AppTraces` ) behålls också i 90 dagar som standard och det kostar inget att debitera för denna 90-dagars kvarhållning. Deras kvarhållning kan justeras med hjälp av funktionen kvarhållning av data typ. 
 
-Observera att API för Log Analytics [rensning](/rest/api/loganalytics/workspacepurge/purge) inte påverkar kvarhållning och är avsett att användas i mycket begränsade fall. För att minska din kvarhållning måste kvarhållningsperioden minskas antingen för arbets ytan eller för vissa data typer. 
+Observera att [rensnings-API](/rest/api/loganalytics/workspacepurge/purge) för Log Analytics inte påverkar fakturering av kvarhållning och är avsett att användas i mycket begränsade fall. För att minska din kvarhållning måste kvarhållningsperioden minskas antingen för arbets ytan eller för vissa data typer. 
 
 ### <a name="retention-by-data-type"></a>Kvarhållning efter datatyp
 

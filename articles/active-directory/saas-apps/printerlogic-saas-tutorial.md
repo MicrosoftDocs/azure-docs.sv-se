@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: jeedes
-ms.openlocfilehash: cb946bc889d37b37f3330b07b18dd3ef3423af28
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 683f765b898d485f74652386025ac7e3556f8477
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515312"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607940"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-printerlogic-saas"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med PrinterLogic SaaS
 
@@ -28,7 +28,7 @@ I den här självstudien får du lära dig att integrera PrinterLogic-SaaS med A
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att komma igång behöver du följande objekt:
 
@@ -39,11 +39,8 @@ För att komma igång behöver du följande objekt:
 
 I den här självstudien konfigurerar och testar du Azure AD SSO i en test miljö.
 
-
-
 * PrinterLogic SaaS stöder **SP-och IDP** -INITIERAd SSO
 * PrinterLogic SaaS stöder **just-in-Time** User-etablering
-
 
 ## <a name="adding-printerlogic-saas-from-the-gallery"></a>Lägga till PrinterLogic SaaS från galleriet
 
@@ -52,10 +49,9 @@ Om du vill konfigurera integreringen av PrinterLogic-SaaS i Azure AD måste du l
 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , Skriv **PrinterLogic SaaS** i sökrutan.
 1. Välj **PrinterLogic SaaS** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
-
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-printerlogic-saas"></a>Konfigurera och testa enkel inloggning med Azure AD för PrinterLogic-SaaS
 
@@ -99,9 +95,9 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Utöver ovan förväntar sig PrinterLogic SaaS-program att fler attribut skickas tillbaka i SAML-svar som visas nedan. Dessa attribut är också förifyllda, men du kan granska dem efter behov.
 
-    | Namn | Källattribut |
+    | Name | Källattribut |
     | ---------| ------------ |
-    | Role     | user.assignedroles |
+    | Roll | user.assignedroles |
 
     > [!NOTE]
     > Klicka [här](../develop/active-directory-enterprise-app-role-management.md) för att få veta hur du konfigurerar en Roll i Azure AD
@@ -118,11 +114,11 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare**och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -130,13 +126,13 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till PrinterLogic SaaS.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **PrinterLogic SaaS**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-1. Välj **Lägg till användare**och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 
     ![Länken Lägg till användare](common/add-assign-user.png)
 
@@ -160,9 +156,9 @@ När du klickar på panelen PrinterLogic SaaS på åtkomst panelen, bör du logg
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](./tutorial-list.md)
+- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](./tutorial-list.md)
 
-- [Vad är program åtkomst och enkel inloggning med Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+- [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 - [Vad är villkorlig åtkomst i Azure Active Directory?](../conditional-access/overview.md)
 

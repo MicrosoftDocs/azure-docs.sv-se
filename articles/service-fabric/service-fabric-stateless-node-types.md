@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: 266c04a049cab574576f781c397aee566efe5372
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 6259de345b534bfb51ef6ba1a9c3895800546caf
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516623"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605504"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>Distribuera ett Azure Service Fabric-kluster med endast tillstånds lösa Node-typer (för hands version)
 Service Fabric Node-typer levereras med ett förutsättnings antagande som vid en viss tidpunkt kan tillstånds känsliga tjänster placeras på noderna. Tillstånds lösa nodtyper sänker detta antagande för en nodtyp, vilket innebär att nodtypen kan använda andra funktioner, till exempel snabbare skalnings åtgärder, stöd för automatiska operativ system uppgraderingar på brons-hållbarhet och skalbarhet till fler än 100 noder i en enda skalnings uppsättning för virtuella datorer.
@@ -37,7 +37,7 @@ Om du vill ange en eller flera nodtyper som tillstånds lösa i en kluster resur
             "startPort": "[parameters('nt0applicationStartPort')]"
         },
         "clientConnectionEndpointPort": "[parameters('nt0fabricTcpGatewayPort')]",
-        "durabilityLevel": "Bronze",
+        "durabilityLevel": "Silver",
         "ephemeralPorts": {
             "endPort": "[parameters('nt0ephemeralEndPort')]",
             "startPort": "[parameters('nt0ephemeralStartPort')]"
@@ -54,7 +54,7 @@ Om du vill ange en eller flera nodtyper som tillstånds lösa i en kluster resur
             "startPort": "[parameters('nt1applicationStartPort')]"
         },
         "clientConnectionEndpointPort": "[parameters('nt1fabricTcpGatewayPort')]",
-        "durabilityLevel": "Silver",
+        "durabilityLevel": "Bronze",
         "ephemeralPorts": {
             "endPort": "[parameters('nt1ephemeralEndPort')]",
             "startPort": "[parameters('nt1ephemeralStartPort')]"
@@ -103,7 +103,7 @@ Om du vill aktivera tillstånds lösa nodtyper bör du konfigurera den underligg
             "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
             "nodeTypeRef": "[parameters('vmNodeType1Name')]",
             "dataPath": "D:\\\\SvcFab",
-            "durabilityLevel": "Silver",
+            "durabilityLevel": "Bronze",
             "certificate": {
                 "thumbprint": "[parameters('certificateThumbprint')]",
                 "x509StoreName": "[parameters('certificateStoreValue')]"

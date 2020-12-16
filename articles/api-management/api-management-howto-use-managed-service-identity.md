@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 11/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 2866633503399e9f6d78e8665f7a45d9063f01d9
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 8ec0f8cf090b3ae85a8602fb39cb07f03a417133
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585793"
+ms.locfileid: "97605606"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Använda hanterade identiteter i Azure API Management
 
@@ -38,7 +38,6 @@ Om du vill konfigurera en hanterad identitet i Azure Portal skapar du först en 
 3. Växla **status** till **på** på fliken **systemtilldelad** . Välj **Spara**.
 
     :::image type="content" source="./media/api-management-msi/enable-system-msi.png" alt-text="Alternativ för att aktivera en systemtilldelad hanterad identitet" border="true":::
-
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -118,7 +117,6 @@ När instansen skapas har den följande ytterligare egenskaper:
 ```
 
 `tenantId`Egenskapen identifierar vilken Azure AD-klient identiteten tillhör. `principalId`Egenskapen är en unik identifierare för instansens nya identitet. I Azure AD har tjänstens huvud namn samma namn som du gav API Management-instansen.
-
 
 > [!NOTE]
 > En API Management instans kan ha både tilldelade och användarspecifika identiteter på samma gång. I det här fallet är `type` egenskapen `SystemAssigned,UserAssigned` .
@@ -265,7 +263,6 @@ I följande exempel visas en Azure Resource Manager mall som innehåller följan
 ### <a name="authenticate-to-the-back-end-by-using-an-api-management-identity"></a>Autentisera till Server delen med hjälp av en API Management identitet
 
 Du kan använda den systemtilldelade identiteten för att autentisera till Server delen via principen för [autentisering som hanteras av identitet](api-management-authentication-policies.md#ManagedIdentity) .
-
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Skapa en användartilldelad hanterad identitet
 
@@ -415,7 +412,6 @@ Klicka på följande knapp för att köra distributionen automatiskt:
 ### <a name="authenticate-to-the-back-end-by-using-a-user-assigned-identity"></a>Autentisera till Server delen med hjälp av en användardefinierad identitet
 
 Du kan använda den användare-tilldelade identiteten för att autentisera till Server delen via principen för autentisering av den [autentiserade identiteten](api-management-authentication-policies.md#ManagedIdentity) .
-
 
 ## <a name="remove-an-identity"></a><a name="remove"></a>Ta bort en identitet
 

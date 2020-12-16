@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 12c9777449d3f360b8f08d99aca7b916856139d4
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 0c8e13449a66c5eba055c64e072db3140b0cdc1c
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400190"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606903"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Språk-och röst stöd för tal tjänsten
 
@@ -36,94 +36,94 @@ To get pronunciation bits:
 https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
 -->
 
-| Språk                          | Locale (BCP-47) | Anpassningar                                   |
-|-----------------------------------|--------|--------------------------------------------------|
-|Arabiska (Bahrain), modern standard  |`ar-BH` | Språkmodell                                   |
-|Arabiska (Egypten)                     |`ar-EG` | Språkmodell                                   |
-|Arabiska (Irak)                      |`ar-IQ` | Språkmodell                                   |
-|Arabiska (Israel)                              |`ar-IL` | Språkmodell                                                   |
-|Arabiska (Jordanien)                    |`ar-JO` | Språkmodell                                   |
-|Arabiska (Kuwait)                    |`ar-KW` | Språkmodell                                   |
-|Arabiska (Libanon)                   |`ar-LB` | Språkmodell                                   |
-|Arabiska (Oman)                      |`ar-OM` | Språkmodell                                   |
-|Arabiska (Qatar)                     |`ar-QA` | Språkmodell                                   |
-|Arabiska (Saudiarabien)              |`ar-SA` | Språkmodell                                   |
-|Arabiska (tillstånd för Palestina)            |`ar-PS` | Språkmodell                                   |
-|Arabiska (Syrien)                     |`ar-SY` | Språkmodell                                   |
-|Arabiska (Förenade Arabemiraten)      |`ar-AE` | Språkmodell                                   |
-|Bulgariska (Bulgarien)               |`bg-BG` | Språkmodell                                   |
-|Katalanska (Spanien)                    |`ca-ES` | Språkmodell                                   |
-|Kinesiska (kantonesiska, traditionell)   |`zh-HK` | Språkmodell                                   |
-|Kinesiska (mandariner, förenklad)     |`zh-CN` | Akustisk modell<br>Språkmodell                 |
-|Kinesiska (Taiwan-mandariner)       |`zh-TW` | Språkmodell                                   |
-|Kroatiska (Kroatien)                 |`hr-HR` | Språkmodell                                   |
-|Tjeckiska (Tjeckien)             |`cs-CZ` | Språk modell                                   |
-|Danska (Danmark)                   |`da-DK` | Språkmodell                                   |
-|Nederländska (Nederländerna)                |`nl-NL` | Språkmodell                                   |
-|Engelska (Australien)                |`en-AU` | Akustisk modell<br>Språkmodell                 |
-|Engelska (Kanada)                   |`en-CA` | Akustisk modell<br>Språkmodell                 |
-|Engelska (Hongkong)                |`en-HK` | Språk modell                                   |
-|Engelska (Indien)                    |`en-IN` | Akustisk modell<br>Språkmodell                 |
-|Engelska (Irland)                  |`en-IE` | Språk modell                                   |
-|Engelska (Nya Zeeland)              |`en-NZ` | Akustisk modell<br>Språkmodell                 |
-|Engelska (Nigeria)                          |`en-NG` | Språk modell                                                     |
-|Engelska (Filippinerna)              |`en-PH` | Språk modell                                   |
-|Engelska (Singapore)                |`en-SG` | Språk modell                                   |
-|Engelska (Sydafrika)             |`en-ZA` | Språk modell                                   |
-|Engelska (Storbritannien)           |`en-GB` | Akustisk modell<br>Språkmodell<br>Uttal|
-|Engelska (USA)            |`en-US` | Akustisk modell<br>Språkmodell<br>Uttal|
-|Estniska (Estland)                  |`et-EE` | Språk modell                                   |
-|Finska (Finland)                  |`fi-FI` | Språkmodell                                   |
-|Franska (Kanada)                    |`fr-CA` | Akustisk modell<br>Språkmodell                 |
-|Franska (Frankrike)                    |`fr-FR` | Akustisk modell<br>Språkmodell<br>Uttal|
-|Tyska (Tyskland)                   |`de-DE` | Akustisk modell<br>Språkmodell<br>Uttal|
-|Grekiska (Grekland)                     |`el-GR` | Språkmodell                                   |
-|Gujarati (indiska)                  |`gu-IN` | Språkmodell                                   |
-|Hindi (Indien)                      |`hi-IN` | Akustisk modell<br>Språkmodell                 |
-|Ungerska (Ungern)                |`hu-HU` | Språk modell                                   |
-|Irländskt (Irland)                     |`ga-IE` | Språkmodell                                   |
-|Italienska (Italien)                    |`it-IT` | Akustisk modell<br>Språkmodell<br>Uttal|
-|Japanska (Japan)                   |`ja-JP` | Språkmodell                                   |
-|Koreanska (Korea)                     |`ko-KR` | Språkmodell                                   |
-|Lettiska (Lettland)                   |`lv-LV` | Språkmodell                                   |
-|Litauiska (Litauen)             |`lt-LT` | Språkmodell                                   |
-|Maltesiska (Malta)                     |`mt-MT` | Språkmodell                                   |
-|Marathi (Indien)                    |`mr-IN` | Språkmodell                                   |
-|norska (Bokmål, Norge)         |`nb-NO` | Språkmodell                                   |
-|Polska (Polen)                    |`pl-PL` | Språkmodell                                   |
-|Portugisiska (Brasilien)                |`pt-BR` | Akustisk modell<br>Språkmodell<br>Uttal|
-|Portugisiska (Portugal)              |`pt-PT` | Språkmodell                                   |
-|Rumänska (Rumänien)                 |`ro-RO` | Språkmodell                                   |
-|Ryska (Ryssland)                   |`ru-RU` | Akustisk modell<br>Språkmodell                 |
-|Slovakiska (Slovakien)                  |`sk-SK` | Språkmodell                                   |
-|Slovenska (Slovenien)               |`sl-SI` | Språkmodell                                   |
-|Spanska (Argentina)                |`es-AR` | Språk modell                                   |
-|Spanska (Bolivia)                  |`es-BO` | Språk modell                                   |
-|Spanska (Chile)                    |`es-CL` | Språk modell                                   |
-|Spanska (Colombia)                 |`es-CO` | Språk modell                                   |
-|Spanska (Costa Rica)               |`es-CR` | Språk modell                                   |
-|Spanska (Kuba)                     |`es-CU` | Språk modell                                   |
-|Spanska (Dominikanska republiken)       |`es-DO` | Språk modell                                   |
-|Spanska (Ecuador)                  |`es-EC` | Språk modell                                   |
-|Spanska (El Salvador)              |`es-SV` | Språk modell                                   |
-|Spanska (Ekvatorialguinea)            |`es-GQ` | Språk modell                                   |
-|Spanska (Guatemala)                |`es-GT` | Språk modell                                   |
-|Spanska (Honduras)                 |`es-HN` | Språk modell                                   |
-|Spanska (Mexiko)                   |`es-MX` | Akustisk modell<br>Språkmodell                 |
-|Spanska (Nicaragua)                |`es-NI` | Språk modell                                   |
-|Spanska (Panama)                   |`es-PA` | Språk modell                                   |
-|Spanska (Paraguay)                 |`es-PY` | Språk modell                                   |
-|Spanska (Peru)                     |`es-PE` | Språk modell                                   |
-|Spanska (Puerto Rico)              |`es-PR` | Språk modell                                   |
-|Spanska (Spanien)                    |`es-ES` | Akustisk modell<br>Språkmodell                 |
-|Spanska (Uruguay)                  |`es-UY` | Språk modell                                   |
-|Spanska (USA)                      |`es-US` | Språk modell                                   |
-|Spanska (Venezuela)                |`es-VE` | Språk modell                                   |
-|Svenska (Sverige)                   |`sv-SE` | Språkmodell                                   |
-|Tamiliska (Indien)                      |`ta-IN` | Språkmodell                                   |
-|Telugu (Indien)                     |`te-IN` | Språkmodell                                   |
-|Thailändska (Thailand)                    |`th-TH` | Språkmodell                                   |
-|Turkiska (Turkiet)                   |`tr-TR` | Språkmodell                                   |
+| Språk                           | Locale (BCP-47) | Anpassningar                                   |
+|------------------------------------|--------|--------------------------------------------------|
+| Arabiska (Bahrain), modern standard  | `ar-BH` | Språkmodell                                   |
+| Arabiska (Egypten)                     | `ar-EG` | Språkmodell                                   |
+| Arabiska (Irak)                      | `ar-IQ` | Språkmodell                                   |
+| Arabiska (Israel)                    | `ar-IL` | Språkmodell                                   |
+| Arabiska (Jordanien)                    | `ar-JO` | Språkmodell                                   |
+| Arabiska (Kuwait)                    | `ar-KW` | Språkmodell                                   |
+| Arabiska (Libanon)                   | `ar-LB` | Språkmodell                                   |
+| Arabiska (Oman)                      | `ar-OM` | Språkmodell                                   |
+| Arabiska (Qatar)                     | `ar-QA` | Språkmodell                                   |
+| Arabiska (Saudiarabien)              | `ar-SA` | Språkmodell                                   |
+| Arabiska (tillstånd för Palestina)        | `ar-PS` | Språkmodell                                   |
+| Arabiska (Syrien)                     | `ar-SY` | Språkmodell                                   |
+| Arabiska (Förenade Arabemiraten)      | `ar-AE` | Språkmodell                                   |
+| Bulgariska (Bulgarien)               | `bg-BG` | Språkmodell                                   |
+| Katalanska (Spanien)                    | `ca-ES` | Språkmodell                                   |
+| Kinesiska (kantonesiska, traditionell)   | `zh-HK` | Språkmodell                                   |
+| Kinesiska (mandariner, förenklad)     | `zh-CN` | Akustisk modell<br>Språkmodell                 |
+| Kinesiska (Taiwan-mandariner)       | `zh-TW` | Språkmodell                                   |
+| Kroatiska (Kroatien)                 | `hr-HR` | Språkmodell                                   |
+| Tjeckiska (Tjeckien)             | `cs-CZ` | Språk modell                                   |
+| Danska (Danmark)                   | `da-DK` | Språkmodell                                   |
+| Nederländska (Nederländerna)                | `nl-NL` | Språkmodell                                   |
+| Engelska (Australien)                | `en-AU` | Akustisk modell<br>Språkmodell                 |
+| Engelska (Kanada)                   | `en-CA` | Akustisk modell<br>Språkmodell                 |
+| Engelska (Hongkong)                | `en-HK` | Språk modell                                   |
+| Engelska (Indien)                    | `en-IN` | Akustisk modell<br>Språkmodell                 |
+| Engelska (Irland)                  | `en-IE` | Språk modell                                   |
+| Engelska (Nya Zeeland)              | `en-NZ` | Akustisk modell<br>Språkmodell                 |
+| Engelska (Nigeria)                  | `en-NG` | Språk modell                                   |
+| Engelska (Filippinerna)              | `en-PH` | Språk modell                                   |
+| Engelska (Singapore)                | `en-SG` | Språk modell                                   |
+| Engelska (Sydafrika)             | `en-ZA` | Språk modell                                   |
+| Engelska (Storbritannien)           | `en-GB` | Akustisk modell<br>Språkmodell<br>Uttal|
+| Engelska (USA)            | `en-US` | Akustisk modell<br>Språkmodell<br>Uttal|
+| Estniska (Estland)                  | `et-EE` | Språk modell                                   |
+| Finska (Finland)                  | `fi-FI` | Språkmodell                                   |
+| Franska (Kanada)                    | `fr-CA` | Akustisk modell<br>Språkmodell                 |
+| Franska (Frankrike)                    | `fr-FR` | Akustisk modell<br>Språkmodell<br>Uttal|
+| Tyska (Tyskland)                   | `de-DE` | Akustisk modell<br>Språkmodell<br>Uttal|
+| Grekiska (Grekland)                     | `el-GR` | Språkmodell                                   |
+| Gujarati (indiska)                  | `gu-IN` | Språkmodell                                   |
+| Hindi (Indien)                      | `hi-IN` | Akustisk modell<br>Språkmodell                 |
+| Ungerska (Ungern)                | `hu-HU` | Språk modell                                   |
+| Irländskt (Irland)                     | `ga-IE` | Språkmodell                                   |
+| Italienska (Italien)                    | `it-IT` | Akustisk modell<br>Språkmodell<br>Uttal|
+| Japanska (Japan)                   | `ja-JP` | Språkmodell                                   |
+| Koreanska (Korea)                     | `ko-KR` | Språkmodell                                   |
+| Lettiska (Lettland)                   | `lv-LV` | Språkmodell                                   |
+| Litauiska (Litauen)             | `lt-LT` | Språkmodell                                   |
+| Maltesiska (Malta)                     | `mt-MT` | Språkmodell                                   |
+| Marathi (Indien)                    | `mr-IN` | Språkmodell                                   |
+| norska (Bokmål, Norge)         | `nb-NO` | Språkmodell                                   |
+| Polska (Polen)                    | `pl-PL` | Språkmodell                                   |
+| Portugisiska (Brasilien)                | `pt-BR` | Akustisk modell<br>Språkmodell<br>Uttal|
+| Portugisiska (Portugal)              | `pt-PT` | Språkmodell                                   |
+| Rumänska (Rumänien)                 | `ro-RO` | Språkmodell                                   |
+| Ryska (Ryssland)                   | `ru-RU` | Akustisk modell<br>Språkmodell                 |
+| Slovakiska (Slovakien)                  | `sk-SK` | Språkmodell                                   |
+| Slovenska (Slovenien)               | `sl-SI` | Språkmodell                                   |
+| Spanska (Argentina)                | `es-AR` | Språk modell                                   |
+| Spanska (Bolivia)                  | `es-BO` | Språk modell                                   |
+| Spanska (Chile)                    | `es-CL` | Språk modell                                   |
+| Spanska (Colombia)                 | `es-CO` | Språk modell                                   |
+| Spanska (Costa Rica)               | `es-CR` | Språk modell                                   |
+| Spanska (Kuba)                     | `es-CU` | Språk modell                                   |
+| Spanska (Dominikanska republiken)       | `es-DO` | Språk modell                                   |
+| Spanska (Ecuador)                  | `es-EC` | Språk modell                                   |
+| Spanska (El Salvador)              | `es-SV` | Språk modell                                   |
+| Spanska (Ekvatorialguinea)        | `es-GQ` | Språk modell                                   |
+| Spanska (Guatemala)                | `es-GT` | Språk modell                                   |
+| Spanska (Honduras)                 | `es-HN` | Språk modell                                   |
+| Spanska (Mexiko)                   | `es-MX` | Akustisk modell<br>Språkmodell                 |
+| Spanska (Nicaragua)                | `es-NI` | Språk modell                                   |
+| Spanska (Panama)                   | `es-PA` | Språk modell                                   |
+| Spanska (Paraguay)                 | `es-PY` | Språk modell                                   |
+| Spanska (Peru)                     | `es-PE` | Språk modell                                   |
+| Spanska (Puerto Rico)              | `es-PR` | Språk modell                                   |
+| Spanska (Spanien)                    | `es-ES` | Akustisk modell<br>Språkmodell                 |
+| Spanska (Uruguay)                  | `es-UY` | Språk modell                                   |
+| Spanska (USA)                      | `es-US` | Språk modell                                   |
+| Spanska (Venezuela)                | `es-VE` | Språk modell                                   |
+| Svenska (Sverige)                   | `sv-SE` | Språkmodell                                   |
+| Tamiliska (Indien)                      | `ta-IN` | Språkmodell                                   |
+| Telugu (Indien)                     | `te-IN` | Språkmodell                                   |
+| Thailändska (Thailand)                    | `th-TH` | Språkmodell                                   |
+| Turkiska (Turkiet)                   | `tr-TR` | Språkmodell                                   |
 
 ## <a name="text-to-speech"></a>Text till tal
 

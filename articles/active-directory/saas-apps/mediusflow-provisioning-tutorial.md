@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 4d3ee6df90424788c6f9b6bb4e2055023a5d56a6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 881309c040f6c1bdff758d17ab7f51e935437192
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182078"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607889"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Självstudie: Konfigurera MediusFlow för automatisk användar etablering
 
@@ -31,7 +31,7 @@ I den här självstudien beskrivs de steg du behöver utföra i både MediusFlow
 > * Etablera grupper och grupp medlemskap i MediusFlow
 > * Enkel inloggning till MediusFlow (rekommenderas)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 
@@ -172,11 +172,11 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
 11. Granska gruppattributen som synkroniseras från Azure AD till MediusFlow i avsnittet **attribut-mappning** . Attributen som väljs som **matchande** egenskaper används för att matcha grupperna i Mediusflow för uppdaterings åtgärder. Välj knappen **Spara** för att spara ändringarna.
 
-      |Attribut|Typ|
-      |---|---|
-      |displayName|Sträng|
-      |externalID|Sträng|
-      |medlemmar|Referens|
+    | Attribut | Typ |
+    |--|--|
+    | displayName | Sträng |
+    | externalID | Sträng |
+    | medlemmar | Referens |
 
 12. Information om hur du konfigurerar omfångsfilter finns i följande instruktioner i [självstudien för omfångsfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 

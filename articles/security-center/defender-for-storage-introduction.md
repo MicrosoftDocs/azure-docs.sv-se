@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 8979e315f188a5c21cce206c24f195f72096d438
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: b338b8ee93fb24cff54968630d4ff00deca0b64b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516508"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606733"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Introduktion till Azure Defender för Storage
 
@@ -20,7 +20,6 @@ ms.locfileid: "97516508"
 **Azure Defender för lagring** är ett Azure-ursprungligt informations lager som identifierar ovanliga och potentiellt skadliga försök att komma åt eller utnyttja dina lagrings konton. Den använder avancerade funktioner i Security AI och [Microsoft Threat Intelligence](https://go.microsoft.com/fwlink/?linkid=2128684) för att tillhandahålla sammanhangsbaserade säkerhets aviseringar och rekommendationer.
 
 Säkerhets varningar utlöses när avvikelser i aktivitet inträffar. Dessa aviseringar är integrerade med Azure Security Center och skickas också via e-post till prenumerations administratörer med information om misstänkt aktivitet och rekommendationer om hur du undersöker och reparerar hot.
-
 
 ## <a name="availability"></a>Tillgänglighet
 
@@ -31,6 +30,17 @@ Säkerhets varningar utlöses när avvikelser i aktivitet inträffar. Dessa avis
 |Skyddade lagrings typer:|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure Files](../storage/files/storage-files-introduction.md)<br>[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)|
 |Moln|![Yes](./media/icons/yes-icon.png) Kommersiella moln<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Kina gov, andra gov|
 |||
+
+
+## <a name="what-are-the-benefits-of-azure-defender-for-storage"></a>Vilka är fördelarna med Azure Defender för lagring?
+
+Azure Defender för lagring tillhandahåller:
+
+- **Azure-ursprunglig säkerhet** – med 1 – Klicka på Aktivera, Defender för lagring skyddar data som lagras i Azure Blob, Azure Files och data sjöar. Som en Azure-inbyggd tjänst ger Defender för lagring centraliserad säkerhet för alla data till gångar som hanteras av Azure och är integrerade med andra Azure-säkerhetstjänster som Azure Sentinel.
+- **Rich Detection Suite** – drivs av Microsoft Threat Intelligence, identifieringarna i Defender för lagring tar upp de högsta lagrings hoten, till exempel Anonym åtkomst, komprometterade autentiseringsuppgifter, social teknik, missbruk av privilegier och skadligt innehåll.
+- **Svar vid skalning** – Security Center Automation-verktyg gör det lättare att förhindra och svara på identifierade hot. Läs mer i [automatisera svar på Security Center utlösare](workflow-automation.md).
+
+:::image type="content" source="media/defender-for-storage-introduction/defender-for-storage-high-level-overview.png" alt-text="Översikt över funktionerna i Azure Defender för lagring på hög nivå":::
 
 
 ## <a name="what-kind-of-alerts-does-azure-defender-for-storage-provide"></a>Vilken typ av aviseringar tillhandahåller Azure Defender för lagring?

@@ -10,18 +10,18 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: aahi
-ms.openlocfilehash: 2f03746a6a5afc388db2beeff84b3ab4cbd393b5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f41e513ee0f2755c446a9cb95465c1f636fe5a7a
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014602"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606274"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Installera och kör behållaren för rums analys (förhands granskning)
 
 Med behållaren för rums analys kan du analysera direktuppspelad video i real tid för att förstå spatiala relationer mellan människor, deras rörelse och interaktioner med objekt i fysiska miljöer. Containrar är bra för specifika säkerhets- och datastyrningskrav.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services)
 * När du har en Azure-prenumeration <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" skapar du en visuellt innehåll resurs "  target="_blank"> skapa en visuellt innehåll resurs <span class="docon docon-navigate-external x-hidden-focus"></span> </a> i Azure Portal för att hämta din nyckel och slut punkt. När den har distribuerats klickar **du på gå till resurs**.
@@ -113,7 +113,7 @@ På sidan **Konfigurera Edge Compute**   väljer du en befintlig IoT Hub ell
 
 Klicka på **Skapa**. Det kan ta några minuter att skapa en IoT Hub resurs. När IoT Hub resurs har skapats, kommer den **Konfigurera Edge Compute** -panelen att uppdateras för att visa den nya konfigurationen. Bekräfta att Edge Compute-rollen har kon figurer ATS genom att välja **Visa konfiguration** på panelen **Konfigurera beräkning**   .
 
-När Edge-beräkningsrollen har konfigurerats på Edge-enheten så skapas två enheter: en IoT-enhet och en IoT Edge-enhet. Bägge enheter kan visas i IoT Hub-resursen. Azure IoT Edge runtime körs redan på IoT Edge enheten.            
+När Edge-beräkningsrollen har konfigurerats på Edge-enheten så skapas två enheter: en IoT-enhet och en IoT Edge-enhet. Bägge enheter kan visas i IoT Hub-resursen. Azure IoT Edge runtime körs redan på IoT Edge enheten.
 
 > [!NOTE]
 > * För närvarande stöds endast Linux-plattformen för IoT Edge enheter. Information om hur du felsöker Azure Stack Edge-enheten finns i artikeln om [loggning och fel sökning](spatial-analysis-logging.md) .

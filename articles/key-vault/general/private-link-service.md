@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 570281e31c70b2f5f85a858f9dd424f93ee86029
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 75f06ae11d308028431202c22338ff4a589acf28
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460059"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592304"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Integrera Key Vault med Azure Private Link
 
@@ -23,7 +23,7 @@ En privat Azure-slutpunkt är ett nätverks gränssnitt som ansluter privat och 
 
 Mer information finns i [Vad är en privat Azure-länk?](../../private-link/private-link-overview.md)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill integrera ett nyckel valv med en privat Azure-länk behöver du följande:
 
@@ -53,7 +53,7 @@ När du har konfigurerat grunderna i Key Vault väljer du fliken nätverk och f�
 1. Välj alternativ knappen privat slut punkt på fliken nätverk.
 1. Klicka på knappen + Lägg till för att lägga till en privat slut punkt.
 
-    ![Bild](../media/private-link-service-1.png)
+    ![Skärm bild som visar fliken nätverk på sidan Skapa nyckel valv.](../media/private-link-service-1.png)
  
 1. I fältet "plats" på bladet skapa privat slut punkt väljer du den region där det virtuella nätverket finns. 
 1. I fältet namn skapar du ett beskrivande namn som gör att du kan identifiera den här privata slut punkten. 
@@ -61,7 +61,7 @@ När du har konfigurerat grunderna i Key Vault väljer du fliken nätverk och f�
 1. Lämna alternativet "integrera med den privata zonens DNS" oförändrat.  
 1. Välj OK.
 
-    ![Bild](../media/private-link-service-8.png)
+    ![Skärm bild som visar sidan Skapa privat slut punkt med valda inställningar.](../media/private-link-service-8.png)
  
 Nu kommer du att kunna se den konfigurerade privata slut punkten. Nu har du möjlighet att ta bort och redigera den här privata slut punkten. Välj knappen "granska + skapa" och skapa nyckel valvet. Det tar 5-10 minuter för distributionen att slutföras. 
 
@@ -76,12 +76,13 @@ Om du redan har ett nyckel valv kan du skapa en privat länk anslutning genom at
 1. Välj fliken anslutningar för privata slut punkter överst på sidan
 1. Välj knappen "+ privat slut punkt" överst på sidan.
 
-    ![Avbildnings ](../media/private-link-service-3.png) ![ bild](../media/private-link-service-4.png)
+    ![Skärm bild som visar knappen "+ privat slut punkt" på sidan "nätverk".](../media/private-link-service-3.png)
+    ![Skärm bild som visar fliken "grundläggande" på sidan "skapa en privat slut punkt (för hands version).](../media/private-link-service-4.png)
 
 Du kan välja att skapa en privat slut punkt för alla Azure-resurser med hjälp av det här bladet. Du kan antingen använda List menyerna för att välja en resurs typ och välja en resurs i din katalog, eller så kan du ansluta till en Azure-resurs med hjälp av ett resurs-ID. Lämna alternativet "integrera med den privata zonens DNS" oförändrat.  
 
-![Avbildnings ](../media/private-link-service-3.png)
- ![ bild](../media/private-link-service-4.png)
+![Skärm bild som visar hur du lägger till en privat slut punkt med det aktuella bladet. ](../media/private-link-service-3.png)
+ ![ Skärm bild som visar ett exempel på sidan "skapa en privat slut punkt (för hands version).](../media/private-link-service-4.png)
 
 När du skapar en privat slut punkt måste anslutningen godkännas. Om den resurs som du skapar en privat slut punkt för finns i din katalog kommer du att kunna godkänna anslutningsbegäran förutsatt att du har tillräcklig behörighet. Om du ansluter till en Azure-resurs i en annan katalog måste du vänta tills ägaren av resursen har godkänt din anslutningsbegäran.
 

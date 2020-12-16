@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: d0eef49ea82afe50c5e178de9ad5e82bcb0db0eb
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e7b75c71d64054e38630677ecd38f8e3e2483c12
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342172"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606342"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Använd Azure Cosmos DB ändra feed för att visualisera data analyser i real tid
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -35,14 +35,14 @@ Följande diagram representerar det data flöde och de komponenter som ingår i 
  
 1. **Generering av data:** Data Simulator används för att generera detalj handels data som representerar händelser, till exempel en användare som visar ett objekt, lägger till ett objekt i sin varukorg och köper ett objekt. Du kan generera stora uppsättningar exempel data med hjälp av data generatorn. De genererade exempel data innehåller dokument i följande format:
    
-   ```json
-   {      
-     "CartID": 2486,
-     "Action": "Viewed",
-     "Item": "Women's Denim Jacket",
-     "Price": 31.99
-   }
-   ```
+    ```json
+    {
+      "CartID": 2486,
+      "Action": "Viewed",
+      "Item": "Women's Denim Jacket",
+      "Price": 31.99
+    }
+    ```
 
 2. **Cosmos DB:** Genererade data lagras i en Azure Cosmos-behållare.  
 
@@ -56,7 +56,7 @@ Följande diagram representerar det data flöde och de komponenter som ingår i 
 
 7. **Power BI:** Power BI används för att visualisera data som skickas av Azure Stream Analytics. Du kan bygga en instrument panel för att se hur måtten ändras i real tid.  
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Microsoft .NET Framework 4.7.1 eller senare
 
@@ -90,7 +90,7 @@ Skapa Azure-resurserna – Azure Cosmos DB, lagrings konto, Händelsehubben, Str
    ```powershell
    .\deploy.ps1
    ```
-5. När du uppmanas till det anger du ditt Azure **-prenumerations-ID** , **changefeedlab** för resurs grupps namnet och **Run1** för distributions namnet. När resurserna börjar distribuera kan det ta upp till 10 minuter innan det har slutförts.
+5. När du uppmanas till det anger du ditt Azure **-prenumerations-ID**, **changefeedlab** för resurs grupps namnet och **Run1** för distributions namnet. När resurserna börjar distribuera kan det ta upp till 10 minuter innan det har slutförts.
 
 ## <a name="create-a-database-and-the-collection"></a>Skapa en databas och samlingen
 
@@ -253,7 +253,7 @@ Power BI är en uppsättning verktyg för företagsanalys för att analysera och
  
 5. Välj **averagePrice** från **dina data uppsättningar** och välj sedan **Nästa**.  
 
-6. I fältet **typ av visualisering** väljer du **grupperat liggande diagram** på den nedrullningsbara menyn. Lägg till åtgärd under **axel**. Hoppa över **förklaring** utan att lägga till något. Lägg sedan till **AVG** i nästa avsnitt med namnet **Value**. Välj **Nästa** , sedan titel på diagrammet och välj **Använd**. Du bör se ett nytt diagram på instrument panelen!  
+6. I fältet **typ av visualisering** väljer du **grupperat liggande diagram** på den nedrullningsbara menyn. Lägg till åtgärd under **axel**. Hoppa över **förklaring** utan att lägga till något. Lägg sedan till **AVG** i nästa avsnitt med namnet **Value**. Välj **Nästa**, sedan titel på diagrammet och välj **Använd**. Du bör se ett nytt diagram på instrument panelen!  
 
 7. Om du nu vill visualisera fler mått kan du gå tillbaka till **streamjob1** och skapa tre fler utdata med följande fält.
 
@@ -325,7 +325,7 @@ Nu kommer du att se hur du kan använda det nya data analys verktyget för att a
 
 1. Gå tillbaka till [Azure Portal](https://portal.azure.com/)och sedan till ditt **Cosmos DB-konto** och **datautforskaren**.  
 
-   Lägg till två samlingar under **changefeedlabdatabase** -  -  **produkter** och- **Kategorier** med fast lagrings kapacitet.
+   Lägg till två samlingar under **changefeedlabdatabase**-  -  **produkter** och- **Kategorier** med fast lagrings kapacitet.
 
    Lägg till en annan samling under **changefeedlabdatabase** med namnet **topItems** och **/item** som partitionsnyckel.
 
@@ -381,7 +381,7 @@ Nu kommer du att se hur du kan använda det nya data analys verktyget för att a
 
 7. I `<appSettings>` blocket lägger du till den **URI** och **primär nyckel** som du sparade tidigare där det står **din URI här** och **din primär nyckel här**. Lägg sedan till i ditt **databas namn** och **samlings namn** enligt vad som anges. (Dessa namn ska vara **changefeedlabdatabase** och **changefeedlabcollection** om du inte har valt att namnge ditt eget namn.)
 
-   Fyll i samlings **namn** , **Kategorier samlings namn** och **samlings namn för främsta objekt** enligt vad som anges. (Dessa namn bör vara **produkter, kategorier och topItems** om du inte har valt att namnge ditt eget namn.)  
+   Fyll i samlings **namn**, **Kategorier samlings namn** och **samlings namn för främsta objekt** enligt vad som anges. (Dessa namn bör vara **produkter, kategorier och topItems** om du inte har valt att namnge ditt eget namn.)  
 
 8. Navigera till och öppna **mappen utcheckning** i **EcommerceWebApp. SLN.** Öppna sedan **Web.config** -filen i den mappen.  
 

@@ -6,12 +6,12 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 36c5fc93886327c0e3261418343d900ee66cb4eb
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: b44279f31aea8fc02130f1c3d7520f42c648bd4c
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168587"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607957"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Application Insights för Azure Functions stödda funktioner
 
@@ -23,37 +23,35 @@ Mer information om kompatibla versioner av Application Insights finns i [beroend
 
 ## <a name="supported-features"></a>Funktioner som stöds
 
-| Azure Functions                       | V1                | V2 & V3   | 
-|-----------------------------------    |---------------    |------------------ |
+| Azure Functions                   | V1            | V2 & V3 | 
+|-----------------------------------|---------------|------------------|
 | | | | 
-| **Automatisk insamling av**        |                 |                   |               
-| &bull; Autentiseringsbegäran                     | Ja             | Ja               | 
-| &bull; Undantag                   | Ja             | Ja               | 
-| &bull; Prestanda räknare         | Ja             | Ja               |
-| &bull; Relation                   |                   |                   |               
-| &nbsp;&nbsp;&nbsp;&mdash; INKOMMANDE      |                 | Ja               | 
-| &nbsp;&nbsp;&nbsp;&mdash; Service Bus|                 | Ja               | 
-| &nbsp;&nbsp;&nbsp;&mdash; EventHub  |                 | Ja               | 
-| &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | Ja               | 
+| **Automatisk insamling av**        |               |                  |
+| &bull; Autentiseringsbegäran                     | Ja           | Ja              |
+| &bull; Undantag                   | Ja           | Ja              |
+| &bull; Prestanda räknare         | Ja           | Ja              |
+| &bull; Relation                 |               |                  |
+| &nbsp;&nbsp;&nbsp;&mdash; INKOMMANDE      |               | Yes              |
+| &nbsp;&nbsp;&nbsp;&mdash; Service Bus|               | Yes              |
+| &nbsp;&nbsp;&nbsp;&mdash; EventHub  |               | Yes              |
+| &nbsp;&nbsp;&nbsp;&mdash; SQL       |               | Yes              |
 | | | | 
-| **Funktioner som stöds**                |                   |                   |               
-| &bull; QuickPulse/LiveMetrics       | Ja             | Ja               | 
-| &nbsp;&nbsp;&nbsp;&mdash; Säker kontroll kanal|                 | Ja               | 
-| &bull; Ta                     | Ja             | Ja               | 
-| &bull; Pulsslag                   |                 | Ja               | 
+| **Funktioner som stöds**              |               |                  |
+| &bull; QuickPulse/LiveMetrics       | Ja           | Ja              | 
+| &nbsp;&nbsp;&nbsp;&mdash; Säker kontroll kanal |               | Yes | 
+| &bull; Ta                     | Ja           | Ja              | 
+| &bull; Pulsslag                   | | Yes              | 
+| | | |
+| **Korrelation**                    |               |                  |
+| &bull; Service Bus                  |               | Yes              |
+| &bull; EventHub                    |               | Yes              |
 | | | | 
-| **Korrelation**                       |                   |                   |               
-| &bull; Service Bus                     |                   | Ja               | 
-| &bull; EventHub                       |                   | Ja               | 
-| | | | 
-| **Konfigurerbar**                      |                   |                   |           
-| &bull;Helt konfigurerbart.<br/>Se [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) för instruktioner.<br/>Se [ASP.net Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) för alla alternativ.               |                   | Ja                   | 
-
+| **Konfigurerbar**                  |               |                  |           
+| &bull;Helt konfigurerbart.<br/>Se [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) för instruktioner.<br/>Se [ASP.net Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) för alla alternativ.           |               | Yes                 | 
 
 ## <a name="performance-counters"></a>Prestandaräknare
 
 Automatisk insamling av prestanda räknare fungerar bara på Windows-datorer.
-
 
 ## <a name="live-metrics--secure-control-channel"></a>Live Metrics & säker kontroll kanal
 
@@ -65,7 +63,7 @@ Azure Functions aktiverar sampling som standard i konfigurationen. Mer informati
 
 Om projektet tar ett beroende på Application Insights SDK för att utföra manuell telemetri, kan det uppstå onormalt beteende om samplings konfigurationen skiljer sig från funktionerna i samplings konfigurationen. 
 
-Vi rekommenderar att du använder samma konfiguration som-funktionerna. Med **Functions v2**kan du hämta samma konfiguration med hjälp av beroende inmatning i konstruktorn:
+Vi rekommenderar att du använder samma konfiguration som-funktionerna. Med **Functions v2** kan du hämta samma konfiguration med hjälp av beroende inmatning i konstruktorn:
 
 ```csharp
 using Microsoft.ApplicationInsights;

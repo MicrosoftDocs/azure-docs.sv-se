@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 3d4e5ad0b24b7163072d7e3110a523dad9608923
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ecdecc78d4c1adeba49a28f3cf555caa164a97a5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507379"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592457"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Anslut Azure till ITSM-verktyg med hjälp av Anslutningsprogram för hantering av IT-tjänster (ITSM)
 
@@ -154,9 +154,9 @@ Använd följande procedur för att skapa arbets objekt:
 
     * I ett fall som du väljer i list rutan "incident" eller "varning" i arbets objekt: om du avmarkerar kryss rutan **skapa enskilda arbets objekt för varje konfigurations objekt** skapas ett nytt arbets objekt i varje avisering. Det kan finnas mer än en avisering per konfigurations objekt.
 
-       ![Skärm bild som visar fönstret ITSM incident.](media/itsmc-overview/itsm-action-configuration.png)
-
-    * I ett fall som du väljer i list rutan arbets objekt "händelse": om du väljer **skapa enskilda arbets objekt för varje loggpost** i alternativ knappar, kommer varje avisering att skapa ett nytt arbets objekt. Om du väljer **skapa enskilda arbets objekt för varje konfigurations objekt** i alternativet alternativ knappar, kommer varje konfigurations objekt ha sitt eget arbets objekt.
+   ![Skärm bild som visar ITSM biljett-fönstret med "incident" valt för "arbets objekt".](media/itsmc-overview/itsm-action-configuration.png)
+   
+   * I ett fall som du väljer i list rutan arbets objekt "händelse": om du väljer **skapa enskilda arbets objekt för varje loggpost** i alternativ knappar, kommer varje avisering att skapa ett nytt arbets objekt. Om du väljer **skapa enskilda arbets objekt för varje konfigurations objekt** i alternativet alternativ knappar, kommer varje konfigurations objekt ha sitt eget arbets objekt.
    ![Skärm bild som visar händelse fönstret för ITSM.](media/itsmc-overview/itsm-action-configuration-event.png)
 
 10. Välj **OK**.
@@ -243,7 +243,7 @@ ServiceDeskWorkItemType_s = "ändringsbegäran"
 
 | Log Analytics fält | ServiceNow-fält |
 |:--- |:--- |
-| ServiceDeskId_s| Tal |
+| ServiceDeskId_s| Antal |
 | IncidentState_s | Stat |
 | Urgency_s |Angelägenhetsgrad |
 | Impact_s |Påverkan|
@@ -255,7 +255,7 @@ ServiceDeskWorkItemType_s = "ändringsbegäran"
 | AssignedTo_s | Tilldelad  |
 | Category_s | Kategori |
 | Title_s|  Kort beskrivning |
-| Description_s|  Kommentarer |
+| Description_s|  Obs! |
 | CreatedDate_t|  Inleddes |
 | ClosedDate_t| stängd|
 | ResolvedDate_t|Matchat|
@@ -265,7 +265,7 @@ ServiceDeskWorkItemType_s = "ändringsbegäran"
 
 | Log Analytics | ServiceNow-fält |
 |:--- |:--- |
-| ServiceDeskId_s| Tal |
+| ServiceDeskId_s| Antal |
 | CreatedBy_s | Begärd av |
 | ClosedBy_s | Stängd av |
 | AssignedTo_s | Tilldelad  |
