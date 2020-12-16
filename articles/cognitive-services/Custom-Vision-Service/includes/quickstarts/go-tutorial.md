@@ -3,19 +3,19 @@ author: areddish
 ms.author: areddish
 ms.service: cognitive-services
 ms.date: 09/15/2020
-ms.openlocfilehash: 4e9b5326f8ce28e94c829f9aed56d035c256be52
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 27eb4383084e9a782e0c2cb8ff734fba8496c9f1
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94625400"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97582708"
 ---
 Den här guiden innehåller instruktioner och exempel kod som hjälper dig att komma igång med Custom Vision klient biblioteket för Go för att skapa en bild klassificerings modell. Du skapar ett projekt, lägger till taggar, tränar projektet och använder projektets förutsäga slut punkts-URL för att program mässigt testa det. Använd det här exemplet som mall för att skapa en egen bild igenkännings app.
 
 > [!NOTE]
 > Om du vill skapa och träna en klassificerings modell _utan att_ skriva kod, se den [webbläsarbaserade vägledningen](../../getting-started-build-a-classifier.md) i stället.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - [Go 1.8+](https://golang.org/doc/install)
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
@@ -85,7 +85,7 @@ func main() {
 
 ## <a name="create-tags-in-the-project"></a>Skapa taggar i projektet
 
-Om du vill skapa klassificeringstaggar i projektet lägger du till följande kod i slutet av *sample.go* :
+Om du vill skapa klassificeringstaggar i projektet lägger du till följande kod i slutet av *sample.go*:
 
 ```go
 // Make two tags in the new project
@@ -164,7 +164,7 @@ Om du vill skicka en bild till slutpunkten för förutsägelse och hämta förut
 }
 ```
 
-## <a name="run-the-application"></a>Kör programmet
+## <a name="run-the-application"></a>Köra appen
 
 Kör *sample.go*.
 
@@ -187,7 +187,9 @@ Done!
         Japanese Cherry: 0.01%
 ```
 
-Du kan sedan kontrollera att testbilden (finns i **<base_image_url>/Images/Test/** ) har taggats på rätt sätt. Du kan också gå tillbaka till [Custom Vision-webbplatsen](https://customvision.ai) och se det aktuella tillståndet för det nyskapade projektet.
+Du kan sedan kontrollera att testbilden (finns i **<base_image_url>/Images/Test/**) har taggats på rätt sätt. Du kan också gå tillbaka till [Custom Vision-webbplatsen](https://customvision.ai) och se det aktuella tillståndet för det nyskapade projektet.
+
+## <a name="clean-up-resources"></a>Rensa resurser
 
 [!INCLUDE [clean-ic-project](../../includes/clean-ic-project.md)]
 

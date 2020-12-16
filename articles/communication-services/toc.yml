@@ -16,6 +16,8 @@
       items:
         - name: Lägga till chatt i din app
           href: quickstarts/chat/get-started.md
+        - name: Anslut din chattapp till ett Teams-möte
+          href: quickstarts/chat/meeting-interop.md
     - name: Telefoni och SMS
       items:
         - name: Hämta ett telefonnummer

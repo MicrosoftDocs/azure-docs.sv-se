@@ -5,15 +5,13 @@ ms.subservice: custom-vision
 ms.topic: include
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: b6b8eacd721fc5e527c5c08af64df5df85fc3852
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b71141a970420c51cde5f5dfa7f969821bab70f9
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85073212"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97582578"
 ---
-## <a name="clean-up-resources"></a>Rensa resurser
-
 Om du vill implementera ett eget bildklassificeringsprojekt (eller prova ett [objektidentifieringsprojekt](../quickstarts/object-detection.md) istället) kan du vilja ta bort projektet för trädidentifiering från det här exemplet. Med en kostnads fri prenumeration kan du använda två Custom Vision projekt.
 
 Navigera till **projekt** på [Custom vision webbplats](https://customvision.ai)och välj pappers korgen under mitt nya projekt.

@@ -9,19 +9,19 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 89520dacd9faea0373559119636d5c558b3b1536
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: a33490d289e3867dffec0041a5da21ea5f235b28
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97366528"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97582704"
 ---
 > [!IMPORTANT]
 > * Koden i den här artikeln använder synkrona metoder och icke-säkrade inloggnings uppgifter för att förenkla orsaker. Se referens dokumentationen nedan. 
 
 [Referens dokumentation](/python/api/azure-ai-formrecognizer)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer)  |  [Paket (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/)  |  [Exempel](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services)
 * [Python 3.x](https://www.python.org/)
@@ -36,17 +36,23 @@ ms.locfileid: "97366528"
 
 När du har installerat python kan du installera den senaste versionen av formulär identifierarens klient bibliotek med:
 
-#### <a name="version-30"></a>[version 3,0](#tab/ga)
+#### <a name="version-20"></a>[version 2,0](#tab/ga)
 
 ```console
 pip install azure-ai-formrecognizer
 ```
 
-#### <a name="version-31-preview"></a>[version 3,1 Preview](#tab/preview)
+> [!NOTE]
+> Den senaste formulär identifieraren visar API-version 2,0
+
+#### <a name="version-21-preview"></a>[version 2,1 Preview](#tab/preview)
 
 ```console
 pip install azure-ai-formrecognizer --pre
 ```
+
+> [!NOTE]
+> Formulär tolken för hands version SDK visar API version 2,1 Preview
 
 ---
 
@@ -91,7 +97,7 @@ Med formulär tolken kan du skapa två olika klient typer. Det första `form_rec
 
 De här kodfragmenten visar hur du utför följande uppgifter med formulär tolkens klient bibliotek för python:
 
-#### <a name="version-30"></a>[version 3,0](#tab/ga)
+#### <a name="version-20"></a>[version 2,0](#tab/ga)
 
 * [Autentisera klienten](#authenticate-the-client)
 * [Identifiera formulär innehåll](#recognize-form-content)
@@ -100,7 +106,7 @@ De här kodfragmenten visar hur du utför följande uppgifter med formulär tolk
 * [Analysera formulär med en anpassad modell](#analyze-forms-with-a-custom-model)
 * [Hantera dina anpassade modeller](#manage-your-custom-models)
 
-#### <a name="version-31-preview"></a>[version 3,1 Preview](#tab/preview)
+#### <a name="version-21-preview"></a>[version 2,1 Preview](#tab/preview)
 
 * [Autentisera klienten](#authenticate-the-client)
 * [Identifiera formulär innehåll](#recognize-form-content)
@@ -194,11 +200,15 @@ Tax: 104.4 has confidence 0.713
 Total: 1203.39 has confidence 0.774
 ```
 
-#### <a name="version-30"></a>[version 3,0](#tab/ga)
-
-#### <a name="version-31-preview"></a>[version 3,1 Preview](#tab/preview)
 
 ## <a name="recognize-business-cards"></a>Identifiera visitkort
+
+#### <a name="version-20"></a>[version 2,0](#tab/ga)
+
+> [!IMPORTANT]
+> Den här funktionen är inte tillgänglig i den valda API-versionen.
+
+#### <a name="version-21-preview"></a>[version 2,1 Preview](#tab/preview)
 
 Det här avsnittet visar hur du känner igen och extraherar vanliga fält från engelska visitkort med en förtränad modell. Använd metoden för att identifiera visitkort från en URL `begin_recognize_business_cards_from_url` . 
 
@@ -207,7 +217,16 @@ Det här avsnittet visar hur du känner igen och extraherar vanliga fält från 
 > [!TIP]
 > Du kan också identifiera lokala visitkorts avbildningar. Se [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) -metoderna, till exempel `begin_recognize_business_cards` . Eller, se exempel koden på [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) för scenarier som involverar lokala avbildningar.
 
+---
+
 ## <a name="recognize-invoices"></a>Identifiera fakturor
+
+#### <a name="version-20"></a>[version 2,0](#tab/ga)
+
+> [!IMPORTANT]
+> Den här funktionen är inte tillgänglig i den valda API-versionen.
+
+#### <a name="version-21-preview"></a>[version 2,1 Preview](#tab/preview)
 
 Det här avsnittet visar hur du identifierar och extraherar gemensamma fält från försäljnings fakturor med hjälp av en förtränad modell. Använd-metoden för att identifiera fakturor från en URL `begin_recognize_invoices_from_url` . 
 

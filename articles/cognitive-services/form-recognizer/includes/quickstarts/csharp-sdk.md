@@ -9,19 +9,19 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 48a895875edab56e062320321d82b43da15234d0
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: c67a859177695b71c6607c53b3ae9c268aee7797
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97366355"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97582594"
 ---
 > [!IMPORTANT]
 > Koden i den här artikeln använder synkrona metoder och icke-säkrade inloggnings uppgifter för att förenkla orsaker.
 
 [Referens dokumentation](/dotnet/api/overview/azure/ai.formrecognizer-readme)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src)  |  [Paket (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer)  |  [Exempel](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services/)
 * [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) eller aktuell version av [.net Core](https://dotnet.microsoft.com/download/dotnet-core).
@@ -58,17 +58,24 @@ Build succeeded.
 
 I program katalogen installerar du formulär tolkens klient bibliotek för .NET med följande kommando:
 
-#### <a name="version-30"></a>[version 3,0](#tab/ga)
+#### <a name="version-20"></a>[version 2,0](#tab/ga)
 
 ```console
 dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 ```
 
-#### <a name="version-31-preview"></a>[version 3,1 Preview](#tab/preview)
+> [!NOTE]
+> Formulär tolken 3.0.0 SDK reflekterar API-version 2,0
+
+#### <a name="version-21-preview"></a>[version 2,1 Preview](#tab/preview)
 
 ```console
 dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
 ```
+
+> [!NOTE]
+> Formulär tolken 3.1.0 SDK visar API version 2,1 Preview
+
 ---
 
 > [!TIP]
@@ -89,9 +96,9 @@ I programmets **program** klass skapar du variabler för resursens nyckel och sl
 
 I programmets **main** -metod lägger du till ett anrop till de asynkrona uppgifter som används i den här snabb starten. Du kommer att implementera dem senare.
 
-#### <a name="version-30"></a>[version 3,0](#tab/ga)
+#### <a name="version-20"></a>[version 2,0](#tab/ga)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_main)]
-#### <a name="version-31-preview"></a>[version 3,1 Preview](#tab/preview)
+#### <a name="version-21-preview"></a>[version 2,1 Preview](#tab/preview)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_main)]
 
 ---
@@ -127,7 +134,7 @@ Se exempel för att [träna en modell](#train-a-custom-model) och [Hantera anpas
 
 De här kodfragmenten visar hur du utför följande uppgifter med formulär tolkens klient bibliotek för .NET:
 
-#### <a name="version-30"></a>[version 3,0](#tab/ga)
+#### <a name="version-20"></a>[version 2,0](#tab/ga)
 
 * [Autentisera klienten](#authenticate-the-client)
 * [Identifiera formulär innehåll](#recognize-form-content)
@@ -136,7 +143,7 @@ De här kodfragmenten visar hur du utför följande uppgifter med formulär tolk
 * [Analysera formulär med en anpassad modell](#analyze-forms-with-a-custom-model)
 * [Hantera dina anpassade modeller](#manage-your-custom-models)
 
-#### <a name="version-31-preview"></a>[version 3,1 Preview](#tab/preview)
+#### <a name="version-21-preview"></a>[version 2,1 Preview](#tab/preview)
 
 * [Autentisera klienten](#authenticate-the-client)
 * [Identifiera formulär innehåll](#recognize-form-content)
@@ -172,9 +179,9 @@ Du måste också lägga till referenser till URL: erna för din utbildning och t
 * Upprepa sedan stegen ovan för att hämta SAS-URL: en för ett enskilt dokument i Blob Storage-behållare. Spara den på en tillfällig plats även.
 * Spara slutligen URL: en för de exempel bilder som ingår nedan (finns också på [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms)). 
 
-#### <a name="version-30"></a>[version 3,0](#tab/ga)
+#### <a name="version-20"></a>[version 2,0](#tab/ga)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_urls)]
-#### <a name="version-31-preview"></a>[version 3,1 Preview](#tab/preview)
+#### <a name="version-21-preview"></a>[version 2,1 Preview](#tab/preview)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_urls)]
 
 ---
@@ -289,11 +296,15 @@ Item:
 Total: '1203.39', with confidence '0.774'
 ```
 
-#### <a name="version-30"></a>[version 3,0](#tab/ga)
-
-#### <a name="version-31-preview"></a>[version 3,1 Preview](#tab/preview)
-
 ## <a name="recognize-business-cards"></a>Identifiera visitkort
+
+#### <a name="version-20"></a>[version 2,0](#tab/ga)
+
+> [!IMPORTANT]
+> Den här funktionen är inte tillgänglig i den valda API-versionen.
+
+#### <a name="version-21-preview"></a>[version 2,1 Preview](#tab/preview)
+
 
 Det här avsnittet visar hur du känner igen och extraherar vanliga fält från engelska visitkort med en förtränad modell.
 
@@ -308,7 +319,16 @@ Det returnerade värdet är en samling `RecognizedForm` objekt: ett för varje k
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_print)]
 
+---
+
 ## <a name="recognize-invoices"></a>Identifiera fakturor
+
+#### <a name="version-20"></a>[version 2,0](#tab/ga)
+
+> [!IMPORTANT]
+> Den här funktionen är inte tillgänglig i den valda API-versionen.
+
+#### <a name="version-21-preview"></a>[version 2,1 Preview](#tab/preview)
 
 Det här avsnittet visar hur du identifierar och extraherar gemensamma fält från försäljnings fakturor med hjälp av en förtränad modell.
 

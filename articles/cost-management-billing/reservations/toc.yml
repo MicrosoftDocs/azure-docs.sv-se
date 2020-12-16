@@ -126,7 +126,7 @@
           href: troubleshoot-reservation-utilization.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Felsöka reservationsrekommendationer
           href: troubleshoot-reservation-recommendation.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Felsökning av reservation är inte tillgänglig
+        - name: Felsökning av reservations-SKU inaktiverat
           href: troubleshoot-product-not-available.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Felsök nedladdning av användningsinformation
           href: troubleshoot-download-usage.md?toc=/azure/cost-management-billing/reservations/toc.json

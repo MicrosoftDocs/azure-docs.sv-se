@@ -306,10 +306,12 @@
       items:
         - name: Välj en nivå
           href: search-sku-tier.md
-        - name: Tjänstbegränsningar
-          href: search-limits-quotas-capacity.md
+        - name: Uppskatta kapacitet och kostnad
+          href: search-sku-manage-costs.md
         - name: Justera kapacitet
           href: search-capacity-planning.md
+        - name: Tjänstbegränsningar
+          href: search-limits-quotas-capacity.md
         - name: Skala för prestanda
           href: search-performance-optimization.md
         - name: Arkitektur för flera innehavare
@@ -362,12 +364,6 @@
               href: service-configure-firewall.md
             - name: Skapa en privat slutpunkt
               href: service-create-private-endpoint.md
-        - name: Identitetsbaserad åtkomst
-          items:
-            - name: Säkerhetsfilter
-              href: search-security-trimming-for-azure-search.md
-            - name: Filtrera på användaridentiteter
-              href: search-security-trimming-for-azure-search-with-aad.md
         - name: Utgående säkerhet (indexerare)
           items:
             - name: Åtkomst över ett IP-intervall
@@ -376,6 +372,12 @@
               href: search-indexer-howto-access-trusted-service-exception.md
             - name: Åtkomst via privata slutpunkter
               href: search-indexer-howto-access-private.md
+        - name: Identitetsbaserad åtkomst
+          items:
+            - name: Säkerhetsfilter
+              href: search-security-trimming-for-azure-search.md
+            - name: Filtrera på användaridentiteter
+              href: search-security-trimming-for-azure-search-with-aad.md
     - name: Hantera
       items:
         - name: Portalen
@@ -552,5 +554,5 @@
       href: search-faq-frequently-asked-questions.md
     - name: Prissättning
       href: 'https://azure.microsoft.com/pricing/details/search/'
-    - name: Videoklipp
+    - name: Video
       href: 'https://azure.microsoft.com/resources/videos/index/?services=search'

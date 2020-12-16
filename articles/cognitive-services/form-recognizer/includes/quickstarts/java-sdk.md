@@ -10,19 +10,19 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 23d76f441178238ae6527c2fa5440c4ab7b1d4e3
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: ac14f6331d01325302dd7dda753695ca3a129c27
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97366486"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97582497"
 ---
 > [!IMPORTANT]
 > Koden i den här artikeln använder synkrona metoder och icke-säkrade inloggnings uppgifter för att förenkla orsaker.
 
 [Referens dokumentation](/java/api/overview/azure/ai-formrecognizer-readme?view=azure-java-preview)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src)  |  [Paket (maven)](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer)  |  [Exempel](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services)
 * Den aktuella versionen av [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
@@ -58,7 +58,7 @@ I den här snabb starten används Gradle-beroende hanteraren. Du hittar klient b
 
 I projektets *build. gradle. KTS* -fil inkluderar du klient biblioteket som en `implementation` instruktion, tillsammans med nödvändiga plugin-program och inställningar.
 
-#### <a name="version-30"></a>[version 3,0](#tab/ga)
+#### <a name="version-20"></a>[version 2,0](#tab/ga)
 ```kotlin
 plugins {
     java
@@ -74,6 +74,10 @@ dependencies {
     implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.0.0")
 }
 ```
+
+> [!NOTE]
+> Formulär tolken 3.0.0 SDK reflekterar API-version 2,0
+
 #### <a name="version-31-preview"></a>[version 3,1 Preview](#tab/preview)
 ```kotlin
 plugins {
@@ -90,6 +94,10 @@ dependencies {
     implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.1.0-beta.1")
 }
 ```
+
+> [!NOTE]
+> Formulär tolken 3.1.0 SDK visar API version 2,1 Preview
+
 ---
 
 ### <a name="create-a-java-file"></a>Skapa en Java-fil
@@ -124,11 +132,11 @@ I programmets **main** -metod lägger du till anrop för de metoder som används
 * Om du vill få en URL för ett formulär att testa kan du använda ovanstående steg för att hämta SAS-URL: en för ett enskilt dokument i Blob Storage. Eller ta med URL: en för ett dokument som finns på annan plats.
 * Använd metoden ovan för att hämta URL: en för en kvitto bild.
 
-#### <a name="version-30"></a>[version 3,0](#tab/ga)
+#### <a name="version-20"></a>[version 2,0](#tab/ga)
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_mainvars)]
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_maincalls)]
-#### <a name="version-31-preview"></a>[version 3,1 Preview](#tab/preview)
+#### <a name="version-21-preview"></a>[version 2,1 Preview](#tab/preview)
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_mainvars)]
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_maincalls)]
@@ -165,14 +173,14 @@ Med formulär tolken kan du skapa två olika klient typer. Det första `FormReco
 
 De här kodfragmenten visar hur du utför följande uppgifter med formulär tolkens klient bibliotek för java:
 
-#### <a name="version-30"></a>[version 3,0](#tab/ga)
+#### <a name="version-20"></a>[version 2,0](#tab/ga)
 * [Autentisera klienten](#authenticate-the-client)
 * [Identifiera formulär innehåll](#recognize-form-content)
 * [Identifiera kvitton](#recognize-receipts)
 * [Träna en anpassad modell](#train-a-custom-model)
 * [Analysera formulär med en anpassad modell](#analyze-forms-with-a-custom-model)
 * [Hantera dina anpassade modeller](#manage-your-custom-models)
-#### <a name="version-31-preview"></a>[version 3,1 Preview](#tab/preview)
+#### <a name="version-21-preview"></a>[version 2,1 Preview](#tab/preview)
 * [Autentisera klienten](#authenticate-the-client)
 * [Identifiera formulär innehåll](#recognize-form-content)
 * [Identifiera kvitton](#recognize-receipts)
@@ -259,11 +267,14 @@ Quantity: null, confidence: 0.927s]
 Total Price: null, confidence: 0.93
 ```
 
-#### <a name="version-30"></a>[version 3,0](#tab/ga)
-
-#### <a name="version-31-preview"></a>[version 3,1 Preview](#tab/preview)
-
 ## <a name="recognize-business-cards"></a>Identifiera visitkort
+
+#### <a name="version-20"></a>[version 2,0](#tab/ga)
+
+> [!IMPORTANT]
+> Den här funktionen är inte tillgänglig i den valda API-versionen.
+
+#### <a name="version-21-preview"></a>[version 2,1 Preview](#tab/preview)
 
 Det här avsnittet visar hur du känner igen och extraherar vanliga fält från engelska visitkort med en förtränad modell.
 
@@ -278,7 +289,16 @@ Det returnerade värdet är en samling **RecognizedForm** -objekt: ett för varj
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_print)]
 
+---
+
 ## <a name="recognize-invoices"></a>Identifiera fakturor
+
+#### <a name="version-20"></a>[version 2,0](#tab/ga)
+
+> [!IMPORTANT]
+> Den här funktionen är inte tillgänglig i den valda API-versionen.
+
+#### <a name="version-21-preview"></a>[version 2,1 Preview](#tab/preview)
 
 Det här avsnittet visar hur du identifierar och extraherar gemensamma fält från försäljnings fakturor med hjälp av en förtränad modell.
 

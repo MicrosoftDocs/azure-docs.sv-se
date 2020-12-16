@@ -190,6 +190,8 @@
               href: platform/metrics-getting-started.md
             - name: Avancerade funktioner i Metrics Explorer
               href: platform/metrics-charts.md
+            - name: Visar flera resurser i Metrics Explorer
+              href: platform/metrics-dynamic-scope.md
             - name: Exempel på måttdiagram
               href: platform/metric-chart-samples.md
             - name: Felsöka måttdiagram
@@ -251,7 +253,7 @@
               href: log-query/query-audit.md
             - name: Optimera frågor
               href: log-query/query-optimization.md
-            - name: Functions (Funktioner)
+            - name: Funktioner
               href: log-query/functions.md
             - name: Parsa textdata
               href: log-query/parse-text.md
@@ -546,12 +548,12 @@
               href: platform/itsmc-overview.md
             - name: IT Service Management-anslutningar
               href: platform/itsmc-connections.md
-            - name: Integrera med Secure Export
-              href: platform/it-service-management-connector-secure-webhook-connections.md
             - name: Skapa Service Manager-webbapp
               href: platform/itsmc-service-manager-script.md
             - name: Felsöka problem med anslutningsprogram för hantering av IT-tjänster (ITSM)
               href: platform/itsmc-resync-servicenow.md
+            - name: Integrera med Secure Export
+              href: platform/it-service-management-connector-secure-webhook-connections.md
         - name: Migrera klassiska aviseringsregler
           items:
             - name: Om klassiska aviseringar
@@ -752,6 +754,8 @@
               href: app/pre-aggregated-metrics-log-metrics.md
             - name: Loggbaserade måttdefinitioner
               href: platform/app-insights-metrics.md
+            - name: Standardmått
+              href: app/standard-metrics.md
         - name: Search
           href: app/diagnostic-search.md
         - name: Profilerare
