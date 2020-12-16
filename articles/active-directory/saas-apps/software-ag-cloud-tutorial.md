@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 144263835e129c3571dcc5c2f8e8bde03dca9a0e
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 3c381d8000ce21e72d6426ea924d0a3dc467e9ef
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369352"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592015"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med program-AG-molnet
 
@@ -26,7 +26,7 @@ I den här självstudien får du lära dig hur du integrerar Software AG-molnet 
 * Gör det möjligt för användarna att logga in automatiskt till Software AG-molnet med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att komma igång behöver du följande objekt:
 

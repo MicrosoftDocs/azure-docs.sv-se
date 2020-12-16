@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: f1e4e288b5b95f355221188a45f1e6c764fde77c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4dedbcf58e76b8c969f8607db6922e87a85f08e5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187344"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591881"
 ---
 # <a name="use-source-control-integration-in-azure-automation---legacy"></a>Använd käll kontroll integrering i Azure Automation-bakåtkompatibelt
 
@@ -47,13 +47,13 @@ Om du redan har ett GitHub-konto och en databas som du vill länka till Azure Au
    | Sökväg till Runbook-mapp |Sökvägen till Runbook-mappen anger sökvägen i GitHub-lagringsplatsen som du vill skicka eller ta emot din kod från. Den måste anges i formatet **/FolderName/subfoldername**. Endast Runbooks i sökvägen till Runbook-mappen kommer att synkroniseras med ditt Automation-konto. Runbooks i undermapparna i sökvägen till Runbook-mappen kommer **inte** att synkroniseras. Används **/** för att synkronisera alla Runbooks under lagrings platsen. |
 3. Om du till exempel har en lagrings plats med namnet **PowerShellScripts** som innehåller en mapp med namnet **RootFolder**, som innehåller en mapp med namnet **undermapp.** Du kan använda följande strängar för att synkronisera varje mappnivå:
 
-   1. Om du vill synkronisera Runbooks från **lagrings platsen**för Runbook-mappar är Runbook-mappsökvägen **/** .
-   2. För att synkronisera Runbooks från **RootFolder**är sökvägen till Runbook-mappen **/RootFolder**.
-   3. För att synkronisera Runbooks från **undermappar**är sökvägen till Runbook-mappen **/RootFolder/SubFolder**.
+   1. Om du vill synkronisera Runbooks från **lagrings platsen** för Runbook-mappar är Runbook-mappsökvägen **/** .
+   2. För att synkronisera Runbooks från **RootFolder** är sökvägen till Runbook-mappen **/RootFolder**.
+   3. För att synkronisera Runbooks från **undermappar** är sökvägen till Runbook-mappen **/RootFolder/SubFolder**.
 4. När du har konfigurerat parametrarna visas de på sidan Konfigurera käll kontroll.  
 
     ![Sidan käll kontroll med inställningarna](media/source-control-integration-legacy/automation-SourceControlConfigure.png)
-5. När du klickar på **OK**är käll kontroll integrering nu konfigurerad för ditt Automation-konto och bör uppdateras med din GitHub-information. Nu kan du klicka på den här delen för att visa all din käll kontroll för synkronisering av jobb historik.  
+5. När du klickar på **OK** är käll kontroll integrering nu konfigurerad för ditt Automation-konto och bör uppdateras med din GitHub-information. Nu kan du klicka på den här delen för att visa all din käll kontroll för synkronisering av jobb historik.  
 
     ![Värden för den aktuella konfigurerade käll kontroll konfigurationen](media/source-control-integration-legacy/automation-RepoValues.png)
 6. När du har konfigurerat käll kontroll skapas två [variabel till gångar](./shared-resources/variables.md) i ditt Automation-konto. Dessutom läggs ett auktoriserat program till i ditt GitHub-konto.
@@ -66,7 +66,7 @@ Om du redan har ett GitHub-konto och en databas som du vill länka till Azure Au
      | `Type`  |Sträng |
      | `Value` |{"Gren": \<*Your branch name*> , "RunbookFolderPath": \<*Runbook folder path*> , "ProviderType": \<*has a value 1 for GitHub*> , "databas": \<*Name of your repository*> , "username": \<*Your GitHub user name*> } |
 
-   * Variabeln **Microsoft. Azure. Automation. SourceControl. OAuthToken**innehåller det säkra krypterade värdet för din OAuthToken.  
+   * Variabeln **Microsoft. Azure. Automation. SourceControl. OAuthToken** innehåller det säkra krypterade värdet för din OAuthToken.  
 
      |**Parameter**            |**Värde** |
      |:---|:---|
@@ -92,7 +92,7 @@ Med Runbook checka in kan du skicka de ändringar du har gjort till en Runbook i
      > [!NOTE] 
      > Checka in från Azure Automation skriver över den kod som för närvarande finns i käll kontrollen. Den git-motsvarande kommando rads instruktionen att checka in är **git Add + git commit + git-push**  
 
-3. När du klickar på **checka in**uppmanas du att bekräfta genom att klicka på **Ja** för att fortsätta.  
+3. När du klickar på **checka in** uppmanas du att bekräfta genom att klicka på **Ja** för att fortsätta.  
 
     ![En dialog ruta som bekräftar incheckningen av käll kontrollen](media/source-control-integration-legacy/automation-CheckinMessage.png)
 4. Checka in startar käll kontrollens Runbook: **Sync-MicrosoftAzureAutomationAccountToGitHubV1**. Denna Runbook ansluter till GitHub och skickar ändringar från Azure Automation till din lagrings plats. Om du vill visa den incheckade jobb historiken går du tillbaka till fliken **käll kontrolls integrering** och klickar för att öppna sidan synkronisering av databas. På den här sidan visas alla käll kontroll jobb. Välj det jobb som du vill visa och klicka på för att visa information.  
