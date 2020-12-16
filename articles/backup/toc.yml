@@ -423,6 +423,8 @@
       items:
         - name: Azure VM
           href: backup-azure-vms-troubleshoot.md
+        - name: Filåterställning för virtuella datorer i Azure
+          href: backup-azure-vm-file-recovery-troubleshoot.md
         - name: Tidsgränsen uppnåddes för Azure Backup-agenten eller VM-tillägget
           href: backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md
         - name: Azure Backup-agent

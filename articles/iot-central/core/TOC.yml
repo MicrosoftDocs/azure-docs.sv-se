@@ -10,6 +10,8 @@
       href: overview-iot-central-developer.md
     - name: Senaste uppdateringarna
       items:
+        - name: Nya och ändrade funktioner i november 2020
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-november-2020/'
         - name: Oktober 2020 – nya och ändrade funktioner
           href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-upadates-october-2020/'
         - name: Nya och ändrade funktioner i september 2020

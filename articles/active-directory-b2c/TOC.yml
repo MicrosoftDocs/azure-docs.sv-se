@@ -153,6 +153,8 @@
           href: identity-provider-wechat.md
         - name: Weibo
           href: identity-provider-weibo.md
+        - name: Passera med identitetsprovidertoken
+          href: idp-pass-through-user-flow.md
     - name: UX-anpassning
       items:
         - name: Konfigurera användarinmatning
@@ -206,8 +208,6 @@
               href: api-connectors-overview.md
             - name: Lägg till ett API-anslutningsprogram
               href: add-api-connector.md
-        - name: Skicka externa IdP-token
-          href: idp-pass-through-user-flow.md
     - name: Anpassad princip
       items:
         - name: Översikt över anpassad princip
@@ -231,8 +231,6 @@
             - name: SendGrid
               href: custom-email-sendgrid.md
           displayName: verification
-        - name: Skicka externa IdP-token
-          href: idp-pass-through-custom.md
         - name: Lägg till din egen affärslogik
           items:
             - name: Integrera REST API

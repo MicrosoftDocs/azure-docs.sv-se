@@ -663,6 +663,8 @@
                   href: service-fabric-cluster-creation-via-portal.md
                 - name: Distribuera ett Azure Service Fabric-kluster mellan tillgänglighetszoner
                   href: service-fabric-cross-availability-zones.md
+                - name: Distribuera ett Azure Service Fabric-kluster med tillståndslösa nodtyper
+                  href: service-fabric-stateless-node-types.md
                 - name: Konfigurera Azure Active Directory-autentisering
                   href: service-fabric-cluster-creation-setup-aad.md
                 - name: Skapa en anpassad klustermall
