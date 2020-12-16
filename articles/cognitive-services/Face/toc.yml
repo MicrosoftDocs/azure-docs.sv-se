@@ -5,6 +5,8 @@
   items:
     - name: Vad är tjänsten Ansiktsigenkänning?
       href: Overview.md
+    - name: Nyheter
+      href: releasenotes.md
 - name: Snabbstarter
   items:
     - name: Använda klientbiblioteket eller REST-API
@@ -97,5 +99,3 @@
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Kryptering
       href: face-encryption-of-data-at-rest.md
-    - name: Viktig information
-      href: ReleaseNotes.md

@@ -114,10 +114,6 @@
           href: developers-guide.md
         - name: Använda Azure Resource Manager för att distribuera Key Vault
           href: vault-create-template.md
-        - name: Spara hemligheter för webbappar
-          href: /previous-versions/azure/key-vault/vs-secure-secret-appsettings?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
-        - name: Tjänst-till-tjänst-autentisering med .NET
-          href: service-to-service-authentication.md
         - name: Använda den anslutna tjänsten i Key Vault
           href: vs-key-vault-add-connected-service.md
     - name: Övervaka och styra

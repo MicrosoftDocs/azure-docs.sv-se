@@ -758,6 +758,8 @@
           href: data-factory-troubleshoot-guide.md
         - name: Anslutningar
           href: connector-troubleshoot-guide.md
+        - name: Pipeline-utlösare
+          href: pipeline-trigger-troubleshoot-guide.md
         - name: Dataflöden
           href: data-flow-troubleshoot-guide.md
         - name: Kontinuerlig integrering och distribution

@@ -271,7 +271,7 @@
                 - name: Mängdfunktioner
                   displayName: 'functions, aggregate, count, sum, min, minimum, max, maximum, avg, average'
                   href: sql-query-aggregate-functions.md
-                - name: Genomsn.
+                - name: Genomsnitt
                   displayName: 'functions, aggregate, avg, average'
                   href: sql-query-aggregate-avg.md
                 - name: Antal
@@ -978,6 +978,8 @@
           href: find-request-unit-charge-cassandra.md
         - name: Lagra och hantera Spring Data
           href: /azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=%2fazure%2fcosmos-db%2fcontext%2fcontext
+        - name: Felsök vanliga problem
+          href: cassandra-troubleshoot.md
         - name: Cassandra och Spark
           items:
             - name: Introduktion

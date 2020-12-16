@@ -122,6 +122,8 @@
       href: disaster-recovery.md
 - name: Begrepp
   items:
+    - name: Inbyggda roller
+      href: rbac.md
     - name: Autentisering
       href: authentication.md
     - name: Windows Virtual Desktop-miljö
