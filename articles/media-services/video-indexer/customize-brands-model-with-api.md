@@ -10,18 +10,19 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: kumud
-ms.openlocfilehash: 5fc565ecc1b501f52e934784695594dcfef2a83a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c3056415d3432dbe64dd1f2bcf974a676bbf6c6b
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020474"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586065"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Anpassa en modell med ett varumärke med Video Indexer-API
 
-Video Indexer stöder varumärkes identifiering från tal-och visuell text vid indexering och Omindexering av video-och ljud innehåll. Funktionen varumärkes identifiering identifierar omnämnanden av produkter, tjänster och företag som föreslås av Bing-databasens varumärken. Om Microsoft till exempel nämns i video-eller ljud innehåll, eller om det visas i visuell text i en video, identifierar Video Indexer det som ett varumärke i innehållet. Med en modell med anpassade varumärken kan du undanta vissa varumärken från att identifieras och innehålla varumärken som ska ingå i din modell som kanske inte finns i Bing-databasen.
+Video Indexer stöder varumärkes identifiering från tal-och visuell text vid indexering och Omindexering av video-och ljud innehåll. Funktionen varumärkes identifiering identifierar omnämnanden av produkter, tjänster och företag som föreslås av Bing-databasens varumärken. Om Microsoft till exempel nämns i video-eller ljud innehåll, eller om det visas i visuell text i en video, identifierar Video Indexer det som ett varumärke i innehållet. Med en modell med anpassade varumärken kan du undanta vissa varumärken från att identifieras och innehålla varumärken som ska ingå i din modell som kanske inte finns i Bing-databasen. Mer information finns i [Översikt](customize-brands-model-overview.md).
 
-En detaljerad översikt finns i [Översikt](customize-brands-model-overview.md).
+> [!NOTE]
+> Om videon var indexerad innan du lade till ett varumärke måste du indexera om den.
 
 Du kan använda Video Indexer API: er för att skapa, använda och redigera anpassade varumärke modeller som identifieras i en video, enligt beskrivningen i det här avsnittet. Du kan också använda Video Indexer webbplats som beskrivs i [Anpassa varumärkes-modellen med hjälp av video Indexer webbplats](customize-brands-model-with-api.md).
 

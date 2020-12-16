@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-js
 ms.date: 06/16/2020
-ms.openlocfilehash: 092e07ed01fb870cdcd9a3fd63d46d30cef96007
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: dcbb82dafc5f4c51299e4bcca7947e2f38f502ff
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780849"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585487"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Användardefinierade JavaScript-funktioner i Azure Stream Analytics
  
@@ -96,7 +96,7 @@ Här är konverteringarna från JavaScript till Stream Analytics:
 JavaScript | Stream Analytics
 --- | ---
 Antal | Bigint (om talet är avrundat och mellan long.MinValue och long.MaxValue, i annat fall stöds det inte)
-Datum | DateTime
+Date | DateTime
 Sträng | nvarchar(MAX)
 Objekt | Post
 Matris | Matris
@@ -215,6 +215,14 @@ Utdata från den här frågan blir indata-datetime i **de-de** med de angivna al
 Samstag, 28. Dezember 2019
 ```
 
+### <a name="user-logging"></a>Användar loggning
+Med loggnings metoden kan du samla in anpassad information medan ett jobb körs. Du kan använda loggdata för att felsöka eller utvärdera rätthet för den anpassade koden i real tid. Den här mekanismen är tillgänglig via Console. log ()-metoden.
+
+```javascript
+console.log('my error message');
+```
+
+Du kan komma åt logg meddelanden via [diagnostikloggar](data-errors.md).
 ## <a name="next-steps"></a>Nästa steg
 
 * [Machine Learning UDF](./machine-learning-udf.md)

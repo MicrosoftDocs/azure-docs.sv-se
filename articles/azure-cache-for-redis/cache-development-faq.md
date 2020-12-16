@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
-ms.openlocfilehash: be2e4a002d1daf4da7d042f1fd7d5bf0e9a01377
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: bafd8a9752d2587ec52fe586e442e3bfc86d7537
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544519"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585776"
 ---
 # <a name="azure-cache-for-redis-development-faqs"></a>Vanliga frågor och svar om Azure cache för Redis-utveckling
 
@@ -55,7 +55,7 @@ Vanligt vis räcker standardvärdena för-klienten. Du kan finjustera alternativ
 
 * **Antal försök**
   * I ConnectRetry och ConnectTimeout är den allmänna vägledningen att sluta fungera snabbt och försöka igen. Den här vägledningen baseras på arbets belastningen och hur lång tid det tar för din klient att utfärda ett Redis-kommando och få ett svar.
-  * Låt StackExchange. Redis återansluta automatiskt i stället för att kontrol lera anslutnings status och ansluta igen. **Undvik att använda egenskapen ConnectionMultiplexer. IsConnected** .
+  * Låt StackExchange. Redis återansluta automatiskt i stället för att kontrol lera anslutnings status och ansluta igen. **Undvik att använda egenskapen ConnectionMultiplexer. IsConnected**.
   * Snowballing – ibland kan du stöta på ett problem där du försöker igen och Återförsöken Snowball och aldrig återställer. Om Snowballing inträffar bör du överväga att använda en exponentiell backoff för nya försök enligt beskrivningen i den [allmänna vägledningen för försök](/azure/architecture/best-practices/transient-faults) som publicerats av Microsoft patterns & Practices Group.
   
 * **Timeout-värden**
@@ -64,12 +64,12 @@ Vanligt vis räcker standardvärdena för-klienten. Du kan finjustera alternativ
   * Använd en enda ConnectionMultiplexer-instans för programmet. Du kan använda en LazyConnection för att skapa en enda instans som returneras av en anslutnings egenskap, som du ser i [Anslut till cachen med klassen ConnectionMultiplexer](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
   * Ange `ConnectionMultiplexer.ClientName` egenskapen till ett unikt namn för App-instansen.
   * Använd flera `ConnectionMultiplexer` instanser för anpassade arbets belastningar.
-      * Du kan följa den här modellen om du har varierande belastning i ditt program. Exempel:
-      * Du kan ha en multiplexor för att hantera stora nycklar.
-      * Du kan ha en multiplexor för att hantera små nycklar.
-      * Du kan ange olika värden för timeout för anslutningar och omprövnings logik för varje ConnectionMultiplexer som du använder.
-      * Ange `ClientName` egenskapen för varje multiplexor för att hjälpa med diagnostik.
-      * Den här vägledningen kan leda till mer strömlinjeformad svars tid per `ConnectionMultiplexer` .
+    * Du kan följa den här modellen om du har varierande belastning i ditt program. Exempel:
+    * Du kan ha en multiplexor för att hantera stora nycklar.
+    * Du kan ha en multiplexor för att hantera små nycklar.
+    * Du kan ange olika värden för timeout för anslutningar och omprövnings logik för varje ConnectionMultiplexer som du använder.
+    * Ange `ClientName` egenskapen för varje multiplexor för att hjälpa med diagnostik.
+    * Den här vägledningen kan leda till mer strömlinjeformad svars tid per `ConnectionMultiplexer` .
 
 ### <a name="what-azure-cache-for-redis-clients-can-i-use"></a>Vilken Azure-cache för Redis-klienter kan jag använda?
 En av de fantastiska sakerna som Redis är att det finns många klienter som har stöd för många olika utvecklings språk. En aktuell lista över klienter finns i [Redis-klienter](https://redis.io/clients). För självstudier som rör flera olika språk och klienter, se [hur du använder Azure cache för Redis](cache-dotnet-how-to-use-azure-redis-cache.md) och dess artiklar på samma nivå i innehålls förteckningen.

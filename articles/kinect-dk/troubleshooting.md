@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: fel sökning, uppdatering, bugg, Kinect, feedback, återställning, loggning, tips
-ms.openlocfilehash: 9711968de061956a945fca183444dd6ebde4ca9c
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: a6e00b6c5e9e4f82bb668769aade8311896bef32
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94356390"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587289"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Kända problem och fel sökning i Azure Kinect
 
@@ -144,7 +144,7 @@ Anrop ```k4a_device_set_color_control``` kan tillfälligt inducera ändringar av
 
 Om enheten inte räknas upp under enhets hanteraren kan det bero på att den är ansluten till en USB3-kontrollant som inte stöds. 
 
-För Azure Kinect DK på **Windows, Intel** , **Texas Instruments (TI)** och **Renesas** är de *enda värd styrenheterna som stöds*. Azure Kinect SDK på Windows-plattformar är beroende av ett enhetligt container-ID och det måste omfatta USB 2,0-och 3,0-enheter så att SDK kan hitta de djup, färg och ljud enheter som fysiskt finns på samma enhet. På Linux kan fler värd styrenheter stödjas eftersom plattformen är mindre beroende av container-ID: t och mer på enhetens serie nummer. 
+För Azure Kinect DK på **Windows, Intel**, **Texas Instruments (TI)** och **Renesas** är de *enda värd styrenheterna som stöds*. Azure Kinect SDK på Windows-plattformar är beroende av ett enhetligt container-ID och det måste omfatta USB 2,0-och 3,0-enheter så att SDK kan hitta de djup, färg och ljud enheter som fysiskt finns på samma enhet. På Linux kan fler värd styrenheter stödjas eftersom plattformen är mindre beroende av container-ID: t och mer på enhetens serie nummer. 
 
 Avsnittet av USB-värdstyrenheter blir ännu mer komplicerat när en dator har fler än en värd styrenhet installerad. När värd styrenheterna är blandade kan en användare uppleva problem där vissa portar fungerar bra och andra inte fungerar alls. Beroende på hur portarna är tråd bundna till fallet kan du se alla front portar som har problem med Azure-Kinect
 
@@ -165,6 +165,21 @@ Den laser som används av djup kameran för att beräkna bild djups data, har en
 ## <a name="using-body-tracking-sdk-with-unreal"></a>Använda SDK för innehålls spårning med Unreal
 
 Om du vill använda Body tracking SDK med Unreal kontrollerar du att du har lagt `<SDK Installation Path>\tools` till i miljövariabeln `PATH` och kopierat `dnn_model_2_0.onnx` och `cudnn64_7.dll` till `Program Files/Epic Games/UE_4.23/Engine/Binaries/Win64` .
+
+## <a name="using-azure-kinect-on-headless-linux-system"></a>Använda Azure-Kinect på ett konsol löst Linux-system
+
+Azure Kinect djup Engine i Linux använder OpenGL. OpenGL kräver en fönster instans som kräver att en övervakare är ansluten till systemet. En lösning för det här problemet är:
+
+1. Aktivera automatisk inloggning för det användar konto som du planerar att använda. I [den här](https://vitux.com/how-to-enable-disable-automatic-login-in-ubuntu-18-04-lts/) artikeln hittar du instruktioner om hur du aktiverar automatisk inloggning.
+2. Stäng av systemet, koppla från övervakaren och starta systemet. Med automatisk inloggning framtvingas skapandet av en x-Server-session.
+2. Anslut via SSH och ange VISNINGS miljö variabel `export DISPLAY=:0`
+3. Starta ditt Azure Kinect-program.
+
+## <a name="missing-c-documentation"></a>C#-dokumentation som saknas
+
+Sensor SDK C#-dokumentationen finns [här](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/namespace_microsoft_1_1_azure_1_1_kinect_1_1_sensor.html).
+
+Brödtext som spårar SDK C#-dokumentationen finns [här](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/namespace_microsoft_1_1_azure_1_1_kinect_1_1_body_tracking.html).
 
 ## <a name="next-steps"></a>Nästa steg
 

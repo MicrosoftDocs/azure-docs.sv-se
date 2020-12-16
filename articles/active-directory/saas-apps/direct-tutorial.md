@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 8226a1e445c6f7f6360d715d17bbe5229e4172b6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: a3b9ae91118f714ce15f56cde0f79faa4fb4d640
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454797"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586694"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-direct"></a>Självstudie: Azure Active Directory integrering med direkt
 
@@ -30,7 +30,7 @@ Genom att integrera direkt med Azure AD får du följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill konfigurera Azure AD-integrering med Direct behöver du följande objekt:
 
@@ -63,7 +63,7 @@ Om du vill konfigurera en integrering av direkt i Azure AD måste du lägga till
 
 4. I rutan Sök skriver du **Direct**, väljer **direkt** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
 
-     ![direkt i resultat listan](common/search-new-app.png)
+    ![direkt i resultat listan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -144,7 +144,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** brittasimon@yourcompanydomain.extension . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
@@ -155,7 +155,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Direct.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Direct**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Direct**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -193,7 +193,7 @@ I det här avsnittet testar du konfigurationen för enkel inloggning Azure AD me
 
     a. Klicka på den **direkta** panelen i åtkomst panelen så omdirigeras du till sidan för program inloggning.
 
-    b. Mata in ditt `subdomain` i text rutan som visas och tryck på "次へ (nästa)" och du bör bli inloggad automatiskt till ditt **direkta** program.
+    b. Ange din `subdomain` i text rutan som visas och välj **Nästa**. du bör bli inloggad automatiskt till ditt **direkta** program.
 
 När du klickar på den direkta panelen i åtkomst panelen bör du loggas in automatiskt till den direkta för vilken du ställer in SSO. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](../user-help/my-apps-portal-end-user-access.md).
 

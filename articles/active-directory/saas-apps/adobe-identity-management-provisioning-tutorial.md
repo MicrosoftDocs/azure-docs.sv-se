@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: aafdbe631426b4b0c8c762a81457369bc474f479
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a87a08db672c459138fc1efd865332dc0f19944e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181138"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586685"
 ---
 # <a name="tutorial-configure-adobe-identity-management-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Adobe Identity Management för automatisk användar etablering
 
@@ -35,7 +35,7 @@ I den här självstudien beskrivs de steg du behöver utföra i både Adobe Iden
 > * Etablera grupper och grupp medlemskap i Adobe Identity Management
 > * Enkel inloggning till Adobe Identity Management (rekommenderas)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 
@@ -61,7 +61,7 @@ Det scenario som beskrivs i den här självstudien förutsätter att du redan ha
 
 3. Välj **synkronisera användare från Microsoft Azure** och klicka på **Nästa**.
 
-      ![Synkronisera](media/adobe-identity-management-provisioning-tutorial/sync-users.png)
+      ![Skärm bild som visar "synkronisera användare från Microsoft Azure Active Directory" vald.](media/adobe-identity-management-provisioning-tutorial/sync-users.png)
 
 4. Kopiera och spara **klient-URL:** en och den **hemliga token**. Dessa värden anges i fälten klient- **URL** och **hemligt token** på fliken etablering i ditt Adobe Identity Management-program i Azure Portal.
 

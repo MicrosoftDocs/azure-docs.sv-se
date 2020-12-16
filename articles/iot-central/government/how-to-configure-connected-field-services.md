@@ -3,23 +3,19 @@ title: Anslut ditt Azure IoT Central-program med Dynamics 365 Field Services | M
 description: Lär dig hur du skapar en lösning från slut punkt till slut punkt med Azure IoT Central-och Dynamics 365-fälttjänster
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 702de11abc274d1f4001df5b28498928fde71109
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1d098f56bbadfe115620580c8d93fb6dd021550d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014466"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586682"
 ---
 # <a name="build-end-to-end-solution-with-azure-iot-central-and-dynamics-365-field-service"></a>Bygg lösningen från slut punkt till slut punkt med Azure IoT Central-och Dynamics 365-fälttjänster 
-
-
-
 Som ett verktyg kan du aktivera integrering av ditt Azure IoT Central-program till andra företags system. 
-
 
 I en ansluten lösning för avfalls hantering kan du till exempel optimera sändningen av Last bilar för skräp insamling. Optimeringen kan göras baserat på IoT sensorer-data från anslutna avfalls lager platser. I ditt [IoT Central anslutet avfalls hanterings program](./tutorial-connected-waste-management.md) kan du konfigurera regler och åtgärder och ange att de ska utlösa skapandet av aviseringar i Dynamics Field service. Det här scenariot uppnås med hjälp av Power Automation, som kommer att konfigureras direkt i IoT Central för automatisering av arbets flöden mellan program och tjänster. Dessutom kan information skickas tillbaka till Azure IoT Central, baserat på tjänst aktiviteter i fält tjänst. 
 

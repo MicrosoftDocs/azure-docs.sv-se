@@ -1,6 +1,6 @@
 ---
-title: Felsöka Azure Linux-gäst Gent
-description: Felsöka Azure Linux-gästen fungerar inte problem
+title: Felsöka Azure Linux-agenten
+description: Lös problem med Azure Linux-agenten.
 services: virtual-machines-linux
 ms.service: virtual-machines-linux
 author: axelg
@@ -11,96 +11,81 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: axelg
-ms.openlocfilehash: fc609b60c9d5d4d4734c3d73cbda87935b533caf
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 247324c30bbe0edaef78c0b0d5e6a6d593e8cac9
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500265"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586405"
 ---
-# <a name="troubleshooting-azure-linux-guest-agent"></a>Felsöka Azure Linux-gäst Gent
+# <a name="troubleshoot-the-azure-linux-agent"></a>Felsöka Azure Linux-agenten
 
-[Azure Linux-gästen agent](../extensions/agent-linux.md) är en virtuell dator agent (VM). Den gör det möjligt för den virtuella datorn att kommunicera med infrastruktur styrenheten (den underliggande fysiska server som den virtuella datorn finns på) på IP-168.63.129.16. Den här IP-adressen är en virtuell offentlig IP-adress som underlättar kommunikationen. Mer information finns i [Vad är IP-168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md).
+[Azure Linux-agenten](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) gör det möjligt för en virtuell dator (VM) att kommunicera med infrastruktur styrenheten (den underliggande fysiska server som den virtuella datorn finns på) på IP-168.63.129.16.
 
-## <a name="checking-agent-status-and-version"></a>Kontrollerar agent status och version
+>[!NOTE]
+>Den här IP-adressen är en virtuell offentlig IP-adress som underlättar kommunikationen och inte ska blockeras. Mer information finns i [Vad är IP-168.63.129.16?](../../virtual-network/what-is-ip-address-168-63-129-16.md).
 
-Se https://github.com/Azure/WALinuxAgent/wiki/FAQ#what-does-goal-state-agent-mean-in-waagent---version-output
+## <a name="before-you-begin"></a>Innan du börjar
 
-## <a name="troubleshooting-vm-agent-that-is-in-not-ready-status"></a>Felsöka VM-agenten som är i status klar
+Kontrol lera agentens status och version för att kontrol lera att den fortfarande stöds. Se [lägsta versions stöd för virtuella dator agenter i Azure](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/support-extensions-agent-version) för att kontrol lera versions supporten eller se [vanliga frågor och svar om WALinuxAgent](https://github.com/Azure/WALinuxAgent/wiki/FAQ#what-does-goal-state-agent-mean-in-waagent---version-output) för att hitta status och version.
 
-### <a name="step-1-check-whether-the-azure-linux-guest-agent-service-is-running"></a>Steg 1 kontrol lera om Azure Linux gästa Gent tjänsten körs
+## <a name="troubleshoot-a-not-ready-status"></a>Felsöka statusen inte klar
 
-Beroende på distribution kan tjänst namnet vara walinuxagent eller waagent:
+1. Kontrol lera tjänst status för Azure Linux-agenten för att kontrol lera att den körs. Tjänst namnet kan vara **walinuxagent** eller **waagent**.
 
-```
-root@nam-u18:/home/nam# service walinuxagent status
-● walinuxagent.service - Azure Linux Agent
-   Loaded: loaded (/lib/systemd/system/walinuxagent.service; enabled; vendor preset: enabled)
-   Active: active (running) since Thu 2020-10-08 17:10:29 UTC; 3min 9s ago
- Main PID: 1036 (python3)
-    Tasks: 4 (limit: 4915)
-   CGroup: /system.slice/walinuxagent.service
-           ├─1036 /usr/bin/python3 -u /usr/sbin/waagent -daemon
-           └─1156 python3 -u bin/WALinuxAgent-2.2.51-py2.7.egg -run-exthandlers
+   ```
+   root@nam-u18:/home/nam# service walinuxagent status
+   ● walinuxagent.service - Azure Linux Agent
+      Loaded: loaded (/lib/systemd/system/walinuxagent.service; enabled; vendor preset: enabled)
+      Active: active (running) since Thu 2020-10-08 17:10:29 UTC; 3min 9s ago
+    Main PID: 1036 (python3)
+       Tasks: 4 (limit: 4915)
+      CGroup: /system.slice/walinuxagent.service
+              ├─1036 /usr/bin/python3 -u /usr/sbin/waagent -daemon
+              └─1156 python3 -u bin/WALinuxAgent-2.2.51-py2.7.egg -run-exthandlers
+   Oct 08 17:10:33 nam-u18 python3[1036]: 2020-10-08T17:10:33.129375Z INFO ExtHandler ExtHandler Started tracking cgroup: Microsoft.OSTCExtensions.VMAccessForLinux-1.5.10, path: /sys/fs/cgroup/memory/sys
+   Oct 08 17:10:35 nam-u18 python3[1036]: 2020-10-08T17:10:35.189020Z INFO ExtHandler [Microsoft.CPlat.Core.RunCommandLinux-1.0.1] Target handler state: enabled [incarnation 2]
+   Oct 08 17:10:35 nam-u18 python3[1036]: 2020-10-08T17:10:35.197932Z INFO ExtHandler [Microsoft.CPlat.Core.RunCommandLinux-1.0.1] [Enable] current handler state is: enabled
+   Oct 08 17:10:35 nam-u18 python3[1036]: 2020-10-08T17:10:35.212316Z INFO ExtHandler [Microsoft.CPlat.Core.RunCommandLinux-1.0.1] Update settings file: 0.settings
+   Oct 08 17:10:35 nam-u18 python3[1036]: 2020-10-08T17:10:35.224062Z INFO ExtHandler [Microsoft.CPlat.Core.RunCommandLinux-1.0.1] Enable extension [bin/run-command-shim enable]
+   Oct 08 17:10:35 nam-u18 python3[1036]: 2020-10-08T17:10:35.236993Z INFO ExtHandler ExtHandler Started extension in unit 'Microsoft.CPlat.Core.RunCommandLinux_1.0.1_db014406-294a-49ed-b112-c7912a86ae9e
+   Oct 08 17:10:35 nam-u18 python3[1036]: 2020-10-08T17:10:35.263572Z INFO ExtHandler ExtHandler Started tracking cgroup: Microsoft.CPlat.Core.RunCommandLinux-1.0.1, path: /sys/fs/cgroup/cpu,cpuacct/syst
+   Oct 08 17:10:35 nam-u18 python3[1036]: 2020-10-08T17:10:35.280691Z INFO ExtHandler ExtHandler Started tracking cgroup: Microsoft.CPlat.Core.RunCommandLinux-1.0.1, path: /sys/fs/cgroup/memory/system.sl
+   Oct 08 17:10:37 nam-u18 python3[1036]: 2020-10-08T17:10:37.349090Z INFO ExtHandler ExtHandler ProcessGoalState completed [incarnation 2; 4496 ms]
+   Oct 08 17:10:37 nam-u18 python3[1036]: 2020-10-08T17:10:37.365590Z INFO ExtHandler ExtHandler [HEARTBEAT] Agent WALinuxAgent-2.2.51 is running as the goal state agent [DEBUG HeartbeatCounter: 1;Heartb
+   root@nam-u18:/home/nam#
+   ```
 
-Oct 08 17:10:33 nam-u18 python3[1036]: 2020-10-08T17:10:33.129375Z INFO ExtHandler ExtHandler Started tracking cgroup: Microsoft.OSTCExtensions.VMAccessForLinux-1.5.10, path: /sys/fs/cgroup/memory/sys
-Oct 08 17:10:35 nam-u18 python3[1036]: 2020-10-08T17:10:35.189020Z INFO ExtHandler [Microsoft.CPlat.Core.RunCommandLinux-1.0.1] Target handler state: enabled [incarnation 2]
-Oct 08 17:10:35 nam-u18 python3[1036]: 2020-10-08T17:10:35.197932Z INFO ExtHandler [Microsoft.CPlat.Core.RunCommandLinux-1.0.1] [Enable] current handler state is: enabled
-Oct 08 17:10:35 nam-u18 python3[1036]: 2020-10-08T17:10:35.212316Z INFO ExtHandler [Microsoft.CPlat.Core.RunCommandLinux-1.0.1] Update settings file: 0.settings
-Oct 08 17:10:35 nam-u18 python3[1036]: 2020-10-08T17:10:35.224062Z INFO ExtHandler [Microsoft.CPlat.Core.RunCommandLinux-1.0.1] Enable extension [bin/run-command-shim enable]
-Oct 08 17:10:35 nam-u18 python3[1036]: 2020-10-08T17:10:35.236993Z INFO ExtHandler ExtHandler Started extension in unit 'Microsoft.CPlat.Core.RunCommandLinux_1.0.1_db014406-294a-49ed-b112-c7912a86ae9e
-Oct 08 17:10:35 nam-u18 python3[1036]: 2020-10-08T17:10:35.263572Z INFO ExtHandler ExtHandler Started tracking cgroup: Microsoft.CPlat.Core.RunCommandLinux-1.0.1, path: /sys/fs/cgroup/cpu,cpuacct/syst
-Oct 08 17:10:35 nam-u18 python3[1036]: 2020-10-08T17:10:35.280691Z INFO ExtHandler ExtHandler Started tracking cgroup: Microsoft.CPlat.Core.RunCommandLinux-1.0.1, path: /sys/fs/cgroup/memory/system.sl
-Oct 08 17:10:37 nam-u18 python3[1036]: 2020-10-08T17:10:37.349090Z INFO ExtHandler ExtHandler ProcessGoalState completed [incarnation 2; 4496 ms]
-Oct 08 17:10:37 nam-u18 python3[1036]: 2020-10-08T17:10:37.365590Z INFO ExtHandler ExtHandler [HEARTBEAT] Agent WALinuxAgent-2.2.51 is running as the goal state agent [DEBUG HeartbeatCounter: 1;Heartb
-root@nam-u18:/home/nam#
-```
+   Om tjänsten körs startar du om den för att lösa problemet. Om tjänsten har stoppats startar du den, väntar några minuter och kontrollerar sedan statusen igen.
 
+1. Se till att automatisk uppdatering är aktiverat. Kontrol lera inställningen för automatisk uppdatering i **/etc/waagent.conf**.
 
-Om du kan se tjänsterna och de körs startar du om tjänsten för att se om problemet är löst. Om tjänsterna stoppas startar du dem och väntar några minuter. Kontrol lera sedan om **agent statusen** rapporteras som **klar**. Kontakta [Microsoft Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)om du vill ha ytterligare fel sökning av dessa problem.
+   ```
+   AutoUpdate.Enabled=y
+   ```
 
-### <a name="step-2-check-whether-auto-update-is-enabled"></a>Steg 2 kontrol lera om automatisk uppdatering har Aktiver ATS
+   Mer information om hur du uppdaterar Azure Linux-agenten finns i [så här uppdaterar du Azure Linux-agenten på en virtuell dator](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent).
 
-Kontrol lera den här inställningen i/etc/waagent.conf:
-
-```
-AutoUpdate.Enabled=y
-```
-
-Mer information om hur du uppdaterar Azure Linux-agenten finns i https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent 
-    
-
-### <a name="step-3-check-whether-the-vm-can-connect-to-the-fabric-controller"></a>Steg 3 kontrol lera om den virtuella datorn kan ansluta till infrastruktur styrenheten
-
-Använd ett verktyg som sväng för att testa om den virtuella datorn kan ansluta till 168.63.129.16 på portarna 80, 32526 och 443. Om den virtuella datorn inte ansluter som förväntat kontrollerar du om utgående kommunikation över portarna 80, 443 och 32526 är öppen i din lokala brand vägg på den virtuella datorn. Om den här IP-adressen är blockerad kan VM-agenten uppvisa oväntat beteende i flera olika scenarier.
+1. Kontrol lera att den virtuella datorn kan ansluta till infrastruktur styrenheten. Använd ett verktyg som sväng för att testa om den virtuella datorn kan ansluta till 168.63.129.16 på portarna 80, 443 och 32526. Om den virtuella datorn inte ansluter som förväntat kontrollerar du om utgående kommunikation över portarna 80, 443 och 32526 är öppen i din lokala brand vägg på den virtuella datorn. Om den här IP-adressen är blockerad kan den virtuella dator agenten Visa oväntad funktion.
 
 ## <a name="advanced-troubleshooting"></a>Avancerad felsökning
 
-Händelser för fel sökning av Azure Linux gästa Gent registreras i följande loggfiler:
+Händelser för att felsöka Azure Linux-agenten registreras i **/var/log/waagent.log** -filen.
 
-- /var/log/waagent.log
+### <a name="unable-to-connect-to-wireserver-ip-host-ip"></a>Det går inte att ansluta till WireServer IP (värd-IP)
 
-
-  
-### <a name="unable-to-connect-to-wireserver-ip-host-ip"></a>Det går inte att ansluta till WireServer IP (värd-IP) 
-
-Du ser följande fel poster i/var/log/waagent.log:
+Följande fel visas i **/var/log/waagent.log** -filen när den virtuella datorn inte kan komma åt WireServer-IP: en på värd servern.
 
 ```
 2020-10-02T18:11:13.148998Z WARNING ExtHandler ExtHandler An error occurred while retrieving the goal state:
 ```
 
-**Analys**
+Lös problemet så här:
 
-Den virtuella datorn kan inte komma åt WireServer IP på värd servern.
-
-**Lösning**
-
-1. Eftersom IP-WireServer inte kan nås ansluter du till den virtuella datorn med hjälp av SSH och försöker sedan komma åt följande URL från svängen: http://168.63.129.16/?comp=versions 
-1. Sök efter eventuella problem som kan ha orsakats av en brand vägg, en proxy eller annan källa som kan blockera åtkomst till IP-168.63.129.16.
-1. Kontrol lera om Linux-program varan iptables eller en brand vägg från tredje part blockerar åtkomsten till portarna 80, 443 och 32526. Mer information om varför den här adressen inte ska blockeras finns i [Vad är IP-168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md).
-
+* Anslut till den virtuella datorn med SSH och försök sedan att komma åt följande URL från svängen: http://168.63.129.16/?comp=versions .
+* Sök efter eventuella problem som kan ha orsakats av en brand vägg, en proxy eller en annan källa som kan blockera åtkomst till IP-168.63.129.16.
+* Kontrol lera om Linux-program varan iptables eller en brand vägg från tredje part blockerar åtkomsten till portarna 80, 443 och 32526.
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Kontakta Microsoft-supporten](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)för att ytterligare felsöka problemet "Windows Azures gästa Gent fungerar inte".
+[Kontakta Microsoft-supporten](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)för ytterligare fel sökning av problem med Azure Linux-agenten.

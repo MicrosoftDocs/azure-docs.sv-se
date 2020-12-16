@@ -3,17 +3,17 @@ title: 'Självstudie: skapa en app för övervakning av vatten förbrukning med 
 description: 'Självstudie: Lär dig att skapa ett program för övervakning av vatten förbrukning med hjälp av Azure IoT Central programmallar.'
 author: miriambrus
 ms.author: miriamb
-ms.date: 11/12/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 400585d3e5908268708d93ceeefd26a4a5efdd49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 476a0c2d75dcbee5c1ed4d758e0cbc9d4726ff95
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90972399"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587204"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>Självstudie: skapa ett program för övervakning av vatten förbrukning med Azure IoT Central
 
@@ -58,7 +58,7 @@ Den här mallen innehåller en exempel enhets mall för vattenförbrukning, en s
 1. Välj **skapa app** för att öppna formuläret för att skapa **nya program** med följande fält:
     * **Program namn**: som standard använder programmet övervakning av *vatten förbrukning* följt av en unik ID-sträng som Azure IoT Central genererar. Du kan också välja ett eget program namn. Du kan också ändra program namnet senare.
     * **URL**: Azure IoT Central skapar automatiskt en URL baserat på programmets namn. Du kan välja att uppdatera URL: en till dina önskemål. Du kan också ändra URL: en senare.
-    * Om du har en Azure-prenumeration anger du din **katalog**, din **Azure-prenumeration**och **plats** information. Om du inte har någon prenumeration kan du välja alternativet **7 dagars kostnads fri utvärderings version** och slutföra den nödvändiga kontakt informationen.
+    * Om du har en Azure-prenumeration anger du din **katalog**, din **Azure-prenumeration** och **plats** information. Om du inte har någon prenumeration kan du välja alternativet **7 dagars kostnads fri utvärderings version** och slutföra den nödvändiga kontakt informationen.
 
     Mer information om kataloger och prenumerationer finns i [skapa en snabb start för program](../core/quick-deploy-iot-central.md).
 
@@ -95,15 +95,15 @@ Instrument panelen består av olika typer av paneler:
 
 * **Bild panel för Wide World vatten verktyg**: den första panelen i instrument panelen är en bild panel med ett fiktivt vatten verktyg för hela världen. Du kan anpassa panelen genom att infoga en egen bild eller ta bort den.
 * KPI-panelen i **genomsnitts flöde**: KPI-panelen är konfigurerad att visa som ett exempel *på genomsnittet under de senaste 30 minuterna*. Du kan anpassa KPI-panelen och ange den som en annan typ och ett tidsintervall.
-* **Enhets kommando paneler**: de här panelerna innehåller panelerna **Stäng ventil**, **öppen ventil**och **Ställ in ventil position** . Om du väljer kommandon går du till kommando sidan simulerad enhet. I Azure IoT Central är ett *kommando* en *enhets kapacitets* typ. Vi går igenom det här konceptet senare i avsnittet "enhets mal len" i den här självstudien.
-* **Områdes mappning för vatten distribution**: kartan använder Azure Maps, som du kan konfigurera direkt i Azure IoT Central. Kart panelen visar enhetens plats. Hovra över kartan och testa kontrollerna över kartan, t. ex. *Zooma in*, *Zooma ut*eller *expandera*.
+* **Enhets kommando paneler**: de här panelerna innehåller panelerna **Stäng ventil**, **öppen ventil** och **Ställ in ventil position** . Om du väljer kommandon går du till kommando sidan simulerad enhet. I Azure IoT Central är ett *kommando* en *enhets kapacitets* typ. Vi går igenom det här konceptet senare i avsnittet "enhets mal len" i den här självstudien.
+* **Områdes mappning för vatten distribution**: kartan använder Azure Maps, som du kan konfigurera direkt i Azure IoT Central. Kart panelen visar enhetens plats. Hovra över kartan och testa kontrollerna över kartan, t. ex. *Zooma in*, *Zooma ut* eller *expandera*.
 
     ![Instrument panels karta för instrument förbrukning](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-dashboard-map.png)
 
 * Linje diagram över **Genomsnittligt flödes schema** och **miljö villkors linje diagram**: du kan visualisera en eller flera enhets telemetrivärden ritade som ett linje diagram över ett önskat tidsintervall.
 * **Diagram över genomsnittlig ventil tryck termisk karta**: du kan välja termisk karta visualiserings typ för de enhets telemetridata som du vill visa distribuerat över ett tidsintervall med ett färg index.
 * **Återställ innehålls panel för varnings tröskelvärden**: du kan inkludera innehålls paneler för anrop till åtgärd och bädda in en länk till en åtgärds sida. I det här fallet tar återställnings aviserings tröskelvärdet dig till program **jobben**, där du kan köra uppdateringar av enhets egenskaper. Vi går igenom det här alternativet senare i avsnittet "Konfigurera jobb" i den här självstudien.
-* **Egenskaps paneler**: instrument panelen visar **ventiler drifts information**, **flödes tröskelvärden för aviseringar**och **underhålls informations** paneler.
+* **Egenskaps paneler**: instrument panelen visar **ventiler drifts information**, **flödes tröskelvärden för aviseringar** och **underhålls informations** paneler.
 
 ### <a name="customize-the-dashboard"></a>Anpassa instrumentpanelen
 
@@ -177,7 +177,7 @@ I Azure IoT Central kan du skapa simulerade enheter för att testa enhetens mall
 
     ![Smart ventil 1](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitor-device1.png)
 
-1. På fliken **kommandon** ser du de tre enhets kommandona (**Stäng ventil**, **öppen ventil**och **Ställ in ventil position**) som är funktioner som definierats i mallen **Smart ventil** enhet.
+1. På fliken **kommandon** ser du de tre enhets kommandona (**Stäng ventil**, **öppen ventil** och **Ställ in ventil position**) som är funktioner som definierats i mallen **Smart ventil** enhet.
 
 1. Utforska fliken **enhets egenskaper** och fliken **enhets instrument panel** .
 
@@ -231,14 +231,14 @@ Så här skapar du en ny regel:
 I Azure IoT Central kan du använda jobb för att utlösa enhets-eller moln egenskaps uppdateringar på flera enheter. Förutom egenskaper kan du också använda jobb för att utlösa enhets kommandon på flera enheter. Azure IoT Central automatiserar arbets flödet åt dig.
 
 1. Välj **jobb** i det vänstra fönstret.
-1. Välj **+ ny**och konfigurera ett eller flera jobb.
+1. Välj **+ ny** och konfigurera ett eller flera jobb.
 
 ## <a name="customize-your-application"></a>Anpassa ditt program
 
 Som verktyg kan du ändra flera inställningar för att anpassa användar upplevelsen i ditt program.
 
 1. Välj **Administration**  >  **Anpassa ditt program**.
-1. Om du vill välja en bild som ska överföras som **program logo typ**väljer du knappen **ändra** .
+1. Om du vill välja en bild som ska överföras som **program logo typ** väljer du knappen **ändra** .
 1. Välj knappen **ändra** om du vill välja en bild i **webbläsarens ikon** som visas i webbläsarens flikar.
 1. Du kan också ersätta standard **webbläsarens färger** genom att lägga till HTML-hexadecimala färg koder.
 
@@ -252,7 +252,7 @@ Som verktyg kan du ändra flera inställningar för att anpassa användar upplev
 Om du inte kommer att fortsätta att använda det här programmet tar du bort det.
 
 1. Välj **Administration** i det vänstra fönstret av ditt Azure IoT Central-program.
-1. Välj **program inställningar**och välj sedan **ta bort** längst ned på sidan.
+1. Välj **program inställningar** och välj sedan **ta bort** längst ned på sidan.
 
 ## <a name="next-steps"></a>Nästa steg
 

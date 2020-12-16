@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2613a4fd931ad49a4f40a4221ea20e8c25f185fe
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d49868199d8f9f2da97f08dd06f29afd8f553bd9
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501651"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586983"
 ---
 # <a name="connect-to-azure-synapse-studio-using-azure-private-link-hubs"></a>Ansluta till Azure Synapse Studio med hjälp av Azure Private Link Hubs 
 
@@ -35,9 +35,9 @@ Du kan skapa en privat länks hubb genom att söka efter *Synapse privata länk 
 ## <a name="azure-private-links-hubs-and-azure-virtual-network"></a>Hubbar för Azure privat länkar och Azure Virtual Network
 Du måste ansluta ditt virtuella Azure-nätverk till Synapse-resursen för privat länk för att skydda den slutpunkt-till-slutpunkt-anslutningen till Synapse Studio. För detta måste du skapa en privat slut punkt från ditt virtuella nätverk till den privata länk Hub som du skapade. Du kan använda Azure Portal för din privata länk hubb och gå till avsnittet privat slut punkt. Välj "+ privat slut punkt" för att skapa en ny privat slut punkt som ansluter till din privata länk hubb.
 
-:::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-private-endpoint.png" alt-text="Skapa en privat slut punkt till en privat länk hubb":::
+:::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-private-endpoint.png" alt-text="Skärm bild som visar sidan anslutningar för privata slut punkter.":::
 
-Se till att välja resurs typen "Microsoft. Synapse/privateLinkHubs" på fliken "resurs". :::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-resource-type.png" alt-text="skapa en privat slut punkt till en privat länk hubb":::
+Se till att välja resurs typen "Microsoft. Synapse/privateLinkHubs" på fliken "resurs". :::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-resource-type.png" alt-text="skärm bild som visar sidan &quot;skapa en privat slut punkt&quot; med &quot;resurs typ&quot; markerad.":::
 
 På fliken konfiguration väljer du "privatelink.azuresynapse.net" för Privat DNS zoner vid integrering med ditt virtuella nätverk och en privat DNS-zon.
 

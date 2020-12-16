@@ -3,21 +3,21 @@ title: Aktivera virtuella VMware-datorer för haveri beredskap med Azure Site Re
 description: I den här artikeln beskrivs hur du aktiverar VMware VM-replikering för haveri beredskap med hjälp av tjänsten Azure Site Recovery
 author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.date: 04/01/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 74870d10348421bf726b9bdc58504a74cf4105a9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a1f4759bc40c4074f0dd618be8ac66ad088e848c
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004219"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587765"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Aktivera replikering till Azure för virtuella VMware-datorer
 
 I den här artikeln beskrivs hur du aktiverar replikering av lokala virtuella VMware-datorer (VM) till Azure.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Den här artikeln förutsätter att systemet uppfyller följande kriterier:
 
@@ -84,7 +84,7 @@ Följ dessa steg om du vill aktivera replikering:
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication6.png" alt-text="Aktivera fönstret Konfigurera egenskaper för replikering":::
 
-1. I **replikeringsinställningar**  >  **Konfigurera replikeringsinställningar** kontrollerar du att rätt replikeringsprincip är markerad. Du kan ändra inställningarna för replikeringsprincip i **Inställningar**  >  **Replication policies**  >  _principer för princip namn_  >  **Redigera inställningar**. Ändringar som tillämpas på en princip gäller även för replikering och nya virtuella datorer.
+1. I **replikeringsinställningar**  >  **Konfigurera replikeringsinställningar** kontrollerar du att rätt replikeringsprincip är markerad. Du kan ändra inställningarna för replikeringsprincip i **Inställningar**  >    >  _principer för princip namn_  >  **Redigera inställningar**. Ändringar som tillämpas på en princip gäller även för replikering och nya virtuella datorer.
 1. Aktivera **konsekvens för flera virtuella** datorer om du vill samla in virtuella datorer i en replikeringsgrupp. Ange ett namn för gruppen och välj sedan **OK**.
 
    > [!NOTE]
@@ -94,6 +94,41 @@ Följ dessa steg om du vill aktivera replikering:
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication7.png" alt-text="Fönstret aktivera replikering":::
 
 1. Välj **Aktivera replikering**. Du kan följa förloppet för jobbet **Aktivera skydd** på **Inställningar**  >  **jobb**  >  **Site Recovery jobb**. När jobbet **Slutför skydd** har körts är den virtuella datorn klar för redundans.
+
+## <a name="monitor-initial-replication"></a>Övervaka inledande replikering
+
+När "Aktivera replikering" av det skyddade objektet är slutförd initierar Azure Site Recovery replikering (synonymt till synkronisering) av data från käll datorn till mål regionen. Under den här perioden skapas replik av käll diskar. När du har slutfört kopieringen av ursprungliga diskar kopieras delta ändringarna till mål regionen. Hur lång tid det tar att kopiera de ursprungliga diskarna beror på flera parametrar, till exempel:
+
+- storlek på käll dator diskar
+- bandbredd som är tillgänglig för överföring av data till Azure (du kan utnyttja distributions planeraren för att identifiera den optimala bandbredd som krävs)
+- bearbeta server resurser som minne, ledigt disk utrymme, CPU som är tillgängliga för cachelagring & bearbeta data som tas emot från skyddade objekt (se till att processervern är [felfri](vmware-physical-azure-monitor-process-server.md#monitor-proactively))
+
+Om du vill spåra förloppet för den inledande replikeringen går du till Recovery Services-valvet i Azure Portal-> replikerade objekt-> övervaka "status" kolumn värde för replikerat objekt. Status visar slut för ande procent för inledande replikering. Vid hovring över statusen är "total data överföring" tillgängligt. När du klickar på status öppnas en sammanhangsbaserad sida och följande parametrar visas:
+
+- Senast uppdaterad vid – indikerar den senaste tiden då replikeringen av hela datorn har uppdaterats av tjänsten.
+- Slutförd procent – anger procent andelen inledande replikering som slutförts för den virtuella datorn
+- Totalt antal data som överförts – mängd data som överförts från virtuell dator till Azure
+
+:::image type="content" source="media/vmware-azure-enable-replication/initial-replication-state.png" alt-text="tillstånds-och replikering" lightbox="media/vmware-azure-enable-replication/initial-replication-state.png":::
+
+- Synkroniseringens förlopp (för att spåra information på en disk nivå)
+    - Tillstånd för replikering
+      - Om replikeringen ännu inte startar så uppdateras statusen som "i kö". Under den inledande replikeringen replikeras bara 3 diskar i taget. Den här mekanismen följs för att undvika begränsning på processervern.
+      - När replikeringen har startats uppdateras status som "pågår".
+      - När den inledande replikeringen har slutförts markeras statusen som slutförd.        
+   - Site Recovery läser genom den ursprungliga disken, överför data till Azure och avbildar förloppet på disk nivå. Observera att Site Recovery hoppar över replikeringen av diskens lediga storlek och lägger till den i slutförda data. Därför kanske summan av data som överförs på alla diskar inte läggs till i "totalt antal överförda data" på VM-nivå.
+   - När du klickar på informations ballongen mot en disk kan du få information om när replikeringen (synonymt för synkronisering) har utlösts för disken, data som överförts till Azure under de senaste 15 min följt av den senast uppdaterade tidsstämpeln. Den här tidsstämpeln anger senaste tid då information togs emot av Azure-tjänsten från käll datorns :::image type="content" source="media/vmware-azure-enable-replication/initial-replication-info-balloon.png" alt-text="inledande replikering – info-pratbubbla-information" lightbox="media/vmware-azure-enable-replication/initial-replication-info-balloon.png":::
+   - Hälso tillståndet för varje disk visas
+      - Om replikeringen går långsammare än förväntat blir disk statusen i varning
+      - Om replikeringen inte fortlöper, blir disk statusen i kritiskt
+
+Om hälso tillståndet är i kritiskt/varnings tillstånd kontrollerar du att hälso tillståndet för datorn och [processens](vmware-physical-azure-monitor-process-server.md) hälso tillstånd är felfria. 
+
+Så snart som aktiveringen av replikeringen är slutförd blir replikeringens förlopp 0% och den totala mängden data som överförs skulle bli saknas. När du klickar på visas data mot varje identifierad disk som "NA". Detta anger att replikeringen ännu är igång och Azure Site Recovery ännu inte får den senaste statistiken. Förloppet uppdateras med ett intervall på 30 minuter.
+
+> [!NOTE]
+> Se till att uppdatera konfigurations servrar, skalbara process servrar och mobilitets agenter till version 9,36 eller högre för att se till att korrekt förlopp samlas in och skickas till Site Recovery tjänster.
+
 
 ## <a name="view-and-manage-vm-properties"></a>Visa och hantera egenskaper för virtuella datorer
 

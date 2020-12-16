@@ -12,12 +12,12 @@ ms.date: 12/10/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a15ac2b5632cb881b094ca2c333dfca55a689062
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: bcb484d62b7c4add7e1ab5562c19417a90cfb7e1
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092626"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587561"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Självstudie: Lägg till ett lokalt program för fjärråtkomst via Application Proxy i Azure Active Directory
 
@@ -34,7 +34,7 @@ I den här självstudien:
 > * Lägger till ett lokalt program till Azure AD-klientorganisationen
 > * Verifierar att en test användare kan logga in på programmet med hjälp av ett Azure AD-konto
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill lägga till ett lokalt program i Azure AD behöver du:
 
@@ -77,7 +77,7 @@ Windows-anslutningsservern måste ha TLS 1.2 aktiverat innan du installerar ansl
 Aktivera TLS 1.2:
 
 1. Ange följande registernycklar:
-    
+
    ```
    Windows Registry Editor Version 5.00
 

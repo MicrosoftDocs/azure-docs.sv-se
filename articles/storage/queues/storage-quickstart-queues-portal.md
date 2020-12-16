@@ -3,23 +3,23 @@ title: 'Snabb start: Skapa Azure Storage köer i portalen'
 description: Använd Azure Portal för att skapa en kö. Använd sedan Azure Portal för att lägga till ett meddelande, Visa meddelande egenskaperna och ta bort kön för meddelandet.
 author: mhopkins-msft
 ms.author: mhopkins
+ms.reviewer: dineshm
 ms.date: 08/13/2020
+ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.topic: quickstart
-ms.reviewer: dineshm
-ms.openlocfilehash: 0ee3d9c26d6972da9e528660d034432ce696aa45
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 24b1d16ab5f13a9aef1faa5bc7a3579ad1a5aa5e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347207"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585555"
 ---
 # <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Snabb start: skapa en kö och Lägg till ett meddelande med Azure Portal
 
 I den här snabbstarten får du lära dig hur du använder [Azure-portalen](https://portal.azure.com/) till att skapa en kö i Azure Storage samt lägga till meddelanden i och ta dem ur kön.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -28,7 +28,7 @@ I den här snabbstarten får du lära dig hur du använder [Azure-portalen](http
 Skapa en kö i Azure-portalen med hjälp av följande steg:
 
 1. Navigera till ditt nya lagringskonto i Azure Portal.
-2. På den vänstra menyn för lagringskontot bläddrar du till avsnittet **Kötjänst** och väljer sedan **Köer**.
+2. I den vänstra menyn för lagrings kontot, bläddrar du till avsnittet **Queue Storage** och väljer sedan **köer**.
 3. Välj knappen **+ Kö**.
 4. Ange ett namn för den nya kön. Könamnet får bara innehålla gemener, måste börja med en bokstav eller siffra och får bara innehålla bokstäver, siffror och bindestreck (-).
 6. Välj **OK** för att skapa kön.
@@ -66,4 +66,4 @@ Borttagning från kö tar alltid bort det äldsta meddelandet i kön.
 I den här snabbstarten har du lärt dig skapa en kö, lägga till ett meddelande, visa meddelandeegenskaper och ta ett meddelande ur kön i Azure-portalen.
 
 > [!div class="nextstepaction"]
-> [Vad är Azure-köer?](storage-queues-introduction.md)
+> [Vad är Azure Queue Storage?](storage-queues-introduction.md)

@@ -3,20 +3,18 @@ title: Referens arkitektur för ansluten avfalls hanterings lösning som skapats
 description: Lär dig begrepp för en ansluten avfalls hanterings lösning som skapats med Azure IoT Central.
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 93a5d17ce5ea5ec60c67604efe5081d2b3425a84
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 94098a1a2a9ac1b4889ad165a65c8b9d50d734dd
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873700"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586813"
 ---
 # <a name="connected-waste-monitoring-reference-architecture"></a>Referensarkitektur för ansluten avfallsövervakning 
-
-
 
 En ansluten lösning för avfalls hantering kan skapas med hjälp av **Azure IoT Central app-mallen** som ett program starts-IoT-program. Den här artikeln innehåller en översikt över referens arkitektur på hög nivå om hur du skapar en lösning från slut punkt till slut punkt. 
 
@@ -27,8 +25,8 @@ Koncept:
 
 1. Enheter och anslutningar  
 1. IoT Central 
-2. Utökning och integrering
-3. Affärs program
+1. Utökning och integrering
+1. Affärs program
 
 Låt oss ta en titt på viktiga komponenter som vanligt vis spelar en del i en övervaknings lösning för vatten förbrukning.
 

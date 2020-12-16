@@ -3,20 +3,18 @@ title: Referens arkitektur för övervakning av vatten konsumtions lösning som 
 description: Lär dig begrepp för en övervaknings lösning för vatten konsumtion som skapats med Azure IoT Central.
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: df402064f2aa26e29ef72c0f73f8f5aa761506e2
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: a291a32c8fd635c9124a7e1f997b6c676c8c0bd4
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873567"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586796"
 ---
 # <a name="water-consumption-monitoring-reference-architecture"></a>Referensarkitektur för övervakning av vattenförbrukning 
-
-
 
 Lösningar för övervakning av vattenförbrukning kan skapas med **Azure IoT Central app-mallen** som ett program starts-IoT-program. Den här artikeln innehåller en översikt över referens arkitektur på hög nivå om hur du skapar en lösning från slut punkt till slut punkt. 
 
@@ -26,8 +24,8 @@ Koncept:
 
 1. Enheter och anslutningar  
 1. IoT Central 
-2. Utökning och integrering
-3. Affärs program
+1. Utökning och integrering
+1. Affärs program
 
 Låt oss ta en titt på viktiga komponenter som vanligt vis spelar en del i en övervaknings lösning för vatten förbrukning.
 

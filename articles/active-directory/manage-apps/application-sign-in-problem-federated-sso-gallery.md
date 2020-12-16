@@ -12,12 +12,12 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e6d3674aaa4c89f42c2e7b87a6be6cdc8ecabf64
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 596af29fe72a41b5a86a09e4e6d5072d63b6ac71
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028282"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586354"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>Problem med att logga in på SAML-baserade appar som konfigurerats för enkel inloggning
 För att felsöka inloggnings problemen nedan rekommenderar vi följande för att bättre diagnostisera och automatisera lösnings stegen:
@@ -33,7 +33,9 @@ Så här öppnar du konfigurationssidan för SAML-baserad enkel inloggning:
 1.  Skriv **"Azure Active Directory"** i rutan filtrera sökning och välj **Azure Active Directory** objektet.
 1.  Välj **Företagsprogram** på den vänstra navigeringsmenyn i Azure Active Directory.
 1.  Välj **Alla program** för att visa en lista över alla dina program.
+
     Om du inte ser programmet du behöver kan du använda **filterkontrollen** överst i **listan med alla program** och ställa in alternativet **Visa** på **Alla program**.
+
 1.  Välj programmet du vill konfigurera för enkel inloggning.
 1. När programmet har lästs in väljer du **enkel inloggning** från programmets vänstra navigerings meny.
 1. Välj SAML-baserad enkel inloggning.
@@ -63,7 +65,7 @@ På sidan SAML-baserad SSO-konfiguration, i avsnittet **grundläggande SAML-konf
 Se till att `AssertionConsumerServiceURL` värdet i SAML-begäran matchar svars-URL-värdet som kon figurer ATS i Azure AD. 
 
 Verifiera eller uppdatera värdet i text rutan svars-URL så att det matchar `AssertionConsumerServiceURL` värdet i SAML-begäran.   
-    
+
 När du har uppdaterat svars-URL-värdet i Azure AD och det matchar värdet som skickas av programmet i SAML-begäran, bör du kunna logga in på programmet.
 
 ## <a name="user-not-assigned-a-role"></a>Användaren har inte tilldelats någon roll
@@ -145,7 +147,7 @@ När programmet lades till som en icke-galleriapp skapade Azure Active Directory
 
 Ta bort de oanvända svars-URL: erna som kon figurer ATS för programmet.
 
-På sidan SAML-baserad SSO-konfiguration, i avsnittet **svars-URL för försäkrans konsument tjänst** , tar du bort oanvända eller vanliga svars-URL: er som skapats av systemet. Exempelvis `https://127.0.0.1:444/applications/default.aspx`.
+På sidan SAML-baserad SSO-konfiguration, i avsnittet **svars-URL för försäkrans konsument tjänst** , tar du bort oanvända eller vanliga svars-URL: er som skapats av systemet. Ett exempel är `https://127.0.0.1:444/applications/default.aspx`.
 
 
 ## <a name="authentication-method-by-which-the-user-authenticated-with-the-service-doesnt-match-requested-authentication-method"></a>Autentiseringsmetoden med vilken användaren autentiseras med tjänsten matchar inte den begärda autentiseringsmetoden

@@ -7,13 +7,13 @@ ms.topic: conceptual
 author: ShaneBala-keyvault
 ms.author: sudbalas
 manager: ravijan
-ms.date: 09/30/2020
-ms.openlocfilehash: 86190fa307133360c411aafc070412e7d527039e
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.date: 12/15/2020
+ms.openlocfilehash: 485da2230de80150c9a5d13b262d1857c8c172fc
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324966"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587119"
 ---
 # <a name="how-to-enable-soft-delete-and-purge-protection"></a>Så här aktiverar du skydd mot mjuk borttagning och rensning
 
@@ -23,7 +23,7 @@ Den här artikeln beskriver två återställnings funktioner i Azure Key Vault, 
 
 Det mjuka borttagnings-och tömnings skyddet är två olika återställnings funktioner för nyckel valv.
 > [!IMPORTANT]
-> Mjuk borttagning måste vara aktiverat på alla nyckel valv. Möjligheten att inaktivera skydd mot mjuka borttagningar kommer att föråldras med 2020 december. Se fullständig information [ **här**.](soft-delete-change.md)
+> Att aktivera mjuk borttagning är viktigt för att säkerställa att nyckel valven och autentiseringsuppgifterna skyddas från oavsiktlig borttagning. Att aktivera mjuk borttagning betraktas dock som en brytande ändring eftersom det kan krävas att du ändrar program logiken eller ger ytterligare behörighet till tjänstens huvud namn. Innan du aktiverar mjuk borttagning genom att följa anvisningarna nedan kontrollerar du att programmet är kompatibelt med ändringen med det här dokumentet [ **här**.](soft-delete-change.md)
 
 **Mjuk borttagning** är utformad för att förhindra oavsiktlig borttagning av nyckel valvet och nycklar, hemligheter och certifikat som lagras i Key Vault. Tänk på mjuk borttagning som en pappers korg. När du tar bort ett nyckel valv eller ett Key Vault-objekt fortsätter det att kunna återskapas för en användar konfigurerbar kvarhållningsperiod eller standardvärdet på 90 dagar. Nyckel valv i läget Soft Deleted kan också **rensas** , vilket innebär att de tas bort permanent. På så sätt kan du återskapa nyckel valv och Key Vault-objekt med samma namn. Både återställning och borttagning av nyckel valv och objekt kräver förhöjd åtkomst princip behörigheter. **När mjuk borttagning har Aktiver ATS kan det inte inaktive ras.**
 

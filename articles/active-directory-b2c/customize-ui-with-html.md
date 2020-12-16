@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 869cf5a47831844b04e0461a95fb7d16aa4d1569
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 520b2eff91faf2e333ab0a5df7bcc85e6a47c80a
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111490"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585198"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Anpassa användar gränssnittet i Azure Active Directory B2C
 
@@ -29,9 +29,7 @@ Anpassning och anpassning av användar gränssnittet som Azure Active Directory 
 > [!TIP]
 > Om du bara vill ändra banderollens logo typ, bakgrunds bild och bakgrunds färg för dina användar flödes sidor kan du prova funktionen för [företags anpassning](company-branding.md) .
 
-
 ## <a name="custom-html-and-css-overview"></a>Översikt över anpassad HTML och CSS
-
 
 Azure AD B2C kör kod i kundens webbläsare genom att använda [resurs delning mellan ursprung (CORS)](https://www.w3.org/TR/cors/). Vid körning läses innehållet in från en URL som du anger i ditt användar flöde eller en anpassad princip. Varje sida i användar gränssnittet läser in innehållet från den URL som du anger för sidan. När innehållet har lästs in från din URL sammanfogas det med ett HTML-fragment som infogats av Azure AD B2C och sedan visas sidan för kunden.
 
@@ -118,10 +116,9 @@ Här är en översikt över processen:
 1. Ange resurs delning mellan ursprung (CORS) för din webbapp.
 1. Peka din princip till din anpassade princip innehålls-URI.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
-
 
 ### <a name="1-create-your-html-content"></a>1. skapa ditt HTML-innehåll
 
@@ -235,7 +232,6 @@ Verifiera att du är redo genom att utföra följande steg:
 1. Välj **skicka begäran**.
     Resultatet bör vara `XHR status: 200` . 
     Kontrol lera att CORS-inställningarna är korrekta om du får ett fel meddelande. Du kan också behöva rensa webbläsarens cacheminne eller öppna en privat webbläsarsession genom att trycka på CTRL + SKIFT + P.
-
 
 ::: zone pivot="b2c-user-flow"
 
@@ -391,10 +387,7 @@ Så här använder du exemplet:
 1. Ändra principen genom att peka på HTML-filen som tidigare nämnts.
 1. Om du ser saknade teckensnitt, avbildningar eller CSS, kontrollerar du dina referenser i tillägg-principen och \* HTML-filerna.
 
-
 ## <a name="next-steps"></a>Nästa steg
 
 Lär dig hur du aktiverar [JavaScript-kod på klient sidan](javascript-and-page-layout.md).
-
-
 

@@ -1,58 +1,60 @@
 ---
-title: Check lista för prestanda och skalbarhet för Queue Storage – Azure Storage
-description: En check lista över beprövade metoder för användning med Queue Storage i utveckla program med höga prestanda.
-services: storage
+title: Check lista för prestanda och skalbarhet för Queue Storage-Azure Storage
+description: En check lista över beprövade metoder för användning med Queue Storage för att utveckla program med höga prestanda.
 author: tamram
-ms.service: storage
-ms.topic: overview
-ms.date: 10/10/2019
+services: storage
 ms.author: tamram
+ms.date: 10/10/2019
+ms.topic: overview
+ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6e86950581255bd4e3a78b0b4a3f599a24a3cad0
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 4040a81d5b509ddbdd355953e28721a7c9fccfb8
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345762"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585674"
 ---
+<!-- docutune:casing "Timeout and Server Busy errors" -->
+
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>Check lista för prestanda och skalbarhet för Queue Storage
 
 Microsoft har utvecklat ett antal beprövade metoder för att utveckla program med höga prestanda med Queue Storage. Den här check listan identifierar viktiga metoder som utvecklare kan följa för att optimera prestanda. Tänk på dessa metoder när du utformar ditt program och hela processen.
 
-Azure Storage har skalbarhets-och prestanda mål för kapacitet, transaktions hastighet och bandbredd. Mer information om Azure Storage skalbarhets mål finns i [skalbarhets-och prestanda mål för standard lagrings konton](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) och [skalbarhet och prestanda mål för Queue Storage](scalability-targets.md).
+Azure Storage har skalbarhets-och prestanda mål för kapacitet, transaktions hastighet och bandbredd. Mer information om Azure Storage skalbarhets mål finns i [skalbarhets-och prestanda mål för standard lagrings konton](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) och [skalbarhets-och prestanda mål för Queue Storage](scalability-targets.md).
 
 ## <a name="checklist"></a>Checklista
 
-Den här artikeln ordnar beprövade metoder för prestanda i en check lista som du kan följa när du utvecklar lagrings programmet för kön.
+Den här artikeln ordnar beprövade metoder för prestanda i en check lista som du kan följa när du utvecklar ditt Queue Storage-program.
 
 | Klart | Kategori | Design överväganden |
-| --- | --- | --- |
-| &nbsp; |Skalbarhets mål |[Kan du utforma ditt program så att det inte använder fler än det högsta antalet lagrings konton?](#maximum-number-of-storage-accounts) |
-| &nbsp; |Skalbarhets mål |[Undviker du att du närmar dig kapacitets-och transaktions gränserna?](#capacity-and-transaction-targets) |
-| &nbsp; |Nätverk |[Har klient sidan enheter tillräckligt med hög bandbredd och låg latens för att uppnå den prestanda som krävs?](#throughput) |
-| &nbsp; |Nätverk |[Har klient sidan enheter en nätverks länk med hög kvalitet?](#link-quality) |
-| &nbsp; |Nätverk |[Är klient programmet i samma region som lagrings kontot?](#location) |
-| &nbsp; |Direkt klient åtkomst |[Använder du signaturer för delad åtkomst (SAS) och resurs delning mellan ursprung (CORS) för att ge direkt åtkomst till Azure Storage?](#sas-and-cors) |
-| &nbsp; |.NET-konfiguration |[Använder du .NET Core 2,1 eller senare för bästa prestanda?](#use-net-core) |
-| &nbsp; |.NET-konfiguration |[Har du konfigurerat att klienten ska använda ett tillräckligt antal samtidiga anslutningar?](#increase-default-connection-limit) |
-| &nbsp; |.NET-konfiguration |[Har du konfigurerat .NET att använda ett tillräckligt antal trådar för .NET-program?](#increase-minimum-number-of-threads) |
-| &nbsp; |Parallellitet |[Har du säkerställt att parallellitet är lämpligt så att du inte överbelastar din klients funktioner eller använder skalbarhets målen?](#unbounded-parallelism) |
-| &nbsp; |Verktyg |[Använder du de senaste versionerna av Microsoft-tillhandahållna klient bibliotek och verktyg?](#client-libraries-and-tools) |
-| &nbsp; |Antal försök |[Använder du en princip för återförsök med en exponentiell backoff för begränsning av fel och tids gränser?](#timeout-and-server-busy-errors) |
-| &nbsp; |Antal försök |[Kan programmet undvika nya försök för fel som inte kan återförsökas?](#non-retryable-errors) |
-| &nbsp; |Konfiguration |[Har du stängt av Nagle-algoritmen för att förbättra prestanda för små begär Anden?](#disable-nagle) |
-| &nbsp; |Meddelandestorlek |[Är dina meddelanden komprimerade för att förbättra köns prestanda?](#message-size) |
-| &nbsp; |Mass hämtning |[Hämtar du flera meddelanden i en enda HÄMTNINGs åtgärd?](#batch-retrieval) |
-| &nbsp; |Avsöknings frekvens |[Avsöker du tillräckligt ofta för att minska den uppskattade svars tiden för ditt program?](#queue-polling-interval) |
-| &nbsp; |Uppdatera meddelande |[Använder du åtgärden Uppdatera meddelande för att lagra förloppet för bearbetning av meddelanden, så att du kan undvika att behöva bearbeta hela meddelandet om ett fel uppstår?](#use-update-message) |
-| &nbsp; |Arkitektur |[Använder du köer för att göra hela programmet skalbart genom att hålla långvariga arbets belastningar från den kritiska vägen och skala sedan oberoende av varandra?](#application-architecture) |
+|--|--|--|
+| &nbsp; | Skalbarhets mål | [Kan du utforma ditt program så att det inte använder fler än det högsta antalet lagrings konton?](#maximum-number-of-storage-accounts) |
+| &nbsp; | Skalbarhets mål | [Undviker du att du närmar dig kapacitets-och transaktions gränserna?](#capacity-and-transaction-targets) |
+| &nbsp; | Nätverk | [Har klient sidan enheter tillräckligt med hög bandbredd och låg latens för att uppnå den prestanda som krävs?](#throughput) |
+| &nbsp; | Nätverk | [Har klient sidan enheter en nätverks länk med hög kvalitet?](#link-quality) |
+| &nbsp; | Nätverk | [Är klient programmet i samma region som lagrings kontot?](#location) |
+| &nbsp; | Direkt klient åtkomst | [Använder du signaturer för delad åtkomst (SAS) och resurs delning mellan ursprung (CORS) för att ge direkt åtkomst till Azure Storage?](#sas-and-cors) |
+| &nbsp; | .NET-konfiguration | [Använder du .NET Core 2,1 eller senare för bästa prestanda?](#use-net-core) |
+| &nbsp; | .NET-konfiguration | [Har du konfigurerat att klienten ska använda ett tillräckligt antal samtidiga anslutningar?](#increase-default-connection-limit) |
+| &nbsp; | .NET-konfiguration | [Har du konfigurerat .NET att använda ett tillräckligt antal trådar för .NET-program?](#increase-the-minimum-number-of-threads) |
+| &nbsp; | Parallellitet | [Har du säkerställt att parallellitet är lämpligt så att du inte överbelastar din klients funktioner eller använder skalbarhets målen?](#unbounded-parallelism) |
+| &nbsp; | Verktyg | [Använder du de senaste versionerna av Microsoft-tillhandahållna klient bibliotek och verktyg?](#client-libraries-and-tools) |
+| &nbsp; | Antal försök | [Använder du en princip för återförsök med en exponentiell backoff för begränsning av fel och tids gränser?](#timeout-and-server-busy-errors) |
+| &nbsp; | Antal försök | [Kan programmet undvika nya försök för fel som inte kan återförsökas?](#non-retryable-errors) |
+| &nbsp; | Konfiguration | [Har du stängt av Nagle-algoritmen för att förbättra prestanda för små begär Anden?](#disable-nagles-algorithm) |
+| &nbsp; | Meddelandestorlek | [Är dina meddelanden komprimerade för att förbättra köns prestanda?](#message-size) |
+| &nbsp; | Mass hämtning | [Hämtar du flera meddelanden i en enda hämtnings åtgärd?](#batch-retrieval) |
+| &nbsp; | Avsöknings frekvens | [Avsöker du tillräckligt ofta för att minska den uppskattade svars tiden för ditt program?](#queue-polling-interval) |
+| &nbsp; | Uppdatera meddelande | [Utför du en uppdaterings meddelande åtgärd för att lagra förloppet för bearbetning av meddelanden, så att du kan undvika att behöva bearbeta hela meddelandet om ett fel uppstår?](#perform-an-update-message-operation) |
+| &nbsp; | Arkitektur | [Använder du köer för att göra hela programmet skalbart genom att hålla långvariga arbets belastningar från den kritiska vägen och skala sedan oberoende av varandra?](#application-architecture) |
 
 ## <a name="scalability-targets"></a>Skalbarhets mål
 
-Om ditt program närmar sig eller överskrider något av skalbarhets målen kan det uppstå ökad transaktions fördröjning eller begränsning. När Azure Storage begränsar ditt program börjar tjänsten returnera 503 (servern är upptagen) eller 500 (åtgärds tids gräns) fel koder. Att undvika dessa fel genom att ligga kvar i gränserna för skalbarhets målen är en viktig del i att förbättra programmets prestanda.
+Om ditt program närmar sig eller överskrider något av skalbarhets målen kan det uppstå ökad transaktions fördröjning eller begränsning. När Azure Storage begränsar ditt program börjar tjänsten returnera `Server Busy` felkoderna 503 () eller 500 ( `Operation Timeout` ). Att undvika dessa fel genom att ligga kvar i gränserna för skalbarhets målen är en viktig del i att förbättra programmets prestanda.
 
-Mer information om skalbarhets mål för Kötjänst finns i [Azure Storage skalbarhets-och prestanda mål](./scalability-targets.md#scale-targets-for-queue-storage).
+Mer information om skalbarhets mål för Queue Storage finns i [Azure Storage skalbarhets-och prestanda mål](./scalability-targets.md#scale-targets-for-queue-storage).
 
 ### <a name="maximum-number-of-storage-accounts"></a>Maximalt antal lagrings konton
 
@@ -66,7 +68,7 @@ Om ditt program närmar sig skalbarhets målen för ett enda lagrings konto bör
 - Ta hänsyn till arbets belastningen som gör att ditt program närmar sig eller överskrider skalbarhets målet. Kan du utforma det på ett annat sätt att använda mindre bandbredd eller kapacitet eller färre transaktioner?
 - Om ditt program måste överskrida ett av skalbarhets målen skapar du flera lagrings konton och partitionerar dina program data på flera lagrings konton. Om du använder det här mönstret ser du till att utforma ditt program så att du kan lägga till fler lagrings konton i framtiden för belastnings utjämning. Själva lagrings konton har ingen annan kostnad än din användning i termer av lagrade data, transaktioner som har gjorts eller överförda data.
 - Om ditt program närmar sig bandbredds målen bör du överväga att komprimera data på klient sidan för att minska den bandbredd som krävs för att skicka data till Azure Storage. När du komprimerar data kan du spara bandbredd och förbättra nätverks prestanda, men det kan också ha negativa effekter på prestanda. Utvärdera prestanda påverkan för de ytterligare bearbetnings kraven för data komprimering och dekomprimering på klient sidan. Tänk på att lagring av komprimerade data kan göra fel sökningen svårare eftersom det kan vara mer utmanande att visa data med hjälp av standard verktyg.
-- Om ditt program närmar sig skalbarhets målen kontrollerar du att du använder en exponentiell backoff för återförsök. Det är bäst att försöka undvika att nå skalbarhets målen genom att implementera rekommendationerna som beskrivs i den här artikeln. Om du använder en exponentiell backoff för återförsök kan du dock förhindra att ditt program försöker igen, vilket kan göra att begränsningen blir sämre. Mer information finns i avsnittet [timeout-fel och servern är upptagen](#timeout-and-server-busy-errors).
+- Om ditt program närmar sig skalbarhets målen kontrollerar du att du använder en exponentiell backoff för återförsök. Det är bäst att försöka undvika att nå skalbarhets målen genom att implementera rekommendationerna som beskrivs i den här artikeln. Om du använder en exponentiell backoff för återförsök kan du dock förhindra att ditt program försöker igen, vilket kan göra att begränsningen blir sämre. Mer information finns i avsnittet [timeout-fel och Server upptagen fel](#timeout-and-server-busy-errors) .
 
 ## <a name="networking"></a>Nätverk
 
@@ -78,15 +80,15 @@ Bandbredd och kvaliteten på nätverks länken spelar viktiga roller i program p
 
 #### <a name="throughput"></a>Dataflöde
 
-För bandbredd är problemet ofta klientens funktioner. Större Azure-instanser har nätverkskort med större kapacitet, så du bör överväga att använda en större instans eller flera virtuella datorer om du behöver högre nätverks gränser från en enda dator. Om du ansluter till Azure Storage från ett lokalt program gäller samma regel: förstå nätverks funktionerna i klient enheten och nätverks anslutningen till den Azure Storage platsen och förbättra dem efter behov eller utforma ditt program så att det fungerar inom sina funktioner.
+För bandbredd är problemet ofta klientens funktioner. Större Azure-instanser har nätverkskort med större kapacitet, så du bör överväga att använda en större instans eller flera virtuella datorer om du behöver högre nätverks gränser från en enda dator. Om du ansluter till Azure Storage från ett lokalt program gäller samma regel: förstå nätverks funktionerna hos klienten het och nätverks anslutningen till den Azure Storage platsen och förbättra dem efter behov eller utforma ditt program så att det fungerar inom sina funktioner.
 
 #### <a name="link-quality"></a>Länk kvalitet
 
-I takt med att nätverks användningen används bör du tänka på att nätverks förhållandena som resulterar i fel och paket förlust kommer att ta en långsam effektiv data flöde. Att använda WireShark eller NetMon kan hjälpa dig att diagnostisera det här problemet.
+I takt med att nätverks användningen används bör du tänka på att nätverks förhållandena som resulterar i fel och paket förlust kommer att ta en långsam effektiv data flöde. Att använda wireshark eller Network Monitor kan hjälpa dig att diagnostisera det här problemet.
 
 ### <a name="location"></a>Plats
 
-I alla distribuerade miljöer ger klienten nära-servern den bästa prestandan. För att få åtkomst till Azure Storage med den lägsta svars tiden är den bästa platsen för din klient i samma Azure-region. Om du till exempel har en Azure-webbapp som använder Azure Storage kan du söka efter dem i en enda region, till exempel västra USA eller Asien, sydöstra. Samplacering av resurser minskar svars tiden och kostnaden, eftersom bandbredds användningen i en enda region är kostnads fri.
+I alla distribuerade miljöer ger klienten nära-servern den bästa prestandan. För att få åtkomst till Azure Storage med den lägsta svars tiden är den bästa platsen för din klient i samma Azure-region. Om du till exempel har en Azure-webbapp som använder Azure Storage kan du söka efter dem i en enda region, t. ex. västra USA eller Sydostasien. Samplacering av resurser minskar svars tiden och kostnaden, eftersom bandbredds användningen i en enda region är kostnads fri.
 
 Om klient program kommer åt Azure Storage men inte finns i Azure, till exempel appar för mobila enheter eller lokala företags tjänster, kan det minska svars tiden genom att leta upp lagrings kontot i en region nära dessa klienter. Om dina klienter är brett distribuerade (till exempel vissa i Nordamerika och några i Europa) kan du överväga att använda ett lagrings konto per region. Den här metoden är enklare att implementera om data som program arkivet är specifika för enskilda användare och inte behöver replikera data mellan lagrings konton.
 
@@ -104,7 +106,7 @@ Både SAS och CORS kan hjälpa dig att undvika onödig belastning på ditt webb 
 
 ## <a name="net-configuration"></a>.NET-konfiguration
 
-Om du använder .NET Framework visar det här avsnittet flera snabb konfigurations inställningar som du kan använda för att göra betydande prestanda förbättringar. Om du använder andra språk kan du kontrol lera om liknande koncept gäller för det valda språket.
+Om du använder .NET Framework visar det här avsnittet flera snabb konfigurations inställningar som du kan använda för att göra betydande prestanda förbättringar. Om du använder andra språk, kontrollerar du om du vill se om liknande koncept gäller för det valda språket.
 
 ### <a name="use-net-core"></a>Använd .NET Core
 
@@ -129,7 +131,7 @@ Information om andra programmeringsspråk finns i språk dokumentationen för at
 
 Mer information finns i blogg inlägget [webb tjänster: samtidiga anslutningar](/archive/blogs/darrenj/web-services-concurrent-connections).
 
-### <a name="increase-minimum-number-of-threads"></a>Öka det minsta antalet trådar
+### <a name="increase-the-minimum-number-of-threads"></a>Öka det minsta antalet trådar
 
 Om du använder synkrona anrop tillsammans med asynkrona uppgifter kanske du vill öka antalet trådar i trådpoolen:
 
@@ -137,7 +139,7 @@ Om du använder synkrona anrop tillsammans med asynkrona uppgifter kanske du vil
 ThreadPool.SetMinThreads(100,100); //(Determine the right number for your application)  
 ```
 
-Mer information finns i metoden [trådpool. SetMinThreads](/dotnet/api/system.threading.threadpool.setminthreads) .
+Mer information finns i- [`ThreadPool.SetMinThreads`](/dotnet/api/system.threading.threadpool.setminthreads) metoden.
 
 ## <a name="unbounded-parallelism"></a>Obegränsad parallellitet
 
@@ -153,19 +155,19 @@ Azure Storage returnerar ett fel när tjänsten inte kan bearbeta en begäran. A
 
 ### <a name="timeout-and-server-busy-errors"></a>Timeout-och Server upptagen-fel
 
-Azure Storage kan begränsa ditt program om det närmar sig begränsningen för skalbarhet. I vissa fall kan Azure Storage inte hantera en begäran på grund av ett tillfälligt tillstånd. I båda fallen kan tjänsten returnera ett 503-fel (Server upptagen) eller 500 (timeout). Dessa fel kan också inträffa om tjänsten ombalanserar datapartitioner för att tillåta högre data flöde. Klient programmet bör normalt försöka utföra åtgärden igen som orsakar något av dessa fel. Men om Azure Storage begränsar ditt program eftersom det överskrider skalbarhets målen, eller även om tjänsten inte kunde hantera begäran av någon annan anledning, kan aggressiva återförsök göra problemet sämre. Det rekommenderas att du använder en exponentiell återförsöks princip och klient biblioteken använder detta beteende som standard. Ditt program kan till exempel försöka igen om 2 sekunder, sedan 4 sekunder, sedan 10 sekunder, sedan 30 sekunder, och sedan får upp helt. På så sätt minskar ditt program avsevärt sin belastning på tjänsten, i stället för exacerbating beteende som kan leda till begränsning.
+Azure Storage kan begränsa ditt program om det närmar sig begränsningen för skalbarhet. I vissa fall kan Azure Storage inte hantera en begäran på grund av ett tillfälligt tillstånd. I båda fallen kan tjänsten returnera ett 503 ( `Server Busy` ) eller 500 ()- `Timeout` fel. Dessa fel kan också inträffa om tjänsten ombalanserar datapartitioner för att tillåta högre data flöde. Klient programmet bör normalt försöka utföra åtgärden igen som orsakar något av dessa fel. Men om Azure Storage begränsar ditt program eftersom det överskrider skalbarhets målen, eller även om tjänsten inte kunde hantera begäran av någon annan anledning, kan aggressiva återförsök göra problemet sämre. Det rekommenderas att du använder en exponentiell återförsöks princip och klient biblioteken använder detta beteende som standard. Ditt program kan till exempel försöka igen om 2 sekunder, sedan 4 sekunder, sedan 10 sekunder, sedan 30 sekunder, och sedan får upp helt. På så sätt minskar ditt program avsevärt sin belastning på tjänsten, i stället för exacerbating beteende som kan leda till begränsning.
 
 Anslutnings fel kan göras omedelbart, eftersom de inte är resultatet av begränsningen och förväntas vara tillfälliga.
 
 ### <a name="non-retryable-errors"></a>Fel som inte går att försöka igen
 
-Klient biblioteken hanterar nya försök med en medvetenhet om vilka fel som kan göras och vilka som inte kan utföras. Men om du anropar Azure Storage REST API direkt finns det vissa fel som du inte bör försöka igen. Till exempel anger ett 400-fel (felaktig begäran) att klient programmet skickade en begäran som inte kunde bearbetas eftersom det inte hade det förväntade formuläret. Om du skickar om den här begäran resulterar det i samma svar varje gång, så det finns ingen punkt för att försöka igen. Om du anropar Azure Storage REST API direkt bör du vara medveten om eventuella fel och om de bör göras om.
+Klient biblioteken hanterar nya försök med en medvetenhet om vilka fel som kan göras och vilka som inte kan utföras. Men om du anropar Azure Storage REST API direkt finns det vissa fel som du inte bör försöka igen. Till exempel anger ett 400 ( `Bad Request` )-fel att klient programmet skickade en begäran som inte kunde bearbetas eftersom det inte hade det förväntade formuläret. Om du skickar om den här begäran resulterar det i samma svar varje gång, så det finns ingen punkt för att försöka igen. Om du anropar Azure Storage REST API direkt bör du vara medveten om eventuella fel och om de bör göras om.
 
 Mer information om Azure Storage felkoder finns i [status-och felkoder](/rest/api/storageservices/status-and-error-codes2).
 
-## <a name="disable-nagle"></a>Inaktivera Nagle
+## <a name="disable-nagles-algorithm"></a>Inaktivera algoritmen för Nagle
 
-Nagle-algoritmen implementeras ofta i TCP/IP-nätverk som ett sätt att förbättra nätverks prestanda. Men det är inte optimalt i alla situationer (till exempel mycket interaktiva miljöer). Nagle-algoritmen har en negativ inverkan på prestanda för begär anden till Azure-Table service och du bör inaktivera den om möjligt.
+Nagle-algoritmen implementeras ofta i TCP/IP-nätverk som ett sätt att förbättra nätverks prestanda. Men det är inte optimalt i alla situationer (till exempel mycket interaktiva miljöer). Nagle-algoritmen har en negativ inverkan på prestanda för förfrågningar till Azure Table Storage och du bör inaktivera den om möjligt.
 
 ## <a name="message-size"></a>Meddelandestorlek
 
@@ -173,7 +175,7 @@ Nagle-algoritmen implementeras ofta i TCP/IP-nätverk som ett sätt att förbät
 
 ## <a name="batch-retrieval"></a>Hämta batch
 
-Du kan hämta upp till 32 meddelanden från en kö i en enda åtgärd. Med batch-hämtning kan du minska antalet turer från klient programmet, vilket är särskilt användbart för miljöer, till exempel mobila enheter, med hög latens.
+Du kan hämta upp till 32 meddelanden från en kö i en enda åtgärd. Med batch-hämtning kan du minska antalet tur och svar från klient programmet, vilket är särskilt användbart för miljöer, till exempel mobila enheter, med hög latens.
 
 ## <a name="queue-polling-interval"></a>Avsöknings intervall för kö
 
@@ -181,9 +183,9 @@ De flesta program söker efter meddelanden från en kö, som kan vara en av de s
 
 För uppdaterad kostnads information, se [Azure Storage prissättning](https://azure.microsoft.com/pricing/details/storage/).
 
-## <a name="use-update-message"></a>Använd uppdaterings meddelande
+## <a name="perform-an-update-message-operation"></a>Utföra en uppdaterings meddelande åtgärd
 
-Du kan använda åtgärden **Uppdatera meddelande** för att öka tids gränsen för insikter eller uppdatera statusinformation för ett meddelande. Att använda **uppdaterings meddelandet** kan vara en mer effektiv metod än att ha ett arbets flöde som skickar ett jobb från en kö till nästa, eftersom varje steg i jobbet har slutförts. Ditt program kan spara jobb status i meddelandet och sedan fortsätta att arbeta, i stället för att köa om meddelandet för nästa steg i jobbet varje gång ett steg slutförs. Tänk på att varje **uppdaterings meddelande** åtgärd räknas mot skalbarhets målet.
+Du kan utföra en uppdaterings åtgärd för att öka tids gränsen för insikter eller uppdatera statusinformation för ett meddelande. Den här metoden kan vara mer effektiv än att ha ett arbets flöde som skickar ett jobb från en kö till nästa, eftersom varje steg i jobbet har slutförts. Ditt program kan spara jobb status i meddelandet och sedan fortsätta att arbeta, i stället för att köa om meddelandet för nästa steg i jobbet varje gång ett steg slutförs. Tänk på att varje uppdaterings meddelande åtgärd räknas mot skalbarhets målet.
 
 ## <a name="application-architecture"></a>Programmets arkitektur
 

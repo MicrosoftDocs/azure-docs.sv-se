@@ -5,18 +5,18 @@ ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 7a5872f94a2d267ed2a0e17815e84cec5b02c613
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 81a8b6cd5044b31ee80f50448d6610ba6a57281e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368111"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585657"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>Självstudie: Distribuera en länkad mall
 
 I de [föregående självstudierna](./deployment-tutorial-local-template.md)har du lärt dig hur du distribuerar en mall som lagras på din lokala dator. Om du vill distribuera komplexa lösningar kan du dela upp en mall i flera mallar och distribuera dessa mallar via en huvud-mall. I den här självstudien får du lära dig hur du distribuerar en huvud-mall som innehåller referensen till en länkad mall. När huvudmallen distribueras utlöser den den länkade mallens distribution. Du lär dig också hur du lagrar och skyddar den länkade mallen med hjälp av SAS-token. Det tar ungefär **12 minuter** att slutföra.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Vi rekommenderar att du slutför den föregående själv studie kursen, men det är inget krav.
 
@@ -32,7 +32,7 @@ Du kan dela upp lagrings konto resursen i en länkad mall:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/linkedStorageAccount.json":::
 
-Följande mall är huvud mal len. Det markerade `Microsoft.Resources/deployments` objektet visar hur du anropar en länkad mall. Den länkade mallen kan inte lagras som en lokal fil eller en fil som bara är tillgänglig i det lokala nätverket. Du kan bara ange ett URI-värde som innehåller antingen `HTTP` eller `HTTPS` . Resource Manager måste kunna komma åt mallen. Ett alternativ är att placera din länkade mall i ett lagrings konto och använda URI: n för objektet. URI: n skickas till mallen med hjälp av en parameter. Se den markerade parameter definitionen.
+Följande mall är huvud mal len. Det markerade `Microsoft.Resources/deployments` objektet visar hur du anropar en länkad mall. Den länkade mallen kan inte lagras som en lokal fil eller en fil som bara är tillgänglig i det lokala nätverket. Du kan bara ange ett URI-värde som innehåller antingen HTTP eller HTTPS. Resource Manager måste kunna komma åt mallen. Ett alternativ är att placera din länkade mall i ett lagrings konto och använda URI: n för objektet. URI: n skickas till mallen med hjälp av en parameter. Se den markerade parameter definitionen.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/azuredeploy.json" highlight="27-32,40-58":::
 

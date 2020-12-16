@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-java
-ms.openlocfilehash: 8a95ee631797c4dcca87f3506a6cf29245328159
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c86689681aa99f60c4345e92f7f5c426795a69e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89263475"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586711"
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Kom igång med Java-klientens SDK för Azure Media Services
 
@@ -31,7 +31,7 @@ ms.locfileid: "89263475"
 
 Den här självstudien beskriver steg för steg hur du implementerar en enkel leveranstjänst för videoinnehåll med Azure Media Services med hjälp av Java-klientens SDK.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Följande krävs för att kunna genomföra kursen:
 
@@ -51,7 +51,7 @@ Om ditt byggverktyg till exempel är `gradle` så lägger du till följande bero
 >Från och med `azure-media`-paketversion `0.9.8` har stöd för AAD-autentisering (Azure Active Directory) lagts till i SDK, och stödet för ACS-autentisering (Azure Access Control) har tagits bort. Vi rekommenderar att du migrerar till Azure AD-autentiseringsmodellen så snart som möjligt. Läs artikeln [Access the Azure Media Services API with Azure AD authentication](media-services-use-aad-auth-to-access-ams-api.md) (Ansluta till API:et för Azure Media Services med Azure AD-autentisering) för mer information om migrering.
 
 >[!NOTE]
->Du hittar källkoden för Azure Media Services Java SDK i [GitHub-lagringsplatsen](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media). Se till att växla till grenen 0,9 och inte till mastergrenen. 
+>Du hittar källkoden för Azure Media Services Java SDK i [GitHub-lagringsplatsen](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media). Se till att växla till 0,9-grenen och inte till huvud grenen. 
 
 ## <a name="how-to-use-azure-media-services-with-java"></a>Så här: Använder du Azure Media Services med Java
 

@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f76f4a3e5fc87420c242c693e3c48a91244641e0
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 51602e97a8424bade542eec6f88b673130fee8b5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560041"
+ms.locfileid: "97586031"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Lägga till ett användar flöde för självbetjänings registrering i en app (för hands version)
 > [!NOTE]
@@ -70,6 +70,9 @@ Därefter skapar du användar flödet för självbetjänings registrering och l�
 7. Under **användarattribut** väljer du de attribut som du vill samla in från användaren. För ytterligare attribut väljer du **Visa fler**. Välj till exempel **Visa mer** och välj sedan attribut och anspråk för **land/region**, **visnings namn** och **post nummer**. Välj **OK**.
 
    ![Sidan skapa ett nytt användar flöde](media/self-service-sign-up-user-flow/create-user-flow.png)
+
+> [!NOTE]
+> Du kan bara samla in attribut när en användare registrerar sig för första gången. När en användare registrerar sig kommer de inte längre uppmanas att samla in attributinformation, även om du ändrar användar flödet.
 
 8. Välj **Skapa**.
 9. Det nya användar flödet visas i listan **användar flöden (för hands version)** . Om det behövs uppdaterar du sidan.

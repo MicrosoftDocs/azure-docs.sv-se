@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 87d0b740ec4f7ffb8966b386c273c023f69c42d8
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 1cc2cd1a7c5c16b1f9d1542e3f2d14dc030bb090
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008307"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586558"
 ---
 # <a name="monitor-azure-file-sync"></a>Övervaka Azure File Sync
 
@@ -42,7 +42,7 @@ Mått för Azure File Sync är aktiverade som standard och skickas till Azure Mo
 
 Följande mått för Azure File Sync är tillgängliga i Azure Monitor:
 
-| Måttnamn | Description |
+| Måttnamn | Beskrivning |
 |-|-|
 | Byte som har synkroniserats | Storlek på överförda data (uppladdning och nedladdning).<br><br>Enhet: byte<br>Sammansättnings typ: sum<br>Tillämpliga dimensioner: Server slut punkt, namn, synkroniseringsanslutning, namn på Sync-grupp |
 | Återkalla moln nivå | Storlek på data som har återkallats.<br><br>**Obs!** det här måttet tas bort i framtiden. Använd storleks måttet återkalla storlek på moln nivå för att övervaka storleken på data som återkallas.<br><br>Enhet: byte<br>Sammansättnings typ: sum<br>Tillämplig dimension: Server namn |
@@ -118,7 +118,7 @@ Om du vill visa hälso tillståndet för en **Server slut punkt** i portalen gå
 
 - Följande mått diagram visas i Storage Sync service portal:
 
-  | Måttnamn | Description | Blad namn |
+  | Måttnamn | Beskrivning | Blad namn |
   |-|-|-|
   | Byte som har synkroniserats | Storlek på överförda data (uppladdning och nedladdning) | Synkronisera grupp, Server slut punkt |
   | Återkalla moln nivå | Storlek på data som återkallas | Registrerade servrar |
@@ -161,7 +161,7 @@ Hälso tillstånd för moln nivåer
   - Händelse-ID 9003 ger fel distribution för en server slut punkt. Exempel: totalt antal fel och felkod. En händelse loggas per felkod.
   - Händelse-ID 9016 ger ghosting-resultat för en volym. Till exempel: ledigt utrymme i procent är, antalet filer som är avbildade i sessionen och antalet filer som misslyckades med Ghost.
   - Händelse-ID 9029 tillhandahåller ghosting-sessionsinformation för en server slut punkt. Exempel: antal filer som försökts i sessionen, antalet filer som skiktas i sessionen och antalet filer som redan har delats på nivå.
-  
+
 - Om du vill övervaka återställnings aktivitet på en server använder du händelse-ID 9005, 9006, 9009, 9059 och 9071 i händelse loggen för telemetri, som finns i Loggboken under *program-och Services\Microsoft\FileSync\Agent*.
 
   - Händelse-ID 9005 ger åter kallelse tillförlitlighet för en server slut punkt. Till exempel: totalt antal unika filer som används och totalt antal unika filer med misslyckad åtkomst.
@@ -178,7 +178,7 @@ Använd Azure File Sync prestanda räknare på servern för att övervaka synkro
 
 Följande prestanda räknare för Azure File Sync är tillgängliga i prestanda övervakaren:
 
-| Object\Counter-namn för prestanda | Description |
+| Object\Counter-namn för prestanda | Beskrivning |
 |-|-|
 | AFS-byte Transferred\Downloaded byte/s | Antal hämtade byte per sekund. |
 | AFS-byte Transferred\Uploaded byte/s | Antal överförda byte per sekund. |
@@ -192,7 +192,7 @@ Det här avsnittet innehåller några exempel på aviseringar för Azure File Sy
 
   > [!Note]  
   > Om du skapar en avisering och det är för brus, justera tröskelvärdet och aviserings logiken.
-  
+
 ### <a name="how-to-create-an-alert-if-the-server-endpoint-health-shows-an-error-in-the-portal"></a>Så här skapar du en avisering om Server slut punkt hälsan visar ett fel i portalen
 
 1. I **Azure Portal** navigerar du till respektive **synkroniseringstjänst för lagring**. 
@@ -201,16 +201,16 @@ Det här avsnittet innehåller några exempel på aviseringar för Azure File Sy
 4. Konfigurera villkor genom att klicka på **Välj villkor**.
 5. I bladet **Konfigurera signal logik** klickar du på **Sync-session resultat** under signal namn.  
 6. Välj följande dimensions konfiguration: 
-    - Dimensions namn: **Server slut punktens namn**  
-    - Operator **=** 
-    - Dimensions värden: **alla aktuella och framtida värden**  
+     - Dimensions namn: **Server slut punktens namn**  
+     - Operator **=** 
+     - Dimensions värden: **alla aktuella och framtida värden**  
 7. Navigera till **aviserings logiken** och Slutför följande: 
-    - Tröskelvärdet har angetts till **statisk** 
-    - Operator: **mindre än** 
-    - Sammansättnings typ: **högsta**  
-    - Tröskel värde: **1** 
-    - Utvärderas baserat på: agg regerings kornig het = **24 timmar** | Utvärderings frekvens = **varje timme** 
-    - Klicka på **Slutför.** 
+     - Tröskelvärdet har angetts till **statisk** 
+     - Operator: **mindre än** 
+     - Sammansättnings typ: **högsta**  
+     - Tröskel värde: **1** 
+     - Utvärderas baserat på: agg regerings kornig het = **24 timmar** | Utvärderings frekvens = **varje timme** 
+     - Klicka på **Slutför.** 
 8. Klicka på **Välj åtgärds grupp** för att lägga till en åtgärds grupp (e-post, SMS osv.) till aviseringen antingen genom att välja en befintlig åtgärds grupp eller skapa en ny åtgärds grupp.
 9. Fyll i **aviserings informationen** som **aviserings regelns namn**, **Beskrivning** och **allvarlighets grad**.
 10. Klicka på **Skapa aviseringsregel**. 
@@ -254,7 +254,7 @@ Det här avsnittet innehåller några exempel på aviseringar för Azure File Sy
      - Sammansättnings typ: **högsta**  
      - Tröskelvärde (i byte): **1** 
      - Utvärderas baserat på: agg regerings kornig het = **1 timme** | Utvärderings frekvens = **var 30: e minut** 
-        - Observera att måtten skickas till Azure Monitor var 15 till 20 minuter. Ange inte **utvärderings frekvensen** till mindre än 30 minuter (kommer att generera falska aviseringar).
+         - Observera att måtten skickas till Azure Monitor var 15 till 20 minuter. Ange inte **utvärderings frekvensen** till mindre än 30 minuter (kommer att generera falska aviseringar).
      - Klicka på **Slutför.** 
 8. Klicka på **Välj åtgärds grupp** för att lägga till en åtgärds grupp (e-post, SMS osv.) till aviseringen antingen genom att välja en befintlig åtgärds grupp eller skapa en ny åtgärds grupp.
 9. Fyll i **aviserings informationen** som **aviserings regelns namn**, **Beskrivning** och **allvarlighets grad**.
@@ -277,7 +277,7 @@ Det här avsnittet innehåller några exempel på aviseringar för Azure File Sy
      - Sammansättnings typ: **totalt**  
      - Tröskelvärde (i byte): **67108864000** 
      - Utvärderas baserat på: agg regerings kornig het = **24 timmar** | Utvärderings frekvens = **varje timme** 
-    - Klicka på **Slutför.** 
+     - Klicka på **Slutför.** 
 8. Klicka på **Välj åtgärds grupp** för att lägga till en åtgärds grupp (e-post, SMS osv.) till aviseringen antingen genom att välja en befintlig åtgärds grupp eller skapa en ny åtgärds grupp.
 9. Fyll i **aviserings informationen** som **aviserings regelns namn**, **Beskrivning** och **allvarlighets grad**.
 10. Klicka på **Skapa aviseringsregel**. 

@@ -17,12 +17,12 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4253fe52346890eaa993a18e8e9bc9b270bffd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8dbf14b1816d367f864cc3a2977497b34111df3f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89229862"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586201"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD-aktivitetsloggar i Azure Monitor
 
@@ -111,11 +111,11 @@ Följande tabell innehåller uppskattade kostnader per månad för en grundlägg
 
 
 
-| Loggkategori       | Antal användare | Händelser per dag | Händelser per månad (30 dagar) | Kostnad per månad i USD (EST.) |
-| :--                | ---             | ---            | ---                        | --:                          |
-| Gransknings-och inloggnings program | 100 000         | 16 500 000     | 495 000 000                |  $1093,00                       |
-| Granska              | 100 000         | 1 500 000      | 45 000 000                 |  $246,66                     |
-| Inloggningar           | 100 000         | 15 000 000     | 450 000 000                |  $847,28                     |
+| Loggkategori | Antal användare | Händelser per dag | Händelser per månad (30 dagar) | Kostnad per månad i USD (EST.) |
+|:-|--|--|--|-:|
+| Gransknings-och inloggnings program | 100 000 | 16 500 000 | 495 000 000 | $1093,00 |
+| Granska | 100 000 | 1 500 000 | 45 000 000 | $246,66 |
+| Inloggningar | 100 000 | 15 000 000 | 450 000 000 | $847,28 |
 
 
 
