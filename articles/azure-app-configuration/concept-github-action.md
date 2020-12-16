@@ -6,12 +6,12 @@ ms.author: alkemper
 ms.date: 05/28/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 6b2b5f4bcbcc5af07a763ee4dff2d42413750fb7
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: cd644ed4a3edb1110f2cef60c2bb9170a81fe8d7
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930287"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584076"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>Synkronisera din GitHub-lagringsplats med app-konfigurationen
 
@@ -41,7 +41,7 @@ I det första avsnittet av det här arbets flödet anges att åtgärden utlöses
 on: 
   push: 
     branches: 
-      - 'master' 
+      - 'main' 
     paths: 
       - 'appsettings.json' 
  
@@ -68,7 +68,7 @@ Som standard aktiverar GitHub-åtgärden inte strikt läge, vilket innebär att 
 on: 
   push: 
     branches: 
-      - 'master' 
+      - 'main' 
     paths: 
       - 'appsettings.json' 
  
@@ -98,7 +98,7 @@ Om konfigurationen finns i flera filer kan du använda mönstret nedan för att 
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
     paths:
       - 'appsettings.json'
       - 'appsettings2.json'
@@ -127,7 +127,7 @@ Synkronisera efter prefix:
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
     paths:
       - 'appsettings.json'
 
@@ -153,7 +153,7 @@ Synkronisera efter etikett:
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
     paths:
       - 'appsettings.json'
 
@@ -183,7 +183,7 @@ I det första avsnittet av det här arbets flödet anges att åtgärden utlöses
 on: 
   push: 
     branches: 
-      - 'master' 
+      - 'main' 
     paths: 
       - 'appsettings.json' 
  
@@ -219,7 +219,7 @@ GitHub-åtgärden kan sedan konfigureras för att göra en strikt synkronisering
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
     paths:
       - 'appsettings.json'
       - 'secretreferences.json'
@@ -272,7 +272,7 @@ Om det kapslade objektet är avsett att vara det värde som skickas till konfigu
 on: 
   push: 
     branches: 
-      - 'master' 
+      - 'main' 
     paths: 
       - 'appsettings.json' 
  
@@ -308,15 +308,15 @@ Indataparametrar anger data som används av åtgärden under körning.  Följand
 
 | Inmatat namn | Obligatoriskt? | Värde |
 |----|----|----|
-| configurationFile | Ja | Relativ sökväg till konfigurations filen i lagrings platsen.  BLOB mönster stöds och kan innehålla flera filer. |
-| format | Ja | Fil format för konfigurations filen.  Giltiga format är: JSON, YAML, Properties. |
-| Begär | Ja | Anslutnings sträng för app Configuration-instansen. Anslutnings strängen ska lagras som en hemlighet i GitHub-lagringsplatsen och endast det hemliga namnet ska användas i arbets flödet. |
-| brytning | Ja | Avgränsning som används vid förenkling av konfigurations filen till nyckel/värde-par.  Giltiga värden är:. , ; : - _ __ / |
-| protokollprefixet | Inga | Prefix som ska läggas till i början av nycklar. |
-| etikett | Inga | Etikett som används vid inställning av nyckel/värde-par. Om inget anges används en null-etikett. |
-| begränsade | Inga | Ett booleskt värde som anger om strikt läge är aktiverat. Standardvärdet är false. |
-| djuplodande | Inga | Högsta djup för att förenkla konfigurations filen.  Djupet måste vara ett positivt tal.  Standardvärdet har inget max djup. |
-| tags | Inga | Anger taggen som angetts för nyckel/värde-par.  Det förväntade formatet är en stringified form av ett JSON-objekt av följande form: {[propertyName: sträng]: String;} Varje egenskaps namn-värdet blir en tagg. |
+| configurationFile | Yes | Relativ sökväg till konfigurations filen i lagrings platsen.  BLOB mönster stöds och kan innehålla flera filer. |
+| format | Yes | Fil format för konfigurations filen.  Giltiga format är: JSON, YAML, Properties. |
+| Begär | Yes | Anslutnings sträng för app Configuration-instansen. Anslutnings strängen ska lagras som en hemlighet i GitHub-lagringsplatsen och endast det hemliga namnet ska användas i arbets flödet. |
+| brytning | Yes | Avgränsning som används vid förenkling av konfigurations filen till nyckel/värde-par.  Giltiga värden är:. , ; : - _ __ / |
+| protokollprefixet | No | Prefix som ska läggas till i början av nycklar. |
+| etikett | No | Etikett som används vid inställning av nyckel/värde-par. Om inget anges används en null-etikett. |
+| begränsade | No | Ett booleskt värde som anger om strikt läge är aktiverat. Standardvärdet är false. |
+| djuplodande | No | Högsta djup för att förenkla konfigurations filen.  Djupet måste vara ett positivt tal.  Standardvärdet har inget max djup. |
+| tags | No | Anger taggen som angetts för nyckel/värde-par.  Det förväntade formatet är en stringified form av ett JSON-objekt av följande form: {[propertyName: sträng]: String;} Varje egenskaps namn-värdet blir en tagg. |
 
 ## <a name="next-steps"></a>Nästa steg
 

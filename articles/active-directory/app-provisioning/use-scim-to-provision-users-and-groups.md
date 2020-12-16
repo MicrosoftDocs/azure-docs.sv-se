@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: c9738d25fdcb1c0ccda70ec116eb369f8b50e980
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: a0abbacc55cff2f561323a22dd83311c87b1511d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027483"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584501"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Självstudie – Bygg en SCIM-slutpunkt och konfigurera användar etablering med Azure AD
 
@@ -330,7 +330,7 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
 
 *Hämta/Users? filter = userName EQ "Test_User_dfeef4c5-5681 -4387-b016-bdf221e82081"*
 
-##### <a name="response"></a><a name="response-2"></a>Svarsåtgärder
+##### <a name="response"></a><a name="response-2"></a>Svarade
 
 *HTTP/1.1 200 OK*
 ```json
@@ -371,7 +371,7 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
 
 *Hämta/Users? filter = userName EQ "obefintlig användare"*
 
-##### <a name="response"></a><a name="response-3"></a>Svarsåtgärder
+##### <a name="response"></a><a name="response-3"></a>Svarade
 
 *HTTP/1.1 200 OK*
 ```json
@@ -408,7 +408,7 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
 }
 ```
 
-##### <a name="response"></a><a name="response-4"></a>Svarsåtgärder
+##### <a name="response"></a><a name="response-4"></a>Svarade
 
 *HTTP/1.1 200 OK*
 ```json
@@ -452,7 +452,7 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
 }
 ```
 
-##### <a name="response"></a><a name="response-5"></a>Svarsåtgärder
+##### <a name="response"></a><a name="response-5"></a>Svarade
 
 *HTTP/1.1 200 OK*
 ```json
@@ -501,7 +501,7 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
 }
 ```
 
-##### <a name="response"></a><a name="response-14"></a>Svarsåtgärder
+##### <a name="response"></a><a name="response-14"></a>Svarade
 
 ```json
 {
@@ -541,7 +541,7 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
 
 *TA bort/users/5171a35d82074e068ce2 HTTP/1.1*
 
-##### <a name="response"></a><a name="response-6"></a>Svarsåtgärder
+##### <a name="response"></a><a name="response-6"></a>Svarade
 
 *HTTP/1.1 204 inget innehåll*
 
@@ -568,7 +568,7 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
 }
 ```
 
-##### <a name="response"></a><a name="response-7"></a>Svarsåtgärder
+##### <a name="response"></a><a name="response-7"></a>Svarade
 
 *HTTP/1.1 201 har skapats*
 ```json
@@ -593,7 +593,7 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
 
 *Hämta/Groups/40734ae655284ad3abcc? excludedAttributes = medlemmar HTTP/1.1*
 
-##### <a name="response"></a><a name="response-8"></a>Svarsåtgärder
+##### <a name="response"></a><a name="response-8"></a>Svarade
 *HTTP/1.1 200 OK*
 ```json
 {
@@ -614,7 +614,7 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
 ##### <a name="request"></a><a name="request-9"></a>Förfrågan
 *Hämta/Groups? excludedAttributes = members&filter = displayName EQ "HTTP/1.1*
 
-##### <a name="response"></a><a name="response-9"></a>Svarsåtgärder
+##### <a name="response"></a><a name="response-9"></a>Svarade
 
 *HTTP/1.1 200 OK*
 ```json
@@ -654,7 +654,7 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
 }
 ```
 
-##### <a name="response"></a><a name="response-10"></a>Svarsåtgärder
+##### <a name="response"></a><a name="response-10"></a>Svarade
 
 *HTTP/1.1 204 inget innehåll*
 
@@ -677,7 +677,7 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
 }
 ```
 
-##### <a name="response"></a><a name="response-11"></a>Svarsåtgärder
+##### <a name="response"></a><a name="response-11"></a>Svarade
 
 *HTTP/1.1 204 inget innehåll*
 
@@ -700,7 +700,7 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
 }
 ```
 
-##### <a name="response"></a><a name="response-12"></a>Svarsåtgärder
+##### <a name="response"></a><a name="response-12"></a>Svarade
 
 *HTTP/1.1 204 inget innehåll*
 
@@ -710,7 +710,7 @@ Det här avsnittet innehåller exempel på SCIM-begäranden som har genererats a
 
 *TA bort/Groups/cdb1ce18f65944079d37 HTTP/1.1*
 
-##### <a name="response"></a><a name="response-13"></a>Svarsåtgärder
+##### <a name="response"></a><a name="response-13"></a>Svarade
 
 *HTTP/1.1 204 inget innehåll*
 
@@ -1170,7 +1170,7 @@ Om du skapar ett program som ska användas av fler än en klient kan du göra de
 ### <a name="gallery-onboarding-checklist"></a>Check lista för Galleri registrering
 Följ check listan nedan för att säkerställa att ditt program registreras snabbt och att kunderna har en smidig distributions upplevelse. Informationen kommer att samlas in från dig när du registrerar dig i galleriet. 
 > [!div class="checklist"]
-> * Stöd för en [SCIM 2,0 ](#step-2-understand-the-azure-ad-scim-implementation) -användare och grupp slut punkt (endast en krävs, men båda rekommenderas)
+> * Stöd för en [SCIM 2,0](#step-2-understand-the-azure-ad-scim-implementation) -användare och grupp slut punkt (endast en krävs, men båda rekommenderas)
 > * Stöd minst 25 begär Anden per sekund per klient för att säkerställa att användare och grupper etableras och avetableras utan fördröjning (krävs)
 > * Upprätta teknisk support och support kontakter som hjälper kunder att publicera gallerier (krävs)
 > * 3 ej utgångna testautentiseringsuppgifter för ditt program (krävs)

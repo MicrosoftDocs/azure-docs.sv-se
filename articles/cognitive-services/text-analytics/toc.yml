@@ -31,24 +31,8 @@
 - name: Snabbstarter
   expanded: true
   items:
-    - name: Klientbibliotek
-      items:
-        - name: Analysera text med klientbiblioteket
-          href: quickstarts/text-analytics-sdk.md
-    - name: REST-API
-      items:
-        - name: Använda Java
-          href: quickstarts/java.md
-        - name: Använda Python
-          href: quickstarts/python.md
-        - name: Använda Node.js
-          href: quickstarts/nodejs.md
-        - name: Använda PHP
-          href: quickstarts/php.md
-        - name: Använda Go
-          href: quickstarts/go.md
-        - name: Använda Ruby
-          href: quickstarts/ruby.md
+    - name: Använda klientbiblioteket och REST-API
+      href: quickstarts/client-libraries-rest-api.md
 - name: Självstudier
   items:
     - name: Integrera Power BI för att analysera kundfeedback

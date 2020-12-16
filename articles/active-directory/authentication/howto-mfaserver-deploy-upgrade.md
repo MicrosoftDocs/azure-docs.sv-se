@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1755404a06d8586968801aa22f2af532da278802
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: fbddd2eb52414827561d8896dfc8bc9ff705f41b
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96742331"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584399"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>Uppgradera till den senaste versionen av Azure Multi-Factor Authentication Server
 
@@ -33,16 +33,16 @@ Om du uppgraderar från v6. x eller äldre till v7. x eller senare ändras alla 
 
 Att snabbt uppgradera steg:
 
-* Uppgradera Azure MFA-servrar (underordnade sedan Master)
+* Uppgradera Azure MFA-servrar (underordnade sedan primär)
 * Uppgradera användar Portal instanserna
 * Uppgradera AD FS korts instanser
 
 ## <a name="upgrade-azure-mfa-server"></a>Uppgradera Azure MFA Server
 
 1. Använd anvisningarna i [Hämta Azure-Multi-Factor Authentication-Server](howto-mfaserver-deploy.md#download-the-mfa-server) för att hämta den senaste versionen av Azure MFA Server-installationsprogrammet.
-2. Gör en säkerhets kopia av MFA Server-datafilen som finns i C:\Program Files\Multi-Factor Authentication Server\Data\PhoneFactor.pfdata (som förutsätter standard installations platsen) på huvud servern för MFA.
+2. Gör en säkerhets kopia av MFA Server-datafilen som finns i C:\Program Files\Multi-Factor Authentication Server\Data\PhoneFactor.pfdata (som förutsätter standard installations platsen) på den primära MFA-servern.
 3. Om du kör flera servrar för hög tillgänglighet ändrar du klient systemen som autentiseras mot MFA-servern så att de slutar skicka trafik till de servrar som uppgraderas. Om du använder en belastningsutjämnare tar du bort en underordnad MFA-Server från belastningsutjämnaren, uppgraderar och lägger sedan till servern i Server gruppen igen.
-4. Kör det nya installations programmet på varje MFA-Server. Uppgradera underordnade servrar först eftersom de kan läsa den gamla data filen som replikeras av huvud servern.
+4. Kör det nya installations programmet på varje MFA-Server. Uppgradera underordnade servrar först eftersom de kan läsa den gamla data filen som replikeras av den primära.
 
    > [!NOTE]
    > När du uppgraderar en server bör den tas bort från alla belastnings Utjämnings-eller trafik delning med andra MFA-servrar.
@@ -51,7 +51,7 @@ Att snabbt uppgradera steg:
   
 5. Om du uppmanas att installera ett uppdaterings paket för Microsoft Visual C++ 2015 Redistributable accepterar du prompten. Både x86-och x64-versionerna av paketet är installerade.
 6. Om du använder webbtjänst-SDK uppmanas du att installera den nya webbtjänst-SDK: n. När du installerar det nya webb tjänst-SDK: n måste du kontrol lera att namnet på den virtuella katalogen matchar den tidigare installerade virtuella katalogen (till exempel MultiFactorAuthWebServiceSdk).
-7. Upprepa stegen på alla underordnade servrar. Flytta upp ett av de underordnade till den nya huvud servern och uppgradera sedan den gamla huvud servern.
+7. Upprepa stegen på alla underordnade servrar. Flytta upp ett av de underordnade till den nya primära servern och uppgradera sedan den gamla primära servern.
 
 ## <a name="upgrade-the-user-portal"></a>Uppgradera användar portalen
 

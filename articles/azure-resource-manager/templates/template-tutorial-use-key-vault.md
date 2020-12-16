@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 75eb977559573b72883de3ddbc27391c7e299a6f
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: ae2361d12dfe18cadd80dd3b84405b2b17751e59
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929325"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584093"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Självstudie: Integrera Azure Key Vault i din ARM-malldistribution
 
@@ -43,6 +43,7 @@ För att kunna följa stegen i den här artikeln behöver du:
     ```console
     openssl rand -base64 32
     ```
+
     Kontrol lera att det genererade lösen ordet uppfyller kraven för den virtuella datorns lösen ord. Varje Azure-tjänst har specifika lösenordskrav. Information om kraven för den virtuella datorns lösen ord finns i [lösen ords kraven när du skapar en virtuell dator?](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
 ## <a name="prepare-a-key-vault"></a>Förbereda ett nyckelvalv
@@ -53,7 +54,7 @@ I det här avsnittet skapar du ett nyckel valv och lägger till en hemlighet i d
 * Lägger till en hemlighet i nyckel valvet. Hemligheten lagrar lösen ordet för den virtuella dator administratören.
 
 > [!NOTE]
-> Som en användare som distribuerar mallen för virtuella datorer, om du inte är ägare till eller en deltagare i nyckel valvet, måste ägaren eller en deltagare ge dig åtkomst till *Microsoft. Key Vault/valv/Deploy/åtgärd* -behörighet för nyckel valvet. Mer information finns i [använda Azure Key Vault för att skicka ett säkert parameter värde under distributionen](./key-vault-parameter.md).
+> Som användare som distribuerar mallen för virtuella datorer, om du inte är ägare till eller en deltagare i nyckel valvet, måste ägaren eller en deltagare ge dig åtkomst till `Microsoft.KeyVault/vaults/deploy/action` nyckel valvets behörighet. Mer information finns i [använda Azure Key Vault för att skicka ett säkert parameter värde under distributionen](./key-vault-parameter.md).
 
 Om du vill köra följande Azure PowerShell skript väljer du **försök** att öppna Azure Cloud Shell. Om du vill klistra in skriptet högerklickar du på fönstret Shell och väljer **Klistra in**.
 
@@ -79,7 +80,7 @@ Write-Host "Press [ENTER] to continue ..."
 > * Standard namnet för hemligheten är **vmAdminPassword**. Den är hårdkodad i mallen.
 > * Om du vill aktivera mallen för att hämta hemligheten måste du aktivera en åtkomst princip med namnet **Aktivera åtkomst till Azure Resource Manager för** nyckel valvet. Den här principen är aktive rad i mallen. Mer information om åtkomst principen finns i [distribuera nyckel valv och hemligheter](./key-vault-parameter.md#deploy-key-vaults-and-secrets).
 
-Mallen har ett värde för utdata, som kallas *keyVaultId*. Du kommer att använda det här ID: t tillsammans med det hemliga namnet för att hämta det hemliga värdet senare i självstudien. Resurs-ID-formatet är:
+Mallen har ett värde för utdata, som kallas `keyVaultId` . Du kommer att använda det här ID: t tillsammans med det hemliga namnet för att hämta det hemliga värdet senare i självstudien. Resurs-ID-formatet är:
 
 ```json
 /subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>
@@ -87,7 +88,7 @@ Mallen har ett värde för utdata, som kallas *keyVaultId*. Du kommer att använ
 
 När du kopierar och klistrar in ID: t kan det delas upp i flera rader. Slå samman raderna och trimma extra blank steg.
 
-Verifiera distributionen genom att köra följande PowerShell-kommando i samma Shell-fönster för att hämta den hemliga texten i klartext. Kommandot fungerar bara i samma Shell-session, eftersom variabeln *$keyVaultName* som definieras i föregående PowerShell-skript används.
+Verifiera distributionen genom att köra följande PowerShell-kommando i samma Shell-fönster för att hämta den hemliga texten i klartext. Kommandot fungerar bara i samma Shell-session, eftersom det använder variabeln `$keyVaultName` som definieras i föregående PowerShell-skript.
 
 ```azurepowershell
 (Get-AzKeyVaultSecret -vaultName $keyVaultName  -name "vmAdminPassword").SecretValueText
@@ -146,14 +147,14 @@ Genom att använda metoden med statisk ID behöver du inte göra några ändring
     ```
 
     > [!IMPORTANT]
-    > Ersätt värdet för **ID** med resurs-ID för nyckel valvet som du skapade i föregående procedur. SecretName är hårdkodad som **vmAdminPassword**.  Se [förbereda ett nyckel valv](#prepare-a-key-vault).
+    > Ersätt värdet för `id` med resurs-ID för nyckel valvet som du skapade i föregående procedur. `secretName`Är hårdkodad som **vmAdminPassword**.  Se [förbereda ett nyckel valv](#prepare-a-key-vault).
 
     ![Integrera Key Vault och Resource Manager-mall distributions parameter fil för virtuell dator](./media/template-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
 
 1. Uppdatera följande värden:
 
-    * **adminUsername**: namnet på den virtuella datorns administratörs konto.
-    * **dnsLabelPrefix**: Namnge värdet för dnsLabelPrefix.
+    * `adminUsername`: Namnet på administratörs kontot för den virtuella datorn.
+    * `dnsLabelPrefix`: Ge värdet ett namn `dnsLabelPrefix` .
 
     Exempel på namn finns i föregående bild.
 
@@ -167,7 +168,7 @@ Genom att använda metoden med statisk ID behöver du inte göra några ändring
 
     ![Azure Portal Cloud Shell Ladda upp fil](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. Välj **Ladda upp/ned filer** och välj sedan **Ladda upp**. Ladda upp både *azuredeploy.js* och *azuredeploy.parameters.jspå* Cloud Shell. När du har överfört filen kan du använda kommandot **ls** och kommandot **Cat** för att kontrol lera att filen har laddats upp.
+1. Välj **Ladda upp/ned filer** och välj sedan **Ladda upp**. Ladda upp både *azuredeploy.js* och *azuredeploy.parameters.jspå* Cloud Shell. När du har överfört filen kan du använda `ls` kommandot och `cat` kommandot för att kontrol lera att filen har laddats upp.
 
 1. Kör följande PowerShell-skript för att distribuera mallen.
 
