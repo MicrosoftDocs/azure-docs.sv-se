@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: d9850c83fc949aa3a2b0521dfa0d41d49b7283bd
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a84d4d71e5190c455441d1e627381be86ef5e129
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515643"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608535"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peakon"></a>Självstudie: Azure Active Directory integrering med Peakon
 
@@ -30,7 +30,7 @@ Genom att integrera Peakon med Azure AD får du följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill konfigurera Azure AD-integrering med Peakon behöver du följande objekt:
 
@@ -88,7 +88,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med Peakon i Azure AD:
 
-1. Välj **enkel inloggning**på sidan **Peakon** Application Integration i [Azure Portal](https://portal.azure.com/).
+1. Välj **enkel inloggning** på sidan **Peakon** Application Integration i [Azure Portal](https://portal.azure.com/).
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -135,7 +135,7 @@ Utför följande steg för att konfigurera enkel inloggning med Peakon i Azure A
 
 1. Logga in på Peakon som administratör i ett annat webbläsarfönster.
 
-2. I meny raden på vänster sida av sidan klickar du på **konfiguration**och navigerar sedan till **integreringar**.
+2. I meny raden på vänster sida av sidan klickar du på **konfiguration** och navigerar sedan till **integreringar**.
 
     ![Konfigurationen](./media/peakon-tutorial/tutorial_peakon_config.png)
 
@@ -151,9 +151,9 @@ Utför följande steg för att konfigurera enkel inloggning med Peakon i Azure A
 
     ![SAML-](./media/peakon-tutorial/tutorial_peakon_saml.png)
 
-    a. I text rutan **SSO-inloggnings-URL** klistrar du in värdet för **inloggnings-URL: en**som du har kopierat från Azure Portal.
+    a. I text rutan **SSO-inloggnings-URL** klistrar du in värdet för **inloggnings-URL: en** som du har kopierat från Azure Portal.
 
-    b. I text rutan **URL för SSO-utloggning** klistrar du in värdet för den **utloggnings-URL**som du har kopierat från Azure Portal.
+    b. I text rutan **URL för SSO-utloggning** klistrar du in värdet för den **utloggnings-URL** som du har kopierat från Azure Portal.
 
     c. Klicka på **Välj fil** för att ladda upp det certifikat som du har laddat ned från Azure Portal i rutan certifikat.
 
@@ -192,7 +192,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Peakon.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Peakon**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Peakon**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -223,23 +223,23 @@ När det gäller Peakon är etableringen en manuell uppgift.
 
 1. Logga in på din Peakon-företags webbplats som administratör.
 
-2. I meny raden på vänster sida av sidan klickar du på **konfiguration**och navigerar sedan till **anställda**.
+2. I meny raden på vänster sida av sidan klickar du på **konfiguration** och navigerar sedan till **anställda**.
 
     ![Den anställda](./media/peakon-tutorial/tutorial_peakon_employee.png)
 
-3. Klicka på **Lägg till anställd**på sidans övre högra sida.
+3. Klicka på **Lägg till anställd** på sidans övre högra sida.
 
-      ![Lägg till medarbetare](./media/peakon-tutorial/tutorial_peakon_addemployee.png)
+    ![Lägg till medarbetare](./media/peakon-tutorial/tutorial_peakon_addemployee.png)
 
 3. Utför följande steg på dialog sidan **ny anställd** :
 
-     ![Den nya medarbetaren](./media/peakon-tutorial/tutorial_peakon_create.png)
+    ![Den nya medarbetaren](./media/peakon-tutorial/tutorial_peakon_create.png)
 
-    a. I text rutan **namn** skriver du första namnet som **Britta** och efter namn som **Simon**.
+    1. I text rutan **namn** skriver du första namnet som **Britta** och efter namn som **Simon**.
 
-    b. I text rutan **e-post** skriver du in e-postadressen som **Brittasimon \@ contoso.com**.
+    1. I text rutan **e-post** skriver du in e-postadressen som **Brittasimon \@ contoso.com**.
 
-    c. Klicka på **skapa anställd**.
+    1. Klicka på **skapa anställd**.
 
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning 
 

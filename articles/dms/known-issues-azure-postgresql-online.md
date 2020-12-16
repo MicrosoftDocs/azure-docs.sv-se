@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: db2f6e95153610e0a1b79cf5d30cea3c917333d3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8c3c1d28a7fbb3e3c9c449feb03a75d48178b718
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94962577"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609045"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>Kända problem/migrerings begränsningar med online-migreringar från PostgreSQL till Azure DB för PostgreSQL
 
@@ -38,8 +38,8 @@ Kända problem och begränsningar som är kopplade till online-migreringar från
   2. Lägg till IP-adressen i filen pg_hba. conf som visas:
 
       ```
-          host  all     172.16.136.18/10    md5
-          host  replication postgres    172.16.136.18/10    md5
+          host    all    172.16.136.18/10    md5
+          host    replication postgres    172.16.136.18/10     md5
       ```
 
 - Användaren måste ha REPLIKERINGSPRINCIPEN på den server som är värd för käll databasen.
@@ -47,7 +47,7 @@ Kända problem och begränsningar som är kopplade till online-migreringar från
 - Schemat i Azure-databasen för PostgreSQL-Single-servern får inte ha några sekundär nycklar. Använd följande fråga om du vill ta bort sekundär nycklar:
 
     ```
-                                SELECT Queries.tablename
+                  SELECT Queries.tablename
            ,concat('alter table ', Queries.tablename, ' ', STRING_AGG(concat('DROP CONSTRAINT ', Queries.foreignkey), ',')) as DropQuery
                 ,concat('alter table ', Queries.tablename, ' ', 
                                                 STRING_AGG(concat('ADD CONSTRAINT ', Queries.foreignkey, ' FOREIGN KEY (', column_name, ')', 'REFERENCES ', foreign_table_name, '(', foreign_column_name, ')' ), ',')) as AddQuery

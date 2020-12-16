@@ -4,12 +4,12 @@ description: Den här artikeln innehåller en genom gång av hur du skapar ett J
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: e77ff762de11a9c8a723b162993db11efe715b66
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e86ca76f3eb661e1407a02b58e60b62b391f5702
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591556"
+ms.locfileid: "97607991"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Använda Java för att skicka händelser till eller ta emot händelser från Azure Event Hubs (Azure-eventhubs)
 
@@ -17,7 +17,6 @@ Den här snabb starten visar hur du skickar händelser till och tar emot händel
 
 > [!WARNING]
 > Den här snabb starten använder de gamla **Azure-eventhubs** **-och Azure-eventhubs-EPH-** paketen. En snabb start som använder det senaste paketet  **Azure-Messaging-eventhubs** finns i [skicka och ta emot händelser med Azure-Messaging-eventhubs](event-hubs-java-get-started-send.md). Information om hur du flyttar ditt program från att använda det gamla paketet till ett nytt finns i [hand boken för att migrera från Azure-eventhubs till Azure-Messaging-eventhubs](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md). 
-
 
 ## <a name="prerequisites"></a>Krav
 
@@ -75,7 +74,6 @@ public class SimpleSend {
     public static void main(String[] args)
             throws EventHubException, ExecutionException, InterruptedException, IOException {
 
-
     }
  }
 ```
@@ -109,7 +107,6 @@ Skapa en singularisk händelse genom att omvandla en sträng till sin byte i UTF
         // Each EventHubClient instance spins up a new TCP/TLS connection, which is expensive.
         // It is always a best practice to reuse these instances. The following sample shows this.
         final EventHubClient ehClient = EventHubClient.createSync(connStr.toString(), executorService);
-
 
         try {
             for (int i = 0; i < 10; i++) {
@@ -418,7 +415,6 @@ I din implementering kan du åsidosätta standard kontroll punkts mekanismen och
 Du kan använda alla data lager som är tillgängliga i din miljö.
 
 Klassen com. Microsoft. Azure. eventprocessorhost. EventProcessorHost innehåller två konstruktorer som gör att du kan åsidosätta Checkpoint Manager för din EventProcessorHost.
-
 
 ## <a name="next-steps"></a>Nästa steg
 Läs följande artiklar: 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: cb3417cf765cd703d72d4a2db7a649400ab2d4de
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d74057e32b6f16bdb6dae3d96ac46c5cc93571aa
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896830"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609113"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>Självstudie: Azure Active Directory integrering med Zscaler-administratör för Internet åtkomst
 
@@ -30,7 +30,7 @@ När du integrerar Zscaler Internet Access Administrator med Azure AD får du f�
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill konfigurera Azure AD-integrering med Zscaler Internet Access Administrator behöver du följande objekt:
 
@@ -44,7 +44,7 @@ Om du vill konfigurera Azure AD-integrering med Zscaler Internet Access Administ
 
 I den här självstudien konfigurerar och testar du enkel inloggning med Azure AD i en testmiljö.
 
-* Zscaler Internet Access Administrator har stöd för **IDP** -initierad SSO
+* Zscaler Internet Access Administrator har stöd för **IDP**-initierad SSO
 
 ## <a name="adding-zscaler-internet-access-administrator-from-the-gallery"></a>Lägger till Zscaler Internet Access Administrator från galleriet
 
@@ -52,11 +52,11 @@ För att konfigurera integrering av Zscaler Internet Access Administrator till A
 
 **Utför följande steg för att lägga till Zscaler Internet Access Administrator från galleriet:**
 
-1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory** -ikonen.
+1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory**-ikonen.
 
     ![Azure Active Directory-knappen](common/select-azuread.png)
 
-2. Gå till **Företagsprogram** och välj alternativet **Alla program** .
+2. Gå till **Företagsprogram** och välj alternativet **Alla program**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -64,13 +64,13 @@ För att konfigurera integrering av Zscaler Internet Access Administrator till A
 
     ![Knappen Nytt program](common/add-new-app.png)
 
-4. I sökrutan skriver du **Zscaler Internet Access Administrator** , väljer **Zscaler Internet Access Administrator** i resultatpanelen och klickar på **Lägg till** för att lägga till programmet.
+4. I sökrutan skriver du **Zscaler Internet Access Administrator**, väljer **Zscaler Internet Access Administrator** i resultatpanelen och klickar på **Lägg till** för att lägga till programmet.
 
      ![Zscaler Internet Access Administrator i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
-I det här avsnittet ska du konfigurera och testa Azure AD enkel inloggning med Zscaler Internet Access Administrator baserat på en testanvändare som heter **Britta Simon** .
+I det här avsnittet ska du konfigurera och testa Azure AD enkel inloggning med Zscaler Internet Access Administrator baserat på en testanvändare som heter **Britta Simon**.
 För att enkel inloggning ska fungera måste en länkrelation mellan en Azure AD-användare och den relaterade användaren i Zscaler Internet Access Administrator upprättas.
 
 Om du vill konfigurera och testa enkel inloggning i Azure AD med Zscaler Internet Access Administrator måste du utföra följande byggblock:
@@ -88,7 +88,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Om du vill konfigurera enkel inloggning med Azure AD med Zscaler Internet Access Administrator behöver du följande objekt:
 
-1. På [Azure-portalen](https://portal.azure.com/)på programintegreringssidan **Zscaler Internet Access Administrator** markerar du **Enkel inloggning** .
+1. På [Azure-portalen](https://portal.azure.com/)på programintegreringssidan **Zscaler Internet Access Administrator** markerar du **Enkel inloggning**.
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -96,11 +96,11 @@ Om du vill konfigurera enkel inloggning med Azure AD med Zscaler Internet Access
 
     ![Välja läge för enkel inloggning](common/select-saml-option.png)
 
-3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration** .
+3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration**.
 
     ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
-4. På sidan **Konfigurera enkel inloggning med SAML** klickar du på knappen **Redigera** för att öppna dialogrutan **Grundläggande SAML-konfiguration** .
+4. På sidan **Konfigurera enkel inloggning med SAML** klickar du på knappen **Redigera** för att öppna dialogrutan **Grundläggande SAML-konfiguration**.
 
     ![Zscaler Internet Access Administrator-domän och webbadresser med information om enkel inloggning](common/idp-intiated.png)
 
@@ -126,17 +126,17 @@ Om du vill konfigurera enkel inloggning med Azure AD med Zscaler Internet Access
     | `https://admin.zscloud.net/adminsso.do` |
     | `https://admin.zscalerbeta.net/adminsso.do` |
 
-5. Programmet Zscaler Internet Access Administrator förväntar sig SAML-påståenden i ett visst format. Konfigurera följande anspråk för det här programmet. Du kan hantera värdena för dessa attribut i avsnittet om **användarattribut och anspråk** på sidan för programintegrering. På sidan **Konfigurera enkel inloggning med SAML** klickar du på knappen **Redigera** för att öppna dialogrutan för **användarattribut och anspråk** .
+5. Programmet Zscaler Internet Access Administrator förväntar sig SAML-påståenden i ett visst format. Konfigurera följande anspråk för det här programmet. Du kan hantera värdena för dessa attribut i avsnittet om **användarattribut och anspråk** på sidan för programintegrering. På sidan **Konfigurera enkel inloggning med SAML** klickar du på knappen **Redigera** för att öppna dialogrutan för **användarattribut och anspråk**.
 
     ![Länken Attribut](./media/zscaler-internet-access-administrator-tutorial/tutorial_zscaler-internet_attribute.png)
 
 6. I avsnittet **Användaranspråk** i dialogrutan **Användarattribut** konfigurerar du SAML-tokenattributet på det sätt som visas i bilden ovan och utför följande steg:
 
-    | Namn  | Källattribut  |
+    | Name  | Källattribut  |
     | ---------| ------------ |
-    | Roll     | user.assignedroles |
+    | Roll | user.assignedroles |
 
-    a. Klicka på **Lägg till nytt anspråk** för att öppna dialogrutan **Hantera användaranspråk** .
+    a. Klicka på **Lägg till nytt anspråk** för att öppna dialogrutan **Hantera användaranspråk**.
 
     ![Skärm bild som visar användar anspråk med alternativet att lägga till ett nytt anspråk.](./common/new-save-attribute.png)
     
@@ -144,14 +144,14 @@ Om du vill konfigurera enkel inloggning med Azure AD med Zscaler Internet Access
 
     b. I listan **källattribut** väljer du attributvärdet.
 
-    c. Klicka på **OK** .
+    c. Klicka på **OK**.
 
-    d. Klicka på **Spara** .
+    d. Klicka på **Spara**.
 
     > [!NOTE]
     > Klicka [här](../develop/active-directory-enterprise-app-role-management.md) för att få veta hur du konfigurerar en Roll i Azure AD
 
-7. På sidan **Konfigurera enkel inloggning med SAML** går du till avsnittet **SAML-signeringscertifikat** , klickar du på **Ladda ned** för att ladda ned **Certifikat (Base64)** från de angivna alternativen enligt dina behov och sparar det på datorn.
+7. På sidan **Konfigurera enkel inloggning med SAML** går du till avsnittet **SAML-signeringscertifikat**, klickar du på **Ladda ned** för att ladda ned **Certifikat (Base64)** från de angivna alternativen enligt dina behov och sparar det på datorn.
 
     ![Länk för nedladdning av certifikatet](common/certificatebase64.png)
 
@@ -169,13 +169,13 @@ Om du vill konfigurera enkel inloggning med Azure AD med Zscaler Internet Access
 
 1. I ett annat webbläsarfönster loggar du in på ditt Zscaler Internet Access Admin-användargränssnitt.
 
-2. Gå till **Administration > Administratörshantering** , utför följande steg och klicka på Spara:
+2. Gå till **Administration > Administratörshantering**, utför följande steg och klicka på Spara:
 
     ![Skärm bild som visar administratörs hantering med alternativ för att aktivera SAML-autentisering, ladda upp S S L-certifikat och ange en utfärdare.](./media/zscaler-internet-access-administrator-tutorial/AdminSSO.png "Administration")
 
-    a. Markera **Aktivera SAML-autentisering** .
+    a. Markera **Aktivera SAML-autentisering**.
 
-    b. Klicka på **Ladda upp** för att ladda upp Azure SAML-signeringscertifikatet som du har laddat ned från Azure-portalen i det **offentliga SSL-certifikatet** .
+    b. Klicka på **Ladda upp** för att ladda upp Azure SAML-signeringscertifikatet som du har laddat ned från Azure-portalen i det **offentliga SSL-certifikatet**.
 
     c. Om du vill ha ytterligare säkerhet kan du lägga till information om **Utfärdare** för att verifiera utfärdaren av SAML-svaret.
 
@@ -185,13 +185,13 @@ Om du vill konfigurera enkel inloggning med Azure AD med Zscaler Internet Access
 
     a. Hovra över menyn **Aktivering** längst ned till vänster.
 
-    b. Klicka på **Aktivera** .
+    b. Klicka på **Aktivera**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare 
 
 Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen med namnet Britta Simon.
 
-1. Gå till den vänstra rutan i Azure-portalen och välj **Azure Active Directory** , välj **Users** och sedan **Alla användare** .
+1. Gå till den vänstra rutan i Azure-portalen och välj **Azure Active Directory**, välj **Users** och sedan **Alla användare**.
 
     ![Länkarna ”Användare och grupper” och ”Alla grupper”](common/users.png)
 
@@ -203,32 +203,32 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     ![Dialogrutan Användare](common/user-properties.png)
 
-    a. I fältet **Namn** anger du **BrittaSimon** .
+    a. I fältet **Namn** anger du **BrittaSimon**.
   
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
 
-    d. Klicka på **Skapa** .
+    d. Klicka på **Skapa**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
 I det här avsnittet ska göra det möjligt för Britta Simon att använda Azure enkel inloggning genom att ge åtkomst till Zscaler Internet Access Administrator.
 
-1. På Azure-portalen väljer du **Företagsprogram** , väljer **Alla program** och sedan **Zscaler Internet Access Administrator** .
+1. På Azure-portalen väljer du **Företagsprogram**, väljer **Alla program** och sedan **Zscaler Internet Access Administrator**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
-2. I listan med program anger och väljer du **Zscaler Internet Access Administrator** .
+2. I listan med program anger och väljer du **Zscaler Internet Access Administrator**.
 
     ![Länken Zscaler Internet Access Administrator i listan med program](common/all-applications.png)
 
-3. På menyn till vänster väljer du **Användare och grupper** .
+3. På menyn till vänster väljer du **Användare och grupper**.
 
     ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning** .
+4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning**.
 
     ![Fönstret Lägg till tilldelning](common/add-assign-user.png)
 
@@ -236,7 +236,7 @@ I det här avsnittet ska göra det möjligt för Britta Simon att använda Azure
 
 6. Om du förväntar dig ett roll värde i SAML-kontrollen väljer du lämplig roll för användaren i listan i dialog rutan **Välj roll** och klickar sedan på knappen **Välj** längst ned på skärmen.
 
-7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela** .
+7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela**.
 
 ### <a name="create-zscaler-internet-access-administrator-test-user"></a>Skapa testanvändare för Zscaler Internet Access Administrator
 

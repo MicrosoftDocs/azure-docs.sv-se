@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: b8560c4890855683e6ebb1c05383db8aa89988c0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5cbfdd57ebd25da013bfb82b761839b1e74ee012
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017652"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609028"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Självstudie: Konfigurera arbets dag för automatisk användar etablering
 
@@ -25,7 +25,6 @@ Syftet med den här självstudien är att visa de steg som du måste utföra fö
 >Använd den här självstudien om de användare som du vill etablera från Workday behöver ett lokalt AD-konto och ett Azure AD-konto. 
 >* Om användarna från Workday bara behöver Azure AD-konto (endast molnbaserade användare) kan du läsa självstudien om hur du [konfigurerar arbets dag till Azure AD](workday-inbound-cloud-only-tutorial.md) -etableringen. 
 >* Om du vill konfigurera tillbakaskrivning av attribut, till exempel e-postadress, användar namn och telefonnummer från Azure AD till Workday, kan du läsa självstudien om hur du [konfigurerar tillbakaskrivning av workday](workday-writeback-tutorial.md).
-
 
 ## <a name="overview"></a>Översikt
 
@@ -112,7 +111,7 @@ Ett gemensamt krav på alla tilldelnings anslutningar för arbets dagar är att 
    >[!div class="mx-imgBorder"] 
    >![Skapa användare](./media/workday-inbound-tutorial/wd_isu_01.png "Skapa användare")
 2. Slutför **användar uppgiften skapa integrations system** genom att ange ett användar namn och lösen ord för en ny integrations system användare.  
-  
+
    * Lämna alternativet **Kräv nytt lösen ord vid nästa inloggning** omarkerat, eftersom den här användaren kommer att logga in program mässigt.
    * Lämna timeout-värdet i **sessionen** med standardvärdet 0, vilket hindrar användarens sessioner från timeout för tidigt.
    * Välj alternativet **Tillåt inte UI-sessioner** eftersom det ger ett extra säkerhets lager som förhindrar att en användare med lösen ordet för integrations systemet loggar in på arbets dagen.
@@ -164,7 +163,7 @@ I det här steget beviljar du princip behörigheter för domän säkerhet för W
    * *Worker-data: aktuell bemannings information*
    * *Worker-data: affärs titel i arbets profil*
    * *Workday-konton*
-   
+
      >[!div class="mx-imgBorder"]
      >![Skärm bild som visar rapporten säkerhets konfiguration för domän med det externa kontot i text rutan domän.](./media/workday-inbound-tutorial/wd_isu_07.png "Domän säkerhets principer")  
 
@@ -218,7 +217,7 @@ I det här steget ska du bevilja princip behörigheter för affärs processer f�
    >![Skärm bild som visar sidan "redigera säkerhets princip för affärs process" och "arbets kontakt ändring" som valts i menyn "typ av affärs process".](./media/workday-inbound-tutorial/wd_isu_13.png "Säkerhets principer för affärs processer")  
 
 3. På sidan **Redigera säkerhets princip för affärs process** bläddrar du till avsnittet **ändra arbets kontakt information (webb tjänst)** .
-    
+
 
 4. Välj och Lägg till den nya säkerhets gruppen för integrerings systemet i listan över säkerhets grupper som kan initiera begäran om webb tjänster. 
 
@@ -250,9 +249,9 @@ När du har identifierat Windows Server som ska vara värd för etablerings agen
 
 ### <a name="permissions-required-to-configure-the-provisioning-agent-service"></a>Behörigheter som krävs för att konfigurera etablerings Agent tjänsten
 Använd stegen nedan för att konfigurera ett tjänst konto som kan användas för etablering av agent åtgärder. 
-1.  Öppna snapin-modulen *Active Directory användare och datorer* på AD-domänkontrollanten. 
-2.  Skapa en ny domän användare (exempel: *provAgentAdmin*)  
-3.  Högerklicka på ORGANISATIONSENHETen eller domän namnet och välj *delegera kontroll* som ska öppna *guiden Delegera kontroll*. 
+1. Öppna snapin-modulen *Active Directory användare och datorer* på AD-domänkontrollanten. 
+2. Skapa en ny domän användare (exempel: *provAgentAdmin*)  
+3. Högerklicka på ORGANISATIONSENHETen eller domän namnet och välj *delegera kontroll* som ska öppna *guiden Delegera kontroll*. 
 
 > [!NOTE] 
 > Om du vill begränsa etablerings agenten till att endast skapa och läsa användare från en viss ORGANISATIONSENHET i testnings syfte, rekommenderar vi att du delegerar kontrollen på rätt ORGANISATIONSENHET under test körningarna.
@@ -269,8 +268,7 @@ Använd stegen nedan för att konfigurera ett tjänst konto som kan användas f�
    >[!div class="mx-imgBorder"]
    >![Skärmen uppgifter](./media/workday-inbound-tutorial/delegation-wizard-02.png "Skärmen uppgifter")
 
-7. Klicka på **Nästa** och **Spara** konfigurationen
-
+7. Klicka på **Nästa** och **Spara** konfigurationen.
 
 ## <a name="configuring-user-provisioning-from-workday-to-active-directory"></a>Konfigurera användar etablering från arbets dagar till Active Directory
 
@@ -305,7 +303,6 @@ Det här avsnittet innehåller steg för etablering av användar konton från ar
    >[!div class="mx-imgBorder"]
    >![Hämta agent](./media/workday-inbound-tutorial/pa-download-agent.png "Ladda ned agent skärm")
 
-
 ### <a name="part-2-install-and-configure-on-premises-provisioning-agents"></a>Del 2: installera och konfigurera lokala etablerings agenter
 
 För att etablera till Active Directory lokalt måste etablerings agenten installeras på en server som har .NET 4.7.1 + Framework och nätverks åtkomst till önskad Active Directory domän (er).
@@ -322,12 +319,12 @@ För att etablera till Active Directory lokalt måste etablerings agenten instal
 
    >[!div class="mx-imgBorder"]
    >![Installations skärm](./media/workday-inbound-tutorial/pa_install_screen_1.png "Installations skärm")
-   
+
 1. När installationen är klar startas guiden och du kan se fönstret **Anslut Azure AD** . Klicka på knappen **autentisera** för att ansluta till Azure AD-instansen.
 
    >[!div class="mx-imgBorder"]
    >![Ansluta till Azure Active Directory](./media/workday-inbound-tutorial/pa_install_screen_2.png "Ansluta till Azure Active Directory")
-   
+
 1. Autentisera till Azure AD-instansen med autentiseringsuppgifter för Hybrid identitets administratör.
 
    >[!div class="mx-imgBorder"]
@@ -340,12 +337,12 @@ För att etablera till Active Directory lokalt måste etablerings agenten instal
 
    >[!div class="mx-imgBorder"]
    >![Lägg till katalog](./media/workday-inbound-tutorial/pa_install_screen_4.png "Lägg till katalog")
-  
+
 1. Nu uppmanas du att ange de autentiseringsuppgifter som krävs för att ansluta till AD-domänen. På samma skärm kan du använda **prioriteten Välj** domänkontrollant för att ange domänkontrollanter som agenten ska använda för att skicka etablerings begär Anden.
 
    >[!div class="mx-imgBorder"]
    >![Domänautentiseringsuppgifter](./media/workday-inbound-tutorial/pa_install_screen_5.png)
-   
+
 1. När du har konfigurerat domänen visas en lista över konfigurerade domäner i installations programmet. På den här skärmen kan du upprepa steg #5 och #6 för att lägga till fler domäner eller klicka på **Nästa** för att fortsätta med agent registreringen.
 
    >[!div class="mx-imgBorder"]
@@ -354,22 +351,22 @@ För att etablera till Active Directory lokalt måste etablerings agenten instal
    > [!NOTE]
    > Om du har flera AD-domäner (t. ex. na.contoso.com, emea.contoso.com) lägger du till varje domän separat i listan.
    > Det räcker bara att lägga till den överordnade domänen (t. ex. contoso.com). Du måste registrera varje underordnad domän med agenten.
-   
+
 1. Granska konfigurations informationen och klicka på **Bekräfta** för att registrera agenten.
-  
+
    >[!div class="mx-imgBorder"]
    >![Bekräfta skärm](./media/workday-inbound-tutorial/pa_install_screen_7.png "Bekräfta skärm")
-   
+
 1. Konfigurations guiden visar förloppet för agent registreringen.
-  
+
    >[!div class="mx-imgBorder"]
    >![Agent registrering](./media/workday-inbound-tutorial/pa_install_screen_8.png "Agent registrering")
-   
+
 1. När agent registreringen är klar kan du klicka på **Avsluta** för att avsluta guiden.
 
    >[!div class="mx-imgBorder"]
    >![Avsluta skärm](./media/workday-inbound-tutorial/pa_install_screen_9.png "Avsluta skärm")
-   
+
 1. Verifiera installationen av agenten och se till att den körs genom att öppna tjänsten "tjänster" Snap-In och leta efter tjänsten "Microsoft Azure AD Connect Provisioning agent"
 
    >[!div class="mx-imgBorder"]
@@ -387,7 +384,7 @@ I det här steget upprättar vi anslutningen till arbets dagar och Active Direct
    * **Lösen ord för arbets dag –** Ange lösen ordet för system kontot för Workday-integrering
 
    * **URL för Workday webb tjänster-API –** Ange URL: en till slut punkten för webb tjänster för arbets dag för din klient. URL: en avgör vilken version av webb tjänstens API för Workday som används av anslutningen. 
-   
+
      | URL-format | WWS-API-version som används | XPATH-ändringar krävs |
      |------------|----------------------|------------------------|
      | https://####.workday.com/ccx/service/tenantName | v-21.1 | No |
@@ -403,7 +400,7 @@ I det här steget upprättar vi anslutningen till arbets dagar och Active Direct
 
    * **Active Directory container –** Ange behållar-DN där agenten ska skapa användar konton som standard.
         Exempel: *OU = standard användare, OU = användare, DC = contoso, DC = test*
-        
+
      > [!NOTE]
      > Den här inställningen kommer bara att spelas upp för att skapa användar konton om attributet *parentDistinguishedName* inte har kon figurer ATS i mappningarna för attribut. Den här inställningen används inte för användar Sök-eller uppdaterings åtgärder. Hela domänens under träd omfattas av Sök åtgärdens omfång.
 
@@ -446,7 +443,7 @@ I det här avsnittet ska du konfigurera hur användar data flödar från arbets 
 
    > [!CAUTION] 
    > Standard beteendet för etablerings motorn är att inaktivera/ta bort användare som omfattas av omfånget. Detta kanske inte är önskvärt i din arbets dag till AD-integrering. Om du vill åsidosätta det här standard beteendet läser du artikeln [hoppa över borttagning av användar konton som omfattas av omfånget](../app-provisioning/skip-out-of-scope-deletions.md)
-  
+
 1. I fältet **mål objekts åtgärder** kan du globalt filtrera vilka åtgärder som utförs på Active Directory. **Skapa** och **Uppdatera** är de vanligaste.
 
 1. I avsnittet **mappningar för attribut** kan du definiera hur enskilda Workday-attribut mappar ska Active Directory attribut.
@@ -510,7 +507,7 @@ I det här avsnittet ska du konfigurera hur användar data flödar från arbets 
 | **CountryReferenceTwoLetter**    |  c  |     |         Skapa + uppdatera |
 | **CountryRegionReference** |  st     |     | Skapa + uppdatera |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  Skapa + uppdatera |
-| **Postnummer**  |   Post nummer  |     | Skapa + uppdatera |
+| **Post nummer**  |   postalCode  |     | Skapa + uppdatera |
 | **PrimaryWorkTelephone**  |  telephoneNumber   |     | Skapa + uppdatera |
 | **Fax**      | facsimileTelephoneNumber     |     |    Skapa + uppdatera |
 | **Mobilt**  |    mobil       |     |       Skapa + uppdatera |
@@ -538,8 +535,6 @@ När du har slutfört konfigurationen av appar för arbets dag etablering kan du
    > [!div class="mx-imgBorder"]
    > ![Förlopps indikator för etablering](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
 
-
-
 ## <a name="frequently-asked-questions-faq"></a>Vanliga frågor och svar
 
 * **Frågor om lösnings kapacitet**
@@ -562,7 +557,7 @@ När du har slutfört konfigurationen av appar för arbets dag etablering kan du
   * [Hur gör jag för att se till att etablerings agenten kan kommunicera med Azure AD-klienten och inga brand väggar blockerar portar som krävs av agenten?](#how-do-i-ensure-that-the-provisioning-agent-is-able-to-communicate-with-the-azure-ad-tenant-and-no-firewalls-are-blocking-ports-required-by-the-agent)
   * [Hur gör jag för att den domän som är kopplad till min etablerings agent?](#how-do-i-de-register-the-domain-associated-with-my-provisioning-agent)
   * [Hur gör jag för att avinstallera etablerings agenten?](#how-do-i-uninstall-the-provisioning-agent)
-  
+
 * **Mappning och konfigurations frågor för Workday till AD-attribut**
   * [Hur gör jag för att säkerhetskopiera eller exportera en arbets kopia av mappningen och schemat för min Workday-etablering](#how-do-i-back-up-or-export-a-working-copy-of-my-workday-provisioning-attribute-mapping-and-schema)
   * [Jag har anpassade attribut i Workday och Active Directory. Hur gör jag för att konfigurerar du lösningen så att den fungerar med mina anpassade attribut?](#i-have-custom-attributes-in-workday-and-active-directory-how-do-i-configure-the-solution-to-work-with-my-custom-attributes)
@@ -604,7 +599,7 @@ Lösningen använder för närvarande följande API: er för arbets dagar:
   * Om URL-formatet är: https:// \# \# \# \# \. Workday \. com/CCX/service/tenantName används API v 21.1. 
   * Om URL-formatet är: https:// \# \# \# \# \. Workday \. com/CCX/service/tenantName/personal- \_ resurser används API v-21.1 
   * Om URL-formatet är: https:// \# \# \# \# \. Workday \. com/CCX/service/tenantName/personal \_ /v \# \# \. \# , används den angivna API-versionen. (Exempel: om v-34.0 anges används den.)  
-   
+
 * Funktionen för e-posttillbakaskrivning i Workday använder Change_Work_Contact_Information (v 30.0) 
 * Funktionen för tillbakaskrivning av workday-användare använder Update_Workday_Account (v 31.2) 
 
@@ -779,7 +774,7 @@ Här kan du hantera sådana krav för att skapa *CN* eller *DisplayName* för at
      | PreferredLastName | WD: Worker/WD: Worker_Data/WD: Personal_Data/WD: Name_Data/WD: Preferred_Name_Data/WD: Name_Detail_Data/WD: Last_Name/text () |
      | Företag | WD: Worker/WD: Worker_Data/WD: Organization_Data/WD: Worker_Organization_Data [WD: Organization_Data/WD: Organization_Type_Reference/WD: ID [ @wd:type = ' Organization_Type_ID '] = ' Company ']/wd:Organization_Reference/@wd:Descriptor |
      | SupervisoryOrganization | WD: Worker/WD: Worker_Data/WD: Organization_Data/WD: Worker_Organization_Data/WD: Organization_Data [WD: Organization_Type_Reference/WD: ID [ @wd:type = ' Organization_Type_ID '] = ' övervakande ']/WD: ORGANIZATION_NAME/text () |
-  
+
    Bekräfta med ditt Workday-team att API-uttrycket ovan är giltigt för din arbets grupps klient konfiguration. Om det behövs kan du redigera dem enligt beskrivningen i avsnittet [Anpassa listan med användar](#customizing-the-list-of-workday-user-attributes)-och Workday-användarattribut.
 
 * På samma sätt hämtas lands-och region information som finns i Workday med följande XPATH: *WD: Worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference*
@@ -995,7 +990,6 @@ Om etablerings tjänsten inte kan ansluta till Workday eller Active Directory ka
 |--|---|---|---|
 |1.| När du klickar på **Testa anslutning** får du ett fel meddelande: *det uppstod ett fel när du anslöt till Active Directory. Kontrol lera att den lokala etablerings agenten körs och att den är konfigurerad med rätt Active Directory domän.* | Det här felet visas vanligt vis om etablerings agenten inte körs eller om en brand vägg blockerar kommunikationen mellan Azure AD och etablerings agenten. Du kan också se det här felet om domänen inte har kon figurer ATS i agent guiden. | Öppna konsolen *tjänster* på Windows-servern för att bekräfta att agenten körs. Öppna guiden för etablerings agent och bekräfta att rätt domän är registrerad hos agenten.  |
 |2.| Etablerings jobbet går i karantäns tillstånd över helgerna (fre – söt) och vi får ett e-postmeddelande om att det finns ett fel i synkroniseringen. | En av de vanligaste orsakerna till felet är planerade Workday-driftstopp. Om du använder en klient för implementering av Workday ska du notera att Workday har schemalagt driftstopp för sina implementeringsklienter under helger (vanligtvis från fredag kväll till lördag morgon). Under den perioden kan Workday-etableringsappar försättas i karantäntillstånd eftersom det inte går att ansluta till Workday. Workday återfår sitt normala tillstånd när Workday-implementeringsklienten är online igen. I sällsynta fall kan du också se det här felet om lösenordet för integreringssystemanvändaren har ändrats på grund av uppdatering av klienten eller om kontot är låst eller har upphört att gälla. | Kontakta din Workday-administratör eller integreringspartner för att höra efter när Workday schemalägger driftstopp. Sedan kan du ignorera varningsmeddelanden under driftstoppsperioden och få en bekräftelse om tillgänglighet när Workday-instansen är online igen.  |
-
 
 #### <a name="ad-user-account-creation-errors"></a>Fel när AD-användarkonto skapades
 

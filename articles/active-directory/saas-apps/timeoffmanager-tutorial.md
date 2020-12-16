@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 0adb8d62d02325f92c77d2171eaafd6c2de16f0c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 849236b9ac33cec92cc145bb32b4271b73476057
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516357"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608824"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-timeoffmanager"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med TimeOffManager
 
@@ -28,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar TimeOffManager med 
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att komma igång behöver du följande objekt:
 
@@ -55,7 +55,7 @@ Om du vill konfigurera integreringen av TimeOffManager i Azure AD måste du läg
 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , skriver du **TimeOffManager** i sökrutan.
 1. Välj **TimeOffManager** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -96,7 +96,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Utöver ovan förväntar sig TimeOffManager-programmet att fler attribut skickas tillbaka i SAML-svar som visas nedan. Dessa attribut är också förifyllda, men du kan granska dem efter behov.
 
-    | Namn | Källattribut|
+    | Name | Källattribut|
     | --- | --- |
     | Förnamn |User. givenName |
     | Efternamn |Användare. efter namn |
@@ -114,11 +114,11 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare**och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -126,13 +126,13 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till TimeOffManager.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **TimeOffManager**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-1. Välj **Lägg till användare**och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 
     ![Länken Lägg till användare](common/add-assign-user.png)
 
@@ -158,9 +158,9 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
    
     c. I text rutan **URL för IDP-slutpunkt** klistrar du in värdet för **inloggnings-URL: en** som du har kopierat från Azure Portal.
    
-    d. Som **FRAMTVINGA SAML**väljer du **Nej**.
+    d. Som **FRAMTVINGA SAML** väljer du **Nej**.
    
-    e. Välj **Ja**som **skapa användare automatiskt**.
+    e. Välj **Ja** som **skapa användare automatiskt**.
    
     f. I text rutan **Logga ut URL** klistrar du in värdet för den **utloggnings-URL** som du har kopierat från Azure Portal.
    
@@ -168,7 +168,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 4. På sidan **Inställningar för enkel inloggning** kopierar du värdet för **URL: en för den försäkrans konsument tjänst** och klistrar in den i text rutan **svars-URL** i avsnittet **grundläggande SAML-konfiguration** i Azure Portal. 
 
-      ![Skärm bild som visar "U R L"-länken för intygs konsumenten.](./media/timeoffmanager-tutorial/ic795915.png "Inställningar för enskilda Sign-On")
+    ![Skärm bild som visar "U R L"-länken för intygs konsumenten.](./media/timeoffmanager-tutorial/ic795915.png "Inställningar för enskilda Sign-On")
 
 ### <a name="create-timeoffmanager-test-user"></a>Skapa TimeOffManager test användare
 

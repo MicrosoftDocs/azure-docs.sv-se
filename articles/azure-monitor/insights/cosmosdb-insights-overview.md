@@ -5,12 +5,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: dcd64cf779b931dbf3b4f743844071835e0b8c91
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 5e40f91945f83af7880f272f1578370f2ee1ec42
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932064"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608501"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Utforska Azure Monitor för Azure Cosmos DB
 
@@ -49,7 +49,7 @@ Utför följande steg för att visa användning och prestanda för dina lagrings
 
 ### <a name="overview"></a>Översikt
 
-I **Översikt**visar tabellen interaktiva Azure Cosmos DB mått. Du kan filtrera resultaten baserat på de alternativ du väljer i följande List rutor:
+I **Översikt** visar tabellen interaktiva Azure Cosmos DB mått. Du kan filtrera resultaten baserat på de alternativ du väljer i följande List rutor:
 
 * **Prenumerationer – endast** prenumerationer som har en Azure Cosmos DB resurs visas.  
 
@@ -71,7 +71,7 @@ Välj **felen** överst på sidan och **felen** i arbets bokens mall öppnas. De
 
 ![Skärm bild av problem med nedbrytning efter HTTP-begäran](./media/cosmosdb-insights-overview/failures.png)
 
-| Kod      |  Beskrivning       | 
+| Kod |  Beskrivning       | 
 |-----------|:--------------------|
 | `200 OK`  | En av följande REST-åtgärder lyckades: </br>– Hämta på en resurs. </br> – PUBLICERA på en resurs. </br> – PUBLICERA på en resurs. </br> – PUBLICERA på en lagrad procedur resurs för att köra den lagrade proceduren.|
 | `201 Created` | En POST-åtgärd för att skapa en resurs har slutförts. |
@@ -87,7 +87,7 @@ Välj **kapacitet** överst på sidan och **kapacitets** delen i arbets boks mal
 
 Precis som med översikts arbets boken kan du välja den nedrullningsbara List rutan bredvid en Azure Cosmos DB-resurs i kolumnen **prenumeration** för att visa en uppdelning av de enskilda behållare som utgör databasen.
 
-### <a name="operations"></a>Åtgärder 
+### <a name="operations"></a>Operations 
 
 Välj **åtgärder** överst på sidan och **drift** delen av arbets bokens mall öppnas. Det ger dig möjlighet att se dina begär Anden uppdelade efter den typ av förfrågningar som görs. 
 

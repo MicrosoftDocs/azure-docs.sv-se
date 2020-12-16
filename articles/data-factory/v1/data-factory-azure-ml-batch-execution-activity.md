@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: c65ef2eb25f330f645048cdc73371d98d8c2ce91
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: c04c94ef2a73085b982fde3efefecea351b083af
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508480"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608076"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>Skapa förutsägande pipelines med Azure Machine Learning Studio (klassisk) och Azure Data Factory
 
@@ -183,7 +183,7 @@ Vi rekommenderar att du går igenom den [första pipelinen med Data Factory][adf
    }
    ```
 
-   CSV-filen med indata måste ha kolumn rubrik raden. Om du använder **kopierings aktiviteten** för att skapa/flytta CSV-filen till blob-lagringen bör du ange egenskapen **blobWriterAddHeader** till **True**. Till exempel:
+   CSV-filen med indata måste ha kolumn rubrik raden. Om du använder **kopierings aktiviteten** för att skapa/flytta CSV-filen till blob-lagringen bör du ange egenskapen **blobWriterAddHeader** till **True**. Exempel:
 
    ```json
    sink:
@@ -269,7 +269,7 @@ Vi rekommenderar att du går igenom den [första pipelinen med Data Factory][adf
         "properties": {
           "description": "use AzureML model",
           "activities": [
-              {
+            {
               "name": "MLActivity",
               "type": "AzureMLBatchExecution",
               "description": "prediction analysis on batch input",
@@ -301,7 +301,7 @@ Vi rekommenderar att du går igenom den [första pipelinen med Data Factory][adf
           ],
           "start": "2016-02-13T00:00:00Z",
           "end": "2016-02-14T00:00:00Z"
-          }
+        }
       }
       ```
 

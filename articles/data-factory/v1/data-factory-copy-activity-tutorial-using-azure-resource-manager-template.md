@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 831da4153eebc798265493441ee72c041901904f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a007e64a7bd034397c2030c435a5ad349bd4acc7
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87053897"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608756"
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>Självstudier: Använd Azure Resource Manager-mall för att skapa Data Factory-pipeline för att kopiera data 
 > [!div class="op_single_selector"]
@@ -341,46 +341,58 @@ Skapa en JSON-fil med namnet **ADFCopyTutorialARM-Parameters.json** som innehål
 ## <a name="monitor-pipeline"></a>Övervaka pipeline
 
 1. Logga in på [Azure Portal](https://portal.azure.com) med ditt Azure-konto.
-2. Klicka på **Datafabriker** på den vänstra menyn (eller) klicka på **Alla tjänster** och klicka på **Datafabriker** under kategorin **INFORMATION + ANALYS**.
+
+1. Klicka på **Datafabriker** på den vänstra menyn (eller) klicka på **Alla tjänster** och klicka på **Datafabriker** under kategorin **INFORMATION + ANALYS**.
    
     ![Menyn Datafabriker](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factories-menu.png)
-3. På sidan **Datafabriker** kan du söka efter och hitta din datafabrik (AzureBlobToAzureSQLDatabaseDF). 
+
+1. På sidan **Datafabriker** kan du söka efter och hitta din datafabrik (AzureBlobToAzureSQLDatabaseDF). 
    
     ![Sök efter datafabrik](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/search-for-data-factory.png)  
-4. Klicka på din Azure-datafabrik. Du kan se startsidan för datafabriken.
+
+1. Klicka på din Azure-datafabrik. Du kan se startsidan för datafabriken.
    
     ![Datafabrikens startsida](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factory-home-page.png)  
-6. Se [Övervaka datauppsättningar och pipeline](data-factory-monitor-manage-pipelines.md) för instruktioner om hur övervakar en pipeline och datauppsättningar som du har skapat i den här självstudien. Visual Studio stöder för närvarande inte övervakning av Data Factory-pipelines.
-7. När en sektor har statusen **klar** kontrollerar du att data har kopierats till tabellen **EMP** i Azure SQL Database.
 
+1. Se [Övervaka datauppsättningar och pipeline](data-factory-monitor-manage-pipelines.md) för instruktioner om hur övervakar en pipeline och datauppsättningar som du har skapat i den här självstudien. Visual Studio stöder för närvarande inte övervakning av Data Factory-pipelines.
+
+1. När en sektor har statusen **klar** kontrollerar du att data har kopierats till tabellen **EMP** i Azure SQL Database.
 
 Se [Övervaka datauppsättningar och pipeline](data-factory-monitor-manage-pipelines.md) för instruktioner om hur du använder Azures portalblad till att övervaka pipelinen och datauppsättningar som du har skapat i den här självstudien.
 
 Mer information om hur du använder övervaknings- och hanteringsappen för att övervaka dina data-pipelines finns i [Övervaka och hantera Azure Data Factory-pipelines med övervakningsappen](data-factory-monitor-manage-app.md).
 
 ## <a name="data-factory-entities-in-the-template"></a>Data Factory-entiteter i mallen
+
 ### <a name="define-data-factory"></a>Definiera en datafabrik
-Du definierar en datafabrik i Resource Manager-mallen enligt följande exempel:  
+
+Du definierar en datafabrik i Resource Manager-mallen enligt följande exempel:
 
 ```json
-"resources": [
 {
-    "name": "[variables('dataFactoryName')]",
-    "apiVersion": "2015-10-01",
-    "type": "Microsoft.DataFactory/datafactories",
-    "location": "West US"
+  "resources": [
+    {
+      "name": "[variables('dataFactoryName')]",
+      "apiVersion": "2015-10-01",
+      "type": "Microsoft.DataFactory/datafactories",
+      "location": "West US"
+    }
+  ]
 }
 ```
 
 DataFactoryName definieras som: 
 
 ```json
-"dataFactoryName": "[concat('AzureBlobToAzureSQLDatabaseDF', uniqueString(resourceGroup().id))]"
+{
+    "dataFactoryName": "[concat('AzureBlobToAzureSQLDatabaseDF', uniqueString(resourceGroup().id))]"
+}
 ```
 
-Det är en unik sträng som baseras på resursgruppens ID.  
+Det är en unik sträng som baseras på resursgruppens ID.
 
 ### <a name="defining-data-factory-entities"></a>Definiera Data Factory-entiteter
+
 Följande Data Factory-entiteter har definierats i JSON-mallen: 
 
 1. [Azure Storage länkad tjänst](#azure-storage-linked-service)
@@ -390,6 +402,7 @@ Följande Data Factory-entiteter har definierats i JSON-mallen:
 5. [Datapipeline med en kopieringsaktivitet](#data-pipeline)
 
 #### <a name="azure-storage-linked-service"></a>Länkad Azure-lagringstjänst
+
 AzureStorageLinkedService länkar ditt Azure Storage-konto till datafabriken. Du har skapat en container och överfört data till det här lagringskontot som en del av [förhandskraven](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). Du anger namnet och nyckeln för Azure Storage-kontot i det här avsnittet. Se [Länkad Azure Storage-tjänst](data-factory-azure-blob-connector.md#azure-storage-linked-service) om du vill ha information om JSON-egenskaper som används för att definiera en länkad Azure Storage-tjänst. 
 
 ```json
@@ -413,6 +426,7 @@ AzureStorageLinkedService länkar ditt Azure Storage-konto till datafabriken. Du
 connectionString använder parametrarna storageAccountName och storageAccountKey. Värdena för dessa parametrar skickades med hjälp av en konfigurationsfil. Definitionen använder också variablerna azureStorageLinkedService och dataFactoryName, som definieras i mallen. 
 
 #### <a name="azure-sql-database-linked-service"></a>Länkad Azure SQL Database-tjänst
+
 AzureSqlLinkedService länkar din databas i Azure SQL Database till data fabriken. Data som kopieras från blob-lagringen sparas i den här databasen. Du har skapat den tomma tabellen i den här databasen som en del av [förhandskraven](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). Du anger det logiska SQL Server-namnet, databas namnet, användar namnet och användar lösen ordet i det här avsnittet. Se [Länkad Azure SQL-tjänst](data-factory-azure-sql-connector.md#linked-service-properties) om du vill ha information om JSON-egenskaper som används för att definiera en länkad Azure SQL-tjänst.  
 
 ```json
@@ -424,11 +438,11 @@ AzureSqlLinkedService länkar din databas i Azure SQL Database till data fabrike
     ],
     "apiVersion": "2015-10-01",
     "properties": {
-          "type": "AzureSqlDatabase",
-          "description": "Azure SQL linked service",
-          "typeProperties": {
-            "connectionString": "[concat('Server=tcp:',parameters('sqlServerName'),'.database.windows.net,1433;Database=', parameters('databaseName'), ';User ID=',parameters('sqlServerUserName'),';Password=',parameters('sqlServerPassword'),';Trusted_Connection=False;Encrypt=True;Connection Timeout=30')]"
-          }
+      "type": "AzureSqlDatabase",
+      "description": "Azure SQL linked service",
+      "typeProperties": {
+        "connectionString": "[concat('Server=tcp:',parameters('sqlServerName'),'.database.windows.net,1433;Database=', parameters('databaseName'), ';User ID=',parameters('sqlServerUserName'),';Password=',parameters('sqlServerPassword'),';Trusted_Connection=False;Encrypt=True;Connection Timeout=30')]"
+      }
     }
 }
 ```

@@ -17,12 +17,12 @@ ms.date: 12/15/2020
 ms.author: markvi
 ms.reviewer: tspring
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6aedf41fbf1ed0d70467a2efe97431fdecaa4fa
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e85de1edd94a0430a4b28b332d9e43b967afba76
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585928"
+ms.locfileid: "97608926"
 ---
 # <a name="what-is-sign-in-diagnostic-in-azure-ad"></a>Vad är inloggnings diagnostik i Azure AD?
 
@@ -35,7 +35,7 @@ Den här artikeln ger en översikt över vad lösningen gör och hur du kan anv�
 
 ## <a name="requirements"></a>Krav
 
-Den diagnostiska inloggningen är tillgänglig i alla versioner av Azure AD.<br> Du måste vara global administratör i Azure AD för att kunna använda den.
+Inloggnings-diagnostiken är tillgänglig i alla versioner av Azure AD.<br> Du måste vara global administratör i Azure AD för att kunna använda den.
 
 ## <a name="how-it-works"></a>Så här fungerar det
 

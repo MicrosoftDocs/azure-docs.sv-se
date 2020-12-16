@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: ae3ffb9dc387129153b684a849ba4e58274ad80c
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 0018b7bafa8ff2ecd328a150df752082c85484e2
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563287"
+ms.locfileid: "97608518"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Kontinuerlig leverans med hjälp av GitHub-åtgärd
 
 Använd [GitHub-åtgärder](https://github.com/features/actions) för att definiera ett arbets flöde som automatiskt skapar och distribuerar kod till din Azure Function-app. 
 
-I GitHub-åtgärder är ett [arbets flöde](https://help.github.com/articles/about-github-actions#workflow) en automatiserad process som du definierar i din GitHub-lagringsplats. Den här processen visar GitHub hur du skapar och distribuerar dina Functions-AppData på GitHub. 
+I GitHub-åtgärder är ett [arbets flöde](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) en automatiserad process som du definierar i din GitHub-lagringsplats. Den här processen visar GitHub hur du skapar och distribuerar dina Functions-AppData på GitHub. 
 
 Ett arbets flöde definieras av en YAML-fil (. yml) i `/.github/workflows/` sökvägen i lagrings platsen. Den här definitionen innehåller de olika stegen och parametrarna som utgör arbets flödet. 
 
@@ -29,7 +29,7 @@ För ett Azure Functions-arbetsflöde har filen tre delar:
 | **Skapa** | Konfigurera miljön.<br/>Bygg in Function-appen.|
 | **Distribuera** | Distribuera Function-appen.|
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Ett GitHub-konto. Om du inte har någon kan du registrera dig [kostnads fritt](https://github.com/join).  
@@ -40,7 +40,7 @@ För ett Azure Functions-arbetsflöde har filen tre delar:
 
 Det rekommenderade sättet att autentisera med Azure Functions för GitHub-åtgärder är genom att använda en publicerings profil. Du kan också autentisera med ett huvud namn för tjänsten. Läs mer i [den här GitHub Actions-lagringsplatsen](https://github.com/Azure/functions-action). 
 
-När du har sparat autentiseringsuppgifterna för publicerings profilen som [GitHub-hemlighet](https://docs.github.com/en/actions/reference/encrypted-secrets)använder du den här hemligheten i arbets flödet för att autentisera med Azure. 
+När du har sparat autentiseringsuppgifterna för publicerings profilen som [GitHub-hemlighet](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets)använder du den här hemligheten i arbets flödet för att autentisera med Azure. 
 
 #### <a name="download-your-publish-profile"></a>Ladda ned din publicerings profil
 

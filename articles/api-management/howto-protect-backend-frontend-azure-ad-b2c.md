@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new, devx-track-js
-ms.openlocfilehash: aa3bce73d2a91538dff0fdeb9e0eb814d878459a
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: b157200b03bdc89e00bfa5c8264d78baf24875c1
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676021"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609130"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Skydda SPA-backend med OAuth 2,0, Azure Active Directory B2C och Azure API Management
 
@@ -31,7 +31,7 @@ Vi ska se hur API Management kan användas i ett förenklat scenario med Azure F
 
 För att få skydd i djupet använder vi EasyAuth för att validera token igen inuti Server dels-API: et.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 För att följa stegen i den här artikeln måste du ha:
 * Ett Azure (StorageV2) Generell användning v2-lagrings konto som värd för frontend JS-appen med en sida
 * En Azure API Management-instans 
@@ -180,7 +180,7 @@ Du måste lägga till CIDR-formaterade block med adresser i panelen IP-begränsn
    > Nu ska funktions-API: et inte kunna anropas från någon annan stans än via API Management eller din adress.
    
 ## <a name="import-the-function-app-definition"></a>Importera Function-appens definition
-1. Öppna *bladet API Management* och öppna sedan *instansen* .
+1. Öppna *bladet API Management* och öppna sedan *instansen*.
 1. Välj bladet API: er från API Management avsnittet i din instans.
 1. I fönstret Lägg till ett nytt API väljer du Funktionsapp och väljer sedan fullständig längst upp i popup-fönstret.
 1. Klicka på Bläddra, Välj den app som du är värd för API: et i och klicka på Välj.
@@ -396,7 +396,8 @@ Du måste lägga till CIDR-formaterade block med adresser i panelen IP-begränsn
                     // Make the api call here
                 $.ajax({
                     type: "get",
-                    headers: {'Authorization': 'Bearer ' + token, 'Ocp-Apim-Subscription-Key': applicationConfig.subKey},                   url: applicationConfig.webApi
+                    headers: {'Authorization': 'Bearer ' + token, 'Ocp-Apim-Subscription-Key': applicationConfig.subKey},
+                    url: applicationConfig.webApi
                 }
                 ).done(function (body) {
                     document.getElementById("message").innerHTML = "The API Said " + body;

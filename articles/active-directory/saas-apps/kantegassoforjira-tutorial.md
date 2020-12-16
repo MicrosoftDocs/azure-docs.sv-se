@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 7d32fdd77fded90dc998db645aa6dcac2b502eb2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 9643d0e63e85a9b500021a415e3cdaf3edc756c5
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459177"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608739"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-jira"></a>Självstudie: Azure Active Directory integrering med Kantega SSO för JIRA
 
@@ -30,7 +30,7 @@ Genom att integrera Kantega SSO för JIRA med Azure AD får du följande fördel
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill konfigurera Azure AD-integrering med Kantega SSO för JIRA behöver du följande objekt:
 
@@ -162,31 +162,31 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Ka
 
 1. Välj prenumerations nivå som **Basic**.
 
-    ![Skärm bild som visar avsnittet "förbereda Azure A D" med Basic-valt.](./media/kantegassoforjira-tutorial/addon5.png)     
+    ![Skärm bild som visar avsnittet "förbereda Azure A D" med Basic-valt.](./media/kantegassoforjira-tutorial/addon5.png)
 
 1. I avsnittet **app Properties** utför du följande steg: 
 
     ![Skärm bild som visar avsnittet "app Properties" med text rutan "app I D U R L" och kopierings knappen markerad, och knappen "Nästa" är markerad.](./media/kantegassoforjira-tutorial/addon6.png)
 
-    a. Kopiera **app-ID-URI** -värdet och Använd det som **identifierare, svars-URL och Sign-On URL** i avsnittet **grundläggande SAML-konfiguration** i Azure Portal.
+    1. Kopiera **app-ID-URI** -värdet och Använd det som **identifierare, svars-URL och Sign-On URL** i avsnittet **grundläggande SAML-konfiguration** i Azure Portal.
 
-    b. Klicka på **Nästa**.
+    1. Klicka på **Nästa**.
 
 1. I avsnittet **metadata-import** utför du följande steg: 
 
     ![Skärm bild som visar avsnittet "metadata-import" med "metadatafil" på den här datorn "markerat.](./media/kantegassoforjira-tutorial/addon7.png)
 
-    a. Välj **metadatafil på den här datorn**och ladda upp metadatafilen, som du har laddat ned från Azure Portal.
+    1. Välj **metadatafil på den här datorn** och ladda upp metadatafilen, som du har laddat ned från Azure Portal.
 
-    b. Klicka på **Nästa**.
+    1. Klicka på **Nästa**.
 
 1. I avsnittet **namn och SSO-plats** utför du följande steg:
 
     ![Skärm bild som visar "namn och S O-plats" med text rutan "namn på identitetsprovider" och "Nästa"-knappen markerad.](./media/kantegassoforjira-tutorial/addon8.png)
 
-    a. Lägg till namnet på identitets leverantören i text rutan för **identitets leverantörs namn** (t. ex. Azure AD).
+    1. Lägg till namnet på identitets leverantören i text rutan för **identitets leverantörs namn** (t. ex. Azure AD).
 
-    b. Klicka på **Nästa**.
+    1. Klicka på **Nästa**.
 
 1. Verifiera signerings certifikatet och klicka på **Nästa**.
 
@@ -196,9 +196,9 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Ka
 
     ![Skärm bild som visar "JIRA User Accounts" med alternativet "skapa användare i JIRAs interna katalog om det behövs" och knappen "Nästa" är markerad.](./media/kantegassoforjira-tutorial/addon10.png)
 
-    a. Välj **skapa användare i JIRA interna katalog om det behövs** och ange rätt namn på gruppen för användare (kan vara flera). av grupper åtskilda med kommatecken).
+    1. Välj **skapa användare i JIRA interna katalog om det behövs** och ange rätt namn på gruppen för användare (kan vara flera). av grupper åtskilda med kommatecken).
 
-    b. Klicka på **Nästa**.
+    1. Klicka på **Nästa**.
 
 1. Klicka på **Finish**.
 
@@ -208,11 +208,11 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Ka
 
     ![Konfigurera enkel inloggning](./media/kantegassoforjira-tutorial/addon12.png)
 
-    a. Välj **kända domäner** i den vänstra panelen på sidan.
+    1. Välj **kända domäner** i den vänstra panelen på sidan.
 
-    b. Ange domän namn i text rutan för **kända domäner** .
+    2. Ange domän namn i text rutan för **kända domäner** .
 
-    c. Klicka på **Spara**.
+    3. Klicka på **Spara**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
 
@@ -230,19 +230,19 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
     ![Dialogrutan Användare](common/user-properties.png)
 
-    a. I fältet **Namn** anger du **BrittaSimon**.
-  
-    b. I fältet **användar namn** `brittasimon@yourcompanydomain.extension` . Till exempel BrittaSimon@contoso.com
+    1. I fältet **Namn** anger du **BrittaSimon**.
 
-    c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
+    1. I fältet **användar namn** `brittasimon@yourcompanydomain.extension` . Till exempel BrittaSimon@contoso.com
 
-    d. Klicka på **Skapa**.
+    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
+
+    1. Klicka på **Skapa**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Kantega SSO för JIRA.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Kantega SSO för JIRA**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Kantega SSO för JIRA**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -284,15 +284,15 @@ Om du vill att Azure AD-användare ska kunna logga in på JIRA måste de tillhan
 
     ![Lägga till medarbetare](./media/kantegassoforjira-tutorial/user3.png) 
 
-    a. I textrutan för **e-postadress** skriver du användarens e-postadress som Brittasimon@contoso.com.
+    1. I textrutan för **e-postadress** skriver du användarens e-postadress som Brittasimon@contoso.com.
 
-    b. Skriv det fullständiga namnet för användaren, t.ex. Britta Simon, i textrutan **Fullständigt namn**.
+    2. Skriv det fullständiga namnet för användaren, t.ex. Britta Simon, i textrutan **Fullständigt namn**.
 
-    c. Skriv e-postadressen för användaren i textrutan **Användarnamn** som Brittasimon@contoso.com.
+    3. Skriv e-postadressen för användaren i textrutan **Användarnamn** som Brittasimon@contoso.com.
 
-    d. I textrutan **Password** (Lösenord) skriver du lösenordet för användaren.
+    4. I textrutan **Password** (Lösenord) skriver du lösenordet för användaren.
 
-    e. Klicka på **skapa användare**.
+    5. Klicka på **skapa användare**.
 
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning 
 

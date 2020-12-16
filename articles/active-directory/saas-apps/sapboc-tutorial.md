@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 946388fa60e0f6147db2986192392740fa3949f4
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 84b0a761b52baca4ae1ab81b3c67f18f6b14db92
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671836"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608841"
 ---
 # <a name="tutorial-integrate-sap-analytics-cloud-with-azure-active-directory"></a>Självstudie: integrera SAP Analytics-moln med Azure Active Directory
 
@@ -28,7 +28,7 @@ I den här självstudien får du lära dig att integrera SAP Analytics-moln med 
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att komma igång behöver du följande objekt:
 
@@ -47,7 +47,7 @@ Om du vill konfigurera integreringen av SAP Analytics-molnet i Azure AD måste d
 
 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
-1. Navigera till **företags program** och välj sedan **alla program** .
+1. Navigera till **företags program** och välj sedan **alla program**.
 1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , skriver du **SAP Analytics Cloud** i sökrutan.
 1. Välj **moln analys moln** från panelen resultat och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
@@ -55,7 +55,7 @@ Om du vill konfigurera integreringen av SAP Analytics-molnet i Azure AD måste d
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
-Konfigurera och testa Azure AD SSO med SAP Analytics-molnet med hjälp av en test användare som heter **B. Simon** . För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i SAP Analytics-molnet.
+Konfigurera och testa Azure AD SSO med SAP Analytics-molnet med hjälp av en test användare som heter **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i SAP Analytics-molnet.
 
 Om du vill konfigurera och testa Azure AD SSO med SAP Analytics-molnet slutför du följande Bygg stenar:
 
@@ -70,8 +70,8 @@ Om du vill konfigurera och testa Azure AD SSO med SAP Analytics-molnet slutför 
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-1. På sidan för integrering av moln program i **SAP Analytics** i [Azure Portal](https://portal.azure.com/)letar du upp avsnittet **Hantera** och väljer **enkel inloggning** .
-1. På sidan **Välj metod för enkel inloggning** väljer du **SAML** .
+1. På sidan för integrering av moln program i **SAP Analytics** i [Azure Portal](https://portal.azure.com/)letar du upp avsnittet **Hantera** och väljer **enkel inloggning**.
+1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
 1. På sidan **Konfigurera en enskild Sign-On med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
@@ -103,7 +103,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Logga in på din moln företags webbplats för SAP Analytics som administratör i ett annat webbläsarfönster.
 
-2. Välj **meny**  >  **system**  >  **Administration** .
+2. Välj **meny**  >  **system**  >  **Administration**.
     
     ![Välj Meny, sedan System och därefter Administration](./media/sapboc-tutorial/config1.png)
 
@@ -115,11 +115,11 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     ![Välja enkel inloggning med SAML som autentiseringsmetod](./media/sapboc-tutorial/config3.png)  
 
-5. Ladda ned metadata för tjänstleverantör (steg 1) genom att välja **Ladda ned** . I metadatafilen letar du upp och kopierar värdet för **entityID** . I dialogrutan **Grundläggande SAML-konfiguration** i Azure-portalen klistrar du in värdet i rutan **Identifierare** .
+5. Ladda ned metadata för tjänstleverantör (steg 1) genom att välja **Ladda ned**. I metadatafilen letar du upp och kopierar värdet för **entityID**. I dialogrutan **Grundläggande SAML-konfiguration** i Azure-portalen klistrar du in värdet i rutan **Identifierare**.
 
     ![Kopiera och klistra in värdet för entityID](./media/sapboc-tutorial/config4.png)  
 
-6. Ladda upp metadata för tjänstleverantör (steg 2) i den fil som du laddade ned från Azure-portalen genom att gå till **Upload Identity Provider metadata** (Ladda upp metadata för tjänstleverantör) och välja **Ladda upp** .  
+6. Ladda upp metadata för tjänstleverantör (steg 2) i den fil som du laddade ned från Azure-portalen genom att gå till **Upload Identity Provider metadata** (Ladda upp metadata för tjänstleverantör) och välja **Ladda upp**.  
 
     ![Under Upload Identity Provider metadata (Ladda upp metadata för tjänstleverantör) väljer du Ladda upp](./media/sapboc-tutorial/config5.png)
 
@@ -131,7 +131,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     ![Ange e-postadress och välj Verify Account (Verifiera konto)](./media/sapboc-tutorial/config7.png)
 
-9. Välj ikonen **Spara** .
+9. Välj ikonen **Spara**.
 
     ![Ikonen Spara](./media/sapboc-tutorial/save.png)
 
@@ -139,21 +139,21 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory** , väljer **användare** och väljer sedan **alla användare** .
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
-   1. I **Namn** -fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
-   1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord** .
-   1. Klicka på **Skapa** .
+   1. I **Namn**-fältet skriver du `B.Simon`.  
+   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
+   1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
+   1. Klicka på **Skapa**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till SAP Analytics-molnet.
 
-1. I Azure Portal väljer du **företags program** och väljer sedan **alla program** .
-1. I listan program väljer du **SAP Analytics-moln** .
-1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper** .
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
+1. I listan program väljer du **SAP Analytics-moln**.
+1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
@@ -173,31 +173,31 @@ Så här etablerar du ett användarkonto:
 
 1. Logga in på din SAP Analytics Cloud Company-webbplats som administratör.
 
-2. Välj **meny**  >  **säkerhets**  >  **användare** .
+2. Välj **meny**  >  **säkerhets**  >  **användare**.
 
     ![Lägga till medarbetare](./media/sapboc-tutorial/user1.png)
 
-3. På sidan **Användare** lägger du till nya användaruppgifter genom att välja **+** . 
+3. På sidan **Användare** lägger du till nya användaruppgifter genom att välja **+**. 
 
     ![Sidan Lägg till användare](./media/sapboc-tutorial/user4.png)
 
     Utför sedan följande steg:
 
-    a. I rutan **användar-ID** anger du användar-ID: t för användaren, t. ex. **B** .
+    1. I rutan **användar-ID** anger du användar-ID: t för användaren, t. ex. **B**.
 
-    b. I rutan **förnamn** anger du användarens förnamn, t. ex. **B** .
+    1. I rutan **förnamn** anger du användarens förnamn, t. ex. **B**.
 
-    c. I rutan **LAST NAME** (Efternamn) anger du efternamn för användaren: **Simon** .
+    1. I rutan **LAST NAME** (Efternamn) anger du efternamn för användaren: **Simon**.
 
-    d. I rutan **VISNINGS namn** anger du användarens fullständiga namn, t. ex. **B. Simon** .
+    1. I rutan **VISNINGS namn** anger du användarens fullständiga namn, t. ex. **B. Simon**.
 
-    e. I rutan **E-MAIL** (E-postadress) anger du användarens e-postadress: `b.simon@contoso.com`.
+    1. I rutan **E-MAIL** (E-postadress) anger du användarens e-postadress: `b.simon@contoso.com`.
 
-    f. På sidan **Select Roles** (Välj roller) väljer du rätt roll för användaren och väljer sedan **OK** .
+    1. På sidan **Select Roles** (Välj roller) väljer du rätt roll för användaren och väljer sedan **OK**.
 
-      ![Välj roll](./media/sapboc-tutorial/user3.png)
+        ![Välj roll](./media/sapboc-tutorial/user3.png)
 
-    ex. Välj ikonen **Spara** .
+    1. Välj ikonen **Spara**.
 
 ### <a name="test-sso"></a>Testa SSO 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: jeedes
-ms.openlocfilehash: fd9a04c2324af2ec36d8fa1d43a079e9f2c32dd8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 0205617198ec8e57cb891d2415d2b5413a945f1b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520310"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608943"
 ---
 # <a name="tutorial-integrate-way-we-do-with-azure-active-directory"></a>Självstudie: integrera hur vi gör med Azure Active Directory
 
@@ -28,7 +28,7 @@ I den här självstudien får du lära dig att integrera hur vi gör med Azure A
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att komma igång behöver du följande objekt:
 
@@ -49,7 +49,7 @@ Om du vill konfigurera en integrering av hur vi gör i Azure AD måste du lägga
 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** skriver du **så** här i sökrutan.
 1. Välj **hur vi gör** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -117,36 +117,36 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     ![Sätt vi sparar](./media/waywedo-tutorial/tutorial_waywedo_save.png)
 
-    a. Klicka på **aktivera enkel inloggning** för att växla till **Ja** för att aktivera enkel inloggning.
+    1. Klicka på **aktivera enkel inloggning** för att växla till **Ja** för att aktivera enkel inloggning.
 
-    b. I text rutan **namn på enkel inloggning** anger du ditt namn.
+    1. I text rutan **namn på enkel inloggning** anger du ditt namn.
 
-    c. I text rutan **entitets-ID** klistrar du in värdet för **Azure AD-identifierare**, som du har kopierat från Azure Portal.
+    1. I text rutan **entitets-ID** klistrar du in värdet för **Azure AD-identifierare**, som du har kopierat från Azure Portal.
 
-    d. I textrutan **SAML SSO URL** (URL för enkel inloggning med SAML) klistrar du in det värde för **Inloggnings-URL** som du har kopierat från Azure-portalen.
+    1. I textrutan **SAML SSO URL** (URL för enkel inloggning med SAML) klistrar du in det värde för **Inloggnings-URL** som du har kopierat från Azure-portalen.
 
-    e. Ladda upp certifikatet genom att klicka på knappen **Välj** bredvid **certifikat**.
+    1. Ladda upp certifikatet genom att klicka på knappen **Välj** bredvid **certifikat**.
 
-    f. **Valfria inställningar** -
-    
-    * Aktivera lösen ord – när det här alternativet är inaktiverat används de vanliga lösen ords funktionerna så att användarna bara kan använda enkel inloggning.
+    1. **Valfria inställningar** -
 
-    * Aktivera automatisk etablering – när det här är aktiverat kommer den e-postadress som används för inloggning att automatiskt jämföras med listan över användare som vi gör. Om e-postadressen inte matchar en aktiv användare på det sätt som vi gör, lägger den automatiskt till ett nytt användar konto för personen som loggar in och begär eventuell information som saknas.
+        * Aktivera lösen ord – när det här alternativet är inaktiverat används de vanliga lösen ords funktionerna så att användarna bara kan använda enkel inloggning.
 
-      > [!NOTE]
-      > Användare som läggs till via enkel inloggning läggs till som allmänna användare och tilldelas inte någon roll i systemet. En administratör kan gå in och ändra sin säkerhets roll som redigerare eller administratör och kan också tilldela en eller flera roller i ett organisations schema.
+        * Aktivera automatisk etablering – när det här är aktiverat kommer den e-postadress som används för inloggning att automatiskt jämföras med listan över användare som vi gör. Om e-postadressen inte matchar en aktiv användare på det sätt som vi gör, lägger den automatiskt till ett nytt användar konto för personen som loggar in och begär eventuell information som saknas.
 
-    ex. Klicka på Spara för att **Spara** dina inställningar.
+          > [!NOTE]
+          > Användare som läggs till via enkel inloggning läggs till som allmänna användare och tilldelas inte någon roll i systemet. En administratör kan gå in och ändra sin säkerhets roll som redigerare eller administratör och kan också tilldela en eller flera roller i ett organisations schema.
+
+    1. Klicka på Spara för att **Spara** dina inställningar.
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare**och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -154,13 +154,13 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till det sätt vi gör.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer **du hur vi gör**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-1. Välj **Lägg till användare**och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 
     ![Länken Lägg till användare](common/add-assign-user.png)
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ddf8236dbbc9714c705e442bb65eb2ac3d293cc7
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 653a53d6bb5c69cd95fd5e9a2483b51de8293b40
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589584"
+ms.locfileid: "97608586"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Flytta data från en HTTP-källa med hjälp av Azure Data Factory
 
@@ -26,7 +26,6 @@ ms.locfileid: "97589584"
 
 > [!NOTE]
 > Den här artikeln gäller för version 1 av Data Factory. Om du använder den aktuella versionen av tjänsten Azure Data Factory, se [http Connector i v2](../connector-http.md).
-
 
 Den här artikeln beskriver hur du använder kopierings aktivitet i Azure Data Factory för att flytta data från en lokal eller moln-HTTP-slutpunkt till ett mottagar data lager som stöds. Den här artikeln bygger på [Flytta data med hjälp av kopierings aktivitet](data-factory-data-movement-activities.md), som visar en allmän översikt över data flyttningen med hjälp av kopierings aktiviteten. Artikeln innehåller även de data lager som kopierings aktiviteten stöder som källor och mottagare.
 
@@ -120,9 +119,8 @@ Den här länkade tjänsten länkar din data fabrik till en lokal HTTP-webbserve
         {
             "authenticationType": "ClientCertificate",
             "url": "https://en.wikipedia.org/wiki/",
-        "certThumbprint": "thumbprint of certificate",
-        "gatewayName": "gateway name"
-
+            "certThumbprint": "thumbprint of certificate",
+            "gatewayName": "gateway name"
         }
     }
 }
@@ -142,8 +140,8 @@ Den här länkade tjänsten länkar din data fabrik till en lokal HTTP-webbserve
         {
             "authenticationType": "ClientCertificate",
             "url": "https://en.wikipedia.org/wiki/",
-        "embeddedCertData": "Base64-encoded cert data",
-        "password": "password of cert"
+            "embeddedCertData": "Base64-encoded cert data",
+            "password": "password of cert"
         }
     }
 }
@@ -176,9 +174,9 @@ Avsnittet **typeProperties** är olika för varje typ av data uppsättning. Avsn
     "type": "Http",
         "linkedServiceName": "HttpLinkedService",
         "typeProperties": {
-      "relativeUrl": "XXX/test.xml",
-        "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
-    },
+          "relativeUrl": "XXX/test.xml",
+          "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
+        },
         "external": true,
         "availability": {
             "frequency": "Hour",

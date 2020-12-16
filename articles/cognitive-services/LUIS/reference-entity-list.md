@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
-ms.openlocfilehash: 29f0f0c3fd48920990519aecfe5ae58c32b43db9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 410b33b5c6078d096fa4b2acaa7b49bc14c95e31
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253844"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608280"
 ---
 # <a name="list-entity"></a>Lista entitet
 
@@ -85,7 +85,6 @@ I föregående uttryck `paris` mappas ordet till Paris-objektet som en del av `C
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 slut punkts svar för förutsägelse](#tab/V3)
 
-
 Detta är JSON om anges `verbose=false` i frågesträngen:
 
 ```json
@@ -130,7 +129,6 @@ Detta är JSON om anges `verbose=true` i frågesträngen:
 |Data objekt|Entitetsnamn|Värde|
 |--|--|--|
 |Lista entitet|`Cities`|`paris`|
-
 
 ## <a name="next-steps"></a>Nästa steg
 

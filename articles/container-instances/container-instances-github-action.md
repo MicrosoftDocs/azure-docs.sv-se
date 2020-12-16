@@ -4,16 +4,16 @@ description: Konfigurera en GitHub-åtgärd som automatiserar stegen för att by
 ms.topic: article
 ms.date: 08/20/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 270aa69e74045a48a3567ca74b722ca48a030654
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 7dfa2a66851db760049e7c3dc3446223c7dffad1
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591641"
+ms.locfileid: "97609164"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>Konfigurera en GitHub-åtgärd för att skapa en containerinstans
 
-[GitHub-åtgärder](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions) är en uppsättning funktioner i GitHub för att automatisera dina arbets flöden för program utveckling på samma plats som du lagrar kod och samarbetar om pull-begäranden och-problem.
+[GitHub-åtgärder](https://docs.github.com/en/free-pro-team@latest/actions) är en uppsättning funktioner i GitHub för att automatisera dina arbets flöden för program utveckling på samma plats som du lagrar kod och samarbetar om pull-begäranden och-problem.
 
 Använd åtgärden [distribuera för att Azure Container instances](https://github.com/azure/aci-deploy) GitHub för att automatisera distributionen av en enskild behållare till Azure Container instances. Med åtgärden kan du ange egenskaper för en behållar instans som liknar dem i kommandot [AZ container Create][az-container-create] .
 
@@ -177,7 +177,7 @@ När du har bekräftat arbets flödes filen utlöses arbets flödet. Gå till **
 
 ![Visa arbets flödes förlopp](./media/container-instances-github-action/github-action-progress.png)
 
-Se [hantera en arbets flödes körning](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run) för information om hur du visar status och resultat för varje steg i arbets flödet. Om arbets flödet inte slutförs, se [Visa loggar för att diagnostisera fel](https://docs.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-logs-to-diagnose-failures).
+Se [Visa arbets flödets körnings historik](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/viewing-workflow-run-history) för information om hur du visar status och resultat för varje steg i arbets flödet. Om arbets flödet inte slutförs, se [Visa loggar för att diagnostisera fel](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/using-workflow-run-logs#viewing-logs-to-diagnose-failures).
 
 När arbets flödet har slutförts hämtar du information om behållar instansen med namnet *ACI-fråga* genom att köra kommandot [AZ container show][az-container-show] . Ersätt namnet på din resurs grupp: 
 
@@ -237,7 +237,7 @@ az container app up \
 
 ### <a name="command-progress"></a>Kommando förlopp
 
-* När du uppmanas till det anger du dina GitHub-autentiseringsuppgifter eller anger en GitHub-Pat ( [personal Access token](https://help.github.com/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) ) som har *lagrings platsen* och *användar* omfång för att autentisera med ditt GitHub-konto. Om du anger GitHub-autentiseringsuppgifter skapar kommandot en PAT åt dig. Följ ytterligare prompter för att konfigurera arbets flödet.
+* När du uppmanas till det anger du dina GitHub-autentiseringsuppgifter eller anger en GitHub-Pat ( [personal Access token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token) ) som har *lagrings platsen* och *användar* omfång för att autentisera med ditt GitHub-konto. Om du anger GitHub-autentiseringsuppgifter skapar kommandot en PAT åt dig. Följ ytterligare prompter för att konfigurera arbets flödet.
 
 * Kommandot skapar lagrings platsen hemligheter för arbets flödet:
 
@@ -258,7 +258,7 @@ Workflow succeeded
 Your app is deployed at:  http://acr-build-helloworld-node.eastus.azurecontainer.io:8080/
 ```
 
-Om du vill visa arbets flödes status och resultat för varje steg i GitHub-ANVÄNDARGRÄNSSNITTET, se [hantera en arbets flödes körning](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run).
+Information om arbets flödes status och resultat för varje steg i GitHub-ANVÄNDARGRÄNSSNITTET finns i [Visa arbets flödets körnings historik](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/viewing-workflow-run-history).
 
 ### <a name="validate-workflow"></a>Verifiera arbets flöde
 

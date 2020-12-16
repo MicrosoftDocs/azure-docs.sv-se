@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 6830bdd38e8e1f1d649673cfdaf48e8c50ba6c3e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: b9a41f4d4bb10599d50e58ad6f08d61aaba7ecfc
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413232"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608790"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Skapa data styrenheten för Azure-bågen
 
@@ -36,7 +36,7 @@ För närvarande är den lista över Kubernetes tjänster och distributioner som
 - Öppen källkod, överordnad Kubernetes vanligtvis distribuerad med kubeadm
 
 > [!IMPORTANT]
-> * Den lägsta versionen av Kubernetes som stöds är v-1.17.
+> * Den lägsta versionen av Kubernetes som stöds är v-1.17. Se [kända problem](./release-notes.md#known-issues) för ytterligare information. 
 > * Den lägsta versionen av OCP som stöds är 4,3.
 > * Se [anslutnings kraven](connectivity.md) för att förstå vilken anslutning som krävs mellan din miljö och Azure.
 > * Mer information om hur du konfigurerar beständiga lagrings enheter finns i [rikt linjer för lagrings konfiguration](storage-configuration.md) .
@@ -64,10 +64,10 @@ Oavsett vilket alternativ du väljer måste du ange följande information under 
 Det finns flera alternativ för att skapa data styrenheten för Azure-bågen:
 
 > **Vill du bara testa saker?**  
-> Kom igång snabbt med [Azure Arc rivstart med](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) på Azure Kubernetes service (AKS), AWS elastisk Kubernetes service (EKS), Google Cloud Kubernetes Engine (GKE) eller i en virtuell Azure-dator!
+> Kom igång snabbt med [Azure Arc rivstart med](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) på Azure Kubernetes service (AKS), AWS elastisk Kubernetes service (EKS), Google Cloud Kubernetes Engine (GKE) eller i en virtuell Azure-dator!
 > 
 - [Skapa en datakontrollant med [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]](create-data-controller-using-azdata.md)
 - [Skapa en datakontrollant med Azure Data Studio](create-data-controller-azure-data-studio.md)
 - [Skapa en datakontrollant från Azure Portal via en Jupyter Notebook i Azure Data Studio](create-data-controller-resource-in-azure-portal.md)
 - [Skapa en datakontrollant med Kubernetes-verktyg som kubectl eller oc](create-data-controller-using-kubernetes-native-tools.md)
-- [Skapa en datakontrollant med Azure Arc-rivstart med för en snabbare upplevelse av en test distribution](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services)
+- [Skapa en datakontrollant med Azure Arc-rivstart med för en snabbare upplevelse av en test distribution](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/)

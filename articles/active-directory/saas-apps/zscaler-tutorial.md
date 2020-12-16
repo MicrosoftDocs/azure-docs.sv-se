@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/13/2019
 ms.author: jeedes
-ms.openlocfilehash: a9d16f8cbb3da98a96f97a85d65672cc7ef70f65
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 438537efc9922e681c6dd253c2f41a44c5f2fb92
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893717"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608909"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med Zscaler
 
@@ -28,7 +28,7 @@ I den här självstudien får du lära dig hur du integrerar Zscaler med Azure A
 
 Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att komma igång behöver du följande objekt:
 
@@ -48,14 +48,14 @@ Om du vill konfigurera integreringen av Zscaler i Azure AD måste du lägga till
 
 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
-1. Navigera till **företags program** och välj sedan **alla program** .
+1. Navigera till **företags program** och välj sedan **alla program**.
 1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , skriver du **Zscaler** i sökrutan.
 1. Välj **Zscaler** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-zscaler"></a>Konfigurera och testa enkel inloggning med Azure AD för Zscaler
 
-Konfigurera och testa Azure AD SSO med Zscaler med hjälp av en test användare som heter **B. Simon** . För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i Zscaler.
+Konfigurera och testa Azure AD SSO med Zscaler med hjälp av en test användare som heter **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i Zscaler.
 
 Om du vill konfigurera och testa Azure AD SSO med Zscaler, slutför du följande Bygg stenar:
 
@@ -70,8 +70,8 @@ Om du vill konfigurera och testa Azure AD SSO med Zscaler, slutför du följande
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-1. I [Azure Portal](https://portal.azure.com/)går du till sidan för program integrering i **Zscaler** , letar upp avsnittet **Hantera** och väljer **enkel inloggning** .
-1. På sidan **Välj metod för enkel inloggning** väljer du **SAML** .
+1. I [Azure Portal](https://portal.azure.com/)går du till sidan för program integrering i **Zscaler** , letar upp avsnittet **Hantera** och väljer **enkel inloggning**.
+1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
 1. På sidan **Konfigurera en enskild Sign-On med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
@@ -89,21 +89,21 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Utöver ovan förväntar sig Zscaler-programmet att fler attribut skickas tillbaka i SAML-svar. I avsnittet **Användaranspråk** i dialogrutan **Användarattribut** utför du följande steg för att lägga till SAML-tokenattributet enligt det som visas i tabellen nedan:
 
-    | Namn | Källattribut |
+    | Name | Källattribut |
     | ---------| ------------ |
-    | memberOf     | user.assignedroles |
+    | memberOf | user.assignedroles |
 
-    a. Klicka på **Lägg till nytt anspråk** för att öppna dialogrutan **Hantera användaranspråk** .
+    a. Klicka på **Lägg till nytt anspråk** för att öppna dialogrutan **Hantera användaranspråk**.
 
     b. I textrutan **Namn** skriver du det attributnamn som visas för den raden.
 
     c. Lämna **Namnrymd** tom.
 
-    d. Välj Källa som **Attribut** .
+    d. Välj Källa som **Attribut**.
 
     e. Från listan över **Källattribut** skriver du det attributvärde som visas för den raden.
 
-    f. Klicka på **Spara** .
+    f. Klicka på **Spara**.
 
     > [!NOTE]
     > Klicka [här](../develop/active-directory-enterprise-app-role-management.md) för att få veta hur du konfigurerar en Roll i Azure AD
@@ -120,31 +120,31 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory** , väljer **användare** och väljer sedan **alla användare** .
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
-   1. I **Namn** -fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
-   1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord** .
-   1. Klicka på **Skapa** .
+   1. I **Namn**-fältet skriver du `B.Simon`.  
+   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
+   1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
+   1. Klicka på **Skapa**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Zscaler.
 
-1. I Azure Portal väljer du **företags program** , väljer **alla program** och väljer sedan **Zscaler** .
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Zscaler**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
-2. I listan program väljer du **Zscaler** .
+2. I listan program väljer du **Zscaler**.
 
     ![Zscaler-länken i program listan](common/all-applications.png)
 
-3. På menyn till vänster väljer du **Användare och grupper** .
+3. På menyn till vänster väljer du **Användare och grupper**.
 
     ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning** .
+4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning**.
 
     ![Fönstret Lägg till tilldelning](common/add-assign-user.png)
 
@@ -156,13 +156,13 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
     ![Skärm bild som visar dialog rutan Välj roll där du kan välja en användar roll.](./media/zscaler-tutorial/tutorial_zscaler_roles.png)
 
-7. I dialogrutan **Lägg till tilldelning** väljer du knappen **Tilldela** .
+7. I dialogrutan **Lägg till tilldelning** väljer du knappen **Tilldela**.
 
     ![Skärm bild som visar dialog rutan Lägg till tilldelning där du kan välja tilldela.](./media/zscaler-tutorial/tutorial_zscaler_assign.png)
 
 ## <a name="configure-zscaler-sso"></a>Konfigurera Zscaler SSO
 
-1. Om du vill automatisera konfigurationen i Zscaler måste du installera **Mina appar säker inloggnings webb läsar tillägg** genom att klicka på **installera tillägget** .
+1. Om du vill automatisera konfigurationen i Zscaler måste du installera **Mina appar säker inloggnings webb läsar tillägg** genom att klicka på **installera tillägget**.
 
     ![Mina Apps-tillägg](common/install-myappssecure-extension.png)
 
@@ -176,19 +176,19 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
     ![Skärm bild som visar Zscaler för en webbplats med steg som beskrivs.](./media/zscaler-tutorial/ic800206.png "Administration")
 
-    a. Under autentiseringstyp väljer du **SAML** .
+    a. Under autentiseringstyp väljer du **SAML**.
 
-    b. Klicka på **Konfigurera SAML** .
+    b. Klicka på **Konfigurera SAML**.
 
 1. I fönstret **Redigera SAML** utför du följande steg och klickar på Spara.  
 
     ![Hantera användare & autentisering](./media/zscaler-tutorial/ic800208.png "Hantera användare & autentisering")
-    
+
     a. I textrutan för **URL:en för SAML-portalen** klistrar du in **inloggnings-URL:en** som du har kopierat från Azure-portalen.
 
-    b. I textrutan för **attribut för inloggningsnamn** anger du **NameID** .
+    b. I textrutan för **attribut för inloggningsnamn** anger du **NameID**.
 
-    c. Klicka på **Ladda upp** för att ladda upp Azure SAML-signeringscertifikatet som du har laddat ned från Azure-portalen i det **offentliga SSL-certifikatet** .
+    c. Klicka på **Ladda upp** för att ladda upp Azure SAML-signeringscertifikatet som du har laddat ned från Azure-portalen i det **offentliga SSL-certifikatet**.
 
     d. Reglera **Enable SAML Auto-Provisioning** (Aktivera automatisk etablering av SAML).
 
@@ -198,7 +198,7 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
     ex. I textrutan för **avdelningsnamnattribut** anger du **department** om du vill aktivera automatisk SAML-etablering för department-attribut.
 
-    h. Klicka på **Spara** .
+    h. Klicka på **Spara**.
 
 1. I dialogrutan **Konfigurera användarautentisering** utför du följande steg:
 
@@ -206,23 +206,23 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
     a. Hovra över menyn **Aktivering** längst ned till vänster.
 
-    b. Klicka på **Aktivera** .
+    b. Klicka på **Aktivera**.
 
 ## <a name="configuring-proxy-settings"></a>Konfigurera proxyinställningar
 
 ### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>För att konfigurera proxyinställningar i Internet Explorer
 
-1. Starta **Internet Explorer** .
+1. Starta **Internet Explorer**.
 
-1. Välj **Internetalternativ** i menyn **Verktyg** för att öppna dialogrutan **Internetalternativ** .
+1. Välj **Internetalternativ** i menyn **Verktyg** för att öppna dialogrutan **Internetalternativ**.
 
     ![Internet alternativ](./media/zscaler-tutorial/ic769492.png "Internet alternativ")
 
-1. Klicka på fliken **Anslutningar** .
-  
+1. Klicka på fliken **Anslutningar**.
+
     ![Anslutningar](./media/zscaler-tutorial/ic769493.png "Anslutningar")
 
-1. Klicka på **LAN-inställningar** för att öppna dialogrutan **LAN-inställningar** .
+1. Klicka på **LAN-inställningar** för att öppna dialogrutan **LAN-inställningar**.
 
 1. I avsnittet Proxyserver utför du följande steg:   
 
@@ -230,15 +230,15 @@ I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggnin
 
     a. Välj **Use a proxy server for your LAN** (Använd en proxyserver för ditt lokala nätverk).
 
-    b. I text rutan adress skriver du **Gateway.Zscaler.net** .
+    b. I text rutan adress skriver du **Gateway.Zscaler.net**.
 
-    c. I textrutan Port skriver du **80** .
+    c. I textrutan Port skriver du **80**.
 
     d. Välj **Bypass proxy server for local addresses** (Kringgå proxyservern för lokala adresser).
 
     e. Klicka på **OK** för att stänga dialogrutan **Local Area Network (LAN) Settings** (Inställningar för lokalt nätverk (LAN)).
 
-1. Klicka på **OK** för att stänga dialogrutan **Internetalternativ** .
+1. Klicka på **OK** för att stänga dialogrutan **Internetalternativ**.
 
 ### <a name="create-zscaler-test-user"></a>Skapa Zscaler test användare
 
@@ -255,9 +255,9 @@ När du klickar på panelen Zscaler på åtkomst panelen, bör du loggas in auto
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](./tutorial-list.md)
+- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](./tutorial-list.md)
 
-- [Vad är program åtkomst och enkel inloggning med Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+- [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 - [Vad är villkorlig åtkomst i Azure Active Directory?](../conditional-access/overview.md)
 

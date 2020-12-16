@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 6a000daa7d9e2aa93e68844e8aec5aa168c9fa60
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: becf9f8c7f6a967ed63cfd3040de90de76e32fff
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592423"
+ms.locfileid: "97607277"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Skapa en FCI med Azure Shared disks (SQL Server på virtuella Azure-datorer)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -26,7 +26,6 @@ ms.locfileid: "97592423"
 I den här artikeln förklaras hur du skapar en instans av en redundanskluster (FCI) med hjälp av Azure delade diskar med SQL Server på Azure Virtual Machines (VM). 
 
 Mer information finns i Översikt över [FCI med SQL Server på Azure VM](failover-cluster-instance-overview.md) och [kluster metod tips](hadr-cluster-best-practices.md). 
-
 
 ## <a name="prerequisites"></a>Krav 
 
@@ -37,12 +36,10 @@ Innan du slutför instruktionerna i den här artikeln bör du redan ha:
 - Ett konto som har behörighet att skapa objekt både på virtuella Azure-datorer och i Active Directory.
 - Den senaste versionen av [PowerShell](/powershell/azure/install-az-ps). 
 
-
 ## <a name="add-azure-shared-disk"></a>Lägg till Azure-delad disk
 Distribuera en hanterad Premium SSD disk med funktionen för delad disk aktive rad. Ställ in `maxShares` så att den **överensstämmer med antalet klusternoder** för att göra disken SHAREABLE över alla FCI-noder. 
 
 Lägg till en Azure-delad disk genom att göra följande: 
-
 
 1. Spara följande skript som *SharedDiskConfig.jspå*: 
 
@@ -85,7 +82,6 @@ Lägg till en Azure-delad disk genom att göra följande:
    }
    ```
 
-
 2. Kör *SharedDiskConfig.jspå* med hjälp av PowerShell: 
 
    ```powershell
@@ -119,7 +115,6 @@ Du behöver följande om du vill skapa ett kluster för växling vid fel:
 - Ett namn för redundansklustret.
 - En IP-adress för redundansklustret. Du kan använda en IP-adress som inte används på samma virtuella Azure-nätverk och undernät som klusternoderna.
 
-
 # <a name="windows-server-2012-2016"></a>[Windows Server 2012-2016](#tab/windows2012)
 
 Följande PowerShell-skript skapar ett redundanskluster. Uppdatera skriptet med namnen på noderna (namnen på de virtuella datorerna) och en tillgänglig IP-adress från det virtuella Azure-nätverket.
@@ -139,7 +134,6 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 Mer information finns i [redundansklustret: kluster nätverks objekt](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97).
 
 ---
-
 
 ## <a name="configure-quorum"></a>Konfigurera kvorum
 
@@ -198,7 +192,6 @@ FCI data kataloger måste finnas på de Azure-delade diskarna.
 
 Om du vill hantera din SQL Server VM från portalen registrerar du den med SQL IaaS agent Extension (RP) i [läget för förenklad hantering](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode), för närvarande det enda läge som stöds med FCI och SQL Server på virtuella Azure-datorer. 
 
-
 Registrera en SQL Server VM i Lightweight-läge med PowerShell:  
 
 ```powershell-interactive
@@ -221,7 +214,6 @@ Om du vill dirigera trafiken korrekt till den aktuella primära noden konfigurer
 ## <a name="next-steps"></a>Nästa steg
 
 Om du inte redan har gjort det konfigurerar du anslutningen till din FCI med ett [virtuellt nätverks namn och en Azure Load Balancer eller ett](failover-cluster-instance-vnn-azure-load-balancer-configure.md) [distribuerat nätverks namn (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md). 
-
 
 Om Azure-delade diskar inte är lämplig FCI lagrings lösning, kan du överväga att skapa din FCI med [Premium-filresurser](failover-cluster-instance-premium-file-share-manually-configure.md) eller [Lagringsdirigering](failover-cluster-instance-storage-spaces-direct-manually-configure.md) i stället. 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: ed71311125229a7575c675dd3338b4908ea1be95
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8b49e3594754e8eed38e3b1ef44648bc065558b8
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518440"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608366"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>Självstudie: Azure Active Directory integrering med skillport
 
@@ -30,7 +30,7 @@ Genom att integrera skillport med Azure AD får du följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill konfigurera Azure AD-integrering med skillport behöver du följande objekt:
 
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med skillport i Azure AD:
 
-1. Välj **enkel inloggning**på sidan **skillport** Application Integration i [Azure Portal](https://portal.azure.com/).
+1. Välj **enkel inloggning** på sidan **skillport** Application Integration i [Azure Portal](https://portal.azure.com/).
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -101,23 +101,23 @@ Utför följande steg för att konfigurera enkel inloggning med skillport i Azur
 
     ![Information om enkel inloggning för skillport-domän och URL: er](common/sp-identifier-reply.png)
 
-    a. I rutan **Inloggnings-URL** anger du följande URL: 
+    1. I rutan **Inloggnings-URL** anger du följande URL: 
 
-    EU-datacenter: `https://adfs.skillport.eu`
+        EU-datacenter: `https://adfs.skillport.eu`
 
-    Data Center för USA: `https://sso.skillport.com`
+        Data Center för USA: `https://sso.skillport.com`
 
-    b. I rutan **identifierare** anger du URL: en:
+    1. I rutan **identifierare** anger du URL: en:
 
-    EU-datacenter: `http://adfs.skillport.eu/adfs/services/trust`
+        EU-datacenter: `http://adfs.skillport.eu/adfs/services/trust`
 
-    Data Center för USA: `https://sso.skillport.com`
+        Data Center för USA: `https://sso.skillport.com`
 
-    c. Skriv webb adressen i text rutan **svars-URL** :
+    1. Skriv webb adressen i text rutan **svars-URL** :
 
-    EU-datacenter: `https://adfs.skillport.eu/adfs/ls/`
+        EU-datacenter: `https://adfs.skillport.eu/adfs/ls/`
 
-      Data Center för USA: `https://sso.skillport.com/sp/ACS.saml2`
+        Data Center för USA: `https://sso.skillport.com/sp/ACS.saml2`
 
 5. På sidan **Set up Single Sign-On with SAML** (Konfigurera enkel inloggning med SAML) går du till avsnittet **SAML Signing Certificate** (SAML-signeringscertifikat), klickar på **Ladda ned** för att ladda ned **Federation Metadata-XML** från de angivna alternativen enligt dina behov och spara den på datorn.
 
@@ -166,7 +166,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till skillport.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **skillport**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **skillport**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

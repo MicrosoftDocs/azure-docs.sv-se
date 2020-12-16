@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: b90fe6b7e0937a9ac3b300e904085122610d5645
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3e74098d368b6aef3a9f12d8b1369132b29e7a0f
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957086"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608960"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Språk stöd för API för textanalys v3 
 
@@ -24,7 +24,7 @@ ms.locfileid: "94957086"
 
 #### <a name="sentiment-analysis"></a>[Attitydanalys](#tab/sentiment-analysis)
 
-| Språk              | Språkkod | v2-stöd | v3-stöd | Startar v3-modell version: |              Kommentarer |
+| Språk              | Språkkod | v2-stöd | v3-stöd | Startar v3-modell version: |              Obs! |
 |:----------------------|:-------------:|:----------:|:----------:|:--------------------------:|-------------------:|
 | Chinese-Simplified    |   `zh-hans`   |     ✓      |     ✓      |         2019-10-01         | `zh` även godkänd |
 | Chinese-Traditional   |   `zh-hant`   |            |     ✓      |         2019-10-01         |                    |
@@ -50,7 +50,7 @@ ms.locfileid: "94957086"
 
 ### <a name="opinion-mining-v31-preview-only"></a>Utåsikts utvinning (v 3.1 – endast för hands version)
 
-| Språk              | Språkkod | Från och med v3 modell version: |              Kommentarer |
+| Språk              | Språkkod | Från och med v3 modell version: |              Obs! |
 |:----------------------|:-------------:|:------------------------------------:|-------------------:|
 | Engelska               |     `en`      |              2020-04-01              |                    |
 
@@ -61,7 +61,7 @@ ms.locfileid: "94957086"
 > * NER v3 stöder för närvarande bara engelska och spanska språk. Om du anropar NER v3 med ett annat språk returneras v 2.1-API: et, förutsatt att språket stöds i version 2,1.
 > * v 2.1 returnerar bara den fullständiga uppsättningen tillgängliga entiteter för de engelska, kinesiska, enkla, franska, tyska och spanska språken.  Entiteterna "person", "plats" och "organisation" returneras för de andra språk som stöds.
 
-| Språk               | Språkkod | v 2.1-stöd | v3-stöd | Från och med v3 modell version: |       Kommentarer        |
+| Språk               | Språkkod | v 2.1-stöd | v3-stöd | Från och med v3 modell version: |       Obs!        |
 |:-----------------------|:-------------:|:----------:|:----------:|:-------------------------------:|:------------------:|
 | Arabiska                |     `ar`      |     ✓      |            |                                 |                    |
 | Tjeckiska                 |     `cs`      |     ✓      |            |                                 |                    |
@@ -87,12 +87,12 @@ ms.locfileid: "94957086"
 | Svenska               |     `sv`      |     ✓      |            |                                 |                    |
 | Turkiska               |     `tr`      |     ✓      |            |                                 |                    |
 
-#### <a name="key-phrase-extraction"></a>[Extrahering av nyckel fraser](#tab/key-phrase-extraction)
+#### <a name="key-phrase-extraction"></a>[Extrahering av nyckelfraser](#tab/key-phrase-extraction)
 
 > [!NOTE]
 > Modell versioner av Extrahering av diskussionsämne före 2020-07-01 har en gräns på 64 tecken. Den här gränsen finns inte i senare modell versioner.
 
-| Språk              | Språkkod | v2-stöd | v3-stöd | Tillgängligt från och med v3-modell version: |       Kommentarer        |
+| Språk              | Språkkod | v2-stöd | v3-stöd | Tillgängligt från och med v3-modell version: |       Obs!        |
 |:----------------------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:------------------:|
 | Nederländska                 |     `nl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Engelska               |     `en`      |     ✓      |     ✓      |                2019-10-01                 |                    |
@@ -112,7 +112,7 @@ ms.locfileid: "94957086"
 
 #### <a name="entity-linking"></a>[Länkning av entitet](#tab/entity-linking)
 
-| Språk | Språkkod | v2-stöd | v3-stöd | Tillgängligt från och med v3-modell version: | Kommentarer |
+| Språk | Språkkod | v2-stöd | v3-stöd | Tillgängligt från och med v3-modell version: | Obs! |
 |:---------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:-----:|
 | Engelska  |     `en`      |     ✓      |     ✓      |                2019-10-01                 |       |
 | Spanska  |     `es`      |     ✓      |     ✓      |                2019-10-01                 |       |
@@ -123,104 +123,102 @@ API för textanalys kan identifiera en mängd olika språk, varianter, dialekter
 
 Om du har innehåll som uttrycks på ett mindre vanligt språk kan du prova Språkidentifiering för att se om det returnerar en kod. Svaret för språk som inte kan identifieras är `unknown` .
 
-| Språk | Språkkod |  v3-stöd | Tillgängligt från och med v3-modell version: |
-|:---------|:-------------:|:----------:|:-----------------------------------------:|
-|Afrikaans|`af`|✓|    |
-|Albanska|`sq`|✓|    |
-|Arabiska|`ar`|✓|    |
-|Armeniska|`hy`|✓|    |
-|Baskiska|`eu`|✓|    |
-|Vitryska|`be`|✓|    |
-|Bengali|`bn`|✓|    |
-|Bosniska|`bs`|✓|2020-09-01|
-|Bulgariska|`bg`|✓|    |
-|Burmesiska|`my`|✓|    |
-|Katalanska, valencianska|`ca`|✓|    |
-|Centrala kambodjanska|`km`|✓|    |
-|Kinesiska|`zh`|✓|    |
-|Kinesiska, förenklad|`zh_chs`|✓|    |
-|Kinesiska, traditionell|`zh_cht`|✓|    |
-|Kroatiska|`hr`|✓|    |
-|Tjeckiska|`cs`|✓|    |
-|Danska|`da`|✓|    |
-|Dari|`prs`|✓|2020-09-01|
-|Divehi, Dhivehi, Maldivian|`dv`|✓|    |
-|Holländska, flamländska|`nl`|✓|    |
-|Engelska|`en`|✓|    |
-|Esperanto|`eo`|✓|    |
-|Estniska|`et`|✓|    |
-|Fijian|`fj`|✓|2020-09-01|
-|Finska|`fi`|✓|    |
-|Franska|`fr`|✓|    |
-|Galiciska|`gl`|✓|    |
-|Georgiska|`ka`|✓|    |
-|Tyska|`de`|✓|    |
-|Grekiska|`el`|✓|    |
-|Gujarati|`gu`|✓|    |
-|Haitian, Haitian Creole|`ht`|✓|    |
-|Hebreiska|`he`|✓|    |
-|Hindi|`hi`|✓|    |
-|Hmong Daw|`mww`|✓|2020-09-01|
-|Ungerska|`hu`|✓|    |
-|Isländska|`is`|✓|    |
-|Indonesiska|`id`|✓|    |
-|Inuktitut|`iu`|✓|    |
-|Iriska|`ga`|✓|    |
-|Italienska|`it`|✓|    |
-|Japanska|`ja`|✓|    |
-|Kannada|`kn`|✓|    |
-|Kazakiska|`kk`|✓|2020-09-01|
-|Koreanska|`ko`|✓|    |
-|Kurdisk|`ku`|✓|    |
-|Laos|`lo`|✓|    |
-|Latin|`la`|✓|    |
-|Lettiska|`lv`|✓|    |
-|Litauiska|`lt`|✓|    |
-|Makedonska|`mk`|✓|    |
-|Madagaskisk|`mg`|✓|2020-09-01|
-|Malajiska|`ms`|✓|    |
-|Malayalam|`ml`|✓|    |
-|Maltesiska|`mt`|✓|    |
-|Maori|`mi`|✓|2020-09-01|
-|Marathi|`mr`|✓|2020-09-01|
-|Norska|`no`|✓|    |
-|Norska (nynorsk)|`nn`|✓|    |
-|Odia|`or`|✓|    |
-|Afghanska, Pushto|`ps`|✓|    |
-|Persiska|`fa`|✓|    |
-|Polska|`pl`|✓|    |
-|Portugisiska|`pt`|✓|    |
-|Punjabi, Panjabi|`pa`|✓|    |
-|Queretaro Otomi|`otq`|✓|2020-09-01|
-|Rumänska, Moldavien, moldaviska|`ro`|✓|    |
-|Ryska|`ru`|✓|    |
-|Samoan|`sm`|✓|2020-09-01|
-|Serbiska|`sr`|✓|    |
-|Sinhala, Sinhalese|`si`|✓|    |
-|Slovakiska|`sk`|✓|    |
-|Slovenska|`sl`|✓|    |
-|Somaliska|`so`|✓|    |
-|Spanska, kastiliansk|`es`|✓|    |
-|Swahili|`sw`|✓|    |
-|Svenska|`sv`|✓|    |
-|Tagalog|`tl`|✓|    |
-|Tahitian|`ty`|✓|2020-09-01|
-|Tamilska|`ta`|✓|    |
-|Telugu|`te`|✓|    |
-|Thailändska|`th`|✓|    |
-|Tonganska|`to`|✓|2020-09-01|
-|Turkiska|`tr`|✓|    |
-|Ukrainska|`uk`|✓|    |
-|Urdu|`ur`|✓|    |
-|Uzbekiska|`uz`|✓|    |
-|Vietnamesiska|`vi`|✓|    |
-|Walesiska|`cy`|✓|    |
-|Jiddish|`yi`|✓|    |
-|Yucatec Maya|`yua`|✓|    |
-
+| Språk | Språkkod | v3-stöd | Tillgängligt från och med v3-modell version: |
+|:-|:-:|:-:|:-:|
+| Afrikaans | `af` | ✓ |  |
+| Albanska | `sq` | ✓ |  |
+| Arabiska | `ar` | ✓ |  |
+| Armeniska | `hy` | ✓ |  |
+| Baskiska | `eu` | ✓ |  |
+| Vitryska | `be` | ✓ |  |
+| Bengali | `bn` | ✓ |  |
+| Bosniska | `bs` | ✓ | 2020-09-01 |
+| Bulgariska | `bg` | ✓ |  |
+| Burmesiska | `my` | ✓ |  |
+| Katalanska, valencianska | `ca` | ✓ |  |
+| Centrala kambodjanska | `km` | ✓ |  |
+| Kinesiska | `zh` | ✓ |  |
+| Kinesiska, förenklad | `zh_chs` | ✓ |  |
+| Kinesiska, traditionell | `zh_cht` | ✓ |  |
+| Kroatiska | `hr` | ✓ |  |
+| Tjeckiska | `cs` | ✓ |  |
+| Danska | `da` | ✓ |  |
+| Dari | `prs` | ✓ | 2020-09-01 |
+| Divehi, Dhivehi, Maldivian | `dv` | ✓ |  |
+| Holländska, flamländska | `nl` | ✓ |  |
+| Engelska | `en` | ✓ |  |
+| Esperanto | `eo` | ✓ |  |
+| Estniska | `et` | ✓ |  |
+| Fijian | `fj` | ✓ | 2020-09-01 |
+| Finska | `fi` | ✓ |  |
+| Franska | `fr` | ✓ |  |
+| Galiciska | `gl` | ✓ |  |
+| Georgiska | `ka` | ✓ |  |
+| Tyska | `de` | ✓ |  |
+| Grekiska | `el` | ✓ |  |
+| Gujarati | `gu` | ✓ |  |
+| Haitian, Haitian Creole | `ht` | ✓ |  |
+| Hebreiska | `he` | ✓ |  |
+| Hindi | `hi` | ✓ |  |
+| Hmong Daw | `mww` | ✓ | 2020-09-01 |
+| Ungerska | `hu` | ✓ |  |
+| Isländska | `is` | ✓ |  |
+| Indonesiska | `id` | ✓ |  |
+| Inuktitut | `iu` | ✓ |  |
+| Iriska | `ga` | ✓ |  |
+| Italienska | `it` | ✓ |  |
+| Japanska | `ja` | ✓ |  |
+| Kannada | `kn` | ✓ |  |
+| Kazakiska | `kk` | ✓ | 2020-09-01 |
+| Koreanska | `ko` | ✓ |  |
+| Kurdisk | `ku` | ✓ |  |
+| Laos | `lo` | ✓ |  |
+| Latin | `la` | ✓ |  |
+| Lettiska | `lv` | ✓ |  |
+| Litauiska | `lt` | ✓ |  |
+| Makedonska | `mk` | ✓ |  |
+| Madagaskisk | `mg` | ✓ | 2020-09-01 |
+| Malajiska | `ms` | ✓ |  |
+| Malayalam | `ml` | ✓ |  |
+| Maltesiska | `mt` | ✓ |  |
+| Maori | `mi` | ✓ | 2020-09-01 |
+| Marathi | `mr` | ✓ | 2020-09-01 |
+| Norska | `no` | ✓ |  |
+| Norska (nynorsk) | `nn` | ✓ |  |
+| Odia | `or` | ✓ |  |
+| Afghanska, Pushto | `ps` | ✓ |  |
+| Persiska | `fa` | ✓ |  |
+| Polska | `pl` | ✓ |  |
+| Portugisiska | `pt` | ✓ |  |
+| Punjabi, Panjabi | `pa` | ✓ |  |
+| Queretaro Otomi | `otq` | ✓ | 2020-09-01 |
+| Rumänska, Moldavien, moldaviska | `ro` | ✓ |  |
+| Ryska | `ru` | ✓ |  |
+| Samoan | `sm` | ✓ | 2020-09-01 |
+| Serbiska | `sr` | ✓ |  |
+| Sinhala, Sinhalese | `si` | ✓ |  |
+| Slovakiska | `sk` | ✓ |  |
+| Slovenska | `sl` | ✓ |  |
+| Somaliska | `so` | ✓ |  |
+| Spanska, kastiliansk | `es` | ✓ |  |
+| Swahili | `sw` | ✓ |  |
+| Svenska | `sv` | ✓ |  |
+| Tagalog | `tl` | ✓ |  |
+| Tahitian | `ty` | ✓ | 2020-09-01 |
+| Tamilska | `ta` | ✓ |  |
+| Telugu | `te` | ✓ |  |
+| Thailändska | `th` | ✓ |  |
+| Tonganska | `to` | ✓ | 2020-09-01 |
+| Turkiska | `tr` | ✓ |  |
+| Ukrainska | `uk` | ✓ |  |
+| Urdu | `ur` | ✓ |  |
+| Uzbekiska | `uz` | ✓ |  |
+| Vietnamesiska | `vi` | ✓ |  |
+| Walesiska | `cy` | ✓ |  |
+| Jiddish | `yi` | ✓ |  |
+| Yucatec Maya | `yua` | ✓ |  |
 
 ---
-
 
 ## <a name="see-also"></a>Se även
 

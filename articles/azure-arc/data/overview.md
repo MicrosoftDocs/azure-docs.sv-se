@@ -9,14 +9,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: e8a28415bf9448133102e92a658e7d200ac2772c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ef16a4c0b6ea40fb4934307916f1fe79ccea72f9
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316974"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609147"
 ---
-# <a name="what-are-azure-arc-enabled-data-services-preview"></a>Vad är Azure Arc-aktiverade data tjänster (för hands version)?
+# <a name="what-are-azure-arc-enabled-data-services-preview"></a>Vad är Azure Arc-aktiverade datatjänster (förhandsversion)?
 
 Azure Arc gör det möjligt att köra Azure Data Services lokalt, vid gränsen och i offentliga moln med Kubernetes och den infrastruktur som du väljer.
 
@@ -33,7 +33,7 @@ Azure Arc-aktiverade data tjänster som Azure Arc Enabled SQL-hanterad instans o
 
 ## <a name="elastic-scale"></a>Elastisk skalning
 
-Med molnet som elastiskt lokalt kan du skala upp eller ned dem dynamiskt på samma sätt som i Azure, baserat på den tillgängliga kapaciteten för din infrastruktur. Den här funktionen kan uppfylla burst-scenarier som har flyktiga behov, inklusive scenarier som kräver inmatning och fråga data i real tid, i valfri skala, med svars tid under andra. Dessutom kan du också skala ut databas instanser med hjälp av det unika distributions alternativet för storskalig distribution i Azure Database for PostgreSQL storskalig. Den här funktionen ger data arbets belastningar ytterligare förstärkning av kapacitets optimeringen med hjälp av unika skalbara*läsningar* och skrivningar.
+Med molnet som elastiskt lokalt kan du skala upp eller ned dem dynamiskt på samma sätt som i Azure, baserat på den tillgängliga kapaciteten för din infrastruktur. Den här funktionen kan uppfylla burst-scenarier som har flyktiga behov, inklusive scenarier som kräver inmatning och fråga data i real tid, i valfri skala, med svars tid under andra. Dessutom kan du också skala ut databas instanser med hjälp av det unika distributions alternativet för storskalig distribution i Azure Database for PostgreSQL storskalig. Den här funktionen ger data arbets belastningar ytterligare förstärkning av kapacitets optimeringen med hjälp av unika skalbara *läsningar* och skrivningar.
 
 ## <a name="self-service-provisioning"></a>Själv tjänst etablering
 
@@ -50,7 +50,7 @@ Många av tjänsterna som självbetjänings etablering, automatiserade säkerhet
 ## <a name="next-steps"></a>Nästa steg
 
 > **Vill du bara testa saker?**  
-> Kom igång snabbt med [Azure Arc-rivstart med](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) på Azure Kubernetes service (AKS), AWS elastisk Kubernetes service (EKS), Google Cloud Kubernetes Engine (GKE) eller i en virtuell Azure-dator.
+> Kom igång snabbt med [Azure Arc-rivstart med](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) på Azure Kubernetes service (AKS), AWS elastisk Kubernetes service (EKS), Google Cloud Kubernetes Engine (GKE) eller i en virtuell Azure-dator.
 
 [Installera klient verktyg](install-client-tools.md)
 

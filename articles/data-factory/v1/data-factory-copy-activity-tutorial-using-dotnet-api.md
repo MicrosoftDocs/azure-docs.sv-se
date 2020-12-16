@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7b925a25e1e246008f393f7b15160417c3b3d7a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d047a45d678918541eb3c2d2c45e4519a34bdd57
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85254862"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608688"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>Självstudiekurs: Skapa en pipeline med en kopieringsaktivitet med hjälp av .NET-API:et
 > [!div class="op_single_selector"]
@@ -66,7 +66,7 @@ Skapa ett Azure Active Directory-program, skapa ett tjänstobjektnamn för progr
     ```powershell
     Get-AzSubscription
     ```
-4. Kör följande kommando för att välja den prenumeration som du vill arbeta med. Ersätt ** &lt; NameOfAzureSubscription** &gt; med namnet på din Azure-prenumeration.
+4. Kör följande kommando för att välja den prenumeration som du vill arbeta med. Ersätt **&lt; NameOfAzureSubscription** &gt; med namnet på din Azure-prenumeration.
 
     ```powershell
     Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
@@ -108,7 +108,7 @@ Skapa ett Azure Active Directory-program, skapa ett tjänstobjektnamn för progr
 9. Hämta program-ID:t.
 
     ```powershell
-    $azureAdApplication 
+    $azureAdApplication
     ```
     Anteckna program-ID:t (applicationID) från utdata.
 
@@ -128,13 +128,13 @@ Du bör nu ha tillgång till följande fyra värden efter de här stegen:
    5. Ange **DataFactoryAPITestApp** som namn.
    6. Välj **C:\ADFGetStarted** som plats.
    7. Klicka på **OK** för att skapa projektet.
-2. Klicka på **verktyg**, peka på **NuGet Package Manager**och klicka på **Package Manager-konsolen**.
+2. Klicka på **verktyg**, peka på **NuGet Package Manager** och klicka på **Package Manager-konsolen**.
 3. I **Package Manager Console** gör du följande steg:
    1. Kör följande kommando för att installera Data Factory-paketet: `Install-Package Microsoft.Azure.Management.DataFactories`
    2. Kör följande kommando för att installera Azure Active Directory-paketet (du använder Active Directory-API i koden): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
 4. Lägg till följande **appSetttings**-avsnitt i filen **App.config**. De här inställningarna används av helper-metoden: **GetAuthorizationHeader**.
 
-    Ersätt värden för ** &lt; program- &gt; ID**, ** &lt; lösen ord &gt; **, ** &lt; prenumerations-ID &gt; **och ** &lt; klient-ID &gt; ** med dina egna värden.
+    Ersätt värden för **&lt; program- &gt; ID**, **&lt; lösen ord &gt;**, **&lt; prenumerations-ID &gt;** och **&lt; klient-ID &gt;** med dina egna värden.
 
     ```xml
     <?xml version="1.0" encoding="utf-8" ?>
@@ -240,7 +240,7 @@ Du bör nu ha tillgång till följande fyra värden efter de här stegen:
 9. Lägg till följande kod som skapar en **länkad Azure SQL-tjänst** till **Main**-metoden.
 
    > [!IMPORTANT]
-   > Ersätt **servername**, **databasename**, **username**och **Password** med namnen på din server, databas, användare och lösen ord.
+   > Ersätt **servername**, **databasename**, **username** och **Password** med namnen på din server, databas, användare och lösen ord.
 
     ```csharp
     // create a linked service for output data store: Azure SQL Database
