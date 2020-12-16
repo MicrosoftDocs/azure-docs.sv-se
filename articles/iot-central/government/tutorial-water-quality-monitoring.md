@@ -3,17 +3,17 @@ title: 'Självstudie: skapa en app för övervakning av vatten kvalitet med Azur
 description: 'Självstudie: Lär dig hur du skapar ett program för övervakning av vatten kvalitet med hjälp av Azure IoT Central programmallar.'
 author: miriambrus
 ms.author: miriamb
-ms.date: 11/12/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 07f0e66888eaa909dfce14924e9186bcb9b876b4
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 6e8f9b8b33d391c4e13c6076a8589d336455d8c0
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014500"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590230"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Självstudie: skapa ett program för övervakning av vatten kvalitet i Azure IoT Central
 
@@ -32,7 +32,7 @@ I de här självstudierna får du lära dig att:
 > * Konfigurera jobb.
 > * Anpassa program anpassning med hjälp av vita etiketter.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Vi rekommenderar att du har en Azure-prenumeration för att slutföra den här kursen. Om du inte har någon Azure-prenumeration kan du skapa en på [sidan för Azure-registrering](https://aka.ms/createazuresubscription).
 
@@ -170,7 +170,7 @@ Programmet för övervakning av vatten kvalitet som du skapade från program mal
 
 1. Välj **enheter** i fönstret längst till vänster i ditt program.
 
-   ![Egenskaper](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-devices.png)
+   ![Enheter](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-devices.png)
 
 1. Välj en simulerad enhet.
 

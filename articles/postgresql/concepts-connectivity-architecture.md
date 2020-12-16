@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: 680908fdb2b7badcc1bbf713805b638213590877
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: dd125860aab8e64d316a91ec8876a3678c646d52
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508092"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591477"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Anslutnings arkitektur i Azure Database for PostgreSQL
 Den här artikeln förklarar Azure Database for PostgreSQL anslutnings arkitektur och hur trafiken dirigeras till din Azure Database for PostgreSQL databas instans från klienter både inom och utanför Azure.
@@ -30,7 +30,7 @@ Gateway-tjänsten finns i en grupp av tillstånds lösa Compute-noder som ligger
 
 Som en del av det löpande underhållet av tjänsten kommer vi regelbundet att uppdatera beräknings maskin varan som är värd för gatewayerna för att säkerställa att vi tillhandahåller den säkraste och bästa upplevelsen. När Gateway-maskinvaran uppdateras, skapas en ny instans av Compute-noderna först. Den här nya ringen hanterar trafiken för alla nyskapade Azure Database for PostgreSQL-servrar och den har en annan IP-adress än äldre Gateway-ringar i samma region för att särskilja trafiken. När den nya ringen är helt funktionell, planeras den äldre Gateway-maskinvaran som betjänar befintliga servrar för inaktive ring. Innan kunder som kör sina servrar och ansluter till äldre Gateway-ringar inaktive ras, meddelas du via e-post och i Azure Portal tre månader innan inaktive ring. Inaktive ring av gatewayer kan påverka anslutningen till dina servrar om 
 
-* Du hårdkodar IP-adresser för gatewayen i anslutnings strängen för ditt program. Vi **rekommenderar inte** detta. 
+* Du hårdkodar IP-adresser för gatewayen i anslutnings strängen för ditt program. Vi **rekommenderar inte** detta. Du bör använda ett fullständigt kvalificerat domän namn (FQDN) på servern i formatet <servername> . postgres.Database.Azure.com i anslutnings strängen för ditt program. 
 * Du uppdaterar inte de nyare Gateway-IP-adresserna i brand väggen på klient sidan så att utgående trafik kan komma åt våra nya gateway-ringar.
 
 I följande tabell visas gatewayens IP-adresser för den Azure Database for PostgreSQL gatewayen för alla data områden. Den senaste informationen om gatewayens IP-adresser för varje region behålls i tabellen nedan. I tabellen nedan representerar kolumnerna följande:

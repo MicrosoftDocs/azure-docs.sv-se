@@ -1,22 +1,22 @@
 ---
-title: Övervaknings data referens för Azure Queue Storage Microsoft Docs
+title: Data referens för Azure Queue Storage-övervakning
 description: Logg och statistik referens för övervakning av data från Azure Queue Storage.
 author: normesta
 services: azure-monitor
-ms.service: azure-monitor
-ms.topic: reference
-ms.date: 10/02/2020
 ms.author: normesta
+ms.date: 10/02/2020
+ms.topic: reference
+ms.service: azure-monitor
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: a3a07f828bb8ef20da630e909e46f03e8556eb98
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: ba8a82ed1113bfb3e71560ca9a6c713602df21f2
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780373"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590655"
 ---
-# <a name="azure-queue-storage-monitoring-data-reference"></a>Övervaknings data referens för Azure Queue Storage
+# <a name="azure-queue-storage-monitoring-data-reference"></a>Data referens för Azure Queue Storage-övervakning
 
 Mer information om hur du samlar in och analyserar övervaknings data för Azure Storage finns i [övervaknings Azure Storage](monitor-queue-storage.md) .
 
@@ -30,23 +30,23 @@ Värdena för kapacitets värden uppdateras dagligen (upp till 24 timmar). Tids 
 
 Azure Storage tillhandahåller följande kapacitets mått i Azure Monitor.
 
-#### <a name="account-level"></a>Konto nivå
+#### <a name="account-level-capacity-metrics"></a>Kapacitets mått på konto nivå
 
-[!INCLUDE [Account level capacity metrics](../../../includes/azure-storage-account-capacity-metrics.md)]
+[!INCLUDE [Account-level capacity metrics](../../../includes/azure-storage-account-capacity-metrics.md)]
 
-#### <a name="queue-storage"></a>Queue Storage
+#### <a name="queue-storage-metrics"></a>Queue Storage mått
 
-Den här tabellen visar [lagrings mått för kö](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices).
+I den här tabellen visas [Queue Storage mått](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices).
 
 | Mått | Beskrivning |
 | ------------------- | ----------------- |
-| QueueCapacity | Mängden Queue Storage som används av lagrings kontot. <br/><br/> Enhet: byte <br/> Sammansättnings typ: genomsnitt <br/> Värde exempel: 1024 |
-| QueueCount   | Antalet köer i lagrings kontot. <br/><br/> Enhet: antal <br/> Sammansättnings typ: genomsnitt <br/> Värde exempel: 1024 |
-| QueueMessageCount | Ungefärligt antal köa meddelanden i lagrings kontots Kötjänst. <br/><br/>Enhet: antal <br/> Sammansättnings typ: genomsnitt <br/> Värde exempel: 1024 |
+| **QueueCapacity** | Mängden Queue Storage som används av lagrings kontot. <br><br> Processor `Bytes` <br> Sammansättnings typ: `Average` <br> Värde exempel: `1024` |
+| **QueueCount** | Antalet köer i lagrings kontot. <br><br> Processor `Count` <br> Sammansättnings typ: `Average` <br> Värde exempel: `1024` |
+| **QueueMessageCount** | Ungefärligt antal köa meddelanden i lagrings kontot. <br><br> Processor `Count` <br> Sammansättnings typ: `Average` <br> Värde exempel: `1024` |
 
 ### <a name="transaction-metrics"></a>Transaktionsmått
 
-Transaktions mått genereras på varje begäran till ett lagrings konto från Azure Storage till Azure Monitor. Om det inte finns någon aktivitet på ditt lagrings konto kommer det inte att finnas några data om transaktions måtten under perioden. Alla transaktions mått är tillgängliga både i konto-och köns lagrings nivå. Tids kornig het definierar tidsintervallet som Mät värden presenteras. Tids korn som stöds för alla transaktions mått är PT1H och PT1M.
+Transaktions mått genereras på varje begäran till ett lagrings konto från Azure Storage till Azure Monitor. Om det inte finns någon aktivitet på ditt lagrings konto kommer det inte att finnas några data om transaktions måtten under perioden. Alla transaktions mått är tillgängliga både på konto-och Queue Storage Service nivå. Tids kornig het definierar tidsintervallet som Mät värden presenteras. Tids korn som stöds för alla transaktions mått är PT1H och PT1M.
 
 [!INCLUDE [Transaction metrics](../../../includes/azure-storage-account-transaction-metrics.md)]
 
@@ -79,5 +79,5 @@ I följande tabell visas egenskaperna för Azure Storage resurs loggar när de s
 
 ## <a name="see-also"></a>Se även
 
-- Se [övervakning av Azure Queue Storage](monitor-queue-storage.md) för en beskrivning av övervaknings Azure Storage.
+- Se [övervakning av Azure-Queue Storage](monitor-queue-storage.md) för en beskrivning av övervakning av azure-Queue Storage.
 - Mer information om övervakning av Azure-resurser finns i [övervaka Azure-resurser med Azure Monitor](../../azure-monitor/insights/monitor-azure-resource.md) .

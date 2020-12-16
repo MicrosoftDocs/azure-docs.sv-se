@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/24/2019
+ms.date: 12/15/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa04247aca777612c05a7531dc5b36e7af40e60e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba8c88f040bbd527b0d9f219a81fa090f53c84ed
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89255859"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590570"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>Självstudie: Använd en Windows VM-systemtilldelad hanterad identitet för att få åtkomst till Azure Storage via SAS-autentiseringsuppgifter
 
@@ -31,24 +31,28 @@ Den här självstudien visar hur du använder en systemtilldelad identitet för 
 En tjänst-SAS ger möjlighet att bevilja begränsad åtkomst till objekt i ett lagrings konto, för begränsad tid och en viss tjänst (i vårt exempel Blob-tjänsten) utan att exponera en åtkomst nyckel för kontot. Du kan en använda SAS-autentiseringsuppgift som vanligt när du gör lagringsåtgärder, till exempel när du använder Storage SDK. I den här självstudien demonstrerar vi överföring och hämtning av en blob med hjälp av Azure Storage PowerShell. Du lär dig hur du:
 
 > [!div class="checklist"]
-> * skapar ett lagringskonto
+> * Skapa ett lagringskonto
 > * Ge den virtuella datorn åtkomst till en SAS för lagringskonton i Resource Manager 
 > * Hämta en åtkomsttoken med hjälp av den virtuella datorns identitet och använde den när du hämtar SAS:en från Resource Manager 
 
 ## <a name="prerequisites"></a>Krav
 
-[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+- Förståelse för hanterade identiteter. Om du inte känner till funktionen för hanterade identiteter för Azure-resurser kan du läsa igenom den här [översikten](overview.md). 
+- Ett Azure-konto kan du [Registrera dig för ett kostnads fritt konto](https://azure.microsoft.com/free/).
+- Ägarens behörigheter i lämpligt omfång (din prenumeration eller resurs grupp) för att utföra nödvändiga steg för att skapa resurser och roll hantering. Information om rolltilldelning finns i [Använda rollbaserad åtkomstkontroll för att hantera åtkomsten till dina Azure-prenumerationsresurser](../../role-based-access-control/role-assignments-portal.md).
+- Du behöver också en virtuell Windows-dator som har systemtilldelade hanterade identiteter aktiverade.
+  - Om du behöver skapa en virtuell dator för den här självstudien kan du följa artikeln [skapa en virtuell dator med systemtilldelad identitet aktive rad](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity)
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-## <a name="create-a-storage-account"></a>skapar ett lagringskonto 
+## <a name="create-a-storage-account"></a>Skapa ett lagringskonto 
 
 Nu skapar du ett lagringskonto, om du inte redan har ett. Du kan också hoppa över det här steget och ge din VM-tilldelade hanterade identitet åtkomst till SAS-autentiseringsuppgiften för ett befintligt lagrings konto. 
 
 1. Klicka på knappen **+/Skapa ny tjänst** som finns i övre vänstra hörnet i Azure-portalen.
 2. Klicka på **Lagring** och sedan på **Lagringskonto**. Panelen ”Skapa lagringskonto” visas.
 3. Ange ett namn för lagringskontot. Du ska använda namnet senare.  
-4. **Distributionsmodell** och **Typ av konto** ska vara inställda på Resurshanterare respektive Generell användning. 
+4. **Distributions modellen** och **konto typen** ska anges till "Resource Manager" och "generell användning". 
 5. Kontrollera att informationen under **Prenumeration** och **Resursgrupp** matchar informationen som du angav när du skapade den virtuella datorn i föregående steg.
 6. Klicka på **Skapa**.
 
@@ -79,16 +83,16 @@ Azure Storage har inte inbyggt stöd för Azure Active Directory-autentisering. 
 
     ![Alternativ bildtext](./media/msi-tutorial-linux-vm-access-storage/msi-storage-role-sas.png)
 
-## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>Hämta en åtkomsttoken med hjälp av den virtuella datorns identitet och använd den för att anropa Azure Resource Manager 
+## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>Hämta en åtkomsttoken med hjälp av den virtuella datorns identitet och använd den för att anropa Azure Resource Manager 
 
-Under resten av självstudiekursen arbetar vi från den virtuella datorn som vi skapade tidigare.
+I resten av kursen kommer vi att fungera från den virtuella datorn.
 
 Du måste använda Azure Resource Manager PowerShell-cmdletar i den här delen.  Om du inte har det installerat kan du [Ladda ned den senaste versionen](/powershell/azure/) innan du fortsätter.
 
 1. Gå till **Virtuella datorer** på Azure Portal, gå till din virtuella Windows-dator och klicka sedan på **Anslut** längst upp på sidan **Översikt**.
 2. Ange ditt **användarnamn** och **lösenord** som du lade till när du skapade den virtuella Windows-datorn. 
-3. Nu när du har skapat en **anslutning till fjärrskrivbord** med den virtuella datorn öppnar du PowerShell i fjärrsessionen. 
-4. Använd PowerShells Invoke-WebRequest och skicka en begäran till den lokala slutpunkten för hanterad identitet för Azure-resurser för att hämta en åtkomsttoken för Azure Resource Manager.
+3. Nu när du har skapat en **anslutning till fjärrskrivbord** med den virtuella datorn.
+4. Öppna PowerShell i fjärrsessionen och Använd Invoke-WebRequest för att hämta en Azure Resource Manager-token från den lokala hanterade identiteten för Azure-resursernas slut punkt.
 
     ```powershell
        $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Method GET -Headers @{Metadata="true"}

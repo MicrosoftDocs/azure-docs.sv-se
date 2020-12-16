@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8f11f104e8d3d0a4f3a004ebe9f149cb4132d910
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f8ebbdf70836f3f2613183268f03dc43da1f0671
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501493"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590568"
 ---
 # <a name="create-a-workspace-with-data-exfiltration-protection-enabled"></a>Skapa en arbets yta med data exfiltrering Protection aktiverat
 Den här artikeln beskriver hur du skapar en arbets yta med data exfiltrering Protection aktiverat och hur du hanterar godkända Azure AD-klienter för den här arbets ytan.
@@ -21,7 +21,7 @@ Den här artikeln beskriver hur du skapar en arbets yta med data exfiltrering Pr
 >[!Note]
 >Du kan inte ändra konfigurationen för arbets ytan för hanterat virtuellt nätverk och data exfiltrering-skydd när arbets ytan har skapats.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 - Behörigheter för att skapa en resurs för arbets ytor i Azure.
 - Synapse-arbetsytans behörigheter för att skapa hanterade privata slut punkter.
 - Prenumerationer registrerade för nätverks resurs leverantören. [Läs mer.](../../azure-resource-manager/management/resource-providers-and-types.md)
@@ -33,7 +33,7 @@ Följ anvisningarna i [snabb start: skapa en Synapse-arbetsyta](../quickstart-cr
 1. Välj "Ja" för alternativet Tillåt endast utgående data trafik till godkända mål.
 1. Välj de godkända Azure AD-klienterna för den här arbets ytan.
 1. Granska konfigurationen och skapa arbets ytan.
-:::image type="content" source="./media/how-to-create-a-workspace-with-data-exfiltration-protection/workspace-creation-data-exfiltration-protection.png" alt-text="Skapa en arbets yta med data exfiltrering Protection":::
+:::image type="content" source="./media/how-to-create-a-workspace-with-data-exfiltration-protection/workspace-creation-data-exfiltration-protection.png" alt-text="Skärm bild som visar en skapa Synapse-arbetsyta med &quot;Aktivera hantera virtuellt nätverk&quot; valt.":::
 
 ## <a name="manage-approved-azure-active-directory-tenants-for-the-workspace"></a>Hantera godkända Azure Active Directory-klienter för arbets ytan
 1. Från arbets ytans Azure Portal går du till "godkända Azure AD-klienter". Listan över godkända Azure AD-klienter för arbets ytan visas här. Arbets ytans klient ingår som standard och visas inte i listan.

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/18/2020
+ms.date: 12/15/2020
 ms.author: b-juche
-ms.openlocfilehash: ee5e1230acd059d69648144b84a8fbfa652ef6e7
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: ceaf0209dd14c8d97088d7f8e8e6990429607089
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854061"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591830"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Skapa en NFSv3-och SMB-volym (Dual-Protocol) för Azure NetApp Files
 
@@ -49,8 +49,8 @@ Azure NetApp Files stöder skapande av volymer med NFS (NFSv3 och NFSv 4.1), SMB
     
     | Säkerhets stil    | Klienter som kan ändra behörigheter   | Behörigheter som klienter kan använda  | Resulterande effektiv säkerhets stil    | Klienter som har åtkomst till filer     |
     |-  |-  |-  |-  |-  |
-    | UNIX  | NFS   | NFSv3 läges bitar   | UNIX  | NFS och Windows   |
-    | NTFS  | Windows   | NTFS ACL: er     | NTFS  |NFS och Windows|
+    | `Unix`    | NFS   | NFSv3 läges bitar   | UNIX  | NFS och Windows   |
+    | `Ntfs`    | Windows   | NTFS ACL: er     | NTFS  |NFS och Windows|
 * UNIX-användare som monterar säkerhets format volymen NTFS med NFS autentiseras som Windows-användare `root` för UNIX `root` och `pcuser` för alla andra användare. Se till att dessa användar konton finns i Active Directory innan du monterar volymen när du använder NFS. 
 
 

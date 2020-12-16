@@ -4,12 +4,12 @@ description: Den här artikeln innehåller en genom gång av hur du skapar ett J
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1b973f8c132d9faec4fd6c9185345c0926cc35e1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e77ff762de11a9c8a723b162993db11efe715b66
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88942523"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591556"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Använda Java för att skicka händelser till eller ta emot händelser från Azure Event Hubs (Azure-eventhubs)
 
@@ -19,7 +19,7 @@ Den här snabb starten visar hur du skickar händelser till och tar emot händel
 > Den här snabb starten använder de gamla **Azure-eventhubs** **-och Azure-eventhubs-EPH-** paketen. En snabb start som använder det senaste paketet  **Azure-Messaging-eventhubs** finns i [skicka och ta emot händelser med Azure-Messaging-eventhubs](event-hubs-java-get-started-send.md). Information om hur du flyttar ditt program från att använda det gamla paketet till ett nytt finns i [hand boken för att migrera från Azure-eventhubs till Azure-Messaging-eventhubs](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md). 
 
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du är nybörjare på Azure Event Hubs, se [Event Hubs översikt](event-hubs-about.md) innan du gör den här snabb starten. 
 
@@ -74,8 +74,8 @@ public class SimpleSend {
 
     public static void main(String[] args)
             throws EventHubException, ExecutionException, InterruptedException, IOException {
-            
-            
+
+
     }
  }
 ```
@@ -172,17 +172,17 @@ Koden i den här självstudien baseras på [EventProcessorSample-koden på GitHu
 
 **EventProcessorHost** är en Java-klass som fören klar mottagandet av händelser från Event Hubs genom att hantera permanenta kontroll punkter och parallella mottagningar från dessa Event Hubs. Med EventProcessorHost kan du dela upp händelser över flera olika mottagare, även när de finns på olika noder. Det här exemplet visas hur man använder EventProcessorHost för en enda mottagare.
 
-### <a name="create-a-storage-account"></a>skapar ett lagringskonto
+### <a name="create-a-storage-account"></a>Skapa ett lagringskonto
 
 Om du vill använda EventProcessorHost måste du ha ett [Azure Storage konto] [Azure Storage konto]:
 
 1. Logga in på [Azure Portal](https://portal.azure.com)och välj **skapa en resurs** till vänster på skärmen.
-2. Välj **lagring**och välj sedan **lagrings konto**. I fönstret **skapa lagrings konto** anger du ett namn för lagrings kontot. Fyll i resten av fälten, Välj önskad region och välj sedan **skapa**.
-   
+2. Välj **lagring** och välj sedan **lagrings konto**. I fönstret **skapa lagrings konto** anger du ett namn för lagrings kontot. Fyll i resten av fälten, Välj önskad region och välj sedan **skapa**.
+
     ![Skapa ett lagrings konto i Azure Portal](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-azure-storage-account.png)
 
 3. Välj det nyligen skapade lagrings kontot och välj sedan **åtkomst nycklar**:
-   
+
     ![Hämta dina åtkomst nycklar i Azure Portal](./media/event-hubs-dotnet-framework-getstarted-receive-eph/select-azure-storage-access-keys.png)
 
     Kopiera värdet KEY1 till en tillfällig plats. Du använder det senare i den här självstudien.
@@ -207,11 +207,11 @@ Java-klientens bibliotek för Event Hubs är tillgängligt för användning i Ma
 För olika typer av build-miljöer kan du uttryckligen hämta de senaste utgivna JAR-filerna från [maven Central-lagringsplatsen](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22).
 
 1. För följande exempel skapar du först ett nytt Maven-projekt för ett konsol-/gränssnittsprogram i din favorit Java Development Environment. Klassen anropas `ErrorNotificationHandler` .     
-   
+
     ```java
     import java.util.function.Consumer;
     import com.microsoft.azure.eventprocessorhost.ExceptionReceivedEventArgs;
-   
+
     public class ErrorNotificationHandler implements Consumer<ExceptionReceivedEventArgs>
     {
         @Override
@@ -222,7 +222,7 @@ För olika typer av build-miljöer kan du uttryckligen hämta de senaste utgivna
     }
     ```
 2. Använd följande kod för att skapa en ny klass som kallas `EventProcessorSample`. Ersätt plats hållarna med de värden som används när du skapade händelsehubben och lagrings kontot:
-   
+
    ```java
    package com.microsoft.azure.eventhubs.samples.eventprocessorsample;
 
@@ -250,13 +250,13 @@ För olika typer av build-miljöer kan du uttryckligen hämta de senaste utgivna
            String storageConnectionString = "----AzureStorageConnectionString----";
            String storageContainerName = "----StorageContainerName----";
            String hostNamePrefix = "----HostNamePrefix----";
-        
+
            ConnectionStringBuilder eventHubConnectionString = new ConnectionStringBuilder()
                 .setNamespaceName(namespaceName)
                 .setEventHubName(eventHubName)
                 .setSasKeyName(sasKeyName)
                 .setSasKey(sasKey);
-        
+
            EventProcessorHost host = new EventProcessorHost(
                 EventProcessorHost.createHostName(hostNamePrefix),
                 eventHubName,
@@ -264,7 +264,7 @@ För olika typer av build-miljöer kan du uttryckligen hämta de senaste utgivna
                 eventHubConnectionString.toString(),
                 storageConnectionString,
                 storageContainerName);
-        
+
            System.out.println("Registering host named " + host.getHostName());
            EventProcessorOptions options = new EventProcessorOptions();
            options.setExceptionNotification(new ErrorNotificationHandler());
@@ -284,7 +284,7 @@ För olika typer av build-miljöer kan du uttryckligen hämta de senaste utgivna
            .thenAccept((unused) ->
            {
                System.out.println("Press enter to stop.");
-               try 
+                 try 
                {
                    System.in.read();
                }
@@ -294,8 +294,8 @@ För olika typer av build-miljöer kan du uttryckligen hämta de senaste utgivna
                }
            })
            .thenCompose((unused) ->
-           {
-               return host.unregisterEventProcessor();
+            {
+                return host.unregisterEventProcessor();
            })
            .exceptionally((e) ->
            {
@@ -307,13 +307,13 @@ För olika typer av build-miljöer kan du uttryckligen hämta de senaste utgivna
                return null;
            })
            .get(); // Wait for everything to finish before exiting main!
-        
+
            System.out.println("End of sample");
        }
    }
    ```
 3. Skapa ytterligare en klass `EventProcessor` med namnet med hjälp av följande kod:
-   
+
     ```java
     public static class EventProcessor implements IEventProcessor
     {
@@ -332,7 +332,7 @@ För olika typer av build-miljöer kan du uttryckligen hämta de senaste utgivna
         {
             System.out.println("SAMPLE: Partition " + context.getPartitionId() + " is closing for reason " + reason.toString());
         }
-        
+
         // onError is called when an error occurs in EventProcessorHost code that is tied to this partition, such as a receiver failure.
         @Override
         public void onError(PartitionContext context, Throwable error)
@@ -353,7 +353,7 @@ För olika typer av build-miljöer kan du uttryckligen hämta de senaste utgivna
                     System.out.println("SAMPLE (" + context.getPartitionId() + "," + data.getSystemProperties().getOffset() + "," +
                             data.getSystemProperties().getSequenceNumber() + "): " + new String(data.getBytes(), "UTF8"));
                     eventCount++;
-                    
+
                     // Checkpointing persists the current position in the event stream for this partition and means that the next
                     // time any host opens an event processor on this event hub+consumer group+partition combination, it will start
                     // receiving at the event after this one. 
@@ -361,7 +361,7 @@ För olika typer av build-miljöer kan du uttryckligen hämta de senaste utgivna
                     if ((checkpointBatchingCount % 5) == 0)
                     {
                         System.out.println("SAMPLE: Partition " + context.getPartitionId() + " checkpointing at " +
-                            data.getSystemProperties().getOffset() + "," + data.getSystemProperties().getSequenceNumber());
+                               data.getSystemProperties().getOffset() + "," + data.getSystemProperties().getSequenceNumber());
                         // Checkpoints are created asynchronously. It is important to wait for the result of checkpointing
                         // before exiting onEvents or before creating the next checkpoint, to detect errors and to ensure proper ordering.
                         context.checkpoint(data).get();
@@ -426,4 +426,3 @@ Läs följande artiklar:
 - [EventProcessorHost](event-hubs-event-processor-host.md)
 - [Funktioner och terminologi i Azure Event Hubs](event-hubs-features.md)
 - [Vanliga frågor och svar om Event Hubs](event-hubs-faq.md)
-

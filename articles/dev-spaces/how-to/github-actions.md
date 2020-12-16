@@ -7,12 +7,12 @@ description: Granska och testa ändringar från en pull-begäran direkt i Azure 
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes service, Containers, GitHub Actions, Helm, service nät, service mask-routning, kubectl, K8s
 manager: gwallace
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 9bed61861c80f141270e50b644b32ae42fbe8e77
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 447c41055ededfc55e44bebd92de89b3d23de3c7
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995580"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591573"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub-åtgärder & Azure Kubernetes service (för hands version)
 
@@ -103,7 +103,7 @@ Navigera till din förgrenade lagrings plats och klicka på *Inställningar*. Kl
 > [!NOTE]
 > Alla dessa hemligheter används av GitHub-åtgärden och konfigureras i [. GitHub/arbets flöden/Bikes. yml][github-action-yaml].
 
-Om du vill uppdatera huvud utrymmet efter att din PR har slagits samman lägger du till *GATEWAY_HOST* hemlighet, som tar formuläret *<MASTER_SPACE>. GATEWAY. <HOST_SUFFIX>*, som i det här exemplet är *dev.Gateway.fedcab0987.EUs.azds.io*. När du har slagit samman ändringarna i huvud grenen i din förgrening, kommer en annan åtgärd att köras för att återskapa och köra hela programmet i huvud utvecklings utrymmet. I det här exemplet är huvud utrymmet *dev*. Den här åtgärden har kon figurer ATS i [. GitHub/Workflows/bikesharing. yml][github-action-bikesharing-yaml].
+Om du vill uppdatera huvud utrymmet efter att din PR har slagits samman lägger du till *GATEWAY_HOST* hemlighet, som tar formuläret *<MASTER_SPACE>. GATEWAY. <HOST_SUFFIX>*, som i det här exemplet är *dev.Gateway.fedcab0987.EUs.azds.io*. När du sammanfogar dina ändringar i huvud grenen i din förgrening, kommer en annan åtgärd att köras för att återskapa och köra hela programmet i huvud utvecklings utrymmet. I det här exemplet är huvud utrymmet *dev*. Den här åtgärden har kon figurer ATS i [. GitHub/Workflows/bikesharing. yml][github-action-bikesharing-yaml].
 
 Dessutom, om du vill att ändringarna i din PR ska köras i ett grandchild-utrymme, uppdaterar du *MASTER_SPACE* och *värd* hemligheter. Om ditt program till exempel körs i *dev* med en *azureuser1 dev/*, så att PR-körningen kan köras i ett underordnat utrymme med *dev/azureuser1*:
 

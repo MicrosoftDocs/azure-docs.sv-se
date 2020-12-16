@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 6b05e8fbd2f688b4dd5611302c8df1b1deb16ab3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b9e036df91eecadc701664a19905a92c142b7585
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099801"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591913"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>Snabb start: Bygg en Cassandra-app med Node.js SDK och Azure Cosmos DB
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "93099801"
 
 I den här snabb starten skapar du ett Azure Cosmos DB API för Cassandra konto och använder en Cassandra Node.js app som klonas från GitHub för att skapa en Cassandra-databas och-behållare. Azure Cosmos DB är en databas tjänst med flera modeller som gör att du snabbt kan skapa och fråga dokument-, tabell-, nyckel värdes-och Graf-databaser med globala funktioner för distribution och horisontell skalning.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Du kan även [Testa Azure Cosmos DB kostnadsfritt](https://azure.microsoft.com/try/cosmosdb/) utan en Azure-prenumeration, utan kostnad och åtaganden.
 
@@ -107,7 +107,7 @@ Det här är valfritt. Om du vill lära dig hur databasresurserna skapas i koden
 
    ```javascript
    function createTable(next) {
-    var query = "CREATE TABLE IF NOT EXISTS uprofile.user (user_id int PRIMARY KEY, user_name text, user_bcity text)";
+       var query = "CREATE TABLE IF NOT EXISTS uprofile.user (user_id int PRIMARY KEY, user_name text, user_bcity text)";
         client.execute(query, next);
         console.log("created table");
    },
@@ -149,7 +149,7 @@ Det här är valfritt. Om du vill lära dig hur databasresurserna skapas i koden
             });
         },
     ```  
-    
+
 * Fråga för att hämta ett nyckelvärde.
 
     ```javascript
@@ -189,7 +189,7 @@ Gå nu tillbaka till Azure Portal för att hämta information om din anslutnings
     Rad 2 bör nu se ut ungefär så här 
 
     `config.username = 'cosmos-db-quickstart';`
-    
+
 1. Kopiera LÖSENORD-värdet från portalen och klistra in det ovanpå `<FillMEIN>` på rad 3.
 
     Rad 3 bör nu se ut ungefär så här
@@ -197,12 +197,12 @@ Gå nu tillbaka till Azure Portal för att hämta information om din anslutnings
     `config.password = '2Ggkr662ifxz2Mg==';`
 
 1. Spara filen `config.js`.
-    
+
 ## <a name="use-the-x509-certificate"></a>Använda X509-certifikatet
 
 1. Hämta Baltimore CyberTrust Root Certificate lokalt från [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt) . Byt namn på filen med filnamnstillägget `.cer`.
 
-   Certifikatet har serienummer `02:00:00:b9` och SHA1-fingeravtryck `d4🇩🇪20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74`.
+   Certifikatet har serienummer `02:00:00:b9` och SHA1-fingeravtryck `d4:de:20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74`.
 
 2. Öppna `uprofile.js` och ändra `path\to\cert` så att den pekar på det nya certifikatet.
 
@@ -213,11 +213,11 @@ Gå nu tillbaka till Azure Portal för att hämta information om din anslutnings
 > 
 > Dubbelklicka på. CRT-filen för att öppna den i certifikat visningen. 
 >
-> :::image type="content" source="./media/create-cassandra-nodejs/crtcer1.gif" alt-text="Visa och kopiera KONTAKTPUNKT, ANVÄNDARNAMN och LÖSENORD från Azure Portal, sidan med anslutningssträng":::
+> :::image type="content" source="./media/create-cassandra-nodejs/crtcer1.gif" alt-text="Skärm bild som visar fönstret certifikat.":::
 >
 > Klicka på nästa i certifikat guiden. Välj Base-64-kodad X. 509 (. CER) och nästa.
 >
-> :::image type="content" source="./media/create-cassandra-nodejs/crtcer2.gif" alt-text="Visa och kopiera KONTAKTPUNKT, ANVÄNDARNAMN och LÖSENORD från Azure Portal, sidan med anslutningssträng":::
+> :::image type="content" source="./media/create-cassandra-nodejs/crtcer2.gif" alt-text="Skärm bild som visar Base-64-kodad X. 509 (. CER-alternativ.":::
 >
 > Välj Bläddra (för att hitta ett mål) och ange ett fil namn.
 > Välj nästa när du är färdig.
@@ -238,13 +238,13 @@ Gå nu tillbaka till Azure Portal för att hämta information om din anslutnings
 
 4. Kontrollera att resultatet blir det man kan förvänta sig från kommandoraden.
 
-    :::image type="content" source="./media/create-cassandra-nodejs/output.png" alt-text="Visa och kopiera KONTAKTPUNKT, ANVÄNDARNAMN och LÖSENORD från Azure Portal, sidan med anslutningssträng":::
+    :::image type="content" source="./media/create-cassandra-nodejs/output.png" alt-text="Visa och verifiera utdata":::
 
     Tryck på CTRL + C för att stoppa körningen av programmet och stänga konsol fönstret. 
 
 5. I **Datautforskaren** på Azure-portalen kan du fråga, ändra och arbeta med dessa nya data. 
 
-    :::image type="content" source="./media/create-cassandra-nodejs/data-explorer.png" alt-text="Visa och kopiera KONTAKTPUNKT, ANVÄNDARNAMN och LÖSENORD från Azure Portal, sidan med anslutningssträng"::: 
+    :::image type="content" source="./media/create-cassandra-nodejs/data-explorer.png" alt-text="Visa data i Datautforskaren"::: 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Granska serviceavtal i Azure-portalen
 

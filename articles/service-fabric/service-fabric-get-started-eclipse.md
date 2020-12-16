@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/06/2018
 ms.author: rapatchi
 ms.custom: devx-track-java
-ms.openlocfilehash: 004fb022847432a9739e79f7063b80636f8dcf2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c94f43b74edf5da18acd7e67417f3b7e10a07d5d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87374243"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590876"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Service Fabric-plugin-program för utveckling av Java-program i Eclipse
 Eclipse är en av de mest använda IDE:erna (Integrated Development Environment) för Java-utvecklare. I den här artikeln beskrivs hur du kan konfigurera din Eclipse-utvecklingsmiljö för att arbeta med Azure Service Fabric. Läs om hur du installerar Service Fabric-plugin-programmet, skapar ett Service Fabric-program och distribuerar Service Fabric-programmet till ett lokalt eller fjärranslutet Service Fabric-kluster i Eclipse. 
@@ -31,20 +31,20 @@ Du kan installera ett Service Fabric-plugin-program i Eclipse. Plugin-programmet
 > I Ubuntu rekommenderar vi att du installerar direkt från Eclipses webbplats i stället för att använda ett installationspaket (`apt` eller `apt-get`). På så sätt kan du vara säker på att du får den senaste versionen av Eclipse. 
 
 Installera Eclipse Neon eller senare från [Eclipse-webbplatsen](https://www.eclipse.org).  Installera även version 2.2.1 eller senare av Buildship (Service Fabric-plugin-programmet är inte kompatibelt med äldre versioner av Buildship):
--   Om du vill kontrol lera vilka versioner av installerade komponenter som finns i Sol förmörkelse går du till **Hjälp**  >  **om**  >  **installations information**för Sol förmörkelse.
+-   Om du vill kontrol lera vilka versioner av installerade komponenter som finns i Sol förmörkelse går du till **Hjälp**  >  **om**  >  **installations information** för Sol förmörkelse.
 -   Om du vill uppdatera Buildship kan du läsa [Eclipse Buildship: Eclipse-plugin-program för Gradle][buildship-update] (på engelska).
 -   Om du vill söka efter och installera uppdateringar för Sol förmörkelse går du till **Hjälp**  >  **söka efter uppdateringar**.
 
-Installera Service Fabric plugin-programmet, i Sol förmörkelse, går du till **Hjälp**med att  >  **installera ny program vara**.
+Installera Service Fabric plugin-programmet, i Sol förmörkelse, går du till **Hjälp** med att  >  **installera ny program vara**.
 1. I rutan **arbeta med** anger du https: \/ /dl.Microsoft.com/Eclipse.
 2. Klicka på **Lägg till**.
 
    ![Service Fabric-plugin-program för Eclipse][sf-eclipse-plugin-install]
 3. Välj Service Fabric-plugin-programmet och klicka sedan på **Next** (Nästa).
 4. Slutför installationsstegen och acceptera licensvillkoren för programvara från Microsoft.
-  
+
 Om du redan har Service Fabric-plugin-programmet installerat ska du installera den senaste versionen. 
-1. Om du vill söka efter tillgängliga uppdateringar går du till **Hjälp**  >  **om**  >  **installations information**för Sol förmörkelse. 
+1. Om du vill söka efter tillgängliga uppdateringar går du till **Hjälp**  >  **om**  >  **installations information** för Sol förmörkelse. 
 2. Välj Service Fabric i listan över installerade plugin-program och klicka sedan på **Update** (Uppdatera). Tillgängliga uppdateringar installeras.
 3. När du uppdaterar Service Fabrik-plugin-programmet ska du även uppdatera Gradle-projektet.  Högerklicka på **build.gradle** och välj **Uppdatera**.
 
@@ -57,7 +57,7 @@ Om du redan har Service Fabric-plugin-programmet installerat ska du installera d
 
 ## <a name="create-a-service-fabric-application-in-eclipse"></a>Skapa ett Service Fabric-program i Eclipse
 
-1.  I Sol förmörkelse går du **File**till  >  **ny**fil  >  **Other**. Välj **Service Fabric Project** (Service Fabric Project) och klicka sedan på **Next** (Nästa).
+1.  I Sol förmörkelse går du till  >  **ny** fil  >  . Välj **Service Fabric Project** (Service Fabric Project) och klicka sedan på **Next** (Nästa).
 
     ![Service Fabric, ny projektsida 1][create-application/p1]
 
@@ -91,7 +91,7 @@ Om du redan har Service Fabric-plugin-programmet installerat ska du installera d
     -   Klicka på **Build Application** (Bygg program) om du vill skapa programmet utan rensning.
     -   Klicka på **Rebuild Application** (Bygg om program) om du vill skapa en rensad version av programmet.
     -   Klicka på **Clean Application** (Rensa program) om du vill rensa bort byggda artefakter i programmet.
-     
+
 ## <a name="deploy-a-service-fabric-application-to-the-local-cluster-with-eclipse"></a>Distribuera ett Service Fabric-program till det lokala klustret med Sol förmörkelse
 
 När du har skapat ditt Service Fabric-program följer du dessa steg för att distribuera det till det lokala klustret.
@@ -168,7 +168,7 @@ Du kan också distribuera Service Fabric-programmet med Run Configurations (Kör
 
 1. I Sol förmörkelse går du till **Kör**  >  **Run Configurations**.
 2. Välj **ServiceFabricDeployer** under **Gradle Project** (Gradle-projekt).
-3. I den högra rutan på fliken **argument** kontrollerar du att parametrarna för **IP**, **port**, **clientCert**och **clientKey** är korrekt inställda för din distribution. Som standard är parametrarna inställda på att distribueras till det lokala klustret som i följande skärm bild. Om du vill publicera din app i Azure kan du ändra parametrarna så att de innehåller slut punkts information och säkerhets referenser för ditt Azure-kluster. Mer information finns i föregående avsnitt, [publicera ditt Service Fabric-program till Azure med Sol förmörkelse](#publish-your-service-fabric-application-to-azure-with-eclipse).
+3. I den högra rutan på fliken **argument** kontrollerar du att parametrarna för **IP**, **port**, **clientCert** och **clientKey** är korrekt inställda för din distribution. Som standard är parametrarna inställda på att distribueras till det lokala klustret som i följande skärm bild. Om du vill publicera din app i Azure kan du ändra parametrarna så att de innehåller slut punkts information och säkerhets referenser för ditt Azure-kluster. Mer information finns i föregående avsnitt, [publicera ditt Service Fabric-program till Azure med Sol förmörkelse](#publish-your-service-fabric-application-to-azure-with-eclipse).
 
     ![Kör konfigurations dialog rutan lokalt](./media/service-fabric-get-started-eclipse/run-config-local.png)
 
@@ -206,7 +206,7 @@ Om du markerar alternativet **Automatically update application and service versi
 
 ## <a name="upgrade-your-service-fabric-java-application"></a>Uppgradera ditt Service Fabric Java-program
 
-Anta att du har ett projekt som heter **App1** som du har skapat med Service Fabric-plugin-programmet i Eclipse. För att distribuera projektet skapade du ett program med namnet **fabric:/App1Application** med hjälp av plugin-programmet. Program typen är **App1ApplicationType**och program versionen är 1,0. Nu vill du uppgradera programmet utan att det påverkar tillgängligheten.
+Anta att du har ett projekt som heter **App1** som du har skapat med Service Fabric-plugin-programmet i Eclipse. För att distribuera projektet skapade du ett program med namnet **fabric:/App1Application** med hjälp av plugin-programmet. Program typen är **App1ApplicationType** och program versionen är 1,0. Nu vill du uppgradera programmet utan att det påverkar tillgängligheten.
 
 Gör ändringar i programmet och bygg sedan den ändrade tjänsten på nytt. Uppdatera manifestfilen (ServiceManifest.xml) för den ändrade tjänsten med de uppdaterade versionerna för tjänsten (samt kod, konfig eller data, om det behövs). Ändra också programmets manifest (ApplicationManifest.xml) med det uppdaterade versionsnumret för programmet och den ändrade tjänsten.  
 

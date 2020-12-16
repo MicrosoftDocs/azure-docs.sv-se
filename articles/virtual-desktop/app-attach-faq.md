@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 73fb9bf436c043e903977fafbb5a502e2edc5488
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 78c21e9515965f1c15315967f6a19a0df2838dc2
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518693"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591203"
 ---
 # <a name="msix-app-attach-faq"></a>Vanliga frågor och svar om MSIX app
 
@@ -27,7 +27,7 @@ MSIX är ett paket format för appar, medan MSIX app Attach är den funktion som
 
 MSIX app Attach använder inte FSLogix. MSIX app Attach och FSLogix är dock utformade för att fungera tillsammans för att ge en smidig användar upplevelse.
 
-## <a name="can-i-use-msix-app-attach-outside-of-windows-virtual-desktop"></a>Kan jag använda MSIX app som är ansluten utanför det virtuella Windows-skrivbordet?
+## <a name="can-i-use-the-msix-app-attach-outside-of-windows-virtual-desktop"></a>Kan jag använda MSIX-appen som är ansluten utanför det virtuella Windows-skrivbordet?
 
 De API: er som Power MSIX-appen ansluter till är tillgängliga för Windows 10 Enterprise. Dessa API: er kan användas utanför det virtuella Windows-skrivbordet. Det finns dock inget hanterings plan för MSIX-appen bifoga utanför det virtuella Windows-skrivbordet.
 

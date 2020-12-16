@@ -3,22 +3,20 @@ title: Skapa lösningar för myndigheter med Azure IoT Central
 description: Lär dig att bygga smarta stads lösningar med hjälp av Azure IoT Central programmallar.
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 5f92750217dd0bcf5d7a5074a6187d994f19722a
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 72b0e3c3cee0ed9131fe6ee1f50cee10ec03a7b7
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126574"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590825"
 ---
 # <a name="building-government-solutions-with-azure-iot-central"></a>Skapa lösningar för myndigheter med Azure IoT Central
 
-
-
-Kom igång med att skapa smarta stads lösningar med hjälp av Azure IoT Central programmallar. Börja nu med **övervakning av vatten kvalitet**, **övervakning av vattenförbrukning**och **ansluten avfalls hantering**.
+Kom igång med att skapa smarta stads lösningar med hjälp av Azure IoT Central programmallar. Börja nu med **övervakning av vatten kvalitet**, **övervakning av vattenförbrukning** och **ansluten avfalls hantering**.
 
 ## <a name="what-is-water-quality-monitoring-application-template"></a>Vad är program mal len för övervakning av vatten kvalitet?   
 
@@ -41,7 +39,6 @@ Kom igång med [själv studie kursen om program kvalitets övervakning](./tutori
 ## <a name="what-is-water-consumption-monitoring-application-template"></a>Vad är program mal len för övervakning av vatten förbrukning? 
 
 Traditionell användnings spårning i vatten förlitar sig på vatten operatörer som läser in vattenförbruknings mätare manuellt på mätar platserna. Fler städer ersätter traditionella meter med avancerade smarta mätare som möjliggör fjärrövervakning av användning och fjärrstyrnde av ventiler till kontroll av vatten flödet. Övervakning av vattenförbrukningen tillsammans med meddelandet Digital feedback till medborgarna kan öka medvetenheten och minska vatten förbrukningen. 
-
 
 Appen för övervakning av vattenförbrukning är en IoT Central app-mall som hjälper dig att kickstart din IoT-lösning för att aktivera vatten verktyg och städer för att fjärrövervaka och kontrol lera vatten flödet för att minska förbrukningen. 
 

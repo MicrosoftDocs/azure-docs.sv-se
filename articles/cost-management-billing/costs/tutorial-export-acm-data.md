@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 32989b4d5c595416f82fc9d3f1cec2eddec1d6ee
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: e3c1fa071cd23b871f754e89d6f17eb2cc44b394
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929267"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400360"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Självstudier: Skapa och hantera exporterade data
 
@@ -153,7 +153,7 @@ Börja med att förbereda din miljö för Azure PowerShell:
 
 [!INCLUDE [azure-powershell-requirements-no-header.md](../../../includes/azure-powershell-requirements-no-header.md)]
 
-* > [!IMPORTANT]
+  > [!IMPORTANT]
   > Så länge PowerShell-modulen **Az.CostManagement** finns i en förhandsversion måste du installera den separat med hjälp av cmdleten `Install-Module`. När modulen blir allmänt tillgänglig kommer den att ingå i framtida versioner av Az PowerShell-modulen och vara tillgänglig som standard i Azure Cloud Shell.
 
   ```azurepowershell-interactive

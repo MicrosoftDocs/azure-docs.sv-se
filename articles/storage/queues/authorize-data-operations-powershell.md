@@ -1,21 +1,21 @@
 ---
 title: Kör PowerShell-kommandon med Azure AD-autentiseringsuppgifter för att komma åt köade data
 titleSuffix: Azure Storage
-description: PowerShell stöder inloggning med Azure AD-autentiseringsuppgifter för att köra kommandon på Azure Storage Queue-data. En åtkomsttoken har angetts för sessionen och används för att auktorisera anrops åtgärder. Behörigheter beror på den Azure-roll som tilldelats Azure AD-säkerhetsobjektet.
-services: storage
+description: PowerShell har stöd för inloggning med Azure AD-autentiseringsuppgifter för att köra kommandon på Azure Queue Storage data. En åtkomsttoken har angetts för sessionen och används för att auktorisera anrops åtgärder. Behörigheter beror på den Azure-roll som tilldelats Azure AD-säkerhetsobjektet.
 author: tamram
-ms.service: storage
-ms.topic: how-to
-ms.date: 09/14/2020
+services: storage
 ms.author: tamram
 ms.reviewer: ozgun
+ms.date: 09/14/2020
+ms.topic: how-to
+ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 3636b0366dfe687c4825ec1a16c5e8094a7db10b
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: bf2696d329f852741c42219219600dc773090623
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637408"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590723"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-queue-data"></a>Kör PowerShell-kommandon med Azure AD-autentiseringsuppgifter för att komma åt köade data
 
@@ -25,7 +25,7 @@ Du kan tilldela behörigheter till köa data till ett säkerhets objekt i Azure 
 
 ## <a name="supported-operations"></a>Åtgärder som stöds
 
-Azure Storage-tilläggen stöds för åtgärder på köa data. Vilka åtgärder som kan anropas beror på vilka behörigheter som beviljats för det säkerhets objekt i Azure AD som du loggar in på PowerShell. Behörigheter till Azure Storage köer tilldelas via Azure RBAC. Om du till exempel har tilldelats rollen **Queue data Reader** kan du köra skript kommandon som läser data från en kö. Om du har tilldelats rollen **Queue data Contributor** kan du köra skript kommandon som läser, skriver eller tar bort en kö eller de data som de innehåller.
+Azure Storage-tilläggen stöds för åtgärder på köa data. Vilka åtgärder som kan anropas beror på vilka behörigheter som beviljats för det säkerhets objekt i Azure AD som du loggar in på PowerShell. Behörigheter till köer tilldelas via Azure RBAC. Om du till exempel har tilldelats rollen **Queue data Reader** kan du köra skript kommandon som läser data från en kö. Om du har tilldelats rollen **Queue data Contributor** kan du köra skript kommandon som läser, skriver eller tar bort en kö eller de data som de innehåller.
 
 Mer information om de behörigheter som krävs för varje Azure Storage-åtgärd i en kö finns i [anropa lagrings åtgärder med OAuth-token](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens).
 

@@ -7,12 +7,12 @@ ms.service: sql-db-mi
 ms.subservice: service
 ms.topic: conceptual
 ms.date: 09/13/2020
-ms.openlocfilehash: b0a10744d2b48fa620b48b731144222199f711c7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 96367b143711c4ec5f3f8d609f048c72c6fded16
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792539"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590859"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-sql-database--sql-managed-instance"></a>Förstå ändringarna i rot certifikat utfärdarens ändring för Azure SQL Database & SQL-hanterad instans
 
@@ -72,7 +72,7 @@ För servrar som skapats efter den 26 oktober 2020 kan du använda det nyligen u
 ### <a name="how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>Hur ofta uppdaterar Microsoft sina certifikat eller vad är förfallo principen?
 Dessa certifikat som används av Azure SQL Database & SQL-hanterad instans tillhandahålls av betrodda certifikat utfärdare (CA). Därför är stöd för dessa certifikat på Azure SQL Database & SQL-hanterad instans knutet till stöd för dessa certifikat av CA. Men i så fall kan det vara oförutsedda buggar i dessa fördefinierade certifikat, vilket måste åtgärdas tidigast.
 
-### <a name="if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-master-server-or-all-the-read-replicas"></a>Behöver jag bara utföra den här uppdateringen på huvud servern eller alla Läs repliker om jag använder Läs repliker?
+### <a name="if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-primary-server-or-all-the-read-replicas"></a>Behöver jag bara utföra den här uppdateringen på den primära servern eller alla Läs repliker om jag använder Läs repliker?
 Eftersom den här uppdateringen är en ändring på klient sidan, om klienten som används för att läsa data från replik servern, måste du även tillämpa ändringarna för dessa klienter. 
 
 ### <a name="do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>Har vi frågor på Server sidan för att kontrol lera om SSL används?

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 1cefb5a7b554b9a477f6a51eab3b22b0e8f55378
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8d6f59f64aed2870494fa8697014e670e373337
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88958447"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590366"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Felsök problem med domän-och TLS/SSL-certifikat i Azure App Service
 
@@ -89,7 +89,7 @@ Det här problemet kan bero på någon av följande orsaker:
     **Lösning**: om certifikatet har marker ATS som bedrägeri och inte har lösts efter 24 timmar följer du dessa steg:
 
     1. Logga in på [Azure-portalen](https://portal.azure.com).
-    2. Gå till **app service certifikat**och välj certifikat.
+    2. Gå till **app service certifikat** och välj certifikat.
     3. Välj **certifikat konfiguration**  >  **steg 2: verifiera**  >  **domän verifieringen**. Det här steget skickar ett meddelande till Azure-certifikat leverantören för att lösa problemet.
 
 ## <a name="custom-domain-problems"></a>Anpassade domän problem
@@ -120,7 +120,7 @@ Webbläsaren kanske fortfarande cachelagrar den gamla IP-adressen för din domä
 
 **Lösning för orsak 2**
 
-Rensa webbläsaren. För Windows-enheter kan du köra kommandot `ipconfig /flushdns` . Använd [WhatsmyDNS.net](https://www.whatsmydns.net/) för att kontrol lera att din domän pekar på APPENs IP-adress. 
+Rensa webbläsaren. För Windows-enheter kan du köra kommandot `ipconfig /flushdns` . Använd [WhatsmyDNS.net](https://www.whatsmydns.net/) för att kontrol lera att din domän pekar på APPENs IP-adress.
 
 ### <a name="you-cant-add-a-subdomain"></a>Det går inte att lägga till en under domän 
 
@@ -185,13 +185,13 @@ App Service certifikatet förnyades, men den app som använder App Service certi
 
 #### <a name="cause"></a>Orsak 
 App Service synkroniserar ditt certifikat automatiskt inom 48 timmar. När du roterar eller uppdaterar ett certifikat, kan det hända att programmet fortfarande hämtar det gamla certifikatet och inte det nyligen uppdaterade certifikatet. Orsaken är att jobbet att synkronisera certifikat resursen inte har körts än. Klicka på synkronisera. Synkroniseringsåtgärden uppdaterar automatiskt värd namns bindningarna för certifikatet i App Service utan att orsaka avbrott i dina appar.
- 
+
 #### <a name="solution"></a>Lösning
 
 Du kan tvinga fram synkronisering av certifikatet:
 
-1. Logga in på [Azure-portalen](https://portal.azure.com). Välj **app service certifikat**och välj sedan certifikatet.
-2. Välj **nyckel förnyelse och synkronisera**och välj sedan **Synkronisera**. Det tar lite tid att slutföra synkroniseringen. 
+1. Logga in på [Azure-portalen](https://portal.azure.com). Välj **app service certifikat** och välj sedan certifikatet.
+2. Välj **nyckel förnyelse och synkronisera** och välj sedan **Synkronisera**. Det tar lite tid att slutföra synkroniseringen. 
 3. När synkroniseringen är klar visas följande meddelande: "alla resurser har uppdaterats med det senaste certifikatet".
 
 ### <a name="domain-verification-is-not-working"></a>Domän verifiering fungerar inte 
@@ -201,17 +201,17 @@ Det App Service certifikatet kräver domän verifiering innan certifikatet kan a
 
 #### <a name="solution"></a>Lösning
 Verifiera din domän manuellt genom att lägga till en TXT-post:
- 
-1.  Gå till den Domain Name Service (DNS)-providern som är värd för ditt domän namn.
-2.  Lägg till en TXT-post för din domän som använder värdet för den domän-token som visas i Azure Portal. 
+
+1. Gå till den Domain Name Service (DNS)-providern som är värd för ditt domän namn.
+1. Lägg till en TXT-post för din domän som använder värdet för den domän-token som visas i Azure Portal. 
 
 Vänta några minuter på att DNS-spridningen ska köras och välj sedan knappen **Uppdatera** för att utlösa verifieringen. 
 
 Alternativt kan du använda HTML-webbsidans metod för att verifiera din domän manuellt. Med den här metoden kan certifikat utfärdaren bekräfta domän ägarskapet för den domän som certifikatet har utfärdats för.
 
-1.  Skapa en HTML-fil med namnet {Domain Verification token}. html. Innehållet i den här filen ska vara värdet för verifierings-token för domänen.
-3.  Ladda upp den här filen i roten på webb servern som är värd för din domän.
-4.  Välj **Uppdatera** för att kontrol lera certifikatets status. Det kan ta några minuter innan verifieringen har slutförts.
+1. Skapa en HTML-fil med namnet {Domain Verification token}. html. Innehållet i den här filen ska vara värdet för verifierings-token för domänen.
+1. Ladda upp den här filen i roten på webb servern som är värd för din domän.
+1. Välj **Uppdatera** för att kontrol lera certifikatets status. Det kan ta några minuter innan verifieringen har slutförts.
 
 Om du t. ex. köper ett standard certifikat för azure.com med verifierings-token 1234ABCD, ska en webbegäran som görs till https://azure.com/1234abcd.html returnera 1234ABCD. 
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: f82ea154d5949f4d229ac76e7a7ce2a89d15ac13
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 7e27c3dd6e70d9a532c326d8187d82e14bf7ddda
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025675"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591624"
 ---
 # <a name="cicd-for-custom-speech"></a>CI/CD för Custom Speech
 
@@ -84,7 +84,7 @@ För en redan implementerad DevOps-lösning för Custom Speech går du till [Dev
 
 - Kopiera mallens lagrings plats till ditt GitHub-konto och skapa sedan Azure-resurser och ett [tjänst huvud namn](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) för GitHub-åtgärdens CI/CD-arbetsflöden.
 - Gå igenom "dev-den[inre slingan](https://mitchdenny.com/the-inner-loop/)". Uppdatera utbildning och testning av data från en funktions gren, testa ändringarna med en tillfällig utvecklings modell och generera en pull-begäran om att föreslå och granska ändringarna.
-- När tränings data uppdateras i en pull-begäran till *Master*, träna modeller med GitHub Actions CI-arbetsflöde.
+- När tränings data uppdateras i en pull-begäran till *huvud*, träna modeller med GitHub Actions CI-arbetsflöde.
 - Utför automatiserad precisions testning för att upprätta en modells [ord fel frekvens](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) (WER). Lagra test resultatet i Azure blob.
 - Kör ett CD-arbetsflöde för att skapa en slut punkt när WER förbättras.
 

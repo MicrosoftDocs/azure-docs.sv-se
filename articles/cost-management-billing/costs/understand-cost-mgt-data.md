@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.custom: contentperfq2
-ms.openlocfilehash: 923b03f0c7bbf8d6948a80742530db6cb9b06c25
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 97ae2ba26818bbc306da71af814d9b4f95858b6a
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675899"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032583"
 ---
 # <a name="understand-cost-management-data"></a>Förstå Cost Management-data
 
@@ -26,7 +26,7 @@ Om du har en ny prenumeration kan du inte använda Cost Management-funktioner di
 
 ## <a name="supported-microsoft-azure-offers"></a>Microsoft Azure-erbjudanden som stöds
 
-Följande information visar de [Microsoft Azure-erbjudanden](https://azure.microsoft.com/support/legal/offer-details/) som för närvarande stöds i Azure Cost Management. Ett Azure-erbjudande är den typ av Azure-prenumeration som du har. Data är tillgängliga i Cost Management med början från datumet för **Data tillgängliga från** . Om en prenumeration ändrar erbjudanden är kostnader före datumet för erbjudandets ändring inte tillgängliga.
+Följande information visar de [Microsoft Azure-erbjudanden](https://azure.microsoft.com/support/legal/offer-details/) som för närvarande stöds i Azure Cost Management. Ett Azure-erbjudande är den typ av Azure-prenumeration som du har. Data är tillgängliga i Cost Management med början från datumet för **Data tillgängliga från**. Om en prenumeration ändrar erbjudanden är kostnader före datumet för erbjudandets ändring inte tillgängliga.
 
 | **Kategori**  | **Erbjudandets namn** | **Kvot-ID** | **Erbjudandets nummer** | **Data tillgängliga från** |
 | --- | --- | --- | --- | --- |
@@ -83,7 +83,7 @@ Information om tillgängligheten av tjänster på kostnadsfri nivå efter uppgra
 
 ### <a name="determine-your-offer-type"></a>Fastställ din erbjudandetyp
 
-Om du inte ser data för en prenumeration och vill ta reda på om din prenumeration omfattas av de erbjudanden som stöds kan du kontrollera om din prenumeration stöds. För att kontrollera att en Azure-prenumeration stöds loggar du in på Azure-portalen. Välj sedan **Alla tjänster** i det vänstra menyfönstret. I listan över tjänster väljer du **Prenumerationer** . I listmenyn för prenumerationer väljer du den prenumeration som du vill kontrollera. Din prenumeration visas på fliken Översikt, och du kan se **Erbjudande** och **Erbjudande-ID** . I följande bild visas ett exempel.
+Om du inte ser data för en prenumeration och vill ta reda på om din prenumeration omfattas av de erbjudanden som stöds kan du kontrollera om din prenumeration stöds. För att kontrollera att en Azure-prenumeration stöds loggar du in på Azure-portalen. Välj sedan **Alla tjänster** i det vänstra menyfönstret. I listan över tjänster väljer du **Prenumerationer**. I listmenyn för prenumerationer väljer du den prenumeration som du vill kontrollera. Din prenumeration visas på fliken Översikt, och du kan se **Erbjudande** och **Erbjudande-ID**. I följande bild visas ett exempel.
 
 ![Exempel på fliken Prenumerationsöversikt som visar Erbjudande och Erbjudande-ID](./media/understand-cost-mgt-data/offer-and-offer-id.png)
 
@@ -150,7 +150,7 @@ Kostnads- och användningsdata finns vanligtvis i Kostnadshantering + fakturerin
 - Uppskattade avgifter för den aktuella faktureringsperioden uppdateras sex gånger per dag.
 - Uppskattade avgifter för den aktuella faktureringsperioden kan ändras när du förbrukar mer användning.
 - Varje uppdatering är kumulativ och innehåller alla radobjekt och all information från föregående uppdatering.
-- Azure slutför, eller _stänger_ , den aktuella faktureringsperioden upp till 72 timmar (tre kalenderdagar) efter faktureringsperiodens slut.
+- Azure slutför, eller _stänger_, den aktuella faktureringsperioden upp till 72 timmar (tre kalenderdagar) efter faktureringsperiodens slut.
 
 I följande exempel visas hur faktureringsperioder kan sluta:
 

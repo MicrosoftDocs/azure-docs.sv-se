@@ -1,5 +1,5 @@
 ---
-title: Mjuk borttagning aktive ras på alla Azure Key Vault | Microsoft Docs
+title: Aktivera mjuk borttagning på alla Azure Key Vault | Microsoft Docs
 description: Använd det här dokumentet för att tillämpa mjuk borttagning för alla nyckel valv.
 services: key-vault
 author: ShaneBala-keyvault
@@ -7,19 +7,19 @@ manager: ravijan
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 12/15/2020
 ms.author: sudbalas
-ms.openlocfilehash: 0e811cc219002c034afb968be760ce2c249b08f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e512cccdbfdc56500fa7c69372ca38f59d3195c2
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825244"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590094"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>Mjuk borttagning aktive ras på alla nyckel valv
 
 > [!WARNING]
-> **Överändrad ändring**: möjligheten att välja bort mjuk borttagning kommer att bli föråldrad i slutet av året och det mjuka borttagnings skyddet aktive ras automatiskt för alla nyckel valv.  Azure Key Vault användare och administratörer bör aktivera mjuk borttagning av nyckel valven direkt.
+> **Ändrad ändring**: möjligheten att välja bort mjuk borttagning kommer snart att vara inaktuell. Azure Key Vault användare och administratörer bör aktivera mjuk borttagning av nyckel valven direkt.
 >
 > För hanterad HSM är mjuk borttagning aktiverat som standard och kan inte inaktive ras.
 
@@ -29,9 +29,18 @@ När en hemlighet tas bort från ett nyckel valv utan mjuka borttagnings skydd t
 
 Fullständig information om funktionerna för mjuk borttagning finns i [Azure Key Vault översikt över mjuk borttagning](soft-delete-overview.md).
 
-## <a name="how-do-i-respond-to-breaking-changes"></a>Hur gör jag för att svara på att avbryta ändringar
+## <a name="can-my-application-work-with-soft-delete-enabled"></a>Kan mitt program fungera med mjuk borttagning aktiverat?
 
-Det går inte att skapa ett Key Vault-objekt med samma namn som ett Key Vault-objekt i läget Soft-Deleted.  Om du till exempel tar bort en nyckel med namnet `test key` i Key Vault a kommer du inte att kunna skapa en ny nyckel som heter `test key` i Key Vault a förrän det borttagna `test key` objektet rensas.
+> [!Important] 
+> **Läs igenom följande information noggrant innan du aktiverar mjuk borttagning för dina nyckel valv**
+
+Key Vault namn är globalt unika. Namnen på hemligheter som lagras i ett nyckel valv är också unika. Du kan inte återanvända namnet på ett nyckel valv eller ett nyckel valvs objekt som finns i läget Soft Deleted. 
+
+**Exempel #1** Om programmet program mässigt skapar ett nyckel valv med namnet "valv A" och senare tar bort "valv A". Nyckel valvet kommer att flyttas till läget Soft Deleted. Programmet kommer inte att kunna återskapa ett annat nyckel valv med namnet "valv A" förrän nyckel valvet har rensats från det överförbara borttagna läget. 
+
+**Exempel #2** Om ditt program skapar en nyckel med namnet `test key` i Key Vault a, och senare tar bort nyckeln från valv a, kommer programmet inte att kunna skapa en ny nyckel som heter `test key` i Key Vault a förrän `test key` objektet rensas från det Soft Deleted-läget. 
+
+Detta kan resultera i motstridiga fel om du försöker ta bort ett nyckel valvs objekt och återskapar det med samma namn utan att ta bort det från läget Soft-Deleted först. Detta kan orsaka att programmen eller automatiseringen Miss lyckas. Kontakta din dev-grupp innan du gör nödvändiga program-och administrations ändringar nedan. 
 
 ### <a name="application-changes"></a>Program ändringar
 
@@ -59,13 +68,14 @@ Om din organisation omfattas av krav för juridisk efterlevnad och inte tillåte
 2. Sök efter "Azure Policy".
 3. Välj definitioner.
 4. Under kategori väljer du Key Vault i filtret.
-5. Välj principen "Key Vault objekt ska vara återställnings bara".
+5. Välj principen "Key Vault ska ha mjuk borttagning aktive rad".
 6. Klicka på tilldela.
 7. Ange omfånget till din prenumeration.
-8. Välj "granska + skapa".
-9. Det kan ta upp till 24 timmar för en fullständig genomsökning av din miljö att slutföras.
-10. Klicka på "efterlevnad" på bladet Azure Policy.
-11. Välj den princip som du använde.
+8. Kontrol lera att principen har angetts till "audit".
+9. Välj "granska + skapa".
+10. Det kan ta upp till 24 timmar för en fullständig genomsökning av din miljö att slutföras.
+11. Klicka på "efterlevnad" på bladet Azure Policy.
+12. Välj den princip som du använde.
 
 Nu bör du kunna filtrera och se vilka av dina nyckel valv som har mjuk borttagning aktiverat (kompatibla resurser) och vilka nyckel valv som inte har mjuk borttagning aktiverat (icke-kompatibla resurser).
 
@@ -106,15 +116,11 @@ Följ stegen ovan i avsnittet "procedur för att granska dina nyckel valv för a
 
 ### <a name="what-action-do-i-need-to-take"></a>Vilken åtgärd behöver jag göra?
 
-Kontrol lera att du inte behöver göra några ändringar i din program logik. När du har bekräftat att aktiverar du mjuk borttagning på alla nyckel valv. Detta ser till att du inte påverkas av en brytande ändring när mjuk borttagning är aktiverat för alla nyckel valv i slutet av året.
+Kontrol lera att du inte behöver göra några ändringar i din program logik. När du har bekräftat att aktiverar du mjuk borttagning på alla nyckel valv.
 
 ### <a name="by-when-do-i-need-to-take-action"></a>När måste jag vidta åtgärder?
 
-Mjuk borttagning aktive ras för alla nyckel valv efter årets slut. För att se till att dina program inte påverkas aktiverar du mjuk borttagning på nyckel valven så snart som möjligt.
-
-## <a name="what-will-happen-if-i-dont-take-any-action"></a>Vad händer om jag inte gör någon åtgärd?
-
-Om du inte vidtar några åtgärder aktive ras mjuk borttagning automatiskt för alla nyckel valv i slutet av året. Detta kan resultera i motstridiga fel om du försöker ta bort ett nyckel valvs objekt och återskapar det med samma namn utan att ta bort det från läget Soft-Deleted först. Detta kan orsaka att programmen eller automatiseringen Miss lyckas.
+För att se till att dina program inte påverkas aktiverar du mjuk borttagning på nyckel valven så snart som möjligt.
 
 ## <a name="next-steps"></a>Nästa steg
 

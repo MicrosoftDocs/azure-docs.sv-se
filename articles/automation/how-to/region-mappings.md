@@ -1,16 +1,16 @@
 ---
 title: Regioner som stöder länkade Log Analytics-arbetsytor
 description: I den här artikeln beskrivs de region mappningar som stöds mellan ett Automation-konto och en Log Analytics arbets yta som relaterar till vissa funktioner i Azure Automation.
-ms.date: 12/01/2020
+ms.date: 12/15/2020
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 25ddf562f92ca96a505432a58f137657a2bbc4bd
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 95537bd54ecb476055608c89ac68a46d410288b6
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446975"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590893"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Regioner som stöder länkade Log Analytics-arbetsytor
 
@@ -44,12 +44,16 @@ Följande tabell visar de mappningar som stöds:
 |ChinaEast2<sup>3</sup>|ChinaEast2|
 |Japanöstra|Japanöstra|
 |**Europa**||
+|Europanorra|Europanorra|
+|FranceCentral|FranceCentral|
 |UKSouth|UKSouth|
 |Västeuropa|Västeuropa|
 |SwitzerlandNorth|SwitzerlandNorth|
 |**US Gov**||
 |USGovVirginia|USGovVirginia|
 |USGovArizona<sup>3</sup>|USGovArizona|
+
+
 
 <sup>1</sup> -mappning av öster för Log Analytics arbets ytor till Automation-konton är inte en exakt mappning mellan regioner och regioner, men är rätt mappning.
 

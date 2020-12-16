@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/13/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9bdd70baa906d9dc03a37eecb0388eee5638f153
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1e05ecd162ccb333c6ab29b0185f6ffcb04a6213
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184288"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591369"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Lägg till Azure-roll tilldelningar med Azure Resource Manager mallar
 
@@ -109,14 +109,14 @@ Om du vill använda mallen måste du göra följande:
 }
 ```
 
-Här är exempel på [New-AzResourceGroupDeployment-](/powershell/module/az.resources/new-azresourcegroupdeployment) och [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create) -kommandon för hur du startar distributionen i en resurs grupp med namnet ExampleGroup.
+Här är exempel på [New-AzResourceGroupDeployment-](/powershell/module/az.resources/new-azresourcegroupdeployment) och [AZ-distributions grupp skapa](/cli/azure/deployment/group#az_deployment_group_create) kommandon för hur du startar distributionen i en resurs grupp med namnet ExampleGroup.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file rbac-test.json
+az deployment group create --resource-group ExampleGroup --template-file rbac-test.json
 ```
 
 Följande visar ett exempel på roll tilldelningen för en användare för en resurs grupp när du har distribuerat mallen.
@@ -187,24 +187,24 @@ Om du vill använda mallen måste du ange följande indata:
 > [!NOTE]
 > Den här mallen är inte idempotenta om inte samma `roleNameGuid` värde anges som en parameter för varje distribution av mallen. Om inget anges `roleNameGuid` , genereras ett nytt GUID som standard vid varje distribution och efterföljande distributioner kommer att Miss förväntas med ett `Conflict: RoleAssignmentExists` fel.
 
-Roll tilldelningens omfattning bestäms från distributions nivån. Här är exempel på [New-AzResourceGroupDeployment-](/powershell/module/az.resources/new-azresourcegroupdeployment) och [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create) -kommandon för hur du startar distributionen i ett resurs grupps omfång.
+Roll tilldelningens omfattning bestäms från distributions nivån. Här är exempel på [New-AzResourceGroupDeployment-](/powershell/module/az.resources/new-azresourcegroupdeployment) och [AZ-distributions grupp skapa](/cli/azure/deployment/group#az_deployment_group_create) kommandon för att starta distributionen i ett resurs grupps omfång.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Reader
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
+az deployment group create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
-Här är exempel på [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) och [AZ Deployment Create](/cli/azure/deployment#az-deployment-create) -kommandon för hur du startar distributionen i ett prenumerations omfång och anger platsen.
+Här är exempel på kommandona [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) och [AZ Deployment sub Create](/cli/azure/deployment/sub#az_deployment_sub_create) för hur du startar distributionen i ett prenumerations omfång och anger platsen.
 
 ```azurepowershell
 New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Reader
 ```
 
 ```azurecli
-az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
+az deployment sub create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
 ### <a name="resource-scope"></a>Resursomfång
@@ -290,14 +290,14 @@ Om du vill använda mallen måste du ange följande indata:
 }
 ```
 
-Om du vill distribuera den tidigare mallen använder du resurs grupps kommandon. Här är exempel på [New-AzResourceGroupDeployment-](/powershell/module/az.resources/new-azresourcegroupdeployment) och [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create) -kommandon för hur du startar distributionen i ett resurs omfång.
+Om du vill distribuera den tidigare mallen använder du resurs grupps kommandon. Här är exempel på [New-AzResourceGroupDeployment-](/powershell/module/az.resources/new-azresourcegroupdeployment) och [AZ-distributions grupp skapa](/cli/azure/deployment/group#az_deployment_group_create) kommandon för hur du startar distributionen i ett resurs omfång.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Contributor
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Contributor
+az deployment group create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Contributor
 ```
 
 Följande visar ett exempel på roll tilldelningen deltagare till en användare för ett lagrings konto när du har distribuerat mallen.
@@ -360,14 +360,14 @@ Om du vill använda mallen måste du ange följande indata:
 }
 ```
 
-Här är exempel på [New-AzResourceGroupDeployment-](/powershell/module/az.resources/new-azresourcegroupdeployment) och [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create) -kommandon för hur du startar distributionen i ett resurs grupps omfång.
+Här är exempel på [New-AzResourceGroupDeployment-](/powershell/module/az.resources/new-azresourcegroupdeployment) och [AZ-distributions grupp skapa](/cli/azure/deployment/group#az_deployment_group_create) kommandon för att starta distributionen i ett resurs grupps omfång.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup2 -TemplateFile rbac-test.json
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup2 --template-file rbac-test.json
+az deployment group create --resource-group ExampleGroup2 --template-file rbac-test.json
 ```
 
 Följande visar ett exempel på roll tilldelningen deltagare till ett nytt hanterat identitets tjänst huvud objekt när du har distribuerat mallen.
@@ -385,7 +385,7 @@ Ta bort roll tilldelningen i Azure RBAC för att ta bort åtkomst till en Azure-
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Snabbstart: Skapa och distribuera Azure Resource Manager-mallar med hjälp av Azure-portalen](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
-- [Förstå strukturen och syntaxen för Azure Resource Manager mallar](../azure-resource-manager/templates/template-syntax.md)
+- [Snabb start: skapa och distribuera ARM-mallar med hjälp av Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
+- [Förstå strukturen och syntaxen för ARM-mallar](../azure-resource-manager/templates/template-syntax.md)
 - [Skapa resurs grupper och resurser på prenumerations nivå](../azure-resource-manager/templates/deploy-to-subscription.md)
 - [Azure snabbstartmallar](https://azure.microsoft.com/resources/templates/?term=rbac)

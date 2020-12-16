@@ -7,17 +7,17 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 09/02/2020
-ms.openlocfilehash: 32f1602c91d17ef2ad3283d4bc03d00d432641aa
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.date: 12/10/2020
+ms.openlocfilehash: f78cbaedea90a241efddd0eff9cb7503201528c5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027609"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590414"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Mappa data flöden i Azure Data Factory
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 ## <a name="what-are-mapping-data-flows"></a>Vad är Mappa dataflöden?
 
@@ -27,9 +27,9 @@ Genom att mappa data flöden får du en helt visuell upplevelse utan kodning som
 
 ## <a name="getting-started"></a>Komma igång
 
-Data flöden skapas från fönstret fabriks resurser som pipelines och data uppsättningar. Om du vill skapa ett data flöde väljer du plus tecknet bredvid **fabriks resurser** och väljer sedan **data flöde** . 
+Data flöden skapas från fönstret fabriks resurser som pipelines och data uppsättningar. Om du vill skapa ett data flöde väljer du plus tecknet bredvid **fabriks resurser** och väljer sedan **data flöde**. 
 
-![Nytt data flöde](media/data-flow/new-data-flow.png "nytt data flöde")
+![Nytt data flöde](media/data-flow/new-data-flow.png)
 
 Den här åtgärden tar dig till data flödets arbets yta där du kan skapa din omvandlings logik. Välj **Lägg till källa** för att börja konfigurera din käll omvandling. Mer information finns i [käll omvandling](data-flow-source.md).
 
@@ -37,17 +37,17 @@ Den här åtgärden tar dig till data flödets arbets yta där du kan skapa din 
 
 Kart data flödet har en unik redigerings yta som är utformad för att skapa omvandlings logik enkelt. Data flödes arbets ytan är uppdelad i tre delar: det översta fältet, grafen och konfigurations panelen. 
 
-![Skärm bild som visar data flödets arbets yta med översta stapel-, graf-och konfigurations panelen märkt.](media/data-flow/canvas1.png "Arbetsyta")
+![Skärm bild som visar data flödets arbets yta med översta stapel-, graf-och konfigurations panelen märkt.](media/data-flow/canvas-1.png "Arbetsyta")
 
 ### <a name="graph"></a>Graph
 
-I diagrammet visas omvandlings strömmen. Den visar härkomst för källdata när den flödar till en eller flera handfat. Om du vill lägga till en ny källa väljer du **Lägg till källa** . Om du vill lägga till en ny omvandling väljer du plus tecknet längst ned till höger i en befintlig omvandling. Läs mer om hur du [hanterar data flödes diagrammet](concepts-data-flow-manage-graph.md).
+I diagrammet visas omvandlings strömmen. Den visar härkomst för källdata när den flödar till en eller flera handfat. Om du vill lägga till en ny källa väljer du **Lägg till källa**. Om du vill lägga till en ny omvandling väljer du plus tecknet längst ned till höger i en befintlig omvandling. Läs mer om hur du [hanterar data flödes diagrammet](concepts-data-flow-manage-graph.md).
 
-![Skärm bild som visar graf-delen av arbets ytan med en söktext ruta.](media/data-flow/canvas2.png "Arbetsyta")
+![Skärm bild som visar graf-delen av arbets ytan med en söktext ruta.](media/data-flow/canvas-2.png)
 
 ### <a name="configuration-panel"></a>Konfigurations panel
 
-Konfigurations panelen visar inställningarna för den aktuella valda omvandlingen. Om ingen omvandling väljs visas data flödet. I den övergripande data flödes konfigurationen kan du redigera namnet och beskrivningen under fliken **Allmänt** eller lägga till parametrar via fliken **parametrar** . Mer information finns i [mappa data flödes parametrar](parameters-data-flow.md).
+Konfigurations panelen visar inställningarna för den aktuella valda omvandlingen. Om ingen omvandling väljs visas data flödet. I den övergripande data flödes konfigurationen kan du lägga till parametrar via fliken **parametrar** . Mer information finns i [mappa data flödes parametrar](parameters-data-flow.md).
 
 Varje omvandling innehåller minst fyra konfigurations flikar.
 
@@ -99,63 +99,63 @@ Azure Data Factorys teamet har skapat en [prestanda justerings guide](concepts-d
 
 ## <a name="available-regions"></a>Tillgängliga regioner
 
-Mappning av data flöden är tillgängliga i följande regioner:
+Kart data flöden är tillgängliga i följande regioner i ADF:
 
-| Azure-region | Data flöden i ADF | Data flöden i Synapse Studio |
-| ------------ | ----------------- | ---------------------------- |
-|  Australien, centrala | | |  
-| Australien, centrala 2 | | |
-| Australien, östra | ✓ |  ✓ |
-| Australien, sydöstra   | ✓ | ✓ |
-| Brasilien, södra  | ✓ |  |
-| Kanada, centrala | ✓ |  |
-| Indien, centrala | ✓ |   ✓ |
-| USA, centrala    | ✓ |   ✓ |
-| Kina, östra |      | ✓ |
-| Kina, östra 2  |   |    |
-| Kina, icke-regional | | |
-| Kina, norra |     | |
-| Kina, norra 2 | |  |
-| Asien, östra | ✓ | |
-| East US   | ✓ | ✓ |
-| USA, östra 2 | ✓ | ✓ |
-| Frankrike, centrala | ✓ | ✓ |
-| Frankrike, södra  | | |
-| Tyskland, centrala (suverän) | | |
-| Tyskland, regionsoberoende (suverän) | | |
-| Tyskland, norra (offentlig) | | |
-| Tyskland nordöstra (suverän) | | |
-| Tyskland, västra centrala (offentlig) |  | ✓ |
-| Japan, östra | ✓ |  |
-| Japan, västra |  | |
-| Sydkorea, centrala | ✓ |  |
-| Sydkorea, södra | | |
-| USA, norra centrala  | ✓ | ✓ |
-| Europa, norra  | ✓ |    |
-| Östra Norge | | |
-| Norge, väst | | |
-| Sydafrika, norra    | ✓ | |
-| Sydafrika, västra |  |    |
-| USA, södra centrala  | | ✓ |
-| Indien, södra | | |
-| Sydostasien    | ✓ | ✓ |
-| Schweiz, norra |   |  |
-| Schweiz, västra | | |
-| Förenade Arabemiraten Central | | |
-| Förenade Arabemiraten, norra |  |    |
-| Storbritannien, södra  | ✓ |   | ✓ |
-| Storbritannien, västra |     | ✓ |
-| USA DoD, centrala | |  |
-| USA DoD, östra | |  |
-| US Gov, Arizona |      |  |
-| US Gov, regionsoberoende | |  |
-| US Gov, Texas | |  |
-| US Gov, Virginia |     |  |
-| USA, västra centrala |     | ✓ |
-| Europa, västra   | ✓ |   ✓ |
-| Indien, västra | | |
-| USA, västra   | ✓ |   |
-| USA, västra 2 | ✓ |   ✓ | 
+| Azure-region | Data flöden i ADF |
+| ------------ | ----------------- |
+|  Australien, centrala | |
+| Australien, centrala 2 | |
+| Australien, östra | ✓ |
+| Australien, sydöstra   | ✓ |
+| Brasilien, södra  | ✓ |
+| Kanada, centrala | ✓ |
+| Indien, centrala | ✓ |
+| Central US    | ✓ |
+| Kina, östra |      |
+| Kina, östra 2  |   |
+| Kina, icke-regional | |
+| Kina, norra |     |
+| Kina, norra 2 | |
+| Asien, östra | ✓ |
+| East US   | ✓ |
+| USA, östra 2 | ✓ |
+| Frankrike, centrala | ✓ |
+| Frankrike, södra  | |
+| Tyskland, centrala (suverän) | |
+| Tyskland, regionsoberoende (suverän) | |
+| Tyskland, norra (offentlig) | |
+| Tyskland nordöstra (suverän) | |
+| Tyskland, västra centrala (offentlig) |  |
+| Japan, östra | ✓ |
+| Japan, västra |  |
+| Sydkorea, centrala | ✓ |
+| Sydkorea, södra | |
+| USA, norra centrala  | ✓ |
+| Norra Europa  | ✓ |
+| Östra Norge | |
+| Norge, väst | |
+| Sydafrika, norra    | ✓ |
+| Sydafrika, västra |  |
+| USA, södra centrala  | |
+| Indien, södra | |
+| Sydostasien    | ✓ |
+| Schweiz, norra |   |
+| Schweiz, västra | |
+| Förenade Arabemiraten Central | |
+| Förenade Arabemiraten, norra |  |
+| Storbritannien, södra  | ✓ |
+| Storbritannien, västra |     |
+| USA DoD, centrala | |
+| USA DoD, östra | |
+| US Gov, Arizona |      |
+| US Gov, regionsoberoende | |
+| US Gov, Texas | |
+| US Gov, Virginia |     |
+| USA, västra centrala |     |
+| Europa, västra   | ✓ |
+| Indien, västra | |
+| USA, västra   | ✓ |
+| USA, västra 2 | ✓ |
 
 ## <a name="next-steps"></a>Nästa steg
 

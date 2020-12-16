@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 00e3b40b0e3f4c799c54308b35ce3e810cde118c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: be21151be719098dd6ec65f369ea6fc81ff45a98
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181104"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591845"
 ---
 # <a name="tutorial-configure-apple-school-manager-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Apple School Manager för automatisk användar etablering
 
@@ -34,7 +34,7 @@ I den här självstudien beskrivs de steg du behöver utföra i både Apple Scho
 > * Ta bort användare i Apple School Manager när de inte behöver åtkomst längre
 > * Behåll särskilda användarattribut som synkroniseras mellan Azure AD och Apple School Manager
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 

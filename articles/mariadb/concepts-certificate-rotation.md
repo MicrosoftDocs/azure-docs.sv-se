@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 29a693ac8ff0b170abf59c9671d4b411b456b540
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 02c0ecfc24b65afd46d75464b5411cfd5cf61857
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346986"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591539"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>Förstå ändringarna i rot certifikat utfärdarens ändring för Azure Database for MariaDB
 
@@ -129,8 +129,12 @@ Dessa certifikat som används av Azure Database for MariaDB tillhandahålls av b
 Eftersom den här uppdateringen är en ändring på klient sidan, om klienten som används för att läsa data från replik servern, måste du även tillämpa ändringarna för dessa klienter.
 
 ###    <a name="12-if-i-am-using-data-in-replication-do-i-need-to-perform-any-action"></a>12. behöver jag utföra någon åtgärd om jag använder datareplikering?
+
 Om du använder [data i replikering](concepts-data-in-replication.md) för att ansluta till Azure Database for MySQL, finns det två saker att tänka på:
-*   Om datareplikeringen kommer från en virtuell dator (lokal eller virtuell Azure-dator) till Azure Database for MySQL måste du kontrol lera om SSL används för att skapa repliken. Kör **Visa slav status** och kontrol lera följande inställning.  
+
+> [!NOTE]
+>  Den här artikeln innehåller referenser till termen Slav, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
+*   Om datareplikeringen kommer från en virtuell dator (lokal eller virtuell Azure-dator) till Azure Database for MySQL måste du kontrol lera om SSL används för att skapa repliken. Kör **Visa slav status** och kontrol lera följande inställning. 
 
     ```azurecli-interactive
     Master_SSL_Allowed            : Yes

@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: f3763857af1df8f34f38b36835a667c6610e1909
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.date: 12/15/2020
+ms.openlocfilehash: 5d265fe02d801cf0d2d66be37a8dc2a220e19b34
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107835"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591352"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Tjänstbegränsningar i Azure Cognitive Search
 
-De maximala gränserna för lagring, arbets belastningar och kvantiteter av index och andra objekt beror på om du [etablerar Azure kognitiv sökning](search-create-service-portal.md) på kostnads nivåer som är **kostnads fria**, **Basic**, **standard**eller **Storage** .
+De maximala gränserna för lagring, arbets belastningar och kvantiteter av index och andra objekt beror på om du [etablerar Azure kognitiv sökning](search-create-service-portal.md) på kostnads nivåer som är **kostnads fria**, **Basic**, **standard** eller **Storage** .
 
 + **Kostnads fri** är en delad tjänst för flera innehavare som medföljer din Azure-prenumeration. 
 
@@ -78,15 +78,15 @@ Maximal körnings tid finns för att ge balans och stabilitet till tjänsten som
 
 | Resurs | Kostnads fri &nbsp; <sup>1</sup> | Basic &nbsp; <sup>2</sup>| S1 | S2 | S3 | S3 &nbsp; HD &nbsp; <sup>3</sup>|L1 |L2 |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
-| Maximalt antal indexerare |3 |5 eller 15|50 |200 |200 |Saknas |10 |10 |
-| Maximalt antal datakällor |3 |5 eller 15 |50 |200 |200 |Saknas |10 |10 |
-| Maximalt färdighetsuppsättningar <sup>4</sup> |3 |5 eller 15 |50 |200 |200 |Saknas |10 |10 |
-| Maximal indexerings belastning per anrop |10 000 dokument |Endast begränsat av maximalt antal dokument |Endast begränsat av maximalt antal dokument |Endast begränsat av maximalt antal dokument |Endast begränsat av maximalt antal dokument |Saknas |Obegränsad |Obegränsad |
+| Maximalt antal indexerare |3 |5 eller 15|50 |200 |200 |Ej tillämpligt |10 |10 |
+| Maximalt antal datakällor |3 |5 eller 15 |50 |200 |200 |Ej tillämpligt |10 |10 |
+| Maximalt färdighetsuppsättningar <sup>4</sup> |3 |5 eller 15 |50 |200 |200 |Ej tillämpligt |10 |10 |
+| Maximal indexerings belastning per anrop |10 000 dokument |Endast begränsat av maximalt antal dokument |Endast begränsat av maximalt antal dokument |Endast begränsat av maximalt antal dokument |Endast begränsat av maximalt antal dokument |Ej tillämpligt |Obegränsad |Obegränsad |
 | Lägsta schema | 5 minuter |5 minuter |5 minuter |5 minuter |5 minuter |5 minuter |5 minuter | 5 minuter |
-| Maximal kör tid| 1-3 minuter |24 timmar |24 timmar |24 timmar |24 timmar |Saknas  |24 timmar |24 timmar |
-| Maximal kör tid för indexerare med en färdigheter <sup>5</sup> | 3-10 minuter |2 timmar |2 timmar |2 timmar |2 timmar |Saknas  |2 timmar |2 timmar |
-| BLOB-indexerare: maximal BLOB-storlek, MB |16 |16 |128 |256 |256 |Saknas  |256 |256 |
-| BLOB-indexerare: maximalt antal tecken för innehåll som extraherats från en BLOB |32 000 |64 000 |4 &nbsp; miljoner |8 &nbsp; miljoner |16 &nbsp; miljoner |Saknas |4 &nbsp; miljoner |4 &nbsp; miljoner |
+| Maximal kör tid| 1-3 minuter |24 timmar |24 timmar |24 timmar |24 timmar |Ej tillämpligt  |24 timmar |24 timmar |
+| Maximal kör tid för indexerare med en färdigheter <sup>5</sup> | 3-10 minuter |2 timmar |2 timmar |2 timmar |2 timmar |Ej tillämpligt  |2 timmar |2 timmar |
+| BLOB-indexerare: maximal BLOB-storlek, MB |16 |16 |128 |256 |256 |Ej tillämpligt  |256 |256 |
+| BLOB-indexerare: maximalt antal tecken för innehåll som extraherats från en BLOB |32 000 |64 000 |4 &nbsp; miljoner |8 &nbsp; miljoner |16 &nbsp; miljoner |Ej tillämpligt |4 &nbsp; miljoner |4 &nbsp; miljoner |
 
 <sup>1</sup> kostnads fria tjänster har indexeraren maximal körnings tid på 3 minuter för BLOB-källor och 1 minut för alla andra data källor. För AI-indexering som anropar Cognitive Services är kostnads fria tjänster begränsade till 20 kostnads fria transaktioner per dag, där en transaktion definieras som ett dokument som passerar genom anriknings pipelinen.
 
@@ -105,11 +105,11 @@ Maximal körnings tid finns för att ge balans och stabilitet till tjänsten som
 
 Indexerare kan komma åt andra Azure-resurser [via privata slut punkter](search-indexer-howto-access-private.md) som hanteras via det [delade privata länk resurs-API: et](/rest/api/searchmanagement/sharedprivatelinkresources). I det här avsnittet beskrivs de gränser som är kopplade till den här funktionen.
 
-| Resurs | Kostnadsfri | Basic | S1 | S2 | S3 | S3 HD | L1 | L2
+| Resurs | Kostnadsfri | Grundläggande | S1 | S2 | S3 | S3 HD | L1 | L2
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Stöd för privat slut punkt indexerare | Nej | Ja | Ja | Ja | Ja | Nej | Ja | Ja |
 | Stöd för privat slut punkt för indexerare med en färdigheter<sup>1</sup> | Nej | Nej | Nej | Ja | Ja | Nej | Ja | Ja |
-| Maximalt antal privata slut punkter | Saknas | 10 eller 30 | 100 | 400 | 400 | Saknas | 20 | 20 |
+| Maximalt antal privata slut punkter | Ej tillämpligt | 10 eller 30 | 100 | 400 | 400 | Ej tillämpligt | 20 | 20 |
 | Maximalt antal distinkta resurs typer<sup>2</sup> | Saknas | 4 | 7 | 15 | 15 | Saknas | 4 | 4 |
 
 <sup>1</sup> AI-anrikning och bild analys är i beräknings intensiva och använder oproportionerliga mängder tillgängliga processor kraft. Av den anledningen är privata anslutningar inaktiverade på lägre nivåer för att undvika en negativ inverkan på själva Sök tjänstens prestanda och stabilitet.
@@ -120,7 +120,7 @@ Indexerare kan komma åt andra Azure-resurser [via privata slut punkter](search-
 
 Det maximala antalet synonym Maps varierar efter nivå. Varje regel kan ha upp till 20 expansionar, där en expansion är en motsvarande period. Till exempel skulle "katt", Association med "Kitty", "Feline" och "Felis" (släktet för katter) räknas som 3 expansionar.
 
-| Resurs | Kostnadsfri | Basic | S1 | S2 | S3 | S3 – HD |L1 | L2 |
+| Resurs | Kostnadsfri | Grundläggande | S1 | S2 | S3 | S3 – HD |L1 | L2 |
 | -------- | -----|------ |----|----|----|-------|---|----|
 | Maximalt synonyma kartor |3 |3|5 |10 |20 |20 | 10 | 10 |
 | Maximalt antal regler per karta |5000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |
@@ -143,7 +143,7 @@ Sök frågor och indexerings begär Anden är begränsade som systemet närmar s
 
 Begränsningar för statisk taxa för begäran för åtgärder relaterade till ett index:
 
-+ List index (GET/Indexes): 5 per sekund per Sök enhet
++ List index (GET/Indexes): 3 per sekund per Sök enhet
 + Hämta index (GET/Indexes/myindex): 10 per sekund per Sök enhet
 + Skapa index (POST/Indexes): 12 per minut per Sök enhet
 + Skapa eller uppdatera index (Lägg/Indexes/myindex): 6 per sekund per Sök enhet

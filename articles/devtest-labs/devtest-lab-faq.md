@@ -3,12 +3,12 @@ title: Azure DevTest Labs vanliga frågor och svar | Microsoft Docs
 description: Den här artikeln innehåller svar på några vanliga frågor och svar om Azure DevTest Labs.
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: 1cbea3628d6c8c1b43766140d201ce46964a60b5
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 9fcdc160754822d5c6f22b7349d0e72f0cf22633
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328393"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590281"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs vanliga frågor och svar
 Få svar på några av de vanligaste frågorna om Azure DevTest Labs.
@@ -278,9 +278,9 @@ Om du vill automatisera uppladdningen av VHD-filer för att skapa anpassade avbi
 Så här hittar du det mål lagrings konto som är associerat med ditt labb:
 
 1.  Logga in på [Azure-portalen](https://portal.azure.com).
-2.  Välj **resurs grupper**på den vänstra menyn.
+2.  Välj **resurs grupper** på den vänstra menyn.
 3.  Sök efter och välj den resurs grupp som är kopplad till ditt labb.
-4.  Under **Översikt**väljer du ett av lagrings kontona.
+4.  Under **Översikt** väljer du ett av lagrings kontona.
 5.  Välj **blobbar**.
 6.  Sök efter uppladdningar i listan. Om ingen finns går du tillbaka till steg 4 och försöker med ett annat lagrings konto.
 7.  Använd **webb adressen** som mål i AzCopy-kommandot.
@@ -318,7 +318,7 @@ Som en del av din organisations övergripande styrnings-och konfigurations hante
 - Associera Azure-databaser med samma Azure Active Directory klient som Azure-prenumerationen använder för autentisering och auktorisering.
 - Skapa en grupp med namnet `All DevTest Labs Developers` i Azure Active Directory som hanteras centralt. Alla utvecklare som bidrar till artefakt utveckling bör placeras i den här gruppen.
 - Samma Azure Active Directorys grupp kan användas för att ge åtkomst till Azure databaser-lagringsplatsen och till labbet.
-- I Azure databaser bör branchning eller förgreningar användas för att separera ett utvecklings lager från den primära produktions lagrings platsen. Innehåll läggs bara till i huvud grenen med en pull-begäran efter en korrekt kod granskning. När kod granskaren godkänner ändringen är en lead-utvecklare, som ansvarar för underhåll av huvud grenen, sammanslagning av den uppdaterade koden.
+- I Azure databaser bör branchning eller förgreningar användas för att separera ett utvecklings lager från den primära produktions lagrings platsen. Innehåll läggs bara till i huvud grenen med en pull-begäran efter en korrekt kod granskning. När kod granskaren godkänner ändringen, en lead-utvecklare, som ansvarar för underhåll av huvud grenen, sammanfogar den uppdaterade koden.
 
 ## <a name="cicd-integration"></a>CI/CD-integrering
 

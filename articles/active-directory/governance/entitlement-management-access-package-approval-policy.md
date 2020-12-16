@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e36b2d4576b43544bec89efd326363344b35be9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48b5260e883d85899953240f6ee4f83127681c9e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90997089"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591314"
 ---
 # <a name="change-approval-and-requestor-information-preview-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Ändra godkännande-och beställarens information (för hands version) inställningar för ett Access-paket i Azure AD-hantering av rättigheter
 
@@ -91,13 +91,13 @@ Använd följande steg för att lägga till god kännare när du har valt hur m�
 
     Hanteraren hittas genom rättighets hantering med attributet **Manager** . Attributet finns i användarens profil i Azure AD. Mer information finns i [lägga till eller uppdatera en användares profil information med hjälp av Azure Active Directory](../fundamentals/active-directory-users-profile-azure-portal.md).
 
-1. Om du har valt **Välj en viss god kännare**klickar du på **Lägg till god kännare** för att välja en eller flera användare eller grupper i din katalog som ska vara god kännare.
+1. Om du har valt **Välj en viss god kännare** klickar du på **Lägg till god kännare** för att välja en eller flera användare eller grupper i din katalog som ska vara god kännare.
 
 1. I rutan under **beslut måste fattas i hur många dagar?** anger du antalet dagar som en god kännare måste granska en begäran om det här åtkomst paketet.
 
     Om en begäran inte godkänns inom den här tids perioden kommer den automatiskt att nekas. Användaren måste skicka en annan begäran om åtkomst paketet.
 
-1. Om du vill att god kännare ska kunna ge en motivering för sitt beslut anger du **Ja**som krav på god kännare.
+1. Om du vill att god kännare ska kunna ge en motivering för sitt beslut anger du **Ja** som krav på god kännare.
 
     Motiveringen är synlig för andra god kännare och begär Ande.
 
@@ -132,13 +132,15 @@ Om du till exempel har listat Alice och Bob som första god kännare, anger du C
 
 1. Under den första god kännaren, andra god kännaren eller båda klickar du på **Visa avancerade inställningar för begäran**.
 
-    ![Åtkomst paket – princip – Visa avancerade inställningar för begäran](./media/entitlement-management-access-package-approval-policy/alternate-approvers-click-advanced-request.png)
+    :::image type="content" source="media/entitlement-management-access-package-approval-policy/alternate-approvers-click-advanced-request.png" alt-text="Åtkomst paket – princip – Visa avancerade inställningar för begäran":::
 
 1. Ange **om ingen åtgärd har vidtagits, vidarebefordra till alternativa god kännare?** växla till **Ja**.
 
 1. Klicka på **Lägg till alternativa god kännare** och välj alternativa god kännare i listan.
 
     ![Åtkomst paket – princip – Lägg till alternativa god kännare](./media/entitlement-management-access-package-approval-policy/alternate-approvers-add.png)
+
+    Om du väljer chef som god kännare för den första god kännaren har du ytterligare ett alternativ, **andra nivå ansvarig som alternativ god kännare**, tillgängliga för att välja i fältet alternativ god kännare. Om du väljer det här alternativet måste du lägga till en reserv god kännare för att vidarebefordra begäran till om systemet inte kan hitta den andra nivå hanteraren.
 
 1. I rutan **vidarebefordra till alternativ god kännare efter hur många dagar** som god kännaren måste godkänna eller neka en begäran. Om inga god kännare har godkänt eller nekat begäran före varaktigheten för begäran upphör begäran att gälla (tids gräns) och användaren måste skicka en annan begäran om åtkomst paketet. 
 
@@ -150,7 +152,7 @@ Om du till exempel har listat Alice och Bob som första god kännare, anger du C
 
     Du kan alltid aktivera det i framtiden när du är klar med att skapa åtkomst paketet.
 
-    Om du har valt **Ingen (endast administratörers direkta tilldelningar)** och du anger Tillåt till **Nej**kan administratörer inte tilldela det här åtkomst paketet direkt.
+    Om du har valt **Ingen (endast administratörers direkta tilldelningar)** och du anger Tillåt till **Nej** kan administratörer inte tilldela det här åtkomst paketet direkt.
 
     ![Åtkomst paket-princip-aktivera princip inställning](./media/entitlement-management-access-package-approval-policy/enable-requests.png)
 
@@ -173,7 +175,7 @@ För att se till att användarna får åtkomst till rätt åtkomst paket, kan du
 
     ![Åtkomst paket – princip – konfigurera lokaliserad text](./media/entitlement-management-access-package-approval-policy/add-localization-question.png)
 
-1. Välj det **svars format** som du vill att beställare ska besvara. Svars formaten är: *kort text*, *flera alternativ*och *långt text*.
+1. Välj det **svars format** som du vill att beställare ska besvara. Svars formaten är: *kort text*, *flera alternativ* och *långt text*.
  
     ![Åtkomst paket-princip – Välj Visa och redigera flera alternativ svars format](./media/entitlement-management-access-package-approval-policy/answer-format-view-edit.png)
  

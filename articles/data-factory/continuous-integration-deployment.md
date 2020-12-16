@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 84e156074d6db837556ba4ed9febdb43bcdf3318
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: cc95913b0ab815449a1cd56c0c9127410a64b600
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902331"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591909"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Kontinuerlig integrering och leverans i Azure Data Factory
 
@@ -317,7 +317,7 @@ Här är en förklaring av hur föregående mall skapas, uppdelat efter resurs t
 #### <a name="triggers"></a>Utlösare
 
 * Under `typeProperties` , har två egenskaper parametriserade. Det första är `maxConcurrency` , som har angetts att ha ett standardvärde och är av typen `string` . Den har standard parameter namnet `<entityName>_properties_typeProperties_maxConcurrency` .
-* `recurrence`Egenskapen är också parametriserad. Under den här nivån anges alla egenskaper på den nivån som parameterstyrda som strängar, med standardvärden och parameter namn. Ett undantag är `interval` egenskapen, som är parameterstyrda som typ `int` . Parameter namnet har suffix `<entityName>_properties_typeProperties_recurrence_triggerSuffix` . På samma sätt `freq` är egenskapen en sträng och är parameterstyrda som en sträng. `freq`Egenskapen är dock parameterstyrda utan ett standardvärde. Namnet är kortare och suffixet. Exempelvis `<entityName>_freq`.
+* `recurrence`Egenskapen är också parametriserad. Under den här nivån anges alla egenskaper på den nivån som parameterstyrda som strängar, med standardvärden och parameter namn. Ett undantag är `interval` egenskapen, som är parameterstyrda som typ `int` . Parameter namnet har suffix `<entityName>_properties_typeProperties_recurrence_triggerSuffix` . På samma sätt `freq` är egenskapen en sträng och är parameterstyrda som en sträng. `freq`Egenskapen är dock parameterstyrda utan ett standardvärde. Namnet är kortare och suffixet. Ett exempel är `<entityName>_freq`.
 
 #### <a name="linkedservices"></a>LinkedServices
 

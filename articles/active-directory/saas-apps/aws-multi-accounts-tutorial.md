@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: jeedes
-ms.openlocfilehash: 246eba24f42baacf264c1c6d39ea63a51c62c51f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7e71058e1899cf83e712025b534e51a1be1f6bdb
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457443"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591794"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Självstudie: Azure Active Directory integration med Amazon Web Services (AWS) (tidigare självstudier)
 
@@ -43,7 +43,7 @@ Integreringen av Amazon Web Services (AWS) med Azure AD medför följande förde
 
 * Alla AWS-konton kommer att använda samma XML-fil för federationsmetadata och vid tidpunkten för certifikat förnyelse måste du köra den här enorma övningen för att uppdatera certifikatet på alla AWS-konton på samma gång
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att konfigurera Azure AD-integrering med Amazon Web Services (AWS) behöver du följande:
 
@@ -71,7 +71,7 @@ För att konfigurera integreringen av Amazon Web Services (AWS) med Azure AD må
 1. Logga in på Azure Portal med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , Skriv **Amazon Web Services (AWS)** i sökrutan.
 1. Välj **Amazon Web Services (AWS)** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -122,14 +122,14 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure Portal o
     | Name  | Källattribut  | Namnområde |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | `https://aws.amazon.com/SAML/Attributes` |
-    | Roll            | user.assignedroles |  `https://aws.amazon.com/SAML/Attributes`|
-    | SessionDuration             | ”ange ett värde mellan 900 sekunder (15 minuter) och 43 200 sekunder (12 timmar)” |  `https://aws.amazon.com/SAML/Attributes` |
+    | Roll | user.assignedroles | `https://aws.amazon.com/SAML/Attributes`|
+    | SessionDuration | ”ange ett värde mellan 900 sekunder (15 minuter) och 43 200 sekunder (12 timmar)” |  `https://aws.amazon.com/SAML/Attributes` |
 
-    a. Klicka på **Lägg till nytt anspråk** för att öppna dialogrutan **Hantera användaranspråk**.
+    1. Klicka på **Lägg till nytt anspråk** för att öppna dialogrutan **Hantera användaranspråk**.
 
-    ![Skärm bild som visar användar anspråk med Lägg till nytt anspråk och Spara som kallas.](common/new-save-attribute.png)
+        ![Skärm bild som visar användar anspråk med Lägg till nytt anspråk och Spara som kallas.](common/new-save-attribute.png)
 
-    ![Skärm bild som visar hantera användar anspråk där du kan ange de värden som beskrivs i det här steget.](common/new-attribute-details.png)
+        ![Skärm bild som visar hantera användar anspråk där du kan ange de värden som beskrivs i det här steget.](common/new-attribute-details.png)
 
     b. I textrutan **Namn** skriver du det attributnamn som visas för den raden.
 
@@ -192,10 +192,10 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure Portal o
 
     a. Välj **SAML 2.0-federation** under **Select type of trusted entity** (Välj typ av betrodd entitet).
 
-    b. I **avsnittet Välj en saml 2,0-Provider**väljer du den **SAML-Provider** som du har skapat tidigare (till exempel: *WAAD*)
+    b. I **avsnittet Välj en saml 2,0-Provider** väljer du den **SAML-Provider** som du har skapat tidigare (till exempel: *WAAD*)
 
     c. Välj **Allow programmatic and AWS Management Console access** (Tillåt programmatisk åtkomst och AWS-hanteringskonsolåtkomst).
-  
+
     d. Klicka på **Nästa: behörigheter**.
 
 1. Sök efter **Administratörs åtkomst** i Sök fältet och markera kryss rutan **AdministratorAccess** och klicka sedan på **Nästa: Taggar**.
@@ -253,39 +253,35 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure Portal o
 
 1. Öppna [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) i ett annat fönster.
 
-    a. Logga in på Microsoft Graph Explorer-webbplatsen med hjälp av autentiseringsuppgifterna för global administratör/medadministratör för din klient organisation.
+    1. Logga in på Microsoft Graph Explorer-webbplatsen med hjälp av autentiseringsuppgifterna för global administratör/medadministratör för din klient organisation.
 
-    b. Du måste ha tillräcklig behörighet för att skapa roller. Klicka på **ändra behörigheter** för att hämta de behörigheter som krävs.
+    1. Du måste ha tillräcklig behörighet för att skapa roller. Klicka på **ändra behörigheter** för att hämta de behörigheter som krävs.
 
-    ![Microsoft Graph Explorer dialog box1](./media/aws-multi-accounts-tutorial/graph-explorer-new9.png)
+        ![Microsoft Graph Explorer dialog box1](./media/aws-multi-accounts-tutorial/graph-explorer-new9.png)
 
-    c. Välj följande behörigheter i listan (om du inte redan har dem) och klicka på Ändra behörigheter 
+    1. Välj följande behörigheter i listan (om du inte redan har dem) och klicka på Ändra behörigheter 
 
-    ![Microsoft Graph Explorer dialog box2](./media/aws-multi-accounts-tutorial/graph-explorer-new10.png)
+        ![Microsoft Graph Explorer dialog box2](./media/aws-multi-accounts-tutorial/graph-explorer-new10.png)
 
-    d. Då uppmanas du att logga in igen och godkänna medgivande. När du har accepterat godkännandet loggas du in i Microsoft Graph Explorer igen.
+    1. Då uppmanas du att logga in igen och godkänna medgivande. När du har accepterat godkännandet loggas du in i Microsoft Graph Explorer igen.
 
-    e. Ändra List rutan version till **beta**. Om du vill hämta alla tjänst huvud namn från klienten använder du följande fråga:
+    1. Ändra List rutan version till **beta**. Om du vill hämta alla tjänst huvud namn från klienten använder du följande fråga: `https://graph.microsoft.com/beta/servicePrincipals` . Om du använder flera kataloger kan du använda följande mönster, som har din primära domän: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals` .
 
-    `https://graph.microsoft.com/beta/servicePrincipals`
+        ![Microsoft Graph Explorer dialog box3](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
 
-    Om du använder flera kataloger kan du använda följande mönster, som har din primära domän  `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    1. Hämta den som du behöver ändra i listan över tjänstens huvud namn. Du kan också använda Ctrl + F för att söka i programmet från alla listade service princip ALS. Du kan använda följande fråga genom att använda det **objekt-ID för tjänstens huvud namn** som du har kopierat från sidan för Azure AD-egenskaper för att komma till respektive tjänst huvud namn.
 
-    ![Microsoft Graph Explorer dialog box3](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
-  
-    f. Hämta den som du behöver ändra i listan över tjänstens huvud namn. Du kan också använda Ctrl + F för att söka i programmet från alla listade service princip ALS. Du kan använda följande fråga genom att använda det **objekt-ID för tjänstens huvud namn** som du har kopierat från sidan för Azure AD-egenskaper för att komma till respektive tjänst huvud namn.
+        `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
 
-    `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
+        ![Microsoft Graph Explorer dialog box4](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
 
-    ![Microsoft Graph Explorer dialog box4](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
+    1. Extrahera egenskapen appRoles från objektet tjänstens huvud namn.
 
-    ex. Extrahera egenskapen appRoles från objektet tjänstens huvud namn.
+        ![Microsoft Graph Explorer dialog box5](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
 
-    ![Microsoft Graph Explorer dialog box5](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
+    1. Du måste nu generera nya roller för ditt program. 
 
-    h. Du måste nu generera nya roller för ditt program. 
-
-    i. Under-JSON är ett exempel på appRoles-objekt. Skapa ett liknande objekt för att lägga till de roller som du vill använda för ditt program.
+    1. Under-JSON är ett exempel på appRoles-objekt. Skapa ett liknande objekt för att lägga till de roller som du vill använda för ditt program.
 
     ```
     {
@@ -329,9 +325,9 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure Portal o
     > [!Note]
     > Du kan bara lägga till nya roller efter **msiam_access** för korrigerings åtgärden. Du kan också lägga till så många roller du vill per organisationens behov. Azure AD skickar **värdet** för dessa roller som anspråks värde i SAML-svar.
 
-    j. Gå tillbaka till Microsoft Graph Explorer och ändra-metoden från **Hämta** till **patch**. Uppdatera tjänstens huvud namns objekt till att ha önskade roller genom att uppdatera appRoles-egenskapen som liknar den som visas ovan i exemplet. Kör korrigerings åtgärden genom att klicka på **Kör fråga** . Ett meddelande om att rollen har skapats bekräftar att rollen för ditt Amazon Web Services-program är klar.
+    1. Gå tillbaka till Microsoft Graph Explorer och ändra-metoden från **Hämta** till **patch**. Uppdatera tjänstens huvud namns objekt till att ha önskade roller genom att uppdatera appRoles-egenskapen som liknar den som visas ovan i exemplet. Kör korrigerings åtgärden genom att klicka på **Kör fråga** . Ett meddelande om att rollen har skapats bekräftar att rollen för ditt Amazon Web Services-program är klar.
 
-    ![Microsoft Graph Explorer dialog box6](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
+        ![Microsoft Graph Explorer dialog box6](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
 
 1. När tjänstens huvud namn har uppdaterats med fler roller kan du tilldela användare/grupper till respektive roller. Detta kan göras genom att gå till portalen och navigera till Amazon Web Services programmet. Klicka på fliken **användare och grupper** överst.
 
