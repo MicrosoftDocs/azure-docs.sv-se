@@ -3,15 +3,15 @@ title: Uppdateringar av tjänsten Host pool i Windows virtuella skriv bord – A
 description: Så här skapar du en pool för validering av värdar för övervakning av tjänst uppdateringar innan uppdateringar distribueras till produktion.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 03/13/2020
+ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b8eb8378480b8784939e3ab63327e73e3705c74a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ead4c0aa7d8d71642fd8a4635edbabcafee5b6c2
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526518"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563253"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Självstudie: skapa en adresspool för att verifiera tjänst uppdateringar
 
@@ -30,7 +30,7 @@ Du kan felsöka problem i poolen för validering av värdar med hjälp [av en di
 >[!IMPORTANT]
 >Windows Virtual Desktop med Azure Resource Management-integrering har för närvarande problem med att aktivera och inaktivera validerings miljöer. Vi uppdaterar den här artikeln när vi har löst problemet.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar följer du anvisningarna i [Konfigurera Windows Virtual Desktop PowerShell-modulen](powershell-module.md) för att konfigurera din PowerShell-modul och logga in på Azure.
 
@@ -66,6 +66,20 @@ Resultatet från cmdleten bör likna följande utdata:
     LoadBalancerType    : BreadthFirst
     ValidationEnvironment : True
 ```
+
+## <a name="enable-your-validation-environment-with-the-azure-portal"></a>Aktivera validerings miljön med Azure Portal
+
+Du kan också använda Azure Portal för att aktivera validerings miljön.
+
+Så här använder du Azure Portal för att konfigurera din verifierings värd pool:
+
+1. Logga in på Azure Portal på <https://portal.azure.com>.
+2. Sök efter och välj **virtuellt skriv bord i Windows**.
+3. På sidan Windows Virtual Desktop väljer du **värdar för pooler**.
+4. Välj namnet på den värddator som du vill redigera.
+5. Välj **Egenskaper**.
+6. I fältet validerings miljö väljer du **Ja** för att aktivera validerings miljön.
+7. Välj **Spara**. De nya inställningarna kommer att tillämpas.
 
 ## <a name="update-schedule"></a>Uppdaterings schema
 

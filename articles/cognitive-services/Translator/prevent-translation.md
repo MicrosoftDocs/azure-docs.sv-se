@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: ec39b3692a90f22409e85b5502d3ea874e3282d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf8923c1090669caa46ef51a26418933b1cda023
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742068"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563440"
 ---
 # <a name="how-to-prevent-translation-of-content-with-the-translator"></a>Förhindra översättning av innehåll med Translator
 
@@ -49,14 +49,15 @@ Med Translator kan du tagga innehåll så att det inte översätts. Det kan till
    ```html
    <div translate="no">This will not be translated.</div>
    <div>This will be translated. </div>
+   ```
+   
+3. Använd den [dynamiska ord listan](dynamic-dictionary.md) för att ange en speciell översättning.
 
-3. Use the [dynamic dictionary](dynamic-dictionary.md) to prescribe a specific translation.
+4. Skicka inte strängen till Translator för översättning.
 
-4. Don't pass the string to the Translator for translation.
-
-5. Custom Translator: Use a [dictionary in Custom Translator](custom-translator/what-is-dictionary.md) to prescribe the translation of a phrase with 100% probability.
+5. Anpassad översättare: Använd en [ord lista i en anpassad översättare](custom-translator/what-is-dictionary.md) för att föreskriva översättning av en fras med en sannolikhet på 100%.
 
 
-## Next steps
+## <a name="next-steps"></a>Nästa steg
 > [!div class="nextstepaction"]
-> [Use the Translate operation to translate text](reference/v3-0-translate.md)
+> [Använd översättnings åtgärden för att översätta text](reference/v3-0-translate.md)

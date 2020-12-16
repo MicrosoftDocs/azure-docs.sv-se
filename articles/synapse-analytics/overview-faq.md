@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: a427c77ec23bb933f96d8aec54ca33169aee84d4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 671ca73cfa898be532521599d1211d2a8081eb4b
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576034"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563270"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Vanliga frågor och svar om Azure Synapse Analytics
 
@@ -59,7 +59,7 @@ A: som start punkt fungerar Azure Synapse med de inbyggda kostnads analys-och ko
 
 A: Synapse-arbetsytor stöder användardefinierade mappar.
 
-### <a name="q-can-i-link-more-than-one-power-bi-workspaces-to-a-single-azure-synapse-workspace"></a>F: kan jag länka fler än en Power BI arbets ytor till en enda Azure Synapse-arbetsyta?
+### <a name="q-can-i-link-more-than-one-power-bi-workspace-to-a-single-azure-synapse-workspace"></a>F: kan jag länka fler än en Power BI arbets yta till en enda Azure Synapse-arbetsyta?
     
 A: för närvarande kan du bara länka en enskild Power BI arbets yta till en Azure Synapse-arbetsyta. 
 
@@ -69,7 +69,7 @@ A: Synapse-länk för Apache Spark är GA. Synapse-länk för Server lös SQL-po
 
 ### <a name="q-does-azure-synapse-workspace-support-cicd"></a>F: stöder Azure Synapse-arbetsytan CI/CD? 
 
-A: Ja! Alla pipeline-artefakter, antecknings böcker, SQL-skript och Spark-jobb finns i GIT. Alla definitioner av mellanpooler kommer att lagras i GIT som ARM-mallar. Dedikerade SQL-pooler (scheman, tabeller, vyer osv.) hanteras med databas projekt med stöd för CI/CD.
+A: Ja! Alla pipeline-artefakter, antecknings böcker, SQL-skript och Spark-jobb finns i git. Alla definitioner av mellanpooler kommer att lagras i git som ARM-mallar. Dedikerade SQL-pooler (scheman, tabeller, vyer osv.) hanteras med databas projekt med stöd för CI/CD.
 
 ## <a name="pipelines"></a>Pipelines
 
@@ -91,11 +91,11 @@ A: vid det här tillfället måste du manuellt återskapa Azure Data Factory pip
 
 A: Apache Spark för Synapse är Apache Spark med stöd för integreringar med andra tjänster (AAD, AzureML osv.) och ytterligare bibliotek (mssparktuils, Hummingbird) och i förväg justerade prestanda konfigurationer.
 
-Alla arbets belastningar som körs på Apache Spark körs på MSFT Spark utan att några ändringar görs. 
+Alla arbets belastningar som för närvarande körs på Apache Spark körs på Apache Spark för Azure-Synapse utan ändring. 
 
 ### <a name="q-what-versions-of-spark-are-available"></a>F: vilka versioner av Spark är tillgängliga?
 
-A: Azure Synapse Apache Spark fullständigt stöd för Spark 2,4. En fullständig lista över kärn komponenter och version som stöds för närvarande finns i [Apache Spark versions stöd ](./spark/apache-spark-version-support.md).
+A: Azure Synapse Apache Spark fullständigt stöd för Spark 2,4. En fullständig lista över kärn komponenter och version som stöds för närvarande finns i [Apache Spark versions stöd](./spark/apache-spark-version-support.md).
 
 ### <a name="q-is-there-an-equivalent-of-dbutils-in-azure-synapse-spark"></a>F: finns det en motsvarighet till DButils i Azure Synapse Spark?
 
@@ -121,13 +121,13 @@ Det enklaste sättet att utföra den här uppgiften är att laga data med Spark 
  
 För att uppfylla det här scenariot bör du ge varje utvecklare en server lös Spark-pool som är inställd på att använda ett litet antal Spark-resurser. Eftersom Server lös Spark-pooler inte kostar något, tills de aktivt används minimerar kostnaden när det finns flera utvecklare. Poolerna delar metadata (Spark-tabeller) så att de enkelt kan arbeta med varandra.
 
-### <a name="q-how-do-i-include-manage-and-install-libraries"></a>F: Hur gör jag för att inkludera, hantera och installera bibliotek 
+### <a name="q-how-do-i-include-manage-and-install-libraries"></a>F: Hur gör jag för att inkludera, hantera och installera bibliotek?
 
 A: du kan installera externa paket via en requirements.txt-fil när du skapar Spark-poolen, från arbets ytan Synapse eller från Azure Portal. Se [Hantera bibliotek för Apache Spark i Azure Synapse Analytics](./spark/apache-spark-azure-portal-add-libraries.md).
 
 ## <a name="dedicated-sql-pools"></a>Dedikerade SQL-pooler
 
-### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-pools"></a>F: vilka är de funktionella skillnaderna mellan dedikerade SQL-pooler och pooler utan Server
+### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-pools"></a>F: vilka är de funktionella skillnaderna mellan dedikerade SQL-pooler och pooler utan Server?
 
 S: du hittar en fullständig lista över skillnader i [skillnaderna i T-SQL-funktionen i SYNAPSE SQL](./sql/overview-features.md).
 
@@ -140,7 +140,7 @@ A: det finns ingen "flytta" eller "migrering". Du kan välja att aktivera nya fu
 A: som standard kommer alla nya dedikerade SQL-pooler att distribueras till en arbets yta. men om du behöver kan du fortfarande skapa en dedikerad SQL-pool (tidigare SQL DW) i en fristående form faktor. 
 
 
-### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-sql-pool"></a>F: vilka är de funktionella skillnaderna mellan dedikerade SQL-pooler och Server lös SQL-pool 
+### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-sql-pools"></a>F: vilka är de funktionella skillnaderna mellan dedikerade SQL-pooler och SQL-pooler utan Server?
 
 S: du hittar en fullständig lista över skillnader i [skillnaderna i T-SQL-funktionen i SYNAPSE SQL](./sql/overview-features.md).
 

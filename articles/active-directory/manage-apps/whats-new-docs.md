@@ -1,7 +1,7 @@
 ---
 title: Vad är nytt i Azure Active Directory program hantering
 description: Ny och uppdaterad dokumentation för Azure Active Directory program hantering.
-ms.date: 12/03/2020
+ms.date: 12/15/2020
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -9,16 +9,30 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 38602482f1a25f212829342fe691d7bb75666d31
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: bad312b777c57a48c3205de588325d477b5773af
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571019"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563406"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory program hantering: Nyheter
 
 Välkommen till nyheter i Azure Active Directory program hanterings dokumentation. Den här artikeln innehåller nya dokument som har lagts till och de som har haft betydande uppdateringar under de senaste tre månaderna. Information om vad som är nytt i program hanterings tjänsten finns i [Nyheter i Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="december-2020"></a>December 2020
+
+### <a name="updated-articles"></a>Uppdaterade artiklar
+
+- [Snabb start: Konfigurera OIDC-baserad enkel inloggning (SSO) för ett program i din Azure Active Directory (Azure AD)-klient](add-application-portal-setup-oidc-sso.md)
+- [Självstudie: Lägg till ett lokalt program för fjärråtkomst via Application Proxy i Azure Active Directory](application-proxy-add-on-premises-application.md)
+- [Förstå OIDC-baserad enkel inloggning](configure-oidc-single-sign-on.md)
+- [Flytta programautentisering från Active Directory Federation Services (AD FS) till Azure Active Directory](migrate-adfs-apps-to-azure.md)
+- [Arbeta med befintliga lokala proxyservrar](application-proxy-configure-connectors-with-proxy-servers.md)
+- [Azure Active Directory program hantering: Nyheter](whats-new-docs.md)
+- [Använda rapporten AD FS program aktivitet (för hands version) för att migrera program till Azure AD](migrate-adfs-application-activity.md)
+- [Publicera Fjärrskrivbord med Azure AD-programproxy](application-proxy-integrate-with-remote-desktop-services.md)
+
 
 ## <a name="november-2020"></a>November 2020
 
@@ -53,7 +67,7 @@ Välkommen till nyheter i Azure Active Directory program hanterings dokumentatio
 ### <a name="new-articles"></a>Nya artiklar
 - [Snabb start: Konfigurera OIDC-baserad enkel inloggning (SSO) för ett program i din Azure Active Directory (Azure AD)-klient](add-application-portal-setup-oidc-sso.md)
 - [Snabb start: tilldela användare till en app som använder Azure AD som identitets leverantör](add-application-portal-assign-users.md)
-- [Nyheter i Docs](whats-new-docs.md)
+- [Vad är nytt i dokumenten?](whats-new-docs.md)
 
 
 ### <a name="updated-articles"></a>Uppdaterade artiklar

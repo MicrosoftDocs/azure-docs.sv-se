@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 9312094d1d86ea25ebd573e5d14b6d5bd0619cfc
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: a3f423a144738fdaa4462606de6ad4a4e34d6775
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108243"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563423"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Kontinuerlig leverans med hjälp av Azure-DevOps
 
@@ -248,7 +248,7 @@ Distribution till en distributions plats stöds inte i versions mal len.
 
 ## <a name="create-a-build-pipeline-by-using-the-azure-cli"></a>Skapa en pipeline för bygge med hjälp av Azure CLI
 
-Använd kommandot för att skapa en pipeline för bygge i Azure `az functionapp devops-pipeline create` [command](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create). Skapa pipeline skapas för att skapa och släppa alla kod ändringar som görs i din lagrings platsen. Kommandot genererar en ny YAML-fil som definierar pipelinen build och release och som sedan allokerar den till din lagrings platsen. Kraven för det här kommandot beror på var koden finns.
+Använd kommandot för att skapa en pipeline för bygge i Azure `az functionapp devops-pipeline create` [](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create). Skapa pipeline skapas för att skapa och släppa alla kod ändringar som görs i din lagrings platsen. Kommandot genererar en ny YAML-fil som definierar pipelinen build och release och som sedan allokerar den till din lagrings platsen. Kraven för det här kommandot beror på var koden finns.
 
 - Om din kod är i GitHub:
 

@@ -11,52 +11,61 @@ ms.topic: how-to
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/15/2020
+ms.date: 12/15/2020
 ms.author: memildin
-ms.openlocfilehash: 75ca0438336825bf8d4bbdc6e08eca109f430fde
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3f319c35631f8c85cab4613df0f1c14f98356caa
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785926"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563355"
 ---
-# <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Hantera och besvara säkerhetsaviseringar i Azure Security Center
+# <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Hantera och svara på säkerhets aviseringar i Azure Security Center
 
-Det här avsnittet visar hur du visar och bearbetar aviseringar som du har tagit emot för att skydda dina resurser. 
+> [!TIP]
+> Informationen på den här sidan avser den nya (för hands version) aviserings upplevelsen som är tillgänglig från banderollen högst upp på sidan säkerhets aviseringar. 
+>
+> :::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="Banderoll med en länk till den nya förhands gransknings aviserings upplevelsen":::
 
-* Information om olika typer av aviseringar finns i [säkerhets aviserings typer](alerts-reference.md).
-* En översikt över hur Security Center genererar aviseringar finns i [hur Azure Security Center identifierar och svarar på hot](security-center-alerts-overview.md).
+Det här avsnittet visar hur du visar och bearbetar Security Centers aviseringar och skyddar dina resurser.
 
-> [!NOTE]
-> Aktivera Avancerad identifiering genom att aktivera Azure Defender. Det finns en kostnadsfri utvärderingsversion. Om du vill uppgradera väljer du Prisnivå i avsnittet om [säkerhetsprinciper](tutorial-security-policy.md). Mer information finns under [priser för Azure Security Center](security-center-pricing.md).
+Avancerade identifieringar som utlöser säkerhets aviseringar är bara tillgängliga med Azure Defender. Det finns en kostnadsfri utvärderingsversion. Information om hur du uppgraderar finns i [Aktivera Azure Defender](security-center-pricing.md#enable-azure-defender).
 
 ## <a name="what-are-security-alerts"></a>Vad är säkerhetsaviseringar?
 Security Center samlar automatiskt in, analyserar och integrerar loggdata från Azure-resurser, nätverket och anslutna partnerlösningar som brandväggs- och slutpunktsskyddslösningar för att identifiera verkliga hot och minimera antalet falska positiva identifieringar. En lista över prioriterade säkerhetsvarningar visas i Security Center tillsammans med den information som du behöver för att snabbt undersöka problemet, samt rekommendationer för hur du åtgärdar ett angrepp.
 
-> [!NOTE]
-> Mer information om hur Security Center identifierings funktioner fungerar finns i [hur Azure Security Center identifierar och svarar på hot](security-center-alerts-overview.md#detect-threats).
+Information om olika typer av aviseringar finns i [säkerhets aviseringar – en referens guide](alerts-reference.md).
+
+En översikt över hur Security Center genererar aviseringar finns i [hur Azure Security Center identifierar och svarar på hot](security-center-alerts-overview.md).
+
 
 ## <a name="manage-your-security-alerts"></a>Hantera dina säkerhets aviseringar
 
-1. På instrument panelen för Security Center går du till panelen  **hot skydd** för att visa och översikt över aviseringarna.
+1. På sidan Översikt för Security Center väljer du panelen **säkerhets aviseringar** överst på sidan eller länken från sid panelen..
 
-    ![Panelen Säkerhetsaviseringar i Security Center](./media/security-center-managing-and-responding-alerts/security-center-dashboard-alert.png)
+    :::image type="content" source="media/security-center-managing-and-responding-alerts/overview-page-alerts-links.png" alt-text="Sidan säkerhets aviseringar visas på sidan med översikts sidan för Azure Security Center":::
 
-1. Klicka på panelen om du vill ha mer information om aviseringarna.
+    Sidan säkerhets aviseringar öppnas.
 
-   ![Säkerhetsvarningar i Security Center](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
+    :::image type="content" source="media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Azure Security Center säkerhets aviserings listan":::
 
-1. Filtrera aviseringarna som visas genom att klicka på **filter** och på bladet **filter** som öppnas väljer du de filter alternativ som du vill använda. Listan uppdateras enligt det valda filtret. Filtrering kan vara användbart. Kanske vill du till exempel se säkerhetsaviseringar från det senaste dygnet eftersom du undersöker ett potentiellt angrepp i systemet under den här tiden.
+1. Om du vill filtrera aviserings listan väljer du något av de relevanta filtren. Du kan också lägga till ytterligare filter med alternativet **Lägg till filter** .
 
-    ![Filtrera varningar i Security Center](./media/security-center-managing-and-responding-alerts/security-center-filter-alerts.png)
+    :::image type="content" source="./media/security-center-managing-and-responding-alerts/alerts-adding-filters-small.png" alt-text="Lägga till filter i vyn aviseringar" lightbox="./media/security-center-managing-and-responding-alerts/alerts-adding-filters-large.png":::
+
+    Listan uppdateras enligt de filtrerings alternativ som du har valt. Filtrering kan vara användbart. Kanske vill du till exempel se säkerhetsaviseringar från det senaste dygnet eftersom du undersöker ett potentiellt angrepp i systemet under den här tiden.
+
 
 ## <a name="respond-to-security-alerts"></a>Åtgärda säkerhetsaviseringar
 
-1. Klicka på en säkerhets avisering i listan **säkerhets aviseringar** . De resurser som berörs och de steg som du måste vidta för att åtgärda ett angrepp visas.
+1. Välj en avisering i listan **säkerhets aviseringar** . Ett sido fönster öppnas och visar en beskrivning av aviseringen och alla berörda resurser. 
 
-    ![Åtgärda säkerhetsaviseringar](./media/security-center-managing-and-responding-alerts/security-center-alert.png)
+    :::image type="content" source="./media/security-center-managing-and-responding-alerts/alerts-details-pane.png" alt-text="Vyn minispelare för en säkerhets avisering":::
 
-1. När du har granskat informationen klickar du på en resurs som har angrips.
+    > [!TIP]
+    > Med den här sidan öppen kan du snabbt granska aviserings listan med upp-och nedpilarna på tangent bordet.
+
+1. Om du vill ha mer information väljer du **Visa fullständig information**.
 
     Den vänstra rutan på sidan säkerhets avisering visar information på hög nivå om säkerhets aviseringen: rubrik, allvarlighets grad, status, aktivitets tid, beskrivning av den misstänkta aktiviteten och den berörda resursen. Tillsammans med den berörda resursen är de Azure-taggar som är relevanta för resursen. Använd dessa för att härleda resursens organisatoriska kontext vid utredning av aviseringen.
 
@@ -81,3 +90,4 @@ I det här dokumentet har du lärt dig hur du visar säkerhets aviseringar. Se f
 
 - [Konfigurera regler för att utelämna varningar](alerts-suppression-rules.md)
 - [Automatisera svar på Security Center utlösare](workflow-automation.md)
+- [Säkerhetsaviseringar – en referensguide](alerts-reference.md)
