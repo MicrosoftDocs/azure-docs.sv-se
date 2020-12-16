@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: cf5c88df4e2ac6b95e99a3a78b1bf1e45bf534ed
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 1f5c0c7a877964eeb480fa958c7e76eb5706122f
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95535562"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561281"
 ---
 # <a name="devops-practices-for-luis"></a>DevOps-metoder för LUIS
 
@@ -62,7 +62,7 @@ För att en LUIS-app ska kunna *bygga från källan* innebär att du kan [skapa 
 
 - Använd LUIS-portalen för att importera appens [ `.lu` version](./luis-how-to-manage-versions.md#import-version) från käll kontroll och [träna](./luis-how-to-train.md) och [publicera](./luis-how-to-publish-app.md) appen.
 
-- Använd [kommando rads gränssnittet för bot Framework för Luis](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS) på kommando raden eller i ett CI/CD-arbetsflöde för [import](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisversionimport) att importera `.lu` appens version från käll kontroll till ett Luis program och [träna](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luistrainrun) och [publicera](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisapplicationpublish) appen.
+- Använd [kommando rads gränssnittet för bot Framework för Luis](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS) på kommando raden eller i ett CI/CD-arbetsflöde för [](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisversionimport) att importera `.lu` appens version från käll kontroll till ett Luis program och [träna](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luistrainrun) och [publicera](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisapplicationpublish) appen.
 
 ### <a name="files-to-maintain-under-source-control"></a>Filer som ska underhållas under käll kontroll
 
@@ -98,7 +98,7 @@ Vilken förgrenings strategi du antar är att grupp medlemmarna kan arbeta med l
 
 För att stödja oberoende arbete i grenar med ett LUIS-projekt:
 
-- **Huvud grenen har en egen LUIS-app.** Den här appen representerar det aktuella läget för din lösning för ditt projekt och dess aktuella aktiva version bör alltid mappas till den `.lu` källa som finns i huvud grenen. Alla uppdateringar av `.lu` källan för den här appen bör granskas och testas så att den här appen kan distribueras för att bygga miljöer som produktion när som helst. När uppdateringar i kombineras `.lu` till Master från en funktions gren, bör du skapa en ny version i Luis-appen och lägga [till versions numret](#versioning).
+- **Huvud grenen har en egen LUIS-app.** Den här appen representerar det aktuella läget för din lösning för ditt projekt och dess aktuella aktiva version bör alltid mappas till `.lu` källan som finns i huvud grenen. Alla uppdateringar av `.lu` källan för den här appen bör granskas och testas så att den här appen kan distribueras för att bygga miljöer som produktion när som helst. När uppdateringar till `.lu` är sammanfogade i huvud delen av en funktions gren, bör du skapa en ny version i Luis-appen och lägga [till versions numret](#versioning).
 
 - **Varje funktions gren måste använda sin egen instans av en Luis-app**. Utvecklare arbetar med den här appen i en funktions gren utan risk för att påverka utvecklare som arbetar i andra grenar. Den här "dev Branch"-appen är en arbets kopia som ska tas bort när funktions grenen tas bort.
 
@@ -108,13 +108,13 @@ För att stödja oberoende arbete i grenar med ett LUIS-projekt:
 
 Utvecklare kan arbeta med uppdateringar i en LUIS-app oberoende av andra grenar genom att:
 
-1. Skapa en funktions gren från huvud grenen (beroende på din gren strategi, vanligt vis Master eller utveckla).
+1. Skapa en funktions gren från huvud grenen (beroende på din gren strategi, vanligt vis main eller utveckla).
 
 1. [Skapa en ny Luis-app i Luis-portalen](./luis-how-to-start-new-app.md) ("*dev Branch app*") så att den endast stöder arbetet i funktions grenen.
 
    * Om det `.lu` redan finns en källa för lösningen i din gren, eftersom den sparades efter det att jobbet gjort en annan gren tidigare i projektet, skapar du din Luis-app för dev Branch genom att importera `.lu` filen.
 
-   * Om du börjar arbeta med ett nytt projekt kommer du inte att ha `.lu` källan för din huvud-Luis-app i lagrings platsen. Du skapar `.lu` filen genom att exportera din dev Branch-app från portalen när du har slutfört ditt funktions gren arbete och skicka in det som en del av din PR.
+   * Om du börjar arbeta med ett nytt projekt har du ännu inte `.lu` källan till din huvudsakliga Luis-app i lagrings platsen. Du skapar `.lu` filen genom att exportera din dev Branch-app från portalen när du har slutfört ditt funktions gren arbete och skicka in det som en del av din PR.
 
 1. Arbeta med den aktiva versionen av din dev Branch-app för att implementera nödvändiga ändringar. Vi rekommenderar att du endast arbetar i en enda version av din dev Branch-app för alla funktions gren arbeten. Om du skapar fler än en version i din dev Branch-app måste du vara noga med att spåra vilken version som innehåller de ändringar du vill checka in när du ökar din PR.
 
@@ -124,7 +124,7 @@ Utvecklare kan arbeta med uppdateringar i en LUIS-app oberoende av andra grenar 
 
 1. Checka in dina uppdateringar och Bjud in peer-granskning av dina uppdateringar. Om du använder GitHub ska du öka en pull- [begäran](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests).
 
-1. När ändringarna har godkänts kan du slå samman uppdateringarna till huvud grenen. Nu ska du skapa en ny [version](./luis-how-to-manage-versions.md) av huvudLUIS-appen med hjälp *av den uppdaterade* `.lu` i huvud servern. Se [versions hantering](#versioning) för att tänka på hur du anger versions namnet.
+1. När ändringarna har godkänts, sammanfoga uppdateringarna till huvud grenen. Nu ska du skapa en ny [version](./luis-how-to-manage-versions.md) av huvudLUIS-appen med hjälp *av den uppdaterade* `.lu` i huvud gruppen. Se [versions hantering](#versioning) för att tänka på hur du anger versions namnet.
 
 1. När funktions grenen tas bort är det en bra idé att ta bort LUIS-appen för dev Branch som du skapade för funktions gren arbetet.
 
@@ -150,7 +150,7 @@ Du kan ha stöd för flera utvecklare som arbetar med samma funktions gren på s
 
 ### <a name="incorporating-changes-from-one-branch-to-another-with-rebase-or-merge"></a>Införliva ändringar från en gren till en annan med hjälp av ombase eller sammanfoga
 
-Vissa andra utvecklare på ditt team som arbetar i en annan gren kan ha gjort uppdateringar av `.lu` källan och sammanfoga dem till huvud grenen efter att du har skapat din funktions gren. Du kanske vill införliva sina ändringar i din fungerande version innan du fortsätter att göra egna ändringar i din funktions gren. Du kan göra detta genom [att basera eller sammanfoga till Master](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) på samma sätt som vilken annan kod till gång som helst. Eftersom LUIS-appen i LUDown-format är läslig, stöder den koppling med standard verktyg för sammanslagning.
+Vissa andra utvecklare på ditt team som arbetar i en annan gren kan ha gjort uppdateringar av `.lu` källan och sammanfoga dem till huvud grenen efter att du har skapat din funktions gren. Du kanske vill införliva sina ändringar i din fungerande version innan du fortsätter att göra egna ändringar i din funktions gren. Du kan göra detta genom [att basera eller slå ihop till main](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) på samma sätt som vilken annan kod till gång som helst. Eftersom LUIS-appen i LUDown-format är läslig, stöder den koppling med standard verktyg för sammanslagning.
 
 Följ de här tipsen om du baserar om LUIS-appen i en funktions gren:
 
@@ -173,7 +173,7 @@ När din PR har slagits samman rekommenderar vi att du rensar:
 På samma sätt som med program kod till gångar bör du skriva enhets test för att medfölja LUIS app-uppdateringar. Du bör använda arbets flöden för kontinuerlig integrering för att testa:
 
 - Uppdateringar i en PR innan PR sammanfogas
-- Master Branch LUIS-appen efter ett PR har godkänts och ändringarna har slagits samman i huvud.
+- Huvud grenen LUIS-appen efter att ett PR har godkänts och ändringarna har slagits samman i huvud.
 
 Mer information om testning av LUIS-DevOps finns i [testa för DevOps för Luis](luis-concept-devops-testing.md). Mer information om hur du implementerar arbets flöden finns i [Automation-arbetsflöden för Luis DevOps](luis-concept-devops-automation.md).
 
@@ -185,7 +185,7 @@ En LUIS-app i LUDown-format är läslig, som har stöd för kommunikation av än
 
 Ett program består av flera komponenter som kan omfatta sådant som en robot som körs i [Azure bot service](/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0), [QNA Maker](https://www.qnamaker.ai/), [röst tjänsten för Azure](../speech-service/overview.md)med mera. För att uppnå målet med löst kopplade program, använder du [versions kontroll](/azure/devops/learn/git/what-is-version-control) så att varje komponent i ett program har versions hantering oberoende, så att utvecklare kan identifiera ändringar eller uppdateringar genom att titta på versions numret. Det är enklare att version av LUIS-appen oberoende av andra komponenter om du underhåller den i sin egen lagrings platsen.
 
-LUIS-appen för huvud grenen bör ha ett versions schema som tillämpas. När du sammanfogar uppdateringar av `.lu` för en Luis-app till Master, kommer du att importera den uppdaterade källan till en ny version i Luis-appen för huvud grenen.
+LUIS-appen för huvud grenen bör ha ett versions schema som tillämpas. När du sammanfogar uppdateringar till `.lu` en Luis-app i huvud gruppen, kommer du att importera den uppdaterade källan till en ny version i Luis-appen för huvud grenen.
 
 Vi rekommenderar att du använder ett numeriskt versions schema för huvud versionen av LUIS-appen, till exempel:
 
@@ -199,7 +199,7 @@ Den större/lägre versionen kan användas för att ange omfånget för ändring
 * Lägre version: en baklänges-kompatibel mindre förändring, till exempel efter en betydande ny utbildning
 * Build: ingen funktions ändring, bara en annan version.
 
-När du har fastställt versions numret för den senaste versionen av din Master LUIS-app måste du bygga och testa den nya program versionen och publicera den till en slut punkt där den kan användas i olika build-miljöer, till exempel kvalitets säkring eller produktion. Vi rekommenderar starkt att du automatiserar alla dessa steg i ett arbets flöde för kontinuerlig integration (CI).
+När du har fastställt versions numret för den senaste versionen av din huvudsakliga LUIS-app måste du bygga och testa den nya program versionen och publicera den till en slut punkt där den kan användas i olika build-miljöer, till exempel kvalitets säkring eller produktion. Vi rekommenderar starkt att du automatiserar alla dessa steg i ett arbets flöde för kontinuerlig integration (CI).
 
 Se:
 - [Automation-arbetsflöden](luis-concept-devops-automation.md) för information om hur du implementerar ett CI-arbetsflöde för att testa och släppa en Luis-app.
@@ -207,9 +207,9 @@ Se:
 
 ### <a name="versioning-the-feature-branch-luis-app"></a>Version av LUIS-appen "funktions gren"
 
-När du arbetar med en "dev Branch" LUIS-app som du har skapat för att stödja arbete i en funktions gren, kommer du att exportera appen när ditt arbete har slutförts och du kommer att inkludera den uppdaterade `'lu` i din PR. Grenen i din lagrings platsen och LUIS-appen "dev Branch" bör tas bort efter att PR sammanfogats till Master. Eftersom den här appen endast existerar för att stödja arbetet i funktions grenen finns det inget särskilt versions schema som du behöver tillämpa i den här appen.
+När du arbetar med en "dev Branch" LUIS-app som du har skapat för att stödja arbete i en funktions gren, kommer du att exportera appen när ditt arbete har slutförts och du kommer att inkludera den uppdaterade `'lu` i din PR. Grenen i din lagrings platsen och LUIS-appen "dev Branch" bör tas bort när PR har slagits samman i huvud. Eftersom den här appen endast existerar för att stödja arbetet i funktions grenen finns det inget särskilt versions schema som du behöver tillämpa i den här appen.
 
-När dina ändringar i din PR kombineras till huvud, det vill säga när versions hantering ska tillämpas, så att alla uppdateringar av Master-versionen sker oberoende av varandra.
+När dina ändringar i din PR slås samman i huvud, det vill säga när versions hantering ska tillämpas, så att alla uppdateringar av huvud versioner sker oberoende av varandra.
 
 ## <a name="next-steps"></a>Nästa steg
 

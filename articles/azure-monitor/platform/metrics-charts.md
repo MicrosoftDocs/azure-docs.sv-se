@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 1150cdb64c5fe7d1b2241cdc0ad1a6eb0a36f47f
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: be3d3f11e90c17bd8c4792418500da651039e480
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168570"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562811"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Avancerade funktioner i Azure Metrics Explorer
 
@@ -46,7 +46,7 @@ Klicka på **Lägg till diagram** och skapa ett annat diagram med ett annat måt
 
 ### <a name="order-or-delete-multiple-charts"></a>Ordna eller ta bort flera diagram
 
-Om du vill ordna eller ta bort flera diagram klickar du på ellipsen ( **...** )-symbolen för att öppna Diagram-menyn och välja lämpligt meny alternativ för **Flytta upp**, **Flytta ned**eller **ta bort**.
+Om du vill ordna eller ta bort flera diagram klickar du på ellipsen ( **...** )-symbolen för att öppna Diagram-menyn och välja lämpligt meny alternativ för **Flytta upp**, **Flytta ned** eller **ta bort**.
 
 ## <a name="changing-aggregation"></a>Ändrar agg regering
 
@@ -59,7 +59,7 @@ Anta till exempel att diagrammet visar värdet för **Server svars tid** med hj�
 - Om tids kornigheten har angetts till 30 minuter ritas diagrammet från 48-aggregerade Datapoints (t. ex. linje diagrammet ansluter 48 punkter i diagrammets rityta). Det vill säga 24 timmar x 2 Datapoints per timme. Varje Datapoint representerar *genomsnittet* av alla uppfångade svars tider för server begär Anden som inträffat under de 30 min tids perioderna.
 - Om du växlar tids kornig het till 15 minuter får du 96 sammanställd datapoints.  Det vill säga 24 timmar x 4 Datapoints per timme.
 
-Det finns fem grundläggande agg regerings typer i mått Utforskaren: **Sum**, **Count**, **min**, **Max**och **Average**. **Sum** -aggregering kallas ibland **Total** aggregation. För många mått kommer Metrics Explorer dölja de agg regeringar som är helt irrelevanta och inte kan användas.
+Det finns fem grundläggande agg regerings typer i mått Utforskaren: **Sum**, **Count**, **min**, **Max** och **Average**. **Sum** -aggregering kallas ibland **Total** aggregation. För många mått kommer Metrics Explorer dölja de agg regeringar som är helt irrelevanta och inte kan användas.
 
 - **Sum** – summan av alla värden som har samlats in under samlings intervallet
 - **Count** – antalet mått som har hämtats över samlings intervallet. Observera att **Count** motsvarar **Sum** i det fall då måttet alltid fångas med värdet 1. Detta är vanligt när måttet spårar antalet distinkta händelser och varje mått representerar en händelse (d.v.s. koden inaktive ras en mått post varje gång en ny begäran kommer in)
@@ -77,15 +77,15 @@ Du kan använda filter för diagram som visar mått med dimensioner. Om till exe
 
 2. Välj vilken dimension (egenskap) som du vill filtrera
 
-   ![Skärm bild som visar de dimensioner (egenskaper) som du kan filtrera.](./media/metrics-charts/00006.png)
+   ![Skärm bild som visar de dimensioner (egenskaper) som du kan filtrera.](./media/metrics-charts/028.png)
 
 3. Välj vilka dimensions värden som du vill ta med när diagrammet ritas (det här exemplet visar filtrering av lyckade lagrings transaktioner):
 
-   ![Skärm bild som visar filtreringen av lyckade lagrings transaktioner.](./media/metrics-charts/00007.png)
+   ![Skärm bild som visar filtreringen av lyckade lagrings transaktioner.](./media/metrics-charts/029.png)
 
 4. När du har valt filter värden klickar du på bort från filter väljaren för att stänga den. Nu visar diagrammet hur många lagrings transaktioner som har misslyckats:
 
-   ![Skärm bild som visar hur många lagrings transaktioner som har misslyckats](./media/metrics-charts/00008.png)
+   ![Skärm bild som visar hur många lagrings transaktioner som har misslyckats](./media/metrics-charts/030.png)
 
 5. Du kan upprepa steg 1-4 om du vill tillämpa flera filter på samma diagram.
 
@@ -104,11 +104,11 @@ Du kan dela upp ett mått per dimension för att visualisera hur olika segment i
 
 2. Välj en dimension som du vill segmentera diagrammet på:
 
-   ![Skärm bild som visar den valda dimensionen på vilken du segmenterar diagrammet.](./media/metrics-charts/00010.png)
+   ![Skärm bild som visar den valda dimensionen på vilken du segmenterar diagrammet.](./media/metrics-charts/031.png)
 
    Nu visar diagrammet flera rader, en för varje dimensions segment:
 
-   ![Skärm bild som visar flera rader, en för varje dimensions segment.](./media/metrics-charts/00012.png)
+   ![Skärm bild som visar flera rader, en för varje dimensions segment.](./media/metrics-charts/032.png)
 
 3. Klicka bort från **grupp väljaren** för att stänga den.
 
@@ -123,9 +123,13 @@ Om antalet lyckade förfrågningar till exempel sjunker från 99,99% till 99,5% 
 
 Ett annat exempel är en fluktuation i det tillgängliga minnet, där värdet då tekniskt aldrig når 0. Att korrigera intervallet till ett högre värde kan göra att det tillgängliga minnet blir lättare att hitta. 
 
-Om du vill styra y-axelns intervall använder du "..." Diagram-menyn och välj **Redigera diagram** för att få åtkomst till avancerade diagram inställningar. Ändra värdena i avsnittet intervall i Y-axeln eller Använd knappen **Auto** för att återgå till standardvärdena.
+Om du vill styra y-axelns intervall använder du "..." Diagram-menyn och välj **diagram inställningar** för att få åtkomst till avancerade diagram inställningar.
 
-![Skärm bild som visar alternativet Redigera diagram.](./media/metrics-charts/00014-manually-set-granularity.png)
+![Skärm bild som markerar alternativet diagram inställningar.](./media/metrics-charts/033.png)
+
+ Ändra värdena i avsnittet intervall i Y-axeln eller Använd knappen **Auto** för att återgå till standardvärdena.
+ 
+ ![Skärm bild som visar avsnittet intervall för Y-axeln.](./media/metrics-charts/034.png)
 
 > [!WARNING]
 > Att låsa gränserna för y-axeln för de diagram som spårar olika antal eller summor under en tids period (och därför användnings antal, sum, minimal eller maximal agg regeringar) kräver vanligt vis att du anger en fast tids kornig het i stället för att förlita dig på de automatiska standardvärdena. Detta är nödvändigt eftersom värdena i diagram ändras när tids kornig het ändras automatiskt av användarens storleks ändrings fönster eller från en skärmupplösning till en annan. Den resulterande ändringen av tids kornig het påverkar diagrammets utseende, vilket gör att det aktuella valet av y-axelns intervall är ogiltigt.
@@ -136,9 +140,9 @@ När du har konfigurerat diagrammen tilldelas diagram linjerna automatiskt en f�
 
 Om du vill ändra färgen på en diagram linje klickar du på det färgade fältet i förklaringen som motsvarar diagrammet. Dialog rutan färg väljare öppnas. Använd färg väljaren för att konfigurera färg för linjen.
 
-När diagrammets färger har kon figurer ATS kommer de att förbli på det sättet när du fäster diagrammet på en instrument panel. I följande avsnitt visas hur du fäster ett diagram.
+![Skärm bild som visar hur du ändrar färg](./media/metrics-charts/035.png)
 
-![Skärm bild som visar hur du fäster ett diagram.](./media/metrics-charts/018.png)
+När diagrammets färger har kon figurer ATS kommer de att förbli på det sättet när du fäster diagrammet på en instrument panel. I följande avsnitt visas hur du fäster ett diagram.
 
 ## <a name="pin-charts-to-dashboards"></a>Fästa diagram på instrument paneler
 
@@ -146,9 +150,9 @@ När du har konfigurerat diagrammen kanske du vill lägga till det i instrument 
 
 Fästa ett konfigurerat diagram på en instrument panel:
 
-När du har konfigurerat diagrammet klickar du på menyn **diagram åtgärder** i diagrammets högra övre hörn och klickar på **Fäst på instrument panelen**.
+När du har konfigurerat diagrammet klickar **du på Fäst på instrument panelen** i det högra övre hörnet i diagrammet.
 
-![bild på mått](./media/metrics-charts/00013.png)
+![Skärm bild som visar hur du fäster i diagrammet](./media/metrics-charts/036.png)
 
 ## <a name="create-alert-rules"></a>Skapa aviseringsregler
 
@@ -156,11 +160,11 @@ Du kan använda de kriterier som du har angett för att visualisera måtten som 
 
 ### <a name="to-create-a-new-alert-rule-click-new-alert-rule"></a>Om du vill skapa en ny varnings regel klickar du på **ny aviserings regel**
 
-![Knappen Ny varnings regel markerad i rött](./media/metrics-charts/015.png)
+![Knappen Ny varnings regel markerad i rött](./media/metrics-charts/042.png)
 
 Du kommer att gå till fönstret Skapa aviserings regel med de underliggande mått dimensionerna från diagrammet i förväg ifyllda för att göra det enklare att skapa anpassade aviserings regler.
 
-![Skapa aviseringsregel](./media/metrics-charts/016.png)
+![Skapa aviseringsregel](./media/metrics-charts/041.png)
 
 Kolla in den här [artikeln](alerts-metric.md) om du vill veta mer om hur du konfigurerar mått aviseringar.
 

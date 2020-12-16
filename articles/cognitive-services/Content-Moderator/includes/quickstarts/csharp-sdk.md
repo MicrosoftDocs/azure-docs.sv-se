@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: devx-track-dotnet, cog-serv-seo-aug-2020
-ms.openlocfilehash: 793dc6d210751d0605ab756cd1c72b1dc5dd308f
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 8a715c23900ac0d5a16ff4a0a8ade5ea9458cfed
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92924969"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561502"
 ---
 Kom igång med Azure Content Moderator-klient biblioteket för .NET. Följ dessa steg om du vill installera NuGet-paketet och prova exempel koden för grundläggande uppgifter. 
 
@@ -24,9 +24,9 @@ Content Moderator är en AI-tjänst som låter dig hantera innehåll som är pot
 
 Använd Content Moderator klient bibliotek för .NET för att:
 
-* [Måttlig text](#moderate-text)
-* [Måttliga bilder](#moderate-images)
-* [Skapa en granskning](#create-a-review)
+* Måttlig text
+* Måttliga bilder
+* Skapa en granskning
 
 [Referens dokumentation](/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)  |  [Exempel](../../samples-dotnet.md)
 
@@ -48,11 +48,11 @@ Skapa ett nytt .NET Core-program med Visual Studio.
 
 ### <a name="install-the-client-library"></a>Installera klient biblioteket 
 
-När du har skapat ett nytt projekt installerar du klient biblioteket genom att högerklicka på projekt lösningen i **Solution Explorer** och välja **Hantera NuGet-paket** . I paket hanteraren som öppnas väljer du **Bläddra** , markerar **ta med för hands version** och söker efter `Microsoft.Azure.CognitiveServices.ContentModerator` . Välj version `2.0.0` och **Installera** sedan. 
+När du har skapat ett nytt projekt installerar du klient biblioteket genom att högerklicka på projekt lösningen i **Solution Explorer** och välja **Hantera NuGet-paket**. I paket hanteraren som öppnas väljer du **Bläddra**, markerar **ta med för hands version** och söker efter `Microsoft.Azure.CognitiveServices.ContentModerator` . Välj version `2.0.0` och **Installera** sedan. 
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
-I ett konsol fönster (till exempel cmd, PowerShell eller bash) använder du `dotnet new` kommandot för att skapa en ny konsol app med namnet `content-moderator-quickstart` . Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda käll fil: *program.cs* .
+I ett konsol fönster (till exempel cmd, PowerShell eller bash) använder du `dotnet new` kommandot för att skapa en ny konsol app med namnet `content-moderator-quickstart` . Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda käll fil: *program.cs*.
 
 ```console
 dotnet new console -n content-moderator-quickstart
@@ -94,7 +94,7 @@ Från projekt katalogen öppnar du *program.cs* -filen i önskat redigerings pro
 I **program** -klassen skapar du variabler för resursens nyckel och slut punkt.
 
 > [!IMPORTANT]
-> Gå till Azure-portalen. Om Content Moderator resursen som du skapade i avsnittet **krav** har distribuerats, klickar du på knappen **gå till resurs** under **Nästa steg** . Du hittar din nyckel och slut punkt i resursens **nyckel och slut punkts** sida under **resurs hantering** . 
+> Gå till Azure-portalen. Om Content Moderator resursen som du skapade i avsnittet **krav** har distribuerats, klickar du på knappen **gå till resurs** under **Nästa steg**. Du hittar din nyckel och slut punkt i resursens **nyckel och slut punkts** sida under **resurs hantering**. 
 >
 > Kom ihåg att ta bort nyckeln från koden när du är klar och publicera den aldrig offentligt. För produktion bör du överväga att använda ett säkert sätt att lagra och komma åt dina autentiseringsuppgifter. Mer information finns i [säkerhets](../../../cognitive-services-security.md) artikeln Cognitive Services.
 
@@ -226,7 +226,7 @@ Lägg till följande klass definition i **program** klassen. Den här klassen ko
 
 ### <a name="define-helper-method"></a>Definiera hjälp metod
 
-Lägg till följande metod i klassen **Program** . Med den här metoden skrivs resultaten från gransknings frågor till den utgående text filen.
+Lägg till följande metod i klassen **Program**. Med den här metoden skrivs resultaten från gransknings frågor till den utgående text filen.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_writeline)]
 
@@ -268,7 +268,7 @@ Om du har använt en callback-slutpunkt i det här scenariot, ska den ta emot en
  'type': 'Image'}
 ```
 
-## <a name="run-the-application"></a>Kör programmet
+## <a name="run-the-application"></a>Köra appen
 
 #### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
 

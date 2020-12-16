@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/5/2020
-ms.openlocfilehash: 370dade1b74634649c9de44864a0fd9f5cac988f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1ce78e02c652777b524964559b579530f3e022fa
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025984"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561315"
 ---
 # <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>Kontinuerlig integrering och kontinuerliga leverans arbets flöden för LUIS-DevOps
 
@@ -22,8 +22,8 @@ Program varu tekniker som utvecklar en Language Understanding-app (LUIS) kan til
 
 I ditt system för käll kods hantering (SCM) konfigurerar du automatiska Bygg pipelines för att köras vid följande händelser:
 
-1. **PR-arbetsflöde** som utlöses när en [pull-begäran](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) höjs. Det här arbets flödet verifierar innehållet i PR *innan* uppdateringarna blir sammanfogade till huvud grenen.
-1. **CI/CD-arbetsflöde** utlöses när uppdateringar skickas till huvud grenen, till exempel vid sammanslagning av ändringar från en PR. Det här arbets flödet säkerställer kvaliteten på alla uppdateringar av huvud grenen.
+1. **PR-arbetsflöde** som utlöses när en [pull-begäran](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) höjs. Det här arbets flödet verifierar innehållet i PR *innan* uppdateringarna blir sammanfogade i huvud grenen.
+1. **CI/CD-arbetsflöde** utlöses när uppdateringar skickas till huvud grenen, till exempel vid sammanslagning av ändringar från en PR. Det här arbets flödet säkerställer kvaliteten på alla uppdateringar till huvud grenen.
 
 **CI/CD-arbetsflödet** kombinerar två kompletterande utvecklings processer:
 
@@ -31,7 +31,7 @@ I ditt system för käll kods hantering (SCM) konfigurerar du automatiska Bygg p
 
 * [Kontinuerlig leverans](/azure/devops/learn/what-is-continuous-delivery) (CD) använder det kontinuerliga integrerings konceptet för att automatiskt distribuera programmet till en miljö där du kan göra mer djupgående testning. CD gör det möjligt för oss att lära sig tidigt om eventuella oförutsedda problem som uppstår från våra ändringar så snabbt som möjligt och även för att lära sig om luckor i vår test omfattning.
 
-Målet med kontinuerlig integrering och kontinuerlig leverans är att säkerställa att "befälhavaren alltid kan fraktas". För en LUIS-app innebär detta att vi kunde, om vi behövde, ta alla versioner från LUIS-appen för huvud kontoret och leverera dem på produktion.
+Målet med kontinuerlig integrering och kontinuerlig leverans är att säkerställa att "main alltid kan levereras". För en LUIS-app innebär detta att vi kunde, om vi behövde, ta alla versioner från LUIS-appen för huvud kontoret och leverera dem i produktion.
 
 ### <a name="tools-for-building-automation-workflows-for-luis"></a>Verktyg för att skapa Automation-arbetsflöden för LUIS
 
@@ -59,7 +59,7 @@ Arbets flödet bör:
 
 Om du har stöd för SCM konfigurerar du gren skydds regler så att arbets flödet måste slutföras innan PR kan slutföras.
 
-### <a name="the-master-branch-cicd-workflow"></a>Huvud gren CI/CD-arbetsflöde
+### <a name="the-main-branch-cicd-workflow"></a>Huvud gren CI/CD-arbetsflöde
 
 Konfigurera det här arbets flödet så att det körs när uppdateringarna i PR har slagits samman i huvud grenen. Syftet med detta är att behålla kvalitets fältet för huvud grenen högt genom att testa uppdateringarna. Om uppdateringarna uppfyller kvalitets fältet distribuerar det här arbets flödet den nya versionen av LUIS-appen till en miljö där du kan göra mer djupgående testning.
 

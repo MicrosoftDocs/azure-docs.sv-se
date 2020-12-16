@@ -1,19 +1,19 @@
 ---
 title: 'Azure-ExpressRoute: ARP-tabeller – fel sökning'
-description: Den här sidan innehåller instruktioner för hur du hämtar ARP-tabeller för en ExpressRoute-krets
+description: Den här sidan innehåller instruktioner för hur du hämtar ARP-tabeller (Address Resolution Protocol) för en ExpressRoute-krets
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: troubleshooting
-ms.date: 01/30/2017
+ms.date: 12/15/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 9272bb8bac2054d7a02a7eac8c214395a86ceebf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d8ae2c58979c66ebbbab366d172179bdeee4253
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394864"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561587"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>Hämta ARP-tabeller i distributions modellen för Resource Manager
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ Den här artikeln vägleder dig igenom stegen för att lära dig ARP-tabeller f�
 ## <a name="address-resolution-protocol-arp-and-arp-tables"></a>ARP-protokoll (Address Resolution Protocol) och ARP-tabeller
 ARP (Address Resolution Protocol) är ett Layer 2-protokoll som definieras i [RFC 826](https://tools.ietf.org/html/rfc826). ARP används för att mappa Ethernet-adressen (MAC-adress) med en IP-adress.
 
-ARP-tabellen innehåller en mappning av IPv4-adressen och MAC-adressen för en viss peering. ARP-tabellen för en ExpressRoute-krets-peering innehåller följande information för varje gränssnitt (primär och sekundär)
+ARP-tabellen innehåller följande information för både de primära och sekundära gränssnitten för varje peering-typ:
 
 1. Mappning av IP-adress för lokalt routergränssnitt till MAC-adressen
 2. Mappning av IP-adressen för ExpressRoute router Interface till MAC-adressen
@@ -55,10 +55,10 @@ Age InterfaceProperty IpAddress  MacAddress
 I följande avsnitt finns information om hur du kan visa ARP-tabeller som visas av ExpressRoute Edge-routrar. 
 
 ## <a name="prerequisites-for-learning-arp-tables"></a>Krav för Learning ARP-tabeller
-Se till att du har följande innan du fortsätter
+Se till att informationen nedan stämmer innan du fortsätter:
 
-* En giltig ExpressRoute-krets som kon figurer ATS med minst en peering. Kretsen måste konfigureras fullständigt av anslutnings leverantören. Du (eller din anslutnings leverantör) måste ha konfigurerat minst en av peering (Azure Private, Azure Public och Microsoft) på den här kretsen.
-* IP-adressintervall som används för att konfigurera peering (Azure Private, Azure Public och Microsoft). Granska exemplen för IP-adresstilldelning på [sidan ExpressRoute-krav för routning](expressroute-routing.md) för att få en förståelse för hur IP-adresser mappas till gränssnitt på din sida och på ExpressRoute-sidan. Du kan få information om peering-konfigurationen genom att granska [konfigurations sidan för ExpressRoute-peering](expressroute-howto-routing-arm.md).
+* En giltig ExpressRoute-krets som kon figurer ATS med minst en peering. Kretsen måste konfigureras fullständigt av anslutnings leverantören. Du eller anslutnings leverantören måste ha konfigurerat minst Azure Private, Azure offentlig eller Microsoft-peering på denna krets.
+* IP-adressintervall som används för att konfigurera peer kopplingarna. Granska exemplen för IP-adresstilldelning på [sidan ExpressRoute-krav för routning](expressroute-routing.md) för att se hur IP-adresser mappas till gränssnitt. Du kan få information om peering-konfigurationen genom att granska [konfigurations sidan för ExpressRoute-peering](expressroute-howto-routing-arm.md).
 * Information från din nätverks team/anslutnings leverantör på MAC-adresserna för gränssnitt som används med dessa IP-adresser.
 * Du måste ha den senaste PowerShell-modulen för Azure (version 1,50 eller senare).
 
@@ -151,10 +151,10 @@ Age InterfaceProperty IpAddress  MacAddress
 ARP-tabellen för en peering kan användas för att fastställa validering av Layer 2-konfiguration och-anslutning. Det här avsnittet innehåller en översikt över hur ARP-tabeller kommer att se ut under olika scenarier.
 
 ### <a name="arp-table-when-a-circuit-is-in-operational-state-expected-state"></a>ARP-tabell när en krets är i drifts tillstånd (förväntat tillstånd)
-* ARP-tabellen kommer att ha en post för den lokala sidan med en giltig IP-adress och MAC-adress och en liknande post för Microsoft-sidan. 
+* ARP-tabellen kommer att ha en post för den lokala sidan med en giltig IP-adress och MAC-adress. Samma kan ses för Microsoft-sidan. 
 * Den sista oktetten i den lokala IP-adressen är alltid ett udda nummer.
 * Den sista oktetten i Microsofts IP-adress är alltid ett jämnt tal.
-* Samma MAC-adress kommer att visas på Microsoft-sidan för alla tre peer-datorer (primär/sekundär). 
+* Samma MAC-adress visas på Microsoft-sidan för alla tre peer-datorer (primär/sekundär). 
 
 ```output
 Age InterfaceProperty IpAddress  MacAddress    
@@ -164,23 +164,21 @@ Age InterfaceProperty IpAddress  MacAddress
 ```
 
 ### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>ARP-tabell när den lokala/anslutna leverantörs sidan har problem
-Om det finns problem med den lokala providern eller anslutnings leverantören kan du se att endast en post visas i ARP-tabellen eller på den lokala MAC-adressen är ofullständig. Då visas mappningen mellan den MAC-adress och den IP-adress som används på Microsoft-sidan. 
+Om det uppstår ett problem med den lokala providern eller anslutnings leverantören, Visar ARP-tabellen en av två saker. Du kan antingen se att den lokala MAC-adressen är ofullständig eller bara visa Microsoft-posten i ARP-tabellen.
   
-```output
-Age InterfaceProperty IpAddress  MacAddress    
---- ----------------- ---------  ----------    
-  0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
-```
-
-eller
-       
 ```output
 Age InterfaceProperty IpAddress  MacAddress    
 --- ----------------- ---------  ----------   
   0 On-Prem           65.0.0.1   Incomplete
   0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 ```
-
+eller
+   
+```output
+Age InterfaceProperty IpAddress  MacAddress    
+--- ----------------- ---------  ----------    
+  0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
+```  
 
 > [!NOTE]
 > Öppna en supportbegäran med din anslutnings leverantör för att felsöka problemen. Om ARP-tabellen inte har IP-adresser till gränssnitten som är mappade till MAC-adresser, granskar du följande information:
@@ -190,13 +188,13 @@ Age InterfaceProperty IpAddress  MacAddress
 > 
 
 ### <a name="arp-table-when-microsoft-side-has-problems"></a>ARP-tabell när problem med Microsoft har problem
-* Du ser ingen ARP-tabell för en peering om det finns problem på Microsoft-sidan. 
+* Du ser inte en ARP-tabell som visas för en peering om det finns problem på Microsoft-sidan. 
 * Öppna ett support ärende med [Microsoft Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Ange att du har problem med Layer 2-anslutning. 
 
 ## <a name="next-steps"></a>Nästa steg
-* Validera Layer 3-konfigurationer för din ExpressRoute-krets
-  * Hämta väg Sammanfattning för att fastställa tillstånd för BGP-sessioner 
-  * Hämta routningstabellen för att avgöra vilka prefix som annonseras via ExpressRoute
-* Verifiera data överföring genom att granska byte in/ut
-* Öppna ett support ärende med [Microsoft Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om det fortfarande uppstår problem.
+* Verifiera Layer 3-konfigurationer för din ExpressRoute-krets.
+  * Hämta väg Sammanfattning för att fastställa tillstånd för BGP-sessioner.
+  * Hämta routningstabellen för att avgöra vilka prefix som annonseras via ExpressRoute.
+* Verifiera data överföring genom att granska byte in/ut.
+* Öppna ett support ärende med [Microsoft Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om du fortfarande har problem.
 

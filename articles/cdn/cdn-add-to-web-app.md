@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 0abe13c7c6a9f26746278aeede199a0860a54c0d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3f1dacb57931913edfb181f023bdf98717777d50
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779552"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562250"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Självstudie: Lägga till Azure CDN i en Azure App Service-webbapp
 
@@ -49,14 +49,14 @@ För att slutföra den här kursen behöver du:
 
 ## <a name="create-the-web-app"></a>Skapa webbappen
 
-För att skapa webbappen som du ska arbeta med följer du [snabbstarten för statisk HTML](../app-service/quickstart-html.md) via steget **Bläddra till appen** .
+För att skapa webbappen som du ska arbeta med följer du [snabbstarten för statisk HTML](../app-service/quickstart-html.md) via steget **Bläddra till appen**.
 
 ## <a name="log-in-to-the-azure-portal"></a>Logga in på Azure Portal
 
 Öppna webbläsaren och gå till [Azure Portal](https://portal.azure.com).
 
 ### <a name="dynamic-site-acceleration-optimization"></a>Optimering för acceleration av dynamisk webbplats
-Om du vill optimera CDN-slutpunkten för acceleration av dynamisk webbplats (DSA, Dynamic Site Acceleration) bör du skapa slutpunkten direkt på [CDN-portalen](cdn-create-new-endpoint.md). Prestanda på webbsidor med dynamiskt innehåll förbättras avsevärt med [DSA-optimering](cdn-dynamic-site-acceleration.md). Mer anvisningar om hur du optimerar en CDN-slutpunkt för DSA från CDN-portalen finns i informationen om [CDN-slutpunktskonfiguration för snabbare leverans av dynamiska filer](cdn-dynamic-site-acceleration.md#cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files). Om du inte vill optimera din nya slutpunkt kan du använda webbapp-portalen för att skapa den genom att följa stegen i nästa avsnitt. Observera att för **Azure CDN från Verizon** -profiler kan du inte ändra optimeringen av en CDN-slutpunkt när den väl har skapats.
+Om du vill optimera CDN-slutpunkten för acceleration av dynamisk webbplats (DSA, Dynamic Site Acceleration) bör du skapa slutpunkten direkt på [CDN-portalen](cdn-create-new-endpoint.md). Prestanda på webbsidor med dynamiskt innehåll förbättras avsevärt med [DSA-optimering](cdn-dynamic-site-acceleration.md). Mer anvisningar om hur du optimerar en CDN-slutpunkt för DSA från CDN-portalen finns i informationen om [CDN-slutpunktskonfiguration för snabbare leverans av dynamiska filer](cdn-dynamic-site-acceleration.md#cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files). Om du inte vill optimera din nya slutpunkt kan du använda webbapp-portalen för att skapa den genom att följa stegen i nästa avsnitt. Observera att för **Azure CDN från Verizon**-profiler kan du inte ändra optimeringen av en CDN-slutpunkt när den väl har skapats.
 
 ## <a name="create-a-cdn-profile-and-endpoint"></a>Skapa en CDN-profil och en slutpunkt
 
@@ -75,23 +75,23 @@ På sidan **Azure Content Delivery Network** anger du inställningarna för **Ny
 | Inställning | Föreslaget värde | Beskrivning |
 | ------- | --------------- | ----------- |
 | **CDN-profil** | myCDNProfile | En CDN-profil är en samling CDN-slutpunkter på samma prisnivå. |
-| **Prisnivå** | Standard Akamai | [Prisnivån](cdn-features.md) anger providern och funktioner som är tillgängliga. I den här självstudien används *Standard Akamai* . |
-| **CDN-slutpunktsnamn** | Vilket namn som helst som är unikt för domänen azureedge.net | Du kommer åt dina cachelagrade resurser på domänen *&lt; endpointname &gt;* . azureedge.net.
+| **Prisnivå** | Standard Akamai | [Prisnivån](cdn-features.md) anger providern och funktioner som är tillgängliga. I den här självstudien används *Standard Akamai*. |
+| **CDN-slutpunktsnamn** | Vilket namn som helst som är unikt för domänen azureedge.net | Du kommer åt dina cachelagrade resurser på domänen *&lt; endpointname &gt;*. azureedge.net.
 
 Välj **Skapa ny** för att skapa en CDN-profil.
 
-Azure skapar en profil och en slutpunkt. Den nya slutpunkten visas i listan **Slutpunkter** och när den har etablerats är statusen **Körs** .
+Azure skapar en profil och en slutpunkt. Den nya slutpunkten visas i listan **Slutpunkter** och när den har etablerats är statusen **Körs**.
 
 ![Ny slutpunkt i listan](media/cdn-add-to-web-app/portal-new-endpoint-in-list.png)
 
 ### <a name="test-the-cdn-endpoint"></a>Testa CDN-slutpunkten
 
  Slutpunkten kan inte användas direkt, eftersom det tar tid för registreringen att sprida sig: 
-   - För **Azure CDN Standard från Microsoft** -profiler slutförs spridningen vanligtvis inom 10 minuter. 
-   - För **Azure CDN Standard från Akamai** -profiler slutförs spridningen vanligtvis inom en minut. 
-   - För **Azure CDN Standard från Verizon** - och **Azure CDN Premium från Verizon** -profiler slutförs spridningen vanligtvis inom 90 minuter. 
+   - För **Azure CDN Standard från Microsoft**-profiler slutförs spridningen vanligtvis inom 10 minuter. 
+   - För **Azure CDN Standard från Akamai**-profiler slutförs spridningen vanligtvis inom en minut. 
+   - För **Azure CDN Standard från Verizon**- och **Azure CDN Premium från Verizon**-profiler slutförs spridningen vanligtvis inom 90 minuter. 
 
-Exempelappen har en *index.html* -fil och *css* -, *img* och *js* -mappar som innehåller andra statiska tillgångar. Sökvägarna till innehållet för alla de här filerna är samma i CDN-slutpunkten. Båda följande URL:er har till exempel åtkomst till filen *bootstrap.css* i mappen *css* :
+Exempelappen har en *index.html*-fil och *css*-, *img* och *js*-mappar som innehåller andra statiska tillgångar. Sökvägarna till innehållet för alla de här filerna är samma i CDN-slutpunkten. Båda följande URL:er har till exempel åtkomst till filen *bootstrap.css* i mappen *css*:
 
 ```
 http://<appname>.azurewebsites.net/css/bootstrap.css
@@ -135,7 +135,7 @@ Spara ändringen och distribuera den till webbappen.
 
 ```bash
 git commit -am "version 2"
-git push azure master
+git push azure main
 ```
 
 När distributionen är färdig bläddrar du till webbappens URL där du kan se ändringen.
@@ -158,7 +158,7 @@ http://<endpointname>.azureedge.net/index.html
 
 Rensa CDN för att utlösa uppdateringen av den cachelagrade versionen av CDN.
 
-I det vänstra navigeringsfönstret i portalen väljer du **Resursgrupper** , och sedan väljer du den resursgrupp som du skapade för din webbapp (myResourceGroup).
+I det vänstra navigeringsfönstret i portalen väljer du **Resursgrupper**, och sedan väljer du den resursgrupp som du skapade för din webbapp (myResourceGroup).
 
 ![Välj resursgrupp](media/cdn-add-to-web-app/portal-select-group.png)
 
@@ -166,7 +166,7 @@ Välj din CDN-slutpunkt i listan över resurser.
 
 ![Välj slutpunkt](media/cdn-add-to-web-app/portal-select-endpoint.png)
 
-Längst upp på sidan **Slutpunkt** väljer du **Rensa** .
+Längst upp på sidan **Slutpunkt** väljer du **Rensa**.
 
 ![Välj Rensa](media/cdn-add-to-web-app/portal-select-purge.png)
 
@@ -182,7 +182,7 @@ Vänta till bearbetningen av rensningsbegäran slutförs, vilket brukar ta någr
 
 ![Rensningsavisering](media/cdn-add-to-web-app/portal-purge-notification.png)
 
-När du bläddrar till CDN-slutpunktens URL för *index.html* , ser du den *V2* som du lade i rubriken på startsidan, vilket indikerar att CDN-cachen har uppdaterats.
+När du bläddrar till CDN-slutpunktens URL för *index.html*, ser du den *V2* som du lade i rubriken på startsidan, vilket indikerar att CDN-cachen har uppdaterats.
 
 ```
 http://<endpointname>.azureedge.net/index.html
@@ -206,11 +206,11 @@ I det här avsnittet i självstudien kan du ändra beteendet för cachelagring f
 
 ### <a name="change-the-cache-behavior"></a>Ändra beteendet för cachelagring
 
-På sidan **CDN-slutpunkt** i Azure Portal väljer du **Cache** .
+På sidan **CDN-slutpunkt** i Azure Portal väljer du **Cache**.
 
-Välj **Cachelagra varje unik URL** i listrutan för **Beteende för cachelagring av frågesträngar** .
+Välj **Cachelagra varje unik URL** i listrutan för **Beteende för cachelagring av frågesträngar**.
 
-Välj **Spara** .
+Välj **Spara**.
 
 ![Välj beteende för cachelagring av frågesträngar](media/cdn-add-to-web-app/portal-select-caching-behavior.png)
 
@@ -226,14 +226,14 @@ Azure CDN returnerar det aktuella webbappsinnehållet som innehåller *V2* i rub
 
 Uppdatera sidan för att se till att den cachelagras i CDN. 
 
-Öppna *index.html* , ändra *V2* till *V3* och distribuera sedan ändringen. 
+Öppna *index.html*, ändra *V2* till *V3* och distribuera sedan ändringen. 
 
 ```bash
 git commit -am "version 3"
-git push azure master
+git push azure main
 ```
 
-Gå till CDN-slutpunktens URL i en webbläsare med en ny frågesträng, som `q=2`. Azure CDN hämtar den aktuella *index.html* -filen och visar *V3* . Om du däremot navigerar till CDN-slutpunkten med frågesträngen `q=1` ser du *V2* .
+Gå till CDN-slutpunktens URL i en webbläsare med en ny frågesträng, som `q=2`. Azure CDN hämtar den aktuella *index.html*-filen och visar *V3*. Om du däremot navigerar till CDN-slutpunkten med frågesträngen `q=1` ser du *V2*.
 
 ```
 http://<endpointname>.azureedge.net/index.html?q=2

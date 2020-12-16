@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 9e2210cdbcc2916723c8c2e2ed1ef514d427c9d6
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c304354f378708c43c25ef8b92b7b80b37ac03af
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032192"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563117"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Lösningar för övervakning av Azure-nätverk i Azure Monitor
 
@@ -107,19 +107,31 @@ Fliken "Visa detaljerade mått" öppnar den förifyllda arbets boken som sammanf
 ## <a name="migrating-from-azure-gateway-analytics-solution-to-azure-monitor-workbooks"></a>Migrera från Azure Gateway Analytics-lösningen till Azure Monitor-arbetsböcker
 
 > [!NOTE]
-> Lösningen för Azure Application Gateway-analys är inaktuell och det rekommenderade sättet att använda analyser är via arbets böcker som exponeras genom Azure Monitor nätverks insikter för Application Gateway resursen.
+> Azure Monitor nätverks insikts arbets bok är den rekommenderade lösningen för att komma åt mått-och Log Analytics för dina Application Gateway-resurser.
 
-* Om diagnostikinställningar redan har Aktiver ATS för att lagra loggar i en Log Analytics arbets yta kan Azure Monitor nätverks insikts arbets bok använda data från samma plats. Det krävs ingen ny konfiguration.
+1. Se till att [diagnostikinställningar är aktiverade](#enable-azure-application-gateway-diagnostics-in-the-portal) för att lagra loggar på en Log Analytics-arbetsyta. Om den redan är konfigurerad kommer Azure Monitor nätverks insikts arbets bok att kunna använda data från samma plats och inga ytterligare ändringar krävs.
 
-* Alla tidigare data är redan tillgängliga i arbets boken från inställningarna för punkt diagnostik har Aktiver ATS. Ingen data överföring krävs.
+> [!NOTE]
+> Alla tidigare data är redan tillgängliga i arbets boken från punktens diagnostiska inställningar aktiverades ursprungligen. Ingen data överföring krävs.
 
-* Det krävs ingen aktiv växling för att växla till arbets böcker. Både analys-och nätverks insikts arbets boken kan arbeta parallellt.
+2. Öppna [arbets boken med standard insikter](#accessing-azure-application-gateway-analytics-via-azure-monitor-network-insights) för din Application Gateway-resurs. Alla befintliga insikter som stöds av Application Gateway Analytics-lösningen finns redan i arbets boken. Du kan utöka detta genom att lägga till anpassade [visualiseringar](../platform/workbooks-overview.md#visualizations) baserat på mått & loggdata.
 
-* Det finns inga ytterligare kostnader som är kopplade till Azure Monitor arbets böcker. Log Analytics arbets ytan kommer att fortsätta faktureras per användning.
-
-* Om du vill rensa Azure Gateway Analytics-lösningen från din arbets yta kan du ta bort lösningen från lösnings resurs sidan.
+3. När du kan se alla dina mått och logga insikter för att rensa Azure Gateway Analytics-lösningen från din arbets yta kan du ta bort lösningen från lösnings resurs sidan.
 
 [![Skärm bild av alternativet ta bort för Azure Application Gateway Analytics-lösning.](media/azure-networking-analytics/azure-appgw-analytics-delete.png)](media/azure-networking-analytics/application-gateway-analytics-delete.png#lightbox)
+
+### <a name="new-capabilities-with-azure-monitor-network-insights-workbook"></a>Nya funktioner med Azure Monitor nätverks insikts arbets bok
+
+> [!NOTE]
+> Det finns inga ytterligare kostnader som är kopplade till Azure Monitor Insights-arbetsbok. Log Analytics arbets ytan kommer att fortsätta faktureras per användning.
+
+Med arbets boken för nätverks insikter kan du dra nytta av de senaste funktionerna i Azure Monitor och Log Analytics inklusive:
+
+* Central konsol för övervakning och fel sökning med både [Mät](../insights/network-insights-overview.md#resource-health-and-metrics) data och loggdata.
+
+* Flexibel arbets yta för att stödja skapandet av anpassade RTF- [visualiseringar](../platform/workbooks-overview.md#visualizations).
+
+* Möjlighet att använda och [dela mallar för arbets böcker](../platform/workbooks-overview.md#workbooks-versus-workbook-templates) med bredare community.
 
 Om du vill ha mer information om funktionerna i den nya arbets boks lösningen checka ut [arbets böcker – översikt](../platform/workbooks-overview.md)
 

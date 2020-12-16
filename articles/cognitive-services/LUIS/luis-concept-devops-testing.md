@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
-ms.openlocfilehash: 3017d0dec5acd3494600c42bef410ed346fead1a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f002bfdd5aeb784b5b10b549389e663216fa0361
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025951"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561230"
 ---
 # <a name="testing-for-luis-devops"></a>Testa för LUIS-DevOps
 
@@ -18,7 +18,7 @@ Program varu tekniker som utvecklar en Language Understanding-app (LUIS) kan til
 
 I Agile-metoder för program varu utveckling spelar testningen en integral roll i att skapa kvalitets program vara. Varje betydande ändring av en LUIS-app bör åtföljas av tester som är utformade för att testa de nya funktionerna som utvecklaren bygger på appen. De här testerna kontrol leras i din käll kods lagring tillsammans med `.lu` källan för din Luis-app. Implementeringen av ändringen är färdig när appen uppfyller testerna.
 
-Tester är en viktig del av [CI/CD-arbetsflöden](luis-concept-devops-automation.md). När ändringar i en LUIS-app föreslås i en pull-begäran (PR) eller när ändringar slås samman i huvud grenen, ska CI-arbetsflöden köra testerna för att verifiera att uppdateringarna inte har orsakat några regressioner.
+Tester är en viktig del av [CI/CD-arbetsflöden](luis-concept-devops-automation.md). När ändringar i en LUIS-app föreslås i en pull-begäran (PR) eller när ändringar har slagits samman i huvud grenen, ska CI-arbetsflöden köra testerna för att kontrol lera att uppdateringarna inte har orsakat några regressioner.
 
 ## <a name="how-to-do-unit-testing-and-batch-testing"></a>Så här utför du enhets testning och batch-testning
 
@@ -42,7 +42,7 @@ När du skriver en uppsättning tester måste du för varje test definiera:
 * Förväntad avsikt
 * Förväntade entiteter.
 
-Använd LUIS [batch File-syntax](./luis-concept-batch-test.md#batch-syntax-template-for-intents-with-entities) för att definiera en grupp av tester i en JSON-formaterad fil. Ett exempel:
+Använd LUIS [batch File-syntax](./luis-concept-batch-test.md#batch-syntax-template-for-intents-with-entities) för att definiera en grupp av tester i en JSON-formaterad fil. Till exempel:
 
 ```JSON
 [
@@ -123,7 +123,7 @@ Du kan använda [NLU. DevOps](https://github.com/microsoft/NLU.DevOps) -paket f�
 Du kan också använda NLU. DevOps-paket för att köra batch-test på kommando raden.
 
 * Använd NLU. DevOps [test kommando](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Test.md) för att skicka tester från en test fil till en slut punkt och för att avbilda faktiska förutsägelse resultat i en fil, samma som med enhets test.
-* Använd NLU. DevOps [Jämför kommando](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md) i [prestanda test läge](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md#performance-test-mode) för att mäta appens prestanda du kan också jämföra appens prestanda mot ett prestandatest, till exempel resultaten från den senaste incheckningen av Master eller den aktuella versionen. I test läge för prestanda `compare` genererar kommandot nunit test-utdata och [batch-test resulterar](./luis-glossary.md#batch-test) i JSON-format.
+* Använd NLU. DevOps [Jämför kommando](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md) i [prestanda test läge](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md#performance-test-mode) för att mäta appens prestanda du kan också jämföra appens prestanda mot ett prestandatest, till exempel resultaten från den senaste incheckningen av huvud versionen eller den aktuella versionen. I test läge för prestanda `compare` genererar kommandot nunit test-utdata och [batch-test resulterar](./luis-glossary.md#batch-test) i JSON-format.
 
 ## <a name="luis-non-deterministic-training-and-the-effect-on-testing"></a>LUIS icke-deterministisk utbildning och påverkan på testning
 

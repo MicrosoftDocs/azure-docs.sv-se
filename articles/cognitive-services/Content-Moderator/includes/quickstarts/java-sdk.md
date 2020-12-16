@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 10/16/2020
 ms.custom: devx-track-java, cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 30360253c0b1aa34c4af1e5efdf3cf9b4d8baaa0
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7713765a36207f0d9da05c4c11629e4a7f1164d9
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356502"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561519"
 ---
 Kom igång med Azures Content Moderator klient bibliotek för Java. Följ dessa steg om du vill installera maven-paketet och prova exempel koden för grundläggande uppgifter. 
 
@@ -24,8 +24,8 @@ Content Moderator är en AI-tjänst som låter dig hantera innehåll som är pot
 
 Använd Content Moderator klient bibliotek för Java för att:
 
-* Måttliga bilder
 * Måttlig text
+* Måttliga bilder
 
 [Referens dokumentation](/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-contentmoderator)  | [Artefakt (maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator)  |  [Exempel](/samples/browse/?products=azure&term=content-moderator)
 
@@ -127,14 +127,42 @@ Följande klasser hanterar några av de viktigaste funktionerna i Content Modera
 De här kodfragmenten visar hur du gör följande uppgifter med Content Moderator klient bibliotek för java:
 
 * [Autentisera klienten](#authenticate-the-client)
-* [Måttliga bilder](#moderate-images)
 * [Måttlig text](#moderate-text)
+* [Måttliga bilder](#moderate-images)
+
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
 
 I programmets `main` metod skapar du ett [ContentModeratorClient](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable) -objekt med hjälp av prenumerationens slut punkts värde och prenumerations nyckel.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_client)]
+
+
+
+## <a name="moderate-text"></a>Måttlig text
+
+### <a name="set-up-sample-text"></a>Konfigurera exempel text
+
+Definiera en referens till en lokal textfil överst i **ContentModeratorQuickstart** -klassen. Lägg till en. txt-fil i projekt katalogen och ange den text som du vill analysera.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_var)]
+
+### <a name="analyze-text"></a>Analysera text
+
+Skapa en ny metod som läser txt-filen och anropar metoden **screenText** på varje rad.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod)]
+
+### <a name="print-text-moderation-results"></a>Skriv ut text redigerings resultat
+
+Lägg till följande kod för att skriva ut kontroll resultaten till en. JSON-fil i projekt katalogen.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_print)]
+
+Avsluta- `try` `catch` instruktionen och slutför-metoden.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_catch)]
+
 
 ## <a name="moderate-images"></a>Måttliga bilder
 
@@ -181,32 +209,7 @@ Avsluta `try` instruktionen och Lägg till en `catch` instruktion för att slutf
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_catch)]
 
-## <a name="moderate-text"></a>Måttlig text
-
-### <a name="set-up-sample-text"></a>Konfigurera exempel text
-
-Definiera en referens till en lokal textfil överst i **ContentModeratorQuickstart** -klassen. Lägg till en. txt-fil i projekt katalogen och ange den text som du vill analysera.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_var)]
-
-### <a name="analyze-text"></a>Analysera text
-
-Skapa en ny metod som läser txt-filen och anropar metoden **screenText** på varje rad.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod)]
-
-### <a name="print-text-moderation-results"></a>Skriv ut text redigerings resultat
-
-Lägg till följande kod för att skriva ut kontroll resultaten till en. JSON-fil i projekt katalogen.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_print)]
-
-Avsluta- `try` `catch` instruktionen och slutför-metoden.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_catch)]
-
-
-## <a name="run-the-application"></a>Kör programmet
+## <a name="run-the-application"></a>Köra appen
 
 Du kan bygga appen med:
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8d982d06bd100313d643033294b6d14e6383d5df
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7a2b2344bbb110cd4b35cc1f6428f61e48552b01
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424716"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563015"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>Konfigurera DNS för namn matchning för privat moln vCenter-åtkomst från lokala arbets stationer
 
@@ -25,7 +25,7 @@ För att få åtkomst till vCenter-servern i ett CloudSimple privat moln från l
 
 2. Navigera till **resurser**  >  **privata moln** och välj det privata moln som du vill ansluta till.
 
-3. På sidan **Sammanfattning** i det privata molnet under **grundläggande information**kopierar du IP-adressen för den privata molnets DNS-server.
+3. På sidan **Sammanfattning** i det privata molnet under **grundläggande information** kopierar du IP-adressen för den privata molnets DNS-server.
 
     ![DNS-servrar för privata moln](media/private-cloud-dns-server.png)
 
@@ -44,6 +44,9 @@ Du kan konfigurera en zon som en stub-zon och peka på DNS-servrarna i det priva
 Vilken fil och vilka parametrar som ska konfigureras kan variera beroende på din enskilda DNS-konfiguration.
 
 Om du till exempel vill använda standard konfigurationen för BIND-servern redigerar du/etc/named.conf-filen på DNS-servern och lägger till följande zon information.
+
+> [!NOTE]
+>Den här artikeln innehåller referenser till termen Slav, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
 
 ```
 zone "az.cloudsimple.io"

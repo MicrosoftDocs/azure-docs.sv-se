@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8cf5504e44239fed6a4a4b82d0064d49f5c5a99f
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: a106455ea9d7b7a64fecd7c4255c294d0bd62db8
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511543"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562624"
 ---
 # <a name="security-best-practices"></a>Metodtips för säkerhet
 
@@ -29,16 +29,16 @@ Här är de säkerhets behov som du är ansvarig för i distributionen av Window
 
 | Säkerhets behov | Är kunden ansvarig för detta? |
 |---------------|:-------------------------:|
-|Identitet|Ja|
-|Användar enheter (mobil och PC)|Ja|
-|App Security|Ja|
-|Sessionens värd operativ system|Ja|
-|Distributions konfiguration|Ja|
-|Nätverkskontroller|Ja|
-|Kontroll plan för nätverksvirtualisering|Nej|
-|Fysiska värdar|Nej|
-|Fysiskt nätverk|Nej|
-|Fysiskt Data Center|Nej|
+|Identitet|Yes|
+|Användar enheter (mobil och PC)|Yes|
+|App Security|Yes|
+|Sessionens värd operativ system|Yes|
+|Distributions konfiguration|Yes|
+|Nätverkskontroller|Yes|
+|Kontroll plan för nätverksvirtualisering|No|
+|Fysiska värdar|No|
+|Fysiskt nätverk|No|
+|Fysiskt Data Center|No|
 
 Säkerheten behöver kunden är inte ansvarig för hanteras av Microsoft.
 
@@ -101,7 +101,7 @@ Sessions-värdar är virtuella datorer som körs i en Azure-prenumeration och et
 
 ### <a name="enable-screen-capture-protection-preview"></a>Aktivera skärm dum skydd (för hands version)
 
-Funktionen skärm dum skydd förhindrar att känslig information samlas in på klientens slut punkter. När du aktiverar den här funktionen kommer fjärrinnehåll att blockeras automatiskt eller döljas i skärm bilder och skärm resurser. Den kommer också att vara dold för skadlig program vara som kan fånga din skärms innehåll kontinuerligt.
+Funktionen skärm dum skydd förhindrar att känslig information samlas in på klientens slut punkter. När du aktiverar den här funktionen kommer fjärrinnehåll att blockeras automatiskt eller döljas i skärm bilder och skärm resurser. Den kommer också att vara dold för skadlig program vara som kan fånga din skärms innehåll kontinuerligt. Vi rekommenderar att du inaktiverar urklipps omdirigering för att förhindra kopiering av fjärrinnehåll till slut punkter när du använder den här funktionen.
 
 Den här principen tillämpas på värdnivå genom att konfigurera en register nyckel. Om du vill aktivera den här principen öppnar du PowerShell och anger register nyckeln **fEnableScreenCaptureProtection** genom att köra denna cmdlet:
 

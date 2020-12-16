@@ -1,14 +1,14 @@
 ---
 title: Översikt över den anslutna datorns Windows-agent
 description: Den här artikeln innehåller en detaljerad översikt över Azure Arc-aktiverade Server Agent som har stöd för övervakning av virtuella datorer i hybrid miljöer.
-ms.date: 12/01/2020
+ms.date: 12/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 277e6616ce1bf90ada83516cb71f9cb55de1b7b0
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 531041b7d7439dd2a48fa9e06eb82796f470e9ed
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516800"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563032"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Översikt över Azure Arc-aktiverade Server Agent
 
@@ -80,9 +80,9 @@ För att säkerställa säkerheten för data som överförs till Azure rekommend
 
 ### <a name="networking-configuration"></a>Nätverkskonfiguration
 
-Den anslutna dator agenten för Linux och Windows kommunicerar på ett säkert sätt till Azure-bågen via TCP-port 443. Om datorn ansluter via en brand vägg eller proxyserver för att kommunicera via Internet kan du läsa igenom kraven nedan för att förstå kraven på nätverks konfigurationen.
+Den anslutna dator agenten för Linux och Windows kommunicerar på ett säkert sätt till Azure-bågen via TCP-port 443. Om datorn ansluter via en brand vägg eller proxyserver för kommunikation via Internet kan du läsa följande för att förstå kraven på nätverks konfigurationen.
 
-Om den utgående anslutningen begränsas av din brand vägg eller proxyserver kontrollerar du att URL: erna i listan nedan inte är blockerade. Om du bara tillåter de IP-adressintervall eller domän namn som krävs för att agenten ska kunna kommunicera med tjänsten, måste du också tillåta åtkomst till följande service märken och URL: er.
+Om den utgående anslutningen begränsas av din brand vägg eller proxyserver kontrollerar du att URL: erna i listan nedan inte är blockerade. Om du bara tillåter de IP-adressintervall eller domän namn som krävs för att agenten ska kunna kommunicera med tjänsten, måste du tillåta åtkomst till följande service märken och URL: er.
 
 Service märken:
 
@@ -181,8 +181,9 @@ När du har installerat den anslutna dator agenten för Windows tillämpas följ
 
     |Tjänstnamn |Visningsnamn |Processnamn |Description |
     |-------------|-------------|-------------|------------|
-    |himds |Azure Hybrid-Instance Metadata Service |himds.exe |Den här tjänsten implementerar IMDS (Azure instance metadata service) för att hantera anslutningen till Azure och den anslutna datorns Azure-identitet.|
-    |DscService |Gäst konfigurations tjänst |dsc_service.exe |Kodbasen för önskad tillstånds konfiguration (DSC v2) som används i Azure för att implementera In-Guest principen.|
+    |himds |Azure Hybrid-Instance Metadata Service |himds |Den här tjänsten implementerar IMDS (Azure instance metadata service) för att hantera anslutningen till Azure och den anslutna datorns Azure-identitet.|
+    |GCArcService |Arc-tjänst för gäst konfiguration |gc_service |Övervakar datorns önskade tillstånds konfiguration.|
+    |ExtensionService |Tjänst för gäst konfigurations tillägg | gc_service |Installerar nödvändiga tillägg som mål för datorn.|
 
 * Följande miljövariabler skapas under Agent installationen.
 
@@ -232,8 +233,9 @@ När du har installerat den anslutna dator agenten för Linux tillämpas följan
 
     |Tjänstnamn |Visningsnamn |Processnamn |Description |
     |-------------|-------------|-------------|------------|
-    |himdsd. service |Azure Hybrid-Instance Metadata Service |/opt/azcmagent/bin/himds |Den här tjänsten implementerar IMDS (Azure instance metadata service) för att hantera anslutningen till Azure och den anslutna datorns Azure-identitet.|
-    |dscd. service |Gäst konfigurations tjänst |/opt/DSC/dsc_linux_service |Det här är den Desired State Configuration (DSC v2) kodbasen som används i Azure för att implementera In-Guest principen.|
+    |himdsd. service |Azure Connected Machine Agent-tjänsten |himds |Den här tjänsten implementerar IMDS (Azure instance metadata service) för att hantera anslutningen till Azure och den anslutna datorns Azure-identitet.|
+    |gcad.servce |Tjänsten GC båg |gc_linux_service |Övervakar datorns önskade tillstånds konfiguration. |
+    |extd. service |Tilläggs tjänst |gc_linux_service | Installerar nödvändiga tillägg som mål för datorn.|
 
 * Det finns flera loggfiler tillgängliga för fel sökning. De beskrivs i följande tabell.
 

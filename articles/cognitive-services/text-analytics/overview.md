@@ -12,12 +12,12 @@ ms.date: 11/17/2020
 ms.author: aahi
 keywords: text utvinning, sentiment-analys, text analys
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 2d8ebe87cdf1d11ae4d9c9050ba1ac924089aa33
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 6cef9dc65a72134e0aa70db5f89f4934263c48b4
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505621"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563236"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Vad är API för textanalys?
 
@@ -64,7 +64,7 @@ Med `/analyze` slut punkten kan du använda urvals funktioner i API för textana
 
 Arbetsflödet är enkelt: du skickar data för analys och hanterar utdata i din kod. Analysverktyg förbrukas i befintligt skick, utan någon ytterligare konfiguration eller anpassning.
 
-1. [Skapa en Azure-resurs](../cognitive-services-apis-create-account.md) för textanalys. Sedan [hämtar du nyckeln](../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) som genereras för att du ska kunna autentisera dina begär Anden.
+1. [Skapa en Azure-resurs](how-tos/text-analytics-how-to-call-api.md) för textanalys. Sedan [hämtar du nyckeln](how-tos/text-analytics-how-to-call-api.md) som genereras för att du ska kunna autentisera dina begär Anden.
 
 2. [Formulera en begäran](how-tos/text-analytics-how-to-call-api.md#json-schema) som innehåller dina data som rå ostrukturerad text, i JSON.
 

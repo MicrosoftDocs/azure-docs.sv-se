@@ -1,6 +1,6 @@
 ---
 title: Azure Hybrid-förmån och virtuella Linux-datorer
-description: Med Azure Hybrid-förmån kan du spara pengar på dina virtuella Linux-datorer som körs på Azure.
+description: Lär dig hur Azure Hybrid-förmån kan hjälpa dig att spara pengar på dina virtuella Linux-datorer som körs på Azure.
 services: virtual-machines
 documentationcenter: ''
 author: mathapli
@@ -10,63 +10,67 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 5b565a3e653d05ffcecfbc5718c74d07d8f45373
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 1bc108f76ac35b13474de18d473f5728dbad9d23
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109172"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560024"
 ---
-# <a name="azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Azure Hybrid-förmån – hur det gäller för Virtuella Linux-datorer
+# <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Hur Azure Hybrid-förmån gäller för virtuella Linux-datorer
 
-## <a name="overview"></a>Översikt
+Azure Hybrid-förmån är en licens förmån som hjälper dig att avsevärt minska kostnaderna för att köra dina Red Hat Enterprise Linux (RHEL) och SUSE Linux Enterprise Server (SLES) virtuella datorer (VM) i molnet. Med den här förmånen betalar du bara för infrastruktur kostnaderna för din virtuella dator eftersom din RHEL-eller SLES-prenumeration täcker program varu avgiften. Förmånen gäller för alla PAYG-avbildningar (RHEL-och SLES Marketplace).
 
-Azure Hybrid-förmån är en licens förmån som hjälper dig att avsevärt minska kostnaderna för att köra dina Red Hat Enterprise Linux (RHEL) och SUSE Linux Enterprise Server (SLES) virtuella datorer i molnet. Med den här förmånen betalar du bara för infrastruktur kostnaderna för din virtuella dator eftersom program varu avgiften täcks av din RHEL-eller SLES-prenumeration. Förmånen gäller för alla PAYG-avbildningar (RHEL-och SLES Marketplace).
-
-> [!IMPORTANT]
-> Azure Hybrid-förmån för virtuella Linux-datorer är tillgänglig för allmänheten nu
-
+Azure Hybrid-förmån för virtuella Linux-datorer är nu offentligt tillgängliga.
 
 ## <a name="benefit-description"></a>Förmåns Beskrivning
 
-Med hjälp av Azure Hybrid-förmån kan du lättare migrera dina lokala RHEL-och SLES-servrar till Azure genom att konvertera befintliga RHEL-och SLES PAYG-datorer på Azure för att få en BYOS-fakturering. Vanligt vis debiteras virtuella datorer som distribueras från PAYG-avbildningar på Azure både en infrastruktur avgift och en program varu avgift. Med Azure Hybrid-förmån kan virtuella datorer konverteras till en BYOS-fakturerings modell utan att omdistribueras, vilket undviker eventuell stillestånds risk.
+Med hjälp av Azure Hybrid-förmån kan du migrera dina lokala RHEL-och SLES-servrar till Azure genom att konvertera befintliga RHEL-och SLES PAYG-datorer på Azure för att få en BYOS-fakturering. Vanligt vis debiteras virtuella datorer som distribueras från PAYG-avbildningar på Azure både en infrastruktur avgift och en program varu avgift. Med Azure Hybrid-förmån kan virtuella datorer för virtuella datorer konverteras till en BYOS-fakturerings modell utan en omdistribution, så att du kan undvika eventuell stillestånds risk.
 
 :::image type="content" source="./media/ahb-linux/azure-hybrid-benefit-cost.png" alt-text="Azure Hybrid-förmån kostnads visualisering på virtuella Linux-datorer.":::
 
-När du aktiverar fördelen med en RHEL-eller SLES-VM debiteras du inte längre för den ytterligare program varu avgiften som normalt uppstår på en PAYG VM. I stället påbörjas den virtuella datorn med en BYOS avgift som bara omfattar beräknings maskin varu avgiften och ingen program varu avgift.
+När du har aktiverat förmånen för en RHEL-eller SLES-VM debiteras du inte längre för den ytterligare program varu avgiften som normalt uppstår på en PAYG VM. I stället påbörjas den virtuella datorn med en BYOS avgift som bara omfattar beräknings maskin varu avgiften och ingen program varu avgift.
 
-Om du vill kan du också konvertera en virtuell dator som har förmånen aktiverat på den till en PAYG fakturerings modell.
+Du kan också välja att konvertera en virtuell dator där förmånen har Aktiver ATS till en PAYG fakturerings modell.
 
 ## <a name="scope-of-azure-hybrid-benefit-eligibility-for-linux-vms"></a>Omfattning för Azure Hybrid-förmån berättigande för virtuella Linux-datorer
 
-Azure Hybrid-förmån är tillgängligt för alla RHEL-och SLES Marketplace-PAYG-avbildningar. Förmånen är ännu inte tillgänglig för RHEL-eller SLES Marketplace-BYOS-bilder eller anpassade avbildningar.
+Azure Hybrid-förmån är tillgängligt för alla RHEL-och SLES-PAYG-avbildningar från Azure Marketplace. Förmånen är ännu inte tillgänglig för RHEL-eller SLES-BYOS-avbildningar eller anpassade avbildningar från Azure Marketplace.
 
-Reserverade instanser, dedikerade värdar och SQL hybrid-förmåner är inte berättigade till Azure Hybrid-förmån om du redan använder fördelarna med virtuella Linux-datorer.
+Reserverade instanser, Azure dedikerade värd instanser och SQL hybrid-förmåner är inte berättigade till Azure Hybrid-förmån om du redan använder fördelarna med virtuella Linux-datorer.
 
-## <a name="how-to-get-started"></a>Så här kommer du igång
+## <a name="get-started"></a>Kom igång
 
 ### <a name="red-hat-customers"></a>Red Hat-kunder
 
-Azure Hybrid-förmån för RHEL är tillgängligt för kunder som har aktiva/oanvända RHEL-prenumerationer som är tillgängliga för användning i Azure och som har aktiverat en eller flera av dessa prenumerationer för användning i Azure med [Red Hat Cloud Access](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) -programmet. 
+Azure Hybrid-förmån för RHEL är tillgänglig för Red Hat-kunder som uppfyller båda dessa kriterier:
 
-1.  Aktivera en eller flera av dina kvalificerade RHEL-prenumerationer för användning i Azure med hjälp av [Red Hat Cloud accesss kund gränssnitt](https://access.redhat.com/management/cloud).
-1.  De Azure-prenumerationer som du tillhandahöll under den Red Hat Cloud Access-aktiveringen kommer sedan att kunna använda Azure Hybrid-förmån funktionen.
-1.  Tillämpa Azure Hybrid-förmån på någon av dina befintliga RHEL PAYG-VM: ar samt eventuella nya RHEL-VM: er som du distribuerar från Azure Marketplace PAYG-avbildningar.
-1.  Följ rekommenderade [Nästa steg](https://access.redhat.com/articles/5419341) för att konfigurera uppdaterings källor för dina virtuella RHEL-datorer och för rikt linjer för RHEL-prenumerationer.
+- Ha aktiva eller oanvända RHEL-prenumerationer som är tillgängliga för användning i Azure
+- Ha aktiverat en eller flera av dessa prenumerationer för användning i Azure med [Red Hat Cloud Access](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) -programmet
+
+Börja använda fördelarna med Red Hat:
+
+1. Aktivera en eller flera av dina kvalificerade RHEL-prenumerationer för användning i Azure med hjälp av [Red Hat Cloud accesss kund gränssnitt](https://access.redhat.com/management/cloud).
+
+   De Azure-prenumerationer som du anger under den Red Hat Cloud Access-aktiveringen kommer sedan att kunna använda Azure Hybrid-förmån funktionen.
+1. Tillämpa Azure Hybrid-förmån på någon av dina befintliga RHEL PAYG-VM: ar och eventuella nya RHEL-VM: er som du distribuerar från Azure Marketplace PAYG-avbildningar.
+1. Följ rekommenderade [Nästa steg](https://access.redhat.com/articles/5419341) för att konfigurera uppdaterings källor för dina virtuella RHEL-datorer och för rikt linjer för RHEL-prenumerationer.
 
 
 ### <a name="suse-customers"></a>SUSE kunder
 
-1.    Registrera dig för det offentliga moln programmet för SUSE
-1.    Tillämpa förmånen för dina befintliga virtuella datorer via Azure CLI
-1.    Registrera dina virtuella datorer som tar del av förmånen med en separat källa till uppdateringar
+Börja använda fördelarna med SUSE:
+
+1. Registrera dig för det offentliga moln programmet för SUSE.
+1. Tillämpa förmånen för dina befintliga virtuella datorer via Azure CLI.
+1. Registrera dina virtuella datorer som får förmånen med en separat källa till uppdateringar.
 
 
-### <a name="enable-and-disable-the-benefit-in-the-azure-cli"></a>Aktivera och inaktivera förmånen i Azure CLI
+## <a name="enable-and-disable-the-benefit-in-the-azure-cli"></a>Aktivera och inaktivera förmånen i Azure CLI
 
-Du kan använda kommandot "AZ VM Update" för att uppdatera befintliga virtuella datorer. För virtuella RHEL-datorer kör du kommandot med parametern--licens typ för RHEL_BYOS. För virtuella SLES-datorer kör du kommandot med parametern--licens typ för SLES_BYOS.
+Du kan använda `az vm update` kommandot för att uppdatera befintliga virtuella datorer. Kör kommandot med en-parameter för virtuella RHEL-datorer `--license-type` `RHEL_BYOS` . Kör kommandot med en-parameter för virtuella SLES-datorer `--license-type` `SLES_BYOS` .
 
-#### <a name="cli-example-to-enable-the-benefit"></a>CLI-exempel för att aktivera förmånen:
+### <a name="cli-example-to-enable-the-benefit"></a>CLI-exempel för att aktivera förmånen
 ```azurecli
 # This will enable the benefit on a RHEL VM
 az vm update -g myResourceGroup -n myVmName --license-type RHEL_BYOS
@@ -74,24 +78,26 @@ az vm update -g myResourceGroup -n myVmName --license-type RHEL_BYOS
 # This will enable the benefit on a SLES VM
 az vm update -g myResourceGroup -n myVmName --license-type SLES_BYOS
 ```
-#### <a name="cli-example-to-disable-the-benefit"></a>CLI-exempel för att inaktivera förmånen:
-Om du vill inaktivera förmånen använder du värdet none för licens typ
+### <a name="cli-example-to-disable-the-benefit"></a>CLI-exempel för att inaktivera förmånen
+Om du vill inaktivera förmånen använder du `--license-type` värdet `None` :
+
 ```azurecli
 # This will disable the benefit on a VM
 az vm update -g myResourceGroup -n myVmName --license-type None
 ```
 
-#### <a name="cli-example-to-enable-the-benefit-on-a-large-number-of-vms"></a>CLI-exempel för att aktivera förmånen för ett stort antal virtuella datorer
-Om du vill aktivera förmånen för ett stort antal virtuella datorer kan du använda- `--ids` parametern i Azure CLI.
+### <a name="cli-example-to-enable-the-benefit-on-a-large-number-of-vms"></a>CLI-exempel för att aktivera förmånen för ett stort antal virtuella datorer
+Om du vill aktivera förmånen för ett stort antal virtuella datorer kan du använda- `--ids` parametern i Azure CLI:
 
 ```azurecli
 # This will enable the benefit on a RHEL VM. In this example, ids.txt is an
-# existing text file containing a delimited list of resource IDs corresponding
+# existing text file that contains a delimited list of resource IDs corresponding
 # to the VMs using the benefit
 az vm update -g myResourceGroup -n myVmName --license-type RHEL_BYOS --ids $(cat ids.txt)
 ```
 
-I följande exempel visas två metoder för att hämta en lista över resurs-ID: n – en på resurs grupps nivå, en på prenumerations nivå.
+I följande exempel visas två metoder för att hämta en lista över resurs-ID: en på resurs grupps nivå och en på prenumerations nivå.
+
 ```azurecli
 # To get a list of all the resource IDs in a resource group:
 $(az vm list -g MyResourceGroup --query "[].id" -o tsv)
@@ -100,13 +106,18 @@ $(az vm list -g MyResourceGroup --query "[].id" -o tsv)
 az vm list -o json | jq '.[] | {VMName: .name, ResourceID: .id}'
 ```
 
-## <a name="check-ahb-status-of-a-vm"></a>Kontrol lera AHB status för en virtuell dator
-Du kan visa status för AHB för en virtuell dator på två sätt: använda Azure CLI eller använda Azure-Instance Metadata Service (Azure IMDS).
+## <a name="apply-the-azure-hybrid-benefit-at-vm-create-time"></a>Använd Azure Hybrid-förmån när den virtuella datorns skapande tid
+Förutom att använda Azure Hybrid-förmån på befintliga virtuella datorer som du betalar per användning kan du anropa det när du skapar den virtuella datorn. Fördelarna med att göra detta är threefold:
+- Du kan etablera både PAYG-och BYOS-VM: ar med samma avbildning och process.
+- Det möjliggör framtida ändringar i licens läge, något som inte är tillgängligt med en BYOS avbildning eller om du använder en egen virtuell dator.
+- Den virtuella datorn kommer att anslutas till Red Hats uppdaterings infrastruktur (RHUI) som standard för att säkerställa att den förblir uppdaterad och säker. Du kan ändra den uppdaterade mekanismen efter distributionen när du vill.
 
+## <a name="check-the-azure-hybrid-benefit-status-of-a-vm"></a>Kontrol lera Azure Hybrid-förmån status för en virtuell dator
+Du kan visa Azure Hybrid-förmån status för en virtuell dator med hjälp av Azure CLI eller Azure Instance Metadata Service.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-`az vm get-instance-view`Kommandot kan användas för detta ändamål. Leta efter ett licenseType-fält i svaret. Om fältet licenseType finns och värdet är "RHEL_BYOS" eller "SLES_BYOS" har den virtuella datorn förmånen aktive rad.
+Du kan använda `az vm get-instance-view` kommandot för det här ändamålet. Leta efter ett `licenseType` fält i svaret. Om `licenseType` fältet finns och värdet är `RHEL_BYOS` eller `SLES_BYOS` , har den virtuella datorn förmånen aktive rad.
 
 ```azurecli
 az vm get-instance-view -g MyResourceGroup -n MyVm
@@ -114,7 +125,7 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 
 ### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
-Från den virtuella datorn kan du fråga IMDS-bestyrkade metadata för att fastställa den virtuella datorns licenseType. LicenseType-värdet RHEL_BYOS eller SLES_BYOS anger att den virtuella datorn har förmånen aktive rad. Läs mer om attestering av metadata [här](./instance-metadata-service.md#attested-data)
+Från den virtuella datorn kan du fråga de beskrivande metadata i Azure Instance Metadata Service för att fastställa den virtuella datorns `licenseType` värde. `licenseType`Värdet `RHEL_BYOS` eller `SLES_BYOS` anger att den virtuella datorn har förmånen aktive rad. [Läs mer om attestering av metadata](./instance-metadata-service.md#attested-data).
 
 ## <a name="compliance"></a>Efterlevnad
 
@@ -124,26 +135,26 @@ Kunder som använder Azure Hybrid-förmån för RHEL accepterar de [juridiska vi
 
 Kunder som använder Azure Hybrid-förmån för RHEL har tre alternativ för att tillhandahålla program uppdateringar och korrigeringsfiler för de virtuella datorerna:
 
-1.  [Red Hat, uppdaterings infrastruktur (RHUI)](../workloads/redhat/redhat-rhui.md) (standard alternativet)
-1.  Red Hat satellit-Server
-1.  Red Hat-prenumerations hanterare
+- [Red Hat-uppdaterings infrastruktur](../workloads/redhat/redhat-rhui.md) (standard alternativet)
+- Red Hat satellit-Server
+- Red Hat-prenumerations hanterare
 
-Kunder som väljer alternativet RHUI kan fortsätta att använda RHUI som primär uppdaterings källa för sina AHB RHEL-VM: ar utan att koppla RHEL-prenumerationer till dessa virtuella datorer.  Kunder som väljer alternativet RHUI ansvarar för att säkerställa kompatibilitet med RHEL-prenumeration.
+Kunder som väljer alternativet RHUI kan fortsätta att använda RHUI som primär uppdaterings källa för sina Azure Hybrid-förmån RHEL-VM: ar utan att koppla RHEL-prenumerationer till dessa virtuella datorer. Kunder som väljer alternativet RHUI ansvarar för att säkerställa kompatibilitet med RHEL-prenumeration.
 
-Kunder som väljer antingen Red Hat satellit-Server eller Red Hat-prenumerations hanterare bör ta bort RHUI-konfigurationen och sedan ansluta en moln åtkomst aktive rad RHEL-prenumeration till sina AHB RHEL-VM: ar.  
+Kunder som väljer antingen Red Hat satellit-Server eller Red Hat-prenumerations hanterare bör ta bort RHUI-konfigurationen och sedan ansluta en moln åtkomst aktive rad RHEL-prenumeration till sina Azure Hybrid-förmån RHEL-VM: ar.  
 
-Mer information om kompatibilitet med Red Hat-prenumeration, program uppdateringar och källor för virtuella AHB RHEL-datorer finns [här](https://access.redhat.com/articles/5419341).
+Mer information om kompatibilitet med Red Hat-prenumeration, program uppdateringar och källor för Azure Hybrid-förmån virtuella datorer med RHEL finns i [artikeln Red Hat om hur du använder RHEL-prenumerationer med Azure Hybrid-förmån](https://access.redhat.com/articles/5419341).
 
 ### <a name="suse"></a>SUSE
 
-För att kunna använda Azure Hybrid-förmån för dina virtuella SLES-datorer måste du först vara registrerad med det offentliga SUSE moln programmet. Läs mer om programmet här. När du har köpt SUSE-prenumerationer måste du registrera dina virtuella datorer med dessa prenumerationer på din egen källa med uppdateringar med hjälp av antingen SUSE kund Center, prenumerations hanterings verktygets Server eller SUSE Manager.
+Om du vill använda Azure Hybrid-förmån för virtuella SLES-datorer måste du först vara registrerad med det [offentliga SUSE Cloud-molnet](https://www.suse.com/media/guide/suse_public_cloud_service_provider_program_overview.pdf). När du har köpt SUSE-prenumerationer måste du registrera dina virtuella datorer som använder dessa prenumerationer på din egen uppdaterings källa. Använd SUSE kund Center, prenumerations hanterings verktygets Server eller SUSE Manager för denna registrering.
 
 ## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
-*F: kan jag använda licens typen "RHEL_BYOS" med en SLES-avbildning eller vice versa?*
+*F: kan jag använda en licens typ `RHEL_BYOS` med en SLES-avbildning eller vice versa?*
 
-A: Nej, du kan inte. Försök att ange en licens typ som felaktigt matchar den distribution som körs på den virtuella datorn kommer inte att uppdatera några fakturerings-metadata. Men om du av misstag anger fel licens typ kan du fortfarande aktivera förmånen om du uppdaterar den virtuella datorn igen till rätt licens typ.
+A: Nej, du kan inte. Om du försöker ange en licens typ som felaktigt matchar distributionen som körs på den virtuella datorn uppdateras inga fakturerings-metadata. Men om du av misstag anger fel licens typ kan du fortfarande aktivera förmånen om du uppdaterar den virtuella datorn igen till rätt licens typ.
 
-*F: Jag har registrerat dig med Red Hat Cloud Access men det går fortfarande inte att aktivera förmånen för mina virtuella RHEL-datorer. Vad gör jag?*
+*F: Jag har registrerat dig med Red Hat Cloud Access men kan fortfarande inte aktivera fördelarna med mina RHEL-VM: ar. Vad ska jag göra?*
 
 A: det kan ta lite tid för prenumerations registreringen av Red Hat Cloud Access att sprida sig från Red Hat till Azure. Kontakta Microsoft-supporten om du fortfarande ser felet efter en arbets dag.
 
@@ -151,41 +162,37 @@ A: det kan ta lite tid för prenumerations registreringen av Red Hat Cloud Acces
 
 A: Nej, du kan inte. Azure Hybrid-förmån stöder endast konvertering för avbildningar enligt principen betala per användning.
 
-*F: Jag har distribuerat en virtuell dator med hjälp av en RHEL BYOS "gyllene bild". Kan jag konvertera faktureringen för dessa bilder från BYOS till PAYG?*
+*F: Jag har laddat upp en egen RHEL-avbildning från lokalt (via Azure Migrate, Azure Site Recovery eller på annat sätt) till Azure. Kan jag konvertera faktureringen för dessa bilder från BYOS till PAYG?*
 
-A: Nej, du kan inte. Azure Hybrid-förmån stöder endast konvertering för avbildningar enligt principen betala per användning.
+A: Nej, du kan inte. Azure Hybrid-förmån funktionen är för närvarande endast tillgänglig för RHEL-och SLES-avbildningar på Azure Marketplace. 
 
-*F: Jag har laddat upp en egen RHEL-avbildning från lokal (via Azure Migrate, ASR eller på annat sätt) till Azure. Kan jag konvertera faktureringen för dessa bilder från BYOS till PAYG?*
+*F: Jag har laddat upp en egen RHEL-avbildning från lokalt (via Azure Migrate, Azure Site Recovery eller på annat sätt) till Azure. Behöver jag göra något för att dra nytta av Azure Hybrid-förmån?*
 
-A: Nej, du kan inte. Azure Hybrid-förmån funktionen är bara tillgänglig för RHEL-och SLES Marketplace-avbildningar idag. 
+A: Nej, du behöver inte. RHEL-avbildningar som du överför betraktas redan som BYOS och du debiteras bara för Azures infrastruktur kostnader. Du är ansvarig för RHEL prenumerations kostnader, precis som du är för dina lokala miljöer. 
 
-*F: Jag har laddat upp en egen RHEL-avbildning från lokal (via Azure Migrate, ASR eller på annat sätt) till Azure. Behöver jag göra något för att dra nytta av Azure Hybrid-förmån?*
+*F: kan jag använda Azure Hybrid-förmån på virtuella datorer som distribueras från Azure Marketplace RHEL och SLES SAP-avbildningar?*
 
-A: Nej. RHEL-avbildningar som du överför betraktas redan som BYOS och du debiteras bara för Azures infrastruktur kostnader. Du ansvarar för RHEL prenumerations kostnader precis som du gör för dina lokala miljöer. 
+A: Ja, du kan. Du kan använda licens typen för `RHEL_BYOS` för virtuella RHEL-datorer och `SLES_BYOS` för konverteringar av virtuella datorer som distribueras från Azure Marketplace RHEL och SLES SAP-avbildningar.
 
-*F: kan jag använda Azure Hybrid-förmån på virtuella datorer som har distribuerats från Marketplace RHEL och SLES SAP-avbildningar?*
+*F: kan jag använda Azure Hybrid-förmån på skalnings uppsättningar för virtuella datorer för RHEL och SLES?*
 
-A: Ja, du kan. Du kan använda licens typen RHEL_BYOS för virtuella datorer i RHEL och SLES_BYOS för konverteringar av virtuella datorer som distribueras från Marketplace RHEL och SLES SAP-avbildningar.
+A: Nej, du kan inte. Skalnings uppsättningar för virtuella datorer ligger för närvarande inte inom omfånget för Azure Hybrid-förmån för RHEL och SLES.
 
-*F: kan jag använda Azure Hybrid-förmån på skalnings uppsättningen för virtuella datorer (VMSS) för RHEL och SLES?*
+*F: kan jag använda Azure Hybrid-förmån på reserverade instanser för RHEL och SLES?*
 
-A: Nej, du kan inte. VMSS är inte inom omfånget för Azure Hybrid-förmån idag för RHEL och SLES för närvarande.
-
-*F: kan jag använda Azure Hybrid-förmån på reserverade instanser (RIs) för RHEL och SLES?*
-
-A: Nej, du kan inte. Det finns för närvarande inte i omfånget Azure Hybrid-förmån för RHEL och SLES.
+A: Nej, du kan inte. Reserverade instanser ligger för närvarande inte inom omfånget för Azure Hybrid-förmån för RHEL och SLES.
 
 *F: kan jag använda Azure Hybrid-förmån på en virtuell dator som har distribuerats för SQL Server på RHEL-avbildningar?*
 
 A: Nej, du kan inte. Det finns ingen plan för att stödja dessa.
  
 
-## <a name="common-issues"></a>Vanliga problem
-Det här avsnittet innehåller en lista över vanliga problem som kan påträffas och åtgärder för att minska.
+## <a name="common-problems"></a>Vanliga problem
+Det här avsnittet innehåller vanliga problem som kan uppstå och åtgärder för att minska.
 
 | Fel | Åtgärd |
 | ----- | ---------- |
-| "Åtgärden kunde inte slutföras eftersom våra poster visar att du inte har aktiverat Red Hat Cloud Access på din Azure-prenumeration..." | För att kunna använda förmånen med virtuella datorer i RHEL måste du först registrera din Azure-prenumeration (er) med Red Hat Cloud Access. Besök den här länken om du vill veta mer om hur du registrerar Azure-prenumerationer för Red Hat Cloud Access
+| "Åtgärden kunde inte slutföras eftersom våra poster visar att du inte har aktiverat Red Hat Cloud Access på din Azure-prenumeration..." | Om du vill använda förmånen med virtuella datorer i RHEL måste du först [Registrera dina Azure-prenumerationer med Red Hat Cloud Access](https://access.redhat.com/management/cloud).
 
 ## <a name="next-steps"></a>Nästa steg
-* Lär dig hur du skapar och uppdaterar virtuella datorer och lägger till licens typer (RHEL_BYOS SLES_BYOS) för Azure Hybrid-förmån med hjälp av [Azure CLI här.](/cli/azure/vm?preserve-view=true&view=azure-cli-latest)
+* [Lär dig hur du skapar och uppdaterar virtuella datorer och lägger till licens typer (RHEL_BYOS, SLES_BYOS) för Azure Hybrid-förmån med hjälp av Azure CLI](/cli/azure/vm?preserve-view=true&view=azure-cli-latest)

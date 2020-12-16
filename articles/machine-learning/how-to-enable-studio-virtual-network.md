@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperf-fy20q4, tracking-python
-ms.openlocfilehash: 8dc8446ecbc203622ce7c2163136c1c26aac1cc7
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 3f128b7ee7fa8f690c2097a5d27e274ec1eb2a8a
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032736"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559547"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Använda Azure Machine Learning Studio i ett virtuellt Azure-nätverk
 
@@ -71,7 +71,7 @@ Studio har stöd för läsning av data från följande data lager typer i ett vi
 
 ### <a name="configure-datastores-to-use-workspace-managed-identity"></a>Konfigurera data lager för att använda arbets ytans hanterade identiteter
 
-När du har lagt till ett Azure Storage-konto till ditt virtuella nätverk med en [tjänst slut punkt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) eller [privat slut punkt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)måste du konfigurera ditt data lager för att använda [hanterad identitets](../active-directory/managed-identities-azure-resources/overview.md) autentisering. På så sätt kan Studio åtkomst till data i ditt lagrings konto.
+När du har lagt till ett Azure Storage-konto till ditt virtuella nätverk med antingen en [tjänst slut punkt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) eller en [privat slut punkt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)måste du konfigurera ditt data lager för att använda [hanterad identitets](../active-directory/managed-identities-azure-resources/overview.md) autentisering. På så sätt kan Studio åtkomst till data i ditt lagrings konto.
 
 Azure Machine Learning använder [data lager](concept-data.md#datastores) för att ansluta till lagrings konton. Använd följande steg för att konfigurera ett data lager för att använda hanterad identitet:
 
@@ -89,7 +89,9 @@ De här stegen lägger till den arbetsytans hanterade identiteten som en __läsa
 
 ### <a name="enable-managed-identity-authentication-for-default-storage-accounts"></a>Aktivera hanterad identitets autentisering för standard lagrings konton
 
-Varje Azure Machine Learning arbets yta levereras med två standard lagrings konton som definieras när du skapar din arbets yta. Studio använder standard lagrings kontona för att lagra experiment-och modell artefakter, som är viktiga för vissa funktioner i Studio.
+Varje Azure Machine Learning arbets yta har två standard lagrings konton, ett standard-Blob Storage-konto och ett standard fil lagrings konto som definieras när du skapar din arbets yta. Du kan också ange nya standardvärden på sidan hantering av **data lager** .
+
+![Skärm bild som visar var standard data lager kan hittas](./media/how-to-enable-studio-virtual-network/default-datastores.png)
 
 I följande tabell beskrivs varför du måste aktivera hanterad identitetsautentisering för arbets ytans standard lagrings konton.
 
@@ -98,8 +100,12 @@ I följande tabell beskrivs varför du måste aktivera hanterad identitetsautent
 |Standard-Blob Storage för arbets yta| Lagrar modell till gångar från designern. Du måste aktivera hanterad identitets autentisering på det här lagrings kontot för att distribuera modeller i designern. <br> <br> Du kan visualisera och köra en pipeline för designer om den använder ett data lager som inte är standard som har kon figurer ATS för att använda hanterad identitet. Men om du försöker distribuera en tränad modell utan hanterad identitet som är aktive rad i standard data lagret, kommer distributionen att Miss Miss läge, oavsett andra data lager som används.|
 |Standard fil lager för arbets yta| Lagrar AutoML-experiment till gångar. Du måste aktivera hanterad identitets autentisering på det här lagrings kontot för att skicka AutoML experiment. |
 
-
-![Skärm bild som visar var standard data lager kan hittas](./media/how-to-enable-studio-virtual-network/default-datastores.png)
+> [!WARNING]
+> Det finns ett känt problem där standard fil arkivet inte automatiskt skapar `azureml-filestore` mappen, vilket krävs för att skicka AutoML experiment. Detta inträffar när användare använder en befintlig filestore för att ange som standard-filestore när arbets ytan skapas.
+> 
+> För att undvika det här problemet har du två alternativ: 1) Använd standard-filestore som skapas automatiskt för att skapa arbets ytan. 2) om du vill ta med din egen filestore kontrollerar du att filestore ligger utanför det virtuella nätverket när arbets ytan skapas. När arbets ytan har skapats lägger du till lagrings kontot i det virtuella nätverket.
+>
+> Lös problemet genom att ta bort filestore-kontot från det virtuella nätverket och sedan lägga till det i det virtuella nätverket igen.
 
 
 ### <a name="grant-workspace-managed-identity-__reader__-access-to-storage-private-link"></a>Bevilja hantering av hanterad identitets __läsare__ åtkomst till lagrings privat länk

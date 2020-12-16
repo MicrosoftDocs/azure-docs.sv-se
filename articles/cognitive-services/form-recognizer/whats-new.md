@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 03f2109a32cd8a8c2643f3c2aa74900f4edd1cee
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 3f71cef19d25a7f987af4147ae0a889280e49bd1
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852854"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563168"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Vad är nytt i Formigenkänning?
 
@@ -23,6 +23,8 @@ Formulär igenkännings tjänsten uppdateras regelbundet. Använd den här artik
 ## <a name="november-2020"></a>November 2020
 
 ### <a name="new-features"></a>Nya funktioner
+
+**Formulär igenkänning v 2.1 Public Preview 2 är nu tillgängligt.** V 2.1 – för hands version. 2 har släppts, inklusive följande funktioner: 
 
 - **Ny fördefinierad faktura modell** – den nya inbyggda faktura modellen gör det möjligt för kunder att ta fakturor i en rad olika format och returnera strukturerade data för att automatisera faktura bearbetningen. Den kombinerar vår kraftfulla OCR-kapacitet (optisk tecken läsning) med faktura om djup inlärnings modeller för att extrahera viktig information från fakturor på engelska. Den extraherar text, tabeller och information, till exempel kund, leverantör, faktura-ID, förfallo datum för faktura, totalt, förfallet belopp, moms belopp, leverera till, fakturera till och mycket annat.
 
@@ -37,7 +39,7 @@ Formulär igenkännings tjänsten uppdateras regelbundet. Använd den här artik
  
   > [Lär dig mer om extrahering av layout](concept-layout.md)
 
-- **Uppdatering av klient bibliotek** – den senaste versionen av [klient biblioteken](quickstarts/client-library.md) för .net, python, Java och Java Script stöder API: t för formulär igenkänning 2,1.
+- **Uppdatering av klient bibliotek** – de senaste versionerna av [klient biblioteken](quickstarts/client-library.md) för .net, python, Java och Java Script har stöd för formulär tolken 2,1 API.
 - **Nytt språk som stöds: japanska** – följande nya språk stöds nu: for `AnalyzeLayout` och `AnalyzeCustomForm` : Japanese ( `ja` ). [Stöd för språk](language-support.md)
 - **Text linje formats indikering (handskriven/övrigt) (endast latinska språk)** – formulär tolken visar nu ett `appearance` objekt som klassificerar om varje textrad är handskriven eller inte, tillsammans med ett säkerhets resultat. Den här funktionen stöds bara för latinska språk.
 - **Kvalitets förbättringar** – extraherings förbättringar, inklusive förbättringar av en enda siffer extrahering.

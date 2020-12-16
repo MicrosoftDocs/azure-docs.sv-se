@@ -5,22 +5,43 @@ description: Ny och uppdaterad dokumentation för Microsoft Identity Platform.
 services: active-directory
 author: mmacy
 manager: CelesteDG
-ms.date: 12/01/2020
+ms.date: 12/15/2020
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 108cd5f74b7b560534baf8f55f7d07ebb6557e7f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4813a71a0bdd14e747aa4cfe51ab5a4191df62a4
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457155"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563049"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft Identity Platform-dokument: Nyheter
 
 Välkommen till nyheter i Microsoft Identity Platform-dokumentationen. Den här artikeln innehåller nya dokument som har lagts till och de som har haft betydande uppdateringar under de senaste tre månaderna.
+
+## <a name="december-2020"></a>December 2020
+
+### <a name="new-articles"></a>Nya artiklar
+
+- [Snabb start: ASP.NET Core-webbapp som loggar in användare och anropar Microsoft Graph för deras räkning](quickstart-v2-aspnet-core-webapp-calls-graph.md)
+- [Hantera fel och undantag i MSAL.NET](msal-error-handling-dotnet.md)
+- [Hantera fel och undantag i MSAL för iOS/macOS](msal-error-handling-ios.md)
+- [Hantera fel och undantag i MSAL för Java](msal-error-handling-java.md)
+- [Hantera fel och undantag i MSAL.js](msal-error-handling-js.md)
+- [Hantera fel och undantag i MSAL för Python](msal-error-handling-python.md)
+- [Microsoft Identity Platform token Exchange-scenarier med SAML och OIDC/OAuth](scenario-token-exchange-saml-oauth.md)
+
+### <a name="updated-articles"></a>Uppdaterade artiklar
+
+- [Självstudie: utveckla en daemon för flera innehavare som använder Microsoft Identity Platform](tutorial-v2-aspnet-daemon-web-app.md)
+- [Webbapp som loggar in användare: app-registrering](scenario-web-app-sign-user-app-registration.md)
+- [Microsoft Identity Platform och implicit beviljande flöde](v2-oauth2-implicit-grant-flow.md)
+- [Åtkomsttoken för Microsoft Identity Platform](access-tokens.md)
+- [Ett webb-API som anropar webb-API: er: Hämta en token för appen](scenario-web-api-call-api-acquire-token.md)
+
 
 ## <a name="november-2020"></a>November 2020
 

@@ -1,7 +1,7 @@
 ---
 title: Vad är nytt i Azure Active Directory externa identiteter
 description: Ny och uppdaterad dokumentation för Azure Active Directory externa identiteter.
-ms.date: 12/03/2020
+ms.date: 12/15/2020
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,16 +9,32 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 35fa6909160ca707035ee9fc599e4035c2ae7981
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e614507fbcfce5fc006983e0be7963223bb0b7ed
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573909"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562386"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Azure Active Directory externa identiteter: Nyheter
 
 Välkommen till nyheter i Azure Active Directory external Identities-dokumentationen. Den här artikeln innehåller nya dokument som har lagts till och de som har haft betydande uppdateringar under de senaste tre månaderna. Information om vad som är nytt med tjänsten externa identiteter finns i [Nyheter i Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="december-2020"></a>December 2020
+
+### <a name="updated-articles"></a>Uppdaterade artiklar
+
+- [Vanliga frågor och svar om Azure Active Directory B2B-samarbete](faq.md)
+- [Lägg till Google som en identitets leverantör för B2B-gäst användare](google-federation.md)
+- [Identitets leverantörer för externa identiteter](identity-providers.md)
+- [Azure Active Directory B2B-samarbete för inbjudan](redemption-experience.md)
+- [Lägga till en API-anslutning till ett användar flöde](self-service-sign-up-add-api-connector.md)
+- [Lägg till ett anpassat godkännande arbets flöde till självbetjänings registrering](self-service-sign-up-add-approvals.md)
+- [Felsöka Azure Active Directory B2B-samarbete](troubleshoot.md)
+- [Vad är gästanvändaråtkomst i Azure Active Directory B2B?](what-is-b2b.md)
+- [Metod tips för Azure Active Directory B2B](b2b-fundamentals.md)
+- [Aktivera externt B2B-samarbete och hantera vilka som kan bjuda in gäster](delegate-invitations.md)
+- [E-postautentisering med eng ång slö sen ord](one-time-passcode.md)
 
 ## <a name="november-2020"></a>November 2020
 

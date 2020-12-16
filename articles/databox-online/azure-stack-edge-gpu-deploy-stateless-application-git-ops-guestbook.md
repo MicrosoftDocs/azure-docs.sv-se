@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 8637b33ebc4b697ee6f498acb84ee33718c53f6d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 82b786f3c90a7ef482ccbcd6e66fb9abfc4eea5f
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448860"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561944"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Distribuera ett tillstånds lösa program i PHP-programmet med Redis on Arc Enabled Kubernetes Cluster på Azure Stack Edge Pro GPU
 
@@ -31,6 +31,9 @@ Den här proceduren är avsedd för de som har granskat [Kubernetes-arbetsbelast
 ## <a name="prerequisites"></a>Förutsättningar
 
 Innan du kan distribuera det tillstånds lösa programmet måste du kontrol lera att du har slutfört följande krav på enheten och klienten som du ska använda för att få åtkomst till enheten:
+
+> [!NOTE]
+> Den här artikeln innehåller referenser till termen Slav, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
 
 ### <a name="for-device"></a>För enheten
 

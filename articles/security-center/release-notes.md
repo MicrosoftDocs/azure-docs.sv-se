@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2020
+ms.date: 12/15/2020
 ms.author: memildin
-ms.openlocfilehash: 3272212a857f24916acce7da5a4ee31561ec0c5a
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 484a8c7c230863f230719ddaf4e98a6248512bcc
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922921"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560261"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Vad är nytt i Azure Security Center?
 
@@ -39,6 +39,7 @@ Uppdateringar i december inkluderar:
 - [Azure Defender for SQL-stöd för Azure Synapse Analytics-dedikerad SQL-pool är allmänt tillgänglig](#azure-defender-for-sql-support-for-azure-synapse-analytics-dedicated-sql-pool-is-generally-available)
 - [Globala administratörer kan nu ge sig själva behörigheter på klient nivå](#global-administrators-can-now-grant-themselves-tenant-level-permissions)
 - [Två nya Azure Defender-planer: Azure Defender för DNS och Azure Defender för Resource Manager (för hands version)](#two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview)
+- [Sidan nya säkerhets aviseringar i Azure Portal (för hands version)](#new-security-alerts-page-in-the-azure-portal-preview)
 
 ### <a name="azure-defender-for-sql-servers-on-machines-is-generally-available"></a>Azure Defender för SQL-servrar på datorer är allmänt tillgänglig
 
@@ -95,6 +96,24 @@ Dessa nya skydd förbättrar avsevärt din återhämtning mot attacker från hot
     - [Svara på aviseringar från Azure Defender för DNS](defender-for-dns-usage.md)
     - [Lista över aviseringar som tillhandahålls av Azure Defender för DNS](alerts-reference.md#alerts-dns)
 
+
+### <a name="new-security-alerts-page-in-the-azure-portal-preview"></a>Sidan nya säkerhets aviseringar i Azure Portal (för hands version)
+
+Azure Security Center sidan säkerhets aviseringar har design ATS om för att tillhandahålla:
+
+- **Förbättrad prioritering-upplevelse för aviseringar** – hjälper till att minska aviserings utmattningen och fokusera på de mest relevanta hoten. listan innehåller anpassningsbara filter och grupperingsalternativ
+- **Mer information i aviserings listan** – till exempel MITRE att&ack taktiker
+- **Knapp för att skapa exempel aviseringar** – om du vill utvärdera Azure Defender-funktioner och testa aviserings konfigurationen (för Siem-integrering, e-postaviseringar och automatisering av arbets flöden) kan du skapa exempel aviseringar från alla Azure Defender-planer
+- **Anpassning med Azure Sentinel-incidenten** – för kunder som använder båda produkterna är det nu en mer smidig upplevelse och det är enkelt att lära sig något från den andra
+- **Bättre prestanda** för stora aviserings listor
+- **Tangent bords navigering** genom aviserings listan
+- **Aviseringar från Azure Resource Graph** – du kan fråga aviseringar i Azure Resource Graph, KUSTO-API för alla dina resurser. Detta är också användbart om du skapar dina egna aviserings instrument paneler. [Lär dig mer om Azure Resource Graph](../governance/resource-graph/index.yml).
+
+Du kommer åt den nya upplevelsen genom att använda länken prova nu från banderollen högst upp på sidan säkerhets aviseringar.
+
+:::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="Banderoll med en länk till den nya förhands gransknings aviserings upplevelsen":::
+
+Information om hur du skapar exempel aviseringar från den nya aviserings miljön finns i [generera exempel på Azure Defender-aviseringar](security-center-alert-validation.md#generate-sample-azure-defender-alerts).
 
 ## <a name="november-2020"></a>November 2020
 
@@ -271,7 +290,7 @@ Läs mer i [ta bort en standard från din instrument panel](update-regulatory-co
 
 Azure Resource Graph är en tjänst i Azure som är utformad för att tillhandahålla effektiv resurs utforskning med möjlighet att fråga i skala över en specifik uppsättning prenumerationer så att du effektivt kan styra din miljö. 
 
-För Azure Security Center kan du använda ARG och [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/) för att fråga efter en mängd säkerhets position data. Exempel:
+För Azure Security Center kan du använda ARG och [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/) för att fråga efter en mängd säkerhets position data. Till exempel:
 
 - Till gångs lager använder (ARG)
 - Vi har dokumenterat en exempel-ARG-fråga för att [identifiera konton utan Multi-Factor Authentication (MFA) aktiverat](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled)
@@ -514,7 +533,7 @@ Relaterade sidor:
 
 ### <a name="prevent-security-misconfigurations-by-enforcing-recommendations-when-creating-new-resources"></a>Förhindra felaktig säkerhet genom att tvinga rekommendationer när du skapar nya resurser
 
-Fel konfiguration av säkerhet är en stor orsak till säkerhets incidenter. Security Center kan nu hjälpa till *att förhindra* fel konfiguration av nya resurser med avseende på särskilda rekommendationer. 
+Fel konfiguration av säkerhet är en stor orsak till säkerhets incidenter. Security Center kan nu hjälpa till *att förhindra* fel konfiguration av nya resurser med avseende på vissa rekommendationer. 
 
 Den här funktionen kan hjälpa till att hålla arbets belastningarna säkra och stabilisera dina säkra poäng.
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 6109164d8827a343a550a114acc42db2461f3a2c
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: d475c76d338270cb9b8e34ea8563cdfd8fdf5122
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905357"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563066"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>Självstudie: implementera IoT spatial Analytics med hjälp av Azure Maps
 
@@ -30,7 +30,7 @@ I den här självstudien kommer du att:
 > * Prenumerera på IoT Device telemetri-händelser från Azure-funktionen via Azure Event Grid.
 > * Filtrera telemetri-händelserna genom att använda IoT Hub meddelanderoutning.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 
@@ -143,8 +143,9 @@ Följ de här stegen för att ladda upp den här avgränsningen med hjälp av AP
 
    ```HTTP
    https://atlas.microsoft.com/mapData/<operationId>/status?api-version=1.0&subscription-key={subscription-key}
-
-7. When the **GET** HTTP request completes successfully, it returns a `resourceLocation`. The `resourceLocation` contains the unique `udid` for the uploaded content. Copy this `udid` for later use in this tutorial.
+   ```
+   
+7. När **Get** http-begäran har slutförts returneras en `resourceLocation` . `resourceLocation`Innehåller det unika `udid` för det överförda innehållet. Kopiera detta `udid` för senare användning i den här självstudien.
 
       ```json
       {

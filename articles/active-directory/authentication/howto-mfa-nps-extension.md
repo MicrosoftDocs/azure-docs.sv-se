@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 8340712e10721374bb2f0a35ac2e2e9a6abf181c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: deb05083ca45c24a58cabf9e923b706575ef093b
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743045"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562148"
 ---
 # <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-ad-multi-factor-authentication"></a>Integrera din befintliga infrastruktur för nätverks Policy Server (NPS) med Azure AD Multi-Factor Authentication
 
@@ -225,6 +225,10 @@ Om du vill tillhandahålla funktioner för belastnings utjämning eller för red
 
 1. Kör PowerShell-skriptet som skapats av installations programmet.
 
+   Du kan behöva först aktivera TLS 1,2 för PowerShell för att kunna ansluta och Hämta paket korrekt:
+   
+   `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12`
+
    > [!IMPORTANT]
    > För kunder som använder Azure Government-eller Azure Kina 21Vianet-moln måste du först redigera `Connect-MsolService` cmdletarna i *AzureMfaNpsExtnConfigSetup.ps1* -skriptet för att inkludera *AzureEnvironment* -parametrarna för det moln som krävs. Ange till exempel *-AzureEnvironment USGovernment* eller *-AzureEnvironment AzureChinaCloud*.
    >
@@ -303,7 +307,7 @@ Konfigurera RADIUS-klienter som du vill kräva MFA för att skicka begär anden 
 
 Om du har användare som inte är registrerade för MFA kan du bestämma vad som händer när de försöker autentisera sig. Om du vill styra det här beteendet använder du inställningen *REQUIRE_USER_MATCH* i register Sök vägen *HKLM\Software\Microsoft\AzureMFA*. Den här inställningen har ett enda konfigurations alternativ:
 
-| Tangent | Värde | Standard |
+| Tangent | Värde | Standardvärde |
 | --- | ----- | ------- |
 | REQUIRE_USER_MATCH | TRUE/FALSE | Inte angivet (motsvarar sant) |
 
@@ -388,7 +392,7 @@ Mer information om varför du ser ignorerade paket i NPS-serverns loggar finns i
 
 Vi rekommenderar att äldre och svagare chiffersviter är inaktiverade eller tas bort om organisationen inte kräver det. Information om hur du kan slutföra den här uppgiften finns i artikeln [Hantera SSL/TLS-protokoll och chiffersviter för AD FS](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)
 
-### <a name="additional-troubleshooting"></a>Ytterligare fel sökning
+### <a name="additional-troubleshooting"></a>Ytterligare felsökning
 
 Ytterligare fel söknings vägledning och möjliga lösningar finns i artikeln [Lös fel meddelanden från NPS-tillägget för Azure AD Multi-Factor Authentication](howto-mfa-nps-extension-errors.md).
 

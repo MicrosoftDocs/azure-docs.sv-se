@@ -9,13 +9,13 @@ ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a7fdb370847e72657829d53df019203b0a5b211b
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.custom: how-to, devx-track-python, contperf-fy21q2
+ms.openlocfilehash: 7144d576694b6694f426533451717cef58c2da87
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302577"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562454"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Förstärka inlärningen (för hands version) med Azure Machine Learning
 
@@ -24,9 +24,9 @@ ms.locfileid: "96302577"
 > [!NOTE]
 > Azure Machine Learning förstärknings inlärning är för närvarande en förhands gransknings funktion. Endast Ray-och RLlib-ramverk stöds för tillfället.
 
-I den här artikeln får du lära dig hur du tränar en HUVUDWEBBADRESS-agent (en förstärknings inlärning) för att spela spelets Pong. Du kommer att använda python Library [Ray-RLlib](https://ray.readthedocs.io/en/master/rllib.html) med öppen källkod med Azure Machine Learning för att hantera komplexiteten för DISTRIBUERAde huvudwebbadress-jobb.
+I den här artikeln får du lära dig hur du tränar en HUVUDWEBBADRESS-agent (en förstärknings inlärning) för att spela spelets Pong. Du använder python Library [Ray-RLlib](https://ray.readthedocs.io/en/master/rllib.html) med öppen källkod med Azure Machine Learning för att hantera komplexiteten i distribuerade huvudwebbadress.
 
-I den här artikeln får du lära dig att:
+I den här artikeln lär du dig hur du:
 > [!div class="checklist"]
 > * Konfigurera ett experiment
 > * Definiera Head-och Worker-noder
@@ -36,9 +36,9 @@ I den här artikeln får du lära dig att:
 
 Den här artikeln baseras på [RLlib Pong-exemplet](https://aka.ms/azureml-rl-pong) som finns i Azure Machine Learning Notebooks GitHub- [lagringsplats](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
-Kör den här koden i någon av följande miljöer. Vi rekommenderar att du försöker Azure Machine Learning beräknings instans för den snabbaste start upplevelsen. De förstärkta exempel antecknings böckerna är tillgängliga för att snabbt kunna klona och köra Azure Machine Learning beräknings instanser.
+Kör den här koden i någon av dessa miljöer. Vi rekommenderar att du provar Azure Machine Learning Compute instance för den snabbaste start upplevelsen. Du kan snabbt klona och köra de förstärkta exempel antecknings böckerna på en Azure Machine Learning beräknings instans.
 
  - Azure Machine Learning-beräkningsinstans
 
@@ -61,19 +61,21 @@ Förstärknings inlärning (HUVUDWEBBADRESS) är en metod för maskin inlärning
 
 Dina utbildnings agenter lär sig att spela Pong i en **simulerad miljö**. Utbildnings agenter fattar ett beslut varje bild ruta i spelet för att flytta Paddle uppåt, nedåt eller stanna på plats. Det tittar på spelets tillstånd (en RGB-bild av skärmen) för att fatta ett beslut.
 
-HUVUDWEBBADRESS använder **belöningar** för att berätta om agenten om besluten har lyckats. I den här miljön får agenten en positiv belöning när den får en punkt och en negativ belöning när en punkt poängas mot den. I många iterationer lär sig utbildnings agenten att välja åtgärden, baserat på dess aktuella status, som optimerar för summan av förväntade framtida förmåner.
-
-Det är vanligt att använda en DNN-modell ( **djup neurala Network** ) för att utföra den här optimeringen i huvudwebbadress. Inlednings vis fungerar inlärnings agenten dåligt, men alla spel genererar ytterligare exempel för att ytterligare förbättra modellen.
+HUVUDWEBBADRESS använder **belöningar** för att berätta om agenten om besluten har lyckats. I det här exemplet får agenten en positiv belöning när den får en punkt och en negativ belöning när en punkt poängas mot den. I många iterationer lär sig utbildnings agenten att välja åtgärden, baserat på dess aktuella status, som optimerar för summan av förväntade framtida förmåner. Det är vanligt att använda **djup neurala Networks** (DNN) för att utföra den här optimeringen i huvudwebbadress. 
 
 Utbildningen upphör när agenten uppnår en genomsnittlig belönings poäng på 18 i ett utbildnings värde. Det innebär att agenten har beaten sin motspelare genom att ett genomsnitt på minst 18 punkter i matchar upp till 21.
 
-Processen att gå igenom simuleringen och återträna en DNN är mycket kostsam och kräver stora mängder data. Ett sätt att förbättra prestanda för HUVUDWEBBADRESS-jobb är att minska **arbetet** så att flera utbildnings agenter kan agera och lära sig samtidigt. Att hantera en distribuerad HUVUDWEBBADRESS-miljö kan dock vara ett komplext företag.
+Processen att gå igenom simuleringen och återträna en DNN är mycket kostsam och kräver mycket data. Ett sätt att förbättra prestanda för HUVUDWEBBADRESS-jobb är att minska **arbetet** så att flera utbildnings agenter kan agera och lära sig samtidigt. Att hantera en distribuerad HUVUDWEBBADRESS-miljö kan dock vara ett komplext företag.
 
 Azure Machine Learning tillhandahåller ramverket för att hantera dessa komplexa funktioner för att skala ut dina HUVUDWEBBADRESS-arbetsbelastningar.
 
 ## <a name="set-up-the-environment"></a>Konfigurera miljön
 
-Konfigurera den lokala HUVUDWEBBADRESS-miljön genom att läsa in de nödvändiga python-paketen, initiera arbets ytan, skapa ett experiment och ange ett konfigurerat virtuellt nätverk.
+Konfigurera den lokala HUVUDWEBBADRESS-miljön genom att:
+1. Läser in de nödvändiga python-paketen
+1. Initierar din arbets yta
+1. Skapa ett experiment
+1. Ange ett konfigurerat virtuellt nätverk.
 
 ### <a name="import-libraries"></a>Importera bibliotek
 
@@ -97,9 +99,7 @@ from azureml.contrib.train.rl import WorkerConfiguration
 
 ### <a name="initialize-a-workspace"></a>Initiera en arbets yta
 
-[Azure Machine Learning-arbetsytan](concept-workspace.md) är den översta resursen för Azure Machine Learning. Det ger dig en central plats för att arbeta med alla artefakter som du skapar.
-
-Initiera ett objekt för arbets ytan från `config.json` filen som skapats i [avsnittet krav](#prerequisites). Om du kör den här koden i en Azure Machine Learning beräknings instans har konfigurations filen redan skapats åt dig.
+Initiera ett objekt för [arbets ytan](concept-workspace.md) från `config.json` filen som skapats [i avsnittet krav](#prerequisites). Om du kör den här koden i en Azure Machine Learning beräknings instans har konfigurations filen redan skapats åt dig.
 
 ```Python
 ws = Workspace.from_config()
@@ -117,7 +117,9 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="specify-a-virtual-network"></a>Ange ett virtuellt nätverk
 
-För HUVUDWEBBADRESS-jobb som använder flera beräknings mål måste du ange ett virtuellt nätverk med öppna portar som tillåter att arbetsnoder och huvudnoder kan kommunicera med varandra. Det virtuella nätverket kan finnas i vilken resurs grupp som helst, men det bör finnas i samma region som din arbets yta. Mer information om hur du konfigurerar ditt virtuella nätverk finns i installations programmet för arbets ytan installation som kan hittas i avsnittet krav. Här anger du namnet på det virtuella nätverket i resurs gruppen.
+För HUVUDWEBBADRESS-jobb som använder flera beräknings mål måste du ange ett virtuellt nätverk med öppna portar som tillåter att arbetsnoder och huvudnoder kan kommunicera med varandra.
+
+Det virtuella nätverket kan finnas i vilken resurs grupp som helst, men det bör finnas i samma region som din arbets yta. Mer information om hur du konfigurerar ditt virtuella nätverk finns i installations programmet för arbets ytor i avsnittet krav. Här anger du namnet på det virtuella nätverket i resurs gruppen.
 
 ```python
 vnet = 'your_vnet'
@@ -125,13 +127,13 @@ vnet = 'your_vnet'
 
 ## <a name="define-head-and-worker-compute-targets"></a>Definiera mål för Head-och Worker-beräkning
 
-I det här exemplet används separata beräknings mål för noderna för Ray-Head och Worker. Med de här inställningarna kan du skala dina beräknings resurser upp och ned beroende på den förväntade arbets belastningen. Ange antalet noder och storleken på varje nod utifrån experimentets behov.
+I det här exemplet används separata beräknings mål för noderna för Ray-Head och Worker. Med de här inställningarna kan du skala dina beräknings resurser upp och ned beroende på din arbets belastning. Ange antalet noder och storleken på varje nod utifrån dina behov.
 
 ### <a name="head-computing-target"></a>Huvud dator mål
 
-I det här exemplet används ett GPU-utrustat huvud kluster för att optimera prestanda för djup inlärning. Head-noden tågen neurala-nätverket som agenten använder för att fatta beslut. Head-noden samlar även in data punkter från arbetsnoderna för att ytterligare träna neurala-nätverket.
+Du kan använda ett GPU-utrustat huvud kluster för att förbättra djup inlärnings prestanda. Head-noden tågen neurala-nätverket som agenten använder för att fatta beslut. Head-noden samlar även in data punkter från arbetsnoderna för att träna neurala-nätverket.
 
-Huvud beräkningen använder en enda [ `STANDARD_NC6` virtuell dator](../virtual-machines/nc-series.md) (VM). Den har 6 virtuella processorer, vilket innebär att den kan distribuera arbete över 6 fungerande processorer.
+Huvud beräkningen använder en enda [ `STANDARD_NC6` virtuell dator](../virtual-machines/nc-series.md) (VM). Den har 6 virtuella processorer för att distribuera arbete över.
 
 
 ```python
@@ -173,7 +175,7 @@ else:
 
 ### <a name="worker-computing-cluster"></a>Arbets kluster för arbete
 
-I det här exemplet används fyra [ `STANDARD_D2_V2` virtuella datorer](../virtual-machines/nc-series.md) för arbets beräknings målet. Varje arbetsnod har 2 tillgängliga processorer för totalt 8 tillgängliga CPU: er som parallellisera fungerar.
+I det här exemplet används fyra [ `STANDARD_D2_V2` virtuella datorer](../virtual-machines/nc-series.md) för arbets beräknings målet. Varje arbets nod har 2 tillgängliga processorer för totalt 8 tillgängliga processorer.
 
 GPU: er behövs inte för arbetsnoder eftersom de inte utför djup inlärning. Arbets tagarna kör spel simuleringarna och samlar in data.
 
@@ -212,14 +214,13 @@ else:
 ```
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>Skapa en uppskattad uppskattnings utbildning
+Använd [ReinforcementLearningEstimator](/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?preserve-view=true&view=azure-ml-py) för att skicka ett utbildnings jobb till Azure Machine Learning.
 
-I det här avsnittet får du lära dig hur du använder [ReinforcementLearningEstimator](/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?preserve-view=true&view=azure-ml-py) för att skicka ett utbildnings jobb till Azure Machine Learning.
-
-Azure Machine Learning använder uppskattnings klasser för att kapsla in kör konfigurations information. På så sätt kan du enkelt ange hur skript körningen ska konfigureras. 
+Azure Machine Learning använder uppskattnings klasser för att kapsla in kör konfigurations information. På så sätt kan du ange hur skript körningen ska konfigureras. 
 
 ### <a name="define-a-worker-configuration"></a>Definiera en Worker-konfiguration
 
-WorkerConfiguration-objektet visar Azure Machine Learning hur du initierar det arbets kluster som ska köra Entry-skriptet.
+WorkerConfiguration-objektet visar Azure Machine Learning hur du initierar det arbets kluster som kör inmatnings skriptet.
 
 ```python
 # Pip packages we will use for both head and worker
@@ -246,9 +247,11 @@ worker_conf = WorkerConfiguration(
 
 I Entry-skriptet `pong_rllib.py` accepteras en lista över parametrar som definierar hur du kör utbildnings jobbet. Genom att skicka parametrarna via uppskattaren som ett lager med inkapsling är det enkelt att ändra skript parametrar och köra konfigurationer oberoende av varandra.
 
-Att ange rätt `num_workers` kommer att få ut mesta möjliga av dina parallellisering-ansträngningar. Ange antalet arbetare till samma som antalet tillgängliga processorer. I det här exemplet kan du beräkna detta på följande sätt:
+Att ange rätt `num_workers` gör det mesta av dina parallellisering-ansträngningar. Ange antalet arbetare till samma som antalet tillgängliga processorer. I det här exemplet kan du använda följande beräkning:
 
-Head-noden är en [Standard_NC6](../virtual-machines/nc-series.md) med 6 virtuella processorer. Arbets klustret är 4 [Standard_D2_V2 virtuella datorer](../cloud-services/cloud-services-sizes-specs.md#dv2-series) med 2 processorer per, för totalt 8 processorer. Du måste dock subtrahera 1 processor från antalet arbetare sedan 1 måste vara dedikerat till Head-nodens roll. 6 processorer + 8 processorer – 1 Head CPU = 13 samtidiga arbetare. Azure Machine Learning använder huvud-och arbets kluster för att särskilja beräknings resurser. Dock skiljer sig inte mellan huvud och arbetare, och alla CPU: er är tillgängliga processorer för körning av arbets trådar.
+Head-noden är en [Standard_NC6](../virtual-machines/nc-series.md) med 6 virtuella processorer. Arbets klustret är 4 [Standard_D2_V2 virtuella datorer](../cloud-services/cloud-services-sizes-specs.md#dv2-series) med 2 processorer per, för totalt 8 processorer. Du måste dock subtrahera 1 processor från antalet arbetare sedan 1 måste vara dedikerat till Head-nodens roll.
+
+6 processorer + 8 processorer – 1 Head CPU = 13 samtidiga arbetare. Azure Machine Learning använder huvud-och arbets kluster för att särskilja beräknings resurser. Ray skiljer sig dock inte mellan huvud och arbetare, och alla processorer är tillgängliga som arbets trådar.
 
 
 ```python
@@ -326,7 +329,7 @@ rl_estimator = ReinforcementLearningEstimator(
 
 [Entry-skriptet](https://aka.ms/azure-rl-pong-script) `pong_rllib.py` tågen ett neurala-nätverk med hjälp av [OpenAI gymmet-miljön](https://github.com/openai/gym/) `PongNoFrameSkip-v4` . OpenAI gyms är standardiserade gränssnitt för att testa förstärka inlärnings algoritmer på klassiska Atari-spel.
 
-I det här exemplet används en Impala som kallas för [IMPALA](https://arxiv.org/abs/1802.01561) (vikten viktad Actor-Learner arkitektur). IMPALA parallelizes varje enskild utbildnings aktör som ska skalas över flera datornoder utan att offra hastighet eller stabilitet.
+I det här exemplet används en Impala som kallas för [](https://arxiv.org/abs/1802.01561) (vikten viktad Actor-Learner arkitektur). IMPALA parallelizes varje enskild utbildnings aktör som ska skalas över flera datornoder utan att offra hastighet eller stabilitet.
 
 [Ray finjustera](https://ray.readthedocs.io/en/latest/tune.html) dirigerar Impala Worker-uppgifter.
 
@@ -409,7 +412,7 @@ run = exp.submit(config=rl_estimator)
 
 ## <a name="monitor-and-view-results"></a>Övervaka och Visa resultat
 
-Använd widgeten Azure Machine Learning Jupyter för att se status för dina körningar i real tid. I det här exemplet visar widgeten två underordnade körningar: en för Head och en för arbetare. 
+Använd widgeten Azure Machine Learning Jupyter för att se status för dina körningar i real tid. Widgeten visar två underordnade körningar: en för Head och en för arbetare. 
 
 ```python
 from azureml.widgets import RunDetails
@@ -429,7 +432,7 @@ I **episode_reward_means** området visas medelvärdet för antalet poäng per u
 
 Om du bläddrar i loggar för den underordnade körningen kan du se utvärderings resultaten som registrerats i driver_log.txt-filen. Du kan behöva vänta flera minuter innan dessa mått blir tillgängliga på körnings sidan.
 
-I korthet har du lärt dig att konfigurera flera beräknings resurser för att träna en förstärkt inlärnings agent för att spela Pong mycket bra.
+I korthet har du lärt dig att konfigurera flera beräknings resurser för att träna en förstärkt inlärnings agent för att spela Pong mycket bra mot en dator oppponent.
 
 ## <a name="next-steps"></a>Nästa steg
 

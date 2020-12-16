@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 12/14/2020
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: e239d9da4a083b50460ef746f9c538aa3081a577
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 24b29cfb1f58a61193f67ba924e583d4264dfc51
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027330"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562131"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Vilka autentiserings- och verifieringsmetoder är tillgängliga i Azure Active Directory?
 
@@ -26,9 +26,11 @@ Som en del av inloggnings upplevelsen för konton i Azure Active Directory (Azur
 
 Metoder för lösen ords kryptering som Windows Hello, FIDO2 säkerhets nycklar och Microsoft Authenticator-appen tillhandahåller de säkraste inloggnings händelserna.
 
-Azure AD Multi-Factor Authentication lägger till ytterligare säkerhet över med ett lösen ord när en användare loggar in. Användaren kan uppmanas att ange ytterligare typer av autentisering, t. ex. för att svara på ett push-meddelande, ange en kod från en program vara eller maskinvarubaserad token eller svara på ett SMS eller telefonsamtal.
+Azure AD Multi-Factor Authentication (MFA) lägger till ytterligare säkerhet över med ett lösen ord när en användare loggar in. Användaren kan uppmanas att ange ytterligare typer av autentisering, t. ex. för att svara på ett push-meddelande, ange en kod från en program vara eller maskinvarubaserad token eller svara på ett SMS eller telefonsamtal.
 
-För att förenkla användar upplevelsen och registrera dig för både MFA och SSPR rekommenderar vi att du [aktiverar kombinerad registrering av säkerhets information](howto-registration-mfa-sspr-combined.md). För återhämtning rekommenderar vi att du kräver att användarna registrerar flera autentiseringsmetoder. När en metod inte är tillgänglig för en användare under inloggnings-eller SSPR kan de välja att autentisera med en annan metod. Mer information finns i [skapa en elastisk åtkomst kontroll hanterings strategi i Azure AD](concept-resilient-controls.md).
+För att förenkla användar upplevelsen och registrera dig för både MFA-och självbetjänings återställning av lösen ord (SSPR) rekommenderar vi att du [aktiverar kombinerad registrering av säkerhets information](howto-registration-mfa-sspr-combined.md). För återhämtning rekommenderar vi att du kräver att användarna registrerar flera autentiseringsmetoder. När en metod inte är tillgänglig för en användare under inloggnings-eller SSPR kan de välja att autentisera med en annan metod. Mer information finns i [skapa en elastisk åtkomst kontroll hanterings strategi i Azure AD](concept-resilient-controls.md).
+
+Här är en [video](https://www.youtube.com/watch?v=LB2yj4HSptc&feature=youtu.be) som vi har skapat för att hjälpa dig att välja den bästa autentiseringsmetoden för att hålla organisationen säker.
 
 ## <a name="authentication-method-strength-and-security"></a>Autentisering av autentiseringsmetod och säkerhet
 
@@ -47,7 +49,10 @@ Följande tabell beskriver säkerhets överväganden för tillgängliga autentis
 | Röst                          | Medel   | Medel    | Medel       |
 | Lösenord                       | Lågt      | Högt      | Hög         |
 
-Mer information om säkerhet finns i [sårbarheter och angrepps vektorer för autentisering](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124).
+För den senaste informationen om säkerhet, Se våra blogg inlägg:
+
+- [Det är dags att lägga på telefon transporter för autentisering](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752)
+- [Sårbarheter och angrepps vektorer för autentisering](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124)
 
 > [!TIP]
 > För flexibilitet och användbarhet rekommenderar vi att du använder Microsoft Authenticator-appen. Den här autentiseringsmetoden ger den bästa användar upplevelsen och flera lägen, t. ex. lösen ords lös, MFA push-meddelanden och OATH-koder.

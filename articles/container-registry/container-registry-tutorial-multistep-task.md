@@ -4,12 +4,12 @@ description: I den här självstudien får du lära dig hur du konfigurerar en A
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: fac409e9acc14048068c0f46ffb2b64cc69582ef
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: c8d1179f1c31642b350ab8757a8d4abf71583bfc
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030008"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562896"
 ---
 # <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>Självstudie: köra ett arbets flöde för flera steg i molnet när du genomför käll koden
 
@@ -83,7 +83,7 @@ az acr task create \
     --git-access-token $GIT_PAT
 ```
 
-Den här uppgiften anger att en viss tids kod allokeras till *huvud* grenen i den databas som anges av `--context` , ACR-aktiviteter kommer att köra multi-Step-aktiviteten från koden i den grenen. YAML-filen som anges av `--file` från lagrings platsens rot definierar stegen. 
+Den här uppgiften anger att en viss tidskod ska allokeras till *huvud* grenen i den databas som anges av `--context` , ACR-aktiviteter kommer att köra aktiviteten multi-Step från koden i den grenen. YAML-filen som anges av `--file` från lagrings platsens rot definierar stegen. 
 
 Utdata från kommandot [az acr task create][az-acr-task-create] liknar följande:
 
@@ -126,7 +126,7 @@ Utdata från kommandot [az acr task create][az-acr-task-create] liknar följande
       {
         "name": "defaultSourceTriggerName",
         "sourceRepository": {
-          "branch": "master",
+          "branch": "main",
           "repositoryUrl": "https://github.com/gituser/acr-build-helloworld-node.git",
           "sourceControlAuthProperties": null,
           "sourceControlType": "Github"
@@ -220,7 +220,7 @@ Sedan kör du följande kommandon för att skapa, checka in och skicka en ny fil
 echo "Hello World!" > hello.txt
 git add hello.txt
 git commit -m "Testing ACR Tasks"
-git push origin master
+git push origin main
 ```
 
 Du kan bli ombedd att ange dina GitHub-autentiseringsuppgifter när du kör kommandot `git push`. Ange ditt GitHub-användarnamn och din personliga åtkomsttoken som du skapade tidigare för lösenordet.

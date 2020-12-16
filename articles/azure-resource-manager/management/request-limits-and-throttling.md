@@ -2,14 +2,14 @@
 title: Begärandebegränsningar och begränsningar
 description: Beskriver hur du använder begränsning med Azure Resource Manager begär anden när prenumerations gränserna har nåtts.
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 12/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4d387749261747eb9ea1ea26629ade4fe8729856
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 181ed1a3059d86f78e40a9949448af77a551efbc
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80239366"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563134"
 ---
 # <a name="throttling-resource-manager-requests"></a>Begränsning av Resource Manager-förfrågningar
 
@@ -25,13 +25,13 @@ Alla åtgärder på prenumerations nivå och klient nivå är föremål för beg
 
 Standard begränsningarna för begränsning per timme visas i följande tabell.
 
-| Omfång | Åtgärder | Gräns |
+| Omfång | Operations | Gräns |
 | ----- | ---------- | ------- |
 | Prenumeration | databasläsningar | 12000 |
 | Prenumeration | text | 15 000 |
 | Prenumeration | skriver | 1200 |
-| Klient | databasläsningar | 12000 |
-| Klient | skriver | 1200 |
+| Klientorganisation | databasläsningar | 12000 |
+| Klientorganisation | skriver | 1200 |
 
 De här gränserna gäller det säkerhetsobjekt (användare eller program) som skickar förfrågningarna och prenumerationens eller klientorganisationens ID. Om dina förfrågningar kommer från fler än ett säkerhetsobjekt är begränsningen för prenumerationen eller klientorganisationen högre än 12 000 respektive 1 200 per timme.
 
@@ -66,6 +66,13 @@ Använd [Virtual Machine Scale Sets åtgärder](/rest/api/compute/virtualmachine
 
 [Azure Resource Graph](../../governance/resource-graph/overview.md) begränsar antalet begär anden till åtgärder. Stegen i den här artikeln för att fastställa de återstående förfrågningarna och hur du svarar när gränsen nås gäller även för resurs diagram. Resurs diagram anger dock sin egen gräns och återställnings takt. Mer information finns i avsnittet om [begränsnings rubriker för resurs diagram](../../governance/resource-graph/concepts/guidance-for-throttled-requests.md#understand-throttling-headers).
 
+### <a name="other-resource-providers"></a>Andra resurs leverantörer
+
+Information om begränsning i andra resurs leverantörer finns i:
+
+* [Riktlinjer för begränsning i Azure Key Vault](../../key-vault/general/overview-throttling.md)
+* [AKS-felsökning](../../aks/troubleshooting.md#im-receiving-429---too-many-requests-errors)
+
 ## <a name="error-code"></a>Felkod
 
 När du når gränsen får du HTTP-statuskoden **429 för många begär Anden**. Svaret innehåller ett värde för **återförsök efter** , som anger antalet sekunder som programmet ska vänta (eller vila) innan nästa förfrågan skickas. Om du skickar en begäran innan värdet för återförsök har förflutit, bearbetas inte din begäran och ett nytt värde för återförsök returneras.
@@ -80,7 +87,7 @@ Vissa resurs leverantörer returnerar 429 för att rapportera ett tillfälligt p
 
 Du kan fastställa antalet återstående förfrågningar genom att undersöka svarshuvuden. Läs begär Anden returnerar ett värde i rubriken för antalet återstående Läs begär Anden. Skriv förfrågningar innehåller ett värde för antalet återstående Skriv förfrågningar. I följande tabell beskrivs de svarshuvuden som du kan undersöka för dessa värden:
 
-| Svars huvud | Beskrivning |
+| Svars huvud | Description |
 | --- | --- |
 | x-MS-ratelimit-återstående-prenumeration-läsningar |Återstående läsning av prenumerations omfång. Det här värdet returneras vid Läs åtgärder. |
 | x-MS-ratelimit-återstående – prenumeration-skrivningar |Prenumerationens omfångs skrivningar är kvar. Det här värdet returneras vid Skriv åtgärder. |
@@ -103,7 +110,7 @@ I **C#** kan du till exempel hämta huvudet från ett **HttpWebResponse** -objek
 response.Headers.GetValues("x-ms-ratelimit-remaining-subscription-reads").GetValue(0)
 ```
 
-I **PowerShell**hämtar du huvud-värdet från en Invoke-WebRequest-åtgärd.
+I **PowerShell** hämtar du huvud-värdet från en Invoke-WebRequest-åtgärd.
 
 ```powershell
 $r = Invoke-WebRequest -Uri https://management.azure.com/subscriptions/{guid}/resourcegroups?api-version=2016-09-01 -Method GET -Headers $authHeaders
@@ -150,7 +157,7 @@ Pragma                        : no-cache
 x-ms-ratelimit-remaining-subscription-writes: 1199
 ```
 
-I **Azure CLI**hämtar du huvud-värdet med hjälp av mer utförligt alternativ.
+I **Azure CLI** hämtar du huvud-värdet med hjälp av mer utförligt alternativ.
 
 ```azurecli
 az group list --verbose --debug

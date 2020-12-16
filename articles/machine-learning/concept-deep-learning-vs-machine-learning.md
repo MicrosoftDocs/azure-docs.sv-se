@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 09/22/2020
-ms.custom: contperf-fy21q1
-ms.openlocfilehash: 0379fd186c499e19d949d9494b0eb5dec4f2bb50
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.date: 12/15/2020
+ms.custom: contperf-fy21q1,contperfq1
+ms.openlocfilehash: f7c4529c68f79c6ad19f22054fd0b7d2ba5116db
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032549"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562845"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Djup inlärning jämfört med Machine Learning i Azure Machine Learning
 
@@ -57,6 +57,16 @@ I följande tabell jämförs de två metoderna i detalj:
 |  **Körningstid** | Tar relativt lite tid att träna, från några sekunder till några timmar. | Det tar vanligt vis lång tid att träna eftersom en djup inlärnings algoritm omfattar många lager. |
 |  **Resultat** | Utdata är vanligt vis ett numeriskt värde, till exempel en poäng eller en klassificering. | Utdata kan ha flera format, t. ex. en text, en poäng eller ett ljud. |
 
+## <a name="transfer-learning"></a>Överförings utbildning
+
+Inlärnings djup inlärnings modeller kräver ofta stora mängder utbildnings data, avancerade beräknings resurser (GPU, TPU) och en längre utbildnings tid. I scenarier där du inte har någon av dessa tillgängliga kan du genvägen till inlärnings processen med hjälp av en teknik som kallas överförings inlärning.
+
+Överförings inlärning är en teknik som används för att lösa ett problem med ett annat men relaterat problem.
+
+På grund av strukturen i neurala-nätverk innehåller den första uppsättningen lager vanligt vis lågnivå funktioner, medan den slutliga uppsättningen lager innehåller en funktion på högre nivå som är närmare den aktuella domänen. Genom att syftes ändring de sista lagren för användning i en ny domän eller problem kan du avsevärt minska mängden tid, data och beräknings resurser som behövs för att träna den nya modellen. Om du till exempel redan har en modell som identifierar bilar kan du använda den för att använda transfer Learning för att även identifiera truckar, motorcyklar och andra typer av fordon.
+
+Lär dig hur du tillämpar överförings inlärning för bild klassificering med ett ramverk med öppen källkod i Azure Machine Learning: [klassificera bilder med hjälp av en Pytorch modell](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri).
+
 ## <a name="deep-learning-use-cases"></a>Användnings fall för djup inlärning
 
 På grund av den artificiella neurala nätverks strukturen, är djup inlärningen perfekt vid identifiering av mönster i ostrukturerade data som bilder, ljud, video och text. Av den anledningen kan djup inlärningen snabbt omvandla många branscher, inklusive hälso vård, energi, ekonomi och transport. Dessa branscher håller nu på att se till att traditionella affärs processer bevaras. 
@@ -72,8 +82,6 @@ Identifiering av namngivna enheter är en djup inlärnings metod som tar en del 
 Djup inlärning har tillämpats i många olika användnings fall för objekt identifiering. Objekt identifiering består av två delar: bild klassificering och avbildnings lokalisering. Bild _klassificeringen_ identifierar avbildningens objekt, till exempel bilar eller personer. Avbildnings _lokalisering_ tillhandahåller den speciella platsen för dessa objekt. 
 
 Objekt identifiering används redan i branscher som spel, detalj handel, turism och självdrivande bilar.
-
-Lär dig hur du använder en bild klassificerings modell från ett ramverk med öppen källkod i Azure Machine Learning: [klassificera bilder med hjälp av en Pytorch modell](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri)
 
 ### <a name="image-caption-generation"></a>Generering av bild text
 
@@ -107,7 +115,7 @@ Feedforward neurala Network är den enklaste typen av artificiellt neurala-nätv
 
 Befintliga neurala-nätverk är ett mycket vanligt artificiellt neurala nätverk. Dessa nätverk sparar utdata för ett lager och matar tillbaka det till inmatnings lagret för att förutsäga lagrets resultat. Befintliga neurala-nätverk har fantastiska inlärnings möjligheter. De används ofta för komplexa uppgifter som tids serie prognoser, inlärnings hand skrift och tolknings språk.
 
-### <a name="convolutional-neural-networks"></a>(Convolutional neurala-nätverk
+### <a name="convolutional-neural-network"></a>(Convolutional neurala-nätverk
 
 Ett (convolutional neurala-nätverk är ett särskilt effektivt artificiellt neurala-nätverk och det presenterar en unik arkitektur. Lager ordnas i tre dimensioner: bredd, höjd och djup. Neurons i ett lager ansluter inte till alla neurons i nästa skikt, men endast till en liten region i lagrets neurons. Den slutliga utmatningen reduceras till en enda kombination av sannolikhets poäng, ordnat längs djup dimensionen. 
 

@@ -3,12 +3,12 @@ title: Översikt över ACR-uppgifter
 description: En introduktion till ACR-aktiviteter, en uppsättning funktioner i Azure Container Registry som tillhandahåller säker, automatiserad version av behållar avbildning, hantering och korrigeringar i molnet.
 ms.topic: article
 ms.date: 08/12/2020
-ms.openlocfilehash: 14758e363e74450a10f1a2cbfc889f3e24782771
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: b6df415bd55979ef00f6921321dbc254ef7a7e59
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027674"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562862"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatisera behållar avbildnings versioner och underhåll med ACR-uppgifter
 
@@ -70,7 +70,7 @@ Lär dig hur du utlöser versioner av käll kods bekräftelse i självstudien f�
 
 ## <a name="automate-os-and-framework-patching"></a>Automatisera korrigering av OS och ramverk
 
-Kraften i ACR-aktiviteter för att verkligen förbättra arbets flödet för behållar bygget kommer från möjligheten att identifiera en uppdatering av en *bas avbildning* . En funktion i de flesta behållar avbildningar är en bas avbildning som är en överordnad avbildning som en eller flera program avbildningar baseras på. Bas avbildningar innehåller vanligt vis operativ systemet och ibland program ramverk. 
+Kraften i ACR-aktiviteter för att verkligen förbättra arbets flödet för behållar bygget kommer från möjligheten att identifiera en uppdatering av en *bas avbildning*. En funktion i de flesta behållar avbildningar är en bas avbildning som är en överordnad avbildning som en eller flera program avbildningar baseras på. Bas avbildningar innehåller vanligt vis operativ systemet och ibland program ramverk. 
 
 Du kan ställa in en ACR-uppgift för att spåra ett beroende på en bas avbildning när den skapar en program avbildning. När den uppdaterade bas avbildningen skickas till ditt register, eller om en bas avbildning uppdateras i en offentlig lagrings platsen, t. ex. i Docker Hub, kan ACR-aktiviteter automatiskt bygga program avbildningar baserat på den.
 Med den här automatiska identifieringen och återuppbyggnaden sparar ACR-uppgifter den tid och ansträngning som normalt krävs för att manuellt spåra och uppdatera varje program avbildning som refererar till den uppdaterade bas avbildningen.
@@ -105,7 +105,7 @@ I följande tabell visas exempel på kontext platser som stöds för ACR-aktivit
 | Kontext plats | Beskrivning | Exempel |
 | ---------------- | ----------- | ------- |
 | Lokalt fil system | Filer i en katalog i det lokala fil systemet. | `/home/user/projects/myapp` |
-| GitHub huvud gren | Filer i huvud gruppen (eller andra standard) i en offentlig eller privat GitHub-lagringsplats.  | `https://github.com/gituser/myapp-repo.git` |
+| GitHub huvud gren | Filer i huvud grenen (eller andra standard) i en offentlig eller privat GitHub-lagringsplats.  | `https://github.com/gituser/myapp-repo.git` |
 | GitHub-gren | En speciell gren av en offentlig eller privat GitHub-lagrings platsen.| `https://github.com/gituser/myapp-repo.git#mybranch` |
 | GitHub-undermapp | Filer i en undermapp i en offentlig eller privat GitHub-lagrings platsen. Exempel på en kombination av en gren och undermappar specifikation. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
 | GitHub incheckning | Särskilt genomförande i en offentlig eller privat GitHub-lagrings platsen. Exempel på en kombination av en commit hash (SHA) och undermappens specifikation. | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |

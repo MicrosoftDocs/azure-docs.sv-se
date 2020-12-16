@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 12/15/2020
 ms.author: memildin
-ms.openlocfilehash: 999888b12f10c07f7d42f14289e88030f9542a36
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 598c13b0434a364e73471b53c82663b94fb42f4e
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340826"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560109"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Aviserings validering i Azure Security Center
 I det här dokumentet får du hjälp med att verifiera systemet är rätt konfigurerat för aviseringar från Azure Security Center.
@@ -27,7 +27,42 @@ I det här dokumentet får du hjälp med att verifiera systemet är rätt konfig
 Aviseringar är de meddelanden som Security Center genererar när ett hot mot dina resurser har identifierats. Den prioriterar och listar aviseringarna tillsammans med den information som behövs för att snabbt undersöka problemet. Security Center ger även rekommendationer för hur du kan åtgärda ett angrepp.
 Mer information finns i [säkerhets aviseringar i Security Center](security-center-alerts-overview.md) och [Hantera och svara på säkerhets aviseringar](security-center-managing-and-responding-alerts.md)
 
-## <a name="validate-alerts-on-windows-vms"></a>Verifiera aviseringar på virtuella Windows-datorer <a name="validate-windows"></a>
+
+## <a name="generate-sample-azure-defender-alerts"></a>Generera exempel på Azure Defender-aviseringar
+
+Om du använder den nya funktionen för förhands gransknings aviseringar som beskrivs i [Hantera och svara på säkerhets aviseringar i Azure Security Center](security-center-managing-and-responding-alerts.md), kan du skapa exempel aviseringar på några få klick från sidan säkerhets aviseringar i Azure Portal.
+
+Använd exempel aviseringar för att:
+
+- utvärdera värdet och funktionerna i Azure Defender
+- verifiera eventuella konfigurationer som du har gjort för dina säkerhets aviseringar (till exempel SIEM-integreringar, automatisering av arbets flöden och e-postaviseringar)
+
+> [!NOTE]
+> Den här proceduren kräver att den nya (förhands granskning) aviseringen är tillgänglig från banderollen högst upp på sidan **säkerhets aviseringar** .
+>
+> :::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="Banderoll med en länk till den nya förhands gransknings aviserings upplevelsen":::
+
+Så här skapar du exempel aviseringar:
+
+1. I verktygsfältet på sidan Aviseringar väljer du **Skapa exempel aviseringar**. 
+1. Välj prenumerationen.
+1. Välj relevanta Azure Defender-planer som du vill visa aviseringar för. 
+1. Välj **Skapa exempel aviseringar**.
+
+    :::image type="content" source="media/security-center-alert-validation/create-sample-alerts-procedures.png" alt-text="Steg för att skapa exempel aviseringar i Azure Security Center":::
+    
+    Ett meddelande visas som låter dig veta att exempel aviseringarna skapas:
+
+    :::image type="content" source="media/security-center-alert-validation/notification-sample-alerts-creation.png" alt-text="Meddelande om att exempel aviseringarna genereras.":::
+
+    Efter några minuter visas aviseringarna på sidan säkerhets aviseringar. De visas också var som helst som du har konfigurerat för att ta emot Azure Security Center säkerhets aviseringar (anslutna Siem, e-postaviseringar och så vidare).
+
+    :::image type="content" source="media/security-center-alert-validation/sample-alerts.png" alt-text="Exempel aviseringar i listan säkerhets aviseringar":::
+
+    > [!TIP]
+    > Aviseringarna är för simulerade resurser.
+
+## <a name="simulate-alerts-on-your-azure-vms-windows"></a>Simulera aviseringar på dina virtuella Azure-datorer (Windows) <a name="validate-windows"></a>
 
 När Security Center agent har installerats på datorn följer du de här stegen från den dator där du vill bli den angripna resursen för aviseringen:
 
@@ -36,11 +71,11 @@ När Security Center agent har installerats på datorn följer du de här stegen
 1. Vänta 5–10 minuter och öppna sedan Security Center-aviseringar. En avisering ska visas.
 
 > [!NOTE]
-> När du granskar test aviseringen för Windows kontrollerar du att fält **argumenten granskning är aktive rad** är **Sant**. Om det är **falskt**måste du aktivera granskning av kommando rads argument. Använd följande kommando för att aktivera funktionen: 
+> När du granskar test aviseringen för Windows kontrollerar du att fält **argumenten granskning är aktive rad** är **Sant**. Om det är **falskt** måste du aktivera granskning av kommando rads argument. Använd följande kommando för att aktivera funktionen: 
 >
 >```reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"```
 
-## <a name="validate-alerts-on-linux-vms"></a>Verifiera aviseringar på virtuella Linux-datorer <a name="validate-linux"></a>
+## <a name="simulate-alerts-on-your-azure-vms-linux"></a>Simulera aviseringar på dina virtuella Azure-datorer (Linux) <a name="validate-linux"></a>
 
 När Security Center agent har installerats på datorn följer du de här stegen från den dator där du vill bli den angripna resursen för aviseringen:
 1. Kopiera en körbar fil till en lämplig plats och Byt namn på den till **./asc_alerttest_662jfi039n**, till exempel:
@@ -54,7 +89,7 @@ När Security Center agent har installerats på datorn följer du de här stegen
 1. Vänta 5–10 minuter och öppna sedan Security Center-aviseringar. En avisering ska visas.
 
 
-## <a name="validate-alerts-on-kubernetes"></a>Verifiera aviseringar på Kubernetes <a name="validate-kubernetes"></a>
+## <a name="simulate-alerts-on-kubernetes"></a>Simulera aviseringar på Kubernetes <a name="validate-kubernetes"></a>
 
 Om du har integrerat Azure Kubernetes-tjänsten med Security Center kan du testa att aviseringarna fungerar med följande kubectl-kommando:
 

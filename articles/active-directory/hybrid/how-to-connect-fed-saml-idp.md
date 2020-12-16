@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20088ccc79abe978eb5b3f1c98e958f6c26bcb86
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: cfe3d995cef888d2f0e973a6a6b2a06e0dd6cb54
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861807"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563219"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Använda en SAML 2.0-identitetsprovider (IdP) för enkel inloggning
 
@@ -273,7 +273,7 @@ Den här proceduren visar hur du lägger till en enskild användare i Azure AD.
 Mer information om utcheckningen "New-MsolUser", [/previous-versions/Azure/dn194096 (v = Azure. 100)](/previous-versions/azure/dn194096(v=azure.100))
 
 >[!NOTE]
->Värdet "UserPrinciplName" måste matcha det värde som du ska skicka för "IDPEmail" i ditt SAML 2,0-anspråk och värdet "ImmutableID" måste matcha det värde som skickas i din "NameID"-kontroll.
+>Värdet "UserPrincipalName" måste matcha det värde som du ska skicka för "IDPEmail" i ditt SAML 2,0-anspråk och värdet "ImmutableID" måste matcha det värde som skickas i din "NameID"-kontroll.
 
 ## <a name="verify-single-sign-on-with-your-saml-20-idp"></a>Verifiera enkel inloggning med SAML 2,0-IDP
 Som administratör innan du verifierar och hanterar enkel inloggning (även kallat identitets Federation) kan du läsa informationen och utföra stegen i följande artiklar för att konfigurera enkel inloggning med din SAML 2,0 SP-Lite-baserade identitets leverantör:

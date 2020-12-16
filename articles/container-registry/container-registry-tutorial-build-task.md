@@ -4,12 +4,12 @@ description: I självstudien får du lära dig att konfigurera en Azure Containe
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: 00f77d9dc56bf8fff792a23bbb139519ccd24351
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 7f2e6d7f304977d3e6d92a778dba5bf026343707
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030602"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562913"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Självstudier: Automatisera containeravbildningar i molnet när du checkar in källkod
 
@@ -58,7 +58,7 @@ az acr task create \
 ```
 
 
-Uppgiften anger att varje gång en tidskod checkas in på *huvudförgreningen* i lagringsplatsen som anges av `--context` så skapar ACR Tasks containeravbildningen från koden i den förgreningen. Den Dockerfile som anges av `--file` från lagringsplatsroten används för att skapa avbildningen. Argumentet `--image` anger ett parametriserat värde på `{{.Run.ID}}` för versionsdelen av avbildningstaggen, vilket säkerställer att versionsavbildningen motsvarar en viss version och är unikt taggad.
+Den här uppgiften anger att en viss tids kod allokeras till *huvud* grenen i den databas som anges av `--context` , ACR-aktiviteter skapar behållar avbildningen från koden i den grenen. Den Dockerfile som anges av `--file` från lagringsplatsroten används för att skapa avbildningen. Argumentet `--image` anger ett parametriserat värde på `{{.Run.ID}}` för versionsdelen av avbildningstaggen, vilket säkerställer att versionsavbildningen motsvarar en viss version och är unikt taggad.
 
 Utdata från kommandot [az acr task create][az-acr-task-create] liknar följande:
 
@@ -103,7 +103,7 @@ Utdata från kommandot [az acr task create][az-acr-task-create] liknar följande
       {
         "name": "defaultSourceTriggerName",
         "sourceRepository": {
-          "branch": "master",
+          "branch": "main",
           "repositoryUrl": "https://github.com/gituser/acr-build-helloworld-node",
           "sourceControlAuthProperties": null,
           "sourceControlType": "GitHub"
@@ -194,7 +194,7 @@ Sedan kör du följande kommandon för att skapa, checka in och skicka en ny fil
 echo "Hello World!" > hello.txt
 git add hello.txt
 git commit -m "Testing ACR Tasks"
-git push origin master
+git push origin main
 ```
 
 Du kan bli ombedd att ange dina GitHub-autentiseringsuppgifter när du kör kommandot `git push`. Ange ditt GitHub-användarnamn och din personliga åtkomsttoken som du skapade tidigare för lösenordet.

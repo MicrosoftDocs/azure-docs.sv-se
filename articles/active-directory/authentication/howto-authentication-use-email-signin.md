@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: ff6ae6ea6812397e737deb4b97bf1cd15e022c03
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 0ca5f6a853852acbb4ef97adfce2364592bae270
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743181"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559848"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Logga in för att Azure Active Directory med e-post som ett alternativt inloggnings-ID (för hands version)
 
@@ -36,6 +36,9 @@ Den här artikeln visar hur du aktiverar och använder e-post som ett alternativ
 
 > [!NOTE]
 > Den här funktionen är endast för Azure-autentiserade Azure AD-användare.
+
+> [!NOTE]
+> Den här funktionen stöds för närvarande inte på Azure AD-anslutna Windows 10-enheter för klienter med molnbaserad autentisering. Den här funktionen kan inte användas för Hybrid Azure AD-anslutna enheter.
 
 ## <a name="overview-of-azure-ad-sign-in-approaches"></a>Översikt över inloggnings metoder för Azure AD
 
@@ -238,7 +241,7 @@ Set-AzureADMSFeatureRolloutPolicy -Id "ROLLOUT_POLICY_ID" -IsEnabled $false
 Remove-AzureADMSFeatureRolloutPolicy -Id "ROLLOUT_POLICY_ID"
 ```
 
-## <a name="troubleshoot"></a>Felsök
+## <a name="troubleshoot"></a>Felsöka
 
 Om användarna har problem med inloggnings händelser med hjälp av e-postadressen kan du läsa följande fel söknings steg:
 

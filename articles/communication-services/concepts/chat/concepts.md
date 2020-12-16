@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f0e69e3f62d3b9e4debb5761d877dcdfdd246f60
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 077500e0188d1cc20864d436a2e2fd711b180702
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886030"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560244"
 ---
 # <a name="chat-concepts"></a>Chattbegrepp
 
@@ -46,8 +46,9 @@ Det finns två kärn delar för att chatta arkitektur: 1) klient program för be
 
 Kommunikations tjänster-chatt delar användarspecifika meddelanden och systemgenererade meddelanden som kallas **tråd aktiviteter**. Tråd aktiviteter skapas när en chatt-tråd uppdateras. När du anropar `List Messages` eller `Get Messages` på en chatt-tråd innehåller resultatet de användare-genererade textmeddelandena och system meddelandena i kronologisk ordning. Detta hjälper dig att identifiera när en medlem har lagts till eller tagits bort eller när chatt ämnet uppdaterades. Följande meddelande typer stöds:  
 
- - `Text`: Det faktiska meddelandet som skapas och skickas av användaren som en del av Chat-konversationen. 
- - `ThreadActivity/AddMember`: System meddelande som anger att en eller flera medlemmar har lagts till i chatt-tråden. Exempel:
+ - `Text`: Ett oformaterat textmeddelande som består av och skickas av en användare som en del av en chat-konversation. 
+ - `RichText/HTML`: Ett formaterat textmeddelande. Observera att kommunikations tjänst användare för närvarande inte kan skicka RichText-meddelanden. Den här meddelande typen stöds av meddelanden som skickas från Team användare till kommunikations tjänster användare i team interop-scenarier.
+ - `ThreadActivity/AddMember`: Ett system meddelande som anger att en eller flera medlemmar har lagts till i chatt-tråden. Till exempel:
 
 ```xml
 
@@ -72,7 +73,7 @@ Kommunikations tjänster-chatt delar användarspecifika meddelanden och systemge
 
 ```  
 
-- `ThreadActivity/DeleteMember`: System meddelande som anger att en medlem har tagits bort från chatt-tråden. Exempel:
+- `ThreadActivity/DeleteMember`: System meddelande som anger att en medlem har tagits bort från chatt-tråden. Till exempel:
 
 ```xml
 
@@ -92,7 +93,31 @@ Kommunikations tjänster-chatt delar användarspecifika meddelanden och systemge
 
 ```
 
-- `ThreadActivity/TopicUpdate`: System meddelande som anger att ämnet har uppdaterats. Exempel:
+- `ThreadActivity/MemberJoined`: Ett system meddelande som skapas när en gäst användare ansluter till Teams Mötes chatt. Kommunikation tjänster-användare kan ansluta sig till som gäst för team Mötes chattar. Till exempel:  
+```xml
+{ 
+  "id": "1606351443605", 
+  "type": "ThreadActivity/MemberJoined", 
+  "version": "1606347753409", 
+  "priority": "normal", 
+  "content": "{\"eventtime\":1606351443080,\"initiator\":\"8:orgid:8a53fd2b5ef150bau8442ad732a6ac6b_0e8deebe7527544aa2e7bdf3ce1b8733\",\"members\":[{\"id\":\"8:acs:9b665d83-8164-4923-ad5d-5e983b07d2d7_00000006-7ef9-3bbe-b274-5a3a0d0002b1\",\"friendlyname\":\"\"}]}", 
+  "senderId": " 19:meeting_curGQFTQ8tifs3EK9aTusiszGpkZULzNTTy2dbfI4dCJEaik@thread.v2", 
+  "createdOn": "2020-11-29T00:44:03.6950000Z" 
+} 
+```
+- `ThreadActivity/MemberLeft`: Ett system meddelande som skapas när en gäst användare lämnar Mötes chatten. Kommunikation tjänster-användare kan ansluta sig till som gäst för team Mötes chattar. Till exempel: 
+```xml
+{ 
+  "id": "1606347703429", 
+  "type": "ThreadActivity/MemberLeft", 
+  "version": "1606340753429", 
+  "priority": "normal", 
+  "content": "{\"eventtime\":1606340755385,\"initiator\":\"8:orgid:8a53fd2b5u8150ba81442ad732a6ac6b_0e8deebe7527544aa2e7bdf3ce1b8733\",\"members\":[{\"id\":\"8:acs:9b665753-8164-4923-ad5d-5e983b07d2d7_00000006-7ef9-3bbe-b274-5a3a0d0002b1\",\"friendlyname\":\"\"}]}", 
+  "senderId": "19:meeting_9u7hBcYiADudn41Djm0n9DTVyAHuMZuh7p0bDsx1rLVGpnMk@thread.v2", 
+  "createdOn": "2020-11-29T23:42:33.4290000Z" 
+} 
+```
+- `ThreadActivity/TopicUpdate`: System meddelande som anger att ämnet har uppdaterats. Till exempel:
 
 ```xml
 

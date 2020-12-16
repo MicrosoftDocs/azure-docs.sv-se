@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: include
 ms.date: 12/08/2020
 ms.author: pafarley
-ms.openlocfilehash: 06af722e8c827acdad356acb982ac3761ef68236
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: ebef33072b802ffc35b8c011d974dbcd203fa6e1
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905695"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561485"
 ---
 Kom igång med Azure Content Moderator-REST API. 
 
@@ -23,10 +23,10 @@ Content Moderator är en AI-tjänst som låter dig hantera innehåll som är pot
 
 Använd Content Moderator REST API för att:
 
-* [Måttlig text](#moderate-text)
-* [Måttliga bilder](#moderate-images)
+* Måttlig text
+* Måttliga bilder
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services/)
 * När du har en Azure-prenumeration <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator"  title=" skapar du en Content moderator resurs "  target="_blank"> skapa en Content moderator resurs <span class="docon docon-navigate-external x-hidden-focus"></span> </a> i Azure Portal för att hämta din nyckel och slut punkt. Vänta tills den har distribuerats och klicka på knappen **gå till resurs** .
@@ -51,7 +51,7 @@ När du har gjort dina ändringar öppnar du en kommandotolk och anger det nya k
 
 ### <a name="examine-the-results"></a>Granska resultaten
 
-Du bör se de text redigerings resultat som visas som JSON-data i konsol fönstret. Exempel:
+Du bör se de text redigerings resultat som visas som JSON-data i konsol fönstret. Till exempel:
 
 ```json
 {

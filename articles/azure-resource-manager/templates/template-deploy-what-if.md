@@ -1,27 +1,24 @@
 ---
-title: Malldistribution vad-om (för hands version)
+title: Malldistribution vad-om
 description: Ta reda på vilka ändringar som sker i resurserna innan du distribuerar en Azure Resource Manager-mall.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 08/05/2020
+ms.date: 12/15/2020
 ms.author: tomfitz
-ms.openlocfilehash: 27efe1e03b8a0d373d566106a53a41007731973e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1ce7f8f718b364dc4b47593cf9ea37e8baf1e72
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87810079"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563100"
 ---
-# <a name="arm-template-deployment-what-if-operation-preview"></a>ARM-mall för att distribuera konsekvens åtgärder (för hands version)
+# <a name="arm-template-deployment-what-if-operation"></a>Åtgärden what-if för distribution av ARM-mall
 
-Innan du distribuerar en Azure Resource Manager-mall (ARM-mall) kan du förhandsgranska de ändringar som kommer att ske. Azure Resource Manager tillhandahåller åtgärden vad händer om du kan se hur resurser kommer att ändras om du distribuerar mallen. Konsekvens åtgärden gör inga ändringar i befintliga resurser. I stället förväntas ändringarna om den angivna mallen distribueras.
-
-> [!NOTE]
-> Konsekvens åtgärden är för närvarande en för hands version. Som en för hands version kan resultatet ibland visa att en resurs kommer att ändras när ingen ändring sker. Vi arbetar för att minska problemen, men vi behöver din hjälp. Rapportera de här problemen vid [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
+Innan du distribuerar en Azure Resource Manager-mall (ARM-mall) kan du förhandsgranska de ändringar som kommer att ske. Azure Resource Manager tillhandahåller åtgärden vad händer om du kan se hur resurser kommer att ändras om du distribuerar mallen. Konsekvensgranskningen ändrar inga befintliga resurser. I stället får du se vilka ändringar som görs om du distribuerar den angivna mallen.
 
 Du kan använda åtgärden vad händer om med Azure PowerShell, Azure CLI eller REST API åtgärder. Vad-om stöds för resurs grupp, prenumeration, hanterings grupp och distributioner på klient nivå.
 
-## <a name="install-azure-powershell-module"></a>Installera Azure PowerShell modul
+## <a name="install-azure-powershell-module"></a>Installera Azure PowerShell-modul
 
 Om du vill använda konsekvens i PowerShell måste du ha version **4,2 eller senare av AZ-modulen**.
 
@@ -37,34 +34,9 @@ Install-Module -Name Az -Force
 
 Mer information om hur du installerar moduler finns i [installera Azure PowerShell](/powershell/azure/install-az-ps).
 
-### <a name="uninstall-alpha-version"></a>Avinstallera alfa version
-
-Om du tidigare har installerat en Alpha-version av modulen what-if avinstallerar du modulen. Alfa versionen är bara tillgänglig för användare som har registrerat sig för en tidig för hands version. Om du inte har installerat den för hands versionen kan du hoppa över det här avsnittet.
-
-1. Kör PowerShell som administratör
-1. Kontrol lera de installerade versionerna av modulen AZ. Resources.
-
-   ```powershell
-   Get-InstalledModule -Name Az.Resources -AllVersions | select Name,Version
-   ```
-
-1. Om du har en installerad version med ett versions nummer i formatet **2. x. x-alpha**avinstallerar du den versionen.
-
-   ```powershell
-   Uninstall-Module Az.Resources -RequiredVersion 2.0.1-alpha5 -AllowPrerelease
-   ```
-
-1. Avregistrera den lagrings plats som du använde för att installera förhands granskningen.
-
-   ```powershell
-   Unregister-PSRepository -Name WhatIfRepository
-   ```
-
-Du är redo att använda vad som händer.
-
 ## <a name="install-azure-cli-module"></a>Installera Azure CLI-modul
 
-Om du vill använda konsekvens i Azure CLI måste du ha Azure CLI-2.5.0 eller senare. Om det behövs [installerar du den senaste versionen av Azure CLI](/cli/azure/install-azure-cli).
+Om du vill använda what-if i Azure CLI måste du ha Azure CLI 2.5.0 eller senare. [Installera den senaste versionen av Azure CLI](/cli/azure/install-azure-cli) om det behövs.
 
 ## <a name="see-results"></a>Visa resultat
 
@@ -129,8 +101,8 @@ Om du vill förhandsgranska ändringar innan du distribuerar en mall använder d
 
 * [AZ distributions grupp vad](/cli/azure/deployment/group#az-deployment-group-what-if) gäller distribution av resurs grupper
 * [AZ distribution under vad – om](/cli/azure/deployment/sub#az-deployment-sub-what-if) distributioner på prenumerations nivå
-* [AZ-distribution mg vad](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-what-if) gäller för distributioner av hanterings grupper
-* [AZ distribution klient vad](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-what-if) gäller för klient distributioner
+* [AZ-distribution mg vad](/cli/azure/deployment/mg#az-deployment-mg-what-if) gäller för distributioner av hanterings grupper
+* [AZ distribution klient vad](/cli/azure/deployment/tenant#az-deployment-tenant-what-if) gäller för klient distributioner
 
 Du kan använda `--confirm-with-what-if` växeln (eller dess kort form `-c` ) för att förhandsgranska ändringarna och uppmanas att fortsätta med distributionen. Lägg till den här växeln i:
 
@@ -154,23 +126,23 @@ För REST API använder du:
 * [Distributioner – what if vid hanterings gruppens omfattning](/rest/api/resources/deployments/whatifatmanagementgroupscope) för distributioner av hanterings grupper
 * [Distributioner – what if vid klient omfånget](/rest/api/resources/deployments/whatifattenantscope) för klient distributioner.
 
-## <a name="change-types"></a>Ändra typer
+## <a name="change-types"></a>Ändringstyper
 
 Åtgärden konsekvens visar sex olika typer av ändringar:
 
-- **Skapa**: resursen finns inte för närvarande, men den har definierats i mallen. Resursen kommer att skapas.
+- **Skapa**: resursen finns inte för närvarande, men den har definierats i mallen. Resursen skapas.
 
-- **Ta bort**: den här ändrings typen gäller endast när [slutfört läge](deployment-modes.md) används för distribution. Resursen finns, men har inte definierats i mallen. Med slutfört läge tas resursen bort. Endast resurser som [stöder fullständig borttagning av läge](complete-mode-deletion.md) ingår i den här ändrings typen.
+- **Ta bort**: den här ändrings typen gäller endast när [slutfört läge](deployment-modes.md) används för distribution. Resursen finns, men den definieras inte i mallen. I fullständigt läge tas resursen bort. Endast resurser som [stöder fullständig borttagning av läge](complete-mode-deletion.md) ingår i den här ändrings typen.
 
 - **Ignorera**: resursen finns, men har inte definierats i mallen. Resursen kommer inte att distribueras eller ändras.
 
-- **Nochang**: resursen finns och definieras i mallen. Resursen kommer att omdistribueras, men egenskaperna för resursen ändras inte. Den här ändrings typen returneras när [ResultFormat](#result-format) är inställd på `FullResourcePayloads` , vilket är standardvärdet.
+- **Nochang**: resursen finns och definieras i mallen. Resursen distribueras på nytt, men egenskaperna ändras inte. Den här ändrings typen returneras när [ResultFormat](#result-format) är inställd på `FullResourcePayloads` , vilket är standardvärdet.
 
-- **Ändra**: resursen finns och definieras i mallen. Resursen kommer att omdistribueras och egenskaperna för resursen ändras. Den här ändrings typen returneras när [ResultFormat](#result-format) är inställd på `FullResourcePayloads` , vilket är standardvärdet.
+- **Ändra**: resursen finns och definieras i mallen. Resursen distribueras på nytt och resursens egenskaper ändras. Den här ändrings typen returneras när [ResultFormat](#result-format) är inställd på `FullResourcePayloads` , vilket är standardvärdet.
 
-- **Distribuera**: resursen finns och definieras i mallen. Resursen kommer att omdistribueras. Egenskaperna för resursen kanske inte ändras. Åtgärden returnerar den här ändrings typen när den inte har tillräckligt med information för att avgöra om några egenskaper kommer att ändras. Du ser bara det här villkoret när [ResultFormat](#result-format) är inställt på `ResourceIdOnly` .
+- **Distribuera**: resursen finns och definieras i mallen. Resursen distribueras på nytt. Egenskaperna för resursen ändras eventuellt. Åtgärden returnerar den här ändringstypen när det inte finns tillräckligt med information för att avgöra om några egenskaper kommer att ändras. Du ser bara det här villkoret när [ResultFormat](#result-format) är inställt på `ResourceIdOnly` .
 
-## <a name="result-format"></a>Resultat format
+## <a name="result-format"></a>Resultatformat
 
 Du styr detalj nivån som returneras om förväntade ändringar. Du kan välja mellan två alternativ:
 
@@ -282,7 +254,7 @@ az deployment group what-if \
 
 ---
 
-Vad-om-utdata ser ut ungefär så här:
+Utdata från konsekvensgranskningen bör se ut ungefär så här:
 
 ![Resource Manager-mall distribution av konsekvens åtgärder](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
 
@@ -354,7 +326,7 @@ results=$(az deployment group what-if --resource-group ExampleGroup --template-u
 
 Konsekvens åtgärden stöder användning av [distributions läge](deployment-modes.md). När du har angett till slutfört läge raderas inte resurser som inte finns i mallen. I följande exempel distribueras en [mall som inte har några definierade resurser](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json) i komplett läge.
 
-Om du vill förhandsgranska ändringar innan du distribuerar en mall använder du parametern Confirm switch med kommandot Deployment. Om ändringarna visas som du förväntade dig bekräftar du att du vill att distributionen ska slutföras.
+Om du vill förhandsgranska ändringarna innan du distribuerar en mall använder du parametern confirm switch (bekräfta ändring) i distributionskommandot. Om ändringarna är de du förväntar dig bekräftar du att du vill utföra distributionen.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -415,15 +387,15 @@ Du ser de förväntade ändringarna och kan bekräfta att du vill att distributi
 
 Du kan använda konsekvens åtgärden via Azure SDK: er.
 
-* För python använder du [vad-om](/python/api/azure-mgmt-resource/azure.mgmt.resource.resources.v2019_10_01.operations.deploymentsoperations?view=azure-python#what-if-resource-group-name--deployment-name--properties--location-none--custom-headers-none--raw-false--polling-true----operation-config-).
+* För python använder du [vad-om](/python/api/azure-mgmt-resource/azure.mgmt.resource.resources.v2019_10_01.operations.deploymentsoperations#what-if-resource-group-name--deployment-name--properties--location-none--custom-headers-none--raw-false--polling-true----operation-config-).
 
-* För Java använder du [DeploymentWhatIf-klass](/java/api/com.microsoft.azure.management.resources.deploymentwhatif?view=azure-java-stable).
+* För Java använder du [DeploymentWhatIf-klass](/java/api/com.microsoft.azure.management.resources.deploymentwhatif).
 
-* För .NET använder du [klassen DeploymentWhatIf](/dotnet/api/microsoft.azure.management.resourcemanager.models.deploymentwhatif?view=azure-dotnet).
+* För .NET använder du [klassen DeploymentWhatIf](/dotnet/api/microsoft.azure.management.resourcemanager.models.deploymentwhatif).
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Om du upptäcker felaktiga resultat från för hands versionen av vad-om, kan du rapportera problemen på [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
+- Om du upptäcker felaktiga resultat från konsekvens åtgärden kan du rapportera problemen vid [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
 - Information om hur du distribuerar mallar med Azure PowerShell finns i [distribuera resurser med ARM-mallar och Azure PowerShell](deploy-powershell.md).
 - Information om hur du distribuerar mallar med Azure CLI finns i [distribuera resurser med ARM-mallar och Azure CLI](deploy-cli.md).
 - Information om hur du distribuerar mallar med REST finns i [distribuera resurser med ARM-mallar och Resource Manager REST API](deploy-rest.md).

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 5a23cf031b5d7cf40e2077f2e5287e10de563207
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 757dfa119649e21c6e1787671afa61ee18184300
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903011"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561910"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>Vanliga frågor om ARM-mallar
 
@@ -154,7 +154,7 @@ I den här artikeln får du svar på vanliga frågor om Azure Resource Manager m
 
 * **När jag använder vad som händer, ser jag ändringar i egenskaper som inte finns i min mall. Förväntas "brus"?**
 
-  Vad-om är en för hands version. Vi arbetar på att minska bruset. Du hjälper oss att förbättra genom att skicka in problem i vår GitHub-lagrings platsen här: https://aka.ms/WhatIfIssues
+  Vi arbetar på att minska bruset. Du hjälper oss att förbättra genom att skicka in problem i vår GitHub-lagrings platsen här: https://aka.ms/WhatIfIssues
 
 ## <a name="template-visualizer"></a>Mall-visualiserare
 

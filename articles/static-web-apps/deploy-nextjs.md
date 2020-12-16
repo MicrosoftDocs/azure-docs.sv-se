@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
-ms.openlocfilehash: 6f96b74726684d37795c94be74e48611b4145402
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: a22d06137c3ec17851280605ac85c94ef8b342cd
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350219"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563083"
 ---
 # <a name="deploy-static-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>Distribuera statiska, återgivna Next.js webbplatser på Azures statiska Web Apps för hands version
 
@@ -125,7 +125,7 @@ Azure static Web Apps distribuerar din app från en GitHub-lagringsplats och for
 1. Skicka ändringarna till GitHub.
 
     ```bash
-    git push origin master
+    git push origin main
     ```
 
 ## <a name="deploy-your-static-website"></a>Distribuera din statiska webbplats
@@ -155,7 +155,7 @@ Det nya kontot för statisk Web Apps behöver åtkomst till lagrings platsen med
 1. Klicka på **knappen Logga in med GitHub**
 1. Välj den **organisation** som du skapade lagrings platsen för i Next.js projektet, vilket kan vara ditt GitHub-användarnamn.
 1. Sök efter och välj namnet på den databas som du skapade tidigare.
-1. Välj **Master** som gren i list rutan *gren* .
+1. Välj **main** som gren i list rutan *gren* .
 
    :::image type="content" source="media/deploy-nextjs/connect-github.png" alt-text="Ansluta GitHub":::
 
@@ -189,7 +189,7 @@ https://github.com/<YOUR_GITHUB_USERNAME>/nextjs-starter/actions
 
 När du skapade appen skapade Azure static Web Apps en arbets flödes fil för GitHub åtgärder i din lagrings plats. Du måste överföra filen till din lokala lagrings plats så att git-historiken synkroniseras.
 
-Gå tillbaka till terminalen och kör följande kommando `git pull origin master` .
+Gå tillbaka till terminalen och kör följande kommando `git pull origin main` .
 
 ## <a name="configure-dynamic-routes"></a>Konfigurera dynamiska vägar
 

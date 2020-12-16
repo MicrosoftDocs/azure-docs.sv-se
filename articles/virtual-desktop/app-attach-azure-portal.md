@@ -6,14 +6,14 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ffae02a11f2857e72cf7c5d2bbc84d8ab6174e17
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: d8ed429003a9da7ae93fb93f4218cd66767dcd7b
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97426022"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562284"
 ---
-# <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Konfigurera MSIX-appen bifoga med Azure Portal
+# <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Konfigurera MSIX-appbifogning med Azure Portal
 
 > [!IMPORTANT]
 > MSIX app Attach är för närvarande en offentlig för hands version.
@@ -31,6 +31,7 @@ Det här behöver du för att konfigurera MSIX app Attach:
 
 - En fungerande distribution av virtuella Windows-datorer. Information om hur du distribuerar virtuella Windows-datorer (klassisk) finns i [skapa en klient i Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Information om hur du distribuerar virtuella Windows-datorer med Azure Resource Manager-integrering finns i [skapa en adresspool med Azure Portal](./create-host-pools-azure-marketplace.md).
 - En Windows-adresspool för virtuella skriv bord med minst en aktiv session-värd.
+- Den här poolen måste vara i validerings miljön. 
 - MSIX-packnings verktyget.
 - Ett MSIX-paketerat program expanderat till en MSIX-avbildning som laddas upp till en fil resurs.
 - En fil resurs i Windows-distributionen för virtuella skriv bord där MSIX-paketet ska lagras.

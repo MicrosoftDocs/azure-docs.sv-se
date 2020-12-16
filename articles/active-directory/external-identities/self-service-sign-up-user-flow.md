@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffb1d5eb756c7bc316a6d8e1de30a95eb1ac5194
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f76f4a3e5fc87420c242c693e3c48a91244641e0
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287057"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560041"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Lägga till ett användar flöde för självbetjänings registrering i en app (för hands version)
 > [!NOTE]
@@ -48,18 +48,18 @@ Användarattribut är värden som samlas in från användaren under självbetjä
 Innan du kan lägga till ett användar flöde för självbetjänings registrering i dina program måste du aktivera funktionen för din klient. När den är aktive rad blir kontrollerna tillgängliga i det användar flöde som gör att du kan koppla användar flödet till ett program.
 
 1. Logga in till [Azure-portalen](https://portal.azure.com) som Azure AD-administratör.
-2. Under **Azure-tjänster**väljer du **Azure Active Directory**.
-3. Välj **användar inställningar**och välj **Hantera inställningar för externt samarbete**under **externa användare**.
+2. Under **Azure-tjänster** väljer du **Azure Active Directory**.
+3. Välj **användar inställningar** och välj **Hantera inställningar för externt samarbete** under **externa användare**.
 4. Ange alternativet för att aktivera självbetjäning för **gäst registrering via användar flöden (förhands granskning)** till **Ja**.
 
    ![Aktivera självbetjänings registrering för gäst](media/self-service-sign-up-user-flow/enable-self-service-sign-up.png)
-
+5. Välj **Spara**.
 ## <a name="create-the-user-flow-for-self-service-sign-up"></a>Skapa användar flödet för självbetjänings registrering
 
 Därefter skapar du användar flödet för självbetjänings registrering och lägger till det i ett program.
 
 1. Logga in till [Azure-portalen](https://portal.azure.com) som Azure AD-administratör.
-2. Under **Azure-tjänster**väljer du **Azure Active Directory**.
+2. Under **Azure-tjänster** väljer du **Azure Active Directory**.
 3. På den vänstra menyn väljer du **externa identiteter**.
 4. Välj **användar flöden (förhands granskning)** och välj sedan **nytt användar flöde**.
 
@@ -67,7 +67,7 @@ Därefter skapar du användar flödet för självbetjänings registrering och l�
 
 5. På sidan **skapa** anger du ett **namn** för användar flödet. Observera att namnet föregås automatiskt av **B2X_1_**.
 6. I listan **identitets leverantörer** väljer du en eller flera identitets leverantörer som dina externa användare kan använda för att logga in i ditt program. **Azure Active Directory registreringen** är markerad som standard. (Mer information om hur du lägger till identitets leverantörer finns i [innan du börjar](#before-you-begin) tidigare i den här artikeln.)
-7. Under **användarattribut**väljer du de attribut som du vill samla in från användaren. För ytterligare attribut väljer du **Visa fler**. Välj till exempel **Visa mer**och välj sedan attribut och anspråk för **land/region**, **visnings namn**och **post nummer**. Välj **OK**.
+7. Under **användarattribut** väljer du de attribut som du vill samla in från användaren. För ytterligare attribut väljer du **Visa fler**. Välj till exempel **Visa mer** och välj sedan attribut och anspråk för **land/region**, **visnings namn** och **post nummer**. Välj **OK**.
 
    ![Sidan skapa ett nytt användar flöde](media/self-service-sign-up-user-flow/create-user-flow.png)
 
@@ -81,8 +81,8 @@ Du kan välja i vilken ordning attributen ska visas på registrerings sidan.
 1. Välj **Azure Active Directory** i [Azure-portalen](https://portal.azure.com).
 2. Välj **externa identiteter**, Välj **användar flöden (förhands granskning)**.
 3. Välj användar flödet för självbetjänings registrering i listan.
-4. Under **Anpassa**väljer du **sidlayouter.**
-5. De attribut som du väljer att samla in visas. Om du vill ändra visnings ordningen väljer du ett attribut och väljer sedan **Flytta upp**, **Flytta ned**, **Flytta till början**eller **Flytta längst ned**.
+4. Under **Anpassa** väljer du **sidlayouter.**
+5. De attribut som du väljer att samla in visas. Om du vill ändra visnings ordningen väljer du ett attribut och väljer sedan **Flytta upp**, **Flytta ned**, **Flytta till början** eller **Flytta längst ned**.
 6. Välj **Spara**.
 
 ## <a name="add-applications-to-the-self-service-sign-up-user-flow"></a>Lägga till program till användar flödet för självbetjänings registrering
@@ -90,11 +90,11 @@ Du kan välja i vilken ordning attributen ska visas på registrerings sidan.
 Nu kan du koppla program till användar flödet.
 
 1. Logga in till [Azure-portalen](https://portal.azure.com) som Azure AD-administratör.
-2. Under **Azure-tjänster**väljer du **Azure Active Directory**.
+2. Under **Azure-tjänster** väljer du **Azure Active Directory**.
 3. På den vänstra menyn väljer du **externa identiteter**.
-4. Under självbetjänings **registrering**väljer du **användar flöden (för hands version)**.
+4. Under självbetjänings **registrering** väljer du **användar flöden (för hands version)**.
 5. Välj användar flödet för självbetjänings registrering i listan.
-6. På den vänstra menyn väljer du **program**under **Använd**.
+6. På den vänstra menyn väljer du **program** under **Använd**.
 7. Välj **Lägg till program**.
 
    ![Tilldela ett program till användar flödet](media/self-service-sign-up-user-flow/assign-app-to-user-flow.png)

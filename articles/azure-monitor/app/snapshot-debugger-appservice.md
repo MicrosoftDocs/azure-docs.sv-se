@@ -6,27 +6,32 @@ author: brahmnes
 ms.author: bfung
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6d111379cbeb0ea4eeac9ea0868b6d263a0a540c
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 35653840c5ddd6f5ae2d5dc078513f0fa35ab34a
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435730"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560941"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>Aktivera Snapshot Debugger för .NET-appar i Azure App Service
 
 Snapshot Debugger fungerar för närvarande för ASP.NET och ASP.NET Core appar som körs på Azure App Service i Windows Service-planer. Vi rekommenderar att du kör programmet på den grundläggande tjänst nivån eller högre när du använder fel sökning av ögonblicks bilder. För de flesta program har de kostnads fria och delade tjänst nivåerna inte tillräckligt med minne för att spara ögonblicks bilder.
 
 ## <a name="enable-snapshot-debugger"></a><a id="installation"></a> Aktivera Snapshot Debugger
-Följ anvisningarna nedan om du vill aktivera Snapshot Debugger för en app. Om du kör en annan typ av Azure-tjänst, finns här instruktioner för att aktivera Snapshot Debugger på andra plattformar som stöds:
+Följ anvisningarna nedan om du vill aktivera Snapshot Debugger för en app.
+
+Om du kör en annan typ av Azure-tjänst, finns här instruktioner för att aktivera Snapshot Debugger på andra plattformar som stöds:
 * [Azure Cloud Services](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric-tjänster](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Virtual Machines och skalnings uppsättningar för virtuella datorer](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Lokala virtuella eller fysiska datorer](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 
-Om du använder en för hands version av .NET Core följer du anvisningarna för [att aktivera Snapshot debugger för andra miljöer](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) för att först inkludera paketet [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet med programmet och sedan slutföra resten av anvisningarna nedan. 
+> [!NOTE]
+> Om du använder en för hands version av .NET Core eller dina program referenser Application Insights SDK, direkt eller indirekt via en beroende sammansättning, följer du anvisningarna för [att aktivera Snapshot debugger för andra miljöer](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) för att först ta med NuGet-paketet [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) med programmet och Slutför resten av anvisningarna nedan. 
 
-Application Insights Snapshot Debugger är förinstallerat som en del av App Services runtime, men du måste aktivera det för att skapa ögonblicks bilder för din App Service-app. När du har distribuerat en app, även om du har inkluderat Application Insights SDK i käll koden, följer du stegen nedan för att aktivera fel sökning av ögonblicks bild.
+Snapshot Debugger är förinstallerat som en del av App Services runtime, men du måste aktivera det för att skapa ögonblicks bilder för din App Service-app.
+
+När du har distribuerat en app följer du stegen nedan för att aktivera fel sökning av ögonblicks bild:
 
 1. Navigera till Azures kontroll panel för din App Service.
 2. Gå till sidan **inställningar > Application Insights** .
@@ -44,11 +49,12 @@ Application Insights Snapshot Debugger är förinstallerat som en del av App Ser
 ## <a name="disable-snapshot-debugger"></a>Inaktivera Snapshot Debugger
 
 Följ samma steg som för **aktivering av Snapshot debugger**, men växla båda växlar för Snapshot debugger till **av**.
+
 Vi rekommenderar att du har Snapshot Debugger aktiverat i alla dina appar för att under lätta diagnostiken av program undantag.
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-mall
 
-För en Azure App Service kan du ange inställningar för appar i en Azure Resource Manager mall för att aktivera Snapshot Debugger och profiler. Du lägger till en konfigurations resurs som innehåller appinställningar som en underordnad resurs till webbplatsen:
+För en Azure App Service kan du ange inställningar för appar i Azure Resource Manager-mallen för att aktivera Snapshot Debugger och profiler, se följande mall-kodfragment:
 
 ```json
 {

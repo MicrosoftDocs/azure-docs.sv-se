@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 802b7d2ca5d96bf385c4b8f0ee0cdaa3db181a1c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: feda969a5818402f4a5f2dadc80c70c324ad7492
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922570"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559972"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>Självstudie: Genomsök data med Azure avdelningens kontroll (för hands version)
 
@@ -146,10 +146,11 @@ När katalog konfigurationen har slutförts kör du följande skript i PowerShel
 
    När du kör kommandot visas ett popup-fönster där du kan logga in med dina Azure Active Directory autentiseringsuppgifter.
 
-1. Använd följande kommando för att köra start paketet. Ersätt `CatalogName` `TenantID` `SubscriptionID` `newresourcegroupname` `CatalogResourceGroupName` plats hållarna,,, och. För `newresourcegroupname` använder du ett unikt namn för den resurs grupp som ska innehålla datafastigheten.
 
-> [!IMPORTANT]
-> **Newresourcegroupname** använder bara siffror och gemena bokstäver och måste vara kortare än 17 tecken. **Inga versaler och specialtecken tillåts.** Den här begränsningen kommer från lagrings kontots namngivnings regler.
+1. Använd följande kommando för att köra start paketet. Ersätt `CatalogName` `TenantID` `SubscriptionID` `NewResourceGroupName` `CatalogResourceGroupName` plats hållarna,,, och. För `NewResourceGroupName` använder du ett unikt namn (endast med alfanumeriska alfanumeriska tecken) för den resurs grupp som ska innehålla data fastigheten.
+
+   > [!IMPORTANT]
+   > **Newresourcegroupname** använder bara siffror och gemena bokstäver och måste vara kortare än 17 tecken. **Inga versaler och specialtecken tillåts.** Den här begränsningen kommer från lagrings kontots namngivnings regler.
 
    ```powershell
    .\RunStarterKit.ps1 -CatalogName <CatalogName> -TenantId <TenantID>`

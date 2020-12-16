@@ -11,12 +11,12 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: 404fc887cf40ee5d88b2824e8d2324d103226973
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: a875c036c79419357f1134c32f62fdb060fec7c6
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164371"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562301"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Kom igång med Azure Cloud Services och ASP.NET
 
@@ -744,7 +744,7 @@ Den här koden läser databasen för att hämta bildens URL, konverterar bilden 
 Om något inte fungerar när du följer anvisningarna i den här kursen visar vi här några exempel på vanliga fel och hur du kan lösa dem.
 
 ### <a name="serviceruntimeroleenvironmentexception"></a>ServiceRuntime.RoleEnvironmentException
-Objektet `RoleEnvironment` tillhandahålls av Azure när du kör ett program i Azure eller när du kör programmet lokalt med Azure-beräkningsemulatorn.  Om det här felet uppstår när du kör programmet lokalt ska du kontrollera att du har angett ContosoAdsCloudService-projektet som startprojekt. Då konfigureras projektet att köras med Azure-beräkningsemulatorn.
+`RoleEnvironment`Objektet tillhandahålls av Azure när du kör ett program i Azure eller när du kör lokalt med Azure Compute-emulatorn.  Om det här felet uppstår när du kör programmet lokalt ska du kontrollera att du har angett ContosoAdsCloudService-projektet som startprojekt. Detta konfigurerar projektet att köras med Azure Compute-emulatorn.
 
 En av de saker som programmet använder Azure RoleEnvironment till är att hämta anslutningssträngvärdena som lagras i *.cscfg*-filerna, så en annan möjlig orsak till det här undantaget är en anslutningssträng som saknas. Kontrollera att du har skapat StorageConnectionString-inställningen både för moln- och lokala konfigurationer i ContosoAdsWeb-projektet, samt att du har skapat båda anslutningssträngar för båda konfigurationerna i ContosoAdsWorker-projektet. Om du gör sökningen **Sök alla** efter StorageConnectionString i hela lösningen, bör du se den nio gånger i sex filer.
 
@@ -754,7 +754,7 @@ Försök att ändra portnumret som används av webbprojektet. Högerklicka på C
 Ett annat alternativ som eventuellt kan lösa problemet finns i följande avsnitt.
 
 ### <a name="other-errors-when-running-locally"></a>Andra fel när du kör programmet lokalt
-Som standard använder nya molntjänstprojekt expressversionen av Azure-beräkningsemulatorn för att simulera Azure-miljön. Detta är en förenklad version av den fullständiga beräkningsemulatorn, och under vissa förhållanden fungerar den fullständiga emulatorn men inte expressversionen.  
+Som standard använder nya Cloud Service-projekt Azure Compute emulator Express för att simulera Azure-miljön. Detta är en förenklad version av den fullständiga beräkningsemulatorn, och under vissa förhållanden fungerar den fullständiga emulatorn men inte expressversionen.  
 
 Om du vill ändra så att projektet använder den fullständiga emulatorn, högerklickar du på ContosoAdsCloudService-projektet och klickar sedan på **Properties** (Egenskaper). Klicka på fliken **Web** (Webb) i fönstret **Properties** (Egenskaper), och markera sedan alternativknappen **Use Full Emulator** (Använd fullständig emulator).
 
