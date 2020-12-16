@@ -4,19 +4,19 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: 800dc50f82fa47228f1a88a143c5b515168812a6
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 6265a7cde8e276570409238cadfd5ebc777b4527
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755735"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97531917"
 ---
-| Resurs | Kostnadsfri | Delad | Basic | Standard | Premium (v3) | Isolerad </th> |
+| Resurs | Kostnadsfri | Delad | Basic | Standard | Premium (v1-v3) | Isolerad </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | [Webb-, mobil-eller API-appar](https://azure.microsoft.com/services/app-service/) per [Azure App Service plan](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> |10 |100 |Obegränsat<sup>2</sup> |Obegränsat<sup>2</sup> |Obegränsat<sup>2</sup> |Obegränsat<sup>2</sup>|
-| [App Service-plan](../articles/app-service/overview-hosting-plans.md) |10 per region |10 per resurs grupp |100 per resurs grupp |100 per resurs grupp |100 per resurs grupp |100 per resurs grupp|
+| [App Service plan](../articles/app-service/overview-hosting-plans.md) |10 per region |10 per resurs grupp |100 per resurs grupp |100 per resurs grupp |100 per resurs grupp |100 per resurs grupp|
 | Beräknings instans typ |Delad |Delad |Dedikerad<sup>3</sup> |Dedikerad<sup>3</sup> |Dedikerad<sup>3</sup></p> |Dedikerad<sup>3</sup>|
-| [Skala ut](../articles/app-service/manage-scale-up.md) (maximalt antal instanser) |1 delad |1 delad |3 dedikerad<sup>3</sup> |10 dedikerat<sup>3</sup> |30 dedikerat<sup>3</sup>|100 dedikerat<sup>4</sup>|
+| [Skala ut](../articles/app-service/manage-scale-up.md) (maximalt antal instanser) |1 delad |1 delad |3 dedikerad<sup>3</sup> |10 dedikerat<sup>3</sup> | 20 dedikerat för v1 och v2; 30 dedikerat för v3. <sup>3</sup>|100 dedikerat<sup>4</sup>|
 | Lagring<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup> <br/><br/> Skicka en support förfrågan för mer än 250 GB. |1 TB<sup>5</sup> <br/><br/> Den tillgängliga lagrings kvoten är 999 GB. |
 | PROCESSOR tid (5 minuter)<sup>6</sup> |3 minuter |3 minuter |Obegränsad, betala enligt standard [priser](https://azure.microsoft.com/pricing/details/app-service/)</a> |Obegränsad, betala enligt standard [priser](https://azure.microsoft.com/pricing/details/app-service/)</a> |Obegränsad, betala enligt standard [priser](https://azure.microsoft.com/pricing/details/app-service/)</a> |Obegränsad, betala enligt standard [priser](https://azure.microsoft.com/pricing/details/app-service/)</a>|
 | CPU-tid (dag)<sup>6</sup> |60 minuter |240 minuter |Obegränsad, betala enligt standard [priser](https://azure.microsoft.com/pricing/details/app-service/)</a> |Obegränsad, betala enligt standard [priser](https://azure.microsoft.com/pricing/details/app-service/)</a> |Obegränsad, betala enligt standard [priser](https://azure.microsoft.com/pricing/details/app-service/)</a> |Obegränsad, betala enligt standard [priser](https://azure.microsoft.com/pricing/details/app-service/)</a> |
@@ -30,7 +30,7 @@ ms.locfileid: "92755735"
 | Anpassade domäner per app</a> |0 (endast azurewebsites.net-underdomän)|500 |500 |500 |500 |500 |
 | Stöd för anpassad domän- [SSL](../articles/app-service/configure-ssl-certificate.md) |Jokertecken för \* . azurewebsites.net är inte stöds som standard|Jokertecken för \* . azurewebsites.net är inte stöds som standard|Obegränsade SNI SSL anslutningar |Obegränsade SNI SSL och 1 IP SSL anslutningar ingår |Obegränsade SNI SSL och 1 IP SSL anslutningar ingår | Obegränsade SNI SSL och 1 IP SSL anslutningar ingår|
 | Hybridanslutningar | | | 5 per plan | 25 per plan | 200 per app | 200 per app |
-| [Virtual Network-integrering](../articles/app-service/web-sites-integrate-with-vnet.md) | | |   |  X |  X  |  X  |
+| [Integrering med virtuellt nätverk](../articles/app-service/web-sites-integrate-with-vnet.md) | | |   |  X |  X  |  X  |
 | Integrerad belastningsutjämnare | |X |X |X |X |X<sup>10</sup> |
 | [Åtkomst begränsningar](../articles/app-service/networking-features.md#access-restrictions) | 512 regler per app | 512 regler per app | 512 regler per app | 512 regler per app | 512 regler per app | 512 regler per app |
 | [Always on](../articles/app-service/configure-common.md) | | |X |X |X |X |

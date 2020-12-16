@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: f5e180cb85e65cf832ffe0a3746e25790644e1ba
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: c99d2489efe7c46b8d50b08861fcbbcd6f8a1966
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91829209"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97532016"
 ---
 1. Öppna fliken **tillägg** i Visual Studio Code (eller tryck på Ctrl + Shift + X) och Sök efter Azure-IoT Hub.
 1. Högerklicka och välj **Inställningar för tillägg**.
@@ -14,7 +14,50 @@ ms.locfileid: "91829209"
 1. Sök och aktivera "Visa utförligt meddelande".
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="Tilläggs inställningar"
+    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="Visa utförligt meddelande":::
+1. Starta en felsökningssession genom att välja F5-nyckeln. **Terminalfönstret** skriver ut vissa meddelanden.
+1. *operations.js* koden anropar de direkta metoderna `GraphTopologyList` och `GraphInstanceList` . Om du har rensat resurser efter tidigare snabb starter kommer den här processen att returnera tomma listor och sedan pausa. Välj Retur.
+    
+    ```
+    --------------------------------------------------------------------------
+    Executing operation GraphTopologyList
+    -----------------------  Request: GraphTopologyList  --------------------------------------------------
+    {
+      "@apiVersion": "2.0"
+    }
+    ---------------  Response: GraphTopologyList - Status: 200  ---------------
+    {
+      "value": []
+    }
+    --------------------------------------------------------------------------
+    Executing operation WaitForInput
+    Press Enter to continue
+    ```
+  
+  **Terminalfönstret** visar nästa uppsättning med direkta metod anrop:  
+  
+  * Ett anrop till `GraphTopologySet` som använder `topologyUrl` 
+  * Ett anrop till `GraphInstanceSet` som använder följande text:
+  
+  ```
+  {
+    "@apiVersion": "2.0",
+    "name": "Sample-Graph",
+    "properties": {
+      "topologyName": "EVRToFilesOnMotionDetection",
+      "description": "Sample graph description",
+      "parameters": [
+        {
+          "name": "rtspUrl",
+          "value": "rtsp://rtspsim:554/media/lots_015.mkv"
+        },
+        {
+          "name": "rtspUserName",
+          "value": "testuser"
+        },
+        {
+          "name": "rtspPassword",
+          "value": "testpassword"
         }
       ]
     }
