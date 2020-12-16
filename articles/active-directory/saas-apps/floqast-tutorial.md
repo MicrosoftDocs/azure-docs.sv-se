@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 162c1341c792844dab27f98e67ebf7a48282bfc5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: ed35a0b6e6f2ad620b528283a332507845e4f00d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92452793"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588326"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-floqast"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med FloQast
 
@@ -48,10 +48,9 @@ Om du vill konfigurera integreringen av FloQast i Azure AD måste du lägga till
 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , skriver du **FloQast** i sökrutan.
 1. Välj **FloQast** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
-
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-floqast"></a>Konfigurera och testa enkel inloggning med Azure AD för FloQast
 
@@ -92,9 +91,9 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     | Name | Källattribut|
     | ------------- | -------------- |
-    | FirstName           | user.givenname |
-    | LastName            | user.surname |
-    | E-post               | user.mail    |
+    | FirstName | user.givenname |
+    | LastName | user.surname |
+    | E-post | user.mail    |
 
 1. På sidan **Konfigurera enkel inloggning med SAML** , i avsnittet **SAML-signeringscertifikat** , letar du upp **XML för federationsmetadata** och väljer **Hämta** för att ladda ned certifikatet och spara det på din dator.
 
@@ -104,11 +103,11 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     ![Redigera SAML-signeringscertifikat](common/edit-certificate.png)
 
-    a. Välj **Signera SAML-svar och försäkran** från **Signeringsalternativ**.
-    
-    b. Klicka på **Spara**
+    1. Välj **Signera SAML-svar och försäkran** från **Signeringsalternativ**.
 
-    ![Communifire-signeringsalternativ](./media/floqast-tutorial/tutorial-floqast-signing-option.png)
+    1. Klicka på **Spara**
+
+        ![Communifire-signeringsalternativ](./media/floqast-tutorial/tutorial-floqast-signing-option.png)
 
 1. I avsnittet **Konfigurera FloQast** kopierar du lämpliga URL: er baserat på ditt krav.
 
@@ -118,11 +117,11 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare**och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -130,13 +129,13 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till FloQast.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **FloQast**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-1. Välj **Lägg till användare**och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 
     ![Länken Lägg till användare](common/add-assign-user.png)
 
@@ -160,9 +159,9 @@ När du klickar på panelen FloQast på åtkomst panelen, bör du loggas in auto
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](./tutorial-list.md)
+- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](./tutorial-list.md)
 
-- [Vad är program åtkomst och enkel inloggning med Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+- [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 - [Vad är villkorlig åtkomst i Azure Active Directory?](../conditional-access/overview.md)
 

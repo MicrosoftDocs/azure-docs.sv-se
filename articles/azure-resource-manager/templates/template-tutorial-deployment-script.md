@@ -11,16 +11,16 @@ ms.devlang: na
 ms.date: 12/14/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 13d2fbdc2337995a2aa8056cdd93e2c348e550f6
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: ec7b951581efd0a25b44d298b1f1bfb997167d88
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504380"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589108"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>Självstudie: använda distributions skript för att skapa ett självsignerat certifikat
 
-Lär dig hur du använder distributions skript i Azure Resource Manager mallar (ARM-mallar). Distributions skript kan användas för att utföra anpassade steg som inte kan utföras av ARM-mallar. Du kan till exempel skapa ett självsignerat certifikat.  I den här självstudien skapar du en mall för att distribuera ett Azure Key Vault och använder sedan en `Microsoft.Resources/deploymentScripts` resurs i samma mall för att skapa ett certifikat och sedan lägga till certifikatet i nyckel valvet. Mer information om distributions skript finns [i använda distributions skript i arm-mallar](./deployment-script-template.md).
+Lär dig hur du använder distributions skript i Azure Resource Manager mallar (ARM-mallar). Distributions skript kan användas för att utföra anpassade steg som inte kan utföras av ARM-mallar. Du kan till exempel skapa ett självsignerat certifikat. I den här självstudien skapar du en mall för att distribuera ett Azure Key Vault och använder sedan en `Microsoft.Resources/deploymentScripts` resurs i samma mall för att skapa ett certifikat och sedan lägga till certifikatet i nyckel valvet. Mer information om distributions skript finns [i använda distributions skript i arm-mallar](./deployment-script-template.md).
 
 > [!IMPORTANT]
 > Två distributions skript resurser, ett lagrings konto och en behållar instans, skapas i samma resurs grupp för skript körning och fel sökning. Dessa resurser tas vanligt vis bort av skript tjänsten när skript körningen blir i ett Terminal-tillstånd. Du debiteras för resurserna tills resurserna tas bort. Mer information finns i [Rensa distribution skript resurser](./deployment-script-template.md#clean-up-deployment-script-resources).
@@ -60,7 +60,7 @@ I stället för att skapa en mall från början öppnar du en mall från [Azure-
 
 Mallen som används i den här snabb starten kallas för att [skapa en Azure Key Vault och en hemlighet](https://azure.microsoft.com/resources/templates/101-key-vault-create/). Mallen skapar ett nyckel valv och lägger sedan till en hemlighet i nyckel valvet.
 
-1. Från Visual Studio **Code väljer du** > **Öppna fil**.
+1. Från Visual Studio **Code väljer du**  >  **Öppna fil**.
 2. I **Filnamn** klistrar du in följande URL:
 
     ```url
@@ -68,7 +68,7 @@ Mallen som används i den här snabb starten kallas för att [skapa en Azure Key
     ```
 
 3. Välj **Öppna** för att öppna filen.
-4. Välj **Arkiv** > **Spara som** för att spara filen som **azuredeploy.jspå** den lokala datorn.
+4. Välj **Arkiv**  >  **Spara som** för att spara filen som _azuredeploy.jspå_ den lokala datorn.
 
 ## <a name="edit-the-template"></a>Redigera mallen
 
@@ -76,14 +76,14 @@ Gör följande ändringar i mallen:
 
 ### <a name="clean-up-the-template-optional"></a>Rensa mallen (valfritt)
 
-Den ursprungliga mallen lägger till en hemlighet till nyckel valvet.  För att förenkla självstudien tar du bort följande resurs:
+Den ursprungliga mallen lägger till en hemlighet till nyckel valvet. För att förenkla självstudien tar du bort följande resurs:
 
-* **Microsoft. nyckel valv/valv/hemligheter**
+* `Microsoft.KeyVault/vaults/secrets`
 
 Ta bort följande två parameter definitioner:
 
-* **secretName**
-* **secretValue**
+* `secretName`
+* `secretValue`
 
 Om du väljer att inte ta bort dessa definitioner måste du ange parameter värden under distributionen.
 
@@ -103,9 +103,9 @@ Distributions skriptet lägger till ett certifikat i nyckel valvet. Konfigurera 
     ```
 
     > [!NOTE]
-    > Resurs hanterarens mall tillägg för Visual Studio Code kan inte formatera distributions skript ännu. Använd inte [SHIFT] + [ALT] + F för att formatera deploymentScripts-resurser, t. ex. följande.
+    > Resurs hanterarens mall tillägg för Visual Studio Code kan inte formatera distributions skript ännu. Använd inte Skift + Alt + F för att formatera `deploymentScripts` resurserna, t. ex. följande.
 
-1. Lägg till en parameter för att konfigurera åtkomst principer för nyckel valv så att den hanterade identiteten kan lägga till certifikat i nyckel valvet.
+1. Lägg till en parameter för att konfigurera åtkomst principer för nyckel valv så att den hanterade identiteten kan lägga till certifikat i nyckel valvet:
 
     ```json
     "certificatesPermissions": {
@@ -147,11 +147,11 @@ Distributions skriptet lägger till ett certifikat i nyckel valvet. Konfigurera 
     ],
     ```
 
-    Det finns två definierade principer, en för den inloggade användaren och den andra för den hanterade identiteten.  Den inloggade användaren behöver bara *list* behörighet för att verifiera distributionen.  För att förenkla självstudierna tilldelas samma certifikat både den hanterade identiteten och de inloggade användarna.
+    Det finns två definierade principer, en för den inloggade användaren och den andra för den hanterade identiteten. Den inloggade användaren behöver bara *list* behörighet för att verifiera distributionen. För att förenkla självstudierna tilldelas samma certifikat både den hanterade identiteten och de inloggade användarna.
 
 ### <a name="add-the-deployment-script"></a>Lägg till distributions skriptet
 
-1. Lägg till tre parametrar som används av distributions skriptet.
+1. Lägg till tre parametrar som används av distributions skriptet:
 
     ```json
     "certificateName": {
@@ -168,10 +168,10 @@ Distributions skriptet lägger till ett certifikat i nyckel valvet. Konfigurera 
     }
     ```
 
-1. Lägg till en deploymentScripts-resurs:
+1. Lägg till en `deploymentScripts` resurs:
 
     > [!NOTE]
-    > Eftersom de infogade distributions skripten omges av dubbla citat tecken måste strängarna inuti distributions skripten omges av enkla citat tecken i stället. Escape-tecken för PowerShell är **&#92;**.
+    > Eftersom de infogade distributions skripten omges av dubbla citat tecken måste strängarna inuti distributions skripten omges av enkla citat tecken i stället. [PowerShell-escape-tecken](/powershell/module/microsoft.powershell.core/about/about_quoting_rules#single-and-double-quoted-strings) är bakticket ( `` ` `` ).
 
     ```json
     {
@@ -251,22 +251,22 @@ Distributions skriptet lägger till ett certifikat i nyckel valvet. Konfigurera 
     }
     ```
 
-    `deploymentScripts`Resursen är beroende av Key Vault-resursen och roll tilldelnings resursen.  Den har följande egenskaper:
+    `deploymentScripts`Resursen är beroende av Key Vault-resursen och roll tilldelnings resursen. Den har följande egenskaper:
 
-    * **Identity**: Deployment-skriptet använder en användardefinierad hanterad identitet för att köra skripten.
-    * **typ**: ange typ av skript. För närvarande stöds endast PowerShell-skript.
-    * **forceUpdateTag**: avgör om distributions skriptet ska köras även om skript källan inte har ändrats. Kan vara aktuell tidstämpel eller ett GUID. Mer information finns i [Kör skript mer än en gång](./deployment-script-template.md#run-script-more-than-once).
-    * **azPowerShellVersion**: anger den version av Azure PowerShell-modul som ska användas. För närvarande stöder distributions skriptet version 2.7.0, 2.8.0 och 3.0.0.
-    * **timeout**: Ange högsta tillåtna körnings tid för skript som anges i [ISO 8601-formatet](https://en.wikipedia.org/wiki/ISO_8601). Standardvärdet är **P1D**.
-    * **argument**: ange parameter värden. Värdena avgränsas med blank steg.
-    * **scriptContent**: ange skript innehållet. Om du vill köra ett externt skript använder du **primaryScriptURI** i stället. Mer information finns i [Använd externt skript](./deployment-script-template.md#use-external-scripts).
-        Att deklarera **$DeploymentScriptOutputs** krävs bara när du testar skriptet på en lokal dator. Att deklarera variabeln gör att skriptet kan köras på en lokal dator och i en deploymentScript-resurs utan att behöva göra några ändringar. Värdet som tilldelas $DeploymentScriptOutputs är tillgängligt som utdata i distributionerna. Mer information finns i [arbeta med utdata från PowerShell-distributions skript](./deployment-script-template.md#work-with-outputs-from-powershell-script) eller [arbeta med utdata från skript för cli-distribution](./deployment-script-template.md#work-with-outputs-from-cli-script).
-    * **cleanupPreference**: ange inställningen för när distributions skript resurser ska tas bort.  Standardvärdet är **Always**, vilket innebär att distributions skript resurserna tas bort trots att terminalens tillstånd (lyckades, misslyckades, avbröts). I den här självstudien används **OnSuccess** så att du får chansen att visa skript körnings resultaten.
-    * **retentionInterval**: Ange med vilket intervall som tjänsten ska behålla skript resurserna när den har nått ett Terminal-tillstånd. Resurserna tas bort när denna varaktighet går ut. Varaktigheten baseras på ISO 8601-mönstret. I den här självstudien används P1D, vilket innebär en dag.  Den här egenskapen används när **cleanupPreference** är inställt på **OnExpiration**. Den här egenskapen har inte Aktiver ATS för tillfället.
+    * `identity`: Ett distributions skript använder en användardefinierad hanterad identitet för att köra skripten.
+    * `kind`: Ange typ av skript. För närvarande stöds endast PowerShell-skript.
+    * `forceUpdateTag`: Avgör om distributions skriptet ska köras även om skript källan inte har ändrats. Kan vara aktuell tidstämpel eller ett GUID. Mer information finns i [Kör skript mer än en gång](./deployment-script-template.md#run-script-more-than-once).
+    * `azPowerShellVersion`: Anger den version av Azure PowerShell-modul som ska användas. För närvarande stöder distributions skriptet version 2.7.0, 2.8.0 och 3.0.0.
+    * `timeout`: Ange den högsta tillåtna körnings tiden för skript som anges i [ISO 8601-formatet](https://en.wikipedia.org/wiki/ISO_8601). Standardvärdet är **P1D**.
+    * `arguments`: Ange parameter värden. Värdena avgränsas med blank steg.
+    * `scriptContent`: Ange skript innehållet. Använd i stället om du vill köra ett externt skript `primaryScriptURI` . Mer information finns i [Använd externt skript](./deployment-script-template.md#use-external-scripts).
+        Att deklarera `$DeploymentScriptOutputs` krävs endast när du testar skriptet på en lokal dator. Att deklarera variabeln gör att skriptet kan köras på en lokal dator och i en `deploymentScript` resurs utan att behöva göra några ändringar. Värdet `$DeploymentScriptOutputs` som tilldelas är tillgängligt som utdata i distributionerna. Mer information finns i [arbeta med utdata från PowerShell-distributions skript](./deployment-script-template.md#work-with-outputs-from-powershell-script) eller [arbeta med utdata från skript för cli-distribution](./deployment-script-template.md#work-with-outputs-from-cli-script).
+    * `cleanupPreference`: Ange inställningen när du vill ta bort distributions skript resurser. Standardvärdet är **Always**, vilket innebär att distributions skript resurserna tas bort trots att terminalens tillstånd (lyckades, misslyckades, avbröts). I den här självstudien används **OnSuccess** så att du får chansen att visa skript körnings resultaten.
+    * `retentionInterval`: Ange med vilket intervall som tjänsten ska behålla skript resurserna när den har nått ett Terminal-tillstånd. Resurserna tas bort när denna varaktighet går ut. Varaktigheten baseras på ISO 8601-mönstret. I den här självstudien används **P1D**, vilket innebär en dag. Den här egenskapen används när `cleanupPreference` är inställd på **OnExpiration**. Den här egenskapen har inte Aktiver ATS för tillfället.
 
-    Distributions skriptet tar tre parametrar: Key Vault-namn, certifikat namn och mottagar namn.  Det skapar ett certifikat och lägger sedan till certifikatet i nyckel valvet.
+    Distributions skriptet tar tre parametrar: `keyVaultName` , `certificateName` och `subjectName` . Det skapar ett certifikat och lägger sedan till certifikatet i nyckel valvet.
 
-    **$DeploymentScriptOutputs** används för att lagra utdata svärdet.  Mer information finns i [arbeta med utdata från PowerShell-distributions skript](./deployment-script-template.md#work-with-outputs-from-powershell-script) eller [arbeta med utdata från skript för cli-distribution](./deployment-script-template.md#work-with-outputs-from-cli-script).
+    `$DeploymentScriptOutputs` används för att lagra utdata svärdet. Mer information finns i [arbeta med utdata från PowerShell-distributions skript](./deployment-script-template.md#work-with-outputs-from-powershell-script) eller [arbeta med utdata från skript för cli-distribution](./deployment-script-template.md#work-with-outputs-from-cli-script).
 
     Du hittar den färdiga mallen [här](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json).
 
@@ -276,19 +276,19 @@ Distributions skriptet lägger till ett certifikat i nyckel valvet. Konfigurera 
     Write-Output1 $keyVaultName
     ```
 
-    Det korrekta kommandot är **Write-output** i stället för **Write-Output1**.
+    Det korrekta kommandot är `Write-Output` i stället för `Write-Output1` .
 
-1. Spara filen genom att välja **Arkiv** > **Spara** .
+1. Spara filen genom att välja **Arkiv**  >  **Spara** .
 
 ## <a name="deploy-the-template"></a>Distribuera mallen
 
 1. Logga in på [Azure Cloud Shell](https://shell.azure.com)
 
-1. Välj önskad miljö genom att välja antingen **PowerShell** eller **bash** (för CLI) i det övre vänstra hörnet.  Du måste starta om gränssnittet när du byter.
+1. Välj önskad miljö genom att välja antingen **PowerShell** eller **bash** (för CLI) i det övre vänstra hörnet. Du måste starta om gränssnittet när du byter.
 
     ![Azure Portal Cloud Shell Ladda upp fil](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. Välj **Ladda upp/ned filer** och välj sedan **Ladda upp**. Se föregående skärmbild.  Välj den fil som du sparade i föregående avsnitt. När du har överfört filen kan du använda kommandot **ls** och kommandot **Cat** för att kontrol lera att filen har laddats upp.
+1. Välj **Ladda upp/ned filer** och välj sedan **Ladda upp**. Se föregående skärmbild.  Välj den fil som du sparade i föregående avsnitt. När du har överfört filen kan du använda `ls` kommandot och `cat` kommandot för att kontrol lera att filen har överförts.
 
 1. Kör följande PowerShell-skript för att distribuera mallen.
 
@@ -311,11 +311,11 @@ Distributions skriptet lägger till ett certifikat i nyckel valvet. Konfigurera 
 
     Distributions skript tjänsten måste skapa ytterligare distributions skript resurser för skript körning. Förberedelse-och rensnings processen kan ta upp till en minut att slutföra förutom den faktiska skript körnings tiden.
 
-    Distributionen misslyckades på grund av att det ogiltiga kommandot **Output1** används i skriptet. Du får ett fel som säger:
+    Distributionen misslyckades eftersom det ogiltiga kommandot `Write-Output1` används i skriptet. Du får ett fel meddelande som säger:
 
     ```error
     The term 'Write-Output1' is not recognized as the name of a cmdlet, function, script file, or operable
-    program.\nCheck the spelling of the name, or if a path was included, verify that the path is correct and try again.\n
+    program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
     ```
 
     Resultatet av distributions skript körningen lagras i distributions skriptets resurser för fel söknings ändamål.
@@ -323,21 +323,21 @@ Distributions skriptet lägger till ett certifikat i nyckel valvet. Konfigurera 
 ## <a name="debug-the-failed-script"></a>Felsöka skriptet som misslyckades
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-1. Öppna resurs gruppen. Det är projekt namnet med **RG** tillagt. Du ska se två ytterligare resurser i resurs gruppen. Dessa resurser kallas för *distributions skript resurser*.
+1. Öppna resurs gruppen. Det är projekt namnet med **RG** tillagda. Du kommer att se två ytterligare resurser i resurs gruppen. Dessa resurser kallas för *distributions skript resurser*.
 
     ![Distributions skript resurser för Resource Manager-mall](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)
 
     Båda filerna har **azscripts** -suffixet. Ett är ett lagrings konto och det andra är en behållar instans.
 
-    Välj **Visa dolda typer** för att Visa deploymentScripts-resursen.
+    Välj **Visa dolda typer** för att visa `deploymentScripts` resursen.
 
 1. Välj lagrings kontot med **azscripts** -suffixet.
-1. Välj panelen **fil resurser** . Du ska se en **azscripts** -mapp.  Mappen innehåller distributions skriptets körnings filer.
-1. Välj **azscripts**. Du ska se två mappar **azscriptinput** och **azscriptoutput**.  Mappen indata innehåller en system PowerShell-skriptfil och skript filen för användar distribution. Mappen utdata innehåller en **executionresult.jspå** och skript utdatafilen. Du kan se fel meddelandet i **executionresult.jspå**. Utdatafilen är inte eftersom körningen misslyckades.
+1. Välj panelen **fil resurser** . Du kommer att se en **azscripts** -mapp. Mappen innehåller distributions skriptets körnings filer.
+1. Välj **azscripts**. Du kommer att se två mappar **azscriptinput** och **azscriptoutput**. Mappen indata innehåller en system PowerShell-skriptfil och skript filen för användar distribution. Mappen utdata innehåller en _executionresult.jspå_ och skript utdatafilen. Du kan se fel meddelandet i _executionresult.jspå_. Utdatafilen saknas eftersom körningen misslyckades.
 
-Ta bort **Skriv-Output1** -raden och distribuera om mallen.
+Ta bort `Write-Output1` raden och distribuera om mallen.
 
-När den andra distributionen har körts, tas distributions skript resurserna bort av skript tjänsten eftersom **cleanupPreference** -egenskapen är inställd på **OnSuccess**.
+När den andra distributionen körs tas distributions skript resurserna bort av skript tjänsten eftersom `cleanupPreference` egenskapen är inställd på **OnSuccess**.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
@@ -345,12 +345,12 @@ När Azure-resurserna inte längre behövs rensar du de resurser som du har dist
 
 1. Från Azure Portal väljer du **resurs grupp** på den vänstra menyn.
 2. Ange resursgruppens namn i fältet **Filtrera efter namn**.
-3. Välj resursgruppens namn.  Du bör se totalt sex resurser i resursgruppen.
+3. Välj resursgruppens namn.  Du får totalt sex resurser i resurs gruppen.
 4. Välj **ta bort resurs grupp** på den översta menyn.
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudien har du lärt dig hur du använder distributions skript i ARM-mallar. Information om hur du lär dig att distribuera Azure-resurser baserat på villkor finns i:
+I den här självstudien har du lärt dig hur du använder ett distributions skript i ARM-mallar. Information om hur du lär dig att distribuera Azure-resurser baserat på villkor finns i:
 
 > [!div class="nextstepaction"]
 > [Använda villkor](./template-tutorial-use-conditions.md)

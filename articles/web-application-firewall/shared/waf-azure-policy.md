@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: rimansdo
-ms.openlocfilehash: fd474a32b4a517230a82615065d7815c04140045
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 7798d7e960286d4f8aa971eb2eb0b03d24bd6360
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432976"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589465"
 ---
 # <a name="azure-web-application-firewall-and-azure-policy"></a>Brand vägg för Azure-webbprogram och Azure Policy
 
@@ -47,7 +47,7 @@ Det finns flera inbyggda Azure Policys definitioner för att hantera WAF-resurse
     2.  **Undantag**: Välj eventuella resurser från omfånget som ska undantas från princip tilldelningen.
     3.  **Princip definition**: Välj den princip definition som ska användas för omfånget med undantag. Skriv "brand vägg för webbaserade program" i Sök fältet för att välja relevant brand vägg för webbaserade program Azure Policy.
 
-:::image type="content" source="../media/waf-azure-policy/policy-listing.png" alt-text="Fliken grundläggande på sidan tilldela princip":::
+:::image type="content" source="../media/waf-azure-policy/policy-listing.png" alt-text="Skärm bild som visar fliken &quot;princip definitioner&quot; på sidan tillgängliga definitioner.":::
 
 5.  Välj fliken **parametrar** och uppdatera princip tilldelnings parametrarna. För att ytterligare klargöra vad parametern gör, Hovra över informations ikonen bredvid parameter namnet för ytterligare klargörande.
 

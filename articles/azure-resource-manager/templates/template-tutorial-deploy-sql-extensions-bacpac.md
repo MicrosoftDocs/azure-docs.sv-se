@@ -5,16 +5,16 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b798e5ceb72ece3989fb81014555f2bc0fea5926
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 2d50903f464c03157ee393787af6ddfdad975aed
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931409"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588054"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Självstudie: importera SQL BACPAC-filer med ARM-mallar
 
-Lär dig hur du använder Azure SQL Database tillägg för att importera en BACPAC-fil med Azure Resource Manager-mallar (ARM-mallar). Distributions artefakter är alla filer, förutom de viktigaste mallarna, som behövs för att slutföra en distribution. BACPAC-filen är en artefakt.
+Lär dig hur du använder Azure SQL Database tillägg för att importera en [BACPAC](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) -fil med Azure Resource Manager-mallar (arm-mallar). Distributions artefakter är alla filer, förutom de viktigaste mallarna, som behövs för att slutföra en distribution. BACPAC-filen är en artefakt.
 
 I den här självstudien skapar du en mall för att distribuera en [logisk SQL-Server](../../azure-sql/database/logical-servers.md) och en enkel databas och importera en BACPAC-fil. Information om hur du distribuerar tillägg för virtuella Azure-datorer med hjälp av ARM-mallar finns i [Självstudier: distribuera tillägg för virtuella datorer med ARM-mallar](./template-tutorial-deploy-vm-extensions.md).
 
@@ -55,7 +55,7 @@ BACPAC-filen måste lagras i ett Azure Storage-konto innan den kan importeras me
 * Ladda upp BACPAC-filen till containern.
 * Visa lagrings konto nyckeln och blob-URL: en.
 
-1. Välj **prova** att öppna Cloud Shell. Klistra sedan in följande PowerShell-skript i Shell-fönstret.
+1. Välj **försök** att öppna gränssnittet. Klistra sedan in följande PowerShell-skript i Shell-fönstret.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
@@ -120,7 +120,7 @@ Mallen som används i den här självstudien lagras i [GitHub](https://raw.githu
 
 ## <a name="edit-the-template"></a>Redigera mallen
 
-1. Lägg till ytterligare två parametrar i slutet av **parameter** avsnittet för att ange lagrings konto nyckeln och BACPAC-URL: en.
+1. Lägg till ytterligare två parametrar i slutet av `parameters` avsnittet för att ange lagrings konto nyckeln och BACPAC-URL: en.
 
     ```json
         "storageAccountKey": {
@@ -137,7 +137,7 @@ Mallen som används i den här självstudien lagras i [GitHub](https://raw.githu
         }
     ```
 
-    Lägg till ett kommatecken efter **adminPassword**. Om du vill formatera JSON-filen från Visual Studio Code väljer du Shift + Alt + F.
+    Lägg till ett kommatecken efter `adminPassword` egenskapens avslutande klammerparentes ( `}` ). Om du vill formatera JSON-filen från Visual Studio Code väljer du Shift + Alt + F.
 
     För att hämta dessa två värden, se [förbereda en BACPAC-fil](#prepare-a-bacpac-file).
 
@@ -196,11 +196,11 @@ Mallen som används i den här självstudien lagras i [GitHub](https://raw.githu
 
         Information om resursdefinitionen finns i [tilläggsreferensen för SQL Database](/azure/templates/microsoft.sql/servers/databases/extensions). Här följer några viktiga element:
 
-        * **dependsOn**: tilläggs resursen måste skapas efter att databasen har skapats.
-        * **storageKeyType**: ange vilken typ av lagrings nyckel som ska användas. Värdet kan vara antingen `StorageAccessKey` eller `SharedAccessKey`. Använd `StorageAccessKey` i den här självstudien.
-        * **storageKey**: Ange nyckeln för lagrings kontot där BACPAC-filen lagras. Om lagrings nyckel typen är `SharedAccessKey` måste den föregås av "?".
-        * **storageUri**: Ange URL: en för den BACPAC-fil som lagras i ett lagrings konto.
-        * **administratorLoginPassword**: Lösenordet för SQL-administratören. Använd ett genererat lösenord. Se [krav](#prerequisites).
+        * `dependsOn`: Tilläggs resursen måste skapas när databasen har skapats.
+        * `storageKeyType`: Ange vilken typ av lagrings nyckel som ska användas. Värdet kan vara antingen `StorageAccessKey` eller `SharedAccessKey`. Använd `StorageAccessKey` i den här självstudien.
+        * `storageKey`: Ange nyckeln för lagrings kontot där BACPAC-filen lagras. Om lagrings nyckel typen är `SharedAccessKey` måste den föregås av "?".
+        * `storageUri`: Ange URL: en för den BACPAC-fil som lagras i ett lagrings konto.
+        * `administratorLoginPassword`: Lösen ordet för SQL-administratören. Använd ett genererat lösenord. Se [krav](#prerequisites).
 
 Den färdiga mallen ser ut så här:
 

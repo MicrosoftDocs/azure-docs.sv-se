@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 0d342f672f4e8a5fdf33afe0feb7c5051956e29f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: e8cb939b48f8cfe311ec10c0850cfb234de04fad
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318779"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589788"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>Självstudie: Azure Active Directory integrering med Andromeda
 
@@ -30,7 +30,7 @@ Genom att integrera Andromeda med Azure AD får du följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill konfigurera Azure AD-integrering med Andromeda behöver du följande objekt:
 
@@ -86,7 +86,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med Andromeda i Azure AD:
 
-1. Välj **enkel inloggning**på sidan **Andromeda** Application Integration i [Azure Portal](https://portal.azure.com/).
+1. Välj **enkel inloggning** på sidan **Andromeda** Application Integration i [Azure Portal](https://portal.azure.com/).
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -124,32 +124,32 @@ Utför följande steg för att konfigurera enkel inloggning med Andromeda i Azur
 
 7. I avsnittet **Användaranspråk** i dialogrutan **Användarattribut** så redigerar du anspråken genom att använda **Redigera-ikonen** eller lägga till anspråken genom att använda **Lägg till nytt anspråk** för att konfigurera SAML-tokenattribut som det visas i bilden ovan och utföra följande steg: 
 
-    | Namn | Källattribut|
+    | Name | Källattribut|
     | ------ | -----------|
-    | roll        | App-speciell roll |
-    | typ        | Apptyp |
-    | company       | CompanyName |
+    | roll | App-speciell roll |
+    | typ | Apptyp |
+    | company | CompanyName |
 
     > [!NOTE]
     > Det finns inga verkliga värden. Dessa värden är bara för demo syfte, Använd dina organisations roller.
 
-    a. Klicka på **Lägg till nytt anspråk** för att öppna dialogrutan **Hantera användaranspråk**.
+    1. Klicka på **Lägg till nytt anspråk** för att öppna dialogrutan **Hantera användaranspråk**.
 
-    ![Skärm bild som visar användar anspråk med alternativ för att lägga till ett nytt anspråk och spara.](common/new-save-attribute.png)
+        ![Skärm bild som visar användar anspråk med alternativ för att lägga till ett nytt anspråk och spara.](common/new-save-attribute.png)
 
-    ![Skärm bild som visar hantera användar anspråk där du kan ange värden som beskrivs I det här steget.](common/new-attribute-details.png)
+        ![Skärm bild som visar hantera användar anspråk där du kan ange värden som beskrivs I det här steget.](common/new-attribute-details.png)
 
-    b. I textrutan **Namn** skriver du det attributnamn som visas för den raden.
+    1. I textrutan **Namn** skriver du det attributnamn som visas för den raden.
 
-    c. Lämna **Namnrymd** tom.
+    1. Lämna **Namnrymd** tom.
 
-    d. Välj Källa som **Attribut**.
+    1. Välj Källa som **Attribut**.
 
-    e. Från listan över **Källattribut** skriver du det attributvärde som visas för den raden.
+    1. Från listan över **Källattribut** skriver du det attributvärde som visas för den raden.
 
-    f. Klicka på **OK**
+    1. Klicka på **OK**
 
-    ex. Klicka på **Spara**.
+    1. Klicka på **Spara**.
 
 8. På sidan **Konfigurera enkel inloggning med SAML** går du till avsnittet **SAML-signeringscertifikat**, klickar du på **Ladda ned** för att ladda ned **Certifikat (Base64)** från de angivna alternativen enligt dina behov och sparar det på datorn.
 
@@ -159,11 +159,11 @@ Utför följande steg för att konfigurera enkel inloggning med Andromeda i Azur
 
     ![Kopiera konfigurations-URL:er](common/copy-configuration-urls.png)
 
-    a. Inloggnings-URL
+    1. Inloggnings-URL
 
-    b. Azure AD-identifierare
+    1. Azure AD-identifierare
 
-    c. Utloggnings-URL
+    1. Utloggnings-URL
 
 ### <a name="configure-andromeda-single-sign-on"></a>Konfigurera Andromeda Single Sign-On
 
@@ -173,7 +173,7 @@ Utför följande steg för att konfigurera enkel inloggning med Andromeda i Azur
 
     ![Andromeda-administratör](./media/andromedascm-tutorial/tutorial_andromedascm_admin.png)
 
-3. Klicka på **SAML-konfiguration**på vänster sida av verktygsfältet under **gränssnitt** .
+3. Klicka på **SAML-konfiguration** på vänster sida av verktygsfältet under **gränssnitt** .
 
     ![Andromeda SAML](./media/andromedascm-tutorial/tutorial_andromedascm_saml.png)
 
@@ -181,25 +181,25 @@ Utför följande steg för att konfigurera enkel inloggning med Andromeda i Azur
 
     ![Andromeda-konfiguration](./media/andromedascm-tutorial/tutorial_andromedascm_config.png)
 
-    a. Kontrol lera **Aktivera SSO med SAML**.
+    1. Kontrol lera **Aktivera SSO med SAML**.
 
-    b. Under avsnittet **Andromeda information** kopierar du värdet för **SP-identitet** och klistrar in det i text rutan **identifierare** i avsnittet **grundläggande SAML-konfiguration** .
+    1. Under avsnittet **Andromeda information** kopierar du värdet för **SP-identitet** och klistrar in det i text rutan **identifierare** i avsnittet **grundläggande SAML-konfiguration** .
 
-    c. Kopiera **konsumentens URL** -värde och klistra in det i text rutan **svars-URL** i avsnittet **grundläggande SAML-konfiguration** .
+    1. Kopiera **konsumentens URL** -värde och klistra in det i text rutan **svars-URL** i avsnittet **grundläggande SAML-konfiguration** .
 
-    d. Kopiera värdet för **inloggnings-URL** och klistra in det i text rutan **inloggnings-URL** i avsnittet **grundläggande SAML-konfiguration** .
+    1. Kopiera värdet för **inloggnings-URL** och klistra in det i text rutan **inloggnings-URL** i avsnittet **grundläggande SAML-konfiguration** .
 
-    e. Skriv ditt IDP namn under avsnittet **SAML Identity Provider** .
+    1. Skriv ditt IDP namn under avsnittet **SAML Identity Provider** .
 
-    f. I text rutan för **enkel inloggning i slut punkt** klistrar du in värdet för **inloggnings-URL: en** som du har kopierat från Azure Portal.
+    1. I text rutan för **enkel inloggning i slut punkt** klistrar du in värdet för **inloggnings-URL: en** som du har kopierat från Azure Portal.
 
-    ex. Öppna det nedladdade **base64-kodade certifikatet** från Azure Portal i anteckningar, klistra in det i text rutan **X 509-certifikat** .
-    
-    h. Mappa följande attribut med respektive värde för att under lätta SSO-inloggning från Azure AD. Attributet **User ID** krävs för inloggning. För etablering, krävs **e-post**, **företag**, **UserType**och **roll** . I det här avsnittet definierar vi attribut mappning (namn och värden) som motsvarar de som definierats i Azure Portal
+    1. Öppna det nedladdade **base64-kodade certifikatet** från Azure Portal i anteckningar, klistra in det i text rutan **X 509-certifikat** .
 
-    ![Andromeda attbmap](./media/andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
+    1. Mappa följande attribut med respektive värde för att under lätta SSO-inloggning från Azure AD. Attributet **User ID** krävs för inloggning. För etablering, krävs **e-post**, **företag**, **UserType** och **roll** . I det här avsnittet definierar vi attribut mappning (namn och värden) som motsvarar de som definierats i Azure Portal
 
-    i. Klicka på **Spara**.
+        ![Andromeda attbmap](./media/andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
+
+    1. Klicka på **Spara**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
 
@@ -218,7 +218,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** `brittasimon@yourcompanydomain.extension` . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
@@ -229,7 +229,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Andromeda.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Andromeda**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Andromeda**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: ad62b59587f5ef7823e601cd8b6b526b75b8fd03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f968bfd0c3d2884c123b82ccf132d77b117ac9a
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91854621"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589040"
 ---
 # <a name="create-a-cicd-pipeline-for-go-using-azure-devops-starter"></a>Skapa en CI/CD-pipeline för go med Azure DevOps starter
 
@@ -32,7 +32,7 @@ DevOps starter skapar en CI/CD-pipeline i Azure-pipelines. Du kan skapa en ny Az
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 
-1. I rutan Sök skriver du **DevOps starter**och väljer sedan. Klicka på **Lägg till** för att skapa en ny.
+1. I rutan Sök skriver du **DevOps starter** och väljer sedan. Klicka på **Lägg till** för att skapa en ny.
 
     ![DevOps starter-instrumentpanelen](_img/azure-devops-starter-aks/search-devops-starter.png)
 
@@ -60,9 +60,9 @@ DevOps starter skapar en CI/CD-pipeline i Azure-pipelines. Du kan skapa en ny Az
 
 DevOps starter skapar en git-lagrings platsen i Azure databaser eller GitHub. Visa lagringsplatsen och gör kodändringar i appen genom att utföra följande:
 
-1. På DevOps starter går du till vänster och väljer länken för din huvud gren. Länken öppnar en vy till den nyligen skapade Git-lagringsplatsen.
+1. På DevOps starter går du till vänster och väljer länken för huvud grenen. Länken öppnar en vy till den nyligen skapade Git-lagringsplatsen.
 
-1. Om du vill visa URL för klonen av lagringsplatsen väljer du **Klona** längst upp till höger. Du kan klona Git-lagringsplatsen i din favorit-IDE. I kommande steg kan du använda webbläsaren för att göra och checka in ändringar i koden direkt till huvudgrenen.
+1. Om du vill visa URL för klonen av lagringsplatsen väljer du **Klona** längst upp till höger. Du kan klona Git-lagringsplatsen i din favorit-IDE. I de följande stegen kan du använda webbläsaren för att göra och bekräfta kod ändringar direkt till huvud grenen.
 
 1. Längst till vänster går du till filen *views/index.html* och väljer sedan **Redigera**.
 

@@ -4,12 +4,12 @@ description: Lär dig hur du kontinuerligt skapar, testar och distribuerar Azure
 ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 1b9e60ec1b3f7626a3cb67a673bf12d14d7d259b
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 8e9f047497f493752947d8115084dcfe86f5e040
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368213"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588139"
 ---
 # <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>Självstudie: kontinuerlig integrering av ARM-mallar med Azure-pipelines
 
@@ -33,7 +33,7 @@ Den här självstudien omfattar följande uppgifter:
 
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att kunna följa stegen i den här artikeln behöver du:
 
@@ -100,10 +100,10 @@ _azuredeploy.jspå_ har lagts till i den lokala lagrings platsen. Sedan laddar d
     ```bash
     git add .
     git commit -m "Add web app templates."
-    git push origin master
+    git push origin main
     ```
 
-    Du kan få en varning om LF. Du kan ignorera varningen. **Master** är huvud grenen.  Du skapar vanligt vis en gren för varje uppdatering. För att förenkla självstudien använder du huvud grenen direkt.
+    Du kan få en varning om LF. Du kan ignorera varningen. **main** är huvud grenen.  Du skapar vanligt vis en gren för varje uppdatering. För att förenkla självstudien använder du huvud grenen direkt.
 
 1. Bläddra till GitHub-lagringsplatsen från en webbläsare. URL: en är `https://github.com/[YourAccountName]/[YourGitHubRepository]` . Du ser mappen _CreateWebApp_ och de tre filerna i mappen.
 1. Välj _linkedStorageAccount.jspå_ för att öppna mallen.
@@ -217,15 +217,15 @@ När du uppdaterar mallen och push-överför ändringarna till fjärrlagringspla
 1. Skicka ändringarna till fjärrlagringsplatsen genom att köra följande kommandon från git bash/shell.
 
     ```bash
-    git pull origin master
+    git pull origin main
     git add .
     git commit -m "Update the storage account type."
-    git push origin master
+    git push origin main
     ```
 
     Det första kommandot ( `pull` ) synkroniserar den lokala lagrings platsen med fjärrlagringsplatsen. Pipelinen YAML-filen lades bara till i fjärrlagringsplatsen. Att köra `pull` kommandot laddar ned en kopia av yaml-filen till den lokala grenen.
 
-    Det fjärde kommandot ( `push` ) laddar upp den ändrade _linkedStorageAccount.jspå_ filen till fjärrlagringsplatsen. När huvud delen av fjärrlagringsplatsen har uppdaterats, utlöses pipelinen igen.
+    Det fjärde kommandot ( `push` ) laddar upp den ändrade _linkedStorageAccount.jspå_ filen till fjärrlagringsplatsen. När den primära grenen av fjärrlagringsplatsen har uppdaterats, utlöses pipelinen igen.
 
 Du kan kontrol lera ändringarna genom att kontrol lera egenskapen replikering för lagrings kontot. Se [Verifiera distributionen](#verify-the-deployment).
 

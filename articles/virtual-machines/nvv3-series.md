@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: dc6056653fc50976439d4b16594e6d554e62f061
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65107b0924351ca6debf37201e8849ffe8dd1eab
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652830"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589435"
 ---
 # <a name="nvv3-series"></a>NVv3-serien
 
@@ -26,6 +26,7 @@ Varje GPU i NVv3-instanser levereras med en GRID-licens. Den här licensen ger d
 [Direktmigrering](maintenance-and-updates.md): stöds inte<br>
 [Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds inte<br>
 [Stöd för VM-generering](generation-2.md): generation 1 och 2<br>
+Accelererat nätverk: stöds<br>
 <br>
 
 | Storlek | Virtuell processor | Minne: GiB | Temporär lagring (SSD) GiB | GPU | GPU-minne: GiB | Maximalt antal datadiskar | Maximalt antal cachelagrade diskar: IOPS/MBps | Högsta antal nätverkskort/förväntad nätverks bandbredd (Mbit/s) | Virtuella arbets stationer | Virtuella program |
@@ -35,8 +36,6 @@ Varje GPU i NVv3-instanser levereras med en GRID-licens. Den här licensen ger d
 | Standard_NV48s_v3 |48 | 448 | 1280 | 4 | 32 | 32 | 80000/800 | 8 / 24000 | 4 | 100 |
 
 <sup>1</sup> 1 GPU = ett halvt M60-kort.
-
-<sup>2</sup> det går inte att använda accelererat nätverk i den här virtuella dator serien, så verkliga nätverks prestanda kan vara lägre än de teoretiska teoretiska talen som fångas här.
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

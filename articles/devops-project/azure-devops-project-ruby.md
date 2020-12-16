@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: b7ab2fb13be10d5992f1b26973e9735ac238090a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e2f7115560148a1d3b9d2671be54c1ba4d61946
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856066"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588921"
 ---
 # <a name="create-a-cicd-pipeline-for-ruby-on-rails-by-using-azure-devops-starter"></a>Skapa en CI/CD-pipeline för Ruby on-räler med hjälp av Azure DevOps starter
 
@@ -32,7 +32,7 @@ Azure DevOps starter skapar en CI/CD-pipeline i Azure databaser. Du kan skapa en
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 
-1. I rutan Sök skriver du **DevOps starter**och väljer sedan. Klicka på **Lägg till** för att skapa en ny.
+1. I rutan Sök skriver du **DevOps starter** och väljer sedan. Klicka på **Lägg till** för att skapa en ny.
 
     ![DevOps starter-instrumentpanelen](_img/azure-devops-starter-aks/search-devops-starter.png) 
 
@@ -65,7 +65,7 @@ Azure DevOps starter skapar en git-lagrings platsen i Azure pipelines eller GitH
 
 1. På DevOps starter-instrumentpanelen väljer du länken för huvud grenen till vänster. Länken öppnar en vy till den nyligen skapade Git-lagringsplatsen.
 
-1. Om du vill visa URL för klonen av lagringsplatsen väljer du **Klona** längst upp till höger. Du kan klona Git-lagringsplatsen i din favorit-IDE. I kommande steg kan du använda webbläsaren för att göra och checka in ändringar i koden direkt till huvudgrenen.
+1. Om du vill visa URL för klonen av lagringsplatsen väljer du **Klona** längst upp till höger. Du kan klona Git-lagringsplatsen i din favorit-IDE. I de följande stegen kan du använda webbläsaren för att göra och bekräfta kod ändringar direkt till huvud grenen.
 
 1. Längst till vänster, går du till filen *app/views/pages/home.html.erb* och väljer sedan **Redigera**.
 

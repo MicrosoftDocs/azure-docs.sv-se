@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 99be6dc42a9b644166054d61e88a1e0ac329d2ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63d3ac356e4f2c1d17e1511227f5089b7ff4266f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91854731"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589166"
 ---
 # <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>Skapa en CI/CD-pipeline för .NET med Azure DevOps starter
 
@@ -34,7 +34,7 @@ DevOps starter skapar en CI/CD-pipeline i Azure DevOps. Du kan skapa en ny Azure
 
 1. Logga in på [Microsoft Azure-portalen](https://portal.azure.com).
 
-1. I rutan Sök skriver du **DevOps starter**och väljer sedan. Klicka på **Lägg till** för att skapa en ny. 
+1. I rutan Sök skriver du **DevOps starter** och väljer sedan. Klicka på **Lägg till** för att skapa en ny. 
 
     ![DevOps starter-instrumentpanelen](_img/azure-devops-starter-aks/search-devops-starter.png)
 
@@ -66,7 +66,7 @@ DevOps starter skapar en CI/CD-pipeline i Azure DevOps. Du kan skapa en ny Azure
 
 DevOps starter skapade en git-lagringsplats i Azure databaser eller GitHub. Visa lagringsplatsen och gör kodändringar i programmet genom att utföra följande:
 
-1. Till vänster om instrument panelen för DevOps starter väljer du länken för din **huvud** gren. Den här länken öppnar en vy till den nyligen skapade Git-lagringsplatsen.
+1. Till vänster om instrument panelen för DevOps starter väljer du länken för **huvud** grenen. Den här länken öppnar en vy till den nyligen skapade Git-lagringsplatsen.
 
 2. I de följande stegen kan du använda webbläsaren för att göra och bekräfta kod ändringar direkt till **huvud** grenen. Du kan också klona git-lagringsplatsen i din favorit-IDE genom att välja **klona** från det övre högra hörnet på sidan databas. 
 
@@ -84,7 +84,7 @@ DevOps starter skapade en git-lagringsplats i Azure databaser eller GitHub. Visa
 
 I föregående steg konfigurerade Azure DevOps starter automatiskt en fullständigt CI/CD-pipeline. Utforska och anpassa pipelinen efter behov. Bekanta dig med Azure DevOps-bygg- och versionspipelines genom att utföra följande steg.
 
-1. Välj **Bygg pipelines**överst på DevOps starter-instrumentpanelen. Länken öppnar en webbläsarflik och Azure DevOps-bygg-pipelinen för det nya projektet.
+1. Välj **Bygg pipelines** överst på DevOps starter-instrumentpanelen. Länken öppnar en webbläsarflik och Azure DevOps-bygg-pipelinen för det nya projektet.
 
 1. Välj ellipsen (...).  Den här åtgärden öppnar en meny där du kan starta flera aktiviteter, till exempel köa en ny version, göra en paus och redigera build-pipeline.
 

@@ -5,12 +5,12 @@ author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7a44edc7cd09709f14415fa0a92e63558001d46d
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 31c4e6383b5eaea2bb66dc1baafa0fbff4918a7c
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928536"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589125"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>Självstudie: Felsöka distributioner av ARM-mallar
 
@@ -43,7 +43,7 @@ För att kunna följa stegen i den här artikeln behöver du:
 
 Öppna en mall som heter [skapa ett standard lagrings konto](https://azure.microsoft.com/resources/templates/101-storage-account-create/) från [Azure snabb starts mallar](https://azure.microsoft.com/resources/templates/)och konfigurera två problem med mallar.
 
-1. Från Visual Studio **Code väljer du** > **Öppna fil**.
+1. Från Visual Studio **Code väljer du**  >  **Öppna fil**.
 2. I **Filnamn** klistrar du in följande URL:
 
     ```url
@@ -51,16 +51,16 @@ För att kunna följa stegen i den här artikeln behöver du:
     ```
 
 3. Välj **Öppna** för att öppna filen.
-4. Ändra raden **apiVersion** till följande rad:
+4. Ändra `apiVersion` raden till följande rad:
 
     ```json
     "apiVersion1": "2018-07-02",
     ```
 
-    - **apiVersion1** är ett ogiltigt elementnamn. Det är ett valideringsfel.
-    - API-versionen ska vara ”2018-07-01”.  Det är ett distributionsfel.
+    - `apiVersion1` är ett ogiltigt element namn. Det är ett valideringsfel.
+    - API-versionen är `"2018-07-01"` .  Det är ett distributionsfel.
 
-5. Välj **Arkiv** > **Spara som** för att spara filen som **azuredeploy.jspå** den lokala datorn.
+5. Välj **Arkiv**  >  **Spara som** för att spara filen som _azuredeploy.jspå_ den lokala datorn.
 
 ## <a name="troubleshoot-the-validation-error"></a>Felsöka valideringsfelet
 
@@ -68,13 +68,13 @@ Se avsnittet [Distribuera mallen](template-tutorial-create-multiple-instances.md
 
 Du bör få ett fel i gränssnittet som liknar:
 
-```
+```azurepowershell
 New-AzResourceGroupDeployment : 4:29:24 PM - Error: Code=InvalidRequestContent; Message=The request content was invalid and could not be deserialized: 'Could not find member 'apiVersion1' on object of type 'TemplateResource'. Path 'properties.template.resources[0].apiVersion1', line 36, position 24.'.
 ```
 
-Felmeddelandet indikerar att problemet är med **apiVersion1**.
+Fel meddelandet anger att problemet är med `apiVersion1` .
 
-Använd Visual Studio Code för att åtgärda problemet genom att ändra **apiVersion1** till **apiVersion**, och spara sedan mallen.
+Använd Visual Studio Code för att åtgärda problemet genom att ändra `apiVersion1` till `apiVersion` och sedan spara mallen.
 
 ## <a name="troubleshoot-the-deployment-error"></a>Felsöka distributionsfelet
 
@@ -82,7 +82,7 @@ Se avsnittet [Distribuera mallen](template-tutorial-create-multiple-instances.md
 
 Du bör få ett fel i gränssnittet som liknar:
 
-```
+```azurepowershell
 New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageAccounts 'storeqii7x2rce77dc' failed with message '{
   "error": {
     "code": "NoRegisteredProviderFound",

@@ -1,25 +1,25 @@
 ---
-title: 'Snabb start: Azure Queue Storage-bibliotek V12-Java'
-description: Lär dig hur du använder Azure Queue Java V12-biblioteket för att skapa en kö och lägga till meddelanden i kön. Härnäst får du lära dig hur du läser och tar bort meddelanden från kön. Du lär dig också hur du tar bort en kö.
+title: 'Snabb start: Azure Queue Storage klient bibliotek V12-Java'
+description: Lär dig hur du använder Azure Queue Storage-V12 för klient bibliotek för Java för att skapa en kö och lägga till meddelanden till den. Lär dig sedan att läsa och ta bort meddelanden från kön. Du lär dig också hur du tar bort en kö.
 author: mhopkins-msft
-ms.custom: devx-track-java
 ms.author: mhopkins
 ms.date: 12/01/2020
+ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.topic: quickstart
-ms.openlocfilehash: 4c96b84aa53d2a9f4d6e44ac84cf0ce9e0ecac04
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.custom: devx-track-java
+ms.openlocfilehash: 814531adc9dafa524797d0c2674a1e600e407bed
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491935"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588224"
 ---
-# <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>Snabb start: Azure Queue Storage klient bibliotek V12 för Java
+# <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>Snabb start: Azure Queue Storage V12 för klient bibliotek för Java
 
-Kom igång med Azure Queue Storage klient bibliotek version 12 för Java. Azure Queue Storage är en tjänst för att lagra ett stort antal meddelanden för senare hämtning och bearbetning. Följ de här stegen för att installera paketet och prova exempel koden för grundläggande uppgifter.
+Kom igång med Azure-Queue Storage klient bibliotek V12 för Java. Azure Queue Storage är en tjänst för att lagra ett stort antal meddelanden för senare hämtning och bearbetning. Följ de här stegen för att installera paketet och prova exempel koden för grundläggande uppgifter.
 
-Använd klient biblioteket för Azure Queue Storage-V12 för Java för att:
+Använd Azure Queue Storage-V12 för klient bibliotek för Java för att:
 
 - Skapa en kö
 - Lägga till meddelanden i en kö
@@ -35,22 +35,22 @@ Ytterligare resurser:
 - [Paket (maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue)
 - [Exempel](../common/storage-samples-java.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - [Java Development Kit (JDK)](/java/azure/jdk/) version 8 eller senare
 - [Apache maven](https://maven.apache.org/download.cgi)
 - Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/)
-- Azure Storage-konto – [skapa ett lagrings konto](../common/storage-account-create.md)
+- Azure Storage konto – [skapa ett lagrings konto](../common/storage-account-create.md)
 
 ## <a name="setting-up"></a>Konfigurera
 
-Det här avsnittet beskriver hur du förbereder ett projekt så att det fungerar med Azure Queue Storage-V12 för Java.
+Det här avsnittet beskriver hur du förbereder ett projekt för att arbeta med Azure Queue Storage-V12 för Java.
 
 ### <a name="create-the-project"></a>Skapa projektet
 
-Skapa ett Java-program med namnet *köer-snabb start-V12*.
+Skapa ett Java-program med namnet `queues-quickstart-v12` .
 
-1. I ett konsol fönster (till exempel cmd, PowerShell eller bash) använder du Maven för att skapa en ny konsol app med namn *köer – snabb start-V12*. Skriv följande **mvn** -kommando för att skapa en "Hello World!" Java-projekt.
+1. I ett konsol fönster (till exempel cmd, PowerShell eller bash) använder du Maven för att skapa en ny konsol app med namnet `queues-quickstart-v12` . Skriv följande `mvn` kommando för att skapa ett "Hello World"-Java-projekt.
 
     # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -113,7 +113,7 @@ Skapa ett Java-program med namnet *köer-snabb start-V12*.
     [INFO] ------------------------------------------------------------------------
     ```
 
-1. Växla till de nyligen skapade *köerna-snabb starts-V12-* katalogen.
+1. Växla till den nyligen skapade `queues-quickstart-v12` katalogen.
 
    ```console
    cd queues-quickstart-v12
@@ -121,7 +121,7 @@ Skapa ett Java-program med namnet *köer-snabb start-V12*.
 
 ### <a name="install-the-package"></a>Installera paketet
 
-Öppna *pom.xml* -filen i text redigeraren. Lägg till följande beroende element i gruppen med beroenden.
+Öppna `pom.xml` filen i text redigeraren. Lägg till följande beroende element i gruppen med beroenden.
 
 ```xml
 <dependency>
@@ -135,9 +135,9 @@ Skapa ett Java-program med namnet *köer-snabb start-V12*.
 
 Från projekt katalogen:
 
-1. Navigera till katalogen */src/main/Java/com/Queues/QuickStart*
-1. Öppna filen *app. java* i redigeraren
-1. Ta bort `System.out.println("Hello world!");` instruktionen
+1. Navigera till `/src/main/java/com/queues/quickstart` katalogen
+1. Öppna `App.java` filen i redigerings programmet
+1. Ta bort `System.out.println("Hello, world");` instruktionen
 1. Lägg till `import` direktiv
 
 Här är koden:
@@ -146,7 +146,7 @@ Här är koden:
 package com.queues.quickstart;
 
 /**
- * Azure queue storage v12 SDK quickstart
+ * Azure Queue Storage client library v12 quickstart
  */
 import com.azure.storage.queue.*;
 import com.azure.storage.queue.models.*;
@@ -177,14 +177,14 @@ Följande diagram visar relationen mellan de här resurserna.
 
 Använd följande Java-klasser för att interagera med dessa resurser:
 
-- [QueueClientBuilder](/java/api/com.azure.storage.queue.queueclientbuilder): `QueueClientBuilder` klassen konfigurerar och instansierar ett `QueueClient` objekt.
-- [QueueServiceClient](/java/api/com.azure.storage.queue.queueserviceclient): med `QueueServiceClient` kan du hantera alla köer i ditt lagrings konto.
-- [QueueClient](/java/api/com.azure.storage.queue.queueclient): `QueueClient` klassen låter dig hantera och ändra en enskild kö och dess meddelanden.
-- [QueueMessageItem](/java/api/com.azure.storage.queue.models.queuemessageitem): `QueueMessageItem` klassen representerar de enskilda objekt som returneras när [receiveMessages](/java/api/com.azure.storage.queue.queueclient.receivemessages) anropas i en kö.
+- [`QueueClientBuilder`](/java/api/com.azure.storage.queue.queueclientbuilder): `QueueClientBuilder` Klassen konfigurerar och instansierar ett `QueueClient` objekt.
+- [`QueueServiceClient`](/java/api/com.azure.storage.queue.queueserviceclient): Med `QueueServiceClient` kan du hantera alla köer i ditt lagrings konto.
+- [`QueueClient`](/java/api/com.azure.storage.queue.queueclient): `QueueClient` Klassen låter dig hantera och ändra en enskild kö och dess meddelanden.
+- [`QueueMessageItem`](/java/api/com.azure.storage.queue.models.queuemessageitem): `QueueMessageItem` Klassen representerar de enskilda objekt som returneras vid anrop [`ReceiveMessages`](/java/api/com.azure.storage.queue.queueclient.receivemessages) i en kö.
 
 ## <a name="code-examples"></a>Kodexempel
 
-I de här exempel kods tycken visar vi hur du utför följande åtgärder med klient biblioteket för Azure Queue Storage för java:
+I de här exempel kods tycken visar vi hur du utför följande åtgärder med Azure Queue Storage-klient biblioteket för java:
 
 - [Hämta anslutningssträngen](#get-the-connection-string)
 - [Skapa en kö](#create-a-queue)
@@ -196,12 +196,12 @@ I de här exempel kods tycken visar vi hur du utför följande åtgärder med kl
 
 ### <a name="get-the-connection-string"></a>Hämta anslutningssträngen
 
-Koden nedan hämtar anslutnings strängen för lagrings kontot. Anslutnings strängen lagras i den miljö variabel som skapades i avsnittet [Konfigurera din lagrings anslutnings sträng](#configure-your-storage-connection-string) .
+Följande kod hämtar anslutnings strängen för lagrings kontot. Anslutnings strängen lagras i den miljö variabel som skapades i avsnittet [Konfigurera din lagrings anslutnings sträng](#configure-your-storage-connection-string) .
 
 Lägg till den här koden i- `main` metoden:
 
 ```java
-System.out.println("Azure Queues storage v12 - Java quickstart sample\n");
+System.out.println("Azure Queue Storage client library v12 - Java quickstart sample\n");
 
 // Retrieve the connection string for use with the application. The storage
 // connection string is stored in an environment variable on the machine
@@ -214,12 +214,12 @@ String connectStr = System.getenv("AZURE_STORAGE_CONNECTION_STRING");
 
 ### <a name="create-a-queue"></a>Skapa en kö
 
-Välj ett namn för den nya kön. Koden nedan lägger till ett GUID-värde till könamnet för att säkerställa att det är unikt.
+Välj ett namn för den nya kön. Följande kod lägger till ett GUID-värde till könamnet för att säkerställa att det är unikt.
 
 > [!IMPORTANT]
 > Könamn får bara innehålla gemena bokstäver, siffror och bindestreck, och måste börja med en bokstav eller en siffra. Varje bindestreck måste föregås och följas av ett tecken som inte är ett bindestreck. Namnet måste vara mellan 3 och 63 tecken långt. Mer information om namngivning av köer finns i [namnge köer och metadata](/rest/api/storageservices/naming-queues-and-metadata).
 
-Skapa en instans av klassen [QueueClient](/java/api/com.azure.storage.queue.queueclient) . Anropa sedan metoden [create](/java/api/com.azure.storage.queue.queueclient.create) för att skapa kön i ditt lagrings konto.
+Skapa en instans av [`QueueClient`](/java/api/com.azure.storage.queue.queueclient) klassen. Anropa sedan [`Create`](/java/api/com.azure.storage.queue.queueclient.create) metoden för att skapa kön i ditt lagrings konto.
 
 Lägg till den här koden i slutet av `main` metoden:
 
@@ -242,7 +242,7 @@ queueClient.create();
 
 ### <a name="add-messages-to-a-queue"></a>Lägga till meddelanden i en kö
 
-Följande kodfragment lägger till meddelanden i kön genom att anropa [SendMessage](/java/api/com.azure.storage.queue.queueclient.sendmessage) -metoden. Det sparar också en [SendMessageResult](/java/api/com.azure.storage.queue.models.sendmessageresult) som returneras från ett `sendMessage` samtal. Resultatet används för att uppdatera meddelandet senare i programmet.
+Följande kodfragment lägger till meddelanden i kön genom att anropa- [`sendMessage`](/java/api/com.azure.storage.queue.queueclient.sendmessage) metoden. Det sparar också en [`SendMessageResult`](/java/api/com.azure.storage.queue.models.sendmessageresult) returnerad från ett `sendMessage` samtal. Resultatet används för att uppdatera meddelandet senare i programmet.
 
 Lägg till den här koden i slutet av `main` metoden:
 
@@ -259,7 +259,7 @@ SendMessageResult result = queueClient.sendMessage("Third message");
 
 ### <a name="peek-at-messages-in-a-queue"></a>Granska meddelanden i en kö
 
-Titta på meddelandena i kön genom att anropa metoden [peekMessages](/java/api/com.azure.storage.queue.queueclient.peekmessages) . `peelkMessages`Metoden hämtar ett eller flera meddelanden från början av kön, men ändrar inte synligheten för meddelandet.
+Titta på meddelandena i kön genom att anropa- [`peekMessages`](/java/api/com.azure.storage.queue.queueclient.peekmessages) metoden. Den här metoden hämtar ett eller flera meddelanden från början av kön, men ändrar inte synligheten för meddelandet.
 
 Lägg till den här koden i slutet av `main` metoden:
 
@@ -273,7 +273,7 @@ queueClient.peekMessages(10, null, null).forEach(
 
 ### <a name="update-a-message-in-a-queue"></a>Uppdatera ett meddelande i en kö
 
-Uppdatera innehållet i ett meddelande genom att anropa [updateMessage](/java/api/com.azure.storage.queue.queueclient.updatemessage) -metoden. `updateMessage`Metoden kan ändra ett meddelandes Synlighets-timeout och innehåll. Meddelande innehållet måste vara en kodad UTF-8-sträng som är upp till 64 KB stor. Tillsammans med nytt innehåll för meddelandet skickar du meddelande-ID och pop-kvitto genom att använda det `SendMessageResult` som sparades tidigare i koden. Meddelande-ID och pop-kvitto identifierar vilket meddelande som ska uppdateras.
+Uppdatera innehållet i ett meddelande genom att anropa- [`updateMessage`](/java/api/com.azure.storage.queue.queueclient.updatemessage) metoden. Den här metoden kan ändra ett meddelandes Synlighets-timeout och innehåll. Meddelande innehållet måste vara en kodad UTF-8-sträng som är upp till 64 KB stor. Tillsammans med nytt innehåll för meddelandet skickar du meddelande-ID och pop-kvitto genom att använda det `SendMessageResult` som sparades tidigare i koden. Meddelande-ID och pop-kvitto identifierar vilket meddelande som ska uppdateras.
 
 ```java
 System.out.println("\nUpdating the third message in the queue...");
@@ -288,7 +288,7 @@ queueClient.updateMessage(result.getMessageId(),
 
 ### <a name="receive-and-delete-messages-from-a-queue"></a>Ta emot och ta bort meddelanden från en kö
 
-Hämta tidigare tillagda meddelanden genom att anropa [receiveMessages](/java/api/com.azure.storage.queue.queueclient.receivemessages) -metoden. Exempel koden tar också bort meddelanden från kön när de har tagits emot och bearbetats. I det här fallet visar bearbetningen bara meddelandet i-konsolen.
+Hämta tidigare tillagda meddelanden genom att anropa- [`receiveMessages`](/java/api/com.azure.storage.queue.queueclient.receivemessages) metoden. Exempel koden tar också bort meddelanden från kön när de har tagits emot och bearbetats. I det här fallet visar bearbetningen bara meddelandet i-konsolen.
 
 Appen pausar indata från användaren genom att anropa `System.console().readLine();` innan den tar emot och tar bort meddelandena. Kontrol lera i [Azure Portal](https://portal.azure.com) att resurserna har skapats korrekt innan de tas bort. Eventuella meddelanden som inte tas bort kommer att bli synliga i kön igen för en annan chans att bearbeta dem.
 
@@ -313,7 +313,7 @@ queueClient.receiveMessages(10).forEach(
 
 ### <a name="delete-a-queue"></a>Ta bort en kö
 
-Följande kod rensar resurserna som skapats av appen genom att ta bort kön med [Delete](/java/api/com.azure.storage.queue.queueclient.delete) -metoden.
+Följande kod rensar resurserna som skapas av appen genom att ta bort kön med hjälp av- [`Delete`](/java/api/com.azure.storage.queue.queueclient.delete) metoden.
 
 Lägg till den här koden i slutet av `main` metoden:
 
@@ -344,7 +344,7 @@ Sedan skapar du paketet.
 mvn package
 ```
 
-Kör följande `mvn` kommando för att köra appen.
+Använd följande `mvn` kommando för att köra appen.
 
 ```console
 mvn exec:java -Dexec.mainClass="com.queues.quickstart.App" -Dexec.cleanupDaemonThreads=false
@@ -353,7 +353,7 @@ mvn exec:java -Dexec.mainClass="com.queues.quickstart.App" -Dexec.cleanupDaemonT
 Utdata från appen liknar följande exempel:
 
 ```output
-Azure Queues storage v12 - Java quickstart sample
+Azure Queue Storage client library v12 - Java quickstart sample
 
 Adding messages to the queue...
 
@@ -378,7 +378,7 @@ Done
 
 När appen pausar innan meddelanden tas emot kontrollerar du ditt lagrings konto i [Azure Portal](https://portal.azure.com). Kontrol lera att meddelandena finns i kön.
 
-Tryck på **RETUR** -tangenten för att ta emot och ta bort meddelandena. När du uppmanas till det trycker du på **RETUR** -tangenten för att ta bort kön och avsluta demonstrationen.
+Tryck på knappen `Enter` för att ta emot och ta bort meddelandena. När du uppmanas till det trycker du på `Enter` nyckeln igen för att ta bort kön och avsluta demonstrationen.
 
 ## <a name="next-steps"></a>Nästa steg
 
@@ -389,4 +389,4 @@ För självstudier, exempel, snabb starter och annan dokumentation går du till:
 > [!div class="nextstepaction"]
 > [Azure för Java-molnutvecklare](/azure/developer/java/)
 
-- Om du vill se fler Azure Queue Storage-exempelprogram fortsätter du till [Azure Queue Storage SDK-V12 Java-klient biblioteks exempel](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue).
+- Mer information om Azure Queue Storage Sample-appar finns i [azure Queue Storage-klient bibliotek V12 för Java-exempel](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue).

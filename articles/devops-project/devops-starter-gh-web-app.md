@@ -7,12 +7,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 08/25/2020
 author: ninallam
-ms.openlocfilehash: 9a2abf7e714b75f2551a35a220e30c2465d86a49
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 4caac943df33177728997c74c9ec812105efd62c
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332750"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588785"
 ---
 # <a name="tutorial-deploy-nodejs-app-to-azure-web-app-using-devops-starter-for-github-actions"></a>Självstudie: Distribuera Node.js app till Azure Web App med DevOps starter för GitHub-åtgärder
 
@@ -24,7 +24,7 @@ DevOps Starter är också:
 * Arbets flödet innehåller också ett distributions jobb för CD. 
 * Skapar en Azure Application Insights-resurs för övervakning.
 
-I den här självstudien kommer vi att:
+I de här självstudierna får du:
 
 > [!div class="checklist"]
 > * Använd DevOps starter för att distribuera en Node.js app
@@ -44,7 +44,7 @@ DevOps starter skapar ett arbets flöde i GitHub. Du kan använda en befintlig G
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 
-1. I rutan Sök skriver du **DevOps starter**och väljer sedan. Klicka på **Lägg till** för att skapa en ny.
+1. I rutan Sök skriver du **DevOps starter** och väljer sedan. Klicka på **Lägg till** för att skapa en ny.
 
     ![DevOps starter-instrumentpanelen](_img/azure-devops-starter-aks/search-devops-starter.png)
 
@@ -52,11 +52,11 @@ DevOps starter skapar ett arbets flöde i GitHub. Du kan använda en befintlig G
 
     ![CICD_provider](_img/azure-devops-project-nodejs/provider-selection.png)
 
-1. Välj **Node.js**och välj sedan **Nästa**.
+1. Välj **Node.js** och välj sedan **Nästa**.
 
-1. Under **Välj ett program ramverk**väljer du **Express.js**och väljer sedan **Nästa**. Programramverket som du valde i föregående steg avgör vilka typer av distributionsmål som finns tillgängliga för Azure-tjänsten här. 
+1. Under **Välj ett program ramverk** väljer du **Express.js** och väljer sedan **Nästa**. Programramverket som du valde i föregående steg avgör vilka typer av distributionsmål som finns tillgängliga för Azure-tjänsten här. 
 
-1. Välj **Windows-webbappen**och välj sedan **Nästa**.
+1. Välj **Windows-webbappen** och välj sedan **Nästa**.
 
 ## <a name="configure-github-and-an-azure-subscription"></a>Konfigurera GitHub och en Azure-prenumeration
 
@@ -102,9 +102,9 @@ I det föregående steget konfigurerade DevOps starter automatiskt ett fullstän
 
 DevOps starter skapar en lagrings plats i GitHub. Visa lagringsplatsen och gör kodändringar i programmet genom att utföra följande:
 
-1. Till vänster om instrument panelen för DevOps starter väljer du länken för din huvud gren. Den här länken öppnar en vy till den nyligen skapade GitHub-lagringsplatsen.
+1. Till vänster om instrument panelen för DevOps starter väljer du länken för huvud grenen. Den här länken öppnar en vy till den nyligen skapade GitHub-lagringsplatsen.
 
-1. Om du vill visa webbadressen för den klonade lagringsplatsen väljer du **Klona** längst upp till höger i webbläsaren. Du kan klona Git-lagringsplatsen till din favorit-IDE. I kommande steg kan du använda webbläsaren för att göra och checka in ändringar i koden direkt till huvudgrenen.
+1. Om du vill visa webbadressen för den klonade lagringsplatsen väljer du **Klona** längst upp till höger i webbläsaren. Du kan klona Git-lagringsplatsen till din favorit-IDE. I de följande stegen kan du använda webbläsaren för att göra och bekräfta kod ändringar direkt till huvud grenen.
 
 1. Gå till filen **/Application/views/index.pug** till vänster i webbläsaren.
 

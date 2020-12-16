@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 71b5b3f24b60796cf839b8920de8eae424ea3809
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fffc3e557dd2e13f352b4a6e52d118ee1f8eda52
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85254369"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589633"
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>Självstudiekurs: Skapa en Data Factory-pipeline som flyttar data med hjälp av Azure PowerShell
 > [!div class="op_single_selector"]
@@ -56,17 +56,17 @@ Här är de steg du utför som en del av de här självstudierna:
 
 1. Skapa en Azure- **datafabrik**. I det här steget skapar du en datafabrik med namnet ADFTutorialDataFactoryPSH. 
 1. Skapa **länkade tjänster** i den här datafabriken. I det här steget kan du skapa två länkade tjänster: Azure Storage och Azure SQL-databas. 
-    
+
     AzureStorageLinkedService länkar ditt Azure Storage-konto till datafabriken. Du har skapat en container och överfört data till det här lagringskontot som en del av [förhandskraven](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).   
 
     AzureSqlLinkedService länkar Azure SQL Database till data fabriken. Data som kopieras från blob-lagringen sparas i den här databasen. Du har skapat den SQL-tabellen i den här databasen som en del av [förhandskraven](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).   
 1. Skapa **datauppsättningar** för indata och utdata i datafabriken.  
-    
+
     Den länkade Azure storage-tjänsten anger anslutningssträngen som Data Factory-tjänsten använder vid körning för att ansluta till ditt Azure storage-konto. Och en Azure Blob-datauppsättning anger vilken blobcontainer och mapp som innehåller data.  
 
     På samma sätt anger den länkade tjänsten Azure SQL Database den anslutnings sträng som Data Factory tjänsten använder vid körning för att ansluta till databasen. Och utdatauppsättningen för SQL-tabellen anger tabellen i databasen som data kopieras till från blob-lagringen.
 1. Skapa en **pipeline** i datafabriken. I det här steget kan du skapa en pipeline med en kopieringsaktivitet.   
-    
+
     Kopierings aktiviteten kopierar data från en BLOB i Azure Blob Storage till en tabell i Azure SQL Database. Du kan använda en kopieringsaktivitet i en pipeline för att kopiera data från alla datakällor som stöds till ett mål som stöds. I avsnittet [Dataförflyttningsaktiviteter](data-factory-data-movement-activities.md#supported-data-stores-and-formats) finns en lista över datalager som stöds. 
 1. Övervaka pipeline. I det här steget ska du **övervaka** sektorer från indata- och utdatauppsättningar med hjälp av PowerShell.
 
@@ -83,14 +83,14 @@ En datafabrik kan ha en eller flera pipelines. En pipeline kan innehålla en ell
     ```powershell
     Connect-AzAccount
     ```   
-   
+
     Kör följande kommando för att visa alla prenumerationer för det här kontot:
 
     ```powershell
     Get-AzSubscription
     ```
 
-    Kör följande kommando för att välja den prenumeration som du vill arbeta med. Ersätt ** &lt; NameOfAzureSubscription** &gt; med namnet på din Azure-prenumeration:
+    Kör följande kommando för att välja den prenumeration som du vill arbeta med. Ersätt **&lt; NameOfAzureSubscription** &gt; med namnet på din Azure-prenumeration:
 
     ```powershell
     Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
@@ -100,7 +100,7 @@ En datafabrik kan ha en eller flera pipelines. En pipeline kan innehålla en ell
     ```powershell
     New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
-    
+
     Vissa av stegen i den här självstudien förutsätter att du använder resursgruppen med namnet **ADFTutorialResourceGroup**. Om du använder en annan resursgrupp måste du använda den i stället för ADFTutorialResourceGroup i den här självstudiekursen.
 1. Kör cmdleten **New-AzDataFactory** för att skapa en data fabrik med namnet **ADFTutorialDataFactoryPSH**:  
 
@@ -190,7 +190,7 @@ I det här steget länkar du Azure SQL Database till din data fabrik.
 
     > [!IMPORTANT]
     > Ersätt &lt; servername &gt; , &lt; databasename &gt; , &lt; username@servername &gt; och &lt; Password &gt; med namnen på din server, databas, användar konto och lösen ord.
-    
+
     ```json
     {
         "name": "AzureSqlLinkedService",
@@ -207,7 +207,7 @@ I det här steget länkar du Azure SQL Database till din data fabrik.
     ```powershell
     New-AzDataFactoryLinkedService $df -File .\AzureSqlLinkedService.json
     ```
-    
+
     Här är exempel på utdata:
 
     ```
@@ -420,17 +420,17 @@ Schemat styrs för närvarande av utdatamängd. I den här självstudiekursen ä
     } 
     ```
     Observera följande punkter:
-   
+
    - I avsnittet Aktiviteter finns det bara en aktivitet vars **typ** anges till **Kopia**. Se artikeln [Dataförflyttningsaktiviteter](data-factory-data-movement-activities.md) för information om kopieringsaktiviteten. I Data Factory-lösningar, kan du också använda [datatransformeringsaktiviteter](data-factory-data-transformation-activities.md).
    - Indata för aktiviteten är inställd på **InputDataset** och utdata för aktiviteten är inställd på **OutputDataset**. 
    - I avsnittet för **typeProperties** har **BlobSource** angetts som källtyp och **SqlSink** har angetts som mottagartyp. En fullständig lista över datakällor som stöds av kopieringsaktiviteten som källor och mottagare finns i [Datalager som stöds](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Klicka på länken i tabellen om du vill veta hur du använder ett visst datalager som stöds som källa/mottagare.  
-     
-     Ersätt värdet i **start**egenskapen med den aktuella dagen och **slut**värdet med nästa dag. Du kan ange endast datumdelen och hoppa över tidsvärdet. Till exempel ”2016-02-03” som motsvarar ”2016-02-03T00:00:00Z”
-     
+
+     Ersätt värdet i **start** egenskapen med den aktuella dagen och **slut** värdet med nästa dag. Du kan ange endast datumdelen och hoppa över tidsvärdet. Till exempel ”2016-02-03” som motsvarar ”2016-02-03T00:00:00Z”
+
      Både start- och slutdatum måste vara i [ISO-format](https://en.wikipedia.org/wiki/ISO_8601). Exempel: 2016-10-14T16:32:41Z. **Sluttiden** är valfri, men vi använder den i den här självstudiekursen. 
-     
-     Om du inte anger värdet för **slut** egenskapen, beräknas det som "**Start + 48 timmar**". Om du vill köra pipelinen på obestämd tid, anger du **9999-09-09** som värde för **slut**egenskapen.
-     
+
+     Om du inte anger värdet för **slut** egenskapen, beräknas det som "**Start + 48 timmar**". Om du vill köra pipelinen på obestämd tid, anger du **9999-09-09** som värde för **slut** egenskapen.
+
      I det föregående exemplet finns det 24 datasektorer eftersom varje datasektor skapas varje timme.
 
      Beskrivningar av JSON-egenskaper i en pipeline-definition finns i artikeln [skapa pipelines](data-factory-create-pipelines.md). Beskrivningar av JSON-egenskaper i en kopieringsaktivitet-definition finns i artikeln [aktiviteter för dataflyttning](data-factory-data-movement-activities.md). Beskrivningar av JSON-egenskaper som stöds av BlobSource finns i artikeln [Azure Blob-anslutningsapp](data-factory-azure-blob-connector.md). Beskrivningar av JSON-egenskaper som stöds av SqlSink finns i artikeln [Azure SQL Database-anslutningsapp](data-factory-azure-sql-connector.md).
@@ -455,7 +455,7 @@ Schemat styrs för närvarande av utdatamängd. I den här självstudiekursen ä
 ## <a name="monitor-the-pipeline"></a>Övervaka pipeline
 I det här steget använder du Azure PowerShell till att övervaka vad som händer i en Azure Data Factory.
 
-1. Ersätt &lt; DataFactoryName &gt; med namnet på din data fabrik och kör **Get-AzDataFactory**och tilldela utdata till en variabel $DF.
+1. Ersätt &lt; DataFactoryName &gt; med namnet på din data fabrik och kör **Get-AzDataFactory** och tilldela utdata till en variabel $DF.
 
     ```powershell  
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name <DataFactoryName>
@@ -465,12 +465,12 @@ I det här steget använder du Azure PowerShell till att övervaka vad som händ
     ```powershell
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH0516
     ```
-    
+
     Skriv sedan ut innehållet i $df för att se följande utdata: 
-    
+
     ```
     PS C:\ADFGetStartedPSH> $df
-    
+
     DataFactoryName   : ADFTutorialDataFactoryPSH0516
     DataFactoryId     : 6f194b34-03b3-49ab-8f03-9f8a7b9d3e30
     ResourceGroupName : ADFTutorialResourceGroup
@@ -510,7 +510,7 @@ I det här steget använder du Azure PowerShell till att övervaka vad som händ
     State             : InProgress
     SubState          :
     LatencyStatus     :
-    LongRetryCount    : 0   
+    LongRetryCount    : 0
 
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : ADFTutorialDataFactoryPSH0516

@@ -3,12 +3,12 @@ title: Vanliga frågor om katastrof återställning i VMware med Azure Site Reco
 description: Få svar på vanliga frågor om haveri beredskap för lokala virtuella VMware-datorer till Azure med hjälp av Azure Site Recovery.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8f292e7f624b80e8e13514a714c5759d88fbe57c
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: a272486eea111ab8c8e489556986f12f382e3f65
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379998"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587800"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Vanliga frågor om replikering av VMware till Azure
 
@@ -146,6 +146,10 @@ Replikering är kontinuerlig när du replikerar virtuella VMware-datorer till Az
 ### <a name="can-i-extend-replication"></a>Kan jag utöka replikeringen?
 
 Utökad eller länkad replikering stöds inte. Begär den här funktionen i [feedback-forumet](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).
+
+### <a name="how-can-i-track-progress-of-initial-replicationsynchronization"></a>Hur kan jag spåra förloppet för den inledande replikeringen/synkroniseringen?
+
+Den här funktionen har nyligen Site Recovery tjänster. Uppdatera Site Recovery-infrastrukturen (konfigurations servrar, skalbara process servrar) och mobilitets agenten till version 9,36 eller högre för att få korrekt information. Läs mer om hur du spårar förloppet [här](vmware-azure-enable-replication.md#monitor-initial-replication).
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>Kan jag göra en inledande replikering offline?
 

@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 99c8bc00beb7b189b200e0b02435262ae34835d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5727a08159f750a69920f66f4b743c187aa00885
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856100"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588972"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-starter"></a>Skapa en CI/CD-pipeline för PHP med Azure DevOps starter
 
@@ -32,7 +32,7 @@ Om du inte har en Azure-prenumeration kan du skaffa en kostnadsfritt via [Visual
 
 1. Logga in på [Microsoft Azure-portalen](https://portal.azure.com).
 
-1. I rutan Sök skriver du **DevOps starter**och väljer sedan. Klicka på **Lägg till** för att skapa en ny.
+1. I rutan Sök skriver du **DevOps starter** och väljer sedan. Klicka på **Lägg till** för att skapa en ny.
 
     ![DevOps starter-instrumentpanelen](_img/azure-devops-starter-aks/search-devops-starter.png) 
 
@@ -64,9 +64,9 @@ Om du inte har en Azure-prenumeration kan du skaffa en kostnadsfritt via [Visual
 
  DevOps starter skapar en git-lagringsplats i Azure databaser eller GitHub. Visa lagringsplatsen och gör kodändringar i programmet genom att utföra följande steg:
 
-1. Till vänster om instrument panelen för DevOps starter väljer du länken för din huvud gren. Den här länken öppnar en vy till den nyligen skapade Git-lagringsplatsen.
+1. Till vänster om instrument panelen för DevOps starter väljer du länken för huvud grenen. Den här länken öppnar en vy till den nyligen skapade Git-lagringsplatsen.
 
-1. Om du vill visa webbadressen för den klonade lagringsplatsen väljer du **Klona** längst upp till höger i webbläsaren. Du kan klona Git-lagringsplatsen till din favorit-IDE. I kommande steg använder du webbläsaren för att göra och checka in ändringar i koden direkt till huvudgrenen.
+1. Om du vill visa webbadressen för den klonade lagringsplatsen väljer du **Klona** längst upp till höger i webbläsaren. Du kan klona Git-lagringsplatsen till din favorit-IDE. I de följande stegen använder du webbläsaren för att göra och bekräfta kod ändringar direkt till huvud grenen.
 
 1. Till vänster går du till filen **resources/views/welcome.blade.php**.
 
@@ -80,7 +80,7 @@ Om du inte har en Azure-prenumeration kan du skaffa en kostnadsfritt via [Visual
 
  DevOps starter konfigurerar automatiskt en hel CI/CD-pipeline i Azure-pipeliner. Utforska och anpassa pipelinen efter behov. Utför följande för att bekanta dig med bygg- och versionspipelines:
 
-1. Välj **Bygg pipelines**överst på DevOps starter-instrumentpanelen. Länken öppnar en webbläsarflik och bygg-pipelinen för det nya projektet.
+1. Välj **Bygg pipelines** överst på DevOps starter-instrumentpanelen. Länken öppnar en webbläsarflik och bygg-pipelinen för det nya projektet.
 
 1. Peka på fältet **status** och välj **ellipsen** (...). En meny visar flera alternativ, till exempel för att köa en ny version, för att pausa en version och redigera build-pipeline.
 
@@ -90,7 +90,7 @@ Om du inte har en Azure-prenumeration kan du skaffa en kostnadsfritt via [Visual
 
 1. Välj bygg-pipelinens namn längst upp i bygg-pipelinen.
 
-1. Ändra namnet på din versions pipeline till något mer beskrivande, Välj, **spara & kö**och välj sedan **Spara**.
+1. Ändra namnet på din versions pipeline till något mer beskrivande, Välj, **spara & kö** och välj sedan **Spara**.
 
 1. Under ditt bygg-pipelinenamn väljer du **Historik**.  I fönsterrutan **Historik** visas en spårningslogg över de senaste ändringarna för versionen. Azure Pipelines spårar alla ändringar som görs av bygg-pipelinen, vilket innebär att du kan jämföra versioner.
 

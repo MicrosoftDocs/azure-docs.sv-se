@@ -5,18 +5,18 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 1f4e8c0bc6a066e0d82d393474bfc804be5e3fb3
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f044863be7d0bfaaad57d3974a1d2856b27927ea
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931375"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589142"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>Självstudie: använda villkor i ARM-mallar
 
 Lär dig hur du distribuerar Azure-resurser baserat på villkor i en Azure Resource Manager-mall (ARM-mall).
 
-I självstudien [Ange resursdistributionsordning](./template-tutorial-create-templates-with-dependent-resources.md) skapar du en virtuell dator, ett virtuellt nätverk och några andra beroende resurser, däribland ett lagringskonto. I stället för att skapa ett nytt lagringskonto varje gång låter du användarna välja mellan att skapa ett nytt lagringskonto eller att använda ett befintligt. För att uppnå det här målet definierar du en extra parameter. Om värdet för parametern är ”new” (nytt) skapas ett nytt lagringskonto. Annars används ett befintligt lagrings konto med det angivna namnet.
+I självstudien [Ange resursdistributionsordning](./template-tutorial-create-templates-with-dependent-resources.md) skapar du en virtuell dator, ett virtuellt nätverk och några andra beroende resurser, däribland ett lagringskonto. I stället för att skapa ett nytt lagringskonto varje gång låter du användarna välja mellan att skapa ett nytt lagringskonto eller att använda ett befintligt. För att uppnå det här målet definierar du en extra parameter. Om värdet för parametern är **nytt** skapas ett nytt lagrings konto. Annars används ett befintligt lagrings konto med det angivna namnet.
 
 ![Användnings villkors diagram för Resource Manager-mall](./media/template-tutorial-use-conditions/resource-manager-template-use-condition-diagram.png)
 
@@ -54,7 +54,7 @@ För att kunna följa stegen i den här artikeln behöver du:
 
 Azure snabb starts mallar är en lagrings plats för ARM-mallar. I stället för att skapa en mall från början får du en exempelmall som du anpassar. Den mall som används i den här självstudien heter [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Distribuera en enkel virtuell Windows-dator).
 
-1. Från Visual Studio **Code väljer du** > **Öppna fil**.
+1. Från Visual Studio **Code väljer du**  >  **Öppna fil**.
 1. I **Filnamn** klistrar du in följande URL:
 
     ```url
@@ -73,19 +73,19 @@ Azure snabb starts mallar är en lagrings plats för ARM-mallar. I stället för
 
     Det är bra att granska mal len referens innan du anpassar en mall.
 
-1. Välj **Arkiv** > **Spara som** om du vill spara en kopia av filen på den lokala datorn med namnet **azuredeploy.jspå**.
+1. Välj **Arkiv**  >  **Spara som** om du vill spara en kopia av filen på den lokala datorn med namnet _azuredeploy.jspå_.
 
 ## <a name="modify-the-template"></a>Ändra mallen
 
 Gör två ändringar av den befintliga mallen:
 
 * Lägg till namnparameter för lagringskonto. Användare kan ange antingen ett nytt lagringskontonamn eller ett befintligt lagringskontonamn.
-* Lägg till en ny parameter med namnet **newOrExisting**. Distributionen använder den här parametern för att avgöra om du ska skapa ett nytt lagrings konto eller använda ett befintligt lagrings konto.
+* Lägg till en ny parameter med namnet `newOrExisting` . Distributionen använder den här parametern för att avgöra om du ska skapa ett nytt lagrings konto eller använda ett befintligt lagrings konto.
 
 Här följer proceduren för att göra ändringarna:
 
-1. Öppna **azuredeploy.json** i Visual Studio Code.
-1. Ersätt de tre **variablerna (' storageAccountName ')** med **parametrar (' storageAccountName ')** i hela mallen.
+1. Öppna _azuredeploy.json_ i Visual Studio Code.
+1. Ersätt de tre `variables('storageAccountName')` med `parameters('storageAccountName')` i hela mallen.
 1. Ta bort följande variabeldefinition:
 
     ![Skärm bild som visar de variabel definitioner som du behöver ta bort.](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
@@ -105,7 +105,7 @@ Här följer proceduren för att göra ändringarna:
     },
     ```
 
-    Tryck på **[ALT] + [SHIFT] + F** för att formatera mallen i Visual Studio Code.
+    Tryck på ALT + SKIFT + F för att formatera mallen i Visual Studio Code.
 
     Den uppdaterade parameterdefinitionen ser ut så här:
 
@@ -117,12 +117,12 @@ Här följer proceduren för att göra ändringarna:
     "condition": "[equals(parameters('newOrExisting'),'new')]",
     ```
 
-    Villkoret kontrollerar värdet för parametern med namnet **newOrExisting**. Om parametervärdet är **new** (nytt) skapar distributionen lagringskontot.
+    Villkoret kontrollerar värdet för parametern `newOrExisting` . Om parametervärdet är **new** (nytt) skapar distributionen lagringskontot.
 
     Den uppdaterade lagringskontodefinitionen ser ut så här:
 
     ![Skärm bild som visar den uppdaterade lagrings konto definitionen.](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
-1. Uppdatera **storageUri** -egenskapen för den virtuella datorns resurs definition med följande värde:
+1. Uppdatera `storageUri` egenskapen för den virtuella datorns resurs definition med följande värde:
 
     ```json
     "storageUri": "[concat('https://', parameters('storageAccountName'), '.blob.core.windows.net')]"
@@ -136,16 +136,16 @@ Här följer proceduren för att göra ändringarna:
 
 1. Logga in på [Azure Cloud Shell](https://shell.azure.com)
 
-1. Välj önskad miljö genom att välja antingen **PowerShell** eller **bash** (för CLI) i det övre vänstra hörnet.  Du måste starta om gränssnittet när du byter.
+1. Välj önskad miljö genom att välja antingen **PowerShell** eller **bash** (för CLI) i det övre vänstra hörnet. Du måste starta om gränssnittet när du byter.
 
     ![Azure Portal Cloud Shell Ladda upp fil](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. Välj **Ladda upp/ned filer** och välj sedan **Ladda upp**. Se föregående skärmbild. Välj den fil som du sparade i föregående avsnitt. När du har överfört filen kan du använda kommandot **ls** och kommandot **Cat** för att kontrol lera att filen har laddats upp.
+1. Välj **Ladda upp/ned filer** och välj sedan **Ladda upp**. Se föregående skärmbild. Välj den fil som du sparade i föregående avsnitt. När du har överfört filen kan du använda `ls` kommandot och `cat` kommandot för att kontrol lera att filen har överförts.
 
 1. Kör följande PowerShell-skript för att distribuera mallen.
 
     > [!IMPORTANT]
-    > Namnet på lagringskontot måste vara unikt i Azure. Namnet får bara innehålla gemena bokstäver eller siffror. Det får inte vara längre än 24 tecken. Lagrings kontots namn är projekt namnet med tillägget "Store". Kontrol lera att projekt namnet och det genererade lagrings konto namnet uppfyller kraven för lagrings kontots namn.
+    > Namnet på lagringskontot måste vara unikt i Azure. Namnet får bara innehålla gemena bokstäver eller siffror. Det får inte vara längre än 24 tecken. Lagrings kontots namn är projekt namnet med **Store** tillagt. Kontrol lera att projekt namnet och det genererade lagrings konto namnet uppfyller kraven för lagrings kontots namn.
 
     ```azurepowershell
     $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name and resource names"
@@ -172,9 +172,9 @@ Här följer proceduren för att göra ändringarna:
     ```
 
     > [!NOTE]
-    > Distributionen misslyckas om **newOrExisting** är **new** (nytt) men lagringskontonamnet som anges redan finns.
+    > Distributionen Miss lyckas om `newOrExisting` är **ny**, men lagrings kontot med det angivna lagrings konto namnet finns redan.
 
-Försök att göra en annan distribution med **newOrExisting** inställd på "befintlig" och ange ett befintligt lagrings konto. Information om hur du skapar ett lagringskonto i förväg finns i [Skapa ett lagringskonto](../../storage/common/storage-account-create.md).
+Försök att göra en annan distribution med `newOrExisting` inställningen till **befintlig** och ange ett befintligt lagrings konto. Information om hur du skapar ett lagringskonto i förväg finns i [Skapa ett lagringskonto](../../storage/common/storage-account-create.md).
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

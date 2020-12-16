@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2403e3a4bfe7824659a9c34c407e55e6c56e6046
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 708478f50078276245a7dfab7d185dd50d597407
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994663"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589805"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatisera resurs distributionen för din Function-app i Azure Functions
 
@@ -112,7 +112,7 @@ Dessutom måste instrument ställnings nyckeln tillhandahållas till Function-ap
 Definitionen av värd planen varierar och kan vara något av följande:
 * [Förbruknings plan](#consumption) (standard)
 * [Premiumplan](#premium)
-* [App Service-plan](#app-service-plan)
+* [App Service plan](#app-service-plan)
 
 ### <a name="function-app"></a>Funktionsapp
 
@@ -137,7 +137,7 @@ Function app-resursen definieras genom att använda en resurs av typen **Microso
 
 En Function-app måste innehålla följande program inställningar:
 
-| Inställningsnamn                 | Description                                                                               | Exempelvärden                        |
+| Inställningsnamn                 | Beskrivning                                                                               | Exempelvärden                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | En anslutnings sträng till ett lagrings konto som Functions runtime använder för intern kö | Se [lagrings konto](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | Versionen av Azure Functions runtime                                                | `~2`                                  |
@@ -299,8 +299,6 @@ I Linux måste Function-appen ha `kind` inställningen inställd på `functionap
 }
 ```
 
-
-
 <a name="premium"></a>
 
 ## <a name="deploy-on-premium-plan"></a>Distribuera i Premium-plan
@@ -380,7 +378,6 @@ En Function-app i en Premium-plan måste ha `serverFarmId` egenskapen inställd 
     }
 }
 ```
-
 
 <a name="app-service-plan"></a>
 

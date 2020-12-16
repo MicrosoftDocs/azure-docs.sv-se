@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 7f56ff94c4dcf276accc56e8d1076266099d635d
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 10c06f5b36de880302f17dc17c1d47d5209dd902
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780713"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588479"
 ---
 # <a name="how-to-plan-a-consulting-service-offer-in-the-commercial-marketplace"></a>Planera ett konsult tjänst erbjudande i den kommersiella marknads platsen
 
@@ -29,17 +29,42 @@ Konsult tjänst erbjudanden publiceras som **kontakta mig** -listor. Det innebä
 
 Varje konsult tjänst måste fokusera på någon av dessa Microsoft-produkter, som kallas **primär produkt** för erbjudandet:
 
-|Primär produkt                               |                   |
-|-------------------------------|-------------------|
-|Azure                          |Dynamics 365-automatisering av Project service |
-|Dynamics 365 Business Central  |Dynamics 365-försäljning |
-|Dynamics 365-handel          |Dynamics 365-hantering av leverans kedjan |
-|Dynamics 365 Customer Insights |Microsoft 365 |
-|Dynamics 365-kundtjänster  |Power Apps |
-|Dynamics 365-fälttjänster     |Power Automate |
-|Dynamics 365-ekonomi           |Power BI |
-|Dynamics 365-marknadsföring         |Power Virtual Agents |
-|    |    |
+:::row:::
+    :::column:::
+        Azure
+
+        Dynamics 365 Business Central
+
+        Dynamics 365-handel
+
+        Dynamics 365 Customer Insights
+
+        Dynamics 365-kundtjänster
+
+        Dynamics 365-fälttjänster
+
+        Dynamics 365-ekonomi
+
+        Dynamics 365-marknadsföring
+    :::column-end:::
+    :::column:::
+        Dynamics 365-automatisering av Project service
+
+        Dynamics 365-försäljning
+
+        Dynamics 365-hantering av leverans kedjan
+
+        Microsoft 365
+
+        Power Apps
+
+        Power Automate
+
+        Power BI
+
+        Power Virtual Agents
+    :::column-end:::
+:::row-end:::
 
 Den primära produkt du väljer i Partner Center avgör om ditt erbjudande ska publiceras till Microsoft AppSource eller Azure Marketplace.
 
@@ -98,7 +123,7 @@ När du skapar ett konsult tjänst erbjudande i Partner Center, anger du text, b
 
 För att hjälpa till att skapa ett erbjudande enklare kan du förbereda några av dessa objekt i förväg. Följande objekt krävs om inget annat anges.
 
-**Namn**: namnet visas som rubrik på din erbjudande lista på den kommersiella Marketplace. Namnet kan vara ett varumärke. Den får inte innehålla emojis (om de inte är varumärken och Copyright-symboler) och måste vara begränsade till 50 tecken. Namnet måste innehålla erbjudandets varaktighet och service typ för att maximera sökmotorns optimering (SEO). Det format som krävs är *Namn: varaktighet och typ*. Ta inte med ditt företags namn om det inte också är produkt namnet. Här följer några exempel:
+**Namn**: namnet visas som rubrik på din erbjudande lista på den kommersiella Marketplace. Namnet kan vara ett varumärke. Den får inte innehålla emojis (om de inte är varumärken och Copyright-symboler) och måste vara begränsade till 50 tecken. Namnet måste innehålla erbjudandets varaktighet och service typ för att maximera sökmotorns optimering (SEO). Det format som krävs är *Namn: varaktighet och typ*. Ta inte med ditt företags namn om det inte också är produkt namnet. Här är några exempel:
 
 |Säg inte |Säg  |
 |---|---|

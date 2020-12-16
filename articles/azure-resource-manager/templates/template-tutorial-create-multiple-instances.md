@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 94509ba209e95eb9199ddd760529d47eb48bda10
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: fc1401959adb97f8c4caf6d413a212d9f3b62801
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930807"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588122"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-arm-templates"></a>Självstudie: skapa flera resurs instanser med ARM-mallar
 
@@ -38,15 +38,16 @@ För att kunna följa stegen i den här artikeln behöver du:
 
 [Azure snabb starts mallar](https://azure.microsoft.com/resources/templates/) är en lagrings plats för ARM-mallar. I stället för att skapa en mall från början får du en exempelmall som du anpassar. Den mall som används i den här snabbstarten kallas [Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) (Skapa ett standardlagringskonto). Mallen definierar en Azure Storage-kontoresurs.
 
-1. Från Visual Studio **Code väljer du** > **Öppna fil**.
-2. I **Filnamn** klistrar du in följande URL:
+1. Från Visual Studio **Code väljer du**  >  **Öppna fil**.
+1. I **Filnamn** klistrar du in följande URL:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
-3. Välj **Öppna** för att öppna filen.
-4. Det finns en resurs med namnet ”Microsoft.Storage/storageAccounts” definierad i mallen. Jämför mallen med [mallreferensen](/azure/templates/Microsoft.Storage/storageAccounts). Det är bra att få viss grundläggande förståelse av mallen innan den anpassas.
-5. Välj **Arkiv** > **Spara som** för att spara filen som **azuredeploy.jspå** den lokala datorn.
+
+1. Välj **Öppna** för att öppna filen.
+1. En resurs har `Microsoft.Storage/storageAccounts` definierats i mallen. Jämför mallen med [mallreferensen](/azure/templates/Microsoft.Storage/storageAccounts). Det är praktiskt att få lite grundläggande förståelse för mallen innan du anpassar den.
+1. Välj **Arkiv**  >  **Spara som** för att spara filen som _azuredeploy.jspå_ den lokala datorn.
 
 ## <a name="edit-the-template"></a>Redigera mallen
 
@@ -56,10 +57,10 @@ Från Visual Studio Code gör du följande fyra ändringar:
 
 ![Azure Resource Manager skapar flera instanser](./media/template-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances.png)
 
-1. Lägg till elementet `copy` i resursdefinitionen för lagringskontot. I kopieringselementet anger du antalet iterationer och en variabel för den här loopen. Värdet för antal måste vara ett positivt heltal och får inte överskrida 800.
-2. Funktionen `copyIndex()` returnerar den aktuella iterationen i loopen. Du kan använda indexet som namnprefix. `copyIndex()` är nollbaserat. Om du vill åsidosätta indexvärdet kan du skicka ett värde i funktionen copyIndex(). Till exempel *copyIndex(1)*.
-3. Ta bort elementet **variabler** eftersom det inte används längre.
-4. Ta bort element **Utdata**. Det behövs inte längre.
+1. Lägg till elementet `copy` i resursdefinitionen för lagringskontot. I `copy` elementet anger du antalet iterationer och en variabel för den här slingan. Värdet för antal måste vara ett positivt heltal och får inte överskrida 800.
+2. Funktionen `copyIndex()` returnerar den aktuella iterationen i loopen. Du kan använda indexet som namnprefix. `copyIndex()` är nollbaserat. Du kan ange ett värde i funktionen för att kompensera värdet för indexet `copyIndex()` . Ett exempel är `copyIndex(1)`.
+3. Ta bort `variables` elementet eftersom det inte används längre.
+4. Ta bort `outputs` elementet. Det behövs inte längre.
 
 Den färdiga mallen ser ut så här:
 
@@ -109,17 +110,17 @@ Den färdiga mallen ser ut så här:
 }
 ```
 
-Mer information om hur du skapar flera instanser finns i [distribuera flera instanser av en resurs eller egenskap i arm-mallar](./copy-resources.md)
+Mer information om hur du skapar flera instanser finns [i resurs upprepning i arm-mallar](./copy-resources.md)
 
 ## <a name="deploy-the-template"></a>Distribuera mallen
 
 1. Logga in på [Azure Cloud Shell](https://shell.azure.com)
 
-1. Välj önskad miljö genom att välja antingen **PowerShell** eller **bash** (för CLI) i det övre vänstra hörnet.  Du måste starta om gränssnittet när du byter.
+1. Välj önskad miljö genom att välja antingen **PowerShell** eller **bash** (för CLI) i det övre vänstra hörnet. Du måste starta om gränssnittet när du byter.
 
     ![Azure Portal Cloud Shell Ladda upp fil](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. Välj **Ladda upp/ned filer** och välj sedan **Ladda upp**. Se föregående skärmbild. Välj den fil som du sparade i föregående avsnitt. När du har överfört filen kan du använda kommandot **ls** och kommandot **Cat** för att kontrol lera att filen har laddats upp.
+1. Välj **Ladda upp/ned filer** och välj sedan **Ladda upp**. Se föregående skärmbild. Välj den fil som du sparade i föregående avsnitt. När du har överfört filen kan du använda `ls` kommandot och `cat` kommandot för att kontrol lera att filen har överförts.
 
 1. Kör följande kommandon från Cloud Shell. Välj fliken så att du ser PowerShell-koden eller CLI-koden.
 
@@ -148,9 +149,9 @@ Mer information om hur du skapar flera instanser finns i [distribuera flera inst
 
     ---
 
-Om du vill visa alla tre lagringskonton utelämnar du parametern --name:
+Efter en lyckad mall-distribution kan du Visa de tre lagrings konton som skapats i den angivna resurs gruppen. Jämför lagringskontonamn med namndefinitionen i mallen.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="cli"></a>[CLI](#tab/azure-cli)
 
 ```azurecli
 echo "Enter a project name that is used to generate resource group name:" &&
@@ -172,8 +173,6 @@ Write-Host "Press [ENTER] to continue ..."
 
 ---
 
-Jämför lagringskontonamn med namndefinitionen i mallen.
-
 ## <a name="clean-up-resources"></a>Rensa resurser
 
 När Azure-resurserna inte längre behövs rensar du de resurser som du har distribuerat genom att ta bort resursgruppen.
@@ -185,7 +184,7 @@ När Azure-resurserna inte längre behövs rensar du de resurser som du har dist
 
 ## <a name="next-steps"></a>Nästa steg
 
-I de här självstudierna lärde du dig att skapa flera instanser av ett lagringskonto.  I nästa självstudie utvecklar du en mall med flera resurser och flera resurstyper. Några av resurserna har beroende resurser.
+I de här självstudierna lärde du dig att skapa flera instanser av ett lagringskonto. I nästa självstudie utvecklar du en mall med flera resurser och flera resurstyper. Några av resurserna har beroende resurser.
 
 > [!div class="nextstepaction"]
 > [Skapa beroende resurser](./template-tutorial-create-templates-with-dependent-resources.md)

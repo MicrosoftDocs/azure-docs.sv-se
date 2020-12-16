@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 810a08d2f72359b385d2a7567b796aa222c6ab14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c42acb69e13cc1eb0fbba3fcafaec1451bc4d77
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90942141"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589227"
 ---
 # <a name="features-and-capabilities-of-azure-arc-enabled-sql-managed-instance"></a>Funktioner i Azure Arc-aktiverad SQL-hanterad instans
 
@@ -35,23 +35,23 @@ Azure Arc-aktiverad SQL-hanterad instans delar en gemensam kodbas med den senast
   
 |Funktion|Azure Arc-aktiverad SQL-hanterad instans|
 |-------------|----------------|
-|Loggöverföring|Ja| 
-|Säkerhets kopierings komprimering|Ja|
-|Databas ögonblicks bild|Ja|
+|Loggöverföring|Yes| 
+|Säkerhets kopierings komprimering|Yes|
+|Databas ögonblicks bild|Yes|
 |Always on-kluster instans<sup>1</sup>| Inte tillämpligt. Liknande funktioner är tillgängliga |
 |Always on-tillgänglighetsgrupper<sup>2</sup>|HA-funktioner planeras.|
 |Grundläggande tillgänglighets grupper <sup>2</sup>|HA-funktioner planeras.|
 |Lägsta tillgänglighets grupp för replik incheckning <sup>2</sup>|HA-funktioner planeras.|
-|Klusterfri tillgänglighetsgrupp|Ja|
-|Online-sida och fil återställning|Ja|
-|Online-indexering|Ja|
-|Återuppbyggnad av återställnings Bart online-index|Ja|
-|Schema ändring online|Ja|
-|Snabb återställning|Ja|
-|Speglade säkerhets kopior|Ja|
-|Frekvent tillägg av minne och CPU|Ja|
-|Krypterad säkerhetskopiering|Ja|
-|Hybrid säkerhets kopiering till Azure (säkerhets kopiering till URL)|Ja|
+|Klusterfri tillgänglighetsgrupp|Yes|
+|Online-sida och fil återställning|Yes|
+|Online-indexering|Yes|
+|Återuppbyggnad av återställnings Bart online-index|Yes|
+|Schema ändring online|Yes|
+|Snabb återställning|Yes|
+|Speglade säkerhets kopior|Yes|
+|Frekvent tillägg av minne och CPU|Yes|
+|Krypterad säkerhetskopiering|Yes|
+|Hybrid säkerhets kopiering till Azure (säkerhets kopiering till URL)|Yes|
 
 <sup>1</sup> i scenariot där det finns Pod-problem startar en ny SQL-hanterad instans och återansluter till den permanenta volymen som innehåller dina data. [Lär dig mer om Kubernetes-beständiga volymer här](https://kubernetes.io/docs/concepts/storage/persistent-volumes).
 
@@ -59,78 +59,78 @@ Azure Arc-aktiverad SQL-hanterad instans delar en gemensam kodbas med den senast
 
 ###  <a name="rdbms-scalability-and-performance"></a><a name="RDBMSSP"></a> RDBMS-skalbarhet och prestanda  
 
-|Funktion|Azure Arc-aktiverad SQL-hanterad instans|
-|-------------|----------------|
-|-|   Ja|
-|Binärfiler för stora objekt i klustrade columnstore-index|    Ja|
-|Återuppbyggnad av ogrupperade columnstore-index för online| Ja|
-|Minnesintern OLTP|    Ja|
-|Beständigt huvud minne|    Ja|
-|Tabell-och index partitionering|  Ja
-|Datakomprimering|  Ja|
-|Resource Governor| Ja|
-|Parallellitet med partitionerad tabell| Ja|
-|NUMA-medveten och stor sid minne och buffert mat ris tilldelning|  Ja|
-|Styrning av IO-resurser|    Ja|
-|Fördröjd hållbarhet|    Ja|
-|Automatisk justering|  Ja|
-|Anpassningsbara kopplingar i batch-läge| Ja|
-|Feedback om minnes beviljande i batch-läge|  Ja|
-|Överlagrad körning för tabell värdes funktioner med flera instruktioner|  Ja|
-|Förbättringar av Mass infogning   |Ja|
+| Funktion | Azure Arc-aktiverad SQL-hanterad instans |
+|--|--|
+| - | Yes |
+| Binärfiler för stora objekt i klustrade columnstore-index | Yes |
+| Återuppbyggnad av ogrupperade columnstore-index för online | Yes |
+| Minnesintern OLTP | Yes |
+| Beständigt huvud minne | Yes |
+| Tabell-och index partitionering | Yes |
+| Datakomprimering | Yes |
+| Resource Governor | Yes |
+| Parallellitet med partitionerad tabell | Yes |
+| NUMA-medveten och stor sid minne och buffert mat ris tilldelning | Yes |
+| Styrning av IO-resurser | Yes |
+| Fördröjd hållbarhet | Yes |
+| Automatisk justering | Yes |
+| Anpassningsbara kopplingar i batch-läge | Yes |
+| Feedback om minnes beviljande i batch-läge | Yes |
+| Överlagrad körning för tabell värdes funktioner med flera instruktioner | Yes |
+| Förbättringar av Mass infogning | Yes |
 
-###  <a name="rdbms-security"></a><a name="RDBMSS"></a> RDBMS-säkerhet  
-|Funktion|Azure Arc-aktiverad SQL-hanterad instans|
-|-------------|----------------|
-|Säkerhet på radnivå|    Ja|
-|Alltid krypterad|  Ja|
-|Always Encrypted med säker Enclaves| Inga|
-|Dynamisk datamaskning|  Ja|
-|Grundläggande granskning|    Ja|
-|Detaljerad granskning| Ja|
-|Transparent databas kryptering|   Ja|
-|Användardefinierade roller|    Ja|
-|Inneslutna databaser|   Ja|
-|Kryptering för säkerhets kopior|    Ja|
+###  <a name="rdbms-security"></a><a name="RDBMSS"></a> RDBMS-säkerhet
+
+| Funktion | Azure Arc-aktiverad SQL-hanterad instans |
+|--|--|
+| Säkerhet på radnivå | Yes |
+| Alltid krypterad | Yes |
+| Always Encrypted med säkra enklaver | No |
+| Dynamisk datamaskning | Yes |
+| Grundläggande granskning | Yes |
+| Detaljerad granskning | Yes |
+| Transparent databas kryptering | Yes |
+| Användardefinierade roller | Yes |
+| Inneslutna databaser | Yes |
+| Kryptering för säkerhets kopior | Yes |
 
 ###  <a name="rdbms-manageability"></a><a name="RDBMSM"></a> RDBMS-hanterbarhet  
 
-|Funktion|Azure Arc-aktiverad SQL-hanterad instans|
-|-------------|----------------|
-|Dedikerad administratörs anslutning|    Ja|
-|Stöd för PowerShell-skript|  Ja|
-|Stöd för åtgärder på data skikts program komponent – extrahera, distribuera, uppgradera och ta bort| Ja
-|Princip automatisering (kontrol lera schemat och ändra)   |Ja|
-|Insamling av prestanda data|    Ja|
-|Standard prestanda rapporter   |Ja|
-|Planera guider och planera frysning för plan guider| Ja|
-|Direkt fråga för indexerade vyer (med NOEXPAND-tips)|   Ja|
-|Underhåll av automatiska indexerade vyer    |Ja|
-|Distribuerade partitionerade vyer| Ja|
-|Parallellt indexerade åtgärder    |Ja|
-|Automatisk användning av indexerad vy efter fråga optimering|  Ja|
-|Parallell konsekvens kontroll |Ja|
-
+| Funktion | Azure Arc-aktiverad SQL-hanterad instans |
+|--|--|
+| Dedikerad administratörs anslutning | Yes |
+| Stöd för PowerShell-skript | Yes |
+| Stöd för åtgärder på data skikts program komponent – extrahera, distribuera, uppgradera och ta bort | Yes |
+| Princip automatisering (kontrol lera schemat och ändra) | Yes |
+| Insamling av prestanda data | Yes |
+| Standard prestanda rapporter | Yes |
+| Planera guider och planera frysning för plan guider | Yes |
+| Direkt fråga för indexerade vyer (med NOEXPAND-tips) | Yes |
+| Underhåll av automatiska indexerade vyer | Yes |
+| Distribuerade partitionerade vyer | Yes |
+| Parallellt indexerade åtgärder | Yes |
+| Automatisk användning av indexerad vy efter fråga optimering | Yes |
+| Parallell konsekvens kontroll | Yes |
 
 ### <a name="programmability"></a><a name="Programmability"></a> Programmering  
 
-|Funktion|Azure Arc-aktiverad SQL-hanterad instans|
-|-------------|----------------|
-|JSON|  Ja |       |
-|Query Store    |Ja    |       
-|Temporal|  Ja |       
-|Inbyggt XML-stöd|    Ja |       
-|XML-indexering   |Ja    |       
-|Sammanfoga & UPSERT-funktioner|   Ja |       
-|Datum-och tids data typer    |Ja    |       
-|Stöd för internationalisering|  Ja |       
-|Full text och semantisk sökning |    Inga      |
-|Specifikation av språk i fråga |Ja        |   
-|Service Broker (meddelande hantering)|    Ja     |   
-|Transact-SQL-slutpunkter|    Ja |       
-|Graph| Ja |   
-|Machine Learning Services| Inga  |   
-|PolyBase| Inga   |
+| Funktion | Azure Arc-aktiverad SQL-hanterad instans |
+|--|--|
+| JSON | Ja |
+| Query Store | Yes |  |
+| Temporal | Yes |  |
+| Inbyggt XML-stöd | Yes |  |
+| XML-indexering | Yes |  |
+| Sammanfoga & UPSERT-funktioner | Yes |  |
+| Datum-och tids data typer | Yes |  |
+| Stöd för internationalisering | Yes |  |
+| Full text och semantisk sökning | No |
+| Specifikation av språk i fråga | Yes |  |
+| Service Broker (meddelande hantering) | Yes |  |
+| Transact-SQL-slutpunkter | Yes |  |
+| Graph | Yes |  |
+| Machine Learning Services | No |  |
+| PolyBase | No |
 
 
 ### <a name="tools"></a>Verktyg
@@ -139,16 +139,16 @@ Azure Arc-aktiverad SQL-hanterad instans har stöd för olika data verktyg som k
 
 | **Verktyg** | Azure Arc-aktiverad SQL-hanterad instans|
 | --- | --- | --- |
-| Azure Portal <sup>1</sup> | Inga |
-| Azure CLI | Inga |
-| [Azure Data Studio](/sql/azure-data-studio/what-is) | Ja |
-| Azure PowerShell | Ja |
-| [BACPAC-fil (exportera)](/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Ja |
-| [BACPAC-fil (importera)](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Ja |
-| [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) | Ja |
-| [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) | Ja |
-| [SQL Server PowerShell](/sql/relational-databases/scripting/sql-server-powershell) | Ja |
-| [SQL Server-profilerare](/sql/tools/sql-server-profiler/sql-server-profiler) | Ja |
+| Azure Portal <sup>1</sup> | No |
+| Azure CLI | No |
+| [Azure Data Studio](/sql/azure-data-studio/what-is) | Yes |
+| Azure PowerShell | Yes |
+| [BACPAC-fil (exportera)](/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Yes |
+| [BACPAC-fil (importera)](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Yes |
+| [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) | Yes |
+| [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) | Yes |
+| [SQL Server PowerShell](/sql/relational-databases/scripting/sql-server-powershell) | Yes |
+| [SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) | Yes |
 
 <sup>1</sup> Azure Portal används bara för att Visa Azure Arc-aktiverade SQL-hanterade instanser i skrivskyddat läge under för hands versionen.
 

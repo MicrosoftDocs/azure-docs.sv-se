@@ -3,27 +3,27 @@ title: 'Snabb start: Använd Azure Storage V11 för .NET för att hantera en kö
 description: I den här snabbstarten lär du dig hur du använder Azure Storage-klientbiblioteket för .NET för att skapa en kö och lägga till meddelanden i den. Därefter får du lära dig hur du läser och bearbetar meddelanden från kön.
 author: mhopkins-msft
 ms.author: mhopkins
+ms.reviewer: dineshm
 ms.date: 07/24/2020
+ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.topic: quickstart
-ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f7368025993c91490d808ef0ae5f5f66233fe666
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 23703dc507aa909aea4711289a4d7d5c5e6a170e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345626"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588208"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Snabb start: Använd Azure Storage SDK-V11 för .NET för att hantera en kö
 
-I den här snabb starten får du lära dig hur du använder Azure Storage klient bibliotek version 11 för .NET för att skapa en kö och lägga till meddelanden till den. Därefter får du lära dig hur du läser och bearbetar meddelanden från kön.
+I den här snabb starten får du lära dig hur du använder Azure Storage klient bibliotek V11 för .NET för att skapa en kö och lägga till meddelanden till den. Därefter får du lära dig hur du läser och bearbetar meddelanden från kön.
 
 > [!NOTE]
-> I den här snabb starten används en äldre version av klient biblioteket för Azure Queue Storage. För att komma igång med den senaste versionen, se [snabb start: Azure Queue Storage klient bibliotek V12 för .net](storage-quickstart-queues-dotnet.md).
+> Den här snabb starten använder en äldre version av Azure Queue Storage klient biblioteket. För att komma igång med den senaste versionen, se [snabb start: Azure Queue Storage klient bibliotek V12 för .net](storage-quickstart-queues-dotnet.md).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -50,13 +50,13 @@ Information om hur du väljer mellan .NET Core och .NET Framework finns i [Välj
 
 Exempelprogrammet som används i den här snabbstarten är ett grundläggande konsolprogram. Du kan utforska exempelprogrammet på [GitHub](https://github.com/Azure-Samples/storage-queues-dotnet-quickstart).
 
-Använd [git](https://git-scm.com/) för att ladda ned en kopia av programmet till utvecklingsmiljön.
+Använd [git](https://git-scm.com/) för att ladda ned en kopia av programmet till utvecklings miljön.
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-queues-dotnet-quickstart.git
 ```
 
-Det här kommandot klonar lagret till den lokala git-mappen. Öppna Visual Studio-lösningen genom att leta reda på mappen *storage-queues-dotnet-quickstart* , öppna den och dubbelklicka på *storage-queues-dotnet-quickstart.sln*.
+Det här kommandot klonar lagrings platsen till din lokala git-mapp. Öppna Visual Studio-lösningen genom att leta efter `storage-queues-dotnet-quickstart` mappen, öppna den och dubbelklicka på `storage-queues-dotnet-quickstart.sln` .
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
@@ -98,7 +98,7 @@ Exempelprogrammet skapar en kö och lägger till ett meddelande i den. Programme
 
 ### <a name="windows"></a>Windows
 
-Om du använder Visual Studio som redigeringsprogram kan du köra genom att trycka på **F5**.
+Om du använder Visual Studio som redigerings program kan du klicka på `F5` för att köra.
 
 I annat fall går du till programkatalogen och kör programmet med kommandot `dotnet run`.
 
@@ -148,7 +148,7 @@ Härnäst får du utforska exempelkoden så att du förstår hur den fungerar.
 
 ### <a name="try-parsing-the-connection-string"></a>Försök att parsa anslutningssträngen
 
-Exemplet kontrollera först att miljövariabeln innehåller en anslutningssträng som kan parsas för att skapa ett [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount)-objekt som pekar på lagringskontot. För att kontrollera att anslutningssträngen är giltig använder exemplet metoden [TryParse](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse). Om **TryParse** lyckas, initieras variabeln *storageAccount* och **SANT** returneras.
+Exemplet kontrollerar först att miljövariabeln innehåller en anslutnings sträng som kan parsas för att skapa ett [`CloudStorageAccount`](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) objekt som pekar på lagrings kontot. För att kontrol lera att anslutnings strängen är giltig använder exemplet [`TryParse`](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) metoden. Om `TryParse` är lyckad initierar den `storageAccount` variabeln och returnerar `true` .
 
 ```csharp
 // Retrieve the connection string for use with the application. The storage connection string is stored
@@ -204,7 +204,7 @@ Console.WriteLine("Message expiration time: {0}", message.ExpirationTime.ToStrin
 Console.WriteLine();
 ```
 
-Använd `Timespan.FromSeconds(-1)` i anropet till [AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync)för att lägga till ett meddelande som inte upphör att gälla.
+Använd `Timespan.FromSeconds(-1)` i ditt anrop till om du vill lägga till ett meddelande som inte upphör att gälla [`AddMessageAsync`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync) .
 
 ```csharp
 await queue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
@@ -262,19 +262,19 @@ if (queue != null)
 
 ## <a name="resources-for-developing-net-applications-with-queues"></a>Resurser för utveckling av .NET-program med köer
 
-Se dessa ytterligare resurser för .NET-utveckling med Azure Queues:
+Se följande ytterligare resurser för .NET-utveckling med Azure Queue Storage:
 
 ### <a name="binaries-and-source-code"></a>Binärfiler och källkod
 
 - Hämta NuGet-paketen för den senaste versionen av [klient biblioteket för Azure Storage för .net](/dotnet/api/overview/azure/storage)
-  - [Common](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
+  - [Common](https://www.nuget.org/packages/microsoft.azure.storage.common/)
   - [Köer](https://www.nuget.org/packages/Azure.Storage.Queues/)
 - Visa [källkoden för .NET-klientbiblioteket](https://github.com/Azure/azure-storage-net) på GitHub.
 
-### <a name="client-library-reference-and-samples"></a>Referens och exempel för klientbiblioteket
+### <a name="azure-storage-client-library-reference-and-samples"></a>Azure Storage klient biblioteks referens och exempel
 
-- Mer information om klientbiblioteket för .NET finns i [API-referens för .NET](/dotnet/api/overview/azure/storage).
-- Utforska [Queue Storage-exempel](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=queues) som skrivits med .NET-klientbiblioteket.
+- Se [Azure Storage klient bibliotek för .net-referens](/dotnet/api/overview/azure/storage) för mer information om .net-klient biblioteken.
+- Utforska [Queue Storage exempel](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=queues) som är skrivna med .net-klient biblioteket.
 
 ## <a name="next-steps"></a>Nästa steg
 

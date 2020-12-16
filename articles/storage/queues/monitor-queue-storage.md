@@ -1,22 +1,23 @@
 ---
-title: Övervaka Azure Queue Storage | Microsoft Docs
-description: Lär dig hur du övervakar prestanda och tillgänglighet för Azure Queue Storage. Övervaka lagrings data i Azure Queue, lär dig mer om konfiguration och analys av mått-och loggdata.
+title: Övervaka Azure-Queue Storage
+description: Lär dig hur du övervakar prestanda och tillgänglighet för Azure Queue Storage. Övervaka Azure Queue Storage data, lär dig mer om konfiguration och analys av mått-och loggdata.
 author: normesta
 services: storage
-ms.service: storage
-ms.topic: conceptual
-ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
+ms.date: 10/26/2020
+ms.topic: conceptual
+ms.service: storage
+ms.subservice: queues
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 15bc943052218761327fa57ce8ff6f5d32bfb116
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 18991f83bfb365d1ced141fa44267502671854b8
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855098"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588303"
 ---
-# <a name="monitoring-azure-queue-storage"></a>Övervaka Azure Queue Storage
+# <a name="monitoring-azure-queue-storage"></a>Övervaka Azure-Queue Storage
 
 När du har viktiga program och affärs processer som förlitar sig på Azure-resurser, vill du övervaka resurserna för deras tillgänglighet, prestanda och drift. I den här artikeln beskrivs övervaknings data som genereras av Azure Queue Storage och hur du kan använda funktionerna i Azure Monitor för att analysera aviseringar för dessa data.
 
@@ -25,13 +26,13 @@ När du har viktiga program och affärs processer som förlitar sig på Azure-re
 
 ## <a name="monitor-overview"></a>Övervaka översikt
 
-På sidan **Översikt** i Azure Portal för varje kö lagrings resurs finns en kort vy över resursanvändningen, till exempel begär Anden och fakturering per timme. Den här informationen är användbar, men bara en liten mängd av övervaknings data är tillgänglig. En del av dessa data samlas in automatiskt och är tillgängliga för analys så fort du skapar resursen. Du kan aktivera ytterligare typer av data insamling med en del konfiguration.
+**Översikts** sidan i Azure Portal för varje Queue Storage resurs innehåller en kort översikt över resursanvändningen, till exempel begär Anden och fakturering per timme. Den här informationen är användbar, men bara en liten mängd av övervaknings data är tillgänglig. En del av dessa data samlas in automatiskt och är tillgängliga för analys så fort du skapar resursen. Du kan aktivera ytterligare typer av data insamling med en del konfiguration.
 
 ## <a name="what-is-azure-monitor"></a>Vad är Azure Monitor?
 
-Azure Queue Storage skapar övervaknings data med hjälp av [Azure Monitor](../../azure-monitor/overview.md), som är en fullständig stack övervaknings tjänst i Azure. Azure Monitor innehåller en fullständig uppsättning funktioner för att övervaka dina Azure-resurser och resurser i andra moln och lokalt.
+Azure Queue Storage skapar övervaknings data med hjälp av [Azure Monitor](../../azure-monitor/overview.md), som är en fullständig stack övervaknings tjänst i Azure. Azure Monitor innehåller en fullständig uppsättning funktioner för att övervaka dina Azure-resurser samt resurser i andra moln och lokalt.
 
-Börja med artikeln [övervakning av Azure-resurser med Azure Monitor](../../azure-monitor/insights/monitor-azure-resource.md) som beskriver följande:
+Börja med att [övervaka Azure-resurser med Azure Monitor](../../azure-monitor/insights/monitor-azure-resource.md) som beskriver följande:
 
 - Vad är Azure Monitor?
 - Kostnader för övervakning
@@ -43,9 +44,9 @@ Följande avsnitt bygger på den här artikeln genom att beskriva de specifika d
 
 ## <a name="monitoring-data"></a>Övervaka data
 
-Azure Queue Storage samlar in samma typer av övervaknings data som andra Azure-resurser, som beskrivs i [övervaknings data från Azure-resurser](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data).
+Azure Queue Storage samlar in samma typer av övervaknings data som andra Azure-resurser, som beskrivs i [övervaka data från Azure-resurser](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data).
 
-Se [data referens för lagrings övervakning i Azure Queue](monitor-queue-storage-reference.md) för detaljerad information om mått och loggar mått som skapats av Azure Queue Storage.
+Se [data referens för Azure Queue Storage övervakning](monitor-queue-storage-reference.md) för detaljerad information om mått och loggar mått som skapats av Azure Queue Storage.
 
 Mått och loggar i Azure Monitor endast stöd för Azure Resource Manager lagrings konton. Azure Monitor stöder inte klassiska lagrings konton. Om du vill använda mått eller loggar på ett klassiskt lagrings konto måste du migrera till ett Azure Resource Manager lagrings konto. Se [migrera till Azure Resource Manager](../../virtual-machines/migration-classic-resource-manager-overview.md).
 
@@ -59,9 +60,9 @@ Om du vill samla in resurs loggar måste du skapa en diagnostisk inställning. N
 
 | Kategori | Beskrivning |
 |:---|:---|
-| StorageRead | Läs åtgärder för objekt. |
-| StorageWrite | Skriv åtgärder för objekt. |
-| StorageDelete | Ta bort åtgärder för objekt. |
+| **StorageRead** | Läs åtgärder för objekt. |
+| **StorageWrite** | Skriv åtgärder för objekt. |
+| **StorageDelete** | Ta bort åtgärder för objekt. |
 
 ## <a name="creating-a-diagnostic-setting"></a>Skapa en diagnostisk inställning
 
@@ -115,7 +116,7 @@ Om du väljer att arkivera loggarna på ett lagrings konto betalar du för den v
 
 Om du väljer att strömma dina loggar till en Event Hub, betalar du för den volym av loggar som skickas till händelsehubben. För en speciell prissättning, se avsnittet **plattforms loggar** på sidan [Azure Monitor prissättning](https://azure.microsoft.com/pricing/details/monitor/#platform-logs) .
 
-1. Markera kryss rutan **strömma till en Event Hub** och välj sedan knappen **Konfigurera** .
+1. Markera kryss rutan **data ström till en händelsehubben** och välj sedan knappen **Konfigurera** .
 
 2. I fönstret **Välj en händelse hubb** väljer du namn område, namn och princip namn för den händelsehubben som du vill strömma loggarna till.
 
@@ -126,7 +127,7 @@ Om du väljer att strömma dina loggar till en Event Hub, betalar du för den vo
 
 #### <a name="send-logs-to-azure-log-analytics"></a>Skicka loggar till Azure Log Analytics
 
-1. Markera kryss rutan **Skicka till Log Analytics** , Välj en Log Analytics-arbetsyta och välj sedan knappen **Spara** .
+1. Markera kryss rutan **Skicka till Log Analytics** , välj en Log Analytics arbets yta och välj sedan knappen **Spara** .
 
    > [!div class="mx-imgBorder"]
    > ![Sid logg analys för diagnostikinställningar](media/monitor-queue-storage/diagnostic-logs-settings-pane-log-analytics.png)
@@ -152,10 +153,10 @@ Om du väljer att arkivera loggarna på ett lagrings konto betalar du för den v
 Aktivera loggar med hjälp av [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell-cmdlet tillsammans med `StorageAccountId` parametern.
 
 ```powershell
-Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
-Ersätt `<storage-service-resource--id>` plats hållaren i det här kodfragmentet med resurs-ID för Queue Service. Du hittar resurs-ID: t i Azure Portal genom att öppna sidan **Egenskaper** för ditt lagrings konto.
+Ersätt `<storage-service-resource--id>` plats hållaren i det här kodfragmentet med resurs-ID för kön. Du hittar resurs-ID: t i Azure Portal genom att öppna sidan **Egenskaper** för ditt lagrings konto.
 
 Du kan använda `StorageRead` , `StorageWrite` , och `StorageDelete` för värdet för parametern **Category** .
 
@@ -172,7 +173,7 @@ Om du väljer att strömma dina loggar till en Event Hub, betalar du för den vo
 Aktivera loggar med hjälp av cmdleten [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell med `EventHubAuthorizationRuleId` parametern.
 
 ```powershell
-Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAuthorizationRuleId <event-hub-namespace-and-key-name> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAuthorizationRuleId <event-hub-namespace-and-key-name> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
 Här är ett exempel:
@@ -186,7 +187,7 @@ En beskrivning av varje parameter finns i [strömma data till Event Hubs via Pow
 Aktivera loggar med hjälp av cmdleten [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell med `WorkspaceId` parametern.
 
 ```powershell
-Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <log-analytics-workspace-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <log-analytics-workspace-resource-id> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
 Här är ett exempel:
@@ -197,7 +198,7 @@ Mer information finns i [strömma Azure resurs loggar till Log Analytics arbets 
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. Öppna först [Azure Cloud Shell](../../cloud-shell/overview.md), eller om du har [installerat](/cli/azure/install-azure-cli) Azure CLI lokalt öppnar du ett kommando konsol program, till exempel Windows PowerShell.
+1. Öppna först [Azure Cloud Shell](../../cloud-shell/overview.md), eller om du har [installerat Azure CLI](/cli/azure/install-azure-cli) lokalt öppnar du ett kommando konsol program som PowerShell.
 
 2. Om din identitet är associerad med fler än en prenumeration ställer du in din aktiva prenumeration på prenumerationen på det lagrings konto som du vill aktivera loggar för.
 
@@ -211,15 +212,15 @@ Mer information finns i [strömma Azure resurs loggar till Log Analytics arbets 
 
 Om du väljer att arkivera loggarna på ett lagrings konto betalar du för den volym loggar som skickas till lagrings kontot. För en speciell prissättning, se avsnittet **plattforms loggar** på sidan [Azure Monitor prissättning](https://azure.microsoft.com/pricing/details/monitor/#platform-logs) .
 
-Aktivera loggar genom att använda kommandot [AZ Monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) .
+Aktivera loggar med hjälp av [`az monitor diagnostic-settings create`](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) kommandot.
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
 ```
 
-Ersätt `<storage-service-resource--id>` plats hållaren i det här kodfragmentet med resurs-ID Queue Storage-tjänsten. Du hittar resurs-ID: t i Azure Portal genom att öppna sidan **Egenskaper** för ditt lagrings konto.
+Ersätt `<storage-service-resource--id>` plats hållaren i det här kodfragmentet med resurs-ID för kön. Du hittar resurs-ID: t i Azure Portal genom att öppna sidan **Egenskaper** för ditt lagrings konto.
 
-Du kan använda `StorageRead` , `StorageWrite` , och `StorageDelete` för värdet för parametern **Category** .
+Du kan använda `StorageRead` , `StorageWrite` , och `StorageDelete` för `category` parameterns värde.
 
 Här är ett exempel:
 
@@ -231,7 +232,7 @@ En beskrivning av varje parameter finns i [arkivera resurs loggar via Azure CLI]
 
 Om du väljer att strömma dina loggar till en Event Hub, betalar du för den volym av loggar som skickas till händelsehubben. För en speciell prissättning, se avsnittet **plattforms loggar** på sidan [Azure Monitor prissättning](https://azure.microsoft.com/pricing/details/monitor/#platform-logs) .
 
-Aktivera loggar genom att använda kommandot [AZ Monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) .
+Aktivera loggar med hjälp av [`az monitor diagnostic-settings create`](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) kommandot.
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --event-hub <event-hub-name> --event-hub-rule <event-hub-namespace-and-key-name> --resource <storage-account-resource-id> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
@@ -245,7 +246,7 @@ En beskrivning av varje parameter finns i [strömma data till Event Hubs via Azu
 
 #### <a name="send-logs-to-log-analytics"></a>Skicka loggar till Log Analytics
 
-Aktivera loggar genom att använda kommandot [AZ Monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) .
+Aktivera loggar med hjälp av [`az monitor diagnostic-settings create`](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) kommandot.
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --workspace <log-analytics-workspace-resource-id> --resource <storage-account-resource-id> --logs '[{"category": <category name>, "enabled": true "retentionPolicy": {"days": <days>, "enabled": <retention-bool}}]'
@@ -265,7 +266,7 @@ Om du vill visa en Azure Resource Manager mall som skapar en diagnostisk instäl
 
 ## <a name="analyzing-metrics"></a>Analyserar mått
 
-Du kan analysera mått för Azure Storage med mått från andra Azure-tjänster med hjälp av Metrics Explorer. Öppna Metrics Explorer genom att välja **mått** på **Azure Monitor** -menyn. Mer information om hur du använder det här verktyget finns i [komma igång med Azure Metrics Explorer](../../azure-monitor/platform/metrics-getting-started.md).
+Du kan analysera mått för Azure Storage med mått från andra Azure-tjänster med hjälp av Azure Metrics Explorer. Öppna Metrics Explorer genom att välja **mått** på **Azure Monitor** -menyn. Mer information om hur du använder det här verktyget finns i [komma igång med Azure Metrics Explorer](../../azure-monitor/platform/metrics-getting-started.md).
 
 Det här exemplet visar hur du visar **transaktioner** på konto nivå.
 
@@ -293,9 +294,9 @@ En lista över alla Azure Monitor support mått, som innehåller Azure Queue Sto
 
 #### <a name="list-the-metric-definition"></a>Lista mått definitionen
 
-Du kan visa mått definitionen för ditt lagrings konto eller Queue Storage-tjänsten. Använd cmdleten [Get-AzMetricDefinition](/powershell/module/az.monitor/get-azmetricdefinition) .
+Du kan visa mått definitionen för ditt lagrings konto eller tjänsten Queue Storage. Använd cmdleten [Get-AzMetricDefinition](/powershell/module/az.monitor/get-azmetricdefinition) .
 
-I det här exemplet ersätter du `<resource-ID>` plats hållaren med resurs-ID för hela lagrings kontot eller resurs-ID: t för kön lagrings tjänst. Du hittar dessa resurs-ID: n på **egenskaps** sidorna för ditt lagrings konto i Azure Portal.
+I det här exemplet ersätter du `<resource-ID>` plats hållaren med resurs-ID för hela lagrings kontot eller resurs-ID: t för kön. Du hittar dessa resurs-ID: n på **egenskaps** sidorna för ditt lagrings konto i Azure Portal.
 
 ```powershell
    $resourceId = "<resource-ID>"
@@ -304,7 +305,7 @@ I det här exemplet ersätter du `<resource-ID>` plats hållaren med resurs-ID f
 
 #### <a name="reading-metric-values"></a>Läser mått värden
 
-Du kan läsa mått värden på konto nivå för ditt lagrings konto eller i kö Storage-tjänsten. Använd cmdleten [Get-AzMetric](/powershell/module/Az.Monitor/Get-AzMetric) .
+Du kan läsa mått värden på konto nivå för ditt lagrings konto eller tjänsten Queue Storage. Använd cmdleten [Get-AzMetric](/powershell/module/az.monitor/get-azmetric) .
 
 ```powershell
    $resourceId = "<resource-ID>"
@@ -315,9 +316,9 @@ Du kan läsa mått värden på konto nivå för ditt lagrings konto eller i kö 
 
 #### <a name="list-the-account-level-metric-definition"></a>Lista mått definitionen på konto nivå
 
-Du kan visa mått definitionen för ditt lagrings konto eller Queue Storage-tjänsten. Använd kommandot [AZ Monitor Metric List-definitions](/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) .
+Du kan visa mått definitionen för ditt lagrings konto eller tjänsten Queue Storage. Använd [`az monitor metrics list-definitions`](/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) kommandot.
 
-I det här exemplet ersätter du `<resource-ID>` plats hållaren med resurs-ID för hela lagrings kontot eller resurs-ID: t för kön lagrings tjänst. Du hittar dessa resurs-ID: n på **egenskaps** sidorna för ditt lagrings konto i Azure Portal.
+I det här exemplet ersätter du `<resource-ID>` plats hållaren med resurs-ID för hela lagrings kontot eller resurs-ID: t för kön. Du hittar dessa resurs-ID: n på **egenskaps** sidorna för ditt lagrings konto i Azure Portal.
 
 ```azurecli-interactive
    az monitor metrics list-definitions --resource <resource-ID>
@@ -325,7 +326,7 @@ I det här exemplet ersätter du `<resource-ID>` plats hållaren med resurs-ID f
 
 #### <a name="read-account-level-metric-values"></a>Läs mått värden på konto nivå
 
-Du kan läsa mått värden för ditt lagrings konto eller Queue Storage-tjänsten. Använd kommandot [AZ Monitor Metric List](/cli/azure/monitor/metrics#az-monitor-metrics-list) .
+Du kan läsa mått värden för ditt lagrings konto eller tjänsten Queue Storage. Använd [`az monitor metrics list`](/cli/azure/monitor/metrics#az-monitor-metrics-list) kommandot.
 
 ```azurecli-interactive
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
@@ -333,9 +334,9 @@ Du kan läsa mått värden för ditt lagrings konto eller Queue Storage-tjänste
 
 ### <a name="net"></a>[.NET](#tab/azure-portal)
 
-Azure Monitor tillhandahåller [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) för att läsa mått definition och-värden. [Exempel koden](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) visar hur du använder SDK med olika parametrar. Du måste använda `0.18.0-preview` eller en senare version för lagrings mått.
+Azure Monitor tillhandahåller [.NET SDK](https://www.nuget.org/packages/microsoft.azure.management.monitor/) för att läsa mått definition och-värden. [Exempel koden](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) visar hur du använder SDK med olika parametrar. Du måste använda `0.18.0-preview` eller en senare version för lagrings mått.
 
-I de här exemplen ersätter du `<resource-ID>` plats hållaren med resurs-ID för hela lagrings kontot eller Queue Storage-tjänsten. Du hittar dessa resurs-ID: n på **egenskaps** sidorna för ditt lagrings konto i Azure Portal.
+I de här exemplen ersätter du `<resource-ID>` plats hållaren med resurs-ID för hela lagrings kontot eller kön. Du hittar dessa resurs-ID: n på **egenskaps** sidorna för ditt lagrings konto i Azure Portal.
 
 Ersätt `<subscription-ID>` variabeln med ID: t för din prenumeration. Anvisningar för hur du hämtar värden för `<tenant-ID>` , `<application-ID>` och `<AccessKey>` finns i [använda portalen för att skapa ett Azure AD-program och tjänstens huvud namn som kan komma åt resurser](../../active-directory/develop/howto-create-service-principal-portal.md).
 
@@ -478,34 +479,34 @@ Ej tillämpligt.
 
 ## <a name="analyzing-logs"></a>Analysera loggar
 
-Du kan komma åt resurs loggar antingen som en kö i ett lagrings konto, som händelse data eller genom att logga analys frågor.
+Du kan komma åt resurs loggar antingen som en kö i ett lagrings konto, som händelse data eller via Log Analytics frågor.
 
-En detaljerad referens för de fält som visas i dessa loggar finns i [data referens för Azure Queue Storage-övervakning](monitor-queue-storage-reference.md).
+En detaljerad referens för de fält som visas i dessa loggar finns i [referens för Azure Queue Storage övervaknings data](monitor-queue-storage-reference.md).
 
 > [!NOTE]
 > Azure Storage loggar i Azure Monitor finns i offentlig för hands version och är tillgänglig för för hands testning i alla offentliga moln regioner. Den här för hands versionen aktiverar loggar för blobbar (som innehåller Azure Data Lake Storage Gen2), filer, köer, tabeller, Premium Storage-konton i generell användning v1 och lagrings konton för generell användning v2. Klassiska lagrings konton stöds inte.
 
-Logg poster skapas endast om det finns begär Anden som görs mot tjänst slut punkten. Om ett lagrings konto till exempel har aktivitet i sin kö-slutpunkt men inte i dess tabell-eller BLOB-slutpunkter skapas bara loggar som hör till kötjänsten. Azure Storage loggar innehåller detaljerad information om lyckade och misslyckade förfrågningar till en lagrings tjänst. Den här informationen kan användas för att övervaka enskilda begäranden och för att diagnostisera problem med en lagringstjänst. Begär Anden loggas med bästa möjliga ansträngning.
+Logg poster skapas endast om det finns begär Anden som görs mot tjänst slut punkten. Om ett lagrings konto till exempel har aktivitet i sin kö-slutpunkt men inte i dess tabell-eller BLOB-slutpunkter skapas bara loggar som hör till Queue Storage. Azure Storage loggar innehåller detaljerad information om lyckade och misslyckade förfrågningar till en lagrings tjänst. Den här informationen kan användas för att övervaka enskilda begäranden och för att diagnostisera problem med en lagringstjänst. Begär Anden loggas med bästa möjliga ansträngning.
 
 ### <a name="log-authenticated-requests"></a>Logga autentiserade begär Anden
 
- Följande typer av autentiserade begäranden loggas:
+Följande typer av autentiserade begäranden loggas:
 
 - Lyckade begäranden
 - Misslyckade begäranden, inklusive timeout, begränsning, nätverk, auktorisering och andra fel
 - Begär Anden som använder en signatur för delad åtkomst (SAS) eller OAuth, inklusive misslyckade och lyckade förfrågningar
 - Begär Anden om analys av data (klassiska loggdata i **$logs** container-och klass mått data i **$Metric** tabeller)
 
-Begär Anden som görs av kön lagrings tjänst, till exempel när loggen skapas eller tas bort, loggas inte. En fullständig lista över de loggade data som loggas finns i [lagrings loggade åtgärder och status meddelanden](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) och [logg format för lagring](monitor-queue-storage-reference.md).
+Begär Anden som görs av själva tjänsten Queue Storage, till exempel när loggen skapas eller tas bort, loggas inte. En fullständig lista över de loggade data som loggas finns i [lagrings loggade åtgärder och status meddelanden](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) och [logg format för lagring](monitor-queue-storage-reference.md).
 
 ### <a name="log-anonymous-requests"></a>Logga anonyma begär Anden
 
- Följande typer av anonyma begär Anden loggas:
+Följande typer av anonyma begär Anden loggas:
 
 - Lyckade begäranden
 - Serverfel
 - Timeout-fel för både klienten och servern
-- Misslyckade GET-begäranden med felkoden 304 (inte ändrad)
+- Misslyckade `GET` förfrågningar med felkoden 304 ( `Not Modified` )
 
 Alla andra misslyckade anonyma begär Anden loggas inte. En fullständig lista över de loggade data som loggas finns i [lagrings loggade åtgärder och status meddelanden](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) och [logg format för lagring](monitor-queue-storage-reference.md).
 
@@ -521,7 +522,7 @@ Här är ett exempel:
 
 ### <a name="accessing-logs-in-an-event-hub"></a>Komma åt loggar i en Event Hub
 
-Loggar som skickas till en Event Hub lagras inte som en fil, men du kan kontrol lera att händelsehubben har fått logg informationen. I Azure Portal går du till händelsehubben och kontrollerar att antalet **inkommande meddelanden** är större än noll.
+Loggar som skickas till en Event Hub lagras inte som en fil, men du kan kontrol lera att händelsehubben har fått logg informationen. I Azure Portal går du till händelsehubben och kontrollerar att `incoming requests` antalet är större än noll.
 
 ![Granskningsloggar](media/monitor-queue-storage/event-hub-log.png)
 
@@ -533,11 +534,11 @@ Du kan komma åt loggar som skickas till en Log Analytics arbets yta genom att a
 
 Mer information finns i [Kom igång med Log Analytics i Azure Monitor](../../azure-monitor/log-query/log-analytics-tutorial.md).
 
-Data lagras i tabellen **StorageQueueLogs** .
+Data lagras i `StorageQueueLogs` tabellen.
 
 #### <a name="sample-kusto-queries"></a>Exempel på Kusto-frågor
 
-Här följer några frågor som du kan ange i **logg Sök** fältet för att hjälpa dig att övervaka din Queue Storage. Dessa frågor fungerar med det [nya språket](../../azure-monitor/log-query/log-query-overview.md).
+Här följer några frågor som du kan ange i **logg Sök** fältet för att hjälpa dig att övervaka dina köer. Dessa frågor fungerar med det [nya språket](../../azure-monitor/log-query/log-query-overview.md).
 
 > [!IMPORTANT]
 > När du väljer **loggar** från menyn resurs grupp för lagrings konto öppnas Log Analytics med fråge omfånget som är inställt på den aktuella resurs gruppen. Det innebär att logg frågor bara innehåller data från den resurs gruppen. Om du vill köra en fråga som innehåller data från andra resurser eller data från andra Azure-tjänster väljer du **loggar** på **Azure Monitor** -menyn. Mer information finns i [logg frågans omfång och tidsintervall i Azure Monitor Log Analytics](../../azure-monitor/log-query/scope.md) .
@@ -599,12 +600,12 @@ Använd de här frågorna för att hjälpa dig att övervaka dina Azure Storage-
 
 ## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
 
-**Stöder Azure Storage mått för Managed Disks eller ohanterade diskar?**
+**Stöder Azure Storage mått för hanterade diskar eller ohanterade diskar?**
 
-Nej. Azure Compute stöder mått på diskar. Mer information finns i [per disk mått för hanterade och ohanterade diskar](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/).
+Nej. Beräknings instanser stöder måtten på diskar. Mer information finns i [per disk mått för hanterade och ohanterade diskar](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/).
 
 ## <a name="next-steps"></a>Nästa steg
 
-- En referens för loggar och mått som skapats av Azure Queue Storage finns i [data referens för Azure Queue Storage-övervakning](monitor-queue-storage-reference.md).
+- En referens för loggar och mått som skapats av Azure Queue Storage finns i referens för [Azure Queue Storage övervaknings data](monitor-queue-storage-reference.md).
 - Mer information om övervakning av Azure-resurser finns i [övervaka Azure-resurser med Azure Monitor](../../azure-monitor/insights/monitor-azure-resource.md).
 - Mer information om hur du migrerar mått finns i [Azure Storage metriska migreringar](../common/storage-metrics-migration.md).

@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: c40a0cb362f8c43541194cd1ca0c57abbf8fa974
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 49388ee75fa3e5570a906998fdeaa579208fd636
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033110"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588598"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Vanliga frågor och svar om Active Directory (Azure AD) Application Proxy
 
@@ -80,10 +80,12 @@ Det finns prestanda övervaknings räknare som installeras tillsammans med anslu
 Kopplingen måste inte finnas i samma undernät. Det behöver dock namn matchning (DNS, värd fil) till resursen och nödvändig nätverks anslutning (routning till resursen, portar som är öppna på resursen osv.). Rekommendationer finns i avsnittet [om nätverks sto pol faktorer när du använder Azure Active Directory-programproxy](application-proxy-network-topology.md).
 
 ### <a name="what-versions-of-windows-server-can-i-install-a-connector-on"></a>Vilka versioner av Windows Server kan jag installera en anslutning på?
+
 Application Proxy kräver Windows Server 2012 R2 eller senare. Det finns för närvarande en begränsning på HTTP2 för Windows Server 2019. För att kunna använda anslutningen på Windows Server 2019 måste du lägga till följande register nyckel och starta om servern:
-    ```
-    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
-    ```
+
+```
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
+```
 
 ## <a name="application-configuration"></a>Tillämpningskonfiguration
 

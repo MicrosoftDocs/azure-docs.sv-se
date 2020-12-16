@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
-ms.openlocfilehash: f7348cc2559e73c83ea4c65bc67efebcfe2b031d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 9cfc48e3fdb96ba5b63b28288a801095f7b36f43
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520531"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589953"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>Självstudie: Azure Active Directory integrering med SpringCM
 
@@ -30,7 +30,7 @@ Genom att integrera SpringCM med Azure AD får du följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill konfigurera Azure AD-integrering med SpringCM behöver du följande objekt:
 
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med SpringCM i Azure AD:
 
-1. Välj **enkel inloggning**på sidan **SpringCM** Application Integration i [Azure Portal](https://portal.azure.com/).
+1. Välj **enkel inloggning** på sidan **SpringCM** Application Integration i [Azure Portal](https://portal.azure.com/).
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -124,20 +124,20 @@ Utför följande steg för att konfigurera enkel inloggning med SpringCM i Azure
 
 1. Logga in på din **SpringCM** -företags webbplats som administratör i ett annat webbläsarfönster.
 
-1. Klicka på **gå till**på menyn längst upp, klicka på **Inställningar**och klicka sedan på **SAML SSO**i avsnittet **konto inställningar** .
-   
+1. Klicka på **gå till** på menyn längst upp, klicka på **Inställningar** och klicka sedan på **SAML SSO** i avsnittet **konto inställningar** .
+
     ![SAML SSO](./media/spring-cm-tutorial/ic797051.png "SAML SSO")
 
 1. I avsnittet konfiguration av identitets leverantör utför du följande steg:
-   
+
     ![Konfiguration av identitetsprovider](./media/spring-cm-tutorial/ic797052.png "Konfiguration av identitetsprovider")
-    
-    a. Klicka på **Välj utfärdarcertifikat** eller **ändra utfärdarcertifikat**för att ladda upp den hämtade Azure Active Directory certifikatet.
-    
+
+    a. Klicka på **Välj utfärdarcertifikat** eller **ändra utfärdarcertifikat** för att ladda upp den hämtade Azure Active Directory certifikatet.
+
     b. I text rutan **utgivare** klistrar du in värdet för **Azure AD-identifieraren** , som du har kopierat från Azure Portal.
-    
+
     c. I text rutan **Service Provider (SP) initierad slut punkt** , klistra in URL-värde för **inloggning** , som du har kopierat från Azure Portal.
-            
+
     d. Välj **SAML Enabled** som **Enable**.
 
     e. Klicka på **Spara**.
@@ -159,7 +159,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** `brittasimon@yourcompanydomain.extension` . Till exempel BrittaSimon@contoso.com
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
@@ -170,7 +170,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till SpringCM.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **SpringCM**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **SpringCM**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -203,8 +203,8 @@ Om du vill att Azure Active Directory användare ska kunna logga in på SpringCM
 
 1. Logga in på din **SpringCM** företags webbplats som administratör.
 
-1. Klicka på **gå**till och sedan på **Adress bok**.
-   
+1. Klicka på **gå** till och sedan på **Adress bok**.
+
     ![Skapa användare](./media/spring-cm-tutorial/ic797054.png "Skapa användare")
 
 1. Klicka på **Skapa användare**.

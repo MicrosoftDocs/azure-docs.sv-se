@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 49bc1a77e2e25cb069a89812603ff562b8a4c1cd
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 9e04006a0908832c623230d89caa62b0985f32e4
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931460"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587952"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>Självstudie: distribuera tillägg för virtuella datorer med ARM-mallar
 
@@ -42,7 +42,7 @@ För att kunna följa stegen i den här artikeln behöver du:
 
 ## <a name="prepare-a-powershell-script"></a>Förbereda ett PowerShell-skript
 
-Du kan använda infogat PowerShell-skript eller en skript fil.  I den här självstudien visas hur du använder en skript fil. Ett PowerShell-skript med följande innehåll delas från [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1):
+Du kan använda ett infogat PowerShell-skript eller en skript fil. I den här självstudien visas hur du använder en skript fil. Ett PowerShell-skript med följande innehåll delas från [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1):
 
 ```azurepowershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
@@ -105,22 +105,22 @@ Lägg till en resurs för tillägg för virtuell dator i den befintliga mallen m
 
 Mer information om den här resursdefinitionen finns i [tilläggsreferensen](/azure/templates/microsoft.compute/virtualmachines/extensions). Här följer några viktiga element:
 
-* **name** (namn): eftersom tilläggsresursen är en underordnad resurs för det virtuella datorobjektet måste namnet ha den virtuella datorns namnprefix. Se [Ange namn och typ för underordnade resurser](child-resource-name-type.md).
-* **dependsOn**: skapa tilläggs resursen när du har skapat den virtuella datorn.
-* **fileUris**: de platser där skriptfilerna lagras. Om du väljer att inte använda den angivna platsen måste du uppdatera värdena.
-* **commandToExecute**: det här kommandot anropar skriptet.
+* `name`: Eftersom tilläggs resursen är en underordnad resurs för det virtuella datorobjektet måste namnet ha prefixet för den virtuella datorn. Se [Ange namn och typ för underordnade resurser](child-resource-name-type.md).
+* `dependsOn`: Skapa tilläggs resursen när du har skapat den virtuella datorn.
+* `fileUris`: De platser där skriptfilerna lagras. Om du väljer att inte använda den angivna platsen måste du uppdatera värdena.
+* `commandToExecute`: Det här kommandot anropar skriptet.
 
-Om du vill använda infogat skript tar du bort **fileUris** och uppdaterar **commandToExecute** till:
+Om du vill använda ett infogat skript, ta bort `fileUris` och uppdatera `commandToExecute` till:
 
 ```powershell
 powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools && powershell.exe remove-item 'C:\\inetpub\\wwwroot\\iisstart.htm' && powershell.exe Add-Content -Path 'C:\\inetpub\\wwwroot\\iisstart.htm' -Value $('Hello World from ' + $env:computername)
 ```
 
-Detta infogade skript uppdaterar också iisstart.html-innehållet.
+Detta infogade skript uppdaterar också _iisstart.html_ -innehållet.
 
 Du måste också öppna HTTP-porten så att du kan komma åt webb servern.
 
-1. Hitta **securityRules** i mallen.
+1. Sök `securityRules` i mallen.
 1. Lägg till följande regel bredvid **standard-Allow-3389**.
 
     ```json
@@ -141,7 +141,7 @@ Du måste också öppna HTTP-porten så att du kan komma åt webb servern.
 
 ## <a name="deploy-the-template"></a>Distribuera mallen
 
-Information om distributions proceduren finns i avsnittet "distribuera mallen" i [Självstudier: skapa arm-mallar med beroende resurser](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Du bör använda ett genererat lösenord för den virtuella datorns administratörskonto. Läs mer i avsnittet om [förutsättningar](#prerequisites) i den här artikeln.
+Information om distributions proceduren finns i avsnittet **distribuera mallen** i [Självstudier: skapa arm-mallar med beroende resurser](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Du bör använda ett genererat lösenord för den virtuella datorns administratörskonto. Läs mer i avsnittet om [förutsättningar](#prerequisites) i den här artikeln.
 
 Kör följande kommando från Cloud Shell för att hämta den offentliga IP-adressen för den virtuella datorn:
 

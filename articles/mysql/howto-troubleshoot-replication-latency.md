@@ -7,12 +7,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 10/25/2020
-ms.openlocfilehash: a6ada3557350cd3f2f67dad54152eafded6639ec
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 30ac28ef996c42e99ebece27ec156777f0d033d2
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93087034"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587884"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>Felsök replikeringsfördröjning i Azure Database for MySQL
 
@@ -31,11 +31,14 @@ Fördröjningen för replikering på sekundär Läs repliker är beroende av fle
 
 I den här artikeln får du lära dig hur du felsöker replikeringsfördröjning i Azure Database for MySQL. Du kommer också att förstå några vanliga orsaker till ökad replikeringsfördröjning på replik servrar.
 
+> [!NOTE]
+> Den här artikeln innehåller referenser till termen Slav, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
+
 ## <a name="replication-concepts"></a>Metoder för replikering
 
-När en binär logg aktive ras skriver käll servern genomförda transaktioner till den binära loggen. Den binära loggen används för replikering. Den är aktive rad som standard för alla nyligen etablerade servrar som har stöd för upp till 16 TB lagrings utrymme. På replik servrar körs två trådar på varje replik Server. En tråd är *IO-tråden* och den andra är SQL- *tråden* :
+När en binär logg aktive ras skriver käll servern genomförda transaktioner till den binära loggen. Den binära loggen används för replikering. Den är aktive rad som standard för alla nyligen etablerade servrar som har stöd för upp till 16 TB lagrings utrymme. På replik servrar körs två trådar på varje replik Server. En tråd är *IO-tråden* och den andra är SQL- *tråden*:
 
-- IO-tråden ansluter till käll servern och begär uppdaterade binära loggar. Den här tråden tar emot de binära logg uppdateringarna. Uppdateringarna sparas på en replik server i en lokal logg som kallas *relä loggen* .
+- IO-tråden ansluter till käll servern och begär uppdaterade binära loggar. Den här tråden tar emot de binära logg uppdateringarna. Uppdateringarna sparas på en replik server i en lokal logg som kallas *relä loggen*.
 - SQL-tråden läser relä loggen och tillämpar sedan data ändringarna på replik servrarna.
 
 ## <a name="monitoring-replication-latency"></a>Övervaka replikeringsfördröjning
@@ -87,14 +90,14 @@ mysql> SHOW SLAVE STATUS;
 Här är en typisk utmatning:
   
 >[!div class="mx-imgBorder"]
-> :::image type="content" source="./media/howto-troubleshoot-replication-latency/show-status.png" alt-text="Övervaka replikeringsfördröjning&quot;:::
+> :::image type="content" source="./media/howto-troubleshoot-replication-latency/show-status.png" alt-text="Övervaka replikeringsfördröjning":::
 
 
 Utdata innehåller mycket information. Normalt behöver du bara fokusera på de rader som visas i följande tabell.
 
 |Mått|Beskrivning|
 |---|---|
-|Slave_IO_State| Representerar IO-trådens aktuella status. Normalt är statusen &quot;väntar på att huvud servern ska skickas&quot; om käll servern (huvud servern) synkroniseras. En status som &quot;anslutning till Master" anger att repliken förlorade anslutningen till käll servern. Se till att käll servern körs eller kontrol lera om en brand vägg blockerar anslutningen.|
+|Slave_IO_State| Representerar IO-trådens aktuella status. Normalt är statusen "väntar på att huvud servern ska skickas" om käll servern (huvud servern) synkroniseras. En status som "anslutning till Master" anger att repliken förlorade anslutningen till käll servern. Se till att käll servern körs eller kontrol lera om en brand vägg blockerar anslutningen.|
 |Master_Log_File| Representerar den binära logg filen som käll servern skriver till.|
 |Read_Master_Log_Pos| Anger var käll servern skriver i den binära logg filen.|
 |Relay_Master_Log_File| Representerar den binära logg filen som replik servern läser från käll servern.|

@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a43fa12e72484e97b828648cd7d610f5cf15ea4e
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: d1e5848e568f42fb8a77c65c775962f27a5a03df
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931596"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588044"
 ---
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>Självstudie: skapa ARM-mallar med beroende resurser
 
@@ -46,7 +46,7 @@ För att kunna följa stegen i den här artikeln behöver du:
 
 Azure snabb starts mallar är en lagrings plats för ARM-mallar. I stället för att skapa en mall från början får du en exempelmall som du anpassar. Den mall som används i den här självstudien heter [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Distribuera en enkel virtuell Windows-dator).
 
-1. Från Visual Studio **Code väljer du** > **Öppna fil**.
+1. Från Visual Studio **Code väljer du**  >  **Öppna fil**.
 2. I **Filnamn** klistrar du in följande URL:
 
     ```url
@@ -54,18 +54,18 @@ Azure snabb starts mallar är en lagrings plats för ARM-mallar. I stället för
     ```
 
 3. Välj **Öppna** för att öppna filen.
-4. Välj **Arkiv** > **Spara som** om du vill spara en kopia av filen på den lokala datorn med namnet **azuredeploy.jspå**.
+4. Välj **Arkiv**  >  **Spara som** om du vill spara en kopia av filen på den lokala datorn med namnet _azuredeploy.jspå_.
 
 ## <a name="explore-the-template"></a>Utforska mallen
 
 När du utforskar mallen i det här avsnittet kan du försöka besvara följande frågor:
 
 * Hur många Azure-resurser är definierade i den här mallen?
-* En av resurserna är ett Azure-lagringskonto.  Ser definitionen ut som den som används i den senaste självstudien?
+* En av resurserna är ett Azure-lagringskonto. Ser definitionen ut som den som används i den senaste självstudien?
 * Kan du hitta mallreferenserna för de resurser som är definierade i mallen?
 * Kan du hitta resursernas beroenden?
 
-1. Från Visual Studio Code döljer du elementen tills du bara ser elementen på den första och andra nivån i **resurser**:
+1. Dölj elementen från Visual Studio Code tills du bara ser de första nivå elementen och elementen på den andra nivån i `resources` :
 
     ![Visual Studio Code ARM-mallar](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
 
@@ -78,9 +78,9 @@ När du utforskar mallen i det här avsnittet kan du försöka besvara följande
    * [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces).
    * [**Microsoft. Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines).
 
-     Det är bra att granska mal len referens innan du anpassar en mall.
+     Det är viktigt att du granskar mal len referens innan du anpassar en mall.
 
-1. Expandera den första resursen. Det är ett lagringskonto. Jämför resurs definitionen med [mal len referens](/azure/templates/Microsoft.Storage/storageAccounts).
+1. Expandera den första resursen. Det är ett lagrings konto. Jämför resurs definitionen med [mal len referens](/azure/templates/Microsoft.Storage/storageAccounts).
 
     ![Definition av lagrings konto för Visual Studio Code ARM-mallar](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
 
@@ -96,7 +96,7 @@ När du utforskar mallen i det här avsnittet kan du försöka besvara följande
 
     ![Visual Studio Code ARM-mallar virtuellt nätverk dependsOn](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
 
-    Med elementet dependsOn kan du definiera en resurs som beroende på en eller flera resurser. Den här resursen är beroende av en annan resurs:
+    Med- `dependsOn` elementet kan du definiera en resurs som beroende av en eller flera resurser. Den här resursen är beroende av en annan resurs:
 
     * `Microsoft.Network/networkSecurityGroups`
 
@@ -124,7 +124,7 @@ Genom att ange beroendena distribuerar Resource Manager effektivt lösningen. De
 
     ![Azure Portal Cloud Shell Ladda upp fil](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. Välj **Ladda upp/ned filer** och välj sedan **Ladda upp**. Se föregående skärmbild. Välj den fil som du sparade tidigare. När du har överfört filen kan du använda kommandot **ls** och kommandot **Cat** för att kontrol lera att filen har laddats upp.
+1. Välj **Ladda upp/ned filer** och välj sedan **Ladda upp**. Se föregående skärmbild. Välj den fil som du sparade tidigare. När du har överfört filen kan du använda `ls` kommandot och `cat` kommandot för att kontrol lera att filen har överförts.
 
 1. Kör följande PowerShell-skript för att distribuera mallen.
 

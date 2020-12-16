@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: fe7e02cc34dc9c97e540d7b8d96c48ee8d5cfe09
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3ed0fea4846b969c2af80aa525f7da64e7700bb5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535375"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587935"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Konfigurera Datareplikering i Azure Database for MariaDB
 
@@ -52,9 +52,9 @@ Granska [begränsningarna och kraven](concepts-data-in-replication.md#limitation
 
 Följande steg förbereder och konfigurerar den MariaDB-server som finns lokalt, i en virtuell dator eller i en moln databas tjänst för Datareplikering. MariaDB-servern är källan i Datareplikering.
 
-1. Granska [huvud server kraven](concepts-data-in-replication.md#requirements) innan du fortsätter. 
+1. Granska kraven för den [primära servern](concepts-data-in-replication.md#requirements) innan du fortsätter. 
 
-2. Se till att käll servern tillåter både inkommande och utgående trafik på port 3306 och att käll servern har en **offentlig IP-adress** , att DNS är offentligt tillgänglig eller har ett fullständigt kvalificerat domän namn (FQDN). 
+2. Se till att käll servern tillåter både inkommande och utgående trafik på port 3306 och att käll servern har en **offentlig IP-adress**, att DNS är offentligt tillgänglig eller har ett fullständigt kvalificerat domän namn (FQDN). 
    
    Testa anslutningen till käll servern genom att försöka ansluta från ett verktyg som till exempel den MySQL-kommandorad som finns på en annan dator eller från den [Azure Cloud Shell](../cloud-shell/overview.md) som är tillgänglig i Azure Portal.
 
@@ -284,7 +284,7 @@ Följande steg förbereder och konfigurerar den MariaDB-server som finns lokalt,
     
     På grund av en begränsning för ursprunglig replikering i MariaDB måste du ange  [`sync_master_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info) och [`sync_relay_log_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info) variabler för replikering utan GTID-scenariot.
 
-    Kontrol lera att den sekundära serverns `sync_master_info` och `sync_relay_log_info` variablerna är stabila och Ställ in variablerna på `1` .
+    Kontrol lera replik serverns `sync_master_info` och `sync_relay_log_info` variablerna för att kontrol lera att datareplikeringen är stabil och ange variablerna `1` .
     
 ## <a name="other-stored-procedures"></a>Andra lagrade procedurer
 

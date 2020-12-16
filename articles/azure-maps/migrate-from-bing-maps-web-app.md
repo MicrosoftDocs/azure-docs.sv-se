@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: be0b2a3a15c77ae0de303f02be078f115b283eb9
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 6037deb484ca966ab3a54cc60b0d53ac8299d500
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897151"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590009"
 ---
 # <a name="tutorial---migrate-a-web-app-from-bing-maps"></a>Självstudie – migrera en webbapp från Bing Maps
 
@@ -53,7 +53,7 @@ I följande tabell visas viktiga API-funktioner i Bing Maps V8 JavaScript SDK oc
 | Netencoder-tjänst         | ✓                                                                                      |
 | Vägbeskrivnings tjänst       | ✓                                                                                      |
 | Distans mat ris tjänst  | ✓                                                                                      |
-| Spatial data tjänst     | Saknas                                                                                    |
+| Spatial data tjänst     | Ej tillämpligt                                                                                    |
 | Satellit-/flyg bilder | ✓                                                                                      |
 | Fåglars ögon bilder         | Planerad                                                                                |
 | Streetside bilder       | Planerad                                                                                |
@@ -883,7 +883,7 @@ I Bing Maps kan du läsa in geografi data med hjälp av geografi-modulen. Kartn�
             var clusterSize = cluster.containedPushpins.length;
 
             var radius = 20;    //Default radius to 20 pixels.
-            var fillColor = 'lime';     //Default to lime green.
+            var fillColor = 'lime';   //Default to lime green.
 
             if (clusterSize >= 750) {
                 radius = 40;   //If point_count >= 750, radius is 40 pixels.
@@ -936,7 +936,7 @@ När klustring är aktiverat skickar data källan klustrade och data punkter som
 |-----------------------------|---------|------------------------------------------------|
 | `cluster`                   | boolean | Anger om funktionen representerar ett kluster.     |
 | `cluster_id`                | sträng  | Ett unikt ID för klustret som kan användas med `DataSource` klasserna `getClusterExpansionZoom` , `getClusterChildren` och `getClusterLeaves` . |
-| `point_count`               | nummer  | Antalet platser som klustret innehåller.     |
+| `point_count`               | antal  | Antalet platser som klustret innehåller.     |
 | `point_count_abbreviated`   | sträng  | En sträng som förkortar `point_count` värdet om det är långt. (till exempel 4 000 blir 4K) |
 
 `DataSource`Klassen har följande hjälp funktion för att få åtkomst till ytterligare information om ett kluster med hjälp av `cluster_id` .

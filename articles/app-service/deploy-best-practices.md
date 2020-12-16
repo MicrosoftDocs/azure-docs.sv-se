@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: 37c1854aeb1a1fa3d9283c00b07c665b213b306c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74bd7bc159f7f5974452adf6b2f51148d869b4ed
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708160"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589244"
 ---
 # <a name="deployment-best-practices"></a>Metod tips för distribution
 
@@ -45,7 +45,7 @@ När det är möjligt ska du använda [distributions platser](deploy-staging-slo
 
 Om ditt projekt har utsetts till grenar för testning, frågor och mellanlagring, bör var och en av dessa grenar ständigt distribueras till en mellanlagringsplats. (Detta kallas [Gitflow-design](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow).) På så sätt kan dina intressenter enkelt utvärdera och testa den distribuerade grenen. 
 
-Kontinuerlig distribution ska aldrig aktive ras för produktions platsen. I stället bör din produktions gren (ofta Master) distribueras till en icke-produktions plats. När du är redo att publicera bas grenen byter du till produktions platsen. Att växla till produktion – i stället för att distribuera till produktion – förhindrar drift stopp och gör att du kan återställa ändringarna genom att växla igen. 
+Kontinuerlig distribution ska aldrig aktive ras för produktions platsen. I stället bör produktions grenen (ofta huvud) distribueras till en icke-produktions plats. När du är redo att publicera bas grenen byter du till produktions platsen. Att växla till produktion – i stället för att distribuera till produktion – förhindrar drift stopp och gör att du kan återställa ändringarna genom att växla igen. 
 
 ![Diagram som visar flödet mellan dev-, mellanlagrings-och huvud grenarna och de platser som de distribueras till.](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
 
@@ -84,7 +84,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@main
 
     -name: Authenticate using a Service Principal
       uses: azure/actions/login@v1
@@ -129,7 +129,7 @@ Logga in med i skriptet `az login --service-principal` och ange information om h
 
 Använd kudu [-zipdeploy/](deploy-zip.md) API för att distribuera jar-program och [WARDEPLOY/](deploy-zip.md#deploy-war-file) för krigs appar. Om du använder Jenkins kan du använda dessa API: er direkt i distributions fasen. Mer information finns i [den här artikeln](/azure/developer/jenkins/deploy-to-azure-app-service-using-azure-cli).
 
-### <a name="node"></a>Node
+### <a name="node"></a>Nod
 
 Som standard kör kudu Bygg stegen för Node-programmet ( `npm install` ). Om du använder en build-tjänst, till exempel Azure DevOps, är kudu-versionen onödig. Om du vill inaktivera kudu skapar du en app-inställning `SCM_DO_BUILD_DURING_DEPLOYMENT` med värdet `false` .
 

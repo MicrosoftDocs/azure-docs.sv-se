@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.devlang: php
 ms.date: 9/21/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 426cf59c9fb9d88039231ed441b2ffc7246716c7
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 93e605cb20d593750100ec8e340a7ad74c4dd385
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844445"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587901"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>Självstudie: bygga en PHP-app (Laravel) och MySQL-flexibel Server (för hands version) i Azure App Service
 
@@ -33,7 +33,7 @@ I den här guiden får du lära dig att:
 
 Om du inte har en [Azure-prenumeration](../../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att slutföra den här kursen behöver du:
 
@@ -390,7 +390,7 @@ git remote add azure <deploymentLocalGitUrl-from-create-step>
 Skicka till Azure-fjärrdatabasen för att distribuera appen med följande kommando. När git Credential Manager uppmanas att ange autentiseringsuppgifter, se till att du anger de autentiseringsuppgifter som du skapade i **Konfigurera en distributions användare**, inte de autentiseringsuppgifter som du använder för att logga in på Azure Portal.
 
 ```bash
-git push azure master
+git push azure main
 ```
 
 Det kan ett par minuter att köra kommandot. Medan det körs visas information liknande den i följande exempel:
@@ -401,7 +401,7 @@ Delta compression using up to 8 threads.
 Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
 Total 3 (delta 2), reused 0 (delta 0)
-remote: Updating branch 'master'.
+remote: Updating branch 'main'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id 'a5e076db9c'.
 remote: Running custom deployment command...
@@ -551,7 +551,7 @@ Genomför alla ändringar på Git och skicka sedan kodändringarna till Azure.
 ```bash
 git add .
 git commit -m "added complete checkbox"
-git push azure master
+git push azure main
 ```
 
 När `git push` har slutförts så kan du gå till Azure-appen och prova de nya funktionerna.

@@ -4,20 +4,20 @@ description: Med mjuk borttagning i Azure Key Vault kan du återställa borttagn
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-author: msmbaldwin
-ms.author: mbaldwin
-ms.date: 09/30/2020
-ms.openlocfilehash: 184003e42a14e786cc52c4f585c6781f7b9fe0e7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+author: ShaneBala-keyvault
+ms.author: sudbalas
+ms.date: 12/15/2020
+ms.openlocfilehash: 0f428954ac6ef74253e6e6e430977a85a3943f99
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452189"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589992"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Översikt av mjuk borttagning för Azure Key Vault
 
 > [!IMPORTANT]
-> Du måste aktivera mjuk borttagning i nyckel valven direkt. Möjligheten att välja bort mjuk borttagning kommer att bli föråldrad i slutet av året och skyddet för mjuk borttagning aktive ras automatiskt för alla nyckel valv.  Se fullständig information [här](soft-delete-change.md)
+> Du måste aktivera mjuk borttagning i nyckel valven direkt. Möjligheten att välja bort mjuk borttagning är snart inaktuell. Se fullständig information [här](soft-delete-change.md)
 
 Key Vault funktionen för mjuk borttagning kan återställa de borttagna valven och borttagna Key Vault-objekt (till exempel nycklar, hemligheter, certifikat), som kallas mjuk borttagning. Mer specifikt åtgärdar vi följande scenarier: det här skyddet erbjuder följande skydd:
 

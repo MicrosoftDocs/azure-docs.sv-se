@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 9b870e21ffd5c6a8261b6731b939b5dff558256d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 17b31e365e311b97e322828927827f40733313a6
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501200"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588836"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Azure IoT-enhetens SDK för C
 
@@ -43,7 +43,7 @@ I den här artikeln beskrivs arkitekturen i Azure IoT-enhetens SDK för C. Den v
 
 Du hittar [**Azure IoT-enhetens SDK för c**](https://github.com/Azure/azure-iot-sdk-c) GitHub-lagringsplatsen och visar information om API: et i [C API-referensen](/azure/iot-hub/iot-c-sdk-ref/).
 
-Du hittar den senaste versionen av biblioteken i **huvud** grenen för lagrings platsen:
+Den senaste versionen av biblioteken finns i **huvud** grenen för lagrings platsen:
 
   ![Skärm bild av lagrings platsens huvud gren](./media/iot-hub-device-sdk-c-intro/RepoMasterBranch.png)
 
@@ -72,7 +72,7 @@ Innan du kan köra exemplen i Azure IoT-enhetens SDK för C måste du [skapa en 
 
 Paket tillhandahålls för vanliga plattformar (till exempel NuGet för Windows eller apt_get för Debian och Ubuntu) och exemplen använder dessa paket när de är tillgängliga. I vissa fall måste du kompilera SDK för eller på din enhet. Om du behöver kompilera SDK: n, se [förbereda utvecklings miljön](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) i GitHub-lagringsplatsen.
 
-Hämta exempel koden genom att ladda ned en kopia av SDK från GitHub. Hämta din kopia av källan från **huvud** grenen för GitHub- [lagringsplatsen](https://github.com/Azure/azure-iot-sdk-c).
+Hämta exempel koden genom att ladda ned en kopia av SDK från GitHub. Hämta din kopia av källan från **huvud** grenen i GitHub- [lagringsplatsen](https://github.com/Azure/azure-iot-sdk-c).
 
 
 ### <a name="obtain-the-device-credentials"></a>Hämta autentiseringsuppgifter för enheten
@@ -101,7 +101,7 @@ Om du inte är bekant med verktyget enhets Utforskaren beskriver följande proce
 
 1. Ange din **IoT Hub anslutnings sträng** i det första fältet och klicka på **Uppdatera**. Det här steget konfigurerar verktyget så att det kan kommunicera med IoT Hub. 
 
-Du hittar **anslutnings strängen** under **IoT Hub service**  >  **Settings**  >  iothubowner för **delad åtkomst princip**  >  **iothubowner**.
+Du hittar **anslutnings strängen** under **IoT Hub service**  >  **Settings**  >  iothubowner för **delad åtkomst princip**  >  .
 
 1. När IoT Hub anslutnings strängen har kon figurer ATS klickar du på fliken **hantering** :
 

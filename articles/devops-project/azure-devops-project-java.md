@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 8f74d2b5ab2cc85edbc8b1ea9f7d230f0215f35d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 077730d63d388566bd842a4ba185bd5fd6637043
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91854604"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589006"
 ---
 # <a name="set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-starter"></a>Konfigurera en CI/CD-pipeline för en Java-app med Azure DevOps starter
 
@@ -35,7 +35,7 @@ DevOps starter skapar en CI/CD-pipeline i Azure-pipelines. Du kan skapa en ny Az
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 
-1. I rutan Sök skriver du **DevOps starter**och väljer sedan. Klicka på **Lägg till** för att skapa en ny.
+1. I rutan Sök skriver du **DevOps starter** och väljer sedan. Klicka på **Lägg till** för att skapa en ny.
 
     ![DevOps starter-instrumentpanelen](_img/azure-devops-starter-aks/search-devops-starter.png)
 
@@ -66,9 +66,9 @@ DevOps starter konfigurerade automatiskt en CI-version och versions utlösare.  
 
 DevOps starter skapar en git-lagringsplats i Azure databaser eller GitHub. Visa lagringsplatsen och gör kodändringar i programmet genom att utföra följande:
 
-1. Till vänster om instrument panelen för DevOps starter väljer du länken för din huvud gren. Den här länken öppnar en vy till den nyligen skapade Git-lagringsplatsen.
+1. Till vänster om instrument panelen för DevOps starter väljer du länken för huvud grenen. Den här länken öppnar en vy till den nyligen skapade Git-lagringsplatsen.
 
-1. Om du vill visa webbadressen för den klonade lagringsplatsen väljer du **Klona** längst upp till höger i webbläsaren. Du kan klona Git-lagringsplatsen till din favorit-IDE. I kommande steg kan du använda webbläsaren för att göra och checka in ändringar i koden direkt till huvudgrenen.
+1. Om du vill visa webbadressen för den klonade lagringsplatsen väljer du **Klona** längst upp till höger i webbläsaren. Du kan klona Git-lagringsplatsen till din favorit-IDE. I de följande stegen kan du använda webbläsaren för att göra och bekräfta kod ändringar direkt till huvud grenen.
 
 1. På vänster sida i webbläsaren går du till filen **src/main/webapp/index.html**.
 
@@ -84,7 +84,7 @@ Du bör nu se att en version håller på att skapas. De ändringar som du just u
 
  I det föregående steget konfigurerade DevOps starter automatiskt en fullständigt CI/CD-pipeline. Utforska och anpassa pipelinen efter behov. Utför följande steg för att bekanta dig med bygg- och versionspipelines.
 
-1. Välj **Bygg pipelines**överst på DevOps starter-instrumentpanelen. Länken öppnar en webbläsarflik och bygg-pipelinen för det nya projektet.
+1. Välj **Bygg pipelines** överst på DevOps starter-instrumentpanelen. Länken öppnar en webbläsarflik och bygg-pipelinen för det nya projektet.
 
 1. Peka på fältet **status** och välj ellipsen (...). Den här åtgärden öppnar en meny där du kan starta flera aktiviteter, till exempel köa en ny version, göra en paus och redigera build-pipeline.
 

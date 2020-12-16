@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 08/24/2020
 ms.author: ninallam
-ms.openlocfilehash: 92fa445cee75b2311cbadf96e24c31a1dbd579b8
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: e3c72ce6a15f90f0dbe08bbff10db0ca5f6b5c8f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332773"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588819"
 ---
 # <a name="set-up-cicd-for-a-nodejs-app-with-devops-starter-using-github-actions"></a>Konfigurera CI/CD för en Node.js-app med DevOps starter med GitHub-åtgärder
 
@@ -33,7 +33,7 @@ DevOps starter skapar ett CI/CD-arbetsflöde med GitHub-åtgärder. DevOps start
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 
-1. I rutan Sök skriver du **DevOps starter**och väljer sedan. Klicka på **Lägg till** för att skapa en ny.
+1. I rutan Sök skriver du **DevOps starter** och väljer sedan. Klicka på **Lägg till** för att skapa en ny.
 
     ![DevOps starter-instrumentpanelen](_img/azure-devops-starter-aks/search-devops-starter.png)
 
@@ -86,9 +86,9 @@ DevOps starter konfigurerade automatiskt ett GitHub-arbetsflöde med bygg-och di
 
 DevOps starter skapar en lagrings plats i GitHub. Visa lagringsplatsen och gör kodändringar i programmet genom att utföra följande:
 
-1. Till vänster om instrument panelen för DevOps starter väljer du länken för din huvud gren. Den här länken öppnar en vy till den nyligen skapade GitHub-lagringsplatsen.
+1. Till vänster om instrument panelen för DevOps starter väljer du länken för huvud grenen. Den här länken öppnar en vy till den nyligen skapade GitHub-lagringsplatsen.
 
-1. Om du vill visa webbadressen för den klonade lagringsplatsen väljer du **Klona** längst upp till höger i webbläsaren. Du kan klona Git-lagringsplatsen till din favorit-IDE. I kommande steg kan du använda webbläsaren för att göra och checka in ändringar i koden direkt till huvudgrenen.
+1. Om du vill visa webbadressen för den klonade lagringsplatsen väljer du **Klona** längst upp till höger i webbläsaren. Du kan klona Git-lagringsplatsen till din favorit-IDE. I de följande stegen kan du använda webbläsaren för att göra och bekräfta kod ändringar direkt till huvud grenen.
 
 1. Gå till filen **/Application/views/index.pug** till vänster i webbläsaren.
 
