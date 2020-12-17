@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: aahi
-ms.openlocfilehash: 247aea49d60c2d953d8b6dff37d22188a5442a1f
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: e051eca990ae0aa0b5a79c208a594e1b2332bcb2
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94625503"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97612662"
 ---
 Använd den här snabb starten för att göra din första avbildnings sökning med hjälp av Bildsökning i Bing klient biblioteket. 
 
@@ -23,7 +23,7 @@ Du skapar ett C#-program som skickar en bilds öknings fråga, parsar JSON-svare
 
 Käll koden för det här exemplet finns [på GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingImageSearch) med ytterligare fel hantering och anteckningar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Om du använder Windows, vilken version av [Visual Studio 2017 eller senare](https://visualstudio.microsoft.com/vs/whatsnew/)
 * Om du använder macOS eller Linux, [vs Code](https://code.visualstudio.com) med [.net Core installerat](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/install)
@@ -36,8 +36,6 @@ Se även Priser för Cognitive Services –API för Bing-sökning.
 ## <a name="create-a-console-project"></a>Skapa ett konsol projekt
 
 Börja med att skapa ett nytt C#-konsol program.
-
-## <a name="create-a-console-project"></a>Skapa ett konsol projekt
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visualstudio)
 

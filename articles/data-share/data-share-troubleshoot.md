@@ -6,13 +6,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
-ms.date: 10/15/2020
-ms.openlocfilehash: e29c640494a18bb3be2125a5b53b4f943521fe6c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 12/16/2020
+ms.openlocfilehash: c93ce9c81ada3c30128846b43041603e132abd88
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579155"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617246"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Felsöka vanliga problem i Azure Data Share 
 
@@ -67,6 +67,10 @@ Det gick inte att ta ögonblicks bilder på grund av olika orsaker. Du hittar et
 * Data delnings anslutningen till käll-eller mål data lagret blockeras av brand väggen.
 * Den delade data mängden eller käll-eller mål data lagret har tagits bort.
 
+För lagrings kontot är följande ytterligare orsaker till fel i ögonblicks bilder.
+
+* Filen uppdateras vid källan medan ögonblicks bilden sker. Detta kan resultera i 0 byte-fil på målet. Efterföljande ögonblicks bilder efter uppdateringen har slutförts på källan.
+
 För SQL-källor är följande ytterligare orsaker till fel i ögonblicks bilder. 
 
 * Käll-eller mål-SQL-skriptet för att bevilja behörighet för data resurs körs inte. Eller för Azure SQL Database eller Azure Synapse Analytics (tidigare Azure SQL DW) körs den med SQL-autentisering i stället för Azure Active Directory autentisering.  
@@ -75,6 +79,9 @@ För SQL-källor är följande ytterligare orsaker till fel i ögonblicks bilder
 * Käll-eller mål-SQL data lagret har låsts av andra processer. Azure Data Share tillämpar inte lås på käll-och mål-SQL data lager. Befintliga lås på käll-och mål-SQL data lagret leder dock till att ögonblicks bilder Miss lyckas.
 * Mål-SQL-tabellen refereras till av en sekundär nyckel begränsning. Om det finns en mål tabell med samma namn i ögonblicks bilden, tas tabellen bort och en ny tabell skapas i Azure Data Share. Om en sekundär nyckel begränsning refereras till mål-SQL-tabellen går det inte att släppa tabellen.
 * Mål-CSV-filen genereras, men det går inte att läsa data i Excel. Detta kan inträffa när käll-SQL-tabellen innehåller data med tecken som inte är engelska. I Excel, Välj fliken Hämta data och välj CSV-filen, Välj fil ursprung som 65001: Unicode (UTF-8) och Läs in data.
+
+## <a name="snapshot-issue-after-updating-snapshot-schedule"></a>Problem med ögonblicks bild efter uppdatering av ögonblicks bild schema
+När dataprovidern har uppdaterat ögonblicks bilds schema för den skickade resursen måste data konsumenten inaktivera schemat för tidigare ögonblicks bilder och återaktivera det uppdaterade ögonblicks bilds schemat för den mottagna resursen. 
 
 ## <a name="next-steps"></a>Nästa steg
 

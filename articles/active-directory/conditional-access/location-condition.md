@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: b647b5ee9dbd7a0447bbb69a47db76685daa1102
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 777fc60f76692734ea34ff3cdf8f6bc6e5e8316b
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030203"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615719"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>Använda plats villkoret i en princip för villkorlig åtkomst 
 
@@ -195,6 +195,9 @@ När en molnbaserad proxy är på plats kan en princip som används för att kr�
 ### <a name="api-support-and-powershell"></a>API-stöd och PowerShell
 
 En för hands version av Graph API för namngivna platser är tillgänglig. mer information finns i [namedLocation-API: et](/graph/api/resources/namedlocation?view=graph-rest-beta).
+
+> [!NOTE]
+> Namngivna platser som du skapar med hjälp av PowerShell visas bara på namngivna platser (för hands version). Du kan inte se namngivna platser i den gamla vyn.  
 
 ## <a name="next-steps"></a>Nästa steg
 

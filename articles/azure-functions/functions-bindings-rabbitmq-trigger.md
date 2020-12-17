@@ -4,15 +4,15 @@ description: Lär dig hur du kör en Azure-funktion när ett RabbitMQ-meddelande
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/13/2020
+ms.date: 12/15/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: e7095c08c385457bddf6d70d345c4f47073b4adb
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 26dee5200a60f4900ed20c2fd49a874552272776
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505770"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617229"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>RabbitMQ-utlösare för Azure Functions översikt
 
@@ -133,14 +133,12 @@ En RabbitMQ-bindning definieras i *function.jspå* WHERE- *typ* har angetts till
             "name": "myQueueItem",
             "type": "rabbitMQTrigger",
             "direction": "in",
-            "queueName": "",
-            "connectionStringSetting": ""
+            "queueName": "queue",
+            "connectionStringSetting": "rabbitMQConnection"
         }
     ]
 }
 ```
-
-Koden i *_\_ init_ \_ . py* deklarerar en parameter som `func.RabbitMQMessage` , vilket gör att du kan läsa meddelandet i din funktion.
 
 ```python
 import logging
@@ -214,11 +212,11 @@ I följande tabell förklaras de egenskaper för bindnings konfiguration som du 
 |**position** | saknas | Måste vara inställt på "in".|
 |**Namn** | saknas | Namnet på variabeln som representerar kön i funktions koden. |
 |**queueName**|**QueueName**| Namnet på kön att ta emot meddelanden från. |
-|**Värdnamn**|**Värdnamn**|(valfritt om du använder ConnectStringSetting) <br>Värdnamn för kön (t. ex. 10.26.45.210)|
-|**userNameSetting**|**UserNameSetting**|(valfritt om du använder ConnectionStringSetting) <br>Namn för att komma åt kön |
-|**passwordSetting**|**PasswordSetting**|(valfritt om du använder ConnectionStringSetting) <br>Lösen ord för att komma åt kön|
+|**Värdnamn**|**Värdnamn**|(ignoreras om du använder ConnectStringSetting) <br>Värdnamn för kön (t. ex. 10.26.45.210)|
+|**userNameSetting**|**UserNameSetting**|(ignoreras om du använder ConnectionStringSetting) <br>Namnet på den app-inställning som innehåller användar namnet som ska användas för att komma åt kön. Till exempel UserNameSetting: "% < UserNameFromSettings >%"|
+|**passwordSetting**|**PasswordSetting**|(ignoreras om du använder ConnectionStringSetting) <br>Namnet på den app-inställning som innehåller lösen ordet för att komma åt kön. Till exempel PasswordSetting: "% < PasswordFromSettings >%"|
 |**connectionStringSetting**|**ConnectionStringSetting**|Namnet på den app-inställning som innehåller anslutnings strängen för RabbitMQ meddelande kön. Observera att om du anger anslutnings strängen direkt och inte via en app-inställning i local.settings.jspå, kommer utlösaren inte att fungera. (T. ex.: i *function.jspå*: connectionStringSetting: "rabbitMQConnection" <br> I *local.settings.jspå*: "rabbitMQConnection": "< ActualConnectionstring >")|
-|**lastning**|**Port**|Hämtar eller anger den port som används. Standardvärdet är 0.|
+|**lastning**|**Port**|(ignoreras om du använder ConnectionStringSetting) Hämtar eller anger den port som används. Standardvärdet är 0.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -226,31 +224,29 @@ I följande tabell förklaras de egenskaper för bindnings konfiguration som du 
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-Följande parameter typer är tillgängliga för meddelandet:
+Standard meddelande typen är [rabbitmq-händelse](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html)och `Body` egenskapen för rabbitmq-händelsen kan läsas som de typer som anges nedan:
 
-* [Rabbitmq Event](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html) – standardformat för rabbitmq-meddelanden.
-  * `byte[]`– Genom egenskapen "Body" för RabbitMQ-händelsen.
-* `string` – Meddelandet är text.
 * `An object serializable as JSON` – Meddelandet levereras som en giltig JSON-sträng.
+* `string`
+* `byte[]`
 * `POCO` – Meddelandet är formaterat som ett C#-objekt. Ett fullständigt exempel finns i C#- [exempel](#example).
 
 # <a name="c-script"></a>[C#-skript](#tab/csharp-script)
 
-Följande parameter typer är tillgängliga för meddelandet:
+Standard meddelande typen är [rabbitmq-händelse](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html)och `Body` egenskapen för rabbitmq-händelsen kan läsas som de typer som anges nedan:
 
-* [Rabbitmq Event](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html) – standardformat för rabbitmq-meddelanden.
-  * `byte[]`– Genom egenskapen "Body" för RabbitMQ-händelsen.
-* `string` – Meddelandet är text.
 * `An object serializable as JSON` – Meddelandet levereras som en giltig JSON-sträng.
-* `POCO` – Meddelandet är formaterat som ett C#-objekt.
+* `string`
+* `byte[]`
+* `POCO` – Meddelandet är formaterat som ett C#-objekt. Ett fullständigt exempel finns i C#-skript [exempel](#example).
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-RabbitMQ-meddelandet skickas till funktionen som antingen en sträng eller ett JSON-objekt.
+Queue-meddelandet är tillgängligt via context. bindings.<NAME> var <NAME> matchar det namn som definierats i function.jspå. Om nytto lasten är JSON deserialiseras värdet i ett objekt.
 
 # <a name="python"></a>[Python](#tab/python)
 
-RabbitMQ-meddelandet skickas till funktionen som antingen en sträng eller ett JSON-objekt.
+Se python- [exemplet](#example).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -284,14 +280,14 @@ I det här avsnittet beskrivs de globala konfigurations inställningarna som är
 |prefetchCount|30|Hämtar eller anger antalet meddelanden som meddelande mottagaren kan begära och cachelagras samtidigt.|
 |queueName|saknas| Namnet på kön att ta emot meddelanden från. |
 |Begär|saknas|Namnet på den app-inställning som innehåller anslutnings strängen för RabbitMQ meddelande kön. Observera att om du anger anslutnings strängen direkt och inte via en app-inställning i local.settings.jspå, kommer utlösaren inte att fungera.|
-|port|0|Maximalt antal sessioner som kan hanteras samtidigt per skalad instans.|
+|port|0|(ignoreras om connectionString används) Maximalt antal sessioner som kan hanteras samtidigt per skalad instans.|
 
 ## <a name="local-testing"></a>Lokal testning
 
 > [!NOTE]
 > ConnectionString har företräde framför "värdnamn", "userName" och "Password". Om alla är inställda åsidosätter connectionString de andra två.
 
-Om du testar lokalt utan någon anslutnings sträng ska du ange inställningen "hostName" och "username" och "Password" om det är tillämpligt i avsnittet "rabbitMQ" i *host.jspå*:
+Om du testar lokalt utan någon anslutnings sträng ska du ange inställningen "hostName" och "userName" och "Password" om det är tillämpligt i avsnittet "rabbitMQ" i *host.jspå*:
 
 ```json
 {
@@ -300,8 +296,8 @@ Om du testar lokalt utan någon anslutnings sträng ska du ange inställningen "
         "rabbitMQ": {
             ...
             "hostName": "localhost",
-            "username": "<your username>",
-            "password": "<your password>"
+            "username": "userNameSetting",
+            "password": "passwordSetting"
         }
     }
 }
@@ -309,9 +305,9 @@ Om du testar lokalt utan någon anslutnings sträng ska du ange inställningen "
 
 |Egenskap  |Standardvärde | Beskrivning |
 |---------|---------|---------|
-|Värdnamn|saknas|(valfritt om du använder ConnectStringSetting) <br>Värdnamn för kön (t. ex. 10.26.45.210)|
-|userName|saknas|(valfritt om du använder ConnectionStringSetting) <br>Namn för att komma åt kön |
-|password|saknas|(valfritt om du använder ConnectionStringSetting) <br>Lösen ord för att komma åt kön|
+|Värdnamn|saknas|(ignoreras om du använder ConnectStringSetting) <br>Värdnamn för kön (t. ex. 10.26.45.210)|
+|userName|saknas|(ignoreras om du använder ConnectionStringSetting) <br>Namn för att komma åt kön |
+|password|saknas|(ignoreras om du använder ConnectionStringSetting) <br>Lösen ord för att komma åt kön|
 
 ## <a name="monitoring-rabbitmq-endpoint"></a>Övervakar RabbitMQ-slutpunkt
 Så här övervakar du köer och utbyten för en viss RabbitMQ-slutpunkt:

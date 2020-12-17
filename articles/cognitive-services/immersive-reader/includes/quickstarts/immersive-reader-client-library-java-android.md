@@ -11,20 +11,20 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.custom: devx-track-java, devx-track-js
 ms.author: dylankil
-ms.openlocfilehash: 4118ef478f43c5887e2c5fba4595314e5a4ac02d
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 29bacfff2e7b555143c0483f9b7e4b4f61c9e973
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779062"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97612626"
 ---
 [Avancerad läsare](https://www.onenote.com/learningtools) är ett särskilt utformat verktyg som implementerar beprövade tekniker för att förbättra Läs förståelse för nya läsare, språkutbildningar och personer med inlärnings skillnader som Dyslexia. Du kan använda avancerad läsare i dina program för att isolera text för att förbättra fokus, Visa bilder för vanliga ord, markera delar av tal, läsa den markerade texten, översätta ord och fraser i real tid och mycket mer.
 
 I den här snabb starten skapar du en Android-app från grunden och integrerar den fördjupade läsaren. Ett fullständigt fungerande exempel på den här snabb starten finns [på GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android).
 
-Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/cognitive-services/) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/cognitive-services/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services)
 * En fördjupad läsar resurs som kon figurer ATS för Azure Active Directory autentisering. Följ [dessa instruktioner](../../how-to-create-immersive-reader.md) för att konfigurera. Du behöver några av de värden som skapas här när du konfigurerar miljö egenskaperna. Spara utdata från sessionen i en textfil för framtida bruk.
@@ -38,13 +38,13 @@ Starta ett nytt projekt i Android Studio. Käll koden för det här exemplet är
 
 ![Nytt projekt – Android](../../media/android/java/android-studio-create-project.png)
 
-I fönstret **Välj projekt väljer du** **Tom aktivitet**och väljer sedan **Nästa**.
+I fönstret **Välj projekt väljer du** **Tom aktivitet** och väljer sedan **Nästa**.
 
 ![Tomt aktivitets projekt – Android](../../media/android/java/android-studio-empty-activity.png)
 
 ## <a name="configure-the-project"></a>Konfigurera projektet
 
-Ge projektet namnet **QuickstartJava**och välj en plats där du vill spara den. Välj **Java** som programmeringsspråk och välj sedan **Slutför**.
+Ge projektet namnet **QuickstartJava** och välj en plats där du vill spara den. Välj **Java** som programmeringsspråk och välj sedan **Slutför**.
 
 ![Konfigurera projektet – Android](../../media/android/java/android-studio-configure-project.png)
 
@@ -292,7 +292,7 @@ public class MainActivity extends Activity {
 
 Vi skapar 16 fler Java-klassfiler i mappen **/Java/com.example.quickstartjava** . Var och en av dessa klasser används av appen för att integrera SDK för avancerad läsare. För varje ny fil finns det några klasser som refereras till i kod som ännu inte finns och som kommer att skapas senare. När alla klasser har skapats ska det inte finnas några null-referens fel.
 
-Om du vill skapa en ny **ImmersiveReader. java** -klassfil högerklickar du på mappen i Android Studio, väljer **ny**och väljer sedan **Java-klass**. Du använder samma metod för att skapa Java-klassfiler för varje ny Java-klassfil som du skapar.
+Om du vill skapa en ny **ImmersiveReader. java** -klassfil högerklickar du på mappen i Android Studio, väljer **ny** och väljer sedan **Java-klass**. Du använder samma metod för att skapa Java-klassfiler för varje ny Java-klassfil som du skapar.
 
 ![ImmersiveReader – Android](../../media/android/java/android-studio-immersivereader-java.png)
 
@@ -318,7 +318,6 @@ import java.lang.ref.WeakReference;
  * ImmersiveReader immersiveReader = new ImmersiveReader(Activity, IRAuthenticator);
  * immersiveReader.read(ReadableTextChunk);
  */
-
 
 @Keep
 public class ImmersiveReader {
@@ -402,7 +401,6 @@ import java.lang.ref.WeakReference;
  * ImmersiveReader immersiveReader = new ImmersiveReader(Activity, IRAuthenticator);
  * immersiveReader.read(ReadableTextChunk);
  */
-
 
 @Keep
 public class ImmersiveReader {
@@ -770,7 +768,6 @@ public class IRAuthenticator implements ImmersiveReader.IAuthenticator {
             urlStringBuilder.append("/oauth2/token");
             URL tokenUrl = new URL(urlStringBuilder.toString());
 
-
             StringBuilder formStringBuilder = new StringBuilder();
             formStringBuilder.append("grant_type=client_credentials&resource=https://cognitiveservices.azure.com/&client_id=");
             formStringBuilder.append(clientId);
@@ -793,7 +790,6 @@ public class IRAuthenticator implements ImmersiveReader.IAuthenticator {
             if (responseCode == HTTP_OK) {
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
                 StringBuffer response = new StringBuffer();
-
 
                 String line = bufferedReader.readLine();
                 while (!TextUtils.isEmpty(line)) {
@@ -1389,7 +1385,7 @@ Eftersom programmet måste göra nätverks anrop till den fördjupade läsaren S
 
 ## <a name="run-the-app"></a>Kör appen
 
-Använd Android Studio för att köra appen på en enhets-emulator. När du väljer **Avancerad läsare**öppnas den fördjupade läsaren med innehållet i appen.
+Använd Android Studio för att köra appen på en enhets-emulator. När du väljer **Avancerad läsare** öppnas den fördjupade läsaren med innehållet i appen.
 
 ![Avancerad läsare – Android](../../media/android/java/android-studio-device-emulator.png)
 

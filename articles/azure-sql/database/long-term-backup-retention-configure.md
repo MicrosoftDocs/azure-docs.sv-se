@@ -10,20 +10,20 @@ ms.topic: how-to
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 04/14/2020
-ms.openlocfilehash: 3cab3b262f9116903d0b423cd5e4a0ebd03c46fa
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.date: 12/16/2020
+ms.openlocfilehash: 49dfed7faac1e55a40bc7b7ddd5e9555519350a2
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984438"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617314"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Hantera Azure SQL Database långsiktig kvarhållning av säkerhets kopior
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 I Azure SQL Database kan du konfigurera en databas med en [långsiktig säkerhets kopierings](long-term-retention-overview.md) princip (brv) för att automatiskt behålla databas säkerhets kopiorna i separata Azure Blob Storage-behållare i upp till 10 år. Du kan sedan återställa en databas med hjälp av de här säkerhets kopiorna med hjälp av Azure Portal eller PowerShell. Du kan också konfigurera långsiktig kvarhållning för en [Azure SQL-hanterad instans](../managed-instance/long-term-backup-retention-configure.md) , men den finns för närvarande i begränsad för hands version.
 
-## <a name="using-the-azure-portal"></a>Använda Azure-portalen
+## <a name="using-the-azure-portal"></a>Använda Azure Portal
 
 I följande avsnitt visar vi hur du använder Azure Portal för att konfigurera långsiktig kvarhållning, Visa säkerhets kopior i långsiktig kvarhållning och återställa säkerhets kopian från långsiktig kvarhållning.
 
@@ -203,6 +203,7 @@ Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.Resour
 
 ## <a name="limitations"></a>Begränsningar
 - När du återställer från en LTR-säkerhetskopiering är egenskapen Läs skalning inaktive rad. Om du vill aktivera, Läs skala på den återställda databasen uppdaterar du databasen när den har skapats.
+- Du måste ange mål tjänst nivå målet när du återställer från en LTR-säkerhetskopiering, som skapades när databasen fanns i en elastisk pool. 
 
 ## <a name="next-steps"></a>Nästa steg
 

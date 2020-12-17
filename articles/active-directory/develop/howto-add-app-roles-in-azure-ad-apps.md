@@ -13,12 +13,12 @@ ms.date: 11/13/2020
 ms.author: kkrishna
 ms.reviewer: marsma, kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 96c52c46a75d6d5810dfddf91439c275d14e85f1
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: bae8f0955ef45e21d38797789bdea4f62bf5ea28
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616165"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614939"
 ---
 # <a name="how-to-add-app-roles-to-your-application-and-receive-them-in-the-token"></a>Gör så här: Lägg till app-roller i programmet och ta emot dem i token
 
@@ -30,7 +30,10 @@ En annan metod är att använda Azure AD-grupper och grupp anspråk som visas i 
 
 ## <a name="declare-roles-for-an-application"></a>Deklarera roller för ett program
 
-Du definierar app-roller med hjälp av [Azure Portal](https://portal.azure.com). När en användare loggar in i programmet, genererar Azure AD ett `roles` anspråk för varje roll som användaren har beviljats individuellt för användaren och från grupp medlemskapet.
+Du definierar app-roller med hjälp av [Azure Portal](https://portal.azure.com). App-roller definieras vanligt vis på en program registrering som representerar en tjänst, app eller API. När en användare loggar in i programmet, genererar Azure AD ett `roles` anspråk för varje roll som användaren eller tjänstens huvud namn har beviljats individuellt för användaren och från deras grupp medlemskap. Detta kan användas för att implementera anspråksbaserad auktorisering. App-roller kan tilldelas [till en användare eller en grupp av användare](../manage-apps/add-application-portal-assign-users.md#assign-users-to-an-app). App-roller kan också tilldelas tjänstens huvud namn för ett annat program, eller [till tjänstens huvud namn för en hanterad identitet](../managed-identities-azure-resources/how-to-assign-app-role-managed-identity-powershell.md).
+
+> [!IMPORTANT]
+> För närvarande om du lägger till ett huvud namn för tjänsten i en grupp och sedan tilldelar en app-roll till gruppen, lägger inte Azure AD till `roles` anspråket för att få problem med token.
 
 Det finns två sätt att deklarera app-roller med hjälp av Azure Portal:
 
@@ -137,7 +140,7 @@ Så här tilldelar du användare och grupper till roller med hjälp av Azure Por
 1. I **Azure Active Directory** väljer du **företags program** i den vänstra navigerings menyn.
 1. Välj **alla program** om du vill visa en lista över alla dina program. Om ditt program inte visas i listan använder du filtren högst upp i listan **alla program** för att begränsa listan eller bläddra nedåt i listan för att hitta programmet.
 1. Välj det program som du vill tilldela användare eller säkerhets grupp till roller.
-1. Under **Hantera** väljer du  **Användare och grupper**.
+1. Under **Hantera** väljer du **Användare och grupper**.
 1. Öppna fönstret **Lägg till tilldelning** genom att välja **Lägg till användare** .
 1. Välj Välj **användare och grupper** i fönstret **Lägg till tilldelning** . En lista över användare och säkerhets grupper visas. Du kan söka efter en viss användare eller grupp och välja flera användare och grupper som visas i listan.
 1. När du har valt användare och grupper väljer du knappen **Välj** för att gå vidare.
@@ -169,7 +172,7 @@ De nyligen tillagda rollerna bör visas i din app Registration-fönstret **API-b
 
 #### <a name="grant-admin-consent"></a>Bevilja administratörs medgivande
 
-Eftersom dessa är *program behörigheter* , inte delegerade behörigheter, måste en administratör bevilja medgivande för att använda de app-roller som tilldelats programmet.
+Eftersom dessa är *program behörigheter*, inte delegerade behörigheter, måste en administratör bevilja medgivande för att använda de app-roller som tilldelats programmet.
 
 1. I fönstret **API-behörigheter** för app-registrering väljer du **bevilja administrativt medgivande \<tenant name\> för**.
 1. Välj **Ja** när du uppmanas att bevilja medgivande för de begärda behörigheterna.

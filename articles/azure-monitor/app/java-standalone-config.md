@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 73e3d8834fcb41f863fe2e3d686b812bb6174e70
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 7c5cac0b52fb0a224595ca7e328b551fd48d6661
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507667"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614242"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurations alternativ – Azure Monitor Application Insights för Java
 
@@ -168,6 +168,9 @@ Om du vill lägga till anpassade dimensioner i all telemetri:
 ```
 
 `${...}` kan användas för att läsa värdet från angiven miljö variabel vid start.
+
+> [!NOTE]
+> Från och med version 3.0.1 – BETA, om du lägger till en anpassad dimension med namnet `service.version` , kommer värdet att lagras i `application_Version` kolumnen i tabellen Application Insights loggar i stället för som en anpassad dimension.
 
 ## <a name="telemetry-processors-preview"></a>Telemetri-processorer (för hands version)
 

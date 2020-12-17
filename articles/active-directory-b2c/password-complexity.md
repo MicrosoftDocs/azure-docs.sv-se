@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0cd9f0d6cf9529439f7b5ce46b1a5807d0a68a7c
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 11a45adfda306b2ab843725b6aaa28a5e6c026a6
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111391"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614259"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Konfigurera komplexitets krav för lösen ord i Azure Active Directory B2C
 
@@ -26,7 +26,7 @@ ms.locfileid: "97111391"
 
 Azure Active Directory B2C (Azure AD B2C) stöder ändring av komplexitets kraven för lösen ord som tillhandahålls av en slutanvändare när ett konto skapas. Som standard använder Azure AD B2C **starka** lösen ord. Azure AD B2C också stöd för konfigurations alternativ för att kontrol lera komplexiteten för lösen ord som kunder kan använda.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -218,7 +218,7 @@ Spara princip filen.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig hur du [konfigurerar ändring av lösen ord med anpassade principer i Azure Active Directory B2C](custom-policy-password-change.md).
+- Lär dig hur du [konfigurerar ändring av lösen ord i Azure Active Directory B2C](add-password-change-policy.md).
 - Lär dig mer om [predikat](predicates.md) och [PredicateValidations](predicates.md#predicatevalidations) -elementen i IEF-referensen.
 
 

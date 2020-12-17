@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c476fe2af1fb4bddff4799609b164aab14f57b00
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5aab11b31756ee8430e8ae4d54a2b3de5ea2e136
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187414"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97612710"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Är Azure Virtual WAN i GA?
 
@@ -277,3 +277,7 @@ Se [Basic och standard Virtual WAN](../articles/virtual-wan/virtual-wan-about.md
 ### <a name="does-virtual-wan-store-customer-data"></a>Kan virtuella WAN-data lagra kund information? 
 
 Nej. Det virtuella WAN-nätverket lagrar ingen kund information.
+
+### <a name="are-there-any-managed-service-providers-that-can-manage-virtual-wan-for-users-as-a-service"></a>Finns det några leverantörer av hanterade tjänster som kan hantera virtuella WAN-nätverk för användare som en tjänst? 
+
+Ja. En lista över MSP-lösningar (Managed Service Provider) som är aktiverade via Azure Marketplace finns i [Azure Marketplace-erbjudanden från Azure Network MSP-partner](../articles/networking/networking-partners-msp.md#msp).

@@ -10,12 +10,12 @@ ms.date: 12/11/2020
 ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: 5aa14ae179270813a8c7410425c1614d95b8b497
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: e68a46070f03154092d148552fffbb99ae82bcfd
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97366533"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97612623"
 ---
 <a name="HOLTop"></a>
 
@@ -33,7 +33,7 @@ Den här artikeln beskriver endast version 3. x av API: et.
 
 ---
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services)
 * [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) med version 8 eller senare
