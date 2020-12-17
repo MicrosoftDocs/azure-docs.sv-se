@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99da9b787bfe06bece8b8dafdafc257336dddf63
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 251f9a2b075189f19b9e943ff660baaba93ec33b
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96176196"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652049"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Felsöka Azure Active Directory-direktautentisering
 
@@ -61,7 +61,7 @@ För att bekräfta att detta är problemet, måste du först testa att direktaut
 
 1. Skapa ett test konto.  
 2. Importera PowerShell-modulen på agent datorn:
- 
+
  ```powershell
  Import-Module "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\PassthroughAuthPSModule\PassthroughAuthPSModule.psd1"
  ```

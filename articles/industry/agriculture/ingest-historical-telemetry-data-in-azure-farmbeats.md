@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
-ms.openlocfilehash: af1bee00261cd96f61a39389f31a52109f4e64b5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 603f14d2076b5b74dde0b92a732f8fe816f6dd10
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675816"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656792"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Mata in historiska telemetridata
 
@@ -33,7 +33,7 @@ Du måste aktivera partner integrering till din Azure FarmBeats-instans. Det hä
 - Klienthemlighet
 - EventHub-anslutningssträng
 
-Följ de här stegen:
+Gör så här:
 
 > [!NOTE]
 > Du måste vara administratör för att utföra följande steg.
@@ -46,13 +46,13 @@ Följ de här stegen:
 
       b. Välj den **app-registrering** som skapades som en del av din FarmBeats-distribution. Det får samma namn som din FarmBeats-Datahub.
 
-      c. Välj **exponera ett API** > Välj **Lägg till ett klient program** och ange **04b07795-8ddb-461A-BBEE-02f9e1bf7b46** och kontrol lera **auktoriserat omfång** . Detta ger åtkomst till Azure CLI (Cloud Shell) för att utföra stegen nedan:
+      c. Välj **exponera ett API** > Välj **Lägg till ett klient program** och ange **04b07795-8ddb-461A-BBEE-02f9e1bf7b46** och kontrol lera **auktoriserat omfång**. Detta ger åtkomst till Azure CLI (Cloud Shell) för att utföra stegen nedan:
 
 3. Öppna Cloud Shell. Det här alternativet är tillgängligt i verktygsfältet i det övre högra hörnet av Azure Portal.
 
     ![Azure Portal verktygsfält](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-4. Se till att miljön är inställd på **PowerShell** . Som standard är den inställd på bash.
+4. Se till att miljön är inställd på **PowerShell**. Som standard är den inställd på bash.
 
     ![Inställning för PowerShell-verktygsfält](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
@@ -84,7 +84,7 @@ Följ de här stegen:
 
     ```
 
-9. Följ anvisningarna på skärmen för att samla in värdena för **API-slutpunkt** , klient-ID, **klient-ID** , **klient hemlighet** och EventHub **-** **anslutningssträng** .
+9. Följ anvisningarna på skärmen för att samla in värdena för **API-slutpunkt**, klient-ID, **klient-ID**, **klient hemlighet** och EventHub **-** **anslutningssträng**.
 
 
 ## <a name="create-device-or-sensor-metadata"></a>Skapa metadata för enhet eller sensor
@@ -96,51 +96,50 @@ Följ de här stegen:
  > [!NOTE]
  > Som partner har du bara åtkomst till att läsa, skapa och uppdatera metadata. **borttagnings alternativet är begränsat till partnern.**
 
-- /**DeviceModel** : DeviceModel motsvarar enhetens metadata, till exempel tillverkaren och typen av enhet, som är antingen en gateway eller en nod.
-- /**Enhet** : enheten motsvarar en fysisk enhet som finns i Server gruppen.
-- /**SensorModel** : SensorModel motsvarar sensorns metadata, till exempel tillverkaren, typen av sensor, som är antingen analog eller digital, och sensor måttet, till exempel omgivande temperatur och tryck.
-- /**Sensor** : sensorn motsvarar en fysisk sensor som registrerar värden. En sensor är vanligt vis ansluten till en enhet med ett enhets-ID.
+- /**DeviceModel**: DeviceModel motsvarar enhetens metadata, till exempel tillverkaren och typen av enhet, som är antingen en gateway eller en nod.
+- /**Enhet**: enheten motsvarar en fysisk enhet som finns i Server gruppen.
+- /**SensorModel**: SensorModel motsvarar sensorns metadata, till exempel tillverkaren, typen av sensor, som är antingen analog eller digital, och sensor måttet, till exempel omgivande temperatur och tryck.
+- /**Sensor**: sensorn motsvarar en fysisk sensor som registrerar värden. En sensor är vanligt vis ansluten till en enhet med ett enhets-ID.
 
-
-|        DeviceModel   |  Förslag   |
-| ------- | -------             |
-|     Typ (nod, Gateway)        |          Typ av enhet-nod eller gateway      |
-|          Tillverkare            |         Tillverkarens namn    |
-|  ProductCode                    |  Enhetens produkt kod eller modell namn eller nummer. Till exempel EnviroMonitor # 6800.  |
-|            Portar          |     Port namn och-typ, som är digital eller analog.
-|     Namn                 |  Namn för att identifiera resursen. Till exempel modell namnet eller produkt namnet.
-      Beskrivning     | Ange en meningsfull beskrivning av modellen.
-|    Egenskaper          |    Ytterligare egenskaper från tillverkaren.   |
-|    **Enhet**             |                      |
-|   DeviceModelId     |     ID för associerad enhets modell.  |
-|  HardwareId          | Unikt ID för enheten, till exempel MAC-adressen.
-|  ReportingInterval        |   Rapport intervall i sekunder.
-|  Plats            |  Enhets-latitud (-90 till + 90), longitud (-180 till 180) och höjning (i meter).
-|ParentDeviceId       |    ID för den överordnade enhet som enheten är ansluten till. Till exempel en nod som är ansluten till en gateway. En nod har parentDeviceId som gateway.  |
-|    Namn            | Ett namn för att identifiera resursen. Enhets partner måste skicka ett namn som stämmer överens med enhets namnet på partner sidan. Om partner enhetens namn är användardefinierad, ska samma användardefinierade namn spridas till FarmBeats.|
-|     Beskrivning       |      Ange en meningsfull beskrivning. |
-|     Egenskaper    |  Ytterligare egenskaper från tillverkaren.
-|     **SensorModel**        |          |
-|       Typ (analog, digital)          |      Typen av sensor, vare sig det är analogt eller digitalt.       |
-|          Tillverkare            |       Sensorns tillverkare.     |
-|     ProductCode| Produkt kod eller modell namn eller nummer. Till exempel RS-CO2-N01. |
-|       SensorMeasures > namn       | Sensor måttets namn. Endast gemener stöds. Ange djupet för mått från olika djup. Till exempel soil_moisture_15cm. Det här namnet måste vara konsekvent med telemetri-data.  |
-|          SensorMeasures > datatype       |Datatyp för telemetri. För närvarande stöds Double.|
-|    SensorMeasures > typ    |Typ av mått för sensorer för telemetri. Systemdefinierade typer är AmbientTemperature, CO2, djup, ElectricalConductivity, LeafWetness, length, LiquidLevel, nitrat, O2, PH, fosfat, PointInTime, kalium, press, RainGauge, RelativeHumidity, salinity, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, volym, WindDirection, WindRun, WindSpeed, evapotranspiration, parivärde. Mer information finns i/ExtendedType-API: et.|
-|        SensorMeasures > enhet              | Enhet för data för sensor telemetri. Systemdefinierade enheter är nounit, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, kvicksilver, PSI, MilliMeter, CentiMeter, meter, tum, fot, mil, KiloMeter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, examen, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, liter, DeciSiemensPerMeter, Seconds KiloPascal, VolumetricIonContent, MilliLiter och Lägg till mer finns i UnixTimestamp-API: et.|
-|    SensorMeasures > AggregationType    |  Värdena kan vara ingen, genomsnitt, högsta, lägsta eller StandardDeviation.  |
-|          Namn            | Namn för att identifiera en resurs. Till exempel modell namnet eller produkt namnet.  |
-|    Beskrivning        | Ange en meningsfull beskrivning av modellen.|
-|   Egenskaper       |  Ytterligare egenskaper från tillverkaren.|
-|    **Mäta**      |          |
-| HardwareId          |   Unikt ID för sensorn som anges av tillverkaren.|
-|  SensorModelId     |    ID för associerad sensor modell.|
-| Plats          |  Sensor Latitude (-90 till + 90), longitud (-180 till 180) och höjning (i meter).|
-|   Port > namn        |  Namn och typ för den port som sensorn är ansluten till på enheten. Det måste vara samma namn som det definieras i enhets modellen.|
-|    DeviceID  |    ID för den enhet som sensorn är ansluten till. |
-| Namn            |   Namn för att identifiera resursen. Till exempel sensor namn, produkt namn och modell nummer eller produkt kod.|
-|    Beskrivning      | Ange en meningsfull beskrivning.|
-|    Egenskaper        |Ytterligare egenskaper från tillverkaren.|
+| DeviceModel | Förslag |
+|--|--|
+| Typ (nod, Gateway) | Typ av enhet-nod eller gateway |
+| Tillverkare | Tillverkarens namn |
+| ProductCode | Enhetens produkt kod eller modell namn eller nummer. Till exempel EnviroMonitor # 6800. |
+| Portar | Port namn och-typ, som är digital eller analog. |
+| Namn | Namn för att identifiera resursen. Till exempel modell namnet eller produkt namnet. |
+| Beskrivning | Ange en meningsfull beskrivning av modellen. |
+| Egenskaper | Ytterligare egenskaper från tillverkaren. |
+| **Enhet** |  |
+| DeviceModelId | ID för associerad enhets modell. |
+| HardwareId | Unikt ID för enheten, till exempel MAC-adressen. |
+| ReportingInterval | Rapport intervall i sekunder. |
+| Plats | Enhets-latitud (-90 till + 90), longitud (-180 till 180) och höjning (i meter). |
+| ParentDeviceId | ID för den överordnade enhet som enheten är ansluten till. Till exempel en nod som är ansluten till en gateway. En nod har parentDeviceId som gateway. |
+| Namn | Ett namn för att identifiera resursen. Enhets partner måste skicka ett namn som stämmer överens med enhets namnet på partner sidan. Om partner enhetens namn är användardefinierad, ska samma användardefinierade namn spridas till FarmBeats. |
+| Beskrivning | Ange en meningsfull beskrivning. |
+| Egenskaper | Ytterligare egenskaper från tillverkaren. |
+| **SensorModel** |  |
+| Typ (analog, digital) | Typen av sensor, vare sig det är analogt eller digitalt. |
+| Tillverkare | Sensorns tillverkare. |
+| ProductCode | Produkt kod eller modell namn eller nummer. Till exempel RS-CO2-N01. |
+| SensorMeasures > namn | Sensor måttets namn. Endast gemener stöds. Ange djupet för mått från olika djup. Till exempel soil_moisture_15cm. Det här namnet måste vara konsekvent med telemetri-data. |
+| SensorMeasures > datatype | Datatyp för telemetri. För närvarande stöds Double. |
+| SensorMeasures > typ | Typ av mått för sensorer för telemetri. Systemdefinierade typer är AmbientTemperature, CO2, djup, ElectricalConductivity, LeafWetness, length, LiquidLevel, nitrat, O2, PH, fosfat, PointInTime, kalium, press, RainGauge, RelativeHumidity, salinity, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, volym, WindDirection, WindRun, WindSpeed, evapotranspiration, parivärde. Mer information finns i/ExtendedType-API: et. |
+| SensorMeasures > enhet | Enhet för data för sensor telemetri. Systemdefinierade enheter är nounit, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, kvicksilver, PSI, MilliMeter, CentiMeter, meter, tum, fot, mil, KiloMeter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, examen, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, liter, DeciSiemensPerMeter, Seconds KiloPascal, VolumetricIonContent, MilliLiter och Lägg till mer finns i UnixTimestamp-API: et. |
+| SensorMeasures > AggregationType | Värdena kan vara ingen, genomsnitt, högsta, lägsta eller StandardDeviation. |
+| Namn | Namn för att identifiera en resurs. Till exempel modell namnet eller produkt namnet. |
+| Beskrivning | Ange en meningsfull beskrivning av modellen. |
+| Egenskaper | Ytterligare egenskaper från tillverkaren. |
+| **Mäta** |  |
+| HardwareId | Unikt ID för sensorn som anges av tillverkaren. |
+| SensorModelId | ID för associerad sensor modell. |
+| Plats | Sensor Latitude (-90 till + 90), longitud (-180 till 180) och höjning (i meter). |
+| Port > namn | Namn och typ för den port som sensorn är ansluten till på enheten. Det måste vara samma namn som det definieras i enhets modellen. |
+| DeviceID | ID för den enhet som sensorn är ansluten till. |
+| Namn | Namn för att identifiera resursen. Till exempel sensor namn, produkt namn och modell nummer eller produkt kod. |
+| Beskrivning | Ange en meningsfull beskrivning. |
+| Egenskaper | Ytterligare egenskaper från tillverkaren. |
 
 Mer information om objekt finns i [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
 
@@ -192,9 +191,9 @@ access_token = token_response.get('access_token')
 
 Här är de vanligaste begärandehuvuden som måste anges när du gör ett API-anrop till FarmBeats Datahub:
 
-- **Innehålls typ** : Application/JSON
-- **Auktorisering** : bearer <Access-Token>
-- **Acceptera** : Application/JSON
+- **Innehålls typ**: Application/JSON
+- **Auktorisering**: bearer <Access-Token>
+- **Acceptera**: Application/JSON
 
 ### <a name="input-payload-to-create-metadata"></a>Ange nytto last för att skapa metadata
 
@@ -431,9 +430,9 @@ Här är ett exempel på ett telemetri-meddelande:
 
 ### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Det går inte att Visa telemetridata efter att du har matat in historiska/strömmande data från sensorer
 
-**Symptom** : enheter eller sensorer distribueras och du har skapat enheter/sensorer på FarmBeats och inmatad telemetri till EventHub, men du kan inte hämta eller Visa telemetridata på FarmBeats.
+**Symptom**: enheter eller sensorer distribueras och du har skapat enheter/sensorer på FarmBeats och inmatad telemetri till EventHub, men du kan inte hämta eller Visa telemetridata på FarmBeats.
 
-**Korrigerande åtgärd** :
+**Korrigerande åtgärd**:
 
 1. Se till att du har utfört lämplig partner registrering – du kan kontrol lera detta genom att gå till Datahub-Swagger, navigera till/partner API, göra en get-och kontrol lera om partnern är registrerad. Annars följer du [stegen här](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) för att lägga till partner.
 

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: f01cd6cd8c5f89206888f5123f7b14a524c9f40f
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 3cfe75edcf338f5248baf396147a5b77803fbfb3
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94748490"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655942"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Fråga Avro data med hjälp av Azure Data Lake Analytics
 
@@ -154,10 +154,10 @@ I det här avsnittet frågar du Avro-data och exporterar dem till en CSV-fil i A
         
         @cnt =
             SELECT message["message"] AS iotmessage,
-                   message["event"] AS msgevent,
-                   message["object"] AS msgobject,
-                   message["status"] AS msgstatus,
-                   message["host"] AS msghost
+                message["event"] AS msgevent,
+                message["object"] AS msgobject,
+                message["status"] AS msgstatus,
+                message["host"] AS msghost
             FROM @jsonify;
             
         OUTPUT @cnt TO @output_file USING Outputters.Text();

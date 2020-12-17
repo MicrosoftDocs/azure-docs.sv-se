@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a05c987299a8a4967c81b7eb9cc481f253ac5b09
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 123b36ba854bec8b363d59bbed5e70f18da1e578
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584864"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653715"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med en Microsoft-konto med hjälp av Azure Active Directory B2C
 
@@ -30,21 +30,9 @@ ms.locfileid: "97584864"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
-::: zone pivot="b2c-user-flow"
-
-* [Skapa ett användarflöde](tutorial-create-user-flows.md) så att användare kan registrera sig och logga in i ditt program.
-* Om du inte redan har gjort det [lägger du till ett webb-API-program i din Azure Active Directory B2C-klientorganisation](add-web-api-application.md).
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-* Slutför stegen i avsnittet [komma igång med anpassade principer i Active Directory B2C](custom-policy-get-started.md).
-* Om du inte redan har gjort det [lägger du till ett webb-API-program i din Azure Active Directory B2C-klientorganisation](add-web-api-application.md).
-
-::: zone-end
+[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-microsoft-account-application"></a>Skapa ett Microsoft-konto program
 
@@ -239,7 +227,7 @@ Uppdatera den förlitande parten (RP) som initierar användar resan som du har s
 
 1. Gör en kopia av *SignUpOrSignIn.xml* i din arbets katalog och Byt namn på den. Du kan till exempel byta namn på den till *SignUpSignInMSA.xml*.
 1. Öppna den nya filen och uppdatera värdet för attributet **PolicyId** för **TrustFrameworkPolicy** med ett unikt värde. Ett exempel är `SignUpSignInMSA`.
-1. Uppdatera värdet för **PublicPolicyUri** med URI: n för principen. Till exempel`http://contoso.com/B2C_1A_signup_signin_msa`
+1. Uppdatera värdet för **PublicPolicyUri** med URI: n för principen. Exempel:`http://contoso.com/B2C_1A_signup_signin_msa`
 1. Uppdatera värdet för attributet **ReferenceId** i **DefaultUserJourney** för att matcha ID: t för användar resan som du skapade tidigare (SignUpSignInMSA).
 1. Spara ändringarna, ladda upp filen och välj sedan den nya principen i listan.
 1. Se till att Azure AD B2C programmet som du skapade i föregående avsnitt (eller genom att slutföra kraven, till exempel *webapp1* eller *testapp1*) är markerat i fältet **Välj program** och testa det genom att klicka på **Kör nu**.

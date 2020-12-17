@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 334cbef7460306ef2954881a1cab918573e1e371
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb2a8a7bb14758ab21eb2183a119f456b53c8562
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400646"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654957"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Konfigurera VMware haveri beredskap i en miljö med flera organisationer med Cloud Solution Provider (CSP)-programmet
 
@@ -22,7 +22,7 @@ Med [Azure Site Recovery](site-recovery-overview.md)kan du, som partner, hantera
 
 Den här artikeln beskriver hur du som partner kan skapa och hantera klient prenumerationer via CSP, för ett scenario med VMware-replikering för flera innehavare.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill konfigurera VMware-replikering måste du göra följande:
 
@@ -65,24 +65,24 @@ Nu kan du utföra och hantera alla Site Recovery åtgärder för klienten i Azur
 ## <a name="assign-tenant-access-to-the-subscription"></a>Tilldela klient åtkomst till prenumerationen
 
 1. Kontrol lera att infrastrukturen för haveri beredskap har kon figurer ATS. Partner har åtkomst till klient prenumerationer via CSP-portalen, oavsett om haveri beredskap är hanterad eller självbetjäning. Konfigurera valvet och registrera infrastrukturen för klient prenumerationerna.
-2. Ange innehavaren med [kontot som du skapade](#create-a-tenant-account).
-3. Du kan lägga till en ny användare i klient prenumerationen via CSP-portalen på följande sätt:
+1. Ange innehavaren med [kontot som du skapade](#create-a-tenant-account).
+1. Du kan lägga till en ny användare i klient prenumerationen via CSP-portalen på följande sätt:
 
-    a) gå till sidan för klientens CSP-prenumeration och välj sedan alternativet **användare och licenser** .
+    1. Gå till sidan för klientens CSP-prenumeration och välj alternativet **användare och licenser** .
 
-      ![Innehavarens prenumerations sida för KRYPTOGRAFIPROVIDER](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
+       ![Innehavarens prenumerations sida för KRYPTOGRAFIPROVIDER](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
 
-    b) skapa en ny användare genom att ange relevant information och välja behörigheter, eller genom att ladda upp listan över användare i en CSV-fil.
-    
-    c) när du har skapat en ny användare går du tillbaka till Azure Portal. På sidan **prenumeration** väljer du den relevanta prenumerationen.
+    1. Nu ska du skapa en ny användare genom att ange relevant information och välja behörigheter, eller genom att ladda upp listan över användare i en CSV-fil.
 
-    d) Välj **åtkomst kontroll (IAM)** och klicka sedan på **roll tilldelningar**.
+    1. När du har skapat en ny användare går du tillbaka till Azure Portal. På sidan **prenumeration** väljer du den relevanta prenumerationen.
 
-    e) Klicka på **Lägg till roll tilldelning** för att lägga till en användare med relevant åtkomst nivå. Användare som har skapats via CSP-portalen visas på fliken roll tilldelningar.
+    1. Välj **åtkomst kontroll (IAM)** och klicka sedan på **roll tilldelningar**.
 
-      ![Lägga till en användare](./media/vmware-azure-multi-tenant-csp-disaster-recovery/add-user-subscription.png)
+    1. Klicka på **Lägg till roll tilldelning** för att lägga till en användare med relevant åtkomst nivå. Användare som har skapats via CSP-portalen visas på fliken roll tilldelningar.
 
-- *Deltagar* rollen räcker för de flesta hanterings åtgärderna. Användare med den här åtkomst nivån kan utföra allt i en prenumeration förutom ändra åtkomst nivåer (för vilka åtkomst till *ägares*nivå krävs).
+        ![Lägga till en användare](./media/vmware-azure-multi-tenant-csp-disaster-recovery/add-user-subscription.png)
+
+- *Deltagar* rollen räcker för de flesta hanterings åtgärderna. Användare med den här åtkomst nivån kan utföra allt i en prenumeration förutom ändra åtkomst nivåer (för vilka åtkomst till *ägares* nivå krävs).
 - Site Recovery har också tre [fördefinierade användar roller](site-recovery-role-based-linked-access-control.md)som kan användas för att ytterligare begränsa åtkomst nivåer efter behov.
 
 ## <a name="multi-tenant-environments"></a>Miljöer med flera klienter

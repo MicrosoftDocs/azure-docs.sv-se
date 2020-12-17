@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 12/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 935ba888352d2454a609a40866ef10ccf13a2dac
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 2c9b239269aa00255aa08d6c233cd7978b253d94
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605470"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653579"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Viktig information – Azure Arc-aktiverade data tjänster (för hands version)
 
@@ -29,7 +29,7 @@ Versions nummer för Azure Data CLI ( `azdata` ): 20.2.5. Ladda ned på [https:/
 Visa slut punkter för SQL-hanterad instans och PostgreSQL-skalning med hjälp av kommandona Azure Data CLI ( `azdata` ) med `azdata arc sql endpoint list` och `azdata arc postgres endpoint list` .
 
 Redigera begär Anden om SQL-hanterad instans resurs (CPU Core och minne) med hjälp av Azure Data Studio.
-     
+
 Azure Arc Enabled PostgreSQL-storskalig stöder nu återställning av återställnings punkt utöver fullständig säkerhets kopiering för både version 11 och 12 av PostgreSQL. Med funktionen för återställning av tidpunkt kan du ange ett visst datum och en viss tid att återställa till.
 
 Namngivnings konventionen för poddar för Azure Arc-aktiverad PostgreSQL-skalning har ändrats. Det finns nu i formatet: ServergroupName {r, s}-_n_. Till exempel, en Server grupp med tre noder, en koordinator-nod och två arbetsnoder visas som:
@@ -127,7 +127,7 @@ Azure Arc-aktiverade data tjänster har publicerats för offentlig för hands ve
 Mer information finns i [Vad är Azure Arc-aktiverade data tjänster?](overview.md)
 
 ## <a name="next-steps"></a>Nästa steg
-  
+
 > **Vill du bara testa saker?**  
 > Kom igång snabbt med [Azure Arc rivstart med](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) på AKS, AWS elastisk Kubernetes service (EKS), Google Cloud Kubernetes Engine (GKE) eller i en virtuell Azure-dator.
 

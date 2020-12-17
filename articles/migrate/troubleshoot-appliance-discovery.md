@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 90abe6bf680f6a186b970631dcd0a42d6d36bf94
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 647e07fe32beedbd54ca6c5bb95c1de9564df2fd
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511594"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654021"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Felsöka Azure Migrate-installationen och identifieringen
 
@@ -203,58 +203,56 @@ Azure Migrate stöder identifiering av program, roller och funktioner med hjälp
 
 Vanliga fel för identifiering av appar sammanfattas i tabellen. 
 
-**Fel** | **Orsak** | **Åtgärd**
---- | --- | ---
-9000: det går inte att identifiera VMware-verktygets status.     |   VMWare-verktyg kanske inte har installerats eller är skadade.    |   Se till att VMware-verktygen är installerade och körs på den virtuella datorn.
-9001: VMware-verktyg är inte installerat.     |   VMWare-verktyg kanske inte har installerats eller är skadade.    |   Se till att VMware-verktygen är installerade och körs på den virtuella datorn.
-9002: VMware-verktyg körs inte.   |   VMWare-verktyg kanske inte har installerats eller är skadade.    |   Se till att VMware-verktygen är installerade och körs på den virtuella datorn.
-9003: operativ system typen stöds inte för identifiering av gäst datorer.    |   Operativ system som körs på servern är varken Windows eller Linux.    |   Operativ system typer som stöds är endast Windows och Linux. Om servern verkligen är Windows eller Linux kontrollerar du vilken typ av operativ system som anges i vCenter Server.
-9004: den virtuella datorn körs inte.     |   Den virtuella datorn är avstängd.  |   Se till att den virtuella datorn är påslagen.
-9005: operativ system typen stöds inte för identifiering av gäst datorer.    |   Typ av operativ system stöds inte för identifiering av gäst datorer.     |   Operativ system typer som stöds är endast Windows och Linux.
-9006: URL: en för att ladda ned metadatafilen från gästen är tom.     |   Detta kan inträffa om identifierings agenten inte fungerar som förväntat.    |   Problemet bör automatiskt lösa in24 timmar. Kontakta Microsoft Support om problemet kvarstår.
-9007: det gick inte att hitta processen som kör identifierings aktiviteten i den virtuella gäst datorn.   |   Detta kan inträffa om identifierings agenten inte fungerar korrekt.   |   Problemet bör lösas automatiskt om 24 timmar. Kontakta Microsoft Support om problemet kvarstår.
-9008: det går inte att hämta den virtuella gäst datorns process status.   |   Problemet kan uppstå på grund av ett internt fel.   |   Problemet bör lösas automatiskt om 24 timmar. Kontakta Microsoft Support om problemet kvarstår.
-9009: Windows UAC har förhindrat körning av identifierings uppgift på servern.  |   Windows User Account Control (UAC)-inställningar på servern är restriktiva och förhindrar identifiering av installerade program.  |   I User Account Control inställningar på servern konfigurerar du att UAC-inställningen ska vara på en av de lägre två nivåerna.
-9010: VM är avstängd.     |   Den virtuella datorn är avstängd.  |   Se till att den virtuella datorn är påslagen.
-9011: det gick inte att hitta den identifierade metadatafilen i fil systemet för den virtuella gäst datorn.    |   Problemet kan uppstå på grund av ett internt fel.   |   Problemet bör lösas automatiskt om 24 timmar. Kontakta Microsoft Support om problemet kvarstår.
-9012: den identifierade metadatafilen är tom.     |   Problemet kan uppstå på grund av ett internt fel.   |   Problemet bör lösas automatiskt om 24 timmar. Kontakta Microsoft Support om problemet kvarstår.
-9013: en ny tillfällig profil skapas för varje inloggning.    |   En ny tillfällig profil skapas för varje inloggning till den virtuella VMware-datorn.    |   Kontakta Microsoft Support för att få en lösning.
-9014: det går inte att hämta metadata från fil systemet för den virtuella gäst datorn.     |   Ingen anslutning till ESXi-värd    |   Se till att enheten kan ansluta till port 443 på den ESXi-värd som kör den virtuella datorn
-9015: gäst åtgärds rollen är inte aktive rad på vCenter-användarkontot   |   Gäst drifts rollen är inte aktive rad på vCenter-användarkontot.   |   Se till att rollen gäst åtgärder är aktive rad på vCenter-användarkontot.
-9016: det går inte att identifiera eftersom gäst åtgärds agenten är inaktuell.   |   VMware-verktygen har inte installerats korrekt eller är inte aktuella.    |   Se till att VMware-verktygen är korrekt installerade och aktuella.
-9017: det gick inte att hitta filen med identifierade metadata på den virtuella datorn.  |   Problemet kan uppstå på grund av ett internt fel.   |   Kontakta Microsoft Support för att få en lösning.
-9018: PowerShell är inte installerat på de virtuella gäst datorerna.  |   PowerShell är inte tillgängligt på den virtuella gäst datorn.    |   Installera PowerShell på den virtuella gäst datorn.
-9019: det gick inte att identifiera på grund av problem med den virtuella gäst datorn.     |   Det gick inte att utföra VMware-gästen på den virtuella datorn.    |   Se till att autentiseringsuppgifterna för den virtuella datorn är giltiga och att användar namnet som angavs i autentiseringsuppgifterna för gäst-VM är i UPN-format.
-9020: behörigheten att skapa fil nekas.    |   Rollen som är associerad med användaren eller grup principen begränsar användaren från att skapa filen i mappen    |   Kontrol lera att den angivna gäst användaren har behörigheten Skapa för filen i mappen. Se **meddelanden** i Server utvärderingen för mappens namn.
-9021: det gick inte att skapa filen i systemets Temp-sökväg.     |   VMware-verktyget rapporterar systemets Temp-sökväg i stället för användarens tillfälliga sökväg.    |   Uppgradera VMware-verktygets version över 10287 (NGC/VI-klient format).
-9022: åtkomst till WMI-objekt nekas.    |   Rollen som är associerad med användaren eller grup principen begränsar användaren från att komma åt WMI-objektet.  |   Kontakta Microsoft Support.
-9023: det går inte att köra PowerShell eftersom variabeln i systemroots miljön är tom.    |   Värdet för systemroot-miljövariabeln är tomt för den virtuella gäst datorn.     |   Kontakta Microsoft Support för att få en lösning.
-9024: det går inte att identifiera eftersom miljövariabelt värde för TEMPORÄRt miljö är tomt.    |   Värdet för miljövariabeln TEMP är tomt för den virtuella gäst datorn.   |   Kontakta Microsoft Support.
-9025: PowerShell är skadat i de virtuella gäst datorerna.  |   PowerShell är skadat på den virtuella gäst datorn.    |   Installera om PowerShell i den virtuella gäst datorn och kontrol lera att PowerShell kan köras på den virtuella gäst datorn.
-9026: det går inte att köra gäst åtgärder på den virtuella datorn.  |   VM-tillstånd tillåter inte att gäst åtgärder körs på den virtuella datorn.   |   Kontakta Microsoft Support för att få en lösning.
-9027: gäst åtgärds agenten körs inte på den virtuella datorn.   |   Det gick inte att kontakta gäst drifts agenten som körs i den virtuella datorn.    |   Kontakta Microsoft Support för att få en lösning.
-9028: det går inte att skapa filen eftersom det inte finns tillräckligt med disk utrymme i den virtuella datorn.     |   Det finns inte tillräckligt med utrymme på disken.   |   Se till att det finns tillräckligt med utrymme i den virtuella datorns disk utrymme.
-9029: ingen åtkomst till PowerShell på den virtuella gäst datorns autentiseringsuppgifter.   |   Åtkomst till PowerShell är inte tillgänglig för användaren.     |   Se till att användaren som har lagts till på-enheten har åtkomst till PowerShell på den virtuella gäst datorn.
-9030: det gick inte att samla in identifierade metadata eftersom ESXi-värden är frånkopplad.     |   ESXi-värden är i frånkopplat tillstånd.   |   Se till att den ESXi-värd som kör den virtuella datorn är ansluten.
-9031: det gick inte att samla in identifierade metadata eftersom ESXi-värden inte svarar.   |   Fjärrvärden är i ett ogiltigt tillstånd.    |   Se till att den ESXi-värd som kör den virtuella datorn körs och är ansluten.
-9032: det gick inte att identifiera på grund av ett internt fel.   |   Problemet kan uppstå på grund av ett internt fel.   |   Kontakta Microsoft Support för att få en lösning.
-9033: det går inte att identifiera eftersom VM-användarnamnet innehåller ogiltiga tecken.     |   Ogiltiga tecken upptäcktes i användar namnet.   |   Ange autentiseringsuppgifter för den virtuella datorn igen och se till att det inte finns några ogiltiga tecken.
-9034: det angivna användar namnet är inte i UPN-format.    |   Användar namnet är inte i UPN-format.  |   Se till att användar namnet är i UPN-format (User Principal Name).
-9035: det går inte att identifiera eftersom PowerShell-språkläget inte har angetts till fullständigt språk.  |   Språk läge för PowerShell i den virtuella gäst datorn har inte ställts in på fullt språk.   |   Se till att PowerShell-språkläget är inställt på "fullständigt språk".
-9037: data insamling pausas tillfälligt eftersom den virtuella datorns svars tid är för hög.    |   Den identifierade virtuella datorn tar för lång tid att svara     |   Ingen åtgärd krävs. Ett nytt försök kommer att göras inom 24 timmar för program identifiering och 3 timmar för beroende analys (utan agent).
-10000: operativ system typen stöds inte.   |   Operativ system som körs på servern är varken Windows eller Linux.    |   Operativ system typer som stöds är endast Windows och Linux.
-10001: det gick inte att hitta skript för Server identifiering på enheten.    |   Identifiering fungerar inte som förväntat.   |   Kontakta Microsoft Support för att få en lösning.
-10002: identifierings uppgiften har inte slutförts i tid.     |   Identifierings agenten fungerar inte som förväntat.     |   Problemet bör lösas automatiskt om 24 timmar. Kontakta Microsoft Support om problemet kvarstår.
-10003: processen som kör identifierings aktiviteten avslutades med ett fel.    |   Processen som kör identifierings aktiviteten avslutades med ett fel.  |   Problemet bör lösas automatiskt om 24 timmar. Om problemet kvarstår kontaktar du Microsoft Support.
-10004: autentiseringsuppgifter har inte angetts för typen av gäst operativ system.  |   Autentiseringsuppgifter för åtkomst till datorer av den här operativ system typen har inte tillhandahållits i Azure Migrate-installationen.    |   Lägg till autentiseringsuppgifter för datorer på enheten
-10005: de angivna autentiseringsuppgifterna är inte giltiga.   |   Autentiseringsuppgifterna för att få åtkomst till servern är felaktiga.  |   Uppdatera de autentiseringsuppgifter som anges i installationen och se till att servern kan nås med autentiseringsuppgifterna.
-10006: gäst operativ system typen stöds inte av arkivet för autentiseringsuppgifter.  |   Operativ system som körs på servern är varken Windows eller Linux.    |   Operativ system typer som stöds är endast Windows och Linux.
-10007: det gick inte att bearbeta identifierade metadata.    |   Ett fel uppstod vid försök att deserialisera JSON.    |   Kontakta Microsoft Support för att få en lösning.
-10008: det gick inte att skapa en fil på servern.    |  Problemet kan uppstå på grund av ett internt fel.    |   Kontakta Microsoft Support för att få en lösning.
-10009: det gick inte att skriva identifierade metadata till en fil på servern.  |   Problemet kan uppstå på grund av ett internt fel.   |   Kontakta Microsoft Support för att få en lösning.
-
-
-
+| **Fel** | **Orsak** | **Åtgärd** |
+|--|--|--|
+| 9000: det går inte att identifiera VMware-verktygets status. | VMWare-verktyg kanske inte har installerats eller är skadade. | Se till att VMware-verktygen är installerade och körs på den virtuella datorn. |
+| 9001: VMware-verktyg är inte installerat. | VMWare-verktyg kanske inte har installerats eller är skadade. | Se till att VMware-verktygen är installerade och körs på den virtuella datorn. |
+| 9002: VMware-verktyg körs inte. | VMWare-verktyg kanske inte har installerats eller är skadade. | Se till att VMware-verktygen är installerade och körs på den virtuella datorn. |
+| 9003: operativ system typen stöds inte för identifiering av gäst datorer. | Operativ system som körs på servern är varken Windows eller Linux. | Operativ system typer som stöds är endast Windows och Linux. Om servern verkligen är Windows eller Linux kontrollerar du vilken typ av operativ system som anges i vCenter Server. |
+| 9004: den virtuella datorn körs inte. | Den virtuella datorn är avstängd. | Se till att den virtuella datorn är påslagen. |
+| 9005: operativ system typen stöds inte för identifiering av gäst datorer. | Typ av operativ system stöds inte för identifiering av gäst datorer. | Operativ system typer som stöds är endast Windows och Linux. |
+| 9006: URL: en för att ladda ned metadatafilen från gästen är tom. | Detta kan inträffa om identifierings agenten inte fungerar som förväntat. | Problemet bör automatiskt lösa in24 timmar. Kontakta Microsoft Support om problemet kvarstår. |
+| 9007: det gick inte att hitta processen som kör identifierings aktiviteten i den virtuella gäst datorn. | Detta kan inträffa om identifierings agenten inte fungerar korrekt. | Problemet bör lösas automatiskt om 24 timmar. Kontakta Microsoft Support om problemet kvarstår. |
+| 9008: det går inte att hämta den virtuella gäst datorns process status. | Problemet kan uppstå på grund av ett internt fel. | Problemet bör lösas automatiskt om 24 timmar. Kontakta Microsoft Support om problemet kvarstår. |
+| 9009: Windows UAC har förhindrat körning av identifierings uppgift på servern. | Windows User Account Control (UAC)-inställningar på servern är restriktiva och förhindrar identifiering av installerade program. | I User Account Control inställningar på servern konfigurerar du att UAC-inställningen ska vara på en av de lägre två nivåerna. |
+| 9010: VM är avstängd. | Den virtuella datorn är avstängd. | Se till att den virtuella datorn är påslagen. |
+| 9011: det gick inte att hitta den identifierade metadatafilen i fil systemet för den virtuella gäst datorn. | Problemet kan uppstå på grund av ett internt fel. | Problemet bör lösas automatiskt om 24 timmar. Kontakta Microsoft Support om problemet kvarstår. |
+| 9012: den identifierade metadatafilen är tom. | Problemet kan uppstå på grund av ett internt fel. | Problemet bör lösas automatiskt om 24 timmar. Kontakta Microsoft Support om problemet kvarstår. |
+| 9013: en ny tillfällig profil skapas för varje inloggning. | En ny tillfällig profil skapas för varje inloggning till den virtuella VMware-datorn. | Kontakta Microsoft Support för att få en lösning. |
+| 9014: det går inte att hämta metadata från fil systemet för den virtuella gäst datorn. | Ingen anslutning till ESXi-värd | Se till att enheten kan ansluta till port 443 på den ESXi-värd som kör den virtuella datorn |
+| 9015: gäst åtgärds rollen är inte aktive rad på vCenter-användarkontot | Gäst drifts rollen är inte aktive rad på vCenter-användarkontot. | Se till att rollen gäst åtgärder är aktive rad på vCenter-användarkontot. |
+| 9016: det går inte att identifiera eftersom gäst åtgärds agenten är inaktuell. | VMware-verktygen har inte installerats korrekt eller är inte aktuella. | Se till att VMware-verktygen är korrekt installerade och aktuella. |
+| 9017: det gick inte att hitta filen med identifierade metadata på den virtuella datorn. | Problemet kan uppstå på grund av ett internt fel. | Kontakta Microsoft Support för att få en lösning. |
+| 9018: PowerShell är inte installerat på de virtuella gäst datorerna. | PowerShell är inte tillgängligt på den virtuella gäst datorn. | Installera PowerShell på den virtuella gäst datorn. |
+| 9019: det gick inte att identifiera på grund av problem med den virtuella gäst datorn. | Det gick inte att utföra VMware-gästen på den virtuella datorn. | Se till att autentiseringsuppgifterna för den virtuella datorn är giltiga och att användar namnet som angavs i autentiseringsuppgifterna för gäst-VM är i UPN-format. |
+| 9020: behörigheten att skapa fil nekas. | Rollen som är associerad med användaren eller grup principen begränsar användaren från att skapa filen i mappen | Kontrol lera att den angivna gäst användaren har behörigheten Skapa för filen i mappen. Se **meddelanden** i Server utvärderingen för mappens namn. |
+| 9021: det gick inte att skapa filen i systemets Temp-sökväg. | VMware-verktyget rapporterar systemets Temp-sökväg i stället för användarens tillfälliga sökväg. | Uppgradera VMware-verktygets version över 10287 (NGC/VI-klient format). |
+| 9022: åtkomst till WMI-objekt nekas. | Rollen som är associerad med användaren eller grup principen begränsar användaren från att komma åt WMI-objektet. | Kontakta Microsoft Support. |
+| 9023: det går inte att köra PowerShell eftersom variabeln i systemroots miljön är tom. | Värdet för systemroot-miljövariabeln är tomt för den virtuella gäst datorn. | Kontakta Microsoft Support för att få en lösning. |
+| 9024: det går inte att identifiera eftersom miljövariabelt värde för TEMPORÄRt miljö är tomt. | Värdet för miljövariabeln TEMP är tomt för den virtuella gäst datorn. | Kontakta Microsoft Support. |
+| 9025: PowerShell är skadat i de virtuella gäst datorerna. | PowerShell är skadat på den virtuella gäst datorn. | Installera om PowerShell i den virtuella gäst datorn och kontrol lera att PowerShell kan köras på den virtuella gäst datorn. |
+| 9026: det går inte att köra gäst åtgärder på den virtuella datorn. | VM-tillstånd tillåter inte att gäst åtgärder körs på den virtuella datorn. | Kontakta Microsoft Support för att få en lösning. |
+| 9027: gäst åtgärds agenten körs inte på den virtuella datorn. | Det gick inte att kontakta gäst drifts agenten som körs i den virtuella datorn. | Kontakta Microsoft Support för att få en lösning. |
+| 9028: det går inte att skapa filen eftersom det inte finns tillräckligt med disk utrymme i den virtuella datorn. | Det finns inte tillräckligt med utrymme på disken. | Se till att det finns tillräckligt med utrymme i den virtuella datorns disk utrymme. |
+| 9029: ingen åtkomst till PowerShell på den virtuella gäst datorns autentiseringsuppgifter. | Åtkomst till PowerShell är inte tillgänglig för användaren. | Se till att användaren som har lagts till på-enheten har åtkomst till PowerShell på den virtuella gäst datorn. |
+| 9030: det gick inte att samla in identifierade metadata eftersom ESXi-värden är frånkopplad. | ESXi-värden är i frånkopplat tillstånd. | Se till att den ESXi-värd som kör den virtuella datorn är ansluten. |
+| 9031: det gick inte att samla in identifierade metadata eftersom ESXi-värden inte svarar. | Fjärrvärden är i ett ogiltigt tillstånd. | Se till att den ESXi-värd som kör den virtuella datorn körs och är ansluten. |
+| 9032: det gick inte att identifiera på grund av ett internt fel. | Problemet kan uppstå på grund av ett internt fel. | Kontakta Microsoft Support för att få en lösning. |
+| 9033: det går inte att identifiera eftersom VM-användarnamnet innehåller ogiltiga tecken. | Ogiltiga tecken upptäcktes i användar namnet. | Ange autentiseringsuppgifter för den virtuella datorn igen och se till att det inte finns några ogiltiga tecken. |
+| 9034: det angivna användar namnet är inte i UPN-format. | Användar namnet är inte i UPN-format. | Se till att användar namnet är i UPN-format (User Principal Name). |
+| 9035: det går inte att identifiera eftersom PowerShell-språkläget inte har angetts till fullständigt språk. | Språk läge för PowerShell i den virtuella gäst datorn har inte ställts in på fullt språk. | Se till att PowerShell-språkläget är inställt på "fullständigt språk". |
+| 9037: data insamling pausas tillfälligt eftersom den virtuella datorns svars tid är för hög. | Den identifierade virtuella datorn tar för lång tid att svara | Ingen åtgärd krävs. Ett nytt försök kommer att göras inom 24 timmar för program identifiering och 3 timmar för beroende analys (utan agent). |
+| 10000: operativ system typen stöds inte. | Operativ system som körs på servern är varken Windows eller Linux. | Operativ system typer som stöds är endast Windows och Linux. |
+| 10001: det gick inte att hitta skript för Server identifiering på enheten. | Identifiering fungerar inte som förväntat. | Kontakta Microsoft Support för att få en lösning. |
+| 10002: identifierings uppgiften har inte slutförts i tid. | Identifierings agenten fungerar inte som förväntat. | Problemet bör lösas automatiskt om 24 timmar. Kontakta Microsoft Support om problemet kvarstår. |
+| 10003: processen som kör identifierings aktiviteten avslutades med ett fel. | Processen som kör identifierings aktiviteten avslutades med ett fel. | Problemet bör lösas automatiskt om 24 timmar. Om problemet kvarstår kontaktar du Microsoft Support. |
+| 10004: autentiseringsuppgifter har inte angetts för typen av gäst operativ system. | Autentiseringsuppgifter för åtkomst till datorer av den här operativ system typen har inte tillhandahållits i Azure Migrate-installationen. | Lägg till autentiseringsuppgifter för datorer på enheten |
+| 10005: de angivna autentiseringsuppgifterna är inte giltiga. | Autentiseringsuppgifterna för att få åtkomst till servern är felaktiga. | Uppdatera de autentiseringsuppgifter som anges i installationen och se till att servern kan nås med autentiseringsuppgifterna. |
+| 10006: gäst operativ system typen stöds inte av arkivet för autentiseringsuppgifter. | Operativ system som körs på servern är varken Windows eller Linux. | Operativ system typer som stöds är endast Windows och Linux. |
+| 10007: det gick inte att bearbeta identifierade metadata. | Ett fel uppstod vid försök att deserialisera JSON. | Kontakta Microsoft Support för att få en lösning. |
+| 10008: det gick inte att skapa en fil på servern. | Problemet kan uppstå på grund av ett internt fel. | Kontakta Microsoft Support för att få en lösning. |
+| 10009: det gick inte att skriva identifierade metadata till en fil på servern. | Problemet kan uppstå på grund av ett internt fel. | Kontakta Microsoft Support för att få en lösning. |
 
 ## <a name="next-steps"></a>Nästa steg
+
 Konfigurera en installation för [VMware](how-to-set-up-appliance-vmware.md), [Hyper-V](how-to-set-up-appliance-hyper-v.md)eller [fysiska servrar](how-to-set-up-appliance-physical.md).

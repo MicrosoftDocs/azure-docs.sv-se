@@ -1,7 +1,7 @@
 ---
 title: Så här använder du PerfInsights i Microsoft Azure | Microsoft Docs
 description: Lär dig hur du använder PerfInsights för att felsöka prestanda problem i Windows VM.
-services: virtual-machines-windows'
+services: virtual-machines-windows
 documentationcenter: ''
 author: anandhms
 manager: dcscontentpm
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f49ae5139dc92ec1448e5dea05be8c8c216ef91e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9e298bf39446024f384b9af142fe3000e936bb6d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002671"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656860"
 ---
 # <a name="how-to-use-perfinsights-in-azure"></a>Så här använder du PerfInsights i Azure
 

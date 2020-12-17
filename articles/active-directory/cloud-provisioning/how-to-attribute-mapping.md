@@ -11,12 +11,12 @@ ms.date: 09/22/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e272c402cac803d10d9998298ce6d3370d0e000
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7fabad618233e8866c545e1c5ccbcc8cb7508ebf
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348811"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652105"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-attribute-mapping"></a>Azure AD Connect mappning av attributmappning för moln etablering
 
@@ -52,45 +52,51 @@ Tillsammans med den här egenskapen stöder attribut-mappningar även följande 
 > Det här dokumentet beskriver hur du använder Azure Portal för att mappa attribut.  Information om hur du använder Graph finns i [transformeringar](how-to-transformation.md)
 
 ## <a name="using-attribute-mapping"></a>Använda Attribute-mappning
+
 Följ stegen nedan om du vill använda den nya funktionen.
-
- 1.  Välj **Azure Active Directory** i Azure Portal.
- 2.  Välj **Azure AD Connect**.
- 3.  Välj **Hantera etablering**.
-
-   ![Hantera etablering](media/how-to-configure/manage1.png)
- 
- 4. Under **konfiguration** väljer du din konfiguration.
- 5. Välj **Klicka om du vill redigera mappningar**.  Då öppnas skärmen mappning av attribut.
-
- ![Lägger till attribut](media/how-to-attribute-mapping/mapping6.png)
- 6.  Klicka på **Lägg till attribut**.
-
- ![Mappnings typ](media/how-to-attribute-mapping/mapping1.png)
- 
- 7. Välj **mappnings typ**.  I det här exemplet använder vi Expression.
- 8.  Ange uttrycket i rutan.  I det här exemplet använder vi: `Replace([mail], "@contoso.com", , ,"", ,).`
- 9.  Ange Target-attributet.  I det här exemplet använder vi ExtensionAttribute15.
- 10. Välj när du vill tillämpa detta och klicka sedan på **Använd**
-   
-   ![Redigera mappningar](media/how-to-attribute-mapping/mapping2a.png)
- 11. Tillbaka på skärmen mappning av attribut bör du se den nya mappningen för attribut.  
- 12. Klicka på **Spara schema**.
-
- ![Spara schema](media/how-to-attribute-mapping/mapping3.png)
-
-## <a name="test-your-attribute-mapping"></a>Testa din attributmappning
-Du kan testa din attributmappning genom att använda [etablering på begäran](how-to-on-demand-provision.md).  Från 
 
 1.  Välj **Azure Active Directory** i Azure Portal.
 2.  Välj **Azure AD Connect**.
 3.  Välj **Hantera etablering**.
+
+    ![Hantera etablering](media/how-to-configure/manage1.png)
+
+4. Under **konfiguration** väljer du din konfiguration.
+5. Välj **Klicka om du vill redigera mappningar**.  Då öppnas skärmen mappning av attribut.
+
+    ![Lägger till attribut](media/how-to-attribute-mapping/mapping6.png)
+
+6.  Klicka på **Lägg till attribut**.
+
+    ![Mappnings typ](media/how-to-attribute-mapping/mapping1.png)
+
+7. Välj **mappnings typ**.  I det här exemplet använder vi Expression.
+8.  Ange uttrycket i rutan.  I det här exemplet använder vi: `Replace([mail], "@contoso.com", , ,"", ,).`
+9.  Ange Target-attributet.  I det här exemplet använder vi ExtensionAttribute15.
+10. Välj när du vill tillämpa detta och klicka sedan på **Använd**
+
+    ![Redigera mappningar](media/how-to-attribute-mapping/mapping2a.png)
+
+11. Tillbaka på skärmen mappning av attribut bör du se den nya mappningen för attribut.  
+12. Klicka på **Spara schema**.
+
+    ![Spara schema](media/how-to-attribute-mapping/mapping3.png)
+
+## <a name="test-your-attribute-mapping"></a>Testa din attributmappning
+
+Du kan testa din attributmappning genom att använda [etablering på begäran](how-to-on-demand-provision.md).  Från 
+
+1. Välj **Azure Active Directory** i Azure Portal.
+2. Välj **Azure AD Connect**.
+3. Välj **Hantera etablering**.
 4. Under **konfiguration** väljer du din konfiguration.
 5. Under **Verifiera** klickar du på knappen **Tillhandahåll en användare** . 
 6. På sidan etablering på begäran.  Ange det **unika namnet** för en användare eller grupp och klicka på knappen **Tillhandahåll** .  
 7. När den är klar bör du se en lyckad skärm och en grön kryss ruta som anger att den har kon figurer ATS.  
-  ![Lyckad etablering](media/how-to-attribute-mapping/mapping4.png)
-1. Under **utför åtgärd** klickar du på **Visa information**.  Till höger bör du se det nya attributet syncrhonized och uttrycket som används.
+
+    ![Lyckad etablering](media/how-to-attribute-mapping/mapping4.png)
+
+8. Under **utför åtgärd** klickar du på **Visa information**.  Till höger bör du se det nya attributet syncrhonized och uttrycket som används.
 
   ![Utför åtgärd](media/how-to-attribute-mapping/mapping5.png)
 

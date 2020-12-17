@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 11/18/2020
+ms.date: 12/16/2020
 ms.custom: generated
-ms.openlocfilehash: e18dc7e16eb0b114bd279d53b7dcc895bd62f338
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f22b74b16594419b0eff33f0c73d6e9c3a62ac15
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002739"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655041"
 ---
 # <a name="azure-built-in-roles"></a>Inbyggda roller i Azure
 
@@ -27,10 +27,10 @@ Följande tabell innehåller en kort beskrivning och det unika ID: t för varje 
 ## <a name="all"></a>Alla
 
 > [!div class="mx-tableFixed"]
-> | Inbyggd roll | Description | ID |
+> | Inbyggd roll | Beskrivning | ID |
 > | --- | --- | --- |
 > | **Allmänt** |  |  |
-> | [Deltagare](#contributor) | Ger fullständig åtkomst för att hantera alla resurser, men tillåter inte att du tilldelar roller i Azure RBAC. | b24988ac-6180-42a0-ab88-20f7382dd24c |
+> | [Deltagare](#contributor) | Ger fullständig åtkomst för att hantera alla resurser, men tillåter inte att du tilldelar roller i Azure RBAC, hanterar tilldelningar i Azure-ritningar eller delar avbildnings gallerier. | b24988ac-6180-42a0-ab88-20f7382dd24c |
 > | [Ägare](#owner) | Ger fullständig åtkomst för att hantera alla resurser, inklusive möjligheten att tilldela roller i Azure RBAC. | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
 > | [Läsare](#reader) | Visa alla resurser, men du kan inte göra några ändringar. | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 > | [Administratör för användaråtkomst](#user-access-administrator) | Gör att du kan hantera användar åtkomst till Azure-resurser. | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
@@ -123,11 +123,11 @@ Följande tabell innehåller en kort beskrivning och det unika ID: t för varje 
 > | [Schema register läsare (för hands version)](#schema-registry-reader-preview) | Läs och Visa lista över schema register grupper och scheman. | 2c56ea50-c6b3-40a6-83c0-9d98858bc7d2 |
 > | **Blockkedja** |  |  |
 > | [Blockchain för medlems Node (för hands version)](#blockchain-member-node-access-preview) | Tillåter åtkomst till blockchain-medlems noder | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
-> | **AI + maskininlärning** |  |  |
+> | **AI + maskin inlärning** |  |  |
 > | [Cognitive Services deltagare](#cognitive-services-contributor) | Gör att du kan skapa, läsa, uppdatera, ta bort och hantera nycklar för Cognitive Services. | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
 > | [Cognitive Services data läsare (förhands granskning)](#cognitive-services-data-reader-preview) | Gör att du kan läsa Cognitive Services data. | b59867f0-fa02-499b-be73-45a86b5b3e1c |
 > | [Cognitive Services användare](#cognitive-services-user) | Gör att du kan läsa och Visa nycklar för Cognitive Services. | a97b65f3-24c7-4388-baec-2e87135dc908 |
-> | **Mixed Reality** |  |  |
+> | **Mixad verklighet** |  |  |
 > | [Administratör för fjärrrendering](#remote-rendering-administrator) | Ger användaren funktioner för konvertering, hantering av sessioner, åter givning och diagnostik för Azure-fjärrrendering | 3df8b902-2a6f-47c7-8cc5-360e9b272a7e |
 > | [Fjärran sluten klient](#remote-rendering-client) | Ger användaren funktioner för att hantera sessioner, åter givning och diagnostik för Azure fjärrrendering. | d39065c4-c120-43c9-ab0a-63eed9795f0a |
 > | [Konto deltagare för spatiala ankare](#spatial-anchors-account-contributor) | Låter dig hantera spatiala ankare i ditt konto, men ta inte bort dem | 8bbe83f1-e2a6-4df7-8cb4-4e04d4e5c827 |
@@ -165,7 +165,7 @@ Följande tabell innehåller en kort beskrivning och det unika ID: t för varje 
 > | [Key Vault certifikat ansvarig (förhands granskning)](#key-vault-certificates-officer-preview) | Utföra alla åtgärder för certifikaten för ett nyckel valv, förutom hantera behörigheter. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | a4417e6f-fecd-4de8-b567-7b0420556985 |
 > | [Key Vault deltagare](#key-vault-contributor) | Hantera nyckel valv, men tillåt inte att du tilldelar roller i Azure RBAC och ger dig inte åtkomst till hemligheter, nycklar eller certifikat. | f25e0fa2-a7c8-4377-a976-54943a77a395 |
 > | [Key Vault kryptografi utanordnare (förhands granskning)](#key-vault-crypto-officer-preview) | Utföra alla åtgärder för nycklarna i ett nyckel valv, förutom hantera behörigheter. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
-> | [Key Vault kryptering av krypterings tjänst (för hands version)](#key-vault-crypto-service-encryption-preview) | Läs metadata för nycklar och utför figursatta/unwrap-åtgärder. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
+> | [Key Vault krypterings användare för krypterings tjänsten (för hands version)](#key-vault-crypto-service-encryption-user-preview) | Läs metadata för nycklar och utför figursatta/unwrap-åtgärder. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
 > | [Key Vault krypto-användare (förhands granskning)](#key-vault-crypto-user-preview) | Utföra kryptografiska åtgärder med hjälp av nycklar. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | 12338af0-0e69-4776-bea7-57ae8d297424 |
 > | [Key Vault läsare (förhands granskning)](#key-vault-reader-preview) | Läs metadata för nyckel valv och dess certifikat, nycklar och hemligheter. Det går inte att läsa känsliga värden, till exempel hemligt innehåll eller nyckel material. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | 21090545-7ca7-4776-b22c-e363652d74d2 |
 > | [Key Vault hemligheter (förhands granskning)](#key-vault-secrets-officer-preview) | Utföra alla åtgärder för ett nyckel valvs hemligheter, förutom hantera behörigheter. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll". | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
@@ -225,7 +225,7 @@ Följande tabell innehåller en kort beskrivning och det unika ID: t för varje 
 
 ### <a name="contributor"></a>Deltagare
 
-Ger fullständig åtkomst för att hantera alla resurser, men tillåter inte att du tilldelar roller i Azure RBAC. [Läs mer](rbac-and-directory-admin-roles.md)
+Ger fullständig åtkomst för att hantera alla resurser, men tillåter inte att du tilldelar roller i Azure RBAC, hanterar tilldelningar i Azure-ritningar eller delar avbildnings gallerier. [Läs mer](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -248,7 +248,7 @@ Ger fullständig åtkomst för att hantera alla resurser, men tillåter inte att
   "assignableScopes": [
     "/"
   ],
-  "description": "Grants full access to manage all resources, but does not allow you to assign roles in Azure RBAC.",
+  "description": "Grants full access to manage all resources, but does not allow you to assign roles in Azure RBAC, manage assignments in Azure Blueprints, or share image galleries.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
   "name": "b24988ac-6180-42a0-ab88-20f7382dd24c",
   "permissions": [
@@ -3072,7 +3072,7 @@ Gör att du kan hantera webbplatser (inte webb planer), men inte till gång till
 }
 ```
 
-## <a name="containers"></a>Containers
+## <a name="containers"></a>Containrar
 
 
 ### <a name="acrdelete"></a>AcrDelete
@@ -4265,6 +4265,7 @@ Gör att du kan hantera säkerhetsrelaterade principer för SQL-servrar och data
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)-/servers/azureADOnlyAuthentications/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)-/managedInstances/Read | Returnera listan över hanterade instanser eller hämtar egenskaperna för den angivna hanterade instansen. |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)-/managedInstances/azureADOnlyAuthentications/* |  |
+> | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)-/sqlVulnerabilityAssessments/* |  |
 > | **NotActions** |  |
 > | *inget* |  |
 > | **DataActions** |  |
@@ -4326,7 +4327,8 @@ Gör att du kan hantera säkerhetsrelaterade principer för SQL-servrar och data
         "Microsoft.Support/*",
         "Microsoft.Sql/servers/azureADOnlyAuthentications/*",
         "Microsoft.Sql/managedInstances/read",
-        "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/*"
+        "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/*",
+        "Microsoft.Security/sqlVulnerabilityAssessments/*"
       ],
       "notActions": [],
       "dataActions": [],
@@ -4450,7 +4452,7 @@ Gör att du kan hantera SQL-servrar och databaser, men inte åtkomst till dem oc
 }
 ```
 
-## <a name="analytics"></a>Analys
+## <a name="analytics"></a>Analytics
 
 
 ### <a name="azure-event-hubs-data-owner"></a>Azure Event Hubs data ägare
@@ -6191,7 +6193,7 @@ Gör det möjligt för utvecklare att skapa och uppdatera arbets flöden, integr
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Läs roller och roll tilldelningar |
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Skapa och uppdatera ett support ärende |
 > | [Microsoft. Logic](resource-provider-operations.md#microsoftlogic)-/integrationServiceEnvironments/Read | Läser integrerings tjänst miljön. |
-> | [Microsoft. Logic](resource-provider-operations.md#microsoftlogic)-/integrationServiceEnvironments/Join/Action | Kopplar Integration Service Environment. |
+> | [Microsoft. Logic](resource-provider-operations.md#microsoftlogic)/integrationServiceEnvironments/*/Join/Action |  |
 > | **NotActions** |  |
 > | *inget* |  |
 > | **DataActions** |  |
@@ -6213,7 +6215,7 @@ Gör det möjligt för utvecklare att skapa och uppdatera arbets flöden, integr
         "Microsoft.Authorization/*/read",
         "Microsoft.Support/*",
         "Microsoft.Logic/integrationServiceEnvironments/read",
-        "Microsoft.Logic/integrationServiceEnvironments/join/action"
+        "Microsoft.Logic/integrationServiceEnvironments/*/join/action"
       ],
       "notActions": [],
       "dataActions": [],
@@ -6688,6 +6690,7 @@ Azure Sentinel-svarare [Lär dig mer](../sentinel/roles.md)
 > | --- | --- |
 > | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/*/Read |  |
 > | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/Action | Kontrol lera auktorisering och licens för användare |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/automationRules/* |  |
 > | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/Cases/* |  |
 > | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/incidents/* |  |
 > | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/Indicators/appendTags/Action | Lägg till taggar till hot informations indikator |
@@ -6732,6 +6735,7 @@ Azure Sentinel-svarare [Lär dig mer](../sentinel/roles.md)
       "actions": [
         "Microsoft.SecurityInsights/*/read",
         "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
+        "Microsoft.SecurityInsights/automationRules/*",
         "Microsoft.SecurityInsights/cases/*",
         "Microsoft.SecurityInsights/incidents/*",
         "Microsoft.SecurityInsights/threatIntelligence/indicators/appendTags/action",
@@ -7004,7 +7008,7 @@ Utföra alla åtgärder för nycklarna i ett nyckel valv, förutom hantera behö
 }
 ```
 
-### <a name="key-vault-crypto-service-encryption-preview"></a>Key Vault kryptering av krypterings tjänst (för hands version)
+### <a name="key-vault-crypto-service-encryption-user-preview"></a>Key Vault krypterings användare för krypterings tjänsten (för hands version)
 
 Läs metadata för nycklar och utför figursatta/unwrap-åtgärder. Fungerar bara för nyckel valv som använder behörighets modellen "Azure-rollbaserad åtkomst kontroll".
 
@@ -7041,7 +7045,7 @@ Läs metadata för nycklar och utför figursatta/unwrap-åtgärder. Fungerar bar
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Crypto Service Encryption (preview)",
+  "roleName": "Key Vault Crypto Service Encryption User (preview)",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -7630,7 +7634,7 @@ Gör att du kan skapa nya labb under dina Azure Lab-konton. [Läs mer](../lab-se
 }
 ```
 
-## <a name="monitor"></a>Monitor
+## <a name="monitor"></a>Övervaka
 
 
 ### <a name="application-insights-component-contributor"></a>Application Insights komponent deltagare
@@ -8455,6 +8459,7 @@ Kan visa kostnader och hantera kostnads konfiguration (t. ex. budgetar, exporter
 > | [Microsoft. Advisor](resource-provider-operations.md#microsoftadvisor)-/Configurations/Read | Hämta konfigurationer |
 > | [Microsoft. Advisor](resource-provider-operations.md#microsoftadvisor)-/recommendations/Read | Läser rekommendationer |
 > | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)-/managementGroups/Read | Visa en lista med hanterings grupper för den autentiserade användaren. |
+> | [Microsoft. Billing](resource-provider-operations.md#microsoftbilling)-/billingProperty/Read |  |
 > | **NotActions** |  |
 > | *inget* |  |
 > | **DataActions** |  |
@@ -8481,7 +8486,8 @@ Kan visa kostnader och hantera kostnads konfiguration (t. ex. budgetar, exporter
         "Microsoft.Support/*",
         "Microsoft.Advisor/configurations/read",
         "Microsoft.Advisor/recommendations/read",
-        "Microsoft.Management/managementGroups/read"
+        "Microsoft.Management/managementGroups/read",
+        "Microsoft.Billing/billingProperty/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -8510,6 +8516,7 @@ Kan visa kostnads data och konfiguration (t. ex. budgetar, export) [Läs mer](..
 > | [Microsoft. Advisor](resource-provider-operations.md#microsoftadvisor)-/Configurations/Read | Hämta konfigurationer |
 > | [Microsoft. Advisor](resource-provider-operations.md#microsoftadvisor)-/recommendations/Read | Läser rekommendationer |
 > | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)-/managementGroups/Read | Visa en lista med hanterings grupper för den autentiserade användaren. |
+> | [Microsoft. Billing](resource-provider-operations.md#microsoftbilling)-/billingProperty/Read |  |
 > | **NotActions** |  |
 > | *inget* |  |
 > | **DataActions** |  |
@@ -8536,7 +8543,8 @@ Kan visa kostnads data och konfiguration (t. ex. budgetar, export) [Läs mer](..
         "Microsoft.Support/*",
         "Microsoft.Advisor/configurations/read",
         "Microsoft.Advisor/recommendations/read",
-        "Microsoft.Management/managementGroups/read"
+        "Microsoft.Management/managementGroups/read",
+        "Microsoft.Billing/billingProperty/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -8603,8 +8611,8 @@ Roll definition som tillåter att alla användare/tjänster skapar connectedClus
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)-/Subscriptions/operationresults/Read | Hämta prenumerations åtgärds resultatet. |
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)-/Subscriptions/Read | Hämtar listan över prenumerationer. |
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)-/Subscriptions/resourceGroups/Read | Hämtar eller listar resurs grupper. |
-> | [Microsoft. Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/Write | Skriver connectedClusters |
-> | [Microsoft. Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/Read | Läs connectedClusters |
+> | Microsoft. Kubernetes/connectedClusters/Write |  |
+> | Microsoft. Kubernetes/connectedClusters/Read |  |
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Skapa och uppdatera ett support ärende |
 > | **NotActions** |  |
 > | *inget* |  |

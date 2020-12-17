@@ -6,18 +6,21 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: dff98a5c54d2fee350e2b35dc00148c19ea233b8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 15a77835e3e618c17b9839aa5a010cd4d29cebe1
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94956508"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653120"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Lägg till ett TLS-/SSL-certifikat i Azure App Service
 
 [Azure App Service](overview.md) ger en mycket skalbar och automatisk korrigering av webb värd tjänst. Den här artikeln visar hur du skapar, överför eller importerar ett privat certifikat eller ett offentligt certifikat till App Service. 
 
 När certifikatet har lagts till i din App Service app eller [Function-app](../azure-functions/index.yml)kan du [skydda ett anpassat DNS-namn med det](configure-ssl-bindings.md) eller [använda det i din program kod](configure-ssl-certificate-in-code.md).
+
+> [!NOTE]
+> Ett certifikat som överförs till en app lagras i en distributions enhet som är kopplad till appens resurs grupp och region kombination (internt kallat ett webb *utrymme*). Detta gör certifikatet tillgängligt för andra appar i samma resurs grupp och region kombination. 
 
 I följande tabell visas de alternativ som du har för att lägga till certifikat i App Service:
 
@@ -272,7 +275,7 @@ Nu är du klar med att ladda upp certifikatet till App Service.
 
 I <a href="https://portal.azure.com" target="_blank">Azure Portal</a>väljer du **app Services** på menyn till vänster  >  **\<app-name>** .
 
-Välj **TLS/SSL-inställningar**  >  **certifikat för privat nyckel certifikat (. pfx)** i den vänstra navigeringen i appen  >  **Upload Certificate**.
+Välj **TLS/SSL-inställningar**  >  **certifikat för privat nyckel certifikat (. pfx)** i den vänstra navigeringen i appen  >  .
 
 ![Ladda upp privat certifikat i App Service](./media/configure-ssl-certificate/upload-private-cert.png)
 

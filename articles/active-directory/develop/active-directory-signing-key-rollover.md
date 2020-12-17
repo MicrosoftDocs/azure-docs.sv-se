@@ -12,12 +12,12 @@ ms.date: 8/11/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 981ac775e7153cfd03dc1760bbbc4e50fd9ecc57
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c9fbf6990f789bdb0edb1cf45885003569d4f6a8
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169553"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653239"
 ---
 # <a name="signing-key-rollover-in-microsoft-identity-platform"></a>Signering av nyckel förnyelse i Microsoft Identity Platform
 Den här artikeln beskriver vad du behöver veta om de offentliga nycklar som används av Microsoft Identity Platform för att signera säkerhetstoken. Det är viktigt att notera att dessa nycklar är i regelbunden följd och att de i nödfall kan överföras direkt. Alla program som använder Microsoft Identity Platform bör kunna hantera nyckel förnyelse processen program mässigt. Fortsätt att läsa för att förstå hur nycklarna fungerar, hur du bedömer effekten av överrullningen till ditt program och hur du uppdaterar programmet eller upprättar en periodisk manuell förnyelse process för att hantera nyckel förnyelse vid behov.
@@ -85,7 +85,7 @@ app.UseWsFederationAuthentication(
      });
 ```
 ```
- app.UseWindowsAzureActiveDirectoryBearerAuthentication(
+app.UseWindowsAzureActiveDirectoryBearerAuthentication(
      new WindowsAzureActiveDirectoryBearerAuthenticationOptions
      {
      // ...

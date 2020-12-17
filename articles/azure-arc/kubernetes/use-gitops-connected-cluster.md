@@ -1,29 +1,29 @@
 ---
-title: Distribuera konfigurationer med GitOps på Arc-aktiverade Kubernetes-kluster (för hands version)
+title: Distribuera konfigurationer med hjälp av GitOps på Arc-aktiverade Kubernetes-kluster (förhandsversion)
 services: azure-arc
 ms.service: azure-arc
 ms.date: 05/19/2020
 ms.topic: article
 author: mlearned
 ms.author: mlearned
-description: Använda GitOps för en Azure Arc-aktiverad kluster konfiguration (förhands granskning)
-keywords: GitOps, Kubernetes, K8s, Azure, Arc, Azure Kubernetes service, containers
-ms.openlocfilehash: ce6c754c308d2979db9b1b8eb36e7858e8a91c3c
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+description: Använda GitOps för att konfigurera ett Azure Arc-aktiverat Kubernetes-kluster (för hands version)
+keywords: GitOps, Kubernetes, K8s, Azure, Arc, Azure Kubernetes service, AKS, containers
+ms.openlocfilehash: 85771824a6cecd10346937220e400028a4570377
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659802"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653460"
 ---
-# <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Distribuera konfigurationer med GitOps på Arc-aktiverade Kubernetes-kluster (för hands version)
+# <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Distribuera konfigurationer med hjälp av GitOps på Arc-aktiverade Kubernetes-kluster (förhandsversion)
 
-GitOps är syftet med att deklarera det önskade läget för Kubernetes-konfiguration (distributioner, namnrymder och så vidare) i en git-lagringsplats följt av en avsöknings-och pull-baserad distribution av dessa konfigurationer till klustret med hjälp av en operatör. Det här dokumentet beskriver installationen av sådana arbets flöden i Azure Arc-aktiverade Kubernetes-kluster.
+GitOps, när det gäller Kubernetes, är syftet med att deklarera det önskade läget för Kubernetes-konfiguration (distributioner, namn områden osv.) i en git-lagringsplats följt av en avsöknings-och pull-baserad distribution av dessa konfigurationer till klustret med hjälp av en operatör. Det här dokumentet beskriver installationen av sådana arbets flöden i Azure Arc-aktiverade Kubernetes-kluster.
 
-Anslutningen mellan klustret och en eller flera git-databaser spåras i Azure Resource Manager som `sourceControlConfiguration` tilläggs resurs. `sourceControlConfiguration`Resurs egenskaperna representerar var och hur Kubernetes resurser ska flöda från git till klustret. `sourceControlConfiguration`Data lagras krypterade i vila i en Azure Cosmos DB databas för att säkerställa data sekretessen.
+Anslutningen mellan klustret och git-lagringsplatsen skapas i Azure Resource Manager som en `Microsoft.KubernetesConfiguration/sourceControlConfigurations` tilläggs resurs. `sourceControlConfiguration`Resurs egenskaperna representerar var och hur Kubernetes resurser ska flöda från git till klustret. `sourceControlConfiguration`Data lagras krypterade i vila i en Azure Cosmos DB databas för att säkerställa data sekretessen.
 
-Den som `config-agent` körs i klustret ansvarar för att titta efter nya eller uppdaterade `sourceControlConfiguration` tilläggs resurser på den Azure Arc-aktiverade Kubernetes-resursen, distribuera en flödes operatör för att se git-lagringsplatsen och sprida alla uppdateringar som görs till `sourceControlConfiguration` . Det går även att skapa flera `sourceControlConfiguration` resurser med `namespace` omfång på samma Azure Arc-Kubernetes-kluster för att uppnå flera innehavare. I sådana fall kan varje operatör bara distribuera konfigurationer till dess respektive namnrymd.
+Den som `config-agent` körs i klustret ansvarar för att titta efter nya eller uppdaterade `sourceControlConfiguration` tilläggs resurser på den Azure Arc-aktiverade Kubernetes-resursen, för att distribuera en flödes operatör för att titta på git-lagringsplatsen för varje `sourceControlConfiguration` , och tillämpa alla uppdateringar som görs i vilken som helst `sourceControlConfiguration` . Det är möjligt att skapa flera `sourceControlConfiguration` resurser i samma Azure Arc-Kubernetes-kluster för att uppnå flera innehavare. Du kan skapa var `sourceControlConfiguration` och en med olika `namespace` omfång för att begränsa distributioner inom respektive namnrum.
 
-Git-lagringsplatsen kan innehålla alla giltiga Kubernetes-resurser, inklusive namnrymder, ConfigMaps, distributioner, DaemonSets osv.  Det kan också innehålla Helm-diagram för att distribuera program. En vanlig uppsättning scenarier innefattar att definiera en bas linje konfiguration för din organisation, som kan innehålla vanliga Azure-roller och bindningar, övervaknings-eller loggnings agenter eller klustrade tjänster.
+Git-lagringsplatsen kan innehålla YAML-manifest som beskriver giltiga Kubernetes-resurser, inklusive namnrymder, ConfigMaps, distributioner, DaemonSets osv.  Det kan också innehålla Helm-diagram för att distribuera program. En vanlig uppsättning scenarier innefattar att definiera en bas linje konfiguration för din organisation, som kan innehålla vanliga Azure-roller och bindningar, övervaknings-eller loggnings agenter eller klustrade tjänster.
 
 Samma mönster kan användas för att hantera en större samling kluster, som kan distribueras i heterogena miljöer. Du kan till exempel ha en lagrings plats som definierar bas linje konfigurationen för din organisation och tillämpa den på flera Kubernetes-kluster samtidigt. Med [Azure policy kan du automatisera](use-azure-policy.md) skapandet av en `sourceControlConfiguration` med en speciell uppsättning parametrar på alla Azure Arc-aktiverade Kubernetes-resurser under ett omfång (prenumeration eller resurs grupp).
 
@@ -46,7 +46,7 @@ Om du associerar ett privat lager med `sourceControlConfiguration` måste du ock
 
 ### <a name="using-azure-cli"></a>Använda Azure CLI
 
-Vi använder Azure CLI-tillägget för `k8sconfiguration` , vi länkar vårt anslutna kluster till ett [exempel git-lagringsplats](https://github.com/Azure/arc-k8s-demo). Vi kommer att ge den här konfigurationen ett namn `cluster-config` , instruera agenten att distribuera operatorn i `cluster-config` namn området och ge operatörs `cluster-admin` behörighet.
+Använd Azure CLI-tillägget för `k8sconfiguration` att länka ett anslutet kluster till [exempel git-lagringsplatsen](https://github.com/Azure/arc-k8s-demo). Vi kommer att ge den här konfigurationen ett namn `cluster-config` , instruera agenten att distribuera operatorn i `cluster-config` namn området och ge operatörs `cluster-admin` behörighet.
 
 ```console
 az k8sconfiguration create --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name cluster-config --operator-namespace cluster-config --repository-url https://github.com/Azure/arc-k8s-demo --scope cluster --cluster-type connectedClusters
@@ -58,70 +58,101 @@ az k8sconfiguration create --name cluster-config --cluster-name AzureArcTest1 --
 Command group 'k8sconfiguration' is in preview. It may be changed/removed in a future release.
 {
   "complianceStatus": {
-    "ComplianceStatus": 1,
-    "clientAppliedTime": null,
-    "level": 3,
-    "message": "{\"OperatorMessage\":null,\"ClusterState\":null}"
+    "complianceState": "Pending",
+    "lastConfigApplied": "0001-01-01T00:00:00",
+    "message": "{\"OperatorMessage\":null,\"ClusterState\":null}",
+    "messageLevel": "3"
   },
-  "configKind": "Git",
-  "configName": "cluster-config",
-  "configOperator": {
-    "operatorInstanceName": "cluster-config",
-    "operatorNamespace": "cluster-config",
-    "operatorParams": "--git-readonly",
-    "operatorScope": "cluster",
-    "operatorType": "flux"
-  },
-  "configType": "",
-  "id": null,
-  "name": null,
-  "operatorInstanceName": null,
-  "operatorNamespace": null,
-  "operatorParams": null,
-  "operatorScope": null,
-  "operatorType": null,
-  "providerName": "ConnectedClusters",
+  "configurationProtectedSettings": {},
+  "enableHelmOperator": false,
+  "helmOperatorProperties": null,
+  "id": "/subscriptions/<sub id>/resourceGroups/<group name>/providers/Microsoft.Kubernetes/connectedClusters/<cluster name>/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/cluster-config",
+  "name": "cluster-config",
+  "operatorInstanceName": "cluster-config",
+  "operatorNamespace": "cluster-config",
+  "operatorParams": "--git-readonly",
+  "operatorScope": "cluster",
+  "operatorType": "Flux",
   "provisioningState": "Succeeded",
-  "repositoryPublicKey": null,
-  "repositoryUrl": null,
-  "sourceControlConfiguration": {
-    "repositoryPublicKey": "",
-    "repositoryUrl": "git://github.com/Azure/arc-k8s-demo.git"
+  "repositoryPublicKey": "",
+  "repositoryUrl": "https://github.com/Azure/arc-k8s-demo",
+  "resourceGroup": "MyRG",
+  "sshKnownHostsContents": "",
+  "systemData": {
+    "createdAt": "2020-11-24T21:22:01.542801+00:00",
+    "createdBy": null,
+    "createdByType": null,
+    "lastModifiedAt": "2020-11-24T21:22:01.542801+00:00",
+    "lastModifiedBy": null,
+    "lastModifiedByType": null
   },
-  "type": null
-}
-```
+  "type": "Microsoft.KubernetesConfiguration/sourceControlConfigurations"
+  ```
 
-#### <a name="repository-url-parameter"></a>Parameter för lagrings plats-URL
+#### <a name="use-a-public-git-repo"></a>Använda en offentlig git-lagrings platsen
 
-Här följer de scenarier som stöds för värdet av--URL-parametern-URL.
+| Parameter | Format |
+| ------------- | ------------- |
+| --databas-URL | http [s]://Server/repo [. git] eller git://Server/repo [. git]
 
-| Scenario | Format | Description |
+#### <a name="use-a-private-git-repo-with-ssh-and-flux-created-keys"></a>Använd en privat git-lagrings platsen med SSH-och flöden skapade nycklar
+
+| Parameter | Format | Obs!
 | ------------- | ------------- | ------------- |
-| Offentlig git-lagrings platsen | http [s]://Server/repo.git eller git://server/repo.git   | Offentlig git-lagrings platsen  |
-| Privata git-lagrings platsen – SSH – flöden-skapade nycklar | SSH://[user@] Server/lagrings platsen. git eller [user@] Server: lagrings platsen. git | Den offentliga nyckeln som genereras av flöde måste läggas till i användar kontot i git-tjänstprovidern. Om distributions nyckeln läggs till i lagrings platsen i stället för användar kontot använder du `git@` i stället för `user@` . [Här](#apply-configuration-from-a-private-git-repository) hittar du mer information |
+| --databas-URL | ssh://user@server/repo[. git] eller user@server:repo [. git] | `git@` kan ersätta `user@`
 
-Dessa scenarier stöds av flöde, men ännu inte av sourceControlConfiguration.
+> [!NOTE]
+> Den offentliga nyckeln som genereras av flödes gruppen måste läggas till i användar kontot i git-tjänstprovidern. Om nyckeln läggs till i lagrings platsen i stället för att > användar kontot använder du `git@` i stället för `user@` i URL: en. [Visa mer information](#apply-configuration-from-a-private-git-repository)
 
-| Scenario | Format | Description |
+#### <a name="use-a-private-git-repo-with-ssh-and-user-provided-keys"></a>Använd en privat git-lagrings platsen med SSH-och användarspecifika nycklar
+
+| Parameter | Format | Obs! |
 | ------------- | ------------- | ------------- |
-| Privat git lagrings platsen-HTTPS | https://server/repo.git | Kommer snart (stöd för användar namn/lösen ord, användar namn/token, certifikat) |
-| Privata git-lagrings platsen – SSH – användarspecifika nycklar | SSH://[user@] Server/lagrings platsen. git eller [user@] Server: lagrings platsen. git | Kommer snart |
-| Privat git-värd – SSH – anpassad known_hosts | SSH://[user@] Server/lagrings platsen. git eller [user@] Server: lagrings platsen. git | Kommer snart |
+| --databas-URL  | ssh://user@server/repo[. git] eller user@server:repo [. git] | `git@` kan ersätta `user@` |
+| --SSH-Private-Key | Base64-kodad nyckel i [PEM-format](https://aka.ms/PEMformat) | Ange nyckel direkt |
+| --SSH-privat-Key-File | fullständig sökväg till lokal fil | Ange en fullständig sökväg till en lokal fil som innehåller PEM-format-nyckeln
+
+> [!NOTE]
+> Ange din privata nyckel direkt eller i en fil. Nyckeln måste vara i [PEM-format](https://aka.ms/PEMformat) och sluta med rad matningen (\n).  Den tillhör ande offentliga nyckeln måste läggas till i användar kontot i git-tjänstprovidern. Om nyckeln läggs till i lagrings platsen i stället för användar kontot använder du `git@` i stället för `user@` . [Visa mer information](#apply-configuration-from-a-private-git-repository)
+
+#### <a name="use-a-private-git-host-with-ssh-and-user-provided-known-hosts"></a>Använd en privat git-värd med SSH-och användarspecifika kända värdar
+
+| Parameter | Format | Obs! |
+| ------------- | ------------- | ------------- |
+| --databas-URL  | ssh://user@server/repo[. git] eller user@server:repo [. git] | `git@` kan ersätta `user@` |
+| --SSH-kända-värdar | Base64-kodad | kända värdar innehåll tillhandahålls direkt |
+| --SSH-known-hosts-File | fullständig sökväg till lokal fil | kända värdar innehåll som tillhandahålls i en lokal fil
+
+> [!NOTE]
+> Flödes operatorn har en lista över vanliga git-värdar i den kända värd filen för att autentisera git-lagrings platsen innan SSH-anslutningen upprättas. Om du använder en ovanlig git-lagrings platsen eller en egen git-värd kan du behöva ange värd nyckeln för att se till att flödet kan identifiera din lagrings platsen. Du kan tillhandahålla ditt kända värd innehåll direkt eller i en fil. [Visa kända värdar innehålls format specifikation](https://aka.ms/KnownHostsFormat).
+> Du kan använda detta tillsammans med ett av de scenarier för SSH-nyckeln som beskrivs ovan.
+
+#### <a name="use-a-private-git-repo-with-https"></a>Använda en privat git-lagrings platsen med HTTPS
+
+| Parameter | Format | Obs! |
+| ------------- | ------------- | ------------- |
+| --databas-URL | https://server/repo[. git] | HTTPS med Basic auth |
+| --https-användare | RAW eller Base64-kodad | HTTPS-användarnamn |
+| --https-nyckel | RAW eller Base64-kodad | HTTPS personlig åtkomsttoken eller lösen ord
+
+> [!NOTE]
+> HTTPS Helm release Private auth stöds bara med Helm-operatörens diagram version >= 1.2.0.  Version 1.2.0 används som standard.
+> HTTPS Helm release Private auth stöds inte för närvarande för Azure Kubernetes Services-hanterade kluster.
+> Om du behöver flöden för att komma åt git-lagrings platsen via din proxy måste du uppdatera Azure Arc-agenterna med proxyinställningarna. [Mer information](https://docs.microsoft.com/azure/azure-arc/kubernetes/connect-cluster#connect-using-an-outbound-proxy-server)
 
 #### <a name="additional-parameters"></a>Ytterligare parametrar
 
-Här följer några ytterligare parametrar för att anpassa skapandet av konfigurationen:
+Om du vill anpassa konfigurationen kan du använda följande parametrar:
 
 `--enable-helm-operator` : *Valfri* växel för att aktivera stöd för Helm-diagram distributioner.
 
-`--helm-operator-chart-values` : *Valfria* diagram värden för Helm-operatorn (om aktive rad).  Till exempel "--Set Helm. versions = v3".
+`--helm-operator-params` : *Valfria* diagram värden för Helm-operatorn (om aktive rad).  Till exempel "--Set Helm. versions = v3".
 
-`--helm-operator-chart-version` : *Valfri* diagram version för Helm-operatorn (om aktive rad). Standard: ' 0.6.0 '.
+`--helm-operator-chart-version` : *Valfri* diagram version för Helm-operatorn (om aktive rad). Standard: ' 1.2.0 '.
 
 `--operator-namespace` : Det *valfria* namnet för operatorns namn område. Standard: standard
 
-`--operator-params` : *Valfria* parametrar för operatorn. Måste anges inom enkla citat tecken. Till exempel ```--operator-params='--git-readonly --git-path=releases' ```
+`--operator-params` : *Valfria* parametrar för operatorn. Måste anges inom enkla citat tecken. Till exempel ```--operator-params='--git-readonly --git-path=releases --sync-garbage-collection' ```
 
 Alternativ som stöds i--Operator-params
 
@@ -148,7 +179,7 @@ Alternativ som stöds i--Operator-params
 Mer information finns i [flödes dokumentation](https://aka.ms/FluxcdReadme).
 
 > [!TIP]
-> Det är möjligt att skapa en sourceControlConfiguration på Azure Portal och på fliken **konfigurationer** på resurs bladet Azure Arc-aktiverade Kubernetes.
+> Det går att skapa en sourceControlConfiguration i Azure Portal på fliken **GitOps** i den Azure Arc-aktiverade Kubernetes-resursen.
 
 ## <a name="validate-the-sourcecontrolconfiguration"></a>Verifiera sourceControlConfiguration
 
@@ -167,11 +198,17 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 {
   "complianceStatus": {
     "complianceState": "Installed",
-    "lastConfigApplied": "2019-12-05T05:34:41.481000",
+    "lastConfigApplied": "2020-12-10T18:26:52.801000+00:00",
     "message": "...",
-    "messageLevel": "3"
+    "messageLevel": "Information"
   },
-  "id": "/subscriptions/57ac26cf-a9f0-4908-b300-9a4e9a0fb205/resourceGroups/AzureArcTest/providers/Microsoft.Kubernetes/connectedClusters/AzureArcTest1/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/cluster-config",
+  "configurationProtectedSettings": {},
+  "enableHelmOperator": false,
+  "helmOperatorProperties": {
+    "chartValues": "",
+    "chartVersion": ""
+  },
+  "id": "/subscriptions/<sub id>/resourceGroups/AzureArcTest/providers/Microsoft.Kubernetes/connectedClusters/AzureArcTest1/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/cluster-config",
   "name": "cluster-config",
   "operatorInstanceName": "cluster-config",
   "operatorNamespace": "cluster-config",
@@ -182,20 +219,29 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
   "repositoryPublicKey": "...",
   "repositoryUrl": "git://github.com/Azure/arc-k8s-demo.git",
   "resourceGroup": "AzureArcTest",
+  "sshKnownHostsContents": null,
+  "systemData": {
+    "createdAt": "2020-12-01T03:58:56.175674+00:00",
+    "createdBy": null,
+    "createdByType": null,
+    "lastModifiedAt": "2020-12-10T18:30:56.881219+00:00",
+    "lastModifiedBy": null,
+    "lastModifiedByType": null
+},
   "type": "Microsoft.KubernetesConfiguration/sourceControlConfigurations"
 }
 ```
 
 När `sourceControlConfiguration` har skapats händer några saker under huven:
 
-1. Azure-bågen `config-agent` övervakar Azure Resource Manager för nya eller uppdaterade konfigurationer ( `Microsoft.KubernetesConfiguration/sourceControlConfiguration` )
+1. Azure-bågen `config-agent` övervakar Azure Resource Manager för nya eller uppdaterade konfigurationer ( `Microsoft.KubernetesConfiguration/sourceControlConfigurations` )
 1. `config-agent` Observera den nya `Pending` konfigurationen
 1. `config-agent` läser konfigurations egenskaperna och förbereder distributionen av en hanterad instans av `flux`
     * `config-agent` skapar mål namn området
     * `config-agent` förbereder ett Kubernetes tjänst konto med rätt behörighet ( `cluster` eller `namespace` omfång)
     * `config-agent` distribuerar en instans av `flux`
-    * `flux` genererar en SSH-nyckel och loggar den offentliga nyckeln
-1. `config-agent` rapporterar status tillbaka till `sourceControlConfiguration`
+    * `flux` genererar en SSH-nyckel och loggar den offentliga nyckeln (om du använder alternativet för SSH med flöden-genererade nycklar)
+1. `config-agent` rapporterar status tillbaka till `sourceControlConfiguration` resursen i Azure
 
 När etablerings processen utförs går det `sourceControlConfiguration` igenom några tillstånds ändringar. Övervaka förloppet med `az k8sconfiguration show ...` kommandot ovan:
 
@@ -205,9 +251,13 @@ När etablerings processen utförs går det `sourceControlConfiguration` igenom 
 
 ## <a name="apply-configuration-from-a-private-git-repository"></a>Tillämpa konfigurationen från en privat git-lagringsplats
 
-Om du använder en privat git-lagrings platsen måste du utföra ytterligare en uppgift för att stänga slingan: Lägg till den offentliga nyckeln som genereras av `flux` som en **distributions nyckel** i lagrings platsen.
+Om du använder en privat git-lagrings platsen måste du konfigurera den offentliga SSH-nyckeln i din lagrings platsen. Du kan konfigurera den offentliga nyckeln antingen på git-lagrings platsen eller git-användaren som har åtkomst till lagrings platsen. Den offentliga SSH-nyckeln är antingen den som du anger eller den som flödet genererar.
 
-**Hämta den offentliga nyckeln med Azure CLI**
+**Hämta din egen offentliga nyckel**
+
+Om du skapade dina egna SSH-nycklar har du redan privata och offentliga nycklar.
+
+**Hämta den offentliga nyckeln med Azure CLI (användbart om flöden genererar nycklarna)**
 
 ```console
 $ az k8sconfiguration show --resource-group <resource group name> --cluster-name <connected cluster name> --name <configuration name> --query 'repositoryPublicKey'
@@ -215,16 +265,16 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAREDACTED"
 ```
 
-**Hämta den offentliga nyckeln från Azure Portal**
+**Hämta den offentliga nyckeln från Azure Portal (användbart om flöden genererar nycklarna)**
 
 1. I Azure Portal navigerar du till den anslutna kluster resursen.
-2. På sidan resurs väljer du "konfigurationer" och visar listan över konfigurationer för klustret.
+2. På sidan resurs väljer du "GitOps" och visar listan över konfigurationer för klustret.
 3. Välj den konfiguration som använder den privata git-lagringsplatsen.
 4. I kontext fönstret som öppnas längst ned i fönstret kopierar du **lagrings platsens offentliga nyckel**.
 
 Om du använder GitHub kan du använda något av följande två alternativ:
 
-**Alternativ 1: Lägg till den offentliga nyckeln till ditt användar konto**
+**Alternativ 1: Lägg till den offentliga nyckeln till ditt användar konto (gäller för alla databaser i ditt konto)**
 
 1. Öppna GitHub, klicka på din profil ikon i det övre högra hörnet på sidan.
 2. Klicka på **Inställningar**
@@ -234,7 +284,7 @@ Om du använder GitHub kan du använda något av följande två alternativ:
 6. Klistra in den offentliga nyckeln (minus omgivande citat tecken)
 7. Klicka på **Lägg till SSH-nyckel**
 
-**Alternativ 2: Lägg till den offentliga nyckeln som en distributions nyckel till git-lagrings platsen**
+**Alternativ 2: Lägg till den offentliga nyckeln som en distributions nyckel till git-lagrings platsen (gäller endast denna lagrings platsen)**
 
 1. Öppna GitHub, navigera till lagrings platsen, klicka på **Inställningar** och **distribuera nycklar**
 2. Klicka på **Lägg till distributions nyckel**
@@ -301,10 +351,10 @@ kubectl -n itops get all
 
 ## <a name="delete-a-configuration"></a>Ta bort en konfiguration
 
-Ta bort en `sourceControlConfiguration` med hjälp av Azure CLI eller Azure Portal.  När du har initierat kommandot Ta bort `sourceControlConfiguration` kommer resursen att tas bort omedelbart i Azure, men det kan ta upp till 1 timme för fullständig borttagning av de associerade objekten från klustret (vi har ett artikel efter släpning för att minska den här tids fördröjningen).
+Ta bort en `sourceControlConfiguration` med hjälp av Azure CLI eller Azure Portal.  När du har initierat kommandot Ta bort tas `sourceControlConfiguration` resursen bort omedelbart i Azure och fullständig borttagning av associerade objekt från klustret sker inom 10 minuter.  Om `sourceControlConfiguration` är i ett felaktigt tillstånd när den tas bort kan den fullständiga borttagningen av associerade objekt ta upp till en timme.
 
 > [!NOTE]
-> När en sourceControlConfiguration med namn områdes omfånget har skapats är det möjligt för användare med `edit` roll bindning i namn område att distribuera arbets belastningar i namn området. När detta `sourceControlConfiguration` med namn områdes omfånget tas bort lämnas namn området kvar och tas inte bort för att undvika att de andra arbets belastningarna bryts.
+> När en sourceControlConfiguration med namn områdes omfånget har skapats är det möjligt för användare med `edit` roll bindning i namn området att distribuera arbets belastningar i namn området. När detta `sourceControlConfiguration` med namn områdes omfånget tas bort lämnas namn området kvar och tas inte bort för att undvika att de andra arbets belastningarna bryts.  Om det behövs kan du ta bort det här namn området manuellt med kubectl.
 > Eventuella ändringar i klustret som resulterade i distributioner från det spårade git-lagrings platsen tas inte bort när tas `sourceControlConfiguration` bort.
 
 ```console

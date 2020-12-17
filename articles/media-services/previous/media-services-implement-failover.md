@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 10976c91e781763264d73adcc54ba88ec8d07f54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68cd107b2606643d712c4de94b6d1a82e8ee614a
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256539"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657268"
 ---
 # <a name="implement-failover-streaming-with-media-services-v2"></a>Implementera redundans med Media Services v2
 
@@ -53,7 +53,7 @@ Följande gäller:
 * Storage-krypterade till gångar (AssetCreationOptions. StorageEncrypted) stöds inte för replikering (eftersom krypterings nyckeln är annorlunda i båda Media Services-kontona). 
 * Om du vill dra nytta av dynamisk paketering kontrollerar du att den strömnings slut punkt som du vill strömma ditt innehåll från är **igång** .
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Två Media Services konton i en ny eller befintlig Azure-prenumeration. Se [så här skapar du ett Media Services-konto](media-services-portal-create-account.md).
 * Operativ system: Windows 7, Windows 2008 R2 eller Windows 8.
@@ -66,7 +66,7 @@ I det här avsnittet skapar du och konfigurerar ett C#-konsol program projekt.
 
 1. Använd Visual Studio för att skapa en ny lösning som innehåller C#-konsolens program projekt. Ange **HandleRedundancyForOnDemandStreaming** som namn och klicka sedan på **OK**.
 2. Skapa mappen **SupportFiles** på samma nivå som projekt filen **HandleRedundancyForOnDemandStreaming. CSPROJ** . Under mappen **SupportFiles** skapar du mapparna **OutputFiles** och **MP4Files** . Kopiera en. mp4-fil till mappen **MP4Files** (I det här exemplet används filen **ignite.mp4** .) 
-3. Använd **NuGet** för att lägga till referenser till DLL: er som är relaterade till Media Services. I **Visual Studio main-menyn**väljer du **verktyg**  >  **NuGet Package Manager**  >  **Package**Manager-konsolen. I konsol fönstret skriver du **install-Package windowsazure. Media Services**och trycker på RETUR.
+3. Använd **NuGet** för att lägga till referenser till DLL: er som är relaterade till Media Services. I **Visual Studio main-menyn** väljer du **verktyg**  >  **NuGet Package Manager**  >  **Package** Manager-konsolen. I konsol fönstret skriver du **install-Package windowsazure. Media Services** och trycker på RETUR.
 4. Lägg till andra referenser som krävs för det här projektet: system. Runtime. Serialization och system. Web.
 5. Ersätt **med** -instruktioner som har lagts till i **programs.cs** -filen som standard med följande:
 

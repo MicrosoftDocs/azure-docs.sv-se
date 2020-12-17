@@ -11,12 +11,12 @@ ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a89a456b5d9ee36909d5d742a7880d72e5ed86fd
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 4956d11ea2a4b011a792827357c3f4627058ead9
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355879"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97651998"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Krav för Azure AD Connect-molnetablering
 Den här artikeln innehåller rikt linjer för hur du väljer och använder Azure Active Directory (Azure AD) Anslut moln etablering som din identitets lösning.
@@ -51,33 +51,33 @@ Kör [IdFix-verktyget](/office365/enterprise/prepare-directory-attributes-for-sy
 
 ### <a name="in-your-on-premises-environment"></a>I din lokala miljö
 
- 1. Identifiera en domänansluten värd server som kör Windows Server 2012 R2 eller senare med minst 4 GB RAM-minne och .NET 4.7.1 + Runtime.
+1. Identifiera en domänansluten värd server som kör Windows Server 2012 R2 eller senare med minst 4 GB RAM-minne och .NET 4.7.1 + Runtime.
 
- >[!NOTE]
- > Tänk på att om du definierar ett omfångs filter förorsakas en minnes kostnad på värd servern.  Om inget omfångs filter används finns det ingen extra minnes kostnad. Minimi kravet för 4 GB stöder synkronisering för upp till 12 organisations enheter som definieras i omfångs filtret. Om du behöver synkronisera ytterligare organisationsenheter måste du öka den minsta mängden minne. Använd följande tabell som en guide:
- >
- >  
- >  | Antal ou i omfångs filter| minsta mängd minne som krävs|
- >  | --- | --- |
- >  | 12| 4 GB|
- >  | 18|5,5 GB|
- >  | 28|10 + GB|
- >
- > 
+    >[!NOTE]
+    > Tänk på att om du definierar ett omfångs filter förorsakas en minnes kostnad på värd servern.  Om inget omfångs filter används finns det ingen extra minnes kostnad. Minimi kravet för 4 GB stöder synkronisering för upp till 12 organisations enheter som definieras i omfångs filtret. Om du behöver synkronisera ytterligare organisationsenheter måste du öka den minsta mängden minne. Använd följande tabell som en guide:
+    >
+    >
+    > | Antal ou i omfångs filter| minsta mängd minne som krävs|
+    > | --- | --- |
+    > | 12 | 4 GB |
+    > | 18 | 5,5 GB|
+    > | 28 | 10 + GB|
+    >
+    > 
 
- 2. Körnings principen för PowerShell på den lokala servern måste vara inställd på odefinierad eller RemoteSigned.
+2. Körnings principen för PowerShell på den lokala servern måste vara inställd på odefinierad eller RemoteSigned.
 
- 3. Om det finns en brand vägg mellan dina servrar och Azure AD konfigurerar du följande objekt:
+3. Om det finns en brand vägg mellan dina servrar och Azure AD konfigurerar du följande objekt:
+
    - Se till att agenter kan göra *utgående* begär anden till Azure AD över följande portar:
 
-        | Portnummer | Hur den används |
-        | --- | --- |
-        | **80** | Hämtar listor över återkallade certifikat (CRL) När TLS/SSL-certifikatet verifierades.  |
-        | **443** | Hanterar all utgående kommunikation med tjänsten. |
-        |**8082**|Krävs för installation och om du vill konfigurera hans administrations-API.  Den här porten kan tas bort när agenten har installerats och om du inte planerar att använda API: et.   |
-        | **8080** (valfritt) | Agenter rapporterar sin status var 10: e minut via port 8080, om port 443 inte är tillgänglig. Den här statusen visas i Azure AD-portalen. |
-   
-     
+      | Portnummer | Hur den används |
+      | --- | --- |
+      | **80** | Hämtar listor över återkallade certifikat (CRL) När TLS/SSL-certifikatet verifierades.  |
+      | **443** | Hanterar all utgående kommunikation med tjänsten. |
+      |**8082**|Krävs för installation och om du vill konfigurera hans administrations-API.  Den här porten kan tas bort när agenten har installerats och om du inte planerar att använda API: et.   |
+      | **8080** (valfritt) | Agenter rapporterar sin status var 10: e minut via port 8080, om port 443 inte är tillgänglig. Den här statusen visas i Azure AD-portalen. |
+
    - Om brand väggen tillämpar regler enligt de ursprungliga användarna öppnar du portarna för trafik från Windows-tjänster som körs som en nätverks tjänst.
    - Om din brand vägg eller proxy låter dig ange säkra suffix lägger du till anslutningar till \* . msappproxy.net och \* . ServiceBus.Windows.net. Om inte, Tillåt åtkomst till [Azure datacenter IP-intervall](https://www.microsoft.com/download/details.aspx?id=41653)som uppdateras varje vecka.
    - Dina agenter behöver åtkomst till login.windows.net och login.microsoftonline.com för inledande registrering. Öppna brand väggen för dessa URL: er även.
@@ -86,10 +86,8 @@ Kör [IdFix-verktyget](/office365/enterprise/prepare-directory-attributes-for-sy
 >[!NOTE]
 > Det finns inte stöd för att installera moln etablerings agenten på Windows Server Core.
 
-
-
-
 ### <a name="additional-requirements"></a>Ytterligare krav
+
 - [Microsoft .NET Framework-4.7.1](https://www.microsoft.com/download/details.aspx?id=56116) 
 
 #### <a name="tls-requirements"></a>TLS-krav
@@ -102,7 +100,7 @@ Windows Server som är värd för Azure AD Connect Cloud Provisioning agent mås
 Följ dessa steg om du vill aktivera TLS 1,2.
 
 1. Ange följande registernycklar:
-    
+
     ```
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001

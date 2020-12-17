@@ -15,12 +15,12 @@ ms.date: 07/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f38ef7db114705392bd1d3dc6f9a4562a809e20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4e3fe72492ef92fe65572c75bf9f88b5f9ffda3
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86023895"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653426"
 ---
 # <a name="activate-my-azure-resource-roles-in-privileged-identity-management"></a>Aktivera mina Azure-resurs roller i Privileged Identity Management
 
@@ -50,7 +50,7 @@ När du behöver utföra en Azure-resurs roll kan du begära aktivering med hjä
 
 1. Välj **Aktivera** för att öppna sidan Aktivera.
 
-     ![Fönstret aktivera med omfång, start tid, varaktighet och orsak](./media/pim-resource-roles-activate-your-roles/azure-role-eligible-activate.png)
+    ![Fönstret aktivera med omfång, start tid, varaktighet och orsak](./media/pim-resource-roles-activate-your-roles/azure-role-eligible-activate.png)
 
 1. Om din roll kräver Multi-Factor Authentication väljer du **Verifiera din identitet innan du fortsätter**. Du behöver bara autentisera en gång per session.
 
@@ -104,7 +104,7 @@ Om du inte behöver aktivera en roll som kräver godkännande kan du när som he
 
    ![Listan Mina begär Anden med avbrotts åtgärd markerad](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
 
-## <a name="troubleshoot"></a>Felsöka
+## <a name="troubleshoot"></a>Felsök
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>Behörigheter beviljas inte efter att en roll har aktiverats
 

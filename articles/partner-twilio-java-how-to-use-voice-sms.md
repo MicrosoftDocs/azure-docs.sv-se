@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.custom: devx-track-java
-ms.openlocfilehash: 053c120b7a1a6c50c16ff419a9e64666d83dc59a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5e44ae3280d3ca0f8d5052be10d0955ba342352f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95542498"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652882"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-java"></a>Använda Twilio för röst-och SMS-funktioner i Java
 Den här guiden visar hur du utför vanliga programmerings åtgärder med Twilio API-tjänsten på Azure. Scenarierna som ingår är att ringa ett telefonsamtal och skicka ett SMS-meddelande (Short Message Service). Mer information om Twilio och hur du använder röst-och SMS i dina program finns i avsnittet [Nästa steg](#NextSteps) .
@@ -99,8 +99,8 @@ För källfiler för Java Server Page (JSP):
     import="com.twilio.rest.api.*"
     import="com.twilio.type.*"
     import="com.twilio.twiml.*"
- ```
- 
+```
+
 Beroende på vilka Twilio-paket eller klasser du vill använda kan dina **import** -instruktioner vara olika.
 
 ## <a name="how-to-make-an-outgoing-call"></a><a id="howto_make_call"></a>Gör så här: gör ett utgående samtal

@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: 81764294cc29ad74d5a77f2055f10498d69b59e5
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 591f01004cfba247112f702625ab05ddc0aaede3
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93343248"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652933"
 ---
 # <a name="restore-a-dropped-azure-database-for-postgresql-server"></a>Återställa en borttagen Azure Database for PostgreSQL Server
 
@@ -39,23 +39,26 @@ Om du vill återställa en borttagen Azure Database for PostgreSQL Server, behö
 
  4. Bläddra till sidan PostgreSQL [skapa Server REST API](/rest/api/PostgreSQL/servers/create) och välj fliken **testa den** markerad i grönt. Logga in med ditt Azure-konto.
 
- 5. Ange **resourceGroupName** , **servername** (borttaget Server namn), **SUBSCRIPTIONID** -egenskaper baserat på JSON-attributvärdet resourceId som samlats in i föregående steg 3. Egenskapen API-version är förifylld och kan vara kvar, som du ser i följande bild.
+ 5. Ange **resourceGroupName**, **servername** (borttaget Server namn), **SUBSCRIPTIONID** -egenskaper baserat på JSON-attributvärdet resourceId som samlats in i föregående steg 3. Egenskapen API-version är förifylld och kan vara kvar, som du ser i följande bild.
 
     ![Skapa server med REST API](./media/howto-restore-dropped-server/create-server-from-rest-api-azure.png)
   
  6. Rulla nedan och klistra in följande och ersätt den "borttagna Server platsen", "submissionTimestamp" och "resourceId". För "restorePointInTime" anger du värdet "submissionTimestamp" minus **15 minuter** för att se till att kommandot inte fel uppstår.
+    
     ```json
-        {
-          "location": "Dropped Server Location",  
-          "properties": 
-              {
-                  "restorePointInTime": "submissionTimestamp - 15 minutes",
-                  "createMode": "PointInTimeRestore",
-                  "sourceServerId": "resourceId"
-            }
-        }
+    {
+      "location": "Dropped Server Location",  
+      "properties": 
+      {
+        "restorePointInTime": "submissionTimestamp - 15 minutes",
+        "createMode": "PointInTimeRestore",
+        "sourceServerId": "resourceId"
+      }
+    }
     ```
+
     Om den aktuella tiden till exempel är 2020-11-02T23:59:59.0000000 Z rekommenderar vi minst 15 minuter innan återställnings punkt i tid 2020-11-02T23:44:59.0000000 Z.
+
     > [!Important]
     > Det finns en tids gräns på fem dagar efter att servern släpptes. Efter fem dagar förväntas ett fel eftersom det inte går att hitta säkerhets kopierings filen.
     

@@ -3,12 +3,12 @@ title: Azure Event Hubs – visualisera data avvikelser i real tids händelser
 description: 'Självstudie: visualisera data avvikelser i real tids händelser som skickas till Microsoft Azure Event Hubs'
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 1394f9bedfdfc3715090bdb8a9028d2654a1e4e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b72b82f3959565e6bd0598fef8e21bb64fedb053
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934063"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655687"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Självstudie: Visualisera dataavvikelser i realtidshändelser som skickats till Azure Event Hubs
 
@@ -26,14 +26,12 @@ I den här guiden får du lära dig att:
 
 Du behöver en Azure-prenumeration för att kunna utföra stegen i den här självstudiekursen. Om du inte har ett konto kan du [skapa ett kostnadsfritt konto][] innan du börjar.
 
-## <a name="prerequisites"></a>Krav
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 - Installera [Visual Studio](https://www.visualstudio.com/). 
 - Du behöver ett Power BI-konto för att kunna analysera utdata från ett Stream Analytics-jobb. Du kan [prova Power BI utan kostnad](https://app.powerbi.com/signupredirect?pbi_source=web).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="set-up-resources"></a>Konfigurera resurser
 
@@ -153,8 +151,8 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 Event Hubs [exemplen på GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) innehåller en app för avvikelse detektor som producerar test data åt dig. Appen simulerar användning av kreditkort genom att skriva kreditkortstransaktioner till händelsehubben, och ibland skrivs flera transaktioner för samma kreditkort på flera platser så att de blir märkta som avvikelser. Följ dessa steg om du vill köra den här appen: 
 
 1. Ladda ned [Azure Event Hubs samples](https://github.com/Azure/azure-event-hubs/archive/master.zip) (Azure Event Hubs-exempel) från GitHub och packa upp filen lokalt.
-2. Navigera till mappen **\azure-Event-Hubs-master\samples\DotNet \\ ** -mappen. 
-3. Växla till **Azure. Messaging. EventHubs\AnomalyDetector \\ ** -mappen och dubbelklicka på **AnomalyDetector. SLN** för att öppna lösningen i Visual Studio. 
+2. Navigera till mappen **\azure-Event-Hubs-master\samples\DotNet \\** -mappen. 
+3. Växla till **Azure. Messaging. EventHubs\AnomalyDetector \\** -mappen och dubbelklicka på **AnomalyDetector. SLN** för att öppna lösningen i Visual Studio. 
 
     Om du vill använda den gamla versionen av exemplet som använder det gamla Microsoft. Azure. EventHubs-paketet öppnar du lösningen från mappen **Microsoft. Azure. EventHubs\AnomalyDetector** . 
 3. Öppna Program.cs och ersätt **Event Hubs-anslutningssträngen** med den anslutningssträng som du sparade när du körde skriptet. 
@@ -308,13 +306,13 @@ I Stream Analytics-jobbet klickar du på **Starta**, på **Nu** och sedan på **
 
    ![Skärmbild av hur du anger datauppsättning.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-dashboard-select-dataset.png)
 
-9. Välj **Kort** som visualiseringstyp. Under **fält**klickar du på **Lägg till värde**och väljer sedan `fraudulentuses` .
+9. Välj **Kort** som visualiseringstyp. Under **fält** klickar du på **Lägg till värde** och väljer sedan `fraudulentuses` .
 
    ![Skärmbild av hur du anger visualiseringstyp och fält.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-tile.png)
 
    Klicka på **Nästa**.
 
-10. Ange **Fraudulent uses** (Bedräglig användning) som rubrik och **Sum in last few minutes** (Summa de senaste minuterna) som underrubrik. Klicka på **Applicera**. Panelen sparas på instrumentpanelen.
+10. Ange **Fraudulent uses** (Bedräglig användning) som rubrik och **Sum in last few minutes** (Summa de senaste minuterna) som underrubrik. Klicka på **Använd**. Panelen sparas på instrumentpanelen.
 
     ![Skärmbild av rubrik och underrubrik för panelen på instrumentpanelen.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-tile-details.png)
 
@@ -329,9 +327,9 @@ I Stream Analytics-jobbet klickar du på **Starta**, på **Nu** och sedan på **
 
 12. Välj **Linjediagram** under **Visualiseringstyp**.
 
-13. Under **axel**klickar du på **Lägg till värde**och väljer `windowend` . 
+13. Under **axel** klickar du på **Lägg till värde** och väljer `windowend` . 
 
-14. Under **värden**klickar du på **Lägg till värde** och väljer `fraudulentuses` .
+14. Under **värden** klickar du på **Lägg till värde** och väljer `fraudulentuses` .
 
 15. Under **Tidsfönster att visa** väljer du de senaste fem minuterna. Klicka på **Nästa**.
 

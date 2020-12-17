@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 09/18/2020
-ms.openlocfilehash: eac7999db61bd883dd1148e8b866b811a4f3c851
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: ce04053d7b624bddf8c0d3a6476f26c3462af2c2
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92223050"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652032"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>Aktivera Uppdateringshantering via en Azure Resource Manager-mall
 
@@ -333,11 +333,11 @@ Om du är nybörjare på Azure Automation och Azure Monitor är det viktigt att 
 
     ![Självstudie-Runbooks som skapats med Automation-konto](../media/quickstart-create-automation-account-template/automation-sample-runbooks.png)
 
-4. Välj **länkad arbets yta**i det vänstra fönstret. På sidan **länkad arbets yta** visas Log Analytics arbets ytan du angav tidigare länkad till ditt Automation-konto.
+4. Välj **länkad arbets yta** i det vänstra fönstret. På sidan **länkad arbets yta** visas Log Analytics arbets ytan du angav tidigare länkad till ditt Automation-konto.
 
     ![Automation-konto som är länkat till arbets ytan Log Analytics](../media/quickstart-create-automation-account-template/automation-account-linked-workspace.png)
 
-5. Välj **hantering av uppdateringar**i den vänstra rutan. På sidan **hantering av uppdateringar** visas sidan utvärdering utan någon information på grund av att den inte är aktive rad, och datorerna har inte kon figurer ATS för hantering.
+5. Välj **hantering av uppdateringar** i den vänstra rutan. På sidan **hantering av uppdateringar** visas sidan utvärdering utan någon information på grund av att den inte är aktive rad, och datorerna har inte kon figurer ATS för hantering.
 
     ![Vy över Uppdateringshantering-funktions bedömning](./media/enable-from-template/update-management-assessment-view.png)
 

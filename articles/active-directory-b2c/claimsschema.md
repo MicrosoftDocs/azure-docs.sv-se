@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: aadb75d7257470cf4288c6123263f3d2dfe14d21
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2ff43408cfa6d95dbd5a235a950269c47d57a416
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781727"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654038"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -44,7 +44,7 @@ Elementet **claimType** innehåller följande attribut:
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| Id | Ja | En identifierare som används för anspråks typen. Andra element kan använda den här identifieraren i principen. |
+| Id | Yes | En identifierare som används för anspråks typen. Andra element kan använda den här identifieraren i principen. |
 
 Elementet **claimType** innehåller följande element:
 
@@ -92,8 +92,8 @@ Elementet **datatype** stöder följande värden:
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| Namn | Ja | Namnet på ett giltigt protokoll som stöds av Azure AD B2C. Möjliga värden är: OAuth1, OAuth2, SAML2, OpenIdConnect. |
-| PartnerClaimType | Ja | Namnet på anspråks typen som ska användas. |
+| Namn | Yes | Namnet på ett giltigt protokoll som stöds av Azure AD B2C. Möjliga värden är: OAuth1, OAuth2, SAML2, OpenIdConnect. |
+| PartnerClaimType | Yes | Namnet på anspråks typen som ska användas. |
 
 I följande exempel, när ett identitets Miljös ramverk interagerar med en SAML2-identitetsprovider **eller ett** förlitande parts program, mappas kravet till `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` , med OpenIdConnect och OAuth2, anspråket mappas till `family_name` .
 
@@ -109,7 +109,7 @@ I följande exempel, när ett identitets Miljös ramverk interagerar med en SAML
 </ClaimType>
 ```
 
-Det innebär att JWT-token som utfärdas av Azure AD B2C, genererar i `family_name` stället för efter **surname** namn på claimType-namn.
+Det innebär att JWT-token som utfärdas av Azure AD B2C, genererar i `family_name` stället för efter namn på claimType-namn.
 
 ```json
 {
@@ -184,8 +184,8 @@ I ramverket med identitets upplevelsen återges bara den första bokstaven i e-p
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| Text | Ja | Den visnings sträng som visas för användaren i användar gränssnittet för det här alternativet. |
-|Värde | Ja | Anspråks värde som är associerat med att välja det här alternativet. |
+| Text | Yes | Den visnings sträng som visas för användaren i användar gränssnittet för det här alternativet. |
+|Värde | Yes | Anspråks värde som är associerat med att välja det här alternativet. |
 | SelectByDefault | Nej | Anger om det här alternativet ska vara markerat som standard i användar gränssnittet. Möjliga värden: true eller false. |
 
 I följande exempel konfigureras List rutan för en **stad** med ett standardvärde som är inställt på `New York` :
@@ -213,7 +213,7 @@ List rutan stad med ett standardvärde som är inställt på New York:
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| Reguljärt uttryck | Ja | Det reguljära uttrycket som anspråk av den här typen måste matcha för att vara giltigt. |
+| Reguljärt uttryck | Yes | Det reguljära uttrycket som anspråk av den här typen måste matcha för att vara giltigt. |
 | HelpText | Nej | Ett fel meddelande för användare om den reguljära uttrycks kontrollen Miss lyckas. |
 
 I följande exempel konfigureras ett **e-** postanspråk med text verifiering och hjälp text i reguljärt uttryck:
@@ -223,14 +223,14 @@ I följande exempel konfigureras ett **e-** postanspråk med text verifiering oc
   <DisplayName>Email Address</DisplayName>
   <DataType>string</DataType>
   <DefaultPartnerClaimTypes>
-    <Protocol Name="OpenIdConnect" PartnerClaimType="email" />
+  <Protocol Name="OpenIdConnect" PartnerClaimType="email" />
   </DefaultPartnerClaimTypes>
   <UserHelpText>Email address that can be used to contact you.</UserHelpText>
   <UserInputType>TextBox</UserInputType>
   <Restriction>
     <Pattern RegularExpression="^[a-zA-Z0-9.+!#$%&amp;'^_`{}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" HelpText="Please enter a valid email address." />
-    </Restriction>
- </ClaimType>
+  </Restriction>
+</ClaimType>
 ```
 
 Med Identity Experience Framework återges e-postadressen med e-postverifiering:

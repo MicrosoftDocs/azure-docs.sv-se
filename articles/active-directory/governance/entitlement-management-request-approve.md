@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfbd5e6f190e0600c31aa17e9b1a75f08e213df4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fddb3b171e5a26273cb2e0045f11e3a4dbb48c5f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973583"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655109"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Godkänn eller neka åtkomst begär anden i hantering av Azure AD-rättigheter
 
@@ -57,11 +57,11 @@ Om du inte har e-postmeddelandet kan du hitta åtkomst förfrågningar som vänt
 
 1. Klicka på **information om begäran**.
 
-     ![Min åtkomst Portal – åtkomstbegäran – Klicka på information om begäran](./media/entitlement-management-request-approve/requestor-information-request-details.png)
+    ![Min åtkomst Portal – åtkomstbegäran – Klicka på information om begäran](./media/entitlement-management-request-approve/requestor-information-request-details.png)
 
 1. Informationen från beställaren visas längst ned i panelen.
 
-     ![Skärm bild som visar information om begäran](./media/entitlement-management-request-approve/requestor-information-requestor-answers.png)
+    ![Skärm bild som visar information om begäran](./media/entitlement-management-request-approve/requestor-information-requestor-answers.png)
 
 1. Utifrån den information som begärren tillhandahöll kan du sedan godkänna eller avvisa begäran. Se stegen i godkänna eller neka begäran om vägledning.
 

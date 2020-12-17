@@ -7,12 +7,12 @@ author: DavidCBerry13
 ms.author: daberry
 ms.topic: article
 ms.date: 12/03/2019
-ms.openlocfilehash: 54828dded5196c86946d99a9cd8cec7a42533661
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b23c92ec70b80a6cd08fc42a05ffec1e5b43b31
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83117571"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656775"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Hantera stora meddelanden med segment i Azure Logic Apps
 
@@ -41,7 +41,7 @@ Tjänster som kommunicerar med Logic Apps kan ha egna storleks gränser för med
 För kopplingar som stöder segment, är det underliggande segment protokollet osynligt för slutanvändare. Men alla kopplingar stöder inte segment koppling, så dessa kopplingar genererar körnings fel när inkommande meddelanden överskrider kopplingens storleks gränser.
 
 > [!NOTE]
-> För åtgärder som använder segment kan du inte skicka utlösaren eller använda uttryck som `@triggerBody()?['Content']` i dessa åtgärder. I stället kan du prova att använda [åtgärden **Skriv** ](../logic-apps/logic-apps-perform-data-operations.md#compose-action) eller [skapa en variabel](../logic-apps/logic-apps-create-variables-store-values.md) för att hantera innehållet i text-eller JSON-filinnehållet. Om utlösaren innehåller andra innehålls typer, till exempel mediefiler, måste du utföra andra åtgärder för att hantera det innehållet.
+> För åtgärder som använder segment kan du inte skicka utlösaren eller använda uttryck som `@triggerBody()?['Content']` i dessa åtgärder. I stället kan du prova att använda [åtgärden **Skriv**](../logic-apps/logic-apps-perform-data-operations.md#compose-action) eller [skapa en variabel](../logic-apps/logic-apps-create-variables-store-values.md) för att hantera innehållet i text-eller JSON-filinnehållet. Om utlösaren innehåller andra innehålls typer, till exempel mediefiler, måste du utföra andra åtgärder för att hantera det innehållet.
 
 <a name="set-up-chunking"></a>
 
@@ -57,7 +57,7 @@ Om en HTTP-åtgärd inte redan aktiverar segment, måste du också konfigurera s
 
    ![Öppna menyn Inställningar på åtgärden.](./media/logic-apps-handle-large-messages/http-settings.png)
 
-2. Under **innehålls överföring**anger du **Tillåt segment** till **på**.
+2. Under **innehålls överföring** anger du **Tillåt segment** till **på**.
 
    ![Aktivera segment](./media/logic-apps-handle-large-messages/set-up-chunking.png)
 
@@ -116,15 +116,15 @@ De här stegen beskriver den detaljerade processen Logic Apps använder för att
    | Fält för Logic Apps begär ande huvud | Värde | Typ | Beskrivning |
    |---------------------------------|-------|------|-------------|
    | **x-MS-Transfer-Mode** | segment vis | Sträng | Anger att innehållet har laddats upp i segment |
-   | **x-MS-Content-Length** | <*innehålls längd*> | Heltal | Hela innehålls storleken i byte innan segmentning |
+   | **x-MS-Content-Length** | <*innehålls längd*> | Integer | Hela innehålls storleken i byte innan segmentning |
    ||||
 
 2. Slut punkten svarar med status koden 200 och denna valfria information:
 
-   | Rubrik fält för slut punkts svar | Typ | Krävs | Beskrivning |
+   | Rubrik fält för slut punkts svar | Typ | Obligatorisk | Beskrivning |
    |--------------------------------|------|----------|-------------|
-   | **x-MS-segment-storlek** | Heltal | Inga | Den föreslagna segment storleken i byte |
-   | **Plats** | Sträng | Ja | Den URL-plats dit meddelanden om HTTP-KORRIGERINGarna ska skickas |
+   | **x-MS-segment-storlek** | Integer | Nej | Den föreslagna segment storleken i byte |
+   | **Plats** | Sträng | Yes | Den URL-plats dit meddelanden om HTTP-KORRIGERINGarna ska skickas |
    ||||
 
 3. Din Logi Kap par skapar och skickar uppföljning av HTTP-meddelanden – var och en med den här informationen:
@@ -142,10 +142,10 @@ De här stegen beskriver den detaljerade processen Logic Apps använder för att
 
 4. Efter varje PATCH-begäran bekräftar slut punkten kvittot för varje segment genom att svara med status koden "200" och följande svarshuvuden:
 
-   | Rubrik fält för slut punkts svar | Typ | Krävs | Beskrivning |
+   | Rubrik fält för slut punkts svar | Typ | Obligatorisk | Beskrivning |
    |--------------------------------|------|----------|-------------|
-   | **Intervall** | Sträng | Ja | Byte-intervallet för innehåll som har tagits emot av slut punkten, till exempel: "byte = 0-1023" |   
-   | **x-MS-segment-storlek** | Heltal | Inga | Den föreslagna segment storleken i byte |
+   | **Intervall** | Sträng | Yes | Byte-intervallet för innehåll som har tagits emot av slut punkten, till exempel: "byte = 0-1023" |   
+   | **x-MS-segment-storlek** | Integer | Nej | Den föreslagna segment storleken i byte |
    ||||
 
 Denna åtgärds definition visar till exempel en HTTP POST-begäran om att överföra segment innehåll till en slut punkt. I åtgärdens `runTimeConfiguration` egenskap `contentTransfer` anges egenskapen `transferMode` till `chunked` :

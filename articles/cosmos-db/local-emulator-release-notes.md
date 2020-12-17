@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: 5d105ad4c2aff03dae52b340037e4c193bf82ca1
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 92fdef48556a3306ee5e3f10e07ff609a8fc4be4
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608443"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656231"
 ---
 # <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB emulator – viktig information och information om hämtning
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -23,7 +23,7 @@ Den här artikeln visar viktig information om Azure Cosmos DB emulator med en li
 | | |
 |---------|---------|
 |**Ladda ned MSI**|[Microsoft Download Center](https://aka.ms/cosmosdb-emulator)|
-|**Komma igång**|[Utveckla lokalt med Azure Cosmos-emulatorn](local-emulator.md)|
+|**Komma igång**|[Utveckla lokalt med Azure Cosmos DB emulator](local-emulator.md)|
 
 ## <a name="release-notes"></a>Viktig information
 
@@ -83,7 +83,7 @@ Den här versionen lägger till två nya start alternativ för Cosmos-emulator:
 
 ### <a name="246"></a>2.4.6
 
-- Den här versionen innehåller paritet med funktionerna i Azure Cosmos-tjänsten från och med den 2019 juli, med undantag som anges i [utveckla lokalt med Azure Cosmos-emulatorn](local-emulator.md). Den åtgärdar också flera buggar som är relaterade till emulatorn stängs av när de anropas via kommando raden och interna IP-adresser åsidosätter för SDK-klienter som använder anslutning med direkt läge.
+- Den här versionen ger paritet med funktionerna i Azure Cosmos-tjänsten från och med den 2019 juli, med undantag som anges i [utveckla lokalt med Azure Cosmos DB emulator](local-emulator.md). Den åtgärdar också flera buggar som är relaterade till emulatorn stängs av när de anropas via kommando raden och interna IP-adresser åsidosätter för SDK-klienter som använder anslutning med direkt läge.
 
 ### <a name="243"></a>2.4.3
 

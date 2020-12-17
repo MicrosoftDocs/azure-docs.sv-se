@@ -2,13 +2,13 @@
 title: Översikt över mallar
 description: Beskriver fördelarna med Azure Resource Manager mallar (ARM-mallar) för att distribuera resurser.
 ms.topic: conceptual
-ms.date: 12/01/2020
-ms.openlocfilehash: da091d09f6d242d4b98903a8dcd76fe305e578b8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 12/17/2020
+ms.openlocfilehash: c4995791b784351219458c546442d082e2396315
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498004"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657319"
 ---
 # <a name="what-are-arm-templates"></a>Vad är ARM-mallar?
 
@@ -129,6 +129,7 @@ Mer information om kapslade mallar finns i [Använda länkade mallar med Azure R
 ## <a name="next-steps"></a>Nästa steg
 
 * En stegvis själv studie kurs som vägleder dig genom processen för att skapa en mall finns i [Självstudier: skapa och distribuera din första arm-mall](template-tutorial-create-first-template.md).
+* Om du vill lära dig mer om ARM-mallar via en guidad uppsättning moduler på Microsoft Learn, se [distribuera och hantera resurser i Azure med hjälp av arm-mallar](/learn/paths/deploy-manage-resource-manager-templates/).
 * Information om egenskaperna i mallfiler finns i [förstå strukturen och syntaxen för ARM-mallar](template-syntax.md).
 * Information om hur du exporterar mallar finns i [snabb start: skapa och distribuera arm-mallar med hjälp av Azure Portal](quickstart-create-templates-use-the-portal.md).
 * Svar på vanliga frågor finns [vanliga frågor om ARM-mallar](frequently-asked-questions.md).

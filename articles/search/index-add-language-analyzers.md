@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: e763dbd15ea443ad3c8f6295b37999c748db7e6c
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: ca5f237585f74225a04091b5694dbfad12864332
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422339"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656044"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Lägga till språk analys verktyg i sträng fält i ett Azure Kognitiv sökning-index
 
@@ -68,64 +68,64 @@ Mer information om index egenskaper finns i [skapa index &#40;Azure Kognitiv sö
 ## <a name="language-analyzer-list"></a>Språk analys lista 
  Nedan visas en lista över språk som stöds tillsammans med Lucene och Microsoft Analyzer-namn.  
 
-|Språk|Microsoft Analyzer-namn|Namn på Lucene Analyzer|  
-|--------------|-----------------------------|--------------------------|  
-|Arabiska|ar. Microsoft|ar. Lucene|  
-|Armeniska||hy. Lucene|  
-|Bangla|BN. Microsoft||  
-|Baskiska||EU. Lucene|  
-|Bulgariska|BG. Microsoft|BG. Lucene|  
-|Katalanska|ca. Microsoft|ca. Lucene|  
-|Kinesiska, förenklad|zh-hans. Microsoft|zh-hans. Lucene|  
-|Kinesiska, traditionell|zh-Hant. Microsoft|zh-Hant. Lucene|  
-|Kroatiska|HR. Microsoft||  
-|Tjeckiska|CS. Microsoft|CS. Lucene|  
-|Danska|da. Microsoft|da. Lucene|  
-|Nederländska|nl. Microsoft|nl. Lucene|  
-|Engelska|en. Microsoft|en. Lucene|  
-|Estniska|et. Microsoft||  
-|Finska|Fi. Microsoft|Fi. Lucene|  
-|Franska|fr. Microsoft|fr. Lucene|  
-|Galiciska||GL. Lucene|  
-|Tyska|de. Microsoft|de. Lucene|  
-|Grekiska|El. Microsoft|El. Lucene|  
-|Gujarati|gu. Microsoft||  
-|Hebreiska|he. Microsoft||  
-|Hindi|Hej. Microsoft|Hej. Lucene|  
-|Ungerska|HU. Microsoft|HU. Lucene|  
-|Isländska|är. Microsoft||  
-|Indonesiska (Bahasa)|ID. Microsoft|ID. Lucene|  
-|Iriska||ga. Lucene|  
-|Italienska|den. Microsoft|IT. Lucene|  
-|Japanska|Ja. Microsoft|Ja. Lucene|  
-|Kannada|KN. Microsoft||  
-|Koreanska|Ko. Microsoft|Ko. Lucene|  
-|Lettiska|LV. Microsoft|LV. Lucene|  
-|Litauiska|lt. Microsoft||  
-|Malayalam|ml. Microsoft||  
-|Malajiska (latinsk)|MS. Microsoft||  
-|Marathi|Mr. Microsoft||  
-|Norska|Obs! Microsoft|Nej. Lucene|  
-|Persiska||FA. Lucene|  
-|Polska|pl. Microsoft|pl. Lucene|  
-|Portugisiska (Brasilien)|pt-br. Microsoft|pt-br. Lucene|  
-|Portugisiska (Portugal)|pt-pt. Microsoft|pt-pt. Lucene|  
-|Punjabi|PA. Microsoft||  
-|Rumänska|ro. Microsoft|ro. Lucene|  
-|Ryska|ru. Microsoft|ru. Lucene|  
-|Serbiska (kyrillisk)|SR-kyrilliska. Microsoft||  
-|Serbiska (latinsk) (Serbien)|SR-Latin. Microsoft||  
-|Slovakiska|sk. Microsoft||  
-|Slovenska|SL. Microsoft||  
-|Spanska|ES. Microsoft|ES. Lucene|  
-|Svenska|sa. Microsoft|sa. Lucene|  
-|Tamilska|ta. Microsoft||  
-|Telugu|te. Microsoft||  
-|Thailändska|Microsoft|th. Lucene|  
-|Turkiska|TR. Microsoft|TR. Lucene|  
-|Ukrainska|Storbritannien. Microsoft||  
-|Urdu|ditt. Microsoft||  
-|Vietnamesiska|Vi. Microsoft||  
+| Språk | Microsoft Analyzer-namn | Namn på Lucene Analyzer |  |
+|--|--|--|--|
+| Arabiska | ar. Microsoft | ar. Lucene |  |
+| Armeniska |  | hy. Lucene |  |
+| Bangla | BN. Microsoft |  |  |
+| Baskiska |  | EU. Lucene |  |
+| Bulgariska | BG. Microsoft | BG. Lucene |  |
+| Katalanska | ca. Microsoft | ca. Lucene |  |
+| Kinesiska, förenklad | zh-hans. Microsoft | zh-hans. Lucene |  |
+| Kinesiska, traditionell | zh-Hant. Microsoft | zh-Hant. Lucene |  |
+| Kroatiska | HR. Microsoft |  |  |
+| Tjeckiska | CS. Microsoft | CS. Lucene |  |
+| Danska | da. Microsoft | da. Lucene |  |
+| Nederländska | nl. Microsoft | nl. Lucene |  |
+| Engelska | en. Microsoft | en. Lucene |  |
+| Estniska | et. Microsoft |  |  |
+| Finska | Fi. Microsoft | Fi. Lucene |  |
+| Franska | fr. Microsoft | fr. Lucene |  |
+| Galiciska |  | GL. Lucene |  |
+| Tyska | de. Microsoft | de. Lucene |  |
+| Grekiska | El. Microsoft | El. Lucene |  |
+| Gujarati | gu. Microsoft |  |  |
+| Hebreiska | he. Microsoft |  |  |
+| Hindi | Hej. Microsoft | Hej. Lucene |  |
+| Ungerska | HU. Microsoft | HU. Lucene |  |
+| Isländska | är. Microsoft |  |  |
+| Indonesiska (Bahasa) | ID. Microsoft | ID. Lucene |  |
+| Iriska |  | ga. Lucene |  |
+| Italienska | den. Microsoft | IT. Lucene |  |
+| Japanska | Ja. Microsoft | Ja. Lucene |  |
+| Kannada | KN. Microsoft |  |  |
+| Koreanska | Ko. Microsoft | Ko. Lucene |  |
+| Lettiska | LV. Microsoft | LV. Lucene |  |
+| Litauiska | lt. Microsoft |  |  |
+| Malayalam | ml. Microsoft |  |  |
+| Malajiska (latinsk) | MS. Microsoft |  |  |
+| Marathi | Mr. Microsoft |  |  |
+| Norska | Obs! Microsoft | Nej. Lucene |  |
+| Persiska |  | FA. Lucene |  |
+| Polska | pl. Microsoft | pl. Lucene |  |
+| Portugisiska (Brasilien) | pt-br. Microsoft | pt-br. Lucene |  |
+| Portugisiska (Portugal) | pt-pt. Microsoft | pt-pt. Lucene |  |
+| Punjabi | PA. Microsoft |  |  |
+| Rumänska | ro. Microsoft | ro. Lucene |  |
+| Ryska | ru. Microsoft | ru. Lucene |  |
+| Serbiska (kyrillisk) | SR-kyrilliska. Microsoft |  |  |
+| Serbiska (latinsk) (Serbien) | SR-Latin. Microsoft |  |  |
+| Slovakiska | sk. Microsoft |  |  |
+| Slovenska | SL. Microsoft |  |  |
+| Spanska | ES. Microsoft | ES. Lucene |  |
+| Svenska | sa. Microsoft | sa. Lucene |  |
+| Tamilska | ta. Microsoft |  |  |
+| Telugu | te. Microsoft |  |  |
+| Thailändska | Microsoft | th. Lucene |  |
+| Turkiska | TR. Microsoft | TR. Lucene |  |
+| Ukrainska | Storbritannien. Microsoft |  |  |
+| Urdu | ditt. Microsoft |  |  |
+| Vietnamesiska | Vi. Microsoft |  |  |
 
  Alla analyser med namn som är kommenterade med **Lucene** drivs av [Apache Lucenes språk analys verktyg](https://lucene.apache.org/core/6_6_1/core/overview-summary.html ).
 

@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 568243c6fecf26510f6e9988907d1ccad103cdc2
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: c6bac44e6f7212344463665840f180732970c3d4
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97618962"
+ms.locfileid: "97657166"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Anslut Azure till ITSM-verktyg med hjälp av Anslutningsprogram för hantering av IT-tjänster (ITSM)
 
@@ -158,7 +158,7 @@ ServiceDeskWorkItemType_s = "incident"
 
 - ServiceDeskConnectionName
 - Service Desk-ID
-- Stat
+- Tillstånd
 - Angelägenhetsgrad
 - Påverkan
 - Prioritet
@@ -191,7 +191,7 @@ ServiceDeskWorkItemType_s = "ändringsbegäran"
 - Rubrik
 - Typ
 - Kategori
-- Stat
+- Tillstånd
 - Eskalering
 - Konflikt status
 - Angelägenhetsgrad
@@ -215,7 +215,7 @@ ServiceDeskWorkItemType_s = "ändringsbegäran"
 | Log Analytics fält | ServiceNow-fält |
 |:--- |:--- |
 | ServiceDeskId_s| Antal |
-| IncidentState_s | Stat |
+| IncidentState_s | Tillstånd |
 | Urgency_s |Angelägenhetsgrad |
 | Impact_s |Påverkan|
 | Priority_s | Prioritet |
@@ -243,7 +243,7 @@ ServiceDeskWorkItemType_s = "ändringsbegäran"
 | Title_s|  Kort beskrivning |
 | Type_s|  Typ |
 | Category_s|  Kategori |
-| CRState_s|  Stat|
+| CRState_s|  Tillstånd|
 | Urgency_s|  Angelägenhetsgrad |
 | Priority_s| Prioritet|
 | Risk_s| Risk|
@@ -259,4 +259,6 @@ ServiceDeskWorkItemType_s = "ändringsbegäran"
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Lägg till ITSM produkter/tjänster i Anslutningsprogram för hantering av IT-tjänster (ITSM)](./itsmc-connections.md)
+[Översikt över ITSM-anslutningsprogram](./itsmc-overview.md) 
+ [Lägg till ITSM produkter/tjänster i anslutningsprogram för hantering av IT-tjänster (ITSM)](./itsmc-connections.md) 
+ [Felsöka problem i ITSM-anslutningsprogram](./itsmc-resync-servicenow.md)

@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 11/25/2020
 ms.subservice: alerts
-ms.openlocfilehash: ef8a07f0360338aeb659942967169b0605b08e51
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: fc54d2ba3ca4e7a150a1602c671b99f58197bc44
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507225"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657302"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Felsöka problem i Azure Monitor-måttaviseringar 
 
@@ -72,7 +72,7 @@ Se till att du har installerat den agent som krävs för att samla in data för 
 - [För virtuella Linux-datorer](./collect-custom-metrics-linux-telegraf.md)
 
 Mer information om att samla in data från gäst operativ systemet på en virtuell dator finns [här](../insights/monitor-vm-azure.md#guest-operating-system).
-    
+
 > [!NOTE] 
 > Om du har konfigurerat gäst mått som ska skickas till en Log Analytics arbets yta visas måtten under arbets ytan Log Analytics arbets yta och kommer att börja visa **data när** du har skapat en varnings regel som övervakar dem. Det gör du genom att följa stegen för att [konfigurera en måttavisering för loggar](./alerts-metric-logs.md#configuring-metric-alert-for-logs).
 
@@ -252,7 +252,7 @@ Tänk på följande begränsningar när du använder dimensioner i en varnings r
 - Du kan bara välja ett värde per dimension i varje villkor.
 - Du kan inte använda alternativet "Välj alla aktuella och framtida värden" (Välj \* ).
 - När mått som har kon figurer ATS på olika villkor stöder samma dimension måste ett konfigurerat dimensions värde uttryckligen anges på samma sätt för alla dessa mått (i de relevanta villkoren).
-Till exempel:
+Exempel:
     - Överväg en regel för mått varningar som definieras på ett lagrings konto och övervakar två villkor:
         * Totalt antal **transaktioner** > 5
         * Genomsnittlig **SuccessE2ELatency** > 250 MS

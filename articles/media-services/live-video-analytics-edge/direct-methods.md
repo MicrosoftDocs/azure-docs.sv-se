@@ -3,16 +3,16 @@ title: Använd direkta metoder i real tids video analys på IoT Edge – Azure
 description: Live video analys på IoT Edge visar flera direkta metoder. De direkta metoderna baseras på konventionerna som beskrivs i det här avsnittet.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: ed7cec7b8513044c2bf9b24600b8d9f42a485aae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b5c16dc72beed4ec757e48461a2fc194c113f8d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87091835"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656248"
 ---
 # <a name="direct-methods"></a>Direkta metoder
 
-Live video analys på IoT Edge visar flera direkta metoder som kan anropas från IoT Hub. Direkta metoder representerar en förfrågan-svar-interaktion med en enhet som liknar ett HTTP-anrop i som de lyckas eller Miss lyckas omedelbart (efter en användardefinierad tids gräns). Den här metoden är användbar för scenarier där omedelbara åtgärder är olika beroende på om enheten kunde svara. Mer information finns i [förstå och anropa direkt metoder från IoT Hub](../../iot-hub/iot-hub-devguide-direct-methods.md).
+Live video analys på IoT Edge visar flera direkta metoder som kan anropas från IoT Hub. Direkta metoder representerar en förfrågan-svar-interaktion med en enhet som liknar ett HTTP-anrop i som de lyckas eller Miss lyckas omedelbart (efter en användardefinierad tids gräns). Den här metoden passar bra i scenarier där vad som ska utföras beror på om enheten svarar eller inte. Mer information finns i [förstå och anropa direkt metoder från IoT Hub](../../iot-hub/iot-hub-devguide-direct-methods.md).
 
 I det här avsnittet beskrivs dessa metoder och konventioner.
 
@@ -140,12 +140,12 @@ Den här direkta metoden hämtar en enda diagram sto pol Ogin.
 
 #### <a name="status-codes"></a>Statuskoder
 
-|Condition (Väderförhållanden)  |Statuskod    |Detaljerad felkod|
-|---|---|---|
-|Entitet hittades|  200 |E.t.
-|Allmänna användar fel    |400 intervall  ||
-|Entiteten hittades inte   |404        ||
-|Allmänna Server fel| 500 intervall       ||
+| Villkor | Statuskod | Detaljerad felkod |
+|--|--|--|
+| Entitet hittades | 200 | Ej tillämpligt |
+| Allmänna användar fel | 400 intervall |  |
+| Entiteten hittades inte | 404 |  |
+| Allmänna Server fel | 500 intervall |  |
 
 ### <a name="graphtopologyset"></a>GraphTopologySet
 
@@ -191,10 +191,10 @@ Viktiga aspekter:
 
 #### <a name="status-codes"></a>Statuskoder
 
-|Condition (Väderförhållanden)  |Statuskod    |Detaljerad felkod|
+|Villkor  |Statuskod    |Detaljerad felkod|
 |---|---|---|
-Den befintliga entiteten har uppdaterats |200|   E.t.|
-En ny entitet har skapats  |201|   E.t.|
+Den befintliga entiteten har uppdaterats |200|   Ej tillämpligt|
+En ny entitet har skapats  |201|   Ej tillämpligt|
 Allmänna användar fel |400 intervall  ||
 Diagram verifierings fel |400    |GraphValidationError|
 Modul validerings fel|   400 |ModuleValidationError|
@@ -227,13 +227,13 @@ Tar bort en enskild diagram sto pol Ogin.
 
 #### <a name="status-codes"></a>Statuskoder
 
-|Condition (Väderförhållanden)  |Statuskod    |Detaljerad felkod|
-|---|---|---|
-|Entitet borttagen|    200|    E.t.|
-|Entiteten hittades inte|  204|    E.t.|
-|Allmänna användar fel|   400 intervall   ||
-|Diagram sto pol Ogin refereras till av en eller flera diagram instanser| 409 |GraphTopologyInUse|
-|Allmänna Server fel| 500 intervall   ||
+| Villkor | Statuskod | Detaljerad felkod |
+|--|--|--|
+| Entitet borttagen | 200 | Ej tillämpligt |
+| Entiteten hittades inte | 204 | Ej tillämpligt |
+| Allmänna användar fel | 400 intervall |  |
+| Diagram sto pol Ogin refereras till av en eller flera diagram instanser | 409 | GraphTopologyInUse |
+| Allmänna Server fel | 500 intervall |  |
 
 ### <a name="graphtopologylist"></a>GraphTopologyList
 
@@ -278,18 +278,18 @@ Hämtar en lista över alla Graph-topologier som matchar filter kriterierna.
 
 #### <a name="filter-support"></a>Filter stöd
 
-|Åtgärd      |Fält   |Operatorer|
+|Åtgärd |Fält    |Operatorer|
 |---|---|---|
 |$orderby|name  |stigande|
 
 
 #### <a name="status-codes"></a>Statuskoder
 
-|Condition (Väderförhållanden)  |Statuskod    |Detaljerad felkod|
-|---|---|---|
-|Klart|   200 |E.t.|
-|Allmänna användar fel|   400 intervall   ||
-|Allmänna Server fel| 500 intervall   ||
+| Villkor | Statuskod | Detaljerad felkod |
+|--|--|--|
+| Success | 200 | Ej tillämpligt |
+| Allmänna användar fel | 400 intervall |  |
+| Allmänna Server fel | 500 intervall |  |
 
 ### <a name="graphinstanceget"></a>GraphInstanceGet
 
@@ -323,12 +323,12 @@ Hämtar en enstaka graf-förekomst:
 
 #### <a name="status-codes"></a>Statuskoder
 
-|Condition (Väderförhållanden)  |Statuskod    |Detaljerad felkod|
-|---|---|---|
-|Entitet hittades   |200|   E.t.|
-|Allmänna användar fel|   400 intervall   ||
-|Entiteten hittades inte|  404 ||
-|Allmänna Server fel| 500 intervall   ||
+| Villkor | Statuskod | Detaljerad felkod |
+|--|--|--|
+| Entitet hittades | 200 | Ej tillämpligt |
+| Allmänna användar fel | 400 intervall |  |
+| Entiteten hittades inte | 404 |  |
+| Allmänna Server fel | 500 intervall |  |
 
 ### <a name="graphinstanceset"></a>GraphInstanceSet
 
@@ -373,15 +373,15 @@ Viktiga aspekter:
 
 #### <a name="status-codes"></a>Statuskoder
 
-|Condition (Väderförhållanden)  |Statuskod    |Detaljerad felkod|
-|---|---|---|
-|Den befintliga entiteten har uppdaterats    |200    |E.t.|
-|En ny entitet har skapats|    201 |E.t.|
-|Allmänna användar fel|   400 intervall   ||
-|Diagram verifierings fel    |400|   GraphValidationError|
-|Modul validerings fel|  400 |ModuleValidationError|
-|Resurs validerings fel |409    |ResourceValidationError|
-|Allmänna Server fel  |500 intervall||    
+| Villkor | Statuskod | Detaljerad felkod |
+|--|--|--|
+| Den befintliga entiteten har uppdaterats | 200 | Ej tillämpligt |
+| En ny entitet har skapats | 201 | Ej tillämpligt |
+| Allmänna användar fel | 400 intervall |  |
+| Diagram verifierings fel | 400 | GraphValidationError |
+| Modul validerings fel | 400 | ModuleValidationError |
+| Resurs validerings fel | 409 | ResourceValidationError |
+| Allmänna Server fel | 500 intervall |  |  |
 
 ### <a name="graphinstancedelete"></a>GraphInstanceDelete
 
@@ -414,13 +414,13 @@ Viktiga aspekter:
 
 #### <a name="status-codes"></a>Statuskoder
 
-|Condition (Väderförhållanden)  |Statuskod    |Detaljerad felkod|
-|---|---|---|
-|Grafen har tagits bort|    200|    E.t.|
-|Grafen hittades inte|   204|    E.t.|
-|Allmänna användar fel    |400 intervall  ||
-|Grafen är inte i läget "stoppad"    |409    |OperationNotAllowedInState|
-|Allmänna Server fel| 500 intervall   ||
+| Villkor | Statuskod | Detaljerad felkod |
+|--|--|--|
+| Grafen har tagits bort | 200 | Ej tillämpligt |
+| Grafen hittades inte | 204 | Ej tillämpligt |
+| Allmänna användar fel | 400 intervall |  |
+| Grafen är inte i läget "stoppad" | 409 | OperationNotAllowedInState |
+| Allmänna Server fel | 500 intervall |  |
 
 ### <a name="graphinstancelist"></a>GraphInstanceList
 
@@ -472,11 +472,11 @@ Hämtar en lista över alla grafer-instanser som matchar filter kriterierna.
 
 #### <a name="status-codes"></a>Statuskoder
 
-|Condition (Väderförhållanden)  |Statuskod    |Detaljerad felkod|
-|---|---|---|
-|Klart    |200    |E.t.|
-|Allmänna användar fel|   400 intervall   ||
-|Allmänna Server fel| 500 intervall   ||
+| Villkor | Statuskod | Detaljerad felkod |
+|--|--|--|
+| Success | 200 | Ej tillämpligt |
+| Allmänna användar fel | 400 intervall |  |
+| Allmänna Server fel | 500 intervall |  |
 
 ### <a name="graphinstanceactivate"></a>GraphInstanceActivate
 
@@ -516,15 +516,15 @@ Viktiga aspekter
 
 #### <a name="status-codes"></a>Statuskoder
 
-|Condition (Väderförhållanden)  |Statuskod    |Detaljerad felkod|
-|---|---|---|
-|Grafen har Aktiver ATS   |200    |E.t.|
-|En ny entitet har skapats |201|   E.t.|
-|Allmänna användar fel    |400 intervall  ||
-|Modul validerings fel   |400|   ModuleValidationError|
-|Resurs validerings fel|    409|    ResourceValidationError|
-|Diagrammet är i inaktive rings läge |409    |OperationNotAllowedInState|
-|Allmänna Server fel| 500 intervall   ||
+| Villkor | Statuskod | Detaljerad felkod |
+|--|--|--|
+| Grafen har Aktiver ATS | 200 | Ej tillämpligt |
+| En ny entitet har skapats | 201 | Ej tillämpligt |
+| Allmänna användar fel | 400 intervall |  |
+| Modul validerings fel | 400 | ModuleValidationError |
+| Resurs validerings fel | 409 | ResourceValidationError |
+| Diagrammet är i inaktive rings läge | 409 | OperationNotAllowedInState |
+| Allmänna Server fel | 500 intervall |  |
 
 ### <a name="graphinstancedeactivate"></a>GraphInstanceDeactivate
 
@@ -565,13 +565,13 @@ Viktiga aspekter:
 }
 ```
 
-|Condition (Väderförhållanden)  |Statuskod    |Detaljerad felkod|
-|---|---|---|
-|Grafen har Aktiver ATS   |200|   E.t.|
-|En ny entitet har skapats |201|   E.t.|
-|Allmänna användar fel    |400 intervall  ||
-|Grafen är i aktiverings läge   |409|   OperationNotAllowedInState|
-|Allmänna Server fel  |500 intervall  ||
+| Villkor | Statuskod | Detaljerad felkod |
+|--|--|--|
+| Grafen har Aktiver ATS | 200 | Ej tillämpligt |
+| En ny entitet har skapats | 201 | Ej tillämpligt |
+| Allmänna användar fel | 400 intervall |  |
+| Grafen är i aktiverings läge | 409 | OperationNotAllowedInState |
+| Allmänna Server fel | 500 intervall |  |
 
 ## <a name="next-steps"></a>Nästa steg
 

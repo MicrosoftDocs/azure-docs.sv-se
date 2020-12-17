@@ -6,19 +6,19 @@ author: brahmnes
 ms.author: bfung
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: c1cc9893a309dcdf7ac575494d164052bb0c617c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa6577a6ae7f7ca1d938bbbb062557684076c78d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87325686"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656457"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>Aktivera Snapshot Debugger för .NET-appar i Azure Service Fabric, moln tjänster och Virtual Machines
 
 Om ditt ASP.NET-eller ASP.NET Core-program körs i Azure App Service, rekommenderar vi starkt att du [aktiverar Snapshot debugger via Application Insights Portal sidan](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json). Men om ditt program kräver en anpassad Snapshot Debugger-konfiguration eller en för hands version av .NET Core, bör den här instruktionen följas ***utöver*** instruktionerna för att [Aktivera via Application Insights Portal sidan](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json).
 
 Om ditt program körs i Azure Service Fabric, moln tjänst, Virtual Machines eller lokala datorer, bör du använda följande instruktioner. 
-    
+
 ## <a name="configure-snapshot-collection-for-aspnet-applications"></a>Konfigurera ögonblicks bild samling för ASP.NET-program
 
 1. [Aktivera Application Insights i din](./asp-net.md)webbapp, om du inte har gjort det än.
@@ -91,19 +91,19 @@ Om ditt program körs i Azure Service Fabric, moln tjänst, Virtual Machines ell
        using Microsoft.ApplicationInsights.AspNetCore;
        using Microsoft.ApplicationInsights.Extensibility;
        ```
-    
+
        Lägg till följande `SnapshotCollectorTelemetryProcessorFactory` klass i `Startup` klassen.
-    
+
        ```csharp
        class Startup
        {
            private class SnapshotCollectorTelemetryProcessorFactory : ITelemetryProcessorFactory
            {
                private readonly IServiceProvider _serviceProvider;
-    
+
                public SnapshotCollectorTelemetryProcessorFactory(IServiceProvider serviceProvider) =>
                    _serviceProvider = serviceProvider;
-    
+
                public ITelemetryProcessor Create(ITelemetryProcessor next)
                {
                    var snapshotConfigurationOptions = _serviceProvider.GetService<IOptions<SnapshotCollectorConfiguration>>();
@@ -113,17 +113,17 @@ Om ditt program körs i Azure Service Fabric, moln tjänst, Virtual Machines ell
            ...
         ```
         Lägg till `SnapshotCollectorConfiguration` `SnapshotCollectorTelemetryProcessorFactory` tjänsterna och i Start pipelinen:
-    
+
         ```csharp
            // This method gets called by the runtime. Use this method to add services to the container.
            public void ConfigureServices(IServiceCollection services)
            {
                // Configure SnapshotCollector from application settings
                services.Configure<SnapshotCollectorConfiguration>(Configuration.GetSection(nameof(SnapshotCollectorConfiguration)));
-    
+
                // Add SnapshotCollector telemetry processor.
                services.AddSingleton<ITelemetryProcessorFactory>(sp => new SnapshotCollectorTelemetryProcessorFactory(sp));
-    
+
                // TODO: Add other services your application needs here.
            }
        }

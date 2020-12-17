@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 12/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: 93759cf239a2e7ef79c719c83299740ea3722130
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: aaaeb23ef24f0d8a0fa4b38139fed57cda6fa63d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614565"
+ms.locfileid: "97657047"
 ---
 # <a name="it-service-management-connector-overview"></a>Översikt över Anslutningsprogram för hantering av IT-tjänster (ITSM)
 
@@ -43,11 +43,13 @@ Information om juridiska villkor och sekretess policyn finns i [Microsofts sekre
 
 Du kan börja använda ITSMC genom att utföra följande steg:
 
-1. [Anslut ITSM produkter/tjänster med Anslutningsprogram för hantering av IT-tjänster (ITSM).](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-connections)
-2. [Lägg till ITSMC.](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#add-it-service-management-connector)
-3. [Skapa en ITSM-anslutning.](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#create-an-itsm-connection)
-4. [Använd anslutningen.](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#use-itsmc)
+1. [Anslut ITSM produkter/tjänster med Anslutningsprogram för hantering av IT-tjänster (ITSM).](./itsmc-connections.md)
+1. [Lägg till ITSMC.](/.itsmc-definition.md#add-it-service-management-connector)
+1. [Skapa en ITSM-anslutning.](./itsmc-definition.md#create-an-itsm-connection)
+1. [Använd anslutningen.](./itsmc-definition.md#use-itsmc)
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Lägg till ITSM produkter/tjänster i Anslutningsprogram för hantering av IT-tjänster (ITSM)](./itsmc-connections.md)
+[Lägg till ITSM produkter/tjänster i anslutningsprogram för hantering av IT-tjänster (ITSM)](./itsmc-connections.md) 
+ [Lägg till ITSM-anslutningsprogram](./itsmc-definition.md) 
+ [Felsöka problem i ITSM-anslutningsprogram](./itsmc-resync-servicenow.md)

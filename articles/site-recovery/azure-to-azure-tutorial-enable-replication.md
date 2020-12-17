@@ -4,12 +4,12 @@ description: I den här självstudien konfigurerar du haveri beredskap för virt
 ms.topic: tutorial
 ms.date: 11/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 6d07082b4a9c18461d5cc74de8844be803da7168
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 473a264ef497cab4bd4f88372600161b33178099
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922485"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656877"
 ---
 # <a name="tutorial-set-up-disaster-recovery-for-azure-vms"></a>Självstudie: Konfigurera haveri beredskap för virtuella Azure-datorer
 
@@ -77,9 +77,9 @@ Virtuella datorer som du vill replikera behöver utgående nätverks anslutning.
 
 Om du använder en URL-baserad brand Väggs-proxy för att kontrol lera utgående anslutning ger du åtkomst till följande URL: er:
 
-| **Namn**                  | **Kommersiellt**                               | **Myndigheter**                                 | **Beskrivning** |
+| **Namn**                  | **Kommersiellt**                               | **Government**                                 | **Beskrivning** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| Lagring                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Gör att data kan skrivas från den virtuella datorn till cachelagringskontot i källregionen. |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | Gör att data kan skrivas från den virtuella datorn till cachelagringskontot i källregionen. |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Tillhandahåller auktorisering och autentisering för Site Recovery-tjänstens webbadresser. |
 | Replikering               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Låter den virtuella datorn kommunicera med Site Recovery-tjänsten. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Låter den virtuella datorn skriva övervaknings- och diagnostikdata för Site Recovery. |

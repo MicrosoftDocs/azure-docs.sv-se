@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 7c250f1351d83d213c5c7af5b00d7a648c5d8bc6
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 56654f09d3a92eec5b86d8c8e4cd76fec0639394
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499670"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653052"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Viktig information om Microsoft Azure Storage Explorer
 
@@ -567,7 +567,7 @@ Kopiering, hämtning och lagring mellan regioner av diskar drivs av AzCopy v10.
   * Skapa nya mappar
   * Ladda upp, ladda ned, byta namn på och ta bort filer och mappar
   * Hantera egenskaper och behörigheter för filer och mappar (höger sida).
-    
+
     Andra typiska BLOB-funktioner, till exempel mjuk borttagning och ögonblicks bilder, är inte tillgängliga för närvarande. Hanterings behörigheter är också bara tillgängligt när du är inloggad. När du arbetar i ett ADLS Gen2 lagrings konto använder Storage Explorer dessutom AzCopy för alla uppladdningar och nedladdningar och standard för att använda namn-och autentiseringsuppgifter för alla åtgärder om det är tillgängligt.
 * När du har fått en stark användare kan du använda Bryt lån igen för att avbryta lån på flera blobbar samtidigt.
 

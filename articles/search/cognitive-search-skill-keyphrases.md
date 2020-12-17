@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 145d8265412c4efcaa2afad97feb23528a36191d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fdebffbf9643febc08cba997b3a5a5fc4bb5998
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936069"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652321"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>Extrahering av diskussionsämne kognitiva kunskaper
 
@@ -37,7 +37,7 @@ Den maximala storleken för en post ska vara 50 000 tecken som mäts av [`String
 
 Parametrar är skiftlägeskänsliga.
 
-| Indata                | Beskrivning |
+| Indata | Beskrivning |
 |---------------------|-------------|
 | `defaultLanguageCode` | Valfritt Språk koden som ska användas för dokument som inte uttryckligen anger språk.  Om standard språk koden inte anges används engelska (en) som standard språk kod. <br/> Se en [fullständig lista över språk som stöds](../cognitive-services/text-analytics/language-support.md). |
 | `maxKeyPhraseCount`   | Valfritt Det maximala antalet nyckel fraser som ska skapas. |

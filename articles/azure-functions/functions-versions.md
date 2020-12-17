@@ -4,12 +4,12 @@ description: Azure Functions stöder flera versioner av körnings miljön. Lär 
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 12/09/2019
-ms.openlocfilehash: 3997c5e79192f4386ee5280350620a748dd1489b
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 935291c461e275902cb6905c4440fe4d289f0c16
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309723"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653358"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Översikt över Azure Functions körnings versioner
 
@@ -116,7 +116,7 @@ I Visual Studio väljer du kör tids versionen när du skapar ett projekt. Azure
 ##### <a name="version-1x"></a>Version 1. x
 
 ```xml
-<TargetFramework>net461</TargetFramework>
+<TargetFramework>net472</TargetFramework>
 <AzureFunctionsVersion>v1</AzureFunctionsVersion>
 ```
 

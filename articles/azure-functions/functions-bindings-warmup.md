@@ -10,16 +10,19 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 11/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 6a909b246e7cb3695533a75294c523d7c9aeaeda
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 7cefe75eefb746c150b051a7bd1f4513c103d205
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832950"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655866"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions värme utlösare
 
-Den här artikeln förklarar hur du arbetar med uppvärmnings-utlösaren i Azure Functions. Uppvärmnings-utlösaren stöds bara för Function-appar som körs i en [Premium-plan](functions-premium-plan.md). En uppvärmnings-utlösare anropas när en instans läggs till för att skala en app som körs i funktion. Du kan använda en uppvärmnings-utlösare för att i förväg läsa in anpassade beroenden under för [uppvärmnings processen](./functions-premium-plan.md#pre-warmed-instances) , så att funktionerna kan börja bearbeta begär Anden direkt. 
+Den här artikeln förklarar hur du arbetar med uppvärmnings-utlösaren i Azure Functions. En uppvärmnings-utlösare anropas när en instans läggs till för att skala en app som körs i funktion. Du kan använda en uppvärmnings-utlösare för att i förväg läsa in anpassade beroenden under för [uppvärmnings processen](./functions-premium-plan.md#pre-warmed-instances) , så att funktionerna kan börja bearbeta begär Anden direkt. 
+
+> [!NOTE]
+> Uppvärmnings-utlösaren stöds inte för Function-appar som körs i en förbruknings plan.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 

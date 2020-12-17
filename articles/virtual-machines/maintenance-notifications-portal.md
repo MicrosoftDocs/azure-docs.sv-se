@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 09693a09e35503a2a221f8de1903b4218b8766f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 318095e6cf68ec100dc9ea5221ecd93cba8f7c1e
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082451"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656826"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>Hantera meddelanden för planerat underhåll med hjälp av portalen
 
@@ -24,7 +24,7 @@ Du kan använda Azure Portal och leta efter virtuella datorer som är schemalagd
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 
-2. Klicka på **Virtual Machines**i det vänstra navigerings fältet.
+2. Klicka på **Virtual Machines** i det vänstra navigerings fältet.
 
 3. Öppna listan med tillgängliga kolumner genom att välja **Redigera kolumner** i rutan Virtual Machines.
 
@@ -32,15 +32,14 @@ Du kan använda Azure Portal och leta efter virtuella datorer som är schemalagd
 
    **Underhålls status**: visar underhålls status för den virtuella datorn. Följande är de potentiella värdena:
       
-      | Värde | Beskrivning |
-      |-------|-------------|
-      | Starta nu | Den virtuella datorn är i fönstret för självbetjänings underhåll där du kan starta underhållet själv. Se nedan om hur du startar underhåll på den virtuella datorn. | 
-      | Schemalagd | Den virtuella datorn är schemalagd för underhåll utan något alternativ för dig att starta underhållet. Du kan lära dig underhålls fönstret genom att välja den underhålls schemalagda perioden i den här vyn eller genom att klicka på den virtuella datorn. | 
-      | Redan uppdaterat | Den virtuella datorn har redan uppdaterats och ingen ytterligare åtgärd krävs för tillfället. | 
-      | Försök igen senare | Du har initierat underhåll utan att lyckas. Du kommer att kunna använda alternativet för självbetjänings underhåll vid ett senare tillfälle. | 
-      | Försök igen nu | Du kan försöka med ett tidigare misslyckat självinitierat underhåll. | 
-      | - | Din virtuella dator ingår inte i en planerad underhålls våg. |
-      
+    | Värde | Beskrivning |
+    |-------|-------------|
+    | Starta nu | Den virtuella datorn är i fönstret för självbetjänings underhåll där du kan starta underhållet själv. Se nedan om hur du startar underhåll på den virtuella datorn. | 
+    | Schemalagd | Den virtuella datorn är schemalagd för underhåll utan möjlighet att initiera underhåll. Du kan lära dig underhålls fönstret genom att välja den underhålls schemalagda perioden i den här vyn eller genom att klicka på den virtuella datorn. | 
+    | Redan uppdaterat | Den virtuella datorn har redan uppdaterats och ingen ytterligare åtgärd krävs för tillfället. | 
+    | Försök igen senare | Du har initierat underhåll utan att lyckas. Du kommer att kunna använda alternativet för självbetjänings underhåll vid ett senare tillfälle. | 
+    | Försök igen nu | Du kan försöka med ett tidigare misslyckat självinitierat underhåll. | 
+    | - | Din virtuella dator ingår inte i en planerad underhålls våg. |
 
    **Underhåll – självbetjänings fönstret**: visar tidsfönstret när du kan starta underhållet på dina virtuella datorer själv.
    
@@ -52,7 +51,7 @@ Du kan använda Azure Portal och leta efter virtuella datorer som är schemalagd
 
 Azure kommunicerar ett schema för planerat underhåll genom att skicka ett e-postmeddelande till Prenumerationens ägare och gruppen med medägare. Du kan lägga till ytterligare mottagare och kanaler i den här kommunikationen genom att skapa Azure aktivitets logg aviseringar. Mer information finns i [skapa aktivitets logg aviseringar för tjänst meddelanden](../service-health/alerts-activity-log-service-notifications-portal.md).
 
-Se till att ange **händelse typ** som **planerat underhåll**och **tjänster** som **Virtual Machine Scale Sets** och/eller **Virtual Machines**.
+Se till att ange **händelse typ** som **planerat underhåll** och **tjänster** som **Virtual Machine Scale Sets** och/eller **Virtual Machines**.
 
 ## <a name="start-maintenance-on-your-vm-from-the-portal"></a>Starta underhåll på den virtuella datorn från portalen
 

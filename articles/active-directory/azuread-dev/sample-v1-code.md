@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 824ae8d39d934ebc58fc75185e36f5faa11109a9
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 662a0f53a5d5e8e02ef3b29640009fd07bf4f1d0
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325374"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652152"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory kod exempel (v 1.0-slut punkt)
 
@@ -40,10 +40,10 @@ Du kan också bidra till våra exempel på GitHub. Mer information finns i [Micr
 
 Det här exemplet visar hur du skriver ett program med en enda sida som skyddas med Azure AD.
 
- Plattform | Anropar sitt eget API | Anropar ett annat webb-API
- -------- |  --------------------- | ------------------ 
-![Den här bilden visar JavaScript-logotypen](media/sample-v2-code/logo-js.png) | [Java Script – singlepageapp](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |
-![Den här bilden visar en vinkel JS-logotyp](media/sample-v2-code/logo-angular.png) | [AngularJS – singlepageapp](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) | [AngularJS-singlepageapp-CORS](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp-dotnet-webapi)
+| Plattform | Anropar sitt eget API | Anropar ett annat webb-API |
+|--|--|--|
+| ![Den här bilden visar JavaScript-logotypen](media/sample-v2-code/logo-js.png) | [Java Script – singlepageapp](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |
+| ![Den här bilden visar en vinkel JS-logotyp](media/sample-v2-code/logo-angular.png) | [AngularJS – singlepageapp](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) | [AngularJS-singlepageapp-CORS](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp-dotnet-webapi) |
 
 ## <a name="web-applications"></a>Webb program
 
@@ -51,21 +51,21 @@ Det här exemplet visar hur du skriver ett program med en enda sida som skyddas 
 
 I följande exempel visas webb program som signerar användare. Några av dessa program anropar också Microsoft Graph eller ditt eget webb-API i namnet på den inloggade användaren.
 
- Plattform | Endast tecken i användare | Anrop Microsoft Graph | Anropar en annan ASP.NET eller ASP.NET Core 2,0 webb-API
- -------- | ------------------- | --------------------- | -------------------------
-![Den här bilden visar ASP.NET Core logo typ](media/sample-v2-code/logo-netcore.png)</p>ASP.NET Core 2,0 | [dotNet-webapp-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [webapp-WebAPI-multiinnehavare-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(AAD-diagram) | [dotNet-webapp-WebAPI-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore)
-![Den här bilden visar ASP.NET Framework-logotypen](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 |  </p> [webapp-WSFederation-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [dotNet-webapp-WebAPI-OAuth2-UserIdentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [dotNet-webapp-flera innehavare – openidconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (AAD-diagram) |
-![Den här bilden visar python-logotypen](media/sample-v2-code/logo-python.png) | | [python-webapp-graphapi](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi)  |
-![Den här bilden visar Java-loggen](media/sample-v2-code/logo-java.png)  | | [Java-webapp-openidconnect](https://github.com/azure-samples/active-directory-java-webapp-openidconnect)  |
-![Den här bilden visar PHP-logotypen](media/sample-v2-code/logo-php.png) | | [php-graphapi – webb](https://github.com/Azure-Samples/active-directory-php-graphapi-web)  |
+| Plattform | Endast tecken i användare | Anrop Microsoft Graph | Anropar en annan ASP.NET eller ASP.NET Core 2,0 webb-API |
+|--|--|--|--|
+| ![Den här bilden visar ASP.NET Core logo typ](media/sample-v2-code/logo-netcore.png)</p>ASP.NET Core 2,0 | [dotNet-webapp-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [webapp-WebAPI-multiinnehavare-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(AAD-diagram) | [dotNet-webapp-WebAPI-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore) |
+| ![Den här bilden visar ASP.NET Framework-logotypen](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | </p> [webapp-WSFederation-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [dotNet-webapp-WebAPI-OAuth2-UserIdentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [dotNet-webapp-flera innehavare – openidconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (AAD-diagram) |
+| ![Den här bilden visar python-logotypen](media/sample-v2-code/logo-python.png) |  | [python-webapp-graphapi](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi) |
+| ![Den här bilden visar Java-loggen](media/sample-v2-code/logo-java.png) |  | [Java-webapp-openidconnect](https://github.com/azure-samples/active-directory-java-webapp-openidconnect) |
+| ![Den här bilden visar PHP-logotypen](media/sample-v2-code/logo-php.png) |  | [php-graphapi – webb](https://github.com/Azure-Samples/active-directory-php-graphapi-web) |
 
 ### <a name="web-applications-demonstrating-role-based-access-control-authorization"></a>Webb program som demonstrerar rollbaserad åtkomst kontroll (auktorisering)
 
 Följande exempel visar hur du implementerar rollbaserad åtkomst kontroll (RBAC). RBAC används för att begränsa behörigheterna för vissa funktioner i ett webb program till vissa användare. Användarna är auktoriserade beroende på om de tillhör en **Azure AD-grupp** eller har en specifik program **roll**.
 
-Plattform | Exempel |
- -------- | ------------------- |
-![Den här bilden visar ASP.NET Framework-logotypen](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [dotNet-webapp-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) </p>  [dotNet-webapp-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | En .NET 4,5 MVC-webbapp som använder Azure AD- **roller** för auktorisering
+| Plattform | Exempel |
+|--|--|
+| ![Den här bilden visar ASP.NET Framework-logotypen](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [dotNet-webapp-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) </p>  [dotNet-webapp-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | En .NET 4,5 MVC-webbapp som använder Azure AD- **roller** för auktorisering |
 
 ## <a name="desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api"></a>Station ära och mobila klient program som anropar Microsoft Graph eller ett webb-API
 

@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 08/23/2017
 ms.custom: devx-track-java
 ms.author: rapatchi
-ms.openlocfilehash: f65194cde25deac8c03d6ddc3a7c0b928aaca171
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3efa51f5632dd5cdc274ea39df5178aa0351a01f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327318"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652304"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Uppdatera det tidigare Service Fabric Java-programmet för att hämta Java-bibliotek från Maven
 Service Fabric Java-binärfiler har flyttats från Service Fabric Java SDK till maven-värd. Du kan använda **mavencentral** för att hämta de senaste Service Fabric Java-beroenden. Den här guiden hjälper dig att uppdatera befintliga Java-program som skapats för Service Fabric Java SDK med hjälp av en Yeoman-mall eller Sol förmörkelse som är kompatibla med den maven-baserade versionen.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 1. Avinstallera först den befintliga Java SDK: n.
 
@@ -385,7 +385,7 @@ task copyDeps<< {
 ```gradle
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
-      compile project(':MyactorInterface')
+    compile project(':MyactorInterface')
 }
 .
 .
@@ -398,7 +398,7 @@ jar
         "Class-Path": configurations.compile.collect { 'lib/' + it.getName() }.join(' '))
     }
     baseName "myactor-test"
-  destinationDir = file('out/lib')
+    destinationDir = file('out/lib')
 }
 .
 .

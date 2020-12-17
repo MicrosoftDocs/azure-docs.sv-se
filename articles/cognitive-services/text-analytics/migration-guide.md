@@ -8,18 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 11/19/2020
+ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: 56464268b95181af0379a1895d392cc3cc26624c
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 6a71bcbfb8341098711e330cebf8545e1fd2751c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980906"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656962"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Migrera till version 3. x av API för textanalys
-
-[!INCLUDE [v3 region availability](includes/v3-region-availability.md)]
 
 Om du använder version 2,1 av API för textanalys kommer den här artikeln att hjälpa dig att uppgradera ditt program till att använda version 3. x. Version 3,0 är allmänt tillgänglig och introducerar nya funktioner, till exempel utökad [namngiven enhets igenkänning (ner)](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-features-and-versions) och [modell version](concepts/model-versioning.md). En för hands version av v 3.1 (v 3.1 – för hands version. x) är också tillgänglig, som lägger till funktioner som till exempel utsvars [utvinning](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features). De modeller som används i v2 kommer inte att ta emot framtida uppdateringar. 
 
@@ -76,7 +74,7 @@ I referens dokumentationen finns exempel på JSON-svaret.
 
 [!INCLUDE [Client library migration information](includes/client-library-migration-section.md)]
 
-## <a name="language-detection"></a>[Språk identifiering](#tab/language-detection)
+## <a name="language-detection"></a>[Språkidentifiering](#tab/language-detection)
 
 ### <a name="feature-changes"></a>Funktions ändringar 
 
@@ -97,7 +95,7 @@ I referens dokumentationen finns exempel på JSON-svaret.
 
 [!INCLUDE [Client library migration information](includes/client-library-migration-section.md)]
 
-## <a name="key-phrase-extraction"></a>[Extrahering av nyckel fraser](#tab/key-phrase-extraction)
+## <a name="key-phrase-extraction"></a>[Extrahering av nyckelfraser](#tab/key-phrase-extraction)
 
 ### <a name="feature-changes"></a>Funktions ändringar 
 

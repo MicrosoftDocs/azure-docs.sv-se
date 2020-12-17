@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: 90d60a20bb464936d04662b0b9286bd7aaac9e74
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: b83ed506c0aa6299e5308e9e0c7276a21b7d9abe
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700179"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652355"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>Självstudie: skapa en anpassad analys för telefonnummer
 
@@ -29,7 +29,7 @@ Den här självstudien använder [REST-API: er](/rest/api/searchservice/) för P
 > * Testa hur den anpassade Analyzer-tokenizes text
 > * Skapa separata analyser för indexering och sökning för att ytterligare förbättra resultaten
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Följande tjänster och verktyg krävs för den här självstudien.
 
@@ -160,7 +160,7 @@ POST https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basi
 
 Vi är redo att börja söka med data i indexet.
 
-### <a name="search"></a>Sök
+### <a name="search"></a>Search
 
 För att göra sökningen intuitiv är det bäst att inte förvänta användarna att formatera frågor på ett särskilt sätt. En användare kan söka efter `(425) 555-0100` i alla format som vi visade ovan och kommer fortfarande att vänta på att resultaten returneras. I det här steget ska vi testa några exempel frågor för att se hur de fungerar.
 
@@ -270,8 +270,8 @@ POST https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basi
   api-key: <YOUR-ADMIN-API-KEY>
 
   {
-      "text": "(425) 555-0100",
-      "analyzer": "standard.lucene"
+    "text": "(425) 555-0100",
+    "analyzer": "standard.lucene"
   }
 ```
 

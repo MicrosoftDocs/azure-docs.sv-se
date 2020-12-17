@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 12/17/2020
 ms.author: alkohli
-ms.openlocfilehash: acaa0fdb1fa0e9a338f4e249622cad0115c6b58e
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 3df8f75a726639e87157a1aa7fd9ff4d35c0ef4f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516440"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654633"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: vanliga frågor och svar
 
@@ -100,13 +100,11 @@ Dessa produktions tider är *uppskattningar*. Tiden för varje steg i order bear
 **Uppskattade produktions tider för en Data Box Disk ordning:**
 
 1. Beställ Data Box Disk: några minuter från portalen
-2. Diskallokering och-förberedelse: 1-2 arbets dagar
+2. Diskallokering och-förberedelse: upp till fem arbets dagar, beroende på inventerings tillgänglighet och antalet väntande order som ska bearbetas
 3. Frakt: 2–3 arbetsdagar
-4. Data kopiering på kund webbplatsen: beror på data, storlek och antal filer
+4. Data kopiering på kund webbplatsen: beror på data, storlek och antal filer.
 5. Returleverans: 2–3 arbetsdagar
-6. Bearbetar disk i Data Center: 1-2 arbets dagar
-7. Ladda upp data till Azure: börjar så snart bearbetningen är klar och disken är ansluten. Uppladdnings tiden beror på data, storlek och antal filer.
-
+6. Bearbetning i data centret och uppladdning till Azure: data uppladdning börjar i data centret så snart den operativa bearbetningen är klar och disken är ansluten. Uppladdnings tiden beror på data, storlek och antal filer.
 
 ## <a name="configure-and-connect"></a>Konfigurera och ansluta
  

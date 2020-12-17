@@ -12,12 +12,12 @@ ms.date: 11/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ad7fe062d30f6858296ad4a2638b62c190862365
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 80e6dbdc02b68c279452127933532106b0f78ab8
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936445"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654667"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrera ett SAML-program i Azure AD B2C
 
@@ -39,7 +39,7 @@ Sammanfatta de två icke-exklusiva huvud scenarierna med SAML:
 | Scenario | Azure AD B2C roll | Så här gör du |
 | -------- | ----------------- | ------- |
 | Mitt program förväntar sig en SAML-kontroll för att slutföra en autentisering. | **Azure AD B2C fungerar som identitets leverantör (IdP)**<br />Azure AD B2C fungerar som en SAML-IdP i programmen. | Den här artikeln. |
-| Mina användare behöver en enkel inloggning med en SAML-kompatibel identitets leverantör som ADFS, Salesforce eller Shibboleth.  | **Azure AD B2C fungerar som tjänst leverantör (SP)**<br />Azure AD B2C fungerar som en tjänst leverantör vid anslutning till SAML Identity Provider. Det är en Federations-proxy mellan ditt program och SAML Identity Provider.  | <ul><li>[Konfigurera inloggning med ADFS som ett SAML-IdP med anpassade principer](identity-provider-adfs.md)</li><li>[Konfigurera inloggning med en Salesforce-SAML-Provider med anpassade principer](identity-provider-salesforce.md)</li></ul> |
+| Mina användare behöver en enkel inloggning med en SAML-kompatibel identitets leverantör som ADFS, Salesforce eller Shibboleth.  | **Azure AD B2C fungerar som tjänst leverantör (SP)**<br />Azure AD B2C fungerar som en tjänst leverantör vid anslutning till SAML Identity Provider. Det är en Federations-proxy mellan ditt program och SAML Identity Provider.  | <ul><li>[Konfigurera inloggning med ADFS som ett SAML-IdP med anpassade principer](identity-provider-adfs.md)</li><li>[Konfigurera inloggning med en Salesforce-SAML-Provider med anpassade principer](identity-provider-salesforce-saml.md)</li></ul> |
 
 ## <a name="prerequisites"></a>Krav
 
@@ -340,7 +340,7 @@ Metadata kan konfigureras i tjänst leverantören som "statiska metadata" eller 
 En eller flera av följande är vanligt vis obligatoriska:
 
 * **Metadata**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
-* **Utfärdare**: SAML-begärans `issuer` värde måste matcha en av de URI: er som kon figurer ATS i `identifierUris` elementet i manifestet för program registrering. Om SAML-frågans `issuer` namn inte finns i `identifierUris` elementet, [lägger du till det i manifestet för program registreringen](#identifieruris). Exempelvis `https://contoso.onmicrosoft.com/app-name`. 
+* **Utfärdare**: SAML-begärans `issuer` värde måste matcha en av de URI: er som kon figurer ATS i `identifierUris` elementet i manifestet för program registrering. Om SAML-frågans `issuer` namn inte finns i `identifierUris` elementet, [lägger du till det i manifestet för program registreringen](#identifieruris). Ett exempel är `https://contoso.onmicrosoft.com/app-name`. 
 * **Inloggnings webb adress/SAML-slut punkt/SAML-URL**: kontrol lera värdet i Azure AD B2C SAML-principens metadatafil för `<SingleSignOnService>` XML-elementet
 * **Certifikat**: det här är *B2C_1A_SamlIdpCert*, men utan den privata nyckeln. Så här hämtar du den offentliga nyckeln för certifikatet:
 
@@ -393,7 +393,7 @@ Om du vill aktivera Azure AD B2C skicka krypterade intyg anger du **WantsEncrypt
 
 ## <a name="enable-identity-provider-initiated-flow-optional"></a>Aktivera flöde för initierad identitetsprovider (valfritt)
 
-I initierat flöde för identitetsprovider initieras inloggnings processen av identitets leverantören (Azure AD B2C), som skickar ett oönskat SAML-svar till tjänst leverantören (ditt förlitande parts program). Vi stöder för närvarande inte scenarier där den initierande identitets leverantören är en extern identitetsprovider, till exempel [AD-FS](identity-provider-adfs.md)eller [Salesforce](identity-provider-salesforce.md).
+I initierat flöde för identitetsprovider initieras inloggnings processen av identitets leverantören (Azure AD B2C), som skickar ett oönskat SAML-svar till tjänst leverantören (ditt förlitande parts program). Vi stöder för närvarande inte scenarier där den initierande identitets leverantören är en extern identitetsprovider, till exempel [AD-FS](identity-provider-adfs.md)eller [Salesforce](identity-provider-salesforce-saml.md).
 
 Om du vill aktivera Identity Provider (Azure AD B2C) initierat flöde anger du **IdpInitiatedProfileEnabled** -objektet till `true` i den [förlitande partens tekniska profil](relyingparty.md#technicalprofile).
 
@@ -443,13 +443,13 @@ Följande scenarier för SAML-förlitande part (RP) stöds via din egen metadata
 
 En SAML-token är en säkerhetstoken som utfärdas av Azure AD B2C efter en lyckad inloggning. Den innehåller information om användaren, tjänst leverantören som token är avsedd för, signatur och giltighets tid. I följande tabell visas de anspråk och egenskaper som du kan förväntar dig i en SAML-token som utfärdats av Azure AD B2C.
 
-|Element  |Egenskap  |Kommentarer  |
+|Element  |Egenskap  |Obs!  |
 |---------|---------|---------|
 |`<Response>`| `ID` | En automatiskt genererad unik identifierare för svaret. | 
 |`<Response>`| `InResponseTo` | ID: t för SAML-begäran som detta meddelande är svar på. | 
 |`<Response>` | `IssueInstant` | Tiden för att skicka svar. Time-värdet är kodat i UTC.  Om du vill ändra inställningarna för dina token för din token anger du `TokenNotBeforeSkewInSeconds` [metadata](saml-issuer-technical-profile.md#metadata) för den tekniska profilen för utfärdare av SAML-token. | 
 |`<Response>` | `Destination`| En URI-referens som visar adressen som svaret har skickats till. Värdet är identiskt med SAML-begäran `AssertionConsumerServiceURL` . | 
-|`<Response>` `<Issuer>` | |Identifierar token utfärdaren. Det här är en godtycklig URI som definieras av utfärdarens metadata för SAML-token `IssuerUri` [metadata](saml-issuer-technical-profile.md#metadata)     |
+|`<Response>` `<Issuer>` | |Identifierar token utfärdaren. Det här är en godtycklig URI som definieras av utfärdarens metadata för SAML-token `IssuerUri` [](saml-issuer-technical-profile.md#metadata)     |
 |`<Response>` `<Assertion>` `<Subject>` `<NameID>`     |         |Det huvud konto som används för att kontrollera token, till exempel användar objekt-ID. Värdet är oföränderligt och kan inte tilldelas om eller återanvändas. Den kan användas för att utföra verifierings kontroller på ett säkert sätt, till exempel när token används för att få åtkomst till en resurs. Som standard fylls ämnes anspråket med objekt-ID: t för användaren i katalogen.|
 |`<Response>` `<Assertion>` `<Subject>` `<NameID>`     | `Format` | En URI-referens som representerar klassificeringen av strängbaserade ID-information. Som standard utelämnas den här egenskapen. Du kan ställa in den förlitande partens [SubjectNamingInfo](relyingparty.md#subjectnaminginfo) för att ange `NameID` formatet, till exempel `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` . |
 |`<Response>` `<Assertion>` `<Subject>` `<Conditions>` |`NotBefore` |Tiden då token börjar gälla. Time-värdet är kodat i UTC. Programmet bör använda detta anspråk för att kontrol lera giltigheten för token för token. Om du vill ändra inställningarna för dina livs längder för token anger du `TokenNotBeforeSkewInSeconds` [metadata](saml-issuer-technical-profile.md#metadata) för den tekniska profilen för SAML-token. |

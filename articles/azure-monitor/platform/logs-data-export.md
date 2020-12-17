@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 8fa823620d6d1306260d719cbabaa3d815cc0d09
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 3b29245aed1b2c7767c340cbe8cd35dfa38610b9
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505451"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656690"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics arbets ytans data export i Azure Monitor (förhands granskning)
 Med Log Analytics data export för arbets yta i Azure Monitor kan du kontinuerligt exportera data från valda tabeller i din Log Analytics arbets yta till ett Azure Storage-konto eller Azure-Event Hubs som det samlas in. Den här artikeln innehåller information om den här funktionen och hur du konfigurerar data export i dina arbets ytor.
@@ -58,7 +58,7 @@ Log Analytics data export för arbets ytan exporterar kontinuerligt data från e
 ## <a name="data-completeness"></a>Data fullständighet
 Data exporten kommer att fortsätta att försöka skicka data i upp till 30 minuter om målet inte är tillgängligt. Om det fortfarande inte är tillgängligt efter 30 minuter tas data bort tills målet blir tillgängligt.
 
-## <a name="cost"></a>Kostnad
+## <a name="cost"></a>Cost
 Det finns för närvarande inga ytterligare avgifter för data export funktionen. Prissättningen för data export kommer att meddelas i framtiden och ett meddelande som tillhandahålls innan faktureringen påbörjas. Om du väljer att fortsätta använda data export efter meddelande perioden debiteras du enligt tillämplig taxa.
 
 ## <a name="export-destinations"></a>Exportera mål
@@ -120,11 +120,11 @@ En data export regel definierar data som ska exporteras för en uppsättning tab
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Saknas
+Ej tillämpligt
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Saknas
+Ej tillämpligt
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -222,11 +222,11 @@ Följande är en exempel text för REST-begäran för en Event Hub där Event Hu
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Saknas
+Ej tillämpligt
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Saknas
+Ej tillämpligt
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -249,11 +249,11 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Saknas
+Ej tillämpligt
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Saknas
+Ej tillämpligt
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -291,11 +291,11 @@ Content-type: application/json
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Saknas
+Ej tillämpligt
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Saknas
+Ej tillämpligt
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -318,11 +318,11 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Saknas
+Ej tillämpligt
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Saknas
+Ej tillämpligt
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -351,7 +351,7 @@ Om data export regeln innehåller en tabell som inte finns kommer den inte att f
 Tabeller som stöds är för närvarande begränsade till dem som anges nedan. Alla data från tabellen exporteras om inte begränsningar anges. Den här listan kommer att uppdateras när stöd för ytterligare tabeller läggs till.
 
 
-| Tabeller | Begränsningar |
+| Tabell | Begränsningar |
 |:---|:---|
 | AADDomainServicesAccountLogon | |
 | AADDomainServicesAccountManagement | |

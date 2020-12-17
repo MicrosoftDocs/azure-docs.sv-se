@@ -7,12 +7,12 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 51bd073b6f84f3378b91091e04f2f278ea2f49b6
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ddb8027c145f6a38bfcd953be66dae2943a20c3a
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95495278"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654616"
 ---
 # <a name="manage-iot-plug-and-play-digital-twins"></a>Hantera IoT Plug and Play digitala dubbla
 
@@ -26,7 +26,7 @@ En IoT Plug and Play-enhet implementerar en modell som beskrivs av [Digitals Def
 
 IoT Plug and Play-enheten som används som ett exempel i den här artikeln implementerar [temperatur styrenhets modellen](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) med [termostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) -komponenter.
 
-I följande kodfragment visas svaret på en **Get Digital** -begäran som är formaterad som ett JSON-objekt. Mer information om det digitala dubbla formatet finns i [förstå IoT plug and Play digitala dubbla](./concepts-digital-twin.md#digital-twin-json-format):
+I följande kodfragment visas svaret på en **Get Digital** -begäran som är formaterad som ett JSON-objekt. Mer information om det digitala dubbla formatet finns i [förstå IoT plug and Play digitala dubbla](./concepts-digital-twin.md#digital-twin-example):
 
 ```json
 {

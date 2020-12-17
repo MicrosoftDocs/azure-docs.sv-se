@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: c304c2aad3ba40d7b3a044f0e3222e31bb013648
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 625fe5f53318ebc641d102e679ef7fd0607ef683
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503989"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652859"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Vad är nytt i API:et för textanalys?
 
@@ -161,8 +161,6 @@ Namnen på följande egenskaper i JSON-svaret har ändrats, i tillämpliga fall:
 * `type` har bytt namn till `category`
 * `subtype` har bytt namn till `subcategory`
 
-[!INCLUDE [v3 region availability](includes/v3-region-availability.md)]
-
 > [!div class="nextstepaction"]
 > [Läs mer om API för textanalys v3](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)
 
@@ -242,6 +240,6 @@ Det stöder engelska ( `en` ), japanska ( `ja` ), kinesiska (förenklad) `zh-Han
 * [Vad är API för textanalys?](overview.md)  
 * [Exempel på användarscenarier](text-analytics-user-scenarios.md)
 * [Sentiment-analys](how-tos/text-analytics-how-to-sentiment-analysis.md)
-* [Språk identifiering](how-tos/text-analytics-how-to-language-detection.md)
+* [Språkidentifiering](how-tos/text-analytics-how-to-language-detection.md)
 * [Enhets igenkänning](how-tos/text-analytics-how-to-entity-linking.md)
-* [Extrahering av nyckel fraser](how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Extrahering av nyckelfraser](how-tos/text-analytics-how-to-keyword-extraction.md)

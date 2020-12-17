@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: 3677d67f55cfccdc80245b2ec870ffa76b0a1940
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff7d5a4e1181dccedc3584d958038a1d695c57ca
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87088673"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657132"
 ---
 # <a name="troubleshoot-windows-boot-manager-error----0xc0000225-status-not-found"></a>Felsöka Windows Boot Manager-fel-0xC0000225 "status hittades inte"
  
@@ -105,12 +105,12 @@ En skadad registrerings data fil kan bero på att:
 ### <a name="repair-the-system-file"></a>Reparera system filen
 
 1. Med hjälp av den anslutna virtuella hård disken navigerar du till fil platsen för den binärfil som visas på skärm bilden för den virtuella datorn (VM).
-1. Högerklicka på filen, Välj **Egenskaper**och välj sedan fliken **information** för att se information om filen.
+1. Högerklicka på filen, Välj **Egenskaper** och välj sedan fliken **information** för att se information om filen.
    1. Observera versionen av filen, som visas på bilden nedan:
 
       ![Fönstret Egenskaper för filen cng.sys, där fil versionen är markerad.](./media/troubleshoot-boot-error-status-not-found/5.png)
 
-1. Byt namn på filen till **< BINARY.SYS >. Old**och ersätt **< BINARY.SYS >** med namnet på filen.
+1. Byt namn på filen till **< BINARY.SYS >. Old** och ersätt **< BINARY.SYS >** med namnet på filen.
 
    För avbildningen i steget ovan kommer filen **cng.sys** att byta namn till **cng.sys. Old**
 
@@ -126,7 +126,7 @@ En skadad registrerings data fil kan bero på att:
       `dir <BINARY WITH ".SYS" EXTENSION>  /s`
 
       Med det här kommandot visas en lista över alla versioner av filen som datorn har, så att du får Sök vägs historiken för den komponenten.
-      
+
       Till exempel skulle **dir cng.sys** byta namn till **dir cng.sys/s**
 
    1. Välj den senaste versionen av filen i listan (eller någon som du föredrar) och kopiera filen till mappen **Windows\System32** med hjälp av föregående sökväg och följande kommando:
@@ -163,7 +163,7 @@ Om den här informations insamlingen ger ett fel där det inte finns någon **\b
    Observera identifieraren för Windows Start inläsaren, vars sökväg är **\windows\system32\winload.exe**.
 
 1. För virtuella datorer i generation 2 kontrollerar du att operativ system disken är online och att dess enhets beteckningar har tilldelats. När detta har verifierats ska du samla in information om start konfigurationen.
-   1. I **Windows search**skriver du **disk hantering** och öppnar disk hanterings konsolen. Använd den här konsolen för att identifiera disk numret som är anslutet till den reparerade virtuella datorn och den Extensible Firmware Interface (EFI) partition som innehåller BCD-arkivet.
+   1. I **Windows search** skriver du **disk hantering** och öppnar disk hanterings konsolen. Använd den här konsolen för att identifiera disk numret som är anslutet till den reparerade virtuella datorn och den Extensible Firmware Interface (EFI) partition som innehåller BCD-arkivet.
 
    I följande bild är disk 2 det disk nummer som är kopplat till den virtuella reparations datorn. Avbildningen visar också EFI-systempartitionen på disk 2, som är 100 MB i storlek och inte har en tilldelad bokstav.
 
