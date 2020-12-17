@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: f4784cc2e1b0276caf8326df8fad93b12f0d551d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 61f5a470046ba3ddca157e83737a29ed936a0c3a
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490082"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656333"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Analysera video-och ljudfiler med Azure Media Services
 
@@ -85,7 +85,7 @@ Utdata innehåller en JSON-fil (insights.jspå) med alla insikter som finns i vi
 
 ### <a name="transcript"></a>avskrifts
 
-|Name|Beskrivning|
+|Namn|Beskrivning|
 |---|---|
 |id|Rad-ID.|
 |text|Själva avskriften.|
@@ -123,7 +123,7 @@ Exempel:
 
 ### <a name="ocr"></a>stöd
 
-|Name|Beskrivning|
+|Namn|Beskrivning|
 |---|---|
 |id|ID för OCR-linje.|
 |text|OCR-text.|
@@ -166,12 +166,12 @@ Exempel:
 
 ### <a name="faces"></a>ytor
 
-|Name|Beskrivning|
+|Namn|Beskrivning|
 |---|---|
 |id|Ansikts-ID.|
 |name|Ansikts namnet. Det kan vara okänt #0, ett identifierat kändis eller en kundutbildad person.|
 |konfidensbedömning|Förtroende för ansikts identifiering.|
-|beskrivning|En beskrivning av kändis. |
+|description|En beskrivning av kändis. |
 |thumbnailId|ID för miniatyr bilden för den aktuella ytan.|
 |knownPersonId|Det interna ID: t (om det är en känd person).|
 |referenceId|Bing-ID: t (om det är en Bing-kändis).|
@@ -211,7 +211,7 @@ Exempel:
 
 ### <a name="shots"></a>bilder
 
-|Name|Beskrivning|
+|Namn|Beskrivning|
 |---|---|
 |id|Bild-ID.|
 |Nyckel rutor|En lista över nyckel bild rutor i instansen (var och en har ett ID och en lista över instanser av instans intervallet). Nyckel bilds instanser har ett thumbnailId-fält med nyckel rutans miniatyr-ID.|
@@ -257,7 +257,7 @@ Exempel:
       ],
       "instances": [
         {
-      "thumbnailId": "00000000-0000-0000-0000-000000000000",
+          "thumbnailId": "00000000-0000-0000-0000-000000000000",
           "start": "00: 00: 05.2670000",
           "end": "00: 00: 10.3000000"
         }
@@ -268,7 +268,7 @@ Exempel:
 
 ### <a name="statistics"></a>uppgifterna
 
-|Name|Beskrivning|
+|Namn|Beskrivning|
 |---|---|
 |CorrespondenceCount|Antal korrespondens i videon.|
 |WordCount|Antalet ord per talare.|
@@ -281,7 +281,7 @@ Exempel:
 
 Sentiment sammanställs av deras sentimentType-fält (positiv/neutral/negativ). Till exempel 0-0,1, 0,1-0,2.
 
-|Name|Beskrivning|
+|Namn|Beskrivning|
 |---|---|
 |id|Sentiment-ID.|
 |averageScore |Medelvärdet av alla resultat från alla instanser av sentiment-typ positiv/neutral/negativ|
@@ -316,7 +316,7 @@ Sentiment sammanställs av deras sentimentType-fält (positiv/neutral/negativ). 
 
 ### <a name="labels"></a>Etiketter
 
-|Name|Beskrivning|
+|Namn|Beskrivning|
 |---|---|
 |id|Etikett-ID: t.|
 |name|Etikett namnet (till exempel "dator", "TV").|
@@ -374,7 +374,7 @@ Sentiment sammanställs av deras sentimentType-fält (positiv/neutral/negativ). 
 
 ### <a name="keywords"></a>nyckelord
 
-|Name|Beskrivning|
+|Namn|Beskrivning|
 |---|---|
 |id|Nyckelords-ID: t.|
 |text|Nyckelords texten.|
@@ -425,7 +425,7 @@ VisualContentModeration-blocket innehåller tidsintervall som Video Indexer hitt
 
 Videor som innehåller vuxen eller vågat innehåll kan endast vara tillgängliga för privat vy. Användare kan skicka en begäran om en mänsklig granskning av innehållet, vilket innebär att `IsAdult` attributet innehåller resultatet av mänsklig granskning.
 
-|Name|Beskrivning|
+|Namn|Beskrivning|
 |---|---|
 |id|ID för moderator för visuellt innehåll.|
 |adultScore|Den vuxen poängen (från Content moderator).|

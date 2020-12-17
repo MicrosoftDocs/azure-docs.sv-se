@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1829c69510568b0f9a8cec7fb7d2d57be8515d3
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 6e8731312ee43930e0f2abcf81228c21bebfdb1f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509996"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653732"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory användnings villkor
 
@@ -238,8 +238,8 @@ Du kan redigera viss information om användnings villkoren, men du kan inte änd
 2.  Välj de användnings villkor som du vill redigera.
 3.  Klicka på **Redigera villkor**.
 4.  För det språk som du vill uppdatera en ny version klickar du på **Uppdatera** under kolumnen åtgärd
- 
-     ![Redigera användnings villkors fönstret som visar namn och visnings alternativ](./media/terms-of-use/edit-terms-use.png)
+
+    ![Redigera användnings villkors fönstret som visar namn och visnings alternativ](./media/terms-of-use/edit-terms-use.png)
 
 5.  I rutan till höger laddar du upp PDF-filen för den nya versionen
 6.  Det finns också ett växlings alternativ här kräver att du **godkänner** igen om du vill kräva att användarna accepterar den nya versionen nästa gången de loggar in. Om du vill att användarna ska kunna godkänna igen kommer de att uppmanas att godkänna den nya versionen nästa gång de försöker komma åt resursen som definierats i principen för villkorlig åtkomst. Om du inte vill att användarna ska godkänna igen förblir deras tidigare medgivande aktuella och endast nya användare som inte har meddelats innan eller vars medgivande upphör att gälla kommer att se den nya versionen.

@@ -8,12 +8,12 @@ ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4889ecd02be1b8f59c30550b7813ed5e5935f20f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0953d750ee8b59e9889512bb64cfd276a0bbeb53
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88924702"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654872"
 ---
 #   <a name="text-translation-cognitive-skill"></a>Kognitiv kompetens för text översättning
 
@@ -38,7 +38,7 @@ Den maximala storleken för en post ska vara 50 000 tecken som mäts av [`String
 
 Parametrar är skiftlägeskänsliga.
 
-| Indata                | Beskrivning |
+| Indata | Beskrivning |
 |---------------------|-------------|
 | defaultToLanguageCode | Kunna Språk koden som dokumenten ska konverteras till för dokument som inte uttryckligen anger till språk. <br/> Se en [fullständig lista över språk som stöds](../cognitive-services/translator/language-support.md). |
 | defaultFromLanguageCode | Valfritt Språk koden som översätter dokument från för dokument som inte anger från språket explicit.  Om defaultFromLanguageCode inte anges kommer den automatiska språk identifieringen som tillhandahålls av Translator Text API att användas för att fastställa från språket. <br/> Se en [fullständig lista över språk som stöds](../cognitive-services/translator/language-support.md). |

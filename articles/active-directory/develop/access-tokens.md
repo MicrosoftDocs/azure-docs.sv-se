@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: hirsin
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 909c8910a86734b0a34787f75c233975cd3503c3
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: ceb5acbee2e572b1859a5577b58dd586fc924b3b
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518251"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653290"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Åtkomsttoken för Microsoft Identity Platform
 
@@ -140,8 +140,8 @@ För att säkerställa att token-storleken inte överskrider storleks gränserna
        }
      }
   ...
- }
- ```
+}
+```
 
 Du kan använda den `BulkCreateGroups.ps1` som finns i mappen skript för att [Skapa appar](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-2-Groups/AppCreationScripts) för att testa överanvändnings scenarier.
 
@@ -186,7 +186,7 @@ Alla appar bör inte validera tokens. Endast i vissa scenarier ska appar verifie
 
 Om inget av ovanstående scenarier tillämpas, kommer ditt program inte att ha nytta av att verifiera token och kan utgöra en säkerhets-och Tillförlitlighets risk om beslut fattas utifrån tokens giltighet.  Offentliga klienter som inbyggda appar eller SPAs drar inte nytta av att validera token – appen kommunicerar direkt med IDP, så SSL-skyddet garanterar att token är giltiga.
 
- API: er och webbappar måste bara verifiera token som har ett `aud` anspråk som matchar deras program. andra resurser kan ha anpassade verifierings regler för token. Token för Microsoft Graph kan till exempel inte val IDE ras enligt dessa regler på grund av sitt eget format. Att verifiera och acceptera token som är avsedda för en annan resurs är ett exempel på problem med [förvirrande vice](https://cwe.mitre.org/data/definitions/441.html) .
+API: er och webbappar måste bara verifiera token som har ett `aud` anspråk som matchar deras program. andra resurser kan ha anpassade verifierings regler för token. Token för Microsoft Graph kan till exempel inte val IDE ras enligt dessa regler på grund av sitt eget format. Att verifiera och acceptera token som är avsedda för en annan resurs är ett exempel på problem med [förvirrande vice](https://cwe.mitre.org/data/definitions/441.html) .
 
 Om ditt program behöver verifiera en id_token eller en access_token enligt ovan, bör din app först verifiera token signatur och utfärdare mot värdena i OpenID identifierings dokument. Till exempel finns den klient oberoende versionen av dokumentet på [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration) .
 

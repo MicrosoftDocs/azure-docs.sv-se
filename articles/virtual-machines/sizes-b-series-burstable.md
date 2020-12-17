@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: ea812df825288eae3822cce01b24ebc82534c541
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 5ba5c6799db6a32bce64a730f4888f59080300dd
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928825"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657183"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Storlekar för virtuella datorer i B-serien
 
@@ -112,7 +112,7 @@ Mer information om hur du kommer åt mått data för Azure finns i [Översikt ö
 
 **Exempel**: jag distribuerar en virtuell dator med B1ms-storlek för mitt lilla tid-och närvaro databas program. Den här storleken gör att mitt program kan använda upp till 20% av en vCPU som min bas linje, vilket är 0,2 krediter per minut som jag kan använda eller bank.
 
-Mitt program är upptaget i början och slutet av mina anställdas arbets dag, mellan 7:00-9:00 och 4:00 – 6:12:00. Under de andra 20 timmarna av dagen är mitt program normalt i inaktivt, endast med 10% av vCPU. Vid perioder med låg belastning får jag 0,2 krediter per minut men får bara förbruka 0. l-krediter per minut, så att min virtuella dator bank 0,1 x 60 = 6 krediter per timme.  För de 20 timmarna som jag är låg, är jag bank 120-krediter.  
+Mitt program är upptaget i början och slutet av mina anställdas arbets dag, mellan 7:00-9:00 och 4:00 – 6:12:00. Under de andra 20 timmarna av dagen är mitt program normalt i inaktivt, endast med 10% av vCPU. Vid perioder med låg belastning får jag 0,2 krediter per minut men bara förbruka 0,1-krediter per minut, så att min virtuella dator bank 0,1 x 60 = 6 krediter per timme.  För de 20 timmarna som jag är låg, är jag bank 120-krediter.  
 
 Under hög belastnings tid är mitt program genomsnitt 60% vCPU användning, jag får fortfarande 0,2-krediter per minut, men jag använder 0,6-krediter per minut för en netto kostnad av 0,4-krediter per minut eller 0,4 x 60 = 24 krediter per timme. Jag har 4 timmar per dag med högsta användning, så det kostar 4 x 24 = 96 krediter för min högsta användning.
 

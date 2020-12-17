@@ -14,12 +14,12 @@ ms.date: 10/14/2020
 ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: 752e7dae9040059c662a93d9a9d668bac0e8e2d8
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 178d3896fe8d063855a734f3f0fe6c489b0ec1fc
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074676"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97651981"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>ADAL till MSAL migration guide för Android
 
@@ -89,7 +89,7 @@ Om du för närvarande använder ADAL och inte behöver använda ett stegvist ti
 > [!CAUTION]
 > Det går inte att ange både scope och resurs-ID. Om du försöker ange båda leder det till en `IllegalArgumentException` .
 
- Detta leder till samma v1-beteende som du använder. Alla behörigheter som begärs i din app-registrering begärs från användaren under den första interaktionen.
+Detta leder till samma v1-beteende som du använder. Alla behörigheter som begärs i din app-registrering begärs från användaren under den första interaktionen.
 
 ### <a name="authenticate-and-request-permissions-only-as-needed"></a>Autentisera och begär bara behörigheter vid behov
 
@@ -131,13 +131,13 @@ Om du försöker använda en auktoritet som inte är känd för Microsoft, och s
 ### <a name="logging"></a>Loggning
 Du kan nu deklarativ Konfigurera loggning som en del av konfigurationen, så här:
 
- ```
- "logging": {
-    "pii_enabled": false,
-    "log_level": "WARNING",
-    "logcat_enabled": true
-  }
-  ```
+```json
+"logging": {
+  "pii_enabled": false,
+  "log_level": "WARNING",
+  "logcat_enabled": true
+}
+```
 
 ## <a name="migrate-from-userinfo-to-account"></a>Migrera från UserInfo till konto
 

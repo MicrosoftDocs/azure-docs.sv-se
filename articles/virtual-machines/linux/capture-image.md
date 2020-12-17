@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
-ms.openlocfilehash: 376d9d76633060f504454f85841b9c15bafc6685
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eacd1426b856de11a18b0da6c509d281b3bca94c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503046"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655177"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>Så här skapar du en hanterad avbildning av en virtuell dator eller virtuell hård disk
 
@@ -54,14 +54,14 @@ Först avetablerar du den virtuella datorn med hjälp av Azure VM-agenten för a
 4. När kommandot har slutförts anger du **Avsluta** för att stänga SSH-klienten.  Den virtuella datorn kommer fortfarande att köras nu.
 
 ## <a name="step-2-create-vm-image"></a>Steg 2: skapa en VM-avbildning
-Använd Azure CLI för att markera den virtuella datorn som generaliserad och avbilda avbildningen. Ersätt exempel parameter namn med dina egna värden i följande exempel. Exempel på parameter namn är *myResourceGroup*, *myVnet*och *myVM*.
+Använd Azure CLI för att markera den virtuella datorn som generaliserad och avbilda avbildningen. Ersätt exempel parameter namn med dina egna värden i följande exempel. Exempel på parameter namn är *myResourceGroup*, *myVnet* och *myVM*.
 
 1. Frigör den virtuella dator som du avetablerat med [AZ VM-frigörning](/cli/azure/vm). I följande exempel avallokeras den virtuella datorn med namnet *myVM* i resurs gruppen med namnet *myResourceGroup*.  
    
     ```azurecli
     az vm deallocate \
-      --resource-group myResourceGroup \
-      --name myVM
+        --resource-group myResourceGroup \
+        --name myVM
     ```
     
     Vänta tills den virtuella datorn är helt avallokerad innan du går vidare. Det kan ta några minuter att slutföra.  Den virtuella datorn stängs av under avallokeringen.
@@ -70,8 +70,8 @@ Använd Azure CLI för att markera den virtuella datorn som generaliserad och av
    
     ```azurecli
     az vm generalize \
-      --resource-group myResourceGroup \
-      --name myVM
+        --resource-group myResourceGroup \
+        --name myVM
     ```
 
     En virtuell dator som har generaliserats kan inte längre startas om.
@@ -80,8 +80,8 @@ Använd Azure CLI för att markera den virtuella datorn som generaliserad och av
    
     ```azurecli
     az image create \
-      --resource-group myResourceGroup \
-      --name myImage --source myVM
+        --resource-group myResourceGroup \
+        --name myImage --source myVM
     ```
    
    > [!NOTE]

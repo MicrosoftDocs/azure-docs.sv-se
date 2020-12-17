@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/14/2020
+ms.date: 12/17/2020
 ms.author: alkohli
-ms.openlocfilehash: 18a1fc7f42884dcc194256e1f51ddecb62d2708c
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 87ec1f03a1f2294a4423e26129644eafcf7c915c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516397"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655483"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Vanliga frågor och svar
 
@@ -97,11 +97,11 @@ Dessa produktions tider är *uppskattningar*. Tiden för varje steg i order bear
 **Uppskattade produktions tider för en Data Box-enhet ordning:**
 
 1. Beställ Data Box-enhet: några minuter från portalen
-2. Enhetstilldelning och förberedelse: 1–2 arbetsdagar
+2. Enhets tilldelning och förberedelse: 1-2 arbets dagar, beroende på inventerings tillgänglighet och andra beställningar som väntar på att utföras
 3. Frakt: 2–3 arbetsdagar
 4. Data kopiering på kund webbplatsen: beror på data, storlek och antal filer
 5. Returleverans: 2–3 arbetsdagar
-6. Bearbetar enhet i Data Center: 1-2 arbets dagar
+6. Bearbetar enhet i Data Center: 1-2 arbets dagar, beroende på andra beställningar som väntar på bearbetning
 7. Ladda upp data till Azure: börjar så snart bearbetningen är klar och enheten är ansluten. Uppladdnings tiden beror på data, storlek och antal filer.
 
 ### <a name="q-i-ordered-a-couple-of-data-box-devices-i-cant-create-any-additional-orders-why"></a>F. Jag har beställt ett par Data Box-enheter. Jag kan inte skapa några ytterligare beställningar. Varför?

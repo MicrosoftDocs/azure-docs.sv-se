@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 2011fa8e85f10f12ae914b02710bbd65f5700403
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 834672274ade1f8551e86e7c636c4625368d997c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913053"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652202"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Optimera Azure Data Lake Storage Gen2 för prestanda
 
@@ -23,7 +23,7 @@ Azure Data Lake Storage Gen2 stöder stora data flöden för I/O-intensiva analy
 
 Data Lake Storage Gen2 kan skalas för att tillhandahålla nödvändigt data flöde för alla analys scenarier. Som standard ger ett Data Lake Storage Gen2-konto automatiskt tillräckligt med data flöde för att uppfylla behoven hos en bred kategori av användnings fall. För de fall där kunderna får en standard gräns kan Data Lake Storage Gen2 kontot konfigureras för att tillhandahålla mer data flöde genom att kontakta [Azure-supporten](https://azure.microsoft.com/support/faq/).
 
-## <a name="data-ingestion"></a>Datainhämtning
+## <a name="data-ingestion"></a>Datainmatning
 
 När data matas in från ett käll system till Data Lake Storage Gen2, är det viktigt att tänka på att käll maskin vara, käll nätverks maskin vara och nätverks anslutning till Data Lake Storage Gen2 kan vara Flask halsen.  
 
@@ -43,11 +43,11 @@ Nätverks anslutningen mellan dina källdata och Data Lake Storage Gen2 kan ibla
 
 När du har adresserat käll maskin varan och nätverks anslutningens Flask halsar ovan är du redo att konfigurera dina inmatnings verktyg. I följande tabell sammanfattas viktiga inställningar för flera populära inmatnings verktyg och ger detaljerade prestanda justerings artiklar för dem.  Om du vill veta mer om vilket verktyg som ska användas för ditt scenario kan du gå till den här [artikeln](data-lake-storage-data-scenarios.md).
 
-| Verktyg               | Inställningar     | Mer information                                                                 |
+| Verktyg               | Inställningar | Mer information                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| DistCp            | -m (mapper)   | [Operationsföljdslänkkod](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
-| Azure Data Factory| parallelCopies    | [Operationsföljdslänkkod](../../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | FS. Azure. block. size,-m (mapper)    |   [Operationsföljdslänkkod](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
+| DistCp            | -m (mapper)   | [Länk](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
+| Azure Data Factory| parallelCopies    | [Länk](../../data-factory/copy-activity-performance.md)                          |
+| Sqoop           | FS. Azure. block. size,-m (mapper)    |   [Länk](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>Strukturera din data uppsättning
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: af387b063a3c07d8b6b6c544814565e2a5ebdd46
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c5025b83619b505728bfdf5c4e1ccc81d3bb225e
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993779"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654769"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Haveriberedskapsarkitektur för Hyper-V till Azure
 
@@ -27,7 +27,7 @@ Hyper-V-värdar kan också hanteras i System Center Virtual Machine Manager (VMM
 
 Följande tabell och grafik ger en övergripande bild av de komponenter som används för Hyper-V-replikering till Azure, när Hyper-V-värdar inte hanteras av VMM.
 
-**Komponent** | **Krav** | **Detaljer**
+**Komponent** | **Krav** | **Information**
 --- | --- | ---
 **Azure** | En Azure-prenumeration, Azure Storage-konto och Azure-nätverk. | Replikerade data från lokala VM-arbetsbelastningar lagras i lagrings kontot. Virtuella Azure-datorer skapas med replikerade arbets belastnings data när redundans från den lokala platsen inträffar.<br/><br/> Virtuella Azure-datorer ansluter till det virtuella Azure-nätverket när de skapas.
 **Hyper-V** | Under Site Recovery distributionen samlar du in Hyper-V-värdar och-kluster på Hyper-V-platser. Du installerar Azure Site Recovery Provider och Recovery Services agent på varje fristående Hyper-V-värd eller på varje Hyper-V-klusternod. | Providern samordnar replikeringen med Site Recovery-tjänsten via Internet. Recovery Services-agenten hanterar datareplikeringen.<br/><br/> Kommunikation från både providern och agenten är säker och krypterad. Replikerade data i Azure-lagring krypteras också.
@@ -43,7 +43,7 @@ Följande tabell och grafik ger en övergripande bild av de komponenter som anv�
 
 Följande tabell och grafik ger en övergripande bild av de komponenter som används för Hyper-V-replikering till Azure, när Hyper-V-värdar hanteras i VMM-moln.
 
-**Komponent** | **Krav** | **Detaljer**
+**Komponent** | **Krav** | **Information**
 --- | --- | ---
 **Azure** | En Azure-prenumeration, Azure Storage-konto och Azure-nätverk. | Replikerade data från lokala VM-arbetsbelastningar lagras i lagrings kontot. Virtuella Azure-datorer skapas med replikerade data när redundansväxlingen från din lokala plats sker.<br/><br/> Virtuella Azure-datorer ansluter till det virtuella Azure-nätverket när de skapas.
 **VMM-server** | VMM-servern har ett eller flera moln som innehåller Hyper-V-värdar. | Du installerar Site Recovery-providern på VMM-servern, för att samordna replikering med Site Recovery och registrera servern i Recovery Services-valvet.
@@ -66,9 +66,9 @@ För att Site Recovery ska fungera som förväntat måste du ändra den utgåend
 
 Om du använder en URL-baserad brand Väggs-proxy för att kontrol lera utgående anslutning ger du åtkomst till följande URL: er:
 
-| **Namn**                  | **Kommersiellt**                               | **Myndigheter**                                 | **Beskrivning** |
+| **Namn**                  | **Kommersiellt**                               | **Government**                                 | **Beskrivning** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Gör att data kan skrivas från den virtuella datorn till cachelagringskontot i källregionen. |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | Gör att data kan skrivas från den virtuella datorn till cachelagringskontot i källregionen. |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Tillhandahåller auktorisering och autentisering för Site Recovery-tjänstens webbadresser. |
 | Replikering               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Låter den virtuella datorn kommunicera med Site Recovery-tjänsten. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Låter den virtuella datorn skriva övervaknings- och diagnostikdata för Site Recovery. |
@@ -130,7 +130,7 @@ Om du använder en URL-baserad brand Väggs-proxy för att kontrol lera utgåend
 
 Om det uppstår ett replikeringsfel finns det en inbyggd funktion som gör ett nytt försök. Återförsök klassificeras enligt beskrivningen i tabellen.
 
-**Kategori** | **Detaljer**
+**Kategori** | **Information**
 --- | ---
 **Oåterkalleliga fel** | Inga nya försök görs. Status för den virtuella datorn är **kritisk**, och administratören måste ingripa.<br/><br/> Exempel på dessa fel är en bruten virtuell hård disk kedja, ett ogiltigt tillstånd för den virtuella replik datorn, autentiseringsfel, auktoriseringsfel och den virtuella datorn kunde inte hitta fel (för fristående Hyper-V-servrar).
 **Återkalleliga fel** | Återförsök sker varje replikeringsintervall, med ett exponentiellt undantagsläge som ökar återförsöksintervallet från det första försökets start med 1, 2, 4, 8 och 10 minuter. Om felet kvarstår försöker du var 30: e minut. Exempel på sådana problem är nätverks fel, låga diskfel och låga minnes förhållanden.

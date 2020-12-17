@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 12/04/2020
 ms.author: aahi
-ms.openlocfilehash: 4f5c47000355a004f8d76d8b740b705618748380
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 62b6869f7269cbc21590e97ba0e2cbda79466832
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505230"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656282"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>Gör så här: sentiment analys och avyttrande
 
@@ -24,8 +24,6 @@ API för textanalysens Attitydanalys-funktion erbjuder två sätt att identifier
 AI-modellerna som används av API: et tillhandahålls av tjänsten. du behöver bara skicka innehåll för analys.
 
 ## <a name="sentiment-analysis-versions-and-features"></a>Attitydanalys versioner och funktioner
-
-[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 | Funktion                                   | Attitydanalys v3 | Attitydanalys v 3.1 (förhands granskning) |
 |-------------------------------------------|-----------------------|-----------------------------------|

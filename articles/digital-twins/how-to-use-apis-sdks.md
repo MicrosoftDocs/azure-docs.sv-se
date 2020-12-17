@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: cac0d8cb8a910b735454c9270060364cab2db5fb
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1627db2f1f19c393d4f40892ca65141f26424ac9
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187246"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656945"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Använda Azure Digital Twins-API:er och -SDK:er
 
@@ -26,7 +26,7 @@ Den här artikeln ger en översikt över de API: er som är tillgängliga och me
 
 API: er för kontroll plan är [arm](../azure-resource-manager/management/overview.md) -API: er som används för att hantera din Azure Digital-instansen som helhet, så att de täcker åtgärder som att skapa eller ta bort hela instansen. Du kan också använda dessa för att skapa och ta bort slut punkter.
 
-Den mest aktuella API-versionen för kontroll planet är _**2020-10-31**_.
+Den mest aktuella API-versionen för kontroll planet är _**2020-12-01**_.
 
 Använda API: er för kontroll plan:
 * Du kan anropa API: erna direkt genom att referera till de senaste Swagger i [mappen Control plan Swagger](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins). Den här lagrings platsen innehåller också en mapp med exempel som visar användningen.

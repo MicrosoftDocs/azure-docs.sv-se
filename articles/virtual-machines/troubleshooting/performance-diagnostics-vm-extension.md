@@ -1,7 +1,7 @@
 ---
 title: VM-tillägg för Azure Performance Diagnostics för Windows | Microsoft Docs
 description: Introducerar VM-tillägget för Azure Performance Diagnostics för Windows.
-services: virtual-machines-windows'
+services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
 manager: dcscontentpm
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 16af8b8c1258ef7945e88a7af42e86a7bba2003b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9edba575b35613abb8bc3081964a37b838bb358b
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963269"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656603"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Azures VM-tillägg för prestandadiagnostik för Windows
 
@@ -27,7 +27,7 @@ Med VM-tillägget för Azure Performance Diagnostics kan du samla in prestanda d
 > [!NOTE]
 > Om du vill köra diagnostik på den virtuella datorn från Azure Portal för icke-klassiska virtuella datorer, rekommenderar vi att du använder den nya upplevelsen. Mer information finns i [prestandadiagnostik för Azure Virtual Machines](performance-diagnostics.md) 
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Tillägget kan installeras på
 * Windows Server 2019
@@ -54,16 +54,16 @@ Följande JSON visar schemat för Azure Performance Diagnostics VM-tillägget. D
         "typeHandlerVersion": "1.0",
         "autoUpgradeMinorVersion": true,
         "settings": {
-            "storageAccountName": "[parameters('storageAccountName')]",
-            "performanceScenario": "[parameters('performanceScenario')]",
-            "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
-            "perfCounterTrace": "[parameters('perfCounterTrace')]",
-            "networkTrace": "[parameters('networkTrace')]",
-            "xperfTrace": "[parameters('xperfTrace')]",
-            "storPortTrace": "[parameters('storPortTrace')]",
-            "srNumber": "[parameters('srNumber')]",
-            "requestTimeUtc":  "[parameters('requestTimeUtc')]",
-            "resourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('vmName'))]"
+          "storageAccountName": "[parameters('storageAccountName')]",
+          "performanceScenario": "[parameters('performanceScenario')]",
+          "traceDurationInSeconds": "[parameter('traceDurationInSeconds')]",
+          "perfCounterTrace": "[parameters('perfCounterTrace')]",
+          "networkTrace": "[parameters('networkTrace')]",
+          "xperfTrace": "[parameters('xperfTrace')]",
+          "storPortTrace": "[parameters('storPortTrace')]",
+          "srNumber": "[parameters('srNumber')]",
+          "requestTimeUtc":  "[parameters('requestTimeUtc')]",
+          "resourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('vmName'))]"
         },
         "protectedSettings": {
             "storageAccountKey": "[parameters('storageAccountKey')]"        
@@ -74,23 +74,23 @@ Följande JSON visar schemat för Azure Performance Diagnostics VM-tillägget. D
 
 ### <a name="property-values"></a>Egenskaps värden
 
-|   **Namn**   |**Värde/exempel**|       **Beskrivning**      |
-|--------------|-------------------|----------------------------|
-|apiVersion|2015-06-15|API-versionen.
-|utgivare|Microsoft. Azure. Performance. Diagnostics|Utgivarens namn område för tillägget.
-|typ|AzurePerformanceDiagnostics|Typ av VM-tillägg.
-|typeHandlerVersion|1.0|Tilläggs hanterarens version.
-|performanceScenario|frö|Det prestanda scenario som data ska samlas in för. Giltiga värden är: **Basic**, **vmslow**, **migreringsåtgärden**och **Custom**.
-|traceDurationInSeconds|300|Spårens varaktighet, om något av spårnings alternativen är markerat.
-|perfCounterTrace|P|Alternativ för att aktivera spårning av prestanda räknare. Giltiga värden är **p** eller ett tomt värde. Lämna värdet tomt om du inte vill avbilda den här spårningen.
-|networkTrace|n|Alternativ för att aktivera nätverks spårning. Giltiga värden är **n** eller tomma värden. Lämna värdet tomt om du inte vill avbilda den här spårningen.
-|xperfTrace|x|Alternativ för att aktivera XPerf trace. Giltiga värden är **x** eller tomma värden. Lämna värdet tomt om du inte vill avbilda den här spårningen.
-|storPortTrace|s|Alternativ för att aktivera StorPort trace. Giltiga värden är **s** eller tomma. Lämna värdet tomt om du inte vill avbilda den här spårningen.
-|srNumber|123452016365929|Support ärende numret, om det är tillgängligt. Lämna värdet tomt om du inte har det.
-|requestTimeUtc|2017-09-28T22:08:53.736 Z|Aktuell datum tid i UTC. Om du använder portalen för att installera det här tillägget behöver du inte ange det här värdet.
-|resourceId|/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}|Den unika identifieraren för en virtuell dator.
-|storageAccountName|mystorageaccount|Namnet på det lagrings konto där du vill lagra diagnostikloggar och resultat.
-|storageAccountKey|lDuVvxuZB28NNP... hAiRF3voADxLBTcc = =|Nyckeln för lagrings kontot.
+| Namn | Värde/exempel | Beskrivning |
+|--|--|--|
+| apiVersion | 2015-06-15 | API-versionen. |
+| utgivare | Microsoft. Azure. Performance. Diagnostics | Utgivarens namn område för tillägget. |
+| typ | AzurePerformanceDiagnostics | Typ av VM-tillägg. |
+| typeHandlerVersion | 1,0 | Tilläggs hanterarens version. |
+| performanceScenario | frö | Det prestanda scenario som data ska samlas in för. Giltiga värden är: **Basic**, **vmslow**, **migreringsåtgärden** och **Custom**. |
+| traceDurationInSeconds | 300 | Spårens varaktighet, om något av spårnings alternativen är markerat. |
+| perfCounterTrace | P | Alternativ för att aktivera spårning av prestanda räknare. Giltiga värden är **p** eller ett tomt värde. Lämna värdet tomt om du inte vill avbilda den här spårningen. |
+| networkTrace | n | Alternativ för att aktivera nätverks spårning. Giltiga värden är **n** eller tomma värden. Lämna värdet tomt om du inte vill avbilda den här spårningen. |
+| xperfTrace | x | Alternativ för att aktivera XPerf trace. Giltiga värden är **x** eller tomma värden. Lämna värdet tomt om du inte vill avbilda den här spårningen. |
+| storPortTrace | s | Alternativ för att aktivera StorPort trace. Giltiga värden är **s** eller tomma. Lämna värdet tomt om du inte vill avbilda den här spårningen. |
+| srNumber | 123452016365929 | Support ärende numret, om det är tillgängligt. Lämna värdet tomt om du inte har det. |
+| requestTimeUtc | 2017-09-28T22:08:53.736 Z | Aktuell datum tid i UTC. Om du använder portalen för att installera det här tillägget behöver du inte ange det här värdet. |
+| resourceId | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} | Den unika identifieraren för en virtuell dator. |
+| storageAccountName | mystorageaccount | Namnet på det lagrings konto där du vill lagra diagnostikloggar och resultat. |
+| storageAccountKey | lDuVvxuZB28NNP... hAiRF3voADxLBTcc = = | Nyckeln för lagrings kontot. |
 
 ## <a name="install-the-extension"></a>Installera tillägget
 
@@ -117,6 +117,7 @@ Följ de här anvisningarna för att installera tillägget på virtuella Windows
     > Tillägget körs när etableringen har slutförts. Det tar två minuter eller mindre att slutföra för det grundläggande scenariot. För andra scenarier körs den med den varaktighet som anges under installationen.
 
 ## <a name="remove-the-extension"></a>Ta bort tillägget
+
 Följ dessa steg om du vill ta bort tillägget från en virtuell dator:
 
 1. Logga in på [Azure Portal](https://portal.azure.com), Välj den virtuella dator som du vill ta bort tillägget från och välj sedan bladet **tillägg** . 
@@ -128,9 +129,10 @@ Följ dessa steg om du vill ta bort tillägget från en virtuell dator:
     > Du kan också välja tilläggs posten och välja alternativet **Avinstallera** .
 
 ## <a name="template-deployment"></a>Malldistribution
+
 Tillägg för virtuella Azure-datorer kan distribueras med Azure Resource Manager mallar. Det JSON-schema som beskrivs i föregående avsnitt kan användas i en Azure Resource Manager-mall. Detta kör VM-tillägget för Azure Performance Diagnostics under en Azure Resource Manager mall-distribution. Här är en exempel mal len:
 
-```
+```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -144,11 +146,11 @@ Tillägg för virtuella Azure-datorer kan distribueras med Azure Resource Manage
       "defaultValue": "southcentralus"
     },
     "storageAccountName": {
-      "type": "securestring"
+      "type": "securestring",
       "defaultValue": "yourStorageAccount"
     },
     "storageAccountKey": {
-      "type": "securestring"
+      "type": "securestring",
       "defaultValue": "yourStorageAccountKey"
     },
     "performanceScenario": {
@@ -159,10 +161,10 @@ Tillägg för virtuella Azure-datorer kan distribueras med Azure Resource Manage
       "type": "string",
       "defaultValue": ""
     },
-    "traceDurationInSeconds": {
-      "type": "int",
+  "traceDurationInSeconds": {
+    "type": "int",
     "defaultValue": 300
-    },
+  },
     "perfCounterTrace": {
       "type": "string",
       "defaultValue": "p"
@@ -196,16 +198,16 @@ Tillägg för virtuella Azure-datorer kan distribueras med Azure Resource Manage
         "typeHandlerVersion": "1.0",
         "autoUpgradeMinorVersion": true,
         "settings": {
-            "storageAccountName": "[parameters('storageAccountName')]",
-            "performanceScenario": "[parameters('performanceScenario')]",
-            "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
-            "perfCounterTrace": "[parameters('perfCounterTrace')]",
-            "networkTrace": "[parameters('networkTrace')]",
-            "xperfTrace": "[parameters('xperfTrace')]",
-            "storPortTrace": "[parameters('storPortTrace')]",
-            "srNumber": "[parameters('srNumber')]",
-            "requestTimeUtc":  "[parameters('requestTimeUtc')]",
-            "resourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('vmName'))]"
+          "storageAccountName": "[parameters('storageAccountName')]",
+          "performanceScenario": "[parameters('performanceScenario')]",
+          "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
+          "perfCounterTrace": "[parameters('perfCounterTrace')]",
+          "networkTrace": "[parameters('networkTrace')]",
+          "xperfTrace": "[parameters('xperfTrace')]",
+          "storPortTrace": "[parameters('storPortTrace')]",
+          "srNumber": "[parameters('srNumber')]",
+          "requestTimeUtc":  "[parameters('requestTimeUtc')]",
+          "resourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('vmName'))]"
         },
         "protectedSettings": {
             "storageAccountKey": "[parameters('storageAccountKey')]"
@@ -217,6 +219,7 @@ Tillägg för virtuella Azure-datorer kan distribueras med Azure Resource Manage
 ```
 
 ## <a name="powershell-deployment"></a>PowerShell-distribution
+
 `Set-AzVMExtension`Kommandot kan användas för att distribuera Azure Performance Diagnostics VM-tillägg till en befintlig virtuell dator.
 
 PowerShell
@@ -241,7 +244,7 @@ PerfInsights-verktyget samlar in olika loggar, konfigurations-och diagnostikdata
 
 ## <a name="view-and-share-the-results"></a>Visa och dela resultaten
 
-Utdata från tillägget finns i en zip-fil som överförts till det lagrings konto som angavs under installationen och delas i 30 dagar med hjälp av [signaturer för delad åtkomst (SAS)](../../storage/common/storage-sas-overview.md). Den här zip-filen innehåller diagnostikloggar och en rapport med undersöknings resultat och rekommendationer. En SAS-länk till zip-filen för utdata finns i en textfil med namnet *zipfilename*_saslink.txt under mappen **C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics \\ \<version> **. Alla som har den här länken kan hämta zip-filen.
+Utdata från tillägget finns i en zip-fil som överförts till det lagrings konto som angavs under installationen och delas i 30 dagar med hjälp av [signaturer för delad åtkomst (SAS)](../../storage/common/storage-sas-overview.md). Den här zip-filen innehåller diagnostikloggar och en rapport med undersöknings resultat och rekommendationer. En SAS-länk till zip-filen för utdata finns i en textfil med namnet *zipfilename* _saslink.txt under mappen **C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics \\ \<version>**. Alla som har den här länken kan hämta zip-filen.
 
 För att hjälpa Support teknikern att arbeta med ditt support ärende kan Microsoft använda SAS-länken för att hämta diagnostikdata.
 

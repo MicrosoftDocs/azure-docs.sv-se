@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 12/17/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: bf53ce5ed3f9505572538533263f0d17c5dcbf45
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 57fda08a996b7d46da74c0ce35bff0df20821b31
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562573"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654837"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Så här anropar du Textanalys REST API
 
@@ -63,9 +63,6 @@ Se tabellen nedan för att se vilka funktioner som kan användas asynkront. Obse
 
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
-
-[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
-
 
 <a name="json-schema"></a>
 
@@ -200,7 +197,7 @@ example.json
 
 ## <a name="set-up-a-request"></a>Konfigurera en begäran 
 
-I Postman (eller något annat verktyg för webb-API-testning) lägger du till slut punkten för den funktion som du vill använda. Använd tabellen nedan för att hitta rätt slut punkts format och Ersätt `<your-text-analytics-resource>` med resurs slut punkten. Till exempel:
+I Postman (eller något annat verktyg för webb-API-testning) lägger du till slut punkten för den funktion som du vill använda. Använd tabellen nedan för att hitta rätt slut punkts format och Ersätt `<your-text-analytics-resource>` med resurs slut punkten. Exempel:
 
 `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.0/languages`
 
@@ -257,8 +254,8 @@ När du har slut punkten, i Postman (eller något annat verktyg för webb-API-te
 
 5. Klistra in vissa JSON-dokument i ett giltigt format. Använd exemplen i avsnittet **API Request format** ovan och mer information och exempel finns i avsnitten nedan:
 
-      + [Språk identifiering](text-analytics-how-to-language-detection.md)
-      + [Extrahering av nyckel fraser](text-analytics-how-to-keyword-extraction.md)
+      + [Språkidentifiering](text-analytics-how-to-language-detection.md)
+      + [Extrahering av nyckelfraser](text-analytics-how-to-keyword-extraction.md)
       + [Sentiment-analys](text-analytics-how-to-sentiment-analysis.md)
       + [Enhets igenkänning](text-analytics-how-to-entity-linking.md)
 
@@ -269,7 +266,7 @@ Skicka API-begäran. Om du har gjort anropet till en synkron slut punkt visas sv
 Om du har gjort anropet till asynkrona `/analyze` eller `/health` slut punkter kontrollerar du att du har fått en 202-svarskod. Du måste få svaret att visa resultaten:
 
 1. I API-svaret hittar du `Operation-Location` från-huvudet, som identifierar det jobb som du skickade till API: et. 
-2. Skapa en GET-begäran för den slut punkt som du använde. Se [tabellen ovan](#set-up-a-request) för slut punkts formatet och granska [API-referens dokumentationen](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/AnalyzeStatus). Till exempel:
+2. Skapa en GET-begäran för den slut punkt som du använde. Se [tabellen ovan](#set-up-a-request) för slut punkts formatet och granska [API-referens dokumentationen](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/AnalyzeStatus). Exempel:
 
     `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>`
 
@@ -287,8 +284,8 @@ Observera att `/analyze` `/health` resultaten från get-begäran i steg 2 är ti
 
 Svaren på den synkrona slut punkten varierar beroende på vilken slut punkt du använder. Se följande artiklar för exempel svar.
 
-+ [Språk identifiering](text-analytics-how-to-language-detection.md#step-3-view-the-results)
-+ [Extrahering av nyckel fraser](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
++ [Språkidentifiering](text-analytics-how-to-language-detection.md#step-3-view-the-results)
++ [Extrahering av nyckelfraser](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
 + [Sentiment-analys](text-analytics-how-to-sentiment-analysis.md#view-the-results)
 + [Enhets igenkänning](text-analytics-how-to-entity-linking.md#view-results)
 
@@ -298,7 +295,7 @@ Svaren på den synkrona slut punkten varierar beroende på vilken slut punkt du 
 
 Om det lyckas, kommer GET-begäran till `/analyze` slut punkten returnera ett objekt som innehåller de tilldelade aktiviteterna. Till exempel `keyPhraseExtractionTasks`. Dessa aktiviteter innehåller objektet Response från lämplig Textanalys funktion. Se följande artiklar för mer information.
 
-+ [Extrahering av nyckel fraser](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
++ [Extrahering av nyckelfraser](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
 + [Enhets igenkänning](text-analytics-how-to-entity-linking.md#view-results)
 + [Textanalys för hälsa](text-analytics-for-health.md#hosted-asynchronous-web-api-response)
 

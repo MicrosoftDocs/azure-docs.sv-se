@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 674ce347f929dd70e32537e9bde3139c5fafc7ea
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 24ffce1528aa5c82fec9666fa0cb7b8717107f54
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92368017"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652270"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Felsök problem med Azure-till-Azure VM-nätverksanslutningar
 
@@ -18,9 +18,9 @@ I den här artikeln beskrivs vanliga problem som rör nätverks anslutning när 
 
 För att Site Recovery replikering ska fungera krävs utgående anslutning till vissa URL-adresser eller IP-intervall från den virtuella datorn. Om den virtuella datorn ligger bakom en brand vägg eller använder regler för nätverks säkerhets grupper (NSG) för att kontrol lera utgående anslutningar kan du stöta på något av dessa problem.
 
-| **Namn**                  | **Kommersiellt**                               | **Myndigheter**                                 | **Beskrivning** |
+| **Namn**                  | **Kommersiellt**                               | **Government**                                 | **Beskrivning** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Krävs så att data kan skrivas till cache-lagrings kontot i käll regionen från den virtuella datorn. Om du känner till alla cache-lagrings konton för dina virtuella datorer kan du använda en lista över tillåtna för de angivna URL: erna för lagrings kontot. Till exempel `cache1.blob.core.windows.net` och `cache2.blob.core.windows.net` i stället för `*.blob.core.windows.net` . |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | Krävs så att data kan skrivas till cache-lagrings kontot i käll regionen från den virtuella datorn. Om du känner till alla cache-lagrings konton för dina virtuella datorer kan du använda en lista över tillåtna för de angivna URL: erna för lagrings kontot. Till exempel `cache1.blob.core.windows.net` och `cache2.blob.core.windows.net` i stället för `*.blob.core.windows.net` . |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Krävs för auktorisering och autentisering till Site Recovery tjänst-URL: er. |
 | Replikering               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Krävs så att kommunikationen mellan Site Recoverys tjänsten kan ske från den virtuella datorn. Du kan använda motsvarande _Site Recovery-IP_ om brand Väggs-proxyn har stöd för IP-adresser. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Krävs så att Site Recovery övervakning och diagnostikdata kan skrivas från den virtuella datorn. Du kan använda motsvarande _Site Recovery övervakning av IP_ om din brand vägg stöder IP-adresser. |
@@ -41,7 +41,7 @@ Kontrol lera om den virtuella datorn använder en anpassad DNS-inställning:
 
 1. Öppna **virtuella datorer** och välj den virtuella datorn.
 1. Navigera till **inställningarna** för virtuella datorer och välj **nätverk**.
-1. I **virtuellt nätverk/undernät**väljer du länken för att öppna det virtuella nätverkets resurs sida.
+1. I **virtuellt nätverk/undernät** väljer du länken för att öppna det virtuella nätverkets resurs sida.
 1. Gå till **Inställningar** och välj **DNS-servrar**.
 
 Försök att komma åt DNS-servern från den virtuella datorn. Om DNS-servern inte är tillgänglig kan du göra den tillgänglig genom att antingen redundansväxla DNS-servern eller skapa en plats mellan DR-nätverket och DNS.
@@ -74,11 +74,14 @@ Det här exemplet visar hur du konfigurerar NSG-regler för en virtuell dator at
 
 1. Skapa en HTTPS utgående säkerhets regel för NSG så som visas på följande skärm bild. I det här exemplet används **destinations tjänst tag gen**: _Storage. öster_ och **mål Port intervall**: _443_.
 
-     :::image type="content" source="./media/azure-to-azure-about-networking/storage-tag.png" alt-text="com-fel":::
+     :::image type="content" source="./media/azure-to-azure-about-networking/storage-tag.png" alt-text="Skärm bild som visar rutan Lägg till regel för utgående trafik för en säkerhets regel för lagrings punkt öst U S.":::
 
 1. Skapa en HTTPS utgående säkerhets regel för NSG så som visas på följande skärm bild. I det här exemplet används **destinations tjänst tag gen**: _AzureActiveDirectory_ -och **mål Port intervall**: _443_.
 
-     :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="com-fel" på NSG. Detta ger till gång till Site Recovery tjänst i vilken region som helst.
+     :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="Skärm bild som visar fönstret Lägg till utgående säkerhets regel för en säkerhets regel för Azure Active Directory.":::
+
+1. På samma sätt som säkerhets regler, skapar du en utgående HTTPS (443) säkerhets regel för "EventHub. Central" på den NSG som motsvarar mål platsen. Detta ger åtkomst till Site Recovery övervakning.
+1. Skapa en utgående HTTPS (443) säkerhets regel för "AzureSiteRecovery" på NSG. Detta ger till gång till Site Recovery tjänst i vilken region som helst.
 
 #### <a name="nsg-rules---central-us"></a>NSG-regler – centrala USA
 

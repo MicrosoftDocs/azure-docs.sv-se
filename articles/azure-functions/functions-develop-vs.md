@@ -4,12 +4,12 @@ description: Lär dig hur du utvecklar och testar Azure Functions med hjälp av 
 ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: c5164d0757de5011c112a9506979da19d9585790
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 877c82e375b0ea469071402b83fadbd634177f3f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167805"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655823"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Utveckla Azure Functions med hjälp av Visual Studio  
 
@@ -27,7 +27,7 @@ Den här artikeln innehåller information om hur du använder Visual Studio för
 
 Om inget annat anges är procedurer och exempel som visas för Visual Studio 2019. 
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - Azure Functions verktyg. Om du vill lägga till Azure Function tools inkluderar du arbets belastningen **Azure Development** i Visual Studio-installationen. Azure Functions-verktyg är tillgängliga i Azure Development-arbetsbelastningen från och med Visual Studio 2017.
 
@@ -42,7 +42,7 @@ Om inget annat anges är procedurer och exempel som visas för Visual Studio 201
 
 ### <a name="check-your-tools-version-in-visual-studio-2017"></a><a name="check-your-tools-version"></a>Kontrol lera din verktygs version i Visual Studio 2017
 
-1. Från **verktyg** -menyn väljer du **tillägg och uppdateringar**. Expandera **installerade**  >  **verktyg**och välj sedan **Azure Functions-och webb jobb verktyg**.
+1. Från **verktyg** -menyn väljer du **tillägg och uppdateringar**. Expandera **installerade**  >  **verktyg** och välj sedan **Azure Functions-och webb jobb verktyg**.
 
     ![Kontrol lera version av funktions verktyg](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
 
@@ -56,11 +56,11 @@ Om inget annat anges är procedurer och exempel som visas för Visual Studio 201
 
     ![Uppdatera funktions verktyg versionen](./media/functions-develop-vs/functions-vstools-update-functions-tools.png)   
 
-1. När verktygs uppdateringen har laddats ned väljer du **Stäng**och stänger sedan Visual Studio för att utlösa verktyg-uppdateringen med vsix Installer.
+1. När verktygs uppdateringen har laddats ned väljer du **Stäng** och stänger sedan Visual Studio för att utlösa verktyg-uppdateringen med vsix Installer.
 
 1. I installations programmet för VSIX väljer du **modifiera** för att uppdatera verktygen. 
 
-1. När uppdateringen är klar väljer du **Stäng**och startar sedan om Visual Studio.
+1. När uppdateringen är klar väljer du **Stäng** och startar sedan om Visual Studio.
 
 > [!NOTE]  
 > I Visual Studio 2019 och senare uppdateras tillägget Azure Functions verktyg som en del av Visual Studio.  
@@ -86,6 +86,18 @@ Visual Studio överför inte automatiskt inställningarna i local.settings.jsnä
 
 Koden kan också läsa inställnings värden för funktionen app som miljövariabler. Mer information finns i [miljövariabler](functions-dotnet-class-library.md#environment-variables).
 
+## <a name="configure-your-build-output-settings"></a>Konfigurera inställningarna för att bygga utdata
+
+När du skapar ett Azure Functions-projekt optimerar build-verktygen utdata så att endast en kopia av alla sammansättningar som delas med Functions-körningen bevaras. Resultatet är en optimerad version som sparar så mycket utrymme som möjligt. Men när du flyttar till en senare version av någon av dina projekt sammansättningar, kanske inte build-verktygen vet att dessa sammansättningar måste bevaras. För att se till att dessa sammansättningar bevaras under optimerings processen kan du ange dem med hjälp av `FunctionsPreservedDependencies` element i projekt filen (. CSPROJ):
+
+```xml
+  <ItemGroup>
+    <FunctionsPreservedDependencies Include="Microsoft.AspNetCore.Http.dll" />
+    <FunctionsPreservedDependencies Include="Microsoft.AspNetCore.Http.Extensions.dll" />
+    <FunctionsPreservedDependencies Include="Microsoft.AspNetCore.Http.Features.dll" />
+  </ItemGroup>
+```
+
 ## <a name="configure-the-project-for-local-development"></a>Konfigurera projektet för lokal utveckling
 
 Functions-körningen använder ett Azure Storage-konto internt. För alla utlösare typer än HTTP och Webhooks anger du `Values.AzureWebJobsStorage` nyckeln till en giltig Azure Storage konto anslutnings sträng. Din Function-app kan också använda [Azure Storage emulatorn](../storage/common/storage-use-emulator.md) för `AzureWebJobsStorage` anslutnings inställningen som krävs av projektet. Om du vill använda emulatorn ställer du in värdet `AzureWebJobsStorage` till `UseDevelopmentStorage=true` . Ändra den här inställningen till en faktisk lagrings konto anslutnings sträng före distributionen.
@@ -94,7 +106,7 @@ Så här anger du anslutnings strängen för lagrings kontot:
 
 1. I Visual Studio väljer du **Visa**  >  **Cloud Explorer**.
 
-2. Expandera **lagrings konton**i **Cloud Explorer**och välj sedan ditt lagrings konto. På fliken **Egenskaper** kopierar du värdet för **primär anslutnings sträng** .
+2. Expandera **lagrings konton** i **Cloud Explorer** och välj sedan ditt lagrings konto. På fliken **Egenskaper** kopierar du värdet för **primär anslutnings sträng** .
 
 2. I ditt projekt öppnar du local.settings.jspå filen och anger värdet för `AzureWebJobsStorage` nyckeln till den anslutnings sträng som du kopierade.
 
@@ -104,7 +116,7 @@ Så här anger du anslutnings strängen för lagrings kontot:
 
 I klass biblioteks funktionerna i C# definieras de bindningar som används av funktionen genom att använda attribut i koden. När du skapar funktions utlösare från de angivna mallarna tillämpas utlösarens attribut. 
 
-1. I **Solution Explorer**högerklickar du på noden projekt och väljer **Lägg till**  >  **nytt objekt**. 
+1. I **Solution Explorer** högerklickar du på noden projekt och väljer **Lägg till**  >  **nytt objekt**. 
 
 2. Välj **Azure Function**, ange ett **namn** för klassen och välj sedan **Lägg till**.
 

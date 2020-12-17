@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: b3e00c3832f243ec0190023116bbfdeaaad86c94
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 64d1084fd7025c74676977f065062e5e94dabf1d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370431"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652253"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Haveriberedskapsarkitektur för Azure till Azure
 
@@ -62,7 +62,7 @@ Du kan hantera mål resurser på följande sätt:
 
 När du aktiverar Azure VM-replikering skapar Site Recovery en ny replikeringsprincip med de standardinställningar som sammanfattas i tabellen.
 
-**Principinställning** | **Detaljer** | **Default**
+**Principinställning** | **Information** | **Objekt**
 --- | --- | ---
 **Kvarhållning av återställnings punkt** | Anger hur länge Site Recovery behåller återställnings punkter | 24 timmar
 **Frekvens för programkonsekventa ögonblicks bilder** | Hur ofta Site Recovery tar en programkonsekvent ögonblicks bild. | Var fjärde timme
@@ -96,13 +96,13 @@ I följande tabell beskrivs olika typer av konsekvens.
 
 ### <a name="crash-consistent"></a>Krasch-konsekvent
 
-**Beskrivning** | **Detaljer** | **Rekommendation**
+**Beskrivning** | **Information** | **Rekommendation**
 --- | --- | ---
 En krasch-konsekvent ögonblicks bild fångar upp data som fanns på disken när ögonblicks bilden togs. Det innehåller inte något i minnet.<br/><br/> Den innehåller motsvarigheten till data på disken som kan finnas om den virtuella datorn kraschade eller om ström sladden hämtades från servern vid det ögonblick då ögonblicks bilden togs.<br/><br/> En krasch konsekvens garanterar inte data konsekvens för operativ systemet eller för appar på den virtuella datorn. | Site Recovery skapar kraschbaserade återställnings punkter var femte minut som standard. Den här inställningen kan inte ändras.<br/><br/>  | Idag kan de flesta appar återställa sig väl från kraschbaserade punkter.<br/><br/> Kraschbaserade återställnings punkter är vanligt vis tillräckligt för replikering av operativ system och appar som DHCP-servrar och utskrifts servrar.
 
 ### <a name="app-consistent"></a>Program – konsekvent
 
-**Beskrivning** | **Detaljer** | **Rekommendation**
+**Beskrivning** | **Information** | **Rekommendation**
 --- | --- | ---
 Programkonsekventa återställnings punkter skapas från programkonsekventa ögonblicks bilder.<br/><br/> En programkonsekvent ögonblicks bild innehåller all information i en krasch-konsekvent ögonblicks bild, plus alla data i minnet och transaktioner som pågår. | Programkonsekventa ögonblicks bilder använder tjänsten Volume Shadow Copy (VSS):<br/><br/>   1) Azure Site Recovery använder metoden kopiera endast säkerhets kopiering (VSS_BT_COPY) som inte ändrar säkerhets kopierings tid och sekvensnummer för Microsoft SQLs transaktions logg </br></br> 2) när en ögonblicks bild initieras utför VSS en ko-åtgärd (kopiering vid skrivning) på volymen.<br/><br/>   3) innan den utför Ko informerar VSS varje app på datorn att den behöver tömma sina minnesresidenta data till disk.<br/><br/>   4) VSS tillåter sedan säkerhets kopierings-och haveri beredskap (i det här fallet Site Recovery) att läsa ögonblicks bild data och fortsätta. | Programkonsekventa ögonblicks bilder tas i enlighet med den frekvens som du anger. Den här frekvensen bör alltid vara mindre än du anger för att behålla återställnings punkter. Om du till exempel behåller återställnings punkter med standardinställningen 24 timmar bör du ange frekvensen till mindre än 24 timmar.<br/><br/>De är mer komplexa och tar längre tid än krasch-konsekventa ögonblicks bilder.<br/><br/> De påverkar prestanda för appar som körs på en virtuell dator som är aktive rad för replikering. 
 
@@ -128,9 +128,9 @@ När du aktiverar replikering för en virtuell Azure-dator händer följande:
 
 Om utgående åtkomst för virtuella datorer styrs med URL: er, Tillåt dessa URL: er.
 
-| **Namn**                  | **Kommersiellt**                               | **Myndigheter**                                 | **Beskrivning** |
+| **Namn**                  | **Kommersiellt**                               | **Government**                                 | **Beskrivning** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | Gör att data kan skrivas från den virtuella datorn till cachelagringskontot i källregionen. |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | Gör att data kan skrivas från den virtuella datorn till cachelagringskontot i källregionen. |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Tillhandahåller auktorisering och autentisering för Site Recovery-tjänstens webbadresser. |
 | Replikering               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`     | Låter den virtuella datorn kommunicera med Site Recovery-tjänsten. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Låter den virtuella datorn skriva övervaknings- och diagnostikdata för Site Recovery. |
@@ -144,9 +144,9 @@ Observera att information om nätverks anslutningens krav finns i [nätverks Whi
 
 #### <a name="source-region-rules"></a>Käll regions regler
 
-**Regel** |  **Detaljer** | **Tjänsttagg**
+**Regel** |  **Information** | **Tjänsttagg**
 --- | --- | --- 
-Tillåt HTTPS utgående: port 443 | Tillåt intervall som motsvarar lagrings konton i käll regionen | Lagrings.\<region-name>
+Tillåt HTTPS utgående: port 443 | Tillåt intervall som motsvarar lagrings konton i käll regionen | Lagring.\<region-name>
 Tillåt HTTPS utgående: port 443 | Tillåt intervall som motsvarar Azure Active Directory (Azure AD)  | AzureActiveDirectory
 Tillåt HTTPS utgående: port 443 | Tillåt intervall som motsvarar Event Hub i mål regionen. | EventsHub.\<region-name>
 Tillåt HTTPS utgående: port 443 | Tillåt intervall som motsvarar Azure Site Recovery  | AzureSiteRecovery
@@ -155,9 +155,9 @@ Tillåt HTTPS utgående: port 443 | Tillåt intervall som motsvarar Azure Automa
 
 #### <a name="target-region-rules"></a>Mål regions regler
 
-**Regel** |  **Detaljer** | **Tjänsttagg**
+**Regel** |  **Information** | **Tjänsttagg**
 --- | --- | --- 
-Tillåt HTTPS utgående: port 443 | Tillåt intervall som motsvarar lagrings konton i mål regionen | Lagrings.\<region-name>
+Tillåt HTTPS utgående: port 443 | Tillåt intervall som motsvarar lagrings konton i mål regionen | Lagring.\<region-name>
 Tillåt HTTPS utgående: port 443 | Tillåt intervall som motsvarar Azure AD  | AzureActiveDirectory
 Tillåt HTTPS utgående: port 443 | Tillåt intervall som motsvarar Event Hub i käll regionen. | EventsHub.\<region-name>
 Tillåt HTTPS utgående: port 443 | Tillåt intervall som motsvarar Azure Site Recovery  | AzureSiteRecovery

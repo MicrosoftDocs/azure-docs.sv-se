@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: chalton
-ms.openlocfilehash: f209be383e445e3b0c011e0bfb4266a191a8d931
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c77da8252fb3dcb2672a50ec75f676e18dd31da
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85080876"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652338"
 ---
 # <a name="document-extraction-cognitive-skill"></a>Inlärnings kunskap för dokument extrahering
 
@@ -34,7 +34,7 @@ Microsoft.Skills.Util.DocumentExtractionSkill
 
 Parametrar är skiftlägeskänsliga.
 
-| Indata            | Tillåtna värden | Beskrivning |
+| Indata | Tillåtna värden | Beskrivning |
 |-----------------|----------------|-------------|
 | `parsingMode`   | `default` <br/> `text` <br/> `json`  | Ange som `default` dokument extrahering från filer som inte är rena text eller JSON. Ange till `text` för att förbättra prestandan på filer med oformaterad text. Ange till `json` om du vill extrahera strukturerat innehåll från JSON-filer. Om `parsingMode` inte uttryckligen definieras anges det som `default` . |
 | `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | Ange till `contentAndMetadata` om du vill extrahera alla metadata och text innehåll från varje fil. Ange till `allMetadata` om du bara vill extrahera de metadata som är [specifika för innehålls typen](search-howto-indexing-azure-blob-storage.md#ContentSpecificMetadata) (till exempel metadata som är unika för bara PNG-filer). Om `dataToExtract` inte uttryckligen definieras anges det som `contentAndMetadata` . |
