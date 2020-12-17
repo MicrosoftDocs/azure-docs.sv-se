@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 43002fdfbdce146b52774aa4182445bf34dd7199
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 46a5c941822dd258b420b51c710734dc3152f30f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360296"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617416"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>Auktorisera åtkomst till blobbar med AzCopy och Azure Active Directory (Azure AD)
 
@@ -183,9 +183,9 @@ Ersätt `<path-to-certificate-file>` plats hållaren med den relativa eller full
 > [!NOTE]
 > Överväg att använda en prompt som du ser i det här exemplet. På så sätt visas inte lösen ordet i konsolens kommando historik. 
 
-## <a name="authorize-without-a-keyring-linux"></a>Auktorisera utan en nyckel Ring (Linux)
+## <a name="authorize-without-a-secret-store"></a>Auktorisera utan ett hemligt Arkiv
 
-Om operativ systemet inte har något hemligt Arkiv, till exempel en *nyckel* ring, `azcopy login` fungerar inte kommandot. I stället kan du ange minnesbaserade variabler i minnet innan du kör varje åtgärd. Dessa värden försvinner från minnet när åtgärden har slutförts, så du måste ange dessa variabler varje gång du kör ett AzCopy-kommando.
+Om operativ systemet inte har något hemligt Arkiv, till exempel en Linux- *nyckelring*, `azcopy login` fungerar inte kommandot. I stället kan du ange minnesbaserade variabler i minnet innan du kör varje åtgärd. 
 
 ### <a name="authorize-a-user-identity"></a>Auktorisera en användar identitet
 

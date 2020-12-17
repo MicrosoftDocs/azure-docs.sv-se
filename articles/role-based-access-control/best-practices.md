@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/30/2020
+ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: 4cb3e1fe0275c676e2ce54ff9201502fc3595937
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00fd00112dad9efc31cea83f69bb458a8e1ca935
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91595481"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617382"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Metod tips för Azure RBAC
 
@@ -24,7 +24,7 @@ I den här artikeln beskrivs några metod tips för hur du använder rollbaserad
 
 Med hjälp av Azure RBAC kan du hålla isär uppgifter i ditt team och bevilja endast den omfattning av åtkomst till användare som de behöver för att utföra sitt arbete. I stället för att ge alla obegränsad behörighet i din Azure-prenumeration eller dina resurser kan du tillåta enbart vissa åtgärder i ett visst omfång.
 
-När du planerar din strategi för åtkomstkontroll är det en bra idé att bevilja användare den lägsta behörighet som krävs för att de ska kunna utföra sitt arbete. Undvik att tilldela bredare roller i bredare omfång, även om det i första skedet verkar vara bekvämare att göra det. Genom att begränsa roller och omfattningar begränsar du vilka resurser som är utsatta för risker om säkerhets objekts skyddet aldrig äventyras.
+När du planerar din strategi för åtkomstkontroll är det en bra idé att bevilja användare den lägsta behörighet som krävs för att de ska kunna utföra sitt arbete. Undvik att tilldela bredare roller i bredare omfång, även om det i första skedet verkar vara bekvämare att göra det. När du skapar anpassade roller ska du bara ta med de behörigheter användarna behöver. Genom att begränsa roller och omfattningar begränsar du vilka resurser som är utsatta för risk om säkerhets objekts skyddet aldrig äventyras.
 
 Följande diagram visar ett föreslaget mönster för att använda Azure RBAC.
 

@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: 522af4bf6cc711bbfdfd30d0443ee58dad56b87e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 340ce84ebe662b976f32048a47fd98d793083065
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950031"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617110"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Säkerhets kopierings guide för SAP HANA på Azure Virtual Machines
 
@@ -103,7 +103,7 @@ Information om konsekvens kontroll av tabell finns också på SAP-webbplatsen i 
 
 ### <a name="pros-and-cons-of-hana-backup-versus-storage-snapshot"></a>För-och nack delar med HANA-säkerhetskopiering jämfört med lagrings ögonblicks bilder
 
-SAP har&#39;t företräde antingen HANA-säkerhets kopiering jämfört med lagrings ögonblicks bilder. Den innehåller en lista med sina respektive-och nack delar, så att du kan avgöra vilken som ska användas beroende på situationen och tillgänglig lagrings teknik (se [Planera din strategi för säkerhets kopiering och återställning](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm)).
+SAP har&#39;t företräde antingen HANA-säkerhets kopiering jämfört med lagrings ögonblicks bilder. Den innehåller en lista med sina respektive-och nack delar, så att du kan avgöra vilken som ska användas beroende på situationen och tillgänglig lagrings teknik (se [Planera din strategi för säkerhets kopiering och återställning](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/ef085cd5949c40b788bba8fd3c65743e.html)).
 
 På Azure bör du vara medveten om det faktum att funktionen för ögonblicks bilder av Azure-bloben&#39;t ger konsekvens i fil systemet på flera diskar (se [använda BLOB-ögonblicksbilder med PowerShell](/archive/blogs/cie/using-blob-snapshots-with-powershell)). 
 

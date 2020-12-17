@@ -1,23 +1,23 @@
 ---
 title: Visa och hantera tjänstleverantörer
 description: Kunder kan använda sidan tjänst leverantörer i Azure Portal för att visa information om tjänst leverantörer, Service Provider-erbjudanden och delegerade resurser.
-ms.date: 10/12/2020
+ms.date: 12/16/2020
 ms.topic: how-to
-ms.openlocfilehash: e94a9fd6562a9fa8bc0f2d84cce477e7907a1e48
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5ee897503c997ab10fdb489f7921c9d2d001e472
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371111"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617212"
 ---
 # <a name="view-and-manage-service-providers"></a>Visa och hantera tjänstleverantörer
 
-Kunder kan använda sidan **tjänst leverantörer** i [Azure Portal](https://portal.azure.com) för att visa information om tjänst leverantörer och service provider-erbjudanden, delegera resurser till [Azure-Lighthouse](../overview.md)och shoppa för nya tjänst leverantörer.
+Sidan **tjänst leverantörer** i [Azure Portal](https://portal.azure.com) ger kunderna kontroll och synlighet för sina tjänst leverantörer som använder [Azure Lighthouse](../overview.md). Kunder kan visa information om tjänst leverantörer, delegera vissa resurser, handla för nya tjänst leverantörer, ta bort åtkomst till tjänst leverantören och mycket annat.
 
 > [!TIP]
 > Vi kommer att hänvisa till tjänst leverantörer och kunder här, men [företag som hanterar flera klienter](../concepts/enterprise.md) kan använda samma process för att konsolidera sin hanterings upplevelse.
 
-För att få åtkomst till sidan **tjänst leverantörer** i Azure Portal kan kunden välja **alla tjänster**och sedan söka efter **tjänst leverantörer** och välja den. De kan också hitta den genom att ange "tjänst leverantörer" eller "Azure-Lighthouse" i sökrutan längst upp i Azure Portal.
+För att få åtkomst till sidan **tjänst leverantörer** i Azure Portal kan kunden välja **alla tjänster** och sedan söka efter **tjänst leverantörer** och välja den. De kan också hitta den genom att ange "tjänst leverantörer" eller "Azure-Lighthouse" i sökrutan längst upp i Azure Portal.
 
 > [!NOTE]
 > För att kunna visa sidan **tjänst leverantörer** måste en användare i kundens klient organisation ha den [inbyggda rollen läsare](../../role-based-access-control/built-in-roles.md#reader) (eller en annan inbyggd roll som inkluderar läsar åtkomst).
@@ -41,7 +41,7 @@ I kolumnen **delegeringar** ser kunden hur många prenumerationer och/eller resu
 
 En kund kan lägga till ett nytt Service Provider-erbjudande från sidan **tjänst leverantörs erbjudanden** genom att välja **Lägg till erbjudande**. Tjänste leverantören måste ha publicerat ett erbjudande för den här kunden. Kunden kan sedan välja erbjudandet från den **privata erbjudande** skärmen och sedan välja **skapa**.
 
-Om kunden vill ta bort ett Service Provider-erbjudande kan de välja pappers korgs ikonen på raden för det erbjudandet. När du har bekräftat borttagningen kommer tjänste leverantören inte längre att ha åtkomst till de kund resurser som tidigare har delegerats för det erbjudandet.
+Om kunden vill ta bort ett Service Provider-erbjudande kan de göra det när som helst genom att välja pappers korgs ikonen på raden för det erbjudandet. När du har bekräftat borttagningen kommer tjänste leverantören inte längre att ha åtkomst till de kund resurser som tidigare har delegerats för det erbjudandet.
 
 ## <a name="delegate-resources"></a>Delegera resurser
 
@@ -85,4 +85,5 @@ Mer information om hur du tilldelar en princip och visar resultat för kompatibi
 ## <a name="next-steps"></a>Nästa steg
 
 - Läs mer om [Azure Lighthouse](../overview.md).
+- Lär dig hur du [granskar tjänste leverantörs aktivitet](view-service-provider-activity.md).
 - Lär dig hur tjänst leverantörer kan [Visa och hantera kunder](view-manage-customers.md) på sidan **mina kunder** i Azure Portal.

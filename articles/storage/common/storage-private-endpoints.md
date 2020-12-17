@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 0da970724a5d6f0ad42ba64939f316ec1ada855b
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 7af2e6794d0d2f37c342a86b2f36b94c9601cc7e
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905561"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617263"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Använd privata slut punkter för Azure Storage
 
@@ -45,6 +45,9 @@ Lagrings kontots ägare kan hantera medgivande förfrågningar och privata slut 
 > Om du vill begränsa åtkomsten till ditt lagrings konto via enbart den privata slut punkten konfigurerar du lagrings brand väggen för att neka eller kontrol lera åtkomst via den offentliga slut punkten.
 
 Du kan skydda ditt lagrings konto så att det bara accepterar anslutningar från ditt VNet genom att [Konfigurera lagrings brand väggen](storage-network-security.md#change-the-default-network-access-rule) för att neka åtkomst via dess offentliga slut punkt som standard. Du behöver inte ha någon brand Väggs regel för att tillåta trafik från ett VNet som har en privat slut punkt, eftersom lagrings brand väggen bara kontrollerar åtkomst via den offentliga slut punkten. Privata slut punkter förlitar sig i stället på godkännande flödet för att ge undernät åtkomst till lagrings tjänsten.
+
+> [!NOTE]
+> När du kopierar blobbar mellan lagrings konton måste klienten ha nätverks åtkomst till båda kontona. Så om du väljer att bara använda en privat länk för ett konto (antingen källan eller målet) kontrollerar du att klienten har nätverks åtkomst till det andra kontot. Information om andra sätt att konfigurera nätverks åtkomst finns i [konfigurera Azure Storage brand väggar och virtuella nätverk](storage-network-security.md?toc=/azure/storage/blobs/toc.json). 
 
 ### <a name="private-endpoints-for-azure-storage"></a>Privata slut punkter för Azure Storage
 

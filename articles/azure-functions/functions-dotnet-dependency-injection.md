@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 08/15/2020
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: ee2e7dc577e000878884655c0ed5f4bcb1aabab5
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: f87ed9b7455bed870cf25a6920cc6295811d94c8
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167703"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617076"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Använda beroendeinmatning i .NET Azure Functions
 
@@ -22,7 +22,7 @@ Azure Functions stöder design mönstret för program beroende insprutning (DI),
 
 - Stöd för beroende inmatning börjar med Azure Functions 2. x.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Innan du kan använda beroende inmatning måste du installera följande NuGet-paket:
 
@@ -118,8 +118,8 @@ I det här exemplet används paketet [Microsoft. Extensions. http](https://www.n
 
 Azure Functions appar ger samma tjänste livstid som ASP.NET- [beroende inmatning](/aspnet/core/fundamentals/dependency-injection#service-lifetimes). För en Functions-app beter sig de olika livs längderna för tjänsten enligt följande:
 
-- **Tillfälliga**: tillfälliga tjänster skapas vid varje begäran av tjänsten.
-- **Omfattning**: livs längden för omfattnings tjänsten matchar en livs längd för funktions körning. Omfångs tjänster skapas en gång per körning. Senare begär Anden för tjänsten under körningen återanvänder den befintliga tjänst instansen.
+- **Tillfälliga**: tillfälliga tjänster skapas vid varje lösning av tjänsten.
+- **Omfattning**: livs längden för omfattnings tjänsten matchar en livs längd för funktions körning. Omfångs tjänster skapas en gång per funktion-körning. Senare begär Anden för tjänsten under körningen återanvänder den befintliga tjänst instansen.
 - **Singleton**: singleton-tjänstens livs längd motsvarar värdens livstid och återanvänds över funktions körningar på den instansen. Singleton livstids tjänster rekommenderas för anslutningar och klienter, till exempel `DocumentClient` eller `HttpClient` instanser.
 
 Visa eller hämta ett [exempel på olika livs längder för tjänsten](https://github.com/Azure/azure-functions-dotnet-extensions/tree/main/src/samples/DependencyInjection/Scopes) på GitHub.
@@ -181,6 +181,8 @@ Följande exempel `host.json` fil lägger till logg filtret.
     }
 }
 ```
+
+Mer information om loggnings nivåer finns i [Konfigurera logg nivåer](configure-monitoring.md#configure-log-levels).
 
 ## <a name="function-app-provided-services"></a>Function-appen tillhandahåller tjänster
 

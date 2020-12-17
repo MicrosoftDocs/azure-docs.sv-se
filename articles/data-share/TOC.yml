@@ -27,6 +27,8 @@
   items:
     - name: Säkerhet
       items:
+        - name: Säkerhetsöversikt
+          href: security.md
         - name: Säkerhetsbaslinje
           href: security-baseline.md
     - name: Terminologi för Azure Data Share
@@ -62,8 +64,6 @@
       href: how-to-revoke-share-subscription.md
     - name: Övervaka
       href: how-to-monitor.md
-    - name: Säkerhet
-      href: security.md
     - name: Haveriberedskap
       href: disaster-recovery.md
     - name: Felsöka

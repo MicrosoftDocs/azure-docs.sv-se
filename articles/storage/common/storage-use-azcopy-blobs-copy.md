@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f536e163e3d19d91c150506ab44fdd9cbc02c693
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 524e3f70f9588cfae2c739722fc1a44e683f9a7f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96907575"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617297"
 ---
 # <a name="copy-blobs-between-azure-storage-accounts-by-using-azcopy-v10"></a>Kopiera blobbar mellan Azure Storage-konton med hjälp av AzCopy v10
 
@@ -28,6 +28,8 @@ Information om hur du hämtar AzCopy och lär dig hur du kan ange autentiserings
 ## <a name="guidelines"></a>Riktlinjer
 
 Använd följande rikt linjer för dina AzCopy-kommandon. 
+
+- Klienten måste ha nätverks åtkomst till både käll-och mål lagrings kontona. Information om hur du konfigurerar nätverks inställningar för varje lagrings konto finns i [konfigurera Azure Storage brand väggar och virtuella nätverk](storage-network-security.md?toc=/azure/storage/blobs/toc.json).
 
 - Lägg till en SAS-token till varje käll-URL. 
 
@@ -146,10 +148,10 @@ En fullständig lista finns i [alternativ](storage-ref-azcopy-copy.md#options).
 
 Hitta fler exempel i de här artiklarna:
 
-- [Exempel: upload](storage-use-azcopy-blobs-upload.md)
+- [Exempel: Ladda upp](storage-use-azcopy-blobs-upload.md)
 - [Exempel: Ladda ned](storage-use-azcopy-blobs-download.md)
-- [Exempel: synkronisera](storage-use-azcopy-blobs-synchronize.md)
-- [Exempel: Amazon S3-buckets](storage-use-azcopy-s3.md)
+- [Exempel: Synkronisera](storage-use-azcopy-blobs-synchronize.md)
+- [Exempel: Amazon S3-bucketar](storage-use-azcopy-s3.md)
 - [Exempel: Azure Files](storage-use-azcopy-files.md)
 - [Självstudie: Migrera lokala data till molnlagring med AzCopy](storage-use-azcopy-migrate-on-premises-data.md)
 - [Konfigurera, optimera och felsöka AzCopy](storage-use-azcopy-configure.md)

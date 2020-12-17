@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: 13bdf4b10ec586bf83a70434f003cc1573aca469
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 70b0f8178a94735a6ef37a225044984508cc2233
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950269"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617144"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>SAP HANA Azure Backup på filnivå
 
@@ -28,7 +28,7 @@ Den här artikeln är en relaterad artikel till [säkerhets kopierings guiden f�
 
 Olika VM-typer i Azure tillåter ett annat antal virtuella hård diskar anslutna. De exakta detaljerna dokumenteras i [storlekar för virtuella Linux-datorer i Azure](../../sizes.md). För de tester som hänvisas till i den här dokumentationen använde vi en GS5 Azure VM, som tillåter 64 anslutna data diskar. För större SAP HANA system kan ett stort antal diskar redan utföras för data-och loggfiler, eventuellt i kombination med program striping för optimalt disk-i/o-dataflöde. Mer information om de föreslagna disk konfigurationerna för SAP HANA distributioner på virtuella Azure-datorer finns i artikeln [SAP HANA konfigurationer för virtuella Azure-datorer](./hana-vm-operations-storage.md). Rekommendationerna är inklusive rekommendationer för disk utrymme för lokala säkerhets kopior.
 
-Standard sättet att hantera säkerhets kopiering/återställning på filnivå är med en filbaserad säkerhets kopia via SAP HANA Studio eller via SAP HANA SQL-uttryck. Mer information finns i artikeln [SAP HANA SQL och system views Reference](https://help.sap.com/hana/SAP_HANA_SQL_and_System_Views_Reference_en.pdf).
+Standard sättet att hantera säkerhets kopiering/återställning på filnivå är med en filbaserad säkerhets kopia via SAP HANA Studio eller via SAP HANA SQL-uttryck. Mer information finns i artikeln [SAP HANA SQL och system views Reference](https://help.sap.com/viewer/4fe29514fd584807ac9f2a04f6754767/2.0.05/en-US/3859e48180bb4cf8a207e15cf25a7e57.html).
 
 ![Den här bilden visar dialog rutan för meny alternativet Säkerhetskopiera i SAP HANA Studio](media/sap-hana-backup-file-level/backup-menue-dialog.png)
 

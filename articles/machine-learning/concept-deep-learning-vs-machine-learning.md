@@ -10,12 +10,12 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 12/15/2020
 ms.custom: contperf-fy21q1,contperfq1
-ms.openlocfilehash: f7c4529c68f79c6ad19f22054fd0b7d2ba5116db
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 17c5cc265b4199d745325bf2c9d9fbca24cc6506
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562845"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617127"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Djup inlärning jämfört med Machine Learning i Azure Machine Learning
 
@@ -57,9 +57,9 @@ I följande tabell jämförs de två metoderna i detalj:
 |  **Körningstid** | Tar relativt lite tid att träna, från några sekunder till några timmar. | Det tar vanligt vis lång tid att träna eftersom en djup inlärnings algoritm omfattar många lager. |
 |  **Resultat** | Utdata är vanligt vis ett numeriskt värde, till exempel en poäng eller en klassificering. | Utdata kan ha flera format, t. ex. en text, en poäng eller ett ljud. |
 
-## <a name="transfer-learning"></a>Överförings utbildning
+## <a name="transfer-learning"></a>Överföra utbildning
 
-Inlärnings djup inlärnings modeller kräver ofta stora mängder utbildnings data, avancerade beräknings resurser (GPU, TPU) och en längre utbildnings tid. I scenarier där du inte har någon av dessa tillgängliga kan du genvägen till inlärnings processen med hjälp av en teknik som kallas överförings inlärning.
+Inlärnings djup inlärnings modeller kräver ofta stora mängder utbildnings data, avancerade beräknings resurser (GPU, TPU) och en längre utbildnings tid. I scenarier där du inte har någon av dessa tillgängliga kan du genvägen till inlärnings processen med hjälp av en teknik som kallas *överförings inlärning.*
 
 Överförings inlärning är en teknik som används för att lösa ett problem med ett annat men relaterat problem.
 

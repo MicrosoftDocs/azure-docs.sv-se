@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 08/28/2020
-ms.openlocfilehash: da1683ec48fcae10ff74163a7db089c30ddd7aad
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.date: 12/16/2020
+ms.openlocfilehash: 9dfc8be54fc55842440e376916b2eb9bb04a4610
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219912"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617093"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Dela och ta emot data från Azure Blob Storage och Azure Data Lake Storage
 
@@ -21,7 +21,7 @@ Azure Data Share stöder ögonblicks bilds-baserad delning från lagrings kontot
 
 Azure data sharing stöder delning av filer, mappar och fil system från Azure Data Lake gen1 och Azure Data Lake Gen2. Det stöder också delning av blobbar, mappar och behållare från Azure Blob Storage. Endast Block-Blob stöds för närvarande. Data som delas från dessa källor kan tas emot i Azure Data Lake Gen2 eller Azure Blob Storage.
 
-När fil system, behållare eller mappar delas i ögonblicks bilds-baserad delning, kan data konsumenten välja att göra en fullständig kopia av delnings data eller utnyttja en stegvis ögonblicks bilds kapacitet för att bara kopiera nya eller uppdaterade filer. En stegvis ögonblicks bild baseras på filernas senaste ändrings tid. Befintliga filer med samma namn kommer att skrivas över.
+När fil system, behållare eller mappar delas i ögonblicks bilds-baserad delning, kan data konsumenten välja att göra en fullständig kopia av delnings data eller utnyttja en stegvis ögonblicks bilds kapacitet för att bara kopiera nya eller uppdaterade filer. En stegvis ögonblicks bild baseras på filernas senaste ändrings tid. Befintliga filer med samma namn kommer att skrivas över under ögonblicks bilden. Filen som togs bort från källan tas inte bort från målet. Tomma undermappar på källan kopieras inte över till målet. 
 
 ## <a name="share-data"></a>Dela data
 
@@ -58,10 +58,10 @@ Skapa en Azure Data Share-resurs i en Azure-resurs grupp.
     | Prenumeration | Din prenumeration | Välj den Azure-prenumeration som du vill använda för ditt data resurs konto.|
     | Resursgrupp | *test-resurs-grupp* | Använd en befintlig resursgrupp eller skapa en ny resursgrupp. |
     | Plats | *USA, östra 2* | Välj en region för ditt data resurs konto.
-    | Namn | *datashareaccount* | Ange ett namn för ditt data resurs konto. |
+    | Name | *datashareaccount* | Ange ett namn för ditt data resurs konto. |
     | | |
 
-1. Välj **Granska + skapa**och sedan **skapa** för att etablera ditt data resurs konto. Det tar vanligt vis ungefär 2 minuter att tillhandahålla ett nytt data resurs konto. 
+1. Välj **Granska + skapa** och sedan **skapa** för att etablera ditt data resurs konto. Det tar vanligt vis ungefär 2 minuter att tillhandahålla ett nytt data resurs konto. 
 
 1. När distributionen är klar väljer du **Gå till resurs**.
 
@@ -136,7 +136,7 @@ Logga in på [Azure-portalen](https://portal.azure.com/).
 
 1. Du kan öppna inbjudan från e-post eller direkt från Azure Portal. 
 
-   Om du vill öppna inbjudan från e-post, kontrollerar du Inkorgen för en inbjudan från din data leverantör. Inbjudan är från Microsoft Azure, med titeln **Azure Data Share-inbjudan från <yourdataprovider@domain.com> **. Klicka på **Visa inbjudan** för att se din inbjudan i Azure. 
+   Om du vill öppna inbjudan från e-post, kontrollerar du Inkorgen för en inbjudan från din data leverantör. Inbjudan är från Microsoft Azure, med titeln **Azure Data Share-inbjudan från <yourdataprovider@domain.com>**. Klicka på **Visa inbjudan** för att se din inbjudan i Azure. 
 
    Du öppnar inbjudan från Azure Portal direkt genom att söka efter **inbjudningar för data delning** i Azure Portal. Då går du till listan med data resurs inbjudningar.
 
@@ -149,7 +149,7 @@ Logga in på [Azure-portalen](https://portal.azure.com/).
 
    ![Villkor för användning](./media/terms-of-use.png "Villkor för användning") 
 
-1. Under *konto för mål data resurs*väljer du den prenumeration och resurs grupp som du ska distribuera data resursen till. 
+1. Under *konto för mål data resurs* väljer du den prenumeration och resurs grupp som du ska distribuera data resursen till. 
 
    För fältet **data resurs konto** väljer du **Skapa nytt** om du inte har ett befintligt data resurs konto. Annars väljer du ett befintligt data resurs konto som du vill acceptera data resursen till. 
 
@@ -185,7 +185,7 @@ De här stegen gäller endast för Snapshot-baserad delning.
 
    ![Utlös ögonblicks bild](./media/trigger-snapshot.png "Utlös ögonblicks bild") 
 
-1. När den senaste körnings statusen har *slutförts*går du till mål data lagret för att Visa mottagna data. Välj **data uppsättningar**och klicka på länken i mål Sök vägen. 
+1. När den senaste körnings statusen har *slutförts* går du till mål data lagret för att Visa mottagna data. Välj **data uppsättningar** och klicka på länken i mål Sök vägen. 
 
    ![Konsument data uppsättningar](./media/consumer-datasets.png "Mappning av konsument data uppsättning") 
 

@@ -6,14 +6,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 12/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9763a0ac3cba15dcfd66b8fad83230e2b0eb356b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 7239c2e3cb42cb17b01904e8fc226ae2408dbb47
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491680"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617433"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure Stream Analytics partitionering av anpassad BLOB-utdata
 
@@ -25,7 +25,13 @@ Anpassade fält eller indatavärden förbättrar underordnade data bearbetnings-
 
 ### <a name="partition-key-options"></a>Partitionsalternativ
 
-Partitionsnyckel eller kolumn namn som används för att partitionera indata kan innehålla alfanumeriska tecken med bindestreck, under streck och blank steg. Det går inte att använda kapslade fält som partitionsnyckel om de inte används tillsammans med alias. Partitionsnyckel måste vara NVARCHAR (MAX), BIGINT, FLOAT eller BIT (1,2 kompatibilitetsnivå eller högre). Mer information finns i [Azure Stream Analytics data typer](/stream-analytics-query/data-types-azure-stream-analytics).
+Den partitionsnyckel eller det kolumn namn som används för att partitionera indata kan innehålla alla specialtecken som accepteras för [BLOB-namn](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata). Det går inte att använda kapslade fält som partitionsnyckel om de inte används tillsammans med alias, men du kan använda vissa tecken för att skapa en hierarki av filer. Du kan till exempel använda följande fråga för att skapa en kolumn som kombinerar data från två andra kolumner för att skapa en unik partitionsnyckel.
+
+```sql
+SELECT name, id, CONCAT(name, "/", id) AS nameid
+```
+
+Partitionsnyckel måste vara NVARCHAR (MAX), BIGINT, FLOAT eller BIT (1,2 kompatibilitetsnivå eller högre). Typerna DateTime, array och Records stöds inte, men kan användas som diskpartitioner om de konverteras till strängar. Mer information finns i [Azure Stream Analytics data typer](/stream-analytics-query/data-types-azure-stream-analytics).
 
 ### <a name="example"></a>Exempel
 
@@ -67,13 +73,13 @@ Observera att varje post i blobben har en **client_id** kolumn som matchar mappn
 
 ## <a name="custom-datetime-path-patterns"></a>Anpassade mönster för DateTime-sökväg
 
-Med anpassade mönster för DateTime-sökväg kan du ange ett utdataformat som är anpassat till Hive-konventioner för direkt uppspelning, vilket ger Azure Stream Analytics möjligheten att skicka data till Azure HDInsight och Azure Databricks för bearbetning under bearbetning. Anpassade mönster för datum/tid-sökväg implementeras enkelt med hjälp av `datetime` nyckelordet i fältet Path (prefix) i BLOB-utdata, tillsammans med format specificeraren. Exempelvis `{datetime:yyyy}`.
+Med anpassade mönster för DateTime-sökväg kan du ange ett utdataformat som är anpassat till Hive-konventioner för direkt uppspelning, vilket ger Azure Stream Analytics möjligheten att skicka data till Azure HDInsight och Azure Databricks för bearbetning under bearbetning. Anpassade mönster för datum/tid-sökväg implementeras enkelt med hjälp av `datetime` nyckelordet i fältet Path (prefix) i BLOB-utdata, tillsammans med format specificeraren. Ett exempel är `{datetime:yyyy}`.
 
 ### <a name="supported-tokens"></a>Token som stöds
 
 Följande format-token kan användas separat eller i kombination för att uppnå anpassade DateTime-format:
 
-|Format specificerare   |Description   |Resultat i exempel tid 2018-01-02T10:06:08|
+|Format specificerare   |Beskrivning   |Resultat i exempel tid 2018-01-02T10:06:08|
 |----------|-----------|------------|
 |{datetime: åååå}|Året som ett fyrsiffrigt tal|2018|
 |{datetime: MM}|Månad från 01 till 12|01|
@@ -105,7 +111,7 @@ Du kan använda samma format specifikation flera gånger i Path-prefixet. Token 
 
 Anpassade Sök vägs mönster för Blob Storage kan användas med registrerings konventionen för Hive, som förväntar sig att mappar etiketteras med `column=` i mappnamnet.
 
-Exempelvis `year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}/hour={datetime:HH}`.
+Ett exempel är `year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}/hour={datetime:HH}`.
 
 Anpassade utdata eliminerar besväret med att ändra tabeller och manuellt lägga till partitioner i Port data mellan Azure Stream Analytics och Hive. I stället kan många mappar läggas till automatiskt med:
 

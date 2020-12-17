@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/11/2020
+ms.date: 12/15/2020
 ms.author: rolyon
-ms.openlocfilehash: eddbd9cb695f3ff7eabd9f2549d0a868d8826eb9
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 79aaeee942a6d46243ee1c72d5904484b8698ebe
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369131"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617331"
 ---
 # <a name="azure-custom-roles"></a>Anpassade roller i Azure
 
@@ -161,11 +161,11 @@ I följande tabell beskrivs vad de anpassade roll egenskaperna innebär.
 | `Id`</br>`name` | Ja | Sträng | Det unika ID: t för den anpassade rollen. För Azure PowerShell och Azure CLI genereras detta ID automatiskt när du skapar en ny roll. |
 | `IsCustom`</br>`roleType` | Ja | Sträng | Anger om det här är en anpassad roll. Ange till `true` eller `CustomRole` för anpassade roller. Ange till `false` eller `BuiltInRole` för inbyggda roller. |
 | `Description`</br>`description` | Ja | Sträng | Beskrivningen av den anpassade rollen. Kan innehålla bokstäver, siffror, blank steg och specialtecken. Maximalt antal tecken är 1024. |
-| `Actions`</br>`actions` | Ja | Sträng [] | En sträng mat ris som anger vilka hanterings åtgärder som rollen kan utföra. Mer information finns i [åtgärder](role-definitions.md#actions). |
-| `NotActions`</br>`notActions` | Nej | Sträng [] | En sträng mat ris som anger vilka hanterings åtgärder som undantas från tillåten `Actions` . Mer information finns i [NotActions](role-definitions.md#notactions). |
-| `DataActions`</br>`dataActions` | Nej | Sträng [] | En sträng mat ris som anger de data åtgärder som rollen kan utföra på dina data i objektet. Om du skapar en anpassad roll med kan `DataActions` den rollen inte tilldelas i hanterings gruppens definitions område. Mer information finns i [DataActions](role-definitions.md#dataactions). |
-| `NotDataActions`</br>`notDataActions` | Nej | Sträng [] | En sträng mat ris som anger de data åtgärder som undantas från tillåten `DataActions` . Mer information finns i [NotDataActions](role-definitions.md#notdataactions). |
-| `AssignableScopes`</br>`assignableScopes` | Ja | Sträng [] | En sträng mat ris som anger de omfång som den anpassade rollen är tillgänglig för tilldelning. Du kan bara definiera en hanterings grupp i `AssignableScopes` för en anpassad roll. Att lägga till en hanterings grupp i `AssignableScopes` är för närvarande en för hands version. Mer information finns i [AssignableScopes](role-definitions.md#assignablescopes). |
+| `Actions`</br>`actions` | Yes | Sträng [] | En sträng mat ris som anger vilka hanterings åtgärder som rollen kan utföra. Mer information finns i [åtgärder](role-definitions.md#actions). |
+| `NotActions`</br>`notActions` | No | Sträng [] | En sträng mat ris som anger vilka hanterings åtgärder som undantas från tillåten `Actions` . Mer information finns i [NotActions](role-definitions.md#notactions). |
+| `DataActions`</br>`dataActions` | No | Sträng [] | En sträng mat ris som anger de data åtgärder som rollen kan utföra på dina data i objektet. Om du skapar en anpassad roll med kan `DataActions` den rollen inte tilldelas i hanterings gruppens definitions område. Mer information finns i [DataActions](role-definitions.md#dataactions). |
+| `NotDataActions`</br>`notDataActions` | No | Sträng [] | En sträng mat ris som anger de data åtgärder som undantas från tillåten `DataActions` . Mer information finns i [NotDataActions](role-definitions.md#notdataactions). |
+| `AssignableScopes`</br>`assignableScopes` | Yes | Sträng [] | En sträng mat ris som anger de omfång som den anpassade rollen är tillgänglig för tilldelning. Du kan bara definiera en hanterings grupp i `AssignableScopes` för en anpassad roll. Att lägga till en hanterings grupp i `AssignableScopes` är för närvarande en för hands version. Mer information finns i [AssignableScopes](role-definitions.md#assignablescopes). |
 
 ## <a name="wildcard-permissions"></a>Behörigheter för jokertecken
 
@@ -208,6 +208,7 @@ I följande lista beskrivs gränserna för anpassade roller.
 - Varje katalog kan ha upp till **5000** anpassade roller.
 - Azure Germany och Azure Kina 21Vianet kan ha upp till 2000 anpassade roller för varje katalog.
 - Du kan inte ange `AssignableScopes` rot omfånget ( `"/"` ).
+- Du kan inte använda jokertecken ( `*` ) i `AssignableScopes` . Den här begränsningen för jokertecken hjälper till att se till att en användare inte kan få åtkomst till ett omfång genom att uppdatera roll definitionen.
 - Du kan bara definiera en hanterings grupp i `AssignableScopes` för en anpassad roll. Att lägga till en hanterings grupp i `AssignableScopes` är för närvarande en för hands version.
 - `DataActions`Det går inte att tilldela anpassade roller med hanterings grupps omfånget.
 - Azure Resource Manager validerar inte hanterings gruppens existens i roll definitionens tilldelnings omfång.

@@ -4,15 +4,15 @@ description: Lär dig att skicka Azure RabbitMQ-utlösare och bindningar i Azure
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/11/2020
+ms.date: 12/15/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: cd6c8de0d9290aab273e25403bb1cb2d8fe07e27
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 72c31d0eebc19a926805976ed637168a00fa9495
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505767"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617195"
 ---
 # <a name="rabbitmq-bindings-for-azure-functions-overview"></a>RabbitMQ-bindningar för Azure Functions översikt
 
@@ -30,7 +30,7 @@ Azure Functions integreras med [rabbitmq](https://www.rabbitmq.com/) via [utlös
 
 För att komma igång med att utveckla med det här tillägget, se till att du först [konfigurerar en rabbitmq-slutpunkt](https://github.com/Azure/azure-functions-rabbitmq-extension/wiki/Setting-up-a-RabbitMQ-Endpoint). Om du vill veta mer om RabbitMQ kan du titta på [sidan komma igång](https://www.rabbitmq.com/getstarted.html).
 
-### <a name="functions-2x-and-higher"></a>Functions 2.x och senare
+### <a name="functions-3x-and-higher"></a>Funktionerna 3. x och högre
 
 Om du arbetar med utlösaren och bindningarna måste du referera till rätt paket. NuGet-paketet används för .NET-klass bibliotek medan tilläggs paketet används för alla andra program typer.
 
@@ -46,9 +46,9 @@ Om du arbetar med utlösaren och bindningarna måste du referera till rätt pake
 [Uppdatera dina tillägg]: ./functions-bindings-register.md
 [Tillägg för Azure-verktyg]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
-### <a name="functions-1x"></a>Functions 1.x
+### <a name="functions-1x-and-2x"></a>Functions 1. x och 2. x
 
-RabbitMQ-bindnings tillägg stöds inte för funktionerna 1. x. Använd Functions 2. x och högre.
+RabbitMQ-bindnings tillägg stöds inte för funktionerna 1. x och 2. x. Använd funktionerna 3. x och högre.
 
 ## <a name="next-steps"></a>Nästa steg
 

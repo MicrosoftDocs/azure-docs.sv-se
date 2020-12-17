@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 0c8e13449a66c5eba055c64e072db3140b0cdc1c
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 1b73b018432e5fb9a8af90fc141d009d1bb7b799
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606903"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617059"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Språk-och röst stöd för tal tjänsten
 
@@ -144,8 +144,8 @@ Neurala röster kan användas för att göra interaktioner med chattrobotar och 
 | Arabiska (Egypten) | `ar-EG` | Man | `ar-EG-ShakirNeural` <sup>Nytt</sup> | Allmänt |
 | Arabiska (Saudiarabien) | `ar-SA` | Kvinna | `ar-SA-ZariyahNeural` | Allmänt |
 | Arabiska (Saudiarabien) | `ar-SA` | Man | `ar-SA-HamedNeural` <sup>Nytt</sup> | Allmänt |
-| Bulgariska (Bulgary) | `bg-BG` | Kvinna | `bg-BG-KalinaNeural` | Allmänt |
-| Bulgariska (Bulgary) | `bg-BG` | Man | `bg-BG-BorislavNeural` <sup>Nytt</sup> | Allmänt |
+| Bulgariska (Bulgarien) | `bg-BG` | Kvinna | `bg-BG-KalinaNeural` | Allmänt |
+| Bulgariska (Bulgarien) | `bg-BG` | Man | `bg-BG-BorislavNeural` <sup>Nytt</sup> | Allmänt |
 | Katalanska (Spanien) | `ca-ES` | Kvinna | `ca-ES-AlbaNeural` | Allmänt |
 | Katalanska (Spanien) | `ca-ES` | Kvinna | `ca-ES-JoanaNeural` <sup>Nytt</sup> | Allmänt |
 | Katalanska (Spanien) | `ca-ES` | Man | `ca-ES-EnricNeural` <sup>Nytt</sup> | Allmänt |
