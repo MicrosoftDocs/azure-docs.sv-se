@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: 4d420bf45cd705f518df0d52929a331d23537184
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 97189fd7a232c2467981b23dc20da51ebef08252
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395180"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656350"
 ---
 # <a name="create-a-data-streaming-job-in-azure-sql-edge"></a>Skapa ett data strömnings jobb i Azure SQL Edge 
 
@@ -36,7 +36,7 @@ Om Azure SQL Edge, SQL Server eller Azure SQL Database används som utdataström
 
 Azure SQL Edge stöder för närvarande endast följande data källor som indata och utdata.
 
-| Typ av data Källa | Indata | Resultat | Description |
+| Typ av data Källa | Indata | Resultat | Beskrivning |
 |------------------|-------|--------|------------------|
 | Azure IoT Edge hubb | Y | Y | Data källa för att läsa och skriva strömmande data till en Azure IoT Edge hubb. Mer information finns i [IoT Edge Hub](../iot-edge/iot-edge-runtime.md#iot-edge-hub).|
 | SQL Database | N | Y | Anslutning till data källa för att skriva strömmande data till SQL Database. Databasen kan vara en lokal databas i Azure SQL Edge eller en fjärrdatabas i SQL Server eller Azure SQL Database.|
@@ -117,7 +117,7 @@ I följande exempel skapas ett externt Stream-objekt till den lokala databasen i
     go
     ```
 
-4. Skapa det externa Stream-objektet. I följande exempel skapas ett externt Stream-objekt som pekar på en tabell *dbo. TemperatureMeasurements* , i databasen *MySQLDatabase*.
+4. Skapa det externa Stream-objektet. I följande exempel skapas ett externt Stream-objekt som pekar på en tabell *dbo. TemperatureMeasurements*, i databasen *MySQLDatabase*.
 
     ```sql
     CREATE EXTERNAL STREAM TemperatureMeasurements 
@@ -154,7 +154,7 @@ I följande exempel skapas ett externt Stream-objekt till den lokala databasen i
         DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec' 
     )
    ```
-    
+
 3. Skapa det externa Stream-objektet. I följande exempel skapas ett externt Stream-objekt som pekar på Kafka-ämnet `*TemperatureMeasurement*` .
 
     ```sql
@@ -163,7 +163,7 @@ I följande exempel skapas ett externt Stream-objekt till den lokala databasen i
     (  
         DATA_SOURCE = KafkaInput, 
         FILE_FORMAT = JsonGzipped,
-        LOCATION = 'TemperatureMeasurement',     
+        LOCATION = 'TemperatureMeasurement',
         INPUT_OPTIONS = 'PARTITIONS: 10' 
     ); 
     ```

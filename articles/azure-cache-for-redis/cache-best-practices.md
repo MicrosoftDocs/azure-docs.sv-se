@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 47c8096893742a25904f0f7e688af2fc641166d1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1b62777ec647efc6d5aded573e681cadd6475b47
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004321"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654803"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Bästa praxis för Azure Cache for Redis 
 Genom att följa dessa rekommendationer kan du maximera prestanda och kostnads effektiv användning av Azure-cachen för Redis-instansen.
@@ -34,20 +34,20 @@ Genom att följa dessa rekommendationer kan du maximera prestanda och kostnads e
  * **Konfigurera klient biblioteket för att använda en *anslutnings-timeout* på minst 15 sekunder**, vilket ger system tiden att ansluta även under högre CPU-förhållanden.  Ett timeout-värde för små anslutningar garanterar inte att anslutningen upprättas inom den tids perioden.  Om något går fel (hög klient processor, hög server processor och så vidare), kommer ett kort tids gräns värde för anslutningen orsaka att anslutnings försöket Miss lyckas. Det här beteendet gör ofta en dålig situation sämre.  I stället för att hjälpa, förvärrar kortare timeout-problem genom att tvinga systemet att starta om processen att försöka återansluta, vilket kan leda till en *anslutnings > fel-> försök igen* . Vi rekommenderar vanligt vis att du lämnar tids gränsen för anslutningen till 15 sekunder eller högre. Det är bättre att låta ditt anslutnings försök utföras efter 15 eller 20 sekunder än att det inte går att utföra det snabbt. En sådan slinga för återförsök kan orsaka att ditt avbrott blir längre än om du låter systemet ta längre tid.  
      > [!NOTE]
      > Den här vägledningen är unik för *anslutnings försöket* och är inte relaterat till den tid som du är redo att vänta på en *åtgärd* som Get eller set att slutföra.
- 
+
  * **Undvik dyra åtgärder** – vissa redis-åtgärder, till exempel kommandot [nycklar](https://redis.io/commands/keys) , är *mycket* dyra och bör undvikas.  Mer information finns i några överväganden om [tids krävande kommandon](cache-troubleshoot-server.md#long-running-commands)
 
  * **Använd TLS-kryptering** – Azure cache för REDIS kräver TLS-krypterad kommunikation som standard.  TLS-versionerna 1,0, 1,1 och 1,2 stöds för närvarande.  TLS 1,0 och 1,1 finns dock på en sökväg till föråldrad bransch, så Använd TLS 1,2 om det är möjligt.  Om klient biblioteket eller verktyget inte stöder TLS kan du göra [det genom att](cache-configure.md#access-ports) aktivera okrypterade anslutningar via [API: erna](/rest/api/redis/redis/update)för Azure Portal eller hantering.  I sådana fall där det inte går att kryptera anslutningar kan du rekommendera att placera cacheminnet och klient programmet i ett virtuellt nätverk.  Mer information om vilka portar som används i det virtuella nätverkets cache-scenario finns i den här [tabellen](cache-how-to-premium-vnet.md#outbound-port-requirements).
- 
+
  * **Tids gräns för inaktivitet** – Azure Redis har för närvarande 10 minuters inaktivitet för anslutningar, så detta ska vara mindre än 10 minuter.
- 
+
 ## <a name="memory-management"></a>Minnes hantering
 Det finns flera saker som rör minnes användningen i Redis-serverinstansen som du kanske vill överväga.  Här är några:
 
  * **Välj en [borttagnings princip](https://redis.io/topics/lru-cache) som fungerar för ditt program.**  Standard principen för Azure Redis är *volatile-LRU*, vilket innebär att endast nycklar som har ett TTL-värde har angetts för borttagning.  Om inga nycklar har ett TTL-värde kommer systemet inte att avlägsna några nycklar.  Om du vill att systemet ska tillåta att en nyckel tas bort om den är under minnes belastning, kan du överväga att använda *allkeys-LRU-* principen.
 
  * **Ange ett förfallo värde för dina nycklar.**  Ett förfallo datum kommer att ta bort nycklar proaktivt i stället för att vänta tills det finns minnes belastning.  När avlägsnandet sker på grund av minnes belastning kan det orsaka ytterligare belastning på servern.  Mer information finns i dokumentationen för kommandot [Expires](https://redis.io/commands/expire) och [EXPIREAT](https://redis.io/commands/expireat) .
- 
+
 ## <a name="client-library-specific-guidance"></a>Vägledning för klient biblioteks information
  * [StackExchange. Redis (.NET)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-stackexchange-redis-md)
  * [Java-vilken klient ska jag använda?](https://gist.github.com/warrenzhu25/1beb02a09b6afd41dff2c27c53918ce7#file-azure-redis-java-best-practices-md)
@@ -62,9 +62,9 @@ Det finns flera saker som rör minnes användningen i Redis-serverinstansen som 
 Tyvärr finns det inget enkelt svar.  Varje program måste bestämma vilka åtgärder som kan göras om och vilket inte kan göras.  Varje åtgärd har olika krav och beroenden mellan nycklar.  Här följer några saker som du kan tänka på:
 
  * Du kan få fel på klient sidan även om Redis har kört kommandot som du bad om att köra.  Exempel:
-     - Tids gränser är ett koncept på klient sidan.  Om åtgärden har nått servern kör servern kommandot även om klienten ger väntande svar.  
-     - När ett fel uppstår på socket-anslutningen är det inte möjligt att veta om åtgärden faktiskt kördes på servern.  Anslutnings felet kan till exempel inträffa efter att servern bearbetat begäran, men innan klienten får svaret.
- *  Hur reagerar mitt program om jag råkar köra samma åtgärd två gånger?  Vad händer om jag exempelvis ökar ett heltal två gånger i stället för en gång?  Skrivs mitt program till samma nyckel från flera platser?  Vad händer om min omprövnings logik skriver över ett värde som har angetts av någon annan del av min app?
+    - Tids gränser är ett koncept på klient sidan.  Om åtgärden har nått servern kör servern kommandot även om klienten ger väntande svar.  
+    - När ett fel uppstår på socket-anslutningen är det inte möjligt att veta om åtgärden faktiskt kördes på servern.  Anslutnings felet kan till exempel inträffa efter att servern bearbetat begäran, men innan klienten får svaret.
+ * Hur reagerar mitt program om jag råkar köra samma åtgärd två gånger?  Vad händer om jag exempelvis ökar ett heltal två gånger i stället för en gång?  Skrivs mitt program till samma nyckel från flera platser?  Vad händer om min omprövnings logik skriver över ett värde som har angetts av någon annan del av min app?
 
 Om du vill testa hur koden fungerar under fel tillstånd, kan du överväga att använda [funktionen för omstart](cache-administration.md#reboot). Genom att starta om kan du se hur anslutnings signaler påverkar ditt program.
 
@@ -75,12 +75,12 @@ Om du vill testa hur koden fungerar under fel tillstånd, kan du överväga att 
  * Kontrol lera att den virtuella klient datorn som du använder har * minst *lika mycket data bearbetning och bandbredd* som det cacheminne som testas. 
  * **Aktivera VRSS** på klient datorn om du använder Windows.  [Mer information finns här](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn383582(v=ws.11)).  Exempel på PowerShell-skript:
      >PowerShell – ExecutionPolicy obegränsad Enable-NetAdapterRSS-namn (Get-netadapter). Namn 
-     
+
  * **Överväg att använda Redis-instanser på Premium-nivå**.  Dessa cachestorlek har bättre nätverks svars tid och data flöde eftersom de körs på bättre maskin vara för både processor och nätverk.
- 
+
      > [!NOTE]
      > Våra observerade prestanda resultat [publiceras här](cache-planning-faq.md#azure-cache-for-redis-performance) för din referens.   Tänk också på att SSL/TLS lägger till viss overhead, så att du kan få olika fördröjningar och/eller data flöden om du använder transport kryptering.
- 
+
 ### <a name="redis-benchmark-examples"></a>Redis-Benchmark exempel
 **Före test konfiguration**: Förbered cache-instansen med data som krävs för svar på svars tid och data flöde som visas nedan.
 > Redis – prestandatest – h yourcache.redis.cache.windows.net – a yourAccesskey-t SET-n 10-d 1024 

@@ -4,12 +4,12 @@ description: Beskriver hur du använder Service Bus för att optimera prestanda 
 ms.topic: article
 ms.date: 11/11/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 12de7edd5dec42b01c46307febbef7d739d0495d
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 6a0457537712ccb85191f320fd348446eed9b229
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95811672"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655636"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Bra metoder för att öka prestanda med hjälp av meddelanden i Service Bus
 
@@ -349,7 +349,7 @@ Mål: minimera svars tid för en kö eller ett ämne. Antalet avsändare och mot
 
 Mål: maximera data flödet för en kö eller ett ämne med ett stort antal avsändare. Varje avsändare skickar meddelanden med en måttlig taxa. Antalet mottagare är litet.
 
-Service Bus möjliggör upp till 1000 samtidiga anslutningar till en meddelande enhet. Den här gränsen tillämpas på namn områdes nivå, köer, ämnen eller prenumerationer begränsas av gränsen för samtidiga anslutningar per namnrymd. För köer delas numret mellan avsändare och mottagare. Om alla 1000 anslutningar krävs för avsändare ersätter du kön med ett ämne och en enda prenumeration. Ett ämne accepterar upp till 1000 samtidiga anslutningar från avsändare. Prenumerationen godkänner ytterligare 1000 samtidiga anslutningar från mottagare. Om det krävs fler än 1000 samtidiga avsändare skickas meddelanden till Service Bus protokollet via HTTP.
+Service Bus möjliggör upp till 1000 samtidiga anslutningar till en meddelande enhet. Den här gränsen tillämpas på namn områdes nivå, köer, ämnen eller prenumerationer är begränsade till gränsen för samtidiga anslutningar per namnrymd. För köer delas numret mellan avsändare och mottagare. Om alla 1000 anslutningar krävs för avsändare ersätter du kön med ett ämne och en enda prenumeration. Ett ämne accepterar upp till 1000 samtidiga anslutningar från avsändare. Prenumerationen godkänner ytterligare 1000 samtidiga anslutningar från mottagare. Om det krävs fler än 1000 samtidiga avsändare skickas meddelanden till Service Bus protokollet via HTTP.
 
 Följ dessa steg för att maximera data flödet:
 
