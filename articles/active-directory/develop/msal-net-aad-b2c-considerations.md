@@ -13,12 +13,12 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 8be41f3fcf4d32ee81d1290c6a50a27f2cd45ee7
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 15f65da83f14f43a7892d52c6a2ed4e08580d367
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860974"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614922"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Använda MSAL.NET för att logga in användare med sociala identiteter
 
@@ -134,7 +134,7 @@ Genom att använda användar namn/lösen ord i ett ROPC-flöde kan du offra fler
 
 ### <a name="configure-the-ropc-flow-in-azure-ad-b2c"></a>Konfigurera ROPC-flödet i Azure AD B2C
 
-Skapa ett nytt användar flöde i Azure AD B2C klient och välj Logga in **med ROPC** för att aktivera ROPC för användar flödet. Mer information finns i [Konfigurera flödet för autentiseringsuppgifter för resurs ägar lösen ord](../../active-directory-b2c/configure-ropc.md).
+Skapa ett nytt användar flöde i Azure AD B2C klient och välj Logga in **med ROPC** för att aktivera ROPC för användar flödet. Mer information finns i [Konfigurera flödet för autentiseringsuppgifter för resurs ägar lösen ord](../../active-directory-b2c/add-ropc-policy.md).
 
 `IPublicClientApplication` innehåller `AcquireTokenByUsernamePassword` metoden:
 

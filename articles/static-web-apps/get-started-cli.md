@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: ca05194c0d8e63290a9cab8d9f7903daa192069b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 00892b61cd23ee38ff3d63f8b61391ff1bffdc90
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030356"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616413"
 ---
 # <a name="quickstart-building-your-first-static-site-using-the-azure-cli"></a>Snabb start: skapa din första statiska plats med Azure CLI
 
@@ -20,7 +20,7 @@ Azures statiska Web Apps publicerar en webbplats i en produktions miljö genom a
 
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt utvärderings konto](https://azure.microsoft.com/free).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 - [GitHub](https://github.com)-konto
 - [Personlig GitHub-åtkomsttoken](https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token)
@@ -129,7 +129,7 @@ Om du inte kommer att fortsätta att använda det här programmet kan du ta bort
 
 ```bash
 az staticwebapp delete \
-    --name my-first-static-web-app
+    --name my-first-static-web-app \
     --resource-group my-first-static-web-app
 ```
 

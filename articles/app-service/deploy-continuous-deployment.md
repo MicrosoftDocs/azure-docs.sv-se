@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/20/2020
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: b7730558e2a660b0cf00a5b6962d1e2275dd472c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 799699662b738804790e3fe18ce9bd579027808d
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004369"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616323"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Kontinuerlig distribution till Azure App Service
 
@@ -92,11 +92,11 @@ Du kan använda den inbyggda kudu App Service build-servern för att kontinuerli
 
 Om ditt konto har de behörigheter som krävs kan du konfigurera Azure-pipeliner för att kontinuerligt distribuera från GitHub eller Azure databaser. Mer information om hur du distribuerar via Azure-pipeliner finns i [distribuera en webbapp till Azure App tjänster](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps).
 
-#### <a name="prerequisites"></a>Förutsättningar
+#### <a name="prerequisites"></a>Krav
 
 För att Azure App Service ska kunna skapa kontinuerlig leverans med Azure-pipeliner bör din Azure DevOps-organisation ha följande behörigheter: 
 
-- Ditt Azure-konto måste ha behörighet att skriva till Azure Active Directory och skapa en tjänst. 
+- Ditt Azure-konto måste ha behörighet att skriva till Azure Active Directory och skapa en app-registrering. 
   
 - Ditt Azure-konto måste ha **ägar** rollen i din Azure-prenumeration.
 

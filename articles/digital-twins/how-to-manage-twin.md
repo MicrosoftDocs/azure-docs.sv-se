@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ba444a497fa4fccab6b8dec1fadb3383420e4d49
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 558e03e698d184aa9b5914f7d494ea61b5a6b18e
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452974"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616940"
 ---
 # <a name="manage-digital-twins"></a>Hantera digitala tvillingar
 
@@ -23,7 +23,7 @@ Den här artikeln fokuserar på att hantera digitala dubbla, information om hur 
 > [!TIP]
 > Alla SDK-funktioner ingår i synkrona och asynkrona versioner.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
@@ -171,7 +171,7 @@ Resultatet av att ringa `object result = await client.GetDigitalTwinAsync("my-mo
 De definierade egenskaperna för den digitala kanten returneras som toppnivå egenskaper på den digitala dubbla. Metadata-eller system information som inte ingår i DTDL-definitionen returneras med ett `$` prefix. Metadata-egenskaper inkluderar:
 * ID: t för den digitala dubbla i den här Azure Digital-instansen, som `$dtId` .
 * `$etag`, ett standard-HTTP-fält som tilldelas av webb servern.
-* Andra egenskaper i ett `$metadata` avsnitt. Exempel på dessa är:
+* Andra egenskaper i ett `$metadata` avsnitt. Dessa omfattar:
     - DTMI för den digitala dubbla.
     - Synkroniseringsstatus för varje skrivbar egenskap. Detta är mest användbart för enheter, där det är möjligt att tjänsten och enheten har avvikande status (till exempel när en enhet är offline). Den här egenskapen gäller för närvarande endast för fysiska enheter som är anslutna till IoT Hub. Med data i avsnittet metadata är det möjligt att förstå fullständig status för en egenskap samt de senast ändrade tidsstämplar. Mer information om synkroniseringsstatus finns i [den här IoT Hub själv studie kursen](../iot-hub/tutorial-device-twins.md) om synkronisering av enhets status.
     - Tjänstspecifika metadata, t. ex. från IoT Hub eller Azure digitala dubbla. 
@@ -271,12 +271,12 @@ Korrigeringen för den här situationen måste uppdatera både modellen och den 
 [
   {
     "op": "replace",
-    "path": "$metadata.$model",
-    "value": "dtmi:example:foo_new"
+    "path": "/$metadata/$model",
+    "value": "dtmi:example:foo_new;1"
   },
   {
     "op": "add",
-    "path": "temperature",
+    "path": "/temperature",
     "value": 60
   }
 ]

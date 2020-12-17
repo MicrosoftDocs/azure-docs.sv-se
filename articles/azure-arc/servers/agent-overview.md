@@ -3,12 +3,12 @@ title: Översikt över den anslutna datorns Windows-agent
 description: Den här artikeln innehåller en detaljerad översikt över Azure Arc-aktiverade Server Agent som har stöd för övervakning av virtuella datorer i hybrid miljöer.
 ms.date: 12/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 531041b7d7439dd2a48fa9e06eb82796f470e9ed
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 0532441e1ab0d2676e7800c9d63878f9bf3bb3dc
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563032"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616169"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Översikt över Azure Arc-aktiverade Server Agent
 
@@ -43,13 +43,13 @@ Du kan ladda ned Azure Connected Machine agent-paketet för Windows och Linux fr
 
 Azure Connected Machine agent för Windows och Linux kan uppgraderas till den senaste versionen manuellt eller automatiskt beroende på dina behov. Mer information finns [här](manage-agent.md).
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 ### <a name="supported-operating-systems"></a>Operativsystem som stöds
 
 Följande versioner av operativ systemet Windows och Linux stöds officiellt för den Azure-anslutna dator agenten:
 
-- Windows Server 2012 R2 och högre (inklusive Windows Server Core)
+- Windows Server 2008 R2, Windows Server 2012 R2 och högre (inklusive Server Core)
 - Ubuntu 16,04 och 18,04 LTS (x64)
 - CentOS Linux 7 (x64)
 - SUSE Linux Enterprise Server (SLES) 15 (x64)
@@ -93,7 +93,7 @@ Service märken:
 
 Er
 
-| Agentresurs | Description |
+| Agentresurs | Beskrivning |
 |---------|---------|
 |`management.azure.com`|Azure Resource Manager|
 |`login.windows.net`|Azure Active Directory|
@@ -103,7 +103,7 @@ Er
 
 För hands versioner (version 0,11 och lägre) kräver också åtkomst till följande URL: er:
 
-| Agentresurs | Description |
+| Agentresurs | Beskrivning |
 |---------|---------|
 |`agentserviceapi.azure-automation.net`|Gästkonfiguration|
 |`*-agentservice-prod-1.azure-automation.net`|Gästkonfiguration|
@@ -167,7 +167,7 @@ När du har installerat den anslutna dator agenten för Windows tillämpas följ
 
 * Följande installationsfiler skapas under installationen.
 
-    |Mapp |Description |
+    |Mapp |Beskrivning |
     |-------|------------|
     |%ProgramFiles%\AzureConnectedMachineAgent |Standard installations Sök väg som innehåller agentens stödfiler.|
     |%ProgramData%\AzureConnectedMachineAgent |Innehåller konfigurationsfilerna för agenten.|
@@ -179,7 +179,7 @@ När du har installerat den anslutna dator agenten för Windows tillämpas följ
 
 * Följande Windows-tjänster skapas på mål datorn under installationen av agenten.
 
-    |Tjänstnamn |Visningsnamn |Processnamn |Description |
+    |Tjänstnamn |Visningsnamn |Processnamn |Beskrivning |
     |-------------|-------------|-------------|------------|
     |himds |Azure Hybrid-Instance Metadata Service |himds |Den här tjänsten implementerar IMDS (Azure instance metadata service) för att hantera anslutningen till Azure och den anslutna datorns Azure-identitet.|
     |GCArcService |Arc-tjänst för gäst konfiguration |gc_service |Övervakar datorns önskade tillstånds konfiguration.|
@@ -194,7 +194,7 @@ När du har installerat den anslutna dator agenten för Windows tillämpas följ
 
 * Det finns flera loggfiler tillgängliga för fel sökning. De beskrivs i följande tabell.
 
-    |Loggas |Description |
+    |Loggas |Beskrivning |
     |----|------------|
     |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |Innehåller information om agenternas (HIMDS) tjänst och interaktion med Azure.|
     |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |Innehåller utdata från azcmagent-verktygets kommandon när argumentet verbose (-v) används.|
@@ -219,7 +219,7 @@ När du har installerat den anslutna dator agenten för Linux tillämpas följan
 
 * Följande installationsfiler skapas under installationen.
 
-    |Mapp |Description |
+    |Mapp |Beskrivning |
     |-------|------------|
     |/var/opt/azcmagent/ |Standard installations Sök väg som innehåller agentens stödfiler.|
     |/opt/azcmagent/ |
@@ -231,7 +231,7 @@ När du har installerat den anslutna dator agenten för Linux tillämpas följan
 
 * Följande daemonar skapas på mål datorn under installationen av agenten.
 
-    |Tjänstnamn |Visningsnamn |Processnamn |Description |
+    |Tjänstnamn |Visningsnamn |Processnamn |Beskrivning |
     |-------------|-------------|-------------|------------|
     |himdsd. service |Azure Connected Machine Agent-tjänsten |himds |Den här tjänsten implementerar IMDS (Azure instance metadata service) för att hantera anslutningen till Azure och den anslutna datorns Azure-identitet.|
     |gcad.servce |Tjänsten GC båg |gc_linux_service |Övervakar datorns önskade tillstånds konfiguration. |
@@ -239,7 +239,7 @@ När du har installerat den anslutna dator agenten för Linux tillämpas följan
 
 * Det finns flera loggfiler tillgängliga för fel sökning. De beskrivs i följande tabell.
 
-    |Loggas |Description |
+    |Loggas |Beskrivning |
     |----|------------|
     |/var/opt/azcmagent/log/himds.log |Innehåller information om agenternas (HIMDS) tjänst och interaktion med Azure.|
     |/var/opt/azcmagent/log/azcmagent.log |Innehåller utdata från azcmagent-verktygets kommandon när argumentet verbose (-v) används.|

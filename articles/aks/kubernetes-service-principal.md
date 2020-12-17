@@ -4,12 +4,12 @@ description: Skapa och hantera ett tjänstobjekt för Azure Active Directory fö
 services: container-service
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: e95eae3ab8d992bc169e54700e7e31715e72102e
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: c6f50b152174cee1ee2cc37baa22432957107d2c
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607831"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614803"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Tjänstens huvudnamn med Azure Kubernetes Service (AKS)
 
@@ -100,18 +100,7 @@ Om du använder Azure Container Registry (ACR) som behållar avbildnings arkiv m
 
 ### <a name="networking"></a>Nätverk
 
-Du kan använda avancerade nätverk där det virtuella nätverket och undernätet eller offentliga IP-adresser finns i en annan resursgrupp. Tilldela behörigheter till någon av följande uppsättningar:
-
-- Skapa en [anpassad roll][rbac-custom-role] och definiera följande rollbehörigheter:
-  - *Microsoft.Network/virtualNetworks/subnets/join/action*
-  - *Microsoft.Network/virtualNetworks/subnets/read*
-  - *Microsoft.Network/publicIPAddresses/join/action*
-  - *Microsoft.Network/publicIPAddresses/read*
-  - *Microsoft.Network/publicIPAddresses/write*
-  - Om du använder [anpassade väg tabeller i Kubernetes-kluster](configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) lägger du till följande ytterligare behörigheter:
-    - *Microsoft. Network/routeTables/Write*
-    - *Microsoft. Network/routeTables/Read*
-- Eller tilldela [Nätverksdeltagare][rbac-network-contributor] en inbyggd roll i undernätet i det virtuella nätverket
+Du kan använda avancerade nätverk där det virtuella nätverket och undernätet eller offentliga IP-adresser finns i en annan resursgrupp. Tilldela den inbyggda rollen [nätverks deltagare][rbac-network-contributor] i under nätet i det virtuella nätverket. Du kan också skapa en [anpassad roll][rbac-custom-role] med behörigheter för att komma åt nätverks resurserna i den resurs gruppen. Mer information finns i [AKS-tjänstens behörigheter][aks-permissions] .
 
 ### <a name="storage"></a>Storage
 
@@ -145,7 +134,7 @@ Tänk på följande när du använder AKS och Azure AD-tjänstens huvudnamn.
         az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)
         ```
 
-## <a name="troubleshoot"></a>Felsök
+## <a name="troubleshoot"></a>Felsöka
 
 Autentiseringsuppgifterna för tjänstens huvud namn för ett AKS-kluster cachelagras av Azure CLI. Om autentiseringsuppgifterna har upphört att gälla uppstår fel vid distribution av AKS-kluster. Följande fel meddelande visas när du kör [AZ AKS Create][az-aks-create] kan tyda på ett problem med de cachelagrade tjänstens huvud namns uppgifter:
 
@@ -188,3 +177,4 @@ Information om hur du uppdaterar autentiseringsuppgifterna finns i [Uppdatera el
 [aks-to-acr]: cluster-container-registry-integration.md
 [update-credentials]: update-credentials.md
 [azure-ad-permissions]: ../active-directory/fundamentals/users-default-permissions.md
+[aks-permissions]: concepts-identity.md#aks-service-permissions

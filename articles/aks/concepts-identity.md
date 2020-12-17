@@ -6,35 +6,78 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 983b1a5e024a44733fab418a67375f232e66cfe4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3c291d9a9d48b6f75148b673848b8451521bab91
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457169"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615809"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Åtkomst och identitetsalternativ för Azure Kubernetes Service (AKS)
 
 Det finns olika sätt att autentisera, kontrol lera åtkomst/auktorisera och säkra Kubernetes-kluster. Med Kubernetes-rollbaserad åtkomst kontroll (Kubernetes RBAC) kan du ge användare, grupper och tjänst konton åtkomst till enbart de resurser de behöver. Med Azure Kubernetes service (AKS) kan du ytterligare förbättra strukturen för säkerhet och behörighet genom att använda Azure Active Directory och Azure RBAC. De här metoderna hjälper dig att skydda kluster åtkomsten och ger endast de behörigheter som krävs för utvecklare och operatörer.
 
-Den här artikeln beskriver de viktigaste begreppen som hjälper dig att autentisera och tilldela behörigheter i AKS:
+Den här artikeln beskriver de viktigaste begreppen som hjälper dig att autentisera och tilldela behörigheter i AKS.
 
-- [Kubernetes-rollbaserad åtkomst kontroll (Kubernetes RBAC)](#kubernetes-role-based-access-control-kubernetes-rbac)
-  - [Roller och ClusterRoles](#roles-and-clusterroles)
-  - [RoleBindings och ClusterRoleBindings](#rolebindings-and-clusterrolebindings) 
-  - [Kubernetes tjänst konton](#kubernetes-service-accounts)
-- [Azure Active Directory-integrering](#azure-active-directory-integration)
-- [Azure RBAC](#azure-role-based-access-control-azure-rbac)
-  - [Azure RBAC för att ge åtkomst till AKS-resursen](#azure-rbac-to-authorize-access-to-the-aks-resource)
-  - [Azure RBAC för Kubernetes-auktorisering (för hands version)](#azure-rbac-for-kubernetes-authorization-preview)
+## <a name="aks-service-permissions"></a>AKS tjänst behörigheter
 
+När du skapar ett kluster, skapar eller ändrar AKS de resurser som krävs för att skapa och köra klustret, till exempel virtuella datorer och nätverkskort, å användarens vägnar som skapar klustret. Den här identiteten är distinkt från klustrets identitets behörighet, som skapas när klustret skapas.
+
+### <a name="identity-creating-and-operating-the-cluster-permissions"></a>Identitet som skapar och driver kluster behörigheter
+
+Följande behörigheter krävs av identiteten för att skapa och driva klustret.
+
+| Behörighet | Orsak |
+|---|---|
+| Microsoft. Compute/diskEncryptionSets/Read | Krävs för att läsa disk krypterings uppsättningens ID. |
+| Microsoft. Compute/proximityPlacementGroups/Write | Krävs för att uppdatera närhets placerings grupper. |
+| Microsoft. Network/applicationGateways/Read <br/> Microsoft. Network/applicationGateways/Write <br/> Microsoft.Network/virtualNetworks/subnets/join/action | Krävs för att konfigurera programgatewayer och delta i under nätet. |
+| Microsoft.Network/virtualNetworks/subnets/join/action | Krävs för att konfigurera nätverks säkerhets gruppen för under nätet när du använder ett anpassat VNET.|
+| Microsoft.Network/publicIPAddresses/join/action <br/> Microsoft. Network/publicIPPrefixes/JOIN/åtgärd | Krävs för att konfigurera de utgående offentliga IP-adresserna på Standard Load Balancer. |
+| Microsoft. OperationalInsights/arbets ytor/sharedkeys/Read <br/> Microsoft. OperationalInsights/arbets ytor/läsa <br/> Microsoft. OperationsManagement/lösningar/Skriv <br/> Microsoft. OperationsManagement/Solutions/Read <br/> Microsoft. ManagedIdentity/userAssignedIdentities/Assign/åtgärd | Krävs för att skapa och uppdatera Log Analytics-arbetsytor och Azure-övervakning för behållare. |
+
+### <a name="aks-cluster-identity-permissions"></a>AKS-kluster identitets behörigheter
+
+Följande behörigheter används av AKS-kluster identiteten, som skapas och associeras med AKS-klustret när klustret skapas. Varje behörighet används av följande orsaker:
+
+| Behörighet | Orsak |
+|---|---|
+| Microsoft. Network/belastningsutjämnare/Delete <br/> Microsoft. Network/belastningsutjämnare/Read <br/> Microsoft. Network/belastningsutjämnare/Write | Krävs för att konfigurera belastningsutjämnaren för en LoadBalancer-tjänst. |
+| Microsoft. Network/publicIPAddresses/Delete <br/> Microsoft.Network/publicIPAddresses/read <br/> Microsoft.Network/publicIPAddresses/write | Krävs för att hitta och konfigurera offentliga IP-adresser för en LoadBalancer-tjänst. |
+| Microsoft.Network/publicIPAddresses/join/action | Krävs för att konfigurera offentliga IP-adresser för en LoadBalancer-tjänst. |
+| Microsoft. Network/networkSecurityGroups/Read <br/> Microsoft. Network/networkSecurityGroups/Write | Krävs för att skapa eller ta bort säkerhets regler för en LoadBalancer-tjänst. |
+| Microsoft. Compute/disks/Delete <br/> Microsoft.Compute/disks/read <br/> Microsoft.Compute/disks/write <br/> Microsoft. Compute/locations/DiskOperations/Read | Krävs för att konfigurera AzureDisks. |
+| Microsoft. Storage/storageAccounts/Delete <br/> Microsoft. Storage/storageAccounts/Listnycklar/åtgärd <br/> Microsoft. Storage/storageAccounts/Read <br/> Microsoft. Storage/storageAccounts/Write <br/> Microsoft. Storage/Operations/Read | Krävs för att konfigurera lagrings konton för AzureFile eller AzureDisk. |
+| Microsoft. Network/routeTables/Read <br/> Microsoft. Network/routeTables/routes/Delete <br/> Microsoft. Network/routeTables/routes/Read <br/> Microsoft. Network/routeTables/routes/Write <br/> Microsoft. Network/routeTables/Write | Krävs för att konfigurera routningstabeller och vägar för noder. |
+| Microsoft. Compute/virtualMachines/Read | Krävs för att hitta information om virtuella datorer i en VMAS, till exempel zoner, fel domän, storlek och data diskar. |
+| Microsoft. Compute/virtualMachines/Write | Krävs för att bifoga AzureDisks till en virtuell dator i en VMAS. |
+| Microsoft. Compute/virtualMachineScaleSets/Read <br/> Microsoft. Compute/virtualMachineScaleSets/virtualMachines/Read <br/> Microsoft. Compute/virtualMachineScaleSets/virtualmachines/instanceView/Read | Krävs för att hitta information om virtuella datorer i en skalnings uppsättning för virtuella datorer, till exempel zoner, fel domän, storlek och data diskar. |
+| Microsoft. Network/networkInterfaces/Write | Krävs för att lägga till en virtuell dator i en VMAS till en backend-adresspool för belastnings utjämning. |
+| Microsoft. Compute/virtualMachineScaleSets/Write | Krävs för att lägga till en skalnings uppsättning för en virtuell dator till en server dels adress för belastningsutjämnare och skala ut noder i en skalnings uppsättning för virtuella datorer. |
+| Microsoft. Compute/virtualMachineScaleSets/virtualmachines/Write | Krävs för att bifoga AzureDisks och lägga till en virtuell dator från en skalnings uppsättning för virtuella datorer till belastningsutjämnaren. |
+| Microsoft. Network/networkInterfaces/Read | Krävs för att söka efter interna IP-adresser och fjärrpooler för belastningsutjämnare för virtuella datorer i en VMAS. |
+| Microsoft. Compute/virtualMachineScaleSets/virtualMachines/networkInterfaces/Read | Krävs för att söka efter interna IP-adresser och Server delar för belastningsutjämnare för en virtuell dator i en skalnings uppsättning för virtuella datorer. |
+| Microsoft. Compute/virtualMachineScaleSets/virtualMachines/networkInterfaces/ipconfigurations/publicipaddresses/Read | Krävs för att hitta offentliga IP-adresser för en virtuell dator i en skalnings uppsättning för virtuella datorer. |
+| Microsoft. Network/virtualNetworks/Read <br/> Microsoft.Network/virtualNetworks/subnets/read | Krävs för att kontrol lera om det finns ett undernät för den interna belastningsutjämnaren i en annan resurs grupp. |
+| Microsoft. Compute/ögonblicks bilder/ta bort <br/> Microsoft. Compute/ögonblicks bilder/läsa <br/> Microsoft. Compute/ögonblicks bilder/skrivning | Krävs för att konfigurera ögonblicks bilder för AzureDisk. |
+| Microsoft. Compute/locations/tillåtna storlekar/Read <br/> Microsoft. Compute/locations/Operations/Read | Krävs för att hitta storlekar på virtuella datorer för att hitta AzureDisk volym gränser. |
+
+### <a name="additional-cluster-identity-permissions"></a>Ytterligare kluster identitets behörigheter
+
+Följande ytterligare behörigheter krävs av kluster identiteten när du skapar ett kluster med vissa attribut. Dessa behörigheter tilldelas inte automatiskt, så du måste lägga till dessa behörigheter till kluster identiteten när de har skapats.
+
+| Behörighet | Orsak |
+|---|---|
+| Microsoft. Network/networkSecurityGroups/Write <br/> Microsoft. Network/networkSecurityGroups/Read | Krävs om du använder en nätverks säkerhets grupp i en annan resurs grupp. Krävs för att konfigurera säkerhets regler för en LoadBalancer-tjänst. |
+| Microsoft.Network/virtualNetworks/subnets/read <br/> Microsoft.Network/virtualNetworks/subnets/join/action | Krävs om du använder ett undernät i en annan resurs grupp, till exempel ett anpassat VNET. |
+| Microsoft. Network/routeTables/routes/Read <br/> Microsoft. Network/routeTables/routes/Write | Krävs om du använder ett undernät som är associerat med en routningstabell i en annan resurs grupp, till exempel ett anpassat VNET med en anpassad väg tabell. Krävs för att kontrol lera om det redan finns ett undernät för under nätet i den andra resurs gruppen. |
+| Microsoft.Network/virtualNetworks/subnets/read | Krävs om du använder en intern belastningsutjämnare i en annan resurs grupp. Krävs för att kontrol lera om det redan finns ett undernät för den interna belastnings utjämningen i resurs gruppen. |
 
 ## <a name="kubernetes-role-based-access-control-kubernetes-rbac"></a>Kubernetes-rollbaserad åtkomst kontroll (Kubernetes RBAC)
 
 För att ge detaljerad filtrering av de åtgärder som användarna kan utföra använder Kubernetes Kubernetes-rollbaserad åtkomst kontroll (Kubernetes RBAC). Med den här kontrollen kan du tilldela användare eller grupper av användare behörighet att göra saker som att skapa eller ändra resurser, eller Visa loggar från att köra program arbets belastningar. Dessa behörigheter kan begränsas till ett enda namn område eller beviljas i hela AKS-klustret. Med Kubernetes RBAC skapar du *roller* för att definiera behörigheter och tilldelar sedan rollerna till användare med *roll bindningar*.
 
 Mer information finns i [använda KUBERNETES RBAC-auktorisering][kubernetes-rbac].
-
 
 ### <a name="roles-and-clusterroles"></a>Roller och ClusterRoles
 
@@ -84,11 +127,11 @@ Som du ser i bilden ovan anropar API-servern AKS-webhook-servern och utför föl
 1. Azure AD-klientprogrammet används av kubectl för att logga in användare med [OAuth 2,0-enhetens Authorization-flöde](../active-directory/develop/v2-oauth2-device-code.md).
 2. Azure AD tillhandahåller en access_token, id_token och en refresh_token.
 3. Användaren gör en begäran till kubectl med en access_token från kubeconfig.
-4. Kubectl skickar access_token till APIServer.
+4. Kubectl skickar access_token till API-servern.
 5. API-servern konfigureras med auth-webhook-servern för att utföra verifiering.
 6. Autentiserings-webhook-servern bekräftar att JSON Web Token signaturen är giltig genom att kontrol lera Azure AD offentlig signerings nyckel.
 7. Serverprogrammet använder användarspecifika autentiseringsuppgifter för att fråga grupp medlemskap för den inloggade användaren från MS-Graph API.
-8. Ett svar skickas till APIServer med användar information som User Principal Name-anspråk (UPN) för åtkomsttoken och grupp medlemskapet för användaren baserat på objekt-ID: t.
+8. Ett svar skickas till API-servern med användar information som User Principal Name-anspråk (UPN) för åtkomsttoken och grupp medlemskapet för användaren baserat på objekt-ID: t.
 9. API: et utför ett auktoriserings beslut baserat på Kubernetes-rollen/RoleBinding.
 10. När den är auktoriserad returnerar API-servern ett svar till kubectl.
 11. Kubectl ger användaren feedback.
@@ -154,7 +197,7 @@ I den här tabellen sammanfattas hur användare kan autentiseras för Kubernetes
 
 Det roll anslag som refereras till i den andra kolumnen är Azure RBAC-rollen som visas på fliken **Access Control** i Azure Portal. Azure AD-gruppen kluster admin visas på fliken **konfiguration** i portalen (eller med parameter namnet `--aad-admin-group-object-ids` i Azure CLI).
 
-| Description        | Roll beviljande krävs| Kluster administratör Azure AD-grupp (er) | När du ska använda detta |
+| Beskrivning        | Roll beviljande krävs| Kluster administratör Azure AD-grupp (er) | När du ska använda detta |
 | -------------------|------------|----------------------------|-------------|
 | Äldre Administratörs inloggning med klient certifikat| **Administratörs roll för Azure-Kubernetes**. Den här rollen kan `az aks get-credentials` användas med `--admin` -flaggan, som laddar ned ett [äldre kluster administratörs certifikat (inte Azure AD)](control-kubeconfig-access.md) till användarens `.kube/config` . Detta är det enda syftet med administratörs rollen för Azure-Kubernetes.|saknas|Om du har blockerat permanent genom att inte ha åtkomst till en giltig Azure AD-grupp med åtkomst till klustret.| 
 | Azure AD med manuellt (kluster) RoleBindings| **Användar rollen Azure-Kubernetes**. Rollen "användare" tillåter `az aks get-credentials` användning utan `--admin` flaggan. (Detta är det enda syftet med användar rollen Azure-Kubernetes.) Resultatet, i ett Azure AD-aktiverat kluster, är hämtningen av [en tom post](control-kubeconfig-access.md) till `.kube/config` , vilket utlöser webbläsarbaserad autentisering när den används första gången `kubectl` .| Användaren finns inte i någon av dessa grupper. Eftersom användaren inte finns i några kluster administratörs grupper, kommer deras rättigheter att kontrol leras helt av alla RoleBindings eller ClusterRoleBindings som har kon figurer ATS av kluster administratörer. RoleBindings (kluster) [nominerade Azure AD-användare eller Azure AD-grupper](azure-ad-rbac.md) som deras `subjects` . Om inga sådana bindningar har kon figurer ATS kommer användaren inte att kunna Excute några `kubectl` kommandon.|Om du vill ha detaljerad åtkomst kontroll och du inte använder Azure RBAC för Kubernetes-auktorisering. Observera att den användare som konfigurerar bindningarna måste logga in med någon av de andra metoderna som anges i den här tabellen.|
@@ -192,3 +235,4 @@ Mer information om kärn Kubernetes-och AKS-koncept finns i följande artiklar:
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
 [operator-best-practices-identity]: operator-best-practices-identity.md
+[upgrade-per-cluster]: ../azure-monitor/insights/container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli

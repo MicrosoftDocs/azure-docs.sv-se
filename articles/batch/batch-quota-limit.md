@@ -2,14 +2,14 @@
 title: Kvoter och begränsningar för tjänsten
 description: Lär dig mer om standard Azure Batch kvoter, gränser och begränsningar samt hur du begär kvot ökningar
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 12/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: b2039794a0c8a13070c9d81b83869ca4097bd02e
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 9f529d388cb883f635b6225801af5ce41b8c997a
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325983"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614530"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Kvoter och begränsningar för Batch-tjänsten
 
@@ -98,7 +98,7 @@ Så här visar du kvoter för batch-kontot i [Azure Portal](https://portal.azure
 Du kan begära en kvot ökning för batch-kontot eller prenumerationen med hjälp av [Azure Portal](https://portal.azure.com). Vilken typ av kvot ökning som är beror på poolens fördelnings läge för batch-kontot. Om du vill begära en kvot ökning måste du ta med den VM-serien som du vill öka kvoten för. När kvot ökningen tillämpas tillämpas den på alla virtuella datorer.
 
 1. Välj panelen **Hjälp + Support** på portalens instrument panel eller frågetecknet (**?**) i det övre högra hörnet i portalen.
-1. Välj **nya grundläggande support förfrågningar**  >  **Basics**.
+1. Välj **nya grundläggande support förfrågningar**  >  .
 1. I **grunderna**:
    
     1. **Typ**  >  av problem **Begränsningar för tjänster och prenumerationer (kvoter)**

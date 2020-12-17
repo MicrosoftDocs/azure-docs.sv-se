@@ -1,14 +1,14 @@
 ---
 title: Miljöer för hantering av flera klienter
 description: Azure-delegerad resurs hantering möjliggör hantering av flera innehavare.
-ms.date: 11/19/2020
+ms.date: 12/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4550921fdefdca440b6757e7a3b7a03337599d16
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: dca14781aac9db3cdd47ab4b66506f77f0b78c31
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510659"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616583"
 ---
 # <a name="cross-tenant-management-experiences"></a>Miljöer för hantering av flera klienter
 
@@ -77,6 +77,11 @@ De flesta uppgifter och tjänster kan utföras på delegerade resurser över han
 [Azure Cost Management + fakturering](../../cost-management-billing/index.yml):
 
 - Från hanterings klient organisationen kan CSP-partner Visa, hantera och analysera konsumtions kostnader (inte inklusive inköp) för kunder som följer Azure-planen. Kostnaden baseras på återförsäljarversionen och den Azure rollbaserad åtkomst kontroll (Azure RBAC) som partnern har för kundens prenumeration.
+
+[Azure Key Vault](../../key-vault/general/index.yml):
+
+- Skapa nyckel valv i kund klienter
+- Använd en hanterad identitet för att skapa nyckel valv i kund klienter
 
 [Azure Kubernetes service (AKS)](../../aks/index.yml):
 

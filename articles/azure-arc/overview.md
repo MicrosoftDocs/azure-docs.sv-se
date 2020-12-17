@@ -3,12 +3,12 @@ title: Översikt över Azure Arc
 description: Lär dig mer om vad Azure-bågen är och hur den hjälper kunderna att aktivera hantering och styrning av sina hybrid resurser med andra Azure-tjänster och-funktioner.
 ms.date: 09/23/2020
 ms.topic: overview
-ms.openlocfilehash: 8e48378e5032768b3f56a5d99c1189e282ff37f8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3a8b054d9b7fd8f48dc667a5bd49a2c6994de1a3
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91714146"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616532"
 ---
 # <a name="azure-arc-overview"></a>Översikt över Azure Arc
 
@@ -50,7 +50,7 @@ Följande är pris information för de funktioner som är tillgängliga idag med
 
 ### <a name="arc-enabled-servers"></a>Arc-aktiverade servrar
 
-Azure båg Control plan-funktioner erbjuds utan extra kostnad.Det här omfattar:
+Azure båg Control plan-funktioner erbjuds utan extra kostnad. Du måste bland annat:
 
 * Resurs organisation via hanterings grupper och-taggar i Azure.
 
@@ -60,7 +60,7 @@ Azure båg Control plan-funktioner erbjuds utan extra kostnad.Det här omfattar:
 
 * Miljöer och automatisering via mallar och tillägg.
 
-* Uppdaterings hantering
+* Hantering av uppdateringar
 
 Alla Azure-tjänster som används på Arc-aktiverade servrar, till exempel Azure Security Center eller Azure Monitor debiteras enligt prissättningen för den tjänsten. Mer information finns på [sidan med priser för Azure](https://azure.microsoft.com/pricing/).
 
@@ -73,6 +73,8 @@ I den aktuella förhands gransknings fasen erbjuds Azure Arc-Kubernetes utan ext
 I den aktuella förhands gransknings fasen erbjuds Azure Arc-aktiverade data tjänster utan extra kostnad.
 
 ## <a name="next-steps"></a>Nästa steg
+
+* Starta för aktiverade Arc-tjänster från [rivstart med-scenarier](https://azurearcjumpstart.io/azure_arc_jumpstart/)
 
 * Mer information om ARC-aktiverade servrar finns i följande [Översikt](./servers/overview.md)
 

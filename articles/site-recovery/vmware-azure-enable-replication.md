@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 12/07/2020
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: a1f4759bc40c4074f0dd618be8ac66ad088e848c
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 7e4f18b5d4f074d6596b375cbc11f40c2ab69d68
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587765"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616617"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Aktivera replikering till Azure för virtuella VMware-datorer
 
@@ -109,7 +109,7 @@ Om du vill spåra förloppet för den inledande replikeringen går du till Recov
 - Slutförd procent – anger procent andelen inledande replikering som slutförts för den virtuella datorn
 - Totalt antal data som överförts – mängd data som överförts från virtuell dator till Azure
 
-:::image type="content" source="media/vmware-azure-enable-replication/initial-replication-state.png" alt-text="tillstånds-och replikering" lightbox="media/vmware-azure-enable-replication/initial-replication-state.png":::
+    :::image type="content" source="media/vmware-azure-enable-replication/initial-replication-state.png" alt-text="tillstånds-och replikering" lightbox="media/vmware-azure-enable-replication/initial-replication-state.png":::
 
 - Synkroniseringens förlopp (för att spåra information på en disk nivå)
     - Tillstånd för replikering

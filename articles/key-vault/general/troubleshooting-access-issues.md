@@ -7,16 +7,19 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: f9bbf6e9d1d932f7225807613b789821c1462932
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 78b42a8ad3685d07b61c4faca384c7ee8f5a5f94
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441859"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616396"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Felsöka problem med åtkomst principer för Azure Key Vault
 
 ## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
+
+### <a name="i-am-not-able-to-list-or-get-secretskeyscertificate-i-am-seeing-something-went-wrong-error"></a>Jag kan inte Visa eller hämta hemligheter/nycklar/certifikat. Jag ser "något gick fel." Fels.
+Om du har problem med att lista/Hämta/skapa eller komma åt hemlighet måste du kontrol lera att du har definierat åtkomst princip för att utföra åtgärden: [Key Vault åtkomst principer](https://docs.microsoft.com/azure/key-vault/general/group-permissions-for-apps)
 
 ### <a name="how-can-i-identify-how-and-when-key-vaults-are-accessed"></a>Hur gör jag för att identifiera hur och när nyckel valv används?
 

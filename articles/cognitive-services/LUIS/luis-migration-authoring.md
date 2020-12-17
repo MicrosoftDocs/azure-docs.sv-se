@@ -3,18 +3,20 @@ title: Migrera till en Azure-resurs redigerings nyckel
 titleSuffix: Azure Cognitive Services
 description: I den här artikeln beskrivs hur du migrerar Language Understanding (LUIS) som redigerar autentisering från ett e-postkonto till en Azure-resurs.
 services: cognitive-services
+author: aahill
+ms.author: aahi
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, contperf-fy21q2
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 12/07/2020
-ms.openlocfilehash: 243c9834aa256e26d620c00ac0fa7a262919aabd
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.date: 12/14/2020
+ms.openlocfilehash: 086bc17938064571e8759ecda633fb5f87d1060f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762689"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616821"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrera till en Azure-resurs redigerings nyckel
 
@@ -26,41 +28,22 @@ Language Understanding (LUIS) som redigerar autentisering har ändrats från ett
 
 ## <a name="what-is-migration"></a>Vad är migrering?
 
-Migrering är en process för att ändra auktorisering av autentisering från ett e-postkonto till en Azure-resurs. Ditt konto kommer att länkas till en Azure-prenumeration och en Azure Authoring-resurs när du har migrerat. *Alla LUIS-användare (app-ägare och medarbetare) måste eventuellt migreras.*
+Migrering är en process för att ändra auktorisering av autentisering från ett e-postkonto till en Azure-resurs. Ditt konto kommer att länkas till en Azure-prenumeration och en Azure Authoring-resurs när du har migrerat.
 
-Migreringen måste göras från Luis- [portalen](https://www.luis.ai). Om du skapar redigerings nycklarna med hjälp av LUIS CLI måste du till exempel slutföra migreringsprocessen i LUIS-portalen. Du kan fortfarande ha medförfattare i dina program efter migreringen, men de läggs till på Azure-resurs nivån i stället för på program nivån.
-
-> [!Note]
-> Innan migreringen kallas _medarbetares medarbetare_ på Luis app-nivå. Efter migreringen används Azure-rollen för _deltagare_ för samma funktion på Azure-resurs nivån.
-
-## <a name="notes-before-you-migrate"></a>Anteckningar innan du migrerar
-
-* Migreringen kan inte ångras.
-* Om du har loggat in på fler än en [Luis regional Portal](./luis-reference-regions.md#luis-authoring-regions)blir du ombedd att migrera i flera regioner på samma gång.
-* Program migreras automatiskt med dig om du är ägare till programmet.
-* Ägaren kan inte välja en delmängd av appar som ska migreras och processen kan inte ångras.
-* Programmen försvinner från medarbetarens konto när ägaren migreras.
-* Ägare uppmanas att skicka e-postmeddelanden till medarbetare för att informera om migreringen.
-* Program kommer inte att migreras med dig om du är en medarbetare i programmet. Medarbetare uppmanas dock att exportera appar som de behöver.
-* Det finns inget sätt för en ägare att veta om medarbetare har migrerats.
-* Migreringen flyttar inte automatiskt eller lägger till medarbetare till Azure Authoring-resursen. Appens ägare är den som måste slutföra det här steget efter migreringen. Det här steget kräver [behörighet till Azure Authoring-resursen](./luis-how-to-collaborate.md).
-* När medarbetare har tilldelats till Azure-resursen måste de migreras innan de kan komma åt program. Annars har de inte åtkomst att redigera programmen.
-* Det går inte att lägga till en migrerad användare som en medarbetare för programmet.
-
+Migreringen måste göras från Luis- [portalen](https://www.luis.ai). Om du skapar redigerings nycklarna med hjälp av LUIS CLI måste du till exempel slutföra migreringsprocessen i LUIS-portalen. Du kan fortfarande ha medförfattare i dina program efter migreringen, men de läggs till på Azure-resurs nivån i stället för på program nivån. Migrering av ditt konto kan inte ångras.
 
 > [!Note]
-> Om du behöver skapa en förutsägelse körnings resurs finns det [en separat process](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) för att skapa den.
+> * Om du behöver skapa en förutsägelse körnings resurs finns det [en separat process](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) för att skapa den.
+> * Se avsnittet [migrerings anteckningar](#migration-notes) nedan om du vill ha information om hur dina program och deltagare kommer att påverkas. 
+> * Redigering av LUIS-appen är kostnads fri, som anges av F0-nivån. Läs [mer om pris nivåer](luis-limits.md#key-limits).
 
 ## <a name="migration-prerequisites"></a>Krav för migrering
 
-* Du måste vara associerad med en giltig Azure-prenumeration. Be din klient administratör att lägga till dig på prenumerationen eller [Registrera dig för en kostnads fri](https://azure.microsoft.com/free/cognitive-services).
-* Du måste skapa en LUIS Azure Authoring-resurs från LUIS-portalen eller från [Azure Portal](https://portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne). Att skapa en redigerings resurs från LUIS-portalen är en del av migreringsprocessen som beskrivs i nästa avsnitt.
-* Om du är en medarbetare i program, migreras inte program automatiskt. Du uppmanas att exportera dessa appar när du går igenom migrations flödet. Du kan också använda [export-API: et](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40). Du kan importera appen tillbaka till LUIS efter migreringen. Import processen skapar en ny app med ett nytt app-ID som du är ägare till.
+* En giltig Azure-prenumeration. Be din klient administratör att lägga till dig på prenumerationen eller [Registrera dig för en kostnads fri](https://azure.microsoft.com/free/cognitive-services).
+* En LUIS Azure Authoring-resurs från LUIS-portalen eller från [Azure Portal](https://portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne). 
+    * Att skapa en redigerings resurs från LUIS-portalen är en del av migreringsprocessen som beskrivs i nästa avsnitt.
+* Om du är en medarbetare i program, migreras inte program automatiskt. Du uppmanas att exportera dessa appar när du går igenom migrations flödet. Du kan också använda [export-API: et](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40). Du kan importera appen tillbaka till LUIS efter migreringen. Import processen skapar en ny app med ett nytt app-ID som du är ägare till.        
 * Om du är ägare till programmet behöver du inte exportera dina appar eftersom de migreras automatiskt. En e-postmall med en lista över alla medarbetare för varje program tillhandahålls, så att de kan meddelas om migreringsprocessen.
-
-> [!Note]
-> Redigering av LUIS-appen är kostnads fri, som anges av F0-nivån. Läs [mer om pris nivåer](luis-limits.md#key-limits).
-
 
 ## <a name="migration-steps"></a>Migreringsanvisningar
 
@@ -69,7 +52,7 @@ Migreringen måste göras från Luis- [portalen](https://www.luis.ai). Om du ska
     > [!div class="mx-imgBorder"]
     > ![Migrerings fönstret – Intro](./media/migrate-authoring-key/notify-azure-migration.png)
 
-2. Om du har medarbetare i dina appar visas en lista över program namn som ägs av dig, tillsammans med redigerings regionen och e-postmeddelanden för medarbetare på varje program. Vi rekommenderar att du skickar dina medarbetare ett e-postmeddelande som meddelar dem om migreringen genom att klicka på knappen **Skicka** symbol till vänster om programmets namn.
+2. Om du har medarbetare på någon av dina appar visas en lista över program namn som ägs av dig, tillsammans med redigerings regionen och e-postmeddelandena för varje program. Vi rekommenderar att du skickar dina medarbetare ett e-postmeddelande som meddelar dem om migreringen genom att klicka på knappen **Skicka** symbol till vänster om programmets namn.
 En `*` symbol visas bredvid programmets namn om en medarbetare har tilldelats en förutsägelse resurs som är tilldelad till ditt program. Efter migreringen kommer dessa appar fortfarande att ha de här förutsägelse resurserna tilldelade, även om medarbetarna inte har åtkomst till redigerings program. Den här tilldelningen bryts dock om ägaren av förutsägelse resursen [återskapade nycklarna](./luis-how-to-azure-subscription.md#regenerate-an-azure-key) från Azure Portal.  
 
    > [!div class="mx-imgBorder"]
@@ -117,6 +100,15 @@ En `*` symbol visas bredvid programmets namn om du har en förutsägelse resurs 
 
 6. När du har migrerat i alla regioner klickar du på Slutför. Du kommer nu att ha åtkomst till dina program. Du kan fortsätta att redigera och underhålla alla dina program i alla regioner i portalen.
 
+## <a name="migration-notes"></a>Migrations anteckningar
+
+* Innan migreringen kallas _medarbetares medarbetare_ på Luis app-nivå. Efter migreringen används Azure-rollen för _deltagare_ för samma funktion på Azure-resurs nivån.
+* Om du har loggat in på fler än en [Luis regional Portal](./luis-reference-regions.md#luis-authoring-regions)blir du ombedd att migrera i flera regioner på samma gång.
+* Program migreras automatiskt med dig om du är ägare till programmet. Program kommer inte att migreras med dig om du är en medarbetare i programmet. Medarbetare uppmanas dock att exportera appar som de behöver.
+* Program ägare kan inte välja en delmängd av appar som ska migreras och det finns inget sätt för en ägare att veta om medarbetare har migrerats.
+* Migreringen flyttar inte automatiskt eller lägger till medarbetare till Azure Authoring-resursen. Appens ägare är den som måste slutföra det här steget efter migreringen. Det här steget kräver [behörighet till Azure Authoring-resursen](./luis-how-to-collaborate.md).
+* När deltagare har tilldelats till Azure-resursen måste de migrera innan de kan komma åt program. Annars har de inte åtkomst att redigera programmen.
+
 
 ## <a name="using-apps-after-migration"></a>Använda appar efter migrering
 
@@ -139,7 +131,6 @@ Du kan lägga till deltagare till redigerings resursen från Azure Portal på si
 
 > [!Note]
 > Om ägaren av LUIS-appen migrerat och lagt till medarbetaren som deltagare på Azure-resursen, kommer medarbetaren fortfarande inte att ha åtkomst till appen om de också migrerar.
-
 
 ## <a name="troubleshooting-the-migration-process"></a>Felsöka migreringsprocessen
 

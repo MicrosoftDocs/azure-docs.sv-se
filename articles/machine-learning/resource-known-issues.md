@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting, contperf-fy20q4
 ms.date: 11/09/2020
-ms.openlocfilehash: 010d37baff76a046bef2da877262f6427cb3d5c9
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: aa0a14d57db932ef6cfb17df84b3204d3dec9e4d
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094445"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617008"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Kända problem och felsökning i Azure Machine Learning
 
@@ -428,6 +428,16 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
   1. Starta ett kommando gränssnitt, aktivera Conda-miljön där automatiserade ml-paket är installerade.
   2. Ange `pip freeze` och leta efter `tensorflow` , om den hittas, ska den version som visas vara < 1,13
   3. Om den listade versionen inte är en version som stöds går du till `pip uninstall tensorflow` kommando tolken och anger y för bekräftelse.
+
+## <a name="model-explanations"></a>Modell förklaringar
+
+* **Sparse-data stöds inte**: modell förklarings instrument panelen bryts/sänks långsamt med ett stort antal funktioner, och därför har vi för närvarande inte stöd för sparse-dataformat. Dessutom uppstår allmänna minnes problem med stora data uppsättningar och många funktioner. 
+
+* **Prognos modeller stöds inte med modell förklaringar**: tolkning, bästa modell förklaring, är inte tillgängligt för AutoML prognos experiment som rekommenderar följande algoritmer som bästa modell: TCNForecaster, AutoArima, ExponentialSmoothing, Average, Naive, säsongs genomsnitt och säsongs Naive. AutoML-Prognosticering har Regressions modeller som stöder förklaringar. I förklarings dashbord stöds dock inte fliken "individuell funktions prioritet" för prognoser på grund av komplexiteten i sina datapipeliner.
+
+* **Lokal förklaring för data index**: förklarings instrument panelen stöder inte relaterade lokala prioritets värden till ett rad-ID från den ursprungliga validerings data uppsättningen om den data uppsättningen är större än 5000 Datapoints eftersom instrument panelen slumpmässigt Nedsamplar data. Instrument panelen visar dock funktions värden för RAW-datauppsättningen för varje Datapoint som överförts till instrument panelen under fliken individuell funktions prioritet. Användare kan mappa lokala prioriteter tillbaka till den ursprungliga data uppsättningen genom att matcha värdena för RAW-datauppsättningen. Om verifierings data uppsättningens storlek är mindre än 5000 exempel `index` motsvarar funktionen i azureml Studio indexet i verifierings data uppsättningen.
+
+* **Konsekvens-och Ice-observationer som inte stöds i AML Studio**: What-If och enskilda Ice-observationer (villkorligt villkorsstyrda förväntande) stöds inte i azureml Studio under fliken förklaringar eftersom den uppladdade förklaringen kräver en aktiv beräkning för att beräkna om förutsägelser och sannolikheten för perturbed-funktioner. Den stöds för närvarande i Jupyter Notebooks när den körs som en widget med hjälp av SDK.
 
 ## <a name="deploy--serve-models"></a>Distribuera och hantera modeller
 

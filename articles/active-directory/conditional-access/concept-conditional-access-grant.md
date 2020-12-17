@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8915ae349e33390ce5bb687d7c07a21665a0258
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 34f82fc060586e2df5acefa6b0836171e558aa4a
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029412"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615775"
 ---
 # <a name="conditional-access-grant"></a>Villkorlig åtkomst: bevilja
 
@@ -110,6 +110,7 @@ Den här inställningen gäller för följande iOS-och Android-appar:
    - Stöder endast iOS och Android för enhets plattforms villkor.
    - En Broker-app krävs för att registrera enheten. Service Broker-appen kan vara Microsoft Authenticator för iOS eller antingen Microsoft Authenticator eller Microsofts företags Portal för Android-enheter.
 - Villkorlig åtkomst kan inte beakta Microsoft Edge i InPrivate-läge en godkänd klient app.
+- Att använda Azure AD-programproxy för att aktivera Power BI mobilapp för att ansluta till lokala Power BI-rapportserver stöds inte med principer för villkorlig åtkomst som kräver att Microsoft Power BI-appen är godkänd klient app.
 
 Se artikeln gör så [här: Kräv godkända klient program för åtkomst till Cloud App med villkorlig åtkomst](app-based-conditional-access.md) för konfigurations exempel.
 

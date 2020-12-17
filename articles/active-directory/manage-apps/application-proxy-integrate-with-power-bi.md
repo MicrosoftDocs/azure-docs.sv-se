@@ -16,18 +16,18 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c3188571e9188add7bc8f4f4d07ea5a562a79b3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 8d4515d6140123e8e8784fc2d828242d49c59fc4
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658119"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616906"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Aktivera fjärråtkomst till Power BI Mobile med Azure AD-programproxy
 
 Den här artikeln beskriver hur du använder Azure AD-programproxy för att aktivera Power BI mobilappen för att ansluta till Power BI-rapportserver (PBIRS) och SQL Server Reporting Services (SSRS) 2016 och senare. Med den här integrationen kan användare som är borta från företags nätverket komma åt sina Power BI rapporter från Power BI mobilapp och skyddas av Azure AD-autentisering. Det här skyddet omfattar [säkerhets förmåner](application-proxy-security.md#security-benefits) som villkorlig åtkomst och Multi-Factor Authentication.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Den här artikeln förutsätter att du redan har distribuerat rapport tjänster och [aktiverat Application Proxy](application-proxy-add-on-premises-application.md).
 
@@ -153,6 +153,8 @@ Du kan använda Microsoft Intune för att hantera de klient program som företag
 ## <a name="troubleshooting"></a>Felsökning
 
 Om programmet returnerar en felsida när du försöker läsa in en rapport i mer än några minuter kan du behöva ändra inställningen för timeout. Som standard stöder Application Proxy program som tar upp till 85 sekunder att svara på en begäran. Om du vill förlänga den här inställningen till 180 sekunder väljer du timeout för Server delen till **lång** på sidan App proxy-inställningar för programmet. Tips om hur du skapar snabba och tillförlitliga rapporter finns i [metod tips för Power BI-rapporter](/power-bi/power-bi-reports-performance).
+
+Att använda Azure AD-programproxy för att aktivera Power BI mobilapp för att ansluta till lokala Power BI-rapportserver stöds inte med principer för villkorlig åtkomst som kräver att Microsoft Power BI-appen är godkänd klient app.
 
 ## <a name="next-steps"></a>Nästa steg
 

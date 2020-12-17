@@ -1,27 +1,28 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 author: jonels-msft
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: include
-ms.date: 09/12/2019
+ms.date: 12/16/2020
 ms.author: jonels
 ms.custom: include file
-ms.openlocfilehash: e7a6f7b4ba4219483cd3eb8f4600bc94213df131
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54cc31cdb0ddc7694568d60b1446f1cf99663e95
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74973430"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616634"
 ---
+## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>Skapa en Azure Database for PostgreSQL-storskalig (citus)
+
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://azure.microsoft.com/free/) konto innan du börjar.
 
-## <a name="sign-in-to-the-azure-portal"></a>Logga in på Azure Portal
+### <a name="sign-in-to-the-azure-portal"></a>Logga in på Azure Portal
 
 Logga in på [Azure-portalen](https://portal.azure.com).
 
-## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>Skapa en Azure Database for PostgreSQL-storskalig (citus)
 
 Följ de här stegen för att skapa en Azure Database för PostgreSQL-server:
 1. Klicka på **skapa en resurs**  i det övre vänstra hörnet av Azure Portal.
@@ -30,7 +31,7 @@ Följ de här stegen för att skapa en Azure Database för PostgreSQL-server:
 4. Fyll i formuläret om den nya servern och uppge följande information:
    - Resurs grupp: Klicka på länken **Skapa ny** under text rutan för det här fältet. Ange ett namn, till exempel **myresourcegroup**.
    - Server grupp namn: Ange ett unikt namn för den nya server gruppen som också ska användas för en server under domän.
-   - Administratörens användar namn: krävs för att vara värdet **citus**och kan inte ändras.
+   - Administratörens användar namn: krävs för att vara värdet **citus** och kan inte ändras.
    - Lösen ord: måste innehålla minst åtta tecken och innehålla tecken från tre av följande kategorier: engelska versala bokstäver, engelska gemena bokstäver, siffror (0-9) och icke-alfanumeriska tecken (!, $, #,% osv.)
    - Plats: Använd den plats som är närmast användarna för att ge dem snabbast åtkomst till data.
 
@@ -50,10 +51,10 @@ Följ de här stegen för att skapa en Azure Database för PostgreSQL-server:
    >
 
 9. Klicka på **Granska + skapa** och sedan på **skapa** för att etablera servern. Etableringen tar några minuter.
-10. Sidan omdirigeras för att övervaka distributionen. När Live-statusen ändras från **distributionen sker** till att **distributionen är klar**klickar du på meny alternativet **utdata** till vänster på sidan.
+10. Sidan omdirigeras för att övervaka distributionen. När Live-statusen ändras från **distributionen sker** till att **distributionen är klar** klickar du på meny alternativet **utdata** till vänster på sidan.
 11. Sidan utdata kommer att innehålla ett koordinator värd namn med en knapp bredvid den för att kopiera värdet till Urklipp. Registrera den här informationen för senare användning.
 
-## <a name="connect-to-the-database-using-psql"></a>Anslut till databasen med psql
+### <a name="connect-to-the-database-using-psql"></a>Anslut till databasen med psql
 
 När du skapar din Azure Database for PostgreSQL-server skapas en standard databas som heter **citus** . Du behöver en anslutnings sträng och administratörs lösen ordet för att ansluta till databas servern.
 

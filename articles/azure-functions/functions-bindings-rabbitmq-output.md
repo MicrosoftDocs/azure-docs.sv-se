@@ -4,15 +4,15 @@ description: Lär dig att skicka RabbitMQ-meddelanden från Azure Functions.
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/13/2020
+ms.date: 12/16/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 212bfcee09cd63b6ff09faaba4d99e4b4c583fe8
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: febcb3d2b6990d36a686dc4fab57a6bcbc96b080
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505779"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616668"
 ---
 # <a name="rabbitmq-output-binding-for-azure-functions-overview"></a>RabbitMQ utgående bindning för Azure Functions översikt
 
@@ -193,8 +193,6 @@ Här är bindnings data i *function.jspå* filen:
 }
 ```
 
-I *_\_ init_ \_ . py* kan du skriva ut ett meddelande till kön genom att skicka ett värde till- `set` metoden.
-
 ```python
 import azure.functions as func
 
@@ -271,11 +269,13 @@ I följande tabell förklaras de egenskaper för bindnings konfiguration som du 
 |**position** | saknas | Måste anges till "out". |
 |**Namn** | saknas | Namnet på variabeln som representerar kön i funktions koden. |
 |**queueName**|**QueueName**| Namnet på kön som meddelanden ska skickas till. |
-|**Värdnamn**|**Värdnamn**|(valfritt om du använder ConnectStringSetting) <br>Värdnamn för kön (t. ex. 10.26.45.210)|
-|**userNameSetting**|**UserNameSetting**|(valfritt om du använder ConnectionStringSetting) <br>Namn för att komma åt kön |
-|**passwordSetting**|**PasswordSetting**|(valfritt om du använder ConnectionStringSetting) <br>Lösen ord för att komma åt kön|
+|**Värdnamn**|**Värdnamn**|(ignoreras om du använder ConnectStringSetting) <br>Värdnamn för kön (t. ex. 10.26.45.210)|
+|**Användar**|**Användar**|(ignoreras om du använder ConnectionStringSetting) <br>Namnet på den app-inställning som innehåller användar namnet som ska användas för att komma åt kön. Till exempel UserNameSetting: "< UserNameFromSettings >"|
+|**lösenord**|**Lösenord**|(ignoreras om du använder ConnectionStringSetting) <br>Namnet på den app-inställning som innehåller lösen ordet för att komma åt kön. Till exempel UserNameSetting: "< UserNameFromSettings >"|
 |**connectionStringSetting**|**ConnectionStringSetting**|Namnet på den app-inställning som innehåller anslutnings strängen för RabbitMQ meddelande kön. Observera att om du anger anslutnings strängen direkt och inte via en app-inställning i local.settings.jspå, kommer utlösaren inte att fungera. (T. ex.: i *function.jspå*: connectionStringSetting: "rabbitMQConnection" <br> I *local.settings.jspå*: "rabbitMQConnection": "< ActualConnectionstring >")|
-|**lastning**|**Port**|Hämtar eller anger den port som används. Standardvärdet är 0.|
+|**lastning**|**Port**|(ignoreras om du använder ConnectionStringSetting) Hämtar eller anger den port som används. Standardvärdet är 0.|
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Användning
 
@@ -297,7 +297,7 @@ Använd följande parameter typer för utgående bindning:
 
 * `byte[]` -Om parametervärdet är null när funktionen avslutas, skapas inget meddelande i functions.
 * `string` -Om parametervärdet är null när funktionen avslutas, skapas inget meddelande i functions.
-* `POCO` – Om parametervärdet inte är formaterat som ett C#-objekt, kommer ett fel att tas emot.
+* `POCO` – Om parametervärdet inte är formaterat som ett C#-objekt, kommer ett fel att tas emot. Ett fullständigt exempel finns i C#-skript [exempel](#example).
 
 När du arbetar med C#-skript funktioner:
 
@@ -305,11 +305,11 @@ När du arbetar med C#-skript funktioner:
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-RabbitMQ-meddelandet skickas via en sträng.
+Queue-meddelandet är tillgängligt via context. bindings.<NAME> var <NAME> matchar det namn som definierats i function.jspå. Om nytto lasten är JSON deserialiseras värdet i ett objekt.
 
 # <a name="python"></a>[Python](#tab/python)
 
-RabbitMQ-meddelandet skickas via en sträng.
+Se python- [exemplet](#example).
 
 # <a name="java"></a>[Java](#tab/java)
 

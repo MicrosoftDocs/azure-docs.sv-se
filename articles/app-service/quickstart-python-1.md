@@ -1,21 +1,23 @@
 ---
-title: 'Snabb start: skapa en python-app för Linux'
+title: 'Snabb start: skapa en python-app i Linux'
 description: Kom igång med Azure App Service genom att distribuera en python-app till en Linux-behållare i App Service.
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 robots: noindex
-ms.openlocfilehash: e068de77760752070117644c269e80a52c8c1707
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 9f9805c25955384e7ca5b3f1d560581a7ca4a638
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561553"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614667"
 ---
-# <a name="quickstart-create-a-python-app-in-azure-app-service-for-linux"></a>Snabb start: skapa en python-app i Azure App Service för Linux
+# <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Snabb start: skapa en python-app i Azure App Service på Linux
 
 I den här snabb starten distribuerar du en python-webbapp till [app service på Linux](overview.md#app-service-on-linux), Azures mycket skalbara, självkorrigerande webb värd tjänst. Du använder det lokala [Azures kommando rads gränssnitt (CLI)](/cli/azure/install-azure-cli) på en Mac-, Linux-eller Windows-dator för att distribuera ett prov med antingen flaska eller django-ramverk. Webbappen som du konfigurerar använder en kostnads fri App Service nivå, så du debiteras inte några kostnader i samband med den här artikeln.
+
+För **definitioner av vanliga termer**, se [Azure-terminologi i korthet](/azure/developer/python/cloud-azure-terminology?toc=/azure/app-service/toc.json).
 
 > [!TIP]
 > Om du föredrar att distribuera appar via en IDE, se **[distribuera python-appar till App Service från Visual Studio Code](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)**.

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: e0cbbb3fd6cea962008218b5e695f119d211a909
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: f4975c0e8d8b23a7c107b9704b0e0825702a0010
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033705"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617025"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisk träna en tids serie prognos modell
 
@@ -33,7 +33,7 @@ En låg kod upplevelse finns i [självstudien: prognostisera efter frågan med a
 
 Till skillnad från klassiska Time Series-metoder i automatiserade ML, är tidigare tids serie värden "pivoterade" för att bli ytterligare dimensioner för modellerings regressor tillsammans med andra förutsägelser. Den här metoden omfattar flera sammanhangsbaserade variabler och deras relation till varandra under utbildningen. Eftersom flera faktorer kan påverka en prognos justeras den här metoden korrekt med verkliga prognos scenarier. Till exempel, när försäljnings prognoser används, interaktioner av historiska trender, växelkurs och pris gemensamt, kommer försäljnings resultatet gemensamt. 
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För den här artikeln behöver du 
 
@@ -128,7 +128,7 @@ Automatisk maskin inlärning försöker automatiskt med olika modeller och algor
 >[!Tip]
 > Traditionella Regressions modeller testas också som en del av rekommendations systemet för att förutse experiment. Se [tabellen modell som stöds](how-to-configure-auto-train.md#supported-models) för den fullständiga listan över modeller. 
 
-Modeller| Description | Fördelar
+Modeller| Beskrivning | Fördelar
 ----|----|---
 Prophet (för hands version)|Prophet fungerar bäst med tids serier som har starka säsongs effekter och flera säsonger av historiska data. Om du vill utnyttja den här modellen installerar du den lokalt med `pip install fbprophet` . | Korrekt & snabb, robust för att kunna avvika, saknade data och dramatiska ändringar i din tids serie.
 Auto-ARIMA (för hands version)|Autoregressiva Integrated glidande medelvärde (ARIMA) fungerar bäst när data är Station ära. Det innebär att dess statistiska egenskaper, t. ex. medelvärdet och var Ian sen är konstant över hela uppsättningen. Om du till exempel vänder en mynt är sannolikheten för att du får 50%, oavsett om du vänder idag, imorgon eller nästa år.| Perfekt för univariate-serien, eftersom de tidigare värdena används för att förutsäga framtida värden.
@@ -168,6 +168,7 @@ from azureml.automl.core.forecasting_parameters import ForecastingParameters
 forecasting_parameters = ForecastingParameters(time_column_name='day_datetime', 
                                                forecast_horizon=50,
                                                time_series_id_column_names=["store"],
+                                               freq='W',
                                                target_lags='auto',
                                                target_rolling_window_size=10)
                                               
@@ -303,7 +304,7 @@ forecast_parameters = ForecastingParameters(time_column_name='day_datetime',
 ```
 I följande tabell sammanfattas de tillgängliga inställningarna för `short_series_handling_config` .
  
-|Inställning|Beskrivning
+|Inställningen|Beskrivning
 |---|---
 |`auto`| Följande är standard beteendet för hantering av korta serier <li> *Om alla serier är korta* kan du fylla i data. <br> <li> *Om inte alla serier är korta* släpper du den korta serien. 
 |`pad`| Om du `short_series_handling_config = pad` sedan väljer automatiserad ml läggs slumpmässiga värden till i varje kort serie. Nedan visas kolumn typerna och vad de fylls med: <li>Objekt kolumner med NaNs <li> Numeriska kolumner med 0 <li> Booleska/Logic-kolumner med falskt <li> Mål kolumnen fylls med slumpmässiga värden med medelvärdet noll och standard avvikelsen 1. 

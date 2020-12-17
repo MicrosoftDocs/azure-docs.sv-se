@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 12/16/2020
 ms.author: justinha
-ms.openlocfilehash: 246da3a35396430bbda86e5a5e927a456618ac05
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: d1a3ab5face03754bf84f442ac0fa73768b0fc80
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96619291"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615826"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Design överväganden för virtuellt nätverk och konfigurations alternativ för Azure Active Directory Domain Services
 
@@ -91,7 +91,7 @@ Du kan aktivera namn matchning med villkorliga DNS-vidarebefordrare på den DNS-
 
 En hanterad domän skapar vissa nätverks resurser under distributionen. De här resurserna behövs för lyckad åtgärd och hantering av den hanterade domänen och ska inte konfigureras manuellt.
 
-| Azure-resurs                          | Description |
+| Azure-resurs                          | Beskrivning |
 |:----------------------------------------|:---|
 | Nätverks gränssnitts kort                  | Azure AD DS är värd för den hanterade domänen på två domänkontrollanter (DCs) som körs på Windows Server som virtuella Azure-datorer. Varje virtuell dator har ett virtuellt nätverks gränssnitt som ansluter till det virtuella nätverkets undernät. |
 | Offentlig IP-adress för dynamisk standard      | Azure AD DS kommunicerar med tjänsten synkronisering och hantering med hjälp av en offentlig IP-adress för standard-SKU. Mer information om offentliga IP-adresser finns i [IP-diagramtyper och autentiseringsmetoder i Azure](../virtual-network/public-ip-addresses.md). |
@@ -108,11 +108,10 @@ En [nätverks säkerhets grupp (NSG)](../virtual-network/network-security-groups
 
 Följande regler för nätverks säkerhets grupper krävs för att den hanterade domänen ska kunna tillhandahålla autentiserings-och hanterings tjänster. Redigera inte eller ta bort dessa regler för nätverks säkerhets grupper för det virtuella nätverkets undernät som din hanterade domän distribueras till.
 
-| Portnummer | Protokoll | Källa                             | Mål | Action | Obligatorisk | Syfte |
+| Portnummer | Protokoll | Källa                             | Mål | Åtgärd | Obligatorisk | Syfte |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | Valfri         | Tillåt  | Yes      | Synkronisering med din Azure AD-klient. |
-| 3389        | TCP      | CorpNetSaw                         | Valfri         | Tillåt  | Yes      | Hantering av din domän. |
 | 5986        | TCP      | AzureActiveDirectoryDomainServices | Valfri         | Tillåt  | Yes      | Hantering av din domän. |
+| 3389        | TCP      | CorpNetSaw                         | Valfri         | Tillåt  | Valfritt      | Fel sökning för support. |
 
 En Azure standard Load Balancer skapas som kräver att dessa regler placeras. Den här nätverks säkerhets gruppen säkrar Azure AD DS och krävs för att den hanterade domänen ska fungera korrekt. Ta inte bort den här nätverks säkerhets gruppen. Belastningsutjämnaren fungerar inte korrekt utan den.
 
@@ -127,12 +126,17 @@ Om det behövs kan du [skapa den nätverks säkerhets grupp och de regler som kr
 >
 > Azure service avtal gäller inte för distributioner där en felaktigt konfigurerad nätverks säkerhets grupp och/eller användardefinierade väg tabeller har tillämpats som blockerar Azure AD DS från att uppdatera och hantera din domän.
 
-### <a name="port-443---synchronization-with-azure-ad"></a>Port 443-synkronisering med Azure AD
+### <a name="port-5986---management-using-powershell-remoting"></a>Port 5986 – hantering med PowerShell-fjärrkommunikation
 
-* Används för att synkronisera din Azure AD-klient med din hanterade domän.
-* Utan åtkomst till den här porten kan din hanterade domän inte synkroniseras med din Azure AD-klient. Användare kanske inte kan logga in eftersom ändringar i sina lösen ord inte skulle synkroniseras med din hanterade domän.
-* Inkommande åtkomst till den här porten till IP-adresser är begränsad som standard med hjälp av **AzureActiveDirectoryDomainServices** service tag.
-* Begränsa inte utgående åtkomst från den här porten.
+* Används för att utföra hanterings uppgifter med PowerShell-fjärrkommunikation i din hanterade domän.
+* Utan åtkomst till den här porten kan din hanterade domän inte uppdateras, konfigureras, säkerhets kopie ras eller övervakas.
+* För hanterade domäner som använder ett Resource Manager-baserat virtuellt nätverk kan du begränsa inkommande åtkomst till den här porten till *AzureActiveDirectoryDomainServices* -tjänst tag gen.
+    * För äldre hanterade domäner med hjälp av ett klassiskt virtuellt nätverk kan du begränsa inkommande åtkomst till den här porten till följande käll-IP-adresser: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223*, *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18* och *104.40.87.209*.
+
+    > [!NOTE]
+    > I 2017 blev Azure AD Domain Services tillgänglig som värd i ett Azure Resource Manager nätverk. Sedan dess har vi kunnat bygga en säkrare tjänst med Azure Resource Manager moderna funktioner. Eftersom Azure Resource Manager distributioner fullständigt ersätter klassiska distributioner, kommer Azure AD DS klassiska virtuella nätverks distributioner att dras tillbaka den 1 mars 2023.
+    >
+    > Mer information finns i meddelande om [officiellt utfasning](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/)
 
 ### <a name="port-3389---management-using-remote-desktop"></a>Port 3389 – hantering med hjälp av fjärr skrivbord
 
@@ -148,18 +152,6 @@ Om det behövs kan du [skapa den nätverks säkerhets grupp och de regler som kr
 > Du kan till exempel använda följande skript för att skapa en regel som tillåter RDP: 
 >
 > `Get-AzureRmNetworkSecurityGroup -Name "nsg-name" -ResourceGroupName "resource-group-name" | Add-AzureRmNetworkSecurityRuleConfig -Name "new-rule-name" -Access "Allow" -Protocol "TCP" -Direction "Inbound" -Priority "priority-number" -SourceAddressPrefix "CorpNetSaw" -SourcePortRange "" -DestinationPortRange "3389" -DestinationAddressPrefix "" | Set-AzureRmNetworkSecurityGroup`
-
-### <a name="port-5986---management-using-powershell-remoting"></a>Port 5986 – hantering med PowerShell-fjärrkommunikation
-
-* Används för att utföra hanterings uppgifter med PowerShell-fjärrkommunikation i din hanterade domän.
-* Utan åtkomst till den här porten kan din hanterade domän inte uppdateras, konfigureras, säkerhets kopie ras eller övervakas.
-* För hanterade domäner som använder ett Resource Manager-baserat virtuellt nätverk kan du begränsa inkommande åtkomst till den här porten till *AzureActiveDirectoryDomainServices* -tjänst tag gen.
-    * För äldre hanterade domäner med hjälp av ett klassiskt virtuellt nätverk kan du begränsa inkommande åtkomst till den här porten till följande käll-IP-adresser: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223*, *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18* och *104.40.87.209*.
-
-    > [!NOTE]
-    > I 2017 blev Azure AD Domain Services tillgänglig som värd i ett Azure Resource Manager nätverk. Sedan dess har vi kunnat bygga en säkrare tjänst med Azure Resource Manager moderna funktioner. Eftersom Azure Resource Manager distributioner fullständigt ersätter klassiska distributioner, kommer Azure AD DS klassiska virtuella nätverks distributioner att dras tillbaka den 1 mars 2023.
-    >
-    > Mer information finns i meddelande om [officiellt utfasning](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/)
 
 ## <a name="user-defined-routes"></a>Användardefinierade vägar
 

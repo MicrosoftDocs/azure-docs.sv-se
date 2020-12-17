@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: include
 ms.date: 10/16/2020
-ms.openlocfilehash: 5f35547162d5a2fe49320f27e61ad48f3e19d94a
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 8463b0cd76bec683acb4942d01034616e312cd7b
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368195"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616379"
 ---
 > [!NOTE]
-> Från och med 4 januari kommer portalerna för luis.au och luis.eu att samlas in på en enda portal och URL. Om du använde någon av dessa portaler kommer du automatiskt att dirigeras om till [Luis.AI](https://luis.ai/). Du fortsätter att använda samma regionala resurser som du har skapat, och dina program fortsätter att redige ras i samma region som du ursprungligen valde.
+> Från och med 4 januari samlas regionala portaler (au.luis.ai och eu.luis.ai) till en enda portal och URL. Om du använde någon av dessa portaler kommer du automatiskt att dirigeras om till [Luis.AI](https://luis.ai/). Du kommer att fortsätta använda samma regionala resurser som du har skapat och dina data fortsätter att sparas och bearbetas i samma region som din resurs.

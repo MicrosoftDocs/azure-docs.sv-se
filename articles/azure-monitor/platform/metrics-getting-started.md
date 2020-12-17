@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 3e5514c4a54083bcc6ef8187f2cd97515d2dd680
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 710de93a24037031784ca8d37a8ae0be76bff9e6
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88590191"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614601"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Komma igång med Azure Metrics Explorer
 
@@ -29,15 +29,14 @@ Azure Monitor Metrics Explorer är en komponent i Microsoft Azure-portalen som g
 
 Om du vill skapa ett mått diagram går du till vyn resurs, resurs grupp, prenumeration eller Azure Monitor, öppnar fliken **mått** och följer de här stegen:
 
-1. Använd resurs väljaren och välj den resurs som du vill visa mått för. (Resursen är förvald om du har öppnat **mått** i kontexten för en viss resurs).
-
-    > ![Välj en resurs](./media/metrics-getting-started/resource-picker.png)
+1. Klicka på knappen "Välj ett omfång" för att öppna resurs omfattnings väljaren. På så kan du välja de resurser som du vill visa mått för. Resursen bör redan vara ifylld om du öppnade Metrics Explorer från resursens meny. [Läs den här artikeln](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-dynamic-scope)om du vill veta mer om hur du visar mått över flera resurser.
+    > ![Välj en resurs](./media/metrics-getting-started/scope-picker.png)
 
 2. För vissa resurser måste du välja ett namn område. Namn området är bara ett sätt att organisera mått så att du lätt kan hitta dem. Lagrings konton har till exempel separata namn rymder för lagring av filer, tabeller, blobbar och köers mått. Många resurs typer har bara ett namn område.
 
 3. Välj ett mått i en lista över tillgängliga mått.
 
-    > ![Välj ett mått](./media/metrics-getting-started/metric-picker.png)
+    > ![Välj ett mått](./media/metrics-getting-started/metrics-dropdown.png)
 
 4. Alternativt kan du [ändra mått agg regeringen](metrics-charts.md#changing-aggregation). Du kanske exempelvis vill att diagrammet ska Visa lägsta, högsta eller genomsnittliga värden för måttet.
 
@@ -51,7 +50,7 @@ Om du vill skapa ett mått diagram går du till vyn resurs, resurs grupp, prenum
 
 Som standard visar diagrammet de senaste 24 timmarna med mät data. Använd panelen **tids väljare** för att ändra tidsintervallet, zooma in eller ut i diagrammet. 
 
-![Ändra tids områdets panel](./media/metrics-getting-started/time-picker.png)
+![Ändra tids områdets panel](./media/metrics-getting-started/time.png)
 
 > [!TIP]
 > Använd **tids penseln** för att undersöka ett intressant ytdiagram i diagrammet (insamling eller dip). Placera mus pekaren i början av ytan, klicka och håll ned vänster MUSKNAPP, dra till den andra sidan av ytan och släpp sedan knappen. Diagrammet kommer att zooma in inom det tidsintervallet. 
@@ -73,6 +72,7 @@ Du kan anpassa diagram stil, rubrik och ändra avancerade diagram inställningar
 ## <a name="next-steps"></a>Nästa steg
 
 * [Lär dig mer om avancerade funktioner i Metrics Explorer](metrics-charts.md)
+* [Visa flera resurser i Metrics Explorer](metrics-dynamic-scope.md)
 * [Felsökning av Metrics Explorer](metrics-troubleshoot.md)
 * [Visa en lista över tillgängliga mått för Azure-tjänster](metrics-supported.md)
 * [Visa exempel på konfigurerade diagram](metric-chart-samples.md)

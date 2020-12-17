@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: riroloff
 ms.subservice: metrics
-ms.openlocfilehash: 724809dbce3ca1b5a36f4da0ba5c03d0f78897f5
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 9d1460a8bebe75a3ee471eb304fcf642d566b5dd
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97577758"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614650"
 ---
 # <a name="viewing-multiple-resources-in-metrics-explorer"></a>Visa flera resurser i Metrics Explorer
 
@@ -71,7 +71,7 @@ Nedan visas till exempel ett diagram över procents ATS CPU över 9VMs. Genom at
 
 ![Skärm bild som visar hur du kan använda delning för att se procent processor per virtuell dator](./media/metrics-charts/026.png)
 
-Förutom delning kan du använda funktionen filtrering för att bara visa de resurs grupper som du vill se.  Om du till exempel vill visa procent CPU-processorn för virtuella datorer för en viss resurs grupp kan du använda verktyget Lägg till filter för att filtrera efter resurs grupp. I det här exemplet filtrerar vi efter ladan, vilket tar bort mått som är kopplade till resurser i TailspinToysDemo. 
+Förutom delning kan du använda funktionen filtrering för att bara visa de resurs grupper som du vill se.  Om du till exempel vill visa procent CPU-processorn för virtuella datorer för en viss resurs grupp kan du använda verktyget Lägg till filter för att filtrera efter resurs grupp. I det här exemplet filtrerar vi efter TailspinToysDemo, vilket tar bort mått som är kopplade till resurser i ladan. 
 
 ![Skärm bild som visar hur du kan filtrera efter resurs grupp](./media/metrics-charts/027.png)
 
@@ -80,7 +80,7 @@ Förutom delning kan du använda funktionen filtrering för att bara visa de res
 > [!WARNING] 
 > Du måste ha övervaknings läsar behörighet på prenumerations nivå för att visualisera mått över flera resurser, resurs grupper eller en prenumeration. Följ anvisningarna i [det här dokumentet](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)för att göra detta. 
 
-Följ anvisningarna [här](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts#create-alert-rules)för att fästa ett diagram för flera resurser. 
+Följ anvisningarna [här](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts#pin-charts-to-dashboards)för att fästa ett diagram för flera resurser. 
 
 ## <a name="next-steps"></a>Nästa steg
 
