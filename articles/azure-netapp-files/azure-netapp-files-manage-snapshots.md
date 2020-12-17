@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: b-juche
-ms.openlocfilehash: 03b7941385517fe694f0743194655a1b6a1c0e1e
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 35fce3723e92a3a7c68aaa62b28b756432182a8c
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95253566"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629671"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Hantera ögonblicksbilder med hjälp av Azure NetApp Files
 
@@ -193,7 +193,7 @@ Om du inte ser ögonblicks bilds katalogen kan den vara dold eftersom alternativ
 
 1. Använd `ls` Linux-kommandot för att visa en lista över filen som du vill återställa från `.snapshot` katalogen. 
 
-    Ett exempel:
+    Exempel:
 
     `$ ls my.txt`   
     `ls: my.txt: No such file or directory`   
@@ -208,7 +208,7 @@ Om du inte ser ögonblicks bilds katalogen kan den vara dold eftersom alternativ
 
 2. Använd `cp` kommandot för att kopiera filen till den överordnade katalogen.  
 
-    Ett exempel: 
+    Exempel: 
 
     `$ cp .snapshot/hourly.2020-05-15_1306/my.txt .`   
 
@@ -269,3 +269,4 @@ Du kan ta bort ögonblicks bilder som du inte längre behöver behålla.
 * [Felsöka policyer för ögonblicksbilder](troubleshoot-snapshot-policies.md)
 * [Resursbegränsningar för Azure NetApp Files](azure-netapp-files-resource-limits.md)
 * [Azure NetApp Files ögonblicks bilder 101 video](https://www.youtube.com/watch?v=uxbTXhtXCkw&feature=youtu.be)
+* [Vad är Azure Application enhetligt verktyg för ögonblicks bilder](azacsnap-introduction.md)

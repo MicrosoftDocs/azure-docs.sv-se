@@ -7,17 +7,17 @@ ms.topic: reference
 ms.date: 12/16/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: febcb3d2b6990d36a686dc4fab57a6bcbc96b080
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 8ea4b0c7c8df1ff7fe0e3ecb253b23d188681e80
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616668"
+ms.locfileid: "97629688"
 ---
 # <a name="rabbitmq-output-binding-for-azure-functions-overview"></a>RabbitMQ utgående bindning för Azure Functions översikt
 
 > [!NOTE]
-> RabbitMQ-bindningar stöds bara fullt ut i **Windows Premium** -planer. Användning och Linux stöds inte för närvarande.
+> RabbitMQ-bindningarna stöds bara fullt ut i **Windows Premium och dedikerade** planer. Användning och Linux stöds inte för närvarande.
 
 Använd RabbitMQ utgående bindning för att skicka meddelanden till en RabbitMQ-kö.
 

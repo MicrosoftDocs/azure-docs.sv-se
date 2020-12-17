@@ -16,12 +16,12 @@ ms.date: 09/30/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4030dedfb0d7308bb5a0f7a86bc49ee168e6d0c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2e8d68643b5cc0002467f738dd60343fb2c42dc6
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362815"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631299"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Självstudie: skapa ditt första Access-paket i Azure AD-hantering av rättigheter
 
@@ -44,7 +44,7 @@ En steg-för-steg-demonstration av processen att distribuera Azure Active Direct
 
 Du kan också skapa ett Access-paket program mässigt med hjälp av Microsoft Graph. En själv studie kurs som visar hur du skapar ett Access-paket program mässigt finns i [API för hantering av rättigheter](/graph/tutorial-access-package-api?view=graph-rest-beta).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill använda hantering av Azure AD-rättigheter måste du ha en av följande licenser:
 
@@ -63,7 +63,7 @@ En resurs katalog har en eller flera resurser att dela. I det här steget skapar
 
 1. Logga in på [Azure Portal](https://portal.azure.com) som global administratör eller användar administratör.  
 
-1. Klicka på **Azure Active Directory**i det vänstra navigerings fältet.
+1. Klicka på **Azure Active Directory** i det vänstra navigerings fältet.
 
 1. Skapa eller konfigurera följande två användare. Du kan använda dessa namn eller olika namn. **Admin1** kan vara den användare som du för närvarande är inloggad som.
 
@@ -72,7 +72,7 @@ En resurs katalog har en eller flera resurser att dela. I det här steget skapar
     | **Admin1** | Global administratör<br/>\- eller -<br/>Användaradministratör |
     | **Requestor1** | Användare |
 
-1. Skapa en Azure AD-säkerhetsgrupp med namnet **marknadsförings resurser** med en **tilldelad**medlemskaps typ.
+1. Skapa en Azure AD-säkerhetsgrupp med namnet **marknadsförings resurser** med en **tilldelad** medlemskaps typ.
 
     Den här gruppen är mål resursen för hantering av rättigheter. Gruppen ska vara tom för medlemmar att starta.
 
@@ -84,11 +84,11 @@ Ett *Access-paket* är ett paket med resurser som ett team eller projekt behöve
 
 ![Skapa ett åtkomstpaket](./media/entitlement-management-access-package-first/elm-access-package.png)
 
-1. Klicka på **Azure Active Directory**i Azure Portal i det vänstra navigerings fältet.
+1. Klicka på **Azure Active Directory** i Azure Portal i det vänstra navigerings fältet.
 
 2. På den vänstra menyn klickar du på **identitets styrning**
 
-3. Klicka på **åtkomst paket**på den vänstra menyn.  Om du ser **åtkomst nekad**, se till att det finns en Azure AD Premium P2-licens i din katalog.
+3. Klicka på **åtkomst paket** på den vänstra menyn.  Om du ser **åtkomst nekad**, se till att det finns en Azure AD Premium P2-licens i din katalog.
 
 4. Klicka på **nytt Access-paket**.
 
@@ -117,6 +117,7 @@ Ett *Access-paket* är ett paket med resurser som ett team eller projekt behöve
 11. I list rutan **roll** väljer du **medlem**.
 
     ![Nytt Access-paket – fliken resurs roller](./media/entitlement-management-access-package-first/resource-roles.png)
+
     >[!IMPORTANT]
     >De roll tilldelnings grupper som läggs till i ett Access-paket anges med hjälp av den under typ **som kan tilldelas roller**. Se [skapa en roll tilldelnings bara grupp](../roles/groups-create-eligible.md) i Azure Active Directory för mer information om grupper som kan tilldelas till Azure AD-roller. Om du inte ser en roll tilldelnings bara grupp som du vill lägga till, eller om du inte kan lägga till den, kontrollerar du att du har den nödvändiga rollen för Azure AD-rollen och rättighets hanterings rollen för att utföra den här åtgärden. Du kan behöva be någon med de roller som krävs lägga till resursen i katalogen. Mer information finns i de [roller som krävs för att lägga till resurser i en katalog](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
 
@@ -146,7 +147,7 @@ Ett *Access-paket* är ett paket med resurser som ett team eller projekt behöve
 
 18. Lämna **Kräv godkännande** inställt på **Nej**.
 
-19. För **Aktivera begär Anden**klickar du på **Ja** för att aktivera det här åtkomst paketet så snart det skapas.
+19. För **Aktivera begär Anden** klickar du på **Ja** för att aktivera det här åtkomst paketet så snart det skapas.
 
     ![Nytt åtkomst paket – fliken begär Anden om godkännande och aktivering](./media/entitlement-management-access-package-first/requests-approval-enable.png)
 
@@ -216,7 +217,7 @@ I det här steget bekräftar du att den **interna begär ande** har tilldelats �
 
 1. Klicka på **Azure Active Directory** och klicka sedan på **identitets styrning**.
 
-1. Klicka på **åtkomst paket**på den vänstra menyn.
+1. Klicka på **åtkomst paket** på den vänstra menyn.
 
 1. Sök efter och klicka på **marknadsförings kampanjens** åtkomst paket.
 
@@ -228,7 +229,7 @@ I det här steget bekräftar du att den **interna begär ande** har tilldelats �
 
     ![Åtkomst paket – information om begäran](./media/entitlement-management-access-package-first/request-details.png)
 
-1. Klicka på **Azure Active Directory**i det vänstra navigerings fältet.
+1. Klicka på **Azure Active Directory** i det vänstra navigerings fältet.
 
 1. Klicka på **grupper** och öppna gruppen **marknadsförings resurser** .
 
@@ -250,17 +251,17 @@ I det här steget ska du ta bort de ändringar du gjort och ta bort åtkomst pak
 
 1. Klicka på **tilldelningar**.
 
-1. För **Requestor1**klickar du på ellipsen (**...**) och klickar sedan på **ta bort åtkomst**. I meddelandet som visas klickar du på **Ja**.
+1. För **Requestor1** klickar du på ellipsen (**...**) och klickar sedan på **ta bort åtkomst**. I meddelandet som visas klickar du på **Ja**.
 
     Efter en liten stund ändras statusen från levererat till upphört att gälla.
 
 1. Klicka på **resurs roller**.
 
-1. För **marknadsförings resurser**klickar du på ellipsen (**...**) och klickar sedan på **ta bort resurs roll**. I meddelandet som visas klickar du på **Ja**.
+1. För **marknadsförings resurser** klickar du på ellipsen (**...**) och klickar sedan på **ta bort resurs roll**. I meddelandet som visas klickar du på **Ja**.
 
 1. Öppna listan med åtkomst paket.
 
-1. För **marknadsförings kampanj**klickar du på ellipsen (**...**) och klickar sedan på **ta bort**. I meddelandet som visas klickar du på **Ja**.
+1. För **marknadsförings kampanj** klickar du på ellipsen (**...**) och klickar sedan på **ta bort**. I meddelandet som visas klickar du på **Ja**.
 
 1. I Azure Active Directory tar du bort alla användare som du har skapat, till exempel **Requestor1** och **admin1**.
 

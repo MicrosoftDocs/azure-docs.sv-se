@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 12/16/2020
-ms.openlocfilehash: bc93c3643e329879e5118d1cfb61a356442df808
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 7d93002af866aa653972182a13ea37d37e912ce8
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97622254"
+ms.locfileid: "97630317"
 ---
 # <a name="tutorial-shard-data-on-worker-nodes-in-azure-database-for-postgresql--hyperscale-citus"></a>Självstudie: Shard data on Worker Nodes in Azure Database for PostgreSQL – Scale (citus)
 
@@ -27,7 +27,7 @@ I den här självstudien använder du Azure Database for PostgreSQL-storskalig s
 > * Skapa begränsningar i distribuerade tabeller
 > * Köra frågor på distribuerade data
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 I den här självstudien krävs en citus-Server grupp med två arbetsnoder. Om du inte har en Server grupp som körs följer du själv studie kursen [skapa Server grupp](tutorial-hyperscale-server-group.md) och återgår sedan till den här.
 
@@ -171,8 +171,8 @@ Vi kan se att Shards är av samma storlek. Vi såg redan att placeringarna är j
 
 Raderna i vårt `users` exempel distribueras jämnt på grund av egenskaperna för kolumnen distribution `email` .
 
-1. Antalet e-postadresser var större än eller lika med antalet Shards
-2. Antalet rader per e-postadress var liknande (i vårt fall, exakt en rad per adress eftersom vi deklarerade e-post en nyckel)
+1. Antalet e-postadresser var större än eller lika med antalet Shards.
+2. Antalet rader per e-postadress var liknande (i vårt fall, exakt en rad per adress eftersom vi deklarerade e-post en nyckel).
 
 Alla val av tabell-och distributions kolumner där endera av de båda egenskaperna Miss lyckas med ojämn data storlek för arbetare, det vill säga *data skevningen*.
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
-ms.openlocfilehash: 208fe9c5bfa20bf5b2daab296af9f955db67a33d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 436e866969d620389818bcebca3c5c37b8805309
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96007179"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629042"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute-routningskrav
 För att kunna ansluta till Microsofts molntjänster med ExpressRoute måste du konfigurera och hantera routning. Vissa anslutningsleverantörer erbjuder konfigurering och hantering av routning som en hanterad tjänst. Fråga din anslutningsleverantör om de erbjuder denna tjänst. Om inte måste du uppfylla följande krav:
@@ -229,9 +229,12 @@ Förutom ovanstående taggar Microsoft också prefix baserat på vilken tjänst 
 | Azure Resource Manager |12076:5070 |
 | Andra Office 365 Online Services * * | 12076:5100 |
 
-\* Azures globala tjänster innehåller bara Azure-DevOps just nu. \
-\*\* Auktorisering krävs från Microsoft, se [Konfigurera väg filter för Microsoft-peering](how-to-routefilter-portal.md)\
-\*\*\* Den här gruppen publicerar även de vägar som krävs för Microsoft Teams Services. \
+\* Azures globala tjänster innehåller bara Azure-DevOps just nu.
+
+\*\* Auktorisering krävs från Microsoft, se [Konfigurera väg filter för Microsoft-peering](how-to-routefilter-portal.md)
+
+\*\*\* Den här gruppen publicerar även de vägar som krävs för Microsoft Teams Services.
+
 \*\*\*\* CRM Online stöder Dynamics v 8.2 och nedan. För högre versioner väljer du den regionala communityn för dina Dynamics-distributioner.
 
 > [!NOTE]

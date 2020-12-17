@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: 1b1ff2649f54005eff139b1ed1d4d0b4ea152b1f
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 75df985377e6ed1764985f8d0b6b44323f249b8a
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855030"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97632017"
 ---
 # <a name="monitoring-azure-cosmos-db-data-reference"></a>Övervaknings Azure Cosmos DB data referens
 
@@ -92,7 +92,7 @@ I följande tabell visas egenskaperna för resurs loggar i Azure Cosmos DB. Resu
 | **clientIpAddress** | **clientIpAddress_s** | Klientens IP-adress. |
 | **requestCharge** | **requestCharge_s** | Antalet RU/s som används av åtgärden |
 | **collectionRid** | **collectionId_s** | Samlingens unika ID.|
-| **varaktighet** | **duration_d** | Åtgärdens varaktighet i millisekunder. |
+| **giltighet** | **duration_d** | Åtgärdens varaktighet i millisekunder. |
 | **requestLength** | **requestLength_s** | Längden på begäran, i byte. |
 | **responseLength** | **responseLength_s** | Svarets längd i byte.|
 | **resourceTokenPermissionId** | **resourceTokenPermissionId_s** | Den här egenskapen anger det behörigheter för resurs-token som du har angett. Mer information om behörigheter finns i artikeln [säker åtkomst till din data](./secure-access-to-data.md#permissions) . |
@@ -104,7 +104,7 @@ För en lista över alla Azure Monitor logg kategorier och länkar till associer
 
 ## <a name="azure-monitor-logs-tables"></a>Azure Monitor loggar tabeller
 
-Azure Cosmos DB använder Kusto-tabeller från Azure Monitor-loggar. Du kan fråga de här tabellerna med Log Analytics. En lista över Kusto-Bales använder finns i [referens artikeln Azure Monitors loggar tabell](/azure-monitor/reference/tables/tables-resourcetype#azure-cosmos-db) .
+Azure Cosmos DB använder Kusto-tabeller från Azure Monitor-loggar. Du kan fråga de här tabellerna med Log Analytics. En lista över Kusto-Bales använder finns i [referens artikeln Azure Monitors loggar tabell](/azure/azure-monitor/reference/tables/tables-resourcetype#azure-cosmos-db) .
 
 ## <a name="see-also"></a>Se även
 

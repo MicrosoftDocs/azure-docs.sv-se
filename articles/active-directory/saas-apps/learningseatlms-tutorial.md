@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: a9357f81c3b22f70af2a4a05de2de10e19acfbd9
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: edf9df1777c4ab1d204cfc8058ec22c2d4e3f663
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458667"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631813"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learning-seat-lms"></a>Självstudie: Azure Active Directory integrering med Learning-LMS
 
@@ -30,7 +30,7 @@ Integreringen av Learning Seat LMS med Azure AD medför följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att konfigurera Azure AD-integrering med Learning Seat LMS behöver du följande:
 
@@ -112,7 +112,7 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Learn
     I text rutan **inloggnings-URL** skriver du en URL med följande mönster:  `https://<subdomain>.learningseatlms.com`
 
     > [!NOTE]
-    > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [kundsupporten för Learning Seat LMS](http://help.learningseatlms.com/help) och be om dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
+    > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [kundsupporten för Learning Seat LMS](https://azuremarketplace.microsoft.com/marketplace/apps/aad.learnconnect?tab=Overview) och be om dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
 
 6. På sidan **Set up Single Sign-On with SAML** (Konfigurera enkel inloggning med SAML) går du till avsnittet **SAML Signing Certificate** (SAML-signeringscertifikat), klickar på **Ladda ned** för att ladda ned **Federation Metadata-XML** från de angivna alternativen enligt dina behov och spara den på datorn.
 
@@ -130,7 +130,7 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Learn
 
 ### <a name="configure-learning-seat-lms-single-sign-on"></a>Konfigurera enkel inloggning för Learning Seat LMS
 
-För att konfigurera enkel inloggning på **Learning Seat LMS**-sidan behöver du skicka den nedladdade **XML:en med federationsmetadata** och lämpliga kopierade URL:er från Azure-portalen till [supportteamet för Learning Seat LMS](http://help.learningseatlms.com/help). De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
+För att konfigurera enkel inloggning på **Learning Seat LMS**-sidan behöver du skicka den nedladdade **XML:en med federationsmetadata** och lämpliga kopierade URL:er från Azure-portalen till [supportteamet för Learning Seat LMS](https://azuremarketplace.microsoft.com/marketplace/apps/aad.learnconnect?tab=Overview). De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
 
@@ -185,7 +185,7 @@ I det här avsnittet gör du det möjligt för Britta Simon att använda enkel i
 
 ### <a name="create-learning-seat-lms-test-user"></a>Skapa Learning Seat LMS-testanvändare
 
-I det här avsnittet skapar du en användare med namnet Britta Simon i Learning Seat LMS. Arbeta med [utbildnings platsens LMS-support team](http://help.learningseatlms.com/help) för att lägga till användarna i utbildnings platsen LMS-plattform. Användare måste skapas och aktiveras innan du använder enkel inloggning.
+I det här avsnittet skapar du en användare med namnet Britta Simon i Learning Seat LMS. Arbeta med [utbildnings platsens LMS-support team](https://azuremarketplace.microsoft.com/marketplace/apps/aad.learnconnect?tab=Overview) för att lägga till användarna i utbildnings platsen LMS-plattform. Användare måste skapas och aktiveras innan du använder enkel inloggning.
 
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning
 

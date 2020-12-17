@@ -4,20 +4,20 @@ description: Lär dig hur du kör en Azure-funktion när ett RabbitMQ-meddelande
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/15/2020
+ms.date: 12/16/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 26dee5200a60f4900ed20c2fd49a874552272776
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 1db27db97cdc1746b3392bd386ee6539980cd6d6
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617229"
+ms.locfileid: "97630742"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>RabbitMQ-utlösare för Azure Functions översikt
 
 > [!NOTE]
-> RabbitMQ-bindningar stöds bara fullt ut i **Windows Premium** -planer. Användning och Linux stöds inte för närvarande.
+> RabbitMQ-bindningarna stöds bara fullt ut i **Windows Premium och dedikerade** planer. Användning och Linux stöds inte för närvarande.
 
 Använd RabbitMQ-utlösaren för att svara på meddelanden från en RabbitMQ-kö.
 
@@ -275,7 +275,7 @@ I det här avsnittet beskrivs de globala konfigurations inställningarna som är
 }
 ```
 
-|Egenskap  |Standardvärde | Beskrivning |
+|Egenskap  |Standard | Beskrivning |
 |---------|---------|---------|
 |prefetchCount|30|Hämtar eller anger antalet meddelanden som meddelande mottagaren kan begära och cachelagras samtidigt.|
 |queueName|saknas| Namnet på kön att ta emot meddelanden från. |
@@ -303,7 +303,7 @@ Om du testar lokalt utan någon anslutnings sträng ska du ange inställningen "
 }
 ```
 
-|Egenskap  |Standardvärde | Beskrivning |
+|Egenskap  |Standard | Beskrivning |
 |---------|---------|---------|
 |Värdnamn|saknas|(ignoreras om du använder ConnectStringSetting) <br>Värdnamn för kön (t. ex. 10.26.45.210)|
 |userName|saknas|(ignoreras om du använder ConnectionStringSetting) <br>Namn för att komma åt kön |

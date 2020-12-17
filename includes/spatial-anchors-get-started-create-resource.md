@@ -4,18 +4,18 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 11/20/2020
 ms.author: parkerra
-ms.openlocfilehash: 131b21ea7bc47df9654dd7c163eb22adb68e6678
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 596b73f8fb205b6a5681fecf3d00fd2a67c1f59f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185425"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97628759"
 ---
 ## <a name="create-a-spatial-anchors-resource"></a>Skapa en Spatial Anchors-resurs
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Gå till <a href="https://portal.azure.com" target="_blank">Azure-portalen</a>.
+Öppna <a href="https://portal.azure.com" target="_blank">Azure-portalen</a>.
 
 I den vänstra rutan väljer du **skapa en resurs**.
 
@@ -27,23 +27,23 @@ Välj **spatiala ankare** och välj sedan **skapa**.
 
 Gör följande i **konto fönstret spatiala ankare** :
 
-* Ange ett unikt resurs namn genom att använda vanliga alfanumeriska tecken.  
-* Välj den prenumeration som du vill koppla resursen till.  
-* Skapa en resurs grupp genom att välja **Skapa ny**. Ge den namnet **myResourceGroup** och välj sedan **OK**.  
+* Ange ett unikt resurs namn genom att använda vanliga alfanumeriska tecken.
+* Välj den prenumeration som du vill koppla resursen till.
+* Skapa en resurs grupp genom att välja **Skapa ny**. Ge den namnet **myResourceGroup** och välj sedan **OK**.
 
   [!INCLUDE [resource group intro text](resource-group.md)]
-  
-* Välj en plats (region) där resursen ska placeras.  
+
+* Välj en plats (region) där resursen ska placeras.
 * Välj **Ny** för att börja skapa resursen.
 
 ![Skärm bild av fönstret spatiala ankare för att skapa en resurs.](./media/spatial-anchors-get-started-create-resource/create-resource-form.png)
 
-När resursen har skapats visar Azure Portal att distributionen är slutförd. 
-   
+När resursen har skapats visar Azure Portal att distributionen är slutförd.
+
 ![Skärm bild som visar att resurs distributionen är klar.](./media/spatial-anchors-get-started-create-resource/deployment-complete.png)
 
-Välj **Gå till resurs**. Nu kan du Visa resurs egenskaperna. 
-   
+Välj **Gå till resurs**. Nu kan du Visa resurs egenskaperna.
+
 Kopiera resursens **konto-ID-** värde till en text redigerare för senare användning.
 
 ![Skärm bild av fönstret resurs egenskaper.](./media/spatial-anchors-get-started-create-resource/view-resource-properties.png)
@@ -121,6 +121,80 @@ Du kan ta bort ett konto med hjälp av kommandot [AZ spatial-ankare-Account Dele
 
 ```azurecli
 az spatial-anchors-account delete --resource-group myResourceGroup --name MySpatialAnchorsQuickStart
+```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Börja med att förbereda din miljö för Azure PowerShell:
+
+[!INCLUDE [azure-powershell-requirements-no-header.md](azure-powershell-requirements-no-header.md)]
+
+> [!IMPORTANT]
+> Även om **AZ. MixedReality** PowerShell-modulen är i för hands version måste du installera den separat med hjälp av `Install-Module` cmdleten. När modulen blir allmänt tillgänglig kommer den att ingå i framtida versioner av Az PowerShell-modulen och vara tillgänglig som standard i Azure Cloud Shell.
+
+```azurepowershell-interactive
+Install-Module -Name Az.MixedReality
+```
+
+1. När du har loggat in använder du cmdleten [set-AzContext](/powershell/module/az.accounts/set-azcontext) för att välja den prenumeration där du vill ställa in kontot för spatiala ankare:
+
+   ```azurepowershell-interactive
+   Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
+   ```
+
+1. Kör cmdleten [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) för att skapa en resurs grupp eller Använd en befintlig resurs grupp:
+
+   ```azurepowershell-interactive
+   New-AzResourceGroup -Name myResourceGroup -Location eastus2
+   ```
+
+   [!INCLUDE [resource group intro text](resource-group.md)]
+
+   Du kan visa dina aktuella ankare för spatialdata för en resurs grupp med hjälp av cmdleten [Get-AzSpatialAnchorsAccount](/powershell/module/az.mixedreality/get-azspatialanchorsaccount) :
+
+   ```azurepowershell-interactive
+   Get-AzSpatialAnchorsAccount -ResourceGroup myResourceGroup
+   ```
+
+   Du kan också Visa kontona för spatiala ankare för din prenumeration:
+
+   ```azurepowershell-interactive
+   Get-AzSpatialAnchorsAccount
+   ```
+
+1. Kör cmdleten [New-AzSpatialAnchorsAccount](/powershell/module/az.mixedreality/new-azspatialanchorsaccount) för att skapa ditt konto för spatial ankare:
+
+   ```azurepowershell-interactive
+   New-AzSpatialAnchorsAccount -ResourceGroup myResourceGroup -Name MySpatialAnchorsQuickStart -Location eastus2
+   ```
+
+1. Visa resurs egenskaperna med hjälp av cmdleten [Get-AzSpatialAnchorsAccount](/powershell/module/az.mixedreality/get-azspatialanchorsaccount) :
+
+   ```azurepowershell-interactive
+   Get-AzSpatialAnchorsAccount -ResourceGroup myResourceGroup -Name MySpatialAnchorsQuickStart
+   ```
+
+   Kopiera egenskap svärdet **accountId** och egenskapen **accountDomain** till en text redigerare för senare användning.
+
+1. Kör cmdleten [Get-AzSpatialAnchorsAccountKey](/powershell/module/az.mixedreality/get-azspatialanchorsaccountkey) för att hämta dina primära och sekundära nycklar:
+
+   ```azurepowershell-interactive
+   Get-AzSpatialAnchorsAccountKey -ResourceGroup myResourceGroup -Name MySpatialAnchorsQuickStart
+   ```
+
+   Kopiera nyckel värden till en text redigerare för senare användning.
+
+   Om du behöver återskapa nycklar använder du cmdleten [New-AzSpatialAnchorsAccountKey](/powershell/module/az.mixedreality/new-azspatialanchorsaccountkey) :
+
+   ```azurepowershell-interactive
+   New-AzSpatialAnchorsAccountKey -ResourceGroupName myResourceGroup -Name MySpatialAnchorsQuickStart -Primary
+   New-AzSpatialAnchorsAccountKey -ResourceGroupName myResourceGroup -Name MySpatialAnchorsQuickStart -Secondary
+   ```
+
+Du kan ta bort ett konto med hjälp av cmdleten [Remove-AzSpatialAnchorsAccount](/powershell/module/az.mixedreality/remove-azspatialanchorsaccount) :
+
+```azurepowershell-interactive
+Remove-AzSpatialAnchorsAccount -ResourceGroup myResourceGroup -Name MySpatialAnchorsQuickStart
 ```
 
 ---

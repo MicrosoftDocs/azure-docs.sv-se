@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 12/09/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: ff51c2a71dfcaec580733a92e265628ac816e229
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 223f8acd6aad7aaf4c37e0b2eae2df882ed2ad1d
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97096180"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629382"
 ---
 # <a name="tutorial-to-configure-zscaler-private-access-with-azure-active-directory-b2c-for-secure-hybrid-access"></a>Självstudie för att konfigurera Zscaler privat åtkomst med Azure Active Directory B2C för säker hybrid åtkomst
 
@@ -46,7 +46,7 @@ Följande diagram visar hur ZPA integreras med Azure AD B2C.
 
 ![Bild visar Zscaler-arkitektur diagrammet](media/partner-zscaler/zscaler-architecture-diagram.png)
 
-|Steg | Description |
+|Steg | Beskrivning |
 |:-----| :-----------|
 | 1. | Användaren kommer till en användar portal i ZPA eller ett ZPA Browser-program.
 | 2. | ZPA kräver användar kontext informationen innan den kan avgöra om användaren ska tillåtas att få åtkomst till webb programmet. För att autentisera användaren utför ZPA en SAML-omdirigering till sidan Azure AD B2C inloggning.  
@@ -125,7 +125,7 @@ I föregående steg måste du hämta en URL för SAML-metadata i följande forma
 
 där `<tenant-name>` är namnet på din Azure AD B2C klient och `<policy-name>` är namnet på den anpassade SAML-princip som du skapade i det senaste steget.
 
-Till exempel https://safemarch.b2clogin.com/safemarch.onmicrosoft.com/B2C_1A_signup_signin_saml//Samlp/metadata
+Till exempel " https://safemarch.b2clogin.com/safemarch.onmicrosoft.com/B2C_1A_signup_signin_saml//Samlp/metadata "
 
 Öppna en webbläsare och gå till URL: en för SAML-metadata. När sidan läses in högerklickar du var som helst på sidan. Välj **Spara sida som** och spara filen på din dator. du kommer att använda det i nästa del.
 

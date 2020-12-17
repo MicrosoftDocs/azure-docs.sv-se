@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: aahi
-ms.openlocfilehash: 80e0de73bbeae2ee1a79199fde34a3c430959ac8
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: cc6bcef77ca1601b76468586aa6af202836f1438
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356713"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97632000"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>Batch bearbetnings paket för tal behållare
 
@@ -86,13 +86,13 @@ docker run --rm -ti -v  /mnt/my_nfs:/my_nfs --entrypoint /bin/bash /mn
 Så här kör du batch-klienten:  
 
 ```Docker
-run-batch-client -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
+run-batch-client -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -file_log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
 
 Så här kör du batch-klienten och behållaren i ett enda kommando:
 
 ```Docker
-docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
+docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -file_log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
 
 
@@ -156,7 +156,7 @@ Batch bearbetnings paketet innehåller tre lägen med hjälp av- `--run-mode` pa
 > [!NOTE]
 > Batch-klienten kan skriva över *Kör. log* -filen med jämna mellanrum om den blir för stor.
 
-Klienten skapar en *Kör. log* -fil i den katalog som anges av `-log_folder` argumentet i Docker- `run` kommandot. Loggarna fångas in på fel SÖKNINGs nivå som standard. Samma loggar skickas till `stdout/stderr` och filtreras beroende på `-log_level` argumentet. Den här loggen krävs bara för fel sökning eller om du behöver skicka en spårning för support. Mappen loggning innehåller också tal-SDK-loggarna för varje ljudfil.
+Klienten skapar en *Kör. log* -fil i den katalog som anges av `-log_folder` argumentet i Docker- `run` kommandot. Loggarna fångas in på fel SÖKNINGs nivå som standard. Samma loggar skickas till `stdout/stderr` och filtreras beroende på `-file_log_level` `console_log_level` argumenten eller. Den här loggen krävs bara för fel sökning eller om du behöver skicka en spårning för support. Mappen loggning innehåller också tal-SDK-loggarna för varje ljudfil.
 
 Den utgående katalogen som anges av `-output_folder` kommer att innehålla en *run_summary.jspå* en   fil, som regelbundet skrivs om var 30: e sekund eller när nya avskrifter är klara. Du kan använda den här filen för att kontrol lera förloppet när batchen fortsätter. Den kommer också att innehålla den slutliga körnings statistiken och den slutliga statusen för varje fil när batchen har slutförts. Batchen slutförs när processen har en ren avslut. 
 

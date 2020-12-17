@@ -12,18 +12,32 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 11/05/2020
+ms.date: 12/04/2020
 ms.author: b-juche
-ms.openlocfilehash: 3f13d997f73e9737b8770eec7e0742d50bf1abb8
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: bba3dce2a2a18888cb88f4cf8b33cd48d6a4cd69
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421710"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631167"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Vad är nytt i Azure NetApp Files
 
 Azure NetApp Files uppdateras regelbundet. Den här artikeln innehåller en översikt över de senaste nya funktionerna och förbättringarna. 
+
+## <a name="december-2020"></a>December 2020
+
+* [Azure Application enhetligt ögonblicks bild verktyget](azacsnap-introduction.md) (offentlig för hands version)    
+
+    Azure Application enhetligt ögonblicks bild verktyget (AzAcSnap) är ett kommando rads verktyg som gör det möjligt att förenkla data skyddet för databaser från tredje part (SAP HANA) i Linux-miljöer (till exempel SUSE och RHEL).   
+
+    AzAcSnap utnyttjar volym ögonblicks bilder och Replikerings funktioner i Azure NetApp Files och Azure stor instans. Det ger följande fördelar:
+
+    * Programkonsekvent data skydd 
+    * Databas katalog hantering 
+    * *Ad hoc* -volymens skydd 
+    * Kloning av lagrings volymer 
+    * Stöd för haveri beredskap 
 
 ## <a name="november-2020"></a>November 2020
 
@@ -54,8 +68,8 @@ Azure NetApp Files uppdateras regelbundet. Den här artikeln innehåller en öve
     * Nya volym mått: 
         * *Storlek på allokerad volym: den allokerade* storleken på en volym
     * Mått för nya pooler: 
-        * *Allokerad storlek för pool* : poolens allokerade storlek 
-        * *Total ögonblicks bild storlek för poolen* : summan av ögonblicks bildernas storlek från alla volymer i poolen
+        * *Allokerad storlek för pool*: poolens allokerade storlek 
+        * *Total ögonblicks bild storlek för poolen*: summan av ögonblicks bildernas storlek från alla volymer i poolen
 
 ## <a name="july-2020"></a>Juli 2020
 

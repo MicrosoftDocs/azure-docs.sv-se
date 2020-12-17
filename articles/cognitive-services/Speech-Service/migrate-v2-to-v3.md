@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: rbeckers
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c5bc00ecf5e4c8ae440ce6610e9be8c8f77ed666
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: e9e5db87f983c5db59715eb8b6a9561acf5fad14
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862215"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630623"
 ---
 # <a name="migrate-code-from-v20-to-v30-of-the-rest-api"></a>Migrera kod från v 2.0 till v 3.0 av REST API
 
@@ -33,12 +33,16 @@ Listan över avbrytande ändringar har sorterats efter storleken på de ändring
 ### <a name="host-name-changes"></a>Värd namns ändringar
 
 Slut punkts värd namn har ändrats från `{region}.cris.ai` till `{region}.api.cognitive.microsoft.com` . Sökvägar till de nya slut punkterna innehåller inte längre `api/` den är en del av värd namnet. [Swagger-dokumentet](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) listar giltiga regioner och sökvägar.
+>[!IMPORTANT]
+>Ändra värd namnet från `{region}.cris.ai` till `{region}.api.cognitive.microsoft.com` där region är den region där din tal prenumeration finns. Ta även bort `api/` från valfri sökväg i klient koden.
 
 ### <a name="identity-of-an-entity"></a>Identitet för en entitet
 
 Egenskapen `id` är nu `self` . I v2 var en API-användare medveten om hur våra sökvägar i API: et skapades. Detta var inte utöknings Bart och krävde onödigt arbete från användaren. Egenskapen `id` (UUID) ersätts av `self` (sträng), vilket är platsen för entiteten (URL). Värdet är fortfarande unikt mellan alla dina entiteter. Om `id` lagras som en sträng i koden räcker det att byta namn för att stödja det nya schemat. Nu kan du använda `self` innehållet som URL för `GET` -, `PATCH` -och- `DELETE` rest-anrop för entiteten.
 
 Om entiteten har ytterligare funktioner som är tillgängliga via andra sökvägar visas de under `links` . I följande exempel för avskrift visas en separat metod för `GET` innehållet i avskriften:
+>[!IMPORTANT]
+>Byt namn på egenskapen `id` till `self` i klient koden. Ändra typen från `uuid` till `string` vid behov. 
 
 **v2-avskrift:**
 
@@ -91,6 +95,9 @@ Den grundläggande formen för svaret är samma för alla samlingar:
 
 Den här ändringen kräver att du anropar `GET` for-samlingen i en loop tills alla element har returnerats.
 
+>[!IMPORTANT]
+>När svaret på en GET till `speechtotext/v3.0/{collection}` innehåller ett värde i `$.@nextLink` fortsätter `GETs` du att utfärda det `$.@nextLink` tills `$.@nextLink` inte är inställt på att hämta alla element i samlingen.
+
 ### <a name="creating-transcriptions"></a>Skapa avskrifter
 
 En detaljerad beskrivning av hur du skapar batchar av avskrifter finns i [batch-avskriftering](./batch-transcription.md).
@@ -134,6 +141,8 @@ Den nya egenskapen `timeToLive` under `properties` kan hjälpa dig att rensa bef
   }
 }
 ```
+>[!IMPORTANT]
+>Byt namn på egenskapen `recordingsUrl` till `contentUrls` och skicka en matris med URL: er i stället för en enda URL. Överför inställningar för `diarizationEnabled` eller `wordLevelTimestampsEnabled` som `bool` i stället för `string` .
 
 ### <a name="format-of-v3-transcription-results"></a>Format på v3-avskrifts resultat
 
@@ -201,6 +210,9 @@ Exempel på ett v3-avskrifts resultat. Skillnaderna beskrivs i kommentarerna.
   ]
 }
 ```
+>[!IMPORTANT]
+>Deserialisera avskrifts resultatet till den nya typen som visas ovan. I stället för en enskild fil per ljud kanal, särskilja kanaler genom att kontrol lera egenskap svärdet för `channel` för varje-element i `recognizedPhrases` . Det finns nu en enda resultat fil för varje indatafil.
+
 
 ### <a name="getting-the-content-of-entities-and-the-results"></a>Hämtar innehållet i entiteter och resultaten
 
@@ -269,6 +281,9 @@ I v3 `links` inkluderar du en underordnad egenskap `files` som kallas om entitet
 
 `kind`Egenskapen anger formatet på filens innehåll. För avskrifter är fil typerna `TranscriptionReport` sammanfattningen av jobbet och filer av typen `Transcription` är resultatet av själva jobbet.
 
+>[!IMPORTANT]
+>Om du vill hämta resultatet av åtgärder använder du en `GET` på `/speechtotext/v3.0/{collection}/{id}/files` , de ingår inte längre i svaren på `GET` på `/speechtotext/v3.0/{collection}/{id}` eller `/speechtotext/v3.0/{collection}` .
+
 ### <a name="customizing-models"></a>Anpassa modeller
 
 Före v3 var det en skillnad mellan en _akustisk modell_ och en _språk modell_ när en modell tränades. Den här skillnaden ledde till att du måste ange flera modeller när du skapar slut punkter eller avskrifter. För att förenkla den här processen för en anropare har vi tagit bort skillnaderna och gjort allt beroende av innehållet i de data uppsättningar som används för modell träning. Med den här ändringen stöder modell skapande nu blandade data uppsättningar (språk data och akustiska data). Slut punkter och avskrifter kräver nu bara en modell.
@@ -277,11 +292,17 @@ Med den här ändringen har behovet av en `kind` i `POST` åtgärden tagits bort
 
 För att förbättra resultatet av en utbildad modell används akustiska data automatiskt internt under språkutbildning. I allmänhet ger modeller som skapats via v3-API: n mer exakta resultat än modeller som skapats med v2-API: et.
 
+>[!IMPORTANT]
+>Om du vill anpassa både ljud-och språk modell delen måste du skicka alla nödvändiga språk och akustiska data uppsättningar i `datasets[]` post-till `/speechtotext/v3.0/models` . Då skapas en enskild modell med båda delarna anpassade.
+
 ### <a name="retrieving-base-and-custom-models"></a>Hämtar bas-och anpassade modeller
 
 För att förenkla hämtningen av tillgängliga modeller har v3 separerat samlingarna av "bas modeller" från kundägda "anpassade modeller". De två vägarna är nu `GET /speechtotext/v3.0/models/base` och `GET /speechtotext/v3.0/models/` .
 
 I v2 returnerades alla modeller tillsammans i ett enda svar.
+
+>[!IMPORTANT]
+>Om du vill hämta en lista över de bas modeller som har angetts för anpassning använder du `GET` på `/speechtotext/v3.0/models/base` . Du kan hitta dina egna anpassade modeller med en `GET` på `/speechtotext/v3.0/models` .
 
 ### <a name="name-of-an-entity"></a>Namn på en entitet
 
@@ -302,6 +323,9 @@ I v2 returnerades alla modeller tillsammans i ett enda svar.
     "displayName": "Transcription using locale en-US"
 }
 ```
+
+>[!IMPORTANT]
+>Byt namn på egenskapen `name` till `displayName` i klient koden.
 
 ### <a name="accessing-referenced-entities"></a>Åtkomst till refererade entiteter
 
@@ -351,6 +375,10 @@ I v2 var refererade entiteter alltid infogade, till exempel de använda modeller
 
 Om du behöver använda informationen om en refererad modell, som du ser i exemplet ovan, kan du bara utfärda en Hämta `$.model.self` .
 
+>[!IMPORTANT]
+>Om du vill hämta metadata för entiteter som refereras till, kan du utfärda en hämtning `$.{referencedEntity}.self` , till exempel för att hämta modellen för en avskriftning `GET` `$.model.self` .
+
+
 ### <a name="retrieving-endpoint-logs"></a>Hämtar slut punkts loggar
 
 Version v2 av tjänsten som stöder loggnings slut punkts resultat. Om du vill hämta resultatet av en slut punkt med v2 skapar du en "data export" som representerade en ögonblicks bild av resultaten som definierats i ett tidsintervall. Processen för att exportera batchar av data var inflexibla. V3-API ger åtkomst till varje enskild fil och möjliggör upprepning genom dem.
@@ -392,6 +420,9 @@ Sid brytning för slut punkts loggar fungerar ungefär som alla andra samlingar,
 
 I v3 kan varje slut punkts logg tas bort individuellt genom att en åtgärd utfärdas för en `DELETE` `self` fil eller med hjälp av `DELETE` `$.links.logs` . Om du vill ange ett slutdatum kan du lägga till frågeparametern i `endDate` begäran.
 
+>[!IMPORTANT]
+>I stället för att skapa logg exporter vid `/api/speechtotext/v2.0/endpoints/{id}/data` användning `/v3.0/endpoints/{id}/files/logs/` för att få åtkomst till loggfilerna individuellt. 
+
 ### <a name="using-custom-properties"></a>Använda anpassade egenskaper
 
 Om du vill avgränsa anpassade egenskaper från valfria konfigurations egenskaper finns alla explicit namngivna egenskaper i `properties` egenskapen och alla egenskaper som anges av anroparna finns nu i `customProperties` egenskapen.
@@ -424,15 +455,26 @@ Om du vill avgränsa anpassade egenskaper från valfria konfigurations egenskape
 
 Med den här ändringen kan du också använda rätt typer på alla explicit namngivna egenskaper under `properties` (till exempel boolesk i stället för sträng).
 
+>[!IMPORTANT]
+>Skicka alla anpassade egenskaper som i `customProperties` stället för `properties` i dina `POST` begär Anden.
+
 ### <a name="response-headers"></a>Svarshuvuden
 
 v3 returnerar inte längre `Operation-Location` rubriken förutom `Location` rubriken på `POST` begär Anden. Värdet för båda huvudena i v2 var samma. Nu `Location` returneras bara.
 
 Eftersom den nya API-versionen nu hanteras av Azure API Management (APIM), är begränsningen av relaterade huvuden `X-RateLimit-Limit` , `X-RateLimit-Remaining` och `X-RateLimit-Reset` inte i svars huvudena.
 
+>[!IMPORTANT]
+>Läs platsen från svars huvudet `Location` i stället för `Operation-Location` . Om det handlar om en 429-svarskod läser du `Retry-After` värdet header i stället för `X-RateLimit-Limit` , `X-RateLimit-Remaining` eller `X-RateLimit-Reset` .
+
+
 ### <a name="accuracy-tests"></a>Test av precision
 
 Noggrannhets test har bytt namn till utvärderingar eftersom det nya namnet beskriver bättre vad de representerar. De nya Sök vägarna är: `https://{region}.api.cognitive.microsoft.com/speechtotext/v3.0/evaluations` .
+
+>[!IMPORTANT]
+>Byt namn på Sök vägs segmentet `accuracytests` till `evaluations` i klient koden.
+
 
 ## <a name="next-steps"></a>Nästa steg
 

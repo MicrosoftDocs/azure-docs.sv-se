@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: cf8b6670817132c8c0c0a09194b9aca4bbc8073c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: a74244cc45e1a3d2116f98ac73290d184f4affc0
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96923147"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97632068"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Skapa tillstånds känsliga och tillstånds lösa arbets flöden i Visual Studio Code med tillägget Azure Logic Apps (förhands granskning)
 
@@ -47,7 +47,7 @@ Den här artikeln visar hur du skapar din Logi Kap par och ett arbets flöde i V
 > [!NOTE]
 > Om du vill ha mer information om aktuella kända problem granskar du [sidan Logic Apps offentliga kända problem i GitHub](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 ### <a name="access-and-connectivity"></a>Åtkomst och anslutning
 
@@ -114,7 +114,7 @@ När du senare försöker öppna designern för ett arbets flöde i din Logic ap
 
     1. Välj **tillägg** i Visual Studio Code i det vänstra verktygsfältet.
 
-    1. I sökrutan tillägg anger du `azure logic apps preview` . Välj **Azure Logic Apps (för hands version)** i listan resultat **>** **Install**.
+    1. I sökrutan tillägg anger du `azure logic apps preview` . Välj **Azure Logic Apps (för hands version)** i listan resultat **>** .
 
        När installationen är klar visas förhands gransknings tillägget i listan **tillägg: installerad** .
 
@@ -226,7 +226,7 @@ Innan du kan skapa din Logi Kap par skapar du ett lokalt projekt så att du kan 
 
    ![Skärm bild som visar verktygsfältet i Azure-fönstret med alternativet "Skapa nytt projekt" markerat.](./media/create-stateful-stateless-workflows-visual-studio-code/create-new-project-folder.png)
 
-1. Om Windows Defender-brandväggen uppmanas att bevilja nätverks åtkomst för `Code.exe` , som är Visual Studio Code och för `func.exe` , som är Azure Functions Core tools, väljer du **privata nätverk, till exempel mitt hem-eller arbets nätverk** **>** **Allow access**.
+1. Om Windows Defender-brandväggen uppmanas att bevilja nätverks åtkomst för `Code.exe` , som är Visual Studio Code och för `func.exe` , som är Azure Functions Core tools, väljer du **privata nätverk, till exempel mitt hem-eller arbets nätverk** **>** .
 
 1. Bläddra till den plats där du skapade projektmappen, Välj mappen och fortsätt.
 
@@ -421,9 +421,9 @@ Arbets flödet i det här exemplet använder utlösaren och följande åtgärder
 
    | Egenskap | Krävs | Värde | Beskrivning |
    |----------|----------|-------|-------------|
-   | **Att** | Ja | <*din-e-postadress*> | E-postmottagaren, som kan vara din e-postadress i test syfte. I det här exemplet används det fiktiva e-postmeddelandet `sophiaowen@fabrikam.com` . |
-   | **Ämne** | Ja | `An email from your example workflow` | E-postmeddelandets ämne |
-   | **Brödtext** | Ja | `Hello from your example workflow!` | Innehållet i e-postmeddelandet |
+   | **Att** | Yes | <*din-e-postadress*> | E-postmottagaren, som kan vara din e-postadress i test syfte. I det här exemplet används det fiktiva e-postmeddelandet `sophiaowen@fabrikam.com` . |
+   | **Ämne** | Yes | `An email from your example workflow` | E-postmeddelandets ämne |
+   | **Brödtext** | Yes | `Hello from your example workflow!` | Innehållet i e-postmeddelandet |
    ||||
 
    > [!NOTE]
@@ -769,7 +769,7 @@ Du kan publicera din Logi Kap par som en ny resurs, vilket automatiskt skapar ev
 
       1. Välj antingen en befintlig Application Insights resurs eller **skapa en ny Application Insights resurs**.
 
-      1. I [Azure Portal](htpps://portal.azure.com)går du till din Application Insights-resurs.
+      1. I [Azure Portal](https://portal.azure.com)går du till din Application Insights-resurs.
 
       1. På resurs-menyn väljer du **Översikt**. Sök efter och kopiera **Instrumentation nyckel** värde.
 

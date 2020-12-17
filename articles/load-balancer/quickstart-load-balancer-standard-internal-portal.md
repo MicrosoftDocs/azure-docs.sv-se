@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 6ac76b3d3cc8fb27734730275836fba0dbfb08fe
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: a6739d092c2fe4594ae558414ccb882dd6f821bf
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700315"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630691"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Snabb start: skapa en intern belastningsutjämnare för att belastningsutjämna virtuella datorer med hjälp av Azure Portal
 
@@ -40,6 +40,8 @@ Logga in på Azure Portal på [https://portal.azure.com](https://portal.azure.co
 
 >[!NOTE]
 >Standard-SKU-belastningsutjämnare rekommenderas för produktions arbets belastningar.  Mer information om SKU: er finns i **[Azure Load Balancer SKU: er](skus.md)**.
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="Standard belastnings Utjämnings resurser har skapats för snabb start." border="false":::
 
 I det här avsnittet skapar du en belastningsutjämnare som laddar upp virtuella datorer. 
 
@@ -70,7 +72,7 @@ I det här avsnittet ska du skapa ett virtuellt nätverk och ett undernät.
 
 4. På fliken **IP-adresser** anger du den här informationen:
 
-    | Inställningen            | Värde                      |
+    | Inställning            | Värde                      |
     |--------------------|----------------------------|
     | IPv4-adressutrymme | Ange **10.1.0.0/16** |
 
@@ -78,7 +80,7 @@ I det här avsnittet ska du skapa ett virtuellt nätverk och ett undernät.
 
 6. I **Redigera undernät** anger du den här informationen:
 
-    | Inställningen            | Värde                      |
+    | Inställning            | Värde                      |
     |--------------------|----------------------------|
     | Namn på undernät | Ange **myBackendSubnet** |
     | Adressintervall för undernätet | Ange **10.1.0.0/24** |
@@ -89,7 +91,7 @@ I det här avsnittet ska du skapa ett virtuellt nätverk och ett undernät.
 
 9. Under **BastionHost** väljer du **Aktivera**. Ange den här informationen:
 
-    | Inställningen            | Värde                      |
+    | Inställning            | Värde                      |
     |--------------------|----------------------------|
     | Skydds namn | Ange **myBastionHost** |
     | AzureBastionSubnet-adressutrymme | Ange **10.1.1.0/24** |
@@ -106,7 +108,7 @@ I det här avsnittet ska du skapa ett virtuellt nätverk och ett undernät.
 
 2. På fliken **grundläggande** på sidan **skapa belastnings utjämning** anger eller väljer du följande information: 
 
-    | Inställningen                 | Värde                                              |
+    | Inställning                 | Värde                                              |
     | ---                     | ---                                                |
     | Prenumeration               | Välj din prenumeration.    |    
     | Resursgrupp         | Välj **CreateIntLBQS-RG** som du skapade i föregående steg.|
@@ -157,7 +159,7 @@ Skapa en hälsoavsökning med namnet **myHealthProbe** så att du kan övervaka 
 
 2. Välj **hälso avsökningar** under **Inställningar** och välj sedan **Lägg till**.
     
-    | Inställningen | Värde |
+    | Inställning | Värde |
     | ------- | ----- |
     | Namn | Ange **myHealthProbe**. |
     | Protokoll | Välj **http**. |
@@ -185,7 +187,7 @@ I det här avsnittet ska du skapa en belastnings Utjämnings regel:
 
 3. Använd de här värdena för att konfigurera belastnings Utjämnings regeln:
     
-    | Inställningen | Värde |
+    | Inställning | Värde |
     | ------- | ----- |
     | Namn | Ange **myHTTPRule**. |
     | IP-version | Välj **IPv4** |
@@ -197,7 +199,7 @@ I det här avsnittet ska du skapa en belastnings Utjämnings regel:
     | Hälsoavsökning | Välj **myHealthProbe**. |
     | Tids gräns för inaktivitet (minuter) | Flytta skjutreglaget till **15** minuter. |
     | TCP-återställning | Välj **Aktiverad**. |
-    | Utgående käll Network Address Translation (SNAT) | Välj **(rekommenderas) Använd utgående regler för att ge Server dels medlemmar till gång till Internet.** |
+    | Utgående käll Network Address Translation (SNAT) | Välj **(rekommenderas) Använd utgående regler för att ge backend-poolens medlemmar åtkomst till Internet.** |
 
 4. Lämna resten av standardinställningarna och välj sedan **OK**.
 
@@ -221,7 +223,7 @@ De här virtuella datorerna läggs till i backend-poolen för belastningsutjämn
    
 2. I **skapa en virtuell dator** skriver eller väljer du värdena på fliken **grundläggande** :
 
-    | Inställningen | Värde                                          |
+    | Inställning | Värde                                          |
     |-----------------------|----------------------------------|
     | **Projekt information** |  |
     | Prenumeration | Välj din Azure-prenumeration |
@@ -243,7 +245,7 @@ De här virtuella datorerna läggs till i backend-poolen för belastningsutjämn
   
 4. På fliken nätverk väljer eller anger du:
 
-    | Inställningen | Värde |
+    | Inställning | Värde |
     |-|-|
     | **Nätverksgränssnitt** |  |
     | Virtuellt nätverk | **myVNet** |
@@ -264,7 +266,7 @@ De här virtuella datorerna läggs till i backend-poolen för belastningsutjämn
 
 7. Följ steg 1 till 8 för att skapa en ytterligare virtuell dator med följande värden och alla andra inställningar på samma sätt som **myVM1**:
 
-    | Inställningen | VM 2|
+    | Inställning | VM 2|
     | ------- | ----- |
     | Namn |  **myVM2** |
     | Tillgänglighetszon | **2** |
@@ -275,6 +277,8 @@ De här virtuella datorerna läggs till i backend-poolen för belastningsutjämn
 
 >[!NOTE]
 >Standard-SKU-belastningsutjämnare rekommenderas för produktions arbets belastningar.  Mer information om SKU: er finns i **[Azure Load Balancer SKU: er](skus.md)**.
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="Grundläggande belastnings Utjämnings resurser skapade i snabb starten." border="false":::
 
 I det här avsnittet skapar du en belastningsutjämnare som laddar upp virtuella datorer. 
 
@@ -305,7 +309,7 @@ I det här avsnittet ska du skapa ett virtuellt nätverk och ett undernät.
 
 4. På fliken **IP-adresser** anger du den här informationen:
 
-    | Inställningen            | Värde                      |
+    | Inställning            | Värde                      |
     |--------------------|----------------------------|
     | IPv4-adressutrymme | Ange **10.1.0.0/16** |
 
@@ -313,7 +317,7 @@ I det här avsnittet ska du skapa ett virtuellt nätverk och ett undernät.
 
 6. I **Redigera undernät** anger du den här informationen:
 
-    | Inställningen            | Värde                      |
+    | Inställning            | Värde                      |
     |--------------------|----------------------------|
     | Namn på undernät | Ange **myBackendSubnet** |
     | Adressintervall för undernätet | Ange **10.1.0.0/24** |
@@ -324,7 +328,7 @@ I det här avsnittet ska du skapa ett virtuellt nätverk och ett undernät.
 
 9. Under **BastionHost** väljer du **Aktivera**. Ange den här informationen:
 
-    | Inställningen            | Värde                      |
+    | Inställning            | Värde                      |
     |--------------------|----------------------------|
     | Skydds namn | Ange **myBastionHost** |
     | AzureBastionSubnet-adressutrymme | Ange **10.1.1.0/24** |
@@ -341,7 +345,7 @@ I det här avsnittet ska du skapa ett virtuellt nätverk och ett undernät.
 
 2. På fliken **grundläggande** på sidan **skapa belastnings utjämning** anger eller väljer du följande information: 
 
-    | Inställningen                 | Värde                                              |
+    | Inställning                 | Värde                                              |
     | ---                     | ---                                                |
     | Prenumeration               | Välj din prenumeration.    |    
     | Resursgrupp         | Välj **CreateIntLBQS-RG** som du skapade i föregående steg.|
@@ -379,7 +383,7 @@ Skapa **myBackendPool** för backend-adresspoolen för att inkludera virtuella d
 
 3. På sidan **Lägg till en server dels grupp** anger eller väljer du:
     
-    | Inställningen | Värde |
+    | Inställning | Värde |
     | ------- | ----- |
     | Namn | Ange **myBackendPool**. |
     | Virtuellt nätverk | Välj **myVNet**. |
@@ -399,7 +403,7 @@ Skapa en hälsoavsökning med namnet **myHealthProbe** så att du kan övervaka 
 
 2. Välj **hälso avsökningar** under **Inställningar** och välj sedan **Lägg till**.
     
-    | Inställningen | Värde |
+    | Inställning | Värde |
     | ------- | ----- |
     | Namn | Ange **myHealthProbe**. |
     | Protokoll | Välj **http**. |
@@ -427,7 +431,7 @@ I det här avsnittet ska du skapa en belastnings Utjämnings regel:
 
 3. Använd de här värdena för att konfigurera belastnings Utjämnings regeln:
     
-    | Inställningen | Värde |
+    | Inställning | Värde |
     | ------- | ----- |
     | Namn | Ange **myHTTPRule**. |
     | IP-version | Välj **IPv4** |
@@ -461,7 +465,7 @@ De här virtuella datorerna läggs till i backend-poolen för belastningsutjämn
    
 2. I **skapa en virtuell dator** skriver eller väljer du värdena på fliken **grundläggande** :
 
-    | Inställningen | Värde                                          |
+    | Inställning | Värde                                          |
     |-----------------------|----------------------------------|
     | **Projekt information** |  |
     | Prenumeration | Välj din Azure-prenumeration |
@@ -483,7 +487,7 @@ De här virtuella datorerna läggs till i backend-poolen för belastningsutjämn
   
 4. På fliken nätverk väljer eller anger du:
 
-    | Inställningen | Värde |
+    | Inställning | Värde |
     |-|-|
     | **Nätverksgränssnitt** |  |
     | Virtuellt nätverk | Välj **myVNet** |
@@ -500,7 +504,7 @@ De här virtuella datorerna läggs till i backend-poolen för belastningsutjämn
 
 7. Följ steg 1 till 8 för att skapa en ytterligare virtuell dator med följande värden och alla andra inställningar på samma sätt som **myVM1**:
 
-    | Inställningen | VM 2 |
+    | Inställning | VM 2 |
     | ------- | ----- |
     | Namn |  **myVM2** |
     | Tillgänglighetsuppsättning| Välj **myAvailabilitySet** |
@@ -533,7 +537,7 @@ I det här avsnittet ska du skapa en virtuell dator med namnet **myTestVM**.  De
    
 2. I **skapa en virtuell dator** skriver eller väljer du värdena på fliken **grundläggande** :
 
-    | Inställningen | Värde                                          |
+    | Inställning | Värde                                          |
     |-----------------------|----------------------------------|
     | **Projekt information** |  |
     | Prenumeration | Välj din Azure-prenumeration |
@@ -554,7 +558,7 @@ I det här avsnittet ska du skapa en virtuell dator med namnet **myTestVM**.  De
   
 4. På fliken nätverk väljer eller anger du:
 
-    | Inställningen | Värde |
+    | Inställning | Värde |
     |-|-|
     | **Nätverksgränssnitt** |  |
     | Virtuellt nätverk | **myVNet** |
@@ -633,6 +637,6 @@ I den här snabbstarten kommer du att göra följande:
 * Anslutna 2 virtuella datorer till belastningsutjämnaren.
 * Konfigurerat trafik regel för belastnings utjämning, hälso avsökning och testar sedan belastningsutjämnaren. 
 
-Om du vill veta mer om Azure Load Balancer fortsätter du till...
+Om du vill veta mer om Azure Load Balancer fortsätter du till:
 > [!div class="nextstepaction"]
 > [Vad är Azure Load Balancer?](load-balancer-overview.md)

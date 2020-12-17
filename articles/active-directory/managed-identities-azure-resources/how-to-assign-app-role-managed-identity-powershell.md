@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jodowns
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8890eb76e3f9521aa5070789f969ffeb8f3e4ec6
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 409ba7a954830bb2370ce83989b9e8b08b742fe7
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97618966"
+ms.locfileid: "97631184"
 ---
 # <a name="assign-a-managed-identity-access-to-an-application-role-using-powershell"></a>Tilldela en hanterad identitets åtkomst till en program roll med hjälp av PowerShell
 
@@ -30,15 +30,15 @@ I den här artikeln får du lära dig hur du tilldelar en hanterad identitet til
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Om du inte känner till hanterade identiteter för Azure-resurser kan du läsa [avsnittet Översikt](overview.md). **Se till att granska [skillnaden mellan en tilldelad och användardefinierad hanterad identitet](overview.md#managed-identity-types)**.
 - Om du inte redan har ett Azure-konto [registrerar du dig för ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du fortsätter.
 - Om du vill köra exempel skripten har du två alternativ:
-    - Använd [Azure Cloud Shell](../../cloud-shell/overview.md)som du kan öppna med knappen **prova** på det övre högra hörnet av kodblock.
+    - Använd [Azure Cloud Shell](../../cloud-shell/overview.md), som du kan öppna med knappen **prova** i det övre högra hörnet av kodblock.
     - Kör skript lokalt genom att installera den senaste versionen av [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2).
 
-## <a name="use-azure-ad-to-assign-a-managed-identity-access-to-another-applications-app-role"></a>Använd Azure AD för att tilldela en hanterad identitets åtkomst till ett annat programs app-roll
+## <a name="assign-a-managed-identity-access-to-another-applications-app-role"></a>Tilldela en hanterad identitets åtkomst till ett annat programs app-roll
 
 1. Aktivera hanterad identitet på en Azure-resurs, [till exempel en virtuell Azure-dator](qs-configure-powershell-windows-vm.md).
 
@@ -86,14 +86,53 @@ I den här artikeln får du lära dig hur du tilldelar en hanterad identitet til
 
 1. Tilldela appen rollen till den hanterade identiteten. Du behöver följande information för att tilldela app-rollen:
     * `managedIdentityObjectId`: objekt-ID för den hanterade identitetens tjänst objekt, som du hittade i steg 2.
-    * `serverApplicationObjectId`: objekt-ID för Server programmets tjänst objekt, som du hittade i steg 4.
+    * `serverServicePrincipalObjectId`: objekt-ID för Server programmets tjänst objekt, som du hittade i steg 4.
     * `appRoleId`: ID: t för den app-roll som exponeras av serverprogrammet, som du skapade i steg 5, i exemplet är app-roll-ID: t `0566419e-bb95-4d9d-a4f8-ed9a0f147fa6` .
    
    Kör följande PowerShell-skript för att lägga till roll tilldelningen:
 
     ```powershell
-    New-AzureADServiceAppRoleAssignment -ObjectId $managedIdentityObjectId -Id $appRoleId -PrincipalId $managedIdentityObjectId -ResourceId $serverApplicationObjectId
+    New-AzureADServiceAppRoleAssignment -ObjectId $managedIdentityObjectId -Id $appRoleId -PrincipalId $managedIdentityObjectId -ResourceId $serverServicePrincipalObjectId
     ```
+
+## <a name="complete-script"></a>Fullständigt skript
+
+Det här exempel skriptet visar hur du tilldelar den hanterade identiteten för en Azure-webbapp till en app-roll.
+
+```powershell
+# Install the module. (You need admin on the machine.)
+# Install-Module AzureAD
+
+# Your tenant ID (in the Azure portal, under Azure Active Directory > Overview).
+$tenantID = '<tenant-id>'
+
+# The name of your web app, which has a managed identity that should be assigned to the server app's app role.
+$webAppName = '<web-app-name>'
+$resourceGroupName = '<resource-group-name-containing-web-app>'
+
+# The name of the server app that exposes the app role.
+$serverApplicationName = '<server-application-name>' # For example, MyApi
+
+# The name of the app role that the managed identity should be assigned to.
+$appRoleName = '<app-role-name>' # For example, MyApi.Read.All
+
+# Look up the web app's managed identity's object ID.
+$managedIdentityObjectId = (Get-AzWebApp -ResourceGroupName $resourceGroupName -Name $webAppName).identity.principalid
+
+Connect-AzureAD -TenantId $tenantID
+
+# Look up the details about the server app's service principal and app role.
+$serverServicePrincipal = (Get-AzureADServicePrincipal -Filter "DisplayName eq '$serverApplicationName'")
+$serverServicePrincipalObjectId = $serverServicePrincipal.ObjectId
+$appRoleId = ($serverServicePrincipal.AppRoles | Where-Object {$_.Value -eq $appRoleName }).Id
+
+# Assign the managed identity access to the app role.
+New-AzureADServiceAppRoleAssignment `
+    -ObjectId $managedIdentityObjectId `
+    -Id $appRoleId `
+    -PrincipalId $managedIdentityObjectId `
+    -ResourceId $serverServicePrincipalObjectId
+```
 
 ## <a name="next-steps"></a>Nästa steg
 

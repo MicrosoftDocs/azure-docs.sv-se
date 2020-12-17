@@ -1,6 +1,6 @@
 ---
-title: Skapa en anpassad Azure-roll med hjälp av en Azure Resource Manager mall – Azure RBAC
-description: Lär dig hur du skapar en anpassad Azure-roll med hjälp av en Azure Resource Manager-mall (ARM-mall) och rollbaserad åtkomst kontroll i Azure (Azure RBAC).
+title: Skapa eller uppdatera anpassade Azure-roller med hjälp av en Azure Resource Manager mall – Azure RBAC
+description: Lär dig hur du skapar eller uppdaterar Azure-anpassade roller med hjälp av en Azure Resource Manager-mall (ARM-mall) och rollbaserad åtkomst kontroll i Azure (Azure RBAC).
 services: role-based-access-control,azure-resource-manager
 author: rolyon
 manager: mtillman
@@ -8,24 +8,24 @@ ms.service: role-based-access-control
 ms.topic: how-to
 ms.custom: subject-armqs
 ms.workload: identity
-ms.date: 06/25/2020
+ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: 96dfdc0a1c32237c55d4e65bb25989656e2a4ad2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: beea0c5cecd7bb99973a4692a4cce17e7a69d708
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097030"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631320"
 ---
-# <a name="create-an-azure-custom-role-using-an-arm-template"></a>Skapa en anpassad Azure-roll med en ARM-mall
+# <a name="create-or-update-azure-custom-roles-using-an-arm-template"></a>Skapa eller uppdatera anpassade Azure-roller med en ARM-mall
 
-Om de [inbyggda Azure-rollerna](built-in-roles.md) inte uppfyller organisationens specifika behov kan du skapa dina egna [anpassade roller](custom-roles.md). Den här artikeln beskriver hur du skapar en anpassad roll med hjälp av en Azure Resource Manager-mall (ARM-mall).
+Om de [inbyggda Azure-rollerna](built-in-roles.md) inte uppfyller organisationens specifika behov kan du skapa dina egna [anpassade roller](custom-roles.md). Den här artikeln beskriver hur du skapar eller uppdaterar en anpassad roll med hjälp av en Azure Resource Manager-mall (ARM-mall).
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Om du vill skapa en anpassad roll anger du ett roll namn, behörigheter och var rollen kan användas. I den här artikeln skapar du en roll med namnet _anpassad roll-RG läsare_ med resurs behörigheter som kan tilldelas till en prenumerations omfattning eller lägre.
 
-Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure** . Mallen öppnas på Azure-portalen.
+Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure**. Mallen öppnas på Azure-portalen.
 
 [![Distribuera till Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsubscription-deployments%2Fcreate-role-def%2Fazuredeploy.json)
 
@@ -66,15 +66,13 @@ Följ de här stegen för att distribuera den tidigare mallen.
     $location = Read-Host -Prompt "Enter a location (i.e. centralus)"
     [string[]]$actions = Read-Host -Prompt "Enter actions as a comma-separated list (i.e. action1,action2)"
     $actions = $actions.Split(',')
-
     $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-deployments/create-role-def/azuredeploy.json"
-
     New-AzDeployment -Location $location -TemplateUri $templateUri -actions $actions
     ```
 
-1. Ange en plats för distributionen, t. ex. *centralt* .
+1. Ange en plats för distributionen, till exempel `centralus` .
 
-1. Ange en lista med åtgärder för den anpassade rollen som en kommaavgränsad lista, t. ex *. Microsoft. Resources/resurser/Read, Microsoft. Resources/Subscriptions/resourceGroups/Read* .
+1. Ange en lista med åtgärder för den anpassade rollen som en kommaavgränsad lista, till exempel `Microsoft.Resources/resources/read,Microsoft.Resources/subscriptions/resourceGroups/read` .
 
 1. Om det behövs kör du kommandot genom att trycka på RETUR `New-AzDeployment` .
 
@@ -147,11 +145,52 @@ Följ de här stegen för att kontrol lera att den anpassade rollen har skapats.
 
 1. Välj fliken **roller** .
 
-1. Ange listan **typ** till **CustomRole** .
+1. Ange listan **typ** till **CustomRole**.
 
 1. Verifiera att rollen för den **anpassade rollen RG läsare** visas i listan.
 
    ![Ny anpassad roll i Azure Portal](./media/custom-roles-template/custom-role-template-portal.png)
+
+## <a name="update-a-custom-role"></a>Uppdatera en anpassad roll
+
+Precis som när du skapar en anpassad roll kan du uppdatera en befintlig anpassad roll med hjälp av en mall. Om du vill uppdatera en anpassad roll måste du ange den roll som du vill uppdatera.
+
+Här är de ändringar du behöver göra i föregående snabb starts mall för att uppdatera den anpassade rollen.
+
+- Inkludera roll-ID som en parameter.
+    ```json
+        ...
+        "roleDefName": {
+          "type": "string",
+          "metadata": {
+            "description": "ID of the role definition"
+          }
+        ...
+    ```
+
+- Ta med roll-ID-parametern i roll definitionen.
+
+    ```json
+      ...
+      "resources": [
+        {
+          "type": "Microsoft.Authorization/roleDefinitions",
+          "apiVersion": "2018-07-01",
+          "name": "[parameters('roleDefName')]",
+          "properties": {
+            ...
+    ```
+
+Här är ett exempel på hur du distribuerar mallen.
+
+```azurepowershell
+$location = Read-Host -Prompt "Enter a location (i.e. centralus)"
+[string[]]$actions = Read-Host -Prompt "Enter actions as a comma-separated list (i.e. action1,action2)"
+$actions = $actions.Split(',')
+$roleDefName = Read-Host -Prompt "Enter the role ID to update"
+$templateFile = "rg-reader-update.json"
+New-AzDeployment -Location $location -TemplateFile $templateFile -actions $actions -roleDefName $roleDefName
+```
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

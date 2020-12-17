@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/15/2020
+ms.date: 12/16/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro R so I can use it to transfer data to Azure.
-ms.openlocfilehash: d992748e9829993acc28795778baae3eb92e88f3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7ca9b21838d35b54b4ed84d5aaf3aa797b02d9e0
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468826"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630776"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-r"></a>Självstudie: Förbered för att distribuera Azure Stack Edge Pro R
 
@@ -35,13 +35,13 @@ Om du vill distribuera Azure Stack Edge Pro R, se följande självstudier i den 
 
 | För att utföra det här steget | Använd de här dokumenten |
 | --- | --- |
-| **Förberedelse** |De här stegen måste utföras i förberedelser inför den kommande distributionen. |
+| **Tgärder** |De här stegen måste utföras i förberedelser inför den kommande distributionen. |
 | **[Check lista för distributions konfiguration](#deployment-configuration-checklist)** |Använd den här checklistan för att samla in och registrera information före och under distributionen. |
 | **[Distributions krav](#prerequisites)** |När de här kraven är uppfyllda är miljön klar för distribution. |
 |  | |
 |**Distributions självstudier** |De här självstudierna krävs för att distribuera din Azure Stack Edge Pro R-enhet i produktion. |
 |**[1. Förbered Azure Portal för enhet](azure-stack-edge-pro-r-deploy-prep.md)** |Skapa och konfigurera din Azure Stack Edge-resurs innan du installerar en fysisk enhet i Azure Stack Box Edge. |
-|**[2. Installera enheten](azure-stack-edge-pro-r-deploy-install.md)**|Packa upp, racka och kabelanslut din fysiska enhet.  |
+|**[2. Installera enheten](azure-stack-edge-pro-r-deploy-install.md)**|Kontrol lera och kabelansluta din fysiska enhet.  |
 |**[3. Anslut till enheten](azure-stack-edge-pro-r-deploy-connect.md)** |När enheten har installerats ansluter du till enhetens lokala webb gränssnitt.  |
 |**[4. Konfigurera nätverks inställningar](azure-stack-edge-pro-r-deploy-configure-network-compute-web-proxy.md)** |Konfigurera nätverket inklusive inställningar för beräknings nätverk och webbproxy för enheten.   |
 |**[5. Konfigurera enhets inställningar](azure-stack-edge-pro-r-deploy-set-up-device-update-time.md)** |Tilldela ett enhets namn och en DNS-domän, konfigurera uppdaterings Server och enhets tid. |

@@ -3,12 +3,12 @@ title: Förbättra prestanda för Azure Apps med Advisor
 description: Använd prestanda rekommendationer i Azure Advisor för att förbättra hastighet och svars tider för affärs kritiska program.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 55f5ac6784bf613170fd10060799ab5ad1290a62
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 59de7ee14a3af2f8740d63a3cae19571469afd7f
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183353"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630351"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Förbättra prestanda för Azure-program med hjälp av Azure Advisor
 
@@ -175,6 +175,11 @@ Vi har fastställt att dina virtuella datorer körs i en annan region än eller 
 Vi har upptäckt att resurser i den här prenumerationen använder inaktuella SDK-versioner för Avancerad läsare. Om du använder den senaste SDK-versionen för Avancerad läsare får du uppdaterad säkerhet, prestanda och en utökad uppsättning funktioner för att anpassa och förbättra integreringsupplevelsen.
 Lär dig mer om [SDK för avancerad läsare](../cognitive-services/immersive-reader/index.yml).
 
+## <a name="improve-vm-performance-by-changing-the-maximum-session-limit"></a>Förbättra prestanda för virtuella datorer genom att ändra gränsen för högsta antal sessioner
+
+Advisor identifierar att du har en adresspool som har ett djup som är inställt på belastnings Utjämnings algoritmen och att poolens maximala sessionsgräns är större än eller lika med 99999. Belastningsutjämning med djup-först använder maxgränsen för sessioner för att fastställa det maximala antalet användare som kan ha samtidiga sessioner på en enda sessionsvärd. Om max gränsen för sessioner är för hög, kommer alla användarsessioner att dirigeras till samma värd för sessionen och detta orsakar problem med prestanda och tillförlitlighet. När du ställer in en adresspool för att ha djupgående första belastnings utjämning måste du därför ange en lämplig gräns för maximal session enligt konfigurationen av din virtuella dators distribution och kapacitet. 
+
+Mer information om belastnings utjämning i Windows Virtual Desktop finns i [Konfigurera belastnings Utjämnings metoden för Windows virtuella skriv bord](/virtual-desktop/troubleshoot-set-up-overview.md).
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Få åtkomst till prestanda rekommendationer i Advisor
 

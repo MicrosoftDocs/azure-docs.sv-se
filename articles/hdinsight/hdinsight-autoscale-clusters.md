@@ -1,30 +1,29 @@
 ---
-title: Skala Azure HDInsight-kluster med autoskalning
-description: Använd funktionen automatisk skalning i Azure HDInsight för att automatiskt skala Apache Hadoop kluster.
+title: Skala Azure HDInsight-kluster automatiskt
+description: Använd funktionen för automatisk skalning för att automatiskt skala Azure HDInsight-kluster baserat på ett schema eller prestanda mått.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: contperf-fy21q1
-ms.date: 09/14/2020
-ms.openlocfilehash: 09e4412128a3b13abfa91bf0c128372b30b3e686
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.custom: contperf-fy21q1, contperf-fy21q2
+ms.date: 12/14/2020
+ms.openlocfilehash: 2b23b4256e79723ce0b5edafd59186dc345eb791
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033144"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629263"
 ---
-# <a name="autoscale-azure-hdinsight-clusters"></a>Autoskala Azure HDInsight-kluster
+# <a name="automatically-scale-azure-hdinsight-clusters"></a>Skala Azure HDInsight-kluster automatiskt
 
-Azure HDInsight: s kostnads fria funktioner för automatisk skalning kan öka eller minska antalet arbetsnoder i klustret baserat på tidigare angivna villkor. Du anger ett lägsta och högsta antal noder när klustret skapas, upprättar skalnings kriterier med hjälp av ett dags schema eller vissa prestanda mått, och HDInsight-plattformen gör resten.
+Azure HDInsight: s kostnads fria funktioner för automatisk skalning kan öka eller minska antalet arbetsnoder i klustret baserat på tidigare angivna villkor. Funktionen för automatisk skalning fungerar genom att skala antalet noder inom de förinställda gränserna utifrån antingen prestanda mått eller ett schema för skalnings-och skalnings åtgärder.
 
 ## <a name="how-it-works"></a>Så här fungerar det
 
-Funktionen för automatisk skalning använder två typer av villkor för att utlösa skalnings händelser: tröskelvärden för olika kluster prestanda värden (kallas *belastningsutjämnad skalning*) och tidsbaserade utlösare (kallas *schema-baserad skalning*). Vid inläsnings skalning ändras antalet noder i klustret, inom ett intervall som du anger, för att säkerställa optimal CPU-användning och minimera löpande kostnad. Schemabaserade skalningar ändrar antalet noder i klustret baserat på åtgärder som du associerar med vissa datum och tider.
+Funktionen för automatisk skalning använder två typer av villkor för att utlösa skalnings händelser: tröskelvärden för olika kluster prestanda värden (kallas *belastningsutjämnad skalning*) och tidsbaserade utlösare (kallas *schema-baserad skalning*). Vid inläsnings skalning ändras antalet noder i klustret, inom ett intervall som du anger, för att säkerställa optimal CPU-användning och minimera löpande kostnad. Schemabaserade skalningar ändrar antalet noder i klustret baserat på ett schema för skalnings-och skalnings åtgärder.
 
 Följande videoklipp ger en översikt över de utmaningar som autoskalning löser och hur det kan hjälpa dig att kontrol lera kostnaderna med HDInsight.
-
 
 > [!VIDEO https://www.youtube.com/embed/UlZcDGGFlZ0?WT.mc_id=dataexposed-c9-niner]
 
@@ -74,10 +73,10 @@ I följande tabell beskrivs de kluster typer och versioner som är kompatibla me
 
 | Version | Spark | Hive | Interaktiv fråga | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| HDInsight 3,6 utan ESP | Ja | Ja | Ja | Ja* | Inga | Inga | Inga |
-| HDInsight 4,0 utan ESP | Ja | Ja | Ja | Ja* | Inga | Inga | Inga |
-| HDInsight 3,6 med ESP | Ja | Ja | Ja | Ja* | Inga | Inga | Inga |
-| HDInsight 4,0 med ESP | Ja | Ja | Ja | Ja* | Inga | Inga | Inga |
+| HDInsight 3,6 utan ESP | Ja | Ja | Ja | Ja* | Nej | Nej | Nej |
+| HDInsight 4,0 utan ESP | Ja | Ja | Ja | Ja* | Nej | Nej | Nej |
+| HDInsight 3,6 med ESP | Ja | Ja | Ja | Ja* | Nej | Nej | Nej |
+| HDInsight 4,0 med ESP | Ja | Ja | Ja | Ja* | Nej | Nej | Nej |
 
 \* HBase-kluster kan bara konfigureras för schemabaserade skalning, inte för inläsning.
 
@@ -133,7 +132,7 @@ Mer information om hur du skapar HDInsight-kluster med hjälp av Azure Portal fi
 
 #### <a name="load-based-autoscaling"></a>Load-based autoskalning
 
-Du kan skapa ett HDInsight-kluster med belastningsutjämnad autoskalning av en Azure Resource Manager mall genom att lägga till en `autoscale` nod i `computeProfile`  >  `workernode` avsnittet med egenskaperna `minInstanceCount` och `maxInstanceCount` som visas i JSON-kodfragmentet nedan. En fullständig Resource Manager-mall finns i [snabb starts mall: Distribuera Spark-kluster med Loadbased AutoScale aktiverat](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-loadbased).
+Du kan skapa ett HDInsight-kluster med belastningsutjämnad autoskalning av en Azure Resource Manager mall genom att lägga till en `autoscale` nod i `computeProfile`  >  `workernode` avsnittet med egenskaperna `minInstanceCount` och `maxInstanceCount` som visas i JSON-kodfragmentet nedan. En fullständig Resource Manager-mall finns i [snabb starts mall: Distribuera Spark-kluster med belastningsutjämnad autoskalning aktive rad](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-loadbased).
 
 ```json
 {
@@ -225,7 +224,7 @@ Kluster statusen som visas i Azure Portal kan hjälpa dig att övervaka automati
 
 Alla de kluster status meddelanden som du kan se förklaras i listan nedan.
 
-| Klusterstatus | Description |
+| Klusterstatus | Beskrivning |
 |---|---|
 | Körs | Klustret fungerar normalt. Alla tidigare autoskalning-aktiviteter har slutförts. |
 | Uppdatera  | Konfigurationen för automatisk skalning av klustret uppdateras.  |

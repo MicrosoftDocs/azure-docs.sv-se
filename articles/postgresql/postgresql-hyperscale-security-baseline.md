@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 324a2acbf069e8e23246b99a7d79a3195f737a56
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 836cf4600e353da61673ec8ee5df8f30fb4b9562
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492309"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629858"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>Azures säkerhets bas linje för Azure Database for PostgreSQL-storskalig (citus)
 
@@ -582,7 +582,7 @@ Azure Resource Manager har också möjlighet att exportera mallen i JavaScript O
 
 **Vägledning**: Azure Database for PostgreSQL-storskalig (citus) stöder för närvarande inte hanterade identiteter direkt. När du skapar Azure Database for PostgreSQL-servern måste du ange autentiseringsuppgifter för en administratörs användare. Du kan skapa ytterligare användar roller i Azure Portal-gränssnittet.
 
-- [Skapa en Azure Database for PostgreSQL-storskalig (citus)](./quickstart-create-hyperscale-portal.md#create-an-azure-database-for-postgresql---hyperscale-citus)
+- [Skapa en Azure Database for PostgreSQL-storskalig (citus)](./quickstart-create-hyperscale-portal.md#create-a-hyperscale-citus-server-group)
 
 - [Skapa ytterligare användar roller](./howto-hyperscale-create-users.md#how-to-create-additional-user-roles)
 

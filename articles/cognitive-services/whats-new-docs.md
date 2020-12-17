@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 12/07/2020
-ms.openlocfilehash: d07f01a17c2d784eed61ad7e7ef47c8f7eb5ac30
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 9069a53166b30e206559f0c68c4bcef2ec136ac5
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862198"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631507"
 ---
 # <a name="cognitive-services-docs-whats-new-for-november-1-2020---november-30-2020"></a>Cognitive Services dokument: Vad är nytt för den 1 november 2020 – 30 november 2020
 
@@ -29,39 +29,39 @@ Välkommen till nyheter i Cognitive Services dokumenten från den 1 november 202
 - [Stöd för naturligt språk för Azure Cognitive Services](language-support.md)
 - [Azures säkerhets bas linje för Cognitive Services](security-baseline.md)
 
-## <a name="containers"></a>Containers
+## <a name="containers"></a>Containrar
 
 ### <a name="updated-articles"></a>Uppdaterade artiklar
 
-- [Bild taggar för Azure Cognitive Services container och viktig information](/azure/cognitive-services/containers/container-image-tags.md)
+- [Bild taggar för Azure Cognitive Services container och viktig information](/azure/cognitive-services/containers/container-image-tags)
 
 ## <a name="form-recognizer"></a>Formigenkänning
 
 ### <a name="new-articles"></a>Nya artiklar
 
-- [Fördefinierad faktura modell för formulär tolken](/azure/cognitive-services/form-recognizer/concept-invoices.md)
-- [Formulär tolkens layout-tjänst](/azure/cognitive-services/form-recognizer/concept-layout.md)
-- [Snabb start: extrahera faktura data med hjälp av formulär tolken REST API med python](/azure/cognitive-services/form-recognizer/quickstarts/python-invoices.md)
+- [Fördefinierad faktura modell för formulär tolken](/azure/cognitive-services/form-recognizer/concept-invoices)
+- [Formulär tolkens layout-tjänst](/azure/cognitive-services/form-recognizer/concept-layout)
+- [Snabb start: extrahera faktura data med hjälp av formulär tolken REST API med python](/azure/cognitive-services/form-recognizer/quickstarts/python-invoices)
 
 ### <a name="updated-articles"></a>Uppdaterade artiklar
 
-- [Koncept för kvitton](/azure/cognitive-services/form-recognizer/concept-receipts.md)
-- [Vad är formigenkänning?](/azure/cognitive-services/form-recognizer/overview.md)
-- [Träna en formulär igenkännings modell med etiketter med hjälp av verktyget för att använda exempel etiketter](/azure/cognitive-services/form-recognizer/quickstarts/label-tool.md)
-- [Snabb start: extrahera visitkorts data med hjälp av formulär tolken REST API med python](/azure/cognitive-services/form-recognizer/quickstarts/python-business-cards.md)
-- [Vad är nytt i Formigenkänning?](/azure/cognitive-services/form-recognizer/whats-new.md)
+- [Koncept för kvitton](/azure/cognitive-services/form-recognizer/concept-receipts)
+- [Vad är formigenkänning?](/azure/cognitive-services/form-recognizer/overview)
+- [Träna en formulär igenkännings modell med etiketter med hjälp av verktyget för att använda exempel etiketter](/azure/cognitive-services/form-recognizer/quickstarts/label-tool)
+- [Snabb start: extrahera visitkorts data med hjälp av formulär tolken REST API med python](/azure/cognitive-services/form-recognizer/quickstarts/python-business-cards)
+- [Vad är nytt i Formigenkänning?](/azure/cognitive-services/form-recognizer/whats-new)
 
 ## <a name="metrics-advisor"></a>Metrics Advisor
 
 ### <a name="new-articles"></a>Nya artiklar
 
-- [Mått rådgivare: Nyheter i dokumenten](/azure/cognitive-services/metrics-advisor/whats-new.md)
+- [Mått rådgivare: Nyheter i dokumenten](/azure/cognitive-services/metrics-advisor/whats-new)
 
 ### <a name="updated-articles"></a>Uppdaterade artiklar
 
-- [Ge avvikande feedback](/azure/cognitive-services/metrics-advisor/how-tos/anomaly-feedback.md)
-- [Vanliga frågor och svar om mått rådgivare](/azure/cognitive-services/metrics-advisor/faq.md)
-- [Snabb start: Använd klient bibliotek eller REST-API: er för att anpassa din lösning](/azure/cognitive-services/metrics-advisor/quickstarts/rest-api-and-client-library.md)
+- [Ge avvikande feedback](/azure/cognitive-services/metrics-advisor/how-tos/anomaly-feedback)
+- [Vanliga frågor och svar om mått rådgivare](/azure/cognitive-services/metrics-advisor/faq)
+- [Snabb start: Använd klient bibliotek eller REST-API: er för att anpassa din lösning](/azure/cognitive-services/metrics-advisor/quickstarts/rest-api-and-client-library)
 
 ## <a name="qna-maker"></a>QnA Maker 
 
@@ -75,12 +75,12 @@ Välkommen till nyheter i Cognitive Services dokumenten från den 1 november 202
 
 ### <a name="updated-articles"></a>Uppdaterade artiklar
 
-- [Data-och hastighets begränsningar för API för textanalys](/azure/cognitive-services/text-analytics/concepts/data-limits.md)
-- [Gör så här: använda Textanalys för hälsa (för hands version)](/azure/cognitive-services/text-analytics/how-tos/text-analytics-for-health.md)
-- [Så här anropar du Textanalys REST API](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api.md)
-- [Använda namngiven enhets igenkänning i Textanalys](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
-- [Gör så här: sentiment analys och avyttrande](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md)
-- [Vad är nytt i API:et för textanalys?](/azure/cognitive-services/text-analytics/whats-new.md)
-- [Exempel: identifiera språk med Textanalys](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection.md)
+- [Data-och hastighets begränsningar för API för textanalys](/azure/cognitive-services/text-analytics/concepts/data-limits)
+- [Gör så här: använda Textanalys för hälsa (för hands version)](/azure/cognitive-services/text-analytics/how-tos/text-analytics-for-health)
+- [Så här anropar du Textanalys REST API](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api)
+- [Använda namngiven enhets igenkänning i Textanalys](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking)
+- [Gör så här: sentiment analys och avyttrande](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis)
+- [Vad är nytt i API:et för textanalys?](/azure/cognitive-services/text-analytics/whats-new)
+- [Exempel: identifiera språk med Textanalys](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection)
 
 [!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

@@ -7,17 +7,17 @@ ms.topic: reference
 ms.date: 12/15/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 72c31d0eebc19a926805976ed637168a00fa9495
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: ebf094ddfec19dac98238adf7d55af785b3df122
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617195"
+ms.locfileid: "97629637"
 ---
 # <a name="rabbitmq-bindings-for-azure-functions-overview"></a>RabbitMQ-bindningar för Azure Functions översikt
 
 > [!NOTE]
-> RabbitMQ-bindningar stöds bara fullt ut i **Windows Premium** -planer. Användning och Linux stöds inte för närvarande.
+> RabbitMQ-bindningarna stöds bara fullt ut i **Windows Premium och dedikerade** planer. Användning och Linux stöds inte för närvarande.
 
 Azure Functions integreras med [rabbitmq](https://www.rabbitmq.com/) via [utlösare och bindningar](./functions-triggers-bindings.md). Med de Azure Functions RabbitMQ-bindnings tilläggen kan du skicka och ta emot meddelanden med hjälp av RabbitMQ-API: et med Functions.
 

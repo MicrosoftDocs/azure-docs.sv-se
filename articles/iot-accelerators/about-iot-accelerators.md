@@ -9,18 +9,18 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 193ceab0b2df1ab833a86eb748c18271a8e33b71
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 5012383e64a85ee025273f5339b828f5338e1d4f
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852922"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629076"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Vad är Azure IoT-lösningsacceleratorer?
 
 En molnbaserad IoT-lösning använder normalt anpassad kod och molntjänster för att hantera anslutningsmöjligheter för enheter, databearbetning och -analys samt presentation.
 
-IoT-lösningsacceleratorer är kompletta och redo att distribuera IoT-lösningar som implementerar vanliga IoT-scenarier. Scenarierna omfattar ansluten fabrik och enhets simulering. När du distribuerar en lösningsaccelerator omfattar distributionen alla molnbaserade tjänster som krävs tillsammans med programkod som krävs.
+IoT-lösningsacceleratorer är kompletta och redo att distribuera IoT-lösningar som implementerar vanliga IoT-scenarier. Scenarierna omfattar ansluten fabrik och enhetssimulering. När du distribuerar en lösningsaccelerator omfattar distributionen alla molnbaserade tjänster som krävs tillsammans med programkod som krävs.
 
 Lösningsacceleratorerna är startpunkter för dina egna IoT-lösningar. Källkoden för alla lösningsacceleratorer är öppen källkod och finns i GitHub. Vi rekommenderar att du laddar ned och anpassar lösningsacceleratorerna så att de uppfyller dina krav.
 
@@ -29,7 +29,7 @@ Du kan även använda lösningsacceleratorerna som utbildningsverktyg innan du s
 Programkoden i varje lösningsaccelerator innehåller en webbapp som du kan använda för att hantera lösningsacceleratorn.
 
 > [!NOTE]
-> Lösningen för fjärrövervakning och förebyggande underhåll har tagits bort från [Azure IoT Solution Accelerators](https://www.azureiotsolutions.com/Accelerators) -webbplatsen. Mer information finns i [Vad är Azure IoT Solution-acceleratorer? (tidigare version)](/previous-versions/azure/iot-accelerators/about-iot-accelerators.md).
+> Lösningen för fjärrövervakning och förebyggande underhåll har tagits bort från [Azure IoT Solution Accelerators](https://www.azureiotsolutions.com/Accelerators) -webbplatsen. Mer information finns i [Vad är Azure IoT Solution-acceleratorer? (tidigare version)](/previous-versions/azure/iot-accelerators/about-iot-accelerators).
 
 ## <a name="supported-iot-scenarios"></a>IoT-scenarier som stöds
 

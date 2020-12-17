@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2020
 ms.author: Zhchia
-ms.openlocfilehash: 141dd37dff8403825df713de8f7176d4dd9d20f8
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: b739cd50c4d4477d3622350a9a9c96b600794c7d
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008052"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97632047"
 ---
 # <a name="tutorial-configure-bizagi-studio-for-digital-process-automation-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Bizagi Studio för digital process Automation för automatisk användar etablering
 
@@ -105,7 +105,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 5. I avsnittet **admin credentials** anger du klient-URL och hemlig token för Bizagi Studio för digital process Automation. 
 
       * **Klient-URL:** Ange Bizagi SCIM-slutpunkten med följande struktur:  `<Your_Bizagi_Project>/scim/v2/` .
-         Exempel: `https://my-company.bizagi.com/scim/v2/`.
+         Till exempel: `https://my-company.bizagi.com/scim/v2/`.
 
       * **Hemlig token:** Det här värdet hämtas från det steg som beskrivs tidigare i den här artikeln.
 
@@ -132,7 +132,14 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
    |name.familyName|Sträng|
    |namn. formaterad|Sträng|
    |phoneNumbers[type eq "mobile"].value|Sträng|
+
+   Du kan lägga till anpassade tilläggsfunktioner genom att gå till **Visa avancerade alternativ > redigera attributlistan för Bizagi**. Attributen för anpassade tillägg måste föregås av **urn: IETF: parametrar: scim: schemas: tillägg: Bizagi: 2.0: UserProperties:**. Om till exempel attributet anpassat tillägg är **IdentificationNumber**, måste attributet läggas till som **urn: IETF: params: scim: schemas: tillägg: Bizagi: 2.0: UserProperties: IdentificationNumber**. Välj **Spara** för att genomföra ändringarna.
    
+    ![Redigera attributlistan.](media/bizagi-studio-for-digital-process-automation-provisioning-tutorial/edit.png)  
+
+   Mer information om hur du lägger till anpassade attribut finns i [Anpassa programattribut](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).
+
+
 10. Information om hur du konfigurerar omfångs filter finns i [kursen om omfångs filter](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
 11. Om du vill aktivera Azure AD Provisioning-tjänsten för Bizagi Studio för digital process Automation, ändrar du **etablerings statusen** till **på** i avsnittet **Inställningar** .

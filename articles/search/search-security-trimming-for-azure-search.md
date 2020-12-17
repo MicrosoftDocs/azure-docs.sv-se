@@ -1,19 +1,19 @@
 ---
 title: Säkerhets filter för trimning av resultat
 titleSuffix: Azure Cognitive Search
-description: Säkerhets behörigheter på dokument nivå för Azure Kognitiv sökning Sök resultat med hjälp av säkerhets filter och användar identiteter.
+description: Lär dig hur du implementerar säkerhets privilegier på dokument nivå för Azure Kognitiv sökning Sök resultat, med hjälp av säkerhets filter och användar identiteter.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/04/2020
-ms.openlocfilehash: 8562fd1afaa01e362bd6d95fd4dcf90cf3145c5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/16/2020
+ms.openlocfilehash: 8bd162fcf2011d2ccce716564763e7f54f19ff69
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88928531"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631811"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Säkerhets filter för att trimma resultat i Azure Kognitiv sökning
 
@@ -62,7 +62,7 @@ Vi antar att vi har ett index över säkra filer och att varje fil kan nås av e
   
 Skicka en HTTP POST-begäran till indexets URL-slutpunkt. Bröd texten i HTTP-begäran är ett JSON-objekt som innehåller de dokument som ska läggas till:
 
-```
+```http
 POST https://[search service].search.windows.net/indexes/securedfiles/docs/index?api-version=2020-06-30  
 Content-Type: application/json
 api-key: [admin key]
@@ -110,17 +110,18 @@ Om du behöver uppdatera ett befintligt dokument med listan över grupper kan du
 ```
 
 För fullständig information om hur du lägger till eller uppdaterar dokument kan du läsa [Redigera dokument](/rest/api/searchservice/addupdate-or-delete-documents).
-   
+
 ## <a name="apply-the-security-filter"></a>Tillämpa säkerhets filtret
 
 För att kunna rensa dokument baserat på `group_ids` åtkomst bör du utfärda en Sök fråga med ett `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` filter, där group_id1 group_id2,... är de grupper som utfärdaren av Sök begär Anden tillhör.
+
 Det här filtret matchar alla dokument som `group_ids` fältet innehåller ett av de identifierade identifierarna.
 Fullständig information om hur du söker efter dokument med hjälp av Azure Kognitiv sökning kan du läsa [Sök dokument](/rest/api/searchservice/search-documents).
 Observera att det här exemplet visar hur du söker efter dokument med en POST-begäran.
 
 Utfärda HTTP POST-begäran:
 
-```
+```http
 POST https://[service name].search.windows.net/indexes/securedfiles/docs/search?api-version=2020-06-30
 Content-Type: application/json  
 api-key: [admin or query key]
@@ -152,12 +153,12 @@ Du bör hämta dokumenten igen där `group_ids` innehåller antingen "group_id1"
  ]
 }
 ```
-## <a name="conclusion"></a>Slutsats
 
-Så här kan du filtrera resultat baserat på användar identitet och Azure Kognitiv sökning `search.in()` funktion. Du kan använda den här funktionen för att skicka princip identifierare för den begär ande användaren att matcha mot huvud identifierare som är associerade med varje mål dokument. När en sökbegäran hanteras `search.in` filtrerar funktionen Sök Resultat för vilka ingen av användarens huvud namn har Läs behörighet. Huvud identifierarna kan representera saker som säkerhets grupper, roller eller till och med användarens egna identitet.
- 
-## <a name="see-also"></a>Se även
+## <a name="next-steps"></a>Nästa steg
 
-+ [Active Directory identitets baserad åtkomst kontroll med Azure Kognitiv sökning-filter](search-security-trimming-for-azure-search-with-aad.md)
-+ [Filter i Azure Kognitiv sökning](search-filters.md)
-+ [Data säkerhet och åtkomst kontroll i Azure Kognitiv sökning åtgärder](search-security-overview.md)
+I den här artikeln beskrivs ett mönster för att filtrera resultat baserat på användar identitet och `search.in()` funktion. Du kan använda den här funktionen för att skicka princip identifierare för den begär ande användaren att matcha mot huvud identifierare som är associerade med varje mål dokument. När en sökbegäran hanteras `search.in` filtrerar funktionen Sök Resultat för vilka ingen av användarens huvud namn har Läs behörighet. Huvud identifierarna kan representera saker som säkerhets grupper, roller eller till och med användarens egna identitet.
+
+För ett alternativt mönster baserat på Active Directory eller om du vill gå tillbaka till andra säkerhetsfunktioner, se följande länkar.
+
+* [Säkerhets filter för att trimma resultat med Active Directory identiteter](search-security-trimming-for-azure-search-with-aad.md)
+* [Säkerhet i Azure Kognitiv sökning](search-security-overview.md)

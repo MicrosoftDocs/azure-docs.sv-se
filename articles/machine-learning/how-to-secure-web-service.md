@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 11/18/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: f7e16400f6460f7479cdffd1928126cdd70a8f0c
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 872958f87e7d75427d5939aed73314920cfaf3ea
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504006"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631099"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Använda TLS för att skydda en webbtjänst via Azure Machine Learning
 
@@ -75,34 +75,23 @@ När du begär ett certifikat måste du ange det fullständiga domän namnet fö
 
 Om du vill distribuera (eller distribuera om) tjänsten med TLS aktiverat, anger du parametern *ssl_enabled* till "true" oavsett var den gäller. Ange parametern *ssl_certificate* till värdet för *certifikat* filen. Ange *ssl_key* till *nyckel* filens värde.
 
-### <a name="deploy-on-aks-and-field-programmable-gate-array-fpga"></a>Distribuera på AKS och Field-programmerbar grind mat ris (FPGA)
+### <a name="deploy-on-azure-kubernetes-service"></a>Distribuera på Azure Kubernetes service
 
   > [!NOTE]
   > Informationen i det här avsnittet gäller även när du distribuerar en säker webb tjänst för designern. Om du inte är bekant med att använda python SDK, se [Vad är Azure Machine Learning SDK för python?](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
 
-När du distribuerar till AKS kan du skapa ett nytt AKS-kluster eller koppla ett befintligt. Mer information om hur du skapar eller ansluter ett kluster finns i [distribuera en modell till ett Azure Kubernetes service-kluster](how-to-deploy-azure-kubernetes-service.md).
-  
--  Om du skapar ett nytt kluster använder du **[AksCompute.provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)**.
-- Om du ansluter ett befintligt kluster använder du **[AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)**. Båda returnerar ett konfigurations objekt som har en **enable_ssl** -metod.
+Både **[AksCompute.provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** och **[AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** returnerar ett konfigurations objekt som har en **enable_ssl** -metod och du kan använda **enable_ssl** metod för att aktivera TLS.
 
-Metoden **enable_ssl** kan använda ett certifikat från Microsoft eller ett certifikat som du köper.
+Du kan aktivera TLS antingen med Microsoft-certifikat eller ett anpassat certifikat som har köpts från CA. 
 
-> [!WARNING]
-> Om ditt AKS-kluster har kon figurer ATS med en intern belastningsutjämnare kan du __inte__ använda ett certifikat från Microsoft. Användning av ett Microsoft-certifikat kräver en offentlig IP-resurs i Azure, vilket inte är tillgängligt för AKS när den har kon figurer ATS för intern belastningsutjämnare.
-
-  * När du använder ett certifikat från Microsoft måste du använda *leaf_domain_label* -parametern. Den här parametern genererar DNS-namnet för tjänsten. Till exempel skapar värdet "contoso" domän namnet "contoso \<six-random-characters> . \<azureregion> . cloudapp.azure.com ", där \<azureregion> är den region som innehåller tjänsten. Alternativt kan du använda parametern *overwrite_existing_domain* för att skriva över den befintliga *leaf_domain_label*.
-
-    Om du vill distribuera (eller distribuera om) tjänsten med TLS aktiverat, anger du parametern *ssl_enabled* till "true" oavsett var den gäller. Ange parametern *ssl_certificate* till värdet för *certifikat* filen. Ange *ssl_key* till *nyckel* filens värde.
-
-    > [!IMPORTANT]
-    > När du använder ett certifikat från Microsoft behöver du inte köpa ditt eget certifikat eller domän namn.
-
-    Följande exempel visar hur du skapar en konfiguration som aktiverar ett TLS/SSL-certifikat från Microsoft:
+* **När du använder ett certifikat från Microsoft** måste du använda *leaf_domain_label* -parametern. Den här parametern genererar DNS-namnet för tjänsten. Till exempel skapar värdet "contoso" domän namnet "contoso \<six-random-characters> . \<azureregion> . cloudapp.azure.com ", där \<azureregion> är den region som innehåller tjänsten. Alternativt kan du använda parametern *overwrite_existing_domain* för att skriva över den befintliga *leaf_domain_label*. Följande exempel visar hur du skapar en konfiguration som aktiverar en TLS med Microsoft-certifikat:
 
     ```python
     from azureml.core.compute import AksCompute
+
     # Config used to create a new AKS cluster and enable TLS
     provisioning_config = AksCompute.provisioning_configuration()
+
     # Leaf domain label generates a name using the formula
     #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
     #  where "######" is a random series of characters
@@ -112,20 +101,28 @@ Metoden **enable_ssl** kan använda ett certifikat från Microsoft eller ett cer
     # Config used to attach an existing AKS cluster to your workspace and enable TLS
     attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                           cluster_name = cluster_name)
+
     # Leaf domain label generates a name using the formula
     #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
     #  where "######" is a random series of characters
     attach_config.enable_ssl(leaf_domain_label = "contoso")
     ```
+    > [!IMPORTANT]
+    > När du använder ett certifikat från Microsoft behöver du inte köpa ditt eget certifikat eller domän namn.
 
-  * När du använder *ett certifikat som du har köpt* använder du parametrarna *ssl_cert_pem_file*, *ssl_key_pem_file* och *ssl_cname* . Följande exempel visar hur du använder *. pem* -filer för att skapa en konfiguration som använder ett TLS/SSL-certifikat som du har köpt:
+    > [!WARNING]
+    > Om ditt AKS-kluster har kon figurer ATS med en intern belastningsutjämnare kan du __inte__ använda ett certifikat från Microsoft och du måste använda det anpassade certifikatet för att aktivera TLS.
 
+* **När du använder ett anpassat certifikat som du har köpt** använder du parametrarna *ssl_cert_pem_file*, *ssl_key_pem_file* och *ssl_cname* . Följande exempel visar hur du använder. PEM-filer för att skapa en konfiguration som använder ett TLS/SSL-certifikat som du har köpt:
+ 
     ```python
     from azureml.core.compute import AksCompute
+
     # Config used to create a new AKS cluster and enable TLS
     provisioning_config = AksCompute.provisioning_configuration()
     provisioning_config.enable_ssl(ssl_cert_pem_file="cert.pem",
                                         ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
+
     # Config used to attach an existing AKS cluster to your workspace and enable SSL
     attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                          cluster_name = cluster_name)
@@ -150,23 +147,17 @@ Mer information finns i [AciWebservice.deploy_configuration ()](/python/api/azur
 
 ## <a name="update-your-dns"></a>Uppdatera din DNS
 
-Sedan måste du uppdatera din DNS så att den pekar på webb tjänsten.
+För en AKS-distribution med anpassad certifikat-eller ACI-distribution måste du uppdatera DNS-posten så att den pekar mot IP-adressen för poäng slut punkten.
 
-+ **För Container Instances:**
+  > [!IMPORTANT]
+  > När du använder ett certifikat från Microsoft för AKS-distribution behöver du inte uppdatera DNS-värdet manuellt för klustret. Värdet ska anges automatiskt.
 
-  Använd verktygen från din domän namns registrator för att uppdatera DNS-posten för ditt domän namn. Posten måste peka på tjänstens IP-adress.
+Du kan följa stegen nedan för att uppdatera DNS-posten för ditt anpassade domän namn:
+* Hämta IP-adressen för poäng slut punkten från bedömnings slut punktens URI, som vanligt vis är i formatet *http://104.214.29.152:80/api/v1/service/<service-name>/score* . 
+* Använd verktygen från din domän namns registrator för att uppdatera DNS-posten för ditt domän namn. Posten måste peka på IP-adressen för bedömnings slut punkten.
+* Efter uppdateringen av DNS-posten kan du verifiera DNS-matchning med kommandot *nslookup Custom-Domain-Name* . Om DNS-posten är korrekt uppdaterad kommer det anpassade domän namnet att peka mot IP-adressen för bedömnings slut punkten.
+* Det kan vara en fördröjning på minuter eller timmar innan klienter kan matcha domän namnet, beroende på registratorn och TTL-värdet (Time to Live) som har kon figurer ATS för domän namnet.
 
-  Det kan vara en fördröjning på minuter eller timmar innan klienter kan matcha domän namnet, beroende på registratorn och TTL-värdet (Time to Live) som har kon figurer ATS för domän namnet.
-
-+ **För AKS:**
-
-  > [!WARNING]
-  > Om du använde *leaf_domain_label* för att skapa tjänsten med hjälp av ett certifikat från Microsoft uppdaterar du inte DNS-värdet manuellt för klustret. Värdet ska anges automatiskt.
-  >
-  > Om ditt AKS-kluster har kon figurer ATS med en intern belastningsutjämnare kan du __inte__ använda ett Microsoft-certifikat (genom att ange *leaf_domain_label*). Användning av ett Microsoft-certifikat kräver en offentlig IP-resurs i Azure, vilket inte är tillgängligt för AKS när den har kon figurer ATS för intern belastningsutjämnare.
-  Uppdatera DNS för den offentliga IP-adressen för AKS-klustret på fliken **konfiguration** under **Inställningar** i det vänstra fönstret. (Se följande bild.) Den offentliga IP-adressen är en resurs typ som skapas under resurs gruppen som innehåller AKS-agentens noder och andra nätverks resurser.
-
-  [![Azure Machine Learning: skydda webb tjänster med TLS](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
 ## <a name="update-the-tlsssl-certificate"></a>Uppdatera TLS/SSL-certifikatet
 

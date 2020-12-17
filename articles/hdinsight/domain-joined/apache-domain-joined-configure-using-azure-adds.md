@@ -1,5 +1,5 @@
 ---
-title: Konfigurera kluster för Active Directory-integrering
+title: Konfigurera kluster för Azure Active Directory-integrering
 titleSuffix: Azure HDInsight
 description: Lär dig hur du konfigurerar och konfigurerar ett HDInsight-kluster som är integrerat med Active Directory med hjälp av Azure Active Directory Domain Services och funktionen Enterprise Security Package.
 author: hrasheed-msft
@@ -9,18 +9,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seodec18,seoapr2020, contperf-fy21q2
 ms.date: 10/30/2020
-ms.openlocfilehash: 248d909e633607271aec7c2c9b8a373f111f7d98
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c5c5db892f417f2e2ef3fde3535d806d39342327
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031490"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631558"
 ---
-# <a name="configure-hdinsight-clusters-for-active-directory-integration-with-enterprise-security-package"></a>Konfigurera HDInsight-kluster för Active Directory integrering med Enterprise Security Package
+# <a name="configure-hdinsight-clusters-for-azure-active-directory-integration-with-enterprise-security-package"></a>Konfigurera HDInsight-kluster för Azure Active Directory integrering med Enterprise Security Package
 
-I den här artikeln får du lära dig hur du skapar och konfigurerar ett HDInsight-kluster som är integrerat med Active Directory med hjälp av en funktion som kallas Enterprise Security Package (ESP), Azure Active Directory Domain Services (Azure AD-DS) och din befintliga lokala Active Directory.
+Den här artikeln innehåller en översikt över och en översikt över processen för att skapa och konfigurera ett HDInsight-kluster som är integrerat med Azure Active Directory. Den här integrationen bygger på en HDInsight-funktion som kallas Enterprise Security Package (ESP), Azure Active Directory Domain Services (Azure AD-DS) och din befintliga lokala Active Directory.
 
-En själv studie kurs om hur du konfigurerar och konfigurerar en domän i Azure och skapar ett ESP-aktiverat kluster finns i [skapa och konfigurera Enterprise Security Package kluster i Azure HDInsight](apache-domain-joined-create-configure-enterprise-security-cluster.md).
+En detaljerad vägledning för steg-för-steg-anvisningar om hur du konfigurerar och konfigurerar en domän i Azure och hur du skapar ett ESP-aktiverat kluster och sedan synkroniserar lokala användare finns i [skapa och konfigurera Enterprise Security Package kluster i Azure HDInsight](apache-domain-joined-create-configure-enterprise-security-cluster.md).
 
 ## <a name="background"></a>Bakgrund
 
@@ -33,12 +33,13 @@ Enterprise Security Package (ESP) tillhandahåller Active Directory-integrering 
 
 Det finns några krav som måste slutföras innan du kan skapa ett ESP-aktiverat HDInsight-kluster:
 
+- En befintlig lokal Active Directory och Azure Active Directory.
 - Aktivera Azure AD-DS.
 - Kontrol lera Azure AD-DS hälso status för att säkerställa att synkroniseringen har slutförts.
 - Skapa och auktorisera en hanterad identitet.
 - Slutför nätverks konfigurationen för DNS och relaterade problem.
 
-Vart och ett av dessa objekt kommer att diskuteras i detalj nedan.
+Vart och ett av dessa objekt kommer att diskuteras i detalj nedan. En genom gång av hur du slutför alla de här stegen finns i [skapa och konfigurera Enterprise Security Package kluster i Azure HDInsight](apache-domain-joined-create-configure-enterprise-security-cluster.md).
 
 ### <a name="enable-azure-ad-ds"></a>Aktivera Azure AD DS
 
