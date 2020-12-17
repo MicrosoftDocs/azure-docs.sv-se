@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 11/11/2020
 ms.author: sngun
-ms.openlocfilehash: a149f0b331a77462aa53b948fedf25dd1331969e
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 036338e90a3e7b466924d419400c0dcc692dec5f
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "94683632"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630759"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support-and-compatibility-with-tinkerpop-features"></a>Azure Cosmos DB Gremlin Graph-stöd och kompatibilitet med TinkerPop-funktioner
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -41,7 +41,7 @@ TinkerPop är en standard som omfattar en mängd olika diagramtekniker. Därför
 
 Följande tabell visar den TinkerPop-funktioner som implementeras av Azure Cosmos DB: 
 
-| Kategori | Azure Cosmos DB-implementering |  Kommentarer | 
+| Kategori | Azure Cosmos DB-implementering |  Obs! | 
 | --- | --- | --- |
 | Diagramfunktioner | Ger beständighet och ConcurrentAccess. Designad att stödja transaktioner | Datormetoder kan implementeras via Spark-anslutningsappen. |
 | Variabla funktioner | Stöder boolesk, heltal, byte, dubbel, flyttal, heltal, lång, sträng | Har stöd för primitiva typer, är kompatibel med komplexa typer via datamodellen |
@@ -195,31 +195,31 @@ _ ***GraphSONv3** _ serialiseraren stöds inte för närvarande. Använd `GraphS
 
 _ **Index användning för Gremlin-frågor med `.V()` steg för steg-för-steg-åtgärder**: för närvarande kommer endast det första `.V()` anropet av en genom gång att använda indexet för att matcha eventuella filter eller predikat som är kopplade till den. Efterföljande anrop kommer inte att se indexet, vilket kan öka svars tiden och kostnaden för frågan.
     
-    Assuming default indexing, a typical read Gremlin query that starts with the `.V()` step would use parameters in its attached filtering steps, such as `.has()` or `.where()` to optimize the cost and performance of the query. For example:
+Vid antagande av standard indexering använder en typisk Read Gremlin-fråga som börjar med `.V()` steget parametrar i sina kopplade filtrerings steg, till exempel `.has()` eller `.where()` för att optimera frågans kostnad och prestanda. Exempel:
 
-    ```java
-    g.V().has('category', 'A')
-    ```
+```java
+g.V().has('category', 'A')
+```
 
-    However, when more than one `.V()` step is included in the Gremlin query, the resolution of the data for the query might not be optimal. Take the following query as an example:
+Men när mer än ett `.V()` steg ingår i Gremlin-frågan, kanske inte matchningen av data för frågan är optimal. Gör följande fråga som exempel:
 
-    ```java
-    g.V().has('category', 'A').as('a').V().has('category', 'B').as('b').select('a', 'b')
-    ```
+```java
+g.V().has('category', 'A').as('a').V().has('category', 'B').as('b').select('a', 'b')
+```
 
-    This query will return two groups of vertices based on their property called `category`. In this case, only the first call, `g.V().has('category', 'A')` will make use of the index to resolve the vertices based on the values of their properties.
+Den här frågan returnerar två grupper av hörn baserat på deras egenskap som kallas `category` . I det här fallet kommer endast det första anropet att `g.V().has('category', 'A')` använda indexet för att matcha hörnen baserat på egenskaperna för deras egenskaper.
 
-    A workaround for this query is to use subtraversal steps such as `.map()` and `union()`. This is exemplified below:
+En lösning för den här frågan är att använda under steg, till exempel `.map()` och `union()` . Detta är WINS nedan:
 
-    ```java
-    // Query workaround using .map()
-    g.V().has('category', 'A').as('a').map(__.V().has('category', 'B')).as('b').select('a','b')
+```java
+// Query workaround using .map()
+g.V().has('category', 'A').as('a').map(__.V().has('category', 'B')).as('b').select('a','b')
 
-    // Query workaround using .union()
-    g.V().has('category', 'A').fold().union(unfold(), __.V().has('category', 'B'))
-    ```
+// Query workaround using .union()
+g.V().has('category', 'A').fold().union(unfold(), __.V().has('category', 'B'))
+```
 
-    You can review the performance of the queries by using the [Gremlin `executionProfile()` step](graph-execution-profile.md).
+Du kan granska prestanda för frågorna med hjälp av Gremlin- [ `executionProfile()` steget](graph-execution-profile.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/16/2020
+ms.date: 12/17/2020
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4da0fccf10d387e7496a8b0ecc7623a22df58c93
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: a42cb97d123d0943dab02bf1f70fcf306d6bcd96
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97618814"
+ms.locfileid: "97629140"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurera ändring av lösen ord med anpassade principer i Azure Active Directory B2C
 
@@ -33,9 +33,14 @@ ms.locfileid: "97618814"
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-I Azure Active Directory B2C (Azure AD B2C) kan du göra det möjligt för användare som är inloggade med ett lokalt konto att ändra sina lösen ord utan att behöva bevisa sin äkthet via e-postverifiering. Om sessionen upphör att gälla när användaren kommer till lösen ordet för lösen ords ändring uppmanas de att logga in igen. Den här artikeln visar hur du konfigurerar ändring av lösen ord i [anpassade principer](custom-policy-overview.md). Det är också möjligt att konfigurera [lösen ords återställning via självbetjäning](user-flow-self-service-password-reset.md) för användar flöden.
+I Azure Active Directory B2C (Azure AD B2C) kan du göra det möjligt för användare som är inloggade med ett lokalt konto att ändra sina lösen ord utan att behöva bevisa sin äkthet via e-postverifiering. Flödet för lösen ords ändring omfattar följande steg:
 
-## <a name="prerequisites"></a>Krav
+1. Logga in med ett lokalt konto. Om sessionen fortfarande är aktiv, Azure AD B2C auktorisera användaren och gå vidare till nästa steg.
+1. Användare måste verifiera det **gamla lösen ordet**, skapa och bekräfta det **nya lösen ordet**.
+
+![Flöde för lösen ords ändring](./media/add-password-change-policy/password-change-flow.png)
+
+## <a name="prerequisites"></a>Förutsättningar
 
 * Slutför stegen i [Kom igång med anpassade principer i Active Directory B2C](custom-policy-get-started.md).
 * [Registrera ett webb program i Azure Active Directory B2C](tutorial-register-applications.md)om du inte redan gjort det.
@@ -66,41 +71,10 @@ I Azure Active Directory B2C (Azure AD B2C) kan du göra det möjligt för anvä
         <TechnicalProfiles>
           <TechnicalProfile Id="login-NonInteractive-PasswordChange">
             <DisplayName>Local Account SignIn</DisplayName>
-            <Protocol Name="OpenIdConnect" />
-            <Metadata>
-              <Item Key="UserMessageIfClaimsPrincipalDoesNotExist">We can't seem to find your account</Item>
-              <Item Key="UserMessageIfInvalidPassword">Your password is incorrect</Item>
-              <Item Key="UserMessageIfOldPasswordUsed">Looks like you used an old password</Item>
-              <Item Key="ProviderName">https://sts.windows.net/</Item>
-              <Item Key="METADATA">https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration</Item>
-              <Item Key="authorization_endpoint">https://login.microsoftonline.com/{tenant}/oauth2/token</Item>
-              <Item Key="response_types">id_token</Item>
-              <Item Key="response_mode">query</Item>
-              <Item Key="scope">email openid</Item>
-              <Item Key="grant_type">password</Item>
-              <Item Key="UsePolicyInRedirectUri">false</Item>
-              <Item Key="HttpBinding">POST</Item>
-              <Item Key="client_id">ProxyIdentityExperienceFrameworkAppId</Item>
-              <Item Key="IdTokenAudience">IdentityExperienceFrameworkAppId</Item>
-            </Metadata>
             <InputClaims>
-              <InputClaim ClaimTypeReferenceId="signInName" PartnerClaimType="username" Required="true" />
               <InputClaim ClaimTypeReferenceId="oldPassword" PartnerClaimType="password" Required="true" />
-              <InputClaim ClaimTypeReferenceId="grant_type" DefaultValue="password" />
-              <InputClaim ClaimTypeReferenceId="scope" DefaultValue="openid" />
-              <InputClaim ClaimTypeReferenceId="nca" PartnerClaimType="nca" DefaultValue="1" />
-              <InputClaim ClaimTypeReferenceId="client_id" DefaultValue="ProxyIdentityExperienceFrameworkAppID" />
-              <InputClaim ClaimTypeReferenceId="resource_id" PartnerClaimType="resource" DefaultValue="IdentityExperienceFrameworkAppID" />
-            </InputClaims>
-            <OutputClaims>
-              <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="oid" />
-              <OutputClaim ClaimTypeReferenceId="tenantId" PartnerClaimType="tid" />
-              <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
-              <OutputClaim ClaimTypeReferenceId="surName" PartnerClaimType="family_name" />
-              <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
-              <OutputClaim ClaimTypeReferenceId="userPrincipalName" PartnerClaimType="upn" />
-              <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="localAccountAuthentication" />
-            </OutputClaims>
+              </InputClaims>
+            <IncludeTechnicalProfile ReferenceId="login-NonInteractive" />
           </TechnicalProfile>
         </TechnicalProfiles>
       </ClaimsProvider>
@@ -113,9 +87,6 @@ I Azure Active Directory B2C (Azure AD B2C) kan du göra det möjligt för anvä
             <Metadata>
               <Item Key="ContentDefinitionReferenceId">api.selfasserted</Item>
             </Metadata>
-            <CryptographicKeys>
-              <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
-            </CryptographicKeys>
             <InputClaims>
               <InputClaim ClaimTypeReferenceId="objectId" />
             </InputClaims>
@@ -134,15 +105,13 @@ I Azure Active Directory B2C (Azure AD B2C) kan du göra det möjligt för anvä
     </ClaimsProviders>
     ```
 
-    Ersätt `IdentityExperienceFrameworkAppId` med program-ID: t för det IdentityExperienceFramework-program som du skapade i den nödvändiga självstudien. Ersätt `ProxyIdentityExperienceFrameworkAppId` med program-ID: t för det ProxyIdentityExperienceFramework-program som du redan har skapat.
-
 3. [UserJourney](userjourneys.md) -elementet definierar den sökväg som användaren ska vidta när de interagerar med ditt program. Lägg till **UserJourneys** -elementet om det inte finns med **UserJourney** som identifieras som `PasswordChange` :
 
     ```xml
     <UserJourneys>
       <UserJourney Id="PasswordChange">
         <OrchestrationSteps>
-          <OrchestrationStep Order="1" Type="ClaimsProviderSelection" ContentDefinitionReferenceId="api.idpselections">
+          <OrchestrationStep Order="1" Type="ClaimsProviderSelection" ContentDefinitionReferenceId="api.signuporsignin">
             <ClaimsProviderSelections>
               <ClaimsProviderSelection TargetClaimsExchangeId="LocalAccountSigninEmailExchange" />
             </ClaimsProviderSelections>
@@ -157,7 +126,12 @@ I Azure Active Directory B2C (Azure AD B2C) kan du göra det möjligt för anvä
               <ClaimsExchange Id="NewCredentials" TechnicalProfileReferenceId="LocalAccountWritePasswordChangeUsingObjectId" />
             </ClaimsExchanges>
           </OrchestrationStep>
-          <OrchestrationStep Order="4" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+          <OrchestrationStep Order="4" Type="ClaimsExchange">
+            <ClaimsExchanges>
+              <ClaimsExchange Id="AADUserReadWithObjectId" TechnicalProfileReferenceId="AAD-UserReadUsingObjectId" />
+            </ClaimsExchanges>
+          </OrchestrationStep>
+          <OrchestrationStep Order="5" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
         </OrchestrationSteps>
         <ClientDefinition ReferenceId="DefaultWeb" />
       </UserJourney>
@@ -170,13 +144,7 @@ I Azure Active Directory B2C (Azure AD B2C) kan du göra det möjligt för anvä
 7. Ändra attributet **ReferenceId** i `<DefaultUserJourney>` så att det matchar ID: t för den nya användar resan som du skapade. Till exempel *PasswordChange*.
 8. Spara ändringarna.
 
-Du kan hitta exempel principen [här](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change).
-
-## <a name="test-your-policy"></a>Testa principen
-
-När du testar dina program i Azure AD B2C kan det vara praktiskt att ha Azure AD B2C token som returneras för att `https://jwt.ms` kunna granska anspråk i det.
-
-### <a name="upload-the-files"></a>Ladda upp filerna
+## <a name="upload-and-test-the-policy"></a>Ladda upp och testa principen
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
 2. Kontrol lera att du använder den katalog som innehåller din Azure AD B2C klient genom att välja filtret **katalog + prenumeration** på den översta menyn och välja den katalog som innehåller din klient.
@@ -195,6 +163,8 @@ När du testar dina program i Azure AD B2C kan det vara praktiskt att ha Azure A
 
 ## <a name="next-steps"></a>Nästa steg
 
+- Hitta exempel policyn på [GitHub](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change).
 - Lär dig mer om hur du kan [Konfigurera lösen ords komplexitet i Azure AD B2C](password-complexity.md).
+- Konfigurera ett [flöde för återställning av lösen ord](add-password-reset-policy.md).
 
 ::: zone-end

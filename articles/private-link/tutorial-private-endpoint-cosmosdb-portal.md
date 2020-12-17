@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: c9866ac2c14e4deb29326ffdd1a93a7d8eae1ea3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 477856bd5772cdc0a9ec00d81adf9c50847afdd0
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484812"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631958"
 ---
 # <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>Självstudie: ansluta till ett Azure Cosmos-konto med en privat Azure-slutpunkt
 
@@ -174,7 +174,7 @@ I det här avsnittet ska du skapa ett Cosmos DB-konto och konfigurera den privat
     | Prenumeration | Välj din Azure-prenumeration |
     | Resursgrupp | Välj **myResourceGroup** |
     | Plats | Välj **USA, östra** |
-    | Name | Ange **myPrivateEndpoint** |
+    | Namn | Ange **myPrivateEndpoint** |
     | Mål under resurs | Lämna standard **kärnan (SQL)** |
     | **Nätverk** |  |
     | Virtuellt nätverk | Välj **myVNet** |
@@ -208,13 +208,9 @@ I det här avsnittet ska du skapa ett Cosmos DB-konto och konfigurera den privat
 
 5. Välj **OK**.
 
-10. I avsnittet **Inställningar** i CosmosDB-kontot väljer du **nycklar**.
+6. I avsnittet **Inställningar** i CosmosDB-kontot väljer du **nycklar**.
 
-11. Välj **myResourceGroup**.
-
-12. Välj det lagrings konto som du skapade i föregående steg.
-
-14. Välj Kopiera på den **primära ANSLUTNINGS strängen**.
+7. Välj Kopiera på den **primära ANSLUTNINGS strängen**.
 
 ## <a name="test-connectivity-to-private-endpoint"></a>Testa anslutningen till privat slut punkt
 
@@ -234,7 +230,7 @@ I det här avsnittet ska du använda den virtuella datorn som du skapade i före
 
 7. Öppna Windows PowerShell på servern när du har anslutit.
 
-8. Ange `nslookup <storage-account-name>.documents.azure.com`. Ersätt **\<storage-account-name>** med namnet på det lagrings konto som du skapade i föregående steg. 
+8. Ange `nslookup <cosmosdb-account-name>.documents.azure.com`. Ersätt **\<cosmosdb-account-name>** med namnet på Cosmos DB kontot som du skapade i föregående steg. 
 
     ```powershell
     Server:  UnKnown

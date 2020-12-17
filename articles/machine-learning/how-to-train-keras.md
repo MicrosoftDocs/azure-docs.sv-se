@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: a7d55c6e550000d2dd6c2930d95086ec433c246b
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: c10b2041dec0f4084578de1a72cb59cf1d7a949b
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93361105"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631082"
 ---
 # <a name="train-keras-models-at-scale-with-azure-machine-learning"></a>Träna keras-modeller i skala med Azure Machine Learning
 
@@ -192,7 +192,7 @@ src = ScriptRunConfig(source_directory=script_folder,
 Mer information om hur du konfigurerar jobb med ScriptRunConfig finns i [Konfigurera och skicka utbildnings körningar](how-to-set-up-training-targets.md).
 
 > [!WARNING]
-> Om du tidigare använde TensorFlow-uppskattningen för att konfigurera dina keras-utbildnings jobb, bör du tänka på att uppskattningar är inaktuella i en framtida version av Azure ML SDK. Med Azure ML SDK >= 1.15.0, är ScriptRunConfig det rekommenderade sättet att konfigurera utbildnings jobb, inklusive de som använder DL-ramverk.
+> Om du tidigare använde TensorFlow-uppskattningen för att konfigurera keras-utbildnings jobben, Tänk på att uppskattningar är föråldrade från och med 1.19.0 SDK-versionen. Med Azure ML SDK >= 1.15.0, är ScriptRunConfig det rekommenderade sättet att konfigurera utbildnings jobb, inklusive de som använder djup inlärnings ramverk. För vanliga frågor om migrering, se [uppskattningen till ScriptRunConfig migration guide](how-to-migrate-from-estimators-to-scriptrunconfig.md).
 
 ### <a name="submit-your-run"></a>Skicka in din körning
 
@@ -206,13 +206,13 @@ run.wait_for_completion(show_output=True)
 ### <a name="what-happens-during-run-execution"></a>Vad händer under körningen
 När körningen körs går den igenom följande steg:
 
-- **Förbereder** : en Docker-avbildning skapas enligt den miljö som definierats. Avbildningen överförs till arbets ytans behållar register och cachelagras för senare körningar. Loggarna strömmas också till körnings historiken och kan visas för att övervaka förloppet. Om en granskad miljö anges i stället används den cachelagrade avbildningen som ska användas för att återställa den hanterade miljön.
+- **Förbereder**: en Docker-avbildning skapas enligt den miljö som definierats. Avbildningen överförs till arbets ytans behållar register och cachelagras för senare körningar. Loggarna strömmas också till körnings historiken och kan visas för att övervaka förloppet. Om en granskad miljö anges i stället används den cachelagrade avbildningen som ska användas för att återställa den hanterade miljön.
 
-- **Skalning** : klustret försöker skala upp om det batch AI klustret kräver fler noder för att köra körning än vad som är tillgängligt.
+- **Skalning**: klustret försöker skala upp om det batch AI klustret kräver fler noder för att köra körning än vad som är tillgängligt.
 
-- **Körs** : alla skript i mappen skript överförs till Compute-målet, data lager monteras eller kopieras och `script` utförs. Utdata från STDOUT och **./logs** -mappen strömmas till körnings historiken och kan användas för att övervaka körningen.
+- **Körs**: alla skript i mappen skript överförs till Compute-målet, data lager monteras eller kopieras och `script` utförs. Utdata från STDOUT och **./logs** -mappen strömmas till körnings historiken och kan användas för att övervaka körningen.
 
-- **Efter bearbetning** : mappen **./outputs** i körningen kopieras till körnings historiken.
+- **Efter bearbetning**: mappen **./outputs** i körningen kopieras till körnings historiken.
 
 ## <a name="register-the-model"></a>Registrera modellen
 

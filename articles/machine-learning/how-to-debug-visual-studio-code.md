@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: 12163419ad779acfa116f1dee66284623e2d45fb
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: a9d20732c3ae08718c400faff44137000e98fffd
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616118"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629481"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Interaktiv fel sökning med Visual Studio Code
 
@@ -58,7 +58,7 @@ Använd Azure Machine Learning-tillägget för att verifiera, köra och felsöka
     1. Ange namnet på skriptet som du vill köra. Sökvägen är relativ i förhållande till den katalog som öppnats i VS Code.
     1. Välj om du vill använda en Azure Machine Learning data uppsättning eller inte. Du kan skapa [Azure Machine Learning data uppsättningar](how-to-manage-resources-vscode.md#create-dataset) med hjälp av tillägget.
     1. Debugpy krävs för att du ska kunna koppla fel sökaren till behållaren och köra experimentet. Om du vill lägga till debugpy som ett beroende väljer du **Lägg till debugpy**. Annars väljer du **hoppa över**. Om du inte lägger till debugpy som ett beroende körs experimentet utan att kopplas till fel söknings programmet.
-    1. En konfigurations fil som innehåller dina konfigurations inställningar för körning öppnas i redigeraren. Om du är nöjd med inställningarna väljer du **Skicka experiment**. Du kan också öppna kommando paletten ( **visa > kommando paletten** ) från meny raden och ange `Azure ML: Submit experiment` kommandot i text rutan.
+    1. En konfigurations fil som innehåller dina konfigurations inställningar för körning öppnas i redigeraren. Om du är nöjd med inställningarna väljer du **Skicka experiment**. Du kan också öppna kommando paletten (**visa > kommando paletten**) från meny raden och ange `Azure ML: Submit experiment` kommandot i text rutan.
 1. När experimentet har skickats skapas en Docker-avbildning som innehåller ditt skript och de konfigurationer som anges i körnings konfigurationen.
 
     När Bygg processen för Docker-avbildningen börjar börjar innehållet i `60_control_log.txt` fil data strömmen till konsolen utdata i vs Code.
@@ -355,9 +355,9 @@ Lokal distribution av webb tjänster kräver en fungerande Docker-installation p
 
 1. Om du vill konfigurera VS-kod för att kommunicera med Docker-avbildningen skapar du en ny fel söknings konfiguration:
 
-    1. Från VS Code väljer du __Felsök__ -menyn och väljer sedan __Öppna konfigurationer__. En fil med namnet __launch.jspå__ öppnas.
+    1. Från VS Code väljer du __fel söknings__ menyn i __körnings__ omfattningen och väljer sedan __Öppna konfigurationer__. En fil med namnet __launch.jspå__ öppnas.
 
-    1. Leta upp raden som innehåller i __launch.jspå__ filen `"configurations": [` och infoga följande text efter den:
+    1. Leta upp objektet __"konfigurationer"__ (den rad som innehåller) i __launch.jspå__ filen `"configurations": [` och infoga följande text. 
 
         ```json
         {
@@ -376,11 +376,44 @@ Lokal distribution av webb tjänster kräver en fungerande Docker-installation p
             ]
         }
         ```
+        Efter infogningen bör __launch.jspå__ filen likna följande:
+        ```json
+        {
+        // Use IntelliSense to learn about possible attributes.
+        // Hover to view descriptions of existing attributes.
+        // For more information, visit: https://go.microsoft.com/fwlink/linkid=830387
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "Python: Current File",
+                "type": "python",
+                "request": "launch",
+                "program": "${file}",
+                "console": "integratedTerminal"
+            },
+            {
+                "name": "Azure Machine Learning Deployment: Docker Debug",
+                "type": "python",
+                "request": "attach",
+                "connect": {
+                    "port": 5678,
+                    "host": "0.0.0.0"
+                    },
+                "pathMappings": [
+                    {
+                        "localRoot": "${workspaceFolder}",
+                        "remoteRoot": "/var/azureml-app"
+                    }
+                ]
+            }
+            ]
+        }
+        ```
 
         > [!IMPORTANT]
-        > Om det redan finns andra poster i avsnittet konfigurationer lägger du till ett kommatecken (,) efter den kod som du har infogat.
+        > Om det redan finns andra poster i avsnittet konfigurationer lägger du till ett kommatecken ( __,__ ) efter den kod som du har infogat.
 
-        Det här avsnittet bifogar Docker-behållaren med port 5678.
+        Det här avsnittet bifogar Docker-behållaren med port __5678__.
 
     1. Spara __launch.jspå__ filen.
 
@@ -433,13 +466,13 @@ Lokal distribution av webb tjänster kräver en fungerande Docker-installation p
     package.pull()
     ```
 
-    När avbildningen har skapats och hämtats visas avbildnings Sök vägen (inklusive lagrings plats, namn och tagg, som i det här fallet även dess sammandrag) i ett meddelande som liknar följande:
+    När avbildningen har skapats och hämtats (den här processen kan ta mer än 10 minuter, så vänta på patient), visas avbildnings Sök vägen (inklusive lagrings plats, namn och tagg, som i det här fallet också dess sammandrag) i ett meddelande som liknar följande:
 
     ```text
     Status: Downloaded newer image for myregistry.azurecr.io/package@sha256:<image-digest>
     ```
 
-1. Använd följande kommando för att lägga till en tagg för att göra det enklare att arbeta med avbildningen. Ersätt `myimagepath` med värdet location från föregående steg.
+1. För att göra det enklare att arbeta med avbildningen lokalt kan du använda följande kommando för att lägga till en tagg för avbildningen. Ersätt `myimagepath` i följande kommando med värdet location från föregående steg.
 
     ```bash
     docker tag myimagepath debug:1
@@ -457,22 +490,37 @@ Lokal distribution av webb tjänster kräver en fungerande Docker-installation p
 1. Om du vill starta en Docker-behållare med hjälp av avbildningen använder du följande kommando:
 
     ```bash
-    docker run -it --name debug -p 8000:5001 -p 5678:5678 -v <my_path_to_score.py>:/var/azureml-apps/score.py debug:1 /bin/bash
+    docker run -it --name debug -p 8000:5001 -p 5678:5678 -v <my_local_path_to_score.py>:/var/azureml-app/score.py debug:1 /bin/bash
     ```
 
-    Detta kopplar ditt `score.py` lokala namn till den i behållaren. Därför avspeglas alla ändringar som görs i redigeraren automatiskt i behållaren.
+    Detta kopplar ditt `score.py` lokala namn till den i behållaren. Därför avspeglas alla ändringar som görs i redigeraren automatiskt i behållaren
 
-1. I behållaren kör du följande kommando i gränssnittet
+2. För en bättre upplevelse kan du gå till behållaren med ett nytt VS Code-gränssnitt. Välj en `Docker` omfattning från vs Code-sido fältet, leta upp din lokala behållare i den här dokumentationen `debug:1` . Högerklicka på den här behållaren och välj `"Attach Visual Studio Code"` , så öppnas ett nytt vs Code-gränssnitt automatiskt och det här gränssnittet visar inifrån den skapade behållaren.
+
+    ![Gränssnittet för container VS-kod](./media/how-to-troubleshoot-deployment/container-interface.png)
+
+3. I behållaren kör du följande kommando i gränssnittet
 
     ```bash
     runsvdir /var/runit
     ```
+    Sedan kan du se följande utdata i gränssnittet i din behållare:
 
-1. Om du vill bifoga VS Code till debugpy i behållaren öppnar du VS Code och använder F5-tangenten eller väljer __Felsök__. När du uppmanas väljer du __Azure Machine Learning distribution: Docker-felsöknings__ konfiguration. Du kan också välja fel söknings ikonen från sido fältet, __Azure Machine Learning distribution: Docker-felsöknings__ post från List rutan Felsök och Använd sedan den gröna pilen för att koppla fel sökaren.
+    ![Utdata för kör konsolen för container](./media/how-to-troubleshoot-deployment/container-run.png)
+
+4. Om du vill bifoga VS Code till debugpy i behållaren öppnar du VS Code och använder F5-tangenten eller väljer __Felsök__. När du uppmanas väljer du __Azure Machine Learning distribution: Docker-felsöknings__ konfiguration. Du kan också välja ikonen __Kör__ omfattning från sido rutan, __Azure Machine Learning distribution: Docker-felsöknings__ post från List rutan Felsök och Använd sedan den gröna pilen för att koppla fel sökaren.
 
     ![Fel söknings ikonen, starta fel söknings knappen och konfigurations väljaren](./media/how-to-troubleshoot-deployment/start-debugging.png)
+    
+    När du har klickat på den gröna pilen och kopplat fel söknings programmet kan du se viss ny information i gränssnittet för behållare VS-kod:
+    
+    ![Behållar fel sökaren bifogad information](./media/how-to-troubleshoot-deployment/debugger-attached.png)
+    
+    I ditt huvud VS-kod gränssnitt kan du också se följande:
 
-Vid det här tillfället ansluter VS Code till debugpy i Docker-behållaren och stannar vid den Bryt punkt som du har angett tidigare. Nu kan du gå igenom koden när den körs, Visa variabler osv.
+    ![VS Code-brytpunkten i score.py](./media/how-to-troubleshoot-deployment/local-debugger.png)
+
+Nu har den lokala `score.py` som är kopplad till behållaren redan stoppad vid de Bryt punkter där du har angett. Vid det här tillfället ansluter VS Code till debugpy i Docker-behållaren och stoppar Docker-behållaren vid den Bryt punkt som du angav tidigare. Nu kan du gå igenom koden när den körs, Visa variabler osv.
 
 Mer information om hur du använder VS Code för att felsöka python finns i [Felsöka python-koden](https://code.visualstudio.com/docs/python/debugging).
 
