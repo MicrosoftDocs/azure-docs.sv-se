@@ -124,6 +124,10 @@
           href: how-to-view-managed-identity-service-principal-cli.md
         - name: PowerShell
           href: how-to-view-managed-identity-service-principal-powershell.md
+    - name: Tilldela en hanterad identitet till en approll
+      items:
+        - name: PowerShell
+          href: how-to-assign-app-role-managed-identity-powershell.md
 - name: Referens
   items:
     - name: .NET

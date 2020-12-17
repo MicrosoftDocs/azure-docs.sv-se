@@ -119,6 +119,22 @@
           href: signin-appauth-ios.md
         - name: Android med App Auth
           href: signin-appauth-android.md
+    - name: Skapa ett flöde
+      items:
+        - name: Registrerings- eller inloggningsprincip
+          href: add-sign-up-and-sign-in-policy.md
+        - name: Princip för återställning av lösenord
+          href: add-password-reset-policy.md
+        - name: Princip för ändring av lösenord
+          href: add-password-change-policy.md
+        - name: Princip för profilredigering
+          href: add-profile-editing-policy.md
+        - name: Princip för autentiseringsuppgifter för lösenord för resursägare
+          href: add-ropc-policy.md
+        - name: Konfigurera princip för återställning av lösenord för självbetjäning (inaktuell)
+          href: user-flow-self-service-password-reset.md
+        - name: Telefonregistrering och -inloggning
+          href: phone-authentication-user-flows.md
     - name: Identitetsprovidrar
       items:
         - name: Lägga till en identitetsprovider
@@ -192,38 +208,18 @@
           href: conditional-access-user-flow.md
     - name: Konfigurera åldershantering
       href: basic-age-gating.md
-    - name: Användarflöde
+    - name: API-anslutningsprogram (förhandsversion)
       items:
-        - name: Skapa ett flöde
-          items:
-            - name: Registrering eller inloggning
-              href: tutorial-create-user-flows.md
-            - name: Autentiseringsuppgifter för lösenord för resursägare
-              href: configure-ropc.md
-            - name: Konfigurera återställning av lösenord för självbetjäning
-              href: user-flow-self-service-password-reset.md
-        - name: API-anslutningsprogram (förhandsversion)
-          items:
-            - name: Översikt
-              href: api-connectors-overview.md
-            - name: Lägg till ett API-anslutningsprogram
-              href: add-api-connector.md
+        - name: Översikt
+          href: api-connectors-overview.md
+        - name: Lägg till ett API-anslutningsprogram
+          href: add-api-connector.md
     - name: Anpassad princip
       items:
         - name: Översikt över anpassad princip
           href: custom-policy-trust-frameworks.md
         - name: Kom igång med anpassade principer
           href: custom-policy-get-started.md
-        - name: Skapa en princip
-          items:
-            - name: Autentiseringsuppgifter för lösenord för resursägare
-              href: ropc-custom.md
-              displayName: ropc
-            - name: Lösenordsändring
-              href: custom-policy-password-change.md
-            - name: Telefonregistrering och -inloggning
-              href: phone-authentication.md
-              displayName: 'otp, passwordless, phone number'
         - name: Anpassa e-postverifiering
           items:
             - name: Mailjet

@@ -553,6 +553,12 @@
               displayName: 'portal, create hyperscale'
     - name: Självstudier
       items:
+        - name: Skapa en servergrupp
+          href: tutorial-hyperscale-server-group.md
+        - name: Modellera och läsa in data
+          items:
+            - name: Fragmentera data på arbetsnoder
+              href: tutorial-hyperscale-shard.md
         - name: Utforma en databas för flera innehavare
           href: tutorial-design-database-hyperscale-multi-tenant.md
           displayName: 'hyperscale, tutorial, multi-tenant'

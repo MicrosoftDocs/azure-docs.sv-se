@@ -86,8 +86,8 @@
                 - name: SQL-skript
                   href: ./sql/author-sql-script.md
                   displayname: author
-                - name: Mappa dataflöden
-                  href: ../data-factory/concepts-data-flow-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: Dataflöde
+                  href: concepts-data-flow-overview.md
         - name: Underhållsschema
           href: ./sql-data-warehouse/maintenance-scheduling.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Källkontroll
@@ -132,7 +132,7 @@
                   href: ./security/synapse-workspace-understand-what-role-you-need.md
                 - name: Synapse-arbetsytehanterad identitet
                   href: ./security/synapse-workspace-managed-identity.md
-    - name: Instruktionsguider
+    - name: Anvisningar
       items:
         - name: Hantera och övervaka
           items:
@@ -660,8 +660,8 @@
           href: ../data-factory/concepts-integration-runtime.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Dataflöden
           items:
-            - name: Mappa dataflöden – översikt
-              href: ../data-factory/concepts-data-flow-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Översikt över dataflöden
+              href: concepts-data-flow-overview.md
             - name: Felsökningsläge
               href: ../data-factory/concepts-data-flow-debug-mode.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Schemadrift
