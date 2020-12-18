@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: d2a94b1503a6c7cd4a5790cc3ba4693103e70bfb
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3bbd18bc7851d4ccffca4f721f6e2aef45ff3c3d
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457205"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673736"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>Självstudie: Azure Active Directory integrering med Bime
 
@@ -30,7 +30,7 @@ Integreringen av Bime med Azure AD medför följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att konfigurera Azure AD-integrering med Bime behöver du följande:
 
@@ -63,7 +63,7 @@ För att konfigurera integrering av Bime i Azure AD behöver du lägga till Bime
 
 4. I sökrutan skriver du **Bime**, väljer **Bime** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![Bime i resultatlistan](common/search-new-app.png)
+    ![Bime i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -131,11 +131,11 @@ Utför följande steg för att konfigurera enkel inloggning med Azure AD för Bi
 1. I ett annat webbläsarfönster loggar du in på din Bime-företagswebbplats som administratör.
 
 2. I verktygsfältet klickar du på **Admin** och sedan på **Konto**.
-  
+
     ![Skärm bild som visar det valda administratörs objektet och valt konto.](./media/bime-tutorial/ic775558.png "Administratör")
 
 3. På sidan för kontokonfiguration utför du följande steg:
-  
+
     ![Konfigurera enkel inloggning](./media/bime-tutorial/ic775559.png "Konfigurera enkel inloggning")
 
     a. Välj **Aktivera SAML-autentisering**.
@@ -163,7 +163,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 

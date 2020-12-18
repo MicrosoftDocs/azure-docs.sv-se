@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: c56f1ab546327aaf281ff3616fa489728f3885a6
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: cd926875eda5676da6c154a57b0ac18ca12d9b79
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96297091"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671662"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>Självstudie: Azure Active Directory integrering med Agiloft
 
@@ -64,7 +64,7 @@ För att konfigurera integrering av Agiloft i Azure AD måste du lägga till Agi
 
 4. I sökrutan skriver du **Agiloft**, väljer **Agiloft** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![Agiloft i resultatlistan](common/search-new-app.png)
+    ![Agiloft i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -184,7 +184,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 

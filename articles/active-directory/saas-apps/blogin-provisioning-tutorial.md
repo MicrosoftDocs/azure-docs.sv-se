@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 3d5becd92d78432873eb640ea6c4bbf588739e67
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5d75aeb4771d49266e6cb09286b026054319591b
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180174"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674263"
 ---
 # <a name="tutorial-configure-blogin-for-automatic-user-provisioning"></a>Självstudie: Konfigurera blogg för automatisk användar etablering
 
@@ -35,7 +35,7 @@ I den här självstudien beskrivs de steg du behöver utföra i både blogg-och 
 > * Etablera grupper och grupp medlemskap i blogg
 > * [Enkel inloggning](./blogin-tutorial.md) till blogg (rekommenderas)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 

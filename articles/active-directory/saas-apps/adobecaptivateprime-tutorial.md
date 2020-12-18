@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 89f59bba856d662aea0c3ed249d5a1462297ec60
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 63bbec6de8f122178289cc313e5d938e3b926af2
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309050"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673262"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-captivate-prime"></a>Självstudie: Azure Active Directory integrering med Adobe Captivate primtal
 
@@ -30,7 +30,7 @@ Integreringen av Adobe Captivate Prime med Azure AD medför följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att konfigurera Azure AD-integrering med Adobe Captivate Prime behöver du följande:
 
@@ -63,7 +63,7 @@ För att konfigurera integreringen av Adobe Captivate Prime i Azure AD måste du
 
 4. I sökrutan skriver du **Adobe Captivate Prime**, väljer **Adobe Captivate Prime** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![Adobe Captivate Prime i resultatlistan](common/search-new-app.png)
+    ![Adobe Captivate Prime i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -144,7 +144,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 
@@ -180,7 +180,7 @@ I det här avsnittet gör du det möjligt för Britta Simon att använda enkel i
 
 ### <a name="create-adobe-captivate-prime-test-user"></a>Skapa Adobe Captivate Prime-testanvändare
 
-I det här avsnittet skapar du en användare med namnet Britta Simon i Adobe Captivate Prime. Kontakta [supportteamet för Adobe Captivate Prime](mailto:captivateprimesupport@adobe.com) och lägg till användarna i Adobe Captivate Prime-plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning.
+I det här avsnittet skapar du en användare med namnet Britta Simon i Adobe Captivate Prime. Arbeta med [Adobe captivates huvud support grupp](mailto:captivateprimesupport@adobe.com) för att lägga till användare i den inbyggda plattformen Adobe Captivate. Användare måste skapas och aktiveras innan du använder enkel inloggning.
 
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning
 

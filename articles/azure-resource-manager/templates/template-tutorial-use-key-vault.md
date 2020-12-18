@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: ae2361d12dfe18cadd80dd3b84405b2b17751e59
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 44a5131a7ad90feeeeff56e95b64e65f3f18855c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584093"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674165"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Självstudie: Integrera Azure Key Vault i din ARM-malldistribution
 
@@ -32,6 +32,8 @@ Den här självstudien omfattar följande uppgifter:
 > * Rensa resurser
 
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
+
+En Microsoft Learn-modul som använder ett säkert värde från ett nyckel valv finns i [hantera komplexa moln distributioner med hjälp av avancerade funktioner i arm-mallar](/learn/modules/manage-deployments-advanced-arm-template-features/).
 
 ## <a name="prerequisites"></a>Krav
 

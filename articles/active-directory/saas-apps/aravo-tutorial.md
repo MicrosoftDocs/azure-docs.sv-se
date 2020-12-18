@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 53db139a3c53e9b2d9a4454bfa17a025c21636b6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 4e9bca98280b27ff6ac3facee5c00513fc57862c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457851"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670017"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-aravo"></a>Självstudie: Azure Active Directory integrering med Aravo
 
@@ -30,7 +30,7 @@ Integreringen av Aravo med Azure AD medför följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Du behöver följande saker för att konfigurera Azure AD-integrering med Aravo:
 
@@ -63,7 +63,7 @@ För att konfigurera integrering av Aravo med Azure AD behöver du lägga till A
 
 4. I sökrutan skriver du **Aravo**, väljer **Aravo** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![Aravo i resultatlistan](common/search-new-app.png)
+    ![Aravo i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -143,7 +143,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 

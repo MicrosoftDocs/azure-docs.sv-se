@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 42da33fe874b6dea43bc16009dd27b70e6c3f535
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 1424669af9fe28257e66c8c5438f6e1d171954e0
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589958"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672907"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>Självstudie: integrera Amazon Business med Azure Active Directory
 
@@ -74,12 +74,12 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
 1. På sidan **Konfigurera en enskild Sign-On med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
-   ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
+    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
 1. I avsnittet **grundläggande SAML-konfiguration** , om du vill konfigurera i **IDP** initierat läge, utför följande steg:
 
     1. I text rutan **identifierare (enhets-ID)** anger du en URL med något av följande mönster:
-    
+
        | URL | Region |
        |-|-|
        | `https://www.amazon.com`| Nordamerika |
@@ -87,7 +87,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
        | `https://www.amazon.de`| Europa |
 
     1. I text rutan **svars-URL** skriver du en URL med något av följande mönster:
-    
+
        | URL | Region |
        |-|-|
        | `https://www.amazon.com/bb/feature/sso/action/3p_redirect?idpid={idpid}`| Nordamerika |
@@ -146,7 +146,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 1. I guiden **Konfigurera SSO** väljer du providern enligt organisationens krav och klickar på **Nästa**.
 
     ![Skärm bild som visar inställningar för S O, med Microsoft Azure A D och nästa vald.](media/amazon-business-tutorial/default-group1.png)
-    
+
     > [!NOTE]
     > Även om Microsoft ADFS är ett listat alternativ fungerar det inte med Azure AD SSO.
 
@@ -193,12 +193,12 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 1. Slutligen visas statusen i avsnittet **information om SSO-anslutnings** **status** som **aktiv**.
 
     ![Skärm bild som visar S O-anslutnings information med statusen aktiv.](media/amazon-business-tutorial/sso-connection5.png)
-    
+
     > [!NOTE]
     > Om du vill konfigurera programmet i **SP** initierat läge slutför du följande steg, klistra in inloggnings-URL: en från skärm bilden ovanför i text rutan **INLOGGNINGs-URL** i text rutan **Ange ytterligare URL: er** i Azure Portal. Använd följande format:
     >
     > `https://www.amazon.<TLD>/bb/feature/sso/action/start?domain_hint=<uniqueid>`
-    
+
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
@@ -236,7 +236,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 1. I listan program väljer du **Amazon Business**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
-   ![Länken ”Användare och grupper”](common/users-groups-blade.png)
+    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
 1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 
@@ -288,8 +288,8 @@ När du klickar på fliken Amazon-företag i åtkomst panelen bör du loggas in 
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](./tutorial-list.md)
+- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](./tutorial-list.md)
 
-- [Vad är program åtkomst och enkel inloggning med Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+- [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 - [Vad är villkorlig åtkomst i Azure Active Directory?](../conditional-access/overview.md)

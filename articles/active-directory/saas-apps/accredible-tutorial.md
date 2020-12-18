@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 3329d092e27e7d8885daa87650734cd8e84202c9
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: cf74b563352ccd0f62e583bccccd72078cbb2046
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313659"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673822"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-accredible"></a>Självstudie: Azure Active Directory integrering med Accredible
 
@@ -30,7 +30,7 @@ Integreringen av Accredible med Azure AD medför följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att konfigurera Azure AD-integrering med Accredible behöver du följande:
 
@@ -63,7 +63,7 @@ För att konfigurera integreringen av Accredible i Azure AD måste du lägga til
 
 4. I sökrutan skriver du **Accredible**, väljer **Accredible** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![Accredible i resultatlistan](common/search-new-app.png)
+    ![Accredible i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -148,7 +148,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 
@@ -184,7 +184,7 @@ I det här avsnittet gör du det möjligt för Britta Simon att använda enkel i
 
 ### <a name="create-accredible-test-user"></a>Skapa Accredible-testanvändare
 
-I det här avsnittet skapar du en användare med namnet Britta Simon i Accredible. Du måste skicka användarens e-post-ID till [Accredible support-teamet](mailto:support@accredible.com)och sedan verifiera e-postmeddelandet och skicka e-postmeddelandet till inbjudan så att du kan lägga till användare i Accredible-plattformen.
+I det här avsnittet skapar du en användare med namnet Britta Simon i Accredible. Du måste skicka användarens e-post-ID till [Accredible support-teamet](mailto:support@accredible.com)och sedan verifiera e-postmeddelandet och skicka e-postmeddelandet till inbjudan så att du kan lägga till användare i Accredible-plattformen.
 
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning
 

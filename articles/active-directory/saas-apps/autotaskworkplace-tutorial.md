@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 36d6d40b471edb20f2e4294a4ba29323fac2ebc6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8010bf25cc62d2de1b8b6ff9c0ecdc140c02c6a3
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457494"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674075"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-workplace"></a>Självstudie: Azure Active Directory integrering med arbets plats för AutoTask
 
@@ -67,7 +67,7 @@ För att konfigurera integrering av Autotask Workplace med Azure AD behöver du 
 
 4. I sökrutan skriver du **Autotask Workplace**, väljer **Autotask Workplace** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![Autotask Workplace i resultatlistan](common/search-new-app.png)
+    ![Autotask Workplace i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -173,7 +173,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 28dec1681d2849c6dbcf4b0b1b5ac7767bd77e42
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 10531f87ee4a170310a97831a374a836641ce12b
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457222"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673349"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bgs-online"></a>Självstudie: Azure Active Directory integrering med BGS online
 
@@ -63,7 +63,7 @@ För att konfigurera integrering av BGS Online i Azure AD behöver du lägga til
 
 4. I sökrutan skriver du **BGS Online**, väljer **BGS Online** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![BGS Online i resultatlistan](common/search-new-app.png)
+    ![BGS Online i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -151,7 +151,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: jeedes
-ms.openlocfilehash: fe113575c9ac70efc0afc571758eea668a23d8cb
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 1df8c6fa0877c20518be072674447d28d7f1ca0c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455824"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670180"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloud-service-picco"></a>Självstudie: Azure Active Directory integrering med Cloud Service PICCO
 
@@ -30,7 +30,7 @@ Du får följande fördelar när du integrerar Cloud Service PICCO med Azure AD:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att kunna konfigurera Azure AD-integrering med Cloud Service PICCO behöver du följande:
 
@@ -64,7 +64,7 @@ För att kunna konfigurera integreringen av Cloud Service PICCO i Azure AD måst
 
 4. Skriv **Cloud Service PICCO** i sökrutan, välj **Cloud Service PICCO** på resultatpanelen och klicka på knappen **Lägg till** för att lägga till programmet.
 
-     ![Cloud Service PICCO i resultatlistan](common/search-new-app.png)
+    ![Cloud Service PICCO i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -136,7 +136,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 

@@ -4,15 +4,15 @@ description: Lär dig hur du kör en Azure-funktion när ett RabbitMQ-meddelande
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/16/2020
+ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 1db27db97cdc1746b3392bd386ee6539980cd6d6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 5930219486de8704c777496bcaf293411c5fb7b1
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630742"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673995"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>RabbitMQ-utlösare för Azure Functions översikt
 
@@ -32,7 +32,7 @@ I följande exempel visas en [C#-funktion](functions-dotnet-class-library.md) so
 ```cs
 [FunctionName("RabbitMQTriggerCSharp")]
 public static void RabbitMQTrigger_BasicDeliverEventArgs(
-    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnection")] BasicDeliverEventArgs args,
+    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] BasicDeliverEventArgs args,
     ILogger logger
     )
 {
@@ -50,7 +50,7 @@ public class TestClass
 
 [FunctionName("RabbitMQTriggerCSharp")]
 public static void RabbitMQTrigger_BasicDeliverEventArgs(
-    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnection")] TestClass pocObj,
+    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] TestClass pocObj,
     ILogger logger
     )
 {
@@ -74,7 +74,7 @@ Här är bindnings data i *function.jspå* filen:
             "type": "rabbitMQTrigger",
             "direction": "in",
             "queueName": "queue",
-            "connectionStringSetting": "rabbitMQConnection"
+            "connectionStringSetting": "rabbitMQConnectionAppSetting"
         }
     ]
 }
@@ -105,7 +105,7 @@ Här är bindnings data i *function.jspå* filen:
             "type": "rabbitMQTrigger",
             "direction": "in",
             "queueName": "queue",
-            "connectionStringSetting": "rabbitMQConnection"
+            "connectionStringSetting": "rabbitMQConnectionAppSetting"
         }
     ]
 }
@@ -134,7 +134,7 @@ En RabbitMQ-bindning definieras i *function.jspå* WHERE- *typ* har angetts till
             "type": "rabbitMQTrigger",
             "direction": "in",
             "queueName": "queue",
-            "connectionStringSetting": "rabbitMQConnection"
+            "connectionStringSetting": "rabbitMQConnectionAppSetting"
         }
     ]
 }
@@ -155,7 +155,7 @@ Följande Java-funktion använder `@RabbitMQTrigger` anteckningen från [Java ra
 ```java
 @FunctionName("RabbitMQTriggerExample")
 public void run(
-    @RabbitMQTrigger(connectionStringSetting = "rabbitMQConnection", queueName = "queue") String input,
+    @RabbitMQTrigger(connectionStringSetting = "rabbitMQConnectionAppSetting", queueName = "queue") String input,
     final ExecutionContext context)
 {
     context.getLogger().info("Java HTTP trigger processed a request." + input);
@@ -180,7 +180,7 @@ public static void RabbitMQTest([RabbitMQTrigger("queue")] string message, ILogg
 }
 ```
 
-Ett fullständigt exempel finns i C#-exempel.
+Ett fullständigt exempel finns i C#- [exempel](#example).
 
 # <a name="c-script"></a>[C#-skript](#tab/csharp-script)
 
@@ -278,9 +278,9 @@ I det här avsnittet beskrivs de globala konfigurations inställningarna som är
 |Egenskap  |Standard | Beskrivning |
 |---------|---------|---------|
 |prefetchCount|30|Hämtar eller anger antalet meddelanden som meddelande mottagaren kan begära och cachelagras samtidigt.|
-|queueName|saknas| Namnet på kön att ta emot meddelanden från. |
-|Begär|saknas|Namnet på den app-inställning som innehåller anslutnings strängen för RabbitMQ meddelande kön. Observera att om du anger anslutnings strängen direkt och inte via en app-inställning i local.settings.jspå, kommer utlösaren inte att fungera.|
-|port|0|(ignoreras om connectionString används) Maximalt antal sessioner som kan hanteras samtidigt per skalad instans.|
+|queueName|saknas| Namnet på kön att ta emot meddelanden från.|
+|Begär|saknas|Anslutnings strängen för RabbitMQ Message Queue. Observera att anslutnings strängen anges direkt här och inte via en app-inställning.|
+|port|0|(ignoreras om du använder ConnectionStringSetting) Hämtar eller anger den port som används. Standardvärdet är 0.|
 
 ## <a name="local-testing"></a>Lokal testning
 

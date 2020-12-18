@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/22/2020
+ms.date: 12/16/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 99375abbf8e9749712b878ea35c9bc034bedbc5e
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: a3a4c7a51f0d75b67465a83a2fbbf3ae8a141c4c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616152"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671173"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Hantera användning och kostnader med Azure Monitor-loggar    
 
@@ -78,7 +78,7 @@ Log Analytics avgifter läggs till på din Azure-faktura. Du kan se information 
 
 ## <a name="viewing-log-analytics-usage-on-your-azure-bill"></a>Visa Log Analytics användning på din Azure-faktura 
 
-Azure ger en fantastisk mängd användbara funktioner i [Azure Cost Management + fakturerings](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json) hubben. Med funktionen "cost Analysis" kan du till exempel Visa dina utgifter för Azure-resurser. Lägg först till ett filter efter "resurs typ" (till Microsoft. operationalinsights/Workspace för Log Analytics och Microsoft. operationalinsights/Workspace för Log Analytics kluster) så att du kan spåra dina Log Analytics utgifter. Välj sedan "mäta kategori" eller "mätare" för "Gruppera efter".  Observera att andra tjänster, till exempel Azure Security Center och Azure Sentinel, också fakturerar användningen mot Log Analytics arbets ytans resurser. Om du vill se mappningen till tjänst namnet kan du välja tabellvy i stället för ett diagram. 
+Azure ger en fantastisk mängd användbara funktioner i [Azure Cost Management + fakturerings](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json) hubben. Med funktionen "cost Analysis" kan du till exempel Visa dina utgifter för Azure-resurser. Lägg först till ett filter efter "resurs typ" (till Microsoft. operationalinsights/Workspace för Log Analytics och Microsoft. operationalinsights/Cluster for Log Analytics Clusters) så att du kan spåra dina Log Analytics utgifter. Välj sedan "mäta kategori" eller "mätare" för "Gruppera efter".  Observera att andra tjänster, till exempel Azure Security Center och Azure Sentinel, också fakturerar användningen mot Log Analytics arbets ytans resurser. Om du vill se mappningen till tjänst namnet kan du välja tabellvy i stället för ett diagram. 
 
 Om du vill ha mer information om din användning kan du [ladda ned information om din användning från Azure-portalen](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal). I det nedladdade kalkylbladet visas användning per Azure-resurs (till exempel Log Analytics-arbetsytan) per dag. I det här Excel-kalkylbladet hittar du användning från dina Log Analytics-arbetsytor genom att först filtrera fram kolumnen "mätar kategori" för att Visa "Log Analytics", "insikter och analyser" (används av några av de äldre pris nivåerna) och "Azure Monitor" (används av pris nivåer för kapacitets reservationer) och lägger sedan till ett filter i kolumnen "instance ID", som är "innehåller arbets yta" eller "innehåller kluster" (den senare för att inkludera Log Analytics kluster användning). Användningen visas i kolumnen "Förbrukat antal" och enheten för varje post visas i kolumnen "enhets mått".  Mer information som hjälper dig att [förstå Microsoft Azure-fakturan](../../cost-management-billing/understand/review-individual-bill.md). 
 
@@ -150,7 +150,7 @@ Kvarhållning kan också [ställas in via Azure Resource Manager](../samples/res
 
 Arbets ytor med en lagring på 30 dagar kan faktiskt behålla data i 31 dagar. Om det är absolut nödvändigt att data sparas i 30 dagar kan du använda Azure Resource Manager för att ange kvarhållning till 30 dagar och med `immediatePurgeDataOn30Days` parametern.  
 
-Två data typer-- `Usage` och `AzureActivity` --bevaras i minst 90 dagar som standard och det kostar inget att ta betalt för denna 90-dagars kvarhållning. Om kvarhållning av arbets yta höjs över 90 dagar, kommer kvarhållning av dessa data typer också att öka.  Dessa data typer är också kostnads fria från data inmatnings kostnader. 
+Två data typer-- `Usage` och `AzureActivity` --bevaras i minst 90 dagar som standard och det kostar inget att debitera för denna 90-dagars kvarhållning. Om kvarhållning av arbets yta höjs över 90 dagar, kommer kvarhållning av dessa data typer också att öka.  Dessa data typer är också kostnads fria från data inmatnings kostnader. 
 
 Data typer från arbets ytans baserade Application Insights resurser (,,,,,,,, `AppAvailabilityResults` `AppBrowserTimings` `AppDependencies` `AppExceptions` `AppEvents` `AppMetrics` `AppPageViews` `AppPerformanceCounters` `AppRequests` `AppSystemEvents` och `AppTraces` ) behålls också i 90 dagar som standard och det kostar inget att debitera för denna 90-dagars kvarhållning. Deras kvarhållning kan justeras med hjälp av funktionen kvarhållning av data typ. 
 
@@ -216,7 +216,7 @@ Snart när den dagliga gränsen har uppnåtts stoppas insamlingen av fakturerbar
 > Den dagliga gränsen kan inte stoppa data insamlingen så exakt som den angivna gräns nivån och vissa överflödiga data förväntas, särskilt om arbets ytan tar emot stora mängder data. Se [nedan](#view-the-effect-of-the-daily-cap) för en fråga som är till hjälp när du ska studera det dagliga höljet. 
 
 > [!WARNING]
-> Den dagliga gränsen stoppar inte insamling av data från Azure Sentinal eller Azure Security Center, förutom för arbets ytor där Azure Security Center installerades före den 19 juni 2017. 
+> Den dagliga begränsningen stoppar inte insamlingen av data typer som ingår i [Azure Security Center daglig tilldelning per nod](#log-analytics-and-security-center) (WindowsEvent, SecurityAlert, SecurityBaseline, SecurityBaselineSummary, SecurityDetection, SecurityEvent, WindowsFirewall, MaliciousIPCommunication, LinuxAuditLog, SysmonEvent, ProtectionStatus, Update och UpdateSummary), förutom för arbets ytor där Azure Security Center installerades före den 19 juni 2017. 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Identifiera vilka dagliga data gränser som ska definieras
 
@@ -266,7 +266,7 @@ För att komma igång är det här de rekommenderade inställningarna för avise
 - Varnings regel namn: daglig data gräns har nåtts
 - Allvarlighets grad: varning (allvarlighets grad 1)
 
-När en avisering har definierats och gränsen har uppnåtts utlöses en avisering och det svar som definieras i åtgärds gruppen utförs. Det kan meddela ditt team via e-post och textmeddelanden, eller automatisera åtgärder med Webhooks, Automation runbooks eller [integrera med en extern ITSM-lösning](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#create-itsm-work-items-from-azure-alerts). 
+När en avisering har definierats och gränsen har uppnåtts utlöses en avisering och det svar som definieras i åtgärds gruppen utförs. Det kan meddela ditt team via e-post och textmeddelanden, eller automatisera åtgärder med Webhooks, Automation runbooks eller [integrera med en extern ITSM-lösning](itsmc-definition.md#create-itsm-work-items-from-azure-alerts). 
 
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>Felsökning varför användningen är större än förväntat
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: adac6993c0fc40fa81328655903850c1da85ccf3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5b8d9cedcc2ca3085f342db0bbf5fe3704ac7242
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457379"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674148"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bc-in-the-cloud"></a>Självstudie: Azure Active Directory integrering med BC i molnet
 
@@ -63,7 +63,7 @@ För att konfigurera integreringen av BC in the Cloud med Azure AD måste du lä
 
 4. Skriv **BC in the Cloud**, välj **BC in the Cloud** i resultatrutan och klicka sedan på **Lägg till** för att lägga till programmet.
 
-     ![BC in the Cloud i resultatlistan](common/search-new-app.png)
+    ![BC in the Cloud i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -143,7 +143,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 29ebe2f0ec4d4c39154272bbbdf4d0c9ede9fd95
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: e5ad0b6dca7718166517b52148fbc6dd49f38869
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928196"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674020"
 ---
 # <a name="use-arm-template-test-toolkit"></a>Använd test verktyg för ARM-mall
 
@@ -282,4 +282,5 @@ I nästa exempel visas hur du kör testerna.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om standardtesterna finns i [standardtest-fall för test verktyg för arm-mall](test-cases.md).
+- Mer information om standardtesterna finns i [standardtest-fall för test verktyg för arm-mall](test-cases.md).
+- En Microsoft Learn-modul som täcker med hjälp av test Toolkit finns i [Förhandsgranska ändringar och verifiera Azure-resurser med hjälp av vad-IF-och arm-mallens test verktyg](/learn/modules/arm-template-test/).

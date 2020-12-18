@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 9c27139e2dca37c1ff8d963e1e8cdb5de682d39d
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 86c2d9585abd546acb3efb22256d3f3b70bfb972
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302945"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674403"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-carlson-wagonlit-travel"></a>Självstudie: Azure Active Directory integrering med Carlson Wagonlit Travel
 
@@ -63,7 +63,7 @@ När du konfigurerar integreringen av Carlson Wagonlit Travel till Azure AD, må
 
 4. I sökrutan skriver du **Carlson Wagonlit Travel**. Välj **Carlson Wagonlit Travel** i resultatpanelen och klicka sedan på **Lägg till** för att lägga till programmet.
 
-     ![Carlson Wagonlit Travel i resultatlistan](common/search-new-app.png)
+    ![Carlson Wagonlit Travel i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -138,7 +138,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 

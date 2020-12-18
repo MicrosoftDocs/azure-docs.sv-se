@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2020
 ms.author: Zhchia
-ms.openlocfilehash: 92329a3fa04d3cc685ba5068e9e5ae9932d1eb4d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 932a94c348c38902c68a6cf8108d8246cdc434ac
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96178950"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673386"
 ---
 # <a name="tutorial-configure-cybsafe-for-automatic-user-provisioning"></a>Självstudie: Konfigurera CybSafe för automatisk användar etablering
 
@@ -34,7 +34,7 @@ I den här självstudien beskrivs de steg du behöver utföra i både CybSafe oc
 > * Behåll användarattribut synkroniserade mellan Azure AD och CybSafe
 > * Etablera grupper och grupp medlemskap i CybSafe
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 
@@ -135,15 +135,15 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
 13. Om du vill aktivera Azure AD Provisioning-tjänsten för CybSafe ändrar du **etablerings statusen** till **på** i avsnittet **Inställningar** .
 
-    ![Etableringsstatus är på](common/provisioning-toggle-on.png)
+      ![Etableringsstatus är på](common/provisioning-toggle-on.png)
 
 14. Definiera de användare och/eller grupper som du vill etablera till CybSafe genom att välja önskade värden i **omfång** i avsnittet **Inställningar** .
 
-    ![Etableringsomfång](common/provisioning-scope.png)
+      ![Etableringsomfång](common/provisioning-scope.png)
 
 15. När du är redo att etablera klickar du på **Spara**.
 
-    ![Spara etableringskonfiguration](common/provisioning-configuration-save.png)
+      ![Spara etableringskonfiguration](common/provisioning-configuration-save.png)
 
 Åtgärden startar den initiala synkroniseringscykeln för alla användare och grupper som har definierats i **Omfång** i avsnittet **Inställningar**. Den första cykeln tar längre tid att utföra än efterföljande cykler, vilket inträffar ungefär var 40:e minut om Azure AD-etableringstjänsten körs. 
 

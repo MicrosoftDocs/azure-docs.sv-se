@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 321c6bf52f4dac636f6bebb3a79d3a206c2ea11b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 36ba61c86082e191831c2c890de4466181f1a4db
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456440"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674216"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>Självstudie: Azure Active Directory integrering med central Desktop
 
@@ -30,7 +30,7 @@ Integreringen av Central Desktop med Azure AD medför följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att konfigurera Azure AD-integrering med Central Desktop behöver du följande:
 
@@ -63,7 +63,7 @@ För att konfigurera integreringen av Central Desktop i Azure AD måste du lägg
 
 4. I sökrutan skriver du **Central Desktop**, väljer **Central Desktop** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![Central Desktop i resultatlistan](common/search-new-app.png)
+    ![Central Desktop i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -104,7 +104,7 @@ Utför följande steg för att konfigurera enkel inloggning med Azure AD för Ce
     a. I text rutan **inloggnings-URL** skriver du en URL med följande mönster: `https://<companyname>.centraldesktop.com`
 
     b. I rutan **Identifierare** skriver du en URL med följande mönster:
-    
+
     ```http
     https://<companyname>.centraldesktop.com/saml2-metadata.php
     https://<companyname>.imeetcentral.com/saml2-metadata.php
@@ -152,7 +152,7 @@ Utför följande steg för att konfigurera enkel inloggning med Azure AD för Ce
 4. I avsnittet **Message Signature Verification Method** (Verifieringsmetod för meddelandesignatur) utför du följande steg:
 
     ![Verifierings metod för meddelandeautentisering](./media/central-desktop-tutorial/ic769565.png "Verifierings metod för meddelandeautentisering")
-    
+
     a. Välj **Certifikat**.
 
     b. I listan **SSO Certificate** (Certifikat för enkel inloggning) väljer du **RSH SHA256**.
@@ -180,7 +180,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 
@@ -236,7 +236,7 @@ För att Azure AD-användare ska kunna logga in måste de etableras i Central De
 4. Välj **Add Internal member(s)** (Lägg till interna medlemmar).
 
     ![Lägg till intern medlem](./media/central-desktop-tutorial/ic781053.png "Lägg till intern medlem")
-  
+
    > [!NOTE]
    > De användare som du lägger till får ett e-postmeddelande som innehåller en bekräftelselänk för att aktivera sina konton.
 

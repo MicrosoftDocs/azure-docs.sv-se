@@ -2,13 +2,13 @@
 title: Ange distributions ordning för resurser
 description: Beskriver hur du anger en resurs som beroende av en annan resurs under distributionen för att säkerställa att resurser distribueras i rätt ordning.
 ms.topic: conceptual
-ms.date: 12/03/2019
-ms.openlocfilehash: 84cea915565ec6ac9872681e1d4173abacb46ac4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/17/2020
+ms.openlocfilehash: 933764f1930bd6c9e21d4ccffbde1bb93bbc9613
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85255219"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672822"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>Definiera ordningen för att distribuera resurser i ARM-mallar
 
@@ -150,6 +150,7 @@ Information om hur du bedömer distributions ordningen och löser beroende fel f
 ## <a name="next-steps"></a>Nästa steg
 
 * Information om hur du går igenom självstudierna finns i [Självstudier: skapa Azure Resource Manager mallar med beroende resurser](template-tutorial-create-templates-with-dependent-resources.md).
+* En Microsoft Learn-modul som täcker resurs beroenden finns i [hantera komplexa moln distributioner med hjälp av avancerade funktioner för ARM-mallar](/learn/modules/manage-deployments-advanced-arm-template-features/).
 * Rekommendationer vid inställning av beroenden finns i [metod tips för Azure Resource Manager mall](template-best-practices.md).
 * Information om hur du felsöker beroenden under distributionen finns i [Felsöka vanliga problem med Azure-distribution med Azure Resource Manager](common-deployment-errors.md).
 * Mer information om hur du skapar Azure Resource Manager-mallar finns i [Redigera mallar](template-syntax.md).

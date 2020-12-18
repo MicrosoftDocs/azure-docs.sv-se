@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0d8b90e18865afeb5cb0c171d21c89d7c6e932f0
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 69c2bd96c7aa3bb3328784bb3b5027ade4902c43
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654293"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97669235"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>Konfigurera registrering och inloggning med ett Salesforce-konto med hjälp av Azure Active Directory B2C
 
@@ -39,7 +39,9 @@ ms.locfileid: "97654293"
 
 Om du vill använda ett Salesforce-konto i Azure Active Directory B2C (Azure AD B2C) måste du skapa ett program i Salesforce **App Manager**. Mer information finns i [Konfigurera inställningar för grundläggande anslutna appar](https://help.salesforce.com/articleView?id=connected_app_create_basics.htm)och [Aktivera OAuth-inställningar för API-integrering](https://help.salesforce.com/articleView?id=connected_app_create_api_integration.htm)
 
-1. Från **installations programmet** anger du **appar** i rutan **snabb sökning** och väljer **App Manager**.
+1. [Logga in på Salesforce](https://login.salesforce.com/).
+1. I menyn väljer du **Inställningar**.
+1.  Expandera **appar** och välj sedan **App Manager**.
 1. Välj **ny ansluten app**.
 1. Under **grundläggande information** anger du:
     1. **Namnet på den anslutna appen** – namnet på den anslutna appen visas i App Manager och i panelen App Launcher. Namnet måste vara unikt i din organisation. 

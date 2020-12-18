@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d1e5848e568f42fb8a77c65c775962f27a5a03df
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: a77f64e51a26e1f916f9f96704c55412a870a509
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588044"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673944"
 ---
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>Självstudie: skapa ARM-mallar med beroende resurser
 
@@ -28,6 +28,8 @@ Den här självstudien omfattar följande uppgifter:
 > * Distribuera mallen
 
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
+
+En Microsoft Learn-modul som täcker resurs beroenden finns i [hantera komplexa moln distributioner med hjälp av avancerade funktioner för ARM-mallar](/learn/modules/manage-deployments-advanced-arm-template-features/).
 
 ## <a name="prerequisites"></a>Krav
 

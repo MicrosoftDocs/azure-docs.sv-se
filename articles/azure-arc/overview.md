@@ -3,12 +3,12 @@ title: Översikt över Azure Arc
 description: Lär dig mer om vad Azure-bågen är och hur den hjälper kunderna att aktivera hantering och styrning av sina hybrid resurser med andra Azure-tjänster och-funktioner.
 ms.date: 09/23/2020
 ms.topic: overview
-ms.openlocfilehash: 3a8b054d9b7fd8f48dc667a5bd49a2c6994de1a3
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 8f39dff16037b5f52a050b7d07193b0ad7cab93d
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616532"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672694"
 ---
 # <a name="azure-arc-overview"></a>Översikt över Azure Arc
 
@@ -74,10 +74,10 @@ I den aktuella förhands gransknings fasen erbjuds Azure Arc-aktiverade data tj�
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Starta för aktiverade Arc-tjänster från [rivstart med-scenarier](https://azurearcjumpstart.io/azure_arc_jumpstart/)
-
 * Mer information om ARC-aktiverade servrar finns i följande [Översikt](./servers/overview.md)
 
 * Mer information om ARC-aktiverade Kubernetes finns i följande [Översikt](./kubernetes/overview.md)
 
 * Mer information om ARC-aktiverade data tjänster finns i följande [Översikt](https://azure.microsoft.com/services/azure-arc/hybrid-data-services/)
+
+* Upplev Arc-aktiverade tjänster från [koncept beviset rivstart med](https://azurearcjumpstart.io/azure_arc_jumpstart/)

@@ -2,13 +2,13 @@
 title: Distribuera flera instanser av resurser
 description: Använd kopierings åtgärd och matriser i en Azure Resource Manager mall (ARM-mall) för att distribuera resurs typen flera gånger.
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: 47f3d693b84347973889a6003360d7113c427f4d
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.date: 12/17/2020
+ms.openlocfilehash: 7a894ee6a31a43dd8da3d84d88276824c6bbc9f7
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905918"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672839"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>Resurs upprepning i ARM-mallar
 
@@ -292,10 +292,9 @@ I följande exempel visas vanliga scenarier för att skapa mer än en instans av
 ## <a name="next-steps"></a>Nästa steg
 
 * Information om hur du går igenom självstudierna finns i [Självstudier: skapa flera resurs instanser med ARM-mallar](template-tutorial-create-multiple-instances.md).
+* En Microsoft Learn-modul som täcker resurs kopiering finns i [hantera komplexa moln distributioner med hjälp av avancerade funktioner i arm-mallar](/learn/modules/manage-deployments-advanced-arm-template-features/).
 * För andra användnings områden av elementet Copy, se:
   * [Egenskaps upprepning i ARM-mallar](copy-properties.md)
   * [Variabel iteration i ARM-mallar](copy-variables.md)
   * [Utdata iteration i ARM-mallar](copy-outputs.md)
 * Information om hur du använder kopiera med kapslade mallar finns i [använda kopiera](linked-templates.md#using-copy).
-* Om du vill lära dig mer om avsnitten i en mall, se [förstå strukturen och syntaxen för ARM-mallar](template-syntax.md).
-* Information om hur du distribuerar din mall finns i [distribuera resurser med ARM-mallar och Azure PowerShell](deploy-powershell.md).

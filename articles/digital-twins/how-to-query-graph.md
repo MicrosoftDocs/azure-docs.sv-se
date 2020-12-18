@@ -5,15 +5,15 @@ description: Mer information finns i så här frågar du efter information i Azu
 author: baanders
 ms.author: baanders
 ms.date: 11/19/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 966b87dfb3111d7a112ea99f37dee730495d491f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: df7462cf047dd113c34669d9a5f68f2589cc50f4
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032838"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673001"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Skicka frågor till Azure Digitals dubbla grafer
 
@@ -311,7 +311,7 @@ Anta till exempel ett scenario där *byggnader* som innehåller *golv* och *golv
 
 Du kan **kombinera** någon av ovanstående typer av fråga med hjälp av kombinations operatorer för att inkludera mer information i en enskild fråga. Här följer några ytterligare exempel på sammansatta frågor som frågar efter fler än en typ av dubbel beskrivare på en gång.
 
-| Description | Söka i data |
+| Beskrivning | Söka i data |
 | --- | --- |
 | Från de enheter som *Room 123* har kan du returnera de MxChip-enheter som hanterar rollen operatör | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contoso:com:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
 | Hämta dubbla som har en relation som heter *innehåller* med en annan som har ID: t *id1* | `SELECT Room`<br>`FROM DIGITALTWINS Room`<br>`JOIN Thermostat RELATED Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |

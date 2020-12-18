@@ -1,14 +1,14 @@
 ---
 title: Publicera ett hanterat tjänst erbjudande på Azure Marketplace
 description: Lär dig hur du publicerar ett hanterat tjänst erbjudande som integrerar kunder i Azure Lighthouse.
-ms.date: 08/18/2020
+ms.date: 12/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 033003d7e782ca0e99b1fc908c5261b6e31bf613
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a003e671631e9f23654eb524c7c2d937339a9588
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023933"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673162"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Publicera ett hanterat tjänst erbjudande på Azure Marketplace
 
@@ -18,7 +18,7 @@ I den här artikeln får du lära dig hur du publicerar ett offentligt eller pri
 
 Du måste ha ett giltigt [konto i Partner Center](../../marketplace/partner-center-portal/create-account.md) för att kunna skapa och publicera erbjudanden. Om du inte redan har ett konto kommer [registrerings processen](https://aka.ms/joinmarketplace) att leda dig genom stegen för att skapa ett konto i Partner Center och registrera dig i programmet för kommersiella marknads platser.
 
-Enligt [certifierings kraven för den hanterade tjänstens erbjudande](/legal/marketplace/certification-policies#7004-business-requirements)måste du ha en [silver eller guld plattforms plattforms nivå](/partner-center/learn-about-competencies) eller vara en [Azure expert-MSP](https://partner.microsoft.com/membership/azure-expert-msp) för att kunna publicera ett hanterat tjänst erbjudande.
+Enligt [certifierings kraven för den hanterade tjänstens erbjudande](/legal/marketplace/certification-policies#7004-business-requirements)måste du ha en [silver eller guld plattforms plattforms nivå](/partner-center/learn-about-competencies) eller vara en [Azure expert-MSP](https://partner.microsoft.com/membership/azure-expert-msp) för att kunna publicera ett hanterat tjänst erbjudande. Du måste också [Ange ett lead-mål som ska skapa en post i ditt CRM-system](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#customer-leads) varje gång en kund distribuerar ditt erbjudande.
 
 Ditt Microsoft Partner Network (MPN) ID kommer [automatiskt att associeras](../../cost-management-billing/manage/link-partner-id.md) med de erbjudanden du publicerar för att spåra din påverkan på kund engagemang.
 
@@ -26,7 +26,7 @@ Om du inte vill publicera ett erbjudande på Azure Marketplace eller inte uppfyl
 
 Följande tabell kan hjälpa dig att avgöra om du ska publicera kunder genom att publicera ett hanterat tjänst erbjudande eller använda Azure Resource Manager mallar.
 
-|**Övervägande**  |**Erbjudande för hanterad tjänst**  |**ARM-mallar**  |
+|**Att tänka på**  |**Erbjudande för hanterad tjänst**  |**ARM-mallar**  |
 |---------|---------|---------|
 |Kräver [partner Center-konto](../../marketplace/partner-center-portal/create-account.md)   |Ja         |Nej        |
 |Kräver [plattforms-eller guld plattforms kompetens nivå](/partner-center/learn-about-competencies) eller [Azure expert MSP](https://partner.microsoft.com/membership/azure-expert-msp)      |Ja         |Nej         |

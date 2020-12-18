@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 91d48e42dc1c92e05e963b4c8b53e44daa403378
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f999818ab791cabac6b0877b7735fa730dab89e2
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456712"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673438"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightspace-by-desire2learn"></a>Självstudie: Azure Active Directory integration med Brightspace av Desire2Learn
 
@@ -66,7 +66,7 @@ När du konfigurerar integreringen av Brightspace by Desire2Learn med Azure AD, 
 
 4. I sökrutan skriver du **Brightspace by Desire2Learn**. Välj **Brightspace by Desire2Learn** i resultatpanelen och klicka sedan på **Lägg till** för att lägga till programmet.
 
-     ![Brightspace av Desire2Learn i resultatlistan](common/search-new-app.png)
+    ![Brightspace av Desire2Learn i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -105,7 +105,7 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Brigh
     ![Information om Brightspace by Desire2Learn-domän och URL:er med enkel inloggning](common/idp-intiated.png)
 
     a. I textrutan **Identifierare** skriver du en URL med följande mönster:  
-    
+
     ```http
     https://<companyname>.tenants.brightspace.com/samlLogin
     https://<companyname>.desire2learn.com/shibboleth-sp
@@ -151,7 +151,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 

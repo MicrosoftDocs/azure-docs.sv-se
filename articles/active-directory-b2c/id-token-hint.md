@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 79a99d9f0ca117d8f47d56d76399210a72b91bb7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d77e145cabcef2931d5fe6e76599da7931e576e8
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951663"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97669167"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiera en teknisk profil för ID-token i en Azure Active Directory B2C anpassad princip
 
@@ -36,10 +36,10 @@ Id_token_hint måste vara en giltig JWT-token. I följande tabell visas de anspr
 
 | Namn | Begär | Exempelvärde | Beskrivning |
 | ---- | ----- | ------------- | ----------- |
-| Målgrupp | `aud` | `a489fc44-3cc0-4a78-92f6-e413cd853eae` | Identifierar den avsedda mottagaren för token. Detta är en godtycklig sträng som definieras av token Issuer. Azure AD B2C validerar det här värdet och avvisar token om det inte matchar.  |
-| Utfärdare | `iss` |`https://localhost` | Identifierar Security Token Service (token Issuer). Detta är en godtycklig URI som definieras av token Issuer. Azure AD B2C validerar det här värdet och avvisar token om det inte matchar.  |
-| Förfallo tid | `exp` | `1600087315` | Tiden då token blir ogiltig, representeras i epok tid. Azure AD B2C validerar inte detta anspråk. |
-| Inte före | `nbf` | `1599482515` | Tiden då token börjar gälla, representeras i epok tiden. Den här tiden är vanligt vis samma som den tidpunkt då token utfärdades. Azure AD B2C validerar inte detta anspråk. |
+| Målgrupp | `aud` | `a489fc44-3cc0-4a78-92f6-e413cd853eae` | Identifierar den avsedda mottagaren för token. Mål gruppen är en godtycklig sträng som definieras av token Issuer. Azure AD B2C validerar det här värdet och avvisar token om det inte matchar.  |
+| Utfärdare | `iss` |`https://localhost` | Identifierar Security Token Service (token Issuer). Utfärdaren är en godtycklig URI som definieras av token Issuer. Azure AD B2C validerar det här värdet och avvisar token om det inte matchar.  |
+| Förfallo tid | `exp` | `1600087315` | Tiden då token blir ogiltig, representeras i epok tid. Azure AD B2C validerar det här värdet och avvisar token om token har upphört att gälla.|
+| Inte före | `nbf` | `1599482515` | Tiden då token börjar gälla, representeras i epok tiden. Den här tiden är vanligt vis samma som den tidpunkt då token utfärdades. Azure AD B2C validerar det här värdet och avvisar token om token för token inte är giltig. |
 
  Följande token är ett exempel på en giltig ID-token:
 
@@ -84,16 +84,16 @@ Följande metadata är relevanta när du använder symmetrisk nyckel.
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| utfärdare | Ja | Identifierar Security Token Service (token Issuer). Värdet måste vara identiskt med `iss` anspråket i JWT-token-anspråket. | 
-| IdTokenAudience | Ja | Identifierar den avsedda mottagaren för token. Måste vara identiskt `aud` med anspråket med JWT-token-anspråket. | 
+| utfärdare | Yes | Identifierar Security Token Service (token Issuer). Värdet måste vara identiskt med `iss` anspråket i JWT-token-anspråket. | 
+| IdTokenAudience | Yes | Identifierar den avsedda mottagaren för token. Måste vara identiskt med `aud` anspråket inom JWT-token-anspråket. | 
 
 Följande metadata är relevanta när du använder en asymmetrisk nyckel. 
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| METADATATJÄNST| Ja | En URL som pekar på ett konfigurations dokument för token, som även kallas en OpenID-känd konfigurations slut punkt.   |
+| METADATATJÄNST| Yes | En URL som pekar på ett konfigurations dokument för token, som även kallas en OpenID-känd konfigurations slut punkt.   |
 | utfärdare | Nej | Identifierar Security Token Service (token Issuer). Det här värdet kan användas för att skriva över värdet som kon figurer ATS i metadata och måste vara identiskt med `iss` anspråket i JWT-token-anspråket. |  
-| IdTokenAudience | Nej | Identifierar den avsedda mottagaren för token. Måste vara identiskt `aud` med anspråket med JWT-token-anspråket. |  
+| IdTokenAudience | Nej | Identifierar den avsedda mottagaren för token. Måste vara identiskt med `aud` anspråket inom JWT-token-anspråket. |  
 
 ## <a name="cryptographic-keys"></a>Kryptografiska nycklar
 
@@ -101,7 +101,7 @@ När du använder en symmetrisk nyckel innehåller **CryptographicKeys** -elemen
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| client_secret | Ja | Den kryptografiska nyckel som används för att validera JWT-tokens signatur.|
+| client_secret | Yes | Den kryptografiska nyckel som används för att validera JWT-tokens signatur.|
 
 
 ## <a name="how-to-guide"></a>Instruktionsguide
@@ -272,7 +272,7 @@ För både symmetriska och asymmetriska metoder `id_token_hint` anropas den tekn
     </RelyingParty>
     ```
 
-Beroende på dina affärs behov kan du behöva lägga till token-valideringar, till exempel för att kontrol lera att token har upphört att gälla, formatet på e-postadressen med mera. Det gör du genom att lägga till Dirigerings steg som anropar en [teknisk profil för anspråks omvandling](claims-transformation-technical-profile.md). Lägg också till en [självkontrollerad teknisk profil](self-asserted-technical-profile.md) för att presentera ett fel meddelande. 
+Beroende på dina affärs behov kan du behöva lägga till token-valideringar, till exempel kontrol lera formatet på e-postadressen. Det gör du genom att lägga till Dirigerings steg som anropar en [teknisk profil för anspråks omvandling](claims-transformation-technical-profile.md). Lägg också till en [självkontrollerad teknisk profil](self-asserted-technical-profile.md) för att presentera ett fel meddelande. 
 
 ### <a name="create-and-sign-a-token"></a>Skapa och signera en token
 

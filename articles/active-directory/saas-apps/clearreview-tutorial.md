@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: cc5a214d53441a5e1f30158a0264278b3cdc95a0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e971b02fb87440d4833c2eeba8897143f97a20dd
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455951"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670589"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>Självstudie: Azure Active Directory integrering med tydlig granskning
 
@@ -66,7 +66,7 @@ För att konfigurera integrering av Clear Review i Azure AD måste du lägga til
 
 4. I sökrutan skriver du **Clear Review**, väljer **Clear Review** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![Clear Review i resultatlistan](common/search-new-app.png)
+    ![Clear Review i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -155,7 +155,7 @@ Utför följande steg för att konfigurera Azure AD enkel inloggning med Clear R
 
     ![Skärm bild som visar den rensa gransknings portalen där admin är valt.](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
 
-3. Klicka på knappen **ändra** till höger om **enskilda Sign-On inställningar**i avsnittet **integration** längst ned på sidan.
+3. Klicka på knappen **ändra** till höger om **enskilda Sign-On inställningar** i avsnittet **integration** längst ned på sidan.
 
     ![Skärm bild som visar knappen för enkel Sign-On ändring.](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
 
@@ -190,7 +190,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 

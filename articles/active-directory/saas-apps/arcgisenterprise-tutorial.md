@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 61920b7c5356b6e1fa5683ac0553060c85e256d3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f7578972b054747c75cdbbc2371fc0bf35c6039a
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457832"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672567"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>Självstudie: Azure Active Directory integrering med ArcGIS Enterprise
 
@@ -68,7 +68,7 @@ För att konfigurera integreringen av ArcGIS Enterprise till Azure AD behöver d
 
 4. I sökrutan skriver du **ArcGIS Enterprise**, väljer **ArcGIS Enterprise** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![ArcGIS Enterprise i resultatlistan](common/search-new-app.png)
+    ![ArcGIS Enterprise i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -157,7 +157,7 @@ Konfigurera enkel inloggning med Azure AD med [Programnamn] genom att utföra f�
     b. I textrutan **URL** klistrar du in värdet för den **URL för appfederationsmetadata** som du har kopierat från Azure-portalen.
 
     c. Klicka på **Visa avancerade inställningar** och kopiera värdet **Entitets-ID** och klistra in det i textrutan **Identifierare** i avsnittet **ArcGIS Enterprise Domain and URLs** (ArcGIS Enterprise-domän och URL:er) i Azure-portalen.
-    
+
     ![Skärm bild som visar var du kan hämta entiteten I D och uppdatera identifiera leverantören.](./media/arcgisenterprise-tutorial/configure5.png)
 
     d. Klicka på **UPDATE IDENTITY PROVIDER** (Uppdatera identitetsprovider).
@@ -179,7 +179,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 

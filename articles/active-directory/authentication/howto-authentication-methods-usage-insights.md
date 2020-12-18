@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 11/21/2019
+ms.date: 12/17/2020
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8633ae0d23650eb12ee2e1fdcd355864dfd8b6c3
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: bfff8d450a6506cb37730838e4f70609080ca7b1
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743640"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670799"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>Användning av autentiseringsmetoder & insikter (för hands version)
 
@@ -31,7 +31,7 @@ Följande roller kan komma åt användning och insikter:
 - Säkerhetsadministratör
 - Rapportläsare
 
-Ingen ytterligare licens krävs för att komma åt användning och insikter. Azure AD Multi-Factor Authentication och SSPR-licensierings information (Self-Service Password rereset) finns på [Azure Active Directory prissättnings webbplats](https://azure.microsoft.com/pricing/details/active-directory/).
+ En Azure AD Premium P1-eller P2-licens krävs för att komma åt användning och insikter. Azure AD Multi-Factor Authentication och SSPR-licensierings information (Self-Service Password rereset) finns på [Azure Active Directory prissättnings webbplats](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="how-it-works"></a>Så här fungerar det
 
@@ -65,7 +65,7 @@ Om du klickar på de användare som är **registrerade**, **användare aktiverad
 
 Rapporten registrerings information visar följande information för varje användare:
 
-- Name
+- Namn
 - Användarnamn
 - Registrerings status (alla, registrerad, ej registrerad)
 - Aktive rad status (all, aktive rad, inte aktive rad)
@@ -80,7 +80,7 @@ Om du klickar på registreringar eller återställer diagram går du till åters
 
 I rapporten Återställ detaljer visas registrerings-och återställnings händelser från de senaste 30 dagarna, inklusive:
 
-- Name
+- Namn
 - Användarnamn
 - Funktion (all, registrering, återställning)
 - Autentiseringsmetod (app-meddelande, app-kod, telefonsamtal, Office-samtal, SMS, e-post, säkerhets frågor)

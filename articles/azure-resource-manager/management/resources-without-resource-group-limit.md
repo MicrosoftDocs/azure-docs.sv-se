@@ -3,12 +3,12 @@ title: Resurser utan gräns för 800
 description: Visar en lista över de Azure-resurs typer som kan ha fler än 800 instanser i en resurs grupp.
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: cec7ea87bbe81d3bfcca37f3133ac650e66f849f
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: c2d5797a7ec354f41d510ec6e884968bf9dbdbcd
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913508"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672372"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Resurser som inte är begränsade till 800 instanser per resurs grupp
 
@@ -81,7 +81,7 @@ För vissa resurs typer måste du kontakta supporten om du vill ta bort instans 
 
 ## <a name="microsoftdevtestlab"></a>Microsoft. DevTestLab
 
-* labb/virtualMachines – som standard är begränsad till 800 instanser. Du kan öka gränsen genom att kontakta supporten.
+* labb/virtualMachines – som standard är begränsad till 800 instanser. 
 * scheman
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft. EnterpriseKnowledgeGraph

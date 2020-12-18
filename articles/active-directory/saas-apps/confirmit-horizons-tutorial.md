@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: e17c4e768d02226c1c50baea05b9231acb78cba6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b1c4ab22db3bb9cadc783357bd9963c5de3b6f98
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455433"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672720"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confirmit-horizons"></a>Självstudie: Azure Active Directory integrering med Confirmit-horisonter
 
@@ -30,7 +30,7 @@ Genom att integrera Confirmit-horisonter med Azure AD får du följande fördela
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill konfigurera Azure AD-integrering med Confirmit-horisonter behöver du följande objekt:
 
@@ -65,7 +65,7 @@ Om du vill konfigurera integreringen av Confirmit-horisonter i Azure AD måste d
 
 4. I rutan Sök skriver du **Confirmit-horisonter**, väljer **Confirmit-horisonter** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
 
-     ![Confirmit-horisonter i resultat listan](common/search-new-app.png)
+    ![Confirmit-horisonter i resultat listan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -165,7 +165,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon@yourcompanydomain.extension**  
     Till exempel BrittaSimon@contoso.com
 
@@ -177,7 +177,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Confirmit-horisonter.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Confirmit-horisonter**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Confirmit-horisonter**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

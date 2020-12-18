@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2020
 ms.author: Zhchia
-ms.openlocfilehash: b739cd50c4d4477d3622350a9a9c96b600794c7d
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 4eaac716d06b102a07872059af28da4986889caa
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632047"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673449"
 ---
 # <a name="tutorial-configure-bizagi-studio-for-digital-process-automation-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Bizagi Studio för digital process Automation för automatisk användar etablering
 
@@ -34,7 +34,7 @@ I den här självstudien beskrivs de steg du behöver utföra i både Bizagi Stu
 > * Behåll användarattribut synkroniserade mellan Azure AD och Bizagi Studio för digital process Automation
 > * [Enkel inloggning](https://docs.microsoft.com/azure/active-directory/saas-apps/bizagi-studio-for-digital-process-automation-tutorial) till Bizagi Studio för digital process Automation (rekommenderas)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande:
 
@@ -139,6 +139,8 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
    Mer information om hur du lägger till anpassade attribut finns i [Anpassa programattribut](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).
 
+> [!NOTE]
+> Endast grundläggande typ egenskaper stöds (till exempel String, heltal, Boolean, DateTime osv.). De egenskaper som är länkade till parameter tabeller eller flera typer stöds inte ännu.
 
 10. Information om hur du konfigurerar omfångs filter finns i [kursen om omfångs filter](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 

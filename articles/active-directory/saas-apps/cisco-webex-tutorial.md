@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 1d53cfc874bca6529fdee821ce3173607d5f06b3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7a4e3a4a6049b48fa70e5352680bdc7342676c0b
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456062"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670291"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med Cisco WebEx-möten
 
@@ -53,7 +53,7 @@ Om du vill konfigurera integreringen av Cisco WebEx-möten i Azure AD måste du 
 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** skriver du **Cisco WebEx-möten** i sökrutan.
 1. Välj **Cisco WebEx-möten** från panelen resultat och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -92,16 +92,16 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
     a. I avsnittet **grundläggande SAML-konfiguration** klickar du på ikonen Redigera/penna.
 
    ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
-    
-    b. I text rutan för **inloggnings-URL** skriver du URL: en med följande mönster: ` https://<customername>.my.webex.com`
 
-5. Cisco WebEx-Mötes program förväntar sig SAML-intyg i ett särskilt format, vilket kräver att du lägger till anpassade mappningar av attribut i konfigurationen för SAML-token. I följande skärmbild visas listan över standardattribut. Klicka på ikonen**Redigera** för att öppna dialogrutan Användarattribut.
+    b. I text rutan för **inloggnings-URL** skriver du URL: en med följande mönster: `https://<customername>.my.webex.com`
+
+5. Cisco WebEx-Mötes program förväntar sig SAML-intyg i ett särskilt format, vilket kräver att du lägger till anpassade mappningar av attribut i konfigurationen för SAML-token. I följande skärmbild visas listan över standardattribut. Klicka på ikonen **Redigera** för att öppna dialogrutan Användarattribut.
 
     ![image](common/edit-attribute.png)
 
 6. Förutom över, förväntar Cisco WebEx-möten att fler attribut skickas tillbaka i SAML-svar. I avsnittet Användaranspråk i dialogrutan Användarattribut utför du följande steg för att lägga till SAML-tokenattributet enligt det som visas i tabellen nedan: 
 
-    | Name | Källattribut|
+    | Namn | Källattribut|
     | ---------------|  --------- |
     |   förnamn    | user.givenname |
     |   efternamn    | user.surname |
@@ -132,11 +132,11 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare**och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
     1. I **Namn**-fältet skriver du `B.Simon`.  
-    1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
+    1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
     1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
     1. Klicka på **Skapa**.
 
@@ -144,13 +144,13 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Cisco WebEx-möten.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **Cisco WebEx-möten**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
     ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-1. Välj **Lägg till användare**och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 
     ![Länken Lägg till användare](common/add-assign-user.png)
 
@@ -163,7 +163,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 1. Gå till `https://<customername>.webex.com/admin` URL med autentiseringsuppgifterna för administration.
 
 2. Gå till **vanliga plats inställningar** och navigera till **SSO-konfiguration**.
- 
+
     ![Skärm bild som visar Cisco WebEx-administration med gemensamma plats inställningar och S O-konfiguration valt.](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
 
 3. På sidan **Administration av WebEx** utför du följande steg:
@@ -200,9 +200,9 @@ När du klickar på panelen Cisco WebEx-möten på åtkomst panelen, bör du log
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](./tutorial-list.md)
+- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](./tutorial-list.md)
 
-- [Vad är program åtkomst och enkel inloggning med Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+- [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 - [Vad är villkorlig åtkomst i Azure Active Directory?](../conditional-access/overview.md)
 

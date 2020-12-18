@@ -1,19 +1,19 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 05/16/2018
+ms.date: 12/17/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8c82e3d2c978a7980d02bc686346acdcb21dd591
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b283add6cff1400cc3141f4fba3f0f3939ee34aa
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "66425748"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97665121"
 ---
 |  | **Punkt-till-plats** | **Plats-till-plats** | **ExpressRoute** |
 | --- | --- | --- | --- |
@@ -22,8 +22,8 @@ ms.locfileid: "66425748"
 | **Protokoll som stöds** |Secure Sockets Tunneling Protocol (SSTP), OpenVPN och IPsec |IPsec |Direktanslutning över VLAN, NSP:er VPN-teknologier (MPLS, VPLS,...) |
 | **Routning** |RouteBased (dynamisk) |Vi stöder principbaserad (statisk routning) och ruttbaserad (dynamisk routning VPN) |BGP |
 | **Anslutningsåterhämtning** |aktiv-passiv |aktiv-passiv eller aktiv-aktiv |aktiv-aktiv |
-| **Vanligt användningsfall** |Prototyper, dev/test/testlabb-scenarier för molntjänster och virtuella datorer |Dev/test/testlabb-scenarier och småskaliga produktionsbelastningar för molntjänster och virtuella datorer |Åtkomst till alla Azure-tjänster (validerad lista), Enterprise-klass och verksamhetskritiska arbetsbelastningar, säkerhetskopiering, Big Data, Azure som en DR-plats |
+| **Vanligt användningsfall** |Säker åtkomst till virtuella Azure-nätverk för fjärran vändare |Scenarier för utveckling/testning/labb och små till medel stora produktions arbets belastningar för moln tjänster och virtuella datorer |Åtkomst till alla Azure-tjänster (validerad lista), Enterprise-klass och verksamhetskritiska arbetsbelastningar, säkerhetskopiering, Big Data, Azure som en DR-plats |
 | **Serviceavtal** |[Serviceavtal](https://azure.microsoft.com/support/legal/sla/) |[Serviceavtal](https://azure.microsoft.com/support/legal/sla/) |[Serviceavtal](https://azure.microsoft.com/support/legal/sla/) |
 | **Prissättning** |[Prissättning](https://azure.microsoft.com/pricing/details/vpn-gateway/) |[Prissättning](https://azure.microsoft.com/pricing/details/vpn-gateway/) |[Prissättning](https://azure.microsoft.com/pricing/details/expressroute/) |
-| **Teknisk dokumentation** |[Dokumentation om VPN Gateway](https://azure.microsoft.com/documentation/services/vpn-gateway/) |[Dokumentation om VPN Gateway](https://azure.microsoft.com/documentation/services/vpn-gateway/) |[Dokumentation om ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/) |
+| **Teknisk dokumentation** |[VPN Gateway dokumentation](https://azure.microsoft.com/documentation/services/vpn-gateway/) |[VPN Gateway dokumentation](https://azure.microsoft.com/documentation/services/vpn-gateway/) |[Dokumentation om ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/) |
 | **Vanliga frågor och svar** |[Vanliga frågor och svar om VPN Gateway](../articles/vpn-gateway/vpn-gateway-vpn-faq.md) |[Vanliga frågor och svar om VPN Gateway](../articles/vpn-gateway/vpn-gateway-vpn-faq.md) |[Vanliga frågor och svar för ExpressRoute](../articles/expressroute/expressroute-faqs.md) |

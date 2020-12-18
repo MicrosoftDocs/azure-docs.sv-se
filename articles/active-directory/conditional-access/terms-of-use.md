@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e8731312ee43930e0f2abcf81228c21bebfdb1f
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 399cbef4de91623ada1c38de7c6148d22fde94c7
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653732"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672408"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory användnings villkor
 
@@ -74,11 +74,11 @@ När du har slutfört användnings villkoren använder du följande procedur fö
 1. Logga in på Azure som global administratör, säkerhets administratör eller villkorlig åtkomst administratör.
 1. Gå till **användningsvillkoren** på [https://aka.ms/catou](https://aka.ms/catou).
 
-   ![Villkorlig åtkomst – Användningsvillkor bladet](./media/terms-of-use/tou-blade.png)
+    ![Villkorlig åtkomst – Användningsvillkor bladet](./media/terms-of-use/tou-blade.png)
 
 1. Klicka på **Nya villkor**.
 
-   ![Nytt användnings villkor för att ange dina användnings villkor](./media/terms-of-use/new-tou.png)
+    ![Nytt användnings villkor för att ange dina användnings villkor](./media/terms-of-use/new-tou.png)
 
 1. I rutan **namn** anger du ett namn för de användnings villkor som ska användas i Azure Portal.
 1. I rutan **visnings namn** anger du en rubrik som användarna ser när de loggar in.
@@ -88,7 +88,7 @@ När du har slutfört användnings villkoren använder du följande procedur fö
 1. Om du vill att slutanvändarna ska kunna acceptera dina användnings villkor på varje enhet som de ansluter till, ställer du in **Kräv att användare godkänner varje enhet** till **på**. Användare kan behöva installera ytterligare program om det här alternativet är aktiverat. Mer information finns i [användnings villkoren per enhet](#per-device-terms-of-use).
 1. Om du vill att användnings villkoren ska upphöra att gälla i ett schema anger du **förfallo datum för medgivanden** till **på**. När värdet är på visas två ytterligare schema inställningar.
 
-   ![Inställningar som upphör att gälla anger start datum, frekvens och varaktighet](./media/terms-of-use/expire-consents.png)
+    ![Inställningar som upphör att gälla anger start datum, frekvens och varaktighet](./media/terms-of-use/expire-consents.png)
 
 1. Använd inställningarna för att **börja om från** och med **frekvensen** för att ange schemat för användnings villkor. I följande tabell visas resultatet av ett par exempel inställningar:
 
@@ -115,7 +115,7 @@ När du har slutfört användnings villkoren använder du följande procedur fö
 
 1. Under **villkorlig åtkomst** använder du listan **tillämpa med princip mal len för villkorlig åtkomst** för att välja den mall som ska användas för användnings villkoren.
 
-   ![Listruta för villkorlig åtkomst för att välja en principmall](./media/terms-of-use/conditional-access-templates.png)
+    ![Listruta för villkorlig åtkomst för att välja en principmall](./media/terms-of-use/conditional-access-templates.png)
 
    | Mall | Beskrivning |
    | --- | --- |
@@ -131,7 +131,7 @@ När du har slutfört användnings villkoren använder du följande procedur fö
 
 1. Klicka på **Skapa**.
 
-   Om du har valt en anpassad mall för villkorlig åtkomst visas en ny skärm där du kan skapa en anpassad princip för villkorlig åtkomst.
+    Om du har valt en anpassad mall för villkorlig åtkomst visas en ny skärm där du kan skapa en anpassad princip för villkorlig åtkomst.
 
    ![Nytt fönster för villkorlig åtkomst om du har valt mallen anpassad princip för villkorlig åtkomst](./media/terms-of-use/custom-policy.png)
 
@@ -145,15 +145,15 @@ Bladet för användningsvillkor visar antalet användare som har godkänt och av
 
 1. Logga in på Azure och gå till **Användningsvillkoren** på [https://aka.ms/catou](https://aka.ms/catou).
 
-   ![Användningsvillkor bladet visar antalet användare som har accepterat och avböjt](./media/terms-of-use/view-tou.png)
+    ![Användningsvillkor bladet visar antalet användare som har accepterat och avböjt](./media/terms-of-use/view-tou.png)
 
 1. För användnings villkor klickar du på numren under **accepterad** eller **nekad** för att visa det aktuella läget för användare.
 
-   ![Rutan Användningsvillkor-fönster visar en lista över användare som har accepterat](./media/terms-of-use/accepted-tou.png)
+    ![Rutan Användningsvillkor-fönster visar en lista över användare som har accepterat](./media/terms-of-use/accepted-tou.png)
 
 1. Om du vill visa historiken för en enskild användare klickar du på ellipsen (**...**) och sedan på **Visa historik**.
 
-   ![Visa snabb meny för historik för en användare](./media/terms-of-use/view-history-menu.png)
+    ![Visa snabb meny för historik för en användare](./media/terms-of-use/view-history-menu.png)
 
    I fönstret Visa historik visas en historik över alla godkännanden, avböjer och förfallo datum.
 
@@ -169,11 +169,11 @@ Använd följande procedur för att komma igång med Azure AD audit-loggar:
 1. Välj ett användnings villkor.
 1. Klicka på **Visa granskningsloggar**.
 
-   ![Användningsvillkor blad med alternativet Visa gransknings loggar markerat](./media/terms-of-use/audit-tou.png)
+    ![Användningsvillkor blad med alternativet Visa gransknings loggar markerat](./media/terms-of-use/audit-tou.png)
 
 1. På skärmen för gransknings loggar i Azure AD kan du filtrera informationen med hjälp av de angivna listorna för att fokusera på specifika Gransknings logg information.
 
-   Du kan också klicka på **Hämta** för att ladda ned informationen i en CSV-fil och använda den lokalt.
+    Du kan också klicka på **Hämta** för att ladda ned informationen i en CSV-fil och använda den lokalt.
 
    ![Skärm listans datum, mål princip, initierad av och aktivitet i gransknings loggar i Azure AD](./media/terms-of-use/audit-logs-tou.png)
 
@@ -204,11 +204,11 @@ Användarna kan granska och se användnings villkoren som de har accepterat med 
 1. Logga in på [https://myapps.microsoft.com](https://myapps.microsoft.com).
 1. Klicka på ditt namn i det övre högra hörnet och välj **profil**.
 
-   ![Webbplatsen för min Apps med användarens fönster öppen](./media/terms-of-use/tou14.png)
+    ![Webbplatsen för min Apps med användarens fönster öppen](./media/terms-of-use/tou14.png)
 
 1. Klicka på **Granska användningsvillkoren** på din profilsida.
 
-   ![Profil sida för en användare som visar länken gransknings villkor för användning](./media/terms-of-use/tou13a.png)
+    ![Profil sida för en användare som visar länken gransknings villkor för användning](./media/terms-of-use/tou13a.png)
 
 1. Därifrån kan du granska användningsvillkoren som du har accepterat.
 
@@ -220,11 +220,11 @@ Du kan redigera viss information om användnings villkoren, men du kan inte änd
 1. Välj de användnings villkor som du vill redigera.
 1. Klicka på **Redigera villkor**.
 1. I rutan Redigera användnings villkor kan du ändra följande:
-     - **Namn** – det här är det interna namnet på ToU som inte delas med slutanvändare
-     - **Visnings namn** – det här är det namn som slutanvändarna kan se när de visar ToU
-     - **Kräv att användarna expanderar** användnings villkoren – om du anger detta till **på** , tvingas slutanvändaren att expandera användnings villkoren innan det accepteras.
-     - Förhandsgranskningsvyn Du kan **Uppdatera ett befintligt dokument med användnings villkor**
-     - Du kan lägga till ett språk i en befintlig ToU
+    - **Namn** – det här är det interna namnet på ToU som inte delas med slutanvändare
+    - **Visnings namn** – det här är det namn som slutanvändarna kan se när de visar ToU
+    - **Kräv att användarna expanderar** användnings villkoren – om du anger detta till **på** , tvingas slutanvändaren att expandera användnings villkoren innan det accepteras.
+    - Förhandsgranskningsvyn Du kan **Uppdatera ett befintligt dokument med användnings villkor**
+    - Du kan lägga till ett språk i en befintlig ToU
 
    Om det finns andra inställningar som du vill ändra, t. ex. PDF-dokument, kräver att användare godkänner varje enhet, upphör att gälla, varaktighet före godkännande eller princip för villkorlig åtkomst måste du skapa en ny användnings villkor.
 
@@ -279,7 +279,7 @@ Följande procedur beskriver hur du lägger till ett språk för användnings vi
 1. Klicka på **Lägg till språk** längst ned på sidan.
 1. I fönstret Lägg till användnings villkors språk laddar du upp din lokaliserade PDF och väljer språket.
 
-   ![Användningsvillkor markerat och visar fliken språk i informations fönstret](./media/terms-of-use/select-language.png)
+    ![Användningsvillkor markerat och visar fliken språk i informations fönstret](./media/terms-of-use/select-language.png)
 
 1. Klicka på **Lägg till språk**.
 1. Klicka på **Spara**
@@ -340,7 +340,7 @@ Du kan ta bort gamla användnings villkor med hjälp av följande procedur.
 1. Klicka på **Ta bort villkor**.
 1. På meddelandet som visas som frågar om du vill fortsätta klickar du **Ja**.
 
-   ![Meddelande som ber om bekräftelse för att ta bort användnings villkor](./media/terms-of-use/delete-tou.png)
+    ![Meddelande som ber om bekräftelse för att ta bort användnings villkor](./media/terms-of-use/delete-tou.png)
 
    Du bör inte längre se dina användnings villkor.
 

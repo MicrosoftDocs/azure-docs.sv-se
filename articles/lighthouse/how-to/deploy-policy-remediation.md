@@ -1,14 +1,14 @@
 ---
 title: Distribuera en princip som kan åtgärdas
 description: Om du vill distribuera principer som använder en reparations uppgift via Azure Lighthouse måste du skapa en hanterad identitet i kund klienten.
-ms.date: 08/12/2020
+ms.date: 12/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 998576d06d470c525a551463861f7a25d4ab9d8f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: eb473fe2f589cf719e3944c887d46e75e9e7fdbf
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010103"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670499"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Distribuera en princip som kan åtgärdas inom en delegerad prenumeration
 
@@ -41,7 +41,7 @@ Exemplet nedan visar en **principalId** som kommer att ha rollen administratör 
 
 ## <a name="deploy-policies-that-can-be-remediated"></a>Distribuera principer som kan åtgärdas
 
-När du har skapat användaren med nödvändiga behörigheter enligt beskrivningen ovan, kan användaren distribuera principer som använder reparations aktiviteter inom kund klienten.
+När du har skapat användaren med nödvändiga behörigheter enligt beskrivningen ovan, kan den användaren distribuera principer som använder reparations uppgifter i delegerade kund prenumerationer.
 
 Anta till exempel att du vill aktivera diagnostik på Azure Key Vault resurser i kund klienten, som du ser i det här [exemplet](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring). En användare i hanterings klienten med rätt behörigheter (enligt beskrivningen ovan) distribuerar en Azure Resource Manager- [mall](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) för att aktivera det här scenariot.
 

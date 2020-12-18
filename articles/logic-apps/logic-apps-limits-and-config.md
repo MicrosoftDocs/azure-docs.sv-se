@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 12/07/2020
-ms.openlocfilehash: ee314708f0d564bf1af639a3d864ea19472425cf
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 16002d7acf97832f743410a203e2f76e99646c0c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937635"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673366"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Information om begränsningar och konfiguration för Azure Logic Apps
 
@@ -23,7 +23,7 @@ I den här artikeln beskrivs begränsningar och konfigurations information för 
 
 Här är gränserna för en enda Logic app-definition:
 
-| Name | Gräns | Kommentarer |
+| Namn | Gräns | Obs! |
 | ---- | ----- | ----- |
 | Åtgärder per arbetsflöde | 500 | Om du vill utöka den här gränsen kan du lägga till kapslade arbets flöden efter behov. |
 | Tillåtet kapslings djup för åtgärder | 8 | Om du vill utöka den här gränsen kan du lägga till kapslade arbets flöden efter behov. |
@@ -47,7 +47,7 @@ Här är gränserna för en enda Logic app-definition:
 
 Här följer gränserna för en enda Logic app-körning:
 
-| Name | Gräns för flera innehavare | Miljö gräns för integrerings tjänst | Kommentarer |
+| Namn | Gräns för flera innehavare | Miljö gräns för integrerings tjänst | Obs! |
 |------|--------------------|---------------------------------------|-------|
 | Körningens varaktighet | 90 dagar | 366 dagar | Körningens varaktighet beräknas med hjälp av start tiden för körning och den gräns som anges i arbets flödes inställningen. [**Kör historik kvarhållning i dagar**](#change-duration) vid den Start tiden. <p><p>Om du vill ändra standard gränsen, se [ändra körnings tid och historik kvarhållning i lagring](#change-duration). |
 | Kvarhållning av körnings historik i lagring | 90 dagar | 366 dagar | Om körnings tiden överskrider den aktuella gränsen för körnings historik, tas körningen bort från körnings historiken i lagringen. Oavsett om körningen har slutförts eller om tids gränsen överskrids beräknas alltid körnings historiken med hjälp av körningens start tid och den aktuella gränsen som anges i arbets flödes inställningen, [**körning av historik i dagar**](#change-retention). Oavsett föregående gräns används alltid den aktuella gränsen för att beräkna kvarhållning. <p><p>Om du vill ändra standard gränsen och mer information, se [ändra varaktighet och körnings historik i lagring](#change-retention). Om du vill öka Max gränsen [kontaktar du Logic Appss teamet](mailto://logicappsemail@microsoft.com) för att få hjälp med dina krav. |
@@ -112,7 +112,7 @@ Här följer gränserna för en enda Logic app-körning:
 
 ### <a name="loops"></a>Loopar
 
-| Name | Gräns | Kommentarer |
+| Namn | Gräns | Obs! |
 | ---- | ----- | ----- |
 | Förgrunds mat ris objekt | 100 000 | Den här gränsen beskriver det högsta antalet mat ris objekt som en "for each"-loop kan bearbeta. <p><p>Du kan använda [åtgärden fråga](logic-apps-perform-data-operations.md#filter-array-action)för att filtrera större matriser. |
 | Samtidighets samtidighet | Med samtidigering: 20 <p><p>Med samtidighet på: <p><p>-Standard: 20 <br>-Min: 1 <br>– Max: 50 | Den här gränsen är det högsta antalet upprepningar av slingor som kan köras samtidigt eller parallellt. <p><p>Om du vill ändra den här gränsen läser du [ändra "för varje" samtidighets gräns](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) eller [Kör "för varje" slingor i följd](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). |
@@ -122,7 +122,7 @@ Här följer gränserna för en enda Logic app-körning:
 
 ### <a name="concurrency-and-debatching"></a>Samtidighet och debatchering
 
-| Name | Gräns | Kommentarer |
+| Namn | Gräns | Obs! |
 | ---- | ----- | ----- |
 | Utlös samtidighet | Med concurrency: obegränsat <p><p>Med samtidigitet på, som du inte kan ångra när du har aktiverat: <p><p>-Standard: 25 <br>-Min: 1 <br>– Max: 50 | Den här gränsen är det högsta antalet Logic App-instanser som kan köras samtidigt eller parallellt. <p><p>**Obs!** när samtidighet har Aktiver ATS minskas SplitOn-gränsen till 100 objekt för [debatchering av matriser](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). <p><p>Om du vill ändra den här gränsen, se [ändra utlösarens samtidighets gräns](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) eller [Utlös instansen i tur och ordning](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
 | Maximalt antal väntande körningar | Med samtidigering: <p><p>-Min: 1 <br>– Max: 50 <p><p>Med samtidighet på: <p><p>-Min: 10 plus antalet samtidiga körningar (Utlös samtidighet) <br>– Max: 100 | Den här gränsen är det högsta antalet Logic App-instanser som kan vänta på att köras när din Logic app redan kör maximalt antal samtidiga instanser. <p><p>Om du vill ändra den här gränsen, se [begränsningen för ändrings väntande körning](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). |
@@ -137,7 +137,7 @@ Här är gränserna för en enda Logic app-definition:
 
 ### <a name="multi-tenant-logic-apps-service"></a>Logic Apps tjänst för flera innehavare
 
-| Name | Gräns | Kommentarer |
+| Namn | Gräns | Obs! |
 | ---- | ----- | ----- |
 | Åtgärd: körningar per 5 minuter | 100 000 är standard gränsen, men 300 000 är max gränsen. | För att öka standard gränsen till maximalt för din Logic app, se [köra i högt data flödes läge](#run-high-throughput-mode), som finns i för hands version. Eller så kan du [distribuera arbets belastningen i mer än en Logic app](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) vid behov. |
 | Åtgärd: utgående utgående samtal | ~ 2 500 | Du kan minska antalet samtidiga förfrågningar eller minska varaktigheten om det behövs. |
@@ -195,7 +195,7 @@ Mer information om din resurs definition för Logic app finns i [Översikt: Auto
 
 Här är gränserna för data flödet för [Premium ISE-SKU: n](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level):
 
-| Name | Gräns | Kommentarer |
+| Namn | Gräns | Obs! |
 |------|-------|-------|
 | Bas enhets körnings gräns | Systemet begränsas när infrastruktur kapaciteten når 80% | Innehåller ~ 4 000 åtgärds körningar per minut, vilket är ~ 160 000 000 åtgärds körningar per månad | |
 | Skalnings enhetens körnings gräns | Systemet begränsas när infrastruktur kapaciteten når 80% | Varje skalnings enhet kan ge ~ 2 000 ytterligare åtgärds körningar per minut, vilket är ~ 80 000 000 fler åtgärds körningar per månad | |
@@ -225,7 +225,7 @@ Här är gränserna för ett enskilt inkommande eller utgående samtal:
 
 Vissa kopplings åtgärder gör asynkrona anrop eller lyssnar efter webhook-begäranden, så tids gränsen för dessa åtgärder kan vara längre än dessa gränser. Mer information finns i teknisk information för den aktuella anslutningen och även för [arbets flödes utlösare och åtgärder](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action).
 
-| Name | Logic Apps (flera innehavare) | Logic Apps (för hands version) | Integrerings tjänst miljö | Kommentarer |
+| Namn | Logic Apps (flera innehavare) | Logic Apps (för hands version) | Integrerings tjänst miljö | Obs! |
 |------|---------------------------|----------------------|---------------------------------|-------|
 | Utgående begäran | 120 sekunder <br>(2 minuter) | 230 sekunder <br>(3,9 minuter) | 240 sekunder <br>(4 minuter) | Exempel på utgående begär Anden är anrop gjorda av HTTP-utlösaren eller åtgärden. Mer information om för hands versionen finns Azure Logic Apps för [hands](logic-apps-overview-preview.md)version. <p><p>**Tips**: Använd ett [asynkront avsöknings mönster](../logic-apps/logic-apps-create-api-app.md#async-pattern) eller en [until-slinga](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)för längre drift åtgärder. För att undvika tids gränser när du anropar en annan Logic app som har en [anropad slut punkt](logic-apps-http-endpoint.md)kan du använda den inbyggda Azure Logic Apps åtgärden i stället, som du hittar i anslutnings väljaren under **inbyggd**. |
 | Inkommande begäran | 120 sekunder <br>(2 minuter) | 230 sekunder <br>(3,9 minuter) | 240 sekunder <br>(4 minuter) | Exempel på inkommande förfrågningar inkluderar anrop som tagits emot av utlösaren för begäran, HTTP-webhook-utlösare och HTTP webhook-åtgärd. Mer information om för hands versionen finns Azure Logic Apps för [hands](logic-apps-overview-preview.md)version. <p><p>**Obs!** för att den ursprungliga anroparen ska få svaret måste alla steg i svaret slutföras inom gränsen, om du inte anropar en annan Logic app som ett kapslat arbets flöde. Mer information finns i [anropa, Utlös ande eller kapsla Logic Apps](../logic-apps/logic-apps-http-endpoint.md). |
@@ -235,7 +235,7 @@ Vissa kopplings åtgärder gör asynkrona anrop eller lyssnar efter webhook-beg�
 
 #### <a name="message-size"></a>Meddelandestorlek
 
-| Name | Gräns för flera innehavare | Miljö gräns för integrerings tjänst | Kommentarer |
+| Namn | Gräns för flera innehavare | Miljö gräns för integrerings tjänst | Obs! |
 |------|--------------------|---------------------------------------|-------|
 | Meddelandestorlek | 100 MB | 200 MB | För att undvika den här gränsen, se [hantera stora meddelanden med segment](../logic-apps/logic-apps-handle-large-messages.md). Vissa anslutningar och API: er kanske inte stöder segment koppling eller till och med standard gränsen. <p><p>– Kopplingar som AS2, X12 och EDIFACT har egna [gränser för B2B-meddelanden](#b2b-protocol-limits). <br>– ISE-kopplingar använder ISE-gränsen, inte deras gränser som inte är ISE-anslutningsprogrammet. |
 | Meddelande storlek med segment | 1 GB | 5 GB | Den här gränsen gäller för åtgärder som antingen har inbyggt stöd för segmentering eller som låter dig aktivera segment i körnings konfigurationen. <p><p>Om du använder en ISE stöder Logic Apps motor den här gränsen, men kopplingarna har sina egna segment gränser upp till motor gränsen, till exempel, se [Azure-Blob Storage Connectors API-referens](/connectors/azureblob/). Mer information om segment finns i [hantera stora meddelanden med segment](../logic-apps/logic-apps-handle-large-messages.md). |
@@ -243,7 +243,7 @@ Vissa kopplings åtgärder gör asynkrona anrop eller lyssnar efter webhook-beg�
 
 #### <a name="character-limits"></a>Character-gränser
 
-| Name | Kommentarer |
+| Namn | Obs! |
 |------|-------|
 | Gräns för uttrycksutvärdering | 131 072 tecken | , `@concat()` `@base64()` , `@string()` Uttryck får inte vara längre än den här gränsen. |
 | Tecken gräns för begär ande URL | 16 384 tecken |
@@ -253,7 +253,7 @@ Vissa kopplings åtgärder gör asynkrona anrop eller lyssnar efter webhook-beg�
 
 #### <a name="retry-policy"></a>Återförsöksprincip
 
-| Name | Gräns | Kommentarer |
+| Namn | Gräns | Obs! |
 | ---- | ----- | ----- |
 | Antal återförsök | 90 | Standardvärdet är 4. Om du vill ändra standardvärdet använder du [princip parametern för att försöka igen](../logic-apps/logic-apps-workflow-actions-triggers.md). |
 | Maximal tid innan nytt försök | 1 dag | Om du vill ändra standardvärdet använder du [princip parametern för att försöka igen](../logic-apps/logic-apps-workflow-actions-triggers.md). |
@@ -266,7 +266,7 @@ Vissa kopplings åtgärder gör asynkrona anrop eller lyssnar efter webhook-beg�
 
 Här följer gränserna för en Logic app som börjar med en begär ande utlösare och aktiverar [Azure Active Directory öppna autentisering](../active-directory/develop/index.yml) (Azure AD OAuth) för att auktorisera inkommande anrop till begär ande utlösare:
 
-| Name | Gräns | Kommentarer |
+| Namn | Gräns | Obs! |
 | ---- | ----- | ----- |
 | Auktoriseringsprinciper för Azure AD | 5 | |
 | Anspråk per auktoriseringsprincip | 10 | |
@@ -279,7 +279,7 @@ Här följer gränserna för en Logic app som börjar med en begär ande utlösa
 
 Här är gränserna för anpassade anslutningar som du kan skapa från webb-API: er.
 
-| Name | Gräns för flera innehavare | Miljö gräns för integrerings tjänst | Kommentarer |
+| Namn | Gräns för flera innehavare | Miljö gräns för integrerings tjänst | Obs! |
 |------|--------------------|---------------------------------------|-------|
 | Antal anpassade anslutningar | 1 000 per Azure-prenumeration | 1 000 per Azure-prenumeration ||
 | Antal begär Anden per minut för en anpassad anslutning | 500 förfrågningar per minut per anslutning | 2 000 förfrågningar per minut per *anpassad anslutning* ||
@@ -289,7 +289,7 @@ Här är gränserna för anpassade anslutningar som du kan skapa från webb-API:
 
 ## <a name="managed-identities"></a>Hanterade identiteter
 
-| Name | Gräns |
+| Namn | Gräns |
 |------|-------|
 | Hanterade identiteter per Logic app | Antingen en tilldelad identitet eller en användardefinierad identitet |
 | Antal Logic Apps som har en hanterad identitet i en Azure-prenumeration per region | 1 000 |
@@ -305,12 +305,12 @@ Varje Azure-prenumeration har följande gränser för integrations kontot:
 
 * 1 000 sammanlagt integrerings konton, inklusive integrations konton i alla [integrerings tjänst miljöer (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) i både [Developer-och Premium-SKU: er](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level).
 
-* Varje ISE, vare sig [utvecklare eller Premium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level), är begränsat till ett totalt antal integrations konton, men [du kan höja gränsen för ytterligare en kostnad](logic-apps-pricing.md#fixed-pricing):
+* Varje ISE, vare sig [utvecklare eller Premium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level), kan använda ett enda integrations konto utan extra kostnad, även om den inkluderade konto typen varierar av ISE SKU. Du kan skapa fler integrations konton för din ISE upp till den totala gränsen för [ytterligare kostnader](logic-apps-pricing.md#fixed-pricing):
 
   | ISE SKU | Gränser för integrationskonto |
   |---------|----------------------------|
-  | **Premium** | 20 totalt – [standard](../logic-apps/logic-apps-pricing.md#integration-accounts) konton, inklusive ett standard konto kostnads fritt. Du kan ha [fler integrations konton för ytterligare kostnader](logic-apps-pricing.md#fixed-pricing). Inga kostnads fria eller grundläggande konton är tillåtna. |
-  | **Utvecklare** | 20 totalt – [kostnads fritt](../logic-apps/logic-apps-pricing.md#integration-accounts) (begränsat till 1 konto) och [standard](../logic-apps/logic-apps-pricing.md#integration-accounts) kombinations lager eller alla standard konton. Du kan ha [fler integrations konton för ytterligare kostnader](logic-apps-pricing.md#fixed-pricing). Inga grundläggande konton är tillåtna. Använd [Developer-SKU: n](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) för att experimentera, utveckla och testa, men inte för produktions-eller prestanda testning. |
+  | **Premium** | 20 totala konton, inklusive ett standard konto utan extra kostnad. Med den här SKU: n kan du bara ha [standard](../logic-apps/logic-apps-pricing.md#integration-accounts) konton. Inga kostnads fria eller grundläggande konton är tillåtna. |
+  | **Utvecklare** | 20 totala konton, inklusive ett [kostnads fritt](../logic-apps/logic-apps-pricing.md#integration-accounts) konto (begränsat till 1). Med den här SKU: n kan du antingen kombinera: <p>– Ett kostnads fritt konto och upp till 19 [standard](../logic-apps/logic-apps-pricing.md#integration-accounts) konton. <br>– Inget kostnads fritt konto och upp till 20 standard konton. <p>Inga grundläggande eller ytterligare kostnads fria konton är tillåtna. <p><p>**Viktigt**: Använd [SKU: n för utvecklare](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) för experimentering, utveckling och testning, men inte för produktion eller prestanda testning. |
   |||
 
 Information om hur priser och fakturering fungerar för ISEs finns i [pris modellen Logic Apps](../logic-apps/logic-apps-pricing.md#fixed-pricing). Pris nivåer finns i [Logic Apps prissättning](https://azure.microsoft.com/pricing/details/logic-apps/).
@@ -319,8 +319,7 @@ Information om hur priser och fakturering fungerar för ISEs finns i [pris model
 
 ### <a name="artifact-limits-per-integration-account"></a>Artefakt gränser per integrations konto
 
-Här följer gränserna för antalet artefakter för varje integrations konto nivå.
-Pris nivåer finns i [Logic Apps prissättning](https://azure.microsoft.com/pricing/details/logic-apps/). Information om hur priser och fakturering fungerar för integrations konton finns i [Logic Apps prissättnings modell](../logic-apps/logic-apps-pricing.md#integration-accounts).
+Här följer gränserna för antalet artefakter för varje integrations konto nivå. Pris nivåer finns i [Logic Apps prissättning](https://azure.microsoft.com/pricing/details/logic-apps/). Information om hur priser och fakturering fungerar för integrations konton finns i [Logic Apps prissättnings modell](../logic-apps/logic-apps-pricing.md#integration-accounts).
 
 > [!NOTE]
 > Använd endast den kostnads fria nivån för exempel scenarier, inte produktions scenarier. Den här nivån begränsar data flödet och användningen och har inget service nivå avtal (SLA).
@@ -340,7 +339,7 @@ Pris nivåer finns i [Logic Apps prissättning](https://azure.microsoft.com/pric
 
 ### <a name="artifact-capacity-limits"></a>Artefakt kapacitets gränser
 
-| Artefakt | Gräns | Kommentarer |
+| Artefakt | Gräns | Obs! |
 | -------- | ----- | ----- |
 | Sammansättning | 8 MB | Om du vill ladda upp filer som är större än 2 MB använder du ett [Azure Storage-konto och en BLOB-behållare](../logic-apps/logic-apps-enterprise-integration-schemas.md). |
 | Mappa (XSLT-fil) | 8 MB | Om du vill ladda upp filer som är större än 2 MB använder du [Azure Logic Apps REST API-Maps](/rest/api/logic/maps/createorupdate). <p><p>**Obs!** den mängd data eller poster som en karta kan bearbeta, baseras på meddelandets storlek och tids gräns gränser för åtgärder i Azure Logic Apps. Om du till exempel använder en HTTP-åtgärd, baserat på [http-meddelandets storlek och tids gränser](#http-limits), kan en karta bearbeta data upp till storleks gränsen för HTTP-meddelanden om åtgärden slutförs inom tids gränsen för http-timeout. |
@@ -351,7 +350,7 @@ Pris nivåer finns i [Logic Apps prissättning](https://azure.microsoft.com/pric
 
 ### <a name="throughput-limits"></a>Dataflödesbegränsningar
 
-| Runtime-slutpunkt | Kostnadsfri | Grundläggande | Standard | Kommentarer |
+| Runtime-slutpunkt | Kostnadsfri | Grundläggande | Standard | Obs! |
 |------------------|------|-------|----------|-------|
 | Läs anrop per 5 minuter | 3 000 | 30 000 | 60 000 | Den här gränsen gäller för anrop som hämtar rå data och utdata från en Logic Apps körnings historik. Du kan distribuera arbets belastningen i mer än ett konto vid behov. |
 | Anropa anrop per 5 minuter | 3 000 | 30 000 | 45 000 | Du kan distribuera arbets belastningen i mer än ett konto vid behov. |
@@ -365,7 +364,7 @@ Pris nivåer finns i [Logic Apps prissättning](https://azure.microsoft.com/pric
 
 Här är de meddelande storleks gränser som gäller för B2B-protokoll:
 
-| Name | Gräns för flera innehavare | Miljö gräns för integrerings tjänst | Kommentarer |
+| Namn | Gräns för flera innehavare | Miljö gräns för integrerings tjänst | Obs! |
 |------|--------------------|---------------------------------------|-------|
 | AS2 | v2 – 100 MB<br>v1-25 MB | v2 – 200 MB <br>v1-25 MB | Gäller för avkoda och koda |
 | X12 | 50 MB | 50 MB | Gäller för avkoda och koda |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 1e4a0199e8d9a04b07b52f90d9c1823f69e07c7d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 38b2ff6909dae15ff0f836316d5d12140ecc331a
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455997"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672977"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>Självstudie: Azure Active Directory integrering med Clarizen
 
@@ -30,7 +30,7 @@ Genom att integrera Clarizen med Azure AD får du följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill konfigurera Azure AD-integrering med Clarizen, behöver du följande:
 
@@ -63,7 +63,7 @@ För att konfigurera integrering av Clarizen i Azure AD behöver du lägga till 
 
 4. I sökrutan skriver du **Clarizen**, väljer **Clarizen** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![Clarizen i resultatlistan](common/search-new-app.png)
+    ![Clarizen i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -130,7 +130,7 @@ Utför följande steg för att konfigurera enkel inloggning med Azure AD för Cl
 
     ![Klicka på Inställningar under ditt användar namn](./media/clarizen-tutorial/tutorial_clarizen_001.png "Inställningar")
 
-1. Klicka på fliken **globala inställningar** . Klicka sedan på **Redigera**bredvid **federerad autentisering**.
+1. Klicka på fliken **globala inställningar** . Klicka sedan på **Redigera** bredvid **federerad autentisering**.
 
     ![Fliken globala inställningar](./media/clarizen-tutorial/tutorial_clarizen_002.png "Globala inställningar")
 
@@ -167,7 +167,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 

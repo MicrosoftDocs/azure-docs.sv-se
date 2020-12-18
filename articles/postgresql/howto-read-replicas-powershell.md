@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8bacb7a434cfa04dbdfdaf39d9fd3a0baab5f11a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b0a5547928bd7d19343c50e40ab9fcb2c335e893
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489820"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674539"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-postgresql-using-powershell"></a>Skapa och hantera Läs repliker i Azure Database for PostgreSQL med PowerShell
 
@@ -22,7 +22,7 @@ I den här artikeln får du lära dig hur du skapar och hanterar Läs repliker i
 
 Du kan skapa och hantera Läs repliker med PowerShell.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att slutföra den här instruktions guiden behöver du:
 
@@ -60,7 +60,7 @@ Om du vill skapa en skrivskyddad replik av en kors region använder du parameter
 
 ```azurepowershell-interactive
 Get-AzPostgreSqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
-  New-AzMariaDServerReplica -Name mydemoreplicaserver -ResourceGroupName myresourcegroup -Location westus
+  New-AzPostgreSQLServerReplica -Name mydemoreplicaserver -ResourceGroupName myresourcegroup -Location westus
 ```
 
 Om du vill veta mer om vilka regioner du kan skapa en replik i går du till [artikeln Läs replik begrepp](concepts-read-replicas.md).
@@ -75,15 +75,23 @@ Som standard skapas Läs repliker med samma server konfiguration som primär, s�
 Om du vill visa alla repliker för en specifik primär server kör du följande kommando:
 
 ```azurepowershell-interactive
-Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
+Get-AzPostgreSQLReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 ```
 
-`Get-AzMariaDReplica`Kommandot kräver följande parametrar:
+`Get-AzPostgreSQLReplica`Kommandot kräver följande parametrar:
 
 | Inställning | Exempelvärde | Beskrivning  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Resurs gruppen där replik servern ska skapas.  |
 | ServerName | mydemoserver | Namnet eller ID: t för den primära servern. |
+
+### <a name="stop-a-replica-server"></a>Stoppa en replik Server
+
+Om du stoppar en Läs replik Server befordrar Läs repliken till en oberoende Server. Du kan göra det genom att köra `Update-AzPostgreSqlServer` cmdleten och genom att ange värdet ReplicationRole till `None` .
+
+```azurepowershell-interactive
+Update-AzPostgreSqlServer -Name mydemoreplicaserver -ResourceGroupName myresourcegroup -ReplicationRole None
+```
 
 ### <a name="delete-a-replica-server"></a>Ta bort en replik Server
 

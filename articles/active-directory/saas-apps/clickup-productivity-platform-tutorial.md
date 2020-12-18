@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 99ee85c569340d8f1d3cff27112436465238c05f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 753256adddf8b28518bac45011d582bc7a079629
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455892"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670522"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>Självstudie: Azure Active Directory integration med ClickUp Productivity Platform
 
@@ -63,7 +63,7 @@ För att konfigurera integreringen av ClickUp Productivity Platform i Azure AD b
 
 4. I sökrutan skriver du **ClickUp Productivity Platform**, väljer **ClickUp Productivity Platform** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![ClickUp Productivity Platform i resultatlistan](common/search-new-app.png)
+    ![ClickUp Productivity Platform i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -116,7 +116,7 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Click
 
 1. I ett annat webbläsarfönster loggar du in på din ClickUp Productivity Platform-klientorganisation som administratör.
 
-2. Klicka på **användar profilen**och välj sedan **Inställningar**.
+2. Klicka på **användar profilen** och välj sedan **Inställningar**.
 
     ![Skärm bild som visar ClickUp produktivitets klient med ikonen Inställningar vald.](./media/clickup-productivity-platform-tutorial/configure0.png)
 
@@ -131,7 +131,7 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Click
     ![Skärm bild som visar sidan Konfigurera Microsoft enkel inloggning där du kan kopiera entiteten I D och spara Azure Federation Metadata U R L.](./media/clickup-productivity-platform-tutorial/configure3.png)
 
     a. Klicka på **Kopiera** för att kopiera värdet för entitets-ID och klistra in det i textrutan **Identifierare (entitets-ID)** i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
-    
+
     b. I textrutan **Azure Federation Metadata URL** (URL för Azure-federationsmetadata) klistrar du in det värde för URL för appfederationsmetadata som du har kopierat från Azure-portalen och klickar på **Spara**.
 
 5. Slutför installationen genom att klicka på **Authenticate With Microsoft to complete setup** (Autentisera med Microsoft för att slutföra installationen) och autentisera med Microsoft-kontot.
@@ -155,7 +155,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 
@@ -193,8 +193,8 @@ I det här avsnittet gör du det möjligt för Britta Simon att använda enkel i
 
 1. I ett annat webbläsarfönster loggar du in på din ClickUp Productivity Platform-klientorganisation som administratör.
 
-2. Klicka på **användar profilen**och välj sedan **personer**.
-   
+2. Klicka på **användar profilen** och välj sedan **personer**.
+
     ![Skärm bild som visar ClickUp Productivity-klienten.](./media/clickup-productivity-platform-tutorial/configure0.png)
 
     ![Skärm bild som visar länken personer markerade.](./media/clickup-productivity-platform-tutorial/user1.png)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: e6ad11e4d0c0db30d091faec45f3433f544ef622
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 5554ec4521a126a2c2e823b707fe42d9983b5d8e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308999"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671758"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adoddle-csaas-platform"></a>Självstudie: Azure Active Directory integrering med Adoddle cSaas-plattformen
 
@@ -30,7 +30,7 @@ Integreringen av Adoddle cSaas Platform med Azure AD medför följande fördelar
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att konfigurera Azure AD-integrering med Adoddle cSaas Platform behöver du följande:
 
@@ -65,7 +65,7 @@ För att konfigurera integreringen av Adoddle cSaas Platform med Azure AD måste
 
 4. I sökrutan skriver du **Adoddle cSaas Platform**, väljer **Adoddle cSaas Platform** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![Adoddle cSaas Platform i resultatlistan](common/search-new-app.png)
+    ![Adoddle cSaas Platform i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -138,7 +138,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 

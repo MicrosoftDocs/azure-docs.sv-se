@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 6c2d89c20294446da63889e53e807db7919eb2e1
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 48d09a5ef43e267550dd584a9f6356493887d6d7
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455535"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673809"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-communifire"></a>Självstudie: Azure Active Directory integrering med Communifire
 
@@ -30,7 +30,7 @@ Integreringen av Communifire med Azure AD medför följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att konfigurera Azure AD-integrering med Communifire behöver du följande:
 
@@ -65,7 +65,7 @@ För att konfigurera integrering av Communifire i Azure AD behöver du lägga ti
 
 4. I sökrutan skriver du **Communifire**, väljer **Communifire** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![Communifire i resultatlistan](common/search-new-app.png)
+    ![Communifire i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -125,11 +125,11 @@ Utför följande steg för att konfigurera enkel inloggning med Azure AD för Co
     ![Redigera SAML-signeringscertifikat](common/edit-certificate.png)
 
     a. Välj **Signera SAML-svar och försäkran** från **Signeringsalternativ**.
-    
+
     b. Klicka på **Spara**
 
     ![Communifire-signeringsalternativ](./media/communifire-tutorial/tutorial-communifire-signing-option.png)
- 
+
 8. I avsnittet **Konfigurera Communifire** kopierar du lämpliga URL:er enligt dina behov.
 
     ![Kopiera konfigurations-URL:er](common/copy-configuration-urls.png)
@@ -161,7 +161,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 

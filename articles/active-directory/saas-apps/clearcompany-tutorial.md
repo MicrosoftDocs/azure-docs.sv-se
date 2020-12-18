@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 27f9c0e98481b433a1ff3836fed36eb3a8e8d30b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b3c7fafba99caa15fe9e5adbeb765e8788e61bbf
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455960"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673740"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clearcompany"></a>Självstudie: Azure Active Directory integrering med ClearCompany
 
@@ -63,7 +63,7 @@ För att konfigurera integrering av ClearCompany i Azure AD behöver du lägga t
 
 4. I sökrutan skriver du **ClearCompany**, väljer **ClearCompany** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![ClearCompany i resultatlistan](common/search-new-app.png)
+    ![ClearCompany i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -147,7 +147,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 

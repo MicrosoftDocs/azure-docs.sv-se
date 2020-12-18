@@ -4,13 +4,15 @@ description: Fel söknings ögonblicks bilder samlas in automatiskt när undanta
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 10/23/2019
+author: cweining
+ms.author: cweining
 ms.reviewer: cweining
-ms.openlocfilehash: cbbec71ff8ab762ea0da764a7db9459123850271
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5913f5fa8d45e6bf92d6132468e0e3bf7a121c65
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95530241"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673526"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Ögonblicksbilder för felsökning av undantag i .NET-appar
 När ett undantag inträffar kan du automatiskt samla in en fel söknings ögonblicks bild från Live-webbappen. I ögonblicks bilden visas statusen för käll koden och variablerna vid det tillfälle då undantaget uppstod. Snapshot Debugger i [Azure Application Insights](./app-insights-overview.md) övervakar undantags telemetri från din webbapp. Den samlar in ögonblicks bilder i de övergivna undantagen så att du har den information du behöver för att diagnostisera problem i produktionen. Ta med [Snapshot Collector NuGet-paketet](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) i ditt program och konfigurera sedan samlings parametrar i [ApplicationInsights.config](./configuration-with-applicationinsights-config.md). Ögonblicks bilder visas på [undantag](./asp-net-exceptions.md) i Application Insights portalen.
@@ -47,7 +49,7 @@ Om du har aktiverat Snapshot Debugger men inte ser ögonblicks bilder, se vår [
 Prenumerations ägare bör tilldela `Application Insights Snapshot Debugger` rollen till användare som ska inspektera ögonblicks bilder. Den här rollen kan tilldelas enskilda användare eller grupper efter prenumerations ägare för mål Application Insights resurs eller dess resurs grupp eller prenumeration.
 
 1. Navigera till Application Insights resursen i Azure Portal.
-1. Klicka på **Åtkomstkontroll (IAM)** .
+1. Klicka på **Åtkomstkontroll (IAM)**.
 1. Klicka på knappen **+ Lägg till roll tilldelning** .
 1. Välj **Application Insights Snapshot debugger** i list rutan **roller** .
 1. Sök efter och ange ett namn för den användare som ska läggas till.

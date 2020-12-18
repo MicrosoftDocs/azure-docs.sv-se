@@ -12,12 +12,12 @@ ms.date: 12/01/2020
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 069cf348bb6d0432d02a8350bc0847c2b155f90a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0ca2ade1775d7224ce55ee1c51dfdd2ae417151e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498089"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672389"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-distributionsplaner
 Letar du efter slut punkt till slut punkt om hur du distribuerar Azure Active Directory (Azure AD)-funktioner? Distributions planer för Azure AD vägleder dig genom affärs värde, planerings överväganden och operativa procedurer som krävs för att distribuera vanliga funktioner i Azure AD.
@@ -29,7 +29,7 @@ Från någon av plan sidorna använder du webbläsarens utskrifts-till-PDF-funkt
 
 | Funktion | Beskrivning|
 | -| -|
-| [Multifaktorautentisering](../authentication/howto-mfa-getstarted.md)| Azure AD Multi-Factor Authentication (MFA) är Microsofts lösning för verifiering av två steg. Med hjälp av godkända autentiseringsmetoder hjälper Azure AD MFA till att skydda åtkomsten till dina data och program samtidigt som du kan uppfylla behovet av en enkel inloggnings process. |
+| [Multifaktorautentisering](../authentication/howto-mfa-getstarted.md)| Azure AD Multi-Factor Authentication (MFA) är Microsofts lösning för verifiering av två steg. Med hjälp av godkända autentiseringsmetoder hjälper Azure AD MFA till att skydda åtkomsten till dina data och program samtidigt som du kan uppfylla behovet av en enkel inloggnings process. Titta på den här videon om [hur du konfigurerar och framtvingar Multi-Factor Authentication i din klient](https://www.youtube.com/watch?v=qNndxl7gqVM)|
 | [Villkorlig åtkomst](../conditional-access/plan-conditional-access.md)| Med villkorlig åtkomst kan du implementera automatiska åtkomst kontroll beslut för vilka som kan komma åt dina molnappar, baserat på villkor. |
 | [Återställning av lösenord för självbetjäning](../authentication/howto-sspr-deployment.md)| Lösen ords återställning via självbetjäning hjälper dina användare att återställa sina lösen ord utan att administratören behöver göra det, när och var de behöver. |
 | [Lösenordsfri](../authentication/howto-authentication-passwordless-deployment.md) | Implementera lösenordsbaserad autentisering med hjälp av Microsoft Authenticator-appen eller FIDO2 säkerhets nycklar i din organisation |
@@ -49,7 +49,7 @@ Från någon av plan sidorna använder du webbläsarens utskrifts-till-PDF-funkt
 | -| -|
 | [ADFS till hash-synkronisering av lösenord](../hybrid/plan-migrate-adfs-password-hash-sync.md)| Med hash-synkronisering av lösen ord synkroniseras hashar av användar lösen ord från lokala Active Directory till Azure AD, vilket gör att Azure AD kan autentisera användare utan interaktion med den lokala Active Directory |
 | [ADFS till Pass Through Authentication](../hybrid/plan-migrate-adfs-pass-through-authentication.md) (Passeringsautentisering)| Med Azure AD-direktautentisering kan användarna logga in i både lokala och molnbaserade program med samma lösen ord. Den här funktionen ger användarna en bättre upplevelse – ett mindre lösen ord att komma ihåg – och minskar kostnaderna för IT-supportavdelningen eftersom det är mindre troligt att de glömmer att logga in. När användare loggar in med Azure AD verifierar den här funktionen användarnas lösenord direkt mot din lokala Active Directory. |
-| [Azure AD Programproxy](../manage-apps/application-proxy-deployment-plan.md) |I dag vill anställda vara produktiva var som helst, när som helst och från valfri enhet. De behöver åtkomst till SaaS-appar i molnet och i företags program lokalt. Azure AD Application Proxy ger denna robust åtkomst utan kostsamma och komplexa virtuella privata nätverk (VPN) eller demilitariserad zoner (DMZs). |
+| [Azure-AD-programproxy](../manage-apps/application-proxy-deployment-plan.md) |I dag vill anställda vara produktiva var som helst, när som helst och från valfri enhet. De behöver åtkomst till SaaS-appar i molnet och i företags program lokalt. Azure AD Application Proxy ger denna robust åtkomst utan kostsamma och komplexa virtuella privata nätverk (VPN) eller demilitariserad zoner (DMZs). |
 | [Sömlös enkel inloggning](../hybrid/how-to-connect-sso-quick-start.md)| Sömlös enkel inloggning med Azure Active Directory (sömlös SSO med Azure AD) loggar automatiskt in användare när de är på sina företagsenheter som är anslutna till företagsnätverket. Med den här funktionen behöver användarna inte ange sina lösen ord för att logga in på Azure AD och behöver vanligt vis inte ange sina användar namn. Den här funktionen ger auktoriserade användare enkel åtkomst till dina molnbaserade program utan att behöva ytterligare lokala komponenter. |
 
 ## <a name="deploy-user-provisioning"></a>Distribuera användar etablering

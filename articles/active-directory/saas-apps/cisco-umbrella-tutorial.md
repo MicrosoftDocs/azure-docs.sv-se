@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: ec2c0089295cdd269b5bb3bccf0baaef3cb14849
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: dde618b28e004e87edc2783bc44c5e7dd9f0ebba
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456142"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670697"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>Självstudie: Azure Active Directory integrering med Cisco paraply
 
@@ -63,7 +63,7 @@ För att konfigurera integrering av Cisco Umbrella i Azure AD måste du lägga t
 
 4. I sökrutan skriver du **Cisco Umbrella**, väljer **Cisco Umbrella** på resultatpanelen och klickar på **Lägg till** för att lägga till programmet.
 
-     ![Cisco Umbrella i resultatlistan](common/search-new-app.png)
+    ![Cisco Umbrella i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -141,7 +141,7 @@ Konfigurera enkel inloggning med Azure AD med [Programnamn] genom att utföra f�
 
     ![Nästa](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_next.png)
 
-6. I **alternativ A: Ladda upp XML-filen**laddar du upp **XML-** filen med federationsmetadata som du laddade ned från Azure Portal och efter att ha laddat ned metadata, fylls nedanstående värden i automatiskt och sedan på **Nästa**.
+6. I **alternativ A: Ladda upp XML-filen** laddar du upp **XML-** filen med federationsmetadata som du laddade ned från Azure Portal och efter att ha laddat ned metadata, fylls nedanstående värden i automatiskt och sedan på **Nästa**.
 
     ![Choosefile](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_choosefile.png)
 
@@ -168,7 +168,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 
@@ -224,7 +224,7 @@ När det gäller Cisco Umbrella sker etablering manuellt.
     b. I fältet **Efternamn** anger du efternamnet, som **simon**.
 
     c. Välj din roll från **Välj delegerad administratörsroll**.
-  
+
     d. I fältet **e-postadress** anger du EmailAddress för den användare som **brittasimon \@ contoso.com**.
 
     e. I fältet **Lösenord** anger du ditt lösenord.

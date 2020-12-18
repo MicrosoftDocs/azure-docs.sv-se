@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: fd961c611b0f002880f8aee677d759e547433a86
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 4274596f7d53488a2ca5d0e0d3ab3021531907df
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457324"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674121"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-beeline"></a>Självstudie: Azure Active Directory integrering med Beeline
 
@@ -63,7 +63,7 @@ Om du vill konfigurera integreringen av Beeline i Azure AD måste du lägga till
 
 4. I rutan Sök skriver du **Beeline**, väljer **Beeline** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
 
-     ![Beeline i resultat listan](common/search-new-app.png)
+    ![Beeline i resultat listan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -85,7 +85,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med Beeline i Azure AD:
 
-1. Välj **enkel inloggning**på sidan **Beeline** Application Integration i [Azure Portal](https://portal.azure.com/).
+1. Välj **enkel inloggning** på sidan **Beeline** Application Integration i [Azure Portal](https://portal.azure.com/).
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -146,7 +146,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 
@@ -158,7 +158,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Beeline.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Beeline**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Beeline**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

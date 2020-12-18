@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 31b0a4fd8d97371eb4e127a2a473893a0487f220
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 3d90d35e113b5f9757faf59681bb2532b66f2b09
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319079"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673876"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Självstudie: Azure Active Directory integrering med absorberande LMS
 
@@ -30,7 +30,7 @@ Att integrera Absorb LMS med Azure Active Directory ger dig följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill konfigurera Azure Active Directory-integrering med Absorb LMS, behöver du följande objekt:
 
@@ -64,9 +64,9 @@ För att konfigurera integrering av Absorb LMS i Azure Active Directory, behöve
 
     ![Knappen Nytt program](common/add-new-app.png)
 
-4. I sökrutan skriver du **Absorb LMS** och väljer **Absorb LMS** från resultatpanelen och klickar sedan på knappen**Lägg till** för att lägga till programmet.
+4. I sökrutan skriver du **Absorb LMS** och väljer **Absorb LMS** från resultatpanelen och klickar sedan på knappen **Lägg till** för att lägga till programmet.
 
-     ![Absorb LMS i resultatlistan](common/search-new-app.png)
+    ![Absorb LMS i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -196,7 +196,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **Användarnamn** anger du `brittasimon\@yourcompanydomain.extension`  
     Till exempel BrittaSimon@contoso.com
 

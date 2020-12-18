@@ -2,23 +2,20 @@
 title: Visa real tids data (för hands version) med Azure Monitor för behållare | Microsoft Docs
 description: Den här artikeln beskriver real tids visningen av Kubernetes-loggar, händelser och Pod mått utan att använda kubectl i Azure Monitor för behållare.
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 12/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 3bfc9aa0f0238d99d9336abe592fa721459f4220
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 3655ff8e5879aa4113753b5529c1e484fb079401
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346839"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672876"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Så här visar du Kubernetes-loggar, händelser och Pod-mått i real tid
 
 Azure Monitor for containers innehåller funktionen Live data (för hands version), som är en avancerad diagnostisk funktion som gör att du direkt kan komma åt dina AKS (Azure Kubernetes service)-behållar loggar (STDOUT/stderror), händelser och Pod mått. Den visar direkt åtkomst till `kubectl logs -c` , `kubectl get` händelser och `kubectl top pods` . I ett konsol fönster visas loggar, händelser och mått som genereras av behållar motorn för att hjälpa till med fel sökning av problem i real tid.
 
 Den här artikeln innehåller en detaljerad översikt och hjälper dig att förstå hur du använder den här funktionen.
-
->[!NOTE]
->AKS-kluster som är aktiverade som [privata kluster](https://azure.microsoft.com/updates/aks-private-cluster/) stöds inte med den här funktionen. Den här funktionen använder direkt åtkomst till Kubernetes-API: et via en proxyserver från din webbläsare. Om du aktiverar nätverks säkerhet för att blockera Kubernetes-API: et från den här proxyn blockeras trafiken.
 
 Om du vill ha hjälp med att ställa in eller felsöka funktionen Live data (för hands version) läser du vår [installations guide](container-insights-livedata-setup.md). Den här funktionen har direkt åtkomst till Kubernetes-API: et och ytterligare information om Authentication-modellen finns [här](https://kubernetes.io/docs/concepts/overview/kubernetes-api/).
 

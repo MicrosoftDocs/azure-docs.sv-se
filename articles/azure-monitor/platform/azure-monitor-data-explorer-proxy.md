@@ -1,5 +1,5 @@
 ---
-title: Fråga Azure Datautforskaren över resurs med Azure Monitor
+title: Fråga Azure-Datautforskaren mellan resurser med Azure Monitor
 description: Använd Azure Monitor för att utföra kors produkt frågor mellan Azure Datautforskaren, Log Analytics arbets ytor och klassiska Application Insights program i Azure Monitor.
 author: orens
 ms.author: bwren
@@ -7,36 +7,41 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: 5cb2f7b3b07c20e09d61e97412bc35f03b15cb3b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: cb586d15e762f88620fe0c91152af41b3f607d74
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572158"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674437"
 ---
-# <a name="cross-resource-query-azure-data-explorer-using-azure-monitor"></a>Fråga Azure Datautforskaren över resurs med Azure Monitor
-Azure Monitor stöder kors tjänst frågor mellan Azure Datautforskaren, [Application Insights (AI)](/azure/azure-monitor/app/app-insights-overview)och [Log Analytics (La)](/azure/azure-monitor/platform/data-platform-logs). Du kan sedan fråga ditt Azure Datautforskaren-kluster med Log Analytics/Application Insights-verktyg och se det i en kors tjänst fråga. Artikeln visar hur du skapar en kors tjänst fråga.
+# <a name="cross-resource-query-azure-data-explorer-by-using-azure-monitor"></a>Fråga Azure-Datautforskaren mellan resurser med Azure Monitor
+Azure Monitor stöder frågor över olika tjänster mellan Azure Datautforskaren, [Application Insights](/azure/azure-monitor/app/app-insights-overview)och [Log Analytics](/azure/azure-monitor/platform/data-platform-logs). Du kan sedan fråga ditt Azure Datautforskaren-kluster med Log Analytics/Application Insights-verktyg och se det i en kors tjänst fråga. Artikeln visar hur du skapar en kors tjänst fråga.
 
-Azure Monitor kors tjänst flöde: :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-monitor-data-explorer-flow.png" alt-text="Azure Monitor och Azure-datautforskaren kors tjänst flöde.":::
+Följande diagram visar Azure Monitor över tjänst flödet:
+
+:::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-monitor-data-explorer-flow.png" alt-text="Diagram som visar flödet av frågor mellan en användare, Azure Monitor, en proxy och Azure Datautforskaren.":::
 
 >[!NOTE]
->* Azure Monitor kors tjänst frågan är i privat förhands granskning-AllowListing krävs.
->* Kontakta [tjänst teamet](mailto:ADXProxy@microsoft.com) om du har frågor.
-## <a name="cross-query-your-log-analytics-or-application-insights-resources-and-azure-data-explorer"></a>Kors fråga Log Analytics-eller Application Insights resurser och Azure Datautforskaren
+> Azure Monitor Cross-service-fråga finns i privat förhands granskning. Allowlisting krävs. Kontakta [tjänst teamet](mailto:ADXProxy@microsoft.com) om du har frågor.
 
-Du kan köra kors resurs frågorna med hjälp av klient verktyg som har stöd för Kusto-frågor, till exempel: Log Analytics webb gränssnitt, arbets böcker, PowerShell, REST API med mera.
+## <a name="cross-query-your-log-analytics-or-application-insights-resources-and-azure-data-explorer"></a>Kors fråga din Log Analytics eller Application Insights resurser och Azure Datautforskaren
 
-* Ange identifieraren för ett Azure Datautforskaren-kluster i en fråga i mönstret "ADX" följt av databasens namn och tabell.
+Du kan köra kors resurs frågor med hjälp av klient verktyg som stöder Kusto-frågor. Exempel på dessa verktyg är Log Analytics webb gränssnitt, arbets böcker, PowerShell och REST API.
+
+Ange ID: t för ett Azure Datautforskaren-kluster i en fråga inom `adx` mönstret, följt av databasens namn och tabell.
 
 ```kusto
 adx('https://help.kusto.windows.net/Samples').StormEvents
 ```
-:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-cross-service-query-example.png" alt-text="Exempel på kors tjänst fråga.":::
+:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-cross-service-query-example.png" alt-text="Skärm bild som visar ett exempel på en kors tjänst fråga.":::
 
 > [!NOTE]
 >* Databas namn är Skift läges känsliga.
->* Kors resurs frågan som en avisering stöds inte.
-## <a name="combining-azure-data-explorer-cluster-tables-using-union-and-join-with-la-workspace"></a>Kombinera Azure Datautforskaren Cluster-tabeller (med union och Join) med arbets ytan LA.
+>* Fråga om kors resurs som en avisering stöds inte.
+
+## <a name="combine-azure-data-explorer-cluster-tables-with-a-log-analytics-workspace"></a>Kombinera Azure Datautforskaren Cluster-tabeller med en Log Analytics arbets yta
+
+Använd `union` kommandot för att kombinera kluster tabeller med en Log Analytics-arbetsyta.
 
 ```kusto
 union customEvents, adx('https://help.kusto.windows.net/Samples').StormEvents
@@ -46,23 +51,27 @@ union customEvents, adx('https://help.kusto.windows.net/Samples').StormEvents
 let CL1 = adx('https://help.kusto.windows.net/Samples').StormEvents;
 union customEvents, CL1 | take 10
 ```
-:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-union-cross-query.png" alt-text="Exempel på kors tjänst fråga med Union.":::
+:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-union-cross-query.png" alt-text="Skärm bild som visar ett exempel på en cross-service-fråga med kommandot Union.":::
 
->[!Tip]
->* Kort format är tillåtet-kluster-/InitialCatalog. Till exempel ADX ("hjälp/Samples") översätts till ADX ("Help. kusto. Windows. net/Samples")
+> [!Tip]
+> Stenografiska formatet tillåts: *kluster* namn / *InitialCatalog*. Till exempel `adx('help/Samples')` översätts till `adx('help.kusto.windows.net/Samples')` .
+
 ## <a name="join-data-from-an-azure-data-explorer-cluster-in-one-tenant-with-an-azure-monitor-resource-in-another"></a>Koppla data från ett Azure Datautforskaren-kluster i en klient organisation med en Azure Monitor-resurs i en annan
 
-Frågor över flera klienter mellan-tjänsterna stöds inte. Du är inloggad på en enda klient för att köra frågan som sträcker sig över båda resurserna.
+Frågor över flera klienter mellan-tjänsterna stöds inte. Du är inloggad på en enda klient för att köra frågan som omfattar båda resurserna.
 
-Om Azure Datautforskaren-resursen finns i klient organisationen "A" och Log Analytics arbets ytan är i klient organisationen "B" använder du någon av följande två metoder:
+Om Azure Datautforskaren-resursen finns i klient organisation A och arbets ytan Log Analytics är i klient B, använder du någon av följande metoder:
 
-*  Med Azure Datautforskaren kan du lägga till roller för huvud konton i olika klienter. Lägg till ditt användar-ID i klienten ' B ' som en behörig användare i Azure Datautforskaren-klustret. Verifiera att egenskapen *[' TrustedExternalTenant '](https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster)* i Azure datautforskaren-klustret innehåller klienten ' B '. Kör kors frågan fullständigt i klient organisationen ' B '.
-*  Använd [Lighthouse](https://docs.microsoft.com/azure/lighthouse/) för att projicera Azure Monitor resursen i klient organisationen "A".
+*  Med Azure Datautforskaren kan du lägga till roller för huvud konton i olika klienter. Lägg till ditt användar-ID i klient B som en behörig användare i Azure Datautforskaren-klustret. Kontrol lera att egenskapen [TrustedExternalTenant](https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster) i Azure datautforskaren-klustret innehåller klient b. kör kors frågan fullständigt i klient B.
+*  Använd [Lighthouse](https://docs.microsoft.com/azure/lighthouse/) för att projicera Azure Monitor resursen i klient organisation A.
+
 ## <a name="connect-to-azure-data-explorer-clusters-from-different-tenants"></a>Ansluta till Azure Datautforskaren-kluster från olika klienter
 
-Kusto Explorer loggar automatiskt in till den klient som användar kontot ursprungligen tillhör. För att få åtkomst till resurser i andra klienter med samma användar konto måste det `tenantId` uttryckligen anges i anslutnings strängen: `Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=` **TenantId**
+Kusto Explorer loggar automatiskt in dig på den klient som användar kontot ursprungligen tillhör. För att få åtkomst till resurser i andra klienter med samma användar konto måste du uttryckligen ange `TenantId` anslutnings strängen:
+
+`Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=TenantId`
 
 ## <a name="next-steps"></a>Nästa steg
-* [Skriv frågor](https://docs.microsoft.com/azure/data-explorer/write-queries)
+* [Skriva frågor](https://docs.microsoft.com/azure/data-explorer/write-queries)
 * [Fråga efter data i Azure Monitor med Azure Datautforskaren](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)
 * [Utföra kors resurs logg frågor i Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 659118039464a4f99e4f8df211318a7f639dbde9
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 9967f349011b52a2218681956885c33456ba1d46
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456729"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672771"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>Självstudie: Azure Active Directory integrering med Brightidea
 
@@ -66,7 +66,7 @@ För att konfigurera integrering av Brightidea med Azure AD behöver du lägga t
 
 4. I sökrutan skriver du **Brightidea**, väljer **Brightidea** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![Brightidea i resultatlistan](common/search-new-app.png)
+    ![Brightidea i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -156,20 +156,20 @@ Utför följande steg för att konfigurera enkel inloggning med Azure AD för Br
     a. Klicka på **Ladda ned metadata** och ladda upp i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
 
     b. Klicka på knappen **Lägg till ny** under **Identity Provider Setting** (Inställning för identitetsprovider) och utför följande steg:
-    
+
     ![Skärm bild som visar Brightidea för identitets leverantörer där du anger information.](./media/brightidea-tutorial/configure4.png)
-    
+
    * Ange **SAML-profilnamn**, till exempel `Azure Ad SSO`
-    
+
    * För **Ladda upp metadata** klickar du på Välj fil och laddar upp den nedladdade metadatafilen från Azure-portalen.
 
      > [!NOTE]
      > När du har laddat upp metadatafilen fylls de återstående fälten **Single Sign-on Service, Identity Provider Issuer, Upload Public Key** (Tjänst för enkel inloggning, Utfärdare för identitetsprovider och Offentlig nyckel för uppladdning) i automatiskt.
 
    * I textrutan **E-post** anger du värdet `mail`.
-     
+
    * I textrutan **Skärmnamn** anger du värdet `givenName`.
-     
+
    * Klicka på **Spara ändringar**.  
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare 
@@ -189,7 +189,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 

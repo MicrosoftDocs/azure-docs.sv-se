@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 97d95f9993f85a51ac7baa69ebb331f6c8588c18
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: acc1660be99b3b7cc9a3c7414c47f9f6e159b559
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318720"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674127"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-frankly"></a>Självstudie: Azure Active Directory integration med &Frank
 
@@ -30,7 +30,7 @@ När du integrerar &frankly med Azure AD innebär det följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att konfigurera Azure AD-integrering med &frankly behöver du följande:
 
@@ -63,7 +63,7 @@ Om du vill konfigurera integreringen av &frankly i Azure AD behöver du lägga t
 
 4. I sökrutan skriver du **&frankly**, väljer **&frankly** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![&frankly i resultatlistan](common/search-new-app.png)
+    ![&frankly i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -123,7 +123,7 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med &fran
 
 Så här aktiverar du enkel inloggning i &Frank:
 
-1. Logga in på &Frank. Gå till **Account**  >  **användar hantering**för kontot.
+1. Logga in på &Frank. Gå till   >  **användar hantering** för kontot.
 1. Ändra autentiseringsmekanismen från standard till **företags inloggning (SAML)**.
 1. Ladda upp **XML-metadata för federationsmetadata** som du laddade ned i steg 6 i föregående avsnitt.
 1. Välj **Spara**.
@@ -145,7 +145,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 
@@ -181,7 +181,7 @@ I det här avsnittet gör du det möjligt för Britta Simon att använda enkel i
 
 ### <a name="create-frankly-test-user"></a>Skapa &frankly-testanvändare
 
-I det här avsnittet ska du skapa en användare med namnet Britta Simon i &frankly. Arbeta med [&frankly-supportteamet](mailto:help@andfrankly.com) för att lägga till användare i &frankly-plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning.
+I det här avsnittet ska du skapa en användare med namnet Britta Simon i &frankly. Samar beta med [&Frank support-teamet](mailto:help@andfrankly.com) för att lägga till användare i &Franky Platform. Användare måste skapas och aktiveras innan du använder enkel inloggning.
 
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 0264baf6a8ff107c4a3aa811b9e8639352dca782
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 349a77d2f2cd5e1c492de63919d84efb436a51a3
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301805"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673712"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-endpoint-backup"></a>Självstudie: Azure Active Directory integration med aktivitets slut punkts säkerhets kopiering
 
@@ -63,7 +63,7 @@ För att konfigurera integreringen av Autotask Endpoint Backup med Azure AD mås
 
 4. I sökrutan skriver du **Autotask Endpoint Backup**, väljer **Autotask Endpoint Backup** i resultatrutan och klickar på **Lägg till** för att lägga till programmet.
 
-     ![Autotask Endpoint Backup i resultatlistan](common/search-new-app.png)
+    ![Autotask Endpoint Backup i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 

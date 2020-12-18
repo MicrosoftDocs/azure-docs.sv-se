@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 02/11/2020
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 0802169898cad51e9a5d208e546a004f7ea7b3c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cf8fdfe0c8eb557946baa95d0d8beb2b388baa5
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653340"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674454"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Hantera IoT Central från Azure Portal
 
@@ -41,7 +41,7 @@ Fyll i alla fält i formuläret. Det här formuläret liknar det formulär som d
 
 ![Skapa IoT Central formulär](media/howto-manage-iot-central-from-portal/image6a.png)
 
-**Plats** är den [geografi](https://azure.microsoft.com/global-infrastructure/geographies/) där du vill skapa ditt program. Normalt bör du välja den plats som är fysiskt närmast dina enheter för att få optimala prestanda. Azure IoT Central är för närvarande tillgängligt i regionerna **Australien**, **Asien och Stillahavsområdet**, **Europa**, **USA**, **Storbritannien**och **Japan** . När du har valt en plats kan du inte flytta programmet till en annan plats senare.
+**Plats** är den [geografi](https://azure.microsoft.com/global-infrastructure/geographies/) där du vill skapa ditt program. Normalt bör du välja den plats som är fysiskt närmast dina enheter för att få optimala prestanda. Azure IoT Central är för närvarande tillgängligt i regionerna **Australien**, **Asien och Stillahavsområdet**, **Europa**, **USA**, **Storbritannien** och **Japan** . När du har valt en plats kan du inte flytta programmet till en annan plats senare.
 
 När du har fyllt i alla fält väljer du **skapa**.
 
@@ -50,11 +50,11 @@ När du har fyllt i alla fält väljer du **skapa**.
 Om du redan har ett Azure IoT Central-program kan du ta bort det eller flytta det till en annan prenumeration eller resurs grupp i Azure Portal.
 
 > [!NOTE]
-> Du kan inte se program som skapats i den kostnads fria pris planen i Azure Portal eftersom de inte är associerade med din prenumeration.
+> Program som har skapats med den *kostnads fria* planen kräver inte några Azure-prenumerationer och därför hittar du inte dem i din Azure-prenumeration på Azure Portal. Du kan bara se och hantera kostnads fria appar från IoT Central Portal.
 
 Kom igång genom att välja **alla resurser** i portalen. Välj **Visa dolda typer** och börja skriva namnet på programmet i **Filtrera efter namn** för att hitta det. Välj sedan det IoT Central program som du vill hantera.
 
-Välj **IoT Central programmets URL**för att navigera till programmet:
+Välj **IoT Central programmets URL** för att navigera till programmet:
 
 ![Skärm bild som visar sidan "Översikt" med IoT Central programmets URL markerat.](media/howto-manage-iot-central-from-portal/image3.png)
 

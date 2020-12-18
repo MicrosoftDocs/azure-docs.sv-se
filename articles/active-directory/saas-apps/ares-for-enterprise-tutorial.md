@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 3e760ffa0dfc3bf080852da2fc401abd83fe4101
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7cd8faece0d737e97f1c5809f27840f1d9192548
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457749"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673451"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ares-for-enterprise"></a>Självstudie: Azure Active Directory integrering med ar för företag
 
@@ -65,7 +65,7 @@ För att konfigurera integreringen av ARES for Enterprise till Azure AD behöver
 
 4. I sökrutan skriver du **ARES for Enterprise**, väljer **ARES for Enterprise** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![ARES for Enterprise i resultatlistan](common/search-new-app.png)
+    ![ARES for Enterprise i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -130,7 +130,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 

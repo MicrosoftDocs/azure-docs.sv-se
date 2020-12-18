@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: b0e0703105094507a9f6a16bf30775354f67b950
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d1f45244d09ce55b61b04d88ce2eb4a16289b1ab
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457715"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673009"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asc-contracts"></a>Självstudie: Azure Active Directory integrering med ASC-kontrakt
 
@@ -63,7 +63,7 @@ För att konfigurera integrering av ASC Contracts med Azure AD behöver du lägg
 
 4. I sökrutan skriver du **ASC Contracts**, väljer **ASC Contracts** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![ASC Contracts i resultatlistan](common/search-new-app.png)
+    ![ASC Contracts i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -143,7 +143,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 

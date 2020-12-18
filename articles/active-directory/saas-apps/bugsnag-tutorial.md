@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: a5e93bba71a1b0f573905741ef92cbae529276e0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: af222067ff87010f3c3a9a584d0b68ff3b426352
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456661"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674387"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bugsnag"></a>Självstudie: Azure Active Directory integrering med Bugsnag
 
@@ -64,7 +64,7 @@ För att konfigurera integreringen av Bugsnag i Azure AD måste du lägga till B
 
 4. I sökrutan skriver du **Bugsnag**, väljer **Bugsnag** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![Bugsnag i resultatlistan](common/search-new-app.png)
+    ![Bugsnag i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -138,7 +138,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 

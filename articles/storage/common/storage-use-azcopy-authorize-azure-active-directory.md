@@ -4,15 +4,15 @@ description: Du kan ange autentiseringsuppgifter för AzCopy-åtgärder med hjä
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 12/17/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 46a5c941822dd258b420b51c710734dc3152f30f
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 99e06a36c2afa66f2874c14990d50c6287623efd
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617416"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672499"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>Auktorisera åtkomst till blobbar med AzCopy och Azure Active Directory (Azure AD)
 
@@ -185,7 +185,9 @@ Ersätt `<path-to-certificate-file>` plats hållaren med den relativa eller full
 
 ## <a name="authorize-without-a-secret-store"></a>Auktorisera utan ett hemligt Arkiv
 
-Om operativ systemet inte har något hemligt Arkiv, till exempel en Linux- *nyckelring*, `azcopy login` fungerar inte kommandot. I stället kan du ange minnesbaserade variabler i minnet innan du kör varje åtgärd. 
+`azcopy login`Kommandot hämtar en OAuth-token och placerar den token i ett hemligt Arkiv i systemet. Om operativ systemet inte har något hemligt Arkiv, till exempel en Linux- *nyckelring*, `azcopy login` fungerar inte kommandot eftersom det finns ett noplace-token. 
+
+I stället för att använda `azcopy login` kommandot kan du ange miljövariabler i minnet. Kör sedan ett AzCopy-kommando. AzCopy hämtar den auth-token som krävs för att slutföra åtgärden. När åtgärden har slutförts försvinner token från minnet. 
 
 ### <a name="authorize-a-user-identity"></a>Auktorisera en användar identitet
 
@@ -248,8 +250,6 @@ Ersätt `<resource-id>` plats hållaren med resurs-ID för den användare som ti
 När du har angett dessa variabler kan du köra valfritt AzCopy-kommando (till exempel: `azcopy list https://contoso.blob.core.windows.net` ).
 
 ### <a name="authorize-a-service-principal"></a>Auktorisera ett huvud namn för tjänsten
-
-Innan du kör ett skript måste du logga in interaktivt minst en stund så att du kan ange AzCopy med autentiseringsuppgifterna för tjänstens huvud namn.  Dessa autentiseringsuppgifter lagras i en säker och krypterad fil så att ditt skript inte behöver ange den känsliga informationen.
 
 Du kan logga in på ditt konto med hjälp av en klient hemlighet eller genom att använda lösen ordet för ett certifikat som är kopplat till tjänstens huvud namn för appens registrering.
 

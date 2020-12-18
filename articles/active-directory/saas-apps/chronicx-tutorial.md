@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: fb1d6ceca6321eabac11cf16d3a2c424f5d9619e
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 0603e04424acfe979f44110b973b79f6c07e0b81
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456198"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673636"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-chronicx"></a>Självstudie: Azure Active Directory integrering med ChronicX®
 
@@ -64,7 +64,7 @@ Om du vill konfigurera integreringen av ChronicX-® i Azure AD måste du lägga 
 
 4. I rutan Sök skriver du **ChronicX®**, väljer **ChronicX®** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
 
-     ![ChronicX® i resultat listan](common/search-new-app.png)
+    ![ChronicX® i resultat listan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -144,7 +144,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 
@@ -156,7 +156,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till ChronicX®.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **ChronicX®**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **ChronicX®**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

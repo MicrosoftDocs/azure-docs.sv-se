@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: Zhchia
-ms.openlocfilehash: ea2f25d6b03f002448079b16bd261729807d8a03
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8df1588a78829252d55f82349d6889c754c989e6
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96179732"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673236"
 ---
 # <a name="tutorial-configure-coda-for-automatic-user-provisioning"></a>Självstudie: Konfigurera CODA för automatisk användar etablering
 
@@ -34,7 +34,7 @@ I den här självstudien beskrivs de steg som du måste utföra i både CODA och
 > * Behåll användarattribut synkroniserade mellan Azure AD och CODA
 > * [Enkel inloggning](./coda-tutorial.md) till CODA (rekommenderas)
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 
@@ -93,7 +93,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
 5. Under avsnittet **admin-autentiseringsuppgifter** skriver du in URL: en för CODA-klienten och den hemliga token som hämtades tidigare i steg 2. Klicka på **Testa anslutning** för att se till att Azure AD kan ansluta till CODA. Om anslutningen Miss lyckas kontrollerar du att ditt CODA-konto har administratörs behörighet och försöker igen.
 
-    ![Skärm bild som visar dialog rutan admin-autentiseringsuppgifter där du kan ange din klient U R L och hemlig token.](./media/coda-provisioning-tutorial/provisioning.png)
+     ![Skärm bild som visar dialog rutan admin-autentiseringsuppgifter där du kan ange din klient U R L och hemlig token.](./media/coda-provisioning-tutorial/provisioning.png)
 
 6. I fältet **E-postavisering** anger du e-postadressen till den person eller grupp som ska ta emot meddelanden om etableringsfel. Markera sedan kryssrutan **Skicka ett e-postmeddelande när ett fel uppstår**.
 
@@ -127,7 +127,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
     ![Spara etableringskonfiguration](common/provisioning-configuration-save.png)
 
-Den här åtgärden startar den första synkroniseringen av alla användare som **Scope** definieras i området **Inställningar** . Den första cykeln tar längre tid att utföra än efterföljande cykler, vilket inträffar ungefär var 40:e minut om Azure AD-etableringstjänsten körs.
+Den här åtgärden startar den första synkroniseringen av alla användare som  definieras i området **Inställningar** . Den första cykeln tar längre tid att utföra än efterföljande cykler, vilket inträffar ungefär var 40:e minut om Azure AD-etableringstjänsten körs.
 
 ## <a name="step-6-monitor-your-deployment"></a>Steg 6. Övervaka distributionen
 När du har konfigurerat etableringen använder du följande resurser till att övervaka distributionen:

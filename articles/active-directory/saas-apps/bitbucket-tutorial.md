@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: ffd93016a2cbde3aa2a5844cfdb72e4c0cc8b623
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5e0b1d8d2cb80886131a88c01a6c24102ad7c77c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457120"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673587"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bitbucket-by-resolution-gmbh"></a>Självstudie: Azure Active Directory integrering med SAML SSO för BitBucket med hjälp av resolution GmbH
 
@@ -65,7 +65,7 @@ För att konfigurera integreringen av SAML SSO for Bitbucket by resolution GmbH 
 
 4. I sökrutan skriver du **SAML SSO for Bitbucket by resolution GmbH**, väljer **SAML SSO for Bitbucket by resolution GmbH** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![SAML SSO for Bitbucket by resolution GmbH i resultatlistan](common/search-new-app.png)
+    ![SAML SSO for Bitbucket by resolution GmbH i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -153,7 +153,7 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med SAML 
 7.  På sidan **Importera SAML IdP-metadata** klickar du på **Läs in fil** för att ladda upp den **METADATA XML**-fil som du har laddat ned från Azure-portalen.
 
     ![IdP-metadata](./media/bitbucket-tutorial/tutorial_bitbucket_idpmetadata.png)
-    
+
 8. Klicka på **Nästa**.
 
 9. Klicka **Spara inställningar**.
@@ -177,7 +177,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 

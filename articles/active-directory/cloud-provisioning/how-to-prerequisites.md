@@ -11,12 +11,12 @@ ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4956d11ea2a4b011a792827357c3f4627058ead9
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 1f0c94ba6fb9ee5ab019458043095271123e325e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97651998"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671020"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Krav för Azure AD Connect-molnetablering
 Den här artikeln innehåller rikt linjer för hur du väljer och använder Azure Active Directory (Azure AD) Anslut moln etablering som din identitets lösning.
@@ -62,14 +62,11 @@ Kör [IdFix-verktyget](/office365/enterprise/prepare-directory-attributes-for-sy
     > | 12 | 4 GB |
     > | 18 | 5,5 GB|
     > | 28 | 10 + GB|
-    >
-    > 
 
 2. Körnings principen för PowerShell på den lokala servern måste vara inställd på odefinierad eller RemoteSigned.
 
 3. Om det finns en brand vägg mellan dina servrar och Azure AD konfigurerar du följande objekt:
-
-   - Se till att agenter kan göra *utgående* begär anden till Azure AD över följande portar:
+    - Se till att agenter kan göra *utgående* begär anden till Azure AD över följande portar:
 
       | Portnummer | Hur den används |
       | --- | --- |
@@ -78,13 +75,13 @@ Kör [IdFix-verktyget](/office365/enterprise/prepare-directory-attributes-for-sy
       |**8082**|Krävs för installation och om du vill konfigurera hans administrations-API.  Den här porten kan tas bort när agenten har installerats och om du inte planerar att använda API: et.   |
       | **8080** (valfritt) | Agenter rapporterar sin status var 10: e minut via port 8080, om port 443 inte är tillgänglig. Den här statusen visas i Azure AD-portalen. |
 
-   - Om brand väggen tillämpar regler enligt de ursprungliga användarna öppnar du portarna för trafik från Windows-tjänster som körs som en nätverks tjänst.
-   - Om din brand vägg eller proxy låter dig ange säkra suffix lägger du till anslutningar till \* . msappproxy.net och \* . ServiceBus.Windows.net. Om inte, Tillåt åtkomst till [Azure datacenter IP-intervall](https://www.microsoft.com/download/details.aspx?id=41653)som uppdateras varje vecka.
-   - Dina agenter behöver åtkomst till login.windows.net och login.microsoftonline.com för inledande registrering. Öppna brand väggen för dessa URL: er även.
-   - För certifikat validering, avblockera följande URL: er: mscrl.microsoft.com:80, crl.microsoft.com:80, ocsp.msocsp.com:80 och www \. Microsoft.com:80. Dessa URL: er används för certifikat validering med andra Microsoft-produkter, så du kanske redan har dessa URL: er avblockerade.
+    - Om brand väggen tillämpar regler enligt de ursprungliga användarna öppnar du portarna för trafik från Windows-tjänster som körs som en nätverks tjänst.
+    - Om din brand vägg eller proxy låter dig ange säkra suffix lägger du till anslutningar till \* . msappproxy.net och \* . ServiceBus.Windows.net. Om inte, Tillåt åtkomst till [Azure datacenter IP-intervall](https://www.microsoft.com/download/details.aspx?id=41653)som uppdateras varje vecka.
+    - Dina agenter behöver åtkomst till login.windows.net och login.microsoftonline.com för inledande registrering. Öppna brand väggen för dessa URL: er även.
+    - För certifikat validering, avblockera följande URL: er: mscrl.microsoft.com:80, crl.microsoft.com:80, ocsp.msocsp.com:80 och www \. Microsoft.com:80. Dessa URL: er används för certifikat validering med andra Microsoft-produkter, så du kanske redan har dessa URL: er avblockerade.
 
->[!NOTE]
-> Det finns inte stöd för att installera moln etablerings agenten på Windows Server Core.
+    >[!NOTE]
+    > Det finns inte stöd för att installera moln etablerings agenten på Windows Server Core.
 
 ### <a name="additional-requirements"></a>Ytterligare krav
 
@@ -92,8 +89,8 @@ Kör [IdFix-verktyget](/office365/enterprise/prepare-directory-attributes-for-sy
 
 #### <a name="tls-requirements"></a>TLS-krav
 
->[!NOTE]
->Transport Layer Security (TLS) är ett protokoll som möjliggör säker kommunikation. Att ändra TLS-inställningarna påverkar hela skogen. Mer information finns i [Uppdatera för att aktivera tls 1,1 och tls 1,2 som standard säkra protokoll i WinHTTP i Windows](https://support.microsoft.com/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi).
+> [!NOTE]
+> Transport Layer Security (TLS) är ett protokoll som möjliggör säker kommunikation. Att ändra TLS-inställningarna påverkar hela skogen. Mer information finns i [Uppdatera för att aktivera tls 1,1 och tls 1,2 som standard säkra protokoll i WinHTTP i Windows](https://support.microsoft.com/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi).
 
 Windows Server som är värd för Azure AD Connect Cloud Provisioning agent måste ha TLS 1,2 aktiverat innan du installerar det.
 
@@ -111,6 +108,7 @@ Följ dessa steg om du vill aktivera TLS 1,2.
 1. Starta om servern.
 
 ## <a name="known-limitations"></a>Kända begränsningar
+
 Följande är kända begränsningar:
 
 ### <a name="delta-synchronization"></a>Deltasynkronisering

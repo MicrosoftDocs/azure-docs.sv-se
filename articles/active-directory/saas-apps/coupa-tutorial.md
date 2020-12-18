@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: a618cae375b9d67976fa618ed5804da7ce73c784
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: c6d102f4d9a67f58469242cb44d2c6466782f006
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455161"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674209"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Självstudie: Azure Active Directory integration med koppling
 
@@ -63,7 +63,7 @@ För att konfigurera integreringen av Coupa i Azure AD måste du lägga till Cou
 
 4. I sökrutan skriver du **Coupa**, väljer **Coupa** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![Coupa i resultatlistan](common/search-new-app.png)
+    ![Coupa i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -171,7 +171,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 

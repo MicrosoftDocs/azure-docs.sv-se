@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 7330f4229d056d80802572f0cff8b3fcb6d054f1
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: c3221063469315b2324c5039a46db622109826aa
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456802"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673638"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bridge"></a>Självstudie: Azure Active Directory integrering med Bridge
 
@@ -63,7 +63,7 @@ För att konfigurera integrering av Bridge i Azure AD behöver du lägga till Br
 
 4. I sökrutan skriver du **Bridge**, väljer **Bridge** från resultatpanelen och klickar sedan på knappen **Lägg till** för att lägga till programmet.
 
-     ![Bridge i resultatlistan](common/search-new-app.png)
+    ![Bridge i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -143,7 +143,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 27ff72c69ea09414e576be03e0e574e3e0f78804
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 49fa266319423b4c1a0bc56ad2a32b49c18f168e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458008"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672635"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appblade"></a>Självstudie: Azure Active Directory integrering med AppBlade
 
@@ -30,7 +30,7 @@ Genom att integrera AppBlade med Azure AD får du följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill konfigurera Azure AD-integrering med AppBlade behöver du följande:
 
@@ -64,7 +64,7 @@ För att konfigurera integrering av AppBlade i Azure AD behöver du lägga till 
 
 4. I sökrutan skriver du **AppBlade**, väljer **AppBlade** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![AppBlade i resultatlistan](common/search-new-app.png)
+    ![AppBlade i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -142,7 +142,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 

@@ -2,20 +2,20 @@
 title: Aktivera Snapshot Debugger för .NET-appar i Azure App Service | Microsoft Docs
 description: Aktivera Snapshot Debugger för .NET-appar i Azure App Service
 ms.topic: conceptual
-author: brahmnes
-ms.author: bfung
+author: cweining
+ms.author: cweining
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 35653840c5ddd6f5ae2d5dc078513f0fa35ab34a
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 0fc46c815906b9aaca7b3ce964e0d23cfdc4e1aa
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560941"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673582"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>Aktivera Snapshot Debugger för .NET-appar i Azure App Service
 
-Snapshot Debugger fungerar för närvarande för ASP.NET och ASP.NET Core appar som körs på Azure App Service i Windows Service-planer. Vi rekommenderar att du kör programmet på den grundläggande tjänst nivån eller högre när du använder fel sökning av ögonblicks bilder. För de flesta program har de kostnads fria och delade tjänst nivåerna inte tillräckligt med minne för att spara ögonblicks bilder.
+Snapshot Debugger fungerar för närvarande för ASP.NET och ASP.NET Core appar som körs på Azure App Service i Windows Service-planer. Vi rekommenderar att du kör programmet på den grundläggande tjänst nivån eller högre när du använder fel sökning av ögonblicks bilder. För de flesta program har inte de kostnads fria och delade tjänst nivåerna tillräckligt med minne eller disk utrymme för att spara ögonblicks bilder.
 
 ## <a name="enable-snapshot-debugger"></a><a id="installation"></a> Aktivera Snapshot Debugger
 Följ anvisningarna nedan om du vill aktivera Snapshot Debugger för en app.

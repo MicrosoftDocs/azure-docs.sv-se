@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 12/16/2020
 ms.author: jonels
 ms.custom: include file
-ms.openlocfilehash: 54cc31cdb0ddc7694568d60b1446f1cf99663e95
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 26289f6bdfa086708548d17125a6dfdf50b02a8f
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616634"
+ms.locfileid: "97665060"
 ---
-## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>Skapa en Azure Database for PostgreSQL-storskalig (citus)
+## <a name="create-a-hyperscale-citus-server-group"></a>Skapa en Hyperscale-servergrupp (Citus)
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://azure.microsoft.com/free/) konto innan du börjar.
 

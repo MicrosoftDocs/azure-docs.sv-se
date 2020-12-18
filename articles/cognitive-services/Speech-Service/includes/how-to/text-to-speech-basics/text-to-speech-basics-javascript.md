@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/15/2020
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: f0335e28b3f0fd2d339aa329b92203ddb8d3216c
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 1d6471e1443e02592e86ea0708ac173a7afff3e1
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425529"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97665105"
 ---
 I den här snabb starten lär du dig vanliga design mönster för att skapa text till tal-Sammanfattning med hjälp av tal-SDK. Du börjar med att utföra grundläggande konfiguration och syntes och går vidare till mer avancerade exempel för anpassad program utveckling, inklusive:
 
@@ -23,7 +23,7 @@ I den här snabb starten lär du dig vanliga design mönster för att skapa text
 
 Om du vill hoppa över direkt till exempel kod kan du läsa [snabb starts exemplen för Java Script](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech) på GitHub.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Den här artikeln förutsätter att du har ett Azure-konto och en röst tjänst prenumeration. Om du inte har ett konto och en prenumeration kan du [prova att använda tal tjänsten kostnads fritt](../../../overview.md#try-the-speech-service-for-free).
 
@@ -203,6 +203,9 @@ Om du vill ändra ljud formatet använder du `speechSynthesisOutputFormat` egens
 
 Det finns olika alternativ för olika filtyper beroende på dina krav. Observera att RAW-format, t `Raw24Khz16BitMonoPcm` . ex., inte innehåller ljud rubriker enligt definitionen. Använd RAW-format endast när du vet att den underordnade implementeringen kan avkoda en RAW-Bitstream, eller om du planerar att skapa rubriker manuellt baserat på bitdjup, samplings frekvens, antal kanaler osv.
 
+> [!NOTE]
+> Rösterna **en-US-AriaRUS** och **en-US-GuyRUS** stöder `Riff24Khz16BitMonoPcm` samplings frekvensen.
+
 I det här exemplet anger du ett RIFF-format med hög åter givning `Riff24Khz16BitMonoPcm` genom att ange `speechSynthesisOutputFormat` på- `SpeechConfig` objektet. Liknar exemplet i föregående avsnitt och hämta `ArrayBuffer` ljuddata och interagera med den.
 
 ```javascript
@@ -300,7 +303,7 @@ Neurala-röster är tal syntes-algoritmer som drivs av djup neurala nätverk. N�
 Om du vill växla till en neurala röst ändrar `name` du till ett av [röst alternativen för neurala](../../../language-support.md#neural-voices). Lägg sedan till ett XML-namnområde för `mstts` och Radbryt texten i `<mstts:express-as>` taggen. Använd `style` param för att anpassa tal formatet. Det här exemplet använder `cheerful` , men försök att ställa in det på `customerservice` eller `chat` för att se skillnaden i tal formatet.
 
 > [!IMPORTANT]
-> Neurala-röster stöds **bara** för tal resurser som skapats i regionerna *östra USA* , Asien, sydöstra *och Västeuropa.* *South East Asia*
+> Neurala-röster stöds **bara** för tal resurser som skapats i regionerna *östra USA*, Asien, sydöstra *och Västeuropa.* 
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"

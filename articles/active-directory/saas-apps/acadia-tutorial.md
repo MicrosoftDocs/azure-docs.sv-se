@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/17/2019
 ms.author: jeedes
-ms.openlocfilehash: b6bf0736c2887ee19551e2719ec2418bbacdbd1d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: bf1b46a42b0b8b68e1ab95a3345bb3b5435a576b
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313668"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673852"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-acadia"></a>Självstudie: Azure Active Directory integrering med Acadia
 
@@ -30,7 +30,7 @@ Integreringen av Acadia med Azure AD medför följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att konfigurera Azure AD-integrering med Acadia behöver du följande:
 
@@ -64,7 +64,7 @@ För att konfigurera integreringen av Acadia med Azure AD måste du lägga till 
 
 4. I sökrutan skriver du **Acadia**, väljer **Acadia** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![Acadia i resultatlistan](common/search-new-app.png)
+    ![Acadia i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -150,7 +150,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 
