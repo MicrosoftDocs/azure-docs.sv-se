@@ -110,6 +110,8 @@
       items:
         - name: Kapacitetsmått
           href: api-management-capacity.md
+        - name: Planera och hantera kostnader
+          href: plan-manage-costs.md
         - name: Uppgradera och skala
           href: upgrade-and-scale.md
         - name: Konfigurera autoskalning

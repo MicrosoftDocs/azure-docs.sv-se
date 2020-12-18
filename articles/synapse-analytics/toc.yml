@@ -132,7 +132,7 @@
                   href: ./security/synapse-workspace-understand-what-role-you-need.md
                 - name: Synapse-arbetsytehanterad identitet
                   href: ./security/synapse-workspace-managed-identity.md
-    - name: Anvisningar
+    - name: Instruktionsguider
       items:
         - name: Hantera och övervaka
           items:
@@ -658,6 +658,8 @@
           href: ../data-factory/concepts-pipeline-execution-triggers.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Integration runtime
           href: ../data-factory/concepts-integration-runtime.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Skillnader från Azure Data Factory
+          href: ./data-integration/concepts-data-factory-differences.md
         - name: Dataflöden
           items:
             - name: Översikt över dataflöden
@@ -678,8 +680,6 @@
               href: ../data-factory/concepts-data-flow-expression-builder.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Uttrycksspråk
               href: ../data-factory/data-flow-expression-functions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Skillnader från Azure Data Factory
-              href: ./data-integration/concepts-data-factory-differences.md
     - name: Anvisningar
       items:
         - name: Författare

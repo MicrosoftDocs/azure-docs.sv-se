@@ -546,10 +546,10 @@
           items:
             - name: IT Service Management Connector
               href: platform/itsmc-overview.md
-            - name: Definition av ITSM-anslutningsprogram
-              href: platform/itsmc-definition.md
             - name: IT Service Management-anslutningar
               href: platform/itsmc-connections.md
+            - name: Definition av ITSM-anslutningsprogram
+              href: platform/itsmc-definition.md
             - name: Skapa Service Manager-webbapp
               href: platform/itsmc-service-manager-script.md
             - name: Felsöka problem med anslutningsprogram för hantering av IT-tjänster (ITSM)

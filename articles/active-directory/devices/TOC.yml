@@ -30,8 +30,6 @@
       href: azuread-join-sso.md
     - name: Primära uppdateringstoken
       href: concept-primary-refresh-token.md
-    - name: Hanterade Azure-arbetsstationer
-      href: concept-azure-managed-workstation.md
 - name: Anvisningar
   expanded: false
   items:
@@ -55,8 +53,6 @@
       href: howto-vm-sign-in-azure-ad-windows.md
     - name: Infrastruktur för virtuella skrivbord
       href: howto-device-identity-virtual-desktop-infrastructure.md
-    - name: Distribuera hanterade Azure-arbetsstationer
-      href: howto-azure-managed-workstation.md
     - name: Felsöka enhetsidentiteter
       items:
         - name: Felsöka Azure AD-anslutningshybriden för aktuella Windows-enheter
