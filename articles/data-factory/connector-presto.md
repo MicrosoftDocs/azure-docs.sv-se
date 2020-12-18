@@ -1,5 +1,5 @@
 ---
-title: Kopiera data från Presto med Azure Data Factory (för hands version)
+title: Kopiera data från Presto med hjälp av Azure Data Factory
 description: Lär dig hur du kopierar data från Presto till mottagar data lager som stöds med hjälp av en kopierings aktivitet i en Azure Data Factory pipeline.
 services: data-factory
 documentationcenter: ''
@@ -9,22 +9,19 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 12/18/2020
 ms.author: jingwang
-ms.openlocfilehash: 15f4133b03c1fe77548425500445937e86ed5a8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af05983432c0f76a88ff82a3638d86a971ef77f5
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372509"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680698"
 ---
-# <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>Kopiera data från Presto med Azure Data Factory (för hands version)
+# <a name="copy-data-from-presto-using-azure-data-factory"></a>Kopiera data från Presto med hjälp av Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Den här artikeln beskriver hur du använder kopierings aktiviteten i Azure Data Factory för att kopiera data från Presto. Den bygger på [översikts artikeln om kopierings aktiviteten](copy-activity-overview.md) som visar en översikt över kopierings aktiviteten.
-
-> [!IMPORTANT]
-> Den här kopplingen är för närvarande en för hands version. Du kan prova det och ge oss feedback. Om du vill skapa ett beroende på anslutningsappar som är i förhandsversion i din lösning kan du kontakta [Azure-supporten](https://azure.microsoft.com/support/).
 
 ## <a name="supported-capabilities"></a>Funktioner som stöds
 
@@ -49,20 +46,20 @@ Följande egenskaper stöds för den länkade tjänsten Presto:
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Egenskapen Type måste anges till: **Presto** | Ja |
-| värd | IP-adressen eller värd namnet för Presto-servern. (t. ex. 192.168.222.160)  | Ja |
-| serverVersion | Presto-serverns version. (t. ex. 0,148-t)  | Ja |
-| katalogen | Katalog kontexten för all begäran mot servern.  | Ja |
-| port | TCP-porten som Presto-servern använder för att lyssna efter klient anslutningar. Standardvärdet är 8080.  | Inga |
-| authenticationType | Den autentiseringsmekanism som används för att ansluta till Presto-servern. <br/>Tillåtna värden är: **Anonym**, **LDAP** | Ja |
-| användarnamn | Det användar namn som används för att ansluta till Presto-servern.  | Inga |
-| password | Lösen ordet som motsvarar användar namnet. Markera det här fältet som SecureString för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). | Inga |
-| enableSsl | Anger om anslutningarna till servern är krypterade med TLS. Standardvärdet är false.  | Inga |
-| trustedCertPath | Den fullständiga sökvägen till. pem-filen som innehåller certifikat från betrodda certifikat utfärdare för att verifiera servern vid anslutning via TLS. Den här egenskapen kan bara anges när du använder TLS på IR med egen värd. Standardvärdet är den cacerts. PEM-fil som installeras med IR.  | Inga |
-| useSystemTrustStore | Anger om du vill använda ett CA-certifikat från systemets betrodda lager eller från en angiven PEM-fil. Standardvärdet är false.  | Inga |
-| allowHostNameCNMismatch | Anger om ett CA-utfärdat TLS/SSL-certifikat namn ska matcha värd namnet för servern vid anslutning via TLS. Standardvärdet är false.  | Inga |
-| allowSelfSignedServerCert | Anger om självsignerade certifikat ska tillåtas från servern. Standardvärdet är false.  | Inga |
-| timeZoneID | Den lokala tids zonen som används av anslutningen. Giltiga värden för det här alternativet anges i IANA-databasen för tids zoner. Standardvärdet är systemets tidszon.  | Inga |
+| typ | Egenskapen Type måste anges till: **Presto** | Yes |
+| värd | IP-adressen eller värd namnet för Presto-servern. (t. ex. 192.168.222.160)  | Yes |
+| serverVersion | Presto-serverns version. (t. ex. 0,148-t)  | Yes |
+| katalogen | Katalog kontexten för all begäran mot servern.  | Yes |
+| port | TCP-porten som Presto-servern använder för att lyssna efter klient anslutningar. Standardvärdet är 8080.  | Nej |
+| authenticationType | Den autentiseringsmekanism som används för att ansluta till Presto-servern. <br/>Tillåtna värden är: **Anonym**, **LDAP** | Yes |
+| användarnamn | Det användar namn som används för att ansluta till Presto-servern.  | Nej |
+| password | Lösen ordet som motsvarar användar namnet. Markera det här fältet som SecureString för att lagra det på ett säkert sätt i Data Factory eller [referera till en hemlighet som lagras i Azure Key Vault](store-credentials-in-key-vault.md). | Nej |
+| enableSsl | Anger om anslutningarna till servern är krypterade med TLS. Standardvärdet är false.  | Nej |
+| trustedCertPath | Den fullständiga sökvägen till. pem-filen som innehåller certifikat från betrodda certifikat utfärdare för att verifiera servern vid anslutning via TLS. Den här egenskapen kan bara anges när du använder TLS på IR med egen värd. Standardvärdet är den cacerts. PEM-fil som installeras med IR.  | Nej |
+| useSystemTrustStore | Anger om du vill använda ett CA-certifikat från systemets betrodda lager eller från en angiven PEM-fil. Standardvärdet är false.  | Nej |
+| allowHostNameCNMismatch | Anger om ett CA-utfärdat TLS/SSL-certifikat namn ska matcha värd namnet för servern vid anslutning via TLS. Standardvärdet är false.  | Nej |
+| allowSelfSignedServerCert | Anger om självsignerade certifikat ska tillåtas från servern. Standardvärdet är false.  | Nej |
+| timeZoneID | Den lokala tids zonen som används av anslutningen. Giltiga värden för det här alternativet anges i IANA-databasen för tids zoner. Standardvärdet är systemets tidszon.  | Nej |
 
 **Exempel:**
 
@@ -96,7 +93,7 @@ Om du vill kopiera data från Presto anger du egenskapen type för data uppsätt
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Data uppsättningens typ-egenskap måste anges till: **PrestoObject** | Ja |
+| typ | Data uppsättningens typ-egenskap måste anges till: **PrestoObject** | Yes |
 | schema | Schemats namn. |Nej (om "fråga" i aktivitets källan har angetts)  |
 | tabell | Tabellens namn. |Nej (om "fråga" i aktivitets källan har angetts)  |
 | tableName | Namnet på tabellen med schemat. Den här egenskapen stöds för bakåtkompatibilitet. Använd `schema` och `table` för nya arbets belastningar. | Nej (om "fråga" i aktivitets källan har angetts) |
@@ -128,7 +125,7 @@ Om du vill kopiera data från Presto anger du käll typen i kopierings aktivitet
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ | Typ egenskapen för kopierings aktivitets källan måste anges till: **PrestoSource** | Ja |
+| typ | Typ egenskapen för kopierings aktivitets källan måste anges till: **PrestoSource** | Yes |
 | DocumentDB | Använd den anpassade SQL-frågan för att läsa data. Exempel: `"SELECT * FROM MyTable"`. | Nej (om "tableName" i data uppsättningen har angetts) |
 
 **Exempel:**

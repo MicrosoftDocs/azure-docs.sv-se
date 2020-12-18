@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 2dff68f98e2922d5fc7a4fca1e6de8740bc2ae68
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 12/18/2020
 ms.locfileid: "92459687"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Självstudie: Azure Active Directory integrering med ITRP
@@ -31,7 +31,7 @@ Läs mer om SaaS-appintegrering med Azure AD i [Enkel inloggning till program i 
 
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill konfigurera Azure AD-integrering med ITRP måste du ha:
 
@@ -52,7 +52,7 @@ Om du vill ställa in integreringen av ITRP i Azure AD måste du lägga till ITR
 
     ![Välj Azure Active Directory](common/select-azuread.png)
 
-2. Gå till **företags program**  >  **alla program** :
+2. Gå till **företags program**  >  **alla program**:
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
@@ -60,7 +60,7 @@ Om du vill ställa in integreringen av ITRP i Azure AD måste du lägga till ITR
 
     ![Välj nytt program](common/add-new-app.png)
 
-4. Skriv **ITRP** i rutan Sök. Välj **ITRP** i Sök resultaten och välj sedan **Lägg till** .
+4. Skriv **ITRP** i rutan Sök. Välj **ITRP** i Sök resultaten och välj sedan **Lägg till**.
 
      ![Sökresultat](common/search-new-app.png)
 
@@ -84,7 +84,7 @@ I det här avsnittet ska du aktivera enkel inloggning med Azure AD i Azure Porta
 
 Utför följande steg för att konfigurera enkel inloggning med ITRP i Azure AD:
 
-1. I [Azure Portal](https://portal.azure.com/)på sidan ITRP program integration väljer du **enkel inloggning** :
+1. I [Azure Portal](https://portal.azure.com/)på sidan ITRP program integration väljer du **enkel inloggning**:
 
     ![Välj enkel inloggning](common/select-sso.png)
 
@@ -123,11 +123,11 @@ Utför följande steg för att konfigurera enkel inloggning med ITRP i Azure AD:
 
     ![Kopiera URL: en för konfigurationen](common/copy-configuration-urls.png)
 
-    1. **Inloggnings-URL** .
+    1. **Inloggnings-URL**.
 
-    1. **Azure AD-identifierare** .
+    1. **Azure AD-identifierare**.
 
-    1. **Utloggnings-URL** .
+    1. **Utloggnings-URL**.
 
 ### <a name="configure-itrp-single-sign-on"></a>Konfigurera ITRP enkel inloggning
 
@@ -137,7 +137,7 @@ Utför följande steg för att konfigurera enkel inloggning med ITRP i Azure AD:
 
     ![Ikonen Inställningar](./media/itrp-tutorial/ic775570.png "Ikonen Inställningar")
 
-1. I den vänstra rutan väljer du **enkel inloggning** :
+1. I den vänstra rutan väljer du **enkel inloggning**:
 
     ![Välj enkel inloggning](./media/itrp-tutorial/ic775571.png "Välj enstaka Sign-On")
 
@@ -147,7 +147,7 @@ Utför följande steg för att konfigurera enkel inloggning med ITRP i Azure AD:
 
     ![Skärm bild som visar det enkla Sign-On avsnittet där du kan lägga till den information som beskrivs i det här steget.](./media/itrp-tutorial/ic775573.png "Avsnittet Single Sign-On")
 
-    1. Välj **Aktiverad** .
+    1. Välj **Aktiverad**.
 
     1. I rutan **URL för fjärrutloggning** klistrar du in URL-värdet för **utloggning** som du kopierade från Azure Portal.
 
@@ -155,13 +155,13 @@ Utför följande steg för att konfigurera enkel inloggning med ITRP i Azure AD:
 
     1. I rutan **finger avtryck för certifikat** klistrar du in **tumavtryck** -värdet för certifikatet som du kopierade från Azure Portal.
 
-    1. Välj **Spara** .
+    1. Välj **Spara**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
 
 I det här avsnittet ska du skapa en test användare med namnet Britta Simon i Azure Portal.
 
-1. I Azure Portal väljer du **Azure Active Directory** i den vänstra rutan, väljer **användare** och väljer sedan **alla användare** :
+1. I Azure Portal väljer du **Azure Active Directory** i den vänstra rutan, väljer **användare** och väljer sedan **alla användare**:
 
     ![Välj alla användare](common/users.png)
 
@@ -173,31 +173,31 @@ I det här avsnittet ska du skapa en test användare med namnet Britta Simon i A
 
     ![Dialog rutan användare](common/user-properties.png)
 
-    1. I rutan **Namn** anger du **BrittaSimon** .
+    1. I rutan **Namn** anger du **BrittaSimon**.
   
-    1. I rutan **användar namn** anger du **BrittaSimon@ \<yourcompanydomain> . \<extension>** . (Till exempel BrittaSimon@contoso.com .)
+    1. I rutan **användar namn** anger du **BrittaSimon@ \<yourcompanydomain> . \<extension>**. (Till exempel BrittaSimon@contoso.com .)
 
     1. Välj **Visa lösen ord** och skriv sedan ned värdet i rutan **lösen ord** .
 
-    1. Välj **Skapa** .
+    1. Välj **Skapa**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
 I det här avsnittet ska du aktivera Britta Simon för att använda enkel inloggning med Azure genom att ge hennes åtkomst till ITRP.
 
-1. I Azure Portal väljer du **företags program** , väljer **alla program** och väljer sedan **ITRP** .
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **ITRP**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
-2. I listan med program väljer du **ITRP** .
+2. I listan med program väljer du **ITRP**.
 
     ![Lista över program](common/all-applications.png)
 
-3. I den vänstra rutan väljer **du användare och grupper** :
+3. I den vänstra rutan väljer **du användare och grupper**:
 
     ![Välj Användare och grupper](common/users-groups-blade.png)
 
-4. Välj **Lägg till användare** och sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning** .
+4. Välj **Lägg till användare** och sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning**.
 
     ![Välj Lägg till användare](common/add-assign-user.png)
 
@@ -205,7 +205,7 @@ I det här avsnittet ska du aktivera Britta Simon för att använda enkel inlogg
 
 6. Om du förväntar dig ett roll värde i SAML Assertion, i dialog rutan **Välj roll** , väljer du lämplig roll för användaren i listan. Klicka på knappen **Välj** längst ned i fönstret.
 
-7. I dialogrutan **Lägg till tilldelning** väljer du **Tilldela** .
+7. I dialogrutan **Lägg till tilldelning** väljer du **Tilldela**.
 
 ### <a name="create-an-itrp-test-user"></a>Skapa en ITRP-test användare
 
@@ -233,7 +233,7 @@ Gör så här för att skapa ett användar konto:
 
     1. Ange namn och e-postadress för ett giltigt Azure AD-konto som du vill lägga till.
 
-    1. Välj **Spara** .
+    1. Välj **Spara**.
 
 > [!NOTE]
 > Du kan använda valfritt verktyg för att skapa användar konton eller API som tillhandahålls av ITRP för att etablera Azure AD-användarkonton.

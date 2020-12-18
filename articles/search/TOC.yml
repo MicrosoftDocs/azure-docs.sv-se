@@ -372,7 +372,7 @@
               href: search-indexer-howto-access-trusted-service-exception.md
             - name: Åtkomst via privata slutpunkter
               href: search-indexer-howto-access-private.md
-        - name: Identitetsbaserad åtkomst
+        - name: Säkerhet på dokumentnivå
           items:
             - name: Säkerhetsfilter
               href: search-security-trimming-for-azure-search.md
@@ -550,9 +550,11 @@
           href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
         - name: Developer-kurs (Pluralsight)
           href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
+    - name: Partnerlösningar
+      href: resource-partners-knowledge-mining.md
     - name: VANLIGA FRÅGOR OCH SVAR
       href: search-faq-frequently-asked-questions.md
     - name: Prissättning
       href: 'https://azure.microsoft.com/pricing/details/search/'
-    - name: Video
+    - name: Videoklipp
       href: 'https://azure.microsoft.com/resources/videos/index/?services=search'

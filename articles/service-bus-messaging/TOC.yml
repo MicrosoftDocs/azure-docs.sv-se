@@ -96,6 +96,22 @@
       href: service-bus-azure-and-service-bus-queues-compared-contrasted.md
     - name: Optimera prestanda
       href: service-bus-performance-improvements.md
+    - name: Federation
+      items:
+        - name: Meddelandereplikering och federation mellan regioner
+          href: service-bus-federation-overview.md
+        - name: Aktiviteter och program för meddelandereplikering
+          href: service-bus-federation-replicator-functions.md
+        - name: Mönster för meddelandereplikeringsaktiviteter
+          href: service-bus-federation-patterns.md
+        - name: Konfigurerade replikeringsaktiviteter
+          href: service-bus-federation-configuration.md
+        - name: Replikera händelser mellan Service Bus-entiteter
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopy'
+        - name: Replikera meddelanden till Event Hubs
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub'
+        - name: Hämta meddelanden från Event Hubs
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus'
     - name: Geo-haveriberedskap och geo-replikering
       href: service-bus-geo-dr.md
     - name: Asynkrona meddelanden och hög tillgänglighet

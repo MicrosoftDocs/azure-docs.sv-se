@@ -89,6 +89,22 @@
       href: event-hubs-availability-and-consistency.md
     - name: Skalbarhet
       href: event-hubs-scalability.md
+    - name: Federation
+      items:
+        - name: Federation med flera platser och flera regioner
+          href: event-hubs-federation-overview.md
+        - name: Aktiviteter och program för händelsereplikering
+          href: event-hubs-federation-replicator-functions.md
+        - name: Mönster för händelsereplikeringsaktiviteter
+          href: event-hubs-federation-patterns.md
+        - name: Konfigurerade replikeringsaktiviteter
+          href: event-hubs-federation-configuration.md
+        - name: Replikera händelser mellan Event Hubs
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopy'
+        - name: Skicka händelser till Azure Service Bus
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus'
+        - name: Hämta händelser från Azure Service Bus
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub'
     - name: Geohaveriberedskap
       items:
         - name: Geo-haveriberedskap och geo-replikering
