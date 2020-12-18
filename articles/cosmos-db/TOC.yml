@@ -1002,6 +1002,8 @@
               href: cassandra-spark-aggregation-ops.md
             - name: Kopiera tabelldata
               href: cassandra-spark-table-copy-ops.md
+        - name: Cassandra och Kafka
+          href: cassandra-kafka-connect.md
         - name: Hantera med Resource Manager-mallar
           href: templates-samples-cassandra.md
           displayName: ARM
@@ -1268,7 +1270,7 @@
       items:
         - name: VANLIGA FRÅGOR OCH SVAR
           href: table-api-faq.md
-    - name: Anvisningar
+    - name: Instruktionsguider
       items:
         - name: Skapa appar med tabell-API
           href: table-support.md

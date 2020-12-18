@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 10/30/2020
-ms.openlocfilehash: 1fdf026e9271ef6eb30c2b4ca96a04880b65be75
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 12/17/2020
+ms.openlocfilehash: 4e62645dd5a7a8336df4fccf12daebc730a91168
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578101"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678422"
 ---
 # <a name="security-overview-for-azure-data-share"></a>Säkerhetsöversikt över Azure Data Share
 
@@ -23,7 +23,11 @@ Azure Data Share utnyttjar den underliggande säkerhet som Azure erbjuder för a
 
 Azure Data Share utnyttjar hanterad identitet (tidigare känt som MSI) för att komma åt data lager som används för data delning. Det finns inget utbyte av autentiseringsuppgifter mellan en data leverantör och en data konsument. Mer information om hanterad identitet finns i [hanterade identiteter för Azure-resurser](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md). Mer information om roller och behörigheter som krävs för att dela data finns i [roller och krav](concepts-roles-permissions.md).
 
-Åtkomst kontroller till Azure Data Resource kan ställas in på resurs nivån data resurs för att se till att den används av de som är auktoriserade. 
+## <a name="access-control"></a>Åtkomstkontroll
+
+Åtkomst kontroller till Azure Data Resource kan ställas in på resurs nivån data resurs för att se till att den används av de som är auktoriserade. Ägare och deltagare i en data resurs resurs kan dela data, ta emot resurser och göra ändringar i befintliga resurser. Läsare av en data resurs resurs kan visa resurser, men kan inte göra ändringar. 
+
+När en resurs har skapats eller tagits emot kan användare med rätt behörighet till data resurs resursen göra ändringar. När en användare som skapar eller tar emot en resurs lämnar organisationen, avbryts inte delningen eller stoppa data flödet. Andra användare med rätt behörighet till data resurs resursen kan fortsätta att hantera resursen.
 
 ## <a name="share-data-from-or-to-data-stores-with-firewall-enabled"></a>Dela data från eller till data lager med brand vägg aktive rad
 Om du vill dela data från eller till lagrings konton med brand vägg aktive rad måste du aktivera **Tillåt betrodda Microsoft-tjänster** i ditt lagrings konto. Mer information finns i [konfigurera Azure Storage brand väggar och virtuella nätverk](

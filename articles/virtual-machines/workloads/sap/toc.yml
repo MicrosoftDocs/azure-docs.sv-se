@@ -72,6 +72,8 @@
       items:
         - name: Kontroll av Azure HANA – stora instanser med Azure Portal
           href: hana-li-portal.md
+        - name: Hantera BareMetal-instanser via Azure-portalen
+          href: baremetal-infrastructure-portal.md
         - name: Konfiguration för hög tillgänglighet med STONITH
           href: ha-setup-with-stonith.md
         - name: 'Säkerhetskopiering av operativsystem för Type II-SKU:er'

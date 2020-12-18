@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 12/02/2020
-ms.openlocfilehash: 57b4b6f3f49e9b82ada4b37c8e2de0697781e063
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.date: 12/17/2020
+ms.openlocfilehash: 5d291ad745122d929c4b664e9da5e4649e463529
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510598"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679108"
 ---
 # <a name="execute-r-script-module"></a>Kör R-skript-modul
 
@@ -50,6 +50,9 @@ Om du vill installera ytterligare R-paket använder du- `install.packages()` met
 
 > [!NOTE]
 > Ange CRAN-lagringsplatsen när du installerar paket, till exempel `install.packages("zoo",repos = "http://cran.us.r-project.org")` .
+
+> [!WARNING]
+> Excute R script module stöder inte installation av paket som kräver intern kompilering, t `qdap` . ex. paket som kräver Java och `drc` paket som kräver C++. Detta beror på att den här modulen körs i en förinstallerad miljö med icke-administratörs behörighet.
 
 Det här exemplet visar hur du installerar Zoo:
 ```R

@@ -12,19 +12,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 5bad2293078711456ff06d998c43b87ecc1c9b76
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: a87c08d81724a6639fce6b6673b139b3ef94e410
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674280"
+ms.locfileid: "97680039"
 ---
 # <a name="quickstart-use-python-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Snabb start: Använd python för att fråga en databas i Azure SQL Database eller Azure SQL-hanterad instans
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 I den här snabb starten använder du python för att ansluta till Azure SQL Database eller Azure SQL-hanterad instans och använda T-SQL-uttryck för att fråga data.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här snabbstarten behöver du:
 

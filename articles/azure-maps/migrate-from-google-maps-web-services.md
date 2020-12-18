@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 813cb567ab3edddd6fb37cee050dc5e38ee4289f
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 444e7c9ad06c6f2ad584c0701fa652b901a4c3e7
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904898"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680768"
 ---
-# <a name="tutorial---migrate-web-service-from-google-maps"></a>Självstudie – migrera webb tjänsten från Google Maps
+# <a name="tutorial-migrate-web-service-from-google-maps"></a>Självstudie: Migrera webb tjänsten från Google Maps
 
 Både Azure och Google Maps ger till gång till spatiala API: er via REST-webbtjänster. API-gränssnitten för dessa plattformar utför liknande funktioner. Men de använder olika namngivnings konventioner och svars objekt.
 
@@ -29,7 +29,7 @@ I den här självstudien får du lära dig hur man:
 > * Beräkna en avstånds mat ris
 > * Hämta tids zons information
 
-Du får också lära dig: 
+Du får också lära dig:
 
 > [!div class="checklist"]
 > * Som Azure Maps REST-tjänst vid migrering från en Google Maps-webbtjänst
@@ -40,7 +40,7 @@ I tabellen visas Azure Maps tjänst-API: er, som har liknande funktioner som lis
 
 | API för Google Maps-tjänsten | API för Azure Maps tjänsten                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| Anvisningar              | [Styra](/rest/api/maps/route)                                     |                         
+| Anvisningar              | [Väg](/rest/api/maps/route)                                     |                         
 | Avstånds mat ris         | [Väg mat ris](/rest/api/maps/route/postroutematrixpreview)       |                         
 | Geokodning               | [Sök](/rest/api/maps/search)                                   |                         
 | Sök efter platser           | [Sök](/rest/api/maps/search)                                   |                         
@@ -56,8 +56,7 @@ Följande tjänst-API: er är för närvarande inte tillgängliga i Azure Maps:
 - Geolocation
 - Plats information och foton – telefonnummer och webbplats-URL finns i Azure Maps Search API.
 - Kart-URL: er
-- Närmaste vägar – detta kan åstadkommas med hjälp av webb-SDK: n som visas [här](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Basic%20snap%20to%20road%20logic
-), men inte tillgänglig som en tjänst för närvarande.
+- Närmaste vägar – detta kan åstadkommas med hjälp av webb-SDK: n som visas [här](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Basic%20snap%20to%20road%20logic), men inte tillgänglig som en tjänst för närvarande.
 - Statisk gata vy
 
 Azure Maps har flera andra REST-webbtjänster som kan vara av intresse:
@@ -65,9 +64,9 @@ Azure Maps har flera andra REST-webbtjänster som kan vara av intresse:
 - [Spatialdata](/rest/api/maps/spatial): avlastning av komplexa spatiala beräkningar och åtgärder, till exempel polystaket, till en tjänst.
 - [Trafik](/rest/api/maps/traffic): åtkomst till trafik flöde och incident data i real tid.
 
-## <a name="prerequisites"></a>Krav 
+## <a name="prerequisites"></a>Förutsättningar
 
-1. Logga in på [Azure-portalen](https://portal.azure.com). Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
+1. Logga in på [Azure-portalen](https://portal.azure.com). Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
 2. [Skapa ett Azure Maps konto](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Hämta en primär prenumerations nyckel](quick-demo-map-app.md#get-the-primary-key-for-your-account), även kallat primär nyckel eller prenumerations nyckel. Mer information om autentisering i Azure Maps finns i [hantera autentisering i Azure Maps](how-to-manage-authentication.md).
 
@@ -116,24 +115,24 @@ Den här tabellen kors referenser till Google Maps API-parametrar med jämförba
 | `key`                       | `subscription-key` – Se även [autentiseringen med Azure Maps](azure-maps-authentication.md) -dokumentationen. |
 | `language`                  | `language` – Se dokumentation om [språk som stöds](supported-languages.md) .  |
 | `latlng`                    | `query`  |
-| `location_type`             | *EJ TILLÄMPLIGT*     |
+| `location_type`             | *Saknas*     |
 | `result_type`               | `entityType`    |
 
 Granska [metod tips för sökning](how-to-use-best-practices-for-search.md).
 
 Azure Maps omvänte-API för omväntitet har vissa ytterligare funktioner som inte är tillgängliga i Google Maps. Dessa funktioner kan vara användbara för att integrera med ditt program när du migrerar din app:
 
-- Hämta hastighets gräns data
-- Hämta information om användning av vägar: lokal väg, arterial, begränsad åtkomst, ramp och så vidare
-- Hämta sidan av gatan där en koordinat finns
+* Hämta hastighets gräns data
+* Hämta information om användning av vägar: lokal väg, arterial, begränsad åtkomst, ramp och så vidare
+* Hämta sidan av gatan där en koordinat finns
 
 ## <a name="search-for-points-of-interest"></a>Söka efter platser av intresse
 
 Du kan söka efter intressanta data i Google Maps med platser Sök-API. Detta API tillhandahåller tre olika sätt att söka efter intressanta punkter:
 
-- **Hitta plats från text:** Söker efter en orienterings punkt baserat på dess namn, adress eller telefonnummer.
-- **Närliggande sökning**: söker efter anslags punkter som ligger inom ett visst avstånd från en plats.
-- **Texts ökning:** Söker efter platser med hjälp av en fri Forms text som innehåller orienterings punkt och plats information. Till exempel "pizza i New York" eller "restauranger nära Main St".
+* **Hitta plats från text:** Söker efter en orienterings punkt baserat på dess namn, adress eller telefonnummer.
+* **Närliggande sökning**: söker efter anslags punkter som ligger inom ett visst avstånd från en plats.
+* **Texts ökning:** Söker efter platser med hjälp av en fri Forms text som innehåller orienterings punkt och plats information. Till exempel "pizza i New York" eller "restauranger nära Main St".
 
 Azure Maps tillhandahåller flera Sök-API: er för intressanta punkter:
 
@@ -160,9 +159,9 @@ Tabellen kors refererar till Google Maps API-parametrar med de jämförbara Azur
 
 | Google Maps API-parameter | Jämförbar Azure Maps API-parameter |
 |---------------------------|-------------------------------------|
-| `fields`                  | *EJ TILLÄMPLIGT*                               |
+| `fields`                  | *Saknas*                               |
 | `input`                   | `query`                             |
-| `inputtype`               | *EJ TILLÄMPLIGT*                               |
+| `inputtype`               | *Saknas*                               |
 | `key`                     | `subscription-key` – Se även [autentiseringen med Azure Maps](azure-maps-authentication.md) -dokumentationen. |
 | `language`                | `language` – Se dokumentation om [språk som stöds](supported-languages.md) .  |
 | `locationbias`            | `lat`, `lon` och `radius`<br/>`topLeft` och `btmRight`<br/>`countrySet`  |
@@ -179,22 +178,22 @@ I tabellen visas Google Maps API-parametrar med de jämförbara Azure Maps API-p
 | `keyword`                   | `categorySet` och `brandSet`        |
 | `language`                  | `language` – Se dokumentation om [språk som stöds](supported-languages.md) .  |
 | `location`                  | `lat` och `lon`                     |
-| `maxprice`                  | *EJ TILLÄMPLIGT*                               |
-| `minprice`                  | *EJ TILLÄMPLIGT*                               |
+| `maxprice`                  | *Saknas*                               |
+| `minprice`                  | *Saknas*                               |
 | `name`                      | `categorySet` och `brandSet`        |
-| `opennow`                   | *EJ TILLÄMPLIGT*                               |
+| `opennow`                   | *Saknas*                               |
 | `pagetoken`                 | `ofs` och `limit`                   |
 | `radius`                    | `radius`                            |
-| `rankby`                    | *EJ TILLÄMPLIGT*                               |
+| `rankby`                    | *Saknas*                               |
 | `type`                      | `categorySet –` Se dokumentation om [Sök kategorier som stöds](supported-search-categories.md) .   |
 
 ## <a name="calculate-routes-and-directions"></a>Beräkna vägar och vägbeskrivningar
 
 Beräkna vägar och vägbeskrivning med Azure Maps. Azure Maps har många av samma funktioner som Google Maps-routningstjänsten, till exempel:
 
-- Ankomst-och avgångs tider.
-- I real tids-och förutsägande baserade trafik vägar.
-- Olika transport sätt. Till exempel, framförande, framförande och bekallning.
+* Ankomst-och avgångs tider.
+* I real tids-och förutsägande baserade trafik vägar.
+* Olika transport sätt. Till exempel, framförande, framförande och bekallning.
 
 > [!NOTE]
 > Azure Maps kräver att alla waypoints är koordinater. Adresser måste kodas först.
@@ -231,16 +230,16 @@ Tabellen kors refererar till Google Maps API-parametrar med de jämförbara API-
 
 Azure Maps routnings-API har ytterligare funktioner som inte är tillgängliga i Google Maps. När du migrerar din app bör du överväga att använda dessa funktioner, men du kanske tycker att de är användbara.
 
-- Stöd för väg typ: kortaste, snabbast, trilling och mest bränsle effektiv.
-- Stöd för ytterligare rese lägen: buss, motorcykel, taxi, Truck och van.
-- Stöd för 150 waypoints.
-- Beräkna flera rese tider i en enskild begäran. historisk trafik, direkt trafik, ingen trafik.
-- Undvik ytterligare väg typer: Carpool-vägar, unpaved-vägar, redan använda vägar.
-- Ange anpassade områden för att undvika.
-- Begränsa höjningen som vägen kan Ascend.
-- Dirigera baserat på specifikationer för motor. Beräkna vägar för förbrännings-eller elmotor fordon baserade på produktspecifikationer och återstående bränsle eller laddning.
-- Stöd för parametrar för kommersiell väg i fordonet. Såsom fordons dimensioner, vikt, antal Axels och Last typ.
-- Ange högsta fordons hastighet.
+* Stöd för väg typ: kortaste, snabbast, trilling och mest bränsle effektiv.
+* Stöd för ytterligare rese lägen: buss, motorcykel, taxi, Truck och van.
+* Stöd för 150 waypoints.
+* Beräkna flera rese tider i en enskild begäran. historisk trafik, direkt trafik, ingen trafik.
+* Undvik ytterligare väg typer: Carpool-vägar, unpaved-vägar, redan använda vägar.
+* Ange anpassade områden för att undvika.
+* Begränsa höjningen som vägen kan Ascend.
+* Dirigera baserat på specifikationer för motor. Beräkna vägar för förbrännings-eller elmotor fordon baserade på produktspecifikationer och återstående bränsle eller laddning.
+* Stöd för parametrar för kommersiell väg i fordonet. Såsom fordons dimensioner, vikt, antal Axels och Last typ.
+* Ange högsta fordons hastighet.
 
 Dessutom stöder Route service i Azure Maps [beräkning av flyttbara intervall](/rest/api/maps/route/getrouterange). Beräkning av dirigerbart intervall kallas även ISO Kron. Den genererar en polygon som täcker ett utrymme som kan flyttas till i vilken riktning som helst från en ursprungs punkt. Alla under en angiven tids period eller mängd bränsle eller avgift.
 
@@ -265,10 +264,10 @@ Tabellen kors refererar till Google Maps API-parametrar med de jämförbara API-
 | `markers`                   | `pins`                             |
 | `path`                      | `path`                             |
 | `region`                    | *Ej tillämpligt* – det här är en funktion för att koda en funktion. Använd `countrySet` parametern när du använder API: et för Azure Maps-kodning.  |
-| `scale`                     | *EJ TILLÄMPLIGT*                              |
+| `scale`                     | *Saknas*                              |
 | `size`                      | `width` och `height` – kan vara upp till 8192x8192 i storlek. |
-| `style`                     | *EJ TILLÄMPLIGT*                              |
-| `visible`                   | *EJ TILLÄMPLIGT*                              |
+| `style`                     | *Saknas*                              |
+| `visible`                   | *Saknas*                              |
 | `zoom`                      | `zoom`                             |
 
 > [!NOTE]
@@ -290,7 +289,7 @@ Förutom att kunna generera en statisk kart bild ger tjänsten Azure Maps åter 
 
 Lägg till markörer med hjälp av `markers` parametern i URL: en. `markers`Parametern tar i ett format och en lista över platser som ska återges på kartan med det formatet enligt nedan:
 
-```
+```text
 &markers=markerStyles|markerLocation1|markerLocation2|...
 ```
 
@@ -300,21 +299,20 @@ Ange markör platser med formatet "latitud, longitud".
 
 Lägg till markör format med `optionName:value` formatet, med flera format åtskiljda med pipe ( \| )-tecken som detta "optionName1: värde1 \| optionName2: värde2". Observera att alternativ namn och värden åtskiljs med kolon (:). Använd följande namn på stil-alternativet för att formatera markörer i Google Maps:
 
-- `color` – Färgen på standard markör ikonen. Kan vara en 24-bitars hexadecimal färg ( `0xrrggbb` ) eller något av följande värden: `black` ,,,, `brown` `green` `purple` `yellow` , `blue` , `gray` , `orange` `red` `white` ,,.
-- `label` – Ett enkelt alfanumeriskt tecken som ska visas ovanpå ikonen.
-- `size` – Markörens storlek. Kan vara `tiny` , `mid` eller `small` .
+* `color` – Färgen på standard markör ikonen. Kan vara en 24-bitars hexadecimal färg ( `0xrrggbb` ) eller något av följande värden: `black` ,,,, `brown` `green` `purple` `yellow` , `blue` , `gray` , `orange` `red` `white` ,,.
+* `label` – Ett enkelt alfanumeriskt tecken som ska visas ovanpå ikonen.
+* `size` – Markörens storlek. Kan vara `tiny` , `mid` eller `small` .
 
 Använd följande format alternativ namn för anpassade ikoner i Google Maps:
 
-- `anchor` – Anger hur ikon bilden justeras mot koordinaten. Kan vara ett pixel värde (x, y) eller något av följande värden: ,,,,,,, `top` `bottom` `left` `right` `center` `topleft` `topright` `bottomleft` eller `bottomright` .
-- `icon` – En URL som pekar mot ikon bilden.
+* `anchor` – Anger hur ikon bilden justeras mot koordinaten. Kan vara ett pixel värde (x, y) eller något av följande värden: ,,,,,,, `top` `bottom` `left` `right` `center` `topleft` `topright` `bottomleft` eller `bottomright` .
+* `icon` – En URL som pekar mot ikon bilden.
 
 Vi kan till exempel lägga till en röd, medels Tor markör till kartan vid longitud:-110, latitud: 45:
 
-```
+```text
 &markers=color:red|size:mid|45,-110
 ```
-
 
 ![Google Maps-markör](media/migrate-google-maps-web-services/google-maps-marker.png)
 
@@ -322,7 +320,7 @@ Vi kan till exempel lägga till en röd, medels Tor markör till kartan vid long
 
 Lägg till markörer till en statisk kart bild genom att ange `pins` parametern i URL: en. Som Google Maps anger du ett format och en lista över platser i parametern. `pins`Parametern kan anges flera gånger för att stödja markörer med olika format.
 
-```
+```text
 &pins=iconType|pinStyles||pinLocation1|pinLocation2|...
 ```
 
@@ -332,27 +330,27 @@ I Azure Maps måste PIN-platsen vara i formatet "longitud latitud". Google Maps 
 
 `iconType`Anger vilken typ av PIN-kod som ska skapas. Den kan ha följande värden:
 
-- `default` – Standard ikonen för PIN-kod.
-- `none` – Ingen ikon visas, endast etiketter kommer att återges.
-- `custom` – Anger att en anpassad ikon ska användas. En URL som pekar på ikon bilden kan läggas till i slutet av `pins` parametern efter PIN-kodens plats information.
-- `{udid}` – Ett unikt data-ID (UDID) för en ikon som lagras i Azure Maps data lagrings plattform.
+* `default` – Standard ikonen för PIN-kod.
+* `none` – Ingen ikon visas, endast etiketter kommer att återges.
+* `custom` – Anger att en anpassad ikon ska användas. En URL som pekar på ikon bilden kan läggas till i slutet av `pins` parametern efter PIN-kodens plats information.
+* `{udid}` – Ett unikt data-ID (UDID) för en ikon som lagras i Azure Maps data lagrings plattform.
 
 Lägg till PIN-format med `optionNameValue` formatet. Separera flera format med pipe ( \| )-tecknen. Exempel: `iconType|optionName1Value1|optionName2Value2`. Alternativ namn och värden är inte separerade. Använd följande format alternativ namn till format markörer:
 
-- `al` – Anger markörens opacitet (alfa). Välj ett tal mellan 0 och 1.
-- `an` – Anger fäst punkten. Ange X-och y-pixelvärdena i formatet "X y".
-- `co` – PIN-kodens färg. Ange en 24-bitars hexadecimal färg: `000000` till `FFFFFF` .
-- `la` – Anger etikettens ankare. Ange X-och y-pixelvärdena i formatet "X y".
-- `lc` – Etikettens färg. Ange en 24-bitars hexadecimal färg: `000000` till `FFFFFF` .
-- `ls` – Etikettens storlek i bild punkter. Välj ett tal som är större än 0.
-- `ro` – Ett värde i grader för att rotera ikonen. Välj ett tal mellan-360 och 360.
-- `sc` – Ett skalnings värde för PIN-ikonen. Välj ett tal som är större än 0.
+* `al` – Anger markörens opacitet (alfa). Välj ett tal mellan 0 och 1.
+* `an` – Anger fäst punkten. Ange X-och y-pixelvärdena i formatet "X y".
+* `co` – PIN-kodens färg. Ange en 24-bitars hexadecimal färg: `000000` till `FFFFFF` .
+* `la` – Anger etikettens ankare. Ange X-och y-pixelvärdena i formatet "X y".
+* `lc` – Etikettens färg. Ange en 24-bitars hexadecimal färg: `000000` till `FFFFFF` .
+* `ls` – Etikettens storlek i bild punkter. Välj ett tal som är större än 0.
+* `ro` – Ett värde i grader för att rotera ikonen. Välj ett tal mellan-360 och 360.
+* `sc` – Ett skalnings värde för PIN-ikonen. Välj ett tal som är större än 0.
 
 Ange etikett värden för varje PIN-plats. Den här metoden är mer effektiv än att använda ett enda etikett värde för alla markörer i listan över platser. Etikett svärdet kan vara en sträng med flera tecken. Omsluta strängen med enkla citat tecken för att säkerställa att den inte är förväxlad som ett format eller ett plats värde.
 
 Nu ska vi lägga till en röd ( `FF0000` ) standard ikon med etiketten "utrymmes nål", placerad under (15 50). Ikonen är i longitud:-122,349300, latitud: 47,620180:
 
-```
+```text
 &pins=default|coFF0000|la15 50||'Space Needle' -122.349300 47.620180
 ```
 
@@ -360,7 +358,7 @@ Nu ska vi lägga till en röd ( `FF0000` ) standard ikon med etiketten "utrymmes
 
 Lägg till tre PIN-koder med etikett värden "1", "2" och "3":
 
-```
+```text
 &pins=default||'1'-122 45|'2'-119.5 43.2|'3'-121.67 47.12
 ```
 
@@ -372,7 +370,7 @@ Lägg till tre PIN-koder med etikett värden "1", "2" och "3":
 
 Lägg till linjer och polygon till en statisk kart bild med hjälp av `path` parametern i URL: en. `path`Parametern tar i ett format och en lista över platser som ska återges på kartan, enligt nedan:
 
-```
+```text
 &path=pathStyles|pathLocation1|pathLocation2|...
 ```
 
@@ -382,14 +380,14 @@ Sök vägs platser anges med `latitude1,longitude1|latitude2,longitude2|…` for
 
 Lägg till Sök vägs format med `optionName:value` formatet, separera flera format med pipe ( \| )-tecknen. Och separata alternativ namn och värden med kolon (:). Så här: `optionName1:value1|optionName2:value2` . Följande format alternativ namn kan användas för att formatera sökvägar i Google Maps:
 
-- `color` – Färgen på banan eller polygonens kontur. Kan vara en 24-bitars hexadecimal färg ( `0xrrggbb` ), en 32-bitars hex-färg ( `0xrrggbbbaa` ) eller något av följande värden: svart, brun, grön, lila, gul, blå, grå, orange, röd, vit.
-- `fillColor` – Färgen för att fylla Ban ytan med (Polygon). Kan vara en 24-bitars hexadecimal färg ( `0xrrggbb` ), en 32-bitars hex-färg ( `0xrrggbbbaa` ) eller något av följande värden: svart, brun, grön, lila, gul, blå, grå, orange, röd, vit.
-- `geodesic` – Anger om sökvägen ska vara en linje som följer jordens böjning.
-- `weight` – Bredden på Sök vägs linjen i bild punkter.
+* `color` – Färgen på banan eller polygonens kontur. Kan vara en 24-bitars hexadecimal färg ( `0xrrggbb` ), en 32-bitars hex-färg ( `0xrrggbbbaa` ) eller något av följande värden: svart, brun, grön, lila, gul, blå, grå, orange, röd, vit.
+* `fillColor` – Färgen för att fylla Ban ytan med (Polygon). Kan vara en 24-bitars hexadecimal färg ( `0xrrggbb` ), en 32-bitars hex-färg ( `0xrrggbbbaa` ) eller något av följande värden: svart, brun, grön, lila, gul, blå, grå, orange, röd, vit.
+* `geodesic` – Anger om sökvägen ska vara en linje som följer jordens böjning.
+* `weight` – Bredden på Sök vägs linjen i bild punkter.
 
 Lägg till en röd linje opacitet och pixel tjock lek på kartan mellan koordinaterna i URL-parametern. I exemplet nedan har linjen 50% opacitet och en tjocklek på fyra bild punkter. Koordinaterna är longitud:-110, latitud: 45 och longitud:-100, latitud: 50.
 
-```
+```text
 &path=color:0xFF000088|weight:4|45,-110|50,-100
 ```
 
@@ -399,7 +397,7 @@ Lägg till en röd linje opacitet och pixel tjock lek på kartan mellan koordina
 
 Lägg till linjer och polygoner till en statisk kart bild genom att ange `path` parametern i URL: en. Som Google Maps anger du ett format och en lista över platser i den här parametern. Ange `path` parametern flera gånger för att återge flera cirklar, linjer och polygoner med olika format.
 
-```
+```text
 &path=pathStyles||pathLocation1|pathLocation2|...
 ```
 
@@ -407,16 +405,16 @@ När den kommer till Sök vägs platser kräver Azure Maps att koordinaterna ska
 
 Lägg till Sök vägs format med `optionNameValue` formatet. Separera flera format per pipe ( \| )-tecken, som det här `optionName1Value1|optionName2Value2` . Alternativ namn och värden är inte separerade. Använd följande format alternativ namn för att formatera sökvägar i Azure Maps:
 
-- `fa` – Fyllnings färg opaciteten (alpha) som används vid åter givning av polygoner. Välj ett tal mellan 0 och 1.
-- `fc` – Fyllnings färgen som används för att återge ytan i en polygon.
-- `la` – Linje färg opaciteten (alfa) som används vid åter givning av linjer och konturen av polygoner. Välj ett tal mellan 0 och 1.
-- `lc` – Linje färgen som används för att återge linjer och konturen för polygoner.
-- `lw` – Bredden på linjen i bild punkter.
-- `ra` – Anger en cirkel-radie i meter.
+* `fa` – Fyllnings färg opaciteten (alpha) som används vid åter givning av polygoner. Välj ett tal mellan 0 och 1.
+* `fc` – Fyllnings färgen som används för att återge ytan i en polygon.
+* `la` – Linje färg opaciteten (alfa) som används vid åter givning av linjer och konturen av polygoner. Välj ett tal mellan 0 och 1.
+* `lc` – Linje färgen som används för att återge linjer och konturen för polygoner.
+* `lw` – Bredden på linjen i bild punkter.
+* `ra` – Anger en cirkel-radie i meter.
 
 Lägg till en röd linje opacitet och pixel tjock lek mellan koordinaterna i URL-parametern. I exemplet nedan har linjen 50% opacitet och en tjocklek på fyra bild punkter. Koordinaterna har följande värden: longitud:-110, latitud: 45 och longitud:-100, latitud: 50.
 
-```
+```text
 &path=lcFF0000|la.5|lw4||-110 45|-100 50
 ```
 
@@ -481,11 +479,15 @@ Förutom detta API tillhandahåller Azure Maps ett antal API: er för tids zoner
 
 Azure Maps tillhandahåller klient bibliotek för följande programmeringsspråk:
 
-- Java Script, typescript, Node.js – [dokumentation](how-to-use-services-module.md) \| [NPM-paket](https://www.npmjs.com/package/azure-maps-rest)
+* Java Script, typescript, Node.js – [dokumentation](how-to-use-services-module.md) \| [NPM-paket](https://www.npmjs.com/package/azure-maps-rest)
 
 Dessa klient bibliotek med öppen källkod är för andra programmeringsspråk:
 
-- .Net standard 2,0 – [GitHub Project](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet-paket](https://www.nuget.org/packages/AzureMapsRestToolkit/)
+* .Net standard 2,0 – [GitHub Project](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet-paket](https://www.nuget.org/packages/AzureMapsRestToolkit/)
+
+## <a name="clean-up-resources"></a>Rensa resurser
+
+Det gick inte att rensa några resurser.
 
 ## <a name="next-steps"></a>Nästa steg
 
@@ -493,18 +495,3 @@ Läs mer om Azure Maps REST-tjänster:
 
 > [!div class="nextstepaction"]
 > [Metodtips för sökning](how-to-use-best-practices-for-search.md)
-
-> [!div class="nextstepaction"]
-> [Söka efter en adress](how-to-search-for-address.md)
-
-> [!div class="nextstepaction"]
-> [Metod tips för routning](how-to-use-best-practices-for-routing.md)
-
-> [!div class="nextstepaction"]
-> [Dokumentation om Azure Maps REST service API-referens](/rest/api/maps/)
-
-> [!div class="nextstepaction"]
-> [Kodexempel](/samples/browse/?products=azure-maps)
-
-> [!div class="nextstepaction"]
-> [Så här använder du modulen tjänster (Web SDK)](how-to-use-best-practices-for-routing.md)

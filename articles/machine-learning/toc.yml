@@ -165,6 +165,8 @@
       href: concept-model-management-and-deployment.md
     - name: Modellportabilitet (ONNX)
       href: concept-onnx.md
+    - name: Integreringar med öppen källkod
+      href: concept-open-source.md
     - name: ML-pipelines
       href: concept-ml-pipelines.md
     - name: Säkerhet
@@ -370,6 +372,8 @@
           href: how-to-train-pytorch.md
         - name: Träna med anpassad Docker-avbildning
           href: how-to-train-with-custom-image.md
+        - name: Migrera från Uppskattningar till ScriptRunConfig
+          href: how-to-migrate-from-estimators-to-scriptrunconfig.md
         - name: Spåra och övervaka träning
           items:
             - name: 'Starta, övervaka eller avbryta körningar'
@@ -513,8 +517,6 @@
           href: how-to-move-data-in-out-of-pipelines.md
         - name: Distribuera ML-pipelines (Python)
           href: how-to-deploy-pipelines.md
-        - name: Schemalägga en pipeline (Python)
-          href: how-to-schedule-pipelines.md
         - name: Utlösa en pipeline
           href: how-to-trigger-published-pipeline.md
         - name: Designern (dra och släpp)

@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: d09dddbceed773cd723897cc9730198b68be0ff7
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 9964c99ddfb59811fc67df634b41cede5847ede0
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903623"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678859"
 ---
 # <a name="create-a-data-source"></a>Skapa en datakälla
 
 Azure Maps Web SDK lagrar data i data källor. Att använda data källor optimerar data åtgärder för frågor och åter givning. Det finns för närvarande två typer av data Källor:
 
-- **Mål-JSON-källa**: hanterar rå data i det lokala JSON-formatet lokalt. Lämpat för små till medel stora data mängder (flera hundra tusentals former).
-- **Vektor panels källa**: läser in data som är formaterade som vektor paneler för den aktuella Map-vyn, baserat på kartans placerings system. Perfekt för stora till enorma data uppsättningar (miljon tals eller miljarder former).
+* **Mål-JSON-källa**: hanterar rå data i det lokala JSON-formatet lokalt. Lämpat för små till medel stora data mängder (flera hundra tusentals former).
+* **Vektor panels källa**: läser in data som är formaterade som vektor paneler för den aktuella Map-vyn, baserat på kartans placerings system. Perfekt för stora till enorma data uppsättningar (miljon tals eller miljarder former).
 
 ## <a name="geojson-data-source"></a>Data källa för interjson
 
@@ -50,8 +50,8 @@ När du har skapat data källor kan du lägga till dem i kartan via `map.sources
 
 ```javascript
 //Create a data source and add it to the map.
-var dataSource = new atlas.source.DataSource();
-map.sources.add(dataSource);
+var source = new atlas.source.DataSource();
+map.sources.add(source);
 ```
 
 Följande kod visar de olika sätt som data kan läggas till i en `DataSource` .
@@ -60,13 +60,13 @@ Följande kod visar de olika sätt som data kan läggas till i en `DataSource` .
 //GeoJsonData in the following code can be a single or array of GeoJSON features or geometries, a GeoJSON feature colleciton, or a single or array of atlas.Shape objects.
 
 //Add geoJSON object to data source. 
-dataSource.add(geoJsonData);
+source.add(geoJsonData);
 
 //Load geoJSON data from URL. URL should be on a CORs enabled endpoint.
-dataSource.importDataFromUrl(geoJsonUrl);
+source.importDataFromUrl(geoJsonUrl);
 
 //Overwrite all data in data source.
-dataSource.setShapes(geoJsonData);
+source.setShapes(geoJsonData);
 ```
 
 > [!TIP]
@@ -76,16 +76,16 @@ dataSource.setShapes(geoJsonData);
 
 En vektor panels källa beskriver hur du får åtkomst till ett vektor panels lager. Använd klassen [VectorTileSource](/javascript/api/azure-maps-control/atlas.source.vectortilesource) för att instansiera en vektor panels källa. Vektor panels lager liknar panel lager, men de är inte samma. Ett panel lager är en raster bild. Vektor panels lager är en komprimerad fil i **PBF** -format. Den här komprimerade filen innehåller vektor kart data och ett eller flera lager. Filen kan återges och formateras på klienten, baserat på formatet för varje lager. Data i en vektor panel innehåller geografiska funktioner i form av punkter, linjer och polygoner. Det finns flera fördelar med att använda vektor panels lager i stället för raster panels lager:
 
- - En fil storlek på en vektor panel är vanligt vis mycket mindre än en motsvarande raster panel. Som sådan används mindre bandbredd. Det innebär kortare svars tid, en snabbare karta och en bättre användar upplevelse.
- - Eftersom vektor paneler återges på klienten, anpassas de till lösning av enheten som de visas på. Resultatet blir att de åter givnings kartorna visas mer väldefinierade med Crystal Clear-etiketter.
- - Att ändra formatet för data i vektor Maps kräver inte att data hämtas igen, eftersom det nya formatet kan tillämpas på klienten. Att ändra formatet på ett raster panels lager kräver däremot vanligt vis inläsning av paneler från servern och sedan att använda det nya formatet.
- - Eftersom data levereras i vektor form krävs mindre bearbetning på Server sidan för att förbereda data. Därför kan nya data göras tillgängliga snabbare.
+* En fil storlek på en vektor panel är vanligt vis mycket mindre än en motsvarande raster panel. Som sådan används mindre bandbredd. Det innebär kortare svars tid, en snabbare karta och en bättre användar upplevelse.
+* Eftersom vektor paneler återges på klienten, anpassas de till lösning av enheten som de visas på. Resultatet blir att de åter givnings kartorna visas mer väldefinierade med Crystal Clear-etiketter.
+* Att ändra formatet för data i vektor Maps kräver inte att data hämtas igen, eftersom det nya formatet kan tillämpas på klienten. Att ändra formatet på ett raster panels lager kräver däremot vanligt vis inläsning av paneler från servern och sedan att använda det nya formatet.
+* Eftersom data levereras i vektor form krävs mindre bearbetning på Server sidan för att förbereda data. Därför kan nya data göras tillgängliga snabbare.
 
 Azure Maps följer [specifikationen Mapbox Vector panel](https://github.com/mapbox/vector-tile-spec), en öppen standard. Azure Maps tillhandahåller följande tjänster för vektor paneler som en del av plattformen:
 
-- Information om [documentation](/rest/api/maps/renderv2/getmaptilepreview)  |  [data format](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile) för Road panels dokumentation
+- Information om [](/rest/api/maps/renderv2/getmaptilepreview)  |  [data format](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile) för Road panels dokumentation
 - Information om trafik incidenter [dokumentation](/rest/api/maps/traffic/gettrafficincidenttile)  |  [data format](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
-- [documentation](/rest/api/maps/traffic/gettrafficflowtile)  |  [Information om data format](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles) för trafikflödets dokumentation
+- [](/rest/api/maps/traffic/gettrafficflowtile)  |  [Information om data format](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles) för trafikflödets dokumentation
 - Azure Maps Creator (förhands granskning) tillåter också att anpassade vektor paneler skapas och nås via [Get panel rendering v2](/rest/api/maps/renderv2/getmaptilepreview)
 
 > [!TIP]
@@ -95,14 +95,14 @@ Om du vill visa data från en vektor panels källa på kartan ansluter du källa
 
 ```javascript
 //Create a vector tile source and add it to the map.
-var datasource = new atlas.source.VectorTileSource(null, {
+var source = new atlas.source.VectorTileSource(null, {
     tiles: ['https://{azMapsDomain}/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}'],
     maxZoom: 22
 });
-map.sources.add(datasource);
+map.sources.add(source);
 
 //Create a layer for traffic flow lines.
-var flowLayer = new atlas.layer.LineLayer(datasource, null, {
+var flowLayer = new atlas.layer.LineLayer(source, null, {
     //The name of the data layer within the data source to pass into this rendering layer.
     sourceLayer: 'Traffic flow',
 
@@ -142,30 +142,30 @@ Se <a href='https://codepen.io/azuremaps/pen/wvMXJYJ'>linje lagret</a> för penn
 
 Data återges på kartan med åter givnings lager. En enskild data källa kan refereras till av en eller flera åter givnings skikt. Följande åter givnings skikt kräver en data Källa:
 
-- [Bubbel Layer](map-add-bubble-layer.md) – återger punkt data som skalade cirklar på kartan.
-- [Symbol lager](map-add-pin.md) – återger punkt data som ikoner eller text.
-- [Termiskt kart skikt](map-add-heat-map-layer.md) – återger punkt data som en densitets värme karta.
-- [Linje lager](map-add-shape.md) – återge en linje och eller återge konturen för polygoner. 
-- [Polygon-lager](map-add-shape.md) – fyller ytan i en polygon med ett mönster för en solid färg eller bild.
+* [Bubbel Layer](map-add-bubble-layer.md) – återger punkt data som skalade cirklar på kartan.
+* [Symbol lager](map-add-pin.md) – återger punkt data som ikoner eller text.
+* [Termiskt kart skikt](map-add-heat-map-layer.md) – återger punkt data som en densitets värme karta.
+* [Linje lager](map-add-shape.md) – återge en linje och eller återge konturen för polygoner. 
+* [Polygon-lager](map-add-shape.md) – fyller ytan i en polygon med ett mönster för en solid färg eller bild.
 
 Följande kod visar hur du skapar en data källa, lägger till den i kartan och kopplar den till ett bubbeldiagram. Och importera sedan data från en fjärran sluten plats till data källan. 
 
 ```javascript
 //Create a data source and add it to the map.
-var datasource = new atlas.source.DataSource();
-map.sources.add(datasource);
+var source = new atlas.source.DataSource();
+map.sources.add(source);
 
 //Create a layer that defines how to render points in the data source and add it to the map.
-map.layers.add(new atlas.layer.BubbleLayer(datasource));
+map.layers.add(new atlas.layer.BubbleLayer(source));
 
 //Load the earthquake data.
-datasource.importDataFromUrl('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson');
+source.importDataFromUrl('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson');
 ```
 
 Det finns ytterligare åter givnings skikt som inte ansluter till dessa data källor, men som läser in data direkt för åter givning. 
 
-- [Bild lager](map-add-image-layer.md) – lägger till en enda bild ovanpå kartan och binder dess hörn till en uppsättning angivna koordinater.
-- [Panel lager](map-add-tile-layer.md) – superdriver ett raster panels lager ovanpå kartan.
+* [Bild lager](map-add-image-layer.md) – lägger till en enda bild ovanpå kartan och binder dess hörn till en uppsättning angivna koordinater.
+* [Panel lager](map-add-tile-layer.md) – superdriver ett raster panels lager ovanpå kartan.
 
 ## <a name="one-data-source-with-multiple-layers"></a>En data källa med flera lager
 
@@ -179,34 +179,40 @@ Med Azure Maps måste allt du behöver vara en enda polygon i en data källa som
 
 ```javascript
 //Create a data source and add it to the map.
-var dataSource = new atlas.source.DataSource();
-map.sources.add(dataSource);
+var source = new atlas.source.DataSource();
+map.sources.add(source);
 
 //Create a polygon and add it to the data source.
-dataSource.add(new atlas.data.Polygon([[[/* Coordinates for polygon */]]]));
+source.add(new atlas.data.Polygon([[[/* Coordinates for polygon */]]]));
 
 //Create a polygon layer to render the filled in area of the polygon.
-var polygonLayer = new atlas.layer.PolygonLayer(dataSource, 'myPolygonLayer', {
+var polygonLayer = new atlas.layer.PolygonLayer(source, 'myPolygonLayer', {
      fillColor: 'rgba(255,165,0,0.2)'
 });
 
 //Create a line layer for greater control of rendering the outline of the polygon.
-var lineLayer = new atlas.layer.LineLayer(dataSource, 'myLineLayer', {
+var lineLayer = new atlas.layer.LineLayer(source, 'myLineLayer', {
      color: 'orange',
      width: 2
 });
 
 //Create a bubble layer to render the vertices of the polygon as scaled circles.
-var bubbleLayer = new atlas.layer.BubbleLayer(dataSource, 'myBubbleLayer', {
+var bubbleLayer = new atlas.layer.BubbleLayer(source, 'myBubbleLayer', {
      color: 'orange',
      radius: 5,
-     outlineColor: 'white',
-     outlineWidth: 2
+     strokeColor: 'white',
+     strokeWidth: 2
 });
 
 //Add all layers to the map.
 map.layers.add([polygonLayer, lineLayer, bubbleLayer]);
 ```
+
+> [!TIP]
+> När du lägger till lager till kartan med `map.layers.add` funktionen, kan ID eller instans för ett befintligt lager skickas som en andra parameter. Detta skulle berätta för kartan att infoga det nya lagret som läggs till under det befintliga lagret. Förutom att skicka in ett lager-ID, stöder den här metoden även följande värden.
+>
+> * `"labels"` -Infogar det nya lagret under kart etikettens lager.
+> * `"transit"` -Infogar det nya lagret under kart vägs-och transport lager.
 
 ## <a name="next-steps"></a>Nästa steg
 

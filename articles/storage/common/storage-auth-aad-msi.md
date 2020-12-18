@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: ccc545b15f16879582c671b082cab40f6b11aa08
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: e58cbef74aa9b6f58207abf780fd63176d5edd7d
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778979"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680920"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Ge åtkomst till blob-och Queue-data med hanterade identiteter för Azure-resurser
 
@@ -31,7 +31,7 @@ Innan du kan använda hanterade identiteter för Azure-resurser för att ge åtk
 - [Azure Portal](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
-- [Azure Resource Manager-mall](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+- [Azure Resource Manager mall](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
 - [Azure Resource Manager klient bibliotek](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 Mer information om hanterade identiteter finns i [hanterade identiteter för Azure-resurser](../../active-directory/managed-identities-azure-resources/overview.md).
@@ -171,3 +171,4 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 - [Hantera åtkomst behörigheter till lagrings data med Azure RBAC](./storage-auth-aad-rbac-portal.md).
 - [Använd Azure AD med lagrings program](storage-auth-aad-app.md).
 - [Kör PowerShell-kommandon med Azure AD-autentiseringsuppgifter för att få åtkomst till BLOB-data](../blobs/authorize-data-operations-powershell.md)
+- [Självstudie: åtkomst till lagring från App Service med hanterade identiteter](/azure/app-service/scenario-secure-app-access-storage)

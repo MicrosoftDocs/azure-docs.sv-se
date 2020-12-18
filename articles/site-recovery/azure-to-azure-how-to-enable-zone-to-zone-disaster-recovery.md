@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 6a7d29d8487c6be6915ae4171b3759f0980f5448
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 21bdbecdbba31eae112053bf81411781245cc170
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874370"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678676"
 ---
 # <a name="enable-azure-vm-disaster-recovery-between-availability-zones"></a>Aktivera haveri beredskap för virtuella Azure-datorer mellan tillgänglighets zoner
 
@@ -20,7 +20,7 @@ Den här artikeln beskriver hur du replikerar, redundansväxlas och återställe
 
 >[!NOTE]
 >
->- Stöd för katastrof återställning för zoner till zoner är för närvarande begränsat till två regioner: Sydostasien och Storbritannien, södra.  
+>- Stöd för haveri beredskap för zoner till zoner är för närvarande begränsat till fem regioner: Sydostasien, Storbritannien, södra, Östra Japan, östra Australien och Västeuropa.  
 >- Site Recovery flyttar eller lagrar inte kund information från den region där den distribueras när kunden använder zoner för haveri beredskap i zoner. Kunder kan välja ett Recovery Services valv från en annan region om de så vill. Recovery Services valvet innehåller metadata men inga faktiska kund uppgifter.
 
 Site Recovery Service bidrar till din strategi för affärs kontinuitet och haveri beredskap genom att hålla dina företags program igång, under planerade och oplanerade avbrott. Det är det rekommenderade alternativet för haveri beredskap för att hålla programmen igång om det finns regionala avbrott.

@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: e2f61085d3dab6d4489aa190204be4169ea5c2fb
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 6271b83749c078b64c168a27f887ed7055e37d96
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638014"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678904"
 ---
 # <a name="plan-and-manage-costs-for-azure-data-factory"></a>Planera och hantera kostnader för Azure Data Factory
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Data Factory är en server lös och elastisk data integrerings tjänst som skapats för moln skalning.  Det innebär att det inte finns en beräkning med fast storlek som du måste planera för topp belastningen. i stället anger du hur mycket resurs som ska allokeras på begäran per åtgärd, vilket gör att du kan utforma ETL-processerna på ett mycket mer skalbart sätt. Dessutom debiteras ADF i en förbruknings plan, vilket innebär att du bara betalar för det du använder.
 
@@ -62,9 +62,9 @@ Du kan skapa [budgetar](../cost-management-billing/costs/tutorial-acm-create-bud
 
 När du börjar använda Azure Data Factory kan du se kostnaderna som uppkommer i fönstret [kostnads analys](../cost-management-billing/costs/quick-acm-cost-analysis.md) i Azure Portal.
 
-1. Om du vill visa [kostnads analys](../cost-management-billing/costs/quick-acm-cost-analysis.md)öppnar du fönstret **Cost Management + fakturering** , väljer **kostnads hantering** på menyn och väljer sedan **Öppna kostnads analys** .
+1. Om du vill visa [kostnads analys](../cost-management-billing/costs/quick-acm-cost-analysis.md)öppnar du fönstret **Cost Management + fakturering** , väljer **kostnads hantering** på menyn och väljer sedan **Öppna kostnads analys**.
 2. I standardvyn visas ackumulerade kostnader för den aktuella månaden.  Du kan växla till ett annat tidsintervall och en annan kornig het, som varje dag eller månad.
-3. Om du vill begränsa kostnaderna för en enskild tjänst, till exempel Azure Data Factory, väljer du **Lägg till filter** och väljer sedan **tjänst namn** .  Välj sedan **Azure Data Factory v2** från listan.
+3. Om du vill begränsa kostnaderna för en enskild tjänst, till exempel Azure Data Factory, väljer du **Lägg till filter** och väljer sedan **tjänst namn**.  Välj sedan **Azure Data Factory v2** från listan.
 4. Du kan lägga till ytterligare filter för att analysera kostnader för en speciell fabriks instans och en bestämd precisions nivå för ADF-mätare.
 
    ![Kostnadsanalys](media/plan-manage-costs/cost-analysis.png)

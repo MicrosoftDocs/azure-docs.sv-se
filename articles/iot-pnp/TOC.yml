@@ -57,8 +57,6 @@
   items:
     - name: Installera och använda IoT Explorer
       href: howto-use-iot-explorer.md
-    - name: Installera och använda IoT Plug and Play-brygga
-      href: howto-use-iot-pnp-bridge.md
     - name: Installera och använda DTDL-redigeringsverktyg
       href: howto-use-dtdl-authoring-tools.md
     - name: Använda inbäddad C
@@ -67,6 +65,10 @@
       href: howto-manage-digital-twin.md
     - name: Certifiera en enhet
       href: howto-certify-device.md
+    - name: Installera och använda IoT Plug and Play-brygga
+      href: howto-use-iot-pnp-bridge.md
+    - name: 'Skapa, distribuera och utöka IoT Plug and Play-brygga'
+      href: howto-build-deploy-extend-pnp-bridge.md
 - name: Referens
   items:
     - name: 'Bibliotek och SDK:er'

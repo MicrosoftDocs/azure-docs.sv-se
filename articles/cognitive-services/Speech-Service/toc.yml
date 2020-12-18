@@ -365,23 +365,11 @@
               items:
                 - name: Skapa en app för anpassade kommandon
                   href: quickstart-custom-commands-application.md
-            - name: Anvisningar
+            - name: Instruktionsguider
               items:
-                - name: Utveckla
-                  items:
-                    - name: Skapa program med enkla kommandon
-                      href: how-to-custom-commands-create-application-with-simple-commands.md
-                    - name: Lägga till parametrar till kommandon
-                      href: how-to-custom-commands-add-parameters-to-commands.md
-                    - name: Lägga till konfigurationer i parametrar för kommandon
-                      href: how-to-custom-commands-add-parameter-configuration.md
-                    - name: Lägga till interaktionsregler
-                      href: how-to-custom-commands-add-interaction-rules.md
-                    - name: Lägga till mallar för att skapa språk för talsvar
-                      href: how-to-custom-commands-add-language-generation-templates.md
-                    - name: Använda anpassad röst
-                      href: how-to-custom-commands-use-custom-voice.md
-                - name: Integrera
+                - name: Utveckla och anpassa appar för anpassade kommandon
+                  href: how-to-develop-custom-commands-application.md
+                - name: Integrera med klientprogram
                   items:
                     - name: Integrera med en klientapp med hjälp av Speech SDK
                       href: how-to-custom-commands-setup-speech-sdk.md
@@ -395,26 +383,18 @@
                       href: how-to-custom-commands-update-command-from-client.md
                     - name: Uppdatera ett kommando från en webbslutpunkt
                       href: how-to-custom-commands-update-command-from-web-endpoint.md
-                - name: Distribuera
-                  items:
-                    - name: Kontinuerlig distribution med Azure DevOps
-                      href: how-to-custom-commands-deploy-cicd.md
-                - name: Testa
-                  items:
-                    - name: Testa din app för anpassade kommandon
-                      href: how-to-custom-commands-developer-flow-test.md
-                - name: Felsökning
-                  items:
-                    - name: Felsökningsfel vid redigering av appen
-                      href: how-to-custom-commands-debug-build-time.md
-                    - name: Felsökningsfel vid körning av appen
-                      href: how-to-custom-commands-debug-runtime.md
-                - name: Referenser
-                  items:
-                    - name: Begrepp för anpassade kommandon
-                      href: custom-commands-references.md
+                - name: Kontinuerlig distribution med Azure DevOps
+                  href: how-to-custom-commands-deploy-cicd.md
+                - name: Testa program för anpassade kommandon
+                  href: how-to-custom-commands-developer-flow-test.md
+                - name: Felsökningsfel vid redigering av appen
+                  href: how-to-custom-commands-debug-build-time.md
+                - name: Felsökningsfel vid körning av appen
+                  href: how-to-custom-commands-debug-runtime.md
             - name: Resurser
               items:
+                - name: Begrepp för anpassade kommandon
+                  href: custom-commands-references.md
                 - name: Exempel på anpassade kommandon (GitHub)
                   href: 'https://aka.ms/speech/cc-samples'
                 - name: Röstassistentexempel (GitHub)

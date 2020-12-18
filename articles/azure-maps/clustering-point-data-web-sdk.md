@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 9ecde4cb0c8a3bfe3dd8fb2edb59423838e0751c
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: e80465cf8d43918e6ed6da8ebb3b96f3f197e887
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92889875"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679954"
 ---
 # <a name="clustering-point-data"></a>Kluster plats data
 
 Vid visualisering av många data punkter på kartan kan data punkterna överlappa varandra. Överlappningen kan leda till att kartan blir oläslig och svår att använda. Kluster plats data är en process för att kombinera punkt data som ligger nära varandra och som representerar dem på kartan som en enda klustrad data punkt. När användaren zoomar in i kartan delas klustren isär i sina enskilda data punkter. När du arbetar med ett stort antal data punkter kan du använda kluster processerna för att förbättra användar upplevelsen.
 
-<br/>
+</br>
 
-<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Clustering-point-data-in-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Clustering-point-data-in-Azure-Maps/player?format=ny]
 
 ## <a name="enabling-clustering-on-a-data-source"></a>Aktivera klustring på en data Källa
 
@@ -96,7 +96,7 @@ När mus händelser inträffar i ett lager som innehåller grupperade data punkt
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | Anger om funktionen representerar ett kluster. |
 | `cluster_id`              | sträng  | Ett unikt ID för klustret som kan användas med DataSource `getClusterExpansionZoom` -, `getClusterChildren` -och- `getClusterLeaves` metoder. |
-| `point_count`             | nummer  | Antalet platser som klustret innehåller.  |
+| `point_count`             | antal  | Antalet platser som klustret innehåller.  |
 | `point_count_abbreviated` | sträng  | En sträng som förkortar `point_count` värdet om det är långt. (till exempel 4 000 blir 4K)  |
 
 Det här exemplet tar ett bubbeldiagram som återger kluster punkter och lägger till en klickning-händelse. När du klickar på händelse utlösare, beräknar koden och zoomar in kartan till nästa zoomnings nivå, där klustret delar isär. Den här funktionen implementeras med hjälp av `getClusterExpansionZoom` metoden för `DataSource` klassen och `cluster_id` egenskapen för den klickade klustrade data punkten.

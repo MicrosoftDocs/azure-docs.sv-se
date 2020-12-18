@@ -10,13 +10,13 @@ ms.author: weetok
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: cc95913b0ab815449a1cd56c0c9127410a64b600
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.date: 12/17/2020
+ms.openlocfilehash: b5b0f6dcef728f0597e7eac8ba57c8fd240d19c9
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591909"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680296"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Kontinuerlig integrering och leverans i Azure Data Factory
 
@@ -28,7 +28,7 @@ Kontinuerlig integrering är en metod för att testa varje ändring av kodbasen 
 
 I Azure Data Factory innebär kontinuerlig integrering och leverans (CI/CD) flytt av Data Factory pipelines från en miljö (utveckling, testning, produktion) till en annan. Azure Data Factory använder [Azure Resource Manager mallar](../azure-resource-manager/templates/overview.md) för att lagra konfigurationen av dina olika ADF-enheter (pipelines, data uppsättningar, data flöden osv.). Det finns två föreslagna metoder för att flytta en data fabrik till en annan miljö:
 
--    Automatiserad distribution med hjälp av Data Factorys integrering med [Azure-pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops)
+-    Automatiserad distribution med hjälp av Data Factorys integrering med [Azure-pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines)
 -    Ladda upp en Resource Manager-mall manuellt med hjälp av Data Factory UX-integrering med Azure Resource Manager.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -115,7 +115,7 @@ Följande är en guide för att konfigurera en Azure pipelines-lansering som aut
 
 1.  Spara versions pipelinen.
 
-1. Om du vill utlösa en version väljer du **Skapa version**. För att automatisera skapandet av versioner, se [Azure DevOps release triggers](/azure/devops/pipelines/release/triggers?view=azure-devops)
+1. Om du vill utlösa en version väljer du **Skapa version**. För att automatisera skapandet av versioner, se [Azure DevOps release triggers](/azure/devops/pipelines/release/triggers)
 
    ![Välj Skapa version](media/continuous-integration-deployment/continuous-integration-image10.png)
 
@@ -207,6 +207,12 @@ Om din utvecklings fabrik har en kopplad git-lagringsplats, kan du åsidosätta 
 
 * Du använder automatiserad CI/CD och du vill ändra vissa egenskaper under distributionen av Resource Manager, men egenskaperna är inte parameterstyrda som standard.
 * Fabriken är så stor att Resource Manager-standardmallen är ogiltig eftersom den har fler än det högsta tillåtna antalet parametrar (256).
+
+    Det finns tre alternativ för att hantera den anpassade parametern 256-gränsen:    
+  
+    * Använd den anpassade parameter filen och ta bort egenskaper som inte behöver Parameterisering, t. ex., egenskaper som kan behålla ett standardvärde och därmed minska antalet parametrar.
+    * Omfaktas logik i data flödet för att minska parametrar, till exempel har alla pipeline-parametrar samma värde. du kan bara använda globala parametrar i stället.
+    * Dela en data fabrik i flera data flöden.
 
 Om du vill åsidosätta standard mal len Parameterisering går du till hanterings hubben och väljer **Parameterisering-mall** i avsnittet käll kontroll. Välj **Redigera mall** för att öppna kod redigeraren för parameterisering. 
 
@@ -639,7 +645,7 @@ Se videon under en djupgående video genom gång om hur du kan åtgärda dina mi
 
 ## <a name="exposure-control-and-feature-flags"></a>Exponerings kontroll och funktions flaggor
 
-När du arbetar med ett team finns det instanser där du kan slå samman ändringar, men vill inte att de ska köras i utökade miljöer som till exempel PROD och frågor och svar. För att hantera det här scenariot rekommenderar ADF-teamet [DevOps-begreppet att använda funktions flaggor](/azure/devops/migrate/phase-features-with-feature-flags?view=azure-devops). I ADF kan du kombinera [globala parametrar](author-global-parameters.md) och [if villkor-aktiviteten](control-flow-if-condition-activity.md) för att dölja uppsättningar av logik baserat på dessa miljö flaggor.
+När du arbetar med ett team finns det instanser där du kan slå samman ändringar, men vill inte att de ska köras i utökade miljöer som till exempel PROD och frågor och svar. För att hantera det här scenariot rekommenderar ADF-teamet [DevOps-begreppet att använda funktions flaggor](/azure/devops/migrate/phase-features-with-feature-flags). I ADF kan du kombinera [globala parametrar](author-global-parameters.md) och [if villkor-aktiviteten](control-flow-if-condition-activity.md) för att dölja uppsättningar av logik baserat på dessa miljö flaggor.
 
 Information om hur du konfigurerar en funktions flagga finns i följande video kurs:
 

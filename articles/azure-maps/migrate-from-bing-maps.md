@@ -3,22 +3,36 @@ title: 'Självstudie: Migrera från Bing Maps till Azure Maps | Microsoft Azure 
 description: 'En själv studie kurs om hur du migrerar från Bing Maps till Microsoft Azure Maps. Vägledningen vägleder dig genom hur du växlar till Azure Maps API: er och SDK: er.'
 author: rbrundritt
 ms.author: richbrun
-ms.date: 9/10/2020
+ms.date: 12/17/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 0045520849ea20d3e53a30101e6db0f5d495ab15
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 52768874ef27bf87846d4abbd68e9e8c1972f996
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897015"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679454"
 ---
-# <a name="tutorial---migrate-from-bing-maps-to-azure-maps"></a>Självstudie – migrera från Bing Maps till Azure Maps
+# <a name="tutorial-migrate-from-bing-maps-to-azure-maps"></a>Självstudie: Migrera från Bing Maps till Azure Maps
 
-Den här guiden innehåller information om hur du migrerar webb-, mobil-och serverbaserade program från Bing Maps till Azure Maps-plattformen. Den här guiden innehåller jämför ande kod exempel, förslag på migrering och metod tips för migrering till Azure Maps.
+Den här guiden innehåller information om hur du migrerar webb-, mobil-och serverbaserade program från Bing Maps till Azure Maps-plattformen. Den här guiden innehåller jämför ande kod exempel, förslag på migrering och metod tips för migrering till Azure Maps. 
+
+I den här självstudiekursen lär du dig:
+
+> [!div class="checklist"]
+> * Jämförelse på hög nivå för motsvarande Bing Maps-funktioner som finns i Azure Maps.
+> * Vilka licensierings skillnader som bör beaktas.
+> * Planera migreringen.
+> * Här hittar du tekniska resurser och support.
+
+## <a name="prerequisites"></a>Förutsättningar
+
+1. Logga in på [Azure-portalen](https://portal.azure.com). Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
+2. [Skapa ett Azure Maps konto](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [Hämta en primär prenumerations nyckel](quick-demo-map-app.md#get-the-primary-key-for-your-account), även kallat primär nyckel eller prenumerations nyckel. Mer information om autentisering i Azure Maps finns i [hantera autentisering i Azure Maps](how-to-manage-authentication.md).
 
 ## <a name="azure-maps-platform-overview"></a>Översikt över Azure Maps plattform
 
@@ -39,7 +53,7 @@ I följande tabell finns en lista över Bing Maps-funktioner på hög nivå och 
 | Automatiska förslag                           | ✓                  |
 | Vägvisningar (inklusive Truck)          | ✓                  |
 | Avstånds mat ris                       | ✓                  |
-| Utökade privilegier                            | Planerad            |
+| Utökade privilegier                            | ✓ (För hands version)        |
 | Bilder – statisk karta                  | ✓                  |
 | Bilder metadata                      | ✓                  |
 | ISO Kron                            | ✓                  |
@@ -54,26 +68,26 @@ I följande tabell finns en lista över Bing Maps-funktioner på hög nivå och 
 | Trafik incidenter                     | ✓                  |
 | Konfigurations drivna kartor             | Saknas                |
 
-Bing Maps innehåller grundläggande nyckelbaserad autentisering. Azure Maps tillhandahåller både grundläggande nyckelbaserad autentisering och mycket säker Azure Active Directory autentisering.
+Bing Maps innehåller grundläggande nyckelbaserad autentisering. Azure Maps ger både grundläggande nyckelbaserad autentisering och mycket säker Azure Active Directory autentisering.
 
 ## <a name="licensing-considerations"></a>Licens överväganden
 
-När du migrerar till Azure Maps från Bing Maps bör följande beaktas med avseende på licensiering.
+När du migrerar till Azure Maps från Bing Maps bör följande information beaktas med avseende på licensiering.
 
--   Azure Maps avgifter för användning av interaktiva kartor baserat på antalet inlästa kart paneler, medan Bing Maps debiteras för inläsningen av kart kontrollen (sessioner). På Azure Maps cachelagras kart paneler automatiskt för att minska kostnaderna för utvecklaren. En Azure Maps transaktion skapas för varje 15 kart paneler som läses in. I de interaktiva Azure Maps SDK: erna används 512-pixel-paneler och i genomsnitt genereras en eller färre transaktioner per sid-vy.
+* Azure Maps avgifter för användning av interaktiva kartor baserat på antalet inlästa kart paneler, medan Bing Maps debiteras för inläsningen av kart kontrollen (sessioner). För att minska kostnaderna för utvecklare Azure Maps automatiskt cachelagrar kartor. En Azure Maps transaktion skapas för varje 15 kart paneler som läses in. I de interaktiva Azure Maps SDK: erna används 512-pixel-paneler och i genomsnitt genereras en eller färre transaktioner per sid-vy.
 
--   Azure Maps tillåter att data från sin plattform lagras i Azure. Den kan också cachelagras på andra platser i upp till sex månader enligt [användnings villkoren](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31).
+* Azure Maps tillåter att data från sin plattform lagras i Azure. Den kan också cachelagras på andra platser i upp till sex månader enligt [användnings villkoren](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31).
 
-Här följer några licensierings resurser för Azure Maps:
+Här följer några licens-relaterade resurser för Azure Maps:
 
 -   [Sidan Azure Maps prissättning](https://azure.microsoft.com/pricing/details/azure-maps/)
--   [Priskalkylator för Azure](https://azure.microsoft.com/pricing/calculator/?service=azure-maps)
+-   [ Priskalkylator för Azure](https://azure.microsoft.com/pricing/calculator/?service=azure-maps)
 -   [Azure Maps användnings villkor](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) (ingår i villkoren för Microsoft Online Services)
 -   [Välj rätt pris nivå i Azure Maps](./choose-pricing-tier.md)
 
 ## <a name="suggested-migration-plan"></a>Föreslagen migrations plan
 
-Följande är en uppgraderings plan med höga nivåer.
+Här är ett exempel på en plan med hög nivå migrering.
 
 1.  Ta reda på vad Bing Maps SDK: er och tjänster som ditt program använder och kontrol lera att Azure Maps tillhandahåller alternativa SDK: er och tjänster som du kan migrera till.
 2.  Skapa en Azure-prenumeration (om du inte redan har en) på <https://azure.com> .
@@ -88,28 +102,28 @@ Följ dessa steg om du vill skapa ett Azure Maps konto och få åtkomst till Azu
 
 1. Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
 2. Logga in på [Azure-portalen](https://portal.azure.com/).
-3. Skapa ett [Azure Maps-konto](./how-to-manage-account-keys.md). 
+3. Skapa ett [Azure Maps-konto](./how-to-manage-account-keys.md).
 4. [Hämta din Azure Maps prenumerations nyckel](./how-to-manage-authentication.md#view-authentication-details) eller konfigurera Azure Active Directory autentisering för förbättrad säkerhet.
 
 ## <a name="azure-maps-technical-resources"></a>Azure Maps tekniska resurser
 
 Här är en lista över användbara tekniska resurser för Azure Maps.
 
--   Översikt: https://azure.com/maps
--   Handlingar <https://aka.ms/AzureMapsDocs>
--   Kod exempel för webb-SDK: <https://aka.ms/AzureMapsSamples>
--   Forum för utvecklare: <https://aka.ms/AzureMapsForums>
--   Videos <https://aka.ms/AzureMapsVideos>
--   Blogg <https://aka.ms/AzureMapsBlog>
--   Azure Maps feedback (UserVoice): <https://aka.ms/AzureMapsFeedback>
+* Översikt: <https://azure.com/maps>
+* Handlingar <https://aka.ms/AzureMapsDocs>
+* Kod exempel för webb-SDK: <https://aka.ms/AzureMapsSamples>
+* Forum för utvecklare: <https://aka.ms/AzureMapsForums>
+* Videos <https://aka.ms/AzureMapsVideos>
+* Blogg <https://aka.ms/AzureMapsBlog>
+* Azure Maps feedback (UserVoice): <https://aka.ms/AzureMapsFeedback>
 
 ## <a name="migration-support"></a>Stöd för migrering
 
 Utvecklare kan söka efter stöd för migrering via [forumen](/answers/topics/azure-maps.html) eller via ett av de många support alternativen för Azure: <https://azure.microsoft.com/support/options/>
 
-## <a name="new-terminology"></a>Ny terminologi 
+## <a name="new-terminology"></a>Ny terminologi
 
-Följande är en lista över vanliga Bing Maps-termer och som är kända med en annan term i Azure Maps.
+Följande lista innehåller vanliga villkor för Bing Maps och deras motsvarande Azure Maps villkor.
 
 | Villkor för Bing Maps                    | Azure Mapss period                                                |
 |-----------------------------------|----------------------------------------------------------------|
@@ -128,12 +142,13 @@ Följande är en lista över vanliga Bing Maps-termer och som är kända med en 
 | Navigeringsfält                    | Kartans stil väljare, zoomnings kontroll, bredd kontroll, kompass kontroll |
 | Kartnålsikon                           | Bubbel lager, symbol lager eller HTML-markör                      |
 
+## <a name="clean-up-resources"></a>Rensa resurser
+
+Det finns inga resurser som kräver rensning.
+
 ## <a name="next-steps"></a>Nästa steg
 
 Lär dig mer om hur du migrerar ditt Bing Maps-program med följande artiklar:
 
 > [!div class="nextstepaction"]
 > [Migrera en webbapp](migrate-from-bing-maps-web-app.md)
-
-> [!div class="nextstepaction"]
-> [Migrera en webbtjänst](migrate-from-bing-maps-web-services.md)

@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 11/23/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: b132368982e0013bfe6f3ffd52e7aacb7b1274eb
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: e822a2be200f701d65ab2080804d252f99589680
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96003347"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680796"
 ---
-# <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Självstudie: skapa en export ordning för Azure Data Box (förhands granskning)
+# <a name="tutorial-create-export-order-for-azure-data-box"></a>Självstudie: skapa en export ordning för Azure Data Box
 
 Azure Data Box är en hybrid lösning som gör att du kan flytta data från Azure till din plats. I den här självstudien beskrivs hur du skapar en export ordning för Azure Data Box. Huvud anledningen till att skapa en export ordning är för haveri beredskap, om lagringen på plats blir komprometterad och en säkerhets kopiering måste återställas.
 
@@ -27,8 +27,6 @@ I den här självstudien lär du dig:
 > * Beställ ett Data Box-enhet för export
 > * Spåra export ordningen
 > * Avbryt export ordningen
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -82,7 +80,7 @@ Utför följande steg på Azure-portalen för att beställa en enhet.
 
 6. Ange **grundläggande** beställnings information i **ordning**. Ange eller välj följande information.
 
-    |Inställning  |Värde  |
+    |Inställningen  |Värde  |
     |---------|---------|
     |Prenumeration     | Prenumerationen fylls i automatiskt baserat på din tidigare val.|
     |Resursgrupp | Den resurs grupp som du valde tidigare. |
@@ -98,7 +96,7 @@ Utför följande steg på Azure-portalen för att beställa en enhet.
 
 8. I **Välj export alternativ** anger du alternativ informationen för export. Ange eller Välj följande information och välj sedan **Lägg till**.
 
-    |Inställning  |Värde  |
+    |Inställningen  |Värde  |
     |---------|---------|
     |Lagringskonto     | Det Azure Storage konto som du vill exportera data från. |
     |Export typ     | Anger vilken typ av data som ska exporteras från **alla objekt** och **använda XML-filen**.<ul><li> **Alla objekt** – anger att jobbet ska exportera alla data beroende på ditt val av **överförings alternativ**.</li><li> **Använd XML-fil** – anger en XML-fil som innehåller en uppsättning sökvägar och prefix för blobbar och/eller filer som ska exporteras från lagrings kontot. XML-filen måste finnas i det valda lagrings kontots behållare och det finns för närvarande inte stöd för att välja från fil resurser. Filen måste vara en XML-fil som inte är tom.</li></ul>        |
@@ -332,7 +330,7 @@ Några viktiga punkter i avseende XML-filer:
 
 I följande tabell visas exempel på giltiga BLOB-sökvägar:
 
-   | Väljare | BLOB-sökväg | Description |
+   | Väljare | BLOB-sökväg | Beskrivning |
    | --- | --- | --- |
    | Börjar med |/ |Exporterar alla blobar i lagrings kontot |
    | Börjar med |/$root/ |Exporterar alla blobbar i rot behållaren |

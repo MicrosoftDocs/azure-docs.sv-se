@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: 7d2734d386f1e49e2227058b148ee6b591d14a42
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 46a18cb2b6e1682427d5674be28b240f35b120fe
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94336502"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678642"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Använd Azure Portal för att administrera Azure Data Box och Azure Data Box Heavy
 
@@ -21,14 +21,11 @@ Den här artikeln gäller både Azure Data Box och Azure Data Box Heavy. I den h
 
 Den här artikeln fokuserar på de uppgifter som du kan utföra på Azure Portal. Använd Azure Portal för att hantera order, hantera Data Box-enhets enhet och spåra status för beställningen när den fortsätter att slutföras.
 
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
-
-
 ## <a name="cancel-an-order"></a>Annullera en beställning
 
-Ibland kan du behöva annullera en beställning som du gjort. 
+Du kan behöva avbryta en order av olika orsaker efter att du har placerat den.
 
-För både import-och export order kan du bara avbryta ordningen innan ordern bearbetas. När beställningen har bearbetats och Data Box-enhet enheten har för beretts, går det inte att avbryta ordningen.
+För både import-och export order kan du bara avbryta beställningen innan den bearbetas. När din beställning har bearbetats och den Data Box-enhet enheten är för beredd kan du inte annullera ordningen.
 
 Följ stegen nedan om du vill annullera en beställning.
 
@@ -44,10 +41,7 @@ Följ stegen nedan om du vill annullera en beställning.
 
 ## <a name="clone-an-order"></a>Klona en order
 
-Kloning är användbart i vissa situationer. Exempelvis har en användare kanske använt Data Box för att överföra vissa data. När mer data genereras måste en annan Data Box-enhet enhet överföra dessa data till Azure. I så fall behöver du bara klona samma order.
-
-> [!IMPORTANT]
-> Kloning är inte tillgängligt för export order. Du kan bara klona import order.
+Kloning är användbart i vissa situationer. Du har till exempel använt Data Box-enhet för att överföra vissa data. När mer data genereras måste du använda en annan Data Box-enhet enhet för att överföra dessa data till Azure. I det här fallet kan du bara klona samma ordning.
 
 Utför följande steg för att klona en import ordning.
 
@@ -76,7 +70,7 @@ Du kan bara ta bort order som har slutförts eller avbrutits. Följ steg nedan o
 
 ## <a name="download-shipping-label"></a>Ladda ned adressetikett
 
-Du kan behöva ladda ned adressetiketten om E-ink-skärmen på din Data Box inte fungerar och inte visar returfraktsedeln. Det finns ingen E-Penn visning på Data Box Heavy och därför gäller inte det här arbets flödet för Data Box Heavy.
+Du kan behöva hämta skeppnings etiketten om E-Penn visningen av din Data Box-enhet inte fungerar och inte visar etiketten retur leverans. Det finns inget E-Penn visning på Data Box Heavy, så det här arbets flödet gäller inte för Data Box Heavy.
 
 Följ stegen nedan om du behöver ladda ned en fraktsedel.
 
@@ -104,7 +98,7 @@ Följ stegen nedan om du vill redigera ordern.
 
 ## <a name="edit-notification-details"></a>Redigera meddelandeinformation
 
-Du kan behöva ändra vilka användare som ska få e-postmeddelanden om orderstatusen. Exempelvis ska en användare kanske meddelas när enheten levereras eller hämtas. En annan användare kan behöva informeras när data kopieringen är klar så att de kan verifiera att data finns i Azure Storage-kontot innan de tas bort från källan. I dessa fall kan du redigera meddelandeinformationen.
+Du kan behöva ändra de användare som tar emot e-post för order status. Exempelvis ska en användare kanske meddelas när enheten levereras eller hämtas. En annan användare kan behöva informeras när data kopieringen är klar så att de kan verifiera att data finns i Azure Storage-kontot innan de tas bort från källan. I dessa fall kan du redigera meddelandeinformationen.
 
 Följ stegen nedan om du vill redigera meddelandeinformationen.
 
@@ -127,10 +121,10 @@ Ladda ned beställningshistoriken med hjälp av följande steg.
 
     ![Ladda ned beställningshistorik](media/data-box-portal-admin/portal-admin-download-order-history.png)
 
-2. Klicka på **Ladda ned beställningshistorik**. I den nedladdade historiken visas en post för transportspårningsloggar. Det finns två uppsättningar med logg som motsvarar de två noderna i en Data Box Heavy. Om du rullar ned till slutet av loggen visas följande länkar:
+2. Klicka på **Ladda ned beställningshistorik**. Den hämtade historiken innehåller en post med spårnings loggar för bärvåg. Det finns två uppsättningar med logg som motsvarar de två noderna på en Data Box Heavy enhet. Om du rullar ned till slutet av loggen visas följande länkar:
     
-   - **Kopierings loggar** – har en lista över filer som fel uppstod under data kopieringen från data Box-enhet till ditt Azure Storage-konto (import ordning) eller *vice versa* (export order).
-   - **Gransknings loggar** – innehåller information om hur du kan sätta igång och få åtkomst till resurser på den data Box-enhet när den ligger utanför Azure-datacentret.
+   - **Kopierings loggar** – innehåller en lista över filer som fel uppstod under data kopieringen från data Box-enhet till ditt Azure Storage-konto (import ordning) eller från ditt lagrings konto till data Box-enhet (export order).
+   - **Gransknings loggar** – innehåller information om hur du kan sätta på data Box-enhet och få åtkomst till resurser på den när data Box-enhet är utanför Azure-datacentret.
    - **Strukturlisteartiklar i import ordning** – innehåller en lista med filer (även kallat fil manifestet) som du kan ladda ned under **Förbered för att skicka** och har fil namn, fil storlekar och fil kontroll summor.
    - **Utförliga loggar i export ordning** – innehåller en lista över filer med fil namn, fil storlekar och beräkning av kontroll Summa när data kopierades från Azure Storage konton till data Box-enhet.
 
@@ -206,15 +200,15 @@ Ladda ned beställningshistoriken med hjälp av följande steg.
 
 ## <a name="view-order-status"></a>Visa orderstatus
 
-När enhetens status ändras i portalen meddelas du via e-post.
+När enhetens status ändras i portalen meddelas du via ett e-postmeddelande.
 
 ### <a name="statuses-for-import-order"></a>Status för import ordning
 
 Här är status för en import ordning.
 
-|Beställningsstatus |Description |
+|Beställningsstatus |Beskrivning |
 |---------|---------|
-|Beställt     | En beställning har gjorts. <br>Om enheten är tillgänglig identifierar Microsoft en enhet för leverans och förbereder enheten. <br> Om enheten inte är tillgänglig omedelbart bearbetas ordern när enheten blir tillgänglig. Ordern kan ta flera dagar till några månader att behandla. Om ordern inte kan uppfyllas inom 90 dagar annulleras den och du får ett meddelande.         |
+|Beställt     | En beställning har gjorts. <br>Om enheten är tillgänglig identifierar Microsoft en enhet för leverans och förbereder enheten. <br> Om enheten inte är tillgänglig direkt kommer ordern att bearbetas när enheten blir tillgänglig. Ordern kan ta flera dagar till några månader att behandla. Om ordern inte kan uppfyllas i 90 dagar annulleras ordern och du meddelas.         |
 |Bearbetad     | Orderbearbetningen har slutförts. Enligt din order förbereds enheten för leverans i datacentret.         |
 |Skickat     | Beställningen har skickats. Använd det spårnings-ID som visas i din order i portalen för att spåra leveransen.        |
 |Levererade     | Försändelsen har levererats till den adress som angetts i ordern.        |
@@ -224,23 +218,23 @@ Här är status för en import ordning.
 |Slutförd       |Ordern har slutförts.<br> Kontrollera att dina data finns i Azure innan du tar bort lokala data från servrarna.         |
 |Slutfört med fel| Datakopieringen slutfördes men fel inträffade under kopieringen. <br> Granska kopieringsloggarna med hjälp av sökvägen som anges i Azure-portalen. Se [exempel på kopierings loggar när överföringen är klar med fel](./data-box-logs.md#upload-completed-with-errors).   |
 |Slutfört med varningar| Data kopieringen slutfördes men dina data ändrades. Data innehöll icke-kritiska BLOB-eller fil namns fel som korrigerades genom att ändra fil-eller BLOB-namn. <br> Granska kopieringsloggarna med hjälp av sökvägen som anges i Azure-portalen. Anteckna ändringarna i dina data. Se [exempel på kopierings loggar när överföringen är klar med varningar](./data-box-logs.md#upload-completed-with-warnings).   |
-|Avbrutna            |Ordern har avbrutits. <br> Antingen annullerade du beställningen eller så påträffades ett fel som gjorde att tjänsten avbröt ordern. Om ordern inte kan uppfyllas inom 90 dagar annulleras den också och du får ett meddelande.     |
+|Avbrutna            |Ordern har avbrutits. <br> Antingen avbröt du ordern eller så avbröts tjänsten när ett fel uppstod. Om ordern inte kan uppfyllas i 90 dagar avbryts även ordern och du får ett meddelande.     |
 |Rensa | Data på enhetsdiskarna raderas. Enhetsrensningen anses slutförd när beställningshistoriken är tillgänglig för nedladdning i Azure-portalen.|
 
 ### <a name="statuses-for-export-order"></a>Status för export ordning
 
 Här är status för en export ordning.
 
-|Beställningsstatus |Description |
+|Beställningsstatus |Beskrivning |
 |---------|---------|
 |Beställt     | En export order har placerats. <br>Om enheten är tillgänglig identifierar Microsoft en enhet för leverans och förbereder enheten. <br> Om enheten inte är tillgänglig omedelbart bearbetas ordern när enheten blir tillgänglig. Ordern kan ta flera dagar till några månader att behandla. Om ordern inte kan uppfyllas inom 90 dagar annulleras den och du får ett meddelande.         |
 |Avbrutna            |Ordern har avbrutits. <br> Antingen avbröt du ordern (du kan bara avbryta innan ordern bearbetas) eller så påträffades ett fel och tjänsten avbröt ordern. Om ordern inte kan uppfyllas inom 90 dagar annulleras den också och du får ett meddelande.     |
 |Bearbetad     | Orderbearbetningen har slutförts. Enligt din beställning förbereds enheten för data kopiering i data centret. Enhets resurser skapas.         |
 |Data kopiering pågår     | Data kopieringen från de angivna Azure Storage-kontona till enheten pågår. Spåra kopieringsprocessen för din order i Azure-portalen. <br> Vänta tills datakopieringen är klar. |
-|Kopiering slutförd     | Data kopieringen från de angivna Azure Storage-kontona till enheten har slutförts. En utförlig loggfil (om alternativet har Aktiver ATS i ordningen) och en kopierings logg skapas i ditt lagrings konto. Utförlig logg innehåller information om alla filer (namn, sökväg, beräknings kontroll summa) som kopieras till enheten. Kopierings loggen innehåller en sammanfattning av kopierings processen, inklusive en lista över filer som inte kunde kopieras på grund av eventuella fel.<br> Lagrings kontots data finns kvar. |
+|Kopiering slutförd     | Data kopieringen från de angivna Azure Storage-kontona till enheten har slutförts. En utförlig loggfil (om alternativet har Aktiver ATS i ordningen) och en kopierings logg skapas i ditt lagrings konto. Utförlig logg innehåller information om alla filer (namn, sökväg, beräknings kontroll summa) som kopieras till enheten. Kopierings loggen innehåller en sammanfattning av kopierings processen, inklusive en lista över filer som inte kunde kopieras på grund av eventuella fel. <br> Lagrings kontots data är oförändrade. |
 |Kopieringen slutfördes med fel| Datakopieringen slutfördes men fel inträffade under kopieringen. <br> Granska kopierings loggarna i Azure Storage kontot med hjälp av sökvägen som anges i Azure Portal. Se [exempel på kopierings loggar när hämtningen är klar med fel](./data-box-logs.md#upload-completed-with-errors).   |
 |Kopieringen slutfördes med varningar| Data kopieringen från Azure Storage kontot slutfördes, men data innehöll icke-kritiska fel. <br> Granska kopieringsloggarna med hjälp av sökvägen som anges i Azure-portalen. Anteckna de icke-kritiska felen. Se [exempel på kopierings loggar när hämtningen är klar med varningar](./data-box-logs.md#upload-completed-with-warnings).   |
-|Kopieringen misslyckades med fel| Det gick inte att kopiera data från Azure Storage konto och ordningen avslutas. Ingen enhet skickas.<br> Granska kopierings loggarna i Azure Storage kontot med hjälp av sökvägen som anges i Azure Portal. Se [exempel på kopierings loggar när hämtningen misslyckades med fel](./data-box-logs.md#upload-completed-with-errors).   |
+|Kopieringen misslyckades med fel| Det gick inte att kopiera data från Azure Storage konto, och ordningen avslutas. Ingen enhet skickas. <br> Granska kopierings loggarna i Azure Storage kontot med hjälp av sökvägen som anges i Azure Portal. Se [exempel på kopierings loggar när hämtningen misslyckades med fel](./data-box-logs.md#upload-completed-with-errors).   |
 |Skickat     |Beställningen har skickats. Använd det spårnings-ID som visas i din order i portalen för att spåra leveransen.        |
 |Levererade     |Försändelsen har levererats till den adress som angetts i ordern.        |
 |Hämtat     |Din returleverans har hämtats och genomsökts av transportören.         |
@@ -252,14 +246,14 @@ Här är status för en export ordning.
 > Om kopierings jobbet för att exportera data från Azure Storage-konton till Data Box-enhet slutförs med fel eller varningar, levereras enheten fortfarande. I händelse av ett kopierings haveri avslutas ordningen och enheten levereras inte.
 
 
-Om du använder självhanterad leverans och du efter att kopieringen är klar och innan du får enheten, visas följande tillstånd (i stället för de som nämns i föregående tabell):
+Om du använder självhanterad leverans efter att kopieringen har slutförts och innan du får enheten, ser du följande tillstånd (i stället för de som nämns i tabellen ovan):
 
-|Beställningsstatus |Description |
+|Beställningsstatus |Beskrivning |
 |---------|---------|
 |Redo för hämtning i Azure Data Center      |Enheten är redo att hämtas i Azure-datacentret.        |
 |Hämtat    |Du har valt enheten.         |
 |Redo att ta emot i Azure Data Center     |Enheten är redo att tas emot i Azure-datacentret.        |
-|Mottaget     |Enheten tas emot i Azure-datacentret.      |
+|Mottaget     |Enheten har mottagits i Azure-datacentret.      |
 
 
 

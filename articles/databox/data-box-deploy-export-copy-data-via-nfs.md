@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/01/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: bd8e6d4175c57bd31c3fd83bf6f9669d2b65ffb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64bb5e94c4b18626d1f85d7e61252aae74202eb9
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91660859"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680625"
 ---
-# <a name="tutorial-copy-data-from-azure-data-box-via-nfs-preview"></a>Självstudie: kopiera data från Azure Data Box via NFS (för hands version)
+# <a name="tutorial-copy-data-from-azure-data-box-via-nfs"></a>Självstudie: kopiera data från Azure Data Box via NFS
 
 I den här självstudien beskrivs hur du ansluter till och kopierar data från det lokala webb gränssnittet för din Data Box-enhet till en lokal data server via NFS. Data på din Data Box-enhet exporteras från ditt Azure Storage-konto.
 
@@ -26,8 +26,6 @@ I den här guiden får du lära dig att:
 > * Krav
 > * Ansluta till Data Box
 > * Kopiera data från Data Box-enhet
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="prerequisites"></a>Krav
 
@@ -53,7 +51,7 @@ Om du använder en Linux-värddator utför du stegen nedan för att konfigurera 
 
         ![Öppna NFS-klient åtkomst](media/data-box-deploy-export-copy-data/nfs-client-access-1.png)
 
-    1. Om du vill lägga till en NFS-klient anger du klientens IP-adress och klickar på **Lägg till**. Data Box-enhet kan ansluta upp till fem NFS-klienter i taget. Klicka på **OK**när du är klar.
+    1. Om du vill lägga till en NFS-klient anger du klientens IP-adress och klickar på **Lägg till**. Data Box-enhet kan ansluta upp till fem NFS-klienter i taget. Klicka på **OK** när du är klar.
 
          ![Lägg till en NFS-klient](media/data-box-deploy-export-copy-data/nfs-client-access-2.png)
 
@@ -79,11 +77,11 @@ När du är ansluten till Data Box-resurser är nästa steg att kopiera data.
 
 [!INCLUDE [data-box-export-review-logs](../../includes/data-box-export-review-logs.md)]
 
- Nu kan du börja kopiera data. Om du använder en Linux-värddator använder du en kopieringsverktyg som liknar Robocopy. Några av alternativen som är tillgängliga i Linux är [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) eller [Ultracopier](https://ultracopier.first-world.info/).  
+ Nu kan du börja kopiera data. Om du använder en Linux-värddator använder du en kopieringsverktyg som liknar Robocopy. Några av de alternativ som är tillgängliga i Linux är [`rsync`](https://rsync.samba.org/) , [FreeFileSync](https://www.freefilesync.org/), [dem samtidigt](https://www.cis.upenn.edu/~bcpierce/unison/)eller [ultracopier](https://ultracopier.first-world.info/).  
 
 Kommandot `cp` är ett av de bästa alternativen för att kopiera en katalog. Mer information om användningen finns på [cp man-sidorna](http://man7.org/linux/man-pages/man1/cp.1.html).
 
-Om du använder rsync-alternativet för en flertrådig kopia följer du dessa riktlinjer:
+`rsync`Följ dessa rikt linjer om du använder alternativet för en flertrådad kopia:
 
 * Installera **CIFS Utils**- eller **NFS Utils**-paketet, beroende på vilket filsystem din Linux-klient använder.
 
@@ -91,7 +89,7 @@ Om du använder rsync-alternativet för en flertrådig kopia följer du dessa ri
 
     `sudo apt-get install nfs-utils`
 
-* Installera **rsync** och **Parallel** (varierar beroende på den distribuerade Linux-versionen).
+* Installation `rsync` och **parallell** (varierar beroende på den distribuerade Linux-versionen).
 
     `sudo apt-get install rsync`
    

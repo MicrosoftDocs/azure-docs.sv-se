@@ -6,22 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/07/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: 859eb6abd138f0660407618bba4550daf9158ab9
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: e84f39fa5b9245d1874e60d651156e99c0885040
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855013"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678919"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Använd det lokala webb gränssnittet för att administrera Data Box-enhet och Data Box Heavy
 
 I den här artikeln beskrivs några konfigurations-och hanterings uppgifter som utförs på Data Box-enhet och Data Box Heavy enheter. Du kan hantera Data Box-enhet och Data Box Heavy enheter via Azure Portal användar gränssnittet och det lokala webb gränssnittet för enheten. Den här artikeln fokuserar på uppgifter som utförs med hjälp av det lokala webb gränssnittet.
 
 Det lokala webb gränssnittet för Data Box-enhet och för Data Box Heavy används för den inledande konfigurationen av enheten. Du kan också använda det lokala webb gränssnittet för att stänga av eller starta om enheten, köra diagnostiska tester, uppdatera program vara, Visa kopierings loggar, radera lokala data från enheten och generera ett support paket för Microsoft Support. På en Data Box Heavy enhet med två oberoende noder kan du komma åt två separata lokala webb-UIs som motsvarar varje nod i enheten.
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="generate-support-package"></a>Generera supportpaket
 

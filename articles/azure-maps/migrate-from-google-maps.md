@@ -9,24 +9,24 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 61b6f4a530ab1861c67b0bd4983167546e268957
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: decf289614179718d5c3424f6d4482a5ce2c43e1
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896335"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680729"
 ---
-# <a name="tutorial---migrate-from-google-maps-to-azure-maps"></a>Självstudie – migrera från Google Maps till Azure Maps
+# <a name="tutorial-migrate-from-google-maps-to-azure-maps"></a>Självstudie: Migrera från Google Maps till Azure Maps
 
 Den här artikeln innehåller insikter om hur du migrerar webb-, mobil-och serverbaserade program från Google Maps till Microsoft Azure Maps-plattformen. Den här självstudien innehåller jämför ande kod exempel, förslag på migrering och metod tips för migrering till Azure Maps. I den här kursen lär du dig:
 
 > [!div class="checklist"]
-> * Jämförelse på hög nivå för motsvarande Google Maps-funktioner som finns i Azure Maps
-> * Vilka licensierings skillnader som bör beaktas
-> * Planera migreringen
+> * Jämförelse på hög nivå för motsvarande Google Maps-funktioner som finns i Azure Maps.
+> * Vilka licensierings skillnader som bör beaktas.
+> * Planera migreringen.
 > * Här hittar du tekniska resurser och support.
 
-## <a name="prerequisites"></a>Förutsättningar 
+## <a name="prerequisites"></a>Förutsättningar
 
 1. Logga in på [Azure-portalen](https://portal.azure.com). Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
 2. [Skapa ett Azure Maps konto](quick-demo-map-app.md#create-an-azure-maps-account)
@@ -70,16 +70,16 @@ Google Maps innehåller grundläggande nyckelbaserad autentisering. Azure Maps t
 
 När du migrerar till Azure Maps från Google Maps bör du tänka på följande saker om licensiering.
 
-- Azure Maps avgifter för användning av interaktiva kartor, som baseras på antalet inlästa kart paneler. Google Maps å andra sidan debiteras för inläsning av kart kontrollen. I de interaktiva Azure Maps SDK: erna cachelagras kart paneler automatiskt för att minska utvecklings kostnaden. En Azure Maps transaktion skapas för varje 15 kart paneler som läses in. I de interaktiva Azure Maps SDK: erna används 512-pixel paneler och i genomsnitt skapas en eller färre transaktioner per sid visning.
-- Ofta är det mer kostnads effektivt att ersätta statiska kart bilder från Google Maps-webbtjänster med Azure Maps Web SDK. Azure Maps Web SDK använder kart paneler. Om inte användaren Pans och zoomar in kartan genererar tjänsten ofta bara en bråkdel av en transaktion per kart överföring. Azure Maps Web SDK har alternativ för att inaktivera panorering och zoomning, om så önskas. Dessutom innehåller Azure Maps Web SDK ett mer visualiserings alternativ än den statiska kart webb tjänsten.
-- Azure Maps tillåter att data från sin plattform lagras i Azure. Dessutom kan data cachelagras på andra platser i upp till sex månader enligt [användnings villkoren](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46).
+* Azure Maps avgifter för användning av interaktiva kartor, som baseras på antalet inlästa kart paneler. Google Maps å andra sidan debiteras för inläsning av kart kontrollen. I de interaktiva Azure Maps SDK: erna cachelagras kart paneler automatiskt för att minska utvecklings kostnaden. En Azure Maps transaktion skapas för varje 15 kart paneler som läses in. I de interaktiva Azure Maps SDK: erna används 512-pixel paneler och i genomsnitt skapas en eller färre transaktioner per sid visning.
+* Ofta är det mer kostnads effektivt att ersätta statiska kart bilder från Google Maps-webbtjänster med Azure Maps Web SDK. Azure Maps Web SDK använder kart paneler. Om inte användaren Pans och zoomar in kartan genererar tjänsten ofta bara en bråkdel av en transaktion per kart överföring. Azure Maps Web SDK har alternativ för att inaktivera panorering och zoomning, om så önskas. Dessutom innehåller Azure Maps Web SDK ett mer visualiserings alternativ än den statiska kart webb tjänsten.
+* Azure Maps tillåter att data från sin plattform lagras i Azure. Dessutom kan data cachelagras på andra platser i upp till sex månader enligt [användnings villkoren](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46).
 
 Här följer några relaterade resurser för Azure Maps:
 
-- [Sidan Azure Maps prissättning](https://azure.microsoft.com/pricing/details/azure-maps/)
-- [Priskalkylator för Azure](https://azure.microsoft.com/pricing/calculator/?service=azure-maps)
-- [Azure Maps användnings villkor](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46) (ingår i villkoren för Microsoft Online Services)
-- [Välj rätt pris nivå i Azure Maps](./choose-pricing-tier.md)
+* [Sidan Azure Maps prissättning](https://azure.microsoft.com/pricing/details/azure-maps/)
+* [ Priskalkylator för Azure](https://azure.microsoft.com/pricing/calculator/?service=azure-maps)
+* [Azure Maps användnings villkor](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46) (ingår i villkoren för Microsoft Online Services)
+* [Välj rätt pris nivå i Azure Maps](./choose-pricing-tier.md)
 
 ## <a name="suggested-migration-plan"></a>Föreslagen migrations plan
 
@@ -119,15 +119,13 @@ Här är en lista över användbara tekniska resurser för Azure Maps.
 
 Utvecklare kan söka efter stöd för migrering via [forumen](/answers/topics/azure-maps.html) eller via ett av de många support alternativen för Azure: [https://azure.microsoft.com/support/options](https://azure.microsoft.com/support/options)
 
+## <a name="clean-up-resources"></a>Rensa resurser
+
+Det gick inte att rensa några resurser.
+
 ## <a name="next-steps"></a>Nästa steg
 
 Lär dig mer om hur du migrerar ditt Google Maps-program med följande artiklar:
 
 > [!div class="nextstepaction"]
 > [Migrera en webbapp](migrate-from-google-maps-web-app.md)
-
-> [!div class="nextstepaction"]
-> [Migrera en webbtjänst](migrate-from-google-maps-web-services.md) 
-
-> [!div class="nextstepaction"]
-> [Migrera en Android-app](migrate-from-google-maps-android-app.md) 

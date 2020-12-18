@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 32cd6c23e1fe465a801e56fad5dd3461df860503
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 485042c795fd94ef7daa8e00b9869190e9df61c8
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182741"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678545"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Regioner och Tillgänglighetszoner i Azure
 
@@ -79,7 +79,7 @@ Om ett tjänst erbjudande inte är tillgängligt i en speciell region kan du del
 | Regions typ | Icke-regional | Grundläggande | Konventionell | Specialiserade | Tillgänglighetszoner | Dataplacering |
 | --- | --- | --- | --- | --- | --- | --- |
 | Rekommenderas | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Demand-driven | :heavy_check_mark: | :heavy_check_mark: |
-| Alternativa | :heavy_check_mark: | :heavy_check_mark: | Demand-driven | Demand-driven | E.t. | :heavy_check_mark: |
+| Alternativa | :heavy_check_mark: | :heavy_check_mark: | Demand-driven | Demand-driven | Saknas | :heavy_check_mark: |
 
 ### <a name="services-by-category"></a>Tjänster efter kategori
 
@@ -94,7 +94,7 @@ Som tidigare nämnts klassificerar Azure tjänster i tre kategorier: grundlägga
 > | Konto lagring | API Management | Azure API för FHIR |
 > | Application Gateway | App Configuration | Azure Analysis Services |
 > | Azure Backup | App Service | Azure Blockchain Service |
-> | Azure Cosmos DB | Automation | Azure Blueprints |
+> | Azure Cosmos DB | Automation | Azure Blueprint |
 > | Azure Data Lake Storage Gen2 | Azure Active Directory Domain Services | Azure-databas för MariaDB |
 > | Azure ExpressRoute | Azure Bastion | Dedikerad HSM i Azure |
 > | Azure SQL Database | Azure Cache for Redis | Azure Dev Spaces |
@@ -181,6 +181,7 @@ Det kostar ingen ytterligare kostnad för virtuella datorer som distribueras i e
 - [Komma igång Azure cache för Redis Tillgänglighetszoner](https://aka.ms/redis/az/getstarted)
 - [Skapa en Azure Active Directory Domain Services-instans](../active-directory-domain-services/tutorial-create-instance.md)
 - [Skapa ett Azure Kubernetes service-kluster (AKS) som använder Tillgänglighetszoner](../aks/availability-zones.md)
+- [Aktivera zon-redundans i Azure Container Registry](../container-registry/zone-redundancy.md)
 
 ## <a name="next-steps"></a>Nästa steg
 

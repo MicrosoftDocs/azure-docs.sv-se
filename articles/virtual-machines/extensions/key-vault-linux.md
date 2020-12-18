@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9377a21415c22e7b68d850ca1a95f931e62fe573
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c9b624a1efc72bebec8547e8ecf9f3bf9fc99863
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499738"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680661"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Key Vault tillägg för virtuell dator för Linux
 
@@ -96,7 +96,7 @@ Följande JSON visar schemat för Key Vault VM-tillägget. Tillägget kräver in
 | Certifikat Arkiv | Den ignoreras i Linux | sträng |
 | linkOnRenewal | falskt | boolean |
 | certificateStoreLocation  | /var/lib/waagent/Microsoft.Azure.KeyVault | sträng |
-| requiredInitialSync | true | boolean |
+| requireInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate", "https://myvault.vault.azure.net/secrets/mycertificate2"] | sträng mat ris
 | msiEndpoint | http://169.254.169.254/metadata/identity | sträng |
 | msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | sträng |

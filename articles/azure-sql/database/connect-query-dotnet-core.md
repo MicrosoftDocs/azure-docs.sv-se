@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 37cd2051670221b8b78c075f249f633f9f447099
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: c1443dcefb12a063a287e89f1c292ba39bd38dc6
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674317"
+ms.locfileid: "97680346"
 ---
 # <a name="quickstart-use-net-core-c-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Snabb start: använda .NET Core (C#) för att fråga en databas i Azure SQL Database eller Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -27,22 +27,14 @@ I den här snabb starten använder du [.net Core](https://www.microsoft.com/net/
 > [!TIP]
 > Följande Microsoft Learn modul hjälper dig att lära dig kostnads fritt hur du [utvecklar och konfigurerar ett ASP.NET-program som frågar en databas i Azure SQL Database](/learn/modules/develop-app-that-queries-azure-sql/)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här snabbstarten behöver du:
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- En databas. Du kan använda någon av följande snabb starter för att skapa och konfigurera en databas:
+- En databas där du kan köra din fråga. 
 
-  | Åtgärd | SQL Database | SQL-hanterad instans | SQL Server på virtuella Azure-datorer | Azure Synapse Analytics |
-  |:--- |:--- |:---|:---|:---|
-  | Skapa| [Portal](single-database-create-quickstart.md) | [Portal](../managed-instance/instance-create-quickstart.md) | [Portal](../virtual-machines/windows/sql-vm-create-portal-quickstart.md) | [Portal](/azure/synapse-analytics/quickstart-create-workspace.md) |
-  || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) | | [CLI](/azure/synapse-analytics/quickstart-create-workspace-cli.md) |
-  || [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | [PowerShell](../virtual-machines/windows/sql-vm-create-powershell-quickstart.md) | [PowerShell](/azure/synapse-analytics/quickstart-create-workspace-powershell.md) |
-  || | | [Distributionsmall](/azure/azure-sql/virtual-machines/windows/create-sql-vm-resource-manager-template.md) | [Distributionsmall](/azure/synapse-analytics/quickstart-deployment-template-workspaces.md) | 
-  | Konfigurera | [IP-brandväggsregel på servernivå](firewall-create-server-level-portal-quickstart.md)| [Anslutning från en virtuell dator](../managed-instance/connect-vm-instance-configure.md)| |
-  |||[Anslutning från lokal plats](../managed-instance/point-to-site-p2s-configure.md) | [Ansluta till en SQL Server-instans](../virtual-machines/windows/sql-vm-create-portal-quickstart.md) |
-  ||||
+[!INCLUDE[create-configure-database](../includes/create-configure-database.md)]
 
 - [.NET Core för ditt operativsystem](https://www.microsoft.com/net/core).
 

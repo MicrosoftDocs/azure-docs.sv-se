@@ -1,77 +1,129 @@
 ---
-title: Ange en kart stil med Azure Maps Android SDK
-description: Lär dig två sätt att ställa in formatet på en karta. Se hur du använder Microsoft Azure mappar Android SDK i antingen layoutvyn eller i klassen aktivitet för att justera formatet.
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 11/18/2020
-ms.topic: how-to
+title: Ange en kart stil i Android Maps | Microsoft Azure Maps
+description: Lär dig två sätt att ställa in formatet på en karta. Se hur du använder Azure Maps Android SDK i layout filen eller i klassen Activity för att justera formatet.
+author: rbrundritt
+ms.author: richbrun
+ms.date: 04/26/2019
+ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 8c7689fb87575ac6e150f793b43f35e8bf6adc83
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+manager: cpendle
+ms.openlocfilehash: 1cce355c8ffbcd4704bd32b0e4d1739c77c2b623
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532491"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678487"
 ---
-# <a name="set-map-style-using-azure-maps-android-sdk"></a>Ange kart stil med Azure Maps Android SDK
+# <a name="set-map-style-android-sdk"></a>Ange kart stil (Android SDK)
 
-Den här artikeln visar hur du ställer in kart stilar med Azure Maps Android SDK. Azure Maps har sex olika typer av kartor att välja mellan. Mer information om mappnings format som stöds finns i [mappnings format som stöds i Azure Maps](./supported-map-styles.md).
+Den här artikeln visar två sätt att ange kart stilar med hjälp av Azure Maps Android SDK. Azure Maps har sex olika typer av kartor att välja mellan. Mer information om mappnings format som stöds finns i [mappnings format som stöds i Azure Maps](supported-map-styles.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
-1. [Skapa ett Azure Maps konto](quick-demo-map-app.md#create-an-azure-maps-account)
-2. [Hämta en primär prenumerations nyckel](quick-demo-map-app.md#get-the-primary-key-for-your-account), även kallat primär nyckel eller prenumerations nyckel.
-3. Hämta och installera [Azure Maps Android SDK](./how-to-use-android-map-control-library.md).
-
+Se till att slutföra stegen i snabb starten [: skapa ett Android-appaket](quick-android-map.md) .
 
 ## <a name="set-map-style-in-the-layout"></a>Ange kart stil i layouten
 
-Du kan ange en kart stil i layout filen för din aktivitets klass. Redigera `res > layout > activity_main.xml` , så att det ser ut som på bilden nedan:
+Du kan ange en kart stil i layout filen för din aktivitets klass när du lägger till kart kontrollen. Följande kod anger centrum-plats, zoomnings nivå och kart stil.
 
 ```XML
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<com.microsoft.azure.maps.mapcontrol.MapControl
+    android:id="@+id/mapcontrol"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
-
-    <com.microsoft.azure.maps.mapcontrol.MapControl
-        android:id="@+id/mapcontrol"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:mapcontrol_centerLat="47.602806"
-        app:mapcontrol_centerLng="-122.329330"
-        app:mapcontrol_zoom="12"
-        app:mapcontrol_style="grayscale_dark"
-        />
-
-</FrameLayout>
+    app:mapcontrol_centerLat="47.602806"
+    app:mapcontrol_centerLng="-122.329330"
+    app:mapcontrol_zoom="12"
+    app:mapcontrol_style="grayscale_dark"
+    />
 ```
 
-`mapcontrol_style`Attributet ovan anger kart formatet till **grayscale_dark**.
+Följande skärm bild visar koden ovan som visar en karta med mörkt grå Skale format.
 
-:::image type="content" source="./media/set-android-map-styles/grayscale-dark.png" border="true" alt-text="Azure Maps, kart bild som visar format som grayscale_dark":::
+![Mappa med mörkt schema format för grå Skale kartor](media/set-android-map-styles/android-grayscale-dark.png)
 
-## <a name="set-map-style-in-the-mainactivity-class"></a>Ange kart stil i MainActivity-klassen
+## <a name="set-map-style-in-code"></a>Ange kart stil i kod
 
-Map-formatet kan också anges i klassen MainActivity. Öppna `java > com.example.myapplication > MainActivity.java` filen och kopiera följande kodfragment till metoden **onCreate ()** . Den här koden anger kart formatet till **satellite_road_labels**.
+Map-formatet kan anges via programmering i kod med hjälp av `setStyle` kart metoden. Följande kod anger centrum-platsen och zoomnings nivån med hjälp av Maps- `setCamera` metoden och kart formatet till `SATELLITE_ROAD_LABELS` .
 
->[!WARNING]
->Android Studio kanske inte har importerat de obligatoriska klasserna.  Därför har koden vissa referenser som inte kan matchas. Om du vill importera de obligatoriska klasserna hovrar du bara över varje olöst referens och trycker på `Alt + Enter` (alternativ + retur på en Mac).
-
-```Java
+```java
 mapControl.onReady(map -> {
 
     //Set the camera of the map.
-    map.setCamera(center(47.64, -122.33), zoom(14));
+    map.setCamera(center(Point.fromLngLat(-122.33, 47.64)), zoom(14));
 
     //Set the style of the map.
-    map.setStyle((style(SATELLITE_ROAD_LABELS)));
-       
+    map.setStyle(style(MapStyle.SATELLITE_ROAD_LABELS));
 });
 ```
 
-:::image type="content" source="./media/set-android-map-styles/satellite-road-labels.png" border="true" alt-text="Azure Maps, kart bild som visar format som satellite_road_labels":::
+Följande skärm bild visar koden ovan som visar en karta med stilen för satellit vägs etiketter.
+
+![Mappa med väg etiketts format](media/set-android-map-styles/android-satellite-road-labels.png)
+
+## <a name="setting-the-map-camera"></a>Ställa in kart kameran
+
+Kart kameran styr vilken del av kartan som visas i kartan. Kameran kan vara i layouten genom programmering i kod. När du anger den i kod finns det två huvudsakliga metoder för att ange placeringen av kartan. använda centrera och zooma eller skicka i en markerings ruta. Följande kod visar hur du ställer in alla valfria kamera alternativ när du använder `center` och `zoom` .
+
+```java
+//Set the camera of the map using center and zoom.
+map.setCamera(
+    center(Point.fromLngLat(-122.33, 47.64)), 
+
+    //The zoom level. Typically a value between 0 and 22.
+    zoom(14),
+
+    //The amount of tilt in degrees the map where 0 is looking straight down.
+    pitch(45),
+
+    //Direction the top of the map is pointing in degrees. 0 = North, 90 = East, 180 = South, 270 = West
+    bearing(90),
+
+    //The minimum zoom level the map will zoom-out to when animating from one location to another on the map.
+    minZoom(10),
+    
+    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    maxZoom(14)
+);
+```
+
+Det är ofta önskvärt att fokusera kartan över en uppsättning data. En avgränsnings ruta kan beräknas från funktioner med hjälp av `MapMath.fromData` metoden och kan skickas till `bounds` kart kamerans alternativ. När du anger en kart visning baserad på en markerings ram är det ofta användbart att ange ett `padding` värde för pixel storleken för punkter som återges som bubblor eller symboler. Följande kod visar hur du ställer in alla valfria kamera alternativ när du använder en begränsnings ruta för att ställa in kamerans placering.
+
+```java
+//Set the camera of the map using a bounding box.
+map.setCamera(
+    //The area to focus the map on.
+    bounds(BoundingBox.fromLngLats(
+        //West
+        -122.4594,
+
+        //South
+        47.4333,
+        
+        //East
+        -122.21866,
+        
+        //North
+        47.75758
+    )),
+
+    //Amount of pixel buffer around the bounding box to provide extra space around the bounding box.
+    padding(20),
+
+    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    maxZoom(14)
+);
+```
+
+Observera att proportionerna för en avgränsnings ruta kanske inte är samma som proportionerna för kartan, eftersom kartan ofta visar hela gräns Box-ytan, men det är ofta bara tätt lodrätt eller vågrätt.
+
+## <a name="next-steps"></a>Nästa steg
+
+Se följande artiklar för fler kod exempel som du kan lägga till i dina kartor:
+
+> [!div class="nextstepaction"]
+> [Lägga till ett symbolskikt](how-to-add-symbol-to-android-map.md)
+
+> [!div class="nextstepaction"]
+> [Lägga till ett bubbelskikt](map-add-bubble-layer-android.md)

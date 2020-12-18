@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: e64df21b31d686b72b210d2c62956745350891f5
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: cd64c80acceb1542c080fc45efbce59f287d448a
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895400"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680686"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>Använda den Azure Maps spatiala IO-modulen
 
-Azure Maps Web SDK tillhandahåller den **spatiala IO-modulen** , som integrerar spatialdata med Azure Maps webb-SDK med hjälp av Java Script eller typescript. Med robusta funktioner i den här modulen kan utvecklare:
+Azure Maps Web SDK tillhandahåller den **spatiala IO-modulen**, som integrerar spatialdata med Azure Maps webb-SDK med hjälp av Java Script eller typescript. Med robusta funktioner i den här modulen kan utvecklare:
 
 - [Läs och skriv filer för vanliga spatialdata](spatial-io-read-write-spatial-data.md). Fil format som stöds är: KML, KMZ, GPX, GeoRSS, GML, interjson-och CSV-filer som innehåller kolumner med spatial information. Stöder också Well-Known text (well).
 - [Anslut till Open Geospatial Consortium-tjänster (OGC) och integrera med Azure Maps Web SDK. Täcka in webb kart tjänster (WMS) och webb kart panels tjänster (WMTS) som lager på kartan](spatial-io-add-ogc-map-layer.md).
@@ -30,10 +30,9 @@ I den här guiden får vi lära dig hur du integrerar och använder den spatiala
 
 Den här videon ger en översikt över den spatiala IO-modulen i Azure Maps Web SDK.
 
-<br/>
+</br>
 
-<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Easily-integrate-spatial-data-into-the-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0" title="Integrera enkelt spatialdata i Azure Maps-Microsoft Channel 9-videon"></iframe>
-
+> [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Easily-integrate-spatial-data-into-the-Azure-Maps/player?format=ny]
 
 > [!WARNING]
 > Använd endast data och tjänster från en källa som du litar på, särskilt om du refererar till den från en annan domän. Den spatiala i/o-modulen vidtar åtgärder för att minimera risken, men den säkraste metoden är för att inte tillåta att danagerous-data i ditt program börjar med. 

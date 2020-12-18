@@ -9,29 +9,46 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 6037deb484ca966ab3a54cc60b0d53ac8299d500
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: ef2c69409ce3f479338ffc9d418b3469f197ad30
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590009"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679398"
 ---
-# <a name="tutorial---migrate-a-web-app-from-bing-maps"></a>Självstudie – migrera en webbapp från Bing Maps
+# <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>Självstudier: Migrera en webbapp från Bing Maps
 
-Webb program som använder Bing Maps använder ofta Bing Maps V8 Java Script SDK. Azure Maps Web SDK är lämplig Azure-baserad SDK för att migrera till. Med Azure Maps Web SDK kan du anpassa interaktiva kartor med ditt eget innehåll och bilder för visning i dina webb-eller mobil program. Den här kontrollen använder WebGL, så att du kan rendera stora datauppsättningar med höga prestanda. Utveckla med det här SDK: t med Java Script eller TypeScript.
+Webb program som använder Bing Maps använder ofta Bing Maps V8 Java Script SDK. Azure Maps Web SDK är lämplig Azure-baserad SDK för att migrera till. Med Azure Maps Web SDK kan du anpassa interaktiva kartor med ditt eget innehåll och bilder för visning i dina webb-eller mobil program. Den här kontrollen använder WebGL, så att du kan rendera stora datauppsättningar med höga prestanda. Utveckla med det här SDK: t med Java Script eller TypeScript. I den här självstudien får du lära dig hur man:
+
+> [!div class="checklist"]
+> * Läsa in en karta
+> * Lokalisera en karta
+> * Lägg till kartnålar, polystreck och polygoner.
+> * Visa information i en popup-eller informations ruta
+> * Läsa in och visa KML-och interjson-data
+> * Kluster kartnålar
+> * Täcka över ett panel lager
+> * Visa trafikdata
+> * Lägg till ett mark överlägg
 
 Om du migrerar ett befintligt webb program kontrollerar du att det använder ett kart kontroll bibliotek med öppen källkod, till exempel cesium, häfte och openlager. Om det är och du föredrar att fortsätta att använda biblioteket kan du ansluta det till Azure Maps panel[tjänster (satellit paneler i](/rest/api/maps/render/getmaptile) panelens \| [satellit paneler](/rest/api/maps/render/getmapimagerytile)). Länkarna nedan innehåller information om hur du använder Azure Maps i några ofta använda kart kontroll bibliotek med öppen källkod.
 
--   Cesium – en 3D-kart kontroll för webben. [Kod exempel](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [Dokumentation](https://cesiumjs.org/)
--   Broschyr – förenklad 2D-kart kontroll för webben. [Kod exempel](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [Dokumentation](https://leafletjs.com/)
--   OpenLayers – en 2D-kart kontroll för webben som stöder projektioner. [Kod exempel](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [Dokumentation](https://openlayers.org/)
+* Cesium – en 3D-kart kontroll för webben. [Kod exempel](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [Dokumentation](https://cesiumjs.org/)
+* Broschyr – förenklad 2D-kart kontroll för webben. [Kod exempel](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [Dokumentation](https://leafletjs.com/)
+* OpenLayers – en 2D-kart kontroll för webben som stöder projektioner. [Kod exempel](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [Dokumentation](https://openlayers.org/)
 
 Om du utvecklar med ett JavaScript-ramverk kan något av följande projekt med öppen källkod vara användbart:
 
-- [ng – Azure-Maps](https://github.com/arnaudleclerc/ng-azure-maps) -vinkel 10-omslutning runt Azure Maps.
-- [AzureMapsControl. Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) – en Azure Maps blixt komponent.
-- [Azure Maps Reakta komponent](https://github.com/WiredSolutions/react-azure-maps) – ett reaktat omslutning för kontrollen Azure Maps.
-- [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) – en Azure Maps komponent för Vue-program.
+* [ng – Azure-Maps](https://github.com/arnaudleclerc/ng-azure-maps) -vinkel 10-omslutning runt Azure Maps.
+* [AzureMapsControl. Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) – en Azure Maps blixt komponent.
+* [Azure Maps Reakta komponent](https://github.com/WiredSolutions/react-azure-maps) – ett reaktat omslutning för kontrollen Azure Maps.
+* [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) – en Azure Maps komponent för Vue-program.
+
+## <a name="prerequisites"></a>Förutsättningar
+
+1. Logga in på [Azure-portalen](https://portal.azure.com). Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
+2. [Skapa ett Azure Maps konto](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [Hämta en primär prenumerations nyckel](quick-demo-map-app.md#get-the-primary-key-for-your-account), även kallat primär nyckel eller prenumerations nyckel. Mer information om autentisering i Azure Maps finns i [hantera autentisering i Azure Maps](how-to-manage-authentication.md).
 
 ## <a name="key-features-support"></a>Viktiga funktioner stöder
 
@@ -53,7 +70,7 @@ I följande tabell visas viktiga API-funktioner i Bing Maps V8 JavaScript SDK oc
 | Netencoder-tjänst         | ✓                                                                                      |
 | Vägbeskrivnings tjänst       | ✓                                                                                      |
 | Distans mat ris tjänst  | ✓                                                                                      |
-| Spatial data tjänst     | Ej tillämpligt                                                                                    |
+| Spatial data tjänst     | Saknas                                                                                    |
 | Satellit-/flyg bilder | ✓                                                                                      |
 | Fåglars ögon bilder         | Planerad                                                                                |
 | Streetside bilder       | Planerad                                                                                |
@@ -68,24 +85,24 @@ Azure Maps också många ytterligare [moduler med öppen källkod för webb-SDK]
 
 Följande är några av de viktigaste skillnaderna mellan Bing Maps och Azure Maps webb-SDK: er som ska vara medvetna om:
 
--   Förutom att tillhandahålla en värdbaserad slut punkt för åtkomst till Azure Maps Web SDK är ett NPM-paket också tillgängligt för att bädda in webb-SDK i appar om det är lämpligt. Mer information finns i den här [dokumentationen](./how-to-use-map-control.md) . Det här paketet innehåller även TypeScript-definitioner.
--   Bing Maps innehåller två värdbaserade grenar av sina SDK: er. Lansering och experiment. Experiment grenen kan ta emot flera uppdateringar per dag när en ny utveckling sker. Azure Maps bara är värd för en versions gren, men experimentella funktioner skapas som anpassade moduler i projektet med öppen källkod Azure Maps kod exempel. Bing Maps som används för att ha en frusen gren och som har uppdaterats mindre ofta, vilket minskar risken för att bryta ändringar på grund av en version. I Azure Maps där kan du använda modulen NPM och peka på en tidigare del versions version.
+* Förutom att tillhandahålla en värdbaserad slut punkt för åtkomst till Azure Maps Web SDK är ett NPM-paket också tillgängligt för att bädda in webb-SDK i appar om det är lämpligt. Mer information finns i den här [dokumentationen](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) . Det här paketet innehåller även TypeScript-definitioner.
+* Bing Maps innehåller två värdbaserade grenar av sina SDK: er. Lansering och experiment. Experiment grenen kan ta emot flera uppdateringar per dag när en ny utveckling sker. Azure Maps bara är värd för en versions gren, men experimentella funktioner skapas som anpassade moduler i projektet med öppen källkod Azure Maps kod exempel. Bing Maps som används för att ha en frusen gren och som har uppdaterats mindre ofta, vilket minskar risken för att bryta ändringar på grund av en version. I Azure Maps där kan du använda modulen NPM och peka på en tidigare del versions version.
 
 > [!TIP]
 > Azure Maps publicerar både minified-och unminified-versioner av SDK: n. Enkel borttagning `.min` från fil namnen. Unminified-versionen är användbar vid fel sökning av problem, men se till att använda minified-versionen i produktion för att dra nytta av den mindre fil storleken.
 
--   När du har skapat en instans av kart klassen i Azure Maps, ska din kod vänta på att Maps `ready` eller `load` händelsen ska kunna utlösas innan du interagerar med kartan. Dessa händelser säkerställer att alla kart resurser har lästs in och är redo att nås.
--   Båda plattformarna använder ett liknande överlappande system för bas Maps, men panelerna i Bing Maps är 256 pixlar i dimensionen, medan panelerna i Azure Maps är 512 pixlar i dimensionen. För att få samma Map-vy i Azure Maps som Bing Maps måste en zoomnivå som används i Bing Maps subtraheras av en i Azure Maps.
--   Koordinaterna i Bing Maps kallas `latitude, longitude` när Azure Maps används `longitude, latitude` . Det här formatet överensstämmer med standarden `[x, y]` som följs av de flesta GIS-plattformarna.
+* När du har skapat en instans av kart klassen i Azure Maps, ska din kod vänta på att Maps `ready` eller `load` händelsen ska kunna utlösas innan du interagerar med kartan. Dessa händelser säkerställer att alla kart resurser har lästs in och är redo att nås.
+* Båda plattformarna använder ett liknande överlappande system för bas Maps, men panelerna i Bing Maps är 256 pixlar i dimensionen, medan panelerna i Azure Maps är 512 pixlar i dimensionen. För att få samma Map-vy i Azure Maps som Bing Maps måste en zoomnivå som används i Bing Maps subtraheras av en i Azure Maps.
+* Koordinaterna i Bing Maps kallas `latitude, longitude` när Azure Maps används `longitude, latitude` . Det här formatet överensstämmer med standarden `[x, y]` som följs av de flesta GIS-plattformarna.
 
--   Former i Azure Maps Web SDK baseras på det interjson-schemat. Hjälp klasser exponeras genom [Atlas. data område](/javascript/api/azure-maps-control/atlas.data). Det finns även [atlasen. Shape](/javascript/api/azure-maps-control/atlas.shape) -klass som kan användas för att figursätta INTERjson-objekt och göra dem enkla att uppdatera och underhålla på ett data bindnings sätt.
--   Koordinater i Azure Maps definieras som positions objekt som kan anges som en enkel siffer mat ris i formatet `[longitude, latitude]` eller `new atlas.data.Position(longitude, latitude)` .
+* Former i Azure Maps Web SDK baseras på det interjson-schemat. Hjälp klasser exponeras genom [Atlas. data område](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data). Det finns även [atlasen. Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) -klass som kan användas för att figursätta INTERjson-objekt och göra dem enkla att uppdatera och underhålla på ett data bindnings sätt.
+* Koordinater i Azure Maps definieras som positions objekt som kan anges som en enkel siffer mat ris i formatet `[longitude, latitude]` eller `new atlas.data.Position(longitude, latitude)` .
 
 > [!TIP]
 > Positions klassen har en statisk hjälp funktion för att importera koordinater i `latitude, longitude` formatet. Funktionen [Atlas. data. position. fromLatLng](/javascript/api/azure-maps-control/atlas.data.position)kan ofta ersätta `new Microsoft.Maps.Location` funktionen i Bing Maps-kod.
 
--   I stället för att ange formateringsinformation för varje form som läggs till i kartan Azure Maps separerar format från data. Data lagras i data källor och är anslutna till åter givnings skikt som Azure Maps kod använder för att återge data. Den här metoden ger bättre prestanda nytta. Dessutom stöder många lager data driven format där affärs logik kan läggas till i lager stil alternativ som ändrar hur enskilda former återges inom ett lager baserat på egenskaper som definierats i formen.
--   Azure Maps tillhandahåller en mängd användbara, spatiala matematiska funktioner i `atlas.math` namn området, men de skiljer sig åt från de i Bing mapss spatiala matematik-modul. Den främsta skillnaden är att Azure Maps inte tillhandahåller inbyggda funktioner för binära åtgärder, t. ex. union och skärning, eftersom Azure Maps baseras på en icke öppen standard, så finns det många bibliotek med öppen källkod. Ett populärt alternativ som fungerar bra med Azure Maps och ger ett ton med spatiala matematiska funktioner är [Turf JS](http://turfjs.org/).
+* I stället för att ange formateringsinformation för varje form som läggs till i kartan Azure Maps separerar format från data. Data lagras i data källor och är anslutna till åter givnings skikt som Azure Maps kod använder för att återge data. Den här metoden ger bättre prestanda nytta. Dessutom stöder många lager data driven format där affärs logik kan läggas till i lager stil alternativ som ändrar hur enskilda former återges inom ett lager baserat på egenskaper som definierats i formen.
+* Azure Maps tillhandahåller en mängd användbara, spatiala matematiska funktioner i `atlas.math` namn området, men de skiljer sig åt från de i Bing mapss spatiala matematik-modul. Den främsta skillnaden är att Azure Maps inte tillhandahåller inbyggda funktioner för binära åtgärder, t. ex. union och skärning, eftersom Azure Maps baseras på en icke öppen standard, så finns det många bibliotek med öppen källkod. Ett populärt alternativ som fungerar bra med Azure Maps och ger ett ton med spatiala matematiska funktioner är [Turf JS](http://turfjs.org/).
 
 Se även [Azure Maps ord](./glossary.md) lista för en djupgående lista över termer som är kopplade till Azure Maps.
 
@@ -95,41 +112,40 @@ Följande är en samling kod exempel för varje plattform som används för vanl
 
 **Ämnen**
 
-- [Läsa in en karta](#load-a-map)
-- [Lokalisera kartan](#localizing-the-map)
-- [Ställa in Map-vyn](#setting-the-map-view)
-- [Lägga till en kartnål](#adding-a-pushpin)
-- [Lägga till en anpassad kartnål](#adding-a-custom-pushpin)
-- [Lägga till en polyline](#adding-a-polyline)
-- [Lägga till en polygon](#adding-a-polygon)
-- [Visa en information](#display-an-infobox)
-- [Kartnål-kluster](#pushpin-clustering)
-- [Lägg till en värme karta](#add-a-heat-map)
-- [Täcka över ett panel lager](#overlay-a-tile-layer)
-- [Visa trafikdata](#show-traffic-data)
-- [Lägg till ett mark överlägg](#add-a-ground-overlay)
-- [Lägg till KML-data till kartan](#add-kml-data-to-the-map)
-- [Lägg till rit verktyg](#add-drawing-tools)
-
+* [Läsa in en karta](#load-a-map)
+* [Lokalisera kartan](#localizing-the-map)
+* [Ställa in Map-vyn](#setting-the-map-view)
+* [Lägga till en kartnål](#adding-a-pushpin)
+* [Lägga till en anpassad kartnål](#adding-a-custom-pushpin)
+* [Lägga till en polyline](#adding-a-polyline)
+* [Lägga till en polygon](#adding-a-polygon)
+* [Visa en information](#display-an-infobox)
+* [Kartnål-kluster](#pushpin-clustering)
+* [Lägg till en värme karta](#add-a-heat-map)
+* [Täcka över ett panel lager](#overlay-a-tile-layer)
+* [Visa trafikdata](#show-traffic-data)
+* [Lägg till ett mark överlägg](#add-a-ground-overlay)
+* [Lägg till KML-data till kartan](#add-kml-data-to-the-map)
+* [Lägg till rit verktyg](#add-drawing-tools)
 
 ### <a name="load-a-map"></a>Läsa in en karta
 
 Att läsa in en karta i båda SDK: er följer samma uppsättning steg.
 
--   Lägg till en referens till kart-SDK: n.
--   Lägg till en `div` tagg i bröd texten på sidan som fungerar som plats hållare för kartan.
--   Skapa en JavaScript-funktion som anropas när sidan har lästs in.
--   Skapa en instans av respektive kart klass.
+* Lägg till en referens till kart-SDK: n.
+* Lägg till en `div` tagg i bröd texten på sidan som fungerar som plats hållare för kartan.
+* Skapa en JavaScript-funktion som anropas när sidan har lästs in.
+* Skapa en instans av respektive kart klass.
 
 **Vissa viktiga skillnader**
 
--   Bing Maps kräver att en konto nyckel anges i skript referensen för API: et eller som ett mappnings alternativ. Autentiseringsuppgifter för Azure Maps anges som alternativ för kart klassen. Detta kan vara en prenumerations nyckel eller Azure Active Directory information.
--   Bing Maps tar i en callback-funktion i skript referensen för API: et som används för att anropa en initierings funktion för att läsa in kartan. Med Azure Maps ska onLoad-händelsen på sidan användas.
--   När du använder ett ID för att referera till `div` elementet som kartan kommer att återges i, använder Bing Maps en HTML-selektor (d.v.s. `#myMap` ), medan Azure Maps endast använder ID-värdet (dvs. `myMap` ).
--   Koordinater i Azure Maps definieras som positions objekt som kan anges som en enkel siffer mat ris i formatet `[longitude, latitude]` .
--   Zoomnings nivån i Azure Maps är en nivå som är lägre än Bing Maps-exemplet på grund av skillnaden i att placeras i system storlek mellan plattformarna.
--   Som standard lägger Azure Maps inte till några navigerings kontroller på kart arbets ytan, till exempel zoomnings knappar och kart stils knappar. Det finns dock kontroller för att lägga till en mappnings väljare, zoomnings knappar, kompass-och rotations kontroll och en kanna-kontroll.
--   En händelse hanterare läggs till i Azure Maps för att övervaka `ready` händelsen av kart instansen. Detta aktive ras när kartan har läst in WebGL-kontexten och alla resurser som behövs. Alla post inläsnings koder kan läggas till i den här händelse hanteraren.
+* Bing Maps kräver att en konto nyckel anges i skript referensen för API: et eller som ett mappnings alternativ. Autentiseringsuppgifter för Azure Maps anges som alternativ för kart klassen. Detta kan vara en prenumerations nyckel eller Azure Active Directory information.
+* Bing Maps tar i en callback-funktion i skript referensen för API: et som används för att anropa en initierings funktion för att läsa in kartan. Med Azure Maps ska onLoad-händelsen på sidan användas.
+* När du använder ett ID för att referera till `div` elementet som kartan kommer att återges i, använder Bing Maps en HTML-selektor (d.v.s. `#myMap` ), medan Azure Maps endast använder ID-värdet (dvs. `myMap` ).
+* Koordinater i Azure Maps definieras som positions objekt som kan anges som en enkel siffer mat ris i formatet `[longitude, latitude]` .
+* Zoomnings nivån i Azure Maps är en nivå som är lägre än Bing Maps-exemplet på grund av skillnaden i att placeras i system storlek mellan plattformarna.
+* Som standard lägger Azure Maps inte till några navigerings kontroller på kart arbets ytan, till exempel zoomnings knappar och kart stils knappar. Det finns dock kontroller för att lägga till en mappnings väljare, zoomnings knappar, kompass-och rotations kontroll och en kanna-kontroll.
+* En händelse hanterare läggs till i Azure Maps för att övervaka `ready` händelsen av kart instansen. Detta aktive ras när kartan har läst in WebGL-kontexten och alla resurser som behövs. Alla post inläsnings koder kan läggas till i den här händelse hanteraren.
 
 I exemplen nedan visas hur du läser in en grundläggande karta som centreras över New York vid koordinater (longitud:-73,985, latitud: 40,747) och är på zoomnings nivå 12 i Bing Maps.
 
@@ -152,7 +168,7 @@ Följande kod är ett exempel på hur du visar en Bing-karta centrerad och zooma
         function initMap() {
             map = new Microsoft.Maps.Map('#myMap', {
                 credentials: '<Your Bing Maps Key>',
-          center: new Microsoft.Maps.Location(40.747, -73.985),
+                center: new Microsoft.Maps.Location(40.747, -73.985),
                 zoom: 12
             });
         }
@@ -169,9 +185,7 @@ Följande kod är ett exempel på hur du visar en Bing-karta centrerad och zooma
 
 Om den här koden körs i en webbläsare visas en karta som ser ut som på följande bild:
 
-<center>
-
-![Bing Maps-Karta](media/migrate-bing-maps-web-app/bing-maps-load-map.jpg)</center>
+![Bing Maps-Karta](media/migrate-bing-maps-web-app/bing-maps-load-map.jpg)
 
 **Efter: Azure Maps**
 
@@ -209,10 +223,10 @@ Följande kod visar hur du läser in en karta med samma vy i Azure Maps tillsamm
             map.events.add('ready', function () {
                 //Add zoom and map style controls to top right of map.
                 map.controls.add([
-                    new atlas.control.StyleControl(),
-                    new atlas.control.ZoomControl()
-                ], {
-                    position: 'top-right'
+                        new atlas.control.StyleControl(),
+                        new atlas.control.ZoomControl()
+                    ], {
+                        position: 'top-right'
                 });
             });
         }
@@ -226,18 +240,16 @@ Följande kod visar hur du läser in en karta med samma vy i Azure Maps tillsamm
 
 Om den här koden körs i en webbläsare visas en karta som ser ut som på följande bild:
 
-<center>
+![Azure Maps Karta](media/migrate-bing-maps-web-app/azure-maps-load-map.jpg)
 
-![Azure Maps Karta](media/migrate-bing-maps-web-app/azure-maps-load-map.jpg)</center>
-
-Detaljerad dokumentation om hur du konfigurerar och använder Azure Maps kart kontroll i en webbapp finns [här](./how-to-use-map-control.md).
+Detaljerad dokumentation om hur du konfigurerar och använder Azure Maps kart kontroll i en webbapp finns [här](how-to-use-map-control.md).
 
 > [!TIP]
 > Azure Maps publicerar både minified-och unminified-versioner av SDK: n. Ta bort `.min` från fil namnen. Unminified-versionen är användbar vid fel sökning av problem, men se till att använda minified-versionen i produktion för att dra nytta av den mindre fil storleken.
 
 **Ytterligare resurser**
 
--   Azure Maps innehåller också navigerings kontroller för att rotera och stämma av kart visningen som dokumenteras [här](./map-add-controls.md).
+* Azure Maps innehåller också navigerings kontroller för att rotera och stämma av kart visningen som dokumenteras [här](map-add-controls.md).
 
 ### <a name="localizing-the-map"></a>Lokalisera kartan
 
@@ -253,13 +265,11 @@ För att lokalisera Bing Maps, anges språk och region med `setLang` `UR` parame
 
 Här är ett exempel på Bing Maps med språket inställt på "fr-FR".
 
-<center>
-
-![Lokaliserad Bing Maps-Karta](media/migrate-bing-maps-web-app/bing-maps-localized-map.jpg)</center>
+![Lokaliserad Bing Maps-Karta](media/migrate-bing-maps-web-app/bing-maps-localized-map.jpg)
 
 **Efter: Azure Maps**
 
-Azure Maps innehåller bara alternativ för att ställa in språket och den regionala vyn för kartan. En marknads parameter används inte för att begränsa funktionerna. Det finns två olika sätt att ställa in språket och den regionala vyn för kartan. Det första alternativet är att lägga till den här informationen i det globala `atlas` namn området som leder till att alla mappnings kontroll instanser i appen används som standard för de här inställningarna. Följande anger språket till franska ("fr-FR") och vyn region för att `"auto"` :
+Azure Maps innehåller bara alternativ för att ställa in språket och den regionala vyn för kartan. En marknads parameter används inte för att begränsa funktionerna. Det finns två olika sätt att ställa in språket och den regionala vyn för kartan. Det första alternativet är att lägga till den här informationen i det globala `atlas` namn området som leder till att alla mappnings kontroll instanser i appen används som standard för de här inställningarna. Följande anger språket till franska ("fr-FR") och vyn region för att `"Auto"` :
 
 ```javascript
 atlas.setLanguage('fr-FR');
@@ -285,9 +295,7 @@ map = new atlas.Map('myMap', {
 
 Här är ett exempel på Azure Maps med språket "fr" och användar regionen inställt på "fr-FR".
 
-<center>
-
-![Lokaliserad Azure Maps Karta](media/migrate-bing-maps-web-app/bing-maps-localized-map.jpg)</center>
+![Lokaliserad Azure Maps Karta](media/migrate-bing-maps-web-app/bing-maps-localized-map.jpg)
 
 ### <a name="setting-the-map-view"></a>Ställa in Map-vyn
 
@@ -308,9 +316,7 @@ map.setView({
 });
 ```
 
-<center>
-
-![Bing Maps ange kart visning](media/migrate-bing-maps-web-app/bing-maps-set-map-view.jpg)</center>
+![Bing Maps ange kart visning](media/migrate-bing-maps-web-app/bing-maps-set-map-view.jpg)
 
 **Efter: Azure Maps**
 
@@ -327,9 +333,7 @@ map.setStyle({
 });
 ```
 
-<center>
-
-![Azure Maps Ställ in Map-vy](media/migrate-bing-maps-web-app/azure-maps-set-map-view.jpg)</center>
+![Azure Maps Ställ in Map-vy](media/migrate-bing-maps-web-app/azure-maps-set-map-view.jpg)
 
 **Ytterligare resurser**
 
@@ -340,9 +344,9 @@ map.setStyle({
 
 I Azure Maps finns det flera sätt att återge data på kartan.
 
--   HTML-märken – återger punkter med hjälp av traditionella DOM-element. HTML-märken stöder dra.
--   Symbol lagret – återger punkter med en ikon och/eller text inom WebGL-kontexten.
--   Bubbeldiagram – återger punkter som cirklar på kartan. Cirklarnas radier kan skalas utifrån egenskaperna i data.
+* HTML-märken – återger punkter med hjälp av traditionella DOM-element. HTML-märken stöder dra.
+* Symbol lagret – återger punkter med en ikon och/eller text inom WebGL-kontexten.
+* Bubbeldiagram – återger punkter som cirklar på kartan. Cirklarnas radier kan skalas utifrån egenskaperna i data.
 
 Både symbol-och bubbel lager återges inom WebGL-kontexten och kan återge mycket stora uppsättningar av punkter på kartan. Dessa lager kräver att data lagras i en data källa. Data källor och åter givnings lager ska läggas till i kartan efter att `ready` händelsen har utlösts. HTML-märken återges som DOM-element på sidan och använder inte en data källa. De fler DOM-element som en sida har, desto långsammare blir sidan. Om du återger fler än några hundra punkter på en karta rekommenderar vi att du använder ett av åter givnings lagren i stället.
 
@@ -374,9 +378,7 @@ var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(51.5, -0.2)
 map.entities.add(pushpin);
 ```
 
-<center>
-
-![Bing Maps-Lägg till puspin](media/migrate-bing-maps-web-app/bing-maps-add-pushpin.jpg)</center>
+![Bing Maps-Lägg till puspin](media/migrate-bing-maps-web-app/bing-maps-add-pushpin.jpg)
 
 **Efter: Azure Maps med HTML-markörer**
 
@@ -390,9 +392,7 @@ map.markers.add(new atlas.HtmlMarker({
 }));
 ```
 
-<center>
-
-![Azure Maps Lägg till markör](media/migrate-bing-maps-web-app/azure-maps-add-pushpin.jpg)</center>
+![Azure Maps Lägg till markör](media/migrate-bing-maps-web-app/azure-maps-add-pushpin.jpg)
 
 **Efter: Azure Maps med ett symbol lager**
 
@@ -456,9 +456,7 @@ När du använder ett symbol lager måste data läggas till i en data källa och
 </html>
 ```
 
-<center>
-
-![Azure Maps lägga till symbol skikt](media/migrate-bing-maps-web-app/azure-maps-add-pushpin.jpg)</center>
+![Azure Maps lägga till symbol skikt](media/migrate-bing-maps-web-app/azure-maps-add-pushpin.jpg)
 
 **Ytterligare resurser**
 
@@ -481,7 +479,6 @@ Anpassade bilder kan användas för att representera punkter på en karta. Följ
 |:-----------------------------------------------------------------------:|
 | yellow-pushpin.png                                                        |
 
-
 **Före: Bing Maps**
 
 I Bing Maps skapas en anpassad markör genom att skicka en URL till en bild till en `icon` kartnåls alternativ. `anchor`Alternativet används för att justera punkten för den kartnålade bilden med koordinaten på kartan. Ankar värdet i Bing Maps i förhållande till bildens övre vänstra hörn.
@@ -497,9 +494,7 @@ layer.add(pushpin);
 map.layers.insert(layer);
 ```
 
-<center>
-
-![Bing Maps Lägg till anpassade puspin](media/migrate-bing-maps-web-app/bing-maps-add-custom-pushpin.jpg)</center>
+![Bing Maps Lägg till anpassade puspin](media/migrate-bing-maps-web-app/bing-maps-add-custom-pushpin.jpg)
 
 **Efter: Azure Maps med HTML-markörer**
 
@@ -517,9 +512,7 @@ map.markers.add(new atlas.HtmlMarker({
 }));
 ```
 
-<center>
-
-![Azure Maps Lägg till anpassad markör](media/migrate-bing-maps-web-app/azure-maps-add-custom-marker.jpg)</center>
+![Azure Maps Lägg till anpassad markör](media/migrate-bing-maps-web-app/azure-maps-add-custom-marker.jpg)
 
 **Efter: Azure Maps med ett symbol lager**
 
@@ -584,9 +577,7 @@ Symbol lager i Azure Maps stöder anpassade avbildningar också, men bilden mås
 </html>
 ```
 
-<center>
-
-![Bing Maps Lägg till anpassat symbol lager](media/migrate-bing-maps-web-app/azure-maps-add-custom-symbol-layer.jpg)</center>
+![Bing Maps Lägg till anpassat symbol lager](media/migrate-bing-maps-web-app/azure-maps-add-custom-symbol-layer.jpg)
 
 > [!TIP]
 > Om du vill skapa en avancerad anpassad åter givning av punkter använder du flera åter givnings lager tillsammans. Om du till exempel vill ha flera kartnålar som har samma ikon på olika färgade cirklar, i stället för att skapa en bunt med bilder för varje färg överlägg ett symbol lager ovanpå ett bubbeldiagram och låta dem referera till samma data källa. Detta kommer att vara mycket effektivare än att skapa och låta kartan underhålla flera olika avbildningar.
@@ -631,9 +622,7 @@ layer.add(polyline);
 map.layers.insert(layer);
 ```
 
-<center>
-
-![Bing Maps-sammansatt linje](media/migrate-bing-maps-web-app/bing-maps-line.jpg)</center>
+![Bing Maps-sammansatt linje](media/migrate-bing-maps-web-app/bing-maps-line.jpg)
 
 **Efter: Azure Maps**
 
@@ -662,9 +651,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 }));
 ```
 
-<center>
-
-![Azure Maps rad](media/migrate-bing-maps-web-app/azure-maps-line.jpg)</center>
+![Azure Maps rad](media/migrate-bing-maps-web-app/azure-maps-line.jpg)
 
 **Ytterligare resurser**
 
@@ -702,9 +689,7 @@ layer.add(polygon);
 map.layers.insert(layer);
 ```
 
-<center>
-
-![Bing Maps-polyogn](media/migrate-bing-maps-web-app/azure-maps-polygon.jpg)</center>
+![Bing Maps-polyogn](media/migrate-bing-maps-web-app/azure-maps-polygon.jpg)
 
 **Efter: Azure Maps**
 
@@ -738,9 +723,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 }));
 ```
 
-<center>
-
-![Azure Maps polyogn](media/migrate-bing-maps-web-app/azure-maps-polygon.jpg)</center>
+![Azure Maps polyogn](media/migrate-bing-maps-web-app/azure-maps-polygon.jpg)
 
 **Ytterligare resurser**
 
@@ -780,9 +763,7 @@ Microsoft.Maps.Events.addHandler(pushpin, 'click', function () {
 });
 ```
 
-<center>
-
-![Information om Bing Maps](media/migrate-bing-maps-web-app/bing-maps-infobox.jpg)</center>
+![Information om Bing Maps](media/migrate-bing-maps-web-app/bing-maps-infobox.jpg)
 
 **Efter: Azure Maps**
 
@@ -811,9 +792,7 @@ map.events.add('click', marker, function () {
 });
 ```
 
-<center>
-
-![Azure Maps popup](media/migrate-bing-maps-web-app/azure-maps-popup.jpg)</center>
+![Azure Maps popup](media/migrate-bing-maps-web-app/azure-maps-popup.jpg)
 
 > [!NOTE]
 > Om du vill göra samma sak med ett symbol-, bubbeldiagram-, linje-eller polygon-lager skickar du lagret till händelse koden Maps i stället för en markör.
@@ -883,7 +862,7 @@ I Bing Maps kan du läsa in geografi data med hjälp av geografi-modulen. Kartn�
             var clusterSize = cluster.containedPushpins.length;
 
             var radius = 20;    //Default radius to 20 pixels.
-            var fillColor = 'lime';   //Default to lime green.
+            var fillColor = 'lime';     //Default to lime green.
 
             if (clusterSize >= 750) {
                 radius = 40;   //If point_count >= 750, radius is 40 pixels.
@@ -917,18 +896,16 @@ I Bing Maps kan du läsa in geografi data med hjälp av geografi-modulen. Kartn�
 </html>
 ```
 
-<center>
-
-![Bing Maps-klustring](media/migrate-bing-maps-web-app/bing-maps-clustering.jpg)</center>
+![Bing Maps-klustring](media/migrate-bing-maps-web-app/bing-maps-clustering.jpg)
 
 **Efter: Azure Maps**
 
 I Azure Maps läggs data till och hanteras av en data källa. Lager ansluter till data källor och återger data i dem. `DataSource`Klassen i Azure Maps tillhandahåller flera kluster alternativ.
 
--   `cluster` – Anger data källan till kluster punkt data. 
--   `clusterRadius` – Radien i pixlar till kluster punkter tillsammans.
--   `clusterMaxZoom` – Den maximala zoomnings nivån som klustringen sker. Om du zoomar in mer än så återges alla punkter som symboler.
--   `clusterProperties` – Definierar anpassade egenskaper som beräknas med uttryck mot alla punkter i varje kluster och läggs till i egenskaperna för varje kluster punkt.
+* `cluster` – Anger data källan till kluster punkt data. 
+* `clusterRadius` – Radien i pixlar till kluster punkter tillsammans.
+* `clusterMaxZoom` – Den maximala zoomnings nivån som klustringen sker. Om du zoomar in mer än så återges alla punkter som symboler.
+* `clusterProperties` – Definierar anpassade egenskaper som beräknas med uttryck mot alla punkter i varje kluster och läggs till i egenskaperna för varje kluster punkt.
 
 När klustring är aktiverat skickar data källan klustrade och data punkter som inte är klustrade till lager för åter givning. Data källan kan klustra hundratals tusen data punkter. En klustrad data punkt har följande egenskaper:
 
@@ -1045,9 +1022,7 @@ Du kan importera data från en data källa direkt i Azure Maps med hjälp av `im
 </html>
 ```
 
-<center>
-
-![Azure Maps klustring](media/migrate-bing-maps-web-app/azure-maps-clustering.jpg)</center>
+![Azure Maps klustring](media/migrate-bing-maps-web-app/azure-maps-clustering.jpg)
 
 **Ytterligare resurser**
 
@@ -1113,9 +1088,7 @@ I Bing Maps kan du skapa en värme karta genom att läsa in modulen termisk kart
 </html>
 ```
 
-<center>
-
-![Bing Maps-termisk karta](media/migrate-bing-maps-web-app/bing-maps-heatmap.jpg)</center>
+![Bing Maps-termisk karta](media/migrate-bing-maps-web-app/bing-maps-heatmap.jpg)
 
 **Efter: Azure Maps**
 
@@ -1177,9 +1150,7 @@ I Azure Maps läser du in de interjson-data till en data källa och ansluter dat
 </html>
 ```
 
-<center>
-
-![Azure Maps termisk karta](media/migrate-bing-maps-web-app/azure-maps-heatmap.jpg)</center>
+![Azure Maps termisk karta](media/migrate-bing-maps-web-app/azure-maps-heatmap.jpg)
 
 **Ytterligare resurser**
 
@@ -1207,9 +1178,7 @@ var weatherTileLayer = new Microsoft.Maps.TileLayer({
 map.layers.insert(weatherTileLayer);
 ```
 
-<center>
-
-![Bing Maps viktade termisk karta](media/migrate-bing-maps-web-app/bing-maps-weighted-heatmap.jpg)</center>
+![Bing Maps viktade termisk karta](media/migrate-bing-maps-web-app/bing-maps-weighted-heatmap.jpg)
 
 **Efter: Azure Maps**
 
@@ -1217,7 +1186,7 @@ I Azure Maps kan ett panel lager läggas till i kartan på ungefär samma sätt 
 
 > [!TIP]
 > I Azure Maps lager kan enkelt återges under andra lager, inklusive bas kart skikt. Det är ofta önskvärt att återge panel lager under kart etiketterna så att de är lätta att läsa. `map.layers.add`Funktionen tar i en andra parameter som är ID: t för ett andra lager för att infoga det nya lagret nedan. Följande kod kan användas för att infoga ett panel lager under kart etiketterna:
-> 
+>
 > `map.layers.add(myTileLayer, "labels");`
 
 ```javascript
@@ -1229,9 +1198,7 @@ map.layers.add(new atlas.layer.TileLayer({
 }), 'labels');
 ```
 
-<center>
-
-![Azure Maps viktad termisk karta](media/migrate-bing-maps-web-app/azure-maps-weighted-heatmap.jpg)</center>
+![Azure Maps viktad termisk karta](media/migrate-bing-maps-web-app/azure-maps-weighted-heatmap.jpg)
 
 > [!TIP]
 > Panel begär Anden kan samlas in med hjälp av `transformRequest` kartans alternativ. Detta gör att du kan ändra eller lägga till rubriker i begäran om det behövs.
@@ -1257,9 +1224,7 @@ Microsoft.Maps.loadModule('Microsoft.Maps.Traffic', function () {
 });
 ```
 
-<center>
-
-![Bing Maps-trafik](media/migrate-bing-maps-web-app/bing-maps-traffic.jpg)</center>
+![Bing Maps-trafik](media/migrate-bing-maps-web-app/bing-maps-traffic.jpg)
 
 **Efter: Azure Maps**
 
@@ -1272,15 +1237,11 @@ map.setTraffic({
 });
 ```
 
-<center>
-
-![Azure Maps trafik](media/migrate-bing-maps-web-app/azure-maps-traffic.jpg)</center>
+![Azure Maps trafik](media/migrate-bing-maps-web-app/azure-maps-traffic.jpg)
 
 Om du klickar på en av trafik ikonerna i Azure Maps visas ytterligare information på popup-menyn.
 
-<center>
-
-![Popup-Azure Maps trafik](media/migrate-bing-maps-web-app/azure-maps-traffic-popup.jpg)</center>
+![Popup-Azure Maps trafik](media/migrate-bing-maps-web-app/azure-maps-traffic-popup.jpg)
 
 **Ytterligare resurser**
 
@@ -1335,9 +1296,7 @@ När du skapar ett mark överlägg i Bing Maps måste du ange URL: en till bilde
 
 Om den här koden körs i en webbläsare visas en karta som ser ut som på följande bild:
 
-<center>
-
-![Bing Maps, mark överlägg](media/migrate-bing-maps-web-app/bing-maps-ground-overlay.jpg)</center>
+![Bing Maps, mark överlägg](media/migrate-bing-maps-web-app/bing-maps-ground-overlay.jpg)
 
 **Efter: Azure Maps**
 
@@ -1398,9 +1357,7 @@ I Azure Maps kan de refererade avbildningarna överkonfigureras med hjälp av `a
 </html>
 ```
 
-<center>
-
-![Azure Maps markplan](media/migrate-bing-maps-web-app/azure-maps-ground-overlay.jpg)</center>
+![Azure Maps markplan](media/migrate-bing-maps-web-app/azure-maps-ground-overlay.jpg)
 
 **Ytterligare resurser**
 
@@ -1433,7 +1390,7 @@ Om den här koden körs i en webbläsare visas en karta som ser ut som på följ
                 center: new Microsoft.Maps.Location(40.747, -73.985),
                 zoom: 12
             });
-
+                
             Microsoft.Maps.loadModule('Microsoft.Maps.GeoXml', function () {
                 var callback = function (dataset) {
                     if (dataset.shapes) {
@@ -1461,9 +1418,7 @@ Om den här koden körs i en webbläsare visas en karta som ser ut som på följ
 </html>
 ```
 
-<center>
-
-![Bing Maps-KML](media/migrate-bing-maps-web-app/bing-maps-kml.jpg)</center>
+![Bing Maps-KML](media/migrate-bing-maps-web-app/bing-maps-kml.jpg)
 
 **Efter: Azure Maps**
 
@@ -1558,9 +1513,7 @@ I Azure Maps är interjson det viktigaste data formatet som används i webb-SDK,
 </html>
 ```
 
-<center>
-
-![Azure Maps KML](media/migrate-bing-maps-web-app/azure-maps-kml.jpg)</center>
+![Azure Maps KML](media/migrate-bing-maps-web-app/azure-maps-kml.jpg)
 
 **Ytterligare resurser**
 
@@ -1617,9 +1570,7 @@ I Bing Maps `DrawingTools` läses modulen in med hjälp av `Microsoft.Maps.loadM
 
 ```
 
-<center>
-
-![Rit verktyg för Bing Maps](media/migrate-bing-maps-web-app/bing-maps-drawing-tools.jpg)</center>
+![Rit verktyg för Bing Maps](media/migrate-bing-maps-web-app/bing-maps-drawing-tools.jpg)
 
 **Efter: Azure Maps**
 
@@ -1649,8 +1600,8 @@ I Azure Maps modulen för rit verktyg måste läsas in genom att läsa in JavaSc
             //Initialize a map instance.
             map = new atlas.Map('myMap', {
                 view: 'Auto',
-                
-                //Add your Azure Maps key to the map SDK. Get an Azure Maps key at https://azure.com/maps. NOTE: The primary key should be used as the key.
+
+                //Add your Azure Maps key to the map SDK. Get an Azure Maps key at https://azure.com/maps. NOTE: The primary key should be used as the key.                
                 authOptions: {
                     authType: 'subscriptionKey',
                     subscriptionKey: '<Your Azure Maps Key>'
@@ -1674,9 +1625,7 @@ I Azure Maps modulen för rit verktyg måste läsas in genom att läsa in JavaSc
 </html>
 ```
 
-<center>
-
-![Azure Maps rit verktyg](media/migrate-bing-maps-web-app/azure-maps-drawing-tools.jpg)</center>
+![Azure Maps rit verktyg](media/migrate-bing-maps-web-app/azure-maps-drawing-tools.jpg)
 
 > [!TIP]
 > I Azure Maps lager kan du använda rit verktygen på flera sätt som användarna kan rita former. När du till exempel ritar en polygon kan användaren klicka för att lägga till varje punkt, eller hålla ned vänster musknapp och dra musen för att rita en bana. Detta kan ändras med hjälp `interactionType` av alternativet `DrawingManager` .
@@ -1686,7 +1635,7 @@ I Azure Maps modulen för rit verktyg måste läsas in genom att läsa in JavaSc
 -   [Dokumentation](./set-drawing-options.md)
 -   [Kodexempel](https://azuremapscodesamples.azurewebsites.net/#Drawing-Tools-Module)
 
-## <a name="next-steps"></a>Nästa steg
+## <a name="additional-resources"></a>Ytterligare resurser
 
 Ta en titt på [Azure Maps Web SDK-modulerna med öppen källkod](open-source-projects.md#open-web-sdk-modules). Dessa moduler ger en ton av ytterligare funktioner och är helt anpassningsbara.
 
@@ -1733,3 +1682,14 @@ Läs mer om Azure Maps Web SDK.
 
 > [!div class="nextstepaction"]
 > [Dokumentation om Azure Maps Web SDK-tjänstens API-referens](/javascript/api/azure-maps-control/)
+
+## <a name="clean-up-resources"></a>Rensa resurser
+
+Det gick inte att rensa några resurser.
+
+## <a name="next-steps"></a>Nästa steg
+
+Lär dig mer om att migrera från Bing Maps till Azure Maps.
+
+> [!div class="nextstepaction"]
+> [Migrera en webbtjänst](migrate-from-bing-maps-web-services.md)

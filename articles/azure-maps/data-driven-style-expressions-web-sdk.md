@@ -7,14 +7,14 @@ ms.date: 4/4/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: cpendleton
+manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 8f27f7532d074428fafe74e4a453628f5c61d2b8
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 41a117c9ea8b47afcedaa1714abc2031d3be6c21
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895978"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680065"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Uttryck för data drivna format (webb-SDK)
 
@@ -24,9 +24,9 @@ Data drivna format minskar mängden kod som behövs för att implementera affär
 
 Den här videon ger en översikt över data driven format i Azure Maps Web SDK.
 
-<br/>
+</br>
 
-<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Data-Driven-Styling-with-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Data-Driven-Styling-with-Azure-Maps/player?format=ny]
 
 Uttryck visas som JSON-matriser. Det första elementet i ett uttryck i matrisen är en sträng som anger namnet på uttrycks operatorn. Till exempel "+" eller "Case". Nästa element (om det finns några) är argumenten för uttrycket. Varje argument är antingen ett litteralt värde (en sträng, en siffra, ett booleskt värde eller ett `null` ) eller en annan uttrycks mat ris. Följande pseudocode definierar den grundläggande strukturen i ett uttryck. 
 
@@ -58,7 +58,7 @@ Azure Maps Web SDK stöder många typer av uttryck. Uttryck kan användas på eg
 
 I alla exempel i det här dokumentet används följande funktion för att demonstrera olika sätt som de olika typerna av uttryck kan användas på. 
 
-```javascript
+```json
 {
     "type": "Feature",
     "geometry": {
@@ -70,13 +70,13 @@ I alla exempel i det här dokumentet används följande funktion för att demons
         "entityType": "restaurant",
         "revenue": 12345,
         "subTitle": "Building 40", 
-        "temperature": 72,
+        "temperature": 64,
         "title": "Cafeteria", 
-        "zoneColor": "red",
-        "abcArray": ['a', 'b', 'c'],
-        "array2d": [['a', 'b'], ['x', 'y']],
+        "zoneColor": "purple",
+        "abcArray": ["a", "b", "c"],
+        "array2d": [["a", "b"], ["x", "y"]],
         "_style": {
-            "fillColor": 'red'
+            "fillColor": "red"
         }
     }
 }
@@ -88,22 +88,22 @@ Data uttryck ger till gång till egenskaps data i en funktion.
 
 | Uttryck | Returtyp | Beskrivning |
 |------------|-------------|-------------|
-| `['at', number, array]` | objekt | Hämtar ett objekt från en matris. |
+| `['at', number, array]` | värde | Hämtar ett objekt från en matris. |
 | `['geometry-type']` | sträng | Hämtar funktionens geometri typ: punkt, MultiPoint, lin Est ring, MultiLineString, polygon, multipolygon. |
 | `['get', string]` | värde | Hämtar egenskap svärdet från den aktuella funktionens egenskaper. Returnerar null om den begärda egenskapen saknas. |
 | `['get', string, object]` | värde | Hämtar egenskap svärdet från egenskaperna för det angivna objektet. Returnerar null om den begärda egenskapen saknas. |
 | `['has', string]` | boolean | Anger om egenskaperna för en funktion har den angivna egenskapen. |
 | `['has', string, object]` | boolean | Anger om egenskaperna för objektet har den angivna egenskapen. |
 | `['id']` | värde | Hämtar funktionens ID om det har en sådan. |
-| `['length', string | array]` | nummer | Hämtar längden för en sträng eller en matris. |
 | `['in', boolean | string | number, array]` | boolean | Anger om ett objekt finns i en matris |
 | `['in', substring, string]` | boolean | Anger om en under sträng finns i en sträng |
-| `['index-of', boolean | string | number, array | string]`<br/><br/>`['index-of', boolean | string | number, array | string, number]` | nummer | Returnerar den första positionen vid vilken ett objekt kan hittas i en matris eller en under sträng kan hittas i en sträng, eller `-1` om det inte går att hitta indatatypen. Accepterar ett valfritt index varifrån sökningen ska påbörjas. |
-| `['slice', array | string, number]`<br/><br/>`['slice', array | string, number, number]` | `string`\|matris | Returnerar ett objekt från en matris eller en under sträng från en sträng från ett angivet start index eller mellan ett start index och ett slut index om det har angetts. Returvärdet är inkluderat i Start indexet, men inte slut indexet. |
+| `['index-of', boolean | string | number, array | string]`<br/><br/>`['index-of', boolean | string | number, array | string, number]` | antal | Returnerar den första positionen vid vilken ett objekt kan hittas i en matris eller en under sträng kan hittas i en sträng, eller `-1` om det inte går att hitta indatatypen. Accepterar ett valfritt index varifrån sökningen ska påbörjas. |
+| `['length', string | array]` | antal | Hämtar längden för en sträng eller en matris. |
+| `['slice', array | string, number]`<br/><br/>`['slice', array | string, number, number]` | sträng \| mat ris | Returnerar ett objekt från en matris eller en under sträng från en sträng från ett angivet start index eller mellan ett start index och ett slut index om det har angetts. Returvärdet är inkluderat i Start indexet, men inte slut indexet. |
 
 **Exempel**
 
-Egenskaperna för en funktion kan nås direkt i ett uttryck med hjälp av ett `get` uttryck. I det här exemplet används värdet "zoneColor" för funktionen för att ange färg egenskapen för ett bubbeldiagram. 
+Egenskaperna för en funktion kan nås direkt i ett uttryck med hjälp av ett `get` uttryck. I det här exemplet används `zoneColor` värdet för funktionen för att ange färg egenskapen för ett bubbel lager. 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -111,7 +111,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-Ovanstående exempel fungerar bra om alla punkt funktioner har `zoneColor` egenskapen. Om de inte gör det kommer färgen sannolikt att återgå till "svart". Om du vill ändra återställnings färgen använder du ett `case` uttryck i kombination med `has` uttrycket för att kontrol lera om egenskapen finns. Om egenskapen inte finns returnerar du en återställnings färg.
+Ovanstående exempel fungerar bra om alla punkt funktioner har `zoneColor` egenskapen. Om de inte gör det kommer färgen förmodligen att återgå till "svart". Om du vill ändra återställnings färgen använder du ett `case` uttryck i kombination med `has` uttrycket för att kontrol lera om egenskapen finns. Om egenskapen inte finns returnerar du en återställnings färg.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -181,32 +181,32 @@ Matematiska uttryck tillhandahåller matematiska operatorer för att utföra dat
 
 | Uttryck | Returtyp | Beskrivning |
 |------------|-------------|-------------|
-| `['+', number, number, …]` | nummer | Beräknar summan av de angivna talen. |
-| `['-', number]` | nummer | Subtraherar 0 efter det angivna talet. |
-| `['-', number, number]` | nummer | Subtraherar de första talen med det andra talet. |
-| `['*', number, number, …]` | nummer | Multiplicerar de angivna talen tillsammans. |
-| `['/', number, number]` | nummer | Dividerar det första talet med det andra talet. |
-| `['%', number, number]` | nummer | Beräknar resten när det första talet divideras med det andra talet. |
-| `['^', number, number]` | nummer | Beräknar värdet för det första värdet upphöjt till det andra värdets potens. |
-| `['abs', number]` | nummer | Beräknar det absoluta värdet för det angivna talet. |
-| `['acos', number]` | nummer | Beräknar arcus cosinus för det angivna talet. |
-| `['asin', number]` | nummer | Beräknar arcus sinus för det angivna talet. |
-| `['atan', number]` | nummer | Beräknar arcus tangens för det angivna talet. |
-| `['ceil', number]` | nummer | Avrundar talet uppåt till närmaste heltal. |
-| `['cos', number]` | nummer | Beräknar cos för det angivna talet. |
-| `['e']` | nummer | Returnerar den matematiska konstanten `e` . |
-| `['floor', number]` | nummer | Avrundar talet nedåt till föregående heltal. |
-| `['ln', number]` | nummer | Beräknar den naturliga logaritmen för det angivna talet. |
-| `['ln2']` | nummer | Returnerar den matematiska konstanten `ln(2)` . |
-| `['log10', number]` | nummer | Beräknar basen 10-logaritmen för det angivna talet. |
-| `['log2', number]` | nummer | Beräknar basen – två logaritmen för det angivna talet. |
-| `['max', number, number, …]` | nummer | Beräknar det maximala antalet i den angivna uppsättningen tal. |
-| `['min', number, number, …]` | nummer | Beräknar det lägsta antalet i den angivna uppsättningen tal. |
-| `['pi']` | nummer | Returnerar den matematiska konstanten `PI` . |
-| `['round', number]` | nummer | Avrundar talet till närmaste heltal. Värdena för halvvägs avrundas från noll. Till exempel `['round', -1.5]` utvärderas till-2. |
-| `['sin', number]` | nummer | Beräknar sinus för det angivna talet. |
-| `['sqrt', number]` | nummer | Beräknar kvadratroten ur det angivna talet. |
-| `['tan', number]` | nummer | Beräknar tangens för det angivna talet. |
+| `['+', number, number, …]` | antal | Beräknar summan av de angivna talen. |
+| `['-', number]` | antal | Subtraherar 0 efter det angivna talet. |
+| `['-', number, number]` | antal | Subtraherar de första talen med det andra talet. |
+| `['*', number, number, …]` | antal | Multiplicerar de angivna talen tillsammans. |
+| `['/', number, number]` | antal | Dividerar det första talet med det andra talet. |
+| `['%', number, number]` | antal | Beräknar resten när det första talet divideras med det andra talet. |
+| `['^', number, number]` | antal | Beräknar värdet för det första värdet upphöjt till det andra värdets potens. |
+| `['abs', number]` | antal | Beräknar det absoluta värdet för det angivna talet. |
+| `['acos', number]` | antal | Beräknar arcus cosinus för det angivna talet. |
+| `['asin', number]` | antal | Beräknar arcus sinus för det angivna talet. |
+| `['atan', number]` | antal | Beräknar arcus tangens för det angivna talet. |
+| `['ceil', number]` | antal | Avrundar talet uppåt till närmaste heltal. |
+| `['cos', number]` | antal | Beräknar cos för det angivna talet. |
+| `['e']` | antal | Returnerar den matematiska konstanten `e` . |
+| `['floor', number]` | antal | Avrundar talet nedåt till föregående heltal. |
+| `['ln', number]` | antal | Beräknar den naturliga logaritmen för det angivna talet. |
+| `['ln2']` | antal | Returnerar den matematiska konstanten `ln(2)` . |
+| `['log10', number]` | antal | Beräknar basen 10-logaritmen för det angivna talet. |
+| `['log2', number]` | antal | Beräknar basen – två logaritmen för det angivna talet. |
+| `['max', number, number, …]` | antal | Beräknar det maximala antalet i den angivna uppsättningen tal. |
+| `['min', number, number, …]` | antal | Beräknar det lägsta antalet i den angivna uppsättningen tal. |
+| `['pi']` | antal | Returnerar den matematiska konstanten `PI` . |
+| `['round', number]` | antal | Avrundar talet till närmaste heltal. Värdena för halvvägs avrundas från noll. `['round', -1.5]`Utvärdera till exempel `-2` . |
+| `['sin', number]` | antal | Beräknar sinus för det angivna talet. |
+| `['sqrt', number]` | antal | Beräknar kvadratroten ur det angivna talet. |
+| `['tan', number]` | antal | Beräknar tangens för det angivna talet. |
 
 ## <a name="aggregate-expression"></a>Mängd uttryck
 
@@ -228,6 +228,16 @@ Ett agg regerings uttryck tar i tre värden: ett operator värde och ett start v
 
 Om alla funktioner i en data uppsättning har en `revenue` -egenskap, vilket är ett tal. Sedan kan den totala intäkten för alla punkter i ett kluster, som skapas från data uppsättningen, beräknas. Den här beräkningen görs med följande mängd uttryck: `['+', 0, ['get', 'revenue']]`
 
+### <a name="accumulated-expression"></a>Ackumulerat uttryck
+
+`accumulated`Uttrycket hämtar värdet för en kluster egenskap som har ackumulerats hittills. Detta kan endast användas i `clusterProperties` en klustrad `DataSource` källas alternativ.
+
+**Användning**
+
+```javascript
+["accumulated"]
+```
+
 ## <a name="boolean-expressions"></a>Booleska uttryck
 
 Booleska uttryck tillhandahåller en uppsättning booleska operator uttryck för att utvärdera booleska jämförelser.
@@ -245,6 +255,7 @@ När värden jämförs skrivs jämförelsen strikt. Värden av olika typer betra
 | `['>=' value, value]` | boolean | Returnerar `true` om den första indatamängden är större än eller lika med den andra, `false` annars. Argumenten måste vara antingen båda strängarna eller båda talen. |
 | `['all', boolean, boolean, …]` | boolean | Returnerar `true` om alla indata är `true` , `false` annars. |
 | `['any', boolean, boolean, …]` | boolean | Returnerar `true` om någon av indatan är `true` , `false` annars. |
+| `['within', Polygon | MultiPolygon | Feature<Polygon | MultiPolygon>]` | boolean | Returnerar `true` om den utvärderade funktionen är helt innesluten i en begränsning av en indatatyp, annars FALSE. Indatavärdet kan vara ett giltigt interjson-värde av typen `Polygon` , `MultiPolygon` , `Feature` eller `FeatureCollection` . Funktioner som stöds för utvärdering:<br/><br/>-Point: returnerar `false` om en punkt är på kanten eller faller utanför gränserna.<br/>-Lin Est ring: returnerar `false` om någon del av en linje faller utanför gränserna, överlappar linjen eller en linjes slut punkt på kanten. |
 
 ## <a name="conditional-expressions"></a>Villkorliga uttryck
 
@@ -355,28 +366,6 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-I följande exempel används ett matchnings uttryck för att utföra en "i matris" eller "matris innehåller" typ filter. I det här fallet filtrerar uttrycket data som har ett ID-värde som finns i en lista över tillåtna ID: n. När du använder uttryck med filter måste resultatet vara ett booleskt värde.
-
-```javascript
-var layer = new atlas.layer.BubbleLayer(datasource, null, {
-    filter: [
-        'match',  
-
-        //Get the property to match.
-        ['get', 'id'],  
-
-         //List of values to match.
-        [24, 53, 98], 
-
-        //If there is a match, return true.
-        true,
-    
-        //Otherwise return false.
-        false
-    ]
-});
-```
-
 ### <a name="coalesce-expression"></a>Sammanslagnings uttryck
 
 Ett `coalesce` uttrycks steg genom en uppsättning uttryck tills det första värdet som inte är null hämtas och returnerar värdet. 
@@ -394,7 +383,7 @@ Följande pseudocode definierar strukturen för `coalesce` uttrycket.
 
 **Exempel**
 
-I följande exempel används ett `coalesce` uttryck för att ange `textField` alternativet för ett symbol lager. Om `title` egenskapen saknas i funktionen eller om den är inställd på `null` , försöker uttrycket sedan att söka efter `subtitle` egenskapen, om den saknas eller `null` , kommer den att återgå till en tom sträng. 
+I följande exempel används ett `coalesce` uttryck för att ange `textField` alternativet för ett symbol lager. Om `title` egenskapen saknas i funktionen eller om den är inställd på `null` , försöker uttrycket sedan att söka efter `subTitle` egenskapen, om den saknas eller `null` , kommer den att återgå till en tom sträng. 
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -405,8 +394,8 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
             //Try getting the title property.
             ['get', 'title'],
 
-            //If there is no title, try getting the subtitle. 
-            ['get', 'subtitle'],
+            //If there is no title, try getting the subTitle. 
+            ['get', 'subTitle'],
 
             //Default to an empty string.
             ''
@@ -439,11 +428,17 @@ Typ uttryck innehåller verktyg för att testa och konvertera olika data typer, 
 
 | Uttryck | Returtyp | Beskrivning |
 |------------|-------------|-------------|
+| `['array', value]` \| `['array', type: "string" | "number" | "boolean", value]` | Objekt [] | Förutsätter att indatatypen är en matris. |
+| `['boolean', value]` \| `["boolean", value, fallback: value, fallback: value, ...]` | boolean | Förutsätter att indatavärdet är ett booleskt värde. Om flera värden anges utvärderas var och en i ordning tills ett booleskt värde hämtas. Om ingen av indatana är booleska värden är uttrycket ett fel. |
+| `['collator', { 'case-sensitive': boolean, 'diacritic-sensitive': boolean, 'locale': string }]` | uppsamlare | Returnerar en sorterings hanterare för användning i språkrelaterade jämförelse åtgärder. De Skift läges känsliga och dia kritiska alternativen standard är falskt. Argumentet locale anger IETF-språktaggen för det språk som ska användas. Om inget anges används standard språket. Om det begärda språket inte är tillgängligt använder Sorteraren en systemdefinierad reserv språk inställning. Använd matchad – språkvariant för att testa resultatet av den nationella återställnings funktionen. |
 | `['literal', array]`<br/><br/>`['literal', object]` | mat ris \| objekt | Returnerar en literal matris eller ett objekt värde. Använd det här uttrycket för att förhindra att en matris eller ett objekt utvärderas som ett uttryck. Detta är nödvändigt när en matris eller ett objekt måste returneras av ett uttryck. |
 | `['image', string]` | sträng | Kontrollerar om ett angivet bild-ID läses in i Maps-avbildningen Sprite. Om så är fallet returneras ID, annars returneras null. |
+| `['number', value]` \| `["number", value, fallback: value, fallback: value, ...]` | antal | Förutsätter att indatavärdet är ett tal. Om flera värden anges utvärderas var och en i ordning tills ett tal hämtas. Om ingen av indatana är siffror är uttrycket ett fel. |
+| `['object', value]`  \| `["object", value, fallback: value, fallback: value, ...]` | Objekt | Förutsätter att indatavärdet är ett objekt.  Om flera värden anges utvärderas var och en i ordning tills ett objekt hämtas. Om ingen av indatana är objekt är uttrycket ett fel. |
+| `['string', value]` \| `["string", value, fallback: value, fallback: value, ...]` | sträng | Förutsätter att indatavärdet är en sträng. Om flera värden anges utvärderas var och en i ordning tills en sträng hämtas. Om ingen av indatana är strängar är uttrycket ett fel. |
 | `['to-boolean', value]` | boolean | Konverterar indatavärdet till ett booleskt värde. Resultatet är `false` när indatatypen är en tom sträng,,, `0` `false` `null` eller `NaN` ; i övrigt `true` . |
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | Konverterar indatavärdet till en färg. Om flera värden anges utvärderas var och en i ordning tills den första lyckade konverteringen erhålls. Om ingen av indatana kan konverteras, är uttrycket ett fel. |
-| `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | nummer | Konverterar indatavärdet till ett tal, om möjligt. Om indatatypen är `null` eller `false` , är resultatet 0. Om indatatypen är är `true` resultatet 1. Om indatatypen är en sträng konverteras den till ett tal med hjälp av funktionen [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) -sträng i språk specifikationen ECMAScript. Om flera värden anges utvärderas var och en i ordning tills den första lyckade konverteringen erhålls. Om ingen av indatana kan konverteras, är uttrycket ett fel. |
+| `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | antal | Konverterar indatavärdet till ett tal, om möjligt. Om indatatypen är `null` eller `false` , är resultatet 0. Om indatatypen är är `true` resultatet 1. Om indatatypen är en sträng konverteras den till ett tal med hjälp av funktionen [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) -sträng i språk specifikationen ECMAScript. Om flera värden anges utvärderas var och en i ordning tills den första lyckade konverteringen erhålls. Om ingen av indatana kan konverteras, är uttrycket ett fel. |
 | `['to-string', value]` | sträng | Konverterar indatavärdet till en sträng. Om indatatypen är är `null` resultatet `""` . Om indatatypen är ett booleskt värde är resultatet `"true"` eller `"false"` . Om indatatypen är ett tal, konverteras den till en sträng med hjälp av funktionen [toString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) Number i språk specifikationen ECMAScript. Om indatatypen är en färg konverteras den till CSS RGBA-färg sträng `"rgba(r,g,b,a)"` . Annars konverteras inmatarna till en sträng med hjälp av [JSON. stringify](https://tc39.github.io/ecma262/#sec-json.stringify) -funktionen i språk specifikationen ECMAScript. |
 | `['typeof', value]` | sträng | Returnerar en sträng som beskriver typen för det aktuella värdet. |
 
@@ -475,13 +470,13 @@ Färg uttryck gör det enklare att skapa och ändra färg värden.
 
 | Uttryck | Returtyp | Beskrivning |
 |------------|-------------|-------------|
-| `['rgb', number, number, number]` | color | Skapar ett färg värde från *röda* , *gröna* och *blå* komponenter som måste vara mellan `0` och och `255` en alpha-komponent i `1` . Om någon komponent är utanför intervallet är uttrycket ett fel. |
-| `['rgba', number, number, number, number]` | color | Skapar ett färg värde från *röda* , *gröna* , *blå* komponenter som måste vara mellan `0` och och `255` en alpha-komponent inom ett intervall av `0` och `1` . Om någon komponent är utanför intervallet är uttrycket ett fel. |
-| `['to-rgba']` | \[Number, Number, Number, Number\] | Returnerar en matris med fyra element som innehåller indatamängdens *röda* , *gröna* , *blå* och *alpha* -komponenter i den ordningen. |
+| `['rgb', number, number, number]` | color | Skapar ett färg värde från *röda*, *gröna* och *blå* komponenter som måste vara mellan `0` och och `255` en alpha-komponent i `1` . Om någon komponent är utanför intervallet är uttrycket ett fel. |
+| `['rgba', number, number, number, number]` | color | Skapar ett färg värde från *röda*, *gröna*, *blå* komponenter som måste vara mellan `0` och och `255` en alpha-komponent inom ett intervall av `0` och `1` . Om någon komponent är utanför intervallet är uttrycket ett fel. |
+| `['to-rgba']` | \[Number, Number, Number, Number\] | Returnerar en matris med fyra element som innehåller indatamängdens *röda*, *gröna*, *blå* och *alpha* -komponenter i den ordningen. |
 
 **Exempel**
 
-I följande exempel skapas ett RGB-färgvärde som har ett *rött* värde av `255` och de *gröna* och *blå* värdena som beräknas genom att multipliceras `2.5` med `temperature` egenskapens värde. När temperaturen ändras ändras färgen till olika nyanser av *rött* .
+I följande exempel skapas ett RGB-färgvärde som har ett *rött* värde av `255` och de *gröna* och *blå* värdena som beräknas genom att multipliceras `2.5` med `temperature` egenskapens värde. När temperaturen ändras ändras färgen till olika nyanser av *rött*.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -505,6 +500,8 @@ Uttryck för sträng operatorer utför konverterings åtgärder på strängar so
 |------------|-------------|-------------|
 | `['concat', string, string, …]` | sträng | Sammanfogar flera strängar. Varje värde måste vara en sträng. Använd `to-string` typ uttrycket för att konvertera andra värde typer till sträng vid behov. |
 | `['downcase', string]` | sträng | Konverterar den angivna strängen till gemener. |
+| `['is-supported-script', string]` \| `['is-supported-script', Expression]`| boolean | Anger om Indatasträngen använder en tecken uppsättning som stöds av den aktuella teckensnitts stacken. Exempelvis: `['is-supported-script', 'ಗೌರವಾರ್ಥವಾಗಿ']` |
+| `['resolved-locale', string]` | sträng | Returnerar IETF-språktaggen för språket som används av den angivna Sorteraren. Detta kan användas för att fastställa systemets standard språk, eller för att avgöra om ett begärt språk har lästs in. |
 | `['upcase', string]` | sträng | Konverterar den angivna strängen till versaler. |
 
 **Exempel**
@@ -575,14 +572,10 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
         'interpolate',
         ['linear'],
         ['get', 'temperature'],
-        50,        
-        'blue',
-        60,
-        'yellow',
-        70,
-        'orange',
-        80,
-        'red'
+        50, 'blue',
+        60, 'yellow',
+        70, 'orange',
+        80, 'red'
     ]
 });
 ```
@@ -624,12 +617,9 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
         'step',
         ['get', 'temperature'],
         'blue',
-        60,
-        'yellow',
-        70,
-        'orange',
-        80,
-        'red'
+        60, 'yellow',
+        70, 'orange',
+        80, 'red'
     ]
 });
 ```
@@ -724,7 +714,6 @@ Format uttrycket för textfält kan användas med `textField` alternativet för 
 
  * `'font-scale'` – Anger skalnings faktorn för tecken storleken. Om det här värdet anges åsidosätts `size` egenskapen för för den `textOptions` enskilda strängen.
  * `'text-font'` -Anger en eller flera teckensnitts familjer som ska användas för den här strängen. Om det här värdet anges åsidosätts `font` egenskapen för för den `textOptions` enskilda strängen.
- * `'text-color'` -Anger en färg som ska användas för en text vid åter givning. 
 
 Följande pseudocode definierar strukturen för text fältets format uttryck. 
 
@@ -734,14 +723,12 @@ Följande pseudocode definierar strukturen för text fältets format uttryck.
     input1: string, 
     options1: { 
         'font-scale': number, 
-        'text-font': string[],
-        'text-color': color
+        'text-font': string[]
     },
     input2: string, 
     options2: { 
         'font-scale': number, 
-        'text-font': string[] ,
-        'text-color': color
+        'text-font': string[]
     },
     …
 ]
@@ -749,7 +736,7 @@ Följande pseudocode definierar strukturen för text fältets format uttryck.
 
 **Exempel**
 
-I följande exempel formateras textfältet genom att lägga till ett fetstilt teckensnitt och skala upp tecken storleken för `title` egenskapen i funktionen. I det här exemplet läggs även `subtitle` egenskapen för funktionen till på en ny rad med en skalad nedåt tecken storlek och röd färg.
+I följande exempel formateras textfältet genom att lägga till ett fetstilt teckensnitt och skala upp tecken storleken för `title` egenskapen i funktionen. I det här exemplet läggs även `subTitle` egenskapen för funktionen till på en ny rad med en skalad nedåt tecken storlek.
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -766,11 +753,10 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
             '\n', {},   //Add a new line without any formatting.
 
-            //Scale the font size down of the subtitle property. 
-            ['get', 'subtitle'],
+            //Scale the font size down of the subTitle property. 
+            ['get', 'subTitle'],
             { 
-                'font-scale': 0.75, 
-                'text-color': 'red' 
+                'font-scale': 0.75
             }
         ]
     }
@@ -817,7 +803,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
         textField: [
             'number-format', 
             ['get', 'revenue'], 
-            { ‘currency': 'USD' }
+            { 'currency': 'USD' }
         ],
 
         offset: [0, 0.75]
@@ -885,7 +871,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
         ['zoom'],
         
         //For zoom level 1 set the radius to 2 pixels.
-        10, 2,
+        1, 2,
 
         //Between zoom level 1 and 19, exponentially scale the radius from 2 pixels to 2 * Math.pow(2, 19 - 1) pixels (524,288 pixels).
         19, 2 * Math.pow(2, 19 - 1)

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f47ee36c0e7806afc10f8f0907825378c2d24410
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: c801a276f3a116f00b34d750ca8bfec7e56d377b
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505553"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680734"
 ---
 # <a name="calling-client-library-overview"></a>Översikt över klientbiblioteket för samtal
 
@@ -58,13 +58,13 @@ I följande lista presenteras de funktioner som för närvarande är tillgängli
 |                   | Ringa ut från ett grupp anrop som en PSTN-deltagare                                                                    | ✔️   | ✔️            | ✔️   
 | Allmänt           | Testa din mikrofon, talare och kamera med en ljud test tjänst (tillgänglig genom att anropa 8: echo123)                   |  ✔️  | ✔️            | ✔️   
 
-## <a name="calling-client-library-browser-support"></a>Anropar stöd för klient biblioteks webbläsare
+## <a name="javascript-calling-client-library-support-by-os-and-browser"></a>Java script anropar klient biblioteks stöd av OS och webbläsare
 
 Följande tabell visar en uppsättning webbläsare och versioner som stöds och som är tillgängliga för tillfället.
 
-|                                  | Windows          | macOS          | Ubuntu | Linux  | Android | iOS    |
-| -------------------------------- | ---------------- | -------------- | ------- | ------ | ------ | ------ |
-| **Anropar klient bibliotek** | Chrome *, ny kant | Chrome *, Safari** | Chrome  | Chrome | Chrome | Safari * * |
+|                                  | Windows          | macOS          | Ubuntu | Linux  | Android | iOS    | iPad OS|
+| -------------------------------- | ---------------- | -------------- | ------- | ------ | ------ | ------ | -------|
+| **Anropar klient bibliotek** | Chrome *, ny kant | Chrome *, Safari** | Chrome  | Chrome | Chrome | Safari * * | Safari * * |
 
 
 * Observera att den senaste versionen av Chrome stöds förutom de tidigare två versionerna.<br/>

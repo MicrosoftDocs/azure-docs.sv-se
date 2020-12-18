@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: marayerm
-ms.openlocfilehash: 848db19fe855e3ce171fe54c7962309fab977ed5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: dc89631208c6a72c4b48d49260f584149d6c4260
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446346"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679944"
 ---
 # <a name="azure-storage-explorer-support-lifecycle-and-policy"></a>Azure Storage Explorer support livs cykel och policy
 
@@ -41,6 +41,7 @@ I den här tabellen beskrivs utgivnings datumet och slutet på support datumet f
 
 | Storage Explorer version  | Utgivningsdatum       | Sista support datum |
 |:-------------------------:|:------------------:|:-------------------:|
+| v-1.17.0                   | 15 december 2020  | 15 december 2021   |
 | v-1.16.0                   | 10 november 2020  | 10 november 2021   |
 | v-1.15.1                   | 2 september 2020  | 2 september 2021   |
 | v-1.15.0                   | 27 augusti 2020    | 27 augusti 2021     |

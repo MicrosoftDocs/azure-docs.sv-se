@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 94c926c555a4bc96ac3c6fbe773650e16554bcf2
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: d04fa25b9c953d151fc16d11f304c48b7046ab76
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95315710"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680395"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Konfigurera data insamling för Azure Monitor agenten (för hands version)
 
@@ -35,6 +35,9 @@ Om du vill tillämpa en DCR på en virtuell dator skapar du en Association för 
 
 Du kan använda Azure Portal för att skapa en data insamlings regel och koppla virtuella datorer i din prenumeration till den regeln. Den Azure Monitor agenten installeras automatiskt och en hanterad identitet skapas för virtuella datorer som inte redan har den installerad.
 
+> [!IMPORTANT]
+> Det finns för närvarande ett känt problem där data insamlings regeln skapar en hanterad identitet på en virtuell dator som redan har en tilldelad hanterad identitet. den tilldelade identiteten är inaktive rad.
+
 I **Azure Monitor** -menyn i Azure Portal väljer du **data insamlings regler** i avsnittet **Inställningar** . Klicka på **Lägg** till för att lägga till en ny data insamlings regel och tilldelning.
 
 [![Data insamlings regler](media/azure-monitor-agent/data-collection-rules.png)](media/azure-monitor-agent/data-collection-rules.png#lightbox)
@@ -52,7 +55,7 @@ På fliken **samla in och leverera** klickar du på **Lägg till data källa** f
 [![Grundläggande data Källa](media/azure-monitor-agent/data-collection-rule-data-source-basic.png)](media/azure-monitor-agent/data-collection-rule-data-source-basic.png#lightbox)
 
 
-Välj **anpassad** om du vill ange andra loggar och prestanda räknare. Du kan sedan ange en [XPath ](https://www.w3schools.com/xml/xpath_syntax.asp) för alla angivna värden som ska samlas in. Se exempel på [DCR](data-collection-rule-overview.md#sample-data-collection-rule) .
+Om du vill ange andra loggar och prestanda räknare från de [data källor som stöds](azure-monitor-agent-overview.md#data-sources-and-destinations) eller filtrera händelser med hjälp av XPath-frågor väljer du **anpassad**. Du kan sedan ange en [XPath ](https://www.w3schools.com/xml/xpath_syntax.asp) för alla angivna värden som ska samlas in. Se exempel på [DCR](data-collection-rule-overview.md#sample-data-collection-rule) .
 
 [![Anpassad data Källa](media/azure-monitor-agent/data-collection-rule-data-source-custom.png)](media/azure-monitor-agent/data-collection-rule-data-source-custom.png#lightbox)
 

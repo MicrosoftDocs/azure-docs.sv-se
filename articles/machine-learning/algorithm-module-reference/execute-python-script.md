@@ -10,12 +10,12 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 12/02/2020
-ms.openlocfilehash: 360f0ce60a35bc96c6dd8e46d636f07124d01255
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: d1e4ffa525c5628d0b6c9a3ca67f3e069c44e823
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511924"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679191"
 ---
 # <a name="execute-python-script-module"></a>Köra Python-skript modul
 
@@ -156,12 +156,12 @@ EXECUTE Python-skript module innehåller exempel på python-kod som du kan anvä
     1. Paketera skriptet och andra anpassade resurser i en zip-fil.
     1. Överför zip-filen som en **fil data uppsättning** till Studio. 
     1. Dra data uppsättnings modulen från listan *data uppsättningar* i fönstret till vänster på design sidan i designern. 
-    1. Anslut data uppsättnings modulen till **skript paket** porten för **Kör R-skript** -modulen.
+    1. Anslut data uppsättnings modulen till **skript pakets** porten för **execute python-skriptfil** .
     
     Alla filer som finns i det överförda zippade arkivet kan användas under pipeline-körningen. Om arkivet innehåller en katalog struktur bevaras strukturen.
  
     > [!WARNING]
-    > **Don't** Använd inte **appen** som namnet på mappen eller skriptet eftersom **appen** är ett reserverat ord för inbyggda tjänster. Men du kan använda andra namn områden som `app123` .
+    >  Använd inte **appen** som namnet på mappen eller skriptet eftersom **appen** är ett reserverat ord för inbyggda tjänster. Men du kan använda andra namn områden som `app123` .
    
     Följande är ett exempel på ett skript paket som innehåller en python-skriptfil och en txt-fil:
       

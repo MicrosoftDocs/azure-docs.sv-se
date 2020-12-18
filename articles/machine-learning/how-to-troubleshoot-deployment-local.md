@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 4f70978e7b7c2315aff4c51d8b019933df78e7e8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 01a5f600acf9542c5adabcdf2523a42ca44233af
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028809"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680498"
 ---
 # <a name="troubleshoot-model-deployment-locally"></a>Felsöka modell distribution lokalt
 
@@ -28,7 +28,7 @@ Lär dig att felsöka och lösa eller kringgå, vanliga Azure Machine Learning D
 * [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
 * [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
 * [CLI-tillägget för Azure Machine Learning](reference-azure-machine-learning-cli.md).
-* För att felsöka lokalt måste du ha en fungerande Docker-installation på det lokala systemet.
+* Om du vill felsöka lokalt kan du distribuera modellen till [Azure Machine Learning Compute instance](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-local-container-notebook-vm) eller ha en fungerande Docker-installation på det lokala systemet.
 
     Verifiera din Docker-installation genom att använda kommandot `docker run hello-world` från en terminal eller kommando tolk. Information om hur du installerar Docker eller felsöker Docker-fel finns i [Docker-dokumentationen](https://docs.docker.com/).
 

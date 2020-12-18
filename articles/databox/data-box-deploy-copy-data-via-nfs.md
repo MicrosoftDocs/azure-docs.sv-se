@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: bbebe3b3f63e6ccbb5f351abfc9ba3b846ca6fbe
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: d53a619dc6ca5fb0f43f6097664f50bf22943928
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337669"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678887"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Självstudie: kopiera data till Azure Data Box via NFS
 
@@ -78,7 +78,7 @@ Om du använder en Linux-värddator utför du stegen nedan för att konfigurera 
     
     `sudo mount -t nfs -o sec=sys,resvport 10.161.23.130:/Mystoracct_Blob /home/databoxubuntuhost/databox`
 
-    **Skapa alltid en mapp för de filer som du vill kopiera under resursen och kopiera sedan filerna till den mappen**. Mappen som skapas under blockblob- och sidblobresurser representerar en container som data laddas upp som blobar till. Du kan inte kopiera filer direkt till *root* -mappen i lagringskontot.
+    **Skapa alltid en mapp för de filer som du vill kopiera under resursen och kopiera sedan filerna till den mappen**. Mappen som skapas under blockblob- och sidblobresurser representerar en container som data laddas upp som blobar till. Du kan inte kopiera filer direkt till *root*-mappen i lagringskontot.
 
 ## <a name="copy-data-to-data-box"></a>Kopiera data till Data Box
 
@@ -88,7 +88,7 @@ När du är ansluten till Data Box-resurser är nästa steg att kopiera data. Gr
 *  När du kopierar data måste du se till att data storleken överensstämmer med storleks begränsningarna som beskrivs i [storleks gränserna för Azure Storage-kontot](data-box-limits.md#azure-storage-account-size-limits).
 * Om data som laddas upp av Data Box samtidigt överförs av andra program utanför Data Box, kan detta resultera i att uppladdningsjobbet misslyckas samt att data skadas.
 * Vi rekommenderar att du inte använda både SMB och NFS samtidigt eller kopierar samma data till samma mål i slutet på Azure. I sådana fall kan slutresultatet inte fastställas.
-* **Skapa alltid en mapp för de filer som du vill kopiera under resursen och kopiera sedan filerna till den mappen**. Mappen som skapas under blockblob- och sidblobresurser representerar en container som data laddas upp som blobar till. Du kan inte kopiera filer direkt till *root* -mappen i lagringskontot.
+* **Skapa alltid en mapp för de filer som du vill kopiera under resursen och kopiera sedan filerna till den mappen**. Mappen som skapas under blockblob- och sidblobresurser representerar en container som data laddas upp som blobar till. Du kan inte kopiera filer direkt till *root*-mappen i lagringskontot.
 * Om du matar in Skift läges känslig katalog och fil namn från en NFS-resurs till NFS på Data Box-enhet:
   * Ärendet bevaras i namnet.
   * Filerna är inte Skift läges känsliga.
@@ -98,19 +98,19 @@ När du är ansluten till Data Box-resurser är nästa steg att kopiera data. Gr
 > [!IMPORTANT]
 > Se till att du behåller en kopia av dina källdata tills du kan bekräfta att Data Box-enheten har överfört dina data till Azure Storage.
 
-Om du använder en Linux-värddator använder du en kopieringsverktyg som liknar Robocopy. Några av alternativen som är tillgängliga i Linux är [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) eller [Ultracopier](https://ultracopier.first-world.info/).  
+Om du använder en Linux-värddator använder du en kopieringsverktyg som liknar Robocopy. Några av de alternativ som är tillgängliga i Linux är [`rsync`](https://rsync.samba.org/) , [FreeFileSync](https://www.freefilesync.org/), [dem samtidigt](https://www.cis.upenn.edu/~bcpierce/unison/)eller [ultracopier](https://ultracopier.first-world.info/).  
 
 Kommandot `cp` är ett av de bästa alternativen för att kopiera en katalog. Mer information om användningen finns på [cp man-sidorna](http://man7.org/linux/man-pages/man1/cp.1.html).
 
-Om du använder rsync-alternativet för en flertrådig kopia följer du dessa riktlinjer:
+`rsync`Följ dessa rikt linjer om du använder alternativ för en flertrådad kopia:
 
-* Installera **CIFS Utils** - eller **NFS Utils** -paketet, beroende på vilket filsystem din Linux-klient använder.
+* Installera **CIFS Utils**- eller **NFS Utils**-paketet, beroende på vilket filsystem din Linux-klient använder.
 
     `sudo apt-get install cifs-utils`
 
     `sudo apt-get install nfs-utils`
 
-* Installera **rsync** och **Parallel** (varierar beroende på den distribuerade Linux-versionen).
+* Installation `rsync` och **parallell** (varierar beroende på den distribuerade Linux-versionen).
 
     `sudo apt-get install rsync`
    

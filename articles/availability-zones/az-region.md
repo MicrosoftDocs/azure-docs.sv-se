@@ -4,15 +4,15 @@ description: Om du vill skapa hög tillgängliga och elastiska program i Azure k
 author: cynthn
 ms.service: azure
 ms.topic: article
-ms.date: 10/07/2020
+ms.date: 11/17/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 02dcfc65c218982008be487b0969d9ad77667b64
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 2aa9a6e5a574d000bde5039ec1f13e307cd84c21
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183540"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678778"
 ---
 # <a name="regions-that-support-availability-zones-in-azure"></a>Regioner som stöder Tillgänglighetszoner i Azure
 
@@ -29,10 +29,12 @@ Tjänster som är tillgängliga i varje region, tillsammans med kommande översi
 |--|--|--|--|--|--|
 | **Beräkning** |  |  |  |  |  |
 | [App Service miljöer (ILB)](../app-service/environment/zone-redundancy.md#how-to-deploy-an-app-service-environment-in-an-availability-zone) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Kubernetes Service (AKS)](../aks/availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Service Fabric](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Virtual Machines skalnings uppsättningar](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 
+| **Containrar** |  |  |  |
+| [Azure Kubernetes Service (AKS)](../aks/availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [Container Registry](../container-registry/zone-redundancy.md) |  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  | 
 | **Storage** |  |  |  |  |  |
 | [Azure Data Lake Storage Gen2](../storage/common/storage-account-create.md?tabs=azure-portal)  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Premium Files-lagring](../storage/files/storage-files-planning.md) |  | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
@@ -143,7 +145,7 @@ Tjänster som är tillgängliga i varje region, tillsammans med kommande översi
 
 
 
-## <a name="other"></a>Annat
+## <a name="other"></a>Övrigt
 
 Azure erbjuder också Tillgänglighetszoner support i följande regioner: • US Gov, Virginia • Sydafrika, norra • södra centrala USA
 

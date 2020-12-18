@@ -3,14 +3,14 @@
 - name: Översikt
   expanded: true
   items:
-    - name: Om Security Center
+    - name: Vad är Azure Security Center?
+      href: security-center-introduction.md
+    - name: Tillgänglighet
       items:
-        - name: Vad är Azure Security Center?
-          href: security-center-introduction.md
         - name: Plattformar som stöds
           displayName: coverage
           href: security-center-os-coverage.md
-        - name: Funktioner för virtuella datorer
+        - name: 'Täckning av operativsystem, maskintyp och moln'
           href: security-center-services.md
         - name: Funktioner för Azure PaaS-resurser
           href: features-paas.md

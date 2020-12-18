@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 04/02/2020
-ms.openlocfilehash: af77f18771d8e18ee86b79360ac03307d3330cb0
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: b02c5bbf2e6accbea9c7a33dc26c4e89e46bb697
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131436"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679147"
 ---
 # <a name="power-bi-app-creation-overview"></a>Översikt över skapande av Power BI app
 
@@ -33,7 +33,7 @@ Fördelar med att publicera till den kommersiella marknads platsen:
 
 Dessa är viktiga publicerings steg:
 
-1. Skapa ditt program i Power BI. Du får en paket installations länk, som är den viktigaste tekniska till gången för erbjudandet. Skicka test paketet till för produktion innan du skapar erbjudandet i Partner Center. Mer information finns i [Vad är Power BI appar?](/power-bi/service-template-apps-overview).
+1. Skapa ditt program i Power BI. Du får en paket installations länk, som är den viktigaste tekniska till gången för erbjudandet. Skicka test paketet till för produktion innan du skapar erbjudandet i Partner Center. Mer information finns i [Vad är Power BI appar?](/power-bi/service-template-apps-overview)
 2. Lägg till marknadsförings material, till exempel officiellt namn, beskrivning och logo typer.
 3. Ta med erbjudandena juridiska och stöd dokument, till exempel användnings villkor, sekretess policy, support princip och användar hjälp.
 4. Skapa erbjudandet – Använd partner Center för att redigera informationen, inklusive erbjudande beskrivning, marknadsförings material, juridisk information, supportinformation och till gångs uppgifter.

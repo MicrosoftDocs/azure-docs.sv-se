@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 11/24/2020
+ms.date: 12/17/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 01f61eac31c388cd0bf8a857beb7a10944187c6b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 1814555f738f37523c5b23ae729bf20bff62e1f9
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027908"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679526"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Vad är Azure Cognitive Search?
 
@@ -25,8 +25,8 @@ När du skapar en Kognitiv sökning-tjänst får du:
 + En sökmotor som utför indexering och frågekörningen
 + Beständig lagring av Sök index som du skapar och hanterar
 + Ett frågespråk för att skriva enkla till komplexa frågor
-+ AI – centrerad analys, som skapar sökbart innehåll av bilder, rå text, programfiler
-+ Integrering med Azure-data via Sök indexerare, automatisera data import och uppdatering
++ [AI-drivna anrikninger](cognitive-search-concept-intro.md), skapa sökbart innehåll av bilder, rå text, programfiler
++ Integrering med andra Azure-tjänster för data, Machine Learning/AI och säkerhet
 
 En Sök tjänst är arkitekturad mellan de externa data lager som innehåller dina data som inte har indexerats och en klient-app som skickar förfrågningar till ett sökindex och hanterar svaret.
 
@@ -89,11 +89,11 @@ I moln leverantörer är Azure Kognitiv sökning starkast för full texts öknin
 Viktiga fördelar är:
 
 + Azure-dataintegrering (crawler) på indexeringslagret
-+ Azure Portal för central hantering
-+ Azure-skala, tillförlitlighet och tillgänglighet i världsklass
-+ AI-bearbetning av rå data för att göra den mer sökbar, inklusive text från bilder eller hitta mönster i ostrukturerat innehåll.
++ Azure Private Link-integrering som stöder säkerhets krav från Internet
++ Integrering med AI-bearbetning för att göra sökbara innehålls typer text-sökbar.
 + Språklig och anpassad analys, med analysverktyg för fulltextsökning på 56 språk
-+ [Centrala funktioner som är gemensamma för sökcentriska appar](search-features-list.md): bedömning, aspektbasering, förslag, synonymer, geo-sökning och mycket mer.
++ [Kritiska funktioner](search-features-list.md): omfattande frågespråk, relevans-justering, fasettering, komplettering, synonymer, geo-sökning och resultat sammansättning.
++ Azure-skala, tillförlitlighet och tillgänglighet i världsklass
 
 Bland våra kunder kan de som har nytta av de många funktionerna i Azure Kognitiv sökning inkludera kataloger, branschspecifika program och dokument identifierings program.
 

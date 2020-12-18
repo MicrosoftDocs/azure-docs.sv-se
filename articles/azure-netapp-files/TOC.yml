@@ -59,6 +59,8 @@
               href: solutions-windows-virtual-desktop.md
     - name: Vanliga frågor och svar om Azure NetApp Files
       href: azure-netapp-files-faqs.md
+    - name: Vad är verktyget Azure Application Consistent Snapshot?
+      href: azacsnap-introduction.md
 - name: Anvisningar
   items:
     - name: Registrera för Azure NetApp Files
@@ -131,6 +133,32 @@
       href: /rest/api/netapp/
     - name: Resource Manager-mall
       href: /azure/templates/microsoft.netapp/allversions
+    - name: Verktyget Azure Application Consistent Snapshot Tool (AzAcSnap)
+      items:
+        - name: Komma igång med AzAcSnap
+          href: azacsnap-get-started.md
+        - name: Installera AzAcSnap
+          href: azacsnap-installation.md
+        - name: Haveriberedskap med AzAcSnap
+          href: azacsnap-disaster-recovery.md
+        - name: Tips och trick för att använda AzAcSnap
+          href: azacsnap-tips.md
+        - name: Felsöka AzAcSnap
+          href: azacsnap-troubleshoot.md
+        - name: Kommandoreferens för AzAcSnap
+          items:
+            - name: Konfigurera AzAcSnap
+              href: azacsnap-cmd-ref-configure.md
+            - name: Testa AzAcSnap
+              href: azacsnap-cmd-ref-test.md
+            - name: Säkerhetskopiera med AzAcSnap
+              href: azacsnap-cmd-ref-backup.md
+            - name: Hämta information med AzAcSnap
+              href: azacsnap-cmd-ref-details.md
+            - name: Ta bort med AzAcSnap
+              href: azacsnap-cmd-ref-delete.md
+            - name: Återställa med AzAcSnap
+              href: azacsnap-cmd-ref-restore.md
 - name: Resurser
   items:
     - name: Prissättning

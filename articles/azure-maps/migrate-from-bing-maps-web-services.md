@@ -9,16 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: d257c66de8fb62fb57c573d91966f3e7d8d1b123
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 6024aae68183fbe02125ef4207e9fbce8abd6a2b
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904966"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679075"
 ---
-# <a name="tutorial---migrate-web-service-from-bing-maps"></a>Självstudie – migrera webb tjänsten från Bing Maps
+# <a name="tutorial-migrate-web-service-from-bing-maps"></a>Självstudie: Migrera webb tjänsten från Bing Maps
 
-Både Azure-och Bing Maps ger till gång till spatiala API: er via REST-webbtjänster. API-gränssnitten för dessa plattformar utför liknande funktioner men använder olika namngivnings konventioner och svars objekt.
+Både Azure-och Bing Maps ger till gång till spatiala API: er via REST-webbtjänster. API-gränssnitten för dessa plattformar utför liknande funktioner men använder olika namngivnings konventioner och svars objekt. I den här självstudien får du lära dig hur man:
+
+> * Forward och omvända polykodning
+> * Söka efter platser av intresse
+> * Beräkna vägar och vägbeskrivningar
+> * Hämta en kart bild
+> * Beräkna en avstånds mat ris
+> * Hämta tids zons information
 
 Följande tabell innehåller API: er för Azure Maps tjänsten som tillhandahåller liknande funktioner för API: er för Bing Maps-tjänsten.
 
@@ -59,6 +66,12 @@ Se även följande guider för bästa praxis:
 -   [Metodtips för sökning](./how-to-use-best-practices-for-search.md)
 -   [Metod tips för routning](./how-to-use-best-practices-for-routing.md)
 
+## <a name="prerequisites"></a>Förutsättningar
+
+1. Logga in på [Azure-portalen](https://portal.azure.com). Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
+2. [Skapa ett Azure Maps konto](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [Hämta en primär prenumerations nyckel](quick-demo-map-app.md#get-the-primary-key-for-your-account), även kallat primär nyckel eller prenumerations nyckel. Mer information om autentisering i Azure Maps finns i [hantera autentisering i Azure Maps](how-to-manage-authentication.md).
+
 ## <a name="geocoding-addresses"></a>Adresser för att koda
 
 Kod för att omvandla en adress (till exempel `"1 Microsoft way, Redmond, WA"` ) till en koordinat (t. ex. longitud:-122,1298, latitud: 47,64005). Koordinater används ofta för att placera en kartnål på en karta eller centrera en karta.
@@ -91,9 +104,9 @@ I följande tabeller sker en kors referens till Bing Maps API-parametrar med de 
 
 Azure Maps stöder också;
 
--   `countrySecondarySubdivision` – County, distrikt
--   `countryTertiarySubdivision` -Namngivna områden; boroughs, cantons, communes
--   `ofs` – Sida genom resultaten i kombination med `maxResults` parameter.
+* `countrySecondarySubdivision` – County, distrikt
+* `countryTertiarySubdivision` -Namngivna områden; boroughs, cantons, communes
+* `ofs` – Sida genom resultaten i kombination med `maxResults` parameter.
 
 **Plats efter fråga (adress sträng med fri form)**
 
@@ -109,10 +122,10 @@ Azure Maps stöder också;
 
 Azure Maps stöder också;
 
--   `typeahead` – Arter om frågan kommer att tolkas som en del Indatatyp och sökningen kommer att ange förutsägande läge (autoföreslå/komplettera automatiskt).
--   `countrySet` – En kommaavgränsad lista över koder för ISO2 länder där du kan begränsa sökningen till.
--   `lat`/`lon`, `topLeft` / `btmRight` , `radius` – Ange användarens plats och område för att göra resultaten mer lokalt relevanta.
--   `ofs` – Sida genom resultaten i kombination med `maxResults` parameter.
+* `typeahead` – Arter om frågan kommer att tolkas som en del Indatatyp och sökningen kommer att ange förutsägande läge (autoföreslå/komplettera automatiskt).
+* `countrySet` – En kommaavgränsad lista över koder för ISO2 länder där du kan begränsa sökningen till.
+* `lat`/`lon`, `topLeft` / `btmRight` , `radius` – Ange användarens plats och område för att göra resultaten mer lokalt relevanta.
+* `ofs` – Sida genom resultaten i kombination med `maxResults` parameter.
 
 Ett exempel på hur du använder Sök tjänsten finns dokumenterat [här](./how-to-search-for-address.md). Se till att gå igenom [metod tipsen för Sök efter](./how-to-use-best-practices-for-search.md) dokumentation.
 
@@ -142,9 +155,9 @@ Se till att gå igenom [metod tipsen för Sök efter](./how-to-use-best-practice
 
 API: et för omväntitet i Azure Maps har vissa ytterligare funktioner som inte är tillgängliga i Bing Maps som kan vara användbara för att integrera när du migrerar appen:
 
--   Hämta data för hastighets begränsning.
--   Hämta information om användning av resande; lokal väg, arterial, begränsad åtkomst, ramp osv.
--   Den sida på gatan som koordinaten infaller på.
+* Hämta data för hastighets begränsning.
+* Hämta information om användning av resande; lokal väg, arterial, begränsad åtkomst, ramp osv.
+* Den sida på gatan som koordinaten infaller på.
 
 **Jämförelse tabell över entitetstyp**
 
@@ -156,7 +169,7 @@ Följande tabell refererar till värdena för Bing Maps-enhets typen till motsva
 | `Neighborhood`        | `Neighbourhood`                                 | *Stadsdel*                             |
 | `PopulatedPlace`      | `Municipality` eller `MunicipalitySubdivision`     | *Stad*, *stad eller sub* eller *Super City*     |
 | `Postcode1`           | `PostalCodeArea`                                | *Post nummer* eller *post* nummer                |
-| `AdminDivision1`      | `CountrySubdivision`                            | *Region* *Province*                      |
+| `AdminDivision1`      | `CountrySubdivision`                            | *Region*                       |
 | `AdminDivision2`      | `CountrySecondarySubdivison`                    | *Län* eller *distrikt*                    |
 | `CountryRegion`       | `Country`                                       | *Lands namn*                             |
 |                       | `CountryTertiarySubdivision`                    | *Boroughs*, *cantons*, *communes*          |
@@ -174,10 +187,10 @@ Flera av API: erna för Azure Maps Search-API: et stöder förutsägbart läge s
 
 Azure Maps kan användas för att beräkna vägar och riktningar. Azure Maps har många av samma funktioner som Bing Maps-routningstjänsten, till exempel;
 
--   tider för införsel och avresa
--   vägar i real tids-och förutsägande baserade trafik
--   olika transport sätt; framförande, promenad, Last bil
--   waypoint order optimering (rese försäljare)
+* tider för införsel och avresa
+* vägar i real tids-och förutsägande baserade trafik
+* olika transport sätt; framförande, promenad, Last bil
+* waypoint order optimering (rese försäljare)
 
 > [!NOTE]
 > Azure Maps kräver att alla waypoints är koordinater. Adresser måste vara kodade först.
@@ -221,12 +234,12 @@ API för Azure Maps routning stöder också Truck-routning inom samma API. I fö
 | `vehicleLength` (`vl`)                   | `vehicleLength`                            |
 | `vehicleWeight` (`weight`)               | `vehicleWeight`                            |
 | `vehicleAxles` (`axles`)                 | `vehicleAxelWeight`                        |
-| `vehicleTrailers` (`vt`)                 | **EJ TILLÄMPLIGT**                                    |
+| `vehicleTrailers` (`vt`)                 | **Saknas**                                    |
 | `vehicleSemi` (`semi`)                   | `vehicleCommercial`                        |
-| `vehicleMaxGradient` (`vmg`)             | **EJ TILLÄMPLIGT**                                    |
-| `vehicleMinTurnRadius` (`vmtr`)          | **EJ TILLÄMPLIGT**                                    |
-| `vehicleAvoidCrossWind` (`vacw`)         | **EJ TILLÄMPLIGT**                                    |
-| `vehicleAvoidGroundingRisk` (`vagr`)     | **EJ TILLÄMPLIGT**                                    |
+| `vehicleMaxGradient` (`vmg`)             | **Saknas**                                    |
+| `vehicleMinTurnRadius` (`vmtr`)          | **Saknas**                                    |
+| `vehicleAvoidCrossWind` (`vacw`)         | **Saknas**                                    |
+| `vehicleAvoidGroundingRisk` (`vagr`)     | **Saknas**                                    |
 | `vehicleHazardousMaterials` (`vhm`)      | `vehicleLoadType`                          |
 | `vehicleHazardousPermits` (`vhp`)        | `vehicleLoadType`                          |
 
@@ -237,21 +250,21 @@ Se också till att du läser igenom de [bästa metoderna för routning av](./how
 
 API för Azure Maps routning har många ytterligare funktioner som inte är tillgängliga i Bing Maps som kan vara användbara att integrera när du migrerar appen:
 
--   Stöd för väg typ: kortaste, snabbast, trilling och mest bränsle effektiv.
--   Stöd för ytterligare rese lägen: cykel, buss, motorcykel, taxi, Truck och van.
--   Stöd för 150 waypoints.
--   Beräkna flera rese tider i en enskild begäran. historisk trafik, direkt trafik, ingen trafik.
--   Undvik ytterligare väg typer: Carpool-vägar, unpaved-vägar, redan använda vägar.
--   Motor specifikation-baserad routning. Beräkna vägar för förbrännings-eller elmotor fordon baserat på deras återstående bränsle-/avgifts-och motor specifikationer.
--   Ange högsta fordons hastighet.
+* Stöd för väg typ: kortaste, snabbast, trilling och mest bränsle effektiv.
+* Stöd för ytterligare rese lägen: cykel, buss, motorcykel, taxi, Truck och van.
+* Stöd för 150 waypoints.
+* Beräkna flera rese tider i en enskild begäran. historisk trafik, direkt trafik, ingen trafik.
+* Undvik ytterligare väg typer: Carpool-vägar, unpaved-vägar, redan använda vägar.
+* Motor specifikation-baserad routning. Beräkna vägar för förbrännings-eller elmotor fordon baserat på deras återstående bränsle-/avgifts-och motor specifikationer.
+* Ange högsta fordons hastighet.
 
 ## <a name="snap-coordinates-to-road"></a>Fäst koordinater på väg
 
 Det finns flera sätt att fästa koordinater på vägar i Azure Maps.
 
--   Använd väg riktnings-API: et för att fästa koordinater mot en logisk väg i vägtrafik nätverket.
--   Använd Azure Maps Web SDK för att fästa enskilda koordinater mot närmaste väg i vektor panelerna.
--   Använd Azure Maps vektor paneler direkt för att fästa enskilda koordinater.
+* Använd väg riktnings-API: et för att fästa koordinater mot en logisk väg i vägtrafik nätverket.
+* Använd Azure Maps Web SDK för att fästa enskilda koordinater mot närmaste väg i vektor panelerna.
+* Använd Azure Maps vektor paneler direkt för att fästa enskilda koordinater.
 
 **Använda väg riktnings-API för att fästa koordinater**
 
@@ -259,8 +272,8 @@ Azure Maps kan fästa koordinater mot vägar genom att använda [väg riktnings]
 
 Det finns två olika sätt att använda väg riktnings-API: et för att fästa koordinater på vägar.
 
--   Om det finns 150 koordinater eller mindre, kan de skickas som waypoints i API för att hämta väg riktningar. Med den här metoden kan två olika typer av fästa data hämtas. flödes instruktioner kommer att innehålla de enskilda fästa waypoints, medan väg Sök vägen har en interpolerad uppsättning koordinater som fyller den fullständiga sökvägen mellan koordinaterna.
--   Om det finns fler än 150 koordinater kan du använda API: et för POST vägs riktningar. Koordinaternas start-och slut koordinater måste skickas till Frågeparametern, men alla koordinater kan skickas till- `supportingPoints` parametern i postens brödtext och formaterats som en geometrisk samling av punkter i en geometrisk JSON-samling. De enda fästa data som är tillgängliga med den här metoden är väg Sök vägen som är en interpolerad uppsättning koordinater som fyller den fullständiga sökvägen mellan koordinaterna. [Här är ett exempel](https://azuremapscodesamples.azurewebsites.net/?sample=Snap%20points%20to%20logical%20route%20path) på den här metoden med modulen tjänster i Azure Maps Web SDK.
+* Om det finns 150 koordinater eller mindre, kan de skickas som waypoints i API för att hämta väg riktningar. Med den här metoden kan två olika typer av fästa data hämtas. flödes instruktioner kommer att innehålla de enskilda fästa waypoints, medan väg Sök vägen har en interpolerad uppsättning koordinater som fyller den fullständiga sökvägen mellan koordinaterna.
+* Om det finns fler än 150 koordinater kan du använda API: et för POST vägs riktningar. Koordinaternas start-och slut koordinater måste skickas till Frågeparametern, men alla koordinater kan skickas till- `supportingPoints` parametern i postens brödtext och formaterats som en geometrisk samling av punkter i en geometrisk JSON-samling. De enda fästa data som är tillgängliga med den här metoden är väg Sök vägen som är en interpolerad uppsättning koordinater som fyller den fullständiga sökvägen mellan koordinaterna. [Här är ett exempel](https://azuremapscodesamples.azurewebsites.net/?sample=Snap%20points%20to%20logical%20route%20path) på den här metoden med modulen tjänster i Azure Maps Web SDK.
 
 Följande tabell innehåller en kors referens till API-parametrarna Bing Maps med de jämförbara API-parametrarna i Azure Maps.
 
@@ -287,12 +300,12 @@ API: et för Azure Maps routning stöder också en väg för Truck i samma API f
 | `vehicleLength` (`vl`)                  | `vehicleLength`                            |
 | `vehicleWeight` (`weight`)              | `vehicleWeight`                            |
 | `vehicleAxles` (`axles`)                | `vehicleAxelWeight`                        |
-| `vehicleTrailers` (`vt`)                | **EJ TILLÄMPLIGT**                                    |
+| `vehicleTrailers` (`vt`)                | **Saknas**                                    |
 | `vehicleSemi` (`semi`)                  | `vehicleCommercial`                        |
-| `vehicleMaxGradient` (`vmg`)            | **EJ TILLÄMPLIGT**                                    |
-| `vehicleMinTurnRadius` (`vmtr`)         | **EJ TILLÄMPLIGT**                                    |
-| `vehicleAvoidCrossWind` (`vacw`)        | **EJ TILLÄMPLIGT**                                    |
-| `vehicleAvoidGroundingRisk` (`vagr`)    | **EJ TILLÄMPLIGT**                                    |
+| `vehicleMaxGradient` (`vmg`)            | **Saknas**                                    |
+| `vehicleMinTurnRadius` (`vmtr`)         | **Saknas**                                    |
+| `vehicleAvoidCrossWind` (`vacw`)        | **Saknas**                                    |
+| `vehicleAvoidGroundingRisk` (`vagr`)    | **Saknas**                                    |
 | `vehicleHazardousMaterials` (`vhm`)     | `vehicleLoadType`                          |
 | `vehicleHazardousPermits` (`vhp`)       | `vehicleLoadType`                          |
 
@@ -368,9 +381,7 @@ I Bing Maps kan till exempel en röd kartnål med etiketten "AB" läggas till i 
 
 > `&pushpin=45,-110;7;AB`
 
-<center>
-
-![PIN-kod för Bing Maps statisk mappning](media/migrate-bing-maps-web-service/bing-maps-static-map-pin.jpg)</center>
+![PIN-kod för Bing Maps statisk mappning](media/migrate-bing-maps-web-service/bing-maps-static-map-pin.jpg)
 
 **Efter: Azure Maps**
 
@@ -384,21 +395,21 @@ När det kommer till att fästa platser måste Azure Maps ha koordinaterna i `lo
 
 `iconType`Värdet anger typen av PIN-kod som ska skapas och kan ha följande värden:
 
--   `default` – Standard ikonen för PIN-kod.
--   `none` – Ingen ikon visas, endast etiketter kommer att återges.
--   `custom` – Anger att en anpassad ikon ska användas. En URL som pekar på ikon bilden kan läggas till i slutet av `pins` parametern efter PIN-kodens plats information.
--   `{udid}` – Ett unikt data-ID (UDID) för en ikon som lagras i Azure Maps data lagrings plattform.
+* `default` – Standard ikonen för PIN-kod.
+* `none` – Ingen ikon visas, endast etiketter kommer att återges.
+* `custom` – Anger att en anpassad ikon ska användas. En URL som pekar på ikon bilden kan läggas till i slutet av `pins` parametern efter PIN-kodens plats information.
+* `{udid}` – Ett unikt data-ID (UDID) för en ikon som lagras i Azure Maps data lagrings plattform.
 
 PIN-format i Azure Maps läggs till med formatet `optionNameValue` , med flera format åtskiljda med pipe ( `|` )-tecken som detta `iconType|optionName1Value1|optionName2Value2` . Observera att alternativ namn och värden inte separeras. Följande format alternativ namn kan användas för att formatera kartnålar i Azure Maps:
 
--   `al` – Anger kartnålens opacitet (alfa). Kan vara ett tal mellan 0 och 1.
--   `an` – Anger fäst punkten. X-och y-pixelvärdena anges i formatet `x y` .
--   `co` – PIN-kodens färg. Måste vara 24-bitars hex-färg: `000000` till `FFFFFF` .
--   `la` – Anger etikettens ankare. X-och y-pixelvärdena anges i formatet `x y` .
--   `lc` – Etikettens färg. Måste vara 24-men hex-färg: `000000` till `FFFFFF` .
--   `ls` – Etikettens storlek i bild punkter. Kan vara ett tal som är större än 0.
--   `ro` – Ett värde i grader för att rotera ikonen. Kan vara ett tal mellan-360 och 360.
--   `sc` – Ett skalnings värde för PIN-ikonen. Kan vara ett tal som är större än 0.
+* `al` – Anger kartnålens opacitet (alfa). Kan vara ett tal mellan 0 och 1.
+* `an` – Anger fäst punkten. X-och y-pixelvärdena anges i formatet `x y` .
+* `co` – PIN-kodens färg. Måste vara 24-bitars hex-färg: `000000` till `FFFFFF` .
+* `la` – Anger etikettens ankare. X-och y-pixelvärdena anges i formatet `x y` .
+* `lc` – Etikettens färg. Måste vara 24-men hex-färg: `000000` till `FFFFFF` .
+* `ls` – Etikettens storlek i bild punkter. Kan vara ett tal som är större än 0.
+* `ro` – Ett värde i grader för att rotera ikonen. Kan vara ett tal mellan-360 och 360.
+* `sc` – Ett skalnings värde för PIN-ikonen. Kan vara ett tal som är större än 0.
 
 Etikett värden anges för varje PIN-plats i stället för att ha ett enda etikett värde som gäller för alla kartnålar i listan över platser. Etikett svärdet kan vara en sträng med flera tecken och måste omslutas med enkla citat tecken för att säkerställa att den inte är förväxlad som ett format eller ett plats värde.
 
@@ -406,17 +417,13 @@ I Azure Maps lägger du till exempel till en röd ( `FF0000` ) standard ikon med
 
 > `&pins=default|coFF0000|la15 50||'Space Needle'-122.349300 47.620180`
 
-<center>
-
-![PIN-kod för Azure Maps statisk mappning](media/migrate-bing-maps-web-service/azure-maps-static-map-pin.jpg)</center>
+![PIN-kod för Azure Maps statisk mappning](media/migrate-bing-maps-web-service/azure-maps-static-map-pin.jpg)
 
 I följande exempel läggs tre PIN-koder till med etikett värden "1", "2" och "3":
 
 > `&pins=default||'1'-122 45|'2'-119.5 43.2|'3'-121.67 47.12`
 
-<center>
-
-![Azure Maps statisk karta flera PIN-bara](media/migrate-bing-maps-web-service/azure-maps-static-map-multiple-pins.jpg)</center>
+![Azure Maps statisk karta flera PIN-bara](media/migrate-bing-maps-web-service/azure-maps-static-map-multiple-pins.jpg)
 
 ### <a name="draw-curve-url-parameter-format-comparison"></a>& Rita kurva URL-parameter format jämförelse
 
@@ -436,9 +443,7 @@ I Bing Maps kan till exempel en blå linje med 50% opacitet och en tjocklek på 
 
 `&drawCurve=l,FF000088,4;45,-110_50,-100`
 
-<center>
-
-![Statisk kart linje i Bing Maps](media/migrate-bing-maps-web-service/bing-maps-static-map-line.jpg)</center>
+![Statisk kart linje i Bing Maps](media/migrate-bing-maps-web-service/bing-maps-static-map-line.jpg)
 
 **Efter: Azure Maps**
 
@@ -450,20 +455,18 @@ När den kommer till sökvägar måste Azure Maps ha koordinaterna i `longitude 
 
 Sök vägs format i Azure Maps läggs till med formatet `optionNameValue` , med flera format åtskiljda med pipe ( `|` )-tecken som detta `optionName1Value1|optionName2Value2` . Observera att alternativ namn och värden inte separeras. Följande format alternativ namn kan användas för att formatera sökvägar i Azure Maps:
 
--   `fa` – Fyllnings färg opaciteten (alpha) som används vid åter givning av polygoner. Kan vara ett tal mellan 0 och 1.
--   `fc` – Fyllnings färgen som används för att återge ytan i en polygon.
--   `la` – Linje färg opaciteten (alfa) som används vid åter givning av linjer och konturen av polygoner. Kan vara ett tal mellan 0 och 1.
--   `lc` – Linje färgen som används för att återge linjer och konturen för polygoner.
--   `lw` – Bredden på linjen i bild punkter.
--   `ra` – Anger en cirkel-radie i meter.
+* `fa` – Fyllnings färg opaciteten (alpha) som används vid åter givning av polygoner. Kan vara ett tal mellan 0 och 1.
+* `fc` – Fyllnings färgen som används för att återge ytan i en polygon.
+* `la` – Linje färg opaciteten (alfa) som används vid åter givning av linjer och konturen av polygoner. Kan vara ett tal mellan 0 och 1.
+* `lc` – Linje färgen som används för att återge linjer och konturen för polygoner.
+* `lw` – Bredden på linjen i bild punkter.
+* `ra` – Anger en cirkel-radie i meter.
 
 I Azure Maps kan till exempel en blå linje med 50% opacitet och en tjocklek på fyra pixlar läggas till i kartan mellan koordinaterna (longitud:-110, latitud: 45 och longitud:-100, latitud: 50) med följande URL-parameter:
 
 > `&path=lc0000FF|la.5|lw4||-110 45|-100 50`
 
-<center>
-
-![Azure Maps statisk kart linje](media/migrate-bing-maps-web-service/azure-maps-static-map-line.jpg)</center>
+![Azure Maps statisk kart linje](media/migrate-bing-maps-web-service/azure-maps-static-map-line.jpg)
 
 ## <a name="calculate-a-distance-matrix"></a>Beräkna en avstånds mat ris
 
@@ -547,8 +550,8 @@ Se till att gå igenom [metod tipsen för Sök efter](./how-to-use-best-practice
 
 Azure Maps innehåller flera API: er för att hämta trafik data. Det finns två typer av trafik data tillgängliga.
 
--   **Flödes data** – innehåller mått för trafik flödet i vägarnas avdelningar. Detta används ofta för att färgkoda vägar. Dessa data uppdateras var 2: e minut.
--   **Incident data** – tillhandahåller data om konstruktion, väg stängning, olyckor och andra incidenter som kan påverka trafiken. Dessa data uppdateras varje minut.
+* **Flödes data** – innehåller mått för trafik flödet i vägarnas avdelningar. Detta används ofta för att färgkoda vägar. Dessa data uppdateras var 2: e minut.
+* **Incident data** – tillhandahåller data om konstruktion, väg stängning, olyckor och andra incidenter som kan påverka trafiken. Dessa data uppdateras varje minut.
 
 Bing Maps innehåller trafik flödes-och incident data i sina interaktiva kart kontroller och gör också incident data tillgängliga som en tjänst.
 
@@ -602,9 +605,9 @@ Förutom denna Azure Mapss plattform innehåller också ett antal ytterligare ti
 
 De spatiala data tjänsterna i Bing Maps innehåller tre viktiga funktioner:
 
--   Batchbokföring av batch – bearbeta en stor grupp av adressens landskod med en enskild begäran.
--   Hämta administrativa avgränsnings data – Använd en koordinat och hämta en överlappande gränser för en angiven entitetstyp.
--   Vara värd för och fråga efter rums affärs data – Ladda upp en enkel 2D-tabell med data och få åtkomst till den med några enkla avstånds frågor.
+* Batchbokföring av batch – bearbeta en stor grupp av adressens landskod med en enskild begäran.
+* Hämta administrativa avgränsnings data – Använd en koordinat och hämta en överlappande gränser för en angiven entitetstyp.
+* Vara värd för och fråga efter rums affärs data – Ladda upp en enkel 2D-tabell med data och få åtkomst till den med några enkla avstånds frågor.
 
 ### <a name="batch-geocode-data"></a>Information om batch-landskod
 
@@ -660,7 +663,11 @@ Azure Maps tillhandahåller klient bibliotek för följande programmeringsspråk
 
 Klient bibliotek med öppen källkod för andra programmeringsspråk.
 
--   .Net standard 2,0 – [GitHub Project](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet-paket](https://www.nuget.org/packages/AzureMapsRestToolkit/)
+* .Net standard 2,0 – [GitHub Project](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet-paket](https://www.nuget.org/packages/AzureMapsRestToolkit/)
+
+## <a name="clean-up-resources"></a>Rensa resurser
+
+Det gick inte att rensa några resurser.
 
 ## <a name="next-steps"></a>Nästa steg
 
@@ -668,15 +675,3 @@ Läs mer om Azure Maps REST-tjänsterna.
 
 > [!div class="nextstepaction"]
 > [Metod tips för att använda Sök tjänsten](how-to-use-best-practices-for-search.md)
-
-> [!div class="nextstepaction"]
-> [Metod tips för att använda routningstjänsten](how-to-use-best-practices-for-search.md)
-
-> [!div class="nextstepaction"]
-> [Så här använder du modulen tjänster (Web SDK)](how-to-use-best-practices-for-routing.md)
-
-> [!div class="nextstepaction"]
-> [Dokumentation om Azure Maps REST service API-referens](/rest/api/maps/)
-
-> [!div class="nextstepaction"]
-> [Kodexempel](/samples/browse/?products=azure-maps)

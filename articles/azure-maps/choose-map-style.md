@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: f2d7c9e39cb3eb14a2c2c6a7b13e37f3a526184b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 556e265cc0d1aae33823185ec98d23f191ed1694
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92889807"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680032"
 ---
 # <a name="change-the-style-of-the-map"></a>Ändra formatet för kartan
 
@@ -29,9 +29,9 @@ Stil alternativ kan anges under initiering av webb kontroll. Du kan också uppda
 var map = new atlas.Map('map', {
     renderWorldCopies: false,
     showBuildingModels: false,
-    showLogo = true,
-    showFeedbackLink = true,
-    style='road'
+    showLogo: true,
+    showFeedbackLink: true,
+    style: 'road'
 
     //Additional map options.
 };
@@ -40,8 +40,8 @@ var map = new atlas.Map('map', {
 map.setStyle({
     renderWorldCopies: true,
     showBuildingModels: true,
-    showLogo = false,
-    showFeedbackLink = false
+    showLogo: false,
+    showFeedbackLink: false
 });
 ```
 
@@ -101,7 +101,7 @@ Bilden nedan visar den stil väljar kontroll som visas i `icon` layouten.
 
 Bilden nedan visar den stil väljar kontroll som visas i `list` layouten.
 
-:::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="Ikon layout för format väljare":::
+:::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="Layout för format väljare":::
 
 > [!IMPORTANT]
 > Som standard visar format väljar kontrollen alla formatmallar som är tillgängliga under S0 pris nivå för Azure Maps. Om du vill minska antalet formatmallar i den här listan skickar du en matris med de format som du vill ska visas i listan till `mapStyle` alternativet för format väljaren. Om du använder S1 och vill visa alla tillgängliga stilar väljer du `mapStyles` alternativet för format väljare till `"all"` .
@@ -129,10 +129,13 @@ Läs mer om de klasser och metoder som används i den här artikeln:
 > [!div class="nextstepaction"]
 > [StyleControlOptions](/javascript/api/azure-maps-control/atlas.stylecontroloptions)
 
-Lägg till kontroller i dina kartor:
+Se följande artiklar för fler kod exempel som du kan lägga till i dina kartor:
 
 > [!div class="nextstepaction"]
 > [Lägg till kartkontroller](map-add-controls.md)
 
 > [!div class="nextstepaction"]
-> [Lägg till en nål](map-add-pin.md)
+> [Lägga till ett symbolskikt](map-add-pin.md)
+
+> [!div class="nextstepaction"]
+> [Lägga till ett bubbelskikt](map-add-bubble-layer.md)

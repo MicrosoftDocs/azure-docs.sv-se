@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 51df9683152d97b899150e240dee98896f8c40ee
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: b15ee7091a68f7fcc79c71877c4af28b511b84de
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896386"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680140"
 ---
 # <a name="add-a-heat-map-layer"></a>Lägga till ett heatmapskikt
 
@@ -24,16 +24,16 @@ Värme kartor, även kallade punkt Täthets kartor, är en typ av data visualise
 
 Du kan använda värme kartor i många olika scenarier, inklusive:
 
-- **Temperatur data** : tillhandahåller ungefärliger för vad temperaturen är mellan två data punkter.
-- **Data för buller sensorer** : visar inte bara intensiteten för bruset där sensorn är, men det kan också ge insikter om avtagningen över ett avstånd. Brus nivån på en plats kanske inte är hög. Om brus täcknings området från flera sensorer överlappar varandra, är det möjligt att det överlappande området kan uppleva högre buller nivåer. Därför skulle det överlappande område vara synligt i värme kartan.
-- **GPS-spårning** : omfattar hastigheten som en viktad höjd karta där intensiteten för varje data punkt baseras på hastigheten. Den här funktionen är till exempel ett sätt att se var ett fordon går snabbare.
+- **Temperatur data**: tillhandahåller ungefärliger för vad temperaturen är mellan två data punkter.
+- **Data för buller sensorer**: visar inte bara intensiteten för bruset där sensorn är, men det kan också ge insikter om avtagningen över ett avstånd. Brus nivån på en plats kanske inte är hög. Om brus täcknings området från flera sensorer överlappar varandra, är det möjligt att det överlappande området kan uppleva högre buller nivåer. Därför skulle det överlappande område vara synligt i värme kartan.
+- **GPS-spårning**: omfattar hastigheten som en viktad höjd karta där intensiteten för varje data punkt baseras på hastigheten. Den här funktionen är till exempel ett sätt att se var ett fordon går snabbare.
 
 > [!TIP]
 > Värme kart skikt återges som standard koordinaterna för alla Geometries i en data källa. Om du vill begränsa lagret så att det bara återger punkt geometri funktioner, anger du `filter` egenskapen för lagret till `['==', ['geometry-type'], 'Point']` . Om du vill inkludera MultiPoint-funktioner anger du även `filter` egenskapen för lagret till `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` .
 
-<br/>
+</br>
 
-<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Heat-Maps-and-Image-Overlays-in-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Heat-Maps-and-Image-Overlays-in-Azure-Maps/player?format=ny]
 
 ## <a name="add-a-heat-map-layer"></a>Lägga till ett heatmapskikt
 
