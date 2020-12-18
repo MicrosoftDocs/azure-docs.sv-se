@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/24/2019
 ms.author: jeedes
-ms.openlocfilehash: ecd4dd41c0da57770c248f1f71193af8f1daa6d4
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: c27add82766516157d56fcf0a5c94123930112fc
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455467"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672964"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-compliance-elf"></a>Självstudie: Azure Active Directory integration med ELF för regelefterlevnad
 
@@ -30,7 +30,7 @@ När du integrerar Compliance ELF med Azure AD får du följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill konfigurera Azure AD-integrering med Compliance ELF, behöver du följande objekt:
 
@@ -63,7 +63,7 @@ Om du vill konfigurera integreringen av Compliance ELF i Azure AD, måste du lä
 
 4. I sökrutan skriver du **Compliance ELF**, väljer **Compliance ELF** i resultatpanelen och klickar sedan på knappen **Lägg till** för att lägga till programmet.
 
-     ![Compliance ELF i listan med resultat](common/search-new-app.png)
+    ![Compliance ELF i listan med resultat](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -137,7 +137,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 

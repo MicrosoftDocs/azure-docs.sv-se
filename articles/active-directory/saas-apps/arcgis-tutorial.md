@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 08644c8b3c7967a2ba604cbddb58df2b29c6fc3e
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b004394d3f0cc1c4d285c9eba9952a43e8cf65f2
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457783"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674097"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>Självstudie: Azure Active Directory integrering med ArcGIS Online
 
@@ -66,7 +66,7 @@ För att konfigurera integreringen av ArcGIS Online till Azure AD behöver du l�
 
 4. I sökrutan skriver du **ArcGIS Online**, väljer **ArcGIS Online** från resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![ArcGIS Online i resultatlistan](common/search-new-app.png)
+    ![ArcGIS Online i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -166,7 +166,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 
@@ -210,24 +210,24 @@ När det gäller ArcGIS Online är etablering en manuell aktivitet.
 1. Logga in på din **ArcGIS**-klient.
 
 2. Klicka på **BJUD IN MEDLEMMAR**.
-   
+
     ![Bjud in medlemmar](./media/arcgis-tutorial/ic784747.png "Bjud in medlemmar")
 
 3. Välj **Lägg till medlemmar automatiskt utan att skicka ett e-postmeddelande** och klicka sedan på **NÄSTA**.
-   
+
     ![Lägg till medlemmar automatiskt](./media/arcgis-tutorial/ic784748.png "Lägg till medlemmar automatiskt")
 
 4. I dialogrutan **Medlemmar** utför du följande steg:
-   
-     ![Lägg till och granska](./media/arcgis-tutorial/ic784749.png "Lägg till och granska")
-    
-     a. Ange **e-postadress**, **förnamn**och **efter namn** för ett giltigt Azure AD-konto som du vill etablera.
-  
+
+    ![Lägg till och granska](./media/arcgis-tutorial/ic784749.png "Lägg till och granska")
+
+     a. Ange **e-postadress**, **förnamn** och **efter namn** för ett giltigt Azure AD-konto som du vill etablera.
+
      b. Klicka på **LÄGG TILL OCH GRANSKA**.
 5. Granska de data du har angett och klicka sedan på **LÄGG TILL MEDLEMMAR**.
-   
+
     ![Lägg till medlem](./media/arcgis-tutorial/ic784750.png "Lägg till medlem")
-        
+
     > [!NOTE]
     > Azure Active Directory-kontoinnehavaren får ett e-postmeddelande och följer en länk för att bekräfta kontot innan det blir aktivt.
 

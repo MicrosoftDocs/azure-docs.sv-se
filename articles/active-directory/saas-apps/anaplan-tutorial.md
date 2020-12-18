@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 92a878c60ba2a7c08a17ce2833132b389ef49435
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 9b6fcec6f564e944f0e73d151b61d46af4b4cc03
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318733"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673145"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-anaplan"></a>Självstudie: Azure Active Directory integrering med Anaplan
 
@@ -30,7 +30,7 @@ Integreringen av Anaplan med Azure AD medför följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Du behöver följande saker för att konfigurera Azure AD-integrering med Anaplan:
 
@@ -63,7 +63,7 @@ För att konfigurera integrering av Anaplan med Azure AD behöver du lägga till
 
 4. I sökrutan skriver du **Anaplan**, väljer **Anaplan** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![Anaplan i resultatlistan](common/search-new-app.png)
+    ![Anaplan i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -143,7 +143,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 
@@ -179,7 +179,7 @@ I det här avsnittet gör du det möjligt för Britta Simon att använda enkel i
 
 ### <a name="create-anaplan-test-user"></a>Skapa Anaplan-testanvändare
 
-I det här avsnittet skapar du en användare med namnet Britta Simon i Anaplan. Ta hjälp från [supportteamet för Anaplan](mailto:support@anaplan.com) och lägg till användarna på Anaplan-plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning.
+I det här avsnittet skapar du en användare med namnet Britta Simon i Anaplan. Arbeta med [Anaplan support team](mailto:support@anaplan.com) för att lägga till användare i Anaplan-plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning.
 
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning
 

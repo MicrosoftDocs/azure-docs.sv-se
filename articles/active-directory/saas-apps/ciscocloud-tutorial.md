@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 79a5d61c9782d228f9f86d624c1373340ace9381
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d861f8a1befa0facb634615348fd61b1ae44dcb0
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456079"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670185"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>Självstudie: Azure Active Directory integrering med Cisco Cloud
 
@@ -61,9 +61,9 @@ Om du vill konfigurera en integrering av Cisco Cloud i Azure AD måste du lägga
 
     ![Knappen Nytt program](common/add-new-app.png)
 
-4. Skriv **Cisco Cloud**i rutan Sök, Välj **Cisco Cloud** från resultat panelen och klicka sedan på **Lägg till** för att lägga till programmet.
+4. Skriv **Cisco Cloud** i rutan Sök, Välj **Cisco Cloud** från resultat panelen och klicka sedan på **Lägg till** för att lägga till programmet.
 
-     ![Cisco Cloud i resultat listan](common/search-new-app.png)
+    ![Cisco Cloud i resultat listan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -114,13 +114,13 @@ Utför följande steg för att konfigurera enkel inloggning för Azure AD med Ci
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska identifieraren, svars-URL och inloggnings-URL. Kontakta [Cisco Cloud client support team](mailto:cpr-ops@cisco.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
 
-6. Ditt Cisco Cloud-program förväntar sig SAML-intyg i ett särskilt format, vilket kräver att du lägger till anpassade mappningar av attribut i konfigurationen för SAML-token. I följande skärmbild visas listan över standardattribut. Klicka på ikonen**Redigera** för att öppna dialogrutan Användarattribut.
+6. Ditt Cisco Cloud-program förväntar sig SAML-intyg i ett särskilt format, vilket kräver att du lägger till anpassade mappningar av attribut i konfigurationen för SAML-token. I följande skärmbild visas listan över standardattribut. Klicka på ikonen **Redigera** för att öppna dialogrutan Användarattribut.
 
     ![Skärm bild som visar användarattribut med redigerings ikonen vald.](common/edit-attribute.png)
 
 7. Utöver ovan förväntar Cisco Cloud Application några fler attribut att skickas tillbaka i SAML-svar. I avsnittet **Användaranspråk** i dialogrutan **Användarattribut** utför du följande steg för att lägga till SAML-tokenattributet enligt det som visas i tabellen nedan:
 
-    | Name | Källattribut|
+    | Namn | Källattribut|
     | -----------| ------------|
     | land    | användare. land |
     | company    | user.companyname |
@@ -169,7 +169,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 
@@ -181,7 +181,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Cisco Cloud.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Cisco Cloud**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Cisco Cloud**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

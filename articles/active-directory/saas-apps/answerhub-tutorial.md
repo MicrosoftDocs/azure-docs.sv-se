@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: ef09ef7d2ca6dd68def732831f9341dcd3aa6d62
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 284ec65955de60f41d7bb0f97bf608faba3d4b79
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458089"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672613"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Självstudie: Azure Active Directory integrering med AnswerHub
 
@@ -63,7 +63,7 @@ För att konfigurera integreringen av AnswerHub i Azure AD måste du lägga till
 
 4. Skriv **AnswerHub** i sökrutan. Välj **AnswerHub** i resultatlistan och sedan **Lägg till**.
 
-     ![AnswerHub i resultatlistan](common/search-new-app.png)
+    ![AnswerHub i resultatlistan](common/search-new-app.png)
 
 ## <a name="set-up-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -141,13 +141,13 @@ I det här avsnittet konfigurerar du enkel inloggning för AnswerHub.
 4. På fliken **IDP Config** (IDP-konfiguration) utför du följande steg:
 
     ![Skärm bild som visar AnswerHub-sidan med fliken användare & grupper vald.](./media/answerhub-tutorial/ic785172.png "SAML-konfiguration")  
-  
+
     a. I rutan för **inloggnings-URL för IDP** klistrar du in den **inloggnings-URL** som du kopierade från Azure-portalen.
-  
+
     b. I rutan för **utloggnings-URL för IDP** klistrar du in den **utloggnings-URL** som du kopierade från Azure-portalen.
 
     c. I rutan för **format för IDP-namnidentifierare** anger du det värde för **Identifierare** som valts i avsnittet **Användarattribut** i Azure-portalen.
-  
+
     d. Välj **Nycklar och certifikat**.
 
 5. I avsnittet **Nycklar och certifikat** utför du följande steg:
@@ -155,7 +155,7 @@ I det här avsnittet konfigurerar du enkel inloggning för AnswerHub.
     ![Avsnittet nycklar och certifikat](./media/answerhub-tutorial/ic785173.png "Nycklar och certifikat")  
 
     a. Öppna det base64-kodade certifikatet som du laddade ned från Azure-portalen i Anteckningar, kopiera innehållet och klistra sedan in det i rutan för **offentlig nyckel för IDP (x509-format)**.
-  
+
     b. Välj **Spara**.
 
 6. På fliken **IDP Config** (IDP-konfiguration) väljer du **Spara** igen.
@@ -179,9 +179,9 @@ I det här avsnittet skapar du en testanvändare med namnet Britta Simon i Azure
     ![Användaregenskaper](common/user-properties.png)
 
     a. I rutan **Namn** anger du **BrittaSimon**.
-  
+
     b. I rutan **användar namn** anger du **brittasimon \@<yourcompanydomain. extension>**.  
-    Till exempel BrittaSimon@contoso.com.
+    Ett exempel är BrittaSimon@contoso.com.
 
     c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
 
@@ -231,7 +231,7 @@ Om du vill ge Azure AD-användare möjlighet att logga in på AnswerHub måste d
 
 4. I den vänstra rutan går du till avsnittet **Hantera användare**, väljer **Skapa eller importera användare** och väljer sedan **Användare och grupper**.
 
-   ![Skärm bild som visar AnswerHub-sidan med fliken användare & grupper vald och länken Skapa eller importera användare anropas.](./media/answerhub-tutorial/ic785175.png "Användare & grupper")
+    ![Skärm bild som visar AnswerHub-sidan med fliken användare & grupper vald och länken Skapa eller importera användare anropas.](./media/answerhub-tutorial/ic785175.png "Användare & grupper")
 
 5. I motsvarande rutor anger du **E-postadress**, **Användarnamn** och **Lösenord** för ett giltigt Azure AD-konto som du vill lägga till, och väljer sedan **Spara**.
 

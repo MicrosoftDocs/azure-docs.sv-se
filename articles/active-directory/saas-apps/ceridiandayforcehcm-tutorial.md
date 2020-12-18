@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: bd7213f31eb737bedd64d627141c2576fdadb79a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b2241ff6841a5b3f536419336dc4f4fd888663d9
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456389"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673077"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>Självstudie: Azure Active Directory integrering med Ceridian Dayforce HCM
 
@@ -63,7 +63,7 @@ För att konfigurera integreringen av Ceridian Dayforce HCM med Azure AD måste 
 
 4. I sökrutan skriver du **Ceridian Dayforce HCM**, väljer **Ceridian Dayforce HCM** från resultatpanelen och klickar sedan på **Lägg till** för att lägga till programmet.
 
-     ![Ceridian Dayforce HCM i resultatlistan](common/search-new-app.png)
+    ![Ceridian Dayforce HCM i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -130,8 +130,8 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Cerid
     ![Skärm bild som visar användarattribut med redigerings ikonen vald.](common/edit-attribute.png)
 
 6. I avsnittet **Användaranspråk** i dialogrutan **Användarattribut** konfigurerar du SAML-tokenattributet på det sätt som visas i bilden ovan och utför följande steg:
-    
-    | Name | Källattribut|
+
+    | Namn | Källattribut|
     | ---------| --------- |
     | name  | user.extensionattribute2 |
 
@@ -188,7 +188,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 

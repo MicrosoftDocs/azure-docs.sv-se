@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: d82fa5b44d4797d4254a91b4caa72b7c6b5e02ab
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 9a98a77b9cc89b7a1a05e676048775aa38c83733
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309230"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672155"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>Självstudie: Azure Active Directory integration med Adobe Experience Manager
 
@@ -30,7 +30,7 @@ Integreringen av Adobe Experience Manager med Azure AD medför följande fördel
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att konfigurera Azure AD-integrering med Adobe Experience Manager behöver du följande:
 
@@ -65,7 +65,7 @@ För att konfigurera integreringen av Adobe Experience Manager i Azure AD måste
 
 4. I sökrutan skriver du **Adobe Experience Manager**, väljer **Adobe Experience Manager** från resultatpanelen och klickar sedan på **Lägg till** för att lägga till programmet.
 
-     ![Adobe Experience Manager i resultatlistan](common/search-new-app.png)
+    ![Adobe Experience Manager i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -215,7 +215,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 
@@ -253,7 +253,7 @@ I det här avsnittet ska du göra det möjligt för Britta Simon att använda en
 
 I det här avsnittet ska du skapa en användare med namnet Britta Simon i Adobe Experience Manager. Om du valde alternativet **Skapa CRX-användare automatiskt** skapas användare automatiskt efter en lyckad autentisering.
 
-Om du vill skapa användare manuellt arbetar du med [support teamet för Adobe Experience Manager](https://helpx.adobe.com/support/experience-manager.html)   för att lägga till användarna i Adobe Experience Manager-plattformen.
+Om du vill skapa användare manuellt arbetar du med [support teamet för Adobe Experience Manager](https://helpx.adobe.com/support/experience-manager.html) för att lägga till användarna i Adobe Experience Manager-plattformen.
 
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning 
 

@@ -1,6 +1,6 @@
 ---
 title: Pris & fakturerings modell
-description: Översikt över hur pris-och fakturerings modellen fungerar för Azure Logic Apps
+description: Översikt över hur pris-och fakturerings arbetet för Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: jonfancey
@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 520b4a0e87f27a90a604947ae0b558066b4ab82f
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 9243d089b4a000066ec03dbeeccd046db374f558
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937601"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673118"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Pris modell för Azure Logic Apps
 
@@ -65,11 +65,11 @@ För logi Kap par som du skapar och kör i en ISE betalar du ett [fast pris](htt
 
   * **Utvecklare** ISE SKU: ett enda integrations konto på den [kostnads fria nivån](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)
 
-  Oavsett SKU kan varje ISE ha ett [begränsat antal integrations konton](logic-apps-limits-and-config.md#integration-account-limits). Du kan öka den här gränsen för ytterligare kostnader:
+  För ytterligare kostnader kan du skapa fler integrations konton för din ISE [upp till den totala gränsen](logic-apps-limits-and-config.md#integration-account-limits). 
 
-  * **Premium** ISE SKU: upp till fyra standard konton. Inga kostnads fria eller grundläggande konton.
+  * **Premium** ISE SKU: upp till 19 fler standard konton. Inga kostnads fria eller grundläggande konton är tillåtna.
 
-  * **Utvecklare** ISE SKU: antingen upp till fyra standard konton eller upp till 5 totala standard konton. Inga grundläggande konton.
+  * **Utvecklare** ISE SKU: upp till 19 fler standard konton om du redan har ett kostnads fritt konto eller 20 totala standard konton om du inte har ett kostnads fritt konto. Inga grundläggande konton är tillåtna.
 
   Mer information om gränser för integrations konton finns i [gränser och konfiguration för Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Du kan lära dig mer om [integrations konto nivåer och deras pris modell](#integration-accounts) senare i det här avsnittet.
 
@@ -118,7 +118,7 @@ En [fast pris modell](https://azure.microsoft.com/pricing/details/logic-apps) g�
 
 Azure Logic Apps erbjuder integrations konton kostnads fritt, Basic och standard. Nivån Basic och standard stöds av Logic Apps service avtal (SLA), medan den kostnads fria nivån inte stöds av ett service avtal och har gränser för regions tillgänglighet, data flöde och användning. Förutom för integrations konton på kostnads fri nivå kan du ha fler än ett integrations konto i varje Azure-region. Pris nivåer finns i [Logic Apps prissättning](https://azure.microsoft.com/pricing/details/logic-apps/).
 
-Om du har en [ *integrerings tjänst miljö* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), oavsett [SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level), kan din ISE ha ett [begränsat antal integrations konton](logic-apps-limits-and-config.md#integration-account-limits), men du kan [höja gränsen för ytterligare kostnader](#fixed-pricing). Information om hur den fasta pris modellen fungerar för en ISE finns i avsnittet föregående [fast pris modell](#fixed-pricing) i det här avsnittet. Pris nivåer finns i [Logic Apps prissättning](https://azure.microsoft.com/pricing/details/logic-apps).
+Om du har en [ *integrerings tjänst miljö* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)kan din ISE använda ett enda integrations konto utan extra kostnad, även om den inkluderade konto typen varierar av [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level). För [ytterligare kostnader](#fixed-pricing)kan du skapa fler integrations konton för din ISE upp till den [totala gränsen för integrations konton](logic-apps-limits-and-config.md#integration-account-limits). Information om hur den fasta pris modellen fungerar för en ISE finns i avsnittet föregående [fast pris modell](#fixed-pricing) i det här avsnittet. Pris nivåer finns i [Logic Apps prissättning](https://azure.microsoft.com/pricing/details/logic-apps).
 
 Om du vill välja mellan ett kostnads fritt, Basic-eller standard integrations konto granskar du följande användnings Falls beskrivningar:
 

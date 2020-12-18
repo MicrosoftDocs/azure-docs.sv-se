@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: tomfitz
-ms.openlocfilehash: a1ce7f8f718b364dc4b47593cf9ea37e8baf1e72
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: fa70d88b046cf38aa74582066d230c15580465b9
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563100"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673978"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>Åtgärden what-if för distribution av ARM-mall
 
@@ -396,6 +396,7 @@ Du kan använda konsekvens åtgärden via Azure SDK: er.
 ## <a name="next-steps"></a>Nästa steg
 
 - Om du upptäcker felaktiga resultat från konsekvens åtgärden kan du rapportera problemen vid [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
+- En Microsoft Learn-modul som täcker med vad om, finns i [Förhandsgranska ändringar och validera Azure-resurser med hjälp av vad-IF-och arm-mallens test verktyg](/learn/modules/arm-template-test/).
 - Information om hur du distribuerar mallar med Azure PowerShell finns i [distribuera resurser med ARM-mallar och Azure PowerShell](deploy-powershell.md).
 - Information om hur du distribuerar mallar med Azure CLI finns i [distribuera resurser med ARM-mallar och Azure CLI](deploy-cli.md).
 - Information om hur du distribuerar mallar med REST finns i [distribuera resurser med ARM-mallar och Resource Manager REST API](deploy-rest.md).

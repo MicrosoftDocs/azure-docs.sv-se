@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 12/04/2020
 ms.author: aahi
-ms.openlocfilehash: 62b6869f7269cbc21590e97ba0e2cbda79466832
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 6ea7b992a682537471ce0e78385b37674199d687
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656282"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673061"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>Gör så här: sentiment analys och avyttrande
 
@@ -45,7 +45,7 @@ Etiketterna är *positiva*, *negativa* och *neutrala*. På dokument nivå kan du
 | Minst en `negative` mening och minst en `positive` mening finns i dokumentet.    | `mixed`                 |
 | Alla meningar i dokumentet är `neutral` .                                                  | `neutral`               |
 
-Förtroendet sträcker sig från 1 till 0. Resultat närmare 1 anger en högre exakthet i etikettens klassificering, medan lägre poäng visar lägre exakthet. För varje dokument eller varje mening är de förväntade poängen som är kopplade till etiketterna (positiva, negativa och neutrala) upp till 1.
+Förtroendet sträcker sig från 1 till 0. Resultat närmare 1 anger en högre exakthet i etikettens klassificering, medan lägre poäng visar lägre exakthet. För varje dokument eller varje mening är de förväntade poängen som är kopplade till etiketterna (positiva, negativa och neutrala) upp till 1. Mer information finns i [kommentaren textanalys Oh](/legal/cognitive-services/text-analytics/transparency-note?context=/azure/cognitive-services/text-analytics/context/context)-filen. 
 
 ## <a name="opinion-mining"></a>Åsikts utvinning
 

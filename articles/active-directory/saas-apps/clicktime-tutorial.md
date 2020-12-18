@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.openlocfilehash: c184d4758d6435659d737c11904357711f4f0a36
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3337d66934c1fe317296cffaa9a663e212cce12d
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455882"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673189"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Självstudie: Azure Active Directory integrering med ClickTime
 
@@ -30,7 +30,7 @@ När du integrerar ClickTime med Azure AD får du följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Om du vill konfigurera Azure AD-integrering med ClickTime behöver du följande objekt:
 
@@ -63,7 +63,7 @@ För att konfigurera integrering av ClickTime i Azure AD måste du lägga till C
 
 4. I sökrutan skriver du **ClickTime**, väljer **ClickTime** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![ClickTime i resultatlistan](common/search-new-app.png)
+    ![ClickTime i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -104,7 +104,7 @@ Utför följande steg för att konfigurera Azure AD enkel inloggning med ClickTi
     a. Skriv en URL i text rutan **identifierare** : `https://app.clicktime.com/sp/`
 
     b. I textrutan **Svars-URL** skriver du in en URL med följande mönster:
-    
+
     ```http
     https://app.clicktime.com/Login/
     https://app.clicktime.com/App/Login/Consume.aspx
@@ -131,15 +131,15 @@ Utför följande steg för att konfigurera Azure AD enkel inloggning med ClickTi
 1. I verktygsfältet längst upp klickar du på **Inställningar** och sedan på **Säkerhetsinställningar**.
 
 1. Gör följande i avsnittet **Single Sign-On Preferences** (Inställningar för enkel inloggning):
-   
+
     ![Säkerhets inställningar](./media/clicktime-tutorial/tic777280.png "Säkerhetsinställningar")
-   
+
     a.  Välj **Tillåt** för inloggning med enkel inloggning (SSO) med **Azure AD**.
-   
+
     b. I textrutan **Identity Provider Endpoint** (Slutpunkt för identitetsprovider) klistrar du in den **inloggnings-URL** som du har kopierat från Azure-portalen.
-   
+
     c.  Öppna det **base64-kodade certifikat** som du laddade ned från Azure-portalen i **Anteckningar**, kopierar innehållet och klistrar sedan in det i textrutan för **X.509-certifikatet**.
-   
+
     d.  Klicka på **Spara**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare 
@@ -159,7 +159,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 
@@ -206,24 +206,24 @@ När det gäller ClickTime är etablering en manuell aktivitet.
 1. Logga in på din **ClickTime**-klient.
 
 1. I verktygsfältet högst upp klickar du på **Företag** och klicka sedan på **Personer**.
-   
+
     ![Skärm bild som visar ClickTime-klienten med företag och personer som har valts.](./media/clicktime-tutorial/tic777282.png "People")
 
 1. Klicka på **Lägg till person**.
-   
+
     ![Lägg till person](./media/clicktime-tutorial/tic777283.png "Lägg till person")
 
 1. I avsnittet New Person (Ny person) utför du följande steg:
-   
+
     ![Skärm bild som visar avsnittet Lägg till person där du kan lägga till informationen i det här steget.](./media/clicktime-tutorial/tic777284.png "People")
-   
+
     a.  I textrutan **Fullständigt namn** skriver du det fullständiga namnet för användaren som **Britta Simon**. 
-  
+
     b.  I text rutan **e-postadress** skriver du e-postmeddelandet som **brittasimon \@ contoso.com**.
-       
+
     > [!NOTE]
     > Om du vill kan du ange du ytterligare egenskaper för personobjektet.
-   
+
     c.  Klicka på **Spara**.
 
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning 

@@ -4,12 +4,12 @@ description: Lär dig hur du utvecklar Azure Functions med C#.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: dc08e378d68743ed7906f4dec7c8f31202959880
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 9e11d013b6e7473f290ba1ccb54857034491d116
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608290"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672673"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Referens för Azure Functions C#-utvecklare
 
@@ -19,7 +19,7 @@ Den här artikeln är en introduktion till att utveckla Azure Functions med hjä
 
 Som C#-utvecklare kanske du också är intresse rad av någon av följande artiklar:
 
-| Kom igång | Begrepp| Guidad inlärning/exempel |
+| Komma igång | Begrepp| Guidad inlärning/exempel |
 | -- | -- | -- | 
 | <ul><li>[Använda Visual Studio](functions-create-your-first-function-visual-studio.md)</li><li>[Använda Visual Studio Code](create-first-function-vs-code-csharp.md)</li><li>[Använda kommando rads verktyg](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[Värdalternativ](functions-scale.md)</li><li>[Prestanda &nbsp; överväganden](functions-best-practices.md)</li><li>[Visual Studio-utveckling](functions-develop-vs.md)</li><li>[Beroendeinmatning](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[Skapa serverlösa program](/learn/paths/create-serverless-applications/)</li><li>[C#-exempel](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
 
@@ -515,14 +515,14 @@ namespace functionapp0915
             
             // Track a Dependency
             var dependency = new DependencyTelemetry
-                {
-                    Name = "GET api/planets/1/",
-                    Target = "swapi.co",
-                    Data = "https://swapi.co/api/planets/1/",
-                    Timestamp = start,
-                    Duration = DateTime.UtcNow - start,
-                    Success = true
-                };
+            {
+                Name = "GET api/planets/1/",
+                Target = "swapi.co",
+                Data = "https://swapi.co/api/planets/1/",
+                Timestamp = start,
+                Duration = DateTime.UtcNow - start,
+                Success = true
+            };
             UpdateTelemetryContext(dependency.Context, context, name);
             telemetryClient.TrackDependency(dependency);
         }
@@ -560,7 +560,7 @@ public static class EnvironmentVariablesExample
         log.LogInformation(GetEnvironmentVariable("WEBSITE_SITE_NAME"));
     }
 
-    public static string GetEnvironmentVariable(string name)
+    private static string GetEnvironmentVariable(string name)
     {
         return name + ": " +
             System.Environment.GetEnvironmentVariable(name, EnvironmentVariableTarget.Process);

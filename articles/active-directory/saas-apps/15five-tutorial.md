@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 20f66621368840b5d496000186e6be0e36aff19a
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 79c6a5959d000217dcb69370b0e0ac4ccc18ccdd
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319198"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673927"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-15five"></a>Självstudie: Azure Active Directory integrering med 15Five
 
@@ -30,7 +30,7 @@ Integreringen av 15Five med Azure AD medför följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 För att konfigurera Azure AD-integrering med 15Five behöver du följande:
 
@@ -63,7 +63,7 @@ För att konfigurera integreringen av 15Five i Azure AD måste du lägga till 15
 
 4. I sökrutan skriver du **15Five**, väljer **15Five** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![15Five i resultatlistan](common/search-new-app.png)
+    ![15Five i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -143,7 +143,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 
@@ -197,7 +197,7 @@ För att Azure AD-användare ska kunna logga in i 15Five måste de etableras til
 
     ![Lägg till ny person](./media/15five-tutorial/ic784677.png "Lägg till ny person")
 
-    a. Skriv**Förnamn**, **Efternamn**, **Titel** och **E-postadress** för ett giltigt Azure Active Directory-konto som du vill etablera i de relaterade textrutorna.
+    a. Skriv **Förnamn**, **Efternamn**, **Titel** och **E-postadress** för ett giltigt Azure Active Directory-konto som du vill etablera i de relaterade textrutorna.
 
     b. Klicka på **Klar**.
 

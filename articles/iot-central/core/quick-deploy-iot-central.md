@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: a2d48a6f4e451e2a9b4140618c7c590293cb5ef5
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: c5847f686e0712370a1de898eca5735608671e9a
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548536"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670901"
 ---
 # <a name="quickstart---create-an-azure-iot-central-application"></a>Snabb start – skapa ett Azure IoT Central-program
 
@@ -41,15 +41,14 @@ Så här skapar du ett nytt Azure IoT Central-program från den **anpassade prog
 
     :::image type="content" source="media/quick-deploy-iot-central/iotcentralcreate-billinginfo.png" alt-text="Information om Azure IoT Central fakturering":::
 
-    > [!NOTE]
+    > [!Tip]
     > Om du väljer **anpassad app** på föregående sida visas en listruta för **Programmall** . List rutan kan visa andra mallar som har gjorts tillgängliga för dig av din organisation.
-
-    >[!IMPORTANT]
-    >Den **anpassade** programmallen (v2) har dragits tillbaka eftersom alla funktioner som tidigare var tillgängliga i den äldre program mal len är nu tillgängliga i den senaste **anpassade program** mal len (v3).
 
 1. Välj att skapa det här programmet med hjälp av pris avtalet för den kostnads fria utvärderings versionen eller en av standard pris avtalen:
 
     - Program som du skapar med hjälp av den *kostnads fria* planen är kostnads fria i sju dagar och har stöd för upp till fem enheter. Du kan konvertera dem till att använda en standard pris plan när som helst innan de upphör att gälla.
+        > [!NOTE]
+        > Program som har skapats med den *kostnads fria* planen kräver inte några Azure-prenumerationer och därför hittar du inte dem i din Azure-prenumeration på Azure Portal. Du kan bara se och hantera kostnads fria appar från IoT Central Portal.          
     - Program som du skapar med en *standard* -plan debiteras per enhet. du kan välja antingen **standard** pris avtal för 0, **standard 1** eller **Standard 2** med de två första enheterna som är kostnads fria. Läs mer om kostnads fria priser och standard priser på [sidan med priser för Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). Om du skapar ett program med hjälp av en standard pris plan måste du välja din *katalog*, *Azure-prenumeration* och *plats*:
         - *Katalog* är den Azure Active Directory som du skapar programmet i. En Azure Active Directory innehåller användar identiteter, autentiseringsuppgifter och annan organisations information. Om du inte har en Azure Active Directory skapas en åt dig när du skapar en Azure-prenumeration.
         - Med en *Azure-prenumeration* kan du skapa instanser av Azure-tjänster. IoT Central etablerar resurser i din prenumeration. Om du inte har någon Azure-prenumeration kan du skapa en kostnads fri på [sidan för Azure-registrering](https://aka.ms/createazuresubscription). När du har skapat Azure-prenumerationen går du tillbaka till sidan **nytt program** . Den nya prenumerationen visas nu i list rutan för **Azure-prenumeration** .

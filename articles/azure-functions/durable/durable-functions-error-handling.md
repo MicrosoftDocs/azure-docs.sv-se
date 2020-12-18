@@ -4,12 +4,12 @@ description: Lär dig hur du hanterar fel i Durable Functions-tillägget för Az
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 6650322834d491d78470e2d8dbd24e2c6750ae39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 023f9dfcc421935c3f7515e847108925d5e5521e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081703"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673655"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Hantera fel i Durable Functions (Azure Functions)
 
@@ -192,11 +192,15 @@ main = df.Orchestrator.create(orchestrator_function)
 Aktivitets funktions anropet i föregående exempel tar en parameter för att konfigurera en princip för automatisk återförsök. Det finns flera alternativ för att anpassa principen för automatiskt återförsök:
 
 * **Maximalt antal försök**: maximalt antal återförsök.
-* **Första**återförsöksintervall: vänte tiden innan det första försöket.
+* **Första** återförsöksintervall: vänte tiden innan det första försöket.
 * **Backoff-koefficient**: den koefficient som används för att fastställa frekvensen av ökningen av backoff. Standardvärdet är 1.
 * **Högsta återförsöksintervall**: den maximala vänte tiden mellan återförsök.
 * **Timeout för återförsök**: maximal tid att spendera på nya försök. Standard beteendet är att försöka på obestämd tid.
-* **Referens**: en användardefinierad motringning kan anges för att avgöra om en funktion ska provas igen.
+* **Referens**: en användardefinierad motringning kan anges för att avgöra om en funktion ska provas igen. 
+
+> [!NOTE]
+> Användardefinierade återanrop stöds inte för närvarande av Durable Functions i Java Script ( `context.df.RetryOptions` ).
+
 
 ## <a name="function-timeouts"></a>Funktions tids gränser
 

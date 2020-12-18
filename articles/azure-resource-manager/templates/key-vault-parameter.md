@@ -2,13 +2,13 @@
 title: Key Vault hemlighet med mall
 description: Visar hur du skickar en hemlighet från ett nyckel valv som en parameter under distributionen.
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: eb57e680090a38a5be725daa7b3a118039aa35f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/17/2020
+ms.openlocfilehash: 8983d51d90e07e21ac4c9489c7ed553530278d3c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84677873"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672713"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Använd Azure Key Vault för att skicka ett säkert parameter värde under distributionen
 
@@ -377,3 +377,4 @@ Följande mall skapar dynamiskt Key Vault-ID och skickar det som en parameter.
 
 - Allmän information om nyckel valv finns i [Azure Key Vault?](../../key-vault/general/overview.md).
 - Fullständiga exempel på referenser till nyckel hemligheter finns [Key Vault exempel](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).
+- En Microsoft Learn-modul som täcker att skicka ett säkert värde från ett nyckel valv finns i [hantera komplexa moln distributioner med hjälp av avancerade funktioner för ARM-mallar](/learn/modules/manage-deployments-advanced-arm-template-features/).

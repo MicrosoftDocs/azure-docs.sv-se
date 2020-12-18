@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 29163bf30807b6deac397217475d76e29695f1eb
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b73131285c7436e2108a64a136f241724a29b5c6
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456916"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672448"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-borrowbox"></a>Självstudie: Azure Active Directory integrering med lån
 
@@ -64,7 +64,7 @@ Om du vill konfigurera en upplånings integrering i Azure AD måste du lägga ti
 
 4. I rutan Sök skriver du **låna**, väljer **låna** från resultat panelen och klickar sedan på knappen **Lägg till** för att lägga till programmet.
 
-     ![Låna i resultat listan](common/search-new-app.png)
+    ![Låna i resultat listan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -86,7 +86,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Utför följande steg för att konfigurera enkel inloggning med Azure AD med låna:
 
-1. I [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning**på sidan **upplånings** program integrering.
+1. I [Azure Portal](https://portal.azure.com/)väljer du **enkel inloggning** på sidan **upplånings** program integrering.
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -150,7 +150,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 
@@ -162,7 +162,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till lån.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **låna**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **låna**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

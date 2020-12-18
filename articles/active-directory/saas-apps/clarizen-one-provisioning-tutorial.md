@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: Zhchia
-ms.openlocfilehash: 1658e6adf0c9de0cbd7412b963fb9a134f633430
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3754a56d1520118937a9d4aad406ae657b4dd23b
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96179729"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673672"
 ---
 # <a name="tutorial-configure-clarizen-one-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Clarizen en för automatisk användar etablering
 
@@ -35,7 +35,7 @@ I den här självstudien beskrivs de steg du behöver utföra i både Clarizen e
 > * Etablera grupper och grupp medlemskap i Clarizen One.
 > * [Enkel inloggning (SSO)](./clarizen-tutorial.md) till Clarizen rekommenderas.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 
@@ -78,19 +78,19 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
 1. Logga in på [Azure-portalen](https://portal.azure.com). Välj **företags program**  >  **alla program**.
 
-    ![Skärm bild som visar fönstret företags program.](common/enterprise-applications.png)
+      ![Skärm bild som visar fönstret företags program.](common/enterprise-applications.png)
 
 1. I listan program väljer du **Clarizen ett**.
 
-    ![Skärm bild som visar Clarizen för en länk i program listan.](common/all-applications.png)
+      ![Skärm bild som visar Clarizen för en länk i program listan.](common/all-applications.png)
 
 1. Välj fliken **Etablering**.
 
-    ![Skärm bild som visar fliken etablering.](common/provisioning.png)
+      ![Skärm bild som visar fliken etablering.](common/provisioning.png)
 
 1. Ange **etablerings läget** till **Automatisk**.
 
-    ![Skärm bild som visar fliken etablering i automatiska alternativ.](common/provisioning-automatic.png)
+      ![Skärm bild som visar fliken etablering i automatiska alternativ.](common/provisioning-automatic.png)
 
 1. Under avsnittet **admin credentials** kan du mata in din Clarizen med en **klient-URL och en** **hemlig token**. Välj **Testa anslutning** för att se till att Azure AD kan ansluta till Clarizen en. Om anslutningen Miss lyckas kontrollerar du att Clarizen ett konto har administratörs behörighet och försöker igen.
 
@@ -162,15 +162,15 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
 1. Om du vill aktivera Azure AD Provisioning-tjänsten för Clarizen, ändrar du **etablerings statusen** till **på** i avsnittet **Inställningar** .
 
-    ![Skärm bild som visar etablerings statusen växlad på.](common/provisioning-toggle-on.png)
+      ![Skärm bild som visar etablerings statusen växlad på.](common/provisioning-toggle-on.png)
 
 1. Definiera de användare eller grupper som du vill etablera för att Clarizen en genom att välja önskade värden i **omfång** i avsnittet **Inställningar** .
 
-    ![Skärm bild som visar etablerings omfånget.](common/provisioning-scope.png)
+      ![Skärm bild som visar etablerings omfånget.](common/provisioning-scope.png)
 
 1. När du är redo att etablera väljer du **Spara**.
 
-    ![Skärm bild som visar hur du sparar etablerings konfigurationen.](common/provisioning-configuration-save.png)
+      ![Skärm bild som visar hur du sparar etablerings konfigurationen.](common/provisioning-configuration-save.png)
 
 Åtgärden startar den initiala synkroniseringscykeln för alla användare och grupper som har definierats i **Omfång** i avsnittet **Inställningar**. Den första cykeln tar längre tid att utföra än efterföljande cykler, vilket inträffar ungefär var 40:e minut om Azure AD-etableringstjänsten körs.
 

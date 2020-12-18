@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 356c1eea170b712e5cf7034e0c2652857e8bad3f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: de558c73f1ca1721dfa3380e296617661ff4e859
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456296"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670133"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-certify"></a>Självstudie: Azure Active Directory integrering med certifiera
 
@@ -64,7 +64,7 @@ När du konfigurerar integreringen av Certify i Azure AD, måste du lägga till 
 
 4. I sökrutan skriver du **Certify**, väljer **Certify** i resultatpanelen och klickar sedan på knappen **Lägg till** för att lägga till programmet.
 
-     ![Certify i resultatlistan](common/search-new-app.png)
+    ![Certify i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -139,7 +139,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 

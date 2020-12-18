@@ -3,12 +3,12 @@ title: Kontinuerlig export av telemetri från Application Insights | Microsoft D
 description: Exportera diagnostik-och användnings data till lagring i Microsoft Azure och ladda ned dem därifrån.
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: f67a5c555c438298cee701ca065aaf8c01c6406e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6f636ce9fe30c666f08935d5830eb0c12e6cb5e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324343"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674145"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Exportera telemetri från Application Insights
 Vill du behålla din telemetri längre än standard kvarhållningsperioden? Eller bearbeta den på ett visst sätt? Kontinuerlig export är idealisk för detta. De händelser som visas i Application Insights-portalen kan exporteras till lagring i Microsoft Azure i JSON-format. Därifrån kan du hämta dina data och skriva vilken kod du behöver för att bearbeta den.  
@@ -37,6 +37,9 @@ Kontinuerlig export **stöder inte** följande funktioner/konfigurationer för A
 * [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md).
 
 ## <a name="create-a-continuous-export"></a><a name="setup"></a> Skapa en löpande export
+
+> [!NOTE]
+> Ett program kan inte exportera fler än 3 TB data per dag. Om fler än 3 TB per dag exporteras kommer exporten att inaktive ras. Om du vill exportera utan begränsning använder du [diagnostiska inställningar baserade på export](#diagnostic-settings-based-export).
 
 1. I Application Insights resurs för din app under Konfigurera till vänster öppnar du kontinuerlig export och väljer **Lägg till**:
 
@@ -98,7 +101,7 @@ Datan innehåller även resultatet av alla [webb test för tillgänglighet](./mo
 ## <a name="inspect-the-data"></a><a name="get"></a> Granska data
 Du kan kontrol lera lagringen direkt i portalen. Klicka på Start i menyn längst till vänster längst upp där det står "Azure-tjänster" Välj **lagrings konton**, Välj lagrings kontots namn på sidan Översikt och välj **blobbar** under tjänster och välj sedan container namnet.
 
-Öppna **vyn**och **Cloud Explorer**för att kontrol lera Azure Storage i Visual Studio. (Om du inte har det meny kommandot måste du installera Azure SDK: öppna dialog rutan **nytt projekt** , expandera Visual C#/Cloud och välj **Hämta Microsoft Azure SDK för .net**.)
+Öppna **vyn** och **Cloud Explorer** för att kontrol lera Azure Storage i Visual Studio. (Om du inte har det meny kommandot måste du installera Azure SDK: öppna dialog rutan **nytt projekt** , expandera Visual C#/Cloud och välj **Hämta Microsoft Azure SDK för .net**.)
 
 När du öppnar BLOB Store visas en behållare med en uppsättning BLOB-filer. URI: n för varje fil som härleds från Application Insights resurs namn, Instrumentation-nyckel, telemetri-typ/datum/tid. (Resurs namnet är bara gemener och instrument knappen utesluter bindestreck.)
 
@@ -178,7 +181,7 @@ På större skalor bör du överväga [HDInsight](https://azure.microsoft.com/se
 ## <a name="q--a"></a>Frågor och svar
 * *Men alla jag vill ha en enstaka hämtning av ett diagram.*  
 
-    Ja, du kan göra det. Klicka på **Exportera data**överst på fliken.
+    Ja, du kan göra det. Klicka på **Exportera data** överst på fliken.
 * *Jag har konfigurerat en export, men det finns inga data i mitt arkiv.*
 
     Fick Application Insights ta emot telemetri från din app sedan du konfigurerade exporten? Du får bara nya data.
@@ -207,6 +210,19 @@ På större skalor bör du överväga [HDInsight](https://azure.microsoft.com/se
 * [Stream Analytics exempel](export-stream-analytics.md)
 * [Exportera till SQL med Stream Analytics][exportasa]
 * [Detaljerad data modell referens för egenskaps typerna och värdena.](export-data-model.md)
+
+## <a name="diagnostic-settings-based-export"></a>Diagnostiska inställningar baserade på export
+
+Diagnostiska inställningar som baseras på export använder ett annat schema än kontinuerlig export. Den har också stöd för funktioner som kontinuerlig export inte liknar:
+
+* Azure Storage-konton med VNet, brand väggar och privata länkar.
+* Exportera till Event Hub.
+
+Migrera till diagnostiska inställningar baserat på export:
+
+1. Inaktivera aktuell löpande export.
+2. [Migrera program till arbets ytan-baserad](convert-classic-resource.md).
+3. [Aktivera export av diagnostikinställningar](create-workspace-resource.md#export-telemetry). Välj **diagnostikinställningar > Lägg till diagnostikinställningar** inifrån din Application Insights-resurs.
 
 <!--Link references-->
 

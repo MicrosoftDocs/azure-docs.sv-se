@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 7ac237c7dd2e11d9acc5230608283aa2ba432a68
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 03a216f24013413fd03de9ae71eb599fd1334998
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456355"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672975"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-certain-admin-sso"></a>Självstudie: Azure Active Directory integration med vissa administrations-SSO
 
@@ -63,7 +63,7 @@ När du konfigurerar integreringen av Certain Admin SSO med Azure AD, måste du 
 
 4. I sökrutan skriver du **Certain Admin SSO**. Välj sedan **Certain Admin SSO** i resultatpanelen och klicka på knappen **Lägg till** för att lägga till programmet.
 
-     ![Certain Admin SSO i resultatlistan](common/search-new-app.png)
+    ![Certain Admin SSO i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -143,7 +143,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 

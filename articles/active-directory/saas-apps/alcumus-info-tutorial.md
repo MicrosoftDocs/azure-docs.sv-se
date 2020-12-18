@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 704449a9d70a38f9a05a68df290a4c0d0e6aeb54
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2aaa301a95f3f07ca81d20daba3ef28b812da0e6
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318918"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672433"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alcumus-info-exchange"></a>Självstudie: Azure Active Directory integration med Alcumus information Exchange
 
@@ -30,7 +30,7 @@ Integreringen av Alcumus Info Exchange med Azure AD medför följande fördelar:
 Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 Du behöver följande saker för att konfigurera Azure AD-integrering med Alcumus Info Exchange:
 
@@ -63,7 +63,7 @@ För att konfigurera integrering av Alcumus Info Exchange med Azure AD behöver 
 
 4. I sökrutan skriver du **Alcumus Info Exchange**, väljer **Alcumus Info Exchange** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
 
-     ![Alcumus Info Exchange i resultatlistan](common/search-new-app.png)
+    ![Alcumus Info Exchange i resultatlistan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -143,7 +143,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **Namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 
@@ -179,7 +179,7 @@ I det här avsnittet gör du det möjligt för Britta Simon att använda enkel i
 
 ### <a name="create-alcumus-info-exchange-test-user"></a>Skapa Alcumus Info Exchange-testanvändare
 
-I det här avsnittet skapar du en användare med namnet Britta Simon i Alcumus Info Exchange. Ta hjälp från [supportteamet för Alcumus Info Exchange](mailto:helpdesk@alcumusgroup.com) och lägg till användarna på Alcumus Info Exchange-plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning.
+I det här avsnittet skapar du en användare med namnet Britta Simon i Alcumus Info Exchange. Arbeta med [Alcumus information Exchange support team](mailto:helpdesk@alcumusgroup.com) för att lägga till användarna på Alcumus-informations Exchange-plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning.
 
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning
 

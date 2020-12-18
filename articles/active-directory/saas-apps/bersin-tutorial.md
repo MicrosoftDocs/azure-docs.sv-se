@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 24b7eabbf992672d308881bf684896befea252ff
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7dc9bbe4b4f2d5de2a79dbdeabb4b61ecb02f2d7
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457307"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673584"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bersin"></a>Självstudie: Azure Active Directory integrering med Bersin
 
@@ -63,7 +63,7 @@ Om du vill konfigurera integreringen av Bersin i Azure AD måste du lägga till 
 
 4. I rutan Sök skriver du **Bersin**, väljer **Bersin** från resultat panelen och klickar sedan på **Lägg till** för att lägga till programmet.
 
-     ![Bersin i resultat listan](common/search-new-app.png)
+    ![Bersin i resultat listan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
 
@@ -84,7 +84,7 @@ I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen
 
 Gör så här för att konfigurera enkel inloggning med Bersin i Azure AD:
 
-1. Välj **enkel inloggning**på sidan **Bersin** Application Integration i [Azure Portal](https://portal.azure.com/).
+1. Välj **enkel inloggning** på sidan **Bersin** Application Integration i [Azure Portal](https://portal.azure.com/).
 
     ![Konfigurera länk för enkel inloggning](common/select-sso.png)
 
@@ -147,7 +147,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
     ![Dialogrutan Användare](common/user-properties.png)
 
     a. I fältet **namn** anger du **BrittaSimon**.
-  
+
     b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
     Till exempel BrittaSimon@contoso.com
 
@@ -159,7 +159,7 @@ Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen m
 
 I det här avsnittet aktiverar du Britta Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till Bersin.
 
-1. I Azure Portal väljer du **företags program**, väljer **alla program**och väljer sedan **Bersin**.
+1. I Azure Portal väljer du **företags program**, väljer **alla program** och väljer sedan **Bersin**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 

@@ -5,14 +5,14 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 12/17/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2fa8794066739302d2f32acb13c936c524dc89a8
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 7e74a58a14bdcc2a6fe1e9f86305aae415c6abf7
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422356"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674522"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Skapa och hantera Läs repliker från Azure CLI REST API
 
@@ -34,7 +34,7 @@ Om du vill konfigurera rätt loggnings nivå använder du parametern Azure Repli
 ## <a name="azure-cli"></a>Azure CLI
 Du kan skapa och hantera Läs repliker med hjälp av Azure CLI.
 
-### <a name="prerequisites"></a>Förutsättningar
+### <a name="prerequisites"></a>Krav
 
 - [Installera Azure CLI 2.0](/cli/azure/install-azure-cli)
 - En [Azure Database for postgresql-server](quickstart-create-server-up-azure-cli.md) som ska vara den primära servern.
@@ -64,7 +64,7 @@ Du kan skapa och hantera Läs repliker med hjälp av Azure CLI.
 
 Kommandot [AZ postgres Server Replica Create](/cli/azure/postgres/server/replica#az-postgres-server-replica-create) kräver följande parametrar:
 
-| Inställning | Exempelvärde | Description  |
+| Inställning | Exempelvärde | Beskrivning  |
 | --- | --- | --- |
 | resource-group | myresourcegroup |  Resurs gruppen där replik servern kommer att skapas.  |
 | name | mydemoserver-replik | Namnet på den nya replik servern som skapas. |
@@ -189,7 +189,7 @@ Du kan stoppa replikeringen mellan en primär server och en Läs replik med hjä
 När du har stoppat replikeringen till en primär server och en Läs replik kan du inte återställa den. Läs repliken blir en fristående server som stöder både läsning och skrivning. Den fristående servern kan inte göras till en replik igen.
 
 ```http
-PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}?api-version=2017-12-01
+PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{replicaServerName}?api-version=2017-12-01
 ```
 
 ```json
