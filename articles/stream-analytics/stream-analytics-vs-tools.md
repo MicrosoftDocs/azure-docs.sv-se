@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 07/10/2018
-ms.openlocfilehash: 95abf403dfd4abd4c0533b6e8b4a2f83b33fa18b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43b145f5a37ea4209947e54cb276e16ff55c1da1
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86045560"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97682812"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>Använda Visual Studio för att visa Azure Stream Analytics-jobb
 
@@ -32,7 +32,7 @@ Du kan använda vyn jobb för att interagera med Azure Stream Analytics-jobb fr�
 
 ### <a name="open-the-job-view"></a>Öppna vyn jobb
 
-1. I **Server Explorer**väljer du **Stream Analytics jobb** och väljer sedan **Uppdatera**. Jobbet bör visas under **Stream Analytics jobb**.
+1. I **Server Explorer** väljer du **Stream Analytics jobb** och väljer sedan **Uppdatera**. Jobbet bör visas under **Stream Analytics jobb**.
 
     ![Stream Analytics Server Explorer-lista](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-list-jobs-01.png)
 
@@ -82,5 +82,4 @@ Anslutningar för indata och utdata kan testas från **vyn jobb** genom att väl
 
 * [Övervaka och hantera Azure Stream Analytics jobb med Visual Studio](stream-analytics-monitor-jobs-use-vs.md)
 * [Snabb start: skapa ett Stream Analytics jobb med Visual Studio](stream-analytics-quick-create-vs.md)
-* [Självstudie: Distribuera ett Azure Stream Analytics-jobb med CI/CD med hjälp av Azure Pipelines](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [Integrera och utveckla kontinuerligt med Stream Analytics-verktyg](stream-analytics-tools-for-visual-studio-cicd.md)

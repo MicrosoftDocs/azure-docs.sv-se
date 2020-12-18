@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: 684f37ba3186a719aa9ce730ac07ca4ad42f113d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cc79edf50c4f056f413292d2d43aa8cf8e65136
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89458067"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683483"
 ---
 # <a name="resource-manager-template-samples-for-log-analytics-workspaces-in-azure-monitor"></a>Exempel på Resource Manager-mallar för Log Analytics arbets ytor i Azure Monitor
 Den här artikeln innehåller exempel [Azure Resource Manager mallar](../../azure-resource-manager/templates/template-syntax.md) för att skapa och konfigurera Log Analytics arbets ytor i Azure Monitor. Varje exempel innehåller en mallfil och en parameter fil med exempel värden som du kan använda för mallen.
@@ -30,7 +30,7 @@ I följande exempel skapas en ny tom Log Analytics-arbetsyta.
 
 ### <a name="notes"></a>Obs!
 
-- Om du anger en **kostnads fri**pris nivå tar du bort **retentionInDays** -elementet.
+- Om du anger en **kostnads fri** pris nivå tar du bort **retentionInDays** -elementet.
 
 ### <a name="template-file"></a>Mallfil
 
@@ -698,7 +698,6 @@ Följande exempel lägger till en samling med [anpassade loggar](../platform/dat
           "properties": {
               "customLogName": "armlog_newline",
               "description": "this is a description",
-              "extractions": [],
               "inputs": [
                 {
                     "location": {

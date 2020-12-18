@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 68d9a64e388d24f2067f47282945b9561d807535
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 6a78b38bd71a2822d94e58834ab17824c9ef6ec6
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545935"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683113"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostisera och felsöka problem med Azure Cosmos DB .NET SDK
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -53,6 +53,13 @@ Se [avsnittet GitHub-problem](https://github.com/Azure/azure-cosmos-dotnet-v2/is
 
 ### <a name="check-the-portal-metrics"></a>Kontrol lera Portal måtten
 Genom att kontrol lera [Portal måtten](./monitor-cosmos-db.md) kan du avgöra om det är problem med klient sidan eller om det är problem med tjänsten. Om måtten t. ex. innehåller en hög frekvens av avgiftsbelagda begär Anden (HTTP-statuskod 429), vilket innebär att begäran får en begränsning, kontrollerar du i avsnittet om [antalet begär Anden är för stort](troubleshoot-request-rate-too-large.md) . 
+
+## <a name="retry-logic"></a>Omprövnings logik <a id="retry-logics"></a>
+Cosmos DB SDK vid ett i/o-fel försöker utföra åtgärden igen om det är möjligt att försöka igen i SDK. Det är en bra idé att använda ett nytt försök för ett fel, men det kan vara en bra idé att hantera eller försöka skriva fel. Vi rekommenderar att du använder den senaste SDK: n eftersom logiken för omprövning ständigt förbättras.
+
+1. Läs-och fråge-i/o-felen kommer att få ett nytt försök av SDK utan att visa dem till slutanvändaren.
+2. Skrivningar (Create, upsert, replace, Delete) är "inte" idempotenta och därför kan SDK: n inte alltid försöka utföra misslyckade Skriv åtgärder på ett blindt sätt. Det krävs att användarens program logik hanterar fel och försöker igen.
+3. [Problem med att felsöka SDK-tillgänglighet](troubleshoot-sdk-availability.md) förklarar nya försök för Cosmos DB konton i flera regioner.
 
 ## <a name="common-error-status-codes"></a>Vanliga fel status koder <a id="error-codes"></a>
 

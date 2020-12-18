@@ -9,12 +9,12 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
-ms.openlocfilehash: 4753f7c0b8b5e515d33da3f9df48a2cdd9d921cc
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: d6b23a831426a3308a0b47946d5a82679e937bbe
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96017584"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683118"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>Felsöka problem när du använder Azure Cosmos DB Java SDK v4 med SQL API-konton
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -38,6 +38,13 @@ Börja med den här listan:
 * Titta på Java SDK i Azure Cosmos DB centrala lagrings platsen, som är tillgänglig [öppen källkod på GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos). Avsnittet innehåller ett [problem](https://github.com/Azure/azure-sdk-for-java/issues) som är aktivt övervakat. Kontrol lera om det finns liknande problem med en lösning som redan har arkiverats. Ett bra tips är att filtrera problem med taggen *Cosmos: v4-item* .
 * Granska [prestanda tipsen](performance-tips-java-sdk-v4-sql.md) för Azure Cosmos DB Java SDK v4 och följ rekommendationerna.
 * Läs resten av den här artikeln om du inte hittar någon lösning. Ange sedan ett [GitHub-problem](https://github.com/Azure/azure-sdk-for-java/issues). Om det finns ett alternativ för att lägga till taggar i GitHub-problemet lägger du till en *Cosmos: v4-item-* tagg.
+
+### <a name="retry-logic"></a>Omprövnings logik <a id="retry-logics"></a>
+Cosmos DB SDK vid ett i/o-fel försöker utföra åtgärden igen om det är möjligt att försöka igen i SDK. Det är en bra idé att använda ett nytt försök för ett fel, men det kan vara en bra idé att hantera eller försöka skriva fel. Vi rekommenderar att du använder den senaste SDK: n eftersom logiken för omprövning ständigt förbättras.
+
+1. Läs-och fråge-i/o-felen kommer att få ett nytt försök av SDK utan att visa dem till slutanvändaren.
+2. Skrivningar (Create, upsert, replace, Delete) är "inte" idempotenta och därför kan SDK: n inte alltid försöka utföra misslyckade Skriv åtgärder på ett blindt sätt. Det krävs att användarens program logik hanterar fel och försöker igen.
+3. [Problem med att felsöka SDK-tillgänglighet](troubleshoot-sdk-availability.md) förklarar nya försök för Cosmos DB konton i flera regioner.
 
 ## <a name="common-issues-and-workarounds"></a><a name="common-issues-workarounds"></a>Vanliga fel och lösningar
 

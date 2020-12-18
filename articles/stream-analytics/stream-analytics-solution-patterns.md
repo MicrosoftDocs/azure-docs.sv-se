@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: b82dd4ea8a74c51606b7a388b8d6ede07b1057c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02276ebf8e8a2289db2a1f6eac506443cea61c31
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89461552"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97682722"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics-lösningsmönster
 
@@ -20,7 +20,7 @@ Precis som många andra tjänster i Azure används Stream Analytics bäst med an
 
 ## <a name="create-a-stream-analytics-job-to-power-real-time-dashboarding-experience"></a>Skapa ett Stream Analytics jobb för att få en real tids instrument panel
 
-Med Azure Stream Analytics kan du snabbt hitta instrument paneler och aviseringar i real tid. En enkel lösning matar in händelser från Event Hubs eller IoT Hub och [feeds Power BI instrument panelen med en strömmande data uppsättning](/power-bi/service-real-time-streaming). Mer information finns i den detaljerade självstudien [analysera Telefonsamtals data med Stream Analytics och visualisera resultat i Power BI instrument panel](stream-analytics-manage-job.md).
+Med Azure Stream Analytics kan du snabbt hitta instrument paneler och aviseringar i real tid. En enkel lösning matar in händelser från Event Hubs eller IoT Hub och [feeds Power BI instrument panelen med en strömmande data uppsättning](/power-bi/service-real-time-streaming). Mer information finns i den detaljerade självstudien [analysera falska anrops data med Stream Analytics och visualisera resultat i Power BI instrument panel](stream-analytics-real-time-fraud-detection.md).
 
 ![ASA Power BI instrument panel](media/stream-analytics-solution-patterns/power-bi-dashboard.png)
 
@@ -171,8 +171,8 @@ För att kunna fylla på, är det fortfarande viktigt att minst tillfälligt eta
 |**Instrument panel**   |Skapar mellanrum    |OK för kort avbrott    |Använd för långvarigt avbrott |
 |**Aviseringar**   |Användas |OK för kort avbrott    |Inte nödvändigt |
 |**App för händelse källa** |Användas |OK för kort avbrott    |Använd för långvarigt avbrott |
-|**Data lager hantering**   |Data förlust  |Användas |Inte nödvändigt |
-|**Offline-analys**  |Data förlust  |Användas |Inte nödvändigt|
+|**Data lager hantering**   |Dataförluster  |Användas |Inte nödvändigt |
+|**Offline-analys**  |Dataförluster  |Användas |Inte nödvändigt|
 
 ## <a name="putting-it-all-together"></a>Färdigställa allt
 

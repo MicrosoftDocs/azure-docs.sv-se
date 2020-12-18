@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 6d2ede8ab49b22a22d8959ce296182a2210640d0
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 259db10aa8f5cd2b711eca001bc6d48057d5280d
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905476"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683211"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Självstudie: koppla sensor data med väder prognos data med hjälp av Azure Notebooks (python)
 
@@ -35,7 +35,7 @@ I de här självstudierna får du:
 > * Rita prognos data i grafer.
 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här självstudien måste du först:
 
@@ -48,7 +48,7 @@ Mer information om autentisering i Azure Maps finns i [hantera autentisering i A
 Om du vill bekanta dig med Azures antecknings böcker och vet hur du kommer igång, följer du anvisningarna [skapa en Azure-anteckningsbok](./tutorial-ev-routing.md#create-an-azure-notebooks-project).
 
 > [!Note]
-> Jupyter Notebook-filen för det här projektet kan laddas ned från [väder Kartornas Jupyter Notebook-lagringsplats](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data).
+> Jupyter Notebook-filen för det här projektet kan hämtas från [väder kartor Jupyter Notebook-lagringsplatsen](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data).
 
 ## <a name="load-the-required-modules-and-frameworks"></a>Läs in de nödvändiga modulerna och ramverken
 

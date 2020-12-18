@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: 589f320f0099fdab829e9e707a86e3e77d51c21e
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 0b57629f5c21d933fc898258263199b5fc713fdb
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656299"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683367"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Använda namngiven enhets igenkänning i Textanalys
 
@@ -52,7 +52,7 @@ Namngiven entitets igenkänning v 3.1 – för hands version. 3 innehåller iden
 * En valfri `domain=phi` parameter för att identifiera konfidentiell hälso information ( `PHI` ).
 * [Asynkron åtgärd](text-analytics-how-to-call-api.md) med `/analyze` slut punkten.
 
-Mer information finns i artikeln [entitet Categories](../named-entity-types.md) och avsnittet om [begär slut punkter](#request-endpoints) nedan. 
+Mer information finns i artikeln [entitet Categories](../named-entity-types.md) och avsnittet om [begär slut punkter](#request-endpoints) nedan. Mer information om förtroende poäng finns i [textanalys Oh-anteckning](/legal/cognitive-services/text-analytics/transparency-note?context=/azure/cognitive-services/text-analytics/context/context). 
 
 ## <a name="sending-a-rest-api-request"></a>Skicka en REST API-begäran
 
@@ -81,7 +81,7 @@ Igenkänning av namngivna enheter `v3.1-preview.3` använder separata slut punkt
 
 [Namngiven enhets igenkännings version 3,1 – för hands versions referens för `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesLinking)
 
-**Igenkänning av namngiven entitet**
+**Igenkänning av namngiven enhet**
 * Allmänna entiteter – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/general`
 
 [Namngiven enhets igenkännings version 3,1 – för hands versions referens för `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionGeneral)
@@ -114,7 +114,7 @@ Med namnet entitets igenkänning v3 används separata slut punkter för NER och 
 
 [Version 3,0-referens för namngiven enhets igenkänning `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
 
-**Igenkänning av namngiven entitet**
+**Igenkänning av namngiven enhet**
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
 
 [Version 3,0-referens för namngiven enhets igenkänning `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)

@@ -8,15 +8,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/14/2020
+ms.date: 12/16/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7352bde887648918cbfd2a9ebeaae83cddefc61e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 7eda805a5fdf24a7a55b9296a0f0a1c9a5bfc576
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673286"
+ms.locfileid: "97683504"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>Självstudie: använda distributions skript för att skapa ett självsignerat certifikat
 
@@ -36,13 +36,13 @@ Den här självstudien omfattar följande uppgifter:
 
 En Microsoft Learn-modul som täcker distributions skript finns i [utöka arm-mallar med hjälp av distributions skript](/learn/modules/extend-resource-manager-template-deployment-scripts/).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att kunna följa stegen i den här artikeln behöver du:
 
 * **[Visual Studio Code](https://code.visualstudio.com/) med tillägget Resource Manager-verktyg**. Se [snabb start: skapa arm-mallar med Visual Studio Code](./quickstart-create-templates-use-visual-studio-code.md).
 
-* **En användardefinierad hanterad identitet med deltagar rollen på prenumerations nivå**. Den här identiteten används för att köra distributions skript. Information om hur du skapar ett finns i [användardefinierad hanterad identitet](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). Du behöver identitets-ID när du distribuerar mallen. Formatet på identiteten är:
+* **En användare som tilldelats en hanterad identitet**. Den här identiteten används för att utföra Azure-/regionsspecifika åtgärder i skriptet. Information om hur du skapar ett finns i [användardefinierad hanterad identitet](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). Du behöver identitets-ID när du distribuerar mallen. Formatet på identiteten är:
 
   ```json
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
@@ -255,7 +255,7 @@ Distributions skriptet lägger till ett certifikat i nyckel valvet. Konfigurera 
 
     `deploymentScripts`Resursen är beroende av Key Vault-resursen och roll tilldelnings resursen. Den har följande egenskaper:
 
-    * `identity`: Ett distributions skript använder en användardefinierad hanterad identitet för att köra skripten.
+    * `identity`: Ett distributions skript använder en användardefinierad hanterad identitet för att utföra åtgärderna i skriptet.
     * `kind`: Ange typ av skript. För närvarande stöds endast PowerShell-skript.
     * `forceUpdateTag`: Avgör om distributions skriptet ska köras även om skript källan inte har ändrats. Kan vara aktuell tidstämpel eller ett GUID. Mer information finns i [Kör skript mer än en gång](./deployment-script-template.md#run-script-more-than-once).
     * `azPowerShellVersion`: Anger den version av Azure PowerShell-modul som ska användas. För närvarande stöder distributions skriptet version 2.7.0, 2.8.0 och 3.0.0.

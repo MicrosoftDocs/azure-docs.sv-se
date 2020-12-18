@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: 6259de345b534bfb51ef6ba1a9c3895800546caf
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 0876891e42ce629a3b088d8068c74386d690492d
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605504"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683190"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>Distribuera ett Azure Service Fabric-kluster med endast tillstånds lösa Node-typer (för hands version)
 Service Fabric Node-typer levereras med ett förutsättnings antagande som vid en viss tidpunkt kan tillstånds känsliga tjänster placeras på noderna. Tillstånds lösa nodtyper sänker detta antagande för en nodtyp, vilket innebär att nodtypen kan använda andra funktioner, till exempel snabbare skalnings åtgärder, stöd för automatiska operativ system uppgraderingar på brons-hållbarhet och skalbarhet till fler än 100 noder i en enda skalnings uppsättning för virtuella datorer.
@@ -44,7 +44,7 @@ Om du vill ange en eller flera nodtyper som tillstånds lösa i en kluster resur
         },
         "httpGatewayEndpointPort": "[parameters('nt0fabricHttpGatewayPort')]",
         "isPrimary": true,
-        "isStateles": false,
+        "isStateless": false,
         "vmInstanceCount": "[parameters('nt0InstanceCount')]"
     },
     {
@@ -71,9 +71,9 @@ Om du vill ange en eller flera nodtyper som tillstånds lösa i en kluster resur
 ## <a name="configuring-virtual-machine-scale-set-for-stateless-node-types"></a>Konfigurera skalnings uppsättning för tillstånds lösa noder för virtuella datorer
 Om du vill aktivera tillstånds lösa nodtyper bör du konfigurera den underliggande resursen för skalnings uppsättningar för virtuella datorer på följande sätt:
 
-* Egenskapen Value  **singlePlacementGroup** , som ska anges till TRUE/FALSE beroende på kravet att skala till fler än 100 virtuella datorer.
-* Skalnings uppsättningens **upgradeMode** som ska ställas in på rullande.
-* Läget för löpande uppgradering kräver att ett program hälso tillägg eller hälso avsökning har kon figurer ATS. Konfigurera hälso avsökningen med standard konfiguration för tillstånds lösa nodtyper enligt rekommendationerna nedan. När program har distribuerats till NodeType kan hälso avsökningen/hälso utöknings portarna ändras för att övervaka program hälsan.
+* Egenskapen Value  **singlePlacementGroup** , som ska anges till **false** om du behöver skala till fler än 100 virtuella datorer.
+* Skalnings uppsättningens **upgradePolicy** vilket **läge** ska vara inställt på **rullande**.
+* Läget för löpande uppgradering kräver att ett program hälso tillägg eller hälso avsökning har kon figurer ATS. Konfigurera hälso avsökningen med standard konfiguration för tillstånds lösa nodtyper enligt rekommendationerna nedan. När program har distribuerats till nodtypen kan hälso avsökningen/hälso tilläggets portar ändras för att övervaka program hälsan.
 
 ```json
 {

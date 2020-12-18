@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 12/17/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 27af0ffdeb254dbb671a0618d0e9973336a7f529
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 8159010486371d619aa14a845050a0eb38aaeda8
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96559022"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683539"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Gör så här: använda Textanalys för hälsa (för hands version)
 
@@ -35,7 +35,7 @@ Textanalys för hälsan är en funktion i API för textanalyss tjänsten som ext
 
 Textanalys för hälso tillstånd utför namngivna enhets igenkänning (NER), Relations extrahering, avnegationer och entiteter som länkas på engelsk språk text för att få insikter om ostrukturerad klinisk och medicinsk text.
 
-### <a name="named-entity-recognition"></a>[Igenkänning av namngiven entitet](#tab/ner)
+### <a name="named-entity-recognition"></a>[Igenkänning av namngiven enhet](#tab/ner)
 
 Igenkänning av namngivna enheter identifierar ord och fraser som nämns i ostrukturerad text som kan associeras med en eller flera semantiska typer, till exempel diagnos, medicinens namn, symptom/signering eller ålder.
 
@@ -68,7 +68,7 @@ Innebörden av medicinskt innehåll påverkas starkt av modifierare, till exempe
 
 ---
 
-Se [entitets kategorier](../named-entity-types.md?tabs=health) som returneras av textanalys för hälsan för en fullständig lista över entiteter som stöds.
+Se [entitets kategorier](../named-entity-types.md?tabs=health) som returneras av textanalys för hälsan för en fullständig lista över entiteter som stöds. Information om förtroende poäng finns i [textanalys Oh-anteckning](/legal/cognitive-services/text-analytics/transparency-note#general-guidelines-to-understand-and-improve-performance?context=/azure/cognitive-services/text-analytics/context/context). 
 
 ### <a name="supported-languages-and-regions"></a>Språk och regioner som stöds
 
