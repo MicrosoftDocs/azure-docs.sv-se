@@ -8,13 +8,13 @@ ms.subservice: cost-management
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
-ms.custom: contperfq1
-ms.openlocfilehash: b2340e5b220936c1333cf842251b669b3e034042
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: f6df8c6ff0db74798b71d57feae91e5245f2a6c2
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151216"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028726"
 ---
 # <a name="analyze-unexpected-charges"></a>Analysera oväntade kostnader
 
@@ -49,7 +49,7 @@ När du granskar fakturainformationen kan du identifiera eventuella tjänster so
 
 ## <a name="identify-spikes-in-cost-over-time"></a>Identifiera toppar i kostnaderna över tid
 
-Ibland kanske du inte vet vilka kostnader som har lett till förändringar av de fakturerade avgifterna. För att förstå vad som har förändrats kan du använda Kostnadsanalys för att [visa en uppdelning per dag eller månad av kostnaderna över tid](../costs/cost-analysis-common-uses.md#view-costs-per-day-or-by-month). När du har skapat vyn ska du gruppera dina avgifter efter antingen **tjänst** eller **resurs** för att identifiera ändringarna. Du kan också ändra vyn till ett **linje**diagram för att visualisera data bättre.
+Ibland kanske du inte vet vilka kostnader som har lett till förändringar av de fakturerade avgifterna. För att förstå vad som har förändrats kan du använda Kostnadsanalys för att [visa en uppdelning per dag eller månad av kostnaderna över tid](../costs/cost-analysis-common-uses.md#view-costs-per-day-or-by-month). När du har skapat vyn ska du gruppera dina avgifter efter antingen **tjänst** eller **resurs** för att identifiera ändringarna. Du kan också ändra vyn till ett **linje** diagram för att visualisera data bättre.
 
 ![Exempel som visar kostnader över tid i kostnadsanalys](./media/analyze-unexpected-charges/costs-over-time.png)
 
@@ -80,7 +80,7 @@ Om du har behörighet att visa en resurs bör du även ha åtkomst till dess sp�
 
 ### <a name="analyze-user-permissions-to-the-resources-parent-scope"></a>Analysera användarbehörigheter till resursens överordnade omfång
 
-Användare som har skrivåtkomst till en prenumeration eller resursgrupp har ofta information om de resurser som skapats. De bör kunna förklara syftet med en resurs eller hänvisa dig till någon som vet. Mer information om att identifiera användare med behörighet för ett prenumerationsomfång finns i [Visa rolltilldelningar](../../role-based-access-control/check-access.md#view-role-assignments). Du kan använda en liknande process för resursgrupper.
+Användare som har skrivåtkomst till en prenumeration eller resursgrupp har ofta information om de resurser som skapats. De bör kunna förklara syftet med en resurs eller hänvisa dig till någon som vet. Information om hur du identifierar personer som har behörighet för ett prenumerationsomfång finns i [Kontrollera en användares åtkomst till Azure-resurser](../../role-based-access-control/check-access.md). Du kan använda en liknande process för resursgrupper.
 
 ## <a name="get-help-to-identify-charges"></a>Få hjälp med att identifiera kostnader
 

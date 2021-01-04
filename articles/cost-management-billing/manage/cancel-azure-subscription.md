@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 12/14/2020
 ms.author: banders
-ms.openlocfilehash: 3182da0d04d61d5bad4ce3e41f213ecc3be7ecaf
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 662e1bf721c93ee1d59946d2fd603551f3f88ad3
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444460"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503802"
 ---
 # <a name="cancel-your-azure-subscription"></a>Avbryta din Azure-prenumeration
 
@@ -30,6 +30,17 @@ Du kan avsluta din Azure-prenumeration i Microsoft Azure-portalen om du inte lä
 
 Om du avslutar ett betalt supportavtal för Azure debiteras du för resten av prenumerationsperioden. Mer information finns i [Azure-supportplaner](https://azure.microsoft.com/support/plans/).
 
+## <a name="who-can-cancel-a-subscription"></a>Vem kan avsluta en prenumeration?
+
+I tabellen nedan beskrivs den behörighet som krävs för att avbryta en prenumeration.
+
+|Prenumerationstyp     |Vem som kan avbryta  |
+|---------|---------|
+|Prenumerationer som skapas när du registrerar dig för Azure via Azure-webbplatsen. Det gäller till exempel när du registrerar dig för ett [kostnadsfritt Azure-konto](https://azure.microsoft.com/offers/ms-azr-0044p/) eller ett [konto med Betala per användning-priser](https://azure.microsoft.com/offers/ms-azr-0003p/) eller som [Visual studio-prenumerant](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/). |  Kontoadministratör och ägare för prenumerationen  |
+|[Microsoft Enterprise-avtal](https://azure.microsoft.com/pricing/enterprise-agreement/) och [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  Kontoinnehavare och ägare för prenumerationen       |
+|[Azure-plan](https://azure.microsoft.com/offers/ms-azr-0017g/) och [Azure-plan för DevTest](https://azure.microsoft.com/offers/ms-azr-0148g/)     |  Ägare av prenumerationen      |
+
+
 ## <a name="cancel-subscription-in-the-azure-portal"></a>Avsluta prenumeration i Azure-portalen
 
 1. Välj din prenumeration på [prenumerationssidan i Azure-portalen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
@@ -41,15 +52,13 @@ Om du avslutar ett betalt supportavtal för Azure debiteras du för resten av pr
 > [!NOTE]
 > Partner kan pausa eller avbryta en prenumeration om det begärs av en kund eller i fall av utebliven betalning eller bedrägerier. Mer information finns i [Pausa eller avbryta en prenumeration](/partner-center/create-a-new-subscription#suspend-or-cancel-a-subscription).
 
-## <a name="who-can-cancel-a-subscription"></a>Vem kan avsluta en prenumeration?
+## <a name="cancel-a-support-plan"></a>Avsluta ett supportavtal
 
-I tabellen nedan beskrivs den behörighet som krävs för att avbryta en prenumeration.
+Om du köpte ditt supportavtal på Azures webbplats eller på Azure-portalen, eller om du har ett supportavtal genom ett Microsoft-kundavtal, kan du avsluta det. Om du köpte ditt supportavtal från en Microsoft-representant eller Microsoft-partner kontaktar du representanten eller partnern för att få hjälp. 
 
-|Prenumerationstyp     |Vem som kan avbryta  |
-|---------|---------|
-|Prenumerationer som skapas när du registrerar dig för Azure via Azure-webbplatsen. Det gäller till exempel när du registrerar dig för ett [kostnadsfritt Azure-konto](https://azure.microsoft.com/offers/ms-azr-0044p/) eller ett [konto med Betala per användning-priser](https://azure.microsoft.com/offers/ms-azr-0003p/) eller som [Visual studio-prenumerant](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/). |  Kontoadministratör och ägare för prenumerationen  |
-|[Microsoft Enterprise-avtal](https://azure.microsoft.com/pricing/enterprise-agreement/) och [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  Kontoinnehavare och ägare för prenumerationen       |
-|[Azure-plan](https://azure.microsoft.com/offers/ms-azr-0017g/) och [Azure-plan för DevTest](https://azure.microsoft.com/offers/ms-azr-0148g/)     |  Ägare av prenumerationen      |
+1. Gå till **Cost Management + Billing** på Azure-portalen.
+1. Välj **Återkommande avgifter** under **Fakturering**.
+1. Välj ellipsen ( **...** ) till höger om radartikeln för supportavtalet och välj **Stäng av automatisk förnyelse**.
 
 ## <a name="what-happens-after-subscription-cancellation"></a>Vad händer när prenumerationen har avbrutits?
 

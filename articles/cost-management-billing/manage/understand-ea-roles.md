@@ -1,24 +1,24 @@
 ---
-title: Förstå administratörsroller för företag i Azure
+title: Förstå administratörsroller för Enterprise-avtal (EA) i Azure
 description: Lär dig mer om administratörsroller för Enterprise i Azure. Du kan tilldela fem olika administratörsroller.
 author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 12/10/2020
 ms.author: banders
-ms.custom: contperfq1
-ms.openlocfilehash: e712b44f22a8080b14a2cc2532cadf2dd4738b76
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: e8420f68fba40ddb61d06770f9f5bc2fafe5616a
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409218"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560533"
 ---
-# <a name="managing-azure-enterprise-roles"></a>Hantera Azure Enterprise-roller
+# <a name="managing-azure-enterprise-agreement-roles"></a>Hantera Azure Enterprise-avtalsroller
 
-Azure-kunder med ett Enterprise-avtal (EA) kan tilldela fem olika administratörsroller för att hantera organisationens användning och utgifter:
+Azure-kunder med ett Enterprise-avtal kan tilldela fem olika administratörsroller för att hantera organisationens förbrukning och utgifter:
 
 - Företagsadministratör
 - Företagsadministratör (skrivskyddad)<sup>1</sup>
@@ -82,6 +82,8 @@ Användare med den här rollen har den högsta åtkomstnivån. De kan:
 - Hantera meddelandekontakter.
 - Visa användning för alla konton.
 - Visa odebiterade avgifter för alla konton.
+- Visa och hantera alla reservationsorder och reservationer som gäller för Enterprise-avtalet.
+  - Företagsadministratörer (skrivskyddad) kan visa reservationsorder och reservationer. De kan inte hantera dem.
 
 Du kan ha flera företagsadministratörer i en företagsregistrering. Du kan bevilja skrivskyddad åtkomst till företagsadministratörer. De ärver alla rollen avdelningsadministratör.
 

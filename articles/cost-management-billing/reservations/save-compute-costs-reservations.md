@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: overview
-ms.date: 11/18/2020
+ms.date: 12/15/2020
 ms.author: banders
-ms.openlocfilehash: 0ef3f833d1bac4f26f49ace2b366cdfcf5ef3e35
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b79bde204d82b069b3314855a45a680b863c3f69
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352991"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560499"
 ---
 # <a name="what-are-azure-reservations"></a>Vad är Azure Reservations?
 
@@ -58,13 +58,14 @@ Mer information finns i [Köpa en reservation](prepare-buy-reservation.md).
 
 En reservation debiteras enligt den betalningsmetod som är kopplad till prenumerationen. Reservationskostnaden dras av från ditt saldo för ekonomiskt åtagande i förekommande fall. När ditt saldo för ekonomiskt åtagande inte täcker kostnaden för reservationen debiteras du för överförbrukningen. Om du har en prenumeration från en enskild plan med Betala per användning-priser debiteras det kreditkort som du har på ditt konto omedelbart för förskottsköp. Månatliga betalningar visas på din faktura, och ditt kreditkort debiteras månatligen. När du faktureras per faktura visas avgifterna på nästa faktura. 
 
-## <a name="permissions-to-view-and-manage-reservations"></a>Behörigheter för att visa och hantera reservationer 
+## <a name="who-can-manage-a-reservation-by-default"></a>Vem kan hantera en reservation som standard?
 
-Användaren som köper en reservation och kontoadministratören för den prenumeration som används för fakturering av reservationen får rollen ägare på reservationsbeställningen och reservationen.
+Som standard kan följande användare visa och hantera reservationer:
 
-Du kan delegera reservationshantering genom att lägga till användare till roller i reservationsbeställningen eller i reservationen. Du tilldelar rollerna i Azure-portalen eller genom att använda API:er och PowerShell. 
+- Den person som köper en reservation och kontoadministratören för den faktureringsprenumeration som används för att köpa reservationen läggs till i reservationsbeställningen.
+- Faktureringsadministratörer för Enterprise-avtal och Microsoft-kundavtal.
 
-Mer information finns i  [Lägga till eller ändra användare som kan hantera en reservation](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation) 
+Information om hur du gör så att andra kan hantera reservationer finns i [Hantera reservationer för Azure-resurser](manage-reserved-vm-instance.md).
 
 ## <a name="get-reservation-details-and-utilization-after-purchase"></a>Hämta reservationsinformation och användning efter köpet
 

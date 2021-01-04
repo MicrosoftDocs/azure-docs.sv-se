@@ -3,18 +3,18 @@ title: Fakturor för Azure Enterprise-registrering
 description: Den här artikeln förklarar hur du hanterar och använder din Azure Enterprise-faktura.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/23/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.custom: contperfq1
-ms.openlocfilehash: 57ada2ca760ffff2124582c31fdd095d04d4375f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: c64127f7ebbb416d9dfebb5e417cd27d51697665
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410976"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030730"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Fakturor för Azure Enterprise-registrering
 
@@ -39,18 +39,14 @@ Om du vill visa detaljerad användning för specifika konton laddar du ned rappo
 Så här visar du rapporter och diagram för användningssammanfattning:
 
 1. Logga in på Azure Enterprise-portalen.
-
 1. Välj en förskottsbetalningsperiod.
-
-   Om du vill ändra datumintervallet för **Användningssammanfattning** kan du växla från **M** (månatligen) till **C** (anpassad, Custom) längst upp till höger på sidan och sedan ange anpassade startdatum och slutdatum.
-
+   Om du vill ändra datumintervallet för **Användningssammanfattning** kan du växla från **M** (månatligen) till **C** (anpassad, Custom) längst upp till höger på sidan och sedan ange anpassade startdatum och slutdatum.  
    ![Skapa och visa användningssammanfattning och ladda ned rapporter i anpassad vy](./media/ea-portal-enrollment-invoices/create-ea-view-usage-summary-and-download-reports-custom-view.png)
 1. Om du vill visa mer information kan du välja en period eller månad i diagrammet.
-
    - Diagrammet visar användning månad över månad med en analys av utnyttjad användning, tjänstöverförbrukning, separat debiterade avgifter samt Azure Marketplace-avgifter.
    - För den valda månaden kan du använda fälten nedanför diagrammet för att filtrera efter avdelningar, konton och prenumerationer.
    - Du kan växla mellan **Avgifter efter tjänster** och **Avgifter efter hierarki**.
-   - Visa information från **Azure-tjänst** , **Separat debiterade avgifter** och **Azure Marketplace** genom att expandera respektive avsnitt.
+   - Visa information från **Azure-tjänst**, **Separat debiterade avgifter** och **Azure Marketplace** genom att expandera respektive avsnitt.
 
 Titta på den här videon för att se hur du visar användning:
 
@@ -72,7 +68,7 @@ Så här laddar du ned rapporter:
 3. Välj **Ladda ned** intill månadens rapport.
 
    > [!NOTE]
-   > Det kan finnas en svarstid på upp till fem dagar från det gällande användningsdatumet till dess att användningen visas i rapporten.
+   > Det kan förekomma en fördröjning på upp till 72 timmar från det aktuella användningsdatumet tills användningen visas i rapporten.
    >
    > Användare som laddar ned CSV-filer med Safari till Excel kan få formateringsfel. Undvik fel genom att öppna filen med ett redigeringsprogram.
 
@@ -142,20 +138,20 @@ Faktureringsintervallet beror på hur du väljer att göra dina köp med försko
 
 Datumet du fick på överförbrukningsfakturan beror på startdatumet och konfigurationen:
 
-- **Direktregistreringar med startdatum före 1 maj 2018** :
+- **Direktregistreringar med startdatum före 1 maj 2018**:
   - Om du har ett Enterprise Azure-avtal (EA) med direktregistrering har du en årlig faktureringsperiod för Azure-tjänster, exklusive Azure Marketplace-tjänster. Din faktureringsperiod baseras på årsdagen: det datum då avtalet började gälla.
   - Om du överskrider 150 % av ditt tröskelbelopp för förskottsbetalning för Azure EA kommer du automatiskt att konverteras till kvartalsvis fakturering som baseras på din årsdag. Du får också en överförbrukningsfaktura för Azure-tjänsten.
   - Om du inte överskrider 150 % av ditt tröskelbelopp för Azure-förskottsbetalning kommer registreringen att behålla den årliga faktureringsperioden. Överförbrukningsfakturan erhålls i slutet av året för förskottsbetalningen.
 
-- **Direktregistreringar med startdatum efter 1 maj 2018** :
+- **Direktregistreringar med startdatum efter 1 maj 2018**:
   - Kundens Azure-förbrukning och avgifter faktureras på separata fakturor per månad.
   - Eventuella avgifter som inte täcks av din Azure-förskottsbetalning betalas som överförbrukning.  
 
-- **Indirekta registreringar med en registrering som startat före 1 maj 2018** :
+- **Indirekta registreringar med en registrering som startat före 1 maj 2018**:
 
   Om du har ett Enterprise-avtal med indirekt registrering med ett startdatum före den 1 maj 2018 faktureras du kvartalsvis. Kanalpartnern fakturerar dig direkt.  
 
-- **Indirekta registreringar med startdatum efter 1 maj 2018** :
+- **Indirekta registreringar med startdatum efter 1 maj 2018**:
 
   Du faktureras per månad.  
 
@@ -169,15 +165,15 @@ Du debiteras för överförbrukning för den användning eller de reservationer 
 
 För varje post på fakturan visas:
 
-- **Beräknat belopp** : det totala antalet avgifter
-- **Utnyttjad förskottsbetalning** : beloppet för din förskottsbetalning som används för att täcka avgifterna
-- **Nettobelopp** : de avgifter som överstiger din förskottsbetalning
+- **Beräknat belopp**: det totala antalet avgifter
+- **Utnyttjad förskottsbetalning**: beloppet för din förskottsbetalning som används för att täcka avgifterna
+- **Nettobelopp**: de avgifter som överstiger din förskottsbetalning
 
 Tillämpliga skatter beräknas bara på det nettobelopp som överstiger förskottsbetalningen.
 
 Faktureringen av överförbrukning sker automatiskt. Tiden för meddelanden och fakturor beror på slutdatumet för din faktureringsperiod.
 
-- Ett överförbrukningsmeddelande skickas vanligtvis sju dagar efter slutdatumet för faktureringen.
+- En avisering om överförbrukning skickas vanligtvis sju dagar efter slutdatumet för faktureringen.
 - Överförbrukningsfakturor skickas sju till nio dagar efter meddelandet.
 - Du kan granska avgifterna och uppdatera systemgenererade IO-nummer under de sju dagarna mellan överförbrukningsmeddelandet och faktureringen.
 
@@ -246,7 +242,7 @@ Enheten för Enterprise-avtal skiljer sig ofta från andra program som prenumera
 
 ### <a name="conversion-between-usage-detail-report-and-the-usage-summary-page"></a>Konvertering mellan rapporten för användningsinformation och sidan med sammanfattning av användning
 
-I den nedladdningsbara rapporten med användningsdata kan du se rådata för resursanvändning med upp till sex decimaler. Men användningsdata som visas på Azure Enterprise-portalen avrundas till fyra decimaler för förskottsbetalningsenheter och trunkeras till noll decimaler för överförbrukningsenheter. Rådata för användning avrundas först till fyra decimaler före konverteringen till enheter som används i Azure Enterprise-portalen. Sedan avrundas de konverterade Enterprise-enheterna om igen till fyra decimaler. Du kan endast se de faktiska förbrukade timmarna före konverteringen i den nedladdningsbara rapporten för användning och inte i Azure Enterprise-portalen.
+I den nedladdningsbara rapporten med användningsdata kan du se rådata för resursanvändning med upp till sex decimaler. Men användningsdata som visas på Azure Enterprise-portalen avrundas till fyra decimaler för förskottsbetalningsenheter och trunkeras till noll decimaler för överförbrukningsenheter. Rådata om användningen avrundas till fyra decimaler innan de konverteras till enheter som används på Azure Enterprise-portalen. Sedan avrundas de konverterade Enterprise-enheterna om igen till fyra decimaler. Du kan endast se de faktiska förbrukade timmarna före konverteringen i den nedladdningsbara rapporten för användning och inte i Azure Enterprise-portalen.
 
 Ett exempel: Anta att 694.533404 är det faktiska antalet SQL Server-timmar som rapporteras i rapporten för användningsinformation. Dessa enheter konverteras till 6.94533404 enheter för 100 beräkningstimmar, och avrundas sedan till 6.9453 som visas i Azure Enterprise-portalen.
 

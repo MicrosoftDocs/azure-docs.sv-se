@@ -6,14 +6,14 @@ ms.subservice: reservations
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 12/08/2020
 ms.author: banders
-ms.openlocfilehash: 050984d58137ec03996572d2de41115073e4ab2b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2cd0611d5701f5ca407afd6d4e3b1b0ae22b6c12
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96338171"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562981"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Hantera reservationer för Azure-resurser
 
@@ -31,7 +31,7 @@ När du köper en reservation skapas två objekt: En **reservationsbeställning*
 
 Vid inköpstillfället har en reservationsbeställning en underordnad reservation. Med åtgärder som att dela, koppla, delåterbetala eller byta reservationer så skapar du nya reservationer under **reservationsbeställningen**.
 
-Om du vill visa en reservationsbeställning går du till **Reservationer**, väljer reservationen och klickar på **Reservationsbeställnings-id**.
+Du kan visa en reservationsbeställning genom att gå till **Reservationer**, välja reservationen och sedan **Reservationsbeställnings-ID**.
 
 ![Exempel på information om en reservationsbeställning med reservationsbeställnings-id:t ](./media/manage-reserved-vm-instance/reservation-order-details.png)
 
@@ -49,27 +49,40 @@ Så här uppdaterar du reservationsomfånget:
 4. Välj **Inställningar** > **Konfiguration**.
 5. Ändra omfånget.
 
-Om du ändrar från delat till enskilt omfång kan du bara välja prenumerationer du äger. Endast prenumerationer i samma faktureringskontext som reservationen kan väljas.
+Om du ändrar från delat till enskilt omfång kan du bara välja prenumerationer du äger. Du kan bara välja prenumerationer i samma faktureringskontext som reservationen.
 
 Omfånget gäller endast enskilda prenumerationer där du betalar per användning (erbjudandet MS-AZR-0003P eller MS-AZR-0023P), företagserbjudandet MS-AZR-0017P eller MS-AZR-0148P, eller CSP-prenumerationer.
 
-## <a name="add-or-change-users-who-can-manage-a-reservation"></a>Lägga till eller ändra användare som kan hantera en reservation
+## <a name="who-can-manage-a-reservation-by-default"></a>Vem kan hantera en reservation som standard?
 
-Du kan delegera reservationshantering genom att lägga till användare till roller i reservationsbeställningen eller i reservationen. Som standard har den person som lägger reservationsbeställningen samt kontoadministratören rollen som Ägare för reservationsbeställningen och reservationen.
+Som standard kan följande användare visa och hantera reservationer:
 
-Du kan hantera åtkomsten till reservationsbeställningar och reservationer *oberoende av prenumerationerna* som erhåller reservationsrabatten. När du ger någon behörighet att hantera en reservationsbeställning eller själva reservationen innebär det inte att de får behörighet att hantera prenumerationen. Om du ger någon behörighet att hantera en prenumeration i reservationens omfattning innebär det på samma sätt inte att de får behörighet att hantera reservationsbeställningen eller reservationen.
+- Den person som köper en reservation och kontoadministratören för den faktureringsprenumeration som används för att köpa reservationen läggs till i reservationsbeställningen.
+- Faktureringsadministratörer för Enterprise-avtal och Microsoft-kundavtal.
 
-För att göra ett byte eller en återbetalning måste användaren ha åtkomst till reservationsbeställningen. När du ger någon behörighet är det bättre att ge behörighet för reservationsbeställningen, inte för själva reservationen.
+Du kan välja mellan två alternativ för att låta andra hantera reservationer:
 
-Så här delegerar du åtkomstbehörighet för en reservation:
+- Delegera åtkomsthantering för en enskild reservationsbeställning:
+    1. Logga in på [Azure-portalen](https://portal.azure.com).
+    1. Välj **Alla tjänster** > **Reservationer** så visas de reservationer du har åtkomst till.
+    1. Markera den reservation som du vill ge andra användare åtkomst till.
+    1. Välj reservationsbeställningen i informationen om reservationer.
+    1. Välj **Åtkomstkontroll (IAM)** .
+    1. Välj **Lägg till rolltilldelning** > **Roll** > **Ägare**. Du kan välja en annan roll om du vill ge begränsad åtkomst.
+    1. Ange e-postadressen för den användare som du vill lägga till som ägare.
+    1. Välj användaren och sedan **Spara**.
 
-1. Logga in på [Azure-portalen](https://portal.azure.com).
-2. Välj **Alla tjänster** > **Reservationer** så visas de reservationer du har åtkomst till.
-3. Markera den reservation som du vill ge andra användare åtkomst till.
-4. Välj **Åtkomstkontroll (IAM)** .
-5. Välj **Lägg till rolltilldelning** > **Roll** > **Ägare**. Du kan också välja en annan roll om du vill ge begränsad åtkomst.
-6. Ange e-postadressen för den användare som du vill lägga till som ägare.
-7. Välj användaren och sedan **Spara**.
+- Lägg till en användare som faktureringsadministratör för ett Enterprise-avtal eller ett Microsoft-kundavtal:
+    - Om du har ett Enterprise-avtal lägger du till användare med rollen _Företagsadministratör_ så att de kan visa och hantera reservationsbeställningar under Enterprise-avtalet. Användare med rollen _Enterprise-administratör (skrivskyddad)_ kan bara visa reservationen. Avdelningsadministratörer och kontoägare kan inte visa reservationer _om de inte_ uttryckligen läggs till i dem via åtkomstkontroll (IAM). Mer information finns i [Hantera Azure Enterprise-roller](../manage/understand-ea-roles.md).
+
+        _Enterprise-administratörer kan bli ägare till en reservationsbeställning och kan lägga till andra användare till en reservation via åtkomstkontroll (IAM)._
+    - Med ett Microsoft-kundavtal kan användare med rollen som faktureringsprofilägare eller faktureringsprofildeltagare hantera alla reservationsköp som görs via faktureringsprofilen. Debiteringsprofilläsare och fakturahanterare kan visa alla reservationer som betalas via faktureringsprofilen. Däremot kan de inte göra ändringar i reservationer.
+    Mer information finns i [Roller och uppgifter för faktureringsprofiler](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks).
+
+### <a name="how-billing-administrators-view-or-manage-reservations"></a>Så här kan faktureringsadministratörer visa och hantera reservationer
+
+1. Gå till **Cost Management + Billing** och välj **Reservationstransaktioner** till vänster på sidan.
+2. Om du har nödvändig faktureringsbehörighet kan du visa och hantera reservationer. Om du inte ser några reservationer kontrollerar du att du är inloggad med den Azure AD-klientorganisation som reservationerna skapades i.
 
 ## <a name="split-a-single-reservation-into-two-reservations"></a>Dela upp en reservation i två reservationer
 
@@ -110,7 +123,7 @@ Du kan avbryta, byta ut och återbetala reservationer med vissa begränsningar. 
 
 ## <a name="change-optimize-setting-for-reserved-vm-instances"></a>Ändra optimeringsinställningen för reserverade VM-instanser
 
- När du köper en reserverad VM-instans väljer du mellan att prioritera instansens kapacitet eller flexibilitet gällande storleken. Om du väljer att prioritera flexibilitet gällande storleken använder du reservationsrabatten för andra virtuella datorer i samma [VM-storleksgrupp](../../virtual-machines/reserved-vm-instance-size-flexibility.md). Om du prioriterar kapaciteten prioriteras datacenterkapaciteten för dina distributioner. Det här alternativet gör det säkrare att du kan starta VM-instanserna när du behöver dem.
+ När du köper en reserverad VM-instans väljer du mellan att prioritera instansens kapacitet eller flexibilitet gällande storleken. Om du väljer att prioritera flexibilitet gällande storleken använder du reservationsrabatten för andra virtuella datorer i samma [VM-storleksgrupp](../../virtual-machines/reserved-vm-instance-size-flexibility.md). Kapacitetsprioritet prioriterar datacenterkapaciteten i dina distributioner. Det här alternativet gör det säkrare att du kan starta VM-instanserna när du behöver dem.
 
 När reservationens omfång är delat prioriteras som standard flexibilitet i storleken. Datacenterkapaciteten prioriteras inte för VM-distributioner.
 
@@ -121,9 +134,9 @@ Så här uppdaterar du optimeringsinställningen för en reservation:
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 2. Välj **Alla tjänster** > **Reservationer**.
 3. Välj reservationen.
-4. Välj **Inställningar** > **Konfiguration**.  
+4. Välj **Inställningar** > **Konfiguration**.
   ![Exempel som visar konfigurationsobjektet](./media/manage-reserved-vm-instance/add-product03.png)
-5. Ändra inställningen **Optimera för**.  
+5. Ändra inställningen **Optimera för**.
   ![Exempel som visar inställningen Optimera](./media/manage-reserved-vm-instance/instance-size-flexibility-option.png)
 
 ## <a name="optimize-reservation-use"></a>Optimera reservationsanvändningen
@@ -138,7 +151,7 @@ Ett sätt att visa användningen av en reservation är i Azure-portalen.
 2. Välj **Alla tjänster** > [**Reservationer**](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) och läs av värdet för **Utnyttjande (%)** för reservationen.  
   ![Bild som visar listan med reservationer](./media/manage-reserved-vm-instance/reservation-list.png)
 3. Välj en reservation.
-4. Granska trenden i reservationsanvändningen över tid.  
+4. Granska trenden i reservationsanvändningen över tid.
   ![Bild som visar reservationsanvändning ](./media/manage-reserved-vm-instance/reservation-utilization-trend.png)
 
 ### <a name="view-reservation-use-with-api"></a>Visa reservationsanvändning med API:et

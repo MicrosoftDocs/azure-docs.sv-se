@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/30/2020
+ms.date: 12/09/2020
 ms.author: banders
-ms.openlocfilehash: 8c3ab3f4f9bc56e9651a98e5c011cad65f21fd9d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ca55773b2deb74ea0647ed33df4040065762f94a
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349000"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938485"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>Få faktureringsägarskap för Azure-prenumerationer från andra konton
 
@@ -22,6 +22,14 @@ Du vill kanske ta över ägarskapet för Azure-prenumerationer om den befintliga
 Den här artikeln gäller ett faktureringskonto för ett Microsoft-kundavtal. [Kontrollera om du har åtkomst till ett Microsoft-kundavtal](#check-for-access).
 
 För att kunna begära faktureringsägarskap måste du vara **fakturaavsnittsägare** eller **fakturaavsnittsdeltagare**. Mer information finns i [uppgifter för roller i fakturaavsnitt](understand-mca-roles.md#invoice-section-roles-and-tasks).
+
+Den användare som du begär faktureringsägarskap från måste ha någon av följande roller:
+
+- För ett Microsoft-kundavtal för företag måste användaren vara faktureringsägare.
+- För ett Enterprise-avtal måste användaren vara kontoägare.
+- För ett Microsoft Online Service Program-faktureringskonto måste användaren vara kontoadministratör.
+
+Mer information finns i [visa dina faktureringskonton i Azure-portalen](view-all-accounts.md).
 
 ## <a name="request-billing-ownership"></a>Begära faktureringsägarskap
 
@@ -42,7 +50,7 @@ För att kunna begära faktureringsägarskap måste du vara **fakturaavsnittsäg
 1. Välj ett fakturaavsnitt i listan. När du tar över ägarskapet av prenumerationerna tilldelas användningen till det här avsnittet i faktureringsprofilens faktura.
 1. Välj **Överföringsbegäranden** nere till vänster och välj sedan **Lägg till en ny begäran**.  
     [![Skärmbild som visar val av överföringsbegäranden](./media/mca-request-billing-ownership/mca-select-transfer-requests.png)](./media/mca-request-billing-ownership/mca-select-transfer-requests.png#lightbox)
-1. Ange e-postadressen till den användare som du begär faktureringsägarskap från. Användaren måste vara kontoadministratör på ett faktureringskonto för Microsoft Online Service-program eller kontoägare för ett Enterprise-avtal. Mer information finns i [visa dina faktureringskonton i Azure-portalen](view-all-accounts.md). Välj **Skicka överföringsbegäran**.  
+1. Ange e-postadressen till den användare som du begär faktureringsägarskap från. Välj **Skicka överföringsbegäran**.  
     [![Skärmbild som visar sändning av en överföringsbegäran](./media/mca-request-billing-ownership/mca-send-transfer-requests.png)](./media/mca-request-billing-ownership/mca-send-transfer-requests.png#lightbox)
 1. Användaren får ett e-postmeddelande med instruktioner för att granska din överföringsförfrågan.  
     ![Skärmbild som visar granskning av e-postmeddelande med överföringsbegäran](./media/mca-request-billing-ownership/mca-review-transfer-request-email.png)
@@ -68,6 +76,7 @@ För att kunna begära faktureringsägarskap måste du vara **fakturaavsnittsäg
 1. Välj det fakturaavsnitt i listan som överföringsbegäran skickades för.
 1. Välj **Överföringsbegäranden** på den nedre vänstra sidan. På sidan Överföringsbegäranden visas följande information:  
     [![Skärmbild som visar lista med överföringsbegäranden](./media/mca-request-billing-ownership/mca-select-transfer-requests-for-status.png)](./media/mca-request-billing-ownership/mca-select-transfer-requests-for-status.png#lightbox)
+
    |Kolumn|Definition|
    |---------|---------|
    |Datum för begäran|Det datum då överföringsbegäran skickades|
