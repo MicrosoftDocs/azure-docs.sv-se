@@ -57,6 +57,9 @@
           href: container-registry-image-tag-version.md
         - name: Geo-replikering
           href: container-registry-geo-replication.md
+        - name: Zonredundans
+          displayName: availability zone
+          href: zone-redundancy.md
         - name: Registrera metodtips
           href: container-registry-best-practices.md
         - name: Hantera offentliga avbildningar

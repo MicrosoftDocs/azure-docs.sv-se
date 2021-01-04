@@ -3,12 +3,12 @@ title: Översikt över AMQP 1,0 i Azure Service Bus
 description: Lär dig hur Azure Service Bus stöder Advanced Message Queueing Protocol (AMQP), ett öppet standard protokoll.
 ms.topic: article
 ms.date: 11/20/2020
-ms.openlocfilehash: e585fcc905d1651d49008b623b01a6c2f8a04fcc
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 241a6b7fb9f9055ce610e44e5cd37dba87c77554
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498786"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709290"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>AMQP 1,0-stöd i Service Bus
 Azure Service Bus moln tjänsten använder [Advanced Message Queueing Protocol (AMQP) 1,0](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) som primärt kommunikations sätt. Microsoft har samarbetat med partner över hela branschen, både kunder och leverantörer av konkurrerande meddelande hanterare, för att utveckla och utveckla AMQP under de senaste tio åren, med nya tillägg som utvecklas i [Oasis AMQP tekniska kommittén](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp). AMQP 1,0 är en ISO-och IEC standard ([iso 19464:20149](https://www.iso.org/standard/64955.html)). 
@@ -42,7 +42,7 @@ I oktober 2011 släpptes utvecklings arbetet över till en teknisk kommitté ino
 * **Teknik leverantörer**: Axway program vara, Huawei Technologies, IIT-programvara, INETCO-system, Kaazing, Microsoft, Mitre Corporation, Primeton Technologies, process program, Red Hat, Sita, program-AG, Solace-system, VMware, WSO2, Zenika.
 * **Användar företag**: bank i Amerika, kredit Suisse, tyska Boerse, Goldman Sachs, JPMorgan
 
-De aktuella stolarna i [OASIS AMQP Technical Committee] (( https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp) representerar Red Hat och Microsoft.
+De aktuella stolarna i [Oasis AMQP tekniska kommittén](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp) representerar Red Hat och Microsoft.
 
 Några av de mest citerade fördelarna med öppna standarder är:
 

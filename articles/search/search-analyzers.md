@@ -7,14 +7,14 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/20/2020
+ms.date: 12/18/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 544509a8c90c9273b748591509b1fa86510d71c3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bbda4268ca00d1c12f851517e2b35add7fba7f9b
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013827"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694300"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Analys verktyg för text bearbetning i Azure Kognitiv sökning
 
@@ -315,55 +315,61 @@ Om du använder kod exempel för .NET SDK kan du lägga till dessa exempel för 
 
 En analys som används i befintligt skick, utan konfiguration, anges i en fält definition. Det finns inget krav på att skapa en post i avsnittet **[analyserare]** i indexet. 
 
-I det här exemplet tilldelas Microsoft English-och franska-analyser för att beskriva fält. Det är ett kodfragment som tas från en större definition av hotell indexet, vilket skapar med hjälp av hotell klassen i hotels.cs-filen i [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) -exemplet.
+Språk analys verktyg används i befintligt skick. Om du vill använda dem anropar du [LexicalAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer)och anger [LexicalAnalyzerName](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) -typ som ger en text analys som stöds i Azure kognitiv sökning.
 
-Anropa [LexicalAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer), och ange den [LexicalAnalyzerName](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) typ som tillhandahåller en text analys som stöds i Azure kognitiv sökning.
+Anpassade analys verktyg anges på samma sätt i fält definitionen, men för att det ska fungera måste du ange analys i index definitionen, enligt beskrivningen i nästa avsnitt.
 
 ```csharp
     public partial class Hotel
     {
        . . . 
-
-        [IsSearchable]
-        [Analyzer(AnalyzerName.AsString.EnMicrosoft)]
-        [JsonProperty("description")]
+        [SearchableField(AnalyzerName = LexicalAnalyzerName.Values.EnLucene)]
         public string Description { get; set; }
 
-        [IsSearchable]
-        [Analyzer(AnalyzerName.AsString.FrLucene)]
-        [JsonProperty("description_fr")]
+        [SearchableField(AnalyzerName = LexicalAnalyzerName.Values.FrLucene)]
+        [JsonPropertyName("Description_fr")]
         public string DescriptionFr { get; set; }
 
+        [SearchableField(AnalyzerName = "url-analyze")]
+        public string Url { get; set; }
       . . .
     }
 ```
+
 <a name="Define-a-custom-analyzer"></a>
 
 ### <a name="define-a-custom-analyzer"></a>Definiera en anpassad analys
 
-När anpassning eller konfiguration krävs måste du lägga till en analys-konstruktion i ett index. När du har definierat det kan du lägga till den som fält definition som visas i föregående exempel.
+När du behöver anpassning eller konfiguration måste du lägga till en Analyzer-konstruktion i ett index. När du har definierat det kan du lägga till den som fält definition som visas i föregående exempel.
 
-Skapa ett [CustomAnalyzer](/dotnet/api/azure.search.documents.indexes.models.customanalyzer) -objekt. Fler exempel finns i [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs).
+Skapa ett [CustomAnalyzer](/dotnet/api/azure.search.documents.indexes.models.customanalyzer) -objekt. En anpassad analys är en användardefinierad kombination av ett känt tokenizer, noll eller flera token-filter, och inget eller flera tecken filter namn:
+
++ [CustomAnalyzer.Tokenizer](/dotnet/api/microsoft.azure.search.models.customanalyzer.tokenizer)
++ [CustomAnalyzer.TokenFilters](/dotnet/api/microsoft.azure.search.models.customanalyzer.tokenfilters)
++ [CustomAnalyzer.CharFilters](/dotnet/api/microsoft.azure.search.models.customanalyzer.charfilters)
+
+I följande exempel skapas en anpassad analys med namnet "URL-analys" som använder [uax_url_email tokenizer](/dotnet/api/microsoft.azure.search.models.customanalyzer.tokenizer) och [filtret med gemena token](/dotnet/api/microsoft.azure.search.models.tokenfiltername.lowercase).
 
 ```csharp
+private static void CreateIndex(string indexName, SearchIndexClient adminClient)
 {
-   var definition = new Index()
+   FieldBuilder fieldBuilder = new FieldBuilder();
+   var searchFields = fieldBuilder.Build(typeof(Hotel));
+
+   var analyzer = new CustomAnalyzer("url-analyze", "uax_url_email")
    {
-         Name = "hotels",
-         Fields = FieldBuilder.BuildForType<Hotel>(),
-         Analyzers = new[]
-            {
-               new CustomAnalyzer()
-               {
-                     Name = "url-analyze",
-                     Tokenizer = TokenizerName.UaxUrlEmail,
-                     TokenFilters = new[] { TokenFilterName.Lowercase }
-               }
-            },
+         TokenFilters = { TokenFilterName.Lowercase }
    };
 
-   serviceClient.Indexes.Create(definition);
+   var definition = new SearchIndex(indexName, searchFields);
+
+   definition.Analyzers.Add(analyzer);
+
+   adminClient.CreateOrUpdateIndex(definition);
+}
 ```
+
+Fler exempel finns i [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs).
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2020
 ms.author: Zhchia
-ms.openlocfilehash: 860b880faae9c5fe37a2c7eab2ef3a068ed4da3e
-ms.sourcegitcommit: 236014c3274b31f03e5fcee5de510f9cacdc27a0
+ms.openlocfilehash: 127a9568d4f129763bee26210efedeaee8fe4aa1
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96299098"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709390"
 ---
 # <a name="tutorial-configure-papercut-cloud-print-management-for-automatic-user-provisioning"></a>Självstudie: Konfigurera PaperCut Cloud Print Management för automatisk användar etablering
 
@@ -37,9 +37,9 @@ I den här självstudien beskrivs de steg du behöver utföra i både PaperCut C
 
 Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
 
-* [En Azure AD-klient](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* [En Azure AD-klientorganisation](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant). 
 * Ett användar konto i Azure AD med [behörighet](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) att konfigurera etablering (till exempel program administratör, moln program administratör, program ägare eller global administratör). 
-* Ett användar konto i PaperCut Cloud Print Management med administratörs behörighet
+* Ett PaperCut-konto för Cloud Print Management-administratör.
 
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Steg 1. Planera etablering av distributionen
@@ -76,7 +76,7 @@ Med Azure AD-etableringstjänsten kan du bestämma vem som ska etableras, basera
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-papercut-cloud-print-management"></a>Steg 5. Konfigurera automatisk användar etablering till PaperCut Cloud Print Management
 
-Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Provisioning-tjänsten för att skapa, uppdatera och inaktivera användare och/eller grupper i TestApp baserat på användar-och/eller grupp tilldelningar i Azure AD.
+Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Provisioning-tjänsten för att skapa, uppdatera och inaktivera användare och/eller grupper i PaperCut Cloud Print Management, baserat på användar-och/eller grupp tilldelningar i Azure AD.
 
 ### <a name="to-configure-automatic-user-provisioning-for-papercut-cloud-print-management-in-azure-ad"></a>Konfigurera automatisk användar etablering för PaperCut Cloud Print Management i Azure AD:
 
@@ -106,7 +106,8 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
 7. Välj **Spara**.
 
-8. Under avsnittet **mappningar** väljer du **Synkronisera Azure Active Directory användare till PaperCut Cloud Print Management**.
+8. Under avsnittet **mappningar** väljer du **etablera Azure Active Directory användare**.
+   ![AAD-mappning](media/papercut-cloud-print-management-provisioning-tutorial/mapping.png)
 
 9. Granska de användarattribut som synkroniseras från Azure AD till PaperCut Cloud Print Management i avsnittet **attribut-mappning** . Attributen som väljs som **matchande** egenskaper används för att matcha användar kontona i PaperCut Cloud Print Management för uppdaterings åtgärder. Om du väljer att ändra [matchande målattribut](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)måste du se till att PaperCut Cloud Printing Management API stöder filtrering av användare baserat på detta attribut. Välj knappen **Spara** för att spara ändringarna.
 

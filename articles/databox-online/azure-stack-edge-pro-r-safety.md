@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: ac3f2cc1c68ea552b2858d932217a28055fee0fd
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 627196c0a76f1de23f7e5421c47a33356a73967f
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96467580"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709456"
 ---
 # <a name="azure-stack-edge-pro-r-safety-instructions"></a>Instruktioner för Azure Stack Edge Pro R-säkerhet
 
@@ -27,14 +27,14 @@ Läs all säkerhets information i den här artikeln innan du använder din Azure
 
 Följande signal ord för varnings signaler är:
 
-| Ikon | Description |
+| Ikon | Beskrivning |
 |:--- |:--- |
 | ![Varnings symbol](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)| **Risk:** Indikerar en farlig situation som, om de inte undviks, leder till dödsfall eller allvarlig skada. <br> **Varning:** Indikerar en farlig situation som, om de inte undviks, kan leda till dödsfall eller allvarlig skada. <br> **Varning:** Indikerar en farlig situation som, om de inte undviks, kan leda till mindre eller måttlig skada.|
 |
 
 Följande farlighets ikoner ska observeras när du konfigurerar och kör din Azure Stack Edge Pro R Edge-enhet:
 
-| Ikon | Description |
+| Ikon | Beskrivning |
 |:--- |:--- |
 | ![Läs alla instruktioner först](./media/azure-stack-edge-pro-r-safety/icon-safety-read-all-instructions.png) | Läs alla instruktioner först |
 | ![Varnings symbol](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | Varnings symbol |
@@ -65,7 +65,7 @@ Följande farlighets ikoner ska observeras när du konfigurerar och kör din Azu
 
 ![Varnings ikon ](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png)
  ![ elektrisk stöt ikon utan varnings ](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png)
- ![ ikon för användar tjänstens delar ](./media/azure-stack-edge-pro-r-safety/icon-safety-do-not-access.png) **CAUTION:**
+ ![ ikon för användar tjänstens delar ](./media/azure-stack-edge-pro-r-safety/icon-safety-do-not-access.png) 
 
 * Kontrol lera att enheten *tas emot* för skador. Om enhets kabinettet är skadat kan du [kontakta Microsoft Support](azure-stack-edge-contact-microsoft-support.md) för att få en ny ersättning. Försök inte att använda enheten.
 * Om du misstänker att enheten inte fungerar kan du [kontakta Microsoft Support](azure-stack-edge-contact-microsoft-support.md) för att få en ny ersättning. Försök inte att betjäna enheten.
@@ -86,6 +86,7 @@ Följande farlighets ikoner ska observeras när du konfigurerar och kör din Azu
   * Isolerade från starka elektro magnetiska fält producerade av elektriska enheter.
   * Medföljer med korrekt jordade uttag.
   * Tillhandahålls tillräckligt med utrymme för att få åtkomst till strömförsörjnings kablarna, eftersom de fungerar som produktens huvudsakliga strömförsörjnings anslutning.
+* Ethernet-kablar medföljer inte produkten. För att minska elektro magnetisk interferens rekommenderar vi att Cat 6 skärmade STP-kablar (skärmade tvinnad hop parkabel) används.
 * Konfigurera utrustningen i ett arbets utrymme som möjliggör tillräcklig luft cirkulation runt utrustningen. Se till att fram-och bak sidan tas bort helt medan enheten körs.
 * Installera utrustningen i temperatur-kontrollerat utrymme utan att utföra främmande ämnen och tillåta tillräcklig luft cirkulation runt utrustningen.
 * Hålla utrustningen borta från källor till flytande och överdriven fukt miljö.
@@ -115,6 +116,11 @@ Följande farlighets ikoner ska observeras när du konfigurerar och kör din Azu
   * Enheten släpptes och enhetens Skift läge är skadat.
   * Du misstänker att enheten behöver tjänst eller reparation.
 * Koppla bort enheten permanent innan du flyttar den eller om du tror att den har skadats på något sätt.
+* För att förhindra hög läckage är det viktigt att när ett enda överförings fall har mer än en oavbruten ström källa (UPS), rekommenderas att varje UPS är ansluten till en oberoende gren. I händelse av att en PDU-enhet (Power Distribution Unit) eller annan enhet används där varje UPS är beroende av en enda matnings ledare i PDU: n, måste jord uttaget på den yttre av varje UPS också användas med en kompletterande byggnads bas ledare.
+
+  > [!NOTE]
+  > Om en PDU används som redan har en kompletterande grund ledare, krävs ingen ytterligare jord-Terminal i UPS-enheten.
+
 * Tillhandahålla en lämplig ström källa med skydd mot elektrisk överbelastning för att uppfylla följande energi krav:
 
   * Spänning: 100 till 240 volt AC
@@ -157,7 +163,7 @@ Enheten är utformad för att användas i följande miljöer:
 |:--- |:--- |
 |Temperatur specifikationer | <ul><li>Lagrings temperatur: – 33 &deg; C – 63 &deg; C (– 28 &deg; f-145 &deg; F) </li><li>Kontinuerlig åtgärd: 5 &deg; c – 43 &deg; C (41 &deg; F – 110 &deg; f)</li><li>Maximal temperatur toning (drift och lagring): 20 &deg; C/h (68 &deg; F/h)</li></ul> |
 |Specifikationer för relativ fuktighet | <ul><li>Lagring: 5% till 95% RH med 33 &deg; C (91 &deg; F) maximal dagg punkt. Omgivningen måste vara icke-kondenserande hela tiden.</li><li>Drift: 5% till 85% relativ fuktighet med 29 &deg; C (84,2 &deg; F) maximal dagg punkt</li></ul> |
-| Maximala höjd specifikationer | <ul><li>Drift (utan UPS): 15 000 ft (4 572 meter)</li><li>Drift (med UPS): 6,561 ft (2 000 meter)</li><li>Lagring: 40 000 ft (12 192 meter)</li></ul> |
+| Maximala höjd specifikationer | <ul><li>Drift (utan UPS): 15 000 ft (4 572 meter)</li><li>Drift (med UPS): 10 000 ft (3 048 meter)</li><li>Lagring: 40 000 ft (12 192 meter)</li></ul> |
 
 <!--|Standard operating temperature specifications | <ul>Continuous operation (for altitude less than 950 m or 3117 ft): +5&deg;C–45&deg;C (41&deg;F–113&deg;F) with no direct sunlight on the equipment</ui>
 |Expanded operating temperature specifications | <ul><li>Continuous operation: 5&deg;C to 45&deg;C at 5% to 85% RH with 29&deg;C dew point.</li><li></= 1% of annual operating hours: –5&deg;C to 55&deg;C at 5% to 90% RH with 29&deg;C dew point. |

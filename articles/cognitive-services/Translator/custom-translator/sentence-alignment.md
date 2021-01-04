@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: e5d360933cbeb611046aede6164ec2e2fa497664
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 7ed7c3a586f5671191e3c517b5925cab888caefb
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347803"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724314"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Menings koppling och justering i parallella dokument
 
@@ -22,7 +22,7 @@ När dokument har laddats upp är meningar som finns i parallella dokument koppl
 
 ## <a name="pairing-and-alignment-process"></a>Kopplings-och justerings process
 
-Anpassad översättare lär sig översättningar av meningar en mening i taget. Den läser en mening från källan och sedan översättningen av den här meningen från målet. Sedan justeras ord och fraser i de här två meningarna till varandra. Den här processen gör det möjligt för IT att skapa en karta över ord och fraser i en mening till motsvarande ord och fraser i översättningen av denna mening. Justeringen försöker se till att system tågen på meningar som är översättningar av varandra.
+Anpassad översättare lär sig översättningar av meningar en mening i taget. Den läser en mening från käll texten och sedan översättningen av den här meningen från mål texten. Sedan justeras ord och fraser i de här två meningarna till varandra. Den här processen gör det möjligt för IT att skapa en karta över ord och fraser i en mening till motsvarande ord och fraser i översättningen av sin mening. Justeringen försöker se till att system tågen på meningar som är översättningar av varandra.
 
 ## <a name="pre-aligned-documents"></a>Dokument som är justerade
 

@@ -4,12 +4,12 @@ description: I den här snabb starten aktiverar du Event Grid händelser för be
 ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 6058fceb873e2b26da2d30dadba456e2a625f3f2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2d13dd0ec5e50086e674b215d93917d6173d5af9
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074224"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694402"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Snabb start: skicka händelser från privat container Registry till Event Grid
 
@@ -78,7 +78,7 @@ Distribuera exempel appen genom `SITE_NAME` att ange ett unikt namn för din web
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
 
-az group deployment create \
+az deployment group create \
     --resource-group $RESOURCE_GROUP_NAME \
     --template-uri "https://raw.githubusercontent.com/Azure-Samples/azure-event-grid-viewer/master/azuredeploy.json" \
     --parameters siteName=$SITE_NAME hostingPlanName=$SITE_NAME-plan
@@ -206,7 +206,7 @@ Grattis! Om du ser `ImagePushed` -och- `ImageDeleted` händelserna skickar regis
 
 När du är klar med de resurser som du skapade i den här snabb starten kan du ta bort dem med följande Azure CLI-kommando. När du tar bort en resurs grupp tas alla resurser som den innehåller bort permanent.
 
-**Varning** ! den här åtgärden kan inte ångras. Se till att du inte längre behöver någon av resurserna i gruppen innan du kör kommandot.
+**Varning**! den här åtgärden kan inte ångras. Se till att du inte längre behöver någon av resurserna i gruppen innan du kör kommandot.
 
 ```azurecli-interactive
 az group delete --name $RESOURCE_GROUP_NAME

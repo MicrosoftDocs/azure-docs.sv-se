@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 9b5b20de1b86eae72de54b3f2c1cf37074fba144
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: b5b6a697e6a5cae064a6a48419246dc12e8d048c
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095176"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695813"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Skapa och hantera åtgärdsgrupper i Azure-portalen
 En åtgärds grupp är en samling aviserings inställningar som definieras av ägaren av en Azure-prenumeration. Azure Monitor-och Service Health-aviseringar använder åtgärds grupper för att meddela användare om att en avisering har utlösts. Olika aviseringar kan använda samma åtgärds grupp eller olika åtgärds grupper beroende på användarens krav. 
@@ -132,6 +132,18 @@ Du kan ha ett begränsat antal e-poståtgärder i en åtgärds grupp. Se artikel
 Skicka e-post till medlemmarna i prenumerationens roll. E-post skickas endast till **användar medlemmar i Azure AD** i rollen. E-post kommer inte att skickas till Azure AD-grupper eller tjänstens huvudnamn.
 
 Ett e-postmeddelande skickas endast till den *primära e-* postadressen.
+
+Om du inte får meddelanden på ditt *primära e-postmeddelande* kan du prova följande steg:
+
+1. I Azure Portal går du till *Active Directory*.
+2. Klicka på alla användare (i det vänstra fönstret) så visas en lista över användare (i den högra rutan).
+3. Välj den användare som du vill granska den *primära e-* postinformationen för.
+
+  :::image type="content" source="media/action-groups/active-directory-user-profile.png" alt-text="Exempel på hur du granskar användar profilen."border="true":::
+
+4. I användar profil under kontakt information om fliken "e-post" är tom klickar du på knappen *Redigera* högst upp och lägger till din *primära e-postadress* och knappen tryck på *Spara* längst upp.
+
+  :::image type="content" source="media/action-groups/active-directory-add-primary-email.png" alt-text="Exempel på hur du lägger till primär e-post."border="true":::
 
 Du kan ha ett begränsat antal e-poståtgärder i en åtgärds grupp. Se artikeln [rate relimiting information](./alerts-rate-limiting.md) .
 

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 11/16/2020
-ms.openlocfilehash: ff85ed669fb7c3ac43e322eb747c537a30801920
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 12/21/2020
+ms.openlocfilehash: 83bca8a2a81823cd0a8bda1633599292460ddd30
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701440"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724335"
 ---
 # <a name="what-is-responsible-machine-learning-preview"></a>Vad är ansvaret för maskin inlärning? (förhandsversion)
 
@@ -62,10 +62,7 @@ När data används för analys är det viktigt att data förblir privata och kon
 
 I traditionella scenarier lagras rå data i filer och databaser. När användarna analyserar data använder de vanligt vis rå data. Detta är ett problem eftersom det kan orsaka intrång i en individs integritet. Differentiell sekretess försöker åtgärda problemet genom att lägga till "brus" eller slumpmässig het för data så att användarna inte kan identifiera enskilda data punkter.
 
-Att implementera Differentiellt privat system är svårt. [WhiteNoise](https://github.com/opendifferentialprivacy/whitenoise-core) är ett projekt med öppen källkod som innehåller olika komponenter för att skapa globala, Differentiellt privata system. Mer information om differentiell sekretess och WhiteNoise-projektet finns i avsnittet [bevara data sekretess med hjälp av differentiella sekretess-och WhiteNoise](./concept-differential-privacy.md) -artiklar.
-
-> [!NOTE]
-> Observera att vi byter namn på Toolkit och kommer att introducera det nya namnet under de kommande veckorna. 
+Att implementera Differentiellt privat system är svårt. [SmartNoise](https://github.com/opendifferentialprivacy/smartnoise-core) är ett projekt med öppen källkod som innehåller olika komponenter för att skapa globala, Differentiellt privata system. Mer information om differentiell sekretess och SmartNoise-projektet finns i avsnittet [bevara data sekretess med hjälp av differentiella sekretess-och SmartNoise](./concept-differential-privacy.md) -artiklar.
 
 ## <a name="work-on-encrypted-data-with-homomorphic-encryption"></a>Arbeta med krypterade data med homomorphic-kryptering
 

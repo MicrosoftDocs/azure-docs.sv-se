@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: 89ad5c2b973a74bc9fa0f6ca2f59f92a26b666e7
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 2b15389ae35a63c71ac4cb9e167e578e7e1e690e
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891473"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695769"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Vanliga frågor och svar om Azure automanage för virtuella datorer
 
@@ -43,7 +43,7 @@ Om du använder ett nytt automanage-konto när du aktiverar måste du antingen h
 
 **Vilka regioner stöds?**
 
-Virtuella datorer i följande regioner stöds: Västeuropa, östra, USA, västra USA 2, centrala Kanada, västra centrala USA.
+Virtuella datorer i följande regioner stöds: Västeuropa, östra; USA, västra 2, centrala Kanada, västra centrala USA, Östra Japan.
 
 
 **Vilka funktioner hanterar Azure automatiskt?**
@@ -105,7 +105,7 @@ Nej, den automatiska hanteringen kommer inte att konfigurera om den. Vi börjar 
 
 **Varför har den virtuella datorn statusen Misslyckad i automanage-portalen?**
 
-Om du ser status som *misslyckad* kan du felsöka distributionen via resurs gruppen som den virtuella datorn finns i. Gå till **resurs grupper** , välj din resurs grupp, klicka på **distributioner** och se statusen *misslyckades* där, med fel information.
+Om du ser status som *misslyckad* kan du felsöka distributionen via resurs gruppen som den virtuella datorn finns i. Gå till **resurs grupper**, välj din resurs grupp, klicka på **distributioner** och se statusen *misslyckades* där, med fel information.
 
 **Hur kan jag få hjälp med fel sökning av autohantering?**
 

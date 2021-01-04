@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 98cc72f85499481ba3841ce82fe307740d5e9fab
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: e1b29d901630156471bbb9cb8b939bb4bb29c836
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96842721"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724241"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planera för distribution av Azure Files
 [Azure Files](storage-files-introduction.md) kan distribueras på två huvudsakliga sätt: genom att montera Server lös Azure-filresurser direkt eller genom att cachelagra Azure-filresurser lokalt med hjälp av Azure File Sync. Vilket distributions alternativ du väljer ändrar de saker du behöver tänka på när du planerar för distributionen. 
@@ -114,56 +114,6 @@ Mer information finns i [Avancerat skydd mot Azure Storage](../common/azure-defe
 
 ## <a name="storage-tiers"></a>Lagringsnivåer
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
-
-### <a name="understanding-provisioning-for-premium-file-shares"></a>Förstå etablering för Premium-filresurser
-Premium-filresurser tillhandahålls baserat på en fast GiB/IOPS/data flödes kvot. Alla resurs storlekar erbjuds minst bas linje/data flöde och tillåts överföras till burst. För varje GiB utfärdas resursen minst IOPS/data flöde och en IOPS och 0,1 MiB/s genom strömning upp till de maximala gränserna per resurs. Den minsta tillåtna etableringen är 100 GiB med lägsta IOPS/data flöde. 
-
-Alla Premium resurser erbjuds gratis burst-överföring på bästa möjliga sätt. Alla resurs storlekar kan överföra upp till 4 000 IOPS eller upp till tre IOPS per etablerad GiB, beroende på vilket som ger en större burst-IOPS till resursen. Alla resurser stöder burst-överföring under en maximal varaktighet på 60 minuter vid högsta tillåtna burst-överföring. Nya resurser börjar med full burst-kredit baserat på den tillhandahållna kapaciteten.
-
-Resurser måste tillhandahållas i steg om 1 GiB. Minimi storleken är 100 GiB, nästa storlek är 101 GiB och så vidare.
-
-> [!TIP]
-> Bas linje IOPS = 400 + 1 * etablerad GiB. (Upp till högst 100 000 IOPS).
->
-> Burst-gräns = MAX (4 000, 3 * bas linje IOPS). (den övre gränsen är högre, upp till högst 100 000 IOPS).
->
-> utgående taxa = 60 MiB/s + 0,06 * etablerad GiB
->
-> ingress-taxa = 40 MiB/s + 0,04 * etablerad GiB
-
-En etablerad resurs storlek anges av resurs kvoten. Du kan öka resurs kvoten när som helst, men den kan bara minskas efter 24 timmar sedan den senaste ökningen. Efter att ha väntat 24 timmar utan en kvot ökning kan du minska delnings kvoten så många gånger du vill, tills du ökar den igen. Ändringar av IOPS/data flödes skalning börjar gälla inom några minuter efter att storleken ändrats.
-
-Det går att minska storleken på den allokerade resursen under den använda GiB. Om du gör detta kommer du inte att förlora data, men du kommer fortfarande att faktureras för den storlek som används och ta emot prestanda (bas linje, data flöde och burst-IOPS) för den etablerade resursen, inte den storlek som används.
-
-I följande tabell visas några exempel på dessa formler för de allokerade resurs storlekarna:
-
-|Kapacitet (GiB) | Bas linje IOPS | Burst IOPS | Utgående (MiB/s) | Ingress (MiB/s) |
-|---------|---------|---------|---------|---------|
-|100         | 500     | Upp till 4 000     | 66   | 44   |
-|500         | 900     | Upp till 4 000  | 90   | 60   |
-|1 024       | 1 424   | Upp till 4 000   | 122   | 81   |
-|5 120       | 5 520   | Upp till 15 360  | 368   | 245   |
-|10 240      | 10 640  | Upp till 30 720  | 675   | 450   |
-|33 792      | 34 192  | Upp till 100 000 | 2 088 | 1 392   |
-|51 200      | 51 600  | Upp till 100 000 | 3 132 | 2 088   |
-|102 400     | 100 000 | Upp till 100 000 | 6 204 | 4 136   |
-
-Det är viktigt att Observera att effektiva fil resurser är beroende av dator nätverks begränsningar, tillgänglig nätverks bandbredd, i/o-storlekar, parallellitet, bland många andra faktorer. Till exempel, baserat på intern testning med 8 KiB i/o-storlek, kan en virtuell Windows-dator utan SMB Multichannel vara aktive rad, *Standard F16s_v2*, ansluten till Premium-filresurs via SMB, få 20 000 Read IOPS och 15 000 Skriv-IOPS. Med 512 MiB Läs-/skriv-i/o-storlekar kan samma virtuella dator uppnå 1,1 GiB/s utgående och 370 MiB/s ingress-genomflöde. Samma klient kan få upp till \~ 3x prestanda om SMB Multichannel är aktiverat på Premium-resurserna. För att uppnå maximal prestanda skala kan du [Aktivera SMB Multichannel](storage-files-enable-smb-multichannel.md) och sprida belastningen över flera virtuella datorer. Se [SMB Multichannel-prestanda](storage-files-smb-multichannel-performance.md) och [fel söknings guide](storage-troubleshooting-files-performance.md) för några vanliga prestanda problem och lösningar.
-
-#### <a name="bursting"></a>Bursting "
-Om din arbets belastning behöver den extra prestanda som krävs för att uppfylla den högsta efter frågan kan din resurs använda burst-krediter för att gå över resursens IOPS-gräns för att erbjuda resurs prestanda som krävs för att uppfylla behovet. Premium-filresurser kan överföra sina IOPS upp till 4 000 eller upp till en faktor på tre, beroende på vilket som är ett högre värde. Burst-överföring automatiseras och fungerar baserat på ett kredit system. Burst-överföring fungerar på bästa möjliga sätt och burst-gränsen är inte en garanti, fil resurser kan överföras *till* gränsen för en maximal varaktighet på 60 minuter.
-
-Krediterna ackumuleras i en burst-Bucket när trafiken för fil resursen är under bas linje IOPS. Till exempel har en 100 GiB-resurs 500 bas linje IOPS. Om den faktiska trafiken på resursen var 100 IOPS för ett angivet intervall på 1 sekund, krediteras 400 oanvända IOPS till en burst-Bucket. På samma sätt påförs en TiB-resurs för inaktivitet med 1 424 IOPS. Dessa krediter kommer sedan att användas senare när åtgärder skulle överskrida bas linjens IOPS.
-
-När en resurs överskrider bas linjens IOPS och har krediter i en burst-Bucket, kommer den att överföras till den högsta tillåtna högsta överföringshastigheten. Resurser kan fortsätta att överföra så länge krediterna är återstående, upp till max 60 minuter, men detta baseras på antalet överförda burst-krediter. Varje i/o utöver bas linje IOPS förbrukar en kredit och när alla krediter förbrukas kommer resursen att återgå till bas linjens IOPS.
-
-Dela krediter har tre tillstånd:
-
-- Påförs när fil resursen använder mindre än bas linjens IOPS.
-- Avböja, när fil resursen använder mer än bas linjens IOPS och i burst-läge.
-- En konstant är att fil resursen använder exakt den grundläggande IOPS, men det finns inga krediter som är upplupna eller använda.
-
-Nya fil resurser börjar med det fullständiga antalet krediter i sin burst-Bucket. Burst-krediter kommer inte att periodiseras om resursens IOPS sjunker under bas linje IOPS på grund av begränsning av servern.
 
 ### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>Aktivera standard fil resurser för att täcka upp till 100 TiB
 [!INCLUDE [storage-files-tiers-enable-large-shares](../../../includes/storage-files-tiers-enable-large-shares.md)]

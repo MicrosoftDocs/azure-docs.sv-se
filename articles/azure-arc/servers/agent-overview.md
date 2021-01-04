@@ -1,14 +1,14 @@
 ---
 title: Översikt över den anslutna datorns Windows-agent
 description: Den här artikeln innehåller en detaljerad översikt över Azure Arc-aktiverade Server Agent som har stöd för övervakning av virtuella datorer i hybrid miljöer.
-ms.date: 12/15/2020
+ms.date: 12/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0532441e1ab0d2676e7800c9d63878f9bf3bb3dc
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: bff76cbaa678ed82538eb6d75633aa94cdce30bf
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616169"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723277"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Översikt över Azure Arc-aktiverade Server Agent
 
@@ -43,7 +43,7 @@ Du kan ladda ned Azure Connected Machine agent-paketet för Windows och Linux fr
 
 Azure Connected Machine agent för Windows och Linux kan uppgraderas till den senaste versionen manuellt eller automatiskt beroende på dina behov. Mer information finns [här](manage-agent.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 ### <a name="supported-operating-systems"></a>Operativsystem som stöds
 
@@ -82,6 +82,10 @@ För att säkerställa säkerheten för data som överförs till Azure rekommend
 
 Den anslutna dator agenten för Linux och Windows kommunicerar på ett säkert sätt till Azure-bågen via TCP-port 443. Om datorn ansluter via en brand vägg eller proxyserver för kommunikation via Internet kan du läsa följande för att förstå kraven på nätverks konfigurationen.
 
+> [!NOTE]
+> Arc-aktiverade servrar stöder inte användning av en [Log Analytics Gateway](../../azure-monitor/platform/gateway.md) som proxy för den anslutna dator agenten.
+>
+
 Om den utgående anslutningen begränsas av din brand vägg eller proxyserver kontrollerar du att URL: erna i listan nedan inte är blockerade. Om du bara tillåter de IP-adressintervall eller domän namn som krävs för att agenten ska kunna kommunicera med tjänsten, måste du tillåta åtkomst till följande service märken och URL: er.
 
 Service märken:
@@ -97,9 +101,11 @@ Er
 |---------|---------|
 |`management.azure.com`|Azure Resource Manager|
 |`login.windows.net`|Azure Active Directory|
+|`login.microsoftonline.com`|Azure Active Directory|
 |`dc.services.visualstudio.com`|Application Insights|
 |`*.guestconfiguration.azure.com` |Gästkonfiguration|
 |`*.his.arc.azure.com`|Hybrid identitets tjänst|
+|`www.office.com`|Office 365|
 
 För hands versioner (version 0,11 och lägre) kräver också åtkomst till följande URL: er:
 
@@ -110,7 +116,7 @@ För hands versioner (version 0,11 och lägre) kräver också åtkomst till föl
 
 En lista över IP-adresser för varje service tag/region finns i JSON-filen – [Azure IP-intervall och service märken – offentligt moln](https://www.microsoft.com/download/details.aspx?id=56519). Microsoft publicerar veckovis uppdateringar som innehåller varje Azure-tjänst och de IP-intervall som används. Mer information finns i [service tag](../../virtual-network/network-security-groups-overview.md#service-tags).
 
-URL: erna i föregående tabell krävs utöver informationen om tjänst Tagns IP-adressintervall eftersom majoriteten av tjänsterna för närvarande inte har en registrering av service tag. Därför kan IP-adresserna ändras. Om det krävs IP-adressintervall för brand Väggs konfigurationen ska **AzureCloud** -tjänst tag gen användas för att ge åtkomst till alla Azure-tjänster. Inaktivera inte säkerhetsövervakning eller granskning av dessa URL: er, Tillåt dem som andra Internet trafik.
+URL: erna i föregående tabell krävs utöver informationen om tjänst Tagns IP-adressintervall eftersom de flesta tjänster för närvarande inte har en registrering av service tag. Därför kan IP-adresserna ändras. Om det krävs IP-adressintervall för brand Väggs konfigurationen ska **AzureCloud** -tjänst tag gen användas för att ge åtkomst till alla Azure-tjänster. Inaktivera inte säkerhetsövervakning eller granskning av dessa URL: er, Tillåt dem som andra Internet trafik.
 
 ### <a name="register-azure-resource-providers"></a>Registrera Azure-resurs leverantörer
 
@@ -163,7 +169,7 @@ Den anslutna dator agenten för Windows kan installeras med hjälp av någon av 
 * Manuellt genom att köra Windows Installer-paketet `AzureConnectedMachineAgent.msi` från kommando gränssnittet.
 * Från en PowerShell-session med en skriptad metod.
 
-När du har installerat den anslutna dator agenten för Windows tillämpas följande ytterligare konfigurations ändringar i hela systemet.
+När du har installerat den anslutna dator agenten för Windows tillämpas följande konfigurations ändringar i hela systemet.
 
 * Följande installationsfiler skapas under installationen.
 
@@ -187,7 +193,7 @@ När du har installerat den anslutna dator agenten för Windows tillämpas följ
 
 * Följande miljövariabler skapas under Agent installationen.
 
-    |Name |Standardvärde |Beskrivning |
+    |Namn |Standardvärde |Beskrivning |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
@@ -215,7 +221,7 @@ När du har installerat den anslutna dator agenten för Windows tillämpas följ
 
 Den anslutna dator agenten för Linux finns i det önskade paket formatet för distributionen (. RPM eller. DEB) som finns i Microsoft- [paketets lagrings plats](https://packages.microsoft.com/). Agenten installeras och konfigureras med Shell-skript paketet [Install_linux_azcmagent. sh](https://aka.ms/azcmagent).
 
-När du har installerat den anslutna dator agenten för Linux tillämpas följande ytterligare konfigurations ändringar i hela systemet.
+När du har installerat den anslutna dator agenten för Linux tillämpas följande konfigurations ändringar i hela systemet.
 
 * Följande installationsfiler skapas under installationen.
 
@@ -250,7 +256,7 @@ När du har installerat den anslutna dator agenten för Linux tillämpas följan
 
 * Följande miljövariabler skapas under Agent installationen. Dessa variabler anges i `/lib/systemd/system.conf.d/azcmagent.conf` .
 
-    |Name |Standardvärde |Beskrivning |
+    |Namn |Standardvärde |Beskrivning |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||

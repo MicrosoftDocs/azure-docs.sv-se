@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: ffbf3fa3e2d404b7bc5888ef01707cbd816600b3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ab056e0685264b03d35ee6b95afad7c6362f9db6
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182860"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695793"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure automanage för virtuella datorer
 
@@ -52,7 +52,7 @@ Du måste ha **deltagar** rollen i resurs gruppen som innehåller dina virtuella
 > [!NOTE]
 > Om du vill använda automanage på en virtuell dator som är ansluten till en arbets yta i en annan prenumeration måste du ha de behörigheter som beskrivs ovan för varje prenumeration.
 
-Det är också viktigt att Observera att den automatiska hanteringen endast stöder virtuella Windows-datorer som finns i följande regioner: Västeuropa, östra USA, västra USA 2, centrala Kanada, västra centrala USA.
+Det är också viktigt att Observera att den automatiska hanteringen endast stöder virtuella Windows-datorer som finns i följande regioner: Västeuropa, östra USA, västra USA 2, centrala Kanada, västra centrala USA, Östra Japan.
 
 ## <a name="participating-services"></a>Deltagande tjänster
 

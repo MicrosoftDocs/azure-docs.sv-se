@@ -5,21 +5,21 @@ description: Klienter som begär förfrågningar mot Azure Blob Storage har möj
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/17/2020
+ms.date: 12/14/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: abdc83019205fc39e1e85a53da7e49f8a7d4f11c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcc5c02c4a37e205622470260d3c620ad76d07d8
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618734"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694704"
 ---
 # <a name="provide-an-encryption-key-on-a-request-to-blob-storage"></a>Ange en krypterings nyckel för en begäran till Blob Storage
 
-Klienter som begär förfrågningar mot Azure Blob Storage har möjlighet att tillhandahålla en krypterings nyckel per begäran. Inklusive krypterings nyckeln på begäran ger detaljerad kontroll över krypterings inställningarna för Blob Storage-åtgärder. Kundspecifika nycklar kan lagras i Azure Key Vault eller i en annan nyckel lagrings plats.
+Klienter som begär förfrågningar mot Azure Blob Storage har möjlighet att tillhandahålla en AES-256-krypterings nyckel per begäran. Inklusive krypterings nyckeln på begäran ger detaljerad kontroll över krypterings inställningarna för Blob Storage-åtgärder. Kundspecifika nycklar kan lagras i Azure Key Vault eller i en annan nyckel lagrings plats.
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
@@ -45,7 +45,7 @@ För REST-anrop kan klienterna använda följande rubriker för att på ett säk
 |---------------|-------------|
 |`x-ms-encryption-key` |Krävs för både Skriv-och Läs begär Anden. Ett base64-kodat AES-256-krypterings nyckel värde. |
 |`x-ms-encryption-key-sha256`| Krävs för både Skriv-och Läs begär Anden. Den base64-kodade SHA256 för krypterings nyckeln. |
-|`x-ms-encryption-algorithm` | Krävs för Skriv begär Anden, valfritt för Läs begär Anden. Anger algoritmen som ska användas vid kryptering av data med den aktuella nyckeln. Måste vara AES256. |
+|`x-ms-encryption-algorithm` | Krävs för Skriv begär Anden, valfritt för Läs begär Anden. Anger algoritmen som ska användas vid kryptering av data med den aktuella nyckeln.  Värdet för den här rubriken måste vara `AES256` . |
 
 Det är valfritt att ange krypterings nycklar för begäran. Men om du anger ett av de sidhuvuden som anges ovan för en Skriv åtgärd måste du ange alla.
 

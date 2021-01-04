@@ -2,19 +2,21 @@
 title: Underordnade resurser i mallar
 description: Beskriver hur du anger namn och typ för underordnade resurser i en Azure Resource Manager mall.
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: 3a69829e674925982c618807f49433a033d8c5f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/21/2020
+ms.openlocfilehash: c594096fd95f663db2120b29c575b341924dcc36
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80743830"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97721951"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>Ange namn och typ för underordnade resurser
 
-Underordnade resurser är resurser som bara finns inom kontexten för en annan resurs. Det kan till exempel finnas ett [tillägg för virtuell dator](/azure/templates/microsoft.compute/2019-03-01/virtualmachines/extensions) utan en [virtuell dator](/azure/templates/microsoft.compute/2019-03-01/virtualmachines). Tilläggs resursen är en underordnad till den virtuella datorn.
+Underordnade resurser är resurser som bara finns inom kontexten för en annan resurs. Det kan till exempel finnas ett [tillägg för virtuell dator](/azure/templates/microsoft.compute/virtualmachines/extensions) utan en [virtuell dator](/azure/templates/microsoft.compute/virtualmachines). Tilläggs resursen är en underordnad till den virtuella datorn.
 
-I en Resource Manager-mall kan du ange den underordnade resursen antingen i den överordnade resursen eller utanför den överordnade resursen. I följande exempel visas den underordnade resurs som ingår i egenskapen Resources för den överordnade resursen.
+Varje överordnad resurs accepterar bara vissa resurs typer som underordnade resurser. Resurs typen för den underordnade resursen innehåller resurs typen för den överordnade resursen. Till exempel är **Microsoft. Web/Sites/config** och **Microsoft. Web/Sites/Extensions** båda underordnade resurser för **Microsoft. Web/Sites**. Godkända resurs typer anges i det [mall schema](https://github.com/Azure/azure-resource-manager-schemas) som tillhör den överordnade resursen.
+
+I en Azure Resource Manager-mall (ARM-mall) kan du ange den underordnade resursen antingen i den överordnade resursen eller utanför den överordnade resursen. I följande exempel visas den underordnade resurs som ingår i egenskapen Resources för den överordnade resursen.
 
 ```json
 "resources": [
@@ -26,6 +28,8 @@ I en Resource Manager-mall kan du ange den underordnade resursen antingen i den 
   }
 ]
 ```
+
+Underordnade resurser kan bara definieras fem nivåer djup.
 
 I nästa exempel visas den underordnade resursen utanför den överordnade resursen. Du kan använda den här metoden om den överordnade resursen inte har distribuerats i samma mall, eller om du vill använda [Kopiera](copy-resources.md) för att skapa fler än en underordnad resurs.
 
@@ -132,6 +136,6 @@ I följande exempel visas ett virtuellt nätverk och undernät som båda definie
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Mer information om hur du skapar Azure Resource Manager-mallar finns i [Redigera mallar](template-syntax.md).
+* Mer information om hur du skapar ARM-mallar finns i [Redigera mallar](template-syntax.md).
 
 * Mer information om formatet på resurs namnet när du refererar till resursen finns i [referens funktionen](template-functions-resource.md#reference).

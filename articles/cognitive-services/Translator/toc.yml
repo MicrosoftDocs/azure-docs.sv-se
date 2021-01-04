@@ -56,30 +56,20 @@
       items:
         - name: Referens för Translator v3
           href: reference/v3-0-reference.md
-          items:
-            - name: Språk
-              href: reference/v3-0-languages.md
-            - name: Översätt
-              href: reference/v3-0-translate.md
-            - name: Transkribera
-              href: reference/v3-0-transliterate.md
-            - name: Upptäcka
-              href: reference/v3-0-detect.md
-            - name: BreakSentence
-              href: reference/v3-0-break-sentence.md
-            - name: Slå upp i ordlista
-              href: reference/v3-0-dictionary-lookup.md
-            - name: Ordlisteexempel
-              href: reference/v3-0-dictionary-examples.md
-        - name: Referens för Translator v2 (inaktuell)
-          href: reference/v2-0-reference.md
-          items:
-            - name: Transformera text
-              href: transform-text.md
-            - name: Så här använder du CTF-rapportering (Collaborative Translation Framework)
-              href: ctf-reporting.md
-            - name: Returnera N-best-översättningar
-              href: return-n-best-translations.md
+        - name: Språk
+          href: reference/v3-0-languages.md
+        - name: Översätt
+          href: reference/v3-0-translate.md
+        - name: Transkribera
+          href: reference/v3-0-transliterate.md
+        - name: Upptäcka
+          href: reference/v3-0-detect.md
+        - name: BreakSentence
+          href: reference/v3-0-break-sentence.md
+        - name: Slå upp i ordlista
+          href: reference/v3-0-dictionary-lookup.md
+        - name: Ordlisteexempel
+          href: reference/v3-0-dictionary-examples.md
         - name: Begärandebegränsningar
           href: request-limits.md
     - name: Resurser

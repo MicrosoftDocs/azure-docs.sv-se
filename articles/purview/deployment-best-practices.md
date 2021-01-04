@@ -1,18 +1,18 @@
 ---
 title: Bästa metoder för distribution
 description: Den här artikeln innehåller metod tips för att distribuera Azure-avdelningens kontroll. Med Azure avdelningens kontroll kan alla användare registrera, identifiera, förstå och använda data källor.
-author: hophanms
-ms.author: hophan
+author: shsandeep123
+ms.author: sandeepshah
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: 1b2841f69ebe91dac748a4b2e24dc0c33756b1da
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 48966e481f9cf8796c866b5c15a4e2a8616eade7
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400700"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695857"
 ---
 # <a name="azure-purview-deployment-best-practices"></a>Metod tips för Azure avdelningens kontroll-distribution
 
@@ -24,7 +24,7 @@ En väl planerad distribution av en data styrnings plattform (till exempel Azure
 - Förbättrat analytiskt samarbete
 - Maximerad avkastning på investeringen.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Åtkomst till Microsoft Azure med en utvecklings-eller produktions prenumeration
 * Möjlighet att skapa Azure-resurser inklusive avdelningens kontroll
@@ -91,7 +91,7 @@ Några viktiga intressenter som du kanske vill inkludera:
 |**Dataanalytiker**|Möjlighet att Rama ett affärs problem och analysera data för att hjälpa ledare fatta affärs beslut|
 |**Data arkitekt**|Utforma databaser för verksamhets kritiska branschspecifika appar tillsammans med att designa och implementera data säkerhet|
 |**Datatekniker**|Hantera data stacken, hämta data från olika källor, integrera och förbereda data, konfigurera datapipelines|
-|**Datavetare**|Skapa analytiska modeller och konfigurera data produkter som ska användas av API: er|
+|**Dataexpert**|Skapa analytiska modeller och konfigurera data produkter som ska användas av API: er|
 |**DB-administratör**|Äga, spåra och lös databas-relaterade incidenter och förfrågningar inom service avtal (service avtal). Kan konfigurera data pipelines|
 |**DevOps**|Affärs program utveckling och implementering, kan omfatta Skriv-skript och Orchestration-funktioner|
 |**Data säkerhets specialist**|Utvärdera övergripande nätverks-och data säkerhet, som omfattar data som kommer in och ut ur avdelningens kontroll|
@@ -110,7 +110,7 @@ Dessa scenarier kan skrivas upp på olika sätt, men du bör inkludera minst fö
 
 Scenarierna måste vara speciella, åtgärds bara och körbara med mätbara resultat. Några exempel scenarier som du kan använda:
 
-|Scenario|Detalj|Person|
+|Scenario|Information|Person|
 |---------|---------|---------|
 |Katalog affärs kritiska till gångar|Jag behöver information om varje data uppsättning för att få en god förståelse för vad det är. Det här scenariot omfattar både affärs data och tekniska metadata om data uppsättningen i katalogen. Data källorna omfattar Azure Data Lake Storage Gen2, Azure Synapse DW och/eller Power BI. Det här scenariot omfattar även lokala resurser som SQL Server.|Affärsanalytiker, data expert, data tekniker|
 |Identifiera affärs kritiska till gångar|Jag vill ha en sökmotor som kan söka igenom alla metadata i katalogen. Jag bör kunna söka med hjälp av en teknisk term, affärs period med enkel eller komplex sökning med jokertecken.|Affärsanalytiker, data expert, data tekniker, data administratör|
@@ -165,7 +165,7 @@ I den här fasen måste avdelningens kontroll skapas och konfigureras för en my
 
 ### <a name="tasks-to-complete"></a>Aktiviteter som ska slutföras
 
-|Uppgift|Detalj|Varaktighet|
+|Uppgift|Information|Varaktighet|
 |---------|---------|---------|
 |Samla in & samtycker till krav|Diskussion med alla intressenter för att samla in en fullständig uppsättning krav. Olika personer måste delta för att godkänna en delmängd av krav som ska slutföras för varje fas i projektet.|1 vecka|
 |Konfigurera Start paketet|Gå igenom [avdelningens kontroll Snabbstart](create-catalog-portal.md) och konfigurera [avdelningens kontroll Starter Kit](tutorial-scan-data.md) för att demonstrera avdelningens kontroll till alla intressenter.|1 dag|
@@ -192,7 +192,7 @@ När du har fastställt de överenskomna kraven och deltog affär senheter till 
 
 ### <a name="tasks-to-complete"></a>Aktiviteter som ska slutföras
 
-|Uppgift|Detalj|Varaktighet|
+|Uppgift|Information|Varaktighet|
 |---------|---------|---------|
 |[Sök igenom Azure Synapse Analytics](register-scan-azure-synapse-analytics.md)|Börja publicera dina databas källor och Sök igenom dem för att fylla i viktiga till gångar|2 dagar|
 |[Skapa anpassade klassificeringar och regler](create-a-custom-classification-and-classification-rule.md)|När dina till gångar genomsöks kan användarna vara medvetna om att det finns ytterligare användnings fall för mer klassificering vid standard klassificeringar från avdelningens kontroll.|2-4 veckor|
@@ -217,7 +217,7 @@ När MVP-fasen har passerat är det dags att planera för mil stolpe för för p
 
 ### <a name="tasks-to-complete"></a>Aktiviteter som ska slutföras
 
-|Uppgift|Detalj|Varaktighet|
+|Uppgift|Information|Varaktighet|
 |---------|---------|---------|
 |Förfina din sökning med skannings regel uppsättningen|Din organisation kommer att ha många data källor för för produktion. Det är viktigt att definiera nyckel villkor för genomsökning så att klassificeringar och fil namns tillägg kan tillämpas konsekvent på tavlan.|1-2 dagar|
 |Bedöm regions tillgänglighet för genomsökning|Beroende på regionen för data källorna och organisationens krav på efterlevnad och säkerhet, kanske du vill överväga vilka regioner som måste vara tillgängliga för genomsökning.|1 dag|
@@ -243,7 +243,7 @@ Stegen ovan bör följas för att skapa en effektiv informations styrning, som �
 
 ### <a name="tasks-to-complete"></a>Aktiviteter som ska slutföras
 
-|Uppgift|Detalj|Varaktighet|
+|Uppgift|Information|Varaktighet|
 |---------|---------|---------|
 |Genomsök produktions data källor med brand vägg aktive rad|Om detta är valfritt när brand väggen är på plats, men det är viktigt att utforska alternativen för att skärpa infrastrukturen.|1-5 dagar|
 |Aktivera privat länk|Om detta är valfritt när en privat länk används. Annars kan du hoppa över detta eftersom det är ett krav som måste vara ett villkor när privat är aktiverat.|1-5 dagar|
