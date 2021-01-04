@@ -9,10 +9,10 @@ ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
 ms.openlocfilehash: d49868199d8f9f2da97f08dd06f29afd8f553bd9
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 12/21/2020
 ms.locfileid: "97586983"
 ---
 # <a name="connect-to-azure-synapse-studio-using-azure-private-link-hubs"></a>Ansluta till Azure Synapse Studio med hjälp av Azure Private Link Hubs 
