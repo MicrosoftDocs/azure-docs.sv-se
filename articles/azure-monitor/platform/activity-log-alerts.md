@@ -4,12 +4,12 @@ description: Meddelas via SMS, webhook, SMS, e-post och mer, när vissa händels
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 836fc20b6c3d46766801dce0e2aeda83a217d6a3
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: e0d71c014780637b490c745ed829078d138df675
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536089"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708440"
 ---
 # <a name="alerts-on-activity-log"></a>Aviseringar om aktivitetsloggar
 
@@ -18,7 +18,8 @@ ms.locfileid: "95536089"
 Aktivitets logg aviseringar är aviseringar som aktive ras när en ny [aktivitets logg händelse](activity-log-schema.md) inträffar som matchar de villkor som anges i aviseringen. Varnings regeln utlöses baserat på ordningen och volymen av de händelser som registrerats i [Azure aktivitets loggen](platform-logs-overview.md). Aktivitets logg aviserings regler är Azure-resurser, så de kan skapas med hjälp av en Azure Resource Manager mall. De kan också skapas, uppdateras eller tas bort i Azure Portal. Den här artikeln beskriver koncepten bakom aktivitets logg aviseringar. Mer information om hur du skapar eller använder aktivitets logg aviserings regler finns i [skapa och hantera aktivitets logg aviseringar](alerts-activity-log.md).
 
 > [!NOTE]
-> **Det går inte** att skapa aviseringar för händelser i aviserings kategorin för aktivitets loggen.
+> * **Det går inte** att skapa aviseringar för händelser i aviserings kategorin för aktivitets loggen.
+> * Aktivitets logg aviseringar med säkerhets kategorin kan definieras också i ett [nytt uppgraderat flöde](https://docs.microsoft.com/azure/security-center/continuous-export?tabs=azure-portal) till [ServiceNow](https://docs.microsoft.com/azure/security-center/export-to-siem)
 
 Normalt skapar du aktivitets logg aviseringar för att ta emot meddelanden när:
 

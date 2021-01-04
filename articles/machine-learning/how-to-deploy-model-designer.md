@@ -10,17 +10,19 @@ author: likebupt
 ms.reviewer: peterlu
 ms.date: 10/29/2020
 ms.topic: conceptual
-ms.custom: how-to, deploy, studio
-ms.openlocfilehash: 23c6417741d0753fcdaaf30c89c8f51348cc5dc5
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.custom: how-to, deploy, studio, designer
+ms.openlocfilehash: 35acfc51ae76fdacef11f03b1fbd91ad58650ae6
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554690"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722631"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>Använda Studio för att distribuera modeller som har tränats i designern
 
-I den här artikeln får du lära dig hur du distribuerar en utbildad modell från designer som en slut punkt i real tid i Azure Machine Learning Studio.
+I den här artikeln får du lära dig hur du distribuerar en designer-modell som en slut punkt i real tid i Azure Machine Learning Studio.
+
+När du har registrerat eller laddat ned kan du använda designer utbildade modeller precis som vilken annan modell som helst. Exporterade modeller kan distribueras i användnings fall som sakernas internet (IoT) och lokala distributioner.
 
 Distribution i Studio består av följande steg:
 
@@ -35,7 +37,7 @@ Modeller som har tränats i designern kan också distribueras via SDK eller komm
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* [En Azure Machine Learning arbets yta](how-to-manage-workspace.md)
+* [En Azure Machine Learning-arbetsyta](how-to-manage-workspace.md)
 
 * En slutförd utbildnings pipeline som innehåller en av följande moduler:
     - [Träna modell modul](./algorithm-module-reference/train-model.md)
@@ -61,7 +63,6 @@ När utbildnings pipelinen är klar registrerar du den tränade modellen på din
 När du har registrerat din modell kan du hitta den på sidan **modeller** till gångar i Studio.
     
 ![Skärm bild av registrerad modell på sidan modeller till gångar](./media/how-to-deploy-model-designer/models-asset-page.png)
-
 
 ## <a name="download-the-entry-script-file-and-conda-dependencies-file"></a>Hämta start skript filen och Conda-beroende filen
 

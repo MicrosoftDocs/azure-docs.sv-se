@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 12/18/2020
 ms.author: jlian
-ms.openlocfilehash: f79b03884109ffbd856ff4f60909565daeb0e792
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 08f033cbe121135e281379a013e11a33ae962dfb
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549127"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703814"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT Hub stöd för virtuella nätverk med privat länk och hanterad identitet
 
@@ -89,9 +89,15 @@ För att andra tjänster ska kunna hitta din IoT Hub som en betrodd Microsoft-tj
 
     :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="Skärm bild som visar hur du aktiverar hanterad identitet för IoT Hub":::
 
+Använda Azure CLI för att aktivera hanterad identitet:
+
+```azurecli-interactive
+az iot hub update --name <iot-hub-resource-name> --set identity.type="SystemAssigned"
+```
+
 ### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>Tilldela den hanterade identiteten till IoT Hub när den skapas med ARM-mall
 
-Om du vill tilldela en hanterad identitet till din IoT-hubb vid resurs etablerings tiden använder du ARM-mallen nedan:
+Använd ARM-mallen nedan om du vill tilldela en hanterad identitet till din IoT-hubb vid resurs etablerings tiden. Den här ARM-mallen har två resurser som krävs och båda behöver distribueras innan andra resurser skapas `Microsoft.Devices/IotHubs/eventHubEndpoints/ConsumerGroups` . 
 
 ```json
 {
@@ -115,9 +121,9 @@ Om du vill tilldela en hanterad identitet till din IoT-hubb vid resurs etablerin
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2018-02-01",
-      "name": "updateIotHubWithKeyEncryptionKey",
+      "name": "createIotHub",
       "dependsOn": [
-        "<provide-a-valid-resource-name>"
+        "[resourceId('Microsoft.Devices/IotHubs', '<provide-a-valid-resource-name>')]"
       ],
       "properties": {
         "mode": "Incremental",

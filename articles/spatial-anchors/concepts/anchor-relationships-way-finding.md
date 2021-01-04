@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8c321eae9451715077aa50d163b62b51ec88ce1a
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ce79fe88b33659241a226af7bbb7a966ede41abb
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95496893"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696155"
 ---
 # <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Fäst relationer och hur du hittar dem i Azure spatiala ankare
 
@@ -64,7 +64,7 @@ Du kan ansluta spatiala ankare över flera sessioner. Med den här metoden kan d
 
 Så här ansluter du ankare över flera sessioner:
 
-1. Appen skapar vissa ankare i en CloudSpatialAnchorSession.
+1. Appen skapar vissa ankare (ankare A och B) i en CloudSpatialAnchorSession.
 2. Vid en annan tidpunkt hittar appen en av dessa ankare (till exempel ankare A) med hjälp av en ny CloudSpatialAnchorSession.
 3. Gå till en ny plats. Den underliggande plattformen för Mixad verklighet eller förstärkt verklighet spårar rörelsen.
 4. Skapa fäst punkt C med samma CloudSpatialAnchorSession. Ankare A, B och C är nu anslutna. Tjänsten spatial ankare underhåller den här relationen.

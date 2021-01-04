@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: 536f5e7d2fa12d1f9a9f09a31b463d2096dcad37
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.custom: references_regions
+ms.openlocfilehash: 4380f14610fb0775c82aa79ec7cda9dc70cf0715
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207418"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722699"
 ---
 # <a name="system-requirements"></a>Systemkrav
 
@@ -64,7 +65,32 @@ Se särskilda kapitel för [nätverks krav](../reference/network-requirements.md
 
 Information om fel sökning av nätverks problem finns i [fel söknings guiden](../resources/troubleshoot.md#unstable-holograms).
 
-### <a name="network-ports"></a>Nätverksportar
+### <a name="network-firewall"></a>Nätverksbrandvägg
+
+### <a name="sdk-version--0176"></a>SDK-version >= 0.1.76
+
+Virtuella datorer för fjärrrendering använder delade IP-adresser från följande IP-intervall:
+
+| Namn             | Region         | IP-prefix         |
+|------------------|:---------------|:------------------|
+| Australien, östra   | australienöstra  | 20.53.44.240/28   |
+| East US          | USA, östra         | 20.62.129.224/28  |
+| USA, östra 2        | usaöstra2        | 20.49.103.240/28  |
+| Japan, östra       | Japan, östra      | 20.191.165.112/28 |
+| Norra Europa     | northeurope    | 52.146.133.64/28  |
+| USA, södra centrala | USA, södra centrala | 20.65.132.80/28   |
+| Sydostasien   | Asien, sydöstra  | 20.195.64.224/28  |
+| Storbritannien, södra         | södrastorbritannien        | 51.143.209.144/28 |
+| Europa, västra      | Europa, västra     | 20.61.99.112/28   |
+| USA, västra 2        | USA, västra 2        | 20.51.9.64/28     |
+
+Se till att brand väggarna (på enheten, i routrarna osv.) inte blockerar dessa IP-intervall och följande port intervall:
+
+| Port              | Protokoll  | Tillåt    |
+|-------------------|---------- |----------|
+| 49152-65534       | TCP/UDP | Autentiseringsnivå |
+
+#### <a name="sdk-version--0176"></a>SDK-version < 0.1.76
 
 Se till att brand väggarna (på enheten, i routrarna osv.) inte blockerar följande portar:
 

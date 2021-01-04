@@ -12,14 +12,6 @@
       items:
         - name: Klientbibliotek för Avvikelseidentifiering
           href: ./quickstarts/client-libraries.md
-    - name: REST-API
-      items:
-        - name: Använd C#
-          href: quickstarts/detect-data-anomalies-csharp.md
-        - name: Använda Java
-          href: quickstarts/detect-data-anomalies-java.md
-        - name: Använda Python
-          href: quickstarts/detect-data-anomalies-python.md
 - name: Självstudier
   items:
     - name: Visualisera avvikelser som en batch med hjälp av Power BI

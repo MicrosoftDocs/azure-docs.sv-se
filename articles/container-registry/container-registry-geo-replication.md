@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: 636896edf8180052508f366bcc548efe13dec1e2
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: e5f0fe76b599874afe8d64c293f3d914da5dd243
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95810053"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705174"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geo-replikering i Azure Container Registry
 
@@ -59,6 +59,8 @@ Användning av funktionen för geo-replikering i Azure Container Registry ger f�
 * Hantera en enda konfiguration av avbildnings distributioner som alla regioner använder samma bild-URL: `contoso.azurecr.io/public/products/web:1.2`
 * Push-överför till ett enda register medan ACR hanterar geo-replikeringen. ACR replikerar bara unika lager, vilket minskar data överföringen mellan regioner. 
 * Konfigurera regionala [webhookar](container-registry-webhook.md) som meddelar dig om händelser i vissa repliker.
+
+Azure Container Registry stöder också [tillgänglighets zoner](zone-redundancy.md) för att skapa ett flexibelt och hög tillgänglighet för Azure Container Registry i en Azure-region. Kombinationen av tillgänglighets zoner för redundans inom en region och geo-replikering över flera regioner förbättrar både tillförlitlighet och prestanda i ett register.
 
 ## <a name="configure-geo-replication"></a>Konfigurera geo-replikering
 

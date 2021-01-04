@@ -1,23 +1,23 @@
 ---
 title: Prestanda justering – Spark med Azure Data Lake Storage Gen1
 description: Lär dig mer om prestanda justerings rikt linjer för Spark på Azure HDInsight och Azure Data Lake Storage Gen1.
-author: stewu
+author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
-ms.author: stewu
-ms.openlocfilehash: 799a2d20513f331890bec0882fec852c462c5840
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.author: twooley
+ms.openlocfilehash: 8a39e14b70827947687b7613b9ff86f18017ddfe
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108277"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722512"
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Prestanda justerings vägledning för Spark på HDInsight och Azure Data Lake Storage Gen1
 
 När du justerar prestanda för Spark måste du fundera över antalet appar som ska köras i klustret. Som standard kan du köra fyra appar samtidigt på ditt HDI-kluster (Obs! standardinställningen kan ändras). Du kan välja att använda färre appar så att du kan åsidosätta standardinställningarna och använda mer av klustret för dessa appar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * **En Azure-prenumeration**. Se [Hämta en kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Ett Azure Data Lake Storage gen1 konto**. Instruktioner för hur du skapar ett finns i [Kom igång med Azure Data Lake Storage gen1](data-lake-store-get-started-portal.md)

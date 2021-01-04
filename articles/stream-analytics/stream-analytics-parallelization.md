@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: b41677d1e4f3ba3889472a3fb9bd6c6a9db4c0a8
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 326af3bc38ce70cc7cb205384bb4302c5ff73d28
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123378"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704188"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Använd Query parallellisering i Azure Stream Analytics
 Den här artikeln visar hur du kan dra nytta av parallellisering i Azure Stream Analytics. Du lär dig hur du skalar Stream Analytics jobb genom att konfigurera inpartitioner och justera analys frågans definition.
@@ -58,7 +58,7 @@ Ett *köras parallellt* jobb är det mest skalbara scenariot i Azure Stream Anal
 
 2. Nästa steg är att göra din fråga partitionerad. För jobb med kompatibilitetsnivå 1,2 eller högre (rekommenderas) kan anpassade kolumner anges som partitionsnyckel i inkompatibla inställningar och jobbet kommer att paralellized automatiskt. Jobb med kompatibilitetsnivå 1,0 eller 1,1, kräver att du använder **partition av PartitionID** i alla steg i frågan. Flera steg är tillåtna, men alla måste vara partitionerade med samma nyckel. 
 
-3. De flesta utdata som stöds i Stream Analytics kan dra nytta av partitionering. Om du använder en utdatatyp som inte stöder partitionering kan du inte *köras parallellt* . För Event Hub-utdata ser du till att **kolumnen partitionsnyckel** har angetts till samma partitionsnyckel som används i frågan. Mer information finns i [avsnittet utdata](#outputs) .
+3. De flesta utdata som stöds i Stream Analytics kan dra nytta av partitionering. Om du använder en utdatatyp som inte stöder partitionering kan du inte *köras parallellt*. För Event Hub-utdata ser du till att **kolumnen partitionsnyckel** har angetts till samma partitionsnyckel som används i frågan. Mer information finns i [avsnittet utdata](#outputs) .
 
 4. Antalet indata-partitioner måste vara lika med antalet utgående partitioner. Blob Storage-utdata kan stödja partitioner och ärver partitionerings schema för överordnad fråga. När du anger en partitionsnyckel för Blob Storage, partitioneras data per partition, vilket innebär att resultatet fortfarande är helt parallellt. Här är exempel på partitionsalternativ som tillåter ett helt parallellt jobb:
 
@@ -89,7 +89,7 @@ Fråga:
     WHERE TollBoothId > 100
 ```
 
-Den här frågan är ett enkelt filter. Därför behöver vi inte bekymra dig om att partitionera de inloggade indatamängdarna som skickas till Event Hub. Observera att jobb med kompatibilitetsnivå före 1,2 måste innehålla **partition by PartitionID** -sats, så att den uppfyller kravet #2 från tidigare. För utdata måste vi konfigurera Event Hub-utdata i jobbet så att partitionsnyckel anges till **PartitionID** . En sista kontroll är att se till att antalet indata-partitioner är lika med antalet utgående partitioner.
+Den här frågan är ett enkelt filter. Därför behöver vi inte bekymra dig om att partitionera de inloggade indatamängdarna som skickas till Event Hub. Observera att jobb med kompatibilitetsnivå före 1,2 måste innehålla **partition by PartitionID** -sats, så att den uppfyller kravet #2 från tidigare. För utdata måste vi konfigurera Event Hub-utdata i jobbet så att partitionsnyckel anges till **PartitionID**. En sista kontroll är att se till att antalet indata-partitioner är lika med antalet utgående partitioner.
 
 ### <a name="query-with-a-grouping-key"></a>Fråga med en grupperings nyckel
 
@@ -233,7 +233,7 @@ Om du vill använda mer SUs för frågan måste både indata strömmen och fråg
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
 ```
 
-När en fråga har partitionerats bearbetas inloggade händelser och sammanställs i separata partitionsuppsättningar. Utmatnings händelser skapas också för varje grupp. Partitionering kan orsaka oväntade resultat när fältet **Gruppera efter** inte är partitionsnyckel i indata-dataströmmen. Fältet **TollBoothId** i föregående fråga är till exempel inte partitionsnyckel för **INPUT1** . Resultatet är att data från TollBooth #1 kan spridas i flera partitioner.
+När en fråga har partitionerats bearbetas inloggade händelser och sammanställs i separata partitionsuppsättningar. Utmatnings händelser skapas också för varje grupp. Partitionering kan orsaka oväntade resultat när fältet **Gruppera efter** inte är partitionsnyckel i indata-dataströmmen. Fältet **TollBoothId** i föregående fråga är till exempel inte partitionsnyckel för **INPUT1**. Resultatet är att data från TollBooth #1 kan spridas i flera partitioner.
 
 Var och en av **INPUT1** -partitionerna bearbetas separat genom att Stream Analytics. Därför skapas flera poster av antalet bilar för samma Tollbooth i samma rullande-fönster. Om du inte kan ändra den här nyckeln kan du lösa det här problemet genom att lägga till ett icke-partitionerings-steg för att aggregera värden mellan partitioner, som i följande exempel:
 
@@ -270,7 +270,7 @@ I följande observationer används ett Stream Analytics jobb med en tillstånds 
 | 5 000     |    6    |  6 DATA FLÖDES ENHETER   |
 | 10 000    |    12   |  10 DATA FLÖDES ENHETER  |
 
-[Event Hub](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-eventhubs) -lösningen skalas linjärt i termer av strömnings enheter (SU) och data flöde, vilket gör det till det mest effektiva och bästa sättet att analysera och strömma data från Stream Analytics. Jobb kan skalas upp till 192 SU, som ungefär översätts till att bearbeta upp till 200 MB/s, eller 19 000 000 000 000 händelser per dag.
+[Event Hub](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-streamanalytics-eventhubs) -lösningen skalas linjärt i termer av strömnings enheter (SU) och data flöde, vilket gör det till det mest effektiva och bästa sättet att analysera och strömma data från Stream Analytics. Jobb kan skalas upp till 192 SU, som ungefär översätts till att bearbeta upp till 200 MB/s, eller 19 000 000 000 000 händelser per dag.
 
 #### <a name="azure-sql"></a>Azure SQL
 |Inmatnings frekvens (händelser per sekund) | Enheter för strömning | Utgående resurser  |
@@ -279,7 +279,7 @@ I följande observationer används ett Stream Analytics jobb med en tillstånds 
 |    5 000   |   18 |  P4   |
 |    10 000  |   36 |  P6   |
 
-[Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql)  har stöd för skrivning parallellt, som kallas Ärv partitionering, men är inte aktiverat som standard. Att aktivera ärva partitionering, tillsammans med en helt parallell fråga, är dock inte tillräckligt för att uppnå högre data flöden. SQL Write-dataflödena är beroende av databas konfigurationen och tabell schemat. I artikeln [SQL-utdata](./stream-analytics-sql-output-perf.md) finns mer information om de parametrar som kan maximera Skriv data flödet. Som anges i [Azure Stream Analytics utdata till Azure SQL Database](./stream-analytics-sql-output-perf.md#azure-stream-analytics) artikel skalar den här lösningen inte linjärt som en helt parallell pipeline utöver 8 partitioner och kan behöva partitionera om innan SQL-utdata (se [i](/stream-analytics-query/into-azure-stream-analytics#into-shard-count)). Premium SKU: er krävs för att hantera höga IO-priser tillsammans med kostnader för att logga säkerhets kopieringar på några minuter.
+[Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-streamanalytics-azuresql)  har stöd för skrivning parallellt, som kallas Ärv partitionering, men är inte aktiverat som standard. Att aktivera ärva partitionering, tillsammans med en helt parallell fråga, är dock inte tillräckligt för att uppnå högre data flöden. SQL Write-dataflödena är beroende av databas konfigurationen och tabell schemat. I artikeln [SQL-utdata](./stream-analytics-sql-output-perf.md) finns mer information om de parametrar som kan maximera Skriv data flödet. Som anges i [Azure Stream Analytics utdata till Azure SQL Database](./stream-analytics-sql-output-perf.md#azure-stream-analytics) artikel skalar den här lösningen inte linjärt som en helt parallell pipeline utöver 8 partitioner och kan behöva partitionera om innan SQL-utdata (se [i](/stream-analytics-query/into-azure-stream-analytics#into-shard-count)). Premium SKU: er krävs för att hantera höga IO-priser tillsammans med kostnader för att logga säkerhets kopieringar på några minuter.
 
 #### <a name="cosmos-db"></a>Cosmos DB
 |Inmatnings frekvens (händelser per sekund) | Enheter för strömning | Utgående resurser  |
@@ -288,7 +288,7 @@ I följande observationer används ett Stream Analytics jobb med en tillstånds 
 |  5 000   |  24   | 60K RU  |
 |  10 000  |  48   | 120K RU |
 
-[Cosmos DB](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb) utdata från Stream Analytics har uppdaterats för att använda inbyggd integrering under [kompatibilitetsnivå 1,2](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12). Kompatibilitetsnivån 1,2 möjliggör betydligt högre genomflöde och minskar RU-förbrukningen jämfört med 1,1, vilket är standard kompatibilitetsnivån för nya jobb. Lösningen använder CosmosDB-behållare partitionerade på/deviceId och resten av lösningen har kon figurer ATS identiskt.
+[Cosmos DB](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-streamanalytics-cosmosdb) utdata från Stream Analytics har uppdaterats för att använda inbyggd integrering under [kompatibilitetsnivå 1,2](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12). Kompatibilitetsnivån 1,2 möjliggör betydligt högre genomflöde och minskar RU-förbrukningen jämfört med 1,1, vilket är standard kompatibilitetsnivån för nya jobb. Lösningen använder CosmosDB-behållare partitionerade på/deviceId och resten av lösningen har kon figurer ATS identiskt.
 
 Alla [strömningar i Azure-exempel](https://github.com/Azure-Samples/streaming-at-scale) använder en händelsehubben som indata som matas genom belastnings simulerings test klienter. Varje indata-händelse är ett 1 KB JSON-dokument, som översätter de konfigurerade inmatnings priserna till data flödes nivåerna (1 MB/s, 5 MB/s och 10 MB/s) enkelt. Händelser simulerar en IoT-enhet som skickar följande JSON-data (i ett förkortat format) för upp till 1 kB-enheter:
 

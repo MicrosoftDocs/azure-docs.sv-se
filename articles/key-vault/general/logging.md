@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 08/12/2019
+ms.date: 12/18/2020
 ms.author: mbaldwin
-ms.openlocfilehash: eef4f6b8ee5821e54b5b7709eee7f8dad8749e63
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: b1f7b115c5a8198b53e36672a891903a41a9511b
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488544"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704137"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault-loggning
 
@@ -23,7 +23,7 @@ När du har skapat ett eller flera nyckel valv vill du förmodligen övervaka hu
 
 Du kan komma åt loggnings informationen 10 minuter (högst) efter nyckel valvs åtgärden. Oftast är informationen dock tillgänglig snabbare än så.  Det är upp till dig att hantera loggarna i ditt lagringskonto:
 
-* Använd standardåtkomstmetoder i Azure för att skydda loggarna genom att begränsa vem som kan komma åt dem.
+* Använd Azures standard metoder för åtkomst kontroll i ditt lagrings konto för att skydda dina loggar genom att begränsa vem som har åtkomst till dem.
 * Ta bort loggar som du inte vill behålla i ditt lagringskonto.
 
 Översiktlig information om Key Vault finns i [Vad är Azure Key Vault?](overview.md). Information om var Key Vault finns på [sidan med priser](https://azure.microsoft.com/pricing/details/key-vault/). Information om hur du använder [Azure Monitor för Key Vault](../../azure-monitor/insights/key-vault-insights-overview.md).
@@ -73,7 +73,7 @@ I följande tabell visas fält namn och beskrivningar:
 | **callerIpAddress** |IP-adressen för den klient som gjorde begäran. |
 | **correlationId** |Ett valfritt GUID som klienten kan skicka för att korrelera loggar på klientsidan med loggar på tjänstsidan (Key Vault). |
 | **Autentiseringsidentitet** |Identitet från den token som angavs i REST API begäran. Detta är vanligt vis en "användare", "tjänstens huvud namn" eller kombinationen "användare + appId", som i fallet med en begäran som resulterar från en Azure PowerShell-cmdlet. |
-| **egenskaperna** |Information som varierar beroende på åtgärd ( **operationName** ). I de flesta fall innehåller det här fältet klient information (den användar agent sträng som skickas av klienten), exakt REST API begär ande-URI och HTTP-statuskod. När ett objekt returneras som ett resultat av en begäran (till exempel nyckel **skapa** eller **VaultGet** ), innehåller det även nyckel-URI (as `id` ), valv-URI eller hemlig URI. |
+| **egenskaperna** |Information som varierar beroende på åtgärd (**operationName**). I de flesta fall innehåller det här fältet klient information (den användar agent sträng som skickas av klienten), exakt REST API begär ande-URI och HTTP-statuskod. När ett objekt returneras som ett resultat av en begäran (till exempel nyckel **skapa** eller **VaultGet**), innehåller det även nyckel-URI (as `id` ), valv-URI eller hemlig URI. |
 
 Värdena för **operationName** -fältet är i *ObjectVerb* -format. Exempel:
 
@@ -84,6 +84,8 @@ Värdena för **operationName** -fältet är i *ObjectVerb* -format. Exempel:
 I följande tabell visas **operationName** -värdena och motsvarande REST API-kommandon:
 
 ### <a name="operation-names-table"></a>Åtgärds namn tabell
+
+# <a name="vault"></a>[Valv](#tab/Vault)
 
 | operationName | REST API kommando |
 | --- | --- |
@@ -97,6 +99,12 @@ I följande tabell visas **operationName** -värdena och motsvarande REST API-ko
 | **VaultRecover** |Återställ borttaget valv|
 | **VaultGetDeleted** |[Hämta borttaget valv](/rest/api/keyvault/vaults/getdeleted) |
 | **VaultListDeleted** |[Lista borttagna valv](/rest/api/keyvault/vaults/listdeleted) |
+| **VaultAccessPolicyChangedEventGridNotification** | Händelse publicering har ändrats för valv åtkomst princip |
+
+# <a name="keys"></a>[Nycklar](#tab/Keys)
+
+| operationName | REST API kommando |
+| --- | --- |
 | **KeyCreate** |[Skapa en nyckel](/rest/api/keyvault/createkey) |
 | **KeyGet** |[Hämta information om en nyckel](/rest/api/keyvault/getkey) |
 | **KeyImport** |[Importera en nyckel till ett valv](/rest/api/keyvault/vaults) |
@@ -116,36 +124,13 @@ I följande tabell visas **operationName** -värdena och motsvarande REST API-ko
 | **Återställ återställning** |[Återställa en nyckel](/rest/api/keyvault/recoverdeletedkey) |
 | **KeyGetDeleted** |[Hämta borttagen nyckel](/rest/api/keyvault/getdeletedkey) |
 | **KeyListDeleted** |[Lista de borttagna nycklarna i ett valv](/rest/api/keyvault/getdeletedkeys) |
-| **CertificateGet** |[Hämta information om ett certifikat](/rest/api/keyvault/getcertificate) |
-| **CertificateCreate** |[Skapa ett certifikat](/rest/api/keyvault/createcertificate) |
-| **CertificateImport** |[Importera ett certifikat till ett valv](/rest/api/keyvault/importcertificate) |
-| **CertificateUpdate** |[Uppdatera ett certifikat](/rest/api/keyvault/updatecertificate) |
-| **CertificateList** |[Visa en lista över certifikaten i ett valv](/rest/api/keyvault/getcertificates) |
-| **CertificateListVersions** |[Visa en lista över versioner av ett certifikat](/rest/api/keyvault/getcertificateversions) |
-| **CertificateDelete** |[Ta bort ett certifikat](/rest/api/keyvault/deletecertificate) |
-| **CertificatePurge** |[Rensa ett certifikat](/rest/api/keyvault/purgedeletedcertificate) |
-| **CertificateBackup** |[Säkerhetskopiera ett certifikat](/rest/api/keyvault/backupcertificate) |
-| **CertificateRestore** |[Återställa ett certifikat](/rest/api/keyvault/restorecertificate) |
-| **CertificateRecover** |[Återställa ett certifikat](/rest/api/keyvault/recoverdeletedcertificate) |
-| **CertificateGetDeleted** |[Hämta borttaget certifikat](/rest/api/keyvault/getdeletedcertificate) |
-| **CertificateListDeleted** |[Lista de borttagna certifikaten i ett valv](/rest/api/keyvault/getdeletedcertificates) |
-| **CertificatePolicyGet** |[Hämta certifikat princip](/rest/api/keyvault/getcertificatepolicy) |
-| **CertificatePolicyUpdate** |[Uppdatera certifikat princip](/rest/api/keyvault/updatecertificatepolicy) |
-| **CertificatePolicySet** |[Skapa certifikat princip](/rest/api/keyvault/createcertificate) |
-| **CertificateContactsGet** |[Hämta certifikat kontakter](/rest/api/keyvault/getcertificatecontacts) |
-| **CertificateContactsSet** |[Ange certifikat kontakter](/rest/api/keyvault/setcertificatecontacts) |
-| **CertificateContactsDelete** |[Ta bort certifikat kontakter](/rest/api/keyvault/deletecertificatecontacts) |
-| **CertificateIssuerGet** |[Hämta certifikat utfärdare](/rest/api/keyvault/getcertificateissuer) |
-| **CertificateIssuerSet** |[Ange certifikat utfärdare](/rest/api/keyvault/setcertificateissuer) |
-| **CertificateIssuerUpdate** |[Uppdatera certifikat utfärdare](/rest/api/keyvault/updatecertificateissuer) |
-| **CertificateIssuerDelete** |[Ta bort certifikat utfärdare](/rest/api/keyvault/deletecertificateissuer) |
-| **CertificateIssuersList** |[Visa en lista över certifikat utfärdare](/rest/api/keyvault/getcertificateissuers) |
-| **CertificateEnroll** |Registrera ett certifikat |
-| **CertificateRenew** |Förnya ett certifikat |
-| **CertificatePendingGet** |Hämta väntande certifikat |
-| **CertificatePendingMerge** |Väntande certifikat sammanslagning |
-| **CertificatePendingUpdate** |Väntande en certifikat uppdatering |
-| **CertificatePendingDelete** |Ta bort väntande certifikat |
+| **KeyNearExpiryEventGridNotification** |Nyckel för nära förfallo händelser publicerad |
+| **KeyExpiredEventGridNotification** |Händelse publicerad för nyckel utgångna |
+
+# <a name="secrets"></a>[Hemligheter](#tab/Secrets)
+
+| operationName | REST API kommando |
+| --- | --- |
 | **SecretSet** |[Skapa en hemlighet](/rest/api/keyvault/updatecertificate) |
 | **SecretGet** |[Få en hemlighet](/rest/api/keyvault/getsecret) |
 | **SecretUpdate** |[Uppdatera en hemlighet](/rest/api/keyvault/updatesecret) |
@@ -158,13 +143,17 @@ I följande tabell visas **operationName** -värdena och motsvarande REST API-ko
 | **SecretRecover** |[Återställa en hemlighet](/rest/api/keyvault/recoverdeletedsecret) |
 | **SecretGetDeleted** |[Hämta borttagen hemlighet](/rest/api/keyvault/getdeletedsecret) |
 | **SecretListDeleted** |[Lista de borttagna hemligheterna i ett valv](/rest/api/keyvault/getdeletedsecrets) |
-| **VaultAccessPolicyChangedEventGridNotification** | Händelse publicering har ändrats för valv åtkomst princip |
 | **SecretNearExpiryEventGridNotification** |Hemlig händelse som är nära utgångs händelse publicerad |
 | **SecretExpiredEventGridNotification** |Hemligt utgånget händelse publicerat |
-| **KeyNearExpiryEventGridNotification** |Nyckel för nära förfallo händelser publicerad |
-| **KeyExpiredEventGridNotification** |Händelse publicerad för nyckel utgångna |
-| **CertificateNearExpiryEventGridNotification** |Certifikat nära utgångs händelse publicerad |
-| **CertificateExpiredEventGridNotification** |Utgånget certifikat-händelse publicerat |
+
+# <a name="certificates"></a>[Certifikat](#tab/Cerificates)
+
+| operationName | REST API kommando |
+| --- | --- |
+
+| **CertificateGet**  | [Hämta information om ett certifikat](/rest/api/keyvault/getcertificate) | | **CertificateCreate**  | [Skapa ett certifikat](/rest/api/keyvault/createcertificate) | | **CertificateImport**  | [Importera ett certifikat till ett valv](/rest/api/keyvault/importcertificate) | | **CertificateUpdate**  | [Uppdatera ett certifikat](/rest/api/keyvault/updatecertificate) | | **CertificateList**  | [Visa en lista över certifikaten i ett valv](/rest/api/keyvault/getcertificates) | | **CertificateListVersions**  | [Visa en lista över versioner av ett certifikat](/rest/api/keyvault/getcertificateversions) | | **CertificateDelete**  | [Ta bort ett certifikat](/rest/api/keyvault/deletecertificate) | | **CertificatePurge**  | [Rensa ett certifikat](/rest/api/keyvault/purgedeletedcertificate) | | **CertificateBackup**  | [Säkerhetskopiera ett certifikat](/rest/api/keyvault/backupcertificate) | | **CertificateRestore**  | [Återställa ett certifikat](/rest/api/keyvault/restorecertificate) | | **CertificateRecover**  | [Återställa ett certifikat](/rest/api/keyvault/recoverdeletedcertificate) | | **CertificateGetDeleted**  | [Hämta borttaget certifikat](/rest/api/keyvault/getdeletedcertificate) | | **CertificateListDeleted**  | [Lista de borttagna certifikaten i ett valv](/rest/api/keyvault/getdeletedcertificates) | | **CertificatePolicyGet**  | [Hämta certifikat princip](/rest/api/keyvault/getcertificatepolicy) | | **CertificatePolicyUpdate**  | [Uppdatera certifikat princip](/rest/api/keyvault/updatecertificatepolicy) | | **CertificatePolicySet**  | [Skapa certifikat princip](/rest/api/keyvault/createcertificate) | | **CertificateContactsGet**  | [Hämta certifikat kontakter](/rest/api/keyvault/getcertificatecontacts) | | **CertificateContactsSet**  | [Ange certifikat kontakter](/rest/api/keyvault/setcertificatecontacts) | | **CertificateContactsDelete**  | [Ta bort certifikat kontakter](/rest/api/keyvault/deletecertificatecontacts) | | **CertificateIssuerGet**  | [Hämta certifikat utfärdare](/rest/api/keyvault/getcertificateissuer) | | **CertificateIssuerSet**  | [Ange certifikat utfärdare](/rest/api/keyvault/setcertificateissuer) | | **CertificateIssuerUpdate**  | [Uppdatera certifikat utfärdare](/rest/api/keyvault/updatecertificateissuer) | | **CertificateIssuerDelete**  | [Ta bort certifikat utfärdare](/rest/api/keyvault/deletecertificateissuer) | | **CertificateIssuersList**  | [Visa en lista över certifikat utfärdare](/rest/api/keyvault/getcertificateissuers) | | **CertificateEnroll** | Registrera ett certifikat | | **CertificateRenew** | Förnya ett certifikat | | **CertificatePendingGet** | Hämta väntande certifikat | | **CertificatePendingMerge** | Väntande certifikat sammanslagning | | **CertificatePendingUpdate** | Väntande certifikat uppdatering | | **CertificatePendingDelete** | Ta bort väntande certifikat | | **CertificateNearExpiryEventGridNotification** | Certifikat nära utgångs händelse publicerad |
+<a name="-certificateexpiredeventgridnotification-certificate-expired-event-published-"></a>|**CertificateExpiredEventGridNotification** | Utgånget certifikat, händelse publicerat |
+---
 
 ## <a name="use-azure-monitor-logs"></a>Använda Azure Monitor-loggar
 
@@ -175,6 +164,7 @@ Mer information, inklusive hur du konfigurerar detta finns i [Azure Key Vault i 
 ## <a name="next-steps"></a>Nästa steg
 
 - [Så här aktiverar du Key Vault loggning](howto-logging.md)
+- [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)
 - En själv studie kurs som använder Azure Key Vault i ett .NET-webb program finns i [använda Azure Key Vault från ett webb program](tutorial-net-create-vault-azure-web-app.md).
 - Programmeringsreferenser finns i [utvecklarguiden för Azure Key Vault](developers-guide.md).
 - En lista över Azure PowerShell 1,0-cmdletar för Azure Key Vault finns i [Azure Key Vault-cmdletar](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault).

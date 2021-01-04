@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 99fc29071086a5c9271b8b2dec00976833a36352
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2d37de4a1861cb78b4a76c8ca7bc8c3643245b32
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489786"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706974"
 ---
 # <a name="restart-azure-database-for-postgresql-server-using-powershell"></a>Starta om Azure Database for PostgreSQL server med PowerShell
 
@@ -20,7 +20,8 @@ I det här avsnittet beskrivs hur du kan starta om en Azure Database for Postgre
 
 Omstart av servern blockeras om tjänsten är upptagen. Tjänsten kan till exempel bearbeta en tidigare begärd åtgärd, till exempel skalnings virtuella kärnor.
 
-Hur lång tid det tar att slutföra en omstart beror på återställnings processen för PostgreSQL. För att minska omstarts tiden rekommenderar vi att du minimerar mängden aktivitet som inträffar på servern innan du startar om.
+> [!NOTE] 
+> Tiden som krävs för att slutföra en omstart beror på återställnings processen för PostgreSQL. För att minska omstarts tiden rekommenderar vi att du minimerar mängden aktivitet som inträffar på servern innan du startar om. Du kanske också vill öka kontroll punkts frekvensen. Du kan också justera kontroll punkter relaterade parameter värden `max_wal_size` , inklusive. Vi rekommenderar också att du kör `CHECKPOINT` kommandot innan du startar om servern.
 
 ## <a name="prerequisites"></a>Förutsättningar
 

@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: roygalMS
 ms.author: roygal
 ms.date: 11/03/2020
-ms.openlocfilehash: d903d1bb16ba3576d0092979f1cc6b82fac1c0be
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 6fa181a35c46ed16e4e8c1884e66c54984c418ca
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507585"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703457"
 ---
 # <a name="integrate-log-analytics-and-excel"></a>Integrera Log Analytics och Excel
 
-Du kan integrera Azure Monitor Log Analytics och Microsoft Excel med M-fråga och Log Analytics API.  Med den här integreringen kan du skicka 500 000-poster till Excel.
+Du kan integrera Azure Monitor Log Analytics och Microsoft Excel med M-fråga och Log Analytics API. Med den här integreringen kan du skicka upp till 500 000 poster till Excel så länge den totala volymen av resultaten inte överstiger 61MiB.
 
 > [!NOTE]
 > Eftersom Excel är ett lokalt klient program påverkar den lokala maskin-och program varu begränsningarna prestanda och möjlighet att bearbeta stora mängder data.
@@ -80,11 +80,11 @@ in AnalyticsQuery
 För att importera frågan. 
 
 1. Öppna Microsoft Excel. 
-1. I menyfliksområdet går du till **data** -menyn. Välj **Hämta data**. Från **andra källor** väljer du **Tom fråga** :
+1. I menyfliksområdet går du till **data** -menyn. Välj **Hämta data**. Från **andra källor** väljer du **Tom fråga**:
  
    :::image type="content" source="media/log-excel/excel-import-blank-query.png" alt-text="Alternativet importera från tomt i Excel" border="true":::
 
-1. I fönstret Power Query väljer du **avancerad redigerare** :
+1. I fönstret Power Query väljer du **avancerad redigerare**:
 
    :::image type="content" source="media/log-excel/advanced-editor.png" alt-text="Avancerad Frågeredigeraren i Excel" border="true":::
 
@@ -97,6 +97,9 @@ För att importera frågan.
  
 
    :::image type="content" source="media/log-excel/excel-query-result.png" alt-text="Frågeresultat i Excel" border="true":::
+
+> [!Note]
+> Om antalet poster är mindre än förväntat, kan volymens resultat överskrida gränsen för 61MiB. Prova att använda `project` eller `project-away` i din fråga för att begränsa kolumnerna till den som du behöver.
 
 ##  <a name="refreshing--data"></a>Uppdaterar data
 

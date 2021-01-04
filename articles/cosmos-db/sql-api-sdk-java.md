@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/12/2020
+ms.date: 12/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 0b48b8d954b132caab96e5978c90687899ea04c2
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 59acbc545e6bb37ebd090ec458d98586de882133
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549233"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696275"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK för SQL API: viktig information och resurser
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -53,6 +53,12 @@ Det här är den ursprungliga Azure Cosmos DB synkronisera Java SDK v2 för SQL 
 |**Lägsta körnings tid som stöds**|[Java Development Kit (JDK) 7 +](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)|
 
 ## <a name="release-notes"></a>Viktig information
+
+### <a name="261"></a><a name="2.6.1"></a>2.6.1
+* En bugg har åtgärd ATS vid hantering av en fråga via tjänst-Interop.
+
+### <a name="260"></a><a name="2.6.0"></a>2.6.0
+* Stöd har lagts till för att skicka frågor till ändrings flöde från tidpunkt.
 
 ### <a name="251"></a><a name="2.5.1"></a>2.5.1
 * Korrigerar den primära partitionens cache-problem på documentCollection-fråga.
@@ -271,6 +277,8 @@ Microsoft meddelar kunder minst **12 månader** innan en SDK-version dras tillb
 
 | Version | Utgivningsdatum | Förfallodatum |
 | --- | --- | --- |
+| [2.6.1](#2.6.1) |Dec 17, 2020 |--- |
+| [2.6.0](#2.6.0) |16 juli 2020 |--- |
 | [2.5.1](#2.5.1) |Juli 03 2020 |--- |
 | [2.5.0](#2.5.0) |12 maj 2020 |--- |
 | [2.4.7](#2.4.7) |Feb 20, 2020 |--- |

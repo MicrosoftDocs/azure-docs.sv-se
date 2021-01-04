@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: 8fabf8169270c3162604b6535a6cf2fb07cd9a9d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: dc19b95e891235ac35c703adef50a23a9f70fbdb
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422152"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706804"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Läsa repliker i Azure Database for PostgreSQL-enskild server
 
@@ -71,6 +71,8 @@ Varje replik är aktive rad för att utöka lagringen [automatiskt](concepts-pri
 Funktionen Läs replik använder PostgreSQL fysisk replikering, inte logisk replikering. Att strömma replikering med hjälp av Replikerings-platser är standard åtgärds läget. Vid behov används logg överföring för att komma igång.
 
 Lär dig hur du [skapar en Läs replik i Azure Portal](howto-read-replicas-portal.md).
+
+Om din käll PostgreSQL-Server är krypterad med Kundhanterade nycklar kan du läsa [dokumentationen](concepts-data-encryption-postgresql.md) för ytterligare överväganden.
 
 ## <a name="connect-to-a-replica"></a>Anslut till en replik
 När du skapar en replik ärver den inte brand Väggs reglerna eller slut punkten för VNet-tjänsten för den primära servern. Dessa regler måste konfigureras separat för repliken.
@@ -166,8 +168,8 @@ Brand Väggs regler, regler för virtuella nätverk och parameter inställningar
 Skala virtuella kärnor eller mellan Generell användning och Minnesoptimerade:
 * PostgreSQL kräver att `max_connections` inställningen på en sekundär server är [större än eller lika med inställningen på den primära](https://www.postgresql.org/docs/current/hot-standby.html), annars kommer den sekundära inte att starta.
 * I Azure Database for PostgreSQL, åtgärdas det högsta antalet tillåtna anslutningar för varje server till beräknings-SKU: n eftersom anslutningar upptar minne. Du kan lära dig mer om [mappningen mellan max_connections och beräknings-SKU: er](concepts-limits.md).
-* **Skala upp** : skala först upp en repliks beräkning och skala sedan upp den primära. Den här ordningen förhindrar att fel bryter mot `max_connections` kravet.
-* **Skala ned** : först skala ned den primära data bearbetningen och skala sedan ned repliken. Om du försöker skala repliken lägre än den primära, uppstår ett fel eftersom detta strider mot `max_connections` kravet.
+* **Skala upp**: skala först upp en repliks beräkning och skala sedan upp den primära. Den här ordningen förhindrar att fel bryter mot `max_connections` kravet.
+* **Skala ned**: först skala ned den primära data bearbetningen och skala sedan ned repliken. Om du försöker skala repliken lägre än den primära, uppstår ett fel eftersom detta strider mot `max_connections` kravet.
 
 Skala lagring:
 * Alla repliker har automatisk utökning av lagring aktive rad för att förhindra replikeringsfel från en lagrings full replik. Den här inställningen kan inte inaktive ras.

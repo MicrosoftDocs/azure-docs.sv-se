@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: e8b8c89b94b2fbb191eee0ea57e957802a54204e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 35231eda43e766b5febd8ba90c4d92a44537e0ef
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126982"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703763"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics utdata till Azure Cosmos DB  
 Azure Stream Analytics kan rikta [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) för JSON-utdata, aktivera dataarkivering och frågor med låg latens i OSTRUKTURERAde JSON-data. Det här dokumentet beskriver några metod tips för att implementera den här konfigurationen. Vi rekommenderar att du ställer in jobbet på kompatibilitetsnivå nivå 1,2 när du använder Azure Cosmos DB som utdata.
@@ -21,7 +21,7 @@ Azure Stream Analytics kan rikta [Azure Cosmos DB](https://azure.microsoft.com/s
 Om du inte känner till Azure Cosmos DB kan du gå till [Azure Cosmos DB-dokumentationen](../cosmos-db/index.yml) för att komma igång. 
 
 > [!Note]
-> För tillfället har Stream Analytics endast stöd för anslutning till Azure Cosmos DB via *SQL-API: et* .
+> För tillfället har Stream Analytics endast stöd för anslutning till Azure Cosmos DB via *SQL-API: et*.
 > Andra Azure Cosmos DB API: er stöds inte ännu. Om du pekar Stream Analytics för att Azure Cosmos DB konton som skapats med andra API: er, kanske data inte lagras korrekt. 
 
 ## <a name="basics-of-azure-cosmos-db-as-an-output-target"></a>Grunderna för Azure Cosmos DB som ett utgående mål
@@ -44,7 +44,7 @@ Som standard aktiverar Azure Cosmos DB synkron indexering på varje CRUD-åtgär
 Mer information finns i artikeln [ändra din databas och fråga konsekvens nivåer](../cosmos-db/consistency-levels.md) .
 
 ## <a name="upserts-from-stream-analytics"></a>Upsertar från Stream Analytics
-Med Stream Analytics integration med Azure Cosmos DB kan du infoga eller uppdatera poster i din behållare baserat på en specifik **dokument-ID-** kolumn. Detta kallas även för en *upsert* .
+Med Stream Analytics integration med Azure Cosmos DB kan du infoga eller uppdatera poster i din behållare baserat på en specifik **dokument-ID-** kolumn. Detta kallas även för en *upsert*.
 
 Stream Analytics använder en optimistisk upsert metod. Uppdateringar sker bara när en infogning Miss lyckas med en dokument-ID-konflikt. 
 
@@ -66,7 +66,7 @@ Azure Cosmos DB skalar automatiskt partitioner utifrån din arbets belastning. V
 > [!NOTE]
 > Azure Stream Analytics stöder endast obegränsade behållare med partitionsnyckel på den högsta nivån. Stöds till exempel `/region` . Kapslade partitionsnyckel (till exempel `/region/name` ) stöds inte. 
 
-Beroende på ditt val av partitionsnyckel kan du få den här _varningen_ :
+Beroende på ditt val av partitionsnyckel kan du få den här _varningen_:
 
 `CosmosDB Output contains multiple rows and just one row per partition key. If the output latency is higher than expected, consider choosing a partition key that contains at least several hundred records per partition key.`
 
@@ -74,7 +74,7 @@ Det är viktigt att välja en partitionsnyckel som har ett antal distinkta värd
 
 Lagrings storleken för dokument som tillhör samma partitionsnyckel är begränsad till 20 GB ( [storleks gränsen för den fysiska partitionen](../cosmos-db/partitioning-overview.md) är 50 GB). En [idealisk partitionsnyckel](../cosmos-db/partitioning-overview.md#choose-partitionkey) är en som ofta visas som ett filter i dina frågor och har tillräckligt med kardinalitet för att säkerställa att din lösning är skalbar.
 
-Partitionsnyckel som används för Stream Analytics frågor och Cosmos DB behöver inte vara identiska. Helt parallella topologier rekommenderar att du använder *Indatamask* , `PartitionId` som den Stream Analytics frågans partitionsnyckel, men det kanske inte är det rekommenderade alternativet för en Cosmos DB behållares partitionsnyckel.
+Partitionsnyckel som används för Stream Analytics frågor och Cosmos DB behöver inte vara identiska. Helt parallella topologier rekommenderar att du använder *Indatamask*, `PartitionId` som den Stream Analytics frågans partitionsnyckel, men det kanske inte är det rekommenderade alternativet för en Cosmos DB behållares partitionsnyckel.
 
 En partitionsnyckel är också en avgränsning för transaktioner i lagrade procedurer och utlösare för Azure Cosmos DB. Du bör välja partitionsnyckel så att dokument som förekommer tillsammans i transaktioner delar samma partitionsnyckel. Artikeln [partitionering i Azure Cosmos DB](../cosmos-db/partitioning-overview.md) ger mer information om hur du väljer en partitionsnyckel.
 
@@ -97,7 +97,7 @@ Antalet inkommande händelser i Event Hubs är två gånger högre än Azure Cos
 
 ![Jämförelse av Azure Cosmos DB mått](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-2.png)
 
-Med 1,2 är Stream Analytics mer intelligent med att använda 100 procent av det tillgängliga data flödet i Azure Cosmos DB med mycket få återsändningar från begränsning eller hastighets begränsning. Detta ger en bättre upplevelse för andra arbets belastningar, t. ex. frågor som körs på behållaren på samma gång. Om du vill se hur Stream Analytics skalas ut med Azure Cosmos DB som mottagare för 1 000 till 10 000 meddelanden per sekund, kan du prova  [det här Azure-exempelprojektet](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb).
+Med 1,2 är Stream Analytics mer intelligent med att använda 100 procent av det tillgängliga data flödet i Azure Cosmos DB med mycket få återsändningar från begränsning eller hastighets begränsning. Detta ger en bättre upplevelse för andra arbets belastningar, t. ex. frågor som körs på behållaren på samma gång. Om du vill se hur Stream Analytics skalas ut med Azure Cosmos DB som mottagare för 1 000 till 10 000 meddelanden per sekund, kan du prova  [det här Azure-exempelprojektet](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-streamanalytics-cosmosdb).
 
 Data flödet för Azure Cosmos DB utdata är identiskt med 1,0 och 1,1. Vi *rekommenderar starkt* att du använder kompatibilitetsnivån 1,2 i Stream Analytics med Azure Cosmos dB.
 

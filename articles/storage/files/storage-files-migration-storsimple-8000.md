@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: daa7c657a47414b01197bed3644caefeda98af1c
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 1e45c39a8f562ca6264ab631dfadc84315b58030
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512179"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723986"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 och 8600-migrering till Azure File Sync
 
@@ -141,7 +141,7 @@ Du kan använda samma prenumeration som du använde för din StorSimple-distribu
 
 Resurs grupper hjälper till med organisation av resurser och administrations hanterings behörigheter. Lär dig mer om [resurs grupper i Azure](../../azure-resource-manager/management/manage-resource-groups-portal.md#what-is-a-resource-group).
 
-#### <a name="storage-account-name"></a>Namn på lagringskonto
+#### <a name="storage-account-name"></a>Lagringskontonamn
 
 Namnet på ditt lagrings konto kommer att bli en del av en URL och har vissa begränsningar. I namngivnings konventionen bör du tänka på att lagrings konto namn måste vara unika i världen, tillåta bara gemena bokstäver och siffror, kräva mellan 3 och 24 tecken och Tillåt inte specialtecken som bindestreck eller under streck. Mer information finns i [namngivnings regler för Azure Storage-resurser](../../azure-resource-manager/management/resource-name-rules.md#microsoftstorage).
 
@@ -160,7 +160,7 @@ Du har möjlighet att välja Premium Storage (SSD) för Azure-filresurser eller 
 
 Är du fortfarande osäker?
 
-* Välj Premium Storage om du behöver [prestanda för en Premium Azure-filresurs](storage-files-planning.md#understanding-provisioning-for-premium-file-shares).
+* Välj Premium Storage om du behöver [prestanda för en Premium Azure-filresurs](understanding-billing.md#provisioned-billing).
 * Välj standard lagring för generella fil Server arbets belastningar som innehåller data och Arkiv data. Välj också standard lagring om den enda arbets belastningen på resursen i molnet ska Azure File Sync.
 
 #### <a name="account-kind"></a>Typ av konto
@@ -413,7 +413,7 @@ Den här metoden för migrering kräver vissa stillestånds tider för dina anv�
 
 När du använder Azure File Sync för en Azure-filresurs är det viktigt att du bestämmer att hela namn området har laddats ned till servern *innan* du påbörjar en lokal Robocopy. Hur lång tid det tar att ladda ned ditt namn område beror på antalet objekt i Azure-filresursen. Det finns två metoder för att avgöra om ditt namn område har anlänt på servern.
 
-#### <a name="azure-portal"></a>Azure-portalen
+#### <a name="azure-portal"></a>Azure Portal
 
 Du kan använda Azure Portal för att se när ditt namn område har anlänt.
 

@@ -4,18 +4,18 @@ description: I den här självstudien får du lära dig hur du skalar ett Servic
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 7f92ca28afd9d1894867aaa2c18df3a02ee0bd79
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 063c83818ec2e98491f9062e936b9a1e7b2c4356
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842693"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702182"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Självstudie: Skala ut ett Service Fabric-kluster i Azure
 
 Den här självstudien är del tre i en serie och visar hur du skalar ditt befintliga kluster och i. När du är klar kommer du att veta hur du skalar ditt kluster och hur du rensar överblivna resurser.  Mer information om hur du skalar ett kluster som körs i Azure finns i [skalnings Service Fabric kluster](service-fabric-cluster-scaling.md).
 
-I den här guiden får du lära dig att:
+I de här självstudierna får du lära dig att
 
 > [!div class="checklist"]
 > * Lägga till och ta bort noder (skala ut och skala in)
@@ -94,7 +94,7 @@ New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -Templat
 ```
 Eller följande Azure CLI-kommando:
 ```azurecli
-az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
+az deployment group create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
 ## <a name="add-a-node-type-to-the-cluster"></a>Lägg till en nodtyp i klustret
@@ -800,7 +800,7 @@ New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -Templat
 ```
 Eller följande Azure CLI-kommando:
 ```azurecli
-az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
+az deployment group create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
 ## <a name="remove-a-node-type-from-the-cluster"></a>Ta bort en nodtyp från klustret
@@ -856,7 +856,7 @@ New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -Templat
 ```
 Eller följande Azure CLI-kommando:
 ```azurecli
-az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
+az deployment group create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
 ## <a name="next-steps"></a>Nästa steg

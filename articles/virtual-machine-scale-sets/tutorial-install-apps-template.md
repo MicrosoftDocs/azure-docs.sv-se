@@ -9,12 +9,12 @@ ms.subservice: template
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 2d748f787b40bb26e9faebb028d71c6c3e30ee55
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: d5eba5486e7d26e62379e0112cd4b95322e6dae1
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516568"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705242"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>Självstudie: Installera program i VM-skalningsuppsättningar med en Azure-mall
 Om du vill köra program på virtuella datorinstanser i en skalningsuppsättning, måste du först installera programkomponenter och nödvändiga filer. I en föregående självstudie fick du lära dig hur du skapar och använder en anpassad virtuell datoravbildning för att distribuera dina virtuella datorinstanser. Den här anpassade avbildningen inkluderade programinstallationer och konfigurationer. Du kan också automatisera installationen av programmen till en skalningsuppsättning efter att varje virtuell datorinstans distribueras, eller uppdatera ett program som redan körs på en skalningsuppsättning. I den här guiden får du lära du dig hur man:
@@ -76,10 +76,10 @@ Vi använder exempelmallen för att skapa en skalningsuppsättning och tillämpa
 az group create --name myResourceGroup --location eastus
 ```
 
-Skapa nu en VM-skalningsuppsättning med [az group deployment create](/cli/azure/group/deployment). När du uppmanas, anger du ditt eget användarnamn och lösenord som används som autentiseringsuppgifter för varje virtuell datorinstans:
+Skapa nu en skalnings uppsättning för virtuella datorer med [AZ distributions grupp skapa](/cli/azure/deployment/group). När du uppmanas, anger du ditt eget användarnamn och lösenord som används som autentiseringsuppgifter för varje virtuell datorinstans:
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/azuredeploy.json
 ```
@@ -134,10 +134,10 @@ Om du vill uppdatera definitionen för ditt anpassade skripttillägg, redigerar 
 }
 ```
 
-Tillämpa konfigurationen det anpassade skripttillägget till de virtuella datorinstanser i din skalningsuppsättning med [az group deployment create](/cli/azure/group/deployment). Den här *azuredeployv2.json* -mallen används för att tillämpa den uppdaterade versionen av programmet. I praktiken, redigerar du den befintliga *azuredeploy.json* -mallen så den refererar till det uppdaterade installationsskriptet, som det visas i föregående avsnitt. När du uppmanas, anger du samma användarnamn och lösenord som används när du först skapade skalningsuppsättningen:
+Tillämpa konfigurationen för det anpassade skript tillägget på de virtuella dator instanserna i din skalnings uppsättning igen med [AZ distributions grupp skapa](/cli/azure/deployment/group). Den här *azuredeployv2.json*-mallen används för att tillämpa den uppdaterade versionen av programmet. I praktiken, redigerar du den befintliga *azuredeploy.json*-mallen så den refererar till det uppdaterade installationsskriptet, som det visas i föregående avsnitt. När du uppmanas, anger du samma användarnamn och lösenord som används när du först skapade skalningsuppsättningen:
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/azuredeploy_v2.json
 ```

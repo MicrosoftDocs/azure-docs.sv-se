@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/2/2020
-ms.openlocfilehash: 2cfd391daa13a100a56bb10b79b27eda80902374
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.date: 12/18/2020
+ms.openlocfilehash: e7f5b3ae0a4dc7faa67a361b210b1d014e1f1b93
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533623"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722138"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Använda referens data för sökningar i Stream Analytics
 
@@ -137,6 +137,18 @@ INTO    output
 FROM    Step1
 JOIN    refData2 ON refData2.Desc = Step1.Desc 
 ``` 
+
+## <a name="iot-edge-jobs"></a>IoT Edge jobb
+
+Endast lokala referens data stöds för Stream Analytics Edge-jobb. När ett jobb distribueras till IoT Edge enhet laddar det referens data från den användardefinierade fil Sök vägen. Har en referens data fil som är klar på enheten. För en Windows-behållare, placera referens data filen på den lokala enheten och dela den lokala enheten med Docker-behållaren. För en Linux-behållare skapar du en Docker-volym och fyller i data filen på volymen.
+
+Referens data på IoT Edge uppdatering utlöses av en distribution. När den Utlös ATS väljer modulen Stream Analytics den uppdaterade informationen utan att stoppa jobbet som körs.
+
+Det finns två sätt att uppdatera referens data:
+
+* Uppdatera referens data Sök vägen i ditt Stream Analytics jobb från Azure Portal.
+
+* Uppdatera IoT Edge-distributionen.
 
 ## <a name="next-steps"></a>Nästa steg
 > [!div class="nextstepaction"]

@@ -1,7 +1,7 @@
 ---
-title: Bevara data sekretessen med WhiteNoise-paketen (för hands version)
+title: Bevara data sekretessen med SmartNoise-paketen (för hands version)
 titleSuffix: Azure Machine Learning
-description: Lär dig hur du använder metod tips för differentiell integritet för att Azure Machine Learning modeller med WhiteNoise-paketen.
+description: Lär dig hur du använder metod tips för differentiell integritet för att Azure Machine Learning modeller med SmartNoise-paketen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,31 +10,27 @@ ms.custom: how-to
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
-ms.date: 07/09/2020
-ms.openlocfilehash: 355d96fe5a617effab89fbd038f7f1785215f88f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/21/2020
+ms.openlocfilehash: f004f0f052e466441999c1bfd511823edd6b907e
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897686"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722444"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Använd differentiell sekretess i Azure Machine Learning (för hands version)
 
-
-
-Lär dig hur du använder metod tips för differentiell integritet för att Azure Machine Learning modeller med WhiteNoise python-paket.
+Lär dig hur du använder metod tips för differentiell integritet för att Azure Machine Learning modeller med SmartNoise python-paket.
 
 Differentiell integritet är den guld standard definitionen av sekretess. System som följer denna definition av sekretess ger starka garantier mot en rad olika data återuppbyggnads-och återidentifierings attacker, inklusive attacker från angripare som har hjälp information. Läs mer om hur [differentiell integritet fungerar](./concept-differential-privacy.md).
 
-> [!NOTE]
-> Observera att vi byter namn på Toolkit och kommer att introducera det nya namnet under de kommande veckorna. 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 - Om du inte har en Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar. Prova den [kostnads fria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree) idag.
 - [Python 3](https://www.python.org/downloads/)
 
-## <a name="install-whitenoise-packages"></a>Installera WhiteNoise-paket
+## <a name="install-smartnoise-packages"></a>Installera SmartNoise-paket
 
 ### <a name="standalone-installation"></a>Fristående installation
 
@@ -42,45 +38,45 @@ Biblioteken är utformade för att fungera från distribuerade Spark-kluster och
 
 Anvisningarna nedan förutsätter att dina `python` och- `pip` kommandon är mappade till `python3` och `pip3` .
 
-Använd pip för att installera [WhiteNoise python-paket](https://pypi.org/project/opendp-whitenoise/).
+Använd pip för att installera [SmartNoise python-paket](https://pypi.org/project/opendp-smartnoise/).
 
-`pip install opendp-whitenoise`
+`pip install opendp-smartnoise`
 
 Kontrol lera att paketen har installerats genom att starta en python-prompt och skriva:
 
 ```python
-import opendp.whitenoise.core
-import opendp.whitenoise.sql
+import opendp.smartnoise.core
+import opendp.smartnoise.sql
 ```
 
 Om importen lyckas installeras biblioteken och är redo att användas.
 
 ### <a name="docker-image"></a>Docker-avbildning
 
-Du kan också använda WhiteNoise-paket med Docker.
+Du kan också använda SmartNoise-paket med Docker.
 
-Hämta `opendp/whitenoise` avbildningen för att använda biblioteken i en Docker-behållare som innehåller Spark, Jupyter och exempel kod.
+Hämta `opendp/smartnoise` avbildningen för att använda biblioteken i en Docker-behållare som innehåller Spark, Jupyter och exempel kod.
 
 ```sh
-docker pull opendp/whitenoise:privacy
+docker pull opendp/smartnoise:privacy
 ```
 
 När du har hämtat avbildningen startar du Jupyter-servern:
 
 ```sh
-docker run --rm -p 8989:8989 --name whitenoise-run opendp/whitenoise:privacy
+docker run --rm -p 8989:8989 --name smartnoise-run opendp/smartnoise:privacy
 ```
 
-Detta startar en Jupyter-Server vid Port `8989` på `localhost` , med lösen ord `pass@word99` . Förutsatt att du har använt kommando raden ovan för att starta behållaren med namn `whitenoise-privacy` , kan du öppna en bash-Terminal i Jupyter-servern genom att köra:
+Detta startar en Jupyter-Server vid Port `8989` på `localhost` , med lösen ord `pass@word99` . Förutsatt att du har använt kommando raden ovan för att starta behållaren med namn `smartnoise-privacy` , kan du öppna en bash-Terminal i Jupyter-servern genom att köra:
 
 ```sh
-docker exec -it whitenoise-run bash
+docker exec -it smartnoise-run bash
 ```
 
 Docker-instansen rensar all status vid avstängning, så att du förlorar eventuella antecknings böcker som du skapar i den aktiva instansen. För att undvika detta kan du binda montera en lokal mapp till behållaren när du startar den:
 
 ```sh
-docker run --rm -p 8989:8989 --name whitenoise-run --mount type=bind,source=/Users/your_name/my-notebooks,target=/home/privacy/my-notebooks opendp/whitenoise:privacy
+docker run --rm -p 8989:8989 --name smartnoise-run --mount type=bind,source=/Users/your_name/my-notebooks,target=/home/privacy/my-notebooks opendp/smartnoise:privacy
 ```
 
 Alla antecknings böcker som du skapar under mappen *Mina-antecknings böcker* kommer att lagras i det lokala fil systemet.
@@ -95,7 +91,7 @@ I det här exemplet beskrivs de PUMS (Public use mikrodata) i Kalifornien som re
 import os
 import sys
 import numpy as np
-import opendp.whitenoise.core as wn
+import opendp.smartnoise.core as sn
 
 data_path = os.path.join('.', 'data', 'PUMS_california_demographics_1000', 'data.csv')
 var_names = ["age", "sex", "educ", "race", "income", "married", "pid"]
@@ -104,19 +100,19 @@ var_names = ["age", "sex", "educ", "race", "income", "married", "pid"]
 I det här exemplet beräknar vi medelvärdet och var Ian sen för ålder.  Vi använder totalt `epsilon` 1,0 (Epsilon är vår sekretess parameter och sprider vår sekretess budget över de två antal som vi vill beräkna. Läs mer om [Sekretess mått](concept-differential-privacy.md#differential-privacy-metrics).
 
 ```python
-with wn.Analysis() as analysis:
+with sn.Analysis() as analysis:
     # load data
-    data = wn.Dataset(path = data_path, column_names = var_names)
+    data = sn.Dataset(path = data_path, column_names = var_names)
 
     # get mean of age
-    age_mean = wn.dp_mean(data = wn.cast(data['age'], type="FLOAT"),
+    age_mean = sn.dp_mean(data = sn.cast(data['age'], type="FLOAT"),
                           privacy_usage = {'epsilon': .65},
                           data_lower = 0.,
                           data_upper = 100.,
                           data_n = 1000
                          )
     # get variance of age
-    age_var = wn.dp_variance(data = wn.cast(data['age'], type="FLOAT"),
+    age_var = sn.dp_variance(data = sn.cast(data['age'], type="FLOAT"),
                              privacy_usage = {'epsilon': .35},
                              data_lower = 0.,
                              data_upper = 100.,
@@ -153,22 +149,22 @@ Du kan använda biblioteket för att skapa mer komplexa analys diagram, med fler
 | Histogram     | Geometriska  | Ihopfogning   |
 | Medelvärde          | Laplace    | Digitalisera   |
 | Kvantiler     |            | Filter     |
-| Summa           |            | Tillvitelse |
+| Sum           |            | Tillvitelse |
 | Varians/kovarians |      | Transformering  |
 
-Mer information finns i [Data Analysis Notebook](https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/basic_data_analysis.ipynb) .
+Mer information finns i [Data Analysis Notebook](https://github.com/opendifferentialprivacy/smartnoise-samples/blob/master/analysis/basic_data_analysis.ipynb) .
 
 ## <a name="approximate-utility-of-differentially-private-releases"></a>Ungefärligt verktyg för differentiellt privata versioner
 
 Eftersom differentiell integritet fungerar genom att kalibrera brus kan verktyget av versioner variera beroende på integritets risken.  I allmänhet är det brus som krävs för att skydda varje enskild vara försumbart när exempel storlekarna ökar, men överbelasta resultatet för versioner som riktar sig mot en enskild individ.  Analytiker kan granska noggrannhets informationen för en version för att avgöra hur användbar versionen är:
 
 ```python
-with wn.Analysis() as analysis:
+with sn.Analysis() as analysis:
     # load data
-    data = wn.Dataset(path = data_path, column_names = var_names)
+    data = sn.Dataset(path = data_path, column_names = var_names)
 
     # get mean of age
-    age_mean = wn.dp_mean(data = wn.cast(data['age'], type="FLOAT"),
+    age_mean = sn.dp_mean(data = sn.cast(data['age'], type="FLOAT"),
                           privacy_usage = {'epsilon': .65},
                           data_lower = 0.,
                           data_upper = 100.,
@@ -202,11 +198,11 @@ Här är ett exempel på en `Analysis` specificerad lager plats för ett kontinu
 ```python
 income_edges = list(range(0, 100000, 10000))
 
-with wn.Analysis() as analysis:
-    data = wn.Dataset(path = data_path, column_names = var_names)
+with sn.Analysis() as analysis:
+    data = sn.Dataset(path = data_path, column_names = var_names)
 
-    income_histogram = wn.dp_histogram(
-            wn.cast(data['income'], type='int', lower=0, upper=100),
+    income_histogram = sn.dp_histogram(
+            sn.cast(data['income'], type='int', lower=0, upper=100),
             edges = income_edges,
             upper = 1000,
             null_value = 150,
@@ -216,11 +212,11 @@ with wn.Analysis() as analysis:
 
 Eftersom enskilda individer är åtskilda mellan histogrammets lager platser debiteras sekretess kostnaden bara en gång per histogram, även om histogrammet innehåller många lager platser.
 
-Mer information om histogram finns i histogram- [anteckningsboken](https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/histograms.ipynb).
+Mer information om histogram finns i histogram- [anteckningsboken](https://github.com/opendifferentialprivacy/smartnoise-samples/blob/master/analysis/histograms.ipynb).
 
 ## <a name="generate-a-covariance-matrix"></a>Generera en kovarians mat ris
 
-WhiteNoise erbjuder tre olika funktioner med sin `dp_covariance` funktion:
+SmartNoise erbjuder tre olika funktioner med sin `dp_covariance` funktion:
 
 - Kovarians mellan två vektorer
 - Matris för kovarians i en matris
@@ -229,13 +225,13 @@ WhiteNoise erbjuder tre olika funktioner med sin `dp_covariance` funktion:
 Här är ett exempel på beräkning av en skalär kovarians:
 
 ```python
-with wn.Analysis() as analysis:
-    wn_data = wn.Dataset(path = data_path, column_names = var_names)
+with sn.Analysis() as analysis:
+    wn_data = sn.Dataset(path = data_path, column_names = var_names)
 
-    age_income_cov_scalar = wn.dp_covariance(
-      left = wn.cast(wn_data['age'], 
+    age_income_cov_scalar = sn.dp_covariance(
+      left = sn.cast(wn_data['age'], 
       type = "FLOAT"), 
-      right = wn.cast(wn_data['income'], 
+      right = sn.cast(wn_data['income'], 
       type = "FLOAT"), 
       privacy_usage = {'epsilon': 1.0},
       left_lower = 0., 
@@ -247,8 +243,8 @@ with wn.Analysis() as analysis:
 ```
 
 Mer information finns i [antecknings boken för kovarians](
-https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/covariance.ipynb)
+https://github.com/opendifferentialprivacy/smartnoise-samples/blob/master/analysis/covariance.ipynb)
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Utforska [WhiteNoise-exempel Notebooks](https://github.com/opendifferentialprivacy/whitenoise-samples/tree/master/analysis).
+- Utforska [SmartNoise-exempel Notebooks](https://github.com/opendifferentialprivacy/smartnoise-samples/tree/master/analysis).

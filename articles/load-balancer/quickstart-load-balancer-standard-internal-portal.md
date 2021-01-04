@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: a6739d092c2fe4594ae558414ccb882dd6f821bf
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 14203021846e97a53f59c3bc24a1586774613dec
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630691"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704341"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Snabb start: skapa en intern belastningsutjämnare för att belastningsutjämna virtuella datorer med hjälp av Azure Portal
 
-Kom igång med Azure Load Balancer genom att använda Azure Portal för att skapa en intern belastningsutjämnare och två virtuella datorer.
+Kom igång med Azure Load Balancer genom att använda Azure Portal för att skapa en intern belastningsutjämnare och tre virtuella datorer.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -210,12 +210,12 @@ I det här avsnittet ska du skapa en belastnings Utjämnings regel:
 
 I det här avsnittet får du:
 
-* Skapa två virtuella datorer för belastningsutjämnarens backend-pool.
+* Skapa tre virtuella datorer för belastningsutjämnarens backend-pool.
 * Installera IIS på de virtuella datorerna för att testa belastningsutjämnaren.
 
 ### <a name="create-virtual-machines"></a>Skapa virtuella datorer
 
-I det här avsnittet skapar du två virtuella datorer (**myVM1** och **myVM2**).
+I det här avsnittet skapar du tre virtuella datorer (**myVM1**, **myVM2** och **myVM3**).
 
 De här virtuella datorerna läggs till i backend-poolen för belastningsutjämnaren som skapades tidigare.
 
@@ -264,13 +264,13 @@ De här virtuella datorerna läggs till i backend-poolen för belastningsutjämn
   
 6. Granska inställningarna och välj sedan **Skapa**.
 
-7. Följ steg 1 till 8 för att skapa en ytterligare virtuell dator med följande värden och alla andra inställningar på samma sätt som **myVM1**:
+7. Följ steg 1 till 8 för att skapa två fler virtuella datorer med följande värden och alla andra inställningar på samma sätt som **myVM1**:
 
-    | Inställning | VM 2|
-    | ------- | ----- |
-    | Namn |  **myVM2** |
-    | Tillgänglighetszon | **2** |
-    | Nätverkssäkerhetsgrupp | Välj den befintliga **myNSG**|
+    | Inställning | VM 2 | VM 3 |
+    | ------- | ----- | ---- |
+    | Namn |  **myVM2** | **myVM3** |
+    | Tillgänglighetszon | **2** | **3** |
+    | Nätverkssäkerhetsgrupp | Välj den befintliga **myNSG**| Välj den befintliga **myNSG** |
 
 
 # <a name="basic-sku"></a>[**Grundläggande SKU**](#tab/option-1-create-internal-load-balancer-basic)
@@ -449,13 +449,13 @@ I det här avsnittet ska du skapa en belastnings Utjämnings regel:
 
 I det här avsnittet får du:
 
-* Skapa två virtuella datorer för belastningsutjämnarens backend-pool.
+* Skapa tre virtuella datorer för belastningsutjämnarens backend-pool.
 * Skapa en tillgänglighets uppsättning för de virtuella datorerna.
 * Installera IIS på de virtuella datorerna för att testa belastningsutjämnaren.
 
 ### <a name="create-virtual-machines"></a>Skapa virtuella datorer
 
-I det här avsnittet skapar du två virtuella datorer (**myVM1** och **myVM2**).
+I det här avsnittet skapar du tre virtuella datorer (**myVM1**, **myVM2**, **myVM3**).
 
 De två virtuella datorerna läggs till i en tillgänglighets uppsättning med namnet **myAvailabilitySet**.
 
@@ -502,13 +502,13 @@ De här virtuella datorerna läggs till i backend-poolen för belastningsutjämn
   
 6. Granska inställningarna och välj sedan **Skapa**.
 
-7. Följ steg 1 till 8 för att skapa en ytterligare virtuell dator med följande värden och alla andra inställningar på samma sätt som **myVM1**:
+7. Följ steg 1 till 8 för att skapa två fler virtuella datorer med följande värden och alla andra inställningar på samma sätt som **myVM1**:
 
-    | Inställning | VM 2 |
-    | ------- | ----- |
-    | Namn |  **myVM2** |
-    | Tillgänglighetsuppsättning| Välj **myAvailabilitySet** |
-    | Nätverkssäkerhetsgrupp | Välj den befintliga **myNSG**|
+    | Inställning | VM 2 | VM 3 |
+    | ------- | ----- | ---- |
+    | Namn |  **myVM2** | **myVM3** |
+    | Tillgänglighetsuppsättning | Välj **myAvailabilitySet** | Välj **myAvailabilitySet** |
+    | Nätverkssäkerhetsgrupp | Välj den befintliga **myNSG** | Välj den befintliga **myNSG** |
 
 ### <a name="add-virtual-machines-to-the-backend-pool"></a>Lägg till virtuella datorer i backend-poolen
 
@@ -522,7 +522,7 @@ De virtuella datorerna som skapades i föregående steg måste läggas till i ba
 
 4. I avsnittet **virtuella datorer** väljer du **+ Lägg till**.
 
-5. Markera rutorna bredvid **myVM1** och **myVM2**.
+5. Markera rutorna bredvid **myVM1**, **myVM2** och **myVM3**.
 
 6. Välj **Lägg till**.
 
@@ -602,7 +602,7 @@ I det här avsnittet ska du skapa en virtuell dator med namnet **myTestVM**.  De
    ```
 8. Stäng skydds-sessionen med **myVM1**.
 
-9. Upprepa steg 1 till 6 för att installera IIS och den uppdaterade filen iisstart.htm på **myVM2**.
+9. Upprepa steg 1 till 6 för att installera IIS och den uppdaterade filen iisstart.htm på **myVM2** och **myVM3**.
 
 
 ## <a name="test-the-load-balancer"></a>Testa lastbalanseraren
@@ -634,7 +634,7 @@ Ta bort resursgruppen, lastbalanseraren och alla relaterade resurser när de int
 I den här snabbstarten kommer du att göra följande:
 
 * Skapade en intern belastningsutjämnare för Azure standard eller Basic
-* Anslutna 2 virtuella datorer till belastningsutjämnaren.
+* Anslutna tre virtuella datorer till belastningsutjämnaren.
 * Konfigurerat trafik regel för belastnings utjämning, hälso avsökning och testar sedan belastningsutjämnaren. 
 
 Om du vill veta mer om Azure Load Balancer fortsätter du till:

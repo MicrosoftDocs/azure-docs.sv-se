@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/26/2020
-ms.openlocfilehash: 0858d448cf768dbe6ea48f07247725fac30da860
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.date: 12/20/2020
+ms.openlocfilehash: ed5e4d05a693ff9b0bf8823ba31de17d000d0fb6
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95758921"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706889"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Ta bort och återställa Azure Log Analytics-arbetsytan
 
@@ -19,7 +19,7 @@ Den här artikeln förklarar begreppet Azure Log Analytics arbets yta mjuk bortt
 
 ## <a name="considerations-when-deleting-a-workspace"></a>Att tänka på när du tar bort en arbets yta
 
-När du tar bort en Log Analytics arbets yta utförs en mjuk borttagnings åtgärd för att tillåta återställning av arbets ytan, inklusive data och anslutna agenter inom 14 dagar, oavsett om borttagningen var oavsiktligt eller avsiktligt. Efter den mjuka borttagnings perioden är arbets ytans resurs och dess data inte återställnings bara – data placeras i kö för permanent borttagning och rensas fullständigt inom 30 dagar. Namnet på arbets ytan är frigjord och du kan använda det för att skapa en ny arbets yta.
+När du tar bort en Log Analytics arbets yta utförs en mjuk borttagnings åtgärd för att tillåta återställning av arbets ytan, inklusive data och anslutna agenter inom 14 dagar, oavsett om borttagningen var oavsiktligt eller avsiktligt. Efter den mjuka borttagnings perioden kan arbets ytans resurs och dess data inte återskapas och placeras i kö för att rensas helt inom 30 dagar. Namnet på arbets ytan är frigjord och du kan använda det för att skapa en ny arbets yta.
 
 > [!NOTE]
 > Om du vill åsidosätta beteendet för mjuk borttagning och ta bort arbets ytan permanent, följer du stegen i [permanent borttagning av arbets ytan](#permanent-workspace-delete).
@@ -76,12 +76,15 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 ## <a name="recover-workspace"></a>Återställ arbets yta
 När du tar bort en Log Analytics arbets yta oavsiktligt eller avsiktligt, placerar tjänsten arbets ytan i ett mjuk borttagnings tillstånd, vilket gör att den inte är tillgänglig för någon åtgärd. Namnet på den borttagna arbets ytan bevaras under perioden för mjuk borttagning och kan inte användas för att skapa en ny arbets yta. Efter den mjuka borttagnings perioden går det inte att återskapa arbets ytan, den är schemalagd för permanent borttagning och dess namn som den släppts och kan användas för att skapa en ny arbets yta.
 
-Du kan återställa arbets ytan under den mjuka borttagnings perioden, inklusive dess data, konfiguration och anslutna agenter. Du måste ha deltagar behörighet till prenumerationen och resurs gruppen där arbets ytan fanns före åtgärden mjuk borttagning. Arbets ytans återställning utförs genom att skapa en Log Analytics arbets yta med information om den borttagna arbets ytan, inklusive:
+Du kan återställa arbets ytan under den mjuka borttagnings perioden, inklusive dess data, konfiguration och anslutna agenter. Du måste ha deltagar behörighet till prenumerationen och resurs gruppen där arbets ytan fanns före åtgärden mjuk borttagning. Arbets ytans återställning utförs genom att återskapa Log Analytics arbets ytan med information om den borttagna arbets ytan, inklusive:
 
 - Prenumerations-ID:t
 - Resurs grupps namn
 - Namn på arbetsyta
 - Region
+
+> [!IMPORTANT]
+> Om din arbets yta har tagits bort som en del av åtgärden ta bort resurs grupp måste du först återskapa resurs gruppen.
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -104,20 +107,19 @@ PS C:\>New-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-nam
 
 Arbets ytan och alla dess data tas tillbaka efter återställnings åtgärden. Lösningar och länkade tjänster togs bort permanent från arbets ytan när den togs bort och de bör konfigureras om så att arbets ytan försätts i det tidigare konfigurerade läget. Vissa data kanske inte är tillgängliga för frågan efter arbets ytans återställning tills de associerade lösningarna har installerats om och deras scheman har lagts till i arbets ytan.
 
-> [!NOTE]
-> * När du återskapar en arbets yta under den mjuka borttagnings perioden visas en indikation på att namnet på arbets ytan redan används. 
- 
 ## <a name="troubleshooting"></a>Felsökning
 
 Du måste ha minst *Log Analytics deltagar* behörighet för att kunna ta bort en arbets yta.
 
-* Om du inte är säker på om den borttagna arbets ytan är i läget för mjuk borttagning och kan återställas, klickar du på [Återställ](#recover-workspace) på *Log Analytics arbets ytor* för att se en lista över arbets ytor som har tagits bort från prenumerationen. Permanent borttagna arbets ytor tas inte med i listan.
+* Om du inte är säker på om den borttagna arbets ytan är i läget för tyst Borttagning och kan återställas klickar du på [Öppna pappers korgen](#recover-workspace) på sidan *Log Analytics arbets ytor* om du vill se en lista över arbets ytor som har tagits bort i en prenumeration. Permanent borttagna arbets ytor tas inte med i listan.
 * Om du får ett fel meddelande *är namnet på arbets ytan redan används eller är i* *konflikt* när du skapar en arbets yta. det kan vara sedan:
   * Namnet på arbets ytan är inte tillgängligt och används av någon i din organisation eller av en annan kund.
-  * Arbets ytan har tagits bort under de senaste 14 dagarna och dess namn är reserverat för mjuk borttagnings perioden. Om du vill åsidosätta den mjuka borttagningen och ta bort arbets ytan permanent för att skapa en ny arbets yta med samma namn, följer du dessa steg för att återställa arbets ytan först och utföra permanent borttagning:<br>
+  * Arbets ytan har tagits bort under de senaste 14 dagarna och dess namn är reserverat för mjuk borttagnings perioden. Om du vill åsidosätta den mjuka borttagningen och ta bort arbets ytan permanent för att skapa en ny arbets yta med samma namn, följer du dessa steg för att återställa arbets ytan först och sedan utföra permanent borttagning:<br>
     1. [Återställ](#recover-workspace) din arbets yta.
     2. [Ta bort](#permanent-workspace-delete) arbets ytan permanent.
     3. Skapa en ny arbets yta med samma arbets ytans namn.
-* Om du ser en 204-svarskod som visar att *resursen inte hittas* kan orsaken vara i följd försök att använda åtgärden ta bort arbets yta. 204 är ett tomt svar, vilket vanligt vis innebär att resursen inte finns, så borttagningen slutfördes utan att göra något.
-  När borttagnings anropet har slutförts på Server sidan kan du återställa arbets ytan och slutföra den permanenta borttagnings åtgärden i någon av de metoder som föreslås tidigare.
+ 
+      När borttagnings anropet har slutförts på Server sidan kan du återställa arbets ytan och slutföra den permanenta borttagnings åtgärden i någon av de metoder som föreslås tidigare.
 
+* Om du får 204-svarskod med en *resurs som inte hittas* när du tar bort en arbets yta, kan det hända att upprepade återförsök har gjorts. 204 är ett tomt svar, vilket vanligt vis innebär att resursen inte finns, så borttagningen slutfördes utan att göra något.
+* Om du tar bort din resurs grupp och din arbets yta ingår, kan du se den borttagna arbets ytan på sidan [Öppna pappers korgen](#recover-workspace) , men återställnings åtgärden misslyckades med felkoden 404 eftersom resurs gruppen inte finns. skapa en ny resurs grupp och försök återställa igen.

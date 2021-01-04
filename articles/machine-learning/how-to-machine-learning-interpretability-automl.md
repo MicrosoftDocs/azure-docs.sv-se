@@ -10,18 +10,18 @@ ms.custom: how-to, automl
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: cf1eb1c72cc93fcb72862b15f3884969915c24dd
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: ce13e0431827bb2c72a03ca33a1ecaefc53d4970
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360657"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702535"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Tolkning: modellförklaringar i automatiserad maskininlärning (förhandsversion)
 
 
 
-I den här artikeln får du lära dig hur du får förklaringar för automatisk maskin inlärning (ML) i Azure Machine Learning. Med automatisk ML får du bättre funktioner. 
+I den här artikeln får du lära dig hur du får förklaringar för automatisk maskin inlärning (AutoML) i Azure Machine Learning. AutoML hjälper dig att förstå funktions betydelsen hos de modeller som genereras. 
 
 Alla SDK-versioner efter 1.0.85 anges `model_explainability=True` som standard. I SDK-version 1.0.85 och tidigare versioner måste användare ange `model_explainability=True` i `AutoMLConfig` objektet för att kunna använda modell tolkning. 
 
@@ -34,15 +34,18 @@ I den här artikeln kan du se hur du:
 ## <a name="prerequisites"></a>Förutsättningar
 
 - Tolknings funktioner. Kör `pip install azureml-interpret` för att hämta det nödvändiga paketet.
-- Kunskap om att skapa automatiserade ML-experiment. Mer information om hur du använder Azure Machine Learning SDK finns i [själv studie kursen om regressions modell](tutorial-auto-train-models.md) eller hur du [konfigurerar automatiserade ml-experiment](how-to-configure-auto-train.md).
+- Kunskap om att skapa AutoML experiment. Mer information om hur du använder Azure Machine Learning SDK finns i [själv studie kursen om regressions modell](tutorial-auto-train-models.md) eller hur du [konfigurerar AutoML experiment](how-to-configure-auto-train.md).
 
 ## <a name="interpretability-during-training-for-the-best-model"></a>Tolkning under utbildning för bästa modell
 
-Hämta förklaringen från `best_run` , som innehåller förklaringar för de funktioner som har utvecklats.
+Hämta förklaringen från `best_run` , som innehåller förklaringar för både rå och tillverkade funktioner.
 
 > [!Warning]
 > Tolkning, bästa modell förklaring, är inte tillgänglig för experiment med automatisk ML-prognoser som rekommenderar följande algoritmer som bästa modell: 
-> * ForecastTCN
+> * TCNForecaster
+> * AutoArima
+> * ExponentialSmoothing
+> * Prophet
 > * Genomsnitt 
 > * Naive
 > * Säsongs genomsnitt 
@@ -62,7 +65,7 @@ print(engineered_explanations.get_feature_importance_dict())
 
 ## <a name="interpretability-during-training-for-any-model"></a>Tolkning under utbildning för vilken modell som helst 
 
-När du beräknar modell förklaringar och visualiserar dem är du inte begränsad till en befintlig modell förklaring för en automatiserad ML-modell. Du kan också få en förklaring till din modell med olika test data. Stegen i det här avsnittet visar hur du beräknar och visualiserar den kapacitet som är utformad utifrån dina test data.
+När du beräknar modell förklaringar och visualiserar dem är du inte begränsad till en befintlig modell förklaring för en AutoML modell. Du kan också få en förklaring till din modell med olika test data. Stegen i det här avsnittet visar hur du beräknar och visualiserar den kapacitet som är utformad utifrån dina test data.
 
 ### <a name="retrieve-any-other-automl-model-from-training"></a>Hämta alla andra AutoML-modeller från utbildning
 
@@ -94,7 +97,7 @@ Om du vill generera en förklaring för AutoML-modeller använder du- `MimicWrap
 
 - Installations objekt för förklaring
 - Din arbets yta
-- En surrogat modell som förklarar den `fitted_model` automatiserade ml-modellen
+- En surrogat modell som förklarar `fitted_model` AutoML-modellen
 
 MimicWrapper tar också `automl_run` objektet där de utformade förklaringarna kommer att laddas upp.
 
@@ -113,7 +116,7 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
 
 ### <a name="use-mimicexplainer-for-computing-and-visualizing-engineered-feature-importance"></a>Använda MimicExplainer för beräkning och visualisering av utformad funktions prioritet
 
-Du kan anropa `explain()` metoden i MimicWrapper med de transformerade test exemplen för att få funktions vikten för de genererade funktionerna. Du kan också använda `ExplanationDashboard` för att visa instrument panelens visualisering av funktions prioritets värden för de genererade funktionerna genom automatisk ml featurizers.
+Du kan anropa `explain()` metoden i MimicWrapper med de transformerade test exemplen för att få funktions vikten för de genererade funktionerna. Du kan också använda `ExplanationDashboard` för att visa instrument panelens visualisering av funktions prioritets värden för de genererade funktionerna av AutoML featurizers.
 
 ```python
 engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
@@ -122,7 +125,7 @@ print(engineered_explanations.get_feature_importance_dict())
 
 ## <a name="interpretability-during-inference"></a>Tolkning under härledning
 
-I det här avsnittet får du lära dig hur du operationalisera en automatiserad ML-modell med den förklaring som användes för att beräkna förklaringarna i föregående avsnitt.
+I det här avsnittet får du lära dig att operationalisera en AutoML-modell med den förklaring som användes för att beräkna förklaringarna i föregående avsnitt.
 
 ### <a name="register-the-model-and-the-scoring-explainer"></a>Registrera modellen och bedömnings förklaringen
 
@@ -200,7 +203,7 @@ service.wait_for_deployment(show_output=True)
 
 ### <a name="inference-with-test-data"></a>Härledning med test data
 
-En härledning med vissa test data för att se det förväntade värdet från den automatiserade ML-modellen. Visa den bevisade funktions betydelsen för det förväntade värdet.
+En härledning med vissa test data för att se det förväntade värdet från AutoML-modellen, stöds för närvarande endast i Azure Machine Learning SDK. Visa funktions betydelse som bidrar till ett förutsägande värde. 
 
 ```python
 if service.state == 'Healthy':
@@ -217,9 +220,11 @@ if service.state == 'Healthy':
 
 ### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>Visualisera för att identifiera mönster i data och förklaringar i utbildnings tid
 
-Du kan visualisera funktions prioritets diagrammet i din arbets yta i [Azure Machine Learning Studio](https://ml.azure.com). När den automatiserade ML-körningen är klar väljer du **Visa modell information** för att visa en speciell körning. Välj fliken **förklaringar** om du vill visa instrument panelen förklarings visualisering.
+Du kan visualisera funktions prioritets diagrammet i din arbets yta i [Azure Machine Learning Studio](https://ml.azure.com). När din AutoML-körning är klar väljer du **Visa modell information** för att visa en speciell körning. Välj fliken **förklaringar** om du vill visa instrument panelen förklarings visualisering.
 
-[![Machine Learning tolknings arkitektur](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png)](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png#lightbox)
+[![Machine Learning tolknings arkitektur](./media/how-to-machine-learning-interpretability-automl/automl-explanation.png)](./media/how-to-machine-learning-interpretability-automl/automl-explanation.png#lightbox)
+
+Mer information om förklaringens visualiseringar och vissa områden finns i [instruktionen om att tolka dokument](how-to-machine-learning-interpretability-aml.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

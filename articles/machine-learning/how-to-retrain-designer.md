@@ -1,7 +1,7 @@
 ---
-title: Träna om modeller med hjälp av Azure Machine Learning designer
+title: Använd pipeline-parametrar för att omträna modeller i designern
 titleSuffix: Azure Machine Learning
-description: Lär dig hur du tränar om Machine Learning-modeller med publicerade pipelines i Azure Machine Learning designer.
+description: Träna modeller med publicerade pipeliner och pipeline-parametrar i Azure Machine Learning designer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: d754674fe3aa65fa9fd8540b05083979ce96aff8
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 6efb0f095f8a157f723a3b7c0c2b229546ebb36b
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437124"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708474"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer"></a>Träna modeller med Azure Machine Learning designer
+# <a name="use-pipeline-parameters-to-retrain-models-in-the-designer"></a>Använd pipeline-parametrar för att omträna modeller i designern
 
 
-I den här instruktions artikeln får du lära dig hur du använder Azure Machine Learning designer för att omträna en maskin inlärnings modell. Du kommer att använda publicerade pipelines för att automatisera arbets flödet och ange parametrar för att träna din modell på nya data. 
+I den här instruktions artikeln får du lära dig hur du använder Azure Machine Learning designer för att omträna en maskin inlärnings modell med hjälp av pipeline-parametrar. Du kommer att använda publicerade pipelines för att automatisera arbets flödet och ange parametrar för att träna din modell på nya data. Med pipeline-parametrar kan du återanvända befintliga pipeliner för olika jobb.  
 
 I den här artikeln kan du se hur du:
 

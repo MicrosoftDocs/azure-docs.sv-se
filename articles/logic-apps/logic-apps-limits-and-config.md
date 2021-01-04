@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 12/07/2020
-ms.openlocfilehash: 16002d7acf97832f743410a203e2f76e99646c0c
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 7122c960dc7921e833329d528f96f0efe0347bda
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673366"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707477"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Information om begränsningar och konfiguration för Azure Logic Apps
 
@@ -238,7 +238,7 @@ Vissa kopplings åtgärder gör asynkrona anrop eller lyssnar efter webhook-beg�
 | Namn | Gräns för flera innehavare | Miljö gräns för integrerings tjänst | Obs! |
 |------|--------------------|---------------------------------------|-------|
 | Meddelandestorlek | 100 MB | 200 MB | För att undvika den här gränsen, se [hantera stora meddelanden med segment](../logic-apps/logic-apps-handle-large-messages.md). Vissa anslutningar och API: er kanske inte stöder segment koppling eller till och med standard gränsen. <p><p>– Kopplingar som AS2, X12 och EDIFACT har egna [gränser för B2B-meddelanden](#b2b-protocol-limits). <br>– ISE-kopplingar använder ISE-gränsen, inte deras gränser som inte är ISE-anslutningsprogrammet. |
-| Meddelande storlek med segment | 1 GB | 5 GB | Den här gränsen gäller för åtgärder som antingen har inbyggt stöd för segmentering eller som låter dig aktivera segment i körnings konfigurationen. <p><p>Om du använder en ISE stöder Logic Apps motor den här gränsen, men kopplingarna har sina egna segment gränser upp till motor gränsen, till exempel, se [Azure-Blob Storage Connectors API-referens](/connectors/azureblob/). Mer information om segment finns i [hantera stora meddelanden med segment](../logic-apps/logic-apps-handle-large-messages.md). |
+| Meddelande storlek med segment | 1 GB | 5 GB | Den här gränsen gäller för åtgärder som antingen har inbyggt stöd för segmentering eller som låter dig aktivera segment i körnings konfigurationen. <p><p>Om du använder en ISE stöder Logic Apps motor den här gränsen, men kopplingarna har sina egna segment gränser upp till motor gränsen, till exempel, se [Azure-Blob Storage Connectors API-referens](/connectors/azureblob/). Mer information om segment finns i [hantera stora meddelanden med segment](../logic-apps/logic-apps-handle-large-messages.md). |
 |||||
 
 #### <a name="character-limits"></a>Character-gränser
@@ -310,7 +310,7 @@ Varje Azure-prenumeration har följande gränser för integrations kontot:
   | ISE SKU | Gränser för integrationskonto |
   |---------|----------------------------|
   | **Premium** | 20 totala konton, inklusive ett standard konto utan extra kostnad. Med den här SKU: n kan du bara ha [standard](../logic-apps/logic-apps-pricing.md#integration-accounts) konton. Inga kostnads fria eller grundläggande konton är tillåtna. |
-  | **Utvecklare** | 20 totala konton, inklusive ett [kostnads fritt](../logic-apps/logic-apps-pricing.md#integration-accounts) konto (begränsat till 1). Med den här SKU: n kan du antingen kombinera: <p>– Ett kostnads fritt konto och upp till 19 [standard](../logic-apps/logic-apps-pricing.md#integration-accounts) konton. <br>– Inget kostnads fritt konto och upp till 20 standard konton. <p>Inga grundläggande eller ytterligare kostnads fria konton är tillåtna. <p><p>**Viktigt**: Använd [SKU: n för utvecklare](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) för experimentering, utveckling och testning, men inte för produktion eller prestanda testning. |
+  | **Developer** | 20 totala konton, inklusive ett [kostnads fritt](../logic-apps/logic-apps-pricing.md#integration-accounts) konto (begränsat till 1). Med den här SKU: n kan du antingen kombinera: <p>– Ett kostnads fritt konto och upp till 19 [standard](../logic-apps/logic-apps-pricing.md#integration-accounts) konton. <br>– Inget kostnads fritt konto och upp till 20 standard konton. <p>Inga grundläggande eller ytterligare kostnads fria konton är tillåtna. <p><p>**Viktigt**: Använd [SKU: n för utvecklare](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) för experimentering, utveckling och testning, men inte för produktion eller prestanda testning. |
   |||
 
 Information om hur priser och fakturering fungerar för ISEs finns i [pris modellen Logic Apps](../logic-apps/logic-apps-pricing.md#fixed-pricing). Pris nivåer finns i [Logic Apps prissättning](https://azure.microsoft.com/pricing/details/logic-apps/).
@@ -412,7 +412,9 @@ I det här avsnittet visas endast inkommande IP-adresser för den Azure Logic Ap
 
 > [!TIP]
 > För att minska komplexiteten när du skapar säkerhets regler kan du också använda [service tag](../virtual-network/service-tags-overview.md)- **LogicAppsManagement** i stället för att ange inkommande Logic Apps IP-adressprefix för varje region.
-> Den här taggen fungerar i de regioner där Logic Appss tjänsten är tillgänglig.
+> För hanterade anslutningar kan du välja att använda **AzureConnectors** service tag i stället för att ange inkommande IP-adressprefix för hanterade anslutningar för varje region.
+> Dessa taggar fungerar i de regioner där Logic Appss tjänsten är tillgänglig.
+
 
 <a name="multi-tenant-inbound"></a>
 
@@ -476,7 +478,7 @@ I det här avsnittet visas de utgående IP-adresserna för Azure Logic Apps tjä
 
 > [!TIP]
 > För att minska komplexiteten när du skapar säkerhets regler kan du också använda [service tag](../virtual-network/service-tags-overview.md)- **LogicApps** i stället för att ange utgående Logic Apps IP-adressprefix för varje region.
-> För hanterade anslutningar kan du välja att använda **AzureConnectors** service tag i stället för att ange utgående IP-adressprefix för utgående trafik för varje region. Dessa taggar fungerar i de regioner där Logic Appss tjänsten är tillgänglig. 
+> Den här taggen fungerar i de regioner där Logic Appss tjänsten är tillgänglig. 
 
 <a name="multi-tenant-outbound"></a>
 

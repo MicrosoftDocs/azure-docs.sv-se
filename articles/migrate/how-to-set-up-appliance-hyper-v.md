@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/23/2020
-ms.openlocfilehash: 5c5fdd1423d806bcc4d2f124310112a3e407e416
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 3a7486ce94b335f835a88b7f357c9c719f86d667
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751129"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704766"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Konfigurera en installation för virtuella Hyper-V-datorer
 
@@ -116,11 +116,16 @@ Konfigurera enheten för första gången.
 ### <a name="register-the-appliance-with-azure-migrate"></a>Registrera enheten med Azure Migrate
 
 1. Klistra in **Azure Migrate projekt nyckeln** som har kopierats från portalen. Om du inte har nyckeln går du till **Server utvärdering> identifiera> hantera befintliga apparater**, väljer det installations namn som du angav vid tidpunkten för att generera nyckeln och kopierar motsvarande nyckel.
-1. Klicka på **Logga** in. En Azure-inloggning visas i en ny flik i webbläsaren. Om den inte visas kontrollerar du att du har inaktiverat blockering av popup-fönster i webbläsaren.
-1. På fliken nytt loggar du in med ditt användar namn och lösen ord för Azure.
+1. Du behöver en enhets kod för att autentisera med Azure. När du klickar på **Logga in** öppnas en modal enhets kod som visas nedan.
+
+    ![Modal visar enhets koden](./media/tutorial-discover-vmware/device-code.png)
+
+1. Klicka på **Kopiera kod & inloggning** för att kopiera enhets koden och öppna en Azure-inloggnings tolk i en ny webbläsare-flik. Om den inte visas kontrollerar du att du har inaktiverat blockering av popup-fönster i webbläsaren.
+1. På fliken nytt klistrar du in enhets koden och loggar in med ditt användar namn och lösen ord för Azure.
    
    Inloggning med en PIN-kod stöds inte.
-3. När du har loggat in går du tillbaka till webbappen. 
+3. Om du stänger fliken inloggning oavsiktligt utan att logga in, måste du uppdatera fliken webbläsare i Konfigurations hanteraren för att aktivera inloggnings knappen igen.
+1. När du har loggat in går du tillbaka till föregående flik med installationen av Konfigurations hanteraren.
 4. Om Azure-användarkontot som används för loggning har rätt [behörigheter](./tutorial-discover-hyper-v.md#prepare-an-azure-user-account) för de Azure-resurser som skapades under den här nyckeln, initieras registrerings enheten.
 1. När installationen av enheten har registrerats kan du se registrerings informationen genom att klicka på **Visa information**.
 
@@ -137,7 +142,7 @@ Om du kör virtuella hård diskar på SMB: er måste du aktivera delegering av a
     ```
 
 2. Du kan också göra detta i redigerare för lokalt grupprincipobjekt på enheten:
-    - I dator konfiguration för **lokal dator princip**  >  **Computer Configuration** klickar du på **administrativa mallar**  >  **System**  >  **delegering av systemautentiseringsuppgifter**.
+    - I dator konfiguration för **lokal dator princip**  >  klickar du på **administrativa mallar**  >    >  **delegering av systemautentiseringsuppgifter**.
     - Dubbelklicka på **Tillåt att delegera nya autentiseringsuppgifter** och välj **aktive rad**.
     - I **alternativ** klickar du på **Visa** och lägger till varje Hyper-V-värd som du vill identifiera i listan med **WSMan/** som prefix.
     - I  **delegering av autentiseringsuppgifter** dubbelklickar du på **Tillåt att delegera nya AUTENTISERINGSUPPGIFTER med endast NTLM-** serverautentisering. Lägg återigen till varje Hyper-V-värd som du vill identifiera i listan, med **WSMan/** som prefix.

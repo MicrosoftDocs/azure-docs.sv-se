@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: juliako
-ms.openlocfilehash: 282e1ef98a3c0d6e152b56a180a639c86d004af9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 82dc9aa9615ef86c878fb75df6650dcc1f904a8f
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493108"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702629"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Skapa ett Video Indexer-konto som är anslutet till Azure
 
@@ -107,9 +107,14 @@ Om anslutningen till Azure misslyckades kan du försöka felsöka problemet geno
 
 1. Använd [Azure](https://portal.azure.com/) Portal för att skapa ett Azure Media Services konto, enligt beskrivningen i [skapa ett konto](../previous/media-services-portal-create-account.md).
 
+     Kontrol lera att Media Servicess kontot har skapats med de klassiska API: erna. 
+ 
+    ![Media Services klassiskt API](./media/create-account/enable-classic-api.png)
+
+
     När du skapar ett lagrings konto för ditt Media Services-konto väljer du **StorageV2** för konto Natura och **Geo-redundant** (GRS) för replikeringsalternativ.
 
-    ![Nytt AMS-konto](./media/create-account/create-ams-account1.png)
+    ![Nytt AMS-konto](./media/create-account/create-new-ams-account.png)
 
     > [!NOTE]
     > Se till att skriva ned Media Services resurs-och konto namn. Du behöver dem för stegen i nästa avsnitt.
@@ -120,7 +125,7 @@ Om anslutningen till Azure misslyckades kan du försöka felsöka problemet geno
 
     I det nya Media Services-kontot väljer du **slut punkter för direkt uppspelning**. Välj sedan slut punkten för direkt uppspelning och tryck på Starta.
 
-    ![Slutpunkter för direktuppspelning](./media/create-account/create-ams-account2.png)
+    ![Slutpunkter för direktuppspelning](./media/create-account/create-ams-account-se.png)
 4. För att Video Indexer ska kunna autentiseras med Media Services API måste en AD-App skapas. Följande steg vägleder dig genom processen för Azure AD-autentisering som beskrivs i [komma igång med Azure AD-autentisering med hjälp av Azure Portal](../previous/media-services-portal-get-started-with-aad.md):
 
     1. Välj **API-åtkomst** i det nya Media Services kontot.
@@ -147,7 +152,7 @@ Ange följande information i dialog rutan:
 |Prenumerations-ID:t|Azure-prenumerationen som den här anslutningen ska skapas under. Prenumerations-ID kan hämtas från Azure Portal. Välj **alla tjänster** i den vänstra panelen och Sök efter "prenumerationer". Välj **prenumerationer** och välj önskat ID i listan med dina prenumerationer.|
 |Namn på Azure Media Services resurs grupp|Namnet på resurs gruppen där du skapade Media Services-kontot.|
 |Medie tjänst resurs namn|Namnet på det Azure Media Services konto som du skapade i föregående avsnitt.|
-|Program-ID:t|Azure AD-programmets ID (med behörigheter för det angivna Media Services kontot) som du skapade i föregående avsnitt.|
+|Program-ID|Azure AD-programmets ID (med behörigheter för det angivna Media Services kontot) som du skapade i föregående avsnitt.|
 |Program nyckel|Den Azure AD-programnyckel som du skapade i föregående avsnitt. |
 
 ## <a name="import-your-content-from-the-trial-account"></a>Importera ditt innehåll från *utvärderings* kontot
@@ -171,7 +176,9 @@ Kontot tas bort permanent om 90 dagar.
 
 Följande Azure Media Services relaterade överväganden gäller:
 
-* Om du ansluter automatiskt visas en ny resurs grupp, Media Services konto och ett lagrings konto i din Azure-prenumeration.
+* Om du planerar att ansluta till ett befintligt Media Services konto kontrollerar du att Media Servicess kontot har skapats med de klassiska API: erna. 
+ 
+    ![Media Services klassiskt API](./media/create-account/enable-classic-api.png)
 * Om du ansluter till ett befintligt Media Services-konto kan Video Indexer inte ändra konfigurationen för den befintliga enheten för **reserverade enheter** .
 
    Du kan behöva justera typ och antal enheternas reserverade enheter enligt den planerade belastningen. Tänk på att om belastningen är hög och du inte har tillräckligt med enheter eller hastighet kan video bearbetningen leda till timeout-problem.

@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 767617833789c71bfc2ecfc2d518166f8bcee6c6
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 181f645540a267d65b15a0345a61752a8a5f78fa
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109529"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704745"
 ---
 # <a name="tutorial-discover-google-cloud-platform-gcp-instances-with-server-assessment"></a>Självstudie: identifiera Google Cloud Platform-instanser (GCP) med Server utvärdering
 
@@ -20,7 +20,7 @@ Som en del av migreringen till Azure identifierar du dina servrar för utvärder
 
 Den här självstudien visar hur du identifierar Google Cloud Platform-instanser (GCP) med verktyget Azure Migrate: Server bedömning med en förenklad Azure Migrate-installation. Du distribuerar installationen på en GCP VM-instans för att kontinuerligt identifiera dator-och prestanda-metadata.
 
-I den här guiden får du lära dig att:
+I de här självstudierna får du lära dig att
 
 > [!div class="checklist"]
 > * Konfigurera ett Azure-konto.
@@ -225,11 +225,16 @@ Konfigurera enheten för första gången.
 ### <a name="register-the-appliance-with-azure-migrate"></a>Registrera enheten med Azure Migrate
 
 1. Klistra in **Azure Migrate projekt nyckeln** som har kopierats från portalen. Om du inte har nyckeln går du till **Server utvärdering> identifiera> hantera befintliga apparater**, väljer det installations namn som du angav vid tidpunkten för att generera nyckeln och kopierar motsvarande nyckel.
-1. Klicka på **Logga** in. En Azure-inloggning visas i en ny flik i webbläsaren. Om den inte visas kontrollerar du att du har inaktiverat blockering av popup-fönster i webbläsaren.
-1. På fliken nytt loggar du in med ditt användar namn och lösen ord för Azure.
+1. Du behöver en enhets kod för att autentisera med Azure. När du klickar på **Logga in** öppnas en modal enhets kod som visas nedan.
+
+    ![Modal visar enhets koden](./media/tutorial-discover-vmware/device-code.png)
+
+1. Klicka på **Kopiera kod & inloggning** för att kopiera enhets koden och öppna en Azure-inloggnings tolk i en ny webbläsare-flik. Om den inte visas kontrollerar du att du har inaktiverat blockering av popup-fönster i webbläsaren.
+1. På fliken nytt klistrar du in enhets koden och loggar in med ditt användar namn och lösen ord för Azure.
    
    Inloggning med en PIN-kod stöds inte.
-3. När du har loggat in går du tillbaka till webbappen. 
+3. Om du stänger fliken inloggning oavsiktligt utan att logga in, måste du uppdatera fliken webbläsare i Konfigurations hanteraren för att aktivera inloggnings knappen igen.
+1. När du har loggat in går du tillbaka till föregående flik med installationen av Konfigurations hanteraren.
 4. Om Azure-användarkontot som används för loggning har rätt [behörigheter](#prepare-an-azure-user-account) för de Azure-resurser som skapades under den här nyckeln, initieras registrerings enheten.
 5. När installationen av enheten har registrerats kan du se registrerings informationen genom att klicka på **Visa information**.
 
@@ -246,6 +251,10 @@ Anslut nu från installationen till GCP-servrarna och starta identifieringen.
     - Azure Migrate stöder den privata SSH-nyckeln som genereras av ssh-keygen-kommandot med RSA-, DSA-, ECDSA-och ed25519-algoritmer.
     - För närvarande har Azure Migrate inte stöd för en lösen fras baserad SSH-nyckel. Använd en SSH-nyckel utan lösen fras.
     - För närvarande stöder Azure Migrate inte den privata SSH-nyckelfilen som genereras av SparaTillFil.
+    - Azure Migrate stöder OpenSSH-formatet för den privata SSH-nyckelfilen som visas nedan:
+    
+    ![Format som stöds av SSH privat nyckel](./media/tutorial-discover-physical/key-format.png)
+
 
 2. Om du vill lägga till flera autentiseringsuppgifter samtidigt klickar du på **Lägg till fler** för att spara och lägga till fler autentiseringsuppgifter. 
 3. I **steg 2: Ange information om fysiska eller virtuella servrar** klickar du på **Lägg till identifierings källa** för att ange serverns **IP-adress/FQDN** och det egna namnet för autentiseringsuppgifter för att ansluta till servern.

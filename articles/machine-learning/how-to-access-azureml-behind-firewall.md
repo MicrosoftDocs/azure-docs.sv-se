@@ -11,16 +11,19 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8560acd9c5a11004c5144441d395863c8b85edba
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0fa3492555b2870ae7b95abec08bbd3280cdc985
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461397"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705072"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Använd arbets ytan bakom en brand vägg för Azure Machine Learning
 
-I den här artikeln lär du dig hur du konfigurerar Azure-brandväggen för att kontrol lera åtkomsten till din Azure Machine Learning-arbetsyta och det offentliga Internet. Mer information om hur du skyddar Azure Machine Learning finns i [företags säkerhet för Azure Machine Learning](concept-enterprise-security.md)
+I den här artikeln lär du dig hur du konfigurerar Azure-brandväggen för att kontrol lera åtkomsten till din Azure Machine Learning-arbetsyta och det offentliga Internet. Mer information om hur du skyddar Azure Machine Learning finns i [företags säkerhet för Azure Machine Learning](concept-enterprise-security.md).
+
+> [!WARNING]
+> Åtkomst till data lagring bakom en brand vägg stöds bara i första kod. Det går inte att komma åt data bakom en brand vägg med hjälp av [Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md) . Om du vill arbeta med data lagring i ett privat nätverk med Studio måste du först [Konfigurera ett virtuellt nätverk](../virtual-network/quick-create-portal.md) och [ge Studio åtkomst till data som lagras i ett virtuellt nätverk](how-to-enable-studio-virtual-network.md).
 
 ## <a name="azure-firewall"></a>Azure Firewall
 
@@ -72,7 +75,7 @@ Mer information finns i [skapa en Azure Batch pool i ett virtuellt nätverk](../
     * MicrosoftContainerRegistry. region
     * AzureFrontDoor.FirstParty
 
-    För poster som innehåller `region` ersätter du med den Azure-region som du använder. Exempelvis `keyvault.westus`.
+    För poster som innehåller `region` ersätter du med den Azure-region som du använder. Ett exempel är `keyvault.westus`.
 
     För __protokollet__ väljer du `TCP` . För käll-och mål __portarna__ väljer du `*` .
 

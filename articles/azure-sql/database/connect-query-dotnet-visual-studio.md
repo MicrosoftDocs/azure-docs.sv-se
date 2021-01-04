@@ -12,76 +12,47 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/10/2020
-ms.openlocfilehash: a864b2b3e0379a8b0a1d67c97a63b3d5c52f9e58
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 1d8859f4790610e72ad517f74bbbbf0cf77d9316
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669709"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705216"
 ---
-# <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Snabb start: använda .NET och C# i Visual Studio för att ansluta till och fråga en databas i Azure SQL Database eller Azure SQL-hanterad instans
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+# <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database"></a>Snabb start: använda .NET och C# i Visual Studio för att ansluta till och fråga en databas
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Den här snabb starten visar hur du använder [.NET Framework](https://www.microsoft.com/net/) och C#-koden i Visual Studio för att fråga en databas i Azure SQL Database med Transact-SQL-uttryck.
+Den här snabb starten visar hur du använder [.NET Framework](https://www.microsoft.com/net/) och C#-koden i Visual Studio för att fråga en databas i Azure SQL eller Synapse SQL med Transact-SQL-uttryck.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här snabbstarten behöver du:
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- En databas i Azure SQL Database. Du kan använda någon av dessa snabbstarter för att skapa och därefter konfigurera en databas i Azure SQL Database:
-
-  | Åtgärd | SQL Database | SQL-hanterad instans | SQL Server på virtuella Azure-datorer |
-  |:--- |:--- |:---|:---|
-  | Skapa| [Portal](single-database-create-quickstart.md) | [Portal](../managed-instance/instance-create-quickstart.md) | [Portal](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
-  || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | [PowerShell](../virtual-machines/windows/sql-vm-create-powershell-quickstart.md)
-  | Konfigurera | [IP-brandväggsregel på servernivå](firewall-create-server-level-portal-quickstart.md)| [Anslutning från en virtuell dator](../managed-instance/connect-vm-instance-configure.md)|
-  |||[Anslutning från lokal plats](../managed-instance/point-to-site-p2s-configure.md) | [Anslut till SQL Server](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
-  |Läsa in data|AdventureWorks som lästs in per snabbstart|[Återställa Wide World Importers](../managed-instance/restore-sample-database-quickstart.md) | [Återställa Wide World Importers](../managed-instance/restore-sample-database-quickstart.md) |
-  |||Återställa eller importera Adventure Works från en [BACPAC](database-import.md) -fil från [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)| Återställa eller importera Adventure Works från en [BACPAC](database-import.md) -fil från [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
-  |||
-
-  > [!IMPORTANT]
-  > Skripten i den här artikeln skrivs för att använda Adventure Works-databasen. Med en SQL-hanterad instans måste du antingen importera Adventure Works-databasen till en instans databas eller ändra skripten i den här artikeln för att använda Wide World imports-databasen.
-
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/) Community, Professional eller Enterprise Edition.
+- En databas där du kan köra en fråga.
 
-## <a name="get-server-connection-information"></a>Hämta information om Server anslutning
-
-Hämta anslutnings informationen du behöver för att ansluta till databasen. Du behöver det fullständiga servernamnet eller värdnamnet, databasnamnet och inloggningsinformationen för de kommande procedurerna.
-
-1. Logga in på [Azure-portalen](https://portal.azure.com/).
-
-2. Gå till sidan **SQL-databaser**  eller **SQL-hanterade instanser** .
-
-3. På sidan **Översikt** granskar du det fullständigt kvalificerade Server namnet bredvid **Server namnet** för en databas i Azure SQL Database eller det fullständigt kvalificerade Server namnet (eller IP-adressen) bredvid **värd** för en Azure SQL-hanterad instans eller SQL Server på Azure VM. Om du vill kopiera servernamnet eller värdnamnet hovrar du över det och väljer ikonen **Kopiera** .
-
-> [!NOTE]
-> Anslutnings information för SQL Server på den virtuella Azure-datorn finns i [Anslut till en SQL Server instans](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server).
+  [!INCLUDE[create-configure-database](../includes/create-configure-database.md)]
 
 ## <a name="create-code-to-query-the-database-in-azure-sql-database"></a>Skapa kod för att köra frågor mot databasen i Azure SQL Database
 
 1. Skapa ett nytt projekt i Visual Studio. 
    
-1. I dialog rutan **nytt projekt** väljer du **Visual C#** , **konsol program (.NET Framework)** .
+1. I dialog rutan **nytt projekt** väljer du **Visual C#**, **konsol program (.NET Framework)**.
    
-1. Ange *sqltest* som projektnamn och välj sedan **OK** . Det nya projektet skapas. 
+1. Ange *sqltest* som projektnamn och välj sedan **OK**. Det nya projektet skapas. 
    
-1. Välj **projekt**  >  **Hantera NuGet-paket** . 
+1. Välj **projekt**  >  **Hantera NuGet-paket**. 
    
-1. I **NuGet Package Manager** väljer du fliken **Bläddra** och sedan söker du efter och väljer **Microsoft. data. SqlClient** .
+1. I **NuGet Package Manager** väljer du fliken **Bläddra** och sedan söker du efter och väljer **Microsoft. data. SqlClient**.
    
-1. På sidan **Microsoft. data. SqlClient** väljer du **Installera** . 
+1. På sidan **Microsoft. data. SqlClient** väljer du **Installera**. 
    - Välj **OK** för att fortsätta med installationen om du uppmanas att göra det. 
-   - Om ett fönster för **godkännande av licensen** visas väljer du **Jag accepterar** .
+   - Om ett fönster för **godkännande av licensen** visas väljer du **Jag accepterar**.
    
-1. När installationen har slutförts kan du stänga **NuGet-pakethanteraren** . 
+1. När installationen har slutförts kan du stänga **NuGet-pakethanteraren**. 
    
 1. Ersätt innehållet i **Program.cs** med följande kod i kodredigeraren. Ersätt värdena för `<your_server>` , `<your_username>` , `<your_password>` och `<your_database>` .
-   
-   >[!IMPORTANT]
-   >Koden i det här exemplet använder AdventureWorksLT-exempeldata, som du kan välja som källa när du skapar din databas. Om din databas har andra data använder du tabeller från din egen databas i SELECT-frågan. 
    
    ```csharp
    using System;
@@ -107,12 +78,7 @@ Hämta anslutnings informationen du behöver för att ansluta till databasen. Du
                        Console.WriteLine("\nQuery data example:");
                        Console.WriteLine("=========================================\n");
                        
-                       StringBuilder sb = new StringBuilder();
-                       sb.Append("SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName ");
-                       sb.Append("FROM [SalesLT].[ProductCategory] pc ");
-                       sb.Append("JOIN [SalesLT].[Product] p ");
-                       sb.Append("ON pc.productcategoryid = p.productcategoryid;");
-                       String sql = sb.ToString();
+                       String sql = "SELECT name, collation_name FROM sys.databases";
    
                        using (SqlCommand command = new SqlCommand(sql, connection))
                        {
@@ -139,8 +105,8 @@ Hämta anslutnings informationen du behöver för att ansluta till databasen. Du
 
 ## <a name="run-the-code"></a>Kör koden
 
-1. Om du vill köra appen väljer du **Felsök**  >  **Starta fel sökning** , eller så väljer du **Starta** i verktygsfältet eller trycker på **F5** .
-1. Kontrollera att de 20 främsta raderna för kategori/produkt från databasen returneras och stäng sedan appfönstret.
+1. Om du vill köra appen väljer du **Felsök**  >  **Starta fel sökning**, eller så väljer du **Starta** i verktygsfältet eller trycker på **F5**.
+1. Kontrol lera att databas namnen och sorteringarna returneras och stäng sedan app-fönstret.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/04/2020
+ms.date: 12/21/2020
 ms.author: jeedes
-ms.openlocfilehash: e0cabcbaaf8e84ac1bdfd13c0ef4ab14f326fcf7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d7cafdcbbf44f3f501d54c13d1b4549c446ed8c8
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182299"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724008"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Självstudie: Azure Active Directory integrering med Citrix ShareFile
 
@@ -51,7 +51,7 @@ För att kunna konfigurera integreringen av Citrix ShareFile i Azure AD måste d
 1. Skriv **Citrix ShareFile** i sökrutan i avsnittet **Lägg till från galleriet** .
 1. Välj **Citrix ShareFile** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
-## <a name="configure-and-test-azure-ad-sso"></a>Konfigurera och testa Azure AD SSO
+## <a name="configure-and-test-azure-ad-sso-for-citrix-sharefile"></a>Konfigurera och testa Azure AD SSO för Citrix ShareFile
 
 I det här avsnittet konfigurerar och testar du enkel inloggning med Azure AD med Citrix ShareFile baserat på en testanvändare med namnet **Britta Simon**.
 För att enkel inloggning ska fungera måste en länkrelation mellan en Azure AD-användare och den relaterade användaren i Citrix ShareFile upprättas.
@@ -60,10 +60,10 @@ Utför följande steg för att konfigurera och testa enkel inloggning med Citrix
 
 1. **[Konfigurera Azure AD SSO](#configure-azure-ad-sso)** – så att användarna kan använda den här funktionen.
     
-    * **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)** – för att testa enkel inloggning med Azure AD med Britta Simon.
-    * **[Tilldela Azure AD-testanvändaren](#assign-the-azure-ad-test-user)** – så att Britta Simon kan använda enkel inloggning med Azure AD.
+    1. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)** – för att testa enkel inloggning med Azure AD med Britta Simon.
+    1. **[Tilldela Azure AD-testanvändaren](#assign-the-azure-ad-test-user)** – så att Britta Simon kan använda enkel inloggning med Azure AD.
 2. **[Konfigurera Citrix SHAREFILE SSO](#configure-citrix-sharefile-sso)** – för att konfigurera enskilda Sign-On inställningar på program sidan.
-    * **[Skapa Citrix ShareFile-testanvändare](#create-citrix-sharefile-test-user)** – så att det finns en motsvarighet till Britta Simon i Citrix ShareFile som är länkad till Azure AD-representationen av användaren.
+    1. **[Skapa Citrix ShareFile-testanvändare](#create-citrix-sharefile-test-user)** – så att det finns en motsvarighet till Britta Simon i Citrix ShareFile som är länkad till Azure AD-representationen av användaren.
 3. **[Testa SSO](#test-sso)** – för att kontrol lera om konfigurationen fungerar.
 
 ### <a name="configure-azure-ad-sso"></a>Konfigurera Azure AD SSO
@@ -113,7 +113,7 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Exempelvis `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -131,7 +131,15 @@ Om du förväntar dig att en roll ska tilldelas användarna kan du välja den fr
 
 ## <a name="configure-citrix-sharefile-sso"></a>Konfigurera Citrix ShareFile SSO
 
-1. Öppna ett annat webbläsarfönster och logga in på din **Citrix ShareFile**-företagswebbplats som administratör.
+1. Om du vill automatisera konfigurationen i **Citrix ShareFile** måste du installera **Mina appar säker inloggnings webb läsar tillägg** genom att klicka på **installera tillägget**.
+
+    ![Mina Apps-tillägg](common/install-myappssecure-extension.png)
+
+2. När du har lagt till tillägg i webbläsaren, klickar du på **Konfigurera Citrix ShareFile** för att dirigera dig till Citrix ShareFile-programmet. Därifrån anger du administratörsautentiseringsuppgifter för att logga in på Citrix ShareFile. Webbläsartillägget konfigurerar automatiskt programmet åt dig och automatiserar steg 3–7.
+
+    ![Konfigurera konfiguration](common/setup-sso.png)
+
+3. Om du vill konfigurera Citrix ShareFile manuellt i ett annat webbläsarfönster loggar du in på din Citrix ShareFile företags plats som administratör.
 
 1. I **instrument panelen** klickar du på **Inställningar** och väljer **Administratörs inställningar**
 
@@ -184,13 +192,13 @@ Om du förväntar dig att en roll ska tilldelas användarna kan du välja den fr
 
 ## <a name="test-sso"></a>Testa SSO 
 
-I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ. 
+I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ.
 
-1. Klicka på **testa det här programmet** i Azure Portal. Detta omdirigeras till Citrix ShareFile-inloggnings-URL där du kan starta inloggnings flödet. 
+* Klicka på **testa det här programmet** i Azure Portal. Detta omdirigeras till Citrix ShareFile-inloggnings-URL där du kan starta inloggnings flödet.
 
-2. Gå till Citrix ShareFile-inloggnings-URL: en direkt och starta inloggnings flödet därifrån.
+* Gå till Citrix ShareFile-inloggnings-URL: en direkt och starta inloggnings flödet därifrån.
 
-3. Du kan använda Microsoft Access-panelen. När du klickar på panelen Citrix ShareFile på åtkomst panelen omdirigeras detta till Citrix ShareFile-inloggnings-URL. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](../user-help/my-apps-portal-end-user-access.md).
+* Du kan använda Microsoft Mina appar. När du klickar på panelen Citrix ShareFile i Mina appar omdirigeras detta till Citrix ShareFile-inloggnings-URL. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 
 ## <a name="next-steps"></a>Nästa steg

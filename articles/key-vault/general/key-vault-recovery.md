@@ -3,25 +3,37 @@ title: Översikt över Azure Key Vault återställning | Microsoft Docs
 description: Key Vault återställnings funktioner är utformade för att förhindra oavsiktlig eller skadlig borttagning av ditt nyckel valv och hemligheter, nycklar och certifikat som lagras i nyckel valvet.
 ms.service: key-vault
 ms.subservice: general
-ms.topic: conceptual
-author: ShaneBala-keyvault
-ms.author: sudbalas
-manager: ravijan
-ms.date: 12/15/2020
-ms.openlocfilehash: 485da2230de80150c9a5d13b262d1857c8c172fc
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.topic: how-to
+ms.author: mbaldwin
+author: msmbaldwin
+manager: rkarlin
+ms.date: 09/30/2020
+ms.openlocfilehash: 258d100276b20ea2437ebffb1473492a247657e8
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587119"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704222"
 ---
-# <a name="how-to-enable-soft-delete-and-purge-protection"></a>Så här aktiverar du skydd mot mjuk borttagning och rensning
+# <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>Azure Key Vault återställnings hantering med mjuk borttagning och rensnings skydd
 
 Den här artikeln beskriver två återställnings funktioner i Azure Key Vault, mjuk borttagning och tömning av skydd. Det här dokumentet ger en översikt över dessa funktioner och visar hur du hanterar dem via Azure Portal, Azure CLI och Azure PowerShell.
 
+Mer information om Key Vault finns i
+- [Översikt över Key Vault](overview.md)
+- [Översikt över Azure Key Vault nycklar, hemligheter och certifikat](about-keys-secrets-certificates.md)
+
+## <a name="prerequisites"></a>Förutsättningar
+
+* En Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/dotnet)
+* [PowerShell-modul](https://docs.microsoft.com/powershell/azure/install-az-ps).
+* [Azure CLI](/cli/azure/install-azure-cli)
+* En Key Vault – du kan skapa en med hjälp av [Azure Portal](../general/quick-create-portal.md) [Azure CLI](../general/quick-create-cli.md)eller [Azure PowerShell](../general/quick-create-powershell.md)
+
 ## <a name="what-are-soft-delete-and-purge-protection"></a>Vad är mjuk borttagning och rensnings skydd
 
-Det mjuka borttagnings-och tömnings skyddet är två olika återställnings funktioner för nyckel valv.
+Det [mjuka borttagnings](soft-delete-overview.md) -och tömnings skyddet är två olika återställnings funktioner för nyckel valv.
+
 > [!IMPORTANT]
 > Att aktivera mjuk borttagning är viktigt för att säkerställa att nyckel valven och autentiseringsuppgifterna skyddas från oavsiktlig borttagning. Att aktivera mjuk borttagning betraktas dock som en brytande ändring eftersom det kan krävas att du ändrar program logiken eller ger ytterligare behörighet till tjänstens huvud namn. Innan du aktiverar mjuk borttagning genom att följa anvisningarna nedan kontrollerar du att programmet är kompatibelt med ändringen med det här dokumentet [ **här**.](soft-delete-change.md)
 
@@ -33,6 +45,8 @@ Det är viktigt att Observera att **nyckel valvs namn är globalt unika**, så d
 
 > [!NOTE]
 > Rensnings skyddet har utformats så att ingen administratörs roll eller-behörighet kan åsidosätta, inaktivera eller kringgå rensnings skyddet. **När rensnings skyddet har Aktiver ATS kan det inte inaktive ras eller åsidosättas av någon som inkluderar Microsoft.** Det innebär att du måste återställa ett borttaget nyckel valv eller vänta tills kvarhållningsperioden har gått ut innan du återanvänder nyckel valvets namn.
+
+Mer information om mjuk borttagning finns i [Azure Key Vault översikt över mjuk borttagning](soft-delete-overview.md)
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/azure-portal)
 
@@ -66,7 +80,7 @@ Det är viktigt att Observera att **nyckel valvs namn är globalt unika**, så d
 1. Längst upp på skärmen klickar du på alternativet för att "hantera borttagna valv"
 1. Ett kontext fönster öppnas på höger sida av skärmen.
 1. Välj din prenumeration.
-1. Om ditt nyckel valv har avvisats bort visas det i kontext fönstret till höger.
+1. Om nyckel valvet har varit mjukt Borttaget visas det i kontext fönstret till höger.
 1. Om det finns för många valv kan du antingen klicka på Läs in mer längst ned i kontext fönstret eller använda CLI eller PowerShell för att hämta resultatet.
 1. När du har hittat valvet du vill återställa eller rensa markerar du kryss rutan bredvid den.
 1. Välj alternativet för att återställa längst ned i kontext fönstret om du vill återställa nyckel valvet.
@@ -370,3 +384,14 @@ Det är viktigt att Observera att **nyckel valvs namn är globalt unika**, så d
   ```powershell
   Remove-AzKeyVaultSecret -VaultName ContosoVault -InRemovedState -name SQLPassword
   ```
+---
+
+## <a name="next-steps"></a>Nästa steg
+
+- [Azure Key Vault PowerShell-cmdletar](https://docs.microsoft.com/powershell/module/az.keyvault)
+- [Key Vault Azure CLI-kommandon](https://docs.microsoft.com/cli/azure/keyvault)
+- [Azure Key Vault säkerhets kopiering](backup.md)
+- [Så här aktiverar du Key Vault loggning](howto-logging.md)
+- [Säker åtkomst till ett nyckel valv](secure-your-key-vault.md)
+- [Guide för Azure Key Vault utvecklare](developers-guide.md)
+- [Metod tips för att använda ett nyckel valv](best-practices.md)

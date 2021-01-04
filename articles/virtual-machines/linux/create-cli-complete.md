@@ -6,19 +6,19 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 17d36acfa2de699ff2b22ac16d327ea738519f4a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5992fb20fc8b86d4a0094a8fe5ed6cb6eb03754d
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975390"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704477"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Skapa en komplett virtuell Linux-dator med Azure CLI
 Om du snabbt vill skapa en virtuell dator i Azure kan du använda ett enda Azure CLI-kommando som använder standardvärden för att skapa nödvändiga resurser. Resurser som ett virtuellt nätverk, en offentlig IP-adress och regler för nätverks säkerhets grupper skapas automatiskt. Om du vill ha mer kontroll över din miljö i produktions användningen kan du skapa resurserna i förväg och sedan lägga till dina virtuella datorer i dem. Den här artikeln vägleder dig genom hur du skapar en virtuell dator och var och en av de stödda resurserna en i taget.
 
 Kontrol lera att du har installerat den senaste versionen av [Azure CLI](/cli/azure/install-az-cli2) och loggat till ett Azure-konto i med [AZ-inloggning](/cli/azure/reference-index).
 
-Ersätt exempel parameter namn med dina egna värden i följande exempel. Exempel på parameter namn är *myResourceGroup*, *myVnet*och *myVM*.
+Ersätt exempel parameter namn med dina egna värden i följande exempel. Exempel på parameter namn är *myResourceGroup*, *myVnet* och *myVM*.
 
 ## <a name="create-resource-group"></a>Skapa resursgrupp
 En Azure-resursgrupp är en logisk container där Azure-resurser distribueras och hanteras. En resurs grupp måste skapas före en virtuell dator och stödja virtuella nätverks resurser. Skapa resurs gruppen med [AZ Group Create](/cli/azure/group). I följande exempel skapas en resurs grupp med namnet *myResourceGroup* på platsen för *öster* :
@@ -558,10 +558,10 @@ az group export --name myResourceGroup > myResourceGroup.json
 
 Det här kommandot skapar `myResourceGroup.json` filen i din aktuella arbets katalog. När du skapar en miljö från den här mallen uppmanas du att ange alla resurs namn. Du kan fylla i dessa namn i mallfilen genom att lägga till `--include-parameter-default-value` parametern i `az group export` kommandot. Redigera din JSON-mall för att ange resurs namnen eller [skapa en parameters.jspå en fil](../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/linux/toc.json) som anger resurs namnen.
 
-Om du vill skapa en miljö från mallen använder du [AZ Group Deployment Create](/cli/azure/group/deployment) enligt följande:
+Om du vill skapa en miljö från mallen använder du [AZ distributions grupp skapa](/cli/azure/deployment/group) enligt följande:
 
 ```azurecli
-az group deployment create \
+az deployment group create \
     --resource-group myNewResourceGroup \
     --template-file myResourceGroup.json
 ```

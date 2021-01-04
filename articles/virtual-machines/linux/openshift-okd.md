@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/15/2019
 ms.author: haroldw
-ms.openlocfilehash: a7524ea80906f9df5f63af9e7d672bbef500b0d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed74d0829a8372ea8391fcd331eef2ef3af3dae0
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373342"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704919"
 ---
 # <a name="deploy-okd-in-azure"></a>Distribuera OKD i Azure
 
@@ -124,7 +124,7 @@ Olika versioner kan ha olika parametrar, så kontrol lera de nödvändiga parame
 I följande exempel distribueras OKD-klustret och alla relaterade resurser till en resurs grupp med namnet openshiftrg, med ett distributions namn på myOpenShiftCluster. Mallen refereras direkt från GitHub-lagrings platsen när en lokal parameter fil med namnet azuredeploy.parameters.json används.
 
 ```azurecli 
-az group deployment create -g openshiftrg --name myOpenShiftCluster \
+az deployment group create -g openshiftrg --name myOpenShiftCluster \
       --template-uri https://raw.githubusercontent.com/Microsoft/openshift-origin/master/azuredeploy.json \
       --parameters @./azuredeploy.parameters.json
 ```

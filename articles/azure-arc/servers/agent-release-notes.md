@@ -1,14 +1,14 @@
 ---
 title: Vad är nytt med Azure Arc-aktiverade Server agenter
-description: Den här artikeln innehåller viktig information om Azure Arc-aktiverade Server agenter. För många av de sammanfattade problemen finns det länkar till ytterligare information.
+description: Den här artikeln innehåller viktig information om Azure Arc-aktiverade Server agenter. För många av de sammanfattade problemen finns det länkar till mer information.
 ms.topic: conceptual
-ms.date: 12/14/2020
-ms.openlocfilehash: 3a01113d0d6416fb050f5c66191d5c420b7ac137
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.date: 12/21/2020
+ms.openlocfilehash: 4b7fd97d5b7e1cddc1d78e0d24205890e74c45c1
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505655"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722529"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Vad är nytt med Azure Arc-aktiverade Server agenter
 
@@ -20,6 +20,8 @@ Azure Arc-aktiverade servrar som är anslutna till dator agenten får fort löp 
 
 ## <a name="december-2020"></a>December 2020
 
+Version: 1,3
+
 ### <a name="new-feature"></a>Ny funktion
 
 Stöd har lagts till för Windows Server 2008 R2
@@ -30,11 +32,15 @@ Löst problem med att förhindra att det anpassade skript tillägget på Linux i
 
 ## <a name="november-2020"></a>November 2020
 
+Version: 1,2
+
 ### <a name="fixed"></a>Fast
 
 Löst problem där proxykonfigurationen kan försvinna efter uppgraderingen på RPM-baserade distributioner.
 
 ## <a name="october-2020"></a>Oktober 2020
+
+Version: 1.1
 
 ### <a name="fixed"></a>Fast
 
@@ -61,7 +67,7 @@ Version: 1,0 (allmän tillgänglighet)
 - Alternativet har lagts `azcmagent show --json` till för tillstånd för utmatnings agent i lätt att tolkas.
 - Flagga har lagts `azcmagent show` till i utdata för att ange om servern finns på en virtuell dator som finns i Azure.
 - Alternativet har lagts `azcmagent disconnect --force-local-only` till för att tillåta återställning av lokalt agent tillstånd när det inte går att nå Azure-tjänsten.
-- Alternativet har lagts `azcmagent connect --cloud` till för att stödja ytterligare moln. I den här versionen stöds endast Azure av service i samband med agent versionen.
+- Alternativet har lagts `azcmagent connect --cloud` till för att stödja andra moln. I den här versionen stöds endast Azure av service i samband med agent versionen.
 - Agenten har lokaliserats till Azure-språk som stöds.
 
 ### <a name="fixed"></a>Fast

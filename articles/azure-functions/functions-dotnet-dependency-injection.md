@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 08/15/2020
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: b2bf406dcab626b3ac08caf1a21ffea9332d3ca2
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 70ec9248db002823e969fa5f4fba8bf1074a9af7
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672652"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706940"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Använda beroendeinmatning i .NET Azure Functions
 
@@ -22,7 +22,7 @@ Azure Functions stöder design mönstret för program beroende insprutning (DI),
 
 - Stöd för beroende inmatning börjar med Azure Functions 2. x.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du kan använda beroende inmatning måste du installera följande NuGet-paket:
 
@@ -30,7 +30,7 @@ Innan du kan använda beroende inmatning måste du installera följande NuGet-pa
 
 - [Microsoft. net. SDK. Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) -paket version 1.0.28 eller senare
 
-- [Microsoft. tilläggsmetadata. DependencyInjection](https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection/) (för närvarande endast version 3. x och tidigare stöd)
+- [Microsoft. Extensions. DependencyInjection](https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection/) (för närvarande version 3. x och tidigare stöds)
 
 ## <a name="register-services"></a>Registrera tjänster
 

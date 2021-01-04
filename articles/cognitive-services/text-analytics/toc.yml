@@ -80,7 +80,8 @@
         - name: Konfigurera containrar
           href: text-analytics-resource-container-config.md
         - name: Använda containerinstanser
-          href: how-tos/text-analytics-how-to-use-container-instances.md
+          maintainContext: true
+          href: ../containers/azure-container-instance-recipe.md
         - name: Använda Kubernetes Service (AKS)
           href: how-tos/text-analytics-how-to-use-kubernetes-service.md
         - name: Dokumentation om containrar för Cognitive Services

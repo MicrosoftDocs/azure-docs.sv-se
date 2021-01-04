@@ -1,23 +1,23 @@
 ---
 title: Prestanda justering – Hive på Azure Data Lake Storage Gen1
 description: Lär dig mer om prestanda justering för Hive i HdInsight och Azure Data Lake Storage Gen1. För I/O-intensiva frågor kan du justera Hive för att få bättre prestanda.
-author: stewu
+author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
-ms.author: stewu
-ms.openlocfilehash: 7b1bbe7f632d8101dbff02a31092f06c7b644ece
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.author: twooley
+ms.openlocfilehash: 082d684ed0a29cb6bf2de9c506886b6d98cf174a
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108328"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723789"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Vägledning för prestanda justering för Hive i HDInsight och Azure Data Lake Storage Gen1
 
 Standardinställningarna har ställts in för att ge bästa prestanda i många olika användnings fall.  För I/O-intensiva frågor kan Hive justeras för att få bättre prestanda med Azure Data Lake Storage Gen1.  
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * **En Azure-prenumeration**. Se [Hämta en kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Ett data Lake Storage gen1 konto**. Instruktioner för hur du skapar ett finns i [Kom igång med Azure Data Lake Storage gen1](data-lake-store-get-started-portal.md)

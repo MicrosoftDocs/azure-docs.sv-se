@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: b02ccea396fc65f9ecfe1d59e953da7440e87951
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 9457c610b256dd4602ef0dc51a47eeffb3c63b49
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363658"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705157"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Metod tips för att använda API: t för avvikelse detektor
 
@@ -104,4 +104,4 @@ Om dina strömmande data samplas med ett kort intervall (till exempel sekunder e
 ## <a name="next-steps"></a>Nästa steg
 
 * [Vad är API:et för avvikelseidentifiering?](../overview.md)
-* [Snabb start: identifiera avvikelser i dina tids serie data med hjälp av avvikelse detektor REST API](../quickstarts/detect-data-anomalies-csharp.md)
+* [Snabb start: identifiera avvikelser i dina tids serie data med hjälp av avvikelse detektorn](../quickstarts/client-libraries.md)

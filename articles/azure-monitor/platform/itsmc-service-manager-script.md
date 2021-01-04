@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: 4babd015b05527cb03d2747b1c9b9a34941634ab
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: d620df0b55b024cd5d7c25ea17d9b09c5c5da8ff
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657013"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722886"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>Skapa Service Manager-webbapp med det automatiserade skriptet
 
-Använd följande skript för att skapa webbappen för din Service Manager-instans. Mer information om Service Manager-anslutning finns här: [Service Manager webbappen](./itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+Använd följande skript för att skapa webbappen för din Service Manager-instans. Mer information om Service Manager-anslutning finns här: [Service Manager webbappen](./itsmc-connections-scsm.md)
 
 Kör skriptet genom att ange följande obligatoriska information:
 
@@ -30,12 +30,9 @@ Skriptet skapar webbappen med det namn som du har angett (tillsammans med några
 
 Spara dessa värden. du behöver dessa värden när du skapar en anslutning med Anslutningsprogram för hantering av IT-tjänster (ITSM).
 
-> [!NOTE]
-> Den här artikeln innehåller referenser till termen *vitlista*, en term som Microsoft inte längre använder. När termen tas bort från program varan tar vi bort det från den här artikeln.
-
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
  Windows Management Framework 5,0 eller senare.
 Windows 10 har 5,1 som standard. Du kan ladda ned ramverket [här](https://www.microsoft.com/download/details.aspx?id=50395):
@@ -321,5 +318,5 @@ if(!$err)
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-[Konfigurera hybrid anslutningen](./itsmc-connections.md#configure-the-hybrid-connection).
+[Konfigurera hybrid anslutningen](./itsmc-connections-scsm.md#configure-the-hybrid-connection).
 

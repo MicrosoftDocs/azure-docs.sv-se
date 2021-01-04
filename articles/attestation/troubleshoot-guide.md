@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 72d7a40c38f3629a70260f223074b456dff9ce38
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3ae3e12c11f194b3efcc149382dc952bd74d38b5
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182843"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704324"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Microsoft Azure fel söknings guide för attestering
 
@@ -280,7 +280,7 @@ Om du vill fortsätta att interagera med PowerShell-galleriet kör du följande 
 Användaren har tilldelats lämpliga roller. Men problem med att drabbas vid hantering av attesterings principer via PowerShell.
 
 ### <a name="error"></a>Fel
-Klienten med objekt-ID <object Id>  har inte behörighet att utföra åtgärden Microsoft. Authorization/RoleAssignments/Write över omfånget/ <subscriptionId> resourcegroups/secure_enclave_poc/providers/Microsoft.Authorization/RoleAssignments/ <role assignmentId> , eller så är omfattningen ogiltigt. Om åtkomst nyligen har beviljats ska du uppdatera dina autentiseringsuppgifter
+Klienten med objekt-ID &lt; objekt-ID &gt;  har inte behörighet att utföra åtgärden Microsoft. Authorization/RoleAssignments/Write över omfånget///Write över omfånget/ &lt; subscriptionId &gt; ResourceGroups/secure_enclave_poc/providers/Microsoft.Authorization/RoleAssignments/ &lt; Role assignmentId &gt; eller så är omfattningen ogiltigt. Om åtkomst nyligen har beviljats ska du uppdatera dina autentiseringsuppgifter
 
 ### <a name="troubleshooting-steps"></a>Felsökningsanvisningar
 

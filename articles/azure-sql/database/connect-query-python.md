@@ -11,18 +11,18 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: a87c08d81724a6639fce6b6673b139b3ef94e410
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.date: 12/19/2020
+ms.openlocfilehash: 8fb6d319cacf85630b2c400cd18d14487725f925
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680039"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703983"
 ---
-# <a name="quickstart-use-python-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Snabb start: Använd python för att fråga en databas i Azure SQL Database eller Azure SQL-hanterad instans
+# <a name="quickstart-use-python-to-query-a-database"></a>Snabb start: Använd python för att fråga en databas
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-I den här snabb starten använder du python för att ansluta till Azure SQL Database eller Azure SQL-hanterad instans och använda T-SQL-uttryck för att fråga data.
+I den här snabb starten använder du python för att ansluta till Azure SQL Database, Azure SQL-hanterad instans eller Synapse SQL Database och använda T-SQL-uttryck för att fråga efter data.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -30,7 +30,9 @@ För att slutföra den här snabbstarten behöver du:
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-[!INCLUDE[create-configure-database](../includes/create-configure-database.md)]
+- En databas där du kommer att köra en fråga.
+
+  [!INCLUDE[create-configure-database](../includes/create-configure-database.md)]
 
 - [Python](https://python.org/downloads) 3 och relaterad program vara
 
@@ -57,27 +59,11 @@ För att slutföra den här snabbstarten behöver du:
 ---
 För att ytterligare utforska python och databasen i Azure SQL Database, se [Azure SQL Database bibliotek för python](/python/api/overview/azure/sql), [pyodbc-lagringsplatsen](https://github.com/mkleehammer/pyodbc/wiki/)och ett [pyodbc-exempel](https://github.com/mkleehammer/pyodbc/wiki/Getting-started).
 
-## <a name="get-server-connection-information"></a>Hämta information om Server anslutning
-
-Hämta anslutnings informationen du behöver för att ansluta till databasen i Azure SQL Database. Du behöver det fullständiga servernamnet eller värdnamnet, databasnamnet och inloggningsinformationen för de kommande procedurerna.
-
-1. Logga in på [Azure-portalen](https://portal.azure.com/).
-
-2. Gå till sidan **SQL-databaser**  eller **SQL-hanterade instanser** .
-
-3. På sidan **Översikt** granskar du det fullständigt kvalificerade Server namnet bredvid **Server namnet** för databasen i Azure SQL Database eller det fullständigt kvalificerade Server namnet (eller IP-adressen) bredvid **värd** för en Azure SQL-hanterad instans eller SQL Server på Azure VM. Om du vill kopiera servernamnet eller värdnamnet hovrar du över det och väljer ikonen **Kopiera**.
-
-> [!NOTE]
-> Anslutnings information för SQL Server på den virtuella Azure-datorn finns i [Anslut till en SQL Server instans](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server).
-
 ## <a name="create-code-to-query-your-database"></a>Skapa en kod för att fråga databasen 
 
 1. Skapa en ny fil med namnet *sqltest.py* i en textredigerare.  
    
-1. Lägg till följande kod. Ersätt dina egna värden för \<server> , \<database> , \<username> och \<password> .
-   
-   >[!IMPORTANT]
-   >Koden i det här exemplet använder AdventureWorksLT-exempeldata, som du kan välja som källa när du skapar din databas. Om din databas har andra data använder du tabeller från din egen databas i SELECT-frågan. 
+1. Lägg till följande kod. Hämta anslutnings informationen från avsnittet krav och ersätt dina egna värden för \<server> , \<database> , \<username> och \<password> .
    
    ```python
    import pyodbc
@@ -105,7 +91,7 @@ Hämta anslutnings informationen du behöver för att ansluta till databasen i A
    python sqltest.py
    ```
 
-1. Kontrol lera att de 20 översta kategorierna/produkt raderna returneras och stäng sedan kommando fönstret.
+1. Kontrol lera att databaserna och deras sorteringar returneras och stäng sedan kommando fönstret.
 
 ## <a name="next-steps"></a>Nästa steg
 

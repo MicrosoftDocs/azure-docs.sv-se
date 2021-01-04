@@ -12,12 +12,12 @@ ms.date: 11/23/2020
 ms.author: mbullwin
 keywords: avvikelse identifiering, maskin inlärning, algoritmer
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 1a13b962a000e6e3b2143dc23f94b63c122bd963
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: d8698a17db8be6a3d5b26d764ef86702320ebfa4
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95999116"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705089"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Vad är API:et för avvikelseidentifiering?
 
@@ -97,6 +97,6 @@ Du kan läsa pappers [seriens avvikelse identifierings tjänst på Microsoft](ht
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Snabb start: identifiera avvikelser i dina tids serie data med hjälp av avvikelse detektor REST API](quickstarts/detect-data-anomalies-csharp.md)
+* [Snabb start: identifiera avvikelser i dina tids serie data med hjälp av avvikelse detektorn](quickstarts/client-libraries.md)
 * API: t online- [demon](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector) för avvikelse detektor
 * Avvikelse detektor [REST API referens](https://aka.ms/anomaly-detector-rest-api-ref)

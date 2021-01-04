@@ -6,16 +6,16 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: b267a97b640c9d069f83223206200fc4814c86b9
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c712af41fdc191cab4fd08c9d8175a849d4f286a
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488018"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706778"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Säkerhets kopiering och återställning i Azure Database for PostgreSQL-enskild server
 
-Azure Database for PostgreSQL skapar automatiskt Server säkerhets kopior och lagrar dem i användar konfiguration lokalt redundant eller Geo-redundant lagring. Säkerhetskopieringar kan användas för att återställa servern till en vald tidpunkt. Säkerhets kopiering och återställning är en viktig del av en strategi för affärs kontinuitet eftersom de skyddar dina data från oavsiktlig skada eller borttagning.
+Azure Database for PostgreSQL skapar automatiskt Server säkerhets kopior och lagrar dem i användar konfiguration lokalt redundant eller Geo-redundant lagring. Säkerhetskopieringar kan användas för att återställa servern till en vald tidpunkt. Säkerhetskopiering och återställning är en viktig del i strategin för affärskontinuitet, eftersom de skyddar dina data från oavsiktlig skada eller borttagning.
 
 ## <a name="backups"></a>Säkerhetskopior
 
@@ -47,7 +47,7 @@ Kvarhållningsperioden för säkerhets kopior styr hur långt tillbaka i tiden e
 Azure Database for PostgreSQL ger flexibiliteten att välja mellan lokalt redundant eller Geo-redundant lagring av säkerhets kopior i Generell användning och minnesoptimerade nivåer. När säkerhets kopiorna lagras i Geo-redundant lagring av säkerhets kopior lagras de inte bara i den region där servern finns, men replikeras också till ett [parat Data Center](../best-practices-availability-paired-regions.md). Detta ger bättre skydd och möjlighet att återställa servern i en annan region i händelse av en katastrof. Basic-nivån erbjuder endast lokalt redundant säkerhets kopierings lagring.
 
 > [!IMPORTANT]
-> Det går bara att konfigurera lokalt redundant eller Geo-redundant lagring för säkerhets kopiering när servern skapas. När servern har tillhandahållits kan du inte ändra redundans alternativet för lagring av säkerhets kopior.
+> Det går bara att konfigurera lokalt redundant eller geo-redundant lagring för säkerhetskopiering när servern skapas. När servern har etablerats kan du inte ändra alternativet för redundant lagring för säkerhetskopior.
 
 ### <a name="backup-storage-cost"></a>Reserv lagrings kostnad
 
@@ -59,7 +59,7 @@ Det främsta sättet att kontrol lera lagrings kostnaden för säkerhets kopieri
 
 ## <a name="restore"></a>Återställ
 
-I Azure Database for PostgreSQL skapar en återställning en ny server från den ursprungliga serverns säkerhets kopior.
+I Azure Database for PostgreSQL skapar en återställning en ny server från den ursprungliga serverns säkerhets kopior. 
 
 Det finns två typer av återställning:
 
@@ -68,8 +68,11 @@ Det finns två typer av återställning:
 
 Den uppskattade återställnings tiden beror på flera faktorer, till exempel databasens storlek, transaktions loggens storlek, nätverks bandbredden och det totala antalet databaser som återställs i samma region på samma tid. Återställnings tiden är vanligt vis mindre än 12 timmar.
 
-> [!IMPORTANT]
-> **Det går inte** att återställa borttagna servrar. Om du tar bort servern tas även alla databaser som tillhör servern bort och kan inte återställas. För att skydda server resurser, efter distribution, från oavsiktlig borttagning eller oväntade ändringar, kan administratörer utnyttja [hanterings lås](../azure-resource-manager/management/lock-resources.md).
+> [!NOTE] 
+> Om din käll PostgreSQL-Server är krypterad med Kundhanterade nycklar kan du läsa [dokumentationen](concepts-data-encryption-postgresql.md) för ytterligare överväganden. 
+
+> [!NOTE]
+> Om du vill återställa en borttagen PostgreSQL-Server följer du proceduren som beskrivs [här](howto-restore-dropped-server.md).
 
 ### <a name="point-in-time-restore"></a>Återställning från tidpunkt
 
@@ -81,11 +84,14 @@ Du kan behöva vänta tills nästa säkerhets kopiering av transaktions loggen t
 
 ### <a name="geo-restore"></a>Geo-återställning
 
-Du kan återställa en server till en annan Azure-region där tjänsten är tillgänglig om du har konfigurerat servern för geo-redundanta säkerhets kopieringar. Servrar som har stöd för upp till 4 TB lagrings utrymme kan återställas till den geo-kopplade regionen eller till en region som har stöd för upp till 16 TB lagring. För servrar som har stöd för upp till 16 TB lagrings utrymme kan geo-säkerhetskopieringar återställas i valfri region som har stöd för 16 TB-servrar. Granska [Azure Database för PostgeSQL-pris nivåer](concepts-pricing-tiers.md) för att visa en lista över regioner som stöds.
+Du kan återställa en server till en annan Azure-region där tjänsten är tillgänglig om du har konfigurerat servern för geo-redundanta säkerhets kopieringar. Servrar som har stöd för upp till 4 TB lagrings utrymme kan återställas till den geo-kopplade regionen eller till en region som har stöd för upp till 16 TB lagring. För servrar som har stöd för upp till 16 TB lagrings utrymme kan geo-säkerhetskopieringar återställas i valfri region som har stöd för 16 TB-servrar. Granska [Azure Database for PostgreSQL pris nivåer](concepts-pricing-tiers.md) för listan över regioner som stöds.
 
 Geo-återställning är standard alternativet för återställning när servern inte är tillgänglig på grund av en incident i den region där-servern finns. Om en storskalig incident i en region resulterar i att databas programmet inte är tillgängligt, kan du återställa en server från de geo-redundanta säkerhets kopieringarna till en server i någon annan region. Det uppstår en fördröjning mellan när en säkerhets kopia tas och när den replikeras till en annan region. Den här fördröjningen kan vara upp till en timme, så om en katastrof inträffar kan det vara upp till en timmes data förlust.
 
 Vid geo-återställning kan de serverkonfigurationer som kan ändras omfatta beräknings generering, vCore, bevarande period för säkerhets kopior och alternativ för säkerhets kopiering. Det finns inte stöd för att ändra pris nivå (Basic, Generell användning eller Minnesoptimerade) eller lagrings storlek.
+
+> [!NOTE]
+> Om din käll Server använder infrastrukturs-Double kryptering för att återställa servern finns det begränsningar, inklusive tillgängliga regioner. Mer information finns i [infrastrukturens dubbla kryptering](concepts-infrastructure-double-encryption.md) .
 
 ### <a name="perform-post-restore-tasks"></a>Utföra uppgifter efter återställning
 

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d6f3d2051790ba02f5e4ea1687830ccbdf6dcf21
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 1ab382ec10d932b94961c73b7d7ac9082125a88c
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285144"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704528"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Så här skapar du en Azure Key Vault-och en valv åtkomst princip med hjälp av en Resource Manager-mall
 
@@ -23,7 +23,7 @@ ms.locfileid: "93285144"
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra stegen i den här artikeln:
 
@@ -176,14 +176,14 @@ Du hittar fler Key Vault mallar här: [Key Vault Resource Manager-referens](/azu
 
 Du kan använda Azure Portal för att distribuera de föregående mallarna med hjälp av alternativet för att **bygga en egen mall i redigerings** alternativet som beskrivs här: [distribuera resurser från en anpassad mall](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
-Du kan också spara föregående mallar till filer och använda följande kommandon:  [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) och [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create):
+Du kan också spara föregående mallar till filer och använda följande kommandon:  [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) och [AZ distribution Group Create](/cli/azure/deployment/group#az_deployment_group_create):
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile key-vault-template.json
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file key-vault-template.json
+az deployment group create --resource-group ExampleGroup --template-file key-vault-template.json
 ```
 
 ## <a name="clean-up-resources"></a>Rensa resurser

@@ -4,12 +4,12 @@ description: I den här självstudiekursen får du lära dig hur du distribuerar
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.custom: mvc, devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 89c49ae530b7a4716bc6e8bf0ea6ccb011847eb8
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: c2e2b2883bfa01d3a36de5d58425449f6f973010
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738900"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702165"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Självstudie: Distribuera en Java-tillämpning till ett Service Fabric-kluster i Azure
 
@@ -114,10 +114,10 @@ Med följande steg skapar du de resurser som krävs för att distribuera tilläm
 10. Skapa en resurs för Event Hubs med hjälp av följande kommando. Följ anvisningarna för att fylla i information för namespaceName, eventHubName, consumerGroupName, sendAuthorizationRule och receiveAuthorizationRule.
 
     ```azurecli
-    az group deployment create -g [RESOURCE-GROUP-NAME] --template-file eventhubsdeploy.json
+    az deployment group create -g [RESOURCE-GROUP-NAME] --template-file eventhubsdeploy.json
 
     Example:
-    az group deployment create -g testeventhubsrg --template-file eventhubsdeploy.json
+    az deployment group create -g testeventhubsrg --template-file eventhubsdeploy.json
     Please provide string value for 'namespaceName' (? for help): testeventhubnamespace
     Please provide string value for 'eventHubName' (? for help): testeventhub
     Please provide string value for 'consumerGroupName' (? for help): testeventhubconsumergroup
@@ -154,7 +154,7 @@ Med följande steg skapar du de resurser som krävs för att distribuera tilläm
     python3 eventhubssastoken.py 'testeventhubs' 'testeventhubs' 'sender' '[PRIMARY-KEY]'
     ```
 
-    Kopiera värdet från fältet **sr** i den JSON som returneras. Fältvärdet **sr** används som SAS-token för EventHubs. Följande URL är ett exempel på fältet **sr** :
+    Kopiera värdet från fältet **sr** i den JSON som returneras. Fältvärdet **sr** används som SAS-token för EventHubs. Följande URL är ett exempel på fältet **sr**:
 
     ```output
     https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender
@@ -176,8 +176,8 @@ Med följande steg skapar du de resurser som krävs för att distribuera tilläm
     }
     ```
 
-13. Öppnar **sfdeploy.parameters.json** . Ändra följande parametrar och spara därefter filen.
-    - **clusterName** . Använd bara gemena bokstäver och siffror.
+13. Öppnar **sfdeploy.parameters.json**. Ändra följande parametrar och spara därefter filen.
+    - **clusterName**. Använd bara gemena bokstäver och siffror.
     - **adminUserName** (till ett värde som inte är tomt)
     - **adminPassword** (till ett värde som inte är tomt)
 
@@ -189,7 +189,7 @@ Med följande steg skapar du de resurser som krävs för att distribuera tilläm
 
 ## <a name="deploy-your-application-to-the-cluster"></a>Distribuera din tillämpning till klustret
 
-1. Innan du distribuerar din tillämpning måste du lägga till följande kodfragment i filen *Voting/VotingApplication/ApplicationManifest.xml* . Fältet **X509FindValue** är det tumavtryck som returnerades från Steg 4 i avsnittet **Skapa ett Service Fabric-kluster i Azure** . Kodfragmentet är kapslat under fältet **ApplicationManifest** (rotfältet).
+1. Innan du distribuerar din tillämpning måste du lägga till följande kodfragment i filen *Voting/VotingApplication/ApplicationManifest.xml*. Fältet **X509FindValue** är det tumavtryck som returnerades från Steg 4 i avsnittet **Skapa ett Service Fabric-kluster i Azure**. Kodfragmentet är kapslat under fältet **ApplicationManifest** (rotfältet).
 
     ```xml
     <Certificates>
@@ -209,7 +209,7 @@ Med följande steg skapar du de resurser som krävs för att distribuera tilläm
     sfctl cluster select --endpoint https://<clustername>.<region>.cloudapp.azure.com:19080 --pem sfctlconnection.pem --no-verify
     ```
 
-4. Om du vill distribuera programmet går du till mappen *Voting/Scripts* (Röstning/Skript) och kör skriptet **install.sh** .
+4. Om du vill distribuera programmet går du till mappen *Voting/Scripts* (Röstning/Skript) och kör skriptet **install.sh**.
 
     ```bash
     ./install.sh
@@ -223,7 +223,7 @@ Med följande steg skapar du de resurser som krävs för att distribuera tilläm
 
     ![Röstningsapp i Java Azure](./media/service-fabric-tutorial-java-deploy-azure/votingappjavaazure.png)
 
-7. Om du vill avinstallera din tillämpning från klustret kör du skriptet *uninstall.sh* i **Skript** -mappen
+7. Om du vill avinstallera din tillämpning från klustret kör du skriptet *uninstall.sh* i **Skript**-mappen
 
     ```bash
     ./uninstall.sh

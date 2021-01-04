@@ -1,6 +1,6 @@
 ---
 title: Om Azure Key Vault hemligheter – Azure Key Vault
-description: Översikt över Azure Key Vault REST-gränssnittet och information om utvecklare för hemligheter.
+description: Översikt över Azure Key Vault hemligheter.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,16 +10,16 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7aa2feba5a2b2fa47bbb0c055a2f556b8997ab34
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4ded48fe8f04d2cdba40650974fd5002d659e381
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82930479"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705276"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Om Azure Key Vault hemligheter
 
-Key Vault ger säker lagring av hemligheter, t. ex. lösen ord och databas anslutnings strängar.
+[Key Vault](../general/overview.md) ger säker lagring av allmänna hemligheter, t. ex. lösen ord och databas anslutnings strängar.
 
 I ett utvecklings perspektiv kan Key Vault API: er acceptera och returnera hemliga värden som strängar. Internt Key Vault lagrar och hanterar hemligheter som sekvenser av oktetter (8-bitars byte), med en maximal storlek på 25k byte. Tjänsten Key Vault tillhandahåller inte semantik för hemligheter. Den accepterar bara data, krypterar den, lagrar den och returnerar en hemlig identifierare ("ID"). Identifieraren kan användas för att hämta hemligheten vid ett senare tillfälle.  
 
@@ -43,6 +43,8 @@ Det finns ytterligare skrivskyddade attribut som ingår i alla svar som innehål
 
 - *skapad*: IntDate, valfritt. Attributet created anger när den här versionen av hemligheten skapades. Det här värdet är null för hemligheter som skapats innan det här attributet läggs till. Värdet måste vara ett tal som innehåller ett IntDate-värde.  
 - *uppdaterad*: IntDate, valfritt. Det uppdaterade attributet indikerar när den här versionen av hemligheten uppdaterades. Det här värdet är null för hemligheter som senast uppdaterades innan det här attributet lades till. Värdet måste vara ett tal som innehåller ett IntDate-värde.
+
+Information om gemensamma attribut för varje nyckel valv objekt typ finns i [Azure Key Vault nycklar, hemligheter och certifikat översikt](../general/about-keys-secrets-certificates.md)
 
 ### <a name="date-time-controlled-operations"></a>Kontrollerade åtgärder för datum/tid
 
@@ -68,6 +70,12 @@ Följande behörigheter kan användas, per huvud konto, i åtkomst kontroll post
 
 Mer information om hur du arbetar med hemligheter finns [i avsnittet om hemliga åtgärder i referensen Key Vault REST API](/rest/api/keyvault). Information om hur du etablerar behörigheter finns i [valv – skapa eller uppdatera](/rest/api/keyvault/vaults/createorupdate) och [valv – uppdatera åtkomst princip](/rest/api/keyvault/vaults/updateaccesspolicy). 
 
+Instruktions guider för att kontrol lera åtkomst i Key Vault:
+- [Tilldela en Key Vault åtkomst princip med CLI](../general/assign-access-policy-cli.md)
+- [Tilldela en Key Vault åtkomst princip med hjälp av PowerShell](../general/assign-access-policy-powershell.md)
+- [Tilldela en Key Vault åtkomst princip med hjälp av Azure Portal](../general/assign-access-policy-portal.md)
+- [Ge åtkomst till Key Vault nycklar, certifikat och hemligheter med en rollbaserad åtkomst kontroll i Azure (för hands version)](../general/rbac-guide.md)
+
 ## <a name="secret-tags"></a>Hemliga Taggar  
 Du kan ange ytterligare programspecifika metadata i form av taggar. Key Vault stöder upp till 15 taggar, som var och en kan ha ett 256-namn och ett värde på 256.  
 
@@ -76,14 +84,17 @@ Du kan ange ytterligare programspecifika metadata i form av taggar. Key Vault st
 
 ## <a name="azure-storage-account-key-management"></a>Azure Storage konto nyckel hantering
 
-Key Vault kan hantera Azure Storage-konto nycklar:
+Key Vault kan hantera [Azure Storage-konto](https://docs.microsoft.com/azure/storage/common/storage-account-overview) nycklar:
 
 - Internt Key Vault kan ange (Sync) nycklar med ett Azure Storage-konto. 
 - Key Vault återskapas (roterar) nycklarna med jämna mellanrum.
 - Nyckel värden returneras aldrig som svar på anroparen.
 - Key Vault hanterar nycklar för både lagrings konton och klassiska lagrings konton.
 
-Mer information finns i [Azure Key Vault lagrings konto nycklar](../secrets/overview-storage-keys.md))
+Mer information finns i:
+- [Lagringskontots åtkomstnycklar](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage)
+- [Hantering av lagrings konto nycklar i Azure Key Vault](../secrets/overview-storage-keys.md))
+
 
 ## <a name="storage-account-access-control"></a>Åtkomst kontroll för lagrings konto
 
@@ -99,7 +110,7 @@ Följande behörigheter kan användas när du auktoriserar en användare eller e
   - *återställa*: Återställ ett säkerhetskopierat lagrings konto till en Key Vault
   - *Ange*: skapa eller uppdatera ett lagrings konto
   - *regeneratekey*: återskapa ett angivet nyckel värde för ett lagrings konto
-  - *hämtar*till: Hämta information om en SAS-definition för ett lagrings konto
+  - *hämtar* till: Hämta information om en SAS-definition för ett lagrings konto
   - *lister*: lista över lagrings-SAS-definitioner för ett lagrings konto
   - *borttagningar*: ta bort en SAS-definition från ett lagrings konto
   - *Setas*: skapa eller uppdatera en ny SAS-definition/-attribut för ett lagrings konto
@@ -109,11 +120,18 @@ Följande behörigheter kan användas när du auktoriserar en användare eller e
 
 Mer information finns i [lagrings konto åtgärder i referensen Key Vault REST API](/rest/api/keyvault). Information om hur du etablerar behörigheter finns i [valv – skapa eller uppdatera](/rest/api/keyvault/vaults/createorupdate) och [valv – uppdatera åtkomst princip](/rest/api/keyvault/vaults/updateaccesspolicy).
 
+Instruktions guider för att kontrol lera åtkomst i Key Vault:
+- [Tilldela en Key Vault åtkomst princip med CLI](../general/assign-access-policy-cli.md)
+- [Tilldela en Key Vault åtkomst princip med hjälp av PowerShell](../general/assign-access-policy-powershell.md)
+- [Tilldela en Key Vault åtkomst princip med hjälp av Azure Portal](../general/assign-access-policy-portal.md)
+- [Ge åtkomst till Key Vault nycklar, certifikat och hemligheter med en rollbaserad åtkomst kontroll i Azure (för hands version)](../general/rbac-guide.md)
+
+
 ## <a name="next-steps"></a>Nästa steg
 
 - [Om Key Vault](../general/overview.md)
 - [Om nycklar, hemligheter och certifikat](../general/about-keys-secrets-certificates.md)
 - [Om nycklar](../keys/about-keys.md)
 - [Om certifikat](../certificates/about-certificates.md)
-- [Autentisering, begär Anden och svar](../general/authentication-requests-and-responses.md)
+- [Säker åtkomst till ett nyckel valv](../general/secure-your-key-vault.md)
 - [Utvecklarguide för Key Vault](../general/developers-guide.md)

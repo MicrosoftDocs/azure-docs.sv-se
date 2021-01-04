@@ -9,12 +9,12 @@ ms.subservice: linux
 ms.date: 03/27/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, subject-armqs, devx-track-azurecli
-ms.openlocfilehash: d040215968b0ebb433edba03e4839ffe7add0e5c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 52e0e50d3c0c68b57181645c3eb695308fdac65a
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745869"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703831"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-arm-template"></a>Snabb start: skapa en skalnings uppsättning för virtuella Linux-datorer med en ARM-mall
 
@@ -24,7 +24,7 @@ Med en skalnings uppsättning för virtuella datorer kan du distribuera och hant
 
 Med ARM-mallar kan du distribuera grupper av relaterade resurser. Med en enda mall kan du skapa VM-skalningsuppsättningen, installera program och ange regler för automatisk skalning. Du kan återanvända mallen och använda variabler och parametrar till att uppdatera befintliga, eller skapa ytterligare, skalningsuppsättningar. Du kan distribuera mallar via Azure-portalen, Azure CLI eller Azure PowerShell eller från pipelines för kontinuerlig integrering/kontinuerlig leverans (CI/CD).
 
-Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure** . Mallen öppnas på Azure-portalen.
+Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar väljer du knappen **Distribuera till Azure**. Mallen öppnas på Azure-portalen.
 
 [![Distribuera till Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-bottle-autoscale%2Fazuredeploy.json)
 
@@ -77,7 +77,7 @@ Testa din skalningsuppsättning genom att installera ett grundläggande webbprog
 
 Mallen använder tillägget för anpassat skript för att installera [Flask](https://bottlepy.org/docs/dev/), ett python-webbramverk och en enkel http-server.
 
-Två skript definieras i **fileUris**  -  - *installserver.sh* och *workserver.py* . Filerna laddas ned från GitHub och sedan *commandToExecute* körs commandToExecute `bash installserver.sh` för att installera och konfigurera appen.
+Två skript definieras i **fileUris**  -  -*installserver.sh* och *workserver.py*. Filerna laddas ned från GitHub och sedan  körs commandToExecute `bash installserver.sh` för att installera och konfigurera appen.
 
 ## <a name="deploy-the-template"></a>Distribuera mallen
 
@@ -92,7 +92,7 @@ Du kan också distribuera en Resource Manager-mall med hjälp av Azure CLI:
 az group create --name myResourceGroup --location EastUS
 
 # Deploy template into resource group
-az group deployment create \
+az deployment group create \
     --resource-group myResourceGroup \
     --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-bottle-autoscale/azuredeploy.json
 ```
@@ -109,7 +109,7 @@ az network public-ip list \
     --query [*].ipAddress -o tsv
 ```
 
-Ange den offentliga IP-adressen för belastningsutjämnaren i en webbläsare i formatet *http: \/ /publicIpAddress: 9000/do_work* . Lastbalanseraren distribuerar trafik till en av dina VM-instanser enligt följande exempel:
+Ange den offentliga IP-adressen för belastningsutjämnaren i en webbläsare i formatet *http: \/ /publicIpAddress: 9000/do_work*. Lastbalanseraren distribuerar trafik till en av dina VM-instanser enligt följande exempel:
 
 ![Standardwebbsida i NGINX](media/virtual-machine-scale-sets-create-template/running-python-app.png)
 

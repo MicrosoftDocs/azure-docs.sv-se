@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 04/05/2020
 ms.author: haroldw
-ms.openlocfilehash: 0c60fdfda0c18f5a8feb11c3d9c5a386025670cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fab8f88a39730411503af273902a53f169e3fe57
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87368157"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703746"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>Distribuera OpenShift container Platform 3,11 i Azure
 
@@ -32,7 +32,7 @@ Se till att du har ett giltigt användar namn, lösen ord och pool-ID för Red H
 
 ### <a name="private-clusters"></a>Privata kluster
 
-Distribution av privata OpenShift-kluster kräver mer än att inte bara ha en offentlig IP-adress kopplad till huvud belastnings utjämningen (webb konsolen) eller till den infraröda belastningsutjämnaren (router).  Ett privat kluster använder vanligt vis en anpassad DNS-server (inte standard Azure DNS), ett anpassat domän namn (t. ex. contoso.com) och fördefinierade virtuella nätverk (n).  För privata kluster måste du konfigurera ditt virtuella nätverk med alla lämpliga undernät och DNS-serverinställningar i förväg.  Använd sedan **existingMasterSubnetReference**, **existingInfraSubnetReference**, **existingCnsSubnetReference**och **existingNodeSubnetReference** för att ange det befintliga under nätet som ska användas av klustret.
+Distribution av privata OpenShift-kluster kräver mer än att inte bara ha en offentlig IP-adress kopplad till huvud belastnings utjämningen (webb konsolen) eller till den infraröda belastningsutjämnaren (router).  Ett privat kluster använder vanligt vis en anpassad DNS-server (inte standard Azure DNS), ett anpassat domän namn (t. ex. contoso.com) och fördefinierade virtuella nätverk (n).  För privata kluster måste du konfigurera ditt virtuella nätverk med alla lämpliga undernät och DNS-serverinställningar i förväg.  Använd sedan **existingMasterSubnetReference**, **existingInfraSubnetReference**, **existingCnsSubnetReference** och **existingNodeSubnetReference** för att ange det befintliga under nätet som ska användas av klustret.
 
 Om du väljer privat huvud server (**masterClusterType**= Private) måste du ange en statisk privat IP-adress för **masterPrivateClusterIp**.  Den här IP-adressen tilldelas klient delen av huvud belastnings utjämningen.  IP-adressen måste ligga inom CIDR för huvud under nätet och den används inte.  **masterClusterDnsType** måste anges till Custom och Master-DNS-namnet måste anges för **masterClusterDns**.  DNS-namnet måste mappas till den statiska privata IP-adressen och kommer att användas för att få åtkomst till-konsolen på huvudnoderna.
 
@@ -295,9 +295,9 @@ Olika versioner kan ha olika parametrar för att kontrol lera de nödvändiga pa
 | `existingInfraSubnetReference` | Fullständig referens till befintligt undernät för infraröda noder. Behövs inte om du skapar ett nytt vNet/undernät |  |  |
 | `existingCnsSubnetReference` | Fullständig referens till befintligt undernät för CNS-noder. Behövs inte om du skapar ett nytt vNet/undernät |  |  |
 | `existingNodeSubnetReference` | Fullständig referens till befintligt undernät för Compute-noder. Behövs inte om du skapar ett nytt vNet/undernät |  |  |
-| `masterClusterType` | Ange om klustret ska använda privata eller offentliga huvud noder. Om du väljer privat, kommer huvudnoderna inte att exponeras för Internet via en offentlig IP-adress. I stället används den privata IP-adress som anges i `masterPrivateClusterIp` | folkhälsan <br> personligt | folkhälsan |
+| `masterClusterType` | Ange om klustret ska använda privata eller offentliga huvud noder. Om du väljer privat, kommer huvudnoderna inte att exponeras för Internet via en offentlig IP-adress. I stället används den privata IP-adress som anges i `masterPrivateClusterIp` | public <br> personligt | public |
 | `masterPrivateClusterIp` | Om du väljer privata huvudnoder måste du ange en privat IP-adress som ska användas av den interna belastningsutjämnaren för huvudnoder. Den här statiska IP-adressen måste vara i CIDR-blocket för huvud under nätet och används inte redan. Om de offentliga huvudnoderna väljs, används inte det här värdet, men det måste fortfarande anges |  | 10.1.0.200 |
-| `routerClusterType` | Ange om klustret ska använda privata eller offentliga fjärrnoder. Om du väljer privat är de infraröda noderna inte tillgängliga för Internet via en offentlig IP-adress. I stället används den privata IP-adress som anges i `routerPrivateClusterIp` | folkhälsan <br> personligt | folkhälsan |
+| `routerClusterType` | Ange om klustret ska använda privata eller offentliga fjärrnoder. Om du väljer privat är de infraröda noderna inte tillgängliga för Internet via en offentlig IP-adress. I stället används den privata IP-adress som anges i `routerPrivateClusterIp` | public <br> personligt | public |
 | `routerPrivateClusterIp` | Om du väljer privata fjärrnoder måste du ange en privat IP-adress som ska användas av den interna belastningsutjämnaren för infraröda noder. Den här statiska IP-adressen måste vara i CIDR-blocket för det infraröda under nätet och den används inte redan. Om du väljer offentliga fjärrnoder används inte det här värdet, men det måste fortfarande anges |  | 10.2.0.200 |
 | `routingCertType` | Använd anpassat certifikat för routningsdomänen eller det självsignerade självsignerade certifikatet – Följ instruktionerna i avsnittet **anpassade certifikat** | selfsigned <br> anpassad | selfsigned |
 | `masterCertType` | Använd anpassat certifikat för huvud domän eller standard självsignerade certifikat – Följ instruktionerna i avsnittet **anpassade certifikat** | selfsigned <br> anpassad | selfsigned |
@@ -312,7 +312,7 @@ Olika versioner kan ha olika parametrar för att kontrol lera de nödvändiga pa
 I följande exempel distribueras OpenShift-klustret och alla relaterade resurser till en resurs grupp med namnet openshiftrg, med ett distributions namn på myOpenShiftCluster. Mallen refereras direkt från GitHub-lagrings platsen och en lokal parameter fil med namnet azuredeploy.parameters.jsi filen används.
 
 ```azurecli 
-az group deployment create -g openshiftrg --name myOpenShiftCluster \
+az deployment group create -g openshiftrg --name myOpenShiftCluster \
       --template-uri https://raw.githubusercontent.com/Microsoft/openshift-container-platform/master/azuredeploy.json \
       --parameters @./azuredeploy.parameters.json
 ```

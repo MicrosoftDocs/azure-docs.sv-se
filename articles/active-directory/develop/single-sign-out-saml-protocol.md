@@ -12,16 +12,18 @@ ms.date: 07/19/2017
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: 1d09355993af96e9e0cd334c57174cdaa771b388
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2064ab7e759798d8934facb8d293e8ac60ec6c82
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88118271"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703423"
 ---
 # <a name="single-sign-out-saml-protocol"></a>Single Sign-Out SAML-protokoll
 
 Azure Active Directory (Azure AD) stöder en enkel inloggnings profil för SAML 2,0-webbläsare. För att enkel utloggning ska fungera korrekt måste **LogoutURL** för programmet uttryckligen registreras med Azure AD under program registreringen. Azure AD använder LogoutURL för att omdirigera användare när de har loggat ut.
+
+Azure AD stöder omdirigerings bindning (HTTP GET) och inte HTTP POST-bindning.
 
 Följande diagram visar arbets flödet för processen för enkel inloggning i Azure AD.
 

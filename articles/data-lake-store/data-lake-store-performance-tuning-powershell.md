@@ -1,17 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1 prestanda justering – PowerShell
 description: Tips om hur du kan förbättra prestandan när du använder Azure PowerShell med Azure Data Lake Storage Gen1.
-author: stewu
+author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 01/09/2018
-ms.author: stewu
-ms.openlocfilehash: f5e6f6601a563a387476e4e2eaf353c8bef384ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: twooley
+ms.openlocfilehash: 4ac2bbb21fd1a987d544a536d0f52628824e0bf4
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85504703"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723838"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>Vägledning för prestanda justering för att använda PowerShell med Azure Data Lake Storage Gen1
 
@@ -21,7 +21,7 @@ Den här artikeln beskriver de egenskaper som du kan finjustera för att få bä
 
 ## <a name="performance-related-properties"></a>Prestanda relaterade egenskaper
 
-| Egenskap            | Default | Beskrivning |
+| Egenskap            | Standard | Beskrivning |
 |---------------------|---------|-------------|
 | PerFileThreadCount  | 10      | Med den här parametern kan du välja antalet parallella trådar för att ladda upp eller ned varje fil. Det här talet representerar Max antalet trådar som kan allokeras per fil, men du kan få färre trådar beroende på ditt scenario (om du till exempel laddar upp en 1 KB-fil får du en tråd även om du ber om 20 trådar).  |
 | ConcurrentFileCount | 10      | Den här parametern är specifikt för att ladda upp och ned mappar. Den här parametern anger antalet samtidiga filer som kan laddas upp eller ned. Det här antalet representerar det maximala antalet samtidiga filer som kan överföras eller laddas ned samtidigt, men du kan få mindre samtidighet beroende på ditt scenario (om du t. ex. överför två filer, får du två samtidiga filer, även om du ber om 15). |

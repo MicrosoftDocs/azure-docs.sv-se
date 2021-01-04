@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: e2c71e028225c22ab0355ff4cda77dacadf94095
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: b5f7f494c9d0969fbf9431d0b552dafa21a5eace
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97512053"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705412"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Azure-resurser för QnA Maker
 
@@ -268,8 +268,10 @@ Med Azure Portal skapa-fönstret kan du skapa en QnA Maker hanterad resurs (för
 
 > [!div class="mx-imgBorder"]
 > ![Skärm bild av Azure Portal resurs lista QnA Maker hanterad (för hands version)](../media/qnamaker-how-to-setup-service/resources-created-v2.png)
+
 > [!TIP]
 > Skapa en ny resurs grupp när du skapar en QnA Maker-resurs. Det gör att du kan se alla resurser som är associerade med den QnA Maker hanterade resursen (för hands version) när du söker efter resurs grupp.
+
 > [!TIP]
 > Använd en namngivnings konvention för att ange pris nivåer i namnet på resursen eller resurs gruppen. När du får fel meddelanden när du skapar en ny kunskaps bas eller lägger till nya dokument, är gränsen för Kognitiv sökning pris nivån ett vanligt problem.
 

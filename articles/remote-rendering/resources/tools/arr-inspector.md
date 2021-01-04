@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/09/2020
 ms.topic: article
-ms.openlocfilehash: 5ee9d39db130c76f683ca1f4d1ff64f9ed86d97e
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 300e0ff26d643ae0263d21e604cb26da37a18841
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204749"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723833"
 ---
 # <a name="the-arrinspector-inspection-tool"></a>Kontrollverktyget för ArrInspector
 
@@ -108,17 +108,3 @@ I det övre högra hörnet kan du med en växel pausa Live-uppdateringen av pane
 ![Paus läge](./media/pause-mode.png)
 
 När du aktiverar direkt uppdatering igen återställs alla paneler.
-
-## <a name="host-configuration"></a>Värd konfiguration
-
-Som standard ansluter verktyget till den ARR-server som körs på samma värd som betjänar ArrInspector. Du kan dock konfigurera den att inspektera en annan server, förutsatt att den kör en ARR-instans med verktygs porten öppen.
-
-Det gör du genom att gå till huvud menyn till vänster i rubrik fältet och välja *värd konfiguration*. Klicka på **Lägg till ny värd**och ange namn och värdnamn. För *hostname* använder du bara det värdnamn som slutar i `.mixedreality.azure.com` , tar inte med `http://` eller en port.
-
-![Värdkonfiguration](./media/host-configuration.png)
-
-Om du snabbt vill växla från en värd till en annan använder du List rutan längst upp till höger.
-
-![Värd kombination](./media/host-switch-combo.png)
-
-Värd listan lagras i den lokala webbläsarens lagring, så den kommer att bevaras när du öppnar samma webbläsare igen.

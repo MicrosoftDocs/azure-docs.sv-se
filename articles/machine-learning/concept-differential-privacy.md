@@ -1,29 +1,26 @@
 ---
-title: Implementera differentiell sekretess med WhiteNoise-paketet (förhands granskning)
+title: Implementera differentiell sekretess med SmartNoise-paketet (förhands granskning)
 titleSuffix: Azure Machine Learning
-description: Lär dig vad differentiell sekretess är och hur WhiteNoise-paketet kan hjälpa dig att implementera differentiella privata system som bevarar data sekretess.
+description: Lär dig vad differentiell sekretess är och hur SmartNoise-paketet kan hjälpa dig att implementera differentiella privata system som bevarar data sekretess.
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 07/09/2020
+ms.date: 12/21/2020
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.openlocfilehash: 9728bf2c86c0629b09e2325650ce288cf9b3cc7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 307786c0df744751122487b8c931d0e9572d5f22
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86199797"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723498"
 ---
-# <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package-preview"></a>Bevara data sekretessen med hjälp av differentiell sekretess och WhiteNoise-paketet (för hands version)
+# <a name="preserve-data-privacy-by-using-differential-privacy-and-the-smartnoise-package-preview"></a>Bevara data sekretessen med hjälp av differentiell sekretess och SmartNoise-paketet (för hands version)
 
-Lär dig vad differentiell sekretess är och hur WhiteNoise-paketet kan hjälpa dig att implementera Differentiellt privata system.
+Lär dig vad differentiell sekretess är och hur SmartNoise-paketet kan hjälpa dig att implementera Differentiellt privata system.
 
 Eftersom den mängd data som en organisation samlar in och använder för analyser ökar, så kan du läsa sekretess och säkerhet. Analyser kräver data. Normalt är de mer data som används för att träna modeller, desto mer exakta är de. När person uppgifter används för dessa analyser är det särskilt viktigt att data förblir privata under hela användningen.
-
-> [!NOTE]
-> Observera att vi byter namn på Toolkit och kommer att introducera det nya namnet under de kommande veckorna. 
 
 ## <a name="how-differential-privacy-works"></a>Hur differentiell integritet fungerar
 
@@ -54,10 +51,10 @@ För att säkerställa sekretess i system där flera frågor tillåts definierar
 
 ## <a name="implementing-differentially-private-systems"></a>Implementera Differentiellt privat system
 
-Att implementera Differentiellt privat system är svårt. WhiteNoise är ett projekt med öppen källkod som innehåller olika komponenter för att skapa globala, Differentiellt privata system. WhiteNoise består av följande toppnivå komponenter:
+Att implementera Differentiellt privat system är svårt. SmartNoise är ett projekt med öppen källkod som innehåller olika komponenter för att skapa globala, Differentiellt privata system. SmartNoise består av följande toppnivå komponenter:
 
 - Kärna
-- System
+- SDK
 
 ### <a name="core"></a>Kärna
 
@@ -67,10 +64,10 @@ Kärn biblioteket innehåller följande sekretessfunktioner för att implementer
 |---------|---------|
 |Analys     | En diagram Beskrivning av godtyckliga beräkningar. |
 |Systemhälsoverifierare     | Ett Rust-bibliotek som innehåller en uppsättning verktyg för att kontrol lera och härleda de nödvändiga villkoren för en analys som är Differentiellt privat.          |
-|Körmiljö     | Mediet för att köra analysen. Referens körningen skrivs i Rust men körningar kan skrivas med hjälp av alla beräknings ramverk som SQL och Spark beroende på dina data behov.        |
-|Bindningar     | Språk bindningar och hjälp bibliotek för att bygga analyser. För närvarande tillhandahåller WhiteNoise python-bindningar. |
+|Körning     | Mediet för att köra analysen. Referens körningen skrivs i Rust men körningar kan skrivas med hjälp av alla beräknings ramverk som SQL och Spark beroende på dina data behov.        |
+|Bindningar     | Språk bindningar och hjälp bibliotek för att bygga analyser. För närvarande tillhandahåller SmartNoise python-bindningar. |
 
-### <a name="system"></a>System
+### <a name="sdk"></a>SDK
 
 System biblioteket innehåller följande verktyg och tjänster för att arbeta med tabell-och Relations data:
 
@@ -84,4 +81,4 @@ System biblioteket innehåller följande verktyg och tjänster för att arbeta m
 
 [Bevara data sekretessen](how-to-differential-privacy.md) i Azure Machine Learning.
 
-Mer information om komponenterna i WhiteNoise finns i GitHub-databaserna för [WhiteNoise Core-paket](https://github.com/opendifferentialprivacy/whitenoise-core), [WhiteNoise system paket](https://github.com/opendifferentialprivacy/whitenoise-system) och [WhiteNoise-exempel](https://github.com/opendifferentialprivacy/whitenoise-samples).
+Mer information om komponenterna i SmartNoise finns i GitHub-databaserna för [SmartNoise Core-paket](https://github.com/opendifferentialprivacy/smartnoise-core), [SmartNoise SDK](https://github.com/opendifferentialprivacy/smartnoise-sdk)och SmartNoise- [exempel](https://github.com/opendifferentialprivacy/smartnoise-samples).

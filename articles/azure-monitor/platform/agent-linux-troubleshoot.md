@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 13959c4a3c798656efdc72b5c8e5f96e4fb2392a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2b811b1ace646cc4e0a93b937fbb90cfbf7aec0f
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011905"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704902"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Felsöka problem med Log Analytics-agenten för Linux 
 
@@ -241,23 +241,6 @@ Prestanda relaterade buggar sker inte hela tiden och de är mycket svåra att å
 3. Starta om OMI: <br/>
 `sudo scxadmin -restart`
 
-## <a name="issue-you-are-not-seeing-any-data-in-the-azure-portal"></a>Problem: du ser inga data i Azure Portal
-
-### <a name="probable-causes"></a>Troliga orsaker
-
-- Det gick inte att registrera till Azure Monitor
-- Anslutningen till Azure Monitor blockeras
-- Log Analytics agent för Linux-data säkerhets kopie ras
-
-### <a name="resolution"></a>Lösning
-1. Kontrol lera om onboarding-Azure Monitor lyckades genom att kontrol lera om följande fil finns: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
-2. Återpublicera med hjälp av `omsadmin.sh` kommando rads anvisningarna
-3. Om du använder en proxyserver, se de steg som visas ovan.
-4. I vissa fall, när Log Analytics agent för Linux inte kan kommunicera med tjänsten, står data på agenten i kö till den fulla buffertstorleken, som är 50 MB. Agenten ska startas om genom att köra följande kommando: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]` . 
-
-    >[!NOTE]
-    >Det här problemet är åtgärdat i agent version 1.1.0-28 och senare.
-
 
 ## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>Problem: du ser inte vidarebefordrade syslog-meddelanden 
 
@@ -335,6 +318,7 @@ Det här felet indikerar att LAD (Linux Diagnostic Extension) är installerat si
 * Anslutningen till Azure Monitor blockeras
 * Den virtuella datorn har startats om
 * OMI-paketet uppgraderades manuellt till en senare version jämfört med vad som har installerats av Log Analytics agent för Linux-paket
+* OMI är fryst, blockerar OMS-agenten
 * Det gick *inte att hitta* ett fel i `omsconfig.log` logg filen för DSC-resursens logg klass
 * Log Analytics agent för data säkerhets kopie ras
 * Det *finns ingen aktuell konfiguration för DSC-loggar. Kör Start-DscConfiguration kommando med parametern-Path för att ange en konfigurations fil och skapa en aktuell konfiguration först.* i `omsconfig.log` logg filen, men det finns inga logg meddelanden om `PerformRequiredConfigurationChecks` åtgärder.
@@ -345,6 +329,7 @@ Det här felet indikerar att LAD (Linux Diagnostic Extension) är installerat si
 4. Om du använder en proxyserver, kontrollerar du fel söknings stegen ovan.
 5. I vissa Azure-distributions system startar inte Omid OMI server daemon efter att den virtuella datorn har startats om. Detta leder till att inte ser gransknings-, ChangeTracking-eller UpdateManagement-relaterade data. Lösningen är att starta OMI-servern manuellt genom att köra `sudo /opt/omi/bin/service_control restart` .
 6. När OMI-paketet har uppgraderats manuellt till en nyare version måste det startas om manuellt för att Log Analytics agenten ska fortsätta att fungera. Det här steget krävs för vissa distributioner där OMI Server inte startar automatiskt när den har uppgraderats. Kör `sudo /opt/omi/bin/service_control restart` för att starta om OMI.
+* I vissa situationer kan OMI bli fryst. OMS-agenten kan ange ett blockerat tillstånd som väntar på OMI, vilket blockerar all data insamling. Processen för OMS-agenten körs, men det kommer inte att finnas någon aktivitet, och det finns inga nya logg rader (till exempel skickade pulsslag) i `omsagent.log` . Starta om OMI med `sudo /opt/omi/bin/service_control restart` för att återställa agenten.
 7. Om det inte finns något fel i DSC-resurs *klassen* i omsconfig. log kör du `sudo /opt/omi/bin/service_control restart` .
 8. I vissa fall, när Log Analytics agent för Linux inte kan kommunicera med Azure Monitor, säkerhets kopie ras data på agenten till den fulla buffertstorleken: 50 MB. Agenten ska startas om genom att köra följande kommando `/opt/microsoft/omsagent/bin/service_control restart` .
 

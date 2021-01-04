@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 200d23f390c9c22af90099e1e136c832287aa10d
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: d8a7bb620b7fcc9c878986d3575e22bb6f0f77bc
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207537"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724131"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Självstudie: skydda Azure-fjärråter givning och modell lagring
 
@@ -172,8 +172,8 @@ Nu ska vi ändra **RemoteRenderingCoordinator** för att läsa in en anpassad mo
     * **Modell Sök väg**: kombinationen av "outputFolderPath" och "outputAssetFileName" som definierats i *arrconfig.jsi* filen. I snabb starten är detta "outputFolderPath": "konverterad/robot", "outputAssetFileName": robot. arrAsset ". Vilket skulle resultera i en modell Sök väg med värdet "konverterad/robot/robot. arrAsset", ditt värde är annorlunda.
 
     >[!TIP]
-    > Om du [kör **Conversion.ps1** ](../../../quickstarts/convert-model.md#run-the-conversion) skriptet, utan argumentet "-UseContainerSas", kommer skriptet att mata ut alla ovanstående värden för din i stället för SAS-token. ![Länkad modell](./media/converted-output.png)
-1. För tiden tar du bort eller inaktiverar GameObject- **TestModel**för att göra plats för din anpassade modell att läsa in.
+    > Om du [kör **Conversion.ps1**](../../../quickstarts/convert-model.md#run-the-conversion) skriptet, utan argumentet "-UseContainerSas", kommer skriptet att mata ut alla ovanstående värden för din i stället för SAS-token. ![Länkad modell](./media/converted-output.png)
+1. För tiden tar du bort eller inaktiverar GameObject- **TestModel** för att göra plats för din anpassade modell att läsa in.
 1. Spela upp scenen och Anslut till en fjärran sluten session.
 1. Högerklicka på din **RemoteRenderingCoordinator** och välj **Läs in länkad anpassad modell**.
     ![Läs in länkad modell](./media/load-linked-model.png)
@@ -255,6 +255,14 @@ Med Azures sida av saker på plats måste vi nu ändra hur koden ansluter till A
             get => azureRemoteRenderingAccountID.Trim();
             set => azureRemoteRenderingAccountID = value;
         }
+    
+        [SerializeField]
+        private string azureRemoteRenderingAccountAuthenticationDomain;
+        public string AzureRemoteRenderingAccountAuthenticationDomain
+        {
+            get => azureRemoteRenderingAccountAuthenticationDomain.Trim();
+            set => azureRemoteRenderingAccountAuthenticationDomain = value;
+        }
 
         public override event Action<string> AuthenticationInstructions;
 
@@ -262,7 +270,7 @@ Med Azures sida av saker på plats måste vi nu ändra hur koden ansluter till A
 
         string redirect_uri = "https://login.microsoftonline.com/common/oauth2/nativeclient";
 
-        string[] scopes => new string[] { "https://sts.mixedreality.azure.com/mixedreality.signin" };
+        string[] scopes => new string[] { "https://sts." + AzureRemoteRenderingAccountAuthenticationDomain + "/mixedreality.signin" };
 
         public void OnEnable()
         {
@@ -279,7 +287,7 @@ Med Azures sida av saker på plats måste vi nu ändra hur koden ansluter till A
 
                 var AD_Token = result.AccessToken;
 
-                return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
+                return await Task.FromResult(new AzureFrontendAccountInfo(AzureRemoteRenderingAccountAuthenticationDomain, AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
             }
             else
             {
@@ -369,7 +377,7 @@ Den viktigaste delen av den här klassen från ett ARR-perspektiv är den här r
 return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
 ```
 
-Här skapar vi ett nytt **AzureFrontendAccountInfo** -objekt med hjälp av konto domänen, konto-ID och åtkomsttoken. Denna token används sedan av ARR-tjänsten för att fråga, skapa och ansluta sessioner för fjärrrendering så länge som användaren är auktoriserad baserat på de rollbaserade behörigheter som kon figurer ATS tidigare.
+Här skapar vi ett nytt **AzureFrontendAccountInfo** -objekt med hjälp av konto domänen, konto-ID, konto verifierings domän och åtkomsttoken. Denna token används sedan av ARR-tjänsten för att fråga, skapa och ansluta sessioner för fjärrrendering så länge som användaren är auktoriserad baserat på de rollbaserade behörigheter som kon figurer ATS tidigare.
 
 Med den här ändringen ser det aktuella läget för programmet och dess åtkomst till dina Azure-resurser att se ut så här:
 
@@ -387,10 +395,11 @@ När AAD-autentisering är aktiv i Unity-redigeraren måste du autentisera varje
 
 1. Fyll i värdena för klient-ID och klient-ID. Du hittar dessa värden på sidan Översikt för din app Registration:
 
-    * **Konto domänen** är samma domän som du har använt i **RemoteRenderingCoordinator**konto domän.
+    * **Konto domänen** är samma domän som du har använt i **RemoteRenderingCoordinator** konto domän.
     * **Active Directory programmets klient-ID** är *program-ID: t (Client)* som finns i din AAD-app-registrering (se bilden nedan).
     * **Azure-klient-ID** är *katalog-ID: t* som finns i registreringen av AAD-appen (se bilden nedan).
     * **Konto-ID för Azure Remote rendering** är samma **konto-ID** som du har använt för **RemoteRenderingCoordinator**.
+    * **Kontots autentiserings domän** är samma **konto för autentisering av konto** som du har använt i **RemoteRenderingCoordinator**.
 
     ![Skärm bild som visar program-ID: t och katalog (klient)-ID: t.](./media/app-overview-data.png)
 

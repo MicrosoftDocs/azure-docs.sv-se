@@ -5,25 +5,25 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 50abfec19295f80fa79864fedb31eadd31dd4d69
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 34a947a2a0f6d8c87c0580f273130b671b4f17fc
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203678"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722240"
 ---
 # <a name="troubleshoot"></a>Felsöka
 
 Den här sidan listar vanliga problem som stör Azure-fjärrrendering och sätt att lösa dem.
 
-## <a name="cant-link-storage-account-to-arr-account"></a>Det går inte att länka lagrings kontot till ARR-kontot
+## <a name="cant-link-storage-account-to-arr-account"></a>Det går inte att länka lagringskontot till ARR-kontot
 
 Ibland visas inte det fjärranslutna åter givnings kontot under [länkningen av ett lagrings konto](../how-tos/create-an-account.md#link-storage-accounts) . Åtgärda problemet genom att gå till kontot ARR i Azure Portal och välja **identitet** under gruppen **Inställningar** till vänster. Kontrol lera att **status** har angetts till **på**.
 ![Unity Frame debugger](./media/troubleshoot-portal-identity.png)
 
 ## <a name="client-cant-connect-to-server"></a>Klienten kan inte ansluta till servern
 
-Se till att brand väggarna (på enheten, i routrarna osv.) inte blockerar de portar som anges i [system kraven](../overview/system-requirements.md#network-ports).
+Se till att brand väggarna (på enheten, i routrarna osv.) inte blockerar de portar som anges i [system kraven](../overview/system-requirements.md#network-firewall).
 
 ## <a name="error-disconnected-videoformatnotavailable"></a>Fel ' `Disconnected: VideoFormatNotAvailable` '
 

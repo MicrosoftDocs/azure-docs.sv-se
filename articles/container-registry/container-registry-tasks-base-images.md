@@ -3,12 +3,12 @@ title: Bas avbildnings uppdateringar – uppgifter
 description: Lär dig mer om grundläggande avbildningar för program behållar avbildningar och om hur en bas avbildnings uppdatering kan utlösa en Azure Container Registry aktivitet.
 ms.topic: article
 ms.date: 01/22/2019
-ms.openlocfilehash: 74e5fb81e3ef6f75b5ee2872ee44b99aae096fd8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: df33096830cd7b34a288c38c105aff3610315337
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009831"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707494"
 ---
 # <a name="about-base-image-updates-for-acr-tasks"></a>Om bas avbildnings uppdateringar för ACR-uppgifter
 
@@ -57,7 +57,7 @@ Tiden mellan när en bas avbildning uppdateras och när den beroende aktiviteten
 * **Aktive rad som standard** – när du skapar en ACR-uppgift med kommandot [AZ ACR Task Create][az-acr-task-create] , *aktive* ras uppgiften som standard för Utlös ande av en bas avbildnings uppdatering. Det `base-image-trigger-enabled` vill säga egenskapen anges till sant. Om du vill inaktivera det här beteendet i en aktivitet uppdaterar du egenskapen till false. Kör till exempel följande [AZ ACR aktivitets uppdaterings][az-acr-task-update] kommando:
 
   ```azurecli
-  az acr task update --myregistry --name mytask --base-image-trigger-enabled False
+  az acr task update --registry myregistry --name mytask --base-image-trigger-enabled False
   ```
 
 * **Utlös för att spåra beroenden** – om du vill aktivera en ACR-uppgift för att fastställa och spåra en behållar avbildnings beroenden – som inkluderar dess bas avbildning, måste du först utlösa uppgiften för att skapa avbildningen **minst en gång**. Utlös till exempel uppgiften manuellt med kommandot [AZ ACR Task Run][az-acr-task-run] .

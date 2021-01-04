@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: 622b7e629a7f5fea77afc18ec5121fe3466716ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba7c2a37d58f20ac4ff1f49a46a406d1b1f70106
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87387565"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704426"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Konfigurera DPDK i en virtuell Linux-dator
 
@@ -50,7 +50,7 @@ Följande distributioner från Azure Marketplace stöds:
 
 **Anpassat stöd för kernel**
 
-För alla Linux kernel-versioner som inte finns med i listan, se [patchar för att skapa en Azure-justerad Linux-kernel](https://github.com/microsoft/azure-linux-kernel). Du kan också kontakta om du vill ha mer information [azuredpdk@microsoft.com](mailto:azuredpdk@microsoft.com) . 
+För alla Linux kernel-versioner som inte finns med i listan, se [patchar för att skapa en Azure-justerad Linux-kernel](https://github.com/microsoft/azure-linux-kernel). Du kan också kontakta om du vill ha mer information [aznetdpdk@microsoft.com](mailto:aznetdpdk@microsoft.com) . 
 
 ## <a name="region-support"></a>Stöd för regioner
 

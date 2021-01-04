@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: mbullwin
-ms.openlocfilehash: b2cd5e32503953de874ab470ca3f9413d2b37d59
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 74f891ba7f5b400b5782565e670539167f4e2464
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014655"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703440"
 ---
 # <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>Gör så här: Använd API: t för avvikelse detektor i dina tids serie data  
 
@@ -68,7 +68,7 @@ I följande exempel visas ett API-resultat för avvikelse detektor vid olika sen
 
 ![85-känslighet](../media/sensitivity_85.png)
 
-## <a name="next-steps"></a>Efterföljande moment
+## <a name="next-steps"></a>Nästa steg
 
 * [Vad är API:et för avvikelseidentifiering?](../overview.md)
-* [Snabb start: identifiera avvikelser i dina tids serie data med hjälp av avvikelse detektor REST API](../quickstarts/detect-data-anomalies-csharp.md)
+* [Snabb start: identifiera avvikelser i dina tids serie data med hjälp av avvikelse detektorn](../quickstarts/client-libraries.md)

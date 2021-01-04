@@ -1,18 +1,18 @@
 ---
 title: Registrera och skanna en Power BI klient (förhands granskning)
 description: Lär dig hur du använder Azure avdelningens kontroll-portalen för att registrera och skanna en Power BI klient.
-author: viseshag
-ms.author: viseshag
+author: chanuengg
+ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 3813d58d894d87051b1bcf8b512c848d527a52bb
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 3d8107e980b9cad9bc55cb51cc78b63985986ba5
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97615856"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696224"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Registrera och skanna en Power BI klient (förhands granskning)
 
@@ -72,8 +72,6 @@ Nu när du har gett katalog behörighet att ansluta till administrations-API: t 
 
 Lägg först till en särskild funktions flagga till din avdelningens kontroll-URL 
 
-1. Lägg till följande sträng i slutet av din avdelningens kontroll-instanss URI: `?feature.ext.catalog={"pbi":"true"}` . Detta aktiverar alternativet Power BI registrering i din katalog.
-
 1. Välj ikonen för **hanterings Center** .
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/management-center.png" alt-text="Ikonen för hanterings Center.":::
@@ -112,6 +110,5 @@ Lägg först till en särskild funktions flagga till din avdelningens kontroll-U
 
 ## <a name="next-steps"></a>Nästa steg
 
-Information om hur du använder PowerShell-cmdlets för att registrera och skanna en Power BI-klient finns i:
-  
-- [Använd PowerShell för att registrera och skanna Power BI](powershell-register-scan-power-bi.md)
+- [Bläddra i Azure avdelningens kontroll Data Catalog](how-to-browse-catalog.md)
+- [Sök i Azure avdelningens kontroll-Data Catalog](how-to-search-catalog.md)

@@ -14,12 +14,12 @@ ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fadcf3f5aefa76ab03d6313643fc18df71f6c3b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 06eb7e8d1be2e58fd6cf87167a585a2ffeee0d7f
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004661"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708491"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Konfigurera inställningar för Azure AD-roller i Privileged Identity Management
 
@@ -43,8 +43,8 @@ Följ stegen i den här artikeln för att godkänna eller neka begär Anden för
 Följ de här stegen för att öppna inställningarna för en Azure AD-roll.
 
 1. Logga in på [Azure Portal](https://portal.azure.com/) med en användare i rollen [privilegie rad roll administratör](../roles/permissions-reference.md#privileged-role-administrator) .
-gt
-1. Öppna **Azure AD Privileged Identity Management** &gt; roll inställningar för **Azure AD-roller** &gt; **Role settings**.
+
+1. Öppna **Azure AD Privileged Identity Management** &gt; roll inställningar för **Azure AD-roller** &gt; .
 
     ![Sidan roll inställningar visar Azure AD-roller](./media/pim-how-to-change-default-settings/role-settings.png)
 
@@ -147,7 +147,7 @@ Följ de här stegen för att öppna inställningarna för en Azure AD-roll.
 
 Använd skjutreglaget **aktiveringar** för att ange den maximala tiden, i timmar, som en roll förblir aktiv innan den upphör att gälla. Värdet kan vara mellan 1 och 72 timmar.
 
-## <a name="notifications"></a>Meddelanden
+## <a name="notifications"></a>Aviseringar
 
 Använd växeln **meddelanden** för att ange om administratörer ska få e-postaviseringar när roller aktive ras. Det här meddelandet kan vara användbart för att upptäcka otillåtna eller illegitimatea aktiveringar.
 

@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: debdbf6e08af7b9005336231abd6c998a871c525
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82cec4cc448f0ec30aecf6f8a69f399e0abbdde0
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708092"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706957"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Säkerhetskopiera och återställa en server i Azure Database for PostgreSQL-enskild server med hjälp av Azure Portal
 
@@ -33,11 +33,11 @@ När du skapar en server via Azure Portal, är **pris nivå** fönstret där du 
 Mer information om hur du anger dessa värden under skapa finns i [snabb starten för Azure Database for postgresql server](quickstart-create-server-database-portal.md).
 
 Du kan ändra kvarhållningsperioden för säkerhets kopior för en server genom att följa stegen nedan:
-1. Logga in på [Azure Portal](https://portal.azure.com/).
+1. Logga in på [Azure-portalen](https://portal.azure.com/).
 2. Välj din Azure Database for PostgreSQL-server. Den här åtgärden öppnar **översikts** sidan.
 3. Välj **pris nivå** på menyn under **Inställningar**. Med skjutreglaget kan du ändra **kvarhållningsperioden för säkerhets kopior** till dina preferenser mellan 7 och 35 dagar.
 I skärm bilden nedan har den ökats till 34 dagar.
-:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="Pris nivå – Välj redundans för säkerhets kopiering":::
+:::image type="content" source="./media/howto-restore-server-portal/3-increase-backup-days.png" alt-text="Kvarhållning av säkerhets kopior har ökat":::
 
 4. Bekräfta ändringen genom att klicka på **OK** .
 
@@ -53,11 +53,11 @@ Följande steg återställer exempel servern till en tidpunkt:
 
 2. I verktygsfältet på sidan **Översikt** för servern väljer du **Återställ**.
 
-   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Pris nivå – Välj redundans för säkerhets kopiering":::
+   :::image type="content" source="./media/howto-restore-server-portal/2-server.png" alt-text="Azure Database for PostgreSQL-översikt – knappen Återställ":::
 
 3. Fyll i formuläret Återställ med den information som behövs:
 
-   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Pris nivå – Välj redundans för säkerhets kopiering":::
+   :::image type="content" source="./media/howto-restore-server-portal/3-restore.png" alt-text="Azure Database for PostgreSQL-återställnings information":::
    - **Återställnings punkt**: Välj den tidpunkt som du vill återställa till.
    - **Mål server**: Ange ett namn för den nya servern.
    - **Plats**: du kan inte välja region. Som standard är det samma som käll servern.
@@ -71,23 +71,25 @@ Den nya servern som skapats av återställning vid olika tidpunkter har samma in
 
 Den nya servern som skapas under en återställning saknar de brandväggsregler eller VNet-tjänstslutpunkter som fanns på den ursprungliga servern. Dessa regler måste konfigureras separat för den nya servern.
 
+Om din käll PostgreSQL-Server är krypterad med Kundhanterade nycklar kan du läsa [dokumentationen](concepts-data-encryption-postgresql.md) för ytterligare överväganden.
+
 ## <a name="geo-restore"></a>Geo-återställning
 
 Om du har konfigurerat servern för geografiskt redundanta säkerhets kopieringar kan en ny server skapas från säkerhets kopian av den befintliga servern. Den nya servern kan skapas i vilken region som helst som Azure Database for PostgreSQL tillgänglig.  
 
 1. Välj knappen **skapa en resurs** (+) i det övre vänstra hörnet i portalen. Välj **databaser**  >  **Azure Database for PostgreSQL**.
 
-   :::image type="content" source="./media/howto-restore-server-portal/1-navigate-to-postgres.png" alt-text="Pris nivå – Välj redundans för säkerhets kopiering":::
+   :::image type="content" source="./media/howto-restore-server-portal/1-navigate-to-postgres.png" alt-text="Navigera till Azure Database for PostgreSQL.":::
 
 2. Välj distributions alternativet **enskild server** .
 
-   :::image type="content" source="./media/howto-restore-server-portal/2-select-deployment-option.png" alt-text="Pris nivå – Välj redundans för säkerhets kopiering":::
+   :::image type="content" source="./media/howto-restore-server-portal/2-select-deployment-option.png" alt-text="Välj Azure Database for PostgreSQL distributions alternativ för enskild server.":::
  
 3. Ange prenumeration, resurs grupp och namn på den nya servern. 
 
 4. Välj **säkerhets kopia** som **data källa**. Den här åtgärden läser in en listruta som innehåller en lista över servrar som har geo-redundanta säkerhets kopieringar aktiverade.
    
-   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore.png" alt-text="Pris nivå – Välj redundans för säkerhets kopiering":::
+   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore.png" alt-text="Välj data källa.":::
     
    > [!NOTE]
    > När en server först skapas kanske den inte är omedelbart tillgänglig för geo Restore. Det kan ta några timmar för nödvändiga metadata att fyllas i.
@@ -95,21 +97,21 @@ Om du har konfigurerat servern för geografiskt redundanta säkerhets kopieringa
 
 5. Välj List rutan **säkerhets kopiering** .
    
-   :::image type="content" source="./media/howto-restore-server-portal/5-geo-restore-backup.png" alt-text="Pris nivå – Välj redundans för säkerhets kopiering":::
+   :::image type="content" source="./media/howto-restore-server-portal/5-geo-restore-backup.png" alt-text="Välj listruta för säkerhets kopiering.":::
 
 6. Välj käll servern som du vill återställa från.
    
-   :::image type="content" source="./media/howto-restore-server-portal/6-select-backup.png" alt-text="Pris nivå – Välj redundans för säkerhets kopiering":::
+   :::image type="content" source="./media/howto-restore-server-portal/6-select-backup.png" alt-text="Välj säkerhets kopiering.":::
 
-7. Servern kommer att standardvärdet för antal **virtuella kärnor**, **kvarhållning av säkerhets kopior**, **redundans alternativ**för säkerhets kopior, **motor version**och **autentiseringsuppgifter för administratörer**. Välj **Fortsätt**. 
+7. Servern kommer att standardvärdet för antal **virtuella kärnor**, **kvarhållning av säkerhets kopior**, **redundans alternativ** för säkerhets kopior, **motor version** och **autentiseringsuppgifter för administratörer**. Välj **Fortsätt**. 
    
-   :::image type="content" source="./media/howto-restore-server-portal/7-accept-backup.png" alt-text="Pris nivå – Välj redundans för säkerhets kopiering":::
+   :::image type="content" source="./media/howto-restore-server-portal/7-accept-backup.png" alt-text="Fortsätt med säkerhets kopiering.":::
 
 8. Fyll i resten av formuläret med dina inställningar. Du kan välja valfri **plats**.
 
-    När du har valt platsen kan du välja **Konfigurera Server** för att uppdatera **beräknings generationen** (om det är tillgängligt i den region som du har valt), antal **virtuella kärnor**, **kvarhållning av säkerhets kopior**och **alternativet för redundans**. Att ändra **pris nivå** (Basic, generell användning eller minnesoptimerade) eller **lagrings** storlek under återställningen stöds inte.
+    När du har valt platsen kan du välja **Konfigurera Server** för att uppdatera **beräknings generationen** (om det är tillgängligt i den region som du har valt), antal **virtuella kärnor**, **kvarhållning av säkerhets kopior** och **alternativet för redundans**. Att ändra **pris nivå** (Basic, generell användning eller minnesoptimerade) eller **lagrings** storlek under återställningen stöds inte.
 
-   :::image type="content" source="./media/howto-restore-server-portal/8-create.png" alt-text="Pris nivå – Välj redundans för säkerhets kopiering"::: 
+   :::image type="content" source="./media/howto-restore-server-portal/8-create.png" alt-text="Fyll i formulär."::: 
 
 9. Välj **Granska + skapa** för att granska dina val. 
 
@@ -118,6 +120,8 @@ Om du har konfigurerat servern för geografiskt redundanta säkerhets kopieringa
 Den nya servern som skapades med geo Restore har samma inloggnings namn och lösen ord för Server administratören som var giltiga för den befintliga servern vid den tidpunkt då återställningen initierades. Du kan ändra lösen ordet från den nya serverns **översikts** sida.
 
 Den nya servern som skapas under en återställning saknar de brandväggsregler eller VNet-tjänstslutpunkter som fanns på den ursprungliga servern. Dessa regler måste konfigureras separat för den nya servern.
+
+Om din käll PostgreSQL-Server är krypterad med Kundhanterade nycklar kan du läsa [dokumentationen](concepts-data-encryption-postgresql.md) för ytterligare överväganden.
 
 
 ## <a name="next-steps"></a>Nästa steg

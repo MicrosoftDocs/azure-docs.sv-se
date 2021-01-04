@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 647e07fe32beedbd54ca6c5bb95c1de9564df2fd
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 810ea58c5d88dec53463b9a2b04750169c70e137
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654021"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704035"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Felsöka Azure Migrate-installationen och identifieringen
 
@@ -42,12 +42,6 @@ Detta kan inträffa om installations datorn finns bakom en proxyserver.
 - Om du använder en URL-baserad brand Väggs-proxy för att kontrol lera utgående anslutningar lägger du till [dessa URL: er](migrate-appliance.md#url-access) i en lista över tillåtna.
 - Om du använder en avlyssnings-proxy för att ansluta till Internet importerar du det till den virtuella datorns dator med [de här stegen](./migrate-appliance.md).
 
-
-## <a name="clicking-on-login-button-opens-a-new-tab-with-no-device-code"></a>När du klickar på knappen inloggning "öppnas en ny flik utan enhets kod
-
-Om du efter att ha klickat på inloggning "på enhetens konfigurations hanterare, öppnas en ny flik utan kod, gå tillbaka till fliken installation av Configuration Manager och du hittar enhets koden i fetstil under knappen" inloggning "", som visas på skärm bilden nedan. Kopiera koden och klistra in den på fliken inloggning för att autentisera med Azure.
-
-![Enhets kod](./media/troubleshoot-appliance-discovery/code.png)
 
 ## <a name="cant-sign-into-azure-from-the-appliance-web-app"></a>Det går inte att logga in på Azure från produktens webbapp
 

@@ -4,12 +4,12 @@ description: Skapa ett namnområde för Azure Event Hubs med en händelsehubb oc
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 9f86c5bc554bc1ed7f246aa1738a79f39cc9f0e8
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 658defcef5c9d145d499eb72ae372d1a7edfb740
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654276"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705429"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Skapa en namnrymd med händelsehubb och aktivera avbildning med hjälp av en mall
 
@@ -404,13 +404,13 @@ New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -Templa
 Azure Blob Storage som mål:
 
 ```azurecli
-az group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture/azuredeploy.json][]
+az deployment group create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture/azuredeploy.json][]
 ```
 
 Azure Data Lake Store som mål:
 
 ```azurecli
-az group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture-for-adls/azuredeploy.json][]
+az deployment group create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture-for-adls/azuredeploy.json][]
 ```
 
 ## <a name="next-steps"></a>Nästa steg

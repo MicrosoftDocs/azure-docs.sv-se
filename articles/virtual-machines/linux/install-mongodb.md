@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 49a0e48977393aeab7ff93b79e28acc55a87b51a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e3bc8ed2745e06096e05f17319a8f7896f87f80f
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016190"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702046"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Så här installerar och konfigurerar du MongoDB på en virtuell Linux-dator
 
@@ -125,10 +125,10 @@ Om du vill skapa den här miljön måste du ha det senaste [Azure CLI](/cli/azur
 az group create --name myResourceGroup --location eastus
 ```
 
-Distribuera sedan MongoDB-mallen med [AZ Group Deployment Create](/cli/azure/group/deployment). När du uppmanas till det anger du dina egna unika värden för användar namn och lösen ord för *newStorageAccountName*, *dnsNameForPublicIP* och admin:
+Sedan distribuerar du MongoDB-mallen med [AZ-distributions gruppen Skapa](/cli/azure/deployment/group). När du uppmanas till det anger du dina egna unika värden för användar namn och lösen ord för *newStorageAccountName*, *dnsNameForPublicIP* och admin:
 
 ```azurecli
-az group deployment create --resource-group myResourceGroup \
+az deployment group create --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 ```
 
@@ -176,10 +176,10 @@ Om du vill skapa den här miljön måste du ha det senaste [Azure CLI](/cli/azur
 az group create --name myResourceGroup --location eastus
 ```
 
-Distribuera sedan MongoDB-mallen med [AZ Group Deployment Create](/cli/azure/group/deployment). Definiera egna resurs namn och storlekar där det behövs, till exempel för *mongoAdminUsername*, *sizeOfDataDiskInGB* och *configNodeVmSize*:
+Sedan distribuerar du MongoDB-mallen med [AZ-distributions gruppen Skapa](/cli/azure/deployment/group). Definiera egna resurs namn och storlekar där det behövs, till exempel för *mongoAdminUsername*, *sizeOfDataDiskInGB* och *configNodeVmSize*:
 
 ```azurecli
-az group deployment create --resource-group myResourceGroup \
+az deployment group create --resource-group myResourceGroup \
   --parameters '{"adminUsername": {"value": "azureuser"},
     "adminPassword": {"value": "P@ssw0rd!"},
     "mongoAdminUsername": {"value": "mongoadmin"},
@@ -198,10 +198,10 @@ az group deployment create --resource-group myResourceGroup \
   --no-wait
 ```
 
-Distributionen kan ta över en timme för att distribuera och konfigurera alla VM-instanser. `--no-wait`Flaggan används i slutet av föregående kommando för att returnera kontroll till kommando tolken när mall distributionen har godkänts av Azure-plattformen. Du kan sedan Visa distributions statusen med [AZ Group Deployment show](/cli/azure/group/deployment). Följande exempel visar status för *myMongoDBCluster* -distributionen i *myResourceGroup* -resurs gruppen:
+Distributionen kan ta över en timme för att distribuera och konfigurera alla VM-instanser. `--no-wait`Flaggan används i slutet av föregående kommando för att returnera kontroll till kommando tolken när mall distributionen har godkänts av Azure-plattformen. Du kan sedan Visa distributions status med [AZ distributions grupp Visa](/cli/azure/deployment/group). Följande exempel visar status för *myMongoDBCluster* -distributionen i *myResourceGroup* -resurs gruppen:
 
 ```azurecli
-az group deployment show \
+az deployment group show \
     --resource-group myResourceGroup \
     --name myMongoDBCluster \
     --query [properties.provisioningState] \
