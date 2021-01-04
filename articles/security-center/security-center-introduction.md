@@ -14,14 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 0a1cac0fe61ea13a18224ea5992b5c7c1ba69d8a
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: b52fbd820c4b4603481f585ea0b0983720cabb22
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510343"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709101"
 ---
 # <a name="what-is-azure-security-center"></a>Vad är Azure Security Center?
+
+[!INCLUDE [Solorigate banner](../../includes/security-center-solorigate.md)]
 
 Azure Security Center är ett enhetligt system för hantering av infrastruktursäkerhet som stärker dina datacentras säkerhetstillstånd och tillhandahåller avancerat skydd för dina hybridarbetsbelastningar såväl i molnet, oavsett om de finns i Azure eller inte, som lokalt.
 
@@ -101,7 +103,7 @@ Med Security Centers hotskydd kan du upptäcka och förebygga hot mot infrastruk
 
 Security Centers hotskydd innehåller fusionsattackkedjeanalys, som automatiskt korrelerar aviseringar i din miljö, baserat på cyberattackkedjeanalysen, så att du bättre ska förstå en attackkampanjs i dess helhet, var den startade och vilken typ av effekt den haft på dina resurser.
 
-:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="Säkerhetsaviseringar":::
+:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="Säkerhets aviseringar":::
 
 ### <a name="integration-with-microsoft-defender-for-endpoint"></a>Integrering med Microsoft Defender för slut punkt
 

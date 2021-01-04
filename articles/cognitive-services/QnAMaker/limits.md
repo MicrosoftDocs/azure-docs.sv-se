@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: 1a384eed542d0c09a973e0e68288f9fc1660cc96
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: b3dca3617e2fb7ccdff870041374e9158498c9d1
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380917"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708948"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker grundläggande gränser och gränser för kunskap
 
@@ -82,10 +82,10 @@ Längden på och godkända tecken för namn och värde för metadata visas i fö
 
 ## <a name="knowledge-base-content-limits"></a>Innehålls gränser för kunskaps bas
 Övergripande begränsningar för innehållet i kunskaps basen:
-* Svars textens längd: 25 000
-* Text längd: 1 000
-* Längd på nyckel text för metadata: 100
-* Längd på metadata-värde text: 500
+* Svars textens längd: 25 000 tecken
+* Text längd: 1 000 tecken
+* Längd på nyckel text för metadata: 100 tecken
+* Längd på text för metadata: 500 tecken
 * Tecken som stöds för namn på metadata: alfabet, siffror och `_`
 * Tecken som stöds för metadata-värde: alla utom `:` och `|`
 * Fil namnets längd: 200

@@ -3,12 +3,12 @@ title: Konfigurera ett labb att använda Fjärrskrivbordsgateway i Azure DevTest
 description: Lär dig hur du konfigurerar ett labb i Azure DevTest Labs med en Fjärrskrivbordsgateway för att säkerställa säker åtkomst till de virtuella labb datorerna utan att behöva exponera RDP-porten.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b48a0709deb21ca0f8a27d1cf953c7d8d4ba2cc8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: dcf5191dea64c3d7bf28b9ce1c616d3d2defb73e
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144701"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695686"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Konfigurera ditt labb i Azure DevTest Labs att använda en Fjärrskrivbordsgateway
 I Azure DevTest Labs kan du konfigurera en Fjärrskrivbordsgateway för ditt labb för att säkerställa säker åtkomst till de virtuella datorerna i labbet (VM) utan att behöva exponera RDP-porten. Labbet är en central plats där dina labb användare kan visa och ansluta till alla virtuella datorer som de har åtkomst till. Knappen **Anslut** på sidan **virtuell dator** skapar en datorspecifik RDP-fil som du kan öppna för att ansluta till datorn. Du kan anpassa och säkra RDP-anslutningen ytterligare genom att ansluta ditt labb till en Fjärrskrivbordsgateway. 
@@ -66,7 +66,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 Konfigurera labbet att använda token-autentisering med hjälp av följande steg:
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-1. Välj **alla tjänster**och välj sedan **DevTest Labs** i listan.
+1. Välj **alla tjänster** och välj sedan **DevTest Labs** i listan.
 1. I listan med labb väljer du ditt **labb**.
 1. På labb sidan väljer du **konfiguration och principer**.
 1. På den vänstra menyn går du till avsnittet **Inställningar** och väljer **labb inställningar**.
@@ -79,7 +79,7 @@ Konfigurera labbet att använda token-autentisering med hjälp av följande steg
 1. **Spara** Något.
 
     > [!NOTE] 
-    > Genom att klicka på **Spara**godkänner du [licens villkoren](https://www.microsoft.com/licensing/product-licensing/products)för fjärrskrivbordsgateway. Mer information om fjärr-Gateway finns i [Välkommen till Fjärrskrivbordstjänster](/windows-server/remote/remote-desktop-services/Welcome-to-rds) och [distribuera din fjärr skrivbords miljö](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
+    > Genom att klicka på **Spara** godkänner du [licens villkoren](https://www.microsoft.com/licensing/product-licensing/products)för fjärrskrivbordsgateway. Mer information om fjärr-Gateway finns i [Välkommen till Fjärrskrivbordstjänster](/windows-server/remote/remote-desktop-services/Welcome-to-rds) och [distribuera din fjärr skrivbords miljö](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
 
 
 Om du vill konfigurera labbet via Automation, se [Set-DevTestLabGateway.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Set-DevTestLabGateway.ps1) för ett PowerShell-skript för att ange **Gateway-värdnamn** och inställningar för gateway- **token** . [Azure DevTest Labs GitHub-lagringsplatsen](https://github.com/Azure/azure-devtestlab) innehåller också en Azure Resource Manager-mall som skapar eller uppdaterar ett labb med **Gateway-värdnamn** och inställningar för gateway- **token** .
@@ -135,7 +135,7 @@ Följ dessa steg om du vill konfigurera en exempel lösning för Server gruppen 
     Mallen kan distribueras med hjälp av Azure CLI med hjälp av följande kommando:
 
     ```azurecli
-    az group deployment create --resource-group {resource-group} --template-file azuredeploy.json --parameters @azuredeploy.parameters.json -–parameters _artifactsLocation="{storage-account-endpoint}/{container-name}" -–parameters _artifactsLocationSasToken = "?{sas-token}"
+    az deployment group create --resource-group {resource-group} --template-file azuredeploy.json --parameters @azuredeploy.parameters.json -–parameters _artifactsLocation="{storage-account-endpoint}/{container-name}" -–parameters _artifactsLocationSasToken = "?{sas-token}"
     ```
 
     Här följer beskrivningar av parametrarna:
