@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: f0d0742994b14f692c2aea9130edc73d779cff52
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 2ff97dd30d9b993385f52ea531653a89197f8756
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92544774"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734631"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Så här konfigurerar du Azure cache för Redis
 I det här avsnittet beskrivs de konfigurationer som är tillgängliga för Azure-cachen för Redis-instanser. Det här avsnittet beskriver också standard konfigurationen för Redis-servern för Azure cache för Redis-instanser.
@@ -24,16 +24,16 @@ I det här avsnittet beskrivs de konfigurationer som är tillgängliga för Azur
 ## <a name="configure-azure-cache-for-redis-settings"></a>Konfigurera Azure cache för Redis-inställningar
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-browse.md)]
 
-Azure cache för Redis-inställningar visas och konfigureras på bladet **Azure cache för Redis** med hjälp av **resurs-menyn** .
+Azure cache för Redis-inställningar visas och konfigureras på bladet **Azure cache för Redis** med hjälp av **resurs-menyn**.
 
 ![Azure cache för Redis-inställningar](./media/cache-configure/redis-cache-settings.png)
 
-Du kan visa och konfigurera följande inställningar med **resurs-menyn** .
+Du kan visa och konfigurera följande inställningar med **resurs-menyn**.
 
 * [Översikt](#overview)
 * [Aktivitetslogg](#activity-log)
 * [Åtkomstkontroll (IAM)](#access-control-iam)
-* [Taggar](#tags)
+* [Taggen](#tags)
 * [Diagnostisera och lösa problem](#diagnose-and-solve-problems)
 * [Inställningar](#settings)
     * [Åtkomstnycklar](#access-keys)
@@ -55,7 +55,7 @@ Du kan visa och konfigurera följande inställningar med **resurs-menyn** .
     * [Starta om](#reboot)
 * [Övervakning](#monitoring)
     * [Redis mått](#redis-metrics)
-    * [Aviserings regler](#alert-rules)
+    * [Aviseringsregler](#alert-rules)
     * [Diagnostik](#diagnostics)
 * Stöd för & fel söknings inställningar
     * [Resurshälsa](#resource-health)
@@ -117,7 +117,7 @@ Följande inställningar konfigureras på bladet **Avancerade inställningar** .
 * [Meddelanden om disk utrymme (avancerade inställningar)](#keyspace-notifications-advanced-settings)
 
 #### <a name="access-ports"></a>Åtkomst portar
-Som standard är icke-TLS/SSL-åtkomst inaktive rad för nya cacheminnen. Om du vill aktivera en icke-TLS-port klickar du på **Nej** för **Tillåt åtkomst endast via SSL** på bladet **Avancerade inställningar** och klicka sedan på **Spara** .
+Som standard är icke-TLS/SSL-åtkomst inaktive rad för nya cacheminnen. Om du vill aktivera en icke-TLS-port klickar du på **Nej** för **Tillåt åtkomst endast via SSL** på bladet **Avancerade inställningar** och klicka sedan på **Spara**.
 
 > [!NOTE]
 > TLS-åtkomst till Azure cache för Redis har stöd för TLS 1,0, 1,1 och 1,2 för närvarande, men version 1,0 och 1,1 dras tillbaka snart.  Mer information finns på [sidan ta bort TLS 1,0 och 1,1](cache-remove-tls-10-11.md) .
@@ -126,7 +126,7 @@ Som standard är icke-TLS/SSL-åtkomst inaktive rad för nya cacheminnen. Om du 
 
 <a name="maxmemory-policy-and-maxmemory-reserved"></a>
 #### <a name="memory-policies"></a>Minnes principer
-**Maxmemory-principen** , **maxmemory-reserverade** och **maxfragmentationmemory-reserverade** inställningar på bladet **Avancerade inställningar** konfigurerar minnes principerna för cachen.
+**Maxmemory-principen**, **maxmemory-reserverade** och **maxfragmentationmemory-reserverade** inställningar på bladet **Avancerade inställningar** konfigurerar minnes principerna för cachen.
 
 ![Azure-cache för Redis maxmemory-princip](./media/cache-configure/redis-cache-maxmemory-policy.png)
 
@@ -145,7 +145,7 @@ Mer information om `maxmemory` principer finns i [avlägsna principer](https://r
 
 **Maxfragmentationmemory-reserverad-** inställningen konfigurerar mängden minne i MB per instans i ett kluster som är reserverad för att få plats för fragmentering. Genom att ange det här värdet kan du ha en mer konsekvent redis-server när cachen är full eller nära full och fragmenteringen är hög. När minnet är reserverat för sådana åtgärder är det inte tillgängligt för lagring av cachelagrade data.
 
-En sak att tänka på när du väljer ett nytt minnes reservations värde ( **maxmemory-reserverad** eller **maxfragmentationmemory** ) är hur den här ändringen kan påverka ett cacheminne som redan körs med stora mängder data. Om du till exempel har en 53 GB-cache med 49 GB data, ändrar du reservation svärdet till 8 GB, så tar den här ändringen bort det högsta tillgängliga minnet för systemet ned till 45 GB. Om antingen din aktuella `used_memory` eller dina `used_memory_rss` värden är högre än den nya gränsen på 45 GB måste systemet ta bort data förrän både `used_memory` och `used_memory_rss` är under 45 GB. Avlägsnandet kan öka Server belastningen och fragmenteringen av minnet. Mer information om cache-mått som `used_memory` och `used_memory_rss` finns i [tillgängliga mått och rapporterings intervall](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
+En sak att tänka på när du väljer ett nytt minnes reservations värde (**maxmemory-reserverad** eller **maxfragmentationmemory**) är hur den här ändringen kan påverka ett cacheminne som redan körs med stora mängder data. Om du till exempel har en 53 GB-cache med 49 GB data, ändrar du reservation svärdet till 8 GB, så tar den här ändringen bort det högsta tillgängliga minnet för systemet ned till 45 GB. Om antingen din aktuella `used_memory` eller dina `used_memory_rss` värden är högre än den nya gränsen på 45 GB måste systemet ta bort data förrän både `used_memory` och `used_memory_rss` är under 45 GB. Avlägsnandet kan öka Server belastningen och fragmenteringen av minnet. Mer information om cache-mått som `used_memory` och `used_memory_rss` finns i [tillgängliga mått och rapporterings intervall](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
 
 > [!IMPORTANT]
 > De **maxmemory-reserverade** och **maxfragmentationmemory** inställningarna är bara tillgängliga för cacheminnen standard och Premium.
@@ -234,7 +234,7 @@ På bladet **schema uppdateringar** kan du ange ett underhålls fönster för re
 
 ![Schemauppdateringar](./media/cache-configure/redis-schedule-updates.png)
 
-Om du vill ange en underhålls period kontrollerar du önskade dagar och anger start timme för underhålls perioden för varje dag och klickar på **OK** . Tiden för underhålls perioden är UTC.
+Om du vill ange en underhålls period kontrollerar du önskade dagar och anger start timme för underhålls perioden för varje dag och klickar på **OK**. Tiden för underhålls perioden är UTC.
 
 > [!IMPORTANT]
 > Funktionen **Schemalägg uppdateringar** är bara tillgänglig för cacheminnen på Premium-nivån. Mer information och instruktioner finns i [Azure cache for Redis administration-Schedule updates](cache-administration.md#schedule-updates).
@@ -316,7 +316,7 @@ Om du har en Premium-cache med aktive rad kluster kan du välja vilken Shards so
 
 ![Skärm bild som visar var du kan välja vilken Shards i cacheminnet som ska startas om.](./media/cache-configure/redis-cache-reboot-cluster.png)
 
-Om du vill starta om en eller flera noder i cacheminnet väljer du önskade noder och klickar på **starta om** . Om du har en Premium-cache med klustrad aktive rad väljer du de Shard (ar) som ska startas om och klickar sedan på **starta om** . Efter några minuter startar den markerade noden om och är tillbaka online några minuter senare.
+Om du vill starta om en eller flera noder i cacheminnet väljer du önskade noder och klickar på **starta om**. Om du har en Premium-cache med klustrad aktive rad väljer du de Shard (ar) som ska startas om och klickar sedan på **starta om**. Efter några minuter startar den markerade noden om och är tillbaka online några minuter senare.
 
 > [!IMPORTANT]
 > Omstart är nu tillgängligt för alla pris nivåer. Mer information och instruktioner finns i [Azure cache for Redis administration – starta om](cache-administration.md#reboot).
@@ -332,13 +332,13 @@ Mer information om Azure cache för Redis-övervakning och diagnostik finns i [s
 ![Diagnostik](./media/cache-configure/redis-cache-diagnostics.png)
 
 * [Redis mått](#redis-metrics)
-* [Aviserings regler](#alert-rules)
+* [Aviseringsregler](#alert-rules)
 * [Diagnostik](#diagnostics)
 
 ### <a name="redis-metrics"></a>Redis mått
 Klicka på **Redis mått** om du vill [Visa mått](cache-how-to-monitor.md#view-cache-metrics) för din cache.
 
-### <a name="alert-rules"></a>Aviserings regler
+### <a name="alert-rules"></a>Aviseringsregler
 
 Klicka på **aviserings regler** om du vill konfigurera aviseringar baserat på Azure cache för Redis-mått. Mer information finns i [aviseringar](cache-how-to-monitor.md#alerts).
 
@@ -363,7 +363,7 @@ Inställningarna i avsnittet **support och fel sökning** innehåller alternativ
 **Resource Health** bevakar din resurs och meddelar dig om den körs som förväntat. Mer information om Azure Resource Health Service finns i [Översikt över Azure Resource Health](../service-health/resource-health-overview.md).
 
 > [!NOTE]
-> Resource Health kan för närvarande inte rapportera om hälsan för Azure cache för Redis-instanser som finns i ett virtuellt nätverk. Mer information finns i gör så här [fungerar alla cache-funktioner när du är värd för en cache i ett virtuellt nätverk?](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
+> Resource Health kan för närvarande inte rapportera om hälsan för Azure cache för Redis-instanser som finns i ett virtuellt nätverk. Mer information finns i gör så här [fungerar alla cache-funktioner när du är värd för en cache i ett virtuellt nätverk?](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-a-cache-is-hosted-in-a-virtual-network)
 >
 >
 
@@ -382,7 +382,7 @@ Nya Azure cache för Redis-instanser konfigureras med följande standard konfigu
 >
 > `StackExchange.Redis.RedisServerException: ERR unknown command 'CONFIG'`
 >
-> Alla värden som kan konfigureras, till exempel **Max-Memory-princip** , kan konfigureras via Azure Portal eller kommando rads hanterings verktyg som Azure CLI eller PowerShell.
+> Alla värden som kan konfigureras, till exempel **Max-Memory-princip**, kan konfigureras via Azure Portal eller kommando rads hanterings verktyg som Azure CLI eller PowerShell.
 >
 >
 
@@ -464,7 +464,7 @@ Mer information om databaser finns i [Vad är Redis-databaser?](cache-developmen
 Mer information om Redis-kommandon finns i [https://redis.io/commands](https://redis.io/commands) .
 
 ## <a name="redis-console"></a>Redis-konsol
-Du kan på ett säkert sätt utfärda kommandon till Azure cache för Redis-instanser med hjälp av **Redis-konsolen** , som finns i Azure Portal för alla cache-nivåer.
+Du kan på ett säkert sätt utfärda kommandon till Azure cache för Redis-instanser med hjälp av **Redis-konsolen**, som finns i Azure Portal för alla cache-nivåer.
 
 > [!IMPORTANT]
 > - Redis-konsolen fungerar inte med [VNet](cache-how-to-premium-vnet.md). När din cache ingår i ett VNET kan endast klienter i VNET komma åt cacheminnet. Eftersom Redis-konsolen körs i din lokala webbläsare, som är utanför det virtuella nätverket, kan den inte ansluta till cacheminnet.
@@ -498,7 +498,7 @@ I det föregående exemplet är Shard 1 den valda Shard, men finns `myKey` i Sha
 
 
 ## <a name="move-your-cache-to-a-new-subscription"></a>Flytta cacheminnet till en ny prenumeration
-Du kan flytta din cache till en ny prenumeration genom att klicka på **Flytta** .
+Du kan flytta din cache till en ny prenumeration genom att klicka på **Flytta**.
 
 ![Flytta Azure cache för Redis](./media/cache-configure/redis-cache-move.png)
 

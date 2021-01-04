@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 120446472038076e34f62b47ba79348e5de8b972
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c75fcd1fd20e41df5018fcaa07fe83051d7e5f1a
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010936"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740376"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Så här avregistrerar du en enhet från Azure IoT Hub Device Provisioning Service
 
@@ -26,7 +26,7 @@ Registrering i enhets etablerings tjänsten gör det möjligt [att tillhandahål
 
 ## <a name="disallow-devices-by-using-an-individual-enrollment-entry"></a>Tillåt inte enheter genom att använda en enskild registrerings post
 
-Enskilda registreringar gäller för en enskild enhet och kan använda antingen X. 509-certifikat eller SAS-token (i en verklig eller virtuell TPM) som mekanism för attestering. (Enheter som använder SAS-token som bestyrkande mekanism kan endast tillhandahållas via en enskild registrering.) Om du vill tillåta en enhet som har en enskild registrering kan du antingen inaktivera eller ta bort registrerings posten. 
+Enskilda registreringar gäller för en enskild enhet och kan använda X. 509-certifikat, TPM-bekräftelse nycklar (i en verklig eller virtuell TPM) eller SAS-token som mekanism för attestering. Om du vill tillåta en enhet som har en enskild registrering kan du antingen inaktivera eller ta bort registrerings posten. 
 
 För att tillfälligt neka enheten genom att inaktivera registrerings posten: 
 

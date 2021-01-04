@@ -1,18 +1,18 @@
 ---
 title: Metodtips för mallar
-description: Beskriver rekommenderade metoder för att redigera Azure Resource Manager mallar. Innehåller förslag på hur du undviker vanliga problem när du använder mallar.
+description: Beskriver rekommenderade metoder för att redigera Azure Resource Manager mallar (ARM-mallar). Innehåller förslag på hur du undviker vanliga problem när du använder mallar.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: c62bde8fc8cfc79330d13b7b2ff4f778dadf1339
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 85d58098508d5ac7cad6c1cb3cb68ad6c7f179f9
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497987"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724994"
 ---
 # <a name="arm-template-best-practices"></a>Metod tips för ARM-mall
 
-Den här artikeln visar hur du använder rekommenderade metoder när du konstruerar ARM-mallen. Dessa rekommendationer hjälper dig att undvika vanliga problem när du använder en ARM-mall för att distribuera en lösning.
+Den här artikeln visar hur du använder rekommenderade metoder när du skapar din Azure Resource Manager-mall (ARM-mall). Dessa rekommendationer hjälper dig att undvika vanliga problem när du använder en ARM-mall för att distribuera en lösning.
 
 ## <a name="template-limits"></a>Mall gränser
 
@@ -26,7 +26,7 @@ Du är också begränsad till:
 * 64-utmatnings värden
 * 24 576 tecken i ett mall uttryck
 
-Du kan överskrida vissa begränsningar för mallar genom att använda en kapslad mall. Mer information finns i [använda länkade mallar när du distribuerar Azure-resurser](linked-templates.md). Om du vill minska antalet parametrar, variabler eller utdata kan du kombinera flera värden i ett objekt. Mer information finns i [objekt som parametrar](/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
+Du kan överskrida vissa begränsningar för mallar genom att använda en kapslad mall. Mer information finns i [använda länkade och kapslade mallar när du distribuerar Azure-resurser](linked-templates.md). Om du vill minska antalet parametrar, variabler eller utdata kan du kombinera flera värden i ett objekt. Mer information finns i [objekt som parametrar](/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
 
 ## <a name="resource-group"></a>Resursgrupp
 
@@ -48,32 +48,32 @@ Informationen i det här avsnittet kan vara till hjälp när du arbetar med [par
 
 * Använd parametrar för resurs namn som du vill ange för enkel identifiering.
 
-* Ange en beskrivning av varje parameter i metadata:
+* Ange en beskrivning av varje parameter i metadata.
 
-   ```json
-   "parameters": {
-       "storageAccountType": {
-           "type": "string",
-           "metadata": {
-               "description": "The type of the new storage account created to store the VM disks."
-           }
-       }
-   }
-   ```
-
-* Definiera standardvärden för parametrar som inte är känsliga. Genom att ange ett standardvärde är det enklare att distribuera mallen och användare av din mall ser ett exempel på ett lämpligt värde. Alla standardvärden för en parameter måste vara giltiga för alla användare i standard distributions konfigurationen. 
-   
-   ```json
-   "parameters": {
-        "storageAccountType": {
-            "type": "string",
-            "defaultValue": "Standard_GRS",
-            "metadata": {
-                "description": "The type of the new storage account created to store the VM disks."
-            }
+    ```json
+    "parameters": {
+      "storageAccountType": {
+        "type": "string",
+        "metadata": {
+          "description": "The type of the new storage account created to store the VM disks."
         }
-   }
-   ```
+      }
+    }
+    ```
+
+* Definiera standardvärden för parametrar som inte är känsliga. Genom att ange ett standardvärde är det enklare att distribuera mallen och användare av din mall ser ett exempel på ett lämpligt värde. Alla standardvärden för en parameter måste vara giltiga för alla användare i standard distributions konfigurationen.
+
+    ```json
+    "parameters": {
+      "storageAccountType": {
+        "type": "string",
+        "defaultValue": "Standard_GRS",
+        "metadata": {
+          "description": "The type of the new storage account created to store the VM disks."
+        }
+      }
+    }
+    ```
 
 * Om du vill ange en valfri parameter ska du inte använda en tom sträng som standardvärde. Använd i stället ett litteralt värde eller ett språk uttryck för att skapa ett värde.
 
@@ -84,7 +84,7 @@ Informationen i det här avsnittet kan vara till hjälp när du arbetar med [par
      "metadata": {
        "description": "Name of the storage account"
      }
-   },
+   }
    ```
 
 * Använd `allowedValues` sparsamhet. Använd bara det när du måste se till att vissa värden inte ingår i de tillåtna alternativen. Om du använder `allowedValues` för ett för stort kan du blockera giltiga distributioner genom att inte hålla din lista uppdaterad.
@@ -95,18 +95,18 @@ Informationen i det här avsnittet kan vara till hjälp när du arbetar med [par
 
 * Använd alltid parametrar för användar namn och lösen ord (eller hemligheter).
 
-* Använd `securestring` för alla lösen ord och hemligheter. Om du skickar känsliga data i ett JSON-objekt använder du `secureObject` typen. Det går inte att läsa mallparametrar med säker sträng eller säkra objekt typer efter resurs distributionen. 
-   
-   ```json
-   "parameters": {
-       "secretValue": {
-           "type": "securestring",
-           "metadata": {
-               "description": "The value of the secret to store in the vault."
-           }
-       }
-   }
-   ```
+* Använd `securestring` för alla lösen ord och hemligheter. Om du skickar känsliga data i ett JSON-objekt använder du `secureObject` typen. Det går inte att läsa mallparametrar med säker sträng eller säkra objekt typer efter resurs distributionen.
+
+    ```json
+    "parameters": {
+      "secretValue": {
+        "type": "securestring",
+        "metadata": {
+          "description": "The value of the secret to store in the vault."
+        }
+      }
+    }
+    ```
 
 * Ange inte standardvärden för användar namn, lösen ord eller något värde som kräver en `secureString` typ.
 
@@ -114,7 +114,7 @@ Informationen i det här avsnittet kan vara till hjälp när du arbetar med [par
 
 ### <a name="location-recommendations-for-parameters"></a>Plats rekommendationer för parametrar
 
-* Använd en parameter för att ange plats för resurser och ange standardvärdet till `resourceGroup().location` . Genom att ange en plats parameter kan användare av mallen ange en plats som de har behörighet att distribuera till.
+* Använd en parameter för att ange plats för resurser och ange standardvärdet till `resourceGroup().location` . Genom att ange en plats parameter kan användare av mallen ange en plats där de har behörighet att distribuera resurser.
 
    ```json
    "parameters": {
@@ -125,7 +125,7 @@ Informationen i det här avsnittet kan vara till hjälp när du arbetar med [par
          "description": "The location in which the resources should be deployed."
        }
      }
-   },
+   }
    ```
 
 * Ange inte `allowedValues` för parametern location. De platser som du anger kanske inte är tillgängliga i alla moln.
@@ -144,7 +144,7 @@ Följande information kan vara till hjälp när du arbetar med [variabler](templ
 
 * Använd variabler för värden som du skapar i ett komplext arrangemang av mall-funktioner. Mallen är lättare att läsa när det komplexa uttrycket visas i variabler.
 
-* Du kan inte använda funktionen [Reference](template-functions-resource.md#reference) i avsnittet **Variables** i mallen. Funktionen **Reference** härleder sitt värde från resursens körnings tillstånd. Variablerna löses dock vid den inledande parsningen av mallen. Skapa värden som behöver funktionen **referens** direkt i avsnittet **resurser** eller **utdata** i mallen.
+* Du kan inte använda funktionen [Reference](template-functions-resource.md#reference) i `variables` avsnittet i mallen. `reference`Funktionen härleder sitt värde från resursens körnings tillstånd. Variablerna löses dock vid den inledande parsningen av mallen. Konstruera värden som behöver `reference` funktionen direkt i eller- `resources` `outputs` avsnittet i mallen.
 
 * Inkludera variabler för resurs namn som måste vara unika.
 
@@ -166,7 +166,7 @@ Använd inte variabler för API-versionen. Använd i synnerhet inte [providers-f
 
 När du bestämmer vilka [beroenden](define-resource-dependency.md) som ska anges använder du följande rikt linjer:
 
-* Använd funktionen **Reference** och skicka in resurs namnet för att ange ett implicit beroende mellan resurser som behöver dela en egenskap. Lägg inte till ett explicit `dependsOn` element när du redan har definierat ett implicit beroende. Den här metoden minskar risken för onödiga beroenden. Ett exempel på hur du anger ett implicit beroende finns i [implicit beroende](define-resource-dependency.md#reference-and-list-functions).
+* Använd `reference` funktionen och skicka i resurs namnet för att ange ett implicit beroende mellan resurser som behöver dela en egenskap. Lägg inte till ett explicit `dependsOn` element när du redan har definierat ett implicit beroende. Den här metoden minskar risken för onödiga beroenden. Ett exempel på hur du anger ett implicit beroende finns i [referens-och list funktioner](define-resource-dependency.md#reference-and-list-functions).
 
 * Ange en underordnad resurs som beroende av dess överordnade resurs.
 
@@ -180,109 +180,108 @@ När du bestämmer vilka [beroenden](define-resource-dependency.md) som ska ange
 
 Följande information kan vara till hjälp när du arbetar med [resurser](template-syntax.md#resources):
 
-* Om du vill hjälpa andra deltagare att förstå syftet med resursen anger du **kommentarer** för varje resurs i mallen:
-   
-   ```json
-   "resources": [
-     {
-         "name": "[variables('storageAccountName')]",
-         "type": "Microsoft.Storage/storageAccounts",
-         "apiVersion": "2019-06-01",
-         "location": "[resourceGroup().location]",
-         "comments": "This storage account is used to store the VM disks.",
-         ...
-     }
-   ]
-   ```
+* Om du vill hjälpa andra deltagare att förstå syftet med resursen anger du `comments` för varje resurs i mallen.
 
-* Om du använder en *offentlig slut punkt* i mallen (till exempel en offentlig Azure Blob Storage-slutpunkt) ska du *inte hårdkoda* namn området. Använd funktionen **Reference** för att dynamiskt hämta namn området. Du kan använda den här metoden för att distribuera mallen till olika miljöer för offentliga namn områden utan att manuellt ändra slut punkten i mallen. Ange API-versionen till samma version som du använder för lagrings kontot i mallen:
-   
-   ```json
-   "diagnosticsProfile": {
-       "bootDiagnostics": {
-           "enabled": "true",
-           "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').primaryEndpoints.blob]"
-       }
-   }
-   ```
-   
-   Om lagrings kontot har distribuerats i samma mall som du skapar och namnet på lagrings kontot inte delas med en annan resurs i mallen, behöver du inte ange namn området för providern eller API version när du refererar till resursen. I följande exempel visas den förenklade syntaxen:
-   
-   ```json
-   "diagnosticsProfile": {
-       "bootDiagnostics": {
-           "enabled": "true",
-           "storageUri": "[reference(variables('storageAccountName')).primaryEndpoints.blob]"
-       }
-   }
-   ```
-     
-   Du kan också referera till ett befintligt lagrings konto som finns i en annan resurs grupp:
+    ```json
+    "resources": [
+      {
+        "name": "[variables('storageAccountName')]",
+        "type": "Microsoft.Storage/storageAccounts",
+        "apiVersion": "2019-06-01",
+        "location": "[resourceGroup().location]",
+        "comments": "This storage account is used to store the VM disks.",
+          ...
+      }
+    ]
+    ```
 
-   ```json
-   "diagnosticsProfile": {
-       "bootDiagnostics": {
-           "enabled": "true",
-           "storageUri": "[reference(resourceId(parameters('existingResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('existingStorageAccountName')), '2019-06-01').primaryEndpoints.blob]"
-       }
-   }
-   ```
+* Om du använder en *offentlig slut punkt* i mallen (till exempel en offentlig Azure Blob Storage-slutpunkt) ska du *inte hårdkoda* namn området. Använd `reference` funktionen för att dynamiskt hämta namn området. Du kan använda den här metoden för att distribuera mallen till olika miljöer för offentliga namn områden utan att manuellt ändra slut punkten i mallen. Ange API-versionen till samma version som du använder för lagrings kontot i mallen.
+
+    ```json
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": "true",
+        "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').primaryEndpoints.blob]"
+      }
+    }
+    ```
+
+   Om lagrings kontot har distribuerats i samma mall som du skapar och namnet på lagrings kontot inte delas med en annan resurs i mallen, behöver du inte ange namn området för providern eller `apiVersion` när du refererar till resursen. I följande exempel visas den förenklade syntaxen.
+
+    ```json
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": "true",
+        "storageUri": "[reference(variables('storageAccountName')).primaryEndpoints.blob]"
+      }
+    }
+    ```
+
+   Du kan också referera till ett befintligt lagrings konto som finns i en annan resurs grupp.
+
+    ```json
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": "true",
+        "storageUri": "[reference(resourceId(parameters('existingResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('existingStorageAccountName')), '2019-06-01').primaryEndpoints.blob]"
+      }
+    }
+    ```
 
 * Tilldela endast offentliga IP-adresser till en virtuell dator när ett program kräver det. Om du vill ansluta till en virtuell dator (VM) för fel sökning eller för hanterings-och administrations syfte använder du inkommande NAT-regler, en virtuell nätverksgateway eller en hopp.
-   
+
      Mer information om hur du ansluter till virtuella datorer finns i:
-   
+
    * [Köra virtuella datorer för en arkitektur på N-nivå i Azure](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
    * [Konfigurera WinRM-åtkomst för virtuella datorer i Azure Resource Manager](../../virtual-machines/windows/winrm.md)
    * [Tillåt extern åtkomst till den virtuella datorn med hjälp av Azure Portal](../../virtual-machines/windows/nsg-quickstart-portal.md)
    * [Tillåt extern åtkomst till den virtuella datorn med hjälp av PowerShell](../../virtual-machines/windows/nsg-quickstart-powershell.md)
    * [Tillåt extern åtkomst till din virtuella Linux-dator med hjälp av Azure CLI](../../virtual-machines/linux/nsg-quickstart.md)
 
-* Egenskapen **domainNameLabel** för offentliga IP-adresser måste vara unik. **DomainNameLabel** -värdet måste vara mellan 3 och 63 tecken långt och följer reglerna som anges i detta reguljära uttryck: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$` . Eftersom **uniqueString** -funktionen genererar en sträng som är 13 tecken lång, är **dnsPrefixString** -parametern begränsad till 50 tecken:
+* `domainNameLabel`Egenskapen för offentliga IP-adresser måste vara unik. `domainNameLabel`Värdet måste vara mellan 3 och 63 tecken långt och följer reglerna som anges i detta reguljära uttryck: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$` . Eftersom `uniqueString` funktionen genererar en sträng som är 13 tecken lång, `dnsPrefixString` är parametern begränsad till 50 tecken.
 
-   ```json
-   "parameters": {
-       "dnsPrefixString": {
-           "type": "string",
-           "maxLength": 50,
-           "metadata": {
-               "description": "The DNS label for the public IP address. It must be lowercase. It should match the following regular expression, or it will raise an error: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$"
-           }
-       }
-   },
-   "variables": {
-       "dnsPrefix": "[concat(parameters('dnsPrefixString'),uniquestring(resourceGroup().id))]"
-   }
-   ```
+    ```json
+    "parameters": {
+      "dnsPrefixString": {
+        "type": "string",
+        "maxLength": 50,
+        "metadata": {
+          "description": "The DNS label for the public IP address. It must be lowercase. It should match the following regular expression, or it will raise an error: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$"
+        }
+      }
+    },
+    "variables": {
+      "dnsPrefix": "[concat(parameters('dnsPrefixString'),uniquestring(resourceGroup().id))]"
+    }
+    ```
 
-* När du lägger till ett lösen ord till ett anpassat skript tillägg, använder du egenskapen **commandToExecute** i egenskapen **protectedSettings** :
-   
-   ```json
-   "properties": {
-       "publisher": "Microsoft.Azure.Extensions",
-       "type": "CustomScript",
-       "typeHandlerVersion": "2.0",
-       "autoUpgradeMinorVersion": true,
-       "settings": {
-           "fileUris": [
-               "[concat(variables('template').assets, '/lamp-app/install_lamp.sh')]"
-           ]
-       },
-       "protectedSettings": {
-           "commandToExecute": "[concat('sh install_lamp.sh ', parameters('mySqlPassword'))]"
-       }
-   }
-   ```
-   
+* När du lägger till ett lösen ord till ett anpassat skript tillägg, använder du `commandToExecute` egenskapen i `protectedSettings` egenskapen.
+
+    ```json
+    "properties": {
+      "publisher": "Microsoft.Azure.Extensions",
+      "type": "CustomScript",
+      "typeHandlerVersion": "2.0",
+      "autoUpgradeMinorVersion": true,
+      "settings": {
+        "fileUris": [
+          "[concat(variables('template').assets, '/lamp-app/install_lamp.sh')]"
+        ]
+      },
+      "protectedSettings": {
+        "commandToExecute": "[concat('sh install_lamp.sh ', parameters('mySqlPassword'))]"
+      }
+    }
+    ```
+
    > [!NOTE]
-   > För att säkerställa att hemligheter krypteras när de skickas som parametrar till virtuella datorer och tillägg, använder du egenskapen **protectedSettings** för relevanta tillägg.
-   > 
+   > För att säkerställa att hemligheter krypteras när de skickas som parametrar till virtuella datorer och tillägg, använder du `protectedSettings` egenskapen för relevanta tillägg.
 
 ## <a name="use-test-toolkit"></a>Använd test Toolkit
 
 ARM-mallens test verktyg är ett skript som kontrollerar om mallen använder rekommenderade metoder. När mallen inte är kompatibel med rekommenderade metoder returnerar den en lista med varningar med föreslagna ändringar. Test Toolkit kan hjälpa dig att lära dig hur du implementerar bästa praxis i mallen.
 
-När du har slutfört mallen kan du köra test Toolkit för att se om det finns några sätt att förbättra IT-implementeringen. Mer information finns i [test Toolkit för ARM-mallar](test-toolkit.md).
+När du har slutfört mallen kan du köra test Toolkit för att se om det finns några sätt att förbättra implementeringen. Mer information finns i [använda test verktyg för arm-mall](test-toolkit.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

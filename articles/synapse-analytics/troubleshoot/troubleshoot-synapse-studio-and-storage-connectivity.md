@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: cee6d030a9639a7203a32a3c0957733cecb1f8b6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8cf440a517c1a3496b3df438fdd0d2534609908f
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445324"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733119"
 ---
 # <a name="troubleshoot-connectivity-between-azure-synapse-analytics-synapse-studio-and-storage"></a>Felsöka anslutningen mellan Azure Synapse Analytics Synapse Studio och lagring
 
@@ -24,7 +24,11 @@ Om ditt lagrings konto saknar rätt behörighet kan du inte expandera lagrings s
 
 Det detaljerade fel meddelandet kan variera, men den allmänna innebörden av fel meddelandet är: "den här begäran har inte behörighet att utföra den här åtgärden."
 
-![Problem med lagrings anslutning 1](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue.1.png)
+I den länkade lagrings noden:  
+![Problem med lagrings anslutning 1](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-1.png)
+
+I noden lagrings behållare:  
+![Lagrings anslutnings problem 1a](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-1a.png)
 
 **Lösning**: Mer information om hur du tilldelar ditt konto till rätt roll finns i [använda Azure Portal för att tilldela en Azure-roll för åtkomst till blob-och Queue-data](../../storage/common/storage-auth-aad-rbac-portal.md)
 
@@ -33,7 +37,11 @@ Det detaljerade fel meddelandet kan variera, men den allmänna innebörden av fe
 
 När du väljer pilen för att expandera lagrings strukturen i "data"--> "länkad" i Synapse Studio kan du se problemet "REQUEST_SEND_ERROR" i den vänstra panelen. Se skärm bilden för problemets symptom nedan:
 
-![Problem med lagrings anslutning 2](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue.2.png)
+I den länkade lagrings noden:  
+![Problem med lagrings anslutning 2](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-2.png)
+
+I noden lagrings behållare:  
+![Lagrings anslutnings problem 2a](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-2a.png)
 
 Det kan finnas flera möjliga orsaker till det här problemet:
 
@@ -51,6 +59,7 @@ Du kan använda kommandot "nslookup \<storage-account-name\> . DFS.Core.Windows.
 
 * Lagrings resursen som du försöker komma åt är Azure Data Lake Storage Gen2 och ligger bakom en brand vägg och ett virtuellt nätverk (med den privata lagrings platsen konfigurerad) på samma gång.
 * Behållar resursen som du använder har tagits bort eller finns inte.
+* Korsande klient organisation: den arbets plats innehavare som användaren använde för att logga in är inte samma som innehavaren av lagrings kontot. 
 
 
 ## <a name="next-steps"></a>Nästa steg

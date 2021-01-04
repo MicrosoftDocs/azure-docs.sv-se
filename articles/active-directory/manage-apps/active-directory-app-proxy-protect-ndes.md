@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 01/17/2020
 ms.author: kenwith
 ms.reviewer: mimart
-ms.openlocfilehash: 0682115727068c928418d97fbf92ed32897c39d4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 0793547c4eafcad256664546240a07c1bcb0e628
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656759"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709019"
 ---
 # <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>Integrera med Azure AD-programproxy på en server för registrerings tjänsten för nätverks enheter (NDES)
 
@@ -81,7 +81,7 @@ Azure AD-programproxy bygger på Azure. Det ger en enorm mängd nätverks bandbr
 
 1. Välj **+ Lägg till** för att spara ditt program.
 
-1. Testa om du kan komma åt NDES-servern via Azure AD-programproxyn genom att klistra in länken som du kopierade i steg 10 i en webbläsare. Du bör se en standard välkomst sida för IIS.
+1. Testa om du kan komma åt NDES-servern via Azure AD-programproxyn genom att klistra in länken som du kopierade i steg 15 i en webbläsare. Du bör se en standard välkomst sida för IIS.
 
 1. Som ett slutligt test lägger du till *mscep.dll* sökvägen till den befintliga URL: en som du klistrade in i föregående steg:
 

@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: 4436289d544de057acef132117346ac53c20b5a7
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 76218003a40c02def3dc62ea8480022d9647938d
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576524"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723345"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Data skydd i Azure Stream Analytics 
 
@@ -72,7 +72,7 @@ Använd följande steg för att konfigurera ditt lagrings konto för privata dat
 
    ![Inställningar för lagrings konto för privata data](./media/data-protection/storage-account-create.png)
 
-1. Om du vill autentisera med hanterad identitet (förhands granskning) väljer du **hanterad identitet** i list rutan autentiseringsläge. Om du väljer hanterad identitet måste du lägga till ditt Stream Analytics jobb i lagrings kontots åtkomst kontrol lista. Om du inte ger ditt jobb åtkomst kommer jobbet inte att kunna utföra några åtgärder. Mer information om hur du beviljar åtkomst finns i [använda Azure RBAC för att tilldela en hanterad identitets åtkomst till en annan resurs](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md#use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource).
+1. Om du vill autentisera med hanterad identitet (förhands granskning) väljer du **hanterad identitet** i list rutan autentiseringsläge. Om du väljer hanterad identitet måste du lägga till ditt Stream Analytics jobb till lagrings kontots åtkomst kontrol lista med rollen *Storage BLOB data Contributor* . Om du inte ger ditt jobb åtkomst kommer jobbet inte att kunna utföra några åtgärder. Mer information om hur du beviljar åtkomst finns i [använda Azure RBAC för att tilldela en hanterad identitets åtkomst till en annan resurs](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md#use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource).
 
    :::image type="content" source="media/data-protection/storage-account-create-msi.png" alt-text="Inställningar för lagrings konto för privata data med hanterad identitets autentisering":::
 

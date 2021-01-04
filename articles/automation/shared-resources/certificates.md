@@ -3,21 +3,21 @@ title: Hantera certifikat i Azure Automation
 description: Den här artikeln beskriver hur du arbetar med certifikat för åtkomst av Runbooks och DSC-konfigurationer.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 09/10/2020
+ms.date: 12/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1c79b7c239c41e8d195230423b17fa3c5a7f51a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbf9eb6c97dcceeca5e86e8bef47a39fb685792f
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825807"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734818"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>Hantera certifikat i Azure Automation
 
 Azure Automation lagrar certifikat säkert för åtkomst av Runbooks och DSC-konfigurationer med hjälp av cmdleten [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate) för Azure Resource Manager-resurser. Med säker certifikat lagring kan du skapa Runbooks och DSC-konfigurationer som använder certifikat för autentisering, eller lägga till dem i Azure eller från resurser från tredje part.
 
 >[!NOTE]
->Säkra till gångar i Azure Automation inkluderar autentiseringsuppgifter, certifikat, anslutningar och krypterade variabler. Dessa till gångar krypteras och lagras i Automation med hjälp av en unik nyckel som genereras för varje Automation-konto. Automation lagrar nyckeln i den systemhanterade Key Vaults tjänsten. Innan du lagrar en säker till gång läser Automation in nyckeln från Key Vault och använder den för att kryptera till gången. 
+>Säkra till gångar i Azure Automation inkluderar autentiseringsuppgifter, certifikat, anslutningar och krypterade variabler. Dessa till gångar krypteras och lagras i Automation med hjälp av en unik nyckel som genereras för varje Automation-konto. Automation lagrar nyckeln i den systemhanterade Key Vaults tjänsten. Innan du lagrar en säker till gång läser Automation in nyckeln från Key Vault och använder den för att kryptera till gången.
 
 ## <a name="powershell-cmdlets-to-access-certificates"></a>PowerShell-cmdletar för att komma åt certifikat
 
@@ -40,12 +40,12 @@ Den interna cmdleten i följande tabell används för att komma åt certifikat i
 |:---|:---|
 |`Get-AutomationCertificate`|Hämtar ett certifikat som ska användas i en Runbook-eller DSC-konfiguration. Returnerar ett [system. Security. Cryptography. X509Certificates. X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) -objekt.|
 
-> [!NOTE] 
+> [!NOTE]
 > Du bör undvika att använda variabler i- `Name` parametern i `Get-AutomationCertificate` en Runbook-eller DSC-konfiguration. Sådana variabler kan komplicera identifieringen av beroenden mellan Runbooks och DSC-konfigurationer och automation-variabler i design läge.
 
-## <a name="python-2-functions-to-access-certificates"></a>Python 2-funktioner för att få åtkomst till certifikat
+## <a name="python-functions-to-access-certificates"></a>Python-funktioner för att komma åt certifikat
 
-Använd funktionen i följande tabell för att komma åt certifikat i en python 2-Runbook.
+Använd funktionen i följande tabell för att komma åt certifikat i en python 2-eller 3-Runbook. Python 3-Runbooks är för närvarande en för hands version.
 
 | Funktion | Beskrivning |
 |:---|:---|
@@ -60,10 +60,10 @@ När du skapar ett nytt certifikat laddar du upp en CER-eller PFX-fil som ska au
 
 ### <a name="create-a-new-certificate-with-the-azure-portal"></a>Skapa ett nytt certifikat med Azure Portal
 
-1. Från ditt Automation-konto väljer du **certifikat** under **delad resurs**i den vänstra rutan.
+1. Från ditt Automation-konto väljer du **certifikat** under **delad resurs** i den vänstra rutan.
 1. På sidan **certifikat** väljer du **Lägg till ett certifikat**.
 1. I fältet **namn** anger du ett namn för certifikatet.
-1. Om du vill bläddra efter en **CER** -eller **PFX** -fil går du till **överför en certifikat fil**och väljer **Välj en fil**. Om du väljer en **. pfx** -fil anger du ett lösen ord och anger om det kan exporteras.
+1. Om du vill bläddra efter en **CER** -eller **PFX** -fil går du till **överför en certifikat fil** och väljer **Välj en fil**. Om du väljer en **. pfx** -fil anger du ett lösen ord och anger om det kan exporteras.
 1. Välj **skapa** för att spara den nya certifikat till gången.
 
 ### <a name="create-a-new-certificate-with-powershell"></a>Skapa ett nytt certifikat med PowerShell
@@ -126,7 +126,9 @@ New-AzResourceGroupDeployment -Name NewCert -ResourceGroupName $ResourceGroupNam
 
 Använd den interna cmdleten för att hämta ett certifikat `Get-AutomationCertificate` . Du kan inte använda cmdleten [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate) eftersom den returnerar information om certifikat till gången, men inte själva certifikatet.
 
-### <a name="textual-runbook-example"></a>Exempel på text Runbook
+### <a name="textual-runbook-examples"></a>Text Runbook-exempel
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 I följande exempel visas hur du lägger till ett certifikat i en moln tjänst i en Runbook. I det här exemplet hämtas lösen ordet från en krypterad Automation-variabel.
 
@@ -138,17 +140,7 @@ $certPwd = Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 Add-AzureCertificate -ServiceName $serviceName -CertToDeploy $cert
 ```
 
-### <a name="graphical-runbook-example"></a>Exempel på grafisk Runbook
-
-Lägg till en aktivitet för den interna `Get-AutomationCertificate` cmdleten i en grafisk Runbook genom att högerklicka på certifikatet i fönstret Bibliotek och välja **Lägg till på arbets ytan**.
-
-![Skärm bild som visar hur du lägger till ett certifikat på arbets ytan](../media/certificates/automation-certificate-add-to-canvas.png)
-
-Följande bild visar ett exempel på hur du använder ett certifikat i en grafisk Runbook.
-
-![Skärm bild av ett exempel på grafisk redigering](../media/certificates/graphical-runbook-add-certificate.png)
-
-### <a name="python-2-example"></a>Exempel på python 2
+# <a name="python-2"></a>[Python 2](#tab/python2)
 
 I följande exempel visas hur du får åtkomst till certifikat i python 2-Runbooks.
 
@@ -159,6 +151,30 @@ cert = automationassets.get_automation_certificate("AzureRunAsCertificate")
 # returns the binary cert content  
 print cert
 ```
+
+# <a name="python-3"></a>[Python 3](#tab/python3)
+
+I följande exempel visas hur du får åtkomst till certifikat i python 3-Runbooks (för hands version).
+
+```python
+# get a reference to the Azure Automation certificate
+cert = automationassets.get_automation_certificate("AzureRunAsCertificate")
+
+# returns the binary cert content  
+print (cert)
+```
+
+---
+
+### <a name="graphical-runbook-example"></a>Exempel på grafisk Runbook
+
+Lägg till en aktivitet för den interna `Get-AutomationCertificate` cmdleten i en grafisk Runbook genom att högerklicka på certifikatet i fönstret Bibliotek och välja **Lägg till på arbets ytan**.
+
+![Skärm bild som visar hur du lägger till ett certifikat på arbets ytan](../media/certificates/automation-certificate-add-to-canvas.png)
+
+Följande bild visar ett exempel på hur du använder ett certifikat i en grafisk Runbook.
+
+![Skärm bild av ett exempel på grafisk redigering](../media/certificates/graphical-runbook-add-certificate.png)
 
 ## <a name="next-steps"></a>Nästa steg
 

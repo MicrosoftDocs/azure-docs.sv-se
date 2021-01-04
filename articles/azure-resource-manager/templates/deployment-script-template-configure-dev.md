@@ -7,18 +7,18 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: 4a7f21410bb97db0a7974870efb812c9954ac241
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: d12ec5e3fef45429741fff1665f435d68e6c83f6
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503564"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734189"
 ---
 # <a name="configure-development-environment-for-deployment-scripts-in-templates"></a>Konfigurera utvecklings miljön för distributions skript i mallar
 
 Lär dig hur du skapar en utvecklings miljö för att utveckla och testa distributions skript med en distributions skript avbildning. Du kan antingen skapa en [Azure Container instance](../../container-instances/container-instances-overview.md) eller använda [Docker](https://docs.docker.com/get-docker/). Båda beskrivs i den här artikeln.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du inte har ett distributions skript kan du skapa en **hello.ps1** -fil med följande innehåll:
 
@@ -155,7 +155,10 @@ Följande ARM-mall skapar en behållar instans och en fil resurs och monterar se
 ```
 Standardvärdet för monterings Sök vägen är **deploymentScript**.  Detta är sökvägen i behållar instansen där den monteras på fil resursen.
 
-Standard behållar avbildningen som anges i mallen är **MCR.Microsoft.com/azuredeploymentscripts-PowerShell:AZ4.3**.  En lista över Azure PowerShell-versioner och Azure CLI-versioner som stöds finns i [Azure PowerShell eller Azure CLI](./deployment-script-template.md#prerequisites).
+Standard behållar avbildningen som anges i mallen är **MCR.Microsoft.com/azuredeploymentscripts-PowerShell:AZ4.3**.   Se en lista över [Azure PowerShell-versioner som stöds](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list). Se en lista över [Azure CLI-versioner som stöds](https://mcr.microsoft.com/v2/azure-cli/tags/list).
+
+  >[!IMPORTANT]
+  > Distributions skriptet använder de tillgängliga CLI-avbildningarna från Microsoft Container Registry (MCR). Det tar ungefär en månad att certifiera en CLI-avbildning för distributions skript. Använd inte de CLI-versioner som släpptes inom 30 dagar. För att hitta versions datumen för avbildningarna, se [versions information för Azure CLI](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true). Om en version som inte stöds används listas de versioner som stöds i fel meddelandet.
 
 Mallen pausar behållar instansen 1800 sekunder. Du har 30 minuter innan behållar instansen hamnar i Terminal-tillstånd och sessionen avslutas.
 
@@ -200,7 +203,7 @@ Du kan också ladda upp filen med hjälp av Azure Portal och Azure CLI.
 1. Välj **Anslut** och välj sedan **Anslut**. Om du inte kan ansluta till behållar instansen startar du om behållar gruppen och försöker igen.
 1. Kör följande kommandon i konsol fönstret:
 
-    ```
+    ```console
     cd deploymentScript
     ls
     pwsh ./hello.ps1 "John Dole"
@@ -209,6 +212,14 @@ Du kan också ladda upp filen med hjälp av Azure Portal och Azure CLI.
     Utdata är **Hej John Dole**.
 
     ![test av container instans för distributions skript](./media/deployment-script-template-configure-dev/deployment-script-container-instance-test.png)
+
+1. Om du använder AZ CLI-behållar avbildningen kör du den här koden:
+
+   ```console
+   cd /mnt/azscripts/azscriptinput
+   ls
+   ./userscript.sh
+   ```
 
 ## <a name="use-docker"></a>Använd Docker
 

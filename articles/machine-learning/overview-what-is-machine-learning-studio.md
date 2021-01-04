@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 018a0e3a244d1f0e36ce638d646ab05861c10e38
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: f59ed16f98a22f77b2e67ec2bf829f58dccef611
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565916"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740512"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Vad är Azure Machine Learning Studio?
 
@@ -25,6 +25,11 @@ I den här artikeln får du lära dig:
 > - [Hantera till gångar och resurser](#manage-assets-and-resources) i Studio.
 > - Skillnaderna mellan [Azure Machine Learning Studio och ml Studio (klassisk)](#ml-studio-classic-vs-azure-machine-learning-studio).
 
+Vi rekommenderar att du använder den senaste webbläsaren som är kompatibel med ditt operativsystem. Följande webbläsare stöds:
+  * Microsoft Edge (den nya Microsoft Edge, senaste versionen. Inte Microsoft Edge Legacy)
+  * Safari (senaste versionen, endast Mac)
+  * Chrome (senaste versionen)
+  * Firefox (senaste versionen)
 
 ## <a name="author-machine-learning-projects"></a>Redigera Machine Learning-projekt
 
@@ -33,6 +38,8 @@ Studio erbjuder flera redigerings upplevelser beroende på typ av projekt och an
 + **Notebook-filer**
 
   Skriv och kör din egen kod i hanterade [Jupyter Notebook servrar](how-to-run-jupyter-notebooks.md) som är direkt integrerade i Studio. 
+
+:::image type="content" source="media/overview-what-is-azure-ml-studio/notebooks.gif" alt-text="Skärm bild: skriva och köra kod i en bärbar dator":::
 
 + **Azure Machine Learning Designer**
 
@@ -74,7 +81,7 @@ Hantera dina Machine Learning-tillgångar direkt i webbläsaren. Till gångar de
 
 **Azure Machine Learning Studio** är en webb portal *i* Azure Machine Learning som innehåller alternativ med låg kod och ingen kod för projekt redigering och till gångs hantering. 
 
-Vi rekommenderar att nya användare väljer **Azure Machine Learning** , i stället för ml Studio (klassisk), för den senaste mängden data vetenskaps verktyg.
+Vi rekommenderar att nya användare väljer **Azure Machine Learning**, i stället för ml Studio (klassisk), för den senaste mängden data vetenskaps verktyg.
 
 ### <a name="feature-comparison"></a>Jämför funktioner
 
@@ -94,6 +101,9 @@ I följande tabell sammanfattas viktiga skillnader mellan ML Studio (klassisk) o
 | Data avkänning | Stöds inte | [Stöds](how-to-monitor-datasets.md) |
 | Data märknings projekt | Stöds inte | [Stöds](how-to-create-labeling-projects.md) |
 
+## <a name="troubleshooting"></a>Felsökning
+
+* **Användar gränssnitts objekt saknas i Studio** Rollbaserad åtkomst kontroll i Azure kan användas för att begränsa åtgärder som du kan utföra med Azure Machine Learning. Dessa begränsningar kan förhindra att användar gränssnitts objekt visas i Azure Machine Learning Studio. Om du till exempel har tilldelats en roll som inte kan skapa en beräknings instans visas inte alternativet för att skapa en beräknings instans i Studio. Mer information finns i [Hantera användare och roller](how-to-assign-roles.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

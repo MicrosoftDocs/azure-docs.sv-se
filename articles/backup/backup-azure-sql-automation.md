@@ -4,12 +4,12 @@ description: Säkerhetskopiera och Återställ SQL-databaser på virtuella Azure
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 0b3b943a53c1da0f6f1e938b5b234dc82541b46d
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 0a3467ffa3a67ac9ad593748948cea8da59e3e6b
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901670"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734546"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Säkerhetskopiera och återställa SQL-databaser i virtuella Azure-datorer med PowerShell
 
@@ -56,10 +56,10 @@ Konfigurera PowerShell på följande sätt:
 
     ![Lista över Recovery Services-cmdletar](./media/backup-azure-afs-automation/list-of-recoveryservices-ps-az.png)
 
-4. Logga in på ditt Azure-konto med **Connect-AzAccount** .
+4. Logga in på ditt Azure-konto med **Connect-AzAccount**.
 5. På webb sidan som visas uppmanas du att ange dina autentiseringsuppgifter för kontot.
 
-    * Alternativt kan du inkludera dina konto uppgifter som en parameter i cmdleten **Connect-AzAccount** med **-Credential** .
+    * Alternativt kan du inkludera dina konto uppgifter som en parameter i cmdleten **Connect-AzAccount** med **-Credential**.
     * Om du är en CSP-partner som arbetar för en klient kan du ange kunden som en klient med hjälp av deras tenantID eller primära domän namn. Ett exempel är **Connect-AzAccount-Tenant** fabrikam.com.
 
 6. Associera den prenumeration som du vill använda med kontot, eftersom ett konto kan ha flera prenumerationer.
@@ -80,7 +80,7 @@ Konfigurera PowerShell på följande sätt:
     Get-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-9. I kommandot utdata kontrollerar du att **RegistrationState** ändras till **registrerad** . Om den inte gör det kör du cmdleten **register-AzResourceProvider** igen.
+9. I kommandot utdata kontrollerar du att **RegistrationState** ändras till **registrerad**. Om den inte gör det kör du cmdleten **register-AzResourceProvider** igen.
 
 ## <a name="create-a-recovery-services-vault"></a>skapar ett Recovery Services-valv
 
@@ -103,7 +103,7 @@ Recovery Services valvet är en Resource Manager-resurs, så du måste placera d
 3. Ange vilken typ av redundans som ska användas för valv lagringen.
 
     * Du kan använda [Lokalt Redundant lagring](../storage/common/storage-redundancy.md#locally-redundant-storage), [Geo-redundant lagring](../storage/common/storage-redundancy.md#geo-redundant-storage) eller [zon-redundant lagring](../storage/common/storage-redundancy.md#zone-redundant-storage) .
-    * I följande exempel anges alternativet **-BackupStorageRedundancy** för [set-AzRecoveryServicesBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmd för **testvault** som är inställt på **interredundant** .
+    * I följande exempel anges alternativet **-BackupStorageRedundancy** för [set-AzRecoveryServicesBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmd för **testvault** som är inställt på **interredundant**.
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
@@ -137,7 +137,7 @@ Lagra Valve-objektet i en variabel och ange valv kontexten.
 * Många Azure Backup-cmdletar kräver att Recovery Services Vault-objektet är inmatat, så det är praktiskt att lagra valvet i en variabel.
 * Valvets sammanhang är typen av data som skyddas i valvet. Ange den med [set-AzRecoveryServicesVaultContext](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext). När kontexten har angetts gäller den för alla efterföljande cmdletar.
 
-I följande exempel anges valv kontexten för **testvault** .
+I följande exempel anges valv kontexten för **testvault**.
 
 ```powershell
 Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultContext
@@ -172,7 +172,7 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 > [!IMPORTANT]
 > Du behöver bara ange start tiden i 30 minuter. I ovanstående exempel kan det bara vara "01:00:00" eller "02:30:00". Start tiden får inte vara "01:15:00".
 
-I följande exempel lagras schema principen och bevarande principen i variabler. Den använder sedan variablerna som parametrar för en ny princip ( **NewSQLPolicy** ). **NewSQLPolicy** tar en daglig "fullständig" säkerhets kopiering, behåller den i 180 dagar och tar en logg säkerhets kopia var 2: e timme
+I följande exempel lagras schema principen och bevarande principen i variabler. Den använder sedan variablerna som parametrar för en ny princip (**NewSQLPolicy**). **NewSQLPolicy** tar en daglig "fullständig" säkerhets kopiering, behåller den i 180 dagar och tar en logg säkerhets kopia var 2: e timme
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "MSSQL"
@@ -219,7 +219,7 @@ Utdata visar alla oskyddade SQL-komponenter i alla virtuella SQL-datorer som är
 $SQLDB = Get-AzRecoveryServicesBackupProtectableItem -workloadType MSSQL -ItemType SQLDataBase -VaultId $targetVault.ID -Name "<Item Name>" -ServerName "<Server Name>"
 ```
 
-### <a name="configuring-backup"></a>Konfigurerar säkerhets kopiering
+### <a name="configuring-backup"></a>Konfigurera säkerhetskopiering
 
 Nu när vi har den SQL-databas som krävs och principen som den måste säkerhets kopie ras till kan vi använda cmdleten [Enable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) för att konfigurera säkerhets kopiering för den här SQL-databasen.
 
@@ -268,7 +268,7 @@ Azure Backup kan återställa SQL Server databaser som körs på virtuella Azure
 * Återställ till ett visst datum eller en angiven tidpunkt (till den andra) med hjälp av säkerhets kopior av transaktions loggen. Azure Backup identifierar automatiskt rätt fullständig differentiell säkerhets kopiering och kedja av logg säkerhets kopior som krävs för att återställa baserat på den valda tiden.
 * Återställ en viss fullständig eller differentiell säkerhets kopia för att återställa till en viss återställnings punkt.
 
-Kontrol lera de krav som anges [här](restore-sql-database-azure-vm.md#prerequisites) innan du återställer SQL-databaser.
+Kontrol lera de krav som anges [här](restore-sql-database-azure-vm.md#restore-prerequisites) innan du återställer SQL-databaser.
 
 Börja med att hämta relevant säkerhetskopierad SQL DB med hjälp av cmdleten [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) PowerShell.
 
@@ -499,7 +499,7 @@ Om utdata förloras eller om du vill hämta det relevanta jobb-ID: t [hämtar du
 
 ### <a name="change-policy-for-backup-items"></a>Ändra princip för säkerhets kopierings objekt
 
-Du kan ändra principen för det säkerhetskopierade objektet från *Policy1* till *Policy2* . Om du vill växla principer för ett säkerhetskopierat objekt hämtar du den relevanta principen och säkerhetskopierar objektet och använder kommandot [Enable-AzRecoveryServices](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) med säkerhets kopierings objekt som parameter.
+Du kan ändra principen för det säkerhetskopierade objektet från *Policy1* till *Policy2*. Om du vill växla principer för ett säkerhetskopierat objekt hämtar du den relevanta principen och säkerhetskopierar objektet och använder kommandot [Enable-AzRecoveryServices](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) med säkerhets kopierings objekt som parameter.
 
 ```powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>

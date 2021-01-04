@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 0d8960ddd8f617c59d6ac025fafe413256bc5b94
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 6ca96f76287482a445d8a9a1cdc441333b36efbd
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107614"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739611"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Ansluta till lokala data källor med lokal datagateway
 
@@ -30,7 +30,7 @@ För Azure Analysis Services hämtar installationen med gatewayen första gånge
 
 - **Anslut Gateway-resursen till-servrar** – när du har en gateway-resurs kan du börja ansluta servrar till den. Du kan ansluta flera servrar och andra resurser förutsatt att de finns i samma region.
 
-## <a name="installing"></a>Installerar
+## <a name="installing"></a>Installation
 
 När du installerar för en Azure Analysis Services-miljö är det viktigt att du följer stegen som beskrivs i [Installera och konfigurera en lokal datagateway för Azure Analysis Services](analysis-services-gateway-install.md). Den här artikeln är unik för Azure Analysis Services. Den innehåller ytterligare steg som krävs för att konfigurera en lokal datagateway-resurs i Azure och ansluta din Azure Analysis Services-server till resursen.
 
@@ -57,7 +57,7 @@ Följande är fullständigt kvalificerade domän namn som används av gatewayen.
 | *.frontend.clouddatahub.net |443 |HTTPS |
 | *.core.windows.net |443 |HTTPS |
 | login.microsoftonline.com |443 |HTTPS |
-| *.msftncsi.com |443 |Används för att testa Internetanslutningen om denna gateway inte kan nås av Power BI-tjänsten. |
+| *.msftncsi.com |80 |Används för att testa Internetanslutningen om denna gateway inte kan nås av Power BI-tjänsten. |
 | *.microsoftonline-p.com |443 |Används för autentisering beroende på konfiguration. |
 | dc.services.visualstudio.com    |443 |Används av AppInsights för att samla in telemetri. |
 

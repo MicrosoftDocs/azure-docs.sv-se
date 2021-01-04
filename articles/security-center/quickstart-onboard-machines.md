@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: 572c657dd44db73b1401c72f0750fe8e000985ac
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 8d0d4726763e36bd889c2f564d116d454b2f62b9
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734362"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740614"
 ---
 # <a name="connect-your-non-azure-machines-to-security-center"></a>Anslut dina datorer som inte är Azure-datorer till Security Center
 
@@ -139,4 +139,4 @@ Grattis! Nu kan du se dina Azure-och icke-Azure-datorer tillsammans på en och s
 
 Den här sidan visar hur du lägger till datorer som inte är Azure-datorer till Azure Security Center. Om du vill övervaka deras status använder du inventerings verktygen som beskrivs på följande sida:
 
-- [Utforska och hantera dina resurser med till gångs inventering och hanterings verktyg](asset-inventory.md)
+- [Utforska och hantera dina resurser med till gångs inventering](asset-inventory.md)

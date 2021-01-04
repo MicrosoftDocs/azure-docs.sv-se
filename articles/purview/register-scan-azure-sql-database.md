@@ -1,18 +1,18 @@
 ---
 title: Registrera och skanna Azure SQL Database
 description: I den här självstudien beskrivs hur du skannar Azure SQL Database
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 1fbeedd8643a777b29ebe4993eed7b664240621c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 15708e35fa27bb4a1f72368df6f49ff747eb799b
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920267"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739798"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Registrera och skanna en Azure SQL Database
 
@@ -28,9 +28,9 @@ Den Azure SQL Database data källan har stöd för följande funktioner:
 
 ### <a name="known-limitations"></a>Kända begränsningar
 
-Azure avdelningens kontroll stöder inte genomsökning av [vyer](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15) i Azure SQL Database. 
+Azure avdelningens kontroll stöder inte genomsökning av [vyer](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15&preserve-view=true) i Azure SQL Database. 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 1. Skapa ett nytt avdelningens kontroll-konto om du inte redan har ett.
 
@@ -89,7 +89,7 @@ Om du vill använda ett huvud namn för tjänsten kan du använda ett befintligt
 Tjänstens huvud namn eller hanterade identitet måste ha behörighet att hämta metadata för databasen, scheman och tabeller. Det måste också kunna fråga tabellerna för klassificering.
 
 - [Konfigurera och hantera Azure AD-autentisering med Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
-- Om du använder hanterad identitet har ditt avdelningens kontroll-konto sin egen hanterade identitet som i princip är ditt avdelningens kontroll-namn när du skapade det. Du måste skapa en Azure AD-användare i Azure SQL Database med den exakta avdelningens kontroll-hanterade identiteten eller ditt eget tjänst huvud namn genom att följa de här självstudierna för [att skapa tjänstens huvud namn användare i Azure SQL Database](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial#create-the-service-principal-user-in-azure-sql-database). Du måste tilldela `db_owner` (**rekommenderas**) behörighet till identiteten. Exempel på SQL-syntax för att skapa användare och bevilja behörighet:
+- Om du använder hanterad identitet har ditt avdelningens kontroll-konto sin egen hanterade identitet som i princip är ditt avdelningens kontroll-namn när du skapade det. Du måste skapa en Azure AD-användare i Azure SQL Database med den exakta avdelningens kontroll-hanterade identiteten eller ditt eget tjänst huvud namn genom att följa de här självstudierna för [att skapa tjänstens huvud namn användare i Azure SQL Database](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial#create-the-service-principal-user-in-azure-sql-database). Du måste tilldela rätt behörighet (t. ex. `db_owner` eller `db_datareader` ) till identiteten. Exempel på SQL-syntax för att skapa användare och bevilja behörighet:
 
     ```sql
     CREATE USER [Username] FROM EXTERNAL PROVIDER
@@ -100,7 +100,7 @@ Tjänstens huvud namn eller hanterade identitet måste ha behörighet att hämta
     ```
 
     > [!Note]
-    > `Username`Är ditt eget tjänst huvud namn eller din avdelningens kontroll-hanterade identitet
+    > `Username`Är ditt eget tjänst huvud namn eller din avdelningens kontroll-hanterade identitet. Du kan läsa mer om [fasta databas roller och deras funktioner](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15&preserve-view=true#fixed-database-roles).
     
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>Lägg till tjänstens huvud namn i Key Vault och avdelningens kontroll autentiseringsuppgift
 

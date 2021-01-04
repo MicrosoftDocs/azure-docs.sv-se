@@ -11,12 +11,12 @@ author: blackmist
 ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 5d49a88b89f9e2f4e2c2e6fa8ef18a01c803e3f7
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 13b99fe129191b89b5bb2d7f5473e910fa619ce7
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536599"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739849"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Se Övervaka och samla in data från webbtjänstslutpunkter i ML
 
@@ -157,14 +157,24 @@ Du kan också aktivera Azure Application insikter från Azure Machine Learning S
 
 ### <a name="query-logs-for-deployed-models"></a>Fråga efter loggar för distribuerade modeller
 
-Du kan använda `get_logs()` funktionen för att hämta loggar från en tidigare distribuerad webb tjänst. Loggarna kan innehålla detaljerad information om eventuella fel som uppstod under distributionen.
+Loggar över real tids slut punkter är kund information. Du kan använda `get_logs()` funktionen för att hämta loggar från en tidigare distribuerad webb tjänst. Loggarna kan innehålla detaljerad information om eventuella fel som uppstod under distributionen.
 
 ```python
+from azureml.core import Workspace
 from azureml.core.webservice import Webservice
+
+ws = Workspace.from_config()
 
 # load existing web service
 service = Webservice(name="service-name", workspace=ws)
 logs = service.get_logs()
+```
+
+Om du har flera klienter kan du behöva lägga till följande autentiserings kod innan `ws = Workspace.from_config()`
+
+```python
+from azureml.core.authentication import InteractiveLoginAuthentication
+interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in which your workspace resides")
 ```
 
 ### <a name="view-logs-in-the-studio"></a>Visa loggar i Studio

@@ -4,12 +4,12 @@ description: Få svar på vanliga frågor om hur du säkerhetskopierar SQL Serve
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 89316770dc137bff031e6268db5ece156edd4f25
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 7518fc49f7d6d728bd8faa0de4cf0edc1c6d5831
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172375"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734121"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Vanliga frågor om SQL Server databaser som körs på en virtuell Azure-säkerhetskopiering
 
@@ -33,11 +33,11 @@ Under vissa omständigheter utlöser tjänsten Azure Backup tjänsten återstäl
 Auto-läka som en funktion aktive ras för alla användare som standard. Men om du väljer att inte inaktivera den, utför du följande steg:
 
 - På SQL Server-instansen, i mappen *C:\Program Files\Azure arbets belastning Backup\bin* , skapar eller redigerar du **ExtensionSettingsOverrides.jspå** filen.
-- I **ExtensionSettingsOverrides.jspå**anger du *{"EnableAutoHealer": false}*.
+- I **ExtensionSettingsOverrides.jspå** anger du *{"EnableAutoHealer": false}*.
 - Spara ändringarna och Stäng filen.
 - Öppna **uppgiften hantera** på SQL Server-instansen och starta sedan om **AzureWLBackupCoordinatorSvc** -tjänsten.
 
-## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>Kan jag kontrol lera hur många samtidiga säkerhets kopieringar som körs på SQL-servern?
+## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>Kan jag styra hur många säkerhetskopieringar som körs på SQL-servern samtidigt?
 
 Ja. Du kan begränsa den hastighet som säkerhets kopierings principen körs för att minimera påverkan på en SQL Server instans. Så här ändrar du inställningen:
 
@@ -62,7 +62,7 @@ Enligt SQL-begränsningar kan du bara köra fullständig kopiering på den sekun
 
 Nej. Azure Backup skyddar SQL Server databaser som körs i Azure. Om en tillgänglighets grupp (AG) sprids mellan Azure och lokala datorer kan AG endast skyddas om den primära repliken körs i Azure. Azure Backup skyddar också bara de noder som körs i samma Azure-region som Recovery Servicess valvet.
 
-## <a name="can-i-protect-availability-groups-across-regions"></a>Kan jag skydda tillgänglighetsgrupper i olika regioner?
+## <a name="can-i-protect-availability-groups-across-regions"></a>Kan jag skydda tillgänglighets grupper i flera regioner?
 
 Azure Backup Recovery Services-valvet kan identifiera och skydda alla noder i samma region som valvet. Om din SQL Server Always on-tillgänglighetsgrupper sträcker sig över flera Azure-regioner ställer du in säkerhets kopieringen från den region som har den primära noden. Azure Backup kan identifiera och skydda alla databaser i tillgänglighets gruppen enligt din säkerhets kopierings inställning. När säkerhets kopierings inställningen inte uppfylls, Miss lyckas säkerhets kopieringarna och du får aviseringen om felet.
 
@@ -78,7 +78,7 @@ På menyn **säkerhets kopierings jobb** visas alla schemalagda och på begäran
 
 Ja, du kan få den här funktionen med [automatiskt skydd](backup-sql-server-database-azure-vms.md#enable-auto-protection).  
 
-## <a name="if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups"></a>Vad händer med säkerhets kopior om jag tar bort en databas från en skyddad instans?
+## <a name="if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups"></a>Vad händer med säkerhetskopiorna om jag tar bort en databas från en automatiskt skyddad instans?
 
 Om en databas bryts från en skyddad instans, görs fortfarande databas säkerhets kopiorna. Detta innebär att den borttagna databasen börjar visas som ohälsosam under **säkerhets kopierings objekt** och fortfarande är skyddad.
 
@@ -88,7 +88,7 @@ Det korrekta sättet att sluta skydda den här databasen är att **stoppa säker
 
 Om du **stoppar säkerhets kopiering med Behåll data**, kommer inga framtida säkerhets kopieringar att äga rum och de befintliga återställnings punkterna förblir intakta. Databasen kommer fortfarande att anses vara skyddad och visas under **säkerhets kopierings objekt**.
 
-Om du **stoppar säkerhets kopiering med ta bort data**kommer inga framtida säkerhets kopieringar att äga rum och befintliga återställnings punkter tas också bort. Databasen betraktas som icke-skyddad och visas under instansen i Konfigurera säkerhets kopiering. Men till skillnad från andra skyddade databaser som kan väljas manuellt eller som kan skyddas automatiskt, visas den här databasen som nedtonad och kan inte väljas. Det enda sättet att skydda den här databasen är att inaktivera automatiskt skydd på instansen. Nu kan du välja den här databasen och konfigurera skydd på den eller återaktivera det automatiska skyddet på instansen igen.
+Om du **stoppar säkerhets kopiering med ta bort data** kommer inga framtida säkerhets kopieringar att äga rum och befintliga återställnings punkter tas också bort. Databasen betraktas som icke-skyddad och visas under instansen i Konfigurera säkerhets kopiering. Men till skillnad från andra skyddade databaser som kan väljas manuellt eller som kan skyddas automatiskt, visas den här databasen som nedtonad och kan inte väljas. Det enda sättet att skydda den här databasen är att inaktivera automatiskt skydd på instansen. Nu kan du välja den här databasen och konfigurera skydd på den eller återaktivera det automatiska skyddet på instansen igen.
 
 ## <a name="if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior"></a>Vad händer om jag ändrar namnet på databasen efter att det har skyddats?
 
@@ -104,7 +104,12 @@ En databas som du [lägger till i en skyddad instans](backup-sql-server-database
   
 ## <a name="can-i-protect-databases-that-have-tde-transparent-data-encryption-turned-on-and-will-the-database-stay-encrypted-through-the-entire-backup-process"></a>Kan jag skydda databaser som har TDE (transparent datakryptering) aktiverade och kommer databasen att förbli krypterad genom hela säkerhets kopierings processen?
 
-Ja, Azure Backup har stöd för säkerhets kopiering av SQL Server databaser eller servrar med TDE aktiverat. Säkerhets kopiering stöder [TDE](/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) med nycklar som hanteras av Azure eller med Kundhanterade nycklar (BYOK).  Säkerhets kopieringen utför inte någon SQL-kryptering som en del av säkerhets kopierings processen, så databasen förblir krypterad vid säkerhets kopiering.
+Ja, Azure Backup har stöd för säkerhets kopiering av SQL Server databaser eller servrar med TDE aktiverat. Säkerhets kopiering stöder [TDE](/sql/relational-databases/security/encryption/transparent-data-encryption) med nycklar som hanteras av Azure eller med Kundhanterade nycklar (BYOK).  Säkerhets kopieringen utför inte någon SQL-kryptering som en del av säkerhets kopierings processen, så databasen förblir krypterad vid säkerhets kopiering.
+
+## <a name="does-azure-backup-perform-a-checksum-operation-on-the-data-stream"></a>Utför Azure Backup en åtgärd för kontroll summa i data strömmen?
+
+Vi utför en åtgärd för kontroll summa för data strömmen. Detta kan dock inte förväxlas med [SQL-kontrollsumma](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server).
+Säkerhets kopiering av Azure-arbetsbelastning beräknar kontroll summan på data strömmen och lagrar den explicit under säkerhets kopieringen. Den här data Ströms data strömmen tas sedan som en referens och mellan verifieras med data strömmens kontroll Summa under återställnings åtgärden för att säkerställa att data är konsekventa.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3d26a0ef86ab96940f3d5bb96d87340b77f1faca
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: eca2009ee0470dec9c9ce60d8754f8f7a71619d3
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016844"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740546"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>Diagnostisera och felsöka en Azure Time Series Insights Gen2-miljö
 
@@ -124,14 +124,6 @@ Om egenskapen timestamp inte uttryckligen anges används en händelses IoT Hub-e
 Det här problemet kan inträffa om din miljö inte har en definierad tids serie modell hierarki. Mer information finns i hur du [arbetar med tids serie modeller](./time-series-insights-overview.md).
 
   [![För inöverordnade instanser visas en varning.](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
-
-## <a name="problem-power-bi-connector-shows-unable-to-connect"></a>Problem: Power BI anslutningen visar att det inte går att ansluta
-
-Det här problemet kan inträffa om du inte använder den senaste versionen av Power BI-anslutningen i Power BI Desktop.
-
-[![Skärm bild som visar dialog rutan det går inte att ansluta.](media/preview-troubleshoot/power-bi-unable-to-connect.png)](media/preview-troubleshoot/power-bi-unable-to-connect.png#lightbox)
-
-- Kontrol lera versionen av din Power BI Desktop och se till att du använder versionen från juli 2020. Om inte, uppdaterar du Power BI Desktop och kör anslutningen igen.
 
 ## <a name="next-steps"></a>Nästa steg
 

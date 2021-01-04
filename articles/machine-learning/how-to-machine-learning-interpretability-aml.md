@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: c9ee57baf63867e4dca4236d484321586cfb3b17
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 14d15f54befba162b071b40e06e589f980708fd3
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862351"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740495"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Använd tolknings paketet till att förklara ML-modeller & förutsägelser i python (för hands version)
 
@@ -242,7 +242,7 @@ I följande exempel visas hur du kan använda- `ExplanationClient` klassen för 
     ```bash
     pip install azureml-interpret
     ```
-1. Skapa ett utbildnings skript i en lokal Jupyter Notebook. Exempelvis `train_explain.py`.
+1. Skapa ett utbildnings skript i en lokal Jupyter Notebook. Ett exempel är `train_explain.py`.
 
     ```python
     from azureml.interpret import ExplanationClient
@@ -296,41 +296,7 @@ I följande exempel visas hur du kan använda- `ExplanationClient` klassen för 
 
 ## <a name="visualizations"></a>Visualiseringar
 
-När du har laddat ned förklaringarna i din lokala Jupyter Notebook kan du använda visualiserings instrument panelen för att förstå och tolka din modell.
-
-### <a name="understand-entire-model-behavior-global-explanation"></a>Förstå hela modell beteendet (global förklaring) 
-
-I följande områden finns en övergripande vy av den tränade modellen tillsammans med dess förutsägelser och förklaringar.
-
-|Basera|Beskrivning|
-|----|-----------|
-|Data utforskning| Visar en översikt över data uppsättningen tillsammans med förutsägelse värden.|
-|Global prioritet|Sammanställer funktions värden för enskilda Datapoints för att Visa modellens övergripande viktigaste K (konfigurerbara K) viktiga funktioner. Hjälper till att förstå den underliggande modellens övergripande beteende.|
-|Förklarings utforskning|Visar hur en funktion påverkar en ändring i modellens förutsägelse värden eller sannolikheten för förutsägelse värden. Visar effekten av funktions interaktion.|
-|Sammanfattnings prioritet|Använder enskilda prioritets värden för alla data punkter för att Visa fördelningen av varje funktions effekt på förutsägelse värdet. Med hjälp av det här diagrammet kan du undersöka i vilken riktning funktions värdena påverkar förutsägelse värden.
-|
-
-[![Global instrument panel för visualisering](./media/how-to-machine-learning-interpretability-aml/global-charts.png)](./media/how-to-machine-learning-interpretability-aml/global-charts.png#lightbox)
-
-### <a name="understand-individual-predictions-local-explanation"></a>Förstå enskilda förutsägelser (lokal förklaring) 
-
-Du kan läsa in prioritets kurvan för enskilda funktioner för alla data punkter genom att klicka på någon av de enskilda data punkterna i de övergripande områdena.
-
-|Basera|Beskrivning|
-|----|-----------|
-|Lokal prioritet|Visar de viktigaste K (konfigurerbara K) viktiga funktioner för en enskild förutsägelse. Hjälper till att illustrera den underliggande modellens lokala beteende på en viss data punkt.|
-|Perturbation-utforskning (vad händer om-analys)|Tillåter ändringar av funktions värden för den valda data punkten och observerar resulterande ändringar i förutsägelse värde.|
-|Individuell villkorlig förväntad (ICE)| Tillåter funktions värdes ändringar från ett minsta värde till ett högsta värde. Hjälper dig att illustrera hur data punktens förutsägelse ändras när en funktion ändras.|
-
-[![Lokal funktions prioritet för visualiserings instrument panel](./media/how-to-machine-learning-interpretability-aml/local-charts.png)](./media/how-to-machine-learning-interpretability-aml/local-charts.png#lightbox)
-
-
-[![Instrument panel funktionen perturbation](./media/how-to-machine-learning-interpretability-aml/perturbation.gif)](./media/how-to-machine-learning-interpretability-aml/perturbation.gif#lightbox)
-
-
-[![ICE-observationer på visualiserings instrument panelen](./media/how-to-machine-learning-interpretability-aml/ice-plot.png)](./media/how-to-machine-learning-interpretability-aml/ice-plot.png#lightbox)
-
-Använd följande kod för att läsa in visualiserings instrument panelen.
+När du har laddat ned förklaringarna i din lokala Jupyter Notebook kan du använda visualiserings instrument panelen för att förstå och tolka din modell. Använd följande kod för att läsa in widgeten visualiserings instrument panel i Jupyter Notebook:
 
 ```python
 from interpret_community.widget import ExplanationDashboard
@@ -338,11 +304,58 @@ from interpret_community.widget import ExplanationDashboard
 ExplanationDashboard(global_explanation, model, datasetX=x_test)
 ```
 
+Visualiseringen stöder förklaringar för både funktioner som är tillverkade och råa. Råa förklaringar baseras på funktionerna från den ursprungliga data uppsättningen och de utformade förklaringarna baseras på funktionerna från data uppsättningen med funktions teknik som tillämpas.
+
+När du försöker tolka en modell med avseende på den ursprungliga data uppsättningen rekommenderar vi att du använder obehandlade förklaringar eftersom varje funktions prioritet motsvarar en kolumn från den ursprungliga data uppsättningen. Ett scenario där de praktiska förklaringarna kan vara användbara är när du undersöker effekten av enskilda kategorier från en kategoriska-funktion. Om en enkel kodning används för en kategoriska-funktion, kommer de skapade förklaringarna att innehålla ett annat prioritets värde per kategori, en per funktion med en snabb funktion. Detta kan vara användbart när du begränsar vilken del av data uppsättningen som är mest informativ för modellen.
+
+> [!NOTE]
+> Utformade och råa förklaringar beräknas i tur och ordning. Först en utformad förklaring skapas baserat på modell-och funktionalisering-pipeline. Sedan skapas den råa förklaringen baserat på den här utformade förklaringen genom att aggregera betydelsen av de funktioner som har utvecklats från samma RAW-funktion.
+
+### <a name="create-edit-and-view-dataset-cohorts"></a>Skapa, redigera och visa data uppsättning kohorter
+
+Det övre menyfliksområdet visar den övergripande statistiken för din modell och dina data. Du kan segmentera och identifiera dina data i data uppsättningen kohorter eller under grupper för att undersöka eller jämföra din modells prestanda och förklaringar över dessa definierade under grupper. Genom att jämföra din data uppsättnings statistik och förklaringar över dessa under grupper kan du få en uppfattning om varför möjliga fel inträffar i en grupp jämfört med en annan.
+
+[![Skapa, redigera och visa data uppsättnings kohorter](./media/how-to-machine-learning-interpretability-aml/dataset-cohorts.gif)](./media/how-to-machine-learning-interpretability-aml/dataset-cohorts.gif#lightbox)
+
+### <a name="understand-entire-model-behavior-global-explanation"></a>Förstå hela modell beteendet (global förklaring) 
+
+De tre första flikarna i förklarings instrument panelen ger en övergripande analys av den tränade modellen tillsammans med dess förutsägelser och förklaringar.
+
+#### <a name="model-performance"></a>Modellprestanda
+Utvärdera modellens prestanda genom att utforska distributionen av dina förutsägelse värden och värdena för dina modell prestanda mått. Du kan undersöka din modell ytterligare genom att titta på en jämför ande analys av dess prestanda över olika kohorter eller under grupper i din data uppsättning. Välj filter utmed y-Value och x-Value för att skära över olika dimensioner. Visa mått som precision, precision, återkalla, falsk positiv taxa (på) och falskt negativ kostnad (FNR).
+
+[![Fliken modell prestanda i visualiseringen förklaring](./media/how-to-machine-learning-interpretability-aml/model-performance.gif)](./media/how-to-machine-learning-interpretability-aml/model-performance.gif#lightbox)
+
+#### <a name="dataset-explorer"></a>Data uppsättnings Utforskaren
+Utforska din data uppsättnings statistik genom att välja olika filter längs X-, Y-och färg axlarna för att segmentera dina data utmed olika dimensioner. Skapa data uppsättnings kohorter ovan för att analysera data mängds statistik med filter som förutsägande resultat, data uppsättnings funktioner och fel grupper. Använd kugg hjuls ikonen i det övre högra hörnet i grafen för att ändra diagram typer.
+
+[![Fliken Data uppsättnings Utforskaren i förklarings visualiseringen](./media/how-to-machine-learning-interpretability-aml/dataset-explorer.gif)](./media/how-to-machine-learning-interpretability-aml/dataset-explorer.gif#lightbox)
+
+#### <a name="aggregate-feature-importance"></a>Mängd funktions prioritet
+Utforska de viktigaste viktiga funktionerna som påverkar de övergripande modell förutsägelserna (kallas även global förklaring). Använd skjutreglaget för att Visa fallande funktions prioritets värden. Välj upp till tre kohorter för att Visa funktions prioritets värden sida vid sida. Klicka på någon av funktions staplarna i diagrammet för att se hur värdena i den valda funktionen påverkar modell förutsägelsen i området beroende.
+
+[![Fliken mängd funktions prioritet i visualiserings visualiseringen](./media/how-to-machine-learning-interpretability-aml/aggregate-feature-importance.gif)](./media/how-to-machine-learning-interpretability-aml/aggregate-feature-importance.gif#lightbox)
+
+### <a name="understand-individual-predictions-local-explanation"></a>Förstå enskilda förutsägelser (lokal förklaring) 
+
+Den fjärde fliken på fliken förklaring gör det möjligt att öka detalj nivån för en enskild Datapoint och deras enskilda funktions betydelse. Du kan läsa in prioritets kurvan för enskilda funktioner för alla data punkter genom att klicka på någon av de enskilda data punkterna i huvud punkt ritningen eller välja en viss Datapoint i panel guiden till höger.
+
+|Basera|Beskrivning|
+|----|-----------|
+|Enskild funktions prioritet|Visar viktiga viktiga funktioner för en individuell förutsägelse. Hjälper till att illustrera den underliggande modellens lokala beteende på en viss data punkt.|
+|What-If analys|Tillåter ändringar av funktions värden för den valda verkliga data punkten och observerar resulterande ändringar i förutsägelse värde genom att generera en hypotetisk Datapoint med de nya funktions värdena.|
+|Individuell villkorlig förväntad (ICE)|Tillåter funktions värdes ändringar från ett minsta värde till ett högsta värde. Hjälper dig att illustrera hur data punktens förutsägelse ändras när en funktion ändras.|
+
+[![Individuell funktions prioritet och fliken information på förklarings instrument panelen](./media/how-to-machine-learning-interpretability-aml/individual-tab.gif)](./media/how-to-machine-learning-interpretability-aml/individual-tab.gif#lightbox)
+
+> [!NOTE]
+> Dessa är förklaringar baserat på många ungefärliger och är inte "orsak" av förutsägelser. Utan strikt matematisk robusthet av orsakssamband kan vi inte meddela användarna om att fatta beslut i real tid baserat på funktionen perturbations i What-If-verktyget. Det här verktyget är främst avsett för att förstå din modell och fel sökning.
+
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Visualisering i Azure Machine Learning Studio
 
-Om du slutför stegen för [Fjärrtolkning](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs) (överföring av genererad förklaring till Azure Machine Learning körnings historik) kan du Visa instrument panelen för visualiseringar i [Azure Machine Learning Studio](https://ml.azure.com). Den här instrument panelen är en enklare version av instrument panelen för visualiseringar som beskrivs ovan (förklarings utforskning och ICE-observationer har inaktiverats eftersom det inte finns någon aktiv beräkning i Studio som kan utföra sina real tids beräkningar).
+Om du slutför stegen för [Fjärrtolkning](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs) (överföring av genererad förklaring till Azure Machine Learning körnings historik) kan du Visa instrument panelen för visualiseringar i [Azure Machine Learning Studio](https://ml.azure.com). Den här instrument panelen är en enklare version av instrument panelen för visualiseringar som beskrivs ovan. What-If-Datapoint-generering och ICE-observationer inaktive ras eftersom det inte finns någon aktiv beräkning i Azure Machine Learning Studio som kan utföra sina real tids beräkningar.
 
-Om data uppsättningen, globala och lokala förklaringar är tillgängliga, fyller data i alla flikar (utom perturbation-utforskning och ICE). Om det bara finns en global förklaring inaktive ras fliken sammanfattnings prioritet och alla lokala förklarings flikar.
+Om data uppsättningen, globala och lokala förklaringar är tillgängliga, fyller data i alla flikar. Om endast en global förklaring är tillgänglig inaktive ras fliken prioritet för enskilda funktioner.
 
 Följ någon av dessa sökvägar för att få åtkomst till instrument panelen för visualiseringar i Azure Machine Learning Studio:
 
@@ -351,7 +364,7 @@ Följ någon av dessa sökvägar för att få åtkomst till instrument panelen f
   1. Välj ett särskilt experiment för att visa alla körningar i experimentet.
   1. Välj en körning och sedan fliken **förklaringar** till instrument panelen förklarings visualisering.
 
-   [![Instrument panelens lokala funktions betydelse i AzureML Studio i experiment](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
+   [![Instrument panelen för visualiseringar med mängd funktions prioritet i AzureML Studio i experiment](./media/how-to-machine-learning-interpretability-aml/model-explanation-dashboard-aml-studio.png)](./media/how-to-machine-learning-interpretability-aml/model-explanation-dashboard-aml-studio.png#lightbox)
 
 * Fönstret **modeller**
   1. Om du har registrerat din ursprungliga modell genom att följa stegen i [Distribuera modeller med Azure Machine Learning](./how-to-deploy-and-where.md), kan du välja **modeller** i det vänstra fönstret för att visa den.
@@ -359,7 +372,7 @@ Följ någon av dessa sökvägar för att få åtkomst till instrument panelen f
 
 ## <a name="interpretability-at-inference-time"></a>Tolkning vid en fördröjning
 
-Du kan distribuera förklaringen tillsammans med den ursprungliga modellen och använda den vid en fördröjning för att tillhandahålla de enskilda funktions prioritets värdena (lokal förklaring) för nya nya Datapoint-enheter. Vi erbjuder även välklarade bedömnings förklaringar för att förbättra tolknings prestanda vid en fördröjning. Processen för att distribuera en undervisad resultat förklaring liknar att distribuera en modell och innehåller följande steg:
+Du kan distribuera förklaringen tillsammans med den ursprungliga modellen och använda den vid en uppstarts tid för att tillhandahålla de enskilda funktions prioritets värdena (lokal förklaring) för nya Datapoint. Vi erbjuder även välklarade bedömnings förklaringar för att förbättra tolknings prestanda vid fördröjning, som för närvarande endast stöds i Azure Machine Learning SDK. Processen för att distribuera en undervisad resultat förklaring liknar att distribuera en modell och innehåller följande steg:
 
 1. Skapa ett förklarings objekt. Du kan till exempel använda `TabularExplainer` :
 
@@ -547,6 +560,17 @@ Du kan distribuera förklaringen tillsammans med den ursprungliga modellen och a
 1. Rensa.
 
    Använd om du vill ta bort en distribuerad webb tjänst `service.delete()` .
+
+## <a name="troubleshooting"></a>Felsökning
+
+* **Sparse-data stöds inte**: modell förklarings instrument panelen bryts/sänks långsamt med ett stort antal funktioner, och därför har vi för närvarande inte stöd för sparse-dataformat. Dessutom uppstår allmänna minnes problem med stora data uppsättningar och många funktioner. 
+
+* **Prognos modeller som inte stöds med modell förklaringar**: tolkning, bästa modell förklaring är inte tillgängligt för AutoML prognos experiment som rekommenderar följande algoritmer som bästa modell: TCNForecaster, AutoArima, Prophet, ExponentialSmoothing, Average, Naive, säsongs genomsnitt och säsongs Naive. AutoML-Prognosticering har Regressions modeller som stöder förklaringar. Men på förklarings instrument panelen är fliken "individuell funktions prioritet" bara stöd för prognoser på grund av komplexiteten i sina datapipeliner.
+
+* **Lokal förklaring för data index**: förklarings instrument panelen stöder inte relaterade lokala prioritets värden till ett rad-ID från den ursprungliga validerings data uppsättningen om den data uppsättningen är större än 5000 Datapoints eftersom instrument panelen slumpmässigt Nedsamplar data. Instrument panelen visar dock funktions värden för RAW-datauppsättningen för varje Datapoint som överförts till instrument panelen under fliken individuell funktions prioritet. Användare kan mappa lokala prioriteter tillbaka till den ursprungliga data uppsättningen genom att matcha värdena för RAW-datauppsättningen. Om verifierings data uppsättningens storlek är mindre än 5000 exempel `index` motsvarar funktionen i azureml Studio indexet i verifierings data uppsättningen.
+
+* **Konsekvens-och Ice-observationer som inte stöds i Studio**: What-If och enskilda Ice-observationer (villkorligt förväntat) stöds inte i Azure Machine Learning Studio under fliken förklaringar eftersom den uppladdade förklaringen kräver en aktiv beräkning för att beräkna om förutsägelser och sannolikheten för perturbed funktioner. Den stöds för närvarande i Jupyter Notebooks när den körs som en widget med hjälp av SDK.
+
 
 ## <a name="next-steps"></a>Nästa steg
 

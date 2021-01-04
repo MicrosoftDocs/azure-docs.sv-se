@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 0bbf70016dc9b93120b3158e8954c336095ea211
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 0d1cbb8efe0882f48a345d44a650eb711a44d570
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832695"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739193"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Skapa ett Azure Machine Learning beräknings kluster
 
@@ -211,6 +211,14 @@ Se [Konfigurera hanterad identitet i Studio](how-to-create-attach-compute-studio
 ### <a name="managed-identity-usage"></a>Hanterad identitets användning
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-default.md)]
+
+## <a name="troubleshooting"></a>Felsökning
+
+Det finns en chans att vissa användare som har skapat sin Azure Machine Learning-arbetsyta från Azure Portal innan GA-versionen kanske inte kan skapa AmlCompute på arbets ytan. Du kan antingen utlösa en supportbegäran mot tjänsten eller skapa en ny arbets yta via portalen eller SDK för att häva blockeringen direkt.
+
+Om ditt Azure Machine Learning Compute-kluster ser fastnat i storleks ändring (0-> 0) för Node-tillståndet kan detta bero på att Azure-resursens lås är låst.
+
+[!INCLUDE [resource locks](../../includes/machine-learning-resource-lock.md)]
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -2,13 +2,14 @@
 title: Hantera DHCP för Azure VMware-lösning
 description: Lär dig hur du skapar och hanterar DHCP för ditt privata moln i Azure VMware-lösningen.
 ms.topic: how-to
+ms.custom: contperf-fy21q2
 ms.date: 11/09/2020
-ms.openlocfilehash: 9143a8544fe1b98262c3e990ccdf56f5d5f65957
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: bcaba4274b0e6b423e9fa490c80fc57204d4e153
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335996"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708559"
 ---
 # <a name="manage-dhcp-for-azure-vmware-solution"></a>Hantera DHCP för Azure VMware-lösning
 
@@ -28,11 +29,11 @@ Om du vill använda NSX-T som värd för DHCP-servern skapar du en DHCP-server. 
 
 1. I NSX-T Manager väljer du **nätverks**  >  **-DHCP** och väljer sedan **Lägg till Server**.
 
-1. Välj **DHCP** som **Server typ** , ange Server namn och IP-adress och välj sedan **Spara**.
+1. Välj **DHCP** som **Server typ**, ange Server namn och IP-adress och välj sedan **Spara**.
 
    :::image type="content" source="./media/manage-dhcp/dhcp-server-settings.png" alt-text="Lägg till DHCP-server" border="true":::
 
-1. Välj **nivå 1-gatewayer** , Välj den lodräta ellipsen på nivå 1-gatewayen och välj sedan **Redigera**.
+1. Välj **nivå 1-gatewayer**, Välj den lodräta ellipsen på nivå 1-gatewayen och välj sedan **Redigera**.
 
    :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway.png" alt-text="Välj den gateway som ska användas" border="true":::
 
@@ -57,11 +58,11 @@ Om du vill använda en extern DHCP-server från tredje part måste du skapa en D
 
 1. I NSX-T Manager väljer du **nätverks**  >  **-DHCP** och väljer sedan **Lägg till Server**.
 
-1. Välj **DHCP-relä** för **Server typ** , ange Server namn och IP-adress och välj sedan **Spara**.
+1. Välj **DHCP-relä** för **Server typ**, ange Server namn och IP-adress och välj sedan **Spara**.
 
    :::image type="content" source="./media/manage-dhcp/create-dhcp-relay.png" alt-text="Skapa DHCP Relay service" border="true":::
 
-1. Välj **nivå 1-gatewayer** , Välj den lodräta ellipsen på nivå 1-gatewayen och välj sedan **Redigera**.
+1. Välj **nivå 1-gatewayer**, Välj den lodräta ellipsen på nivå 1-gatewayen och välj sedan **Redigera**.
 
    :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway-relay.png" alt-text="redigera nivå 1-Gateway" border="true":::
 
@@ -123,7 +124,7 @@ Om du vill skicka DHCP-begäranden från dina virtuella datorer i Azure VMware-l
 
    :::image type="content" source="media/manage-dhcp/add-segment-profile-bpdu-filter-allow-list.png" alt-text="Skärm bild som visar MAC-adresser i listan över tillåtna BPDU-filter":::
 
-1. Under **nätverks**  >  **segment**  >  **segment** , i Sök fältet, anger du definitions nätverks namnet.
+1. Under **nätverks**  >  **segment**  >  **segment**, i Sök fältet, anger du definitions nätverks namnet.
 
    :::image type="content" source="media/manage-dhcp/networking-segments-search.png" alt-text="Skärm bild av filter fältet nätverks > segment":::
 

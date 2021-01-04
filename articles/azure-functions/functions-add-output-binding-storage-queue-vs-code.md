@@ -5,12 +5,12 @@ ms.date: 02/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-js
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 1729e0b27dd50519359cf6a39bfa81ba7b3b41e9
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: e280fddbe83da2a7ee89185046883f6c2c77167a
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185155"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739832"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Ansluta Azure Functions till Azure Storage med Visual Studio Code
 
@@ -148,6 +148,8 @@ När bindningen har definierats kan du använda `name` bindningen för att komma
 
 [!INCLUDE [functions-add-storage-binding-java-code](../../includes/functions-add-storage-binding-java-code.md)]
 
+## <a name="update-the-test-set"></a>Uppdatera test uppsättningen
+
 [!INCLUDE [functions-add-output-binding-java-test](../../includes/functions-add-output-binding-java-test.md)]
 
 ::: zone-end  
@@ -169,6 +171,8 @@ När bindningen har definierats kan du använda `name` bindningen för att komma
 En ny kö med namnet **arbetskö** skapas i ditt lagrings konto av Functions-körningen när den utgående bindningen används först. Du använder Storage Explorer för att kontrol lera att kön har skapats tillsammans med det nya meddelandet.
 
 ::: zone pivot="programming-language-java"  
+
+## <a name="update-the-tests"></a>Uppdatera testerna
 
 [!INCLUDE [functions-add-output-binding-java-test](../../includes/functions-add-output-binding-java-test.md)]
 

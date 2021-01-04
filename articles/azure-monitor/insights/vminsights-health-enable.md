@@ -6,12 +6,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
-ms.openlocfilehash: 20d38e5caee67ca8bb13877d3162401fa245dc2d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.custom: references_regions
+ms.openlocfilehash: 78ce082c6e90cfc9c67ddcfa00926d292b9ed7ea
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444783"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740478"
 ---
 # <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>Aktivera Azure Monitor for VMs gäst hälsa (för hands version)
 Azure Monitor for VMs gäst hälsa kan du se hälso tillståndet för en virtuell dator så som den definieras av en uppsättning prestanda mätningar som samplas med jämna mellanrum. I den här artikeln beskrivs hur du aktiverar den här funktionen i din prenumeration och hur du aktiverar gäst övervakning för varje virtuell dator.
@@ -20,31 +21,51 @@ Azure Monitor for VMs gäst hälsa kan du se hälso tillståndet för en virtuel
 Azure Monitor for VMs gäst hälsa har följande begränsningar i offentlig för hands version:
 
 - Endast virtuella Azure-datorer stöds för närvarande. Azure-bågen för servrar stöds inte för närvarande.
-- Den virtuella datorn måste köra något av följande operativ system: 
+
+
+## <a name="supported-operating-systems"></a>Operativsystem som stöds
+Den virtuella datorn måste köra något av följande operativ system: 
+
   - Ubuntu 16,04 LTS, Ubuntu 18,04 LTS
   - Windows Server 2012 eller senare
-- Den virtuella datorn måste finnas i någon av följande regioner:
-  - Australien, östra
-  - Australien, sydöstra
-  - Indien, centrala
-  - Central US
-  - East US
-  - USA, östra 2
-  - USA, östra 2 EUAP
-  - Tyskland, västra centrala
-  - Japan, östra
-  - USA, norra centrala
-  - Norra Europa
-  - USA, södra centrala
-  - Sydostasien
-  - Storbritannien, södra
-  - Europa, västra
-  - USA, västra
-  - USA, västra 2
-- Log Analytics arbets ytan måste finnas i någon av följande regioner:
-  - East US
-  - USA, östra 2 EUAP
-  - Regionen Europa, västra
+
+## <a name="supported-regions"></a>Regioner som stöds
+
+Den virtuella datorn måste finnas i någon av följande regioner:
+
+- Australien, centrala
+- Australien, östra
+- Australien, sydöstra
+- Indien, centrala
+- Central US
+- Asien, östra
+- East US
+- USA, östra 2
+- USA, östra 2 EUAP
+- Tyskland, västra centrala
+- Japan, östra
+- USA, norra centrala
+- Norra Europa
+- USA, södra centrala
+- Sydostasien
+- Storbritannien, södra
+- USA, västra centrala
+- Europa, västra
+- USA, västra
+- USA, västra 2
+
+
+Log Analytics arbets ytan måste finnas i någon av följande regioner:
+
+- Central US
+- East US
+- USA, östra 2
+- USA, östra 2 EUAP
+- Norra Europa
+- Sydostasien
+- Storbritannien, södra
+- Regionen Europa, västra
+- USA, västra 2
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -52,9 +73,8 @@ Azure Monitor for VMs gäst hälsa har följande begränsningar i offentlig för
 - Användare som kör onboarding-stegen måste ha en lägsta deltagar nivå åtkomst till prenumerationen där den virtuella datorn och data insamlings regeln finns.
 - Nödvändiga Azure-resurs leverantörer måste registreras enligt beskrivningen i följande avsnitt.
 
-
 ## <a name="register-required-azure-resource-providers"></a>Registrera nödvändiga Azure-resurs leverantörer
-Följande Azure-resurs leverantörer måste vara registrerade för din prenumeration för att möjliggöra Azure Monitor for VMs gäst hälsa. 
+Följande Azure-resurs leverantörer registreras för din prenumeration för att möjliggöra Azure Monitor for VMs gäst hälsa. 
 
 - Microsoft. WorkloadMonitor
 - Microsoft. Insights

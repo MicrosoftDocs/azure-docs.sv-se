@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: 5abb222a6211e2f3f92c002a49987ac54edc78e2
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: cd35cea28e23e88ba97bb7a27dc252d6bebd65e4
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346664"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739662"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Skapa ett projekt med data etiketter och exportera etiketter 
 
@@ -256,6 +256,17 @@ Du kan när som helst exportera etikett data för Machine Learning experimenteri
 COCO-filen skapas i standard-BLOB-arkivet för Azure Machine Learning arbets ytan i en mapp i *export-/Coco*. Du kan komma åt den exporterade Azure Machine Learning data uppsättningen i avsnittet **data uppsättningar** i Machine Learning. På sidan data uppsättnings information finns också exempel kod för att få åtkomst till dina etiketter från python.
 
 ![Exporterad data uppsättning](./media/how-to-create-labeling-projects/exported-dataset.png)
+
+## <a name="troubleshooting"></a>Felsökning
+
+Använd de här tipsen om du ser något av de här problemen.
+
+|Problem  |Lösning  |
+|---------|---------|
+|Det går bara att använda data uppsättningar som skapats på BLOB-datalager.     |  Detta är en känd begränsning i den aktuella versionen.       |
+|När projektet har skapats visar projektet "initiera" under en längre tid.     | Uppdatera sidan manuellt. Initieringen bör fortsätta ungefär 20 Datapoints per sekund. Bristen på Autouppdatering är ett känt problem.         |
+|När du ska granska bilder visas inte nyligen märkta bilder.     |   Om du vill läsa in alla märkta bilder väljer du den **första** knappen. Den **första** knappen tar dig tillbaka till början av listan, men läser in alla etiketterade data.      |
+|Tryck på ESC-tangenten när etiketter för objekt identifiering skapar en etikett för noll storlek i det övre vänstra hörnet. Det går inte att skicka etiketter i det här läget.     |   Ta bort etiketten genom att klicka på kryss rutan bredvid det.  |
 
 ## <a name="next-steps"></a>Nästa steg
 

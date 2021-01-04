@@ -3,14 +3,14 @@ title: hantera autentiseringsuppgifter i Azure Automation
 description: Den här artikeln beskriver hur du skapar inloggnings till gångar och använder dem i en Runbook-eller DSC-konfiguration.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 12/03/2020
+ms.date: 12/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ec35653f67c46a7032e834020d8e2ca4ab3125c8
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: caaeb0e40d277ef5e356c0f385a818b831326d6e
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558851"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734835"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>hantera autentiseringsuppgifter i Azure Automation
 
@@ -51,9 +51,9 @@ Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 > [!NOTE]
 > Du bör undvika att använda variabler i- `Name` parametern i `Get-AutomationPSCredential` . Användningen kan komplicera identifieringen av beroenden mellan Runbooks och DSC-konfigurationer och inloggnings till gångar i design läge.
 
-## <a name="python-2-functions-that-access-credentials"></a>Python 2-funktioner som har åtkomst till autentiseringsuppgifter
+## <a name="python-functions-that-access-credentials"></a>Python-funktioner som har åtkomst till autentiseringsuppgifter
 
-Funktionen i följande tabell används för att komma åt autentiseringsuppgifter i en python 2-Runbook.
+Funktionen i följande tabell används för att komma åt autentiseringsuppgifter i en python 2-eller 3-Runbook. Python 3-Runbooks är för närvarande en för hands version.
 
 | Funktion | Beskrivning |
 |:---|:---|
@@ -104,6 +104,8 @@ Du kan också använda metoden [GetNetworkCredential](/dotnet/api/system.managem
 
 ### <a name="textual-runbook-example"></a>Exempel på text Runbook
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 I följande exempel visas hur du använder en PowerShell-autentiseringsuppgift i en Runbook. Den hämtar autentiseringsuppgiften och tilldelar dess användar namn och lösen ord till variabler.
 
 ```powershell
@@ -126,6 +128,36 @@ $myPsCred = New-Object System.Management.Automation.PSCredential ($userName,$sec
 Connect-AzAccount -Credential $myPsCred
 ```
 
+# <a name="python-2"></a>[Python 2](#tab/python2)
+
+I följande exempel visas ett exempel på hur du kommer åt autentiseringsuppgifter i python 2-Runbooks.
+
+```python
+import automationassets
+from automationassets import AutomationAssetNotFound
+
+# get a credential
+cred = automationassets.get_automation_credential("credtest")
+print cred["username"]
+print cred["password"]
+```
+
+# <a name="python-3"></a>[Python 3](#tab/python3)
+
+I följande exempel visas ett exempel på hur du kommer åt autentiseringsuppgifter i python 3 Runbooks (för hands version).
+
+```python
+import automationassets
+from automationassets import AutomationAssetNotFound
+
+# get a credential
+cred = automationassets.get_automation_credential("credtest")
+print (cred["username"])
+print (cred["password"])
+```
+
+---
+
 ### <a name="graphical-runbook-example"></a>Exempel på grafisk Runbook
 
 Du kan lägga till en aktivitet för den interna `Get-AutomationPSCredential` cmdleten i en grafisk Runbook genom att högerklicka på autentiseringsuppgiften i fönstret Bibliotek i den grafiska redigeraren och välja **Lägg till på arbets ytan**.
@@ -139,20 +171,6 @@ Följande bild visar ett exempel på hur du använder en autentiseringsuppgift i
 ## <a name="use-credentials-in-a-dsc-configuration"></a>Använda autentiseringsuppgifter i en DSC-konfiguration
 
 Även om DSC-konfigurationer i Azure Automation kan arbeta med inloggnings till gångar med `Get-AutomationPSCredential` , kan de också skicka inloggnings resurser via parametrar. Mer information finns i [kompilera konfigurationer i Azure Automation DSC](../automation-dsc-compile.md#credential-assets).
-
-## <a name="use-credentials-in-a-python-2-runbook"></a>Använd autentiseringsuppgifter i en python 2-Runbook
-
-I följande exempel visas ett exempel på hur du kommer åt autentiseringsuppgifter i python 2-Runbooks.
-
-```python
-import automationassets
-from automationassets import AutomationAssetNotFound
-
-# get a credential
-cred = automationassets.get_automation_credential("credtest")
-print cred["username"]
-print cred["password"]
-```
 
 ## <a name="next-steps"></a>Nästa steg
 

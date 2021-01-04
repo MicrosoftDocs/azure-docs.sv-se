@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 0af9d6906e038a4b9285a2c302fc0c98345fdbd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d957c5d6521010c7393e2297be16cd7bef41c35f
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90023762"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724076"
 ---
 # <a name="use-the-session-management-rest-api"></a>Använda REST API:et för sessionshantering
 
@@ -37,11 +37,14 @@ $endPoint = "https://remoterendering.westus2.mixedreality.azure.com"
 
 Om du inte har ett konto för fjärrrendering [skapar du ett](create-an-account.md). Varje resurs identifieras av en *accountId*, som används i API: erna för sessioner.
 
-### <a name="example-script-set-accountid-and-accountkey"></a>Exempel skript: Ange accountId och accountKey
+### <a name="example-script-set-accountid-accountkey-and-account-domain"></a>Exempel skript: Ange accountId, accountKey och konto domän
+
+Konto domän är platsen för fjärrrendering-kontot. I det här exemplet är kontots plats region, *östra*.
 
 ```PowerShell
 $accountId = "********-****-****-****-************"
 $accountKey = "*******************************************="
+$accountDomain = "eastus.mixedreality.azure.com"
 ```
 
 ## <a name="common-request-headers"></a>Vanliga begärandehuvuden
@@ -52,7 +55,7 @@ $accountKey = "*******************************************="
 
 ```PowerShell
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
-$webResponse = Invoke-WebRequest -Uri "https://sts.mixedreality.azure.com/accounts/$accountId/token" -Method Get -ContentType "application/json" -Headers @{ Authorization = "Bearer ${accountId}:$accountKey" }
+$webResponse = Invoke-WebRequest -Uri "https://sts.$accountDomain/accounts/$accountId/token" -Method Get -ContentType "application/json" -Headers @{ Authorization = "Bearer ${accountId}:$accountKey" }
 $response = ConvertFrom-Json -InputObject $webResponse.Content
 $token = $response.AccessToken;
 ```
@@ -69,7 +72,7 @@ Det här kommandot skapar en session. Den returnerar ID: t för den nya sessione
 |-----------|:-----------|
 | /v1/Accounts/*accountId*/sessions/Create | POST |
 
-**Begärandetext:**
+**Brödtext i begäran:**
 
 * maxLeaseTime (TimeSpan): ett timeout-värde när sessionen tas ur bruk automatiskt
 * modeller (matris): URL: er för till gångs behållare till preload
@@ -79,7 +82,7 @@ Det här kommandot skapar en session. Den returnerar ID: t för den nya sessione
 
 | Statuskod | JSON-nyttolast | Kommentarer |
 |-----------|:-----------|:-----------|
-| 202 | -sessionId: GUID | Klart |
+| 202 | -sessionId: GUID | Success |
 
 ### <a name="example-script-create-a-session"></a>Exempel skript: skapa en session
 
@@ -111,7 +114,7 @@ RawContentLength  : 52
 
 ### <a name="example-script-store-sessionid"></a>Exempel skript: Store sessionId
 
-Svaret från begäran ovan innehåller ett **SessionID**som du behöver för alla uppföljnings begär Anden.
+Svaret från begäran ovan innehåller ett **SessionID** som du behöver för alla uppföljnings begär Anden.
 
 ```PowerShell
 $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
@@ -135,7 +138,7 @@ Detta kommando uppdaterar en sessions parametrar. För närvarande kan du bara u
 |-----------|:-----------|
 | /v1/Accounts/*accountID*/sessions/*SessionID* | 9.0a |
 
-**Begärandetext:**
+**Brödtext i begäran:**
 
 * maxLeaseTime (TimeSpan): ett timeout-värde när sessionen tas ur bruk automatiskt
 
@@ -143,7 +146,7 @@ Detta kommando uppdaterar en sessions parametrar. För närvarande kan du bara u
 
 | Statuskod | JSON-nyttolast | Kommentarer |
 |-----------|:-----------|:-----------|
-| 200 | | Klart |
+| 200 | | Success |
 
 #### <a name="example-script-update-a-session"></a>Exempel skript: uppdatera en session
 
@@ -265,7 +268,7 @@ Det här kommandot stoppar en session. Den allokerade virtuella datorn kommer at
 
 | Statuskod | JSON-nyttolast | Kommentarer |
 |-----------|:-----------|:-----------|
-| 204 | | Klart |
+| 204 | | Success |
 
 ### <a name="example-script-stop-a-session"></a>Exempel skript: stoppa en session
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5be0d45843eed8c7c0d7d9b6dc4655de01e914c3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d064eb0b748c361b76139b1a21d25cec8996e818
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461460"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734784"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Hantera variabler i Azure Automation
 
@@ -65,7 +65,7 @@ Cmdletarna i följande tabell skapar och hanterar Automation-variabler med Power
 
 De interna cmdletarna i följande tabell används för att få åtkomst till variabler i dina runbooks och DSC-konfigurationer. Dessa cmdletar levereras med den globala modulen `Orchestrator.AssetManagement.Cmdlets` . Mer information finns i [interna cmdletar](modules.md#internal-cmdlets).
 
-| Intern cmdlet | Description |
+| Intern cmdlet | Beskrivning |
 |:---|:---|
 |`Get-AutomationVariable`|Hämtar värdet för en befintlig variabel.|
 |`Set-AutomationVariable`|Ställer in värdet för en befintlig variabel.|
@@ -80,11 +80,11 @@ $mytestencryptvar = Get-AutomationVariable -Name TestVariable
 Write-output "The encrypted value of the variable is: $mytestencryptvar"
 ```
 
-## <a name="python-2-functions-to-access-variables"></a>Python 2-funktioner för att få åtkomst till variabler
+## <a name="python-functions-to-access-variables"></a>Python-funktioner för att få åtkomst till variabler
 
-Funktionerna i följande tabell används för att få åtkomst till variabler i en python 2-Runbook.
+Funktionerna i följande tabell används för att få åtkomst till variabler i en python 2-eller 3-Runbook. Python 3-Runbooks är för närvarande en för hands version.
 
-|Python 2-funktioner|Description|
+|Python-funktioner|Beskrivning|
 |:---|:---|
 |`automationassets.get_automation_variable`|Hämtar värdet för en befintlig variabel. |
 |`automationassets.set_automation_variable`|Ställer in värdet för en befintlig variabel. |
@@ -135,9 +135,10 @@ $vmValue = Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 $vmName = $vmValue.Name
 $vmExtensions = $vmValue.Extensions
 ```
+
 ## <a name="textual-runbook-examples"></a>Text Runbook-exempel
 
-### <a name="retrieve-and-set-a-simple-value-from-a-variable"></a>Hämta och ange ett enkelt värde från en variabel
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 I följande exempel visas hur du ställer in och hämtar en variabel i en text-Runbook. Det här exemplet förutsätter att du skapar heltals variabler med namnet `NumberOfIterations` och `NumberOfRunnings` och en String-variabel med namnet `SampleMessage` .
 
@@ -154,7 +155,7 @@ for ($i = 1; $i -le $NumberOfIterations; $i++) {
 Set-AzAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" –Name NumberOfRunnings –Value ($NumberOfRunnings += 1)
 ```
 
-### <a name="retrieve-and-set-a-variable-in-a-python-2-runbook"></a>Hämta och ange en variabel i en python 2-Runbook
+# <a name="python-2"></a>[Python 2](#tab/python2)
 
 Följande exempel visar hur du hämtar en variabel, ställer in en variabel och hanterar ett undantag för en icke-existerande variabel i en python 2-Runbook.
 
@@ -177,6 +178,32 @@ try:
 except AutomationAssetNotFound:
     print "variable not found"
 ```
+
+# <a name="python-3"></a>[Python 3](#tab/python3)
+
+Följande exempel visar hur du hämtar en variabel, ställer in en variabel och hanterar ett undantag för en icke-existerande variabel i en python 3-Runbook (för hands version).
+
+```python
+import automationassets
+from automationassets import AutomationAssetNotFound
+
+# get a variable
+value = automationassets.get_automation_variable("test-variable")
+print value
+
+# set a variable (value can be int/bool/string)
+automationassets.set_automation_variable("test-variable", True)
+automationassets.set_automation_variable("test-variable", 4)
+automationassets.set_automation_variable("test-variable", "test-string")
+
+# handle a non-existent variable exception
+try:
+    value = automationassets.get_automation_variable("nonexisting variable")
+except AutomationAssetNotFound:
+    print ("variable not found")
+```
+
+---
 
 ## <a name="graphical-runbook-examples"></a>Grafiska Runbook-exempel
 

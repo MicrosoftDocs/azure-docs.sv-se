@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: shresha
-ms.openlocfilehash: 3aedbef079ba62f42ea79afdcd9995d7ee23d9fa
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 15f1a814b302611029cf6459b8d2df93a32a2d36
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020733"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740563"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>Migrera till nya Azure Time Series Insights Gen2 API-versioner
 
@@ -76,7 +76,7 @@ Om du har genererat frågor med hjälp av Power BI anslutningen, gör de anrop t
 För att du ska kunna uppdatera frågorna för att använda den nya API-versionen och den nya tids serie uttrycks syntaxen måste frågorna återskapas från Utforskaren. Läs mer om hur du [skapar frågor med hjälp av Power BI-anslutningen](./how-to-connect-power-bi.md).
 
 > [!NOTE]
-> Du måste använda den Power BI Desktop juli 2020-versionen. Om inte kan du se ett [ogiltigt versions fel för frågans nytto Last](./how-to-diagnose-troubleshoot.md#problem-power-bi-connector-shows-unable-to-connect).
+> Du måste använda minst juli 2020-versionen av Power BI Desktop. Om du inte gör det kan fel meddelandet "Ogiltig fråga om nytto Last version" visas.
 
 ## <a name="migrate-custom-applications"></a>Migrera anpassade program
 

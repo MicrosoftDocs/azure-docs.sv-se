@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 03/25/2019
+ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: ffbfd3214242d8df5fe33faf465bc1da3eb9986d
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 9d1d22d57464266239aea96f427020351eb749d5
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96583634"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740665"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>Självstudie: etablera Azure Data Box Gateway i Hyper-V
 
@@ -23,7 +23,7 @@ Den här självstudien beskriver hur du etablerar en Data Box Gateway i ett vär
 
 Du behöver ha administratörsbehörighet för att etablera och konfigurera en virtuell enhet. Etableringen och den inledande installationen kan ta ungefär 10 minuter att slutföra. 
 
-I den här guiden får du lära dig att:
+I de här självstudierna får du lära dig att
 
 > [!div class="checklist"]
 >
@@ -57,7 +57,7 @@ Innan du distribuerar en enhet kontrollerar du att:
   * Minst 4 kärnor.
   * Minst 8 GB RAM.
   * Ett nätverksgränssnitt.
-  * En operativsystemdisk på 250 GB.
+  * En 250 GB OS-disk.
   * En virtuell disk på 2 TB för data.
 
 ### <a name="for-the-network-in-the-datacenter"></a>För nätverket i datacentret
@@ -78,8 +78,8 @@ För att skapa en virtuell enhet behöver du följande:
   * Minst 4 virtuella processorer.
   * Minst 8 GB RAM.
   * Ett nätverksgränssnitt anslutet till det nätverk som kan dirigera trafik till Internet.
-  * En operativsystemdisk på 250 GB.
-  * En virtuell disk på 2 TB för systemdata.
+  * En 250 GB OS-disk.
+  * En virtuell disk på 2 TB för system data.
 
 ## <a name="bitlocker-considerations"></a>BitLocker-överväganden
 
@@ -92,10 +92,11 @@ För att skapa en virtuell enhet behöver du följande:
 Utför följande steg för att etablera en enhet i ditt hypervisor-program.
 
 1. På din Windows Server-värd kopierar du avbildningen av den virtuella enheten till en lokal disk. Du har laddat ned den här VHDX-avbildningen via Azure-portalen. Anteckna den plats dit du har kopierat avbildningen eftersom du använder den här avbildningen senare i proceduren.
+
 2. Öppna **Serverhanteraren**. Klicka på **verktyg** i det övre högra hörnet och välj **Hyper-V Manager**.
 
-    ![Välj Hyper-V Manager i Serverhanteraren](./media/data-box-gateway-deploy-provision-hyperv/image1.png)  
-  
+    ![Välj Hyper-V Manager i Serverhanteraren](./media/data-box-gateway-deploy-provision-hyperv/image1.png)
+
 3. I **Hyper-V Manager** går du till fönsterrutan för omfång, högerklickar på din systemnod för att öppna snabbmenyn och klickar sedan på **Ny** > **Virtuell dator**.
 
    ![Skapa en ny virtuell dator i Hyper-V Manager](./media/data-box-gateway-deploy-provision-hyperv/image2.png)
@@ -118,13 +119,13 @@ Utför följande steg för att etablera en enhet i ditt hypervisor-program.
 10. Granska **sammanfattningen** och klicka sedan på **Slutför** för att skapa den virtuella datorn.
 
     ![Slutför guide sidan ny virtuell dator](./media/data-box-gateway-deploy-provision-hyperv/image8.png)
-11. För att uppfylla minimi kraven behöver du 4 virtuella processorer. Om du vill lägga till 4 virtuella processorer väljer du ditt värdsystem i **Hyper-V Manager**-fönstret. I den högra fönsterrutan går du till listan över **virtuella datorer** och letar upp den virtuella dator som du nyss skapade. Markera och högerklicka på datornamnet och välj **Inställningar**.
+11. Du behöver fyra virtuella processorer för att uppfylla minimi kraven. Om du vill lägga till fyra virtuella processorer väljer du ditt värd system i fönstret **Hyper-V Manager** . I den högra fönsterrutan går du till listan över **virtuella datorer** och letar upp den virtuella dator som du nyss skapade. Markera och högerklicka på datornamnet och välj **Inställningar**.
 
     ![Inställningar för virtuella datorer](./media/data-box-gateway-deploy-provision-hyperv/image9.png)
 12. På sidan **Inställningar** går du till den vänstra fönsterruta och klickar på **Processor**. I den högra fönsterrutan ställer du in **antal virtuella processorer** på 4 (eller fler). Klicka på **Använd**.
 
     ![Ange antal virtuella processorer på sidan Inställningar](./media/data-box-gateway-deploy-provision-hyperv/image10.png)
-13. För att uppfylla minimikraven behöver du ven lägga till en virtuell datadisk på 2 TB. På sidan **Inställningar**:
+13. För att uppfylla minimi kraven måste du också lägga till en virtuell data disk på 2 TB. På sidan **Inställningar**:
 
     1. I den vänstra fönsterrutan väljer du **SCSI Controller**.
     2. I den högra fönsterrutan väljer du **Hårddisk** och klickar på **Lägg till**.
@@ -138,12 +139,12 @@ Utför följande steg för att etablera en enhet i ditt hypervisor-program.
 17. På **sidan för att välja disktyp** ställer du in typen av virtuell hårddisk till **Dynamiskt expanderande** (rekommenderas). En disk med **Fast storlek** skulle också fungera, men då kan du behöva vänta länge. Vi rekommenderar att du inte använder alternativet **Differentierande**. Klicka på **Nästa**.
 
     ![Sidan Välj disktyp](./media/data-box-gateway-deploy-provision-hyperv/image13.png)
-18. På sidan **Ange namn och plats** anger du ett **Namn** och en **Plats** (du kan bläddra till en) för datadisken. Klicka på **Nästa**.
+18. På sidan **Ange namn och plats** anger du ett **namn** och en **plats** (du kan bläddra till en) för data disken. Klicka på **Nästa**.
 
     ![Sidan Ange namn och plats](./media/data-box-gateway-deploy-provision-hyperv/image14.png)
-19. På sidan **Konfigurera disk** väljer du alternativet **Skapa en ny tom virtuell hårddisk** och anger storleken till **2 TB** (eller mer).
+19. På sidan **Konfigurera disk** väljer du alternativet **skapa en ny tom virtuell hård disk** och anger storleken som **2 TB** (eller mer).
 
-    2 TB är minimikravet, men du kan alltid etablera en större disk. Observera att du inte kan komprimera disken när den har etablerats. Om du försöker minska disk resultatet försvinner alla lokala data på enheten. Det finns inte stöd för att utöka data disken. Klicka på **Nästa**.
+    2 TB är minimikravet, men du kan alltid etablera en större disk. Observera att det inte går att krympa disken när den har tillhandahållits. Om du försöker minska disk resultatet försvinner alla lokala data på enheten. Det finns inte stöd för att utöka data disken. Klicka på **Nästa**.
 
     ![Sidan Konfigurera disk](./media/data-box-gateway-deploy-provision-hyperv/image15.png)
 20. På sidan **Sammanfattning** läser du informationen om din virtuella datadisk, och om allt stämmer klickar du på **Slutför** för att skapa disken. Guiden stängs och en virtuell hårddisk läggs till i datorn.
@@ -152,6 +153,11 @@ Utför följande steg för att etablera en enhet i ditt hypervisor-program.
 21. Gå tillbaka till sidan **Inställningar**. Klicka på **OK** för att stänga sidan **Inställningar** och gå tillbaka till Hyper-V Manager-fönstret.
 
     ![Sidan Inställningar](./media/data-box-gateway-deploy-provision-hyperv/image17.png)
+
+Den virtuella datorn har nu kon figurer ATS helt.
+
+> [!NOTE]
+> Du kan inte etablera en ny Data Box Gateway genom att kopiera den konfigurerade virtuella hård disken. Varje ny Data Box Gateway virtuell enhet måste tillhandahållas från en virtuell enhets avbildning för Hyper-V som hämtas från Azure Portal.
 
 ## <a name="start-the-virtual-device-and-get-the-ip"></a>Starta den virtuella enheten och hämta IP-adressen
 

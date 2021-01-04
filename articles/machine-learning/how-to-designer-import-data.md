@@ -10,12 +10,12 @@ ms.author: keli19
 ms.date: 11/13/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 5569b625b8f0c4ba890c0cd5b1700ca6fe83d968
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: a2cc0840b7ba4b26cf9f5b1219fc189230870774
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591996"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739866"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>Importera data till Azure Machine Learning designer
 
@@ -47,8 +47,7 @@ Om modulen utdata är i tabell format måste du välja att registrera utdata som
  - **Fil data uppsättningen** registrerar modulens installationsmapp som en fil data uppsättning. Mappen utdata innehåller en data fil och de meta-filer som designern använder internt. Välj det här alternativet om du vill fortsätta att använda den registrerade data uppsättningen i designern. 
 
  - **Tabell data uppsättning** registrerar endast modulens utdatafil som en tabell data uppsättning. Det här formatet används enkelt av andra verktyg, till exempel i automatiserade Machine Learning eller python SDK. Välj det här alternativet om du planerar att använda den registrerade data uppsättningen utanför designern.  
-
-
+ 
 
 ### <a name="use-a-dataset"></a>Använd en data uppsättning
 
@@ -62,6 +61,14 @@ Om du registrerar en fil data uppsättning är den utgående port typen för dat
 > [!NOTE]
 > Designern stöder [data uppsättnings version](how-to-version-track-datasets.md). Ange data uppsättnings version i egenskaps panelen för data uppsättnings modulen.
 
+### <a name="limitations"></a>Begränsningar 
+
+- För närvarande kan du endast visualisera tabell data uppsättning i designern. Om du registrerar en fil data uppsättning utanför designern kan du inte visualisera den i designer-arbetsytan.
+- Din data uppsättning lagras i ett virtuellt nätverk (VNet). Om du vill visualisera måste du aktivera arbets ytans hanterade identitet för data lagret.
+    1. Gå till det relaterade data lagret och klicka på uppdatera **autentiseringsuppgifter** 
+     :::image type="content" source="./media/resource-known-issues/datastore-update-credential.png" alt-text="Uppdatera"::: autentiseringsuppgifter
+    1. Välj **Ja** för att aktivera hanterad identitet för arbets ytan.
+    :::image type="content" source="./media/resource-known-issues/enable-workspace-managed-identity.png" alt-text="Aktivera hanterad identitet för arbets yta":::
 
 ## <a name="import-data-using-the-import-data-module"></a>Importera data med modulen importera data
 
@@ -92,7 +99,7 @@ Designern stöder tabell data uppsättningar som skapats från följande källor
 Designern identifierar internt följande data typer:
 
 * Sträng
-* Heltal
+* Integer
 * Decimal
 * Boolesk
 * Date

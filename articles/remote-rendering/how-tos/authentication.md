@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: how-to
-ms.openlocfilehash: dc325fdf68c5afbb122f9e77c5509a6a8053a12e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 35fd78a9d55dc684045fdb4b83691c1613801421
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427461"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724891"
 ---
 # <a name="configure-authentication"></a>Konfigurera autentisering
 
@@ -19,14 +19,17 @@ Azure fjärrrendering använder samma autentiseringsmekanism som [Azure spatiala
 * **AccountKey**: kan hämtas på fliken "nycklar" för det fjärranslutna åter givnings kontot på Azure Portal. Konto nycklar rekommenderas endast för utveckling/prototypering.
     ![Konto-ID](./media/azure-account-primary-key.png)
 
+* **AccountDomain**: kan hämtas på fliken "Översikt" för fjärråter givnings kontot på Azure Portal.
+    ![Konto domän](./media/azure-account-domain.png)
+
 * **AuthenticationToken**: är en Azure AD-token som kan hämtas med hjälp av [MSAL-biblioteket](../../active-directory/develop/msal-overview.md). Det finns flera olika flöden som kan användas för att acceptera användarautentiseringsuppgifter och använda dessa autentiseringsuppgifter för att hämta en åtkomsttoken.
 
-* **MRAccessToken**: är en Mr-token som kan hämtas från Azure Mixed Reality Security Token Service (STS). Hämtas från `https://sts.mixedreality.azure.com` slut punkten med ett rest-anrop som liknar anropet nedan:
+* **MRAccessToken**: är en Mr-token som kan hämtas från Azure Mixed Reality Security Token Service (STS). Hämtas från `https://sts.<accountDomain>` slut punkten med ett rest-anrop som liknar följande:
 
     ```rest
-    GET https://sts.mixedreality.azure.com/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
+    GET https://sts.southcentralus.mixedreality.azure.com/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
     Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni<truncated>FL8Hq5aaOqZQnJr1koaQ
-    Host: sts.mixedreality.azure.com
+    Host: sts.southcentralus.mixedreality.azure.com
     Connection: Keep-Alive
 
     HTTP/1.1 200 OK

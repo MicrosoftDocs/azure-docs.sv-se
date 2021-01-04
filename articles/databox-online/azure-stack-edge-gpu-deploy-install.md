@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/02/2020
+ms.date: 12/21/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 52f0bcbb332b5d5e47440accff9d9895dcef7056
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 830e0a8733d3f5a49cede09b331dc0298ee1ce4d
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449363"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734722"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>Självstudie: installera Azure Stack Edge Pro med GPU
 
@@ -22,7 +22,7 @@ I den här självstudien beskrivs hur du installerar en fysisk enhet för Azure 
 
 Det kan ta cirka två timmar att slutföra installationen.
 
-I den här guiden får du lära dig att:
+I de här självstudierna får du lära dig att
 
 > [!div class="checklist"]
 > * Packa upp enheten
@@ -159,14 +159,14 @@ Leta upp komponenterna för installation av järnvägs kit-sammansättningen:
 
 Dirigera kablarna och kablar sedan enheten. Följande procedurer beskriver hur du kan kabelansluta din Azure Stack Edge Pro-enhet för strömförsörjning och nätverk.
 
-Innan du börjar kabelansluta enheten behöver du följande:
+Innan du börjar kablarna till enheten behöver du följande saker:
 
 - Din fysiska Azure Stack Edge Pro-enhet, packas upp och rack montering.
 - Två strömkablar.
 - Minst en 1-GbE RJ-45-nätverkskabel för att ansluta till hanteringsgränssnittet. Det finns två 1-GbE-nätverksgränssnitt på enheten, ett för hantering och ett för data.
 - En 25-GbE SFP+-kopparkabel för varje datanätverksgränssnitt som ska konfigureras. Minst ett datanätverksgränssnitten PORT 2, PORT 3, PORT 4, PORT 5 eller PORT 6 måste vara anslutet till Internet (med anslutning till Azure).  
 - Åtkomst till två strömfördelare (rekommenderas).
-- Minst 1 1-GbE-nätverks växel för att ansluta ett 1-GbE-nätverkskort till Internet för data. Det lokala webb gränssnittet kan inte nås om den anslutna växeln inte är minst 1-GbE. Om du använder 25/10 GbE-gränssnitt för data behöver du en 25-GbE-eller 10-GbE-växel. 
+- Minst 1 1-GbE-nätverks växel för att ansluta ett 1-GbE-nätverkskort till Internet för data. Det lokala webb gränssnittet kan inte nås om den anslutna växeln inte är minst 1 GbE. Om du använder 25/10-GbE-gränssnitt för data behöver du en 25-GbE-eller 10-GbE-växel.
 
 > [!NOTE]
 > - Om du bara ansluter ett data nätverks gränssnitt rekommenderar vi att du använder ett 25/10-GbE-nätverkskort, till exempel PORT 3, PORT 4, PORT 5 eller PORT 6 för att skicka data till Azure. 
@@ -186,14 +186,14 @@ På din Azure Stack Edge Pro-enhet:
     - 4 25 Gbit/s-gränssnitt som också kan fungera som 10 Gbit/s-gränssnitt.
     - En BMC (Baseboard Management Controller).
 
-- Det bakre planet har två nätverkskort som motsvarar 6 portar:
+- Det bakre planet har två nätverkskort som motsvarar de sex portarna:
 
-    - **Anpassad Microsoft Qlogic Cavium 25G Norwegian Developers Conference adapter** -port 1 till Port 4.
+    - **Anpassad Microsoft `Qlogic` Cavium 25G Norwegian DEVELOPERS Conference adapter** -port 1 till Port 4.
     - **Mellanox dual port 25G ConnectX – 4 kanal nätverkskort** -Port 5 och port 6.
 
 En fullständig lista över kablar, växlar och Sänd tagare som stöds för dessa nätverkskort finns på:
 
-- [Cavium för QLogic 25G Norwegian Developers Conference adapter](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
+- [ `Qlogic` CAVIUM 25G Norwegian Developers Conference adapter](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
 - [Mellanox dual port 25G ConnectX – 4 kanals nätverkskort kompatibla produkter](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products).  
 
  
@@ -201,15 +201,15 @@ Utför följande steg för att kabelansluta enheten för strömförsörjning och
 
 1. Identifiera de olika portarna på enhetens bak plan. Du kan ha fått en av följande enheter från fabriken beroende på antalet GPU: er på enheten.
 
-    - Enhet med 2 PCI-kortplatser (Peripheral Component Interconnect) och en GPU
+    - Enhet med två PCI-kortplatser (Peripheral Component Interconnect) och en GPU
 
         ![Back plan för en kabelansluten enhet](./media/azure-stack-edge-gpu-deploy-install/ase-two-pci-slots.png)
 
-    - Enhet med 3 PCI-platser och en GPU
+    - Enhet med tre PCI-platser och en GPU
 
         ![Back plan för en kabelansluten enhet 2](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-one-gpu.png)
 
-    - Enhet med 3 PCI-kortplatser och två GPU
+    - Enhet med tre PCI-platser och två GPU: er
 
         ![Back plan för en kabelansluten enhet 3](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-two-gpu.png)
 

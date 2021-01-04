@@ -5,14 +5,14 @@ services: vpn-gateway
 author: radwiv
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 12/2/2020
 ms.author: radwiv
-ms.openlocfilehash: c6aa2b63344ef629d55f5a4efb66e4ee0e55975e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: caa9a0869d7d4bca58b91a0c682177e1408f8300
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94661043"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733814"
 ---
 # <a name="configure-packet-capture-for-vpn-gateways"></a>Konfigurera paket fångst för VPN-gatewayer
 
@@ -31,6 +31,7 @@ Följande exempel på JSON och ett JSON-schema innehåller förklaringar av varj
 - Du kan inte köra flera paket avbildningar i hela gatewayen på samma gång.
 - Du kan inte köra flera paket avbildningar på samma gång. Du kan köra flera paket insamlingar på olika anslutningar samtidigt.
 - Högst fem paket avbildningar kan köras parallellt per Gateway. De här paket avbildningarna kan vara en kombination av paket-och paket fångster per anslutning.
+- Enheten för MaxPacketBufferSize är byte och MaxFileSize är megabyte
 
 ### <a name="example-json"></a>Exempel-JSON
 ```JSON-interactive

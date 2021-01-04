@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 05ac0f78345e1c1d7643f24410d53b209ab7c375
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 62a1f43fb73f0eda77ebb8f62f64c95ff4ad37a1
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574164"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734206"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Självstudie: kom igång med Azure Machine Learning i utvecklings miljön (del 1 av 4)
 
@@ -65,6 +65,9 @@ tutorial
 
 - `tutorial`: Katalogen på den översta nivån i projektet.
 - `.azureml`: Dold under katalog för lagring av Azure Machine Learning konfigurationsfiler.
+
+> [!TIP]
+> Om du använder en Mac använder du **Kommando + Skift +** i Finder-fönstret. så här växlar du möjlighet att visa och skapa kataloger som börjar med en punkt.  Eller Använd kommandot Terminal för att skapa katalogen.
 
 
 > [!div class="nextstepaction"]

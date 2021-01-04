@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 74bad563de60abc0c1eb7623a81c83fea03f5ee6
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 6258365ab00ab538f3f3502682078d29a391578c
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207231"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724942"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>Snabb start: rendera en modell med Unity
 
@@ -69,13 +69,13 @@ Standard modellen som vi återger är en [inbyggd exempel modell](../samples/sam
 
 1. I Unity Asset Browser navigerar du till mappen *scener* och öppnar **snabb starts** scenen.
 1. Välj Game-objektet **RemoteRendering** i *hierarkin*.
-1. I *kontrollanten*anger du dina [autentiseringsuppgifter för kontot](../how-tos/create-an-account.md). [Skapa ett](../how-tos/create-an-account.md)konto om du inte redan har det.
+1. I *kontrollanten* anger du dina [autentiseringsuppgifter för kontot](../how-tos/create-an-account.md). [Skapa ett](../how-tos/create-an-account.md)konto om du inte redan har det.
 
 ![Information om ARR-konto](./media/arr-sample-account-info.png)
 
 > [!IMPORTANT]
-> Azure Portal visar endast ditt kontos domän som *mixedreality.Azure.com*. Detta är inte tillräckligt för att kunna ansluta.
-> Ange **AccountDomain** till `<region>.mixedreality.azure.com` , där `<region>` är [en av de tillgängliga regionerna nära dig](../reference/regions.md).
+> Ange **AccountDomain** till `<region>.mixedreality.azure.com` , där `<region>` är [en av de tillgängliga regionerna nära dig](../reference/regions.md). \
+> Ange **AccountAuthenticationDomain** till [konto domän](../how-tos/create-an-account.md#retrieve-the-account-information) som det visas i Azure Portal.
 
 Senare vill vi distribuera det här projektet till en HoloLens och ansluta till tjänsten Remote rendering från den enheten. Eftersom vi inte har något enkelt sätt att ange autentiseringsuppgifterna på enheten sparar snabb starts exemplet **autentiseringsuppgifterna i Unity-scenen**.
 
@@ -92,9 +92,7 @@ Grattis! Nu visar du en fjärrrenderad modell!
 
 ## <a name="inspecting-the-scene"></a>Inspekterar scenen
 
-När fjärran sluten anslutning har körts uppdateras panelen granska med ytterligare statusinformation:
-
-![Enhets exempel spel](./media/arr-sample-configure-session-running.png)
+När anslutningen till fjärrrendering är igång uppdateras panelen granska med ytterligare statusinformation: enhets ![ exempel spelar spel](./media/arr-sample-configure-session-running.png)
 
 Nu kan du utforska scen diagrammet genom att välja den nya noden och klicka på **Visa underordnade** i kontrollanten.
 

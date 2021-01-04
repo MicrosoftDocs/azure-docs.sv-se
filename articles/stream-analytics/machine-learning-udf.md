@@ -6,14 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 12/21/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 14f7462aec65d2a13eb36b291331c347b995d281
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 01c85311c9ea49be3543edee405cdd66a0659797
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130688"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733013"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Integrera Azure Stream Analytics med Azure Machine Learning (förhands granskning)
 
@@ -37,7 +37,7 @@ Du kan lägga till Azure Machine Learning funktioner till ditt Stream Analytics-
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Navigera till Stream Analytics jobb i Azure Portal och välj **funktioner** under **jobb sto pol Ogin** . Välj sedan **Azure Machine Learning tjänst** på list menyn **+ Lägg till** .
+1. Navigera till Stream Analytics jobb i Azure Portal och välj **funktioner** under **jobb sto pol Ogin**. Välj sedan **Azure Machine Learning tjänst** på list menyn **+ Lägg till** .
 
    ![Lägg till Azure Machine Learning UDF](./media/machine-learning-udf/add-azure-machine-learning-udf.png)
 
@@ -45,19 +45,19 @@ Du kan lägga till Azure Machine Learning funktioner till ditt Stream Analytics-
 
    ![Konfigurera Azure Machine Learning UDF](./media/machine-learning-udf/configure-azure-machine-learning-udf.png)
 
-### <a name="visual-studio-code"></a>Visuell Studio-kod
+### <a name="visual-studio-code"></a>Visual Studio-koden
 
-1. Öppna ditt Stream Analytics-projekt i Visual Studio Code och högerklicka på mappen **Functions** . Välj sedan **Lägg till funktion** . Välj **Machine Learning UDF** i list rutan.
+1. Öppna ditt Stream Analytics-projekt i Visual Studio Code och högerklicka på mappen **Functions** . Välj sedan **Lägg till funktion**. Välj **Machine Learning UDF** i list rutan.
 
    :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function.png" alt-text="Lägg till UDF i VS Code":::
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="Lägg till UDF i VS Code":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="Lägg till Azure Machine Learning UDF i VS Code":::
 
 2. Ange funktions namnet och fyll i inställningarna i konfigurations filen genom **att använda Välj från dina prenumerationer** i CodeLens.
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="Lägg till UDF i VS Code":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="Välj Azure Machine Learning UDF i VS Code":::
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="Lägg till UDF i VS Code":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="Konfigurera Azure Machine Learning UDF i VS Code":::
 
 I följande tabell beskrivs varje egenskap för Azure Machine Learning tjänst funktioner i Stream Analytics.
 
@@ -83,7 +83,7 @@ INTO output
 FROM input
 ```
 
-Stream Analytics har endast stöd för att skicka en parameter för Azure Machine Learning-funktioner. Du kan behöva förbereda dina data innan du skickar dem som indata till Machine Learning UDF.
+Stream Analytics har endast stöd för att skicka en parameter för Azure Machine Learning-funktioner. Du kan behöva förbereda dina data innan du skickar dem som indata till Machine Learning UDF. Du måste se till att indata till ML UDF inte är null eftersom null-indata kan leda till att jobbet Miss fungerar.
 
 ## <a name="pass-multiple-input-parameters-to-the-udf"></a>Skicka flera indataparametrar till UDF
 
@@ -104,11 +104,18 @@ function createArray(vendorid, weekday, pickuphour, passenger, distance) {
 När du har lagt till JavaScript UDF-filen till jobbet kan du anropa Azure Machine Learning UDF med följande fråga:
 
 ```SQL
-SELECT udf.score(
-udf.createArray(vendorid, weekday, pickuphour, passenger, distance)
-)
-INTO output
+WITH 
+ModelInput AS (
+#use JavaScript UDF to construct array that will be used as input to ML UDF
+SELECT udf.createArray(vendorid, weekday, pickuphour, passenger, distance) as inputArray
 FROM input
+)
+
+SELECT udf.score(inputArray)
+INTO output
+FROM ModelInput
+#validate inputArray is not null before passing it to ML UDF to prevent job from failing
+WHERE inputArray is not null
 ```
 
 Följande JSON är en exempel förfrågan:

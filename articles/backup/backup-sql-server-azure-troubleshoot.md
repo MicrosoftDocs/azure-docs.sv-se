@@ -3,12 +3,12 @@ title: Felsöka SQL Server säkerhets kopiering av databasen
 description: Felsöknings information för att säkerhetskopiera SQL Server databaser som körs på virtuella Azure-datorer med Azure Backup.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: f215b848bedae333979f0fed8eb7f216fb6e25f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d702959be70716f0c2bc85920bdb7aa3e061aff1
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332788"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733951"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Felsöka SQL Server säkerhets kopiering av databasen med Azure Backup
 
@@ -18,7 +18,7 @@ Mer information om säkerhets kopierings processen och begränsningar finns i [o
 
 ## <a name="sql-server-permissions"></a>SQL Server behörigheter
 
-Om du vill konfigurera skydd för en SQL Server-databas på en virtuell dator måste du installera **AzureBackupWindowsWorkload** -tillägget på den virtuella datorn. Om du får felet **UserErrorSQLNoSysadminMembership**innebär det att din SQL Server-instans inte har de säkerhets kopierings behörigheter som krävs. Följ stegen i [Ange VM-behörigheter](backup-azure-sql-database.md#set-vm-permissions)för att åtgärda felet.
+Om du vill konfigurera skydd för en SQL Server-databas på en virtuell dator måste du installera **AzureBackupWindowsWorkload** -tillägget på den virtuella datorn. Om du får felet **UserErrorSQLNoSysadminMembership** innebär det att din SQL Server-instans inte har de säkerhets kopierings behörigheter som krävs. Följ stegen i [Ange VM-behörigheter](backup-azure-sql-database.md#set-vm-permissions)för att åtgärda felet.
 
 ## <a name="troubleshoot-discover-and-configure-issues"></a>Felsöka problem med identifiering och konfigurering
 
@@ -56,13 +56,47 @@ Ibland kan slumpmässiga problem inträffa i säkerhets kopierings-och återstä
 
 1. SQL innehåller också några rikt linjer för att arbeta med antivirus program. Mer information finns i [den här artikeln](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server) .
 
+## <a name="faulty-instance-in-a-vm-with-multiple-sql-server-instances"></a>Felaktig instans i en virtuell dator med flera SQL Server instanser
+
+Du kan bara återställa till en virtuell SQL-dator om alla SQL-instanser som körs på den virtuella datorn rapporteras som felfria. Om en eller flera instanser är "felaktiga" visas inte den virtuella datorn som ett återställnings mål. Det kan därför vara en möjlig orsak till att en virtuell dator med flera instanser inte visas i list rutan "Server" under återställnings åtgärden.
+
+Du kan verifiera "säkerhets kopierings beredskap" för alla SQL-instanser på den virtuella datorn under **Konfigurera säkerhets kopiering**:
+
+![Verifiera beredskap för säkerhets kopiering](./media/backup-sql-server-azure-troubleshoot/backup-readiness.png)
+
+Gör så här om du vill utlösa en återställning av de felfria SQL-instanserna:
+
+1. Logga in på den virtuella SQL-datorn och gå till `C:\Program Files\Azure Workload Backup\bin` .
+1. Skapa en JSON-fil med namnet `ExtensionSettingsOverrides.json` (om den inte redan finns). Om filen redan finns på den virtuella datorn fortsätter du att använda den.
+1. Lägg till följande innehåll i JSON-filen och spara filen:
+
+    ```json
+    {
+                  "<ExistingKey1>":"<ExistingValue1>",
+                    …………………………………………………… ,
+              "whitelistedInstancesForInquiry": "FaultyInstance_1,FaultyInstance_2"
+            }
+            
+            Sample content:        
+            { 
+              "whitelistedInstancesForInquiry": "CRPPA,CRPPB "
+            }
+
+    ```
+
+1. Utlös databaser-åtgärden för att **identifiera** på den påverkade servern från den Azure Portal (samma plats där backup-beredskap kan ses). Den virtuella datorn kommer att visas som mål för återställnings åtgärder.
+
+    ![Identifiera databaser](./media/backup-sql-server-azure-troubleshoot/rediscover-dbs.png)
+
+1. Ta bort *whitelistedInstancesForInquiry* -posten från ExtensionSettingsOverrides.jspå filen när återställnings åtgärden har slutförts.
+
 ## <a name="error-messages"></a>Felmeddelanden
 
 ### <a name="backup-type-unsupported"></a>Säkerhets kopierings typen stöds inte
 
 | Allvarlighetsgrad | Beskrivning | Möjliga orsaker | Rekommenderad åtgärd |
 |---|---|---|---|
-| Varning | De aktuella inställningarna för den här databasen stöder inte vissa säkerhets kopierings typer som finns i den tillhör ande principen. | <li>Endast en fullständig databas säkerhets kopierings åtgärd kan utföras på huvud databasen. Det går inte att säkerhetskopiera differentiell säkerhets kopiering och transaktions logg. </li> <li>Alla databaser i den enkla återställnings modellen tillåter inte säkerhets kopiering av transaktions loggar.</li> | Ändra databas inställningarna SP alla säkerhets kopierings typer i principen stöds. Eller ändra den aktuella principen så att endast de säkerhets kopierings typer som stöds tas med. Annars kommer de säkerhets kopierings typer som inte stöds att hoppas över under schemalagd säkerhets kopiering, eller så kommer säkerhets kopieringen inte att kunna utföra säkerhets kopiering på begäran.
+| Varning | De aktuella inställningarna för den här databasen stöder inte vissa säkerhets kopierings typer som finns i den tillhör ande principen. | <li>Endast en fullständig databas säkerhets kopierings åtgärd kan utföras på huvud databasen. Det går inte att säkerhetskopiera differentiell säkerhets kopiering och transaktions logg. </li> <li>Alla databaser i den enkla återställnings modellen tillåter inte säkerhets kopiering av transaktions loggar.</li> | Ändra databas inställningarna så att alla säkerhets kopierings typer i principen stöds. Eller ändra den aktuella principen så att endast de säkerhets kopierings typer som stöds tas med. Annars kommer de säkerhets kopierings typer som inte stöds att hoppas över under schemalagd säkerhets kopiering, eller så kommer säkerhets kopieringen inte att kunna utföra säkerhets kopiering på begäran.
 
 ### <a name="usererrorsqlpodoesnotsupportbackuptype"></a>UserErrorSQLPODoesNotSupportBackupType
 
@@ -75,7 +109,7 @@ Ibland kan slumpmässiga problem inträffa i säkerhets kopierings-och återstä
 
 | Felmeddelande | Möjliga orsaker | Rekommenderad åtgärd |
 |---|---|---|
-| SQL-databasen finns inte. | Databasen har antingen tagits bort eller bytt namn. | Kontrol lera om databasen har tagits bort av misstag eller fått ett nytt namn.<br/><br/> Om databasen har tagits bort av misstag, om du vill fortsätta med säkerhets kopieringarna återställer du databasen till den ursprungliga platsen.<br/><br/> Om du har tagit bort databasen och inte behöver framtida säkerhets kopieringar väljer du **stoppa säkerhets kopiering** med **Behåll säkerhets kopierings data** eller **ta bort säkerhetskopierade data**i Recovery Services valvet. Mer information finns i [Hantera och övervaka säkerhetskopierade SQL Server-databaser](manage-monitor-sql-database-backup.md).
+| SQL-databasen finns inte. | Databasen har antingen tagits bort eller bytt namn. | Kontrol lera om databasen har tagits bort av misstag eller fått ett nytt namn.<br/><br/> Om databasen har tagits bort av misstag, om du vill fortsätta med säkerhets kopieringarna återställer du databasen till den ursprungliga platsen.<br/><br/> Om du har tagit bort databasen och inte behöver framtida säkerhets kopieringar väljer du **stoppa säkerhets kopiering** med **Behåll säkerhets kopierings data** eller **ta bort säkerhetskopierade data** i Recovery Services valvet. Mer information finns i [Hantera och övervaka säkerhetskopierade SQL Server-databaser](manage-monitor-sql-database-backup.md).
 
 ### <a name="usererrorsqllsnvalidationfailure"></a>UserErrorSQLLSNValidationFailure
 
@@ -179,7 +213,7 @@ Den virtuella datorn kan inte kontakta Azure Backup tjänsten på grund av probl
 Kontrol lera om det finns ett eller flera av följande symptom innan du utlöser omregistrerings åtgärden:
 
 - Alla åtgärder (till exempel säkerhets kopiering, återställning och konfigurations säkerhets kopiering) kan inte utföras på den virtuella datorn med någon av följande felkoder: **WorkloadExtensionNotReachable**, **UserErrorWorkloadExtensionNotInstalled**, **WorkloadExtensionNotPresent**, **WorkloadExtensionDidntDequeueMsg**.
-- Om **säkerhets kopierings status** fältet för det säkerhetskopierade objektet **visas kan du**utesluta alla andra orsaker som kan resultera i samma status:
+- Om **säkerhets kopierings status** fältet för det säkerhetskopierade objektet **visas kan du** utesluta alla andra orsaker som kan resultera i samma status:
 
   - Saknar behörighet att utföra säkerhetskopierade åtgärder på den virtuella datorn.
   - Stäng av den virtuella datorn så att säkerhets kopieringen inte kan genomföras.

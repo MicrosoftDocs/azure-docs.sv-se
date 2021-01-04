@@ -4,12 +4,12 @@ description: Läs mer om Azure Database for PostgreSQL säkerhets kopiering med 
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: edbfdb6ea741cdb344a121acdbee3b8bd4bc743c
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 32837e5bb871f7db5024569efc27940047aeacd7
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927897"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734648"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL säkerhets kopiering med långsiktig kvarhållning (för hands version)
 
@@ -31,7 +31,7 @@ Du kan använda den här lösningen fristående eller utöver den inbyggda säke
 
 |Support  |Information  |
 |---------|---------|
-|Distributioner som stöds   |  Azure Database for PostgreSQL fristående en server     |
+|Distributioner som stöds   |  [Azure Database for PostgreSQL – enskild server](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server)     |
 |Azure-regioner som stöds |  USA, östra USA, östra USA 2, centrala USA, södra centrala USA, västra USA, västra USA 2, västra centrala USA, södra Brasilien, centrala Kanada, Nord Europa, Västeuropa, Storbritannien, södra, Storbritannien, västra, Tyskland, västra centrala, Schweiz, norra, Schweiz, västra, Asien, östra, USA, östra, västra Japan, centrala USA, södra centrala USA, östra Australien, centrala Australien 2, östra  |
 |Azure PostgreSQL-versioner som stöds    |   9,5, 9,6, 10, 11      |
 
@@ -55,7 +55,7 @@ Du kan använda den här lösningen fristående eller utöver den inbyggda säke
   
 5. När du har aktiverat konfigurera skydd för de valda databaserna konfigurerar säkerhets kopierings tjänsten koordinatorn med säkerhets kopierings scheman och annan princip information.
 
-6. Vid den schemalagda tiden kommunicerar koordinatorn med plugin-programmet och börjar strömma säkerhetskopierade data från postgres-servern med hjälp av **pg_dump** .
+6. Vid den schemalagda tiden kommunicerar koordinatorn med plugin-programmet och börjar strömma säkerhetskopierade data från postgres-servern med hjälp av **pg_dump**.
 
 7. Plugin-programmet skickar data direkt till säkerhets kopierings valvet, vilket eliminerar behovet av en mellanlagringsplats. Data krypteras med hjälp av Microsoft-hanterade nycklar och lagras av Azure Backup-tjänsten i lagrings konton.
 
@@ -71,15 +71,15 @@ Följande instruktioner är en steg-för-steg-guide för att konfigurera säkerh
 
 1. Det finns två sätt att starta processen:
 
-    1. Gå till [säkerhets kopierings Center](backup-center-overview.md)  ->  **– Översikt**  ->  **säkerhets kopiering** .
+    1. Gå till [säkerhets kopierings Center](backup-center-overview.md)  ->  **– Översikt**  ->  **säkerhets kopiering**.
 
         ![Gå till säkerhets kopierings Center](./media/backup-azure-database-postgresql/backup-center.png)
 
-        Under **initiera: Konfigurera säkerhets kopiering** väljer du **data källans typ** som **Azure Database for PostgreSQL** .
+        Under **initiera: Konfigurera säkerhets kopiering** väljer du **data källans typ** som **Azure Database for PostgreSQL**.
 
         ![I starta: Konfigurera säkerhets kopiering väljer du typ av data Källa](./media/backup-azure-database-postgresql/initiate-configure-backup.png)
 
-    1. Du kan också gå direkt till säkerhets kopierings [valv](backup-vault-overview.md)  ->  **Backup** .
+    1. Du kan också gå direkt till säkerhets kopierings [valv](backup-vault-overview.md)  ->  .
 
         ![Gå till säkerhets kopierings valv](./media/backup-azure-database-postgresql/backup-vaults.png)
 
@@ -89,7 +89,7 @@ Följande instruktioner är en steg-för-steg-guide för att konfigurera säkerh
 
     ![Välj säkerhets kopierings valv i Konfigurera säkerhets kopiering](./media/backup-azure-database-postgresql/configure-backup.png)
 
-1. Välj eller skapa en **säkerhets kopierings princip** .
+1. Välj eller skapa en **säkerhets kopierings princip**.
 
     ![Välj säkerhets kopierings princip](./media/backup-azure-database-postgresql/backup-policy.png)
 
@@ -121,7 +121,7 @@ Följande instruktioner är en steg-för-steg-guide för att konfigurera säkerh
 
 ## <a name="create-backup-policy"></a>Skapa säkerhets kopierings princip
 
-1. Gå till **säkerhets kopierings Center**  ->  **säkerhets kopierings principer**  ->  **Lägg till** . Du kan också **gå till säkerhets** kopierings  ->  **policyn**  ->  **Lägg till** säkerhets kopiering.
+1. Gå till **säkerhets kopierings Center**  ->  **säkerhets kopierings principer**  ->  **Lägg till**. Du kan också **gå till säkerhets** kopierings  ->  **policyn**  ->  **Lägg till** säkerhets kopiering.
 
     ![Lägg till säkerhets kopierings princip](./media/backup-azure-database-postgresql/add-backup-policy.png)
 
@@ -142,8 +142,8 @@ Följande instruktioner är en steg-för-steg-guide för att konfigurera säkerh
 
 1. **Standard regeln för kvarhållning** tillämpas om ingen annan bevarande regel har angetts och har ett standardvärde på tre månader.
 
-    - Varaktighets intervallet för kvarhållning från sju dagar till 10 år i **säkerhets kopierings data lagret** .
-    - Varaktighets intervallet för kvarhållning från sex månader till 10 år i **Arkiv data lagret** .
+    - Varaktighets intervallet för kvarhållning från sju dagar till 10 år i **säkerhets kopierings data lagret**.
+    - Varaktighets intervallet för kvarhållning från sex månader till 10 år i **Arkiv data lagret**.
 
     ![Redigera varaktighet för kvarhållning](./media/backup-azure-database-postgresql/edit-retention.png)
 
@@ -157,15 +157,15 @@ Du kan återställa en databas till alla Azure PostgreSQL-servrar i samma prenum
 Följ den här steg-för-steg-guiden för att utlösa en återställning:
 
 1. Det finns två sätt att starta återställnings processen:
-    1. Gå till [Backup Center](backup-center-overview.md)-  ->  **översikten**  ->  **återställning** .
+    1. Gå till [Backup Center](backup-center-overview.md)-  ->  **översikten**  ->  **återställning**.
 
     ![Välj Återställ i säkerhets kopierings Center](./media/backup-azure-database-postgresql/backup-center-restore.png)
 
-    Under **initiera: Återställ** väljer du **data källans typ** som **Azure Database for PostgreSQL** . Välj **säkerhets kopierings instans** .
+    Under **initiera: Återställ** väljer du **data källans typ** som **Azure Database for PostgreSQL**. Välj **säkerhets kopierings instans**.
 
     ![Välj DataSource-typ i initiera: Återställ](./media/backup-azure-database-postgresql/initiate-restore.png)
 
-    1. Du kan också gå direkt till säkerhets kopierings **valvets**  ->  **säkerhets kopierings instanser** . Välj den **säkerhets kopierings instans** som motsvarar den databas som du vill återställa.
+    1. Du kan också gå direkt till säkerhets kopierings **valvets**  ->  **säkerhets kopierings instanser**. Välj den **säkerhets kopierings instans** som motsvarar den databas som du vill återställa.
 
     ![Säkerhets kopierings instanser för återställning](./media/backup-azure-database-postgresql/backup-instances-restore.png)
 
@@ -179,25 +179,25 @@ Följ den här steg-för-steg-guiden för att utlösa en återställning:
 
     ![Lista över återställnings punkter](./media/backup-azure-database-postgresql/list-recovery-points.png)
 
-1. Parametrar för att **återställa** information. I det här läget kan du välja mellan två typer av återställningar: **Återställ som databas** och **Återställ som filer** .
+1. Parametrar för att **återställa** information. I det här läget kan du välja mellan två typer av återställningar: **Återställ som databas** och **Återställ som filer**.
 
-1. **Återställ som databas** : Återställ säkerhets kopierings data för att skapa en ny databas på mål postgresql-servern.
+1. **Återställ som databas**: Återställ säkerhets kopierings data för att skapa en ny databas på mål postgresql-servern.
 
     - Mål servern kan vara samma som käll servern. Det finns dock inte stöd för att skriva över den ursprungliga databasen.
     - Du kan välja från servern för alla prenumerationer, men i samma region som valvet.
-    - Välj **Granska + Återställ** . Detta utlöser verifieringen för att kontrol lera om tjänsten har rätt återställnings behörighet på mål servern.
+    - Välj **Granska + Återställ**. Detta utlöser verifieringen för att kontrol lera om tjänsten har rätt återställnings behörighet på mål servern.
 
     ![Återställ som databas](./media/backup-azure-database-postgresql/restore-as-database.png)
 
-1. **Återställ som filer** : dumpa säkerhetskopieringsfilerna till mål lagrings kontot (blobbar).
+1. **Återställ som filer**: dumpa säkerhetskopieringsfilerna till mål lagrings kontot (blobbar).
 
     - Du kan välja mellan lagrings kontona för alla prenumerationer, men i samma region som valvet.
     - Välj mål containern från den filtrerade behållar listan för det valda lagrings kontot.
-    - Välj **Granska + Återställ** . Detta utlöser verifieringen för att kontrol lera om tjänsten har rätt återställnings behörighet på mål servern.
+    - Välj **Granska + Återställ**. Detta utlöser verifieringen för att kontrol lera om tjänsten har rätt återställnings behörighet på mål servern.
 
     ![Återställ som filer](./media/backup-azure-database-postgresql/restore-as-files.png)
 
-1. Granska informationen och välj **Återställ** . Detta utlöser ett motsvarande återställnings jobb som kan spåras under **säkerhets kopierings jobb** .
+1. Granska informationen och välj **Återställ**. Detta utlöser ett motsvarande återställnings jobb som kan spåras under **säkerhets kopierings jobb**.
 
 ## <a name="prerequisite-permissions-for-configure-backup-and-restore"></a>Nödvändiga behörigheter för att konfigurera säkerhets kopiering och återställning
 
@@ -207,11 +207,11 @@ Azure Backup följer strikta säkerhets rikt linjer. Även om det är en inbyggd
 
 ## <a name="manage-the-backed-up-azure-postgresql-databases"></a>Hantera de säkerhetskopierade Azure PostgreSQL-databaserna
 
-Detta är de hanterings åtgärder som du kan utföra på **säkerhets kopierings instanserna** :
+Detta är de hanterings åtgärder som du kan utföra på **säkerhets kopierings instanserna**:
 
 ### <a name="on-demand-backup"></a>Säkerhets kopiering på begäran
 
-Om du vill utlösa en säkerhets kopia som inte finns i det schema som anges i principen går du till säkerhets **kopierings instanser**  ->  **nu** .
+Om du vill utlösa en säkerhets kopia som inte finns i det schema som anges i principen går du till säkerhets **kopierings instanser**  ->  **nu**.
 Välj i listan över bevarande regler som definierades i den associerade säkerhets kopierings principen.
 
 ![Utlös säkerhets kopiering nu](./media/backup-azure-database-postgresql/backup-now.png)
@@ -228,7 +228,7 @@ Du kan stoppa skyddet av ett säkerhets kopierings objekt. Detta tar även bort 
 
 Du kan ändra den associerade principen med en säkerhets kopierings instans.
 
-1. Välj ändrings princip för **säkerhets kopierings instans**  ->  **Change Policy** .
+1. Välj ändrings princip för **säkerhets kopierings instans**  ->  .
 
     ![Ändra princip](./media/backup-azure-database-postgresql/change-policy.png)
 
@@ -254,7 +254,7 @@ Steg:
 
     ![Access Controls fönster](./media/backup-azure-database-postgresql/access-control-pane.png)
 
-1. Välj **Lägg till en roll tilldelning** .
+1. Välj **Lägg till en roll tilldelning**.
 
     ![Lägg till rolltilldelning](./media/backup-azure-database-postgresql/add-role-assignment.png)
 
@@ -280,7 +280,7 @@ Steg:
 
 Lägg till en Active Directory-administratör till OSS-servern:
 
-Det här steget krävs för att ansluta till databasen via en användare som kan autentisera med Azure Active Directory i stället för ett lösen ord. Azure AD admin-användaren i Azure Database for PostgreSQL kommer att ha rollen **azure_ad_admin** . Endast en **azure_ad_admin** roll kan skapa nya databas användare som kan autentiseras med Azure AD.
+Det här steget krävs för att ansluta till databasen via en användare som kan autentisera med Azure Active Directory i stället för ett lösen ord. Azure AD admin-användaren i Azure Database for PostgreSQL kommer att ha rollen **azure_ad_admin**. Endast en **azure_ad_admin** roll kan skapa nya databas användare som kan autentiseras med Azure AD.
 
 1. Gå till fliken Active Directory administratör i det vänstra navigerings fönstret i vyn Server och Lägg till dig själv (eller någon annan) som Active Directory administratören.
 
@@ -294,7 +294,7 @@ I [det här dokumentet](https://download.microsoft.com/download/7/4/d/74d689aa-9
 
 ### <a name="usererrormissingnetworksecuritypermissions"></a>UserErrorMissingNetworkSecurityPermissions
 
-Etablera nätverks linjen genom att aktivera flaggan **Tillåt åtkomst till Azure-tjänster** i vyn Server. I vyn Server, under fönstret **anslutnings säkerhet** , ställer du in flaggan **Tillåt åtkomst till Azure-tjänster** på **Ja** .
+Etablera nätverks linjen genom att aktivera flaggan **Tillåt åtkomst till Azure-tjänster** i vyn Server. I vyn Server, under fönstret **anslutnings säkerhet** , ställer du in flaggan **Tillåt åtkomst till Azure-tjänster** på **Ja**.
 
 ![Tillåt åtkomst till Azure-tjänster](./media/backup-azure-database-postgresql/allow-access-to-azure-services.png)
 
@@ -303,7 +303,7 @@ Etablera nätverks linjen genom att aktivera flaggan **Tillåt åtkomst till Azu
 #### <a name="permission-to-restore-to-a-storage-account-container-when-restoring-as-files"></a>Behörighet att återställa till en lagrings konto behållare vid återställning som filer
 
 1. Ge säkerhets kopierings valvet MSI behörighet att komma åt lagrings konto behållare med hjälp av Azure Portal.
-    1. Gå till **lagrings konto**  ->  **Access Control**  ->  **Lägg till roll tilldelning** .
+    1. Gå till **lagrings konto**  ->  **Access Control**  ->  **Lägg till roll tilldelning**.
     1. Tilldela rollen **Storage BLOB data Contributor** till säkerhets kopierings valvets MSI.
 
     ![Tilldela rollen Storage BLOB data Contributor](./media/backup-azure-database-postgresql/assign-storage-blog-data-contributor-role.png)
@@ -315,7 +315,7 @@ Etablera nätverks linjen genom att aktivera flaggan **Tillåt åtkomst till Azu
     ```
 
     1. Ersätt tilldelnings parametern med **program-ID: t** för valvets MSI och omfattnings parametern för att referera till din specifika behållare.
-    1. Om du vill hämta **program-ID: t** för valvet MSI väljer du **alla program** under **program typ** :
+    1. Om du vill hämta **program-ID: t** för valvet MSI väljer du **alla program** under **program typ**:
 
         ![Välj alla program](./media/backup-azure-database-postgresql/select-all-applications.png)
 

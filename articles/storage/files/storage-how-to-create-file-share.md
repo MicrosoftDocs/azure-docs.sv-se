@@ -9,12 +9,12 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 4df4c3d91c30dfd63de9073d8435f6f96c6ecd95
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 705910a9e2f4ebc80a63ab22ac4edecc5ae03cd0
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94626834"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724807"
 ---
 # <a name="create-an-azure-file-share"></a>Skapa en Azure-filresurs
 Om du vill skapa en Azure-filresurs måste du svara på tre frågor om hur du ska använda den:
@@ -37,14 +37,14 @@ Mer information om dessa tre alternativ finns i [Planera för en Azure Files dis
 - Om du tänker använda Azure PowerShell [installerar du den senaste versionen](/powershell/azure/install-az-ps).
 - Om du tänker använda Azure CLI [installerar du den senaste versionen](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
 
-## <a name="create-a-storage-account"></a>skapar ett lagringskonto
+## <a name="create-a-storage-account"></a>Skapa ett lagringskonto
 Azure-filresurser distribueras till *lagrings konton* som är toppnivå objekt som representerar en delad lagringspool. Den här lagringspoolen kan användas för att distribuera flera fil resurser. 
 
 Azure har stöd för flera typer av lagrings konton för olika lagrings scenarier. kunder kan ha, men det finns två huvud typer av lagrings konton för Azure Files. Vilken typ av lagrings konto du behöver skapa beror på om du vill skapa en standard fil resurs eller en Premium fil resurs: 
 
-- **GPv2-lagrings konton (General Purpose version 2)** : med GPv2 Storage-konton kan du Distribuera Azure-filresurser på standard-/hård diskbaserade (HDD-baserade) maskin vara. Förutom att lagra Azure-filresurser kan GPv2 lagrings konton lagra andra lagrings resurser, till exempel BLOB-behållare, köer och tabeller. Fil resurser kan distribueras i transaktionens optimerade (standard), frekventa eller låg frekventa nivåer.
+- **GPv2-lagrings konton (General Purpose version 2)**: med GPv2 Storage-konton kan du Distribuera Azure-filresurser på standard-/hård diskbaserade (HDD-baserade) maskin vara. Förutom att lagra Azure-filresurser kan GPv2 lagrings konton lagra andra lagrings resurser, till exempel BLOB-behållare, köer och tabeller. Fil resurser kan distribueras i transaktionens optimerade (standard), frekventa eller låg frekventa nivåer.
 
-- **FileStorage lagrings konton** : med FileStorage Storage-konton kan du Distribuera Azure-filresurser i Premium/Solid-State-baserad (SSD) maskin vara. FileStorage-konton kan bara användas för att lagra Azure-filresurser. inga andra lagrings resurser (BLOB-behållare, köer, tabeller osv.) kan distribueras i ett FileStorage-konto.
+- **FileStorage lagrings konton**: med FileStorage Storage-konton kan du Distribuera Azure-filresurser i Premium/Solid-State-baserad (SSD) maskin vara. FileStorage-konton kan bara användas för att lagra Azure-filresurser. inga andra lagrings resurser (BLOB-behållare, köer, tabeller osv.) kan distribueras i ett FileStorage-konto.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 Om du vill skapa ett lagrings konto via Azure Portal väljer du **+ skapa en resurs** från instrument panelen. I fönstret Azure Marketplace search kan du söka efter **lagrings konto** och välja det resulterande Sök resultatet. Detta kommer att leda till en översikts sida för lagrings konton. Klicka på **skapa** för att fortsätta med guiden skapa lagrings konto.
@@ -61,12 +61,12 @@ Om du vill skapa ett FileStorage lagrings konto ser du till att alternativ knapp
 ![En skärm bild av prestanda alternativ knappen med Premium valt och konto typ med FileStorage valt](media/storage-how-to-create-file-share/create-storage-account-2.png)
 
 De andra grunderna fälten är oberoende av valet av lagrings konto:
-- **Prenumeration** : prenumerationen på det lagrings konto som ska distribueras till. 
-- **Resurs grupp** : resurs gruppen för det lagrings konto som ska distribueras till. Du kan antingen skapa en ny resurs grupp eller använda en befintlig resurs grupp. En resursgrupp är en logisk container där Azure-resurserna grupperas. När du skapar ett lagringskonto kan du antingen skapa en ny resursgrupp eller använda en befintlig resursgrupp.
-- **Lagrings konto namn** : namnet på lagrings konto resursen som ska skapas. Det här namnet måste vara globalt unikt, men annars kan alla namn du vill ha. Namnet på lagrings kontot kommer att användas som server namn när du monterar en Azure-filresurs via SMB.
-- **Plats** : regionen för det lagrings konto som ska distribueras till. Detta kan vara den region som är kopplad till resurs gruppen eller någon annan tillgänglig region.
-- **Replikering** : även om det här är en etikettad replikering innebär det här fältet faktiskt **redundans**. Detta är önskad redundans nivå: lokalt redundans (LRS), zon redundans (ZRS), GEO-redundans (GRS) och geo-Zone-redundans. Den här List rutan innehåller också Read-Access GEO-redundans (RA-GRS) och-Access geo-Zone redundans (ra-GZRS), som inte gäller för Azure-filresurser. alla fil resurser som har skapats i ett lagrings konto med dessa är markerade är antingen geo-redundanta eller geo-zon-redundanta. Beroende på din region eller vald lagrings konto typ kan vissa alternativ för redundans inte tillåtas.
-- **BLOB-åtkomst nivå** : det här fältet gäller inte för Azure Files, så du kan välja någon av alternativ knapparna. 
+- **Prenumeration**: prenumerationen på det lagrings konto som ska distribueras till. 
+- **Resurs grupp**: resurs gruppen för det lagrings konto som ska distribueras till. Du kan antingen skapa en ny resurs grupp eller använda en befintlig resurs grupp. En resursgrupp är en logisk container där Azure-resurserna grupperas. När du skapar ett lagringskonto kan du antingen skapa en ny resursgrupp eller använda en befintlig resursgrupp.
+- **Lagrings konto namn**: namnet på lagrings konto resursen som ska skapas. Det här namnet måste vara globalt unikt, men annars kan alla namn du vill ha. Namnet på lagrings kontot kommer att användas som server namn när du monterar en Azure-filresurs via SMB.
+- **Plats**: regionen för det lagrings konto som ska distribueras till. Detta kan vara den region som är kopplad till resurs gruppen eller någon annan tillgänglig region.
+- **Replikering**: även om det här är en etikettad replikering innebär det här fältet faktiskt **redundans**. Detta är önskad redundans nivå: lokalt redundans (LRS), zon redundans (ZRS), GEO-redundans (GRS) och geo-Zone-redundans. Den här List rutan innehåller också Read-Access GEO-redundans (RA-GRS) och-Access geo-Zone redundans (ra-GZRS), som inte gäller för Azure-filresurser. alla fil resurser som har skapats i ett lagrings konto med dessa är markerade är antingen geo-redundanta eller geo-zon-redundanta. Beroende på din region eller vald lagrings konto typ kan vissa alternativ för redundans inte tillåtas.
+- **BLOB-åtkomst nivå**: det här fältet gäller inte för Azure Files, så du kan välja någon av alternativ knapparna. 
 
 > [!Important]  
 > Att välja BLOB-åtkomstnivå påverkar inte fil resursens nivå.
@@ -77,8 +77,8 @@ I avsnittet nätverk kan du konfigurera nätverks alternativ. De här inställni
 #### <a name="the-advanced-blade"></a>Det avancerade bladet
 Avsnittet Avancerat innehåller flera viktiga inställningar för Azure-fil resurser:
 
-- **Säker överföring krävs** : det här fältet visar om lagrings kontot kräver kryptering i överföring för kommunikation till lagrings kontot. Vi rekommenderar att detta är kvar, men om du behöver stöd för SMB 2,1 måste du inaktivera detta. Vi rekommenderar att du inaktiverar kryptering som begränsar ditt lagrings konto till ett virtuellt nätverk med tjänst slut punkter och/eller privata slut punkter.
-- **Stora fil resurser** : det här fältet aktiverar lagrings kontot för fil resurser som sträcker sig upp till 100 TIB. Om du aktiverar den här funktionen begränsas ditt lagrings konto till endast lokalt redundant och zon alternativ för redundant lagring. När ett GPv2 lagrings konto har Aktiver ATS för stora fil resurser kan du inte inaktivera funktionen för stor fil resurs. FileStorage lagrings konton (lagrings konton för Premium-filresurser) har inte det här alternativet eftersom alla Premium fil resurser kan skala upp till 100 TiB. 
+- **Säker överföring krävs**: det här fältet visar om lagrings kontot kräver kryptering i överföring för kommunikation till lagrings kontot. Vi rekommenderar att detta är kvar, men om du behöver stöd för SMB 2,1 måste du inaktivera detta. Vi rekommenderar att du inaktiverar kryptering som begränsar ditt lagrings konto till ett virtuellt nätverk med tjänst slut punkter och/eller privata slut punkter.
+- **Stora fil resurser**: det här fältet aktiverar lagrings kontot för fil resurser som sträcker sig upp till 100 TIB. Om du aktiverar den här funktionen begränsas ditt lagrings konto till endast lokalt redundant och zon alternativ för redundant lagring. När ett GPv2 lagrings konto har Aktiver ATS för stora fil resurser kan du inte inaktivera funktionen för stor fil resurs. FileStorage lagrings konton (lagrings konton för Premium-filresurser) har inte det här alternativet eftersom alla Premium fil resurser kan skala upp till 100 TiB. 
 
 ![En skärm bild av viktiga avancerade inställningar som gäller för Azure Files](media/storage-how-to-create-file-share/create-storage-account-3.png)
 
@@ -172,7 +172,7 @@ Standard fil resurser kan distribueras till en av standard-nivåerna: transaktio
 
 - För standard fil resurser är det en övre gränser för Azure-filresursen, utöver vilka slutanvändare inte kan gå. Det primära syftet med kvoten för en standard fil resurs är budget: "Jag vill inte att den här fil resursen ska växa bortom den här punkten". Om ingen kvot anges kan standard fil resursen omfatta upp till 100 TiB (eller 5 TiB om den stora fil resurs egenskapen inte har angetts för ett lagrings konto).
 
-- För Premium-filresurser är kvoten överbelastad till en medels **Tor storlek**. Den etablerade storleken är den mängd som du debiteras för, oavsett faktisk användning. När du etablerar en Premium-filresurs vill du överväga två faktorer: 1) den framtida tillväxten av resursen från ett utrymmes användnings perspektiv och 2) IOPS som krävs för din arbets belastning. Varje etablerad GiB ger dig ytterligare reserverade och burst-IOPS. Mer information om hur du planerar för en Premium-filresurs finns i avsnittet om att [allokera Premium-filresurser](storage-files-planning.md#understanding-provisioning-for-premium-file-shares).
+- För Premium-filresurser är kvoten överbelastad till en medels **Tor storlek**. Den etablerade storleken är den mängd som du debiteras för, oavsett faktisk användning. När du etablerar en Premium-filresurs vill du överväga två faktorer: 1) den framtida tillväxten av resursen från ett utrymmes användnings perspektiv och 2) IOPS som krävs för din arbets belastning. Varje etablerad GiB ger dig ytterligare reserverade och burst-IOPS. Mer information om hur du planerar för en Premium-filresurs finns i avsnittet om att [allokera Premium-filresurser](understanding-billing.md#provisioned-billing).
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 Om du precis har skapat ditt lagrings konto kan du navigera till det från distributions skärmen genom att välja **gå till resurs**. Om du tidigare har skapat lagrings kontot kan du navigera till det via den resurs grupp som innehåller det. När du är i lagrings kontot väljer du panelen med namnet **fil resurser** (du kan också navigera till **fil resurser** via innehålls förteckningen för lagrings kontot).
@@ -183,9 +183,9 @@ I listan fil resurs bör du se eventuella fil resurser som du tidigare har skapa
 
 Bladet ny fil resurs bör visas på skärmen. Fyll i fälten på bladet ny fil resurs för att skapa en fil resurs:
 
-- **Namn** : namnet på den fil resurs som ska skapas.
-- **Kvot** : kvoten för fil resursen för standard fil resurser; den allokerade storleken på fil resursen för Premium-filresurser.
-- **Nivåer** : den valda nivån för en fil resurs. Det här fältet är endast tillgängligt i ett **GPv2-lagrings konto (General Purpose)**. Du kan välja transaktion optimerad, frekvent eller låg frekvent. Resurs nivån kan ändras när som helst. Vi rekommenderar att du väljer det högsta skiktet vid en migrering, för att minimera transaktions kostnaderna och sedan växlar till en lägre nivå om du vill efter att migreringen är klar.
+- **Namn**: namnet på den fil resurs som ska skapas.
+- **Kvot**: kvoten för fil resursen för standard fil resurser; den allokerade storleken på fil resursen för Premium-filresurser.
+- **Nivåer**: den valda nivån för en fil resurs. Det här fältet är endast tillgängligt i ett **GPv2-lagrings konto (General Purpose)**. Du kan välja transaktion optimerad, frekvent eller låg frekvent. Resurs nivån kan ändras när som helst. Vi rekommenderar att du väljer det högsta skiktet vid en migrering, för att minimera transaktions kostnaderna och sedan växlar till en lägre nivå om du vill efter att migreringen är klar.
 
 Välj **skapa** för att slutföra skapandet av den nya resursen. Observera att om ditt lagrings konto finns i ett virtuellt nätverk kan du inte skapa en Azure-filresurs om inte din klient också finns i det virtuella nätverket. Du kan också kringgå den här begränsningen genom att använda Azure PowerShell `New-AzRmStorageShare` cmdlet.
 

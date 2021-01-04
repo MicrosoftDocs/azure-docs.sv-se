@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/28/2020
+ms.date: 12/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 0eb7f4c8daf74c629e7b83ce05e6ac17719755ba
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: fec95dc033eb5eacaf79f5bbd2b6b294628667b9
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454430"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97725105"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bamboo"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med EasySSO för Bamboo
 
@@ -26,9 +26,7 @@ I den här självstudien får du lära dig hur du integrerar EasySSO för Bamboo
 * Gör det möjligt för användarna att logga in automatiskt till Bamboo med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
-
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -41,25 +39,24 @@ I den här självstudien konfigurerar och testar du Azure AD SSO i en test milj�
 
 * EasySSO för Bamboo stöder **SP-och IDP** -INITIERAd SSO
 * EasySSO för Bamboo stöder **just-in-Time** User-etablering
-* När du har konfigurerat EasySSO för Bamboo kan du framtvinga kontroll av sessionen, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen utökas från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-easysso-for-bamboo-from-the-gallery"></a>Lägga till EasySSO för Bamboo från galleriet
 
 Om du vill konfigurera integreringen av EasySSO för Bamboo i Azure AD måste du lägga till EasySSO för Bamboo från galleriet till listan över hanterade SaaS-appar.
 
-1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
+1. Logga in på Azure Portal med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** skriver du **EasySSO för Bamboo** i sökrutan.
 1. Välj **EasySSO för Bamboo** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-easysso-for-bamboo"></a>Konfigurera och testa enkel inloggning med Azure AD för EasySSO för Bamboo
+## <a name="configure-and-test-azure-ad-sso-for-easysso-for-bamboo"></a>Konfigurera och testa Azure AD SSO för EasySSO för Bamboo
 
 Konfigurera och testa Azure AD SSO med EasySSO för Bamboo med hjälp av en test användare som kallas **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i EasySSO för Bamboo.
 
-Om du vill konfigurera och testa Azure AD SSO med EasySSO för Bamboo slutför du följande Bygg stenar:
+Utför följande steg för att konfigurera och testa Azure AD SSO med EasySSO för Bamboo:
 
 1. **[Konfigurera Azure AD SSO](#configure-azure-ad-sso)** – så att användarna kan använda den här funktionen.
     1. **[Skapa en Azure AD-test](#create-an-azure-ad-test-user)** för att testa enkel inloggning med Azure AD med B. Simon.
@@ -72,7 +69,7 @@ Om du vill konfigurera och testa Azure AD SSO med EasySSO för Bamboo slutför d
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-1. I [Azure Portal](https://portal.azure.com/)går du till sidan för program integrering i **EasySSO för Bamboo** . Leta reda på avsnittet **Hantera** och välj **enkel inloggning**.
+1. I Azure Portal går du till sidan för program integrering i **EasySSO för Bamboo** . Leta reda på avsnittet **Hantera** och välj **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
 1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
@@ -97,7 +94,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. Utöver ovan förväntar sig EasySSO för Bamboo-programmet att fler attribut skickas tillbaka i SAML-svar som visas nedan. Dessa attribut är också förifyllda, men du kan granska dem enligt dina krav.
     
-    | Name | Källattribut |
+    | Namn | Källattribut |
     | ---------------| --------- |
     | urn: OID: 0.9.2342.19200300.100.1.1 | user.userprincipalname |
     | urn:oid:0.9.2342.19200300.100.1.3 | user.mail |
@@ -117,11 +114,11 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare**och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -129,23 +126,29 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till EasySSO för Bamboo.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **EasySSO för Bamboo**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
-   ![Länken ”Användare och grupper”](common/users-groups-blade.png)
-
-1. Välj **Lägg till användare**och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
-
-    ![Länken Lägg till användare](common/add-assign-user.png)
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 
 1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
-1. Om du förväntar dig ett roll värde i SAML Assertion, i dialog rutan **Välj roll** , väljer du lämplig roll för användaren i listan och klickar sedan på knappen **Välj** längst ned på skärmen.
+1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
 1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
 
 ## <a name="configure-easysso-for-bamboo-sso"></a>Konfigurera EasySSO för Bamboo SSO
 
-1. Logga in på Atlassian Bamboo-instansen med administratörs behörighet och navigera till avsnittet **Hantera appar** . 
+1. Om du vill automatisera konfigurationen i zoom måste du installera **Mina appar säker inloggnings webb läsar tillägg** genom att klicka på **installera tillägget**.
+
+    ![Mina Apps-tillägg](common/install-myappssecure-extension.png)
+
+2. När du har lagt till tillägg i webbläsaren kommer du direkt till zoomnings programmet genom att klicka på **Konfigurera zoomning** . Därifrån anger du administratörsautentiseringsuppgifter för att logga in på zoom. Webb läsar tillägget kommer automatiskt att konfigurera programmet åt dig och automatisera steg 3-10.
+
+    ![Konfigurera konfiguration](common/setup-sso.png)
+
+3. Om du vill konfigurera zoom manuellt i ett annat webbläsarfönster loggar du in på den sammanställda företags platsen som administratör.
+
+1. Navigera till avsnittet **Hantera appar** . 
 
     ![Hantera appar](./media/easysso-for-bamboo-tutorial/bamboo-admin-1.png)
 
@@ -194,9 +197,9 @@ Men om du inte vill aktivera automatisk användar etablering för användaren f�
 
 ### <a name="idp-initiated-workflow"></a>IdP-initierat arbets flöde
 
-I det här avsnittet testar du konfigurationen för enkel inloggning Azure AD med hjälp av åtkomstpanelen.
+I det här avsnittet testar du konfigurationen för enkel inloggning med Azure AD med hjälp av mina appar.
 
-När du klickar på panelen EasySSO för Bamboo på åtkomst panelen, bör du loggas in automatiskt på Bamboo-instansen som du ställer in SSO för. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](../user-help/my-apps-portal-end-user-access.md).
+När du klickar på panelen EasySSO för Bamboo i Mina appar, bör du loggas in automatiskt på Bamboo-instansen som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ### <a name="sp-initiated-workflow"></a>SP-initierat arbets flöde
 
@@ -214,16 +217,6 @@ I det här fallet måste du följa [anvisningarna på den här sidan]( https://t
 
 Om du har några problem med att sammanfatta logg meddelandena kontaktar du [EasySSO support team](mailto:support@techtime.co.nz).
 
-## <a name="additional-resources"></a>Ytterligare resurser
+## <a name="next-steps"></a>Nästa steg
 
-- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](./tutorial-list.md)
-
-- [Vad är program åtkomst och enkel inloggning med Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
-
-- [Vad är villkorlig åtkomst i Azure Active Directory?](../conditional-access/overview.md)
-
-- [Testa EasySSO för Bamboo med Azure AD](https://aad.portal.azure.com/)
-
-- [Vad är session Control i Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
-
-- [Så här skyddar du EasySSO för Bamboo med avancerad synlighet och kontroller](/cloud-app-security/proxy-intro-aad)
+När du har konfigurerat EasySSO för Bamboo kan du framtvinga sessionshantering, som skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

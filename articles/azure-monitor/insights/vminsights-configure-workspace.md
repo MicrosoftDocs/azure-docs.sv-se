@@ -6,24 +6,24 @@ ms.topic: conceptual
 ms.custom: references_regions
 author: bwren
 ms.author: bwren
-ms.date: 07/27/2020
-ms.openlocfilehash: a4380ae7fdb523f8b2f5bc14fefa094b6d96e547
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.date: 12/22/2020
+ms.openlocfilehash: 2625da3a397c2cdcf7880fb371d13e63caeb9ab1
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95750542"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740580"
 ---
 # <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>Konfigurera Log Analytics arbets yta för Azure Monitor for VMs
 Azure Monitor for VMs samlar in data från en eller flera Log Analytics arbets ytor i Azure Monitor. Innan du onboarding agents måste du skapa och konfigurera en arbets yta. I den här artikeln beskrivs kraven för arbets ytan och för att konfigurera den för Azure Monitor for VMs.
 
 ## <a name="overview"></a>Översikt
-En enda prenumeration kan använda valfritt antal arbets ytor beroende på dina krav. det enda kravet på arbets ytan är att det finns på en plats som stöds och konfigureras med *VMInsights* -lösningen.
+En enda prenumeration kan använda valfritt antal arbets ytor, beroende på dina behov. Det enda kravet på arbets ytan är att den finns på en plats som stöds och konfigureras med *VMInsights* -lösningen.
 
-När arbets ytan har kon figurer ATS kan du använda något av de tillgängliga alternativen för att installera de nödvändiga agenterna på VM och VMSS och ange en arbets yta där data ska skickas. Azure Monitor for VMs samlar in data från en konfigurerad arbets yta i prenumerationen.
+När arbets ytan har kon figurer ATS kan du använda något av de tillgängliga alternativen för att installera de nödvändiga agenterna på den virtuella datorn och skalnings uppsättningen för den virtuella datorn och ange en arbets yta där data ska skickas. Azure Monitor for VMs samlar in data från en konfigurerad arbets yta i prenumerationen.
 
 > [!NOTE]
-> När du aktiverar Azure Monitor for VMs på en enskild virtuell dator eller VMSS med hjälp av Azure Portal får du möjlighet att välja en befintlig arbets yta eller skapa en ny. *VMInsights* -lösningen kommer att installeras på den här arbets ytan om den inte redan finns. Du kan sedan använda den här arbets ytan för andra agenter.
+> När du aktiverar Azure Monitor for VMs på en enskild virtuell dator eller skalnings uppsättning för virtuella datorer med hjälp av Azure Portal får du möjlighet att välja en befintlig arbets yta eller skapa en ny. *VMInsights* -lösningen kommer att installeras på den här arbets ytan om den inte redan finns. Du kan sedan använda den här arbets ytan för andra agenter.
 
 
 ## <a name="create-log-analytics-workspace"></a>Skapa Log Analytics-arbetsyta
@@ -44,29 +44,13 @@ Du kan skapa en ny Log Analytics arbets yta med någon av följande metoder. Mer
 * [Azure Resource Manager](../samples/resource-manager-workspace.md)
 
 ## <a name="supported-regions"></a>Regioner som stöds
+Azure Monitor for VMs stöder en Log Analytics arbets yta i någon av de [regioner som stöds av Log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all) , förutom följande:
 
-Azure Monitor for VMs stöder Log Analytics arbets ytor i följande regioner, även om du kan övervaka virtuella datorer i vilken region som helst. De virtuella datorerna är inte begränsade till de regioner som stöds av Log Analytics arbets ytan.
+- Tyskland, västra centrala
+- Sydkorea, centrala
 
-- USA, västra centrala
-- USA, västra
-- USA, västra 2
-- USA, södra centrala
-- East US
-- USA, östra 2
-- Central US
-- USA, norra centrala
-- US Gov AZ
-- US Gov va
-- Kanada, centrala
-- Storbritannien, södra
-- Norra Europa
-- Europa, västra
-- Asien, östra
-- Sydostasien
-- Indien, centrala
-- Japan, östra
-- Australien, östra
-- Australien, sydöstra
+>[!NOTE]
+>Du kan övervaka virtuella Azure-datorer i vilken region som helst. De virtuella datorerna är inte begränsade till de regioner som stöds av Log Analytics arbets ytan.
 
 ## <a name="azure-role-based-access-control"></a>Rollbaserad Azure-åtkomstkontroll
 Om du vill aktivera och komma åt funktionerna i Azure Monitor for VMs måste du ha [rollen Log Analytics Contributor](../platform/manage-access.md#manage-access-using-azure-permissions) i arbets ytan. Om du vill visa prestanda-, hälso-och kart data måste du ha [rollen övervaknings läsare](../platform/roles-permissions-security.md#built-in-monitoring-roles) för den virtuella Azure-datorn. Mer information om hur du styr åtkomsten till en Log Analytics arbets yta finns i [hantera arbets ytor](../platform/manage-access.md).
@@ -84,12 +68,12 @@ Om du vill konfigurera en enskild arbets yta går du till alternativet **Virtual
 
 [![Konfigurera arbetsyta](media/vminsights-enable-at-scale-policy/configure-workspace.png)](media/vminsights-enable-at-scale-policy/configure-workspace.png#lightbox)
 
-Om du vill konfigurera flera arbets ytor väljer du fliken **konfiguration av arbets yta** på menyn **Virtual Machines** på **Monitor** -menyn i Azure Portal. Ange filter värden om du vill visa en lista över befintliga arbets ytor. Markera kryss rutan bredvid varje arbets yta som du vill aktivera och klicka sedan på **Konfigurera valda** .
+Om du vill konfigurera flera arbets ytor väljer du fliken **konfiguration av arbets yta** på menyn **Virtual Machines** på **Monitor** -menyn i Azure Portal. Ange filter värden om du vill visa en lista över befintliga arbets ytor. Markera kryss rutan bredvid varje arbets yta som du vill aktivera och klicka sedan på **Konfigurera valda**.
 
 [![Konfiguration av arbetsyta](media/vminsights-enable-at-scale-policy/workspace-configuration.png)](media/vminsights-enable-at-scale-policy/workspace-configuration.png#lightbox)
 
 
-När du aktiverar Azure Monitor for VMs på en enskild virtuell dator eller VMSS med hjälp av Azure Portal får du möjlighet att välja en befintlig arbets yta eller skapa en ny. *VMInsights* -lösningen kommer att installeras på den här arbets ytan om den inte redan finns. Du kan sedan använda den här arbets ytan för andra agenter.
+När du aktiverar Azure Monitor for VMs på en enskild virtuell dator eller skalnings uppsättning för virtuella datorer med hjälp av Azure Portal får du möjlighet att välja en befintlig arbets yta eller skapa en ny. *VMInsights* -lösningen kommer att installeras på den här arbets ytan om den inte redan finns. Du kan sedan använda den här arbets ytan för andra agenter.
 
 [![Aktivera enskild virtuell dator i portalen](media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)](media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png#lightbox)
 

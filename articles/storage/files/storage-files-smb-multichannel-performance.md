@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: f85df2e16554b4830d3e5f1bc82c5c8cdf22e28b
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 4f4cd8189c9166ee08c1e4ccd800a1202d3b5893
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586638"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724824"
 ---
 # <a name="smb-multichannel-performance"></a>SMB Multichannel-prestanda
 
@@ -63,7 +63,7 @@ I de flesta fall, särskilt Multi-threaded-arbetsbelastningar, bör klienterna s
 1. Öppna PowerShell som administratör och Använd följande kommando: `Get-SmbMultichannelConnection |fl`
 1. Sök efter egenskaper för **MaxChannels** och **CurrentChannels**
 
-:::image type="content" source="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-connection.PNG" alt-text="Skärm bild av Get-smbmultichannelconnection-resultat." lightbox="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-connection.PNG":::
+:::image type="content" source="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-connection.PNG" alt-text="Skärm bild av Get-SMBMultichannelConnection resultat." lightbox="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-connection.PNG":::
 
 ## <a name="performance-comparison"></a>Prestanda jämförelse
 
@@ -119,7 +119,7 @@ Följande tips kan hjälpa dig att optimera prestandan:
 - Se till att ditt lagrings konto och din klient befinner sig i samma Azure-region för att minska nätverks fördröjningen.
 - Använd flertrådade program och belastnings utjämning över flera filer.
 - Prestanda för delar av SMB Multichannel-ökning med antalet filer som distribuerar belastningen.
-- Premium-resursens prestanda är kopplad till en etablerad resurs storlek (IOPS/utgångs/inkommande) och fil gränser. Mer information finns i [förstå etablering för Premium-filresurser](storage-files-planning.md#understanding-provisioning-for-premium-file-shares).
+- Premium-resursens prestanda är kopplad till en etablerad resurs storlek (IOPS/utgångs/inkommande) och fil gränser. Mer information finns i [förstå etablering för Premium-filresurser](understanding-billing.md#provisioned-billing).
 - Högsta prestanda för en enskild VM-klient är fortfarande kopplat till VM-gränser. [Standard_D32s_v3](../../virtual-machines/dv3-dsv3-series.md) kan till exempel stödja en maximal bandbredd på 16 000 Mbit/s (eller 2Gbps), som utgångs punkt från den virtuella datorn (skrivning till lagring) mäts, ingress (läsningar från lagring) är inte. Prestanda för fil resurser är beroende av dator nätverks begränsningar, CPU: er, intern lagring tillgänglig nätverks bandbredd, i/o-storlekar, parallellitet, samt andra faktorer.
 - Det första testet är vanligt vis ett varmt, ta bort resultaten och upprepa testet.
 - Om prestanda begränsas av en enskild klient och arbets belastningen fortfarande är lägre än etablerade gränser kan du uppnå högre prestanda genom att sprida belastningen över flera klienter.

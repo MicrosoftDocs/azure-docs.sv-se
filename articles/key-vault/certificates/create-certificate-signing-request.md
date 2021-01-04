@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: 6d66648680aa14baa53372732df52a6c247a0117
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 42f649f9dd206b34f0fac8513ba742febed2dbcb
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483771"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724637"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>Skapa och sammanfoga CSR i Key Vault
 
@@ -23,7 +23,7 @@ Azure Key Vault stöder lagring av digitala certifikat som utfärdats av valfri 
 
 Mer allmän information om certifikat finns i [Azure Key Vault certifikat](./about-certificates.md).
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ## <a name="adding-certificate-in-key-vault-issued-by-partnered-ca"></a>Lägga till certifikat i Key Vault utfärdat av en partner certifikat utfärdare
 Key Vault partner med följande två certifikat utfärdare för att förenkla skapandet av certifikat. 
@@ -38,7 +38,34 @@ Key Vault partner med följande två certifikat utfärdare för att förenkla sk
 Följande steg hjälper dig att skapa ett certifikat från certifikat utfärdare som inte är partner med Key Vault (till exempel är GoDaddy inte en betrodd Key Vault-certifikatutfärdare) 
 
 
-### <a name="azure-powershell"></a>Azure PowerShell
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1.  Om du vill skapa en kund service representant för den certifikat utfärdare som du väljer navigerar du till det nyckel valv som du vill lägga till certifikatet i.
+2.  Välj **certifikat** på sidan Key Vault egenskaper.
+3.  Välj fliken **generera/importera** .
+4.  På skärmen **skapa ett certifikat** väljer du följande värden:
+    - **Metod för att skapa certifikat:** Skapas.
+    - **Certifikat namn:** ContosoManualCSRCertificate.
+    - **Typ av certifikat utfärdare (ca):** Certifikat utfärdat av en icke-integrerad certifikat utfärdare
+    - **Ämne:**`"CN=www.contosoHRApp.com"`
+    - Välj de andra värdena som du vill. Klicka på **Skapa**.
+
+    ![Certifikategenskaper](../media/certificates/create-csr-merge-csr/create-certificate.png)  
+
+
+6.  Du kommer att se att certifikatet nu har lagts till i listan certifikat. Välj det här nya certifikatet som du nyss skapade. Certifikatets aktuella tillstånd är inaktive rad eftersom det inte har utfärdats av certifikat utfärdaren än.
+7. Klicka på fliken **certifikat åtgärd** och välj **Hämta CSR**.
+
+   ![Skärm bild som visar knappen Hämta CSR.](../media/certificates/create-csr-merge-csr/download-csr.png)
+ 
+8.  Ta. CSR-filen till CA: n för begäran om att bli signerad.
+9.  När begäran har signerats av certifikat utfärdaren ska du ta tillbaka certifikat filen för att **slå samman den signerade begäran** på skärmen för samma certifikat åtgärd.
+
+Certifikatbegäran har nu slagits samman.
+
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 
 
@@ -68,36 +95,11 @@ Följande steg hjälper dig att skapa ett certifikat från certifikat utfärdare
     ```
 
     Certifikatbegäran har nu slagits samman.
-
-### <a name="azure-portal"></a>Azure Portal
-
-1.  Om du vill skapa en kund service representant för den certifikat utfärdare som du väljer navigerar du till det nyckel valv som du vill lägga till certifikatet i.
-2.  Välj **certifikat** på sidan Key Vault egenskaper.
-3.  Välj fliken **generera/importera** .
-4.  På skärmen **skapa ett certifikat** väljer du följande värden:
-    - **Metod för att skapa certifikat:** Skapas.
-    - **Certifikat namn:** ContosoManualCSRCertificate.
-    - **Typ av certifikat utfärdare (ca):** Certifikat utfärdat av en icke-integrerad certifikat utfärdare
-    - **Ämne:**`"CN=www.contosoHRApp.com"`
-    - Välj de andra värdena som du vill. Klicka på **Skapa**.
-
-    ![Certifikategenskaper](../media/certificates/create-csr-merge-csr/create-certificate.png)  
-
-
-6.  Du kommer att se att certifikatet nu har lagts till i listan certifikat. Välj det här nya certifikatet som du nyss skapade. Certifikatets aktuella tillstånd är inaktive rad eftersom det inte har utfärdats av certifikat utfärdaren än.
-7. Klicka på fliken **certifikat åtgärd** och välj **Hämta CSR**.
-
-   ![Skärm bild som visar knappen Hämta CSR.](../media/certificates/create-csr-merge-csr/download-csr.png)
- 
-8.  Ta. CSR-filen till CA: n för begäran om att bli signerad.
-9.  När begäran har signerats av certifikat utfärdaren ska du ta tillbaka certifikat filen för att **slå samman den signerade begäran** på skärmen för samma certifikat åtgärd.
-
-Certifikatbegäran har nu slagits samman.
+---
 
 > [!NOTE]
 > Om dina RDN-värden innehåller kommatecken kan du också lägga till dem i fältet **ämne** genom att omge värdet med dubbla citat tecken enligt beskrivningen i steg 4.
 > Exempel post till "subject": `DC=Contoso,OU="Docs,Contoso",CN=www.contosoHRApp.com` i det här exemplet innehåller RDN `OU` ett värde med ett kommatecken i namnet. Resultatet för `OU` är **dokument, contoso**.
-
 
 ## <a name="adding-more-information-to-csr"></a>Lägga till mer information i CSR
 
@@ -106,7 +108,7 @@ Om du vill lägga till mer information när du skapar CSR, t. ex.
     - Stad/plats:
     - Region:
     - Organisation
-    - Organisations enhet: du kan lägga till all den informationen när du skapar en kund service representant genom att definiera den i subjectName.
+    - Organisationsenhet: du kan lägga till all den informationen när du skapar en kund service representant genom att definiera den i subjectName.
 
 Exempel
     ```SubjectName="CN = docs.microsoft.com, OU = Microsoft Corporation, O = Microsoft Corporation, L = Redmond, S = WA, C = US"
@@ -117,6 +119,8 @@ Exempel
 
 
 ## <a name="troubleshoot"></a>Felsöka
+
+- Läs mer [här](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios) om du vill övervaka eller hantera svar på certifikat förfrågningar
 
 - **Fel typ: den offentliga nyckeln för certifikatet för slutentiteten i det angivna X. 509-certifikatets innehåll matchar inte den offentliga delen av den angivna privata nyckeln. Kontrol lera att certifikatet är giltigt** . det här felet kan inträffa om du inte slår samman kund service representanten med samma CSR-begäran som initieras. Varje gång en CSR skapas, skapas en privat nyckel som måste matchas vid sammanslagning av den signerade begäran.
     
@@ -129,6 +133,7 @@ Mer information finns i [certifikat åtgärderna i Key Vault REST API referens](
 
 - **Feltypen "ämnes namnet som angavs är inte ett giltigt X500-namn"** Det här felet kan inträffa om du har inkluderat specialtecken i värdena för SubjectName. Se anteckningar i Azure Portal respektive PowerShell-instruktioner. 
 
+---
 ## <a name="next-steps"></a>Nästa steg
 
 - [Autentisering, begär Anden och svar](../general/authentication-requests-and-responses.md)
