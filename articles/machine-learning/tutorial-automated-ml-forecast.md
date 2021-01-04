@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
-ms.date: 07/10/2020
+ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: 8b354abb98c56a572badf2421b0d7dbbd25f7a63
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 31e9ff3fd07a7d305c88d28629f3252db5d857c8
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921859"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695428"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Självstudie: prognostisera efter frågan med automatiserad maskin inlärning
 
@@ -34,7 +34,7 @@ I den här självstudien får du lära dig hur du utför följande uppgifter:
 > * Utforska experiment resultatet.
 > * Distribuera den bästa modellen.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * En Azure Machine Learning-arbetsyta. Se [skapa en Azure Machine Learning-arbetsyta](how-to-manage-workspace.md). 
 
@@ -100,7 +100,7 @@ Innan du konfigurerar experimentet laddar du upp data filen till din arbets yta 
 
     1. Välj  **Nästa**.
 
-## <a name="configure-experiment-run"></a>Konfigurera experiment körning
+## <a name="configure-run"></a>Konfigurera körning
 
 När du har läst in och konfigurerat dina data konfigurerar du ditt fjärrberäknings mål och väljer vilken kolumn i dina data du vill förutsäga.
 
@@ -111,14 +111,22 @@ När du har läst in och konfigurerat dina data konfigurerar du ditt fjärrberä
 
     1. Välj **skapa en ny beräkning** och konfigurera beräknings målet. Automatisk ML stöder endast Azure Machine Learning beräkning. 
 
-        Fält | Beskrivning | Värde för självstudier
-        ----|---|---
-        Namn på beräkning |Ett unikt namn som identifierar din beräknings kontext.|cykel – beräkning
-        Typ av virtuell &nbsp; dator &nbsp;|Välj typ av virtuell dator för din beräkning.|PROCESSOR (Central bearbetnings enhet)
-        &nbsp; &nbsp; Storlek på virtuell dator| Välj storlek på den virtuella datorn för din beräkning.|Standard_DS12_V2
-        Min/högsta antal noder| Du måste ange 1 eller fler noder för att kunna profilera data.|Minsta antal noder: 1<br>Max noder: 6
-        Inaktiva sekunder innan skalning | Inaktivitetstid innan klustret skalas automatiskt ned till lägsta antal noder.|120 (standard)
-        Avancerade inställningar | Inställningar för att konfigurera och auktorisera ett virtuellt nätverk för experimentet.| Ingen
+        1. Fyll i formuläret för **virtuell dator** för att konfigurera din beräkning.
+
+            Fält | Beskrivning | Värde för självstudier
+            ----|---|---
+            Prioritet för virtuell &nbsp; dator &nbsp; |Välj vilken prioritet ditt experiment ska ha| Dedikerad
+            Typ av virtuell &nbsp; dator &nbsp;| Välj typ av virtuell dator för din beräkning.|PROCESSOR (Central bearbetnings enhet)
+            &nbsp; &nbsp; Storlek på virtuell dator| Välj storlek på den virtuella datorn för din beräkning. En lista med rekommenderade storlekar tillhandahålls baserat på dina data och experiment typ. |Standard_DS12_V2
+        
+        1. Välj **Nästa** för att fylla i **formuläret Konfigurera inställningar**.
+        
+             Fält | Beskrivning | Värde för självstudier
+            ----|---|---
+            Namn på beräkning |  Ett unikt namn som identifierar din beräknings kontext. | cykel – beräkning
+            Min/högsta antal noder| Du måste ange 1 eller fler noder för att kunna profilera data.|Minsta antal noder: 1<br>Max noder: 6
+            Inaktiva sekunder innan skalning | Inaktivitetstid innan klustret skalas automatiskt ned till lägsta antal noder.|120 (standard)
+            Avancerade inställningar | Inställningar för att konfigurera och auktorisera ett virtuellt nätverk för experimentet.| Ingen 
   
         1. Välj **skapa** för att hämta beräknings målet. 
 
@@ -145,7 +153,7 @@ Slutför installationen av ditt automatiserade ML-experiment genom att ange akti
     Primärt mått| Bedömnings mått som ska mätas av Machine Learning-algoritmen.|Normaliserat rot genomsnitts fel
     Förklara bästa modell| Visar automatiskt förklaringar för den bästa modellen som skapats av automatisk ML.| Aktivera
     Blockerade algoritmer | Algoritmer som du vill undanta från utbildnings jobbet| Extrema slumpmässiga träd
-    Ytterligare prognos inställningar| De här inställningarna hjälper till att förbättra din modells precision <br><br> _**Beräkna mål lags:**_ hur långt tillbaka du vill konstruera lags för mål variabeln <br> _**Mål riktnings fönster**_: anger storleken på det rullande fönster över vilka funktioner, till exempel *Max, min* och *Summa*, som ska genereras. | <br><br>Lags för prognos &nbsp; mål &nbsp; : ingen <br> &nbsp;Storlek för rullande fönster i mål &nbsp; &nbsp; : ingen
+    Ytterligare prognos inställningar| De här inställningarna hjälper dig att förbättra modellens precision. <br><br> _**Beräkna mål lags:**_ hur långt tillbaka du vill konstruera lags för mål variabeln <br> _**Mål riktnings fönster**_: anger storleken på det rullande fönster över vilka funktioner, till exempel *Max, min* och *Summa*, som ska genereras. | <br><br>Lags för prognos &nbsp; mål &nbsp; : ingen <br> &nbsp;Storlek för rullande fönster i mål &nbsp; &nbsp; : ingen
     Avslutnings kriterium| Om ett villkor uppfylls stoppas utbildnings jobbet. |Utbildnings &nbsp; jobb &nbsp; tid (timmar): 3 <br> Mått &nbsp; poängs &nbsp; tröskel: ingen
     Validering | Välj en kors validerings typ och antalet tester.|Validerings typ:<br>&nbsp;k-vikning &nbsp; kors validering <br> <br> Antal verifieringar: 5
     Samtidighet| Maximalt antal parallella iterationer som utförs per iteration| Max &nbsp; . antal samtidiga &nbsp; iterationer: 6
@@ -154,11 +162,11 @@ Slutför installationen av ditt automatiserade ML-experiment genom att ange akti
 
 ## <a name="run-experiment"></a>Kör experiment
 
-Om du vill köra experimentet väljer du **Slutför**. Skärmen **Kör information**  öppnas med status för **körning** högst upp bredvid körnings numret. Den här statusen uppdateras när experimentet fortskrider.
+Om du vill köra experimentet väljer du **Slutför**. Skärmen **Kör information**  öppnas med status för **körning** högst upp bredvid körnings numret. Den här statusen uppdateras när experimentet fortskrider. Meddelanden visas också i det övre högra hörnet i Studio för att informera dig om status för experimentet.
 
 >[!IMPORTANT]
 > Förberedelserna tar **10-15 minuter** för att förbereda experiment körningen.
-> När du har kört det tar det **2-3 minuter för varje iteration**.  <br> <br>
+> När du har kört det tar det **2-3 minuter för varje iteration**.<br> <br>
 > I produktion skulle du förmodligen gå undan för en bit eftersom den här processen tar tid. Medan du väntar rekommenderar vi att du börjar utforska de testade algoritmerna på fliken **modeller** när de är klara. 
 
 ##  <a name="explore-models"></a>Utforska modeller
@@ -169,7 +177,7 @@ Medan du väntar på att alla experiment modeller ska slutföras väljer du **al
 
 I följande exempel navigerar du till flikarna **information** och **mått** för att visa den valda modellens egenskaper, mått och prestanda diagram. 
 
-![Körnings information](./media/tutorial-automated-ml-forecast/explore-models-ui.gif)
+![Körnings information](./media/tutorial-automated-ml-forecast/explore-models.gif)
 
 ## <a name="deploy-the-model"></a>Distribuera modellen
 
@@ -232,7 +240,7 @@ I den här självstudien har du använt automatisk ML i Azure Machine Learning S
 I den här artikeln finns anvisningar om hur du skapar ett schema för Power BI som stöds för att under lätta användningen av den nyligen distribuerade webb tjänsten:
 
 > [!div class="nextstepaction"]
-> [Använda en webbtjänst](how-to-consume-web-service.md#consume-the-service-from-power-bi)
+> [Använda en webbtjänst](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)
 
 + Lär dig mer om [Automatisk maskin inlärning](concept-automated-ml.md).
 + Mer information om klassificerings mått och diagram finns i artikeln [förstå automatiserade maskin inlärnings resultat](how-to-understand-automated-ml.md) .

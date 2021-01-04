@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: 61aba3e5792d1cc20da16686d052de91744dab76
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a8dbadd3af9dc21ced54af151e4de705f854e011
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186787"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696067"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Skapa, Visa och hantera logg aviseringar med Azure Monitor
 
@@ -55,7 +55,7 @@ Här är stegen för att komma igång med att skriva frågor för aviseringar:
 
 1. Logg aviseringar kan baseras på två typer av [**mått**](alerts-unified-log.md#measure):
     1. **Antal resultat** – antalet poster som returneras av frågan.
-    1. **Mått mått**  -  *Sammanställt värde* som beräknas med sammanfatta grupperat efter uttrycks val och [bin ()](/azure/kusto/query/binfunction) . Ett exempel:
+    1. **Mått mått**  -  *Sammanställt värde* som beräknas med sammanfatta grupperat efter uttrycks val och [bin ()](/azure/kusto/query/binfunction) . Exempel:
 
     ```Kusto
     // Reported errors
@@ -312,7 +312,7 @@ Du kan också använda Azure Resource Manager CLI med [mallfiler](./alerts-log-c
 ```azurecli
 az login
 
-az group deployment create \
+az deployment group create \
     --name AlertDeployment \
     --resource-group ResourceGroupofTargetResource \
     --template-file mylogalerttemplate.json \

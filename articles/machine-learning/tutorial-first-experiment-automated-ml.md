@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 07/10/2020
+ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: 4b2769139e74289c4760b5c398c80380afea351f
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 90c827774f38f07b9791a6399a53b0304bbe28c8
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921897"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695217"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Självstudie: skapa en klassificerings modell med automatiserad ML i Azure Machine Learning
 
@@ -102,9 +102,7 @@ Innan du konfigurerar experimentet laddar du upp data filen till din arbets yta 
         Kolumnrubriker| Anger hur data uppsättningens huvuden, om det finns, kommer att behandlas.| Alla filer har samma rubriker
         Hoppa över rader | Anger hur många rader som ska hoppas över i data uppsättningen.| Ingen
 
-    1. Med hjälp av **schema** formuläret kan du ytterligare konfigurera dina data för det här experimentet. I det här exemplet väljer du växlings växeln för **day_of_week** -funktionen, så att den inte inkluderas för det här experimentet. Välj **Nästa**.
-
-        ![Konfiguration av fliken för hands version](./media/tutorial-first-experiment-automated-ml/schema-tab-config.gif)
+    1. Med hjälp av **schema** formuläret kan du ytterligare konfigurera dina data för det här experimentet. I det här exemplet gör vi inga val. Välj **Nästa**.
 
     1. I formuläret **bekräfta information** kontrollerar du att informationen stämmer överens med den **grundläggande informationen, data lagret och fil val** och **Inställningar och för hands** formulär.
     
@@ -112,32 +110,44 @@ Innan du konfigurerar experimentet laddar du upp data filen till din arbets yta 
     
     1. Välj din data uppsättning när den visas i listan.
     
-    1. Granska **data förhands granskningen**  för att se till att du inte har inkluderat **day_of_week** Välj **OK**.
+    1. Granska **data förhands granskningen**  för att se till att du inte har inkluderat **Day_of_week** Välj sedan **Stäng**.
 
     1. Välj  **Nästa**.
 
-## <a name="configure-experiment-run"></a>Konfigurera experiment körning
+## <a name="configure-run"></a>Konfigurera körning
 
 När du har läst in och konfigurerat dina data kan du konfigurera experimentet. Den här installationen innehåller experiment design uppgifter, till exempel, hur du väljer storlek på din beräknings miljö och hur du anger vilken kolumn som du vill förutsäga. 
+
+1. Välj alternativ knappen **Skapa ny** .
 
 1. Fyll i formuläret **Konfigurera körning** enligt följande:
     1. Ange följande experiment namn: `my-1st-automl-experiment`
 
     1. Välj **y** som mål kolumn, vad du vill förutsäga. Den här kolumnen visar om klienten prenumererar på en term insättning eller inte.
     
-    1. Välj **skapa en ny beräkning** och konfigurera beräknings målet. Ett beräknings mål är en lokal eller molnbaserad resurs miljö som används för att köra ditt utbildnings skript eller som värd för tjänst distributionen. För det här experimentet använder vi en molnbaserad beräkning. 
+    1. Välj **+ skapa en ny beräkning** och konfigurera beräknings målet. Ett beräknings mål är en lokal eller molnbaserad resurs miljö som används för att köra ditt utbildnings skript eller som värd för tjänst distributionen. För det här experimentet använder vi en molnbaserad beräkning. 
+        1. Fyll i formuläret för **virtuell dator** för att konfigurera din beräkning.
 
-        Fält | Beskrivning | Värde för självstudier
-        ----|---|---
-        Namn på beräkning |Ett unikt namn som identifierar din beräknings kontext.|automl – beräkning
-        Typ av virtuell &nbsp; dator &nbsp;| Välj typ av virtuell dator för din beräkning.|PROCESSOR (Central bearbetnings enhet)
-        &nbsp; &nbsp; Storlek på virtuell dator| Välj storlek på den virtuella datorn för din beräkning.|Standard_DS12_V2
-        Min/högsta antal noder| Du måste ange 1 eller fler noder för att kunna profilera data.|Minsta antal noder: 1<br>Max noder: 6
-        Inaktiva sekunder innan skalning | Inaktivitetstid innan klustret skalas automatiskt ned till lägsta antal noder.|120 (standard)
-        Avancerade inställningar | Inställningar för att konfigurera och auktorisera ett virtuellt nätverk för experimentet.| Ingen
-        1. Välj **skapa** för att hämta beräknings målet. 
+            Fält | Beskrivning | Värde för självstudier
+            ----|---|---
+            Prioritet för virtuell &nbsp; dator &nbsp; |Välj vilken prioritet ditt experiment ska ha| Dedikerad
+            Typ av virtuell &nbsp; dator &nbsp;| Välj typ av virtuell dator för din beräkning.|PROCESSOR (Central bearbetnings enhet)
+            &nbsp; &nbsp; Storlek på virtuell dator| Välj storlek på den virtuella datorn för din beräkning. En lista med rekommenderade storlekar tillhandahålls baserat på dina data och experiment typ. |Standard_DS12_V2
+        
+        1. Välj **Nästa** för att fylla i **formuläret Konfigurera inställningar**.
+        
+            Fält | Beskrivning | Värde för självstudier
+            ----|---|---
+            Namn på beräkning |  Ett unikt namn som identifierar din beräknings kontext. | automl – beräkning
+            Min/högsta antal noder| Du måste ange 1 eller fler noder för att kunna profilera data.|Minsta antal noder: 1<br>Max noder: 6
+            Inaktiva sekunder innan skalning | Inaktivitetstid innan klustret skalas automatiskt ned till lägsta antal noder.|120 (standard)
+            Avancerade inställningar | Inställningar för att konfigurera och auktorisera ett virtuellt nätverk för experimentet.| Ingen               
+
+        1. Välj **skapa** för att skapa beräknings målet. 
 
             **Det tar några minuter att slutföra.** 
+
+             ![Sidan Inställningar](./media/tutorial-first-experiment-automated-ml/compute-settings.png)
 
         1. När du har skapat väljer du det nya beräknings målet i den nedrullningsbara listan.
 
@@ -159,14 +169,18 @@ När du har läst in och konfigurerat dina data kan du konfigurera experimentet.
         Samtidighet| Maximalt antal parallella iterationer som utförs per iteration| Max &nbsp; . antal samtidiga &nbsp; iterationer: 5
         
         Välj **Spara**.
+    
+    1. Välj **Visa funktionalisering-inställningar**. I det här exemplet väljer du växlings växeln för **day_of_week** -funktionen, så att den inte inkluderas för funktionalisering i det här experimentet.
 
-1. Klicka på **Slutför** om du vill köra experimentet. Skärmen **körnings information**  öppnas med **körnings status** överst när experiment förberedelsen börjar.
+        ![Funktionalisering val](./media/tutorial-first-experiment-automated-ml/featurization-setting-config.gif)   
+ 
+        Välj **Spara**.
+
+1. Klicka på **Slutför** om du vill köra experimentet. Skärmen **körnings information**  öppnas med **körnings status** överst när experiment förberedelsen börjar. Den här statusen uppdateras när experimentet fortskrider. Meddelanden visas också i det övre högra hörnet i Studio för att informera dig om status för experimentet.
 
 >[!IMPORTANT]
 > Förberedelserna tar **10-15 minuter** för att förbereda experiment körningen.
-> När du har kört det tar det **2-3 minuter för varje iteration**.  
-> Välj **Uppdatera** regelbundet för att se statusen för körningen när experimentet fortskrider.
->
+> När du har kört det tar det **2-3 minuter för varje iteration**.  <br> <br>
 > I produktion skulle du förmodligen gå undan för en bit. I den här självstudien rekommenderar vi att du börjar utforska de testade algoritmerna på fliken **modeller** när de är klara medan de andra fortfarande körs. 
 
 ##  <a name="explore-models"></a>Utforska modeller
@@ -238,7 +252,7 @@ Ta bara bort distributions instansen från Azure Machine Learning på https: \/ 
 I den här automatiska självstudien om Machine Learning använde du Azure Machine Learning s automatiserade ML-gränssnitt för att skapa och distribuera en klassificerings modell. Se de här artiklarna för mer information och nästa steg:
 
 > [!div class="nextstepaction"]
-> [Använda en webbtjänst](how-to-consume-web-service.md#consume-the-service-from-power-bi)
+> [Använda en webbtjänst](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)
 
 + Lär dig mer om [Automatisk maskin inlärning](concept-automated-ml.md).
 + Mer information om klassificerings mått och diagram finns i artikeln [förstå automatiserade maskin inlärnings resultat](how-to-understand-automated-ml.md) .

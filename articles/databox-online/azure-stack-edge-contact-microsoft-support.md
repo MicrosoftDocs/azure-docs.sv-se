@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 07/11/2019
+ms.date: 12/17/2020
 ms.author: alkohli
-ms.openlocfilehash: dbdd4c7d23f56618c0e76649abe4faad86c5804c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a457c2816d4075190a2174339f7e52a2ea41730a
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743309"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696033"
 ---
 # <a name="open-a-support-ticket-for-azure-stack-edge-pro-and-azure-data-box-gateway"></a>Öppna ett support ärende för Azure Stack Edge Pro och Azure Data Box Gateway
 
@@ -24,7 +24,7 @@ Den här artikeln gäller Azure Stack Edge Pro och Azure Data Box Gateway som ha
 
 ## <a name="create-a-support-request"></a>Skapa en supportbegäran
 
-Utför följande steg för att skapa en support förfrågan:
+Gör följande för att skapa en supportbegäran:
 
 1. Gå till din Azure Stack Edge Pro-eller Data Box Gateways ordning. Gå till avsnittet **support + fel sökning** och välj sedan **ny supportbegäran**.
 
@@ -32,27 +32,27 @@ Utför följande steg för att skapa en support förfrågan:
 
     1. I list rutan **ärende typ** väljer du **teknisk**.
     2. Välj din **prenumeration**.
-    3. Under **tjänst**kontrollerar du **Mina tjänster**. Välj **Azure Stack Edge Pro och data Box Gateway**i list rutan.
+    3. Under **tjänst** kontrollerar du **Mina tjänster**. Välj **Azure Stack Edge Pro och data Box Gateway** i list rutan.
     4. Välj din **resurs**. Detta motsvarar namnet på din order.
     5. Ge en kort **Sammanfattning** av problemet som du upplever. 
     6. Välj **problem typ**.
-    7. Välj en motsvarande **problem under typ**baserat på den problem typ du har valt.
+    7. Välj en motsvarande **problem under typ** baserat på den problem typ du har valt.
     8. Välj **Nästa: lösningar >>**.
 
-        ![Grundläggande inställningar](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-1.png)
+        ![Grunder](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-1.png)
 
 3. Gör så här på fliken **information** :
 
     1. Ange start datum och start tid för problemet.
     2. Ange en **Beskrivning** av problemet.
-    3. I **fil uppladdning**väljer du mappikonen för att bläddra bland andra filer som du vill ladda upp.
+    3. I **fil uppladdning** väljer du mappikonen för att bläddra bland andra filer som du vill ladda upp.
     4. Kontrol lera **delning av diagnostikinformation**.
     5. En **Support plan** fylls i automatiskt baserat på din prenumeration.
-    6. Välj **allvarlighets grad**i list rutan.
+    6. Välj **allvarlighets grad** i list rutan.
     7. Ange en **önskad kontakt metod**.
     8. **Svars tiden** väljs automatiskt utifrån prenumerations planen.
     9. Ange det språk som du föredrar för support.
-    10. I **kontakt uppgifterna**anger du ditt namn, din e-postadress, telefonnummer, valfri kontakt, land/region. Microsoft Support använder den här informationen för att kontakta dig för ytterligare information, diagnos och lösning. 
+    10. I **kontakt uppgifterna** anger du ditt namn, din e-postadress, telefonnummer, valfri kontakt, land/region. Microsoft Support använder den här informationen för att kontakta dig för ytterligare information, diagnos och lösning. 
     11. Välj **Nästa: granska + skapa >>**.
 
         ![Problem](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-2.png)
@@ -67,7 +67,7 @@ Utför följande steg för att skapa en support förfrågan:
 
 Den här informationen gäller endast för Azure Stack enhet. Processen för att rapportera maskin varu problem är följande:
 
-1. Öppna ett support ärende från Azure Portal för ett maskin varu problem. Under **problem typ**väljer du **Azure Stack maskin vara**. Välj under **typen av problem** som **maskin varu fel**.
+1. Öppna ett support ärende från Azure Portal för ett maskin varu problem. Under **problem typ** väljer du **Azure Stack maskin vara**. Välj under **typen av problem** som **maskin varu fel**.
 
     ![Maskin varu problem](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-hardware-issue-1.png)
 
@@ -75,10 +75,10 @@ Den här informationen gäller endast för Azure Stack enhet. Processen för att
 
 2. Om Microsoft Support bestämmer att detta är ett maskin varu problem inträffar en av följande åtgärder:
 
-    * En fält ersättnings enhet (FRU) för den felande maskin varu delen skickas. För närvarande är strömförsörjnings enheter och hård diskar de enda FRUs som stöds.
+    * En fält ersättnings enhet (FRU) för den felande maskin varu delen skickas. För närvarande är strömförsörjnings enheter och solid state-enheter de enda FRUs som stöds.
     * Endast FRUs ersätts inom nästa arbets dag, allt annat kräver att en fullständig system ersättning (FSR) skickas.
 
-3. Om ett support ärende höjs före 4:30 lokal tid (måndag till fredag) skickas en tekniker på plats nästa arbets dag till din plats för att utföra en FRU-eller fullständig enhets ersättning.
+3. Om ett support ärende höjs före 4:30 lokal tid (måndag till fredag) skickas en tekniker på plats nästa arbets dag till din plats för att utföra en överlappande FRU-ersättning. En fullständig system ersättning tar vanligt vis mycket längre tid på grund av att delarna levereras från vår fabrik och kan omfattas av transport-och tull fördröjningar.
 
 ## <a name="manage-a-support-request"></a>Hantera en support förfrågan
 

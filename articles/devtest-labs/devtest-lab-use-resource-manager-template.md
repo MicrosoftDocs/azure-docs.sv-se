@@ -3,12 +3,12 @@ title: Visa och använda en virtuell dators Azure Resource Manager mall
 description: Lär dig hur du använder Azure Resource Manager-mallen från en virtuell dator för att skapa andra virtuella datorer
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7f969abe1ca903a226e73c5c70781dce512c2926
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb7cb38dfb2c1664017f0e342fefecdd464df45f
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282518"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696004"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Skapa virtuella datorer med hjälp av en Azure Resource Manager mall 
 
@@ -25,7 +25,7 @@ Det finns två sätt att skapa virtuella datorer i DevTest Labs med en Resource 
 
    ![Skärm bild som visar en lista över virtuella datorer som enskilda objekt i DevTest Labs Virtual Machines-listan.](./media/devtest-lab-use-arm-template/devtestlab-lab-vm-single-item.png)
 
-   Den här typen av Resource Manager-mall kan tillhandahållas via Azure PowerShell kommandot **New-AzResourceGroupDeployment** eller via Azure CLI-kommandot **AZ Group Deployment Create**. Det krävs administratörs behörighet, så användare som har tilldelats en användar roll för DevTest Labs kan inte utföra distributionen. 
+   Den här typen av Resource Manager-mall kan tillhandahållas via Azure PowerShell kommandot **New-AzResourceGroupDeployment** eller via Azure CLI-kommandot **AZ distribution Group Create**. Det krävs administratörs behörighet, så användare som har tilldelats en användar roll för DevTest Labs kan inte utföra distributionen. 
 
 - Resource Manager-mallar som använder en resurs typ av typen Microsoft. Compute/virtualmachines kan etablera flera virtuella datorer som en enda miljö i DevTest Labs Virtual Machines List:
 

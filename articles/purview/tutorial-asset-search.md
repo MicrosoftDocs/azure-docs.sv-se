@@ -1,18 +1,18 @@
 ---
 title: 'Självstudie: gå till start sidan för Azure-avdelningens kontroll och Sök efter en till gång'
 description: I den här självstudien beskrivs hur du använder funktioner på Start sidan för Azure-avdelningens kontroll och söker i katalogen.
-author: hophanms
-ms.author: hophan
+author: djpmsft
+ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 46c2ee284c33cc8ffb7b0bd3bc536905cf4e2052
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: f778a55c206e012884b44c1fea0a63e2de6b481a
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399884"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693346"
 ---
 # <a name="tutorial-navigate-the-azure-purview-preview-home-page-and-search-for-an-asset"></a>Självstudie: gå till start sidan för Azure-avdelningens kontroll (för hands version) och Sök efter en till gång
 
@@ -31,7 +31,7 @@ I de här självstudierna får du:
 > * Sök efter en till gång.
 > * Lägg till en till gångs ägare.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Fullständig [självstudie: Genomsök data med Azure avdelningens kontroll](tutorial-scan-data.md).
 

@@ -4,12 +4,12 @@ description: Lär dig hur du återställer en disk och återskapar en virtuell d
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 45e171e064cbd8be5418e20784e6034830d27fe9
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 999682c9bf4a4d70d886f0e85cede99f215aa046
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566681"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694725"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>Återställa en VM med Azure CLI
 
@@ -86,7 +86,7 @@ Om den säkerhetskopierade virtuella datorn har hanterade diskar och om avsikten
     ```
 
     > [!WARNING]
-    > Om _ *mål-resurs-grupp* * inte anges kommer de hanterade diskarna att återställas som ohanterade diskar till det angivna lagrings kontot. Detta kommer att ha betydande konsekvenser för återställnings tiden eftersom den tid det tar att återställa diskarna i sin helhet beror på det aktuella lagrings kontot. Du får bara fördelen med omedelbar återställning när parametern mål resurs-grupp anges. Om avsikten är att återställa hanterade diskar som ohanterade ska du inte ange parametern **-resurs-grupp** och i stället ange parametern **restore-as-unmanaged-disk** som visas nedan. Den här parametern är tillgänglig från AZ 3.4.0 och senare.
+    > Om _ *mål-resurs-grupp** inte anges kommer de hanterade diskarna att återställas som ohanterade diskar till det angivna lagrings kontot. Detta kommer att ha betydande konsekvenser för återställnings tiden eftersom den tid det tar att återställa diskarna i sin helhet beror på det aktuella lagrings kontot. Du får bara fördelen med omedelbar återställning när parametern mål resurs-grupp anges. Om avsikten är att återställa hanterade diskar som ohanterade ska du inte ange parametern **-resurs-grupp** och i stället ange parametern **restore-as-unmanaged-disk** som visas nedan. Den här parametern är tillgänglig från AZ 3.4.0 och senare.
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -251,7 +251,7 @@ url=$(az storage blob url \
 Distribuera nu mallen för att skapa den virtuella datorn enligt beskrivningen [här](../azure-resource-manager/templates/deploy-cli.md).
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --resource-group ExampleGroup \
   --template-uri $url?$token
 ```

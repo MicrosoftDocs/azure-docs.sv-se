@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cynthn
-ms.openlocfilehash: b2f50ba910e3e47c55a63f58bc9f5e978e80e95a
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 0ae4a311bc4f5084ff930b97d68482d64671a782
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401193"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695748"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>Hantera tillgängligheten för virtuella Linux-datorer
 
@@ -40,7 +40,6 @@ För att undvika påverkan av den här typen av avbrott rekommenderar vi att du 
 * Använd schemalagda händelser för att proaktivt svara på händelser som påverkar virtuella datorer
 * Konfigurera varje programnivå i separata tillgänglighetsuppsättningar
 * Kombinera en belastningsutjämnare med tillgänglighets zoner eller uppsättningar
-* Använda tillgänglighets zoner för att skydda från data center nivå problem
 
 ## <a name="use-availability-zones-to-protect-from-datacenter-level-failures"></a>Använda tillgänglighets zoner för att skydda från data center nivå problem
 

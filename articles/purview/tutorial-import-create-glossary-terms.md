@@ -1,18 +1,18 @@
 ---
 title: 'Självstudie: skapa och importera ord listans villkor i Azure avdelningens kontroll (för hands version)'
 description: I den här självstudien beskrivs hur du skapar ord listans villkor, lägger till ord lista i en till gång och importerar ord listans villkor.
-author: hophanms
-ms.author: hophan
+author: shsandeep123
+ms.author: sandeepshah
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 4dc8dd84c22d094c87c82f5a920015f886780df2
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 0ea6fcaff1ec699431da8b67adee68735a8611a8
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399816"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696083"
 ---
 # <a name="tutorial-create-and-import-glossary-terms-in-azure-purview-preview"></a>Självstudie: skapa och importera ord listans villkor i Azure avdelningens kontroll (för hands version)
 
@@ -23,7 +23,7 @@ En ord lista är ett viktigt verktyg för att underhålla och organisera din kat
 
 Den här självstudien är *del 5 i en själv studie serie i fem delar* där du får lära dig grunderna i hur du hanterar data styrning över en datafastighet med Azure avdelningens kontroll. Den här självstudien bygger på det arbete som du avslutade i [del 4: utforska resurs uppsättningar, information, scheman och klassificeringar i Azure avdelningens kontroll (för hands version)](tutorial-schemas-and-classifications.md).
 
-I den här guiden får du lära dig att:
+I de här självstudierna får du lära dig att
 
 > [!div class="checklist"]
 >
@@ -31,7 +31,7 @@ I den här guiden får du lära dig att:
 > * Lägg till ord listans villkor till en till gång.
 > * Importera ord listans villkor.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Fullständig [självstudie: utforska resurs uppsättningar, information, scheman och klassificeringar i Azure Dataavdelningens kontrolls (för hands version)](tutorial-schemas-and-classifications.md).
 
