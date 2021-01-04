@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 9195bb59264731914740e1cca902707603e3502d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7ff3daded48612fd308396420dca65cd81d9fafc
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018128"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724705"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Övervakning och avisering för Azure Key Vault
 
@@ -40,7 +40,7 @@ När du har börjat använda Key Vault för att lagra dina produktions hemlighet
 
 **Valvets mättnad** – antalet begär Anden per sekund som ett nyckel valv kan betjäna baseras på den typ av åtgärd som utförs. Vissa valv åtgärder har lägre tröskelvärde per sekund. Det här måttet aggregerar den totala användningen av ditt nyckel valv över alla åtgärds typer för att komma upp med ett procent värde som anger din aktuella nyckel valvs användning. En fullständig lista över begränsningar för Key Vault-tjänsten finns i följande dokument. [Begränsningar för tjänsten Azure Key Vault](service-limits.md)
 
-**Svars tid för service API** – det här måttet visar den genomsnittliga svars tiden för ett anrop till Key Vault. Även om nyckel valvet kan ligga inom tjänstens gränser, kan en hög användning av Key Vault introducera svars tid som gör att program upphör att fungera. 
+**Svars tid för service API** – det här måttet visar den genomsnittliga svars tiden för anrop till nyckel valvet mätt vid tjänsten. Den omfattar inte tid som förbrukas av klienten eller av nätverket mellan klienten och tjänsten.
 
 **Totalt antal API-träffar** – det här måttet visar alla anrop som gjorts till ditt nyckel valv. Detta hjälper dig att identifiera vilka program som anropar ditt nyckel valv. 
 

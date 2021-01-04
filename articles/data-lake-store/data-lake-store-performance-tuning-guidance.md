@@ -1,17 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1 prestanda justering
 description: Lär dig hur du använder all tillgänglig data flöde i Azure Data Lake Storage Gen1 är viktigt för att få bästa möjliga prestanda genom att göra så många läsningar och skrivningar parallellt som möjligt.
-author: stewu
+author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.author: stewu
-ms.openlocfilehash: e9a589b43490613834a810a68636c426e45c2656
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.author: twooley
+ms.openlocfilehash: c7f16dd9ea450185893164e10928c7022d6ab5a6
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332526"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724688"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>Justera Azure Data Lake Storage Gen1 för prestanda
 

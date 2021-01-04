@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 90942e4deebdc65fe26ce94f04a15fe2b8c0684c
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 960b3c29f97c43e1247018a60f6c6310c7cf02de
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512077"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724671"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Felsöka prestanda problem i Azure-filresurser
 
@@ -46,7 +46,7 @@ Du kan kontrol lera om din resurs har begränsats genom att komma åt och använ
 ### <a name="solution"></a>Lösning
 
 - Om du använder en standard fil resurs aktiverar du [stora fil resurser](./storage-files-how-to-create-large-file-share.md?tabs=azure-portal) på ditt lagrings konto. Stora fil resurser har stöd för upp till 10 000 IOPS per resurs.
-- Om du använder en Premium-filresurs ökar du den etablerade fil resurs storleken för att öka IOPS-gränsen. Mer information finns i avsnittet "förstå etablering av Premium-filresurser" i [Azure Files Planning Guide](./storage-files-planning.md#understanding-provisioning-for-premium-file-shares).
+- Om du använder en Premium-filresurs ökar du den etablerade fil resurs storleken för att öka IOPS-gränsen. Mer information finns i avsnittet [om etablering av Premium-filresurser](./understanding-billing.md#provisioned-billing).
 
 ### <a name="cause-2-metadata-or-namespace-heavy-workload"></a>Orsak 2: metadata eller namnrymd med hög belastning
 

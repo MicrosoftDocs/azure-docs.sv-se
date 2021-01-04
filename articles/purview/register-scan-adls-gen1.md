@@ -1,18 +1,18 @@
 ---
 title: Registrera och skanna Azure Data Lake Storage (ADLS) gen1
 description: I den här självstudien beskrivs hur du skannar data från Azure Data Lake Storage Gen1 till Azure dataavdelningens kontrolls.
-author: kchandra
-ms.author: kchandra
+author: shsandeep123
+ms.author: sandeepshah
 ms.service: data-catalog
 ms.subservice: data-catalog-gen2
 ms.topic: how-to
 ms.date: 11/30/2020
-ms.openlocfilehash: ee0b9238deb7805113f0cbfa28d0b60a114820a9
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: a831681f892de9f6aae50fa9a2fcf71e883fe6ba
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96555099"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693722"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen1"></a>Registrera och skanna Azure Data Lake Storage Gen1
 
@@ -29,7 +29,7 @@ Den Azure Data Lake Storage Gen1 data källan har stöd för följande funktione
 
 - **Härkomst** mellan data till gångar för ADF-kopiering/data flödes aktiviteter
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Skapa ett Azure avdelningens kontroll-konto innan du registrerar data källor. Mer information om hur du skapar ett avdelningens kontroll-konto finns i [snabb start: skapa ett Azure avdelningens kontroll-konto](create-catalog-portal.md).
 - Du måste vara en Azure avdelningens kontroll data source-administratör

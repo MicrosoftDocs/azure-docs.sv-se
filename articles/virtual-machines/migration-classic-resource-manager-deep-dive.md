@@ -1,19 +1,19 @@
 ---
-title: Klassisk teknik för Azure Resource Manager migrering av tekniska djup
+title: Verktyg som stöds av plattformen.
 description: Teknisk djupgående om plattforms oberoende migrering av resurser från den klassiska distributions modellen till Azure Resource Manager.
 author: tanmaygore
 manager: vashan
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: conceptual
-ms.date: 02/06/2020
+ms.date: 12/17/2020
 ms.author: tagore
-ms.openlocfilehash: d73ad3235e5ff2c9dbf0cca546308469ef6b5ac0
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: c17ade2af751b80e612aa104a9af1a22c4325413
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887089"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695733"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>En teknisk djupdykning i plattformsstödd migrering från klassisk distribution till Azure Resource Manager
 
@@ -148,7 +148,7 @@ Här är ett flödes schema som visar hur du fortsätter med migreringen:
 ## <a name="translation-of-the-classic-deployment-model-to-resource-manager-resources"></a>Översättning av den klassiska distributions modellen till Resource Manager-resurser
 Du hittar den klassiska distributions modellen och resurs hanterarens representationer av resurserna i följande tabell. Andra funktioner och resurser stöds för närvarande inte.
 
-| Klassiskt läge | Resource Manager-läge | Kommentarer |
+| Klassiskt läge | Resource Manager-läge | Obs! |
 | --- | --- | --- |
 | Molntjänstens namn |DNS-namn |Under migreringen skapas en ny resursgrupp för varje molntjänst med namngivningsmönstret `<cloudservicename>-migrated`. Den här resursgruppen innehåller alla dina resurser. Namnet på molntjänsten blir ett DNS-namn som kopplas till den offentliga ip-adressen. |
 | Virtuell dator |Virtuell dator |Egenskaper för virtuella datorer migreras oförändrade. Vissa osProfile-uppgifter, t. ex. dator namn, lagras inte i den klassiska distributions modellen och förblir tomma efter migreringen. |

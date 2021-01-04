@@ -1,18 +1,18 @@
 ---
 title: 'Snabb start: skapa ett Azure avdelningens kontroll-konto i Azure Portal (för hands version)'
 description: I den här snabb starten beskrivs hur du skapar ett Azure avdelningens kontroll-konto och konfigurerar behörigheter för att börja använda det.
-author: hophanms
-ms.author: hophan
+author: nayenama
+ms.author: nayenama
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: 3119152e4a7d0dc799dfe273722101c95c11c0c9
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: fe83425230a157be245e3aa1ad088c32596ea5ed
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400394"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693370"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Snabb start: skapa ett Azure avdelningens kontroll-konto i Azure Portal
 
@@ -21,7 +21,7 @@ ms.locfileid: "97400394"
 
 I den här snabb starten skapar du ett Azure avdelningens kontroll-konto.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

@@ -5,56 +5,65 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 12/18/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 50d592d0020ae1b5a704296ef68f5153f0207714
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: c3096da8b3c83dbfe8cfdd6a5fa4d177241334de
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427583"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693518"
 ---
 # <a name="specify-a-customer-provided-key-on-a-request-to-blob-storage-with-net"></a>Ange en kundspecifik nyckel på en begäran till Blob Storage med .NET
 
-Klienter som begär förfrågningar mot Azure Blob Storage har möjlighet att tillhandahålla en krypterings nyckel på en enskild begäran. Inklusive krypterings nyckeln på begäran ger detaljerad kontroll över krypterings inställningarna för Blob Storage-åtgärder. Kundspecifika nycklar kan lagras i Azure Key Vault eller i en annan nyckel lagrings plats.
+Klienter som begär förfrågningar mot Azure Blob Storage har möjlighet att tillhandahålla en AES-256-krypterings nyckel på en enskild begäran. Inklusive krypterings nyckeln på begäran ger detaljerad kontroll över krypterings inställningarna för Blob Storage-åtgärder. Kundspecifika nycklar kan lagras i Azure Key Vault eller i en annan nyckel lagrings plats.
 
 Den här artikeln visar hur du anger en kunds nyckel på en begäran med .NET.
 
 [!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 
-Mer information om hur du autentiserar med klient biblioteket för Azure Identity från Azure Storage finns i avsnittet **autentisera med Azure Identity Library** i [ge åtkomst till blobbar och köer med Azure Active Directory och hanterade identiteter för Azure-resurser](../common/storage-auth-aad-msi.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#authenticate-with-the-azure-identity-library).
+Om du vill veta mer om hur du autentiserar med klient biblioteket för Azure Identity kan du läsa mer i [Azure Identity Client library för .net](/dotnet/api/overview/azure/identity-readme).
 
-## <a name="example-use-a-customer-provided-key-to-upload-a-blob"></a>Exempel: Använd en kundanged nyckel för att ladda upp en BLOB
+## <a name="use-a-customer-provided-key-to-write-to-a-blob"></a>Använd en kundanged nyckel för att skriva till en BLOB
 
-I följande exempel skapas en kundspecifik nyckel som använder den nyckeln för att ladda upp en blob. Koden laddar upp ett block och genomför sedan blockeringslistan för att skriva blobben till Azure Storage.
+I följande exempel visas en AES-256-nyckel när du laddar upp en blob med V12-klient biblioteket för Blob Storage. I exemplet används [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) -objektet för att auktorisera skrivbegäran med Azure AD, men du kan också auktorisera begäran med autentiseringsuppgifter för delad nyckel.
 
 ```csharp
-async static Task UploadBlobWithClientKey(string accountName, string containerName,
-    string blobName, Stream data, byte[] key)
+async static Task UploadBlobWithClientKey(Uri blobUri,
+                                          Stream data,
+                                          byte[] key,
+                                          string keySha256)
 {
-    const string blobServiceEndpointSuffix = ".blob.core.windows.net";
-    Uri accountUri = new Uri("https://" + accountName + blobServiceEndpointSuffix);
+    // Create a new customer-provided key.
+    // Key must be AES-256.
+    var cpk = new CustomerProvidedKey(key);
+
+    // Check the key's encryption hash.
+    if (cpk.EncryptionKeyHash != keySha256)
+    {
+        throw new InvalidOperationException("The encryption key is corrupted.");
+    }
 
     // Specify the customer-provided key on the options for the client.
     BlobClientOptions options = new BlobClientOptions()
     {
-        CustomerProvidedKey = new CustomerProvidedKey(key)
+        CustomerProvidedKey = cpk
     };
 
-    // Create a client object for the Blob service, including options.
-    BlobServiceClient serviceClient = new BlobServiceClient(accountUri, 
-        new DefaultAzureCredential(), options);
+    // Create the client object with options specified.
+    BlobClient blobClient = new BlobClient(
+        blobUri,
+        new DefaultAzureCredential(),
+        options);
 
-    // Create a client object for the container.
+    // If the container may not exist yet,
+    // create a client object for the container.
     // The container client retains the credential and client options.
-    BlobContainerClient containerClient = serviceClient.GetBlobContainerClient(containerName);
-
-    // Create a new block blob client object.
-    // The blob client retains the credential and client options.
-    BlobClient blobClient = containerClient.GetBlobClient(blobName);
+    BlobContainerClient containerClient =
+        blobClient.GetParentBlobContainerClient();
 
     try
     {

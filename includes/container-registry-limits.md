@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: f4d8f8783e9f6eece4de8dc1c35740fa7aaf03f8
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 3fe1b966b56142fd312850ac5d77839b7d9db434
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97531813"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97706220"
 ---
 | Resurs | Basic | Standard | Premium |
 |---|---|---|---|
@@ -25,12 +25,13 @@ ms.locfileid: "97531813"
 | Ladda ned bandbredd Mbps<sup>2</sup> | 30 | 60 | 100 |
 | Ladda upp bandbredd Mbps<sup>2</sup> | 10 | 20 | 50 |
 | Webhooks | 2 | 10 | 500 |
-| Geo-replikering | Saknas | Saknas | [Tillåtna][geo-replication] |
-| Förtroende för innehåll | Saknas | Saknas | [Tillåtna][content-trust] |
-| Privat länk med privata slut punkter | Saknas | Saknas | [Tillåtna][plink] |
+| Geo-replikering | Saknas | Saknas | [Stöds][geo-replication] |
+| Tillgänglighetszoner | Saknas | Saknas | [Förhandsgranskning][zones] |
+| Förtroende för innehåll | Saknas | Saknas | [Stöds][content-trust] |
+| Privat länk med privata slut punkter | Saknas | Saknas | [Stöds][plink] |
 | &bull; Privata slut punkter | Saknas | Saknas | 10 |
 | Åtkomst till tjänst slut punktens VNet | Saknas | Saknas | [Förhandsgranskning][vnet] |
-| Kundhanterade nycklar | Saknas | Saknas | [Tillåtna][cmk] |
+| Kundhanterade nycklar | Saknas | Saknas | [Stöds][cmk] |
 | Databas – begränsade behörigheter | Saknas | Saknas | [Förhandsgranskning][token]|
 | &bull; Token | Saknas | Saknas | 20 000 |
 | &bull; Omfångs kartor | Saknas | Saknas | 20 000 |
@@ -55,3 +56,4 @@ ms.locfileid: "97531813"
 [plink]: ../articles/container-registry/container-registry-private-link.md
 [cmk]: ../articles/container-registry/container-registry-customer-managed-keys.md
 [token]: ../articles/container-registry/container-registry-repository-scoped-permissions.md
+[zones]: ../articles/container-registry/zone-redundancy.md

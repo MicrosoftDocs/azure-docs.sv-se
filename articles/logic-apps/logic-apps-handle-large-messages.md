@@ -3,16 +3,14 @@ title: Hantera stora meddelanden med hjälp av segment
 description: Lär dig hur du hanterar stora meddelande storlekar med hjälp av segment i automatiserade uppgifter och arbets flöden som du skapar med Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-author: DavidCBerry13
-ms.author: daberry
 ms.topic: article
-ms.date: 12/03/2019
-ms.openlocfilehash: 1b23c92ec70b80a6cd08fc42a05ffec1e5b43b31
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.date: 12/18/2020
+ms.openlocfilehash: de4af34182fc1a95968e95d322a6ec35101a3dc9
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656775"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695880"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Hantera stora meddelanden med segment i Azure Logic Apps
 
@@ -40,8 +38,57 @@ Tjänster som kommunicerar med Logic Apps kan ha egna storleks gränser för med
 
 För kopplingar som stöder segment, är det underliggande segment protokollet osynligt för slutanvändare. Men alla kopplingar stöder inte segment koppling, så dessa kopplingar genererar körnings fel när inkommande meddelanden överskrider kopplingens storleks gränser.
 
-> [!NOTE]
-> För åtgärder som använder segment kan du inte skicka utlösaren eller använda uttryck som `@triggerBody()?['Content']` i dessa åtgärder. I stället kan du prova att använda [åtgärden **Skriv**](../logic-apps/logic-apps-perform-data-operations.md#compose-action) eller [skapa en variabel](../logic-apps/logic-apps-create-variables-store-values.md) för att hantera innehållet i text-eller JSON-filinnehållet. Om utlösaren innehåller andra innehålls typer, till exempel mediefiler, måste du utföra andra åtgärder för att hantera det innehållet.
+
+För åtgärder som stöder och har Aktiver ATS för segment kan du inte använda utlösare, variabler och uttryck, t. ex. `@triggerBody()?['Content']` eftersom användningen av någon av dessa indata förhindrar att segment åtgärden sker. Använd i stället åtgärden [ **Skriv**](../logic-apps/logic-apps-perform-data-operations.md#compose-action). Mer specifikt måste du skapa ett `body` fält med hjälp av åtgärden **Skriv** för att lagra data utdata från utlösaren, variabeln, uttrycket och så vidare, till exempel:
+
+```json
+"Compose": {
+    "inputs": {
+        "body": "@variables('myVar1')"
+    },
+    "runAfter": {
+        "Until": [
+            "Succeeded"
+        ]
+    },
+    "type": "Compose"
+},
+```
+Sedan använder du för att referera till data i segment åtgärden `@body('Compose')` .
+
+```json
+"Create_file": {
+    "inputs": {
+        "body": "@body('Compose')",
+        "headers": {
+            "ReadFileMetadataFromServer": true
+        },
+        "host": {
+            "connection": {
+                "name": "@parameters('$connections')['sftpwithssh_1']['connectionId']"
+            }
+        },
+        "method": "post",
+        "path": "/datasets/default/files",
+        "queries": {
+            "folderPath": "/c:/test1/test1sub",
+            "name": "tt.txt",
+            "queryParametersSingleEncoded": true
+        }
+    },
+    "runAfter": {
+        "Compose": [
+            "Succeeded"
+        ]
+    },
+    "runtimeConfiguration": {
+        "contentTransfer": {
+            "transferMode": "Chunked"
+        }
+    },
+    "type": "ApiConnection"
+},
+```
 
 <a name="set-up-chunking"></a>
 
@@ -124,7 +171,7 @@ De här stegen beskriver den detaljerade processen Logic Apps använder för att
    | Rubrik fält för slut punkts svar | Typ | Obligatorisk | Beskrivning |
    |--------------------------------|------|----------|-------------|
    | **x-MS-segment-storlek** | Integer | Nej | Den föreslagna segment storleken i byte |
-   | **Plats** | Sträng | Yes | Den URL-plats dit meddelanden om HTTP-KORRIGERINGarna ska skickas |
+   | **Plats** | Sträng | Ja | Den URL-plats dit meddelanden om HTTP-KORRIGERINGarna ska skickas |
    ||||
 
 3. Din Logi Kap par skapar och skickar uppföljning av HTTP-meddelanden – var och en med den här informationen:
@@ -144,7 +191,7 @@ De här stegen beskriver den detaljerade processen Logic Apps använder för att
 
    | Rubrik fält för slut punkts svar | Typ | Obligatorisk | Beskrivning |
    |--------------------------------|------|----------|-------------|
-   | **Intervall** | Sträng | Yes | Byte-intervallet för innehåll som har tagits emot av slut punkten, till exempel: "byte = 0-1023" |   
+   | **Intervall** | Sträng | Ja | Byte-intervallet för innehåll som har tagits emot av slut punkten, till exempel: "byte = 0-1023" |   
    | **x-MS-segment-storlek** | Integer | Nej | Den föreslagna segment storleken i byte |
    ||||
 

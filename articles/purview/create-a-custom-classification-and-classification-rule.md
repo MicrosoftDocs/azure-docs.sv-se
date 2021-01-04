@@ -1,18 +1,18 @@
 ---
 title: Skapa en anpassad klassificerings-och klassificerings regel (förhands granskning)
 description: Den här artikeln beskriver hur du kan skapa anpassade klassificeringar för att definiera data typer i din datafastighet som är unika för din organisation. Det beskriver också hur du skapar anpassade klassificerings regler som gör att du kan hitta angivna data i din datafastighet.
-author: chandrakavya
-ms.author: kchandra
+author: animukherjee
+ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/1/2020
-ms.openlocfilehash: 16a714cff506117c5d6f7fd4921fbd5346bfda39
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 53c71eec4c913c606669b7d36ca9a71ac8f3e2f1
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96553924"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693463"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Anpassade klassificeringar i Azure avdelningens kontroll 
 
@@ -100,7 +100,7 @@ Så här skapar du en anpassad klassificerings regel:
 |Namn   |    Krävs. Det maximala värdet är 100 tecken.    |
 |Beskrivning      |Valfritt. Det maximala värdet är 256 tecken.    |
 |Klassificerings namn    | Krävs. Välj namnet på klassificeringen i list rutan för att be skannern att tillämpa den om en matchning hittas.        |
-|Stat   |  Krävs. Alternativen är aktiverade eller inaktiverade. Aktive rad är standardvärdet.    |
+|Tillstånd   |  Krävs. Alternativen är aktiverade eller inaktiverade. Aktive rad är standardvärdet.    |
 |Data mönster    |Valfritt. Ett reguljärt uttryck som representerar de data som lagras i data fältet. Gränsen är mycket stor. I det föregående exemplet testar data mönstren för ett anställnings-ID som är ett ord `Employee{GUID}` .  |
 |Kolumn mönster    |Valfritt. Ett reguljärt uttryck som representerar de kolumn namn som du vill matcha. Gränsen är mycket stor.          |
 

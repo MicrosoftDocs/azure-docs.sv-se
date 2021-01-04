@@ -11,21 +11,21 @@ author: jhirono
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 07ff656c5eacbbcdc16c6c7cf098478ca6baf745
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 8d3145639d2d4fb64bdb374f1dea0a7b70e4151c
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509299"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724722"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Så här använder du din arbetsyta med en anpassad DNS-server
 
-När du använder en Azure Machine Learning-arbetsyta med en privat slut punkt finns det [flera sätt att hantera DNS-namnmatchning](../private-link/private-endpoint-dns.md). Som standard hanterar Azure automatiskt namn matchning för din arbets yta och privat slut punkt. Om du i stället _använder en egen anpassad DNS-Server_ _ måste du skapa DNS-poster för arbets ytan manuellt.
+När du använder en Azure Machine Learning-arbetsyta med en privat slut punkt finns det [flera sätt att hantera DNS-namnmatchning](../private-link/private-endpoint-dns.md). Som standard hanterar Azure automatiskt namn matchning för din arbets yta och privat slut punkt. Om du i stället _använder en egen anpassad DNS-Server_ _ måste du manuellt skapa DNS-poster eller använda villkorliga vidarebefordrare för arbets ytan.
 
 > [!IMPORTANT]
 > Den här artikeln beskriver bara hur du hittar det fullständigt kvalificerade domän namnet (FQDN) och IP-adresser för dessa poster. det ger inte information om hur du konfigurerar DNS-poster för dessa objekt. I dokumentationen för DNS-programvaran finns information om hur du lägger till poster.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - En Azure-Virtual Network som använder [din egen DNS-Server](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 
@@ -37,9 +37,9 @@ När du använder en Azure Machine Learning-arbetsyta med en privat slut punkt f
 
 - Valfritt, [Azure CLI](/cli/azure/install-azure-cli) eller [Azure PowerShell](/powershell/azure/install-az-ps).
 
-## <a name="find-the-ip-addresses"></a>Hitta IP-adresserna
-
-I följande lista visas de fullständigt kvalificerade domän namnen (FQDN) som används av din arbets yta och privat slut punkt:
+## <a name="fqdns-in-use"></a>FQDN som används
+### <a name="these-fqdns-are-in-use-in-the-following-regions-eastus-southcentralus-and-westus2"></a>Dessa FQDN används i följande regioner: öster, usasödracentrala och westus2.
+Följande lista innehåller de fullständigt kvalificerade domän namnen (FQDN) som används av din arbets yta:
 
 * `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
 * `<workspace-GUID>.workspace.<region>.api.azureml.ms`
@@ -51,6 +51,19 @@ I följande lista visas de fullständigt kvalificerade domän namnen (FQDN) som 
 
     > [!NOTE]
     > Beräknings instanser kan bara nås från det virtuella nätverket.
+    
+### <a name="these-fqdns-are-in-use-in-all-other-regions"></a>Dessa FQDN används i alla andra regioner
+Följande lista innehåller de fullständigt kvalificerade domän namnen (FQDN) som används av din arbets yta:
+
+* `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
+* `<workspace-GUID>.workspace.<region>.api.azureml.ms`
+* `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.net`
+* `<instance-name>.<region>.instances.azureml.ms`
+
+    > [!NOTE]
+    > Beräknings instanser kan bara nås från det virtuella nätverket.
+
+## <a name="find-the-ip-addresses"></a>Hitta IP-adresserna
 
 Använd någon av följande metoder för att hitta de interna IP-adresserna för FQDN i VNet:
 
@@ -89,7 +102,7 @@ Informationen som returneras från alla metoder är densamma. en lista över FQD
 | `ml-myworkspace-eastus-fb7e20a0-8891-458b-b969-55ddb3382f51.notebooks.azure.net` | `10.1.0.6` |
 
 > [!IMPORTANT]
-> Vissa FQDN visas inte i listan av den privata slut punkten, men krävs av arbets ytan. Dessa FQDN visas i följande tabell och måste också läggas till i DNS-servern:
+> Vissa FQDN visas inte i listan av den privata slut punkten, men krävs av arbets ytan i öster, usasödracentrala och westus2. Dessa FQDN visas i följande tabell och måste också läggas till i DNS-servern och/eller i en Azure Privat DNS-zon:
 >
 > * `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
 > * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
@@ -102,3 +115,5 @@ Informationen som returneras från alla metoder är densamma. en lista över FQD
 ## <a name="next-steps"></a>Nästa steg
 
 Mer information om hur du använder Azure Machine Learning med ett virtuellt nätverk finns i [Översikt över virtuella nätverk](how-to-network-security-overview.md).
+
+Mer information om hur du integrerar privata slut punkter i din DNS-konfiguration finns i [Azures DNS-konfiguration för privat slut punkt](https://docs.microsoft.com/azure/private-link/private-endpoint-dns).

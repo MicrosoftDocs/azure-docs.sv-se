@@ -1,14 +1,14 @@
 ---
 title: Hantera Azure Arc-aktiverade servrar-agenten
 description: I den här artikeln beskrivs de olika hanterings aktiviteter som du vanligt vis utför under livs cykeln för Azure Arc-aktiverade servrar som är anslutna till dator agenten.
-ms.date: 10/30/2020
+ms.date: 12/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9e17bf58d1e94b64d1cdc6ff0b57b1b6a81be180
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: f408048f61f76d6b258ea8e063630b4e2aa841af
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107200"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724382"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Hantera och underhålla den anslutna dator agenten
 
@@ -61,7 +61,7 @@ Uppdaterings paketet för den anslutna dator agenten för Windows är tillgängl
 
 * [Windows agent Windows Installer-paketet](https://aka.ms/AzureConnectedMachineAgent) från Microsoft Download Center.
 
-Agenten kan uppgraderas efter en mängd olika metoder för att stödja hanteringen av program uppdaterings processen. Utanför hämtningen från Microsoft Update kan du ladda ned och köra manuellt från kommando tolken, från ett skript eller någon annan Automation-lösning eller från användar gränssnitts guiden genom att köra `AzureConnectedMachine.msi` .
+Agenten kan uppgraderas efter olika metoder för att stödja hanteringen av program uppdaterings processen. Utanför hämtningen från Microsoft Update kan du ladda ned och köra manuellt från kommando tolken, från ett skript eller någon annan Automation-lösning eller från användar gränssnitts guiden genom att köra `AzureConnectedMachine.msi` .
 
 > [!NOTE]
 > * Du måste ha *Administratörs* behörighet för att kunna uppgradera agenten.
@@ -189,7 +189,7 @@ Kör följande kommando för att ansluta till dina förhöjda inloggade autentis
 
 ### <a name="disconnect"></a>Koppla från
 
-Den här parametern anger en resurs i Azure Resource Manager som representerar datorn som tas bort i Azure. Agenten tas inte bort från datorn. Detta måste göras som ett separat steg. När datorn har kopplats från, om du vill omregistrera den med Azure Arc-aktiverade servrar, använder du `azcmagent connect` så att en ny resurs skapas för den i Azure.
+Den här parametern anger en resurs i Azure Resource Manager som representerar datorn som tas bort i Azure. Agenten tas inte bort från datorn. du avinstallerar agenten separat. När datorn har kopplats från, om du vill omregistrera den med Azure Arc-aktiverade servrar, använder du `azcmagent connect` så att en ny resurs skapas för den i Azure.
 
 > [!NOTE]
 > Om du har distribuerat ett eller flera Azure VM-tillägg till din ARC-aktiverade Server och du tar bort dess registrering i Azure installeras tilläggen fortfarande. Det är viktigt att förstå att beroende på vilket tillägg som installeras, är det aktivt att utföra sin funktion. Datorer som är avsedda att dras tillbaka eller som inte längre hanteras av Arc-aktiverade servrar bör först ta bort tilläggen innan de tar bort registreringen från Azure.
@@ -208,7 +208,7 @@ Kör följande kommando för att koppla bort med dina förhöjda inloggade auten
 
 ## <a name="remove-the-agent"></a>Ta bort agenten
 
-Utför någon av följande metoder för att avinstallera den Windows-eller Linux-anslutna dator agenten från datorn. Att ta bort agenten avregistrerar inte datorn med ARC-aktiverade servrar eller tar bort de virtuella Azure-tilläggen installerade. Du måste utföra dessa steg separat när du inte längre behöver hantera datorn i Azure, och de bör slutföras innan du avinstallerar agenten.
+Utför någon av följande metoder för att avinstallera den Windows-eller Linux-anslutna dator agenten från datorn. Att ta bort agenten avregistrerar inte datorn med ARC-aktiverade servrar eller tar bort de virtuella Azure-tilläggen installerade. Avregistrera datorn och ta bort de installerade VM-tilläggen separat när du inte längre behöver hantera datorn i Azure och de här stegen bör utföras innan du avinstallerar agenten.
 
 ### <a name="windows-agent"></a>Windows-agent
 
@@ -286,6 +286,10 @@ Om du planerar att sluta hantera datorn med stöd tjänster i Azure utför du f�
 ## <a name="update-or-remove-proxy-settings"></a>Uppdatera eller ta bort proxyinställningar
 
 Om du vill konfigurera agenten för att kommunicera med tjänsten via en proxyserver eller ta bort den här konfigurationen efter distributionen, eller Använd någon av följande metoder för att slutföra uppgiften.
+
+> [!NOTE]
+> Arc-aktiverade servrar stöder inte användning av en [Log Analytics Gateway](../../azure-monitor/platform/gateway.md) som proxy för den anslutna dator agenten.
+>
 
 ### <a name="windows"></a>Windows
 

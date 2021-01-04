@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: 99c60cf541b3997f2aeca2ccef5a5af6b9c88e08
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: bff20468e8185073f5c192c1e115bc405dd089eb
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131504"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693611"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Skapa erbjudande om Power BI-app
 
@@ -23,8 +23,8 @@ Innan du börjar [skapar du ett kommersiellt marknads plats konto i Partner Cent
 ## <a name="create-a-new-offer"></a>Skapa ett nytt erbjudande
 
 1. Logga in på [partner Center](https://partner.microsoft.com/dashboard/home).
-2. På menyn till vänster-navigerings väljer du **kommersiell Marketplace** -  >  **Översikt** .
-3. På sidan Översikt väljer du **+ nytt erbjudande**  >  **Power BI tjänst program** .
+2. På menyn till vänster-navigerings väljer du **kommersiell Marketplace**-  >  **Översikt**.
+3. På sidan Översikt väljer du **+ nytt erbjudande**  >  **Power BI tjänst program**.
 
    ![Visar menyn till vänster-navigering.](./media/new-offer-power-bi-app.png)
 
@@ -36,16 +36,16 @@ Innan du börjar [skapar du ett kommersiellt marknads plats konto i Partner Cent
 
 ## <a name="new-offer"></a>Nytt erbjudande
 
-Ange ett **erbjudande-ID** . Detta är en unik identifierare för varje erbjudande i ditt konto.
+Ange ett **erbjudande-ID**. Detta är en unik identifierare för varje erbjudande i ditt konto.
 
 - Detta ID är synligt för kunder i webb adressen för Marketplace-erbjudandet och Azure Resource Manager mallar, om tillämpligt.
 - Använd bara gemena bokstäver och siffror. Det kan innehålla bindestreck och under streck, men inte blank steg, och är begränsat till 50 tecken. Om du till exempel anger **test-erbjudandet-1** här, är webb adressen för erbjudandet `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
-- Erbjudande-ID: t kan inte ändras när du har valt **skapa** .
+- Erbjudande-ID: t kan inte ändras när du har valt **skapa**.
 
-Ange ett **erbjudande alias** . Detta är det namn som används för erbjudandet i Partner Center.
+Ange ett **erbjudande alias**. Detta är det namn som används för erbjudandet i Partner Center.
 
 - Det här namnet används inte på Marketplace och skiljer sig från namnet på erbjudandet och andra värden som visas för kunderna.
-- Det går inte att ändra namnet på erbjudandet när du har valt **skapa** .
+- Det går inte att ändra namnet på erbjudandet när du har valt **skapa**.
 
 Välj **skapa** för att generera erbjudandet och fortsätt.
 
@@ -81,7 +81,7 @@ När du publicerar ditt erbjudande till Marketplace med partner Center måste du
 
 Här följer några ytterligare resurser för ledar hantering:
 
-- [Kunden får ett erbjudande från ditt kommersiella Marketplace](commercial-marketplace-get-customer-leads.md)
+- [Kundleads från ditt erbjudande på den kommersiella marknadsplatsen](commercial-marketplace-get-customer-leads.md)
 - [Vanliga frågor om ledar hantering](../lead-management-faq.md#common-questions-about-lead-management)
 - [Felsöka fel vid lead-konfiguration](../lead-management-faq.md#publishing-config-errors)
 - [Översikt över ledar hantering](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (se till att blockering av popup-fönster är inaktiverat).
@@ -97,7 +97,7 @@ På den här sidan kan du definiera kategorier och branscher som används för a
 Välj kategorier och under Kategorier för att placera ditt erbjudande i lämpliga sökområden för Marketplace. Se till att du beskriver hur ditt erbjudande stöder dessa kategorier i beskrivningen av erbjudandet. Välj:
 
 - Minst en och upp till två kategorier, inklusive en primär och en sekundär kategori (valfritt).
-- Upp till två under Kategorier för varje primär och/eller sekundär kategori. Om ingen under kategori gäller ditt erbjudande väljer du **ej tillämpligt** .
+- Upp till två under Kategorier för varje primär och/eller sekundär kategori. Om ingen under kategori gäller ditt erbjudande väljer du **ej tillämpligt**.
 
 Se den fullständiga listan över kategorier och under Kategorier i [erbjudande lista med bästa praxis](../gtm-offer-listing-best-practices.md).
 
@@ -109,9 +109,7 @@ Se den fullständiga listan över kategorier och under Kategorier i [erbjudande 
 
 #### <a name="terms-and-conditions"></a>Villkor
 
-Om du vill ange egna anpassade villkor anger du upp till 10 000 tecken i rutan **allmänna** villkor. Om dina villkor kräver en längre Beskrivning anger du en enskild webblänk dit de kan hittas. Den kommer att visas för kunder som en aktiv länk.
-
-Kunderna måste acceptera dessa villkor innan de kan testa ditt erbjudande.
+Om du vill ange egna anpassade villkor anger du upp till 10 000 tecken i rutan **allmänna** villkor. Kunderna måste acceptera dessa villkor innan de kan testa ditt erbjudande.
 
 Välj **Spara utkast** innan du fortsätter till nästa avsnitt, erbjud listan.
 
@@ -186,7 +184,7 @@ Ange webb adressen till din organisations sekretess policy. Du är ansvarig för
 
 ### <a name="contact-information"></a>Kontaktinformation
 
-Du måste ange namn, e-postadress och telefonnummer för en **support kontakt** och en **teknisk kontakt** . Den här informationen visas inte för kunderna. Den är tillgänglig för Microsoft och kan tillhandahållas av CSP-partner (Cloud Solution Provider).
+Du måste ange namn, e-postadress och telefonnummer för en **support kontakt** och en **teknisk kontakt**. Den här informationen visas inte för kunderna. Den är tillgänglig för Microsoft och kan tillhandahållas av CSP-partner (Cloud Solution Provider).
 
 - Support kontakt (krävs): för allmänna supportfrågor.
 - Teknisk kontakt (krävs): för tekniska frågor och certifierings problem.
@@ -248,7 +246,7 @@ Du kan också lägga till instruktioner (upp till 3 000 tecken) för att hjälpa
 
 När du har slutfört alla obligatoriska avsnitt i erbjudandet kan du skicka ditt erbjudande till granskning och publicering.
 
-I det övre högra hörnet av portalen väljer du **Granska och publicera** .
+I det övre högra hörnet av portalen väljer du **Granska och publicera**.
 
 På sidan Granska kan du:
 
@@ -258,6 +256,6 @@ På sidan Granska kan du:
   - **Slutfört** -avsnittet innehåller alla data som krävs och det finns inga fel. Alla avsnitt i erbjudandet måste slutföras innan du kan skicka in erbjudandet.
 - Ange test instruktioner till certifierings teamet för att se till att appen testas korrekt. Ange också eventuella kompletterande kommentarer som hjälper dig att förstå ditt erbjudande.
 
-Om du vill skicka publicerings erbjudandet väljer du **publicera** .
+Om du vill skicka publicerings erbjudandet väljer du **publicera**.
 
-Vi skickar dig ett e-postmeddelande för att meddela dig när en för hands version av erbjudandet kan granskas och godkännas. Om du vill publicera ditt erbjudande till allmänheten går du till Partner Center och väljer **Go-Live** .
+Vi skickar dig ett e-postmeddelande för att meddela dig när en för hands version av erbjudandet kan granskas och godkännas. Om du vill publicera ditt erbjudande till allmänheten går du till Partner Center och väljer **Go-Live**.

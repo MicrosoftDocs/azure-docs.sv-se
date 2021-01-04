@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: e25469e23358ade32e050bed0818338dc290e71f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7dccce597dcfbcedd5083befafa79b8ba6f3adac
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451392"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693475"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Azure SQL Database och Azure SQL-hanterad instans Anslut och skicka frågor till artiklar
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -26,7 +26,7 @@ Följande dokument innehåller länkar till Azure-exempel som visar hur du anslu
 
 ## <a name="quickstarts"></a>Snabbstarter
 
-| Snabbstart | Description |
+| Snabbstart | Beskrivning |
 |---|---|
 |[SQL Server Management Studio](connect-query-ssms.md)|Den här snabb starten visar hur du använder SSMS för att ansluta till en databas och sedan använder Transact-SQL-uttryck för att fråga, infoga, uppdatera och ta bort data i databasen.|
 |[Azure Data Studio](/sql/azure-data-studio/quickstart-sql-database?toc=%2fazure%2fsql-database%2ftoc.json)|Den här snabb starten visar hur du använder Azure Data Studio för att ansluta till en databas och sedan använder Transact-SQL-uttryck (T-SQL) för att skapa de TutorialDB som används i Azure Data Studio självstudier.|
@@ -42,6 +42,29 @@ Följande dokument innehåller länkar till Azure-exempel som visar hur du anslu
 |[Ruby](connect-query-ruby.md)|Den här snabb starten visar hur du använder ruby för att skapa ett program för att ansluta till en databas och använda Transact-SQL-uttryck för att fråga data.|
 |[R](connect-query-r.md)|Den här snabb starten visar hur du använder R med Azure SQL Database Machine Learning Services för att skapa ett program för att ansluta till en databas i Azure SQL Database och använda Transact-SQL-uttryck för att fråga data.|
 |||
+
+## <a name="get-server-connection-information"></a>Hämta information om Server anslutning
+
+Hämta anslutnings informationen du behöver för att ansluta till databasen i Azure SQL Database. Du behöver det fullständiga servernamnet eller värdnamnet, databasnamnet och inloggningsinformationen för de kommande procedurerna.
+
+1. Logga in på [Azure-portalen](https://portal.azure.com/).
+
+2. Gå till sidan **SQL-databaser**  eller **SQL-hanterade instanser** .
+
+3. På sidan **Översikt** granskar du det fullständigt kvalificerade Server namnet bredvid **Server namnet** för databasen i Azure SQL Database eller det fullständigt kvalificerade Server namnet (eller IP-adressen) bredvid **värd** för en Azure SQL-hanterad instans eller SQL Server på Azure VM. Om du vill kopiera servernamnet eller värdnamnet hovrar du över det och väljer ikonen **Kopiera**.
+
+> [!NOTE]
+> Anslutnings information för SQL Server på den virtuella Azure-datorn finns i [Anslut till en SQL Server instans](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server).
+
+## <a name="get-adonet-connection-information-optional---sql-database-only"></a>Hämta anslutnings information för ADO.NET (valfritt-SQL Database endast)
+
+1. Gå till bladet databas i Azure Portal och välj **anslutnings strängar** under **Inställningar**.
+
+2. Granska den fullständiga **ADO.NET**-anslutningssträngen.
+
+    ![ADO.NET-anslutningssträng](./media/connect-query-dotnet-core/adonet-connection-string2.png)
+
+3. Kopiera anslutningssträngen **ADO.NET** om du planerar att använda den.
 
 ## <a name="tls-considerations-for-database-connectivity"></a>TLS-överväganden för databas anslutning
 
