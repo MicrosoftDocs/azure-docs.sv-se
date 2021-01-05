@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
-ms.openlocfilehash: 1a106874277f64a006584f9deb98fb9729263b1b
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 048635a33c3d84416dae00b731b386572aa3f89d
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040713"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802583"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Bortredigering-ansikten med Azure-medieanalys genom gång
 
@@ -133,6 +133,6 @@ Om du är utvecklare som försöker parsa JSON-antecknings data tittar du i mode
 ## <a name="related-links"></a>Relaterade länkar
 [Översikt över Azure Media Services Analytics](./legacy-components.md)
 
-[Azure-medieanalys demonstrationer](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure-medieanalys demonstrationer](http://amslabs.azurewebsites.net/demos/Analytics.html)
 
 [Vi presenterar ansikts bortredigering för Azure-medieanalys](https://azure.microsoft.com/blog/azure-media-redactor/)

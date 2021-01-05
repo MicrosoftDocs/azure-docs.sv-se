@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/07/2020
+ms.date: 12/28/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2408db2d91740350405f11e2a1250ab9b3a4fe31
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 56818862b6bc4eb38b819185aceb121e6e78488e
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181211"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803535"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Etablering av rapporter i Azure Active Directory portal (för hands version)
 
@@ -44,6 +44,7 @@ I det här avsnittet får du en översikt över etablerings rapporten.
 ### <a name="who-can-access-the-data"></a>Vem som kan komma åt data?
 * Program ägare kan visa loggar för program som de äger
 * Användare i rollerna säkerhets administratör, säkerhets läsare, rapport läsare, program administratör och moln program administratör
+* Användare i en anpassad roll med [provisioningLogs-behörighet](https://docs.microsoft.com/azure/active-directory/roles/custom-enterprise-app-permissions#full-list-of-permissions)
 * Globala administratörer
 
 
@@ -56,12 +57,12 @@ Din klient organisation måste ha en Azure AD Premium licens kopplad till sig f�
 Etablerings loggarna ger svar på följande frågor:
 
 * Vilka grupper har skapats i ServiceNow?
-* Vilka roller har importer ATS från Amazon Web Services?
+* Vilka användare har tagits bort från Adobe?
 * Vad användarna inte kunde skapa i DropBox?
 
 Du kan komma åt etablerings loggarna genom att välja **etablerings loggar** i avsnittet **övervakning** på bladet **Azure Active Directory** i [Azure Portal](https://portal.azure.com). Det kan ta upp till två timmar för vissa etablerings poster att visas i portalen.
 
-![Etablerings loggar](./media/concept-provisioning-logs/access-provisioning-logs.png "Etableringsloggar")
+![Etableringsloggar](./media/concept-provisioning-logs/access-provisioning-logs.png "Etableringsloggar")
 
 
 En etablerings logg har en Standardlistvy som visar:
@@ -86,7 +87,7 @@ På så sätt kan du visa ytterligare fält eller ta bort fält som redan visas.
 
 Välj ett objekt i listvyn om du vill ha mer detaljerad information.
 
-![Detaljerad information](./media/concept-provisioning-logs/steps.png "Filtrera")
+![Detaljerad information](./media/concept-provisioning-logs/steps.png "Filter")
 
 
 ## <a name="filter-provisioning-activities"></a>Filtrera etablerings aktiviteter
@@ -95,12 +96,12 @@ Du kan filtrera dina etablerings data. Vissa filter värden fylls i dynamiskt ba
 I standardvyn kan du välja följande filter:
 
 - Identitet
-- Datum
+- Date
 - Status
 - Åtgärd
 
 
-![Lägg till filter](./media/concept-provisioning-logs/default-filter.png "Filtrera")
+![Lägg till filter](./media/concept-provisioning-logs/default-filter.png "Filter")
 
 Med filtret **identitet** kan du ange namnet eller identiteten som du bryr dig om. Den här identiteten kan vara en användare, grupp, roll eller något annat objekt. Du kan söka efter objektets namn eller ID. ID varierar beroende på scenario. När ett objekt till exempel konfigureras från Azure AD till SalesForce, är käll-ID: t objekt-ID för användaren i Azure AD medan TargetID är användarens ID i Salesforce. Vid etablering från arbets dagar till Active Directory, är käll-ID: t arbets dagen anställdas anställnings-ID. Observera att namnet på användaren kanske inte alltid finns i identitets kolumnen. Det kommer alltid att finnas ett ID. 
 
@@ -120,7 +121,7 @@ När du väljer en anpassad tidsram kan du konfigurera ett start datum och ett s
 Med **status** filtret kan du välja:
 
 - Alla
-- Klart
+- Success
 - Fel
 - Överhoppad
 
@@ -191,7 +192,7 @@ På fliken **steg** beskrivs de steg som vidtas för att etablera ett objekt. Et
 
 
 
-![Skärm bild som visar fliken steg som visar etablerings stegen.](./media/concept-provisioning-logs/steps.png "Filtrera")
+![Skärm bild som visar fliken steg som visar etablerings stegen.](./media/concept-provisioning-logs/steps.png "Filter")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>Felsöka och rekommendationer
@@ -219,7 +220,9 @@ Fliken **Sammanfattning** ger en översikt över vad som hände och identifierar
 
 - Du kan se hoppade händelser för användare som inte omfattas av omfånget. Detta förväntas, särskilt när Sync-omfånget är inställt på alla användare och grupper. Tjänsten kommer att utvärdera alla objekt i klienten, även de som ligger utanför omfånget. 
 
-- Etablerings loggarna är för närvarande inte tillgängliga i det offentliga molnet. Om du inte kan komma åt etablerings loggarna ska du använda gransknings loggarna som en tillfällig lösning.  
+- Etablerings loggarna är för närvarande inte tillgängliga i det offentliga molnet. Om du inte kan komma åt etablerings loggarna ska du använda gransknings loggarna som en tillfällig lösning. 
+
+- Etablerings loggarna visar inte roll import (gäller för AWS, SalesForce och ZenDesk). Loggarna för roll import finns i gransknings loggarna. 
 
 ## <a name="error-codes"></a>Felkoder
 

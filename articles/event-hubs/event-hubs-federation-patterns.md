@@ -3,12 +3,12 @@ title: Aktivitets mönster för händelse replikering – Azure Event Hubs | Mic
 description: Den här artikeln innehåller detaljerad information om hur du implementerar aktivitets mönster för en speciell händ Els replikering
 ms.topic: article
 ms.date: 12/12/2020
-ms.openlocfilehash: 370c0f2d5c5c591668aa2dadf0512760a4a9b2f5
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 7702b1987faabfce8d97e7b5c9b18766df72caad
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97663703"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803994"
 ---
 # <a name="event-replication-tasks-patterns"></a>Aktivitets mönster för händelse replikering
 
@@ -136,7 +136,7 @@ Variationer av dessa patters är:
 
 De två första mönster variationerna är enkla och skiljer sig inte från aktiviteter med enkel replikering.
 
-Det sista scenariot kräver att redan replikerade händelser replikeras igen. Tekniken visas och beskrivs i [EventHubToEventHubMerge](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/main/code/EventHubToEventHubMerge) -exemplet.
+Det sista scenariot kräver att redan replikerade händelser replikeras igen. Tekniken visas och beskrivs i [EventHubToEventHubMerge](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/code/EventHubMerge) -exemplet.
 
 ## <a name="editor"></a>Redigerare
 

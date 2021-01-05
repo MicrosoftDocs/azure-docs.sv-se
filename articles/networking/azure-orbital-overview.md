@@ -7,12 +7,12 @@ ms.service: vnf-manager
 ms.topic: overview
 ms.date: 09/22/2020
 ms.author: wamota
-ms.openlocfilehash: fcc44bb1c8017d63ee7926a31177aebaafd832fc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 05f3b5b461e42c29a12f126928f69069b45007d3
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91336385"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797283"
 ---
 # <a name="what-is-azure-orbital-preview"></a>Vad är Azure Orbital? (Förhandsversion)
 
@@ -21,11 +21,11 @@ Azure orbital är en helt hanterad molnbaserad jord station som en tjänst som g
 [:::image type="content" source="./media/azure-orbital-overview/orbital-all-ignite-link.png" alt-text="Starta video":::](https://aka.ms/orbitalatignite) 
  för Azure orbital-antändning [Titta på Azure orbital-meddelandet vid antändning på Azure YouTube-kanalen](https://aka.ms/orbitalatignite)
 
-Azure orbital fokuserar på att skapa ett eko system för partner som gör det möjligt för kunder att använda partner underlag, förutom orbital-understationer samt använda partner moln modem förutom integrerade moln modem.   Vi har en partner med Azure-orbital som fokuserar på att samar beta med bransch ledare som KSAT, förutom andra mark Stations-eller Teleport-leverantörer som ViaSat real tids Earth (RTE) och US electrodynamics Inc. för att tillhandahålla bred täckning som är tillgängligt direkt. Det här partnerskapet utökar också Satcom tele leverantörer som SES och andra mark Stations-eller Teleport-leverantörer, ViaSat i real tid (RTE) och US electrodynamics Inc. för att erbjuda oöverträffad anslutning, till exempel global åtkomst till din LEO/MEO-flottan eller Direct Azure-åtkomst för kommunikation Constellations eller global åtkomst till din LEO/MEO-flottan. Vi har vidtagit stegen för att virtualisera RF-signalen och-partnern med ledare – som Kratos och Amergint – för att ta med sina modem på Marketplace. Vårt mål är att göra det möjligt för våra kunder att uppnå fler och skapa system med vår omfattande, skalbara och mycket flexibla plattform Stations tjänst plattform.
+Azure orbital fokuserar på att skapa ett eko system för partner som gör det möjligt för kunder att använda partner underlag, förutom orbital-understationer samt använda partner moln modem förutom integrerade moln modem. Azure orbital fokuserar på att samar beta med bransch ledare som KSAT, förutom andra mark Stations-eller Teleport-leverantörer som ViaSat real tids Earth (RTE) och US electrodynamics Inc. för att tillhandahålla bred täckning som är tillgängligt direkt. Det här partnerskapet utökar också Satcom tele leverantörer som SES och andra mark Stations-eller Teleport-leverantörer, ViaSat i real tid (RTE) och US electrodynamics Inc. för att erbjuda oöverträffad anslutning, till exempel global åtkomst till din LEO/MEO-flottan eller Direct Azure-åtkomst för kommunikation Constellations eller global åtkomst till din LEO/MEO-flottan. Vi har vidtagit stegen för att virtualisera RF-signalen och-partnern med ledare – som Kratos och Amergint – för att ta med sina modem på Marketplace. Vårt mål är att göra det möjligt för våra kunder att uppnå fler och skapa system med vår omfattande, skalbara och mycket flexibla plattform Stations tjänst plattform.
 
 Azure orbital möjliggör flera användnings fall för våra kunder, inklusive jord observationer och global kommunikation. Den innehåller också en plattform som möjliggör digital omvandling av befintliga mark stationer med hjälp av virtualisering. Du har direkt åtkomst till alla Azure-tjänster, den globala Azure-infrastrukturen, marknads platsen och till gång till vårt eko system för världs klass partner via vår tjänst.
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-all-overview.png" alt-text="Starta video":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-all-overview.png" alt-text="Översikt över Azure orbital":::
 
 **Värde propositioner för Azure orbital-användare inkluderar:**
 
@@ -49,13 +49,13 @@ Om du vill ha mer information om vår för hands version, eller om du vill delta
 
 ## <a name="earth-observation"></a><a name="earth-observation"></a>Jord observation
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-eos-dataflow.png" alt-text="Starta video" lightbox="./media/azure-orbital-overview/orbital-eos-dataflow-expanded.png":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-eos-dataflow.png" alt-text="Azure orbital för jord observations data flöde" lightbox="./media/azure-orbital-overview/orbital-eos-dataflow-expanded.png":::
 
 Du kan använda Azure-orbital för att schemalägga kontakter med satelliter enligt principen betala per användning för hus förvarings-och nytto Last downlinks. Använd de schemalagda åtkomst tiderna för att mata in data från satelliten, övervaka satellit hälsa och-status eller skicka kommandon till satelliten. Inkommande data levereras till ditt privata virtuella nätverk så att de kan bearbetas eller lagras i Azure.
 
 Eftersom tjänsten är helt digitaliserad, kan ett program modem från Kratos och Amergint användas för att utföra modulering/demodulering och kodnings-/avkodnings funktioner för att återställa data. Du kommer att ha möjlighet att köpa från Marketplace eller låta oss hantera den här delen åt dig. Dessutom kan integreras med Kubos för att helt utnyttja en komplett lösning för att hantera flottans drift och telemetri, spårning, & kontroll (TT&C) funktioner. Implementera dina arbets belastningar i Azure med hjälp av Azure-resurser och-verktyg för att ändra nytto Last data till de slutliga erbjudandena.
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-eos-schedule.png" alt-text="Starta video":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-eos-schedule.png" alt-text="Azure orbital för jord observations schema":::
 
 ### <a name="scheduling-contacts"></a><a name="scheduling-contacts"></a>Schemalägga kontakter
 
@@ -71,7 +71,7 @@ Om du vill ha mer information om vår för hands version, eller om du vill delta
 
 ## <a name="global-communication"></a><a name="global-communication"></a>Global kommunikation
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-communications-use-flow.png" alt-text="Starta video":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-communications-use-flow.png" alt-text="Azure-orbital för global kommunikation Useflow":::
 
 Satellit leverantörer som tillhandahåller globala kommunikations funktioner till sina kunder kan använda Azure-orbital för att antingen kunna hitta nya bas stationer i Azure-datacenter eller på Azure-nätverkets kant, eller mellan att ansluta sina befintliga bas stationer med globalt Azure-stamnät. De kan sedan vidarebefordra sin trafik på ett globalt Microsoft-nätverk och använda Internet-grupp från Azure-nätverkets kant för att tillhandahålla Internet tjänster och andra hanterade tjänster till sina kunder.
 
@@ -85,7 +85,7 @@ Förutom att skapa våra egna mark stationer gör Azure orbital det möjligt fö
 
 Mark Stations-eller Teleport-leverantörer kan samar beta med Azure orbital för att digitalt transformera sina mark stationer. Genom att göra det kan kunder använda dessa mark stationer för att schemalägga kontakter till sina satelliter och samtidigt utnyttja all bearbetning av program varu radio och data bearbetnings funktioner som erbjuds av plattforms-och orbital-partner via Marketplace. Tjänsten är nära integrerad med arbets belastningar i molnet och ett livfullt eko system av lösningar från tredje part via Marketplace, till exempel modem, resurs hantering och verksamhets kontroll tjänster. Alla data kan också utnyttja det globala fiber nätverket med låg latens och hög tillförlitlighet i Azure. Tillsammans tror vi att vi erbjuder det största täcknings & flexibiliteten för våra kunder att kommunicera med satelliterna med högsta flexibilitet och tillförlitlighet.
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-all-digital-transformations.png" alt-text="Starta video":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-all-digital-transformations.png" alt-text="Azure-orbital för digital omvandling":::
 
 Om du vill ha mer information om vår för hands version, eller om du vill delta i förhands granskningen, fyller du i kontakt formuläret [här](https://aka.ms/iaminterested)eller e-post oss på [MSAzureOrbital@microsoft.com](mailto:MSAzureOrbital@microsoft.com) .
 
@@ -93,7 +93,7 @@ Om du vill ha mer information om vår för hands version, eller om du vill delta
 
 När vi går framåt med vår resa till utrymme kommer vi att lägga till fler partner i vårt eko system för att hjälpa våra kunder att uppnå mer med hjälp av Azure-orbital. Vi kommer att bli partner i vårt tillvägagångs sätt när vi skapar Azure-orbital. Vårt mål har också byggts för att skapa ett livfullt eko system av partner för att gemensamt skapa mer värde för både våra partners och våra kunder. Tänk på det som en korall Reef!
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-all-partners.png" alt-text="Starta video":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-all-partners.png" alt-text="Azure orbital-partner":::
 
 I följande avsnitt visas en lista över partner kategorier och Azure orbital-partner som redan är en del av orbital-eko systemet:
 
@@ -113,7 +113,7 @@ SES kommer att utnyttja vårt globala stamnät nätverk för att dirigera trafik
 
 ### <a name="ttc-solution-partner"></a>Lösnings partner för TT&C
 
-Vi samarbetar med [Kubos](https://www.kubos.com/) för att få större tom, deras molnbaserade program för verksamhets kontroll, till Azure Marketplace för Azure orbital-kunder.
+Vi samarbetar med [Kubos](https://www.kubos.com/) för att få större tom, deras Cloud-Based program för program varu kontroll, till Azure Marketplace för Azure orbital-kunder.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -9,12 +9,12 @@ ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
-ms.openlocfilehash: f559c87a5c3285bf966f9389d623b2262e93cbca
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: bf357dcc9c4790632a1131278edc41c13ac810b1
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425821"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802617"
 ---
 # <a name="client-application-registration"></a>Registrering av klient program
 I den föregående själv studie kursen har du distribuerat och konfigurerat Azure API för FHIR. Nu när du har konfigurerat Azure API för FHIR-installationen kommer vi att registrera ett offentligt klient program. Du kan läsa igenom guiden fullständig [registrering av en offentlig klient](register-public-azure-ad-client-app.md) med instruktioner för mer information eller fel sökning, men vi har informat de viktigaste stegen för den här kursen nedan.
@@ -22,7 +22,7 @@ I den föregående själv studie kursen har du distribuerat och konfigurerat Azu
 1. Navigera till Azure Active Directory
 1. Välj **app Registration**  -->  **New Registration**
 1. Namnge ditt program
-1. Välj **offentlig klient/ursprunglig (mobil & Station ära datorer)** och ange omdirigerings-URI till https://www.getpostman.com/oauth2/callback .
+1. Välj **offentlig klient/ursprunglig (mobil & Station ära datorer)** och ange omdirigerings-URI till `https://www.getpostman.com/oauth2/callback` .
 
    :::image type="content" source="media/tutorial-web-app/register-public-app.png" alt-text="Skärm bild av fönstret registrera ett program och ett exempel på program namn och omdirigerings-URL.":::
 
@@ -36,7 +36,7 @@ När klient programmet har registrerats kopierar du program-ID: t och klient-ID:
 
 Om du har [skrivit din](tutorial-web-app-write-web-app.md) webbapp för att ansluta till Azure-API: t för FHIR, måste du också ange rätt autentiseringsalternativ. 
 
-1. På den vänstra menyn, under **Hantera** , väljer du **autentisering**. 
+1. På den vänstra menyn, under **Hantera**, väljer du **autentisering**. 
 
 1. Om du vill lägga till en ny plattforms konfiguration väljer du **webb**.
 

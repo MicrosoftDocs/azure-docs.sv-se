@@ -10,12 +10,13 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 3c5a04bd14bdcbf250908db78c622b963f191d91
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+adobe-target: true
+ms.openlocfilehash: b54df350e3f59720a92d7c1e74e28d9fcafddf94
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333111"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802498"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Snabb start: skapa en Java-app på Azure App Service
 
@@ -66,9 +67,9 @@ cd helloworld
 
 ## <a name="configure-the-maven-plugin"></a>Konfigurera Maven-plugin-programmet
 
-Distributions processen som Azure App Service använder dina Azure-autentiseringsuppgifter från Azure CLI automatiskt. Om Azure CLI inte installeras lokalt autentiseras maven-plugin-programmet med OAuth eller enhets inloggning. Mer information finns i [autentisering med maven-plugin](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication)-program.
+I distributionsprocessen till Azure App Service används dina Azure-autentiseringsuppgifter från Azure CLI automatiskt. Om Azure CLI inte installeras lokalt autentiseras maven-plugin-programmet med OAuth eller enhets inloggning. Mer information finns i [autentisering med maven-plugin](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication)-program.
 
-Kör kommandot maven nedan för att konfigurera distributionen. Med det här kommandot kan du konfigurera App Service operativ system, Java-version och Tomcat-version.
+Kör nedanstående Maven-kommando för att konfigurera distributionen. Med det här kommandot kan du konfigurera App Service operativ system, Java-version och Tomcat-version.
 
 ```bash
 mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
@@ -78,12 +79,12 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 
 # <a name="java-se"></a>[Java SE](#tab/javase)
 
-1. När du uppmanas med alternativet **prenumeration** väljer du rätt `Subscription` genom att skriva in siffran Skriv ut i rad starten.
+1. När du uppmanas att ange alternativet **Subscription** väljer du rätt `Subscription` genom att skriva in numret på raden.
 1. När du uppmanas att ange alternativet för **webbapp** godkänner du alternativet defaut `<create>` genom att trycka på RETUR eller välja en befintlig app.
 1. När du uppmanas med alternativet **OS** väljer du **Windows** genom att ange `3` .
 1. När du tillfrågas om **pris nivå** väljer du **B2** genom att ange `2` .
 1. Använd Java-standard versionen **Java 8** genom att trycka på RETUR.
-1. Tryck slutligen på RETUR för att bekräfta dina val.
+1. Tryck slutligen på Retur igen för att bekräfta dina val.
 
     Sammanfattnings resultatet ser ut ungefär som i det stycke som visas nedan.
 
@@ -110,13 +111,13 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 
 # <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
-1. När du uppmanas med alternativet **prenumeration** väljer du rätt `Subscription` genom att skriva in siffran Skriv ut i rad starten.
+1. När du uppmanas att ange alternativet **Subscription** väljer du rätt `Subscription` genom att skriva in numret på raden.
 1. När du uppmanas att ange alternativet för **webbapp** godkänner du alternativet defaut `<create>` genom att trycka på RETUR eller välja en befintlig app.
 1. När du uppmanas med alternativet **OS** väljer du **Windows** genom att ange `3` .
 1. När du tillfrågas om **pris nivå** väljer du **B2** genom att ange `2` .
 1. Använd Java-standard versionen **Java 8** genom att trycka på RETUR.
-1. Använd standard webb behållaren, **Tomcat 8,5** , genom att trycka på RETUR.
-1. Tryck slutligen på RETUR för att bekräfta dina val.
+1. Använd standard webb behållaren, **Tomcat 8,5**, genom att trycka på RETUR.
+1. Tryck slutligen på Retur igen för att bekräfta dina val.
 
     Sammanfattnings resultatet ser ut ungefär som i det stycke som visas nedan.
 
@@ -148,12 +149,12 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 
 ### <a name="java-se"></a>[Java SE](#tab/javase)
 
-1. När du uppmanas med alternativet **prenumeration** väljer du rätt `Subscription` genom att skriva in siffran Skriv ut i rad starten.
+1. När du uppmanas att ange alternativet **Subscription** väljer du rätt `Subscription` genom att skriva in numret på raden.
 1. När du uppmanas att ange alternativet för **webbapp** godkänner du alternativet defaut `<create>` genom att trycka på RETUR eller välja en befintlig app.
 1. När du uppmanas med alternativet **OS** väljer du **Linux** genom att trycka på RETUR.
 1. När du tillfrågas om **pris nivå** väljer du **B2** genom att ange `2` .
 1. Använd Java-standard versionen **Java 8** genom att trycka på RETUR.
-1. Tryck slutligen på RETUR för att bekräfta dina val.
+1. Tryck slutligen på Retur igen för att bekräfta dina val.
 
     ```
     Please confirm webapp properties
@@ -177,13 +178,13 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 
 ### <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
-1. När du uppmanas med alternativet **prenumeration** väljer du rätt `Subscription` genom att skriva in siffran Skriv ut i rad starten.
+1. När du uppmanas att ange alternativet **Subscription** väljer du rätt `Subscription` genom att skriva in numret på raden.
 1. När du uppmanas att ange alternativet för **webbapp** godkänner du alternativet defaut `<create>` genom att trycka på RETUR eller välja en befintlig app.
 1. När du uppmanas med alternativet **OS** väljer du **Linux** genom att trycka på RETUR.
 1. När du tillfrågas om **pris nivå** väljer du **B2** genom att ange `2` .
 1. Använd Java-standard versionen **Java 8** genom att trycka på RETUR.
-1. Använd standard webb behållaren, **Tomcat 8,5** , genom att trycka på RETUR.
-1. Tryck slutligen på RETUR för att bekräfta dina val.
+1. Använd standard webb behållaren, **Tomcat 8,5**, genom att trycka på RETUR.
+1. Tryck slutligen på Retur igen för att bekräfta dina val.
 
     ```
     Please confirm webapp properties
@@ -217,7 +218,7 @@ Egenskap | Krävs | Beskrivning | Version
 `<subscriptionId>` | falskt | Ange prenumerations-ID. | 0.1.0 +
 `<resourceGroup>` | true | Azure-resurs grupp för din webbapp. | 0.1.0 +
 `<appName>` | true | Namnet på din webbapp. | 0.1.0 +
-`<region>` | true | Anger den region där din webbapp ska vara värd. Standardvärdet är **westeurope**. Avsnittet alla giltiga regioner i [regioner som stöds](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) . | 0.1.0 +
+`<region>` | true | Anger den region där din webbapp ska vara värd. Standardvärdet är **westeurope**. Avsnittet alla giltiga regioner i [regioner som stöds](https://github.com/microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) . | 0.1.0 +
 `<pricingTier>` | falskt | Pris nivån för din webbapp. Standardvärdet är **P1V2** för produktions arbets belastningen, medan **B2** är det rekommenderade minimi kravet för Java-utveckling/testning. [Läs mer](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0 +
 `<runtime>` | true | Konfiguration av körnings miljön kan du se informationen [här](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details). | 0.1.0 +
 `<deployment>` | true | Distributions konfigurationen kan du se informationen [här](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details). | 0.1.0 +
@@ -241,7 +242,7 @@ Sedan kan du distribuera din Java-app till Azure med hjälp av följande kommand
 mvn package azure-webapp:deploy
 ```
 
-När distributionen är klar är ditt program klart på `http://<appName>.azurewebsites.net/` ( `http://helloworld-1590394316693.azurewebsites.net` i demonstrationen). Öppna webb adressen med din lokala webbläsare, du bör se
+När distributionen är färdig är appen redo på `http://<appName>.azurewebsites.net/`(`http://helloworld-1590394316693.azurewebsites.net` i demonstrationen). Öppna webb adressen med din lokala webbläsare, du bör se
 
 ![Exempel app som körs i Azure App Service](./media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
@@ -252,7 +253,7 @@ När distributionen är klar är ditt program klart på `http://<appName>.azurew
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-I de föregående stegen skapade du Azure-resurser i en resursgrupp. Om du inte tror att du behöver dessa resurser i framtiden tar du bort resurs gruppen från portalen eller genom att köra följande kommando i Cloud Shell:
+I de föregående stegen skapade du Azure-resurser i en resursgrupp. Om du inte tror att du behöver de här resurserna i framtiden ska du ta bort resursgruppen via portalen, eller med följande kommando i Cloud Shell:
 
 ```azurecli-interactive
 az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes

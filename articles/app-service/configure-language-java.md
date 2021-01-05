@@ -10,12 +10,13 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: aa3329c3d9e241fb8224ecc69199779d53027474
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+adobe-target: true
+ms.openlocfilehash: 0334e259f75440cae25f1e165c0621c85f7c7705
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183149"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97804011"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Konfigurera en Java-app för Azure App Service
 
@@ -25,7 +26,7 @@ Den här guiden innehåller viktiga begrepp och instruktioner för Java-utveckla
 
 ## <a name="deploying-your-app"></a>Distribuera din app
 
-Du kan använda [Azure Web App-plugin-programmet för maven för](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) att distribuera dina. War-eller. jar-filer. Distribution med populära IDE: er stöds också med [Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/) eller [Azure Toolkit for Eclipse](/azure/developer/java/toolkit-for-eclipse).
+Du kan använda [Azure Web App-plugin-programmet för maven för](https://github.com/microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) att distribuera dina. War-eller. jar-filer. Distribution med populära IDE: er stöds också med [Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/) eller [Azure Toolkit for Eclipse](/azure/developer/java/toolkit-for-eclipse).
 
 Annars beror distributions metoden på din Arkiv typ:
 
@@ -678,7 +679,7 @@ Det finns tre grundläggande steg när du [registrerar en data källa med JBoss 
     ```
 
 1. Använd en valfri FTP-klient, ladda upp JDBC-drivrutinen, `jboss-cli-commands.cli` , `startup_script.sh` och modulen definition till `/site/deployments/tools/` .
-2. Konfigurera platsen så att `startup_script.sh` den körs när behållaren startar. I Azure Portal navigerar du till **Configuration**  >  **General Settings**  >  **Start kommandot** konfiguration allmänna inställningar. Ange start kommando fältet till `/home/site/deployments/tools/startup_script.sh` . **Spara** ändringarna.
+2. Konfigurera platsen så att `startup_script.sh` den körs när behållaren startar. I Azure Portal navigerar du till   >    >  **Start kommandot** konfiguration allmänna inställningar. Ange start kommando fältet till `/home/site/deployments/tools/startup_script.sh` . **Spara** ändringarna.
 
 För att bekräfta att data källan har lagts till i JBoss-servern, SSH i webapp och kör `$JBOSS_HOME/bin/jboss-cli.sh --connect` . När du är ansluten till JBoss kör `/subsystem=datasources:read-resource` du för att skriva ut en lista över data källorna.
 

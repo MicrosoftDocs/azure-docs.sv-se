@@ -13,12 +13,12 @@ ms.author: wesmc
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-js
-ms.openlocfilehash: 1d6a51e2e9c052be0c59435b287c5fdde459f55d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c96f674b64401250d45542d0f59f13654cf37caa
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334199"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802532"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Anslut Raspberry Pi till Azure IoT Hub (Node.js)
 
@@ -81,7 +81,7 @@ Följande objekt är valfria:
 > [!NOTE]
 > Om du inte har de valfria objekten kan du använda simulerade sensor data.
 
-## <a name="create-an-iot-hub"></a>Skapa en IoT-hubb
+## <a name="create-an-iot-hub"></a>Skapa en IoT Hub
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -97,7 +97,7 @@ Förbered microSD-kortet för installation av Raspbian-avbildningen.
 
 1. Ladda ned Raspbian.
 
-   a. [Raspbian Buster med Desktop](https://www.raspberrypi.org/downloads/raspbian/) (zip-filen).
+   a. [Raspbian Buster med Desktop](https://www.raspberrypi.org/software/) (zip-filen).
 
    b. Extrahera Raspbian-avbildningen till en mapp på datorn.
 
@@ -125,7 +125,7 @@ Förbered microSD-kortet för installation av Raspbian-avbildningen.
 
    ![Menyn Raspbian-inställningar](./media/iot-hub-raspberry-pi-kit-node-get-started/1-raspbian-preferences-menu.png)
 
-4. På fliken **gränssnitt** ställer du in **I2C** och **SSH** för att **Aktivera**och klickar sedan på **OK**. Om du inte har fysiska sensorer och vill använda simulerade sensor data är det här steget valfritt.
+4. På fliken **gränssnitt** ställer du in **I2C** och **SSH** för att **Aktivera** och klickar sedan på **OK**. Om du inte har fysiska sensorer och vill använda simulerade sensor data är det här steget valfritt.
 
    ![Aktivera I2C och SSH på Raspberry Pi](./media/iot-hub-raspberry-pi-kit-node-get-started/2-enable-i2c-ssh-on-raspberry-pi.png)
 
@@ -230,7 +230,7 @@ Aktivera PI med mikrousb-kabeln och strömförsörjningen. Använd Ethernet-kabe
 
    Det finns två objekt i den här filen som du kan konfigurera. Det första är `interval` , som definierar tidsintervall (i millisekunder) mellan meddelanden som skickas till molnet. Den andra är `simulatedData` , vilket är ett booleskt värde för om du vill använda simulerade sensor data eller inte.
 
-   Om du **inte har sensorn**ställer du in `simulatedData` värdet på `true` för att göra exempel programmet att skapa och använda simulerade sensor data.
+   Om du **inte har sensorn** ställer du in `simulatedData` värdet på `true` för att göra exempel programmet att skapa och använda simulerade sensor data.
 
    *Obs: I2C-adressen som används i den här självstudien är 0x77 som standard. Beroende på din konfiguration kan det också vara 0x76: om du stöter på ett I2C-fel kan du försöka ändra värdet till 118 och se om det fungerar bättre. Om du vill se vilken adress som används av sensorn kör du `sudo i2cdetect -y 1` i ett gränssnitt på Raspberry Pi*
 

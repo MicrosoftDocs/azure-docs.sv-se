@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 12/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 2350177373bc99907c437d814d8f01193f18f3fd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7bd85c60025475e8208847a12ccc2729743a975a
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95895731"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803926"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>Utföra en tidpunkts återställning på block BLOB-data
 
@@ -23,7 +23,7 @@ Du kan använda tidpunkts återställning för att återställa en eller flera u
 Om du vill veta mer om återställning av punkt-i-tid kan du läsa mer om att återställa en tidpunkt [för block-blobar](point-in-time-restore-overview.md).
 
 > [!CAUTION]
-> Återställning vid tidpunkt stöder bara återställnings åtgärder på block-blobbar. Det går inte att återställa åtgärder på behållare. Om du tar bort en behållare från lagrings kontot genom att anropa åtgärden [ta bort behållare](/rest/api/storageservices/delete-container) , kan den behållaren inte återställas med en återställnings åtgärd. I stället för att ta bort en behållare tar du bort enskilda blobbar om du kanske vill återställa dem.
+> Återställning vid tidpunkt stöder bara återställnings åtgärder på block-blobbar. Det går inte att återställa åtgärder på behållare. Om du tar bort en behållare från lagrings kontot genom att anropa åtgärden [ta bort behållare](/rest/api/storageservices/delete-container) , kan den behållaren inte återställas med en återställnings åtgärd. Ta bort enskilda blobbar i stället för att ta bort en hel behållare om du vill återställa dem senare.
 
 ## <a name="enable-and-configure-point-in-time-restore"></a>Aktivera och konfigurera återställning av tidpunkter
 
@@ -107,6 +107,8 @@ Endast block blobbar återställs. Page blobbar och bifogade blobbar ingår inte
 > När du utför en återställnings åtgärd, Azure Storage blockera data åtgärder på Blobbarna i de intervall som återställs under drift tiden. Läs-, skriv-och borttagnings åtgärder blockeras på den primära platsen. Därför kan åtgärder som att Visa behållare i Azure Portal inte utföras som förväntat medan återställnings åtgärden pågår.
 >
 > Läs åtgärder från den sekundära platsen kan fortsätta under återställnings åtgärden om lagrings kontot är geo-replikerat.
+>
+> Den tid det tar att återställa en data uppsättning baseras på antalet skriv-och borttagnings åtgärder som gjorts under återställnings perioden. Till exempel kräver ett konto med 1 000 000 objekt med 3 000 objekt som lagts till per dag och 1 000 objekt som tas bort per dag cirka två timmar för att återställa till en punkt 30 dagar tidigare. En kvarhållningsperiod och återställningen över 90 dagar tidigare skulle inte rekommenderas för ett konto med den här ändrings takten.
 
 ### <a name="restore-all-containers-in-the-account"></a>Återställ alla behållare i kontot
 

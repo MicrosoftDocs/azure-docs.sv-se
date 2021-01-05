@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 10/22/2019
 ms.author: chrupa
-ms.openlocfilehash: 556cc7fb5f735346a35903840501cf8f8e1be033
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 30fcaccbb4b87212cc4474b418712ba849156a8e
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372182"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803178"
 ---
 # <a name="partner-ecosystem-for-azure-api-for-fhir"></a>Partner eko system för Azure API för FHIR
 Vi är glada över att Azure API för FHIR har lanserats i allmänhet tillgänglig för alla Azure-kunder. Vi är ännu mer glada över de lösningar som du kommer att bygga med vår tjänst.  
@@ -23,7 +23,7 @@ När du skapar en lösning från slut punkt till slut punkt som bygger på Azure
 
 | Partner          | Funktioner                               | Länder/regioner som stöds         | Kontakt                                                                                                                                |
 |------------------|--------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| Tänd            | Avidentifiering, Legacy-FHIR-konvertering  | USA                         | [Kontakt](http://www.medal.com/)                                                                                           |
+| Tänd            | Avidentifiering, Legacy-FHIR-konvertering  | USA                         | [Kontakt](https://asab.squarespace.com/asab-medal/)                                                                                           |
 | Rhapsody         | Legacy-FHIR-konvertering                     | USA, Australien, Nya Zeeland | [Kontakt](https://rhapsody.health/contact-us)                                                                                          |
 | Gränssnitt    | Legacy-FHIR-konvertering                     | USA, Kanada                 | [Kontakt](https://www.interfaceware.com/contact)                                                                                  |
 | Darena-lösningar | Program utveckling, system integrerare | USA                         | [Kontakt](https://www.darenasolutions.com/contact)                                                                                     |

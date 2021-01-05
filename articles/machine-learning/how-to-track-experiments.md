@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 0b91869e59109550910712b9386056c23843cecd
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 235d54d36965ac5d8d173354b2223247806a1fff
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559599"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803671"
 ---
 # <a name="enable-logging-in-ml-training-runs"></a>Aktivera loggning i ML utbildning körs
 
@@ -92,7 +92,7 @@ Följande notebook-filer demonstrerar begreppen i den här artikeln:
 * [how-to-use-azureml/training/train-on-local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
 * [how-to-use-azureml/track-and-monitor-experiments/logging-api](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/logging-api)
 
-[! INKLUDERA AML-klona-in-Azure-Notebook](/includes/aml-clone-for-examples.md)
+[! INKLUDERA AML-klona-in-Azure-Notebook](https://github.com/MicrosoftDocs/azure-docs-pr/blob/live/includes/aml-clone-for-examples.md)
 
 ## <a name="next-steps"></a>Nästa steg
 

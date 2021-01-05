@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 671ca73cfa898be532521599d1211d2a8081eb4b
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 0d833c32000eb91511782184ef4455bc1973a714
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563270"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97807917"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Vanliga frågor och svar om Azure Synapse Analytics
 

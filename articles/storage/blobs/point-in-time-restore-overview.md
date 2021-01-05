@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 12/28/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ca09e41e6d5b83f14d2dfee4107135585b7e945a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 518df665db0ba3770bee757f45d02b6ccd303a00
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95908803"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803875"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>Återställning av tidpunkter för block-blobar
 
@@ -43,7 +43,7 @@ Endast en återställnings åtgärd kan köras på ett lagrings konto i taget. E
 > Läs åtgärder från den sekundära platsen kan fortsätta under återställnings åtgärden om lagrings kontot är geo-replikerat.
 
 > [!CAUTION]
-> Återställning vid tidpunkt stöder bara återställnings åtgärder på block-blobbar. Det går inte att återställa åtgärder på behållare. Om du tar bort en behållare från lagrings kontot genom att anropa åtgärden [ta bort behållare](/rest/api/storageservices/delete-container) , kan den behållaren inte återställas med en återställnings åtgärd. I stället för att ta bort en behållare tar du bort enskilda blobbar om du kanske vill återställa dem.
+> Återställning vid tidpunkt stöder bara återställnings åtgärder på block-blobbar. Det går inte att återställa åtgärder på behållare. Om du tar bort en behållare från lagrings kontot genom att anropa åtgärden [ta bort behållare](/rest/api/storageservices/delete-container) , kan den behållaren inte återställas med en återställnings åtgärd. Ta bort enskilda blobbar i stället för att ta bort en hel behållare om du vill återställa dem senare.
 
 ### <a name="prerequisites-for-point-in-time-restore"></a>Krav för återställning av punkt-till-tid
 
@@ -57,9 +57,12 @@ Vid återställning från tidpunkt krävs att följande Azure Storage funktioner
 
 När du aktiverar tidpunkts återställning för ett lagrings konto anger du en kvarhållningsperiod. Block-blobbar i ditt lagrings konto kan återställas under kvarhållningsperioden.
 
-Kvarhållningsperioden börjar när du aktiverar tidpunkts återställning. Tänk på att du inte kan återställa blobbar till ett tillstånd innan kvarhållningsperioden börjar. Om du till exempel har aktiverat återställning av tidpunkt på plats den 1 maj med en kvarhållning på 30 dagar kan du sedan återställa till högst 15 dagar. Den 1 juni kan du återställa data från mellan 1 och 30 dagar.
+Kvarhållningsperioden börjar några minuter efter att du har aktiverat återställning av tidpunkter. Tänk på att du inte kan återställa blobbar till ett tillstånd innan kvarhållningsperioden börjar. Om du till exempel har aktiverat återställning av tidpunkt på plats den 1 maj med en kvarhållning på 30 dagar kan du sedan återställa till högst 15 dagar. Den 1 juni kan du återställa data från mellan 1 och 30 dagar.
 
 Kvarhållningsperioden för återställning av plats-i-tid måste vara minst en dag under den angivna kvarhållningsperioden för mjuk borttagning. Om till exempel den mjuka borttagnings perioden har angetts till 7 dagar kan den kvarhållna tiden för återställning av återställnings perioden vara mellan 1 och 6 dagar.
+
+> [!IMPORTANT]
+> Den tid det tar att återställa en data uppsättning baseras på antalet skriv-och borttagnings åtgärder som gjorts under återställnings perioden. Till exempel kräver ett konto med 1 000 000 objekt med 3 000 objekt som lagts till per dag och 1 000 objekt som tas bort per dag cirka två timmar för att återställa till en punkt 30 dagar tidigare. En kvarhållningsperiod och återställningen över 90 dagar tidigare skulle inte rekommenderas för ett konto med den här ändrings takten.
 
 ### <a name="permissions-for-point-in-time-restore"></a>Behörigheter för återställning till tidpunkt
 

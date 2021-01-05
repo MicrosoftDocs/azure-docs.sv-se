@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
 ms.date: 12/01/2020
 ms.author: thvankra
-ms.openlocfilehash: f5f2cb5ac8c354df38310cdcb47b98e1da5b6cfa
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: c969e4fac3ae30088cfe47a7b0edff22c578cb8b
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97521842"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802379"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-db-cassandra-api"></a>Felsök vanliga problem i Azure Cosmos DB API för Cassandra
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -28,7 +28,7 @@ I den här artikeln beskrivs vanliga fel och lösningar för program som konsume
 | OverloadedException (Java) | Det totala antalet förbrukade enheter för förbrukad enhet är fler än de begärda enheterna som har allokerats på tecken utrymmet eller tabellen. Så att förfrågningarna är begränsade. | Överväg att skala data flödet som är kopplat till ett tecken utrymme eller en tabell från Azure Portal (se [här](manage-scale-cassandra.md) för skalnings åtgärder i API för Cassandra) eller så kan du implementera en princip för återförsök. För Java, se exempel på nya försök för [v3. x driv rutin](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) och [v4. x-drivrutin](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample-v4). Se även [Azure Cosmos Cassandra-tillägg för Java](https://github.com/Azure/azure-cosmos-cassandra-extensions) |
 | OverloadedException (Java) även med tillräckligt data flöde | Systemet förefaller vara begränsnings begär Anden trots att tillräckligt med data flöde har allokerats för begär ande volym och/eller förbrukad enhets kostnad för begäran  | API för Cassandra implementerar system data flödes budgeten för åtgärder på schema nivå (CREATE TABLE, ALTER TABLE, DROP TABLE). Den här budgeten bör vara tillräckligt för schema åtgärder i ett produktions system. Men om du har ett stort antal åtgärder på schema nivå är det möjligt att du överskrider den här gränsen. Eftersom den här budgeten inte är inloggad av användaren, måste du minska antalet schema åtgärder som ska köras. Om den här åtgärden inte löser problemet, eller om det inte är möjligt för din arbets belastning, kan du [skapa en support förfrågan för Azure](../azure-portal/supportability/how-to-create-azure-support-request.md).|
 | ClosedConnectionException (Java) | Efter en tid av inaktivitet efter lyckade anslutningar kan programmet inte ansluta| Det här felet kan bero på en tids gräns för inaktivitet i Azure belastningsutjämnare, vilket är 4 minuter. Ange Keep Alive-inställningen i driv rutinen (se nedan) och öka inställningarna för Keep-Alive i operativ systemet, eller [Justera inaktiv tids gräns i Azure Load Balancer](../load-balancer/load-balancer-tcp-idle-timeout.md?tabs=tcp-reset-idle-portal). |
-| Andra tillfälliga anslutnings fel (Java) | Anslutningen tappas bort eller nådde tids gränsen | Apache Cassandra-drivrutinerna för Java innehåller två principer för intern åter anslutning: `ExponentialReconnectionPolicy` och `ConstantReconnectionPolicy` . Standardvärdet är `ExponentialReconnectionPolicy`. Men för Azure Cosmos DB API för Cassandra rekommenderar vi att du `ConstantReconnectionPolicy` har en fördröjning på 2 sekunder. Se [dokumentationen för driv rutiner](https://docs.datastax.com/developer/java-driver/4.9/manual/core/reconnection/)  för Java v4. x-drivrutin och [här](https://docs.datastax.com/developer/java-driver/3.7/manual/reconnection/) för Java 3. x-vägledning (se även exemplen nedan).|
+| Andra tillfälliga anslutnings fel (Java) | Anslutningen tappas bort eller nådde tids gränsen | Apache Cassandra-drivrutinerna för Java innehåller två principer för intern åter anslutning: `ExponentialReconnectionPolicy` och `ConstantReconnectionPolicy` . Standardvärdet är `ExponentialReconnectionPolicy`. Men för Azure Cosmos DB API för Cassandra rekommenderar vi att du `ConstantReconnectionPolicy` har en fördröjning på 2 sekunder. Se [dokumentationen för driv rutiner](https://docs.datastax.com/en/developer/java-driver/4.9/manual/core/reconnection/)  för Java v4. x-drivrutin och [här](https://docs.datastax.com/en/developer/java-driver/3.7/manual/reconnection/) för Java 3. x-vägledning (se även exemplen nedan).|
 
 Om felet inte finns med i listan ovan och du får ett fel meddelande när du kör en [åtgärd som stöds i API för Cassandra](cassandra-support.md), där felet *inte finns när du använder ursprunglig Apache-Cassandra*, skapar du [en support förfrågan för Azure](../azure-portal/supportability/how-to-create-azure-support-request.md)
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/17/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df2962c8d428694a663acddf5922829f8b913b92
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 1a7bd36a6e3f3cc5b785745fc51f0aede3b47b74
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94737497"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803314"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Bortredigering-ansikten med Azure-medieanalys
 
@@ -41,7 +41,7 @@ Förutom ett helt automatiskt läge, finns det ett två-pass-arbetsflöde, som g
 
 Detta skapar en förredigerad MP4 automatiskt utan manuella indatatyper.
 
-| Fas | Filnamn | Kommentarer |
+| Fas | Filnamn | Obs! |
 | --- | --- | --- |
 | Inmatad till gång |foo. bar |Video i WMV-, MOV-eller MP4-format |
 | Konfiguration av indatamängd |Inställning av jobb konfiguration |{' version ': ' 1.0 ', ' alternativ ': {' läge ': ' kombinerat '}} |
@@ -51,7 +51,7 @@ Detta skapar en förredigerad MP4 automatiskt utan manuella indatatyper.
 
 Det **analyserande** passet i det två-pass-arbets flödet tar en video indata och skapar en JSON-fil med ansikts platser och jpg-bilder av varje identifierad yta.
 
-| Fas | Filnamn | Kommentarer |
+| Fas | Filnamn | Obs! |
 | --- | --- | --- |
 | Inmatad till gång |foo. bar |Video i WMV-, MPV-eller MP4-format |
 | Konfiguration av indatamängd |Inställning av jobb konfiguration |{' version ': ' 1.0 ', ' alternativ ': {' läge ': ' analysera '}} |
@@ -117,7 +117,7 @@ Detta inkluderar en lista med ID: n som är suddig, den ursprungliga videon och 
 
 Den ursprungliga videon ingår inte i resultatet från analys steget. Videon måste överföras till indata till gången för uppgiften bortredigering och väljs som primär fil.
 
-| Fas | Filnamn | Kommentarer |
+| Fas | Filnamn | Obs! |
 | --- | --- | --- |
 | Inmatad till gång |foo. bar |Video i WMV-, MPV-eller MP4-format. Samma video som i steg 1. |
 | Inmatad till gång |foo_annotations.jspå |anteckningarnas metadatafil från fas ett, med valfria ändringar. |
@@ -163,9 +163,9 @@ Du kan hitta exempel på suddiga typer nedan.
 
 ![Notifiera](./media/media-services-face-redaction/blur2.png)
 
-#### <a name="high"></a>Hög
+#### <a name="high"></a>Högt
 
-![Hög](./media/media-services-face-redaction/blur3.png)
+![Högt](./media/media-services-face-redaction/blur3.png)
 
 #### <a name="box"></a>Box
 
@@ -385,4 +385,4 @@ namespace FaceRedaction
 
 [Översikt över Azure Media Services Analytics](./legacy-components.md)
 
-[Azure-medieanalys demonstrationer](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure-medieanalys demonstrationer](http://amslabs.azurewebsites.net/demos/Analytics.html)

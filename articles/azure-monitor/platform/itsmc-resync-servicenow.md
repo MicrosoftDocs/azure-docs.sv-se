@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 3e836873219bde3836f2863e328b0b6f5b89addc
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 01e492072bd75af9f80656b71d2cc1c473d64263
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507293"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803807"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>Felsöka problem med anslutningsprogram för hantering av IT-tjänster (ITSM)
 
@@ -23,7 +23,7 @@ ITSM ger dig möjlighet att skicka aviseringar till externt biljett system, till
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Visualisera och analysera incidenter och data för ändringsbegäran
 
-Beroende på din konfiguration när du konfigurerar en anslutning kan ITSMC synkronisera upp till 120 dagar av incidenten och data för ändringsbegäran. Schemat för logg poster för dessa data finns i [avsnittet Ytterligare information](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#additional-information) i den här artikeln.
+Beroende på din konfiguration när du konfigurerar en anslutning kan ITSMC synkronisera upp till 120 dagar av incidenten och data för ändringsbegäran. Schemat för logg poster för dessa data finns i [avsnittet Ytterligare information](./itsmc-overview.md) i den här artikeln.
 
 Du kan visualisera incident-och ändrings begär ande data med hjälp av ITSMC-instrument panelen:
 
@@ -39,7 +39,27 @@ Om du använder Tjänstkarta kan du Visa Service Desk-objekten som skapats i ITS
 
 ![Skärm bild som visar Log Analytics skärmen.](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-## <a name="how-to-manually-fix-servicenow-sync-problems"></a>Åtgärda ServiceNow-synkroniseringsproblem manuellt
+## <a name="troubleshoot-itsm-connections"></a>Felsöka ITSM-anslutningar
+
+- Gör så här om en anslutning inte kan ansluta till ITSM-systemet och du får ett **fel meddelande när du sparar anslutnings** meddelandet:
+   - För ServiceNow-, Cherwell-och upphandlings anslutningar:  
+     - Kontrol lera att du har angett användar namn, lösen ord, klient-ID och klient hemlighet korrekt för varje anslutning.  
+     - Se till att du har tillräcklig behörighet i motsvarande ITSM-produkt för att upprätta anslutningen.  
+   - För Service Manager anslutningar:  
+     - Se till att webbappen har distribuerats och att hybrid anslutningen har skapats. Om du vill kontrol lera att anslutningen har upprättats med den lokala Service Manager datorn går du till webbappens URL enligt beskrivningen i dokumentationen för att skapa en [hybrid anslutning](./itsmc-connections-scsm.md#configure-the-hybrid-connection).  
+
+- Om data från ServiceNow inte kommer att synkroniseras till Log Analytics, se till att ServiceNow-instansen inte är i vilo läge. ServiceNow dev-instanser går ibland till vilo läge när de är inaktiva under en längre tid. Rapportera problemet om det inte är vad som händer.
+- Om Log Analytics-aviseringar för brand men arbets objekt inte skapas i ITSM-produkten, om konfigurations objekt inte skapas/länkas till arbets objekt, eller för annan information, se följande resurser:
+   -  ITSMC: lösningen visar en sammanfattning av anslutningar, arbets objekt, datorer med mera. Välj den panel som har etiketten **kopplings status** . Då kommer du att **Logga sökningen** med den relevanta frågan. Titta på logg poster med en `LogType_S` av `ERROR` för mer information.
+   - Sidan **loggs ökning** : Visa fel och relaterad information direkt med hjälp av frågan `*ServiceDeskLog_CL*` .
+
+### <a name="troubleshoot-service-manager-web-app-deployment"></a>Felsöka Service Manager Web App-distribution
+
+-   Om du har problem med att distribuera webbappar kontrollerar du att du har behörighet att skapa/distribuera resurser i prenumerationen.
+-   Om du får en **objekt referens som inte är inställt på en instans av ett objekt** fel när du kör [skriptet](itsmc-service-manager-script.md), måste du se till att du har angett giltiga värden i avsnittet **användar konfiguration** .
+-   Om du inte kan skapa Service Bus Relay-namnområdet kontrollerar du att den nödvändiga resurs leverantören är registrerad i prenumerationen. Om den inte är registrerad skapar du Service Bus Relay-namnområdet manuellt från Azure Portal. Du kan också skapa den när du [skapar hybrid anslutningen](./itsmc-connections-scsm.md#configure-the-hybrid-connection) i Azure Portal.
+
+### <a name="how-to-manually-fix-sync-problems"></a>Så här åtgärdar du synkroniseringsproblem manuellt
 
 Azure Monitor kan ansluta till ITSM-leverantörer (IT Service Management) från tredje part. ServiceNow är en av dessa leverantörer.
 
@@ -74,28 +94,4 @@ Använd följande synkroniseringsprocess för att återaktivera anslutningen och
 
         ![Ny anslutning](media/itsmc-resync-servicenow/save-8bit.png)
 
-f.    Granska meddelandena för att se om processen slutfördes utan framgång
-
-## <a name="troubleshoot-itsm-connections"></a>Felsöka ITSM-anslutningar
-
-- Gör så här om en anslutning Miss lyckas från den anslutna källans användar gränssnitt och du får ett **fel när du sparar anslutnings** meddelandet:
-   - För ServiceNow-, Cherwell-och upphandlings anslutningar:  
-     - Kontrol lera att du har angett användar namn, lösen ord, klient-ID och klient hemlighet korrekt för varje anslutning.  
-     - Se till att du har tillräcklig behörighet i motsvarande ITSM-produkt för att upprätta anslutningen.  
-   - För Service Manager anslutningar:  
-     - Se till att webbappen har distribuerats och att hybrid anslutningen har skapats. Om du vill kontrol lera att anslutningen har upprättats med den lokala Service Manager datorn går du till webbappens URL enligt beskrivningen i dokumentationen för att skapa en [hybrid anslutning](./itsmc-connections.md#configure-the-hybrid-connection).  
-
-- Om data från ServiceNow inte kommer att synkroniseras till Log Analytics, se till att ServiceNow-instansen inte är i vilo läge. ServiceNow dev-instanser går ibland till vilo läge när de är inaktiva under en längre tid. Rapportera problemet om det inte är vad som händer.
-- Om Log Analytics-aviseringar för brand men arbets objekt inte skapas i ITSM-produkten, om konfigurations objekt inte skapas/länkas till arbets objekt, eller för annan information, se följande resurser:
-   -  ITSMC: lösningen visar en sammanfattning av anslutningar, arbets objekt, datorer med mera. Välj den panel som har etiketten **kopplings status** . Då kommer du att **Logga sökningen** med den relevanta frågan. Titta på logg poster med en `LogType_S` av `ERROR` för mer information.
-   - Sidan **loggs ökning** : Visa fel och relaterad information direkt med hjälp av frågan `*ServiceDeskLog_CL*` .
-
-## <a name="troubleshoot-service-manager-web-app-deployment"></a>Felsöka Service Manager Web App-distribution
-
--   Om du har problem med att distribuera webbappar kontrollerar du att du har behörighet att skapa/distribuera resurser i prenumerationen.
--   Om du får en **objekt referens som inte är inställt på en instans av ett objekt** fel när du kör [skriptet](itsmc-service-manager-script.md), måste du se till att du har angett giltiga värden i avsnittet **användar konfiguration** .
--   Om du inte kan skapa Service Bus Relay-namnområdet kontrollerar du att den nödvändiga resurs leverantören är registrerad i prenumerationen. Om den inte är registrerad skapar du Service Bus Relay-namnområdet manuellt från Azure Portal. Du kan också skapa den när du [skapar hybrid anslutningen](./itsmc-connections.md#configure-the-hybrid-connection) i Azure Portal.
-
-## <a name="next-steps"></a>Nästa steg
-
-Läs mer om [IT-tjänstens hanterings anslutningar](itsmc-connections.md)
+f.    Granska meddelandena för att se om processen har startats.

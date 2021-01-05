@@ -4,12 +4,12 @@ description: Den här artikeln innehåller en översikt över Federation med fle
 ms.topic: article
 ms.date: 12/12/2020
 ms.author: spelluru
-ms.openlocfilehash: 02057d505308902d780e20e095bc248d1eaa1a74
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 7deb6fe04241225f1f97a204cc62b4aefad9f440
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657582"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97804045"
 ---
 # <a name="multi-site-and-multi-region-federation"></a>Federation med flera platser och flera regioner
 
@@ -148,9 +148,9 @@ Implementering av mönster ovan kräver en skalbar och tillförlitlig körnings 
 
 För tillstånds känsliga replikerings program som behöver ta hänsyn till relationer mellan händelser, skapa sammansatta händelser, utöka händelser eller minska händelser, skapa data agg regeringar och transformera händelse nytto laster [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) är det bästa implementerings alternativet.
 
-I Azure Stream Analytics skapar du [jobb](../stream-analytics/stream-analytics-quick-create-portal.md) [som integrerar indata och](../stream-analytics/stream-analytics-add-inputs.md) [utdata](../stream-analytics/stream-analytics-define-outputs.md) och integrerar data från indata via [frågor](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference.md) som ger ett resultat som sedan görs tillgängligt i utdata.
+I Azure Stream Analytics skapar du [jobb](../stream-analytics/stream-analytics-quick-create-portal.md) [som integrerar indata och](../stream-analytics/stream-analytics-add-inputs.md) [utdata](../stream-analytics/stream-analytics-define-outputs.md) och integrerar data från indata via [frågor](/stream-analytics-query/stream-analytics-query-language-reference) som ger ett resultat som sedan görs tillgängligt i utdata.
 
-Frågor baseras på SQL- [frågespråket](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference.md) och kan användas för att enkelt filtrera, sortera, sammanställa och koppla strömmande data under en viss tids period. Du kan också utöka detta SQL-språk med [Java Script](../stream-analytics/stream-analytics-javascript-user-defined-functions.md) -och [C#-användardefinierade funktioner (UDF: er)](../stream-analytics/stream-analytics-edge-csharp-udf-methods.md). Du kan enkelt justera alternativ för händelse ordning och varaktighet för tiden som Windows kan utföra agg regerings åtgärder via enkla språk konstruktioner och/eller konfigurationer.
+Frågor baseras på SQL- [frågespråket](/stream-analytics-query/stream-analytics-query-language-reference) och kan användas för att enkelt filtrera, sortera, sammanställa och koppla strömmande data under en viss tids period. Du kan också utöka detta SQL-språk med [Java Script](../stream-analytics/stream-analytics-javascript-user-defined-functions.md) -och [C#-användardefinierade funktioner (UDF: er)](../stream-analytics/stream-analytics-edge-csharp-udf-methods.md). Du kan enkelt justera alternativ för händelse ordning och varaktighet för tiden som Windows kan utföra agg regerings åtgärder via enkla språk konstruktioner och/eller konfigurationer.
 
 Varje jobb har en eller flera utdata för transformerade data, och du kan kontrol lera vad som händer i svaret på den information som du har analyserat. Du kan till exempel:
 
@@ -191,7 +191,7 @@ I den här artikeln har vi utforskat en rad Federations mönster och förklarat 
 
 Härnäst kanske du vill läsa mer om hur du konfigurerar ett replikerande program med Azure Stream Analytics eller Azure Functions och hur du replikerar händelse flöden mellan Event Hubs och olika händelse-och meddelande system:
 
-- [Aktivitets mönster för händelse replikering][10]
+- [Mönster för händelsereplikeringsaktiviteter][10]
 - [Bearbeta data med Azure Stream Analytics][9]
 - [Event Replicators-program i Azure Functions][1]
 - [Replikerar händelser mellan Event Hubs][2]

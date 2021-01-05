@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: ed30c271e4c2458a33784cbcfc682001b542f2b6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d57512d631685f1f8da7dcd22181bf4d4223937f
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964957"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97807577"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines-distribution för SAP NetWeaver
 
@@ -325,7 +325,7 @@ Azure Virtual Machines är lösningen för organisationer som behöver beräknin
 
 I den här artikeln beskriver vi stegen för att distribuera SAP-program på virtuella datorer (VM) i Azure, inklusive alternativa distributions alternativ och fel sökning. Den här artikeln bygger på informationen i [Azure Virtual Machines planering och implementering för SAP NetWeaver][planning-guide]. Det kompletterar även SAP-installations dokumentation och SAP-anteckningar, som är de viktigaste resurserna för att installera och distribuera SAP-program.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
@@ -1070,8 +1070,14 @@ Det nya VM-tillägget för SAP använder en hanterad identitet som tilldelats de
     Exempel:
 
     ```azurecli
+    # Azure CLI on Linux
     spID=$(az resource show -g <resource-group-name> -n <vm name> --query identity.principalId --out tsv --resource-type Microsoft.Compute/virtualMachines)
     rgId=$(az group show -g <resource-group-name> --query id --out tsv)
+    az role assignment create --assignee $spID --role 'Reader' --scope $rgId
+
+    # Azure CLI on Windows/PowerShell
+    $spID=az resource show -g <resource-group-name> -n <vm name> --query identity.principalId --out tsv --resource-type Microsoft.Compute/virtualMachines
+    $rgId=az group show -g <resource-group-name> --query id --out tsv
     az role assignment create --assignee $spID --role 'Reader' --scope $rgId
     ```
 
@@ -1079,11 +1085,19 @@ Det nya VM-tillägget för SAP använder en hanterad identitet som tilldelats de
     Tillägget stöds för närvarande bara i AzureCloud. Azure Kina 21Vianet, Azure Government eller någon annan speciell miljö stöds inte ännu.
 
     ```azurecli
-    # For Linux machines
+    # Azure CLI on Linux
+    ## For Linux machines
     az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Linux --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{"system":"SAP"}'
 
-    #For Windows machines
+    ## For Windows machines
     az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Windows --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{"system":"SAP"}'
+
+    # Azure CLI on Windows/PowerShell
+    ## For Linux machines
+    az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Linux --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{\"system\":\"SAP\"}'
+
+    ## For Windows machines
+    az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Windows --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{\"system\":\"SAP\"}'
     ```
 
 ## <a name="checks-and-troubleshooting"></a><a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>Kontroller och fel sökning

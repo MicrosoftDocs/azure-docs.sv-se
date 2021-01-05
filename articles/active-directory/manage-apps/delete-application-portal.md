@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 07/01/2020
+ms.date: 12/28/2020
 ms.author: kenwith
-ms.openlocfilehash: 677c9c0123c174fdf2cf8e94f9c8110656d21306
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e2b8bd47f7d124562a38413d36b849d1f7efacee
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649406"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802770"
 ---
 # <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>Snabb start: ta bort ett program från din Azure Active Directory (Azure AD)-klient
 
@@ -53,6 +53,6 @@ När du är klar med den här snabb starts serien bör du ta bort appen för att
 
 ## <a name="next-steps"></a>Nästa steg
 
-Du har slutfört snabb starts serien! I nästa steg ska du läsa om metod tips i app Management.
+Du har slutfört snabb starts serien! Lär dig mer om enkel Sign-On (SSO), se [Vad är SSO?](what-is-single-sign-on.md) Eller Läs mer om metod tips i app Management.
 > [!div class="nextstepaction"]
 > [Metod tips för program hantering](application-management-fundamentals.md)

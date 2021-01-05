@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 6f2c15518a12a99ca1390284165ad2d48156e06a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9a53eb1004d68045781903b71d02c3416f494be2
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968680"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803824"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux guld-avbildningar för prenumerationer i Azure
 
@@ -216,4 +216,4 @@ Anvisningar för hur du använder Azure Disk Encryption finns [Azure Disk Encryp
 - Mer information om Red Hats uppdaterings infrastruktur finns i [Azure Red Hat-uppdaterings infrastruktur](./redhat-rhui.md).
 - Mer information om de Red Hat-avbildningarna i Azure finns på [dokumentations sidan](./redhat-images.md).
 - Information om Red Hat support-principer för alla versioner av RHEL finns på sidan [Red Hat Enterprise Linux livs cykel](https://access.redhat.com/support/policy/updates/errata) .
-- Mer dokumentation om RHEL Gold-avbildningar finns i [Red Hat-dokumentationen](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure).
+- Mer dokumentation om RHEL Gold-avbildningar finns i [Red Hat-dokumentationen](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/cloud-access-gold-images_cloud-access#proc_using-gold-images-azure_cloud-access).

@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 12/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: aaaeb23ef24f0d8a0fa4b38139fed57cda6fa63d
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 93b6160b495b609e23e10b3f709d130792067423
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657047"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803790"
 ---
 # <a name="it-service-management-connector-overview"></a>Översikt över Anslutningsprogram för hantering av IT-tjänster (ITSM)
 
@@ -43,13 +43,11 @@ Information om juridiska villkor och sekretess policyn finns i [Microsofts sekre
 
 Du kan börja använda ITSMC genom att utföra följande steg:
 
-1. [Anslut ITSM produkter/tjänster med Anslutningsprogram för hantering av IT-tjänster (ITSM).](./itsmc-connections.md)
-1. [Lägg till ITSMC.](/.itsmc-definition.md#add-it-service-management-connector)
-1. [Skapa en ITSM-anslutning.](./itsmc-definition.md#create-an-itsm-connection)
-1. [Använd anslutningen.](./itsmc-definition.md#use-itsmc)
+1. [Konfigurera ITSM-miljön för att acceptera aviseringar från Azure.](./itsmc-connections.md)
+1. [Konfigurera Azure ITSM-lösning](./itsmc-definition.md#add-it-service-management-connector)
+1. [Konfigurera Azure ITSM Connector för din ITSM-miljö.](./itsmc-definition.md#create-an-itsm-connection)
+1. [Konfigurera åtgärds gruppen för att utnyttja ITSM-anslutningen.](./itsmc-definition.md#use-itsmc)
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Lägg till ITSM produkter/tjänster i anslutningsprogram för hantering av IT-tjänster (ITSM)](./itsmc-connections.md) 
- [Lägg till ITSM-anslutningsprogram](./itsmc-definition.md) 
- [Felsöka problem i ITSM-anslutningsprogram](./itsmc-resync-servicenow.md)
+* [Felsöka problem med anslutningsprogram för hantering av IT-tjänster (ITSM)](./itsmc-resync-servicenow.md)

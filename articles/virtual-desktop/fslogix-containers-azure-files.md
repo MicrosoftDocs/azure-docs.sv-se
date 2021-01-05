@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 669f4baa723b78b8933f3a75fc361c468f9e2df9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3bd667bc7fce8f9fb10b852cae7a6c4ad198d75
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88002395"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797204"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-profilcontainrar och Azure-filer
 
@@ -47,17 +47,17 @@ I följande tabell visas fördelarna och begränsningarna för tidigare använda
 
 | Teknik | Moderna inställningar | Win32-inställningar | OS-inställningar | Användardata | Stöds på Server-SKU: n | Server dels lagring på Azure | Server dels lagring lokalt | Versions stöd | Efterföljande inloggnings tid |Obs!|
 | ---------- | :-------------: | :------------: | :---------: | --------: | :---------------------: | :-----------------------: | :--------------------------: | :-------------: | :---------------------: |-----|
-| **Användar profil diskar (UPD)** | Ja | Ja | Ja | Ja | Ja | Inga | Ja | Win 7 + | Ja | |
-| **Central användar profil (RUP), underhålls läge** | Inga | Ja | Ja | Ja | Ja| Inga | Ja | Win 7 + | Inga | |
-| **Enterprise State Roaming (ESR)** | Ja | Inga | Ja | Inga | Se kommentarer | Ja | Inga | Win 10 | Inga | Funktioner på Server-SKU men saknar stöd för användar gränssnitt |
-| **User Experience Virtualization (UE-V)** | Ja | Ja | Ja | Inga | Ja | Inga | Ja | Win 7 + | Inga |  |
-| **OneDrive-molnappar** | Inga | Inga | Inga | Ja | Se kommentarer | Se kommentarer  | Se kommentarer | Win 10-RS3 | Inga | Inte testat på Server-SKU. Backend-lagring på Azure är beroende av Sync-klienten. Backend-lokal kräver en sync-klient. |
+| **Användar profil diskar (UPD)** | Ja | Ja | Ja | Ja | Ja | Nej | Ja | Win 7 + | Ja | |
+| **Central användar profil (RUP), underhålls läge** | Nej | Ja | Ja | Ja | Ja| Nej | Ja | Win 7 + | Nej | |
+| **Enterprise State Roaming (ESR)** | Ja | Nej | Ja | Nej | Se kommentarer | Ja | Nej | Win 10 | Nej | Funktioner på Server-SKU men saknar stöd för användar gränssnitt |
+| **User Experience Virtualization (UE-V)** | Ja | Ja | Ja | Nej | Ja | Nej | Ja | Win 7 + | Nej |  |
+| **OneDrive-molnappar** | Nej | Nej | Nej | Ja | Se kommentarer | Se kommentarer  | Se kommentarer | Win 10-RS3 | Nej | Inte testat på Server-SKU. Backend-lagring på Azure är beroende av Sync-klienten. Backend-lokal kräver en sync-klient. |
 
 #### <a name="performance"></a>Prestanda
 
 UPD kräver [Lagringsdirigering (S2D)](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) för att uppfylla prestanda kraven. UPD använder SMB-protokoll (Server Message Block). Profilen kopieras till den virtuella dator där användaren loggas. UPD med S2D är den lösning som vi rekommenderar för Windows Virtual Desktop.
 
-#### <a name="cost"></a>Kostnad
+#### <a name="cost"></a>Cost
 
 Även om S2D-kluster uppnår nödvändiga prestanda, är kostnaden dyra för företags kunder, men särskilt dyra för små och medel stora företags (SMB)-kunder. För den här lösningen betalar företag för lagrings diskar, tillsammans med kostnaden för de virtuella datorer som använder diskarna för en resurs.
 
@@ -87,7 +87,7 @@ För att se till att din Windows Virtual Desktop-miljö följer bästa praxis:
 
 - Azure Files lagrings kontot måste finnas i samma region som de virtuella datorerna i sessionen.
 - Azure Files behörigheter ska matcha behörigheter som beskrivs i [behållare för krav – profiler](/fslogix/fslogix-storage-config-ht).
-- Varje adresspool måste vara inbyggd av samma typ och storlek som den virtuella datorn baserat på samma huvud avbildning.
+- Varje virtuell dator för poolen med värdar måste vara inbyggd av samma typ och storlek som den virtuella datorn baserat på samma huvud avbildning.
 - Varje virtuell dator i poolen för värdar måste finnas i samma resurs grupp för att hantera, skala och uppdatera.
 - För optimala prestanda bör lagrings lösningen och behållaren för FSLogix-profilen finnas på samma plats i data centret.
 - Lagrings kontot som innehåller huvud avbildningen måste finnas i samma region och i den prenumeration där de virtuella datorerna har allokerats.

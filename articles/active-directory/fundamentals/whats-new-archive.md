@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 12/18/2020
 ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8e9841c71a6f5bc2e12887f41c62b43a17203a6
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: a9e1ae369560fcf8357e6016e1f7e2e438edd8c9
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107592"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803229"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Vill du arkivera vad som är nytt i Azure Active Directory?
 
@@ -32,6 +32,192 @@ Vad är nytt i Azure Active Directory? versions information innehåller informat
 - Föråldrade funktioner
 - Planer för ändringar
 
+---
+## <a name="june-2020"></a>Juni 2020 
+
+### <a name="user-risk-condition-in-conditional-access-policy"></a>Villkor för användar risk i princip för villkorlig åtkomst
+
+**Typ:** Planera för ändring  
+**Tjänste kategori:** Villkorlig åtkomst  
+**Produkt kapacitet:** & skydd för identitets säkerhet
+ 
+
+Med stöd för användar risker i Azure AD-princip för villkorlig åtkomst kan du skapa flera principer för användar risk. Olika minimi nivåer för användar risk kan krävas för olika användare och appar. Utifrån användar risk kan du skapa principer för att blockera åtkomst, kräva Multi-Factor Authentication, säkra lösen ords ändringar eller omdirigera till Microsoft Cloud App Security för att framtvinga en replikeringsprincip, till exempel ytterligare granskning.
+
+Användar risk villkoret kräver Azure AD Premium P2 eftersom det använder Azure Identity Protection, som är ett P2-erbjudande. Mer information om villkorlig åtkomst finns i dokumentationen för [villkorlig åtkomst för Azure AD](../conditional-access/index.yml).
+
+---
+
+### <a name="saml-sso-now-supports-apps-that-require-spnamequalifier-to-be-set-when-requested"></a>SAML SSO stöder nu appar som kräver att SPNameQualifier anges vid begäran
+
+**Typ:** Fastsatt  
+**Tjänste kategori:** Företags program  
+**Produkt kapacitet:** DEFINITION
+ 
+Vissa SAML-program kräver att SPNameQualifier returneras i intygets ämne när det begärs. Azure AD svarar nu korrekt när en SPNameQualifier begärs i NameID-principen för begäran. Detta fungerar även för SP-initierad inloggning och IdP initierad inloggning kommer att följa.  Mer information om SAML-protokoll i Azure Active Directory finns i [Single Sign-On SAML-protokollet](../develop/single-sign-on-saml-protocol.md).
+
+---
+
+### <a name="azure-ad-b2b-collaboration-supports-inviting-msa-and-google-users-in-azure-government-tenants"></a>Azure AD B2B-samarbete har stöd för att bjuda in MSA och Google-användare i Azure Government-klienter
+
+**Typ:** Ny funktion  
+**Tjänste kategori:** Business  
+**Produkt kapacitet:** B2B/B2C
+ 
+
+Azure Government klienter som använder B2B-samarbets funktionerna kan nu bjuda in användare som har ett Microsoft-eller Google-konto. Om du vill ta reda på om din klient kan använda dessa funktioner följer du anvisningarna på [Hur vet jag om B2B-samarbete är tillgängligt i min Azure amerikanska myndighets klient?](../external-identities/current-limitations.md#how-can-i-tell-if-b2b-collaboration-is-available-in-my-azure-us-government-tenant)
+
+ 
+---
+ 
+### <a name="user-object-in-ms-graph-v1-now-includes-externaluserstate-and-externaluserstatechangeddatetime-properties"></a>Användar objekt i MS Graph v1 innehåller nu externalUserState-och externalUserStateChangedDateTime-egenskaper
+
+**Typ:** Ny funktion  
+**Tjänste kategori:** Business  
+**Produkt kapacitet:** B2B/B2C
+ 
+
+Egenskaperna externalUserState och externalUserStateChangedDateTime kan användas för att hitta inbjudna B2B-gäster som inte har accepterat sina inbjudningar än och som skapar automatisering, som att ta bort användare som inte har accepterat sina inbjudningar efter ett visst antal dagar. De här egenskaperna är nu tillgängliga i MS Graph v1. Vägledning om hur du använder dessa egenskaper finns i [användar resurs typ](/graph/api/resources/user).
+ 
+---
+
+### <a name="manage-authentication-sessions-in-azure-ad-conditional-access-is-now-generally-available"></a>Hantera autentiseringsbegäranden i Azure AD villkorlig åtkomst är nu allmänt tillgänglig
+
+**Typ:** Ny funktion  
+**Tjänste kategori:** Villkorlig åtkomst  
+**Produkt kapacitet:** & skydd för identitets säkerhet
+ 
+Med hanterings funktionerna för autentisering kan du konfigurera hur ofta dina användare måste ange inloggnings uppgifter och om de behöver ange autentiseringsuppgifter efter att de har stängt och öppnat om webbläsare för att få större säkerhet och flexibilitet i din miljö.
+ 
+Dessutom används hantering av autentisering för att endast använda den första Factor Authentication på Azure AD-anslutna, hybrid Azure AD-anslutna och registrerade Azure AD-enheter. Nu gäller hantering av autentiserings-sessioner även för MFA. Mer information finns i [Konfigurera hantering av autentisering med villkorlig åtkomst](../conditional-access/howto-conditional-access-session-lifetime.md).
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-application-gallery---june-2020"></a>Nya federerade appar som är tillgängliga i Azure AD Application Gallery – juni 2020
+
+**Typ:** Ny funktion  
+**Tjänste kategori:** Företags program  
+**Produkt kapacitet:** integration från tredje part
+ 
+I juni 2020 har vi lagt till följande 29 nya program i vårt app-galleri med stöd för federation:
+
+[Shopify plus](../saas-apps/shopify-plus-tutorial.md), [Ekarda](../saas-apps/ekarda-tutorial.md), [grindar](../saas-apps/mailgates-tutorial.md), [BullseyeTDP](../saas-apps/bullseyetdp-tutorial.md), [Raketa](../saas-apps/raketa-tutorial.md), [segment](../saas-apps/segment-tutorial.md), [AI revisor](https://www.mindbridge.ai/products/ai-auditor/), [Pobuca Connect](https://app.pobu.ca/), [proto.io](../saas-apps/proto.io-tutorial.md), [Gatekeeper](https://www.gatekeeperhq.com/), [hubb Planner](../saas-apps/hub-planner-tutorial.md), [Ansira-partner go-to-Marketing-verktygslåda](https://ansira.com/technology/channel-engagement), [IBM Digital Business Automation i molnet](../saas-apps/ibm-digital-business-automation-on-cloud-tutorial.md), [kisi fysisk säkerhet](../saas-apps/kisi-physical-security-tutorial.md), [ViewpointOne](https://team.viewpoint.com/), [IntelligenceBank](../saas-apps/intelligencebank-tutorial.md), [pymetrics](../saas-apps/pymetrics-tutorial.md), [noll](https://www.teamzero.com/), [instation](https://instation.invillia.com/), [EDX för Business SAML 2,0-integration](../saas-apps/edx-for-business-saml-integration-tutorial.md), [MOOC Office 365](https://mooc.office365-training.com/en/), [SmartKargo](../saas-apps/smartkargo-tutorial.md), [PKIsigning-plattform](https://platform.pkisigning.nl/), [SiteIntel](../saas-apps/siteintel-tutorial.md), [fält-ID](../saas-apps/field-id-tutorial.md) [, kurs utbud](https://smallstep.com/sso-ssh/) [SAML](../saas-apps/curricula-saml-tutorial.md), [perforce Helix Core-Helix Authentication Service](../saas-apps/perforce-helix-core-tutorial.md) [,](https://cloud.metacompliance.com/)  
+
+Du kan också hitta dokumentationen för alla program härifrån https://aka.ms/AppsTutorial . För att lista ditt program i Azure AD App-galleriet läser du informationen här: https://aka.ms/AzureADAppRequest .
+
+---
+
+### <a name="api-connectors-for-external-identities-self-service-sign-up-are-now-in-public-preview"></a>API-kopplingar för externa identiteter för självbetjänings registrering finns nu i offentlig för hands version
+
+**Typ:** Ny funktion  
+**Tjänste kategori:** Business  
+**Produkt kapacitet:** B2B/B2C
+ 
+API-kopplingar för externa identiteter gör att du kan använda webb-API: er för att integrera självbetjänings registrering med externa moln system. Det innebär att du nu kan anropa webb-API: er som vissa steg i ett registrerings flöde för att utlösa molnbaserade anpassade arbets flöden. Du kan till exempel använda API-kopplingar för att:
+
+- Integrera med ett anpassat godkännande arbets flöden.
+- Utföra identitets bevisning
+- Verifiera indata från användaren
+- Skriv över användarattribut
+- Kör anpassad affärs logik
+
+Mer information om alla upplevelser som är möjliga med API-kopplingar finns i [använda API-kopplingar för att anpassa och utöka](../external-identities/api-connectors-overview.md)självbetjänings registrering eller [Anpassa extern identitet självbetjänings registrering med Web API-integreringar](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/customize-external-identities-self-service-sign-up-with-web-api/ba-p/1257364#.XvNz2fImuQg.linkedin).
+ 
+---
+
+### <a name="provision-on-demand-and-get-users-into-your-apps-in-seconds"></a>Etablera på begäran och få användare i dina appar på några sekunder
+
+**Typ:** Ny funktion  
+**Tjänste kategori:** App-etablering  
+**Produkt kapacitet:** Hantering av identitets livs cykel
+ 
+Azure AD Provisioning-tjänsten arbetar för närvarande med en cyklisk bas. Tjänsten körs var 40: e minut. Med [etablerings funktionen på begäran](https://aka.ms/provisionondemand) kan du välja en användare och etablera dem på några sekunder. Med den här funktionen kan du snabbt felsöka etablerings problem, utan att behöva göra en omstart för att tvinga etablerings cykeln att starta igen. 
+ 
+---
+
+### <a name="new-permission-for-using-azure-ad-entitlement-management-in-graph"></a>Ny behörighet för att använda hantering av Azure AD-berättigande i grafen
+
+**Typ:** Ny funktion  
+**Tjänste kategori:** Andra  
+**Produkt kapacitet:** Hantering av rättigheter
+ 
+En ny delegerad behörighet EntitlementManagement. Read. all är nu tillgänglig för användning med rättighets hanterings-API: et i Microsoft Graph beta. Mer information om tillgängliga API: er finns i [arbeta med API för hantering av Azure AD-hantering](/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta).
+
+---
+
+### <a name="identity-protection-apis-available-in-v10"></a>API: er för identitets skydd som är tillgängliga i v 1.0
+
+**Typ:** Ny funktion  
+**Tjänste kategori:** Identitets skydd  
+**Produkt kapacitet:** & skydd för identitets säkerhet
+ 
+RiskyUsers-och riskDetections-Microsoft Graph-API: er är nu allmänt tillgängliga. Nu när de är tillgängliga på v 1.0-slutpunkten, bjuder vi in dig att använda dem i produktionen. Mer information finns i [Microsoft Graph-dokumenten](/graph/api/resources/identityprotectionroot).
+ 
+---
+
+### <a name="sensitivity-labels-to-apply-policies-to-microsoft-365-groups-is-now-generally-available"></a>Känslighets etiketter för att tillämpa principer på Microsoft 365 grupper är nu allmänt tillgängliga
+
+**Typ:** Ny funktion  
+**Tjänste kategori:** Grupp hantering  
+**Produkt kapacitet:** Samarbete
+ 
+
+Nu kan du skapa känslighets etiketter och använda etikett inställningar för att tillämpa principer på Microsoft 365 grupper, inklusive sekretess (offentlig eller privat) och åtkomst princip för externa användare. Du kan skapa en etikett med sekretess policyn som privat och extern användar åtkomst princip för att inte tillåta att gäst användare läggs till. När en användare använder den här etiketten i en grupp, kommer gruppen att vara privat och inga gäst användare får läggas till i gruppen. 
+
+Känslighets etiketter är viktiga för att skydda affärs kritiska data och gör att du kan hantera grupper i skala på ett kompatibelt och säkert sätt. Vägledning om hur du använder känslighets etiketter finns i [tilldela känslighets etiketter till Microsoft 365 grupper i Azure Active Directory (för hands version)](../enterprise-users/groups-assign-sensitivity-labels.md).
+ 
+---
+
+### <a name="updates-to-support-for-microsoft-identity-manager-for-azure-ad-premium-customers"></a>Uppdateringar som stöder Microsoft Identity Manager för Azure AD Premium kunder
+
+**Typ:** Ändrad funktion  
+**Tjänste kategori:** Microsoft Identity Manager  
+**Produkt kapacitet:** Hantering av identitets livs cykel
+ 
+Azure-support är nu tillgängligt för Azure AD integration-komponenter i Microsoft Identity Manager 2016, genom slutet av det utökade stödet för Microsoft Identity Manager 2016. Läs mer på [support uppdatering för Azure AD Premium kunder som använder Microsoft Identity Manager](/microsoft-identity-manager/support-update-for-azure-active-directory-premium-customers).
+
+---
+
+### <a name="the-use-of-group-membership-conditions-in-sso-claims-configuration-is-increased"></a>Användningen av grupp medlemskaps villkor i SSO-anspråks konfigurationen höjs
+
+**Typ:** Ändrad funktion  
+**Tjänste kategori:** Företags program  
+**Produkt kapacitet:** DEFINITION
+ 
+Tidigare var antalet grupper som du kan använda när du villkorligt ändrar anspråk baserat på grupp medlemskap i en enskild program konfiguration begränsad till 10. Användningen av grupp medlemskaps villkor i SSO-anspråks konfigurationen har nu ökat till högst 50 grupper. Mer information om hur du konfigurerar anspråk finns i konfiguration av [SSO-anspråk för företags program](../develop/active-directory-saml-claims-customization.md#emitting-claims-based-on-conditions). 
+
+---
+
+### <a name="enabling-basic-formatting-on-the-sign-in-page-text-component-in-company-branding"></a>Aktivera grundläggande formatering på inloggnings sidans text komponent i företags anpassning.
+
+**Typ:** Ändrad funktion  
+**Tjänste kategori:** Autentiseringar (inloggningar)  
+**Produkt kapacitet:** Användarautentisering
+ 
+Företags anpassnings funktionen på Azure AD/Microsoft 365 inloggnings upplevelsen har uppdaterats så att kunden kan lägga till hyperlänkar och enkel formatering, inklusive fetstil, understrykning och kursiv stil. Vägledning om hur du använder den här funktionen finns i [lägga till anpassning till din organisations Azure Active Directory inloggnings sida](./customize-branding.md).
+
+---
+
+### <a name="provisioning-performance-improvements"></a>Prestanda förbättringar för etablering
+
+**Typ:** Ändrad funktion  
+**Tjänste kategori:** App-etablering  
+**Produkt kapacitet:** Hantering av identitets livs cykel
+ 
+Etablerings tjänsten har uppdaterats för att minska tiden då en [stegvis cykel](../app-provisioning/how-provisioning-works.md#incremental-cycles) slutförs. Det innebär att användare och grupper kommer att tillhandahållas i sina program snabbare än tidigare. Alla nya etablerings jobb som skapats efter 6/10/2020 kommer automatiskt att dra nytta av prestanda förbättringarna. Alla program som kon figurer ATS för etablering före 6/10/2020 måste starta om en gång efter 6/10/2020 för att dra nytta av prestanda förbättringarna. 
+
+---
+
+### <a name="announcing-the-deprecation-of-adal-and-ms-graph-parity"></a>Att presentera utfasningen av ADAL-och MS Graph-paritet
+
+**Typ:** Föråldrad  
+**Tjänste kategori:** EJ TILLÄMPLIGT  
+**Produkt kapacitet:** Hantering av enhetens livs cykel
+
+Nu när Microsoft Authentication libraries (MSAL) är tillgängligt kommer vi inte längre att lägga till nya funktioner i Azure Active Directory Authentication libraries (ADAL) och säkerhets korrigeringarna upphör den 30 juni 2022. Mer information om hur du migrerar till MSAL finns i [migrera program till Microsoft Authentication Library (MSAL)](../develop/msal-migration.md).
+
+Dessutom har vi utfört arbetet för att göra alla Azure AD Graph-funktioner tillgängliga via MS Graph. Azure AD Graph-API: er får därför bara Bugfix och säkerhets korrigeringar till och med den 30 juni 2022. Mer information finns i [Uppdatera dina program för att använda Microsoft Authentication Library och Microsoft Graph API](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363)
+ 
 ---
 ## <a name="may-2020"></a>Maj 2020
 
@@ -127,7 +313,7 @@ Om den ursprungliga SAML-inloggningens token använder ett annat format för Nam
 **Tjänste kategori:** Azure AD Cloud-etablering  
 **Produkt kapacitet:** Hantering av identitets livs cykel
  
-IT-administratörer kan börja använda den nya rollen "hybrid administratör" som den minst privilegierade rollen för att konfigurera Azure ADConnect Cloud-etablering. Med den nya rollen behöver du inte längre använda den globala administratörs rollen för att konfigurera och konfigurera moln etablering. [Läs mer](../roles/delegate-by-task.md#connect).
+IT-administratörer kan börja använda den nya rollen "hybrid administratör" som den minst privilegierade rollen för att konfigurera Azure AD Connect moln etablering. Med den nya rollen behöver du inte längre använda den globala administratörs rollen för att konfigurera och konfigurera moln etablering. [Läs mer](../roles/delegate-by-task.md#connect).
  
 ---
 
@@ -980,7 +1166,7 @@ Mer information om hur du bättre skyddar din organisation med hjälp av automat
  
 I januari 2020 har vi lagt till dessa 33 nya appar med stöd för federation i app-galleriet: 
 
-[JOSA](../saas-apps/josa-tutorial.md), [snabbt Edge-moln](../saas-apps/fastly-edge-cloud-tutorial.md), [terraform Enterprise](../saas-apps/terraform-enterprise-tutorial.md), [Spintr SSO](../saas-apps/spintr-sso-tutorial.md), [Abibot Netlogistik](https://azuremarketplace.microsoft.com/marketplace/apps/aad.abibotnetlogistik), [SkyKick](https://login.skykick.com/login?state=g6Fo2SBTd3M5Q0xBT0JMd3luS2JUTGlYN3pYTE1remJQZnR1c6N0aWTZIDhCSkwzYVQxX2ZMZjNUaWxNUHhCSXg2OHJzbllTcmYto2NpZNkgM0h6czk3ZlF6aFNJV1VNVWQzMmpHeFFDbDRIMkx5VEc&client=3Hzs97fQzhSIWUMUd32jGxQCl4H2LyTG&protocol=oauth2&audience=https://papi.skykick.com&response_type=code&redirect_uri=https://portal.skykick.com/callback&scope=openid%20profile%20offline_access), [LeaveBot](../saas-apps/upshotly-tutorial.md), [DataCamp](../saas-apps/datacamp-tutorial.md), [TripActions, SmartWork](../saas-apps/tripactions-tutorial.md), [Dotcom, SSOGEN](../saas-apps/dotcom-monitor-tutorial.md), [EBS,](https://leavebot.io/#home),,, [,](https://www.intumit.com/english/SmartWork.html)- [Azure AD SSO Gateway för Oracle E-Business Suite-, JDE](../saas-apps/ssogen-tutorial.md), [VÄRDBASERAD MyCirqa SSO](../saas-apps/hosted-mycirqa-sso-tutorial.md), [yuhu Property Management Platform](../saas-apps/yuhu-property-management-platform-tutorial.md), [LumApps](https://sites.lumapps.com/login), driver- [Enterprise](../saas-apps/upwork-enterprise-tutorial.md), [TalentSoft](../saas-apps/talentsoft-tutorial.md), [SmartDB för Microsoft Teams](http://teams.smartdb.jp/login/), [PressPage](../saas-apps/presspage-tutorial.md), [ContractSafe Saml2 SSO](../saas-apps/contractsafe-saml2-sso-tutorial.md), [Maxient Driver Manager-programvara](../saas-apps/maxient-conduct-manager-software-tutorial.md), [helpshift](../saas-apps/helpshift-tutorial.md), [PortalTalk 365](https://www.portaltalk.com/) [,,](https://portal.coreview.com/) [Squelch Cloud Office365 Connector](https://laxmi.squelch.io/login), [PingFlow Authentication](https://app-staging.pingview.io/), PrinterLogic [SaaS](../saas-apps/printerlogic-saas-tutorial.md), [Taskize Connect](../saas-apps/taskize-connect-tutorial.md), [Sandwai](https://app.sandwai.com/), [EZRentOut](../saas-apps/ezrentout-tutorial.md), [AssetSonar](../saas-apps/assetsonar-tutorial.md), Akari [Virtual Assistant](https://akari.io/akari-virtual-assistant/)
+[JOSA](../saas-apps/josa-tutorial.md), [snabbt Edge-moln](../saas-apps/fastly-edge-cloud-tutorial.md), [terraform Enterprise](../saas-apps/terraform-enterprise-tutorial.md), [Spintr SSO](../saas-apps/spintr-sso-tutorial.md), [Abibot Netlogistik](https://azuremarketplace.microsoft.com/marketplace/apps/aad.abibotnetlogistik), [SkyKick](https://login.skykick.com/login?state=g6Fo2SBTd3M5Q0xBT0JMd3luS2JUTGlYN3pYTE1remJQZnR1c6N0aWTZIDhCSkwzYVQxX2ZMZjNUaWxNUHhCSXg2OHJzbllTcmYto2NpZNkgM0h6czk3ZlF6aFNJV1VNVWQzMmpHeFFDbDRIMkx5VEc&client=3Hzs97fQzhSIWUMUd32jGxQCl4H2LyTG&protocol=oauth2&audience=https://papi.skykick.com&response_type=code&redirect_uri=https://portal.skykick.com/callback&scope=openid%20profile%20offline_access), [LeaveBot](../saas-apps/upshotly-tutorial.md), [DataCamp](../saas-apps/datacamp-tutorial.md), [TripActions, SmartWork](../saas-apps/tripactions-tutorial.md), [Dotcom, SSOGEN](../saas-apps/dotcom-monitor-tutorial.md), [EBS,](https://appsource.microsoft.com/en-us/product/office/WA200001175),,, [,](https://www.intumit.com/english/SmartWork.html)- [Azure AD SSO Gateway för Oracle E-Business Suite-, JDE](../saas-apps/ssogen-tutorial.md), [VÄRDBASERAD MyCirqa SSO](../saas-apps/hosted-mycirqa-sso-tutorial.md), [yuhu Property Management Platform](../saas-apps/yuhu-property-management-platform-tutorial.md), [LumApps](https://sites.lumapps.com/login), driver- [Enterprise](../saas-apps/upwork-enterprise-tutorial.md), [TalentSoft](../saas-apps/talentsoft-tutorial.md), [SmartDB för Microsoft Teams](http://teams.smartdb.jp/login/), [PressPage](../saas-apps/presspage-tutorial.md), [ContractSafe Saml2 SSO](../saas-apps/contractsafe-saml2-sso-tutorial.md), [Maxient Driver Manager-programvara](../saas-apps/maxient-conduct-manager-software-tutorial.md), [helpshift](../saas-apps/helpshift-tutorial.md), [PortalTalk 365](https://www.portaltalk.com/) [,,](https://portal.coreview.com/) [Squelch Cloud Office365 Connector](https://laxmi.squelch.io/login), [PingFlow Authentication](https://app-staging.pingview.io/), PrinterLogic [SaaS](../saas-apps/printerlogic-saas-tutorial.md), [Taskize Connect](../saas-apps/taskize-connect-tutorial.md), [Sandwai](https://app.sandwai.com/), [EZRentOut](../saas-apps/ezrentout-tutorial.md), [AssetSonar](../saas-apps/assetsonar-tutorial.md), Akari [Virtual Assistant](https://akari.io/akari-virtual-assistant/)
 
 Mer information om apparna finns i [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Mer information om hur du visar ditt program i Azure AD App-galleriet finns i [lista ditt program i Azure Active Directory program galleriet](../develop/v2-howto-app-gallery-listing.md).
 
@@ -1968,7 +2154,7 @@ Mer information finns i [referens dokumentationen för riskhanterings-API](/grap
 
 I juni 2019 har vi lagt till dessa 22 nya appar med stöd för federation i app-galleriet:
 
-[Azure AD SAML Toolkit](../saas-apps/saml-toolkit-tutorial.md), [Otsuka Shokai (大塚商会)](../saas-apps/otsuka-shokai-tutorial.md), [ANAQUA](../saas-apps/anaqua-tutorial.md), [Azure VPN-klient](https://portal.azure.com/), [utgifteri](../saas-apps/expensein-tutorial.md), [Hjälp](../saas-apps/helper-helper-tutorial.md)verktyg för hjälp, [Costpoint](../saas-apps/costpoint-tutorial.md), [GlobalOne](../saas-apps/globalone-tutorial.md), [Mercedes-Benz In-Car Office](https://me.secure.mercedes-benz.com/), [Skore](https://app.justskore.it/), [Oracle Cloud Infrastructure Console](../saas-apps/oracle-cloud-tutorial.md), [CyberArk SAML Authentication](../saas-apps/cyberark-saml-authentication-tutorial.md), [scrible edu](https://www.scrible.com/sign-in/#/create-account), [PandaDoc](../saas-apps/pandadoc-tutorial.md), [Perceptyx](https://apexdata.azurewebsites.net/docs.microsoft.com/azure/active-directory/saas-apps/perceptyx-tutorial), [Proptimise OS](https://proptimise.co.uk/software/), [vtiger CRM (SAML)](../saas-apps/vtiger-crm-saml-tutorial.md), Oracle Access Manager för Oracle återförsäljarversion, Oracle Access Manager för Oracle E-Business Suite, Oracle IDCS för E-Business Suite, Oracle IDCS för IDCS, Oracle JD för Edwards
+[Azure AD SAML Toolkit](../saas-apps/saml-toolkit-tutorial.md), [Otsuka Shokai (大塚商会)](../saas-apps/otsuka-shokai-tutorial.md), [ANAQUA](../saas-apps/anaqua-tutorial.md), [Azure VPN-klient](https://portal.azure.com/), [utgifteri](../saas-apps/expensein-tutorial.md), [Hjälp](../saas-apps/helper-helper-tutorial.md)verktyg för hjälp, [Costpoint](../saas-apps/costpoint-tutorial.md), [GlobalOne](../saas-apps/globalone-tutorial.md), [Mercedes-Benz In-Car Office](https://me.secure.mercedes-benz.com/), [Skore](https://app.justskore.it/), [Oracle Cloud Infrastructure Console](../saas-apps/oracle-cloud-tutorial.md), [CyberArk SAML Authentication](../saas-apps/cyberark-saml-authentication-tutorial.md), [scrible edu](https://www.scrible.com/sign-in/#/create-account), [PandaDoc](../saas-apps/pandadoc-tutorial.md), [Perceptyx](https://apexdata.azurewebsites.net/docs.microsoft.com/azure/active-directory/saas-apps/perceptyx-tutorial), [Proptimise OS](https://proptimise.co.uk/), [vtiger CRM (SAML)](../saas-apps/vtiger-crm-saml-tutorial.md), Oracle Access Manager för Oracle återförsäljarversion, Oracle Access Manager för Oracle E-Business Suite, Oracle IDCS för E-Business Suite, Oracle IDCS för IDCS, Oracle JD för Edwards
 
 Mer information om apparna finns i [SaaS Application Integration with Azure Active Directory](../saas-apps/tutorial-list.md). Mer information om hur du visar ditt program i Azure AD App-galleriet finns i [lista ditt program i Azure Active Directory program galleriet](../develop/v2-howto-app-gallery-listing.md).
 
@@ -2668,7 +2854,7 @@ Följande fält ändras i gransknings schemat:
 |Fältnamn|Vad som ändrats|Gamla värden|Nya värden|
 |----------|------------|----------|----------|
 |Kategori|Detta är **tjänstens namn** fält. Nu är fältet **gransknings kategorier** . **Tjänst namnet** har bytt namn till fältet **loggedByService** .|<ul><li>Kontoetablering</li><li>Kärnkatalog</li><li>Lösen ords återställning via självbetjäning</li></ul>|<ul><li>Användarhantering</li><li>Grupphantering</li><li>Hantering av appar</li></ul>|
-|targetResources|Innehåller **TargetResourceType** på den översta nivån.|&nbsp;|<ul><li>Policy</li><li>App</li><li>Användare</li><li>Grupp</li></ul>|
+|targetResources|Innehåller **TargetResourceType** på den översta nivån.|&nbsp;|<ul><li>Princip</li><li>App</li><li>Användare</li><li>Grupp</li></ul>|
 |loggedByService|Innehåller namnet på tjänsten som skapade gransknings loggen.|Null|<ul><li>Kontoetablering</li><li>Kärnkatalog</li><li>Återställning av lösenord för självbetjäning</li></ul>|
 |Resultat|Visar resultatet av gransknings loggarna. Tidigare räknades detta upp, men nu visar vi det faktiska värdet.|<ul><li>0</li><li>1</li></ul>|<ul><li>Success</li><li>Fel</li></ul>|
 
@@ -4199,7 +4385,7 @@ Mer information finns i:
 
 Nu kan du gå till åtkomst panelen och Visa användnings villkoren som du har accepterat tidigare.
 
-Gör så här:
+Följ de här stegen:
 
 1. Gå till portalen för mina [appar](https://myapps.microsoft.com)och logga in.
 

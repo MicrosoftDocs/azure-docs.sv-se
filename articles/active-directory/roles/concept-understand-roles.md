@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 968ca6fa293e7bcc01bae6f48164c48c19b8267b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: db3eaef240e1f76e4c61a454e104336806666a7c
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501722"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803909"
 ---
 # <a name="understand-roles-in-azure-active-directory"></a>Förstå roller i Azure Active Directory
 
@@ -44,7 +44,7 @@ När vi säger separat rollbaserad åtkomst kontroll system. Det innebär att de
 
 ## <a name="why-some-azure-ad-roles-are-for-other-services"></a>Varför vissa Azure AD-roller är för andra tjänster
 
-Microsoft 365 har ett antal rollbaserade åtkomst kontroll system som utvecklas oberoende av tiden, var och en med sin egen service portal. För att göra det enklare för dig att hantera identitet i Microsoft 365 från Azure AD-portalen har vi lagt till vissa tjänstesärskilda inbyggda roller som ger administrativ åtkomst till en Microsoft 365 tjänst. Ett exempel på det här tillägget är rollen Exchange-administratör i Azure AD. Den här rollen motsvarar [roll gruppen organisations hantering](/exchange/organization-management-exchange-2013-help) i det rollbaserade åtkomst kontroll systemet i Exchange, och kan hantera alla aspekter av Exchange. På samma sätt har vi lagt till Intune-administratörskonsolen, team administratör, SharePoint-administratör och så vidare. Server-/regionsspecifika roller är en kategori av inbyggda Azure AD-roller i följande avsnitt.
+Microsoft 365 har ett antal rollbaserade åtkomst kontroll system som utvecklas oberoende av tiden, var och en med sin egen service portal. För att göra det enklare för dig att hantera identitet i Microsoft 365 från Azure AD-portalen har vi lagt till vissa tjänstesärskilda inbyggda roller som ger administrativ åtkomst till en Microsoft 365 tjänst. Ett exempel på det här tillägget är rollen Exchange-administratör i Azure AD. Den här rollen motsvarar [roll gruppen organisations hantering](/exchange/organization-management-exchange-2013-help) i det rollbaserade åtkomst kontroll systemet i Exchange, och kan hantera alla aspekter av Exchange. På samma sätt har vi lagt till Intune-administratörskonsolen, team administratör, SharePoint-administratör och så vidare. Tjänstspecifika roller är en kategori av inbyggda Azure AD-roller i följande avsnitt.
 
 ## <a name="categories-of-azure-ad-roles"></a>Kategorier av Azure AD-roller
 

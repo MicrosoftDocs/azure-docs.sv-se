@@ -1,6 +1,6 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: cc0dd5e76227c0814659b74afc2ac46c8ca4de73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a51cd242eb26709464aa502938cd04807aea721
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87103030"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97805629"
 ---
 ## <a name="common-scenarios"></a>Vanliga scenarier
 Följande scenarier kan dra nytta av burst-överföring:
@@ -47,7 +47,7 @@ I följande exempel visas hur burst fungerar med olika kombinationer av virtuell
     - Etablerade MB/s: 25
     - Max burst MB/s: 170 
 - 2 P10 data diskar 
-    - Etablerade MB/s: 25
+    - Etablerade MB/s: 100
     - Max burst MB/s: 170
 
  När den virtuella datorn startas hämtar den data från operativ system disken. Eftersom operativ system disken är en del av en virtuell dator som kommer att komma igång, är OS-disken full av de mellanliggande krediterna. Dessa krediter gör att OS-disken får en ny start på 170 MB/s sekund på det sätt som visas nedan:

@@ -2,37 +2,35 @@
 title: Skapa aktivitets beroenden för att köra uppgifter
 description: Skapa uppgifter som är beroende av slut för ande av andra uppgifter för att bearbeta MapReduce-format och liknande stor data arbets belastningar i Azure Batch.
 ms.topic: how-to
-ms.date: 05/22/2017
+ms.date: 12/28/2020
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: 05b1bb289c215208be448d8ca7de144c82b313b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef05a98fffc3c0684ad0fa29f2f9f039b388f5ad
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936987"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803943"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Skapa aktivitets beroenden för att köra uppgifter som är beroende av andra aktiviteter
 
-Du kan definiera aktivitets beroenden för att köra en uppgift eller en uppsättning aktiviteter när en överordnad uppgift har slutförts. Vissa scenarier där aktivitets beroenden är användbara är:
+Med aktivitets beroenden för batch, skapar du aktiviteter som är schemalagda för körning på datornoderna när en eller flera överordnade aktiviteter har slutförts. Du kan till exempel skapa ett jobb som återger varje bild ruta i en 3D-film med separata, parallella aktiviteter. Den sista uppgiften – sammanfognings uppgiften--sammanfogar de åter givningar som återges i den fullständiga filmen när alla ramar har Render ATS.
+
+Vissa scenarier där aktivitets beroenden är användbara är:
 
 - MapReduce-arbetsbelastningar i molnet.
 - Jobb vars data bearbetnings uppgifter kan uttryckas som ett riktat acykliska diagram (DAG).
 - Processer för för åter givning och efter åter givning, där varje aktivitet måste slutföras innan nästa aktivitet kan börja.
 - Andra jobb där underordnade aktiviteter är beroende av utdata från överordnade aktiviteter.
 
-Med aktivitets beroenden för batch kan du skapa aktiviteter som är schemalagda för körning på datornoderna när en eller flera överordnade aktiviteter har slutförts. Du kan till exempel skapa ett jobb som återger varje bild ruta i en 3D-film med separata, parallella aktiviteter. Den sista uppgiften – sammanfognings uppgiften--sammanfogar de åter givningar som återges i den fullständiga filmen när alla ramar har Render ATS.
-
-Som standard schemaläggs beroende aktiviteter endast för körning efter att den överordnade aktiviteten har slutförts. Du kan ange en beroende åtgärd för att åsidosätta standard beteendet och köra aktiviteter när den överordnade aktiviteten Miss lyckas. Mer information finns i avsnittet [beroende åtgärder](#dependency-actions) .  
-
-Du kan skapa uppgifter som är beroende av andra uppgifter i en en-till-en-till-många-relation. Du kan också skapa ett intervall beroende där en aktivitet är beroende av att en grupp av aktiviteter har slutförts inom ett angivet intervall med aktivitets-ID: n. Du kan kombinera dessa tre grundläggande scenarier för att skapa många-till-många-relationer.
+Som standard schemaläggs beroende aktiviteter endast för körning efter att den överordnade aktiviteten har slutförts. Du kan också ange en [beroende åtgärd](#dependency-actions)  för att åsidosätta standard beteendet och köra aktiviteter när den överordnade aktiviteten Miss lyckas.
 
 ## <a name="task-dependencies-with-batch-net"></a>Aktivitets beroenden med batch .NET
 
-I den här artikeln diskuterar vi hur du konfigurerar aktivitets beroenden med hjälp av [batch .net][net_msdn] -biblioteket. Först visar vi hur du [aktiverar aktivitets beroenden](#enable-task-dependencies) för dina jobb och visar hur du [konfigurerar en aktivitet med beroenden](#create-dependent-tasks). Vi beskriver också hur du anger en beroende åtgärd för att köra beroende uppgifter om överordnat Miss lyckas. Slutligen diskuterar vi de [beroende scenarier](#dependency-scenarios) som batch stöder.
+I den här artikeln diskuterar vi hur du konfigurerar aktivitets beroenden med hjälp av [batch .net](/dotnet/api/microsoft.azure.batch) -biblioteket. Först visar vi hur du [aktiverar aktivitets beroenden](#enable-task-dependencies) för dina jobb och visar hur du [konfigurerar en aktivitet med beroenden](#create-dependent-tasks). Vi beskriver också hur du anger en beroende åtgärd för att köra beroende uppgifter om överordnat Miss lyckas. Slutligen diskuterar vi de [beroende scenarier](#dependency-scenarios) som batch stöder.
 
 ## <a name="enable-task-dependencies"></a>Aktivera aktivitets beroenden
 
-Om du vill använda aktivitets beroenden i batch-programmet måste du först konfigurera jobbet så att det använder aktivitets beroenden. I batch .NET aktiverar du det på din [CloudJob][net_cloudjob] genom att ställa in dess [UsesTaskDependencies][net_usestaskdependencies] -egenskap till `true` :
+Om du vill använda aktivitets beroenden i batch-programmet måste du först konfigurera jobbet så att det använder aktivitets beroenden. I batch .NET aktiverar du det på din [CloudJob](/dotnet/api/microsoft.azure.batch.cloudjob) genom att ställa in dess [UsesTaskDependencies](/dotnet/api/microsoft.azure.batch.cloudjob.usestaskdependencies) -egenskap till `true` :
 
 ```csharp
 CloudJob unboundJob = batchClient.JobOperations.CreateJob( "job001",
@@ -42,11 +40,11 @@ CloudJob unboundJob = batchClient.JobOperations.CreateJob( "job001",
 unboundJob.UsesTaskDependencies = true;
 ```
 
-I föregående kodfragment är "metoden batchclient" en instans av klassen [metoden batchclient][net_batchclient] .
+I föregående kodfragment är "metoden batchclient" en instans av klassen [metoden batchclient](/dotnet/api/microsoft.azure.batch.batchclient) .
 
 ## <a name="create-dependent-tasks"></a>Skapa beroende uppgifter
 
-Om du vill skapa en uppgift som är beroende av att en eller flera överordnade aktiviteter har slutförts, kan du ange att aktiviteten är beroende av "de andra aktiviteterna. I batch .NET konfigurerar du [CloudTask][net_cloudtask]. [DependsOn][net_dependson] -egenskap med en instans av klassen [TaskDependencies][net_taskdependencies] :
+Om du vill skapa en uppgift som är beroende av att en eller flera överordnade aktiviteter har slutförts, kan du ange att aktiviteten är beroende av "de andra aktiviteterna. I batch .NET konfigurerar du egenskapen [CloudTask. DependsOn](/dotnet/api/microsoft.azure.batch.cloudtask.dependson) med en instans av klassen [TaskDependencies](/dotnet/api/microsoft.azure.batch.taskdependencies) :
 
 ```csharp
 // Task 'Flowers' depends on completion of both 'Rain' and 'Sun'
@@ -60,26 +58,26 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 Det här kodfragmentet skapar en beroende uppgift med aktivitets-ID "blommor". Uppgiften "blommor" är beroende av aktiviteterna "regn" och "Sun". Uppgiften "blommor" schemaläggs att köras på en Compute-nod först efter att aktiviteterna "regn" och "Sun" har slutförts.
 
 > [!NOTE]
-> Som standard anses en aktivitet vara slutförd när den är i **slutfört** tillstånd och dess **slut kod** är `0` . I batch .NET innebär detta en [CloudTask][net_cloudtask]. Värdet för egenskapen [State][net_taskstate] för `Completed` och CloudTask [TaskExecutionInformation][net_taskexecutioninformation].[ ][net_exitcode] Värdet för egenskapen ExitCode är `0` . Information om hur du ändrar detta finns i avsnittet [beroende åtgärder](#dependency-actions) .
+> Som standard anses en aktivitet vara slutförd när den är i slutfört tillstånd och dess slut kod är `0` . I batch .NET innebär det att ett egenskaps värde för [CloudTask. State](/dotnet/api/microsoft.azure.batch.cloudtask.state) är `Completed` och värdet för egenskapen [TaskExecutionInformation. ExitCode](/dotnet/api/microsoft.azure.batch.taskexecutioninformation.exitcode) för CloudTask `0` . Information om hur du ändrar detta finns i avsnittet [beroende åtgärder](#dependency-actions) .
 
 ## <a name="dependency-scenarios"></a>Beroende scenarier
 
-Det finns tre grundläggande scenarier för aktivitets beroenden som du kan använda i Azure Batch: ett-till-ett-till-ett-ett-till-många-och aktivitets-ID-intervall beroende. Dessa kan kombineras för att ge ett fjärde scenario, många-till-många.
+Det finns tre grundläggande scenarier för aktivitets beroenden som du kan använda i Azure Batch: ett-till-ett-till-ett-ett-till-många-och aktivitets-ID-intervall beroende. Dessa tre scenarier kan kombineras för att ge ett fjärde scenario: många-till-många.
 
 | Situationen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Exempel | Exemplet |
 |:---:| --- | --- |
-|  [En-till-en](#one-to-one) |*aktivitetb* är beroende av *uppgiften* in <p/> *aktivitetb* kommer inte att schemaläggas för körning förrän *uppgiften* i har slutförts |![Diagram: ett-till-ett-aktivitets beroende][1] |
-|  [En-till-många](#one-to-many) |*aktivitetc* är beroende av både *Aktiviteta* och *aktivitetb* <p/> *aktivitetc* kommer inte att schemaläggas för körning förrän båda *aktiviteterna* och *aktivitetb* har slutförts |![Diagram: ett-till-många-aktivitets beroende][2] |
-|  [Aktivitets-ID-intervall](#task-id-range) |*taskd* är beroende av en mängd aktiviteter <p/> *tasked* kommer inte att schemaläggas för körning förrän uppgifterna med ID *1* till och med *10* har slutförts |![Diagram: aktivitets-ID intervall beroende][3] |
+|  [En-till-en](#one-to-one) |*aktivitetb* är beroende av *uppgiften* in <p/> *aktivitetb* kommer inte att schemaläggas för körning förrän *uppgiften* i har slutförts |:::image type="content" source="media/batch-task-dependency/01_one_to_one.png" alt-text="Diagram som visar ett beroende scenario för en-till-en-aktivitet."::: |
+|  [En-till-många](#one-to-many) |*aktivitetc* är beroende av både *Aktiviteta* och *aktivitetb* <p/> *aktivitetc* kommer inte att schemaläggas för körning förrän båda *aktiviteterna* och *aktivitetb* har slutförts |:::image type="content" source="media/batch-task-dependency/02_one_to_many.png" alt-text="Diagram som visar ett beroende scenario med en-till-många-aktivitet."::: |
+|  [Aktivitets-ID-intervall](#task-id-range) |*taskd* är beroende av en mängd aktiviteter <p/> *tasked* kommer inte att schemaläggas för körning förrän uppgifterna med ID *1* till och med *10* har slutförts |:::image type="content" source="media/batch-task-dependency/03_task_id_range.png" alt-text="Diagram som visar aktivitets-ID intervall aktivitets beroende scenario."::: |
 
 > [!TIP]
 > Du kan skapa **många-till-många-** relationer, till exempel var aktiviteterna C, D, E och F var beroende av aktiviteterna A och B. Detta är användbart, till exempel i parallella för bearbetnings scenarier där de underordnade uppgifterna är beroende av utdata från flera överordnade aktiviteter.
 > 
-> I exemplen i det här avsnittet körs en beroende aktivitet bara när de överordnade aktiviteterna har slutförts. Det här beteendet är standard beteendet för en beroende uppgift. Du kan köra en beroende uppgift när en överordnad aktivitet Miss lyckas genom att ange en beroende åtgärd för att åsidosätta standard beteendet. Mer information finns i avsnittet [beroende åtgärder](#dependency-actions) .
+> I exemplen i det här avsnittet körs en beroende aktivitet bara när de överordnade aktiviteterna har slutförts. Det här beteendet är standard beteendet för en beroende uppgift. Du kan köra en beroende uppgift när en överordnad aktivitet Miss lyckas genom att ange en beroende [åtgärd](#dependency-actions)  för att åsidosätta standard beteendet.
 
 ### <a name="one-to-one"></a>En-till-en
 
-I en en-till-en-relation är en uppgift beroende av att en överordnad aktivitet har slutförts. Om du vill skapa beroendet anger du ett enda aktivitets-ID för [TaskDependencies][net_taskdependencies]. [OnId][net_onid] statisk metod när du fyller i egenskapen [DependsOn][net_dependson] för [CloudTask][net_cloudtask].
+I en en-till-en-relation är en uppgift beroende av att en överordnad aktivitet har slutförts. Om du vill skapa beroendet anger du ett enda aktivitets-ID i den statiska metoden [TaskDependencies. OnId](/dotnet/api/microsoft.azure.batch.taskdependencies.onid) när du fyller i egenskapen [CloudTask. DependsOn](/dotnet/api/microsoft.azure.batch.cloudtask.dependson) .
 
 ```csharp
 // Task 'taskA' doesn't depend on any other tasks
@@ -94,7 +92,7 @@ new CloudTask("taskB", "cmd.exe /c echo taskB")
 
 ### <a name="one-to-many"></a>En-till-många
 
-I en en-till-många-relation är en uppgift beroende av att flera överordnade aktiviteter har slutförts. Skapa ett beroende genom att ange en samling aktivitets-ID: n till [TaskDependencies][net_taskdependencies]. [OnIds][net_onids] statisk metod när du fyller i egenskapen [DependsOn][net_dependson] för [CloudTask][net_cloudtask].
+I en en-till-många-relation är en uppgift beroende av att flera överordnade aktiviteter har slutförts. Skapa beroendet genom att ange en samling aktivitets-ID: n till den statiska metoden [TaskDependencies. OnIds](/dotnet/api/microsoft.azure.batch.taskdependencies.onids) när du fyller i egenskapen [CloudTask. DependsOn](/dotnet/api/microsoft.azure.batch.cloudtask.dependson) .
 
 ```csharp
 // 'Rain' and 'Sun' don't depend on any other tasks
@@ -107,19 +105,19 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 {
     DependsOn = TaskDependencies.OnIds("Rain", "Sun")
 },
-``` 
+```
 
 ### <a name="task-id-range"></a>Aktivitets-ID-intervall
 
 En aktivitet är beroende av ett antal överordnade aktiviteter, beroende på slutförandet av aktiviteter vars ID ligger inom ett intervall.
-Om du vill skapa beroendet anger du det första och sista aktivitets-ID: t i intervallet till [TaskDependencies][net_taskdependencies]. [OnIdRange][net_onidrange] statisk metod när du fyller i egenskapen [DependsOn][net_dependson] för [CloudTask][net_cloudtask].
+Om du vill skapa beroendet anger du det första och sista aktivitets-ID: t i intervallet till den statiska metoden [TaskDependencies](/dotnet/api/microsoft.azure.batch.taskdependencies.onidrange) när du fyller i egenskapen [CloudTask. DependsOn](/dotnet/api/microsoft.azure.batch.cloudtask.dependson) .
 
 > [!IMPORTANT]
-> När du använder aktivitets-ID-intervall för dina beroenden väljs endast uppgifter med ID: n som representerar heltals värden av intervallet. Det innebär att intervallet `1..10` väljer uppgifter `3` och `7` , men inte `5flamingoes` . 
+> När du använder aktivitets-ID-intervall för dina beroenden väljs endast uppgifter med ID: n som representerar heltals värden av intervallet. Intervallet väljer till exempel `1..10` uppgifter `3` och `7` , men inte `5flamingoes` .
 >
 > Inledande nollor är inte signifikanta vid utvärdering av intervall beroenden, så uppgifter med sträng identifierare `4` , `04` och `004` kommer att vara *inom* intervallet och de kommer att behandlas som `4` en uppgift, så den första som slutföras kommer att uppfylla beroendet.
 >
-> Varje aktivitet i intervallet måste uppfylla beroendet, antingen genom att den slutförs eller genom att ett fel som har mappats till en beroende åtgärd angetts som **uppfylls**. Mer information finns i avsnittet [beroende åtgärder](#dependency-actions) .
+> Varje aktivitet i intervallet måste uppfylla beroendet, antingen genom att den slutförs eller genom att ett fel som har mappats till en [beroende åtgärd](#dependency-actions) angetts som **uppfylls**.
 
 ```csharp
 // Tasks 1, 2, and 3 don't depend on any other tasks. Because
@@ -141,11 +139,11 @@ new CloudTask("4", "cmd.exe /c echo 4")
 
 ## <a name="dependency-actions"></a>Beroende åtgärder
 
-Som standard körs en beroende uppgift eller en uppsättning aktiviteter bara efter att en överordnad aktivitet har slutförts. I vissa fall kanske du vill köra beroende uppgifter även om den överordnade aktiviteten Miss lyckas. Du kan åsidosätta standard beteendet genom att ange en beroende åtgärd. En beroende åtgärd anger om en beroende uppgift är giltig att köras, baserat på lyckad eller misslyckad aktivitet för den överordnade aktiviteten. 
+Som standard körs en beroende uppgift eller en uppsättning aktiviteter bara efter att en överordnad aktivitet har slutförts. I vissa fall kanske du vill köra beroende uppgifter även om den överordnade aktiviteten Miss lyckas. Du kan åsidosätta standard beteendet genom att ange en beroende åtgärd.
 
-Anta till exempel att en beroende uppgift väntar på data från slut för ande av den överordnade aktiviteten. Om den överordnade aktiviteten Miss lyckas kan det hända att den beroende aktiviteten fortfarande kan köras med äldre data. I det här fallet kan en beroende åtgärd ange att den beroende uppgiften är giltig att köras trots att den överordnade aktiviteten Miss lyckas.
+En beroende åtgärd anger om en beroende uppgift är giltig att köras, baserat på lyckad eller misslyckad aktivitet för den överordnade aktiviteten. Anta till exempel att en beroende uppgift väntar på data från slut för ande av den överordnade aktiviteten. Om den överordnade aktiviteten Miss lyckas kan det hända att den beroende aktiviteten fortfarande kan köras med äldre data. I det här fallet kan en beroende åtgärd ange att den beroende uppgiften är giltig att köras trots att den överordnade aktiviteten Miss lyckas.
 
-En beroende åtgärd baseras på ett avslutnings villkor för den överordnade aktiviteten. Du kan ange en beroende åtgärd för något av följande avslutnings villkor; för .NET, se [ExitConditions][net_exitconditions] -klassen för mer information:
+En beroende åtgärd baseras på ett avslutnings villkor för den överordnade aktiviteten. Du kan ange en beroende åtgärd för något av följande avslutnings villkor:
 
 - När ett för bearbetnings fel inträffar.
 - När ett fil överförings fel inträffar. Om aktiviteten avslutas med en slutkod som har angetts via **exitCodes** eller **exitCodeRanges**, och sedan påträffar ett fil överförings fel, har åtgärden som anges av slut koden företräde.
@@ -153,10 +151,12 @@ En beroende åtgärd baseras på ett avslutnings villkor för den överordnade a
 - När aktiviteten avslutas med en slutkod som ligger inom ett intervall som anges av egenskapen **ExitCodeRanges** .
 - Standard fallet om aktiviteten avslutas med en slutkod som inte har definierats av **ExitCodes** eller **ExitCodeRanges**, eller om aktiviteten avslutas med ett för bearbetnings fel och egenskapen **PreProcessingError** inte har angetts, eller om aktiviteten Miss lyckas med ett fil överförings fel och **FileUploadError** -egenskapen inte har angetts. 
 
-Ange en beroende åtgärd i .NET genom att ange [ExitOptions][net_exitoptions]. [DependencyAction][net_dependencyaction] -egenskap för avslutnings villkoret. Egenskapen **DependencyAction** använder ett av två värden:
+För .NET, se [ExitConditions](/dotnet/api/microsoft.azure.batch.exitconditions) -klassen för mer information om dessa villkor.
 
-- Att ange egenskapen **DependencyAction** för att **tillfredsställa** anger att beroende aktiviteter är berättigade att köras om den överordnade aktiviteten avslutas med ett angivet fel.
-- Om du ställer in egenskapen **DependencyAction** på **block** anger det att beroende aktiviteter inte är berättigade att köras.
+Ange en beroende åtgärd i .NET genom att ange egenskapen [ExitOptions. DependencyAction](/dotnet/api/microsoft.azure.batch.exitoptions.dependencyaction) för avslutnings villkoret till något av följande:
+
+- **Tillfredsställ**: visar att beroende aktiviteter är berättigade att köras om den överordnade aktiviteten avslutas med ett angivet fel.
+- **Blockera**: visar att beroende aktiviteter inte är berättigade att köras.
 
 Standardvärdet för egenskapen **DependencyAction** **är för** slutkod 0, och **blockera** för alla andra avslutnings villkor.
 
@@ -197,37 +197,13 @@ new CloudTask("B", "cmd.exe /c echo B")
 
 ## <a name="code-sample"></a>Kodexempel
 
-[TaskDependencies][github_taskdependencies] -exempelprojektet är ett av [Azure Batch kod exempel][github_samples] på GitHub. Den här Visual Studio-lösningen visar:
+[TaskDependencies](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies) -exempelprojektet på GitHub visar:
 
-- Så här aktiverar du aktivitets beroende för ett jobb
-- Så här skapar du uppgifter som är beroende av andra aktiviteter
+- Så här aktiverar du aktivitets beroende för ett jobb.
+- Så här skapar du uppgifter som är beroende av andra uppgifter.
 - Så här kör du dessa uppgifter i en pool med datornoder.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Funktionen [programpaket](batch-application-packages.md) i batch ger ett enkelt sätt att både distribuera och version av programmen som dina aktiviteter kör på Compute-noder.
-- Se [installera program och mellanlagrings data i batch Compute-noder][forum_post] i Azure Batch-forumet för en översikt över metoder för att förbereda noderna för att köra uppgifter. Det här inlägget har skrivits av någon av de Azure Batch grupp medlemmarna, och är ett utmärkt sätt att kopiera program, uppgifts data och andra filer till dina Compute-noder.
-
-[forum_post]: https://social.msdn.microsoft.com/Forums/en-US/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
-[github_taskdependencies]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies
-[github_samples]: https://github.com/Azure/azure-batch-samples
-[net_batchclient]: /dotnet/api/microsoft.azure.batch.batchclient
-[net_cloudjob]: /dotnet/api/microsoft.azure.batch.cloudjob
-[net_cloudtask]: /dotnet/api/microsoft.azure.batch.cloudtask
-[net_dependson]: /dotnet/api/microsoft.azure.batch.cloudtask
-[net_exitcode]: /dotnet/api/microsoft.azure.batch.taskexecutioninformation
-[net_exitconditions]: /dotnet/api/microsoft.azure.batch.exitconditions
-[net_exitoptions]: /dotnet/api/microsoft.azure.batch.exitoptions
-[net_dependencyaction]: /dotnet/api/microsoft.azure.batch.exitoptions
-[net_msdn]: /dotnet/api/microsoft.azure.batch
-[net_onid]: /dotnet/api/microsoft.azure.batch.taskdependencies
-[net_onids]: /dotnet/api/microsoft.azure.batch.taskdependencies
-[net_onidrange]: /dotnet/api/microsoft.azure.batch.taskdependencies
-[net_taskexecutioninformation]: /dotnet/api/microsoft.azure.batch.taskexecutioninformation
-[net_taskstate]: /dotnet/api/microsoft.azure.batch.common.taskstate
-[net_usestaskdependencies]: /dotnet/api/microsoft.azure.batch.cloudjob
-[net_taskdependencies]: /dotnet/api/microsoft.azure.batch.taskdependencies
-
-[1]: ./media/batch-task-dependency/01_one_to_one.png "Diagram: ett-till-ett-beroende"
-[2]: ./media/batch-task-dependency/02_one_to_many.png "Diagram: ett-till-många-beroende"
-[3]: ./media/batch-task-dependency/03_task_id_range.png "Diagram: aktivitets-ID intervall beroende"
+- Lär dig mer om funktionen [programpaket](batch-application-packages.md) i batch, som är ett enkelt sätt att distribuera och version av programmen som dina aktiviteter kör på datornoderna.
+- Lär dig mer om [fel sökning av jobb och uppgifter](batch-job-task-error-checking.md).

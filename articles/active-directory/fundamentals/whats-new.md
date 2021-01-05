@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/03/2020
+ms.date: 12/18/2020
 ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 734d37af58290201b415f1a4b7c8ff7553187550
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 71c0fa7a6e676e1b888bc13e0fa4cb42e93b2e71
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591267"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802855"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Vad är nytt i Azure Active Directory?
 
@@ -38,6 +38,94 @@ Azure AD tar emot förbättringar kontinuerligt. För att hålla dig uppdaterad 
 Den här sidan uppdateras varje månad, så du kan uppdatera den regelbundet. Om du söker efter objekt som är äldre än sex månader kan du hitta dem i [arkivera efter nyheter i Azure Active Directory](whats-new-archive.md).
 
 ---
+## <a name="december-2020"></a>December 2020
+
+### <a name="public-preview---azure-ad-b2c-phone-sign-up-and-sign-in-using-built-in-policy"></a>Offentlig för hands version – Azure AD B2C telefonin loggning och inloggning med hjälp av en inbyggd princip
+
+**Typ:** Ny funktion  
+**Tjänste kategori:** B2C – konsument identitets hantering  
+**Produkt kapacitet:** B2B/B2C
+ 
+B2C telefonin loggning och inloggning med inbyggd princip gör det möjligt för IT-administratörer och utvecklare av organisationer att tillåta sina slutanvändare att logga in och registrera sig med ett telefonnummer i användar flöden. Läs [Konfigurera telefon registrering och inloggning för användar flöden (för hands version)](../../active-directory-b2c/phone-authentication-user-flows.md) om du vill veta mer.
+
+---
+
+### <a name="general-availability---security-defaults-now-enabled-for-all-new-tenants-by-default"></a>Allmän tillgänglighet – säkerhets inställningar har nu Aktiver ATS för alla nya klienter som standard
+
+**Typ:** Ny funktion  
+**Tjänste kategori:** Andra  
+**Produkt kapacitet:** & skydd för identitets säkerhet
+ 
+För att skydda användar konton kommer alla nya klienter som skapats den 12 november 2020 att komma med säkerhets inställningar aktiverade. Säkerhets standarder tillämpar flera principer, inklusive:
+- Kräver att alla användare och administratörer registrerar MFA med hjälp av Microsoft Authenticator-appen
+- Kräver viktiga administratörs roller för att använda MFA varje gång de loggar in. Alla andra användare uppmanas att använda MFA när det behövs. 
+- Äldre autentisering kommer att blockeras för hela klienten. 
+
+Mer information finns i [Vad är säkerhets inställningar?](../fundamentals/concept-fundamentals-security-defaults.md)
+
+---
+
+### <a name="general-availability---support-for-groups-with-up-to-250k-members-in-aadconnect"></a>Allmän tillgänglighet – stöd för grupper med upp till 250 000-medlemmar i AADConnect
+
+**Typ:** Ändrad funktion  
+**Tjänste kategori:** AD Connect  
+**Produkt kapacitet:** Hantering av identitets livs cykel
+ 
+Microsoft har distribuerat en ny slut punkt (API) för Azure AD Connect som förbättrar prestandan för synkroniseringstjänsten i Azure Active Directory. När du använder den nya [v2-slutpunkten](../hybrid/how-to-connect-sync-endpoint-api-v2.md)får du märkbara prestanda vinster vid export och import till Azure AD. Den nya slut punkten stöder följande scenarier:
+
+- Synkronisera grupper med upp till 250 000 medlemmar
+- Prestanda vinster vid export och import till Azure AD
+
+---
+
+### <a name="general-availability---entitlement-management-available-for-tenants-in-azure-china-cloud"></a>Allmän tillgänglighet – hantering av rättigheter som är tillgängligt för klienter i Azure Kina-molnet
+
+**Typ:** Ny funktion  
+**Tjänste kategori:** Hantering av användar åtkomst  
+**Produkt kapacitet:** Hantering av rättigheter
+ 
+
+Funktionerna för rättighets hantering är nu tillgängliga för alla klienter i Azure Kina-molnet. Mer information finns på webbplatsen för [identitets styrnings dokumentation](https://docs.azure.cn/zh-cn/active-directory/governance/) .
+
+---
+
+### <a name="new-provisioning-connectors-in-the-azure-ad-application-gallery---december-2020"></a>Nya etablerings anslutningar i Azure AD Application Gallery – december 2020
+
+**Typ:** Ny funktion  
+**Tjänste kategori:** App-etablering  
+**Produkt kapacitet:** integration från tredje part
+
+Nu kan du automatisera att skapa, uppdatera och ta bort användar konton för dessa nyligen integrerade appar:
+
+- [Bizagi Studio för digital processautomatisering](../saas-apps/bizagi-studio-for-digital-process-automation-provisioning-tutorial.md)
+- [CybSafe](../saas-apps/cybsafe-provisioning-tutorial.md)
+- [GroupTalk](../saas-apps/grouptalk-provisioning-tutorial.md)
+- [PaperCut-utskriftshantering i molnet](/azure/active-directory/saas-apps/papercut-cloud-print-management-provisioning-tutorial)
+- [Parsable](../saas-apps/parsable-provisioning-tutorial.md)
+- [Shopify Plus](../saas-apps/shopify-plus-provisioning-tutorial.md)
+
+Mer information om hur du bättre skyddar din organisation med hjälp av automatiserad användar konto etablering finns i [Automatisera användar etablering för SaaS-program med Azure AD](../app-provisioning/user-provisioning.md).
+ 
+---
+ 
+[1233182](https://identitydivision.visualstudio.com/IAM/IXR/_queries?id=1233182&triage=true&fullScreen=false&_a=edit)
+
+### <a name="new-federated-apps-available-in-azure-ad-application-gallery---december-2020"></a>Nya federerade appar som är tillgängliga i Azure AD Application Gallery – december 2020
+
+**Typ:** Ny funktion  
+**Tjänste kategori:** Företags program  
+**Produkt kapacitet:** integration från tredje part
+ 
+I december 2020 har vi lagt till följande 18 nya program i vårt app-galleri med stöd för federation:
+
+[AwareGo](../saas-apps/awarego-tutorial.md), [HowNow SSO](https://gethownow.com/), [ZyLAB ett juridiskt undantag](https://www.zylab.com/en/product/legal-hold), [Guide](http://www.guider-ai.com/), [Softcrisis](https://www.softcrisis.se/sv/), [Pims 365](http://www.omega365.com/pims), [InformaCast](../saas-apps/informacast-tutorial.md), [RetrieverMediaDatabase](../saas-apps/retrievermediadatabase-tutorial.md), [Vonage](../saas-apps/vonage-tutorial.md), [Count on-Operations instrument panel](../saas-apps/count-me-in-operations-dashboard-tutorial.md), [Proprofs Knowledge Base](../saas-apps/proprofs-knowledge-base-tutorial.md), [RightCrowd personal Management](../saas-apps/rightcrowd-workforce-management-tutorial.md), [JLL](../saas-apps/jll-tririga-tutorial.md)TRIRIGA, [Shutterstock](../saas-apps/shutterstock-tutorial.md), [FortiWeb brand vägg för webb program](../saas-apps/linkedin-talent-solutions-tutorial.md), [LinkedIn personal-lösningar](../saas-apps/linkedin-talent-solutions-tutorial.md), Equinix [Federation app](../saas-apps/equinix-federation-app-tutorial.md), [KFAdvance](../saas-apps/kfadvance-tutorial.md)
+
+Du kan också hitta dokumentationen för alla program härifrån https://aka.ms/AppsTutorial
+
+För att lista ditt program i Azure AD App-galleriet läser du informationen här. https://aka.ms/AzureADAppRequest
+
+--- 
+
 ## <a name="november-2020"></a>November 2020
 
 ### <a name="azure-active-directory-tls-10-tls-11-and-3des-deprecation"></a>Azure Active Directory TLS 1,0, TLS 1,1 och 3DES-utfasning
@@ -1017,190 +1105,4 @@ Om din organisation använder Azure MFA SDK måste du migrera den 30 september 2
 
 ---
 
-## <a name="june-2020"></a>Juni 2020 
-
-### <a name="user-risk-condition-in-conditional-access-policy"></a>Villkor för användar risk i princip för villkorlig åtkomst
-
-**Typ:** Planera för ändring  
-**Tjänste kategori:** Villkorlig åtkomst  
-**Produkt kapacitet:** & skydd för identitets säkerhet
- 
-
-Med stöd för användar risker i Azure AD-princip för villkorlig åtkomst kan du skapa flera principer för användar risk. Olika minimi nivåer för användar risk kan krävas för olika användare och appar. Utifrån användar risk kan du skapa principer för att blockera åtkomst, kräva Multi-Factor Authentication, säkra lösen ords ändringar eller omdirigera till Microsoft Cloud App Security för att framtvinga en replikeringsprincip, till exempel ytterligare granskning.
-
-Användar risk villkoret kräver Azure AD Premium P2 eftersom det använder Azure Identity Protection, som är ett P2-erbjudande. Mer information om villkorlig åtkomst finns i dokumentationen för [villkorlig åtkomst för Azure AD](../conditional-access/index.yml).
-
----
-
-### <a name="saml-sso-now-supports-apps-that-require-spnamequalifier-to-be-set-when-requested"></a>SAML SSO stöder nu appar som kräver att SPNameQualifier anges vid begäran
-
-**Typ:** Fastsatt  
-**Tjänste kategori:** Företags program  
-**Produkt kapacitet:** DEFINITION
- 
-Vissa SAML-program kräver att SPNameQualifier returneras i intygets ämne när det begärs. Azure AD svarar nu korrekt när en SPNameQualifier begärs i NameID-principen för begäran. Detta fungerar även för SP-initierad inloggning och IdP initierad inloggning kommer att följa.  Mer information om SAML-protokoll i Azure Active Directory finns i [Single Sign-On SAML-protokollet](../develop/single-sign-on-saml-protocol.md).
-
----
-
-### <a name="azure-ad-b2b-collaboration-supports-inviting-msa-and-google-users-in-azure-government-tenants"></a>Azure AD B2B-samarbete har stöd för att bjuda in MSA och Google-användare i Azure Government-klienter
-
-**Typ:** Ny funktion  
-**Tjänste kategori:** Business  
-**Produkt kapacitet:** B2B/B2C
- 
-
-Azure Government klienter som använder B2B-samarbets funktionerna kan nu bjuda in användare som har ett Microsoft-eller Google-konto. Om du vill ta reda på om din klient kan använda dessa funktioner följer du anvisningarna på [Hur vet jag om B2B-samarbete är tillgängligt i min Azure amerikanska myndighets klient?](../external-identities/current-limitations.md#how-can-i-tell-if-b2b-collaboration-is-available-in-my-azure-us-government-tenant)
-
- 
----
- 
-### <a name="user-object-in-ms-graph-v1-now-includes-externaluserstate-and-externaluserstatechangeddatetime-properties"></a>Användar objekt i MS Graph v1 innehåller nu externalUserState-och externalUserStateChangedDateTime-egenskaper
-
-**Typ:** Ny funktion  
-**Tjänste kategori:** Business  
-**Produkt kapacitet:** B2B/B2C
- 
-
-Egenskaperna externalUserState och externalUserStateChangedDateTime kan användas för att hitta inbjudna B2B-gäster som inte har accepterat sina inbjudningar än och som skapar automatisering, som att ta bort användare som inte har accepterat sina inbjudningar efter ett visst antal dagar. De här egenskaperna är nu tillgängliga i MS Graph v1. Vägledning om hur du använder dessa egenskaper finns i [användar resurs typ](/graph/api/resources/user).
- 
----
-
-### <a name="manage-authentication-sessions-in-azure-ad-conditional-access-is-now-generally-available"></a>Hantera autentiseringsbegäranden i Azure AD villkorlig åtkomst är nu allmänt tillgänglig
-
-**Typ:** Ny funktion  
-**Tjänste kategori:** Villkorlig åtkomst  
-**Produkt kapacitet:** & skydd för identitets säkerhet
- 
-Med hanterings funktionerna för autentisering kan du konfigurera hur ofta dina användare måste ange inloggnings uppgifter och om de behöver ange autentiseringsuppgifter efter att de har stängt och öppnat om webbläsare för att få större säkerhet och flexibilitet i din miljö.
- 
-Dessutom används hantering av autentisering för att endast använda den första Factor Authentication på Azure AD-anslutna, hybrid Azure AD-anslutna och registrerade Azure AD-enheter. Nu gäller hantering av autentiserings-sessioner även för MFA. Mer information finns i [Konfigurera hantering av autentisering med villkorlig åtkomst](../conditional-access/howto-conditional-access-session-lifetime.md).
-
----
-
-### <a name="new-federated-apps-available-in-azure-ad-application-gallery---june-2020"></a>Nya federerade appar som är tillgängliga i Azure AD Application Gallery – juni 2020
-
-**Typ:** Ny funktion  
-**Tjänste kategori:** Företags program  
-**Produkt kapacitet:** integration från tredje part
- 
-I juni 2020 har vi lagt till följande 29 nya program i vårt app-galleri med stöd för federation:
-
-[Shopify plus](../saas-apps/shopify-plus-tutorial.md), [Ekarda](../saas-apps/ekarda-tutorial.md), [grindar](../saas-apps/mailgates-tutorial.md), [BullseyeTDP](../saas-apps/bullseyetdp-tutorial.md), [Raketa](../saas-apps/raketa-tutorial.md), [segment](../saas-apps/segment-tutorial.md), [AI revisor](https://www.mindbridge.ai/products/ai-auditor/), [Pobuca Connect](https://app.pobu.ca/), [proto.io](../saas-apps/proto.io-tutorial.md), [Gatekeeper](https://www.gatekeeperhq.com/), [hubb Planner](../saas-apps/hub-planner-tutorial.md), [Ansira-partner go-to-Marketing-verktygslåda](https://ansira.com/technology/channel-engagement), [IBM Digital Business Automation i molnet](../saas-apps/ibm-digital-business-automation-on-cloud-tutorial.md), [kisi fysisk säkerhet](../saas-apps/kisi-physical-security-tutorial.md), [ViewpointOne](https://team.viewpoint.com/), [IntelligenceBank](../saas-apps/intelligencebank-tutorial.md), [pymetrics](../saas-apps/pymetrics-tutorial.md), [noll](https://www.teamzero.com/), [instation](https://instation.invillia.com/), [EDX för Business SAML 2,0-integration](../saas-apps/edx-for-business-saml-integration-tutorial.md), [MOOC Office 365](https://mooc.office365-training.com/en/), [SmartKargo](../saas-apps/smartkargo-tutorial.md), [PKIsigning-plattform](https://platform.pkisigning.nl/), [SiteIntel](../saas-apps/siteintel-tutorial.md), [fält-ID](../saas-apps/field-id-tutorial.md) [, kurs utbud](https://smallstep.com/sso-ssh/) [SAML](../saas-apps/curricula-saml-tutorial.md), [perforce Helix Core-Helix Authentication Service](../saas-apps/perforce-helix-core-tutorial.md) [,](https://cloud.metacompliance.com/)  
-
-Du kan också hitta dokumentationen för alla program härifrån https://aka.ms/AppsTutorial . För att lista ditt program i Azure AD App-galleriet läser du informationen här: https://aka.ms/AzureADAppRequest .
-
----
-
-### <a name="api-connectors-for-external-identities-self-service-sign-up-are-now-in-public-preview"></a>API-kopplingar för externa identiteter för självbetjänings registrering finns nu i offentlig för hands version
-
-**Typ:** Ny funktion  
-**Tjänste kategori:** Business  
-**Produkt kapacitet:** B2B/B2C
- 
-API-kopplingar för externa identiteter gör att du kan använda webb-API: er för att integrera självbetjänings registrering med externa moln system. Det innebär att du nu kan anropa webb-API: er som vissa steg i ett registrerings flöde för att utlösa molnbaserade anpassade arbets flöden. Du kan till exempel använda API-kopplingar för att:
-
-- Integrera med ett anpassat godkännande arbets flöden.
-- Utföra identitets bevisning
-- Verifiera indata från användaren
-- Skriv över användarattribut
-- Kör anpassad affärs logik
-
-Mer information om alla upplevelser som är möjliga med API-kopplingar finns i [använda API-kopplingar för att anpassa och utöka](../external-identities/api-connectors-overview.md)självbetjänings registrering eller [Anpassa extern identitet självbetjänings registrering med Web API-integreringar](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/customize-external-identities-self-service-sign-up-with-web-api/ba-p/1257364#.XvNz2fImuQg.linkedin).
- 
----
-
-### <a name="provision-on-demand-and-get-users-into-your-apps-in-seconds"></a>Etablera på begäran och få användare i dina appar på några sekunder
-
-**Typ:** Ny funktion  
-**Tjänste kategori:** App-etablering  
-**Produkt kapacitet:** Hantering av identitets livs cykel
- 
-Azure AD Provisioning-tjänsten arbetar för närvarande med en cyklisk bas. Tjänsten körs var 40: e minut. Med [etablerings funktionen på begäran](https://aka.ms/provisionondemand) kan du välja en användare och etablera dem på några sekunder. Med den här funktionen kan du snabbt felsöka etablerings problem, utan att behöva göra en omstart för att tvinga etablerings cykeln att starta igen. 
- 
----
-
-### <a name="new-permission-for-using-azure-ad-entitlement-management-in-graph"></a>Ny behörighet för att använda hantering av Azure AD-berättigande i grafen
-
-**Typ:** Ny funktion  
-**Tjänste kategori:** Andra  
-**Produkt kapacitet:** Hantering av rättigheter
- 
-En ny delegerad behörighet EntitlementManagement. Read. all är nu tillgänglig för användning med rättighets hanterings-API: et i Microsoft Graph beta. Mer information om tillgängliga API: er finns i [arbeta med API för hantering av Azure AD-hantering](/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta).
-
----
-
-### <a name="identity-protection-apis-available-in-v10"></a>API: er för identitets skydd som är tillgängliga i v 1.0
-
-**Typ:** Ny funktion  
-**Tjänste kategori:** Identitets skydd  
-**Produkt kapacitet:** & skydd för identitets säkerhet
- 
-RiskyUsers-och riskDetections-Microsoft Graph-API: er är nu allmänt tillgängliga. Nu när de är tillgängliga på v 1.0-slutpunkten, bjuder vi in dig att använda dem i produktionen. Mer information finns i [Microsoft Graph-dokumenten](/graph/api/resources/identityprotectionroot).
- 
----
-
-### <a name="sensitivity-labels-to-apply-policies-to-microsoft-365-groups-is-now-generally-available"></a>Känslighets etiketter för att tillämpa principer på Microsoft 365 grupper är nu allmänt tillgängliga
-
-**Typ:** Ny funktion  
-**Tjänste kategori:** Grupp hantering  
-**Produkt kapacitet:** Samarbete
- 
-
-Nu kan du skapa känslighets etiketter och använda etikett inställningar för att tillämpa principer på Microsoft 365 grupper, inklusive sekretess (offentlig eller privat) och åtkomst princip för externa användare. Du kan skapa en etikett med sekretess policyn som privat och extern användar åtkomst princip för att inte tillåta att gäst användare läggs till. När en användare använder den här etiketten i en grupp, kommer gruppen att vara privat och inga gäst användare får läggas till i gruppen. 
-
-Känslighets etiketter är viktiga för att skydda affärs kritiska data och gör att du kan hantera grupper i skala på ett kompatibelt och säkert sätt. Vägledning om hur du använder känslighets etiketter finns i [tilldela känslighets etiketter till Microsoft 365 grupper i Azure Active Directory (för hands version)](../enterprise-users/groups-assign-sensitivity-labels.md).
- 
----
-
-### <a name="updates-to-support-for-microsoft-identity-manager-for-azure-ad-premium-customers"></a>Uppdateringar som stöder Microsoft Identity Manager för Azure AD Premium kunder
-
-**Typ:** Ändrad funktion  
-**Tjänste kategori:** Microsoft Identity Manager  
-**Produkt kapacitet:** Hantering av identitets livs cykel
- 
-Azure-support är nu tillgängligt för Azure AD integration-komponenter i Microsoft Identity Manager 2016, genom slutet av det utökade stödet för Microsoft Identity Manager 2016. Läs mer på [support uppdatering för Azure AD Premium kunder som använder Microsoft Identity Manager](/microsoft-identity-manager/support-update-for-azure-active-directory-premium-customers).
-
----
-
-### <a name="the-use-of-group-membership-conditions-in-sso-claims-configuration-is-increased"></a>Användningen av grupp medlemskaps villkor i SSO-anspråks konfigurationen höjs
-
-**Typ:** Ändrad funktion  
-**Tjänste kategori:** Företags program  
-**Produkt kapacitet:** DEFINITION
- 
-Tidigare var antalet grupper som du kan använda när du villkorligt ändrar anspråk baserat på grupp medlemskap i en enskild program konfiguration begränsad till 10. Användningen av grupp medlemskaps villkor i SSO-anspråks konfigurationen har nu ökat till högst 50 grupper. Mer information om hur du konfigurerar anspråk finns i konfiguration av [SSO-anspråk för företags program](../develop/active-directory-saml-claims-customization.md#emitting-claims-based-on-conditions). 
-
----
-
-### <a name="enabling-basic-formatting-on-the-sign-in-page-text-component-in-company-branding"></a>Aktivera grundläggande formatering på inloggnings sidans text komponent i företags anpassning.
-
-**Typ:** Ändrad funktion  
-**Tjänste kategori:** Autentiseringar (inloggningar)  
-**Produkt kapacitet:** Användarautentisering
- 
-Företags anpassnings funktionen på Azure AD/Microsoft 365 inloggnings upplevelsen har uppdaterats så att kunden kan lägga till hyperlänkar och enkel formatering, inklusive fetstil, understrykning och kursiv stil. Vägledning om hur du använder den här funktionen finns i [lägga till anpassning till din organisations Azure Active Directory inloggnings sida](./customize-branding.md).
-
----
-
-### <a name="provisioning-performance-improvements"></a>Prestanda förbättringar för etablering
-
-**Typ:** Ändrad funktion  
-**Tjänste kategori:** App-etablering  
-**Produkt kapacitet:** Hantering av identitets livs cykel
- 
-Etablerings tjänsten har uppdaterats för att minska tiden då en [stegvis cykel](../app-provisioning/how-provisioning-works.md#incremental-cycles) slutförs. Det innebär att användare och grupper kommer att tillhandahållas i sina program snabbare än tidigare. Alla nya etablerings jobb som skapats efter 6/10/2020 kommer automatiskt att dra nytta av prestanda förbättringarna. Alla program som kon figurer ATS för etablering före 6/10/2020 måste starta om en gång efter 6/10/2020 för att dra nytta av prestanda förbättringarna. 
-
----
-
-### <a name="announcing-the-deprecation-of-adal-and-ms-graph-parity"></a>Att presentera utfasningen av ADAL-och MS Graph-paritet
-
-**Typ:** Föråldrad  
-**Tjänste kategori:** EJ TILLÄMPLIGT  
-**Produkt kapacitet:** Hantering av enhetens livs cykel
-
-Nu när Microsoft Authentication libraries (MSAL) är tillgängligt kommer vi inte längre att lägga till nya funktioner i Azure Active Directory Authentication libraries (ADAL) och säkerhets korrigeringarna upphör den 30 juni 2022. Mer information om hur du migrerar till MSAL finns i [migrera program till Microsoft Authentication Library (MSAL)](../develop/msal-migration.md).
-
-Dessutom har vi utfört arbetet för att göra alla Azure AD Graph-funktioner tillgängliga via MS Graph. Azure AD Graph-API: er får därför bara Bugfix och säkerhets korrigeringar till och med den 30 juni 2022. Mer information finns i [Uppdatera dina program för att använda Microsoft Authentication Library och Microsoft Graph API](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363)
- 
----
  

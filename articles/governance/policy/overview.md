@@ -3,12 +3,12 @@ title: Översikt över Azure Policy
 description: Azure Policy är en tjänst i Azure som används för att skapa, tilldela och hantera principdefinitioner i Azure-miljön.
 ms.date: 10/05/2020
 ms.topic: overview
-ms.openlocfilehash: 8a32e32afb544588bb033cc64ede5ecbe6e2bac2
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 96fd29b5e3d24bc3e678461a95005e004a8a3a80
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097396"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803960"
 ---
 # <a name="what-is-azure-policy"></a>Vad är Azure Policy?
 
@@ -37,7 +37,7 @@ Detaljerad information om när och hur princip utvärderingen sker finns i [utv�
 
 ### <a name="control-the-response-to-an-evaluation"></a>Kontrol lera svaret på en utvärdering
 
-Affärs regler för hantering av icke-kompatibla resurser varierar kraftigt mellan organisationer. Exempel på hur en organisation vill att plattformen ska svara på en icke-inklagomåls resurs är:
+Affärs regler för hantering av icke-kompatibla resurser varierar kraftigt mellan organisationer. Exempel på hur en organisation vill att plattformen ska svara på en icke-kompatibel resurs är:
 
 - Neka resurs ändringen
 - Logga ändringen i resursen
@@ -153,7 +153,7 @@ Ta till exempel scenariot där du har en initiativdefinition, **initiativeC**, m
 I det här scenariot, när du definierar initiativparametrar för **initiativC**, har du tre alternativ:
 
 - Använd parametrarna för principdefinitionerna i det här initiativet. I det här exemplet blir _allowedLocations_ och _allowedSingleLocation_ initiativparametrar för **initiativC**.
-- Ange värden för parametrarna för principdefinitionerna i den här initiativdefinitionen. I det här exemplet kan du ange en lista över **platser som ska**användas för att ställa in parameter- **allowedLocations** och **principb**parameter – **allowedSingleLocation**. Du kan också ange värden när du tilldelar det här initiativet.
+- Ange värden för parametrarna för principdefinitionerna i den här initiativdefinitionen. I det här exemplet kan du ange en lista över **platser som ska** användas för att ställa in parameter- **allowedLocations** och **principb** parameter – **allowedSingleLocation**. Du kan också ange värden när du tilldelar det här initiativet.
 - Ange en lista med alternativ _värden_ som kan användas när du tilldelar det här initiativet. När du tilldelar det här initiativet kan ärvda parametrarna från principdefinitionerna inom initiativet endast ha värden från den här listan.
 
 När du skapar värdealternativ i en initiativdefinition kan du inte ange ett annat värde under initiativtilldelningen eftersom det inte ingår i listan.

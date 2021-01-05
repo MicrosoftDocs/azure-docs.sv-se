@@ -3,16 +3,16 @@ title: Vad är programmallar i Azure IoT Central | Microsoft Docs
 description: Med Azure IoT Central programmallar kan du gå vidare till IoT Solution Development.
 author: philmea
 ms.author: philmea
-ms.date: 10/25/2019
+ms.date: 12/19/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: dae2461336316defb6f2cfc63b775c67cf2196d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27f054cb085e5064ffed0e75b77d53a1406b566e
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91813074"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797136"
 ---
 # <a name="what-are-application-templates"></a>Vad är programmallar?
 
@@ -36,7 +36,7 @@ Om du vill skapa ditt program från grunden väljer du en av mallarna för **anp
 
 Azure IoT Central är en plattform för oberoende-program. Programmallar är bransch fokuserade exempel som är tillgängliga för dessa branscher idag, med mer att komma i framtiden:
 
-- [Retail](../retail/overview-iot-central-retail.md)
+- [Detaljhandeln](../retail/overview-iot-central-retail.md)
   - Ansluten logistik
   - Digitalt distributionscenter
   - In-Store Analytics – villkors övervakning
@@ -46,7 +46,7 @@ Azure IoT Central är en plattform för oberoende-program. Programmallar är bra
 - [Energi](../energy/overview-iot-central-energy.md)
   - Övervakning av smart mätare
   - Övervakning på Sol panelen
-- [Myndigheter](../government/overview-iot-central-government.md)
+- [Government](../government/overview-iot-central-government.md)
   - Ansluten avfalls hantering
   - Övervakning av vatten förbrukning
   - Övervakning av vatten kvalitet

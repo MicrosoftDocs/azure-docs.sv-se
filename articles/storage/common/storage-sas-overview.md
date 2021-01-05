@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 12/28/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: d435ced4c8ec56fae5081ede367b593d2b66ef0f
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 8812ab091037bcb3144a7fed53a449c3f5de353a
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936547"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802515"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Bevilja begränsad åtkomst till Azure Storage resurser med signaturer för delad åtkomst (SAS)
 
@@ -112,7 +112,7 @@ SAS-token är en sträng som du skapar på klient sidan, till exempel genom att 
 
 Klient program ger SAS-URI: n till Azure Storage som en del av en begäran. Sedan kontrollerar tjänsten SAS-parametrarna och signaturen för att kontrol lera att den är giltig. Om tjänsten verifierar att signaturen är giltig är begäran auktoriserad. Annars nekas begäran med felkoden 403 (tillåts inte).
 
-Här är ett exempel på en SAS-URI för en tjänst som visar resursens URI och SAS-token:
+Här är ett exempel på en SAS-URI för tjänsten som visar resurs-URI och SAS-token. Eftersom SAS-token omfattar URI-frågesträngen måste resurs-URI: n följas först av ett frågetecken och sedan av SAS-token:
 
 ![Komponenter i en SAS-URI för tjänsten](./media/storage-sas-overview/sas-storage-uri.png)
 

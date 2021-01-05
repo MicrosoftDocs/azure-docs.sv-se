@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: f861f9efa6ecc1886647ed6c460b6718ff97e8a1
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 90831c0e8d5ab73f65dc801319a357d59799cbc6
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522336"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97807560"
 ---
 # <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>Felsöka anslutningsproblem för privata slutpunkter i Azure
 
@@ -100,8 +100,24 @@ Granska de här stegen för att se till att alla vanliga konfigurationer är de 
     
        ![NSG utgående regler](./media/private-endpoint-tsg/nsg-outbound-rules.png)
 
+1. Den virtuella käll datorn ska ha vägen till privat slut punkt IP-adress för nästa hopp som InterfaceEndpoints i NÄTVERKSKORTets effektiva vägar. 
+
+    a. Om du inte kan se det privata slut punkts flödet på den virtuella käll datorn kontrollerar du om 
+     - Den virtuella käll datorn och den privata slut punkten tillhör samma VNET. Om ja, måste du delta i supporten. 
+     - Den virtuella käll datorn och den privata slut punkten är en del av olika virtuella nätverk och kontrollerar sedan IP-anslutningen mellan virtuella nätverk. Om det finns en IP-anslutning och fortfarande inte kan se vägen kan du engagera supporten. 
+
 1. Om anslutningen har verifierats kan anslutnings problemet vara relaterat till andra aspekter som hemligheter, tokens och lösen ord på program nivån.
-   - I det här fallet granskar du konfigurationen av den privata länk resurs som är associerad med den privata slut punkten. Mer information finns i [fel söknings guiden för Azure privat länk](troubleshoot-private-link-connectivity.md).
+   - I det här fallet granskar du konfigurationen av den privata länk resurs som är associerad med den privata slut punkten. Mer information finns i [fel söknings guiden för Azure privat länk](troubleshoot-private-link-connectivity.md)
+   
+1. Det är alltid bäst att begränsa innan support ärendet höjs. 
+
+    a. Om källan är lokal anslutning till privat slut punkt i Azure har problem, försöker du ansluta 
+      - Till en annan virtuell dator från lokal plats och kontrol lera om du har IP-anslutning till Virtual Network lokalt. 
+      - Från en virtuell dator i Virtual Network till den privata slut punkten.
+      
+    b. Om källan är Azure och den privata slut punkten är i olika Virtual Network försöker du ansluta 
+      - Till den privata slut punkten från en annan källa. Genom att göra detta kan du isolera eventuella specifika problem med en virtuell dator. 
+      - Till en virtuell dator som är en del av samma Virtual Network av den privata slut punkten.  
 
 1. Kontakta support teamet för [Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) om problemet fortfarande är olöst och det fortfarande finns anslutnings problem.
 

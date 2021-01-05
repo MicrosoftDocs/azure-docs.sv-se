@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 1b17729437b238b98f60e2cd97664fa6aafcccd4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b3ba007f03b3aa4883d9455dc43b2bc19676da59
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462454"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803977"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>Certifiera IoT Plug and Play-enheter
 
@@ -41,7 +41,7 @@ För att uppfylla certifierings kraven måste enheten:
 - Ansluter till Azure IoT Hub med hjälp av [DPS](../iot-dps/about-iot-dps.md).
 - Implementera telemetri, egenskaper eller kommandon som följer IoT Plug and Play-konventionen.
 - Beskriv interaktionen mellan enheter med en [DTDL v2](https://aka.ms/dtdl) -modell.
-- Publicera modellen och alla nödvändiga gränssnitt, i [lagrings platsen för den offentliga Azure IoT-modellen](https://devicemodels.azureiotsolutions.com/)
+- Publicera modellen och alla nödvändiga gränssnitt, i lagrings platsen för den offentliga Azure IoT-modellen
 - Skicka modell-ID under [DPS-registreringen](./concepts-developer-guide-device.md#dps-payload) i nytto lasten för DPS-etablering.
 - Meddela modell-ID: t under [MQTT-anslutningen](./concepts-developer-guide-device.md#model-id-announcement).
 - Alla enhets modeller måste vara kompatibla med [Azure IoT Central](../iot-central/core/overview-iot-central-developer.md).
@@ -174,7 +174,7 @@ Följande steg visar hur du använder [Azure-certifierad enhets Portal](https://
 
 Om du vill använda [certifierings portalen](https://aka.ms/acdp)måste du använda en Azure Active Directory från din arbets-eller skol klient.
 
-Ditt konto måste vara medlem i [Microsoft Partner Network](https://partner.microsoft.com)för att publicera modeller till den offentliga Azure IoT-modellen. Systemet kontrollerar att Microsoft Partner Network-ID finns och att kontot är fullständigt testats innan det publiceras till enhets katalogen.
+Ditt konto måste vara medlem i [Microsoft Partner Network](https://partner.microsoft.com)för att publicera modeller till den [offentliga Azure IoT-modellen](https://github.com/Azure/iot-plugandplay-models). Systemet kontrollerar att Microsoft Partner Network-ID finns och att kontot är fullständigt testats innan det publiceras till enhets katalogen.
 
 ### <a name="company-profile"></a>Företags profil
 

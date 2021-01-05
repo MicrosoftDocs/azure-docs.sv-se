@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: abhishgu
 ms.reviewer: abhishgu
-ms.openlocfilehash: a233845e8f19cc44cd9d00a0392b1341db297fd6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 25972ba2bb30c39838c4822a42af292e8d8b1dba
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632962"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803637"
 ---
 # <a name="ingest-data-from-apache-kafka-into-azure-cosmos-db-cassandra-api-using-kafka-connect"></a>Mata in data från Apache Kafka i Azure Cosmos DB API för Cassandra med Kafka Connect
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -22,7 +22,7 @@ Befintliga Cassandra-program kan enkelt fungera med [Azure Cosmos DB API för Ca
 
 Data i Apache Kafka (ämnen) är bara användbara när de används av andra program eller matas in i andra system. Det är möjligt att bygga en lösning med [Kafka-tillverkare/konsument-](https://kafka.apache.org/documentation/#api) API: er [med hjälp av ett språk-och klient-SDK som du själv väljer](https://cwiki.apache.org/confluence/display/KAFKA/Clients). Kafka Connect tillhandahåller en alternativ lösning. Det är en plattform för att strömma data mellan Apache Kafka och andra system på ett skalbart och tillförlitligt sätt. Eftersom Kafka Connect har stöd för de hylla-kopplingar som innehåller Cassandra, behöver du inte skriva anpassad kod för att integrera Kafka med Azure Cosmos DB API för Cassandra. 
 
-I den här artikeln kommer vi att använda [Apache Kafka DataStax-anslutningen](https://docs.datastax.com/kafka/doc/kafka/kafkaIntro.html)med öppen källkod som fungerar ovanpå Kafka Connect Framework för att mata in poster från ett Kafka ämne i rader i en eller flera Cassandra-tabeller. Exemplet innehåller en återanvändbar installation med Docker Compose. Detta är mycket användbart eftersom det gör att du kan starta alla nödvändiga komponenter lokalt med ett enda kommando. Dessa komponenter omfattar Kafka, Zookeeper, Kafka Connect Worker och Sample data Generator-programmet.
+I den här artikeln kommer vi att använda [Apache Kafka DataStax-anslutningen](https://docs.datastax.com/en/kafka/doc/kafka/kafkaIntro.html)med öppen källkod som fungerar ovanpå Kafka Connect Framework för att mata in poster från ett Kafka ämne i rader i en eller flera Cassandra-tabeller. Exemplet innehåller en återanvändbar installation med Docker Compose. Detta är mycket användbart eftersom det gör att du kan starta alla nödvändiga komponenter lokalt med ett enda kommando. Dessa komponenter omfattar Kafka, Zookeeper, Kafka Connect Worker och Sample data Generator-programmet.
 
 Här är en uppdelning av komponenterna och deras tjänst definitioner – du kan referera till den fullständiga `docker-compose` filen [i GitHub-lagrings platsen](https://github.com/Azure-Samples/cosmosdb-cassandra-kafka/blob/main/docker-compose.yaml).
 

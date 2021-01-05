@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
-ms.openlocfilehash: 34064fe3fe88a34b0dd2430d7adec3ebcb17ebcc
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 79224c14fc5182df7a699864af3d78c9be36259f
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95528235"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797289"
 ---
 # <a name="move-resources-across-regions-from-resource-group"></a>Flytta resurser mellan regioner (från resurs grupp)
 
@@ -57,6 +57,9 @@ I den här artikeln får du lära dig hur du flyttar resurser i en särskild res
 ## <a name="select-resources-to-move"></a>Välj vilka resurser som ska flyttas
 
 Välj de resurser som du vill flytta. Du flyttar resurser till en mål region i käll regions prenumerationen. Om du vill ändra prenumerationen kan du göra det när resurserna har flyttats.
+
+> [!NOTE]
+>  Välj inte de associerade diskarna eller så fungerar inte åtgärden. Tillhör ande diskar ingår automatiskt i en flyttning av virtuella datorer.
 
 1. Öppna relevant resurs grupp i Azure Portal.
 2. På sidan resurs grupp väljer du de resurser som du vill flytta.

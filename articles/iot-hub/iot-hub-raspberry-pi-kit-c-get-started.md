@@ -10,12 +10,12 @@ ms.date: 02/14/2019
 ms.author: wesmc
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: b21b161a03be7a37fe1d3e872e10d4de437670db
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 52da3c28faa375f8b308e3fe78329fec4f996af9
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145867"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97804062"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Anslut Raspberry Pi till Azure IoT Hub (C)
 
@@ -99,7 +99,7 @@ Förbered microSD-kortet för installation av Raspbian-avbildningen.
 
 1. Ladda ned Raspbian.
 
-   1. [Ladda ned Raspbian-sträckning med Desktop](https://www.raspberrypi.org/downloads/raspbian/) (. zip-filen).
+   1. [Ladda ned Raspbian-sträckning med Desktop](https://www.raspberrypi.org/software/) (. zip-filen).
 
    2. Extrahera Raspbian-avbildningen till en mapp på datorn.
 
@@ -125,7 +125,7 @@ Förbered microSD-kortet för installation av Raspbian-avbildningen.
 
    ![Menyn Raspbian-inställningar](./media/iot-hub-raspberry-pi-kit-c-get-started/1-raspbian-preferences-menu.png)
 
-3. På fliken **gränssnitt** ställer du in **SPI** och **SSH** för att **Aktivera**och klickar sedan på **OK**. Om du inte har fysiska sensorer och vill använda simulerade sensor data är det här steget valfritt.
+3. På fliken **gränssnitt** ställer du in **SPI** och **SSH** för att **Aktivera** och klickar sedan på **OK**. Om du inte har fysiska sensorer och vill använda simulerade sensor data är det här steget valfritt.
 
    ![Aktivera SPI och SSH på Raspberry Pi](./media/iot-hub-raspberry-pi-kit-c-get-started/2-enable-spi-ssh-on-raspberry-pi.png)
 
@@ -203,7 +203,7 @@ Aktivera PI med mikrousb-kabeln och strömförsörjningen. Använd Ethernet-kabe
    ```
 
    > [!NOTE] 
-   > Om du **inte har en fysisk BME280**kan du använda parametern--simulerade data som kommando rads parameter för att simulera temperatur&fuktighets data. `sudo ./setup.sh --simulated-data`
+   > Om du **inte har en fysisk BME280** kan du använda parametern--simulerade data som kommando rads parameter för att simulera temperatur&fuktighets data. `sudo ./setup.sh --simulated-data`
    >
 
 ### <a name="build-and-run-the-sample-application"></a>Skapa och kör exempel programmet

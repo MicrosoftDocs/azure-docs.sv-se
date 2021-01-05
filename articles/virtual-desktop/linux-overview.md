@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 16659eafccd4c15e37ef8a6d16a3765d0afdbc3e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ae279c117172f116641c7c908b9fc53f26ceaa90
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960651"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802311"
 ---
 # <a name="linux-support"></a>Linux-support
 
@@ -25,7 +25,7 @@ Följande partners har godkänt Windows virtuella Skriv bords klienter för Linu
 |:------|:--------------------|:--------------|
 |![IGEL-logotyp](./media/partners/igel.png)|[Dokumentation om IGEL-klient](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[IGEL-stöd](https://www.igel.com/support/)|
 |![NComputing-logotyp](./media/partners/ncomputing.png)|[Dokumentation om NComputing-klient](https://www.ncomputing.com/microsoft)|[NComputing-stöd](https://www.ncomputing.com/support/support-options)|
-|![Stratodesk-logotyp](./media/partners/stratodesk.png)|[Dokumentation om Stratodesk-klient](https://www.stratodesk.com/kb/Microsoft_Windows_Virtual_Desktop_(WVD))|[Stratodesk-stöd](https://www.stratodesk.com/support-3/)|
+|![Stratodesk-logotyp](./media/partners/stratodesk.png)|[Dokumentation om Stratodesk-klient](https://www.stratodesk.com/kb/Microsoft_Windows_Virtual_Desktop_(WVD))|[Stratodesk-stöd](https://www.stratodesk.com/support/)|
 
 ## <a name="next-steps"></a>Nästa steg
 

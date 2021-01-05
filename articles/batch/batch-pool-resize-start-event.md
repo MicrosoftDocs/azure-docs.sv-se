@@ -2,13 +2,13 @@
 title: Start händelse för storleks ändring i Azure Batch pool
 description: Referens för start händelse för storleks ändring i batch-pool. Exempel visar innehållet i en pool för att ändra storlek på en pool för att ändra storlek på en pool från 0 till 2 noder med en manuell storleks ändring.
 ms.topic: reference
-ms.date: 04/20/2017
-ms.openlocfilehash: 63576b04b06aad024211d0a50225907c88c138ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/28/2020
+ms.openlocfilehash: be64a2ef30cbe3c404633b29202a4adf1e49ea9e
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83723739"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803620"
 ---
 # <a name="pool-resize-start-event"></a>Starthändelse för storleksändring av pool
 
@@ -18,14 +18,14 @@ ms.locfileid: "83723739"
 
 ```
 {
-    "id": "myPool1",
-    "nodeDeallocationOption": "Invalid",
-    "currentDedicatedNodes": 0,
-    "targetDedicatedNodes": 2,
-    "currentLowPriorityNodes": 0,
-    "targetLowPriorityNodes": 2,
-    "enableAutoScale": false,
-    "isAutoPool": false
+   "id": "myPool1",
+   "nodeDeallocationOption": "Invalid",
+   "currentDedicatedNodes": 0,
+   "targetDedicatedNodes": 2,
+   "currentLowPriorityNodes": 0,
+   "targetLowPriorityNodes": 2,
+   "enableAutoScale": false,
+   "isAutoPool": false
 }
 ```
 
