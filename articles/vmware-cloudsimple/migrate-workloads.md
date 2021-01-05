@@ -1,25 +1,25 @@
 ---
 title: Azure VMware-lösning av CloudSimple-migrera virtuella arbets datorer till ett privat moln
 description: Beskriver hur du migrerar virtuella datorer från lokala vCenter till CloudSimple Private Cloud vCenter
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 87b8a112a319519dbde977ee30136a884137212d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 851305775d14ed371440434b2fbe9334ec0a21b9
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77020003"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899328"
 ---
 # <a name="migrate-workload-vms-from-on-premises-vcenter-to-private-cloud-vcenter-environment"></a>Migrera virtuella arbets belastnings datorer från lokal vCenter till privat moln vCenter-miljö
 
 Det finns flera tillgängliga alternativ för att migrera virtuella datorer från ett lokalt Data Center till ditt privata CloudSimple-moln.  Det privata molnet ger inbyggd åtkomst till VMware vCenter och verktyg som stöds av VMware kan användas för migrering av arbets belastning. I den här artikeln beskrivs några av alternativen för vCenter-migrering.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Migrering av virtuella datorer och data från ditt lokala data Center kräver nätverks anslutning från data centret till din privata moln miljö.  Använd någon av följande metoder för att upprätta en nätverks anslutning:
 

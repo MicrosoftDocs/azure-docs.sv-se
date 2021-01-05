@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 01/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 64fe65019a66013323b1c6d27055051badb47cee
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: afedbe739e955499f94d00a8ced940e7a4e9c27c
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350321"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898710"
 ---
 # <a name="tutorial-transfer-data-with-azure-stack-edge-pro"></a>Självstudie: överföra data med Azure Stack Edge Pro
 
@@ -22,7 +22,7 @@ I den här självstudien beskrivs hur du lägger till och ansluter till resurser
 
 Den här proceduren kan ta upp till 10 minuter att slutföra.
 
-I den här guiden får du lära dig att:
+I de här självstudierna får du lära dig att
 
 > [!div class="checklist"]
 > * Lägga till en resurs
@@ -42,7 +42,7 @@ Innan du lägger till resurser i Azure Stack Edge Pro, se till att:
 
 Om du vill skapa en resurs, gör du så här:
 
-1. I [Azure Portal](https://portal.azure.com/)väljer du din Azure Stack Edge-resurs och går sedan till **översikten**. Enheten bör vara online.
+1. I [Azure Portal](https://portal.azure.com/)väljer du din Azure Stack Edge-resurs och går sedan till **översikten**. Enheten bör vara online. Välj **Cloud Storage Gateway**.
 
    ![Enhet online](./media/azure-stack-edge-deploy-add-shares/device-online-1.png)
 

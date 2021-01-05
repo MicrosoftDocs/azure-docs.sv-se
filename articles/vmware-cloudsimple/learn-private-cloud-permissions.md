@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-lösning av CloudSimple-behörighets modell för privata moln
 description: Beskriver behörighets modellen, grupper och kategorier för CloudSimple privata moln
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 28c4dc7831f97d66eb4d47f08e640344d5cca0d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c8cfeda008955006f2fbad1df58c8047bd36541
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77014954"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898053"
 ---
 # <a name="cloudsimple-private-cloud-permission-model-of-vmware-vcenter"></a>CloudSimple privata moln behörighets modell för VMware vCenter
 
@@ -57,7 +57,7 @@ Om du vill ge enskilda användare behörighet att hantera det privata molnet, sk
 | **Kryptografiska åtgärder** | Lägg till disk <br> Klona <br> Avkryptera <br> Direktåtkomst <br> Kryptera <br> Kryptera ny <br> Hantera KMS <br> Hantera krypterings principer <br> Hantera nycklar <br> Migrera <br> Dekryptera om <br> Registrera VM <br> Registrera värd |
 | **dvPort-grupp** | Skapa <br> Ta bort <br> Ändra <br> Princip åtgärd <br> Omfattnings åtgärd |
 | **Datalager** | Allokera utrymme <br> Bläddra i data lager <br> Konfigurera data lager <br> Fil åtgärder på låg nivå <br> Flytta data lager <br> Ta bort data lager <br> Ta bort fil <br> Byt namn på data lager <br> Uppdatera filer för virtuella datorer <br> Uppdatera metadata för virtuell dator |
-| **ESX Agent Manager** | Konfigurera <br> Ändra <br> Visa |
+| **ESX Agent Manager** | Konfigurera <br> Ändra <br> Vy |
 | **Anknytning** | Registrera tillägg <br> Avregistrera tillägg <br> Uppdatera tillägg |
 | **Extern stats Provider**| Registrera dig <br> Avregistrera <br> Uppdatera |
 | **Mapp** | Skapa mapp <br> Ta bort mapp <br> Flytta mapp <br> Byt namn på mapp |
@@ -68,13 +68,13 @@ Om du vill ge enskilda användare behörighet att hantera det privata molnet, sk
 | **vSphere taggning** | Tilldela eller ta bort tilldelning av vSphere-tagg <br> Skapa vSphere-tagg <br> Skapa vSphere tag-kategori <br> Ta bort vSphere-tagg <br> Ta bort vSphere tag-kategori <br> Redigera vSphere-tagg <br> Redigera vSphere tag-kategori <br> Ändra UsedBy-fält för kategori <br> Ändra fältet UsedBy för tagg |
 | **Nätverk** | Tilldela nätverk <br> Konfigurera <br> Flytta nätverk <br> Ta bort |
 | **Prestanda** | Ändra intervall |
-| **Värd profil** | Visa |
+| **Värd profil** | Vy |
 | **Resurs** | Använd rekommendation <br> Tilldela vApp till resurspoolen <br> Tilldela en virtuell dator till en resurspool <br> Skapa resurspool <br> Migrera avstängd virtuell dator <br> Migrera på den virtuella datorn <br> Ändra resurspool <br> Flytta resurspool <br> Fråga vMotion <br> Ta bort resurspool <br> Byt namn på resurspool |
 | **Schemalagd aktivitet** | Skapa uppgifter <br> Ändra uppgift <br> Ta bort aktivitet <br> Kör uppgift |
 | **Sessioner** | Personifiera användare <br> Meddelande <br> Verifiera session <br> Visa och stoppa sessioner |
 | **Data lager kluster** | Konfigurera ett data lager kluster |
 | **Profil driven lagring** | Profil driven lagrings uppdatering <br> Profil driven Storage-vy |
-| **Lagringspooler** | Konfigurera tjänst <br> Visa |
+| **Lagringspooler** | Konfigurera tjänst <br> Vy |
 | **Aktiviteter** | Skapa uppgift <br> Uppdatera uppgift |
 | **Överförings tjänst**| Hantera <br> Övervaka |
 | **vApp** | Lägg till virtuell dator <br> Tilldela resurspool <br> Tilldela vApp <br> Klona <br> Skapa <br> Ta bort <br> Exportera <br> Importera <br> Flytta <br> Avstängning <br> Slå på <br> Byt namn <br> Suspend <br> Avregistrera <br> Visa OVF-miljö <br> vApp program konfiguration <br> konfiguration av vApp-instans <br> vApp managedBy-konfiguration <br> resurs konfiguration för vApp |
@@ -119,7 +119,7 @@ Om du vill ge enskilda användare behörighet att hantera det privata molnet, sk
 | **Konfiguration av värd >** | Konfiguration av lagringspool |
 | **Data lager kluster** | Konfigurera ett data lager kluster |
 | **Profil driven lagring** | Profil driven lagrings uppdatering <br> Profil driven Storage-vy |
-| **Lagringspooler** | Konfigurera tjänst <br> Visa |
+| **Lagringspooler** | Konfigurera tjänst <br> Vy |
 
 ### <a name="cloud-network-admin-role"></a>Cloud-network-admin-Role
 

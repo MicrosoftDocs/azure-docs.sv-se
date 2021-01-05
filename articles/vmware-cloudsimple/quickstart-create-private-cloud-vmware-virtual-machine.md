@@ -1,19 +1,19 @@
 ---
 title: Snabb start – skapa en virtuell Azure VMware-dator i ett privat moln – Azure VMware-lösning av CloudSimple
 description: Lär dig hur du skapar en virtuell VMware-dator på ett privat CloudSimple-moln. Få åtkomst till CloudSimple-portalen från Azure Portal.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fd67a5a7f1bf665333e06c66f73c7f18727a3e12
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c741f01ccc3e34ec991aa77fc850fd9f60c4d8aa
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427761"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899294"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>Skapa virtuella VMware-datorer i ditt privata moln
 
@@ -102,7 +102,7 @@ CloudSimple tilldelar ett standard-vCenter-användarkonto med användar namn `cl
 
 Program och arbets belastningar som körs i en privat moln miljö kräver namn matchning och DHCP-tjänster för sökning och tilldelning av IP-adresser. En korrekt DHCP-och DNS-infrastruktur krävs för att tillhandahålla dessa tjänster. Du kan konfigurera en virtuell dator i vCenter för att tillhandahålla dessa tjänster i din privata moln miljö.
 
-Krav
+Förutsättningar
 
 * En distribuerad port grupp med VLAN konfigurerat
 
@@ -179,7 +179,7 @@ Aktivera gränssnittet manuellt.
 sudo ifup eth0
 ```
 
-Som standard **nekas**all inkommande trafik från Internet. Skapa en [brand Väggs tabell](firewall.md)om du vill öppna någon annan port.
+Som standard **nekas** all inkommande trafik från Internet. Skapa en [brand Väggs tabell](firewall.md)om du vill öppna någon annan port.
 
 När du har konfigurerat en intern IP-adress som statisk IP-adress kontrollerar du att du kan ansluta till Internet från den virtuella datorn.
 

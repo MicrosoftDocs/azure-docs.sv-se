@@ -3,12 +3,12 @@ title: Referens för appinställningar för Azure Functions
 description: Referens dokumentation för Azure Functions app-inställningar eller miljövariabler.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 2b71bee620ab7d5b1ef98b60013d1978f49d127f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 3d7292999fc4b53fed06822461857185127dc793
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505894"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898733"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referens för appinställningar för Azure Functions
 
@@ -185,6 +185,14 @@ Anger det maximala antalet språk arbets processer, med standardvärdet `1` . De
 |Nyckel|Exempelvärde|
 |---|------------|
 |FUNKTIONER \_ arbets \_ process \_ antal|2|
+
+## <a name="python_threadpool_thread_count"></a>antal PYTHON- \_ trådar för trådpool \_ \_
+
+Anger det maximala antalet trådar som en python-språk arbetare använder för att köra funktions anrop, med standardvärdet `1` för python-version `3.8` och nedan. För python `3.9` -version och högre är värdet inställt på `None` . Observera att den här inställningen inte garanterar antalet trådar som skulle anges under körningarna. Inställningen tillåter python att expandera antalet trådar till det angivna värdet. Inställningen gäller endast python Function-appar. Inställningen gäller även för synkrona funktioner-anrop och inte för-rutiner.
+
+|Nyckel|Exempelvärde|Maxvärde|
+|---|------------|---------|
+|antal PYTHON- \_ trådar för trådpool \_ \_|2|32|
 
 
 ## <a name="functions_worker_runtime"></a>FUNKTIONER \_ Worker \_ runtime

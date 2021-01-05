@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-lösning av CloudSimple – Använd privat moln som katastrof webbplats för lokala arbets belastningar
 description: Beskriver hur du konfigurerar ditt CloudSimple privata moln som en katastrof återställnings plats för lokala VMware-arbetsbelastningar
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0e019a9229b671be2fb73e758bd39f33657bc2d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dd1f157984cdb300cc3b375d71654e5da54d1ae
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77083144"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898138"
 ---
 # <a name="set-up-cloudsimple-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>Konfigurera CloudSimple privata moln som en katastrof återställnings plats för lokala VMware-arbetsbelastningar
 
@@ -46,7 +46,7 @@ I följande avsnitt beskrivs hur du distribuerar en DR-lösning med Zerto Virtua
 3. [Konfigurera ZVM och VRA i privat CloudSimple-moln](#set-up-zvm-and-vra-on-your-private-cloud)
 4. [Konfigurera Zerto virtuella skydds grupp](#set-up-zerto-virtual-protection-group)
 
-### <a name="prerequisites"></a>Krav
+### <a name="prerequisites"></a>Förutsättningar
 
 Om du vill aktivera Zerto virtuell replikering från din lokala miljö till ditt privata moln måste du uppfylla följande krav.
 

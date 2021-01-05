@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-lösning genom CloudSimple – sträck ut ett Layer 2-nätverk lokalt till ett privat moln
 description: Beskriver hur du konfigurerar ett Layer 2 VPN mellan NSX-T i ett CloudSimple-privat moln och en lokal fristående NSX Edge-klient
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f524bf6af66d44bc13b7c0957de7977968cbef28
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 06446b6c36e36466fe891d7327d8151603cdecd2
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427259"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899379"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Migrera arbetsbelastningar med hjälp av stretchade Layer 2-nätverk
 
@@ -108,11 +108,11 @@ Mer information finns i [virtuella privata nätverk](https://docs.vmware.com/en/
 
 Följande steg visar hur du hämtar det logiska router-ID: t för Tier0 DR Logical router-instansen för IPsec-och L2VPN-tjänsterna. Det logiska router-ID: t krävs senare när du implementerar L2VPN.
 
-1. Logga in på NSX-T-hanteraren `https://*nsx-t-manager-ip-address*` och välj Provider för **nätverks**  >  **routrar**  >  **– LR-**  >  **Översikt**. I **läget för hög tillgänglighet**väljer du **aktivt-standby**. Den här åtgärden öppnar ett popup-fönster som visar den virtuella Edge-dator där Tier0-routern för närvarande är aktiv.
+1. Logga in på NSX-T-hanteraren `https://*nsx-t-manager-ip-address*` och välj Provider för **nätverks**  >  **routrar**  >  **– LR-**  >  **Översikt**. I **läget för hög tillgänglighet** väljer du **aktivt-standby**. Den här åtgärden öppnar ett popup-fönster som visar den virtuella Edge-dator där Tier0-routern för närvarande är aktiv.
 
     ![Välj Aktiv-standby](media/l2vpn-fetch01.png)
 
-2. Välj kanter för **Fabric**-  >  **noder**  >  **Edges**. Anteckna hanterings-IP-adressen för den aktiva virtuella Edge-datorn (Edge-VM1) som identifierades i föregående steg.
+2. Välj kanter för **Fabric**-  >  **noder**  >  . Anteckna hanterings-IP-adressen för den aktiva virtuella Edge-datorn (Edge-VM1) som identifierades i föregående steg.
 
     ![Anmärkning för hantering av IP](media/l2vpn-fetch02.png)
 
@@ -154,20 +154,20 @@ För att upprätta en IPsec Route-baserad VPN mellan NSX-T Tier0-routern och den
 
 ### <a name="advertise-the-loopback-interface-ip-to-the-underlay-network"></a>Annonsera IP-adressen för loopback-gränssnittet till Underlay-nätverket
 
-1. Skapa en null-väg för loopback-användargränssnittet. Logga in på NSX-T-hanteraren och välj providers för routrar för **nätverks**  >  **routning**  >  **Routers**  >  **– LR**  >  **routning**  >  **statiska vägar**. Klicka på **Lägg till**. För **nätverk**anger du IP-adressen för loopback-gränssnittet. För **nästa hopp**klickar du på **Lägg till**, anger NULL för nästa hopp och behåller standardvärdet 1 för administratörs avstånd.
+1. Skapa en null-väg för loopback-användargränssnittet. Logga in på NSX-T-hanteraren och välj providers för routrar för **nätverks**  >  **routning**  >    >  **– LR**  >  **routning**  >  **statiska vägar**. Klicka på **Lägg till**. För **nätverk** anger du IP-adressen för loopback-gränssnittet. För **nästa hopp** klickar du på **Lägg till**, anger NULL för nästa hopp och behåller standardvärdet 1 för administratörs avstånd.
 
     ![Lägg till statisk väg](media/l2vpn-routing-security01.png)
 
-2. Skapa en lista med IP-prefix. Logga in på NSX-T-hanteraren och välj Provider för routrar för **nätverks**  >  **routning**  >  **Routers**  >  **– LR**  >  **Routing**  >  **IP-prefix**. Klicka på **Lägg till**. Ange ett namn för att identifiera listan. För **prefix**klickar du på **Lägg till** två gånger. På den första raden anger du ' 0.0.0.0/0 ' för **nätverk** och ' neka ' för **åtgärd**. På den andra raden väljer du **ett** för **nätverk** och **Åtgärds** **tillstånd** .
+2. Skapa en lista med IP-prefix. Logga in på NSX-T-hanteraren och välj Provider för routrar för **nätverks**  >  **routning**  >    >  **– LR**  >    >  **IP-prefix**. Klicka på **Lägg till**. Ange ett namn för att identifiera listan. För **prefix** klickar du på **Lägg till** två gånger. På den första raden anger du ' 0.0.0.0/0 ' för **nätverk** och ' neka ' för **åtgärd**. På den andra raden väljer du **ett** för **nätverk** och **Åtgärds** **tillstånd** .
 3. Koppla listan IP-prefix till både BGP-grannar (TOR). Om du kopplar listan IP-prefix till BGP-grannar förhindrar det att standard vägen annonseras i BGP till TOR-växlarna. En annan väg som inkluderar null-vägen annonserar dock IP-adressen för loopback-gränssnittet till TOR-växlarna.
 
     ![Skapa lista över IP-prefix](media/l2vpn-routing-security02.png)
 
-4. Logga in på NSX-T-hanteraren och välj Provider för routrar för **nätverks**  >  **routning**  >  **Routers**  >  **-LR**  >  **routning**  >  **BGP**-  >  **grannar**. Välj den första grannen. Klicka på **Redigera**  >  **adress familjer**. För IPv4-serien redigerar du kolumnen **ut filter** och väljer listan IP-prefix som du har skapat. Klicka på **Spara**. Upprepa det här steget för den andra grannen.
+4. Logga in på NSX-T-hanteraren och välj Provider för routrar för **nätverks**  >  **routning**  >    >  **-LR**  >  **routning**  >  **BGP**-  >  **grannar**. Välj den första grannen. Klicka på **Redigera**  >  **adress familjer**. För IPv4-serien redigerar du kolumnen **ut filter** och väljer listan IP-prefix som du har skapat. Klicka på **Spara**. Upprepa det här steget för den andra grannen.
 
     ![Koppla IP-prefix lista 1 ](media/l2vpn-routing-security03.png) ![ koppla IP-prefixlängd lista 2](media/l2vpn-routing-security04.png)
 
-5. Distribuera om den statiska väg som är null i BGP. Om du vill annonsera loopback-Underlay till måste du distribuera om den null-statiska vägen till BGP. Logga in på NSX-T-hanteraren och välj Provider för routrar för **nätverks**  >  **routning**  >  **Routers**  >  **-LR**  >  **routning**  >  **omdistribution**av  >  **grannar**. Välj **Provider-LR-Route_Redistribution** och klicka på **Redigera**. Markera kryss rutan **statisk** och klicka på **Spara**.
+5. Distribuera om den statiska väg som är null i BGP. Om du vill annonsera loopback-Underlay till måste du distribuera om den null-statiska vägen till BGP. Logga in på NSX-T-hanteraren och välj Provider för routrar för **nätverks**  >  **routning**  >    >  **-LR**  >  **routning**  >  **omdistribution** av  >  **grannar**. Välj **Provider-LR-Route_Redistribution** och klicka på **Redigera**. Markera kryss rutan **statisk** och klicka på **Spara**.
 
     ![Distribuera om en null-statisk väg till BGP](media/l2vpn-routing-security05.png)
 

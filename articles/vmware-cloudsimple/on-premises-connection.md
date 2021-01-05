@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-lösning av CloudSimple-on-premises-anslutning med ExpressRoute
 description: Beskriver hur du begär en lokal anslutning med ExpressRoute från CloudSimple regions nätverk
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0dd5ede110255b6e53bbc397e683e66b3beffc65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27d1d9e54838d9f45a28d634fa1c24fb8785aee1
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77019629"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899243"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>Ansluta från den lokala platsen till CloudSimple med ExpressRoute
 
@@ -25,7 +25,7 @@ Om du redan har en Azure ExpressRoute-anslutning från en extern plats (till exe
 
 Ett **/29** nätverks adress block krävs för att upprätta Global Reach anslutning lokalt.  Adress utrymmet/29 används för överförings nätverk mellan ExpressRoute-kretsar.  Överförings nätverket bör inte överlappa något av dina virtuella Azure-nätverk, lokala nätverk eller CloudSimple privata moln nätverk.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * En Azure ExpressRoute-krets krävs innan du kan upprätta anslutningen mellan kretsen och CloudSimple privata moln nätverk.
 * En användare måste ha behörighet att skapa auktoriseringsarkiv på en ExpressRoute-krets.
@@ -47,7 +47,7 @@ För att upprätta ExpressRoute-anslutningen måste du skapa en auktorisering p�
 
 ### <a name="create-expressroute-authorization"></a>Skapa ExpressRoute-auktorisering
 
-1. Logga in på Azure Portal.
+1. Logga in på Azure-portalen.
 
 2. Sök efter **ExpressRoute-krets** i det övre Sök fältet och klicka på **ExpressRoute-kretsar** under **tjänster**.
     [![ExpressRoute-kretsar](media/azure-expressroute-transit-search.png)](media/azure-expressroute-transit-search.png)

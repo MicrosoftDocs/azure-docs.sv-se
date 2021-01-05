@@ -6,14 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/23/2020
+ms.date: 01/04/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: a2d26689a3036f05d7c8e7f417fbbb447402aedc
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: f140384ee2c78b38982c99dab5912bc451584a42
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97762868"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898155"
 ---
 # <a name="connect-stream-analytics-jobs-to-resources-in-an-azure-virtual-network-vnet"></a>Ansluta Stream Analytics jobb till resurser i ett Azure-Virtual Network (VNet)
 
@@ -41,7 +41,7 @@ Dina jobb kan ansluta till följande Azure-tjänster med hjälp av den här meto
 1. [Blob Storage eller Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/stream-analytics/blob-output-managed-identity) – kan vara jobbets lagrings konto, strömmande indata eller utdata.
 2. [Azure Event Hubs](https://docs.microsoft.com/azure/stream-analytics/event-hubs-managed-identity) – kan vara jobbets strömmande indata eller utdata.
 
-Om dina jobb behöver ansluta till andra indata-eller utdatatyper, är det enda alternativet att använda privata slut punkter i Stream Analytics kluster.
+Om dina jobb behöver ansluta till andra indata-eller utdatatyper kan du skriva från Stream Analytics för att Event Hubs utdata först och sedan till valfri destination som du väljer med Azure Functions. Om du vill skriva direkt från Stream Analytics till andra utdatatyper som skyddas i ett VNet eller en brand vägg, är det enda alternativet att använda privata slut punkter i Stream Analytics kluster.
 
 ## <a name="next-steps"></a>Nästa steg
 

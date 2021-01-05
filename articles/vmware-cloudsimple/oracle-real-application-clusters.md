@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-lösning av CloudSimple – optimera ditt CloudSimple privata moln för Oracle RAC
 description: Beskriver hur du distribuerar ett nytt kluster och optimerar en virtuell dator för installationen och konfigurationen av Oracle Real Application Clusters (RAC)
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/06/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 980ba86a9916e13dd2ac7639bd06d3ab8546d2f1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 3959aae5f490af10c6747cfa67d9960e0c4a203f
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424695"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899277"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Optimera ditt CloudSimple privata moln för att installera Oracle RAC
 
@@ -170,7 +170,7 @@ Följ den här processen om du vill distribuera ett vSphere-kluster i ditt priva
 Virtuellt SAN-principer definierar felen för att tolerera och diska randning för de data som lagras på de virtuella dator diskarna.  Den lagrings princip som skapas måste tillämpas på de virtuella dator diskarna när den virtuella datorn skapas.
 
 1. [Logga](./vcenter-access.md) in på vSphere-klienten för ditt privata moln.
-2. Välj **principer och profiler**på den översta menyn.
+2. Välj **principer och profiler** på den översta menyn.
 3. På den vänstra menyn väljer du **lagrings principer för virtuella datorer** och väljer sedan **skapa en princip för VM-lagring**.
 4. Ange ett beskrivande namn för principen och klicka på **Nästa**.
 5. I avsnittet **princip struktur** väljer du **Aktivera regler för virtuellt SAN-lagring** och klickar på **Nästa**.
@@ -217,7 +217,7 @@ Oracle använder delad disk för att lagra data, logga och gör om loggfiler.  D
 6. Ange den virtuella dator lagrings principen som virtuellt San lagrings princip som du definierade tidigare.
 7. Välj platsen som en mapp på virtuellt San data lager. Platsen hjälper till med att bläddra och koppla diskarna till en annan virtuell dator.
 8. För disk etablering väljer du **tjock etablering Eager noll**.
-9. Ange **multi-Writer**för delning.
+9. Ange **multi-Writer** för delning.
 10. För noden virtuell enhet väljer du den nya SCSI-styrenhet som skapades i steg 2.
 
     ![Skärm bild som visar de fält som behövs för att skapa diskar på den första virtuella datorn.](media/oracle-rac-new-hard-disk.png)
@@ -232,7 +232,7 @@ Upprepa steg 2 – 10 för alla nya diskar som krävs för Oracle-data, loggar o
 4. Bläddra till den plats där disken skapades för den första virtuella datorn och välj VMDK-filen.
 5. Ange den virtuella dator lagrings principen som virtuellt San lagrings princip som du definierade tidigare.
 6. För disk etablering väljer du **tjock etablering Eager noll**.
-7. Ange **multi-Writer**för delning.
+7. Ange **multi-Writer** för delning.
 8. För noden virtuell enhet väljer du den nya SCSI-styrenhet som skapades i steg 2.
 
     ![Skapa diskar på den första virtuella datorn](media/oracle-rac-existing-hard-disk.png)
@@ -253,7 +253,7 @@ Regler för VM-till-värd-tillhörighet kontrollerar att den virtuella datorn k�
 7. Om du vill skapa en regel klickar du på **VM/värd regler**.
 8. Klicka på **+** .
 9. Ange ett namn för regeln och markera **Aktivera**.
-10. Välj **Virtual Machines som ska vara värd**för regel typen.
+10. Välj **Virtual Machines som ska vara värd** för regel typen.
 11. Välj den VM-grupp som innehåller de virtuella Oracle-datorerna.
 12. Select **måste köras på värdar i den här gruppen**.
 13. Välj den värd grupp som du skapade.

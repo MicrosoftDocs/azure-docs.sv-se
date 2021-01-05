@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 4851dfb4a96ab2ca19ba6ea67139772f9c091a69
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 552322b9452d380dd5507fb579d7cc44e1a456fe
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763970"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898907"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Självstudie: Konfigurera G Suite för automatisk användar etablering
 
@@ -63,15 +63,15 @@ Innan du konfigurerar G Suite för automatisk användar etablering med Azure AD 
 
 1. Logga in på administratörs [konsolen för G Suite](https://admin.google.com/) med ditt administratörs konto och välj sedan **säkerhet**. Om du inte ser länken kan den vara dold under menyn **fler kontroller** längst ned på skärmen.
 
-    ![G Suite-säkerhet](./media/google-apps-provisioning-tutorial/gapps-security.png)
+    ![G Suite-säkerhet](./media/g-suite-provisioning-tutorial/gapps-security.png)
 
 2. På sidan **säkerhet** väljer du **API-referens**.
 
-    ![G Suite-API](./media/google-apps-provisioning-tutorial/gapps-api.png)
+    ![G Suite-API](./media/g-suite-provisioning-tutorial/gapps-api.png)
 
 3. Välj **Aktivera API-åtkomst**.
 
-    ![G Suite API aktiverat](./media/google-apps-provisioning-tutorial/gapps-api-enabled.png)
+    ![G Suite API aktiverat](./media/g-suite-provisioning-tutorial/gapps-api-enabled.png)
 
     > [!IMPORTANT]
    > För varje användare som du tänker etablera till G Suite **måste** deras användar namn i Azure AD vara knutet till en anpassad domän. Till exempel godkänns inte användar namn som ser ut som om bob@contoso.onmicrosoft.com de är i G Suite. Å andra sidan bob@contoso.com accepteras. Du kan ändra en befintlig användares domän genom att följa instruktionerna [här](../fundamentals/add-custom-domain.md).
@@ -80,15 +80,15 @@ Innan du konfigurerar G Suite för automatisk användar etablering med Azure AD 
 
     a. I [Administratörs konsolen för G Suite](https://admin.google.com/)väljer du **domäner**.
 
-    ![G Suite-domäner](./media/google-apps-provisioning-tutorial/gapps-domains.png)
+    ![G Suite-domäner](./media/g-suite-provisioning-tutorial/gapps-domains.png)
 
     b. Välj **Lägg till en domän eller ett domän Ali Aset**.
 
-    ![G Suite Lägg till domän](./media/google-apps-provisioning-tutorial/gapps-add-domain.png)
+    ![G Suite Lägg till domän](./media/g-suite-provisioning-tutorial/gapps-add-domain.png)
 
     c. Välj **Lägg till en annan domän** och skriv sedan namnet på den domän som du vill lägga till.
 
-    ![G Suite Lägg till ett annat](./media/google-apps-provisioning-tutorial/gapps-add-another.png)
+    ![G Suite Lägg till ett annat](./media/g-suite-provisioning-tutorial/gapps-add-another.png)
 
     d. Välj **Fortsätt och verifiera domän ägarskap**. Följ sedan stegen för att kontrol lera att du äger domän namnet. Omfattande instruktioner för hur du verifierar din domän med Google finns i [Verifiera din webbplats ägarskap](https://support.google.com/webmasters/answer/35179).
 
@@ -96,11 +96,11 @@ Innan du konfigurerar G Suite för automatisk användar etablering med Azure AD 
 
 5. Bestäm sedan vilket administratörs konto som du vill använda för att hantera användar etablering i G Suite. Gå till **Administratörs roller**.
 
-    ![G Suite-administratör](./media/google-apps-provisioning-tutorial/gapps-admin.png)
+    ![G Suite-administratör](./media/g-suite-provisioning-tutorial/gapps-admin.png)
 
 6. Redigera **behörigheterna** för den rollen för **Administratörs rollen** för kontot. Se till att aktivera alla **Administratörs-API-privilegier** så att det här kontot kan användas för etablering.
 
-    ![Administratörs privilegier för G Suite](./media/google-apps-provisioning-tutorial/gapps-admin-privileges.png)
+    ![Administratörs privilegier för G Suite](./media/g-suite-provisioning-tutorial/gapps-admin-privileges.png)
 
 ## <a name="step-3-add-g-suite-from-the-azure-ad-application-gallery"></a>Steg 3. Lägg till G Suite från Azure AD-programgalleriet
 
@@ -126,9 +126,9 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
 1. Logga in på [Azure-portalen](https://portal.azure.com). Välj **Företagsprogram** och sedan **Alla program**. Användarna måste logga in på portal.azure.com och kommer inte att kunna använda aad.portal.azure.com
 
-    ![Bladet Företagsprogram](./media/google-apps-provisioning-tutorial/enterprise-applications.png)
+    ![Bladet Företagsprogram](./media/g-suite-provisioning-tutorial/enterprise-applications.png)
 
-    ![Bladet Alla program](./media/google-apps-provisioning-tutorial/all-applications.png)
+    ![Bladet Alla program](./media/g-suite-provisioning-tutorial/all-applications.png)
 
 2. I listan program väljer du **G Suite**.
 
@@ -138,7 +138,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
     ![Skärm bild av alternativen för att hantera med etablerings alternativet.](common/provisioning.png)
 
-      ![Kom igång-blad](./media/google-apps-provisioning-tutorial/get-started.png)
+      ![Kom igång-blad](./media/g-suite-provisioning-tutorial/get-started.png)
 
 4. Ange **Etableringsläge** som **Automatiskt**.
 
@@ -146,11 +146,11 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
 5. Under avsnittet **admin credentials** klickar du på **auktorisera**. Du omdirigeras till en dialog ruta för Google-auktorisering i ett nytt webbläsarfönster.
 
-      ![G Suite-auktorisering](./media/google-apps-provisioning-tutorial/authorize-1.png)
+      ![G Suite-auktorisering](./media/g-suite-provisioning-tutorial/authorize-1.png)
 
 6. Bekräfta att du vill ge Azure AD-behörighet för att göra ändringar i G Suite-klienten. Välj **Acceptera**.
 
-     ![G Suite-klientens auth](./media/google-apps-provisioning-tutorial/gapps-auth.png)
+     ![G Suite-klientens auth](./media/g-suite-provisioning-tutorial/gapps-auth.png)
 
 7. I Azure Portal klickar du på **Testa anslutning** för att se till att Azure AD kan ansluta till G Suite. Om anslutningen Miss lyckas kontrollerar du att ditt G Suite-konto har administratörs behörighet och försöker igen. Försök sedan att **godkänna** steget igen.
 

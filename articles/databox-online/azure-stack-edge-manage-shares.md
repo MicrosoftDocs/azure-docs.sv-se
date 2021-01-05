@@ -1,27 +1,27 @@
 ---
-title: Hantering av Azure Stack Edge Pro-resurs | Microsoft Docs
-description: Beskriver hur du använder Azure Portal för att hantera resurser på din Azure Stack Edge Pro.
+title: Azure Stack Edge Pro – hantering av FPGA-resurser | Microsoft Docs
+description: Beskriver hur du använder Azure Portal för att hantera resurser på din Azure Stack Edge Pro-FPGA.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/25/2019
+ms.date: 01/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 4d43b70c8f958ad37b6ac2d0ee043d5f07d11da9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7fbb5ca43d2877e2e14914b71df7cc1bcdf27f88
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444596"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898385"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-azure-stack-edge-pro"></a>Använd Azure Portal för att hantera resurser på Azure Stack Edge Pro
+# <a name="use-the-azure-portal-to-manage-shares-on-azure-stack-edge-pro-fpga"></a>Använd Azure Portal för att hantera resurser på Azure Stack Edge Pro-FPGA 
 
-Den här artikeln beskriver hur du hanterar resurser i Azure Stack Edge Pro. Du kan hantera Azure Stack Edge Pro via Azure Portal eller via det lokala webb gränssnittet. Använd Azure Portal för att lägga till, ta bort, uppdatera resurser eller synkronisera lagrings nyckeln för lagrings kontot som är kopplat till resurserna.
+Den här artikeln beskriver hur du hanterar resurser på din Azure Stack Edge Pro FPGA-enhet. Du kan hantera Azure Stack Edge Pro FPGA-enheten via Azure Portal eller via det lokala webb gränssnittet. Använd Azure Portal för att lägga till, ta bort, uppdatera resurser eller synkronisera lagrings nyckeln för lagrings kontot som är kopplat till resurserna.
 
 ## <a name="about-shares"></a>Om resurser
 
-Om du vill överföra data till Azure måste du skapa resurser på Azure Stack Edge Pro. De resurser som du lägger till i Azure Stack Edge Pro-enheten kan vara lokala resurser eller resurser som skickar data till molnet.
+Om du vill överföra data till Azure måste du skapa resurser i Azure Stack Edge Pro-FPGA. De resurser som du lägger till i Azure Stack Edge Pro-enheten kan vara lokala resurser eller resurser som skickar data till molnet.
 
  - **Lokala resurser**: Använd dessa resurser när du vill att data ska bearbetas lokalt på enheten.
  - **Resurser**: Använd de här resurserna när du vill att enhets data ska skickas automatiskt till ditt lagrings konto i molnet. Alla moln funktioner, till exempel **lagrings nycklar** för **uppdatering** och synkronisering, gäller för resurserna.
@@ -39,7 +39,7 @@ I den här artikeln kan du se hur du:
 
 Skapa en resurs genom att utföra stegen nedan på Azure-portalen.
 
-1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **Gateway-> resurser**. Välj **+ Lägg till resurs** i kommando fältet.
+1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **Cloud Storage Gateway**. Gå till **resurser** och välj sedan **+ Lägg till resurs** i kommando fältet.
 
     ![Välj Lägg till resurs](media/azure-stack-edge-manage-shares/add-share-1.png)
 
@@ -72,7 +72,7 @@ Skapa en resurs genom att utföra stegen nedan på Azure-portalen.
 
 ## <a name="add-a-local-share"></a>Lägg till en lokal resurs
 
-1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **Gateway-> resurser**. Välj **+ Lägg till resurs** i kommando fältet.
+1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **Cloud Storage Gateway-> resurser**. Välj **+ Lägg till resurs** i kommando fältet.
 
    ![Välj Lägg till resurs 2](media/azure-stack-edge-manage-shares/add-local-share-1.png)
 
@@ -96,15 +96,13 @@ Skapa en resurs genom att utföra stegen nedan på Azure-portalen.
 
    ![Visa blad för uppdaterings resurser](media/azure-stack-edge-manage-shares/add-local-share-3.png)
     
-    Välj resursen för att visa den lokala monterings punkt för Edge Compute-modulerna för den här resursen.
 
-   ![Visa information om lokala resurser](media/azure-stack-edge-manage-shares/add-local-share-4.png)
 
 ## <a name="mount-a-share"></a>Montera en resurs
 
 Om du har skapat en resurs innan du konfigurerade Compute på din Azure Stack Edge Pro-enhet måste du montera resursen. Utför följande steg för att montera en resurs.
 
-1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **Gateway-> resurser**. Välj den resurs som du vill montera från listan över resurser. I kolumnen **används för beräkning** visas statusen som **inaktive rad** för den valda resursen.
+1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **Cloud Storage Gateway-> resurser**. Välj den resurs som du vill montera från listan över resurser. I kolumnen **används för beräkning** visas statusen som **inaktive rad** för den valda resursen.
 
    ![Välj resurs 3](media/azure-stack-edge-manage-shares/select-share-mount.png)
 
@@ -122,13 +120,13 @@ Om du har skapat en resurs innan du konfigurerade Compute på din Azure Stack Ed
 
 5. Välj resursen igen om du vill visa den lokala monterings punkt för resursen. Edge Compute module använder den här lokala monterings punkt för resursen.
 
-   ![Lokala monterings punkt för resursen](media/azure-stack-edge-manage-shares/share-mountpoint.png)
+   ![Lokala monterings punkt för resursen](media/azure-stack-edge-manage-shares/share-mountpoint.png) 
 
 ## <a name="unmount-a-share"></a>Demontera en resurs
 
 Utför följande steg i Azure Portal för att demontera en resurs.
 
-1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **Gateway-> resurser**.
+1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **Cloud Storage Gateway-> resurser**.
 
    ![Välj resurs 4](media/azure-stack-edge-manage-shares/select-share-unmount.png)
 
@@ -148,13 +146,13 @@ Utför följande steg i Azure Portal för att demontera en resurs.
 
 Utför följande steg på Azure-portalen om du vill ta bort en resurs.
 
-1. Välj från listan över resurser, och klicka på den resurs som du vill ta bort.
+1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **Cloud Storage Gateway-> resurser**. Välj från listan över resurser, och klicka på den resurs som du vill ta bort.
 
    ![Välj resurs 5](media/azure-stack-edge-manage-shares/delete-share-1.png)
 
-2. Klicka på **Ta bort**.
+2. Välj **Ta bort**.
 
-   ![Klicka på Ta bort](media/azure-stack-edge-manage-shares/delete-share-2.png)
+   ![Välj Ta bort](media/azure-stack-edge-manage-shares/delete-share-2.png)
 
 3. Klicka på **Ja** när du uppmanas att bekräfta åtgärden.
 
@@ -173,15 +171,15 @@ Med uppdaterings funktionen kan du uppdatera innehållet i en resurs. När du up
 
 Utför följande steg på Azure-portalen om du vill uppdatera en resurs.
 
-1. Gå till **Resurser** i Azure-portalen. Välj och klicka på den resurs som du vill uppdatera.
+1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **Cloud Storage Gateway-> resurser**. Välj och klicka på den resurs som du vill uppdatera.
 
    ![Välj resurs 6](media/azure-stack-edge-manage-shares/refresh-share-1.png)
 
-2. Klicka på **Uppdatera**.
+2. Välj **Uppdatera data**.
 
-   ![Klicka på Uppdatera](media/azure-stack-edge-manage-shares/refresh-share-2.png)
+   ![Välj uppdatera](media/azure-stack-edge-manage-shares/refresh-share-2.png)
  
-3. Klicka på **Ja** när du uppmanas att bekräfta åtgärden. Ett jobb startas för att uppdatera innehållet i den lokala resursen.
+3. Välj **Ja** när du uppmanas att bekräfta. Ett jobb startas för att uppdatera innehållet i den lokala resursen.
 
    ![Bekräfta uppdatering](media/azure-stack-edge-manage-shares/refresh-share-3.png)
 
@@ -199,7 +197,7 @@ Om dina lagringskontonycklar har roterats måste du synkronisera åtkomstnycklar
 
 Utför följande steg i Azure-portalen för att synkronisera din lagringsåtkomstnyckel.
 
-1. Gå till **Översikt** i din resurs. Välj från listan över resurser och klicka på en resurs som är associerad med det lagringskonto som du vill synkronisera.
+1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **Cloud Storage Gateway-> resurser**. Välj från listan över resurser och klicka på en resurs som är associerad med det lagringskonto som du vill synkronisera.
 
     ![Välj Dela med relevant lagrings konto](media/azure-stack-edge-manage-shares/sync-storage-key-1.png)
 

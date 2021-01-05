@@ -2,19 +2,19 @@
 title: Övervaka privat moln aktivitet
 titleSuffix: Azure VMware Solution by CloudSimple
 description: Beskriver den information som är tillgänglig för aktivitet i Azure VMware-lösningen av CloudSimple-miljön, inklusive aviseringar, händelser, uppgifter och granskning.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/13/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1228f3a54e02d4fe7a5133e2bfba55c38e34718a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb597cc71d228a1daaaa4e52d76b301764ff9292
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77019680"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899311"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>Övervaka VMware-lösning per CloudSimple-aktivitet
 
@@ -54,7 +54,7 @@ Följande kolumner med information är tillgängliga för aviseringar. Klicka p�
 | Resursnamn | Namnet som tilldelats resursen, till exempel namnet på det privata molnet. |
 | Resurstyp | Resurs kategori: privat moln, moln rack. |
 | Resurs-ID | Identifierare för resursen. |
-| Beskrivning | Beskrivning av vad som utlöste aviseringen. |
+| Description | Beskrivning av vad som utlöste aviseringen. |
 | Bekräftad | Indikerar om aviseringen har bekräftats. |
 
 ## <a name="events"></a>Händelser
@@ -70,7 +70,7 @@ Följande kolumner med information är tillgängliga för aviseringar. Klicka p�
 | Allvarlighetsgrad | Allvarlighets grad för händelse.|
 | Resursnamn | Namnet som tilldelats resursen, till exempel namnet på det privata molnet. |
 | Resurstyp | Resurs kategori: privat moln, moln rack. |
-| Beskrivning | Beskrivning av vad som utlöste aviseringen. |
+| Description | Beskrivning av vad som utlöste aviseringen. |
 
 ## <a name="tasks"></a>Aktiviteter
 
@@ -90,7 +90,7 @@ Följande kolumner med information är tillgängliga för aviseringar. Klicka p�
 | Slut | Slut tid för aktiviteten. |
 | Status | Aktuell uppgifts status. |
 | Förfluten tid | Tid som aktiviteten tog att slutföra (om den har slutförts) eller håller på att tas (om den pågår). |
-| Beskrivning | Uppgifts beskrivning. |
+| Description | Uppgifts beskrivning. |
 
 ## <a name="audit"></a>Granska
 
@@ -108,7 +108,7 @@ Följande kolumner med information är tillgängliga för aviseringar. Klicka p�
 | Resurs-ID | Identifierare för resursen. |
 | Resultat | Resultat av aktiviteten, till exempel **lyckad**. |
 | Tidsåtgång | Tid för att slutföra uppgiften. |
-| Beskrivning | Beskrivning av åtgärden. |
+| Description | Beskrivning av åtgärden. |
 
 ## <a name="next-steps"></a>Nästa steg
 

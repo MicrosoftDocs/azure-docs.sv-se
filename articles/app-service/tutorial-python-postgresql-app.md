@@ -3,7 +3,7 @@ title: 'Självstudie: Distribuera en python django-app med postgres'
 description: Skapa en python-webbapp med en PostgreSQL-databas och distribuera den till Azure. I självstudien används django-ramverket och appen finns på Azure App Service på Linux.
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 11/02/2020
+ms.date: 01/04/2021
 ms.custom:
 - mvc
 - seodec18
@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: b106b403022f3407a3838b7f65222baf41cbfff5
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: ffde74a0567661d6b9f77e45a80bfd585e5c7212
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852973"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898597"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Själv studie kurs: Distribuera en django-webbapp med PostgreSQL i Azure App Service
 
@@ -236,14 +236,11 @@ Django Database-migreringar ser till att schemat i PostgreSQL i Azure Database m
 1. Kör följande kommandon i SSH-sessionen (du kan klistra in kommandon med **CTRL** + **Shift** + **V**):
 
     ```bash
-    # Change to the folder where the app code is deployed
-    cd site/wwwroot
+    # Change to the app folder
+    cd $APP_PATH
     
-    # Activate default virtual environment in App Service container
+    # Activate the venv (requirements.txt is installed automatically)
     source /antenv/bin/activate
-
-    # Install packages
-    pip install -r requirements.txt
 
     # Run database migrations
     python manage.py migrate
@@ -251,6 +248,8 @@ Django Database-migreringar ser till att schemat i PostgreSQL i Azure Database m
     # Create the super user (follow prompts)
     python manage.py createsuperuser
     ```
+
+    Om du stöter på fel som rör anslutning till databasen, kontrollerar du värdena för de program inställningar som skapades i föregående avsnitt.
 
 1. `createsuperuser`Kommandot efterfrågar behörigheter för superanvändare. I den här självstudien använder du standard användar namnet `root` , trycker på **RETUR** för e-postadressen för att lämna den tom och anger `Pollsdb1` lösen ordet.
 
@@ -260,13 +259,13 @@ Har du problem? Se först i [fel söknings guiden](configure-language-python.md#
     
 ### <a name="44-create-a-poll-question-in-the-app"></a>4,4 skapa en avsöknings fråga i appen
 
-1. Öppna webb adressen i en webbläsare `http://<app-name>.azurewebsites.net` . Appen ska visa meddelandet "inga avsökningar är tillgängliga" eftersom det inte finns några speciella avsökningar än i databasen.
+1. Öppna webb adressen i en webbläsare `http://<app-name>.azurewebsites.net` . Appen ska visa meddelandet "avsöknings app" och "inga avsökningar är tillgängliga" eftersom det inte finns några angivna avsökningar ännu i databasen.
 
     Om du ser "program fel" är det troligt att du antingen inte har skapat de nödvändiga inställningarna i föregående steg, [konfigurerat miljövariabler för att ansluta databasen](#42-configure-environment-variables-to-connect-the-database)eller att dessa värden innehåller fel. Kör kommandot `az webapp config appsettings list` för att kontrol lera inställningarna. Du kan också [kontrol lera diagnostikloggar](#6-stream-diagnostic-logs) för att se vissa fel under appens start. Om du till exempel inte har skapat inställningarna visas fel meddelandet i loggarna `KeyError: 'DBNAME'` .
 
     När du har uppdaterat inställningarna för att korrigera eventuella fel, ge appen en minut för att starta om och uppdatera sedan webbläsaren.
 
-1. Gå till `http://<app-name>.azurewebsites.net/admin`. Logga in med behörigheter för superanvändare från föregående avsnitt ( `root` och `Pollsdb1` ). Under **avsökningar** väljer du **Lägg till** bredvid **frågor** och skapar en avsöknings fråga med några val.
+1. Gå till `http://<app-name>.azurewebsites.net/admin`. Logga in med django superusers-autentiseringsuppgifter från föregående avsnitt ( `root` och `Pollsdb1` ). Under **avsökningar** väljer du **Lägg till** bredvid **frågor** och skapar en avsöknings fråga med några val.
 
 1. Bläddra igen för `http://<app-name>.azurewebsites.net` att bekräfta att frågorna nu visas för användaren. Besvara frågor som du vill skapa vissa data i databasen.
 
@@ -292,7 +291,7 @@ Kör följande kommandon i ett terminalfönster. Se till att följa anvisningarn
 python3 -m venv venv
 source venv/bin/activate
 
-# Install packages
+# Install dependencies
 pip install -r requirements.txt
 # Run Django migrations
 python manage.py migrate
@@ -310,7 +309,7 @@ py -3 -m venv venv
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
 venv\scripts\activate
 
-# Install packages
+# Install dependencies
 pip install -r requirements.txt
 # Run Django migrations
 python manage.py migrate
@@ -327,7 +326,7 @@ python manage.py runserver
 py -3 -m venv venv
 venv\scripts\activate
 
-:: Install packages
+:: Install dependencies
 pip install -r requirements.txt
 :: Run Django migrations
 python manage.py migrate
@@ -397,11 +396,8 @@ Eftersom du har gjort ändringar i data modellen måste du köra om migreringen 
 Öppna en SSH-session igen i webbläsaren genom att gå till `https://<app-name>.scm.azurewebsites.net/webssh/host` . Kör sedan följande kommandon:
 
 ```
-cd site/wwwroot
-
-# Activate default virtual environment in App Service container
+cd $APP_PATH
 source /antenv/bin/activate
-# Run database migrations
 python manage.py migrate
 ```
 

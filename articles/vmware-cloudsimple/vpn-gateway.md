@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-lösning genom CloudSimple – konfigurera en VPN-gateway
 description: Beskriver hur du konfigurerar plats-till-plats-VPN-gateway och plats-till-plats-VPN-gateway och skapar anslutningar mellan ditt lokala nätverk och ditt CloudSimple privata moln
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a8b7e238333196381524d189904871fe5933c906
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78f78bfbf885cbae7708a75cb54ce2d41e7b526c
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91872008"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899107"
 ---
 # <a name="set-up-vpn-gateways-on-cloudsimple-network"></a>Konfigurera VPN-gatewayer i CloudSimple-nätverk
 
@@ -44,7 +44,7 @@ Med en punkt-till-plats-VPN-gateway kan du definiera en princip för automatisk 
 
     ![Skapa VPN-gateway](media/create-vpn-gateway.png)
 
-4. För **gateway-konfiguration**anger du följande inställningar och klickar på **Nästa**.
+4. För **gateway-konfiguration** anger du följande inställningar och klickar på **Nästa**.
 
     * Välj **VPN för plats-till-plats** som gateway-typ.
     * Ange ett namn för att identifiera gatewayen.
@@ -62,7 +62,7 @@ Med en punkt-till-plats-VPN-gateway kan du definiera en princip för automatisk 
     * För peer-IP anger du din lokala VPN-gateways offentliga IP-adress.
     * Ange peer-ID för din lokala VPN-gateway.  Peer-identifieraren är vanligt vis den offentliga IP-adressen för din lokala VPN-gateway.  Ange identifieraren om du har konfigurerat en unik identifierare på din gateway.
     * Kopiera den delade nyckel som ska användas för anslutning från din lokala VPN-gateway.  Om du vill ändra den delade standard nyckeln och ange en ny som standard klickar du på ikonen Redigera.
-    * För **lokala prefix**anger du de lokala CIDR-prefix som kommer att ha åtkomst till CloudSimple-nätverket.  Du kan lägga till flera CIDR-prefix när du skapar anslutningen.
+    * För **lokala prefix** anger du de lokala CIDR-prefix som kommer att ha åtkomst till CloudSimple-nätverket.  Du kan lägga till flera CIDR-prefix när du skapar anslutningen.
 
     ![Skapa Gateway-anslutning för plats-till-plats-VPN](media/create-vpn-gateway-s2s-connection.png)
 
@@ -87,14 +87,14 @@ Med en punkt-till-plats-VPN-gateway kan du definiera en princip för automatisk 
 
     ![Skapa VPN-gateway](media/create-vpn-gateway.png)
 
-4. För **gateway-konfiguration**anger du följande inställningar och klickar på **Nästa**.
+4. För **gateway-konfiguration** anger du följande inställningar och klickar på **Nästa**.
 
     * Välj **punkt-till-plats-VPN** som gateway-typ.
     * Ange ett namn för att identifiera gatewayen.
     * Välj den Azure-plats där din CloudSimple-tjänst har distribuerats.
     * Ange klient under nätet för punkt-till-plats-Gateway.  DHCP-adresser tilldelas från klient under nätet när du ansluter.
 
-5. För **anslutning/användare**anger du följande inställningar och klickar på **Nästa**.
+5. För **anslutning/användare** anger du följande inställningar och klickar på **Nästa**.
 
     * Om du vill att alla aktuella och framtida användare automatiskt ska kunna komma åt det privata molnet via punkt-till-plats-Gateway väljer du **Lägg automatiskt till alla användare**. När du väljer alternativet väljs alla användare i användar listan automatiskt. Du kan åsidosätta det automatiska alternativet genom att avmarkera enskilda användare i listan.
     * Om du vill välja enskilda användare klickar du på kryss rutorna i användar listan.
