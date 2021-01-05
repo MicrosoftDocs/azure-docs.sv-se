@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 9827e93f793ef47a835aa0a5fb2005e2830a0824
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 3312eed71865508e5e83d37c7ced8cf220f13ca9
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655722"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835116"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Anslut data från Microsoft Cloud App Security 
 
@@ -48,7 +48,7 @@ Om Cloud App Security distribueras och matas in med dina data kan aviserings inf
 
 1. Klicka på **tillämpa ändringar**.
 
-1. Du kan välja om du vill att Azure Defender-aviseringar från Azure Security Center automatiskt ska generera incidenter i Azure Sentinel. Under **skapa incidenter** väljer du **aktive rad** för att aktivera standard analys regeln som automatiskt skapar incidenter från aviseringar. Du kan sedan redigera regeln under **analys** på fliken  **aktiva regler** .
+1. Du kan välja om du vill att aviseringarna från Cloud App Security automatiskt ska generera incidenter i Azure Sentinel. Under **skapa incidenter – rekommenderas!** väljer du **aktive rad** för att aktivera standard analys regeln som automatiskt skapar incidenter från aviseringar. Du kan sedan redigera regeln under **analys** på fliken  **aktiva regler** .
 
 1. Om du vill använda det relevanta schemat i Log Analytics för Cloud App Security aviseringar skriver `SecurityAlert` du i frågefönstret. För schemat för Cloud Discovery loggar skriver du `McasShadowItReporting` .
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: b3a633c1eff6adf2a33b4f3bfc818eb51ff5ee85
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 180de56e3c158802460d2ff995041e8572d4dcd7
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653103"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97844958"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Språk stöd för API för textanalys v3 
 
@@ -61,9 +61,9 @@ ms.locfileid: "97653103"
 | Språk               | Språkkod | v 2.1-stöd | v3-stöd | Från och med v3 modell version: |       Obs!        |
 |:-----------------------|:-------------:|:----------:|:----------:|:-------------------------------:|:------------------:|
 | Arabiska                |     `ar`      |     ✓      |            |                                 |                    |
-| Tjeckiska                 |     `cs`      |     ✓      |            |                                 |                    |
 | Chinese-Simplified     |   `zh-hans`   |     ✓      |            |                                 | `zh` även godkänd |
 | Chinese-Traditional   |   `zh-hant`   |     ✓      |            |                                 |                    |
+| Tjeckiska                 |     `cs`      |     ✓      |            |                                 |                    |
 | Danska                |     `da`      |     ✓      |            |                                 |                    |
 | Nederländska                 |     `nl`      |     ✓      |            |                                 |                    |
 | Engelska                |     `en`      |     ✓      |     ✓      |           2019-10-01            |                    |
@@ -77,14 +77,14 @@ ms.locfileid: "97653103"
 | Koreanska                |     `ko`      |     ✓      |            |                                 |                    |
 | Norska (bokmål)   |     `no`      |     ✓      |            |                                 | `nb` även godkänd |
 | Polska                |     `pl`      |     ✓      |            |                                 |                    |
-| Portugisiska (Portugal) |    `pt-PT`    |     ✓      |            |                                 | `pt` även godkänd |
 | Portugisiska (Brasilien)   |    `pt-BR`    |     ✓      |            |                                 |                    |
+| Portugisiska (Portugal) |    `pt-PT`    |     ✓      |            |                                 | `pt` även godkänd |
 | Ryska              |     `ru`      |     ✓      |            |                                 |                    |
 | Spanska               |     `es`      |     ✓      |     ✓       |              2020-04-01                   |                    |
 | Svenska               |     `sv`      |     ✓      |            |                                 |                    |
 | Turkiska               |     `tr`      |     ✓      |            |                                 |                    |
 
-#### <a name="key-phrase-extraction"></a>[Extrahering av nyckelfraser](#tab/key-phrase-extraction)
+#### <a name="key-phrase-extraction"></a>[Extrahering av nyckel fraser](#tab/key-phrase-extraction)
 
 > [!NOTE]
 > Modell versioner av Extrahering av diskussionsämne före 2020-07-01 har en gräns på 64 tecken. Den här gränsen finns inte i senare modell versioner.
@@ -101,8 +101,8 @@ ms.locfileid: "97653103"
 | Koreanska                |     `ko`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Norska (bokmål)   |     `no`      |     ✓      |     ✓      |                2019-10-01                 | `nb` även godkänd |
 | Polska                |     `pl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Portugisiska (Portugal) |    `pt-PT`    |     ✓      |     ✓      |                2019-10-01                 | `pt` även godkänd |
 | Portugisiska (Brasilien)   |    `pt-BR`    |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Portugisiska (Portugal) |    `pt-PT`    |     ✓      |     ✓      |                2019-10-01                 | `pt` även godkänd |
 | Ryska               |     `ru`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Spanska               |     `es`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Svenska               |     `sv`      |     ✓      |     ✓      |                2019-10-01                 |                    |

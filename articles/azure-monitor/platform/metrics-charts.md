@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: be3d3f11e90c17bd8c4792418500da651039e480
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: a80eaecc02fa3c8c6618341c02e22241f0dc7faf
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562811"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845060"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Avancerade funktioner i Azure Metrics Explorer
 
@@ -22,6 +22,35 @@ ms.locfileid: "97562811"
 ## <a name="metrics-in-azure"></a>Mått i Azure
 
 [Mått i Azure Monitor](data-platform-metrics.md) är serien med uppmätta värden och antal som samlas in och lagras över tid. Det finns standard-(eller "Platform") mått och anpassade mått. Standard måtten tillhandahålls av själva Azure-plattformen. Standard måtten återspeglar hälso-och användnings statistik för dina Azure-resurser. Anpassade mått skickas till Azure av dina program med hjälp av [Application Insights API för anpassade händelser och mått](../app/api-custom-events-metrics.md),  [Windows Azure-diagnostik (wad)-tillägg](./diagnostics-extension-overview.md)eller [Azure Monitor REST API](./metrics-store-custom-rest-api.md).
+
+## <a name="resource-scope-picker"></a>Resurs omfattnings väljare
+Med resurs omfattnings Väljaren kan du visa mått för en eller flera resurser. Nedan visas instruktioner om hur du använder resurs omfattnings väljaren. 
+
+### <a name="selecting-a-single-resource"></a>Välja en enskild resurs
+Välj **mått** på **Azure Monitor** -menyn eller från **övervaknings** avsnittet på en resurs meny. Klicka på knappen "Välj ett omfång" för att öppna omfattnings väljaren, vilket gör att du kan välja de resurser som du vill visa mått för. Detta bör redan vara ifyllt om du har öppnat Metric Explorer från en resurs meny. 
+
+![Skärm bild av resurs omfattnings väljaren](./media/metrics-charts/scope-picker.png)
+
+För vissa resurser kan du bara visa måtten för en enskild resurs åt gången. Dessa resurser finns under avsnittet "alla resurs typer" i list rutan resurs typer.
+
+![Skärm bild av enskild resurs](./media/metrics-charts/single-resource-scope.png)
+
+När du har klickat på önskad resurs visas alla prenumerationer och resurs grupper som innehåller resursen.
+
+![Skärm bild av tillgängliga resurser](./media/metrics-charts/available-single-resource.png)
+
+> [!TIP]
+> Om du vill visa flera resursers mått samtidigt eller mått i en prenumeration eller resurs grupp klickar du på röst knappen.
+
+När du är nöjd med ditt val klickar du på "Använd".
+
+### <a name="viewing-metrics-across-multiple-resources"></a>Visa mått över flera resurser
+Vissa resurs typer har aktiverat möjligheten att fråga efter mått över flera resurser, så länge de är inom samma prenumeration och plats. Du hittar dessa resurs typer överst i list rutan "resurs typer". Om du vill ha mer information om hur du visar mått i flera resurser visar du [det här dokumentet](metrics-dynamic-scope.md#selecting-multiple-resources).
+
+![Skärm bild av kors resurs typer](./media/metrics-charts/multi-resource-scope.png)
+
+För typer som är kompatibla med flera resurser kan du också fråga efter mått i en prenumeration eller flera resurs grupper. Information om hur du gör detta finns i [den här artikeln](metrics-dynamic-scope.md#selecting-a-resource-group-or-subscription)
+
 
 ## <a name="create-views-with-multiple-metrics-and-charts"></a>Skapa vyer med flera mått och diagram
 
@@ -61,11 +90,25 @@ Anta till exempel att diagrammet visar värdet för **Server svars tid** med hj�
 
 Det finns fem grundläggande agg regerings typer i mått Utforskaren: **Sum**, **Count**, **min**, **Max** och **Average**. **Sum** -aggregering kallas ibland **Total** aggregation. För många mått kommer Metrics Explorer dölja de agg regeringar som är helt irrelevanta och inte kan användas.
 
-- **Sum** – summan av alla värden som har samlats in under samlings intervallet
-- **Count** – antalet mått som har hämtats över samlings intervallet. Observera att **Count** motsvarar **Sum** i det fall då måttet alltid fångas med värdet 1. Detta är vanligt när måttet spårar antalet distinkta händelser och varje mått representerar en händelse (d.v.s. koden inaktive ras en mått post varje gång en ny begäran kommer in)
-- **Genomsnitt** – medelvärdet av mått värden som har samlats in över samlings intervallet
-- **Min** – det minsta värdet som fångas över agg regerings intervallet
-- **Max** – det största värdet som har fångats över samlings intervallet
+**Sum** – summan av alla värden som har samlats in under samlings intervallet
+
+![Skärm bild av summan av begäran](./media/metrics-charts/request-sum.png)
+
+**Count** – antalet mått som har hämtats över samlings intervallet. Observera att **Count** motsvarar **Sum** i det fall då måttet alltid fångas med värdet 1. Detta är vanligt när måttet spårar antalet distinkta händelser och varje mått representerar en händelse (d.v.s. koden inaktive ras en mått post varje gång en ny begäran kommer in)
+
+![Skärm bild av antal förfrågningar](./media/metrics-charts/request-count.png)
+
+**Genomsnitt** – medelvärdet av mått värden som har samlats in över samlings intervallet
+
+![Skärm bild av genomsnittlig begäran](./media/metrics-charts/request-avg.png)
+
+**Min** – det minsta värdet som fångas över agg regerings intervallet
+
+![Skärm bild av minimal begäran](./media/metrics-charts/request-min.png)
+
+**Max** – det största värdet som har fångats över samlings intervallet
+
+![Skärm bild av Max begäran](./media/metrics-charts/request-max.png)
 
 ## <a name="apply-filters-to-charts"></a>Tillämpa filter på diagram
 

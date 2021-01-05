@@ -110,6 +110,8 @@
       href: tutorial-security-incident.md
     - name: Förbättra regelefterlevnaden
       href: security-center-compliance-dashboard.md
+    - name: Hantera säkerhetsprinciper
+      href: tutorial-security-policy.md
 - name: Begrepp
   items:
     - name: CSPM
@@ -120,11 +122,6 @@
           href: secure-score-security-controls.md
         - name: Översikt över säkerhetsrekommendationer
           href: security-center-recommendations.md
-        - name: Översikt över säkerhetsprinciper
-          href: tutorial-security-policy.md
-        - name: Inbyggda säkerhetsprinciper
-          displayName: 'samples, policy'
-          href: ./policy-reference.md
         - name: Använda rekommendationer för att förbättra säkerheten
           href: security-center-using-recommendations.md
         - name: Säkerhetsbaslinje
@@ -224,14 +221,9 @@
         - name: Härda Docker-värdarna
           displayName: containers
           href: harden-docker-hosts.md
-    - name: Använda Azure Defender för SQL
-      items:
-        - name: Konfigurera Azure Defender för SQL på virtuella Azure-datorer
+        - name: Använda Azure Defender för SQL
           href: defender-for-sql-usage.md
           displayName: 'hybrid, arc'
-        - name: Anpassa din SQL-informationsskyddsprincip
-          displayName: 'sql, database, data discovery'
-          href: security-center-info-protection-policy.md
     - name: Använda Azure Defender för containerregister
       items:
         - name: Sök igenom dina registeravbildningar efter sårbarheter
@@ -281,6 +273,9 @@
       href: security-center-investigation-user-data.md
     - name: Skaffa klientorganisationstäckande synlighet
       href: security-center-management-groups.md
+    - name: Anpassa din SQL-informationsskyddsprincip
+      displayName: 'sql, database, data discovery'
+      href: security-center-info-protection-policy.md
 - name: Referens
   items:
     - name: 'REST API:er'
@@ -297,6 +292,9 @@
           href: faq-vms.md
         - name: Befintliga Azure Log Analytics-användare
           href: faq-azure-monitor-logs.md
+    - name: Inbyggda säkerhetsprinciper
+      displayName: 'samples, policy'
+      href: policy-reference.md
     - name: Blogg om Azure-översikt
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Utvärdering av slutpunktsskydd och rekommendationer

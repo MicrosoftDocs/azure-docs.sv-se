@@ -9,14 +9,14 @@ ms.subservice: metrics-advisor
 ms.topic: include
 ms.date: 11/09/2020
 ms.author: mbullwin
-ms.openlocfilehash: 9222098f719241a6b3d6e50d4181106101c6d912
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: d191396d62d6ac2889e50d21abd8e6606d699983
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356383"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97844753"
 ---
-[Referens dokumentation](/javascript/api/overview/azure/ai-metrics-advisor-readme-pre?preserve-view=true&view=azure-node-preview)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/metricsadvisor/ai-metrics-advisor/README.md)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/ai-metrics-advisor)  |  [Exempel](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/metricsadvisor/ai-metrics-advisor/samples)
+[Referens dokumentation](/java/api/overview/azure/ai-metricsadvisor-readme?view=azure-java-preview)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/metricsadvisor/ai-metrics-advisor/README.md)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/ai-metrics-advisor)  |  [Exempel](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/metricsadvisor/ai-metrics-advisor/samples)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -79,7 +79,7 @@ endpoint = "<paste-your-metrics-advisor-endpoint-here>";
 
 Följande klasser och gränssnitt hanterar några av de viktigaste funktionerna i JavaScript-SDK: n för Metrics Advisor.
 
-|Name|Beskrivning|
+|Namn|Beskrivning|
 |---|---|
 | MetricsAdvisorClient | **Används för**: <br> – Visar incidenter <br> – Visar rotor saken till incidenter <br> -Hämtar ursprungliga tids serie data och tids serie data som har berikats av tjänsten. <br> – Visa aviseringar <br> – Lägga till feedback för att finjustera din modell |
 | MetricsAdvisorAdministrationClient | **Gör att du kan:** <br> – Hantera datafeeds <br> -Skapa, konfigurera, Hämta, lista och ta bort avvikelser för varningar <br> -Hantera hookar  |

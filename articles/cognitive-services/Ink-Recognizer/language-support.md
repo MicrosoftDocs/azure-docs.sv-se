@@ -10,12 +10,12 @@ ms.subservice: ink-recognizer
 ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: aahi
-ms.openlocfilehash: b4acd431656eb008702f62dc1ecf12bda62dae17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 176060700f50a6ce6e8cb5cf622ee4c922e5a952
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051091"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845351"
 ---
 # <a name="language-and-region-support-for-the-ink-recognizer-api"></a>Språk-och region stöd för hand SKRIFTS tolkens API
 
@@ -41,8 +41,8 @@ I den här artikeln beskrivs vilka språk som stöds för pennan tecknings-API: 
 | Nederländska (Nederländerna)                        |     `nl-NL`     |
 | Engelska (Australien)                        |     `en-AU`     |
 | Engelska (Kanada)                           |     `en-CA`     |
-| Engelska (Storbritannien)                   |     `en-GB`     |
 | Engelska (Indien)                            |     `en-IN`     |
+| Engelska (Storbritannien)                   |     `en-GB`     |
 | Engelska (USA)                    |     `en-US`     |
 | Finska                                    |     `fi-FI`     |
 | Franska (Frankrike)                            |     `fr-FR`     |
@@ -67,23 +67,23 @@ I den här artikeln beskrivs vilka språk som stöds för pennan tecknings-API: 
 | Polska                                     |     `pl-PL`     |
 | Portugisiska (Brasilien)                        |     `pt-BR`     |
 | Portugisiska (Portugal)                      |     `pt-PT`     |
-| Rätoromanska                                    |     `rm-CH`     |
 | Rumänska                                   |     `ro-RO`     |
+| Rätoromanska                                    |     `rm-CH`     |
 | Ryska                                    |     `ru-RU`     |
 | Skotsk gaeliska                            |     `gd-GB`     |
-| Nordsotho                           |    `nso-ZA`     |
 | Serbiska (kyrillisk, Bosnien och Hercegovina) |  `sr-Cyrl-BA`   |
 | Serbiska (kyrillisk, Montenegro)             |  `sr-Cyrl-ME`   |
 | Serbiska (kyrillisk, Serbien)                 |  `sr-Cyrl-RS`   |
 | Serbiska (latinsk, Bosnien och Hercegovina)    |  `sr-Latn-BA`   |
 | Serbiska (latinsk, Montenegro)                |  `sr-Latn-ME`   |
 | Serbiska (latinsk, Serbien)                    |  `sr-Latn-RS`   |
+| Nordsotho                           |    `nso-ZA`     |
 | Tswana (Sydafrika)                    |     `tn-ZA`     |
 | Slovakiska                                     |     `sk-SK`     |
 | Slovenska                                  |     `sl-SI`     |
 | Spanska (Argentina)                        |     `es-AR`     |
-| Spanska (Spanien)                            |     `es-ES`     |
 | Spanska (Mexiko)                           |     `es-MX`     |
+| Spanska (Spanien)                            |     `es-ES`     |
 | Svenska (Sverige)                           |     `sv-SE`     |
 | Turkiska                                    |     `tr-TR`     |
 | Walesiska                                      |     `cy-GB`     |

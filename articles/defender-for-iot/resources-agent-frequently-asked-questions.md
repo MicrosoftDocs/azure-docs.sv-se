@@ -13,17 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2020
 ms.author: rkarlin
-ms.openlocfilehash: 9862519a2003eb373c43fef1b660986a8d830327
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: f584f11603e41b63f3c96749ed6c720eb5ce07a8
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094567"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835065"
 ---
 # <a name="azure-defender-for-iot-agent-frequently-asked-questions"></a>Vanliga frågor och svar om Azure Defender för IoT-agent
 
 Den här artikeln innehåller en lista över vanliga frågor och svar om Defender för IoT-agenten.
-
 
 ## <a name="do-i-have-to-install-an-embedded-security-agent"></a>Måste jag installera en inbäddad säkerhets agent?
 
@@ -41,7 +40,6 @@ Agent installationen på dina IoT-enheter är inte obligatorisk för att aktiver
 Defender för IoT-agenten ger hot täckning på enhets nivå för enhets konfiguration, beteende och åtkomst (genom att söka i konfigurationen), bearbeta & anslutning. Defender for IoT-Säkerhetsagenten söker inte efter affärsrelaterade data eller aktiviteter.
 
 Defender for IoT-Säkerhetsagenten är öppen källkod och tillgänglig på GitHub i 32-bitars och 64-bitars Windows-och Linux-versioner: https://github.com/Azure/Azure-IoT-Security .
-
 
 ## <a name="what-are-the-dependencies-and-prerequisites-of-the-agent"></a>Vilka är beroendena och kraven för agenten?
 
@@ -87,13 +85,11 @@ Agenten kan inte stängas av.
 
 Om agenten slutar kommunicera eller Miss lyckas med att skicka säkerhets meddelanden genereras en varning om att en **enhet är tyst** .
 
-
-
 ## <a name="next-steps"></a>Nästa steg
 
 Mer information om hur du kommer igång med Defender för IoT finns i följande artiklar:
 
 - Läs [översikten över](overview.md) Defender för IoT
-- Verifiera [tjänst kraven](service-prerequisites.md)
-- Lär dig mer om hur du [kommer igång](getting-started.md)
+- Kontrol lera [system kraven](quickstart-system-prerequisites.md)
+- Lär dig mer om att [komma igång med Defender för IoT](getting-started.md)
 - Förstå [Defender för IoT-säkerhetsaviseringar](concept-security-alerts.md)

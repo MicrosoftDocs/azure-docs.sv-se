@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 5511551f240fe4fdd2f2aa3bc8a3a2615505f35f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 704763e8e6e7c5336d0ed3e1c28791fb96c77aba
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936120"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97844940"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Anpassad enhets sökning av kognitiva kunskaper (för hands version)
 
@@ -41,7 +41,9 @@ Parametrar är skiftlägeskänsliga.
 | `entitiesDefinitionUri`    | Sökväg till en JSON-eller CSV-fil som innehåller all mål text som ska matchas mot. Den här definitionen av entiteten läses i början av en indexerare-körning. alla uppdateringar av filen Mid-Run kommer inte att realiseras förrän efterföljande körningar. Den här konfigurationen måste vara tillgänglig via HTTPS. Se formatet för [anpassad definition av entitet](#custom-entity-definition-format) "nedan för förväntat CSV-eller JSON-schema.|
 |`inlineEntitiesDefinition` | Definitioner av infogade JSON-enheter. Den här parametern ersätter parametern entitiesDefinitionUri om den finns. Högst 10 KB konfiguration kan anges infogas. Se [definitionen av anpassade entiteter](#custom-entity-definition-format) nedan för förväntat JSON-schema. |
 |`defaultLanguageCode` |    Valfritt Språk koden för den inmatade text som används för att Tokenize och avgränsa inmatade text. Följande språk stöds: `da, de, en, es, fi, fr, it, ko, pt` . Standardvärdet är engelska ( `en` ). Om du skickar ett languageCode-CountryCode-format används endast languageCode-delen av formatet.  |
-
+|`globalDefaultCaseSensitive` | Valfritt Standard Skift läges känsligt värde för färdigheten. Om `defaultCaseSensitive` värdet för en entitet inte anges blir det här värdet `defaultCaseSensitive` värdet för entiteten. |
+|`globalDefaultAccentSensitive` | Valfritt Standardvärdet för dekor färgs läge för färdigheten. Om `defaultAccentSensitive` värdet för en entitet inte anges blir det här värdet `defaultAccentSensitive` värdet för entiteten. |
+|`globalDefaultFuzzyEditDistance` | Valfritt Standard för fuzzy Edit Distance-värde för färdigheten. Om `defaultFuzzyEditDistance` värdet för en entitet inte anges blir det här värdet `defaultFuzzyEditDistance` värdet för entiteten. |
 
 ## <a name="skill-inputs"></a>Kompetens inmatningar
 
@@ -151,8 +153,10 @@ Tabellerna nedan beskriver de olika konfigurations parametrar som du kan ange n�
 | `subtype` | Valfritt Det här fältet kan användas som en genom strömning för anpassade metadata om matchade text (er). Värdet för det här fältet visas med varje matchning av dess entitet i kunskaps resultatet. |
 | `id` | Valfritt Det här fältet kan användas som en genom strömning för anpassade metadata om matchade text (er). Värdet för det här fältet visas med varje matchning av dess entitet i kunskaps resultatet. |
 | `caseSensitive` | Valfritt Standardvärdet är false. Booleskt värde som anger om jämförelser med entitetsnamnet ska vara känslig för Skift läge. Exempel på SKIFT läges okänsliga matchningar av "Microsoft" kan vara: Microsoft, microSoft, MICROSOFT |
+| `accentSensitive` | Valfritt Standardvärdet är false. Booleskt värde som anger om accenttecken och accenttecken, till exempel "é" och "e" ska vara identiska. |
 | `fuzzyEditDistance` | Valfritt Standardvärdet är 0. Högsta värdet 5. Anger det godkända antalet Divergent-tecken som fortfarande utgör en matchning med entitetsnamnet. Det minsta möjliga oskärpa för en bestämd matchning returneras.  Om till exempel redigerings avståndet är inställt på 3, kommer "Windows 10" fortfarande att matcha "Windows", "windows10" och "Windows 7". <br/> Om SKIFT läges känslighet är inställt på falskt räknas inte fall skillnaderna över mot oskärpa tolerans, men annars görs. |
-| `defaultCaseSensitive` | Valfritt Ändrar standard Skift läges känslighets värde för den här entiteten. Den används för att ändra standardvärdet för alla alias caseSensitive-värden. |
+| `defaultCaseSensitive` | Valfritt Ändrar standard Skift läges känslighets värde för den här entiteten. Det kan användas för att ändra standardvärdet för alla alias caseSensitive-värden. |
+| `defaultAccentSensitive` | Valfritt Ändrar standard värdet för dekor känslighet för den här entiteten. Det kan användas för att ändra standardvärdet för alla alias accentSensitive-värden.|
 | `defaultFuzzyEditDistance` | Valfritt Ändrar standardvärdet för fuzzy Edit för den här entiteten. Det kan användas för att ändra standardvärdet för alla alias fuzzyEditDistance-värden. |
 | `aliases` | Valfritt En matris med komplexa objekt som kan användas för att ange alternativa stavningar eller synonymer till rot enhetens namn. |
 
@@ -160,6 +164,7 @@ Tabellerna nedan beskriver de olika konfigurations parametrar som du kan ange n�
 |------------------|-------------|
 | `text`  | Den alternativa stavningen eller representationen av ett visst mål enhets namn.  |
 | `caseSensitive` | Valfritt Fungerar på samma sätt som rot entiteten "caseSensitive" ovan, men gäller endast detta alias. |
+| `accentSensitive` | Valfritt Fungerar på samma sätt som rot entiteten "accentSensitive" ovan, men gäller endast detta alias. |
 | `fuzzyEditDistance` | Valfritt Fungerar på samma sätt som rot entiteten "fuzzyEditDistance" ovan, men gäller endast detta alias. |
 
 

@@ -4,21 +4,21 @@ description: Lär dig mer om Azure Defender för IoT-arkitektur och informations
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: rkarlin
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/08/2020
-ms.author: rkarlin
-ms.openlocfilehash: a8697094a3366e3b82ca65f1b962101243b22f84
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.date: 12/02/2020
+ms.author: shhazam
+ms.openlocfilehash: 3b5a586b5db4fb15a32090e601bac5610ece1427
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548927"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832582"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Azure Defender för IoT-arkitektur
 
@@ -42,8 +42,7 @@ Azure Defender för IoT innehåller följande komponenter:
 - Azure Defender för IoT sensor VM eller-installation
 - Lokal hanterings konsol för lokal plats hantering
 
-
-![Defender för IoT-arkitektur](./media/architecture/defender-iot-security-architecture.png)
+:::image type="content" source="./media/architecture/defender-iot-security-architecture-v3.png" alt-text="Arkitekturen för Defender för IoT.":::
 
 ### <a name="azure-defender-for-iot-sensors"></a>Azure Defender för IoT-sensorer
 
@@ -72,8 +71,7 @@ Den industriella motorn för identifiering av skadlig kod identifierar beteenden
 Motorn för avvikelse identifiering identifierar onormal kommunikation mellan maskin-till-dator (M2M) och beteenden. Genom att modellera ICS-nätverk som deterministiska sekvenser av tillstånd och över gångar, kräver plattformen en kortare inlärnings period än allmänna matematiska metoder eller analyser som ursprungligen utvecklades för IT snarare än. Den identifierar även avvikelser snabbare, med minimala falska positiva identifieringar. Aviseringar för avvikelse identifierings motorn innehåller omfattande SMB-inloggnings försök och PLC-genomsökning upptäckte varningar.
 
 #### <a name="operational-incident-detection"></a>Identifiering av drift incident
-Identifieringen av drifts incidenter identifierar drift problem, till exempel tillfällig anslutning som kan indikera tidig tecken på utrustnings fel. Till exempel är enheten misstänkt att frånkopplas (svarar inte) och Siemens S7 Stop PLC-kommandot skickade aviseringar.
-
+Identifieringen av drifts incidenter identifierar drift problem, till exempel tillfällig anslutning som kan indikera tidig tecken på utrustnings fel. Till exempel anses enheten vara frånkopplad (svarar inte) och Siemens S7 Stop PLC skickade aviseringar.
 
 ### <a name="management-consoles"></a>Hanterings konsoler
 Hantering av Azure Defender för IoT i hybrid miljöer sker via två hanterings portaler: 
@@ -82,9 +80,9 @@ Hantering av Azure Defender för IoT i hybrid miljöer sker via två hanterings 
 - Azure Portal
 
 #### <a name="sensor-console"></a>Sensor konsol
-Sensor identifieringar visas i sensor konsolen där de kan visas, undersökas och analyseras i en nätverks karta, till gångs inventering och i många olika rapporter, till exempel riskhanterings rapporter, frågor om Data utvinning och angrepps vektorer. Du kan också använda-konsolen för att visa och hantera hot som upptäckts av sensor motorer, vidarebefordra information till tredje parts system, hantera användare med mera.
+Sensor identifieringar visas i sensor konsolen där de kan visas, undersökas och analyseras i en nätverks karta, till gångs inventering och i många olika rapporter, till exempel riskhanterings rapporter, frågor om Data utvinning och angrepps vektorer. Du kan också använda-konsolen för att visa och hantera hot som upptäckts av sensor motorer, vidarebefordra information till partner system, hantera användare med mera.
 
-![Defender för IoT sensor konsol](./media/architecture/sensor-console.png)
+:::image type="content" source="./media/architecture/sensor-console-v2.png" alt-text="Defender för IoT sensor konsol":::
 
 #### <a name="on-premises-management-console"></a>Lokal hanterings konsol
 Den lokala hanterings konsolen gör det möjligt för SOC-operatörer att hantera och analysera aviseringar som sammanställs från flera sensorer till en enda instrument panel och ger en övergripande vy över hälsan hos de olika nätverken.
@@ -93,23 +91,38 @@ Den här arkitekturen ger en heltäckande vy över nätverket på en SOC nivå, 
 
 Förutom hantering av flera innehavare, övervakning, data analys och centraliserad sensor, innehåller hanterings konsolen ytterligare system underhålls verktyg (t. ex. varnings undantag) och helt anpassade rapportfunktioner för varje fjärran sluten utrustning. Den här skalbara arkitekturen stöder både lokal hantering på webbplats nivå, zon nivå och global hantering inom SOC.
 
-Hanterings konsolen kan distribueras för konfiguration med hög tillgänglighet, vilket ger en säkerhets kopierings konsol som regelbundet tar emot säkerhets kopior av alla konfigurationsfiler som krävs för återställning. Om fel uppstår i huvud konsolen redundansväxlas de lokala plats hanterings utrustningarna automatiskt över till synkronisering med säkerhets kopierings konsolen för att upprätthålla tillgänglighet utan avbrott.
+Hanterings konsolen kan distribueras för konfiguration med hög tillgänglighet, vilket ger en säkerhets kopierings konsol som regelbundet tar emot säkerhets kopior av alla konfigurationsfiler som krävs för återställning. Om den primära konsolen Miss lyckas växlar de lokala plats hanterings utrustningarna automatiskt över till att synkronisera med säkerhets kopierings konsolen för att upprätthålla tillgänglighet utan avbrott.
+
+Den är nära integrerad med dina SOC-arbetsflöden och kör böcker, vilket möjliggör enkel prioritering av minsknings aktiviteter och korrelationer mellan olika webbplatser av hot.
+
+- Holistisk – minska komplexiteten med en enda enhetlig plattform för till gångs hantering, risk-och sårbarhets hantering, samt hot övervakning med incident svar.
+
+- Agg regering och korrelation – Visa, aggregera och analysera data och aviseringar som samlats in från alla platser.
+
+- Kontrol lera alla sensorer – konfigurera och övervaka alla sensorer från en enda plats.
+
+   :::image type="content" source="media/updates/alerts-and-site-management-v2.png" alt-text="Hantera alla aviseringar och all information.":::
 
 #### <a name="azure-portal"></a>Azure Portal
 
-Defender för IoT-portalen i Azure används för att hjälpa dig: ·   Köp lösnings utrustning ·   Installera och uppdatera program vara ·   Publicera sensorer till Azure ·   Uppdatera hot informations paket
+Defender för IoT-portalen i Azure används för att hjälpa dig att:
+
+- Köp lösnings utrustning
+- Installera och uppdatera program vara
+- Onboard-sensorer till Azure
+- Uppdatera hot informations paket
 
 ## <a name="embedded-security-agent-built-in-mode"></a>Inbäddad säkerhets agent: inbyggt läge
 
-I det **inbyggda** läget är Defender för IoT aktiverat när du väljer att aktivera **säkerhets** alternativet i IoT Hub. Vi erbjuder övervakning i real tid, rekommendationer och aviseringar, det inbyggda läget erbjuder en synlighet för enskilda steg och en oöverträffad säkerhet. I det här läget krävs ingen agent installation på några enheter och avancerad analys används för loggade aktiviteter för att analysera och skydda fält enheten och IoT Hub.
+I det **inbyggda** läget är Defender för IoT aktiverat när du väljer att aktivera **säkerhets** alternativet i din IoT-hubb. Vi erbjuder övervakning i real tid, rekommendationer och aviseringar, det inbyggda läget erbjuder en synlighet för enskilda steg och en oöverträffad säkerhet. I det här läget krävs ingen agent installation på några enheter och avancerad analys används för loggade aktiviteter för att analysera och skydda fält enheten och IoT Hub.
 
 ## <a name="embedded-security-agent-enhanced-mode"></a>Inbäddad säkerhets agent: Avancerat läge
 
-I **Avancerat** läge, efter att du har aktiverat **säkerhets** alternativet i din IoT Hub och installerat Defender för IoT-enhets agenter på dina enheter, samlar agenterna samman, sammanställa och analyserar rå säkerhets händelser från dina enheter. Rå säkerhets händelser kan omfatta IP-anslutningar, process skapande, användar inloggningar och annan säkerhetsrelaterad information. Defender för IoT-enhets agenter hanterar även händelse agg regering för att undvika hög nätverks data flöde. Agenterna är mycket anpassningsbara, så att du kan använda dem för olika uppgifter, t. ex. genom att bara skicka viktig information till det snabbaste service avtalet, eller för att samla in omfattande säkerhets information och kontext i större segment, vilket kan undvika högre tjänste kostnader.
+I **Avancerat** läge, efter att du har aktiverat **säkerhets** alternativet i din IoT-hubb och installerat Defender för IoT-enhets agenter på dina enheter, samlar agenterna samman, sammanställa och analyserar rå säkerhets händelser från dina enheter. Rå säkerhets händelser kan omfatta IP-anslutningar, process skapande, användar inloggningar och annan säkerhetsrelaterad information. Defender för IoT-enhets agenter hanterar också händelse agg regering för att undvika hög nätverks data flöde. Agenterna är mycket anpassningsbara, så att du kan använda dem för olika uppgifter, t. ex. genom att bara skicka viktig information till det snabbaste service avtalet, eller för att samla in omfattande säkerhets information och kontext i större segment, vilket kan undvika högre tjänste kostnader.
 
-Enhets agenter och andra program använder Azure-funktionen för att **Skicka säkerhets meddelande-SDK** för att skicka säkerhets information till Azure IoT Hub. IoT Hub hämtar den här informationen och vidarebefordrar den till tjänsten Defender for IoT.
+Enhets agenter och andra program använder Azure-funktionen för att **Skicka Security meddelande-SDK** för att skicka säkerhets information till Azure IoT Hub. IoT Hub hämtar den här informationen och vidarebefordrar den till tjänsten Defender för IoT.
 
-När tjänsten Defender for IoT har Aktiver ATS, förutom vidarebefordrade data, skickar IoT Hub även alla interna data för analys av Defender för IoT. Dessa data omfattar enhets moln åtgärds loggar, enhets identiteter och nav konfiguration. All den här informationen hjälper dig att skapa en pipeline för Defender för IoT Analytics.
+När tjänsten Defender for IoT är aktive rad skickar IoT Hub förutom vidarebefordrade data även alla interna data för analys av Defender för IoT. Dessa data omfattar enhets moln åtgärds loggar, enhets identiteter och nav konfiguration. All den här informationen hjälper dig att skapa en pipeline för Defender för IoT Analytics.
 
 Defender för IoT Analytics-pipeline tar också emot ytterligare hot informations strömmar från olika källor i Microsoft-och Microsoft-partner. Pipelinen Defender for IoT hela Analytics fungerar med varje kundkonfiguration som gjorts på tjänsten (till exempel anpassade aviseringar och användning av SDK: n för att skicka Security-meddelanden).
 
@@ -117,13 +130,8 @@ Med Analytics-pipeline kombinerar Defender för IoT alla data strömmar för att
 
 Defender för IoT-rekommendationer och-varningar (analys av pipeline-utdata) skrivs till Log Analytics arbets ytan för varje kund. Att inkludera rå händelser i arbets ytan samt aviseringar och rekommendationer möjliggör djupgående undersökning och frågor med hjälp av exakt information om de misstänkta aktiviteter som upptäckts.
 
-## <a name="next-steps"></a>Nästa steg
+## <a name="see-also"></a>Se även
 
-I den här artikeln har du lärt dig om den grundläggande arkitekturen och arbets flödet för Defender för IoT-lösningen. Mer information om förutsättningar, hur du kommer igång och aktiverar din säkerhetslösning i IoT Hub finns i följande artiklar:
+[Vanliga frågor och svar om Defender för IoT](resources-frequently-asked-questions.md)
 
-- [Förutsättningar för tjänsten](service-prerequisites.md)
-- [Komma igång](getting-started.md)
-- [Konfigurera lösningen](quickstart-configure-your-solution.md)
-- [Aktivera säkerhet i IoT Hub](quickstart-onboard-iot-hub.md)
-- [Vanliga frågor och svar om Defender för IoT](resources-frequently-asked-questions.md)
-- [Defender för IoT-säkerhetsaviseringar](concept-security-alerts.md)
+[System krav](quickstart-system-prerequisites.md)

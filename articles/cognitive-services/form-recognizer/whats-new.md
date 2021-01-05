@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 3f71cef19d25a7f987af4147ae0a889280e49bd1
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 7539e896d810a2f0fbf3c07f389f25e2d3c31fe1
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563168"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845001"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Vad är nytt i Formigenkänning?
 
@@ -209,7 +209,7 @@ JSON-Svaren för alla API-anrop har nya format. Vissa nycklar och värden har la
 
 ## <a name="next-steps"></a>Nästa steg
 
-Slutför en [snabb start för klient bibliotek](quickstarts/client-library.md) för att komma igång med att skriva en app för formulär bearbetning med formulär tolken på valfritt språk.
+Slutför en [snabb start](quickstarts/client-library.md) för att komma igång med att skriva en app för formulär bearbetning med formulär tolken på det språk du väljer.
 
 ## <a name="see-also"></a>Se även
 

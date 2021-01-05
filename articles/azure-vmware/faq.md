@@ -2,14 +2,13 @@
 title: Vanliga frågor och svar
 description: Innehåller svar på några vanliga frågor om Azure VMware-lösningen.
 ms.topic: conceptual
-ms.date: 11/19/2020
-ms.author: dikamath
-ms.openlocfilehash: 3033df2021a8d1780caf9b0b7cd4dbe8de2a6050
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.date: 12/22/2020
+ms.openlocfilehash: 941708003558dda601aa43459bc83133788687fd
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861416"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835201"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Vanliga frågor och svar om Azure VMware-lösningen
 
@@ -19,7 +18,7 @@ I den här artikeln får du svar på vanliga frågor om Azure VMware-lösningen.
 
 #### <a name="what-is-azure-vmware-solution"></a>Vad är Azure VMware Solution?
 
-Eftersom företag eftersträvar IT-modernisering strategier för att förbättra flexibiliteten i verksamheten, minska kostnaderna och påskynda innovationen, har hybrid moln plattformarna uppfyllts som viktigare för kunders digitala omvandling. Azure VMware-lösningen kombinerar VMwares Software-Defined Data Center-programvara (SDDC) med Microsoft Azure globalt moln tjänst eko system. Azure VMware-lösningen hanteras för att uppfylla kraven på prestanda, tillgänglighet, säkerhet och efterlevnad.
+Eftersom företag eftersträvar IT-modernisering strategier för att förbättra flexibiliteten i verksamheten, minska kostnaderna och påskynda innovationen, har hybrid moln plattformarna uppfyllts som viktigare för kunders digitala omvandling. Azure VMware-lösningen kombinerar VMwares Software-Defined Data Center-programvara (SDDC) med Microsofts Azures globala moln tjänst eko system. Azure VMware-lösningen hanteras för att uppfylla kraven på prestanda, tillgänglighet, säkerhet och efterlevnad.
 
 ## <a name="azure-vmware-solution-service"></a>Azure VMware Solution service
 
@@ -59,13 +58,11 @@ Uppdateringar som görs i själva tjänsten följer Microsoft Azure standard pro
 
 Med den nya Azure VMware-lösningen har Microsoft och VMware en direkt moln leverantörs koppling. Den nya lösningen är helt utformad, byggd och stöds av Microsoft och har godkänts av VMware. Lösningarna är dessutom konsekventa med VMware Technology-stacken som körs på en dedikerad Azure-infrastruktur.
 
-
-
 #### <a name="can-azure-vmware-solution-vms-be-managed-by-vmrc"></a>Kan virtuella datorer i Azure VMware-lösningen hanteras av VMRC?
-Ja, förutsatt att det system som är installerat på kan komma åt det privata molnet vCenter och använder offentlig DNS för att matcha ESXi-värdnamn.
+Ja. Förutsatt att det system som är installerat på kan komma åt det privata molnet vCenter och använder offentlig DNS för att matcha ESXi-värdnamn.
 
 #### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>Finns det särskilda instruktioner för att installera och använda VMRC med virtuella Azure VMware-lösningar?
-Nej. Använd de [instruktioner som tillhandahålls av VMware](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) för att uppfylla de VM-krav som anges i dessa instruktioner. 
+Nej. Följ [anvisningarna i VMware](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html)för att uppfylla de krav som gäller för virtuella datorer. 
 
 #### <a name="is-vmware-hcx-supported-on-vpns"></a>Stöds VMware HCX i VPN-nätverk?
 Nej, på grund av krav på bandbredd och latens.
@@ -77,7 +74,7 @@ Azure skydds är den tjänst som rekommenderas för att ansluta till hopp rutan 
 Nej. Azure Load Balancer internt stöder endast virtuella Azure IaaS-datorer. Azure Load Balancer stöder inte IP-baserade backend-pooler. endast virtuella Azure-datorer eller skal uppsättnings objekt för virtuella datorer i vilka virtuella datorer i Azure VMware-lösningen inte är Azure-objekt.
 
 #### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>Kan en befintlig ExpressRoute-Gateway användas för att ansluta till Azure VMware-lösningen?
-Ja, du kan använda en befintlig ExpressRoute-Gateway för att ansluta till Azure VMware-lösningen så länge den inte överskrider gränsen på fyra ExpressRoute-kretsar per virtuellt nätverk.  Men för att få åtkomst till Azure VMware-lösningen från lokala platser via ExpressRoute måste du ha ExpressRoute Global Reach eftersom ExpressRoute-gatewayen inte tillhandahåller transitiv routning mellan dess anslutna kretsar.
+Ja. Använd en befintlig ExpressRoute-Gateway för att ansluta till Azure VMware-lösningen så länge den inte överskrider gränsen på fyra ExpressRoute-kretsar per virtuellt nätverk. För att få åtkomst till Azure VMware-lösningen från lokala platser via ExpressRoute måste du ha ExpressRoute Global Reach eftersom ExpressRoute-gatewayen inte tillhandahåller transitiv routning mellan dess anslutna kretsar.
 
 ## <a name="compute-network-storage-and-backup"></a>Beräkning, nätverk, lagring och säkerhets kopiering
 
@@ -105,9 +102,9 @@ Varje ESXi-värd i Azure VMware-lösningen konfigureras med 4 25 Gbit/s nätverk
 
 Ja, alla virtuellt San-data krypteras som standard med hjälp av nycklar som lagras i Azure Key Vault.
 
-#### <a name="you-document-that-commvault-veritas-and-veeam-have-extended-their-backup-solutions-to-work-with-azure-vmware-solution-what-about-other-independent-software-vendors-isvs-backup-solutions"></a>Du dokumenterar att CommVault, Veritas och Veeam har utökat sina säkerhets kopierings lösningar för att fungera med Azure VMware-lösningen. Vad gäller andra oberoende program varu leverantörer (ISV) säkerhets kopierings lösningar?
+####  <a name="what-independent-software-vendors-isvs-backup-solutions-work-with-azure-vmware-solution"></a>Vilka oberoende program varu leverantörer (ISV) säkerhetskopierar lösningar fungerar med Azure VMware-lösningen?
 
-Så långt vi vet så bör alla säkerhets kopierings lösningar som använder VMware-VADP med HotAdd transport läge fungera direkt från rutan på Azure VMware-lösningen.
+CommVault, Veritas och Veeam har utökat sina säkerhets kopierings lösningar för att fungera med Azure VMware-lösningen.  Alla säkerhets kopierings lösningar som använder VMware VADP med HotAdd transport läge kommer dock att fungera direkt i Azure VMware-lösningen.
 
 #### <a name="what-about-support-for-isv-backup-solutions"></a>Vad är om support för lösningar för ISV-säkerhetskopiering?
 
@@ -127,7 +124,7 @@ Nej.
 
 Nej, värdar och kluster för privata moln är dedikerade och raderas på ett säkert sätt före och efter användning.
 
-#### <a name="what-are-the-minimum-and-the-maximum-number-of-hosts-per-cluster"></a>Vad är det minsta och högsta antalet värdar per kluster?
+#### <a name="what-are-the-minimum-and-maximum-number-of-hosts-per-cluster"></a>Vilka är det lägsta och högsta antalet värdar per kluster?
 
 Kluster kan skalas mellan 3-och 16 ESXi-värdar. Utvärderings kluster är begränsade till tre värdar.
 
@@ -147,7 +144,8 @@ Nej. Avancerade ESXi-värdar är reserverade för användning i produktions klus
 
 #### <a name="what-versions-of-vmware-software-is-used-in-private-clouds"></a>Vilka versioner av VMware-programvaran används i privata moln?
 
-Privata moln använder vSphere 6,7 U3, virtuellt San 6,7 U3, VMware HCX och NSX-T 2,5.  Mer information finns i [versions kraven för VMware-programvaran](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html).
+[!INCLUDE [vmware-software-versions](includes/vmware-software-versions.md)]
+
 
 #### <a name="do-private-clouds-use-vmware-nsx"></a>Använder privata moln VMware-NSX?
 
@@ -169,7 +167,7 @@ Den privata moln program varu paketets uppgraderingar behåller program varan i 
 
 Program varan för det privata molnet uppgraderas enligt ett schema som spårar program varu paketets version från VMware. Det privata molnet kräver ingen stillestånds tid för uppgraderingar.
 
-## <a name="connectivity"></a>Anslutningar
+## <a name="connectivity"></a>Anslutning
 
 #### <a name="what-network-ip-address-planning-is-required-to-incorporate-private-clouds-with-on-premises-environments"></a>Vilken nätverks-IP-adress planering krävs för att inkludera privata moln med lokala miljöer?
 
@@ -188,11 +186,11 @@ I Azure Portal aktiverar du Internet anslutning för ett privat moln. Med NSX-T 
 
 #### <a name="do-i-need-to-restrict-access-from-the-internet-to-vms-on-logical-networks-in-a-private-cloud"></a>Behöver jag begränsa åtkomst från Internet till virtuella datorer i logiska nätverk i ett privat moln?
 
-Nej. Inkommande nätverks trafik från Internet direkt till privata moln tillåts inte som standard.  Du kan dock exponera virtuella datorer i Azure VMware-lösningen till Internet via det [offentliga IP-](public-ip-usage.md) alternativet i din Azure Portal för Azure VMware-lösningen privat moln.
+Nej. Inkommande nätverks trafik från Internet direkt till privata moln tillåts inte som standard.  Du kan dock exponera virtuella Azure VMware-lösningar till Internet via det [offentliga IP-](public-ip-usage.md) alternativet i din Azure Portal för ditt privata moln i Azure VMware-lösningen.
 
 #### <a name="do-i-need-to-restrict-internet-access-from-vms-on-logical-networks-to-the-internet"></a>Måste jag begränsa Internet åtkomst från virtuella datorer i logiska nätverk till Internet?
 
-Ja. Du måste använda NSX-T-hanteraren för att skapa en brand vägg som begränsar VM-åtkomsten till Internet.
+Ja. Du måste använda NSX-T-hanteraren för att skapa en brand vägg för att begränsa VM-åtkomsten till Internet.
 
 
 #### <a name="can-azure-vmware-solution-use-azure-virtual-wan-hosted-expressroute-gateways"></a>Kan Azure VMware-lösningen använda Azure Virtual WAN Hosted ExpressRoute-gatewayer?
@@ -201,6 +199,9 @@ Ja.
 #### <a name="can-transit-connectivity-be-established-between-on-premises-and-azure-vmware-solution-through-azure-virtual-wan-over-expressroute-global-reach"></a>Kan överföring av anslutningar upprättas mellan lokal och Azure VMware-lösning via Azure Virtual WAN över ExpressRoute Global Reach?
 Azure Virtual WAN tillhandahåller inte transitiv routning mellan två anslutna ExpressRoute-kretsar och icke-virtuella WAN-ExpressRoute Gateway. Med hjälp av ExpressRoute Global Reach kan du ansluta mellan lokala och Azure VMware-lösningar, men går via Microsofts globala nätverk i stället för den virtuella WAN-hubben.
 
+#### <a name="could-i-use-hcx-through-public-internet-communications-as-a-workaround-for-the-non-supportability-of-hcx-when-using-vpn-s2s-with-vwan-for-on-premises-communications"></a>Kan jag använda HCX via offentlig Internet-kommunikation som en lösning för icke-support för HCX när du använder VPN S2S med vWAN för lokal kommunikation?
+
+För närvarande är den enda metoden som stöds för HCX via ExpressRoute.
 
 ## <a name="accounts-and-privileges"></a>Konton och behörigheter
 
@@ -294,11 +295,11 @@ Innan du kan skapa en Azure VMware-lösning kan du skicka ett support ärende s�
    az provider register -n Microsoft.AVS --subscription <your subscription ID>
    ```
 
-   Ytterligare sätt att registrera resurs leverantören finns i [Azure Resource providers och-typer](../azure-resource-manager/management/resource-providers-and-types.md). 
+   Mer information om hur du registrerar resurs leverantören finns i [Azure Resource providers och-typer](../azure-resource-manager/management/resource-providers-and-types.md). 
 
 #### <a name="are-reserved-instances-available-for-purchasing-through-the-cloud-solution-provider-csp-program"></a>Är reserverade instanser tillgängliga för inköp via Cloud Solution Provider (CSP)-programmet?
 
-Ja. CSP kan köpa reserverade instanser för sina kunder. Mer information finns i artikeln [Spara kostnader med reserverad instans](reserved-instance.md) . 
+Ja. CSP kan köpa reserverade instanser för sina kunder. Mer information finns i [Spara kostnader med en reserverad instans](reserved-instance.md). 
 
 #### <a name="does-azure-vmware-solution-offer-multi-tenancy-for-hosting-csp-partners"></a>Erbjuder Azure VMware-lösningen flera innehavare för att vara värd för CSP-partner?
 

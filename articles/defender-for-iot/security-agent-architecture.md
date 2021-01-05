@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 64d90b4d9dc3efbe877230bbc20780b1c4f2d213
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5773f7af3bb065976e8f05d7b54c58b90da2d3d2
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941800"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835133"
 ---
 # <a name="security-agent-reference-architecture"></a>Referens arkitektur för säkerhets agent
 
@@ -45,11 +45,11 @@ Defender för IoT-säkerhetsagenter utvecklas som projekt med öppen källkod oc
 
 Defender for IoT erbjuder olika installations agenter för 32-och 64-bitars fönster, och samma för 32-och 64-bitars Linux. Kontrol lera att du har rätt agent installations program för var och en av dina enheter enligt följande tabell:
 
-| Arkitektur | Linux | Windows |    Information|
-|----------|----------------------------------------------|-------------|-------------------------------------------|
-| 32  | C  | C#  ||
-| 64  | C# eller C           | C#      | Vi rekommenderar att du använder C-agenten för enheter med mer begränsade eller minimala enhets resurser.|
-|
+| Arkitektur | Linux | Windows | Information |
+|--|--|--|--|
+| 32 | C | C# |  |
+| 64 | C# eller C | C# | Vi rekommenderar att du använder C-agenten för enheter med mer begränsade eller minimala enhets resurser. |
+
 
 ## <a name="next-steps"></a>Nästa steg
 
@@ -59,6 +59,6 @@ Använd följande artiklar om du vill fortsätta komma igång med Defender för 
 
 - Förstå [autentiseringsmetoder för säkerhets agenter](concept-security-agent-authentication-methods.md)
 - Välj och distribuera en [säkerhets agent](how-to-deploy-agent.md)
-- Granska förutsättningarna för Defender for IoT [-tjänsten](service-prerequisites.md)
+- Granska kraven för Defender för IoT- [system](quickstart-system-prerequisites.md)
 - Lär dig hur du [aktiverar Defender för IoT-tjänsten i din IoT Hub](quickstart-onboard-iot-hub.md)
 - Läs mer om tjänsten från [vanliga frågor och svar om Defender för IoT](resources-frequently-asked-questions.md)

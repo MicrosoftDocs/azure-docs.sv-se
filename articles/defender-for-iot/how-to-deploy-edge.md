@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 75a9d1267a8824801e3c24fc25c687f29a808187
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c2b440413599ce07112231af17daa0bc14817b76
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339939"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832785"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Distribuera en säkerhetsmodul på din IoT Edge-enhet
 
@@ -53,7 +53,7 @@ Använd följande steg för att distribuera en Defender for IoT-säkerhetsmodul 
 
 1. Välj **Sakernas Internet** och Sök sedan efter **Defender för IoT** och välj den.
 
-   ![Välj Defender för IoT](media/howto/edge-onboarding-8.png)
+   :::image type="content" source="media/howto/edge-onboarding-8.png" alt-text="Välj Defender för IoT":::
 
 1. Konfigurera distributionen genom att klicka på **skapa** .
 
@@ -175,7 +175,7 @@ Om du stöter på problem är behållar loggarna det bästa sättet att lära si
 
 1. Kontrol lera att följande behållare körs:
 
-   | Name | BILD |
+   | Namn | BILD |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.2 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |

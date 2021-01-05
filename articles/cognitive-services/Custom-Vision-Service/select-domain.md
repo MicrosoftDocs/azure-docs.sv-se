@@ -10,34 +10,34 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 87b9e4a3ca7151b3666928b00add175eddeea050
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 0dbd6ea13069b72e6bca5c065af92568a5c7cdb8
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409390"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97844928"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Välj en domän för ett Custom Vision-projekt
 
-Från bladet inställningar för ditt Custom Vision-projekt kan du välja en domän för projektet. Välj den domän som är närmast ditt scenario.
+På fliken Inställningar i Custom Vision projektet kan du välja en domän för projektet. Välj den domän som är närmast ditt scenario. Om du använder Custom Vision via ett klient bibliotek eller REST API måste du ange ett domän-ID när du skapar projektet. Du kan hämta en lista över domän-ID: n med [Hämta domäner](https://westus2.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeab)eller använda tabellen nedan.
 
 ## <a name="image-classification"></a>Bildklassificering
 
 |Domain|Syfte|
 |---|---|
-|__Allmänna__| Optimerad för ett brett utbud av bild klassificerings aktiviteter. Om ingen av de andra domänerna är lämpliga, eller om du är osäker på vilken domän du väljer, väljer du den allmänna domänen.|
-|__Kost__|Optimerad för foton av rätter på samma sätt som du ser dem på en restaurang meny. Om du vill klassificera fotografier av enskilda frukter eller grönsaker använder du livsmedels domänen.|
-|__Landmärken__|Optimerad för identifierbara landmärken, både naturliga och artificiella. Den här domänen fungerar bäst när landmärket är tydligt synligt i fotografiet. Den här domänen fungerar även om landmärken är något som är något som står framför det.|
-|__Retail__|Optimerad för avbildningar som finns i en shopping katalog eller shopping webbplats. Om du vill att hög precision ska klassificeras mellan dresses, Pants och skjortor använder du den här domänen.|
+|__Allmänt__| Optimerad för ett brett utbud av bild klassificerings aktiviteter. Om ingen av de andra domänerna är lämpliga, eller om du är osäker på vilken domän du väljer, väljer du den allmänna domänen. IDENTITET `ee85a74c-405e-4adc-bb47-ffa8ca0c9f31`|
+|__Kost__|Optimerad för foton av rätter på samma sätt som du ser dem på en restaurang meny. Om du vill klassificera fotografier av enskilda frukter eller grönsaker använder du livsmedels domänen. IDENTITET `c151d5b5-dd07-472a-acc8-15d29dea8518`|
+|__Landmärken__|Optimerad för identifierbara landmärken, både naturliga och artificiella. Den här domänen fungerar bäst när landmärket är tydligt synligt i fotografiet. Den här domänen fungerar även om landmärken är något som är något som står framför det. IDENTITET `ca455789-012d-4b50-9fec-5bb63841c793`|
+|__Detaljhandeln__|Optimerad för avbildningar som finns i en shopping katalog eller shopping webbplats. Om du vill att hög precision ska klassificeras mellan dresses, Pants och skjortor använder du den här domänen. IDENTITET `b30a91ae-e3c1-4f73-a81e-c270bff27c39`|
 |__Komprimerade domäner__| Optimerad för begränsningar i real tids klassificering av gräns enheter.|
 
 ## <a name="object-detection"></a>Objektidentifiering
 
 |Domain|Syfte|
 |---|---|
-|__Allmänt__| Optimerad för ett brett utbud av objekt identifierings aktiviteter. Om ingen av de andra domänerna är lämpliga, eller om du är osäker på vilken domän du väljer, väljer du den allmänna domänen.|
-|__Logotyp__|Optimerad för att hitta varumärkes logo typer i bilder.|
-|__Produkter på hyllor__|Optimerad för att identifiera och klassificera produkter på hyllor.|
+|__Allmänt__| Optimerad för ett brett utbud av objekt identifierings aktiviteter. Om ingen av de andra domänerna är lämpliga, eller om du är osäker på vilken domän du väljer, väljer du den allmänna domänen. IDENTITET `da2e3a8a-40a5-4171-82f4-58522f70fbc1`|
+|__Logotyp__|Optimerad för att hitta varumärkes logo typer i bilder. IDENTITET `1d8ffafe-ec40-4fb2-8f90-72b3b6cecea4`|
+|__Produkter på hyllor__|Optimerad för att identifiera och klassificera produkter på hyllor. IDENTITET `3780a898-81c3-4516-81ae-3a139614e1f3`|
 |__Komprimerade domäner__| Optimerad för begränsningar av objekt identifiering i real tid på gräns enheter.|
 
 ## <a name="compact-domains"></a>Komprimerade domäner
@@ -46,11 +46,11 @@ Modeller som genereras av komprimerade domäner kan exporteras för att köras l
 
 Modell prestanda varierar beroende på vald domän. I tabellen nedan rapporterar vi modell storlek och härlednings tid för Intel Desktop-processor och NVidia GPU \[ 1 \] . De här talen omfattar inte förbehandling och postprocessing tid.
 
-|Uppgift|Domain|Modellstorlek|CPU-härlednings tid|GPU-härlednings tid|
-|---|---|---|---|---|
-|Klassificering|Allmän (kompakt)|5 MB|13 MS|5 MS|
-|Objektidentifiering|Allmän (kompakt)|45 MB|35 MS|5 MS|
-|Objektidentifiering|Allmän (kompakt) [S1]|14 MB|27 MS|7 MS|
+|Uppgift|Domain|ID|Modellstorlek|CPU-härlednings tid|GPU-härlednings tid|
+|---|---|---|---|---|---|
+|Klassificering|Allmän (kompakt)|`0732100f-1a38-4e49-a514-c9b44c697ab5`|5 MB|13 MS|5 MS|
+|Objektidentifiering|Allmän (kompakt)|`a27d5ca5-bb19-49d8-a70a-fec086c47f5b`|45 MB|35 MS|5 MS|
+|Objektidentifiering|Allmän (kompakt) [S1]|`7ec2ac80-887b-48a6-8df9-8b1357765430`|14 MB|27 MS|7 MS|
 
 >[!NOTE]
 >__Allmän (komprimera)__ domän för objekt identifiering kräver speciell postprocessing-logik. Mer information finns i ett exempel skript i det exporterade zip-paketet. Om du behöver en modell utan postprocessing Logic använder du __General (Compact) [S1]__.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: 74e0e8daa662f4dd49f1886972236b5b0a3b100a
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 3e48ed870bf405a82441678b5e8c01d199e7ebff
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348865"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835014"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Snabb start: skapa en azureiotsecurity-modul med dubbla
 
@@ -65,10 +65,10 @@ Så här kontrollerar du om det finns en säkerhetsmodul för en speciell enhet:
 
 1. I Azure IoT Hub väljer du **IoT-enheter** på menyn **Explorer** .
 1. Ange enhets-ID eller Välj ett alternativ i **fältet fråga enhet** och klicka på **fråga enheter**.
-    ![Fråga enheter](./media/quickstart/verify-security-module-twin.png)
+    :::image type="content" source="./media/quickstart/verify-security-module-twin.png" alt-text="Fråga enheter":::
 1. Välj enheten eller dubbelklicka på den för att öppna sidan med enhets information.
 1. Välj menyn **modul identiteter** och bekräfta att **azureiotsecurity** -modulen finns i listan över modul identiteter som är associerade med enheten.
-    ![Moduler som är kopplade till en enhet](./media/quickstart/verify-security-module-twin-3.png)
+    :::image type="content" source="./media/quickstart/verify-security-module-twin-3.png" alt-text="Moduler som är kopplade till en enhet":::
 
 Mer information om hur du anpassar egenskaper för Defender for IoT-modulen finns i [agent konfiguration](how-to-agent-configuration.md).
 

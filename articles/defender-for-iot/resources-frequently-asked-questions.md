@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2020
 ms.author: rkarlin
-ms.openlocfilehash: 5e7eabd44ea8c56fbb102f9e48812745a31de62a
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 0c303adb4ee7c7551c6b389ec169d92a661a63bc
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089204"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835031"
 ---
 # <a name="azure-defender-for-iot-frequently-asked-questions"></a>Vanliga frågor och svar om Azure Defender för IoT
 
@@ -79,15 +79,11 @@ Ja. Du kan ange en anpassad avisering på en fördefinierad uppsättning beteend
 
 Sensorer och agenter fortsätter att köra och lagra data så länge enheten körs. Data lagras i cacheminnet för säkerhets meddelanden enligt storleks konfigurationen. När enheten återfår anslutningen återupptas säkerhets meddelanden som skickas.
 
-
-
-
-
 ## <a name="next-steps"></a>Nästa steg
 
 Mer information om hur du kommer igång med Defender för IoT finns i följande artiklar:
 
 - Läs [översikten över](overview.md) Defender för IoT
-- Verifiera [tjänst kraven](service-prerequisites.md)
-- Lär dig mer om hur du [kommer igång](getting-started.md)
+- Kontrol lera [system kraven](quickstart-system-prerequisites.md)
+- Lär dig mer om att [komma igång med Defender för IoT](getting-started.md)
 - Förstå [Defender för IoT-säkerhetsaviseringar](concept-security-alerts.md)

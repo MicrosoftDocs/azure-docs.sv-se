@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: bdca5a753a49c26587db27892b54c2cb88910c83
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 823992ba6d3b175c8d20a001f8298a5c4af9a1ae
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862470"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832717"
 ---
 # <a name="continuously-export-security-center-data"></a>Exportera Security Center data kontinuerligt
 
@@ -24,6 +24,7 @@ Med **kontinuerlig export** kan du helt anpassa *vad* som ska exporteras och *va
 - Alla aviseringar med hög allvarlighets grad skickas till en Azure Event Hub
 - Alla aviseringar om medelhög eller högre allvarlighets grad från sårbarhets bedömning av dina SQL-servrar skickas till en speciell Log Analytics-arbetsyta
 - Vissa rekommendationer levereras till en Event Hub-eller Log Analytics-arbetsyta när de genereras 
+- De säkra poängen för en prenumeration skickas till en Log Analytics arbets yta när poängen för en kontroll ändras med 0,01 eller mer 
 
 Den här artikeln beskriver hur du konfigurerar kontinuerlig export till Log Analytics arbets ytor eller Azure Event Hubs.
 
@@ -45,8 +46,18 @@ Den här artikeln beskriver hur du konfigurerar kontinuerlig export till Log Ana
 |||
 
 
+## <a name="what-data-types-can-be-exported"></a>Vilka data typer kan exporteras?
 
+Vid kontinuerlig export kan följande data typer exporteras när de ändras:
 
+- Säkerhetsaviseringar
+- Säkerhetsrekommendationer 
+- Säkerhets resultat som kan ses som "sub"-rekommendationer som resultat från genomsökningar av sårbarhets bedömning eller vissa system uppdateringar. Du kan välja att inkludera dem med deras "överordnade" rekommendationer, till exempel "system uppdateringar bör installeras på dina datorer".
+- Säkra poäng (per prenumeration eller per kontroll)
+- Information om regelefterlevnad
+
+> [!NOTE]
+> Export av säker Poäng och regelefterlevnad är en förhands gransknings funktion och är inte tillgänglig i offentliga moln. 
 
 ## <a name="set-up-a-continuous-export"></a>Konfigurera en löpande export 
 
@@ -67,7 +78,7 @@ Stegen nedan är nödvändiga om du konfigurerar en kontinuerlig export till Log
     Här ser du export alternativen. Det finns en flik för varje tillgängligt export mål. 
 
 1. Välj den datatyp som du vill exportera och välj bland filtren för varje typ (till exempel endast exportera aviseringar med hög allvarlighets grad).
-1. Om ditt val till exempel innehåller någon av dessa fyra rekommendationer, kan du inkludera resultaten av sårbarhets utvärderingen tillsammans med dem:
+1. Om ditt val till exempel innehåller någon av dessa rekommendationer, kan du inkludera resultaten av sårbarhets utvärderingen tillsammans med dem:
     - Avgöranden för sårbarhets bedömning på SQL-databaser bör åtgärdas
     - Utvärderings resultat av säkerhets risker på dina SQL-servrar på datorer bör åtgärdas (för hands version)
     - Säkerhets risker i Azure Container Registry avbildningar bör åtgärdas (drivs av Qualys)
@@ -81,7 +92,7 @@ Stegen nedan är nödvändiga om du konfigurerar en kontinuerlig export till Log
 1. I området "Exportera mål" väljer du var du vill spara data. Data kan sparas i ett mål för en annan prenumeration (till exempel på en central Event Hub-instans eller en central Log Analytics-arbetsyta).
 1. Välj **Spara**.
 
-### <a name="use-the-rest-api"></a>[**Använd REST API**](#tab/rest-api)
+### <a name="use-the-rest-api"></a>[**Använda REST API**](#tab/rest-api)
 
 ### <a name="configure-continuous-export-using-the-rest-api"></a>Konfigurera kontinuerlig export med REST API
 
@@ -216,6 +227,9 @@ Nej. Kontinuerlig export skapas för strömning av **händelser**:
 
 - **Aviseringar** som tagits emot innan du aktiverade exporten exporteras inte.
 - **Rekommendationer** skickas när en resurss kompatibilitetstillstånd ändras. Till exempel när en resurs blir från felfritt till dåligt. Med aviseringar exporteras därför rekommendationer för resurser som inte har ändrat tillstånd sedan du aktiverade exporten.
+- **Säkra poäng (för hands version)** per säkerhets kontroll eller prenumeration skickas när en säkerhets kontrolls Poäng ändras med 0,01 eller mer. 
+- **Status för regelefterlevnad (för hands version)** skickas när status för resursens kompatibilitet ändras.
+
 
 
 ### <a name="why-are-recommendations-sent-at-different-intervals"></a>Varför skickas rekommendationer med olika intervall?

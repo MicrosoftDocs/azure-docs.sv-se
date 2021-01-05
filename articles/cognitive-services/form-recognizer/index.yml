@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 3ba0788b150f39c43471fd9d5e69b14a36ddbb78
-  ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+  ms.openlocfilehash: a94e30beb495d3ead38a14ef86c050dfc1afd0fd
+  ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
   ms.translationtype: HT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 11/23/2020
-  ms.locfileid: "95493612"
+  ms.lasthandoff: 01/01/2021
+  ms.locfileid: "97845278"
 landingContent:
 - title: Om Formigenkänning
   linkLists:
@@ -45,7 +45,7 @@ landingContent:
     - text: Använda Java Script SDK
       url: quickstarts/client-library.md?pivots=programming-language-javascript
     - text: Använda REST API (cURL)
-      url: quickstarts/curl-train-extract.md
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api
 - title: Skapa en träningsdatauppsättning
   linkLists:
   - linkListType: how-to-guide
@@ -62,8 +62,6 @@ landingContent:
     links:
     - text: Träna med exempeletikettverktyget
       url: quickstarts/label-tool.md
-    - text: Träna med etiketter med hjälp av REST API och Python
-      url: quickstarts/python-labeled-data.md
 - title: Extrahera data från kvitton
   linkLists:
   - linkListType: quickstart
@@ -77,9 +75,7 @@ landingContent:
     - text: Använda Java Script SDK
       url: quickstarts/client-library.md?pivots=programming-language-javascript
     - text: Använda REST API (cURL)
-      url: quickstarts/curl-train-extract.md
-    - text: Använda REST API (cURL)
-      url: quickstarts/curl-receipts.md
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api
   - linkListType: concept
     links:
     - text: Koncept för kvitton
@@ -88,8 +84,16 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Använda REST API
-      url: quickstarts/python-business-cards.md?
+    - text: Använda .NET SDK
+      url: quickstarts/client-library.md?pivots=programming-language-csharp
+    - text: Använda Python SDK
+      url: quickstarts/client-library.md?pivots=programming-language-python
+    - text: Använda Java SDK
+      url: quickstarts/client-library.md?pivots=programming-language-java
+    - text: Använda Java Script SDK
+      url: quickstarts/client-library.md?pivots=programming-language-javascript
+    - text: Använda REST API (cURL)
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api
   - linkListType: concept
     links:
     - text: Koncept för visitkort
@@ -111,9 +115,7 @@ landingContent:
     - text: Använda Java Script SDK
       url: quickstarts/client-library.md?pivots=programming-language-javascript
     - text: Använda REST API (cURL)
-      url: quickstarts/curl-train-extract.md
-    - text: Använda REST API (Python)
-      url: quickstarts/python-layout.md
+      url: quickstarts/client-library.md?pivots=programming-language-rest-api
 - title: Använda containrar
   linkLists:
   - linkListType: get-started

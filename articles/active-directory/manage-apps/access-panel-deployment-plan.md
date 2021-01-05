@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 12/31/2020
 ms.author: kenwith
-ms.openlocfilehash: 7edb7b498450625faf90f0601e19745ad632635a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 209760b51e0f3ab931fa43ef88406f15c75ac079
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835670"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832547"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Planera distribution av en Azure Active Directory Mina appar
 
@@ -54,10 +54,10 @@ Azure AD Mina appar fördelar företag på följande sätt:
 
 Mina appar är kostnads fria och kräver inga licenser för användning på en grundläggande nivå. Antalet objekt i din katalog och de ytterligare funktioner som du vill distribuera kan dock kräva ytterligare licenser. Några vanliga Azure AD-scenarier som har licensierings krav omfattar följande säkerhetsfunktioner:
 
-* [Azure AD-Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
+* [Azure AD Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)
 * [Grupp-baserat medlemskap](../fundamentals/active-directory-manage-groups.md)
 * [Återställning av lösenord för självbetjäning](../authentication/tutorial-enable-sspr.md)
-* [Identitetsskydd för Azure Active Directory](../identity-protection/overview-identity-protection.md)
+* [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md)
 
 Se den [fullständiga licens guiden för Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
 
@@ -74,8 +74,8 @@ I följande tabell beskrivs de viktigaste användnings fallen för distribution 
 
 | Område| Beskrivning |
 | - | - |
-| Access| Min Apps-Portal kan nås från företagets och personliga enheter inom företags nätverket. |
-|Access | Min Apps-Portal är tillgänglig från företags enheter utanför företags nätverket. |
+| Åtkomst| Min Apps-Portal kan nås från företagets och personliga enheter inom företags nätverket. |
+|Åtkomst | Min Apps-Portal är tillgänglig från företags enheter utanför företags nätverket. |
 | Granskning| Användnings data hämtas till företags system minst var 29: e dag. |
 | Styrning| Livs cykeln för användar tilldelningarna till Azure AD-anslutna program och grupper definieras och övervakas. |
 | Säkerhet| Åtkomst till resurser styrs via användar-och grupp tilldelningar. Endast auktoriserade användare kan hantera resurs åtkomst. |
@@ -303,11 +303,11 @@ Använd den minst privilegierade rollen för att utföra en obligatorisk uppgift
 
 | Profiler| Roller| Azure AD-roll  |
 | - | -| -|
-| Supportavdelningen-administratör| Nivå 1-stöd| Inga |
+| Supportavdelningen-administratör| Nivå 1-stöd| Ingen |
 | Identitets administratör| Konfigurera och Felsök när problem påverkar Azure AD| Global administratör |
-| Program administratör| Användar attestering i program, konfiguration av användare med behörigheter| Inga |
+| Program administratör| Användar attestering i program, konfiguration av användare med behörigheter| Ingen |
 | Infrastruktur administratörer| Certifikat förnyelse ägare| Global administratör |
-| Företags ägare/från intressenter| Användar attestering i program, konfiguration av användare med behörigheter| Inga |
+| Företags ägare/från intressenter| Användar attestering i program, konfiguration av användare med behörigheter| Ingen |
 
 Du kan använda [Privileged Identity Management](../privileged-identity-management/pim-configure.md) för att hantera roller för att ge ytterligare gransknings-, kontroll-och åtkomst granskning för användare med katalog behörigheter.
 
