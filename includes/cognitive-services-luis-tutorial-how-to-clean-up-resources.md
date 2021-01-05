@@ -1,20 +1,20 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: cognitive-services
-author: diberry
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.custom: seodec18, include file
 ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
-ms.date: 07/26/2018
-ms.author: diberry
-ms.openlocfilehash: d7fc8210d96993c20366b1b139152d7d9540698b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/29/2020
+ms.author: aahi
+ms.openlocfilehash: c583cb508522e08c77f2c9acaee264665ae1d62a
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88057794"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97820445"
 ---
-Ta bort LUIS-appen när den inte längre behövs. Det gör du genom att välja **My apps** (Mina appar) på menyn längst upp till vänster. Välj ellipsen (***...***) till höger om namnet på appen i listan app och välj **ta bort**. På popup-dialogrutan **Delete app?** (Ta bort appen?) väljer du **Ok**. 
+Ta bort LUIS-appen när den inte längre behövs. Det gör du genom att välja **My apps** (Mina appar) på menyn längst upp till vänster. Välj ellipsen (**_..._ *_) till höger om namnet på appen i listan appar väljer du _* ta bort**. På popup-dialogrutan **Delete app?** (Ta bort appen?) väljer du **Ok**. 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: ccfbb92c27e4508595f19c2ea6900730cde609b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 015b8e400e9d386fff8f35756a77139e61bbaff1
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74666383"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809300"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Schema-och data agg regering i Trafikanalys
 
@@ -39,11 +39,11 @@ Trafikanalys är en molnbaserad lösning som ger insyn i användar-och program a
 5. FlowStartTime_t fältet anger den första förekomsten av ett sådant sammanställt flöde (samma fyra tuple) i flödes logg bearbetnings intervallet mellan "FlowIntervalStartTime_t" och "FlowIntervalEndTime_t".
 6. För alla resurser i TA är flödena som anges i användar gränssnittet det totala antalet flöden som visas av NSG, men i Log Analytics användaren ser bara den enda, nedsänkta posten. Om du vill se alla flöden använder du fältet blob_id som kan refereras från Storage. Det totala antalet flöden för den posten matchar de enskilda flödena som visas i blobben.
 
-I nedanstående fråga kan du se alla flödes loggar från lokala platser under de senaste 30 dagarna.
+I nedanstående fråga får du hjälp att titta på alla undernät som samverkar med icke-offentliga offentliga IP-adresser under de senaste 30 dagarna.
 ```
 AzureNetworkAnalytics_CL
 | where SubType_s == "FlowLog" and FlowStartTime_t >= ago(30d) and FlowType_s == "ExternalPublic"
-| project Subnet_s  
+| project Subnet1_s, Subnet2_s  
 ```
 Om du vill visa BLOB-sökvägen för flödena i ovanstående fråga använder du frågan nedan:
 
@@ -96,7 +96,7 @@ Trafikanalys skapas ovanpå Log Analytics, så att du kan köra anpassade frågo
 
 Nedan visas fälten i schemat och vad de betecknar
 
-| Field | Format | Kommentarer |
+| Fält | Format | Kommentarer |
 |:---   |:---    |:---  |
 | TableName | AzureNetworkAnalytics_CL | Tabell för Trafikanalys data
 | SubType_s | Logg | Undertyp för flödes loggarna. Använd endast "logg", andra värden för SubType_s är för interna arbeten av produkten |

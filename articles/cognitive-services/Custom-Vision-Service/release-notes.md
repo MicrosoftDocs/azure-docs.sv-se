@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: pafarley
-ms.openlocfilehash: ccf742e5ff612816cae1056ef7bf0e64fc9dbb5b
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 3724a7d515197c1f969bb051fc201b82bee64c42
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616475"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813504"
 ---
 # <a name="custom-vision-service-release-notes"></a>Viktig information om Custom Vision Service
 
@@ -41,7 +41,7 @@ ms.locfileid: "94616475"
 
 - Custom Vision Service har angett allmän tillgänglighet för Azure!
 - Avancerad utbildning har lagts till med en ny maskin inlärnings Server del för bättre prestanda, särskilt vid utmanande data uppsättningar och detaljerade klassificeringar. Med avancerad utbildning kan du ange en budget för beräknings tid för utbildning och Custom Vision kommer att experimentellt identifiera bästa utbildning och förstärknings inställningar. För snabba iterationer kan du fortsätta att använda den befintliga snabb träningen.
-- Introducerade 3,0 API: er. Meddelad om inaktuellitet av pre-3,0-API: er den 1 oktober 2019. Se snabb starter för dokumentation för [.net](./quickstarts/image-classification.md), [python](./quickstarts/image-classification.md), [Node](./quickstarts/image-classification.md), [Java](./quickstarts/image-classification.md)eller [Go](./quickstarts/image-classification.md) för att få exempel på hur du kommer igång.
+- Introducerade 3,0 API: er. Meddelad om inaktuellitet av pre-3,0-API: er den 1 oktober 2019. Se [snabb starter](./quickstarts/image-classification.md) för dokumentationen om du vill ha exempel på hur du kommer igång.
 - Ersatt "standard iterationer" med publicera/ta bort publicering i 3,0-API: erna.
 - Nya modell export mål har lagts till. Dockerfile-exporten har uppgraderats till stöd för ARM för Raspberry Pi 3. Export stöd har lagts till i det [vision AI dev kit.](https://visionaidevkit.com/)
 - Ökad gräns för Taggar per projekt till 500 för S0-nivån. Ökad gräns för avbildningar per projekt till 100 000 för S0-nivå.

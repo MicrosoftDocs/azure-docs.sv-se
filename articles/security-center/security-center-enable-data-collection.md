@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: f5cf432e3824ca0bb441a458a08fc7353291cf1f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: be8123d3c8a4acc684610aeaa9ee263c5defa17d
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490065"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813623"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>Automatiska etablerings agenter och tillägg från Azure Security Center
 
@@ -30,6 +30,17 @@ Data samlas in med:
 > Som Security Center har växt, har de typer av resurser som kan övervakas också växt. Antalet tillägg har också växt. Automatisk etablering har utökats för att stödja ytterligare resurs typer genom att använda funktionerna i Azure Policy.
 
 :::image type="content" source="./media/security-center-enable-data-collection/auto-provisioning-options.png" alt-text="Security Center sidan Inställningar för automatisk etablering":::
+
+
+## <a name="availability"></a>Tillgänglighet
+
+| Aspekt                  | Information                                                                                                                                                                                                                      |
+|-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Versions tillstånd:          | **Funktion**: automatisk etablering är allmänt tillgänglig (ga)<br>**Agent och tillägg**: Log Analytics agent för virtuella Azure-datorer är ga, Microsoft Dependency agent är i för hands version, princip tillägg för KUBERNETES är ga                |
+| Priset                | Kostnadsfri                                                                                                                                                                                                                         |
+| Destinationer som stöds: | ![Ja](./media/icons/yes-icon.png) Azure-datorer<br>![Nej](./media/icons/no-icon.png) Azure Arc-datorer<br>![Nej](./media/icons/no-icon.png) Kubernetes-noder<br>![Nej](./media/icons/no-icon.png) Virtual Machine Scale Sets |
+| Moln                 | ![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) US Gov, Kina gov, andra gov                                                                                                      |
+|                         |                                                                                                                                                                                                                              |
 
 
 ## <a name="why-use-auto-provisioning"></a>Varför ska jag använda automatisk etablering?
@@ -120,7 +131,7 @@ Aktivera automatisk etablering av ett tillägg som inte är Log Analytics-agente
 
 1. Välj **Spara**. Azure-principen är tilldelad och en reparations uppgift skapas.
 
-    |Filnamnstillägg  |Policy  |
+    |Anknytning  |Princip  |
     |---------|---------|
     |Princip tillägg för Kubernetes|[Distribuera Azure Policy-tillägg till Azure Kubernetes service-kluster](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa8eff44f-8c92-45c3-a3fb-9880802d67a7)|
     |Microsoft-beroende agent (för hands version) (Windows VM)|[Distribuera beroende agent för virtuella Windows-datorer](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1c210e94-a481-4beb-95fa-1571b434fb04)         |

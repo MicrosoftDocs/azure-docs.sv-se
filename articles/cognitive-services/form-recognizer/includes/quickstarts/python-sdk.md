@@ -9,19 +9,19 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: a33490d289e3867dffec0041a5da21ea5f235b28
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 9762ca79f73b3333045d1c11376ab315aac2d55e
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97582704"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808665"
 ---
 > [!IMPORTANT]
 > * Koden i den här artikeln använder synkrona metoder och icke-säkrade inloggnings uppgifter för att förenkla orsaker. Se referens dokumentationen nedan. 
 
 [Referens dokumentation](/python/api/azure-ai-formrecognizer)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer)  |  [Paket (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/)  |  [Exempel](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services)
 * [Python 3.x](https://www.python.org/)
@@ -130,6 +130,8 @@ Här ska du autentisera två klient objekt med de prenumerationsfiler som du def
 
 Du måste lägga till referenser till URL: erna för din utbildning och testa data.
 * [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
+  
+   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="Hämtning av SAS-URL":::
 * Använd exemplen från och kvitto bilder som ingår i exemplen nedan (även tillgängligt på [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) eller så kan du använda ovanstående steg för att hämta SAS-URL: en för ett enskilt dokument i Blob Storage. 
 
 > [!NOTE]
@@ -431,7 +433,7 @@ Du kan också ta bort en modell från ditt konto genom att referera till dess ID
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_manage_delete)]
 
 
-## <a name="run-the-application"></a>Köra appen
+## <a name="run-the-application"></a>Kör programmet
 
 Kör programmet med `python` kommandot på snabb starts filen.
 

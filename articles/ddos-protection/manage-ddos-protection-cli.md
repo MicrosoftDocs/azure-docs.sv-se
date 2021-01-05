@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: e2f5528fde977520dc0aa0215a480a40ef8f1e7d
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 6c628d93c112a770c85a10d0eff958614a7cf4cb
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989640"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814167"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>Snabb start: skapa och konfigurera Azure DDoS Protection standard med hjälp av Azure CLI
 
@@ -134,4 +134,4 @@ Om du vill ta bort en DDoS skydds plan måste du först ta bort alla virtuella n
 Om du vill lära dig att visa och konfigurera telemetri för din DDoS-skydds plan fortsätter du till självstudierna.
 
 > [!div class="nextstepaction"]
-> [Visa och konfigurera telemetri för DDoS-skydd](telemetry-monitoring-alerting.md)
+> [Visa och konfigurera telemetri för DDoS-skydd](telemetry.md)

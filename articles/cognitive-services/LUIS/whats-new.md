@@ -5,18 +5,22 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 06/15/2020
-ms.openlocfilehash: fffe337a59ff343164a155fcd0f4d5616a32bf41
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 52f8aad0a429d3378d46265fab719b1cb9f07fd0
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91334624"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813198"
 ---
 # <a name="whats-new-in-language-understanding"></a>Vad är nytt i Language Understanding
 
 Läs om vad som är nytt i tjänsten. Dessa objekt innehåller viktig information, videor, blogg inlägg och andra typer av information. Skapa ett bok märke för den här sidan för att hålla dig uppdaterad med tjänsten.
 
 ## <a name="release-notes"></a>Viktig information
+
+### <a name="december-2020"></a>December 2020
+
+* Alla LUIS-användare krävs för att [migrera till en Luis authorint-resurs](luis-migration-authoring.md)
 
 ### <a name="june-2020"></a>Juni 2020
 

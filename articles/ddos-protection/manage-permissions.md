@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: dec2c845780b62e9a595c73504037142c511c0e6
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 08ab78171376f702aecb1f49571dda583eae5d82
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989419"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813878"
 ---
 # <a name="manage-ddos-protection-plans-permissions-and-restrictions"></a>Hantera DDoS Protections planer: behörigheter och begränsningar
 
@@ -30,7 +30,7 @@ En DDoS skydds plan fungerar mellan regioner och prenumerationer. Samma plan kan
 
 För att kunna arbeta med DDoS-skydds planer måste ditt konto tilldelas rollen [nätverks deltagare](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) eller en [anpassad](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) roll som har tilldelats lämpliga åtgärder i följande tabell:
 
-| Action                                            | Name                                     |
+| Åtgärd                                            | Namn                                     |
 | ---------                                         | -------------                            |
 | Microsoft. Network/ddosProtectionPlans/Read        | Läs en DDoS skydds plan              |
 | Microsoft. Network/ddosProtectionPlans/Write       | Skapa eller uppdatera en DDoS-skydds plan  |
@@ -51,4 +51,4 @@ För kunder som har olika prenumerationer och som vill se till att en enda plan 
 Om du vill lära dig att visa och konfigurera telemetri för din DDoS-skydds plan fortsätter du till självstudierna.
 
 > [!div class="nextstepaction"]
-> [Visa och konfigurera telemetri för DDoS-skydd](telemetry-monitoring-alerting.md)
+> [Visa och konfigurera telemetri för DDoS-skydd](telemetry.md)

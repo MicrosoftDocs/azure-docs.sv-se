@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/07/2020
+ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 0d5b6b7b3cf74ab740dbaeb8d86ab8bbb98e8531
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 0c43e085725ceb5db718c9b4c9c9d83787964d63
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357103"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813538"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-meraki-dashboard"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med Meraki-instrumentpanel
 
@@ -132,7 +132,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
-1. Om du förväntar dig ett roll värde i SAML-kontrollen, i dialog rutan **Välj en roll** , väljer du lämplig roll för användaren i listan och klickar sedan på knappen **Välj** längst ned på skärmen.
+1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
 
     ![användarroll](./media/meraki-dashboard-tutorial/user-role.png)
 
@@ -143,7 +143,15 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 ## <a name="configure-meraki-dashboard-sso"></a>Konfigurera Meraki-instrumentpanelen SSO
 
-1. Logga in på Meraki-instrumentpanelen som administratör i ett annat webbläsarfönster.
+1. Om du vill automatisera konfigurationen på Meraki-instrumentpanelen måste du installera **Mina appar säker inloggnings webb läsar tillägg** genom att klicka på **installera tillägget**.
+
+    ![Mina Apps-tillägg](common/install-myappssecure-extension.png)
+
+2. När du har lagt till tillägget i webbläsaren, klickar du på **Konfigurera Meraki-instrumentpanelen** för att dirigera dig till Meraki-instrumentpanelens program. Därifrån anger du administratörsautentiseringsuppgifter för att logga in på Meraki-instrumentpanelen. Webbläsartillägget konfigurerar automatiskt programmet åt dig och automatiserar steg 3–7.
+
+    ![Konfigurera konfiguration](common/setup-sso.png)
+
+3. Om du vill konfigurera Meraki-instrumentpanelen manuellt i ett annat webbläsarfönster loggar du in på företags platsen för din Meraki-instrumentpanel som administratör.
 
 1. Navigera till **organisations**  ->  **Inställningar**.
 

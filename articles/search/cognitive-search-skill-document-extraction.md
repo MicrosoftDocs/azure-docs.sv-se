@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: chalton
-ms.openlocfilehash: 3c77da8252fb3dcb2672a50ec75f676e18dd31da
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 5098d897d84ff6af31d430c0ddd2e26d8d6b08a7
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652338"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814303"
 ---
 # <a name="document-extraction-cognitive-skill"></a>Inlärnings kunskap för dokument extrahering
 
@@ -100,11 +100,11 @@ Detta fil referens objekt kan genereras av tre sätt:
     "outputs": [
       {
         "name": "content",
-        "targetName": "content"
+        "targetName": "extracted_content"
       },
       {
         "name": "normalized_images",
-        "targetName": "normalized_images"
+        "targetName": "extracted_normalized_images"
       }
     ]
   }

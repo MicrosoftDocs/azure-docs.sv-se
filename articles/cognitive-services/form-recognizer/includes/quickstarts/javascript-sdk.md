@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 9b6fc05cc2e97e8e0d74f7d19912afedb37c0fa5
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 45654d55ac07bc9056a41cacba6f8f5890c56580
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97366469"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808648"
 ---
 > [!IMPORTANT]
 > * Koden i den här artikeln använder synkrona metoder och icke-säkrade inloggnings uppgifter för att förenkla orsaker. Se referens dokumentationen nedan. 
@@ -121,6 +121,8 @@ Autentisera ett klient objekt med de prenumerationsfiler som du har definierat. 
 
 Du måste också lägga till referenser till URL: erna för din utbildning och testa data.
 * [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
+   
+   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="Hämtning av SAS-URL":::
 * Använd exemplet från och kvitto bilder som ingår i exemplen nedan (även tillgängligt på [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/test-assets)) eller så kan du använda ovanstående steg för att hämta SAS-URL: en för ett enskilt dokument i Blob Storage. 
 
 
@@ -406,7 +408,7 @@ Du kan också ta bort en modell från ditt konto genom att referera till dess ID
 Model with id 789b1b37-4cc3-4e36-8665-9dde68618072 has been deleted
 ```
 
-## <a name="run-the-application"></a>Köra appen
+## <a name="run-the-application"></a>Kör programmet
 
 Kör programmet med `node` kommandot på snabb starts filen.
 

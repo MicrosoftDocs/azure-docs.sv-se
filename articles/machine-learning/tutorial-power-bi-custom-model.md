@@ -1,7 +1,7 @@
 ---
 title: 'Självstudie: skapa en förutsägelse modell med en bärbar dator (del 1 av 2)'
 titleSuffix: Azure Machine Learning
-description: Lär dig hur du skapar och distribuerar en maskin inlärnings modell med hjälp av kod i en Jupyter Notebook, så att du kan använda den för att förutsäga resultat i Microsoft Power BI.
+description: Lär dig hur du skapar och distribuerar en maskin inlärnings modell genom att använda kod i en Jupyter Notebook. Du kan använda modellen för att förutsäga resultat i Microsoft Power BI.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,69 +10,70 @@ ms.author: samkemp
 author: samuel100
 ms.reviewer: sdgilley
 ms.date: 12/11/2020
-ms.openlocfilehash: f8209c0d26cf8c572d10666696231b0468cfcbc6
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 1dfee56f90011d3c532767e136b383e4eb95c234
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97370331"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814779"
 ---
-# <a name="tutorial-power-bi-integration---create-the-predictive-model-with-a-notebook-part-1-of-2"></a>Självstudie: Power BI integration – skapa en förutsägelse modell med en bärbar dator (del 1 av 2)
+# <a name="tutorial-power-bi-integration---create-the-predictive-model-by-using-a-jupyter-notebook-part-1-of-2"></a>Självstudie: Power BI integration – skapa en förutsägelse modell genom att använda en Jupyter Notebook (del 1 av 2)
 
-I den första delen av den här självstudien tränar du och distribuerar en förutsägelse maskin inlärnings modell med hjälp av kod i en Jupyter Notebook. I del 2 använder du sedan modellen för att förutse resultatet i Microsoft Power BI.
+I del 1 av den här självstudien tränar du och distribuerar en förutsägelse maskin inlärnings modell genom att använda kod i en Jupyter Notebook. I del 2 använder du modellen för att förutsäga resultat i Microsoft Power BI.
 
 I den här kursen får du:
 
 > [!div class="checklist"]
-> * Skapa en Jupyter Notebook
-> * Skapa en Azure Machine Learning beräknings instans
-> * Träna en Regressions modell med scikit – lära
-> * Distribuera modellen till en slut punkt för real tids Poäng
+> * Skapa en Jupyter Notebook.
+> * Skapa en Azure Machine Learning beräknings instans.
+> * Träna en Regressions modell med hjälp av scikit-lära.
+> * Distribuera modellen till en slut punkt för real tids resultat.
 
-Det finns tre olika sätt att skapa och distribuera den modell du använder i Power BI.  Den här artikeln beskriver alternativ A: träna och distribuera modeller med antecknings böcker.  Det här alternativet visar en kod-första redigerings upplevelse med Jupyter-anteckningsböcker som finns i Azure Machine Learning Studio. 
+Det finns tre sätt att skapa och distribuera den modell som du kommer att använda i Power BI.  Den här artikeln beskriver "alternativ A: träna och distribuera modeller med hjälp av antecknings böcker".  Det här alternativet är en kod-första redigerings upplevelse. Den använder Jupyter-anteckningsböcker som finns i Azure Machine Learning Studio. 
 
-I stället kan du använda:
+Men du kan i stället använda något av de andra alternativen:
 
-* [Alternativ B: träna och distribuera modeller med designern](tutorial-power-bi-designer-model.md)– en låg kod redigerings upplevelse med hjälp av designer (ett användar gränssnitt med dra och släpp).
-* [Alternativ C: träna och distribuera modeller med automatiserad ml](tutorial-power-bi-automated-model.md) – en redigering utan kod som fullständigt automatiserar data förberedelser och modell träning.
+* [Alternativ B: träna och distribuera modeller med hjälp av Azure Machine Learning designer](tutorial-power-bi-designer-model.md). Den här redigerings upplevelsen med låg kod använder ett användar gränssnitt med dra och släpp-funktionen.
+* [Alternativ C: träna och distribuera modeller med hjälp av automatisk maskin inlärning](tutorial-power-bi-automated-model.md). Den här redigeringen av den här processen ger helt automatiserad data förberedelse och modell träning.
 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- En Azure-prenumeration ([en kostnads fri utvärderings version finns tillgänglig](https://aka.ms/AMLFree)). 
-- En Azure Machine Learning-arbetsyta. Om du inte redan har en arbets yta, följer du [hur du skapar en Azure Machine Learning-arbetsyta](./how-to-manage-workspace.md#create-a-workspace).
+- En Azure-prenumeration. Om du inte redan har en prenumeration kan du använda en [kostnads fri utvärderings version](https://aka.ms/AMLFree). 
+- En Azure Machine Learning-arbetsyta. Om du inte redan har en arbets yta, se [skapa och hantera Azure Machine Learning arbets ytor](./how-to-manage-workspace.md#create-a-workspace).
 - Introduktions kunskap om python-språket och Machine Learning-arbetsflöden.
 
 ## <a name="create-a-notebook-and-compute"></a>Skapa en bärbar dator och beräkna
 
-På Start sidan för [Azure Machine Learning Studio](https://ml.azure.com) väljer du **Skapa ny** följt av **antecknings bok**:
+På [**Azure Machine Learning Studio**](https://ml.azure.com) start sida väljer du **Skapa ny**  >  **antecknings bok**:
 
-:::image type="content" source="media/tutorial-power-bi/create-new-notebook.png" alt-text="Skärm bild som visar hur du skapar en bärbar dator":::
+:::image type="content" source="media/tutorial-power-bi/create-new-notebook.png" alt-text="Skärm bild som visar hur du skapar en antecknings bok.":::
  
-En dialog ruta visas där du kan **skapa en ny fil** :
+På sidan **skapa en ny fil** :
 
-1. Ett fil namn för din bärbara dator (till exempel `my_model_notebook` )
-1. Ändra **fil typen** till **antecknings bok**
+1. Namnge din bärbara dator (till exempel *my_model_notebook*).
+1. Ändra **fil typen** till **antecknings bok**.
+1. Välj **Skapa**. 
+ 
+Om du vill köra kod celler skapar du en beräknings instans och kopplar den till din bärbara dator. Börja med att välja plus ikonen överst i antecknings boken:
 
-Välj **Skapa**. Därefter måste du skapa en beräkning och koppla den till din bärbara dator för att kunna köra kod celler. Det gör du genom att välja plus ikonen överst i antecknings boken:
+:::image type="content" source="media/tutorial-power-bi/create-compute.png" alt-text="Skärm bild som visar hur du skapar en beräknings instans.":::
 
-:::image type="content" source="media/tutorial-power-bi/create-compute.png" alt-text="Skärm bild som visar hur man skapar en beräknings instans":::
+På sidan **skapa beräknings instans** :
 
-Sedan på sidan **skapa beräknings instans** :
-
-1. Välj en storlek för virtuell CPU-dator – i den här självstudien visas en **Standard_D11_v2** (två kärnor, 14 GB RAM).
+1. Välj en storlek på virtuell CPU-dator. I den här självstudien kan du välja en **Standard_D11_v2**, med 2 kärnor och 14 GB RAM.
 1. Välj **Nästa**. 
-1. På sidan **Konfigurera inställningar** anger du ett giltigt **beräknings namn** (giltiga tecken är versaler och gemener, siffror och tecknet).
+1. Ange ett giltigt **beräknings namn** på sidan **Konfigurera inställningar** . Giltiga tecken är stora och små bokstäver, siffror och bindestreck (-).
 1. Välj **Skapa**.
 
-Du kanske märker att den antecknings bok som cirkeln bredvid **Compute** har varit cyan, vilket indikerar att beräknings instansen skapas:
+I antecknings boken kan du märka cirkeln bredvid **Compute** -inaktive rad Cyan. Den här färg ändringen visar att beräknings instansen skapas:
 
-:::image type="content" source="media/tutorial-power-bi/creating.png" alt-text="Skärm bild som visar den beräkning som skapas":::
+:::image type="content" source="media/tutorial-power-bi/creating.png" alt-text="Skärm bild som visar en beräkning som skapas.":::
 
 > [!NOTE]
-> Det kan ta cirka 2-4 minuter innan beräkningen är etablerad.
+> Compute-instansen kan ta 2 till 4 minuter att tillhandahållas.
 
-När beräkningen är etablerad kan du använda antecknings boken för att köra kod celler. Skriv till exempel i cellen:
+När beräkningen har allokerats kan du använda antecknings boken för att köra kod celler. I cellen kan du till exempel skriva följande kod:
 
 ```python
 import numpy as np
@@ -80,20 +81,20 @@ import numpy as np
 np.sin(3)
 ```
 
-Följt av **SHIFT-ENTER** (eller **kontroll-ange** eller Välj knappen Spela upp bredvid cellen). Du bör se följande utdata:
+Välj sedan Skift + Retur (eller Välj CTRL + RETUR eller Välj knappen **spela upp** bredvid cellen). Du bör se följande utdata:
 
-:::image type="content" source="media/tutorial-power-bi/simple-sin.png" alt-text="Skärm bild som visar cell körning":::
+:::image type="content" source="media/tutorial-power-bi/simple-sin.png" alt-text="Skärm bild som visar resultatet av en cell.":::
 
-Nu är du redo att bygga en Machine Learning modell!
+Nu är du redo att bygga en maskin inlärnings modell.
 
-## <a name="build-a-model-using-scikit-learn"></a>Bygg en modell med scikit – lära
+## <a name="build-a-model-by-using-scikit-learn"></a>Bygg en modell med hjälp av scikit – lära
 
-I den här självstudien använder du [diabetes-datauppsättningen](https://www4.stat.ncsu.edu/~boos/var.select/diabetes.html), som görs tillgänglig i [Azure Open-datauppsättningar](https://azure.microsoft.com/services/open-datasets/). 
+I den här självstudien använder du [diabetes-datauppsättningen](https://www4.stat.ncsu.edu/~boos/var.select/diabetes.html). Den här data uppsättningen är tillgänglig i [Azure Open-datauppsättningar](https://azure.microsoft.com/services/open-datasets/).
 
 
 ### <a name="import-data"></a>Importera data
 
-Importera dina data genom att kopiera och klistra in koden nedan i en ny **kod cell** i din bärbara dator:
+Om du vill importera dina data kopierar du följande kod och klistrar in den i en ny *kod cell* i din bärbara dator.
 
 ```python
 from azureml.opendatasets import Diabetes
@@ -106,11 +107,11 @@ y_df = y.to_pandas_dataframe()
 X_df.info()
 ```
 
-`X_df`Data ramen Pandas innehåller 10 bas linje inmatnings variabler (till exempel ålder, kön, body mass index, Genomsnittligt blod tryck och sex blod Serums mått). `y_df`Pandas data Frame är mål variabeln som innehåller ett kvantitativt mått på sjukdoms förloppet ett år efter bas linjen. Det finns totalt 442 poster.
+`X_df`Data ramen Pandas innehåller 10 bas linje inmatnings variabler. Dessa variabler omfattar ålder, kön, body mass index, Genomsnittligt blod tryck och sex mätningar av blod serum. `y_df`Pandas data ram är mål variabeln. Det innehåller ett kvantitativt mått på sjukdoms förloppet ett år efter bas linjen. Data ramen innehåller 442 poster.
 
-### <a name="train-model"></a>Träningsmodell
+### <a name="train-the-model"></a>Träna modellen
 
-Skapa en ny **kod cell** i din bärbara dator och kopiera och klistra in kodfragmentet nedan, som skapar en Ridge regression-modell och som serialiserar modellen med python: s Pickle-format:
+Skapa en ny *kod cell* i din bärbara dator. Kopiera sedan följande kod och klistra in den i cellen. Det här kodfragmentet skapar en Ridge regression-modell och serialiserar modellen med hjälp av python Pickle-formatet.
 
 ```python
 import joblib
@@ -122,9 +123,11 @@ joblib.dump(model, 'sklearn_regression_model.pkl')
 
 ### <a name="register-the-model"></a>Registrera modellen
 
-Förutom innehållet i själva modell filen lagrar din registrerade modell även modell metadata-modell beskrivning, taggar och Ramverks information – som är användbar när du hanterar och distribuerar modeller i din arbets yta. Med taggar kan du till exempel kategorisera dina modeller och tillämpa filter när du anger modeller i din arbets yta. Om du markerar den här modellen med ramverket scikit – lär du dig också att distribuera den som en webb tjänst, eftersom vi kommer att se senare.
+Förutom innehållet i själva modell filen kommer din registrerade modell att lagra metadata. Metadata innehåller modell beskrivning, taggar och Ramverks information. 
 
-Kopiera och klistra in koden nedan i en ny **kod cell** i din bärbara dator:
+Metadata är användbara när du hanterar och distribuerar modeller i din arbets yta. Genom att använda taggar kan du till exempel kategorisera dina modeller och tillämpa filter när du listar modeller i din arbets yta. Om du markerar den här modellen med ramverket scikit – lär du dig också att distribuera den som en webb tjänst.
+
+Kopiera följande kod och klistra in den i en ny *kod cell* i din bärbara dator.
 
 ```python
 import sklearn
@@ -150,21 +153,21 @@ print('Name:', model.name)
 print('Version:', model.version)
 ```
 
-Du kan också visa modellen i Azure Machine Learning Studio genom att navigera till **slut punkter** i den vänstra menyn:
+Du kan också visa modellen i Azure Machine Learning Studio. I menyn till vänster väljer du **modeller**:
 
-:::image type="content" source="media/tutorial-power-bi/model.png" alt-text="Skärm bild som visar modell":::
+:::image type="content" source="media/tutorial-power-bi/model.png" alt-text="Skärm bild som visar hur du visar en modell.":::
 
 ### <a name="define-the-scoring-script"></a>Definiera bedömnings skriptet
 
-När du distribuerar en modell som ska integreras i Microsoft Power BI måste du definiera ett python- *bedömnings skript* och en anpassad miljö. Bedömnings skriptet innehåller två funktioner:
+När du distribuerar en modell som ska integreras i Power BI måste du definiera ett python- *bedömnings skript* och en anpassad miljö. Bedömnings skriptet innehåller två funktioner:
 
-- `init()` – den här funktionen körs när tjänsten startas. Den här funktionen läser in modellen (Observera att modellen hämtas automatiskt från modell registret) och deserialiserar den.
-- `run(data)` -funktionen körs när ett anrop görs till tjänsten med indata som kräver poäng. 
+- `init()`Funktionen körs när tjänsten startas. Den läser in modellen (som hämtas automatiskt från modell registret) och deserialiserar den.
+- `run(data)`Funktionen körs när ett anrop till tjänsten innehåller indata som måste poängas. 
 
 >[!NOTE]
-> Vi använder python dekoratörer för att definiera schemat för indata-och utdata, vilket är viktigt för att Microsoft Power BI-integrationen ska fungera.
+> I den här artikeln används python-dekoratörer för att definiera schemat för indata-och utdata. Den här inställningen är viktig för Power BI-integrering.
 
-Kopiera och klistra in koden nedan i en ny **kod cell** i din bärbara dator. Kodfragmentet nedan har ett cell Magic som skriver koden till en sparad namngiven score.py.
+Kopiera följande kod och klistra in den i en ny *kod cell* i din bärbara dator. Följande kodfragment innehåller cell Magic som skriver koden till en fil med namnet *score.py*.
 
 ```python
 %%writefile score.py
@@ -219,7 +222,7 @@ def run(data):
         result = model.predict(data)
         print("result.....")
         print(result)
-    # You can return any data type, as long as it is JSON serializable.
+    # You can return any data type, as long as it can be serialized by JSON.
         return result.tolist()
     except Exception as e:
         error = str(e)
@@ -228,9 +231,9 @@ def run(data):
 
 ### <a name="define-the-custom-environment"></a>Definiera den anpassade miljön
 
-Härnäst måste vi definiera miljön för att få en modell som vi behöver definiera i den här miljön python-paketen som krävs av bedömnings skriptet (score.py) som definieras ovan, till exempel Pandas, scikit-lära osv.
+Definiera sedan miljön för att Poäng modellen. I miljön definierar du python-paketen, till exempel Pandas och scikit-lär, som bedömnings skriptet (*score.py*) kräver.
 
-För att definiera miljön, kopiera och klistra in koden nedan i en ny **kod cell** i din bärbara dator:
+Om du vill definiera miljön kopierar du följande kod och klistrar in den i en ny *kod cell* i din bärbara dator.
 
 ```python
 from azureml.core.model import InferenceConfig
@@ -252,7 +255,7 @@ inference_config = InferenceConfig(entry_script='./score.py',environment=environ
 
 ### <a name="deploy-the-model"></a>Distribuera modellen
 
-Distribuera modellen genom att kopiera och klistra in koden nedan i en ny **kod cell** i din bärbara dator:
+Om du vill distribuera modellen kopierar du följande kod och klistrar in den i en ny *kod cell* i din bärbara dator:
 
 ```python
 service_name = 'my-diabetes-model'
@@ -262,9 +265,9 @@ service.wait_for_deployment(show_output=True)
 ```
 
 >[!NOTE]
-> Det kan ta 2-4 minuter för tjänsten att distribueras.
+> Det kan ta 2 till 4 minuter att distribuera tjänsten.
 
-Du bör se följande utdata från en lyckad distribuerad tjänst:
+Om tjänsten distribueras korrekt bör du se följande utdata:
 
 ```txt
 Tips: You can try get_logs(): https://aka.ms/debugimage#dockerlog or local deployment: https://aka.ms/debugimage#debug-locally to debug if deployment takes longer than 10 minutes.
@@ -273,11 +276,11 @@ Succeeded
 ACI service creation operation finished, operation "Succeeded"
 ```
 
-Du kan också Visa tjänsten i Azure Machine Learning Studio genom att navigera till **slut punkter** i den vänstra menyn:
+Du kan också Visa tjänsten i Azure Machine Learning Studio. I menyn till vänster väljer du **slut punkter**:
 
-:::image type="content" source="media/tutorial-power-bi/endpoint.png" alt-text="Skärm bild som visar slut punkt":::
+:::image type="content" source="media/tutorial-power-bi/endpoint.png" alt-text="Skärm bild som visar hur du visar tjänsten.":::
 
-Vi rekommenderar att du testar webb tjänsten för att säkerställa att den fungerar som förväntat. Gå tillbaka till din bärbara dator genom att välja **antecknings böcker** på den vänstra menyn i Azure Machine Learning Studio. Kopiera och klistra in koden nedan i en ny **kod cell** i din bärbara dator för att testa tjänsten:
+Vi rekommenderar att du testar webb tjänsten för att säkerställa att den fungerar som förväntat. Om du vill returnera din bärbara dator går du till Azure Machine Learning Studio och väljer **antecknings böcker** i menyn till vänster. Kopiera sedan följande kod och klistra in den i en ny *kod cell* i din bärbara dator för att testa tjänsten.
 
 ```python
 import json
@@ -293,11 +296,11 @@ output = service.run(input_payload)
 print(output)
 ```
 
-Utdata bör se ut som följande JSON-struktur: `{'predict': [[205.59], [68.84]]}` .
+Utdata bör se ut som den här JSON-strukturen: `{'predict': [[205.59], [68.84]]}` .
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudien fick du lära dig hur du skapar och distribuerar en modell på ett sådant sätt att de kan användas av Microsoft Power BI. I nästa avsnitt får du lära dig hur du använder den här modellen från en Power BI rapport.
+I den här självstudien fick du lära dig hur du skapar och distribuerar en modell så att den kan användas av Power BI. I nästa avsnitt får du lära dig hur du använder den här modellen i en Power BI rapport.
 
 > [!div class="nextstepaction"]
-> [Självstudie: använda modell i Power BI](/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)
+> [Självstudie: använda en modell i Power BI](/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)

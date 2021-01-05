@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: bonova, sstein
-ms.date: 11/10/2020
-ms.openlocfilehash: c30cecf0b480a1765f04ee48a0fd66f4ddd52708
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.reviewer: bonova, sstein, danil
+ms.date: 12/25/2020
+ms.openlocfilehash: 7bdde57c1d33118fd7d3c8e04a2507d8997c36d0
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630334"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809521"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Jämförelse av funktioner: Azure SQL Database och Azure SQL-hanterad instans
 
@@ -49,9 +49,9 @@ I följande tabell visas de viktigaste funktionerna i SQL Server och innehåller
 | [Certifikat och asymmetriska nycklar](/sql/relational-databases/security/sql-server-certificates-and-asymmetric-keys) | Ja, utan åtkomst till fil systemet för `BACKUP` och- `CREATE` åtgärder. | Ja, utan åtkomst till fil system för `BACKUP` och `CREATE` -åtgärder – se [certifikat skillnader](../managed-instance/transact-sql-tsql-differences-sql-server.md#certificates). |
 | [Registrering av ändrings data – CDC](/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Nej | Ja |
 | [Sortering-Server/instans](/sql/relational-databases/collations/set-or-change-the-server-collation) | Nej, standard Server sortering `SQL_Latin1_General_CP1_CI_AS` används alltid. | Ja, kan ställas in när [instansen skapas](../managed-instance/scripts/create-powershell-azure-resource-manager-template.md) och kan inte uppdateras senare. |
-| [Columnstore-index](/sql/relational-databases/indexes/columnstore-indexes-overview) | Ja – [Premium-nivå, standard nivå – S3 och över, generell användning nivå, affärskritisk och nivåer för storskalig skala](/sql/relational-databases/indexes/columnstore-indexes-overview) |Yes |
+| [Columnstore-index](/sql/relational-databases/indexes/columnstore-indexes-overview) | Ja – [Premium-nivå, standard nivå – S3 och över, generell användning nivå, affärskritisk och nivåer för storskalig skala](/sql/relational-databases/indexes/columnstore-indexes-overview) |Ja |
 | [CLR (Common Language Runtime) – CLR](/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | Nej | Ja, men utan åtkomst till fil systemet i `CREATE ASSEMBLY` instruktionen – se [CLR-skillnader](../managed-instance/transact-sql-tsql-differences-sql-server.md#clr) |
-| [Autentiseringsuppgifter](/sql/relational-databases/security/authentication-access/credentials-database-engine) | Ja, men endast [databasens begränsade autentiseringsuppgifter](/sql/t-sql/statements/create-database-scoped-credential-transact-sql). | Ja, men endast **Azure Key Vault** och `SHARED ACCESS SIGNATURE` stöds se [information](../managed-instance/transact-sql-tsql-differences-sql-server.md#credential) |
+| [Autentiseringsuppgifter](/sql/relational-databases/security/authentication-access/credentials-database-engine) | Ja, men endast [databasens begränsade autentiseringsuppgifter](/sql/t-sql/statements/create-database-scoped-credential-transact-sql). | Ja, men endast **Azure Key Vault** och `SHARED ACCESS SIGNATURE` stöds – se [information](../managed-instance/transact-sql-tsql-differences-sql-server.md#credential) |
 | [Namn frågor mellan databaser/tre delar](/sql/relational-databases/linked-servers/linked-servers-database-engine) | Inga – se [elastiska frågor](elastic-query-overview.md) | Ja, plus [elastiska frågor](elastic-query-overview.md) |
 | [Transaktioner över flera databaser](/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nej | Ja, inom instansen. Se [skillnader i länkad server](../managed-instance/transact-sql-tsql-differences-sql-server.md#linked-servers) för frågor över olika instanser. |
 | [Database mail – DbMail](/sql/relational-databases/database-mail/database-mail) | Nej | Ja |
@@ -59,10 +59,10 @@ I följande tabell visas de viktigaste funktionerna i SQL Server och innehåller
 | [Ögonblicksbilder av databas](/sql/relational-databases/databases/database-snapshots-sql-server) | Nej | Nej |
 | [DBCC-uttryck](/sql/t-sql/database-console-commands/dbcc-transact-sql) | De flesta – se enskilda uttryck | Ja – se [DBCC-skillnader](../managed-instance/transact-sql-tsql-differences-sql-server.md#dbcc) |
 | [DDL-uttryck](/sql/t-sql/statements/statements) | De flesta – se enskilda uttryck | Ja – se [skillnader i T-SQL](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
-| [DDL-utlösare](/sql/relational-databases/triggers/ddl-triggers) | Endast databas |  Yes |
+| [DDL-utlösare](/sql/relational-databases/triggers/ddl-triggers) | Endast databas |  Ja |
 | [Vyer för distribuerad partition](/sql/t-sql/statements/create-view-transact-sql#partitioned-views) | Nej | Ja |
 | [Distribuerade transaktioner-MS DTC](/sql/relational-databases/native-client-ole-db-transactions/supporting-distributed-transactions) | Inga – se [elastiska transaktioner](elastic-transactions-overview.md) |  Inga se [skillnader mellan länkade servrar](../managed-instance/transact-sql-tsql-differences-sql-server.md#linked-servers). Försök att konsolidera databaser från flera distribuerade SQL Server instanser till en SQL-hanterad instans under migreringen. |
-| [DML-utlösare](/sql/relational-databases/triggers/create-dml-triggers) | De flesta – se enskilda uttryck |  Yes |
+| [DML-utlösare](/sql/relational-databases/triggers/create-dml-triggers) | De flesta – se enskilda uttryck |  Ja |
 | [Dynamiska hanteringsvyer (DMV)](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) | De flesta – se enskilda DMV: er |  Ja – se [skillnader i T-SQL](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
 | [Elastisk fråga](elastic-query-overview.md) (i offentlig för hands version) | Ja, med den typ av RDBMS som krävs. | Ja, med den typ av RDBMS som krävs. |
 | [Händelseaviseringar](/sql/relational-databases/service-broker/event-notifications) | Inga-se [aviseringar](alerts-insights-configure-portal.md) | Nej |
@@ -111,7 +111,7 @@ I följande tabell visas de viktigaste funktionerna i SQL Server och innehåller
 | [Transaktionell replikering](../managed-instance/replication-transactional-overview.md) | Ja, [endast transaktionell prenumerant och replikering av ögonblicks bilder](migrate-to-database-from-sql-server.md) | Ja, i [offentlig för hands version](/sql/relational-databases/replication/replication-with-sql-database-managed-instance). Se begränsningarna [här](../managed-instance/transact-sql-tsql-differences-sql-server.md#replication). |
 | [Transparent data kryptering (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | Ja – endast Generell användning och Affärskritisk tjänst nivåer| [Ja](transparent-data-encryption-tde-overview.md) |
 | Windows-autentisering | Nej | Nej |
-| [Kluster för växling vid fel i Windows Server](/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) | Nej. Andra metoder som ger [hög tillgänglighet](high-availability-sla.md) ingår i varje databas. Haveri beredskap beskrivs i [Översikt över affärs kontinuitet med Azure SQL Database](business-continuity-high-availability-disaster-recover-hadr-overview.md). | Nej. Andra metoder som ger [hög tillgänglighet](high-availability-sla.md) ingår i varje databas. Haveri beredskap beskrivs i [Översikt över affärs kontinuitet med Azure SQL Database](business-continuity-high-availability-disaster-recover-hadr-overview.md). |
+| [Windows Server-redundansklustring](/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) | Nej. Andra metoder som ger [hög tillgänglighet](high-availability-sla.md) ingår i varje databas. Haveri beredskap beskrivs i [Översikt över affärs kontinuitet med Azure SQL Database](business-continuity-high-availability-disaster-recover-hadr-overview.md). | Nej. Andra metoder som ger [hög tillgänglighet](high-availability-sla.md) ingår i varje databas. Haveri beredskap beskrivs i [Översikt över affärs kontinuitet med Azure SQL Database](business-continuity-high-availability-disaster-recover-hadr-overview.md). |
 
 ## <a name="platform-capabilities"></a>Plattformsfunktioner
 
@@ -128,6 +128,7 @@ Azure-plattformen tillhandahåller ett antal PaaS-funktioner som läggs till som
 | [Azure Resource Health](../../service-health/resource-health-overview.md) | Ja | Nej |
 | Kvarhållningsperiod för säkerhetskopior | Ja. 7 dagar som standard, max 35 dagar. | Ja. 7 dagar som standard, max 35 dagar. |
 | [Data migration service (DMS)](/sql/dma/dma-overview) | Ja | Ja |
+| [Elastiska jobb](elastic-jobs-overview.md) | Ja – se [elastiska jobb (förhands granskning)](elastic-jobs-overview.md) | Nej ([SQL-Agent](../managed-instance/transact-sql-tsql-differences-sql-server.md#sql-server-agent) kan användas i stället). |
 | Fil system åtkomst | Nej. Använd [bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) eller [OpenRowSet](/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) för att komma åt och läsa in data från Azure Blob Storage som ett alternativ. | Nej. Använd [bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) eller [OpenRowSet](/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) för att komma åt och läsa in data från Azure Blob Storage som ett alternativ. |
 | [Geo-återställning](recovery-using-backups.md#geo-restore) | Ja | Ja |
 | [Skalnings arkitektur](service-tier-hyperscale.md) | Ja | Nej |
@@ -147,7 +148,7 @@ Azure-plattformen tillhandahåller ett antal PaaS-funktioner som läggs till som
 | [Fråga prestanda insikter (QPI)](query-performance-insight-use.md) | Ja | Nej. Använd inbyggda rapporter i SQL Server Management Studio och Azure Data Studio. |
 | [Virtuellt nätverk](../../virtual-network/virtual-networks-overview.md) | Delvis, den ger begränsad åtkomst med [VNet-slutpunkter](vnet-service-endpoint-rule-overview.md) | Ja, SQL-hanterad instans matas in i kundens VNet. Se [undernät](../managed-instance/transact-sql-tsql-differences-sql-server.md#subnet) och [VNet](../managed-instance/transact-sql-tsql-differences-sql-server.md#vnet) |
 | VNet-tjänstens slut punkt | [Ja](vnet-service-endpoint-rule-overview.md) | Nej |
-| VNet global peering | Ja, med hjälp av [privata IP-och tjänst slut punkter](vnet-service-endpoint-rule-overview.md) | Nej, [SQL-hanterad instans stöds inte](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) på grund av [belastnings Utjämnings begränsning i VNet global peering](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints).
+| VNet global peering | Ja, med hjälp av [privata IP-och tjänst slut punkter](vnet-service-endpoint-rule-overview.md) | Ja, Använd [virtuell nätverks-peering](https://techcommunity.microsoft.com/t5/azure-sql/new-feature-global-vnet-peering-support-for-azure-sql-managed/ba-p/1746913). |
 
 ## <a name="tools"></a>Verktyg
 
@@ -165,16 +166,16 @@ Azure SQL Database och Azure SQL Managed instance stöder olika data verktyg som
 | [Master Data Services (MDS)](/sql/master-data-services/master-data-services-overview-mds) | Nej | Nej |
 | [SMO](/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [Ja](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) | Ja, [version 150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) |
 | [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) | Ja | Ja |
-| [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) | Yes | Ja [version 18,0 och högre](/sql/ssms/download-sql-server-management-studio-ssms) |
+| [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) | Ja | Ja [version 18,0 och högre](/sql/ssms/download-sql-server-management-studio-ssms) |
 | [SQL Server PowerShell](/sql/relational-databases/scripting/sql-server-powershell) | Ja | Ja |
-| [SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) | Inga – se [utökade händelser](xevent-db-diff-from-svr.md) | Yes |
+| [SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) | Inga – se [utökade händelser](xevent-db-diff-from-svr.md) | Ja |
 | [System Center Operations Manager (SCOM)](/system-center/scom/welcome) | [Ja](https://www.microsoft.com/download/details.aspx?id=38829) | Ja, [i för hands version](https://www.microsoft.com/download/details.aspx?id=38829) |
 
 ## <a name="migration-methods"></a>Metoder för migrering
 
 Du kan använda olika metoder för migrering för att flytta data mellan SQL Server, Azure SQL Database och Azure SQL-hanterad instans. Vissa metoder är **online** och alla ändringar som görs på källan hämtas när du kör migreringen, men i **offline** -metoder måste du stoppa arbets belastningen som ändrar data på källan medan migreringen pågår.
 
-| **Källicensservern** | **Azure SQL Database** | **Hanterad Azure SQL-instans** |
+| **Källa** | **Azure SQL Database** | **Hanterad Azure SQL-instans** |
 | --- | --- | --- |
 | SQL Server (lokal, AzureVM, Amazon RDS) | **Online:** [data migration service (DMS)](/sql/dma/dma-overview), [transaktionell replikering](../managed-instance/replication-transactional-overview.md) <br/> **Offline:** [BACPAC-fil (import)](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Online:** [data migration service (DMS)](/sql/dma/dma-overview), [transaktionell replikering](../managed-instance/replication-transactional-overview.md) <br/> **Offline:** Inbyggd säkerhets kopiering/återställning, [BACPAC-fil (import)](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [ögonblicks bilds replikering](../managed-instance/replication-transactional-overview.md) |
 | Enskild databas | **Offline:** [BACPAC-fil (import)](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Offline:** [BACPAC-fil (import)](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP |

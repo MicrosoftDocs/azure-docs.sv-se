@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 0a80f03ee82e8d1216353482dc867402adcf7d09
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 2b31a8aa8b126c228ac7e9c3ca182300c710b098
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992241"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814065"
 ---
 # <a name="components-of-a-ddos-response-strategy"></a>Komponenter i en strategi för att hantera DDoS-attacker
 
@@ -56,7 +56,7 @@ Vi rekommenderar att du använder simulerings övningar som en normal del av tj�
 
 ## <a name="alerts-during-an-attack"></a>Aviseringar under en attack
 
-Azure DDoS Protection standard identifierar och minimerar DDoS-attacker utan att användaren behöver vidta några åtgärder. Om du vill få ett meddelande när det finns en aktiv åtgärd för en skyddad offentlig IP-adress kan du [Konfigurera en avisering](telemetry-monitoring-alerting.md) på måttet **under DDoS-attack eller inte**. Du kan välja att skapa aviseringar för de andra DDoS-måtten för att förstå storleken på angreppet, trafik som släpps och annan information.
+Azure DDoS Protection standard identifierar och minimerar DDoS-attacker utan att användaren behöver vidta några åtgärder. Om du vill få ett meddelande när det finns en aktiv minskning av en skyddad offentlig IP-adress kan du [Konfigurera aviseringar](alerts.md).
 
 ### <a name="when-to-contact-microsoft-support"></a>När du ska kontakta Microsoft-supporten
 

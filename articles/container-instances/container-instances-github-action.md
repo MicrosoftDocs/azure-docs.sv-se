@@ -4,12 +4,12 @@ description: Konfigurera en GitHub-åtgärd som automatiserar stegen för att by
 ms.topic: article
 ms.date: 08/20/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 7dfa2a66851db760049e7c3dc3446223c7dffad1
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: c6c030e05953dc98c82c573704018c3b482d2fea
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97609164"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814286"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>Konfigurera en GitHub-åtgärd för att skapa en containerinstans
 
@@ -31,7 +31,7 @@ Den här artikeln visar två sätt att konfigurera arbets flödet:
 > [!IMPORTANT]
 > GitHub-åtgärden för Azure Container Instances är för närvarande en för hands version. Förhandsversioner är tillgängliga för dig under förutsättning att du godkänner de [kompletterande användningsvillkoren][terms-of-use]. Vissa aspekter av funktionen kan ändras innan den är allmänt tillgänglig (GA).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * **GitHub-konto** – skapa ett konto på https://github.com om du inte redan har ett.
 * **Azure CLI** – du kan använda Azure Cloud Shell eller en lokal installation av Azure CLI för att slutföra Azure CLI-stegen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI][azure-cli-install].
@@ -56,7 +56,7 @@ I GitHub-arbetsflödet måste du ange Azure-autentiseringsuppgifter för att aut
 Börja med att hämta resurs-ID för resurs gruppen. Ersätt namnet på gruppen i följande [AZ Group show][az-group-show] -kommando:
 
 ```azurecli
-$groupId=$(az group show \
+groupId=$(az group show \
   --name <resource-group-name> \
   --query id --output tsv)
 ```

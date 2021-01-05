@@ -7,18 +7,21 @@ ms.service: storage
 ms.subservice: blobs
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 11/07/2017
+ms.date: 12/29/2020
 ms.author: fryu
-ms.openlocfilehash: 2d921a968f50f64788ccbd7637bc04c8492a3f90
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: dfc338844e310102447e2498ee9cce8f28a79b9f
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96010902"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809572"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Beräkna den totala faktureringsstorleken på en blob-container
 
 Det här skriptet beräknar storleken på en container i Azure Blob Storage för att ge en uppskattning av faktureringskostnaderna. Skriptet summerar storleken på blobarna i containern.
+
+> [!IMPORTANT]
+> Exempel skriptet som anges i den här artikeln kanske inte korrekt beräknar fakturerings storleken för BLOB-ögonblicksbilder.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -44,6 +47,7 @@ For-Each Signed Identifier[512 bytes]
 ```
 
 Här följer analysen:
+
 * 48 byte med tillhörande information för varje container innehåller tid för senaste ändring, behörigheter, offentliga inställningar och vissa systemmetadata.
 
 * Containerns namn lagras som Unicode, så ta antalet tecken och multiplicera med två.

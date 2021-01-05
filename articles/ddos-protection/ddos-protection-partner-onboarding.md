@@ -8,12 +8,12 @@ mms.devlang: na
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: kumud
-ms.openlocfilehash: 4cc0fd970f9adc26f5fdb024f501dcb0edf77bde
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 962f6bcf7747a82749e7ccab95de34f7834a8372
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992428"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814218"
 ---
 # <a name="partnering-with-azure-ddos-protection-standard"></a>Samar beta med Azure DDoS Protection standard
 I den här artikeln beskrivs de partner möjligheter som är aktiverade i Azure DDoS Protection standard. Den här artikeln är utformad för att hjälpa produkt chefer och affärs utvecklings roller att förstå investerings Sök vägarna och tillhandahålla inblick i de sammanställnings värdena.
@@ -40,8 +40,8 @@ För varje skyddat program justerar Azure DDoS Protection standard automatiskt t
 Azure DDoS Protection identifierar och minimerar DDoS-attacker utan att användaren behöver vidta några åtgärder.
 
 - Om den skyddade resursen finns i prenumerationen som omfattas Azure Security Center, skickar DDoS Protection standard automatiskt en avisering till Security Center när en DDoS-attack identifieras och minimeras mot det skyddade programmet.
-- Om du vill få ett meddelande när det finns en aktiv skydds åtgärd för en skyddad offentlig IP-adress kan du [Konfigurera en avisering](telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics) på måttet under DDoS-attack eller inte.
-- Du kan också välja att skapa aviseringar för de andra DDoS-måtten och [Konfigurera angrepps analys](telemetry-monitoring-alerting.md) för att förstå hur stor attacken är, vilken trafik som släpps, angrepps vektorer, förstklassiga deltagare och annan information.
+- Om du vill få ett meddelande när det finns en aktiv skydds åtgärd för en skyddad offentlig IP-adress kan du [Konfigurera en avisering](alerts.md) på måttet under DDoS-attack eller inte.
+- Du kan också välja att skapa aviseringar för de andra DDoS-måtten och [Konfigurera angrepps telemetri](telemetry.md) för att förstå hur stor attacken är, vilken trafik som släpps, angrepps vektorer, förstklassiga deltagare och annan information.
 
 ![DDoS mått](./media/ddos-protection-partner-onboarding/ddos-metrics.png)
 
@@ -71,7 +71,7 @@ Följande steg krävs för partner för att konfigurera integration med Azure DD
 3. Aktivera Azure DDoS Protection standard på det virtuella nätverket för den tjänst som har offentliga slut punkter som använder DDoS Protection plan som skapats i det första steget. Stpe-instruktioner finns i [Aktivera DDoS standard Protection Plan](manage-ddos-protection.md#enable-ddos-protection-for-an-existing-virtual-network)
    > [!IMPORTANT] 
    > När Azure DDoS Protection standard har Aktiver ATS i ett virtuellt nätverk skyddas alla offentliga IP-adresser i det virtuella nätverket automatiskt. Ursprunget för dessa offentliga IP-adresser kan antingen vara inom Azure (klient prenumerationen) eller utanför Azure. 
-4. Du kan också integrera Azure DDoS Protection standard telemetri och angrepps analys på den programspecifika kund instrument panelen. Mer information om hur du använder telemetri finns i [Visa och konfigurera DDoS Protection-telemetri](telemetry-monitoring-alerting.md). 
+4. Du kan också integrera Azure DDoS Protection standard telemetri och angrepps analys på den programspecifika kund instrument panelen. Mer information om hur du använder telemetri finns i [Visa och konfigurera DDoS Protection-telemetri](telemetry.md). 
 
 ### <a name="onboarding-guides-and-technical-documentation"></a>Registrerings guider och teknisk dokumentation
 

@@ -1,119 +1,130 @@
 ---
-title: Distribuera Traffic Manager för att balansera arbets belastningar i Azure VMware-lösningen (AVS)
-description: Lär dig hur du integrerar Traffic Manager med Azure VMware-lösningen (AVS) för att balansera program arbets belastningar över flera slut punkter i olika regioner.
+title: Distribuera Traffic Manager för att balansera arbets belastningar för Azure VMware-lösningar
+description: Lär dig att integrera Traffic Manager med Azure VMware-lösningen för att balansera program arbets belastningar över flera slut punkter i olika regioner.
 ms.topic: how-to
-ms.date: 08/14/2020
-ms.openlocfilehash: ed74bb0dfc533abadd50af32afc06c9cb4106193
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.date: 12/29/2020
+ms.openlocfilehash: 6dbd58f17e29b045bd654bee90b6390f608803ab
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874314"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809742"
 ---
-# <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-avs-workloads"></a>Distribuera Traffic Manager för att balansera arbets belastningar i Azure VMware-lösningen (AVS)
+# <a name="deploy-traffic-manager-to-balance-azure-vmware-solution-workloads"></a>Distribuera Traffic Manager för att balansera arbets belastningar för Azure VMware-lösningar
 
-Den här artikeln vägleder dig genom integrering av Traffic Manager med Azure VMware-lösning (AVS) för att balansera program arbets belastningar över flera slut punkter. Vi ska titta på ett scenario där Traffic Manager dirigerar trafik mellan tre programgatewayer som sträcker sig över flera AVS-regioner: västra USA, Västeuropa och lokalt i USA, östra. 
+Den här artikeln beskriver steg för steg hur du integrerar [azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) med Azure VMware-lösningen. Integrationen balanserar program arbets belastningar över flera slut punkter. Den här artikeln beskriver också hur du konfigurerar Traffic Manager för att dirigera trafik mellan tre [Azure Application Gateway](../application-gateway/overview.md) som sträcker sig över flera Azure VMware-lösnings regioner. 
 
-Azure Traffic Manager är en DNS-baserad trafikbelastnings utjämning som gör att du kan distribuera trafik optimalt till tjänster i globala Azure-regioner. Det kommer att belastningsutjämna program trafik mellan både Azure-arbetsbelastningar och externa offentliga slut punkter. Mer information om Traffic Manager finns i [Vad är Traffic Manager?](../traffic-manager/traffic-manager-overview.md)
+Gatewayerna har Azure VMware-lösning för virtuella datorer som kon figurer ATS som medlemmar i Server delen för att belastningsutjämna inkommande Layer 7-begäranden. Mer information finns i [använda Azure Application Gateway för att skydda dina webbappar på Azure VMware-lösning](protect-azure-vmware-solution-with-application-gateway.md)
 
-Granska [kraven](#prerequisites) först. sedan kommer vi att gå igenom procedurerna för att:
+Diagrammet visar hur Traffic Manager tillhandahåller belastnings utjämning för program på DNS-nivå mellan regionala slut punkter. Gatewayerna har Server dels medlemmar konfigurerade som IIS-servrar och refereras till som Azure VMware-lösningar externa slut punkter. Anslutning över det virtuella nätverket mellan de två privata moln regionerna använder en ExpressRoute-Gateway.   
+
+:::image type="content" source="media/traffic-manager/traffic-manager-topology.png" alt-text="Arkitektur diagram för Traffic Manager-integrering med Azure VMware-lösning" lightbox="media/traffic-manager/traffic-manager-topology.png" border="false":::
+
+Innan du börjar måste du först granska [kraven](#prerequisites) och sedan gå igenom procedurerna för att:
 
 > [!div class="checklist"]
-> * Verifiera konfigurationen av dina programgatewayer
-> * Verifiera konfigurationen av NSX-T-segmentet
+> * Verifiera konfigurationen av dina programgatewayer och NSX-T-segmentet
 > * Skapa din Traffic Manager-profil
 > * Lägg till externa slut punkter i din Traffic Manager-profil
 
-## <a name="topology"></a>Topologi
-
-Som du ser i följande bild tillhandahåller Azure Traffic Manager belastnings utjämning för program på DNS-nivå mellan regionala slut punkter. Programgatewayerna har medlemmar konfigurerade i Server delen som IIS-servrar och refereras till som externa AVS-slutpunkter.
-
-Anslutning över det virtuella nätverket mellan de två offentliga moln regionerna i molnet, västra USA och Västeuropa, och en lokal server i östra USA använder en ExpressRoute-Gateway.   
-
-:::image type="content" source="media/traffic-manager/traffic-manager-topology.png" alt-text="Diagram över arkitekturen i Traffic Manager-integrering med Azure VMware-lösning" lightbox="media/traffic-manager/traffic-manager-topology.png" border="false":::
- 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Tre virtuella datorer som har kon figurer ATS som Microsoft IIS-servrar som körs i olika AVS-regioner: västra USA, Västeuropa och lokalt. 
+- Tre virtuella datorer som kon figurer ATS som Microsoft IIS-servrar som körs i olika Azure VMware-lösnings regioner: 
+   - USA, västra
+   - Europa, västra
+   - USA, östra (lokalt) 
 
-- En Programgateway med externa slut punkter i västra USA, västra Europa och lokalt.
+- En Programgateway med externa slut punkter i de Azure VMware-lösnings regioner som anges ovan.
 
 - Värd med Internet anslutning för verifiering. 
 
-## <a name="verify-configuration-of-your-application-gateways"></a>Verifiera konfigurationen av dina programgatewayer
+- Ett [NSX-T-nätverks segment som skapats i Azure VMware-lösningen](tutorial-nsx-t-network-segment.md).
 
-[Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) är en belastningsutjämnare för Layer 7-webbtrafik som gör att du kan hantera trafik till dina webb program. Mer information om Application Gateway finns i [Vad är Azure Application Gateway?](../application-gateway/overview.md) 
+## <a name="verify-your-application-gateways-configuration"></a>Verifiera din Application Gateway-konfiguration
 
-I det här scenariot konfigureras tre Application Gateway-instanser som externa AVS-slutpunkter. Programgatewayerna har AVS-virtuella datorer konfigurerade som medlemmar i Server delen för att belastningsutjämna inkommande Layer 7-begäranden. (Information om hur du konfigurerar Application Gateway med virtuella datorer i AVS-form som backend-pooler finns i [använda Azure Application Gateway för att skydda dina webbappar på Azure VMware-lösningen](protect-azure-vmware-solution-with-application-gateway.md).)  
+Följande steg kontrollerar konfigurationen av dina programgatewayer.
 
-Följande steg kontrollerar korrekt konfiguration av dina programgatewayer.
+1. I Azure Portal väljer du **programgatewayer** för att visa en lista över aktuella programgatewayer:
 
-1. Öppna Azure Portal och välj **programgatewayer** för att visa en lista över dina aktuella programgatewayer. 
+   - AVS-GW-WUS
+   - AVS-GW-EUS (lokalt)
+   - AVS-GW-WEU
 
-    I det här scenariot har vi konfigurerat tre programgatewayer:
-    - AVS-GW-WUS
-    - AVS-GW-EUS (lokalt)
-    - AVS-GW-WEU
+   :::image type="content" source="media/traffic-manager/app-gateways-list-1.png" alt-text="Skärm bild av sidan Application Gateway som visar en lista över konfigurerade programgatewayer." lightbox="media/traffic-manager/app-gateways-list-1.png":::
 
-    :::image type="content" source="media/traffic-manager/app-gateways-list-1.png" alt-text="Skärm bild av sidan Application Gateway som visar en lista över konfigurerade programgatewayer." lightbox="media/traffic-manager/app-gateways-list-1.png":::
+1. Välj en av dina tidigare distribuerade programgatewayer. 
 
-2. Välj en av dina tidigare distribuerade programgatewayer. Ett fönster med information om programgatewayen visas. Välj **backend-pooler** för att verifiera konfigurationen av en av backend-poolerna.
+   Ett fönster med information om programgatewayen visas. 
 
    :::image type="content" source="media/traffic-manager/backend-pool-config.png" alt-text="Skärm bild av sidan Application Gateway som visar information om den valda programgatewayen." lightbox="media/traffic-manager/backend-pool-config.png":::
+
+1. Välj **backend-pooler** för att verifiera konfigurationen av en av backend-poolerna. Du ser en medlem i en virtuell dator i Server delen som är konfigurerad som en webb server med en IP-adress för 172.29.1.10.
  
-3. I det här fallet ser vi en virtuell dators Server dels medlemmar som kon figurer ATS som en webb server med en IP-adress för 172.29.1.10.
- 
-    :::image type="content" source="media/traffic-manager/backend-pool-ip-address.png" alt-text="Skärm bild av sidan Redigera server dels bassäng med mål-IP-adress markerad.":::
+   :::image type="content" source="media/traffic-manager/backend-pool-ip-address.png" alt-text="Skärm bild av sidan Redigera server dels bassäng med mål-IP-adress markerad.":::
 
-    Du kan på samma sätt verifiera konfigurationen av de andra programgatewayerna och medlemmar i Server delens pooler. 
+1. Verifiera konfigurationen av de andra programgatewayerna och medlemmar i Server delen. 
 
-## <a name="verify-configuration-of-the-nsx-t-segment"></a>Verifiera konfigurationen av NSX-T-segmentet
+## <a name="verify-the-nsx-t-segment-configuration"></a>Verifiera NSX-T-segmentets konfiguration
 
-Nätverks segment som skapats i NSX-T-hanteraren används som nätverk för virtuella datorer i vCenter. Mer information finns i självstudien [skapa ett NSX-T-nätverks segment i Azure VMware-lösningen (AVS)](tutorial-nsx-t-network-segment.md).
+Följande steg kontrollerar konfigurationen av NSX-T-segmentet i Azure VMware-lösnings miljön.
 
-I vårt scenario konfigureras ett NSX-T-segment i den AVS-miljö där den virtuella datorn för Server delens medlemmar är ansluten.
+1. Välj **segment** om du vill visa dina konfigurerade segment.  Du ser contoso-SEGMENT1 anslutna till contoso-T01 Gateway, en flexibel router på nivå 1.
 
-1. Välj **segment** om du vill visa dina konfigurerade segment. I det här fallet ser vi att contoso-SEGMENT1 är anslutet till contoso-T01 Gateway, en flexibel router på nivå 1.
+   :::image type="content" source="media/traffic-manager/nsx-t-segment-avs.png" alt-text="Skärm bild som visar segment profiler i NSX-T-hanteraren." lightbox="media/traffic-manager/nsx-t-segment-avs.png":::    
 
-    :::image type="content" source="media/traffic-manager/nsx-t-segment-avs.png" alt-text="Skärm bild som visar segment profiler i NSX-T-hanteraren." lightbox="media/traffic-manager/nsx-t-segment-avs.png":::    
-
-2. Välj **nivå 1-gatewayer** för att se en lista över dina nivå 1-gatewayer med antalet länkade segment. Välj det segment som är kopplat till contoso-T01. Ett fönster öppnas som visar det logiska gränssnitt som kon figurer ATS på nivån-01-routern. Detta fungerar som en gateway till den virtuella datorns medlem i Server delen som är ansluten till segmentet.
+1. Välj **nivå-1-gateways** om du vill visa en lista med nivå 1-gatewayer med antalet länkade segment. 
 
    :::image type="content" source="media/traffic-manager/nsx-t-segment-linked-2.png" alt-text="Skärm bild som visar gateway-adressen för det valda segmentet.":::    
 
-3. I VM vSphere-klienten väljer du den virtuella datorn för att visa information om den. Observera att IP-adressen matchar vad vi såg i steg 3 i föregående avsnitt: 172.29.1.10.
+1. Välj det segment som är kopplat till contoso-T01. Ett fönster öppnas som visar det logiska gränssnitt som kon figurer ATS på nivån-01-routern. Den fungerar som en gateway till den virtuella datorns medlem i Server delen som är ansluten till segmentet.
 
-    :::image type="content" source="media/traffic-manager/nsx-t-vm-details.png" alt-text="Skärm bild som visar information om virtuella datorer i VSphere-klienten." lightbox="media/traffic-manager/nsx-t-vm-details.png":::    
+1. I vSphere-klienten väljer du den virtuella datorn för att visa information om den. 
 
-4. Välj den virtuella datorn och klicka sedan på **åtgärder > redigera inställningar** för att kontrol lera anslutningen till NSX-T-segmentet.
+   >[!NOTE]
+   >Dess IP-adress matchar den virtuella datorns Server dels grupp medlem som en webb server från föregående avsnitt: 172.29.1.10.
+
+   :::image type="content" source="media/traffic-manager/nsx-t-vm-details.png" alt-text="Skärm bild som visar information om virtuella datorer i vSphere-klienten." lightbox="media/traffic-manager/nsx-t-vm-details.png":::    
+
+4. Välj den virtuella datorn och välj sedan **åtgärder > redigera inställningar** för att verifiera anslutningen till NSX-T-segmentet.
 
 ## <a name="create-your-traffic-manager-profile"></a>Skapa din Traffic Manager-profil
 
-1. Logga in på [Azure Portal](https://rc.portal.azure.com/#home). Under **Azure-tjänster > nätverk** väljer du **Traffic Manager profiler**.
+1. Logga in på [Azure-portalen](https://rc.portal.azure.com/#home). Under **Azure-tjänster > nätverk** väljer du **Traffic Manager profiler**.
 
 2. Välj **+ Lägg** till för att skapa en ny Traffic Manager-profil.
  
-3. Ange profil namn, routningsmetod (routningsmetod i det här scenariot kommer vi att använda viktat i det här scenariot. se [Traffic Manager routningsmetoder](../traffic-manager/traffic-manager-routing-methods.md)), prenumeration och resurs grupp och välj **skapa**.
+3. Ange följande information och välj sedan **skapa**:
+
+   - Profilnamn
+   - Routningsmetod (Använd [viktat](../traffic-manager/traffic-manager-routing-methods.md)
+   - Prenumeration
+   - Resursgrupp
 
 ## <a name="add-external-endpoints-into-the-traffic-manager-profile"></a>Lägg till externa slut punkter i Traffic Manager profilen
 
 1. Välj Traffic Manager profil i rutan Sök resultat, Välj **slut punkter** och sedan **+ Lägg till**.
 
-2. Ange nödvändig information: typ, namn, fullständigt kvalificerat domän namn (FQDN) eller IP och vikt (i det här scenariot tilldelar vi en vikt på 1 till varje slut punkt). Välj **Lägg till**. Detta skapar den externa slut punkten. Övervaknings statusen måste vara **online**. Upprepa samma steg för att skapa två fler externa slut punkter, en i en annan region och andra lokala. När det har skapats visas alla tre i Traffic Manager profilen och status för alla tre ska vara **online**.
+1. Ange nödvändig information för var och en av de externa slut punkterna i de olika regionerna och välj sedan **Lägg till**: 
+   - Typ
+   - Namn
+   - Fullständigt kvalificerat domän namn (FQDN) eller IP
+   - Vikt (tilldela en vikt på 1 till varje slut punkt). 
 
-3. Välj **Översikt**. Kopiera webb adressen under **DNS-namn**.
+   När du har skapat alla tre visas i Traffic Manager profilen. Övervaknings status för alla tre måste vara **online**.
+
+3. Välj **Översikt** och kopiera URL: en under **DNS-namn**.
 
    :::image type="content" source="media/traffic-manager/traffic-manager-endpoints.png" alt-text="Skärm bild som visar en översikt över en Traffic Manager-slutpunkt med DNS-namn markerat." lightbox="media/traffic-manager/traffic-manager-endpoints.png"::: 
 
-4. Klistra in DNS-namn-URL: en i en webbläsare. Följande skärm bild visar trafik som leder till regionen Europa, västra.
+4. Klistra in DNS-namn-URL: en i en webbläsare. Skärm bilden visar trafik som leder till regionen Europa, västra.
 
    :::image type="content" source="media/traffic-manager/traffic-to-west-europe.png" alt-text="Skärm bild av webbläsarfönstret som visar trafik som dirigeras till Västeuropa."::: 
 
-5. Uppdatera webbläsaren. Följande skärm bild visar trafik som nu dirigeras till en annan uppsättning medlemmar i Server delen i regionen USA, västra.
+5. Uppdatera webbläsaren. Skärm bilden visar trafik som dirigerar till en annan uppsättning medlemmar i Server delen i regionen USA, västra.
 
    :::image type="content" source="media/traffic-manager/traffic-to-west-us.png" alt-text="Skärm bild av webbläsarfönstret som visar trafik som skickas till västra USA."::: 
 
-6. Uppdatera webbläsaren igen. Följande skärm bild visar trafik som nu dirigeras till den slutliga uppsättningen medlemmar i backend-poolen lokalt.
+6. Uppdatera webbläsaren igen. Skärm bilden visar trafik som dirigerar till den slutliga uppsättningen medlemmar i backend-poolen lokalt.
 
    :::image type="content" source="media/traffic-manager/traffic-to-on-premises.png" alt-text="Skärm bild av webbläsarfönstret med trafik dirigerad till lokalt.":::
 
@@ -121,7 +132,7 @@ I vårt scenario konfigureras ett NSX-T-segment i den AVS-miljö där den virtue
 
 Läs mer om:
 
-- [Använda Azure Application Gateway på Azure VMware-lösning (AVS)](protect-azure-vmware-solution-with-application-gateway.md)
+- [Använda Azure Application Gateway på Azure VMware-lösning](protect-azure-vmware-solution-with-application-gateway.md)
 - [Traffic Manager-dirigeringsmetoder](../traffic-manager/traffic-manager-routing-methods.md)
 - [Kombinera tjänster för belastnings utjämning i Azure](../traffic-manager/traffic-manager-load-balancing-azure.md)
 - [Mäta Traffic Manager prestanda](../traffic-manager/traffic-manager-performance-considerations.md)

@@ -1,21 +1,22 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: cognitive-services
-author: roy-har
-manager: diberry
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.date: 06/03/2020
+ms.date: 12/29/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.custom: include file
-ms.author: roy-har
-ms.openlocfilehash: 8e67a6d0c98a3839922a79e9b452465087da1b69
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: aahi
+ms.reviewer: roy-har
+ms.openlocfilehash: 7aa2fba6ef551a745ccaf5b00f36021b9d8680ce
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84418075"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97820557"
 ---
 1. Välj [pizza-app-for-luis-v6.jspå](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-app-for-luis-v6.json) för att öppna filens GitHub-sida `pizza-app-for-luis.json` .
 1. Högerklicka eller länge knacka på knappen **RAW** och välj **Spara länk som** för att spara på `pizza-app-for-luis.json` din dator.
@@ -29,7 +30,7 @@ ms.locfileid: "84418075"
 
 Appen kommer att importeras.
 
-Om du ser dialog rutan **skapa en effektiv Luis-app**stänger du dialog rutan.
+Om du ser dialog rutan **skapa en effektiv Luis-app** stänger du dialog rutan.
 
 ## <a name="train-and-publish-the-pizza-app"></a>Träna och publicera pizza-appen
 
@@ -47,7 +48,7 @@ Om du vill använda den nya pizza-appen behöver du app-ID, förutsägelse nycke
 
 Så här hittar du dessa värden:
 
-1. Välj **Hantera**på sidan **avsikter** .
+1. Välj **Hantera** på sidan **avsikter** .
 1. På sidan **program inställningar** registrerar du **app-ID: t**.
 1. Välj **Azure-resurser**.
 1. På sidan **Azure-resurser** registrerar du den **primära nyckeln**. Det här värdet är din förutsägelse nyckel.

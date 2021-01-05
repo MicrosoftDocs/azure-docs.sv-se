@@ -2,13 +2,13 @@
 title: Anslut Azure VMware-lösningen till din lokala miljö
 description: Lär dig hur du ansluter Azure VMware-lösningen till din lokala miljö.
 ms.topic: tutorial
-ms.date: 10/02/2020
-ms.openlocfilehash: 2a0cb641df00f3e580e87e38aff382d8e8101fc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/28/2020
+ms.openlocfilehash: 753835b0206d8bbabe42b057fa40a2d6c4c8c414
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91583423"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809691"
 ---
 # <a name="connect-azure-vmware-solution-to-your-on-premises-environment"></a>Anslut Azure VMware-lösningen till din lokala miljö
 
@@ -26,18 +26,14 @@ Innan du börjar måste du ha två krav för att ansluta Azure VMware-lösningen
 
 Om du vill upprätta lokal anslutning till ditt privata moln i Azure VMware-lösningen med hjälp av ExpressRoute Global Reach, följer du själv studie kursen [om peer-datorer i ett privat moln](tutorial-expressroute-global-reach-private-cloud.md) .
 
-
-
 ## <a name="verify-on-premises-network-connectivity"></a>Verifiera lokal nätverks anslutning
 
 Du bör nu se i din **lokala Edge-router** där EXPRESSROUTE ansluter NSX-T-datasegmenten och Azure VMware lösnings hanterings segmenten.
 
->[!NOTE]
+>[!IMPORTANT]
 >Alla har en annan miljö och vissa måste tillåta att dessa vägar sprids tillbaka till det lokala nätverket.  
 
-Vissa miljöer kommer att ha brand väggar som skyddar ExpressRoute-kretsen.  Om inga brand väggar och ingen väg rensning inträffar kan du pinga din Azure VMware-lösning vCenter-Server eller en [virtuell dator](deploy-azure-vmware-solution.md#add-a-vm-on-the-nsx-t-network-segment) på NSX-T-segmentet från din lokala miljö.
-
-Från den virtuella datorn i NSX-T-segmentet kan du dessutom komma åt resurser i din lokala miljö.
+Vissa miljöer har brand väggar som skyddar ExpressRoute-kretsen.  Om inga brand väggar och ingen väg rensning inträffar pingar du din Azure VMware-lösning vCenter-Server eller en [virtuell dator på NSX-T-segmentet](deploy-azure-vmware-solution.md#add-a-vm-on-the-nsx-t-network-segment) från din lokala miljö. Från den virtuella datorn i NSX-T-segmentet kan du dessutom komma åt resurser i din lokala miljö.
 
 ## <a name="next-steps"></a>Nästa steg
 

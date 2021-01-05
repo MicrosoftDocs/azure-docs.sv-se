@@ -10,19 +10,19 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: ac14f6331d01325302dd7dda753695ca3a129c27
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 6768f46f39920c975e7eccef72563fc0bb7e5180
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97582497"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808597"
 ---
 > [!IMPORTANT]
 > Koden i den här artikeln använder synkrona metoder och icke-säkrade inloggnings uppgifter för att förenkla orsaker.
 
 [Referens dokumentation](/java/api/overview/azure/ai-formrecognizer-readme?view=azure-java-preview)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src)  |  [Paket (maven)](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer)  |  [Exempel](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services)
 * Den aktuella versionen av [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
@@ -129,6 +129,8 @@ I programmets **FormRecognizer** -klass skapar du variabler för resursens nycke
 I programmets **main** -metod lägger du till anrop för de metoder som används i den här snabb starten. Du definierar dessa senare. Du måste också lägga till referenser till URL: erna för din utbildning och testa data.
 
 * [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
+  
+   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="Hämtning av SAS-URL":::
 * Om du vill få en URL för ett formulär att testa kan du använda ovanstående steg för att hämta SAS-URL: en för ett enskilt dokument i Blob Storage. Eller ta med URL: en för ett dokument som finns på annan plats.
 * Använd metoden ovan för att hämta URL: en för en kvitto bild.
 
@@ -482,7 +484,7 @@ Du kan också ta bort en modell från ditt konto genom att referera till dess ID
 
 
 
-## <a name="run-the-application"></a>Köra appen
+## <a name="run-the-application"></a>Kör programmet
 
 Gå tillbaka till huvud projekt katalogen. Bygg sedan appen med följande kommando:
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1c1a5a96742d380ce42c0aea8c77a199083df47f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: cbc22f9b55f8d20880b43516a2a5bc8f55d389f5
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492258"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814507"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Azures säkerhets bas linje för Azure DDoS Protection standard
 
@@ -38,7 +38,7 @@ Den här säkerhets linjen använder vägledning från [Azures säkerhets benchm
 
 Aktivera diagnostikinställningar för Azure aktivitets logg och skicka loggarna till en Log Analytics-arbetsyta, Azure Event Hub eller Azure Storage-konto för arkivering. Aktivitets loggar ger insikt i de åtgärder som utfördes på Azure-cachen för Redis-instanser på kontroll planet nivå. Med hjälp av Azures aktivitets logg data kan du fastställa "vad, vem och när" för alla Skriv åtgärder (skicka, posta och ta bort) som utförs på kontroll Plans nivån för dina Azure DDoS Protection-instanser.
 
-- [Så här konfigurerar du aviseringar för DDoS Protection-mått](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
+- [Visa och konfigurera DDoS-diagnostisk loggning](../../ddos-protection/diagnostic-logging.md)
 
 - [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../../azure-monitor/platform/activity-log.md)
 
@@ -60,7 +60,7 @@ Aktivera diagnostikinställningar för Azure aktivitets logg och skicka loggarna
 
 **Vägledning**: Aktivera diagnostiska inställningar i Azure aktivitets logg och skicka loggarna till en Log Analytics-arbetsyta. Utför frågor i Log Analytics till att söka efter termer, identifiera trender, analysera mönster och tillhandahålla många andra insikter baserat på de aktivitets logg data som kan ha samlats in för Recovery Services valv.
 
-- [Information om hur du kommer åt telemetri, loggar och angrepps analys för DDoS Protection standard tjänst](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
+- [Information om hur du kommer åt telemetri, loggar och angrepps analys för DDoS Protection standard tjänst](../../ddos-protection/telemetry.md)
 
 - [Så här aktiverar du diagnostikinställningar för Azure aktivitets logg](../../azure-monitor/platform/activity-log.md)
 
@@ -76,7 +76,7 @@ Aktivera diagnostikinställningar för Azure aktivitets logg och skicka loggarna
 
 Publicera en Log Analytics arbets yta till Azure Sentinel eftersom den tillhandahåller en SOAR-lösning (Security Orchestration autoresponse). Detta gör det möjligt för spel böcker (automatiserade lösningar) att skapas och användas för att åtgärda säkerhets problem. Dessutom kan du skapa anpassade logg aviseringar i Log Analytics arbets ytan med Azure Monitor.
 
-- [Konfigurera aviseringar för DDoS-mått](https://azure.microsoft.com/blog/holiday-season-is-ddos-season/)
+- [Konfigurera aviseringar för DDoS-mått](../../ddos-protection/alerts.md)
 
 - [Publicera Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
@@ -142,7 +142,7 @@ För att hjälpa dig att hålla koll på dedikerade administrativa konton kan du
 
 - [Registrera klient programmet (tjänstens huvud namn) med Azure AD](/rest/api/azure/#register-your-client-application-with-azure-ad)
 
-- [API-information för Azure DDos-skydd](/rest/api/virtual-network/)
+- [Azure DDoS Protection API-information](/rest/api/virtual-network/)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -166,7 +166,7 @@ För att hjälpa dig att hålla koll på dedikerade administrativa konton kan du
 
 - [Distribuera en säker, Azure-hanterad arbets Station](../../active-directory/devices/howto-azure-managed-workstation.md)
 
-- [Planera en molnbaserad Azure AD Multi-Factor Authentication-distribution](../../active-directory/authentication/howto-mfa-getstarted.md)
+- [Planera en molnbaserad distribution av Azure AD Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -524,7 +524,7 @@ Testa dina antaganden om hur dina tjänster kommer att svara på ett angrepp gen
 
 Välj något av de tillgängliga DDoS-skydds måtten för att varna dig när det finns en aktiv minskning under ett angrepp med hjälp av Azure Monitor varnings konfiguration. När villkoren är uppfyllda får den angivna adressen ett e-postmeddelande om avisering
 
-- [Konfigurera aviseringar för DDoS skydds mått](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
+- [Konfigurera aviseringar för DDoS skydds mått](../../ddos-protection/alerts.md)
 
 - [Så här konfigurerar du kontinuerlig export](../../security-center/continuous-export.md)
 

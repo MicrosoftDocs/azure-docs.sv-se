@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 834672274ade1f8551e86e7c636c4625368d997c
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: f0f64d910d03e42008c5fe6fef28a5b9c0917abd
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652202"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814473"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Optimera Azure Data Lake Storage Gen2 för prestanda
 
@@ -21,11 +21,11 @@ Azure Data Lake Storage Gen2 stöder stora data flöden för I/O-intensiva analy
 
 ![Data Lake Storage Gen2 prestanda](./media/data-lake-storage-performance-tuning-guidance/throughput.png)
 
-Data Lake Storage Gen2 kan skalas för att tillhandahålla nödvändigt data flöde för alla analys scenarier. Som standard ger ett Data Lake Storage Gen2-konto automatiskt tillräckligt med data flöde för att uppfylla behoven hos en bred kategori av användnings fall. För de fall där kunderna får en standard gräns kan Data Lake Storage Gen2 kontot konfigureras för att tillhandahålla mer data flöde genom att kontakta [Azure-supporten](https://azure.microsoft.com/support/faq/).
+Data Lake Storage Gen2 kan skalas för att tillhandahålla nödvändigt data flöde för alla analys scenarier. Som standard ger ett Data Lake Storage Gen2-konto tillräckligt med data flöde i standard konfigurationen för att uppfylla behoven hos en bred kategori av användnings fall. För de fall där kunderna får en standard gräns kan Data Lake Storage Gen2 kontot konfigureras för att tillhandahålla mer data flöde genom att kontakta [Azure-supporten](https://azure.microsoft.com/support/faq/).
 
-## <a name="data-ingestion"></a>Datainmatning
+## <a name="data-ingestion"></a>Datainhämtning
 
-När data matas in från ett käll system till Data Lake Storage Gen2, är det viktigt att tänka på att käll maskin vara, käll nätverks maskin vara och nätverks anslutning till Data Lake Storage Gen2 kan vara Flask halsen.  
+När data matas in från ett käll system till Data Lake Storage Gen2, är det viktigt att tänka på att käll maskin varan, käll nätverks maskin varan eller nätverks anslutningen till Data Lake Storage Gen2 kan vara Flask hals.  
 
 ![Diagram som visar de faktorer som du bör tänka på när du matar in data från ett käll system till Data Lake Storage Gen2.](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
 
@@ -37,7 +37,7 @@ Oavsett om du använder lokala datorer eller virtuella datorer i Azure bör du n
 
 ### <a name="network-connectivity-to-data-lake-storage-gen2"></a>Nätverks anslutning till Data Lake Storage Gen2
 
-Nätverks anslutningen mellan dina källdata och Data Lake Storage Gen2 kan ibland vara Flask hals. När dina källdata är lokala bör du överväga att använda en särskild länk med [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) . Om dina källdata finns i Azure blir prestanda bäst när data finns i samma Azure-region som Data Lake Storage Gen2-kontot.
+Nätverks anslutningen mellan dina källdata och Data Lake Storage Gen2 kan ibland vara Flask hals. När dina källdata är lokala bör du överväga att använda en särskild länk med [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/). Om dina källdata finns i Azure blir prestanda bäst när data finns i samma Azure-region som Data Lake Storage Gen2-kontot.
 
 ### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>Konfigurera data inmatnings verktyg för maximalt parallellisering
 
@@ -45,9 +45,9 @@ När du har adresserat käll maskin varan och nätverks anslutningens Flask hals
 
 | Verktyg               | Inställningar | Mer information                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| DistCp            | -m (mapper)   | [Länk](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
-| Azure Data Factory| parallelCopies    | [Länk](../../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | FS. Azure. block. size,-m (mapper)    |   [Länk](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
+| DistCp            | -m (mapper)   | [Operationsföljdslänkkod](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
+| Azure Data Factory| parallelCopies    | [Operationsföljdslänkkod](../../data-factory/copy-activity-performance.md)                          |
+| Sqoop           | FS. Azure. block. size,-m (mapper)    |   [Operationsföljdslänkkod](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>Strukturera din data uppsättning
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/24/2020
+ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 1cdce2108130b64533bc6f14a4e9084a15678d2c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: d219767f943a432d41796c7d99f0e52253a9dd80
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515890"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814048"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med slack
 
@@ -25,8 +25,6 @@ I den här självstudien får du lära dig hur du integrerar slack med Azure Act
 * Kontroll i Azure AD som har åtkomst till slack.
 * Gör det möjligt för användarna att logga in automatiskt till slack med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
-
-Mer information om SaaS app integration med Azure AD finns i [Vad är program åtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -48,7 +46,6 @@ I den här självstudien konfigurerar och testar du Azure AD SSO i en test milj�
 * Slack har stöd för **SP**-initierad enkel inloggning
 * Slack stöder **just-in-time**-användaretablering
 * Slack har stöd för [**automatisk** användaretablering](./slack-provisioning-tutorial.md)
-* När du har konfigurerat slack kan du framtvinga kontroll över sessioner, vilket skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram sessions kontroll med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 > [!NOTE]
 > ID för det här programmet är ett fast sträng värde så att endast en instans kan konfigureras i en klient.
@@ -57,10 +54,10 @@ I den här självstudien konfigurerar och testar du Azure AD SSO i en test milj�
 
 För att kunna konfigurera integreringen av Slack i Azure AD måste du lägga till Slack från galleriet i din lista över hanterade SaaS-appar.
 
-1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
+1. Logga in på Azure Portal med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** skriver du **slack** i sökrutan.
 1. Välj **slack** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -68,20 +65,20 @@ För att kunna konfigurera integreringen av Slack i Azure AD måste du lägga ti
 
 Konfigurera och testa Azure AD SSO med slack med en test användare som heter **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i slack.
 
-Om du vill konfigurera och testa Azure AD SSO med slack slutför du följande Bygg stenar:
+Utför följande steg för att konfigurera och testa Azure AD SSO med slack:
 
 1. **[Konfigurera Azure AD SSO](#configure-azure-ad-sso)** – så att användarna kan använda den här funktionen.
-    * **[Skapa en Azure AD-test](#create-an-azure-ad-test-user)** för att testa enkel inloggning med Azure AD med B. Simon.
-    * **[Tilldela Azure AD-testuser](#assign-the-azure-ad-test-user)** -för att aktivera B. Simon för att använda enkel inloggning med Azure AD.
+    1. **[Skapa en Azure AD-test](#create-an-azure-ad-test-user)** för att testa enkel inloggning med Azure AD med B. Simon.
+    1. **[Tilldela Azure AD-testuser](#assign-the-azure-ad-test-user)** -för att aktivera B. Simon för att använda enkel inloggning med Azure AD.
 1. **[Konfigurera SLACK SSO](#configure-slack-sso)** – för att konfigurera inställningarna för enkel inloggning på program sidan.
-    * **[Skapa slack-test användare](#create-slack-test-user)** – om du vill ha en motsvarighet till B. Simon i slack som är länkat till Azure AD-representation av användare.
+    1. **[Skapa slack-test användare](#create-slack-test-user)** – om du vill ha en motsvarighet till B. Simon i slack som är länkat till Azure AD-representation av användare.
 1. **[Testa SSO](#test-sso)** – för att kontrol lera om konfigurationen fungerar.
 
 ### <a name="configure-azure-ad-sso"></a>Konfigurera Azure AD SSO
 
 Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-1. I [Azure Portal](https://portal.azure.com/)går du till sidan för **slack** -programmets integrering och letar upp avsnittet **Hantera** och väljer **enkel inloggning**.
+1. I Azure Portal går du till sidan för **slack** -programmets integrering och letar upp avsnittet **Hantera** och väljer **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
 1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
@@ -93,7 +90,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     b. I textrutan **Identifierare (entitets-ID)** anger du URL:en: `https://slack.com`
     
-    c. För **svars-URL**anger du ett av följande URL-mönster:
+    c. För **svars-URL** anger du ett av följande URL-mönster:
     
     | Svars-URL|
     |----------|
@@ -132,11 +129,11 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare**och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -144,23 +141,27 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till slack.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. Välj **Slack** i programlistan.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
-   ![Länken ”Användare och grupper”](common/users-groups-blade.png)
-
-1. Välj **Lägg till användare**och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
-
-    ![Länken Lägg till användare](common/add-assign-user.png)
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 
 1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
-1. Om du förväntar dig ett roll värde i SAML Assertion, i dialog rutan **Välj roll** , väljer du lämplig roll för användaren i listan och klickar sedan på knappen **Välj** längst ned på skärmen.
+1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
 1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
 
 ## <a name="configure-slack-sso"></a>Konfigurera slack SSO
 
-1. Logga in på ditt slack-företags webbplats som administratör i ett annat webbläsarfönster.
+1. Om du vill automatisera konfigurationen inom slack måste du installera **tillägget Mina appar säker inloggnings webbläsare** genom att klicka på **installera tillägget**.
+
+    ![Mina Apps-tillägg](common/install-myappssecure-extension.png)
+
+2. När du har lagt till tillägget i webbläsaren kan du klicka på **Konfigurera slack** för att dirigera dig till slack-programmet. Därifrån anger du de autentiseringsuppgifter som krävs för att logga in på slack. Webb läsar tillägget kommer automatiskt att konfigurera programmet åt dig och automatisera steg 3-6.
+
+    ![Konfigurera konfiguration](common/setup-sso.png)
+
+3. Om du vill konfigurera slack manuellt i ett annat webbläsarfönster loggar du in på din slack-företags plats som administratör.
 
 2. Gå till **Microsoft Azure AD** och sedan till **Teaminställningar**.
 
@@ -203,18 +204,14 @@ Syftet med det här avsnittet är att skapa en användare som kallas B. Simon i 
 
 ## <a name="test-sso"></a>Testa SSO
 
-I det här avsnittet testar du konfigurationen för enkel inloggning Azure AD med hjälp av åtkomstpanelen.
+I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ.
 
-När du klickar på Slack-panelen i åtkomstpanelen bör du automatiskt loggas in på Slack som du har konfigurerat enkel inloggning för. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](../user-help/my-apps-portal-end-user-access.md).
+* Klicka på **testa det här programmet** i Azure Portal. Detta omdirigerar till slacktid inloggnings-URL där du kan starta inloggnings flödet.
 
-## <a name="additional-resources"></a>Ytterligare resurser
+* Gå till slacktid inloggnings-URL direkt och starta inloggnings flödet därifrån.
 
-- [ Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory ](./tutorial-list.md)
+* Du kan använda Microsoft Mina appar. När du klickar på panelen slack i Mina appar omdirigeras det till slacktid-inloggningens URL. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Vad är program åtkomst och enkel inloggning med Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Nästa steg
 
-- [Vad är villkorlig åtkomst i Azure Active Directory?](../conditional-access/overview.md)
-
-- [Prova slack med Azure AD](https://aad.portal.azure.com/)
-
-- [Vad är session Control i Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
+När du har konfigurerat slack kan du framtvinga kontroll över sessioner, vilket skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram sessions kontroll med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)

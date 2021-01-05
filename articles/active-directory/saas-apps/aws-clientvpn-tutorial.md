@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/11/2020
+ms.date: 12/29/2020
 ms.author: jeedes
-ms.openlocfilehash: 3a53a5b7e60ef214a3db58d9e280e9dee8fec609
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 11aac69816714611c168cd05c2828dd1ae85786e
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355978"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813657"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-clientvpn"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med AWS ClientVPN
 
@@ -89,7 +89,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
     |
 
     > [!NOTE]
-    > Dessa värden är inte verkliga. Uppdatera värdena med den faktiska inloggnings-URL: en och svars-URL: en. Kontakta [AWS ClientVPN client support team](https://aws.amazon.com/contact-us/) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
+    > Dessa värden är inte verkliga.  Uppdatera värdena med den faktiska inloggnings-URL: en och svars-URL: en.  URL: en för inloggning och svars-URL kan ha samma värde ( http://127.0.0.1:35001) .  Mer information finns i [AWS client VPN-dokumentationen](https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/client-authentication.html#ad) .   Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen. Kontakta [AWS ClientVPN support team](https://aws.amazon.com/contact-us/) för eventuella konfigurations problem. 
 
 1. I Azure Active Directory tjänst navigerar du till **Appregistreringar** och väljer sedan **alla program**.
 

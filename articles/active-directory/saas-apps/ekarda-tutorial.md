@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/15/2020
+ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 7bb74732074482c12d3bc760e259bb014ccf006f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d9e118620cb38e94cfc18d01d31888ac0a444bb7
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96179348"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813436"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ekarda"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med ekarda
 
@@ -25,8 +25,6 @@ I den här självstudien får du lära dig hur du integrerar ekarda med Azure Ac
 * Kontroll i Azure AD som har åtkomst till ekarda.
 * Gör det möjligt för användarna att logga in automatiskt på ekarda med hjälp av deras Azure AD-konton.
 * Hantera dina konton på en central plats: Azure Portal.
-
-Mer information om SaaS-appar (Software as a Service) med Azure AD finns i [Vad är enkel inloggning (SSO)?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -41,13 +39,12 @@ I den här självstudien konfigurerar och testar du Azure AD SSO i en test milj�
 
 * ekarda stöder SP-initierad och IDP-initierad SSO.
 * ekarda stöder just-in-Time-etablering av användare.
-* När du har konfigurerat ekarda kan du framtvinga kontroll av sessionen. Den här försiktighets åtgärden skyddar mot exfiltrering och intrånget av organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från Appkontroll för villkorsstyrd åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-ekarda-from-the-gallery"></a>Lägg till ekarda från galleriet
 
 Om du vill konfigurera integreringen av ekarda i Azure AD lägger du till ekarda från galleriet i listan över hanterade SaaS-appar:
 
-1. Logga in på [Azure Portal](https://portal.azure.com) med ett arbets-eller skol konto eller en personlig Microsoft-konto.
+1. Logga in på Azure Portal med ett arbets-eller skol konto eller en personlig Microsoft-konto.
 
 1. I den vänstra rutan väljer du tjänsten **Azure Active Directory** .
 1. Gå till **Företagsprogram** och välj sedan **Alla program**.
@@ -55,7 +52,7 @@ Om du vill konfigurera integreringen av ekarda i Azure AD lägger du till ekarda
 1. I avsnittet **Lägg till från galleriet** , skriver du **ekarda** i sökrutan.
 1. Välj **ekarda** från resultat panelen och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-ekarda"></a>Konfigurera och testa enkel inloggning med Azure AD för ekarda
+## <a name="configure-and-test-azure-ad-sso-for-ekarda"></a>Konfigurera och testa Azure AD SSO för ekarda
 
 Konfigurera och testa Azure AD SSO med ekarda med hjälp av en test användare som heter **B. Simon**. För att SSO ska fungera måste du upprätta en länkad relation mellan en Azure AD-användare och den relaterade användaren i ekarda.
 
@@ -73,7 +70,7 @@ Utför följande steg för att konfigurera och testa Azure AD SSO med ekarda:
 
 Följ de här stegen i Azure Portal för att aktivera Azure AD SSO:
 
-1. Logga in på [Azure-portalen](https://portal.azure.com/).
+1. Logga in på Azure-portalen.
 1. På sidan **ekarda** program integration letar du upp avsnittet **Hantera** och väljer **enkel inloggning**.
 1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
 1. På sidan **Konfigurera en enskild Sign-On med SAML** väljer du Penn ikonen för att redigera de grundläggande inställningarna för **SAML-konfigurationen** .
@@ -95,7 +92,7 @@ Följ de här stegen i Azure Portal för att aktivera Azure AD SSO:
 
 1. Om du vill konfigurera programmet i SP-initierat läge väljer du **Ange ytterligare URL: er** och gör följande:
 
-    * I text rutan **inloggnings-URL** anger du en URL som följer det här mönstret: `https://my.ekarda.com/users/saml_sso/<COMPANY_ID>`
+    I text rutan **inloggnings-URL** anger du en URL som följer det här mönstret:  `https://my.ekarda.com/users/saml_sso/<COMPANY_ID>`
 
     > [!NOTE]
     > Värdena i de två föregående stegen är inte verkliga. Uppdatera dem med den faktiska identifieraren, svars-URL: en och inloggnings-URL-värden. Kontakta [ekarda-klientens support team](mailto:contact@ekarda.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.
@@ -129,19 +126,24 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 1. I listan program väljer du **ekarda**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
-   ![Skärm bild av avsnittet hantera där användare och grupper är markerade.](common/users-groups-blade.png)
-
 1. Välj **Lägg till användare** och sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning**.
 
-    ![Skärm bild av avsnittet användare och grupper där Lägg till användare är markerat.](common/add-assign-user.png)
-
 1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan över användare. Välj sedan **Välj** längst ned på skärmen.
-1. Om du förväntar dig ett roll värde i SAML-intyget väljer du lämplig roll för användaren i listan i dialog rutan **Välj roll** . Välj sedan **Välj** längst ned på skärmen.
+1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
 1. I dialogrutan **Lägg till tilldelning** väljer du **Tilldela**.
 
 ## <a name="configure-ekarda-sso"></a>Konfigurera ekarda SSO
 
-1. Logga in på din ekarda företags webbplats som administratör i ett annat webb läsar fönster.
+1. Om du vill automatisera konfigurationen i ekarda måste du installera **Mina appar säker inloggnings webb läsar tillägg** genom att klicka på **installera tillägget**.
+
+    ![Mina Apps-tillägg](common/install-myappssecure-extension.png)
+
+2. När du har lagt till tillägg i webbläsaren kan du klicka på **Konfigurera ekarda** för att dirigera dig till ekarda-programmet. Därifrån anger du administratörsautentiseringsuppgifter för att logga in på ekarda. Webb läsar tillägget kommer automatiskt att konfigurera programmet åt dig och automatisera steg 3-6.
+
+    ![Konfigurera konfiguration](common/setup-sso.png)
+
+3. Om du vill konfigurera ekarda manuellt i ett annat webbläsarfönster loggar du in på ekarda Company-platsen som administratör.
+
 1. Välj **admin**  >  **mitt konto**.
 
     ![Skärm bild av användar gränssnittet för ekarda-webbplatsen med mitt konto markerat på administratörs menyn.](./media/ekarda-tutorial/ekarda.png)
@@ -166,16 +168,20 @@ I det här avsnittet skapas en användare som heter B. Simon i ekarda. ekarda st
 
 ## <a name="test-sso"></a>Testa SSO
 
-I det här avsnittet testar du konfigurationen av enkel inloggning med Azure AD med hjälp av portalen Mina appar.
+I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ.
 
-När du väljer panelen ekarda i portalen Mina appar, bör du loggas in automatiskt på den ekarda-webbplats som du ställer in SSO för. Mer information om mina apps-portalen finns i [Introduktion till portalen Mina appar](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP initierad:
 
-## <a name="additional-resources"></a>Ytterligare resurser
+* Klicka på **testa det här programmet** i Azure Portal. Detta omdirigeras till ekarda-inloggnings-URL där du kan starta inloggnings flödet.
 
-* [Lista över självstudier för att integrera SaaS-appar med Azure Active Directory](./tutorial-list.md)
-* [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Vad är villkorlig åtkomst i Azure Active Directory?](../conditional-access/overview.md)
-* [Prova ekarda med Azure AD](https://aad.portal.azure.com/)
-* Använd [ekarda Enterprise ecard-lösning](https://ekarda.com/ecards-ecards-with-logo-for-business-corporate-enterprise) för att tillhandahålla ett antal anställda för att skicka eCards som är märkta med företagets logo typ, till sina klienter och kollegor. Lär dig mer om att [tillhandahålla ekarda som en SSO-lösning](https://support.ekarda.com/#SSO-Implementation).
-* [Vad är session Control i Microsoft Cloud App Security?](/cloud-app-security/proxy-intro-aad)
-* [Så här skyddar du ekarda med avancerad synlighet och kontroller](/cloud-app-security/proxy-intro-aad)
+* Gå till ekarda-inloggnings-URL: en direkt och starta inloggnings flödet därifrån.
+
+#### <a name="idp-initiated"></a>IDP initierad:
+
+* Klicka på **testa det här programmet** i Azure Portal så bör du loggas in automatiskt på den ekarda som du har konfigurerat SSO för.
+
+Du kan också använda Microsoft Mina appar för att testa programmet i vilket läge som helst. När du klickar på panelen ekarda i Mina appar, om det kon figurer ATS i SP-läge, omdirigeras du till programmets inloggnings sida för att initiera inloggnings flödet och om det har kon figurer ATS i IDP-läge, bör du loggas in automatiskt på ekarda som du ställer in SSO för. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="next-steps"></a>Nästa steg
+
+När du har konfigurerat ekarda kan du framtvinga kontroll av sessionen. Den här försiktighets åtgärden skyddar mot exfiltrering och intrånget av organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från Appkontroll för villkorsstyrd åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

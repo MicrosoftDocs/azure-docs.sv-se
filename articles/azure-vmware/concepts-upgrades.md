@@ -3,16 +3,14 @@ title: Koncept – uppdateringar och uppgraderingar av privata moln
 description: Lär dig mer om de viktiga uppgraderings processerna och funktionerna i Azure VMware-lösningen.
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 380e97eae559145a9ef5ed7b6e7bf14f18039eed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6fb65a0e192fbf1f054857223b3fdaf58fc6a903
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316808"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809657"
 ---
 # <a name="azure-vmware-solution-private-cloud-updates-and-upgrades"></a>Uppdateringar och uppgraderingar av privata moln i Azure VMware-lösningar
-
-## <a name="overview"></a>Översikt
 
 En av de främsta fördelarna med privata moln för VMware-lösningar i Azure är att plattformen upprätthålls för dig. Plattforms underhåll innehåller automatiserade uppdateringar av en skyddad VMware-programpaket, vilket hjälper dig att se till att du använder den senaste versionen av det privata moln programmet för Azure VMware-lösningen.
 

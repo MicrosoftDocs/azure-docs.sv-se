@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/11/2020
+ms.date: 12/29/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 300b9b6279231079807f8c923570bddab657ff56
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 93bcbab9445d83bf17b37b6affc1d2bc70703bbf
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92095916"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814337"
 ---
 # <a name="initiate-a-storage-account-failover"></a>Initiera redundans för lagrings konto
 
@@ -29,7 +29,7 @@ Den här artikeln visar hur du startar en konto redundansväxling för ditt lagr
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Innan du kan utföra en redundansväxling på ditt lagrings konto kontrollerar du att ditt lagrings konto har kon figurer ATS för geo-replikering. Ditt lagrings konto kan använda något av följande alternativ för redundans:
 
@@ -37,6 +37,13 @@ Innan du kan utföra en redundansväxling på ditt lagrings konto kontrollerar d
 - Geo-Zone-redundant lagring (GZRS) eller (Read-Access geo-Zone-redundant lagring) (RA-GZRS)
 
 Mer information om Azure Storage redundans finns [Azure Storage redundans](storage-redundancy.md).
+
+Tänk på att följande funktioner och tjänster inte stöds för redundans av konto:
+
+- Azure File Sync stöder inte redundans för lagrings konto. Lagringskonton med Azure-filresurser som används som molnslutpunkter i Azure File Sync får inte redundansväxlas. Om du gör det slutar synkroniseringen att fungera och det kan leda till oväntade dataförluster för nyligen nivåbaserade filer.
+- ADLS Gen2 lagrings konton (konton med hierarkiskt namn område aktiverat) stöds inte för tillfället.
+- Det går inte att redundansväxla ett lagrings konto som innehåller Premium block-blobar. Lagrings konton som stöder Premium block-blobbar har för närvarande inte stöd för GEO-redundans.
+- Det går inte att redundansväxla ett lagrings konto som innehåller oföränderlighets-aktiverade behållare för [Worm-principer](../blobs/storage-blob-immutable-storage.md) . Olåst/låst tidsbaserad kvarhållning eller principer för juridiskt bevarande förhindrar redundans för att bibehålla kompatibiliteten.
 
 ## <a name="initiate-the-failover"></a>Initiera redundansväxlingen
 
@@ -54,7 +61,7 @@ Följ dessa steg om du vill starta en redundansväxling av ett konto från Azure
 1. Välj **Förbered för redundansväxling**.
 1. Läs igenom bekräftelse dialog rutan. När du är klar anger du **Ja** för att bekräfta och initiera redundansväxlingen.
 
-    :::image type="content" source="media/storage-initiate-account-failover/portal-failover-confirm.png" alt-text="Skärm bild som visar geo-replikering och redundans status":::
+    :::image type="content" source="media/storage-initiate-account-failover/portal-failover-confirm.png" alt-text="Skärm bild som visar bekräftelse dialog ruta för redundans av konto":::
 
 ## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

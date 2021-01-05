@@ -2,13 +2,13 @@
 title: Begränsningar för resurs namn
 description: Visar regler och begränsningar för namngivning av Azure-resurser.
 ms.topic: conceptual
-ms.date: 12/04/2020
-ms.openlocfilehash: a6aac03277a11cf671f5a618bc85ff987cfdc2dd
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.date: 12/29/2020
+ms.openlocfilehash: edcf3f09b57ed7628611c482effddb210ef8e456
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608324"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814388"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Namngivningsregler och begränsningar för Azure-resurser
 
@@ -170,7 +170,7 @@ I följande tabeller refererar termen alfanumeriskt till:
 > | gallerier | Resursgrupp | 1–80 | Alfanumeriska tecken och punkter.<br><br>Börja och sluta med alfanumeriska tecken. |
 > | gallerier/program | galleri | 1–80 | Alfanumeriska tecken, bindestreck och punkter.<br><br>Börja och sluta med alfanumeriska tecken. |
 > | gallerier/program/versioner | program | 32-bitars heltal | Siffror och punkter. |
-> | gallerier/bilder | galleri | 1–80 | Alfanumeriska tecken, bindestreck och punkter.<br><br>Börja och sluta med alfanumeriska tecken. |
+> | gallerier/bilder | galleri | 1–80 | Alfanumeriska tecken, under streck, bindestreck och punkter.<br><br>Börja och sluta med alfanumeriska tecken. |
 > | gallerier/avbildningar/versioner | image | 32-bitars heltal | Siffror och punkter. |
 > | images | Resursgrupp | 1–80 | Alfanumeriska tecken, under streck, punkter och bindestreck.<br><br>Börja med alfanumeriskt. Slutar med alfanumeriskt eller under streck. |
 > | snapshots | Resursgrupp | 1–80 | Alfanumeriska tecken, under streck, punkter och bindestreck.<br><br>Börja med alfanumeriskt. Slutar med alfanumeriskt eller under streck. |
@@ -453,7 +453,7 @@ I följande tabeller refererar termen alfanumeriskt till:
 > | Entitet | Omfång | Längd | Giltiga tecken |
 > | --- | --- | --- | --- |
 > | arbetsytor | Resursgrupp | 3-33 | Alfanumeriska tecken och bindestreck. |
-> | arbets ytor/beräkningar | arbetsyta | 2-16 | Alfanumeriska tecken och bindestreck. |
+> | arbets ytor/beräkningar | arbetsyta | 2–16 | Alfanumeriska tecken och bindestreck. |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft. ManagedIdentity
 
@@ -537,7 +537,7 @@ I följande tabeller refererar termen alfanumeriskt till:
 > | Entitet | Omfång | Längd | Giltiga tecken |
 > | --- | --- | --- | --- |
 > | kluster | Resursgrupp | 4-63 | Alfanumeriska tecken och bindestreck.<br><br>Börja och sluta med alfanumeriska tecken. |
-> | arbetsytor | Resursgrupp | 4-63 | Alfanumeriska tecken och bindestreck.<br><br>Börja och sluta med alfanumeriska tecken. |
+> | arbetsytor | EAN | 4-63 | Alfanumeriska tecken och bindestreck.<br><br>Börja och sluta med alfanumeriska tecken. |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft. OperationsManagement
 

@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 3655b117b641a6179bd6539aaf3f75af07f21a1a
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 8de95a56f3da928997a97ff216b13d522c82afca
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992377"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814201"
 ---
 # <a name="azure-ddos-rapid-response"></a>Snabb svar för Azure DDoS
 
-Under en aktiv åtkomst har Azure DDoS Protection standard kunder till gång till DRR-teamet (DDoS Rapid Response) som kan hjälpa till med angrepps undersökningen under en attack och analys efter angrepp.
+Under en aktiv åtkomst har Azure DDoS Protection standard kunder åtkomst till DRR-teamet (DDoS Rapid Response), som kan hjälpa till med angrepps undersökningen under ett angrepp och analys efter angrepp.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -39,7 +39,7 @@ Du bör bara engagera DRR om:
 
 1. Från Azure Portal när du skapar en ny supportbegäran väljer du **typ av problem** som teknisk.
 2. Välj **tjänst** som **DDoS skydd**.
-3. Välj en resurs i list menyn för resursen. _Du måste välja en DDoS-plan som är länkad till det virtuella nätverket som skyddas av DDoS Protection standard för att engagera DRR._
+3. Välj en resurs på den nedrullningsbara menyn resurs. _Du måste välja en DDoS-plan som är länkad till det virtuella nätverket som skyddas av DDoS Protection standard för att engagera DRR._
 
     ![Välj resurs](./media/ddos-rapid-response/choose-resource.png)
 
@@ -49,12 +49,12 @@ Du bör bara engagera DRR om:
 
 5. Slutför ytterligare information och skicka in support förfrågan.
 
-DRR följer Azure Rapid Response-Supportens modell. Se [support omfattning och svars](https://azure.microsoft.com/en-us/support/plans/response/) tid för mer information om snabba svar...
+DRR följer Azure Rapid Response-Supportens modell. Se [support omfattning och svars](https://azure.microsoft.com/en-us/support/plans/response/) tid för mer information om snabba svar.
 
 Läs [DDoS Protection standard dokumentationen](./ddos-protection-overview.md)om du vill veta mer.
 
 ## <a name="next-steps"></a>Nästa steg
 
 - Lär dig hur du [testar genom simuleringar](test-through-simulations.md).
-- Lär dig hur du [visar och konfigurerar DDoS Protection-telemetri](telemetry-monitoring-alerting.md).
-- Lär dig hur du konfigurerar DDoS-lösningar för [attack minskning och flödes loggar](reports-and-flow-logs.md).
+- Lär dig hur du [visar och konfigurerar DDoS Protection-telemetri](telemetry.md).
+- Lär dig hur du [visar och konfigurerar DDoS diagnostisk loggning](diagnostic-logging.md).

@@ -9,19 +9,19 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: c67a859177695b71c6607c53b3ae9c268aee7797
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 4b44a8375bc13709959e2401f9d772fdeab00f52
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97582594"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808614"
 ---
 > [!IMPORTANT]
 > Koden i den här artikeln använder synkrona metoder och icke-säkrade inloggnings uppgifter för att förenkla orsaker.
 
 [Referens dokumentation](/dotnet/api/overview/azure/ai.formrecognizer-readme)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src)  |  [Paket (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer)  |  [Exempel](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services/)
 * [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) eller aktuell version av [.net Core](https://dotnet.microsoft.com/download/dotnet-core).
@@ -175,7 +175,9 @@ Upprepa stegen ovan för en ny metod som autentiserar en utbildnings klient.
 
 Du måste också lägga till referenser till URL: erna för din utbildning och testa data. Lägg till dessa i roten för **program** klassen.
 
-* [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
+* [!INCLUDE [get SAS URL](../sas-instructions.md)]
+
+   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="Hämtning av SAS-URL":::
 * Upprepa sedan stegen ovan för att hämta SAS-URL: en för ett enskilt dokument i Blob Storage-behållare. Spara den på en tillfällig plats även.
 * Spara slutligen URL: en för de exempel bilder som ingår nedan (finns också på [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms)). 
 
@@ -650,7 +652,7 @@ Du kan också ta bort en modell från ditt konto genom att referera till dess ID
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_manage_model_delete)]
 
 
-## <a name="run-the-application"></a>Köra appen
+## <a name="run-the-application"></a>Kör programmet
 
 Kör programmet från program katalogen med `dotnet run` kommandot.
 

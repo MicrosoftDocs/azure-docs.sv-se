@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 49fa0c849a6b2eab0647922a711c50b4fe762584
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 69f9b5a74566879ecf8f15f23e689ebb731da45a
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095687"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814150"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-powershell"></a>Snabb start: skapa och konfigurera Azure DDoS Protection standard med hjälp av Azure PowerShell
 
@@ -45,7 +45,7 @@ Om du vill skapa en resurs grupp använder du [New-AzResourceGroup](/powershell/
 New-AzResourceGroup -Name MyResourceGroup -Location "East US"
 ```
 
-Skapa nu en DDoS-skydds plan med namnet _MyDdosProtectionPlan_ :
+Skapa nu en DDoS-skydds plan med namnet _MyDdosProtectionPlan_:
 
 ```azurepowershell-interactive
 New-AzDdosProtectionPlan -ResourceGroupName MyResourceGroup -Name MyDdosProtectionPlan -Location "East US"
@@ -55,7 +55,7 @@ New-AzDdosProtectionPlan -ResourceGroupName MyResourceGroup -Name MyDdosProtecti
 
 ### <a name="enable-ddos-for-a-new-virtual-network"></a>Aktivera DDoS för ett nytt virtuellt nätverk
 
-Du kan aktivera DDoS-skydd när du skapar ett virtuellt nätverk. I det här exemplet ska vi namnge vårt virtuella nätverk _MyVnet_ : 
+Du kan aktivera DDoS-skydd när du skapar ett virtuellt nätverk. I det här exemplet ska vi namnge vårt virtuella nätverk _MyVnet_: 
 
 ```azurepowershell-interactive
 New-AzVirtualNetwork -Name MyVnet -ResourceGroupName MyResourceGroup -Location "East US" -AddressPrefix 10.0.0.0/16
@@ -114,4 +114,4 @@ Om du vill ta bort en DDoS skydds plan måste du först ta bort alla virtuella n
 Om du vill lära dig att visa och konfigurera telemetri för din DDoS-skydds plan fortsätter du till självstudierna.
 
 > [!div class="nextstepaction"]
-> [Visa och konfigurera telemetri för DDoS-skydd](telemetry-monitoring-alerting.md)
+> [Visa och konfigurera telemetri för DDoS-skydd](telemetry.md)

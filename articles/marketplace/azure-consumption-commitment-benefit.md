@@ -8,12 +8,12 @@ author: emuench
 ms.author: mingshen
 ms.date: 10/15/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: aeee13152364c31d82f674df784a27114035a041
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: d8cb5179583dd23ea2bd4baf5ebe7d84b0ae9cbf
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028554"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814439"
 ---
 # <a name="azure-consumption-commitment-benefit"></a>Azure-förbrukningsåtagandeförmån
 
@@ -31,7 +31,7 @@ Du kan dra nytta av den här fördelen genom att bara köpa ett kvalificerande e
 
 ## <a name="determine-if-your-organization-has-an-azure-consumption-commitment-maccctc"></a>Ta reda på om din organisation har ett åtagande för Azure-konsumtion (MACC/CtC)
 
-Om du är osäker på om din organisation har ett kvalificerings avtal loggar du in på Marketplace-upplevelsen inom [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home) under en klient som är kopplad till din organisation. Om du ser alternativet för det **kvalificerade Azure-förmånerna** i pris filtret har du ett kvalificerat Azure-konsumtions åtagande. Genom att kvalificera Azure Marketplace-köp kan du bidra till din organisations åtagande om Azure-konsumtion om det köps direkt via Azure Marketplace.
+Om du är osäker på om din organisation har ett kvalificerings avtal loggar du in på Marketplace-upplevelsen inom [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home) under en klient som är kopplad till din organisation. Om du ser alternativet för att välja **Azure-förmån som är berättigat enbart** som ett filter alternativ, har du ett kvalificerat Azure-konsumtions åtagande. Genom att kvalificera Azure Marketplace-köp kan du bidra till din organisations åtagande om Azure-konsumtion om det köps direkt via Azure Marketplace.
 
 [![Meny alternativet kvalificerat Azure-förmån.](media/azure-benefit/azure-benefit-eligible.png)](media/azure-benefit/azure-benefit-eligible.png#lightbox)
 

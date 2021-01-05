@@ -9,16 +9,16 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 168dcf994d00ba1cb2070665ada5a55cf86cfa4a
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 747ceb0106f437f9e2442c2b8c68c0b73a9107a6
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359820"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808270"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Säkerhetskopiera och återställa formulär igenkännings modeller
 
-När du skapar en formulär igenkännings resurs i Azure Portal anger du en region. Därefter förblir din resurs och alla dess åtgärder kopplade till just den Azure-Server regionen. Det är sällsynt, men inte omöjligt, att stöta på ett nätverks problem som träffar en hel region. Om din lösning alltid måste vara tillgänglig, bör du utforma den till att antingen redundansväxla till en annan region eller dela upp arbets belastningen mellan två eller flera regioner. Båda metoderna kräver minst två formulär igenkännings resurser i olika regioner och möjligheten att synkronisera [anpassade modeller](./quickstarts/curl-train-extract.md) över regioner.
+När du skapar en formulär igenkännings resurs i Azure Portal anger du en region. Därefter förblir din resurs och alla dess åtgärder kopplade till just den Azure-Server regionen. Det är sällsynt, men inte omöjligt, att stöta på ett nätverks problem som träffar en hel region. Om din lösning alltid måste vara tillgänglig, bör du utforma den till att antingen redundansväxla till en annan region eller dela upp arbets belastningen mellan två eller flera regioner. Båda metoderna kräver minst två formulär igenkännings resurser i olika regioner och möjligheten att synkronisera anpassade modeller över regioner.
 
 Kopierings-API: et aktiverar det här scenariot genom att du kan kopiera anpassade modeller från ett formulär igenkännings konto eller till andra, som kan finnas i en geografisk region som stöds. Den här guiden visar hur du använder kopierings REST API med en sväng. Du kan också använda en HTTP-begäran som Postman för att utfärda begär Anden.
 

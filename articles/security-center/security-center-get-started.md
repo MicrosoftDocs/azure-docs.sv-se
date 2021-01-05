@@ -12,20 +12,27 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 12/30/2020
 ms.author: memildin
-ms.openlocfilehash: bd8c5c31579ac22cd6c77dffd31103680e393f69
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d3ed064547b1202aa562fffdfde85a28cbe8514e
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187178"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809555"
 ---
-# <a name="quickstart-setting-up-azure-security-center"></a>Snabb start: Konfigurera Azure Security Center
+# <a name="quickstart-set-up-azure-security-center"></a>Snabb start: Konfigurera Azure Security Center
 
 Azure Security Center erbjuder enhetlig säkerhetshantering och skydd mot hot i olika hybridmolnarbetsbelastningar. De kostnads fria funktionerna ger begränsad säkerhet för dina Azure-resurser, och gör att Azure Defender utökar dessa funktioner till lokala och andra moln. Azure Defender hjälper dig att hitta och åtgärda säkerhets problem, använda åtkomst-och program kontroller för att blockera skadlig aktivitet, identifiera hot med analys och intelligens och svara snabbt vid angrepp. Du kan testa Azure Defender utan kostnad. Mer information finns på [prissidan](https://azure.microsoft.com/pricing/details/security-center/).
 
-I den här artikeln uppgraderar du till Azure Defender för ytterligare säkerhet och installerar Log Analytics-agenten på dina datorer för att övervaka säkerhets problem och hot.
+Den här snabb starten hjälper dig att aktivera Azure Defender för ytterligare säkerhet och installation av Log Analytics-agenten på dina datorer för att övervaka säkerhets problem och hot.
+
+Du utför följande steg:
+
+> [!div class="checklist"]
+> * Aktivera Security Center på din Azure-prenumeration
+> * Aktivera Azure Defender på din Azure-prenumeration
+> * Aktivera automatisk data insamling
 
 ## <a name="prerequisites"></a>Förutsättningar
 Du måste ha en prenumeration på Microsoft Azure för att komma igång med Security Center. Om du inte har någon prenumeration kan du registrera dig för ett [kostnadsfritt konto](https://azure.microsoft.com/pricing/free-trial/).
@@ -35,7 +42,7 @@ Om du vill aktivera Azure Defender för en prenumeration måste du ha tilldelats
 
 ## <a name="enable-security-center-on-your-azure-subscription"></a>Aktivera Security Center på din Azure-prenumeration
 
-1. Logga in på [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
+1. Logga in på [Azure-portalen](https://azure.microsoft.com/features/azure-portal/).
 
 1. Från portalens meny väljer du **Security Center**. 
 
