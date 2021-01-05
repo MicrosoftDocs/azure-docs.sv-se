@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 3e4a770a33f5cdb3c3b2de09cbcb8431b2fc3fbb
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 09612ff3d86c669801f9e824d367a2b9a5bb10ac
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968663"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830657"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Red Hat-arbetsbelastningar på Azure
 
@@ -36,7 +36,7 @@ Du kanske vill använda avbildningarna enligt principen betala per användning o
 ### <a name="red-hat-gold-images"></a>Red Hat guld-bilder
 
 Azure erbjuder även Red Hat Gold-bilder ( `rhel-byos` ). De här avbildningarna kan vara användbara för kunder som har befintliga Red Hat-prenumerationer och vill använda dem i Azure. Du måste aktivera dina befintliga Red Hat-prenumerationer för Red Hat Cloud Access innan du kan använda dem i Azure. Åtkomst till dessa avbildningar beviljas automatiskt när dina Red Hat-prenumerationer är aktiverade för moln åtkomst och uppfyller kraven för behörighet. Med hjälp av dessa avbildningar kan en kund undvika dubbel fakturering som kan uppstå när du använder avbildningarna enligt principen betala per användning.
-* Lär dig hur du [aktiverar Red Hat-prenumerationer för moln åtkomst med Azure](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/con-enable-subs).
+* Lär dig hur du [aktiverar Red Hat-prenumerationer för moln åtkomst med Azure](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/enabling-and-maintaining-subs_cloud-access).
 * Lär dig hur du [hittar de röda hat Gold-bilderna i Azure Portal, Azure CLI eller PowerShell-cmdleten](./byos.md).
 
 > [!NOTE]

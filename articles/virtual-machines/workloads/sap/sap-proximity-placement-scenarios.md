@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/29/2020
+ms.date: 12/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aae822665702300064e82e80d74b5c2256423ea1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1e6aaf1b37073bf93e0aca8237161bf11af3a872
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957290"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827231"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Azure närhets placerings grupper för optimal nätverks fördröjning med SAP-program
 SAP-program som baseras på SAP NetWeaver-eller SAP S/4HANA-arkitekturen är känsliga för nätverks fördröjning mellan SAP-programnivån och SAP-databasnivå. Den här känsligheten är resultatet av det mesta av affärs logiken som körs i program skiktet. Eftersom SAP-programlagret kör affärs logiken, utfärdar den frågor till databas nivån med hög frekvens, med en hastighet av tusentals eller flera tusen tusen per sekund. I de flesta fall är arten av frågorna enkel. De kan ofta köras på databas nivå i 500 mikrosekunder eller mindre.
@@ -42,6 +42,8 @@ För att ge dig möjlighet att optimera nätverks fördröjningen erbjuder Azure
 > - Endast när det behövs
 > - Endast på granularitet av ett enda SAP-system och inte för ett helt system liggande eller ett fullständigt SAP-landskap
 > - På ett sätt att behålla de olika VM-typerna och antalet virtuella datorer inom en närhets placerings grupp till ett minimum
+
+Anta att om du distribuerar virtuella datorer genom att ange Tillgänglighetszoner och väljer samma Tillgänglighetszoner måste nätverks fördröjningen mellan de virtuella datorerna vara tillräcklig för att kunna använda SAP-NetWeaver och S/4HANA-system med prestanda och data flöde. Detta antagande är oberoende av faktumet om en viss zon har skapats av ett Data Center eller flera data Center. Den enda anledningen till att använda närhets placerings grupper i zonindelade-distributioner är det fall där du vill allokera distribuerade virtuella datorer i Azures tillgänglighets uppsättningar tillsammans med zonindelade-distribuerade virtuella datorer.
 
 
 ## <a name="what-are-proximity-placement-groups"></a>Vad är placerings grupper för närhet? 

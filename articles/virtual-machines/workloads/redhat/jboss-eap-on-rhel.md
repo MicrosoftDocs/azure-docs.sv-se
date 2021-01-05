@@ -8,14 +8,14 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.assetid: 8a4df7bf-be49-4198-800e-db381cda98f5
 ms.date: 10/30/2020
-ms.openlocfilehash: bab84b12c871c621b5a317ba8b47f9b18c91bff3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: bd6ff46807c22309679ba7e8518685bb05cc77e2
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500197"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830725"
 ---
-# <a name="deploy-enterprise-java-applications-to-azure-with-jboss-eap-on-red-hat-enterprise-linux"></a>Distribuera företags-Java-program till Azure med JBoss EAP på Red Hat Enterprise Linux
+# <a name="deploy-enterprise-java-applications-to-azure-with-jboss-eap-on-red-hat-enterprise-linux"></a>Distribuera Java-företagsprogram till Azure med JBoss EAP på Red Hat Enterprise Linux
 
 Azure snabb starts-mallar i den här artikeln visar hur du distribuerar [JBoss (EAP)](https://www.redhat.com/en/technologies/jboss-middleware/application-platform) med [Red Hat Enterprise Linux (RHEL)](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux) till virtuella Azure-datorer (VM) och virtuella datorers skalnings uppsättningar. Du ska använda ett exempel på en Java-app för att verifiera distributionen. 
 
@@ -152,7 +152,7 @@ Mer information om priser för PAYG VM finns [Red Hat Enterprise Linux prissätt
 Om du vill använda BYOS för RHEL OS måste du ha en giltig Red Hat-prenumeration med rättigheter för att använda RHEL OS i Azure. Slutför följande förutsättningar innan du distribuerar RHEL-OS med BYOS-modellen:
 
 1. Se till att du har RHEL-OS-och JBoss EAP-rättigheter kopplade till din Red Hat-prenumeration.
-2. Auktorisera ditt Azure-prenumerations-ID för att använda RHEL BYOS-avbildningar. Följ [dokumentationen för prenumerations hantering i Red Hat](https://access.redhat.com/documentation/en/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/con-enable-subs) för att slutföra processen, som innehåller följande steg:
+2. Auktorisera ditt Azure-prenumerations-ID för att använda RHEL BYOS-avbildningar. Följ [dokumentationen för prenumerations hantering i Red Hat](https://access.redhat.com/documentation/red_hat_subscription_management/1/) för att slutföra processen, som innehåller följande steg:
 
    1. Aktivera Microsoft Azure som en provider i Red Hat Cloud Access-instrumentpanelen.
 
@@ -160,7 +160,7 @@ Om du vill använda BYOS för RHEL OS måste du ha en giltig Red Hat-prenumerati
 
    1. Aktivera nya produkter för moln åtkomst på Microsoft Azure.
     
-   1. Aktivera Red Hat Gold-avbildningar för din Azure-prenumeration. Mer information finns i [Red Hat Gold-bilder på Microsoft Azure](https://access.redhat.com/documentation/en/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure).
+   1. Aktivera Red Hat Gold-avbildningar för din Azure-prenumeration. Mer information finns i [Red Hat Gold-bilder på Microsoft Azure](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/cloud-access-gold-images_cloud-access#proc_using-gold-images-azure_cloud-access).
 
    1. Vänta tills de guld bilderna i Red Hat är tillgängliga i din Azure-prenumeration. Dessa bilder är vanligt vis tillgängliga inom tre timmar efter det att de har lagts in.
     
@@ -212,7 +212,7 @@ Du kan distribuera mallen på följande sätt:
   ```
 
   ```
-  az group deployment create --resource-group <my-resource-group> --template-uri <raw link to the template which can be obtained from github>
+  az deployment group create --resource-group <my-resource-group> --template-uri <raw link to the template which can be obtained from github>
   ```
 
   Information om hur du installerar och konfigurerar Azure CLI finns i [Installera CLI](/cli/azure/install-azure-cli).

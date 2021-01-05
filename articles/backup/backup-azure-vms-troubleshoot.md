@@ -4,12 +4,12 @@ description: I den här artikeln får du lära dig hur du felsöker fel som påt
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: cb25d9263648fbd92bc075751c1a8e627d03bd44
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 2cda13ea089ac08dff7c1ba5ca93ba56ab3c23cf
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325221"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831558"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Felsöka säkerhets kopierings fel på virtuella Azure-datorer
 
@@ -74,6 +74,16 @@ Fel meddelande: det gick inte att låsa en eller flera monterings punkter för d
 * Kör en konsekvens kontroll av fil systemet på dessa enheter med kommandot **fsck** .
 * Montera enheterna igen och försök att säkerhetskopiera igen.</ol>
 
+Om du inte kan demontera enheterna kan du uppdatera konfigurationen för den virtuella datorns säkerhets kopiering så att vissa monterings punkter ignoreras. Om t. ex. "/mnt/Resource"-monterings punkten inte kan avmonteras och orsakar säkerhets kopieringen av virtuella datorer, kan du uppdatera konfigurationsfilerna för säkerhets kopiering av virtuella datorer med ```MountsToSkip``` egenskapen på följande sätt.
+
+```bash
+cat /var/lib/waagent/Microsoft.Azure.RecoveryServices.VMSnapshotLinux-1.0.9170.0/main/tempPlugin/vmbackup.conf[SnapshotThread]
+fsfreeze: True
+MountsToSkip = /mnt/resource
+SafeFreezeWaitInSeconds=600
+```
+
+
 ### <a name="extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error"></a>ExtensionSnapshotFailedCOM/ExtensionInstallationFailedCOM/ExtensionInstallationFailedMDTC-Extension-installationen/åtgärden misslyckades på grund av ett COM+-fel
 
 Felkod: ExtensionSnapshotFailedCOM <br/>
@@ -104,11 +114,11 @@ Fel meddelande: ögonblicks bild åtgärden misslyckades eftersom VSS-skrivare b
 
 Felet beror på att VSS-skribenterna är i ett felaktigt tillstånd. Azure Backup-tilläggen interagerar med VSS-skrivare för att ta ögonblicks bilder av diskarna. Följ dessa anvisningar för att lösa problemet:
 
-Steg 1: starta om VSS-skrivare som är i ett felaktigt tillstånd.
+Steg 1: Starta om VSS-skrivare som är i ett felaktigt tillstånd.
 
 * Kör i en upphöjd kommando tolk ```vssadmin list writers``` .
-* Utdata innehåller alla VSS-skrivare och deras tillstånd. Starta om respektive VSS-skrivare för varje VSS-skrivare med ett tillstånd som inte är **[1] stabilt**.
-* Starta om tjänsten genom att köra följande kommandon från en upphöjd kommando tolk:
+* Utdata innehåller alla VSS-skrivare och deras tillstånd. Starta om VSS-skrivartjänsten för alla VSS-skrivare som inte har ett **[1] stabilt** tillstånd.
+* Du kan starta om tjänsten genom att köra följande kommandon från en upphöjd kommandotolk: 
 
  ```net stop serviceName``` <br>
  ```net start serviceName```
@@ -140,16 +150,16 @@ Fel meddelande: det gick inte att utföra ögonblicks bilder på grund av att tj
 
 Felet beror på att VSS-tjänsten har ett felaktigt tillstånd. Azure Backup tilläggen interagerar med VSS-tjänsten för att ta ögonblicks bilder av diskarna. Följ dessa anvisningar för att lösa problemet:
 
-Starta om VSS-tjänsten (Volume Shadow Copy).
+Starta om tjänsten VSS (Volume Shadow Copy).
 
-* Gå till Services. msc och starta om tjänsten Volume Shadow Copy.<br>
+* Gå till Services.msc och starta om tjänsten Volume Shadow Copy.<br>
 (eller)<br>
-* Kör följande kommandon från en upphöjd kommando tolk:
+* Kör följande kommando från en kommandorad med förhöjd behörighet:
 
  ```net stop VSS``` <br>
  ```net start VSS```
 
-Om problemet kvarstår startar du om den virtuella datorn vid schemalagd stillestånds tid.
+Om problemet kvarstår startar du om den virtuella datorn vid schemalagd stilleståndstid.
 
 ### <a name="usererrorskunotavailable---vm-creation-failed-as-vm-size-selected-is-not-available"></a>UserErrorSkuNotAvailable-det gick inte att skapa den virtuella datorn eftersom den valda virtuella dator storleken inte är tillgänglig
 
@@ -283,7 +293,7 @@ Felkod: VmNotInDesirableState <br/> Fel meddelande: den virtuella datorn är int
 * Om den virtuella datorn är i ett tillfälligt tillstånd mellan att **köra** och **stänga** av, väntar du tills status har ändrats. Utlös sedan säkerhets kopierings jobbet.
 * Om den virtuella datorn är en virtuell Linux-dator och använder modulen Security-Enhanced Linux-kernel, utelämnar du sökvägen **/var/lib/waagent** för Azure Linux-agenten från säkerhets principen och kontrollerar att säkerhets kopierings tillägget är installerat.
 
-* VM-agenten finns inte på den virtuella datorn: <br>Installera eventuella nödvändiga komponenter och VM-agenten. Starta sedan om åtgärden. | Läs mer om [installation av VM-agenten och hur du verifierar installation av VM-agenten](#vm-agent).
+* VM-agenten finns inte på den virtuella datorn: <br>Installera eventuella nödvändiga komponenter och VM-agenten. Starta sedan om åtgärden. | Läs mer om [installation av VM-agenten och hur du verifierar installationen av VM-agenten](#vm-agent).
 
 ### <a name="extensionsnapshotfailednosecurenetwork---the-snapshot-operation-failed-because-of-failure-to-create-a-secure-network-communication-channel"></a>ExtensionSnapshotFailedNoSecureNetwork-ögonblicks bild åtgärden misslyckades på grund av att det inte gick att skapa en säker kanal för nätverks kommunikation
 
@@ -310,10 +320,10 @@ Om du har en Azure Policy som [styr Taggar i din miljö](../governance/policy/tu
 
 | Felinformation | Lösning |
 | --- | --- |
-| Annullering stöds inte för den här jobb typen: <br>Vänta tills jobbet har slutförts. |Inget |
+| Annullering stöds inte för den här jobb typen: <br>Vänta tills jobbet har slutförts. |Ingen |
 | Jobbet är inte i ett cancelable-tillstånd: <br>Vänta tills jobbet har slutförts. <br>**eller**<br> Det valda jobbet är inte i ett cancelable-tillstånd: <br>Vänta tills jobbet har slutförts. |Det är troligt att jobbet är nästan klart. Vänta tills jobbet är klart.|
 | Säkerhets kopieringen kan inte avbryta jobbet eftersom det inte pågår: <br>Annullering stöds bara för pågående jobb. Försök att avbryta ett pågående jobb. |Felet beror på ett överförings tillstånd. Vänta en minut och försök att avbryta åtgärden igen. |
-| Säkerhets kopieringen kunde inte avbryta jobbet: <br>Vänta tills jobbet har slutförts. |Inget |
+| Säkerhets kopieringen kunde inte avbryta jobbet: <br>Vänta tills jobbet har slutförts. |Ingen |
 
 ## <a name="restore"></a>Återställ
 
@@ -338,14 +348,14 @@ Försök att återställa den virtuella datorn från en annan återställnings p
 | --- | --- |
 | Återställningen misslyckades med ett internt moln fel. |<ol><li>Den moln tjänst som du försöker återställa till har kon figurer ATS med DNS-inställningar. Du kan kontrol lera följande: <br>**$Deployment = Get-AzureDeployment-ServiceName "ServiceName"-plats "produktion" Get-AzureDns-DnsSettings $Deployment. DnsSettings**.<br>Om **adress** har kon figurer ATS konfigureras DNS-inställningarna.<br> <li>Den moln tjänst som du försöker återställa till har kon figurer ATS med **reservedip** och befintliga virtuella datorer i moln tjänsten är i stoppat läge. Du kan kontrol lera att en moln tjänst har reserverat en IP-adress med hjälp av följande PowerShell-cmdlets: **$Deployment = Get-AzureDeployment-ServiceName "ServiceName"-plats "produktion" $DEP. ReservedIPName**. <br><li>Du försöker återställa en virtuell dator med följande särskilda nätverkskonfigurationer i samma moln tjänst: <ul><li>Virtuella datorer under belastnings Utjämnings konfiguration, intern och extern.<li>Virtuella datorer med flera reserverade IP-adresser. <li>Virtuella datorer med flera nätverkskort. </ul><li>Välj en ny moln tjänst i användar gränssnittet eller se [återställnings överväganden](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) för virtuella datorer med särskilda nätverkskonfigurationer.</ol> |
 | Det valda DNS-namnet har redan tagits: <br>Ange ett annat DNS-namn och försök igen. |Det här DNS-namnet refererar till moln tjänstens namn, vanligt vis slutar med **. cloudapp.net**. Det här namnet måste vara unikt. Om du får det här felet måste du välja ett annat namn för virtuell dator under återställningen. <br><br> Det här felet visas endast för användare av Azure Portal. Återställnings åtgärden via PowerShell slutförs eftersom den återställer endast diskarna och inte skapar den virtuella datorn. Felet kommer att visas när den virtuella datorn skapas explicit av dig efter disk återställnings åtgärden. |
-| Den angivna konfigurationen för virtuellt nätverk är felaktig: <br>Ange en annan konfiguration för virtuellt nätverk och försök igen. |Inget |
-| Den angivna moln tjänsten använder en reserverad IP-adress som inte matchar konfigurationen för den virtuella dator som återställs: <br>Ange en annan moln tjänst som inte använder en reserverad IP-adress. Eller Välj en annan återställnings punkt att återställa från. |Inget |
-| Moln tjänsten har nått gränsen för antalet ingångs slut punkter: <br>Försök igen genom att ange en annan moln tjänst eller genom att använda en befintlig slut punkt. |Inget |
-| Recovery Services valvet och mål lagrings kontot finns i två olika regioner: <br>Se till att det lagrings konto som anges i återställnings åtgärden finns i samma Azure-region som Recovery Services-valvet. |Inget |
-| Det lagrings konto som har angetts för återställnings åtgärden stöds inte: <br>Endast Basic-eller standard-lagrings konton med lokalt redundanta eller geo-redundanta replikeringsinställningar stöds. Välj ett lagrings konto som stöds. |Inget |
+| Den angivna konfigurationen för virtuellt nätverk är felaktig: <br>Ange en annan konfiguration för virtuellt nätverk och försök igen. |Ingen |
+| Den angivna moln tjänsten använder en reserverad IP-adress som inte matchar konfigurationen för den virtuella dator som återställs: <br>Ange en annan moln tjänst som inte använder en reserverad IP-adress. Eller Välj en annan återställnings punkt att återställa från. |Ingen |
+| Moln tjänsten har nått gränsen för antalet ingångs slut punkter: <br>Försök igen genom att ange en annan moln tjänst eller genom att använda en befintlig slut punkt. |Ingen |
+| Recovery Services valvet och mål lagrings kontot finns i två olika regioner: <br>Se till att det lagrings konto som anges i återställnings åtgärden finns i samma Azure-region som Recovery Services-valvet. |Ingen |
+| Det lagrings konto som har angetts för återställnings åtgärden stöds inte: <br>Endast Basic-eller standard-lagrings konton med lokalt redundanta eller geo-redundanta replikeringsinställningar stöds. Välj ett lagrings konto som stöds. |Ingen |
 | Den angivna lagrings konto typen för återställnings åtgärden är inte online: <br>Kontrol lera att lagrings kontot som angetts i återställnings åtgärden är online. |Det här felet kan inträffa på grund av ett tillfälligt fel i Azure Storage eller på grund av ett avbrott. Välj ett annat lagrings konto. |
-| Resurs grupps kvoten har uppnåtts: <br>Ta bort några resurs grupper från Azure Portal eller kontakta Azure-supporten för att öka gränserna. |Inget |
-| Det valda under nätet finns inte: <br>Välj ett undernät som finns. |Inget |
+| Resurs grupps kvoten har uppnåtts: <br>Ta bort några resurs grupper från Azure Portal eller kontakta Azure-supporten för att öka gränserna. |Ingen |
+| Det valda under nätet finns inte: <br>Välj ett undernät som finns. |Ingen |
 | Säkerhets kopierings tjänsten har inte behörighet att komma åt resurser i din prenumeration. |Lös problemet genom att först återställa diskarna genom att följa stegen i [återställa säkerhetskopierade diskar](backup-azure-arm-restore-vms.md#restore-disks). Använd sedan PowerShell-stegen i [skapa en virtuell dator från återställda diskar](backup-azure-vms-automation.md#restore-an-azure-vm). |
 
 ## <a name="backup-or-restore-takes-time"></a>Säkerhets kopiering eller återställning tar tid

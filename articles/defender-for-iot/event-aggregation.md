@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/03/2020
 ms.author: mlottner
-ms.openlocfilehash: 7f7575697706363c082a4e6374b3df7a49e65cdf
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: c823f0034db7d5fbe1f6b46f6af74e9fa374a6de
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548859"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832377"
 ---
 # <a name="defender-for-iot-event-aggregation"></a>Defender för IoT Event-sammansättning
 
@@ -97,6 +97,6 @@ Använd följande artiklar om du vill fortsätta komma igång med Defender för 
 
 - Förstå [autentiseringsmetoder för säkerhets agenter](concept-security-agent-authentication-methods.md)
 - Välj och distribuera en [säkerhets agent](how-to-deploy-agent.md)
-- Granska Defender för IoT [service-krav](service-prerequisites.md)
+- Granska Defender för IoT [system-krav](quickstart-system-prerequisites.md)
 - Lär dig hur du [aktiverar Defender för IoT-tjänsten i din IoT Hub](quickstart-onboard-iot-hub.md)
 - Läs mer om tjänsten från [vanliga frågor och svar om Defender för IoT](resources-frequently-asked-questions.md)

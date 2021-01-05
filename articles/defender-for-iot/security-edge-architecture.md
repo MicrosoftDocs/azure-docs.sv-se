@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 4f6d9f670a1b85e55ccc8f6cb18645b92927221a
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 132c21588df2f2180ddd973d208eb95ea6657e7d
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351647"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832462"
 ---
 # <a name="azure-defender-for-iot-edge-security-module"></a>Azure Defender för IoT Edge säkerhetsmodul
 
@@ -60,6 +60,6 @@ Använd följande artiklar om du vill fortsätta komma igång med Defender för 
 
 - Distribuera [säkerhetsmodulen för IoT Edge](how-to-deploy-edge.md)
 - Lär dig hur du [konfigurerar din säkerhetsmodul](how-to-agent-configuration.md)
-- Granska förutsättningarna för Defender for IoT [-tjänsten](service-prerequisites.md)
+- Granska horisont för Defender for IoT [Defender för IoT](resources-manage-proprietary-protocols.md)
 - Lär dig hur du [aktiverar Defender för IoT-tjänsten i din IoT Hub](quickstart-onboard-iot-hub.md)
 - Läs mer om tjänsten från [vanliga frågor och svar om Defender för IoT](resources-frequently-asked-questions.md)

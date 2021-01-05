@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 20e51100eba595f9261be24e0e3675aa565479cd
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 4eba3fabee50e0011d5a63297c726a9647dd84c0
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535562"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831541"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-mysql"></a>Snabb start: Använd ruby för att ansluta och fråga efter data i Azure Database for MySQL
 
@@ -58,7 +58,7 @@ Installera Ruby, Gem och MySQL2-biblioteket på din egen dator.
 Skaffa den information som du behöver för att ansluta till Azure Database för MySQL. Du behöver det fullständiga servernamnet och inloggningsuppgifter.
 
 1. Logga in på [Azure Portal](https://portal.azure.com/).
-2. På den vänstra menyn i Azure Portal klickar du på **Alla resurser**. Sök sedan efter den server som du skapade (till exempel **mydemoserver** ).
+2. På den vänstra menyn i Azure Portal klickar du på **Alla resurser**. Sök sedan efter den server som du skapade (till exempel **mydemoserver**).
 3. Klicka på servernamnet.
 4. På serverpanelen **Översikt** antecknar du **Servernamn** och **Inloggningsnamn för serveradministratören**. Om du glömmer lösenordet kan du även återställa det på den här panelen.
  :::image type="content" source="./media/connect-ruby/1_server-overview-name-login.png" alt-text="Azure Database för MySQL-servernamn":::
@@ -70,9 +70,9 @@ Skaffa den information som du behöver för att ansluta till Azure Database för
 4. I Windows, om Ruby-programmet inte finns på sökvägen för miljövariabeln, kan du behöva använda den fullständiga sökvägen för att starta nodprogrammet, till exempel `"c:\Ruby23-x64\bin\ruby.exe" createtable.rb`
 
 ## <a name="connect-and-create-a-table"></a>Ansluta och skapa en tabell
-Använd följande kod för att ansluta och skapa en tabell med hjälp av **CREATE TABLE** -SQL-instruktionen följt av **INSERT INTO** -SQL-instruktioner för att lägga till rader i tabellen.
+Använd följande kod för att ansluta och skapa en tabell med hjälp av **CREATE TABLE**-SQL-instruktionen följt av **INSERT INTO**-SQL-instruktioner för att lägga till rader i tabellen.
 
-Koden använder en [mysql2:: client](https://www.rubydoc.info/gems/mysql2) -klass för att ansluta till MySQL-servern. Sedan anropas metoden ```query()``` för att köra kommandona Drop, CREATE TABLE och INSERT INTO. Anropa slutligen ```close()``` för att stänga anslutningen innan du avslutar.
+Koden använder en mysql2:: client-klass för att ansluta till MySQL-servern. Sedan anropas metoden ```query()``` för att köra kommandona Drop, CREATE TABLE och INSERT INTO. Anropa slutligen ```close()``` för att stänga anslutningen innan du avslutar.
 
 Ersätt strängarna `host`, `database`, `username` och `password` med egna värden.
 ```ruby
@@ -115,9 +115,9 @@ end
 ```
 
 ## <a name="read-data"></a>Läsa data
-Använd följande kod för att ansluta och läsa data med en **SELECT** -SQL-instruktion.
+Använd följande kod för att ansluta och läsa data med en **SELECT**-SQL-instruktion.
 
-Koden använder en [mysql2:: client](https://www.rubydoc.info/gems/mysql2) -klass för att ansluta till Azure Database for MySQL med- ```new()``` metoden. Sedan anropas metoden ```query()``` för att köra SELECT-kommandona. Sedan anropas metoden ```close()``` för att stänga anslutningen innan den avslutas.
+Koden använder en mysql2:: client-klass för att ansluta till Azure Database for MySQL med- ```new()``` metoden. Sedan anropas metoden ```query()``` för att köra SELECT-kommandona. Sedan anropas metoden ```close()``` för att stänga anslutningen innan den avslutas.
 
 Ersätt strängarna `host`, `database`, `username` och `password` med egna värden.
 
@@ -154,9 +154,9 @@ end
 ```
 
 ## <a name="update-data"></a>Uppdatera data
-Använd följande kod för att ansluta och uppdatera data med en **UPDATE** -SQL-instruktion.
+Använd följande kod för att ansluta och uppdatera data med en **UPDATE**-SQL-instruktion.
 
-Koden använder en [mysql2::client](https://www.rubydoc.info/gems/mysql2)-klass .new() metod för att ansluta till Azure-databas för MySQL. Sedan anropas metoden ```query()```  för att köra uppdaterings kommandona. Sedan anropas metoden ```close()``` för att stänga anslutningen innan den avslutas.
+Koden använder en [mysql2::client](https://rubygems.org/gems/mysql2-client-general_log)-klass .new() metod för att ansluta till Azure-databas för MySQL. Sedan anropas metoden ```query()```  för att köra uppdaterings kommandona. Sedan anropas metoden ```close()``` för att stänga anslutningen innan den avslutas.
 
 Ersätt strängarna `host`, `database`, `username` och `password` med egna värden.
 
@@ -191,7 +191,7 @@ end
 
 
 ## <a name="delete-data"></a>Ta bort data
-Använd följande kod för att ansluta och läsa data med en **DELETE** -SQL-instruktion.
+Använd följande kod för att ansluta och läsa data med en **DELETE**-SQL-instruktion.
 
 Koden använder en [mysql2:: client](https://rubygems.org/gems/mysql2/) -klass för att ansluta till MySQL-servern, kör kommandot DELETE och stäng sedan anslutningen till servern.
 
@@ -241,5 +241,5 @@ az group delete \
 > [Migrera din databas med Exportera och importera](./concepts-migrate-import-export.md) <br/>
 
 > [!div class="nextstepaction"]
-> [Läs mer om MySQL2-klienten](https://www.rubydoc.info/gems/mysql2) <br/>
+> [Läs mer om MySQL2-klienten](https://rubygems.org/gems/mysql2-client-general_log) <br/>
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 3e93b5c4fd2a169da5cdcc42aaabdd29a2c22bb7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 2a7d191af78da417d0ee2ade12b1576912643b6c
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92522481"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827469"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic-by-account"></a>Självstudie: Azure Active Directory integration med enkel inloggning (SSO) med nya Relic efter konto
 
@@ -50,7 +50,7 @@ Om du vill konfigurera integrering av nya Relic per konto i Azure AD måste du l
 1. Logga in på [Azure Portal](https://portal.azure.com) med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
 1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
 1. Navigera till **företags program** och välj sedan **alla program**.
-1. Välj **nytt program**om du vill lägga till ett nytt program.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
 1. I avsnittet **Lägg till från galleriet** , skriver du in **New Relic efter konto** i rutan Sök.
 1. Välj **nytt Relic efter konto** från panelen resultat och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
@@ -80,7 +80,7 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
     a. I textrutan **Inloggnings-URL** anger du en URL enligt följande mönster: 
 
-    `https://rpm.newrelic.com/accounts/{acc_id}/sso/saml/login` – Var noga med att ersätta `acc_id` med ditt eget konto-ID för nya Relic efter konto.
+    `https://rpm.newrelic.com:443/accounts/{acc_id}/sso/saml/finalize` – Var noga med att ersätta `acc_id` med ditt eget konto-ID för nya Relic efter konto.
 
     b. I text rutan **identifierare (enhets-ID)** anger du en URL: `rpm.newrelic.com`
 
@@ -102,11 +102,11 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare**och väljer sedan **alla användare**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
 1. Välj **ny användare** överst på skärmen.
 1. I **användar** egenskaperna följer du de här stegen:
    1. I **Namn**-fältet skriver du `B.Simon`.  
-   1. I fältet **användar namn** anger du username@companydomain.extension . Till exempel `B.Simon@contoso.com`.
+   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
    1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
    1. Klicka på **Skapa**.
 
@@ -114,13 +114,13 @@ I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B
 
 I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till nya Relic per konto.
 
-1. I Azure Portal väljer du **företags program**och väljer sedan **alla program**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
 1. I listan program väljer du **nytt Relic efter konto**.
 1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
 
    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
 
-1. Välj **Lägg till användare**och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
 
     ![Länken Lägg till användare](common/add-assign-user.png)
 
@@ -132,7 +132,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 1. Logga in på ditt **nya Relic av kontots** företags webbplats som administratör i ett annat webbläsarfönster.
 
-2. Klicka på **konto inställningar**på menyn högst upp.
+2. Klicka på **konto inställningar** på menyn högst upp.
    
     ![Skärm bild som visar Välkomst sidan med konto inställningar valt.](./media/new-relic-tutorial/ic797036.png "Konto inställningar")
 
@@ -146,7 +146,7 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
    
     a. Klicka på **Välj fil** för att ladda upp ditt hämtade Azure Active Directory certifikat.
 
-    b. I text rutan **fjärrinloggnings-URL** klistrar du in värdet för **inloggnings-URL: en**som du har kopierat från Azure Portal.
+    b. I text rutan **fjärrinloggnings-URL** klistrar du in värdet för **inloggnings-URL: en** som du har kopierat från Azure Portal.
    
     c. I text rutan **Logga ut landnings-URL** klistrar du in värdet för **utloggnings-URL**, som du har kopierat från Azure Portal.
 
@@ -156,11 +156,11 @@ I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning
 
 1. Logga in på den **nya Relic av kontots** företags webbplats som administratör.
 
-2. Klicka på **konto inställningar**på menyn högst upp.
+2. Klicka på **konto inställningar** på menyn högst upp.
    
     ![Skärm bild som visar de konto inställningar som valts från Välkomst sidan.](./media/new-relic-tutorial/ic797040.png "Konto inställningar")
 
-3. I fönstret **konto** till vänster klickar du på **Sammanfattning**och sedan på **Lägg till användare**.
+3. I fönstret **konto** till vänster klickar du på **Sammanfattning** och sedan på **Lägg till användare**.
    
     ![Skärm bild som visar fönstret Sammanfattning där du kan välja Lägg till användare.](./media/new-relic-tutorial/ic797041.png "Konto inställningar")
 

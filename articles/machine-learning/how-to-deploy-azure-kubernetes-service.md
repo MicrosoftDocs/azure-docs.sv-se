@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, contperf-fy21q1, deploy, devx-track-azurecli
+ms.custom: how-to, contperf-fy21q1, deploy
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: d7540066ccc0d3a62dbd4012eee100d8e8aea98f
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 7ba01139e365b2f0023ef0784b6ed83e7bde609a
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505094"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831743"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Distribuera en modell till ett Azure Kubernetes service-kluster
 
@@ -37,7 +37,7 @@ När du distribuerar till Azure Kubernetes-tjänsten distribuerar du till ett AK
 >
 > Du kan också läsa Azure Machine Learning – [Distribuera till lokal notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - En Azure Machine Learning-arbetsyta. Mer information finns i [skapa en Azure Machine Learning-arbetsyta](how-to-manage-workspace.md).
 
@@ -91,6 +91,55 @@ Klient dels komponenten (azureml-FE) som dirigerar inkommande härlednings förf
 Azureml – FE skalar upp (lodrätt) för att använda fler kärnor och ut (vågrätt) för att använda fler poddar. När du fattar beslutet att skala upp används den tid det tar att dirigera inkommande begär Anden om att dirigera inkommande begär Anden. Om den här tiden överskrider tröskelvärdet sker en skalning. Om tiden för att dirigera inkommande begär Anden fortsätter att överskrida tröskelvärdet sker en skalbarhet.
 
 Vid skalning och i används CPU-användning. Om tröskelvärdet för processor användning är uppfyllt, kommer först klient delen att skalas ned. Om CPU-användningen sjunker till skalnings tröskeln sker en skalnings åtgärd. Att skala upp och ut sker bara om det finns tillräckligt många tillgängliga kluster resurser.
+
+## <a name="understand-connectivity-requirements-for-aks-inferencing-cluster"></a>Förstå anslutnings kraven för AKS inferencing-kluster
+
+När Azure Machine Learning skapar eller kopplar ett AKS-kluster, distribueras AKS-klustret med någon av följande två nätverks modeller:
+* Kubernetes-nätverk – nätverks resurserna skapas och konfigureras vanligt vis när AKS-klustret distribueras.
+* Azure CNI-nätverk (Container Networking Interface) – AKS-klustret ansluts till befintliga resurser och konfigurationer för virtuella nätverk.
+
+För det första nätverks läget skapas och konfigureras nätverk korrekt för Azure Machine Learning tjänst. För det andra nätverks läget, eftersom klustret är anslutet till ett befintligt virtuellt nätverk, särskilt när anpassad DNS används för ett befintligt virtuellt nätverk, måste kunden betala extra uppmärksamhet för anslutnings kraven för AKS inferencing-kluster och kontrol lera DNS-matchning och utgående anslutning för AKS inferencing.
+
+Följande diagram fångar alla anslutnings krav för AKS-inferencing. Svarta pilar representerar den faktiska kommunikationen och blå pilar representerar domän namnen, som kundkontrollerad DNS ska lösa.
+
+ ![Anslutnings krav för AKS-Inferencing](./media/how-to-deploy-aks/aks-network.png)
+
+### <a name="overall-dns-resolution-requirements"></a>Övergripande krav för DNS-matchning
+DNS-matchning i befintligt VNET är under kundens kontroll. Följande DNS-poster ska kunna matchas:
+* AKS-API-server i formatet \<cluster\> . HCP. \<region\> .. azmk8s.io
+* Microsoft Container Registry (MCR): mcr.microsoft.com
+* Kundens Azure Container Registry (båge) i form av \<ACR name\> . azurecr.io
+* Azure Storage konto i formatet \<account\> . Table.Core.Windows.net och \<account\> . blob.Core.Windows.net
+* Valfritt För AAD-autentisering: api.azureml.ms
+* Bedömnings slut punktens domän namn, antingen automatiskt genererat av Azure ML eller det anpassade domän namnet. Det automatiskt genererade domän namnet skulle se ut så här: \<leaf-domain-label \+ auto-generated suffix\> . \<region\> . cloudapp.azure.com
+
+### <a name="connectivity-requirements-in-chronological-order-from-cluster-creation-to-model-deployment"></a>Anslutnings krav i kronologisk ordning: från kluster skapas till modell distribution
+
+I processen för AKS Create eller Attach distribueras Azure ML router (azureml-FE) till AKS-klustret. För att kunna distribuera Azure ML-routern ska AKS-noden kunna:
+* Matcha DNS för AKS-API-Server
+* Matcha DNS för MCR för att hämta Docker-avbildningar för Azure ML router
+* Ladda ned bilder från MCR, där utgående anslutning krävs
+
+Direkt efter att azureml-FE har distribuerats försöker det att starta och detta kräver:
+* Matcha DNS för AKS-API-Server
+* Fråga AKS-API-Server för att identifiera andra instanser av sig själv (det är en POD-tjänst)
+* Anslut till andra instanser av sig själv
+
+När azureml-FE startas krävs ytterligare anslutning för att fungera korrekt:
+* Anslut till Azure Storage för att ladda ned dynamisk konfiguration
+* Matcha DNS för AAD Authentication Server-api.azureml.ms och kommunicera med den när den distribuerade tjänsten använder AAD-autentisering.
+* Fråga AKS API-Server för att identifiera distribuerade modeller
+* Kommunicera med distribuerad modell poddar
+
+Vid modell distributions tiden ska en lyckad modell distributions AKS-nod kunna: 
+* Matcha DNS för kundens ACR
+* Ladda ned bilder från kundens ACR
+* Matcha DNS för Azure-BLOBBAR där modellen lagras
+* Ladda ned modeller från Azure-BLOBBAR
+
+När modellen har distribuerats och tjänsten startar identifierar azureml-FE automatiskt den med hjälp av AKS API och är redo att dirigera begäran till den. Den måste kunna kommunicera med modell-poddar.
+>[!Note]
+>Om den distribuerade modellen kräver anslutning (t. ex. genom att fråga extern databas eller annan REST-tjänst, hämta en blogg osv.), ska både DNS-matchning och utgående kommunikation för dessa tjänster vara aktiverade.
 
 ## <a name="deploy-to-aks"></a>Distribuera till AKS
 

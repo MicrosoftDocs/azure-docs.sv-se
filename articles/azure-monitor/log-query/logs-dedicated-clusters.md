@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: d2446e866c0e12d50a0759373682f4f62bc4bba0
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 34524626cc213233c3db2ca438261b238eb18a2a
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512230"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831779"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor loggar dedicerade kluster
 
@@ -56,6 +56,20 @@ Om din arbets yta använder pris nivån bakåtkompatibelt per nod, kommer den at
 
 Mer information debiteras för Log Analytics dedikerade kluster finns [här]( https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters).
 
+## <a name="asynchronous-operations-and-status-check"></a>Asynkrona åtgärder och status kontroll
+
+Vissa konfigurations steg körs asynkront eftersom de inte kan slutföras snabbt. Statusen i Response kan vara något av följande: "pågår", "uppdatering", "ta bort", "lyckades eller" misslyckades ", inklusive felkoden. När du använder REST returnerar svaret ursprungligen en HTTP-statuskod 200 (OK) och rubriken med Azure-AsyncOperation-egenskapen när den godkänns:
+
+```JSON
+"Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
+```
+
+Du kan kontrol lera statusen för den asynkrona åtgärden genom att skicka en GET-begäran till värdet Azure-AsyncOperation huvud:
+
+```rst
+GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-08-01
+Authorization: Bearer <token>
+```
 
 ## <a name="creating-a-cluster"></a>Skapa ett kluster
 
@@ -90,7 +104,7 @@ Get-Job -Command "New-AzOperationalInsightsCluster*" | Format-List -Property *
 
 *Anropa* 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -113,7 +127,7 @@ Content-type: application/json
 
 Ska vara 200 OK och en rubrik.
 
-### <a name="check-provisioning-status"></a>Kontrollera etableringsstatus
+### <a name="check-cluster-provisioning-status"></a>Kontrol lera etablerings statusen för klustret
 
 Det tar en stund att slutföra etableringen av det Log Analytics klustret. Du kan kontrol lera etablerings statusen på flera sätt:
 
@@ -127,7 +141,7 @@ Det tar en stund att slutföra etableringen av det Log Analytics klustret. Du ka
 - Skicka en GET-begäran på *kluster* resursen och titta på *provisioningState* -värdet. Värdet är *ProvisioningAccount* medan *etableringen och* slutförts.
 
    ```rst
-   GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+   GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
    Authorization: Bearer <token>
    ```
 
@@ -159,104 +173,7 @@ Det tar en stund att slutföra etableringen av det Log Analytics klustret. Du ka
 
 *PrincipalId* GUID genereras av den hanterade identitets tjänsten för *kluster* resursen.
 
-## <a name="change-cluster-properties"></a>Ändra kluster egenskaper
-
-När du har skapat *kluster* resursen och den är helt etablerad kan du redigera ytterligare egenskaper på kluster nivå med PowerShell eller REST API. Förutom de egenskaper som är tillgängliga när klustret skapas kan ytterligare egenskaper bara anges efter att klustret har etablerats:
-
-- **keyVaultProperties**: används för att konfigurera Azure Key Vault som används för att etablera en [Azure Monitor kundhanterad nyckel](../platform/customer-managed-keys.md#customer-managed-key-provisioning-procedure). Den innehåller följande parametrar:  *KeyVaultUri*, *attributnamn*, *version*. 
-- **billingType** – egenskapen *billingType* bestämmer fakturerings behörigheten för *kluster* resursen och dess data:
-  - **Kluster** (standard) – kapacitets reservationens kostnader för klustret är attribut till *kluster* resursen.
-  - **Arbets ytor** – kapacitets reservationens kostnader för klustret anges i proportion till arbets ytorna i klustret, där *kluster* resursen faktureras viss användning om den totala inmatade data för dagen är under kapacitets reservationen. Se [Log Analytics dedikerade kluster](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) för att lära dig mer om kluster pris modellen. 
-
-> [!NOTE]
-> Egenskapen *billingType* stöds inte i PowerShell.
-> Kluster egenskaps uppdateringar kan köras asynkront och kan ta en stund att slutföra.
-
-**PowerShell**
-
-```powershell
-Update-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} -ClusterName {cluster-name} -KeyVaultUri {key-uri} -KeyName {key-name} -KeyVersion {key-version}
-```
-
-**REST**
-
-> [!NOTE]
-> Du kan uppdatera *kluster* resursen *SKU*, *keyVaultProperties* eller *billingType* med hjälp av patch.
-
-Exempel: 
-
-*Anropa*
-
-```rst
-PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
-Authorization: Bearer <token>
-Content-type: application/json
-
-{
-   "sku": {
-     "name": "capacityReservation",
-     "capacity": <capacity-reservation-amount-in-GB>
-     },
-   "properties": {
-    "billingType": "cluster",
-     "KeyVaultProperties": {
-       "KeyVaultUri": "https://<key-vault-name>.vault.azure.net",
-       "KeyName": "<key-name>",
-       "KeyVersion": "<current-version>"
-       }
-   },
-   "location":"<region-name>"
-}
-```
-
-"KeyVaultProperties" innehåller information om Key Vault-nyckel-ID.
-
-*Response*
-
-200 OK och rubrik
-
-### <a name="check-cluster-update-status"></a>Kontrol lera status för kluster uppdatering
-
-Det tar några minuter att utföra spridningen av nyckel identifieraren. Du kan kontrol lera uppdaterings statusen på två sätt:
-
-- Kopiera Azure-AsyncOperation URL-värdet från svaret och följ status kontrollen asynkrona åtgärder. 
-
-   ELLER
-
-- Skicka en GET-begäran på *kluster* resursen och titta på *KeyVaultProperties* -egenskaperna. Den senast uppdaterade informationen om nyckel identifieraren ska returneras i svaret.
-
-   Ett svar på GET-begäran på *kluster* resursen bör se ut så här när nyckel identifierarens uppdatering är slutförd:
-
-   ```json
-   {
-     "identity": {
-       "type": "SystemAssigned",
-       "tenantId": "tenant-id",
-       "principalId": "principle-id"
-       },
-     "sku": {
-       "name": "capacityReservation",
-       "capacity": 1000,
-       "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
-       },
-     "properties": {
-       "keyVaultProperties": {
-         "keyVaultUri": "https://key-vault-name.vault.azure.net",
-         "kyName": "key-name",
-         "keyVersion": "current-version"
-         },
-        "provisioningState": "Succeeded",
-       "billingType": "cluster",
-       "clusterId": "cluster-id"
-     },
-     "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
-     "name": "cluster-name",
-     "type": "Microsoft.OperationalInsights/clusters",
-     "location": "region-name"
-  }
-  ```
-
-## <a name="link-a-workspace-to-the-cluster"></a>Länka en arbets yta till klustret
+## <a name="link-a-workspace-to-cluster"></a>Länka en arbets yta till ett kluster
 
 När en arbets yta är länkad till ett dedikerat kluster dirigeras nya data som matas in i arbets ytan till det nya klustret medan befintliga data behålls i det befintliga klustret. Om det dedikerade klustret är krypterat med Kundhanterade nycklar (CMK) krypteras endast nya data med nyckeln. Systemet sammanfattar den här skillnaden från användarna och användarna skickar bara frågor till arbets ytan som vanligt medan systemet utför kors kluster frågor på Server delen.
 
@@ -299,7 +216,7 @@ Använd följande REST-anrop för att länka till ett kluster:
 *Skicka*
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview 
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-08-01 
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -314,22 +231,34 @@ Content-type: application/json
 
 200 OK och rubrik.
 
-### <a name="using-customer-managed-keys-with-linking"></a>Använda Kundhanterade nycklar med länkning
-
+### <a name="check-workspace-link-status"></a>Kontrol lera länk status för arbets ytan
+  
 Om du använder Kundhanterade nycklar lagras inmatade data krypterade med din hanterade nyckel efter det att associationen har utförts, vilket kan ta upp till 90 minuter att slutföra. 
 
 Du kan kontrol lera associerings tillstånd för arbets ytan på två sätt:
 
 - Kopiera Azure-AsyncOperation URL-värdet från svaret och följ status kontrollen asynkrona åtgärder.
 
-- Skicka en [arbets yta – Hämta](/rest/api/loganalytics/workspaces/get) begäran och observera svaret. Den associerade arbets ytan har en clusterResourceId under "Features".
+- Utför åtgärden Hämta på arbets ytan och observera om egenskapen *clusterResourceId* finns i svaret under *funktioner*.
 
-En sändnings förfrågan ser ut så här:
+**CLI**
 
-*Skicka*
+```azurecli
+az monitor log-analytics cluster show --resource-group "resource-group-name" --name "cluster-name"
+```
+
+**PowerShell**
+
+```powershell
+Get-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
+```
+
+**REST**
+
+*Anropa*
 
 ```rest
-GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>?api-version=2020-08-01
 Authorization: Bearer <token>
 ```
 
@@ -365,14 +294,183 @@ Authorization: Bearer <token>
 }
 ```
 
-## <a name="unlink-a-workspace-from-a-dedicated-cluster"></a>Ta bort länken mellan en arbets yta och ett dedikerat kluster
+## <a name="change-cluster-properties"></a>Ändra kluster egenskaper
+
+När du har skapat *kluster* resursen och den är helt etablerad kan du redigera ytterligare egenskaper på kluster nivå med PowerShell eller REST API. Förutom de egenskaper som är tillgängliga när klustret skapas kan ytterligare egenskaper bara anges efter att klustret har etablerats:
+
+- **keyVaultProperties** – uppdaterar nyckeln i Azure Key Vault. Se [Uppdatera kluster med information om nyckel identifierare](../platform/customer-managed-keys.md#update-cluster-with-key-identifier-details). Den innehåller följande parametrar: *KeyVaultUri*, *attributnamn*, *version*. 
+- **billingType** – egenskapen *billingType* bestämmer fakturerings behörigheten för *kluster* resursen och dess data:
+  - **Kluster** (standard) – kapacitets reservationens kostnader för klustret är attribut till *kluster* resursen.
+  - **Arbets ytor** – kapacitets reservationens kostnader för klustret anges i proportion till arbets ytorna i klustret, där *kluster* resursen faktureras viss användning om den totala inmatade data för dagen är under kapacitets reservationen. Se [Log Analytics dedikerade kluster](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) för att lära dig mer om kluster pris modellen. 
+
+> [!NOTE]
+> Egenskapen *billingType* stöds inte i PowerShell.
+
+### <a name="get-all-clusters-in-resource-group"></a>Hämta alla kluster i resurs gruppen
+  
+**CLI**
+
+```azurecli
+az monitor log-analytics cluster list --resource-group "resource-group-name"
+```
+
+**PowerShell**
+
+```powershell
+Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name"
+```
+
+**REST**
+
+*Anropa*
+
+  ```rst
+  GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
+  Authorization: Bearer <token>
+  ```
+
+*Response*
+  
+  ```json
+  {
+    "value": [
+      {
+        "identity": {
+          "type": "SystemAssigned",
+          "tenantId": "tenant-id",
+          "principalId": "principal-Id"
+        },
+        "sku": {
+          "name": "capacityReservation",
+          "capacity": 1000,
+          "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
+          },
+        "properties": {
+           "keyVaultProperties": {
+              "keyVaultUri": "https://key-vault-name.vault.azure.net",
+              "keyName": "key-name",
+              "keyVersion": "current-version"
+              },
+          "provisioningState": "Succeeded",
+          "billingType": "cluster",
+          "clusterId": "cluster-id"
+        },
+        "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.operationalinsights/workspaces/workspace-name",
+        "name": "cluster-name",
+        "type": "Microsoft.OperationalInsights/clusters",
+        "location": "region-name"
+      }
+    ]
+  }
+  ```
+
+### <a name="get-all-clusters-in-subscription"></a>Hämta alla kluster i prenumerationen
+
+**CLI**
+
+```azurecli
+az monitor log-analytics cluster list
+```
+
+**PowerShell**
+
+```powershell
+Get-AzOperationalInsightsCluster
+```
+
+**REST**
+
+*Anropa*
+
+```rst
+GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
+Authorization: Bearer <token>
+```
+    
+*Response*
+    
+Samma som för "kluster i en resurs grupp", men i prenumerations omfånget.
+
+
+
+### <a name="update-capacity-reservation-in-cluster"></a>Uppdatera kapacitets reservation i kluster
+
+När data volymen till dina länkade arbets ytor ändras med tiden och du vill uppdatera kapacitets reservations nivån korrekt. Kapaciteten anges i enheter om GB och kan ha värden på 1000 GB/dag eller mer i steg om 100 GB/dag. Observera att du inte behöver ange en fullständig REST-begäran, men bör inkludera SKU: n.
+
+**CLI**
+
+```azurecli
+az monitor log-analytics cluster update --name "cluster-name" --resource-group "resource-group-name" --sku-capacity 1000
+```
+
+**PowerShell**
+
+```powershell
+Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity 1000
+```
+
+**REST**
+
+*Anropa*
+
+  ```rst
+  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
+  Authorization: Bearer <token>
+  Content-type: application/json
+
+  {
+    "sku": {
+      "name": "capacityReservation",
+      "Capacity": 2000
+    }
+  }
+  ```
+
+### <a name="update-billingtype-in-cluster"></a>Uppdatera billingType i kluster
+
+Egenskapen *billingType* bestämmer fakturerings behörighet för klustret och dess data:
+- *kluster* (standard)--faktureringen tillskrivs till den prenumeration som är värd för kluster resursen
+- *arbets ytor* – faktureringen hänförs till prenumerationerna som är värdar för dina arbets ytor proportionellt
+
+**REST**
+
+*Anropa*
+
+  ```rst
+  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
+  Authorization: Bearer <token>
+  Content-type: application/json
+
+  {
+    "properties": {
+      "billingType": "cluster",
+      }  
+  }
+  ```
+
+### <a name="unlink-a-workspace-from-cluster"></a>Ta bort länken mellan en arbets yta och ett kluster
 
 Du kan ta bort länken till en arbets yta från ett kluster. När du har länkat en arbets yta från klustret skickas inte nya data som är kopplade till den här arbets ytan till det dedikerade klustret. Dessutom görs inte längre arbets ytans fakturering via klustret. Gamla data för den olänkade arbets ytan kan vara kvar i klustret. Om dessa data är krypterade med Kundhanterade nycklar (CMK) behålls Key Vault hemligheterna. Systemet är en sammanfattning av den här ändringen från Log Analytics användare. Användare kan bara fråga arbets ytan som vanligt. Systemet utför kors kluster frågor på Server delen om det behövs utan att användaren tillfrågas.  
 
 > [!WARNING] 
-> Det finns en gräns på två länknings åtgärder per arbets yta inom en månad. Ta hänsyn till och planera att ta bort länkar från åtgärder enligt detta. 
+> Det finns en gräns på två länknings åtgärder för en angiven arbets yta inom en månad. Ta hänsyn till och planera att ta bort länkar från åtgärder enligt detta.
 
-## <a name="delete-a-dedicated-cluster"></a>Ta bort ett dedikerat kluster
+**CLI**
+
+```azurecli
+az monitor log-analytics workspace linked-service delete --resource-group "resource-group-name" --workspace-name "MyWorkspace" --name cluster
+```
+
+**PowerShell**
+
+Använd följande PowerShell-kommando för att ta bort länken till en arbets yta från klustret:
+
+```powershell
+# Unlink a workspace from cluster
+Remove-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-name} -WorkspaceName {workspace-name} -LinkedServiceName cluster
+```
+
+### <a name="delete-cluster"></a>Ta bort klustret
 
 En dedikerad kluster resurs kan tas bort. Du måste ta bort länken mellan alla arbets ytor från klustret innan du tar bort det. Du behöver Skriv behörighet för *kluster* resursen för att utföra den här åtgärden. 
 
@@ -381,6 +479,9 @@ När kluster resursen har tagits bort övergår det fysiska klustret till en ren
 En *kluster* resurs som togs bort under de senaste 14 dagarna är i läget för tyst Borttagning och kan återställas med sina data. Eftersom alla arbets ytor har kopplats bort från *kluster* resursen med *kluster* resurs borttagning måste du associera dina arbets ytor igen efter återställningen. Det går inte att utföra återställnings åtgärden av användaren kontakta din Microsoft-kanal eller support för återställnings begär Anden.
 
 Inom 14 dagar efter borttagningen är kluster resurs namnet reserverat och kan inte användas av andra resurser.
+
+> [!WARNING] 
+> Det finns en gräns på tre kluster per prenumeration. Både aktiva och mjuka, borttagna kluster räknas som en del av detta. Kunder bör inte skapa återkommande procedurer som skapar och tar bort kluster. Det har en betydande inverkan på Log Analytics backend-system.
 
 **PowerShell**
 
@@ -403,7 +504,73 @@ Använd följande REST-anrop för att ta bort ett kluster:
 
   200 OK
 
+## <a name="limits-and-constraints"></a>Begränsningar och begränsningar
 
+- Det högsta antalet kluster per region och prenumeration är 2
+
+- Det maximala antalet länkade arbets ytor till klustret är 1000
+
+- Du kan länka en arbets yta till klustret och sedan ta bort länken till den. Antalet länk åtgärder på arbets ytan på en viss arbets yta är begränsat till 2 under en period på 30 dagar.
+
+- Arbets ytans länk till kluster ska endast utföras när du har kontrollerat att Log Analytics kluster etableringen har slutförts. Data som skickas till din arbets yta innan slut för Ande kommer att tas bort och går inte att återskapa.
+
+- Det finns för närvarande inte stöd för att flytta kluster till en annan resurs grupp eller prenumeration.
+
+- Arbets ytans länk till klustret Miss fungerar om den är länkad till ett annat kluster.
+
+- Den säkra databasen är inte tillgänglig i Kina. 
+
+- [Double Encryption](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) konfigureras automatiskt för kluster som skapats från oktober 2020 i regioner som stöds. Du kan kontrol lera om klustret har kon figurer ATS för Double Encryption med en GET-begäran på klustret och att `"isDoubleEncryptionEnabled"` det är `true` för kluster med dubbel kryptering aktiverat. 
+  - Om du skapar ett kluster och får ett fel meddelande om att <region namn> inte stöder Double Encryption för kluster. "kan du fortfarande skapa klustret utan Double Encryption. Lägg till `"properties": {"isDoubleEncryptionEnabled": false}` egenskap i rest Request-texten.
+  - Inställningen Double Encryption kan inte ändras efter att klustret har skapats.
+
+## <a name="troubleshooting"></a>Felsökning
+
+- Om du får ett konflikt fel när du skapar ett kluster, kan det bero på att du har tagit bort klustret under de senaste 14 dagarna och att det är i ett läge med mjuk borttagning. Kluster namnet förblir reserverat under den mjuka borttagnings perioden och du kan inte skapa ett nytt kluster med det namnet. Namnet släpps efter den mjuka borttagnings perioden när klustret tas bort permanent.
+
+- Om du uppdaterar klustret medan en åtgärd pågår, fungerar inte åtgärden.
+
+- Vissa åtgärder är långa och kan ta en stund att slutföra – dessa är kluster skapa, kluster nyckel uppdatering och kluster borttagning. Du kan kontrol lera åtgärds statusen på två sätt:
+  - När du använder REST kopierar du Azure-AsyncOperation URL-värdet från svaret och följer [status kontrollen asynkrona åtgärder](#asynchronous-operations-and-status-check).
+  - Skicka GET-begäran till kluster eller arbets yta och observera svaret. Till exempel kan inte en länkad arbets yta ha *clusterResourceId* under *funktioner*.
+
+- Felmeddelanden
+  
+  Skapa kluster:
+  -  400--kluster namnet är ogiltigt. Kluster namnet kan innehålla tecknen a – z, A-Z, 0-9 och längden 3-63.
+  -  400 – bröd texten i begäran är null eller i felaktigt format.
+  -  400--SKU-namnet är ogiltigt. Ange SKU-namn till capacityReservation.
+  -  400--kapaciteten tillhandahölls men SKU: n är inte capacityReservation. Ange SKU-namn till capacityReservation.
+  -  400--kapacitet saknas i SKU. Ange kapacitets värde till 1000 eller högre i steg om 100 (GB).
+  -  400--kapacitet i SKU är inte inom intervallet. Bör vara minst 1000 och upp till den högsta tillåtna kapaciteten som är tillgänglig under "användning och uppskattad kostnad" i din arbets yta.
+  -  400 – kapaciteten är låst i 30 dagar. Minskning av kapaciteten tillåts 30 dagar efter uppdateringen.
+  -  400--inget SKU har angetts. Ange SKU-namnet till capacityReservation och kapacitets värde till 1000 eller högre i steg om 100 (GB).
+  -  400--identiteten är null eller tom. Ange identitet med systemAssigned-typ.
+  -  400--KeyVaultProperties anges när de skapas. Uppdatera KeyVaultProperties när klustret har skapats.
+  -  400--åtgärden kan inte utföras nu. Den asynkrona åtgärden är i ett annat tillstånd än lyckades. Klustret måste utföra åtgärden innan en uppdaterings åtgärd utförs.
+
+  Kluster uppdatering
+  -  400--klustrets status tas bort. En asynkron åtgärd pågår. Klustret måste utföra åtgärden innan en uppdaterings åtgärd utförs.
+  -  400--KeyVaultProperties är inte tomt men har ett felaktigt format. Se [uppdatering av nyckel identifierare](../platform/customer-managed-keys.md#update-cluster-with-key-identifier-details).
+  -  400--det gick inte att verifiera nyckeln i Key Vault. Kan bero på otillräckliga behörigheter eller när nyckeln inte finns. Kontrol lera att du [ställer in nyckel-och åtkomst principer](../platform/customer-managed-keys.md#grant-key-vault-permissions) i Key Vault.
+  -  400--det går inte att återskapa nyckeln. Key Vault måste anges som mjuk borttagning och rensnings skydd. Se [Key Vault-dokumentation](../../key-vault/general/soft-delete-overview.md)
+  -  400--åtgärden kan inte utföras nu. Vänta tills den asynkrona åtgärden har slutförts och försök igen.
+  -  400--klustrets status tas bort. Vänta tills den asynkrona åtgärden har slutförts och försök igen.
+
+  Hämta kluster:
+    -  404--det gick inte att hitta klustret, klustret kan ha tagits bort. Om du försöker skapa ett kluster med det namnet och få en konflikt, är klustret mjuk borttagning i 14 dagar. Du kan kontakta supporten för att återställa den eller använda ett annat namn för att skapa ett nytt kluster. 
+
+  Ta bort kluster
+    -  409--det går inte att ta bort ett kluster i etablerings tillstånd. Vänta tills den asynkrona åtgärden har slutförts och försök igen.
+
+  Arbets ytans länk:
+  -  404--arbets ytan hittades inte. Den arbets yta du angav finns inte eller har tagits bort.
+  -  409---arbets ytans länk eller ta bort länk i processen.
+  -  400--det gick inte att hitta klustret, det kluster du angav finns inte eller har tagits bort. Om du försöker skapa ett kluster med det namnet och få en konflikt, är klustret mjuk borttagning i 14 dagar. Du kan kontakta supporten för att återställa den.
+
+  Ta bort arbets yta:
+  -  404--arbets ytan hittades inte. Den arbets yta du angav finns inte eller har tagits bort.
+  -  409---arbets ytans länk eller ta bort länk i processen.
 
 ## <a name="next-steps"></a>Nästa steg
 

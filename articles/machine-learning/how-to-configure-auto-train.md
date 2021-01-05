@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 6aa54f65b504e61a5e74ed584c5dad51e49eb087
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 60aab2c77a5ccf59e129b21deab34daf756b2e23
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031461"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827435"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurera automatiserade ML-experiment i Python
 
@@ -151,7 +151,7 @@ Några exempel är:
    ```
 
 
-1. Prognosticering av uppgifter kräver ytterligare konfiguration. mer information finns i artikeln [Auto-träna en Time-Series prognos modell](how-to-auto-train-forecast.md) . 
+1. Prognosticering-uppgifter kräver extra konfiguration. mer information finns i artikeln [träna en Time-Series prognos modell](how-to-auto-train-forecast.md) . 
 
     ```python
     time_series_settings = {
@@ -220,7 +220,7 @@ I varje automatiserad maskin inlärnings experiment skalas dina data automatiskt
 
 När du konfigurerar experiment i `AutoMLConfig` objektet kan du aktivera/inaktivera inställningen `featurization` . I följande tabell visas de accepterade inställningarna för funktionalisering i [AutoMLConfig-objektet](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
-|Funktionalisering-konfiguration | Description |
+|Funktionalisering-konfiguration | Beskrivning |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Anger att [data guardrails och funktionalisering-steg](how-to-configure-auto-features.md#featurization) utförs automatiskt när en del av förbearbetningen. **Standardinställning**.|
 |`"featurization": 'off'`| Anger att funktionalisering-steget inte ska göras automatiskt.|
@@ -235,7 +235,7 @@ När du konfigurerar experiment i `AutoMLConfig` objektet kan du aktivera/inakti
 
 Ensemble-modeller är aktiverade som standard och visas som de slutliga körnings iterationerna i en AutoML-körning. För närvarande stöds **VotingEnsemble** och **StackEnsemble** . 
 
-Röstningen implementerar mjuk röstning som använder viktade medelvärden. Stack implementeringen använder en implementering på två nivåer, där det första lagret har samma modeller som en ensemble-Ensemble, och den andra skikt modellen används för att hitta den optimala kombinationen av modeller från det första lagret. 
+Röstningen implementerar mjuk röstning, som använder viktade medelvärden. Stack implementeringen använder en implementering på två nivåer, där det första lagret har samma modeller som en ensemble-Ensemble, och den andra skikt modellen används för att hitta den optimala kombinationen av modeller från det första lagret. 
 
 Om du använder ONNX-modeller **eller** om modell förklarande är aktiverat, är stackning inaktive rad och endast röstning används.
 
@@ -321,7 +321,7 @@ from azureml.core.experiment import Experiment
 ws = Workspace.from_config()
 
 # Choose a name for the experiment and specify the project folder.
-experiment_name = 'automl-classification'
+experiment_name = 'Tutorial-automl'
 project_folder = './sample_projects/automl-classification'
 
 experiment = Experiment(ws, experiment_name)
@@ -374,6 +374,109 @@ Allmän information om hur modell förklaringar och funktions prioritet kan akti
 
 > [!NOTE]
 > ForecastTCN-modellen stöds för närvarande inte av förklarings klienten. Den här modellen returnerar ingen förklarings instrument panel om den returneras som den bästa modellen och inte stöder förklarings körningar på begäran.
+
+## <a name="troubleshooting"></a>Felsökning
+
+* **Den senaste uppgraderingen av `AutoML` beroenden till nyare versioner kommer att brytas**: från och med version 1.13.0 av SDK kommer modeller inte att läsas in i äldre SDK: er på grund av inkompatibilitet mellan äldre versioner som vi har fäst i våra tidigare paket och de nyare versioner vi fäster nu. Du får ett fel meddelande som:
+  * Modulen hittades inte: t. ex. `No module named 'sklearn.decomposition._truncated_svd` ,
+  * Import fel: t. ex. `ImportError: cannot import name 'RollingOriginValidator'` ,
+  * Fel i attribut: t. ex. `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
+  
+  Undvik det här problemet genom att göra något av följande två steg beroende på din SDK- `AutoML` utbildnings version:
+    * Om din `AutoML` SDK-tränings version är större än 1.13.0, behöver du `pandas == 0.25.1` och `sckit-learn==0.22.1` . Om det finns en versions konflikt uppgraderar du scikit-lära och/eller Pandas för att korrigera versionen enligt nedan:
+      
+      ```bash
+         pip install --upgrade pandas==0.25.1
+         pip install --upgrade scikit-learn==0.22.1
+      ```
+      
+    * Om din `AutoML` SDK-tränings version är mindre än eller lika med 1.12.0, behöver du `pandas == 0.23.4` och `sckit-learn==0.20.3` . Om det finns en versions konflikt kan du nedgradera scikit – lära och/eller Pandas för att korrigera versionen enligt nedan:
+  
+      ```bash
+        pip install --upgrade pandas==0.23.4
+        pip install --upgrade scikit-learn==0.20.3
+      ```
+
+* **Misslyckad distribution**: för versioner <= 1.18.0 av SDK kan bas avbildningen som skapats för distribution Miss lyckas med följande fel: "ImportError: kan inte importera namn `cached_property` från `werkzeug` ". 
+
+  Följande steg kan lösa problemet:
+  1. Ladda ned modell paketet
+  2. Packa upp paketet
+  3. Distribuera med hjälp av unzippade till gångar
+
+* **Prognosticering R2-poängen är alltid noll**: det här problemet uppstår om de angivna tränings data har tids serier som innehåller samma värde för de sista `n_cv_splits`  +  `forecasting_horizon` data punkterna. Om det här mönstret förväntas i din tids serie kan du växla det primära måttet till normaliserat rot genomsnitts fel i roten.
+ 
+* **TensorFlow**: från och med version 1.5.0 av SDK installerar automatiserad Machine Learning inte TensorFlow-modeller som standard. Installera TensorFlow och Använd det med dina automatiserade ML-experiment genom att installera TensorFlow = = 1.12.0 via CondaDependecies. 
+ 
+   ```python
+   from azureml.core.runconfig import RunConfiguration
+   from azureml.core.conda_dependencies import CondaDependencies
+   run_config = RunConfiguration()
+   run_config.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['tensorflow==1.12.0'])
+  ```
+
+* **Experiment diagram**: binära klassificerings diagram (precision-återkallande, Roc, kurva osv.) som visas i automatiserade ml experiment-iterationer återges inte korrekt i användar gränssnittet sedan 4/12. Diagram observationer visar för närvarande inversa resultat, där modeller med bättre prestanda visas med lägre resultat. En lösning är under undersökning.
+
+* **Databricks avbryter en automatiserad maskin inlärnings körning**: när du använder automatiserade funktioner för maskin inlärning på Azure Databricks, för att avbryta en körning och starta en ny experiment körning, startar du om Azure Databricks klustret.
+
+* **Databricks >10 iterationer för automatisk maskin inlärning**: i automatiserade inställningar för maskin inlärning, om du har fler än 10 iterationer, anger du `show_output` `False` när du skickar in körningen.
+
+* **Databricks-widget för Azure Machine Learning SDK och automatisk maskin inlärning**: widgeten Azure Machine Learning SDK stöds inte i en Databricks Notebook eftersom antecknings böckerna inte kan parsa HTML-widgetar. Du kan visa widgeten i portalen genom att använda den här python-koden i din Azure Databricks Notebook-cell:
+
+    ```
+    displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
+    ```
+* **automl_setup Miss lyckas**: 
+    * I Windows kör du automl_setup från en Anaconda-prompt. Använd den här länken för att [Installera Miniconda](https://docs.conda.io/en/latest/miniconda.html).
+    * Se till att Conda 64-bit är installerad, i stället för 32-bitars genom att köra `conda info` kommandot. `platform`Ska vara `win-64` för Windows eller `osx-64` Mac.
+    * Se till att Conda 4.4.10 eller senare är installerat. Du kan kontrol lera versionen med kommandot `conda -V` . Om du har installerat en tidigare version kan du uppdatera den med hjälp av kommandot: `conda update conda` .
+    * Linux `gcc: error trying to exec 'cc1plus'`
+      *  Om `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` felet uppstår installerar du build Essentials med hjälp av kommandot `sudo apt-get install build-essential` .
+      * Skicka ett nytt namn som den första parametern till automl_setup för att skapa en ny Conda-miljö. Visa befintliga Conda-miljöer med `conda env list` och ta bort dem med `conda env remove -n <environmentname>` .
+      
+* **automl_setup_linux. sh Miss lyckas**: om automl_setup_linus. sh Miss lyckas på Ubuntu Linux med felet: `unable to execute 'gcc': No such file or directory`-
+  1. Se till att de utgående portarna 53 och 80 är aktiverade. På en virtuell Azure-dator kan du göra detta från Azure Portal genom att välja den virtuella datorn och klicka på nätverk.
+  2. Kör kommandot: `sudo apt-get update`
+  3. Kör kommandot: `sudo apt-get install build-essential --fix-missing`
+  4. Kör `automl_setup_linux.sh` igen
+
+* **konfiguration. ipynb Miss lyckas**:
+  * För lokala Conda kontrollerar du först att automl_setup har körts.
+  * Kontrol lera att subscription_id är korrekt. Hitta subscription_id i Azure Portal genom att välja alla tjänster och sedan prenumerationer. Tecknen "<" och ">" ska inte tas med i subscription_id svärdet. Har till exempel `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` det giltiga formatet.
+  * Se till att deltagar-eller ägar åtkomst till prenumerationen.
+  * Kontrol lera att regionen är en av de regioner som stöds:,,,,,, `eastus2` `eastus` `westcentralus` `southeastasia` `westeurope` `australiaeast` `westus2` `southcentralus` .
+  * Se till att du har åtkomst till regionen med hjälp av Azure Portal.
+  
+* **`import AutoMLConfig` Miss lyckas**: paket ändringar i den automatiserade Machine Learning-versionen 1.0.76, som kräver att den tidigare versionen avinstallerades innan den nya versionen uppdaterades. Om `ImportError: cannot import name AutoMLConfig` felet inträffar efter att du har uppgraderat från en SDK-version före v-1.0.76 till v 1.0.76 eller senare, löser du felet genom att köra: `pip uninstall azureml-train automl` och sedan `pip install azureml-train-auotml` . Skriptet automl_setup. cmd gör detta automatiskt. 
+
+* **Workspace.from_config Miss lyckas**: om anropen ws = Workspace.from_config () Miss lyckas –
+  1. Se till att konfigurationen. ipynb Notebook har körts.
+  2. Om antecknings boken körs från en mapp som inte finns under den mapp där `configuration.ipynb` kördes, kopierar du mappen aml_config och filen config.jsden innehåller till den nya mappen. Workspace.from_config läser config.jsför mappen Notebook eller den överordnade mappen.
+  3. Om en ny prenumeration, resurs grupp, arbets yta eller region används, se till att du kör `configuration.ipynb` antecknings boken igen. Att ändra config.jsdirekt fungerar bara om arbets ytan redan finns i den angivna resurs gruppen under den angivna prenumerationen.
+  4. Om du vill ändra region ändrar du arbets ytan, resurs gruppen eller prenumerationen. `Workspace.create` kommer inte att skapa eller uppdatera en arbets yta om den redan finns, även om den angivna regionen är annorlunda.
+  
+* **Exempel på antecknings bok Miss lyckas**: om en exempel antecknings bok Miss lyckas med ett fel där egenskapen, metoden eller biblioteket inte finns:
+  * Kontrol lera att rätt kernel har marker ATS i Jupyter Notebook. Kerneln visas i det övre högra hörnet på antecknings sidan. Standardvärdet är azure_automl. Kärnan sparas som en del av antecknings boken. Så om du växlar till en ny Conda-miljö måste du välja den nya kerneln i antecknings boken.
+      * För Azure Notebooks bör det vara python 3,6. 
+      * För lokala Conda-miljöer bör det vara namnet på den Conda-miljö som du angav i automl_setup.
+  * Se till att antecknings boken är för den SDK-version som du använder. Du kan kontrol lera SDK-versionen genom att köra `azureml.core.VERSION` i en Jupyter Notebook cell. Du kan hämta tidigare versioner av exempel antecknings böckerna från GitHub genom att klicka på `Branch` knappen, välja `Tags` fliken och sedan välja versionen.
+
+* **`import numpy` Miss lyckas i Windows**: vissa Windows-miljöer ser ett fel vid inläsning av numpy med den senaste python-versionen 3.6.8. Om du ser det här problemet kan du prova med python version 3.6.7.
+
+* **`import numpy` Miss lyckas**: kontrol lera TensorFlow-versionen i den automatiserade ml Conda-miljön. Versioner som stöds är < 1,13. Avinstallera TensorFlow från miljön om versionen är >= 1,13. Du kan kontrol lera versionen av TensorFlow och avinstallera enligt följande:
+  1. Starta ett kommando gränssnitt, aktivera Conda-miljön där automatiserade ml-paket är installerade.
+  2. Ange `pip freeze` och leta efter `tensorflow` , om den hittas, ska den version som visas vara < 1,13
+  3. Om den listade versionen inte är en version som stöds går du till `pip uninstall tensorflow` kommando gränssnittet och anger y för bekräftelse.
+  
+ * **Körningen Miss `jwt.exceptions.DecodeError` lyckas med**: exakt fel meddelande: `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()` . 
+ 
+    Överväg att uppgradera till den senaste versionen av AutoML SDK: `pip install -U azureml-sdk[automl]` . 
+    
+    Om detta inte är giltigt kontrollerar du versionen av PyJWT. Versioner som stöds är < 2.0.0. Avinstallera PyJWT från miljön om versionen är >= 2.0.0. Du kan kontrol lera versionen av PyJWT, avinstallera och installera rätt version på följande sätt:
+    1. Starta ett kommando gränssnitt, aktivera Conda-miljön där automatiserade ml-paket är installerade.
+    2. Ange `pip freeze` och leta efter `PyJWT` , om den hittas, ska den version som visas < 2.0.0
+    3. Om den listade versionen inte är en version som stöds går du till `pip uninstall PyJWT` kommando gränssnittet och anger y för bekräftelse.
+    4. Installera med `pip install 'PyJWT<2.0.0'` .
 
 ## <a name="next-steps"></a>Nästa steg
 

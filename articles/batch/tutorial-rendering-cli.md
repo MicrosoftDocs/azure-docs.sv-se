@@ -1,34 +1,34 @@
 ---
 title: Självstudie – återge en scen i molnet
-description: Självstudie – Så renderar du en Autodesk 3ds Max-scen med Arnold med hjälp av Batch Rendering Service och kommandoradsgränssnittet i Azure
+description: Lär dig hur du återger en Autodesk 3ds Max-scen med Arnold med hjälp av tjänsten för batch-rendering och Azure Command-Line-gränssnittet
 ms.topic: tutorial
-ms.date: 03/05/2020
+ms.date: 12/30/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: e0858e838ba73862ef7f15040915c5f5cd3c751b
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 3518e074589284e6d6cd7432dc77ba8bdd457045
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106350"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827537"
 ---
-# <a name="tutorial-render-a-scene-with-azure-batch"></a>Självstudie: Rendera en scen med Azure Batch 
+# <a name="tutorial-render-a-scene-with-azure-batch"></a>Självstudie: Rendera en scen med Azure Batch
 
 Azure Batch har renderingsfunktioner i molnskala där du betalar per användning. Azure Batch har stöd för renderingsappar som Autodesk Maya, 3ds Max, Arnold och V-Ray. I den här självstudien visas hur du renderar en liten scen med Batch med hjälp av kommandoradsgränssnittet i Azure. Lär dig att:
 
 > [!div class="checklist"]
-> * ladda upp en scen till Azure-lagringen
-> * skapa en Batch-pool för rendering
-> * rendera en scen med en bildruta
-> * skala poolen och rendera en scen med flera bildrutor
-> * ladda ned renderade utdata.
+> - ladda upp en scen till Azure-lagringen
+> - skapa en Batch-pool för rendering
+> - rendera en scen med en bildruta
+> - skala poolen och rendera en scen med flera bildrutor
+> - ladda ned renderade utdata.
 
 I den här självstudien renderar du en 3ds Max-scen med Batch med ray-tracing-renderaren [Arnold](https://www.autodesk.com/products/arnold/overview). Batch-poolen använder en Azure Marketplace-avbildning med förinstallerade grafik- och renderingsprogram som tillhandahåller licensiering med betalning per användning.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
- - Du behöver en användningsbaserad prenumeration eller annat Azure-köpalternativ för att använda renderingsprogram i Batch för betalning per användningstillfälle. **Användningsbaserad licensiering stöds inte om du använder ett kostnadsfritt Azure-erbjudande som ger penningkredit.**
+- Du behöver en användningsbaserad prenumeration eller annat Azure-köpalternativ för att använda renderingsprogram i Batch för betalning per användningstillfälle. **Användningsbaserad licensiering stöds inte om du använder ett kostnadsfritt Azure-erbjudande som ger penningkredit.**
 
- - 3ds Max-exempelscenen till den här självstudien finns på [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene), tillsammans med ett Bash-exempelskript och JSON-konfigurationsfiler. 3ds Max-scenen kommer från [Autodesk 3ds Max-exempelfilerna](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe). (Autodesk 3ds Max-exempelfilerna är tillgängliga under en Creative Commons Attribution-NonCommercial-Share Alike-licens. Copyright &copy; Autodesk, Inc.)
+- 3ds Max-exempelscenen till den här självstudien finns på [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene), tillsammans med ett Bash-exempelskript och JSON-konfigurationsfiler. 3ds Max-scenen kommer från [Autodesk 3ds Max-exempelfilerna](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe). (Autodesk 3ds Max-exempelfilerna är tillgängliga under en Creative Commons Attribution-NonCommercial-Share Alike-licens. Copyright &copy; Autodesk, Inc.)
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
@@ -36,13 +36,14 @@ I den här självstudien renderar du en 3ds Max-scen med Batch med ray-tracing-r
 
 > [!TIP]
 > Du kan visa [Arnold](https://github.com/Azure/batch-extension-templates/tree/master/templates/arnold/render-windows-frames) -jobbmallar i GitHub-lagringsplatsen Azure Batch Extension templates.
+
 ## <a name="create-a-batch-account"></a>Skapa ett Batch-konto
 
-Om du inte redan gjort det skapar du en resursgrupp, ett Batch-konto och ett länkat lagringskonto i din prenumeration. 
+Om du inte redan gjort det skapar du en resursgrupp, ett Batch-konto och ett länkat lagringskonto i din prenumeration.
 
 Skapa en resursgrupp med kommandot [az group create](/cli/azure/group#az-group-create). I följande exempel skapas en resursgrupp med namnet *myResourceGroup* på platsen *eastus2*.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create \
     --name myResourceGroup \
     --location eastus2
@@ -57,9 +58,10 @@ az storage account create \
     --location eastus2 \
     --sku Standard_LRS
 ```
+
 Skapa ett Batch-konto med kommandot [az batch account create](/cli/azure/batch/account#az-batch-account-create). I följande exempel skapas ett Batch-konto med namnet *mybatchaccount* i *myResourceGroup*, med en länk till det lagringskonto du skapade.  
 
-```azurecli-interactive 
+```azurecli-interactive
 az batch account create \
     --name mybatchaccount \
     --storage-account mystorageaccount \
@@ -69,12 +71,13 @@ az batch account create \
 
 Du måste autentisera med Batch för att skapa och hantera beräkningspooler och jobb. Logga in på kontot med kommandot [az batch account login](/cli/azure/batch/account#az-batch-account-login). När du har loggat in använder dina `az batch`-kommandon den här kontokontexten. I följande exempel används autentisering med delad nyckel, baserat på kontonamn och nyckel för Batch. Batch har även stöd för autentisering via [Azure Active Directory](batch-aad-auth.md) när enskilda användare eller övervakade program ska autentiseras.
 
-```azurecli-interactive 
+```azurecli-interactive
 az batch account login \
     --name mybatchaccount \
     --resource-group myResourceGroup \
     --shared-key-auth
 ```
+
 ## <a name="upload-a-scene-to-storage"></a>Ladda upp en scen till lagringen
 
 När du ska ladda upp indatascenen till lagringen måste du först komma åt lagringskontot och skapa en målcontainer för blobarna. Du kommer åt Azure Storage-kontot genom att exportera miljövariablerna `AZURE_STORAGE_KEY` och `AZURE_STORAGE_ACCOUNT`. I det första Bash-skalkommandot används kommandot [az storage account keys list](/cli/azure/storage/account/keys#az-storage-account-keys-list) till att hämta den första kontonyckeln. När du ställer in de här miljövariablerna använder dina storage-kommandon den här kontokontexten.
@@ -135,16 +138,18 @@ Skapa en Batch-pool för rendering med kommandot [az batch pool create](/cli/azu
   "enableInterNodeCommunication": false 
 }
 ```
-Batch har stöd för dedikerade noder och [noder med låg prioritet](batch-low-pri-vms.md), och du kan använda en av eller båda typerna i dina pooler. Dedikerade noder är reserverade för din pool. Noder med låg prioritet erbjuds till ett reducerat pris från VM-överskottskapacitet i Azure. Noder med låg prioritet är inte tillgängliga om Azure inte har tillräckligt med kapacitet. 
+
+Batch har stöd för dedikerade noder och [noder med låg prioritet](batch-low-pri-vms.md), och du kan använda en av eller båda typerna i dina pooler. Dedikerade noder är reserverade för din pool. Noder med låg prioritet erbjuds till ett reducerat pris från VM-överskottskapacitet i Azure. Noder med låg prioritet är inte tillgängliga om Azure inte har tillräckligt med kapacitet.
 
 Den angivna poolen innehåller en enda nod med låg prioritet som kör en Windows Server-avbildning med programvara för Batch Rendering-tjänsten. Den här poolen är licensierad för rendering med 3ds Max och Arnold. I ett senare steg skalar du ut poolen till ett större antal noder.
 
-Skapa poolen genom att skicka JSON-filen till kommandot `az batch pool create`:
+Om du inte redan har loggat in på batch-kontot använder du kommandot [AZ batch Account login](/cli/azure/batch/account#az-batch-account-login) för att göra detta. Skapa sedan poolen genom att skicka JSON-filen till `az batch pool create` kommandot:
 
 ```azurecli-interactive
 az batch pool create \
     --json-file mypool.json
-``` 
+```
+
 Det tar några minuter att etablera poolen. Om du vill se status för poolen kör du kommandot [az batch pool show](/cli/azure/batch/pool#az-batch-pool-show). Följande kommando hämtar allokeringstillståndet för poolen:
 
 ```azurecli-interactive
@@ -157,7 +162,7 @@ Fortsätt med följande steg för att skapa ett jobb och aktiviteter medan poolt
 
 ## <a name="create-a-blob-container-for-output"></a>Skapa en blob-container för utdata
 
-I exemplen i den här självstudiekursen skapas en utdatafil för varje uppgift i renderingsjobbet. Innan du schemalägger jobbet ska du skapa en blob-container i lagringskontot, som mål för utdatafilerna. I följande exempel används kommandot [az storage container create](/cli/azure/storage/container#az-storage-container-create) till att skapa behållaren *job-myrenderjob* som har offentlig läsbehörighet. 
+I exemplen i den här självstudiekursen skapas en utdatafil för varje uppgift i renderingsjobbet. Innan du schemalägger jobbet ska du skapa en blob-container i lagringskontot, som mål för utdatafilerna. I följande exempel används kommandot [az storage container create](/cli/azure/storage/container#az-storage-container-create) till att skapa behållaren *job-myrenderjob* som har offentlig läsbehörighet.
 
 ```azurecli-interactive
 az storage container create \
@@ -165,27 +170,25 @@ az storage container create \
     --name job-myrenderjob
 ```
 
-Om du ska kunna skriva utdatafilerna till containern måste Batch använda en SAS-token. Skapa token med kommandot [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas). I det här exemplet skapas en token som skrivs till en BLOB-behållare i kontot, och token upphör att gälla den 15 november 2020:
+Om du ska kunna skriva utdatafilerna till containern måste Batch använda en SAS-token. Skapa token med kommandot [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas). I det här exemplet skapas en token som skrivs till en BLOB-behållare i kontot, och token upphör att gälla den 15 november 2021:
 
 ```azurecli-interactive
 az storage account generate-sas \
     --permissions w \
     --resource-types co \
     --services b \
-    --expiry 2020-11-15
+    --expiry 2021-11-15
 ```
 
-Ta vara på den token som returneras av kommandot, den ser ut ungefär så här: Du använder denna token i ett senare steg.
+Ta vara på den token som returneras av kommandot, den ser ut ungefär så här: Du kommer att använda denna token i ett senare steg.
 
-```
-se=2020-11-15&sp=rw&sv=2019-09-24&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-```
+`se=2021-11-15&sp=rw&sv=2019-09-24&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
 
 ## <a name="render-a-single-frame-scene"></a>rendera en scen med en bildruta
 
 ### <a name="create-a-job"></a>Skapa ett jobb
 
-Skapa ett renderingsjobb som ska köras i poolen med hjälp av kommandot [az batch job create](/cli/azure/batch/job#az-batch-job-create). Från början har jobbet inga uppgifter.
+Skapa ett renderingsjobb som ska köras i poolen med hjälp av kommandot [az batch job create](/cli/azure/batch/job#az-batch-job-create). Till en början har jobbet inga aktiviteter.
 
 ```azurecli-interactive
 az batch job create \
@@ -202,11 +205,7 @@ Uppgiften anger ett 3ds Max-kommando för rendering av en enda bildruta från sc
 Ändra elementen `blobSource` och `containerURL` i JSON-filen så att de innehåller namnet på ditt lagringskonto och din SAS-token. 
 
 > [!TIP]
-> Din `containerURL` slutar med SAS-token och ser ut ungefär så här:
-> 
-> ```
-> https://mystorageaccount.blob.core.windows.net/job-myrenderjob/$TaskOutput?se=2018-11-15&sp=rw&sv=2017-04-17&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-> ```
+> Dina `containerURL` slut med SAS-token och liknar: `https://mystorageaccount.blob.core.windows.net/job-myrenderjob/$TaskOutput?se=2018-11-15&sp=rw&sv=2017-04-17&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
 
 ```json
 {
@@ -250,7 +249,6 @@ az batch task create \
 
 Batch schemalägger uppgiften och uppgiften körs så snart en nod i poolen är tillgänglig.
 
-
 ### <a name="view-task-output"></a>Visa aktivitetens utdata
 
 Det tar några minuter att köra uppgiften. Använd kommandot [az batch task show](/cli/azure/batch/task#az-batch-task-show) till att visa information om uppgiften.
@@ -274,7 +272,6 @@ az storage blob download \
 Öppna *dragon.jpg* på datorn. Den renderade bilden ser ut ungefär så här:
 
 ![Renderad drakbild 1](./media/tutorial-rendering-cli/dragon-frame.png) 
-
 
 ## <a name="scale-the-pool"></a>Skala ut poolen
 
@@ -313,7 +310,7 @@ az batch task show \
     --job-id myrenderjob \
     --task-id mymultitask1
 ```
- 
+
 Uppgifterna genererar utdatafilerna med namnet *dragon0002.jpg*  -  *dragon0007.jpg* på datornoderna och laddar upp dem till *myrenderjob-* behållaren i ditt lagrings konto. Om du vill visa utdata laddar du ned filen till en lokal mapp med kommandot [az storage blob download](/cli/azure/storage/blob). Exempel:
 
 ```azurecli-interactive
@@ -326,12 +323,11 @@ az storage blob download-batch \
 
 ![Renderad drakbild 6](./media/tutorial-rendering-cli/dragon-frame6.png) 
 
-
 ## <a name="clean-up-resources"></a>Rensa resurser
 
 När den inte längre behövs kan du använda kommandot [az group delete](/cli/azure/group#az-group-delete) för att ta bort resursgruppen, Batch-kontot, poolerna och alla relaterade resurser. Ta bort resurserna på följande sätt:
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
@@ -340,11 +336,11 @@ az group delete --name myResourceGroup
 I den här självstudien lärde du dig att:
 
 > [!div class="checklist"]
-> * ladda upp scener till Azure Storage
-> * skapa en Batch-pool för rendering
-> * rendera en scen med en enda bildruta med Arnold
-> * skala poolen och rendera en scen med flera bildrutor
-> * ladda ned renderade utdata.
+> - ladda upp scener till Azure Storage
+> - skapa en Batch-pool för rendering
+> - rendera en scen med en enda bildruta med Arnold
+> - skala poolen och rendera en scen med flera bildrutor
+> - ladda ned renderade utdata.
 
 Mer information om åter givning i moln skala finns i dokumentationen för batch-rendering.
 

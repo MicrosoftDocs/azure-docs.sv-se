@@ -7,13 +7,13 @@ ms.date: 09/23/2020
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: b40a13b84a0191b5c454d7edac2226f8f06fadcd
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 700efe8e251af3f124e087e2a2d170db262aec08
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780169"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97826119"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-net-sdk-v4"></a>Snabb start: Azure Key Vault klient bibliotek för certifikat för .NET (SDK v4)
 
@@ -36,7 +36,7 @@ Mer information om Key Vault och certifikat finns i:
 
 Den här snabb starten använder `dotnet` och Azure CLI
 
-## <a name="setup"></a>Konfiguration
+## <a name="setup"></a>Installation
 
 Den här snabb starten använder Azure Identity Library med Azure CLI för att autentisera användare till Azure-tjänster. Utvecklare kan också använda Visual Studio eller Visual Studio Code för att autentisera sina anrop. mer information finns i [autentisera klienten med klient biblioteket för Azure Identity](/dotnet/api/overview/azure/identity-readme?#authenticate-the-client&preserve-view=true).
 

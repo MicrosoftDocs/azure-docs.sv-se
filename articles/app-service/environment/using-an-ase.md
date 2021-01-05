@@ -6,13 +6,13 @@ ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
 ms.date: 5/10/2020
 ms.author: ccompy
-ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 86d0569d95df18924ed47682b75d7491c71d4483
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.custom: seodec18
+ms.openlocfilehash: e4653419d974db2e597111487c64682c75ffc40b
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021035"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97826005"
 ---
 # <a name="use-an-app-service-environment"></a>Använd App Service Environment
 
@@ -159,9 +159,9 @@ Med en ILB-ASE är publicerings slut punkterna bara tillgängliga via ILB. ILB f
 
 Utan ytterligare ändringar fungerar inte Internet-baserade CI-system som GitHub och Azure DevOps med en ILB-ASE eftersom publicerings slut punkten inte är tillgänglig för Internet. Du kan aktivera publicering till en ILB-ASE från Azure DevOps genom att installera en lokal versions agent i det virtuella nätverket som innehåller ILB ASE. Du kan också använda ett CI-system som använder en pull-modell, till exempel Dropbox.
 
-Publiceringsslutpunkterna för appar i en ILB ASE använder domänen som ILB ASE skapades med. Du kan se den i appens publicerings profil och i appens Portal fönster (i **översikts** information  >  **Essentials** och i **Egenskaper**).
+Publiceringsslutpunkterna för appar i en ILB ASE använder domänen som ILB ASE skapades med. Du kan se den i appens publicerings profil och i appens Portal fönster (i **översikts** information  >   och i **Egenskaper**).
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Lagring
 
 En ASE har 1 TB lagrings utrymme för alla appar i ASE. En App Service plan i den isolerade pris-SKU: n har en gräns på 250 GB. I en ASE läggs 250 GB lagrings utrymme per App Service plan upp till 1 TB-gränsen. Du kan ha fler App Services planer än bara fyra, men det finns ingen mer lagrings utrymme utöver gränsen på 1 TB.
 

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 12/05/2020
-ms.openlocfilehash: 783431c4888a68e24cf3d2603c541c4797ea65d8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.date: 12/29/2020
+ms.openlocfilehash: 34a5dfb44ee78245b56c1774701f48b3b8a494df
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741107"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827486"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Skapa en Integration Service Environment (ISE) med hjälp av Logic Apps REST-API
 
@@ -27,7 +27,7 @@ Mer information om andra sätt att skapa en ISE finns i följande artiklar:
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Samma krav [prerequisites](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) och [åtkomst krav](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) som när du skapar en ISE i Azure Portal
+* Samma krav [](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) och [åtkomst krav](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) som när du skapar en ISE i Azure Portal
 
 * Eventuella ytterligare resurser som du vill använda med din ISE så att du kan inkludera information i ISE-definitionen, till exempel: 
 
@@ -69,9 +69,7 @@ I begär ande huvudet inkluderar du följande egenskaper:
 
 I begär ande texten anger du resurs definitionen som ska användas för att skapa din ISE, inklusive information om ytterligare funktioner som du vill aktivera på din ISE, till exempel:
 
-* Om du vill skapa en ISE som tillåter att du använder ett självsignerat certifikat som är installerat på `TrustedRoot` platsen, inkluderar du `certificates` objektet i definitions avsnittet för ISE `properties` , som i den här artikeln senare beskriver.
-
-  Om du vill aktivera den här funktionen på en befintlig ISE kan du bara skicka en PATCH-begäran för `certificates` objektet. Mer information om hur du använder självsignerade certifikat finns i [säker åtkomst och data åtkomst för utgående anrop till andra tjänster och system](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests).
+* Om du vill skapa en ISE som tillåter att du använder ett självsignerat certifikat och certifikat som utfärdats av företags certifikat utfärdare som är installerade på `TrustedRoot` platsen, inkluderar du `certificates` objektet i definitions avsnittet för ISE `properties` , som den här artikeln beskriver senare.
 
 * Om du vill skapa en ISE som använder en systemtilldelad eller användardefinierad hanterad identitet, inkluderar du `identity` objektet med den hanterade identitets typen och annan obligatorisk information i definitionen för ISE, eftersom den här artikeln senare beskriver.
 
@@ -123,7 +121,7 @@ Här är syntaxen för begär ande texten, som beskriver de egenskaper som ska a
             }
          ]
       },
-      // Include `certificates` object to enable self-signed certificate support
+      // Include `certificates` object to enable self-signed certiificate and certificate issued by Enterprise Certificate Authority
       "certificates": {
          "testCertificate": {
             "publicCertificate": "{base64-encoded-certificate}",
@@ -183,6 +181,45 @@ Den här exempel texten visar exempel värden:
             "publicCertificate": "LS0tLS1CRUdJTiBDRV...",
             "kind": "TrustedRoot"
          }
+      }
+   }
+}
+```
+## <a name="add-custom-root-certificates"></a>Lägg till anpassade rot certifikat
+
+Du använder ofta en ISE för att ansluta till anpassade tjänster i ditt virtuella nätverk eller lokalt. Dessa anpassade tjänster skyddas ofta av ett certifikat som har utfärdats av en anpassad rot certifikat utfärdare, till exempel en företags certifikat utfärdare eller ett självsignerat certifikat. Mer information om hur du använder självsignerade certifikat finns i [säker åtkomst och data åtkomst för utgående anrop till andra tjänster och system](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests). För att din ISE ska kunna ansluta till dessa tjänster via Transport Layer Security (TLS) behöver din ISE åtkomst till dessa rot certifikat. Om du vill uppdatera ISE med ett anpassat betrott rot certifikat, gör du följande HTTPS- `PATCH` begäran:
+
+`PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01`
+
+Granska följande saker innan du utför den här åtgärden:
+
+* Se till att du laddar upp rot certifikatet *och* alla mellanliggande certifikat. Det maximala antalet certifikat är 20.
+
+* Överföring av rot certifikat är en ersättnings åtgärd där den senaste överföringen skriver över tidigare överföringar. Om du till exempel skickar en begäran som överför ett certifikat och sedan skickar en annan begäran om att ladda upp ett annat certifikat, används endast det andra certifikatet i ISE. Om du behöver använda båda certifikaten lägger du till dem tillsammans i samma begäran.  
+
+* Överföring av rot certifikat är en asynkron åtgärd som kan ta lite tid. Om du vill kontrol lera status eller resultat kan du skicka en `GET` begäran med samma URI. Svarsmeddelandet har ett `provisioningState` fält som returnerar `InProgress` värdet när uppladdnings åtgärden fortfarande fungerar. När `provisioningState` värdet är `Succeeded` slutförs överförings åtgärden.
+
+#### <a name="request-body-syntax-for-adding-custom-root-certificates"></a>Syntax för begär ande brödtext för att lägga till anpassade rot certifikat
+
+Här är syntaxen för begär ande texten, som beskriver de egenskaper som ska användas när du lägger till rot certifikat:
+
+```json
+{
+   "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Logic/integrationServiceEnvironments/{ISE-name}",
+   "name": "{ISE-name}",
+   "type": "Microsoft.Logic/integrationServiceEnvironments",
+   "location": "{Azure-region}",
+   "properties": {
+      "certificates": {
+         "testCertificate1": {
+            "publicCertificate": "{base64-encoded-certificate}",
+            "kind": "TrustedRoot"
+         },
+         "testCertificate2": {
+            "publicCertificate": "{base64-encoded-certificate}",
+            "kind": "TrustedRoot"
+         }
+      }
    }
 }
 ```

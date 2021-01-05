@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a657f43ef2d889cad1608d34e9235b1d5e7cb576
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 85534d1f64b273e42a2ea063e67286ee7bb4a90a
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95894158"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827163"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Vanliga frågor och svar om tjänsten för tal tjänst behållare
 
@@ -169,7 +169,7 @@ StatusCode: InvalidArgument,
 Details: Voice does not match.
 ```
 
-**Svar 2:** Du måste ange rätt röst namn i begäran, vilket är Skift läges känsligt. Läs den fullständiga tjänst namns mappningen. Du måste använda `en-US-JessaRUS` , som `en-US-JessaNeural` inte är tillgänglig just nu i behållar versionen av text till tal.
+**Svar 2:** Du måste ange rätt röst namn i begäran, vilket är Skift läges känsligt. Läs den fullständiga tjänst namns mappningen.
 
 **Fel 3:**
 
@@ -292,7 +292,7 @@ Kan du fylla i följande test mått, inklusive vilka funktioner som ska testas o
 
 | Slutpunkt                                                | Funktionellt test                                                   | SDK | REST-API |
 |---------------------------------------------------------|-------------------------------------------------------------------|-----|----------|
-| `/speech/synthesize/cognitiveservices/v1`               | Syntetisera text (text till tal)                                  |     | Yes      |
+| `/speech/synthesize/cognitiveservices/v1`               | Syntetisera text (text till tal)                                  |     | Ja      |
 | `/speech/recognition/dictation/cognitiveservices/v1`    | Cognitive Services lokal Diktering v1 WebSocket-slutpunkt        | Ja | Nej       |
 | `/speech/recognition/interactive/cognitiveservices/v1`  | Den Cognitive Services lokal interaktiva v1 WebSocket-slutpunkten  |     |          |
 | `/speech/recognition/conversation/cognitiveservices/v1` | Kognitiva tjänster på lokal-konversation v1 WebSocket-slutpunkt |     |          |
@@ -300,7 +300,7 @@ Kan du fylla i följande test mått, inklusive vilka funktioner som ska testas o
 **Svar:** Detta är en fusion av:
 - Personer som försöker köra dikteringens slut punkt för behållare (jag är inte säker på hur de får den URL: en)
 - Slut punkten för 1<sup>St</sup> -parten som är en i en behållare.
-- Slut punkten för 1<sup>St</sup> -parten returnerar tal. fragment-meddelanden i stället för `speech.hypothesis` e-<sup>rd</sup> postmeddelandena för att returnera slut punkten för slut punkterna för slutpunkten.
+- Slut punkten för 1<sup>St</sup> -parten returnerar tal. fragment-meddelanden i stället för `speech.hypothesis` e-<sup></sup> postmeddelandena för att returnera slut punkten för slut punkterna för slutpunkten.
 - Snabb starter alla använder `RecognizeOnce` (interaktivt läge)
 - Kol har en kontroll att för `speech.fragment` meddelanden som kräver att de inte returneras i interaktivt läge.
 - Kol som har utgångs punkt i versions utlösare (avslutar processen).
@@ -309,6 +309,8 @@ Lösningen är antingen växlad till att använda kontinuerlig igenkänning i ko
 För din kod ställer du in slut punkten till `host:port` /Speech/Recognition/Interactive/cognitiveservices/v1
 
 För olika lägen, se tallägen – se nedan:
+
+## <a name="speech-modes---interactive-conversation-dictation"></a>Tallägen – interaktiv, konversation, Diktering
 
 [!INCLUDE [speech-modes](includes/speech-modes.md)]
 
@@ -367,7 +369,7 @@ Min nuvarande plan är att ta en befintlig ljudfil och dela upp den i 10 andra s
 
 Dokumentet säger att du vill exponera en annan port, vilket jag gör, men LUIS-behållaren lyssnar fortfarande på port 5000?
 
-**Svar:** Försök `-p <outside_unique_port>:5000` . Exempelvis `-p 5001:5000`.
+**Svar:** Försök `-p <outside_unique_port>:5000` . Ett exempel är `-p 5001:5000`.
 
 
 <br>
@@ -558,6 +560,8 @@ auto result = synthesizer->SpeakTextAsync("{{{text2}}}").get();
 </summary>
 
 **Svar:** Det finns tre slut punkter i tal behållaren för olika användnings områden, de definieras som tallägen – se nedan:
+
+## <a name="speech-modes"></a>Tallägen
 
 [!INCLUDE [speech-modes](includes/speech-modes.md)]
 

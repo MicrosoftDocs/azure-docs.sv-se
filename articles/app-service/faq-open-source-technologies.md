@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 512776f2498a88f1fda9b5e7f0e2db0ddd32b955
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36dfbf0fda060a8f273fee64098d6234b575088c
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962336"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831847"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Vanliga frågor och svar om öppen källkod för Web Apps i Azure
 
@@ -52,10 +52,10 @@ Mer information finns i [Aktivera fel loggar för WordPress](/archive/blogs/azur
 
 Om du vill ändra versionen för Node.js programmet kan du använda något av följande alternativ:
 
-* Använd **appinställningar**i Azure Portal.
+* Använd **appinställningar** i Azure Portal.
   1. I Azure Portal går du till din webbapp.
-  2. Välj **program inställningar**på bladet **Inställningar** .
-  3. I **appinställningar**kan du inkludera WEBSITE_NODE_DEFAULT_VERSION som nyckel och vilken VERSION av Node.js du vill ha som värde.
+  2. Välj **program inställningar** på bladet **Inställningar** .
+  3. I **appinställningar** kan du inkludera WEBSITE_NODE_DEFAULT_VERSION som nyckel och vilken VERSION av Node.js du vill ha som värde.
   4. Gå till **kudu-konsolen** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
   5. Ange följande kommando för att kontrol lera Node.js-versionen:  
      ```
@@ -169,9 +169,9 @@ En annan lösning är att skriva ett webb jobb som körs enligt ett schema och k
 
 ## <a name="where-do-i-find-the-log-files-for-jetty"></a>Var hittar jag loggfilerna för Jetty?
 
-För Marketplace och anpassade distributioner finns logg filen i mappen D:\home\site\wwwroot\bin\jetty-distribution-9.1.2.v20140210\logs. Observera att mappens plats beror på vilken version av Jetty du använder. Till exempel är sökvägen som visas här för Jetty 9.1.2. Leta efter jetty_*YYYY_MM_DD*. stderrout. log.
+För Marketplace och anpassade distributioner finns logg filen i mappen D:\home\site\wwwroot\bin\jetty-distribution-9.1.2.v20140210\logs. Observera att mappens plats beror på vilken version av Jetty du använder. Till exempel är sökvägen som visas här för Jetty 9.1.2. Leta efter jetty_ *YYYY_MM_DD*. stderrout. log.
 
-För Portal App Settings-distributioner är logg filen i D:\home\LogFiles. Sök efter jetty_*YYYY_MM_DD*. stderrout. log
+För Portal App Settings-distributioner är logg filen i D:\home\LogFiles. Sök efter jetty_ *YYYY_MM_DD*. stderrout. log
 
 ## <a name="can-i-send-email-from-my-azure-web-app"></a>Kan jag skicka e-post från min Azure-webbapp?
 
@@ -181,24 +181,24 @@ App Service har ingen inbyggd e-postfunktion. En del användbara alternativ för
 
 Om du nyligen har migrerat till Azure kan WordPress omdirigera till den gamla domän-URL: en. Detta orsakas av en inställning i MySQL-databasen.
 
-WordPress kompis + är ett Azure-webbplats tillägg som du kan använda för att uppdatera URL: en för omdirigering direkt i databasen. Mer information om hur du använder WordPress kompis + finns i [WordPress-verktyg och MySQL-migrering med WordPress kompis +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/).
+WordPress kompis + är ett Azure-webbplats tillägg som du kan använda för att uppdatera URL: en för omdirigering direkt i databasen. Mer information om hur du använder WordPress kompis + finns i [WordPress-verktyg och MySQL-migrering med WordPress kompis +](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows).
 
 Alternativt, om du vill uppdatera omdirigerings-URL: en manuellt med hjälp av SQL-frågor eller PHPMyAdmin, se [WordPress: omdirigera till fel URL](/archive/blogs/azureossds/wordpress-redirecting-to-wrong-url).
 
 ## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>Hur gör jag för att ändra inloggnings lösen ordet för ditt WordPress?
 
-Om du har glömt ditt lösen ord för WordPress-inloggning kan du använda WordPress kompis + för att uppdatera det. Om du vill återställa lösen ordet installerar du WordPress kompis + Azure Site extension och slutför sedan stegen som beskrivs i [WordPress-verktyg och MySQL-migrering med WordPress kompis +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/).
+Om du har glömt ditt lösen ord för WordPress-inloggning kan du använda WordPress kompis + för att uppdatera det. Om du vill återställa lösen ordet installerar du WordPress kompis + Azure Site extension och slutför sedan stegen som beskrivs i [WordPress-verktyg och MySQL-migrering med WordPress kompis +](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows).
 
 ## <a name="i-cant-sign-in-to-wordpress-how-do-i-resolve-this"></a>Jag kan inte logga in på WordPress. Hur gör jag för att lösa det?
 
-Om du upptäcker att du har låst av WordPress efter att du nyligen har installerat ett plugin-program kan du ha en felaktig plugin. WordPress kompis + är ett Azure-webbplats tillägg som kan hjälpa dig att inaktivera plugin-program i WordPress. Mer information finns i [WordPress-verktyg och MySQL-migrering med WordPress kompis +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/).
+Om du upptäcker att du har låst av WordPress efter att du nyligen har installerat ett plugin-program kan du ha en felaktig plugin. WordPress kompis + är ett Azure-webbplats tillägg som kan hjälpa dig att inaktivera plugin-program i WordPress. Mer information finns i [WordPress-verktyg och MySQL-migrering med WordPress kompis +](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows).
 
 ## <a name="how-do-i-migrate-my-wordpress-database"></a>Hur gör jag för att migrera min WordPress-databas?
 
 Du har flera alternativ för att migrera MySQL-databasen som är ansluten till din WordPress-webbplats:
 
 * Utvecklare: använda [kommando tolken eller phpMyAdmin](/archive/blogs/azureossds/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service)
-* Icke-utvecklare: Använd [WordPress kompis +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)
+* Icke-utvecklare: Använd [WordPress kompis +](https://www.electrongeek.com/blog/2016/12/21/wordpress-buddy-site-extension-for-app-service-on-windows)
 
 ## <a name="how-do-i-help-make-wordpress-more-secure"></a>Hur gör jag för att hjälp till att göra WordPress säkrare?
 

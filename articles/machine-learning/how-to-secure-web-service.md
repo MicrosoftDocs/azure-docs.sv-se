@@ -10,13 +10,13 @@ ms.author: aashishb
 author: aashishb
 ms.date: 11/18/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 872958f87e7d75427d5939aed73314920cfaf3ea
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.custom: how-to
+ms.openlocfilehash: 86cd5a5cbbb17dc3d3e4d56e4267be2718f6081d
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631099"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830878"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Använda TLS för att skydda en webbtjänst via Azure Machine Learning
 
@@ -73,14 +73,17 @@ När du begär ett certifikat måste du ange det fullständiga domän namnet fö
 
 ## <a name="enable-tls-and-deploy"></a><a id="enable"></a> Aktivera TLS och distribuera
 
-Om du vill distribuera (eller distribuera om) tjänsten med TLS aktiverat, anger du parametern *ssl_enabled* till "true" oavsett var den gäller. Ange parametern *ssl_certificate* till värdet för *certifikat* filen. Ange *ssl_key* till *nyckel* filens värde.
+**För AKS-distribution** kan du Aktivera TLS-avslutning när du [skapar eller ansluter ett AKS-kluster](how-to-create-attach-kubernetes.md) i AML-arbetsytan. Vid distributions tiden för AKS-modellen kan du inaktivera TLS-terminering med distributions konfigurations objekt, annars kommer alla AKS modell distribution som standard att ha TLS-avslutning aktiverat på AKS-klustret skapa eller koppla tid.
+
+För ACI-distribution kan du Aktivera TLS-avslutning vid modell distributions tid med ett distributions konfigurations objekt.
+
 
 ### <a name="deploy-on-azure-kubernetes-service"></a>Distribuera på Azure Kubernetes service
 
   > [!NOTE]
   > Informationen i det här avsnittet gäller även när du distribuerar en säker webb tjänst för designern. Om du inte är bekant med att använda python SDK, se [Vad är Azure Machine Learning SDK för python?](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
 
-Både **[AksCompute.provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** och **[AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** returnerar ett konfigurations objekt som har en **enable_ssl** -metod och du kan använda **enable_ssl** metod för att aktivera TLS.
+När du [skapar eller ansluter ett AKS-kluster](how-to-create-attach-kubernetes.md) i AML-arbetsytan kan du Aktivera TLS-avslutning med **[AksCompute.provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** och **[AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** konfigurations objekt. Båda metoderna returnerar ett konfigurations objekt som har en **enable_ssl** -Metod och du kan använda **enable_ssl** -metoden för att aktivera TLS.
 
 Du kan aktivera TLS antingen med Microsoft-certifikat eller ett anpassat certifikat som har köpts från CA. 
 

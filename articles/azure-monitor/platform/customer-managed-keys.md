@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 11/18/2020
-ms.openlocfilehash: 17648b9bc973285764bb0bd6242506122a043780
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6037b372f73bcf3554120e305f4b3031b26e97d4
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96454264"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831660"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Kundhanterad nyckel i Azure Monitor 
 
-Den här artikeln innehåller bakgrunds information och steg för att konfigurera Kundhanterade nycklar för dina Log Analytics-arbetsytor. När de har kon figurer ATS krypteras alla data som skickas till dina arbets ytor med din Azure Key Vault nyckel.
+Data i Azure Monitor krypteras med Microsoft-hanterade nycklar. Du kan använda din egen krypterings nyckel för att skydda data och sparade frågor i dina arbets ytor. När du anger en kundhanterad nyckel används nyckeln för att skydda och kontrol lera åtkomsten till dina data och när de har kon figurer ATS krypteras alla data som skickas till dina arbets ytor med din Azure Key Vault nyckel. Kundhanterade nycklar ger större flexibilitet för att hantera åtkomstkontroller.
 
 Vi rekommenderar att du granskar [begränsningar och](#limitationsandconstraints) begränsningar nedan före konfigurationen.
 
@@ -23,23 +23,25 @@ Vi rekommenderar att du granskar [begränsningar och](#limitationsandconstraints
 
 [Kryptering i vila](../../security/fundamentals/encryption-atrest.md) är ett gemensamt sekretess-och säkerhets krav i organisationer. Du kan låta Azure helt hantera kryptering i vila, medan du har olika alternativ för att hantera krypterings-och krypterings nycklar.
 
-Azure Monitor säkerställer att alla data och sparade frågor krypteras i vila med hjälp av Microsoft-hanterade nycklar (MMK). Azure Monitor innehåller också ett alternativ för kryptering med hjälp av din egen nyckel som lagras i din [Azure Key Vault](../../key-vault/general/overview.md) och ger dig kontrollen att återkalla åtkomsten till dina data när som helst. Azure Monitor krypterings användningen är identisk med hur [Azure Storage kryptering](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption) fungerar.
+Azure Monitor säkerställer att alla data och sparade frågor krypteras i vila med hjälp av Microsoft-hanterade nycklar (MMK). Azure Monitor innehåller också ett alternativ för kryptering med hjälp av din egen nyckel som lagras i [Azure Key Vault](../../key-vault/general/overview.md), vilket ger dig kontrollen att återkalla åtkomsten till dina data när som helst. Azure Monitor krypterings användningen är identisk med hur [Azure Storage kryptering](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption) fungerar.
 
-Customer-Managed nyckel levereras på dedikerade Log Analytics-kluster som ger högre skydds nivå och kontroll. Data som matas in på dedikerade kluster krypteras två gånger – en gång på tjänst nivå med hjälp av Microsoft-hanterade nycklar eller Kundhanterade nycklar, och en gång på infrastruktur nivån med två olika krypteringsalgoritmer och två olika nycklar. [Dubbel kryptering](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) skyddar mot ett scenario där en av krypteringsalgoritmer eller nycklar kan komprometteras. I det här fallet fortsätter det extra krypterings lagret att skydda dina data. Med dedikerat kluster kan du också skydda dina data med [Lås](#customer-lockbox-preview) kontroll.
+Customer-Managed nyckel levereras på [dedikerade kluster](../log-query/logs-dedicated-clusters.md) som ger högre skydds nivå och kontroll. Data som matas in på dedikerade kluster krypteras två gånger – en gång på tjänst nivå med hjälp av Microsoft-hanterade nycklar eller Kundhanterade nycklar, och en gång på infrastruktur nivån med två olika krypteringsalgoritmer och två olika nycklar. [Dubbel kryptering](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) skyddar mot ett scenario där en av krypteringsalgoritmer eller nycklar kan komprometteras. I det här fallet fortsätter det extra krypterings lagret att skydda dina data. Med dedikerat kluster kan du också skydda dina data med [Lås](#customer-lockbox-preview) kontroll.
 
 Data som matats in under de senaste 14 dagarna behålls också i frekvent cache (SSD-backad) för effektiv Operations Engine-åtgärd. Dessa data förblir krypterade med Microsoft-nycklar oavsett kundhanterad nyckel konfiguration, men kontrollen över SSD-data följer [nyckel återkallning](#key-revocation). Vi arbetar med att ha SSD-data krypterade med Customer-Managed Key i första hälften av 2021.
 
-[Pris modellen Log Analytics kluster](./manage-cost-storage.md#log-analytics-dedicated-clusters) använder kapacitets reservationer som börjar med en 1000 GB/dag-nivå.
+Log Analytics dedikerade kluster använder en kapacitets reservation [pris modell](../log-query/logs-dedicated-clusters.md#cluster-pricing-model) som börjar med 1000 GB/dag.
 
 > [!IMPORTANT]
 > På grund av tillfälliga kapacitets begränsningar kräver vi att du förregistrerar dig innan du skapar ett kluster. Använd dina kontakter i Microsoft eller öppna support förfrågan för att registrera dina prenumerations-ID: n.
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Så här fungerar Customer-Managed-nyckeln i Azure Monitor
 
-Azure Monitor utnyttjar systemtilldelad hanterad identitet för att ge åtkomst till din Azure Key Vault. Systemtilldelad hanterad identitet kan bara kopplas till en enda Azure-resurs medan identiteten för Log Analytics-klustret stöds på kluster nivå – detta innebär att kapaciteten levereras på ett dedikerat Log Analytics kluster. För att stödja Customer-Managed nyckel på flera arbets ytor fungerar en ny Log Analytics *kluster* resurs som en mellanliggande identitets anslutning mellan dina Key Vault och dina Log Analytics arbets ytor. Den Log Analytics kluster lagringen använder den hanterade identitet som \' är associerad med *kluster* resursen för att autentisera till din Azure Key Vault via Azure Active Directory. 
+Azure Monitor använder systemtilldelad hanterad identitet för att ge åtkomst till din Azure Key Vault. Identiteten för Log Analytics-klustret stöds på kluster nivå och tillåter Customer-Managed nyckel på flera arbets ytor, en ny Log Analytics *kluster* resurs fungerar som en mellanliggande identitets anslutning mellan dina Key Vault och Log Analytics arbets ytor. Den Log Analytics kluster lagringen använder den hanterade identitet som \' är associerad med *kluster* resursen för att autentisera till din Azure Key Vault via Azure Active Directory. 
 
-Efter konfigurationen krypteras alla data som matats in till arbets ytor som är länkade till ditt dedikerade kluster med din nyckel i Key Vault. Du kan när som helst avlänka arbets ytor från klustret. Nya data hämtas sedan till Log Analytics lagring och krypteras med Microsoft-nyckel, medan du kan fråga dina nya och gamla data sömlöst.
+Efter den Kundhanterade nyckel konfigurationen krypteras nya inmatade data till arbets ytor som är länkade till ditt dedikerade kluster med din nyckel. Du kan när som helst avlänka arbets ytor från klustret. Nya data hämtas sedan till Log Analytics lagring och krypteras med Microsoft-nyckel, medan du kan fråga dina nya och gamla data sömlöst.
 
+> [!IMPORTANT]
+> Customer-Managed nyckel kapaciteten är regional. Dina Azure Key Vault-, kluster-och länkade Log Analytics-arbetsytor måste finnas i samma region, men de kan finnas i olika prenumerationer.
 
 ![Översikt över Customer-Managed nyckel](media/customer-managed-keys/cmk-overview.png)
 
@@ -48,7 +50,7 @@ Efter konfigurationen krypteras alla data som matats in till arbets ytor som är
 3. Dedikerat Log Analytics kluster
 4. Arbets ytor som är länkade till *kluster* resursen 
 
-## <a name="encryption-keys-operation"></a>Åtgärd för krypterings nycklar
+### <a name="encryption-keys-operation"></a>Åtgärd för krypterings nycklar
 
 Det finns tre typer av nycklar som ingår i kryptering av lagrings data:
 
@@ -64,31 +66,32 @@ Följande regler gäller:
 - Din KEK lämnar aldrig Key Vault och om det finns en HSM-nyckel lämnar den aldrig maskin varan.
 - Azure Storage använder den hanterade identitet som är kopplad till *kluster* resursen för att autentisera och komma åt Azure Key Vault via Azure Active Directory.
 
-## <a name="customer-managed-key-provisioning-procedure"></a>Etablerings procedur för Customer-Manageds nyckel
+### <a name="customer-managed-key-provisioning-steps"></a>Steg för Customer-Managed nyckel etablering
 
 1. Registrera din prenumeration så att klustret kan skapas
 1. Skapa Azure Key Vault och lagra nyckel
 1. Kluster skapas
 1. Bevilja behörighet till din Key Vault
+1. Uppdaterar kluster med information om nyckel identifierare
 1. Länkar Log Analytics arbets ytor
 
-Customer-Managed nyckel konfigurationen stöds inte i Azure Portal och etableringen utförs via [PowerShell](/powershell/module/az.operationalinsights/)-, [CLI](/cli/azure/monitor/log-analytics) -eller [rest](/rest/api/loganalytics/) -begäranden.
+Customer-Managed nyckel konfigurationen stöds inte i Azure Portal för närvarande och etableringen kan utföras via [PowerShell](/powershell/module/az.operationalinsights/)-, [CLI](/cli/azure/monitor/log-analytics) -eller [rest](/rest/api/loganalytics/) -begäranden.
 
 ### <a name="asynchronous-operations-and-status-check"></a>Asynkrona åtgärder och status kontroll
 
-Vissa konfigurations steg körs asynkront eftersom de inte kan slutföras snabbt. `status`I Response innehåller kan vara något av följande: "pågår", "uppdatering", "ta bort", "lyckades" eller "misslyckades", inklusive felkoden.
+Vissa konfigurations steg körs asynkront eftersom de inte kan slutföras snabbt. `status`Som svar kan vara något av följande: "pågår", "uppdatering", "ta bort", "lyckades eller" misslyckades "med felkoden.
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Ej tillämpligt
+Saknas
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Ej tillämpligt
+Saknas
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Ej tillämpligt
+Saknas
 
 # <a name="rest"></a>[REST](#tab/rest)
 
@@ -97,7 +100,7 @@ När du använder REST returnerar svaret ursprungligen en HTTP-statuskod 200 (OK
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
 ```
 
-Du kan kontrol lera statusen för den asynkrona åtgärden genom att skicka en GET-begäran till värdet för *Azure-AsyncOperation-* huvudet:
+Du kan kontrol lera statusen för den asynkrona åtgärden genom att skicka en GET-begäran till slut punkten i *Azure-AsyncOperation-* huvudet:
 ```rst
 GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-08-01
 Authorization: Bearer <token>
@@ -107,10 +110,9 @@ Authorization: Bearer <token>
 
 ### <a name="allowing-subscription"></a>Tillåter prenumeration
 
-> [!IMPORTANT]
-> Customer-Managed nyckel kapaciteten är regional. Dina Azure Key Vault-, kluster-och länkade Log Analytics-arbetsytor måste finnas i samma region, men de kan finnas i olika prenumerationer.
+Använd dina kontakter i Microsoft eller öppna support förfrågan i Log Analytics för att tillhandahålla dina prenumerations-ID: n.
 
-### <a name="storing-encryption-key-kek"></a>Lagra krypterings nyckel (KEK)
+## <a name="storing-encryption-key-kek"></a>Lagra krypterings nyckel (KEK)
 
 Skapa eller Använd en Azure Key Vault som du redan har för att skapa eller importera en nyckel som ska användas för data kryptering. Azure Key Vault måste konfigureras som rekonstruerbar för att skydda din nyckel och åtkomsten till dina data i Azure Monitor. Du kan kontrol lera den här konfigurationen under egenskaper i Key Vault, både *mjuk borttagnings* -och *rensnings skydd* ska vara aktiverat.
 
@@ -121,27 +123,24 @@ De här inställningarna kan uppdateras i Key Vault via CLI och PowerShell:
 - [Mjuk borttagning](../../key-vault/general/soft-delete-overview.md)
 - [Rensa skydds skydd](../../key-vault/general/soft-delete-overview.md#purge-protection) mot Force borttagning av hemligheten/valvet även efter mjuk borttagning
 
-### <a name="create-cluster"></a>Skapa kluster
+## <a name="create-cluster"></a>Skapa kluster
 
 Följ proceduren som illustreras i [artikeln om dedikerade kluster](../log-query/logs-dedicated-clusters.md#creating-a-cluster). 
 
-> [!IMPORTANT]
-> Kopiera och spara svaret eftersom du kommer att behöva informationen i nästa steg.
+## <a name="grant-key-vault-permissions"></a>Bevilja Key Vault behörigheter
 
-### <a name="grant-key-vault-permissions"></a>Bevilja Key Vault behörigheter
+Skapa åtkomst princip i Key Vault för att bevilja behörighet till klustret. Dessa behörigheter används av Underlay-Azure Monitor-lagringen. Öppna din Key Vault i Azure Portal och klicka på *"åtkomst principer"* och sedan *"+ Lägg till åtkomst princip"* för att skapa en princip med följande inställningar:
 
-Skapa åtkomst princip i Key Vault för att bevilja behörighet till klustret. Dessa behörigheter används av Underlay Azure Monitor Storage för data kryptering. Öppna din Key Vault i Azure Portal och klicka på "åtkomst principer" och sedan "+ Lägg till åtkomst princip" för att skapa en princip med följande inställningar:
-
-- Nyckel behörigheter: Välj get-, wrap-och unwrap Key-behörigheter.
-- Välj huvud namn: Ange det kluster namn eller det huvud-ID-värde som returnerades i svaret i föregående steg.
+- Nyckel behörigheter: Välj *Get*-, *wrap-tangenten* och *unwrap Key*.
+- Välj huvud namn: Ange kluster namnet eller huvud-ID: t.
 
 ![bevilja Key Vault behörigheter](media/customer-managed-keys/grant-key-vault-permissions-8bit.png)
 
 Get-behörighet krävs för att verifiera att Key Vault har kon figurer ATS för att kunna *återskapas* för att skydda din nyckel och till gång till dina Azure Monitor data.
 
-### <a name="update-cluster-with-key-identifier-details"></a>Uppdatera kluster med information om nyckel identifierare
+## <a name="update-cluster-with-key-identifier-details"></a>Uppdatera kluster med information om nyckel identifierare
 
-Alla åtgärder i klustret måste ha behörighet för Microsoft. OperationalInsights/kluster/Skriv åtgärd. Den här behörigheten kan beviljas via den ägare eller deltagare som innehåller *åtgärden/Write eller via rollen Log Analytics Contributor som innehåller Microsoft. OperationalInsights/* action.
+Alla åtgärder i klustret måste ha `Microsoft.OperationalInsights/clusters/write` behörigheten åtgärd. Den här behörigheten kan beviljas via den ägare eller deltagare som innehåller `*/write` åtgärden eller via rollen Log Analytics Contributor som innehåller `Microsoft.OperationalInsights/*` åtgärden.
 
 Det här steget uppdaterar Azure Monitor lagring med den nyckel och version som ska användas för data kryptering. När den uppdateras används den nya nyckeln för att omsluta och packa upp lagrings nyckeln (AEK).
 
@@ -155,7 +154,7 @@ Uppdatera KeyVaultProperties i kluster med information om nyckel identifierare.
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Ej tillämpligt
+Saknas
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -191,11 +190,11 @@ Content-type: application/json
 
 **Response**
 
-Det tar några minuter att slutföra spridningen av nyckel identifieraren. Du kan kontrol lera uppdaterings statusen på två sätt:
+Det tar flera minuter att slutföra spridningen av nyckeln. Du kan kontrol lera uppdaterings statusen på två sätt:
 1. Kopiera Azure-AsyncOperation URL-värdet från svaret och följ [status kontrollen asynkrona åtgärder](#asynchronous-operations-and-status-check).
-2. Skicka en GET-begäran i klustret och titta på egenskaperna för *KeyVaultProperties* . Den senast uppdaterade informationen om nyckel identifieraren ska returneras i svaret.
+2. Skicka en GET-begäran i klustret och titta på egenskaperna för *KeyVaultProperties* . Den nyligen uppdaterade nyckeln bör returneras i svaret.
 
-Ett svar på GET-begäran bör se ut så här när nyckel identifierarens uppdatering är slutförd: 200 OK och sidhuvud
+Ett svar på GET-begäran bör se ut så här när nyckel uppdateringen är klar: 200 OK och sidhuvud
 ```json
 {
   "identity": {
@@ -227,19 +226,14 @@ Ett svar på GET-begäran bör se ut så här när nyckel identifierarens uppdat
 
 ---
 
-### <a name="link-workspace-to-cluster"></a>Länka arbets ytan till kluster
-
-Du måste ha Skriv behörighet till både din arbets yta och ditt kluster för att kunna utföra den här åtgärden, bland annat följande åtgärder:
-
-- På arbets ytan: Microsoft. OperationalInsights/arbets ytor/Write
-- I kluster: Microsoft. OperationalInsights/kluster/Write
+## <a name="link-workspace-to-cluster"></a>Länka arbets ytan till kluster
 
 > [!IMPORTANT]
 > Det här steget bör endast utföras när Log Analytics kluster etableringen har slutförts. Om du länkar arbets ytor och matar in data före etableringen tas inmatade data bort och går inte att återskapa.
 
-Den här åtgärden är asynkron och kan vara en stund att slutföra.
+Du måste ha Skriv behörighet till både din arbets yta och ditt kluster för att kunna utföra den här åtgärden, inklusive `Microsoft.OperationalInsights/workspaces/write` och `Microsoft.OperationalInsights/clusters/write` .
 
-Följ proceduren som illustreras i [artikeln om dedikerade kluster](../log-query/logs-dedicated-clusters.md#link-a-workspace-to-the-cluster).
+Följ proceduren som illustreras i [artikeln om dedikerade kluster](../log-query/logs-dedicated-clusters.md#link-a-workspace-to-cluster).
 
 ## <a name="key-revocation"></a>Återkallande av nyckel
 
@@ -251,7 +245,7 @@ Lagringen avsöker regelbundet Key Vault för att försöka att packa upp krypte
 
 ## <a name="key-rotation"></a>Nyckelrotation
 
-Customer-Managed Key rotation kräver en explicit uppdatering av klustret med den nya nyckel versionen i Azure Key Vault. Följ anvisningarna i steget uppdatera kluster med information om nyckel identifierare. Om du inte uppdaterar den nya informationen om nyckel identifierare i klustret, fortsätter den Log Analytics kluster lagringen att använda din tidigare nyckel för kryptering. Om du inaktiverar eller tar bort din gamla nyckel innan du uppdaterar den nya nyckeln i klustret kommer du att få statusen för [nyckel återkallning](#key-revocation) .
+Customer-Managed Key rotation kräver en explicit uppdatering av klustret med den nya nyckel versionen i Azure Key Vault. [Uppdatera kluster med information om nyckel identifierare](#update-cluster-with-key-identifier-details). Om du inte uppdaterar den nya nyckel versionen i klustret, fortsätter Log Analytics kluster lagring att använda din tidigare nyckel för kryptering. Om du inaktiverar eller tar bort din gamla nyckel innan du uppdaterar den nya nyckeln i klustret kommer du att få statusen för [nyckel återkallning](#key-revocation) .
 
 Alla dina data är tillgängliga efter nyckel rotations åtgärden, eftersom data alltid krypteras med konto krypterings nyckeln (AEK) medan AEK nu krypteras med din nya KEK-version (Key Encryption Key) i Key Vault.
 
@@ -279,7 +273,7 @@ Länka ett lagrings konto för *fråga* till din arbets yta – *sparade – sö
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Ej tillämpligt
+Saknas
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -323,7 +317,7 @@ Länka ett lagrings konto för *aviseringar* till arbets ytan – *logg aviserin
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Ej tillämpligt
+Saknas
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -371,266 +365,14 @@ Läs mer om [Customer lockbox för Microsoft Azure](../../security/fundamentals/
 
 ## <a name="customer-managed-key-operations"></a>Customer-Managed nyckel åtgärder
 
-- **Hämta alla kluster i en resurs grupp**
-  
-  # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
-
-  Ej tillämpligt
-
-  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-  ```azurecli
-  az monitor log-analytics cluster list --resource-group "resource-group-name"
-  ```
-
-  # <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-  ```powershell
-  Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name"
-  ```
-
-  # <a name="rest"></a>[REST](#tab/rest)
-
-  ```rst
-  GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
-  Authorization: Bearer <token>
-  ```
-
-  **Response**
-  
-  ```json
-  {
-    "value": [
-      {
-        "identity": {
-          "type": "SystemAssigned",
-          "tenantId": "tenant-id",
-          "principalId": "principal-Id"
-        },
-        "sku": {
-          "name": "capacityReservation",
-          "capacity": 1000,
-          "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
-          },
-        "properties": {
-           "keyVaultProperties": {
-              "keyVaultUri": "https://key-vault-name.vault.azure.net",
-              "keyName": "key-name",
-              "keyVersion": "current-version"
-              },
-          "provisioningState": "Succeeded",
-          "billingType": "cluster",
-          "clusterId": "cluster-id"
-        },
-        "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.operationalinsights/workspaces/workspace-name",
-        "name": "cluster-name",
-        "type": "Microsoft.OperationalInsights/clusters",
-        "location": "region-name"
-      }
-    ]
-  }
-  ```
-
-  ---
-
-- **Hämta alla kluster i en prenumeration**
-
-  # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
-
-  Ej tillämpligt
-
-  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-  ```azurecli
-  az monitor log-analytics cluster list
-  ```
-
-  # <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-  ```powershell
-  Get-AzOperationalInsightsCluster
-  ```
-
-  # <a name="rest"></a>[REST](#tab/rest)
-
-  ```rst
-  GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
-  Authorization: Bearer <token>
-  ```
-    
-  **Response**
-    
-  Samma svar som för "kluster i en resurs grupp", men i prenumerations omfånget.
-
-  ---
-
-- **Uppdatera *kapacitets reservation* i kluster**
-
-  När data volymen till dina länkade arbets ytor ändras med tiden och du vill uppdatera kapacitets reservations nivån korrekt. Följ [uppdaterings klustret](#update-cluster-with-key-identifier-details) och ange ditt nya kapacitets värde. Det kan vara mellan 1000 och 3000 GB per dag och i steg om 100. För högre nivå än 3000 GB per dag når du din Microsoft-kontakt för att aktivera den. Observera att du inte behöver ange en fullständig REST-begäran, men bör inkludera SKU: n:
-
-  # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
-
-  Ej tillämpligt
-
-  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-  ```azurecli
-  az monitor log-analytics cluster update --name "cluster-name" --resource-group "resource-group-name" --sku-capacity daily-ingestion-gigabyte
-  ```
-
-  # <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-  ```powershell
-  Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity daily-ingestion-gigabyte
-  ```
-
-  # <a name="rest"></a>[REST](#tab/rest)
-
-  ```rst
-  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
-  Authorization: Bearer <token>
-  Content-type: application/json
-
-  {
-    "sku": {
-      "name": "capacityReservation",
-      "Capacity": daily-ingestion-gigabyte
-    }
-  }
-  ```
-
-  ---
-
-- **Uppdatera *billingType* i kluster**
-
-  Egenskapen *billingType* bestämmer fakturerings behörighet för klustret och dess data:
-  - *kluster* (standard)--faktureringen tillskrivs till den prenumeration som är värd för kluster resursen
-  - *arbets ytor* – faktureringen hänförs till prenumerationerna som är värdar för dina arbets ytor proportionellt
-  
-  Följ [uppdaterings klustret](#update-cluster-with-key-identifier-details) och ange det nya billingType-värdet. Observera att du inte behöver ange den fullständiga texten i REST-begäran och ska innehålla *billingType*:
-
-  # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
-
-  Ej tillämpligt
-
-  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-  Ej tillämpligt
-
-  # <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-  Ej tillämpligt
-
-  # <a name="rest"></a>[REST](#tab/rest)
-
-  ```rst
-  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
-  Authorization: Bearer <token>
-  Content-type: application/json
-
-  {
-    "properties": {
-      "billingType": "cluster",
-      }  
-  }
-  ``` 
-
-  ---
-
-- **Ta bort arbetsytans länk**
-
-  Du behöver Skriv-behörigheter på arbets ytan och klustret för att utföra den här åtgärden. Du kan när som helst ta bort länken till en arbets yta från klustret. Nya inmatade data efter åtgärden ta bort länk lagras i Log Analytics lagring och krypteras med Microsoft-nyckel. Du kan fråga dig om data som har matats in till din arbets yta före och efter att bryta länken sömlöst så länge klustret är etablerade och konfigurerat med giltig Key Vault nyckel.
-
-  Den här åtgärden är asynkron och kan vara en stund att slutföra.
-
-  # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
-
-  Ej tillämpligt
-
-  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-  ```azurecli
-  az monitor log-analytics workspace linked-service delete --resource-group "resource-group-name" --name "cluster-name" --workspace-name "workspace-name"
-  ```
-
-  # <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-  ```powershell
-  Remove-AzOperationalInsightsLinkedService -ResourceGroupName "resource-group-name" -Name "workspace-name" -LinkedServiceName cluster
-  ```
-
-  # <a name="rest"></a>[REST](#tab/rest)
-
-  ```rest
-  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-08-01
-  Authorization: Bearer <token>
-  ```
-
-  ---
-
-- **Kontrol lera länk status för arbets ytan**
-  
-  Utför åtgärden Hämta på arbets ytan och observera om egenskapen *clusterResourceId* finns i svaret under *funktioner*. En länkad arbets yta kommer att ha egenskapen *clusterResourceId* .
-
-  # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
-
-  Ej tillämpligt
-
-  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-  ```azurecli
-  az monitor log-analytics cluster show --resource-group "resource-group-name" --name "cluster-name"
-  ```
-
-  # <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-  ```powershell
-  Get-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
-  ```
-
-  # <a name="rest"></a>[REST](#tab/rest)
-
-   ```rest
-  GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>?api-version=2020-08-01
-  Authorization: Bearer <token>
-  ```
-
-  ---
-
-- **Ta bort klustret**
-
-  Du behöver Skriv behörighet för klustret för att utföra den här åtgärden. En mjuk borttagnings åtgärd utförs för att tillåta återställning av klustret, inklusive data inom 14 dagar, om borttagningen var oavsiktlig eller avsiktlig. Kluster namnet förblir reserverat under den mjuka borttagnings perioden och du kan inte skapa ett nytt kluster med det namnet. Efter den mjuka borttagnings perioden släpps kluster namnet och klustret och dess data tas bort permanent och går inte att återställa. En länkad arbets yta tas bort från klustret vid borttagnings åtgärden. Nya inmatade data lagras i Log Analytics lagring och krypteras med Microsoft-nyckel. 
-  
-  Åtgärden för att ta bort länken är asynkron och kan ta upp till 90 minuter att slutföra.
-
-  # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
-
-  Ej tillämpligt
-
-  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-  ```azurecli
-  az monitor log-analytics cluster delete --resource-group "resource-group-name" --name "cluster-name"
-  ```
-
-  # <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-  ```powershell
-  Remove-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name"
-  ```
-
-  # <a name="rest"></a>[REST](#tab/rest)
-
-  ```rst
-  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
-  Authorization: Bearer <token>
-  ```
-
-  ---
-  
-- **Återställa ditt kluster och dina data** 
-  
-  Ett kluster som har tagits bort under de senaste 14 dagarna är i läget för mjuk borttagning och kan återställas med data. Eftersom alla arbets ytor har tagit bort kopplingen från klustret, måste du länka om arbets ytorna efter klustrets återställning. Återställnings åtgärden utförs för närvarande manuellt av produkt gruppen. Använd din Microsoft-kanal eller öppna support förfrågan om återställning av borttaget kluster.
+Customer-Managed nyckel anges i ett dedikerat kluster och dessa åtgärder hänvisas till i [dedikerat kluster artikel](../log-query/logs-dedicated-clusters.md#change-cluster-properties)
+
+- Hämta alla kluster i resurs gruppen  
+- Hämta alla kluster i prenumerationen
+- Uppdatera *kapacitets reservation* i kluster
+- Uppdatera *billingType* i kluster
+- Ta bort länken mellan en arbets yta och ett kluster
+- Ta bort klustret
 
 ## <a name="limitations-and-constraints"></a>Begränsningar och begränsningar
 
@@ -662,6 +404,44 @@ Läs mer om [Customer lockbox för Microsoft Azure](../../security/fundamentals/
   - Om du skapar ett kluster och får ett fel meddelande om att <region namn> inte stöder Double Encryption för kluster. "kan du fortfarande skapa klustret utan Double Encryption. Lägg till `"properties": {"isDoubleEncryptionEnabled": false}` egenskap i rest Request-texten.
   - Inställningen Double Encryption kan inte ändras efter att klustret har skapats.
 
+- Felmeddelanden
+  
+  **Skapa kluster**
+  -  400--kluster namnet är ogiltigt. Kluster namnet kan innehålla tecknen a – z, A-Z, 0-9 och längden 3-63.
+  -  400 – bröd texten i begäran är null eller i felaktigt format.
+  -  400--SKU-namnet är ogiltigt. Ange SKU-namn till capacityReservation.
+  -  400--kapaciteten tillhandahölls men SKU: n är inte capacityReservation. Ange SKU-namn till capacityReservation.
+  -  400--kapacitet saknas i SKU. Ange kapacitets värde till 1000 eller högre i steg om 100 (GB).
+  -  400--kapacitet i SKU är inte inom intervallet. Bör vara minst 1000 och upp till den högsta tillåtna kapaciteten som är tillgänglig under "användning och uppskattad kostnad" i din arbets yta.
+  -  400 – kapaciteten är låst i 30 dagar. Minskning av kapaciteten tillåts 30 dagar efter uppdateringen.
+  -  400--inget SKU har angetts. Ange SKU-namnet till capacityReservation och kapacitets värde till 1000 eller högre i steg om 100 (GB).
+  -  400--identiteten är null eller tom. Ange identitet med systemAssigned-typ.
+  -  400--KeyVaultProperties anges när de skapas. Uppdatera KeyVaultProperties när klustret har skapats.
+  -  400--åtgärden kan inte utföras nu. Den asynkrona åtgärden är i ett annat tillstånd än lyckades. Klustret måste utföra åtgärden innan en uppdaterings åtgärd utförs.
+
+  **Kluster uppdatering**
+  -  400--klustrets status tas bort. En asynkron åtgärd pågår. Klustret måste utföra åtgärden innan en uppdaterings åtgärd utförs.
+  -  400--KeyVaultProperties är inte tomt men har ett felaktigt format. Se [uppdatering av nyckel identifierare](../platform/customer-managed-keys.md#update-cluster-with-key-identifier-details).
+  -  400--det gick inte att verifiera nyckeln i Key Vault. Kan bero på otillräckliga behörigheter eller när nyckeln inte finns. Kontrol lera att du [ställer in nyckel-och åtkomst principer](../platform/customer-managed-keys.md#grant-key-vault-permissions) i Key Vault.
+  -  400--det går inte att återskapa nyckeln. Key Vault måste anges som mjuk borttagning och rensnings skydd. Se [Key Vault-dokumentation](../../key-vault/general/soft-delete-overview.md)
+  -  400--åtgärden kan inte utföras nu. Vänta tills den asynkrona åtgärden har slutförts och försök igen.
+  -  400--klustrets status tas bort. Vänta tills den asynkrona åtgärden har slutförts och försök igen.
+
+  **Hämta kluster**
+    -  404--det gick inte att hitta klustret, klustret kan ha tagits bort. Om du försöker skapa ett kluster med det namnet och få en konflikt, är klustret mjuk borttagning i 14 dagar. Du kan kontakta supporten för att återställa den eller använda ett annat namn för att skapa ett nytt kluster. 
+
+  **Ta bort kluster**
+    -  409--det går inte att ta bort ett kluster i etablerings tillstånd. Vänta tills den asynkrona åtgärden har slutförts och försök igen.
+
+  **Arbets ytans länk**
+  -  404--arbets ytan hittades inte. Den arbets yta du angav finns inte eller har tagits bort.
+  -  409---arbets ytans länk eller ta bort länk i processen.
+  -  400--det gick inte att hitta klustret, det kluster du angav finns inte eller har tagits bort. Om du försöker skapa ett kluster med det namnet och få en konflikt, är klustret mjuk borttagning i 14 dagar. Du kan kontakta supporten för att återställa den.
+
+  **Ta bort arbets yta**
+  -  404--arbets ytan hittades inte. Den arbets yta du angav finns inte eller har tagits bort.
+  -  409---arbets ytans länk eller ta bort länk i processen.
+
 ## <a name="troubleshooting"></a>Felsökning
 
 - Beteende med Key Vault tillgänglighet
@@ -689,40 +469,7 @@ Läs mer om [Customer lockbox för Microsoft Azure](../../security/fundamentals/
   1. När du använder REST kopierar du Azure-AsyncOperation URL-värdet från svaret och följer [status kontrollen asynkrona åtgärder](#asynchronous-operations-and-status-check).
   2. Skicka GET-begäran till kluster eller arbets yta och observera svaret. Till exempel kan inte en länkad arbets yta ha *clusterResourceId* under *funktioner*.
 
-- Felmeddelanden
-  
-  Skapa kluster:
-  -  400--kluster namnet är ogiltigt. Kluster namnet kan innehålla tecknen a – z, A-Z, 0-9 och längden 3-63.
-  -  400 – bröd texten i begäran är null eller i felaktigt format.
-  -  400--SKU-namnet är ogiltigt. Ange SKU-namn till capacityReservation.
-  -  400--kapaciteten tillhandahölls men SKU: n är inte capacityReservation. Ange SKU-namn till capacityReservation.
-  -  400--kapacitet saknas i SKU. Ange kapacitets värde till 1000 eller högre i steg om 100 (GB).
-  -  400--kapacitet i SKU är inte inom intervallet. Bör vara minst 1000 och upp till den högsta tillåtna kapaciteten som är tillgänglig under "användning och uppskattad kostnad" i din arbets yta.
-  -  400 – kapaciteten är låst i 30 dagar. Minskning av kapaciteten tillåts 30 dagar efter uppdateringen.
-  -  400--inget SKU har angetts. Ange SKU-namnet till capacityReservation och kapacitets värde till 1000 eller högre i steg om 100 (GB).
-  -  400--identiteten är null eller tom. Ange identitet med systemAssigned-typ.
-  -  400--KeyVaultProperties anges när de skapas. Uppdatera KeyVaultProperties när klustret har skapats.
-  -  400--åtgärden kan inte utföras nu. Den asynkrona åtgärden är i ett annat tillstånd än lyckades. Klustret måste utföra åtgärden innan en uppdaterings åtgärd utförs.
+## <a name="next-steps"></a>Nästa steg
 
-  Kluster uppdatering
-  -  400--klustrets status tas bort. En asynkron åtgärd pågår. Klustret måste utföra åtgärden innan en uppdaterings åtgärd utförs.
-  -  400--KeyVaultProperties är inte tomt men har ett felaktigt format. Se [uppdatering av nyckel identifierare](#update-cluster-with-key-identifier-details).
-  -  400--det gick inte att verifiera nyckeln i Key Vault. Kan bero på otillräckliga behörigheter eller när nyckeln inte finns. Kontrol lera att du [ställer in nyckel-och åtkomst principer](#grant-key-vault-permissions) i Key Vault.
-  -  400--det går inte att återskapa nyckeln. Key Vault måste anges som mjuk borttagning och rensnings skydd. Se [Key Vault-dokumentation](../../key-vault/general/soft-delete-overview.md)
-  -  400--åtgärden kan inte utföras nu. Vänta tills den asynkrona åtgärden har slutförts och försök igen.
-  -  400--klustrets status tas bort. Vänta tills den asynkrona åtgärden har slutförts och försök igen.
-
-  Hämta kluster:
-    -  404--det gick inte att hitta klustret, klustret kan ha tagits bort. Om du försöker skapa ett kluster med det namnet och få en konflikt, är klustret mjuk borttagning i 14 dagar. Du kan kontakta supporten för att återställa den eller använda ett annat namn för att skapa ett nytt kluster. 
-
-  Ta bort kluster
-    -  409--det går inte att ta bort ett kluster i etablerings tillstånd. Vänta tills den asynkrona åtgärden har slutförts och försök igen.
-
-  Arbets ytans länk:
-  -  404--arbets ytan hittades inte. Den arbets yta du angav finns inte eller har tagits bort.
-  -  409---arbets ytans länk eller ta bort länk i processen.
-  -  400--det gick inte att hitta klustret, det kluster du angav finns inte eller har tagits bort. Om du försöker skapa ett kluster med det namnet och få en konflikt, är klustret mjuk borttagning i 14 dagar. Du kan kontakta supporten för att återställa den.
-
-  Ta bort arbets yta:
-  -  404--arbets ytan hittades inte. Den arbets yta du angav finns inte eller har tagits bort.
-  -  409---arbets ytans länk eller ta bort länk i processen.
+- Läs mer om [Log Analytics dedikerad kluster fakturering](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)
+- Lär dig om [rätt design av Log Analytics-arbetsytor](../platform/design-logs-deployment.md)

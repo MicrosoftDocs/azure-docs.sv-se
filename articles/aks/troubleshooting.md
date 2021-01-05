@@ -4,12 +4,12 @@ description: Lär dig hur du felsöker och löser vanliga problem när du använ
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: d157dd6b3347c8fbfd8712fa20d52cedb425f47f
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 02ff1581bafe62a092be87d16df51c7ca8c020b4
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751486"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830946"
 ---
 # <a name="aks-troubleshooting"></a>AKS-felsökning
 
@@ -439,7 +439,7 @@ På Kubernetes-versioner som är **äldre än 1.15.0** kan du få ett fel meddel
 
 ### <a name="why-do-upgrades-to-kubernetes-116-fail-when-using-node-labels-with-a-kubernetesio-prefix"></a>Varför fungerar inte uppgraderingar av Kubernetes 1,16 när du använder Node-etiketter med ett kubernetes.io-prefix
 
-Från och med Kubernetes [1,16](https://v1-16.docs.kubernetes.io/docs/setup/release/notes/) kan [endast en definierad delmängd av etiketter med Kubernetes.io-prefix](https://github.com/kubernetes/enhancements/blob/master/keps/sig-auth/0000-20170814-bounding-self-labeling-kubelets.md#proposal) användas av kubelet till noder. AKS kan inte ta bort aktiva etiketter för din räkning utan medgivande, eftersom det kan orsaka avbrott i arbets belastningar som påverkas.
+Från och med Kubernetes [1,16](https://v1-16.docs.kubernetes.io/docs/setup/release/notes/) kan [endast en definierad delmängd av etiketter med Kubernetes.io-prefix](https://v1-18.docs.kubernetes.io/docs/concepts/overview/working-with-objects/labels/) användas av kubelet till noder. AKS kan inte ta bort aktiva etiketter för din räkning utan medgivande, eftersom det kan orsaka avbrott i arbets belastningar som påverkas.
 
 Det innebär att du kan åtgärda problemet genom att:
 

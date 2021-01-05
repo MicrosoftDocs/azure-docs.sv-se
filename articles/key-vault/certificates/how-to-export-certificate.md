@@ -7,15 +7,15 @@ tags: azure-key-vault
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: how-to
-ms.custom: mvc, devx-track-azurecli
+ms.custom: mvc
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: 4339e8217702e9f25877bc8c250b5363e2c59a42
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0925b51ed960b8007d2df86115ea7e5cf627fe7e
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483703"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97826128"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>Exportera certifikat från Azure Key Vault
 
@@ -42,10 +42,10 @@ Mer information finns i [om Azure Key Vault certifikat](./about-certificates.md#
 
 ## <a name="export-stored-certificates"></a>Exportera lagrade certifikat
 
-Du kan exportera lagrade certifikat i Azure Key Vault med hjälp av Azure CLI, Azure PowerShell eller Azure Portal.
+Du kan exportera lagrade certifikat i Azure Key Vault med hjälp av Azure CLI, Azure PowerShell eller Azure-portalen.
 
 > [!NOTE]
-> Kräv bara certifikat lösen ord när du importerar certifikatet i nyckel valvet. Key Vault sparar inte det associerade lösen ordet. När du exporterar certifikatet är lösen ordet tomt.
+> Kräv bara certifikat lösen ord när du importerar certifikatet i nyckel valvet. Key Vault sparar inte det associerade lösenordet. När du exporterar certifikatet är lösen ordet tomt.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

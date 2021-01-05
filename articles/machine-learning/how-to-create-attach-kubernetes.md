@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: e773c2db9c7849dd9680f8ae0c600405f422d7e1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6400d3f3c721619551ba3989a2e5799b72ff9f38
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463194"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831932"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Skapa och ansluta ett Azure Kubernetes service-kluster
 
@@ -281,6 +281,78 @@ Information om hur du kopplar ett AKS-kluster i portalen finns i [skapa beräkni
 
 ---
 
+## <a name="create-or-attach-an-aks-cluster-with-tls-termination"></a>Skapa eller koppla ett AKS-kluster med TLS-terminering
+När du [skapar eller ansluter ett AKS-kluster](how-to-create-attach-kubernetes.md)kan du Aktivera TLS-avslutning med **[AksCompute.provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** och **[AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** konfigurations objekt. Båda metoderna returnerar ett konfigurations objekt som har en **enable_ssl** -Metod och du kan använda **enable_ssl** -metoden för att aktivera TLS.
+
+Följande exempel visar hur du aktiverar TLS-uppsägning med automatisk generering och konfiguration av TLS-certifikat med hjälp av Microsoft-certifikat under huven.
+```python
+   from azureml.core.compute import AksCompute, ComputeTarget
+   
+   # Enable TLS termination when you create an AKS cluster by using provisioning_config object enable_ssl method
+
+   # Leaf domain label generates a name using the formula
+   # "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+   # where "######" is a random series of characters
+   provisioning_config.enable_ssl(leaf_domain_label = "contoso")
+   
+   # Enable TLS termination when you attach an AKS cluster by using attach_config object enable_ssl method
+
+   # Leaf domain label generates a name using the formula
+   # "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+   # where "######" is a random series of characters
+   attach_config.enable_ssl(leaf_domain_label = "contoso")
+
+
+```
+Följande exempel visar hur du aktiverar TLS-avslutning med anpassat certifikat och anpassat domän namn. Med anpassad domän och certifikat måste du uppdatera DNS-posten så att den pekar på IP-adressen för bedömnings slut punkten. se [Uppdatera DNS](how-to-secure-web-service.md#update-your-dns)
+
+```python
+   from azureml.core.compute import AksCompute, ComputeTarget
+
+   # Enable TLS termination with custom certificate and custom domain when creating an AKS cluster
+   
+   provisioning_config.enable_ssl(ssl_cert_pem_file="cert.pem",
+                                        ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
+    
+   # Enable TLS termination with custom certificate and custom domain when attaching an AKS cluster
+
+   attach_config.enable_ssl(ssl_cert_pem_file="cert.pem",
+                                        ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
+
+
+```
+>[!NOTE]
+> Mer information om hur du skyddar modell distribution i AKS-kluster finns i [använda TLS för att skydda en webb tjänst via Azure Machine Learning](how-to-secure-web-service.md)
+
+## <a name="create-or-attach-an-aks-cluster-to-use-internal-load-balancer-with-private-ip"></a>Skapa eller koppla ett AKS-kluster för att använda interna Load Balancer med privat IP
+När du skapar eller ansluter ett AKS-kluster kan du konfigurera klustret så att det använder en intern Load Balancer. Med ett internt Load Balancer använder bedömnings slut punkter för dina distributioner av AKS en privat IP-adress i det virtuella nätverket. Följande kodfragment visar hur du konfigurerar ett internt Load Balancer för ett AKS-kluster.
+```python
+   
+   from azureml.core.compute.aks import AksUpdateConfiguration
+   from azureml.core.compute import AksCompute, ComputeTarget
+   
+   # When you create an AKS cluster, you can specify Internal Load Balancer to be created with provisioning_config object
+   provisioning_config = AksCompute.provisioning_configuration(load_balancer_type = 'InternalLoadBalancer')
+
+   # when you attach an AKS cluster, you can update the cluster to use internal load balancer after attach
+   aks_target = AksCompute(ws,"myaks")
+
+   # Change to the name of the subnet that contains AKS
+   subnet_name = "default"
+   # Update AKS configuration to use an internal load balancer
+   update_config = AksUpdateConfiguration(None, "InternalLoadBalancer", subnet_name)
+   aks_target.update(update_config)
+   # Wait for the operation to complete
+   aks_target.wait_for_completion(show_output = True)
+   
+   
+```
+>[!IMPORTANT]
+> Azure Machine Learning stöder inte TLS-avslutning med interna Load Balancer. Interna Load Balancer har en privat IP-adress och att den privata IP-adressen kan finnas i ett annat nätverk och certifikat kan vara recused. 
+
+>[!NOTE]
+> Mer information om hur du skyddar inferencing-miljön finns i [skydda en Azure Machine Learning inferencing-miljö](how-to-secure-inferencing-vnet.md)
+
 ## <a name="detach-an-aks-cluster"></a>Koppla från ett AKS-kluster
 
 Använd någon av följande metoder för att koppla från ett kluster från din arbets yta:
@@ -305,6 +377,52 @@ az ml computetarget detach -n myaks -g myresourcegroup -w myworkspace
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 I Azure Machine Learning Studio väljer du __beräknings__-, __härlednings kluster__ och det kluster som du vill ta bort. Använd __Koppla från__ -länken för att koppla från klustret.
+
+---
+
+## <a name="troubleshooting"></a>Felsökning
+
+### <a name="update-the-cluster"></a>Uppdatera klustret
+
+Uppdateringar av Azure Machine Learning-komponenter som är installerade i ett Azure Kubernetes service-kluster måste appliceras manuellt. 
+
+Du kan tillämpa dessa uppdateringar genom att koppla från klustret från arbets ytan Azure Machine Learning och sedan återansluta klustret till arbets ytan. Om TLS är aktiverat i klustret måste du ange TLS/SSL-certifikatet och den privata nyckeln när du återansluter klustret. 
+
+```python
+compute_target = ComputeTarget(workspace=ws, name=clusterWorkspaceName)
+compute_target.detach()
+compute_target.wait_for_completion(show_output=True)
+
+attach_config = AksCompute.attach_configuration(resource_group=resourceGroup, cluster_name=kubernetesClusterName)
+
+## If SSL is enabled.
+attach_config.enable_ssl(
+    ssl_cert_pem_file="cert.pem",
+    ssl_key_pem_file="key.pem",
+    ssl_cname=sslCname)
+
+attach_config.validate_configuration()
+
+compute_target = ComputeTarget.attach(workspace=ws, name=args.clusterWorkspaceName, attach_configuration=attach_config)
+compute_target.wait_for_completion(show_output=True)
+```
+
+Om du inte längre har TLS/SSL-certifikatet och den privata nyckeln, eller om du använder ett certifikat som har genererats av Azure Machine Learning, kan du hämta filerna innan du kopplar från klustret genom att ansluta till klustret med hjälp av `kubectl` och hämta hemligheten `azuremlfessl` .
+
+```bash
+kubectl get secret/azuremlfessl -o yaml
+```
+
+>[!Note]
+>Kubernetes lagrar hemligheterna i Base-64-kodat format. Du behöver Base-64-avkoda- `cert.pem` och- `key.pem` komponenterna i hemligheterna innan du ger dem `attach_config.enable_ssl` . 
+
+### <a name="webservice-failures"></a>Problem med webservice
+
+Många WebService-fel i AKS kan felsökas genom att ansluta till klustret med hjälp av `kubectl` . Du kan hämta `kubeconfig.json` ett AKS-kluster genom att köra
+
+```azurecli-interactive
+az aks get-credentials -g <rg> -n <aks cluster name>
+```
 
 ## <a name="next-steps"></a>Nästa steg
 

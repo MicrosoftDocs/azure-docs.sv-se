@@ -13,20 +13,20 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/18/2020
+ms.date: 12/31/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 36f6638614d5c0b55b2adc202e8f8d6f9450aaf3
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: e5adb8edbeafa4d77e24bf865338e111c455cb80
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674420"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827520"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Kontroll av Azure HANA – stora instanser med Azure Portal
 
 >[!NOTE]
->För rev 4,2 följer du anvisningarna i avsnittet [Hantera BareMetal-instanser via Azure Portal](baremetal-infrastructure-portal.md) .
+>För rev 4,2 följer du anvisningarna i avsnittet [Hantera BareMetal-instanser via Azure Portal](../../../baremetal-infrastructure/workloads/sap/baremetal-infrastructure-portal.md) .
 
 Det här dokumentet beskriver hur [Hana-stora instanser](./hana-overview-architecture.md) presenteras i [Azure Portal](https://portal.azure.com) och vilka aktiviteter som kan utföras med hjälp av Azure Portal med Hana-stora instans enheter som distribueras åt dig. Visning av HANA-stora instanser i Azure Portal tillhandahålls via en Azure Resource Provider för HANA-stora instanser, som för närvarande finns i en offentlig för hands version
 

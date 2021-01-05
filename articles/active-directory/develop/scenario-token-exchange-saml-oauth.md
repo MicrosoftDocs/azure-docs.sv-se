@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: kenwith
 ms.reviewer: paulgarn
-ms.openlocfilehash: 16de95e177f6be1b5bb2517b5ae3ca595cfb5766
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 5841af4225f88b36fe727b60a597af208ac830f5
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96939204"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827180"
 ---
 # <a name="microsoft-identity-platform-token-exchange-scenarios-with-saml-and-oidcoauth"></a>Microsoft Identity Platform token Exchange-scenarier med SAML och OIDC/OAuth
 
@@ -33,4 +33,4 @@ Den allmänna strategin är att lägga till OIDC/OAuth-stacken i din app. Med di
 > Det rekommenderade biblioteket för att lägga till OIDC/OAuth-beteende är Microsoft Authentication Library (MSAL). Mer information om MSAL finns i [Översikt över Microsoft Authentication Library (MSAL)](msal-overview.md). Föregående bibliotek kallades Active Directory-autentiseringsbibliotek (ADAL), men rekommenderas inte eftersom MSAL ersätter det.
 
 ## <a name="next-steps"></a>Nästa steg
-- [autentiserings flöden och program scenarier](authentication-flows-app-scenarios.md)
+- [Autentiserings flöden och program scenarier](authentication-flows-app-scenarios.md)

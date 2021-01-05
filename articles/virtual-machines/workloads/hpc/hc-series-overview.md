@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 672175d5bb92c8ab6dc347ece5ad6b14d8232ef4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b9fe978da9accd28ea0e538f458325f10c9c5d8d
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024086"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831898"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>Översikt över virtuell dator i HC-serien
 
@@ -58,6 +58,6 @@ Följande diagram visar ansvars fördelning av kärnor som är reserverade för 
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer om [Intel Xeon SP-arkitektur](https://bit.ly/2RCYkiE).
+- Läs mer om [Intel Xeon SP-arkitektur](https://software.intel.com/content/www/us/en/develop/articles/intel-xeon-processor-scalable-family-technical-overview.html).
 - Läs om de senaste meddelandena och några HPC-exempel och resultat i [Azure Compute Tech community-Bloggar](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - En arkitektur för högre nivå för att köra HPC-arbetsbelastningar finns i [HPC (data behandling med höga prestanda) i Azure](/azure/architecture/topics/high-performance-computing/).
