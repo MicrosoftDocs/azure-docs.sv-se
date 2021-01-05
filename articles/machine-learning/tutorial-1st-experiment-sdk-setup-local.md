@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 62a1f43fb73f0eda77ebb8f62f64c95ff4ad37a1
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 5df8b478c550522d4602398afd208c1e001c96a2
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734206"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883307"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Självstudie: kom igång med Azure Machine Learning i utvecklings miljön (del 1 av 4)
 
@@ -67,8 +67,10 @@ tutorial
 - `.azureml`: Dold under katalog för lagring av Azure Machine Learning konfigurationsfiler.
 
 > [!TIP]
-> Om du använder en Mac använder du **Kommando + Skift +** i Finder-fönstret. så här växlar du möjlighet att visa och skapa kataloger som börjar med en punkt.  Eller Använd kommandot Terminal för att skapa katalogen.
-
+> Du kan skapa en dold. azureml-underkatalog i ett terminalfönster.  Eller Använd följande:
+> * I ett Mac Finder-fönster använder du **Kommando + Skift +.** så här växlar du möjlighet att visa och skapa kataloger som börjar med en punkt.  
+> * I Windows 10, se [så här visar du dolda filer och mappar](https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-10-97fbc472-c603-9d90-91d0-1166d1d9f4b5). 
+> * I det grafiska Linux-gränssnittet använder du **CTRL + h** eller **Visa** -menyn och markerar kryss rutan för att **Visa dolda filer**.
 
 > [!div class="nextstepaction"]
 > [Jag har skapat en katalog](?success=create-dir#workspace) som [Jag stötte på ett problem](https://www.research.net/r/7C8Z3DN?issue=create-dir)

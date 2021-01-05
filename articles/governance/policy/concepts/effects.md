@@ -3,12 +3,12 @@ title: Förstå hur effekter fungerar
 description: Azure Policy definitioner har olika effekter som avgör hur efterlevnaden hanteras och rapporteras.
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 19811eca33be7dff4d9bee5b8bd89dd38f185a57
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: e72e94766dce2660409e729bc43eb107fb9ab39a
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873956"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883086"
 ---
 # <a name="understand-azure-policy-effects"></a>Förstå Azure Policys effekter
 
@@ -21,7 +21,7 @@ Dessa effekter stöds för närvarande i en princip definition:
 - [AuditIfNotExists](#auditifnotexists)
 - [Deny](#deny) (Neka)
 - [DeployIfNotExists](#deployifnotexists)
-- [Inaktiverad](#disabled)
+- [Disabled](#disabled) (Inaktiverat)
 - [Modify](#modify) (Ändra)
 
 Följande effekter är _föråldrade_:
@@ -32,7 +32,7 @@ Följande effekter är _föråldrade_:
 > [!IMPORTANT]
 > I stället för **EnforceOPAConstraint** -eller **EnforceRegoPolicy** -effekterna använder du _granskning_ och _neka_ med resurs leverantörs läge `Microsoft.Kubernetes.Data` . De inbyggda princip definitionerna har uppdaterats. När befintliga princip tilldelningar för dessa inbyggda princip definitioner ändras, måste parametern _Effect_ ändras till ett värde i den uppdaterade _allowedValues_ -listan.
 
-## <a name="order-of-evaluation"></a>Utvärderings ordning
+## <a name="order-of-evaluation"></a>Utvärderingsordning
 
 Begär Anden om att skapa eller uppdatera en resurs utvärderas av Azure Policy först. Azure Policy skapar en lista med alla tilldelningar som gäller för resursen och utvärderar sedan resursen mot varje definition. För ett [Resource Manager-läge](./definition-structure.md#resource-manager-modes)bearbetar Azure policy flera av effekterna innan du överlämnar begäran till lämplig resurs leverantör. Den här ordningen förhindrar onödig bearbetning av en resurs leverantör när en resurs inte uppfyller de design kontroller som är utformade för Azure Policy. Med ett [resurs leverantörs läge](./definition-structure.md#resource-provider-modes)hanterar resurs leverantören utvärderingen och resultatet och rapporterar tillbaka resultatet till Azure policy.
 
@@ -42,6 +42,8 @@ Begär Anden om att skapa eller uppdatera en resurs utvärderas av Azure Policy 
 - **Granskningen** utvärderas sist.
 
 När resurs leverantören returnerar en lyckad kod i ett Resource Manager-läge, utvärderas **AuditIfNotExists** och **DeployIfNotExists** för att avgöra om det krävs ytterligare loggning eller åtgärd av efterlevnad.
+
+Dessutom `PATCH` begränsar förfrågningar om att endast ändringar `tags` av relaterade fält begränsar princip utvärderingen till principer som innehåller villkor som kontrollerar `tags` relaterade fält.
 
 ## <a name="append"></a>Lägg till
 
@@ -166,8 +168,8 @@ Egenskapen **information** för AuditIfNotExists-effekterna har alla under egens
   - Tillåtna värden är _prenumerations_ -och _ResourceGroup_.
   - Anger omfånget för var den relaterade resursen ska hämtas för matchning från.
   - Gäller inte om **typen** är en resurs som skulle ligga under villkors resursen **IF** .
-  - För _ResourceGroup_begränsas till resurs gruppen **om** villkors resursen eller resurs gruppen som anges i **ResourceGroupName**.
-  - För _prenumerationen_frågar hela prenumerationen för den relaterade resursen.
+  - För _ResourceGroup_ begränsas till resurs gruppen **om** villkors resursen eller resurs gruppen som anges i **ResourceGroupName**.
+  - För _prenumerationen_ frågar hela prenumerationen för den relaterade resursen.
   - Standardvärdet är _ResourceGroup_.
 - **ExistenceCondition** (valfritt)
   - Om inget annat anges uppfyller en relaterad resurs av **typen** effekterna och utlöser inte granskningen.
@@ -288,8 +290,8 @@ Egenskapen **information** för DeployIfNotExists-effekterna har alla under egen
   - Tillåtna värden är _prenumerations_ -och _ResourceGroup_.
   - Anger omfånget för var den relaterade resursen ska hämtas för matchning från.
   - Gäller inte om **typen** är en resurs som skulle ligga under villkors resursen **IF** .
-  - För _ResourceGroup_begränsas till resurs gruppen **om** villkors resursen eller resurs gruppen som anges i **ResourceGroupName**.
-  - För _prenumerationen_frågar hela prenumerationen för den relaterade resursen.
+  - För _ResourceGroup_ begränsas till resurs gruppen **om** villkors resursen eller resurs gruppen som anges i **ResourceGroupName**.
+  - För _prenumerationen_ frågar hela prenumerationen för den relaterade resursen.
   - Standardvärdet är _ResourceGroup_.
 - **ExistenceCondition** (valfritt)
   - Om inget annat anges uppfyller en relaterad resurs av **typen** effekterna och utlöser inte distributionen.
@@ -368,7 +370,7 @@ Exempel: utvärderar SQL Server databaser för att avgöra om transparentDataEnc
 Den här inställningen är användbar för att testa situationer eller när princip definitionen har parameterstyrda påverkan. Den här flexibiliteten gör det möjligt att inaktivera en enskild tilldelning i stället för att inaktivera alla tilldelningar för principen.
 
 Ett alternativ till den inaktiverade inställningen är **enforcementMode**, som anges för princip tilldelningen.
-När **enforcementMode** är _inaktive rad_utvärderas resurserna fortfarande. Loggning, till exempel aktivitets loggar och princip påverkan inträffar inte. Mer information finns i [princip tilldelning – tvingande läge](./assignment-structure.md#enforcement-mode).
+När **enforcementMode** är _inaktive rad_ utvärderas resurserna fortfarande. Loggning, till exempel aktivitets loggar och princip påverkan inträffar inte. Mer information finns i [princip tilldelning – tvingande läge](./assignment-structure.md#enforcement-mode).
 
 ## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
 
@@ -519,7 +521,7 @@ Egenskapen **information** för funktionen ändra har alla under egenskaper som 
   - Den roll som definieras måste innehålla alla åtgärder som beviljas rollen [deltagare](../../../role-based-access-control/built-in-roles.md#contributor) .
 - **conflictEffect** (valfritt)
   - Fastställer vilken princip definition "WINS" i händelse av att mer än en princip definition ändrar samma egenskap eller när ändrings åtgärden inte fungerar med det angivna aliaset.
-    - För nya eller uppdaterade resurser prioriteras princip definitionen med _neka_ . Princip definitioner med _granskning_ hoppa över alla **åtgärder**. Om mer än en princip definition har _neka_nekas begäran som en konflikt. Om alla princip definitioner har _granskning_bearbetas ingen av **åtgärderna** i de motstridiga princip definitionerna.
+    - För nya eller uppdaterade resurser prioriteras princip definitionen med _neka_ . Princip definitioner med _granskning_ hoppa över alla **åtgärder**. Om mer än en princip definition har _neka_ nekas begäran som en konflikt. Om alla princip definitioner har _granskning_ bearbetas ingen av **åtgärderna** i de motstridiga princip definitionerna.
     - För befintliga resurser, om mer än en princip definition har _neka_, är kompatibilitetsstatus en _konflikt_. Om en eller färre princip definitioner har _neka_, returnerar varje tilldelning en kompatibilitetsstatus som _inte är kompatibel_.
   - Tillgängliga värden: _audit_, _Deny_, _Disabled_.
   - Standardvärdet är _Deny_.
@@ -539,7 +541,7 @@ Egenskapen **information** för funktionen ändra har alla under egenskaper som 
 
 ### <a name="modify-operations"></a>Ändra åtgärder
 
-Med egenskapen för **drifts** egenskaper kan du ändra flera taggar på olika sätt från en enda princip definition. Varje åtgärd består av egenskaperna **åtgärd**, **fält**och **värde** . Åtgärden avgör vad reparations uppgiften gör till taggarna, fältet avgör vilken tagg som ändras och värdet definierar den nya inställningen för taggen. Exemplet nedan gör följande tagg ändringar:
+Med egenskapen för **drifts** egenskaper kan du ändra flera taggar på olika sätt från en enda princip definition. Varje åtgärd består av egenskaperna **åtgärd**, **fält** och **värde** . Åtgärden avgör vad reparations uppgiften gör till taggarna, fältet avgör vilken tagg som ändras och värdet definierar den nya inställningen för taggen. Exemplet nedan gör följande tagg ändringar:
 
 - Ställer in `environment` taggen på "test", även om den redan finns med ett annat värde.
 - Tar bort taggen `TempResource` .
@@ -569,7 +571,7 @@ Med egenskapen för **drifts** egenskaper kan du ändra flera taggar på olika s
 
 Egenskapen **operation** har följande alternativ:
 
-|Åtgärd |Beskrivning |
+|Åtgärd |Description |
 |-|-|
 |addOrReplace |Lägger till den definierade egenskapen eller taggen och värdet i resursen, även om egenskapen eller taggen redan finns med ett annat värde. |
 |Lägg till |Lägger till den definierade egenskapen eller taggen och värdet i resursen. |
@@ -646,7 +648,7 @@ Exempel 3: se till att ett lagrings konto inte tillåter offentlig BLOB-åtkomst
 
 ## <a name="layering-policy-definitions"></a>Skikt princip definitioner
 
-En resurs kan påverkas av flera tilldelningar. Tilldelningarna kan finnas i samma omfång eller i olika omfång. Vart och ett av dessa tilldelningar är också troligt att en annan inverkan har definierats. Villkoret och påverkan för varje princip utvärderas oberoende av varandra. Exempel:
+En resurs kan påverkas av flera tilldelningar. Tilldelningarna kan finnas i samma omfång eller i olika omfång. Vart och ett av dessa tilldelningar är också troligt att en annan inverkan har definierats. Villkoret och påverkan för varje princip utvärderas oberoende av varandra. Till exempel:
 
 - Princip 1
   - Begränsar resursens plats till "väst"

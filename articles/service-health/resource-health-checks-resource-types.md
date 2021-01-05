@@ -3,12 +3,12 @@ title: Resurs typer som stöds genom Azure Resource Health | Microsoft Docs
 description: Resurs typer som stöds via Azure Resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 79f979b55366d29ca8cf22a1e65ebdcc557ef594
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 1b0958732a96786b2fb86b2b145f5cb8d36c0c5a
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899487"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883375"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Resurs typer och hälso kontroller i Azure Resource Health
 Nedan visas en fullständig lista över alla kontroller som utförs via resurs hälsa efter resurs typer.
@@ -168,6 +168,11 @@ Nedan visas en fullständig lista över alla kontroller som utförs via resurs h
 |Utförda kontroller|
 |---|
 |<ul><li>Är prestanda för Application Gateway försämrade?</li><li>Är Application Gateway tillgängligt?</li></ul>|
+
+## <a name="microsoftnetworkbastionhosts"></a>Microsoft. Network/bastionhosts
+|Utförda kontroller|
+|---|
+|<ul><li>Är skydds-värden igång?</li></ul>|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft. Network/Connections
 |Utförda kontroller|

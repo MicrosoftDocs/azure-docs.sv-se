@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 12/15/2020
+ms.date: 01/04/2020
 ms.author: b-juche
-ms.openlocfilehash: ceaf0209dd14c8d97088d7f8e8e6990429607089
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e74b729f837c8e6ebe86514a01b6c8bdddc616e4
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591830"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881097"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Skapa en NFSv3-och SMB-volym (Dual-Protocol) för Azure NetApp Files
 
@@ -39,7 +39,7 @@ Azure NetApp Files stöder skapande av volymer med NFS (NFSv3 och NFSv 4.1), SMB
 * Skapa en zon för omvänd sökning på DNS-servern och Lägg sedan till en pekare (PTR) av AD host-datorn i den zonen för omvänd sökning. Annars går det inte att skapa dubbla protokoll volymer.
 * Kontrollera att NFS-klienten är uppdaterad och att de senaste uppdateringarna för operativsystemet används.
 * Kontrol lera att LDAP-servern Active Directory (AD) är igång och körs på AD. Du kan göra det genom att installera och konfigurera rollen [Active Directory Lightweight Directory Services (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) på AD-datorn.
-* Se till att en certifikat utfärdare (CA) skapas på AD med hjälp av rollen [Active Directory certifikat tjänster (AD CS)](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) för att generera och exportera det självsignerade certifikatet för rot certifikat utfärdaren.   
+* Se till att en certifikat utfärdare (CA) skapas för AD med rollen [Active Directory certifikat tjänster (AD CS)](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) för att generera och exportera det självsignerade rot certifikat utfärdarens certifikat.   
 * Dubbla protokoll volymer stöder för närvarande inte Azure Active Directory Domain Services (AADDS).  
 * NFS-versionen som används av en dual-Protocol-volym är NFSv3. På så sätt gäller följande:
     * Dubbla protokoll stöder inte Windows ACL utökade attribut `set/get` från NFS-klienter.
@@ -132,7 +132,8 @@ Azure NetApp Files stöder skapande av volymer med NFS (NFSv3 och NFSv 4.1), SMB
     * En Windows-baserad klient som har anslutit till domänen och har rot certifikatet installerat 
     * En annan dator i domänen som innehåller rot certifikatet  
 
-3. Exportera rot certifikatet.  
+3. Exportera rot certifikat utfärdarens certifikat.  
+    Certifikat från rot certifikat utfärdare kan exporteras från personliga eller betrodda rot certifikat utfärdare.   
     Se till att certifikatet exporteras i Base-64-kodad X. 509 (. CER-format: 
 
     ![Guiden Exportera certifikat](../media/azure-netapp-files/certificate-export-wizard.png)

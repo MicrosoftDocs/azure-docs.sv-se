@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: bfe8af8c30bbc2bc66c363fbd85f6764a48c28a1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 666b3c609224c1665c150718b2b89c4bac72577e
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488076"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882236"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publicera Fjärrskrivbord med Azure AD-programproxy
 
@@ -42,18 +42,13 @@ I en RDS-distribution körs webb rollen för fjärr skrivbord och RD Gateway-rol
 ## <a name="requirements"></a>Krav
 
 - Både webb-och RD Gateway-slutpunkterna måste finnas på samma dator och med en gemensam rot. Webb server för fjärr skrivbord och Fjärrskrivbordsgateway publiceras som ett enda program med programproxy så att du kan använda enkel inloggning mellan de två programmen.
-
-- Du bör redan ha [distribuerat RDS](/windows-server/remote/remote-desktop-services/rds-in-azure)och [aktiverat Application Proxy](application-proxy-add-on-premises-application.md).
-
+- Du bör redan ha [distribuerat RDS](/windows-server/remote/remote-desktop-services/rds-in-azure)och [aktiverat Application Proxy](application-proxy-add-on-premises-application.md). Se till att du har uppfyllt kraven för att aktivera programproxy, till exempel att installera anslutnings programmet, öppna nödvändiga portar och URL: er och Aktivera TLS 1,2 på servern.
 - Dina slutanvändare måste använda en kompatibel webbläsare för att ansluta till webb servern för fjärr skrivbord eller webb klienten för fjärr skrivbord. Mer information finns i [Support för klient konfigurationerna](#support-for-other-client-configurations).
-
 - När du publicerar en webb server för fjärr skrivbord rekommenderar vi att du använder samma interna och externa fullständiga domän namn. Om de interna och externa FQDN-namnen är olika bör du inaktivera översättning av begär ande huvud för att undvika att klienten tar emot ogiltiga länkar.
-
 - Om du använder webb sidan för fjärr skrivbord i Internet Explorer måste du aktivera ActiveX-tillägget för fjärr skrivbords tjänster.
-
 - Om du använder webb klienten för fjärr skrivbord måste du använda Application Proxy [Connector version 1.5.1975 eller senare](./application-proxy-release-version-history.md).
-
 - För flödet för Azure AD-förautentisering kan användare bara ansluta till resurser som publicerats till dem i fönstret **RemoteApp och skriv bord** . Användare kan inte ansluta till en stationär dator med hjälp av rutan **Anslut till en fjärran sluten dator** .
+- Om du använder Windows Server 2019 kan du behöva inaktivera HTTP2-protokollet. Mer information finns i [Självstudier: Lägg till ett lokalt program för fjärråtkomst via Application Proxy i Azure Active Directory](application-proxy-add-on-premises-application.md).
 
 ## <a name="deploy-the-joint-rds-and-application-proxy-scenario"></a>Distribuera det gemensamma scenariot för RDS och programproxy
 
@@ -96,7 +91,7 @@ Anslut till RDS-distributionen som administratör och ändra Server namnet för 
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"
    ```
 
-   **Exempel:**
+   **Till exempel:**
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "QuickSessionCollection" -CustomRdpProperty "pre-authentication server address:s:https://remotedesktoptest-aadapdemo.msappproxy.net/`nrequire pre-authentication:i:1"
    ```

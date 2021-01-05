@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 05/18/2020
+ms.date: 01/04/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c075e19422341ad7ccfd3ad951517876ab26a495
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 1b0771687aa7ccf9b749c107a6b1c507cb3ba08d
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96858424"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881947"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Konton och behörigheter
 
@@ -44,7 +44,7 @@ Förutom dessa tre konton som används för att köra Azure AD Connect behöver 
 
 - **AD DS Enterprise-administratörskonto**: används för att skapa "AD DS Connector-kontot" ovan.
 
-- **Azure AD global administratörs konto**: används för att skapa Azure AD Connector-kontot och konfigurera Azure AD.
+- **Azure AD global administratörs konto**: används för att skapa Azure AD Connector-kontot och konfigurera Azure AD.  Du kan visa globala administratörs konton i Azure-portalen.  Se [Visa roller](../../active-directory/roles/manage-roles-portal.md#view-all-roles).
 
 - **SQL sa-konto (valfritt)**: används för att skapa ADSync-databasen när du använder den fullständiga versionen av SQL Server.  Den här SQL Server kan vara lokal eller fjärran sluten till den Azure AD Connect installationen.  Kontot kan vara samma konto som företags administratören.  Etableringen av databasen kan nu utföras out-of-band av SQL-administratören och sedan installeras av Azure AD Connect administratör med databas ägar rättigheter.  Information om detta finns i [installera Azure AD Connect med hjälp av SQL-delegerad administratörs behörighet](how-to-connect-install-sql-delegation.md)
 
@@ -175,7 +175,7 @@ Om du använder anpassade inställningar ansvarar du för att skapa kontot innan
 ### <a name="adsync-service-account"></a>ADSync-tjänstkonto
 Synkroniseringstjänsten kan köras under olika konton. Den kan köras under ett **virtuellt tjänst konto** (VSA), ett **grupphanterat tjänst konto** (gMSA/SMSA) eller ett vanligt användar konto. De alternativ som stöds har ändrats med 2017 april-versionen av Connect när du gör en ny installation. Om du uppgraderar från en tidigare version av Azure AD Connect är dessa ytterligare alternativ inte tillgängliga.
 
-| Typ av konto | Installations alternativ | Beskrivning |
+| Typ av konto | Installations alternativ | Description |
 | --- | --- | --- |
 | [Virtuellt tjänst konto](#virtual-service-account) | Express och anpassad, 2017 april och senare | Detta är det alternativ som används för alla Express installationer, förutom för installationer på en domänkontrollant. För anpassad är det standard alternativet om inte ett annat alternativ används. |
 | [Grupphanterat tjänstkonto](#group-managed-service-account) | Anpassad, 2017 april och senare | Om du använder en fjärran sluten SQL Server rekommenderar vi att du använder ett grupphanterat tjänst konto. |

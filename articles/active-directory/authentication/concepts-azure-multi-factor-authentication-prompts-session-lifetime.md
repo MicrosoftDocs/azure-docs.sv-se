@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14a65b83195bff48934668ff029f925e13884bad
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 8789015c239aae58ec25f0f644d4c497da477c2b
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743708"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881250"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-ad-multi-factor-authentication"></a>Optimera omautentiserings-prompter och förstå sessionens livs längd för Azure AD Multi-Factor Authentication
 
@@ -108,7 +108,7 @@ Utför följande steg för att konfigurera eller granska alternativet för *fort
 1. Välj **företags anpassning**, välj sedan Visa alternativ för varje språk version **som är inloggad**.
 1. Välj *Ja* och välj sedan **Spara**.
 
-Utför följande steg för att komma ihåg inställningarna för Multi-Factor Authentication:
+Utför följande steg för att komma ihåg inställningar för Multi-Factor Authentication på betrodda enheter:
 
 1. I Azure AD-portalen söker du efter och väljer *Azure Active Directory*.
 1. Välj **säkerhet** och sedan **MFA**.

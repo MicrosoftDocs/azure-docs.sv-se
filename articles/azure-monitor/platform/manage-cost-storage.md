@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/16/2020
+ms.date: 12/24/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: a3a4c7a51f0d75b67465a83a2fbbf3ae8a141c4c
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 45f02850797582f97220e91d1582b04b3be711c0
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97671173"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882491"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Hantera användning och kostnader med Azure Monitor-loggar    
 
@@ -132,9 +132,9 @@ Ingen av de äldre pris nivåerna har regional-baserade priser.
 
 ## <a name="change-the-data-retention-period"></a>Ändra kvarhållningsperioden för data
 
-Följande steg beskriver hur du konfigurerar hur länge loggdata sparas i din arbets yta. Datakvarhållning kan konfigureras från 30 till 730 dagar (2 år) för alla arbets ytor om de inte använder den äldre pris nivån kostnads fri. [Lär dig mer](https://azure.microsoft.com/pricing/details/monitor/) om priser för längre data kvarhållning. 
+Följande steg beskriver hur du konfigurerar hur länge loggdata sparas i din arbets yta. Datakvarhållning på arbets ytans nivå kan konfigureras från 30 till 730 dagar (2 år) för alla arbets ytor om de inte använder den äldre pris nivån kostnads fri. [Lär dig mer](https://azure.microsoft.com/pricing/details/monitor/) om priser för längre data kvarhållning. Kvarhållning för enskilda data typer kan anges så lågt som 4 dagar. 
 
-### <a name="default-retention"></a>Standard kvarhållning
+### <a name="workspace-level-default-retention"></a>Standard kvarhållning på arbetsyte nivå
 
 Ange standard kvarhållning för din arbets yta genom att 
  
@@ -158,7 +158,7 @@ Observera att [rensnings-API](/rest/api/loganalytics/workspacepurge/purge) för 
 
 ### <a name="retention-by-data-type"></a>Kvarhållning efter datatyp
 
-Det är också möjligt att ange olika inställningar för kvarhållning för enskilda data typer från 30 till 730 dagar (förutom för arbets ytor på den äldre kostnads fria pris nivån). Varje datatyp är en under resurs till arbets ytan. Till exempel kan SecurityEvent-tabellen åtgärdas i [Azure Resource Manager](../../azure-resource-manager/management/overview.md) som:
+Det är också möjligt att ange olika inställningar för kvarhållning för enskilda data typer från 4 till 730 dagar (förutom för arbets ytor på den äldre kostnads fria pris nivån) som åsidosätter standard kvarhållning på arbets ytan. Varje datatyp är en under resurs till arbets ytan. Till exempel kan SecurityEvent-tabellen åtgärdas i [Azure Resource Manager](../../azure-resource-manager/management/overview.md) som:
 
 ```
 /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent
@@ -350,7 +350,8 @@ Usage
 | where TimeGenerated > ago(32d)
 | where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
 | where IsBillable == true
-| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution | render barchart
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution 
+| render columnchart
 ```
 
 Satsen med `TimeGenerated` är endast för att säkerställa att frågans upplevelse i Azure Portal kommer att se tillbaka utöver standard 24 timmarna. När du använder data typen användning `StartTime` och representerar de tidsgrupper `EndTime` som resultat visas för. 
@@ -364,7 +365,8 @@ Usage
 | where TimeGenerated > ago(32d)
 | where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
 | where IsBillable == true
-| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), DataType | render barchart
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), DataType 
+| render columnchart
 ```
 
 Eller för att se en tabell efter lösning och typ för den senaste månaden
@@ -661,4 +663,5 @@ Det finns ytterligare Log Analytics gränser, varav vissa är beroende av Log An
 - Om du vill konfigurera en princip för en effektiv händelse insamling granskar [Azure Security Center filtrerings princip](../../security-center/security-center-enable-data-collection.md).
 - Ändra [prestandaräknarens konfiguration](data-sources-performance-counters.md).
 - Om du vill ändra inställningarna för händelse samlingen granskar du [händelse logg konfigurationen](data-sources-windows-events.md).
+- Om du vill ändra inställningarna för syslog-samlingen granskar du [syslog-konfigurationen](data-sources-syslog.md).
 - Om du vill ändra inställningarna för syslog-samlingen granskar du [syslog-konfigurationen](data-sources-syslog.md).

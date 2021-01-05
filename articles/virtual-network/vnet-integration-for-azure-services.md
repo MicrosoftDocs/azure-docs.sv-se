@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: kumud
-ms.openlocfilehash: 814158ad68e63760c1f2a1bce3eeff812de3c13e
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: a25d6d0d1990682287b5962a7bd93a0c525db133
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938740"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882372"
 ---
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>Integrera Azure-tjänster med virtuella nätverk för nätverks isolering
 
 Virtual Network-integration (VNet) för en Azure-tjänst gör det möjligt att låsa åtkomsten till tjänsten enbart till din virtuella nätverks infrastruktur. VNet-infrastrukturen inkluderar även peer-baserade virtuella nätverk och lokala nätverk.
 
 VNet-integrering ger Azure-tjänster fördelarna med nätverks isolering och kan utföras av en eller flera av följande metoder:
-- [Distribuera dedikerade instanser av tjänsten till ett virtuellt nätverk](virtual-network-service-endpoints-overview.md). Tjänsterna kan sedan nås privat i det virtuella nätverket och från lokala nätverk.
+- [Distribuera dedikerade instanser av tjänsten till ett virtuellt nätverk](virtual-network-for-azure-services.md). Tjänsterna kan sedan nås privat i det virtuella nätverket och från lokala nätverk.
 - Använd [privat slut punkt](../private-link/private-endpoint-overview.md) som ansluter dig privat och säkert till en tjänst som drivs av en [privat Azure-länk](../private-link/private-link-overview.md). Privat slut punkt använder en privat IP-adress från ditt VNet, vilket effektivt tar tjänsten i det virtuella nätverket.
 - Åtkomst till tjänsten med offentliga slut punkter genom att utöka ett virtuellt nätverk till tjänsten via [tjänstens slut punkter](virtual-network-service-endpoints-overview.md). Med tjänst slut punkter kan tjänst resurser skyddas till det virtuella nätverket.
 - Använda [service märken](service-tags-overview.md) för att tillåta eller neka trafik till dina Azure-resurser till och från offentliga IP-slutpunkter.

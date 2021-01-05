@@ -3,12 +3,12 @@ title: Distribuera video analys i real tid på en IoT Edge enhet – Azure
 description: Den här artikeln innehåller de steg som hjälper dig att distribuera video analys på din IoT Edge-enhet. Du skulle göra detta, till exempel om du har åtkomst till en lokal Linux-dator och/eller om du tidigare har skapat ett Azure Media Services-konto.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 4fa4a9643976ba513b025706cacec26b2a50afb5
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 38d138b43441016e06fca5003bc09c940cb23efe
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498327"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883324"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Distribuera video analys i real tid på en IoT Edge enhet
 
@@ -108,7 +108,7 @@ Ett distributions manifest är ett JSON-dokument som beskriver vilka moduler som
     Exempel:
     
     * **IoT Edge modulens namn**: lvaEdge
-    * **Bild-URI**: MCR.Microsoft.com/media/Live-Video-Analytics:1.0    
+    * **Bild-URI**: MCR.Microsoft.com/media/Live-Video-Analytics:2.0    
     
     ![Skärm bild som visar fliken modul inställningar.](./media/deploy-iot-edge-device/add.png)
     

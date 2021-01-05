@@ -11,15 +11,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/12/2019
+ms.date: 01/04/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0144c57549e374404d3dde0fe997ba41adc8606b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c06988bf9c3558f5ef82862bdbcd821dc42ca28a
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967601"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97880995"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Vad är SAP HANA på stora Azure-instanser?
 
@@ -35,12 +35,14 @@ Kund isolering inom infrastrukturens stämpel utförs i klient organisationer, s
 
 Dessa servrar för Bare Metal-enheter stöds endast för att köra SAP HANA. Lagret för SAP-program eller mellanliggande arbets belastning körs på virtuella datorer. De infrastruktur stämplar som kör SAP HANA på Azure-enheter (stora instanser) är anslutna till Azure Network Services-arbetsben. På så sätt tillhandahålls låg latens anslutning mellan SAP HANA på Azure-enheter (stora instanser) och virtuella datorer.
 
-Från och med juli 2019 skiljer vi mellan två olika revisioner av HANA-stora instanser och distributions platser:
+Från och med januari 2021 skiljer vi mellan två olika revisioner av HANA-stora instanser och distributions plats:
 
 - "Revision 3" (rev 3): är de stämplar som har gjorts tillgängliga för kunden att distribuera före 2019 juli
 - "Revision 4" (rev 4): ny stämpel-design som distribueras i nära närhet till Azure VM-värdar och som hittills är frigjord i Azure-regionerna av:
     -  USA, västra 2 
-    -  East US 
+    -  East US
+    -  Östra 2; USA (över två Tillgänglighetszoner)
+    -  Södra centrala USA (över två Tillgänglighetszoner)
     -  Europa, västra
     -  Norra Europa
 

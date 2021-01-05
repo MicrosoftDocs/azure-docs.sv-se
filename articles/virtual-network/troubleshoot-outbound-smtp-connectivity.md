@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/20/2018
+ms.date: 01/04/2021
 ms.author: genli
-ms.openlocfilehash: 0a69df8a20c4e1502de151c38c60b54667c2d4dc
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: e1e7e78cab1f3a240737b5e25e0dff28c420add8
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814490"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883120"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>Felsöka utgående SMTP-anslutningsproblem i Azure
 
@@ -76,10 +76,6 @@ För prenumerationer av följande typer som har skapats efter den 15 november 20
 Om du vill kunna skicka e-post från virtuella Azure-datorer direkt till externa e-postleverantörer (utan att använda ett autentiserat SMTP-relä) kan du göra en begäran genom att öppna ett support ärende genom att använda följande typ av problem: **teknisk**  >  **Virtual Network**  >  **anslutning**  >  **kan inte skicka e-post (SMTP/port 25)**. Se till att lägga till information om varför din distribution måste skicka e-post direkt till e-postleverantörer i stället för att använda ett autentiserat relä. Begär Anden kommer att granskas och godkännas enligt Microsofts gottfinnande. Begär Anden beviljas endast efter att ytterligare antibedrägeri kontroller har slutförts. 
 
 När en prenumeration är undantagen och de virtuella datorerna har stoppats och startats om i Azure Portal, undantas alla virtuella datorer i den prenumerationen. Undantaget gäller endast för den prenumeration som begärs och endast för VM-trafik som dirigeras direkt till Internet.
-
-## <a name="restrictions-and-limitations"></a>Begränsningar och begränsningar
-
-Routning av port 25-trafik via Azure PaaS-tjänster som [Azure-brandvägg](https://azure.microsoft.com/services/azure-firewall/) stöds inte.
 
 ## <a name="need-help-contact-support"></a>Behöver du hjälp? Kontakta supporten
 

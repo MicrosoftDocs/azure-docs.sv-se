@@ -11,12 +11,12 @@ author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
 ms.custom: data4ml
-ms.openlocfilehash: 5aec3d6bb2afeadda64ac19563f8334a6aef3b77
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 238801171d19191bcac505f0c95395320f96d75c
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347514"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882474"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Självstudie: skapa ett etikett projekt för bild klassificering med flera klasser 
 
@@ -104,7 +104,8 @@ Nu när du har åtkomst till de data som du vill ha med etikett, skapar du ett e
 1. Använd följande indata för formuläret **skapa data uppsättning från data lager** :
 
     1. I formuläret **grundläggande information** lägger du till ett namn. här kommer vi att använda **bilder för självstudier**.  Lägg till en beskrivning om du vill.  Välj sedan **Nästa**.
-    1. Använd List rutan i **urvals formuläret för data lager** för att välja ditt **tidigare skapade data lager**, till exempel **tutorial_images (Azure Blob Storage)**
+    1. Välj **tidigare skapade data lager** på sidan **urval** av data lager och klicka sedan på data lager namnet och välj **Välj data lager**.
+    1. På nästa sida kontrollerar du att det aktuella data lagret är korrekt. Om inte väljer du **tidigare skapade data lager** och upprepar föregående steg.
     1. Sedan väljer du **Bläddra** i formuläret lagrings **område** och väljer sedan **DogsCats**.  Välj **Spara** för att använda **/MultiClass-DogsCats** som sökväg.
     1. Välj **Nästa** för att bekräfta informationen och **skapa** sedan för att skapa data uppsättningen.
     1. Välj cirkeln bredvid data uppsättningens namn i listan, till exempel **bilder – självstudier**.
@@ -115,7 +116,7 @@ Nu när du har åtkomst till de data som du vill ha med etikett, skapar du ett e
 
 Om du planerar att lägga till nya avbildningar i din data uppsättning kommer den stegvisa uppdateringen att hitta dessa nya avbildningar och lägga till dem i projektet.  När du aktiverar den här funktionen kommer projektet att regelbundet söka efter nya avbildningar.  Du kommer inte att lägga till nya avbildningar i data lagret för den här själv studie kursen, så lämna den här funktionen omarkerad.
 
-Fortsätt genom att välja **Nästa**.
+Välj **Nästa** för att fortsätta.
 
 ### <a name="label-classes"></a>Etikett klasser
 

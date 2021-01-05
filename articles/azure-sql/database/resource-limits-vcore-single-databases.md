@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/15/2020
-ms.openlocfilehash: d6936d6c72855bc22e3fc9323028fd0b8cd0fb29
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 4ffe663c1a1651891af5f6e65ee231cbe3e8d650
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097583"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882337"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Resursbegränsningar för enskilda databaser med hjälp av vCore-inköpsmodellen
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -225,7 +225,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 
 \* Förutom lokal SSD i/o kommer arbets belastningarna att använda [fjärrsidas serverns](service-tier-hyperscale.md#page-server) IO. Effektiv IOPS är beroende av arbets belastning. Mer information finns i [data IO-styrning](resource-limits-logical-server.md#resource-governance)och [data-i/o i statistik över resursutnyttjande](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics).
 
-#### <a name="notes"></a>Kommentarer
+#### <a name="notes"></a>Obs!
 
 **Anmärkning 1**: storskalig är en arkitektur med flera nivåer med separata beräknings-och lagrings komponenter: [storskalig arkitektur för tjänst nivå](service-tier-hyperscale.md#distributed-functions-architecture)
 
@@ -307,7 +307,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Maximalt antal samtidiga arbetare (begär Anden)|200|400|600|800|1000|1200|1400|
 |Maximalt antal samtidiga sessioner|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Antal repliker|1|1|1|1|1|1|1|
-|Multi-AZ|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
+|Multi-AZ|[Tillgängligt för hands version](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[Tillgängligt för hands version](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[Tillgängligt för hands version](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[Tillgängligt för hands version](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[Tillgängligt för hands version](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[Tillgängligt för hands version](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[Tillgängligt för hands version](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|
 |Lässkalning|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Inkluderad säkerhets kopierings lagring|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|
 
@@ -332,7 +332,7 @@ Du kan ange tjänst nivå, beräknings storlek (tjänst mål) och lagrings utrym
 |Maximalt antal samtidiga arbetare (begär Anden)|1600|1800|2000|2400|3200|4000|8000|
 |Maximalt antal samtidiga sessioner|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Antal repliker|1|1|1|1|1|1|1|
-|Multi-AZ|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
+|Multi-AZ|[Tillgängligt för hands version](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[Tillgängligt för hands version](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[Tillgängligt för hands version](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[Tillgängligt för hands version](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[Tillgängligt för hands version](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[Tillgängligt för hands version](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[Tillgängligt för hands version](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|
 |Lässkalning|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|Saknas|
 |Inkluderad säkerhets kopierings lagring|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|1X DB-storlek|
 

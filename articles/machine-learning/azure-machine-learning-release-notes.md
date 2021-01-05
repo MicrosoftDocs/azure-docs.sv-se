@@ -9,17 +9,29 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: b11b0b46e57247d09e576795079e20c679e519d5
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: 695702c04e2eeb74ee27b7d4276a3be94d9d1cf7
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760120"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881828"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Viktig information om Azure Machine Learning
 
 I den här artikeln får du lära dig mer om Azure Machine Learning-versioner.  Information om fullständiga SDK-referenser finns på Azure Machine Learning huvud sidan [**för SDK för python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) -referens.
 
+## <a name="2020-12-31"></a>2020-12-31
+### <a name="azure-machine-learning-studio-notebooks-experience-december-update"></a>Azure Machine Learning Studio Notebooks Experience (december-uppdatering)
++ **Nya funktioner**
+  + Sök efter användar namn. Användarna kan nu söka igenom alla filer som har sparats i en arbets yta.
+  + Markdown sida-vid-sida-stöd per Notebook-cell. I en Notebook-cell kan användarna nu ha möjlighet att Visa renderad markdown och markdown-syntax sida vid sida.
+  + Cell status fält. Statusfältet visar vilket tillstånd en kod cell är i, om en cell körning lyckades och hur lång tid det tog att köra. 
+   
++ **Fel korrigeringar och förbättringar**
+  + Förbättrade sid inläsnings tider
+  + Förbättrade prestanda 
+  + Förbättrad hastighet och kernel-tillförlitlighet
+  
 ## <a name="2020-12-07"></a>2020-12-07
 
 ### <a name="azure-machine-learning-sdk-for-python-v1190"></a>Azure Machine Learning SDK för python v-1.19.0
@@ -83,7 +95,19 @@ I den här artikeln får du lära dig mer om Azure Machine Learning-versioner.  
     + Föråldrade användningen av Nccl och gloo som en giltig typ av inmatare för uppskattnings klasser som prioriteras med hjälp av PyTorchConfiguration med ScriptRunConfig. 
     + Föråldrade användningen av MPI som en giltig typ av inmatare för uppskattnings klasser som prioriteras med hjälp av MpiConfiguration med ScriptRunConfig.
 
+## <a name="2020-11-30"></a>2020-11-30
+### <a name="azure-machine-learning-studio-notebooks-experience-november-update"></a>Azure Machine Learning Studio Notebooks-upplevelse (november Update)
++ **Nya funktioner**
+   + Intern Terminal. Användarna kommer nu att ha åtkomst till en integrerad Terminal och git-åtgärd via den [integrerade terminalen.](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#terminal)
+  + Duplicera mapp 
+  + Kostnads redovisning för Compute-listruta 
+  + Pylance för offline-beräkning 
 
++ **Fel korrigeringar och förbättringar**
+  + Förbättrade sid inläsnings tider
+  + Förbättrade prestanda 
+  + Förbättrad hastighet och kernel-tillförlitlighet
+  + Stor fil uppladdning. Du kan nu ladda upp filen >95mb
 
 ## <a name="2020-11-09"></a>2020-11-09
 
@@ -852,7 +876,7 @@ Nu kan du skapa, redigera och dela Machine Learning-anteckningsböcker och filer
 
 Få åtkomst till följande webbaserade redigerings verktyg från Studio:
     
-| Webbaserat verktyg  |     Beskrivning  |
+| Webbaserat verktyg  |     Description  |
 |---|---|
 | Azure ML Studio-anteckningsböcker   |     Första redigering i klass för notebook-filer och stöd för alla åtgärder som är tillgängliga i Azure ML python SDK. | 
 
@@ -1364,7 +1388,7 @@ Från Studio kan du träna, testa, distribuera och hantera Azure Machine Learnin
 
 Få åtkomst till följande webbaserade redigerings verktyg från Studio:
 
-| Webbaserat verktyg | Beskrivning | 
+| Webbaserat verktyg | Description | 
 |-|-|-|
 | Notebook VM (för hands version) | Helt hanterad molnbaserad arbets Station | 
 | [Automatisk maskin inlärning](tutorial-first-experiment-automated-ml.md) (för hands version) | Ingen kod upplevelse för automatisering av maskin inlärnings modell utveckling | 

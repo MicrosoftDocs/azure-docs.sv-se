@@ -6,17 +6,17 @@ ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: 6ce9183fad50c43ea7070f5fa09e0d445caf89df
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5dcb86ff4af2a68ecf0bb361e6da4f788ea32b62
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451258"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881301"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Självstudie: skapa ett mått diagram i Azure Monitor
 Mått Utforskaren är en funktion i Azure Monitor i Azure Portal som gör att du kan skapa diagram från metriska värden, visuellt korrelera trender och undersöka toppar och DIP i metriska värden. Använd Mät Utforskaren för att undersöka hälsan och användningen av dina Azure-resurser eller för att rita diagram från anpassade mått. 
 
-I den här guiden får du lära dig att:
+I de här självstudierna får du lära dig att
 
 > [!div class="checklist"]
 > * Välj ett mått för vilket du vill rita ett diagram
@@ -40,7 +40,7 @@ Du kan öppna Metrics Explorer antingen från Azure Monitor-menyn eller från en
 
 1. Välj **mått** på **Azure Monitor** -menyn eller från **övervaknings** avsnittet på en resurs meny.
 
-1. Välj **omfång**, som är den resurs som du vill visa mått för. Området är redan ifyllt om du öppnade Metrics Explorer från en resurs meny.
+1. Välj **omfång**, som är den resurs som du vill visa mått för. Området är redan ifyllt om du öppnade Metrics Explorer från en resurs meny. Om du vill veta mer om de olika funktionerna i resurs omfattnings väljaren går du till [den här artikeln](../platform/metrics-charts.md#resource-scope-picker).
 
     ![Välj ett omfång](media/tutorial-metrics-explorer/scope-picker.png)
 

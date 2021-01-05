@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: c2496959f851b55f8cc66c0e793b641cdafb003a
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: e3d657f5f666caf159a082d121d551b839699158
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808342"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883001"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>Automatisera rotationen av en hemlighet för resurser som har två uppsättningar autentiseringsuppgifter för autentisering
 
@@ -222,8 +222,15 @@ Observera att `value` nyckeln är samma som hemligheten i Key Vault:
 
 ## <a name="key-vault-rotation-functions-for-two-sets-of-credentials"></a>Key Vault rotations funktioner för två uppsättningar med autentiseringsuppgifter
 
-- [Lagringskonto](https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell)
-- [Redis-cache](https://github.com/jlichwa/KeyVault-Rotation-RedisCacheKey-PowerShell)
+Mall för rotations funktioner för två uppsättningar med autentiseringsuppgifter och flera färdiga att använda funktioner:
+
+- [Funktions mal len i PowerShell](https://github.com/Azure/KeyVault-Secrets-Rotation-Template-PowerShell)
+- [Redis-cache](https://github.com/Azure/KeyVault-Secrets-Rotation-Redis-PowerShell)
+- [Lagringskonto](https://github.com/Azure/KeyVault-Secrets-Rotation-StorageAccount-PowerShell)
+- [Cosmos DB](https://github.com/Azure/KeyVault-Secrets-Rotation-CosmosDB-PowerShell)
+
+> [!NOTE]
+> Rotations funktionerna ovan skapas av en community-medlem och inte av Microsoft. Community-Azure Functions stöds inte i Microsoft Support-program eller-tjänster och görs tillgängliga i befintligt skick utan garanti av något slag.
 
 ## <a name="next-steps"></a>Nästa steg
 

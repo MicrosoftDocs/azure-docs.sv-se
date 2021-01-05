@@ -2,13 +2,13 @@
 title: Vanliga frågor och svar
 description: Innehåller svar på några vanliga frågor om Azure VMware-lösningen.
 ms.topic: conceptual
-ms.date: 12/22/2020
-ms.openlocfilehash: 941708003558dda601aa43459bc83133788687fd
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.date: 1/4/2020
+ms.openlocfilehash: d0228739a6ee4eac20d2fa04e47cf86b6fddb84e
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835201"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881233"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Vanliga frågor och svar om Azure VMware-lösningen
 
@@ -201,7 +201,7 @@ Azure Virtual WAN tillhandahåller inte transitiv routning mellan två anslutna 
 
 #### <a name="could-i-use-hcx-through-public-internet-communications-as-a-workaround-for-the-non-supportability-of-hcx-when-using-vpn-s2s-with-vwan-for-on-premises-communications"></a>Kan jag använda HCX via offentlig Internet-kommunikation som en lösning för icke-support för HCX när du använder VPN S2S med vWAN för lokal kommunikation?
 
-För närvarande är den enda metoden som stöds för HCX via ExpressRoute.
+För närvarande är den enda metoden som stöds för VMware HCX till och med ExpressRoute.
 
 ## <a name="accounts-and-privileges"></a>Konton och behörigheter
 

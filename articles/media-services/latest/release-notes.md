@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 4ddb02bbcf284566550517f8fa343a728e2275a9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 895b4529a8b99ecc66e3566b4696a0e61c337153
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483635"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881930"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Viktig information om Azure Media Services v3
 
@@ -38,16 +38,23 @@ För att hålla dig uppdaterad med den senaste utvecklingen ger den här artikel
 >
 > Mer information finns i: [Azure Portal begränsningar för Media Services v3](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
 
+## <a name="december-2020"></a>December 2020
+
+### <a name="regional-availability"></a>Regional tillgänglighet
+
+Azure Media Services är nu tillgängligt i regionen Norge, östra i Azure Portal.  Det finns ingen restV2 i den här regionen.
+
 ## <a name="october-2020"></a>Oktober 2020
 
 ### <a name="basic-audio-analysis"></a>Grundläggande ljud analys
+
 För inställningen för ljud analys innehåller nu en pris nivå för Basic-läge. Det nya grundläggande ljud analys läget ger dig ett billigt alternativ för att extrahera tal avskrifter och för att formatera utdata och under texter. I det här läget utförs tal-till-text-avskrift och generering av en VTT-under text fil. Utdata från det här läget är en JSON-fil för insikter som bara innehåller nyckelord, avskrifter och tids inställnings information. Automatisk språk identifiering och talare diarization ingår inte i det här läget. Se listan över [språk som stöds.](analyzing-video-audio-files-concept.md#built-in-presets)
 
 Kunder som använder Indexer v1 och Indexer v2 bör migrera till den grundläggande inställningen för ljud analys.
 
 Mer information om Basic Audio Analyzer-läget finns i [analys av video-och ljudfiler](analyzing-video-audio-files-concept.md).  Information om hur du använder Basic Audio Analyzer-läget med REST API finns i [så här skapar du en grundläggande ljud omvandling](how-to-create-basic-audio-transform.md).
 
-## <a name="live-events"></a>Livehändelser
+### <a name="live-events"></a>Livehändelser
 
 Uppdateringar av de flesta egenskaper tillåts nu när Live-händelser stoppas. Dessutom kan användare ange ett prefix för det statiska värd namnet för Live Events URL: er för inaktuella indatamängds-och för hands versioner. VanityUrl anropas nu `useStaticHostName` för att bättre avspegla syftet med egenskapen.
 
@@ -57,7 +64,7 @@ En Live-händelse stöder mottagning av olika proportioner för indataport. Med 
 
 Med Live encoding kan du nu lägga till funktioner för att placera fragment i fasta nyckel intervall mellan 0,5 och 20 sekunder.
 
-## <a name="accounts"></a>Konton
+### <a name="accounts"></a>Konton
 
 > [!WARNING]
 > Om du skapar ett Media Services-konto med 2020-05-01 API-versionen fungerar det inte med RESTv2 

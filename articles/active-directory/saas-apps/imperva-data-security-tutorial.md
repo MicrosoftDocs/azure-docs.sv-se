@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 0ea08f8ec98ff8ddd4a9f15f12a0224db440b7b0
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 710164fa3712058d64e5d23006b986eb3dc3eaba
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97676066"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882763"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-imperva-data-security"></a>Självstudie: Azure Active Directory enkel inloggning (SSO) med Imperva data säkerhet
 
@@ -26,7 +26,7 @@ I den här självstudien får du lära dig hur du integrerar Imperva Data Securi
 * Gör det möjligt för användarna att logga in automatiskt för att Imperva data säkerhet med sina Azure AD-konton.
 * Hantera dina konton på en central plats – Azure Portal.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att komma igång behöver du följande objekt:
 
@@ -37,7 +37,7 @@ För att komma igång behöver du följande objekt:
 
 I den här självstudien konfigurerar och testar du Azure AD SSO i en test miljö.
 
-* Imperva Data Security stöder **IDP** INITIERAd SSO
+* Imperva Data Security stöder **SP** -INITIERAd SSO
 
 ## <a name="adding-imperva-data-security-from-the-gallery"></a>Lägga till Imperva data säkerhet från galleriet
 
@@ -76,9 +76,13 @@ Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
 1. På sidan **Konfigurera enkel inloggning med SAML** anger du värdena för följande fält:
 
-    a. I text rutan **identifierare** anger du en URL med hjälp av följande mönster: `https://<IMPERVA_DNS_NAME>:8443`
+    a. I text rutan **identifierare** skriver du en identifierare med följande mönster: `application-name`
 
     b. Skriv en URL i text rutan **svars-URL** med följande mönster: `https://<IMPERVA_DNS_NAME>:8443`
+    
+    c. I textrutan **Inloggnings-URL** anger du en URL enligt följande mönster: `https://<IMPERVA_DNS_NAME>:8443`
+    
+    d. I text rutan **utloggnings-URL** skriver du en URL med följande mönster: `https://<IMPERVA_DNS_NAME>:8443`    
 
     > [!NOTE]
     > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska identifieraren och svars-URL. Kontakta [Imperva Data Security Support-teamet](mailto:support@jsonar.imperva.com) för att hämta dessa värden. Du kan även se mönstren som visas i avsnittet **Grundläggande SAML-konfiguration** i Azure-portalen.

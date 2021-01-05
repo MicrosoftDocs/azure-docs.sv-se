@@ -3,12 +3,12 @@ title: Scenarier för att använda ett virtuellt nätverk
 description: Scenarier, resurser och begränsningar för att distribuera behållar grupper till ett virtuellt Azure-nätverk.
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 5e9c1d1606a9ad491ba7a7e623f1606717aa5b1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fb468a6a860bcc076043c30606922f43fbdb1ad
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569177"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882440"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Scenarier och resurser för virtuella nätverk
 
@@ -41,6 +41,7 @@ Behållar grupper som distribueras till ett virtuellt Azure-nätverk möjliggör
 * Du kan inte använda en [hanterad identitet](container-instances-managed-identity.md) i en behållar grupp som distribuerats till ett virtuellt nätverk.
 * Du kan inte aktivera en [Direktmigrering](container-instances-liveness-probe.md) eller en [beredskaps avsökning](container-instances-readiness-probe.md) i en behållar grupp som distribueras till ett virtuellt nätverk.
 * På grund av de ytterligare nätverks resurser som berörs är distributioner till ett virtuellt nätverk normalt långsammare än att distribuera en standard behållar instans.
+* Om du ansluter din behållar grupp till ett Azure Storage konto måste du lägga till en [tjänst slut punkt](../virtual-network/virtual-network-service-endpoints-overview.md) till resursen.
 
 [!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 

@@ -3,12 +3,12 @@ title: Så här skapar du gästkonfigurationsprinciper för Windows
 description: Lär dig hur du skapar en princip för Azure Policy gäst konfiguration för Windows.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: d01f4fff28debc3fabcfb32b32b02c5029ce7323
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 85ffda54d58db0544858ca8ab61335b61f18299e
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755981"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881794"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Så här skapar du gästkonfigurationsprinciper för Windows
 
@@ -138,9 +138,32 @@ class ResourceName : OMI_BaseResource
 };
 ```
 
+Om resursen har obligatoriska egenskaper måste de också returneras `Get-TargetResource` parallellt med `reasons` klassen. Om `reasons` inte ingår innehåller tjänsten ett "catch-all"-beteende som jämför värdena intill `Get-TargetResource` och värdena som returneras av `Get-TargetResource` och ger en detaljerad jämförelse som `reasons` .
+
 ### <a name="configuration-requirements"></a>Konfigurationskrav
 
 Namnet på den anpassade konfigurationen måste vara konsekvent överallt. Namnet på. zip-filen för innehålls paketet, konfigurations namnet i MOF-filen och gäst tilldelnings namnet i Azure Resource Manager mall (ARM-mallen) måste vara samma.
+
+### <a name="policy-requirements"></a>Princip krav
+
+I avsnittet princip definition `metadata` måste du ange två egenskaper för gäst konfigurations tjänsten för att automatisera etablering och rapportering av gäst konfigurations tilldelningar. `category`Egenskapen måste anges till "gäst konfiguration" och ett avsnitt med namnet `Guest Configuration` måste innehålla information om tilldelningen av gäst konfigurationen. `New-GuestConfigurationPolicy`Cmdleten skapar automatiskt den här texten.
+Se de stegvisa instruktionerna på den här sidan.
+
+I följande exempel demonstreras `metadata` avsnittet.
+
+```json
+    "metadata": {
+      "category": "Guest Configuration",
+      "guestConfiguration": {
+        "name": "test",
+        "version": "1.0.0",
+        "contentType": "Custom",
+        "contentUri": "CUSTOM-URI-HERE",
+        "contentHash": "CUSTOM-HASH-VALUE-HERE",
+        "configurationParameter": {}
+      }
+    },
+```
 
 ### <a name="scaffolding-a-guest-configuration-project"></a>Ramverk ett gäst konfigurations projekt
 

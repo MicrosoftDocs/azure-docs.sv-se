@@ -2,13 +2,13 @@
 title: Läs Azure Event Hubs fångade data från en python-app (senaste)
 description: Den här artikeln visar hur du skriver python-kod för att avbilda data som skickas till en händelsehubben och läsa insamlade händelse data från ett Azure Storage-konto.
 ms.topic: quickstart
-ms.date: 06/23/2020
-ms.openlocfilehash: f513b35e300141f16ee4c4880bc54aaf37945d65
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.date: 01/04/2021
+ms.openlocfilehash: acc2ce04add5fd837e9edc789e9616a9f04fb4b9
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109920"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883205"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub"></a>Avbilda Event Hubs data i Azure Storage och läsa den med hjälp av python (Azure-eventhub)
 
@@ -27,7 +27,11 @@ I den här snabbstarten kommer du att göra följande:
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Python 2,7 och 3,5 eller senare, med PIP installerat och uppdaterat.  
+- Python med PIP och följande paket installerade. Koden i den här artikeln har testats mot dessa versioner. 
+    - Python 3.7
+    - Azure-eventhub-5.2.0
+    - Azure-Storage – BLOB-12.6.0
+    - Avro – python3 1.10.1
 - En Azure-prenumeration. Om du inte har ett konto kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.  
 - Ett aktivt Event Hubs namn område och händelsehubben.
 [Skapa ett Event Hubs-namnområde och en händelsehubben i namn området](event-hubs-create.md). Registrera namnet på Event Hubs namn området, namnet på händelsehubben och den primära åtkomst nyckeln för namn området. Information om hur du hämtar åtkomst nyckeln finns i [Hämta en Event Hubs anslutnings sträng](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Standard nyckel namnet är *RootManageSharedAccessKey*. I den här snabb starten behöver du bara den primära nyckeln. Du behöver inte anslutnings strängen.  
@@ -155,6 +159,13 @@ I det här exemplet lagras insamlade data i Azure Blob Storage. Skriptet i det h
    pip install azure-eventhub
    pip install avro-python3
    ```
+
+    > [!NOTE]
+    > Koden i den här artikeln har testats mot dessa versioner. 
+    > - Python 3.7
+    > - Azure-eventhub-5.2.0
+    > - Azure-Storage – BLOB-12.6.0
+    > - Avro – python3 1.10.1
 2. Ändra katalogen till den katalog där du sparade *Sender.py* och *capturereader.py* och kör följande kommando:
    
    ```

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b1f7b115c5a8198b53e36672a891903a41a9511b
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: d900659f3ca8a8688c1b1d3a66cd888f37521fc6
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704137"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883392"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault-loggning
 
@@ -59,7 +59,7 @@ Enskilda blobbar lagras som text, formaterad som en JSON-blobb. Nu ska vi titta 
 
 I följande tabell visas fält namn och beskrivningar:
 
-| Fältnamn | Beskrivning |
+| Fältnamn | Description |
 | --- | --- |
 | **tid** |Datum och tid i UTC. |
 | **resourceId** |Azure Resource Manager resurs-ID. För Key Vault loggar är detta alltid Key Vault resurs-ID. |
@@ -75,7 +75,7 @@ I följande tabell visas fält namn och beskrivningar:
 | **Autentiseringsidentitet** |Identitet från den token som angavs i REST API begäran. Detta är vanligt vis en "användare", "tjänstens huvud namn" eller kombinationen "användare + appId", som i fallet med en begäran som resulterar från en Azure PowerShell-cmdlet. |
 | **egenskaperna** |Information som varierar beroende på åtgärd (**operationName**). I de flesta fall innehåller det här fältet klient information (den användar agent sträng som skickas av klienten), exakt REST API begär ande-URI och HTTP-statuskod. När ett objekt returneras som ett resultat av en begäran (till exempel nyckel **skapa** eller **VaultGet**), innehåller det även nyckel-URI (as `id` ), valv-URI eller hemlig URI. |
 
-Värdena för **operationName** -fältet är i *ObjectVerb* -format. Exempel:
+Värdena för **operationName** -fältet är i *ObjectVerb* -format. Till exempel:
 
 * Alla Key Vault-åtgärder har `Vault<action>` formatet, till exempel `VaultGet` och `VaultCreate` .
 * Alla viktiga åtgärder har `Key<action>` formatet, till exempel `KeySign` och `KeyList` .
@@ -150,9 +150,38 @@ I följande tabell visas **operationName** -värdena och motsvarande REST API-ko
 
 | operationName | REST API kommando |
 | --- | --- |
-
-| **CertificateGet**  | [Hämta information om ett certifikat](/rest/api/keyvault/getcertificate) | | **CertificateCreate**  | [Skapa ett certifikat](/rest/api/keyvault/createcertificate) | | **CertificateImport**  | [Importera ett certifikat till ett valv](/rest/api/keyvault/importcertificate) | | **CertificateUpdate**  | [Uppdatera ett certifikat](/rest/api/keyvault/updatecertificate) | | **CertificateList**  | [Visa en lista över certifikaten i ett valv](/rest/api/keyvault/getcertificates) | | **CertificateListVersions**  | [Visa en lista över versioner av ett certifikat](/rest/api/keyvault/getcertificateversions) | | **CertificateDelete**  | [Ta bort ett certifikat](/rest/api/keyvault/deletecertificate) | | **CertificatePurge**  | [Rensa ett certifikat](/rest/api/keyvault/purgedeletedcertificate) | | **CertificateBackup**  | [Säkerhetskopiera ett certifikat](/rest/api/keyvault/backupcertificate) | | **CertificateRestore**  | [Återställa ett certifikat](/rest/api/keyvault/restorecertificate) | | **CertificateRecover**  | [Återställa ett certifikat](/rest/api/keyvault/recoverdeletedcertificate) | | **CertificateGetDeleted**  | [Hämta borttaget certifikat](/rest/api/keyvault/getdeletedcertificate) | | **CertificateListDeleted**  | [Lista de borttagna certifikaten i ett valv](/rest/api/keyvault/getdeletedcertificates) | | **CertificatePolicyGet**  | [Hämta certifikat princip](/rest/api/keyvault/getcertificatepolicy) | | **CertificatePolicyUpdate**  | [Uppdatera certifikat princip](/rest/api/keyvault/updatecertificatepolicy) | | **CertificatePolicySet**  | [Skapa certifikat princip](/rest/api/keyvault/createcertificate) | | **CertificateContactsGet**  | [Hämta certifikat kontakter](/rest/api/keyvault/getcertificatecontacts) | | **CertificateContactsSet**  | [Ange certifikat kontakter](/rest/api/keyvault/setcertificatecontacts) | | **CertificateContactsDelete**  | [Ta bort certifikat kontakter](/rest/api/keyvault/deletecertificatecontacts) | | **CertificateIssuerGet**  | [Hämta certifikat utfärdare](/rest/api/keyvault/getcertificateissuer) | | **CertificateIssuerSet**  | [Ange certifikat utfärdare](/rest/api/keyvault/setcertificateissuer) | | **CertificateIssuerUpdate**  | [Uppdatera certifikat utfärdare](/rest/api/keyvault/updatecertificateissuer) | | **CertificateIssuerDelete**  | [Ta bort certifikat utfärdare](/rest/api/keyvault/deletecertificateissuer) | | **CertificateIssuersList**  | [Visa en lista över certifikat utfärdare](/rest/api/keyvault/getcertificateissuers) | | **CertificateEnroll** | Registrera ett certifikat | | **CertificateRenew** | Förnya ett certifikat | | **CertificatePendingGet** | Hämta väntande certifikat | | **CertificatePendingMerge** | Väntande certifikat sammanslagning | | **CertificatePendingUpdate** | Väntande certifikat uppdatering | | **CertificatePendingDelete** | Ta bort väntande certifikat | | **CertificateNearExpiryEventGridNotification** | Certifikat nära utgångs händelse publicerad |
-<a name="-certificateexpiredeventgridnotification-certificate-expired-event-published-"></a>|**CertificateExpiredEventGridNotification** | Utgånget certifikat, händelse publicerat |
+| **CertificateGet** |[Hämta information om ett certifikat](/rest/api/keyvault/getcertificate) |
+| **CertificateCreate** |[Skapa ett certifikat](/rest/api/keyvault/createcertificate) |
+| **CertificateImport** |[Importera ett certifikat till ett valv](/rest/api/keyvault/importcertificate) |
+| **CertificateUpdate** |[Uppdatera ett certifikat](/rest/api/keyvault/updatecertificate) |
+| **CertificateList** |[Visa en lista över certifikaten i ett valv](/rest/api/keyvault/getcertificates) |
+| **CertificateListVersions** |[Visa en lista över versioner av ett certifikat](/rest/api/keyvault/getcertificateversions) |
+| **CertificateDelete** |[Ta bort ett certifikat](/rest/api/keyvault/deletecertificate) |
+| **CertificatePurge** |[Rensa ett certifikat](/rest/api/keyvault/purgedeletedcertificate) |
+| **CertificateBackup** |[Säkerhetskopiera ett certifikat](/rest/api/keyvault/backupcertificate) |
+| **CertificateRestore** |[Återställa ett certifikat](/rest/api/keyvault/restorecertificate) |
+| **CertificateRecover** |[Återställa ett certifikat](/rest/api/keyvault/recoverdeletedcertificate) |
+| **CertificateGetDeleted** |[Hämta borttaget certifikat](/rest/api/keyvault/getdeletedcertificate) |
+| **CertificateListDeleted** |[Lista de borttagna certifikaten i ett valv](/rest/api/keyvault/getdeletedcertificates) |
+| **CertificatePolicyGet** |[Hämta certifikat princip](/rest/api/keyvault/getcertificatepolicy) |
+| **CertificatePolicyUpdate** |[Uppdatera certifikat princip](/rest/api/keyvault/updatecertificatepolicy) |
+| **CertificatePolicySet** |[Skapa certifikat princip](/rest/api/keyvault/createcertificate) |
+| **CertificateContactsGet** |[Hämta certifikat kontakter](/rest/api/keyvault/getcertificatecontacts) |
+| **CertificateContactsSet** |[Ange certifikat kontakter](/rest/api/keyvault/setcertificatecontacts) |
+| **CertificateContactsDelete** |[Ta bort certifikat kontakter](/rest/api/keyvault/deletecertificatecontacts) |
+| **CertificateIssuerGet** |[Hämta certifikat utfärdare](/rest/api/keyvault/getcertificateissuer) |
+| **CertificateIssuerSet** |[Ange certifikat utfärdare](/rest/api/keyvault/setcertificateissuer) |
+| **CertificateIssuerUpdate** |[Uppdatera certifikat utfärdare](/rest/api/keyvault/updatecertificateissuer) |
+| **CertificateIssuerDelete** |[Ta bort certifikat utfärdare](/rest/api/keyvault/deletecertificateissuer) |
+| **CertificateIssuersList** |[Visa en lista över certifikat utfärdare](/rest/api/keyvault/getcertificateissuers) |
+| **CertificateEnroll** |Registrera ett certifikat |
+| **CertificateRenew** |Förnya ett certifikat |
+| **CertificatePendingGet** |Hämta väntande certifikat |
+| **CertificatePendingMerge** |Väntande certifikat sammanslagning |
+| **CertificatePendingUpdate** |Väntande en certifikat uppdatering |
+| **CertificatePendingDelete** |Ta bort väntande certifikat |
+| **CertificateNearExpiryEventGridNotification** |Certifikat nära utgångs händelse publicerad |
+| **CertificateExpiredEventGridNotification** |Utgånget certifikat-händelse publicerat |
 ---
 
 ## <a name="use-azure-monitor-logs"></a>Använda Azure Monitor-loggar

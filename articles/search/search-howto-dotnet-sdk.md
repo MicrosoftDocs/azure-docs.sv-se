@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3ceead297ea726e256d806c08c22810b39296793
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 15a878eb863b71a4519e75def2598f013152dfb7
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917179"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881641"
 ---
 # <a name="how-to-use-azuresearchdocuments-in-a-c-net-application"></a>Använda Azure.Search.Documents i ett C# .NET-program
 
@@ -31,7 +31,7 @@ Precis som med tidigare versioner kan du använda det här biblioteket för att:
 + Läs in och hantera Sök dokument i ett index
 + Köra frågor, allt utan att behöva hantera information om HTTP och JSON
 
-Biblioteket distribueras som ett enda [Azure.Search.Document NuGet-paket](https://www.nuget.org/packages/Azure.Search.Documents/), som innehåller alla API: er som används för program mässig åtkomst till en search-tjänst.
+Biblioteket distribueras som ett enda [Azure.Search.Documents NuGet-paket](https://www.nuget.org/packages/Azure.Search.Documents/), som innehåller alla API: er som används för program mässig åtkomst till en search-tjänst.
 
 Klient biblioteket definierar klasser som `SearchIndex` , `SearchField` och, samt `SearchDocument` åtgärder som `SearchIndexClient.CreateIndex` och `SearchClient.Search` i `SearchIndexClient` `SearchClient` klasserna och. Dessa klasser är indelade i följande namn rymder:
 
@@ -58,7 +58,7 @@ Om du har använt den tidigare versionen av .NET SDK och du vill uppgradera till
 
 Azure SDK för .NET överensstämmer med [.net Standard 2,0](/dotnet/standard/net-standard#net-implementation-support), vilket innebär att .NET Framework 4.6.1 och .net Core 2,0 som minimi krav.
 
-## <a name="example-application"></a>Exempel program
+## <a name="example-application"></a>Exempelprogram
 
 Den här artikeln "lär sig med exempel", som förlitar sig på [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) -kod exemplet på GitHub för att illustrera grundläggande begrepp i Azure kognitiv sökning – särskilt hur du skapar, läser in och söker efter ett sökindex.
 

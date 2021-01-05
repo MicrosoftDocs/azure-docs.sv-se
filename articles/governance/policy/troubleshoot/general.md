@@ -3,12 +3,12 @@ title: Felsöka vanliga fel
 description: 'Lär dig hur du felsöker problem med att skapa princip definitioner, de olika SDK: n och tillägget för Kubernetes.'
 ms.date: 12/01/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f3667988d527100507d308887338278e1200d454
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: b88d00575adb571c59b562d25067c4a1716fb50f
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511006"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882984"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Felsöka fel med hjälp av Azure Policy
 
@@ -36,7 +36,7 @@ Ett felaktigt eller obefintligt alias används i en princip definition.
 
 #### <a name="resolution"></a>Lösning
 
-Kontrol lera först att Resource Manager-egenskapen har ett alias. Använd [Azure policy-tillägg för Visual Studio Code](../how-to/extension-for-vscode.md), [Azure Resource Graph](../../resource-graph/samples/starter.md#distinct-alias-values)eller SDK för att slå upp tillgängliga alias. Om alias för en Resource Manager-egenskap inte finns skapar du ett support ärende.
+Kontrol lera först att Resource Manager-egenskapen har ett alias. Använd [Azure policy-tillägget för Visual Studio Code](../how-to/extension-for-vscode.md) eller SDK för att slå upp tillgängliga alias. Om alias för en Resource Manager-egenskap inte finns skapar du ett support ärende.
 
 ### <a name="scenario-evaluation-details-not-up-to-date"></a>Scenario: utvärderings informationen är inte aktuell
 
@@ -88,7 +88,7 @@ En resurs som förväntas bli påverkad av Azure Policy är inte och det finns i
 
 #### <a name="cause"></a>Orsak
 
-Princip tilldelningen har kon figurer ATS [enforcementMode](../concepts/assignment-structure.md#enforcement-mode) för EnforcementMode _inaktive rad_. Även om tvingande läge är inaktiverat tillämpas inte princip påverkan och det finns ingen post i aktivitets loggen.
+Princip tilldelningen har kon figurer ATS [](../concepts/assignment-structure.md#enforcement-mode) för EnforcementMode _inaktive rad_. Även om tvingande läge är inaktiverat tillämpas inte princip påverkan och det finns ingen post i aktivitets loggen.
 
 #### <a name="resolution"></a>Lösning
 

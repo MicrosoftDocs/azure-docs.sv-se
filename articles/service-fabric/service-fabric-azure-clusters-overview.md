@@ -5,12 +5,12 @@ services: service-fabric
 documentationcenter: .net
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 25e6854491f35dd0aa46b5de218d312f57854760
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bbfdc0a30aa673e8602ec9233fde4236c99ef5aa
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018927"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882219"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Översikt över Service Fabric kluster i Azure
 Ett Service Fabric kluster är en nätverksansluten uppsättning virtuella eller fysiska datorer som dina mikrotjänster distribueras och hanteras i. En dator eller en virtuell dator som ingår i ett kluster kallas för en klusternod. Kluster kan skalas till tusentals noder. Om du lägger till nya noder i klustret, Service Fabric balanseringen av tjänste partitionens repliker och instanser över det ökade antalet noder. Övergripande program prestanda förbättras och konkurrens för åtkomst till minnes minskningar. Om noderna i klustret inte används effektivt kan du minska antalet noder i klustret. Service Fabric åter balanserar partitionens repliker och instanser över det minskade antalet noder för att bättre kunna använda maskin varan på varje nod.
@@ -86,7 +86,7 @@ Program krav ändras med tiden. Du kan behöva öka kluster resurserna för att 
 
 Mer information finns i [skala Azure-kluster](service-fabric-cluster-scaling.md).
 
-## <a name="upgrading"></a>Fortsätter
+## <a name="upgrading"></a>Uppgradera
 Ett Azure Service Fabric-kluster är en resurs som du äger, men som hanteras delvis av Microsoft. Microsoft ansvarar för att korrigera det underliggande operativ systemet och utföra Service Fabric körnings uppgraderingar på klustret. Du kan ange att klustret ska ta emot automatiska körnings uppgraderingar, när Microsoft släpper en ny version eller väljer att välja en version som stöds för körning. Förutom körnings uppgraderingar kan du också uppdatera kluster konfigurationen, till exempel certifikat eller program portar.
 
 Mer information finns i [uppgradera kluster](service-fabric-cluster-upgrade.md).
@@ -94,16 +94,17 @@ Mer information finns i [uppgradera kluster](service-fabric-cluster-upgrade.md).
 ## <a name="supported-operating-systems"></a>Operativsystem som stöds
 Du kan skapa kluster på virtuella datorer som kör dessa operativ system:
 
-| Operativsystem | Tidigaste Service Fabric version som stöds |
-| --- | --- |
-| Windows Server 2012 R2 | Alla versioner |
-| Windows Server 2016 | Alla versioner |
-| Windows Server 1709 | 6.0 |
-| Windows Server 1803 | 6.4 |
-| Windows Server 1809 | 6.4.654.9590 |
-| Windows Server 2019 | 6.4.654.9590 |
-| Linux Ubuntu 16,04 | 6.0 |
-| Linux Ubuntu 18,04 | 7.1 |
+| Operativsystem | Tidigaste Service Fabric version som stöds | Senaste Service Fabric-version som stöds |
+| --- | --- | --- | 
+| Windows Server 2019 | 6.4.654.9590 | Saknas |
+| Windows Server 2016 | Alla versioner | Saknas |
+| Windows Server-20H2 | 7.2.445.9590 | Saknas |
+| Windows Server 1809 | 6.4.654.9590 | 7.2.445.9590 |
+| Windows Server 1803 | 6.4 | 7.2.445.9590 |
+| Windows Server 1709 | 6.0 | 7.2.445.9590 |
+| Windows Server 2012 | Alla versioner | Saknas | 
+| Linux Ubuntu 16,04 | 6.0 | Saknas |
+| Linux Ubuntu 18,04 | 7.1 | Saknas |
 
 Mer information finns i [kluster versioner som stöds i Azure](./service-fabric-versions.md#supported-operating-systems)
 

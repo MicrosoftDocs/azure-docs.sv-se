@@ -3,12 +3,12 @@ title: Information om princip definitions strukturen
 description: Beskriver hur princip definitioner används för att upprätta konventioner för Azure-resurser i din organisation.
 ms.date: 10/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5f9a110247d4ec93c8f3fb95fc9ed61eb6806787
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 52adaf9522e4690c4c44a72ed47592f5b1d6471e
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305150"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883256"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy-definitionsstruktur
 
@@ -17,12 +17,12 @@ Läs mer om [villkor](#conditions).
 
 Genom att definiera konventioner kan du kontrol lera kostnaderna och enklare hantera dina resurser. Du kan till exempel ange att endast vissa typer av virtuella datorer ska tillåtas. Du kan också kräva att resurserna har en viss tagg. Princip tilldelningar ärvs av underordnade resurser. Om en princip tilldelning tillämpas på en resurs grupp, gäller den för alla resurser i resurs gruppen.
 
-_PolicyRule_ -schemat för princip definition finns här: [https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
+_PolicyRule_ -schemat för princip definition finns här:[https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
 
 Du använder JSON för att skapa en princip definition. Princip definitionen innehåller element för:
 
 - visningsnamn
-- beskrivning
+- description
 - mode
 - metadata
 - parametrar
@@ -75,7 +75,7 @@ Azure Policy inbyggda program och mönster finns på [Azure policy exempel](../s
 Du kan använda **DisplayName** och **Description** för att identifiera princip definitionen och tillhandahålla kontext när den används. **DisplayName** får innehålla högst _128_ tecken och **beskrivningen** får bestå av högst _512_ tecken.
 
 > [!NOTE]
-> Under skapandet eller uppdateringen av en princip definition definieras **ID** , **typ** och **namn** av egenskaper som är externa för JSON och är inte nödvändiga i JSON-filen. Hämtning av princip definitionen via SDK returnerar egenskaperna **ID** , **typ** och **namn** som en del av JSON, men var och en är skrivskyddad information som är relaterad till princip definitionen.
+> Under skapandet eller uppdateringen av en princip definition definieras **ID**, **typ** och **namn** av egenskaper som är externa för JSON och är inte nödvändiga i JSON-filen. Hämtning av princip definitionen via SDK returnerar egenskaperna **ID**, **typ** och **namn** som en del av JSON, men var och en är skrivskyddad information som är relaterad till princip definitionen.
 
 ## <a name="type"></a>Typ
 
@@ -106,9 +106,9 @@ Vi rekommenderar att du ställer in **läget** till `all` i de flesta fall. Alla
 
 Följande resurs leverantörs läge stöds fullt ut:
 
-- `Microsoft.Kubernetes.Data` för hantering av Kubernetes-kluster på eller av Azure. Definitioner som använder detta resurs leverantörs läge använder effekter _granskning_ , _neka_ och _inaktive rad_. Användning av [EnforceOPAConstraint](./effects.md#enforceopaconstraint) -effekter är _föråldrad_.
+- `Microsoft.Kubernetes.Data` för hantering av Kubernetes-kluster på eller av Azure. Definitioner som använder detta resurs leverantörs läge använder effekter _granskning_, _neka_ och _inaktive rad_. Användning av [EnforceOPAConstraint](./effects.md#enforceopaconstraint) -effekter är _föråldrad_.
 
-Följande resurs leverantörs lägen stöds för närvarande som en för **hands version** :
+Följande resurs leverantörs lägen stöds för närvarande som en för **hands version**:
 
 - `Microsoft.ContainerService.Data` för hantering av regler för regler för åtkomst kontroll i [Azure Kubernetes-tjänsten](../../../aks/intro-kubernetes.md). Definitioner som använder detta resurs leverantörs läge **måste** använda [EnforceRegoPolicy](./effects.md#enforceregopolicy) -effekter. Det här läget är _föråldrat_.
 - `Microsoft.KeyVault.Data` för hantering av valv och certifikat i [Azure Key Vault](../../../key-vault/general/overview.md). Mer information om dessa princip definitioner finns i [integrera Azure Key Vault med Azure policy](../../../key-vault/general/azure-policy.md).
@@ -128,7 +128,7 @@ Den valfria `metadata` egenskapen innehåller information om princip definitione
 - `deprecated` (boolesk): true eller false flagga för om princip definitionen har marker ATS som _föråldrad_.
 
 > [!NOTE]
-> Azure Policy tjänsten använder `version` , `preview` , och `deprecated` Egenskaper för att förmedla ändrings nivån till en inbyggd princip definition eller initiativ och tillstånd. Formatet `version` är: `{Major}.{Minor}.{Patch}` . Vissa tillstånd, till exempel _föråldrad_ eller för _hands version_ , läggs till i `version` egenskapen eller i en annan egenskap som **boolesk**. Mer information om hur Azure Policy inbyggda versioner finns i [inbyggd versions hantering](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md).
+> Azure Policy tjänsten använder `version` , `preview` , och `deprecated` Egenskaper för att förmedla ändrings nivån till en inbyggd princip definition eller initiativ och tillstånd. Formatet `version` är: `{Major}.{Minor}.{Patch}` . Vissa tillstånd, till exempel _föråldrad_ eller för _hands version_, läggs till i `version` egenskapen eller i en annan egenskap som **boolesk**. Mer information om hur Azure Policy inbyggda versioner finns i [inbyggd versions hantering](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md).
 
 ## <a name="parameters"></a>Parametrar
 
@@ -143,7 +143,7 @@ Parametrar fungerar på samma sätt när du skapar principer. Genom att inkluder
 En parameter har följande egenskaper som används i princip definitionen:
 
 - `name`: Namnet på din parameter. Används av `parameters` distributions funktionen i princip regeln. Mer information finns i [använda ett parameter värde](#using-a-parameter-value).
-- `type`: Anger om parametern är en **sträng** , en **matris** , ett **objekt** , ett **booleskt värde** **, ett** **flyttal** eller en **datetime**.
+- `type`: Anger om parametern är en **sträng**, en **matris**, ett **objekt**, ett **booleskt värde** **, ett** **flyttal** eller en **datetime**.
 - `metadata`: Definierar under egenskaper som främst används av Azure Portal för att Visa användarvänlig information:
   - `description`: En förklaring av vad parametern används för. Kan användas för att ge exempel på acceptabla värden.
   - `displayName`: Det egna namnet visas i portalen för parametern.
@@ -189,7 +189,7 @@ Det här exemplet refererar till den **allowedLocations** -parameter som visades
 
 ### <a name="strongtype"></a>strongType
 
-I `metadata` egenskapen kan du använda **strongType** för att ange en lista med alternativ för flera val i Azure Portal. **strongType** kan vara en _resurs typ_ som stöds eller ett tillåtet värde. Använd [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider)för att avgöra om en _resurs typ_ är giltig för **strongType**. Formatet för en _resurs typ_ **strongType** är `<Resource Provider>/<Resource Type>` . Exempelvis `Microsoft.Network/virtualNetworks/subnets`.
+I `metadata` egenskapen kan du använda **strongType** för att ange en lista med alternativ för flera val i Azure Portal. **strongType** kan vara en _resurs typ_ som stöds eller ett tillåtet värde. Använd [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider)för att avgöra om en _resurs typ_ är giltig för **strongType**. Formatet för en _resurs typ_ **strongType** är `<Resource Provider>/<Resource Type>` . Ett exempel är `Microsoft.Network/virtualNetworks/subnets`.
 
 Vissa _resurs typer_ som inte returneras av **Get-AzResourceProvider** stöds. Dessa typer är:
 
@@ -284,7 +284,7 @@ Ett villkor utvärderar om ett **fält** eller **värde** accessor uppfyller vis
   `"greaterOrEquals": intValue`
 - `"exists": "bool"`
 
-För **mindre** , **lessOrEquals** , **större** och **större** , om egenskaps typen inte matchar villkors typen, genereras ett fel. Sträng jämförelser görs med `InvariantCultureIgnoreCase` .
+För **mindre**, **lessOrEquals**, **större** och **större**, om egenskaps typen inte matchar villkors typen, genereras ett fel. Sträng jämförelser görs med `InvariantCultureIgnoreCase` .
 
 När du använder **gilla** -och **notLike** -villkoren anger du ett jokertecken `*` i värdet.
 Värdet får inte ha fler än ett jokertecken `*` .
@@ -456,7 +456,7 @@ Strukturen för **Count** -uttrycket är:
 }
 ```
 
-Följande egenskaper används med **Count** :
+Följande egenskaper används med **Count**:
 
 - **Count. Field** (required): innehåller sökvägen till matrisen och måste vara ett mat ris alias. Om matrisen saknas utvärderas uttrycket till _false_ utan att ta hänsyn till villkors uttrycket.
 - **Count.** (valfritt): villkors uttrycket för att varje [ \[ \* \] alias](#understanding-the--alias) ska utvärderas individuellt i **fältet Count.** Om den här egenskapen inte anges utvärderas alla mat ris medlemmar med sökvägen för Field till _True_. Alla [villkor](../concepts/definition-structure.md#conditions) kan användas i den här egenskapen.
@@ -569,13 +569,13 @@ Exempel 6: `field()` funktionen use inuti `where` villkoren för att få åtkoms
 
 Azure Policy stöder följande typer av påverkan:
 
-- **APPEND** : lägger till den definierade fält uppsättningen i begäran
-- **Granskning** : genererar en varnings händelse i aktivitets loggen men misslyckade begäran
-- **AuditIfNotExists** : genererar en varnings händelse i aktivitets loggen om en relaterad resurs inte finns
-- **Neka** : genererar en händelse i aktivitets loggen och Miss lyckas med begäran
-- **DeployIfNotExists** : distribuerar en relaterad resurs om den inte redan finns
-- **Disabled** : utvärderar inte resurser för efterlevnad för princip regeln
-- **Ändra** : lägger till, uppdaterar eller tar bort definierade taggar från en resurs
+- **APPEND**: lägger till den definierade fält uppsättningen i begäran
+- **Granskning**: genererar en varnings händelse i aktivitets loggen men misslyckade begäran
+- **AuditIfNotExists**: genererar en varnings händelse i aktivitets loggen om en relaterad resurs inte finns
+- **Neka**: genererar en händelse i aktivitets loggen och Miss lyckas med begäran
+- **DeployIfNotExists**: distribuerar en relaterad resurs om den inte redan finns
+- **Disabled**: utvärderar inte resurser för efterlevnad för princip regeln
+- **Ändra**: lägger till, uppdaterar eller tar bort definierade taggar från en resurs
 - **EnforceOPAConstraint** (inaktuell): konfigurerar styrenheten för öppna princip agent med Gatekeeper v3 för självhanterade Kubernetes-kluster på Azure
 - **EnforceRegoPolicy** (inaktuell): konfigurerar styrenheten för öppna Policy Agent-inspelare med Gatekeeper v2 i Azure Kubernetes-tjänsten
 
@@ -606,10 +606,10 @@ Följande funktion är tillgänglig för användning i en princip regel, men ski
 Följande funktioner är endast tillgängliga i princip regler:
 
 - `addDays(dateTime, numberOfDaysToAdd)`
-  - **datetime** : [required] sträng sträng i Universal ISO 8601 datetime-formatet ' ÅÅÅÅ-MM-ddTHH: mm: SS. FFFFFFFZ'
-  - **numberOfDaysToAdd** : [required] heltal-antal dagar som ska läggas till
+  - **datetime**: [required] sträng sträng i Universal ISO 8601 datetime-formatet ' ÅÅÅÅ-MM-ddTHH: mm: SS. FFFFFFFZ'
+  - **numberOfDaysToAdd**: [required] heltal-antal dagar som ska läggas till
 - `field(fieldName)`
-  - **FieldName** : [required] sträng-namnet på det [fält](#fields) som ska hämtas
+  - **FieldName**: [required] sträng-namnet på det [fält](#fields) som ska hämtas
   - Returnerar värdet för det fältet från den resurs som utvärderas av IF-villkoret.
   - `field` används i första hand med **AuditIfNotExists** och **DeployIfNotExists** för att referera till fält på den resurs som utvärderas. Ett exempel på den här användningen kan visas i [DeployIfNotExists-exemplet](effects.md#deployifnotexists-example).
 - `requestContext().apiVersion`
@@ -629,8 +629,8 @@ Följande funktioner är endast tillgängliga i princip regler:
 
 
 - `ipRangeContains(range, targetRange)`
-    - **intervall** : [required] sträng-sträng som anger ett intervall med IP-adresser.
-    - **targetRange** : [required] sträng sträng som anger ett intervall med IP-adresser.
+    - **intervall**: [required] sträng-sträng som anger ett intervall med IP-adresser.
+    - **targetRange**: [required] sträng sträng som anger ett intervall med IP-adresser.
 
     Returnerar om det angivna IP-adressintervallet innehåller mål-IP-adressintervallet. Tomma intervall eller blandning mellan IP-familjer tillåts inte och resulterar i ett utvärderings problem.
 
@@ -669,25 +669,6 @@ Listan över alias växer alltid. Använd någon av följande metoder för att t
   Använd [Azure policy-tillägget för Visual Studio Code](../how-to/extension-for-vscode.md) för att visa och identifiera alias för resurs egenskaper.
 
   :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Skärm bild av Azure Policy-tillägget för Visual Studio-kod som hovrar på en egenskap för att visa namnen på alias." border="false":::
-
-- Azure Resource Graph
-
-  Använd `project` operatorn för att visa **alias** för en resurs.
-
-  ```kusto
-  Resources
-  | where type=~'microsoft.storage/storageaccounts'
-  | limit 1
-  | project aliases
-  ```
-  
-  ```azurecli-interactive
-  az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
-  ```
-  
-  ```azurepowershell-interactive
-  Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
-  ```
 
 - Azure PowerShell
 
@@ -728,14 +709,14 @@ Listan över alias växer alltid. Använd någon av följande metoder för att t
 
 ### <a name="understanding-the--alias"></a>Förstå aliaset [*]
 
-Flera av de tillgängliga aliasen har en version som visas som ett normalt namn och en annan som är **\[\*\]** kopplad till den. Exempel:
+Flera av de tillgängliga aliasen har en version som visas som ett normalt namn och en annan som är **\[\*\]** kopplad till den. Till exempel:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
 Aliaset "normal" representerar fältet som ett enda värde. Det här fältet är för exakta matchnings scenarier när hela uppsättningen med värden måste vara exakt som definierad, inte mer eller mindre.
 
-**\[\*\]** Alias representerar en samling värden som valts från elementen i en mat ris resurs egenskap. Exempel:
+**\[\*\]** Alias representerar en samling värden som valts från elementen i en mat ris resurs egenskap. Till exempel:
 
 | Alias | Valda värden |
 |:---|:---|

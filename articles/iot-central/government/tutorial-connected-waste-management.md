@@ -1,267 +1,260 @@
 ---
 title: 'Självstudie: skapa en ansluten hanterings app för slöseri med Azure IoT Central'
-description: 'Självstudie: Lär dig hur du skapar ett anslutet program för hantering av program med hjälp av Azure IoT Central programmallar.'
+description: Lär dig att bygga ett anslutet hanterings program för program vara med hjälp av Azure IoT Central programmallar.
 author: miriambrus
 ms.author: miriamb
 ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 5ecfa3e4c46c17a3b381e9743953c7d97309ea3b
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 8085409c3dc38d17b6fe0d3cb15857b2396e23b6
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587255"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881352"
 ---
-# <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Självstudie: skapa ett anslutet hanterings program för skräp hantering i IoT Central
+# <a name="tutorial-create-a-connected-waste-management-app"></a>Självstudie: skapa en ansluten app för avfalls hantering
 
-I den här självstudien får du hjälp med att skapa ett program för hantering av program som är kopplat till Azure IoT Central från program mal len IoT Central **anslutet** 
+Den här självstudien visar hur du använder Azure IoT Central för att skapa ett anslutet hanterings program för skräp hantering. 
 
-I den här självstudien får du lära dig hur man: 
+Mer specifikt kan du lära dig att: 
 
-* Använd mallen Azure IoT Central- **ansluten avfalls hantering** för att skapa ett anslutet hanterings program för skräp post
-* Utforska och anpassa instrument panelen för operatör 
-* Utforska enhets mal len för den anslutna avfalls platsen
-* Utforska simulerade enheter
-* Utforska och konfigurera regler
-* Konfigurera jobb
-* Anpassa din program anpassning med hjälp av White etiketting
+* Använd mallen Azure IoT Central- *ansluten avfalls hantering* för att skapa din app.
+* Utforska och anpassa instrument panelen för operatorn. 
+* Utforska enhets mal len för den anslutna avfalls platsen.
+* Utforska simulerade enheter.
+* Utforska och konfigurera regler.
+* Konfigurera jobb.
+* Anpassa din program anpassning.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
-För att slutföra den här kursen behöver du:
-*  En Azure-prenumeration rekommenderas. Du kan välja att använda en kostnads fri 7-dagars utvärderings version. Om du inte har någon Azure-prenumeration kan du skapa en på [sidan för Azure-registrering](https://aka.ms/createazuresubscription).
+En Azure-prenumeration rekommenderas. Du kan också använda en kostnads fri 7-dagars utvärderings version. Om du inte har någon Azure-prenumeration kan du skapa en på [sidan för Azure-registrering](https://aka.ms/createazuresubscription).
 
-## <a name="create-connected-waste-management-app-in-iot-central"></a>Skapa ansluten app för avfalls hantering i IoT Central
+## <a name="create-your-app-in-azure-iot-central"></a>Skapa din app i Azure IoT Central
 
-I det här avsnittet använder du mallen Azure IoT Central- **ansluten avfalls hantering** för att skapa ett anslutet hanterings program för avfalls hantering i IoT Central.
+I det här avsnittet använder du mallen för hantering av anslutna avfalls hantering för att skapa din app i Azure IoT Central. Gör så här:
 
-Så här skapar du ett nytt Azure IoT Central-anslutet hanterings program för skräp hantering:  
+1. Gå till [Azure IoT Central](https://aka.ms/iotcentral).
 
-1. Gå till webbplatsen för [Azure IoT Central start sida](https://aka.ms/iotcentral) .
+    Om du har en Azure-prenumeration loggar du in med de autentiseringsuppgifter som du använder för att komma åt den. Logga annars in med en Microsoft-konto:
 
-    Om du har en Azure-prenumeration loggar du in med de autentiseringsuppgifter som du använder för att komma åt den, annars loggar du in med en Microsoft-konto:
+    ![Skärm bild av Microsoft-inloggning.](./media/tutorial-connectedwastemanagement/sign-in.png)
 
-    ![Ange ditt organisationskonto](./media/tutorial-connectedwastemanagement/sign-in.png)
+1. Välj **build** i det vänstra fönstret. Välj fliken **myndigheter** . Sidan myndigheter visar flera myndighets programmallar.
 
-1. Klicka på **build (Bygg** in) i den vänstra rutan och välj fliken **myndigheter** . Sidan myndigheter visar flera myndighets programmallar.
+    ![Skärm bild av Azure IoT Central build-sidan.](./media/tutorial-connectedwastemanagement/iotcentral-government-tab-overview.png)
 
-    ![Bygg app-mallar för myndigheter](./media/tutorial-connectedwastemanagement/iotcentral-government-tab-overview.png)
+1. Välj program mal len **ansluten avfalls hantering** . Den här mallen innehåller ett exempel på en enhets mall för en ansluten avfalls lager plats, en simulerad enhet, en instrument panel för operatör och förkonfigurerade övervaknings regler.    
 
-1. Välj program mal len **ansluten avfalls hantering** . Den här mallen innehåller exempel på en ansluten enhets mall för avfalls lager, simulerad enhet, operatörs instrument panel och förkonfigurerade övervaknings regler.    
+1. Välj **skapa app**, som öppnar dialog rutan **nytt program** . Fyll i informationen för följande fält:
+    * **Program namn**. Som standard använder programmet **ansluten avfalls hantering**, följt av en unik ID-sträng som Azure IoT Central genererar. Alternativt kan du välja ett eget program namn. Du kan också ändra program namnet senare.
+    * **URL**. Du kan också välja önskad URL. Du kan ändra URL senare. 
+    * **Pris plan**. Om du har en Azure-prenumeration anger du din katalog, din Azure-prenumeration och region i lämpliga fält i dialog rutan **fakturerings information** . Om du inte har någon prenumeration väljer du **kostnads fri** för att aktivera utvärderings versionen för 7 dagar och slutför nödvändig kontakt information.  
 
-1. Klicka på **skapa app**, så öppnas formuläret för att skapa **nya program** med följande fält:
-    * **Program namn**. Som standard använder programmet *ansluten avfalls hantering* följt av en unik ID-sträng som IoT Central genererar. Du kan också välja ett eget program namn. Du kan senare ändra program namnet.
-    * **URL** – du kan också välja att ange önskad URL. Du kan ändra URL: en senare. 
-    * Om du har en Azure-prenumeration anger du din *katalog, din Azure-prenumeration och region*. Om du inte har någon prenumeration kan du aktivera den **kostnads fria utvärderings versionen på 7 dagar** och slutföra den kontakt information som krävs.  
+    Mer information om kataloger och prenumerationer finns i [snabb start – skapa ett Azure IoT Central-program](../core/quick-deploy-iot-central.md).
 
-    Mer information om kataloger och prenumerationer finns i [snabbstarten om att skapa ett program](../core/quick-deploy-iot-central.md).
+1. Klicka på **skapa** längst ned på sidan. 
 
-1. Klicka på knappen **skapa** längst ned på sidan. 
-
-    ![Sidan för att skapa ett anslutet avfall i Azure IoT Central](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement.png)
+    ![Skärm bild av Azure IoT Central skapa nytt program dialog ruta.](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement.png)
     
-    ![Azure IoT Central skapa ansluten fakturerings information](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement-billinginfo.png)
+    ![Skärm bild av dialog rutan information om Azure IoT Central fakturerings information.](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement-billinginfo.png)
 
  
-1. Nu har du skapat en ansluten app för avfalls hantering med hjälp av **mallen Azure IoT Central ansluten avfalls hantering**. 
-
-Grattis! Det nyligen skapade programmet levereras med förkonfigurerade:
-* Exempel instrument panels instrument paneler
-* Exempel på fördefinierad enhet med fördefinierat antal anslutna avfalls platser
-* Simulerade anslutna avfalls lager enheter
-* Förkonfigurerade regler och jobb
-* Exempel anpassning med vita etiketter 
+Det nyligen skapade programmet levereras med förkonfigurerade:
+* Exempel instrument panels instrument paneler.
+* Exempel på fördefinierade enhets mallar för anslutet pappers korgen.
+* Simulerade anslutna avfalls lager enheter.
+* Regler och jobb.
+* Exempel anpassning. 
 
 Det är ditt program och du kan ändra det när som helst. Nu ska vi utforska programmet och göra några anpassningar.  
 
-## <a name="explore-and-customize-operator-dashboard"></a>Utforska och anpassa instrument panelen för operatör 
-När du har skapat det program som du har skapat i den **breda anslutet avfalls hanterings instrument panel**.
+## <a name="explore-and-customize-the-operator-dashboard"></a>Utforska och anpassa instrument panelen för operatören 
 
-   ![Instrument panel för ansluten avfalls hantering](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard1.png)
+Ta en titt på **instrument panelen för avfalls hantering i hela världen**, som du ser när du har skapat din app.
 
-Som ett verktyg kan du skapa och anpassa vyer på instrument panelen för operatörer. Vi går igenom instrument panelen innan du försöker anpassa. 
+   ![Skärm bild av Wide World avfalls hanterings instrument panel.](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard1.png)
 
->>[!NOTE]
->> Alla data som visas i instrument panelen baseras på simulerade enhets data som kommer att utforskas i nästa avsnitt. 
+Som ett verktyg kan du skapa och anpassa vyer på instrument panelen för operatörer. Först ska vi utforska instrument panelen. 
 
-Instrument panelen består av olika typer av paneler:
+>[!NOTE]
+>Alla data som visas i instrument panelen baseras på simulerade enhets data, som du ser mer av i nästa avsnitt. 
 
-* ***Wide World-verktyget för avfalls verktyg** _: den första panelen på instrument panelen är en bild panel med ett fiktivt avinstallations verktyg "Wide World avfall". Du kan anpassa panelen och placera en egen avbildning eller ta bort den. 
+Instrument panelen består av olika paneler:
 
-_ ***Avfalls lager bild panel** _: du kan använda bild-och innehålls paneler för att skapa en visuell representation av enheten som övervakas tillsammans med en beskrivande text. 
+* **Bild panel för bred avfalls verktyg**: den första panelen i instrument panelen är en bild panel med ett fiktivt avlopps verktyg, "Wide World avfall". Du kan anpassa panelen och placera den i en egen bild eller ta bort den. 
 
-_ ***Indikator panel för fyllnings nivå** _: panelen visar ett värde som rapporteras av en _fill nivå * sensor på en avfalls plats. *Fyllnings nivå* och andra sensorer som *odor-mätare* eller *vikt* på en avfalls lager plats kan fjärrövervakas. En operatör kan vidta åtgärder, t. ex. sändning av SOP insamlings Truck. 
+* **Bild panel för avfalls fack**: du kan använda bild-och innehålls paneler för att skapa en visuell representation av enheten som övervakas, tillsammans med en beskrivning. 
 
-* ***Områdes karta för avfalls övervakning** _: kartan använder Azure Maps, som du kan konfigurera direkt i Azure IoT Central. Kart panelen visar enhetens plats. Försök att hovra över kartan och testa kontrollerna över kartan, t. ex. Zooma in, zooma ut eller expandera.
+* **KPI-panel på fyllnings nivå**: den här panelen visar ett värde som rapporteras av en sensor för *fyllnads nivå* på en pappers korg. Fyllnings nivå och andra sensorer, t. ex. *odor meter* eller *vikt* i en avfalls lager, kan fjärrövervakas. En operatör kan vidta åtgärder, t. ex. sändning av en Last bil för SOP insamling. 
 
-     ![Översikt över ansluten instrument panel för avfalls hantering](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard-map.png)
+* **Områdes karta för avfalls övervakning**: den här panelen använder Azure Maps, som du kan konfigurera direkt i Azure IoT Central. Kart panelen visar enhetens plats. Försök att hovra över kartan och testa kontrollerna över kartan, t. ex. Zooma in, zooma ut eller expandera.
 
-
-_ ***Fyllning, odor, stapeldiagram för viktnivå**: du kan visualisera en eller flera telemetridata för enheter i ett stapeldiagram. Du kan också expandera stapeldiagrammet.  
-
-  ![Stapeldiagram för instrument panelen för anslutna avfalls hantering](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard-barchart.png)
+     ![Skärm bild av instrument panels kartan för anslutna avfalls hantering.](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard-map.png)
 
 
-* **Innehålls panelen fält tjänster**: instrument panelen innehåller länkar till hur du integrerar med Dynamics 365-fälttjänster från ditt Azure IoT Central-program. Som exempel kan du använda fält tjänster för att skapa biljetter för att skicka iväg skräp insamlings tjänster. 
+* **Fyllning, odor, stapeldiagram för viktnivå**: du kan visualisera en eller flera typer av telemetridata för enheter i ett stapeldiagram. Du kan också expandera stapeldiagrammet.  
+
+  ![Skärm bild av diagram för mall för instrument panel för ansluten avfalls hantering.](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard-barchart.png)
 
 
-### <a name="customize-dashboard"></a>Anpassa instrument panelen 
+* **Fält tjänster**: instrument panelen innehåller en länk till hur du integrerar med Dynamics 365 Field Services från ditt Azure IoT Central-program. Du kan till exempel använda fält tjänster för att skapa biljetter för utförsel av skräp insamlings tjänster. 
 
-Som ett verktyg kan du anpassa vyer på instrument panelen för operatörer. Du kan prova:
-1. Klicka på **Redigera** om du vill anpassa den **bred anslutna instrument panelen för avfalls hantering**. Du kan anpassa instrument panelen genom att klicka på **Redigera** -menyn. När instrument panelen är i **redigerings** läge kan du lägga till nya paneler, eller så kan du konfigurera 
 
-    ![Redigera instrumentpanel](./media/tutorial-connectedwastemanagement/edit-dashboard.png)
+### <a name="customize-the-dashboard"></a>Anpassa instrumentpanelen 
 
-1. Du kan också klicka på **+ ny** för att skapa en ny instrument panel och konfigurera från början. Du kan ha flera instrument paneler och du kan navigera mellan dina instrument paneler på instrument panelens meny. 
+Du kan anpassa instrument panelen genom att välja **Redigera** -menyn. Sedan kan du lägga till nya paneler eller konfigurera befintliga. Så här ser instrument panelen ut i redigerings läge: 
 
-## <a name="explore-connected-waste-bin-device-template"></a>Utforska enhets mal len för den anslutna avfalls platsen
+![Skärm bild av instrument panelen för den anslutna avfalls hanterings mal len i redigerings läge.](./media/tutorial-connectedwastemanagement/edit-dashboard.png)
 
-En enhets mall i Azure IoT Central definierar funktionen hos en enhet, som kan vara telemetri, egenskaper eller kommando. Som ett verktyg kan du definiera enhetsspecifika mallar som representerar kapaciteten för de enheter som du ska ansluta till. 
+Du kan också välja **+ nytt** för att skapa en ny instrument panel och konfigurera från början. Du kan ha flera instrument paneler och du kan växla mellan dina instrument paneler på instrument panelens meny. 
 
-**Anslutet hanterings program för avfalls hantering** levereras med en exempel enhets mal len för avkopplad avfalls plats.
+## <a name="explore-the-device-template"></a>Utforska enhetens mall
+
+En enhets mall i Azure IoT Central definierar funktionerna för en enhet, vilket kan omfatta telemetri, egenskaper eller kommandon. Som ett verktyg kan du definiera enhetsspecifika mallar som representerar funktionerna i de enheter som du ansluter till. 
+
+Anslutet hanterings program för skräp insamling levereras med en exempel mall för en ansluten enhet för spill lager plats.
 
 Så här visar du enhets mal len:
 
-1. Klicka på **mallar för enheter** i den vänstra rutan i programmet i IoT Central. 
+1. I Azure IoT Central väljer du **enhetsspecifika** i den vänstra rutan i appen. 
 
-    ![Skärm bild som visar listan över enhetsspecifika mallar i programmet](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
+    ![Skärm bild som visar listan över enhetsspecifika mallar i programmet.](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
 
-1. I listan mallar för enheter visas **anslutet avfall**. Öppna genom att klicka på namnet.
+1. I listan **enhets mallar** väljer du **anslutet pappers lager**.
 
-1. Bekanta dig med funktionerna i enhets mal len. Du kan se att det definierar sensorer som *Fyllnings nivå*, *odor-mätare*, *vikt*, *plats* och andra.
+1. Granska funktionerna i enhets mal len. Du kan se att den definierar sensorer som **Fyllnings nivå**, **odor-mätare**, **vikt** och **plats**.
 
-   ![Skärm bild som visar information om den anslutna enhets mal len för avfalls platser](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
+   ![Skärm bild som visar information om enhets mal len för den anslutna avfalls platsen.](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 
 
-### <a name="customizing-the-device-template"></a>Anpassa enhets mal len
+### <a name="customize-the-device-template"></a>Anpassa enhets mal len
 
 Försök att anpassa följande:
-1. Navigera för att **Anpassa** från menyn på enhets mal len
-1. Hitta `Odor meter` typen av telemetri
-1. Uppdatera **visnings namnet** för `Odor meter` till `Odor level`
-1. Du kan också prova att uppdatera mått enheten eller ange *minsta värde* och *Max värde*
-1. **Spara** ändringar 
+1. Från menyn enhets mall väljer du **Anpassa**.
+1. Hitta telemetri typen **odor meter** .
+1. Uppdatera **visnings namnet** för **odor-mätaren** till **odor-nivån**.
+1. Försök att uppdatera mått enheten eller ange **minsta värde** och **högsta värde**.
+1. Välj **Spara**. 
 
 ### <a name="add-a-cloud-property"></a>Lägg till en moln egenskap 
 
-1. Gå till **moln egenskap** från enhetens mall-menyn
-1. Lägg till en ny moln egenskap genom att klicka på **+ Lägg till moln egenskap**. I IoT Central kan du lägga till en egenskap som är relevant för enheten men som inte förväntas skickas av en enhet. Som exempel kan en moln egenskap vara en aviserings tröskel som är speciell för installations-, till gångs information eller underhålls information och annan information. 
-1. **Spara** ändringar 
+Gör så här:
+1. Från menyn enhets mall väljer du **moln egenskap**.
+1. Välj **+ Lägg till moln egenskap**. I Azure IoT Central kan du lägga till en egenskap som är relevant för enheten men som inte förväntas skickas av en enhet. Till exempel kan en moln egenskap vara en aviserings tröskel som är speciell för installations ytan, till gångs information eller underhålls information. 
+1. Välj **Spara**. 
  
 ### <a name="views"></a>Vyer 
-* Enhets mal len för den anslutna avfalls platsen levereras med fördefinierade vyer. Utforska vyerna så kan du göra uppdateringar. Vyerna definierar hur operatörer ser enhets data, men som även anger moln egenskaper. 
+Enhets mal len för den anslutna avfalls platsen innehåller fördefinierade vyer. Utforska vyerna och uppdatera dem om du vill. Vyerna definierar hur operatörer ser enhets data och moln egenskaper för indata. 
 
-  ![Vyer för enhets mal len](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-views.png)
+  ![Skärm bild av den anslutna mallen för avfalls hantering i enhets mallar.](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-views.png)
 
 ### <a name="publish"></a>Publicera 
 
-* Om du har gjort några ändringar måste du **publicera** enhets mal len. 
+Kom ihåg att publicera enhets mal len om du har gjort några ändringar. 
 
 ### <a name="create-a-new-device-template"></a>Skapa en ny enhetsmall 
 
-* Välj **+ nytt** för att skapa en ny enhets mall och följ proceduren för att skapa. Du kommer att kunna skapa en anpassad enhets mall från början eller välja en enhets mall från Azures enhets katalog. 
+Om du vill skapa en ny enhets mall väljer du **+ ny** och följer stegen. Du kan skapa en anpassad enhets mall från början, eller så kan du välja en enhets mall från Azures enhets katalog. 
 
 ## <a name="explore-simulated-devices"></a>Utforska simulerade enheter
 
-I IoT Central kan du skapa simulerade enheter för att testa enhetens mall och program. 
+I Azure IoT Central kan du skapa simulerade enheter för att testa enhetens mall och program. 
 
-**Anslutet hanterings** program för program vara har två simulerade enheter som är kopplade till enhets mal len för den anslutna avfalls platsen. 
+Anslutet hanterings program för program vara har två simulerade enheter som är kopplade till enhets mal len för den anslutna avfalls platsen. 
 
-### <a name="to-view-the-devices"></a>Så här visar du enheterna:
+### <a name="view-the-devices"></a>Visa enheterna
 
-1. Navigera till **enheten** från IoT Central vänstra rutan. 
+1. I den vänstra rutan i Azure IoT Central väljer du **enhet**. 
 
-   ![Enheter](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices.png)
+   ![Skärm bild av enheter med mall för anslutna avfalls hantering.](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices.png)
 
-1. Välj och klicka på ansluten spill lager enhet.  
+1. Välj **ansluten spill lager** enhet.  
 
-     ![Enhet 1](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices-bin1.png)
+     ![Skärm bild av enhets egenskaperna för den anslutna avfalls hanterings mal len.](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices-bin1.png)
 
-1. Navigera till fliken **moln egenskaper** och försök uppdatera `Bin full alert threshold` värdet från `95` till `100` . 
-* Utforska fliken **enhets egenskaper** och fliken **enhets instrument panel** . 
+1. Gå till fliken **moln egenskaper** . Uppdatera värdet för **fullständig aviserings tröskel för bin** från **95** till **100**. 
 
->> [!NOTE]
->> Alla flikar har kon figurer ATS från **Device Template-vyerna**.
+Utforska flikarna **Egenskaper** och **enhets instrument panel** . 
+
+> [!NOTE]
+> Alla flikar har kon figurer ATS från Device Template-vyerna.
 
 ### <a name="add-new-devices"></a>Lägg till nya enheter
 
-* Du kan lägga till nya enheter genom att klicka på **+ ny** på fliken **enheter** . 
+Du kan lägga till nya enheter genom att välja **+ ny** på fliken **enheter** . 
 
 ## <a name="explore-and-configure-rules"></a>Utforska och konfigurera regler
 
-I Azure IoT Central kan du skapa regler för automatisk övervakning på enhetens telemetri och utlösa åtgärder när ett eller flera villkor uppfylls. Åtgärderna kan omfatta att skicka e-postmeddelanden, utlösa en åtgärd för automatisk åtgärd eller en webhook-åtgärd för att skicka data till andra tjänster.
+I Azure IoT Central kan du skapa regler för automatisk övervakning av enhets telemetri och utlösa åtgärder när ett eller flera villkor uppfylls. Åtgärderna kan omfatta att skicka e-postmeddelanden, utlösa en åtgärd i Energis par automatisering eller starta en webhook-åtgärd för att skicka data till andra tjänster.
 
-**Anslutet hanterings program för skräp hantering** har fyra exempel regler.
+Anslutet hanterings program för skräp hantering har fyra exempel regler.
 
-### <a name="to-view-rules"></a>Så här visar du regler:
-1. Navigera till **regler** från IoT Central vänstra rutan
+### <a name="view-rules"></a>Visa regler
+1. I den vänstra rutan i Azure IoT Central väljer du **regler**.
 
-   ![Regler](./media/tutorial-connectedwastemanagement/connectedwastemanagement-rules.png)
+   ![Skärm bild av regler för anslutna avfalls hanterings mallar.](./media/tutorial-connectedwastemanagement/connectedwastemanagement-rules.png)
 
-1. Välj **fullständig avisering för bin**
+1. Markera **fullständig bin-avisering**.
 
-     ![Fullständig avisering för bin](./media/tutorial-connectedwastemanagement/connectedwastemanagement-binfullalert.png)
+     ![Skärm bild av fullständig avisering för bin.](./media/tutorial-connectedwastemanagement/connectedwastemanagement-binfullalert.png)
 
- 1. `Bin full alert`Kontrollerar om **villkoret** är uppfyllt `Fill level is greater than or equal to Bin full alert threshold` .
+ 1. Den **fullständiga varningen för bin** kontrollerar följande villkor: **Fill-nivån är större än eller lika med tröskelvärdet för fullständig avisering för bin**.
 
-    `Bin full alert threshold`Är en *moln egenskap* som definierats i `Connected waste bin` enhets mal len. 
+    **Tröskelvärdet för fullständig avisering för bin** är en moln egenskap som definieras i enhets mal len för den anslutna avfalls platsen. 
 
 Nu ska vi skapa en e-poståtgärd.
 
 ### <a name="create-an-email-action"></a>Skapa en e-poståtgärd
-Så här konfigurerar du en e-poståtgärd i regelns åtgärds lista:
-1. Välj **+ e-post**. 
-1. Ange *hög pH-avisering* som det egna **visnings namnet** för åtgärden.
-1. Ange den e-postadress som är kopplad till ditt IoT Central konto i **till**. 
-1. Du kan också ange en anteckning som ska inkluderas i e-postmeddelandets text.
-1. Välj **klar** för att slutföra åtgärden.
-1. Välj **Spara** för att spara och aktivera den nya regeln. 
 
-Du bör få ett e-postmeddelande när det konfigurerade **villkoret** är uppfyllt.
+I **Åtgärds listan för** regeln kan du konfigurera en e-post-åtgärd:
+1. Välj **+ e-post**. 
+1. För **visnings namn** anger du **hög pH-avisering**.
+1. För **till** anger du den e-postadress som är kopplad till ditt Azure IoT Central-konto. 
+1. Du kan också ange en anteckning som ska inkluderas i e-postmeddelandets text.
+1. Välj **färdig**  >  **Spara**. 
+
+Nu får du ett e-postmeddelande när det konfigurerade villkoret är uppfyllt.
 
 >[!NOTE]
->Programmet kommer att skicka ett e-postmeddelande varje gången ett villkor är uppfyllt. **Inaktivera** regeln om du vill sluta ta emot e-post från den automatiserade regeln. 
+>Programmet skickar ett e-postmeddelande varje gången ett villkor är uppfyllt. Inaktivera regeln om du vill sluta ta emot e-post från den automatiserade regeln. 
   
-Så här skapar du en ny regel: 
-1. Välj **+ nytt** i **reglerna** i det vänstra fönstret.
+Om du vill skapa en ny regel väljer du **+ ny** i det vänstra fönstret av **regler**.
 
 ## <a name="configure-jobs"></a>Konfigurera jobb
 
-I IoT Central kan du använda jobb för att utlösa enhets-eller moln egenskaper uppdateringar på flera enheter. Förutom egenskaper kan du också använda jobb för att utlösa enhets kommandon på flera enheter. IoT Central automatiserar arbets flödet åt dig. 
+I Azure IoT Central kan du använda jobb för att utlösa enhets-eller moln egenskaper uppdateringar på flera enheter. Du kan också använda jobb för att utlösa enhets kommandon på flera enheter. Azure IoT Central automatiserar arbets flödet åt dig. 
 
-1. Gå till **jobb** från det vänstra fönstret. 
-1. Klicka på **+ ny** och konfigurera ett eller flera jobb. 
-
+1. I den vänstra rutan i Azure IoT Central väljer du **jobb**. 
+1. Välj **+ ny** och konfigurera ett eller flera jobb. 
 
 ## <a name="customize-your-application"></a>Anpassa ditt program 
 
 Som verktyg kan du ändra flera inställningar för att anpassa användar upplevelsen i ditt program.
 
-### <a name="to-change-the-application-theme"></a>Ändra programmets tema:
+### <a name="change-the-application-theme"></a>Ändra programmets tema
 
-1. Gå till **Administration > anpassa ditt program**.
-1. Använd knappen **ändra** för att välja en bild att ladda upp som **program logo typ**.
-1. Använd knappen **ändra** för att välja en **ikon för en webb läsar ikon** som visas på flikar i webbläsaren.
-1. Du kan också ersätta standard **webbläsarens färger** genom att lägga till HTML-hexadecimala färg koder.
+Gör så här:
+1. Gå till **Administration**  >  **Anpassa ditt program**.
+1. Välj **ändra** för att välja en bild att ladda upp för **program logo typen**.
+1. Välj **ändra** för att välja en bild som ska laddas upp för **webb läsar ikonen** (en bild som visas på webb läsar flikar).
+1. Du kan också ersätta standard webbläsarens färger genom att lägga till HTML-hexadecimala färg koder. Använd **rubrik** -och **dekor** fält för det här ändamålet.
 
-   ![Azure IoT Central anpassa ditt program](./media/tutorial-connectedwastemanagement/connectedwastemanagement-customize-your-application.png)
+   ![Skärm bild av den kopplade hanterings mal len för Slösaren anpassa ditt program.](./media/tutorial-connectedwastemanagement/connectedwastemanagement-customize-your-application.png)
 
-1. Du kan också ändra program avbildningarna genom att gå till **administrations > program inställningar** och **välja knappen bild** för att välja en bild som ska laddas upp som program avbildning.
-1. Slutligen kan du även ändra **temat** genom att klicka på **Inställningar** på program huvud rubriken för programmet.
+1. Du kan också ändra program avbildningar. Välj inställningar för **administrations**  >  **program**  >  **Välj bild** för att välja en bild som ska laddas upp som program avbildning.
+1. Slutligen kan du även ändra temat genom att välja **Inställningar** på program huvud rubriken för programmet.
 
-  
 ## <a name="clean-up-resources"></a>Rensa resurser
 
 Om du inte kommer att fortsätta att använda det här programmet tar du bort programmet med följande steg:
 
-1. Öppna fliken Administration i det vänstra fönstret i ditt IoT Central-program.
-1. Välj program inställningar och klicka på knappen Ta bort längst ned på sidan.
+1. Välj **Administration** i den vänstra rutan i Azure IoT Central-appen.
+1. Välj **program inställningar**  >  **ta bort**.
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Läs mer om
- 
 > [!div class="nextstepaction"]
 > [Metoder för ansluten avfalls hantering](./concepts-connectedwastemanagement-architecture.md)

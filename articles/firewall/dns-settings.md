@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 11/06/2020
+ms.date: 01/04/2021
 ms.author: victorh
-ms.openlocfilehash: 197d48a2f5368111ec194a18f86aedf5ad78e1b2
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 855c06b610fb8166f6f2dfcf37af34efb3713ffe
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565627"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883234"
 ---
 # <a name="azure-firewall-dns-settings"></a>DNS-inställningar för Azure-brandväggen
 
@@ -65,13 +65,16 @@ $azFw | Set-AzFirewall
 
 Du kan konfigurera Azure-brandväggen så att den fungerar som en DNS-proxy. En DNS-proxy är en mellanhand för DNS-begäranden från klientens virtuella datorer till en DNS-server. Om du konfigurerar en anpassad DNS-server aktiverar du DNS-proxyn för att undvika matchning av DNS-matchning och aktiverar FQDN (fullständigt kvalificerat domän namn) i nätverks reglerna.
 
+:::image type="content" source="media/dns-settings/dns-proxy-2.png" alt-text="D N S proxy-konfiguration med hjälp av en anpassad D N S-server.":::
+
+
 Om du inte aktiverar DNS-proxy kan DNS-begäranden från klienten skickas till en DNS-Server vid en annan tidpunkt eller returnera ett annat svar jämfört med den i brand väggen. DNS-proxy placerar Azure-brandväggen i sökvägen för klient begär Anden för att undvika inkonsekvens.
 
 När Azure-brandväggen är en DNS-proxy är två typer av caching-funktioner möjliga:
 
-- **Positivt cacheminne** : DNS-matchningen har slutförts. Brand väggen använder TTL-värdet (Time to Live) för paketet eller objektet. 
+- **Positivt cacheminne**: DNS-matchningen har slutförts. Brand väggen använder TTL-värdet (Time to Live) för paketet eller objektet. 
 
-- **Negativ cache** : DNS-matchning resulterar inte i något svar eller ingen upplösning. Brand väggen cachelagrar den här informationen i en timme.
+- **Negativ cache**: DNS-matchning resulterar inte i något svar eller ingen upplösning. Brand väggen cachelagrar den här informationen i en timme.
 
 DNS-proxyn lagrar alla matchade IP-adresser från FQDN: er i nätverks regler. Vi rekommenderar att du använder FQDN: er som matchar en IP-adress.  
 

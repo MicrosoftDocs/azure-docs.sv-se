@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/21/2020
+ms.date: 01/04/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9e842e4d2a4dbd118840498587696df085b07700
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: d56ed0cdae9046cb7d76f7d74545309ee6292ecd
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722903"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883103"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Använd Azure för att vara värd för och köra SAP-arbetsbelastnings scenarier
 
@@ -83,6 +83,8 @@ I det här avsnittet hittar du dokument om Microsoft Power BI integration i SAP-
 
 ## <a name="change-log"></a>Ändrings logg
 
+- 01/04/2021: Lägg till nya Azure-regioner som stöds av HLI i [vad som är SAP HANA på Azure (stora instanser)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- 12/29/2020: Lägg till arkitektur rekommendationer för vissa Azure-regioner i [SAP-arbets belastnings konfiguration med Azure-tillgänglighetszoner](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)
 - 12/21/2020: Lägg till nya certifieringar i SKU: er av HANA-stora instanser i [tillgängliga SKU: er för HLI](./hana-available-skus.md)
 - 12/12/2020: pekare till SAP-anteckning som förtydligar information om Oracle Enterprise Linux-stöd från SAP till [vilken SAP-programvara som stöds för Azure-distributioner](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#oracle-dbms-support)
 - 11/26/2020: anpassa [SAP HANA lagrings konfiguration för virtuella Azure-datorer](./hana-vm-operations-storage.md) och [Azure Storage typer för SAP-arbetsbelastningar](./planning-guide-storage.md) till ändrade enskilda [VM-service avtal](https://azure.microsoft.com/support/legal/sla/virtual-machines)

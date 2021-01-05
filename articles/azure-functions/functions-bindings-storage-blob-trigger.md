@@ -6,18 +6,18 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: fd33ca4c5d637e31230d8c124fdb9ec7c71d2ba7
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 3213df378bc3b8403ebd11f899d722106de67a65
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094853"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882032"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Blob Storage-utlösare för Azure Functions
 
 Blob Storage-utlösaren startar en funktion när en ny eller uppdaterad BLOB identifieras. BLOB-innehållet tillhandahålls som [indata till funktionen](./functions-bindings-storage-blob-input.md).
 
-Azure Blob Storage-utlösaren kräver ett allmänt lagrings konto. Storage v2-konton med [hierarkiska namn rymder](../storage/blobs/data-lake-storage-namespace.md) stöds också. Om du vill använda ett enbart BLOB-konto, eller om ditt program har särskilda behov, granskar du alternativen för att använda den här utlösaren.
+Azure Blob Storage-utlösaren kräver ett allmänt lagrings konto. Storage v2-konton med [hierarkiska namn områden](../storage/blobs/data-lake-storage-namespace.md) stöds också. Om du vill använda ett enbart BLOB-konto, eller om ditt program har särskilda behov, granskar du alternativen för att använda den här utlösaren.
 
 Information om konfiguration och konfigurations information finns i [översikten](./functions-bindings-storage-blob.md).
 
@@ -114,6 +114,24 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+Den här funktionen skriver en logg när en BLOB läggs till eller uppdateras i `myblob` behållaren.
+
+```java
+@FunctionName("blobprocessor")
+public void run(
+  @BlobTrigger(name = "file",
+               dataType = "binary",
+               path = "myblob/{name}",
+               connection = "MyStorageAccountAppSetting") byte[] content,
+  @BindingName("name") String filename,
+  final ExecutionContext context
+) {
+  context.getLogger().info("Name: " + filename + " Size: " + content.length + " bytes");
+}
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 I följande exempel visas en BLOB trigger-bindning i en *function.jspå* fil-och [JavaScript-kod](functions-reference-node.md) som använder bindningen. Funktionen skriver en logg när en BLOB läggs till eller uppdateras i `samples-workitems` behållaren.
@@ -146,6 +164,34 @@ module.exports = function(context) {
     context.log('Node.js Blob trigger function processed', context.bindings.myBlob);
     context.done();
 };
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Följande exempel visar hur du skapar en funktion som körs när en fil läggs till i `source` Blob storage-behållaren.
+
+Funktions konfigurations filen (_function.jspå_) innehåller en bindning med och som är `type` `blobTrigger` `direction` inställd på `in` .
+
+```json
+{
+  "bindings": [
+    {
+      "name": "InputBlob",
+      "type": "blobTrigger",
+      "direction": "in",
+      "path": "source/{name}",
+      "connection": "MyStorageAccountConnectionString"
+    }
+  ]
+}
+```
+
+Här är den associerade koden för _run.ps1_ -filen.
+
+```powershell
+param([byte[]] $InputBlob, $TriggerMetadata)
+
+Write-Host "PowerShell Blob trigger: Name: $($TriggerMetadata.Name) Size: $($InputBlob.Length) bytes"
 ```
 
 # <a name="python"></a>[Python](#tab/python)
@@ -183,24 +229,6 @@ import azure.functions as func
 
 def main(myblob: func.InputStream):
     logging.info('Python Blob trigger function processed %s', myblob.name)
-```
-
-# <a name="java"></a>[Java](#tab/java)
-
-Den här funktionen skriver en logg när en BLOB läggs till eller uppdateras i `myblob` behållaren.
-
-```java
-@FunctionName("blobprocessor")
-public void run(
-  @BlobTrigger(name = "file",
-               dataType = "binary",
-               path = "myblob/{name}",
-               connection = "MyStorageAccountAppSetting") byte[] content,
-  @BindingName("name") String filename,
-  final ExecutionContext context
-) {
-  context.getLogger().info("Name: " + filename + " Size: " + content.length + " bytes");
-}
 ```
 
 ---
@@ -267,17 +295,21 @@ Lagrings kontot som ska användas fastställs i följande ordning:
 
 Attribut stöds inte av C#-skript.
 
+# <a name="java"></a>[Java](#tab/java)
+
+`@BlobTrigger`Attributet används för att ge dig åtkomst till den blob som utlöste funktionen. Mer information finns i [utlösnings exemplet](#example) .
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Attribut stöds inte av Java Script.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Attribut stöds inte av PowerShell.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Attribut stöds inte av python.
-
-# <a name="java"></a>[Java](#tab/java)
-
-`@BlobTrigger`Attributet används för att ge dig åtkomst till den blob som utlöste funktionen. Mer information finns i [utlösnings exemplet](#example) .
 
 ---
 
@@ -305,17 +337,21 @@ I följande tabell förklaras de egenskaper för bindnings konfiguration som du 
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
+# <a name="java"></a>[Java](#tab/java)
+
+`@BlobTrigger`Attributet används för att ge dig åtkomst till den blob som utlöste funktionen. Mer information finns i [utlösnings exemplet](#example) .
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Få åtkomst till BLOB-data med `context.bindings.<NAME>` var `<NAME>` matchar värdet som definierades i *function.js*.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Få åtkomst till BLOB-data via en parameter som matchar namnet som anges av bindningens namn parameter i _function.jsi_ filen.
+
 # <a name="python"></a>[Python](#tab/python)
 
-Få åtkomst till BLOB-data via parametern som anges som [InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python). Mer information finns i [utlösnings exemplet](#example) .
-
-# <a name="java"></a>[Java](#tab/java)
-
-`@BlobTrigger`Attributet används för att ge dig åtkomst till den blob som utlöste funktionen. Mer information finns i [utlösnings exemplet](#example) .
+Få åtkomst till BLOB-data via parametern som anges som [InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python&preserve-view=true). Mer information finns i [utlösnings exemplet](#example) .
 
 ---
 
@@ -374,6 +410,10 @@ Om blobben heter *{20140101}-soundfile.mp3*, `name` är variabelvärdet i funkti
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
 
+# <a name="java"></a>[Java](#tab/java)
+
+Metadata är inte tillgängliga i Java.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
@@ -383,13 +423,13 @@ module.exports = function (context, myBlob) {
 };
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Metadata är tillgängliga via `$TriggerMetadata` parametern.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Metadata är inte tillgängliga i python.
-
-# <a name="java"></a>[Java](#tab/java)
-
-Metadata är inte tillgängliga i Java.
 
 ---
 
@@ -399,11 +439,11 @@ Azure Functions runtime ser till att ingen BLOB-utlösnings funktion anropas mer
 
 Azure Functions lagrar BLOB-kvitton i en behållare med namnet *Azure-WebJobs-hosts* i Azure Storage-kontot för din Function-app (definieras av appens inställning `AzureWebJobsStorage` ). Ett BLOB-kvitto har följande information:
 
-* Funktionen triggerd ("*&lt; Function app Name>*. Funktionen. *&lt; funktions namn>*", till exempel:" MyFunctionApp. functions. CopyBlob ")
+* Den utlösta funktionen ( `<FUNCTION_APP_NAME>.Functions.<FUNCTION_NAME>` t. ex.: `MyFunctionApp.Functions.CopyBlob` )
 * Behållarens namn
-* Blob-typ ("BlockBlob" eller "PageBlob")
+* BLOB-typen ( `BlockBlob` eller `PageBlob` )
 * BLOB-namnet
-* ETag (en BLOB versions identifierare, till exempel: "0x8D1DC6E70A277EF")
+* ETag (en BLOB-versions identifierare, till exempel: `0x8D1DC6E70A277EF` )
 
 Om du vill framtvinga en ombearbetning av en BLOB tar du bort BLOB-kvittot för blobben från behållaren *Azure-WebJobs-hosts* manuellt. Det kan hända att ombearbetningen inte sker omedelbart, men det är garanterat att det sker vid en senare tidpunkt. För att ombearbeta omedelbart kan *scaninfo* -blobben i *Azure-WebJobs-hosts/blobscaninfo* uppdateras. Alla blobbar med en senast ändrad tidstämpel efter att `LatestScan` egenskapen genomsöks igen.
 
@@ -413,11 +453,11 @@ När en BLOB-utlösare Miss lyckas för en specifik BLOB, Azure Functions förs�
 
 Om alla fem försöken inte fungerar lägger Azure Functions till ett meddelande i en lagrings kö med namnet *WebJobs-en-Poison*. Det maximala antalet återförsök kan konfigureras. Samma MaxDequeueCount-inställning används för hantering av skadlig blob och meddelande hantering för hantering av skadlig kö. Queue-meddelandet för Poison-blobbar är ett JSON-objekt som innehåller följande egenskaper:
 
-* FunctionId (i format *&lt; funktionens program namn>*. Funktionen. *&lt; funktions namn>*)
-* BlobType ("BlockBlob" eller "PageBlob")
+* FunctionId (i formatet `<FUNCTION_APP_NAME>.Functions.<FUNCTION_NAME>` )
+* BlobType ( `BlockBlob` eller `PageBlob` )
 * ContainerName
 * BlobName
-* ETag (en BLOB versions identifierare, till exempel: "0x8D1DC6E70A277EF")
+* ETag (en BLOB-versions identifierare, till exempel: `0x8D1DC6E70A277EF` )
 
 ## <a name="concurrency-and-memory-usage"></a>Samtidighet och minnes användning
 

@@ -4,12 +4,12 @@ description: Lär dig hur du monterar en Azure Files volym för att spara tillst
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 5ca619ac3ae93ee238d019b64ecccc975b7c8e3b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: afebdcdc9d9c5852d7fe66ed06ac457c1dbb0afb
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746860"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881811"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Montera en Azure-filresurs i Azure Container Instances
 
@@ -20,6 +20,9 @@ Som standard är Azure Container Instances tillståndslösa. Om containern krasc
 >
 > Montering av en Azure Files resurs till en behållar instans liknar en Docker [BIND-montering](https://docs.docker.com/storage/bind-mounts/). Tänk på att om du monterar en resurs i en behållar katalog där det finns filer eller kataloger döljs dessa filer eller kataloger av monteringen och är inte tillgängliga när behållaren körs.
 >
+
+> [!IMPORTANT]
+> Om du distribuerar behållar grupper till en Azure-Virtual Network måste du lägga till en [tjänst slut punkt](../virtual-network/virtual-network-service-endpoints-overview.md) till ditt Azure Storage-konto.
 
 ## <a name="create-an-azure-file-share"></a>Skapa en Azure-filresurs
 
@@ -235,7 +238,7 @@ az deployment group create --resource-group myResourceGroup --template-file depl
 
 Om du vill montera flera volymer i en behållar instans måste du distribuera med hjälp av en [Azure Resource Manager mall](/azure/templates/microsoft.containerinstance/containergroups), en yaml-fil eller en annan programmerings metod. Om du vill använda en mall eller en YAML-fil anger du resurs informationen och definierar volymerna genom att fylla `volumes` i matrisen i `properties` avsnittet i filen. 
 
-Om du till exempel har skapat två Azure Files-resurser med namnet *Share1* och *share2* i lagrings kontot *myStorageAccount* , `volumes` skulle matrisen i en Resource Manager-mall se ut ungefär så här:
+Om du till exempel har skapat två Azure Files-resurser med namnet *Share1* och *share2* i lagrings kontot *myStorageAccount*, `volumes` skulle matrisen i en Resource Manager-mall se ut ungefär så här:
 
 ```JSON
 "volumes": [{
@@ -256,7 +259,7 @@ Om du till exempel har skapat två Azure Files-resurser med namnet *Share1* och 
 }]
 ```
 
-Därefter, för varje behållare i den behållar grupp där du vill montera volymerna, fyller du `volumeMounts` i matrisen i `properties` avsnittet i behållar definitionen. Detta monterar till exempel de två volymerna, *myvolume1* och *myvolume2* , som tidigare definierats:
+Därefter, för varje behållare i den behållar grupp där du vill montera volymerna, fyller du `volumeMounts` i matrisen i `properties` avsnittet i behållar definitionen. Detta monterar till exempel de två volymerna, *myvolume1* och *myvolume2*, som tidigare definierats:
 
 ```JSON
 "volumeMounts": [{

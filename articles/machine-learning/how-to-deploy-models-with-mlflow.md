@@ -11,27 +11,27 @@ ms.reviewer: nibaccam
 ms.date: 12/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 1159a6cfda6b877f04573c85fa437ce3bff81af1
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: b905b050752e2a6b7acd11e82420c0b0203dfcd1
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97761804"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882202"
 ---
 # <a name="deploy-mlflow-models-with-azure-machine-learning-preview"></a>Distribuera MLflow-modeller med Azure Machine Learning (för hands version)
 
-I den här artikeln lär du dig hur du distribuerar din MLflow-modell som en Azure Machine Learning-webb tjänst, så att du kan använda och använda Azure Machine Learnings funktioner för modell hantering och data identifiering i dina produktions modeller.
+I den här artikeln lär du dig hur du distribuerar din [MLflow](https://www.mlflow.org) -modell som en Azure Machine Learning-webb tjänst, så att du kan använda och använda Azure Machine learnings funktioner för modell hantering och data identifiering i dina produktions modeller.
 
 Azure Machine Learning erbjuder distributions konfigurationer för:
 * Azure Container Instance (ACI) som är ett lämpligt alternativ för en snabb distribution av utveckling och testning.
 * Azure Kubernetes service (AKS) som rekommenderas för skalbara produktions distributioner.
 
-[MLflow](https://www.mlflow.org) är ett bibliotek med öppen källkod för hantering av livs cykeln för maskin inlärnings experiment. Integrationen med Azure Machine Learning gör att du kan utöka den här hanteringen utanför modell utbildnings fasen till distributions fasen i produktions modellen.
+MLflow är ett bibliotek med öppen källkod för hantering av livs cykeln för maskin inlärnings experiment. Integrationen med Azure Machine Learning gör att du kan utöka den här hanteringen utanför modell utbildnings fasen till distributions fasen i produktions modellen.
 
 >[!NOTE]
 > Som ett bibliotek med öppen källkod ändras MLflow ofta. De funktioner som gjorts tillgängliga via Azure Machine Learning-och MLflow-integreringen bör därför betraktas som en för hands version och stöds inte fullt ut av Microsoft.
 
-Följande diagram visar att med MLflow-distributions-API: et kan du distribuera din befintliga MLflow-modell som en Azure Machine Learning webb tjänst, trots deras ramverk – PyTorch, Tensorflow, scikit – lära, ONNX och så vidare, och hantera dina produktions modeller i din arbets yta.
+Följande diagram visar att med MLflow distributions-API och Azure Machine Learning kan du distribuera modeller som skapats med populära ramverk, t. ex. PyTorch, Tensorflow, scikit-lär, osv., som Azure Machine Learning webb tjänster och hantera dem i din arbets yta. 
 
 ![ distribuera mlflow-modeller med Azure Machine Learning](./media/how-to-use-mlflow/mlflow-diagram-deploy.png)
 
@@ -40,9 +40,11 @@ Följande diagram visar att med MLflow-distributions-API: et kan du distribuera 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* [Konfigurera MLflow tracking URI för att ansluta Azure Machine Learning](how-to-use-mlflow.md).
+* En Machine Learning-modell. Om du inte har en tränad modell hittar du det exempel på bärbara datorer som bäst passar ditt beräknings scenario i [lagrings platsen](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/using-mlflow) och följer anvisningarna. 
+* [Konfigurera MLflow tracking URI för att ansluta Azure Machine Learning](how-to-use-mlflow.md#track-local-runs).
 * Installera paketet `azureml-mlflow`. 
     * Det här paketet kommer automatiskt in i `azureml-core` [Azure Machine Learning python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py), som ger anslutningen för MLflow åtkomst till din arbets yta.
+* Se vilka [åtkomst behörigheter du behöver för att utföra dina MLflow-åtgärder med din arbets yta](how-to-assign-roles.md#mlflow-operations). 
 
 ## <a name="deploy-to-aci"></a>Distribuera till ACI
 
@@ -140,7 +142,7 @@ Om du inte planerar att använda den distribuerade webb tjänsten använder `ser
 
 ## <a name="example-notebooks"></a>Exempelnotebook-filer
 
-[MLflow med Azure ml-anteckningsböcker](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/track-and-monitor-experiments/using-mlflow) demonstrerar och utökar begrepp som presenteras i den här artikeln.
+[MLflow med Azure Machine Learning antecknings böcker](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/using-mlflow) visar och utökar begrepp som presenteras i den här artikeln.
 
 > [!NOTE]
 > En community-driven databas med exempel som använder mlflow finns på https://github.com/Azure/azureml-examples .
@@ -150,3 +152,4 @@ Om du inte planerar att använda den distribuerade webb tjänsten använder `ser
 * [Hantera dina modeller](concept-model-management-and-deployment.md).
 * Övervaka dina produktions modeller för [data avvikelser](./how-to-enable-data-collection.md).
 * [Spåra Azure Databricks körs med MLflow](how-to-use-mlflow-azure-databricks.md).
+

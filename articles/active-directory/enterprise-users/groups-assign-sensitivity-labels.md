@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b40171d87ccffa7c5c4fb72d2e79af015b1d16f
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: a78cf9b7d78078030ac0db8bd2f0fddb93a8dda4
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859971"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881404"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Tilldela känslighets etiketter till Microsoft 365 grupper i Azure Active Directory
 
@@ -48,7 +48,7 @@ Om du vill tillämpa publicerade etiketter på grupper måste du först aktivera
     ```
 
     > [!NOTE]
-    > Om inga grupp inställningar har skapats för den här Azure AD-organisationen måste du först skapa inställningarna. Följ stegen i [Azure Active Directory-cmdletar för att konfigurera grupp inställningar](../enterprise-users/groups-settings-cmdlets.md) för att skapa grupp inställningar för den här Azure AD-organisationen.
+    > Om inga grupp inställningar har skapats för den här Azure AD-organisationen får du ett fel i ovanstående cmdlet som läser "det går inte att binda argumentet till parametern" ID "eftersom det är null". I det här fallet måste du först skapa inställningarna. Följ stegen i [Azure Active Directory-cmdletar för att konfigurera grupp inställningar](../enterprise-users/groups-settings-cmdlets.md) för att skapa grupp inställningar för den här Azure AD-organisationen.
 
 1. Sedan visar du de aktuella grupp inställningarna.
 

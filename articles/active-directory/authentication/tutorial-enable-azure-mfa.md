@@ -10,18 +10,18 @@ ms.author: justinha
 author: justinha
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32228e90e3cfc064cd5be9cd0655f321ab3e2809
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: f2e8bf2ccbf7a53563013c7ba653a6f6e8905337
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741158"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881318"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-ad-multi-factor-authentication"></a>Självstudie: säkra användar inloggnings händelser med Azure AD Multi-Factor Authentication
 
 Multi-Factor Authentication (MFA) är en process där en användare uppmanas att logga in för ytterligare identifierings former. Den här frågan kan vara att ange en kod på sin mobil telefon eller för att tillhandahålla en finger avsökning. När du behöver en andra form av autentisering, ökar säkerheten eftersom den här ytterligare faktorn inte är något som är lätt för en angripare att hämta eller duplicera.
 
-Azure AD Multi-Factor Authentication-och principer för villkorlig åtkomst ger flexibiliteten att aktivera MFA för användare under särskilda inloggnings händelser.
+Azure AD Multi-Factor Authentication-och principer för villkorlig åtkomst ger flexibiliteten att aktivera MFA för användare under särskilda inloggnings händelser. Här är en [video om hur du konfigurerar och framtvingar Multi-Factor Authentication i din klient](https://www.youtube.com/watch?v=qNndxl7gqVM) (**rekommenderas**)
 
 > [!IMPORTANT]
 > I den här självstudien visas en administratör för att aktivera Azure AD Multi-Factor Authentication.
