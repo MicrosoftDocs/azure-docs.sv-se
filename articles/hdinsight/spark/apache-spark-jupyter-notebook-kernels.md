@@ -1,6 +1,6 @@
 ---
-title: Kernels för Jupyter Notebook på Spark-kluster i Azure HDInsight
-description: Lär dig mer om PySpark-, PySpark3-och Spark-kernels för Jupyter Notebook som är tillgänglig med Spark-kluster på Azure HDInsight.
+title: Kernels för Jupyter Notebook i Spark-kluster i Azure HDInsight
+description: Lär dig mer om PySpark-, PySpark3-och Spark-kernelerna för Jupyter Notebook tillgängliga med Spark-kluster på Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 8c3993d8208a9a9e2ab54be44d88de0b20a2e586
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1139ce2358d5e5b3b52376892524e7ee0dd5611
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084723"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822241"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Kernels för Jupyter Notebook på Apache Spark kluster i Azure HDInsight
 
-HDInsight Spark-kluster tillhandahåller kärnor som du kan använda med Jupyter Notebook på [Apache Spark](./apache-spark-overview.md) för att testa dina program. En kernel är ett program som kör och tolkar koden. De tre kernelerna är:
+HDInsight Spark-kluster tillhandahåller kernels som du kan använda med Jupyter Notebook på [Apache Spark](./apache-spark-overview.md) för att testa dina program. En kernel är ett program som kör och tolkar koden. De tre kernelerna är:
 
 - **PySpark** – för program som skrivits i Python2.
 - **PySpark3** – för program som skrivits i python3.
@@ -25,34 +25,34 @@ HDInsight Spark-kluster tillhandahåller kärnor som du kan använda med Jupyter
 
 I den här artikeln får du lära dig hur du använder dessa kärnor och fördelarna med att använda dem.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Ett Apache Spark kluster i HDInsight. Anvisningar finns i [Skapa Apache Spark-kluster i Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
-## <a name="create-a-jupyter-notebook-on-spark-hdinsight"></a>Skapa en Jupyter-anteckningsbok på Spark HDInsight
+## <a name="create-a-jupyter-notebook-on-spark-hdinsight"></a>Skapa en Jupyter Notebook på Spark HDInsight
 
 1. Välj ditt Spark-kluster från [Azure Portal](https://portal.azure.com/).  Se [lista och Visa kluster](../hdinsight-administer-use-portal-linux.md#showClusters) för instruktioner. Vyn **Översikt** öppnas.
 
-2. I vyn **Översikt** väljer du **Jupyter Notebook**i rutan **kluster instrument paneler** . Ange administratörsautentiseringsuppgifterna för klustret om du uppmanas att göra det.
+2. I vyn **Översikt** väljer du **Jupyter Notebook** i rutan **kluster instrument paneler** . Ange administratörsautentiseringsuppgifterna för klustret om du uppmanas att göra det.
 
-    ![Jupyter Notebook på Apache Spark](./media/apache-spark-jupyter-notebook-kernels/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Jupyter Notebook på Spark")
+    ![Jupyter Notebook på Apache Spark](./media/apache-spark-jupyter-notebook-kernels/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Jupyter Notebook i Spark")
   
    > [!NOTE]  
    > Du kan också komma åt Jupyter Notebook i Spark-kluster genom att öppna följande URL i webbläsaren. Ersätt **CLUSTERNAME** med namnet på klustret:
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-3. Välj **ny**och välj sedan antingen **Pyspark**, **PySpark3**eller **Spark** för att skapa en antecknings bok. Använd Spark-kärnan för Scala-program, PySpark-kernel för Python2-program och PySpark3-kernel för python3-program.
+3. Välj **ny** och välj sedan antingen **Pyspark**, **PySpark3** eller **Spark** för att skapa en antecknings bok. Använd Spark-kärnan för Scala-program, PySpark-kernel för Python2-program och PySpark3-kernel för python3-program.
 
-    ![Kernels för Jupyter Notebook på Spark](./media/apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png "Kernels för Jupyter Notebook på Spark")
+    ![Kernels för Jupyter Notebook i Spark](./media/apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png "Kernels för Jupyter Notebook i Spark")
 
 4. En antecknings bok öppnas med den kernel som du har valt.
 
 ## <a name="benefits-of-using-the-kernels"></a>Fördelar med att använda kärnorna
 
-Här är några av fördelarna med att använda de nya kernelerna med Jupyter Notebook på Spark HDInsight-kluster.
+Här är några av fördelarna med att använda nya kärnor med Jupyter Notebook i Spark HDInsight-kluster.
 
-- **Förinställda kontexter**. Med  **PySpark**, **PySpark3**eller **Spark** -kärnan behöver du inte ange Spark-eller Hive-kontexterna explicit innan du börjar arbeta med dina program. Dessa kontexter är tillgängliga som standard. Dessa kontexter är:
+- **Förinställda kontexter**. Med  **PySpark**, **PySpark3** eller **Spark** -kärnan behöver du inte ange Spark-eller Hive-kontexterna explicit innan du börjar arbeta med dina program. Dessa kontexter är tillgängliga som standard. Dessa kontexter är:
 
   - **SC** – för Spark-kontext
   - **sqlContext** – för Hive-kontext

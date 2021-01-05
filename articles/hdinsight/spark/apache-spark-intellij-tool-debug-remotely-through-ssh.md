@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/23/2019
-ms.openlocfilehash: 421993ac4aaba551b6fcbd002783d44559ce377d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7a2044e9bb0110eda666d12e29a715547381e2be
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995343"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822343"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Felsöka Apache Spark program i ett HDInsight-kluster med Azure Toolkit for IntelliJ via SSH
 
@@ -65,13 +65,13 @@ Den här artikeln innehåller steg-för-steg-anvisningar om hur du använder HDI
 
 1. Välj **Slutför**. Det kan ta några minuter innan projektet blir tillgängligt. Se det nedre högra hörnet för att fortsätta.
 
-1. Expandera ditt projekt och gå till **src**  >  **huvud** exemplet för src-  >  **Scala**  >  **sample**. Dubbelklicka på **SparkCore_WasbIOTest**.
+1. Expandera ditt projekt och gå till   >  **huvud** exemplet för src-  >  **Scala**  >  . Dubbelklicka på **SparkCore_WasbIOTest**.
 
 ## <a name="perform-local-run"></a>Utför lokal körning
 
 1. Från **SparkCore_WasbIOTest** -skriptet högerklickar du på skript redigeraren och väljer sedan alternativet **Kör SparkCore_WasbIOTest** för att utföra lokal körning.
 
-1. När den lokala körningen är klar kan du se utdatafilen Spara till din aktuella standard för Project Explorer- **data**  >  **__default__**.
+1. När den lokala körningen är klar kan du se utdatafilen Spara till din aktuella standard för Project Explorer- **data**  >  ****.
 
     ![IntelliJ-projektets lokala körnings resultat](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-local-run-result.png)
 
@@ -178,7 +178,7 @@ Den här artikeln innehåller steg-för-steg-anvisningar om hur du använder HDI
 * [Använd Azure Toolkit for IntelliJ för att felsöka Apache Spark program via VPN](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Skapa Apache Spark-program med hjälp av HDInsight-verktyg i Azure Toolkit for Eclipse](./apache-spark-eclipse-tool-plugin.md)
 * [Använda Apache Zeppelin-anteckningsböcker med ett Apache Spark-kluster i HDInsight](apache-spark-zeppelin-notebook.md)
-* [Kernels tillgängligt för Jupyter Notebook i Apache Spark-klustret för HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Kernels som är tillgängliga för Jupyter Notebook i Apache Spark-klustret för HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Använda externa paket med Jupyter-anteckningsböcker](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Installera Jupyter på datorn och ansluta till ett HDInsight Spark-kluster](apache-spark-jupyter-notebook-install-locally.md)
 

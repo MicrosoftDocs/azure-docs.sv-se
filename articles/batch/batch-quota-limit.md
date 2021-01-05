@@ -2,14 +2,14 @@
 title: Kvoter och begränsningar för tjänsten
 description: Lär dig mer om standard Azure Batch kvoter, gränser och begränsningar samt hur du begär kvot ökningar
 ms.topic: conceptual
-ms.date: 12/16/2020
+ms.date: 12/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9f529d388cb883f635b6225801af5ce41b8c997a
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 11c9ad1e916ad7e64b59cc13c0967d2b9daed4aa
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614530"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814643"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Kvoter och begränsningar för Batch-tjänsten
 
@@ -33,7 +33,7 @@ Observera också att kvoter inte är garanterade värden. Kvoter kan variera ber
 
 ### <a name="cores-quotas-in-batch-service-mode"></a>Kärn kvoter i batch service-läge
 
-Genomförandet av dedikerade kärn kvoter förbättras, med de ändringar som görs tillgängliga i faser och slutförda för alla batch-konton i slutet av december 2020.
+Genomförandet av dedikerade kärn kvoter förbättras, med de ändringar som görs tillgängliga i faser och slutförda för alla batch-konton i slutet av januari 2021.
 
 Det finns kärn kvoter för varje VM-serie som stöds av batch och visas på sidan **kvoter** i portalen. Kvot gränser för VM-serien kan uppdateras med en support förfrågan enligt beskrivningen nedan.
 
@@ -70,7 +70,7 @@ Storleks gränser för pooler anges av batch-tjänsten. Till skillnad från [res
 
 ## <a name="other-limits"></a>Andra gränser
 
-Ytterligare begränsningar som anges av batch-tjänsten. Till skillnad från [resurs kvoter](#resource-quotas)kan de här värdena inte ändras.
+Dessa ytterligare gränser anges av batch-tjänsten. Till skillnad från [resurs kvoter](#resource-quotas)kan de här värdena inte ändras.
 
 | **Resurs** | **Övre gräns** |
 | --- | --- |
@@ -80,6 +80,7 @@ Ytterligare begränsningar som anges av batch-tjänsten. Till skillnad från [re
 | Programpaket per pool | 10 |
 | Maximal varaktighet för aktivitet | 180 dagar<sup>1</sup> |
 | [Monteringar](virtual-file-mount.md) per Compute-nod | 10 |
+| Certifikat per pool | 12 |
 
 <sup>1</sup> den maximala livs längden för en aktivitet, från när den läggs till i jobbet till när den är klar, är 180 dagar. Slutförda uppgifter sparas i sju dagar; data för uppgifter som inte har slutförts inom den maximala livs längden är inte tillgängliga.
 
@@ -91,7 +92,7 @@ Så här visar du kvoter för batch-kontot i [Azure Portal](https://portal.azure
 1. Välj **kvoter** på menyn för batch-kontot.
 1. Visa de kvoter som för närvarande tillämpas på batch-kontot.
 
-:::image type="content" source="./media/batch-quota-limit/account-quota-portal.png" alt-text="Batch-konto-kvoter":::
+:::image type="content" source="./media/batch-quota-limit/account-quota-portal.png" alt-text="Skärm bild som visar kvoter för batch-konto i Azure Portal.":::
 
 ## <a name="increase-a-quota"></a>Öka en kvot
 
@@ -99,27 +100,27 @@ Du kan begära en kvot ökning för batch-kontot eller prenumerationen med hjäl
 
 1. Välj panelen **Hjälp + Support** på portalens instrument panel eller frågetecknet (**?**) i det övre högra hörnet i portalen.
 1. Välj **nya grundläggande support förfrågningar**  >  .
-1. I **grunderna**:
-   
+1. Gör så här i **Grundläggande**:
+
     1. **Typ**  >  av problem **Begränsningar för tjänster och prenumerationer (kvoter)**
-   
+
     1. Välj din prenumeration.
-   
+
     1. **Typ**  >  av kvot **Batch**
-      
+
        Välj **Nästa**.
-    
+
 1. I **Information**:
-      
+
     1. I **Ange information** anger du plats, kvot typ och batch-konto.
-    
-       ![Ökning av batch-kvot][quota_increase]
+
+       :::image type="content" source="media/batch-quota-limit/quota-increase.png" alt-text="Skärm bild av skärmen med kvot information när du begär en kvot ökning.":::
 
        Kvot typer är:
 
        * **Per batch-konto**  
          Värden som är specifikt för ett enda batch-konto, inklusive dedikerade och låg prioritets kärnor samt antal jobb och pooler.
-        
+
        * **Per region**  
          Värden som gäller för alla batch-konton i en region och innehåller antalet batch-konton per region per prenumeration.
 
@@ -130,11 +131,11 @@ Du kan begära en kvot ökning för batch-kontot eller prenumerationen med hjäl
        Välj **Nästa**.
 
 1. I **kontakt information**:
-   
+
     1. Välj en **önskad kontakt metod**.
-   
+
     1. Verifiera och ange nödvändig kontakt information.
-   
+
        Välj **skapa** för att skicka in support förfrågan.
 
 När du har skickat in ditt support ärende kontaktar Azure-supporten. Kvot begär Anden kan slutföras inom några minuter eller upp till två arbets dagar.

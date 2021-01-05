@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: c2e2daf6d8c9afa6ffef03b088ec9a7dc144cf47
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: f74307cc7f074788ac12712b3722dc0ad7fa71b6
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504941"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821153"
 ---
 # <a name="configure-apache-spark-settings"></a>Konfigurera Apache Spark-inställningar
 
@@ -130,7 +130,7 @@ Spark-kluster i HDInsight innehåller ett antal komponenter som standard. Var oc
 |Spark Core|Spark Core, Spark SQL, Spark streaming-API: er, GraphX och Apache Spark MLlib.|
 |Anaconda|En python Package Manager.|
 |Apache Livy|Apache Spark REST API som används för att skicka Fjärrjobb till ett HDInsight Spark-kluster.|
-|Jupyter-och Apache Zeppelin-anteckningsböcker|Interaktivt webbläsarbaserat användar gränssnitt för att interagera med ditt Spark-kluster.|
+|Jupyter Notebooks och Apache Zeppelin Notebooks|Interaktivt webbläsarbaserat användar gränssnitt för att interagera med ditt Spark-kluster.|
 |ODBC-drivrutin|Ansluter Spark-kluster i HDInsight till Business Intelligence (BI) verktyg som Microsoft Power BI och Tableau.|
 
 För program som körs i Jupyter Notebook använder du `%%configure` kommandot för att göra konfigurations ändringar inifrån själva antecknings boken. Dessa konfigurations ändringar kommer att tillämpas på Spark-jobben som körs från din antecknings bok instans. Gör sådana ändringar i början av programmet innan du kör den första kod cellen. Den ändrade konfigurationen tillämpas på livy-sessionen när den skapas.

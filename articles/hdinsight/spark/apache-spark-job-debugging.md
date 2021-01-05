@@ -8,20 +8,20 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 817b8976f5d014d990945816c2df1c7e8ed729fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 366c77ff94773163b71845b1ccbc6072c503734a
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084893"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822309"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Felsöka Apache Spark-jobb som körs i Azure HDInsight
 
 I den här artikeln får du lära dig att spåra och felsöka Apache Spark jobb som körs på HDInsight-kluster. Fel sökning med Apache Hadoop garn gränssnittet, Spark-ANVÄNDARGRÄNSSNITTET och Spark-historik servern. Du startar ett Spark-jobb med en bärbar dator som är tillgänglig med Spark-klustret, **Machine Learning: förutsägande analys av livsmedels inspektions data med MLLib**. Använd följande steg för att spåra ett program som du har skickat med någon annan metod, till exempel **Spark-Submit**.
 
-Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Ett Apache Spark-kluster i HDInsight. Anvisningar finns i [Skapa Apache Spark-kluster i Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
@@ -34,7 +34,7 @@ Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto]
     ![Azure Portal starta garn gränssnittet](./media/apache-spark-job-debugging/launch-apache-yarn-ui.png)
 
    > [!TIP]  
-   > Du kan också starta garn gränssnittet från Ambari-ANVÄNDARGRÄNSSNITTET. Starta Ambari-ANVÄNDARGRÄNSSNITTET genom att välja **Ambari Home** under **kluster instrument paneler**. Från Ambari-användargränssnittet navigerar du **YARN**till  >  **snabb länkar** för garn > Active Resource Manager-> **Resource Manager-användargränssnittet**.
+   > Du kan också starta garn gränssnittet från Ambari-ANVÄNDARGRÄNSSNITTET. Starta Ambari-ANVÄNDARGRÄNSSNITTET genom att välja **Ambari Home** under **kluster instrument paneler**. Från Ambari-användargränssnittet navigerar du till  >  **snabb länkar** för garn > Active Resource Manager-> **Resource Manager-användargränssnittet**.
 
 2. Eftersom du startade Spark-jobbet med Jupyter-anteckningsböcker har programmet namnet **remotesparkmagics** (namnet på alla program som startas från antecknings böckerna). Välj program-ID: t mot program namnet för att få mer information om jobbet. Den här åtgärden startar programvisningen.
 
@@ -93,12 +93,12 @@ I Spark-ANVÄNDARGRÄNSSNITTET kan du öka detalj nivån i Spark-jobben som har 
 
 När ett jobb har slutförts sparas informationen om jobbet på Spark-historik servern.
 
-1. Om du vill starta Spark-historik servern väljer du **Spark historik Server** under **kluster instrument paneler**på sidan **Översikt** .
+1. Om du vill starta Spark-historik servern väljer du **Spark historik Server** under **kluster instrument paneler** på sidan **Översikt** .
 
     ![Azure Portal starta Spark-historik Server](./media/apache-spark-job-debugging/launch-spark-history-server.png "Starta Spark-historik server1")
 
    > [!TIP]  
-   > Du kan också starta Spark-historik serverns användar gränssnitt från Ambari-ANVÄNDARGRÄNSSNITTET. Om du vill starta Ambari-ANVÄNDARGRÄNSSNITTET väljer du **Ambari start** under **kluster instrument paneler**på bladet översikt. I Ambari-användargränssnittet navigerar du till **Spark2**  >  **Quick Links**  >  **Spark2 History Server UI**.
+   > Du kan också starta Spark-historik serverns användar gränssnitt från Ambari-ANVÄNDARGRÄNSSNITTET. Om du vill starta Ambari-ANVÄNDARGRÄNSSNITTET väljer du **Ambari start** under **kluster instrument paneler** på bladet översikt. I Ambari-användargränssnittet navigerar du till **Spark2**  >  **Quick Links**  >  **Spark2 History Server UI**.
 
 2. Alla slutförda program visas. Välj ett program-ID för att öka detalj nivån i ett program för mer information.
 

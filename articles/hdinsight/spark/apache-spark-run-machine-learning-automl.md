@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/13/2019
-ms.openlocfilehash: 6e472c65897fa57cdb1e0b09d94c62913e268040
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3397c57f793c6994847786ff8247e5ccfa453ec0
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087481"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821255"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>Kör Azure Machine Learning arbets belastningar med automatiserad maskin inlärning på Apache Spark i HDInsight
 
@@ -24,7 +24,7 @@ Allmän själv studie kurs om automatisk maskin inlärning finns i [Självstudie
 Alla nya HDInsight-Spark-kluster levereras förinstallerade med AzureML-AutoML SDK.
 
 > [!Note]
-> Azure Machine Learning-paket installeras i python3 Conda-miljö. Den installerade Jupyter-anteckningsboken ska köras med PySpark3-kärnan.
+> Azure Machine Learning-paket installeras i python3 Conda-miljö. Den installerade Jupyter Notebook ska köras med PySpark3-kärnan.
 
 Du kan även använda Zeppelin-anteckningsböcker för att använda AutoML.
 

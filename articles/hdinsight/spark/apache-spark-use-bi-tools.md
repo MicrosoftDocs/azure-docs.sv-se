@@ -8,24 +8,24 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc,seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 4eb10298ac683c991835f86582d82fb952b314b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f56bb5e3ed8c953b67f1e88fc16846accaed995
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82195119"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821289"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Självstudie: Analysera Apache Spark-data med Power BI i HDInsight
 
 I den här självstudien får du lära dig hur du använder Microsoft Power BI för att visualisera data i ett Apache Spark kluster i Azure HDInsight.
 
-I den här guiden får du lära dig att:
+I de här självstudierna får du lära dig att
 > [!div class="checklist"]
 > * Visualisera Spark-data med Power BI
 
-Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Slutför artikeln [Självstudie: Läsa in data och köra frågor på ett Apache Spark-kluster i Azure HDInsight](./apache-spark-load-data-run-query.md).
 
@@ -37,7 +37,7 @@ Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto]
 
 Den [Jupyter Notebook](https://jupyter.org/)-anteckningsbok som du skapade i [föregående självstudie](apache-spark-load-data-run-query.md) innehåller kod för att skapa en `hvac`-tabell. Den här tabellen baseras på CSV-filen som är tillgänglig på alla HDInsight Spark-kluster på `\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv` . Följ stegen nedan för att verifiera datan.
 
-1. Klistra in följande kod från Jupyter-anteckningsboken och tryck sedan på **SKIFT+RETUR**. Koden kontrollerar att tabellerna finns.
+1. Klistra in följande kod från Jupyter Notebook och tryck sedan på **SKIFT + RETUR**. Koden kontrollerar att tabellerna finns.
 
     ```PySpark
     %%sql
@@ -77,13 +77,13 @@ De första stegen i att arbeta med Spark är att ansluta till klustret i Power B
 
     ![Hämta data till Power BI Desktop från HDInsight Apache Spark](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "Hämta data till Power BI från Apache Spark BI")
 
-3. Ange `Spark` i sökrutan, välj **Azure HDInsight Spark**och välj sedan **Anslut**.
+3. Ange `Spark` i sökrutan, välj **Azure HDInsight Spark** och välj sedan **Anslut**.
 
     ![Hämta data till Power BI från Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "Hämta data till Power BI från Apache Spark BI")
 
 4. Ange din kluster-URL (i formuläret `mysparkcluster.azurehdinsight.net` ) i text rutan **Server** .
 
-5. Under **data anslutnings läge**väljer du **DirectQuery**. Välj sedan **OK**.
+5. Under **data anslutnings läge** väljer du **DirectQuery**. Välj sedan **OK**.
 
     Du kan använda valfritt dataanslutningsläge med Spark. Om du använder DirectQuery visas ändringarna i rapporter utan att hela datamängden uppdateras. Om du importerar data måste du uppdatera datamängden för att se ändringarna. Mer information om hur och när du ska använda DirectQuery finns i [Använda DirectQuery i Power BI](https://powerbi.microsoft.com/documentation/powerbi-desktop-directquery-about/).
 
@@ -149,7 +149,7 @@ Med Power BI-tjänsten kan du dela rapporter och instrumentpaneler i din organis
 
     ![Logga in på Spark-kluster](./media/apache-spark-use-bi-tools/apache-spark-bi-sign-in.png "Logga in på Spark-kluster")
 
-1. I det vänstra fönstret går du till **arbets ytor**  >  **Mina arbets ytans**  >  **rapporter**och väljer sedan **BuildingTemperature**.
+1. I det vänstra fönstret går du till **arbets ytor**  >  **Mina arbets ytans**  >  **rapporter** och väljer sedan **BuildingTemperature**.
 
     ![Rapport som visas under rapporter i vänster fönster](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "Rapport som visas under rapporter i vänster fönster")
 

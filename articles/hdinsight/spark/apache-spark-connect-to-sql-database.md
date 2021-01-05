@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: d979a68f4e3aa0071fb7654647610af1fbf95e90
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 97c326bd1d2f61ba3fb9d6e381f5a8711bd0ca1d
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023984"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821204"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Använd HDInsight Spark-kluster för att läsa och skriva data till Azure SQL Database
 
@@ -38,18 +38,18 @@ Börja med att skapa en Jupyter Notebook som är associerad med Spark-klustret. 
 1. Öppna klustret från [Azure Portal](https://portal.azure.com/).
 1. Välj **Jupyter Notebook** under **kluster instrument paneler** på höger sida.  Om du inte ser **kluster instrument paneler** väljer du **Översikt** på den vänstra menyn. Ange administratörsautentiseringsuppgifterna för klustret om du uppmanas att göra det.
 
-    ![Jupyter Notebook på Apache Spark](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Jupyter Notebook på Spark")
+    ![Jupyter Notebook på Apache Spark](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Jupyter Notebook i Spark")
 
    > [!NOTE]  
    > Du kan också komma åt Jupyter Notebook i Spark-kluster genom att öppna följande URL i webbläsaren. Ersätt **CLUSTERNAME** med namnet på klustret:
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-1. I den Jupyter Notebook, i det övre högra hörnet, klickar du på **nytt** och sedan på **Spark** för att skapa en Scala-anteckningsbok. Jupyter-anteckningsböcker i HDInsight Spark-kluster tillhandahåller även **PySpark** -kärnan för Python2-program och **PySpark3** -kärnan för python3-program. I den här artikeln skapar vi en Scala Notebook.
+1. I Jupyter Notebook, i det övre högra hörnet, klickar du på **nytt** och sedan på **Spark** för att skapa en Scala Notebook. Jupyter-anteckningsböcker i HDInsight Spark-kluster tillhandahåller även **PySpark** -kärnan för Python2-program och **PySpark3** -kärnan för python3-program. I den här artikeln skapar vi en Scala Notebook.
 
-    ![Kernels för Jupyter Notebook på Spark](./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png "Kernels för Jupyter Notebook på Spark")
+    ![Kernels för Jupyter Notebook i Spark](./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png "Kernels för Jupyter Notebook i Spark")
 
-    Mer information om dessa kernlar finns i [Använda kernlar i Jupyter-anteckningsböcker med Apache Spark-kluster i HDInsight](apache-spark-jupyter-notebook-kernels.md).
+    Mer information om kernelerna finns i [använda Jupyter Notebook kernels med Apache Spark kluster i HDInsight](apache-spark-jupyter-notebook-kernels.md).
 
    > [!NOTE]  
    > I den här artikeln använder vi en spark-kernel (Scala) eftersom strömning av data från Spark till SQL Database bara stöds i Scala och Java. Även om du kan läsa från och skriva till SQL kan du göra det med hjälp av python, för konsekvens i den här artikeln använder vi Scala för alla tre åtgärderna.
@@ -64,7 +64,7 @@ Nu kan du börja skapa ditt program.
 
 I det här avsnittet ska du läsa data från en tabell (till exempel **SalesLT. address**) som finns i AdventureWorks-databasen.
 
-1. I en ny Jupyter-anteckningsbok, i en kod cell, klistrar du in följande kodfragment och ersätter plats hållarna värden med värdena för din databas.
+1. I en kod cell i en ny Jupyter Notebook klistrar du in följande kodfragment och ersätter plats hållar värden med värdena för din databas.
 
     ```scala
     // Declare the values for your database
@@ -121,7 +121,7 @@ I det här avsnittet ska du läsa data från en tabell (till exempel **SalesLT. 
 
 I det här avsnittet använder vi en exempel-CSV-fil som är tillgänglig i klustret för att skapa en tabell i databasen och fylla den med data. Exempel-CSV-filen (**HVAC.csv**) är tillgänglig i alla HDInsight-kluster på `HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv` .
 
-1. I en ny Jupyter-anteckningsbok, i en kod cell, klistrar du in följande kodfragment och ersätter plats hållarna värden med värdena för din databas.
+1. I en kod cell i en ny Jupyter Notebook klistrar du in följande kodfragment och ersätter plats hållar värden med värdena för din databas.
 
     ```scala
     // Declare the values for your database
@@ -192,7 +192,7 @@ I det här avsnittet strömmar vi data till den `hvactable` som du skapade i fö
     TRUNCATE TABLE [dbo].[hvactable]
     ```
 
-1. Skapa en ny Jupyter-anteckningsbok i HDInsight Spark-klustret. Klistra in följande kodfragment i en Code-cell och tryck sedan på **SKIFT + RETUR**:
+1. Skapa en ny Jupyter Notebook på HDInsight Spark-klustret. Klistra in följande kodfragment i en Code-cell och tryck sedan på **SKIFT + RETUR**:
 
     ```scala
     import org.apache.spark.sql._

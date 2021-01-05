@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/08/2018
 ms.author: genli
-ms.openlocfilehash: 49f3f44c7de8c700d0093c5eb6f166a1dffb34a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf19a6f77a87f2424f9e7b889e48119d57d1e2e5
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087256"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97820990"
 ---
 #  <a name="cannot-remote-desktop-to-azure-virtual-machines-because-of-static-ip"></a>Det går inte att fjärr skrivbord till Azure Virtual Machines på grund av statisk IP
 
@@ -63,13 +63,13 @@ Lös problemet genom att använda seriell kontroll för att aktivera DHCP eller 
 3. Om DHCP är inaktive rad återställer du konfigurationen av nätverks gränssnittet för att använda DHCP:
 
     ```console
-    netsh interface ip set address name="<NIC Name>" source=dhc
+    netsh interface ip set address name="<NIC Name>" source=dhcp
     ```
 
     Om du till exempel arbetar med gränssnittet "Ethernet 2" kör du följande kommando:
 
     ```console
-    netsh interface ip set address name="Ethernet 2" source=dhc
+    netsh interface ip set address name="Ethernet 2" source=dhcp
     ```
 
 4. Fråga IP-konfigurationen igen för att se till att nätverks gränssnittet nu är rätt konfigurerat. Den nya IP-adressen ska matcha den som tillhandahålls av Azure.

@@ -5,17 +5,18 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 11/16/2020
+ms.date: 12/30/2020
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: c9dd39ffa68d8261f5c5d301d4c351c52b3f27c1
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 922ec6c4b579a657e7ee5e872148f8126ce175e2
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654600"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822292"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Felsöka Azure Data Factory
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Den här artikeln utforskar vanliga fel söknings metoder för externa kontroll aktiviteter i Azure Data Factory.
@@ -440,7 +441,7 @@ Följande tabell gäller för U-SQL.
 
 - **Rekommendation**: kontrol lera att slut punkten som du försöker trycka på svarar på begär Anden. Du kan använda verktyg som Fiddler/Postman.
 
-## <a name="custom"></a>Anpassat
+## <a name="custom"></a>Anpassad
 
 Följande tabell gäller för Azure Batch.
  
@@ -498,7 +499,7 @@ Följande tabell gäller för Azure Batch.
 
 - **Meddelande**: `There are duplicate files in the resource folder.`
 
-- **Orsak**: flera filer med samma namn finns i olika undermappar för folderPath.
+- **Orsak**: flera filer med samma namn finns i olika undermappar i folderPath.
 
 - **Rekommendation**: sammanslagen mappstruktur för anpassade aktiviteter under folderPath. Om du behöver bevara mappstrukturen zip-filerna och extrahera dem i Azure Batch med hjälp av ett zippa-kommando.
    
@@ -545,7 +546,6 @@ Följande tabell gäller för Azure Batch.
 - **Orsak**: det uppstod ett internt fel vid försök att läsa tjänstens huvud namn eller instansiera MSI-autentiseringen.
 
 - **Rekommendation**: Överväg att tillhandahålla ett huvud namn för tjänsten som har behörighet att skapa ett HDInsight-kluster i den angivna prenumerationen och försök igen. Kontrol lera att [hanterade identiteter är korrekt](../hdinsight/hdinsight-managed-identities.md)konfigurerade.
-
 
 ### <a name="error-code-2300"></a>Felkod: 2300
 
@@ -952,6 +952,16 @@ Följande tabell gäller för Azure Batch.
 
 - **Rekommendation**: tillhandahåll ett Azure Blob Storage-konto som ett ytterligare lagrings utrymme för en länkad HDInsight-tjänst på begäran.
 
+### <a name="ssl-error-when-adf-linked-service-using-hdinsight-esp-cluster"></a>SSL-fel vid länkad ADF-tjänst med HDInsight ESP-kluster
+
+- **Meddelande**: `Failed to connect to HDInsight cluster: 'ERROR [HY000] [Microsoft][DriverSupport] (1100) SSL certificate verification failed because the certificate is missing or incorrect.`
+
+- **Orsak**: problemet är förmodligen relaterat till system Trust Store.
+
+- **Lösning**: du kan gå till sökvägen **Microsoft integration RUNTIME\4.0\SHARED\ODBC Drivers\Microsoft Hive ODBC Driver\lib** och öppna DriverConfiguration64.exe för att ändra inställningen.
+
+    ![Avmarkera Använd system förtroende lager](./media/connector-troubleshoot-guide/system-trust-store-setting.png)
+
 ## <a name="web-activity"></a>Webbaktivitet
 
 ### <a name="error-code-2128"></a>Felkod: 2128
@@ -1015,7 +1025,7 @@ När du observerar att aktiviteten körs mycket längre än vad som händer i di
 
 **Fel meddelande:**`The payload including configurations on activity/dataSet/linked service is too large. Please check if you have settings with very large value and try to reduce its size.`
 
-**Orsak:** Nytto lasten för varje aktivitets körning omfattar aktivitets konfigurationen, de associerade data uppsättningarna och de länkade tjänst (s)-konfigurationerna, och en liten del av system egenskaper som genereras per aktivitets typ. Begränsningen av denna nytto Last storlek är 896KB som anges i avsnittet [Data Factory gränser](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) .
+**Orsak:** Nytto lasten för varje aktivitets körning omfattar aktivitets konfigurationen, de associerade data uppsättningarna och de länkade tjänst (s)-konfigurationerna om några, och en liten del av system egenskaperna som genereras per aktivitets typ. Begränsningen av denna nytto Last storlek är 896 KB som anges i avsnittet [Data Factory gränser](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) .
 
 **Rekommendation:** Du nådde förmodligen den här gränsen eftersom du skickar in en eller flera stora parameter värden från överordnad aktivitet eller externt, särskilt om du överför faktiska data mellan aktiviteter i kontroll flödet. Kontrol lera om du kan minska storleken på stora parameter värden eller finjustera din pipeline-logik för att undvika att överföra sådana värden mellan aktiviteter och hantera dem i aktiviteten i stället.
 

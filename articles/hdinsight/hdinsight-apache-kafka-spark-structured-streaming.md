@@ -1,6 +1,6 @@
 ---
 title: 'Självstudie: Apache Spark streaming & Apache Kafka – Azure HDInsight'
-description: Lär dig använda Apache Spark-strömning till att hämta data till eller från Apache Kafka. I den här självstudien strömmas data med hjälp av en Jupyter Notebook från Apache Spark på HDInsight.
+description: Lär dig använda Apache Spark-strömning till att hämta data till eller från Apache Kafka. I den här självstudien strömmar du data med hjälp av en Jupyter Notebook från Spark på HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,seodec18,seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: 8aa7401a2ee7a0d87736e6b18fc814f983e2afa0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9af0349326cf82ed9d050c367b6ed784c9ea9ce9
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82184205"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821136"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Självstudie: Använda Apache Spark Structured Streaming med Apache Kafka i HDInsight
 
@@ -21,7 +21,7 @@ Den här självstudien visar hur du använder [Apache Spark Structured Streaming
 
 Spark-strukturerad strömning är en data Ströms bearbetnings motor som bygger på Spark SQL. Med den kan du uttrycka strömmande beräkningar på samma sätt som batchberäkningar av statiska data.  
 
-I den här guiden får du lära dig att:
+I de här självstudierna får du lära dig att
 
 > [!div class="checklist"]
 > * Använd en Azure Resource Manager mall för att skapa kluster
@@ -29,7 +29,7 @@ I den här guiden får du lära dig att:
 
 När du är klar med stegen i det här dokumentet måste du komma ihåg att ta bort klustren för att undvika överskotts kostnader.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * JQ, en JSON-processor med kommando rad.  Se [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) .
 
@@ -140,11 +140,11 @@ Om du vill skapa ett Azure Virtual Network och sedan skapa Kafka- och Spark-klus
 
 2. Använd följande information för att fylla i posterna i avsnittet **Anpassad mall**:
 
-    | Inställningen | Värde |
+    | Inställning | Värde |
     | --- | --- |
     | Prenumeration | Din Azure-prenumeration |
     | Resursgrupp | Resursgruppen som innehåller resurserna. |
-    | Location | Azure-regionen som resurserna skapas i. |
+    | Plats | Azure-regionen som resurserna skapas i. |
     | Apache Spark-klusternamn | Namnet på Apache Spark-klustret. De första sex tecknen får inte vara samma som Kafka-klusternamnet. |
     | Kafka-klusternamn | Namnet på Kafka-klustret. De första sex tecknen får inte vara samma som Spark-klusternamnet. |
     | Användarnamn för klusterinloggning | Ett administratörsanvändarnamn för klustren. |
@@ -154,7 +154,7 @@ Om du vill skapa ett Azure Virtual Network och sedan skapa Kafka- och Spark-klus
 
     ![Skärmbild av den anpassade mallen](./media/hdinsight-apache-kafka-spark-structured-streaming/spark-kafka-template.png)
 
-3. Läs de **allmänna**villkoren och välj sedan **Jag godkänner villkoren som anges ovan**.
+3. Läs de **allmänna** villkoren och välj sedan **Jag godkänner villkoren som anges ovan**.
 
 4. Välj **Köp**.
 

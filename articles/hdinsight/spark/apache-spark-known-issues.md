@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1dbf6478a62675c8b514298007a7663239d8f7cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65163225853037ac4cb97a02c0bdaf554b509fb1
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084650"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822207"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>Kända problem för Apache Spark kluster i HDInsight
 
@@ -81,7 +81,7 @@ Nedan följer några kända problem som rör Jupyter-anteckningsböcker.
 
 ### <a name="notebooks-with-non-ascii-characters-in-filenames"></a>Antecknings böcker med icke-ASCII-tecken i fil namn
 
-Använd inte icke-ASCII-tecken i Jupyter Notebook-filnamn. Om du försöker ladda upp en fil via Jupyter-ANVÄNDARGRÄNSSNITTET, som har ett fil namn som inte är ASCII, Miss lyckas det utan något fel meddelande. Jupyter tillåter inte att du laddar upp filen, men det returnerar inte något synligt fel.
+Använd inte icke-ASCII-tecken i Jupyter Notebook fil namn. Om du försöker ladda upp en fil via Jupyter-ANVÄNDARGRÄNSSNITTET, som har ett fil namn som inte är ASCII, Miss lyckas det utan något fel meddelande. Jupyter tillåter inte att du laddar upp filen, men det returnerar inte något synligt fel.
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>Fel vid inläsning av antecknings böcker med större storlekar
 
@@ -106,9 +106,9 @@ Den första kod instruktionen i Jupyter Notebook med Spark Magic kan ta mer än 
 
 Detta inträffar eftersom när den första kod cellen körs. I bakgrunden kommer detta att initiera sessionens konfiguration och Spark-, SQL-och Hive-kontexterna anges. När dessa kontexter har ställts in körs den första instruktionen och detta ger intryck av att instruktionen tog lång tid att slutföra.
 
-### <a name="jupyter-notebook-timeout-in-creating-the-session"></a>Tids gräns för Jupyter Notebook i skapandet av sessionen
+### <a name="jupyter-notebook-timeout-in-creating-the-session"></a>Jupyter Notebook tids gräns vid skapande av sessionen
 
-När Spark-klustret har slut på resurser, kommer Spark-och PySpark-kernelerna i antecknings boken för Jupyter att ta längre tid att försöka skapa sessionen.
+När Spark-klustret har slut på resurser, kommer Spark-och PySpark-kernelerna i Jupyter Notebook att försöka skapa sessionen.
 
 **Åtgärder**
 
@@ -140,7 +140,7 @@ När Spark-klustret har slut på resurser, kommer Spark-och PySpark-kernelerna i
 * [Använda HDInsight Tools-plugin för IntelliJ IDEA till att skapa och skicka Spark Scala-appar](apache-spark-intellij-tool-plugin.md)
 * [Använd HDInsight tools-plugin för IntelliJ-idé för att felsöka Apache Spark program via fjärr anslutning](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Använda Apache Zeppelin-anteckningsböcker med ett Apache Spark-kluster i HDInsight](apache-spark-zeppelin-notebook.md)
-* [Kernels tillgängliga för Jupyter Notebook i Apache Spark kluster för HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Kernels som är tillgängliga för Jupyter Notebook i Apache Spark-kluster för HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Använda externa paket med Jupyter-anteckningsböcker](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Installera Jupyter på datorn och ansluta till ett HDInsight Spark-kluster](apache-spark-jupyter-notebook-install-locally.md)
 

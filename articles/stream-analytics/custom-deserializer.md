@@ -6,37 +6,36 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
-ms.date: 05/06/2019
-ms.openlocfilehash: 1fffeec1434cb066487bf383589554edec2e6a86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/17/2020
+ms.openlocfilehash: 2353d15707fe215bfcab7912f2a9c598c4af7e49
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75443699"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822020"
 ---
 # <a name="tutorial-custom-net-deserializers-for-azure-stream-analytics"></a>Självstudie: anpassade .NET-deserialiserare för Azure Stream Analytics
 
 Azure Stream Analytics har [inbyggt stöd för tre data format](stream-analytics-parsing-json.md): JSON, CSV och Avro. Med anpassade .NET-deserialiserare kan du läsa data från andra format, till exempel [protokollets buffert](https://developers.google.com/protocol-buffers/), [obligations](https://github.com/Microsoft/bond) -och andra användardefinierade format för både moln-och Edge-jobb.
 
-Den här självstudien visar hur du skapar en anpassad .NET-deserialiserare för ett Azure Stream Analytics moln jobb med Visual Studio. 
+Den här självstudien visar hur du skapar en anpassad .NET-deserialiserare för ett Azure Stream Analytics moln jobb med Visual Studio. Information om hur du skapar .NET-deserialiserare i Visual Studio Code finns i [skapa .net-deserialiserare för Azure Stream Analytics jobb i Visual Studio Code](visual-studio-code-custom-deserializer.md).
 
-I den här guiden får du lära dig att:
+I de här självstudierna får du lära dig att
 
 > [!div class="checklist"]
 > * Skapa en anpassad deserialiserare för en Protocol-buffert.
 > * Skapa ett Azure Stream Analytics jobb i Visual Studio.
 > * Konfigurera Stream Analytics-jobbet så att det använder den anpassade deserialiseraren.
-> * Kör ditt Stream Analytics jobb lokalt för att testa den anpassade deserialiseraren.
+> * Kör ditt Stream Analytics jobb lokalt för att testa och felsöka den anpassade deserialiseraren.
 
-## <a name="prerequisites"></a>Krav
+
+## <a name="prerequisites"></a>Förutsättningar
 
 * Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Installera [Visual studio 2017](https://www.visualstudio.com/downloads/) eller [Visual Studio 2015](https://www.visualstudio.com/vs/older-downloads/). Versionerna Enterprise (Ultimate/Premium), Professional och Community stöds. Express-versionen stöds inte.
+* Installera [Visual studio 2019 (rekommenderas)](https://www.visualstudio.com/downloads/) eller [Visual Studio 2017](https://www.visualstudio.com/vs/older-downloads/). Versionerna Enterprise (Ultimate/Premium), Professional och Community stöds. Express-versionen stöds inte. 
 
-* [Installera Stream Analytics verktyg för Visual Studio](stream-analytics-tools-for-visual-studio-install.md) eller uppdatera till den senaste versionen. Följande versioner av Visual Studio stöds:
-   * Visual Studio 2015
-   * Visual Studio 2017
+* [Installera Stream Analytics verktyg för Visual Studio](stream-analytics-tools-for-visual-studio-install.md) eller uppdatera till den senaste versionen. 
 
 * Öppna **Cloud Explorer** i Visual Studio och logga in på din Azure-prenumeration.
 
@@ -57,15 +56,15 @@ Den behållare som du skapar kommer att användas för att lagra till gångar so
 
 ## <a name="add-an-azure-stream-analytics-project"></a>Lägg till ett Azure Stream Analytics-projekt
 
-1. I Solution Explorer högerklickar du på lösningen **protobuf deserialiserare** och väljer **Lägg till > nytt projekt**. Under **Azure Stream Analytics > Stream Analytics**väljer du **Azure Stream Analytics program**. Ge den namnet **ProtobufCloudDeserializer** och välj **OK**. 
+1. I Solution Explorer högerklickar du på lösningen **protobuf deserialiserare** och väljer **Lägg till > nytt projekt**. Under **Azure Stream Analytics > Stream Analytics** väljer du **Azure Stream Analytics program**. Ge den namnet **ProtobufCloudDeserializer** och välj **OK**. 
 
-2. Högerklicka på **referenser** under **ProtobufCloudDeserializer** Azure Stream Analytics-projektet. Lägg till **protobuf deserialiserare**under **projekt**. Den bör fyllas i automatiskt åt dig.
+2. Högerklicka på **referenser** under **ProtobufCloudDeserializer** Azure Stream Analytics-projektet. Lägg till **protobuf deserialiserare** under **projekt**. Den bör fyllas i automatiskt åt dig.
 
 ## <a name="configure-a-stream-analytics-job"></a>Konfigurera ett Stream Analytics jobb
 
 1. Dubbelklicka på **JobConfig.jspå**. Använd standard konfigurationerna, förutom följande inställningar:
 
-   |Inställningen|Föreslaget värde|
+   |Inställning|Föreslaget värde|
    |-------|---------------|
    |Resurs för globala lagrings inställningar|Välj datakälla från det aktuella kontot|
    |Prenumeration på globala lagrings inställningar| < prenumerationen >|
@@ -74,9 +73,9 @@ Den behållare som du skapar kommer att användas för att lagra till gångar so
    |Lagrings konto för anpassade kod lagrings inställningar|< ditt lagrings konto >|
    |Behållare för lagrings inställningar för anpassade koder|< lagrings container >|
 
-2. Under **indata**dubbelklickar du på **Input.jspå**. Använd standard konfigurationerna, förutom följande inställningar:
+2. Under **indata** dubbelklickar du på **Input.jspå**. Använd standard konfigurationerna, förutom följande inställningar:
 
-   |Inställningen|Föreslaget värde|
+   |Inställning|Föreslaget värde|
    |-------|---------------|
    |Källa|Blob Storage|
    |Resurs|Välj datakälla från det aktuella kontot|
@@ -87,7 +86,7 @@ Den behållare som du skapar kommer att användas för att lagra till gångar so
    |Resurs|Läsa in från ASA projekt referens eller CodeBehind|
    |Sammansättnings namn för CSharp|ProtobufDeserializer.dll|
    |Klassnamn|MessageBodyProto.MessageBodyDeserializer|
-   |Händelse komprimerings typ|Inget|
+   |Händelse komprimerings typ|Ingen|
 
 3. Lägg till följande fråga i filen **script. asaql** .
 
@@ -97,7 +96,7 @@ Den behållare som du skapar kommer att användas för att lagra till gångar so
 
 4. Hämta [exempel filen protobuf indatafilen](https://github.com/Azure/azure-stream-analytics/blob/master/CustomDeserializers/Protobuf/SimulatedTemperatureEvents.protobuf). I mappen **indata** högerklickar du på **Input.jspå** och väljer **Lägg till lokal inmatning**. Dubbelklicka sedan på **local_Input.jspå** och konfigurera följande inställningar:
 
-   |Inställningen|Föreslaget värde|
+   |Inställning|Föreslaget värde|
    |-------|---------------|
    |Indataalias|Indata|
    |Källtyp|Dataström|
@@ -116,11 +115,13 @@ Du har implementerat en anpassad deserialiserare för ditt Stream Analyticss job
 
 ## <a name="debug-your-deserializer"></a>Felsöka deserialiseraren
 
-Du kan felsöka .NET deserialiseraren lokalt på samma sätt som du felsöker standard-.NET-kod. 
+Du kan felsöka .NET deserialiseraren lokalt på samma sätt som du felsöker standard-.NET-kod.
 
-1. Lägg till Bryt punkter i din funktion.
+1. Högerklicka på **ProtobufCloudDeserializer** projekt namn och ange det som start projekt.
 
-2. Starta felsökningen genom att trycka på **F5**. Programmet kommer att avbrytas vid dina brytpunkter som förväntat.
+2. Lägg till Bryt punkter i din funktion.
+
+3. Starta felsökningen genom att trycka på **F5**. Programmet kommer att avbrytas vid dina brytpunkter som förväntat.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

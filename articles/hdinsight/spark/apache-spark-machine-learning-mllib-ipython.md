@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, devx-track-python
 ms.date: 04/27/2020
-ms.openlocfilehash: bd61c6812d794d30e28f087dabf58db51e9c3296
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6407f7c3b1e8570cdc6b36dceec79fba58689c7
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230423"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822190"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Använd Apache Spark MLlib för att bygga ett Machine Learning-program och analysera en data uppsättning
 
@@ -32,7 +32,7 @@ MLlib är ett Core Spark-bibliotek som ger många verktyg som är användbara f�
 
 *Klassificering*, en populär maskin inlärnings uppgift, är processen att sortera indata i kategorier. Det är ett jobb för en klassificerings algoritm som visar hur du tilldelar "etiketter" för indata som du anger. Du kan till exempel tänka på en Machine Learning-algoritm som tar emot aktie information som indata. Delar sedan upp lagret i två kategorier: aktier som du bör sälja och de bestånd som du bör behålla.
 
-Logistisk regression är den algoritm som du använder för klassificering. Spark: s logistik Regressions-API är användbart för *binär klassificering*eller klassificerar indata till en av två grupper. Mer information om logistiska regressioner finns i [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression).
+Logistisk regression är den algoritm som du använder för klassificering. Spark: s logistik Regressions-API är användbart för *binär klassificering* eller klassificerar indata till en av två grupper. Mer information om logistiska regressioner finns i [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression).
 
 I sammanfattning skapar processen för Logistisk regression en *logistik funktion*. Använd funktionen för att förutsäga sannolikheten att en inmatad Vector tillhör en grupp eller en annan.  
 
@@ -44,7 +44,7 @@ I stegen nedan utvecklar du en modell för att se vad som krävs för att kunna 
 
 ## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>Skapa en Apache Spark MLlib Machine Learning-appen
 
-1. Skapa en Jupyter-anteckningsbok med PySpark-kerneln. Anvisningar finns i [skapa en Jupyter Notebook-fil](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file).
+1. Skapa en Jupyter Notebook med PySpark-kärnan. Instruktioner finns i [skapa en Jupyter Notebook-fil](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file).
 
 2. Importera de typer som krävs för det här programmet. Kopiera och klistra in följande kod i en tom cell och tryck sedan på **SKIFT + RETUR**.
 
@@ -121,7 +121,7 @@ Använd Spark-kontexten för att hämta rå CSV-data till minnet som ostrukturer
     df.registerTempTable('CountResults')
     ```
 
-    De fyra intresse kolumnerna i dataframe är **ID**, **namn**, **resultat**och **överträdelser**.
+    De fyra intresse kolumnerna i dataframe är **ID**, **namn**, **resultat** och **överträdelser**.
 
 4. Kör följande kod för att få ett litet exempel på data:
 
@@ -196,8 +196,8 @@ Vi börjar med att få en uppfattning om vad data uppsättningen innehåller.
 
     Om du vill förutsäga resultatet av en livsmedels inspektion måste du utveckla en modell utifrån överträdelserna. Eftersom Logistisk regression är en binär klassificerings metod är det klokt att gruppera resultat data i två kategorier: **misslyckande** och **pass**:
 
-   - Pass
-       - Pass
+   - Godkänd
+       - Godkänd
        - Pass w/villkor
    - Underkänn
        - Underkänn
@@ -313,7 +313,7 @@ Du kan använda modellen som du skapade tidigare för att *förutsäga* vad resu
 
 Nu kan du skapa en slutgiltig visualisering som hjälper dig att få en anledning till resultatet av testet.
 
-1. Du börjar genom att extrahera olika förutsägelser och resultat från den temporära **förutsägelse** tabellen som skapades tidigare. I följande frågor separeras utdata som *true_positive*, *false_positive*, *true_negative*och *false_negative*. I frågorna nedan stänger du av visualiseringen genom att använda `-q` och sparar även utdata (med hjälp av `-o` ) som dataframes som kan användas med `%%local` Magic.
+1. Du börjar genom att extrahera olika förutsägelser och resultat från den temporära **förutsägelse** tabellen som skapades tidigare. I följande frågor separeras utdata som *true_positive*, *false_positive*, *true_negative* och *false_negative*. I frågorna nedan stänger du av visualiseringen genom att använda `-q` och sparar även utdata (med hjälp av `-o` ) som dataframes som kan användas med `%%local` Magic.
 
     ```PySpark
     %%sql -q -o true_positive

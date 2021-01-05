@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: ebed7d87ba538b2f886155527bb89c1ffd2bcf58
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c8ce1a66d6dbf215c3d49740f2aec47ab01f7591
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545709"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822326"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Fel Spark fel sökning av jobb med Azure Toolkit for IntelliJ (för hands version)
 
@@ -44,7 +44,7 @@ Skapa ett Spark-2.3.2-projekt om du vill fortsätta fel sökningen, vidta fel s�
 
      ![IntelliJ skapa ett fel söknings projekt](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-projectfor-failure-debug.png)
 
-   c. Välj **Nästa** .
+   c. Välj **Nästa**.
 
 2. Utför följande steg i fönstret **nytt projekt** :
 
@@ -54,11 +54,11 @@ Skapa ett Spark-2.3.2-projekt om du vill fortsätta fel sökningen, vidta fel s�
 
    b. I list rutan **Project SDK** väljer du **Java 1,8** för **Spark 2.3.2** -kluster.
 
-   c. I list rutan **Spark-version** väljer du **Spark 2.3.2 (Scala 2.11.8)** .
+   c. I list rutan **Spark-version** väljer du **Spark 2.3.2 (Scala 2.11.8)**.
 
-   d. Välj **Slutför** .
+   d. Välj **Slutför**.
 
-3. Välj **src**  >  **main** -  >  **Scala** för att öppna din kod i projektet. I det här exemplet används skriptet **AgeMean_Div ()** .
+3. Välj **src**  >  **main**-  >  **Scala** för att öppna din kod i projektet. I det här exemplet används skriptet **AgeMean_Div ()** .
 
 ## <a name="run-a-spark-scalajava-application-on-an-hdinsight-cluster"></a>Köra ett Spark-Scala/Java-program i ett HDInsight-kluster
 
@@ -72,7 +72,7 @@ Skapa ett Spark-Scala/Java-program och kör sedan programmet på ett Spark-klust
 
    ![IntelliJ Lägg till ny konfiguration](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png)
 
-3. Växla till **fjärran sluten på kluster** -fliken. Ange information om **namn** , **Spark-kluster** och **huvud klass namn** . Våra verktyg stöder fel sökning med **körningar** . **NumExectors** är standardvärdet 5, och du har inte angett fler än 3. Du kan minska körnings tiden genom att lägga till **Spark. garn. maxAppAttempts** i **jobb konfigurationerna** och ange värdet till 1. Spara konfigurationen genom att klicka på **OK** .
+3. Växla till **fjärran sluten på kluster** -fliken. Ange information om **namn**, **Spark-kluster** och **huvud klass namn**. Våra verktyg stöder fel sökning med **körningar**. **NumExectors** är standardvärdet 5, och du har inte angett fler än 3. Du kan minska körnings tiden genom att lägga till **Spark. garn. maxAppAttempts** i **jobb konfigurationerna** och ange värdet till 1. Spara konfigurationen genom att klicka på **OK** .
 
    ![IntelliJ kör felsöknings konfiguration ny](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png)
 
@@ -90,7 +90,7 @@ Skapa ett Spark-Scala/Java-program och kör sedan programmet på ett Spark-klust
 
 Om det inte går att skicka jobb kan du hämta den misslyckade jobb profilen till den lokala datorn för ytterligare fel sökning.
 
-1. Öppna **Microsoft Azure Storage Explorer** , leta upp HDInsight-kontot för klustret för det misslyckade jobbet, ladda ned de misslyckade jobb resurserna från motsvarande plats: **\hdp\spark2-Events \\ . Spark \\ \<application ID> -Failure** till en lokal mapp. I fönstret **aktiviteter** visas hämtnings förloppet.
+1. Öppna **Microsoft Azure Storage Explorer**, leta upp HDInsight-kontot för klustret för det misslyckade jobbet, ladda ned de misslyckade jobb resurserna från motsvarande plats: **\hdp\spark2-Events \\ . Spark \\ \<application ID> -Failure** till en lokal mapp. I fönstret **aktiviteter** visas hämtnings förloppet.
 
    ![Azure Storage Explorer nedladdnings problem](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
 
@@ -142,7 +142,7 @@ Om det inte går att skicka jobb kan du hämta den misslyckade jobb profilen til
 * [Använda HDInsight-verktyg för IntelliJ med begränsat läge för Hortonworks](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)
 * [Skapa Apache Spark-program med hjälp av HDInsight-verktyg i Azure Toolkit for Eclipse](./apache-spark-eclipse-tool-plugin.md)
 * [Använda Apache Zeppelin-anteckningsböcker med ett Apache Spark-kluster i HDInsight](apache-spark-zeppelin-notebook.md)
-* [Kernels tillgängligt för Jupyter Notebook i Apache Spark-klustret för HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Kernels som är tillgängliga för Jupyter Notebook i Apache Spark-klustret för HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Använda externa paket med Jupyter-anteckningsböcker](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Installera Jupyter på datorn och ansluta till ett HDInsight Spark-kluster](apache-spark-jupyter-notebook-install-locally.md)
 

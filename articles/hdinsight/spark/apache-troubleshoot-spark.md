@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9e60903aaa61cae63d406d459937d33317eee394
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4cfcc860e40415403952efeda13bac513a2c6347
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022259"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822156"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Felsöka Apache Spark med Azure HDInsight
 
@@ -75,9 +75,9 @@ Konfigurations värden för Spark kan justeras för att undvika ett Apache Spark
 
 Dessa ändringar är hela klustret men kan åsidosättas när du skickar Spark-jobbet.
 
-## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Hur gör jag för att konfigurera ett Apache Spark-program med hjälp av en Jupyter Notebook i kluster?
+## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Hur gör jag för att konfigurerar du ett Apache Spark program genom att använda en Jupyter Notebook på kluster?
 
-I den första cellen i den Jupyter Notebook, efter **%% Configure** -direktivet, anger du Spark-konfigurationerna i giltigt JSON-format. Ändra de faktiska värdena efter behov:
+I den första cellen i Jupyter Notebook, efter **%% Configure** -direktivet, anger du Spark-konfigurationerna i giltigt JSON-format. Ändra de faktiska värdena efter behov:
 
 ![Lägg till en konfiguration](./media/apache-troubleshoot-spark/add-configuration-cell.png)
 

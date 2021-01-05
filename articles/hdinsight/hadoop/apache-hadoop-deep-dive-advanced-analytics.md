@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: ffc8fcf734877f55210507310849a5746a280c3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13dd960cc7c900882acbcb9b17a5b8a1f32f956c
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504357"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821510"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Djupgående avancerad analys
 
 ## <a name="what-is-advanced-analytics-for-hdinsight"></a>Vad är avancerad analys för HDInsight?
 
-HDInsight ger möjlighet att få värdefulla insikter från stora mängder strukturerade, ostrukturerade och snabbt flyttade data. Avancerad analys är användningen av mycket skalbara arkitekturer, statistiska modeller och maskin inlärnings modeller och intelligenta instrument paneler för att ge dig meningsfulla insikter. Machine Learning eller *förutsägande analys*använder algoritmer som identifierar och lär sig från relationer i dina data för att göra förutsägelser och vägleda dina beslut.
+HDInsight ger möjlighet att få värdefulla insikter från stora mängder strukturerade, ostrukturerade och snabbt flyttade data. Avancerad analys är användningen av mycket skalbara arkitekturer, statistiska modeller och maskin inlärnings modeller och intelligenta instrument paneler för att ge dig meningsfulla insikter. Machine Learning eller *förutsägande analys* använder algoritmer som identifierar och lär sig från relationer i dina data för att göra förutsägelser och vägleda dina beslut.
 
 ## <a name="advanced-analytics-process"></a>Avancerad analys process
 
@@ -91,7 +91,7 @@ Det finns tre viktiga uppgifter i det här scenariot för avancerad analys:
 
 1. Skapa ett Azure HDInsight Hadoop-kluster med en Apache Spark 2.1.0-distribution.
 2. Kör ett anpassat skript för att installera Microsoft Cognitive Toolkit på alla noder i ett Azure HDInsight Spark-kluster.
-3. Överför en fördefinierad Jupyter-anteckningsbok till ditt HDInsight Spark-kluster för att tillämpa en utbildad Microsoft Cognitive Toolkit djup inlärnings modell för filer i ett Azure Blob Storage-konto med Spark python API (PySpark).
+3. Överför en förskapad Jupyter Notebook till ditt HDInsight Spark-kluster för att tillämpa en utbildad Microsoft Cognitive Toolkit djup inlärnings modell för filer i ett Azure Blob Storage-konto med Spark python API (PySpark).
 
 I det här exemplet används CIFAR-10-bilduppsättningen som kompileras och distribueras av Alex Krizhevsky, Nair och Geoffrey Hinton. CIFAR-10-datauppsättningen innehåller 60 000 32 × 32 färg bilder som tillhör 10 ömsesidigt uteslutande klasser:
 
