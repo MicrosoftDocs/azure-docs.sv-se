@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: ca812fc7548e3c70f1faa1e1ed6a34afda3872af
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 2e46da1657a7473d3ff8cdf4ac43e5341b143455
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575983"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796116"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>Självstudie: Förutsäg ett bilpris med designern
 
@@ -272,7 +272,7 @@ Nu när din pipeline är all konfiguration kan du skicka en pipeline-körning f�
     > [!NOTE]
     > Experiment grupp liknande pipeliner körs tillsammans. Om du kör en pipeline flera gånger kan du välja samma experiment för efterföljande körningar.
 
-    1. Ange ett beskrivande namn på **nytt experiment namn**.
+    1. För **nytt experiment namn** anger du **självstudie – CarPrices**.
 
     1. Välj **Skicka**.
     

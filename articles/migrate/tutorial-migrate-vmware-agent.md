@@ -7,19 +7,19 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 0c3b86fc823e4b563dc747a5604fcb2e04995fed
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 480051680ea98b82627a9a2b3ea004d9472f7124
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752659"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797102"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>Migrera virtuella VMware-datorer till Azure (agent-baserad)
 
-Den här artikeln visar hur du migrerar lokala virtuella VMware-datorer till Azure med hjälp av [Azure Migrate: Migreringsverktyg för Server](migrate-services-overview.md#azure-migrate-server-migration-tool) med agent-baserad migrering.  Du kan också migrera virtuella VMware-datorer med hjälp av agent-baserad migrering. [Jämför](server-migrate-overview.md#compare-migration-methods) metoderna.
+Den här artikeln visar hur du migrerar lokala virtuella VMware-datorer till Azure med hjälp av [Azure Migrate: Migreringsverktyg för Server](migrate-services-overview.md#azure-migrate-server-migration-tool) med agent-baserad migrering.  Du kan också migrera virtuella VMware-datorer med hjälp av en agent utan migrering. [Jämför](server-migrate-overview.md#compare-migration-methods) metoderna.
 
 
- I den här guiden får du lära dig att:
+ I de här självstudierna får du lära dig att
 > [!div class="checklist"]
 > * Förbered Azure för att arbeta med Azure Migrate.
 > * Förbered för agent-baserad migrering. Konfigurera ett VMware-konto så att Azure Migrate kan identifiera datorer för migrering. Konfigurera ett konto så att mobilitets tjänst agenten kan installeras på datorer som du vill migrera och Förbered en dator för att fungera som replikeringsfil.
@@ -300,7 +300,7 @@ När delta-replikering börjar kan du köra en testmigrering för de virtuella d
 Gör en testmigrering enligt följande:
 
 
-1. I Server för **migrerings mål**  >  **Servers**  >  **Azure Migrate: Server migrering** klickar du på **test migrerade servrar**.
+1. I Server för **migrerings mål**  >    >  **Azure Migrate: Server migrering** klickar du på **test migrerade servrar**.
 
      ![Testmigrerade servrar](./media/tutorial-migrate-vmware-agent/test-migrated-servers.png)
 

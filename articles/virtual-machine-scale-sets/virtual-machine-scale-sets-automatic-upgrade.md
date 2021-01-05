@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 334e0c745257354d9548a6f9c8cee4d43fa8da6d
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 4ebb16186e613affdb886a8819240d47f944c42f
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744743"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763548"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatiska uppgraderingar av OS-avbildningar i skalningsuppsättningar med virtuella Azure-datorer
 
@@ -45,6 +45,9 @@ Uppgraderings processen fungerar på följande sätt:
 
 Skalnings uppsättningen operativ system uppgraderings Orchestrator kontrollerar om den övergripande skalnings uppsättnings hälsan innan du uppgraderar varje batch. När du uppgraderar en batch kan det finnas andra samtidiga planerade eller oplanerade underhålls aktiviteter som kan påverka hälso tillståndet för dina skalnings uppsättnings instanser. I sådana fall om fler än 20% av skalnings uppsättningens instanser blir felaktiga, stannar skalnings uppsättnings uppgraderingen i slutet av den aktuella batchen.
 
+> [!NOTE]
+>Automatisk uppgradering av operativ systemet uppgraderar inte referens avbildnings-SKU: n i skalnings uppsättningen. Om du vill ändra SKU: n (t. ex. Ubuntu 16,04-LTS till 18,04-LTS) måste du uppdatera [skalnings uppsättnings modellen](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model) direkt med önskad avbildnings-SKU. Det går inte att ändra avbildnings utgivaren och erbjudandet för en befintlig skalnings uppsättning.  
+
 ## <a name="supported-os-images"></a>OS-avbildningar som stöds
 Det finns för närvarande inte stöd för vissa avbildningar av operativ system plattformen. Anpassade avbildningar [stöds](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images) om skalnings uppsättningen använder anpassade bilder via det [delade bild galleriet](shared-image-galleries.md).
 
@@ -54,21 +57,20 @@ Följande plattforms-SKU: er stöds för närvarande (och fler läggs till regel
 |-------------------------|---------------|--------------------|
 | Canonical               | UbuntuServer  | 16.04-LTS          |
 | Canonical               | UbuntuServer  | 18,04 – LTS          |
-| Falsk våg (OpenLogic)  | CentOS        | 7.5                |
-| CoreOS                  | CoreOS        | Stable             |
-| Microsoft Corporation   | WindowsServer | 2012-R2-Datacenter |
-| Microsoft Corporation   | WindowsServer | 2016 – Data Center    |
-| Microsoft Corporation   | WindowsServer | 2016-datacenter-Smalldisk |
-| Microsoft Corporation   | WindowsServer | 2016-Data Center-med-containers |
-| Microsoft Corporation   | WindowsServer | 2019 – Data Center |
-| Microsoft Corporation   | WindowsServer | 2019-datacenter-Smalldisk |
-| Microsoft Corporation   | WindowsServer | 2019-Data Center-med-containers |
-| Microsoft Corporation   | WindowsServer | Data Center Core-1903-med-containers-smalldisk |
+| OpenLogic               | CentOS        | 7.5                |
+| MicrosoftWindowsServer  | WindowsServer | 2012-R2-Datacenter |
+| MicrosoftWindowsServer  | WindowsServer | 2016 – Data Center    |
+| MicrosoftWindowsServer  | WindowsServer | 2016-datacenter-Smalldisk |
+| MicrosoftWindowsServer  | WindowsServer | 2016-Data Center-med-containers |
+| MicrosoftWindowsServer  | WindowsServer | 2019 – Data Center |
+| MicrosoftWindowsServer  | WindowsServer | 2019-datacenter-Smalldisk |
+| MicrosoftWindowsServer  | WindowsServer | 2019-Data Center-med-containers |
+| MicrosoftWindowsServer  | WindowsServer | Data Center Core-1903-med-containers-smalldisk |
 
 
 ## <a name="requirements-for-configuring-automatic-os-image-upgrade"></a>Krav för att konfigurera automatisk uppgradering av operativ system avbildning
 
-- Bildens *versions* egenskap måste anges till *senaste* .
+- Bildens *versions* egenskap måste anges till *senaste*.
 - Använd program hälso avsökningar eller [program hälso tillägg](virtual-machine-scale-sets-health-extension.md) för icke-Service Fabric skalnings uppsättningar.
 - Använd Compute API version 2018-10-01 eller högre.
 - Se till att externa resurser som anges i skalnings uppsättnings modellen är tillgängliga och uppdaterade. Exempel på detta är SAS URI för start nytto Last i egenskaper för VM-tillägg, nytto Last i lagrings konto, referens till hemligheter i modellen med mera.
@@ -121,14 +123,14 @@ PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/p
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Använd cmdleten [Update-AzVmss](/powershell/module/az.compute/update-azvmss) för att konfigurera automatiska uppgraderingar av operativ Systems avbildningar för din skalnings uppsättning. I följande exempel konfigureras automatiska uppgraderingar för skalnings uppsättningen med namnet *myScaleSet* i resurs gruppen med namnet *myResourceGroup* :
+Använd cmdleten [Update-AzVmss](/powershell/module/az.compute/update-azvmss) för att konfigurera automatiska uppgraderingar av operativ Systems avbildningar för din skalnings uppsättning. I följande exempel konfigureras automatiska uppgraderingar för skalnings uppsättningen med namnet *myScaleSet* i resurs gruppen med namnet *myResourceGroup*:
 
 ```azurepowershell-interactive
 Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -AutomaticOSUpgrade $true
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Använd [AZ VMSS Update](/cli/azure/vmss#az-vmss-update) för att konfigurera automatiska uppgraderingar av operativ Systems avbildningar för din skalnings uppsättning. Använd Azure CLI-2.0.47 eller senare. I följande exempel konfigureras automatiska uppgraderingar för skalnings uppsättningen med namnet *myScaleSet* i resurs gruppen med namnet *myResourceGroup* :
+Använd [AZ VMSS Update](/cli/azure/vmss#az-vmss-update) för att konfigurera automatiska uppgraderingar av operativ Systems avbildningar för din skalnings uppsättning. Använd Azure CLI-2.0.47 eller senare. I följande exempel konfigureras automatiska uppgraderingar för skalnings uppsättningen med namnet *myScaleSet* i resurs gruppen med namnet *myResourceGroup*:
 
 ```azurecli-interactive
 az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true
@@ -184,7 +186,7 @@ Det finns flera sätt att distribuera program hälso tillägget till dina skalni
 Du kan kontrol lera historiken för den senaste OS-uppgraderingen som har utförts på din skalnings uppsättning med Azure PowerShell, Azure CLI 2,0 eller REST API: erna. Du kan hämta historiken för de senaste fem uppgraderings försöken för operativ systemet under de senaste två månaderna.
 
 ### <a name="rest-api"></a>REST-API
-I följande exempel används [REST API](/rest/api/compute/virtualmachinescalesets/getosupgradehistory) för att kontrol lera status för skalnings uppsättningen med namnet *myScaleSet* i resurs gruppen med namnet *myResourceGroup* :
+I följande exempel används [REST API](/rest/api/compute/virtualmachinescalesets/getosupgradehistory) för att kontrol lera status för skalnings uppsättningen med namnet *myScaleSet* i resurs gruppen med namnet *myResourceGroup*:
 
 ```
 GET on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osUpgradeHistory?api-version=2019-12-01`
@@ -228,14 +230,14 @@ GET-anropet returnerar egenskaper som liknar följande exempel på utdata:
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Använd cmdleten [Get-AzVmss](/powershell/module/az.compute/get-azvmss) för att kontrol lera din skalnings uppsättning. I följande exempel beskrivs hur du granskar uppgraderings status för operativ system för en skalnings uppsättning med namnet *myScaleSet* i resurs gruppen med namnet *myResourceGroup* :
+Använd cmdleten [Get-AzVmss](/powershell/module/az.compute/get-azvmss) för att kontrol lera din skalnings uppsättning. I följande exempel beskrivs hur du granskar uppgraderings status för operativ system för en skalnings uppsättning med namnet *myScaleSet* i resurs gruppen med namnet *myResourceGroup*:
 
 ```azurepowershell-interactive
 Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -OSUpgradeHistory
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Använd [AZ VMSS get-OS-Upgrade-History](/cli/azure/vmss#az-vmss-get-os-upgrade-history) för att kontrol lera din skalnings uppsättning. Använd Azure CLI-2.0.47 eller senare. I följande exempel beskrivs hur du granskar uppgraderings status för operativ system för en skalnings uppsättning med namnet *myScaleSet* i resurs gruppen med namnet *myResourceGroup* :
+Använd [AZ VMSS get-OS-Upgrade-History](/cli/azure/vmss#az-vmss-get-os-upgrade-history) för att kontrol lera din skalnings uppsättning. Använd Azure CLI-2.0.47 eller senare. I följande exempel beskrivs hur du granskar uppgraderings status för operativ system för en skalnings uppsättning med namnet *myScaleSet* i resurs gruppen med namnet *myResourceGroup*:
 
 ```azurecli-interactive
 az vmss get-os-upgrade-history --resource-group myResourceGroup --name myScaleSet
@@ -269,21 +271,21 @@ I vissa fall där du inte vill vänta på att Orchestrator ska tillämpa den sen
 > Manuell utlösare av OS-avbildningsfiler ger inte automatiska återställnings funktioner. Om en instans inte återställer sitt hälso tillstånd efter en uppgraderings åtgärd kan den tidigare OS-disken inte återställas.
 
 ### <a name="rest-api"></a>REST-API
-Använd [Start operativ systemets uppgraderings](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) -API-anrop för att starta en rullande uppgradering för att flytta alla instanser av den virtuella datorns skalnings uppsättning till den senaste tillgängliga avbildnings versionen. Instanser som redan kör den senaste tillgängliga OS-versionen påverkas inte. Följande exempel beskriver hur du kan starta en rullande uppgradering av operativ systemet på en skalnings uppsättning med namnet *myScaleSet* i resurs gruppen med namnet *myResourceGroup* :
+Använd [Start operativ systemets uppgraderings](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) -API-anrop för att starta en rullande uppgradering för att flytta alla instanser av den virtuella datorns skalnings uppsättning till den senaste tillgängliga avbildnings versionen. Instanser som redan kör den senaste tillgängliga OS-versionen påverkas inte. Följande exempel beskriver hur du kan starta en rullande uppgradering av operativ systemet på en skalnings uppsättning med namnet *myScaleSet* i resurs gruppen med namnet *myResourceGroup*:
 
 ```
 POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osRollingUpgrade?api-version=2019-12-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Använd cmdleten [Start-AzVmssRollingOSUpgrade](/powershell/module/az.compute/Start-AzVmssRollingOSUpgrade) för att kontrol lera din skalnings uppsättning. Följande exempel beskriver hur du kan starta en rullande uppgradering av operativ systemet på en skalnings uppsättning med namnet *myScaleSet* i resurs gruppen med namnet *myResourceGroup* :
+Använd cmdleten [Start-AzVmssRollingOSUpgrade](/powershell/module/az.compute/Start-AzVmssRollingOSUpgrade) för att kontrol lera din skalnings uppsättning. Följande exempel beskriver hur du kan starta en rullande uppgradering av operativ systemet på en skalnings uppsättning med namnet *myScaleSet* i resurs gruppen med namnet *myResourceGroup*:
 
 ```azurepowershell-interactive
 Start-AzVmssRollingOSUpgrade -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Använd [AZ VMSS rullande-Upgrade start](/cli/azure/vmss/rolling-upgrade#az-vmss-rolling-upgrade-start) för att kontrol lera din skalnings uppsättning. Använd Azure CLI-2.0.47 eller senare. Följande exempel beskriver hur du kan starta en rullande uppgradering av operativ systemet på en skalnings uppsättning med namnet *myScaleSet* i resurs gruppen med namnet *myResourceGroup* :
+Använd [AZ VMSS rullande-Upgrade start](/cli/azure/vmss/rolling-upgrade#az-vmss-rolling-upgrade-start) för att kontrol lera din skalnings uppsättning. Använd Azure CLI-2.0.47 eller senare. Följande exempel beskriver hur du kan starta en rullande uppgradering av operativ systemet på en skalnings uppsättning med namnet *myScaleSet* i resurs gruppen med namnet *myResourceGroup*:
 
 ```azurecli-interactive
 az vmss rolling-upgrade start --resource-group "myResourceGroup" --name "myScaleSet" --subscription "subscriptionId"

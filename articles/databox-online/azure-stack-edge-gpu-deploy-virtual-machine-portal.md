@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro device so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 89ef196cb5a124b8b1100871c408400f3fceef5c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 04ba9777fe9e8470e6f02c83f3996d098023e05e
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96467168"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763463"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-the-azure-portal"></a>Distribuera virtuella datorer på Azure Stack Edge Pro GPU-enhet via Azure Portal
 
@@ -123,7 +123,7 @@ Följ de här stegen för att skapa en virtuell dator när du har skapat en avbi
     |---------|---------|
     |Namn på virtuell dator     |         |
     |Bild     | Välj bland de VM-avbildningar som är tillgängliga på enheten.        |
-    |Storlek     | Välj bland de [VM-storlekar som stöds](azure-stack-edge-gpu-deploy-virtual-machine-templates.md#supported-vm-sizes).        |
+    |Storlek     | Välj bland de [VM-storlekar som stöds](azure-stack-edge-gpu-virtual-machine-sizes.md).        |
     |Användarnamn     | Använd standard användar namn *azureuser*.        |
     |Autentiseringstyp    | Välj från offentlig SSH-nyckel eller ett användardefinierat lösen ord.       |
     |Lösenord     | Ange ett lösen ord för att logga in på den virtuella datorn. Lösen ordet måste vara minst 12 tecken långt och uppfylla de definierade [komplexitets kraven](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).        |
@@ -184,7 +184,7 @@ Följ de här stegen för att skapa en virtuell dator när du har skapat en avbi
 
     ![Lägg till VM 11](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-details-1.png)
 
-## <a name="connect-to-a-vm"></a>Ansluta till en virtuell dator
+## <a name="connect-to-a-vm"></a>Anslut till en virtuell dator
 
 Stegen för att ansluta kan vara olika beroende på om du har skapat ett Windows eller en virtuell Linux-dator. Du kan inte ansluta till de virtuella datorer som distribuerats på enheten via Azure Portal. Du måste utföra följande steg för att ansluta till din virtuella Linux-eller Windows-dator.
 

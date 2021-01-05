@@ -3,15 +3,15 @@ title: Konfigurera till din Azure IoT Central-instrumentpanel | Microsoft Docs
 description: Som ett verktyg kan du läsa om hur du konfigurerar standard instrument panelen för Azure IoT Central-program med paneler.
 author: TheJasonAndrew
 ms.author: v-anjaso
-ms.date: 11/06/2020
+ms.date: 12/19/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 2ea2dd18cd5816c7c1406ac201421a2983e431a3
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 73c78f514f974b97eb178177f12dc4ceff7ede63
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94492044"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797017"
 ---
 # <a name="configure-the-application-dashboard"></a>Konfigurera program instrument panelen
 
@@ -22,7 +22,7 @@ ms.locfileid: "94492044"
 
 ## <a name="add-tiles"></a>Lägg till paneler
 
-På följande skärm bild visas instrument panelen i ett program som skapats från den **anpassade program** mal len. Om du vill anpassa den aktuella instrument panelen väljer du **Redigera** , för att lägga till en anpassad personlig eller delad instrument panel, väljer **ny** :
+På följande skärm bild visas instrument panelen i ett program som skapats från den **anpassade program** mal len. Om du vill anpassa den aktuella instrument panelen väljer du **Redigera**, för att lägga till en anpassad personlig eller delad instrument panel, väljer **ny**:
 
 :::image type="content" source="media/howto-add-tiles-to-your-dashboard/dashboard-sample-contoso.png" alt-text="Instrument panel för program som baseras på den anpassade program mal len":::
 
@@ -30,7 +30,7 @@ När du har valt **redigera** eller **nytt** är instrument panelen i *redigerin
 
 1. Välj en **enhets grupp** och välj sedan enheterna i list rutan **enheter** så att de visas på panelen. Nu ser du tillgängliga telemetri, egenskaper och kommandon från enheterna.
 
-1. Om det behövs använder du List rutan för att välja ett telemetri-värde som ska visas på panelen. Du kan lägga till fler objekt i panelen en annan genom att välja **+ telemetri** , **+ egenskap** eller egenskaper för **moln**.
+1. Om det behövs använder du List rutan för att välja ett telemetri-värde som ska visas på panelen. Du kan lägga till fler objekt i panelen en annan genom att välja **+ telemetri**, **+ egenskap** eller egenskaper för **moln**.
 
 :::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="Lägg till en panel för temperatur telemetri på instrument panelen":::
 
@@ -87,7 +87,7 @@ För paneler som visar sträng egenskaper eller telemetridata kan du välja hur 
 
 :::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="Ändra hur en sträng visas på en panel":::
 
-För numeriska **KPI** : er, **senast kända värde** och **egenskaps** paneler kan du använda villkorsstyrd formatering för att anpassa panelens färg baserat på dess aktuella värde. Om du vill lägga till villkorsstyrd formatering väljer du **Konfigurera** på panelen och väljer sedan ikonen **villkorsstyrd formatering** bredvid värdet som du vill anpassa:
+För numeriska **KPI**: er, **senast kända värde** och **egenskaps** paneler kan du använda villkorsstyrd formatering för att anpassa panelens färg baserat på dess aktuella värde. Om du vill lägga till villkorsstyrd formatering väljer du **Konfigurera** på panelen och väljer sedan ikonen **villkorsstyrd formatering** bredvid värdet som du vill anpassa:
 
 :::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-1.png" alt-text="Skärm bild som visar hur du hittar alternativet Konfigurera för en panel och sedan ikonen villkorsstyrd formatering":::
 

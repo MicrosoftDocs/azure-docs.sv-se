@@ -10,12 +10,12 @@ author: jpe316
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 4758e937a0ed105bf136acf7e78f2d44c84e74fb
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: e80f33e6c36e1525eff954376d17c8a8b76204cb
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536062"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796031"
 ---
 # <a name="train-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Träna scikit – lär dig modeller i stor skala med Azure Machine Learning
 
@@ -132,7 +132,7 @@ src = ScriptRunConfig(source_directory='.',
 ```python
 from azureml.core import Experiment
 
-run = Experiment(ws,'train-iris').submit(src)
+run = Experiment(ws,'Tutorial-TrainIRIS').submit(src)
 run.wait_for_completion(show_output=True)
 ```
 
@@ -142,13 +142,13 @@ run.wait_for_completion(show_output=True)
 ### <a name="what-happens-during-run-execution"></a>Vad händer under körningen
 När körningen körs går den igenom följande steg:
 
-- **Förbereder** : en Docker-avbildning skapas enligt den miljö som definierats. Avbildningen överförs till arbets ytans behållar register och cachelagras för senare körningar. Loggarna strömmas också till körnings historiken och kan visas för att övervaka förloppet. Om en granskad miljö anges i stället används den cachelagrade avbildningen som ska användas för att återställa den hanterade miljön.
+- **Förbereder**: en Docker-avbildning skapas enligt den miljö som definierats. Avbildningen överförs till arbets ytans behållar register och cachelagras för senare körningar. Loggarna strömmas också till körnings historiken och kan visas för att övervaka förloppet. Om en granskad miljö anges i stället används den cachelagrade avbildningen som ska användas för att återställa den hanterade miljön.
 
-- **Skalning** : klustret försöker skala upp om det batch AI klustret kräver fler noder för att köra körning än vad som är tillgängligt.
+- **Skalning**: klustret försöker skala upp om det batch AI klustret kräver fler noder för att köra körning än vad som är tillgängligt.
 
-- **Körs** : alla skript i mappen skript överförs till Compute-målet, data lager monteras eller kopieras och `script` utförs. Utdata från STDOUT och **./logs** -mappen strömmas till körnings historiken och kan användas för att övervaka körningen.
+- **Körs**: alla skript i mappen skript överförs till Compute-målet, data lager monteras eller kopieras och `script` utförs. Utdata från STDOUT och **./logs** -mappen strömmas till körnings historiken och kan användas för att övervaka körningen.
 
-- **Efter bearbetning** : mappen **./outputs** i körningen kopieras till körnings historiken.
+- **Efter bearbetning**: mappen **./outputs** i körningen kopieras till körnings historiken.
 
 ## <a name="save-and-register-the-model"></a>Spara och registrera modellen
 

@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31bdfc7e3eca2a2678b75b80973a1680448737d1
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 5394a2829af4b0cd7a1c817f6aad4ca5451cc4bc
+ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507684"
+ms.lasthandoff: 12/27/2020
+ms.locfileid: "97792440"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory direktautentisering: snabb start
 
@@ -51,7 +51,7 @@ Se till att följande krav är uppfyllda.
 
 ### <a name="in-your-on-premises-environment"></a>I din lokala miljö
 
-1. Identifiera en server som kör Windows Server 2012 R2 eller senare för att köra Azure AD Connect. Om du inte redan har aktiverat [aktiverar du TLS 1,2 på servern](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect). Lägg till servern i samma Active Directory skog som de användare vars lösen ord du behöver validera.
+1. Identifiera en server som kör Windows Server 2012 R2 eller senare för att köra Azure AD Connect. Om du inte redan har aktiverat [aktiverar du TLS 1,2 på servern](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect). Lägg till servern i samma Active Directory skog som de användare vars lösen ord du behöver validera. Det bör noteras att installationen av Pass-Through Authentication agent på Windows Server Core-versioner inte stöds. 
 2. Installera den [senaste versionen av Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) på den server som identifierades i föregående steg. Om du redan har Azure AD Connect kört, se till att versionen är 1.1.750.0 eller senare.
 
     >[!NOTE]

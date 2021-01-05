@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 12/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: eec53570c542ceb60c937072135fcb70b59e80a6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: e3bf77406df302c4ba83cb7a8f1a30fba9f6339e
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631048"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795945"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>Träna PyTorch-modeller i skala med Azure Machine Learning
 
@@ -206,7 +206,7 @@ Mer information om hur du konfigurerar jobb med ScriptRunConfig finns i [Konfigu
 [Kör-objektet](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) tillhandahåller gränssnittet till körnings historiken medan jobbet körs och när det har slutförts.
 
 ```Python
-run = Experiment(ws, name='pytorch-birds').submit(src)
+run = Experiment(ws, name='Tutorial-pytorch-birds').submit(src)
 run.wait_for_completion(show_output=True)
 ```
 
@@ -314,6 +314,10 @@ src = ScriptRunConfig(source_directory=project_folder,
 Om du i stället vill använda gloo-Server delen för distribuerad utbildning anger du `communication_backend='Gloo'` i stället. Gloo-Server delen rekommenderas för distribuerad CPU-utbildning.
 
 En fullständig själv studie kurs om att köra distribuerade PyTorch i Azure ML finns i [distribuerade PyTorch med DistributedDataParallel](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/pytorch/distributed-pytorch-with-nccl-gloo).
+
+### <a name="troubleshooting"></a>Felsökning
+
+* **Horovod har stängts av**: i de flesta fall var det ett underliggande undantag i en av de processer som orsakade att Horovod stängdes, om du stöter på "AbortedError: Horovod har stängts av". Varje rang i MPI-jobbet hämtar en egen dedikerad loggfilen i Azure ML. De här loggarna heter `70_driver_logs`. Vid distribuerad träning får loggnamnen suffixet `_rank` så att du enklare kan se skillnad på loggarna. Om du vill hitta det exakta fel som orsakade Horovod stänger du igenom alla loggfiler och letar efter `Traceback` i slutet av driver_log-filerna. Med en av de här filerna får du det faktiska underliggande undantaget. 
 
 ## <a name="export-to-onnx"></a>Exportera till ONNX
 

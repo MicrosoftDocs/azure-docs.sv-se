@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: 5e1f8a099256040e14db1cdab288551a228512cd
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: ee1c59c71834ab9d80f1ed66a002e211bdcacbbf
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655381"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796507"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Säker åtkomst till ett nyckel valv
 
@@ -130,7 +130,7 @@ Mer information om Key Vault brand vägg och virtuella nätverk finns i [konfigu
 
 ## <a name="private-endpoint-connection"></a>Anslutning till privat slutpunkt
 
-Om du behöver blockera Key Vault exponering på ett helt enkelt sätt kan du använda en [privat Azure-slutpunkt](../../private-link/private-endpoint-overview.md) . En privat Azure-slutpunkt är ett nätverks gränssnitt som ansluter privat och säkert till en tjänst som drivs av en privat Azure-länk. Den privata slut punkten använder en privat IP-adress från ditt virtuella nätverk, vilket effektivt ansluter tjänsten till ditt VNet. All trafik till tjänsten kan dirigeras via den privata slut punkten, så inga gatewayer, NAT-enheter, ExpressRoute-eller VPN-anslutningar eller offentliga IP-adresser krävs. Trafik mellan ditt virtuella nätverk och tjänsten passerar över Microsofts stamnätverk, vilket eliminerar exponering från det offentliga Internet. Du kan ansluta till en instans av en Azure-resurs, vilket ger dig den högsta nivån av granularitet i åtkomst kontroll.
+Om det skulle vara nödvändigt att helt blockera Key Vault exponering för allmänheten kan en [privat Azure-slutpunkt](../../private-link/private-endpoint-overview.md) användas. En privat Azure-slutpunkt är ett nätverks gränssnitt som ansluter privat och säkert till en tjänst som drivs av en privat Azure-länk. Den privata slut punkten använder en privat IP-adress från ditt virtuella nätverk, vilket effektivt ansluter tjänsten till ditt VNet. All trafik till tjänsten kan dirigeras via den privata slut punkten, så inga gatewayer, NAT-enheter, ExpressRoute-eller VPN-anslutningar eller offentliga IP-adresser krävs. Trafik mellan ditt virtuella nätverk och tjänsten passerar över Microsofts stamnätverk, vilket eliminerar exponering från det offentliga Internet. Du kan ansluta till en instans av en Azure-resurs, vilket ger dig den högsta nivån av granularitet i åtkomst kontroll.
 
 Vanliga scenarier för att använda privat länk för Azure-tjänster:
 
@@ -182,13 +182,13 @@ Vi måste auktorisera följande åtgärder för våra roller:
 
 I följande tabell sammanfattas åtkomst behörigheterna för våra roller och program.
 
-| Role | Behörigheter på hanteringsplanet | Data Plans behörigheter – valv åtkomst principer | Data Plans behörigheter – Azure RBAC (för hands version)  |
+| Roll | Behörigheter på hanteringsplanet | Data Plans behörigheter – valv åtkomst principer | Data Plans behörigheter – Azure RBAC (för hands version)  |
 | --- | --- | --- | --- |
 | Säkerhetsteamet | [Key Vault deltagare](../../role-based-access-control/built-in-roles.md#key-vault-contributor) | Certifikat: alla åtgärder <br> Nycklar: alla åtgärder <br> Hemligheter: alla åtgärder | [Key Vault administratör (förhands granskning)](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview) |
 | Utvecklare och &nbsp; operatörer | Key Vault distributions behörighet<br><br> **Obs!** den här behörigheten gör att distribuerade virtuella datorer kan hämta hemligheter från ett nyckel valv. | Inga | Inga |
-| Granskare | Inget | Certifikat: lista <br> Nycklar: lista<br>Hemligheter: lista<br><br> **Obs!** den här behörigheten gör det möjligt för granskare att inspektera attribut (Taggar, aktiverings datum, förfallo datum) för nycklar och hemligheter som inte genereras i loggarna. | [Key Vault läsare (förhands granskning)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview) |
-| Azure Storage-konto | Inget | Nycklar: get, list, wrapKey, unwrapKey <br> | [Krypterings användare för Key Vault krypterings tjänsten](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-user-preview) |
-| Program | Inget | Hemligheter: get, list <br> Certifikat: Hämta, lista | [Key Vault läsare (förhands granskning)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview) [Key Vault hemlig användare (förhands granskning)](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user-preview) |
+| Granskare | Ingen | Certifikat: lista <br> Nycklar: lista<br>Hemligheter: lista<br><br> **Obs!** den här behörigheten gör det möjligt för granskare att inspektera attribut (Taggar, aktiverings datum, förfallo datum) för nycklar och hemligheter som inte genereras i loggarna. | [Key Vault läsare (förhands granskning)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview) |
+| Azure Storage-konto | Ingen | Nycklar: get, list, wrapKey, unwrapKey <br> | [Krypterings användare för Key Vault krypterings tjänsten](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-user-preview) |
+| Program | Ingen | Hemligheter: get, list <br> Certifikat: Hämta, lista | [Key Vault läsare (förhands granskning)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview) [Key Vault hemlig användare (förhands granskning)](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user-preview) |
 
 De tre team rollerna behöver åtkomst till andra resurser tillsammans med Key Vault behörigheter. Utvecklare och operatörer behöver distribuera åtkomst för att distribuera virtuella datorer (eller Web Apps-funktionen i Azure App Service). Granskare behöver Läs behörighet till lagrings kontot där Key Vaults loggarna lagras.
 

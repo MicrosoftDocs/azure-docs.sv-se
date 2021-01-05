@@ -3,17 +3,17 @@ title: Telemetri, egenskaper och kommando nytto laster i Azure IoT Central | Mic
 description: Med Azure IoT Central Device templates kan du ange telemetri, egenskaper och kommandon för en enhet måste implementera. Förstå formatet på de data som en enhet kan utbyta med IoT Central.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/05/2020
+ms.date: 12/19/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 5b1bbce68be19c2dbb08f7d69611b719b450a370
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: c29af68433f29d7bdd363bedfa6d36316b952f4c
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96121766"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795351"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetri, egenskaper och kommandonyttolaster
 
@@ -719,7 +719,7 @@ IoT Central förväntar sig ett svar från enheten till skrivbara egenskaps uppd
 
 | Värde | Etikett | Beskrivning |
 | ----- | ----- | ----------- |
-| `'ac': 200` | Slutförd | Egenskaps ändrings åtgärden har slutförts. |
+| `'ac': 200` | Slutfört | Egenskaps ändrings åtgärden har slutförts. |
 | `'ac': 202`  eller `'ac': 201` | Väntar | Egenskaps ändrings åtgärden väntar eller pågår |
 | `'ac': 4xx` | Fel | Den begärda egenskaps ändringen var inte giltig eller innehöll ett fel |
 | `'ac': 5xx` | Fel | Ett oväntat fel uppstod i enheten vid bearbetning av den begärda ändringen. |

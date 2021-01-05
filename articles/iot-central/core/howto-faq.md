@@ -3,16 +3,16 @@ title: Vanliga frågor och svar om Azure IoT Central | Microsoft Docs
 description: Vanliga frågor och svar om Azure IoT Central
 author: dominicbetts
 ms.author: dobett
-ms.date: 09/23/2020
+ms.date: 12/20/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: cbe0dbe55f903c25556698a5d510bf9e67b408be
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: acabaf843f8acfe7bc0b5e9456dee09bde74bef7
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126728"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796048"
 ---
 # <a name="frequently-asked-questions-for-iot-central"></a>Vanliga frågor och svar om IoT Central
 
@@ -38,15 +38,15 @@ När en operatör avblockerar en enhet återgår statusen till sitt tidigare vä
 
 Om enhetens status **väntar på godkännande** på sidan **enheter** , innebär det att alternativet **Godkänn automatiskt** är inaktiverat:
 
-:::image type="content" source="media/howto-faq/auto-approve.png" alt-text="Skärm bild som visar blockerad enhet":::
+:::image type="content" source="media/howto-faq/auto-approve.png" alt-text="Skärm bild som visar alternativet program med automatiskt godkännande inaktiverat.":::
 
 En operatör måste explicit godkänna en enhet innan den börjar skicka data. Enheter som inte är registrerade manuellt på sidan **enheter** , men som är anslutna med giltiga autentiseringsuppgifter, har enhets statusen **väntar på godkännande**. Operatörer kan godkänna dessa enheter från sidan **enheter** med knappen **Godkänn** :
 
-:::image type="content" source="media/howto-faq/approve-device.png" alt-text="Skärm bild som visar blockerad enhet":::
+:::image type="content" source="media/howto-faq/approve-device.png" alt-text="Skärm bild som visar hur du godkänner en enhet":::
 
 **Hur gör jag för att associera en enhet med en enhets mall?**
 
-Om enhetens status är **associerad**innebär det att enheten som ansluter till IoT Central saknar en associerad enhets mall. Den här situationen inträffar vanligt vis i följande scenarier:
+Om enhetens status är **associerad** innebär det att enheten som ansluter till IoT Central saknar en associerad enhets mall. Den här situationen inträffar vanligt vis i följande scenarier:
 
 - En uppsättning enheter läggs till med hjälp av **Importera** på sidan **enheter** utan att ange enhets mal len.
 - En enhet registrerades manuellt på sidan **enheter** utan att ange enhets mal len. Enheten anslöt sedan med giltiga autentiseringsuppgifter.  

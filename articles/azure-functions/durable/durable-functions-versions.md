@@ -3,14 +3,14 @@ title: Översikt över Durable Functions-versioner – Azure Functions
 description: Lär dig mer om Durable Functions-versioner.
 author: cgillum
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 12/23/2020
 ms.author: azfuncdf
-ms.openlocfilehash: d6662259494bba5747e01c4574186e9030112247
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4d10bab06428295bbc8c5319bd47787d7b1fb34
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88719418"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763378"
 ---
 # <a name="durable-functions-versions-overview"></a>Översikt över Durable Functions-versioner
 
@@ -50,6 +50,8 @@ Installera den senaste 2. x-versionen av tillägget Durable Functions bindningar
 
 Durable Functions 2. x finns i version 2. x i paketet för [Azure Functions-tillägget](../functions-bindings-register.md#extension-bundles).
 
+Python-stöd i Durable Functions kräver Durable Functions 2. x.
+
 Om du vill uppdatera tilläggs paket versionen i projektet öppnar du host.jspå och uppdaterar `extensionBundle` avsnittet för att använda version 2. x ( `[2.*, 3.0.0)` ).
 
 ```json
@@ -61,6 +63,9 @@ Om du vill uppdatera tilläggs paket versionen i projektet öppnar du host.jspå
     }
 }
 ```
+
+> [!NOTE]
+> Om Visual Studio Code inte visar rätt mallar när du har ändrat tilläggs paketets version, laddar du om fönstret genom att köra *utvecklaren: Läs in fönster* -kommandot på nytt (<kbd>CTRL + R</kbd> i Windows och Linux, <kbd>kommando + R</kbd> på MacOS).
 
 #### <a name="net"></a>.NET
 

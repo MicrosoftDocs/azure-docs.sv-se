@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: 1446808b77e5eea78a9912db4c7a8e2dd783f33a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 9e60fd9a20720d75f96a0b78ee783bd5509a8f90
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104384"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763497"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>SignalR Service-bindningar för Azure Functions
 
@@ -18,6 +18,7 @@ I den här uppsättningen artiklar förklaras hur du autentiserar och skickar me
 
 | Åtgärd | Typ |
 |---------|---------|
+| Hantera meddelanden från SignalR-tjänsten | [Utlös bindning](./functions-bindings-signalr-service-trigger.md) |
 | Returnera URL för tjänst slut punkt och åtkomsttoken | [Binda in](./functions-bindings-signalr-service-input.md) |
 | Skicka signal tjänst meddelanden |[Utgående bindning](./functions-bindings-signalr-service-output.md) |
 
@@ -55,5 +56,6 @@ Om du vill använda Signalerare för signalering i Java-funktioner måste du lä
 
 ## <a name="next-steps"></a>Nästa steg
 
+- [Hantera meddelanden från SignalR-tjänsten (Utlös bindning)](./functions-bindings-signalr-service-trigger.md)
 - [Returnera URL: en för tjänstens slut punkt och åtkomsttoken (ingående bindning)](./functions-bindings-signalr-service-input.md)
 - [Skicka signal tjänst meddelanden (utgående bindning)](./functions-bindings-signalr-service-output.md)

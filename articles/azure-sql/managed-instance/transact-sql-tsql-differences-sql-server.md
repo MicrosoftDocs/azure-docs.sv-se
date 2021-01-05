@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: c18ee43eefe9c6cf9cba7f4e8f6c3fd3f55bba5a
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: e6dc4656e33b55a2cc695874376baf1cd816a838
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368706"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796303"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Skillnader i T-SQL mellan SQL Server & Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -69,6 +69,7 @@ Begränsningar:
 
 - Med en SQL-hanterad instans kan du säkerhetskopiera en instans databas till en säkerhets kopia med upp till 32 Stripes, vilket är tillräckligt för databaser upp till 4 TB om komprimering av säkerhets kopia används.
 - Det går inte att köra `BACKUP DATABASE ... WITH COPY_ONLY` på en databas som är krypterad med service-hanterad Transparent datakryptering (TDE). Service-Managed TDE tvingar säkerhets kopieringarna att krypteras med en intern TDE-nyckel. Det går inte att exportera nyckeln, så du kan inte återställa säkerhets kopian. Använd automatisk säkerhets kopiering och återställning av tidpunkter, eller Använd [kundhanterad (BYOK) TDE](../database/transparent-data-encryption-tde-overview.md#customer-managed-transparent-data-encryption---bring-your-own-key) i stället. Du kan också inaktivera kryptering på databasen.
+- Det går inte att återställa interna säkerhets kopior som har gjorts på en hanterad instans till en SQL Server. Detta beror på att den hanterade instansen har högre intern databas version jämfört med en version av SQL Server.
 - Den största storleken för säkerhets kopierings stripe med `BACKUP` kommandot i SQL Managed instance är 195 GB, vilket är den maximala BLOB-storleken. Öka antalet ränder i säkerhets kopierings kommandot för att minska storleken på enskilda stripe-volymer och håll dig inom den här gränsen.
 
     > [!TIP]

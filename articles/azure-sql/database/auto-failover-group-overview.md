@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 11/16/2020
-ms.openlocfilehash: 0d2248b9c0a289f5e4f9f2f8e987365ab58c49c0
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.date: 12/26/2020
+ms.openlocfilehash: 91375f4460b55617ace0b18b60d59d961a762f4c
+ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94988552"
+ms.lasthandoff: 12/27/2020
+ms.locfileid: "97792508"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Använd grupper för automatisk redundans för att aktivera transparent och samordnad redundansväxling av flera databaser
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -229,7 +229,7 @@ Om programmet använder SQL-hanterad instans som datanivå, följer du dessa all
 
 ### <a name="creating-the-secondary-instance"></a>Skapa den sekundära instansen
 
-För att säkerställa icke-avbruten anslutning till den primära SQL-hanterade instansen efter redundans måste båda de primära och sekundära instanserna finnas i samma DNS-zon. Det garanterar att samma certifikat för flera domäner (SAN) kan användas för att autentisera klient anslutningarna till någon av de två instanserna i gruppen redundans. När programmet är redo för produktions distribution skapar du en sekundär SQL-hanterad instans i en annan region och kontrollerar att den delar DNS-zonen med den primära SQL-hanterade instansen. Du kan göra det genom att ange den valfria `DNS Zone Partner` parametern med hjälp av Azure Portal, PowerShell eller REST API.
+För att säkerställa icke-avbruten anslutning till den primära SQL-hanterade instansen efter redundans måste båda de primära och sekundära instanserna finnas i samma DNS-zon. Det garanterar att samma certifikat för flera domäner (SAN) kan användas för att autentisera klient anslutningarna till någon av de två instanserna i gruppen redundans. När programmet är redo för produktions distribution skapar du en sekundär SQL-hanterad instans i en annan region och kontrollerar att den delar DNS-zonen med den primära SQL-hanterade instansen. Du kan göra det genom att ange den valfria parametern när du skapar den. Om du använder PowerShell eller REST API, är namnet på den valfria parametern `DNS Zone Partner` , och namnet på motsvarande fält i Azure Portal är primär hanterad instans.
 
 > [!IMPORTANT]
 > Den första hanterade instans som skapas i under nätet bestämmer DNS-zonen för alla efterföljande instanser i samma undernät. Det innebär att två instanser från samma undernät inte kan tillhöra olika DNS-zoner.

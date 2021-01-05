@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: ce86da7697341e769ada120dc7a941319b64fc18
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 935aa8297e8b244bfd05483f07aad3eadb485f1b
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109546"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797085"
 ---
 # <a name="tutorial-discover-aws-instances-with-server-assessment"></a>Självstudie: identifiera AWS-instanser med Server utvärdering
 
@@ -20,7 +20,7 @@ Som en del av migreringen till Azure identifierar du dina servrar för utvärder
 
 Den här självstudien visar hur du identifierar Amazon Web Services-instanser (AWS) med verktyget Azure Migrate: Server bedömning med en förenklad Azure Migrate-installation. Du distribuerar installationen som en fysisk server för att kontinuerligt identifiera metadata för dator och prestanda.
 
-I den här guiden får du lära dig att:
+I de här självstudierna får du lära dig att
 
 > [!div class="checklist"]
 > * Konfigurera ett Azure-konto.
@@ -42,7 +42,7 @@ Innan du påbörjar den här självstudien måste du kontrol lera att du har des
 --- | ---
 **Enhet** | Du behöver en virtuell EC2-dator för att köra Azure Migrate-installationen. Datorn ska ha:<br/><br/> – Windows Server 2016 installerat. Det finns inte stöd för att köra installationen på en dator med Windows Server 2019.<br/><br/> – 16 GB RAM, 8 virtuella processorer, cirka 80 GB disk lagring och en extern virtuell växel.<br/><br/> – En statisk eller dynamisk IP-adress, med Internet åtkomst, antingen direkt eller via en proxyserver.
 **Windows-instanser** | Tillåt inkommande anslutningar på WinRM-port 5985 (HTTP), så att enheten kan hämta konfigurations-och prestanda-metadata.
-**Linux-instanser** | Tillåt inkommande anslutningar på port 22 (TCP).
+**Linux-instanser** | Tillåt inkommande anslutningar på port 22 (TCP).<br/><br/> Instanserna bör använda `bash` som standard gränssnitt, annars Miss känner identifieringen.
 
 ## <a name="prepare-an-azure-user-account"></a>Förbereda ett Azure-användarkonto
 
@@ -222,11 +222,16 @@ Konfigurera enheten för första gången.
 ### <a name="register-the-appliance-with-azure-migrate"></a>Registrera enheten med Azure Migrate
 
 1. Klistra in **Azure Migrate projekt nyckeln** som har kopierats från portalen. Om du inte har nyckeln går du till **Server utvärdering> identifiera> hantera befintliga apparater**, väljer det installations namn som du angav vid tidpunkten för att generera nyckeln och kopierar motsvarande nyckel.
-1. Klicka på **Logga** in. En Azure-inloggning visas i en ny flik i webbläsaren. Om den inte visas kontrollerar du att du har inaktiverat blockering av popup-fönster i webbläsaren.
-1. På fliken nytt loggar du in med ditt användar namn och lösen ord för Azure.
+1. Du behöver en enhets kod för att autentisera med Azure. När du klickar på **Logga in** öppnas en modal enhets kod som visas nedan.
+
+    ![Modal visar enhets koden](./media/tutorial-discover-vmware/device-code.png)
+
+1. Klicka på **Kopiera kod & inloggning** för att kopiera enhets koden och öppna en Azure-inloggnings tolk i en ny webbläsare-flik. Om den inte visas kontrollerar du att du har inaktiverat blockering av popup-fönster i webbläsaren.
+1. På fliken nytt klistrar du in enhets koden och loggar in med ditt användar namn och lösen ord för Azure.
    
    Inloggning med en PIN-kod stöds inte.
-3. När du har loggat in går du tillbaka till webbappen. 
+3. Om du stänger fliken inloggning oavsiktligt utan att logga in, måste du uppdatera fliken webbläsare i Konfigurations hanteraren för att aktivera inloggnings knappen igen.
+1. När du har loggat in går du tillbaka till föregående flik med installationen av Konfigurations hanteraren.
 4. Om Azure-användarkontot som används för loggning har rätt [behörigheter](./tutorial-discover-physical.md) för de Azure-resurser som skapades under den här nyckeln, initieras registrerings enheten.
 1. När installationen av enheten har registrerats kan du se registrerings informationen genom att klicka på **Visa information**.
 
@@ -243,6 +248,10 @@ Anslut nu från installationen till de fysiska servrarna som ska identifieras oc
     - Azure Migrate stöder den privata SSH-nyckeln som genereras av ssh-keygen-kommandot med RSA-, DSA-, ECDSA-och ed25519-algoritmer.
     - För närvarande har Azure Migrate inte stöd för en lösen fras baserad SSH-nyckel. Använd en SSH-nyckel utan lösen fras.
     - För närvarande stöder Azure Migrate inte den privata SSH-nyckelfilen som genereras av SparaTillFil.
+    - Azure Migrate stöder OpenSSH-formatet för den privata SSH-nyckelfilen som visas nedan:
+    
+    ![Format som stöds av SSH privat nyckel](./media/tutorial-discover-physical/key-format.png)
+
 
 1. Om du vill lägga till flera autentiseringsuppgifter samtidigt klickar du på **Lägg till fler** för att spara och lägga till fler autentiseringsuppgifter. Flera autentiseringsuppgifter stöds för identifiering av fysiska servrar.
 1. I **steg 2: Ange information om fysiska eller virtuella servrar** klickar du på **Lägg till identifierings källa** för att ange serverns **IP-adress/FQDN** och det egna namnet för autentiseringsuppgifter för att ansluta till servern.

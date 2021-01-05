@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
-ms.openlocfilehash: 9b6141e6009cb868d63429836f8c8f050c792ee5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 4f70cbacf686210c1188cb0a87e6116af8ed4b01
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152298"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763189"
 ---
 # <a name="managed-identities-for-azure-signalr-service"></a>Hanterade identiteter för Azure SignalR service
 
@@ -28,7 +28,7 @@ Om du vill konfigurera en hanterad identitet i Azure Portal skapar du först en 
 
 2. Välj **identitet**.
 
-4. Växla **status** till **på**på fliken **systemtilldelad** . Välj **Spara**.
+4. Växla **status** till **på** på fliken **systemtilldelad** . Välj **Spara**.
 
     :::image type="content" source="media/signalr-howto-use-managed-identity/system-identity-portal.png" alt-text="Lägga till en tilldelad identitet i portalen":::
 
@@ -46,7 +46,7 @@ Om du skapar en Azure SignalR-tjänstinstans med en tilldelad identitet måste d
 
 5. Sök efter den identitet som du skapade tidigare och markera den. Välj **Lägg till**.
 
-    :::image type="content" source="media/signalr-howto-use-managed-identity/user-identity-portal.png" alt-text="Lägga till en tilldelad identitet i portalen":::
+    :::image type="content" source="media/signalr-howto-use-managed-identity/user-identity-portal.png" alt-text="Lägg till en användardefinierad identitet i portalen":::
 
 ## <a name="use-a-managed-identity-in-serverless-scenarios"></a>Använda en hanterad identitet i Server lös scenarier
 
@@ -56,9 +56,12 @@ Azure SignalR service är en fullständigt hanterad tjänst, så du kan inte anv
 
 1. Lägg till en tilldelad identitet eller användardefinierad identitet.
 
-2. Konfigurera överordnade inställningar och Använd **ManagedIdentity** **som autentiseringsinställningar.** Information om hur du skapar överordnade inställningar med autentisering finns i [Inställningar för överordnade strömmar](concept-upstream.md).
+2. Lägg till en uppströms inställning och klicka på valfri asterisk för att komma till en detaljerad sida som du ser nedan.
+    :::image type="content" source="media/signalr-howto-use-managed-identity/pre-msi-settings.png" alt-text="för MSI-inställning":::
+    
+    :::image type="content" source="media/signalr-howto-use-managed-identity/msi-settings.png" alt-text="MSI – inställning":::
 
-3. I inställningarna för hanterad identitetsautentisering för **resurs**kan du ange mål resursen. Resursen blir ett `aud` anspråk i den hämtade åtkomsttoken, som kan användas som en del av verifieringen i dina överordnade slut punkter. Resursen kan vara något av följande:
+3. I inställningarna för hanterad identitetsautentisering för **resurs** kan du ange mål resursen. Resursen blir ett `aud` anspråk i den hämtade åtkomsttoken, som kan användas som en del av verifieringen i dina överordnade slut punkter. Resursen kan vara något av följande:
     - Tom
     - Program (klient) ID för tjänstens huvud namn
     - Program-ID-URI för tjänstens huvud namn
@@ -76,6 +79,37 @@ För att verifiera åtkomsttoken bör din app också verifiera mål gruppen och 
 Den Azure Active Directory (Azure AD) mellanprogram har inbyggda funktioner för att verifiera åtkomsttoken. Du kan bläddra igenom våra [exempel](../active-directory/develop/sample-v2-code.md) för att hitta ett på valfritt språk.
 
 Vi tillhandahåller bibliotek och kod exempel som visar hur du hanterar verifiering av token. Det finns också flera partner bibliotek med öppen källkod som är tillgängliga för JSON Web Token (JWT)-verifiering. Det finns minst ett alternativ för nästan alla plattformar och språk. Mer information om Azure AD-autentiseringspaket och kod exempel finns i [Microsoft Identity Platform Authentication libraries](../active-directory/develop/reference-v2-libraries.md).
+
+#### <a name="authentication-in-function-app"></a>Autentisering i Funktionsapp
+
+Att ställa in verifiering av åtkomst-token i Funktionsapp är enkelt och effektivt utan kod fungerar.
+
+1. På sidan **autentisering/auktorisering** växlar du **App Service autentisering** till **på**.
+
+2. Välj **Logga in med Azure Active Directory** i **åtgärd att vidta när en begäran inte har autentiserats**.
+
+3. Klicka i i autentiseringsprovider **Azure Active Directory**
+
+4. På den nya sidan. Välj **Express** och **Skapa ny AD-App** och klicka sedan på **OK** :::image type="content" source="media/signalr-howto-use-managed-identity/function-aad.png" alt-text="funktion AAD":::
+
+5. Navigera till signal tjänsten och följ [stegen](howto-use-managed-identity.md#add-a-system-assigned-identity) för att lägga till en tilldelad identitet eller användare som tilldelats identiteten.
+
+6. Gå till **överordnade inställningar** i SignalR-tjänsten och välj **Använd hanterad identitet** och **Välj från befintliga program**. Välj det program som du skapade tidigare.
+
+Efter de här inställningarna kommer Funktionsapp att avvisa begär Anden utan en åtkomsttoken i huvudet.
+
+## <a name="use-a-managed-identity-for-key-vault-reference"></a>Använd en hanterad identitet för Key Vault referens
+
+SignalR-tjänsten kan komma åt Key Vault för att få hemlighet med den hanterade identiteten.
+
+1. Lägg till en tilldelad identitet eller användardefinierad identitet för Azure SignalR-tjänsten.
+
+2. Bevilja hemlig Läs behörighet för den hanterade identiteten i åtkomst principerna i Key Vault. Se [tilldela en princip för Key Vault åtkomst med hjälp av Azure Portal](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
+
+Den här funktionen kan för närvarande användas i följande scenarier:
+
+- [Referens hemlighet i uppströms URL-mönster](./concept-upstream.md#key-vault-secret-reference-in-url-template-settings)
+
 
 ## <a name="next-steps"></a>Nästa steg
 

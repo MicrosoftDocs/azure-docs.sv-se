@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 12/25/2020
 ms.author: memildin
-ms.openlocfilehash: c0952e0f267f9c2511a2e80fa7106958d8dd0ee5
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 115d89783a849a9c4c7adb2fceceaf8d1575c785
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791893"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795996"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Säkerhetsrekommendationer i Azure Security Center 
 I det här avsnittet beskrivs hur du visar och förstår rekommendationerna i Azure Security Center som hjälper dig att skydda dina Azure-resurser.
@@ -42,7 +42,11 @@ Security Center analyserar dina resursers säkerhets tillstånd för att identif
 
 1. Från Security Center menyn öppnar du sidan **rekommendationer** för att se de rekommendationer som gäller för din miljö. Rekommendationerna är grupperade i säkerhets kontroller.
 
-      ![Rekommendationer grupperade efter säkerhets kontroll](./media/security-center-recommendations/view-recommendations.png)
+    :::image type="content" source="./media/security-center-recommendations/view-recommendations.png" alt-text="Rekommendationer grupperade efter säkerhets kontroll" lightbox="./media/security-center-recommendations/view-recommendations.png":::
+
+1. Om du vill hitta rekommendationer för resurs typ, allvarlighets grad, miljö eller andra kriterier som är viktiga för dig använder du de valfria filtren ovanför listan med rekommendationer.
+
+    :::image type="content" source="media/security-center-recommendations/recommendation-list-filters.png" alt-text="Filter för att förfina listan med Azure Security Center rekommendationer":::
 
 1. Expandera en kontroll och välj en rekommendation för att Visa rekommendations informations sidan.
 
@@ -60,7 +64,7 @@ Security Center analyserar dina resursers säkerhets tillstånd för att identif
         - Resurser som inte är **felfria** – resurser som fortfarande påverkas av det identifierade problemet.
         - **Ej tillämpliga resurser** – resurser för vilka rekommendationen inte kan ge ett definitivt svar. Fliken ej tillämpligt innehåller även orsaker för varje resurs. 
 
-            :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="Sidan rekommendations information.":::
+            :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="Inte tillämpliga resurser på grund av orsaker.":::
     1. Åtgärds knappar för att reparera rekommendationen eller utlösa en Logic app.
 
 ## <a name="preview-recommendations"></a>För hands versions rekommendationer
@@ -71,7 +75,7 @@ De bör fortfarande åtgärdas när så är möjligt, så att när förhands gra
 
 Ett exempel på en förhands gransknings rekommendation:
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Sidan rekommendations information.":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Rekommendation med förhands gransknings flaggan":::
  
 ## <a name="next-steps"></a>Nästa steg
 

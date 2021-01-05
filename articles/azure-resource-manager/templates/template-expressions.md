@@ -1,18 +1,18 @@
 ---
 title: Mallens syntax och uttryck
-description: Beskriver deklarativ JSON-syntax för Azure Resource Manager mallar.
+description: Beskriver deklarativ JSON-syntax för Azure Resource Manager mallar (ARM-mallar).
 ms.topic: conceptual
 ms.date: 03/17/2020
-ms.openlocfilehash: baddedae1b918502e579d2ed230e0779960f45e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44a386ed849771dfba717c8d1414e64422d0c7bd
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82203836"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797051"
 ---
-# <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Syntax och uttryck i Azure Resource Manager-mallar
+# <a name="syntax-and-expressions-in-arm-templates"></a>Syntax och uttryck i ARM-mallar
 
-Den grundläggande syntaxen för mallen är JSON. Du kan dock använda uttryck för att utöka de JSON-värden som är tillgängliga i mallen.  Uttryck börjar och slutar med hakparenteser: `[` respektive `]`. Uttryckets värde utvärderas när mallen distribueras. Ett uttryck kan returnera en sträng, ett heltal, ett booleskt värde, en matris eller ett objekt.
+Den grundläggande syntaxen för Azure Resource Manager-mallen (ARM-mallen) är JavaScript Object Notation (JSON). Du kan dock använda uttryck för att utöka de JSON-värden som är tillgängliga i mallen.  Uttryck börjar och slutar med hakparenteser: `[` respektive `]`. Uttryckets värde utvärderas när mallen distribueras. Ett uttryck kan returnera en sträng, ett heltal, ett booleskt värde, en matris eller ett objekt.
 
 Ett mall uttryck får inte överstiga 24 576 tecken.
 
@@ -31,7 +31,7 @@ Azure Resource Manager innehåller [funktioner](template-functions.md) som du ka
 
 I uttrycket anropar syntaxen `resourceGroup()` en av de funktioner som Resource Manager tillhandahåller för användning i en mall. I det här fallet är det [resourceGroup](template-functions-resource.md#resourcegroup) -funktionen. Precis som i Java Script är funktions anrop formaterade som `functionName(arg1,arg2,arg3)` . Syntaxen `.location` hämtar en egenskap från det objekt som returnerades av funktionen.
 
-Mallens funktioner och deras parametrar är Skift läges känsliga. Resource Manager matchar till exempel **variabler (' var1 ')** och **variabler (' var1 ')** som samma. När den utvärderas, om inte funktionen uttryckligen ändrar Skift läge (t. ex. toUpper eller toLower), bevarar funktionen det fallet. Vissa resurs typer kan ha fall krav som är skilda från hur funktionerna utvärderas.
+Mallens funktioner och deras parametrar är Skift läges känsliga. Resource Manager löses till exempel `variables('var1')` och `VARIABLES('VAR1')` är detsamma. Vid bedömning, om inte funktionen uttryckligen ändrar Skift läge (t. ex. `toUpper` eller `toLower` ), bevarar funktionen det fallet. Vissa resurs typer kan ha fall krav som är skilda från hur funktionerna utvärderas.
 
 Om du vill skicka ett sträng värde som en parameter till en funktion använder du enkla citat tecken.
 
@@ -123,7 +123,7 @@ Samma formatering gäller när du skickar värden i från en parameter fil. Teck
 
 ## <a name="null-values"></a>Null-värden
 
-Om du vill ange en egenskap till null kan du använda **Null** eller **[JSON (null)]**. [JSON-funktionen](template-functions-object.md#json) returnerar ett tomt objekt när du anger `null` som parameter. I båda fallen behandlar Resource Manager-mallar den som om egenskapen inte finns.
+Om du vill ange en egenskap till null kan du använda `null` eller `[json('null')]`. [JSON-funktionen](template-functions-object.md#json) returnerar ett tomt objekt när du anger `null` som parameter. I båda fallen behandlar Resource Manager-mallar den som om egenskapen inte finns.
 
 ```json
 "stringValue": null,
@@ -132,5 +132,5 @@ Om du vill ange en egenskap till null kan du använda **Null** eller **[JSON (nu
 
 ## <a name="next-steps"></a>Nästa steg
 
-* En fullständig lista över mall funktioner finns i [Azure Resource Manager Template Functions](template-functions.md).
-* Mer information om mallfiler finns i [förstå strukturen och syntaxen för Azure Resource Manager mallar](template-syntax.md).
+* En fullständig lista över mallar finns i funktioner i [arm-mallar](template-functions.md).
+* Mer information om mallfiler finns i [förstå strukturen och syntaxen för ARM-mallar](template-syntax.md).

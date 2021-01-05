@@ -1,5 +1,5 @@
 ---
-title: Resursbegränsningar
+title: Resursgränser
 titleSuffix: Azure SQL Managed Instance
 description: Den här artikeln innehåller en översikt över resurs gränserna för Azure SQL-hanterad instans.
 services: sql-database
@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: 47c837e7a2ee859c7805d6b2e11058bcc02e6c22
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 9a96da607ceea5a6d5cb6ef02df5a9a4db24562e
+ms.sourcegitcommit: e8bd58dbcfe0eae45979d86e071778b9aec40b6c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400581"
+ms.lasthandoff: 12/25/2020
+ms.locfileid: "97770969"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Översikt över resursbegränsningar för SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -84,7 +84,7 @@ SQL-hanterad instans har två tjänst nivåer: [generell användning](../databas
 | Maximalt antal sessioner | 30000 | 30000 |
 | Maximalt antal samtidiga arbetare (begär Anden) | Gen4: 210 * antalet virtuella kärnor + 800<br>Gen5: 105 * antalet virtuella kärnor + 800 | Gen4: 210 * antalet virtuella kärnor + 800<br>Gen5: 105 * antalet virtuella kärnor + 800 |
 | [Skrivskyddade repliker](../database/read-scale-out.md) | 0 | 1 (ingår i priset) |
-| Beräknings isolering | Gen5<br/>– stöds för 80 virtuella kärnor<br/>– stöds inte för andra storlekar<br/><br/>Gen4 stöds inte på grund av inaktuellitet|Gen5<br/>– stöds för 60, 64, 80 virtuella kärnor<br/>– stöds inte för andra storlekar<br/><br/>Gen4 stöds inte på grund av inaktuellitet|
+| Beräknings isolering | Gen5 stöds inte eftersom Generell användning instanser kan dela fysisk maskin vara med andra instanser<br/>Gen4 stöds inte på grund av inaktuellitet|Gen5<br/>– stöds för 40, 64, 80 virtuella kärnor<br/>– stöds inte för andra storlekar<br/><br/>Gen4 stöds inte på grund av inaktuellitet|
 
 
 Några ytterligare överväganden: 
@@ -150,7 +150,7 @@ Följande tabell visar de **regionala standard gränserna** för prenumerations 
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional och MSDN-plattformar|2|32|
 
-\* Vid planering av distributioner bör du tänka på att Affärskritisk (BC) tjänst nivån kräver fyra (4) gånger mer vCore-kapacitet än Generell användning (GP). Exempel: 1 GP-vCore = 1 vCore-enhet och 1 BC-vCore = 4 vCore-enheter. För att förenkla förbruknings analysen mot standard gränserna, sammanfatta vCore-enheterna över alla undernät i den region där SQL-hanterad instans distribueras och jämför resultaten med instans enhets gränserna för din prenumerations typ. Gränsen **för antalet vCore-enheter** gäller för varje prenumeration i en region. Det finns ingen gräns per enskilda undernät förutom att summan av alla virtuella kärnor som distribueras över flera undernät måste vara lägre eller lika med **Max antalet vCore-enheter**.
+\* Vid planering av distributioner bör du tänka på att Affärskritisk (BC) tjänst nivån kräver fyra (4) gånger mer vCore-kapacitet än Generell användning (GP). Exempel: 1 GP vCore = 1 vCore Unit och 1 BC vCore = 4 vCore. För att förenkla förbruknings analysen mot standard gränserna, sammanfatta vCore-enheterna över alla undernät i den region där SQL-hanterad instans distribueras och jämför resultaten med instans enhets gränserna för din prenumerations typ. Gränsen **för antalet vCore-enheter** gäller för varje prenumeration i en region. Det finns ingen gräns per enskilda undernät förutom att summan av alla virtuella kärnor som distribueras över flera undernät måste vara lägre eller lika med **Max antalet vCore-enheter**.
 
 \*\* Större gränser för undernät och vCore är tillgängliga i följande regioner: östra Australien, östra USA, östra USA 2, norra Europa, södra centrala USA, Sydostasien, Storbritannien, södra, Västeuropa, västra USA 2.
 

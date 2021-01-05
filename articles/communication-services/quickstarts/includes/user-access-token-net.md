@@ -1,6 +1,6 @@
 ---
-title: inkludera fil
-description: inkludera fil
+title: ta med fil
+description: ta med fil
 services: azure-communication-services
 author: tomaschladek
 manager: nmurav
@@ -10,14 +10,14 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 511548da9767544ace2827a6a8b2baa83b1d2971
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 4c05b654b6714c5317e1334d3a3ea5c327a5ff18
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96993062"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97770845"
 ---
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - Den senaste versionen av [klient biblioteket för .net Core](https://dotnet.microsoft.com/download/dotnet-core) för ditt operativ system.
@@ -86,7 +86,7 @@ Lägg till följande kod i `Main`-metoden:
 // This code demonstrates how to fetch your connection string
 // from an environment variable.
 string connectionString = Environment.GetEnvironmentVariable("COMMUNICATION_SERVICES_CONNECTION_STRING");
-var client = new CommunicationIdentityClient(ConnectionString);
+var client = new CommunicationIdentityClient(connectionString);
 ```
 
 ## <a name="create-an-identity"></a>Skapa en identitet

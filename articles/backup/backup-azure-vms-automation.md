@@ -3,12 +3,12 @@ title: Säkerhetskopiera och återställa virtuella Azure-datorer med PowerShell
 description: Beskriver hur du säkerhetskopierar och återställer virtuella Azure-datorer med hjälp av Azure Backup med PowerShell
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: ded2bc8a71bf564e31f40ca9f0d6c8049188768b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 610049ec14243abb296aef431eb37533c6169817
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95978377"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797068"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Säkerhetskopiera och återställa virtuella Azure-datorer med PowerShell
 
@@ -259,6 +259,8 @@ Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGro
 > Om du använder Azure Government molnet använder du värdet `ff281ffe-705c-4f53-9f37-a40e6f2c68f3` för parametern **servicePrincipalName** i cmdleten [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) .
 >
 
+Om du vill selektivt säkerhetskopiera några diskar och utesluta andra som nämns i [dessa scenarier](selective-disk-backup-restore.md#scenarios)kan du konfigurera skyddet och endast säkerhetskopiera de relevanta diskarna som dokumenteras [här](selective-disk-backup-restore.md#enable-backup-with-powershell).
+
 ## <a name="monitoring-a-backup-job"></a>Övervaka ett säkerhets kopierings jobb
 
 Du kan övervaka långvariga åtgärder, till exempel säkerhets kopierings jobb, utan att använda Azure Portal. Använd cmdleten [Get-AzRecoveryservicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) för att hämta status för ett pågående jobb. Denna cmdlet hämtar säkerhets kopierings jobben för ett visst valv och det valvet anges i valv kontexten. Följande exempel hämtar status för ett pågående jobb som en matris och lagrar status i $joblist-variabeln.
@@ -338,6 +340,10 @@ $bkpPol.AzureBackupRGName="Contosto_"
 $bkpPol.AzureBackupRGNameSuffix="ForVMs"
 Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
+
+### <a name="exclude-disks-for-a-protected-vm"></a>Exkludera diskar för en skyddad virtuell dator
+
+Med Azure VM Backup kan du selektivt utesluta eller ta med diskar som är användbara i [dessa scenarier](selective-disk-backup-restore.md#scenarios). Om den virtuella datorn redan skyddas av Azure VM backup och om alla diskar säkerhets kopie ras, kan du ändra skyddet för att selektivt inkludera eller exkludera diskar som anges [här](selective-disk-backup-restore.md#modify-protection-for-already-backed-up-vms-with-powershell).
 
 ### <a name="trigger-a-backup"></a>Utlösa en säkerhets kopia
 
@@ -511,6 +517,13 @@ När återställnings jobbet har slutförts använder du cmdleten [Get-AzRecover
 $restorejob = Get-AzRecoveryServicesBackupJob -Job $restorejob -VaultId $targetVault.ID
 $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $targetVault.ID
 ```
+
+#### <a name="restore-selective-disks"></a>Återställ selektiva diskar
+
+En användare kan selektivt återställa få diskar i stället för hela den säkerhetskopierade uppsättningen. Ange de nödvändiga diskarna som parameter för att bara återställa dem i stället för hela uppsättningen som dokumenteras [här](selective-disk-backup-restore.md#restore-selective-disks-with-powershell).
+
+> [!IMPORTANT]
+> En måste selektivt säkerhetskopiera diskar för att selektivt återställa diskar. Mer information finns [här](selective-disk-backup-restore.md#selective-disk-restore).
 
 När du har återställt diskarna går du till nästa avsnitt för att skapa den virtuella datorn.
 

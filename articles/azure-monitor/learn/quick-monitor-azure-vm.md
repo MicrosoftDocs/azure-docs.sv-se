@@ -7,12 +7,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: ef0e3a451a5687278acaf1e857012027a5e657a3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: bf38291e26c46d26bbf8cb110d18e9526fb3f777
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186770"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797187"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Snabb start: övervaka en virtuell Azure-dator med Azure Monitor
 [Azure Monitor](../overview.md) börjar samla in data från virtuella Azure-datorer så snart de har skapats. I den här snabb starten tar du en kort genom gång av de data som samlas in automatiskt för en virtuell Azure-dator och hur du visar den i Azure Portal. Sedan aktiverar du [Azure Monitor for VMS](../insights/vminsights-overview.md) för din virtuella dator som gör det möjligt för agenter på den virtuella datorn att samla in och analysera data från gäst operativ systemet, inklusive processer och deras beroenden.
@@ -73,7 +73,7 @@ När du skapar en ny Log Analytics arbets yta måste den konfigureras för att s
 
 ### <a name="data-collection-from-linux-vm"></a>Insamling av data från virtuella Linux-datorer
 
-1. Välj **Syslog**.  
+1. Välj **data** och välj sedan **syslog**.
 
 2. Lägg till en händelse logg genom att skriva in namnet på loggen.  Skriv **syslog** och välj sedan plus tecknet **+** .  
 

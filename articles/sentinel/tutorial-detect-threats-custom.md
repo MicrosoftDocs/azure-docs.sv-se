@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2020
 ms.author: yelevin
-ms.openlocfilehash: 390d2c8488fd2b35c775eabe43677b9349b547a1
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 5d856339632e0033e997e5c1665fab623fda9cd2
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401652"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795749"
 ---
 # <a name="tutorial-create-custom-analytics-rules-to-detect-threats"></a>Självstudie: skapa anpassade analys regler för att identifiera hot
 
@@ -28,28 +28,37 @@ När du har [anslutit dina data källor](quickstart-onboard.md) till Azure Senti
 Den här självstudien hjälper dig att identifiera hot med Azure Sentinel.
 > [!div class="checklist"]
 > * Skapa analys regler
+> * Definiera hur händelser och aviseringar bearbetas
+> * Definiera hur aviseringar och incidenter genereras
 > * Automatisera hot svar
 
-## <a name="create-custom-analytics-rules"></a>Skapa anpassade analys regler
+## <a name="create-a-custom-analytics-rule-with-a-scheduled-query"></a>Skapa en anpassad analys regel med en schemalagd fråga
 
-Du kan skapa anpassade analys regler som hjälper dig att söka efter de typer av hot och avvikelser som är misstänkta i din miljö. Regeln säkerställer att du meddelas direkt, så att du kan prioritering, undersöka och åtgärda hoten.
+Du kan skapa anpassade analys regler som hjälper dig att identifiera hot och avvikande beteenden som finns i din miljö. Regeln säkerställer att du meddelas direkt, så att du kan prioritering, undersöka och åtgärda hoten.
 
 1. I Azure Portal under Azure Sentinel väljer du **analys**.
 
 1. I den översta meny raden väljer du **+ skapa** och väljer **schemalagd frågeregel**. Då öppnas **guiden Analytics-regel**.
 
-    :::image type="content" source="media/tutorial-detect-threats-custom/create-scheduled-query.png" alt-text="Skapa schemalagd fråga":::
+    :::image type="content" source="media/tutorial-detect-threats-custom/create-scheduled-query-small.png" alt-text="Skapa schemalagd fråga" lightbox="media/tutorial-detect-threats-custom/create-scheduled-query-full.png":::
 
 1. Ange ett unikt **namn** och en **Beskrivning** på fliken **Allmänt** . I fältet **taktiker** kan du välja bland de typer av attacker som regeln ska klassificeras efter. Ange **allvarlighets grad** för aviseringen vid behov. När du skapar regeln **aktive ras** **statusen** som standard, vilket innebär att den körs omedelbart när du har skapat den. Om du inte vill att den ska köras omedelbart väljer du **inaktive rad** och regeln läggs till på fliken **aktiva regler** och du kan aktivera den därifrån när du behöver den.
 
-    ![Börja skapa en anpassad analys regel](media/tutorial-detect-threats-custom/general-tab.png)
+    :::image type="content" source="media/tutorial-detect-threats-custom/general-tab.png" alt-text="Börja skapa en anpassad analys regel":::
 
-1. På fliken **Ange regel logik** kan du antingen skriva en fråga direkt i fältet **regel fråga** eller skapa frågan i Log Analytics och sedan kopiera och klistra in den där.
- 
-   ![Skapa fråga i Azure Sentinel](media/tutorial-detect-threats-custom/settings-tab.png)
+## <a name="define-the-rule-query-logic-and-configure-settings"></a>Definiera regel frågans logik och konfigurera inställningar
 
-   - Se avsnittet för **förhands granskning av resultat** till höger, där Azure Sentinel visar antalet resultat (logg händelser) som frågan genererar, ändras när du skriver och konfigurerar frågan. Diagrammet visar antalet resultat under den angivna tids perioden, vilket bestäms av inställningarna i avsnittet för **fråge schemaläggning** .
-    - Om du ser att frågan skulle utlösa för många eller för frekventa aviseringar kan du ange en bas linje i avsnittet **aviserings tröskel** .
+1. På fliken **Ange regel logik** kan du antingen skriva en fråga direkt i fältet **regel fråga** eller skapa frågan i Log Analytics och sedan kopiera och klistra in den där. Frågor skrivs med Kusto Query Language (KQL). Lär dig mer om KQL- [koncept](/azure/data-explorer/kusto/concepts/) och [frågor](/azure/data-explorer/kusto/query/)och se den här praktiska [guiden för snabb referenser](/azure/data-explorer/kql-quick-reference).
+
+   :::image type="content" source="media/tutorial-detect-threats-custom/set-rule-logic-tab-1.png" alt-text="Konfigurera logik och inställningar för frågeregel" lightbox="media/tutorial-detect-threats-custom/set-rule-logic-tab-all-1.png":::
+
+   - I avsnittet **resultat simulering** till höger väljer du **testa med aktuella data** och Azure Sentinel. du får ett diagram över resultaten (logg händelser) som frågan skulle generera under de senaste 50 gånger som den skulle ha kört, enligt det aktuella definierade schemat. Om du ändrar frågan väljer du **testa med aktuella data** igen för att uppdatera grafen. Diagrammet visar antalet resultat under den angivna tids perioden, vilket bestäms av inställningarna i avsnittet för **fråge schemaläggning** .
+  
+      Det här är vad resultat simuleringen kan se ut för frågan i skärm bilden ovan. Den vänstra sidan är standardvyn och den högra sidan är det du ser när du hovrar över en tidpunkt i diagrammet.
+
+     :::image type="content" source="media/tutorial-detect-threats-custom/results-simulation.png" alt-text="Skärm dum par för resultat simulering":::
+
+   - Om du ser att frågan skulle utlösa för många eller för frekventa aviseringar kan du ange en bas linje i avsnittet **aviserings tröskel** (se nedan).
 
       Här är en exempel fråga som varnar dig när ett avvikande antal resurser skapas i Azure Activity.
 
@@ -65,56 +74,66 @@ Du kan skapa anpassade analys regler som hjälper dig att söka efter de typer a
         >
         > - Det **går inte** att använda ADX-funktioner för att skapa Azure datautforskaren frågor i Log Analytics frågefönstret.
 
-    1. Använd avsnittet **Mappa entiteter** för att länka parametrar från frågeresultaten till Azure Sentinel-identifierade entiteter. Dessa entiteter utgör grunden för ytterligare analys, inklusive gruppering av aviseringar till incidenter på fliken **incident inställningar** .
+1. Använd avsnittet **Mappa entiteter** för att länka parametrar från frågeresultaten till Azure Sentinel-identifierade entiteter. Dessa entiteter utgör grunden för ytterligare analys, inklusive gruppering av aviseringar till incidenter på fliken **incident inställningar** . 
+
+    Lär dig mer om [entiteter](identify-threats-with-entity-behavior-analytics.md#entities-in-azure-sentinel) i Azure Sentinel.
   
-    1. Ange följande parametrar i avsnittet **fråge schemaläggning** :
+1. Ange följande parametrar i avsnittet **fråge schemaläggning** :
 
-       1. Ställ in **Kör fråga var** för att kontrol lera hur ofta frågan körs – så ofta som var 5: e minut eller så sällan som en gång om dagen.
+    :::image type="content" source="media/tutorial-detect-threats-custom/set-rule-logic-tab-2.png" alt-text="Ange schema och händelse gruppering för frågor" lightbox="media/tutorial-detect-threats-custom/set-rule-logic-tab-all-2.png":::
 
-       1. Ange **Sök data från den sista** för att fastställa tids perioden för de data som omfattas av frågan – till exempel kan den fråga de senaste 10 minuterna data eller de senaste 6 timmarna med data.
+    1. Ställ in **Kör fråga var** för att kontrol lera hur ofta frågan körs – så ofta som var 5: e minut eller så sällan som en gång om dagen.
 
-          > [!NOTE]
-          > **Frågeintervall och lookback-period**
-          > - Dessa två inställningar är oberoende av varandra, upp till en punkt. Du kan köra en fråga på ett kort intervall som täcker en tids period som är längre än intervallet (som har överlappande frågor), men du kan inte köra en fråga i ett intervall som överskrider perioden, annars kommer du att ha luckor i den övergripande frågan.
-          >
-          > **Inmatnings fördröjning**
-          > - För att kunna utföra **svars tider** som kan uppstå mellan en händelses generation vid källan och dess inmatning i Azure Sentinel, och för att säkerställa fullständig täckning utan dataduplicering, kör Azure Sentinel schemalagda analys regler på en **fem minuters fördröjning** från deras schemalagda tid.
+    1. Ange **Sök data från den sista** för att fastställa tids perioden för de data som omfattas av frågan – till exempel kan den fråga de senaste 10 minuterna data eller de senaste 6 timmarna med data.
 
-    1. Använd avsnittet **aviserings tröskel** för att definiera en bas linje. Ange till exempel **generera avisering när antalet frågeresultat** **är större än** och ange numret 1000 om du vill att regeln endast ska generera en avisering om frågan returnerar fler än 1000 resultat varje gång den körs. Det här fältet är obligatoriskt, så om du inte vill ange en bas linje – det vill säga om du vill att din avisering ska registrera varje händelse – anger du 0 i fältet tal.
+        > [!NOTE]
+        > **Frågeintervall och lookback-period**
+        > - Dessa två inställningar är oberoende av varandra, upp till en punkt. Du kan köra en fråga på ett kort intervall som täcker en tids period som är längre än intervallet (som har överlappande frågor), men du kan inte köra en fråga i ett intervall som överskrider perioden, annars kommer du att ha luckor i den övergripande frågan.
+        >
+        > - Du kan ange en lookback-period på upp till 14 dagar.
+        >
+        > **Inmatnings fördröjning**
+        > - För att kunna utföra **svars tider** som kan uppstå mellan en händelses generation vid källan och dess inmatning i Azure Sentinel, och för att säkerställa fullständig täckning utan dataduplicering, kör Azure Sentinel schemalagda analys regler på en **fem minuters fördröjning** från deras schemalagda tid.
+
+1. Använd avsnittet **aviserings tröskel** för att definiera en bas linje. Ange till exempel **generera avisering när antalet frågeresultat** **är större än** och ange numret 1000 om du vill att regeln endast ska generera en avisering om frågan returnerar fler än 1000 resultat varje gång den körs. Det här fältet är obligatoriskt, så om du inte vill ange en bas linje – det vill säga om du vill att din avisering ska registrera varje händelse – anger du 0 i fältet tal.
     
-    1. Välj ett av två sätt att hantera gruppering av **händelser** i **aviseringar** under **händelse gruppering**: 
+1. Välj ett av två sätt att hantera gruppering av **händelser** i **aviseringar** under **händelse gruppering**: 
 
-       - **Gruppera alla händelser i en enda avisering** (standardinställningen). Regeln genererar en enskild avisering varje gång den körs, så länge frågan returnerar fler resultat än det angivna **tröskelvärdet för aviseringar** ovan. Aviseringen innehåller en sammanfattning av alla händelser som returneras i resultaten. 
+    - **Gruppera alla händelser i en enda avisering** (standardinställningen). Regeln genererar en enskild avisering varje gång den körs, så länge frågan returnerar fler resultat än det angivna **tröskelvärdet för aviseringar** ovan. Aviseringen innehåller en sammanfattning av alla händelser som returneras i resultaten. 
 
-       - **Utlös en avisering för varje händelse**. Regeln genererar en unik avisering för varje händelse som returneras av frågan. Detta är användbart om du vill att händelser ska visas individuellt eller om du vill gruppera dem efter vissa parametrar – av användare, värdnamn eller något annat. Du kan definiera dessa parametrar i frågan.
+    - **Utlös en avisering för varje händelse**. Regeln genererar en unik avisering för varje händelse som returneras av frågan. Detta är användbart om du vill att händelser ska visas individuellt eller om du vill gruppera dem efter vissa parametrar – av användare, värdnamn eller något annat. Du kan definiera dessa parametrar i frågan.
     
-       För närvarande är antalet aviseringar som en regel kan generera är ett tak på 20. Om **händelse gruppering** är inställd på att **utlösa en avisering för varje händelse** i en viss regel, och regelns fråga returnerar fler än 20 händelser, genererar var och en av de första 19 händelserna en unik avisering och den tjugonde aviseringen sammanfattar hela uppsättningen returnerade händelser. 1900-aviseringen är med andra ord det som skulle ha genererats under **gruppen alla händelser till ett enda aviserings** alternativ.
+    För närvarande är antalet aviseringar som en regel kan generera är ett tak på 20. Om **händelse gruppering** är inställd på att **utlösa en avisering för varje händelse** i en viss regel, och regelns fråga returnerar fler än 20 händelser, genererar var och en av de första 19 händelserna en unik avisering och den tjugonde aviseringen sammanfattar hela uppsättningen returnerade händelser. 1900-aviseringen är med andra ord det som skulle ha genererats under **gruppen alla händelser till ett enda aviserings** alternativ.
 
-       > [!NOTE]
-       > Vad är skillnaden mellan **händelser** och **aviseringar**?
+    > [!NOTE]
+    > Vad är skillnaden mellan **händelser** och **aviseringar**?
+    >
+    > - En **händelse** är en beskrivning av en enskild förekomst. Till exempel kan en enskild post i en loggfil räknas som en händelse. I den här kontexten refererar en händelse till ett enda resultat som returneras av en fråga i en analys regel.
+    >
+    > - En **avisering** är en samling händelser som samlas, och som sammanfattas av säkerhets synpunkt. En avisering kan innehålla en enskild händelse om händelsen hade betydande säkerhets konsekvenser – en administrativ inloggning från ett främmande land utanför kontors tid, till exempel.
        >
-       > - En **händelse** är en beskrivning av en enskild förekomst. Till exempel kan en enskild post i en loggfil räknas som en händelse. I den här kontexten refererar en händelse till ett enda resultat som returneras av en fråga i en analys regel.
-       >
-       > - En **avisering** är en samling händelser som samlas, och som sammanfattas av säkerhets synpunkt. En avisering kan innehålla en enskild händelse om händelsen hade betydande säkerhets konsekvenser – en administrativ inloggning från ett främmande land utanför kontors tid, till exempel.
-       >
-       > - Vad är hur är **incidenter**? Azure Sentinels interna logik skapar **incidenter** från **aviseringar** eller grupper med aviseringar. Incident kön är fokus punkten för analytiker "prioritering, undersökning och reparation.
-       > 
-       > Azure Sentinel inhämtar rå händelser från vissa data källor och bearbetas redan bearbetade aviseringar från andra. Det är viktigt att du noterar vilken som helst som du hanterar när du vill.
+    > - Vad är hur är **incidenter**? Azure Sentinels interna logik skapar **incidenter** från **aviseringar** eller grupper med aviseringar. Incident kön är fokus punkten för analytiker "prioritering, undersökning och reparation.
+    > 
+    > Azure Sentinel inhämtar rå händelser från vissa data källor och bearbetas redan bearbetade aviseringar från andra. Det är viktigt att du noterar vilken som helst som du hanterar när du vill.
 
-       > [!IMPORTANT]
-       > Event Grouping är för närvarande en offentlig för hands version. Den här funktionen tillhandahålls utan service nivå avtal och rekommenderas inte för produktions arbets belastningar. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+    > [!IMPORTANT]
+    > Event Grouping är för närvarande en offentlig för hands version. Den här funktionen tillhandahålls utan service nivå avtal och rekommenderas inte för produktions arbets belastningar. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
     
-    1. I avsnittet under **tryckning** kan du aktivera inställningen **stoppa frågan när aviseringen har genererats** **om,** när du får en avisering, om du vill inaktivera åtgärden för den här regeln under en tids period som överstiger frågeintervallet. Om du aktiverar det här alternativet måste du ange att frågan ska **sluta köras för** den tid som frågan ska sluta köras, upp till 24 timmar.
+1. I avsnittet under **tryckning** kan du aktivera inställningen **stoppa frågan när aviseringen har genererats** **om,** när du får en avisering, om du vill inaktivera åtgärden för den här regeln under en tids period som överstiger frågeintervallet. Om du aktiverar det här alternativet måste du ange att frågan ska **sluta köras för** den tid som frågan ska sluta köras, upp till 24 timmar.
 
-1. På fliken **incident inställningar** kan du välja om och hur Azure-kontroll aktiverar aviseringar till åtgärds bara incidenter. Om den här fliken lämnas ensam, kommer Azure Sentinel att skapa en enskild, separat incident från varje avisering. Du kan välja att inte skapa några incidenter eller gruppera flera aviseringar i en enda incident genom att ändra inställningarna på den här fliken.
+## <a name="configure-the-incident-creation-settings"></a>Konfigurera inställningarna för att skapa incidenter
 
-   > [!IMPORTANT]
-   > Fliken incident inställningar är för närvarande en offentlig för hands version. Den här funktionen tillhandahålls utan service nivå avtal och rekommenderas inte för produktions arbets belastningar. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-    
-    1. I avsnittet **incident inställningar** kan du **skapa incidenter från aviseringar som utlöses av den här analys regeln** anges som standard till **aktive rad**, vilket innebär att Azure Sentinel skapar en enskild, separat incident från var och en av de aviseringar som aktive ras av regeln.
+På fliken **incident inställningar** kan du välja om och hur Azure-kontroll aktiverar aviseringar till åtgärds bara incidenter. Om den här fliken lämnas ensam, kommer Azure Sentinel att skapa en enskild, separat incident från varje avisering. Du kan välja att inte skapa några incidenter eller gruppera flera aviseringar i en enda incident genom att ändra inställningarna på den här fliken.
+
+> [!IMPORTANT]
+> Fliken incident inställningar är för närvarande en offentlig för hands version. Den här funktionen tillhandahålls utan service nivå avtal och rekommenderas inte för produktions arbets belastningar. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+:::image type="content" source="media/tutorial-detect-threats-custom/incident-settings-tab.png" alt-text="Definiera inställningarna för skapande av incidenter och aviserings grupper":::
+
+1. I avsnittet **incident inställningar** kan du **skapa incidenter från aviseringar som utlöses av den här analys regeln** anges som standard till **aktive rad**, vilket innebär att Azure Sentinel skapar en enskild, separat incident från var och en av de aviseringar som aktive ras av regeln.
        - Om du inte vill att regeln ska leda till att några incidenter skapas (till exempel om den här regeln bara samlar in information för efterföljande analyser), ställer du in den på **inaktive rad**.
 
-    1. I avsnittet **aviserings gruppering** , om du vill att en enda incident ska genereras från en grupp upp till 150 liknande eller återkommande aviseringar (se OBS!) anger du **grupprelaterade aviseringar, utlöses av den här analys regeln, i incidenter** till **aktive rad** och anger följande parametrar.
+1. I avsnittet **aviserings gruppering** , om du vill att en enda incident ska genereras från en grupp upp till 150 liknande eller återkommande aviseringar (se OBS!) anger du **grupprelaterade aviseringar, utlöses av den här analys regeln, i incidenter** till **aktive rad** och anger följande parametrar.
 
     - **Begränsa gruppen till aviseringar som skapats inom den valda tids ramen**: Bestäm den tidsram inom vilken de liknande eller återkommande aviseringarna ska grupperas tillsammans. Alla motsvarande aviseringar inom den här tids ramen genererar en incident eller en uppsättning incidenter gemensamt (beroende på inställningarna för gruppering nedan). Aviseringar utanför den här tids ramen genererar en separat incident eller en uppsättning incidenter.
 
@@ -131,14 +150,21 @@ Du kan skapa anpassade analys regler som hjälper dig att söka efter de typer a
         > [!NOTE]
         > Upp till 150-aviseringar kan grupperas i en enda incident. Om fler än 150 aviseringar genereras av en regel som grupperar dem till en enda incident, genereras en ny incident med samma incident information som originalet och de överflödiga aviseringarna grupperas i den nya incidenten.
 
+## <a name="set-automated-responses-and-create-the-rule"></a>Ange automatiserade svar och skapa regeln
+
 1. På fliken **automatiserade svar** väljer du de spel böcker som du vill köra automatiskt när en avisering genereras av den anpassade regeln. Mer information om hur du skapar och automatiserar spel böcker finns i [svara på hot](tutorial-respond-threats-playbook.md).
 
+    :::image type="content" source="media/tutorial-detect-threats-custom/automated-response-tab.png" alt-text="Definiera inställningarna för automatiserade svar":::
+
 1. Välj **Granska och skapa** för att granska alla inställningar för den nya varnings regeln och välj sedan **skapa för att initiera aviserings regeln**.
+
+    :::image type="content" source="media/tutorial-detect-threats-custom/review-and-create-tab.png" alt-text="Granska alla inställningar och skapa regeln":::
+
+## <a name="view-the-rule-and-its-output"></a>Visa regeln och dess utdata
   
 1. När aviseringen har skapats läggs en anpassad regel till i tabellen under **aktiva regler**. I den här listan kan du aktivera, inaktivera eller ta bort varje regel.
 
 1. Om du vill visa resultaten av de aviserings regler som du skapar går du till sidan **incidenter** där du kan prioritering, [undersöka incidenter](tutorial-investigate-cases.md)och åtgärda hoten.
-
 
 > [!NOTE]
 > Aviseringar som genereras i Azure Sentinel är tillgängliga via [Microsoft Graph säkerhet](/graph/security-concept-overview). Mer information finns i dokumentationen för [Microsoft Graph säkerhets aviseringar](/graph/api/resources/security-api-overview).

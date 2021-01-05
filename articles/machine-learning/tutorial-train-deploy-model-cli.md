@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: 119f1eaa838b404a3dbdc22f692f559816810dde
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 55221fa529688fbae1698a094ea31f6a3f765100
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578696"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796252"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Självstudie: träna och distribuera en modell från CLI
 
@@ -307,10 +307,10 @@ Mer information om att köra konfigurationsfiler finns i [använda beräknings m
 Om du vill starta en utbildning som körs på `cpu-cluster` beräknings målet använder du följande kommando:
 
 ```azurecli-interactive
-az ml run submit-script -c mnist -e myexperiment --source-directory scripts -t runoutput.json
+az ml run submit-script -c mnist -e tutorial-cli --source-directory scripts -t runoutput.json
 ```
 
-Det här kommandot anger ett namn på experimentet ( `myexperiment` ). Experimentet lagrar information om den här körningen på arbets ytan.
+Det här kommandot anger ett namn på experimentet ( `tutorial-cli` ). Experimentet lagrar information om den här körningen på arbets ytan.
 
 `-c mnist`Parametern anger `.azureml/mnist.runconfig` filen.
 
@@ -327,7 +327,7 @@ Den här texten loggas från övnings skriptet och visar modellens precision. An
 
 Om du inspekterar övnings skriptet ser du att det också använder alfa värdet när den tränade modellen lagras `outputs/sklearn_mnist_model.pkl` .
 
-Modellen sparades i `./outputs` katalogen på det Compute-mål där den tränades. I det här fallet är Azure Machine Learning beräknings instansen i Azure-molnet. Inlärnings processen laddar automatiskt upp innehållet i `./outputs` katalogen från beräknings målet där träning sker till din Azure Machine Learning-arbetsyta. Den lagras som en del av experimentet ( `myexperiment` i det här exemplet).
+Modellen sparades i `./outputs` katalogen på det Compute-mål där den tränades. I det här fallet är Azure Machine Learning beräknings instansen i Azure-molnet. Inlärnings processen laddar automatiskt upp innehållet i `./outputs` katalogen från beräknings målet där träning sker till din Azure Machine Learning-arbetsyta. Den lagras som en del av experimentet ( `tutorial-cli` i det här exemplet).
 
 ## <a name="register-the-model"></a>Registrera modellen
 
@@ -345,13 +345,13 @@ Utdata från det här kommandot liknar följande JSON:
 {
   "createdTime": "2019-09-19T15:25:32.411572+00:00",
   "description": "",
-  "experimentName": "myexperiment",
+  "experimentName": "tutorial-cli",
   "framework": "Custom",
   "frameworkVersion": null,
   "id": "mymodel:1",
   "name": "mymodel",
   "properties": "",
-  "runId": "myexperiment_1568906070_5874522d",
+  "runId": "tutorial-cli_1568906070_5874522d",
   "tags": "",
   "version": 1
 }

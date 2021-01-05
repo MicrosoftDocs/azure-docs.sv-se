@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 93df80cd6fcd6f5553ea509a4778a155299bb057
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 69d5a0a69bcd820fd59da0a18b3838b65a6a0460
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449049"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763445"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>Distribuera virtuella datorer på din Azure Stack Edge Pro GPU-enhet via mallar
 
@@ -52,7 +52,7 @@ Den övergripande översikten över arbets flödet för distribution med hjälp 
 
 2. **Skapa virtuell dator från mallar**
 
-    1. Skapa en avbildning av en virtuell dator och ett VNet med hjälp av `CreateImageAndVnet.parameters.json` parameter filen och `CreateImageAndVnet.json` distributions mal len.
+    1. Skapa en avbildning av en virtuell dator med hjälp av `CreateImage.parameters.json` parameter filen och `CreateImage.json` distributions mal len.
     1. Skapa en virtuell dator med tidigare skapade resurser med `CreateVM.parameters.json` parameter filen och  `CreateVM.json` distributions mal len.
 
 ## <a name="device-prerequisites"></a>Enhets krav
@@ -99,7 +99,7 @@ ResourceId        : /subscriptions/DDF9FC44-E990-42F8-9A91-5A6A5CC472DB/resource
 PS C:\windows\system32>
 ```
 
-### <a name="create-a-storage-account"></a>skapar ett lagringskonto
+### <a name="create-a-storage-account"></a>Skapa ett lagringskonto
 
 Skapa ett nytt lagrings konto med hjälp av resurs gruppen som skapades i föregående steg. Det här är ett **lokalt lagrings konto** som ska användas för att ladda upp den virtuella disk avbildningen för den virtuella datorn.
 
@@ -153,9 +153,9 @@ Hoppa över det här steget om du vill ansluta via Storage Explorer med *http*. 
 
 ### <a name="create-and-upload-a-vhd"></a>Skapa och ladda upp en VHD
 
-Se till att du har en virtuell disk avbildning som du kan använda för att ladda upp i senare steg. Följ stegen i [skapa en avbildning av en virtuell dator](azure-stack-edge-j-series-create-virtual-machine-image.md). 
+Se till att du har en virtuell disk avbildning som du kan använda för att ladda upp i senare steg. Följ stegen i [skapa en avbildning av en virtuell dator](azure-stack-edge-gpu-create-virtual-machine-image.md). 
 
-Kopiera eventuella disk avbildningar som ska användas i sid-blobar i det lokala lagrings kontot som du skapade i föregående steg. Du kan använda ett verktyg som [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) eller [AzCopy för att ladda upp den virtuella hård disken till lagrings kontot](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md#upload-a-vhd) som du skapade i tidigare steg. 
+Kopiera eventuella disk avbildningar som ska användas i sid-blobar i det lokala lagrings kontot som du skapade i föregående steg. Du kan använda ett verktyg som [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) eller [AzCopy för att ladda upp den virtuella hård disken till lagrings kontot](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#upload-a-vhd) som du skapade i tidigare steg. 
 
 ### <a name="use-storage-explorer-for-upload"></a>Använd Storage Explorer för uppladdning
 
@@ -213,35 +213,15 @@ Kopiera eventuella disk avbildningar som ska användas i sid-blobar i det lokala
 
     ![Kopiera URI](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/copy-uri-1.png)
 
-<!--### Use AzCopy for upload
 
-Before you use AzCopy, make sure that the [AzCopy is configured correctly](#configure-azcopy) for use with the blob storage REST API version that you are using with your Azure Stack Edge Pro device.
+## <a name="create-image-for-your-vm"></a>Skapa avbildning för din virtuella dator
 
-
-```powershell
-AzCopy /Source:<sourceDirectoryForVHD> /Dest:<blobContainerUri> /DestKey:<storageAccountKey> /Y /S /V /NC:32  /BlobType:page /destType:blob 
-```
-
-> ![NOTE]
-> Set `BlobType` to page for creating a managed disk out of VHD. Set `BlobType` to block when writing to tiered storage accounts using AzCopy.
-
-You can download the disk images from the marketplace. For detailed steps, go to [Get the virtual disk image from Azure marketplace](azure-stack-edge-j-series-create-virtual-machine-image.md).
-
-A sample output using AzCopy 7.3 is shown below. For more information on this command, go to [Upload VHD file to storage account using AzCopy](../devtest-labs/devtest-lab-upload-vhd-using-azcopy.md).
-
-
-```powershell
-AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.dbe-1dcmhq2.microsoftdatabox.com/vmimages /DestKey:gJKoyX2Amg0Zytd1ogA1kQ2xqudMHn7ljcDtkJRHwMZbMK== /Y /S /V /NC:32 /BlobType:page /destType:blob /z:2e7d7d27-c983-410c-b4aa-b0aa668af0c6
-```-->
-
-## <a name="create-image-and-vnet-for-your-vm"></a>Skapa avbildning och VNet för din virtuella dator
-
-Om du vill skapa en avbildning och ett virtuellt nätverk för den virtuella datorn måste du redigera `CreateImageAndVnet.parameters.json` parameter filen och sedan distribuera mallen `CreateImageAndVnet.json` som använder den här parameter filen.
+Om du vill skapa en avbildning för din virtuella dator redigerar du `CreateImage.parameters.json` parameter filen och distribuerar sedan mallen `CreateImage.json` som använder den här parameter filen.
 
 
 ### <a name="edit-parameters-file"></a>Redigera parameter fil
 
-Filen `CreateImageAndVnet.parameters.json` tar följande parametrar: 
+Filen `CreateImage.parameters.json` tar följande parametrar: 
 
 ```json
 "parameters": {
@@ -254,22 +234,10 @@ Filen `CreateImageAndVnet.parameters.json` tar följande parametrar:
         "imageUri": {
               "value": "<Path to the VHD that you uploaded in the Storage account>"
         },
-        "vnetName": {
-            "value": "<Name for the virtual network where you will deploy the VM>"
-        },
-        "subnetName": {
-            "value": "<Name for the subnet for the VNet>"
-        },
-        "addressPrefix": {
-            "value": "<Address prefix for the virtual network>"
-        },
-        "subnetPrefix": {
-            "value": "<Subnet prefix for the subnet for the Vnet>"
-        }
     }
 ```
 
-Redigera filen `CreateImageAndVnet.parameters.json` och Lägg till följande för din Azure Stack Edge Pro-enhet:
+Redigera filen `CreateImage.parameters.json` och Lägg till följande för din Azure Stack Edge Pro-enhet:
 
 1. Ange vilken OS-typ som motsvarar den virtuella hård disk som du vill ladda upp. OS-typen kan vara Windows eller Linux.
 
@@ -287,20 +255,9 @@ Redigera filen `CreateImageAndVnet.parameters.json` och Lägg till följande fö
         "value": "https://myasegpusavm.blob.myasegpu1.wdshcsso.com/windows/WindowsServer2016Datacenter.vhd"
         },
     ```
-    Om du använder *http* med Storage Explorer ändrar du detta till en *https* -URI.
+    Om du använder *http* med Storage Explorer ändrar du detta till en *http-* URI.
 
-3. Ändra `addressPrefix` och `subnetPrefix` . I enhetens lokala användar gränssnitt går du till sidan **nätverk** . Hitta den port som du har aktiverat för beräkning. Hämta bas nätverkets IP-adress och Lägg till nät masken för att skapa CIDR-noteringen. Om du har ett standard-255.255.255.0-undernät kan du göra detta genom att ersätta det sista antalet IP-adresser med 0 och lägga till/24 i slutet. Det innebär att 10.126.68.0 med en 255.255.255.0 nät mask blir 10.126.68.0/24. 
-    
-    ```json
-    "addressPrefix": {
-                "value": "10.126.68.0/24"
-            },
-            "subnetPrefix": {
-                "value": "10.126.68.0/24"
-            }
-    ```  
-
-4. Ange det unika avbildnings namnet, VNet-namnet och under nätets namn för parametrarna.
+3. Ange ett unikt avbildnings namn. Den här avbildningen används för att skapa en virtuell dator i senare steg. 
 
     Här är ett exempel-JSON som används i den här artikeln.
 
@@ -310,25 +267,13 @@ Redigera filen `CreateImageAndVnet.parameters.json` och Lägg till följande fö
         "contentVersion": "1.0.0.0",
       "parameters": {
         "osType": {
-          "value": "Windows"
+          "value": "Linux"
         },
         "imageName": {
-          "value": "image1"
+          "value": "myaselinuximg"
         },
         "imageUri": {
-          "value": "https://myasegpusavm.blob.myasegpu1.wdshcsso.com/windows/WindowsServer2016Datacenter.vhd"
-        },
-        "vnetName": {
-          "value": "vnet1"
-        },
-        "subnetName": {
-          "value": "subnet1"
-        },
-        "addressPrefix": {
-          "value": "10.126.68.0/24"
-        },
-        "subnetPrefix": {
-          "value": "10.126.68.0/24"
+          "value": "https://sa2.blob.myasegpuvm.wdshcsso.com/con1/ubuntu18.04waagent.vhd"
         }
       }
     }
@@ -338,7 +283,7 @@ Redigera filen `CreateImageAndVnet.parameters.json` och Lägg till följande fö
 
 ### <a name="deploy-template"></a>Distribuera mallen 
 
-Distribuera mallen `CreateImageAndVnet.json` . Den här mallen distribuerar VNet-och avbildnings resurserna som ska användas för att skapa virtuella datorer i senare steg.
+Distribuera mallen `CreateImage.json` . Den här mallen distribuerar avbildnings resurserna som ska användas för att skapa virtuella datorer i senare steg.
 
 > [!NOTE]
 > När du distribuerar mallen om du får ett autentiseringsfel kan dina Azure-autentiseringsuppgifter för den här sessionen ha gått ut. Kör `login-AzureRM` kommandot igen för att ansluta till Azure Resource Manager på din Azure Stack Edge Pro-enhet igen.
@@ -346,8 +291,8 @@ Distribuera mallen `CreateImageAndVnet.json` . Den här mallen distribuerar VNet
 1. Kör följande kommando: 
     
     ```powershell
-    $templateFile = "Path to CreateImageAndVnet.json"
-    $templateParameterFile = "Path to CreateImageAndVnet.parameters.json"
+    $templateFile = "Path to CreateImage.json"
+    $templateParameterFile = "Path to CreateImage.parameters.json"
     $RGName = "<Name of your resource group>"
     New-AzureRmResourceGroupDeployment `
         -ResourceGroupName $RGName `
@@ -355,47 +300,42 @@ Distribuera mallen `CreateImageAndVnet.json` . Den här mallen distribuerar VNet
         -TemplateParameterFile $templateParameterFile `
         -Name "<Name for your deployment>"
     ```
+    Det här kommandot distribuerar en avbildnings resurs. Kör följande kommando för att fråga resursen:
 
-2. Kontrol lera om avbildningen och VNet-resurserna har kon figurer ATS. Här är ett exempel på utdata från en avbildning och VNet som skapats.
+    ```powershell
+    Get-AzureRmImage -ResourceGroupName <Resource Group Name> -name <Image Name>
+    ``` 
+    Här är ett exempel på utdata från en avbildning som skapats.
     
     ```powershell
-    PS C:\07-30-2020> login-AzureRMAccount -EnvironmentName aztest1 -TenantId c0257de7-538f-415c-993a-1b87a031879d
+    PS C:\WINDOWS\system32> login-AzureRMAccount -EnvironmentName aztest -TenantId c0257de7-538f-415c-993a-1b87a031879d
     
     Account               SubscriptionName              TenantId                             Environment
     -------               ----------------              --------                             -----------
-    EdgeArmUser@localhost Default Provider Subscription c0257de7-538f-415c-993a-1b87a031879d aztest1
+    EdgeArmUser@localhost Default Provider Subscription c0257de7-538f-415c-993a-1b87a031879d aztest
     
-    PS C:\07-30-2020> $templateFile = "C:\07-30-2020\CreateImageAndVnet.json"
-    PS C:\07-30-2020> $templateParameterFile = "C:\07-30-2020\CreateImageAndVnet.parameters.json"
-    PS C:\07-30-2020> $RGName = "myasegpurgvm"
-    PS C:\07-30-2020> New-AzureRmResourceGroupDeployment `
-    >>     -ResourceGroupName $RGName `
-    >>     -TemplateFile $templateFile `
-    >>     -TemplateParameterFile $templateParameterFile `
-    >>     -Name "Deployment1"
-    
-    DeploymentName          : Deployment1
-    ResourceGroupName       : myasegpurgvm
+   PS C:\WINDOWS\system32> $templateFile = "C:\12-09-2020\CreateImage\CreateImage.json"
+    PS C:\WINDOWS\system32> $templateParameterFile = "C:\12-09-2020\CreateImage\CreateImage.parameters.json"
+    PS C:\WINDOWS\system32> $RGName = "rg2"
+    PS C:\WINDOWS\system32> New-AzureRmResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile $templateFile -TemplateParameterFile $templateParameterFile -Name "deployment4"
+        
+    DeploymentName          : deployment4
+    ResourceGroupName       : rg2
     ProvisioningState       : Succeeded
-    Timestamp               : 7/30/2020 5:53:32 PM
+    Timestamp               : 12/10/2020 7:06:57 PM
     Mode                    : Incremental
     TemplateLink            :
     Parameters              :
                               Name             Type                       Value
                               ===============  =========================  ==========
-                              osType           String                     Windows
-                              imageName        String                     image1
+                              osType           String                     Linux
+                              imageName        String                     myaselinuximg
                               imageUri         String
-                              https://myasegpusavm.blob.myasegpu1.wdshcsso.com/windows/WindowsServer2016Datacenter.vhd
-                              vnetName         String                     vnet1
-                              subnetName       String                     subnet1
-                              addressPrefix    String                     10.126.68.0/24
-                              subnetPrefix     String                     10.126.68.0/24
+                              https://sa2.blob.myasegpuvm.wdshcsso.com/con1/ubuntu18.04waagent.vhd
     
     Outputs                 :
-    DeploymentDebugLogLevel :
-    
-    PS C:\07-30-2020>
+    DeploymentDebugLogLevel :    
+    PS C:\WINDOWS\system32>
     ```
     
 ## <a name="create-vm"></a>Skapa en virtuell dator
@@ -421,10 +361,13 @@ Skapa en virtuell dator med parameterfilen `CreateVM.parameters.json`. Det tar f
             "value": "<A supported size for your VM>"
         },
         "vnetName": {
-            "value": "<Name for the virtual network you created earlier>"
+            "value": "<Name for the virtual network, use ASEVNET>"
         },
         "subnetName": {
-            "value": "<Name for the subnet you created earlier>"
+            "value": "<Name for the subnet, use ASEVNETsubNet>"
+        },
+        "vnetRG": {
+            "value": "<Resource group for Vnet, use ASERG>"
         },
         "nicName": {
             "value": "<Name for the network interface>"
@@ -441,7 +384,56 @@ Tilldela lämpliga parametrar i `CreateVM.parameters.json` för din Azure Stack 
 
 1. Ange ett unikt namn, ett namn på ett nätverks gränssnitt och ett namn för ipconfig. 
 1. Ange ett användar namn, lösen ord och en VM-storlek som stöds.
-1. Ge samma namn för **VnetName**, **subnetName** och **ImageName** som anges i parametrarna för `CreateImageAndVnet.parameters.json` . Om du till exempel har angett VnetName, subnetName och ImageName som **vnet1**, **subnet1** och **image1** behåller du samma värden för parametrarna i den här mallen också.
+1. När du har aktiverat nätverks gränssnittet för beräkning, skapades en virtuell växel och ett virtuellt nätverk automatiskt på nätverks gränssnittet. Du kan fråga det befintliga virtuella nätverket om du vill hämta VNet-namnet, under nätets namn och namn på VNet-resurs gruppen.
+
+    Kör följande kommando:
+
+    ```powershell
+    Get-AzureRmVirtualNetwork
+    ```
+    Här är exempel på utdata:
+    
+    ```powershell
+    
+    PS C:\WINDOWS\system32> Get-AzureRmVirtualNetwork
+    
+    Name                   : ASEVNET
+    ResourceGroupName      : ASERG
+    Location               : dbelocal
+    Id                     : /subscriptions/947b3cfd-7a1b-4a90-7cc5-e52caf221332/resourceGroups/ASERG/providers/Microsoft
+                             .Network/virtualNetworks/ASEVNET
+    Etag                   : W/"990b306d-18b6-41ea-a456-b275efe21105"
+    ResourceGuid           : f8309d81-19e9-42fc-b4ed-d573f00e61ed
+    ProvisioningState      : Succeeded
+    Tags                   :
+    AddressSpace           : {
+                               "AddressPrefixes": [
+                                 "10.57.48.0/21"
+                               ]
+                             }
+    DhcpOptions            : null
+    Subnets                : [
+                               {
+                                 "Name": "ASEVNETsubNet",
+                                 "Etag": "W/\"990b306d-18b6-41ea-a456-b275efe21105\"",
+                                 "Id": "/subscriptions/947b3cfd-7a1b-4a90-7cc5-e52caf221332/resourceGroups/ASERG/provider
+                             s/Microsoft.Network/virtualNetworks/ASEVNET/subnets/ASEVNETsubNet",
+                                 "AddressPrefix": "10.57.48.0/21",
+                                 "IpConfigurations": [],
+                                 "ResourceNavigationLinks": [],
+                                 "ServiceEndpoints": [],
+                                 "ProvisioningState": "Succeeded"
+                               }
+                             ]
+    VirtualNetworkPeerings : []
+    EnableDDoSProtection   : false
+    EnableVmProtection     : false
+    
+    PS C:\WINDOWS\system32>
+    ```
+
+    Använd ASEVNET för VNet-namn, ASEVNETsubNet för under näts namn och ASERG för namn på VNet-resurs gruppen.
+    
 1. Nu behöver du en statisk IP-adress för att tilldela den virtuella datorn som finns i det undernäts nätverk som anges ovan. Ersätt **PrivateIPAddress** med den här adressen i parameter filen. Lämna värdet tomt om du vill att den virtuella datorn ska få en IP-adress från din lokala DCHP-server `privateIPAddress` .  
     
     ```json
@@ -456,40 +448,43 @@ Tilldela lämpliga parametrar i `CreateVM.parameters.json` för din Azure Stack 
     
     ```json
     {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-        "contentVersion": "1.0.0.0",
-        "parameters": {
-            "vmName": {
-                "value": "mywindowsvm"
-            },
-            "adminUsername": {
-                "value": "Administrator"
-            },
-            "Password": {
-                "value": "Password1"
-            },
-            "imageName": {
-                "value": "image1"
-            },
-            "vmSize": {
-                "value": "Standard_D1_v2"
-            },
-            "vnetName": {
-                "value": "vnet1"
-            },
-            "subnetName": {
-                "value": "subnet1"
-            },
-            "nicName": {
-                "value": "nic1"
-            },
-            "privateIPAddress": {
-                "value": "10.126.68.186"
-            },
-            "IPConfigName": {
-                "value": "ipconfig1"
-            }
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+          "vmName": {
+              "value": "VM1"
+          },
+          "adminUsername": {
+              "value": "Administrator"
+          },
+          "Password": {
+              "value": "Password1"
+          },
+        "imageName": {
+          "value": "myaselinuximg"
+        },
+        "vmSize": {
+          "value": "Standard_NC4as_T4_v3"
+        },
+        "vnetName": {
+          "value": "ASEVNET"
+        },
+        "subnetName": {
+          "value": "ASEVNETsubNet"
+        },
+        "vnetRG": {
+          "value": "aserg"
+        },
+        "nicName": {
+          "value": "nic5"
+        },
+        "privateIPAddress": {
+          "value": ""
+        },
+        "IPConfigName": {
+          "value": "ipconfig5"
         }
+      }
     }
     ```      
 
@@ -516,39 +511,36 @@ Distribuera mallen för att skapa virtuella datorer `CreateVM.json` . Den här m
     Det tar 15-20 minuter att skapa den virtuella datorn. Här är ett exempel på utdata från en korrekt skapad virtuell dator.
     
     ```powershell
-    PS C:\07-30-2020> $templateFile = "C:\07-30-2020\CreateWindowsVM.json"
-        PS C:\07-30-2020> $templateParameterFile = "C:\07-30-2020\CreateWindowsVM.parameters.json"
-        PS C:\07-30-2020> $RGName = "myasegpurgvm"
-        PS C:\07-30-2020> New-AzureRmResourceGroupDeployment `
-        >>     -ResourceGroupName $RGName `
-        >>     -TemplateFile $templateFile `
-        >>     -TemplateParameterFile $templateParameterFile `
-        >>     -Name "Deployment2"    
-        
-        DeploymentName          : Deployment2
-        ResourceGroupName       : myasegpurgvm
-        ProvisioningState       : Succeeded
-        Timestamp               : 7/30/2020 6:21:09 PM
-        Mode                    : Incremental
-        TemplateLink            :
-        Parameters              :
-                                  Name             Type                       Value
-                                  ===============  =========================  ==========
-                                  vmName           String                     MyWindowsVM
-                                  adminUsername    String                     Administrator
-                                  password         String                     Password1
-                                  imageName        String                     image1
-                                  vmSize           String                     Standard_D1_v2
-                                  vnetName         String                     vnet1
-                                  subnetName       String                     subnet1
-                                  nicName          String                     Nic1
-                                  ipConfigName     String                     ipconfig1
-                                  privateIPAddress  String                    10.126.68.186
-        
-        Outputs                 :
-        DeploymentDebugLogLevel :    
-        
-        PS C:\07-30-2020>
+    PS C:\WINDOWS\system32> $templateFile = "C:\12-09-2020\CreateVM\CreateVM.json"
+    PS C:\WINDOWS\system32> $templateParameterFile = "C:\12-09-2020\CreateVM\CreateVM.parameters.json"
+    PS C:\WINDOWS\system32> $RGName = "rg2"
+    PS C:\WINDOWS\system32> New-AzureRmResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile $templateFile -TemplateParameterFile $templateParameterFile -Name "Deployment6"
+       
+    DeploymentName          : Deployment6
+    ResourceGroupName       : rg2
+    ProvisioningState       : Succeeded
+    Timestamp               : 12/10/2020 7:51:28 PM
+    Mode                    : Incremental
+    TemplateLink            :
+    Parameters              :
+                              Name             Type                       Value
+                              ===============  =========================  ==========
+                              vmName           String                     VM1
+                              adminUsername    String                     Administrator
+                              password         String                     Password1
+                              imageName        String                     myaselinuximg
+                              vmSize           String                     Standard_NC4as_T4_v3
+                              vnetName         String                     ASEVNET
+                              vnetRG           String                     aserg
+                              subnetName       String                     ASEVNETsubNet
+                              nicName          String                     nic5
+                              ipConfigName     String                     ipconfig5
+                              privateIPAddress  String
+    
+    Outputs                 :
+    DeploymentDebugLogLevel :
+    
+    PS C:\WINDOWS\system32
     ```   
 
     Du kan också köra `New-AzureRmResourceGroupDeployment` kommandot asynkront med `–AsJob` parametern. Här är ett exempel på utdata när cmdleten körs i bakgrunden. Du kan sedan fråga statusen för jobbet som skapas med hjälp av `Get-Job` cmdleten.
@@ -576,7 +568,7 @@ Distribuera mallen för att skapa virtuella datorer `CreateVM.json` . Den här m
     `Get-AzureRmVm`
 
 
-## <a name="connect-to-a-vm"></a>Ansluta till en virtuell dator
+## <a name="connect-to-a-vm"></a>Anslut till en virtuell dator
 
 Stegen för att ansluta kan vara olika beroende på om du har skapat ett Windows eller en virtuell Linux-dator.
 
@@ -592,39 +584,6 @@ Följ dessa steg för att ansluta till en virtuell Linux-dator.
 
 [!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-linux.md)]
 
-<!--## Manage VM
-
-The following section describes some of the common operations around the VM that you will create on your Azure Stack Edge Pro device.
-
-[!INCLUDE [azure-stack-edge-gateway-manage-vm](../../includes/azure-stack-edge-gateway-manage-vm.md)]-->
-
-
-## <a name="supported-vm-sizes"></a>VM-storlekar som stöds
-
-[!INCLUDE [azure-stack-edge-gateway-supported-vm-sizes](../../includes/azure-stack-edge-gateway-supported-vm-sizes.md)]
-
-## <a name="unsupported-vm-operations-and-cmdlets"></a>VM-åtgärder och cmdlets som inte stöds
-
-Tillägg, skalnings uppsättningar, tillgänglighets uppsättningar, ögonblicks bilder stöds inte.
-
-<!--## Configure AzCopy
-
-When you install the latest version of AzCopy, you will need to configure AzCopy to ensure that it matches the blob storage REST API version of your Azure Stack Edge Pro device.
-
-On the client used to access your Azure Stack Edge Pro device, set up a global variable to match the blob storage REST API version.
-
-### On Windows client 
-
-`$Env:AZCOPY_DEFAULT_SERVICE_API_VERSION = "2017-11-09"`
-
-### On Linux client
-
-`export AZCOPY_DEFAULT_SERVICE_API_VERSION=2017-11-09`
-
-To verify if the environment variable for AzCopy was set correctly, take the following steps:
-
-1. Run "azcopy env".
-2. Find `AZCOPY_DEFAULT_SERVICE_API_VERSION` parameter. This should have the value you set in the preceding steps.-->
 
 
 ## <a name="next-steps"></a>Nästa steg

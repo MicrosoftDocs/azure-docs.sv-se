@@ -6,16 +6,18 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
 ms.author: chenyl
-ms.openlocfilehash: e2651afbcdc3bae71bb531aa0e821f83264c295d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2482a26987ec142880acc51bf470d844655b6e3f
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212592"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763529"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>Signalerar tjänst utlöser bindning för Azure Functions
 
 Använd *signalen* utlösare för att svara på meddelanden som skickas från Azure SignalR-tjänsten. När funktionen utlöses, parsas meddelanden som skickas till funktionen som ett JSON-objekt.
+
+I signalerar tjänsten Server lös läge använder signal tjänsten den [överordnade](../azure-signalr/concept-upstream.md) funktionen för att skicka meddelanden från klienten till Funktionsapp. Och Funktionsapp använder SignalR tjänstens Utlös ande bindning för att hantera dessa meddelanden. Den allmänna arkitekturen visas nedan: :::image type="content" source="media/functions-bindings-signalr-service/signalr-trigger.png" alt-text="signal utlösare arkitektur":::
 
 Information om konfiguration och konfigurations information finns i [översikten](functions-bindings-signalr-service.md).
 
@@ -171,9 +173,9 @@ I följande tabell förklaras de egenskaper för bindnings konfiguration som du 
 
 |function.jspå egenskap | Attributets egenskap |Beskrivning|
 |---------|---------|----------------------|
-|**bastyp**| Saknas | Måste anges till `SignalRTrigger` .|
-|**position**| Saknas | Måste anges till `in` .|
-|**Namn**| Saknas | Variabel namn som används i funktions kod för kontext objekt för Utlös ande anrop. |
+|**bastyp**| saknas | Måste anges till `SignalRTrigger` .|
+|**position**| saknas | Måste anges till `in` .|
+|**Namn**| saknas | Variabel namn som används i funktions kod för kontext objekt för Utlös ande anrop. |
 |**hubName**|**HubName**| Värdet måste anges till namnet på Signals Hub för den funktion som ska utlösas.|
 |**kategori**|**Kategori**| Värdet måste anges som kategori för meddelanden för funktionen som ska utlösas. Kategorin kan vara något av följande värden: <ul><li>**anslutningar**: inklusive *anslutna* och *frånkopplade* händelser</li><li>**meddelanden**: inklusive alla andra händelser utom de i kategorin *anslutningar*</li></ul> |
 |**händelse**|**Händelse**| Värdet måste anges som händelse för meddelanden för att funktionen ska kunna utlösas. I kategorin *meddelanden* är händelsen *målet* i [anrops meddelandet](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) som klienter skickar. För kategorin *anslutningar* används endast *anslutna* och *frånkopplade* . |
@@ -197,21 +199,28 @@ InvocationContext innehåller allt innehåll i meddelandet skicka från SignalR-
 |Händelse| Händelse i meddelandet.|
 |ConnectionId| Anslutnings-ID för klienten som skickar meddelandet.|
 |UserId| Användar identiteten för klienten som skickar meddelandet.|
-|Rubriker| Rubrikerna för begäran.|
+|Sidhuvuden| Rubrikerna för begäran.|
 |Söka i data| Frågan om begäran när klienterna ansluter till tjänsten.|
 |Anspråk| Klientens anspråk.|
 
 ## <a name="using-parameternames"></a>Använda `ParameterNames`
 
-Med egenskapen `ParameterNames` i `SignalRTrigger` kan du binda argument för anrops meddelanden till funktions parametrar. Det ger dig ett bekvämare sätt att komma åt argument för `InvocationContext` .
+Med egenskapen `ParameterNames` i `SignalRTrigger` kan du binda argument för anrops meddelanden till funktions parametrar. Det namn som du definierar kan användas som en del av [bindnings uttryck](../azure-functions/functions-bindings-expressions-patterns.md) i annan bindning eller som parametrar i koden. Det ger dig ett bekvämare sätt att komma åt argument för `InvocationContext` .
 
-Anta att du har en JavaScript-signal klient som försöker anropa metoden `broadcast` i Azure Function med två argument.
+Anta att du har en JavaScript-signal klient som försöker anropa metoden `broadcast` i Azure-funktionen med två argument `message1` `message2` .
 
 ```javascript
 await connection.invoke("broadcast", message1, message2);
 ```
 
-Du kan komma åt de här två argumenten från parametern samt tilldela parameter typen för dem med hjälp av `ParameterNames` .
+När du har angett `parameterNames` motsvarar det namn du definierade de argument som skickas på klient sidan. 
+
+```cs
+[SignalRTrigger(parameterNames: new string[] {"arg1, arg2"})]
+```
+
+Sedan innehåller innehållet i `arg1` `message1` och `arg2` kommer att innehålla innehållet i `message2` .
+
 
 ### <a name="remarks"></a>Kommentarer
 
@@ -219,20 +228,28 @@ För parameter bindningen är ordnings saken. Om du använder `ParameterNames` m
 
 `ParameterNames` det `[SignalRParameter]` **går inte** att använda attributet samtidigt, eller så får du ett undantag.
 
-## <a name="send-messages-to-signalr-service-trigger-binding"></a>Skicka meddelanden till SignalR service trigger binding
+## <a name="signalr-service-integration"></a>Signalerar tjänst integrering
 
-Azure Function genererar en URL för utlösnings bindning för SignalR-tjänst och den formateras enligt följande:
+Signalerar tjänsten behöver en URL för att få åtkomst till Funktionsapp när du använder SignalR tjänstens Utlös ande bindning. URL: en ska konfigureras i **överordnade inställningar** på signal tjänst sidan. 
+
+:::image type="content" source="../azure-signalr/media/concept-upstream/upstream-portal.png" alt-text="Överordnad Portal":::
+
+När du använder SignalR tjänst utlösaren kan URL: en vara enkel och formaterad enligt nedan:
 
 ```http
-https://<APP_NAME>.azurewebsites.net/runtime/webhooks/signalr?code=<API_KEY>
+<Function_App_URL>/runtime/webhooks/signalr?code=<API_KEY>
 ```
 
-`API_KEY`Genereras av Azure function. Du kan hämta `API_KEY` från Azure Portal när du använder SignalR tjänstens utlösnings bindning.
+Du hittar den `Function_App_URL` på Funktionsapp översikts sida och `API_KEY` genereras av Azure function. Du kan hämta `API_KEY` från `signalr_extension` i bladet **app-nycklar** i Funktionsapp.
 :::image type="content" source="media/functions-bindings-signalr-service/signalr-keys.png" alt-text="API-nyckel":::
 
-Du bör ange den här URL: en i `UrlTemplate` i de överordnade inställningarna för SignalR-tjänsten.
+Om du vill använda mer än en Funktionsapp tillsammans med en SignalR-tjänst kan överströms även stödja komplexa regler för routning. Mer information finns i [Inställningar för överordnade](../azure-signalr/concept-upstream.md).
+
+## <a name="step-by-step-sample"></a>Steg för steg-exempel
+
+Du kan följa exemplet i GitHub för att distribuera ett chattrum på Funktionsapp med utlösare för utlösare av Signalerare och uppströms funktion: [dubbelriktat chattrum-exempel](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BidirectionChat)
 
 ## <a name="next-steps"></a>Nästa steg
 
 * [Azure Functions-utveckling och -konfiguration med Azure SignalR Service](../azure-signalr/signalr-concept-serverless-development-config.md)
-* [Exempel på Utlös ande bindning för SignalR tjänst](https://github.com/Azure/azure-functions-signalrservice-extension/tree/dev/samples/bidirectional-chat)
+* [Exempel på Utlös ande bindning för SignalR tjänst](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BidirectionChat)

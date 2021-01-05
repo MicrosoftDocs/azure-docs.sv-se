@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: f8b555c4022fcf2532a7350839d2357c96562f4c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 18d36e37554a5d2b37488b7a1525f8290dc03da0
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791859"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763276"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Övervaka, diagnostisera och felsök Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -120,11 +120,10 @@ Du kan använda [Azure Portal](https://portal.azure.com) för att Visa hälso ti
 
 [Azure Portal](https://portal.azure.com) kan också tillhandahålla meddelanden om incidenter som påverkar de olika Azure-tjänsterna.
 OBS! den här informationen var tidigare tillgänglig, tillsammans med historiska data, på [instrument panelen för Azure-tjänsten](https://status.azure.com).
-
-[Azure Portal](https://portal.azure.com) samlar in hälso information från inifrån Azure-datacenter (inifrån och ut), kan du också överväga att anta en yttre metod för att generera syntetiska transaktioner som regelbundet får åtkomst till Azure-värdbaserade webb program från flera platser. Tjänsterna som erbjuds av [dynaTrace](https://www.dynatrace.com/en/synthetic-monitoring) och Application Insights för Azure DevOps är exempel på den här metoden. Mer information om Application Insights för Azure-DevOps finns i tillägget "[bilaga 5: övervakning med Application Insights för Azure DevOps](#appendix-5)".
+Mer information om Application Insights för Azure-DevOps finns i tillägget "[bilaga 5: övervakning med Application Insights för Azure DevOps](#appendix-5)".
 
 ### <a name="monitoring-capacity"></a><a name="monitoring-capacity"></a>Övervaknings kapacitet
-Lagrings mått lagrar bara kapacitets mått för Blob-tjänsten eftersom blobbar vanligt vis utgör en stor andel av lagrade data (vid tidpunkten för skrivning, det går inte att använda lagrings mått för att övervaka kapaciteten för dina tabeller och köer). Du hittar dessa data i **$MetricsCapacityBlob** tabellen om du har aktiverat övervakning av BLOB service. Lagrings mått registrerar dessa data en gång per dag och du kan använda värdet för **RowKey** för att avgöra om raden innehåller en entitet som relaterar till användar data (värde **data** ) eller analys data (värde **analys** ). Varje lagrad entitet innehåller information om mängden lagrings utrymme ( **kapacitet** mätt i byte) och det aktuella antalet behållare ( **ContainerCount** ) och blobar ( **ObjectCount** ) som används i lagrings kontot. Mer information om de kapacitets mått som lagras i **$MetricsCapacityBlobs** tabellen finns i [Lagringsanalys Metrics Table schema](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema).
+Lagrings mått lagrar bara kapacitets mått för Blob-tjänsten eftersom blobbar vanligt vis utgör en stor andel av lagrade data (vid tidpunkten för skrivning, det går inte att använda lagrings mått för att övervaka kapaciteten för dina tabeller och köer). Du hittar dessa data i **$MetricsCapacityBlob** tabellen om du har aktiverat övervakning av BLOB service. Lagrings mått registrerar dessa data en gång per dag och du kan använda värdet för **RowKey** för att avgöra om raden innehåller en entitet som relaterar till användar data (värde **data**) eller analys data (värde **analys**). Varje lagrad entitet innehåller information om mängden lagrings utrymme (**kapacitet** mätt i byte) och det aktuella antalet behållare (**ContainerCount**) och blobar (**ObjectCount**) som används i lagrings kontot. Mer information om de kapacitets mått som lagras i **$MetricsCapacityBlobs** tabellen finns i [Lagringsanalys Metrics Table schema](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema).
 
 > [!NOTE]
 > Du bör övervaka dessa värden för en tidig varning att du närmar dig kapacitets gränserna för ditt lagrings konto. I Azure Portal kan du lägga till aviserings regler för att meddela dig om det aggregerade lagrings användningen överskrider eller hamnar under tröskelvärdena som du anger.
@@ -134,15 +133,15 @@ Lagrings mått lagrar bara kapacitets mått för Blob-tjänsten eftersom blobbar
 Information om hur du uppskattar storleken på olika lagrings objekt, till exempel blobbar, finns i blogg inlägget [förstå Azure Storage fakturering – bandbredd, transaktioner och kapacitet](/archive/blogs/patrick_butler_monterde/azure-storage-understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity).
 
 ### <a name="monitoring-availability"></a><a name="monitoring-availability"></a>Övervaka tillgänglighet
-Du bör övervaka tillgängligheten för lagrings tjänsterna i ditt lagrings konto genom att övervaka värdet i kolumnen **tillgänglighet** i tabellerna för tim-eller minut mått – **$MetricsHourPrimaryTransactionsBlob** , **$MetricsHourPrimaryTransactionsTable** , **$MetricsHourPrimaryTransactionsQueue** , **$MetricsMinutePrimaryTransactionsBlob** , **$MetricsMinutePrimaryTransactionsTable** , **$MetricsMinutePrimaryTransactionsQueue** , **$MetricsCapacityBlob** . Kolumnen **tillgänglighet** innehåller ett procent värde som anger tillgängligheten för tjänsten eller den API-åtgärd som representeras av raden ( **RowKey** visar om raden innehåller mått för tjänsten som helhet eller för en viss API-åtgärd).
+Du bör övervaka tillgängligheten för lagrings tjänsterna i ditt lagrings konto genom att övervaka värdet i kolumnen **tillgänglighet** i tabellerna för tim-eller minut mått – **$MetricsHourPrimaryTransactionsBlob**, **$MetricsHourPrimaryTransactionsTable**, **$MetricsHourPrimaryTransactionsQueue**, **$MetricsMinutePrimaryTransactionsBlob**, **$MetricsMinutePrimaryTransactionsTable**, **$MetricsMinutePrimaryTransactionsQueue**, **$MetricsCapacityBlob**. Kolumnen **tillgänglighet** innehåller ett procent värde som anger tillgängligheten för tjänsten eller den API-åtgärd som representeras av raden ( **RowKey** visar om raden innehåller mått för tjänsten som helhet eller för en viss API-åtgärd).
 
-Alla värden som är mindre än 100% indikerar att vissa lagrings begär Anden inte fungerar. Du kan se varför de inte fungerar genom att undersöka de andra kolumnerna i mått data som visar antalet begär Anden med olika fel typer, till exempel **ServerTimeoutError** . Du bör förvänta dig att se till att **tillgänglighet** sjunker tillfälligt under 100% av orsaker som tillfälligt Server-timeout medan tjänsten flyttar partitioner till en bättre belastnings Utjämnings förfrågan. logiken för omprövning i klient programmet bör hantera sådana tillfälliga förhållanden. Artikeln [Lagringsanalys loggade åtgärder och status meddelanden](/rest/api/storageservices/Storage-Analytics-Logged-Operations-and-Status-Messages) innehåller en lista över de transaktions typer som lagrings måtten innehåller i sin **tillgänglighets** beräkning.
+Alla värden som är mindre än 100% indikerar att vissa lagrings begär Anden inte fungerar. Du kan se varför de inte fungerar genom att undersöka de andra kolumnerna i mått data som visar antalet begär Anden med olika fel typer, till exempel **ServerTimeoutError**. Du bör förvänta dig att se till att **tillgänglighet** sjunker tillfälligt under 100% av orsaker som tillfälligt Server-timeout medan tjänsten flyttar partitioner till en bättre belastnings Utjämnings förfrågan. logiken för omprövning i klient programmet bör hantera sådana tillfälliga förhållanden. Artikeln [Lagringsanalys loggade åtgärder och status meddelanden](/rest/api/storageservices/Storage-Analytics-Logged-Operations-and-Status-Messages) innehåller en lista över de transaktions typer som lagrings måtten innehåller i sin **tillgänglighets** beräkning.
 
 I [Azure Portal](https://portal.azure.com)kan du lägga till aviserings regler för att meddela dig om **tillgänglighet** för en tjänst faller under ett tröskelvärde som du anger.
 
 I avsnittet "[fel söknings vägledning]" i den här guiden beskrivs några vanliga problem med lagrings tjänster som rör tillgänglighet.
 
-### <a name="monitoring-performance"></a><a name="monitoring-performance"></a>Övervaknings prestanda
+### <a name="monitoring-performance"></a><a name="monitoring-performance"></a>Övervaka prestanda
 Om du vill övervaka lagrings tjänsternas prestanda kan du använda följande mått från tabellerna för Tim-och minut mått.
 
 * Värdena i kolumnerna **AverageE2ELatency** och **AverageServerLatency** visar den genomsnittliga tiden som lagrings tjänsten eller API-åtgärds typen tar att bearbeta begär Anden. **AverageE2ELatency** är ett mått på en svars tid från slut punkt till slut punkt som omfattar den tid som krävs för att läsa begäran och skicka svaret förutom den tid det tar att bearbeta begäran (därför omfattar nätverks svars tiden när begäran når lagrings tjänsten). **AverageServerLatency** är ett mått på bara bearbetnings tiden och utesluter därför eventuella nätverks fördröjningar som är relaterade till kommunikation med klienten. I avsnittet "[mått visar hög AverageE2ELatency och låg AverageServerLatency]" senare i den här hand boken för en diskussion om varför det kan finnas en betydande skillnad mellan dessa två värden.
@@ -183,7 +182,7 @@ När du har identifierat den sannolika platsen för orsaken till prestanda probl
 Avsnittet "[fel söknings vägledning]" senare i den här hand boken innehåller mer information om några vanliga problem som kan uppstå i samband med prestanda.
 
 ### <a name="diagnosing-errors"></a><a name="diagnosing-errors"></a>Diagnostisera fel
-Användare av programmet kan meddela dig om fel som rapporter ATS av klient programmet. Lagrings mått registrerar också antalet olika fel typer från dina lagrings tjänster som **NetworkError** , **ClientTimeoutError** eller **AuthorizationError** . När lagrings måtten endast registrerar antalet olika typer av fel, kan du få mer information om enskilda förfrågningar genom att undersöka Server-och klient sidan och nätverks loggar. HTTP-statuskoden som returnerades av lagrings tjänsten ger vanligt vis en indikation på varför begäran misslyckades.
+Användare av programmet kan meddela dig om fel som rapporter ATS av klient programmet. Lagrings mått registrerar också antalet olika fel typer från dina lagrings tjänster som **NetworkError**, **ClientTimeoutError** eller **AuthorizationError**. När lagrings måtten endast registrerar antalet olika typer av fel, kan du få mer information om enskilda förfrågningar genom att undersöka Server-och klient sidan och nätverks loggar. HTTP-statuskoden som returnerades av lagrings tjänsten ger vanligt vis en indikation på varför begäran misslyckades.
 
 > [!NOTE]
 > Kom ihåg att du bör förvänta dig att se några tillfälliga fel: till exempel fel som beror på tillfälliga nätverks förhållanden eller program fel.
@@ -348,11 +347,11 @@ I det här avsnittet får du hjälp med diagnos och fel sökning av några vanli
 
 ---
 ### <a name="metrics-show-high-averagee2elatency-and-low-averageserverlatency"></a><a name="metrics-show-high-AverageE2ELatency-and-low-AverageServerLatency"></a>Mätningar visar ett högt värde för AverageE2ELatency och ett lågt värde för AverageServerLatency
-Bilden nedan från [Azure Portal](https://portal.azure.com) övervaknings verktyget visar ett exempel där **AverageE2ELatency** är betydligt högre än **AverageServerLatency** .
+Bilden nedan från [Azure Portal](https://portal.azure.com) övervaknings verktyget visar ett exempel där **AverageE2ELatency** är betydligt högre än **AverageServerLatency**.
 
 ![Bild från Azure Portal som visar ett exempel där AverageE2ELatency är betydligt högre än AverageServerLatency.][4]
 
-Lagrings tjänsten beräknar bara Metric- **AverageE2ELatency** för lyckade begär Anden och, till skillnad från **AverageServerLatency** , innehåller den tid som klienten tar för att skicka data och få bekräftelse från lagrings tjänsten. Därför kan skillnaden mellan **AverageE2ELatency** och **AverageServerLatency** vara antingen på grund av att klient programmet svarar långsamt eller på grund av villkor i nätverket.
+Lagrings tjänsten beräknar bara Metric- **AverageE2ELatency** för lyckade begär Anden och, till skillnad från **AverageServerLatency**, innehåller den tid som klienten tar för att skicka data och få bekräftelse från lagrings tjänsten. Därför kan skillnaden mellan **AverageE2ELatency** och **AverageServerLatency** vara antingen på grund av att klient programmet svarar långsamt eller på grund av villkor i nätverket.
 
 > [!NOTE]
 > Du kan också visa **E2ELatency** och **ServerLatency** för enskilda lagrings åtgärder i logg data för lagrings loggning.
@@ -362,7 +361,7 @@ Lagrings tjänsten beräknar bara Metric- **AverageE2ELatency** för lyckade beg
 #### <a name="investigating-client-performance-issues"></a>Undersöka problem med klient prestanda
 Möjliga orsaker till att klienten svarar långsamt är att ha ett begränsat antal anslutningar eller trådar, eller ha ont om resurser, till exempel processor, minne eller nätverks bandbredd. Du kanske kan lösa problemet genom att ändra klient koden så att den blir mer effektiv (till exempel genom att använda asynkrona anrop till lagrings tjänsten) eller genom att använda en större virtuell dator (med fler kärnor och mer minne).
 
-För tabell-och Queue Services kan Nagle-algoritmen också orsaka hög **AverageE2ELatency** jämfört med **AverageServerLatency** : Mer information finns i post [Nagle-algoritmen är inte läsvänlig mot små begär Anden](/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests). Du kan inaktivera Nagle-algoritmen i koden med hjälp av **ServicePointManager** -klassen i namn området **system.net** . Du bör göra detta innan du gör några anrop till tabellen eller Queue Services i ditt program eftersom detta inte påverkar anslutningar som redan är öppna. Följande exempel kommer från metoden **Application_Start** i en arbets roll.
+För tabell-och Queue Services kan Nagle-algoritmen också orsaka hög **AverageE2ELatency** jämfört med **AverageServerLatency**: Mer information finns i post [Nagle-algoritmen är inte läsvänlig mot små begär Anden](/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests). Du kan inaktivera Nagle-algoritmen i koden med hjälp av **ServicePointManager** -klassen i namn området **system.net** . Du bör göra detta innan du gör några anrop till tabellen eller Queue Services i ditt program eftersom detta inte påverkar anslutningar som redan är öppna. Följande exempel kommer från metoden **Application_Start** i en arbets roll.
 
 # <a name="net-v12"></a>[.NET-V12](#tab/dotnet)
 
@@ -459,14 +458,14 @@ Dina mått visar en ökning i **PercentTimeoutError** för en av dina lagrings t
 >
 >
 
-**PercentTimeoutError** -måttet är en agg regering av följande mått: **ClientTimeoutError** , **AnonymousClientTimeoutError** , **SASClientTimeoutError** , **ServerTimeoutError** , **AnonymousServerTimeoutError** och **SASServerTimeoutError** .
+**PercentTimeoutError** -måttet är en agg regering av följande mått: **ClientTimeoutError**, **AnonymousClientTimeoutError**, **SASClientTimeoutError**, **ServerTimeoutError**, **AnonymousServerTimeoutError** och **SASServerTimeoutError**.
 
 Serverns timeout-fel orsakas av ett fel på servern. Klientens tids gräns inträffar eftersom en åtgärd på servern har överskridit den timeout som anges av klienten. en klient som använder lagrings klient biblioteket kan till exempel ange en tids gräns för en åtgärd med hjälp av egenskapen **ServerTimeout** för klassen **QueueRequestOptions** .
 
 Server-timeout indikerar ett problem med lagrings tjänsten som kräver ytterligare undersökning. Du kan använda mått för att se om du påträffar skalbarhets gränserna för tjänsten och identifiera eventuella toppar i trafik som kan orsaka det här problemet. Om problemet är tillfälligt kan det bero på belastnings Utjämnings aktivitet i tjänsten. Om problemet är beständigt och inte orsakas av att ditt program når skalbarhets gränserna för tjänsten bör du ge ett support ärende. För klient-timeout måste du bestämma om tids gränsen har angetts till ett lämpligt värde i klienten och antingen ändra timeout-värdet som anges i klienten eller undersöka hur du kan förbättra prestandan för åtgärderna i lagrings tjänsten, till exempel genom att optimera tabell frågorna eller minska storleken på dina meddelanden.
 
 ### <a name="metrics-show-an-increase-in-percentnetworkerror"></a><a name="metrics-show-an-increase-in-PercentNetworkError"></a>Mätningar visar en ökning i PercentNetworkError
-Dina mått visar en ökning i **PercentNetworkError** för en av dina lagrings tjänster. **PercentNetworkError** -måttet är en agg regering av följande mått: **NetworkError** , **AnonymousNetworkError** och **SASNetworkError** . Detta inträffar när lagrings tjänsten identifierar ett nätverks fel när klienten gör en lagrings förfrågan.
+Dina mått visar en ökning i **PercentNetworkError** för en av dina lagrings tjänster. **PercentNetworkError** -måttet är en agg regering av följande mått: **NetworkError**, **AnonymousNetworkError** och **SASNetworkError**. Detta inträffar när lagrings tjänsten identifierar ett nätverks fel när klienten gör en lagrings förfrågan.
 
 Den vanligaste orsaken till det här felet är att klienten kopplar från innan en tids gräns går ut i lagrings tjänsten. Undersök koden i klienten för att förstå varför och när klienten kopplas från lagrings tjänsten. Du kan också använda wireshark eller TCPing för att undersöka problem med nätverks anslutningen från klienten. Dessa verktyg beskrivs i [tilläggen].
 
@@ -489,7 +488,7 @@ I det här scenariot bör du undersöka varför SAS-token upphör att gälla inn
 
 * Normalt bör du inte ange någon starttid när du skapar en SAS som klienten ska använda direkt. Om det förekommer små klockskillnader mellan värden som genererar SAS och lagringstjänsten kan tjänsten ta emot en SAS som inte har börjat gälla ännu.
 * Ange inte en mycket kort giltighetstid för en SAS. Återigen kan små klockskillnader mellan värden som genererar SAS och lagringstjänsten göra att SAS tycks upphöra tidigare än förväntat.
-* Matchar versions parametern i SAS-nyckeln (till exempel **sa = 2015-04-05** ) den version av lagrings klient biblioteket som du använder? Vi rekommenderar att du alltid använder den senaste versionen av [lagrings klient biblioteket](https://www.nuget.org/packages/WindowsAzure.Storage/).
+* Matchar versions parametern i SAS-nyckeln (till exempel **sa = 2015-04-05**) den version av lagrings klient biblioteket som du använder? Vi rekommenderar att du alltid använder den senaste versionen av [lagrings klient biblioteket](https://www.nuget.org/packages/WindowsAzure.Storage/).
 * Om du genererar om dina lagringsåtkomstnycklar kan befintliga SAS-token bli ogiltiga. Det här problemet kan uppstå om du genererar SAS-token med lång förfallotid som klientappar ska cachelagra.
 
 Om du använder Storage Client Library till att generera SAS-token är det enkelt att skapa en giltig token. Men om du använder lagrings REST API och skapar SAS-token manuellt, se [Delegera åtkomst med en signatur för delad åtkomst](/rest/api/storageservices/delegate-access-with-shared-access-signature).
@@ -633,11 +632,11 @@ I undantags informationen i klienten ingår det ID för begäran (7e84f12d...) s
 
 Loggen på Server sidan innehåller även en annan post med samma **klient-Request-ID** -värde (813ea74f...) för en lyckad borttagnings åtgärd för samma entitet och från samma klient. Denna slutförda borttagnings åtgärd ägde rum mycket strax före den misslyckade borttagnings förfrågan.
 
-Den mest sannolika orsaken till det här scenariot är att klienten skickade en Delete-begäran för entiteten till tabell tjänsten, som lyckades, men inte fick någon bekräftelse från servern (kanske på grund av ett tillfälligt nätverks problem). Klienten försökte sedan utföra åtgärden igen automatiskt (med samma **klient-Request-ID** ) och det nya försöket misslyckades eftersom entiteten redan har tagits bort.
+Den mest sannolika orsaken till det här scenariot är att klienten skickade en Delete-begäran för entiteten till tabell tjänsten, som lyckades, men inte fick någon bekräftelse från servern (kanske på grund av ett tillfälligt nätverks problem). Klienten försökte sedan utföra åtgärden igen automatiskt (med samma **klient-Request-ID**) och det nya försöket misslyckades eftersom entiteten redan har tagits bort.
 
 Om det här problemet inträffar ofta bör du undersöka varför klienten inte kan ta emot bekräftelser från tabell tjänsten. Om problemet är tillfälligt bör du fånga fel meddelandet "HTTP (404) hittades inte" och logga in i klienten, men Tillåt att klienten fortsätter.
 
-### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>Klienten tar emot HTTP 409-meddelanden (konflikt)
+### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>Klienten får HTTP 409-meddelanden (konflikt)
 I följande tabell visas ett utdrag från Server sidans logg för två klient åtgärder: **DeleteIfExists** följt av **CreateIfNotExists** med hjälp av samma BLOB container-namn. Varje klient åtgärd resulterar i två begär Anden som skickas till servern, först en **GetContainerProperties** -begäran om att kontrol lera om behållaren finns följt av **DeleteContainer** -eller **CreateContainer** -begäran.
 
 | Timestamp | Åtgärd | Resultat | Containerns namn | ID för klientförfrågan |
@@ -652,7 +651,7 @@ Koden i klient programmet tar bort och återskapar omedelbart en BLOB-behållare
 Klientappen bör använda unika containernamn när nya containrar skapas om det är ett vanligt mönster att ta bort/återskapa dem.
 
 ### <a name="metrics-show-low-percentsuccess-or-analytics-log-entries-have-operations-with-transaction-status-of-clientothererrors"></a><a name="metrics-show-low-percent-success"></a>Mått visar poster med låg PercentSuccess eller Analytics-logg har åtgärder med transaktions status ClientOtherErrors
-**PercentSuccess** -måttet samlar in procent andelen åtgärder som lyckats baserat på deras HTTP-statuskod. Åtgärder med status koderna 2XX Count som lyckade, medan åtgärder med status koder i 3XX, 4XX och 5XX intervall räknas som lyckade och sänker värdet för **PercentSuccess** -måttet. I loggfilerna för lagring på Server sidan registreras dessa åtgärder med transaktions statusen **ClientOtherErrors** .
+**PercentSuccess** -måttet samlar in procent andelen åtgärder som lyckats baserat på deras HTTP-statuskod. Åtgärder med status koderna 2XX Count som lyckade, medan åtgärder med status koder i 3XX, 4XX och 5XX intervall räknas som lyckade och sänker värdet för **PercentSuccess** -måttet. I loggfilerna för lagring på Server sidan registreras dessa åtgärder med transaktions statusen **ClientOtherErrors**.
 
 Det är viktigt att Observera att dessa åtgärder har slutförts och inte påverkar andra mått som tillgänglighet. Några exempel på åtgärder som kan utföras men som kan resultera i misslyckade HTTP-status koder är:
 
@@ -733,7 +732,7 @@ Den här bilagan innehåller en kort genom gång av hur du konfigurerar Fiddler 
 När du har startat Fiddler börjar den samla in HTTP-och HTTPS-trafik på den lokala datorn. Följande är några användbara kommandon för att kontrol lera Fiddler:
 
 * Stoppa och börja samla in trafik. På huvud menyn går du till **filen** och klickar sedan på **avbilda trafik** för att växla mellan inläsning och inaktive ring.
-* Spara insamlade trafik data. Gå till **fil** på huvud menyn, klicka på **Spara** och klicka sedan på **alla sessioner** : Detta gör att du kan spara trafiken i en arkivfil för en session. Du kan läsa in ett arkiv igen senare för analys eller skicka det om det krävs för Microsoft support.
+* Spara insamlade trafik data. Gå till **fil** på huvud menyn, klicka på **Spara** och klicka sedan på **alla sessioner**: Detta gör att du kan spara trafiken i en arkivfil för en session. Du kan läsa in ett arkiv igen senare för analys eller skicka det om det krävs för Microsoft support.
 
 Om du vill begränsa mängden trafik som Fiddler fångar in kan du använda filter som du konfigurerar på fliken **filter** . Följande skärm bild visar ett filter som bara fångar in trafik som skickas till **contosoemaildist.Table.Core.Windows.net** Storage-slutpunkt:
 
@@ -746,19 +745,19 @@ Följande procedur visar hur du registrerar detaljerad paket information för tr
 
 1. Starta wireshark på den lokala datorn.
 2. I avsnittet **Starta** väljer du det lokala nätverks gränssnittet eller gränssnitt som är anslutna till Internet.
-3. Klicka på **avbildnings alternativ** .
+3. Klicka på **avbildnings alternativ**.
 4. Lägg till ett filter i text rutan för **Infångnings filter** . **Värd contosoemaildist.Table.Core.Windows.net** konfigurerar till exempel wireshark för att endast avbilda paket som skickas till eller från tabell tjänstens slut punkt i lagrings kontot för **contosoemaildist** . Ta en titt på den [fullständiga listan över Infångnings filter](https://wiki.wireshark.org/CaptureFilters).
 
    ![Skärm bild som visar hur du lägger till ett filter i text rutan för Infångnings filter.][6]
-5. Klicka på **Starta** . Wireshark kommer nu att avbilda alla paket som skickas till eller från tabell tjänstens slut punkt när du använder klient programmet på den lokala datorn.
-6. När du är färdig klickar du på **avbilda** på huvud menyn och sedan på **stoppa** .
-7. Om du vill spara insamlade data i en wireshark-Infångnings fil går du till huvud menyn och klickar på **Arkiv** och sedan på **Spara** .
+5. Klicka på **Starta**. Wireshark kommer nu att avbilda alla paket som skickas till eller från tabell tjänstens slut punkt när du använder klient programmet på den lokala datorn.
+6. När du är färdig klickar du på **avbilda** på huvud menyn och sedan på **stoppa**.
+7. Om du vill spara insamlade data i en wireshark-Infångnings fil går du till huvud menyn och klickar på **Arkiv** och sedan på **Spara**.
 
-WireShark markerar eventuella fel som finns i fönstret **packetlist** . Du kan också använda fönstret med **expert information** (klicka på **analysera** , sedan på **expert information** ) om du vill visa en sammanfattning av fel och varningar.
+WireShark markerar eventuella fel som finns i fönstret **packetlist** . Du kan också använda fönstret med **expert information** (klicka på **analysera**, sedan på **expert information**) om du vill visa en sammanfattning av fel och varningar.
 
 ![Skärm bild som visar fönstret expert information där du kan visa en sammanfattning av fel och varningar.][7]
 
-Du kan också välja att Visa TCP-data när program lagret ser det genom att högerklicka på TCP-data och välja **Följ TCP-dataström** . Detta är användbart om du har fångat din dump utan ett infångstfilter. Mer information finns i [följande TCP-strömmar](https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html).
+Du kan också välja att Visa TCP-data när program lagret ser det genom att högerklicka på TCP-data och välja **Följ TCP-dataström**. Detta är användbart om du har fångat din dump utan ett infångstfilter. Mer information finns i [följande TCP-strömmar](https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html).
 
 ![Skärm bild som visar hur du visar TCP-data när program lagret ser det.][8]
 
@@ -772,11 +771,11 @@ Med många verktyg kan du ladda ned lagrings mått data från Azure Table Storag
 
 Importera lagrings loggnings data till Excel när du har laddat ned det från Blob Storage:
 
-* På **data** -menyn klickar du på **från text** .
-* Bläddra till logg filen som du vill visa och klicka på **Importera** .
-* I steg 1 i **guiden text import** väljer du **avgränsad** .
+* På **data** -menyn klickar du på **från text**.
+* Bläddra till logg filen som du vill visa och klicka på **Importera**.
+* I steg 1 i **guiden text import** väljer du **avgränsad**.
 
-I steg 1 i **guiden text import** väljer du **semikolon** som den enda avgränsaren och väljer dubbelt citat tecken som **text kvalificerare** . Klicka sedan på **Slutför** och välj var du vill placera data i din arbets bok.
+I steg 1 i **guiden text import** väljer du **semikolon** som den enda avgränsaren och väljer dubbelt citat tecken som **text kvalificerare**. Klicka sedan på **Slutför** och välj var du vill placera data i din arbets bok.
 
 ### <a name="appendix-5-monitoring-with-application-insights-for-azure-devops"></a><a name="appendix-5"></a>Bilaga 5: övervakning med Application Insights för Azure-DevOps
 Du kan också använda Application Insights funktionen för Azure-DevOps som en del av prestanda-och tillgänglighets övervakningen. Det här verktyget kan:

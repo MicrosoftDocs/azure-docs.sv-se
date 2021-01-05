@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: f4975c0e8d8b23a7c107b9704b0e0825702a0010
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 47cc67b408ff7fa50a244fffa8d41e640df0ecf3
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617025"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796439"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisk träna en tids serie prognos modell
 
@@ -33,7 +33,7 @@ En låg kod upplevelse finns i [självstudien: prognostisera efter frågan med a
 
 Till skillnad från klassiska Time Series-metoder i automatiserade ML, är tidigare tids serie värden "pivoterade" för att bli ytterligare dimensioner för modellerings regressor tillsammans med andra förutsägelser. Den här metoden omfattar flera sammanhangsbaserade variabler och deras relation till varandra under utbildningen. Eftersom flera faktorer kan påverka en prognos justeras den här metoden korrekt med verkliga prognos scenarier. Till exempel, när försäljnings prognoser används, interaktioner av historiska trender, växelkurs och pris gemensamt, kommer försäljnings resultatet gemensamt. 
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För den här artikeln behöver du 
 
@@ -304,7 +304,7 @@ forecast_parameters = ForecastingParameters(time_column_name='day_datetime',
 ```
 I följande tabell sammanfattas de tillgängliga inställningarna för `short_series_handling_config` .
  
-|Inställningen|Beskrivning
+|Inställning|Beskrivning
 |---|---
 |`auto`| Följande är standard beteendet för hantering av korta serier <li> *Om alla serier är korta* kan du fylla i data. <br> <li> *Om inte alla serier är korta* släpper du den korta serien. 
 |`pad`| Om du `short_series_handling_config = pad` sedan väljer automatiserad ml läggs slumpmässiga värden till i varje kort serie. Nedan visas kolumn typerna och vad de fylls med: <li>Objekt kolumner med NaNs <li> Numeriska kolumner med 0 <li> Booleska/Logic-kolumner med falskt <li> Mål kolumnen fylls med slumpmässiga värden med medelvärdet noll och standard avvikelsen 1. 
@@ -320,7 +320,7 @@ När ditt objekt är `AutoMLConfig` klart kan du skicka in experimentet. När mo
 
 ```python
 ws = Workspace.from_config()
-experiment = Experiment(ws, "forecasting_example")
+experiment = Experiment(ws, "Tutorial-automl-forecasting")
 local_run = experiment.submit(automl_config, show_output=True)
 best_run, fitted_model = local_run.get_output()
 ```

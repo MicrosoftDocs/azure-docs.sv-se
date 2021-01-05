@@ -6,12 +6,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 02/20/2020
 ms.author: cshoe
-ms.openlocfilehash: 8bb07e650c99f18cfecbc7b7674e0ca0e5a01dae
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 159df4c228f74bb605c745e899d99bfff2aa511b
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998914"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763293"
 ---
 # <a name="signalr-service-output-binding-for-azure-functions"></a>Utgående bindning för signal tjänst för Azure Functions
 
@@ -728,7 +728,7 @@ public SignalRGroupAction removeFromGroup(
 
 I följande tabell förklaras de egenskaper för bindnings konfiguration som du anger i *function.js* filen och `SignalRConnectionInfo` attributet.
 
-|function.jspå egenskap | Attributets egenskap |Description|
+|function.jspå egenskap | Attributets egenskap |Beskrivning|
 |---------|---------|----------------------|
 |**bastyp**| saknas | Måste anges till `signalRConnectionInfo` .|
 |**position**| saknas | Måste anges till `in` .|
@@ -741,7 +741,7 @@ I följande tabell förklaras de egenskaper för bindnings konfiguration som du 
 
 I följande tabell förklaras de egenskaper för bindnings konfiguration som du anger i *function.js* filen och `SignalR` attributet.
 
-|function.jspå egenskap | Attributets egenskap |Description|
+|function.jspå egenskap | Attributets egenskap |Beskrivning|
 |---------|---------|----------------------|
 |**bastyp**| saknas | Måste anges till `signalR` .|
 |**position**| saknas | Måste anges till `out` .|
@@ -753,4 +753,5 @@ I följande tabell förklaras de egenskaper för bindnings konfiguration som du 
 
 ## <a name="next-steps"></a>Nästa steg
 
+- [Hantera meddelanden från SignalR-tjänsten (Utlös bindning)](./functions-bindings-signalr-service-trigger.md)
 - [Returnera URL: en för tjänstens slut punkt och åtkomsttoken (ingående bindning)](./functions-bindings-signalr-service-input.md)

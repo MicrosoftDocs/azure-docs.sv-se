@@ -3,17 +3,17 @@ title: Ändra program inställningarna för Azure IoT Central | Microsoft Docs
 description: Som administratör kan du hantera ditt Azure IoT Central-program genom att ändra program namn, URL, ladda upp avbildning och ta bort ett program
 author: viv-liu
 ms.author: viviali
-ms.date: 11/27/2019
+ms.date: 12/19/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 2ed2756bc11a159bf860c5001af1ecaa942e7e1c
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: ece77c2091e7c7c2aa09516bd4d3022bb6fcdfcc
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122644"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796966"
 ---
 # <a name="change-iot-central-application-settings"></a>Ändra IoT Central program inställningar
 

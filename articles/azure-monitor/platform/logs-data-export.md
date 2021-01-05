@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 3b29245aed1b2c7767c340cbe8cd35dfa38610b9
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 8e310ea487818f6d82869fe1973c8e9ed0b04195
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656690"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797119"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics arbets ytans data export i Azure Monitor (förhands granskning)
 Med Log Analytics data export för arbets yta i Azure Monitor kan du kontinuerligt exportera data från valda tabeller i din Log Analytics arbets yta till ett Azure Storage-konto eller Azure-Event Hubs som det samlas in. Den här artikeln innehåller information om den här funktionen och hur du konfigurerar data export i dina arbets ytor.
@@ -41,7 +41,7 @@ Log Analytics data export för arbets ytan exporterar kontinuerligt data från e
 - Din Log Analytics arbets yta kan finnas i vilken region som helst, förutom följande:
   - Schweiz, norra
   - Schweiz, västra
-  - Regioner i Azure myndigheter
+  - Azure Government-regioner
 - Mål lagrings kontot eller händelsehubben måste finnas i samma region som Log Analytics-arbetsytan.
 - Namn på tabeller som ska exporteras får inte vara längre än 60 tecken för ett lagrings konto och högst 47 tecken till en Event Hub. Tabeller med längre namn exporteras inte.
 
@@ -81,7 +81,7 @@ Data skickas till händelsehubben i nära real tid när den når Azure Monitor. 
 1. Den grundläggande Event Hub-SKU: n stöder lägre storleks [gräns](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-tiers) för händelser och vissa loggar på din arbets yta kan överstiga den och tas bort. Vi rekommenderar att du använder "standard" eller "dedikerad" händelsehubben som export mål.
 2. Volymen för exporterade data ökar ofta med tiden och skalningen av Event Hub måste ökas för att hantera större överföringshastigheter och undvika begränsnings scenarier och data fördröjning. Du bör använda funktionen för automatisk ökning i Event Hubs för att automatiskt skala upp och öka antalet data flödes enheter och uppfylla användnings behoven. Mer information finns i [skala upp Azure Event Hubs data flödes enheter automatiskt](../../event-hubs/event-hubs-auto-inflate.md) .
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 Följande är förutsättningar som måste slutföras innan du konfigurerar Log Analytics data export.
 
 - Lagrings kontot och händelsehubben måste redan skapas och måste finnas i samma region som Log Analytics-arbetsytan. Om du behöver replikera dina data till andra lagrings konton kan du använda något av [alternativen för Azure Storage redundans](../../storage/common/storage-redundancy.md).  
@@ -120,11 +120,11 @@ En data export regel definierar data som ska exporteras för en uppsättning tab
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Ej tillämpligt
+Saknas
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Ej tillämpligt
+Saknas
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -216,17 +216,197 @@ Följande är en exempel text för REST-begäran för en Event Hub där Event Hu
   }
 }
 ```
+
+# <a name="template"></a>[Mall](#tab/json)
+
+Använd följande kommando för att skapa en data export regel för ett lagrings konto med hjälp av mallen.
+
+```
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspaceName": {
+            "defaultValue": "workspace-name",
+            "type": "String"
+        },
+        "workspaceLocation": {
+            "defaultValue": "workspace-region",
+            "type": "string"
+        },
+        "storageAccountRuleName": {
+            "defaultValue": "storage-account-rule-name",
+            "type": "string"
+        },
+        "storageAccountResourceId": {
+            "defaultValue": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group-name/providers/Microsoft.Storage/storageAccounts/storage-account-name",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "microsoft.operationalinsights/workspaces",
+            "apiVersion": "2020-08-01",
+            "name": "[parameters('workspaceName')]",
+            "location": "[parameters('workspaceLocation')]",
+            "resources": [
+                {
+                  "type": "microsoft.operationalinsights/workspaces/dataexports",
+                  "apiVersion": "2020-08-01",
+                  "name": "[concat(parameters('workspaceName'), '/' , parameters('storageAccountRuleName'))]",
+                  "dependsOn": [
+                      "[resourceId('microsoft.operationalinsights/workspaces', parameters('workspaceName'))]"
+                  ],
+                  "properties": {
+                      "destination": {
+                          "resourceId": "[parameters('storageAccountResourceId')]"
+                      },
+                      "tableNames": [
+                          "Heartbeat",
+                          "InsightsMetrics",
+                          "VMConnection",
+                          "Usage"
+                      ],
+                      "enable": true
+                  }
+              }
+            ]
+        }
+    ]
+}
+```
+
+Använd följande kommando för att skapa en data export regel till en händelsehubben med hjälp av mall. En separat händelsehubben skapas för varje tabell.
+
+```
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspaceName": {
+            "defaultValue": "workspace-name",
+            "type": "String"
+        },
+        "workspaceLocation": {
+            "defaultValue": "workspace-region",
+            "type": "string"
+        },
+        "eventhubRuleName": {
+            "defaultValue": "event-hub-rule-name",
+            "type": "string"
+        },
+        "namespacesResourceId": {
+            "defaultValue": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group-name/providers/microsoft.eventhub/namespaces/namespaces-name",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "microsoft.operationalinsights/workspaces",
+            "apiVersion": "2020-08-01",
+            "name": "[parameters('workspaceName')]",
+            "location": "[parameters('workspaceLocation')]",
+            "resources": [
+              {
+                  "type": "microsoft.operationalinsights/workspaces/dataexports",
+                  "apiVersion": "2020-08-01",
+                  "name": "[concat(parameters('workspaceName'), '/', parameters('eventhubRuleName'))]",
+                  "dependsOn": [
+                      "[resourceId('microsoft.operationalinsights/workspaces', parameters('workspaceName'))]"
+                  ],
+                  "properties": {
+                      "destination": {
+                          "resourceId": "[parameters('namespacesResourceId')]"
+                      },
+                      "tableNames": [
+                          "Usage",
+                          "Heartbeat"
+                      ],
+                      "enable": true
+                  }
+              }
+            ]
+        }
+    ]
+}
+```
+
+Använd följande kommando för att skapa en data export regel för en speciell händelsehubben med hjälp av mallen. Alla tabeller exporteras till det angivna händelsehubben.
+
+```
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspaceName": {
+            "defaultValue": "workspace-name",
+            "type": "String"
+        },
+        "workspaceLocation": {
+            "defaultValue": "workspace-region",
+            "type": "string"
+        },
+        "eventhubRuleName": {
+            "defaultValue": "event-hub-rule-name",
+            "type": "string"
+        },
+        "namespacesResourceId": {
+            "defaultValue": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group-name/providers/microsoft.eventhub/namespaces/namespaces-name",
+            "type": "String"
+        },
+        "eventhubName": {
+            "defaultValue": "event-hub-name",
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "microsoft.operationalinsights/workspaces",
+            "apiVersion": "2020-08-01",
+            "name": "[parameters('workspaceName')]",
+            "location": "[parameters('workspaceLocation')]",
+            "resources": [
+              {
+                  "type": "microsoft.operationalinsights/workspaces/dataexports",
+                  "apiVersion": "2020-08-01",
+                  "name": "[concat(parameters('workspaceName'), '/', parameters('eventhubRuleName'))]",
+                  "dependsOn": [
+                      "[resourceId('microsoft.operationalinsights/workspaces', parameters('workspaceName'))]"
+                  ],
+                  "properties": {
+                      "destination": {
+                          "resourceId": "[parameters('namespacesResourceId')]",
+                          "metaData": {
+                              "eventHubName": "[parameters('eventhubName')]"
+                          }
+                      },
+                      "tableNames": [
+                          "Usage",
+                          "Heartbeat"
+                      ],
+                      "enable": true
+                  }
+              }
+            ]
+        }
+    ]
+}
+```
+
 ---
 
 ## <a name="view-data-export-rule-configuration"></a>Visa data export regel konfiguration
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Ej tillämpligt
+Saknas
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Ej tillämpligt
+Saknas
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -243,17 +423,22 @@ Använd följande begäran om du vill visa konfigurationen av en data export reg
 ```rest
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.operationalInsights/workspaces/<workspace-name>/dataexports/<data-export-name>?api-version=2020-08-01
 ```
+
+# <a name="template"></a>[Mall](#tab/json)
+
+Saknas
+
 ---
 
 ## <a name="disable-an-export-rule"></a>Inaktivera en export regel
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Ej tillämpligt
+Saknas
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Ej tillämpligt
+Saknas
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -265,7 +450,7 @@ az monitor log-analytics workspace data-export update --resource-group resourceG
 
 # <a name="rest"></a>[REST](#tab/rest)
 
-Använd följande begäran om du vill inaktivera en data export regel med hjälp av REST API. Begäran bör använda token token-auktorisering.
+Export regler kan inaktive ras så att du kan stoppa exporten när du inte behöver spara data under en viss period, till exempel när testningen utförs. Använd följande begäran om du vill inaktivera en data export regel med hjälp av REST API. Begäran bör använda token token-auktorisering.
 
 ```rest
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.operationalInsights/workspaces/<workspace-name>/dataexports/<data-export-name>?api-version=2020-08-01
@@ -285,17 +470,22 @@ Content-type: application/json
     }
 }
 ```
+
+# <a name="template"></a>[Mall](#tab/json)
+
+Export regler kan inaktive ras så att du kan stoppa exporten när du inte behöver spara data under en viss period, till exempel när testningen utförs. Ange ```"enable": false``` i mall för att inaktivera en data export.
+
 ---
 
 ## <a name="delete-an-export-rule"></a>Ta bort en export regel
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Ej tillämpligt
+Saknas
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Ej tillämpligt
+Saknas
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -312,17 +502,22 @@ Använd följande begäran om du vill ta bort en data export regel med hjälp av
 ```rest
 DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.operationalInsights/workspaces/<workspace-name>/dataexports/<data-export-name>?api-version=2020-08-01
 ```
+
+# <a name="template"></a>[Mall](#tab/json)
+
+Saknas
+
 ---
 
 ## <a name="view-all-data-export-rules-in-a-workspace"></a>Visa alla data export regler i en arbets yta
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-Ej tillämpligt
+Saknas
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Ej tillämpligt
+Saknas
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -339,6 +534,11 @@ Använd följande begäran om du vill visa alla data export regler i en arbets y
 ```rest
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.operationalInsights/workspaces/<workspace-name>/dataexports?api-version=2020-08-01
 ```
+
+# <a name="template"></a>[Mall](#tab/json)
+
+Saknas
+
 ---
 
 ## <a name="unsupported-tables"></a>Tabeller som inte stöds

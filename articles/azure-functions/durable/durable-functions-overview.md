@@ -3,15 +3,15 @@ title: Översikt över Durable Functions – Azure
 description: Introduktion till Durable Functions-tillägget för Azure Functions.
 author: cgillum
 ms.topic: overview
-ms.date: 03/12/2020
+ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 28c494bf2867ec5d2d3ee99ef7ee45f8181cfd90
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3725970c982c2d060685bf0b99d12a8fc998f20a
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89669248"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763582"
 ---
 # <a name="what-are-durable-functions"></a>Vad är Durable Functions?
 
@@ -23,9 +23,11 @@ Durable Functions stöder för närvarande följande språk:
 
 * **C#**: både [förkompilerade klassbibliotek](../functions-dotnet-class-library.md) och [C#-skript](../functions-reference-csharp.md).
 * **JavaScript**: stöds endast för version 2.x av Azure Functions-körningen. Kräver version 1.7.0 av Durable Functions-tillägget eller en senare version. 
-* **Python**: kräver version 1.8.5 av Durable Functions-tillägget eller en senare version. Stöd för Durable Functions är för närvarande en offentlig för hands version.
+* **Python**: kräver version 2.3.1 av Durable Functions-tillägget eller en senare version. Stöd för Durable Functions är för närvarande en offentlig för hands version.
 * **F#**: både förkompilerade klassbibliotek och F#-skript. F#-skriptet stöds endast för version 1.x av Azure Functions-körningen.
 * **PowerShell**: stöd för Durable Functions finns för närvarande i en offentlig för hands version. Stöds endast för version 3. x av Azure Functions Runtime och PowerShell 7. Kräver version 2.2.2 av Durable Functions-tillägget eller en senare version. Endast följande mönster stöds för närvarande: [funktion länkning](#chaining), [fläkt-ut/fläkt-in](#fan-in-out), [asynkrona http API: er](#async-http).
+
+För att få åtkomst till de senaste funktionerna och uppdateringarna rekommenderar vi att du använder de senaste versionerna av Durable Functions-tillägget och de språkspecifika Durable Functions biblioteken. Läs mer om [Durable Functions-versioner](durable-functions-versions.md).
 
 Durable Functions har som mål att stödja alla [Azure Functions-språk](../supported-languages.md). I [Durable Functions-problemlistan](https://github.com/Azure/azure-functions-durable-extension/issues) finns senaste status för arbetet med att stödja ytterligare språk.
 

@@ -10,20 +10,15 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 06/25/2020
 ms.topic: conceptual
-ms.custom: how-to, data4ml
-ms.openlocfilehash: 1622f8ce988c5592ac96cec798617ca6ac37aa8d
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.custom: how-to, data4ml, contperf-fy21q2
+ms.openlocfilehash: 1bf7856e807b04e35d28a3e262ae89ea9c298f3c
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617178"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763599"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Identifiera data avvikelser (för hands version) på data uppsättningar
-
-
-> [!IMPORTANT]
-> Data identifiering för data uppsättningar är för närvarande en offentlig för hands version.
-> För hands versionen tillhandahålls utan service nivå avtal och rekommenderas inte för produktions arbets belastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Lär dig hur du övervakar data drift och ställer in aviseringar när driften är hög.  
 
@@ -33,12 +28,17 @@ Med Azure Machine Learning data uppsättnings övervakare (för hands version) k
 * **Övervaka nya data** för skillnader mellan alla data uppsättningar för bas linjen och målet.
 * **Profil funktioner i data** för att spåra hur statistik egenskaper ändras med tiden.
 * **Konfigurera aviseringar om data drift** för tidiga varningar till potentiella problem. 
+* **[Skapa en ny data uppsättnings version] (instruktions-till-version-Track-datauppsättningar** när du bestämmer att data har gått för mycket.
 
 En [Azure Machine Learning-datauppsättning](how-to-create-register-datasets.md) används för att skapa övervakaren. Data mängden måste innehålla en tidsstämpelkolumn.
 
 Du kan visa data drifts mått med python SDK eller i Azure Machine Learning Studio.  Andra mått och insikter är tillgängliga via den [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) -resurs som är kopplad till arbets ytan Azure Machine Learning.
 
-## <a name="prerequisites"></a>Krav
+> [!IMPORTANT]
+> Data identifiering för data uppsättningar är för närvarande en offentlig för hands version.
+> För hands versionen tillhandahålls utan service nivå avtal och rekommenderas inte för produktions arbets belastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill skapa och arbeta med data uppsättnings övervakare behöver du:
 * En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar. Prova den [kostnads fria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree) idag.
@@ -92,15 +92,20 @@ Data uppsättnings övervakare är beroende av följande Azure-tjänster.
 | *Application Insights*| Avvikelser genererar mått till Application Insights som hör till Machine Learning-arbetsytan.
 | *Azure Blob Storage*| Avvikelser genererar mått i JSON-format till Azure Blob Storage.
 
-## <a name="how-dataset-monitors-data"></a>Hur data uppsättningen övervakar data
+### <a name="baseline-and-target-datasets"></a>Data uppsättningar för bas linje och mål 
 
-Använd Machine Learning data uppsättningar för att övervaka data avvikelser. Ange en bas linje data uppsättning – vanligt vis inlärnings data uppsättningen för en modell. En mål data uppsättning – vanligt vis modell indata, jämförs med tiden för din bas linje data uppsättning. Den här jämförelsen innebär att mål data uppsättningen måste ha en angiven tidsstämpelkolumn.
+Du övervakar [Azure Machine Learning-datauppsättningar](how-to-create-register-datasets.md) för data drift. När du skapar en data uppsättnings Övervakare kommer du att referera till:
+* Bas linje data uppsättning – vanligt vis inlärnings data uppsättningen för en modell.
+* Mål data uppsättning – vanligt vis modell indata-data, jämförs med tiden för din bas linje data uppsättning. Den här jämförelsen innebär att mål data uppsättningen måste ha en angiven tidsstämpelkolumn.
+
+Övervakaren kommer att jämföra data uppsättningarna för bas linjen och målet.
 
 ## <a name="create-target-dataset"></a>Skapa mål data uppsättning
 
 Mål data uppsättningen måste ha `timeseries` angiven trait genom att ange kolumnen tidsstämpelkolumn från en kolumn i data eller en virtuell kolumn härledd från Sök vägs mönstret för filerna. Skapa data uppsättningen med en tidsstämpel genom [python SDK](#sdk-dataset) eller [Azure Machine Learning Studio](#studio-dataset). En kolumn som representerar en "tidstämpel" måste anges för att lägga till `timeseries` trait i data uppsättningen. Om dina data är partitionerade i mappstrukturen med tidsinformation, till exempel {ÅÅÅÅ/MM/DD}, skapar du en virtuell kolumn med hjälp av banans mönster inställning och anger den som "partitionens tidstämpel" för att förbättra vikten av tids serie funktionen.
 
-### <a name="python-sdk"></a><a name="sdk-dataset"></a>Python SDK
+# <a name="python"></a>[Python](#tab/python)
+<a name="sdk-dataset"></a>
 
 [`Dataset`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)Klass [`with_timestamp_columns()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) metoden definierar tids stämplings kolumnen för data uppsättningen.
 
@@ -129,9 +134,12 @@ dset = dset.with_timestamp_columns('date')
 dset = dset.register(ws, 'target')
 ```
 
-Ett komplett exempel på hur du `timeseries` kan använda data uppsättnings egenskaper finns i [exempel på Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb) eller [data uppsättningarna SDK-dokumentationen](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-).
+> [!TIP]
+> Ett komplett exempel på hur du `timeseries` kan använda data uppsättnings egenskaper finns i [exempel på Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb) eller [data uppsättningarna SDK-dokumentationen](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#&preserve-view=truewith-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-).
 
-### <a name="azure-machine-learning-studio"></a><a name="studio-dataset"></a>Azure Machine Learning Studio
+# <a name="studio"></a>[Studio](#tab/azure-studio)
+
+<a name="studio-dataset"></a>
 
 Om du skapar din data uppsättning med Azure Machine Learning Studio, se till att sökvägen till dina data innehåller tidsstämpel-information, inkludera alla undermappar med data och ange partitionens format.
 
@@ -147,14 +155,14 @@ Om dina data är partitionerade efter datum, som är fallet här, kan du också 
 
 :::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="Partitionera tidstämpel":::
 
+---
 
-## <a name="create-dataset-monitors"></a>Skapa data uppsättnings övervakare
+## <a name="create-dataset-monitor"></a>Övervakare för att skapa data uppsättning
 
-Skapa data uppsättnings Övervakare för att identifiera och varna data vid en ny data uppsättning.  Använd antingen [python SDK](#sdk-monitor) eller [Azure Machine Learning Studio](#studio-monitor).
+Skapa en data uppsättnings Övervakare för att identifiera och Varna vid en ny data uppsättning.  Använd antingen [python SDK](#sdk-monitor) eller [Azure Machine Learning Studio](#studio-monitor).
 
-### <a name="python-sdk"></a><a name="sdk-monitor"></a>Python SDK
-
-Mer information finns i [referens dokumentationen för python SDK för data](/python/api/azureml-datadrift/azureml.datadrift) drift. 
+# <a name="python"></a>[Python](#tab/python)
+<a name="sdk-monitor"></a> Mer information finns i [referens dokumentationen för python SDK för data](/python/api/azureml-datadrift/azureml.datadrift) drift. 
 
 I följande exempel visas hur du skapar en data uppsättnings övervakare med python SDK
 
@@ -202,9 +210,12 @@ monitor = monitor.disable_schedule()
 monitor = monitor.enable_schedule()
 ```
 
-Ett komplett exempel på hur du konfigurerar en data `timeseries` uppsättning och data riktnings detektor finns i vårt [exempel antecknings bok](https://aka.ms/datadrift-notebook).
+> [!TIP]
+> Ett komplett exempel på hur du konfigurerar en data `timeseries` uppsättning och data riktnings detektor finns i vårt [exempel antecknings bok](https://aka.ms/datadrift-notebook).
 
-### <a name="azure-machine-learning-studio"></a><a name="studio-monitor"></a> Azure Machine Learning Studio
+
+# <a name="studio"></a>[Studio](#tab/azure-studio)
+<a name="studio-monitor"></a>
 
 1. Gå till [Studios start sida](https://ml.azure.com).
 1. Välj fliken **data uppsättningar** till vänster. 
@@ -221,18 +232,20 @@ Ett komplett exempel på hur du konfigurerar en data `timeseries` uppsättning o
 
 * **Övervaka inställningar**.  De här inställningarna gäller för den schemalagda data behandlings övervakaren, som kommer att skapas. 
 
-    | Inställningen | Beskrivning | Tips | Föränderlig | 
+    | Inställning | Beskrivning | Tips | Föränderlig | 
     | ------- | ----------- | ---- | ------- |
-    | Name | Namnet på data uppsättnings övervakaren. | | No |
-    | Funktioner | Lista över funktioner som kommer att analyseras för data drift över tid. | Ställ in till en modells utmatnings funktion (er) för att mäta begrepps avvikelsen. Inkludera inte funktioner som används naturligt över tid (månad, år, index osv.). Du kan fylla på och befintlig data riktnings övervakning när du har justerat listan med funktioner. | Yes | 
-    | Beräkningsmål | Azure Machine Learning Compute Target för att köra data uppsättnings övervaknings jobben. | | Yes | 
-    | Aktivera | Aktivera eller inaktivera schemat i pipelinen för data uppsättnings övervakaren | Inaktivera schemat för att analysera historiska data med den egna fyllnings inställningen. Den kan aktive ras när data uppsättnings övervakaren har skapats. | Yes | 
-    | Frekvens | Den frekvens som används för att schemalägga pipeline-jobbet och analysera historiska data om en hel fyllning körs. Alternativen omfattar varje dag, varje vecka eller varje månad. | Varje körning jämför data i mål data uppsättningen enligt frekvensen: <li>Varje dag: jämför senaste fullständiga dag i mål data uppsättningen med bas linje <li>Varje vecka: jämför den senaste fullständiga veckan (måndag – söndag) i mål data uppsättningen med bas linje <li>Varje månad: jämför den senaste fullständiga månaden i mål data uppsättningen med bas linje | No | 
-    | Svarstid | Tid i timmar tar det för data att komma in i data uppsättningen. Till exempel, om det tar tre dagar innan data tas emot i SQL DB-datauppsättningen inkapslade, ställer du in svars tiden på 72. | Kan inte ändras efter att data uppsättnings övervakaren har skapats | No | 
-    | E-postadresser | E-postadresser för aviseringar baserat på överträdelse av tröskelvärdet för data avvikelse i procent. | E-postmeddelanden skickas via Azure Monitor. | Yes | 
-    | Tröskelvärde | Tröskelvärde för data avvikelse i procent för e-postavisering. | Ytterligare aviseringar och händelser kan anges för många andra mått i arbets ytans associerade Application Insights-resurs. | Yes |
+    | Namn | Namnet på data uppsättnings övervakaren. | | Nej |
+    | Funktioner | Lista över funktioner som kommer att analyseras för data drift över tid. | Ställ in till en modells utmatnings funktion (er) för att mäta begrepps avvikelsen. Inkludera inte funktioner som används naturligt över tid (månad, år, index osv.). Du kan fylla på och befintlig data riktnings övervakning när du har justerat listan med funktioner. | Ja | 
+    | Beräkningsmål | Azure Machine Learning Compute Target för att köra data uppsättnings övervaknings jobben. | | Ja | 
+    | Aktivera | Aktivera eller inaktivera schemat i pipelinen för data uppsättnings övervakaren | Inaktivera schemat för att analysera historiska data med den egna fyllnings inställningen. Den kan aktive ras när data uppsättnings övervakaren har skapats. | Ja | 
+    | Frekvens | Den frekvens som används för att schemalägga pipeline-jobbet och analysera historiska data om en hel fyllning körs. Alternativen omfattar varje dag, varje vecka eller varje månad. | Varje körning jämför data i mål data uppsättningen enligt frekvensen: <li>Varje dag: jämför senaste fullständiga dag i mål data uppsättningen med bas linje <li>Varje vecka: jämför den senaste fullständiga veckan (måndag – söndag) i mål data uppsättningen med bas linje <li>Varje månad: jämför den senaste fullständiga månaden i mål data uppsättningen med bas linje | Nej | 
+    | Svarstid | Tid i timmar tar det för data att komma in i data uppsättningen. Till exempel, om det tar tre dagar innan data tas emot i SQL DB-datauppsättningen inkapslade, ställer du in svars tiden på 72. | Kan inte ändras efter att data uppsättnings övervakaren har skapats | Nej | 
+    | E-postadresser | E-postadresser för aviseringar baserat på överträdelse av tröskelvärdet för data avvikelse i procent. | E-postmeddelanden skickas via Azure Monitor. | Ja | 
+    | Tröskelvärde | Tröskelvärde för data avvikelse i procent för e-postavisering. | Ytterligare aviseringar och händelser kan anges för många andra mått i arbets ytans associerade Application Insights-resurs. | Ja |
 
 När du har slutfört guiden visas den resulterande data uppsättnings övervakaren i listan. Välj den för att gå till den övervakarens informations sida.
+
+---
 
 ## <a name="understand-data-drift-results"></a>Förstå data avvikelse resultat
 
@@ -243,7 +256,7 @@ Börja med insikter på den översta nivån i data driftens storlek och en högd
 :::image type="content" source="media/how-to-monitor-datasets/drift-overview.png" alt-text="Avvikelse översikt":::
 
 
-| Mått | Beskrivning | 
+| Metric | Beskrivning | 
 | ------ | ----------- | 
 | Data riktnings storlek | En procent andel av driften mellan bas linjen och mål data uppsättningen över tid. Mellan 0 och 100 anger 0 identiska data mängder och 100 anger att den Azure Machine Learning data riktnings modellen kan se till att de två data uppsättningarna skiljer sig. Brus i exakt uppmätt procents ATS förväntas på grund av maskin inlärnings tekniker som används för att generera den här storleken. | 
 | Top drivgarn-funktioner | Visar funktionerna från den data uppsättning som har förfallit mest och som därför bidrar till måttet för drifts storlek. På grund av covariate Shift behöver inte den underliggande distributionen av en funktion nödvändigt vis ändra för att ha en relativt hög funktions betydelse. |
@@ -277,7 +290,7 @@ Måtten i diagrammet beror på typen av funktion.
 
 * Numeriska funktioner
 
-    | Mått | Beskrivning |  
+    | Metric | Beskrivning |  
     | ------ | ----------- |  
     | Wasserstein avstånd | Minsta arbets mängd för att transformera bas linje distribution till mål distributionen. |
     | Genomsnitts värde | Genomsnittligt värde för funktionen. |
@@ -286,7 +299,7 @@ Måtten i diagrammet beror på typen av funktion.
 
 * Kategoriska-funktioner
     
-    | Mått | Beskrivning |  
+    | Metric | Beskrivning |  
     | ------ | ----------- |  
     | Euclidian avstånd     |  Beräknad för kategoriska-kolumner. Euclidean avstånd beräknas på två vektorer som genereras från empirisk distribution av samma kategoriska-kolumn från två data uppsättningar. 0 betyder att det inte finns någon skillnad i empiriska distributioner.  Desto mer avviker från 0, desto mer är kolumnen. Trender kan observeras från ett Time Series-område för det här måttet och kan vara till hjälp vid avläsning av en drift funktion.  |
     | Unika värden | Antal unika värden (kardinalitet) för funktionen. |
@@ -319,9 +332,50 @@ Du kan använda en befintlig åtgärds grupp eller skapa en ny för att definier
 
 ![Ny åtgärds grupp](./media/how-to-monitor-datasets/action-group.png)
 
+
+## <a name="troubleshooting"></a>Felsökning
+
+Begränsningar och kända problem för data avvikelse Övervakare:
+
+* Tidsintervallet vid analys av historiska data är begränsat till 31 intervall av övervaknings frekvens inställningen. 
+* Begränsning av 200 funktioner, om inte en funktions lista inte har angetts (alla funktioner används).
+* Beräknings storleken måste vara tillräckligt stor för att data ska kunna hanteras.
+* Se till att data uppsättningen har data inom start-och slutdatum för en specifik övervaknings körning.
+* Data uppsättnings övervakare fungerar bara på data uppsättningar som innehåller 50 rader eller mer.
+* Kolumner eller funktioner i data uppsättningen klassificeras som kategoriska eller numeriska baserat på villkoren i följande tabell. Om funktionen inte uppfyller dessa villkor, t. ex. en kolumn av typen String med >100 unika värden, släpps funktionen från vår algoritm för data avvikelser, men är fortfarande profilerad. 
+
+    | Funktions typ | Datatyp | Villkor | Begränsningar | 
+    | ------------ | --------- | --------- | ----------- |
+    | Kategoriska | sträng, bool, int, Float | Antalet unika värden i funktionen är mindre än 100 och mindre än 5% av antalet rader. | Null behandlas som sin egen kategori. | 
+    | Numeriska | int, Float | Värdena i funktionen är av en numerisk datatyp och uppfyller inte villkoret för en kategoriska-funktion. | Funktionen utelämnas om >15% av värdena är null. | 
+
+* När du har skapat en data riktnings övervakare men inte kan se data på sidan för **data uppsättnings övervakning** i Azure Machine Learning Studio kan du prova följande.
+
+    1. Kontrol lera om du har valt rätt datum intervall överst på sidan.  
+    1. På fliken **data uppsättnings övervakning** väljer du länken experimentera för att kontrol lera körnings statusen.  Den här länken är längst till höger i tabellen.
+    1. Om körningen har slutförts kontrollerar du driv rutins loggarna för att se hur många mått som har genererats eller om det finns några varnings meddelanden.  Hitta driv rutins loggar på fliken **utdata + loggar** när du har klickat på ett experiment.
+
+* Om SDK `backfill()` -funktionen inte genererar förväntade utdata kan det bero på ett autentiseringsfel.  När du skapar beräkningen för att skicka in den här funktionen ska du inte använda `Run.get_context().experiment.workspace.compute_targets` .  Använd i stället [ServicePrincipalAuthentication](/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?preserve-view=true&view=azure-ml-py) , till exempel följande för att skapa den beräkning som du skickar till den `backfill()` funktionen: 
+
+  ```python
+   auth = ServicePrincipalAuthentication(
+          tenant_id=tenant_id,
+          service_principal_id=app_id,
+          service_principal_password=client_secret
+          )
+   ws = Workspace.get("xxx", auth=auth, subscription_id="xxx", resource_group"xxx")
+   compute = ws.compute_targets.get("xxx")
+   ```
+
+* Från modell data insamlaren kan det ta upp till (men vanligt vis mindre än) 10 minuter för data att komma in på ditt Blob Storage-konto. I ett skript eller en antecknings bok väntar du 10 minuter för att se till att cellerna nedan kommer att köras.
+
+    ```python
+    import time
+    time.sleep(600)
+    ```
+
 ## <a name="next-steps"></a>Nästa steg
 
 * Gå till [Azure Machine Learning Studio](https://ml.azure.com) eller [python Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datadrift-tutorial/datadrift-tutorial.ipynb) för att ställa in en data uppsättnings övervakare.
 * Se hur du konfigurerar data drift på [modeller som har distribuerats till Azure Kubernetes-tjänsten](./how-to-enable-data-collection.md).
-* Konfigurera data uppsättnings riktnings övervakare med [Event Grid](how-to-use-event-grid.md). 
-* Se dessa vanliga [fel söknings tips](resource-known-issues.md#data-drift) om du har problem.
+* Konfigurera data uppsättnings riktnings övervakare med [Event Grid](how-to-use-event-grid.md).

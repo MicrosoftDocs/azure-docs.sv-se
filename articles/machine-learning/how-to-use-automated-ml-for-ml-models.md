@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: nibaccam
 author: aniththa
 ms.reviewer: nibaccam
-ms.date: 07/10/2020
+ms.date: 12/20/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: 7cd704dad3d0ede55e4df4d9e222ff83fd7ae350
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 4539936007de0b45ab33dbd391baacc8f7d2ce2a
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94919649"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796065"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Skapa, granska och distribuera automatiserade maskin inlärnings modeller med Azure Machine Learning
 
@@ -91,7 +91,7 @@ Annars visas en lista över dina senaste automatiserade maskin inlärnings exper
         Välj **Nästa**.
 1. Välj den nyligen skapade data uppsättningen när den visas. Du kan också visa en förhands granskning av data uppsättningen och exempel statistiken. 
 
-1. I formuläret **Konfigurera körning** anger du ett unikt experiment namn.
+1. I formuläret **Konfigurera körning** väljer du **Skapa ny** och anger **självstudie – automl – distribuera** för experimentets namn.
 
 1. Välj en mål kolumn. Det här är den kolumn som du vill göra förutsägelser på.
 
@@ -164,7 +164,7 @@ Räkna med| Välj det värde som du vill använda för att ange värden för sak
 Klicka på **Slutför** för att köra experimentet. Experimentförberedelserna kan ta upp till 10 minuter. För träningsjobb kan det ta ytterligare 2–3 minuter för varje pipeline att slutföra körningen.
 
 > [!NOTE]
-> Algoritmerna för automatisk ML-användning har potentiell slumpmässig het som kan orsaka smärre variationer i rekommenderade modeller slut mått, som noggrannhet. Med automatisk ML utförs även åtgärder för data som träna-test-delning, träna eller kors validering när det behövs. Så om du kör ett experiment med samma konfigurations inställningar och primär mått flera gånger, kommer du troligen att se variationen i varje experiment slutliga Mät resultat på grund av dessa faktorer. 
+> Algoritmerna för automatisk ML-användning har potentiell slumpmässig het som kan orsaka smärre variationer i en rekommenderad modells slutliga mått poäng, som noggrannhet. Med automatisk ML utförs även åtgärder för data som träna-test-delning, träna eller kors validering när det behövs. Så om du kör ett experiment med samma konfigurations inställningar och primär mått flera gånger, kommer du troligen att se variationen i varje experiment slutliga Mät resultat på grund av dessa faktorer. 
 
 ### <a name="view-experiment-details"></a>Visa experimentinformation
 
@@ -172,7 +172,7 @@ Skärmen **körnings information** öppnas på fliken **information** . Den här
 
 Fliken **Modeller** innehåller en lista över de modeller som skapats ordnade efter måttpoängen. Som standard visas modellen med högst poäng utifrån det valda måttet överst i listan. När träningsjobbet testar fler modeller läggs de till i listan. Använd det här för att få en snabb jämförelse av måtten för de modeller som har producerats hittills.
 
-[![Körnings informations instrument panel](media/how-to-use-automated-ml-for-ml-models/run-details.png)](media/how-to-use-automated-ml-for-ml-models/run-details-expanded.png#lightbox)
+![Körnings information](./media/how-to-use-automated-ml-for-ml-models/explore-models.gif)
 
 ### <a name="view-training-run-details"></a>Visa information om tränings körningar
 
@@ -216,10 +216,10 @@ Automatiserad ML hjälper dig att distribuera modellen utan att skriva kod:
 1. Välj **Distribuera**. Det kan ta ungefär 20 minuter att slutföra distributionen.
     När distributionen börjar visas fliken **Modellsammanfattning**. Distributionsförloppet visas i avsnittet **Distributionsstatus**. 
 
-Nu har du ett fungerande webbtjänst för att generera förutsägelser! Du kan testa förutsägelserna genom att fråga tjänsten via [Power BI:s inbyggda Azure Machine Learning-stöd](how-to-consume-web-service.md#consume-the-service-from-power-bi).
+Nu har du ett fungerande webbtjänst för att generera förutsägelser! Du kan testa förutsägelserna genom att fråga tjänsten via [Power BI:s inbyggda Azure Machine Learning-stöd](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context).
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Lär dig hur du använder en webb tjänst](./how-to-consume-web-service.md).
+* [Lär dig hur du använder en webb tjänst](how-to-consume-web-service.md).
 * [Förstå automatiserade maskin inlärnings resultat](how-to-understand-automated-ml.md).
 * [Lär dig mer om automatisk maskin inlärning](concept-automated-ml.md) och Azure Machine Learning.

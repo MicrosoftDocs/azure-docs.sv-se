@@ -4,12 +4,12 @@ description: Beskriver hur du partitionerar Service Bus köer och ämnen med hj�
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8fd845ba24fd96ad6de566a7f55b25bd7129074d
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 9c500a69f853b11437a0dcaa48213fe3a84da53b
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930440"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796643"
 ---
 # <a name="partitioned-queues-and-topics"></a>Partitionerade köer och ämnen
 
@@ -29,8 +29,9 @@ När en klient vill ta emot ett meddelande från en partitionerad kö, eller fr�
 Gransknings åtgärden på en icke-partitionerad enhet returnerar alltid det äldsta meddelandet, men inte på en partitionerad enhet. I stället returnerar den det äldsta meddelandet i en av de partitioner vars Message Broker svarade först. Det finns ingen garanti för att det returnerade meddelandet är den äldsta i alla partitioner. 
 
 Det kostar inget extra att skicka ett meddelande till eller ta emot ett meddelande från en partitionerad kö eller ett ämne.
->[!NOTE]
-> Åtgärden Peek returnerar det äldsta meddelandet från partion baserat på dess SequenceNumber. För partioned-entiteter utfärdas sekvensnumret i förhållande till partitionen. Mer information finns i [ordningsföljd och tidsstämpel för meddelanden](../service-bus-messaging/message-sequencing.md).
+
+> [!NOTE]
+> Gransknings åtgärden returnerar det äldsta meddelandet från partitionen baserat på dess ordnings nummer. För partitionerade enheter utfärdas sekvensnumret i förhållande till partitionen. Mer information finns i [ordningsföljd och tidsstämpel för meddelanden](../service-bus-messaging/message-sequencing.md).
 
 ## <a name="enable-partitioning"></a>Aktivera partitionering
 

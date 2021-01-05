@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.openlocfilehash: ff55528013ac89be48454c25e1fc86deac2bca6f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 885ee993748a0a571f396cc0dc28f2c0c1a4a0c3
+ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357240"
+ms.lasthandoff: 12/27/2020
+ms.locfileid: "97792525"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>Självstudie: Konfigurera ThousandEyes för automatisk användar etablering
 
@@ -55,15 +55,22 @@ Det här avsnittet vägleder dig genom att ansluta din Azure AD till ThousandEye
 
 ### <a name="configure-automatic-user-account-provisioning-to-thousandeyes-in-azure-ad"></a>Konfigurera automatisk etablering av användar konton till ThousandEyes i Azure AD
 
-1. I [Azure Portal](https://portal.azure.com)bläddrar du till avsnittet **Azure Active Directory > Enterprise-appar > alla program**  .
+1. Logga in på [Azure-portalen](https://portal.azure.com). Välj **Företagsprogram** och sedan **Alla program**.
+
+    ![Bladet Företagsprogram](common/enterprise-applications.png)
 
 2. Om du redan har konfigurerat ThousandEyes för enkel inloggning söker du efter din instans av ThousandEyes med hjälp av Sök fältet. Annars väljer du **Lägg till** och söker efter **ThousandEyes** i program galleriet. Välj ThousandEyes från Sök resultaten och Lägg till den i listan över program.
 
+    ![ThousandEyes-länken i program listan](common/all-applications.png)
+    
 3. Välj din instans av ThousandEyes och välj sedan fliken **etablering** .
+
+    ![Fliken Etablering](common/provisioning.png)
 
 4. Ange **Etableringsläge** som **Automatiskt**.
 
-    ![Skärm bild som visar fliken etablering för ThousandEyes med automatiskt valt för etablerings läge.](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
+![Skärm bild som visar fliken etablering för ThousandEyes med automatiskt valt för etablerings läge.](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
+    
 
 5. Under avsnittet **admin credentials**  kan du mata in **OAuth Bearer-token** som genererats av ditt ThousandEyes-konto (du kan söka efter och eller generera en token under din ThousandEyes konto **profil** ).
 
@@ -71,27 +78,54 @@ Det här avsnittet vägleder dig genom att ansluta din Azure AD till ThousandEye
 
 6. I Azure Portal klickar du på **Testa anslutning** för att se till att Azure AD kan ansluta till din ThousandEyes-app. Om anslutningen Miss lyckas kontrollerar du att ThousandEyes-kontot har administratörs behörighet och försöker sedan steg 5 igen.
 
-7. Ange e-postadressen till en person eller grupp som ska få etablerings fel meddelanden i fältet **e-postavisering** och markera kryss rutan "Skicka ett e-postmeddelande när ett fel inträffar".
+7. I fältet **E-postavisering** anger du e-postadressen till den person eller grupp som ska ta emot meddelanden om etableringsfel. Markera sedan kryssrutan **Skicka ett e-postmeddelande när ett fel uppstår**.
+
+    ![E-postavisering](common/provisioning-notification-email.png)
 
 8. Klicka på **Spara**.
 
 9. Under avsnittet mappningar väljer du **synkronisera Azure Active Directory användare till ThousandEyes**.
 
-10. I avsnittet **mappningar för attribut** granskar du de användarattribut som synkroniseras från Azure AD till ThousandEyes. Attributen som väljs som **matchande** egenskaper används för att matcha användar kontona i ThousandEyes för uppdaterings åtgärder. Välj knappen Spara för att spara ändringarna.
+10. Granska de användarattribut som synkroniseras från Azure AD till ThousandEyes i avsnittet **attribut-mappning** . Attributen som väljs som **matchande** egenskaper används för att matcha de användar konton som kan parsas för uppdaterings åtgärder. Om du väljer att ändra [matchande målattribut](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)måste du se till att det parsade API: et stöder filtrering av användare baserat på attributet. Välj knappen **Spara** för att spara ändringarna.
 
-11. Om du vill aktivera Azure AD Provisioning-tjänsten för ThousandEyes ändrar du **etablerings statusen** till **på** i avsnittet **Inställningar**
+     |Attribut|Typ|Stöds för filtrering|
+     |---|---|---|
+     |externalId|Sträng|&check;|
+     |userName|Sträng|&check;|
+     |aktiv|Boolesk|
+     |displayName|Sträng|
+     |emails[type eq "work"].value|Sträng|
+     |namn. formaterad|Sträng|
 
-12. Klicka på **Spara**.
 
-Den här åtgärden startar den första synkroniseringen av alla användare och/eller grupper som har tilldelats ThousandEyes i avsnittet användare och grupper. Den inledande synkroniseringen tar längre tid att utföra än efterföljande synkroniseringar, vilket inträffar ungefär var 40: e minut så länge tjänsten körs. Du kan använda avsnittet **synkroniseringsinformation** om du vill övervaka förloppet och följa länkar till etablering av aktivitets loggar, som beskriver alla åtgärder som utförs av etablerings tjänsten.
+11. Information om hur du konfigurerar omfångsfilter finns i följande instruktioner i [självstudien för omfångsfilter](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-Mer information om hur du läser etablerings loggarna i Azure AD finns i [rapportering om automatisk etablering av användar konton](../app-provisioning/check-status-user-account-provisioning.md).
+12. Om du vill aktivera Azure AD Provisioning-tjänsten för ThousandEyes ändrar du **etablerings statusen** till **på** i avsnittet **Inställningar** .
+
+    ![Etableringsstatus är på](common/provisioning-toggle-on.png)
+
+13. Definiera de användare och/eller grupper som du vill etablera till ThousandEyes genom att välja önskade värden i **omfång** i avsnittet **Inställningar** .
+
+    ![Etableringsomfång](common/provisioning-scope.png)
+
+14. När du är redo att etablera klickar du på **Spara**.
+
+    ![Spara etableringskonfiguration](common/provisioning-configuration-save.png)
+
+Åtgärden startar den initiala synkroniseringscykeln för alla användare och grupper som har definierats i **Omfång** i avsnittet **Inställningar**. Den första cykeln tar längre tid att utföra än efterföljande cykler, vilket inträffar ungefär var 40:e minut om Azure AD-etableringstjänsten körs. 
+
+## <a name="step-6-monitor-your-deployment"></a>Steg 6. Övervaka distributionen
+När du har konfigurerat etableringen använder du följande resurser till att övervaka distributionen:
+
+1. Använd [etableringsloggarna](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) för att se vilka användare som har etablerats och vilka som har misslyckats
+2. Kontrollera [förloppsindikatorn](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) för att se status för etableringscykeln och hur nära den är att slutföras
+3. Om etableringskonfigurationen verkar innehålla fel, kommer programmet att placeras i karantän. Läs mer om karantänstatus [här](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).  
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Hantera användarkontoetablering för Enterprise-appar](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Hantera användarkontoetablering för Enterprise-appar](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Lär dig att granska loggar och hämta rapporter om etableringsaktivitet](../app-provisioning/check-status-user-account-provisioning.md)
+* [Lär dig att granska loggar och hämta rapporter om etableringsaktivitet](../manage-apps/check-status-user-account-provisioning.md)
