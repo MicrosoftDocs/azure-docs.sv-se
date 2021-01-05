@@ -1,7 +1,7 @@
 ---
-title: Funktionalisering i AutoML experiment
+title: Funktionalisering med automatisk maskin inlärning
 titleSuffix: Azure Machine Learning
-description: Lär dig vilka funktionalisering-inställningar Azure Machine Learning erbjudanden och hur funktions teknik stöds i automatiserade ML-experiment.
+description: Lär dig hur du funktionalisering inställningar för data i Azure Machine Learning och hur du anpassar funktionerna för dina automatiserade ML-experiment.
 author: nibaccam
 ms.author: nibaccam
 ms.reviewer: nibaccam
@@ -9,25 +9,24 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, automl
-ms.date: 05/28/2020
-ms.openlocfilehash: 658db1604895515525e5a4826a43c0b21d9698b1
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.custom: how-to,automl,contperf-fy21q2
+ms.date: 12/18/2020
+ms.openlocfilehash: 526afe758063ce6c5f6bd86f8192f56d5f844a85
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359637"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694006"
 ---
-# <a name="featurization-in-automated-machine-learning"></a>Funktionalisering i automatiserad maskininlärning
+# <a name="data-featurization-in-automated-machine-learning"></a>Data funktionalisering i Automatisk maskin inlärning
 
 
 
-I den här guiden får du lära dig:
+Lär dig mer om inställningarna för data funktionalisering i Azure Machine Learning och hur du anpassar dessa funktioner för [automatiserade ml-experiment](concept-automated-ml.md).
 
-- Vilka funktionalisering-inställningar Azure Machine Learning erbjudanden.
-- Så här anpassar du funktionerna för dina [automatiserade maskin inlärnings experiment](concept-automated-ml.md).
+## <a name="feature-engineering-and-featurization"></a>Funktions teknik och funktionalisering
 
-*Funktions teknik* är en process där du använder domän information om data för att skapa funktioner som hjälper Machine Learning-algoritmer (ml) att lära sig bättre. I Azure Machine Learning tillämpas teknikerna för data skalning och normalisering för att göra det enklare att använda funktionen. Tillsammans kallas dessa tekniker och den här typen av teknik för *funktionalisering* i automatiserad maskin inlärning eller *AutoML* , experiment.
+*Funktions teknik* är en process där du använder domän information om data för att skapa funktioner som hjälper Machine Learning-algoritmer (ml) att lära sig bättre. I Azure Machine Learning tillämpas teknikerna för data skalning och normalisering för att göra det enklare att använda funktionen. Tillsammans kallas dessa tekniker och den här typen av teknik för *funktionalisering* i automatiserad maskin inlärning eller *autoML*, experiment.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -38,7 +37,7 @@ Den här artikeln förutsätter att du redan vet hur du konfigurerar ett AutoML 
 
 ## <a name="configure-featurization"></a>Konfigurera funktionalisering
 
-I varje automatiserad maskin inlärnings experiment tillämpas [automatiska skalnings-och normaliserings metoder](#featurization) på dina data som standard. Dessa metoder är typer av funktionalisering som hjälper *vissa* algoritmer som är känsliga för funktioner i olika skalor. Du kan dock också aktivera ytterligare funktionalisering, t. ex. *saknade värden Imputation* , *encoding* och *transformationer*.
+I varje automatiserad maskin inlärnings experiment tillämpas [automatiska skalnings-och normaliserings metoder](#featurization) på dina data som standard. Dessa metoder är typer av funktionalisering som hjälper *vissa* algoritmer som är känsliga för funktioner i olika skalor. Du kan aktivera fler funktionalisering, t. ex. *saknade värden Imputation*, *encoding* och *transformationer*.
 
 > [!NOTE]
 > Steg för automatisk Machine Learning-funktionalisering (till exempel funktion normalisering, hantering av data som saknas eller konvertering av text till numeriska) blir en del av den underliggande modellen. När du använder modellen för förutsägelser tillämpas samma funktionalisering-steg som tillämpas på din indata automatiskt.
@@ -49,7 +48,7 @@ I följande tabell visas de accepterade inställningarna för `featurization` i 
 
 |Funktionalisering-konfiguration | Beskrivning|
 ------------- | ------------- |
-|`"featurization": 'auto'`| Anger att steg som en del av processen för att bearbeta [data guardrails och funktionalisering](#featurization) ska göras automatiskt. Den här inställningen är standardinställningen.|
+|`"featurization": 'auto'`| Anger att steg som en del av processen för att bearbeta [data guardrails](#data-guardrails) och [funktionalisering](#featurization) ska göras automatiskt. Den här inställningen är standardinställningen.|
 |`"featurization": 'off'`| Anger att funktionalisering-steg inte ska göras automatiskt.|
 |`"featurization":`&nbsp;`'FeaturizationConfig'`| Anger att anpassade funktionalisering-steg ska användas. [Lär dig hur du anpassar funktionalisering](#customize-featurization).|
 
@@ -66,7 +65,7 @@ I följande tabell sammanfattas de tekniker som automatiskt tillämpas på dina 
 | ------------- | ------------- |
 |**Släpp hög kardinalitet eller inga varians funktioner** _ |Släpp dessa funktioner från utbildning och validerings uppsättningar. Gäller för funktioner med alla värden som saknas, med samma värde för alla rader eller med hög kardinalitet (till exempel hash-värden, ID: n eller GUID).|
 |_*Imputerade värden som saknas**_ |För numeriska funktioner måste du räkna ut med medelvärdet av värdena i kolumnen.<br/><br/>För kategoriska-funktioner ska du räkna med det vanligaste värdet.|
-|_*Generera ytterligare funktioner**_ |För DateTime-funktioner: år, månad, dag, veckodag, dag på år, kvartal, vecka på år, timme, minut och sekund.<br><br> _For prognos uppgifter, * dessa ytterligare DateTime-funktioner skapas: ISO-år, halvår, kalender månad som sträng, vecka, veckodag som sträng, dag i kvartal, dag på år, fm/em (0 om timme är före 12.00 (12 PM), 1, AM/PM som sträng, timme på dagen (12 timmar)<br/><br/>För text funktioner: term frekvens baserat på unigrams, bigram och trigrams. Läs mer om [hur detta görs med Bert.](#bert-integration)|
+|_*Generera fler funktioner**_ |För DateTime-funktioner: år, månad, dag, veckodag, dag på år, kvartal, vecka på år, timme, minut och sekund.<br><br> _For prognostisering av aktiviteter, * dessa ytterligare DateTime-funktioner skapas: ISO Year, halvårs vis, kalender månad som sträng, vecka, veckodag som sträng, dag i kvartal, dag på år, fm/em (0 om timme är före 12.00 (12 PM), 1), fm/em som sträng, timme på dagen (12-HR-bas)<br/><br/>För text funktioner: term frekvens baserat på unigrams, bigram och trigrams. Läs mer om [hur detta görs med Bert.](#bert-integration)|
 |**Transformera och koda** _|Transformera numeriska funktioner med några få unika värden i kategoriska-funktioner.<br/><br/>En-frekvent kodning används för kategoriska-funktioner med låg kardinalitet. En-frekvent-hash-kodning används för kategoriska-funktioner med hög kardinalitet.|
 |_ *Word-inbäddningar**|En text upplärda konverterar vektorer med text-token till menings vektorer med hjälp av en förtränad modell. Varje ords inbäddnings vektor i ett dokument sammanställs med resten för att skapa en dokument funktions vektor.|
 |**Mål kodningar**|För kategoriska-funktioner mappar det här steget varje kategori med ett genomsnittligt målvärde för Regressions problem, och till sannolikheten för varje klass för klassificerings problem. Frekvens-baserad viktning och n:te kors validering används för att minska överanpassningen av mappningen och bruset som orsakas av glesa data kategorier.|
@@ -80,8 +79,8 @@ I följande tabell sammanfattas de tekniker som automatiskt tillämpas på dina 
 
 Data guardrails tillämpas:
 
-- **För SDK-experiment** : När parametrarna `"featurization": 'auto'` eller `validation=auto` anges i `AutoMLConfig` objektet.
-- **För Studio experiment** : när automatisk funktionalisering har Aktiver ATS.
+- **För SDK-experiment**: När parametrarna `"featurization": 'auto'` eller `validation=auto` anges i `AutoMLConfig` objektet.
+- **För Studio experiment**: när automatisk funktionalisering har Aktiver ATS.
 
 Du kan granska data guardrails för ditt experiment:
 
@@ -303,22 +302,24 @@ class_prob = fitted_model.predict_proba(X_test)
 
 Om den underliggande modellen inte stöder `predict_proba()` funktionen eller om formatet är felaktigt, kommer ett modell Klasss-särskilt undantag att genereras. I referens dokumenten [RandomForestClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier.predict_proba) och [XGBoost](https://xgboost.readthedocs.io/en/latest/python/python_api.html) finns exempel på hur funktionen implementeras för olika modell typer.
 
-## <a name="bert-integration"></a>BERT-integrering
+<a name="bert-integration"></a>
+
+## <a name="bert-integration-in-automated-ml"></a>BERT-integrering i automatiserad ML
 
 [Bert](https://techcommunity.microsoft.com/t5/azure-ai/how-bert-is-integrated-into-azure-automated-machine-learning/ba-p/1194657) används i funktionalisering-lagret för AutoML. Om en kolumn i det här lagret innehåller Fritext eller andra typer av data, t. ex. tidsstämplar eller enkla tal, tillämpas funktionalisering på motsvarande sätt.
 
 För BERT är modellen finjusterad och tränad användning av etiketter som användaren anger. Härifrån är dokument inbäddningar utdata som andra funktioner, t. ex. tidsstämpel-baserade funktioner, veckodag. 
 
 
-### <a name="bert-steps"></a>BERT-steg
+### <a name="steps-to-invoke-bert"></a>Steg för att anropa BERT
 
-För att kunna anropa BERT måste du ange  `enable_dnn: True` i automl_settings och använda en GPU-beräkning (t. ex. `vm_size = "STANDARD_NC6"` eller en högre GPU). Om en processor beräkning används aktiverar AutoML BiLSTM DNN upplärda i stället för BERT.
+Ange  `enable_dnn: True` automl_settings och Använd en GPU-beräkning ( `vm_size = "STANDARD_NC6"` eller en högre GPU) för att anropa Bert. Om en processor beräkning används aktiverar AutoML BiLSTM DNN upplärda i stället för BERT.
 
 AutoML vidtar följande steg för BERT. 
 
 1. **För bearbetning och tokenisering av alla text kolumner**. Transformeraren "StringCast" kan till exempel hittas i den slutliga modellens funktionalisering-Sammanfattning. Ett exempel på hur du kan skapa modellens funktionalisering-sammanfattning finns i [den här antecknings boken](https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b).
 
-2. **Sammanfoga alla text kolumner till en enda text kolumn** , och därför `StringConcatTransformer` i den slutliga modellen. 
+2. **Sammanfoga alla text kolumner till en enda text kolumn**, och därför `StringConcatTransformer` i den slutliga modellen. 
 
     Vår implementering av BERT begränsar den totala text längden för ett utbildnings exempel till 128-token. Det innebär att alla text kolumner som är sammanfogade bör helst vara högst 128 tokens. Om det finns flera kolumner bör varje kolumn rensas så att villkoret är uppfyllt. Annars trunkerar den sammansatta kolumner med längden >128-token BERT tokenizer-lagret denna inmatare till 128-token.
 
@@ -327,9 +328,10 @@ AutoML vidtar följande steg för BERT.
 BERT körs vanligt vis längre än andra featurizers. För bättre prestanda rekommenderar vi att du använder "STANDARD_NC24r" eller "STANDARD_NC24rs_V3" för sina RDMA-funktioner. 
 
 AutoML kommer att distribuera BERT-utbildning över flera noder om de är tillgängliga (upp till högst åtta noder). Detta kan göras i ditt `AutoMLConfig` objekt genom `max_concurrent_iterations` att ange parametern till högre än 1. 
-### <a name="supported-languages"></a>Språk som stöds
 
-AutoML stöder för närvarande cirka 100 språk och, beroende på data uppsättningens språk, väljer AutoML lämplig BERT-modell. För tyska data använder vi den tyska BERT-modellen. För engelska använder vi den engelska BERT-modellen. För alla andra språk använder vi den flerspråkiga BERT-modellen.
+## <a name="supported-languages-for-bert-in-automl"></a>Språk som stöds för BERT i autoML 
+
+AutoML stöder för närvarande cirka 100 språk och, beroende på data uppsättningens språk, väljer autoML lämplig BERT-modell. För tyska data använder vi den tyska BERT-modellen. För engelska använder vi den engelska BERT-modellen. För alla andra språk använder vi den flerspråkiga BERT-modellen.
 
 I följande kod utlöses den tyska BERT-modellen, eftersom data uppsättnings språket har angetts till `deu` , den tre bokstavs språk koden för tyska enligt [ISO-klassificering](https://iso639-3.sil.org/code/deu):
 

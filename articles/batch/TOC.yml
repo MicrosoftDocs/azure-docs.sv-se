@@ -65,6 +65,8 @@
           href: ./security-controls-policy.md
         - name: Säkerhetsbaslinje
           href: security-baseline.md
+        - name: Metodtips för säkerhet
+          href: security-best-practices.md
     - name: Batch-tjänstens arbetsflöde och resurser
       displayName: developer features
       href: batch-service-workflow-features.md

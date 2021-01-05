@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: d89f9330947d1c5d0146b8531f265d86d0fd5160
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.custom: references_regions
+ms.openlocfilehash: c5f8be87e7ee95e1deff12cce09204b5fe8a0bb7
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329159"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694197"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Skapa en röstassistent med Anpassade kommandon
 
@@ -27,14 +28,14 @@ För tillfället stöder anpassade kommandon tal prenumerationer som skapats i f
 * USA, västra 2
 * East US
 * USA, östra 2
+* USA, västra centrala
 * Norra Europa
 * Europa, västra
-* USA, västra centrala
-* Indien, centrala
 * Asien, östra
 * Sydostasien
+* Indien, centrala
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 > [!div class="checklist"]
 > * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Skapa en Azure tal-resurs i en region som stöder anpassade kommandon.<span class="docon docon-navigate-external x-hidden-focus"></span></a> Se avsnittet **region tillgänglighet** ovan för att visa en lista över regioner som stöds.
@@ -115,7 +116,7 @@ Innan du kan komma åt det här programmet från externa tal Studio måste du pu
 
 Välj  **publicera** ovanpå den högra rutan. När publiceringen är klar visas ett nytt fönster. Anteckna värdet för **program-ID** och **tal resurs nyckel** från det. Du behöver dessa två värden för att kunna komma åt programmet från externa tal Studio.
 
-Du kan också hämta dessa värden genom att välja allmänna **Inställningar**  >  **General** .
+Du kan också hämta dessa värden genom att välja allmänna **Inställningar**  >   .
 
 ### <a name="access-application-from-client"></a>Kom åt program från klienten
 

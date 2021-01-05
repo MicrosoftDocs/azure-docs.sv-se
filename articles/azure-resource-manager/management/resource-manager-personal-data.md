@@ -3,12 +3,12 @@ title: Personuppgifter
 description: Lär dig hur du hanterar person uppgifter som är associerade med Azure Resource Manager åtgärder.
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 22cfc1b6096980f3d10db404a1c4e02f2de355d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e531f7cd9992536bcc191637111761c5bbdefa2
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75485265"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693693"
 ---
 # <a name="manage-personal-data-associated-with-azure-resource-manager"></a>Hantera personliga data som är associerade med Azure Resource Manager
 
@@ -26,25 +26,25 @@ Om du vill visa en lista över **distributioner** i historiken använder du:
 
 * [Lista efter resurs grupp](/rest/api/resources/deployments/listbyresourcegroup)
 * [Get-AzResourceGroupDeployment](/powershell/module/az.resources/Get-AzResourceGroupDeployment)
-* [AZ Group Deployment List](/cli/azure/group/deployment#az-group-deployment-list)
+* [AZ distributions grupp lista](/cli/azure/deployment/group#az_deployment_group_list)
 
 Om du vill ta bort **distributioner** från historiken använder du:
 
 * [Ta bort](/rest/api/resources/deployments/delete)
 * [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/Remove-AzResourceGroupDeployment)
-* [ta bort AZ Group Deployment](/cli/azure/group/deployment#az-group-deployment-delete)
+* [ta bort AZ distributions grupp](/cli/azure/deployment/group#az_deployment_group_delete)
 
 ## <a name="delete-personal-data-in-resource-group-names"></a>Ta bort personliga data i resurs grupp namn
 
 Namnet på resurs gruppen finns kvar tills du tar bort resurs gruppen. Om du vill se om du har angett personliga data i namnen, visar du resurs grupperna. Om du hittar personliga data [flyttar du resurserna](move-resource-group-and-subscription.md) till en ny resurs grupp och tar bort resurs gruppen med personliga data i namnet.
 
-Om du vill visa **resurs grupper**använder du:
+Om du vill visa **resurs grupper** använder du:
 
 * [Lista](/rest/api/resources/resourcegroups/list)
 * [Get-AzResourceGroup](/powershell/module/az.resources/Get-AzResourceGroup)
 * [lista över AZ-grupper](/cli/azure/group#az-group-list)
 
-Om du vill ta bort **resurs grupper**använder du:
+Om du vill ta bort **resurs grupper** använder du:
 
 * [Ta bort](/rest/api/resources/resourcegroups/delete)
 * [Remove-AzResourceGroup](/powershell/module/az.resources/Remove-AzResourceGroup)
@@ -54,13 +54,13 @@ Om du vill ta bort **resurs grupper**använder du:
 
 Taggarnas namn och värden finns kvar tills du tar bort eller ändrar taggen. Om du vill se om du har angett personliga data i taggarna visar du taggarna. Ta bort taggarna om du hittar personliga data.
 
-Om du vill visa **taggar**använder du:
+Om du vill visa **taggar** använder du:
 
 * [Lista](/rest/api/resources/tags/list)
 * [Get-AzTag](/powershell/module/az.resources/Get-AzTag)
 * [AZ tag-lista](/cli/azure/tag#az-tag-list)
 
-Om du vill ta bort **taggar**använder du:
+Om du vill ta bort **taggar** använder du:
 
 * [Ta bort](/rest/api/resources/tags/delete)
 * [Remove-AzTag](/powershell/module/az.resources/Remove-AzTag)

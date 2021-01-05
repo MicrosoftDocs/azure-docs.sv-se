@@ -1,18 +1,18 @@
 ---
 title: Så här skannar du Azure Storage BLOB
 description: Lär dig hur du skannar Azure Blob Storage i din Azure avdelningens kontroll Data Catalog.
-author: hophanms
-ms.author: hophan
+author: shsandeep123
+ms.author: sandeepshah
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 1bcd8390a298d7fc46f9c04633f610eb4492d33d
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 9fc5c115486c7cbf84fc0bd98ff7996c674f2e24
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400717"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694820"
 ---
 # <a name="register-and-scan-azure-blob-storage"></a>Registrera och genomsöka Azure Blob Storage
 
@@ -22,7 +22,7 @@ Den här artikeln beskriver hur du registrerar ett Azure Blob Storage-konto i av
 
 Azure Blob Storage stöder fullständiga och stegvisa genomsökningar för att avbilda metadata och scheman. Den klassificerar också data automatiskt baserat på system-och anpassade klassificerings regler.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Skapa ett Azure avdelningens kontroll-konto innan du registrerar data källor. Mer information om hur du skapar ett avdelningens kontroll-konto finns i [snabb start: skapa ett Azure avdelningens kontroll-konto](create-catalog-portal.md).
 - Du måste vara en Azure avdelningens kontroll data source-administratör

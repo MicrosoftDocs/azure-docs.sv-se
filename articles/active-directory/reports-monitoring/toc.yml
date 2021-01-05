@@ -98,9 +98,9 @@
     - name: Azure AD PowerShell-cmdletar för rapportering
       href: reference-powershell-reporting.md
     - name: API-referens för granskningsloggar
-      href: /graph/api/resources/directoryaudit?view=graph-rest-beta
+      href: /graph/api/resources/directoryaudit?view=graph-rest-1.0
     - name: API-referens för inloggningsloggar
-      href: /graph/api/resources/signin?view=graph-rest-beta
+      href: /graph/api/resources/signin?view=graph-rest-1.0
     - name: Granskningsaktiviteter
       href: reference-audit-activities.md
     - name: Datakvarhållningsprinciper

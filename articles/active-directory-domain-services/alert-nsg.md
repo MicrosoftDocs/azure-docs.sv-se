@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: justinha
-ms.openlocfilehash: 58cdd025587823f7eb702164c965ab622a7325d3
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 5b48d326efad889adbcf25d487ee27b8200f558f
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97615655"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693916"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Kända problem: aviseringar om nätverks konfiguration i Azure Active Directory Domain Services
 
@@ -38,13 +38,15 @@ Följande standard säkerhets regler för inkommande och utgående trafik tillä
 
 ### <a name="inbound-security-rules"></a>Ingående säkerhetsregler
 
-| Prioritet | Name | Port | Protokoll | Källa | Mål | Åtgärd |
+| Prioritet | Namn | Port | Protokoll | Källa | Mål | Åtgärd |
 |----------|------|------|----------|--------|-------------|--------|
 | 301      | AllowPSRemoting | 5986| TCP | AzureActiveDirectoryDomainServices | Valfri | Tillåt |
 | 201      | AllowRD | 3389 | TCP | CorpNetSaw | Valfri | Neka<sup>1</sup> |
 | 65000    | AllVnetInBound | Valfri | Valfri | VirtualNetwork | VirtualNetwork | Tillåt |
 | 65001    | AllowAzureLoadBalancerInBound | Valfri | Valfri | AzureLoadBalancer | Valfri | Tillåt |
 | 65500    | DenyAllInBound | Valfri | Valfri | Valfri | Valfri | Neka |
+
+
 <sup>1</sup> Valfritt för fel sökning. Tillåt när det behövs för avancerad fel sökning.
 
 > [!NOTE]
@@ -52,7 +54,7 @@ Följande standard säkerhets regler för inkommande och utgående trafik tillä
 
 ### <a name="outbound-security-rules"></a>Säkerhetsregler för utgående trafik
 
-| Prioritet | Name | Port | Protokoll | Källa | Mål | Åtgärd |
+| Prioritet | Namn | Port | Protokoll | Källa | Mål | Åtgärd |
 |----------|------|------|----------|--------|-------------|--------|
 | 65000    | AllVnetOutBound | Valfri | Valfri | VirtualNetwork | VirtualNetwork | Tillåt |
 | 65001    | AllowAzureLoadBalancerOutBound | Valfri | Valfri |  Valfri | Internet | Tillåt |

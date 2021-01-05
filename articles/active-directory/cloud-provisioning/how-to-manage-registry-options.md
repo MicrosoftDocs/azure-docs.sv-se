@@ -15,12 +15,12 @@ ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad3bd938355d138e660958e34d046d7af03e75c7
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: edb602e3d55ae07f49d5448283ae0d2b6da4b0cb
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97371199"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694137"
 ---
 # <a name="manage-agent-registry-options"></a>Hantera agentens register alternativ
 
@@ -63,6 +63,30 @@ Använd följande steg för att aktivera hänvisnings jaga:
     > ![Hänvisnings jaga](media/how-to-manage-registry-options/referral-chasing.png)
 1. Starta om Azure AD Connect etablerings tjänsten från *tjänst* konsolen.
 1. Om du har distribuerat flera etablerings agenter ska du tillämpa den här register ändringen på alla agenter för konsekvens.
+
+## <a name="skip-gmsa-configuration"></a>Hoppa över GMSA-konfiguration
+Med agent version 1.1.281.0 +, som standard, när du kör guiden agent konfiguration, uppmanas du att konfigurera [grupphanterat tjänst konto (gMSA)](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview). GMSA-installationen av guiden används vid körning för alla synkroniserings-och etablerings åtgärder. 
+
+Om du uppgraderar från en tidigare version av agenten och har konfigurerat ett anpassat tjänst konto med delegerade behörigheter för OU-nivå som är unik för din Active Directory topologi, kanske du vill hoppa över/skjuta upp GMSA-konfigurationen och planera för den här ändringen. 
+
+> [!NOTE]
+> Den här vägledningen gäller specifikt för kunder som har konfigurerat inkommande etablering för HR (Workday/SuccessFactors) med agent versioner före 1.1.281.0 och har konfigurerat ett anpassat tjänst konto för agent åtgärder. I lång körning rekommenderar vi att du växlar till GMSA som bästa praxis.  
+
+I det här scenariot kan du fortfarande uppgradera agentens binärfiler och hoppa över GMSA-konfigurationen med följande steg: 
+
+1. Logga in som administratör på Windows Server som kör Azure AD Connect etablerings agenten.
+1. Kör agent installations programmet för att installera de nya binärfilerna för agenten. Stäng guiden agent konfiguration som öppnas automatiskt när installationen har slutförts. 
+1. Använd meny alternativet *Kör* för att öppna registereditorn (regedit.exe) 
+1. Leta upp mappen **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure AD Connect Agents\Azure AD Connect Provisioning Agent**
+1. Högerklicka och välj "New-> DWORD-värde"
+1. Ange namnet: `UseCredentials`
+1. Dubbelklicka på **värde namnet** och ange värde data som `1` .  
+    > [!div class="mx-imgBorder"]
+    > ![Använd autentiseringsuppgifter](media/how-to-manage-registry-options/use-credentials.png)
+1. Starta om Azure AD Connect etablerings tjänsten från *tjänst* konsolen.
+1. Om du har distribuerat flera etablerings agenter ska du tillämpa den här register ändringen på alla agenter för konsekvens.
+1. Kör guiden agent konfiguration från Skriv bordet kort. Guiden hoppar över GMSA-konfigurationen. 
+
 
 > [!NOTE]
 > Du kan bekräfta att register alternativen har angetts genom att aktivera [utförlig loggning](how-to-troubleshoot.md#log-files). Loggarna som genereras under agent starten visar de konfigurations värden som valts från registret. 

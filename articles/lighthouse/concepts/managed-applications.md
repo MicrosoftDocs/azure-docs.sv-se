@@ -1,23 +1,33 @@
 ---
 title: Azure Lighthouse och Azure Managed Applications
-description: Förstå hur Azure-Lighthouse och Azure-hanterade program kan hjälpa dig att aktivera olika scenarier och hur de kan användas tillsammans.
-ms.date: 08/12/2020
+description: Förstå hur Azure-Lighthouse och Azure-hanterade program kan användas tillsammans.
+ms.date: 12/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: b3d6c83a50f1da006f2618f7f4ff59759dac2555
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 5c30c3234a57e25ceaa521ad485f58d4d663ebe9
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436529"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693964"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse och Azure Managed Applications
 
-Både Azure-hanterade program och Azure Lighthouse fungerar genom att tillhandahålla en tjänst leverantör för att få åtkomst till resurser som finns i kundens klient organisation. Det kan vara bra att förstå skillnaderna i hur de fungerar och de scenarier som de hjälper till att aktivera, samt hur de kan användas tillsammans.
+Både Azure-hanterade program och Azure Lighthouse fungerar genom att tillhandahålla en tjänst leverantör för att få åtkomst till resurser som finns i kundens klient organisation. Det kan vara bra att förstå skillnaderna på det sätt som de fungerar och de scenarier som de hjälper till att aktivera och hur de kan användas tillsammans.
 
 > [!TIP]
 > Även om vi refererar till tjänst leverantörer och kunder i det här avsnittet kan [företag som hanterar flera klienter](enterprise.md) använda samma processer och verktyg.
 
 ## <a name="comparing-azure-lighthouse-and-azure-managed-applications"></a>Jämför Azure-Lighthouse och Azure-hanterade program
+
+I den här tabellen beskrivs några skillnader på hög nivå som kan påverka om du kan välja att använda Azure-Lighthouse eller Azure-hanterade program. Som anges nedan kan du också utforma en lösning som använder dem tillsammans.
+
+|Att tänka på  |Azure Lighthouse  |Azure-hanterade program  |
+|---------|---------|---------|
+|Typisk användare     |Tjänste leverantörer eller företag som hanterar flera klienter         |Oberoende program varu leverantörer (ISV: er)         |
+|Omfång för åtkomst mellan klienter     |Prenumeration (er) eller resurs grupp (er)         |Resurs grupp (begränsat till ett enda program)         |
+|Köpbara på Azure Marketplace     |Nej (erbjudanden kan publiceras på Azure Marketplace, men kunder faktureras separat)        |Ja         |
+|IP-skydd     |Ja (IP kan finnas kvar hos tjänst leverantörens klient organisation)        |Ja (enligt design är resurs gruppen låst till kunder)         |
+|Avvisa tilldelning     |Nej         |Ja        |
 
 ### <a name="azure-lighthouse"></a>Azure Lighthouse
 
@@ -51,3 +61,4 @@ Kunder kan också vara intresserade av hanterade program från flera tjänst lev
 
 - Lär dig mer om [Azure-hanterade program](../../azure-resource-manager/managed-applications/overview.md).
 - Lär dig att [publicera en prenumeration på Azure Lighthouse](../how-to/onboard-customer.md).
+- Lär dig mer om [ISV-scenarier med Azure Lighthouse](isv-scenarios.md).

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 2f585dd80219afac7c67eebabd72cb41dce0b673
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2d64766c754c0ea104ae83fde799a514e9da6d68
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018706"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693739"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Installera en Application Gateway ingress-styrenhet (AGIC) med hjälp av en befintlig Application Gateway
 
@@ -323,7 +323,7 @@ Bredda AGIC-behörigheter med:
     ```
 
 ### <a name="enable-for-an-existing-agic-installation"></a>Aktivera för en befintlig AGIC-installation
-Vi antar att vi redan har en fungerande AKS, Application Gateway och konfigurerat AGIC i vårt kluster. Vi har ett ingress för `prod.contosor.com` och betjänar trafik för den från AKS. Vi vill lägga till `staging.contoso.com` i vår befintliga Application Gateway, men du måste vara värd för den på en [virtuell dator](https://azure.microsoft.com/services/virtual-machines/). Vi kommer att återanvända den befintliga Application Gateway och manuellt konfigurera en lyssnare och backend-pooler för `staging.contoso.com` . Men att anpassa Application Gateway config manuellt (via [Portal](https://portal.azure.com), [arm-API: er](/rest/api/resources/) eller [terraform](https://www.terraform.io/)) hamnar i konflikt med AGICs antaganden om full ägande. Strax efter att vi tillämpar ändringar skriver AGIC över eller tar bort dem.
+Vi antar att vi redan har en fungerande AKS, Application Gateway och konfigurerat AGIC i vårt kluster. Vi har ett ingress för `prod.contoso.com` och betjänar trafik för den från AKS. Vi vill lägga till `staging.contoso.com` i vår befintliga Application Gateway, men du måste vara värd för den på en [virtuell dator](https://azure.microsoft.com/services/virtual-machines/). Vi kommer att återanvända den befintliga Application Gateway och manuellt konfigurera en lyssnare och backend-pooler för `staging.contoso.com` . Men att anpassa Application Gateway config manuellt (via [Portal](https://portal.azure.com), [arm-API: er](/rest/api/resources/) eller [terraform](https://www.terraform.io/)) hamnar i konflikt med AGICs antaganden om full ägande. Strax efter att vi tillämpar ändringar skriver AGIC över eller tar bort dem.
 
 Vi kan förhindra AGIC från att göra ändringar i en delmängd av konfigurationen.
 
