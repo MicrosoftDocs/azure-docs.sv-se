@@ -1,0 +1,37 @@
+### YamlMime:Landing
+title: Dokumentation om BareMetal-infrastruktur
+summary: Lär dig hur du använder BareMetal-infrastrukturen för att skapa, distribuera och hanterar virtuella datorer i Microsoft Azure.
+metadata:
+  title: Dokumentation om BareMetal-infrastruktur
+  description: Lär dig hur du använder BareMetal-infrastrukturen för att skapa, distribuera och hanterar virtuella datorer i Microsoft Azure.
+  services: virtual-machines
+  ms.service: baremetal-infrastructure
+  ms.topic: landing-page
+  author: shortpatti
+  ms.author: v-patsho
+  ms.date: 12/31/2020
+  ms.openlocfilehash: 884a47c5ddc8c4a28719822af4a4c0f22809fcdd
+  ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+  ms.translationtype: HT
+  ms.contentlocale: sv-SE
+  ms.lasthandoff: 12/31/2020
+  ms.locfileid: "97828963"
+landingContent:
+- title: Om BareMetal-infrastrukturen
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Vad är BareMetal-infrastrukturen i Azure?
+      url: workloads/sap/baremetal-overview-architecture.md
+    - text: Förstå villkoren
+      url: know-baremetal-terms.md
+  - linkListType: reference
+    links:
+    - text: Typ av arbetsbelastning för BareMetal
+      url: /azure/virtual-machines/workloads/sap/get-started?context=/azure/baremetal-infrastructure/context/context
+- title: Instansenheter för BareMetal
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Hantera instansenheter för BareMetal i Azure
+      url: workloads/sap/baremetal-infrastructure-portal.md

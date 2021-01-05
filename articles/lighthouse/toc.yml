@@ -24,12 +24,15 @@
     - name: Erbjudanden om hanterade tjänster på Azure Marketplace
       displayName: 'azure marketplace, marketplace, managed service, private, plan'
       href: ./concepts/managed-services-offers.md
-    - name: Att tänka på med Cloud Solution Provider-programmet
+    - name: CSP-program
       displayName: 'csp, aobo, partner'
       href: ./concepts/cloud-solution-provider.md
-    - name: Azure Lighthouse i företagsscenarier
+    - name: Företagsscenarier
       displayName: 'corporation, IT, consolidate'
       href: ./concepts/enterprise.md
+    - name: ISV-scenarier
+      displayName: 'independent, software, vendor, saas'
+      href: ./concepts/isv-scenarios.md
     - name: Azure Lighthouse och Azure Managed Applications
       displayName: 'managed apps, ama'
       href: ./concepts/managed-applications.md

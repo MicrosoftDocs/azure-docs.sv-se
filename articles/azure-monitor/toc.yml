@@ -544,18 +544,40 @@
           href: platform/alerts-resource-move.md
         - name: IT Service Management
           items:
-            - name: IT Service Management Connector
+            - name: Översikt över anslutningsprogram för hantering av IT-tjänster (ITSM)
               href: platform/itsmc-overview.md
-            - name: IT Service Management-anslutningar
-              href: platform/itsmc-connections.md
-            - name: Definition av ITSM-anslutningsprogram
+            - name: Partnerkonfiguration för anslutningsprogram för hantering av IT-tjänster (ITSM)
+              items:
+                - name: Översikt
+                  href: platform/itsmc-connections.md
+                - name: ServiceNow
+                  href: platform/itsmc-connections-servicenow.md
+                - name: System Center Service Manager
+                  items:
+                    - name: Installation
+                      href: platform/itsmc-connections-scsm.md
+                    - name: Skapa Service Manager-webbapp
+                      href: platform/itsmc-service-manager-script.md
+                - name: Cherwell
+                  href: platform/itsmc-connections-cherwell.md
+                - name: Provance
+                  href: platform/itsmc-connections-provance.md
+            - name: Azure-konfiguration för anslutningsprogram för hantering av IT-tjänster (ITSM)
               href: platform/itsmc-definition.md
-            - name: Skapa Service Manager-webbapp
-              href: platform/itsmc-service-manager-script.md
+            - name: Data har synkroniserats från din ITSM-produkt
+              href: platform/itsmc-synced-data.md
             - name: Felsöka problem med anslutningsprogram för hantering av IT-tjänster (ITSM)
               href: platform/itsmc-resync-servicenow.md
             - name: Integrera med Secure Export
-              href: platform/it-service-management-connector-secure-webhook-connections.md
+              items:
+                - name: Översikt
+                  href: platform/it-service-management-connector-secure-webhook-connections.md
+                - name: Säker export av Azure-konfiguration
+                  href: platform/itsm-connector-secure-webhook-connections-azure-configuration.md
+                - name: BMC
+                  href: platform/itsmc-secure-webhook-connections-bmc.md
+                - name: ServiceNow
+                  href: platform/itsmc-secure-webhook-connections-servicenow.md
         - name: Migrera klassiska aviseringsregler
           items:
             - name: Om klassiska aviseringar
@@ -790,6 +812,8 @@
               href: app/snapshot-debugger.md
             - name: Aktivera Snapshot Debugger en App Service
               href: app/snapshot-debugger-appservice.md
+            - name: Aktivera Snapshot Debugger för en funktionsapp
+              href: app/snapshot-debugger-function-app.md
             - name: Aktivera Snapshot Debugger för andra miljöer
               href: app/snapshot-debugger-vm.md
             - name: Uppgradera Snapshot Debugger

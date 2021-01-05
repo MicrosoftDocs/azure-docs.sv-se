@@ -437,7 +437,7 @@
                   href: ./spark/apache-spark-run-machine-learning-automl.md
         - name: Felsöka
           items:
-            - name: Kan inte skapa Jupyter-notebook-fil
+            - name: Kan inte skapa Jupyter Notebook
               href: ./spark/troubleshoot-jupyter-notebook-convert.md
             - name: OutOfMemoryError-undantag
               href: ./spark/apache-spark-troubleshoot-outofmemory.md

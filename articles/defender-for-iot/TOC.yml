@@ -5,135 +5,233 @@
   items:
     - name: Lösningsarkitektur
       href: architecture.md
-    - name: Säkerhetsmodul för Azure RTOS
-      href: iot-security-azure-rtos.md
-    - name: Säkerhetsagenter
-      href: security-agent-architecture.md
-    - name: Edge-säkerhetsmodul
-      href: security-edge-architecture.md
-    - name: Förutsättningar för tjänsten
-      href: service-prerequisites.md
-    - name: Komma igång med Azure Defender for IoT
-      href: getting-started.md
-      items:
-        - name: IoT Hub
-          href: iot-hub-integration.md
-        - name: Säkerhetsagenter
-          href: security-agents.md
 - name: Snabbstarter
   expanded: true
   items:
-    - name: Förbereda nätverket
-      href: quickstart-prepare-network-for-defender-for-iot.md
-    - name: Registrera sensorer
-      href: quickstart-onboard-sensors.md
-    - name: Konfigurera säkerhetsmodul för Azure RTOS
-      href: quickstart-azure-rtos-security-module.md
-    - name: Registrera Azure Defender for IoT i IoT Hub
-      href: quickstart-onboard-iot-hub.md
-    - name: Konfigurera lösningen
-      href: quickstart-configure-your-solution.md
-    - name: Skapa en Azure Defender for IoT-modultvilling
-      href: quickstart-create-security-twin.md
-    - name: Undersöka säkerhetsrekommendationer
-      href: quickstart-investigate-security-recommendations.md
-    - name: Skapa anpassade säkerhetsaviseringar
-      href: quickstart-create-custom-alerts.md
-    - name: Undersöka säkerhetsaviseringar
-      href: quickstart-investigate-security-alerts.md
+    - name: Lösning utan agent för organisationer
+      items:
+        - name: Systemkrav
+          href: quickstart-system-prerequisites.md
+        - name: Komma igång med Azure Defender for IoT
+          href: getting-started.md
+    - name: Agentbaserad lösning för enhetsskapare
+      items:
+        - name: Konfigurera säkerhetsmodul för Azure RTOS
+          href: quickstart-azure-rtos-security-module.md
+        - name: IoT Hub
+          href: quickstart-iot-hub-integration.md
+        - name: Registrera Azure Defender for IoT i IoT Hub
+          href: quickstart-onboard-iot-hub.md
+        - name: Säkerhetsagenter
+          href: security-agent-architecture.md
+        - name: Konfigurera lösningen
+          href: quickstart-configure-your-solution.md
+        - name: Skapa en Azure Defender for IoT-modultvilling
+          href: quickstart-create-security-twin.md
+        - name: Undersöka säkerhetsrekommendationer
+          href: quickstart-investigate-security-recommendations.md
+        - name: Skapa anpassade säkerhetsaviseringar
+          href: quickstart-create-custom-alerts.md
+        - name: Undersöka säkerhetsaviseringar
+          href: quickstart-investigate-security-alerts.md
 - name: Begrepp
   items:
-    - name: Säkerhetsmodul för Azure RTOS
+    - name: Lösning utan agent för organisationer
       items:
-        - name: Förstå säkerhetsmodulen för Azure RTOS
-          href: concept-rtos-security-module.md
-        - name: Aviseringar och rekommendationer för säkerhetsmodul för Azure RTOS
-          href: concept-rtos-security-alerts-recommendations.md
-    - name: Autentisering av säkerhetsagent
-      href: concept-security-agent-authentication-methods.md
-    - name: Säkerhetsmodul
-      href: concept-security-module.md
-    - name: Säkerhetsaviseringar
-      href: concept-security-alerts.md
-    - name: Anpassningsbara säkerhetsaviseringar
-      href: concept-customizable-security-alerts.md
-    - name: Säkerhet
+        - name: Viktiga begrepp
+          href: concept-key-concepts.md
+    - name: Agentbaserad lösning för enhetsskapare
       items:
-        - name: Säkerhetsrekommendationer
-          href: concept-recommendations.md
-        - name: Säkerhetsbaslinje
-          href: security-baseline.md
-    - name: Baslinje
-      href: concept-baseline.md
-    - name: Händelsesammansättning
-      href: event-aggregation.md
-    - name: Prissättning och associerade kostnader
-      href: concept-pricing.md
+        - name: Säkerhetsmodul för Azure RTOS
+          href: iot-security-azure-rtos.md
+          items:
+            - name: Förstå säkerhetsmodulen för Azure RTOS
+              href: concept-rtos-security-module.md
+            - name: Aviseringar och rekommendationer för säkerhetsmodul för Azure RTOS
+              href: concept-rtos-security-alerts-recommendations.md
+        - name: Edge-säkerhetsmodul
+          href: security-edge-architecture.md
+        - name: Säkerhetsagenter
+          href: overview-security-agents.md
+        - name: Autentisering av säkerhetsagent
+          href: concept-security-agent-authentication-methods.md
+        - name: Säkerhetsmodul
+          href: concept-security-module.md
+        - name: Säkerhetsaviseringar
+          href: concept-security-alerts.md
+        - name: Anpassningsbara säkerhetsaviseringar
+          href: concept-customizable-security-alerts.md
+        - name: Säkerhet
+          items:
+            - name: Säkerhetsrekommendationer
+              href: concept-recommendations.md
+            - name: Säkerhetsbaslinje
+              href: security-baseline.md
+        - name: Baslinje
+          href: concept-baseline.md
+        - name: Händelsesammansättning
+          href: event-aggregation.md
+        - name: Prissättning och associerade kostnader
+          href: concept-pricing.md
 - name: Anvisningar
   items:
-    - name: Visa och hantera sensorer
-      href: how-to-deploy-view-sensors.md
-    - name: Distribuera den lokala hanteringskonsolen
-      href: how-to-deploy-management-console-appliance.md
-    - name: Arbeta med säkerhetsmodul för Azure RTOS
-      href: how-to-azure-rtos-security-module.md
-    - name: Vilken agent ska jag distribuera?
+    - name: Lösning utan agent för organisationer
       items:
-        - name: Välj en agent för att distribuera
-          href: how-to-deploy-agent.md
-        - name: Distribuera en C#-baserad säkerhetsagent på en Windows-enhet
-          href: how-to-deploy-windows-cs.md
-        - name: Distribuera en C#-baserad säkerhetsagent på en Linux-enhet
-          href: how-to-deploy-linux-cs.md
-        - name: Distribuera en C-baserad säkerhetsagent på en Linux-enhet
-          href: how-to-deploy-linux-c.md
-    - name: Felsöka en säkerhetsagent
+        - name: Förbereda nätverket
+          items:
+            - name: Identifiera apparater som krävs
+              href: how-to-identify-required-appliances.md
+            - name: Installera programvara
+              href: how-to-install-software.md
+            - name: Konfigurera ditt nätverk
+              href: how-to-set-up-your-network.md
+        - name: Förbereda sensorer
+          items:
+            - name: Registrera sensorer
+              href: how-to-manage-sensors-on-the-cloud.md
+            - name: Aktivera och konfigurera sensor
+              href: how-to-activate-and-set-up-your-sensor.md
+        - name: Förbereda den lokala hanteringskonsolen
+          items:
+            - name: Aktivera och konfigurera den lokala hanteringskonsolen
+              href: how-to-activate-and-set-up-your-on-premises-management-console.md
+            - name: Konfigurera hög tillgänglighet
+              href: how-to-set-up-high-availability.md
+        - name: Hantera användare och användaråtkomst
+          items:
+            - name: Skapa och hantera användare
+              href: how-to-create-and-manage-users.md
+            - name: Definiera global användaråtkomstkontroll
+              href: how-to-define-global-user-access-control.md
+        - name: Styr vilken trafik som övervakas
+          href: how-to-control-what-traffic-is-monitored.md
+        - name: Hantera sensor från den lokala hanteringskonsolen
+          href: how-to-manage-sensors-from-the-on-premises-management-console.md
+        - name: Hantera enskilda sensorer
+          href: how-to-manage-individual-sensors.md
+        - name: Hantera sensorer i molnet
+          href: how-to-manage-sensors-on-the-cloud.md
+        - name: Hantera den lokala hanteringskonsolen
+          href: how-to-manage-the-on-premises-management-console.md
+        - name: Arbeta med paket för hotinformation
+          href: how-to-work-with-threat-intelligence-packages.md
+        - name: Arbeta med information om enhetsinventering
+          items:
+            - name: Undersök alla identifieringar av företagssensorer i en enhetsinventering
+              href: how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md
+            - name: Undersök identifieringar av sensorer i en enhetsinventering
+              href: how-to-investigate-sensor-detections-in-a-device-inventory.md
+        - name: Arbeta med kartan över sensorenheter
+          href: how-to-work-with-the-sensor-device-map.md
+        - name: Arbeta med aviseringar som identifierats av en sensor
+          items:
+            - name: Arbeta med en avisering på en sensor
+              href: how-to-work-with-alerts-on-your-sensor.md
+            - name: Visa aviseringar
+              href: how-to-view-alerts.md
+            - name: Visa informationen som tillhandahålls i aviseringar
+              href: how-to-view-information-provided-in-alerts.md
+            - name: Hantera aviseringshändelsen
+              href: how-to-manage-the-alert-event.md
+            - name: Påskynda incidenthantering för en avisering
+              href: how-to-accelerate-alert-incident-response.md
+            - name: Vidarebefordra aviseringsinformation
+              href: how-to-forward-alert-information-to-partners.md
+        - name: 'Få insikter om globala, regionala och lokala hot'
+          href: how-to-gain-insight-into-global-regional-and-local-threats.md
+        - name: Arbeta med aviseringar på den lokala hanteringskonsolen
+          href: how-to-work-with-alerts-on-premises-management-console.md
+        - name: Berika enhetsinformation
+          items:
+            - name: Arbeta med enhetsmeddelanden
+              href: how-to-work-with-device-notifications.md
+            - name: Förbättra port- och VLAN-namnmatchning
+              href: how-to-enhance-port-and-vlan-name-resolution.md
+            - name: Importera enhetsinformation
+              href: how-to-import-device-information.md
+        - name: Spåra sensoraktivitet
+          href: how-to-track-sensor-activity.md
+        - name: Skapa rapporter
+          href: how-to-generate-reports.md
+        - name: Felsöka sensorn och den lokala hanteringskonsolen
+          href: how-to-troubleshoot-the-sensor-and-on-premises-management-console.md
+        - name: Konfigurera SNMP MIB-övervakning
+          href: how-to-set-up-snmp-mib-monitoring.md
+    - name: Agentbaserad lösning för enhetsskapare
       items:
-        - name: Felsöka Azure Defender for IoT Linux-säkerhetsagenten
-          href: troubleshoot-agent.md
-        - name: Lokal konfiguration C
-          href: azure-iot-security-local-configuration-c.md
-        - name: Lokal konfiguration C#
-          href: azure-iot-security-local-configuration-csharp.md
-    - name: Distribuera Edge-säkerhetsmodul
-      href: how-to-deploy-edge.md
-    - name: Konfigurera säkerhetsagenter
-      href: how-to-agent-configuration.md
-    - name: Skicka dina egna säkerhetsmeddelanden
-      href: how-to-send-security-messages.md
-    - name: Få åtkomst till råsäkerhetsdata
-      href: how-to-security-data-access.md
-    - name: Undersöka en enhet
-      href: how-to-investigate-device.md
-    - name: Ansluta till Azure Sentinel
-      href: how-to-configure-with-sentinel.md
-    - name: Anpassa din agent
-      href: how-to-customize-solution.md
+        - name: Arbeta med säkerhetsmodul för Azure RTOS
+          href: how-to-azure-rtos-security-module.md
+        - name: Vilken agent ska jag distribuera?
+          items:
+            - name: Välj en agent för att distribuera
+              href: how-to-deploy-agent.md
+            - name: Distribuera en C#-baserad säkerhetsagent på en Windows-enhet
+              href: how-to-deploy-windows-cs.md
+            - name: Distribuera en C#-baserad säkerhetsagent på en Linux-enhet
+              href: how-to-deploy-linux-cs.md
+            - name: Distribuera en C-baserad säkerhetsagent på en Linux-enhet
+              href: how-to-deploy-linux-c.md
+        - name: Felsöka en säkerhetsagent
+          items:
+            - name: Felsöka Azure Defender for IoT Linux-säkerhetsagenten
+              href: troubleshoot-agent.md
+            - name: Lokal konfiguration C
+              href: azure-iot-security-local-configuration-c.md
+            - name: Lokal konfiguration C#
+              href: azure-iot-security-local-configuration-csharp.md
+        - name: Distribuera Edge-säkerhetsmodul
+          href: how-to-deploy-edge.md
+        - name: Konfigurera säkerhetsagenter
+          href: how-to-agent-configuration.md
+        - name: Skicka dina egna säkerhetsmeddelanden
+          href: how-to-send-security-messages.md
+        - name: Få åtkomst till råsäkerhetsdata
+          href: how-to-security-data-access.md
+        - name: Undersöka en enhet
+          href: how-to-investigate-device.md
+        - name: Ansluta till Azure Sentinel
+          href: how-to-configure-with-sentinel.md
+        - name: Anpassa din agent
+          href: how-to-customize-solution.md
 - name: Referenser
   items:
-    - name: Säkerhetsmodul för Azure RTOS-API
-      href: azure-rtos-security-module-api.md
-    - name: Vanliga frågor och svar – tjänst
-      href: resources-frequently-asked-questions.md
-    - name: Vanliga frågor och svar – agent
-      href: resources-agent-frequently-asked-questions.md
-    - name: Azure-översikt
-      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Lösning utan agent för organisationer
+      items:
+        - name: 'Arbeta med Defender for IoT-API:er'
+          href: references-work-with-defender-for-iot-apis.md
+        - name: Arbeta med Defender for IoT-CLI-kommandon
+          href: references-work-with-defender-for-iot-cli-commands.md
+        - name: Hantera upphovsrättsskyddade protokoll (Horisont)
+          href: resources-manage-proprietary-protocols.md
+        - name: Defender för IoT-ordlista
+          href: references-defender-for-iot-glossary.md
+    - name: Agentbaserad lösning för enhetsskapare
+      items:
+        - name: Säkerhetsmodul för Azure RTOS-API
+          href: azure-rtos-security-module-api.md
+        - name: Vanliga frågor och svar – tjänst
+          href: resources-frequently-asked-questions.md
+        - name: Vanliga frågor och svar – agent
+          href: resources-agent-frequently-asked-questions.md
+        - name: Azure-översikt
+          href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
 - name: Resurser
   items:
-    - name: Utveckla dina säkerhetskunskaper med Microsoft Learn
-      href: /learn/browse/?term=securityS&terms=securityS
-    - name: Dokumentation om Azure Security Center
-      href: ../security-center/index.yml
-    - name: Dokumentation om Azure-säkerhet
-      href: ../security/index.yml
-    - name: Azure RTOS-säkerhetsmodul på Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-rtos+azure-iot-security-module'
-    - name: 'Blogg om säkerhet, sekretess och efterlevnad för IoT i Azure'
-      href: 'https://techcommunity.microsoft.com/t5/iot-security/bd-p/IoTSecurity'
-    - name: Regional tillgänglighet
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: Prissättning
-      href: 'https://azure.microsoft.com/pricing/details/security-center/'
-    - name: Video
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=security-center&service=internet-of-things&page=1&sort=newest'
+    - name: Agentbaserad lösning för enhetsskapare
+      items:
+        - name: Utveckla dina säkerhetskunskaper med Microsoft Learn
+          href: /learn/browse/?term=securityS&terms=securityS
+        - name: Dokumentation om Azure Security Center
+          href: ../security-center/
+        - name: Dokumentation om Azure-säkerhet
+          href: 'https://docs.microsoft.com/azure/security/'
+        - name: Azure RTOS-säkerhetsmodul på Stack Overflow
+          href: 'https://stackoverflow.com/questions/tagged/azure-rtos+azure-iot-security-module'
+        - name: 'Blogg om säkerhet, sekretess och efterlevnad för IoT i Azure'
+          href: 'https://techcommunity.microsoft.com/t5/iot-security/bd-p/IoTSecurity'
+        - name: Regional tillgänglighet
+          href: 'https://azure.microsoft.com/regions/services/'
+        - name: Prissättning
+          href: 'https://azure.microsoft.com/pricing/details/security-center/'
+        - name: Videoklipp
+          href: 'https://azure.microsoft.com/resources/videos/index/?services=security-center&service=internet-of-things&page=1&sort=newest'

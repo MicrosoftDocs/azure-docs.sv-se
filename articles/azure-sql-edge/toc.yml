@@ -28,14 +28,6 @@
       href: tutorial-sync-data-factory.md
     - name: Synkronisera daga med SQL Data Sync
       href: tutorial-sync-data-sync.md
-    - name: Skapa en IoT-lösning från slutpunkt till slutpunkt med SQL Edge
-      items:
-        - name: Ställa in Azure-resurser
-          href: tutorial-deploy-azure-resources.md
-        - name: Konfigurera IoT Edge-moduler
-          href: tutorial-set-up-iot-edge-modules.md
-        - name: Distribuera en modell till SQL Edge
-          href: tutorial-run-ml-model-on-sql-edge.md
 - name: Begrepp
   items:
     - name: Distribuera
@@ -138,6 +130,18 @@
       href: create-stream-analytics-job.md
     - name: Felsöka distributionsproblem
       href: troubleshoot.md
+- name: Exempel
+  items:
+    - name: Förutsägelse om kiseldioxidhalt i järnmalm
+      items:
+        - name: Ställa in Azure-resurser
+          href: tutorial-deploy-azure-resources.md
+        - name: Konfigurera IoT Edge-moduler
+          href: tutorial-set-up-iot-edge-modules.md
+        - name: Distribuera en modell till SQL Edge
+          href: tutorial-run-ml-model-on-sql-edge.md
+    - name: Förnybar energi – analys av vindturbiner
+      href: tutorial-renewable-energy-demo.md
 - name: Referens
   items:
     - name: Referens för Transact-SQL (T-SQL)

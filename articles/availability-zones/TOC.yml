@@ -12,7 +12,7 @@
       href: az-overview.md
     - name: Dokumentation för tillgänglighetszoner
       items:
-        - name: Regioner som har stöd för tillgänglighetszoner
+        - name: Azure-tjänster som har stöd för tillgänglighetszoner
           href: az-region.md
         - name: Virtuella datorer
           items:

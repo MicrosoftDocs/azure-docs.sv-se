@@ -95,6 +95,10 @@
           href: diagnostic-services.md
         - name: Strömningsloggar i realtid
           href: spring-cloud-howto-log-streaming.md
+        - name: Application Insights med Java In-Process Agent
+          href: spring-cloud-howto-application-insights.md
+        - name: Mått för Resilience4J-kretsbrytare
+          href: spring-cloud-howto-circuit-breaker-metrics.md
     - name: Säkerhet
       items:
         - name: Aktivera systemtilldelad hanterad identitet

@@ -11,48 +11,58 @@ metadata:
   author: mlottner
   ms.author: mlottner
   ms.date: 09/07/2020
-  ms.openlocfilehash: 18f3f2f14d4e04c523a355f699eaf24b8c93bb81
-  ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+  ms.openlocfilehash: 00cef8a146a84c4261dde46785f2ea9bb1c03173
+  ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
   ms.translationtype: HT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 10/15/2020
-  ms.locfileid: "92090020"
+  ms.lasthandoff: 12/31/2020
+  ms.locfileid: "97832343"
 landingContent:
-- title: Om Azure Defender for IoT
+- title: Komma igång med Azure Defender for IoT
   linkLists:
   - linkListType: overview
     links:
     - text: Vad är Azure Defender for IoT?
       url: overview.md
-    - text: Säkerhetsmodul för Azure RTOS
-      url: iot-security-azure-rtos.md
-    - text: Planera din lösning
-      url: service-prerequisites.md
-  - linkListType: architecture
-    links:
-    - text: Förstå arkitekturen för Azure Defender for IoT
+    - text: Lösningsarkitektur
       url: architecture.md
-    - text: Agenter i Azure Defender for IoT
-      url: security-agent-architecture.md
+    - text: Översikt av konfiguration
+      url: getting-started.md
+- title: Konfigurera och registrera – lösning utan agent
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurera ditt nätverk
+      url: how-to-set-up-your-network.md
+    - text: Identifiera apparater som krävs
+      url: how-to-identify-required-appliances.md
+    - text: Installera programvara
+      url: how-to-install-software.md
+- title: Övervaka ditt nätverk – lösning utan agent
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Visa anslutna enheter
+      url: how-to-work-with-the-sensor-device-map.md
+    - text: Visa enhetsinventering
+      url: how-to-investigate-sensor-detections-in-a-device-inventory.md
+    - text: Undersöka aviseringar
+      url: how-to-work-with-alerts-on-your-sensor.md
+    - text: Skapa rapporter
+      url: how-to-generate-reports.md
+    - text: Styr vilken trafik som identifieras
+      url: how-to-control-what-traffic-is-monitored.md
+    - text: Ansluta till Azure Sentinel
+      url: how-to-configure-with-sentinel.md
+- title: Azure Defender for IoT – agentbaserad lösning
+  linkLists:
+  - linkListType: overview
+    links:
     - text: Edge-säkerhetsmodul
       url: security-edge-architecture.md
-- title: Registrera Azure Defender for IoT i IoT Hub
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: Komma igång med Azure Defender for IoT
-      url: getting-started.md
-    - text: IoT Hub
-      url: iot-hub-integration.md
-    - text: Komma igång Security Module for Azure RTOS
-      url: concept-rtos-security-module.md
-    - text: Säkerhetsagenter
-      url: security-agents.md
-- title: Konfigurera lösningen
-  linkLists:
   - linkListType: quickstart
     links:
-    - text: Aktivera Azure Defender for IoT i IoT Hub
+    - text: Aktivera IoT Hub – agentbaserade lösningar
       url: quickstart-onboard-iot-hub.md
     - text: Konfigurera din IoT-säkerhetslösning
       url: quickstart-configure-your-solution.md
@@ -64,40 +74,6 @@ landingContent:
       url: quickstart-create-custom-alerts.md
     - text: Undersöka säkerhetsaviseringar
       url: quickstart-investigate-security-alerts.md
-- title: Anpassa din lösning
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Anpassa säkerhetsmodulen för Azure RTOS
-      url: how-to-azure-rtos-security-module.md
-    - text: Välja en agent
-      url: how-to-deploy-agent.md
-    - text: Distribuera en C#-baserad säkerhetsagent för Windows i Azure Defender for IoT
-      url: how-to-deploy-windows-cs.md
-    - text: Distribuera en C#-baserad säkerhetsagent för Linux i Azure Defender for IoT
-      url: how-to-deploy-linux-cs.md
-    - text: Distribuera en C-baserad säkerhetsagent för Linux i Azure Defender for IoT
-      url: how-to-deploy-linux-c.md
-    - text: Distribuera Edge-säkerhetsmodul
-      url: how-to-deploy-edge.md
-    - text: Konfigurera säkerhetsagenter
-      url: how-to-agent-configuration.md
-    - text: Skicka dina egna säkerhetsmeddelanden
-      url: how-to-send-security-messages.md
-    - text: Få åtkomst till råsäkerhetsdata
-      url: how-to-security-data-access.md
-    - text: Undersöka en enhet
-      url: how-to-investigate-device.md
-- title: Felsöka en säkerhetsagent
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Felsöknings guide för säkerhetsagent (Linux)
-      url: troubleshoot-agent.md
-    - text: Förstå filen LocalConfiguration.json – C-agent
-      url: azure-iot-security-local-configuration-c.md
-    - text: Förstå den lokala konfigurationsfilen – C#-agent
-      url: azure-iot-security-local-configuration-csharp.md
 - title: Lösningsresurser för Azure Defender for IoT
   linkLists:
   - linkListType: video

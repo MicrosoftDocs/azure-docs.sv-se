@@ -54,6 +54,22 @@
           href: ../azure-functions/functions-bindings-signalr-service.md
         - name: Överordnade inställningar
           href: concept-upstream.md
+    - name: Tillgänglighet
+      items:
+        - name: Stäng av appservern på ett korrekt sätt.
+          href: server-graceful-shutdown.md
+    - name: Säkerhet
+      items:
+        - name: Auktorisering
+          items:
+            - name: Ge åtkomst med Azure Active Directory
+              href: authorize-access-azure-active-directory.md
+        - name: Autentisering
+          items:
+            - name: Autentisera från ett program
+              href: authenticate-application.md
+            - name: Autentisera med en hanterad identitet
+              href: authenticate-managed-identity.md
     - name: Hög tillgänglighet
       items:
         - name: Återhämtning och haveriberedskap

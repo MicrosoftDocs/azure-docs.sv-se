@@ -27,6 +27,8 @@
       href: learn/automation-tutorial-runbook-textual.md
     - name: Skapa en Python-runbook
       href: learn/automation-tutorial-runbook-textual-python2.md
+    - name: Skapa en Python 3-runbook
+      href: learn/automation-tutorial-runbook-textual-python-3.md
 - name: Begrepp
   items:
     - name: Översikt över autentisering av Automation-konto
@@ -96,6 +98,8 @@
           href: shared-resources/variables.md
         - name: Hantera Python 2-paket
           href: python-packages.md
+        - name: Hantera Python 3-paket
+          href: python-3-packages.md
         - name: Felsöka delade resurser
           href: troubleshoot/shared-resources.md
     - name: Processautomatisering

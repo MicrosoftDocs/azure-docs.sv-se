@@ -71,6 +71,8 @@
           href: storage-files-smb-multichannel-performance.md
         - name: Mål för skalbarhet och prestanda
           href: storage-files-scale-targets.md
+    - name: Förstå fakturering
+      href: understanding-billing.md
     - name: Förhindra oavsiktlig databorttagning
       href: storage-files-prevent-file-share-deletion.md
     - name: Säkerhetskopiera filresurser
@@ -83,22 +85,18 @@
       href: ../common/storage-compliance-offerings.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: VANLIGA FRÅGOR OCH SVAR
       href: storage-files-faq.md
-- name: Instruktionsguider
+- name: Anvisningar
   items:
-    - name: Skapa
+    - name: Distribuera
       items:
         - name: Skapa en SMB-filresurs
           href: storage-how-to-create-file-share.md
+        - name: Distribuera Azure File Sync
+          href: storage-sync-files-deployment-guide.md
         - name: Skapa en premium-filresurs
           href: storage-how-to-create-premium-fileshare.md
         - name: Skapa en NFS-filresurs
           href: storage-files-how-to-create-nfs-shares.md
-    - name: Distribuera
-      items:
-        - name: Distribuera Azure Files
-          href: storage-files-deployment-guide.md
-        - name: Distribuera Azure File Sync
-          href: storage-sync-files-deployment-guide.md
         - name: SQL Server FCI med premium-filresurser
           href: ../../azure-sql/virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Montera

@@ -25,6 +25,28 @@
   items:
     - name: Säkerhet
       items:
+        - name: Säker extern åtkomst till resurser
+          items:
+            - name: Översikt över säker extern åtkomst
+              href: secure-external-access-resources.md
+            - name: 1 Fastställ ditt säkerhetsläge
+              href: 1-secure-access-posture.md
+            - name: 2 Fastställ ditt nuvarande tillstånd
+              href: 2-secure-access-current-state.md
+            - name: 3 Skapa en säkerhetsplan
+              href: 3-secure-access-plan.md
+            - name: 4 Säker åtkomst med grupper
+              href: 4-secure-access-groups.md
+            - name: 5 Säker åtkomst med B2B Collaboration
+              href: 5-secure-access-b2b.md
+            - name: 6 Säker åtkomst med berättigandehantering
+              href: 6-secure-access-entitlement-managment.md
+            - name: 7 Säker åtkomst med villkorlig åtkomst
+              href: 7-secure-access-conditional-access.md
+            - name: 8 Säker åtkomst med känslighetsetiketter
+              href: 8-secure-access-sensitivity-labels.md
+            - name: '9 Säker åtkomst till Teams, SharePoint och OneDrive'
+              href: 9-secure-access-teams-sharepoint.md
         - name: Aktivera MFA
           href: concept-fundamentals-mfa-get-started.md
         - name: Standardinställningar för säkerhet

@@ -15,9 +15,11 @@
 - name: Självstudier
   items:
     - name: Visa och konfigurera telemetri för DDoS-skydd
-      href: telemetry-monitoring-alerting.md
-    - name: Konfigurera riskreduceringsrapporter och flödesloggar för DDOS-attacker
-      href: reports-and-flow-logs.md
+      href: telemetry.md
+    - name: Visa och konfigurera diagnostisk loggning för DDoS-skydd
+      href: diagnostic-logging.md
+    - name: Visa och konfigurera aviseringar för DDoS-skydd
+      href: alerts.md
 - name: Begrepp
   items:
     - name: Angreppstyper

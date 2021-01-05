@@ -132,7 +132,7 @@
                   href: ./security/synapse-workspace-understand-what-role-you-need.md
                 - name: Synapse-arbetsytehanterad identitet
                   href: ./security/synapse-workspace-managed-identity.md
-    - name: Instruktionsguider
+    - name: Anvisningar
       items:
         - name: Hantera och övervaka
           items:
@@ -502,7 +502,7 @@
               items:
                 - name: Lägg till Azure Stream Analytics-jobb
                   href: ./sql-data-warehouse/sql-data-warehouse-integrate-azure-stream-analytics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: Verktyg för att ansluta till Synapse-arbetsytor
+        - name: Ansluta med verktyg och program
           items:
             - name: Översikt
               href: sql/connect-overview.md
@@ -510,14 +510,20 @@
               href: sql/get-started-azure-data-studio.md
             - name: Anslutningssträngar
               href: sql/connection-strings.md
-            - name: Fråga med sqlcmd
-              href: sql/get-started-connect-sqlcmd.md
             - name: Fråga med SSMS
               href: sql/get-started-ssms.md
-            - name: Fråga med Visual Studio
-              href: sql/get-started-visual-studio.md
             - name: Ansluta till Power BI Desktop
               href: sql/get-started-power-bi-professional.md
+            - name: Fråga med Visual Studio SSDT
+              href: sql/get-started-visual-studio.md
+            - name: Fråga med .NET Core
+              href: ../azure-sql/database/connect-query-dotnet-core.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Fråga med Visual Studio .NET
+              href: ../azure-sql/database/connect-query-dotnet-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Fråga med Python
+              href: ../azure-sql/database/connect-query-python.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Fråga med sqlcmd
+              href: sql/get-started-connect-sqlcmd.md
 - name: Apache Spark
   items:
     - name: Översikt
@@ -1107,6 +1113,10 @@
           href: ./machine-learning/tutorial-cognitive-services-anomaly.md
         - name: Konfigurera Cognitive Services för Azure Synapse
           href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
+- name: Så här gör du
+  items:
+    - name: Planera och hantera kostnader
+      href: plan-manage-costs.md
 - name: Referens
   items:
     - name: Azure CLI

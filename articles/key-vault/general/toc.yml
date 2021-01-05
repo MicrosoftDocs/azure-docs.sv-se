@@ -86,7 +86,7 @@
       href: overview-vnet-service-endpoints.md
 - name: Anvisningar
   items:
-    - name: Autentisera
+    - name: Autentisera och auktorisera
       items:
         - name: Autentisera till Key Vault
           href: authentication.md
@@ -104,10 +104,6 @@
           href: rbac-migration.md
         - name: Felsökning av åtkomstproblem
           href: troubleshooting-access-issues.md
-    - name: Aktivera mjuk borttagning eller rensningsskydd
-      href: key-vault-recovery.md
-    - name: Aktivera loggning
-      href: howto-logging.md
     - name: Utveckla
       items:
         - name: Utvecklarguide för Azure Key Vault
@@ -118,21 +114,31 @@
           href: vs-key-vault-add-connected-service.md
     - name: Övervaka och styra
       items:
-        - name: Konfigurera övervakning och avisering för Azure Key Vault
+        - name: Event Grid-meddelanden
+          items:
+            - name: Ta emot meddelanden via Logic Apps
+              href: event-grid-logicapps.md
+            - name: Ta emot meddelanden via Azure Automation
+              href: event-grid-tutorial.md
+        - name: Aktivera loggning
+          href: howto-logging.md
+        - name: Konfigurera övervakning och avisering för Azure Key Vault med Azure Monitor
           href: alert.md
+        - name: Återställningshantering med mjuk borttagning eller rensningsskydd
+          href: key-vault-recovery.md
         - name: Integrera Azure Key Vault med Azure Policy
           href: azure-policy.md
-        - name: Ta emot meddelanden via Azure Event Grid och Logic Apps
-          href: event-grid-logicapps.md
-        - name: Ta emot meddelanden via Azure Event Grid och Azure Automation
-          href: event-grid-tutorial.md
         - name: Säkerhetskopiera enskilda Key Vault-objekt
           href: backup.md
     - name: Skydda
       items:
-        - name: Integrera med Azure Private Link-tjänsten
-          href: private-link-service.md
-        - name: Få åtkomst till Azure Key Vault bakom en brandvägg – Azure Key Vault
+        - name: Azure Private Link
+          items:
+            - name: Integrera med Azure Private Link-tjänsten
+              href: private-link-service.md
+            - name: Diagnostisera konfigurationsproblem för privata länkar
+              href: private-link-diagnostics.md
+        - name: Komma åt Key Vault bakom en brandvägg
           href: access-behind-firewall.md
     - name: Flytta nyckelvalv
       items:
@@ -142,10 +148,6 @@
           href: move-subscription.md
         - name: Flytta nyckelvalv till en annan region
           href: move-region.md
-    - name: Nätverk
-      items:
-        - name: Diagnostisera konfigurationsproblem för privata länkar
-          href: private-link-diagnostics.md
 - name: Referens
   items:
     - name: Nyheter

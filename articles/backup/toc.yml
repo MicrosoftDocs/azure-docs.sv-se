@@ -94,6 +94,8 @@
       href: backup-architecture.md
     - name: Vägledning och metodtips
       href: guidance-best-practices.md
+    - name: Ordlista
+      href: azure-backup-glossary.md
 - name: Guider
   items:
     - name: Valv
@@ -164,6 +166,8 @@
               href: backup-azure-manage-vms.md
             - name: Hantera återställningspunkter
               href: manage-recovery-points.md
+            - name: Ändra en säkerhetskopieringsprincip med Azure CLI
+              href: modify-vm-policy-cli.md
     - name: SQL Server-databas i säkerhetskopiering av virtuella Azure-datorer
       items:
         - name: Översikt

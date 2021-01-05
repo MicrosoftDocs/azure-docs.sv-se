@@ -9,6 +9,8 @@
   items:
     - name: Skapa en webbapp
       href: quick-demo-map-app.md
+    - name: Skapa en Android-app
+      href: quick-android-map.md
 - name: Självstudier
   items:
     - name: Självstudier om webb-SDK
@@ -21,6 +23,10 @@
           href: tutorial-prioritized-routes.md
         - name: Skapa en butikslokaliserare
           href: tutorial-create-store-locator.md
+    - name: Självstudier om Android-SDK
+      items:
+        - name: Läs in GeoJSON-data i kartan
+          href: tutorial-load-geojson-file-android.md
     - name: Självstudier om REST-API
       items:
         - name: Skapa inomhuskartor
@@ -238,16 +244,28 @@
           href: how-to-use-android-map-control-library.md
         - name: Ändra formatet för kartan
           href: set-android-map-styles.md
+        - name: Skapa en datakälla
+          href: create-data-source-android-sdk.md
         - name: Lägga till ett symbolskikt
           href: how-to-add-symbol-to-android-map.md
+        - name: Lägga till ett bubbelskikt
+          href: map-add-bubble-layer-android.md
         - name: Lägga till former
           href: how-to-add-shapes-to-android-map.md
+        - name: Lägga till ett heatmapskikt
+          href: map-add-heat-map-layer-android.md
+        - name: Lägg till ett linjeskikt
+          href: android-map-add-line-layer.md
         - name: Visa funktionsinformation
           href: display-feature-information-android.md
         - name: Lägga till ett panelskikt
           href: how-to-add-tile-layer-android-map.md
         - name: Visa trafikdata
           href: how-to-show-traffic-android.md
+        - name: Använda datadrivna uttryck
+          href: data-driven-style-expressions-android-sdk.md
+        - name: Reagerar på händelser
+          href: android-map-events.md
     - name: Använda Azure Maps i Power BI
       items:
         - name: Komma igång

@@ -1,0 +1,16 @@
+- name: Azure BareMetal-infrastruktur
+  href: ../../index.yml
+- name: Översikt
+  items:
+    - name: Om BareMetal-infrastrukturen
+      href: baremetal-overview-architecture.md
+    - name: Förstå villkoren
+      href: ../../know-baremetal-terms.md
+- name: Anvisningar
+  items:
+    - name: Hantera instansenheter för BareMetal i Azure
+      href: baremetal-infrastructure-portal.md
+- name: Referens
+  items:
+    - name: Typ av arbetsbelastning för BareMetal
+      href: /azure/virtual-machines/workloads/sap/get-started?context=/azure/baremetal-infrastructure/context/context

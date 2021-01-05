@@ -42,8 +42,14 @@
       href: hpc-cache-mount.md
     - name: Hantera cachen
       href: hpc-cache-manage.md
-    - name: Konfigurera valfria inställningar
-      href: configuration.md
+    - name: Använda valfria inställningar
+      items:
+        - name: Konfigurera valfria inställningar
+          href: configuration.md
+        - name: Anpassa åtkomstprinciper
+          href: access-policies.md
+        - name: Konfigurera katalogtjänster
+          href: directory-services.md
 - name: Referens
   items:
     - name: Azure CLI

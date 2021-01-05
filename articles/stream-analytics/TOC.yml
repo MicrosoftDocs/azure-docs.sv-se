@@ -30,16 +30,17 @@
           href: create-cluster.md
 - name: Självstudier
   items:
-    - name: 1 – Skapa/hantera ett jobb
-      href: stream-analytics-manage-job.md
-    - name: 2 – Köra Azure Functions
+    - name: Visualisera bedrägerisamtal i Power BI
+      href: stream-analytics-real-time-fraud-detection.md
+    - name: Köra Azure Functions
       href: stream-analytics-with-azure-functions.md
-    - name: 3 – Distribuera med CI/CD i Azure Pipelines
-      href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: 4 – Köra en UDF för C#
+    - name: Köra en C# UDF
       href: stream-analytics-edge-csharp-udf.md
-    - name: 5 – Skapa en anpassad .NET-deserialiserare
+    - name: Skapa en anpassad .NET-deserialiserare
       href: custom-deserializer.md
+    - name: Skapa ett IoT Edge-jobb
+      href: /azure/iot-edge/tutorial-deploy-stream-analytics?view=iotedge-2018-06
+      maintainContext: true
 - name: Exempel
   items:
     - name: Kodexempel
@@ -56,6 +57,8 @@
       href: develop-locally.md
     - name: Säkerhet
       items:
+        - name: Ansluta jobb till Azure Virtual Network (VNet)
+          href: connect-job-to-vnet.md
         - name: Säkerhetskontroller av Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -129,6 +132,8 @@
           href: repartition.md
         - name: Öka dataflödet för jobbet
           href: stream-analytics-scale-jobs.md
+    - name: IoT Edge
+      href: stream-analytics-edge.md
     - name: Tillstånd för ett jobb
       href: job-states.md
     - name: Fönsterfunktioner
@@ -181,35 +186,31 @@
           href: stream-analytics-job-reliability.md
         - name: Använda SQL-referensdata
           href: sql-reference-data.md
-        - name: Autentisera med hanterad identitet
-          items:
-            - name: ADLS Gen 1
-              href: stream-analytics-managed-identities-adls.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Blob Storage
-              href: blob-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Event Hubs
-              href: event-hubs-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Power BI
-              href: powerbi-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Azure SQL & Azure Synapse
-              href: sql-database-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
         - name: Kryptera dina data
           href: data-protection.md
         - name: Geo-redundans
           href: geo-redundancy.md
+    - name: Autentisera med hanterad identitet
+      items:
+        - name: ADLS Gen 1
+          href: stream-analytics-managed-identities-adls.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Blob Storage
+          href: blob-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Event Hubs
+          href: event-hubs-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Power BI
+          href: powerbi-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Azure SQL & Azure Synapse
+          href: sql-database-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
     - name: Skapa lösningar
       items:
         - name: Twitter-attitydanalys
           href: stream-analytics-twitter-sentiment-analysis-trends.md
-        - name: Identifiering av bedrägerier i realtid
-          href: stream-analytics-real-time-fraud-detection.md
-        - name: Köra jobb i IoT Edge
-          href: stream-analytics-edge.md
         - name: Köra jobb på Azure Stack
           href: on-azure-stack.md
         - name: Vägtull för sensordataanalys
@@ -287,6 +288,8 @@
           href: debug-locally-using-job-diagram-vs-code.md
         - name: Utforska jobb
           href: visual-studio-code-explore-jobs.md
+        - name: Skapa och felsöka anpassade .NET-deserialiserare
+          href: visual-studio-code-custom-deserializer.md
         - name: JobConfig.json-fält
           href: job-config-json.md
     - name: Felsöka
