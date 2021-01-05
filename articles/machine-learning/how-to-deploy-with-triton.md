@@ -10,13 +10,13 @@ author: gvashishtha
 ms.date: 09/23/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
-ms.custom: deploy, devx-track-azurecli
-ms.openlocfilehash: b47b8f9d9429f38fb8b5da6d8f9083736f230fcb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.custom: deploy
+ms.openlocfilehash: c5db04a673c1cdc0c0f24e128f340f4ae55fea81
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458277"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825509"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Högpresterande tjänster med Triton-Härlednings Server (för hands version) 
 
@@ -47,7 +47,7 @@ Innan du försöker använda Triton för din egen modell är det viktigt att du 
 
 * Flera [Gunicorn](https://gunicorn.org/) -arbetskrafter börjar samtidigt hantera inkommande begär Anden.
 * Dessa arbetare hanterar för bearbetning, anropar modellen och efter bearbetning. 
-* Härlednings begär Anden använder __poängsättnings-URI__. Exempelvis `https://myserevice.azureml.net/score`.
+* Härlednings begär Anden använder __poängsättnings-URI__. Ett exempel är `https://myserevice.azureml.net/score`.
 
 :::image type="content" source="./media/how-to-deploy-with-triton/normal-deploy.png" alt-text="Normalt, icke-Triton, distributions arkitektur diagram":::
 
@@ -67,7 +67,7 @@ På så sätt kan Azure ML öka antalet arbets tagare som du anger.
 * Flera [Gunicorn](https://gunicorn.org/) -arbetskrafter börjar samtidigt hantera inkommande begär Anden.
 * Begär Anden vidarebefordras till Triton- **servern**. 
 * Triton bearbetar förfrågningar i batchar för att maximera GPU-användningen.
-* Klienten använder bedömnings- __URI: n__ för att göra förfrågningar. Exempelvis `https://myserevice.azureml.net/score`.
+* Klienten använder bedömnings- __URI: n__ för att göra förfrågningar. Ett exempel är `https://myserevice.azureml.net/score`.
 
 :::image type="content" source="./media/how-to-deploy-with-triton/inferenceconfig-deploy.png" alt-text="Inferenceconfig-distribution med Triton":::
 

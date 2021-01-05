@@ -4,13 +4,13 @@ description: Lär dig hur du aktiverar diagnostikloggning och lägger till instr
 ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
-ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
-ms.openlocfilehash: 99a3c9a9c26eebe8dfdf11baf718fd13f7539607
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: devx-track-csharp, seodec18
+ms.openlocfilehash: 875254071d0ea252508242b83102fb8ca8b44e53
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025284"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825373"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Aktivera diagnostikloggning för appar i Azure App Service
 ## <a name="overview"></a>Översikt
@@ -23,7 +23,7 @@ I den här artikeln används [Azure Portal](https://portal.azure.com) och Azure 
 >
 >
 
-|Typ|Plattform|Plats|Description|
+|Typ|Plattform|Plats|Beskrivning|
 |-|-|-|-|
 | Programloggning | Windows, Linux | App Service fil system och/eller Azure Storage blobbar | Loggar meddelanden som genereras av din program kod. Meddelandena kan genereras av det webb ramverk du väljer eller från din program kod direkt med hjälp av standard loggnings mönstret för ditt språk. Varje meddelande tilldelas en av följande kategorier: **kritisk**, **fel**, **Varning**, **information**, **fel sökning** och **spårning**. Du kan välja hur utförlig loggning ska ske genom att ange allvarlighets grad när du aktiverar program loggning.|
 | Webb Server loggning| Windows | App Service fil system eller Azure Storage blobbar| Rå data för HTTP-begäran i [utökat logg fils format för W3C](/windows/desktop/Http/w3c-logging). Varje logg meddelande innehåller data, till exempel HTTP-metoden, resurs-URI, klient-IP, klient port, användar agent, svars kod och så vidare. |
@@ -62,7 +62,7 @@ Välj **nivå** eller den informations nivå som ska loggas. Följande tabell vi
 
 | Nivå | Inkluderade kategorier |
 |-|-|
-|**Inaktiverad** | Inget |
+|**Disabled** (Inaktiverat) | Ingen |
 |**Fel** | Fel, kritiskt |
 |**Varning** | Varning, fel, kritiskt|
 |**Information** | Information, varning, fel, kritiskt|
@@ -108,9 +108,9 @@ Båda typerna av loggar lagras i App Service fil system. Upp till 50 fel (filer/
 
 ## <a name="add-log-messages-in-code"></a>Lägg till logg meddelanden i kod
 
-I program koden använder du vanliga loggnings funktioner för att skicka logg meddelanden till program loggarna. Ett exempel:
+I program koden använder du vanliga loggnings funktioner för att skicka logg meddelanden till program loggarna. Exempel:
 
-- ASP.NET-program kan använda klassen [system. Diagnostics. trace](/dotnet/api/system.diagnostics.trace) för att logga information i Application Diagnostics-loggen. Ett exempel:
+- ASP.NET-program kan använda klassen [system. Diagnostics. trace](/dotnet/api/system.diagnostics.trace) för att logga information i Application Diagnostics-loggen. Exempel:
 
     ```csharp
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
@@ -138,12 +138,12 @@ Om du vill strömma loggar Live i [Cloud Shell](../cloud-shell/overview.md)anvä
 az webapp log tail --name appname --resource-group myResourceGroup
 ```
 
-Om du vill filtrera vissa händelser, till exempel fel, använder du parametern **--filter** . Ett exempel:
+Om du vill filtrera vissa händelser, till exempel fel, använder du parametern **--filter** . Exempel:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --filter Error
 ```
-Använd parametern **--Path** för att filtrera vissa logg typer, till exempel http. Ett exempel:
+Använd parametern **--Path** för att filtrera vissa logg typer, till exempel http. Exempel:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --path http
@@ -166,7 +166,7 @@ För Linux/container-appar innehåller ZIP-filen konsolens utgående loggar för
 
 För Windows-appar innehåller ZIP-filen innehållet i *D:\Home\LogFiles* -katalogen i App Service fil system. Den har följande struktur:
 
-| Loggtyp | Katalog | Description |
+| Loggtyp | Katalog | Beskrivning |
 |-|-|-|
 | **Program loggar** |*/LogFiles/Application/* | Innehåller en eller flera textfiler. Formatet på logg meddelandena beror på vilken loggnings leverantör du använder. |
 | **Spårning av misslyckade begär Anden** | */LogFiles/W3SVC#########/* | Innehåller XML-filer och en XSL-fil. Du kan visa de formaterade XML-filerna i webbläsaren. |
@@ -185,11 +185,11 @@ Med den nya [Azure Monitor-integreringen](https://aka.ms/appsvcblog-azmon)kan du
 
 I följande tabell visas de logg typer och beskrivningar som stöds: 
 
-| Loggtyp | Windows | Windows-behållare | Linux | Linux-behållare | Description |
+| Loggtyp | Windows | Windows-behållare | Linux | Linux-behållare | Beskrivning |
 |-|-|-|-|-|-|
 | AppServiceConsoleLogs | Java SE & Tomcat | Ja | Ja | Ja | Standardutdata och standard fel |
 | AppServiceHTTPLogs | Ja | Ja | Ja | Ja | Webb server loggar |
-| AppServiceEnvironmentPlatformLogs | Yes | Saknas | Ja | Ja | App Service-miljön: skalning, konfigurations ändringar och status loggar|
+| AppServiceEnvironmentPlatformLogs | Ja | Saknas | Ja | Ja | App Service-miljön: skalning, konfigurations ändringar och status loggar|
 | AppServiceAuditLogs | Ja | Ja | Ja | Ja | Inloggnings aktivitet via FTP och kudu |
 | AppServiceFileAuditLogs | Ja | Ja | TBA | TBA | Fil ändringar som har gjorts i webbplatsens innehåll. endast tillgängligt för Premium-nivån och över |
 | AppServiceAppLogs | ASP .NET | ASP .NET | Java SE & Tomcat välsignat-bilder <sup>1</sup> | Java SE & Tomcat välsignat-bilder <sup>1</sup> | Program loggar |

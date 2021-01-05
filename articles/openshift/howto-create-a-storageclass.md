@@ -8,12 +8,12 @@ author: grantomation
 ms.author: b-grodel
 keywords: Aro, OpenShift, AZ Aro, Red Hat, CLI, Azure-fil
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: db87e61166da87300a5e1fb8433a42f3f47cf832
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: fe80698b71ae0ba808991d79b423d49abfacdf7c
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493832"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825908"
 ---
 # <a name="create-an-azure-files-storageclass-on-azure-red-hat-openshift-4"></a>Skapa en Azure Files StorageClass på Azure Red Hat OpenShift 4
 
@@ -52,14 +52,14 @@ az storage account create \
 ## <a name="set-permissions"></a>Ställa in behörigheter
 ### <a name="set-resource-group-permissions"></a>Ange resurs grupps behörigheter
 
-ARO-tjänstens huvud namn kräver "Listnycklar"-behörighet för den nya resurs gruppen för Azure Storage-kontot. Tilldela rollen deltagare för att uppnå detta. 
+ARO-tjänstens huvud namn kräver "Listnycklar"-behörighet för den nya resurs gruppen för Azure Storage-kontot. Tilldela rollen deltagare för att uppnå detta.
 
 ```bash
 ARO_RESOURCE_GROUP=aro-rg
 CLUSTER=cluster
-ARO_SERVICE_PRINCIPAL_ID=$(az aro show -g $ARO_RESOURCE_GROUP -n $CLUSTER –-query servicePrincipalProfile.clientId -o tsv)
+ARO_SERVICE_PRINCIPAL_ID=$(az aro show -g $ARO_RESOURCE_GROUP -n $CLUSTER --query servicePrincipalProfile.clientId -o tsv)
 
-az role assignment create –-role Contributor -–assignee $ARO_SERVICE_PRINCIPAL_ID -g $AZURE_FILES_RESOURCE_GROUP
+az role assignment create --role Contributor -–assignee $ARO_SERVICE_PRINCIPAL_ID -g $AZURE_FILES_RESOURCE_GROUP
 ```
 
 ### <a name="set-aro-cluster-permissions"></a>Ange ARO-kluster behörigheter
@@ -90,7 +90,7 @@ metadata:
 provisioner: kubernetes.io/azure-file
 parameters:
   location: $LOCATION
-  skuName: Standard_LRS 
+  skuName: Standard_LRS
   storageAccount: $AZURE_STORAGE_ACCOUNT_NAME
   resourceGroup: $AZURE_FILES_RESOURCE_GROUP
 reclaimPolicy: Delete
@@ -131,7 +131,7 @@ oc exec $POD -- bash -c "echo 'azure file storage' >> /data/test.txt"
 oc exec $POD -- bash -c "cat /data/test.txt"
 azure file storage
 ```
-test.txt-filen visas också via Storage Explorer i Azure Portal. 
+test.txt-filen visas också via Storage Explorer i Azure Portal.
 
 ## <a name="next-steps"></a>Nästa steg
 

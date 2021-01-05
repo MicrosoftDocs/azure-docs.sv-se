@@ -11,13 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-- devx-track-azurecli
-ms.openlocfilehash: bdd9d5fd878094326331e60fc1a639eef08b7ea3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9487fc562fa099d2650aabc8d15fc1449c7fcb5c
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792471"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825163"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub enhets strömmar (förhands granskning)
 
@@ -57,7 +56,7 @@ Att skapa en enhets ström med hjälp av SDK omfattar följande steg, som också
 
 1. Enhets programmet registrerar ett återanrop i förväg för att bli informerad om när en ny enhets ström initieras till enheten. Det här steget inträffar vanligt vis när enheten startas och ansluter till IoT Hub.
 
-2. Programmet på tjänst sidan initierar en enhets ström vid behov genom att ange enhets-ID: t ( _inte_ IP-adressen).
+2. Programmet på tjänst sidan initierar en enhets ström vid behov genom att ange enhets-ID: t (_inte_ IP-adressen).
 
 3. IoT Hub meddelar programmet på enhets sidan genom att anropa återanropet som registrerades i steg 1. Enheten kan godkänna eller avvisa begäran om data Ströms initiering. Den här logiken kan vara specifik för ditt program scenario. Om Stream-begäran avvisas av enheten, IoT Hub informerar tjänsten enligt detta. i annat fall följer du stegen nedan.
 
@@ -129,9 +128,9 @@ Du kan konfigurera Azure Monitor att samla [resurs loggarna för enhets strömma
 
 Följ stegen nedan för att skapa en diagnostisk inställning för att skicka loggar för enhets strömmar för IoT Hub till Azure Monitor loggar:
 
-1. I Azure Portal navigerar du till din IoT Hub. I den vänstra rutan, under **övervakning** , väljer du **diagnostikinställningar** . Välj sedan **Lägg till diagnostisk inställning** .
+1. I Azure Portal navigerar du till din IoT Hub. I den vänstra rutan, under **övervakning**, väljer du **diagnostikinställningar**. Välj sedan **Lägg till diagnostisk inställning**.
 
-2. Ange ett namn för den diagnostiska inställningen och välj **DeviceStreams** i listan över loggar. Välj sedan **Skicka till Log Analytics** . Du är guidad att välja en befintlig Log Analytics arbets yta eller skapa en ny.
+2. Ange ett namn för den diagnostiska inställningen och välj **DeviceStreams** i listan över loggar. Välj sedan **Skicka till Log Analytics**. Du är guidad att välja en befintlig Log Analytics arbets yta eller skapa en ny.
 
     :::image type="content" source="media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png" alt-text="Aktivera enhets strömmar loggar":::
 
@@ -183,7 +182,7 @@ Exemplet på den lokala proxyn visar ett sätt att aktivera tunnlar av ett befin
 
 I det här avsnittet beskrivs hur du använder enhets strömmar för att ge användaren SSH till en enhet över enhets strömmar (fallet för RDP eller andra klient/server-program på samma sätt som med protokollets motsvarande port).
 
-Installations programmet använder två *lokala proxy* -program som visas i bilden nedan, nämligen *enhets lokal Proxy* och *service-lokal Proxy* . De lokala proxy-programmen är ansvariga för att utföra [enhets strömmens hand skakning](#device-stream-creation-flow) med IoT Hub och INTERAGERA med SSH-klienten och SSH-daemon med hjälp av vanliga klient/server-socketar.
+Installations programmet använder två *lokala proxy* -program som visas i bilden nedan, nämligen *enhets lokal Proxy* och *service-lokal Proxy*. De lokala proxy-programmen är ansvariga för att utföra [enhets strömmens hand skakning](#device-stream-creation-flow) med IoT Hub och INTERAGERA med SSH-klienten och SSH-daemon med hjälp av vanliga klient/server-socketar.
 
 !["Installation av proxy för enhets Ströms-proxy för SSH/RDP"](./media/iot-hub-device-streams-overview/iot-hub-device-streams-ssh.png)
 
@@ -195,7 +194,7 @@ Installations programmet använder två *lokala proxy* -program som visas i bild
 
 4. Den tjänst-lokala proxyn lyssnar på en utsedd port som väntar på nya SSH-anslutningar från användaren (port 2222 som används i exemplet, men den kan konfigureras till en annan tillgänglig port). Användaren pekar SSH-klienten till den lokala proxyservern på localhost.
 
-### <a name="notes"></a>Kommentarer
+### <a name="notes"></a>Obs!
 
 * Ovanstående steg slutför en slutpunkt-till-slutpunkt-tunnel mellan SSH-klienten (till höger) i SSH-daemonen (till vänster). En del av den här anslutningen från slut punkt till slut punkt omfattar att skicka trafik via en enhets ström till IoT Hub.
 

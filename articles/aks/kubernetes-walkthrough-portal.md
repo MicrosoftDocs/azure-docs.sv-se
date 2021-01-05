@@ -5,13 +5,13 @@ description: Lär dig hur du snabbt kan skapa ett Kubernetes-kluster, distribuer
 services: container-service
 ms.topic: quickstart
 ms.date: 10/06/2020
-ms.custom: mvc, seo-javascript-october2019, devx-track-azurecli
-ms.openlocfilehash: 606de7c07f2760ca678563ccf1900fc1bb915c1a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.custom: mvc, seo-javascript-october2019
+ms.openlocfilehash: f4cbfb78ec0900e757683fff35403dfcbd38b391
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003726"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97824677"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Snabb start: Distribuera ett Azure Kubernetes service-kluster (AKS) med hjälp av Azure Portal
 
@@ -21,7 +21,7 @@ Azure Kubernetes Service (AKS) är en hanterad Kubernetes-tjänst som gör att d
 
 Den här snabbstarten förutsätter grundläggande kunskaper om Kubernetes-begrepp. Mer information finns i [Viktiga koncept för Azure Kubernetes Service (AKS)][kubernetes-concepts].
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 

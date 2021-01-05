@@ -10,13 +10,13 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 6721357464c2a49331d9c02982841d36aa207cc6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, devx-track-python, deploy
+ms.openlocfilehash: 46b8f153e65f436fa1062a0606e0fb0136d972a5
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324988"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97824605"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>Distribuera din befintliga modell med Azure Machine Learning
 
@@ -27,7 +27,7 @@ Mer information om begreppen och termerna i den här artikeln finns i [Hantera, 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* [En Azure Machine Learning arbets yta](how-to-manage-workspace.md)
+* [En Azure Machine Learning-arbetsyta](how-to-manage-workspace.md)
   + Python-exempel förutsätter att `ws` variabeln är inställd på din Azure Machine Learning-arbetsyta. Mer information om hur du ansluter till arbets ytan finns i [dokumentationen för Azure Machine Learning SDK för python](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=trueworkspace).
   
   + CLI-exempel använder plats hållare för `myworkspace` och `myresourcegroup` , som du bör ersätta med namnet på din arbets yta och resurs gruppen som innehåller den.

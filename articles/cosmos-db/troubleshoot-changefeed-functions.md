@@ -4,16 +4,16 @@ description: Vanliga problem, lösningar och diagnostiska steg när du använder
 author: ealsur
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 03/13/2020
+ms.date: 12/29/2020
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 9fc5da214a50cb000d2154d08bb9b6f6f98ac5ec
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1b7b82ea07b7e00d281739011c9c9f83ab4dff73
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340540"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825626"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Diagnostisera och Felsök problem när du använder Azure Functions utlösare för Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -85,16 +85,18 @@ Begreppet "ändra" är en åtgärd i ett dokument. De vanligaste scenarier där 
 
 ### <a name="some-changes-are-missing-in-my-trigger"></a>Vissa ändringar saknas i min utlösare
 
-Om du upptäcker att några av ändringarna som hände i din Azure Cosmos-behållare inte hämtas av Azure-funktionen, finns det ett första undersöknings steg som måste utföras.
+Om du upptäcker att några av ändringarna som hände i din Azure Cosmos-behållare inte hämtas av Azure-funktionen eller om vissa ändringar saknas i målet när du kopierar dem, följer du stegen nedan.
 
 När din Azure-funktion tar emot ändringarna, bearbetar den ofta dem och kan också skicka resultatet till ett annat mål. När du undersöker saknade ändringar, se till att du **mäter vilka ändringar som tas emot vid** inmatnings punkten (när Azure-funktionen startar), inte på målet.
 
 Om vissa ändringar saknas på målet kan detta betyda att vissa fel inträffar under Azure Function-körningen när ändringarna har tagits emot.
 
-I det här scenariot är det bästa sättet att lägga till `try/catch` block i koden och inom de slingor som kan bearbeta ändringarna, för att upptäcka eventuella fel för en viss delmängd av objekt och hantera dem efter behov (skicka dem till en annan lagrings plats för ytterligare analys eller försök). 
+I det här scenariot är det bästa sättet att lägga till `try/catch` block i koden och inom de slingor som kan bearbeta ändringarna, för att upptäcka eventuella fel för en viss delmängd av objekt och hantera dem efter behov (skicka dem till en annan lagrings plats för ytterligare analys eller försök).
 
 > [!NOTE]
 > Som standard kör Azure Functions-utlösaren inte en ändringssats om det inträffar ett ohanterat undantag under körningen av din kod. Det innebär att det inte går att bearbeta ändringarna på grund av att det inte gick att bearbeta dem.
+
+Om målet är en annan Cosmos-behållare och du utför upsert-åtgärder för att kopiera objekten, **kontrollerar du att partitionens nyckel definition på både den övervakade behållaren och mål behållaren är densamma**. Upsert-åtgärder kan spara flera käll objekt som ett i målet på grund av den här konfigurations skillnaden.
 
 Om du upptäcker att vissa ändringar inte tagits emot alls av utlösaren är det vanligaste scenariot att **en annan Azure-funktion körs**. Det kan vara en annan Azure Function som distribuerats i Azure eller en Azure-funktion som körs lokalt på en utvecklares dator som har **exakt samma konfiguration** (samma övervakade och lånade behållare) och den här Azure-funktionen stjäl en del av de ändringar som du förväntar dig att Azure-funktionen ska bearbeta.
 

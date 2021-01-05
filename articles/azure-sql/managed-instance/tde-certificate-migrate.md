@@ -4,19 +4,19 @@ description: Migrera ett certifikat som skyddar databas krypterings nyckeln för
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: security
-ms.custom: sqldbrb=1, devx-track-azurecli
+ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein, jovanpop
 ms.date: 07/21/2020
-ms.openlocfilehash: 80ff16156348db9c3a209757b48b7d54615d9104
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c465da3d5d812ea7e811cbe59318122700c6e786
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790703"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97824664"
 ---
 # <a name="migrate-a-certificate-of-a-tde-protected-database-to-azure-sql-managed-instance"></a>Migrera ett certifikat för en TDE-skyddad databas till en Azure SQL-hanterad instans
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -125,7 +125,7 @@ Om certifikatet sparas i den SQL Server lokala datorns certifikat Arkiv, kan det
 
 2. I MMC-snapin-modulen certifikat expanderar du sökvägen personliga > certifikat för att se listan över certifikat.
 
-3. Högerklicka på certifikatet och klicka på **Exportera** .
+3. Högerklicka på certifikatet och klicka på **Exportera**.
 
 4. Följ guiden för att exportera certifikatet och den privata nyckeln till ett. PFX-format.
 

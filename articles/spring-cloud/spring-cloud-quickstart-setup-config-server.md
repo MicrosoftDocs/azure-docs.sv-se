@@ -6,14 +6,14 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 09/08/2020
-ms.custom: devx-track-java, devx-track-azurecli
+ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 7400aeeba80ce168a9dea0d81e1ad0f2fbe24c95
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: b23b5d516479cb28948a601c6bd71309500e73f1
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750851"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825796"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>Snabb start: Konfigurera Azure våren Cloud Configuration Server
 
@@ -21,7 +21,7 @@ Azure våren Cloud config server är en centraliserad konfigurations tjänst fö
 
 ::: zone pivot="programming-language-csharp"
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * Slutför den tidigare snabb starten i den här serien: [etablera Azure våren Cloud Service](spring-cloud-quickstart-provision-service-instance.md).
 
@@ -40,7 +40,7 @@ Det här kommandot anger konfigurations servern för att hitta konfigurations da
 ::: zone pivot="programming-language-java"
 Azure våren Cloud config server är en centraliserad konfigurations tjänst för distribuerade system. Det använder ett lagrings Bart lagrings lager som för närvarande stöder lokal lagring, git och under version.  Konfigurera konfigurations servern för att distribuera mikroservice-appar till Azure våren Cloud.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * [Installera JDK 8](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
 * [Registrera dig för en Azure-prenumeration](https://azure.microsoft.com/free/)

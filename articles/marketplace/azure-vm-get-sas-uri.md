@@ -7,12 +7,12 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
 ms.date: 10/19/2020
-ms.openlocfilehash: ead367568762d4b76de7164feb56b7a31cd53e0d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e28942a77a1d695a17f3231901f337695e602c64
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129124"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825547"
 ---
 # <a name="how-to-generate-a-sas-uri-for-a-vm-image"></a>Så här skapar du en SAS-URI för en VM-avbildning
 
@@ -34,12 +34,12 @@ Det finns två vanliga verktyg som används för att skapa en SAS-adress (URL):
 
 ### <a name="using-tool-1-azure-storage-explorer"></a>Använda verktyg 1: Azure Storage Explorer
 
-1. Gå till ditt **lagrings konto** .
-1. Öppna **Storage Explorer** .
+1. Gå till ditt **lagrings konto**.
+1. Öppna **Storage Explorer**.
 
     :::image type="content" source="media/create-vm/storge-account-explorer.png" alt-text="Fönstret lagrings konto.":::
 
-3. I **behållaren** högerklickar du på VHD-filen och väljer **Hämta signatur för resurs åtkomst** .
+3. I **behållaren** högerklickar du på VHD-filen och väljer **Hämta signatur för resurs åtkomst**.
 4. I dialog rutan **signatur för delad åtkomst** fyller du i följande fält:
 
     1. Start tid – behörighetens start datum för VHD-åtkomst. Ange ett datum som infaller en dag före det aktuella datumet.
@@ -49,7 +49,7 @@ Det finns två vanliga verktyg som används för att skapa en SAS-adress (URL):
 
     ![Dialog rutan signatur för delad åtkomst.](media/vm/create-sas-uri-storage-explorer.png)
 
-5. Om du vill skapa en tillhör ande SAS-URI för den här virtuella hård disken väljer du **skapa** .
+5. Om du vill skapa en tillhör ande SAS-URI för den här virtuella hård disken väljer du **skapa**.
 6. Kopiera URI: n och spara den i en textfil på en säker plats. Den här genererade SAS-URI: n är för åtkomst på container nivå. Om du vill göra det speciellt kan du redigera text filen och lägga till VHD-namnet.
 7. Infoga ditt VHD-namn efter VHD-strängen i SAS-URI: n (inklusive ett snedstreck). Den sista SAS-URI: n bör se ut så här:
 
@@ -62,7 +62,7 @@ Det finns två vanliga verktyg som används för att skapa en SAS-adress (URL):
 1. Hämta och installera [Microsoft Azure kl](/cli/azure/install-azure-cli). Versioner är tillgängliga för Windows, macOS och olika distributioner i Linux.
 2. Skapa en PowerShell-fil (fil namns tillägget. ps1), kopiera i följande kod och spara den lokalt.
 
-    ```JSON
+    ```azurecli-interactive
     az storage container generate-sas --connection-string ‘DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net’ --name <vhd-name> --permissions rl --start ‘<start-date>’ --expiry ‘<expiry-date>’
     ```
 
@@ -70,25 +70,26 @@ Det finns två vanliga verktyg som används för att skapa en SAS-adress (URL):
 
     - konto namn – namnet på ditt Azure Storage-konto.
     - konto nyckel – din Azure Storage-kontoinformation.
-    - VHD-namn – ditt VHD-namn.
     - start datum – behörighetens start datum för VHD-åtkomst. Ange ett datum en dag före det aktuella datumet.
     - förfallo Datum-datum – behörighetens förfallo datum för VHD-åtkomst. Ange ett datum minst tre veckor efter det aktuella datumet.
 
     Här är ett exempel på korrekt parameter värden (när detta skrivs):
 
-    `az storage container generate-sas --connection-string ‘DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ON c+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net’ --name vhds -- permissions rl --start ‘2020-04-01T00:00:00Z’ --expiry ‘2021-04-01T00:00:00Z’`
+    ```azurecli-interactive
+    az storage container generate-sas --connection-string ‘DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ON c+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net’ --name vhds -- permissions rl --start ‘2020-04-01T00:00:00Z’ --expiry ‘2021-04-01T00:00:00Z’
+    ```
 
 1. Spara ändringarna.
 2. Använd någon av följande metoder för att köra det här skriptet med administratörs behörighet för att skapa en SAS-anslutningssträng för åtkomst på behållare nivå:
 
-    - Kör skriptet från-konsolen. I Windows högerklickar du på skriptet och väljer **Kör som administratör** .
+    - Kör skriptet från-konsolen. I Windows högerklickar du på skriptet och väljer **Kör som administratör**.
     - Kör skriptet från en PowerShell-skriptfil som [Windows PowerShell ISE](/powershell/scripting/components/ise/introducing-the-windows-powershell-ise). Den här skärmen visar hur en SAS-anslutningssträng skapas i den här redigeraren:
 
     [![skapa en SAS-anslutningssträng i PowerShell-redigeraren](media/vm/create-sas-uri-power-shell-ise.png)](media/vm/create-sas-uri-power-shell-ise.png#lightbox)
 
 6. Kopiera SAS-anslutningssträngen och spara den i en textfil på en säker plats. Redigera den här strängen för att lägga till information om VHD-platsen för att skapa den sista SAS-URI: n.
 7. I Azure Portal går du till blob-lagringen som innehåller den virtuella hård disk som är associerad med den nya URI: n.
-8. Kopiera URL: en för thebBlob-tjänstens slut punkt:
+8. Kopiera URL: en för BLOB service-slutpunkten:
 
     ![Kopierar URL: en för BLOB service-slutpunkten.](media/vm/create-sas-uri-blob-endpoint.png)
 

@@ -8,12 +8,12 @@ ms.date: 10/16/2020
 ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: feabac62564729338e41bf30eaf8d9f5a6317126
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 56505c95e65911cafbaaa403cd09332695439d97
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149005"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825670"
 ---
 # <a name="quickstart-create-an-azure-app-configuration-store-by-using-an-arm-template"></a>Snabb start: skapa en Azure App konfigurations lagring med en ARM-mall
 
@@ -46,10 +46,10 @@ Snabb starten använder- `copy` elementet för att skapa flera instanser av nyck
 
 Två Azure-resurser definieras i mallen:
 
-- [Microsoft. AppConfiguration/configurationStores](/azure/templates/microsoft.appconfiguration/2020-06-01/configurationstores): skapa ett konfigurations lager för appar.
-- Microsoft. AppConfiguration/configurationStores/nyckel värden: skapa ett nyckel värde i appens konfigurations arkiv.
+- [Microsoft. AppConfiguration/configurationStores](/azure/templates/microsoft.appconfiguration/2020-07-01-preview/configurationstores): skapa ett konfigurations lager för appar.
+- [Microsoft. AppConfiguration/configurationStores/nyckel värden](/azure/templates/microsoft.appconfiguration/2020-07-01-preview/configurationstores/keyvalues): skapa ett nyckel värde i appens konfigurations arkiv.
 
-> [!NOTE]
+> [!TIP]
 > `keyValues`Resurs namnet är en kombination av nyckel och etikett. Nyckeln och etiketten är kopplade till `$` avgränsaren. Etiketten är valfri. I exemplet ovan `keyValues` skapar resursen med namn `myKey` ett nyckel värde utan en etikett.
 >
 > Procent kodning, även kallat URL-kodning, tillåter att nycklar eller etiketter innehåller tecken som inte tillåts i ARM-mallens resurs namn. `%` är inte ett tillåtet värde antingen, så `~` används i sitt ställe. Om du vill koda ett namn korrekt följer du dessa steg:
@@ -59,6 +59,13 @@ Två Azure-resurser definieras i mallen:
 > 3. Ersätt `%` med `~`
 >
 > Om du till exempel vill skapa ett nyckel/värde-par med nyckel namn `AppName:DbEndpoint` och etikett namn `Test` bör resurs namnet vara `AppName~3ADbEndpoint$Test` .
+
+> [!NOTE]
+> Med konfiguration av appar kan du använda nyckel värdes data via en [privat länk](concept-private-endpoint.md) från det virtuella nätverket. När funktionen är aktive rad nekas som standard alla begär Anden för konfigurations data för din app via det offentliga nätverket. Eftersom ARM-mallen körs utanför det virtuella nätverket tillåts inte data åtkomst från en ARM-mall. Om du vill tillåta data åtkomst från en ARM-mall när en privat länk används, kan du aktivera offentlig nätverks åtkomst med hjälp av följande Azure CLI-kommando. Det är viktigt att tänka på säkerhets konsekvenserna av att aktivera offentlig nätverks åtkomst i det här scenariot.
+>
+> ```azurecli-interactive
+> az appconfig update -g MyResourceGroup -n MyAppConfiguration --enable-public-network true
+> ```
 
 ## <a name="deploy-the-template"></a>Distribuera mallen
 
@@ -84,9 +91,9 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 ## <a name="review-deployed-resources"></a>Granska distribuerade resurser
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-1. Skriv **app Configuration**i rutan Azure Portal Sök. Välj **app-konfiguration** i listan.
+1. Skriv **app Configuration** i rutan Azure Portal Sök. Välj **app-konfiguration** i listan.
 1. Välj den nyligen skapade konfigurations resursen för appen.
-1. Under **åtgärder**klickar du på **konfigurations Utforskaren**.
+1. Under **åtgärder** klickar du på **konfigurations Utforskaren**.
 1. Kontrol lera att det finns två nyckel värden.
 
 ## <a name="clean-up-resources"></a>Rensa resurser

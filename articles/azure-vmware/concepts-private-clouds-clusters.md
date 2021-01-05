@@ -3,12 +3,12 @@ title: Koncept – privata moln och kluster
 description: Lär dig mer om de viktigaste funktionerna i Azure VMware-lösningen program varu definierade Data Center och vSphere-kluster.
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: af34bb0d83d9571ae91dce90cab198a61cfe82a1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7f8508abed3446c58a683454bc49ec7dbb49d051
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967388"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825079"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware-lösning, privata moln och kluster koncept
 
@@ -48,18 +48,8 @@ Värdar som används för att bygga eller skala kluster kommer från en isolerad
 
 ## <a name="vmware-software-versions"></a>Versioner av VMware-programvara
 
-De aktuella program varu versionerna av VMware-programvaran som används i Azure VMware-lösningar privata moln kluster är:
+[!INCLUDE [vmware-software-versions](includes/vmware-software-versions.md)]
 
-| Programvara              |    Version   |
-| :---                  |     :---:    |
-| VCSA/vSphere/ESXi |    6,7 U3    | 
-| ESXi                  |    6,7 U3    | 
-| Virtuellt San                  |    6,7 U3    |
-| NSX-T                 |      2.5     |
-
-För alla nya kluster i ett privat moln, matchar program varu versionen vad som körs för tillfället. Program varu stackens senaste version installeras för alla nya privata moln i en prenumeration.
-
-Du hittar de allmänna uppgraderings principerna och processerna för Azure VMware Solution Platform-programvaran som beskrivs i [privata moln uppdateringar och uppgraderingar](concepts-upgrades.md).
 
 ## <a name="host-maintenance-and-lifecycle-management"></a>Underhåll av värd och livs cykel hantering
 

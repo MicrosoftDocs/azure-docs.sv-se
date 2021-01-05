@@ -4,13 +4,13 @@ description: I den här självstudien om Azure Kubernetes Service (AKS) lär du 
 services: container-service
 ms.topic: tutorial
 ms.date: 09/30/2020
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: e700934a965f836456458cb33dc46125bef4ab72
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: mvc
+ms.openlocfilehash: 7f16ba3ffe6b6f96f17df540eb67e9cec0bfea8c
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747004"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825680"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Självstudie: Skala program i Azure Kubernetes Service (AKS)
 
@@ -45,7 +45,7 @@ azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 ```
 
-Om du vill ändra antalet poddar i *azure-vote-front* -distributionen manuellt använder du kommandot [kubectl scale][kubectl-scale]. I följande exempel ökas antalet frontend-poddar till *5* :
+Om du vill ändra antalet poddar i *azure-vote-front*-distributionen manuellt använder du kommandot [kubectl scale][kubectl-scale]. I följande exempel ökas antalet frontend-poddar till *5*:
 
 ```console
 kubectl scale --replicas=5 deployment/azure-vote-front
@@ -91,7 +91,7 @@ resources:
      cpu: 500m
 ```
 
-I följande exempel används kommandot [kubectl autoscale][kubectl-autoscale] för att automatiskt skala antalet poddar i *azure-vote-front* -distributionen. Om Genomsnittlig CPU-belastning över alla poddar överskrider 50% av den begärda användningen, ökar autoskalning poddar upp till högst *10* instanser. Minst *3* instanser definieras sedan för distributionen:
+I följande exempel används kommandot [kubectl autoscale][kubectl-autoscale] för att automatiskt skala antalet poddar i *azure-vote-front*-distributionen. Om Genomsnittlig CPU-belastning över alla poddar överskrider 50% av den begärda användningen, ökar autoskalning poddar upp till högst *10* instanser. Minst *3* instanser definieras sedan för distributionen:
 
 ```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
@@ -150,7 +150,7 @@ Efter några minuter, med minimal belastning på Azure Vote-appen, minskar antal
 
 Om du har skapat ditt Kubernetes-kluster med hjälp av kommandona i den föregående själv studie kursen har det två noder. Du kan justera antalet noder manuellt om du planerar att ha fler eller färre containerarbetsbelastningar i klustret.
 
-I följande exempel ökas antalet agentnoder till tre i Kubernetes-klustret med namn *myAKSCluster* . Det tar några minuter att slutföra kommandot.
+I följande exempel ökas antalet agentnoder till tre i Kubernetes-klustret med namn *myAKSCluster*. Det tar några minuter att slutföra kommandot.
 
 ```azurecli
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3

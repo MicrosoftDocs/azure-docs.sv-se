@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1627db2f1f19c393d4f40892ca65141f26424ac9
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: c9f9cc53c62ed19fa5fbd1e78c840a8a34b6fb84
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656945"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97824647"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Använda Azure Digital Twins-API:er och -SDK:er
 
@@ -81,15 +81,9 @@ Azure Digitals .NET (C#) SDK är en del av Azure SDK för .NET. Det är öppen k
 > [!NOTE]
 > Mer information om SDK-design finns i allmänna [design principer för Azure SDK](https://azure.github.io/azure-sdk/general_introduction.html) : er och de aktuella [.net-design rikt linjerna](https://azure.github.io/azure-sdk/dotnet_introduction.html).
 
-Om du vill använda SDK inkluderar du NuGet-paketet **Azure. DigitalTwins. Core** med ditt projekt. Du kommer också att behöva den senaste versionen av **Azure. Identity** -paketet.
-
-* I Visual Studio kan du lägga till paket med NuGet Package Manager (nås via *verktyg > NuGet package manager > hantera NuGet-paket för lösningen*). 
-* Med kommando rads verktyget .NET kan du köra:
-
-    ```cmd/sh
-    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-    dotnet add package Azure.identity
-    ```
+Om du vill använda SDK inkluderar du NuGet-paketet **Azure. DigitalTwins. Core** med ditt projekt. Du kommer också att behöva den senaste versionen av **Azure. Identity** -paketet. I Visual Studio kan du lägga till dessa paket med NuGet Package Manager (nås via *verktyg > NuGet package manager > hantera NuGet-paket för lösningen*). Du kan också använda kommando rads verktyget .NET med de kommandon som finns i NuGet-paket länkarna nedan för att lägga till dem i projektet:
+* [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Det här är paketet för [Azure Digitals dubbla SDK för .net](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true). 
+* [**Azure. Identity**](https://www.nuget.org/packages/Azure.Identity). Det här biblioteket innehåller verktyg som hjälper dig med autentisering mot Azure.
 
 En detaljerad genom gång av hur du använder API: erna i praktiken finns i [*självstudien: kod a klient program*](tutorial-code.md). 
 
