@@ -4,13 +4,13 @@ description: Skapa aviseringar med maskin inlärnings beroende dynamiska tröske
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 02/16/2020
-ms.openlocfilehash: 110d4a3219b4898fa6f138e29f1112d7134f674c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/04/2021
+ms.openlocfilehash: 92fafc9357ca08cd31c9ba7badbf7f6433f44f86
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012347"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862575"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Mått aviseringar med dynamiska tröskelvärden i Azure Monitor
 
@@ -39,7 +39,7 @@ Dynamiska tröskelvärden lär sig kontinuerligt data i mått serien och försö
 Tröskelvärdena väljs på ett sådant sätt att avvikelser från dessa tröskelvärden indikerar en avvikelse i mått beteendet.
 
 > [!NOTE]
-> Identifiering av säsongs mönster har angetts till ett intervall på timmar, dagar eller veckor. Det innebär att andra mönster som t. ex. ett Tim mönster eller semiweekly inte kan identifieras.
+> Dynamiska tröskelvärden kan identifiera säsongs beroende för varje timme, varje dag eller vecko mönster. Andra mönster som bi-eller halv vecko säsongs beroende kanske inte kan identifieras. För att upptäcka vecko säsongs beroende krävs minst tre veckors historiska data. 
 
 ## <a name="what-does-sensitivity-setting-in-dynamic-thresholds-mean"></a>Vad betyder känslighets inställningen i dynamiska tröskelvärden?
 

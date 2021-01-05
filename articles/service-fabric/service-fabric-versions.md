@@ -3,12 +3,12 @@ title: Kluster versioner som stöds i Azure Service Fabric
 description: Lär dig mer om kluster versioner i Azure Service Fabric, inklusive en länk till de senaste versionerna från Service Fabric teamets blogg.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 4407ddb80b00c847e14643be816bc681718dcb8b
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 5770aa072666f89a574da9d1f2584ab33b612330
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652219"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862169"
 ---
 # <a name="supported-service-fabric-versions"></a>Service Fabric versioner som stöds
 
@@ -21,8 +21,31 @@ I följande dokument finns mer information om hur du håller klustret med en Ser
 - [Uppgradera ett Azure Service Fabric-kluster](service-fabric-cluster-upgrade.md)
 - [Uppgradera den Service Fabric version som körs på det fristående Windows Server-klustret](service-fabric-cluster-upgrade-windows-server.md)
 
-## <a name="supported-versions"></a>Versioner som stöds
 
+## <a name="unsupported-versions"></a>Versioner som inte stöds
+
+### <a name="upgrade-alert-for-versions-between-57-and-below-6363"></a>Uppgraderings avisering för versioner mellan 5,7 och under 6.3.63. *
+
+***Alla Service Fabric kluster som finns på versioner som inte stöds från 5,7 till 6.3.63.* kommer att påverkas av en säkerhets brytande ändring som kommer att distribueras i Azure den 7 januari 2021 * * *.
+ 
+ För att undvika allvarliga avbrott i tjänsten (inklusive kluster som inte kommer upp) måste du uppgradera klustren så snart som möjligt till någon av de tidigare versioner av Service Fabric runtime som innehåller korrigeringen för säkerhets problemet. Vi har uppnått de kunder som har fått vägledning. Om du har en Support plan och behöver teknisk hjälp kan du kontakta oss via support kanaler för [Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) genom att öppna en supportbegäran och nämna detta i support ärendet. 
+ 
+  #### <a name="supported-service-fabric-runtime-versions-including-the-fix-for-the-security-breaking-change"></a>Service Fabric runtime-versioner som stöds, inklusive korrigeringen för säkerhets brytar ändringen 
+   Uppgradera Service Fabric-kluster som körs på äldre versioner som inte stöds och som påverkas av säkerhets brytningen till en av de tidigare versioner som stöds.
+
+  | Operativsystem | Nuvarande Service Fabric körning i klustret | Version för CU/korrigering  | 
+  | --- | --- |--- | 
+  | Windows | 7,0. * | 7.0.478.9590 |
+  | Windows | 7,1. * | 7.1.503.9590 |
+  | Windows | 7,2. * | 7.2.445.9590 |
+  | Ubuntu 16 | 7,0. * | 7.0.472.1  |
+  | Ubuntu 16 | 7,1. * | 7.1.455.1  |
+  | Ubuntu 1804 | 7,1. * | 7.1.455.1804 |
+  | Ubuntu 16 | 7,2. * | 7.2.447.1 |
+  | Ubuntu 1804 | 7,2. * | 7.2.447.1804 |
+ 
+
+## <a name="supported-versions"></a>Versioner som stöds
 I följande tabell visas de versioner av Service Fabric och deras support slutdatum.
 
 | Service Fabric körning i klustret | Kan uppgradera direkt från kluster version |Kompatibel SDK-eller NuGet-paket version | Slut på support |

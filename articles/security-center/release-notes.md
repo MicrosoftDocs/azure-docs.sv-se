@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2020
+ms.date: 12/28/2020
 ms.author: memildin
-ms.openlocfilehash: 484a8c7c230863f230719ddaf4e98a6248512bcc
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: f0015177332aa07ed65f9d0345a11bfdad170104
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560261"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862616"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Vad är nytt i Azure Security Center?
 
@@ -40,6 +40,12 @@ Uppdateringar i december inkluderar:
 - [Globala administratörer kan nu ge sig själva behörigheter på klient nivå](#global-administrators-can-now-grant-themselves-tenant-level-permissions)
 - [Två nya Azure Defender-planer: Azure Defender för DNS och Azure Defender för Resource Manager (för hands version)](#two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview)
 - [Sidan nya säkerhets aviseringar i Azure Portal (för hands version)](#new-security-alerts-page-in-the-azure-portal-preview)
+- [Förvarad Security Center upplevelse i Azure SQL Database & SQL-hanterad instans](#revitalized-security-center-experience-in-azure-sql-database--sql-managed-instance)
+- [Verktyg och filter för till gångs inventering har uppdaterats](#asset-inventory-tools-and-filters-updated)
+- [Rekommendation om webbappar som begär SSL-certifikat som inte längre ingår i säkra Poäng](#recommendation-about-web-apps-requesting-ssl-certificates-no-longer-part-of-secure-score)
+- [Sidan rekommendationer har nya filter för miljö, allvarlighets grad och tillgängliga svar](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)
+- [Kontinuerlig export hämtar nya data typer och förbättrade deployifnotexist-principer](#continuous-export-gets-new-data-types-and-improved-deployifnotexist-policies)
+
 
 ### <a name="azure-defender-for-sql-servers-on-machines-is-generally-available"></a>Azure Defender för SQL-servrar på datorer är allmänt tillgänglig
 
@@ -114,6 +120,87 @@ Du kommer åt den nya upplevelsen genom att använda länken prova nu från band
 :::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="Banderoll med en länk till den nya förhands gransknings aviserings upplevelsen":::
 
 Information om hur du skapar exempel aviseringar från den nya aviserings miljön finns i [generera exempel på Azure Defender-aviseringar](security-center-alert-validation.md#generate-sample-azure-defender-alerts).
+
+
+### <a name="revitalized-security-center-experience-in-azure-sql-database--sql-managed-instance"></a>Förvarad Security Center upplevelse i Azure SQL Database & SQL-hanterad instans 
+
+Security Centers upplevelsen i SQL ger åtkomst till följande Security Center och Azure Defender för SQL-funktioner:
+
+- **Säkerhets rekommendationer** – Security Center regelbundet analyserar säkerhets statusen för alla anslutna Azure-resurser för att identifiera möjliga felkonfigurationer av säkerhet. Det ger dig rekommendationer om hur du kan åtgärda dessa sårbarheter och förbättra organisationernas säkerhets position.
+- **Säkerhets aviseringar** – en identifierings tjänst som kontinuerligt övervakar Azure SQL-aktiviteter för hot som SQL-inmatning, brute-force-attacker och missbruk av privilegier. Den här tjänsten utlöser detaljerade och åtgärdade säkerhets aviseringar i Security Center och ger alternativ för att fortsätta utredningar med Azure Sentinel, Microsofts Azure-inhemska SIEM-lösning.
+- **Resultat** – en sårbarhets bedömnings tjänst som kontinuerligt övervakar Azure SQL-konfigurationer och hjälper till att åtgärda sårbarheter. Utvärderings genomsökningar ger en översikt över Azure SQL-säkerhetstillstånden tillsammans med detaljerade säkerhets resultat.     
+
+:::image type="content" source="media/release-notes/azure-security-center-experience-in-sql.png" alt-text="Azure Security Centers säkerhetsfunktioner för SQL finns i Azure SQL":::
+
+
+### <a name="asset-inventory-tools-and-filters-updated"></a>Verktyg och filter för till gångs inventering har uppdaterats
+
+Inventerings sidan i Azure Security Center har uppdaterats med följande ändringar:
+
+- **Guider och feedback** har lagts till i verktygsfältet. Då öppnas ett fönster med länkar till relaterad information och verktyg. 
+- **Prenumerations filter** läggs till i de standard filter som är tillgängliga för dina resurser.
+- **Öppna frågans** länk om du vill öppna de aktuella filter alternativen som en Azure Resource Graph-fråga (kallades tidigare i resurs diagram Utforskaren).
+- **Operator alternativ** för varje filter. Nu kan du välja bland fler logiska operatorer än ' = '. Du kanske till exempel vill hitta alla resurser med aktiva rekommendationer vars titlar innehåller strängen "kryptera". 
+
+    :::image type="content" source="media/release-notes/inventory-filter-operators.png" alt-text="Kontroller för alternativet operator i till gångs lager filter":::
+
+Lär dig mer om inventering i [utforska och hantera dina resurser med till gångs inventering](asset-inventory.md).
+
+
+### <a name="recommendation-about-web-apps-requesting-ssl-certificates-no-longer-part-of-secure-score"></a>Rekommendation om webbappar som begär SSL-certifikat som inte längre ingår i säkra Poäng
+
+Rekommendationen "webbappar ska begära ett SSL-certifikat för alla inkommande begär Anden" har flyttats från säkerhets kontrollen **Hantera åtkomst och behörigheter** (värt högst 4 punkter) i **implementeringen av rekommenderade säkerhets metoder** (vilket är värt inga poäng). 
+
+Att se till att dina webbappar begär ett certifikat gör det verkligen säkrare. För offentliga webbappar är det dock irrelevant. Om du ansluter till din webbplats via HTTP och inte HTTPS får du inga klient certifikat. Så om ditt program kräver klient certifikat bör du inte tillåta begär anden till ditt program via HTTP. Läs mer i [Konfigurera ömsesidig TLS-autentisering för Azure App Service](../app-service/app-service-web-configure-tls-mutual-auth.md).
+
+Med den här ändringen är rekommendationen nu en rekommenderad metod som inte påverkar dina poäng. 
+
+Lär dig vilka rekommendationer som finns i varje säkerhets kontroll i [säkerhets kontroller och deras rekommendationer](secure-score-security-controls.md#security-controls-and-their-recommendations).
+
+
+### <a name="recommendations-page-has-new-filters-for-environment-severity-and-available-responses"></a>Sidan rekommendationer har nya filter för miljö, allvarlighets grad och tillgängliga svar
+
+Azure Security Center övervakar alla anslutna resurser och genererar säkerhets rekommendationer. Använd dessa rekommendationer för att förstärka ditt hybrid moln position och spåra efterlevnaden av de principer och standarder som är relevanta för din organisation, bransch och land.
+
+När Security Center fortsätter att utöka sin täckning och funktioner, växer listan över säkerhets rekommendationer varje månad. Se till exempel [29 Preview-rekommendationer som har lagts till för att öka täckningen av Azures säkerhets benchmark](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark).
+
+Med den växande listan behöver du kunna filtrera fram rekommendationerna för bästa intresse. I november lade vi till filter till sidan rekommendationer (se [rekommendations listan innehåller nu filter](#recommendations-list-now-includes-filters)).
+
+De filter som läggs till den här månaden innehåller alternativ för att förfina rekommendationer listan enligt:
+
+- **Miljö** – Visa rekommendationer för dina AWS-, GCP-eller Azure-resurser (eller valfri kombination)
+- **Allvarlighets grad** – Visa rekommendationer enligt allvarlighets GRADS klassificeringen som angetts av Security Center
+- **Svars åtgärder** – Visa rekommendationer enligt tillgänglighet för Security Center svars alternativ: snabb korrigering, neka och framtvinga
+
+    > [!TIP]
+    > Filtret för svars åtgärder ersätter filtret **snabb korrigering tillgängligt (Ja/Nej)** . 
+    > 
+    > Läs mer om vart och ett av följande svars alternativ:
+    > - [Snabb korrigerings reparation](security-center-remediate-recommendations.md#quick-fix-remediation)
+    > - [Förhindra felkonfiguration med Enforce/Deny-rekommendationer](prevent-misconfigurations.md)
+
+:::image type="content" source="./media/release-notes/added-recommendations-filters.png" alt-text="Rekommendationer grupperade efter säkerhets kontroll" lightbox="./media/release-notes/added-recommendations-filters.png":::
+
+### <a name="continuous-export-gets-new-data-types-and-improved-deployifnotexist-policies"></a>Kontinuerlig export hämtar nya data typer och förbättrade deployifnotexist-principer
+
+Med Azure Security Center verktyg för kontinuerlig export kan du exportera Security Centers rekommendationer och aviseringar som du kan använda med andra övervaknings verktyg i din miljö.
+
+Med kontinuerlig export kan du helt anpassa vad som ska exporteras och var det ska gå. Fullständig information finns i  [exportera Security Center data kontinuerligt](continuous-export.md).
+
+Dessa verktyg har förbättrats och utökats på följande sätt:
+
+- **Deployifnotexist principer för kontinuerlig export har förbättrats**. Nu är principerna:
+
+    - **Kontrol lera om konfigurationen är aktive rad.** Om den inte är det visas principen som icke-kompatibel och skapa en kompatibel resurs. Läs mer om de angivna Azure Policy mallarna i avsnittet "distribuera på skala med Azure Policy" i [Konfigurera en löpande export](continuous-export.md#set-up-a-continuous-export).
+
+    - **Stöd för att exportera säkerhets resultat.** När du använder Azure Policy-mallarna kan du konfigurera den kontinuerliga exporten så att den innehåller undersöknings resultat. Detta är relevant när du exporterar rekommendationer som har "sub"-rekommendationer, t. ex. resultat från skannrar i sårbarhets bedömning eller system uppdateringar för "överordnad" rekommendation "system uppdateringar bör installeras på dina datorer".
+    
+    - **Stöd för att exportera säkra Poäng data.**
+
+- **Data för regelefterlevnad som lagts till (i för hands version).** Du kan nu regelbundet exportera uppdateringar till regler för regelefterlevnad, inklusive för anpassade initiativ till en Log Analytics arbets yta eller Event Hub. Den här funktionen är inte tillgänglig i nationella/suveräna moln.
+
+    :::image type="content" source="media/release-notes/continuous-export-regulatory-compliance-option.png" alt-text="Alternativen för att inkludera reglerad bedömnings information med dina kontinuerliga export data.":::
+
 
 ## <a name="november-2020"></a>November 2020
 
@@ -290,7 +377,7 @@ Läs mer i [ta bort en standard från din instrument panel](update-regulatory-co
 
 Azure Resource Graph är en tjänst i Azure som är utformad för att tillhandahålla effektiv resurs utforskning med möjlighet att fråga i skala över en specifik uppsättning prenumerationer så att du effektivt kan styra din miljö. 
 
-För Azure Security Center kan du använda ARG och [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/) för att fråga efter en mängd säkerhets position data. Till exempel:
+För Azure Security Center kan du använda ARG och [KQL (Kusto Query Language)](/azure/data-explorer/kusto/query/) för att fråga efter en mängd säkerhets position data. Exempel:
 
 - Till gångs lager använder (ARG)
 - Vi har dokumenterat en exempel-ARG-fråga för att [identifiera konton utan Multi-Factor Authentication (MFA) aktiverat](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled)
@@ -464,7 +551,7 @@ Security Center analyserar regelbundet säkerhets status för dina Azure-resurse
 
 När en resurs har utestående rekommendationer visas de i inventeringen.
 
-Läs mer i [utforska och hantera dina resurser med till gångs inventering och hanterings verktyg](asset-inventory.md).
+Läs mer i [utforska och hantera dina resurser med till gångs inventering](asset-inventory.md).
 
 
 
@@ -678,7 +765,7 @@ Om du har skript, frågor eller automatiseringar som refererar till föregående
 ||||
 
 
-|Policy|Omfång|
+|Princip|Omfång|
 |----|:----|
 |**Sårbarhets bedömning ska vara aktiverat på virtuella datorer**<br>Princip-ID: 501541f7-f7e7-4cd6-868c-4190fdad3ac9|Inbyggd|
 |**Säkerhets risker bör åtgärdas av en lösning för sårbarhets bedömning**<br>Princip-ID: 760a85ff-6162-42b3-8d70-698e268f648c|BYOL|
@@ -693,7 +780,7 @@ Om du har skript, frågor eller automatiseringar som refererar till föregående
 |**Säkerhets risker på dina virtuella datorer bör åtgärdas**<br>Nyckel: 1195afff-c881-495e-9bc5-1486211ae03f|Inbyggda + BYOL|
 ||||
 
-|Policy|Omfång|
+|Princip|Omfång|
 |----|:----|
 |[**Sårbarhets bedömning ska vara aktiverat på virtuella datorer**](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>Princip-ID: 501541f7-f7e7-4cd6-868c-4190fdad3ac9 |Inbyggda + BYOL|
 ||||
@@ -805,7 +892,7 @@ Funktionen för anpassningsbara program kontroller har tagit emot två viktiga u
 
     * Använda jokertecken i slutet av en sökväg för att tillåta alla körbara filer i den här mappen och undermappar
 
-    * Använd ett jokertecken i mitten av en sökväg för att aktivera ett känt körbart namn med ett ändrat mappnamn (t. ex. personliga användarmappar med en känd körbar fil, automatiskt genererade mappnamn osv.).
+    * Använd ett jokertecken i mitten av en sökväg för att aktivera ett känt körbart namn med ett ändrat mappnamn (t. ex. personliga mappar med en känd körbar fil, automatiskt genererade mappnamn osv.).
 
 
 [Läs mer om anpassningsbara program kontroller](security-center-adaptive-application.md).

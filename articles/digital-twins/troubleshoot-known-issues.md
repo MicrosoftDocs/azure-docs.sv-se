@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: a9735e355244d51464c66c10e02f97f03d2e67cd
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: d0c26255e6d9d35d51390ed2b432b9c5dc9ab2be
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673482"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862465"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Kända problem i Azure Digitals, dubbla
 
@@ -37,13 +37,21 @@ Problembeskrivning **:** Vissa användare kan uppleva problem med roll tilldelni
 | --- | --- | --- |
 | Följ anvisningarna i avsnittet [*Verifiera användar roll tilldelning*](how-to-set-up-instance-scripted.md#verify-user-role-assignment) i installations artikeln för att avgöra om din roll tilldelning har kon figurer ATS när skriptet har körts. Om användaren inte visas med den här rollen påverkar det här problemet. | För användare som är inloggade med en personlig [Microsoft-konto (MSA)](https://account.microsoft.com/account)kan användarens huvud-ID som identifierar dig i kommandon som det kan skilja sig från din användares inloggnings-e-post, vilket gör det svårt för skriptet att identifiera och använda för att tilldela rollen korrekt. | För att lösa problemet kan du konfigurera roll tilldelningen manuellt med hjälp av [CLI-instruktionerna](how-to-set-up-instance-cli.md#set-up-user-access-permissions) eller [Azure Portal instruktioner](how-to-set-up-instance-portal.md#set-up-user-access-permissions). |
 
-## <a name="issue-with-interactive-browser-authentication"></a>Problem med interaktiv webb läsar autentisering
+## <a name="issue-with-interactive-browser-authentication-on-azureidentity-120"></a>Problem med interaktiv Browser-autentisering på Azure. Identity 1.2.0
 
 Problembeskrivning **:** När du skriver authentication code i dina Azure Digital-program med version **1.2.0** av **[Azure. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) -biblioteket** kan det uppstå problem med [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) -metoden. Detta visas som ett felsvar på "Azure. Identity. AuthenticationFailedException" när du försöker autentisera i ett webbläsarfönster. Det kan hända att det inte går att starta webbläsarfönstret helt eller visas för att autentisera användaren, medan klient programmet fortfarande Miss lyckas med felet.
 
 | Påverkar detta mig mig? | Orsak | Lösning |
 | --- | --- | --- |
-| Den &nbsp; berörda &nbsp; metoden &nbsp; &nbsp; används &nbsp; i &nbsp; &nbsp; följande artiklar:<br><br>[*Självstudie: koda en klient app*](tutorial-code.md)<br><br>[*Instruktion: skriva kod för app-autentisering*](how-to-authenticate-client.md)<br><br>[*Anvisningar: använda Azures digitala dubbla API: er och SDK: er*](how-to-use-apis-sdks.md) | Vissa användare har haft det här problemet med version **1.2.0** av `Azure.Identity` biblioteket. | Du löser problemet genom att uppdatera dina program så att de använder den [senaste versionen](https://www.nuget.org/packages/Azure.Identity) av `Azure.Identity` . När du har uppdaterat biblioteks versionen bör webbläsaren läsa in och autentiseras som förväntat. |
+| Den &nbsp; berörda &nbsp; metoden &nbsp; &nbsp; används &nbsp; i &nbsp; &nbsp; följande artiklar:<br><br>[*Självstudie: koda en klient app*](tutorial-code.md)<br><br>[*Instruktion: skriva kod för app-autentisering*](how-to-authenticate-client.md)<br><br>[*Anvisningar: använda Azures digitala dubbla API: er och SDK: er*](how-to-use-apis-sdks.md) | Vissa användare har haft det här problemet med version **1.2.0** av `Azure.Identity` biblioteket. | Du löser problemet genom att uppdatera dina program så att de använder en [senare version](https://www.nuget.org/packages/Azure.Identity) av `Azure.Identity` . När du har uppdaterat biblioteks versionen bör webbläsaren läsa in och autentiseras som förväntat. |
+
+## <a name="issue-with-default-azure-credential-authentication-on-azureidentity-130"></a>Problem med Azure Credential Authentication-autentisering på Azure. Identity 1.3.0
+
+Problembeskrivning **:** När du skriver authentication code i dina Azure Digital-program med version **1.3.0** av **[Azure. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) -biblioteket** kan det uppstå problem med [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet?view=azure-dotnet&preserve-view=true) -metoden som används i många exempel i de här dokumenten. Detta visas som ett felsvar på "Azure. Identity. AuthenticationFailedException: SharedTokenCacheCredential-Autentiseringen misslyckades" när koden försöker autentisera sig.
+
+| Påverkar detta mig mig? | Orsak | Lösning |
+| --- | --- | --- |
+| DefaultAzureCredential används i de flesta av dokumentations exemplen som innehåller autentisering. Om du skriver autentiserings kod med DefaultAzureCredential och använder versions 1.3.0 av `Azure.Identity` biblioteket, kommer detta förmodligen att påverka dig. | Det här problemet presenteras när du använder DefaultAzureCredential med version **1.3.0** av `Azure.Identity` biblioteket. | Om du vill lösa problemet växlar du till att använda [version 1.2.2](https://www.nuget.org/packages/Azure.Identity/1.2.2) av `Azure.Identity` . När du har ändrat biblioteks versionen ska autentiseringen fungera som förväntat. |
 
 ## <a name="next-steps"></a>Nästa steg
 

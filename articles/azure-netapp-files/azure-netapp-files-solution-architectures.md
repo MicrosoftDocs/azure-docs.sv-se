@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/15/2020
+ms.date: 01/04/2020
 ms.author: b-juche
-ms.openlocfilehash: 2b567eba43cfec9af05ebea262b3f6bd61b00259
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 919a9831731a8f7c8065f2f1c496691ae33ba659
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562556"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861983"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Lösningsarkitekturer med Azure NetApp Files
 Den här artikeln innehåller referenser till bästa praxis som kan hjälpa dig att förstå lösnings arkitekturerna för att använda Azure NetApp Files.  
@@ -99,6 +99,7 @@ Det här avsnittet innehåller referenser till infrastruktur lösningar för vir
 * [Skapa en FSLogix profil behållare för en värd-pool med hjälp av Azure NetApp Files](../virtual-desktop/create-fslogix-profile-container.md)
 * [Windows Virtual Desktop i företagsskala](/azure/architecture/example-scenario/wvd/windows-virtual-desktop)
 * [Microsoft FSLogix för företags-Azure NetApp Files bästa praxis](/azure/architecture/example-scenario/wvd/windows-virtual-desktop-fslogix#azure-netapp-files-best-practices)
+* [Konfigurera Azure NetApp Files för MSIX-appens koppling](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/setting-up-azure-netapp-files-for-msix-app-attach-step-by-step/m-p/1990021)
 
 ## <a name="hpc-solutions"></a>HPC-lösningar
 
@@ -121,7 +122,7 @@ Det här avsnittet innehåller referenser för HPC-lösningar (data behandling m
 * [Azure CycleCloud: EDA HPC Lab med Azure NetApp Files](https://github.com/Azure/cyclecloud-hands-on-labs/blob/master/EDA/README.md)
 * [Azure för halvledar branschen](https://azurecomcdn.azureedge.net/cvt-f40f39cd9de2d875ab0c198a8d7b186350cf0bca161e80d7896941389685d012/mediahandler/files/resourcefiles/azure-for-the-semiconductor-industry/Azure_for_the_Semiconductor_Industry.pdf)
 
-### <a name="analytics"></a>Analys
+### <a name="analytics"></a>Analytics
 
 * [Azure NetApp Files: ett delat fil system som ska användas med SAS-rutnät på Microsoft Azure](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/705192)
 * [Metod tips för att använda Microsoft Azure med SAS®](https://communities.sas.com/t5/Administration-and-Deployment/Best-Practices-for-Using-Microsoft-Azure-with-SAS/m-p/676833#M19680)

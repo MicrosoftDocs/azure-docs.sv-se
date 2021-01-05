@@ -12,12 +12,12 @@ ms.date: 11/23/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: lokal, OCR, Docker, container
-ms.openlocfilehash: b89d02107365872471f1dd5a7df07902b08f2031
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: a9eae2e547b347c88f8e745742ed34194c37a3b2
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96006922"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862478"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Installera Läs OCR Docker-behållare (förhands granskning) 
 
@@ -50,13 +50,13 @@ Om du använder läsa 2,0-behållare idag kan du läsa mer om ändringar i de ny
 
 Du måste uppfylla följande krav innan du använder behållarna:
 
-|Obligatorisk|Syfte|
+|Obligatoriskt|Syfte|
 |--|--|
 |Docker-motorn| Du behöver Docker-motorn installerad på en [värddator](#the-host-computer). Docker innehåller paket som konfigurerar Docker-miljön på [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) och [Linux](https://docs.docker.com/engine/installation/#supported-platforms). En introduktion till grunderna för Docker och containrar finns i [Docker-översikt](https://docs.docker.com/engine/docker-overview/).<br><br> Docker måste konfigureras för att tillåta att behållarna ansluter till och skicka fakturerings data till Azure. <br><br> **I Windows** måste Docker också konfigureras för att stödja Linux-behållare.<br><br>|
 |Bekant med Docker | Du bör ha grundläggande kunskaper om Docker-koncept, t. ex. register, databaser, behållare och behållar avbildningar, samt kunskaper om grundläggande `docker` kommandon.| 
 |Visuellt innehåll resurs |För att du ska kunna använda behållaren måste du ha:<br><br>En Azure **visuellt innehåll** -resurs och den tillhör ande API-nyckeln slut punkts-URI. Båda värdena är tillgängliga på sidorna översikt och nycklar för resursen och krävs för att starta behållaren.<br><br>**{Api_key}**: en av de två tillgängliga resurs nycklarna på sidan **nycklar**<br><br>**{ENDPOINT_URI}**: slut punkten enligt vad som anges på sidan **Översikt**|
 
-Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/cognitive-services/) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/cognitive-services/) innan du börjar.
 
 ## <a name="request-approval-to-run-the-container"></a>Begär godkännande för att köra behållaren
 
@@ -389,10 +389,6 @@ Cognitive Services behållare skickar fakturerings information till Azure med mo
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Mer information om dessa alternativ finns i [Configure containers](./computer-vision-resource-container-config.md).
-
-<!--blogs/samples/video course -->
-
-[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>Sammanfattning
 

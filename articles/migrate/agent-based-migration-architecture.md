@@ -6,12 +6,12 @@ ms.author: rahugup
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 1389b03d87beb24cba50fec0a782de8b7f935557
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: c605c21307cda874f34ae5ea9f4e4959e5e6c183
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753900"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861958"
 ---
 # <a name="agent-based-migration-architecture"></a>Agentbaserad migreringsarkitektur
 
@@ -92,14 +92,14 @@ Om du replikerar virtuella VMware-datorer kan du använda [Site Recovery distrib
 
 Använd värdena i den här tabellen för att avgöra om du behöver en ytterligare processerver i distributionen.
 
-- Om din dagliga ändrings takt (omsättnings pris) är över 2 TB distribuerar du en ytterligare processerver.
+- Om den dagliga ändrings hastigheten (omsättnings takten) är över 2 TB distribuerar du en ytterligare processerver.
 - Om du replikerar fler än 200 datorer kan du distribuera en ytterligare replikeringsfil.
 
 **Processor** | **Minne** | **Ledigt utrymme – cachelagring av data** | **Omsättnings pris** | **Begränsningar för replikering**
 --- | --- | --- | --- | ---
 8 virtuella processorer (2 Sockets * 4 kärnor \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB eller mindre | < 100-datorer 
 12 virtuella processorer (2 Sockets * 6 kärnor \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB till 1 TB | 100-150-datorer.
-16 virtuella processorer (2 Sockets * 8 kärnor \@ 2,5 GHz) | 32 G1 |  1 TB | 1 TB till 2 TB | 151-200-datorer.
+16 virtuella processorer (2 Sockets * 8 kärnor \@ 2,5 GHz) | 32 GB |  1 TB | 1 TB till 2 TB | 151-200-datorer.
 
 ### <a name="sizing-scale-out-process-servers"></a>Storleks skalbara process servrar
 
@@ -108,7 +108,7 @@ Om du behöver distribuera en skalbar processerver använder du den här tabelle
 **Processerver** | **Ledigt utrymme för cachelagring av data** | **Omsättnings pris** | **Begränsningar för replikering**
 --- | --- | --- | --- 
 4 virtuella processorer (2 Sockets * 2 kärnor \@ 2,5 GHz), 8 GB minne | 300 GB | 250 GB eller mindre | Upp till 85 datorer 
-8 virtuella processorer (2 Sockets * 4 kärnor \@ 2,5 GHz), 12 GB minne | 600 GB | 251 GB till 1 TB    | 86-150-datorer.
+8 virtuella processorer (2 Sockets * 4 kärnor \@ 2,5 GHz), 12 GB minne | 600 GB | 251 GB till 1 TB | 86-150-datorer.
 12 virtuella processorer (2 Sockets * 6 kärnor \@ 2,5 GHz), 24 GB minne | 1 TB | 1-2 TB | 151-225-datorer.
 
 ## <a name="throttle-upload-bandwidth"></a>Begränsa överförings bandbredden.

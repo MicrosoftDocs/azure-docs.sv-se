@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3aee0497f79b57699a44641488c1f09bbae79960
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 750c24fd84629f709beb7a92e92fd1ecf581c09a
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913151"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862222"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>Installera och kör formulär igenkännings behållare (förhands granskning)
 
@@ -29,19 +29,19 @@ För att minska komplexiteten och enkelt integrera en anpassad formulär igenkä
 |----------|----------|
 | Formigenkänning | <li>Bearbetar PDF-, PNG-och JPG-filer<li>Tågen anpassade modeller med minst fem former av samma layout <li>Extraherar nyckel/värde-par och tabell information <li>Använder Identifiera text funktionen Azure Cognitive Services API för visuellt innehåll för att identifiera och extrahera utskriven text från bilder i formulär<li>Kräver inte anteckningar eller etiketter |
 
-Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/cognitive-services/) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/cognitive-services/) innan du börjar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 Innan du använder formulär igenkännings behållare måste du uppfylla följande krav:
 
-| Krävs | Syfte |
+| Obligatoriskt | Syfte |
 |----------|---------|
 | Docker-motorn | Du behöver Docker-motorn installerad på en [värddator](#the-host-computer). Docker innehåller paket som konfigurerar Docker-miljön på [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) och [Linux](https://docs.docker.com/engine/installation/#supported-platforms). En introduktion till grunderna för Docker och containrar finns i [Docker-översikt](https://docs.docker.com/engine/docker-overview/).<br><br> Docker måste konfigureras för att tillåta att behållarna ansluter till och skicka fakturerings data till Azure. <br><br> I Windows måste Docker också konfigureras för att stödja Linux-behållare.<br><br> |
 | Bekant med Docker | Du bör ha grundläggande kunskaper om Docker-koncept, till exempel register, databaser, behållare och behållar avbildningar samt kunskaper om grundläggande `docker` kommandon. |
 | Azure CLI | Installera [Azure CLI](/cli/azure/install-azure-cli) på värden. |
-| API för visuellt innehåll resurs | Om du vill bearbeta skannade dokument och avbildningar behöver du en Visuellt innehåll-resurs. Du kan komma åt Identifiera text-funktionen antingen som en Azure-resurs (REST API eller SDK) eller en *kognitiv-tjänster-Recognizer-text* - [behållare](../Computer-vision/computer-vision-how-to-install-containers.md#get-the-container-image-with-docker-pull). De vanliga fakturerings avgifterna gäller. <br><br>Skicka både API-nyckeln och slut punkterna för din Visuellt innehåll resurs (Azure-moln eller Cognitive Services-behållare). Använd den här API-nyckeln och slut punkten som **{COMPUTER_VISION_API_KEY}** och **{COMPUTER_VISION_ENDPOINT_URI}** .<br><br> Om du använder funktionen *kognitiv-Services-recognize-text* , se till att:<br><br>Din Visuellt innehåll nyckel för formulär tolkens behållare är den nyckel som anges i kommandot Visuellt innehåll `docker run` för filen *kognitiv-Services-recognize-text* .<br>Din fakturerings slut punkt är behållarens slut punkt (till exempel `http://localhost:5000` ). Om du använder både Visuellt innehåll container-och formulär igenkännings behållare på samma värd, kan de inte startas både med standard porten *5000* . |
-| Formulär igenkännings resurs | Om du vill använda dessa behållare måste du ha:<br><br>En Azure **formulär igenkännings** resurs för att hämta den associerade API-nyckeln och slut punkts-URI: n. Båda värdena är tillgängliga på sidorna **igenkännings** översikt och nycklar för Azure Portal formulär och båda värdena krävs för att starta behållaren.<br><br>**{FORM_RECOGNIZER_API_KEY}** : en av de två tillgängliga resurs nycklarna på sidan nycklar<br><br>**{FORM_RECOGNIZER_ENDPOINT_URI}** : slut punkten enligt vad som anges på sidan Översikt |
+| API för visuellt innehåll resurs | Om du vill bearbeta skannade dokument och avbildningar behöver du en Visuellt innehåll-resurs. Du kan komma åt Identifiera text-funktionen antingen som en Azure-resurs (REST API eller SDK) eller en *kognitiv-tjänster-Recognizer-text* - [behållare](../Computer-vision/computer-vision-how-to-install-containers.md#get-the-container-image-with-docker-pull). De vanliga fakturerings avgifterna gäller. <br><br>Skicka både API-nyckeln och slut punkterna för din Visuellt innehåll resurs (Azure-moln eller Cognitive Services-behållare). Använd den här API-nyckeln och slut punkten som **{COMPUTER_VISION_API_KEY}** och **{COMPUTER_VISION_ENDPOINT_URI}**.<br><br> Om du använder funktionen *kognitiv-Services-recognize-text* , se till att:<br><br>Din Visuellt innehåll nyckel för formulär tolkens behållare är den nyckel som anges i kommandot Visuellt innehåll `docker run` för filen *kognitiv-Services-recognize-text* .<br>Din fakturerings slut punkt är behållarens slut punkt (till exempel `http://localhost:5000` ). Om du använder både Visuellt innehåll container-och formulär igenkännings behållare på samma värd, kan de inte startas både med standard porten *5000*. |
+| Formulär igenkännings resurs | Om du vill använda dessa behållare måste du ha:<br><br>En Azure **formulär igenkännings** resurs för att hämta den associerade API-nyckeln och slut punkts-URI: n. Båda värdena är tillgängliga på sidorna **igenkännings** översikt och nycklar för Azure Portal formulär och båda värdena krävs för att starta behållaren.<br><br>**{FORM_RECOGNIZER_API_KEY}**: en av de två tillgängliga resurs nycklarna på sidan nycklar<br><br>**{FORM_RECOGNIZER_ENDPOINT_URI}**: slut punkten enligt vad som anges på sidan Översikt |
 
 > [!NOTE]
 > Visuellt innehåll resurs namnet måste vara ett enda ord, utan bindestreck `-` eller andra specialtecken. Den här begränsningen är på plats för att säkerställa att formulär tolkare och Identifiera text behållar kompatibilitet.
@@ -315,10 +315,6 @@ Formulär identifierarens behållare skickar fakturerings information till Azure
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Mer information om dessa alternativ finns i [Configure containers](form-recognizer-container-configuration.md).
-
-<!--blogs/samples/video courses -->
-
-[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>Sammanfattning
 

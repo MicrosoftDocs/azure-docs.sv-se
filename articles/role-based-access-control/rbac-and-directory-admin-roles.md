@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 07/07/2020
+ms.date: 01/04/2021
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: cc4f775c3cf4c016173c485d57f203b4665c6393
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 3c320b8faf5ccb0b1aec521909b152dff171cbd7
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370652"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862599"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>Klassiska administratörs roller för prenumeration, Azure-roller och Azure AD-roller
 
@@ -42,9 +42,9 @@ Följande diagram är en övergripande vy över hur de klassiska prenumerations 
 
 Kontoadministratör, tjänstadministratör och medadministratör är de tre administratörsrollerna för klassiska prenumerationer i Azure. Administratörer för klassiska prenumerationer har fullständig åtkomst till Azure-prenumerationen. De kan hantera resurser med hjälp av Azure-portalen, Azure Resource Manager-API:er och den klassiska distributionsmodellens API:er. Det konto som används för att registrera sig för Azure anges automatiskt som både kontoadministratör och tjänstadministratör. Sedan kan ytterligare medadministratörer läggas till. Tjänst administratören och Co-Administrators har motsvarande åtkomst till användare som har tilldelats ägar rollen (en Azure-roll) i prenumerations omfånget. I följande tabell beskrivs skillnaderna mellan dessa tre administrativa roller för klassiska prenumerationer.
 
-| Klassisk prenumerationsadministratör | Gräns | Behörigheter | Kommentarer |
+| Klassisk prenumerationsadministratör | Gräns | Behörigheter | Obs! |
 | --- | --- | --- | --- |
-| Kontoadministratör | 1 per Azure-konto | <ul><li>Hantera fakturering i [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)</li><li>Hantera alla prenumerationer i ett konto</li><li>Skapa nya prenumerationer</li><li>Avbryt prenumerationer</li><li>Ändra faktureringen för en prenumeration</li><li>Ändra tjänstadministratör</li></ul> | Begreppsmässigt är detta faktureringsägaren för prenumerationen.<br>Kontoadministratören har ingen åtkomst till Azure-portalen. |
+| Kontoadministratör | 1 per Azure-konto | <ul><li>Hantera fakturering i [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)</li><li>Hantera alla prenumerationer i ett konto</li><li>Skapa nya prenumerationer</li><li>Avbryt prenumerationer</li><li>Ändra faktureringen för en prenumeration</li><li>Ändra tjänstadministratör</li></ul> | Begreppsmässigt är detta faktureringsägaren för prenumerationen. |
 | Tjänstadministratör | 1 per Azure-prenumeration | <ul><li>Hantera tjänster i [Azure-portalen](https://portal.azure.com)</li><li>Avbryt prenumerationen</li><li>Tilldela användare till rollen Medadministratör</li></ul> | Som standard för en ny prenumeration är kontoadministratören också tjänstadministratören.<br>Tjänstadministratören har likvärdig åtkomst som en användare som har tilldelats rollen Ägare i prenumerationsomfånget.<br>Tjänstadministratören har fullständig åtkomst till Azure-portalen. |
 | Medadministratör | 200 per prenumeration | <ul><li>Samma åtkomstbehörigheter som tjänstadministratören, men kan inte ändra associationen mellan prenumerationer och Azure-kataloger</li><li>Tilldela användare till rollen Medadministratör, men kan inte ändra tjänstadministratör</li></ul> | Medadministratören har likvärdig åtkomst som en användare som har tilldelats rollen Ägare i prenumerationsomfånget. |
 
@@ -72,7 +72,7 @@ Konton och prenumerationer hanteras i [Azure Portal](https://portal.azure.com/#b
 
 Azure RBAC är ett auktoriseringssystem som bygger på [Azure Resource Manager](../azure-resource-manager/management/overview.md) som ger detaljerad åtkomsthantering till Azure-resurser såsom beräkning och lagring. Azure RBAC har över 70 inbyggda roller. Det finns fyra grundläggande Azure-roller. De första tre gäller för alla resurstyper:
 
-| Azure-roll | Behörigheter | Kommentarer |
+| Azure-roll | Behörigheter | Obs! |
 | --- | --- | --- |
 | [Ägare](built-in-roles.md#owner) | <ul><li>Fullständig åtkomst till alla resurser</li><li>Delegera åtkomst till andra</li></ul> | Tjänstadministratören och medadministratörer tilldelas rollen Ägare i prenumerationsomfånget<br>Gäller för alla resurstyper. |
 | [Deltagare](built-in-roles.md#contributor) | <ul><li>Skapa och hantera alla typer av Azure-resurser</li><li>Skapa en ny klientorganisation i Azure Active Directory</li><li>Kan inte bevilja åtkomst till andra</li></ul> | Gäller för alla resurstyper. |
@@ -97,10 +97,10 @@ Mer information finns i [Lägga till eller ta bort Azure-rolltilldelningar med h
 
 Azure AD-roller används för att hantera Azure AD-resurser i en katalog, till exempel skapa eller redigera användare, tilldela administrativa roller till andra, återställa användar lösen ord, hantera användar licenser och hantera domäner. I följande tabell beskrivs några av de viktigare Azure AD-rollerna.
 
-| Azure AD-roll | Behörigheter | Kommentarer |
+| Azure AD-roll | Behörigheter | Obs! |
 | --- | --- | --- |
 | [Global administratör](../active-directory/roles/permissions-reference.md#company-administrator-permissions) | <ul><li>Hantera åtkomst till alla administrativa funktioner i Azure Active Directory samt tjänster som federerar till Azure Active Directory</li><li>Tilldela administratörsroller till andra</li><li>Återställa lösenordet för valfri användare och alla andra administratörer</li></ul> | Den person som registrerar sig för Azure Active Directory-klientorganisationen blir en global administratör. |
-| [Användaradministratör](../active-directory/roles/permissions-reference.md#user-administrator) | <ul><li>Skapa och hantera alla aspekter av användare och grupper</li><li>Hantera supportbegäranden</li><li>Övervaka tjänstens hälsa</li><li>Ändra lösenord för användare, supportadministratörer och andra användaradministratörer</li></ul> |  |
+| [Användar administratör](../active-directory/roles/permissions-reference.md#user-administrator) | <ul><li>Skapa och hantera alla aspekter av användare och grupper</li><li>Hantera supportbegäranden</li><li>Övervaka tjänstens hälsa</li><li>Ändra lösenord för användare, supportadministratörer och andra användaradministratörer</li></ul> |  |
 | [Fakturerings administratör](../active-directory/roles/permissions-reference.md#billing-administrator) | <ul><li>Genomför inköp</li><li>Hantera prenumerationer</li><li>Hantera supportbegäranden</li><li>Övervakar tjänstens hälsa</li></ul> |  |
 
 I Azure Portal kan du se listan över Azure AD-roller på bladet **roller och administratörer** . En lista över alla Azure AD-roller finns [i administratörs roll behörigheter i Azure Active Directory](../active-directory/roles/permissions-reference.md).

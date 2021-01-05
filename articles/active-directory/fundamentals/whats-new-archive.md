@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9e1ae369560fcf8357e6016e1f7e2e438edd8c9
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: e90adcb5312df6e1dfe6d4b58407edeb924a8809
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803229"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862452"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Vill du arkivera vad som är nytt i Azure Active Directory?
 
@@ -141,7 +141,7 @@ Azure AD Provisioning-tjänsten arbetar för närvarande med en cyklisk bas. Tj�
 **Tjänste kategori:** Andra  
 **Produkt kapacitet:** Hantering av rättigheter
  
-En ny delegerad behörighet EntitlementManagement. Read. all är nu tillgänglig för användning med rättighets hanterings-API: et i Microsoft Graph beta. Mer information om tillgängliga API: er finns i [arbeta med API för hantering av Azure AD-hantering](/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta).
+En ny delegerad behörighet EntitlementManagement. Read. all är nu tillgänglig för användning med rättighets hanterings-API: et i Microsoft Graph beta. Mer information om tillgängliga API: er finns i [arbeta med API för hantering av Azure AD-hantering](/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta&preserve-view=true).
 
 ---
 
@@ -339,7 +339,7 @@ För att lista ditt program i Azure AD App-galleriet läser du informationen hä
 **Tjänste kategori:** Villkorlig åtkomst  
 **Produkt kapacitet:** & skydd för identitets säkerhet
 
-Med [endast rapport läge för villkorlig åtkomst i Azure AD](../conditional-access/concept-conditional-access-report-only.md) kan du utvärdera resultatet av en princip utan att tvinga åtkomst kontroller. Du kan testa endast rapport principer i organisationen och förstå deras inverkan innan du aktiverar dem, vilket gör distributionen säkrare och enklare. Under de senaste månaderna har vi sett ett starkt införande av enbart rapport läge – över 26M-användare är redan en omfattning av en rapport princip. Med meddelandet idag skapas nya Azure AD-principer för villkorlig åtkomst i endast rapport läge som standard. Det innebär att du kan övervaka påverkan av dina principer från den tidpunkt då de skapas. Och för de som använder MS Graph API: er kan du [hantera endast rapport principer program mässigt](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta) . 
+Med [endast rapport läge för villkorlig åtkomst i Azure AD](../conditional-access/concept-conditional-access-report-only.md) kan du utvärdera resultatet av en princip utan att tvinga åtkomst kontroller. Du kan testa endast rapport principer i organisationen och förstå deras inverkan innan du aktiverar dem, vilket gör distributionen säkrare och enklare. Under de senaste månaderna har vi sett ett starkt införande av enbart rapport läge – över 26M-användare är redan en omfattning av en rapport princip. Med meddelandet idag skapas nya Azure AD-principer för villkorlig åtkomst i endast rapport läge som standard. Det innebär att du kan övervaka påverkan av dina principer från den tidpunkt då de skapas. Och för de som använder MS Graph API: er kan du [hantera endast rapport principer program mässigt](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta&preserve-view=true) . 
 
 ---
 
@@ -406,7 +406,7 @@ Nu kan du automatisera att skapa, uppdatera och ta bort användar konton för de
 * [Juno Journey](../saas-apps/juno-journey-provisioning-tutorial.md)
 * [MediusFlow](../saas-apps/mediusflow-provisioning-tutorial.md)
 * [New Relic efter organisation](../saas-apps/new-relic-by-organization-provisioning-tutorial.md)
-* [Oracle Cloud Infrastructure Console](../saas-apps/oracle-cloud-infratstructure-console-provisioning-tutorial.md)
+* [Oracle Cloud Infrastructure Console](../saas-apps/oracle-cloud-infrastructure-console-provisioning-tutorial.md)
 
 Mer information om hur du bättre skyddar din organisation med hjälp av automatiserad användar konto etablering finns i [Automatisera användar etablering för SaaS-program med Azure AD](../app-provisioning/user-provisioning.md).
 
@@ -546,7 +546,7 @@ Vi utökar B2B-Inbjudnings funktionen så att befintliga interna konton kan bjud
 
 **Produkt kapacitet:** & skydd för identitets säkerhet
 
-Med [endast rapport läge för villkorlig åtkomst i Azure AD](../conditional-access/concept-conditional-access-report-only.md) kan du utvärdera resultatet av en princip utan att tvinga åtkomst kontroller. Du kan testa endast rapport principer i organisationen och förstå deras inverkan innan du aktiverar dem, vilket gör distributionen säkrare och enklare. Under de senaste månaderna har vi sett ett starkt införande av enbart rapport läge, med över 26M-användare som redan är i omfattning av en rapport princip. Med det här meddelandet skapas nya Azure AD-principer för villkorlig åtkomst i endast rapport läge som standard. Det innebär att du kan övervaka påverkan av dina principer från den tidpunkt då de skapas. Och för de som använder MS Graph API: er kan du även [Hantera rapport principer program mässigt](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta). 
+Med [endast rapport läge för villkorlig åtkomst i Azure AD](../conditional-access/concept-conditional-access-report-only.md) kan du utvärdera resultatet av en princip utan att tvinga åtkomst kontroller. Du kan testa endast rapport principer i organisationen och förstå deras inverkan innan du aktiverar dem, vilket gör distributionen säkrare och enklare. Under de senaste månaderna har vi sett ett starkt införande av enbart rapport läge, med över 26M-användare som redan är i omfattning av en rapport princip. Med det här meddelandet skapas nya Azure AD-principer för villkorlig åtkomst i endast rapport läge som standard. Det innebär att du kan övervaka påverkan av dina principer från den tidpunkt då de skapas. Och för de som använder MS Graph API: er kan du även [Hantera rapport principer program mässigt](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta&preserve-view=true). 
 
 ---
 
@@ -598,7 +598,7 @@ Mer information om apparna finns i [SaaS Application Integration with Azure Acti
 
 **Produkt kapacitet:** Utvecklings miljö
 
-Delta fråga för oAuth2PermissionGrant är tillgänglig för offentlig för hands version! Nu kan du spåra ändringar utan att behöva söka Microsoft Graph. [Läs mer.](/graph/api/oAuth2PermissionGrant-delta?tabs=http&view=graph-rest-beta)
+Delta fråga för oAuth2PermissionGrant är tillgänglig för offentlig för hands version! Nu kan du spåra ändringar utan att behöva söka Microsoft Graph. [Läs mer.](/graph/api/oAuth2PermissionGrant-delta?tabs=http&view=graph-rest-beta&preserve-view=true)
 
 ---
 
@@ -632,7 +632,7 @@ Delta fråga för program är allmänt tillgänglig! Nu kan du spåra ändringar
 
 **Tjänste kategori:** MS Graph
 
-**Produkt kapacitet:** Utvecklings upplevelse delta fråga för administrativa enheter är tillgänglig för offentlig för hands version! Nu kan du spåra ändringar utan att behöva söka Microsoft Graph. [Läs mer.](/graph/api/administrativeunit-delta?tabs=http&view=graph-rest-beta)
+**Produkt kapacitet:** Utvecklings upplevelse delta fråga för administrativa enheter är tillgänglig för offentlig för hands version! Nu kan du spåra ändringar utan att behöva söka Microsoft Graph. [Läs mer.](/graph/api/administrativeunit-delta?tabs=http&view=graph-rest-beta&preserve-view=true)
 
 ---
 
@@ -650,7 +650,7 @@ Dessa API: er är ett nyckel verktyg för att hantera dina användares autentise
 - Återställa en användares lösen ord
 - Aktivera och inaktivera SMS-inloggning
 
-Mer information finns i [Översikt över Azure AD Authentication Methods API](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta).
+Mer information finns i [Översikt över Azure AD Authentication Methods API](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta&preserve-view=true).
 
 ---
 
@@ -1424,7 +1424,7 @@ Mer information om hur du använder programspecifika roll definitioner finns i [
 
 **Typ:** Plan för ändrings **tjänst kategori:** identitets skydd **produkt kapacitet:** identitet säkerhet & skydd
 
-Azure AD Premium P2-prenumeranter kan nu utföra komplexa frågor på Azure AD Identity Protections risk identifierings data genom att använda det nya riskDetection-API: et för Microsoft Graph. Den befintliga [identityRiskEvent](/graph/api/resources/identityriskevent?view=graph-rest-beta) API Beta-versionen slutar att returnera data cirka **10 januari 2020**. Om din organisation använder identityRiskEvent-API: t bör du övergå till det nya riskDetection-API: et.
+Azure AD Premium P2-prenumeranter kan nu utföra komplexa frågor på Azure AD Identity Protections risk identifierings data genom att använda det nya riskDetection-API: et för Microsoft Graph. Den befintliga [identityRiskEvent](/graph/api/resources/identityriskevent?view=graph-rest-beta&preserve-view=true) API Beta-versionen slutar att returnera data cirka **10 januari 2020**. Om din organisation använder identityRiskEvent-API: t bör du övergå till det nya riskDetection-API: et.
 
 Mer information om det nya riskDetection-API: et finns i [referens dokumentationen för riskhantering](/graph/api/resources/riskdetection).
 
@@ -2144,7 +2144,7 @@ Mer information om de här uppdateringarna finns i [filtrera gransknings loggar]
 
 Vi är glada över att kunna presentera den nya riskDetections-API: n för Microsoft Graph nu i offentlig för hands version. Du kan använda den här nya API: n för att visa en lista över organisationens identitet skydd – relaterad användare och inloggnings risk identifieringar. Du kan också använda det här API: et för att effektivt fråga dina risk identifieringar, inklusive information om identifierings typ, status, nivå och mycket annat.
 
-Mer information finns i [referens dokumentationen för riskhanterings-API](/graph/api/resources/riskdetection?view=graph-rest-beta).
+Mer information finns i [referens dokumentationen för riskhanterings-API](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true).
 
 ---
 
@@ -2292,7 +2292,7 @@ Mer information finns i [Microsoft Identity Platform](../develop/index.yml) och 
 
 Vi är glada över att kunna meddela att du nu kan använda API: erna för riskfyllda användare för att hämta användares risk historik, ignorera riskfyllda användare och bekräfta användare som komprometterade. Den här ändringen hjälper dig att effektivt uppdatera risk statusen för dina användare och förstå deras risk historik.
 
-Mer information finns i [referens dokumentationen för riskfyllda användare](/graph/api/resources/riskyuser?view=graph-rest-beta).
+Mer information finns i [referens dokumentationen för riskfyllda användare](/graph/api/resources/riskyuser?view=graph-rest-beta&preserve-view=true).
 
 ---
 

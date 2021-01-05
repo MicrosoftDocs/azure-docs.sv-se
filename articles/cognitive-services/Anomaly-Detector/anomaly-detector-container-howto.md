@@ -12,12 +12,12 @@ ms.date: 09/28/2020
 ms.author: mbullwin
 ms.custom: cog-serv-seo-aug-2020
 keywords: lokal, Docker, behållare, strömning, algoritmer
-ms.openlocfilehash: 911eb993ea5bb3dcce63057efc2d56d91d5a136b
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 70e5950f6577ce2cca2f28be070f3ba372d46a7e
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364402"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862303"
 ---
 # <a name="install-and-run-docker-containers-for-the-anomaly-detector-api"></a>Installera och kör Docker-behållare för API: t för avvikelse detektor 
 
@@ -41,11 +41,11 @@ Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto]
 
 Du måste uppfylla följande krav innan du använder behållare för avvikelse detektor:
 
-|Obligatorisk|Syfte|
+|Obligatoriskt|Syfte|
 |--|--|
 |Docker-motorn| Du behöver Docker-motorn installerad på en [värddator](#the-host-computer). Docker innehåller paket som konfigurerar Docker-miljön på [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) och [Linux](https://docs.docker.com/engine/installation/#supported-platforms). En introduktion till grunderna för Docker och containrar finns i [Docker-översikt](https://docs.docker.com/engine/docker-overview/).<br><br> Docker måste konfigureras för att tillåta att behållarna ansluter till och skicka fakturerings data till Azure. <br><br> **I Windows** måste Docker också konfigureras för att stödja Linux-behållare.<br><br>|
 |Bekant med Docker | Du bör ha grundläggande kunskaper om Docker-koncept, t. ex. register, databaser, behållare och behållar avbildningar, samt kunskaper om grundläggande `docker` kommandon.|
-|Avvikelse detektor resurs |Du måste ha följande för att kunna använda dessa behållare:<br><br>En Azure- _avvikelses detektor_ resurs för att hämta tillhör ande API-nyckel och slut punkts-URI. Båda värdena är tillgängliga på Azure Portalens **avvikelse detektor** översikt och nycklar sidor och krävs för att starta behållaren.<br><br>**{Api_key}** : en av de två tillgängliga resurs nycklarna på sidan **nycklar**<br><br>**{ENDPOINT_URI}** : slut punkten enligt vad som anges på sidan **Översikt**|
+|Avvikelse detektor resurs |Du måste ha följande för att kunna använda dessa behållare:<br><br>En Azure- _avvikelses detektor_ resurs för att hämta tillhör ande API-nyckel och slut punkts-URI. Båda värdena är tillgängliga på Azure Portalens **avvikelse detektor** översikt och nycklar sidor och krävs för att starta behållaren.<br><br>**{Api_key}**: en av de två tillgängliga resurs nycklarna på sidan **nycklar**<br><br>**{ENDPOINT_URI}**: slut punkten enligt vad som anges på sidan **Översikt**|
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -174,10 +174,6 @@ Avvikelse detektor behållare skickar fakturerings information till Azure med hj
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Mer information om dessa alternativ finns i [Configure containers](anomaly-detector-container-configuration.md).
-
-<!--blogs/samples/video coures -->
-
-[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>Sammanfattning
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/05/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d39f26d86792214c1ef0300bc39404bf6581826f
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 2af8db1a6e8c774f1004b380c8aaaa06ba61d8c3
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629486"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862340"
 ---
 # <a name="deploy-azure-file-sync"></a>Distribuera Azure File Sync
 Använd Azure File Sync för att centralisera organisationens fil resurser i Azure Files, samtidigt som du behåller flexibilitet, prestanda och kompatibilitet för en lokal fil server. Windows Server omvandlas av Azure File Sync till ett snabbt cacheminne för Azure-filresursen. Du kan använda alla protokoll som är tillgängliga på Windows Server för att komma åt data lokalt, inklusive SMB, NFS och FTPS. Du kan ha så många cacheminnen som du behöver över hela världen.
@@ -110,11 +110,11 @@ Inaktivera **förbättrad säkerhets konfiguration i Internet Explorer** för va
 > Du kan hoppa över det här steget om du distribuerar Azure File Sync på Windows Server Core.
 
 1. Öppna Serverhanteraren.
-2. Klicka på **lokal server** :  
+2. Klicka på **lokal server**:  
     ![”Lokal server” till vänster i användargränssnittet för Serverhanteraren](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-1.PNG)
 3. I underfönstret **Egenskaper** väljer du länken för **Förbättrad säkerhetskonfiguration i Internet Explorer**.  
     ![Fönstret ”Förbättrad säkerhetskonfiguration i Internet Explorer” i användargränssnittet i Serverhanteraren](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-2.PNG)
-4. I dialog rutan **förbättrad säkerhets konfiguration i Internet Explorer** väljer du **av** för **Administratörer** och **användare** :  
+4. I dialog rutan **förbättrad säkerhets konfiguration i Internet Explorer** väljer du **av** för **Administratörer** och **användare**:  
     ![Popup-fönstret Förbättrad säkerhetskonfiguration i Internet Explorer med ”Av” valt](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-3.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -157,10 +157,10 @@ Om du vill distribuera en tjänst för synkronisering av lagring går du till [A
 
 I fönstret som öppnas anger du följande information:
 
-- **Namn** : ett unikt namn (per region) för tjänsten Storage Sync.
-- **Prenumeration** : den prenumeration där du vill skapa tjänsten för synkronisering av lagring. Beroende på din organisations konfigurations strategi kan du ha åtkomst till en eller flera prenumerationer. En Azure-prenumeration är den mest grundläggande behållaren för fakturering för varje moln tjänst (till exempel Azure Files).
-- **Resurs grupp** : en resurs grupp är en logisk grupp av Azure-resurser, till exempel ett lagrings konto eller en tjänst för synkronisering av lagring. Du kan skapa en ny resurs grupp eller använda en befintlig resurs grupp för Azure File Sync. (Vi rekommenderar att du använder resurs grupper som behållare för att isolera resurser logiskt för din organisation, till exempel för att gruppera HR-resurser eller resurser för ett bestämt projekt.)
-- **Plats** : den region där du vill distribuera Azure File Sync. Endast regioner som stöds är tillgängliga i den här listan.
+- **Namn**: ett unikt namn (per region) för tjänsten Storage Sync.
+- **Prenumeration**: den prenumeration där du vill skapa tjänsten för synkronisering av lagring. Beroende på din organisations konfigurations strategi kan du ha åtkomst till en eller flera prenumerationer. En Azure-prenumeration är den mest grundläggande behållaren för fakturering för varje moln tjänst (till exempel Azure Files).
+- **Resurs grupp**: en resurs grupp är en logisk grupp av Azure-resurser, till exempel ett lagrings konto eller en tjänst för synkronisering av lagring. Du kan skapa en ny resurs grupp eller använda en befintlig resurs grupp för Azure File Sync. (Vi rekommenderar att du använder resurs grupper som behållare för att isolera resurser logiskt för din organisation, till exempel för att gruppera HR-resurser eller resurser för ett bestämt projekt.)
+- **Plats**: den region där du vill distribuera Azure File Sync. Endast regioner som stöds är tillgängliga i den här listan.
 
 När du är färdig väljer du **skapa** för att distribuera tjänsten för synkronisering av lagring.
 
@@ -295,9 +295,9 @@ När du har loggat in uppmanas du att ange följande information:
 
 ![Skärmbild av användargränssnittet för serverregistrering](media/storage-sync-files-deployment-guide/register-server-scubed-1.png)
 
-- **Azure-prenumeration** : prenumerationen som innehåller tjänsten för synkronisering av lagring (se [distribuera tjänsten för synkronisering av lagring](#deploy-the-storage-sync-service)). 
-- **Resurs grupp** : resurs gruppen som innehåller tjänsten för synkronisering av lagring.
-- **Tjänsten för synkronisering av lagring** : namnet på den tjänst för synkronisering av lagring som du vill registrera.
+- **Azure-prenumeration**: prenumerationen som innehåller tjänsten för synkronisering av lagring (se [distribuera tjänsten för synkronisering av lagring](#deploy-the-storage-sync-service)). 
+- **Resurs grupp**: resurs gruppen som innehåller tjänsten för synkronisering av lagring.
+- **Tjänsten för synkronisering av lagring**: namnet på den tjänst för synkronisering av lagring som du vill registrera.
 
 När du har valt lämplig information väljer du **Registrera** för att slutföra Server registreringen. Som en del av registreringsprocessen uppmanas du att logga in en ytterligare inloggning.
 
@@ -322,16 +322,16 @@ En moln slut punkt är en pekare till en Azure-filresurs. Alla Server slut punkt
 Administratören som skapar moln slut punkten måste vara medlem i hanterings rollens **ägare** för det lagrings konto som innehåller den Azure-filresurs som moln slut punkten pekar på. Detta kan konfigureras under **Access Control (IAM)** i Azure Portal för lagrings kontot.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Om du vill skapa en Sync-grupp går du till tjänsten lagrings-synkronisering i [Azure Portal](https://portal.azure.com/)och väljer sedan **+ Sync-grupp** :
+Om du vill skapa en Sync-grupp går du till tjänsten lagrings-synkronisering i [Azure Portal](https://portal.azure.com/)och väljer sedan **+ Sync-grupp**:
 
 ![Skapa en ny synkroniseringsgrupp i Azure-portalen](media/storage-sync-files-deployment-guide/create-sync-group-1.png)
 
 I fönstret som öppnas anger du följande information för att skapa en synkroniseringsgrupp med en molnslutpunkt:
 
-- **Sync-gruppens namn** : namnet på den Sync-grupp som ska skapas. Det här namnet måste vara unikt i tjänsten för synkronisering av lagring men kan vara vilket namn som helst som är logiskt för dig.
-- **Prenumeration** : den prenumeration där du distribuerade synkroniseringstjänsten för lagring i [distribuera tjänsten för synkronisering av lagring](#deploy-the-storage-sync-service).
-- **Lagrings konto** : om du väljer **Välj lagrings konto** visas en annan ruta där du kan välja det lagrings konto som har den Azure-filresurs som du vill synkronisera med.
-- **Azure-fil resurs** : namnet på den Azure-filresurs som du vill synkronisera med.
+- **Sync-gruppens namn**: namnet på den Sync-grupp som ska skapas. Det här namnet måste vara unikt i tjänsten för synkronisering av lagring men kan vara vilket namn som helst som är logiskt för dig.
+- **Prenumeration**: den prenumeration där du distribuerade synkroniseringstjänsten för lagring i [distribuera tjänsten för synkronisering av lagring](#deploy-the-storage-sync-service).
+- **Lagrings konto**: om du väljer **Välj lagrings konto** visas en annan ruta där du kan välja det lagrings konto som har den Azure-filresurs som du vill synkronisera med.
+- **Azure-fil resurs**: namnet på den Azure-filresurs som du vill synkronisera med.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Kör följande PowerShell om du vill skapa en Sync-grupp. Kom ihåg att ersätta `<my-sync-group>` med det önskade namnet på Sync-gruppen.
@@ -414,11 +414,11 @@ Om du vill lägga till en server slut punkt går du till den nya Sync-gruppen oc
 
 I fönstret **Lägg till serverslutpunkt** anger du följande information för att skapa en serverslutpunkt:
 
-- **Registrerad Server** : namnet på servern eller klustret där du vill skapa server slut punkten.
-- **Sökväg** : Windows Server-sökvägen som ska synkroniseras som en del av Sync-gruppen.
-- **Moln nivå** : en växel för att aktivera eller inaktivera moln nivåer. Med moln nivåer kan använda filer som används sällan eller som används i nivå till Azure Files.
-- **Ledigt utrymme på volym** : mängden ledigt utrymme som ska reserveras på den volym där Server slut punkten finns. Om till exempel volym ledigt utrymme är inställt på 50% på en volym som har en enda server slut punkt, är ungefär hälften av data i nivå till Azure Files. Oavsett om moln nivån är aktive rad, har Azure-filresursen alltid en fullständig kopia av data i Sync-gruppen.
-- **Inledande nedladdnings läge** : Detta är ett valfritt val, från och med agent version 11, som kan vara till hjälp när det finns filer i Azure-filresursen men inte på servern. En sådan situation kan till exempel inträffa om du skapar en server slut punkt för att lägga till en annan avdelnings kontors server i en Sync-grupp eller när du gör en katastrof återställning av en misslyckad Server. Om moln nivån är aktive rad är standardvärdet att endast återkalla namn området, inget fil innehåll inlednings vis. Det är användbart om du tror att i stället för förfrågningar om användar åtkomst bör bestämma vilket fil innehåll som återkallas till servern. Om moln skiktning är inaktive rad är standardvärdet att namn området hämtas först och sedan kommer filerna att återkallas baserat på den senast ändrade tidsstämpeln tills den lokala kapaciteten har nåtts. Du kan dock bara ändra det inledande nedladdnings läget till namn område. Ett tredje läge kan bara användas om moln nivåer har inaktiverats för den här server slut punkten. Det här läget förhindrar att namn området anropas först. Filerna visas bara på den lokala servern om de hade chans att laddas ned helt. Det här läget är användbart om till exempel ett program kräver att fullständiga filer finns och inte kan tolerera filer med nivåer i namn området.
+- **Registrerad Server**: namnet på servern eller klustret där du vill skapa server slut punkten.
+- **Sökväg**: Windows Server-sökvägen som ska synkroniseras som en del av Sync-gruppen.
+- **Moln nivå**: en växel för att aktivera eller inaktivera moln nivåer. Med moln nivåer kan använda filer som används sällan eller som används i nivå till Azure Files.
+- **Ledigt utrymme på volym**: mängden ledigt utrymme som ska reserveras på den volym där Server slut punkten finns. Om till exempel volym ledigt utrymme är inställt på 50% på en volym som har en enda server slut punkt, är ungefär hälften av data i nivå till Azure Files. Oavsett om moln nivån är aktive rad, har Azure-filresursen alltid en fullständig kopia av data i Sync-gruppen.
+- **Inledande nedladdnings läge**: Detta är ett valfritt val, från och med agent version 11, som kan vara till hjälp när det finns filer i Azure-filresursen men inte på servern. En sådan situation kan till exempel inträffa om du skapar en server slut punkt för att lägga till en annan avdelnings kontors server i en Sync-grupp eller när du gör en katastrof återställning av en misslyckad Server. Om moln nivån är aktive rad är standardvärdet att endast återkalla namn området, inget fil innehåll inlednings vis. Det är användbart om du tror att i stället för förfrågningar om användar åtkomst bör bestämma vilket fil innehåll som återkallas till servern. Om moln skiktning är inaktive rad är standardvärdet att namn området hämtas först och sedan kommer filerna att återkallas baserat på den senast ändrade tidsstämpeln tills den lokala kapaciteten har nåtts. Du kan dock bara ändra det inledande nedladdnings läget till namn område. Ett tredje läge kan bara användas om moln nivåer har inaktiverats för den här server slut punkten. Det här läget förhindrar att namn området anropas först. Filerna visas bara på den lokala servern om de hade chans att laddas ned helt. Det här läget är användbart om till exempel ett program kräver att fullständiga filer finns och inte kan tolerera filer med nivåer i namn området.
 
 Välj **skapa** om du vill lägga till Server slut punkten. Filerna hålls nu synkroniserade över Azure-filresursen och Windows Server. 
 

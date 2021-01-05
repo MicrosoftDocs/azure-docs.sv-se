@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 874d44e3900b1edf24c2f6bee95d787c5fc3988d
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 24f6052c436b73d0075371fa74160d21826e2209
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704854"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97866112"
 ---
 ## <a name="create-an-azure-container-instance-resource-using-the-azure-portal"></a>Skapa en Azure Container instance-resurs med hjälp av Azure Portal
 
@@ -28,8 +28,8 @@ ms.locfileid: "97704854"
     |Resursgrupp|Välj en tillgänglig resurs grupp eller skapa en ny, till exempel `cognitive-services` .|
     |Containerns namn|Ange ett namn som `cognitive-container-instance` . Namnet måste innehålla nedre CAPS.|
     |Plats|Välj en region för distribution.|
-    |Avbildningstyp|Om behållar avbildningen lagras i ett behållar register som inte kräver autentiseringsuppgifter väljer du `Public` . Om åtkomsten till behållar avbildningen kräver autentiseringsuppgifter väljer du `Private` . Se [behållar databaser och avbildningar](../../cognitive-services-container-support.md#container-repositories-and-images) för information om huruvida behållar avbildningen är `Public` eller `Private` ("offentlig för hands version). |
-    |Avbildningens namn|Ange plats för Cognitive Services behållare. Platsen är det som används som argument till `docker pull` kommandot. Referera till [behållar databaserna och avbildningarna](../../cognitive-services-container-support.md#container-repositories-and-images) för de tillgängliga avbildnings namnen och deras motsvarande lagrings plats.<br><br>Avbildningens namn måste vara fullständigt kvalificerade och ange tre delar. Först, behållar registret, sedan databasen, sist avbildningens namn: `<container-registry>/<repository>/<image-name>` .<br><br>Här är ett exempel som `mcr.microsoft.com/azure-cognitive-services/keyphrase` representerar extrahering av diskussionsämne avbildningen i Microsoft container Registry under Azure Cognitive Services-lagringsplatsen. Ett annat exempel är, `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` som representerar tal till text bild i Microsoft-lagringsplatsen för för hands versionen av container-registret. |
+    |Avbildningstyp|Om behållar avbildningen lagras i ett behållar register som inte kräver autentiseringsuppgifter väljer du `Public` . Om åtkomsten till behållar avbildningen kräver autentiseringsuppgifter väljer du `Private` . Se [behållar databaser och avbildningar](../container-image-tags.md) för information om huruvida behållar avbildningen är `Public` eller `Private` ("offentlig för hands version). |
+    |Avbildningens namn|Ange plats för Cognitive Services behållare. Platsen är det som används som argument till `docker pull` kommandot. Referera till [behållar databaserna och avbildningarna](../container-image-tags.md) för de tillgängliga avbildnings namnen och deras motsvarande lagrings plats.<br><br>Avbildningens namn måste vara fullständigt kvalificerade och ange tre delar. Först, behållar registret, sedan databasen, sist avbildningens namn: `<container-registry>/<repository>/<image-name>` .<br><br>Här är ett exempel som `mcr.microsoft.com/azure-cognitive-services/keyphrase` representerar extrahering av diskussionsämne avbildningen i Microsoft container Registry under Azure Cognitive Services-lagringsplatsen. Ett annat exempel är, `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` som representerar tal till text bild i Microsoft-lagringsplatsen för för hands versionen av container-registret. |
     |OS-typ|`Linux`|
     |Storlek|Ändra storlek till föreslagna rekommendationer för din speciella kognitiva tjänst behållare:<br>2 CPU-kärnor<br>4 GB
 

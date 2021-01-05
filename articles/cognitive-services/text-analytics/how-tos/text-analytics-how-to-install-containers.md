@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: aahi
 keywords: lokal, Docker, container, sentiment analys, naturlig språk bearbetning
-ms.openlocfilehash: 088cf407320dcf8ef6705c57d86836531d9bdfe6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f785a5e6749e46b34723af11b4d61a98b5d94384
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965178"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862501"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Installera och kör Textanalys-containrar
 
@@ -34,7 +34,7 @@ Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto]
 > [!IMPORTANT]
 > Det kostnads fria kontot är begränsat till 5 000 transaktioner per månad och bara <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">pris nivåerna <span class="docon docon-navigate-external x-hidden-focus"></span></a> **kostnads fri** och **standard** är giltiga för behållare. Mer information om avgifter för transaktions begär Anden finns i [data begränsningar](../overview.md#data-limits).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 Om du vill köra någon av de Textanalys behållarna måste du ha värd datorn och behållar miljöerna.
 
@@ -42,7 +42,7 @@ Om du vill köra någon av de Textanalys behållarna måste du ha värd datorn o
 
 Du måste uppfylla följande krav innan du använder Textanalys behållare:
 
-|Obligatorisk|Syfte|
+|Obligatoriskt|Syfte|
 |--|--|
 |Docker-motorn| Du behöver Docker-motorn installerad på en [värddator](#the-host-computer). Docker innehåller paket som konfigurerar Docker-miljön på [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) och [Linux](https://docs.docker.com/engine/installation/#supported-platforms). En introduktion till grunderna för Docker och containrar finns i [Docker-översikt](https://docs.docker.com/engine/docker-overview/).<br><br> Docker måste konfigureras för att tillåta att behållarna ansluter till och skicka fakturerings data till Azure. <br><br> **I Windows** måste Docker också konfigureras för att stödja Linux-behållare.<br><br>|
 |Bekant med Docker | Du bör ha grundläggande kunskaper om Docker-koncept, t. ex. register, databaser, behållare och behållar avbildningar, samt kunskaper om grundläggande `docker` kommandon.| 
@@ -154,10 +154,6 @@ Textanalys behållare skickar fakturerings information till Azure med hjälp av 
 [!INCLUDE [Container's Billing Settings](../../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Mer information om dessa alternativ finns i [Configure containers](../text-analytics-resource-container-config.md).
-
-<!--blogs/samples/video course -->
-
-[!INCLUDE [Discoverability of more container information](../../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>Sammanfattning
 

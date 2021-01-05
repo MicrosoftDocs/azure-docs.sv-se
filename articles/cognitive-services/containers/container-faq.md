@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 188a348b497a485be0a8091b50a3f2c11b6493c0
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 71b57eae1a66e6966f61123e638c4790410ef445
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94960758"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862536"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Vanliga frågor och svar om Azure Cognitive Services containers
 
@@ -22,7 +22,7 @@ ms.locfileid: "94960758"
 
 **F: Vad är tillgängligt?**
 
-**A:** Med Azure Cognitive Services-behållare kan utvecklare använda samma intelligenta API: er som är tillgängliga i Azure, men med [fördelarna](../cognitive-services-container-support.md#features-and-benefits) med skapa behållare. Vissa behållare är tillgängliga som en gated Preview-version som kan kräva att ett program får åtkomst. Andra behållare är offentligt tillgängliga som en icke-grind för hands version eller är allmänt tillgängliga. Du hittar en fullständig lista över behållare och deras tillgänglighet i stöd för [behållare i Azure Cognitive Services](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services) -artikeln. Du kan också Visa behållare i [Docker-hubben](https://hub.docker.com/_/microsoft-azure-cognitive-services).
+**A:** Med Azure Cognitive Services-behållare kan utvecklare använda samma intelligenta API: er som är tillgängliga i Azure, men med [fördelarna](../cognitive-services-container-support.md#features-and-benefits) med skapa behållare. Vissa behållare är tillgängliga som en gated Preview-version som kan kräva att ett program får åtkomst. Andra behållare är offentligt tillgängliga som en icke-grind för hands version eller är allmänt tillgängliga. Du hittar en fullständig lista över behållare och deras tillgänglighet i stöd för [behållare i Azure Cognitive Services](../cognitive-services-container-support.md) -artikeln. Du kan också Visa behållare i [Docker-hubben](https://hub.docker.com/_/microsoft-azure-cognitive-services).
 
 **F: finns det någon skillnad mellan Cognitive Services molnet och behållarna?**
 
@@ -164,7 +164,7 @@ Utforska följande taggar för potentiella frågor och svar som passar dina beho
  
 **F: Hur gör jag för att identifiera behållarna?**
 
-**A:** Cognitive Services behållare finns på olika platser, till exempel Azure Portal, Docker Hub och Azure Container Registration. De senaste behållar platserna finns i [behållar databaser och avbildningar](../cognitive-services-container-support.md#container-repositories-and-images).
+**A:** Cognitive Services behållare finns på olika platser, till exempel Azure Portal, Docker Hub och Azure Container Registration. De senaste behållar platserna finns i [behållar avbildningar](container-image-tags.md).
 
 **F: Hur jämför Cognitive Services containers med AWS och Google-erbjudanden?**
 
