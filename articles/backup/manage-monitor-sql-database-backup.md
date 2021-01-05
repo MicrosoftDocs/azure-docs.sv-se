@@ -3,12 +3,12 @@ title: Hantera och övervaka SQL Server databaser på en virtuell Azure-dator
 description: Den här artikeln beskriver hur du hanterar och övervakar SQL Server databaser som körs på en virtuell Azure-dator.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: b0df22002521c8148cac1200e79aeb0ae5a60546
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e37e6fc211b34b7e427b66db374a705faafd25f9
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021511"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858746"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Hantera och övervaka säkerhetskopierade SQL Server-databaser
 
@@ -20,7 +20,7 @@ Om du ännu inte har konfigurerat säkerhets kopior för dina SQL Server-databas
 
 Azure Backup visar alla schemalagda och begärda åtgärder under **säkerhets kopierings jobb** i portalen, förutom de schemalagda logg säkerhets kopiorna eftersom de kan vara mycket frekventa. De jobb som visas i den här portalen är identifiering och registrering av databaser, konfiguration av säkerhets kopiering och säkerhets kopiering och återställning.
 
-![Säkerhets kopierings jobb portalen](./media/backup-azure-sql-database/jobs-list.png)
+![Säkerhets kopierings jobb portalen](./media/backup-azure-sql-database/sql-backup-jobs-list.png)
 
 Information om övervaknings scenarier finns [i övervakning i Azure Portal](backup-azure-monitoring-built-in-monitor.md) och [övervakning med hjälp av Azure Monitor](backup-azure-monitoring-use-azuremonitor.md).  
 
@@ -36,13 +36,9 @@ Eftersom säkerhets kopiering av loggar sker var 15: e minut, kan det vara omst�
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 
-2. På instrument panelen för valv väljer du **aviseringar och händelser**.
+2. På instrument panelen för valv väljer du **säkerhets kopierings aviseringar**.
 
-   ![Välja aviseringar och händelser](./media/backup-azure-sql-database/vault-menu-alerts-events.png)
-
-3. I **aviseringar och händelser** väljer du **säkerhets kopierings aviseringar**.
-
-   ![Välja säkerhetskopieringsaviseringar](./media/backup-azure-sql-database/backup-alerts-dashboard.png)
+   ![Välja säkerhetskopieringsaviseringar](./media/backup-azure-sql-database/sql-backup-alerts-list.png)
 
 ## <a name="stop-protection-for-a-sql-server-database"></a>Stoppa skydd för en SQL-serverdatabas
 
@@ -83,7 +79,7 @@ Så här stoppar du skydd för en databas:
 >
 >Mer information om alternativet ta bort data finns i vanliga frågor och svar nedan:
 >
->- [Vad händer med säkerhets kopior om jag tar bort en databas från en skyddad instans?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
+>- [Vad händer med säkerhetskopiorna om jag tar bort en databas från en automatiskt skyddad instans?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
 >- [Vad händer om jag avbryter säkerhets kopieringen av en automatiskt skyddad databas?](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
 >
 >

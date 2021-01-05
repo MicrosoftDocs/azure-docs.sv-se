@@ -6,18 +6,18 @@ services: application-gateway
 author: surajmb
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 01/02/2021
 ms.author: victorh
-ms.openlocfilehash: a72f0106088d26eb2ff53456840c598c3d9619a7
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: aadd4904ff218613c0dd24daff784ad5b8b90fbb
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397560"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854918"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>Konfigurera App Service med Application Gateway
 
-Eftersom App Service är en tjänst för flera innehavare i stället för en dedikera distribution använder den värd rubriken i den inkommande begäran för att lösa begäran till rätt app service-slutpunkt. DNS-namnet på programmet, som i sin tur är det DNS-namn som är associerat med programgatewayen fram till App Service, skiljer sig vanligt vis från domän namnet för Server delens app service. Därför är värd rubriken i den ursprungliga begäran som togs emot av Application Gateway inte samma som värd namnet för backend-tjänsten. På grund av detta, om inte värd huvudet i begäran från programgatewayen till Server delen ändras till Server dels tjänstens värdnamn, kan inte Server delen för flera klient organisationer lösa begäran till rätt slut punkt.
+Eftersom App Service är en tjänst för flera innehavare och inte en dedikerad distribution, används värdhuvud i inkommande begäran för att matcha begäran med rätt App Service-slutpunkt. DNS-namnet på programmet, som i sin tur är det DNS-namn som är associerat med programgatewayen fram till App Service, skiljer sig vanligt vis från domän namnet för Server delens app service. Därför är värd rubriken i den ursprungliga begäran som togs emot av Application Gateway inte samma som värd namnet för backend-tjänsten. På grund av detta, om inte värd huvudet i begäran från programgatewayen till Server delen ändras till Server dels tjänstens värdnamn, kan inte Server delen för flera klient organisationer lösa begäran till rätt slut punkt.
 
 Application Gateway innehåller en växel som anropar `Pick host name from backend target` och som åsidosätter värd rubriken i begäran med värd namnet för Server delen när begäran dirigeras från Application Gateway till Server delen. Den här funktionen aktiverar stöd för Server delar för flera klient organisationer, till exempel Azure App service och API Management. 
 

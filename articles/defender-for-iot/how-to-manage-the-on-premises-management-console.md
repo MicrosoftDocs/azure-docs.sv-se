@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 34efef4a01b58cc26fd1567336184837a703ade2
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 7bbac0d8593d47c3162a8ea43e928343a88f2de4
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97842000"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861441"
 ---
 # <a name="manage-the-on-premises-management-console"></a>Hantera den lokala hanterings konsolen
 
@@ -298,6 +298,26 @@ Så här återställer du ditt lösenord:
 
 > [!NOTE]
 > Sensorn är länkad till den prenumeration som den ursprungligen var ansluten till. Du kan bara återställa lösen ordet genom att använda samma prenumeration som den är kopplad till.
+
+## <a name="update-the-software-version"></a>Uppdatera program varu versionen
+
+Följande procedur beskriver hur du uppdaterar program versionen för den lokala hanterings konsolen. Uppdaterings processen tar cirka 30 minuter.
+
+1. Gå till [Azure-portalen](https://portal.azure.com/).
+
+1. Gå till Defender för IoT.
+
+1. Gå till sidan **uppdateringar** .
+
+1. Välj en version i avsnittet lokal hanterings konsol.
+
+1. Välj **Hämta** och spara filen.
+
+1. Logga in på den lokala hanterings konsolen och välj **Systeminställningar** på menyn på sidan.
+
+1. I fönstret **versions uppdatering** väljer du **Uppdatera**.
+
+1. Välj den fil som du laddade ned från sidan Defender för IoT- **uppdateringar** .
 
 ## <a name="see-also"></a>Se även
 

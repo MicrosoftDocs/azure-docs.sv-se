@@ -2,20 +2,22 @@
 title: BareMetal instance units i Azure
 description: Lär dig hur du identifierar och interagerar med BareMetal-instans enheter via Azure Portal.
 ms.topic: how-to
-ms.date: 12/31/2020
-ms.openlocfilehash: 927baa79519781ef74920b17bc9fcd858f0f6c6f
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.date: 1/4/2021
+ms.openlocfilehash: 30e1661e82546dbaf6d8dc4288ad896df89f401e
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829253"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861027"
 ---
 # <a name="manage-baremetal-instances-through-the-azure-portal"></a>Hantera BareMetal-instanser via Azure-portalen
  
 Den här artikeln visar hur [Azure Portal](https://portal.azure.com/) visar [BareMetal-instanser](baremetal-overview-architecture.md). Den här artikeln visar också de aktiviteter som du kan utföra i Azure Portal med de distribuerade BareMetal-instans enheterna. 
  
 ## <a name="register-the-resource-provider"></a>Registrera resursprovidern
-En Azure Resource Provider för BareMetal-instanser ger insyn i instanserna i Azure Portal, för närvarande i offentlig för hands version. Som standard registrerar Azure-prenumerationen som du använder för BareMetal-instansen distribution av *BareMetalInfrastructure* -resurs leverantören. Om du inte ser de distribuerade BareMetal-instans enheterna måste du registrera resurs leverantören med din prenumeration. Det finns två sätt att registrera BareMetal-instans resurs leverantören:
+En Azure Resource Provider för BareMetal-instanser ger insyn i instanserna i Azure Portal, för närvarande i offentlig för hands version. Som standard registrerar Azure-prenumerationen som du använder för BareMetal-instansen distribution av *BareMetalInfrastructure* -resurs leverantören. Om du inte ser de distribuerade BareMetal-instans enheterna måste du registrera resurs leverantören med din prenumeration. 
+
+Det finns två sätt att registrera BareMetal-instans resurs leverantören:
  
 * [Azure CLI](#azure-cli)
  
@@ -85,15 +87,15 @@ Attributen i bilden ser inte likadana ut som attributen för virtuell Azure-dato
 Till höger visas enhetens namn, operativ system (OS), IP-adress och SKU som visar antalet processor trådar och minne. Du ser också energi tillstånds-och maskin varu versionen (revision av BareMetal-instansnamnet). Energi statusen anger om maskin varu enheten är påslagen eller inte. Informationen om operativ systemet anger dock inte om den är igång.
  
 Möjliga maskin varu revisioner är:
+
+* Revision 3 (rev 3)
+
+* Revision 4 (rev 4)
  
-* Revision 3
- 
-* Revision 4
- 
-* Revision 4,2
+* Revision 4,2 (rev 4,2)
  
 >[!NOTE]
->Revision 4,2 är den senaste BareMetal-infrastrukturen med revision 4-arkitekturen. Den har betydande förbättringar i nätverks fördröjningen mellan virtuella Azure-datorer och BareMetal-instanser som distribuerats i revision 4-stämplar eller rader. Mer information om de olika revisionerna finns i [BareMetal-infrastruktur på Azure](baremetal-overview-architecture.md).
+>Rev 4,2 är den senaste ommärkta BareMetal-infrastrukturen med den befintliga rev 4-arkitekturen. Rev 4 ger närmare närhet till Azures virtuella dator värdar. Den har betydande förbättringar i nätverks fördröjningen mellan virtuella Azure-datorer och BareMetal-instanser som distribueras i rev 4-stämplar eller rader. Du kan komma åt och hantera dina BareMetal-instanser via Azure Portal. Mer information finns i [BareMetal-infrastruktur på Azure](baremetal-overview-architecture.md).
  
 På den högra sidan hittar du också namnet på [Azure närhets placerings gruppen](../../../virtual-machines/linux/co-location.md) , som skapas automatiskt för varje distribuerad BareMetal-instans enhet. Referera till närhets placerings gruppen när du distribuerar de virtuella Azure-datorer som är värdar för program lagret. När du använder placerings gruppen för närhet som är associerad med BareMetal instance Unit, ser du till att de virtuella Azure-datorerna går att distribuera nära BareMetal-instansen.
  

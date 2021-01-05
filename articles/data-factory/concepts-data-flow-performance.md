@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 11/24/2020
-ms.openlocfilehash: cc06f12317f5e30721452e07bd4dc5f50dfdb7ec
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/18/2020
+ms.openlocfilehash: d23b2f65f25b704beaee12c53e47706653dcc208
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022368"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858594"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Prestanda-och justerings guiden för att mappa data flöden
 
@@ -115,7 +115,7 @@ Data flöden distribuerar data bearbetningen över olika noder i ett Spark-klust
 
 Standard kluster storleken är fyra driv rutins noder och fyra arbetsnoder.  När du bearbetar mer data rekommenderas större kluster. Nedan visas möjliga alternativ för storleks ändring:
 
-| Arbets kärnor | Driv rutins kärnor | Totalt antal kärnor | Kommentarer |
+| Arbets kärnor | Driv rutins kärnor | Totalt antal kärnor | Obs! |
 | ------------ | ------------ | ----------- | ----- |
 | 4 | 4 | 8 | Inte tillgängligt för beräknings optimering |
 | 8 | 8 | 16 | |
@@ -169,7 +169,7 @@ Du kan läsa från Azure SQL Database med hjälp av en tabell eller en SQL-fråg
 
 ### <a name="azure-synapse-analytics-sources"></a>Azure Synapse Analytics-källor
 
-När du använder Azure Synapse Analytics finns det en inställning som kallas **Aktivera mellanlagring** i käll alternativen. Detta gör att ADF kan läsa från Synapse med ```Polybase``` , vilket avsevärt förbättrar Läs prestanda. ```Polybase```Om du aktiverar måste du ange en Azure-Blob Storage eller Azure Data Lake Storage Gen2 mellanlagrings plats i data flödets aktivitets inställningar.
+När du använder Azure Synapse Analytics finns det en inställning som kallas **Aktivera mellanlagring** i käll alternativen. Detta gör att ADF kan läsa från Synapse med ```Staging``` , vilket avsevärt förbättrar Läs prestanda. ```Staging```Om du aktiverar måste du ange en Azure-Blob Storage eller Azure Data Lake Storage Gen2 mellanlagrings plats i data flödets aktivitets inställningar.
 
 ![Aktivera mellanlagring](media/data-flow/enable-staging.png "Aktivera mellanlagring")
 
@@ -216,9 +216,9 @@ Schemalägg en storleks ändring för din källa och mottagar Azure SQL DB och D
 
 ### <a name="azure-synapse-analytics-sinks"></a>Azure Synapse Analytics-mottagare
 
-När du skriver till Azure Synapse Analytics ska du kontrol lera att **Aktivera mellanlagring** är inställt på sant. Detta gör att ADF kan skriva med [PolyBase](/sql/relational-databases/polybase/polybase-guide) som effektivt läser in data i bulk. Du måste referera till ett Azure Data Lake Storage Gen2-eller Azure Blob Storage-konto för att kunna mellanlagra data när du använder PolyBase.
+När du skriver till Azure Synapse Analytics ska du kontrol lera att **Aktivera mellanlagring** är inställt på sant. Detta gör att ADF kan skriva med [kommandot SQL Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql) som effektivt läser in data i bulk. Du måste referera till ett Azure Data Lake Storage Gen2-eller Azure Blob Storage-konto för att kunna mellanlagra data när du använder mellanlagring.
 
-Förutom PolyBase gäller samma metod tips för Azure Synapse Analytics som Azure SQL Database.
+Förutom mellanlagring gäller samma rekommenderade metoder för Azure Synapse Analytics som Azure SQL Database.
 
 ### <a name="file-based-sinks"></a>Filbaserade handfat 
 
@@ -309,6 +309,14 @@ Körning av jobb sekventiellt tar sannolikt den längsta tiden att köra slut pu
 ### <a name="overloading-a-single-data-flow"></a>Överlagring av ett enskilt data flöde
 
 Om du ger all din logik i ett enda data flöde kör ADF hela jobbet på en enda Spark-instans. Även om det kan verka som ett sätt att minska kostnaderna, blandar man ihop olika logiska flöden och kan vara svåra att övervaka och felsöka. Om en komponent Miss lyckas kommer alla andra delar av jobbet också att Miss lyckas. Azure Data Factorys teamet rekommenderar att data flöden organiseras av oberoende affärs logik. Om ditt data flöde blir för stort och du kan dela upp det i separata komponenter gör det enklare att övervaka och felsöka. Även om det inte finns någon hård gräns för antalet omvandlingar i ett data flöde, gör jobbet komplext för många.
+
+### <a name="execute-sinks-in-parallel"></a>Kör handfat parallellt
+
+Standard beteendet för data flödes mottagare är att köra varje mottagare sekventiellt, på ett seriellt sätt och för att inte köra data flödet när ett fel påträffas i mottagaren. Dessutom är alla Sinks som standard i samma grupp, om du inte går in i data flödes egenskaperna och anger olika prioriteter för mottagare.
+
+Med data flöden kan du gruppera Sinks tillsammans i grupper från fliken Data flödes egenskaper i UI designer. Du kan både ställa in ordningen på körningarna av dina handfat och gruppera Sinks med samma grupp nummer. För att kunna hantera grupper kan du be ADF att köra handfat i samma grupp, för att köra parallellt.
+
+I pipeline-aktiviteten kör data flöde under avsnittet "mottagar egenskaper" är ett alternativ för att aktivera inläsning av parallella mottagare. När du aktiverar "kör parallellt" instruerar du data flöden att skriva till anslutna mottagare samtidigt i stället för på ett sekventiellt sätt. För att kunna använda det parallella alternativet måste sinkarna grupperas samman och anslutas till samma ström via en ny gren eller villkorlig delning.
 
 ## <a name="next-steps"></a>Nästa steg
 

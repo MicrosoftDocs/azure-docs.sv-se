@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 769dea079339af2c6307d9230e047a654dc3d5dd
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 82f6c5989149b50a1ef5e6c6fb5350d474476436
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95492218"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845482"
 ---
 # <a name="receipt-concepts"></a>Koncept för kvitton
 
@@ -456,12 +456,11 @@ Kvitto utmatningen är också användbar för allmän bok för företag eller pe
 
 Kvitton innehåller användbara data som du kan använda för att analysera konsumenternas beteende och shopping trender.
 
-Kvitto-API: t ger också [AIBuilder för kvitto bearbetning](/ai-builder/prebuilt-receipt-processing).
+Mottagnings-API: t har även befogenhet att [bearbeta hanterings funktionen för AI Builder](/ai-builder/prebuilt-receipt-processing).
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Slutför snabb starten för [formulär tolkens klient bibliotek](quickstarts/client-library.md) för att komma igång med att skriva en app för mottagnings bearbetning med formulär tolken på valfritt språk.
-- Eller så följer du in [kvitto-API python-snabb](./quickstarts/python-receipts.md) starten för att identifiera kvitton med hjälp av REST API.
+- Slutför en [snabb start för formulär igenkänning](quickstarts/client-library.md) för att komma igång med att skriva en app för mottagnings bearbetning med formulär tolken på det språk du väljer.
 
 ## <a name="see-also"></a>Se även
 

@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: e7b4a1b2e1d737dad0054cbdf08443436ac2c181
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 90532a88e145507b09de9d36f704bc5c88899e95
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705565"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861896"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>Självstudie: identifiera virtuella Hyper-V-datorer med Server utvärdering
 
@@ -42,7 +42,7 @@ Innan du påbörjar den här självstudien måste du kontrol lera att du har des
 **Krav** | **Information**
 --- | ---
 **Hyper-V-värd** | Hyper-V-värdar som de virtuella datorerna finns i kan vara fristående eller i ett kluster.<br/><br/> Värden måste köra Windows Server 2019, Windows Server 2016 eller Windows Server 2012 R2.<br/><br/> Kontrol lera att inkommande anslutningar är tillåtna på WinRM-port 5985 (HTTP), så att enheten kan ansluta till att hämta VM-metadata och prestanda data med hjälp av en Common Information Model-session (CIM).
-**Distribution av utrustning** | Hyper-v-värden behöver resurser för att allokera en virtuell dator för enheten:<br/><br/> - Windows Server 2016<br/><br/> – 16 GB RAM-minne<br/><br/> – Åtta virtuella processorer<br/><br/> – Cirka 80 GB disk lagring.<br/><br/> – En extern virtuell växel.<br/><br/> – Internet åtkomst på för den virtuella datorn, direkt eller via en proxy.
+**Distribution av utrustning** | Hyper-V-värden behöver resurser för att allokera en virtuell dator för enheten:<br/><br/> - Windows Server 2016<br/><br/> – 16 GB RAM-minne<br/><br/> – Åtta virtuella processorer<br/><br/> – Cirka 80 GB disk lagring.<br/><br/> – En extern virtuell växel.<br/><br/> – Internet åtkomst på för den virtuella datorn, direkt eller via en proxy.
 **Virtuella datorer** | Virtuella datorer kan köra ett Windows-eller Linux-operativsystem. 
 
 Innan du börjar kan du [Granska de data](migrate-appliance.md#collected-data---hyper-v) som samlas in under identifieringen.
@@ -88,7 +88,7 @@ Konfigurera ett konto med administratörs åtkomst på Hyper-V-värdarna. Enhete
 
 ## <a name="set-up-a-project"></a>Konfigurera ett projekt
 
-skapa ett nytt Azure Migrate-projekt.
+Skapa ett nytt Azure Migrate-projekt.
 
 1. I Azure-portalen > **Alla tjänster** söker du efter **Azure Migrate**.
 2. Under **Tjänster** väljer du **Azure Migrate**.

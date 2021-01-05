@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: b8b3a0aa6d9790dbb5900eac2d79074f44a749d2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 54a54dccd82e4f6cfd72a1cc8a71b51f9fd4ed95
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025658"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857366"
 ---
 # <a name="evaluate-and-improve-custom-speech-accuracy"></a>Utvärdera och förbättra noggrannhet i Custom Speech
 
@@ -23,7 +23,7 @@ I den här artikeln får du lära dig hur du kvantitativt mäter och förbättra
 
 ## <a name="evaluate-custom-speech-accuracy"></a>Utvärdera noggrannhet i Custom Speech
 
-Bransch standarden för att mäta modell precisionen är en *ord Fels frekvens* (WER). WER räknar antalet felaktiga ord som identifierats under igenkänning och dividerar sedan med det totala antalet ord som anges i den märkta avskriften (visas nedan som N). Slutligen multipliceras talet med 100% för att beräkna WER.
+Bransch standarden för att mäta modell precisionen är en [ord Fels frekvens](https://en.wikipedia.org/wiki/Word_error_rate) (WER). WER räknar antalet felaktiga ord som identifierats under igenkänning och dividerar sedan med det totala antalet ord som anges i den märkta avskriften (visas nedan som N). Slutligen multipliceras talet med 100% för att beräkna WER.
 
 ![WER-formel](./media/custom-speech/custom-speech-wer-formula.png)
 
@@ -36,6 +36,8 @@ Felaktigt identifierade ord hamnar i tre kategorier:
 Här är ett exempel:
 
 ![Exempel på felaktigt identifierade ord](./media/custom-speech/custom-speech-dis-words.png)
+
+Om du vill replikera WER-mätningar lokalt kan du använda sclite från [SCTK](https://github.com/usnistgov/SCTK).
 
 ## <a name="resolve-errors-and-improve-wer"></a>Lös fel och förbättra WER
 
@@ -96,7 +98,7 @@ I följande avsnitt beskrivs hur varje typ av ytterligare tränings data kan min
 
 ### <a name="add-related-text-sentences"></a>Lägg till relaterade text meningar
 
-Ytterligare relaterade text meningar kan främst minska ersättnings fel som är relaterade till fel igenkänning av vanliga ord och företagsspecifika ord genom att visa dem i sammanhang. Domänautentiseringsuppgifter kan vara ovanliga eller uppdelade ord, men deras uttal måste vara enkla att känna igen.
+När du tränar en ny anpassad modell börjar du med att lägga till relaterad text för att förbättra erkännandet av domänanslutna ord och fraser. Relaterade text meningar kan främst minska ersättnings fel som är relaterade till fel igenkänning av vanliga ord och företagsspecifika ord genom att visa dem i sammanhang. Domänautentiseringsuppgifter kan vara ovanliga eller uppdelade ord, men deras uttal måste vara enkla att känna igen.
 
 > [!NOTE]
 > Undvik relaterade text meningar som innehåller brus, till exempel okända tecken eller ord.
@@ -111,6 +113,12 @@ Ljud med medmärkta avskrifter ger störst precisions förbättringar om ljudet 
 * Undvik exempel som innehåller avskrifts fel, men ta med en mångfald av ljud kvaliteten.
 * Undvik meningar som inte är relaterade till problem domänen. Orelaterade meningar kan skada din modell.
 * När kvaliteten på avskrifter varierar kan du duplicera undantagna meningar (t. ex. utmärkta avskrifter som innehåller viktiga fraser) för att öka deras vikt.
+* Tal tjänsten använder automatiskt avskrifterna för att förbättra erkännandet av domänanslutna ord och fraser som om de har lagts till som relaterad text.
+* Utbildning med ljud ger flest fördelar om ljudet också är svårt att förstå för människor. I de flesta fall bör du börja träna genom att bara använda relaterad text.
+* Det kan ta flera dagar för en utbildnings åtgärd att slutföras. För att förbättra utbildningens hastighet måste du skapa en prenumeration på din röst tjänst i en [region med särskild maskin vara](custom-speech-overview.md#set-up-your-azure-account) för utbildning.
+
+> [!NOTE]
+> Det är inte alla bas modeller som stöder utbildning med ljud. Om en bas modell inte stöder den, kommer tal tjänsten endast använda texten från avskrifterna och ignorera ljudet.
 
 ### <a name="add-new-words-with-pronunciation"></a>Lägg till nya ord med uttal
 

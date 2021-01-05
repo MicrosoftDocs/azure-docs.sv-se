@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 96c0242414c67d97fc324977b1259f63c27c3a26
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: e8d0afab14d02ffe16db535f173456b55ab53d69
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696820"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97860928"
 ---
 # <a name="what-is-azure-load-balancer"></a>Vad är Azure Load Balancer?
 
@@ -66,7 +66,7 @@ Viktiga scenarier som du kan utföra med Standard Load Balancer inkluderar:
 
 ### <a name="secure-by-default"></a><a name="securebydefault"></a>Säker som standard
 
-Standard Load Balancer bygger på den nolla förtroendet för nätverks säkerhets modellen i dess kärna. Standard Load Balancer skyddas som standard och ingår i ditt virtuella nätverk. Det virtuella nätverket är ett privat och isolerat nätverk.  Det innebär att standard belastnings utjämning och offentliga standard-IP-adresser stängs till inkommande flöden om de inte öppnas av nätverks säkerhets grupper. NSG: er används för att uttryckligen tillåta tillåten trafik.  Om du inte har en NSG på ett undernät eller ett nätverkskort för den virtuella dator resursen, tillåts inte trafik att komma åt den här resursen. Mer information om NSG: er och hur du tillämpar dem för ditt scenario finns i [nätverks säkerhets grupper](../virtual-network/network-security-groups-overview.md).
+Standard Load Balancer bygger på den nolla förtroendet för nätverks säkerhets modellen i dess kärna. Standard Load Balancer är säker som standard och ingår i ditt virtuella nätverk. Det virtuella nätverket är ett privat och isolerat nätverk.  Det innebär att standard belastnings utjämning och offentliga standard-IP-adresser stängs till inkommande flöden om de inte öppnas av nätverks säkerhets grupper. NSG: er används för att uttryckligen tillåta tillåten trafik.  Om du inte har en NSG på ett undernät eller ett nätverkskort för den virtuella dator resursen, tillåts inte trafik att komma åt den här resursen. Mer information om NSG: er och hur du tillämpar dem för ditt scenario finns i [nätverks säkerhets grupper](../virtual-network/network-security-groups-overview.md).
 Basic Load Balancer är öppet för Internet som standard. Dessutom lagrar Load Balancer inte kund information.
 
 ## <a name="pricing-and-sla"></a>Priser och service nivå avtal

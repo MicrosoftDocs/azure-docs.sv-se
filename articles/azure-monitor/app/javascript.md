@@ -4,12 +4,12 @@ description: Hämta sid visning och antal sessioner, webb klient data, enstaka s
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 0588a3eac4ced6cec1e7aea431c6555bbe8bff0a
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 6678c662c4646a8181b1617ccddf9b8718c957bf
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559887"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858560"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights för webbsidor
 
@@ -107,7 +107,7 @@ Varje konfigurations alternativ visas på en ny rad, om du inte vill åsidosätt
 
 De tillgängliga konfigurations alternativen är
 
-| Namn | Typ | Description
+| Namn | Typ | Beskrivning
 |------|------|----------------
 | src | sträng **[obligatoriskt]** | Den fullständiga URL: en för varifrån SDK: n ska läsas in. Det här värdet används för attributet src för ett dynamiskt tillagd &lt; skript/ &gt; tagg. Du kan använda den offentliga CDN-platsen eller en privat värd som är värd för en.
 | name | sträng *[valfritt]* | Det globala namnet för den initierade SDK: n som standard `appInsights` . Det ```window.appInsights``` kommer att vara en referens till den initierade instansen. Obs! Om du anger ett namn värde eller om en föregående instans ska tilldelas (via det globala namnet appInsightsSDK), kommer detta namn värde också att definieras i det globala namn området som ```window.appInsightsSDK=<name value>``` , detta krävs av SDK-initierings koden för att säkerställa att den initierar och uppdaterar rätt kodfragments Skeleton och proxyservrar.
@@ -132,7 +132,7 @@ appInsights.trackPageView();
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>Skicka telemetri till Azure Portal
 
-Som standard samlar Application Insights JavaScript SDK automatiskt in ett antal telemetridata som är användbara för att fastställa hälso tillståndet för ditt program och den underliggande användar upplevelsen. Dessa omfattar:
+Som standard samlar Application Insights JavaScript SDK automatiskt in ett antal telemetridata som är användbara för att fastställa hälso tillståndet för ditt program och den underliggande användar upplevelsen. Exempel på dessa är:
 
 - Ej **fångade undantag** i appen, inklusive information om
     - Stack spårning
@@ -170,7 +170,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfiguration
 De flesta konfigurations fälten får ett namn som är förfalskade som standard. Alla fält är valfria förutom för `instrumentationKey` .
 
-| Name | Standardvärde | Description |
+| Namn | Standard | Beskrivning |
 |------|---------|-------------|
 | instrumentationKey | null | **Obligatoriskt**<br>Instrumentation-nyckel som du fick från Azure Portal. |
 | accountId | null | Ett valfritt konto-ID, om din app grupperar användare till konton. Inga blank steg, kommatecken, semikolon, likheter eller lodräta staplar |
@@ -288,7 +288,7 @@ Välj **webbläsare** och välj sedan **haverier** eller **prestanda**.
 
 ![Skärm bild av sidan prestanda i Application Insights visar bild visning av beroende mått för ett webb program.](./media/javascript/performance-dependencies.png)
 
-### <a name="analytics"></a>Analys
+### <a name="analytics"></a>Analytics
 
 Om du vill fråga din telemetri som samlas in av JavaScript SDK väljer du knappen **Visa i loggar (analys)** . Genom att lägga till en `where` -sats i visas `client_Type == "Browser"` endast data från Java Script SDK och all telemetri på Server sidan som samlas in av andra SDK: er.
  
@@ -339,7 +339,7 @@ Bryta ändringar i SDK v2-versionen:
 - Vissa API-anrop, till exempel trackPageView och trackException, har uppdaterats för att möjliggöra bättre API-signaturer. Det finns inte stöd för att köra i Internet Explorer 8 och tidigare versioner av webbläsaren.
 - Telemetri-kuvertet har fält namn och struktur ändringar på grund av data schema uppdateringar.
 - Flyttad `context.operation` till `context.telemetryTrace` . Vissa fält ändrades också ( `operation.id`  -->  `telemetryTrace.traceID` ).
-  - Använd om du vill uppdatera aktuellt sid visningar-ID manuellt (till exempel i SPA-appar) `appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()` .
+  - Använd om du vill uppdatera aktuellt sid visningar-ID manuellt (till exempel i SPA-appar) `appInsights.properties.context.telemetryTrace.traceID = Microsoft.ApplicationInsights.Telemetry.Util.generateW3CId()` .
     > [!NOTE]
     > Om du vill behålla spårnings-ID: t unikt, där du tidigare använde `Util.newId()` , använder du nu `Util.generateW3CId()` . Båda i slut ändan är åtgärds-ID.
 

@@ -3,12 +3,12 @@ title: Säkerhets kopierings Center – vanliga frågor och svar
 description: I den här artikeln får du svar på vanliga frågor om Backup Center
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: c5b23a32b60f651cd3ff91819155d83a7465491a
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 5befa39411c22253bfccc689d8b5c5967a8cd759
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173815"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858628"
 ---
 # <a name="backup-center---frequently-asked-questions"></a>Säkerhets kopierings Center – vanliga frågor och svar
 
@@ -34,7 +34,9 @@ Nej. Säkerhets kopierings Center kommer att vara klart från lådan. Om du vill
 
 ### <a name="do-i-need-to-have-any-special-permissions-to-use-backup-center"></a>Måste jag ha några särskilda behörigheter för att använda Backup Center?
 
-Backup Center eftersom det inte behövs några nya behörigheter. Så länge du har rätt nivå av Azure RBAC-åtkomst för de resurser som du hanterar kan du använda Backup Center för dessa resurser. Om du till exempel vill visa information om dina säkerhets kopior behöver du **läsa in läsare** till dina valv. Om du vill konfigurera säkerhets kopiering och utföra andra säkerhets kopierings åtgärder behöver du rollen **säkerhets kopierings deltagare** eller **ansvariga för säkerhets kopiering** . Lär dig mer om [Azure-roller för Azure Backup](./backup-rbac-rs-vault.md).
+Backup Center eftersom det inte behövs några nya behörigheter. Så länge du har rätt nivå av Azure RBAC-åtkomst för de resurser som du hanterar kan du använda Backup Center för dessa resurser. Om du till exempel vill visa information om dina säkerhets kopior behöver du **läsa in läsare** till dina valv. Om du vill konfigurera säkerhets kopiering och utföra andra säkerhets kopierings åtgärder behöver du rollen **säkerhets kopierings deltagare** eller **ansvariga för säkerhets kopiering** . Lär dig mer om [Azure-roller för Azure Backup](./backup-rbac-rs-vault.md). 
+
+Om du använder [säkerhets kopierings rapporter](./configure-reports.md) under säkerhets kopierings Center behöver du åtkomst till Log Analytics arbets ytor som dina valv skickar data till, för att visa rapporter för dessa valv.
 
 ## <a name="pricing"></a>Prissättning
 

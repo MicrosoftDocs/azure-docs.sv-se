@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 764e0262c8a26511c55740aa1797b5ec9b59cc8e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cbae833c1b207669e35b467707f946e9bafe31d2
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999472"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854952"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrera en app med ett virtuellt Azure-nätverk
 
@@ -152,6 +152,7 @@ Tre kostnader är relaterade till användningen av den gateway-nödvändiga funk
 
 > [!NOTE]
 > VNET-integrering stöds inte för Docker-handskrivna scenarier i App Service.
+> Azure Functions åtkomst begränsningar ignoreras om det finns en privat slut punkt.
 >
 
 [!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]

@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 9a3a6bd6489baea90ed4143b42a09e7d697bbc50
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 7acfa9c2ffdd4cdd62e965041cdc42dc44d469c5
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602452"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845580"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Fördefinierad faktura modell för formulär tolken
 
@@ -34,7 +34,7 @@ Om du vill testa faktura tjänsten för formulär tolken går du till verktyget 
 > [!div class="nextstepaction"]
 > [Prova färdiga modeller](https://fott-preview.azurewebsites.net/)
 
-Du behöver en Azure-prenumeration ([skapa en kostnads fri](https://azure.microsoft.com/free/cognitive-services)) och ett [formulär Recognzier resurs](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) slut punkt och nyckel för att testa formulär tolkens faktura tjänst. 
+Du behöver en Azure-prenumeration ([skapa en kostnads fri](https://azure.microsoft.com/free/cognitive-services)) och en resurs slut punkt för [formulär igenkänning](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) och en nyckel för att testa formulär tolkens faktura tjänst. 
 
 ![Exempel på analyserad faktura](./media/analyze-invoice.png)
 
@@ -74,14 +74,14 @@ JSON-utdata har 3 delar:
 
 Faktura tjänsten kommer att extrahera fälten text, tabeller och 26 fakturor. Nedan visas fälten som extraheras från en faktura i JSON-utdata (resultatet nedan använder den här [exempel fakturan](./media/sample-invoice.jpg))  
 
-|Namn| Typ | Description | Text | Värde (standardiserad utdata) |
+|Namn| Typ | Beskrivning | Text | Värde (standardiserad utdata) |
 |:-----|:----|:----|:----| :----|
 | CustomerName | sträng | Kunden faktureras | Microsoft Corp |  |
 | CustomerId | sträng | Referens-ID för kunden | CID – 12345 |  |
 | PurchaseOrder | sträng | Ett referens nummer för inköps order | PO – 3333 | |  |
 | InvoiceId | sträng | ID för den här aktuella fakturan (ofta "faktura nummer") | INV-100 | |  |
-| InvoiceDate | datum | Datum då fakturan utfärdades | 11/15/2019 | 
-| DueDate | datum | Datum betalning för den här fakturan är förfallen | 12/15/2019 | 2019-12-15 | 2019-11-15 |
+| InvoiceDate | date | Datum då fakturan utfärdades | 11/15/2019 | 
+| DueDate | date | Datum betalning för den här fakturan är förfallen | 12/15/2019 | 2019-12-15 | 2019-11-15 |
 | Namn | sträng | Leverantör som har skapat den här fakturan | CONTOSO LTD. | |
 | VendorAddress | sträng | E-postadress för leverantören | 123 456th St New York, Sverige, 10001 | |
 | VendorAddressRecipient | sträng | Namn som är associerat med VendorAddress | Contoso Headquarters | |
@@ -99,16 +99,16 @@ Faktura tjänsten kommer att extrahera fälten text, tabeller och 26 fakturor. N
 | ServiceAddressRecipient | sträng | Namn som är associerat med ServiceAddress | Microsoft-tjänster | |
 | RemittanceAddress | sträng | Explicit remittering eller betalnings adress för kunden | 123 remittera St New York, Sverige, 10001 |  |
 | RemittanceAddressRecipient | sträng | Namn som är associerat med RemittanceAddress | Contoso-fakturering |  |
-| ServiceStartDate | datum | Första datumet för service perioden (till exempel en service period för verktyg) | 2019-10-14 | 2019-10-14 |
-| ServiceEndDate | datum | Slutdatum för service perioden (till exempel en service period för verktyg) | 11/14/2019 | 2019-11-14 |
-| PreviousUnpaidBalance | antal | Explicit tidigare obetald balans | $500.00 | 500 |
+| ServiceStartDate | date | Första datumet för service perioden (till exempel en service period för verktyg) | 2019-10-14 | 2019-10-14 |
+| ServiceEndDate | date | Slutdatum för service perioden (till exempel en service period för verktyg) | 11/14/2019 | 2019-11-14 |
+| PreviousUnpaidBalance | antal | Explicit tidigare obetald balans | $500,00 | 500 |
 
 
 ## <a name="next-steps"></a>Nästa steg
 
 - Testa dina egna fakturor och exempel i [formulär tolkens exempel gränssnitt](https://fott-preview.azurewebsites.net/).
-- Slutför snabb starten för [formulär tolkens klient bibliotek](quickstarts/client-library.md) för att komma igång med att skriva en app för faktura bearbetning med formulär tolken på valfritt språk.
-- Du kan också följa snabb starten för att [Hämta faktura data](./quickstarts/python-invoices.md) och implementera faktura data extrahering med Python och REST API.
+- Slutför snabb starten för [formulär tolken](quickstarts/client-library.md) och kom igång genom att skriva en app för faktura bearbetning med formulär tolken på valfritt språk.
+
 ## <a name="see-also"></a>Se även
 
 * [Vad är formigenkänning?](./overview.md)

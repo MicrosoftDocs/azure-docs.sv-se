@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: acb85a04b8a1ca491058702510079a36b93fc657
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3d69b72012819e3d9099e447b9048fe07aea86d3
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151042"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858713"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure Functions-utveckling och -konfiguration med Azure SignalR Service
 
@@ -24,7 +24,7 @@ Den här artikeln beskriver koncepten för att utveckla och konfigurera en Azure
 
 Azure SignalR service kan konfigureras i olika lägen. När den används med Azure Functions måste tjänsten konfigureras i *Server* lös läge.
 
-Leta upp sidan *Inställningar* för signal tjänst resursen i Azure Portal. Ange *tjänst läget* till *Server*lös.
+Leta upp sidan *Inställningar* för signal tjänst resursen i Azure Portal. Ange *tjänst läget* till *Server* lös.
 
 ![SignalR service läge](media/signalr-concept-azure-functions/signalr-service-mode.png)
 
@@ -49,11 +49,11 @@ Information om hur du skapar en autentiserad token finns i [använda App Service
 
 ### <a name="handle-messages-sent-from-signalr-service"></a>Hantera meddelanden som skickas från SignalR-tjänsten
 
-Använd *signalen utlösare* för att hantera meddelanden som skickas från SignalR-tjänsten. Du kan utlöses när klienter skickar meddelanden eller klienter blir anslutna eller frånkopplade.
+Använd *signalen utlösare* för att hantera meddelanden som skickas från SignalR-tjänsten. Du kan få ett meddelande när klienter skickar meddelanden eller klienterna blir anslutna eller frånkopplade.
 
-Mer information finns i [bindnings referens för *SignalR-utlösare* ](../azure-functions/functions-bindings-signalr-service-trigger.md).
+Mer information finns i [bindnings referens för *SignalR-utlösare*](../azure-functions/functions-bindings-signalr-service-trigger.md).
 
-Du måste också konfigurera funktions slut punkten som en Uppström så att tjänsten kommer att utlösa funktionen där det finns ett meddelande från klienten. Mer information om hur du konfigurerar överordnad finns i det här [dokumentet](concept-upstream.md).
+Du måste också konfigurera funktions slut punkten som en Uppström så att tjänsten kommer att utlösa funktionen när det finns ett meddelande från klienten. Mer information om hur du konfigurerar överordnad finns i det här [dokumentet](concept-upstream.md).
 
 ### <a name="sending-messages-and-managing-group-membership"></a>Skicka meddelanden och hantera grupp medlemskap
 

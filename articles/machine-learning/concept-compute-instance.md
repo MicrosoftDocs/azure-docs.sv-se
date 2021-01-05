@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 7d07dda7741aa075b8d853a8d06d3d3218ca901a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: fafa4c1e8c12ce26a90cfdf9df940823abf5ff25
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563825"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857451"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Vad är en Azure Machine Learning-beräkningsinstans?
 
@@ -130,7 +130,12 @@ De här åtgärderna kan styras av Azure RBAC:
 * *Microsoft. MachineLearningServices/arbets ytor/beräkningar/stoppa/åtgärd*
 * *Microsoft. MachineLearningServices/arbets ytor/beräkningar/omstart/åtgärd*
 
-### <a name="create-a-compute-instance"></a><a name="create"></a>Skapa en beräkningsinstans
+Tänk på att skapa en beräknings instans användare måste ha behörighet för följande åtgärder:
+* *Microsoft. MachineLearningServices/arbets ytor/beräkningar/skrivning*
+* *Microsoft. MachineLearningServices/arbets ytor/checkComputeNameAvailability/åtgärd*
+
+
+### <a name="create-a-compute-instance"></a><a name="create"></a>Skapa en beräknings instans
 
 I arbets ytan i Azure Machine Learning Studio [skapar du en ny beräknings instans](how-to-create-attach-compute-studio.md#compute-instance) från antingen **Compute** -avsnittet eller i avsnittet **antecknings böcker** när du är redo att köra en av dina antecknings böcker. 
 

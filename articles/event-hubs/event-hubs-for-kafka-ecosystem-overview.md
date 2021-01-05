@@ -3,12 +3,12 @@ title: Använda händelsehubben från Apache Kafka app – Azure Event Hubs | Mi
 description: Den här artikeln innehåller information om Apache Kafka support av Azure Event Hubs.
 ms.topic: article
 ms.date: 09/25/2020
-ms.openlocfilehash: d9aa8af30d5ef5e1a985e4d73a9d4a8921ac7d45
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b0f0da76bba68f8a66695700d530e871cbd35e3c
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369598"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861336"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Använda Azure Event Hubs från Apache Kafka-program
 Event Hubs tillhandahåller en slut punkt som är kompatibel med Apache Kafka® tillverkare och konsument-API: er som kan användas av de flesta befintliga Apache Kafka klient program som ett alternativ till att köra ditt eget Apache Kafka-kluster. Event Hubs stöder Apache Kafkas tillverkare och klient-API-klienter i version 1,0 och senare.
@@ -28,7 +28,7 @@ Kafka och Event Hubs är mycket lika likartade: de har båda partitionerade logg
 | Kafka-koncept | Event Hubs koncept|
 | --- | --- |
 | Kluster | Namnområde |
-| Avsnitt | Händelsehubb |
+| Ämne | Händelsehubb |
 | Partition | Partition|
 | Konsument grupp | Konsument grupp |
 | Offset | Offset|
@@ -118,9 +118,7 @@ Nytto lasten för händelse NAV är en byte-dataström och innehållet kan kompr
 
 ### <a name="log-compaction"></a>Logg komprimering
 
-Apache Kafka-komprimering är en funktion som gör att du kan ta bort alla utom den sista posten i varje nyckel från en partition, vilket i praktiken sätter ett Apache Kafka ämne i ett nyckel/värde-lager där det sista värdet som lagts till åsidosätter föregående. Mönstret för nyckel värdes lagring, även vid frekventa uppdateringar, stöds mycket bättre av databas tjänster som [Azure Cosmos DB](../cosmos-db/introduction.md).
-
-Funktionen för logg komprimering används av klient ramverken Kafka Connect och Kafka Streams.
+Apache Kafka-komprimering är en funktion som gör att du kan ta bort alla utom den sista posten i varje nyckel från en partition, vilket i praktiken sätter ett Apache Kafka ämne i ett nyckel/värde-lager där det sista värdet som lagts till åsidosätter föregående. Den här funktionen är för närvarande inte implementerad av Azure Event Hubs. Mönstret för nyckel värdes lagring, även vid frekventa uppdateringar, stöds mycket bättre av databas tjänster som [Azure Cosmos DB](../cosmos-db/introduction.md). Mer information finns i avsnittet om [logg projektion](event-hubs-federation-overview.md#log-projections) i Event Hubs Federations vägledning. 
 
 ### <a name="kafka-streams"></a>Kafka strömmar
 

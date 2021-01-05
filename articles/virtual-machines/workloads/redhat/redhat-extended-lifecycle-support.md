@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: mathapli
 ms.reviewer: cynthn
-ms.openlocfilehash: 1f31cc982e5e7f92cfe7e8adf588dd96628f2c6f
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: fd36d365eb02819352bc14caf9d8e258a8663c70
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95744049"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861387"
 ---
 # <a name="red-hat-enterprise-linux-rhel-extended-lifecycle-support"></a>Red Hat Enterprise Linux (RHEL) Extended Lifecycle support
 Den här artikeln innehåller information om Extended Lifecycle-stöd för Red Hat Enterprise-avbildningar:
@@ -38,6 +38,12 @@ Från och med den 30 november 2020 kommer Red Hat Enterprise Linux 6 att uppnå 
 
 #### <a name="what-is-the-additional-charge-for-using-red-hat-enterprise-linux-extended-life-cycle-support-els-add-on"></a>Vilken kostar det extra att använda Red Hat Enterprise Linux utökade ELS-tillägg (Support för livs cykel support)?
 Kostnaderna för Extended Lifecycle support finns i [formuläret Els](https://aka.ms/els-form)
+
+#### <a name="ive-deployed-a-vm-by-using-custom-image-how-can-i-add-extended-lifecycle-support-to-this-vm"></a>Jag har distribuerat en virtuell dator med hjälp av en anpassad avbildning. Hur kan jag lägga till utökat livs cykel stöd för den här virtuella datorn?
+Du måste kontakta Red Hat direkt och få support direkt från dem.
+
+#### <a name="ive-deployed-a-vm-by-using-custom-image-can-i-convert-this-vm-to-a-payg-vm"></a>Jag har distribuerat en virtuell dator med hjälp av en anpassad avbildning. Kan jag konvertera den här virtuella datorn till en virtuell PAYG-dator?
+Nej, du kan inte. Konverteringen stöds inte för närvarande på Azure.
 
 
 ## <a name="next-steps"></a>Nästa steg

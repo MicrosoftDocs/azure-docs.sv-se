@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: a153f832fdfc075cdde03241f7dae19faa2334ce
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: ba7081c877f3c3adae6e678280592c9445a95d1b
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631373"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858815"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Hur Azure Hybrid-förmån gäller för virtuella Linux-datorer
 
@@ -172,7 +172,7 @@ Mer information om kompatibilitet med Red Hat-prenumeration, program uppdatering
 
 ### <a name="suse"></a>SUSE
 
-Om du vill använda Azure Hybrid-förmån för virtuella SLES-datorer måste du först vara registrerad med det [offentliga SUSE Cloud-molnet](https://www.suse.com/media/guide/suse_public_cloud_service_provider_program_overview.pdf). När du har köpt SUSE-prenumerationer måste du registrera dina virtuella datorer som använder dessa prenumerationer på din egen uppdaterings källa. Använd SUSE kund Center, prenumerations hanterings verktygets Server eller SUSE Manager för denna registrering.
+Om du vill använda Azure Hybrid-förmån för virtuella SLES-datorer och information om hur du flyttar från SLES PAYG till BYOS eller flyttar från SLES BYOS till PAYG, se [SUSE Linux Enterprise och Azure Hybrid-förmån](https://www.suse.com/c/suse-linux-enterprise-and-azure-hybrid-benefit/). 
 
 ## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
 *F: kan jag använda en licens typ `RHEL_BYOS` med en SLES-avbildning eller vice versa?*
@@ -210,6 +210,10 @@ A: Nej, du kan inte. Reserverade instanser ligger för närvarande inte inom omf
 *F: kan jag använda Azure Hybrid-förmån på en virtuell dator som har distribuerats för SQL Server på RHEL-avbildningar?*
 
 A: Nej, du kan inte. Det finns ingen plan för att stödja de här virtuella datorerna.
+
+*F: kan jag använda Azure Hybrid-förmån på RHEL Virtual Data Center-prenumerationen?*
+
+A: Nej, du kan inte. VDC stöds inte i Azure alls, inklusive AHB.  
  
 
 ## <a name="common-problems"></a>Vanliga problem

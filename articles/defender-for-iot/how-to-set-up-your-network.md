@@ -4,15 +4,15 @@ description: Lär dig om lösnings arkitektur, nätverks förberedelser, krav oc
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/06/2020
+ms.date: 01/03/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 3e9380f067b091c4473b8c29bda3d31bb93cbc6d
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: b5cb7d0e421657b84c365d8dca536191cafd4e72
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97843190"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861963"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>Om installation av Azure Defender för IoT-nätverk
 
@@ -54,7 +54,7 @@ Registrera plats information som:
 
 - Konfigurations arbets Station.
 
-- SSL-certifikat (valfritt).
+- SSL-certifikat (valfritt men rekommenderas).
 
 - SMTP-autentisering (valfritt). Förbered de autentiseringsuppgifter som krävs för servern om du vill använda SMTP-servern med autentisering.
 
@@ -569,7 +569,7 @@ En översikt över det industriella nätverks diagrammet gör att du kan definie
     > [!NOTE]
     > Defender för IoT-enheten bör vara ansluten till en lågnivå-växel som ser trafiken mellan portarna på växeln.  
 
-2. Ange det ungefärliga antalet enheter i nätverken (valfritt).
+2. Ange det ungefärliga antalet nätverks enheter som ska övervakas. Du behöver den här informationen när du registrerar din prenumeration på Azure Defender för IoT-portalen. Under onboarding-processen uppmanas du att ange antalet enheter i steg om 1000.
 
 3. Ange en under näts lista för produktions nätverken och en beskrivning (valfritt). 
 

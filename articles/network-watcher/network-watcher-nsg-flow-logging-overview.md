@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 79f442c5ab7db92e69f5396f3f9205212bdf4d4d
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: d6b916ce03c6850f78217f1aac0b63048a6aff3b
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399255"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858509"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Introduktion till flödesloggning för nätverkssäkerhetsgrupper
 
@@ -353,6 +353,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 **Överväganden för lagrings konto**: 
 
 - Plats: det lagrings konto som används måste finnas i samma region som NSG.
+- Prestanda nivå: för närvarande stöds endast lagrings konton på standard nivån.
 - Själv hantering av nyckel rotation: om du ändrar/roterar åtkomst nycklarna till ditt lagrings konto slutar NSG Flow-loggar att fungera. För att åtgärda det här problemet måste du inaktivera och sedan återaktivera NSG Flow-loggar.
 
 **Flödes loggnings kostnader**: NSG flödes loggning debiteras på volymen av loggar som skapats. Hög trafik volym kan resultera i stor flödes logg volym och tillhör ande kostnader. NSG Flow logg priser omfattar inte de underliggande lagrings kostnaderna. Om du använder funktionen bevarande princip med NSG flödes loggning innebär det att det uppstår separata lagrings kostnader för längre tids perioder. Om du inte behöver funktionen bevarande princip rekommenderar vi att du anger värdet till 0. Mer information finns i [Network Watcher priser](https://azure.microsoft.com/pricing/details/network-watcher/) och [Azure Storage prissättning](https://azure.microsoft.com/pricing/details/storage/) för ytterligare information.
@@ -374,7 +375,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 **Aktivera NSG flödes loggning på alla NSG: er som är kopplade till en resurs**: flödes loggning i Azure konfigureras på NSG-resursen. Ett flöde kommer bara att associeras med en NSG-regel. I scenarier där flera NSG: er används rekommenderar vi att du aktiverar NSG flödes loggar på alla NSG: er som tillämpas på resursens undernät eller nätverks gränssnitt för att säkerställa att all trafik registreras. Mer information finns i [hur trafiken utvärderas](../virtual-network/network-security-group-how-it-works.md) i nätverks säkerhets grupper. 
 
 Några vanliga scenarier:
-1. **Flera NSG på ett nätverkskort**: om flera NSG: er är kopplade till ett nätverkskort måste flödes loggning aktive ras på alla
+1. **Flera nätverkskort på en virtuell dator**: om flera nätverkskort är kopplade till en virtuell dator måste flödes loggning vara aktiverat på alla
 1. **Ha NSG på både NIC-och under näts nivå**: om NSG har kon figurer ATS på nätverkskortet samt under näts nivån måste flödes loggning aktive ras på både NSG: er. 
 
 **Lagrings etablering**: lagringen bör tillhandahållas i finjustera med den förväntade flödes logg volymen.

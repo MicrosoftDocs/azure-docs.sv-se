@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 513d98ae274c668197b066c742119055248f37f9
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 661b0bbf1aa389dc76567d95ad917548255a1b35
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911723"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845590"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Skapa en tränings data uppsättning för en anpassad modell
 
@@ -72,11 +72,8 @@ Om du lägger till följande innehåll i begär ande texten tränar API: n med d
 
 Nu när du har lärt dig hur du skapar en tränings data uppsättning följer du en snabb start för att träna en anpassad formulär igenkännings modell och börja använda den i formulären.
 
-* [Träna en modell och extrahera formulär data med hjälp av klient biblioteket](./quickstarts/client-library.md)
-* [Träna en modell och extrahera formulär data med hjälp av sväng](./quickstarts/curl-train-extract.md)
-* [Träna en modell och extrahera formulär data med hjälp av REST API och python](./quickstarts/python-train-extract.md)
+* [Träna en modell och extrahera formulär data med hjälp av klient biblioteket eller REST API](./quickstarts/client-library.md)
 * [Träna med etiketter med hjälp av verktyget för exempel märkning](./quickstarts/label-tool.md)
-* [Träna med etiketter med hjälp av REST API och Python](./quickstarts/python-labeled-data.md)
 
 ## <a name="see-also"></a>Se även
 

@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 76e19c36f0fa4096966c5dd23d2384b6b30f2271
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ed57c496443c9d1541bfa9933e7718213da116d7
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95498868"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845613"
 ---
 # <a name="business-card-concepts"></a>Koncept för visitkort
 
@@ -374,7 +374,7 @@ Se följande exempel på ett lyckat JSON-svar: noden "readResults" innehåller a
 }
 ```
 
-Följ instruktionerna för att [extrahera visitkorts data](./QuickStarts/python-business-cards.md) för att implementera data extrahering för visitkort med Python och REST API.
+Följ snabb starten för [snabb](./QuickStarts/client-library.md) start för att implementera data extrahering i visitkort med Python och REST API.
 
 ## <a name="customer-scenarios"></a>Kund scenarier  
 
@@ -385,11 +385,11 @@ De data som extraheras med visitkorts-API kan användas för att utföra en rad 
 * Håll koll på Sälj leads.  
 * Extrahera kontakt information i bulk från befintliga visitkorts avbildningar. 
 
-Visitkorts-API: t ger också [AIBuilder för affärs korts bearbetning](/ai-builder/prebuilt-business-card).
+Visitkorts-API: t ger även [AI Builder-Affärskortets bearbetnings funktion](/ai-builder/prebuilt-business-card).
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Följ snabb starten för [Business Cards API python](./quickstarts/python-business-cards.md) för att komma igång med att känna igen visitkort.
+- Kom igång med att känna igen visitkorten genom att följa [snabb](./quickstarts/client-library.md) starten.
 
 ## <a name="see-also"></a>Se även
 

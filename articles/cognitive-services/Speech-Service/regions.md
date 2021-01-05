@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.custom: seodec18
-ms.openlocfilehash: 7b872340c50c800ebe4d4d6c7ca56b3b327bf162
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: seodec18,references_regions
+ms.openlocfilehash: f11ccafd58cc64e6186ef590bbbccbfab3335ea4
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95972661"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854867"
 ---
 # <a name="speech-service-supported-regions"></a>Regioner som stöds av tal tjänster
 
@@ -44,6 +44,8 @@ Tal tjänsten är tillgänglig i dessa regioner för **tal igenkänning**, **tex
 
 Om du använder [tal-SDK](speech-sdk.md)anges regioner av **regions-ID** (till exempel som en parameter till `SpeechConfig.FromSubscription` ). Se till att regionen matchar region för din prenumeration.
 
+Om du planerar att träna en anpassad modell med ljuddata använder du en av [regionerna med dedikerad maskin vara](custom-speech-overview.md#set-up-your-azure-account) för snabbare träning. Du kan använda [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) för att kopiera den helt utbildade modellen till en annan region senare.
+
 ### <a name="intent-recognition"></a>Avsiktsigenkänning
 
 Tillgängliga regioner för **avsikts igenkänning** via tal-SDK: n är följande:
@@ -67,17 +69,21 @@ Det här är en delmängd av de publicerings regioner som stöds av [language Un
 
 ### <a name="voice-assistants"></a>Röstassistenter
 
-[Tal-SDK](speech-sdk.md) har stöd för **röst assistent** funktioner i följande regioner:
+[Tal-SDK: n](speech-sdk.md) stöder **röst assistents** funktioner via [direkt radnumrering](https://docs.microsoft.com/azure/cognitive-services/speech-service/direct-line-speech) i följande regioner:
 
-| Region         | Regions-ID |
-| -------------- | -------------------- |
-| USA, västra        | `westus`             |
-| USA, västra 2      | `westus2`            |
-| East US        | `eastus`             |
-| USA, östra 2      | `eastus2`            |
-| Europa, västra    | `westeurope`         |
-| Norra Europa   | `northeurope`        |
-| Sydostasien | `southeastasia`      |
+| Global region | Region           | Regions-ID    |
+| ------------- | ---------------- | -------------------- |
+| Nordamerika | USA, västra          | `westus`             |
+| Nordamerika | USA, västra 2        | `westus2`            |
+| Nordamerika | East US          | `eastus`             |
+| Nordamerika | USA, östra 2        | `eastus2`            |
+| Nordamerika | USA, västra centrala  | `westcentralus`      |
+| Nordamerika | USA, södra centrala | `southcentralus`     |
+| Europa        | Europa, västra      | `westeurope`         |
+| Europa        | Norra Europa     | `northeurope`        |
+| Asien          | Asien, östra        | `eastasia`           |
+| Asien          | Sydostasien   | `southeastasia`      |
+| Indien         | Indien, centrala    | `centralindia`       |
 
 ### <a name="speaker-recognition"></a>Talarigenkänning
 

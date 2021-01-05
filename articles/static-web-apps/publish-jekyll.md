@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: cshoe
-ms.openlocfilehash: e3bad12362358620d0f2dc105bb2820dfb691d00
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 673852f8f9aa81c838a7c1db68681bb9ee0b7e0b
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92000216"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862017"
 ---
 # <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps-preview"></a>Självstudie: publicera en Jekyll-webbplats till Azures statiska Web Apps för hands version
 
@@ -100,13 +100,13 @@ Följande steg visar hur du skapar en ny statisk plats-app och distribuerar den 
 
 1. Acceptera prenumerationen som visas i listan eller Välj en ny i list rutan för **prenumeration**.
 
-1. I _resurs grupp_väljer du **ny**. I _nytt resurs grupp namn_anger du **Jekyll-static-app** och väljer **OK**.
+1. I _resurs grupp_ väljer du **ny**. I _nytt resurs grupp namn_ anger du **Jekyll-static-app** och väljer **OK**.
 
 1. Ange sedan ett namn för din app i rutan _namn_ . Giltiga tecken är `a-z` , `A-Z` `0-9` och `-` .
 
-1. För _region_väljer du en tillgänglig region nära dig.
+1. För _region_ väljer du en tillgänglig region nära dig.
 
-1. För _SKU_väljer du **kostnads fri**.
+1. För _SKU_ väljer du **kostnads fri**.
 
     :::image type="content" source="./media/publish-jekyll/basic-app-details.png" alt-text="Information ifylld":::
 
@@ -118,7 +118,7 @@ Följande steg visar hur du skapar en ny statisk plats-app och distribuerar den 
 
 1. För _grenen_ Välj **huvud**.
 
-    :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="Information ifylld":::
+    :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="Slutförd GitHub-information":::
 
 ### <a name="build"></a>Skapa
 
@@ -150,7 +150,7 @@ Sedan lägger du till de konfigurations inställningar som bygg processen använ
 
     ```yml
     - name: Set up Ruby
-      uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
+      uses: ruby/setup-ruby@v1.59.1
       with:
         ruby-version: 2.6
     - name: Install dependencies
@@ -171,7 +171,7 @@ Sedan lägger du till de konfigurations inställningar som bygg processen använ
 
 1. I fönstret _Översikt över_ Azure Portal klickar du på _URL_ -länken för att öppna det distribuerade programmet.
 
-   :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="Information ifylld":::
+   :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="Distribuerat program":::
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

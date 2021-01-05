@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: osamaz
-ms.openlocfilehash: 4f513da4e7883cd273098039c9c4a4645d849f0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e13dc868512dba15c5b335c1774aaa540eef8157
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85516342"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861405"
 ---
 # <a name="azure-for-network-engineers"></a>Azure för nätverkstekniker
 Som en konventionell nätverks tekniker har du hanterat fysiska till gångar, till exempel routrar, växlar, kablar och brand väggar för att bygga infrastruktur. I ett logiskt lager har du konfigurerat virtuellt LAN (VLAN), spanning tree Protocol (STP), routningsprotokoll (RIP, OSPF, BGP). Du har hanterat ditt nätverk med hjälp av hanterings verktyg och CLI. Nätverk i molnet är annorlunda där nätverks slut punkter är logiska och användning av routningsprotokoll är minst. Du kommer att arbeta med Azure Resource Manager API, Azure CLI och PowerShell för att konfigurera och hantera till gångar i Azure. Du kommer att starta din nätverks resa i molnet genom att förstå grundläggande klienter i Azure-nätverk. 
@@ -67,7 +67,7 @@ När du har konkurrerande poster i en routningstabell väljer Azure nästa hopp 
 
 ## <a name="security"></a>Säkerhet
 
-Du kan filtrera nätverks trafik till och från resurser i ett virtuellt nätverk med hjälp av nätverks säkerhets grupper. Du använder också virtuella NVA-enheter (Network Virtual apparater) som Azure-brandvägg eller brand väggar från andra leverantörer. Du kan styra hur Azure dirigerar trafik från undernät. Du kan också begränsa vem i din organisation som kan arbeta med resurser i virtuella nätverk.
+Du kan filtrera nätverks trafik till och från resurser i ett virtuellt nätverk med hjälp av nätverks säkerhets grupper. Du kan också använda virtuella nätverks installationer (NVA) som Azure-brandvägg eller brand väggar från andra leverantörer. Du kan styra hur Azure dirigerar trafik från undernät. Du kan också begränsa vem i din organisation som kan arbeta med resurser i virtuella nätverk.
 
 En Nätverkssäkerhetsgrupp (NSG) innehåller en lista över regler för åtkomstkontrollistan (ACL) som tillåter eller nekar nätverkstrafik till undernät, NICs eller både och. NSG:er kan antingen associeras med undernät eller individuella NICs anslutna till ett undernät. När en NSG är associerad med ett undernät, tillämpas ACL-reglerna på alla virtuella datorer i det undernätet. Dessutom kan trafik till en enskild NIC begränsas genom att koppla en NSG direkt till en NIC.
 

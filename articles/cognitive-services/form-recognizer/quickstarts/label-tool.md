@@ -11,12 +11,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: dokument bearbetning
-ms.openlocfilehash: 7671d8d58ffbd0fca444eefe53c46c99a4e76d37
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: a1cf919e17e22cb6280dce27faceb7cd034a6962
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96009338"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845543"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Träna en formulär igenkännings modell med etiketter med hjälp av verktyget för att använda exempel etiketter
 
@@ -106,7 +106,7 @@ Du använder Docker-motorn för att köra verktyget för etikettering. Följ de 
    Det här kommandot gör verktyget för exempel etiketter tillgängligt via en webbläsare. Gå till `http://localhost:3000`.
 
 > [!NOTE]
-> Du kan också märka dokument och träna modeller med hjälp av formulär tolken REST API. Om du vill träna och analysera med REST API, se [träna med etiketter med hjälp av REST API och python](./python-labeled-data.md).
+> Du kan också märka dokument och träna modeller med hjälp av formulär tolken REST API. Om du vill träna och analysera med REST API, se [träna med etiketter med hjälp av REST API och python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md).
 
 ## <a name="set-up-input-data"></a>Konfigurera indata
 
@@ -137,7 +137,9 @@ Fyll i fälten med följande värden:
 
 * **Visnings namn** – anslutningens visnings namn.
 * **Beskrivning** – din projekt beskrivning.
-* **SAS-URL** – URL: en för signaturen för delad åtkomst (SAS) för din Azure Blob Storage-behållare. Hämta SAS-URL: en genom att öppna Microsoft Azure Storage Explorer, högerklicka på behållaren och välja **Hämta signatur för delad åtkomst**. Ange förfallotiden till en tid som infaller efter att du har använt tjänsten. Kontrol lera att behörigheterna **läsa**, **skriva**, **ta bort** och **lista** är markerade och klicka på **skapa**. Kopiera sedan värdet i **URL** -avsnittet. Det bör ha formatet: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* **SAS-URL** – URL: en för signaturen för delad åtkomst (SAS) för din Azure Blob Storage-behållare. [!INCLUDE [get SAS URL](../includes/sas-instructions.md)]
+
+   :::image type="content" source="../media/quickstarts/get-sas-url.png" alt-text="Hämtning av SAS-URL":::
 
 :::image type="content" source="../media/label-tool/connections.png" alt-text="Anslutnings inställningar för verktyget för exempel etiketter.":::
 
@@ -223,7 +225,7 @@ Följ stegen ovan för att etikettera minst fem av formulären.
 
 ### <a name="specify-tag-value-types"></a>Ange tagg värde typer
 
-Alternativt kan du ange den förväntade data typen för varje tagg. Öppna snabb menyn till höger om en tagg och välj en typ på menyn. Med den här funktionen kan detektions algoritmen göra vissa antaganden som förbättrar precisionen för text identifiering. Det säkerställer också att de identifierade värdena returneras i standardiserat format i de slutliga JSON-utdata. 
+Alternativt kan du ange den förväntade data typen för varje tagg. Öppna snabb menyn till höger om en tagg och välj en typ på menyn. Med den här funktionen kan detektions algoritmen göra vissa antaganden som förbättrar precisionen för text identifiering. Det säkerställer också att de identifierade värdena returneras i standardiserat format i de slutliga JSON-utdata. Värde typs information sparas i *fields.jspå* filen i samma sökväg som dina etikettfiler.
 
 > [!div class="mx-imgBorder"]
 > ![Val av värde typ med exempel etikett verktyg](../media/whats-new/formre-value-type.png)
@@ -266,7 +268,7 @@ Följande värde typer och varianter stöds för närvarande:
 
 Klicka på ikonen träna i det vänstra fönstret för att öppna sidan utbildning. Klicka sedan på knappen **träna** för att börja träna modellen. När inlärnings processen har slutförts visas följande information:
 
-* **Modell-ID** – ID: t för den modell som skapades och tränades. Varje utbildnings anrop skapar en ny modell med sitt eget ID. Kopiera den här strängen till en säker plats. du behöver det om du vill utföra förutsägelse samtal via [REST API](./curl-train-extract.md) eller [klient biblioteket](./client-library.md).
+* **Modell-ID** – ID: t för den modell som skapades och tränades. Varje utbildnings anrop skapar en ny modell med sitt eget ID. Kopiera den här strängen till en säker plats. du behöver det om du vill utföra förutsägelse samtal via [REST API](./client-library.md?pivots=programming-language-rest-api) eller [klient biblioteket](./client-library.md).
 * **Genomsnittlig noggrannhet** – modellens genomsnittliga noggrannhet. Du kan förbättra modell precisionen genom att märka ytterligare formulär och utbildning igen för att skapa en ny modell. Vi rekommenderar att du börjar med att märka fem formulär och lägga till fler formulär efter behov.
 * Listan med taggar och den uppskattade noggrannheten per tagg.
 
@@ -276,7 +278,7 @@ Klicka på ikonen träna i det vänstra fönstret för att öppna sidan utbildni
 Efter att utbildningen har slutförts undersöker du det **genomsnittliga noggrannhet** svärdet. Om den är låg bör du lägga till fler indatamängder och upprepa stegen ovan. Dokumenten som du redan har märkt kommer att finnas kvar i projekt indexet.
 
 > [!TIP]
-> Du kan också köra övnings processen med ett REST API-anrop. Information om hur du gör detta finns i [träna med etiketter med hjälp av python](./python-labeled-data.md).
+> Du kan också köra övnings processen med ett REST API-anrop. Information om hur du gör detta finns i [träna med etiketter med hjälp av python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md).
 
 ## <a name="compose-trained-models"></a>Skapa utbildade modeller
 
@@ -299,7 +301,7 @@ Om du vill skapa modeller i exempel etikett verktyget klickar du på ikonen skap
 Klicka på ikonen förutsägelse (ljus lampa) till vänster för att testa din modell. Ladda upp ett formulär dokument som du inte har använt i övnings processen. Klicka sedan på knappen **predict** till höger för att hämta nyckel/värde-förutsägelser för formuläret. Verktyget använder taggar i markerings rutor och rapporterar förtroendet för varje tagg.
 
 > [!TIP]
-> Du kan också köra analys-API: et med ett REST-anrop. Information om hur du gör detta finns i [träna med etiketter med hjälp av python](./python-labeled-data.md).
+> Du kan också köra analys-API: et med ett REST-anrop. Information om hur du gör detta finns i [träna med etiketter med hjälp av python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md).
 
 ## <a name="improve-results"></a>Förbättra resultaten
 
@@ -326,7 +328,7 @@ Till sist går du till huvud sidan (House-ikonen) och klickar på öppna moln pr
 I den här snabb starten har du lärt dig hur du använder formulär tolkens exempel etikett verktyg för att träna en modell med manuellt märkta data. Om du vill bygga ditt eget verktyg för att märka tränings data använder du de REST-API: er som hanterar etiketterad data träning.
 
 > [!div class="nextstepaction"]
-> [Träna med etiketter med python](./python-labeled-data.md)
+> [Träna med etiketter med python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)
 
 * [Vad är formigenkänning?](../overview.md)
-* [Snabb start för formulär tolkens klient bibliotek](client-library.md)
+* [Snabb start för formulär tolken](client-library.md)

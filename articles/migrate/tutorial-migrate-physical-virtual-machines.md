@@ -5,14 +5,14 @@ author: rahulg1190
 ms.author: rahugup
 ms.manager: bsiva
 ms.topic: tutorial
-ms.date: 04/15/2020
+ms.date: 01/02/2021
 ms.custom: MVC
-ms.openlocfilehash: af1c321e5c537fbd3af770cb392c538e6056e075
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: bd560a6ef4a3b4ab5eb4632e7741c764f6e314e1
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752880"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854935"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Migrera datorer som fysiska servrar till Azure
 
@@ -25,7 +25,7 @@ Den här artikeln visar hur du migrerar datorer som fysiska servrar till Azure m
 - Migrera virtuella datorer som körs i offentliga moln, till exempel Amazon Web Services (AWS) eller Google Cloud Platform (GCP).
 
 
-Den här självstudien är den tredje i en serie som visar hur du bedömer och migrerar fysiska servrar till Azure. I den här guiden får du lära dig att:
+Den här självstudien är den tredje i en serie som visar hur du bedömer och migrerar fysiska servrar till Azure. I de här självstudierna får du lära dig att
 
 > [!div class="checklist"]
 > * Förbered för att använda Azure med Azure Migrate: Server-migrering.
@@ -109,7 +109,7 @@ Förbered distribution av installationer enligt följande:
 - Du förbereder en dator för att vara värd för replikerings enheten. [Granska](migrate-replication-appliance.md#appliance-requirements) maskin varu kraven.
 - Replikerings enheten använder MySQL. Granska [alternativen](migrate-replication-appliance.md#mysql-installation) för att installera MySQL på-enheten.
 - Granska de Azure-URL: er som krävs för att replikeringssystemet ska kunna komma åt [offentliga](migrate-replication-appliance.md#url-access) och [offentliga](migrate-replication-appliance.md#azure-government-url-access) moln.
-- Granska [port] (Migrate-Replication-installation. MD # port-Access) åtkomst krav för replikerings enheten.
+- Granska [port](migrate-replication-appliance.md#port-access) åtkomst kraven för replikerings enheten.
 
 > [!NOTE]
 > Replikeringssystemet bör inte installeras på en käll dator som du vill replikera eller på Azure Migrate identifierings-och utvärderings installation som du kan ha installerat tidigare.
@@ -287,7 +287,7 @@ När delta-replikering börjar kan du köra en testmigrering för de virtuella d
 Gör en testmigrering enligt följande:
 
 
-1. I Server för **migrerings mål**  >  **Servers**  >  **Azure Migrate: Server migrering** klickar du på **test migrerade servrar**.
+1. I Server för **migrerings mål**  >    >  **Azure Migrate: Server migrering** klickar du på **test migrerade servrar**.
 
      ![Testmigrerade servrar](./media/tutorial-migrate-physical-virtual-machines/test-migrated-servers.png)
 

@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 60ef490bbba4dca4f01b82967ad6ea8636e7bd4e
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: a63f910b3a939e33b8c71d8f22d15f6d610a12cc
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353705"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845566"
 ---
 # <a name="form-recognizer-layout-service"></a>Formulär tolkens layout-tjänst
 
@@ -89,8 +89,7 @@ Layout extraherar också markerings märken från dokument. Extraherade markerin
 ## <a name="next-steps"></a>Nästa steg
 
 - Prova din egen extrahering av layouten med hjälp av [formulär tolkens exempel gränssnitt](https://fott-preview.azurewebsites.net/)
-- Slutför snabb starten för [formulär tolkens klient bibliotek](quickstarts/client-library.md) för att komma igång med att extrahera layouter på valfritt språk.
-- Du kan också följa snabb starten för [extrahering av data](./QuickStarts/python-layout.md) för att implementera dataextrahering med Python och REST API.
+- Slutför en [snabb start för formulär](quickstarts/client-library.md) för att komma igång med att extrahera layouter på valfritt språk.
 
 ## <a name="see-also"></a>Se även
 

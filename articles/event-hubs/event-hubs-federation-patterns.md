@@ -3,12 +3,12 @@ title: Aktivitets mönster för händelse replikering – Azure Event Hubs | Mic
 description: Den här artikeln innehåller detaljerad information om hur du implementerar aktivitets mönster för en speciell händ Els replikering
 ms.topic: article
 ms.date: 12/12/2020
-ms.openlocfilehash: 7702b1987faabfce8d97e7b5c9b18766df72caad
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 494de442b636d535fa1ed6fdeeeda28db9783952
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803994"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861369"
 ---
 # <a name="event-replication-tasks-patterns"></a>Aktivitets mönster för händelse replikering
 
@@ -20,7 +20,7 @@ I den här artikeln beskriver vi implementerings vägledningen för flera av mö
 
 I det här mönstret kopieras händelser från en händelsehubben till nästa, eller från en Händelsehubben till ett annat mål som en Service Bus kö. Händelserna vidarebefordras utan att göra några ändringar i händelse nytto lasten.
 
-Implementeringen av det här mönstret omfattas av [händelse replikeringen mellan Event Hubs](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopy) och [Händelseprovidern mellan Event Hubs och Service Bus](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus) exempel.
+Implementeringen av det här mönstret omfattas av [händelse replikeringen mellan Event Hubs](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopy) och [Händelseprovidern mellan Event Hubs och Service Bus](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus) exempel och i [Apache Kafka MirrorMaker med Event Hubs](event-hubs-kafka-mirror-maker-tutorial.md) själv studie kurs för det speciella fallet med att replikera data från en Apache Kafka-Broker till Event Hubs.
 
 ### <a name="streams-and-order-preservation"></a>Data strömmar och bevarad ordning
 

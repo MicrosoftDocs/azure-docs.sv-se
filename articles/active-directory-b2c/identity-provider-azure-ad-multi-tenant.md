@@ -8,34 +8,35 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/04/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 71e3bf429c7b8d3f4f8fe205c05b0701732fdef9
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: c9ac92f836e1d0c1210bb16b5c1d6e232fd5c22e
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653817"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858475"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurera inloggning för Azure Active Directory för flera innehavare med anpassade principer i Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-::: zone pivot="b2c-custom-policy"
+::: zone pivot="b2c-user-flow"
 
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+[!INCLUDE [active-directory-b2c-limited-to-custom-policy](../../includes/active-directory-b2c-limited-to-custom-policy.md)]
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Krav
-
-[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
+::: zone pivot="b2c-custom-policy"
 
 Den här artikeln visar hur du aktiverar inloggning för användare som använder slut punkten för flera innehavare för Azure Active Directory (Azure AD). Detta gör att användare från flera Azure AD-klienter kan logga in med hjälp av Azure AD B2C, utan att du behöver konfigurera en identitets leverantör för varje klient. Gäst medlemmar i någon av dessa klienter **kommer dock inte** att kunna logga in. För det måste du [Konfigurera varje klient för sig](identity-provider-azure-ad-single-tenant.md).
 
+## <a name="prerequisites"></a>Förutsättningar
+
+[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="register-an-application"></a>Registrera ett program
 
@@ -71,41 +72,6 @@ Om du vill hämta `family_name` och `given_name` anspråk från Azure AD kan du 
 1. I **tokentyp** väljer du **ID**.
 1. Välj de valfria anspråk som ska läggas till `family_name` och `given_name` .
 1. Klicka på **Lägg till**.
-
-::: zone pivot="b2c-user-flow"
-
-## <a name="configure-azure-ad-as-an-identity-provider"></a>Konfigurera Azure AD som en identitets leverantör
-
-1. Kontrol lera att du använder den katalog som innehåller Azure AD B2C klient. Välj **katalog + prenumerations** filter på den översta menyn och välj den katalog som innehåller Azure AD B2C klienten.
-1. Välj **Alla tjänster** på menyn högst upp till vänster i Azure-portalen och sök efter och välj **Azure AD B2C**.
-1. Välj **identitets leverantörer** och välj sedan **ny OpenID Connect-Provider**.
-1. Ange ett **namn**. Ange till exempel *contoso Azure AD*.
-1. För **metadata-URL** anger du följande URL `{tenant}` som ersätter med domän namnet för din Azure AD-klient:
-
-    ```
-    https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
-    ```
-
-    Ett exempel är `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`.
-    Ett exempel är `https://login.microsoftonline.com/contoso.com/v2.0/.well-known/openid-configuration`.
-
-1. För **klient-ID** anger du det program-ID som du tidigare har registrerat.
-1. För **klient hemlighet** anger du den klient hemlighet som du tidigare har registrerat.
-1. För **scopet** anger du `openid profile` .
-1. Lämna standardvärdena för **svars typ**, **svars läge** och **domän tips**.
-1. Under **identitets leverantör anspråks mappning** väljer du följande anspråk:
-
-    - **Användar-ID**: *OID*
-    - **Visnings namn**: *namn*
-    - **Tilldelat namn**: *given_name*
-    - Efter **namn**: *family_name*
-    - **E-post**: *preferred_username*
-
-1. Välj **Spara**.
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
 
 ## <a name="create-a-policy-key"></a>Skapa en princip nyckel
 
@@ -243,24 +209,6 @@ Nu när du har en knapp på plats måste du länka den till en åtgärd. Åtgär
     Uppdatera värdet för **TechnicalProfileReferenceId** till **ID: t** för den tekniska profil som du skapade tidigare. Ett exempel är `Common-AAD`.
 
 3. Spara *TrustFrameworkExtensions.xml* -filen och ladda upp den igen för verifiering.
-
-::: zone-end
-
-::: zone pivot="b2c-user-flow"
-
-## <a name="add-azure-ad-identity-provider-to-a-user-flow"></a>Lägga till Azure AD Identity Provider i ett användar flöde 
-
-1. Välj **användar flöden** i Azure AD B2C klient.
-1. Klicka på det användar flöde som du vill använda för Azure AD Identity-providern.
-1. Under **leverantörer av sociala identitet** väljer du **contoso Azure AD**.
-1. Välj **Spara**.
-1. Om du vill testa principen väljer du **Kör användar flöde**.
-1. För **program** väljer du det webb program som heter *testapp1* som du tidigare har registrerat. **Svars-URL: en** ska visas `https://jwt.ms` .
-1. Klicka på **Kör användar flöde**
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
 
 ## <a name="update-and-test-the-relying-party-file"></a>Uppdatera och testa den förlitande part filen
 

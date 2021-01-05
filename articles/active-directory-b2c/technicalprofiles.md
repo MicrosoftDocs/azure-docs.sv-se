@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 99ed7d3ad81202ab6fe67bf52888bbdbf0b28d2a
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: b7bd04790c7ac124afe3e9b503803f27118ae959
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387096"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861868"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -52,7 +52,7 @@ Alla typer av tekniska profiler delar samma koncept. Du kan skicka indata-anspr�
 ![Diagram som illustrerar det tekniska profil flödet](./media/technical-profiles/technical-profile-flow.png)
 
 1. **Hantering av enkel inloggning (SSO)** – återställer den tekniska profilens sessionstillstånd med hjälp av SSO- [sessionshantering](custom-policy-reference-sso.md).
-1. **Transformering av inmatade anspråk** – innan den tekniska profilen startas körs inmatade Azure AD B2C [anspråks omvandling]. (claimstransformations.md).
+1. **Transformering av inmatade anspråk** – innan den tekniska profilen startas körs omvandlingen av inmatade [anspråk](claimstransformations.md)i Azure AD B2C.
 1. Inloggade **anspråk** – anspråk hämtas från den anspråks väska som används för den tekniska profilen.
 1. **Körning av teknisk profil** – den tekniska profilen utbyter anspråk med den konfigurerade parten. Exempel:
     - Omdirigera användaren till identitets leverantören för att slutföra inloggningen. Efter lyckad inloggning återgår användaren och den tekniska profil körningen fortsätter.
@@ -121,7 +121,7 @@ Ett **TechnicalProfiles** -element innehåller en uppsättning tekniska profiler
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
 | Namn | Ja | Namnet på ett giltigt protokoll som stöds av Azure AD B2C som används som en del av den tekniska profilen. Möjliga värden:,,,, `OAuth1` `OAuth2` `SAML2` `OpenIdConnect` `Proprietary` eller `None` . |
-| Hanterare | Inga | När protokoll namnet är inställt på `Proprietary` anger du det fullständigt kvalificerade namnet för den sammansättning som används av Azure AD B2C för att fastställa protokoll hanteraren. |
+| Hanterare | Nej | När protokoll namnet är inställt på `Proprietary` anger du det fullständigt kvalificerade namnet för den sammansättning som används av Azure AD B2C för att fastställa protokoll hanteraren. |
 
 ## <a name="metadata"></a>Metadata
 
@@ -191,7 +191,7 @@ Azure AD B2C lagrar hemligheter och certifikat i form av [princip nycklar](polic
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| Id | Inga | En unik identifierare för ett visst nyckel par som refereras från andra element i princip filen. |
+| Id | Nej | En unik identifierare för ett visst nyckel par som refereras från andra element i princip filen. |
 | StorageReferenceId | Ja | En identifierare för lagrings nyckel behållare som refereras från andra element i princip filen. |
 
 ## <a name="input-claims-transformations"></a>Transformeringar av inmatade anspråk
@@ -252,8 +252,8 @@ Följande tekniska profiler hänvisar till omvandlingen av **CreateOtherMailsFro
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ja | Identifieraren för en anspråks typ som redan har definierats i avsnittet ClaimsSchema i princip filen eller den överordnade princip filen. |
-| Standar | Inga | Ett standardvärde som ska användas för att skapa ett anspråk om det anspråk som anges av ClaimTypeReferenceId inte finns så att det resulterande anspråket kan användas som en InputClaim av den tekniska profilen. |
-| PartnerClaimType | Inga | Identifieraren för anspråks typen för den externa partner som den angivna princip anspråks typen mappar till. Om attributet PartnerClaimType inte anges mappas den angivna typen av princip anspråk till partner anspråks typen med samma namn. Använd den här egenskapen när anspråks typ namnet skiljer sig från den andra parten. Till exempel är det första anspråks namnet ' givenName ', medan partnern använder ett anspråk med namnet ' first_name '. |
+| Standar | Nej | Ett standardvärde som ska användas för att skapa ett anspråk om det anspråk som anges av ClaimTypeReferenceId inte finns så att det resulterande anspråket kan användas som en InputClaim av den tekniska profilen. |
+| PartnerClaimType | Nej | Identifieraren för anspråks typen för den externa partner som den angivna princip anspråks typen mappar till. Om attributet PartnerClaimType inte anges mappas den angivna typen av princip anspråk till partner anspråks typen med samma namn. Använd den här egenskapen när anspråks typ namnet skiljer sig från den andra parten. Till exempel är det första anspråks namnet ' givenName ', medan partnern använder ett anspråk med namnet ' first_name '. |
 
 ## <a name="display-claims"></a>Visa anspråk
 
@@ -279,9 +279,9 @@ Ordningen på elementen i **DisplayClaims** anger i vilken ordning som Azure AD 
 
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | Inga | Identifieraren för en anspråks typ som redan har definierats i avsnittet ClaimsSchema i princip filen eller den överordnade princip filen. |
-| DisplayControlReferenceId | Inga | Identifieraren för en [visnings kontroll](display-controls.md) som redan har definierats i ClaimsSchema-avsnittet i princip filen eller den överordnade princip filen. |
-| Obligatorisk | Inga | Anger om visnings kravet krävs. |
+| ClaimTypeReferenceId | Nej | Identifieraren för en anspråks typ som redan har definierats i avsnittet ClaimsSchema i princip filen eller den överordnade princip filen. |
+| DisplayControlReferenceId | Nej | Identifieraren för en [visnings kontroll](display-controls.md) som redan har definierats i ClaimsSchema-avsnittet i princip filen eller den överordnade princip filen. |
+| Obligatoriskt | Nej | Anger om visnings kravet krävs. |
 
 I följande exempel illustreras användningen av Visa anspråk och visa kontroller med i en självkontrollerad teknisk profil.
 
@@ -326,8 +326,8 @@ Namnet på anspråket är namnet på [Azure AD-attributet](user-profile-attribut
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ja | Identifieraren för en anspråks typ som redan har definierats i avsnittet ClaimsSchema i princip filen eller den överordnade princip filen. |
-| Standar | Inga | Ett standardvärde som ska användas för att skapa ett anspråk om det anspråk som anges av ClaimTypeReferenceId inte finns så att det resulterande anspråket kan användas som en InputClaim av den tekniska profilen. |
-| PartnerClaimType | Inga | Identifieraren för anspråks typen för den externa partner som den angivna princip anspråks typen mappar till. Om attributet PartnerClaimType inte anges mappas den angivna typen av princip anspråk till partner anspråks typen med samma namn. Använd den här egenskapen när anspråks typ namnet skiljer sig från den andra parten. Till exempel är det första anspråks namnet ' givenName ', medan partnern använder ett anspråk med namnet ' first_name '. |
+| Standar | Nej | Ett standardvärde som ska användas för att skapa ett anspråk om det anspråk som anges av ClaimTypeReferenceId inte finns så att det resulterande anspråket kan användas som en InputClaim av den tekniska profilen. |
+| PartnerClaimType | Nej | Identifieraren för anspråks typen för den externa partner som den angivna princip anspråks typen mappar till. Om attributet PartnerClaimType inte anges mappas den angivna typen av princip anspråk till partner anspråks typen med samma namn. Använd den här egenskapen när anspråks typ namnet skiljer sig från den andra parten. Till exempel är det första anspråks namnet ' givenName ', medan partnern använder ett anspråk med namnet ' first_name '. |
 
 I följande exempel är den tekniska profilen **AAD-UserWriteUsingLogonEmail** eller [Start paketet](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccounts)som skapar ett nytt lokalt konto kvar efter anspråk:
 
@@ -357,9 +357,9 @@ I följande exempel är den tekniska profilen **AAD-UserWriteUsingLogonEmail** e
 | Attribut | Krävs | Beskrivning |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ja | Identifieraren för en anspråks typ som redan har definierats i avsnittet ClaimsSchema i princip filen eller den överordnade princip filen. |
-| Standar | Inga | Ett standardvärde som ska användas för att skapa ett anspråk om det anspråk som anges av ClaimTypeReferenceId inte finns så att det resulterande anspråket kan användas som en InputClaim av den tekniska profilen. |
-|AlwaysUseDefaultValue |Inga |Tvinga användningen av standardvärdet.  |
-| PartnerClaimType | Inga | Identifieraren för anspråks typen för den externa partner som den angivna princip anspråks typen mappar till. Om attributet PartnerClaimType inte anges mappas den angivna typen av princip anspråk till partner anspråks typen med samma namn. Använd den här egenskapen när anspråks typ namnet skiljer sig från den andra parten. Till exempel är det första anspråks namnet ' givenName ', medan partnern använder ett anspråk med namnet ' first_name '. |
+| Standar | Nej | Ett standardvärde som ska användas för att skapa ett anspråk om det anspråk som anges av ClaimTypeReferenceId inte finns så att det resulterande anspråket kan användas som en InputClaim av den tekniska profilen. |
+|AlwaysUseDefaultValue |Nej |Tvinga användningen av standardvärdet.  |
+| PartnerClaimType | Nej | Identifieraren för anspråks typen för den externa partner som den angivna princip anspråks typen mappar till. Om attributet PartnerClaimType inte anges mappas den angivna typen av princip anspråk till partner anspråks typen med samma namn. Använd den här egenskapen när anspråks typ namnet skiljer sig från den andra parten. Till exempel är det första anspråks namnet ' givenName ', medan partnern använder ett anspråk med namnet ' first_name '. |
 
 ## <a name="output-claims-transformations"></a>Transformeringar av utgående anspråk
 

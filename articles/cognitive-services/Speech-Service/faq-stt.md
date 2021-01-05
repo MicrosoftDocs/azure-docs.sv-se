@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: 32f6a9dae1a5b0be604b53d814ebc85cb7813b91
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: a78e18de1f495feb6234fa5bfd97162d8b80de4c
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353773"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857332"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Vanliga frågor och svar om tal till text
 
@@ -25,7 +25,7 @@ Om du inte kan hitta svar på dina frågor i dessa vanliga frågor och svar kan 
 
 **F: Vad är skillnaden mellan en bas linje modell och en anpassad tal till text modellen?**
 
-**A**: en bas linje modell har tränats med hjälp av Microsoft-ägda data och har redan distribuerats i molnet. Du kan använda en anpassad modell för att anpassa en modell så att den bättre passar en specifik miljö som har ett speciellt omgivnings brus eller språk. I fabriks golv, bilar eller störningar i gator krävs en anpassad akustisk modell. Ämnen som biologi, fysik, Radiology, produkt namn och anpassade akronymer kräver en anpassad språk modell.
+**A**: en bas linje modell har tränats med hjälp av Microsoft-ägda data och har redan distribuerats i molnet. Du kan använda en anpassad modell för att anpassa en modell så att den bättre passar en specifik miljö som har ett speciellt omgivnings brus eller språk. I fabriks golv, bilar eller störningar i gator krävs en anpassad akustisk modell. Ämnen som biologi, fysik, Radiology, produkt namn och anpassade akronymer kräver en anpassad språk modell. Om du tränar en anpassad modell bör du börja med relaterad text för att förbättra igenkänningen av särskilda termer och fraser.
 
 **F: Hur börjar jag om jag vill använda en bas linje modell?**
 
@@ -49,9 +49,15 @@ S **: det** finns ingen gräns för antalet modeller som du kan ha i din samling
 
 **A**: för närvarande kan du inte återställa en akustisk eller språk anpassnings process. Du kan ta bort importerade data och modeller när de är i ett Terminal-tillstånd.
 
-**F: Vad är skillnaden mellan en söknings-och dikterings-modell och en konversations modell?**
+**F: Jag får flera resultat för varje fras med det detaljerade utdataformatet. Vilken av dem ska jag använda?**
 
-**A**: du kan välja bland fler än en bas linje modell i tal tjänsten. Konversations modellen är användbar för att känna igen tal som talas i ett konversations format. Den här modellen är idealisk för att skriva om telefonsamtal. Sök-och dikterings modellen är idealisk för röst lösa appar. Den universella modellen är en ny modell som syftar på båda scenarierna. Den universella modellen är för närvarande på eller över kvalitets nivån för konversations modellen i de flesta nationella inställningar.
+**A**: Ta alltid det första resultatet, även om ett annat resultat ("N-Best") kan ha ett högre konfidens värde. Tal tjänsten betraktar det första resultatet som bäst. Det kan också vara en tom sträng om inget tal identifierats.
+
+De andra resultaten är förmodligen sämre och har kanske inte full användning av versaler och skiljetecken. De här resultaten är mest användbara i särskilda scenarier, till exempel att ge användarna möjlighet att välja korrigeringar från en lista eller hantera felaktigt identifierade kommandon.
+
+**F: Varför finns det olika bas modeller?**
+
+**A**: du kan välja bland fler än en bas modell i tal tjänsten. Varje modell namn innehåller det datum då det lades till. När du börjar träna en anpassad modell använder du den senaste modellen för att få bästa möjliga noggrannhet. Äldre bas modeller är fortfarande tillgängliga under en tid när en ny modell görs tillgänglig. Du kan fortsätta att använda modellen som du har arbetat med tills den dras tillbaka (se [modellens livs cykel](custom-speech-overview.md#model-lifecycle)). Vi rekommenderar fortfarande att du växlar till den senaste bas modellen för bättre noggrannhet.
 
 **F: kan jag uppdatera min befintliga modell (modell stackning)?**
 
@@ -59,19 +65,27 @@ S **: det** finns ingen gräns för antalet modeller som du kan ha i din samling
 
 Den gamla data uppsättningen och den nya data uppsättningen måste kombineras i en enda. zip-fil (för akustiska data) eller i en txt-fil (för språk data). När anpassningen är färdig måste den nya, uppdaterade modellen omdistribueras för att få en ny slut punkt
 
-**F: när en ny version av en bas linje är tillgänglig uppdateras min distribution automatiskt?**
+**F: när en ny version av en bas modell är tillgänglig uppdateras min distribution automatiskt?**
 
 **A**: distributioner kommer inte att uppdateras automatiskt.
 
-Om du har anpassat och distribuerat en modell med baseline V 1.0, kommer distributionen att förbli oförändrad. Kunder kan inaktivera den distribuerade modellen, omanpassa med den nya versionen av bas linjen och distribuera om.
+Om du har anpassat och distribuerat en modell förblir den distributionen. Du kan inaktivera den distribuerade modellen, omanpassa med den nya versionen av bas modellen och omdistribuera för att få bättre noggrannhet.
+
+Både bas modeller och anpassade modeller kommer att dras tillbaka efter en stund (se [modellens livs cykel](custom-speech-overview.md#model-lifecycle)).
 
 **F: kan jag hämta min modell och köra den lokalt?**
 
-**A**: det går inte att ladda ned och köra modeller lokalt.
+**A**: du kan köra en anpassad modell lokalt i en [Docker-behållare](speech-container-howto.md?tabs=cstt).
+
+**F: kan jag kopiera eller flytta mina data uppsättningar, modeller och distributioner till en annan region eller prenumeration?**
+
+**A**: du kan använda [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) för att kopiera en anpassad modell till en annan region eller prenumeration. Det går inte att kopiera data uppsättningar eller distributioner. Du kan importera en data uppsättning igen i en annan prenumeration och skapa slut punkter där modell kopiorna används.
 
 **F: loggas mina förfrågningar?**
 
-**A**: som standard loggas inte (varken ljud eller avskrifter). Om det behövs kan du välja *logg innehåll från det här slut punkts* alternativet när du [skapar en anpassad slut punkt](./how-to-custom-speech-train-model.md) för att aktivera spårning. Sedan kommer förfrågningar att loggas i Azure i säkert lagrings utrymme.
+**A**: som standard loggas inte (varken ljud eller avskrifter). Om det behövs kan du välja *logg innehåll från det här slut punkts* alternativet när du [skapar en anpassad slut punkt](./how-to-custom-speech-train-model.md). Du kan också aktivera ljud loggning i [talet SDK](speech-sdk.md) för varje begäran utan att skapa en anpassad slut punkt. I båda fallen lagras ljud-och igenkännings resultat från begär anden i säkert lagrings utrymme. För prenumerationer som använder Microsoft-ägda lagrings enheter är de tillgängliga i 30 dagar.
+
+Du kan exportera de loggade filerna på sidan distribution i tal Studio om du använder en anpassad slut punkt med *logg innehåll från den här slut punkten* aktive rad. Om ljud loggning har Aktiver ATS via SDK anropar du [API: et](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetBaseModelLogs) för att komma åt filerna.
 
 **F: är mina förfrågningar begränsade?**
 
@@ -92,7 +106,7 @@ Se [kvoter och begränsningar för tal tjänster](speech-services-quotas-and-lim
 
 **F: Vad är gränsen för en data uppsättnings storlek och varför är den begränsad?**
 
-**A**: gränsen beror på begränsningen av storleken på en fil för http-uppladdning. Se [kvoter för tal tjänster och begränsningar](speech-services-quotas-and-limits.md) för den faktiska gränsen.
+**A**: gränsen beror på begränsningen av storleken på en fil för http-uppladdning. Se [kvoter för tal tjänster och begränsningar](speech-services-quotas-and-limits.md) för den faktiska gränsen. Du kan dela upp data i flera data uppsättningar och välja alla för att träna modellen.
 
 **F: kan jag zippa upp mina textfiler så att jag kan ladda upp en större textfil?**
 
@@ -118,21 +132,19 @@ S **: samla** in data som är så nära program scenariot och användnings falle
 
 **F: behöver jag skriva av anpassnings data själv?**
 
-**A**: Ja! Du kan skriva av den själv eller använda en professionell avskrifts tjänst. Vissa användare föredrar professionella scheman och andra använder gemensamt skapade eller utför avskrifterna själva.
+**A**: Ja. Du kan skriva av den själv eller använda en professionell avskrifts tjänst. Vissa användare föredrar professionella scheman och andra använder gemensamt skapade eller utför avskrifterna själva.
+
+**F: hur lång tid tar det att träna en anpassad modell ljud data?**
+
+**A**: träna en modell med ljuddata är en långvarig process. Beroende på mängden data kan det ta flera dagar att skapa en anpassad modell. Om den inte kan slutföras inom en vecka kan tjänsten avbryta inlärnings åtgärden och rapportera modellen som misslyckad. Använd en av [regionerna](custom-speech-overview.md#set-up-your-azure-account) där dedikerad maskin vara är tillgänglig för utbildning för snabbare resultat. Du kan kopiera den helt utbildade modellen till en annan region med hjälp av [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription). Utbildning med enbart text är mycket snabbare och slutförs vanligt vis inom några minuter.
+
+Vissa bas modeller kan inte anpassas med ljud data. För dem använder tjänsten bara texten i avskriften för träning och tar bort ljuddata. Träningen kommer att bli mycket snabbare och resultatet är detsamma som utbildning med enbart text.
 
 ## <a name="accuracy-testing"></a>Precisions testning
 
-**F: kan jag utföra offline-testning av min anpassade akustiska modell med hjälp av en anpassad språk modell?**
-
-**A**: Ja, Välj bara den anpassade språk modellen på den nedrullningsbara menyn när du ställer in offline-testet.
-
-**F: kan jag utföra offline-testning av min anpassade språk modell genom att använda en anpassad akustisk modell?**
-
-**A**: Ja, Välj bara den anpassade akustiska modellen på den nedrullningsbara menyn när du ställer in offline-testet.
-
 **F: Vad är en fel frekvens i Word (WER) och hur beräknas det?**
 
-**A**: WER är utvärderings måttet för tal igenkänning. WER räknas som det totala antalet fel, inklusive infogningar, borttagningar och ersättningar, dividerat med det totala antalet ord i referens avskriften. Mer information finns i [fel frekvens för Word](https://en.wikipedia.org/wiki/Word_error_rate).
+**A**: WER är utvärderings måttet för tal igenkänning. WER räknas som det totala antalet fel, inklusive infogningar, borttagningar och ersättningar, dividerat med det totala antalet ord i referens avskriften. Mer information finns i [utvärdera Custom Speech noggrannhet](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy).
 
 **F: Hur gör jag för att avgöra om resultatet av ett precisions test är lämpligt?**
 

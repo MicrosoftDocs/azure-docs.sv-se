@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 12/02/2020
+ms.date: 01/04/2021
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 042139a39c28ee4944a7f3f766fc61b163629843
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 57e3a059a5dd846250ba162513ef118e084c4b87
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574402"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861601"
 ---
 # <a name="download-a-list-of-users-in-azure-active-directory-portal"></a>Hämta en lista med användare i Azure Active Directory Portal
 
@@ -26,20 +26,20 @@ Azure Active Directory (Azure AD) stöder åtgärder för Mass import av använd
 
 ## <a name="required-permissions"></a>Behörigheter som krävs
 
-Om du vill ladda ned listan med användare från Azure AD Admin Center måste du vara inloggad med en användare som tilldelats en eller flera administratörs roller på organisations nivå i Azure AD (användar administratör är den lägsta roll som krävs). Gäst deltagare och programutvecklare betraktas inte som administratörs roller.
+För att ladda ned listan med användare från Azure AD-administrationscentret måste du vara inloggad med en användare som tilldelats en eller flera administratörsroller i Azure AD (rollen Användaradministratör eller högre krävs). Gästdeltagare och programutvecklare betraktas inte som administratörsroller.
 
 ## <a name="to-download-a-list-of-users"></a>Hämta en lista med användare
 
 1. [Logga in på din Azure AD-organisation](https://aad.portal.azure.com) med ett användar administratörs konto i organisationen.
-2. Navigera till Azure Active Directory > användare. Välj sedan de användare som du vill inkludera i nedladdningen genom att kryssa i rutan i den vänstra kolumnen bredvid varje användare. Obs! det finns för tillfället inget sätt att markera alla användare för export. Var och en måste väljas individuellt.
+2. Gå till Azure Active Directory > Användare. Välj sedan de användare som du vill lägga till i nedladdningen genom att kryssa i rutan i den vänstra kolumnen bredvid varje användare. Obs! För närvarande går det inte att markera alla användare samtidigt för export. De måste markeras en i taget.
 3. I Azure AD väljer **du användare**  >  **Ladda ned användare**.
-4. På sidan **Ladda ned användare** väljer du **Start** för att ta emot en CSV-fil som visar egenskaper för användar profiler. Om det finns fel kan du hämta och Visa resultat filen på resultat sidan för Mass åtgärder. Filen innehåller orsaken för varje fel.
+4. På sidan **Ladda ned användare** väljer du **Start** för att ta emot en CSV-fil som visar egenskaper för användar profiler. Om det finns fel kan du ladda ned och visa resultatfilen på sidan med massåtgärdsresultat. I filen kan du se orsaken till varje fel.
 
    ![Välj var du vill att listan över användare som du vill ladda ned ska hämtas](./media/users-bulk-download/bulk-download.png)
 
-   Nedladdnings filen innehåller den filtrerade listan över användare.
+   Nedladdningsfilen innehåller den filtrerade listan över användare.
 
-   Följande användarattribut ingår:
+   Följande användarattribut finns med:
 
    - userPrincipalName
    - displayName
@@ -48,7 +48,7 @@ Om du vill ladda ned listan med användare från Azure AD Admin Center måste du
    - förnamn
    - objectId
    - userType
-   - Befattning
+   - jobTitle
    - avdelning
    - accountEnabled
    - usageLocation
@@ -57,10 +57,9 @@ Om du vill ladda ned listan med användare från Azure AD Admin Center måste du
    - land
    - physicalDeliveryOfficeName
    - city
-   - Post nummer
+   - postalCode
    - telephoneNumber
    - mobil
-   - authenticationPhoneNumber
    - authenticationAlternativePhoneNumber
    - authenticationEmail
    - alternateEmailAddress

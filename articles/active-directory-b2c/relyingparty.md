@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9c50bd71f4e2e5bbe12518f5a5d1cd486af9723a
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 0f0f3b6ffcb7ee12a692470b922cf23a3f0f40f0
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509759"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858442"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -231,6 +231,7 @@ När protokollet är `SAML` , innehåller ett metadataelement följande element.
 | KeyEncryptionMethod| Nej | Anger den metod som Azure AD B2C använder för att kryptera kopian av nyckeln som användes för att kryptera data. Metadata styr värdet för  `<EncryptedKey>` elementet i SAML-svaret. Möjliga värden: ` Rsa15` (standard)-RSA (Public Key Cryptography Standard) Version 1,5 algorithm, ` RsaOaep` -RSA optimal OAEP-krypteringsalgoritm (Asymmetric Encryption Encryption utfyllnad). |
 | UseDetachedKeys | Nej |  Möjliga värden: `true` , eller `false` (standard). När värdet är inställt på `true` Azure AD B2C ändrar formatet för de krypterade förändringarna. Om du använder frånkopplade nycklar läggs den krypterade försäkran som underordnad till EncrytedAssertion i stället för EncryptedData. |
 | WantsSignedResponses| Nej | Anger om Azure AD B2C signerar `Response` avsnittet i SAML-svaret. Möjliga värden: `true` (standard) eller `false` .  |
+| RemoveMillisecondsFromDateTime| Nej | Anger om millisconds ska tas bort från datetime-värden inom SAML-svaret (dessa inkluderar IssueInstant, NotBefore, NotOnOrAfter och AuthnInstant). Möjliga värden: `false` (standard) eller `true` .  |
 
 ### <a name="outputclaims"></a>OutputClaims
 

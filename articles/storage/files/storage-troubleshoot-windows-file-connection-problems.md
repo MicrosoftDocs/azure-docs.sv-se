@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: aef332e54fa650e1abbebe671560238d7eb318de
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f2d55d1fcc92abdc629581d6e4d277ec0294dce0
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492054"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858696"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Felsöka Azure Files problem i Windows (SMB)
 
@@ -406,6 +406,8 @@ Cmdleten utför dessa kontroller nedan i följd och ger vägledning för felen:
 5. CheckSidHasAadUser: kontrol lera att den inloggade AD-användaren är synkroniserad med Azure AD. Om du vill se om en särskild AD-användare är synkroniserad med Azure AD kan du ange parametern-UserName och-Domain i indataparametrarna. 
 6. CheckGetKerberosTicket: försöker hämta en Kerberos-biljett för att ansluta till lagrings kontot. Om det inte finns någon giltig Kerberos-token kör du cmdleten Klist get CIFS/Storage-Account-name. File. Core. Windows. net. kontrol lera felkoden för att rot orsaka att biljett hämtningen Miss lyckas.
 7. CheckStorageAccountDomainJoined: kontrol lera om AD-autentisering har Aktiver ATS och att kontots AD-egenskaper är ifyllda. Om inte, referera till den [här](./storage-files-identity-ad-ds-enable.md) instruktionen för att aktivera AD DS-autentisering på Azure Files. 
+8. CheckUserRbacAssignment: kontrol lera om AD-användaren har rätt RBAC-roll tilldelning för att ge åtkomst till Azure Files på resurs nivå. Om inte, referera till den [här](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions) instruktionen för att konfigurera behörigheten på resurs nivå. (Stöds på AzFilesHybrid v 0.2.3 + version)
+9. CheckUserFileAccess: kontrol lera om AD-användaren har rätt katalog-/fil behörighet (Windows ACL: er) för att få åtkomst till Azure Files. Om inte, referera till den [här](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-configure-permissions) instruktionen för att konfigurera behörigheten katalog/filnivå. (Stöds på AzFilesHybrid v 0.2.3 + version)
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Det gick inte att konfigurera katalog-/fil nivå behörigheter (Windows ACL: er) med Utforskaren i Windows
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: aahi
 keywords: lokal, Docker, behållare
-ms.openlocfilehash: 778fe388ae3db68d836384299a8a1c7c06e31f41
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2bef6aa4e624386750a4c989d7e56cc1b22aaa5e
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96001819"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862004"
 ---
 # <a name="install-and-run-docker-containers-for-luis"></a>Installera och kör Docker-behållare för LUIS
 
@@ -37,7 +37,7 @@ Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto]
 
 Observera följande krav för att köra LUIS-behållaren:
 
-|Obligatorisk|Syfte|
+|Obligatoriskt|Syfte|
 |--|--|
 |Docker-motorn| Du behöver Docker-motorn installerad på en [värddator](#the-host-computer). Docker innehåller paket som konfigurerar Docker-miljön på [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) och [Linux](https://docs.docker.com/engine/installation/#supported-platforms). En introduktion till grunderna för Docker och containrar finns i [Docker-översikt](https://docs.docker.com/engine/docker-overview/).<br><br> Docker måste konfigureras för att tillåta att behållarna ansluter till och skicka fakturerings data till Azure. <br><br> **I Windows** måste Docker också konfigureras för att stödja Linux-behållare.<br><br>|
 |Bekant med Docker | Du bör ha grundläggande kunskaper om Docker-koncept, t. ex. register, databaser, behållare och behållar avbildningar, samt kunskaper om grundläggande `docker` kommandon.|
@@ -373,9 +373,6 @@ LUIS-behållaren skickar fakturerings information till Azure med hjälp av en _C
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Mer information om dessa alternativ finns i [Configure containers](luis-container-configuration.md).
-
-<!--blogs/samples/video courses -->
-[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>Sammanfattning
 

@@ -4,16 +4,16 @@ description: Lär dig hur du aktiverar identitets baserad autentisering över SM
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/21/2020
+ms.date: 01/03/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: deed7c3dce2d7da1940a8a4871efac7453e2cf60
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 340455450cd6a18adfd8d0843fee423f82f10a45
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033688"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858407"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Aktivera Azure Active Directory Domain Services autentisering på Azure Files
 
@@ -22,8 +22,7 @@ ms.locfileid: "97033688"
 Om du är nybörjare på Azure-filresurser rekommenderar vi att du läser vår [planerings guide](storage-files-planning.md) innan du läser följande serie artiklar.
 
 > [!NOTE]
-> Azure Files stöder Kerberos-autentisering med Azure AD DS med RC4-HMAC-kryptering. AES Kerberos-kryptering stöds inte ännu.
-> Azure Files stöder autentisering för Azure AD DS med fullständig synkronisering med Azure AD. Om du har aktiverat begränsad synkronisering i Azure AD DS som bara synkroniserar en begränsad uppsättning identiteter från Azure AD, stöds inte autentisering och auktorisering.
+> Azure Files stöder Kerberos-autentisering med Azure AD DS med RC4-kryptering med RC4-HMAC och AES 256. Azure Files stöder autentisering för Azure AD DS med fullständig synkronisering med Azure AD. Om du har aktiverat begränsad synkronisering i Azure AD DS som bara synkroniserar en begränsad uppsättning identiteter från Azure AD, stöds inte autentisering och auktorisering.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -59,7 +58,7 @@ Innan du aktiverar Azure AD över SMB för Azure-filresurser måste du kontrol l
 
 ## <a name="regional-availability"></a>Regional tillgänglighet
 
-Azure Files autentisering med Azure AD DS är tillgängligt i [alla offentliga Azure-och gov-regioner](https://azure.microsoft.com/global-infrastructure/locations/).
+Azure Files-autentisering med Azure AD DS är tillgänglig i [alla regioner i Azures offentliga-, gov-och Kina](https://azure.microsoft.com/global-infrastructure/locations/).
 
 ## <a name="overview-of-the-workflow"></a>Översikt över arbets flödet
 

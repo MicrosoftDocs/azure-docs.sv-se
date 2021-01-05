@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: 8d11ff6eaab8ed6a13c3c2aa1b712cc57e7825ea
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: aa95d6792f2f5754a237c7bf5e90a11e2e011ede
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94960979"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861783"
 ---
 # <a name="custom-script-extension-for-windows"></a>Anpassat skripttillägg för Windows
 
@@ -24,7 +24,7 @@ Det anpassade skript tillägget laddar ned och kör skript på virtuella Azure-d
 
 Det här dokumentet beskriver hur du använder tillägget för anpassat skript med hjälp av Azure PowerShell-modulen, Azure Resource Manager mallar och information om fel söknings steg i Windows-system.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 > [!NOTE]  
 > Använd inte anpassat skript tillägg för att köra Update-AzVM med samma virtuella dator som parameter, eftersom det väntar på sig själv.  
@@ -61,7 +61,7 @@ Om ditt skript finns på en lokal server kanske du fortfarande behöver fler bra
 * Skripten kan köra i 90 minuter. Längre körningar gör att etableringen av tillägget misslyckas.
 * Lägg inte in omstarter i skriptet eftersom det leder till problem med andra tillägg som installeras. Tillägget fortsätter inte efter omstarten.
 * Om du har ett skript som gör en omstart, sedan installerar program och kör skript, kan du schemalägga omstarten med en schemalagd aktivitet i Windows eller använda verktyg som DSC, chef eller Puppet-tillägg.
-* Vi rekommenderar inte att du kör ett skript som gör att VM-agenten stoppas eller uppdateras. Detta kan ge tillägget i ett över gångs tillstånd, vilket leder till en tids gräns.
+* Vi rekommenderar inte att du kör ett skript som gör att VM-agenten stoppas eller uppdateras. Detta kan lämna tillägget i ett över gångs tillstånd, vilket leder till en tids gräns.
 * Tillägget kör bara ett skript en gång. Om du vill köra ett skript vid varje start måste du använda tillägget för att skapa en schemalagd uppgift i Windows.
 * Om du vill schemalägga när ett skript ska köras använder du tillägget för att skapa en schemalagd uppgift i Windows.
 * När skriptet körs visas tillägget med övergångsstatus på Azure-portalen eller i CLI. Om du behöver mer frekventa statusuppdateringar för ett skript som körs måste du skapa en egen lösning.
@@ -125,7 +125,7 @@ De här objekten ska behandlas som känsliga data och anges i konfigurationerna 
 
 | Namn | Värde/exempel | Datatyp |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | datum |
+| apiVersion | 2015-06-15 | date |
 | utgivare | Microsoft.Compute | sträng |
 | typ | CustomScriptExtension | sträng |
 | typeHandlerVersion | 1,10 | int |

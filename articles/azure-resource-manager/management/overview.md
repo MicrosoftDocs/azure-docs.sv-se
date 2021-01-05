@@ -4,12 +4,12 @@ description: Beskriver hur du använder Azure Resource Manager för distribution
 ms.topic: overview
 ms.date: 09/01/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: f3b3ebce3dd34637a787895e7724736adfc186fb
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: fad49db94195bbd2f9e5e32f8596f33fab586752
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032260"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858526"
 ---
 # <a name="what-is-azure-resource-manager"></a>Vad är Azure Resource Manager?
 
@@ -33,7 +33,7 @@ Om du inte har arbetat med Azure Resource Manager tidigare finns det några term
 
 * **resurs** – ett hanterbart objekt som är tillgängligt via Azure. Virtuella datorer, lagringskonton, webbappar, databaser och virtuella nätverk är exempel på resurser. Resurs grupper, prenumerationer, hanterings grupper och taggar är också exempel på resurser.
 * **resurs grupp** – en behållare som innehåller relaterade resurser för en Azure-lösning. En resursgrupp innehåller de resurser du vill hantera som en grupp. Du bestämmer vilka resurser som ska ingå i en resursgrupp baserat på vad som är bäst för organisationen. Mer information finns i [Resursgrupper](#resource-groups).
-* **resursprovider** – en tjänst som tillhandahåller Azure-resurser. En vanlig resursprovider är till exempel Microsoft.Compute, som tillhandahåller resursen för virtuella datorer. Microsoft.Storage är en annan vanlig resursprovider. Se [Resource providers och-typer](resource-providers-and-types.md).
+* **resursprovider** – en tjänst som tillhandahåller Azure-resurser. Till exempel är en common Resource Provider `Microsoft.Compute` , som tillhandahåller den virtuella dator resursen. `Microsoft.Storage` är en annan gemensam resurs leverantör. Se [Resource providers och-typer](resource-providers-and-types.md).
 * **Resource Manager-mall** – en JavaScript Object Notation-fil (JSON) som definierar en eller flera resurser som ska distribueras till en resurs grupp, prenumeration, hanterings grupp eller klient organisation. Mallen kan användas för att distribuera resurserna på ett konsekvent sätt och upprepade gånger. Se [malldistribution översikt](../templates/overview.md).
 * **deklarativ syntax** – Syntax som låter dig ange vad du vill skapa utan att du behöver skriva sekvensen med programmeringskommandon för att skapa det. Resource Manager-mallen är ett exempel på deklarativ syntax. I filen definierar du egenskaperna för infrastrukturen som ska distribueras till Azure.  Se [malldistribution översikt](../templates/overview.md).
 
@@ -61,7 +61,7 @@ Azure tillhandahåller fyra nivåer av omfång: [hanterings grupper](../../gover
 
 ![Hanterings nivåer](./media/overview/scope-levels.png)
 
-Du tillämpar hanteringsinställningar på vilken som helst av dessa omfångsnivåer. Den nivå nu väljer avgör hur brett inställningen tillämpas. Lägre nivåer ärver inställningar från högre nivåer. När du till exempel tillämpar en [princip](../../governance/policy/overview.md) för prenumerationen tillämpas principen på alla resurs grupper och resurser i din prenumeration. När du tillämpar en princip på resurs gruppen tillämpas den här principen på resurs gruppen och alla dess resurser. En annan resurs grupp har dock inte den princip tilldelningen.
+Du tillämpar hanteringsinställningar på vilken som helst av dessa omfångsnivåer. Den nivå nu väljer avgör hur brett inställningen tillämpas. Lägre nivåer ärver inställningar från högre nivåer. När du till exempel tillämpar en [princip](../../governance/policy/overview.md) för prenumerationen tillämpas principen på alla resurs grupper och resurser i din prenumeration. När du tillämpar en princip på resurs gruppen tillämpas den principen på resurs gruppen och alla dess resurser. En annan resurs grupp har dock inte den princip tilldelningen.
 
 Du kan distribuera mallar till klientorganisationer, hanteringsgrupper, prenumerationer och resursgrupper.
 
@@ -99,11 +99,11 @@ Det finns några viktiga faktorer att tänka på när du definierar en resursgru
 
 ## <a name="resiliency-of-azure-resource-manager"></a>Azure Resource Managers återhämtning
 
-Tjänsten Azure Resource Manager är utformad för återhämtning och kontinuerlig tillgänglighet. Resource Manager och kontroll Plans åtgärder (begär Anden som skickats till management.azure.com) i REST API:
+Tjänsten Azure Resource Manager är utformad för återhämtning och kontinuerlig tillgänglighet. Resource Manager-och kontroll Plans åtgärder (begär Anden som skickats till `management.azure.com` ) i REST API:
 
 * Fördelat över flera regioner. Vissa tjänster är regionala.
 
-* Fördelat över Tillgänglighetszoner (och även region) på platser som har flera Tillgänglighetszoner.
+* Distribueras över Tillgänglighetszoner (och regioner) på platser som har flera Tillgänglighetszoner.
 
 * Inte beroende av ett enskilt logiskt Data Center.
 

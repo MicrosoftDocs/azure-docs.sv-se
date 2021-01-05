@@ -4,14 +4,14 @@ description: Vanliga problem med Azure Monitor metriska aviseringar och möjliga
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 11/25/2020
+ms.date: 01/03/2021
 ms.subservice: alerts
-ms.openlocfilehash: fc54d2ba3ca4e7a150a1602c671b99f58197bc44
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 9a05fe509e032681a0bf5ed989595a25f66d33c6
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657302"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857349"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Felsöka problem i Azure Monitor-måttaviseringar 
 
@@ -265,6 +265,23 @@ Vi rekommenderar att du väljer en *agg regerings kornig het (period)* som är s
 -   Mått varnings regel som övervakar flera dimensioner – när en ny dimensions värde kombination läggs till
 -   Mått varnings regel som övervakar flera resurser – när en ny resurs läggs till i omfånget
 -   Regel varnings regel som övervakar ett mått som inte genereras kontinuerligt (glest mått) – när måttet släpps efter en period som är längre än 24 timmar där den inte har spridits
+
+## <a name="the-dynamic-thresholds-borders-dont-seem-to-fit-the-data"></a>Kant linjerna för dynamiskt tröskelvärden verkar inte passa på data
+
+Om beteendet för ett mått ändras nyligen kommer ändringarna inte nödvändigt vis att avspeglas i de dynamiska tröskelvärdena (övre och nedre gränser) direkt, eftersom de beräknas utifrån mått data från de senaste 10 dagarna. När du visar de dynamiska tröskelvärdena för ett angivet mått, se till att titta på mått trenden under den senaste veckan och inte bara för senaste timmar eller dagar.
+
+## <a name="why-is-weekly-seasonality-not-detected-by-dynamic-thresholds"></a>Varför identifieras vecko säsongs beroende inte av dynamiska tröskelvärden?
+
+För att identifiera veckovis säsongs beroende kräver modellen för dynamisk tröskel minst tre veckors historiska data. När tillräckligt med historiska data är tillgängliga identifieras varje vecko säsongs beroende som finns i mått data och modellen justeras därefter. 
+
+## <a name="dynamic-thresholds-shows-a-negative-lower-bound-for-a-metric-even-though-the-metric-always-has-positive-values"></a>Dynamiska tröskelvärden visar ett negativt lägre gräns värde för ett mått trots att måttet alltid har positiva värden
+
+När ett mått uppvisar stora variationer skapar dynamiska tröskelvärden en bredare modell runt mått värden, vilket kan leda till att den nedre kant linjen är lägre än noll. Mer specifikt kan detta inträffa i följande fall:
+1. Känslighet är inställt på låg 
+2. Median värdena är nära noll
+3. Måttet uppvisar ett oregelbundet beteende med hög varians (det finns toppar eller dip i datan)
+
+När den nedre kanten har ett negativt värde innebär det att det är plausible för måttet att uppnå ett nollvärde som anger måttets oregelbundna beteende. Du kan överväga att välja en högre känslighet eller en större *agg regerings kornig het (period)* för att göra modellen mindre känslig, eller använda alternativet *Ignorera data innan* för att undanta en nyligen irregulaity från historiska data som används för att skapa modellen.
 
 ## <a name="next-steps"></a>Nästa steg
 

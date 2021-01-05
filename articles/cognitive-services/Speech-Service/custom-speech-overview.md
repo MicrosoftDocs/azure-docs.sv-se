@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: be01309fee3454fbd4be78130f9826b493e7bf7a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 51f9ad4fea1c139cee5974ecd81645c9a904feb4
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033773"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854901"
 ---
 # <a name="what-is-custom-speech"></a>Vad är Custom Speech?
 
@@ -43,6 +43,23 @@ Det här diagrammet visar de delar som utgör den [Custom Speech portalen](https
 ## <a name="set-up-your-azure-account"></a>Konfigurera ditt Azure-konto
 
 Du måste ha ett Azure-konto och en röst tjänst prenumeration innan du kan använda [Custom Speech Portal](https://speech.microsoft.com/customspeech) för att skapa en anpassad modell. Om du inte har ett konto och en prenumeration kan du [prova att använda tal tjänsten kostnads fritt](overview.md#try-the-speech-service-for-free).
+
+Om du planerar att träna en anpassad modell med ljuddata väljer du någon av följande regioner som har dedikerad maskin vara tillgänglig för utbildning. Detta minskar den tid det tar att träna en modell.
+
+* Australien, östra
+* Kanada, centrala
+* Indien, centrala
+* East US
+* USA, östra 2
+* USA, norra centrala
+* Norra Europa
+* USA, södra centrala
+* Sydostasien
+* Storbritannien, södra
+* US Gov, Arizona
+* US Gov, Virginia
+* Europa, västra
+* USA, västra 2
 
 > [!NOTE]
 > Kom ihåg att skapa en standard prenumeration (S0). Kostnads fria (F0) prenumerationer stöds inte.

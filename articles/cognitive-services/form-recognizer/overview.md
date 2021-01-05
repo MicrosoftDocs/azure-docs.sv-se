@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: automatisk data bearbetning, dokument bearbetning, automatisk data inmatning, formulär bearbetning
-ms.openlocfilehash: 39243f4428d055ee5d4491c3e87b4b91213f63f1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ed940622f72271ef3e606c5068babcb6366c31b6
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353688"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845532"
 ---
 # <a name="what-is-form-recognizer"></a>Vad är formigenkänning?
 
@@ -108,29 +108,27 @@ Med visitkorts modellen kan du extrahera information som personens namn, befattn
 
 Använd [exempel verktyget igenkännings verktyg](https://fott.azurewebsites.net/) eller följ en snabb start för att komma igång med att extrahera data från dina formulär. Vi rekommenderar att du använder den kostnads fria tjänsten när du lär dig tekniken. Kom ihåg att antalet fria sidor är begränsat till 500 per månad.
 
-* [Snabb start för klient bibliotek](./quickstarts/client-library.md) (alla språk, flera scenarier)
+* [Snabb start för klient bibliotek/REST API](./quickstarts/client-library.md) (alla språk, flera scenarier)
 * Snabb start för webb gränssnitt
   * [Träna med etiketter – exempel på etikett verktyg](quickstarts/label-tool.md)
-* REST-snabb starter
+* REST-exempel (GitHub)
  * Extrahera text, markerings märken och tabell struktur från dokument
-    * [Extrahera layoutinformation – python](quickstarts/python-layout.md)
+    * [Extrahera layoutinformation – python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-layout.md)
   * Träna anpassade modeller och extrahera formulär data
-    * [Träna utan etiketter – sväng](quickstarts/curl-train-extract.md)
-    * [Träna utan etiketter – python](quickstarts/python-train-extract.md)
-    * [Träna med etiketter – python](quickstarts/python-labeled-data.md)
+    * [Träna utan etiketter – python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-train-extract.md)
+    * [Träna med etiketter – python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)
   * Extrahera data från fakturor
-    * [Extrahera faktura data – python](quickstarts/python-invoices.md)
+    * [Extrahera faktura data – python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-invoices.md)
   * Extrahera data från försäljnings kvitton
-    * [Extrahera kvitto data – sväng](quickstarts/curl-receipts.md)
-    * [Extrahera kvitto data – python](quickstarts/python-receipts.md)
+    * [Extrahera kvitto data – python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-receipts.md)
   * Extrahera data från visitkort
-    * [Extrahera visitkorts data – python](quickstarts/python-business-cards.md)
+    * [Extrahera visitkorts data – python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-business-cards.md)
 
 ### <a name="review-the-rest-apis"></a>Granska REST-API: erna
 
 Du använder följande API: er för att träna modeller och extrahera strukturerade data från formulär.
 
-|Name |Beskrivning |
+|Namn |Beskrivning |
 |---|---|
 | **Analysera layout** | Analysera ett dokument som skickas som en data ström för att extrahera text, markerings märken, tabeller och struktur från dokumentet |
 | **Träna anpassad modell**| Träna en ny modell för att analysera dina formulär genom att använda fem formulär av samma typ. Ange parametern _useLabelFile_ för `true` att träna med manuellt märkta data. |
@@ -162,4 +160,4 @@ Precis som med alla kognitiva tjänster bör utvecklare som använder formulär 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Slutför en [snabb start för klient bibliotek](quickstarts/client-library.md) för att komma igång med att skriva en app för formulär bearbetning med formulär tolken på valfritt språk.
+Slutför en [snabb start](quickstarts/client-library.md) för att komma igång med att skriva en app för formulär bearbetning med formulär tolken på det språk du väljer.

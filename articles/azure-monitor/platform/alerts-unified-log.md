@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: 9f8004b41e8048dfc97fb61bb67a634963c0c575
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: a913bc0ae01507cb26c1650d63918a8319eeacf4
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317562"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857434"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Logg aviseringar i Azure Monitor
 
@@ -62,7 +62,7 @@ Tidsintervallet anges i regel villkors definitionen. I arbets ytor och Applicati
 
 Precis som i Log Analytics begränsar tidsintervallet frågedata till det angivna intervallet. Även om kommandot **sedan** används i frågan, kommer tidsintervallet att gälla.
 
-En fråga skannar till exempel 60 minuter, när tidsintervallet är 60 minuter, även om texten innehåller **sedan sedan (1d)**. Tidsintervallet och tids filtreringen för frågan måste matcha. I exempel fallet kan det **Period**  /  vara förväntat att ändra **tidsintervallet** för tids perioden för tids perioden till en dag.
+En fråga skannar till exempel 60 minuter, när tidsintervallet är 60 minuter, även om texten innehåller **sedan sedan (1d)**. Tidsintervallet och tids filtreringen för frågan måste matcha. I exempel fallet kan det   /  vara förväntat att ändra **tidsintervallet** för tids perioden för tids perioden till en dag.
 
 ### <a name="measure"></a>Mått
 
@@ -120,6 +120,8 @@ I arbets ytor och Application Insights stöds det bara i mått mått typen **må
 ### <a name="split-by-alert-dimensions"></a>Dela efter aviserings dimensioner
 
 Dela upp aviseringar efter siffer-eller sträng kolumner i separata aviseringar genom att gruppera i unika kombinationer. När du skapar resurs drivna aviseringar i skala (prenumeration eller resurs gruppens omfång), kan du dela med kolumnen Azure Resource ID. Delning i kolumnen Azure Resource ID ändrar målet för aviseringen till den angivna resursen.
+
+Delning av Azure Resource ID-kolumnen rekommenderas när du vill övervaka samma villkor på flera Azure-resurser. Du kan till exempel övervaka alla virtuella datorer för CPU-användning över 80%. Du kan också välja att inte dela upp när du vill ha ett villkor för flera resurser i omfattningen, till exempel att övervaka att minst fem datorer i resurs grupps omfånget har CPU-användning över 80%.
 
 I arbets ytor och Application Insights stöds det bara i mått mått typen **mått** . Fältet kallas **agg regering på**. Det är begränsat till tre kolumner. Om du har fler än tre grupper av kolumner i frågan kan det leda till oväntade resultat. I alla andra resurs typer konfigureras den i avsnittet **dela efter dimensioner** i villkoret (begränsat till sex delningar).
 

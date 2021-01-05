@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/25/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 8205ecab3abfc7a944c12db1aca2bf594f6cd98f
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ab335c8cc682f6b33dcb30509d682186a178c676
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349460"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861067"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>API för Azure Cosmos DB för MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "96349460"
 
 ## <a name="wire-protocol-compatibility"></a>Trådprotokollkompatibilitet
 
-Azure Cosmos DB implementerar Wire-protokollet för MongoDB. Den här implementeringen möjliggör transparent kompatibilitet med inbyggda MongoDB-klient-SDK: er, driv rutiner och verktyg. Azure Cosmos DB är värd för MongoDB-databasmotorn. Information om vilka funktioner som stöds efter MongoDB finns här: 
+Azure Cosmos DB implementerar Wire-protokollet för MongoDB. Den här implementeringen möjliggör transparent kompatibilitet med inbyggda MongoDB-klient-SDK: er, driv rutiner och verktyg. Azure Cosmos DB är inte värd för MongoDB-databasmotorn. Information om vilka funktioner som stöds efter MongoDB finns här: 
 - [Azure Cosmos DB s API för mongo DB Engine version 3,6](mongodb-feature-support-36.md)
 - [Azure Cosmos DB s API för mongo DB Engine version 3,2](mongodb-feature-support.md)
 

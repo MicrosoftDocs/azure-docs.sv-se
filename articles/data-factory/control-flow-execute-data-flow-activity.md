@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 11/24/2020
-ms.openlocfilehash: 1c0ed7cf38cc01623169216ec45e88d198ede3d2
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.date: 01/03/2021
+ms.openlocfilehash: 3eff23a42a6ac5f5360bdebfcc692e13acb3e8b0
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095091"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858793"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Data flödes aktivitet i Azure Data Factory
 
@@ -38,6 +38,8 @@ Använd data flödes aktiviteten för att transformera och flytta data via data 
          "computeType": "General"
       },
       "traceLevel": "Fine",
+      "runConcurrently": true,
+      "continueOnError": true,      
       "staging": {
           "linkedService": {
               "referenceName": "MyStagingLinkedService",
@@ -55,15 +57,15 @@ Använd data flödes aktiviteten för att transformera och flytta data via data 
 
 ## <a name="type-properties"></a>Typ egenskaper
 
-Egenskap | Beskrivning | Tillåtna värden | Obligatorisk
+Egenskap | Beskrivning | Tillåtna värden | Obligatoriskt
 -------- | ----------- | -------------- | --------
-dataflöde | Referens till det data flöde som körs | DataFlowReference | Yes
-integrationRuntime | Beräknings miljön som data flödet körs på. Om inget anges används automatisk lösning för Azure integration Runtime. | IntegrationRuntimeReference | No
-Compute. coreCount | Antalet kärnor som används i Spark-klustret. Kan bara anges om automatisk matchning av Azure integration runtime används | 8, 16, 32, 48, 80, 144, 272 | No
-Compute. computeType | Den typ av beräkning som används i Spark-klustret. Kan bara anges om automatisk matchning av Azure integration runtime används | "Allmänt", "ComputeOptimized", "MemoryOptimized" | No
+dataflöde | Referens till det data flöde som körs | DataFlowReference | Ja
+integrationRuntime | Beräknings miljön som data flödet körs på. Om inget anges används automatisk lösning för Azure integration Runtime. | IntegrationRuntimeReference | Nej
+Compute. coreCount | Antalet kärnor som används i Spark-klustret. Kan bara anges om automatisk matchning av Azure integration runtime används | 8, 16, 32, 48, 80, 144, 272 | Nej
+Compute. computeType | Den typ av beräkning som används i Spark-klustret. Kan bara anges om automatisk matchning av Azure integration runtime används | "Allmänt", "ComputeOptimized", "MemoryOptimized" | Nej
 mellanlagring. linkedService | Om du använder en Azure Synapse Analytics-källa eller mottagare anger du det lagrings konto som används för PolyBase-mellanlagring.<br/><br/>Om din Azure Storage har kon figurer ATS med VNet-tjänstens slut punkt måste du använda hanterad identitetsautentisering med alternativet "Tillåt betrodd Microsoft-tjänst" på lagrings kontot, se [effekten av att använda VNet-tjänstens slut punkter med Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage). Lär dig även de konfigurationer som krävs för [Azure-Blob](connector-azure-blob-storage.md#managed-identity) respektive [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) .<br/> | LinkedServiceReference | Endast om data flödet läser eller skriver till en Azure Synapse-analys
 mellanlagring. folderPath | Om du använder en Azure Synapse Analytics-källa eller handfat, används mappsökvägen i Blob Storage-kontot för PolyBase-mellanlagring | Sträng | Endast om data flödet läser eller skriver till Azure Synapse Analytics
-traceLevel | Ange loggnings nivå för körning av data flödes aktivitet | Fin, grov, ingen | No
+traceLevel | Ange loggnings nivå för körning av data flödes aktivitet | Fin, grov, ingen | Nej
 
 ![Kör data flöde](media/data-flow/activity-data-flow.png "Kör data flöde")
 
@@ -95,6 +97,14 @@ Om du använder en Azure Synapse-analys som mottagare eller källa, måste du v�
 Om du inte behöver varje pipeline-körning av dina data flödes aktiviteter för att fullständigt logga alla utförliga telemetri loggar kan du ange loggnings nivån till "Basic" eller "none". När du kör dina data flöden i "VERBOSE"-läge (standard) begär du att ADF ska logga in fullständigt på varje enskild partitions nivå under din data omvandling. Detta kan vara en dyr åtgärd, så att bara aktivera utförligt läge när fel sökning kan förbättra ditt totala data flöde och prestanda för pipelinen. "Grundläggande"-läget loggar bara omvandlings varaktigheter medan "ingen" bara innehåller en sammanfattning av varaktigheter.
 
 ![Loggnings nivå](media/data-flow/logging.png "Ange loggnings nivå")
+
+## <a name="sink-properties"></a>Egenskaper för mottagare
+
+Med funktionen gruppering i data flöden kan du både ställa in ordningen på körningen av dina mottagare och gruppera handfat tillsammans med samma grupp nummer. För att hjälpa till att hantera grupper kan du be ADF att köra handfat i samma grupp parallellt. Du kan också ange att gruppen mottagare ska fortsätta även efter att en av sinkarna påträffar ett fel.
+
+Standard beteendet för data flödes mottagare är att köra varje mottagare sekventiellt, på ett seriellt sätt och för att inte köra data flödet när ett fel påträffas i mottagaren. Dessutom är alla Sinks som standard i samma grupp, om du inte går in i data flödes egenskaperna och anger olika prioriteter för mottagare.
+
+![Egenskaper för mottagare](media/data-flow/sink-properties.png "Ange egenskaper för mottagare")
 
 ## <a name="parameterizing-data-flows"></a>Parameters-data flöden
 

@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/11/2020
+ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: bb9b0da609169288521d21ee6d5e412a786c7549
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 4b106ebc5606c4e5a290e12728d4e2011e80f6a2
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94574024"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861818"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Säkerhet för Azure Cognitive Services-behållare
 
@@ -44,7 +44,7 @@ Värden ska tillåta List **port 443** och följande domäner:
 
 #### <a name="disable-deep-packet-inspection"></a>Inaktivera djup paket granskning
 
-> [Djup paket inspektion](https://en.wikipedia.org/wiki/Deep_packet_inspection) (dpi) är en typ av data bearbetning som identifierar data som skickas över ett dator nätverk, och som vanligt vis vidtar åtgärder genom att blockera, dirigera om eller logga i enlighet med detta.
+[Djup paket inspektion](https://en.wikipedia.org/wiki/Deep_packet_inspection) (dpi) är en typ av data bearbetning som identifierar data som skickas över ett dator nätverk, och som vanligt vis vidtar åtgärder genom att blockera, dirigera om eller logga i enlighet med detta.
 
 Inaktivera DPI på de säkra kanaler som Cognitive Services behållare skapar till Microsoft-servrar. Om du inte gör det kommer behållaren inte att fungera korrekt.
 

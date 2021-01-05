@@ -3,15 +3,15 @@ title: Windows Virtual Desktop FSLogix profil behållare filer – Azure
 description: I den här artikeln beskrivs FSLogix profil behållare i Windows Virtual Desktop och Azure Files.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 01/04/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e3bd667bc7fce8f9fb10b852cae7a6c4ad198d75
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: ef7f19d835f4fef1a911da01015321b2dda67682
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797204"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861882"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-profilcontainrar och Azure-filer
 
@@ -70,7 +70,7 @@ S2D-kluster kräver ett operativ system som korrigeras, uppdateras och bevaras i
 Den 19 november 2018 har [Microsoft förvärvat FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/). FSLogix hanterar flera utmaningar för profil behållare. Nyckel mellan dem är:
 
 - **Prestanda:** [FSLogix profil behållare](/fslogix/configure-profile-container-tutorial/) är höga prestanda och löser prestanda problem som har historiskt blockerat cachelagrat Exchange-läge.
-- **OneDrive:** Utan FSLogix profil behållare stöds inte OneDrive för företag i icke-permanent RDSH-eller VDI-miljöer. [Bästa praxis för OneDrive för företag och FSLogix](/fslogix/overview/) beskriver hur de interagerar. Mer information finns i [använda Sync-klienten på virtuella skriv bord](/deployoffice/rds-onedrive-business-vdi/).
+- **OneDrive:** Utan FSLogix profil behållare stöds inte OneDrive för företag i icke-permanent RDSH-eller VDI-miljöer. På [sidan ONEDRIVE VDI-support](/onedrive/sync-vdi-support) kan du se hur de interagerar. Mer information finns i [använda Sync-klienten på virtuella skriv bord](/deployoffice/rds-onedrive-business-vdi/).
 - **Ytterligare mappar:** FSLogix ger möjlighet att utöka användar profiler för att inkludera ytterligare mappar.
 
 Eftersom förvärvs tjänsten ersatte befintliga användar profil lösningar, t. ex. UPD, med FSLogix profil behållare.

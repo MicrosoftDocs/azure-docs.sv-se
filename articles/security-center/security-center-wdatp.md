@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 5645a2e0449a1929421f9444bf645f08ad0525e9
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 10fa47a8f613218b1331259040be77df867ade95
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296819"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854850"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Skydda dina slut punkter med Security Center Integrated EDR-lösning: Microsoft Defender för slut punkt
 
@@ -42,10 +42,10 @@ Microsoft Defender för slut punkt är en holistisk, Cloud-levererad slut punkts
 |---------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Versions tillstånd:                  | Allmänt tillgänglig (GA)                                                                                                                                                                                                                                                                                      |
 | Priset                        | Kräver [Azure Defender för servrar](security-center-pricing.md)                                                                                                                                                                                                                                             |
-| Plattformar som stöds:            | ![Ja](./media/icons/yes-icon.png) Azure-datorer som kör Windows<br>![Ja](./media/icons/yes-icon.png) Azure Arc-datorer som kör Windows|
-| Versioner av Windows som stöds:  | Defender för slut punkten är inbyggt i Windows 10 1703 (och senare) och Windows Server 2019.<br>Security Center stöder identifiering på Windows Server 2016, 2012 R2 och 2008 R2 SP1.<br>Server slut punkts övervakning med denna integrering har inaktiverats för Office 365 GCC-kunder. |
-| Nödvändiga roller och behörigheter: | Aktivera/inaktivera integrering: **säkerhets administratör** eller **ägare**<br>Så här visar du MDATP-aviseringar i Security Center: **säkerhets läsare**, **läsare**, **resurs grupps deltagare**, **resurs grupp ägare**, **säkerhets administratör**, **prenumerations ägare** eller **prenumerations deltagare**                         |
-| Moln                         | ![Ja](./media/icons/yes-icon.png) Kommersiella moln.<br>![Nej](./media/icons/no-icon.png) GCC kunder som kör arbets belastningar i globala Azure-moln<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nej](./media/icons/no-icon.png) Kina gov, andra gov                                                        |
+| Plattformar som stöds:            | Azure-datorer som kör Windows<br>Azure Arc-datorer som kör Windows|
+| Versioner av Windows som stöds:  |  • Security Center stöder identifiering på Windows Server 2016, 2012 R2 och 2008 R2 SP1<br> • Övervakning av Server slut punkt med denna integrering har inaktiverats för Office 365 GCC-kunder<br> • Inget stöd för Windows Server 2019, Windows 10 1703 (och nyare) eller Linux|
+| Nödvändiga roller och behörigheter: | Aktivera/inaktivera integrering: **säkerhets administratör** eller **ägare**<br>Så här visar du MDATP-aviseringar i Security Center: **säkerhets läsare**, **läsare**, **resurs grupps deltagare**, **resurs grupp ägare**, **säkerhets administratör**, **prenumerations ägare** eller **prenumerations deltagare**|
+| Moln                         | ![Ja](./media/icons/yes-icon.png) Kommersiella moln<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nej](./media/icons/no-icon.png) Kina gov, andra gov<br>![Nej](./media/icons/no-icon.png) GCC kunder som kör arbets belastningar i globala Azure-moln                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
 
 

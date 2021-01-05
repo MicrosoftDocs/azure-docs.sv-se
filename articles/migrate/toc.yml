@@ -172,12 +172,12 @@
           href: how-to-migrate.md
         - name: Förbereda datorer för migrering
           href: prepare-for-migration.md
+        - name: Förbereda Windows 2003-servrar för migrering
+          href: prepare-windows-server-2003-migration.md
         - name: Migrera virtuella VMware-datorer
           items:
             - name: Migrera virtuella VMware-datorer till krypterade virtuella Azure-datorer
               href: how-to-migrate-vmware-vms-with-cmk-disks.md
-            - name: Förbereda Windows 2003-servrar för migrering
-              href: prepare-windows-server-2003-migration.md
         - name: Skala migrering
           items:
             - name: Automatisera migrering av ett stort antal virtuella datorer

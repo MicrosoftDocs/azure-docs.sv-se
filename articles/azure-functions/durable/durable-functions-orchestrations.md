@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5eec15871279f3ca38c726fcd1ef1b21d0d38699
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ba314963058389e171601407ff00411049eecd45
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88750201"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845430"
 ---
 # <a name="durable-orchestrations"></a>Varaktiga dirigeringar
 
@@ -141,7 +141,7 @@ Vid slut för ande ser historiken för funktionen som visas tidigare ut ungefär
 | eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919 Z |       |                  | "" "Hej London!" "                                       |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032 Z |       |                  |                                                           |                     |
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044 Z |       |                  |                                                           |                     |
-| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044 Z |       |                  | "[" "Hello Tokyo!", "" Hej Seattle! "," "Hej London!" "]" | Slutförd           |
+| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044 Z |       |                  | "[" "Hello Tokyo!", "" Hej Seattle! "," "Hej London!" "]" | Slutfört           |
 
 Några anmärkningar om kolumn värden:
 
@@ -293,7 +293,7 @@ Det går inte att skicka flera parametrar till en aktivitets funktion direkt. Re
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-I .NET kan du också använda [ValueTuples](/dotnet/csharp/tuples) -objekt. Följande exempel använder nya funktioner i [ValueTuples](/dotnet/csharp/tuples) som lagts till med [C# 7](/dotnet/csharp/whats-new/csharp-7#tuples):
+I .NET kan du också använda [ValueTuple](/dotnet/csharp/tuples) -objekt. Följande exempel använder nya funktioner i [ValueTuple](/dotnet/csharp/tuples) som lagts till med [C# 7](/dotnet/csharp/whats-new/csharp-7#tuples):
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]

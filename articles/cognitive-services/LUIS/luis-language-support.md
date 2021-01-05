@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
-ms.openlocfilehash: 1da43d0ef208d61ced6c8ca8dbc7603e0ef51155
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 9363a2dacd91d3868e69e47381eea528e358935c
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96021579"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845463"
 ---
 # <a name="language-and-region-support-for-luis"></a>Språk-och region stöd för LUIS
 
@@ -30,12 +30,12 @@ LUIS förstår yttranden på följande språk:
 
 | Språk |Nationell inställning  |  Fördefinierad domän | Fördefinierad entitet | Rekommendationer för fras lista | **[Text analys](../text-analytics/language-support.md)<br>(Sentiment och<br>Reserverade|
 |--|--|:--:|:--:|:--:|:--:|
-| Engelska (USA) |`en-US` | ✔ | ✔  |✔|✔|
 | Arabiska (förhands granskning-modern standard arabisk) |`ar-AR`|-|-|-|-|
 | *[Kinesiska](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
 | Nederländska |`nl-NL` |✔|-|-|✔|
-| Franska (Frankrike) |`fr-FR` |✔| ✔ |✔ |✔|
+| Engelska (USA) |`en-US` | ✔ | ✔  |✔|✔|
 | Franska (Kanada) |`fr-CA` |-|-|-|✔|
+| Franska (Frankrike) |`fr-FR` |✔| ✔ |✔ |✔|
 | Tyska |`de-DE` |✔| ✔ |✔ |✔|
 | Gujarati | `gu-IN`|-|-|-|-|
 | Hindi | `hi-IN`|-|✔|-|-|
@@ -44,8 +44,8 @@ LUIS förstår yttranden på följande språk:
 | Koreanska |`ko-KR` |✔|-|-|Endast nyckel fras|
 | Marathi | `mr-IN`|-|-|-|-|
 | Portugisiska (Brasilien) |`pt-BR` |✔| ✔ |✔ |alla under kulturer|
-| Spanska (Spanien) |`es-ES` |✔| ✔ |✔|✔|
 | Spanska (Mexiko)|`es-MX` |-|-|✔|✔|
+| Spanska (Spanien) |`es-ES` |✔| ✔ |✔|✔|
 | Tamilska | `ta-IN`|-|-|-|-|
 | Telugu | `te-IN`|-|-|-|-|
 | Turkiska | `tr-TR` |✔|✔|-|Endast sentiment|

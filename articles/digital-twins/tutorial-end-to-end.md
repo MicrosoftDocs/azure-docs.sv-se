@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: f788c9e78790e6872870869e2bc153e1b1451e51
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 64e648cf6ae3c763d3e9ab1a6970f48c84331bad
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566545"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845628"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Självstudie: Bygg ut en lösning från slut punkt till slut punkt
 
@@ -40,7 +40,7 @@ Det exempel projekt som används i den här självstudien visar ett verkligt **s
 
 Nedan visas ett diagram som representerar det fullständiga scenariot. 
 
-Först ska du skapa Azure Digitals-instansen ( **avsnitt A** i diagrammet) och sedan ställa in telemetri-dataflödet i de digitala dubblarna ( **pil B** ) och sedan konfigurera data spridningen via det dubbla diagrammet ( **pil C** ).
+Först ska du skapa Azure Digitals-instansen (**avsnitt A** i diagrammet) och sedan ställa in telemetri-dataflödet i de digitala dubblarna (**pil B**) och sedan konfigurera data spridningen via det dubbla diagrammet (**pil C**).
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario.png" alt-text="Bild av det fullständiga Bygg scenariot. Visar data som flödar från en enhet till IoT Hub, via en Azure-funktion (pil B) till en digital Azure-instans (del A), sedan från Event Grid till en annan Azure-funktion för bearbetning (pil C)":::
 
@@ -48,16 +48,14 @@ Om du vill arbeta igenom scenariot interagerar du med komponenterna i den förde
 
 Här följer de komponenter som implementeras av *AdtSampleApp* -exempel appen för bygg scenariot:
 * Enhetsautentisering 
-* Användnings exempel för [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) (hittades i *CommandLoop.cs* )
+* Användnings exempel för [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) (hittades i *CommandLoop.cs*)
 * Konsol gränssnitt för att anropa Azure Digitals dubbla API: er
 * *SampleClientApp* – ett exempel på Azure Digitals dubbla lösningar
 * *SampleFunctionsApp* – en Azure Functions app som uppdaterar ditt Azure Digitals-diagram till följd av telemetri från IoT Hub och Azures digitala dubbla händelser
 
-Exempelprojektet innehåller också en interaktiv auktoriserings komponent. Varje gång du startar projektet öppnas ett webbläsarfönster som du uppmanas att logga in med ditt Azure-konto.
-
 ### <a name="instantiate-the-pre-created-twin-graph"></a>Instansiera det förskapade dubbla diagrammet
 
-Först ska du använda *AdtSampleApp* -lösningen från exempelprojektet för att bygga upp Azure Digitals skärnings punkt från end-to-end-scenariot ( **del A** ):
+Först ska du använda *AdtSampleApp* -lösningen från exempelprojektet för att bygga upp Azure Digitals skärnings punkt från end-to-end-scenariot (**del A**):
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario-a.png" alt-text="Ett utdrag från det fullständiga scenariot för att skapa scenario bild markering A, Azure Digitals dubbla instanser":::
 
@@ -74,7 +72,7 @@ Ett konsol fönster öppnas, utför autentisering och vänta på ett kommando. I
 SetupBuildingScenario
 ```
 
-Utdata från det här kommandot är en serie med bekräftelse meddelanden som tre [**digitala dubblare**](concepts-twins-graph.md) skapas och ansluts i din Azure Digitals-instans: en våning med namnet *floor1* , ett rum med namnet *Room21* och en temperatur sensor med namnet *thermostat67*. Dessa digitala delar representerar de entiteter som skulle finnas i en verklig miljö.
+Utdata från det här kommandot är en serie med bekräftelse meddelanden som tre [**digitala dubblare**](concepts-twins-graph.md) skapas och ansluts i din Azure Digitals-instans: en våning med namnet *floor1*, ett rum med namnet *Room21* och en temperatur sensor med namnet *thermostat67*. Dessa digitala delar representerar de entiteter som skulle finnas i en verklig miljö.
 
 De är anslutna via relationer till följande [**dubbla diagram**](concepts-twins-graph.md). Det dubbla diagrammet representerar miljön som helhet, inklusive hur entiteterna interagerar med och relaterar till varandra.
 
@@ -100,9 +98,9 @@ Därefter kan du sluta köra projektet. Låt lösningen vara öppen i Visual Stu
 
 ## <a name="set-up-the-sample-function-app"></a>Konfigurera exempel funktions programmet
 
-Nästa steg är att konfigurera en [Azure Functions-app](../azure-functions/functions-overview.md) som ska användas i den här självstudien för att bearbeta data. Function-appen, *SampleFunctionsApp* , innehåller två funktioner:
-* *ProcessHubToDTEvents* : bearbetar inkommande IoT Hub data och uppdaterar Azure Digitals på motsvarande sätt
-* *ProcessDTRoutedData* : bearbetar data från digitala dubbla och uppdaterar de överordnade i Azures digitala dubbla
+Nästa steg är att konfigurera en [Azure Functions-app](../azure-functions/functions-overview.md) som ska användas i den här självstudien för att bearbeta data. Function-appen, *SampleFunctionsApp*, innehåller två funktioner:
+* *ProcessHubToDTEvents*: bearbetar inkommande IoT Hub data och uppdaterar Azure Digitals på motsvarande sätt
+* *ProcessDTRoutedData*: bearbetar data från digitala dubbla och uppdaterar de överordnade i Azures digitala dubbla
 
 I det här avsnittet ska du publicera den fördefinierade Function-appen och se till att Function-appen kan komma åt Azures digitala dubbla, genom att tilldela den en Azure Active Directory (Azure AD)-identitet. Genom att slutföra de här stegen får resten av självstudien att använda funktionerna i Function-appen. 
 
@@ -134,7 +132,7 @@ För ett särskilt mål väljer du **Azure Funktionsapp (Windows)** och klickar 
 
 På sidan *Functions instance* väljer du din prenumeration. Detta bör fylla i en ruta med *resurs grupperna* i din prenumeration.
 
-Välj din instanss resurs grupp och tryck på *+ skapa en ny Azure function.*...
+Välj din instanss resurs grupp och tryck *+* för att skapa en ny Azure-funktion.
 
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-3.png" alt-text="Publicera Azure Function i Visual Studio: Functions-instanser (innan Function-appen)":::
 
@@ -162,7 +160,7 @@ I fönstret *publicera* som öppnas i huvud fönstret i Visual Studio kontroller
 > Om du ser ett popup-meddelande som detta: :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="publicera Azure Function i Visual Studio: publicera autentiseringsuppgifter" border="false":::
 > Välj **försök att hämta autentiseringsuppgifter från Azure** och **Spara**.
 >
-> Om du ser en varning om att *Uppgradera Functions-versionen på Azure* eller att *din version av Functions runtime inte matchar den version som körs i Azure* :
+> Om du ser en varning om att *Uppgradera Functions-versionen på Azure* eller att *din version av Functions runtime inte matchar den version som körs i Azure*:
 >
 > Följ anvisningarna för att uppgradera till den senaste versionen av Azure Functions Runtime. Det här problemet kan uppstå om du använder en äldre version av Visual Studio än den som rekommenderas i avsnittet *krav* i början av den här självstudien.
 
@@ -198,7 +196,7 @@ Ett digitalt Azure-diagram är avsett att drivas av telemetri från riktiga enhe
 
 I det här steget ansluter du en simulerad termostat-enhet som är registrerad i [IoT Hub](../iot-hub/about-iot-hub.md) till den digitala dubbla som representerar den i Azure Digitals dubbla. Eftersom den simulerade enheten avger telemetri, kommer data att dirigeras via *ProcessHubToDTEvents* Azure-funktionen som utlöser en motsvarande uppdatering i den digitala dubbla. På så sätt förblir den digitala enheten uppdaterad med den verkliga enhetens data. I Azure Digitals dubbla, kallas processen för att dirigera händelse data från en plats till en annan kallas för [**Routing Events**](concepts-route-events.md).
 
-Detta sker i den här delen av scenariot från slut punkt till slut punkt ( **pil B** ):
+Detta sker i den här delen av scenariot från slut punkt till slut punkt (**pil B**):
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario-b.png" alt-text="Ett utdrag från det fullständiga scenariot för att skapa scenariot, pil B, elementen innan Azure Digitals: enhet, IoT Hub och första Azure Function":::
 
@@ -238,12 +236,12 @@ Då öppnas sidan *Skapa händelse prenumeration* .
 :::image type="content" source="media/tutorial-end-to-end/event-subscription-2.png" alt-text="Azure Portal: skapa händelse prenumeration":::
 
 Fyll i fälten enligt följande (fält som är fyllda som standard berörs inte):
-* *information om*  >  händelse prenumeration **Namn** : ge din händelse prenumeration ett namn.
-* *ämnes information*  >  **System ämnets namn** : Ange ett namn som ska användas i avsnittet system. 
-* *händelse typer*  >  **Filtrera till händelse typer** : Välj *enhets telemetri* på Meny alternativen.
-* *slut punkts information*  >  **Slut punkts typ** : Välj *Azure Function* från meny alternativen.
-* *slut punkts information*  >  **Slut punkt** : Tryck på länken *Välj en slut punkt* . Då öppnas ett *Välj Azure Function* -fönster: :::image type="content" source="media/tutorial-end-to-end/event-subscription-3.png" alt-text="Azure Portal händelse prenumeration: Välj Azure Function" border="false":::
-    - Fyll i din **prenumeration** , **resurs grupp** , **Function-app** och **Function** ( *ProcessHubToDTEvents* ). Vissa av dessa kan fyllas i automatiskt när du har valt prenumerationen.
+* *information om*  >  händelse prenumeration **Namn**: ge din händelse prenumeration ett namn.
+* *ämnes information*  >  **System ämnets namn**: Ange ett namn som ska användas i avsnittet system. 
+* *händelse typer*  >  **Filtrera till händelse typer**: Välj *enhets telemetri* på Meny alternativen.
+* *slut punkts information*  >  **Slut punkts typ**: Välj *Azure Function* från meny alternativen.
+* *slut punkts information*  >  **Slut punkt**: Tryck på länken *Välj en slut punkt* . Då öppnas ett *Välj Azure Function* -fönster: :::image type="content" source="media/tutorial-end-to-end/event-subscription-3.png" alt-text="Azure Portal händelse prenumeration: Välj Azure Function" border="false":::
+    - Fyll i din **prenumeration**, **resurs grupp**, **Function-app** och **Function** (*ProcessHubToDTEvents*). Vissa av dessa kan fyllas i automatiskt när du har valt prenumerationen.
     - **Bekräfta val** av träff.
 
 Gå tillbaka till sidan *Skapa händelse prenumeration* och tryck på **skapa**.
@@ -283,7 +281,7 @@ Du kopplar dessa värden till enhets Simulator koden i det lokala projektet för
 >[!NOTE]
 > Nu bör du ha två Visual Studio-fönster, ett med _**DeviceSimulator. SLN**_ och ett från tidigare med _**AdtE2ESample. SLN**_.
 
-I fönstret *Solution Explorer* i det nya Visual Studio-fönstret väljer du _DeviceSimulator/ **AzureIoTHub.cs**_ för att öppna den i redigerings fönstret. Ändra följande anslutnings sträng värden till värdena som du samlade in ovan:
+I fönstret *Solution Explorer* i det nya Visual Studio-fönstret väljer du _DeviceSimulator/**AzureIoTHub.cs**_ för att öppna den i redigerings fönstret. Ändra följande anslutnings sträng värden till värdena som du samlade in ovan:
 
 ```csharp
 iotHubConnectionString = <your-hub-connection-string>
@@ -308,7 +306,7 @@ Du behöver inte göra något annat i den här konsolen, men lämna det samtidig
 
 Om du vill visa data från den digitala sidan av Azures dubbla sidor går du till Visual Studio-fönstret där _**AdtE2ESample**_ -projektet är öppet och kör projektet.
 
-I fönstret projekt konsol som öppnas kör du följande kommando för att få de temperaturer som rapporteras av den digitala dubbla *thermostat67* :
+I fönstret projekt konsol som öppnas kör du följande kommando för att få de temperaturer som rapporteras av den digitala dubbla *thermostat67*:
 
 ```cmd
 ObserveProperties thermostat67 Temperature
@@ -324,7 +322,7 @@ När du har verifierat att det fungerar som det ska kan du sluta köra båda pro
 
 Hittills i den här självstudien har du sett hur Azure Digital-enheter kan uppdateras från externa enhets data. Härnäst får du se hur ändringar i en Digitals, som kan spridas genom Azure Digitals grafer, med andra ord, så att du kan uppdatera dubbla från service-interna data.
 
-Om du vill göra detta använder du Azure-funktionen *ProcessDTRoutedData* för att uppdatera en *rummets* dubbla när den anslutna *termostat* -sidan är uppdaterad. Detta sker i den här delen av scenariot från slut punkt till slut punkt ( **pil C** ):
+Om du vill göra detta använder du Azure-funktionen *ProcessDTRoutedData* för att uppdatera en *rummets* dubbla när den anslutna *termostat* -sidan är uppdaterad. Detta sker i den här delen av scenariot från slut punkt till slut punkt (**pil C**):
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario-c.png" alt-text="Ett utdrag från det fullständiga scenariot för att skapa scenario bild markering C, elementen efter Azure Digitals dubbla: Event Grid och andra Azure Function":::
 
@@ -400,10 +398,10 @@ I [Azure Portal](https://portal.azure.com/)navigerar du till ditt event Grid-äm
 Stegen för att skapa den här händelse prenumerationen liknar när du prenumererade på den första Azure-funktionen för att IoT Hub tidigare i den här självstudien. Den här gången behöver du inte ange *telemetri* som händelse typ att lyssna efter och du kommer att ansluta till en annan Azure-funktion.
 
 På sidan *Skapa händelse prenumeration* fyller du i fälten enligt följande (fält som är fyllda som standard nämns inte):
-* *information om*  >  händelse prenumeration **Namn** : ge din händelse prenumeration ett namn.
-* *slut punkts information*  >  **Slut punkts typ** : Välj *Azure Function* från meny alternativen.
-* *slut punkts information*  >  **Slut punkt** : Tryck på länken *Välj en slut punkt* . Då öppnas ett *Välj Azure Function* -fönster:
-    - Fyll i din **prenumeration** , **resurs grupp** , **Function-app** och **Function** ( *ProcessDTRoutedData* ). Vissa av dessa kan fyllas i automatiskt när du har valt prenumerationen.
+* *information om*  >  händelse prenumeration **Namn**: ge din händelse prenumeration ett namn.
+* *slut punkts information*  >  **Slut punkts typ**: Välj *Azure Function* från meny alternativen.
+* *slut punkts information*  >  **Slut punkt**: Tryck på länken *Välj en slut punkt* . Då öppnas ett *Välj Azure Function* -fönster:
+    - Fyll i din **prenumeration**, **resurs grupp**, **Function-app** och **Function** (*ProcessDTRoutedData*). Vissa av dessa kan fyllas i automatiskt när du har valt prenumerationen.
     - **Bekräfta val** av träff.
 
 Gå tillbaka till sidan *Skapa händelse prenumeration* och tryck på **skapa**.
@@ -437,8 +435,8 @@ När du har verifierat att det fungerar som det ska kan du sluta köra båda pro
 Här är en recension av scenariot som du skapade i den här självstudien.
 
 1. En digital Azure Digital-instans representerar en våning, ett rum och en termostat (representeras av **avsnitt a** i diagrammet nedan)
-2. En simulerad enhets telemetri skickas till IoT Hub, där *ProcessHubToDTEvents* Azure-funktionen lyssnar efter telemetri-händelser. Funktionen *ProcessHubToDTEvents* Azure använder informationen i dessa händelser för att ställa in egenskapen *temperatur* på *thermostat67* ( **pil B** i diagrammet).
-3. Egenskaps ändrings händelser i Azure Digitals flätas dirigeras till ett event Grid-ämne där *ProcessDTRoutedData* Azure-funktionen lyssnar efter händelser. Funktionen *ProcessDTRoutedData* Azure använder informationen i dessa händelser för att ställa in egenskapen *temperatur* på *Room21* ( **pil C** i diagrammet).
+2. En simulerad enhets telemetri skickas till IoT Hub, där *ProcessHubToDTEvents* Azure-funktionen lyssnar efter telemetri-händelser. Funktionen *ProcessHubToDTEvents* Azure använder informationen i dessa händelser för att ställa in egenskapen *temperatur* på *thermostat67* (**pil B** i diagrammet).
+3. Egenskaps ändrings händelser i Azure Digitals flätas dirigeras till ett event Grid-ämne där *ProcessDTRoutedData* Azure-funktionen lyssnar efter händelser. Funktionen *ProcessDTRoutedData* Azure använder informationen i dessa händelser för att ställa in egenskapen *temperatur* på *Room21* (**pil C** i diagrammet).
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario.png" alt-text="Bild av det fullständiga Bygg scenariot. Visar data som flödar från en enhet till IoT Hub, via en Azure-funktion (pil B) till en digital Azure-instans (del A), sedan från Event Grid till en annan Azure-funktion för bearbetning (pil C)":::
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: 130cd643856b38471eac6d6869cdc1ed8b0bcd2e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 5a912790b4a7a86c44576b98ce7e95f44b810c9e
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499160"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857383"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Träna och distribuera en Custom Speech-modell
 
@@ -67,7 +67,7 @@ När slut punkten har distribuerats visas slut punktens namn som en länk. Välj
 
 ## <a name="view-logging-data"></a>Visa loggnings data
 
-Loggnings data är tillgängliga för hämtning under **slut punkts**  >  **information**.
+Loggnings data är tillgängliga för export om du går till slut punkts sidan under **distributioner**.
 > [!NOTE]
 >Loggnings data är tillgängliga i 30 dagar på Microsoft-ägda lagrings enheter. Den kommer att tas bort efteråt. Om ett kundägda lagrings konto är länkat till Cognitive Services prenumerationen raderas inte loggnings data automatiskt.
 
