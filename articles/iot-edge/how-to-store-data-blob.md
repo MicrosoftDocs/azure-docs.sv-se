@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 22cef5919e597d4cd83ad80f5758a0427c52e2bb
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: e1031df9f305015048de7f708123a51875776e1b
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219742"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760596"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Lagra data på gränsen med Azure Blob Storage på IoT Edge
 
@@ -81,7 +81,7 @@ Namnet på den här inställningen är `deviceToCloudUploadProperties` . Om du a
 | ----- | ----- | ---- |
 | uploadOn | SANT, FALSKT | Ange som `false` standard. Om du vill aktivera funktionen väljer du det här fältet till `true` . <br><br> Miljö variabel: `deviceToCloudUploadProperties__uploadOn={false,true}` |
 | uploadOrder | NewestFirst, OldestFirst | Gör att du kan välja i vilken ordning data ska kopieras till Azure. Ange som `OldestFirst` standard. Ordningen bestäms efter tidpunkten för den senaste ändringen av blobben. <br><br> Miljö variabel: `deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
-| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` är en anslutnings sträng som gör att du kan ange det lagrings konto som du vill att dina data ska överföras till. Ange `Azure Storage Account Name` , `Azure Storage Account Key` , `End point suffix` . Lägg till lämpliga EndpointSuffix av Azure där data ska överföras, det varierar för Global Azure, Azure och Microsoft Azure Stack. <br><br> Du kan välja att ange Azure Storage SAS-anslutningssträng här. Men du måste uppdatera den här egenskapen när den upphör att gälla. <br><br> Miljö variabel: `deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
+| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` är en anslutnings sträng som gör att du kan ange det lagrings konto som du vill att dina data ska överföras till. Ange `Azure Storage Account Name` , `Azure Storage Account Key` , `End point suffix` . Lägg till lämpliga EndpointSuffix av Azure där data ska överföras, det varierar för Global Azure, Azure och Microsoft Azure Stack. <br><br> Du kan välja att ange Azure Storage SAS-anslutningssträng här. Men du måste uppdatera den här egenskapen när den upphör att gälla. SAS-behörigheter kan innehålla skapa åtkomst för behållare och skapa, skriva och lägga till åtkomst för blobbar.  <br><br> Miljö variabel: `deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
 | storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Gör att du kan ange de behållar namn som du vill överföra till Azure. Med den här modulen kan du ange namn på både käll-och mål behållare. Om du inte anger namnet på mål behållaren tilldelas behållar namnet automatiskt som `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>` . Du kan skapa mall strängar för mål behållar namn, se kolumnen möjliga värden. <br>*% h – > IoT Hub namn (3-50 tecken). <br>*% d-> IoT Edge enhets-ID (1 till 129 tecken). <br>*% m – > modulens namn (1 till 64 tecken). <br>*% c – > käll behållar namn (3 till 63 tecken). <br><br>Den maximala storleken på behållar namnet är 63 tecken och tilldelar mål behållar namnet automatiskt om storleken på containern överskrider 63 tecken så trimmas varje avsnitt (IoTHubName, IotEdgeDeviceID, Modulnamn, SourceContainerName) till 15 tecken. <br><br> Miljö variabel: `deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target=<targetName>` |
 | deleteAfterUpload | SANT, FALSKT | Ange som `false` standard. När det är inställt på tas `true` data bort automatiskt när uppladdning till moln lagring är klart. <br><br> **Varning**! om du använder tillägg för att lägga till blobar, kommer den här inställningen att ta bort tillägg till blobar från lokal lagring efter en lyckad uppladdning, och eventuella framtida tillägg till block-åtgärder till dessa blobbar kommer att Miss lyckas. Använd den här inställningen med försiktighet, aktivera inte detta om ditt program inte har några frekventa tillägg eller inte stöder kontinuerliga tillägg-åtgärder<br><br> Miljö variabel: `deviceToCloudUploadProperties__deleteAfterUpload={false,true}` . |
 
@@ -143,7 +143,7 @@ sudo chown -R 11000:11000 /srv/containerdata
 sudo chmod -R 700 /srv/containerdata
 ```
 
-Om du behöver köra tjänsten som en annan användare än **absie**kan du ange ditt anpassade användar-ID i createOptions under egenskapen User i distributions manifestet. I så fall måste du använda standard-eller rot grupps-ID: t `0` .
+Om du behöver köra tjänsten som en annan användare än **absie** kan du ange ditt anpassade användar-ID i createOptions under egenskapen User i distributions manifestet. I så fall måste du använda standard-eller rot grupps-ID: t `0` .
 
 ```json
 "createOptions": {
@@ -175,7 +175,7 @@ Ange IoT Edge enhet som BLOB-slutpunkt för alla lagrings begär Anden som du g�
   * `http://<fully qualified domain name>:11002/<account name>`
  
  > [!IMPORTANT]
- > Azure IoT Edge är Skift läges känslig när du anropar moduler, och Storage SDK: n är också i gemener. Även om namnet på modulen på [Azure Marketplace](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace) är **AzureBlobStorageonIoTEdge**kan du med hjälp av att ändra namnet till gemener se till att dina anslutningar till Azure-Blob Storage i IoT Edge-modulen inte avbryts.
+ > Azure IoT Edge är Skift läges känslig när du anropar moduler, och Storage SDK: n är också i gemener. Även om namnet på modulen på [Azure Marketplace](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace) är **AzureBlobStorageonIoTEdge** kan du med hjälp av att ändra namnet till gemener se till att dina anslutningar till Azure-Blob Storage i IoT Edge-modulen inte avbryts.
  
 ## <a name="azure-blob-storage-quickstart-samples"></a>Azure Blob Storage snabb starts exempel
 
@@ -232,7 +232,7 @@ Som inte stöds
 * Hämta BLOB service-statistik
 * Hämta konto information
 
-### <a name="containers"></a>Containers
+### <a name="containers"></a>Containrar
 
 Tillåtna
 

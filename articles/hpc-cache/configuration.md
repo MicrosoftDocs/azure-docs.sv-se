@@ -4,14 +4,14 @@ description: Förklarar hur du konfigurerar ytterligare inställningar för cach
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 05/06/2020
+ms.date: 12/21/2020
 ms.author: v-erkel
-ms.openlocfilehash: b01c4d896d5ec600e0fe22e3ca7b7816141776a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02bf862cdc3b20ef3e5fdb024f474267efa0c70d
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86497207"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760511"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Konfigurera ytterligare inställningar för Azure HPC cache
 
@@ -43,7 +43,7 @@ Om du inte vill ändra MTU-inställningarna på andra system komponenter bör du
 Läs mer om MTU-inställningar i virtuella Azure-nätverk genom [att läsa TCP/IP-prestanda för virtuella Azure-datorer](../virtual-network/virtual-network-tcpip-performance-tuning.md).
 
 ## <a name="configure-root-squash"></a>Konfigurera rot-squash
-<!-- linked from troubleshoot -->
+<!-- linked from troubleshoot and from access policies -->
 
 Inställningen **Aktivera rot squash** styr hur Azure HPC cache behandlar begär Anden från rot användaren på klient datorer.
 
@@ -54,6 +54,9 @@ Om rot-squash är inaktive rad skickas en begäran från klientens rot användar
 Genom att ange rot-squash i cacheminnet kan du kompensera för den nödvändiga ``no_root_squash`` inställningen på NAS-system som används som lagrings mål. (Läs mer om [NFS-mål krav för lagring](hpc-cache-prerequisites.md#nfs-storage-requirements).) Det kan också förbättra säkerheten när den används med Azure Blob Storage-mål.
 
 Standardinställningen är **Ja**. (Cacheminnen som skapats före april 2020 kan ha standardvärdet **Nej**.)
+
+> [!TIP]
+> Du kan också ange rot-squash för en speciell lagrings export genom [att anpassa klient åtkomst principer](access-policies.md#root-squash).
 
 ## <a name="view-snapshots-for-blob-storage-targets"></a>Visa ögonblicks bilder för Blob Storage-mål
 

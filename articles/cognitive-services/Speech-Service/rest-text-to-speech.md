@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 77a8321ba8bac0ecaf577bce6c3c05d10508128e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: references_regions
+ms.openlocfilehash: bfdea5f2e2bd20a35ee948e99b3be9bf55038b13
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96020169"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760664"
 ---
 # <a name="text-to-speech-rest-api"></a>Text-till-tal (REST API)
 
@@ -34,7 +35,7 @@ Innan du använder det här API: et, förstå:
 * Text till tal-REST API kräver ett Authorization-huvud. Det innebär att du måste slutföra ett token Exchange för att få åtkomst till tjänsten. Mer information finns i [Autentisering](#authentication).
 
 > [!TIP]
-> Se Azures myndighets [dokumentation](../../azure-government/compare-azure-government-global-azure.md) för FairFax-slutpunkter (myndigheter).
+> Se [Azures myndighets dokumentation](/azure/azure-government/compare-azure-government-global-azure) för FairFax-slutpunkter (myndigheter).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -66,13 +67,16 @@ Med `voices/list` slut punkten kan du få en fullständig lista över röster f�
 | USA, västra | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA, västra 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 
+> [!TIP]
+> [Röster i för hands versionen](language-support.md#neural-voices-in-preview) är endast tillgängliga i dessa tre regioner: östra USA, västeuropa och Sydostasien.
+
 ### <a name="request-headers"></a>Begärandehuvuden
 
 I den här tabellen listas obligatoriska och valfria rubriker för text till tal-begäranden.
 
-| Huvud | Description | Obligatorisk/valfri |
+| Huvud | Beskrivning | Obligatorisk/valfri |
 |--------|-------------|---------------------|
-| `Authorization` | En autentiseringstoken föregås av ordet `Bearer` . Mer information finns i [Autentisering](#authentication). | Obligatorisk |
+| `Authorization` | En autentiseringstoken föregås av ordet `Bearer` . Mer information finns i [Autentisering](#authentication). | Obligatoriskt |
 
 ### <a name="request-body"></a>Begärandetext
 
@@ -98,46 +102,78 @@ Svaret har trunkerats för att illustrera ett svars struktur.
 
 ```json
 [
+  {
+    "Name": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
+    "DisplayName": "Hoda",
+    "LocalName": "هدى",
+    "ShortName": "ar-EG-Hoda",
+    "Gender": "Female",
+    "Locale": "ar-EG",
+    "SampleRateHertz": "16000",
+    "VoiceType": "Standard",
+    "Status": "GA"
+  },
+
+...
+      
     {
-        "Name": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
-        "ShortName": "ar-EG-Hoda",
-        "Gender": "Female",
-        "Locale": "ar-EG",
-        "SampleRateHertz": "16000",
-        "VoiceType": "Standard"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (ar-SA, Naayf)",
-        "ShortName": "ar-SA-Naayf",
-        "Gender": "Male",
-        "Locale": "ar-SA",
-        "SampleRateHertz": "16000",
-        "VoiceType": "Standard"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (bg-BG, Ivan)",
-        "ShortName": "bg-BG-Ivan",
-        "Gender": "Male",
-        "Locale": "bg-BG",
-        "SampleRateHertz": "16000",
-        "VoiceType": "Standard"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (ca-ES, HerenaRUS)",
-        "ShortName": "ca-ES-HerenaRUS",
-        "Gender": "Female",
-        "Locale": "ca-ES",
-        "SampleRateHertz": "16000",
-        "VoiceType": "Standard"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)",
-        "ShortName": "zh-CN-XiaoxiaoNeural",
-        "Gender": "Female",
-        "Locale": "zh-CN",
-        "SampleRateHertz": "24000",
-        "VoiceType": "Neural"
-    },
+    "Name": "Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)",
+    "DisplayName": "Aria",
+    "LocalName": "Aria",
+    "ShortName": "en-US-AriaNeural",
+    "Gender": "Female",
+    "Locale": "en-US",
+    "StyleList": [
+      "chat",
+      "customerservice",
+      "newscast-casual",
+      "newscast-formal",
+      "cheerful",
+      "empathetic"
+    ],
+    "SampleRateHertz": "24000",
+    "VoiceType": "Neural",
+    "Status": "GA"
+  },
+  
+  ...
+    
+     {
+    "Name": "Microsoft Server Speech Text to Speech Voice (ga-IE, OrlaNeural)",
+    "DisplayName": "Orla",
+    "LocalName": "Orla",
+    "ShortName": "ga-IE-OrlaNeural",
+    "Gender": "Female",
+    "Locale": "ga-IE",
+    "SampleRateHertz": "24000",
+    "VoiceType": "Neural",
+    "Status": "Preview"
+  },
+  
+  ...
+    
+   {
+    "Name": "Microsoft Server Speech Text to Speech Voice (zh-CN, YunxiNeural)",
+    "DisplayName": "Yunxi",
+    "LocalName": "云希",
+    "ShortName": "zh-CN-YunxiNeural",
+    "Gender": "Male",
+    "Locale": "zh-CN",
+    "StyleList": [
+      "Calm",
+      "Fearful",
+      "Cheerful",
+      "Disgruntled",
+      "Serious",
+      "Angry",
+      "Sad",
+      "Depressed",
+      "Embarrassed"
+    ],
+    "SampleRateHertz": "24000",
+    "VoiceType": "Neural",
+    "Status": "Preview"
+  },
 
     ...
 ]
@@ -170,12 +206,12 @@ Dessa regioner stöds för text till tal med hjälp av REST API. Se till att du 
 
 I den här tabellen listas obligatoriska och valfria rubriker för text till tal-begäranden.
 
-| Huvud | Description | Obligatorisk/valfri |
+| Huvud | Beskrivning | Obligatorisk/valfri |
 |--------|-------------|---------------------|
-| `Authorization` | En autentiseringstoken föregås av ordet `Bearer` . Mer information finns i [Autentisering](#authentication). | Obligatorisk |
-| `Content-Type` | Anger innehålls typen för den angivna texten. Accepterat värde: `application/ssml+xml` . | Obligatorisk |
-| `X-Microsoft-OutputFormat` | Anger formatet för ljud uppspelning. En fullständig lista över godkända värden finns i [ljud utmatningar](#audio-outputs). | Obligatorisk |
-| `User-Agent` | Programnamnet. Det tillhandahållna värdet måste vara mindre än 255 tecken. | Obligatorisk |
+| `Authorization` | En autentiseringstoken föregås av ordet `Bearer` . Mer information finns i [Autentisering](#authentication). | Obligatoriskt |
+| `Content-Type` | Anger innehålls typen för den angivna texten. Accepterat värde: `application/ssml+xml` . | Obligatoriskt |
+| `X-Microsoft-OutputFormat` | Anger formatet för ljud uppspelning. En fullständig lista över godkända värden finns i [ljud utmatningar](#audio-outputs). | Obligatoriskt |
+| `User-Agent` | Programnamnet. Det tillhandahållna värdet måste vara mindre än 255 tecken. | Obligatoriskt |
 
 ### <a name="audio-outputs"></a>Ljud utmatningar
 
@@ -208,23 +244,17 @@ Denna HTTP-begäran använder SSML för att ange röst och språk. Om text läng
 ```http
 POST /cognitiveservices/v1 HTTP/1.1
 
-X-Microsoft-OutputFormat: raw-16khz-16bit-mono-pcm
+X-Microsoft-OutputFormat: raw-24khz-16bit-mono-pcm
 Content-Type: application/ssml+xml
 Host: westus.tts.speech.microsoft.com
 Content-Length: 225
 Authorization: Bearer [Base64 access_token]
 
 <speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female'
-    name='en-US-AriaRUS'>
+    name='en-US-AriaNeural'>
         Microsoft Speech Service Text-to-Speech API
 </voice></speak>
 ```
-
-Se våra snabb starter för språkspecifika exempel:
-
-* [.NET Core, C #](./get-started-text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)
-* [Python](./get-started-text-to-speech.md?pivots=programming-language-python)
-* [Node.js](./get-started-text-to-speech.md)
 
 ### <a name="http-status-codes"></a>HTTP-statuskoder
 
@@ -235,7 +265,6 @@ HTTP-statuskoden för varje svar visar att de lyckas eller vanliga fel.
 | 200 | OK | Begäran lyckades. svars texten är en ljudfil. |
 | 400 | Felaktig begäran | En obligatorisk parameter saknas, är tom eller null. Eller, värdet som skickas till antingen en obligatorisk eller valfri parameter är ogiltigt. Ett vanligt problem är ett sidhuvud som är för långt. |
 | 401 | Behörighet saknas | Begäran är inte auktoriserad. Kontrol lera att din prenumerations nyckel eller token är giltig och i rätt region. |
-| 413 | Begär ande enheten är för stor | SSML-indatamängden är längre än 1024 tecken. |
 | 415 | Medie typen stöds inte | Det är möjligt att fel `Content-Type` har angetts. `Content-Type` ska anges till `application/ssml+xml` . |
 | 429 | För många begär Anden | Du har överskridit kvoten eller frekvensen för begär Anden som tillåts för din prenumeration. |
 | 502 | Felaktig gateway    | Problem med nätverks-eller Server sidan. Kan också indikera ogiltiga huvuden. |
@@ -245,5 +274,5 @@ Om HTTP-statusen är `200 OK` , innehåller bröd texten i svaret en ljudfil i d
 ## <a name="next-steps"></a>Nästa steg
 
 - [Skapa ett kostnadsfritt Azure-konto](https://azure.microsoft.com/free/cognitive-services/)
-- [Asynkron syntes för lång Forms ljud](./long-audio-api.md)
+- [Asynkron syntes för lång Forms ljud](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
 - [Komma igång med Custom Voice](how-to-custom-voice.md)

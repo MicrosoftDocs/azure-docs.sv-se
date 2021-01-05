@@ -4,14 +4,14 @@ description: Så här skapar du klientbaserade sökvägar för Server dels lagri
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 12/22/2020
 ms.author: v-erkel
-ms.openlocfilehash: e525fc0705dffcd4765e6a1f6c5235bdef260fcd
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5549670dbd1f302bdb17b8b94cbd1fb5c4c1a1d9
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339684"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760548"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>Konfigurera sammanställd namnrymd
 
@@ -21,13 +21,13 @@ Läs [planera det sammanställda namn området](hpc-cache-namespace.md) för att
 
 **Namn områdes** sidan i Azure Portal visar de sökvägar som klienter använder för att komma åt dina data via cacheminnet. Använd den här sidan om du vill skapa, ta bort eller ändra namn områdes Sök vägar. Du kan också konfigurera namn områdes Sök vägar med hjälp av Azure CLI.
 
-Alla befintliga sökvägar till klienten visas på **namn områdes** sidan. Om ett lagrings mål inte har några sökvägar visas det inte i tabellen.
+Alla klient Sök vägar som har definierats för denna cache visas på **namn områdes** sidan. Lagrings mål som inte har några definierade namn rymds Sök vägar visas ännu inte i tabellen.
 
-Du kan sortera tabell kolumnerna genom att klicka på pilarna och bättre förstå cacheminnets sammanställda namnrymd.
+Du kan sortera tabell kolumnerna för att bättre förstå cacheminnets sammanställda namnrymd. Klicka på pilarna i kolumn rubrikerna för att sortera Sök vägarna.
 
-![skärm bild av sidan med Portal namn område med två sökvägar i en tabell. Kolumn rubriker: sökväg för namn område, lagrings mål, exportera sökväg och exportera under katalog. Objekten i den första kolumnen är klicknings bara länkar. Topp knappar: Lägg till sökväg för namnrymd, uppdatera, ta bort](media/namespace-page.png)
+[![skärm bild av sidan med Portal namn område med två sökvägar i en tabell. Kolumn rubriker: sökväg till namnrymd, lagrings mål, export Sök väg, och export-under katalog samt klient åtkomst princip. Sök vägs namnen i den första kolumnen är klicknings bara länkar. Topp knappar: Lägg till sökväg för namnrymd, uppdatera, ta bort ](media/namespace-page.png)](media/namespace-page.png#lightbox)
 
-## <a name="add-or-edit-client-facing-namespace-paths"></a>Lägg till eller redigera sökvägar för klient som är riktade mot namn
+## <a name="add-or-edit-namespace-paths"></a>Lägga till eller redigera namn områdes Sök vägar
 
 Du måste skapa minst en namn områdes Sök väg innan klienterna kan komma åt lagrings målet. (Läs genom [att montera Azure HPC cache](hpc-cache-mount.md) för mer information om klient åtkomst.)
 
@@ -43,15 +43,17 @@ Läs in sidan **namn rymds** inställningar från Azure Portal. Du kan lägga ti
 
 * **Lägg till en ny sökväg:** Klicka på knappen **+ Lägg till** överst och fyll i informationen på Redigera-panelen.
 
-  * Välj lagrings målet i den nedrullningsbara listan. (I den här skärm bilden kan inte Blob Storage-målet väljas eftersom det redan har en namn områdes Sök väg.)
+  ![Skärm bild av Lägg till-namn område redigera fält med ett Blob Storage-mål valt. Sökvägarna export och under katalog är inställda på/och kan inte redige ras.](media/namespace-add-blob.png)
 
-    ![Skärm bild av det nya namn området Redigera fält med lagrings mål väljaren som visas](media/namespace-select-storage-target.png)
+  * Ange sökvägen som klienter ska använda för att få åtkomst till det här lagrings målet.
+
+  * Välj vilken åtkomst princip som ska användas för den här sökvägen. Läs mer om hur du anpassar klient åtkomst i [använda klient åtkomst principer](access-policies.md).
+
+  * Välj lagrings målet i den nedrullningsbara listan. Om ett Blob Storage-mål redan har en namn områdes Sök väg kan du inte välja det.
 
   * För ett Azure Blob Storage-mål ställs export-och under katalog Sök vägar automatiskt till ``/`` .
 
-* **Ändra en befintlig sökväg:** Klicka på namn områdes Sök vägen. Redigerings panelen öppnas och du kan ändra sökvägen.
-
-  ![Skärm bild av namn områdes sidan efter att du har klickat på en BLOB namespace-sökväg. redigerings fälten visas i ett fönster till höger](media/edit-namespace-blob.png)
+* **Ändra en befintlig sökväg:** Klicka på namn områdes Sök vägen. Redigerings panelen öppnas. Du kan ändra sökvägen och åtkomst principen, men du kan inte ändra till ett annat lagrings mål.
 
 * **Ta bort en sökväg för namn område:** Markera kryss rutan till vänster om sökvägen och klicka på knappen **ta bort** .
 
@@ -81,7 +83,7 @@ I den här listan visas det maximala antalet sökvägar i namn område per konfi
 
   * 3 TB cache-10 namn områdes Sök vägar
   * 6 TB cache-10 namn områdes Sök vägar
-  * 23 TB cache – 20 namn rymds Sök vägar
+  * 12 TB cache-20 namn områdes Sök vägar
 
 * Upp till 4 GB/s-genomflöde:
 
@@ -109,13 +111,15 @@ Fyll i följande värden för varje namn områdes Sök väg:
 
 * **Namn områdes Sök** väg – den klientbaserade fil Sök vägen.
 
+* **Klient åtkomst princip** – Välj vilken åtkomst princip som ska användas för den här sökvägen. Läs mer om hur du anpassar klient åtkomst i [använda klient åtkomst principer](access-policies.md).
+
 * **Lagrings mål** – om du skapar en ny namn områdes Sök väg väljer du ett lagrings mål i den nedrullningsbara menyn.
 
 * **Exportera sökväg** – ange sökvägen till NFS-exporten. Se till att skriva export namnet korrekt – portalen validerar syntaxen för det här fältet, men kontrollerar inte exporten förrän du skickar ändringen.
 
 * **Exportera under katalog** – om du vill att den här sökvägen ska montera en speciell under katalog för exporten anger du den här. Annars lämnar du fältet tomt.
 
-![skärm bild av sidan Portal namn område med uppdaterings sidan öppen till höger](media/update-namespace-nfs.png)
+![skärm bild av sidan för portalens namn område med redigerings sidan öppen till höger. Redigerings formuläret visar inställningar för en sökväg för NFS-lagringsplatsens namn område](media/namespace-edit-nfs.png)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

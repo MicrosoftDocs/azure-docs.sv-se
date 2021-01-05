@@ -7,17 +7,17 @@ ms.topic: reference
 ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 5930219486de8704c777496bcaf293411c5fb7b1
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 4ba19fdf700790d89fe04867985fb803c3b0a2fc
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673995"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760409"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>RabbitMQ-utlösare för Azure Functions översikt
 
 > [!NOTE]
-> RabbitMQ-bindningarna stöds bara fullt ut i **Windows Premium och dedikerade** planer. Användning och Linux stöds inte för närvarande.
+> RabbitMQ-bindningarna stöds bara fullt ut av **Premium och dedikerade** planer. Förbrukning stöds inte.
 
 Använd RabbitMQ-utlösaren för att svara på meddelanden från en RabbitMQ-kö.
 
@@ -43,18 +43,23 @@ public static void RabbitMQTrigger_BasicDeliverEventArgs(
 I följande exempel visas hur du läser meddelandet som en POCO.
 
 ```cs
-public class TestClass
+namespace Company.Function
 {
-    public string x { get; set; }
-}
+    public class TestClass
+    {
+        public string x { get; set; }
+    }
 
-[FunctionName("RabbitMQTriggerCSharp")]
-public static void RabbitMQTrigger_BasicDeliverEventArgs(
-    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] TestClass pocObj,
-    ILogger logger
-    )
-{
-    logger.LogInformation($"C# RabbitMQ queue trigger function processed message: {Encoding.UTF8.GetString(pocObj)}");
+    public class RabbitMQTriggerCSharp{
+        [FunctionName("RabbitMQTriggerCSharp")]
+        public static void RabbitMQTrigger_BasicDeliverEventArgs(
+            [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] TestClass pocObj,
+            ILogger logger
+            )
+        {
+            logger.LogInformation($"C# RabbitMQ queue trigger function processed message: {pocObj}");
+        }
+    }
 }
 ```
 
@@ -82,7 +87,7 @@ Här är bindnings data i *function.jspå* filen:
 
 Här är C#-skript koden:
 
-```csx
+```C#
 using System;
 
 public static void Run(string myQueueItem, ILogger log)
@@ -216,7 +221,7 @@ I följande tabell förklaras de egenskaper för bindnings konfiguration som du 
 |**userNameSetting**|**UserNameSetting**|(ignoreras om du använder ConnectionStringSetting) <br>Namnet på den app-inställning som innehåller användar namnet som ska användas för att komma åt kön. Till exempel UserNameSetting: "% < UserNameFromSettings >%"|
 |**passwordSetting**|**PasswordSetting**|(ignoreras om du använder ConnectionStringSetting) <br>Namnet på den app-inställning som innehåller lösen ordet för att komma åt kön. Till exempel PasswordSetting: "% < PasswordFromSettings >%"|
 |**connectionStringSetting**|**ConnectionStringSetting**|Namnet på den app-inställning som innehåller anslutnings strängen för RabbitMQ meddelande kön. Observera att om du anger anslutnings strängen direkt och inte via en app-inställning i local.settings.jspå, kommer utlösaren inte att fungera. (T. ex.: i *function.jspå*: connectionStringSetting: "rabbitMQConnection" <br> I *local.settings.jspå*: "rabbitMQConnection": "< ActualConnectionstring >")|
-|**lastning**|**Port**|(ignoreras om du använder ConnectionStringSetting) Hämtar eller anger den port som används. Standardvärdet är 0.|
+|**lastning**|**Port**|(ignoreras om du använder ConnectionStringSetting) Hämtar eller anger den port som används. Standardvärdet är 0 som pekar på rabbitmq klients standard port inställning: 5672.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -280,7 +285,7 @@ I det här avsnittet beskrivs de globala konfigurations inställningarna som är
 |prefetchCount|30|Hämtar eller anger antalet meddelanden som meddelande mottagaren kan begära och cachelagras samtidigt.|
 |queueName|saknas| Namnet på kön att ta emot meddelanden från.|
 |Begär|saknas|Anslutnings strängen för RabbitMQ Message Queue. Observera att anslutnings strängen anges direkt här och inte via en app-inställning.|
-|port|0|(ignoreras om du använder ConnectionStringSetting) Hämtar eller anger den port som används. Standardvärdet är 0.|
+|port|0|(ignoreras om connectionString används) Hämtar eller anger den port som används. Standardvärdet är 0 som pekar på rabbitmq klients standard port inställning: 5672.|
 
 ## <a name="local-testing"></a>Lokal testning
 
@@ -305,9 +310,24 @@ Om du testar lokalt utan någon anslutnings sträng ska du ange inställningen "
 
 |Egenskap  |Standard | Beskrivning |
 |---------|---------|---------|
-|Värdnamn|saknas|(ignoreras om du använder ConnectStringSetting) <br>Värdnamn för kön (t. ex. 10.26.45.210)|
-|userName|saknas|(ignoreras om du använder ConnectionStringSetting) <br>Namn för att komma åt kön |
-|password|saknas|(ignoreras om du använder ConnectionStringSetting) <br>Lösen ord för att komma åt kön|
+|Värdnamn|saknas|(ignoreras om connectionString används) <br>Värdnamn för kön (t. ex. 10.26.45.210)|
+|userName|saknas|(ignoreras om connectionString används) <br>Namn för att komma åt kön |
+|password|saknas|(ignoreras om connectionString används) <br>Lösen ord för att komma åt kön|
+
+
+## <a name="enable-runtime-scaling"></a>Aktivera skalning av körning
+
+För att RabbitMQ-utlösaren ska kunna skala ut till flera instanser måste övervaknings inställningen för **körnings skalning** vara aktive rad. 
+
+I portalen finns den här inställningen under **konfigurations**  >  **funktionens körnings inställningar** för din Function-app.
+
+:::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
+
+I CLI kan du aktivera övervakning av **körnings skala** med hjälp av följande kommando:
+
+```azurecli-interactive
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.functionsRuntimeScaleMonitoringEnabled=1 --resource-type Microsoft.Web/sites
+```
 
 ## <a name="monitoring-rabbitmq-endpoint"></a>Övervakar RabbitMQ-slutpunkt
 Så här övervakar du köer och utbyten för en viss RabbitMQ-slutpunkt:

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: f64a91e3b285c265296c361366a10443eda18201
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: b7af6b489aeb919fd1db0e45ddba58a21b1c3633
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489419"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760154"
 ---
 # <a name="azure-monitor-metrics-overview"></a>Översikt över Azure Monitor mått
 Azure Monitor mått är en funktion i Azure Monitor som samlar in numeriska data från [övervakade resurser](../monitor-reference.md) i en tids serie databas. Mått är numeriska värden som samlas in med jämna mellanrum och beskriver lite aspekt av ett system vid en viss tidpunkt. Mått i Azure Monitor är lätta och kan stödja scenarier i nära real tid som gör det särskilt användbart för aviseringar och snabb identifiering av problem. Du kan analysera dem interaktivt med Metrics Explorer och proaktivt meddelas via en avisering när ett värde korsar ett tröskelvärde eller visualisera dem i en arbets bok eller instrument panel.
@@ -56,7 +56,7 @@ Det finns tre grundläggande källor med mått som samlas in av Azure Monitor. N
 ## <a name="metrics-explorer"></a>Måttutforskare
 Använd [Metrics Explorer](metrics-charts.md) för att interaktivt analysera data i din mått databas och rita upp värdena för flera mått över tid. Du kan fästa diagrammen på en instrument panel för att visa dem med andra visualiseringar. Du kan också hämta mått med hjälp av [Azures övervaknings REST API](rest-api-walkthrough.md).
 
-![Metrics Explorer](media/data-platform/metrics-explorer.png)
+![Metrics Explorer](media/data-platform-metrics/metrics-explorer.png)
 
 - I [komma igång med Azure Monitor Metrics Explorer](metrics-getting-started.md) kan du komma igång med hjälp av Metrics Explorer.
 
@@ -71,9 +71,9 @@ Data som samlas in av Azure Monitor mått lagras i en databas för tids serier s
 * Vissa mått kan ha flera dimensioner enligt beskrivningen i [flerdimensionella mått](#multi-dimensional-metrics). Anpassade mått kan ha upp till 10 dimensioner.
 
 ## <a name="multi-dimensional-metrics"></a>Flerdimensionella mått
-En av utmaningarna med mät data är att den ofta har begränsad information för att tillhandahålla kontext för insamlade värden. Azure Monitor åtgärdar denna utmaning med flerdimensionella mått. Måtten för ett mått är namn/värde-par som innehåller ytterligare data för att beskriva måttets värde. Till exempel kan ett mått på måttet som _är tillgängligt_ ha en dimension som heter _enhet_ med värdena _C:_ , _D:_ , vilket kan visa antingen tillgängligt disk utrymme på alla enheter eller för varje enhet individuellt.
+En av utmaningarna med mät data är att den ofta har begränsad information för att tillhandahålla kontext för insamlade värden. Azure Monitor åtgärdar denna utmaning med flerdimensionella mått. Måtten för ett mått är namn/värde-par som innehåller ytterligare data för att beskriva måttets värde. Till exempel kan ett mått på måttet som _är tillgängligt_ ha en dimension som heter _enhet_ med värdena _C:_, _D:_, vilket kan visa antingen tillgängligt disk utrymme på alla enheter eller för varje enhet individuellt.
 
-Exemplet nedan visar två data uppsättningar för ett hypotetiskt mått som kallas _nätverks data flöde_. Den första data uppsättningen har inga dimensioner. Den andra data mängden visar värdena med två dimensioner, _IP-adress_ och _riktning_ :
+Exemplet nedan visar två data uppsättningar för ett hypotetiskt mått som kallas _nätverks data flöde_. Den första data uppsättningen har inga dimensioner. Den andra data mängden visar värdena med två dimensioner, _IP-adress_ och _riktning_:
 
 ### <a name="network-throughput"></a>Nätverks data flöde
 

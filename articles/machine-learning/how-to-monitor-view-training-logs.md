@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 0dd5f6a48175bad35b37155c8ff881e352922ca7
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: ea96e1056e6157cfddbdc2f0b6451ed55a74d1de
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674484"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97756066"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>Övervaka och Visa ML körnings loggar och mått
 
@@ -121,7 +121,7 @@ Loggfiler är en viktig resurs för fel sökning av Azure ML-arbetsbelastningar.
 Tabellerna nedan visar innehållet i loggfilerna i de mappar som visas i det här avsnittet.
 
 > [!NOTE]
-> Information som användaren bör Observera även om skimmingYou inte nödvändigt vis ser varje fil för varje körning. Till exempel visas 20_image_build_log *. txt bara när en ny avbildning skapas (t. ex. När du ändrar miljön).
+> Du kommer inte nödvändigt vis att se alla filer för varje körning. Till exempel visas 20_image_build_log *. txt bara när en ny avbildning skapas (t. ex. När du ändrar miljön).
 
 #### <a name="azureml-logs-folder"></a>`azureml-logs` projektbevakningsmappen
 

@@ -5,14 +5,14 @@ author: mayanknayar
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
 ms.topic: how-to
-ms.date: 09/09/2020
+ms.date: 12/23/2020
 ms.author: manayar
-ms.openlocfilehash: 8c7574daced9cec078b6e98e378212ce30d6f4f6
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e22e8b81382614c2930c72a8150606f859be501d
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744720"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762987"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>Förhandsversion: Så här konfigurerar du automatisk gästuppdatering för virtuella datorer med Windows i Azure
 
@@ -34,11 +34,11 @@ Automatisk korrigering av virtuella gäst datorer har följande egenskaper:
 
 Om automatisk uppdatering av virtuella gäst datorer är aktive rad på en virtuell dator, hämtas de tillgängliga *viktiga* och *säkerhets* korrigeringarna och tillämpas automatiskt på den virtuella datorn. Den här processen inaktive ras automatiskt varje månad när nya korrigeringar släpps via Windows Update. Korrigering av korrigering och installation sker automatiskt, och processen omfattar att starta om den virtuella datorn efter behov.
 
-Den virtuella datorn utvärderas regelbundet för att fastställa tillämpliga korrigeringar för den virtuella datorn. Korrigeringarna kan installeras varje dag på den virtuella datorn under låg belastnings tider för den virtuella datorn. Den här automatiska utvärderingen säkerställer att eventuella korrigeringar som saknas upptäcks så snart som möjligt.
+Den virtuella datorn bedöms regelbundet med några dagars mellanrum och flera gånger under en 30-dagarsperiod för att fastställa de tillämpliga korrigeringarna för den virtuella datorn. Korrigeringarna kan installeras varje dag på den virtuella datorn under låg belastnings tider för den virtuella datorn. Den här automatiska utvärderingen säkerställer att eventuella korrigeringar som saknas upptäcks så snart som möjligt.
 
-Korrigeringsfiler installeras inom 30 dagar från den månatliga Windows Updates versionen, efter den tillgänglighets första dirigering som beskrivs nedan. Korrigeringsfiler installeras bara vid låg belastnings tider för den virtuella datorn, beroende på den virtuella datorns tidszon. Den virtuella datorn måste köras under låg belastnings tid för att korrigerings program ska installeras automatiskt. Om en virtuell dator stängs av under en periodisk utvärdering, kommer den virtuella datorn automatiskt att utvärderas och tillämpliga korrigerings program installeras automatiskt vid nästa periodiska bedömning när den virtuella datorn påbörjas.
+Korrigeringsfiler installeras inom 30 dagar från den månatliga Windows Updates versionen, efter den tillgänglighets första dirigering som beskrivs nedan. Korrigeringsfiler installeras bara vid låg belastnings tider för den virtuella datorn, beroende på den virtuella datorns tidszon. Den virtuella datorn måste köras under låg belastnings tid för att korrigerings program ska installeras automatiskt. Om en virtuell dator stängs av under en periodisk utvärdering, kommer den virtuella datorn automatiskt att utvärderas och tillämpliga korrigerings program installeras automatiskt under nästa periodiska bedömning (vanligt vis inom några dagar) när den virtuella datorn påbörjas.
 
-Om du vill installera korrigeringar med andra korrigeringar eller schemalägga korrigerings installation i ett eget anpassat underhålls fönster kan du använda [uppdateringshantering](tutorial-config-management.md#manage-windows-updates).
+Definitions uppdateringar och andra korrigeringar som inte klassificeras som *kritiska* eller *säkerhet* installeras inte via den automatiska gäst korrigeringen för virtuella datorer. Om du vill installera korrigeringar med andra korrigeringar eller schemalägga korrigerings installation i ett eget anpassat underhålls fönster kan du använda [uppdateringshantering](tutorial-config-management.md#manage-windows-updates).
 
 ### <a name="availability-first-patching"></a>Tillgänglighet – första korrigering
 
@@ -69,11 +69,11 @@ Följande plattforms-SKU: er stöds för närvarande (och fler läggs till regel
 
 | Publisher               | OS-erbjudande      |  Sku               |
 |-------------------------|---------------|--------------------|
-| Microsoft Corporation   | WindowsServer | 2012-R2-Datacenter |
-| Microsoft Corporation   | WindowsServer | 2016 – Data Center    |
-| Microsoft Corporation   | WindowsServer | 2016-Data Center-Server Core |
-| Microsoft Corporation   | WindowsServer | 2019 – Data Center |
-| Microsoft Corporation   | WindowsServer | 2019-Data Center-Server Core |
+| MicrosoftWindowsServer  | WindowsServer | 2012-R2-Datacenter |
+| MicrosoftWindowsServer  | WindowsServer | 2016 – Data Center    |
+| MicrosoftWindowsServer  | WindowsServer | 2016-Data Center-Server Core |
+| MicrosoftWindowsServer  | WindowsServer | 2019 – Data Center |
+| MicrosoftWindowsServer  | WindowsServer | 2019-Data Center-kärna |
 
 ## <a name="patch-orchestration-modes"></a>Korrigera Orchestration-lägen
 Virtuella Windows-datorer i Azure har nu stöd för följande säkerhets lägen för snabb korrigeringar:
@@ -83,7 +83,7 @@ Virtuella Windows-datorer i Azure har nu stöd för följande säkerhets lägen 
 - Det här läget krävs för första korrigering av tillgänglighet.
 - Om du anger det här läget inaktive ras även de inbyggda automatiska uppdateringarna på den virtuella Windows-datorn för att undvika duplicering.
 - Det här läget stöds bara för virtuella datorer som skapas med avbildningar som stöds av OS-plattformen ovan.
-- Om du vill använda det här läget ställer du in egenskapen `osProfile.windowsConfiguration.enableAutomaticUpdates=true` och anger egenskapen  `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByPlatfom` i mallen för virtuell dator.
+- Om du vill använda det här läget ställer du in egenskapen `osProfile.windowsConfiguration.enableAutomaticUpdates=true` och anger egenskapen  `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByPlatform` i mallen för virtuell dator.
 
 **AutomaticByOS:**
 - Det här läget aktiverar automatiska uppdateringar på den virtuella Windows-datorn och korrigeringsfiler installeras på den virtuella datorn via automatiska uppdateringar.
@@ -107,7 +107,7 @@ Virtuella Windows-datorer i Azure har nu stöd för följande säkerhets lägen 
 - Den virtuella datorn måste kunna komma åt Windows Update-slutpunkter. Om den virtuella datorn är konfigurerad för att använda Windows Server Update Services (WSUS) måste de relevanta WSUS-Server slut punkterna vara tillgängliga.
 - Använd Compute API version 2020-06-01 eller högre.
 
-Att aktivera för hands versions funktionen kräver en engångs anmälan för funktionen *InGuestAutoPatchVMPreview* per prenumeration, enligt beskrivningen nedan.
+Att aktivera för hands versions funktionen kräver en engångs anmälan för funktionen **InGuestAutoPatchVMPreview** per prenumeration, enligt beskrivningen nedan.
 
 ### <a name="rest-api"></a>REST-API
 I följande exempel beskrivs hur du aktiverar för hands versionen av din prenumeration:
@@ -199,7 +199,7 @@ Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Använd [AZ VM Create](/cli/azure/vm#az-vm-create) för att aktivera automatisk korrigering av VM-gäster när du skapar en ny virtuell dator. I följande exempel konfigureras automatisk uppdatering av virtuella gäst datorer för en virtuell dator med namnet *myVM* i resurs gruppen med namnet *myResourceGroup* :
+Använd [AZ VM Create](/cli/azure/vm#az-vm-create) för att aktivera automatisk korrigering av VM-gäster när du skapar en ny virtuell dator. I följande exempel konfigureras automatisk uppdatering av virtuella gäst datorer för en virtuell dator med namnet *myVM* i resurs gruppen med namnet *myResourceGroup*:
 
 ```azurecli-interactive
 az vm create --resource-group myResourceGroup --name myVM --image Win2019Datacenter --enable-agent --enable-auto-update --patch-mode AutomaticByPlatform
@@ -254,10 +254,10 @@ Installations resultatet för korrigerings filen för din virtuella dator kan gr
 ## <a name="on-demand-patch-assessment"></a>Utvärdering av korrigering på begäran
 Om automatisk uppdatering av virtuella gäst datorer redan har Aktiver ATS för den virtuella datorn, utförs en periodisk korrigering av korrigering på den virtuella datorn under den tid då den virtuella datorn låg belastning. Den här processen är automatisk och resultatet av den senaste utvärderingen kan granskas via den virtuella datorns instans vy enligt beskrivningen ovan i det här dokumentet. Du kan också utlösa en utvärdering på begäran för din virtuella dator när som helst. Det kan ta några minuter att slutföra korrigerings utvärderingen och status för den senaste utvärderingen uppdateras i instans visningen för den virtuella datorn.
 
-Att aktivera för hands versions funktionen kräver en engångs anmälan för funktionen *InGuestPatchVMPreview* per prenumeration. För hands versionen av funktionen för uppdatering på begäran kan aktive ras enligt den [förhands gransknings process](automatic-vm-guest-patching.md#requirements-for-enabling-automatic-vm-guest-patching) som beskrivs tidigare för automatisk uppdatering av virtuella gäst datorer.
+Att aktivera för hands versions funktionen kräver en engångs anmälan för funktionen **InGuestPatchVMPreview** per prenumeration. Den här förhands granskningen skiljer sig från den automatiska korrigeringen av gäst uppdaterings funktionen för virtuella datorer som gjorts tidigare för **InGuestAutoPatchVMPreview**. Att aktivera ytterligare förhands granskning av funktioner är ett separat och ytterligare krav. För hands versionen av funktionen för uppdatering på begäran kan aktive ras enligt den [förhands gransknings process](automatic-vm-guest-patching.md#requirements-for-enabling-automatic-vm-guest-patching) som beskrivs tidigare för automatisk uppdatering av virtuella gäst datorer.
 
 > [!NOTE]
->Utvärdering av korrigering på begäran utlöser inte automatiskt korrigerings installation. Utvärderas och tillämpliga korrigeringar för den virtuella datorn installeras bara under den virtuella datorns låg belastnings tid, efter den tillgänglighets uppdaterings process som beskrivs tidigare i det här dokumentet.
+>Utvärdering av korrigering på begäran utlöser inte automatiskt korrigerings installation. Om du har aktiverat automatisk korrigering av virtuella gäst datorer, kommer de utvärderade och tillämpliga korrigeringarna för den virtuella datorn att installeras under den virtuella datorns låg belastnings tid, efter den tillgänglighets uppdaterings process som beskrivs tidigare i det här dokumentet.
 
 ### <a name="rest-api"></a>REST-API
 ```

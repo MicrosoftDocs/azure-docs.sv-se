@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 30004306d9ff44df04a26640a2bd7a09256fce25
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 4c964f3661e120026189a75d331e6db975b41c70
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516680"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97756083"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Autentiseringsuppgifter för Source Authentication i Azure avdelningens kontroll
 
@@ -73,7 +73,7 @@ Typ av autentiseringsuppgift som stöds i avdelningens kontroll idag:
 * SQL-autentisering: du kommer att lägga till **lösen ordet** som en hemlighet i Key Vault
 * Konto nyckel: du kommer att lägga till **konto nyckeln** som en hemlighet i Key Vault
 
-Här är mer information om hur du lägger till hemligheter i ett nyckel valv: (Infoga Key Vault-artikel)
+Mer information finns i [lägga till en hemlighet till Key Vault](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault).
 
 När du har lagrat dina hemligheter i ditt nyckel valv skapar du din nya autentiseringsuppgift genom att välja + nytt från kommando fältet autentiseringsuppgifter. Ange den information som krävs, inklusive att välja autentiseringsmetoden och en Key Vault instans som du vill välja en hemlighet från. När all information har fyllts i klickar du på Skapa.
 

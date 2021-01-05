@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
-ms.openlocfilehash: 1d51f5e8d2fac1e2b180a608c840d0a322e76271
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 33df4410b9dd82fd0b1c732eb03ab5e0e77e9869
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143238"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763123"
 ---
 # <a name="upstream-settings"></a>Överordnade inställningar
 
@@ -53,16 +53,29 @@ När en klient i "chatt"-hubben anropar Hub `broadcast` -metoden skickas ett med
 http://host.com/chat/api/messages/broadcast
 ```
 
+### <a name="key-vault-secret-reference-in-url-template-settings"></a>Key Vault hemlig referens i inställningar för URL-mall
+
+URL: en för överordnad är inte kryptering i vilo läge. Om du har känslig information rekommenderar vi att du använder Key Vault för att spara dem där åtkomst kontroll har bättre försäkring. I princip kan du aktivera den hanterade identiteten för Azure SignalR-tjänsten och sedan bevilja Läs behörighet på en Key Vault-instans och använda Key Vault referens i stället för oformaterad text i URL-mönster för uppladdning.
+
+1. Lägg till en tilldelad identitet eller användardefinierad identitet. Se [hur du lägger till hanterad identitet i Azure Portal](./howto-use-managed-identity.md#add-a-system-assigned-identity)
+
+2. Bevilja hemlig Läs behörighet för den hanterade identiteten i åtkomst principerna i Key Vault. Se [tilldela en princip för Key Vault åtkomst med hjälp av Azure Portal](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
+
+3. Ersätt din känsliga text med syntaxen `{@Microsoft.KeyVault(SecretUri=<secret-identity>)}` i uppströms URL-mönstret.
+
+> [!NOTE]
+> Hemligt innehåll läses endast om när du ändrar de överordnade inställningarna eller ändrar den hanterade identiteten. Se till att du har beviljat Läs behörighet till den hanterade identiteten innan du använder Key Vault hemliga referensen.
+
 ### <a name="rule-settings"></a>Regel inställningar
 
-Du kan ange regler för *nav regler*, *kategori regler*och *händelse regler* separat. Matchnings regeln stöder tre format. Ta händelse regler som exempel:
+Du kan ange regler för *nav regler*, *kategori regler* och *händelse regler* separat. Matchnings regeln stöder tre format. Ta händelse regler som exempel:
 - Använd en asterisk (*) för att matcha alla händelser.
 - Använd ett kommatecken (,) för att koppla flera händelser. Matchar till exempel `connected, disconnected` de anslutna och frånkopplade händelserna.
 - Använd det fullständiga händelse namnet för att matcha händelsen. Matchar till exempel `connected` den anslutna händelsen.
 
 > [!NOTE]
-> Om du använder Azure Functions-och [signal utlösare](../azure-functions/functions-bindings-signalr-service-trigger.md)exponerar signal utlösaren en enda slut punkt i följande format: `https://<APP_NAME>.azurewebsites.net/runtime/webhooks/signalr?code=<API_KEY>` .
-> Du kan bara konfigurera URL-mallen till denna URL.
+> Om du använder Azure Functions-och [signal utlösare](../azure-functions/functions-bindings-signalr-service-trigger.md)exponerar signal utlösaren en enda slut punkt i följande format: `<Function_App_URL>/runtime/webhooks/signalr?code=<API_KEY>` .
+> Du kan bara konfigurera **Inställningar för URL-mal len** till denna URL och behålla **regel inställningar** som standard. Se [SignalR service integration](../azure-functions/functions-bindings-signalr-service-trigger.md#signalr-service-integration) för information om hur du hittar `<Function_App_URL>` och `<API_KEY>` .
 
 ### <a name="authentication-settings"></a>Autentiseringsinställningar
 
@@ -75,14 +88,14 @@ När du väljer `ManagedIdentity` måste du aktivera en hanterad identitet i Azu
 ## <a name="create-upstream-settings-via-the-azure-portal"></a>Skapa överordnade inställningar via Azure Portal
 
 1. Gå till Azure SignalR-tjänsten.
-2. Välj **Inställningar** och växla **tjänst läge** till **Server**lös. De överordnade inställningarna visas:
+2. Välj **Inställningar** och växla **tjänst läge** till **Server** lös. De överordnade inställningarna visas:
 
     :::image type="content" source="media/concept-upstream/upstream-portal.png" alt-text="Överordnade inställningar":::
 
 3. Lägg till URL: er under **mönster för överordnad URL**. Sedan visas standardvärdet i inställningar som **Hub-regler** .
-4. Om du vill ange inställningar för **Hubbs regler**, **händelse regler**, **kategori regler**och **överordnad autentisering**, väljer du värdet för **nav-regler**. En sida där du kan redigera inställningar visas:
+4. Om du vill ange inställningar för **Hubbs regler**, **händelse regler**, **kategori regler** och **överordnad autentisering**, väljer du värdet för **nav-regler**. En sida där du kan redigera inställningar visas:
 
-    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="Överordnade inställningar":::
+    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="Information om överordnade inställningar":::
 
 5. Om du vill ange en **överordnad autentisering**, se till att du har aktiverat en hanterad identitet först. Välj sedan **Använd hanterad identitet**. Beroende på dina behov kan du välja valfria alternativ under **resurs-ID för autentisering**. Mer information finns i [Managed identiteter för Azure SignalR service](howto-use-managed-identity.md) .
 
@@ -115,7 +128,7 @@ Ange egenskapen i egenskapen för att skapa överordnade inställningar med hjä
 
 ## <a name="serverless-protocols"></a>Server lös protokoll
 
-Azure SignalR service skickar meddelanden till slut punkter som följer följande protokoll.
+Azure SignalR service skickar meddelanden till slut punkter som följer följande protokoll. Du kan använda [SignalR tjänstens Utlös ande bindning](../azure-functions/functions-bindings-signalr-service-trigger.md) med Funktionsapp, som hanterar dessa protokoll åt dig.
 
 ### <a name="method"></a>Metod
 
@@ -170,3 +183,5 @@ Hex_encoded(HMAC_SHA256(accessKey, connection-id))
 
 - [Hanterade identiteter för Azure SignalR service](howto-use-managed-identity.md)
 - [Azure Functions-utveckling och -konfiguration med Azure SignalR Service](signalr-concept-serverless-development-config.md)
+- [Hantera meddelanden från SignalR-tjänsten (Utlös bindning)](../azure-functions/functions-bindings-signalr-service-trigger.md)
+- [Exempel på Utlös ande bindning för SignalR tjänst](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BidirectionChat)

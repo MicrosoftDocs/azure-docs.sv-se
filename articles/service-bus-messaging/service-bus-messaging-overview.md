@@ -3,15 +3,15 @@ title: Översikt över Azure Service Bus-meddelanden | Microsoft Docs
 description: Den här artikeln innehåller en översikt över Azure Service Bus, en fullständigt hanterad meddelande Broker för företags integrering.
 ms.topic: overview
 ms.date: 11/20/2020
-ms.openlocfilehash: b795d0c5b429a812d90e0759fbcde3d348b86e22
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 70e9d966a14f78866d72865eed4cbb2dfd6c18dd
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602724"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755743"
 ---
 # <a name="what-is-azure-service-bus"></a>Vad är Azure Service Bus?
-Microsoft Azure Service Bus är en fullständigt hanterad meddelande tjänst för företags meddelanden med meddelande köer och offentliga prenumerations ämnen. Service Bus används för att frikoppla program och tjänster från varandra, vilket ger följande fördelar:
+Microsoft Azure Service Bus är en fullständigt hanterad meddelande tjänst för företags meddelanden med meddelande köer och publicera prenumerations ämnen. Service Bus används för att frikoppla program och tjänster från varandra, vilket ger följande fördelar:
 
 - Belastnings Utjämnings arbete mellan konkurrerande arbetare
 - Routning och överföring av data och kontroll över tjänst-och program gränser på ett säkert sätt

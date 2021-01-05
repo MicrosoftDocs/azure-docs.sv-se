@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: e9a2259f1e15a94ad1f2a9eabf7d3a2f3ed419f1
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 16f903e34c64214d54fc01fa621f561f1786de08
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387810"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755998"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Introduktion till Azure Defender för SQL
 
@@ -41,7 +41,7 @@ Azure Defender för SQL innehåller två Azure Defender-planer som utökar Azure
     - [Dedikerad SQL-pool i Azure Synapse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
 - **Azure Defender för SQL-servrar på datorer** utökar skydds inställningarna för dina Azure-inhemska SQL-servrar för att fullständigt stödja hybrid miljöer och skydda SQL-servrar (all version som stöds) som finns i Azure, andra moln miljöer och till och med lokala datorer:
-    - [SQL Server på virtuella datorer](https://azure.microsoft.com/services/virtual-machines/sql-server/)
+    - [SQL Server på Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/)
     - Lokala SQL-servrar:
         - [Azure Arc-aktiverad SQL Server (förhandsversion)](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)
         - [SQL Server som körs på Windows-datorer utan Azure Arc](../azure-monitor/platform/agent-windows.md)
@@ -53,7 +53,9 @@ Dessa två planer innehåller funktioner för att identifiera och åtgärda pote
 
 - [Sårbarhets bedömning](../azure-sql/database/sql-vulnerability-assessment.md) – genomsöknings tjänsten för att identifiera, spåra och hjälpa dig att åtgärda potentiella databas sårbarheter. Utvärderings genomsökningar ger en översikt över säkerhets läget för SQL-datorer och information om eventuella säkerhets brister.
 
-- [Avancerat skydd](../azure-sql/database/threat-detection-overview.md) – identifierings tjänsten som kontinuerligt övervakar dina SQL-servrar för hot som SQL-inmatning, brute-force-attacker och behörighets missbruk. Den här tjänsten innehåller åtgärds lösa säkerhets aviseringar i Azure Security Center med information om den misstänkta aktiviteten, vägledning om hur du minimerar hoten och alternativ för att fortsätta med din undersökning med Azure Sentinel.
+- [Avancerat skydd](../azure-sql/database/threat-detection-overview.md) – identifierings tjänsten som kontinuerligt övervakar dina SQL-servrar för hot som SQL-inmatning, brute-force-attacker och behörighets missbruk. Den här tjänsten innehåller åtgärds lösa säkerhets aviseringar i Azure Security Center med information om den misstänkta aktiviteten, vägledning om hur du minimerar hoten och alternativ för att fortsätta med din undersökning med Azure Sentinel. 
+    > [!TIP]
+    > Visa listan över säkerhets aviseringar för SQL-servrar [på referens sidan aviseringar](alerts-reference.md#alerts-sql-db-and-warehouse).
 
 
 ## <a name="what-kind-of-alerts-does-azure-defender-for-sql-provide"></a>Vilken typ av aviseringar finns i Azure Defender för SQL?
@@ -74,8 +76,3 @@ I den här artikeln har du lärt dig om Azure Defender för SQL.
 
 > [!div class="nextstepaction"]
 > [Sök igenom SQL-servrarna efter sårbarheter med Azure Defender](defender-for-sql-usage.md)
-
-Information om relaterade material finns i följande artiklar: 
-
-- [Så här aktiverar du Azure Defender för SQL Database-servrar](../azure-sql/database/azure-defender-for-sql.md)
-- [Listan över säkerhets aviseringar för SQL-servrar](alerts-reference.md#alerts-sql-db-and-warehouse)

@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: c628ba780ae64fceb32322fdb2004d69e2ebf24b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2645842130b83fe7b4cfb33b9389b19a1306506d
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452744"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97756032"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Självstudie: Konfigurera och kör Azure Key Vault-providern för hemligheter Store CSI-drivrutinen på Kubernetes
 
@@ -21,7 +21,7 @@ ms.locfileid: "96452744"
 
 I den här självstudien får du åtkomst till och hämtar hemligheter från Azure Key Vault med hjälp av CSI-drivrutinen (hemligheter Store container Storage Interface) för att montera hemligheterna i Kubernetes poddar.
 
-I den här guiden får du lära dig att:
+I de här självstudierna får du lära dig att
 
 > [!div class="checklist"]
 > * Skapa ett huvud namn för tjänsten eller Använd hanterade identiteter.
@@ -81,7 +81,7 @@ Slutför avsnitten "skapa en resurs grupp," skapa AKS-kluster "och" Anslut till 
     ```azurecli
     az aks upgrade --kubernetes-version 1.16.9 --name contosoAKSCluster --resource-group contosoResourceGroup
     ```
-1. Använd följande kommando för att visa metadata för det AKS-kluster som du har skapat. Kopiera **principalId**, **clientId**, **subscriptionId** och **nodeResourceGroup** för senare användning. Om fråga-klustret inte skapades med hanterade identiteter aktiverade, kommer **principalId** och **clientId** att vara null. 
+1. Använd följande kommando för att visa metadata för det AKS-kluster som du har skapat. Kopiera **principalId**, **clientId**, **subscriptionId** och **nodeResourceGroup** för senare användning. Om AKS-klustret inte skapades med hanterade identiteter aktiverade, kommer **principalId** och **clientId** att vara null. 
 
     ```azurecli
     az aks show --name contosoAKSCluster --resource-group contosoResourceGroup

@@ -4,18 +4,18 @@ description: I den här självstudien får du lära dig hur du säkerhetskopiera
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 41869ac4dfc0d3964fb48463e5f142b8391e2d94
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: f146bed9ee607fe1b1b6062f9fe372fbb9b9ba6a
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579261"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746753"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Självstudie: säkerhetskopiera SAP HANA databaser i en virtuell Azure-dator med Azure CLI
 
 Azure CLI används för att skapa och hantera Azure-resurser från kommando raden eller genom skript. Den här dokumentationen innehåller information om hur du säkerhetskopierar en SAP HANA-databas och aktiverar säkerhets kopiering på begäran – alla med Azure CLI. Du kan också utföra dessa steg med hjälp av [Azure Portal](./backup-azure-sap-hana-database.md).
 
-Det här dokumentet förutsätter att du redan har en SAP HANA-databas installerad på en virtuell Azure-dator. (Du kan också [skapa en virtuell dator med Azure CLI](../virtual-machines/linux/quick-create-cli.md)). I slutet av den här självstudien kommer du att kunna:
+Det här dokumentet förutsätter att du redan har en SAP HANA-databas installerad på en virtuell Azure-dator. (Du kan också [skapa en virtuell dator med Azure CLI](../virtual-machines/linux/quick-create-cli.md)). När du är färdig med självstudien kommer du att kunna:
 
 > [!div class="checklist"]
 >
@@ -126,8 +126,8 @@ För att skydda och konfigurera säkerhets kopiering för en databas, en i taget
 ```azurecli-interactive
 az backup protection enable-for-azurewl --resource-group saphanaResourceGroup \
     --policy-name saphanaPolicy \
-    --protectable-item-name saphanadatabase;hxe;hxe  \
-    --protectable-item-type SAPHANADatabse \
+    --protectable-item-name "saphanadatabase;hxe;hxe"  \
+    --protectable-item-type SAPHANADatabase \
     --server-name hxehost \
     --workload-type SAPHANA \
     --output table

@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e72784dbdcf08d672a8498609ca3a5bbd11e632d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 72079cc399eea249bce4d285e2c3c4fbf9304708
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319025"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760613"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>Spåra Azure Databricks ML experiment med MLflow och Azure Machine Learning (förhands granskning)
 
@@ -34,7 +34,7 @@ Se [spåra experiment körningar och skapa slut punkter med MLflow och Azure Mac
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Installera `azureml-mlflow`-paketet. 
+* Installera paketet `azureml-mlflow`. 
     * Det här paketet kommer automatiskt in i `azureml-core` [Azure Machine Learning python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py), som ger anslutningen för MLflow åtkomst till din arbets yta.
 * En [Azure Databricks arbets yta och ett kluster](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal).
 * [Skapa en Azure Machine Learning-arbetsyta](how-to-manage-workspace.md).
@@ -43,7 +43,7 @@ Se [spåra experiment körningar och skapa slut punkter med MLflow och Azure Mac
 
 Med MLflow spårning med Azure Machine Learning kan du lagra de inloggade måtten och artefakterna från dina Azure Databricks körs i både din: 
 
-* Azure Databricks-arbetsyta.
+* Azure Databricks arbets yta.
 * Azure Machine Learning-arbetsyta
 
 När du har skapat din Azure Databricks arbets yta och ett kluster 
@@ -180,8 +180,8 @@ När du är redo att skapa en slut punkt för dina ML-modeller. Du kan distribue
 Du kan använda API: et [mlflow. azureml. Deploy](https://www.mlflow.org/docs/latest/python_api/mlflow.azureml.html#mlflow.azureml.deploy) för att distribuera en modell till din Azure Machine Learning-arbetsyta. Om du bara har registrerat modellen på Azure Databricks-arbetsytan, enligt beskrivningen i avsnittet [Registrera modeller med MLflow](#register-models-with-mlflow) , anger du `model_name` parametern för att registrera modellen i Azure Machine Learning arbets yta. 
 
 Azure Databricks körningar kan distribueras till följande slut punkter, 
-* [Azure Container-instans](how-to-use-mlflow.md#deploy-to-aci)
-* [Azure Kubernetes Service](how-to-use-mlflow.md#deploy-to-aks)
+* [Azure Container instance](how-to-deploy-models-with-mlflow.md#deploy-to-aci)
+* [Azure Kubernetes Service](how-to-deploy-models-with-mlflow.md#deploy-to-aks)
 
 ### <a name="deploy-models-to-adb-endpoints-for-batch-scoring"></a>Distribuera modeller till ADB-slutpunkter för batch-Poäng 
 

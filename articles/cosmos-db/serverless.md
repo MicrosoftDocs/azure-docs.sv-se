@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/25/2020
-ms.openlocfilehash: cabc243c6ba74217873b5b0a5fa51a7cb410512e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 12/23/2020
+ms.openlocfilehash: c5086eee805ffbcdf0741eae4db405b1bcbe8692
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170845"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760385"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB utan server (för hands version)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -19,7 +19,7 @@ ms.locfileid: "96170845"
 > [!IMPORTANT]
 > Azure Cosmos DB server lös är för närvarande en för hands version. Den här för hands versionen tillhandahålls utan en Serviceavtal och rekommenderas inte för produktions arbets belastningar. Mer information finns i kompletterande användnings [villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)versionerna.
 
-Med Azure Cosmos DB server utan server kan du använda ditt Azure Cosmos-konto i en förbruknings punkt där du bara debiteras för de enheter för programbegäran som används av databas åtgärderna och det lagrings utrymme som förbrukas av dina data. Det finns ingen minimi avgift när du använder Azure Cosmos DB i Server fritt läge.
+Med Azure Cosmos DB server utan server kan du använda ditt Azure Cosmos-konto i en förbruknings punkt där du bara debiteras för de enheter för programbegäran som används av databas åtgärderna och det lagrings utrymme som förbrukas av dina data. Server fria behållare kan hantera tusentals begär Anden per sekund utan minsta avgift och ingen kapacitets planering krävs.
 
 > [!IMPORTANT] 
 > Har du några synpunkter om Server lös? Vi vill gärna höra! Du kan ta bort ett meddelande till Azure Cosmos DB utan Server Team: [azurecosmosdbserverless@service.microsoft.com](mailto:azurecosmosdbserverless@service.microsoft.com) .
@@ -36,13 +36,12 @@ Azure Cosmos DB server lös bästa passar scenarier där du förväntar dig:
 - **Låg, intermittent och oförutsägbar trafik**: eftersom etablerings kapaciteten i sådana situationer inte krävs och kan vara kostnads förhindrande
 - **Måttlig prestanda**: eftersom Server lös behållare har [särskilda prestanda egenskaper](#performance)
 
-Därför bör Azure Cosmos DB server utan server beaktas för följande typer av arbets belastning:
+Därför bör Azure Cosmos DB server utan server beaktas i följande situationer:
 
-- Utveckling
-- Testning
-- Prototyper
-- Konceptbevis
-- Icke-kritiskt program med låg trafik
+- Komma igång med Azure Cosmos DB
+- Utveckling, testning och prototypering av nya program
+- Köra små till medel stora program med tillfällig trafik som är svår att förutsäga
+- Integrera med Server lös beräknings tjänster som [Azure Functions](../azure-functions/functions-overview.md)
 
 Mer information om hur du väljer det erbjudande som bäst passar din användnings fråga finns i artikeln om att välja mellan ett insamlat [data flöde och en server](throughput-serverless.md) lös artikel.
 

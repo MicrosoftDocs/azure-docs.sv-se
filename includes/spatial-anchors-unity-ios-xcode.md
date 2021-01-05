@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 11/20/2020
 ms.author: parkerra
-ms.openlocfilehash: d969b1639dbb39b920c985964abe1239f068d740
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 81d2804d99896200ea6f68592ea168112e172c20
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185441"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762628"
 ---
 Välj **build**. I fönstret som öppnas väljer du en mapp att exportera Xcode-projektet till.
 
@@ -30,9 +30,9 @@ open ./Unity-iPhone.xcodeproj
 
 Välj den rot **Uppunions-iPhone-** noden för att visa projekt inställningarna och välj sedan fliken **Allmänt** .
 
-Under **signering** kontrollerar du att **Automatisk hantering av signering** är aktiverat. Om det inte är det aktiverar du det och återställer sedan build-inställningarna genom att välja **Aktivera automatisk** i fönstret som visas.
+Under **distributions information** ser du till att distributions målet är inställt på **iOS 11,0**.
 
-Under **distributions information** ser du till att **distributions målet** är inställt på **11,0**.
+Välj fliken **signerings & funktioner** och se till att **Automatisk hantering av signering** är aktiverat. Om det inte är det aktiverar du det och återställer sedan build-inställningarna genom att välja **Aktivera automatisk** i fönstret som visas.
 
 ## <a name="deploy-the-app-to-your-ios-device"></a>Distribuera appen till din iOS-enhet
 

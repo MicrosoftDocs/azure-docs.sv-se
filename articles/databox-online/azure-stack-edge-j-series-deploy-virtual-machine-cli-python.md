@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: alkohli
-ms.openlocfilehash: c12935a4b0b9cbbf088ba7b9c5ea804be0ce85a1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8ea0c27fdd64bae1e6fe9443df76c86e0eb89a75
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447362"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762934"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Distribuera virtuella datorer på Azure Stack Edge Pro GPU-enhet med hjälp av Azure CLI och python
 
@@ -27,13 +27,13 @@ I den här självstudien beskrivs hur du skapar och hanterar en virtuell dator p
 
 Arbets flödet för distributionen illustreras i följande diagram.
 
-![Arbets flöde för distribution av virtuell dator](media/azure-stack-edge-j-series-deploy-virtual-machine-powershell/vm-workflow_r.svg)
+![Arbets flöde för distribution av virtuell dator](media/azure-stack-edge-gpu-deploy-virtual-machine-powershell/vm-workflow-r.svg)
 
 Översikt över arbets flödet för distribution är följande:
 
 1. Anslut till Azure Resource Manager
 2. Skapa en resursgrupp
-3. skapar ett lagringskonto
+3. Skapa ett lagringskonto
 4. Lägg till BLOB-URI i hosts-filen
 5. Installera certifikat
 6. Ladda upp en virtuell hårddisk
@@ -43,7 +43,7 @@ Arbets flödet för distributionen illustreras i följande diagram.
 10. Skapa ett virtuellt nätverk
 11. Skapa en VNIC med VNet-undernätets ID
 
-En detaljerad förklaring av arbets flödes diagrammet finns i [distribuera virtuella datorer på din Azure Stack Edge Pro-enhet med Azure PowerShell](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md). Information om hur du ansluter till Azure Resource Manager finns i [ansluta till Azure Resource Manager med Azure PowerShell](azure-stack-edge-j-series-connect-resource-manager.md).
+En detaljerad förklaring av arbets flödes diagrammet finns i [distribuera virtuella datorer på din Azure Stack Edge Pro-enhet med Azure PowerShell](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md). Information om hur du ansluter till Azure Resource Manager finns i [ansluta till Azure Resource Manager med Azure PowerShell](azure-stack-edge-j-series-connect-resource-manager.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -281,7 +281,7 @@ Innan du börjar skapa och hantera en virtuell dator på din Azure Stack Edge Pr
     | Värde | Beskrivning | Exempel |
     | --- | --- | --- |
     | Miljönamn | Namnet på den miljö som du försöker ansluta till | Ange ett namn, till exempel `aze-environ` |
-    | Resource Manager-slutpunkt | URL: en är `https://Management.<appliancename><dnsdomain>` . <br> Om du vill hämta den här URL: en går du till sidan **enheter** i enhetens lokala webb gränssnitt. |Exempelvis `https://management.team3device.teatraining1.com`.  |
+    | Resource Manager-slutpunkt | URL: en är `https://Management.<appliancename><dnsdomain>` . <br> Om du vill hämta den här URL: en går du till sidan **enheter** i enhetens lokala webb gränssnitt. |Ett exempel är `https://management.team3device.teatraining1.com`.  |
     
     ```powershell
     az cloud register -n <environmentname> --endpoint-resource-manager "https://management.<appliance name>.<DNS domain>"

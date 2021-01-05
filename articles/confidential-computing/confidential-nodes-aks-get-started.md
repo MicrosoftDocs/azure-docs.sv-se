@@ -4,16 +4,16 @@ description: Lär dig hur du skapar ett AKS-kluster med konfidentiella noder och
 author: agowdamsft
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 9/22/2020
+ms.date: 12/11/2020
 ms.author: amgowda
-ms.openlocfilehash: 95626836afb09ada286cf7e171f97db450167999
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 92b4cd58b496602b479a24bab81a1d9322e732b0
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564352"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760647"
 ---
-# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-using-azure-cli-preview"></a>Snabb start: Distribuera ett Azure Kubernetes service-kluster (AKS) med konfidentiella databeräknings-noder med Azure CLI (för hands version)
+# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-dcsv2-using-azure-cli-preview"></a>Snabb start: Distribuera ett Azure Kubernetes service-kluster (AKS) med konfidentiella beräknings noder (DCsv2) med hjälp av Azure CLI (för hands version)
 
 Den här snabb starten är avsedd för utvecklare eller kluster operatörer som snabbt vill skapa ett AKS-kluster och distribuera ett program för att övervaka program med hjälp av den hanterade Kubernetes-tjänsten i Azure.
 
@@ -24,21 +24,24 @@ I den här snabb starten får du lära dig hur du distribuerar ett Azure Kuberne
 > [!NOTE]
 > Konfidentiell dator användning DCsv2 virtuella datorer utnyttjar specialiserad maskin vara som är föremål för högre priser och regions tillgänglighet. Mer information finns på sidan virtuella datorer för [tillgängliga SKU: er och regioner som stöds](virtual-machine-solutions.md).
 
+> DCsv2 utnyttjar generation 2 Virtual Machines på Azure, den här generationens virtuella dator är en förhands gransknings funktion med AKS. 
+
 ### <a name="deployment-pre-requisites"></a>Krav för distribution
+Följande distributions instruktioner förutsätter:
 
 1. Ha en aktiv Azure-prenumeration. Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar
 1. Ha Azure CLI-versionen 2.0.64 eller senare installerad och konfigurerad på din distributions dator (kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI](../container-registry/container-registry-get-started-azure-cli.md)
 1. [AKS –](https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview) lägsta version för för hands versions tillägg 0.4.62 
-1. Ha minst sex **DC <x> s-v2-** kärnor som är tillgängliga i din prenumeration för användning. Som standard används kvoten för VM-kärnor för konfidentiella data behandling per Azure-prenumeration 8 kärnor. Om du planerar att etablera ett kluster som kräver mer än 8 kärnor, följer du [dessa](../azure-portal/supportability/per-vm-quota-requests.md) anvisningar för att öka en kvots öknings biljett
+1. Kvot tillgänglighet för VM-kärnor. Ha minst sex **DC <x> s-v2-** kärnor som är tillgängliga i din prenumeration för användning. Som standard används kvoten för VM-kärnor för konfidentiella data behandling per Azure-prenumeration 8 kärnor. Om du planerar att etablera ett kluster som kräver mer än 8 kärnor, följer du [dessa](../azure-portal/supportability/per-vm-quota-requests.md) anvisningar för att öka en kvots öknings biljett
 
 ### <a name="confidential-computing-node-features-dcxs-v2"></a>Funktioner för att beräkna konfidentiella noder (DC <x> s-v2)
 
 1. Linux Worker-noder som endast stöder Linux-behållare
-1. Ubuntu generation 2 18,04 Virtual Machines
+1. Generation 2 VM med Ubuntu 18,04 Virtual Machines-noder
 1. Intel SGX-baserad CPU med krypterad side cache-minne (EPC). Läs mer [här](./faq.md)
-1. Kubernetes-version 1.16 +
-1. Förinstallerad Intel SGX DCAP-drivrutin. Läs mer [här](./faq.md)
-1. CLI-baserad distribuerad under för hands versionen
+1. Stöd för Kubernetes-version 1.16 +
+1. Intel SGX DCAP-drivrutinen förinstallerad på AKS-noderna. Läs mer [här](./faq.md)
+1. Stöd för CLI som är distribuerat under för hands versionen med Portal baserad etablering efter GA.
 
 
 ## <a name="installing-the-cli-pre-requisites"></a>Installera CLI-krav
@@ -54,16 +57,35 @@ För att uppdatera AKS-Preview CLI-tillägget använder du följande Azure CLI-k
 ```azurecli-interactive
 az extension update --name aks-preview
 ```
-
-Registrera Gen2VMPreview:
+### <a name="generation-2-vms-feature-registration-on-azure"></a>Generation 2 VM-funktioner i Azure
+Registrera Gen2VMPreview på Azure-prenumerationen. Med den här funktionen kan du etablera generation 2 Virtual Machines som AKS:
 
 ```azurecli-interactive
 az feature register --name Gen2VMPreview --namespace Microsoft.ContainerService
 ```
-Det kan ta flera minuter innan statusen visas som registrerad. Du kan kontrol lera registrerings statusen med hjälp av kommandot "AZ feature list":
+Det kan ta flera minuter innan statusen visas som registrerad. Du kan kontrol lera registrerings statusen med hjälp av kommandot "AZ feature list". Den här funktions registreringen utförs bara en gång per prenumeration. Om detta har registrerats tidigare kan du hoppa över steget ovan:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/Gen2VMPreview')].{Name:name,State:properties.state}"
+```
+När statusen visas som registrerad uppdaterar du registreringen av resurs leverantören Microsoft. container service med hjälp av kommandot AZ Provider register:
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+### <a name="azure-confidential-computing-feature-registration-on-azure-optional-but-recommended"></a>Azures konfidentiella data behandlings funktion registrering på Azure (valfritt men rekommenderas)
+Registrera AKS-ConfidentialComputinAddon på Azure-prenumerationen. Med den här funktionen läggs två daemonsets till som beskrivs i informationen [här](./confidential-nodes-aks-overview.md#aks-provided-daemon-sets-addon):
+1. Plugin-program för SGX-drivrutiner
+2. Offert hjälp för SGX-attestering
+
+```azurecli-interactive
+az feature register --name AKS-ConfidentialComputingAddon --namespace Microsoft.ContainerService
+```
+Det kan ta flera minuter innan statusen visas som registrerad. Du kan kontrol lera registrerings statusen med hjälp av kommandot "AZ feature list". Den här funktions registreringen utförs bara en gång per prenumeration. Om detta har registrerats tidigare kan du hoppa över steget ovan:
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputinAddon')].{Name:name,State:properties.state}"
 ```
 När statusen visas som registrerad uppdaterar du registreringen av resurs leverantören Microsoft. container service med hjälp av kommandot AZ Provider register:
 
@@ -81,56 +103,65 @@ Skapa först en resurs grupp för klustret med kommandot AZ Group Create. I föl
 az group create --name myResourceGroup --location westus2
 ```
 
-Skapa nu ett AKS-kluster med kommandot AZ AKS Create. I följande exempel skapas ett kluster med en enda nod med storlek `Standard_DC2s_v2` . Du kan välja andra lista över DCsv2 SKU: er som stöds [här](../virtual-machines/dcv2-series.md):
+Skapa nu ett AKS-kluster med kommandot AZ AKS Create.
 
 ```azurecli-interactive
-az aks create \
-    --resource-group myResourceGroup \
-    --name myAKSCluster \
-    --node-vm-size Standard_DC2s_v2 \
-    --node-count 3 \
-    --enable-addon confcom \
-    --network-plugin azure \
-    --vm-set-type VirtualMachineScaleSets \
-    --aks-custom-headers usegen2vm=true
+# Create a new AKS cluster with  system node pool with Confidential Computing addon enabled
+az aks create -g myResourceGroup --name myAKSCluster --generate-ssh-keys --enable-addon confcom
 ```
-Kommandot ovan bör etablera ett nytt AKS-kluster med **DC <x> s-v2-** nodkonfigurationer och automatiskt installera två daemon-uppsättningar – ( [SGX-enhets-plugin](confidential-nodes-aks-overview.md#sgx-plugin)  &  [SGX citat hjälp](confidential-nodes-aks-overview.md#sgx-quote))
+Ovanstående skapar ett nytt AKS-kluster med en pool för system-Node. Fortsätt nu att lägga till en användar-nod för konfidentiell data behandling Nodepool-typ på AKS (DCsv2)
+
+Exemplet nedan lägger till en användare nodepool med tre noder av `Standard_DC2s_v2` storlek. Du kan välja andra lista över DCsv2 [SKU: er](../virtual-machines/dcv2-series.md)och regioner som stöds:
+
+```azurecli-interactive
+az aks nodepool add --cluster-name myAKSCluster --name confcompool1 --resource-group myResourceGroup --node-vm-size Standard_DC2s_v2 --aks-custom-headers usegen2vm=true
+```
+Kommandot ovan ska lägga till en ny Node-pool med **DC <x> s-v2** och köra två daemonsets automatiskt på den här noden – ([SGX-enhet plugin](confidential-nodes-aks-overview.md#sgx-plugin)-  &  [citationstecken offert hjälp](confidential-nodes-aks-overview.md#sgx-quote))
 
 Hämta autentiseringsuppgifterna för ditt AKS-kluster med kommandot AZ AKS get-credentials:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
-Kontrol lera att noderna har skapats korrekt och att de SGX-relaterade daemon-uppsättningarna körs på **DC <x> s-v2 Node-** pooler med hjälp av kubectl Hämta poddar & Nodes (se nedan):
+Kontrol lera att noderna har skapats korrekt och att den SGX-relaterade daemonsets körs på **DC <x> s-v2 Node-** pooler med hjälp av kommandot kubectl get poddar & Nodes (se nedan):
 
 ```console
 $ kubectl get pods --all-namespaces
 
 output
 kube-system     sgx-device-plugin-xxxx     1/1     Running
+kube-system     sgx-quote-helper-xxxx      1/1     Running
 ```
 Om resultatet matchar ovanstående är ditt AKS-kluster nu redo att köra konfidentiella program.
 
 Gå till [Hello World](#hello-world) distributions avsnittet för enklaven för att testa en app i en enklaven. Du kan också följa anvisningarna nedan om du vill lägga till fler resurspooler på AKS (AKS stöder mixning av SGX-nodkonfigurationer och noder i andra länder än SGX)
 
->Om de SGX-relaterade daemon-uppsättningarna inte är installerade i DCSv2-nodkonfigurationer kör du följande.
-
-```azurecli-interactive
-az aks update --enable-addons confcom --resource-group myResourceGroup --name myAKSCluster
-```
-
-![Skapa DCSv2 AKS-kluster](./media/confidential-nodes-aks-overview/CLIAKSProvisioning.gif)
-
-## <a name="adding-confidential-computing-node-to-existing-aks-cluster"></a>Lägga till en konfidentiell databearbetnings nod i befintligt AKS-kluster<a id="existing-cluster"></a>
+## <a name="adding-confidential-computing-node-pool-to-existing-aks-cluster"></a>Lägga till poolen för konfidentiella data behandling i befintliga AKS-kluster<a id="existing-cluster"></a>
 
 Det här avsnittet förutsätter att du har ett AKS-kluster som kör redan och som uppfyller de kriterier som anges i avsnittet krav.
 
-Först kan du aktivera de AKS-tillägg som är relaterade till konfidentiell dator i det befintliga klustret:
+Låt oss först lägga till funktionen i Azure-prenumerationen
+
+```azurecli-interactive
+az feature register --name AKS-ConfidentialComputinAddon --namespace Microsoft.ContainerService
+```
+Det kan ta flera minuter innan statusen visas som registrerad. Du kan kontrol lera registrerings statusen med hjälp av kommandot "AZ feature list". Den här funktions registreringen utförs bara en gång per prenumeration. Om detta har registrerats tidigare kan du hoppa över steget ovan:
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ConfidentialComputinAddon')].{Name:name,State:properties.state}"
+```
+När statusen visas som registrerad uppdaterar du registreringen av resurs leverantören Microsoft. container service med hjälp av kommandot AZ Provider register:
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+Sedan kan du aktivera de AKS-tillägg som är relaterade till konfidentiell dator i det befintliga klustret:
 
 ```azurecli-interactive
 az aks enable-addons --addons confcom --name MyManagedCluster --resource-group MyResourceGroup 
 ```
-Lägg nu till en **DC <x> s-v2 Node-** pool i klustret
+Lägg nu till en **DC <x> s-** användare Node-pool i klustret
     
 > [!NOTE]
 > För att kunna använda den konfidentiella data bearbetnings funktionen måste ditt befintliga AKS-kluster ha minst en **DC <x> s-v2 VM-** SKU baserad på VM. Läs mer om konfidentiell dator hantering DCsv2 VM SKU: [er här tillgängliga SKU: er och regioner som stöds](virtual-machine-solutions.md).
@@ -160,7 +191,7 @@ kube-system     sgx-quote-helper-xxxx      1/1     Running
 Om resultatet matchar ovanstående är ditt AKS-kluster nu redo att köra konfidentiella program.
 
 ## <a name="hello-world-from-isolated-enclave-application"></a>Hello World från isolerade enklaven-program <a id="hello-world"></a>
-Skapa en fil med namnet *Hello-World-enklaven. yaml* och klistra in följande yaml-manifest. Du hittar den här öppna enklaven-baserade exempel program koden i det [Öppna enklaven-projektet](https://github.com/openenclave/openenclave/tree/master/samples/helloworld).
+Skapa en fil med namnet *Hello-World-enklaven. yaml* och klistra in följande yaml-manifest. Du hittar den här öppna enklaven-baserade exempel program koden i det [Öppna enklaven-projektet](https://github.com/openenclave/openenclave/tree/master/samples/helloworld). Under distributionen nedan förutsätter vi att du har distribuerat addon-confcom.
 
 ```yaml
 apiVersion: batch/v1

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/30/2020
+ms.date: 12/23/2020
 ms.author: memildin
-ms.openlocfilehash: 07a94685fb3655aa5aa21a8658b9d975c764daff
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 3899b00038f3c12add4dbf49a7f05e07141d8606
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512286"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755862"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender för SQL-servrar på datorer 
 
@@ -108,7 +108,7 @@ Du kan visa resultaten för sårbarhets bedömning direkt från Security Center.
     I varje vy sorteras säkerhets kontrollerna efter **allvarlighets grad**. Klicka på en säkerhets kontroll för att visa ett informations fönster med en **Beskrivning**, hur du **åtgärdar** den och annan relaterad information som **påverkan** eller **benchmark**.
 
 ## <a name="azure-defender-for-sql-alerts"></a>Azure Defender för SQL-aviseringar
-Aviseringar genereras av ovanliga och potentiellt skadliga försök att komma åt eller utnyttja SQL-datorer. Dessa händelser kan utlösa aviseringar som visas i [avsnittet varningar för SQL Database och Azure Synapse Analytics på referens sidan för aviseringar](alerts-reference.md#alerts-sql-db-and-warehouse).
+Aviseringar genereras av ovanliga och potentiellt skadliga försök att komma åt eller utnyttja SQL-datorer. Dessa händelser kan utlösa aviseringar som visas på [referens sidan aviseringar](alerts-reference.md#alerts-sql-db-and-warehouse).
 
 ## <a name="explore-and-investigate-security-alerts"></a>Utforska och undersök säkerhets aviseringar
 
@@ -131,4 +131,3 @@ Information om relaterade material finns i följande artikel:
 - [Säkerhets aviseringar för SQL Database och Azure Synapse Analytics](alerts-reference.md#alerts-sql-db-and-warehouse)
 - [Konfigurera e-postavisering för säkerhetsmeddelanden](security-center-provide-security-contact-details.md)
 - [Läs mer om Azure Sentinel](../sentinel/index.yml)
-- [Azure Security Centers data säkerhets paket](../azure-sql/database/azure-defender-for-sql.md)

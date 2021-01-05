@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 12/23/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 426cf78f6b87acf1d8c7551b0b0a6172a30167b1
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 68a129f38e9a94a7e381d11ffa3c3d02791b025b
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621103"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755777"
 ---
 # <a name="how-to-use-batch-transcription"></a>Använda batch-avskriftering
 
-Batch-avskrift är en uppsättning REST API åtgärder som gör det möjligt att skriva av en stor mängd ljud i lagring. Du kan peka på ljudfiler med en typisk URI eller en URL för signatur för delad åtkomst (SAS) och ta emot avskrifts resultat asynkront. Med v 3.0-API: et kan du skriva över en eller flera ljudfiler eller bearbeta en hel lagrings behållare.
+Batch-avskrift är en uppsättning REST API åtgärder som gör det möjligt att skriva av en stor mängd ljud i lagring. Du kan peka på ljudfiler med en typisk URI eller en URL för [signatur för delad åtkomst (SAS)](../../storage/common/storage-sas-overview.md) och ta emot avskrifts resultat asynkront. Med v 3.0-API: et kan du skriva över en eller flera ljudfiler eller bearbeta en hel lagrings behållare.
 
 Du kan använda REST-API: er för batch-avskrift för att anropa följande metoder:
 
@@ -66,7 +66,7 @@ Om du vill skapa en sorterad slutlig avskrift använder du de tidsstämplar som 
 
 ### <a name="configuration"></a>Konfiguration
 
-Konfigurations parametrar tillhandahålls som JSON.
+Konfigurations parametrar tillhandahålls som JSON. 
 
 **Att skriva av en eller flera enskilda filer.** Om du har fler än en fil för att skriva över rekommenderar vi att du skickar flera filer i en begäran. Exemplet nedan använder tre filer:
 
@@ -85,7 +85,7 @@ Konfigurations parametrar tillhandahålls som JSON.
 }
 ```
 
-**Bearbetar en hel lagrings behållare:**
+**Bearbetar en hel lagrings behållare.** Behållar- [SAS](../../storage/common/storage-sas-overview.md) ska innehålla `r` (läsa) och `l` (lista) behörigheter:
 
 ```json
 {
@@ -177,10 +177,10 @@ Använd dessa valfria egenskaper för att konfigurera avskrifter:
       `destinationContainerUrl`
    :::column-end:::
    :::column span="2":::
-      Valfri URL med [service ad hoc SAS](../../storage/common/storage-sas-overview.md) till en skrivbar behållare i Azure. Resultatet lagras i den här behållaren. SAS med lagrad åtkomst princip stöds **inte** . Om detta inte anges lagrar Microsoft resultaten i en lagrings behållare som hanteras av Microsoft. När avskriften tas bort genom att anropar [ta bort avskrift](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)tas även resultat data bort.
+      Valfri URL med [ad hoc SAS](../../storage/common/storage-sas-overview.md) till en skrivbar behållare i Azure. Resultatet lagras i den här behållaren. SAS med lagrad åtkomst princip stöds **inte** . Om detta inte anges lagrar Microsoft resultaten i en lagrings behållare som hanteras av Microsoft. När avskriften tas bort genom att anropar [ta bort avskrift](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)tas även resultat data bort.
 :::row-end:::
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Lagring
 
 Batch-avskrifter kan läsa ljud från en offentlig och synlig Internet-URI och kan läsa ljud-eller Skriv avskrifter med en SAS-URI med [Azure Blob Storage](../../storage/blobs/storage-blobs-overview.md).
 

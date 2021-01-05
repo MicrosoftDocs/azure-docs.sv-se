@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/25/2020
-ms.openlocfilehash: 1943aae3a2b01490dca687bcdea99d76da238d51
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 12/23/2020
+ms.openlocfilehash: a6f8b79ecc8dcac71dc8f5d1be2bb58a0288a307
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187263"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760342"
 ---
 # <a name="how-to-choose-between-provisioned-throughput-and-serverless"></a>Välja mellan ett allokerat data flöde och Server lös
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -25,7 +25,7 @@ Azure Cosmos DB finns i två olika kapacitets lägen: [etablerade data flöden](
 | Kriterie | Etablerat dataflöde | Utan server |
 | --- | --- | --- |
 | Status | Allmänt tillgänglig | I förhandsversion |
-| Passar bäst för | Verksamhets kritiska arbets belastningar som kräver förutsägbara prestanda | Små till medel stora icke-kritiska arbets belastningar med låg trafik och intermittent trafik |
+| Passar bäst för | Verksamhets kritiska arbets belastningar som kräver förutsägbara prestanda | Små till medel stora arbets belastningar med lätt och intermittent trafik som är svåra att förutsäga |
 | Så här fungerar det | För var och en av dina behållare tillhandahåller du viss mängd data flöde som uttrycks i [enheter för programbegäran](request-units.md) per sekund. Varje sekund är den här mängden enheter för programbegäran tillgänglig för dina databas åtgärder. Det etablerade data flödet kan uppdateras manuellt eller justeras automatiskt med [autoskalning](provision-throughput-autoscale.md). | Du kör dina databas åtgärder mot dina behållare utan att behöva etablera någon kapacitet. |
 | Geo-distribution | Tillgängligt (obegränsat antal Azure-regioner) | Otillgänglig (Server lös konton kan bara köras i 1 Azure-region) |
 | Maximalt lagrings utrymme per behållare | Obegränsat | 50 GB |

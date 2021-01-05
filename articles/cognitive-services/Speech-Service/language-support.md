@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 1b73b018432e5fb9a8af90fc141d009d1bb7b799
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: d0cb9dc3c54f409c3bdd71fbb57c823e15abc22d
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617059"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762970"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Språk-och röst stöd för tal tjänsten
 
@@ -137,6 +137,11 @@ Både Microsoft Speech SDK och REST-API: er har stöd för dessa röster, som va
 Neurala text till tal är en ny typ av tal syntes som drivs av djup neurala nätverk. När du använder en neurala-röst är syntetiskt tal nästan lätt att skilja från de mänskliga inspelningarna.
 
 Neurala röster kan användas för att göra interaktioner med chattrobotar och röst assistenter mer naturligt och engagerande, konvertera digitala texter som e-böcker till Audiobooks och förbättra navigerings systemen i bilen. Med den humana naturliga prosody och tydligare utsättande av ord, minskar neurala-röster avsevärt lyssnings utmattning när användarna interagerar med AI-system.
+
+> [!NOTE]
+> Neurala-röster skapas från exempel som använder 24 kHz samplings frekvens.
+> Alla röster kan sampla eller sampla till andra samplings frekvenser vid syntetiserar.
+
 
 | Språk | Nationell inställning | Kön | Röst namn | Format stöd |
 |---|---|---|---|---|
@@ -294,6 +299,11 @@ Information om hur du kan konfigurera och justera neurala-röster, t. ex. tal fo
 
 Det finns fler än 75 standard röster i över 45 språk och nationella inställningar, vilket gör att du kan konvertera text till syntetiskt tal. Mer information om regional tillgänglighet finns i [regioner](regions.md#standard-and-neural-voices).
 
+> [!NOTE]
+> Med två undantag skapas standard röster från exempel som använder en 16 kHz-samplings frekvens.
+> En **-US-AriaRUS** och **en-US-GuyRUS-** röster skapas också från exempel som använder en 24 kHz-samplings frekvens.
+> Alla röster kan sampla eller sampla till andra samplings frekvenser vid syntetiserar.
+
 | Språk | Locale (BCP-47) | Kön | Röst namn |
 |--|--|--|--|
 | Arabiska (arabiska) | `ar-EG` | Kvinna | `ar-EG-Hoda`|
@@ -325,7 +335,7 @@ Det finns fler än 75 standard röster i över 45 språk och nationella inställ
 | Engelska (Storbritannien) | `en-GB` | Kvinna | `en-GB-Susan`|
 | Engelska (USA) | `en-US` | Man | `en-US-BenjaminRUS`|
 | Engelska (USA) | `en-US` | Man | `en-US-GuyRUS`|
-| Engelska (USA) | `en-US` | Kvinna | `en-US-JessaRUS`|
+| Engelska (USA) | `en-US` | Kvinna | `en-US-AriaRUS`|
 | Engelska (USA) | `en-US` | Kvinna | `en-US-ZiraRUS`|
 | Finska (Finland) | `fi-FI` | Kvinna | `fi-FI-HeidiRUS`|
 | Franska (Kanada) | `fr-CA` | Kvinna | `fr-CA-Caroline`|

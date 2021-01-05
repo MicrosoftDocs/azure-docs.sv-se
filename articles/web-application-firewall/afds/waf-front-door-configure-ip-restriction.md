@@ -5,20 +5,20 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
-ms.date: 03/26/2020
+ms.date: 12/22/2020
 ms.author: tyao
-ms.openlocfilehash: f260bfc7b097931cc1a978e790c1d9dd966703ac
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 60a4ef47bc30955c918983d54f613cbdb5cbed73
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563519"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746770"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>Konfigurera en regel för IP-begränsning med en brand vägg för webbaserade program för Azures front dörr
 
 Den här artikeln visar hur du konfigurerar regler för IP-begränsning i en brand vägg för webbaserade program (WAF) för Azures front dörr med hjälp av Azure Portal, Azure CLI, Azure PowerShell eller en Azure Resource Manager mall.
 
-En IP-adress – baserad åtkomst kontroll regel är en anpassad WAF-regel som låter dig styra åtkomsten till dina webb program. Det gör du genom att ange en lista över IP-adresser eller IP-adressintervall i CIDR-format (Classless Inter-Domain routing).
+En IP-adress – baserad åtkomst kontroll regel är en anpassad WAF-regel som låter dig styra åtkomsten till dina webb program. Det gör du genom att ange en lista över IP-adresser eller IP-adressintervall i CIDR-format (Classless Inter-Domain routing). Det finns två typer av matchande variabler i IP-adress matchning, **RemoteAddr** och **SocketAddr**. RemoteAddr är den ursprungliga klient-IP-adressen som vanligt vis skickas via X-vidarebefordrad – för begär ande huvudet. SocketAddr är Källans IP-WAF ser ut. Om användaren är bakom en proxyserver är SocketAddr ofta proxyserverns proxyserveradress.
 
 Som standard är ditt webb program tillgängligt från Internet. Om du vill begränsa åtkomsten till klienter från en lista med kända IP-adresser eller IP-adressintervall kan du skapa en IP-matchande regel som innehåller listan med IP-adresser som matchande värden och anger operatorn till "inte" (negation är sant) och åtgärden som ska **blockeras**. När en regel för IP-begränsning har tillämpats får begär Anden som härstammar från adresser utanför listan över tillåtna 403 ett svar som inte tillåts.
 
@@ -30,7 +30,7 @@ Skapa en profil för Azures frontend-dörr genom att följa anvisningarna i [sna
 
 ### <a name="create-a-waf-policy"></a>Skapa en WAF-princip
 
-1. På Azure Portal väljer du **skapa en resurs** , skriver  **WebApplication-brandvägg** i sökrutan och väljer **brand vägg för webbaserade program (WAF)**.
+1. På Azure Portal väljer du **skapa en resurs**, skriver  **WebApplication-brandvägg** i sökrutan och väljer **brand vägg för webbaserade program (WAF)**.
 2. Välj **Skapa**.
 3. På sidan **skapa en WAF-princip** använder du följande värden för att slutföra fliken **grundläggande** :
    
@@ -109,7 +109,7 @@ Använd kommandot [AZ Network front-dörr WAF-policy "Create](/cli/azure/ext/fro
 
 I följande exempel:
 -  Ersätt *IPAllowPolicyExampleCLI* med din unika princip som skapats tidigare.
--  Ersätt *IP-Address-Range-1* , *IP-Address-Range-2* med ditt eget intervall.
+-  Ersätt *IP-Address-Range-1*, *IP-Address-Range-2* med ditt eget intervall.
 
 Börja med att skapa en regel för IP-Tillåt för principen som skapats från föregående steg. 
 > [!NOTE]
@@ -190,7 +190,7 @@ Skapa en profil för Azures frontend-dörr genom att följa anvisningarna i [sna
 
 ### <a name="define-an-ip-match-condition"></a>Definiera ett villkor för IP-matchning
 Använd kommandot [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) för att definiera ett villkor för IP-matchning.
-I följande exempel ersätter du *IP-Address-Range-1* , *IP-Address-Range-2* med ditt eget intervall.    
+I följande exempel ersätter du *IP-Address-Range-1*, *IP-Address-Range-2* med ditt eget intervall.    
 ```powershell
 $IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
 -MatchVariable  RemoteAddr `
@@ -225,7 +225,7 @@ Hitta namnet på den resurs grupp som innehåller Azures profil för front dörr
 
 ### <a name="link-a-waf-policy-to-an-azure-front-door-front-end-host"></a>Länka en WAF-princip till en klients front-end-värd i Azure
 
-Länka ett WAF-princip objekt till en befintlig klient dels värd och uppdatera egenskaperna för Azures front dörr. Börja med att hämta Azures frontend-dörr genom att använda [Get-AzFrontDoor](/powershell/module/Az.FrontDoor/Get-AzFrontDoor). Ange sedan egenskapen **WebApplicationFirewallPolicyLink** till resurs-ID för *$IPAllowPolicyExamplePS* , som skapades i föregående steg, med hjälp av kommandot [set-AzFrontDoor](/powershell/module/Az.FrontDoor/Set-AzFrontDoor) .
+Länka ett WAF-princip objekt till en befintlig klient dels värd och uppdatera egenskaperna för Azures front dörr. Börja med att hämta Azures frontend-dörr genom att använda [Get-AzFrontDoor](/powershell/module/Az.FrontDoor/Get-AzFrontDoor). Ange sedan egenskapen **WebApplicationFirewallPolicyLink** till resurs-ID för *$IPAllowPolicyExamplePS*, som skapades i föregående steg, med hjälp av kommandot [set-AzFrontDoor](/powershell/module/Az.FrontDoor/Set-AzFrontDoor) .
 
 ```azurepowershell
   $FrontDoorObjectExample = Get-AzFrontDoor `

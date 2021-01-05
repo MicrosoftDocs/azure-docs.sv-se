@@ -4,12 +4,12 @@ description: Lär dig att undvika prestanda problem i Azure Functions genom att 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 02/25/2018
-ms.openlocfilehash: 6a426aff1721ac3565b53cf2eef7c5aa094dd7e2
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 53848e6273cf59439d44b431652981b18bdd5ba6
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168315"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755964"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Hantera anslutningar i Azure Functions
 
@@ -103,7 +103,7 @@ public static async Task Run(string input)
     // Rest of function
 }
 ```
-Om du arbetar med Functions v3. x behöver du en refernce för att Microsoft.Azure.DocumentDB. Core. Lägg till en referens i koden:
+Om du arbetar med Functions v3. x måste du ha en referens till Microsoft.Azure.DocumentDB. Core. Lägg till en referens i koden:
 
 ```cs
 #r "Microsoft.Azure.DocumentDB.Core"

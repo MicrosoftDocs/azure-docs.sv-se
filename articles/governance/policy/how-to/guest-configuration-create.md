@@ -3,12 +3,12 @@ title: Så här skapar du gästkonfigurationsprinciper för Windows
 description: Lär dig hur du skapar en princip för Azure Policy gäst konfiguration för Windows.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 124f747a1e7c7925efc2519ee826d62034e69cc5
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: d01f4fff28debc3fabcfb32b32b02c5029ce7323
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302690"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755981"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Så här skapar du gästkonfigurationsprinciper för Windows
 
@@ -491,10 +491,15 @@ New-GuestConfigurationPackage `
 
 ## <a name="policy-lifecycle"></a>Princip livs cykel
 
-Om du vill släppa en uppdatering av principen finns det tre fält som kräver åtgärder.
+Om du vill släppa en uppdatering av principen gör du ändringen för både gäst konfigurations paketet och Azure Policy definitions information.
 
 > [!NOTE]
 > `version`Egenskapen för gäst konfigurations tilldelningen påverkar bara paket som är värd för Microsoft. Den bästa metoden för att konfigurera anpassade innehålls versioner är att inkludera versionen i fil namnet.
+
+Börja med `New-GuestConfigurationPackage` att ange ett namn för paketet som gör det unikt från tidigare versioner när du kör. Du kan inkludera ett versions nummer i namnet, till exempel `PackageName_1.0.0` .
+Talet i det här exemplet används bara för att göra paketet unikt, inte för att ange att paketet ska anses vara nyare eller äldre än andra paket.
+
+Sedan uppdaterar du parametrarna som används med `New-GuestConfigurationPolicy` cmdleten enligt var och en av förklaringarna nedan.
 
 - **Version**: när du kör `New-GuestConfigurationPolicy` cmdleten måste du ange ett versions nummer som är större än det som för närvarande är publicerat.
 - **contentUri**: när du kör `New-GuestConfigurationPolicy` cmdleten måste du ange en URI till paketets plats. Genom att inkludera en paket version i fil namnet ser du till att värdet för egenskapen ändras i varje version.

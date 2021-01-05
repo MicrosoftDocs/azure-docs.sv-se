@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6eff662ac0140e7a64cc3bab28856178708cb9b2
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
-ms.translationtype: MT
+ms.openlocfilehash: edb1d419900147b586ba1ff257d4307b237be537
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.translationtype: HT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400683"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746736"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Kontrol lera åtkomsten till lagrings kontot för SQL-poolen utan server i Azure Synapse Analytics
 
@@ -83,15 +83,73 @@ Du kan använda följande kombinationer av auktoriserings-och Azure Storage type
 
 | Auktoriseringstyp  | Blob Storage   | ADLS Gen1        | ADLS Gen2     |
 | ------------------- | ------------   | --------------   | -----------   |
-| [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)    | Tillåtna\*      | Stöds inte   | Tillåtna\*     |
+| [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)    | Stöds\*      | Stöds inte   | Stöds\*     |
 | [Hanterad identitet](?tabs=managed-identity#supported-storage-authorization-types) | Stöds      | Stöds        | Stöds     |
-| [Användar identitet](?tabs=user-identity#supported-storage-authorization-types)    | Tillåtna\*      | Tillåtna\*        | Tillåtna\*     |
+| [Användar identitet](?tabs=user-identity#supported-storage-authorization-types)    | Stöds\*      | Stöds\*        | Stöds\*     |
 
 \* SAS-token och Azure AD-identitet kan användas för att få åtkomst till lagring som inte skyddas med brand väggen.
 
-> [!IMPORTANT]
-> Vid åtkomst till lagring som skyddas med brand väggen kan endast hanterad identitet användas. Du måste [tillåta betrodda Microsoft-tjänster... Ange](../../storage/common/storage-network-security.md#trusted-microsoft-services) och [tilldela uttryckligen en Azure-roll](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights) till den [systemtilldelade hanterade identiteten](../../active-directory/managed-identities-azure-resources/overview.md) för den resurs instansen. I det här fallet motsvarar åtkomst omfånget för instansen den Azure-roll som tilldelats den hanterade identiteten.
->
+
+### <a name="querying-firewall-protected-storage"></a>Fråga om skyddad lagring i brand väggen
+
+När du använder lagring som skyddas med brand väggen kan du använda **användar identitet** eller **hanterad identitet**.
+
+#### <a name="user-identity"></a>Användar identitet
+
+För åtkomst till lagring som skyddas med brand väggen via användar identitet kan du använda PowerShell-modulen AZ. Storage.
+#### <a name="configuration-via-powershell"></a>Konfiguration via PowerShell
+
+Följ dessa steg om du vill konfigurera din brand vägg för lagrings kontot och lägga till ett undantag för Synapse-arbetsytan.
+
+1. Öppna PowerShell eller [Installera PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1&preserve-view=true )
+2. Installera den uppdaterade AZ. Storage-modul: 
+    ```powershell
+    Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease
+    ```
+    > [!IMPORTANT]
+    > Kontrol lera att du använder version 3.0.1 eller senare. Du kan kontrol lera din AZ. Storage-version genom att köra det här kommandot:  
+    > ```powershell 
+    > Get-Module -ListAvailable -Name  Az.Storage | select Version
+    > ```
+    > 
+
+3. Anslut till din Azure-klient: 
+    ```powershell
+    Connect-AzAccount
+    ```
+4. Definiera variabler i PowerShell: 
+    - Resurs grupp namn – du hittar det här i Azure Portal i Översikt över Synapse-arbetsytan.
+    - Konto namn – namnet på det lagrings konto som skyddas av brand Väggs regler.
+    - Klient-ID – du kan hitta det här i Azure Portal i Azure Active Directory i klient information.
+    - Resurs-ID – du hittar det här i Azure Portal i Översikt över Synapse-arbetsytan.
+
+    ```powershell
+        $resourceGroupName = "<resource group name>"
+        $accountName = "<storage account name>"
+        $tenantId = "<tenant id>"
+        $resourceId = "<Synapse workspace resource id>"
+    ```
+    > [!IMPORTANT]
+    > Kontrol lera att resurs-ID matchar den här mallen.
+    >
+    > Det är viktigt att skriva **ResourceGroups** i gemener.
+    > Exempel på ett resurs-ID: 
+    > ```
+    > /subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Synapse/workspaces/{name-of-workspace}
+    > ```
+    > 
+5. Lägg till lagrings nätverks regel: 
+    ```powershell
+        Add-AzStorageAccountNetworkRule -ResourceGroupName $resourceGroupName -Name $accountName -TenantId $tenantId -ResourceId $resourceId
+    ```
+6. Kontrol lera att regeln har tillämpats på ditt lagrings konto: 
+    ```powershell
+        $rule = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $resourceGroupName -Name $accountName
+        $rule.ResourceAccessRules
+    ```
+
+#### <a name="managed-identity"></a>Hanterad identitet
+Du måste [tillåta betrodda Microsoft-tjänster... Ange](../../storage/common/storage-network-security.md#trusted-microsoft-services) och [tilldela uttryckligen en Azure-roll](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights) till den [systemtilldelade hanterade identiteten](../../active-directory/managed-identities-azure-resources/overview.md) för den resurs instansen. I det här fallet motsvarar åtkomst omfånget för instansen den Azure-roll som tilldelats den hanterade identiteten.
 
 ## <a name="credentials"></a>Autentiseringsuppgifter
 

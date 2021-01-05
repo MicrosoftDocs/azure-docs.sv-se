@@ -1,72 +1,71 @@
 ---
-title: Live video analys på IoT Edge FAQ – Azure
-description: Det här avsnittet innehåller svar på video analys i real tid för IoT Edge vanliga frågor och svar.
+title: Live video analys på IoT Edge vanliga frågor och svar – Azure
+description: Den här artikeln besvarar vanliga frågor om real tids analys av IoT Edge.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 521cd0e4f5fc8232a000e10520298a979ba1c14c
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: f9ef26b9b64bd8a0bad7c83960f2d235ed6461cb
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401584"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762885"
 ---
-# <a name="frequently-asked-questions-faqs"></a>Vanliga frågor och svar
+# <a name="live-video-analytics-on-iot-edge-faq"></a>Vanliga video analyser på IoT Edge vanliga frågor och svar
 
-Det här avsnittet innehåller svar på video analys i real tid för IoT Edge vanliga frågor och svar.
+Den här artikeln besvarar vanliga frågor om real tids analys av Azure IoT Edge.
 
 ## <a name="general"></a>Allmänt
 
-### <a name="what-are-the-system-variables-that-can-be-used-in-graph-topology-definition"></a>Vilka systemvariabler kan användas i definition av diagram miljön?
+**Vilka systemvariabler kan jag använda i definitionen för grafens topologi?**
 
-|Variabel   |Beskrivning|
-|---|---|
-|[System. DateTime](/dotnet/framework/data/adonet/sql/linq/system-datetime-methods)|Representerar en omedelbar UTC-tid, vanligt vis uttryckt som datum och tid på dagen (grundläggande representation av yyyyMMddTHHmmssZ).|
-|System. PreciseDateTime|Representerar en UTC datum instans i ISO8601-filkompatibelt format med millisekunder (grundläggande representation av yyyyMMddTHHmmss. fffZ).|
-|System. GraphTopologyName   |Representerar en medie diagram sto pol Ogin, innehåller skissen på ett diagram.|
-|System. GraphInstanceName|  Representerar en medie diagram instans, innehåller parameter värden och refererar till topologin.|
+| Variabel   |  Beskrivning  | 
+| --- | --- | 
+| [System. DateTime](/dotnet/framework/data/adonet/sql/linq/system-datetime-methods) | Representerar en snabb UTC-tid, vanligt vis uttryckt som datum och tid på dagen i följande format:<br>*yyyyMMddTHHmmssZ* | 
+| System. PreciseDateTime | Representerar en datum/tid-instans med UTC-tid (Coordinated Universal Time) i ett ISO8601-kompatibelt format med millisekunder i följande format:<br>*yyyyMMddTHHmmss. fffZ* | 
+| System. GraphTopologyName   | Representerar en Media Graph-topologi och innehåller skissen på ett diagram. | 
+| System. GraphInstanceName |    Representerar en medie diagram instans, innehåller parameter värden och refererar till topologin. | 
 
 ## <a name="configuration-and-deployment"></a>Konfiguration och distribution
 
-### <a name="can-i-deploy-the-media-edge-module-to-a-windows-10-device"></a>Kan jag distribuera Media Edge-modulen till en Windows 10-enhet?
+**Kan jag distribuera Media Edge-modulen till en Windows 10-enhet?**
 
-Ja. Se artikeln om [Linux-behållare i Windows 10](/virtualization/windowscontainers/deploy-containers/linux-containers).
+Ja. Mer information finns i [Linux-behållare i Windows 10](/virtualization/windowscontainers/deploy-containers/linux-containers).
 
 ## <a name="capture-from-ip-camera-and-rtsp-settings"></a>Avbilda från IP-kamera och RTSP-inställningar
 
-### <a name="do-i-need-to-use-a-special-sdk-on-my-device-to-send-in-a-video-stream"></a>Behöver jag använda ett särskilt SDK på enheten för att skicka in en videoström?
+**Behöver jag använda ett särskilt SDK på enheten för att skicka in en videoström?**
 
-Nej. Video analys i real tid med IoT Edge stöder hämtning av media med RTSP-video strömnings protokoll (som stöds på de flesta IP-kameror).
+Nej, live video analys på IoT Edge stöder hämtning av media med hjälp av RTSP (real tids strömnings protokoll) för video strömning, som stöds på de flesta IP-kameror.
 
-### <a name="can-i-push-media-to-live-video-analytics-on-iot-edge-using-rtmp-or-smooth-like-a-media-services-live-event"></a>Kan jag skicka media till direktsänd video analys på IoT Edge med hjälp av RTMP eller utjämna (som ett Media Services live event)?
+**Kan jag skicka media till direktsänd video analys på IoT Edge med hjälp av RTMP (Real-Time Messaging Protocol) eller Smooth Streaming protokoll (till exempel en Media Services Live-händelse)?**
 
-* Nej. Real Video Analytics stöder bara RTSP för att hämta video från IP-kameror.
-* Alla kameror som stöder RTSP-strömning via TCP/HTTP bör fungera. 
+Nej, Real video analys stöder endast RTSP för att hämta video från IP-kameror. Alla kameror som stöder RTSP-strömning via TCP/HTTP bör fungera. 
 
-### <a name="can-i-reset-or-update-the-rtsp-source-url-on-a-graph-instance"></a>Kan jag återställa eller uppdatera RTSP-källans URL på en diagraminstans?
+**Kan jag återställa eller uppdatera RTSP-källans URL i en diagram instans?**
 
-Ja, när diagram instansen är i inaktivt läge.  
+Ja, när diagram instansen är i *inaktivt* läge.  
 
-### <a name="is-there-a-rtsp-simulator-available-to-use-during-testing-and-development"></a>Finns det en RTSP-simulator som kan användas vid testning och utveckling?
+**Finns det en RTSP-simulator som kan användas vid testning och utveckling?**
 
-Ja. Det finns en [RTSP Simulator](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) Edge-modul som är tillgänglig för användning i snabb starter och självstudier för att stödja inlärnings processen. Den här modulen tillhandahålls då det är möjligt, men kanske inte alltid är tillgänglig. Vi rekommenderar starkt att du inte använder detta i mer än några timmar. Du bör investera i testning med din faktiska RTSP-källa innan du gör några planer på en produktions distribution.
+Ja, en [RTSP Simulator](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) Edge-modul är tillgänglig för användning i snabb starter och självstudier för att stödja inlärnings processen. Den här modulen tillhandahålls som bästa ansträngning och är kanske inte alltid tillgänglig. Vi rekommenderar starkt att du *inte* använder simulatorn i mer än några timmar. Du bör investera i testning med din faktiska RTSP-källa innan du planerar en produktions distribution.
 
-### <a name="do-you-support-onvif-discovery-of-ip-cameras-at-the-edge"></a>Finns det stöd för ONVIF-identifiering av IP-kameror vid nätverksgränsen?
+**Finns det stöd för ONVIF-identifiering av IP-kameror vid nätverksgränsen?**
 
-Nej, det finns inget stöd för ONVIF-identifiering av enheter vid gränsen.
+Nej, vi har inte stöd för att öppna ONVIF (Network Video Interface forum) för enheter på gränsen.
 
 ## <a name="streaming-and-playback"></a>Strömning och uppspelning
 
-### <a name="can-assets-recorded-to-ams-from-the-edge-be-played-back-using-media-services-streaming-technologies-like-hls-or-dash"></a>Kan till gångar som registrerats för AMS från kanten spelas upp med Media Services strömmande tekniker som HLS eller tank streck?
+**Kan jag spela upp till gångar som registrerats för Azure Media Services från gränsen med hjälp av strömmande tekniker som HLS eller tank streck?**
 
-Ja. Registrerade till gångar kan strömmas på samma sätt som andra till gångar i Azure Media Services. För att strömma innehållet måste du ha en slut punkt för direkt uppspelning skapad och i körnings läge. Genom att använda standard processen för att skapa streaming-direktuppspelning får du till gång till ett HLS-eller tank strecks manifest för strömning till valfritt Player-ramverk. Mer information om hur du skapar publicerings-HLS eller streck manifest finns i [dynamisk paketering](../latest/dynamic-packaging-overview.md).
+Ja. Du kan strömma registrerade till gångar som vilken annan till gång som helst i Azure Media Services. För att strömma innehållet måste du ha en slut punkt för direkt uppspelning skapad och i körnings läge. Genom att använda standard processen för att skapa streaming-direktuppspelning får du åtkomst till en Apple-HTTP Live Streaming (HLS) eller dynamisk anpassningsbar strömning via HTTP (bindestreck, även kallat MPEG-streck) för strömning till alla kompatibla Player-ramverk. Mer information om hur du skapar och publicerar HLS-eller streck manifest finns i [dynamisk paketering](../latest/dynamic-packaging-overview.md).
 
-### <a name="can-i-use-the-standard-content-protection-and-drm-features-of-media-services-on-an-archived-asset"></a>Kan jag använda standard innehålls skyddet och DRM-funktionerna i Media Services på en arkiverad till gång?
+**Kan jag använda standard innehålls skyddet och DRM-funktionerna i Media Services på en arkiverad till gång?**
 
-Ja. Alla standard funktioner för dynamisk kryptering och DRM-funktioner är tillgängliga för användning på de till gångar som registrerats från ett medie diagram.
+Ja. Alla funktioner för dynamisk dynamisk kryptering och Digital Rights Management (DRM) är tillgängliga för användning på till gångar som har registrerats från ett medie diagram.
 
-### <a name="what-players-can-i-use-to-view-content-from-the-recorded-assets"></a>Vilka spelare kan jag använda för att visa innehåll från de inspelade resurserna?
+**Vilka spelare kan jag använda för att visa innehåll från de inspelade resurserna?**
 
-Alla standard spelare som stöder kompatibel Apple HTTP Live Streaming (HLS) version 3 eller version 4 stöds. Dessutom stöds även alla spelare som stöder uppspelning av MPEG-streck.
+Alla standard spelare som stöder kompatibel HLS version 3 eller version 4 stöds. Dessutom stöds även alla spelare som stöder uppspelning av MPEG-streck.
 
 Rekommenderade spelare för testning är:
 
@@ -77,26 +76,26 @@ Rekommenderade spelare för testning är:
 * [Shaka-spelare](https://github.com/google/shaka-player)
 * [ExoPlayer](https://github.com/google/ExoPlayer)
 * [Apple Native HTTP Live Streaming](https://developer.apple.com/streaming/)
-* Edge, Chrome eller Safari inbyggd HTML5 Videos pelare
+* Edge-, Chrome-eller Safari inbyggd HTML5-videospelare
 * Kommersiella spelare som stöder HLS-eller streck uppspelning
 
-### <a name="what-are-the-limits-on-streaming-a-media-graph-asset"></a>Vilka är gränserna för strömning av en Media diagram-till gång?
+**Vilka är gränserna för strömning av en Media diagram-till gång?**
 
-Direkt uppspelning av en levande eller inspelad till gång från ett medie diagram använder samma infrastruktur för hög skalnings-och strömnings slut punkt som Media Services stöd för OTT på begäran och live-strömning för media & underhållning, och sändnings kunder. Det innebär att du snabbt och enkelt kan aktivera Azure CDN, Verizon eller Akamai för att leverera ditt innehåll till en mål grupp så litet som några visnings program, eller upp till miljon tals beroende på ditt scenario.
+Direkt uppspelning av en levande eller inspelad till gång från ett medie diagram använder samma storskaliga infrastruktur-och strömnings slut punkter som Media Services stöder för strömning på begäran och live-strömning för media & underhållning, över de främsta (OTT) och sändnings kunderna. Det innebär att du snabbt och enkelt kan aktivera Azure Content Delivery Network, Verizon eller Akamai för att leverera ditt innehåll till en mål grupp så litet som några visnings program eller upp till miljon tals beroende på ditt scenario.
 
-Innehåll kan levereras med både Apple HTTP Live Streaming (HLS) eller MPEG-tank streck.
+Du kan leverera innehåll genom att använda antingen Apple HLS eller MPEG-tank streck.
 
 ## <a name="design-your-ai-model"></a>Utforma din AI-modell 
 
-### <a name="i-have-multiple-ai-models-wrapped-in-a-docker-container-how-should-i-use-them-with-live-video-analytics"></a>Jag har flera AI-modeller inkapslade i en Docker-behållare. Hur ska jag använda dem med live video analys? 
+**Jag har flera AI-modeller inkapslade i en Docker-behållare. Hur ska jag använda dem med live video analys?** 
 
-Lösningarna är olika beroende på vilket kommunikations protokoll som används av inferencing-servern för att kommunicera med live video analys. Nedan visas några sätt att göra detta.
+Lösningarna varierar beroende på vilket kommunikations protokoll som används av inferencing-servern för att kommunicera med live video analys. I följande avsnitt beskrivs hur varje protokoll fungerar.
 
-#### <a name="http-protocol"></a>HTTP-protokoll:
+*Använd HTTP-protokollet*:
 
 * Enskild behållare (enskild lvaExtension):  
 
-   I din inferencing-Server kan du använda en enda port men olika slut punkter för olika AI-modeller. För ett python-exempel kan du till exempel använda olika `route` s per modell som: 
+   I din inferencing-Server kan du använda en enda port men olika slut punkter för olika AI-modeller. För ett python-exempel kan du till exempel använda olika `route` s per modell, som du ser här: 
 
    ```
    @app.route('/score/face_detection', methods=['POST']) 
@@ -109,111 +108,106 @@ Lösningarna är olika beroende på vilket kommunikations protokoll som används
    … 
    ```
 
-   I din live video analys-distribution, när du instansierar grafer, anger du URL: en för härlednings servern för varje instans som: 
+   I din live video analys-distribution, när du instansierar grafer, anger du URL: en för härlednings servern för varje instans, som du ser här: 
 
    första instans: URL för härlednings Server =`http://lvaExtension:44000/score/face_detection`<br/>
    andra instans: URL för härlednings Server =`http://lvaExtension:44000/score/vehicle_detection`  
+   
     > [!NOTE]
-    > Alternativt kan du också visa dina AI-modeller på olika portar och anropa dem när du instansierar grafer.  
+    > Du kan också exponera dina AI-modeller på olika portar och anropa dem när du instansierar grafer.  
 
 * Flera behållare: 
 
-   Varje behållare distribueras med ett annat namn. I dokumentationen för Live Video Analytics har vi för närvarande visat dig hur du distribuerar ett tillägg med namnet: **lvaExtension**. Nu kan du utveckla två olika behållare. Varje behållare har samma HTTP-gränssnitt (d.v.s. samma `/score` slut punkt). Distribuera dessa två behållare med olika namn och se till att båda lyssnar på **olika portar**. 
+   Varje behållare distribueras med ett annat namn. Tidigare visade vi i dokumentationen för Live Video Analytics hur du distribuerar ett tillägg som heter *lvaExtension*. Nu kan du utveckla två olika behållare, var och en med samma HTTP-gränssnitt, vilket innebär att de har samma `/score` slut punkt. Distribuera dessa två behållare med olika namn och se till att båda lyssnar på *olika portar*. 
 
-   En behållare med namnet lyssnar till exempel `lvaExtension1` efter porten `44000` , annan behållare med namnet `lvaExtension2` lyssnar efter porten `44001` . 
+   Till exempel lyssnar en behållare med namnet `lvaExtension1` efter porten `44000` och en andra behållare som heter `lvaExtension2` lyssnar efter porten `44001` . 
 
-   I din Live Video Analytics-topologi instansierar du två grafer med olika härlednings-URL: er som: 
+   I din Live Video Analytics-topologi instansierar du två grafer med olika härlednings-URL: er, som du ser här: 
 
    Första instans: URL för härlednings Server = `http://lvaExtension1:44001/score`    
    Andra instans: URL för härlednings Server = `http://lvaExtension2:44001/score`
    
-#### <a name="grpc-protocol"></a>GRPC-protokoll: 
+*Använd gRPC-protokollet*: 
 
-När du använder ett gRPC-protokoll i live video analys modul 1,0 blir det enda sättet om gRPC-servern exponerade olika AI-modeller via olika portar. I [det här exemplet](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/grpcExtension/topology.json)finns det en enda port, 44000 som exponerar alla Yolo-modeller. I teorin kan Yolo gRPC-servern skrivas om för att visa vissa modeller på 44000, andra vid 45000,... 
+* När du använder en gRPC-protokoll (Real-Purpose Remote Procedure Call) i live video analys-1,0 modulen är det enda sättet att göra detta är om gRPC-servern exponerar olika AI-modeller via olika portar. I [det här kod exemplet](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/grpcExtension/topology.json)visar en enskild port, 44000, alla Yolo-modeller. I teorin kunde Yolo gRPC-servern skrivas om för att visa vissa modeller på port 44000 och andra på port 45000. 
 
-Med Live Video Analytics module 2,0 läggs en ny egenskap till i noden gRPC-tillägg. Den här egenskapen kallas **extensionConfiguration** som är en valfri sträng som kan användas som en del av gRPC-kontraktet. Om du har flera AI-modeller som paketeras i en enda härlednings server behöver du inte exponera en nod för varje AI-modell. I stället för en diagram instans, kan förlängnings leverantören (du) definiera hur du väljer de olika AI-modellerna med egenskapen **extensionConfiguration** och under körningen kommer live video analys att skicka den här strängen till inferencing-servern som kan använda den för att anropa den önskade AI-modellen. 
+* Med Live Video Analytics module 2,0 läggs en ny egenskap till i noden gRPC-tillägg. Den här egenskapen, **extensionConfiguration**, är en valfri sträng som kan användas som en del av gRPC-kontraktet. Om du har flera AI-modeller som paketeras i en enda härlednings server behöver du inte exponera en nod för varje AI-modell. I stället kan du, för en diagram förekomst, som tilläggs leverantör definiera hur du vill välja de olika AI-modellerna med hjälp av egenskapen **extensionConfiguration** . Under körningen skickar Live Video Analytics den här strängen till inferencing-servern, som kan använda den för att anropa den önskade AI-modellen. 
 
-### <a name="i-am-building-a-grpc-server-around-an-ai-model-and-want-to-be-able-to-support-being-used-by-multiple-camerasgraph-instances-how-should-i-build-my-server"></a>Jag skapar en gRPC-Server runt en AI-modell och vill kunna använda den av flera kameror/diagram instanser. Hur ska jag bygga min server? 
+**Jag skapar en gRPC-Server runt en AI-modell, och jag vill kunna stödja användningen av flera kameror eller diagram instanser. Hur ska jag bygga min server?** 
 
- Kontrol lera först att servern kan hantera fler än en begäran i taget. Eller kontrol lera att servern fungerar i parallella trådar. 
+ Se först till att servern kan hantera mer än en begäran i taget eller arbeta i parallella trådar. 
 
-I ett av [GRPC-exempel i Real video analys](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/Yolo/yolov3/yolov3-grpc-icpu-onnx/lvaextension/server/server.py)finns det ett standard antal parallella kanaler. Se: 
+Till exempel har ett standard antal parallella kanaler angetts i följande [exempel på live video analys gRPC](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/Yolo/yolov3/yolov3-grpc-icpu-onnx/lvaextension/server/server.py): 
 
 ```
 server = grpc.server(futures.ThreadPoolExecutor(max_workers=3)) 
 ```
 
-I gRPC-servern ovan kan servern bara öppna tre kanaler per kamera (så per diagram sto pol instance) i taget. Du bör inte försöka ansluta fler än tre instanser till servern. Om du försöker öppna fler än tre kanaler, väntar förfrågningar tills en befintlig finns kvar.  
+I föregående instans av gRPC-servern kan servern bara öppna tre kanaler åt gången per kamera, eller per diagram sto pol instans. Försök inte att ansluta fler än tre instanser till servern. Om du försöker öppna fler än tre kanaler väntar förfrågningar tills en befintlig kanal sjunker.  
 
-Över gRPC-serverimplementeringar används i våra python-exempel. Utvecklare kan implementera sina egna servrar eller i ovanstående standard implementering kan öka arbets numret till det antal kameror som används för att hämta video matningen från. 
+Föregående implementering av gRPC-servern används i våra python-exempel. Som utvecklare kan du implementera en egen server eller använda den föregående standard implementeringen för att öka arbets numret, som du anger till det antal kameror som ska användas för video flöden. 
 
-Utvecklare kan skapa och använda flera kameror för att skapa en instans av en diagram sto pol Ogin där varje instans pekar på samma eller en annan härlednings Server (till exempel server som nämns i stycket ovan). 
+Om du vill konfigurera och använda flera kameror kan du skapa en instans av flera diagram sto pol Ogin, var och en som pekar på samma eller en annan härlednings Server (till exempel den server som nämns i föregående stycke). 
 
-### <a name="i-want-to-be-able-to-receive-multiple-frames-from-upstream-before-i-make-an-inferencing-decision-how-can-i-enable-that"></a>Jag vill kunna ta emot flera ramar från överordnade innan jag fattar ett inferencing-beslut. Hur kan jag aktivera det? 
+**Jag vill kunna ta emot flera ramar från överordnade innan jag fattar ett inferencing-beslut. Hur kan jag aktivera det?** 
 
-Aktuella [standard exempel](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis) fungerar i läget "tillstånds lös". Dessa exempel behåller inte status för de tidigare anropen och även om de anropas (vilket innebär att flera topologier kan anropa samma lönsamhets Server, och servern kommer inte att kunna särskilja vem som anropar och tillstånd per anropare) 
+Våra aktuella [standard exempel](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis) fungerar i *tillstånds löst* läge. De behåller inte statusen för föregående anrop eller till och med vem som anropade. Det innebär att flera instanser av topologier kan anropa samma härlednings Server, men servern kan inte särskilja vem som anropar eller tillstånd per anropare. 
 
-#### <a name="http-protocol"></a>HTTP-protokoll
+*Använd HTTP-protokollet*:
 
-När du använder HTTP-protokollet: 
-
-För att behålla tillstånd, anropar varje anropare (graf-instans) inferencing-servern med HTTP-Frågeparametern som är unik för anroparen. Till exempel URL-adress för härlednings Server för  
+Om du vill behålla tillstånd, varje anropare eller graf, anropar du inferencing-servern med hjälp av HTTP-Frågeparametern som är unik för anroparen. Till exempel visas URL-adresserna för härlednings servern för varje instans här:  
 
 instans av första topologi = `http://lvaExtension:44000/score?id=1`<br/>
 instans av andra topologin = `http://lvaExtension:44000/score?id=2`
 
 … 
 
-På Server sidan vet Poäng vägen vem som anropar. Om ID = 1, kan den hålla status separat för den anroparen (graf-instans). Du kan sedan behålla de mottagna video bild rutorna i en buffert (till exempel matris eller en ord lista med en DateTime-nyckel och värdet är ramen) och sedan kan du definiera servern att bearbeta (Härled) efter att x-ramar tas emot. 
+På Server sidan vet Poäng vägen vem som anropar. Om ID = 1, kan den vara i enskilt tillstånd för den anroparen eller diagram sto pol instansen. Du kan sedan behålla de mottagna video bild rutorna i en buffert. Du kan till exempel använda en matris eller en ord lista med en DateTime-nyckel och värdet är ramen. Du kan sedan definiera den server som ska bearbetas (Härled) efter *x* -antalet ramar tas emot. 
 
-#### <a name="grpc-protocol"></a>GRPC-protokoll 
+*Använd gRPC-protokollet*: 
 
-När du använder gRPC-protokollet: 
+I ett gRPC-tillägg är varje session för en enda Camera-feed, så det finns inget behov av att ange ett ID. Med egenskapen extensionConfiguration kan du nu lagra video bild rutorna i en buffert och definiera den server som ska bearbetas (Härled) efter *x* -antalet ramar tas emot. 
 
-I ett gRPC-tillägg är varje session för en enda Camera-feed så det finns inget behov av att ange ett ID. Nu med egenskapen extensionConfiguration kan du lagra video bild rutorna i en buffert och definiera den server som ska bearbetas (Härled) efter att x-ramar tas emot. 
+**Kör alla ProcessMediaStreams på en viss behållare samma AI-modell?** 
 
-### <a name="do-all-processmediastreams-on-a-particular-container-run-the-same-ai-model"></a>Kör alla ProcessMediaStreams på en viss behållare samma AI-modell? 
-
-Nej.  
-
-Starta/stoppa samtal från slutanvändaren på en diagram instans är en session, eller så kanske det finns en kamera från koppling/åter anslutning. Målet är att spara en session om kameran strömmar video. 
+Nej. Starta eller stoppa anrop från slutanvändaren i en diagram instans, eller så kanske det finns en kamera som kopplar från eller återansluter. Målet är att spara en session om kameran strömmar video. 
 
 * Två kameror som skickar video för bearbetning skapar två sessioner. 
-* En kamera går till en graf som har två gRPCExtension-noder som skapar två sessioner. 
+* En kamera som går till en graf som har två gRPC-tillägg skapar två sessioner. 
 
-Varje session är en full duplex-anslutning mellan live video analys och gRPC-servern och varje session kan ha en annan modell/pipeline. 
-
-> [!NOTE]
-> Om en kamera från koppling/återansluter (med kameran försätts i offlineläge under en period utanför tolerans gränserna) öppnas en ny session med gRPC-servern i live video analys. Det finns inget krav på att servern ska spåra tillstånd över dessa sessioner. 
-
-Live Video Analytics har även stöd för flera gRPC-tillägg för en enskild kamera i en diagram instans. Du kommer att kunna använda dessa gRPC-tillägg för att utföra AI-bearbetning sekventiellt eller parallellt eller även ha en kombination av båda. 
+Varje session är en full duplex-anslutning mellan live video analys och gRPC-servern och varje session kan ha en annan modell eller pipeline. 
 
 > [!NOTE]
-> Om flera tillägg körs parallellt påverkas dina maskin varu resurser och du måste tänka på detta när du väljer maskin vara som passar dina beräknings behov. 
+> Om en kamera kopplar från eller återansluter, och kameran försätts i offlineläge under en period utanför tolerans gränserna, öppnas en ny session med gRPC-servern i live video analys. Det finns inget krav på att servern ska spåra status mellan dessa sessioner. 
 
-### <a name="what-is-the-max--of-simultaneous-processmediastreams"></a>Vad är Max antalet samtidiga ProcessMediaStreams? 
+Live Video Analytics ger också stöd för flera gRPC-tillägg för en enskild kamera i en diagram instans. Du kan använda dessa gRPC-tillägg för att utföra AI-bearbetningen sekventiellt, parallellt eller som en kombination av båda. 
 
-Det finns ingen gräns för att live video analys ska tillämpas.  
+> [!NOTE]
+> Att flera tillägg körs parallellt påverkar dina maskin varu resurser. Tänk på detta när du väljer maskin vara som passar dina beräknings behov. 
 
-### <a name="how-should-i-decide-if-my-inferencing-server-should-use-cpu-or-gpu-or-any-other-hardware-accelerator"></a>Hur avgör jag om min inferencing-Server ska använda CPU eller GPU eller någon annan maskin varu Accelerator? 
+**Vilket är det maximala antalet samtidiga ProcessMediaStreams?** 
 
-Detta är helt beroende av hur komplex AI-modellen utvecklas och hur utvecklaren vill använda processor-och maskin varu acceleratorer. När AI-modellen utvecklades kan utvecklarna ange vilka resurser som ska användas av modellen för att utföra åtgärder. 
+Live Video Analytics använder inga begränsningar för det här talet.  
 
-### <a name="how-do-i-store-images-with-bounding-boxes-post-processing"></a>Hur gör jag för att lagra bilder med markerings ramar efter bearbetning? 
+**Hur kan jag avgöra om min inferencing-Server ska använda CPU eller GPU eller någon annan maskin varu Accelerator?** 
 
-Idag tillhandahåller vi gränser för avgränsnings rutor enbart som härlednings meddelanden. Utvecklare kan bygga en anpassad MJPEG-dataström som kan använda dessa meddelanden och täcka markerings rutorna över video bild rutorna.  
+Ditt beslut är beroende av den utvecklade AI-modellens komplexitet och hur du vill använda processor-och maskin varu acceleratorer. När du utvecklar AI-modellen kan du ange vilka resurser som modellen ska använda och vilka åtgärder som ska utföras. 
+
+**Hur gör jag för att lagra bilder med markerings ramar efter bearbetning?** 
+
+Idag tillhandahåller vi gränser för avgränsnings rutor enbart som härlednings meddelanden. Du kan bygga en anpassad MJPEG-dataström som kan använda dessa meddelanden och täcka markerings rutorna i video bild rutorna.  
 
 ## <a name="grpc-compatibility"></a>gRPC-kompatibilitet 
 
-### <a name="how-will-i-know-what-the-mandatory-fields-for-the-media-stream-descriptor-are"></a>Hur vet jag vilka obligatoriska fält för media Stream-beskrivningen är? 
+**Hur vet jag vilka obligatoriska fält för media Stream-beskrivningen är?** 
 
-Alla fält värden som inte anges får ett standardvärde [som anges av gRPC](https://developers.google.com/protocol-buffers/docs/proto3#default).  
+Alla fält som du inte anger något värde till får ett [standardvärde som anges av gRPC](https://developers.google.com/protocol-buffers/docs/proto3#default).  
 
-I real tid av video analys används **proto3** -versionen av frågespråket. Alla protokoll data som används av Live Video Analytics-kontrakt är tillgängliga i de Protocol-buffertar som [definieras här](https://github.com/Azure/live-video-analytics/tree/master/contracts/grpc). 
+I real tids analys används *proto3* -versionen av protokollets buffert språk. Alla protokollets buffertar som används av Live Video Analytics-kontrakt är tillgängliga i [protokollets buffer-filer](https://github.com/Azure/live-video-analytics/tree/master/contracts/grpc). 
 
-### <a name="how-should-i-ensure-that-i-am-using-the-latest-protocol-buffer-files"></a>Hur ska jag se till att jag använder de senaste Protocol-buffertarna? 
+**Hur kan jag se till att jag använder de senaste Protocol-buffertarna?** 
 
-De senaste Protocol-filerna kan [hämtas här](https://github.com/Azure/live-video-analytics/tree/master/contracts/grpc). När vi uppdaterar filerna visas de på den här platsen. Det finns ingen omedelbar plan för att uppdatera filerna, leta efter paket namnet överst i filerna för att känna till versionen. Den bör läsa: 
+Du kan hämta de senaste protokollets buffertar på [webbplatsen för Contract-filer](https://github.com/Azure/live-video-analytics/tree/master/contracts/grpc). När vi uppdaterar filerna finns de på den här platsen. Det finns ingen omedelbar plan för att uppdatera protokoll filen, så leta efter paket namnet högst upp i filerna för att känna till versionen. Den bör läsa: 
 
 ```
 microsoft.azure.media.live_video_analytics.extensibility.grpc.v1 
@@ -222,25 +216,25 @@ microsoft.azure.media.live_video_analytics.extensibility.grpc.v1
 Eventuella uppdateringar av de här filerna ökar "v-värdet" i slutet av namnet. 
 
 > [!NOTE]
-> Eftersom Real video analys använder proto3-versionen av språket är fälten valfria och det gör att det går att gå bakåt och framåt. 
+> Eftersom Real video analys använder proto3-versionen av språket är fälten valfria och-versionen är bakåtkompatibel och vidarebefordras. 
 
-### <a name="what-grpc-features-are-available-for-me-to-use-with-live-video-analytics-which-features-are-mandatory-and-which-ones-are-optional"></a>Vilka gRPC-funktioner är tillgängliga för mig att använda med live video analys? Vilka funktioner är obligatoriska och vilka är de valfria? 
+**Vilka gRPC-funktioner är tillgängliga för mig att använda med live video analys? Vilka funktioner är obligatoriska och vilka är de valfria?** 
 
-Alla gRPC-funktioner på Server sidan kan användas, förutsatt att protobuf-kontraktet är uppfyllt. 
+Du kan använda alla gRPC-funktioner på Server sidan, förutsatt att protobuf-kontraktet (Protocol buffer) är uppfyllt. 
 
 ## <a name="monitoring-and-metrics"></a>Övervakning och mått
 
-### <a name="can-i-monitor-the-media-graph-on-the-edge-using-event-grid"></a>Kan jag övervaka medie diagrammet på gränsen med Event Grid?
+**Kan jag övervaka medie diagrammet på gränsen genom att använda Azure Event Grid?**
 
-Ja. Du kan använda Prometheus-mått och publicera dem i Event Grid. 
+Ja. Du kan använda Prometheus mått och publicera dem i Event-rutnätet. 
 
-### <a name="can-i-use-azure-monitor-to-view-the-health-metrics-and-performance-of-my-media-graphs-in-the-cloud-or-on-the-edge"></a>Kan jag använda Azure Monitor för att Visa hälso tillstånd, mått och prestanda för mina medie diagram i molnet eller på gränsen?
+**Kan jag använda Azure Monitor för att Visa hälso tillstånd, mått och prestanda för mina medie diagram i molnet eller på gränsen?**
 
-Ja. Det här stöds. Läs mer om [hur du använder Azure Monitor mått](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics).
+Ja, vi har stöd för den här metoden. Mer information finns i [Översikt över Azure Monitor mått](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics).
 
-### <a name="are-there-any-tools-to-make-it-easier-to-monitor-the-media-services-iot-edge-module"></a>Finns det några verktyg för att göra det enklare att övervaka modulen Media Services IoT Edge?
+**Finns det några verktyg för att göra det enklare att övervaka modulen Media Services IoT Edge?**
 
-Visual Studio Code stöder tillägget "Azure IoT Tools" som gör att du enkelt kan övervaka slut punkterna i LVAEdge-modulen. Du kan använda det här verktyget för att snabbt starta övervakning av den IoT Hub inbyggda slut punkten för "händelser" och se de härlednings meddelanden som dirigeras från gräns enheten till molnet. 
+Visual Studio Code stöder tillägget Azure IoT tools, där du enkelt kan övervaka slut punkterna i LVAEdge-modulen. Du kan använda det här verktyget för att snabbt komma igång med att övervaka den inbyggda slut punkten för IoT Hub för "händelser" och Visa de härlednings meddelanden som dirigeras från gräns enheten till molnet. 
 
 Dessutom kan du använda det här tillägget för att redigera modulen för LVAEdge-modulen för att ändra inställningarna för media Graph.
 
@@ -248,10 +242,10 @@ Mer information finns i artikeln om [övervakning och loggning](monitoring-loggi
 
 ## <a name="billing-and-availability"></a>Fakturering och tillgänglighet
 
-### <a name="how-is-live-video-analytics-on-iot-edge-billed"></a>Hur fungerar Real video analys på IoT Edge faktureras?
+**Hur fungerar Real video analys på IoT Edge faktureras?**
 
-Mer information finns på [sidan med pris](https://azure.microsoft.com/pricing/details/media-services/) information.
+Information om fakturering finns i [Media Services prissättning](https://azure.microsoft.com/pricing/details/media-services/).
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Snabb start: kom igång – direktsända video analyser på IoT Edge](get-started-detect-motion-emit-events-quickstart.md)
+[Snabb start: kom igång med live video analys på IoT Edge](get-started-detect-motion-emit-events-quickstart.md)
