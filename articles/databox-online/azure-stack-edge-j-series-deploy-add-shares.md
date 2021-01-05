@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/28/2020
+ms.date: 12/22/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 68cac756a3c84d0360d475a4bf88a392e3961f1d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 845eef6e119823af789c9a263bfb750845d55bc0
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447565"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740920"
 ---
 # <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-pro-gpu"></a>Självstudie: överföra data via resurser med Azure Stack Edge Pro GPU
 
@@ -24,7 +24,7 @@ I den här självstudien beskrivs hur du lägger till och ansluter till resurser
 
 Den här proceduren kan ta upp till 10 minuter att slutföra.
 
-I den här guiden får du lära dig att:
+I de här självstudierna får du lära dig att
 
 > [!div class="checklist"]
 >
@@ -72,8 +72,7 @@ Om du vill skapa en resurs, gör du så här:
    
     f. Beroende på om du har skapat en SMB-resurs eller en NFS-resurs, gör du något av följande: 
      
-    - **SMB-resurs**: Välj **Skapa ny** eller **Använd befintlig** i **lokal användare för behörighet**. Om du skapar en ny lokal användare, anger du ett användarnamn och ett lösenord och bekräftar därefter lösenordet. Denna åtgärd tilldelar behörigheter till den lokala användaren. När du har tilldelat behörigheterna här kan du sedan använda Utforskaren för att modifiera dem.
-    Om du markerar kryss rutan **Tillåt endast Läs åtgärder** för den här resurs informationen kan du ange skrivskyddade användare.
+    - **SMB-resurs**: Välj **Skapa ny** eller **Använd befintlig** i **lokal användare för behörighet**. Om du skapar en ny lokal användare, anger du ett användarnamn och ett lösenord och bekräftar därefter lösenordet. Denna åtgärd tilldelar behörigheter till den lokala användaren. Ändring av behörigheter på resurs nivå stöds inte för närvarande. Om du markerar kryss rutan **Tillåt endast Läs åtgärder** för den här resurs informationen kan du ange skrivskyddade användare.
     
         ![Lägga till SMB-resurs](./media/azure-stack-edge-j-series-deploy-add-shares/add-share-smb-1.png)
    

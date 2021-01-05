@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ba90724f75635ea9fd5f72f75de6a46d7b6d288
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bca78195d4fb7bb265c4a7fd8d78ea49a35335b6
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446999"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746719"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Felsöka hantering av Azure AD-berättigande
 
@@ -69,7 +69,7 @@ Den här artikeln beskriver några objekt som du bör kontrol lera för att hjä
 
 * När användare som ännu inte finns i din katalog loggar in på Min åtkomst-portalen för att begära ett åtkomstpaket, bör du se till att de autentiseras med hjälp av sitt organisationskonto. Organisationskontot kan antingen vara ett konto i resurskatalogen, eller i en katalog som ingår i någon av åtkomstpaketets principer. Om användarens konto inte är ett organisationskonto, eller om den katalog där de autentiseras inte ingår i principen, kommer användaren inte att se åtkomstpaketet. Mer information finns i [begäran om åtkomst till ett Access-paket](entitlement-management-request-access.md).
 
-* Användare som är blockerade från att logga in på resurskatalogen, kommer inte att kunna begära åtkomst i Min åtkomst-portalen. Innan användaren kan begära åtkomst måste du ta bort inloggningsblockeringen från användarens profil. Ta bort inloggnings blocket genom att klicka på **Azure Active Directory**i Azure Portal, klicka på **användare**, klicka på användaren och sedan på **profil**. Redigera avsnittet **Inställningar** och ändra **blockera inloggning** till **Nej**. Mer information finns i [lägga till eller uppdatera en användares profil information med hjälp av Azure Active Directory](../fundamentals/active-directory-users-profile-azure-portal.md).  Du kan också kontrol lera om användaren har blockerats på grund av en [identitets skydds princip](../identity-protection/howto-identity-protection-remediate-unblock.md).
+* Användare som är blockerade från att logga in på resurskatalogen, kommer inte att kunna begära åtkomst i Min åtkomst-portalen. Innan användaren kan begära åtkomst måste du ta bort inloggningsblockeringen från användarens profil. Ta bort inloggnings blocket genom att klicka på **Azure Active Directory** i Azure Portal, klicka på **användare**, klicka på användaren och sedan på **profil**. Redigera avsnittet **Inställningar** och ändra **blockera inloggning** till **Nej**. Mer information finns i [lägga till eller uppdatera en användares profil information med hjälp av Azure Active Directory](../fundamentals/active-directory-users-profile-azure-portal.md).  Du kan också kontrol lera om användaren har blockerats på grund av en [identitets skydds princip](../identity-protection/howto-identity-protection-remediate-unblock.md).
 
 * Om en användare är både en beställare och en god kännare, kommer de inte att se sin begäran om ett åtkomst paket på sidan **godkännanden** i portalen för åtkomst. Det här är avsiktligt – en användare kan inte godkänna sin egen begäran. Kontrollera att det åtkomstpaket som begärs har fler godkännare konfigurerade i principen. Mer information finns i [Inställningar för ändring av begäran och godkännande för ett Access-paket](entitlement-management-access-package-request-policy.md).
 
@@ -131,7 +131,7 @@ Du kan bara avbryta en väntande begäran som ännu inte har levererats eller va
 
 1. Klicka på den begäran som du vill avbryta.
 
-1. Klicka på **Avbryt förfrågan**i informations fönstret för begäran.
+1. Klicka på **Avbryt förfrågan** i informations fönstret för begäran.
 
 ## <a name="multiple-policies"></a>Flera principer
 

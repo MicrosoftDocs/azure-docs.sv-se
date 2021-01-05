@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 104c9dcd3b7fd931e4f54841c9de9d17cfd72353
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 602bb98f2cdc8a96874eba8dadfa33f3267d19ac
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937329"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746566"
 ---
 # <a name="azure-ddos-protection-standard-features"></a>Funktioner i Azure DDoS Protection Standard
 
@@ -24,23 +24,23 @@ I följande avsnitt beskrivs viktiga funktioner i Azure DDoS Protection standard
 
 ## <a name="always-on-traffic-monitoring"></a>Always on trafik Monitoring
 
-DDoS Protection standard övervakar faktisk trafik användning och jämför den kontinuerligt med de tröskelvärden som definierats i DDoS-principen. När trafik tröskelvärdet överskrids initieras DDoS-minskning automatiskt. När trafiken returneras under tröskelvärdet tas minskningen bort.
+DDoS Protection standard övervakar faktisk trafik användning och jämför den kontinuerligt med de tröskelvärden som definierats i DDoS-principen. När trafik tröskelvärdet överskrids initieras DDoS-minskning automatiskt. När trafiken returneras under tröskelvärdena stoppas lösningen.
 
 ![Azure DDoS Protection standard minskning](./media/ddos-protection-overview/mitigation.png)
 
-Under minskningen omdirigeras trafik som skickas till den skyddade resursen av DDoS Protection service och flera kontroller utförs, som följande kontroller:
+Under minskningen omdirigeras trafik som skickas till den skyddade resursen av DDoS Protection service och flera kontroller utförs, till exempel:
 
 - Se till att paketen överensstämmer med Internet-specifikationerna och inte är felaktiga.
 - Interagera med klienten för att avgöra om trafiken kan vara ett manipulerat paket (t. ex. SYN-auth eller SYN-cookie eller genom att släppa ett paket för källan för att överföra det igen).
 - Hastighets begränsnings paket, om ingen annan tvingande metod kan utföras.
 
-DDoS-skyddet blockerar attackerande trafik och vidarebefordrar återstående trafik till dess avsedda destination. Inom några minuter efter att ett angrepp har identifierats meddelas du via Azure Monitor. Genom att konfigurera inloggning DDoS Protection standard telemetri kan du skriva loggarna till tillgängliga alternativ för framtida analys. Mått data i Azure Monitor för DDoS Protection standard är kvar i 30 dagar.
+DDoS-skyddet släpper attack trafik och vidarebefordrar den återstående trafiken till det avsedda målet. Inom några minuter efter att ett angrepp har identifierats meddelas du via Azure Monitor-mått. Genom att konfigurera inloggning DDoS Protection standard telemetri kan du skriva loggarna till tillgängliga alternativ för framtida analys. Mått data i Azure Monitor för DDoS Protection standard är kvar i 30 dagar.
 
 ## <a name="adaptive-real-time-tuning"></a>Anpassad real tids justering
 
-Tjänsten Azure DDoS Protection Basic hjälper till att skydda kunder och förhindra påverkan på andra kunder. Om en tjänst till exempel tillhandahålls för en typisk volym av legitim inkommande trafik som är mindre än *utlösarens hastighet* för DDoS Protection principen för hela infrastrukturen, kan en DDoS-attack på kundens resurser vara påslagen. I allmänhet är komplexiteten för de senaste attackerna (till exempel multi-Vector-DDoS) och de programspecifika beteenden för klient organisationer som anropar per kund, anpassade skydds principer. Tjänsten utför den här anpassningen genom att använda två insikter:
+Tjänsten Azure DDoS Protection Basic hjälper till att skydda kunder och förhindra påverkan på andra kunder. Om en tjänst till exempel tillhandahålls för en typisk volym av legitim inkommande trafik som är mindre än *utlösarens hastighet* för DDoS Protection principen för hela infrastrukturen, kan en DDoS-attack på kundens resurser vara påslagen. I allmänhet är komplexiteten för de senaste attackerna (till exempel multi-Vector DDoS) och de programspecifika beteenden för klienterna som anropar per kund, skräddarsydda skydds principer. Tjänsten utför detta genom att använda två insikter:
 
-- Automatisk inlärning av trafik mönster per kund (per IP) för Layer 3 och 4.
+- Automatisk inlärning av trafik mönster per kund (per offentlig IP) för nivå 3 och 4.
 
 - Minimera antalet falska positiva identifieringar, med hänsyn till att Azures skala kan absorbera en betydande mängd trafik.
 
@@ -48,7 +48,7 @@ Tjänsten Azure DDoS Protection Basic hjälper till att skydda kunder och förhi
 
 ## <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>DDoS Protection telemetri, övervakning och aviseringar
 
-DDoS Protection standard exponerar avancerad telemetri via [Azure Monitor](../azure-monitor/overview.md) under en DDoS attack. Du kan konfigurera aviseringar för de Azure Monitor mått som DDoS Protection använder. Du kan integrera loggning med Splunk (Azure Event Hubs), Azure Monitor loggar och Azure Storage för avancerad analys via Azure Monitor Diagnostics-gränssnittet.
+DDoS Protection standard visar avancerad telemetri via [Azure Monitor](../azure-monitor/overview.md). Du kan konfigurera aviseringar för de Azure Monitor mått som DDoS Protection använder. Du kan integrera loggning med Splunk (Azure Event Hubs), Azure Monitor loggar och Azure Storage för avancerad analys via Azure Monitor Diagnostics-gränssnittet.
 
 ### <a name="ddos-mitigation-policies"></a>Principer för DDoS-minskning
 

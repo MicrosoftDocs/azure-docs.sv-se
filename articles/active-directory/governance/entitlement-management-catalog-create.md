@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf6e02ebad2ac5150be4775ad0ff6069fe3db89f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b87fdd7c73d089c46d456491c02d49cb6f8883d
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980050"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97745971"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Skapa och hantera en katalog med resurser i hantering av Azure AD-rättigheter
 
@@ -65,11 +65,11 @@ Om du vill inkludera resurser i ett Access-paket måste resurserna finnas i en k
 
 1. Klicka på **kataloger** i den vänstra menyn och öppna den katalog som du vill lägga till resurser i.
 
-1. Klicka på **resurser**på den vänstra menyn.
+1. Klicka på **resurser** på den vänstra menyn.
 
 1. Klicka på **Lägg till resurser**.
 
-1. Klicka på en resurs typ: **grupper och team**, **program**eller **SharePoint-webbplatser**.
+1. Klicka på en resurs typ: **grupper och team**, **program** eller **SharePoint-webbplatser**.
 
     Om du inte ser en resurs som du vill lägga till, eller om du inte kan lägga till en resurs, kontrollerar du att du har den nödvändiga rollen för Azure AD-katalogen och rättighets hanterings rollen. Du kanske måste ha någon med de nödvändiga rollerna för att lägga till resursen i katalogen. Mer information finns i de [roller som krävs för att lägga till resurser i en katalog](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
 
@@ -77,7 +77,7 @@ Om du vill inkludera resurser i ett Access-paket måste resurserna finnas i en k
 
     ![Lägga till resurser i en katalog](./media/entitlement-management-catalog-create/catalog-add-resources.png)
 
-1. Klicka på **Lägg till**när du är färdig.
+1. Klicka på **Lägg till** när du är färdig.
 
     Dessa resurser kan nu inkluderas i åtkomst paket i katalogen.
 
@@ -95,7 +95,7 @@ Du kan ta bort resurser från en katalog. En resurs kan bara tas bort från en k
 
 1. Klicka på **kataloger** i den vänstra menyn och öppna den katalog som du vill ta bort resurser från.
 
-1. Klicka på **resurser**på den vänstra menyn.
+1. Klicka på **resurser** på den vänstra menyn.
 
 1. Välj de resurser som du vill ta bort.
 
@@ -150,9 +150,9 @@ Du kan ta bort en katalog, men bara om den inte har några åtkomst paket.
 
 1. Klicka på **kataloger** i den vänstra menyn och öppna den katalog som du vill ta bort.
 
-1. Klicka på **ta bort**i katalogens **Översikt**.
+1. Klicka på **ta bort** i katalogens **Översikt**.
 
-1. Klicka på **Ja**i meddelande rutan som visas.
+1. Klicka på **Ja** i meddelande rutan som visas.
 
 ### <a name="deleting-a-catalog-programmatically"></a>Ta bort en katalog program mässigt
 

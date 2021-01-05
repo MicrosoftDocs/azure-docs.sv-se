@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/22/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75965fc9719c9ba16ee7fe24a23dfd4693f8afe0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2cf3784cc5f6014b04b4668517faf3f319ce55d5
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362560"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746685"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegering och roller i hantering av Azure AD-rättigheter
 
@@ -124,8 +124,8 @@ För en användare som inte är en global administratör eller en användar admi
 
 | Azure AD-katalog roll | Rättighets hanterings roll | Kan lägga till säkerhets grupp | Kan lägga till Microsoft 365 grupp | Kan lägga till app | Kan lägga till SharePoint Online-webbplats |
 | --- | :---: | :---: | :---: | :---: | :---: |
-| [Global administratör](../roles/permissions-reference.md) | Saknas |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Användar administratör](../roles/permissions-reference.md) | Saknas |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Global administratör](../roles/permissions-reference.md) | saknas |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [Användaradministratör](../roles/permissions-reference.md) | saknas |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Intune-administratör](../roles/permissions-reference.md) | Katalog ägare | :heavy_check_mark: | :heavy_check_mark: |  |  |
 | [Exchange-administratör](../roles/permissions-reference.md) | Katalog ägare |  | :heavy_check_mark: |  |  |
 | [Team tjänst administratör](../roles/permissions-reference.md) | Katalog ägare |  | :heavy_check_mark: |  |  |

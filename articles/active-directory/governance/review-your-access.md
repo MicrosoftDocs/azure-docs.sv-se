@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 12/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 959837ff540fd95d186497858d7b9de1f8b1124d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3fef2f85ca7e7b4034c8582477796d49446ea44
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274018"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746787"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Granska åtkomst för dig själv till grupper eller program i åtkomst granskningar för Azure AD
 
@@ -69,7 +69,7 @@ När du har öppnat åtkomst granskningen kan du se din åtkomst.
 
 1. Klicka på **Ja** om du vill behålla åtkomsten eller på **Nej** om du vill ta bort åtkomsten.
 
-1. Om du klickar på **Ja**kan du behöva ange en motivering i rutan **orsak** .
+1. Om du klickar på **Ja** kan du behöva ange en motivering i rutan **orsak** .
 
     ![Skärm bild som visar en slutförd åtkomst granskning som frågar om du fortfarande behöver åtkomst till en grupp, med alternativet Ja valt.](./media/review-your-access/perform-access-review-submit.png)
 
@@ -150,7 +150,7 @@ Du kan också visa dina väntande åtkomst granskningar genom att använda webbl
 
 1. Välj **Ja** om du vill behålla åtkomsten eller Välj **Nej** om du vill ta bort åtkomsten.
 
-1. Om du klickar på **Ja**kan du behöva ange en motivering i rutan **orsak** .
+1. Om du klickar på **Ja** kan du behöva ange en motivering i rutan **orsak** .
 
     ![Slutförd åtkomst granskning som frågar om du fortfarande behöver åtkomst till en grupp](./media/review-your-access/review-access-yes-preview.png)
 

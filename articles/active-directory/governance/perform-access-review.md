@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 12/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e03ba5e7a4a24ee3114946230f78a64ea3d42cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5cd7a5737b2d13e63eabbbddd076cfc7aff83ac
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91265689"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746804"
 ---
 # <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>Granska åtkomst till grupper och program i åtkomst granskningar för Azure AD
 
@@ -41,7 +41,7 @@ Du kan starta åtkomst gransknings processen från e-postmeddelandet eller genom
 
 1. Klicka på länken **Starta granskning** för att öppna åtkomst granskningen.
 
-- **Om du inte har e-postmeddelandet**kan du hitta dina väntande åtkomst granskningar genom att följa dessa steg.
+- **Om du inte har e-postmeddelandet** kan du hitta dina väntande åtkomst granskningar genom att följa dessa steg.
 
     1. Logga in på mina apps-portalen på [https://myapps.microsoft.com](https://myapps.microsoft.com) .
 
@@ -97,7 +97,7 @@ Du kan godkänna eller neka åtkomst på två sätt:
 
 För att få åtkomst granskningar enklare och snabbare ger vi även rekommendationer som du kan acceptera med ett enda klick. Rekommendationerna genereras baserat på användarens inloggnings aktivitet.
 
-1. Klicka på **Godkänn rekommendationer**i det blå fältet längst ned på sidan.
+1. Klicka på **Godkänn rekommendationer** i det blå fältet längst ned på sidan.
 
     ![Skärm bild som visar den öppna åtkomst gransknings listan med knappen "Godkänn rekommendationer" markerad.](./media/perform-access-review/accept-recommendations.png)
 

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86f2d5202a9b5439fcacca549659e4e181ffeca4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6eb44c1efd683b6febe9a355ef72c80cc6f2e40d
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85078138"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746634"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Visa rapporter och loggar i hantering av Azure AD-berättigande
 
@@ -85,9 +85,9 @@ Om du vill ha mer information om hur en användare begärde och fick åtkomst ti
 
 1. Längst upp ändrar du **kategorin** till antingen `EntitlementManagement` eller `UserManagement` , beroende på vilken gransknings post du letar efter.  
 
-1. Klicka på **Applicera**.
+1. Klicka på **Använd**.
 
-1. Klicka på **Hämta**om du vill hämta loggarna.
+1. Klicka på **Hämta** om du vill hämta loggarna.
 
 När Azure AD tar emot en ny begäran skriver den en gransknings post i vilken **kategorin** är `EntitlementManagement` och **aktiviteten** är vanligt vis `User requests access package assignment` .  Om det finns en direkt tilldelning som skapats i Azure Portal, är **aktivitets** fältet för gransknings posten `Administrator directly assigns user to access package` och den användare som utför tilldelningen identifieras av **ActorUserPrincipalName**.
 

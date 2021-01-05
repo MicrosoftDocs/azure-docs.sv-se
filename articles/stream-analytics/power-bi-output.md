@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 29bd4dc5cabe8b29efe7b89395c5e7d36bd0347a
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: cc48d26c217f52dfa52ac6cd3d7f18a806c93927
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129787"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740988"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Power BI utdata från Azure Stream Analytics
 
@@ -80,9 +80,5 @@ För batch-storlek för utdata, se [Power BI REST API-gränser](/power-bi/develo
 
 ## <a name="next-steps"></a>Nästa steg
 
+* [Använd hanterad identitet för att autentisera ditt Azure Stream Analytics jobb till Power BI (förhands granskning)](powerbi-output-managed-identity.md)
 * [Snabbstart: Skapa ett Stream Analytics-jobb med hjälp av Azure-portalen](stream-analytics-quick-create-portal.md)
-* [Snabb start: skapa ett Azure Stream Analytics jobb med hjälp av Azure CLI](quick-create-azure-cli.md)
-* [Snabb start: skapa ett Azure Stream Analytics jobb med en ARM-mall](quick-create-azure-resource-manager.md)
-* [Snabb start: skapa ett Stream Analytics jobb med Azure PowerShell](stream-analytics-quick-create-powershell.md)
-* [Snabb start: skapa ett Azure Stream Analytics jobb med hjälp av Visual Studio](stream-analytics-quick-create-vs.md)
-* [Snabb start: skapa ett Azure Stream Analytics jobb i Visual Studio Code](quick-create-visual-studio-code.md)

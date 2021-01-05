@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 4979902853602073e6230ef7387d6c6596fe77da
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: d08cb2761a8d8010c455ff959d6c247e8b64ef20
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325934"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746583"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>Översikt över migrering: SQL Server till SQL Server på virtuella Azure-datorer
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -24,7 +24,7 @@ Lär dig mer om de olika migrerings strategierna för att migrera SQL Server til
 
 Du kan migrera SQL Server som körs lokalt eller på:
 
-- SQL Server på virtuella datorer  
+- SQL Server på Virtual Machines  
 - Amazon Web Services (AWS) EC2 
 - Amazon Relations databas tjänst (AWS RDS) 
 - Beräknings motor (Google Cloud Platform-GCP)
@@ -127,6 +127,20 @@ Här är några exempel på sådana tjänster:
 
 När du förbereder för migrering av SQL Server databaser till SQL Server på virtuella Azure-datorer bör du tänka på vilka versioner av SQL Server som stöds. En lista över aktuella SQL Server-versioner som stöds på virtuella Azure-datorer finns [SQL Server på virtuella Azure-datorer](../../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms).
 
+## <a name="migration-assets"></a>Migrera till gångar 
+
+Mer hjälp finns i följande resurser som har utvecklats för Real World migration-projekt.
+
+|Tillgång  |Beskrivning  |
+|---------|---------|
+|[Modell och verktyg för data arbets belastnings bedömning](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Data%20Workload%20Assessment%20Model%20and%20Tool)| Det här verktyget ger föreslagna "bästa anpassning"-språkplattformar, moln beredskap och program/databas reparations nivåer för en specifik arbets belastning. Den erbjuder enkel, enkel beräkning och rapportgenerering som hjälper till att påskynda stora fastighets bedömningar genom att tillhandahålla och automatisera och enhetlig mål plattforms besluts process.|
+|[Automatisering av data insamling i perfmon med logman](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|Ett verktyg som samlar in data för att förstå de grundläggande prestanda som bidrar till rekommendationen för migrering. Det här verktyget använder logman.exe för att skapa kommandot som skapar, startar, stoppar och tar bort prestanda räknare som anges på en fjärran sluten SQL Server.|
+|[SQL Server distribution i Azure](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/SQL%20Server%20Deployment%20in%20Azure%20.pdf)|I det här dokumentet får du hjälp med att granska olika alternativ för att flytta SQL Server arbets belastningar till Azure, inklusive funktions jämförelse, hög tillgänglighet och säkerhets kopiering/lagring. |
+|[Lokal SQL Server till virtuell Azure-dator](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/OnPremise%20SQL%20Server%20to%20Azure%20VM.pdf)|Det här dokumentet beskriver stegen för att säkerhetskopiera och återställa databaser från lokala SQL Server till SQL Server på den virtuella Azure-datorn med exempel skript.|
+|[Multipl-SQL-VM-VNet-ILB](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/ARM%20Templates/Multiple-SQL-VM-VNet-ILB)|Det här informations dokumentet beskriver stegen för att konfigurera flera virtuella Azure-datorer i en SQL Server Always on-tillgänglighets grupps konfiguration.|
+|[Virtuella Azure-datorer som stöder Ultra SSD per region](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Find%20Azure%20VMs%20supporting%20Ultra%20SSD)|Dessa PowerShell-skript ger ett programmerings alternativ för att hämta listan över regioner som stöder virtuella Azure-datorer som stöder Ultra SSD.|
+
+Dessa resurser har utvecklats som en del av data SQL-Ninja program, som sponsras av Azure Data Group Engineering-teamet. Huvud stadgan för data SQL Ninja-programmet är att avblockera och påskynda komplexa modernisering och konkurrera med data plattformens migrering till Microsofts Azure-dataplattform. Om du tror att organisationen är intresse rad av att delta i data SQL Ninja-programmet, kontaktar du ditt konto team och ber dem att skicka in en nominerad.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -1,7 +1,7 @@
 ---
-title: Utveckla med autoML & Azure Databricks
+title: Utveckla med AutoML & Azure Databricks
 titleSuffix: Azure Machine Learning
-description: 'Lär dig hur du konfigurerar en utvecklings miljö i Azure Machine Learning och Azure Databricks. Använd Azure ML SDK: er för Databricks och Databricks med autoML.'
+description: 'Lär dig hur du konfigurerar en utvecklings miljö i Azure Machine Learning och Azure Databricks. Använd Azure ML SDK: er för Databricks och Databricks med AutoML.'
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,14 +11,14 @@ ms.reviewer: larryfr
 ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ef8ee7718aabb443fda6cd7b276ee53472261913
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 878e6f11645a6478c0d536e9d6d6dac4518c5349
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424545"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740971"
 ---
-# <a name="set-up-a-development-environment-with-azure-databricks-and-automl-in-azure-machine-learning"></a>Konfigurera en utvecklings miljö med Azure Databricks och autoML i Azure Machine Learning 
+# <a name="set-up-a-development-environment-with-azure-databricks-and-automl-in-azure-machine-learning"></a>Konfigurera en utvecklings miljö med Azure Databricks och AutoML i Azure Machine Learning 
 
 Lär dig hur du konfigurerar en utvecklings miljö i Azure Machine Learning som använder Azure Databricks och automatiserad ML.
 
@@ -32,9 +32,9 @@ Information om andra miljöer för maskin inlärnings utveckling finns i [Konfig
 Azure Machine Learning arbets yta. Om du inte har någon kan du skapa en Azure Machine Learning arbets yta via [Azure Portal](how-to-manage-workspace.md), [Azure CLI](how-to-manage-workspace-cli.md#create-a-workspace)och [Azure Resource Manager mallar](how-to-create-workspace-template.md).
 
 
-## <a name="azure-databricks-with-azure-machine-learning-and-automl"></a>Azure Databricks med Azure Machine Learning och autoML
+## <a name="azure-databricks-with-azure-machine-learning-and-automl"></a>Azure Databricks med Azure Machine Learning och AutoML
 
-Azure Databricks integreras med Azure Machine Learning och dess autoML-funktioner. 
+Azure Databricks integreras med Azure Machine Learning och dess AutoML-funktioner. 
 
 Du kan använda Azure Databricks:
 
@@ -85,7 +85,7 @@ Om du vill använda automatisk ML går du vidare till [lägga till Azure ml SDK 
    * Välj inte **Anslut automatiskt till alla kluster**.
    * Välj  **Anslut** bredvid klustrets namn.
 
-1. Övervaka fel tills status ändras till **kopplat** , vilket kan ta flera minuter.  Om det här steget Miss lyckas:
+1. Övervaka fel tills status ändras till **kopplat**, vilket kan ta flera minuter.  Om det här steget Miss lyckas:
 
    Försök att starta om klustret genom att:
    1. Välj **kluster** i den vänstra rutan.
@@ -97,7 +97,7 @@ Om du vill använda automatisk ML går du vidare till [lägga till Azure ml SDK 
   ![Azure Machine Learning SDK för Databricks](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg) 
 
 ## <a name="add-the-azure-ml-sdk-with-automl-to-databricks"></a>Lägg till Azure ML SDK med AutoML till Databricks
-Om klustret skapades med Databricks Runtime 7,1 eller senare ( *inte* ml) kör du följande kommando i den första cellen i antecknings boken för att installera AML SDK.
+Om klustret skapades med Databricks Runtime 7,1 eller senare (*inte* ml) kör du följande kommando i den första cellen i antecknings boken för att installera AML SDK.
 
 ```
 %pip install --upgrade --force-reinstall -r https://aka.ms/automl_linux_requirements.txt
@@ -120,6 +120,44 @@ Prova:
  ![ import panel](./media/how-to-configure-environment/azure-db-import.png)
 
 + Lär dig hur du [skapar en pipeline med Databricks som inlärnings beräkning](how-to-create-your-first-pipeline.md).
+
+## <a name="troubleshooting"></a>Felsökning
+
+* **Det gick inte att installera paket**
+
+    Azure Machine Learning SDK-installationen Miss lyckas på Azure Databricks när fler paket är installerade. Vissa paket, till exempel `psutil` , kan orsaka konflikter. Undvik installations fel genom att installera paket genom att frysa biblioteks versionen. Det här problemet är relaterat till Databricks och inte till Azure Machine Learning SDK. Du kan också uppleva det här problemet med andra bibliotek. Exempel:
+    
+    ```python
+    psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
+    ```
+
+    Du kan också använda init-skript om du behåller problem med att installera mot python-bibliotek. Den här metoden stöds inte officiellt. Mer information finns i [kluster omfång init-skript](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
+
+* **Import fel: det går inte att importera namnet `Timedelta` från `pandas._libs.tslibs`**: om du ser det här felet när du använder automatisk maskin inlärning, kör du två följande rader i din bärbara dator:
+    ```
+    %sh rm -rf /databricks/python/lib/python3.7/site-packages/pandas-0.23.4.dist-info /databricks/python/lib/python3.7/site-packages/pandas
+    %sh /databricks/python/bin/pip install pandas==0.23.4
+    ```
+
+* **Import fel: ingen modul med namnet ' Pandas. Core. index '**: om du ser det här felet när du använder automatisk maskin inlärning:
+
+    1. Kör det här kommandot för att installera två paket i Azure Databricks klustret:
+    
+       ```bash
+       scikit-learn==0.19.1
+       pandas==0.22.0
+       ```
+    
+    1. Koppla från och återanslut sedan klustret till din bärbara dator.
+    
+    Om de här stegen inte löser problemet kan du försöka med att starta om klustret.
+
+* **FailToSendFeather**: om du ser ett `FailToSendFeather` fel när du läser data på Azure Databricks kluster, se följande lösningar:
+    
+    * Uppgradera `azureml-sdk[automl]` paketet till den senaste versionen.
+    * Lägg till `azureml-dataprep` version 1.1.8 eller senare.
+    * Lägg till `pyarrow` version 0,11 eller senare.
+  
 
 ## <a name="next-steps"></a>Nästa steg
 

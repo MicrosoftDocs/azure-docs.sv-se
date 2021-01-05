@@ -7,17 +7,17 @@ ms.topic: reference
 ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: a38015d9f7560930d77d5d50ac70dca5bcdde6a6
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 2a480f25821f5022295b18ca24abfd2c0fb8a50c
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672516"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746532"
 ---
 # <a name="rabbitmq-bindings-for-azure-functions-overview"></a>RabbitMQ-bindningar för Azure Functions översikt
 
 > [!NOTE]
-> RabbitMQ-bindningarna stöds bara fullt ut i **Windows Premium och dedikerade** planer. Användning och Linux stöds inte för närvarande.
+> RabbitMQ-bindningarna stöds bara fullt ut av **Premium och dedikerade** planer. Förbrukning stöds inte.
 
 Azure Functions integreras med [rabbitmq](https://www.rabbitmq.com/) via [utlösare och bindningar](./functions-triggers-bindings.md). Med tillägget Azure Functions RabbitMQ kan du skicka och ta emot meddelanden med hjälp av RabbitMQ-API: et med Functions.
 
@@ -34,7 +34,7 @@ För att komma igång med att utveckla med det här tillägget, se till att du f
 
 Om du arbetar med utlösaren och bindningarna måste du referera till rätt paket. NuGet-paketet används för .NET-klass bibliotek medan tilläggs paketet används för alla andra program typer.
 
-| Språk                                        | Lägg till efter...                                   | Kommentarer 
+| Språk                                        | Lägg till efter...                                   | Kommentarer
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | Installera [NuGet-paketet], version 4. x | |
 | C#-skript, Java, Java Script, python, PowerShell | [Tilläggs paketet] registreras          | [Tillägget Azure-verktyg] rekommenderas för användning med Visual Studio Code. |

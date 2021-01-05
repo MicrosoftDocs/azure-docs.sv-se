@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: ba872f221f3bde29f0bb48b04dc2259d3ab4938a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c715804693571bc421951de1288fc884d2eae8d
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906283"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746192"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Avancerad attack identifiering i Multistage i Azure Sentinel
 
@@ -36,20 +36,20 @@ Den här identifieringen är aktive rad som standard i Azure Sentinel. Om du vil
 
 1. Om du inte redan gjort det loggar du in på [Azure Portal](https://portal.azure.com).
 
-1. Navigera till **Azure Sentinel**  >  **konfigurations**  >  **analys** för Azure Sentinel
+1. Navigera till   >  **konfigurations**  >  **analys** för Azure Sentinel
 
-1. Välj **aktiva regler**och leta sedan upp **Avancerad sårbarhets identifiering i Multistage** i kolumnen **namn** genom att filtrera listan för typen av **fusions** regel. Kontrol lera kolumnen **status** för att bekräfta om identifieringen är aktive rad eller inaktive rad.
+1. Välj **aktiva regler** och leta sedan upp **Avancerad sårbarhets identifiering i Multistage** i kolumnen **namn** genom att filtrera listan för typen av **fusions** regel. Kontrol lera kolumnen **status** för att bekräfta om identifieringen är aktive rad eller inaktive rad.
 
     :::image type="content" source="./media/fusion/selecting-fusion-rule-type.png" alt-text="{alt-text}":::
 
 1. Om du vill ändra status väljer du den här posten och på bladet **Avancerad sårbarhets identifiering i Multistage** väljer du **Redigera**.
 
-1. På bladet **Guide för skapande av regel** väljs ändringen av status automatiskt åt dig, så välj **Nästa: granska**och **Spara**. 
+1. På bladet **Guide för skapande av regel** väljs ändringen av status automatiskt åt dig, så välj **Nästa: granska** och **Spara**. 
 
  Eftersom **fusions** regel typen bara innehåller en regel som inte kan ändras, gäller inte regelmallar för den här regel typen.
 
 > [!NOTE]
-> Azure Sentinel använder för närvarande 30 dagars historiska data för att träna Machine Learning-systemen. Dessa data krypteras alltid med Microsofts nycklar när de passerar genom Machine Learning-pipeline. Inlärnings informationen är dock inte krypterad med [Kundhanterade nycklar (CMK)](customer-managed-keys.md) om du har aktiverat CMK i Azure Sentinel-arbetsytan. Om du inte vill använda fusion går du till **Azure Sentinel**   \>  **Configuration**   \>  **Analytics \> Active Rules \> Advanced sårbarhets identifiering i Multistage** och i kolumnen **status** väljer du **Inaktivera.**
+> Azure Sentinel använder för närvarande 30 dagars historiska data för att träna Machine Learning-systemen. Dessa data krypteras alltid med Microsofts nycklar när de passerar genom Machine Learning-pipeline. Inlärnings informationen är dock inte krypterad med [Kundhanterade nycklar (CMK)](customer-managed-keys.md) om du har aktiverat CMK i Azure Sentinel-arbetsytan. Om du inte vill använda fusion går du till **Azure Sentinel** \> **Configuration** \> **Analytics \> Active Rules \> Advanced sårbarhets identifiering i Multistage** och i kolumnen **status** väljer du **Inaktivera.**
 
 ## <a name="attack-detection-scenarios"></a>Scenarier för attack identifiering
 
@@ -84,6 +84,70 @@ Det här scenariot är för närvarande en **offentlig för hands version**.
 - **Inloggnings händelse från en anonym IP-adress som leder till flera aktiviteter för att skapa virtuella datorer**
 
 - **Inloggnings händelse från användare med läckta autentiseringsuppgifter som leder till flera aktiviteter för att skapa virtuella datorer**
+
+## <a name="credential-harvesting-new-threat-classification"></a>Fångst av autentiseringsuppgifter (ny hot klassificering)
+
+### <a name="malicious-credential-theft-tool-execution-following-suspicious-sign-in"></a>Körnings verktyg för stöld av skadlig autentiseringsuppgift efter misstänkt inloggning
+
+**Mitre att&CK taktiker:** Initial åtkomst, åtkomst till autentiseringsuppgifter
+
+**Mitre att&CK tekniker:** Giltigt konto (T1078), dumpning av operativ systemets autentiseringsuppgift (T1003)
+
+**Data anslutnings källor:** Azure Active Directory Identity Protection, Microsoft Defender för slut punkt
+
+**Beskrivning:** Fusions incidenter av den här typen indikerar att ett känt verktyg för att stjäla autentiseringsuppgifter kördes efter en misstänkt Azure AD-inloggning. Detta ger en hög exakthet som anger att det användar konto som anges i aviserings beskrivningen har komprometterats och kan ha använt ett verktyg som **Mimikatz** för att hämta autentiseringsuppgifter, till exempel nycklar, lösen ord för klartext och/eller lösen ords-hashar från systemet. De skördade autentiseringsuppgifterna kan göra det möjligt för en angripare att komma åt känsliga data, eskalera privilegier och/eller flytta över nätverket senare. Permutationerna för misstänkta Azure AD-inloggningsnamn med aviseringen stöldskydds verktyg för illasinnade autentiseringsuppgifter är:
+
+- **Omöjligt att resa till ovanlig-platser som leder till att körning av skadliga autentiseringsuppgifter körs**
+
+- **Inloggnings händelse från en okänd plats som leder till att stöldskydds verktyget för illasinnade autentiseringsuppgifter körs**
+
+- **Inloggnings händelse från en infekterad enhet som leder till att stöldskydds verktyget för skadliga autentiseringsuppgifter körs**
+
+- **Inloggnings händelse från en anonym IP-adress som leder till att stöldskydds verktyget för illasinnade autentiseringsuppgifter körs**
+
+- **Inloggnings händelse från användare med läckta autentiseringsuppgifter som leder till att stöldskydds verktyget för skadlig autentiseringsuppgift körs**
+
+### <a name="suspected-credential-theft-activity-following-suspicious-sign-in"></a>Stöld aktivitet för misstänkt autentiseringsuppgift efter misstänkt inloggning
+
+**Mitre att&CK taktiker:** Initial åtkomst, åtkomst till autentiseringsuppgifter
+
+**Mitre att&CK tekniker:** Giltigt konto (T1078), autentiseringsuppgifter från lösen ord arkiv (T1555), dumpning av OS-autentisering (T1003)
+
+**Data anslutnings källor:** Azure Active Directory Identity Protection, Microsoft Defender för slut punkt
+
+**Beskrivning:** Fusions incidenter av den här typen anger att aktiviteten som är kopplad till mönster för stöld av autentiseringsuppgifter uppstår efter en misstänkt Azure AD-inloggning. Detta ger en hög exakthet som anger att det användar konto som anges i aviserings beskrivningen har komprometterats och använts för att stjäla autentiseringsuppgifter, t. ex. nycklar, lösen ord för klartext, lösen ords-hashar och så vidare. De stulna autentiseringsuppgifterna kan göra det möjligt för en angripare att komma åt känsliga data, eskalera privilegier och/eller flytta över nätverket senare. Permutationerna för misstänkta Azure AD-inloggningsnamn med aviseringen om stöld aktivitet för autentiseringsuppgifter är:
+
+- **Omöjlig resa till ovanlig-platser som leder till misstänkt aktivitet för stöld av autentiseringsuppgifter**
+
+- **Inloggnings händelse från en okänd plats som leder till misstänkt aktivitet för stöld av autentiseringsuppgifter**
+
+- **Inloggnings händelse från en infekterad enhet som leder till misstänkt aktivitet för stöld av autentiseringsuppgifter**
+
+- **Inloggnings händelse från en anonym IP-adress som leder till misstänkt aktivitet för stöld av autentiseringsuppgifter**
+
+- **Inloggnings händelse från användare med läckta autentiseringsuppgifter som leder till misstänkt aktivitet för stöld av autentiseringsuppgifter**
+
+## <a name="crypto-mining-new-threat-classification"></a>Krypto-utvinning (ny hot klassificering)
+
+### <a name="crypto-mining-activity-following-suspicious-sign-in"></a>Kryptografi-utvinnings aktivitet efter misstänkt inloggning
+
+**Mitre att&CK taktiker:** Initial åtkomst, åtkomst till autentiseringsuppgifter
+
+**Mitre att&CK tekniker:** Giltigt konto (T1078), resurs kapning (T1496)
+
+**Data anslutnings källor:** Azure Active Directory Identity Protection, Azure Defender (Azure Security Center)
+
+**Beskrivning:** Fusions incidenter av den här typen indikerar krypterings utvinnings aktivitet som är associerad med en misstänkt inloggning till ett Azure AD-konto. Detta ger en hög exakthet som anger att det användar konto som anges i aviserings beskrivningen har komprometterats och använts för att kapning av resurser i din miljö till mina kryptografi-valuta. Detta kan strypa resurser för dator kraft och/eller resultera i betydligt högre än förväntad moln användnings räkningar. Permutationerna för misstänkta Azure AD-inloggningsnamn med aviseringen om kryptografiska aktiviteter är:  
+
+- **Omöjlig resa till ovanlig platser som leder till kryptografi-utvinnings aktivitet**
+
+- **Inloggnings händelse från en okänd plats som leder till kryptografi-utvinnings aktivitet**
+
+- **Inloggnings händelse från en infekterad enhet som leder till kryptografi-utvinnings aktivitet**
+
+- **Inloggnings händelse från en anonym IP-adress som leder till kryptografi-utvinnings aktivitet**
+
+- **Inloggnings händelse från användare med läckta autentiseringsuppgifter som leder till kryptografi-utvinnings aktivitet**
 
 ## <a name="data-exfiltration"></a>Dataexfiltrering
 
@@ -368,6 +432,26 @@ Det här scenariot är för närvarande en **offentlig för hands version**.
 **Data anslutnings källor:** Microsoft Defender för slut punkt (tidigare MDATP), Palo-nätverk 
 
 **Beskrivning:** Fusions incidenter av den här typen indikerar att WMI-kommandon (Windows Management Interface) fjärrkördes i ett system, och efter det upptäcktes misstänkt inkommande aktivitet av Palo-nätverks brand väggen. Detta ger en indikation på att en angripare kan ha fått åtkomst till nätverket och försöker flytta senare, eskalera behörigheter och/eller köra skadliga nytto laster. Den här aktiviteten kan vara en legitim användning av WMI, precis som med alla "lever av" mark "-angrepp. Fjärrkörningen av WMI-kommandot följt av misstänkt inkommande brand Väggs aktivitet ökar dock säkerheten för att WMI används på ett skadligt sätt och bör undersökas vidare. I Palo-löpeld-loggar fokuserar Azure Sentinel på [hot loggar](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)och trafiken betraktas som misstänkt när hot tillåts (misstänkta data, filer, överbelastningar, paket, genomsökningar, spionprogram, webb adresser, virus, sårbarheter,-virus, Wildfires). Referera också till den Palo-som motsvarar [hotet/innehålls typen](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) som visas i beskrivningen av fusions incidenten för ytterligare information om aviseringar.
+
+### <a name="suspicious-powershell-command-line-following-suspicious-sign-in"></a>Misstänkt PowerShell-kommandorad efter misstänkt inloggning
+
+**Mitre att&CK taktiker:** Första åtkomst, körning
+
+**Mitre att&CK tekniker:** Giltigt konto (T1078), kommando-och skript tolk (T1059)
+
+**Data anslutnings källor:** Azure Active Directory Identity Protection, Microsoft Defender för slut punkt (tidigare MDATP)
+
+**Beskrivning:** Fusions incidenter av den här typen indikerar att en användare körde PowerShell-kommandon som kan vara skadliga efter en misstänkt inloggning till ett Azure AD-konto. Detta ger en hög exakthet-indikation om att kontot som anges i aviserings beskrivningen har komprometterats och ytterligare skadliga åtgärder vidtogs. Angripare utnyttjar ofta PowerShell för att köra skadliga nytto laster i minnet utan att lämna artefakter på disken, för att undvika identifiering av diskbaserade säkerhetsmekanismer som virus skannrar. Permutationerna för misstänkta Azure AD-inloggningsnamn med aviseringen om misstänkt PowerShell-kommando är:
+
+- **Omöjlig resa till ovanlig-platser som leder till misstänkt PowerShell-kommandorad**
+
+- **Inloggnings händelse från en okänd plats som leder till misstänkt PowerShell-kommandorad**
+
+- **Inloggnings händelse från en infekterad enhet som leder till misstänkt PowerShell-kommandorad**
+
+- **Inloggnings händelse från en anonym IP-adress som leder till misstänkt PowerShell-kommandorad**
+
+- **Inloggnings händelse från användare med läckta autentiseringsuppgifter som leder till misstänkt PowerShell-kommandorad**
 
 ## <a name="malware-c2-or-download"></a>C2 eller hämtning av skadlig kod
 

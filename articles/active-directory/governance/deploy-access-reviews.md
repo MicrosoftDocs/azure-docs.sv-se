@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 08/14/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f3e825f908ffe475b05a5e6748d9505e7283b50
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a2e670525840b801df874e3f8dcbdbadc0955a12
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362707"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746311"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Planera distribution av Azure Active Directory åtkomst granskningar
 
@@ -246,7 +246,7 @@ Om du vill skapa en princip för åtkomst granskning måste du ha följande info
 | **Resurser att granska**| Åtkomst till Microsoft Dynamics |
 | **Gransknings frekvens**| Varje månad |
 | **Som utför granskning**| Program hanterare för Dynamics Business Group |
-| **Meddelande**| E-post 24 timmar innan granskning till alias Dynamics-Pms<p>Ta med att uppmuntra anpassade meddelanden till granskare för att skydda sina köp |
+| **Indikering**| E-post 24 timmar innan granskning till alias Dynamics-Pms<p>Ta med att uppmuntra anpassade meddelanden till granskare för att skydda sina köp |
 | **Tidslinje**| 48 timmar från meddelande |
 |**Automatiska åtgärder**| Ta bort åtkomst från alla konton som inte har någon interaktiv inloggning inom 90 dagar genom att ta bort användaren från säkerhets gruppen Dynamics-Access. <p>*Utför åtgärder om de inte granskas inom tids linjen.* |
 | **Manuella åtgärder**| Granskare kan utföra borttagnings godkännande innan den automatiserade åtgärden om det behövs. |

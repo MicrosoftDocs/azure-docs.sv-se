@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 302f1a081ca44cf6436f2c318b03e227f6640489
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1bbc3b3cd755aabd348a238ad65cda132b9a7547
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001974"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746617"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Använda Spark & Hive-verktyg för Visual Studio Code
 
@@ -63,7 +63,7 @@ Följ dessa steg om du vill öppna en arbetsmapp och skapa en fil i Visual Studi
 
 För en nationell moln användare följer du de här stegen för att konfigurera Azure-miljön först och använder sedan kommandot **Azure: Sign in** för att logga in på Azure:
 
-1. Gå till inställningar för **fil**  >  **Inställningar**  >  **Settings**.
+1. Gå till inställningar för **fil**  >  **Inställningar**  >  .
 2. Sök efter följande sträng: **Azure: Cloud**.
 3. Välj det nationella molnet i listan:
 
@@ -211,29 +211,31 @@ Använd det interaktiva kommandot PySpark för att skicka frågorna enligt följ
 
    ![pyspark har installerats](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
 
-7. I meny raden navigerar du till **Visa**  >  **kommando paletten...** eller använder tangenterna **Shift + Ctrl + P** och anger **python: Välj tolk för att starta Jupyter-servern**.
+7. Använd kommando tolken för att köra **pip install numpy = = 1.19.3** och Läs sedan in VSCode-fönstret igen.
+
+8. I meny raden navigerar du till **Visa**  >  **kommando paletten...** eller använder tangenterna **Shift + Ctrl + P** och anger **python: Välj tolk för att starta Jupyter-servern**.
 
    ![Välj tolken för att starta Jupyter-servern](./media/hdinsight-for-vscode/select-interpreter-to-start-jupyter-server.png)
 
-8. Välj alternativet python nedan.
+9. Välj alternativet python nedan.
 
    ![Välj alternativet nedan](./media/hdinsight-for-vscode/choose-the-below-option.png)
     
-9. I meny raden navigerar du till **Visa**  >  **kommando paletten...** eller använder tangenterna **Shift + Ctrl + P** och anger **utvecklare: Läs in fönstret på nytt**.
+10. I meny raden navigerar du till **Visa**  >  **kommando paletten...** eller använder tangenterna **Shift + Ctrl + P** och anger **utvecklare: Läs in fönstret på nytt**.
 
-   ![Läs in fönstret igen](./media/hdinsight-for-vscode/reload-window.png)
+    ![Läs in fönstret igen](./media/hdinsight-for-vscode/reload-window.png)
 
-10. [Anslut](#connect-to-an-azure-account) till ditt Azure-konto eller länka ett kluster om du inte redan har gjort det.
+11. [Anslut](#connect-to-an-azure-account) till ditt Azure-konto eller länka ett kluster om du inte redan har gjort det.
 
-11. Markera all kod, högerklicka på skript redigeraren och välj **Spark: PySpark Interactive/Synapse: PySpark Interactive** för att skicka frågan. 
+12. Markera all kod, högerklicka på skript redigeraren och välj **Spark: PySpark Interactive/Synapse: PySpark Interactive** för att skicka frågan. 
 
     ![pyspark interaktiv snabb meny](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
 
-12. Välj klustret, om du inte har angett ett standard kluster. Efter en liten stund visas det **interaktiva python** -resultatet på en ny flik. Klicka på PySpark för att växla kernel till **PySpark/Synapse PySpark** och koden kommer att köras. Om du vill växla till Synapse Pyspark-kärnan, så uppmuntras det att inaktivera automatiska inställningar i Azure Portal. Annars kan det ta lång tid att aktivera klustret och ställa in Synapse-kärnan för första gången den används. Om verktygen också låter dig skicka in ett kodblock i stället för hela skript filen med hjälp av snabb menyn:
+13. Välj klustret, om du inte har angett ett standard kluster. Efter en liten stund visas det **interaktiva python** -resultatet på en ny flik. Klicka på PySpark för att växla kernel till **PySpark/Synapse PySpark** och koden kommer att köras. Om du vill växla till Synapse Pyspark-kärnan, så uppmuntras det att inaktivera automatiska inställningar i Azure Portal. Annars kan det ta lång tid att aktivera klustret och ställa in Synapse-kärnan för första gången den används. Om verktygen också låter dig skicka in ett kodblock i stället för hela skript filen med hjälp av snabb menyn:
 
     ![pyspark interaktiva python-fönster](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
 
-13. Ange **%% info** och tryck sedan på SKIFT + RETUR för att visa jobb informationen (valfritt):
+14. Ange **%% info** och tryck sedan på SKIFT + RETUR för att visa jobb informationen (valfritt):
 
     ![pyspark interaktiva Visa jobb information](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
 
@@ -266,7 +268,8 @@ Verktyget stöder även **Spark SQL** -fr åga:
 
 
 > [!NOTE]
-> MS-python >= 2020.5.78807-versionen stöds inte för den här omfattningen är ett [känt problem](#known-issues).
+>
+> ["MS-python >= 2020.5.78807-versionen stöds inte för den här omfattningen](#issues-changed) har lösts. Den senaste MS-python-versionen kan användas för tillfället.
 
 ## <a name="submit-pyspark-batch-job"></a>Skicka PySpark batch job
 
@@ -329,7 +332,7 @@ För att köra ett PySpark batch-jobb kan du följa de normala stegen för att s
 
 ### <a name="method-1"></a>Metod 1  
 
-1. I meny raden navigerar du till inställningar för **fil**  >  **Inställningar**  >  **Settings**.
+1. I meny raden navigerar du till inställningar för **fil**  >  **Inställningar**  >  .
 2. I rutan **Sök inställningar** anger du **insändningen av HDInsight-jobb: livy conf**.  
 3. Välj **Redigera i settings.jspå** för det relevanta Sök resultatet.
 
@@ -350,7 +353,7 @@ Skicka in en fil och Lägg märke till att `.vscode` mappen automatiskt läggs t
   
   **Brödtext i begäran**
 
-  | name | beskrivning | typ |
+  | name | description | typ |
   | --- | --- | --- |
   | file | Fil som innehåller det program som ska köras | Sökväg (obligatoriskt) |
   | proxyUser | Användare som ska personifieras när jobbet körs | Sträng |
@@ -371,7 +374,7 @@ Skicka in en fil och Lägg märke till att `.vscode` mappen automatiskt läggs t
 
   **Svars text** Det skapade batch-objektet.
 
-  | name | beskrivning | typ |
+  | name | description | typ |
   | --- | ---| --- |
   | ID | Sessions-ID | Int |
   | appId | Programmets ID för den här sessionen | Sträng |
@@ -486,13 +489,10 @@ Skicka ett jobb till ett HDInsight-kluster med hjälp av Data Lake Storage Gen2.
 
 I meny raden går du till **Visa**  >  **kommando-palett** och anger sedan **Azure: Logga ut**.
 
-## <a name="known-issues"></a>Kända problem
+## <a name="issues-changed"></a>Problem har ändrats
 
-### <a name="ms-python-2020578807-version-is-not-supported-on-this-extention"></a>MS-python >= 2020.5.78807-versionen stöds inte för den här omfattningen 
+För det här problemet är "MS-python >= 2020.5.78807-versionen inte stöd för den här omfattningen" löst. den **senaste MS-python-versionen** kan nu användas för tillfället.
 
-"Det gick inte att ansluta till Jupyter Notebook." är ett känt problem för python-version >= 2020.5.78807. Vi rekommenderar att användarna använder **[2020.4.76186](https://github.com/microsoft/vscode-python/releases/download/2020.4.76186/ms-python-release.vsix)** -versionen av MS-python för att undvika det här problemet.
-
-![kända problem](./media/hdinsight-for-vscode/known-issue.png)
 
 ## <a name="next-steps"></a>Nästa steg
 

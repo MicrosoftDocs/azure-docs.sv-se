@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89d6379f3fa41036836288ed5c75fbdaad0031da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af9921510ba11ab1bd7d0664b2c4c19e042864d3
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88783831"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746651"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Arkivera loggar och rapportera om hantering av Azure AD-berättigande i Azure Monitor
 
@@ -44,7 +44,7 @@ Att arkivera Azure AD audit-loggar kräver att du har Azure Monitor i en Azure-p
     ![Fönstret Diagnostikinställningar](./media/entitlement-management-logs-and-reporting/audit-log-diagnostics-settings.png)
 
 
-1. När loggen har skickats till Azure Monitor väljer du **Log Analytics arbets ytor**och väljer den arbets yta som innehåller Azure AD audit-loggarna.
+1. När loggen har skickats till Azure Monitor väljer du **Log Analytics arbets ytor** och väljer den arbets yta som innehåller Azure AD audit-loggarna.
 
 1. Välj **användning och uppskattade kostnader** och klicka på **data kvarhållning**. Ändra skjutreglaget till det antal dagar som du vill behålla data för att uppfylla dina gransknings krav.
 
@@ -54,7 +54,7 @@ Att arkivera Azure AD audit-loggar kräver att du har Azure Monitor i en Azure-p
     
     1. Välj **Azure Active Directory** klicka sedan på **arbets böcker**. 
     
-    1. Expandera avsnittet **Azure Active Directory fel sökning**och klicka på **arkiverade logg datum intervall**. 
+    1. Expandera avsnittet **Azure Active Directory fel sökning** och klicka på **arkiverade logg datum intervall**. 
 
 
 ## <a name="view-events-for-an-access-package"></a>Visa händelser för ett Access-paket  
@@ -128,7 +128,7 @@ Gör så här för att ange roll tilldelningen och skapa en fråga:
 
     ![Lägg till en rolltilldelning](./media/entitlement-management-logs-and-reporting/workspace-set-role-assignment.png)
 
-### <a name="install-azure-powershell-module"></a>Installera Azure PowerShell modul
+### <a name="install-azure-powershell-module"></a>Installera Azure PowerShell-modul
 
 När du har en lämplig roll tilldelning startar du PowerShell och [installerar Azure PowerShell-modulen](/powershell/azure/install-az-ps?view=azps-3.3.0) (om du inte redan har gjort det) genom att skriva:
 
