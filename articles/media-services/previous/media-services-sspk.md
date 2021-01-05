@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: c82fb9764b29119092bf313b2c10f00c983e8c03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdb575d7b3884370e1a53f79f1184d40cd15d270
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710795"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97732401"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Licens för Microsoft &reg; Smooth Streaming client porting kit
 
@@ -133,6 +133,7 @@ Tillfälliga och slutgiltiga SSPK-licenser kan skicka tekniska frågor till [smo
 * KDDI Corporation
 * Megabyte Fame Electronics Co. Limited
 * MIRC elektronik, begränsad
+* MOKA INTERNATIONELLT BEGRÄNSAD
 * Nintendo co., Ltd.
 * ONEPLUS ELECTRONICS (SHENZHEN) CO., LTD.
 * Panasonic Corporation
@@ -153,6 +154,7 @@ Tillfälliga och slutgiltiga SSPK-licenser kan skicka tekniska frågor till [smo
 * Technicolor-leverans tekniker, SAS
 * De främsta Victory-investeringarna, Ltd.
 * UMC Polen SP. z. o.o.
+* Vizio, Inc.
 * ZTE Corporation
 
 ## <a name="media-services-learning-paths"></a>Sökvägar för Media Services-utbildning

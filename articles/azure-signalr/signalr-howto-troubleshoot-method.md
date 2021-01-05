@@ -1,17 +1,17 @@
 ---
 title: Felsöka praxis för Azure SignalR service
 description: Lär dig hur du felsöker problem med anslutning och meddelande leverans
-author: YanJin
+author: yjin81
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: yajin1
-ms.openlocfilehash: 413bb88deac96c1ca12e8a9d25fc9cd16edf4616
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 2e22777b747ae24c3e643cbd43bfdb0604d453a2
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183965"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707664"
 ---
 # <a name="how-to-troubleshoot-connectivity-and-message-delivery-issues"></a>Så här felsöker du problem med anslutning och meddelande leverans
 
@@ -28,6 +28,8 @@ Först måste du kontrol lera från Azure Portal vilka [ServiceMode](./concept-s
 * För `Classic` läge, se [fel sökning i klassiskt läge](#classic_mode_tsg)
 
 <a name="default_mode_tsg"></a>
+
+[Har du problem eller feedback om fel sökningen? Berätta för oss.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="default-mode-troubleshooting"></a>Fel sökning av standard läge
 
@@ -73,6 +75,7 @@ SignalR *Server* underhåller *Server anslutningen* mellan *Server* och *tjänst
 
 Visa nätverks spårning på Server sidan för att ta reda på status koden och fel information varför *Server anslutningen* tappas bort eller avvisas av *tjänsten*, och leta efter rotor saken i [fel söknings guiden](./signalr-howto-troubleshoot-guide.md).
 
+[Har du problem eller feedback om fel sökningen? Berätta för oss.](https://aka.ms/asrs/survey/troubleshooting)
 
 ### <a name="how-to-add-logs"></a>Lägga till loggar
 
@@ -166,6 +169,8 @@ Du kan också [Aktivera diagnostikloggar](./signalr-howto-diagnostic-logs.md) f�
 
 <a name="serverless_mode_tsg"></a>
 
+[Har du problem eller feedback om fel sökningen? Berätta för oss.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="serverless-mode-troubleshooting"></a>Fel sökning av Server lös läge
 
 När **ASRS** är i ett *Server* fritt läge stöder endast **ASP.NET Core signalerer** `Serverless` , och **ASP.net-signaleraren** stöder **inte** det här läget.
@@ -174,11 +179,15 @@ För att diagnostisera anslutnings problem i `Serverless` läget är det vanliga
 
 <a name="classic_mode_tsg"></a>
 
+[Har du problem eller feedback om fel sökningen? Berätta för oss.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="classic-mode-troubleshooting"></a>Fel sökning av klassiskt läge
 
 `Classic` Läget är föråldrat och rekommenderas inte att användas. I det här läget använder Azure SignalR service de anslutna *Server anslutningarna* för att avgöra om den aktuella tjänsten är i `default` läge eller `serverless` läge. Detta kan leda till några mellanliggande klient anslutnings problem, eftersom det är ett plötsligt sätt att ta bort alla anslutna *Server anslutningar*, till exempel på grund av instabilitet i nätverket, att Azure SignalR nu är växlat till `serverless` läge och att klienter som är anslutna under denna period aldrig dirigeras till den värdbaserade program servern. Aktivera [loggar på tjänst sidan](#add_logs_server) och kontrol lera om det finns några klienter som har registrerats som `ServerlessModeEntered` om du har en app-server, men vissa klienter kommer aldrig åt app server-sidan. Om det finns några kan du [avbryta de här klient anslutningarna](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md#API) och låta klienterna starta om kan hjälpa dig.
 
 Fel söknings `classic` läge anslutnings-och meddelande leverans problem liknar [fel sökning av problem med standard läge](#default_mode_tsg).
+
+[Har du problem eller feedback om fel sökningen? Berätta för oss.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="service-health"></a>Service Health:
 
@@ -195,6 +204,8 @@ Du kan kontrol lera hälso-API: t för tjänstens hälsa.
     * Om alla alternativ ovan inte fungerar kan du kontakta oss genom att lägga till nya support förfrågningar i Azure Portal.
 
 Mer om [haveri beredskap](./signalr-concept-disaster-recovery.md).
+
+[Har du problem eller feedback om fel sökningen? Berätta för oss.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="next-steps"></a>Nästa steg
 

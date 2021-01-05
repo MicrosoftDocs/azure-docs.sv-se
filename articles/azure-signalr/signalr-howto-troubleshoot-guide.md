@@ -1,17 +1,17 @@
 ---
 title: Felsökningsguide för Azure SignalR Service
 description: Lär dig hur du felsöker vanliga problem
-author: YanJin
+author: yjin81
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: 55ad9c90129a5d732f377ac1b6c905c14de319dc
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 505176758e1dbba1d6bf262554568edd8a197a4d
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607431"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707681"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Fel söknings guide för Azure SignalR service vanliga problem
 
@@ -63,6 +63,8 @@ services.MapAzureSignalR(GetType().FullName, options =>
             });
 ```
 
+[Har du problem eller feedback om fel sökningen? Berätta för oss.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="tls-12-required"></a>TLS 1,2 krävs
 
 ### <a name="possible-errors"></a>Möjliga fel:
@@ -104,11 +106,15 @@ Lägg till följande kod i Start programmet:
 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 ```
 
+[Har du problem eller feedback om fel sökningen? Berätta för oss.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="400-bad-request-returned-for-client-requests"></a>400 Felaktig begäran returnerades för klient begär Anden
 
 ### <a name="root-cause"></a>Rotorsak
 
 Kontrol lera om din klientbegäran har flera `hub` frågesträngar. `hub` är en konserverad frågeparameter och 400 kommer att utlösa om tjänsten identifierar fler än en `hub` i frågan.
+
+[Har du problem eller feedback om fel sökningen? Berätta för oss.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="401-unauthorized-returned-for-client-requests"></a>401 Behörighet saknas returneras för klientbegäran
 
@@ -128,6 +134,8 @@ För säkerhets problem rekommenderas inte utöka TTL. Vi rekommenderar att du l
 
 Sök [här](#restart_connection) för att starta om klient anslutningar.
 
+[Har du problem eller feedback om fel sökningen? Berätta för oss.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="404-returned-for-client-requests"></a>404 returneras för klientbegäran
 
 För en SignalR beständig anslutning är den först `/negotiate` Azure SignalR-tjänsten och upprättar sedan den riktiga anslutningen till Azure SignalR-tjänsten.
@@ -138,9 +146,13 @@ För en SignalR beständig anslutning är den först `/negotiate` Azure SignalR-
 * Kontrol lera URL: en för begäran när 404 inträffar. Om webb adressen är riktad mot din webbapp, och liknar `{your_web_app}/hubs/{hubName}` , kontrollerar du om klienten `SkipNegotiation` är `true` . När du använder Azure-SignalR tar klienten emot en omdirigerings-URL när den först förhandlas med app-servern. Klienten bör **inte** hoppa över förhandling när Azure-signalerare används.
 * En annan 404 kan inträffa när anslutningsbegäran hanteras mer än **5** sekunder efter att det `/negotiate` har anropats. Kontrol lera tidsstämpeln för klientbegäran och öppna ett problem till oss om begäran till tjänsten har ett långsamt svar.
 
+[Har du problem eller feedback om fel sökningen? Berätta för oss.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="404-returned-for-aspnet-signalrs-reconnect-request"></a>404 returnerade begäran om åter anslutning av ASP.NET SignalR
 
 När [klient anslutningen](#client_connection_drop)går ur ASP.net SignalR, återansluter den igen med samma `connectionId` tre gånger innan anslutningen stoppas. `/reconnect` kan hjälpa dig om anslutningen bryts på grund av tillfälliga nätverks problem som `/reconnect` kan återupprätta den beständiga anslutningen. Under andra omständigheter släpps klient anslutningen till exempel på grund av att den omdirigerade Server anslutningen har släppts, eller så har signal tjänsten några interna fel som instansen för omstart/redundansväxling/distribution, anslutningen inte längre finns, så `/reconnect` returneras `404` . Det är det förväntade beteendet för `/reconnect` och efter tre gånger försöker anslutningen stoppas. Vi rekommenderar att du har en logik för att [starta om anslutningen](#restart_connection) när anslutningen stoppas.
+
+[Har du problem eller feedback om fel sökningen? Berätta för oss.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="429-too-many-requests-returned-for-client-requests"></a>429 (för många begär Anden) returnerades för klient begär Anden
 
@@ -155,6 +167,8 @@ Anslutningarna omfattar både klient-och Server anslutningar. Sök [efter](./sig
 ### <a name="too-many-negotiate-requests-at-the-same-time"></a>För många Negotiate-begäranden på samma tidpunkt.
 
 Vi rekommenderar att du har en slumpmässig fördröjning innan du [ansluter igen.](#restart_connection) Sök efter försök igen.
+
+[Har du problem eller feedback om fel sökningen? Berätta för oss.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>500 fel vid Negotiate: Azure SignalR-tjänsten är inte ansluten ännu, försök igen senare.
 
@@ -215,6 +229,8 @@ När du använder SDK-version >= `1.0.0` kan du aktivera spår genom att lägga 
 
 <a name="client_connection_drop"></a>
 
+[Har du problem eller feedback om fel sökningen? Berätta för oss.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="client-connection-drops"></a>Klient anslutning tappas
 
 När klienten är ansluten till Azure-Signaleraren kan den permanenta anslutningen mellan klienten och Azure-signaler ibland släppas av olika orsaker. I det här avsnittet beskrivs flera möjligheter som gör att den här anslutningen släpps och ger viss vägledning om hur du identifierar rotor saken.
@@ -240,6 +256,7 @@ Klient anslutningar kan släppas under olika omständigheter:
 2. Kontrol lera händelse loggen för App Server-sidan för att se om App Server har startats om
 3. Skapa ett problem för att tillhandahålla tids ramen och skicka e-post till resurs namnet till oss
 
+[Har du problem eller feedback om fel sökningen? Berätta för oss.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="client-connection-increases-constantly"></a>Klient anslutning ökar ständigt
 
@@ -295,6 +312,8 @@ Det här problemet uppstår ofta när någon upprättar signal klient anslutning
 
 <a name="server_connection_drop"></a>
 
+[Har du problem eller feedback om fel sökningen? Berätta för oss.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="server-connection-drops"></a>Server anslutning tappas
 
 När app server startar i bakgrunden börjar Azure SDK initiera Server anslutningar till Azure-fjärrsignaler. Som beskrivs i [interna Azure SignalR-tjänsten](https://github.com/Azure/azure-signalr/blob/dev/docs/internal.md)dirigerar Azure-signaler inkommande klient trafik till dessa Server anslutningar. När en server anslutning har släppts stängs alla klient anslutningar som den fungerar.
@@ -320,6 +339,8 @@ Server-tjänst anslutning har stängts av **ASRS**(**en** zure **s** ignal **R**
 1. Öppna App Server-Side log för att se om något onormalt ägt rum
 2. Kontrol lera händelse loggen för App Server-sidan för att se om App Server har startats om
 3. Skapa ett problem för att tillhandahålla tids ramen och skicka e-post till resurs namnet till oss
+
+[Har du problem eller feedback om fel sökningen? Berätta för oss.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="tips"></a>Tips
 
@@ -352,6 +373,8 @@ Ta ASP.NET Core ett till exempel (ASP.NET One liknar):
     * [ASP.NET C#-klient](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.CSharpClient/Program.cs#L78)
 
     * [ASP.NET JavaScript-klient](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.JavaScriptClient/wwwroot/index.html#L71)
+
+[Har du problem eller feedback om fel sökningen? Berätta för oss.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="next-steps"></a>Nästa steg
 

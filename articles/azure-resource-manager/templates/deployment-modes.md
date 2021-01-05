@@ -3,12 +3,12 @@ title: Distributionsmodeller
 description: Beskriver hur du anger om du vill använda ett fullständigt eller stegvis distributions läge med Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: bc499be4185905af7eaf71b3515895de9bee46d3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 45eee255cec06925095ed0696c669b5c205f8b56
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184050"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724416"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Distributionslägen för Azure Resource Manager
 
@@ -33,7 +33,7 @@ Om du distribuerar till [fler än en resurs grupp i en mall](./deploy-to-resourc
 
 Det finns vissa skillnader i hur resurs typer hanterar fullständigt läge borttagningar. Överordnade resurser tas bort automatiskt när de inte finns i en mall som distribueras i fullständigt läge. Vissa underordnade resurser tas inte bort automatiskt när de inte finns i mallen. De underordnade resurserna tas dock bort om den överordnade resursen tas bort.
 
-Om din resurs grupp till exempel innehåller en DNS-zon (Microsoft. Network/dnsZones Resource Type) och en CNAME-post (Microsoft. Network/dnsZones/CNAME resurs typ), är DNS-zonen den överordnade resursen för CNAME-posten. Om du distribuerar med slutfört läge och inte inkluderar DNS-zonen i din mall, raderas DNS-zonen och CNAME-posten båda. Om du inkluderar DNS-zonen i mallen men inte tar med CNAME-posten, raderas inte CNAME.
+Om din resurs grupp till exempel innehåller en DNS-zon ( `Microsoft.Network/dnsZones` resurs typ) och en CNAME-post ( `Microsoft.Network/dnsZones/CNAME` resurs typ) är DNS-zonen den överordnade RESURSEN för CNAME-posten. Om du distribuerar med slutfört läge och inte inkluderar DNS-zonen i din mall, raderas DNS-zonen och CNAME-posten båda. Om du inkluderar DNS-zonen i mallen men inte tar med CNAME-posten, raderas inte CNAME.
 
 En lista över hur resurs typer hanterar borttagning finns i [ta bort Azure-resurser för fullständiga läges distributioner](complete-mode-deletion.md).
 
@@ -113,19 +113,19 @@ I följande exempel visas en länkad mall som är inställd på stegvis distribu
 ```json
 "resources": [
   {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "linkedTemplate",
-      "properties": {
-          "mode": "Incremental",
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2017-05-10",
+    "name": "linkedTemplate",
+    "properties": {
+      "mode": "Incremental",
           <nested-template-or-external-template>
-      }
+    }
   }
 ]
 ```
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Information om hur du skapar Resource Manager-mallar finns i [redigera Azure Resource Manager mallar](template-syntax.md).
-* Mer information om hur du distribuerar resurser finns i [distribuera ett program med Azure Resource Manager-mall](deploy-powershell.md).
+* Information om hur du skapar Resource Manager-mallar finns i [förstå strukturen och syntaxen för ARM-mallar](template-syntax.md).
+* Information om hur du distribuerar resurser finns i [distribuera resurser med ARM-mallar och Azure PowerShell](deploy-powershell.md).
 * Information om hur du visar åtgärder för en resurs leverantör finns i [Azure REST API](/rest/api/).

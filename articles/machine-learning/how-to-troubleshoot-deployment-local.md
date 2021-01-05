@@ -1,7 +1,7 @@
 ---
-title: Felsöka webb tjänst distribution lokalt
+title: Felsöka distribution av lokal modell
 titleSuffix: Azure Machine Learning
-description: Lär dig hur du arbetar runt, löser och felsöker vanliga Azure Machine Learning Docker distributions fel lokalt.
+description: Testa en lokal modell distribution som ett första steg i fel sökning av modell distributions fel.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 01a5f600acf9542c5adabcdf2523a42ca44233af
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: a879a81ae2bcb4e659c69a801f7c299c10ab3d77
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680498"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740648"
 ---
-# <a name="troubleshoot-model-deployment-locally"></a>Felsöka modell distribution lokalt
+# <a name="troubleshooting-with-a-local-model-deployment"></a>Fel sökning med en lokal modell distribution
 
-Lär dig att felsöka och lösa eller kringgå, vanliga Azure Machine Learning Docker webb tjänst distributions fel lokalt.
+Testa en lokal modell distribution som ett första steg i fel sökning av distribution till Azure Container Instances (ACI) eller Azure Kubernetes service (AKS).  Med hjälp av en lokal webb tjänst blir det enklare att hitta och åtgärda vanliga Azure Machine Learning distributions fel i Docker-webbtjänsten.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -33,8 +33,6 @@ Lär dig att felsöka och lösa eller kringgå, vanliga Azure Machine Learning D
     Verifiera din Docker-installation genom att använda kommandot `docker run hello-world` från en terminal eller kommando tolk. Information om hur du installerar Docker eller felsöker Docker-fel finns i [Docker-dokumentationen](https://docs.docker.com/).
 
 ## <a name="debug-locally"></a>Felsök lokalt
-
-Om du har problem när du distribuerar en modell till ACI eller AKS kan du distribuera den som en lokal webb tjänst. Med en lokal webbtjänst blir det enklare att felsöka problem.
 
 Du hittar ett exempel på en [lokal distributions antecknings bok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb) i  [MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks) -lagrings platsen för att utforska ett körbara-exempel.
 

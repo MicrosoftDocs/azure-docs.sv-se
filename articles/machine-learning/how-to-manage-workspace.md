@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 4425fdf488665ad555c73c59682041cb23a9ca66
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3fca8e74112b90b3cac70adaa955bbf242999705
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447324"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739594"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Skapa och hantera Azure Machine Learning arbets ytor 
 
@@ -25,12 +25,14 @@ När du behöver ändra eller krav på Automation-höjning kan du också skapa o
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* En Azure-prenumeration. Om du inte har en Azure-prenumeration kan du skapa ett kostnadsfritt konto  innan du börjar. Prova den [kostnads fria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree) idag.
+* En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar. Prova den [kostnads fria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree) idag.
 * Om du använder python SDK [installerar du SDK: n](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
 
 ## <a name="limitations"></a>Begränsningar
 
 [!INCLUDE [register-namespace](../../includes/machine-learning-register-namespace.md)]
+
+När du skapar en arbets yta skapas också en Azure Container Registry (ACR) som standard.  Eftersom ACR för närvarande inte stöder Unicode-tecken i resurs grupp namn använder du en resurs grupp som inte innehåller dessa tecken.
 
 ## <a name="create-a-workspace"></a>Skapa en arbetsyta
 
@@ -154,6 +156,8 @@ Om du har problem med att komma åt din prenumeration kan du läsa [Konfigurera 
  1. Om du vill visa den nya arbets ytan väljer du **gå till resurs**.
  
 ---
+
+
 
 ### <a name="networking"></a>Nätverk  
 
@@ -368,6 +372,16 @@ I [Azure Portal](https://portal.azure.com/)väljer du **ta bort**  överst i arb
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
 ## <a name="troubleshooting"></a>Felsökning
+
+* **Webbläsare som stöds i Azure Machine Learning Studio**: Vi rekommenderar att du använder den senaste aktuella webbläsaren som är kompatibel med ditt operativ system. Följande webbläsare stöds:
+  * Microsoft Edge (den nya Microsoft Edge, senaste versionen. Inte Microsoft Edge Legacy)
+  * Safari (senaste versionen, endast Mac)
+  * Chrome (senaste versionen)
+  * Firefox (senaste versionen)
+
+* **Azure Portal**: 
+  * Om du går direkt till din arbets yta från en resurs länk från SDK eller Azure Portal kan du inte Visa standard **översikts** sidan med prenumerations information i tillägget. I det här scenariot kan du inte heller byta till en annan arbets yta. Om du vill visa en annan arbets yta går du direkt till [Azure Machine Learning Studio](https://ml.azure.com) och söker efter namnet på arbets ytan.
+  * Alla till gångar (data uppsättningar, experiment, beräkningar och så vidare) är bara tillgängliga i [Azure Machine Learning Studio](https://ml.azure.com). De är *inte* tillgängliga från Azure Portal.
 
 ### <a name="resource-provider-errors"></a>Resurs leverantörs fel
 

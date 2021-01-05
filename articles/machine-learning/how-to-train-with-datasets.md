@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: b6ec9d7035194efc471fc06befad9822c8684a5d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 8b95c5a45992c895713e0be056856172b14b830d
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685587"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740682"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Träna med data uppsättningar i Azure Machine Learning
 
@@ -26,7 +26,7 @@ I den här artikeln får du lära dig hur du arbetar med [Azure Machine Learning
 
 Azure Machine Learning data uppsättningar ger en sömlös integrering med Azure Machine Learning inlärnings funktioner som [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py), [HyperDrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py) och [Azure Machine Learning pipelines](how-to-create-your-first-pipeline.md).
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 För att skapa och träna med data uppsättningar behöver du:
 
@@ -220,6 +220,7 @@ print(os.listdir(mounted_path))
 print (mounted_path)
 ```
 
+
 ## <a name="directly-access-datasets-in-your-script"></a>Direkt åtkomst till data uppsättningar i skriptet
 
 Registrerade data uppsättningar kan nås både lokalt och via fjärr anslutning på beräknings kluster som Azure Machine Learning Compute. Använd följande kod för att komma åt din arbets yta och registrerad data uppsättning efter namn för att få åtkomst till din registrerade data uppsättning över experiment. Som standard [`get_by_name()`](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) returnerar metoden i `Dataset` klassen den senaste versionen av data uppsättningen som är registrerad på arbets ytan.
@@ -255,7 +256,34 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 ## <a name="notebook-examples"></a>Exempel på bärbara datorer
 
 + [Antecknings böckerna för data uppsättningen](https://aka.ms/dataset-tutorial) demonstrerar och utökar koncepten i den här artikeln.
-+ Se hur du [parametize data uppsättningar i dina ml-pipeliner](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb).
++ Se hur du [parametrize data uppsättningar i dina ml-pipeliner](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb).
+
+## <a name="troubleshooting"></a>Felsökning
+
+* **Det gick inte att initiera data uppsättningen: väntar på att en tids gräns för monterings punkten skulle bli klar**: 
+  * Om du inte har några utgående regler för [nätverks säkerhets grupper](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview) och använder `azureml-sdk>=1.12.0` , uppdatera `azureml-dataset-runtime` och dess beroenden som de senaste för den speciella del versionen, eller om du använder den i en körning, måste du återskapa din miljö så att den kan ha den senaste korrigeringen med korrigeringen. 
+  * Om du använder `azureml-sdk<1.12.0` uppgraderar du till den senaste versionen.
+  * Om du har utgående NSG-regler kontrollerar du att det finns en utgående regel som tillåter all trafik för tjänst tag gen `AzureResourceMonitor` .
+
+### <a name="overloaded-azurefile-storage"></a>Överlagrad AzureFile-lagring
+
+Använd följande lösningar om du får ett fel meddelande `Unable to upload project files to working directory in AzureFile because the storage is overloaded` .
+
+Om du använder fil resurs för andra arbets belastningar, till exempel data överföring, är rekommendationen att använda blobbar så att fil resursen är kostnads fri att användas för att skicka körningar. Du kan också dela upp arbets belastningen mellan två olika arbets ytor.
+
+### <a name="passing-data-as-input"></a>Skicka data som indata
+
+*  **TypeError: FileNotFound: det finns ingen sådan fil eller katalog**: det här felet uppstår om fil Sök vägen som du anger inte är den plats där filen finns. Du måste kontrol lera att det sätt som du refererar till filen är konsekvent med var du monterade data uppsättningen på beräknings målet. För att säkerställa ett deterministiskt tillstånd rekommenderar vi att du använder den abstrakta sökvägen när du monterar en data uppsättning till ett beräknings mål. I följande kod monterar du till exempel data uppsättningen under roten i fil systemet för beräknings målet `/tmp` . 
+    
+    ```python
+    # Note the leading / in '/tmp/dataset'
+    script_params = {
+        '--data-folder': dset.as_named_input('dogscats_train').as_mount('/tmp/dataset'),
+    } 
+    ```
+
+    Om du inte tar med det inledande snedstrecket "/" måste du ange prefix för arbets katalogen t. ex. `/mnt/batch/.../tmp/dataset` på beräknings målet för att ange var du vill att data uppsättningen ska monteras.
+
 
 ## <a name="next-steps"></a>Nästa steg
 

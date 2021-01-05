@@ -6,12 +6,12 @@ ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: a85619b4947808ba1c13df3c1543102eea7273fd
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: e8d0dcae81944d5799841c22093585b942934b79
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853940"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97732112"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Använd Azure Private Link för att ansluta nätverk till Azure Monitor på ett säkert sätt
 
@@ -188,9 +188,9 @@ Om du vill tillåta att Log Analytics agent laddar ned lösnings paket lägger d
 
 | Moln miljö | Agentresurs | Portar | Riktning |
 |:--|:--|:--|:--|
-|Azure, offentlig     | scadvisorcontent.blob.core.windows.net         | 443 | Outbound (Utgående)
-|Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Outbound (Utgående)
-|Azure Kina 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Outbound (Utgående)
+|Azure, offentlig     | scadvisorcontent.blob.core.windows.net         | 443 | Utgående
+|Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Utgående
+|Azure Kina 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Utgående
 
 ## <a name="configure-application-insights"></a>Konfigurera Application Insights
 
@@ -215,9 +215,9 @@ Att begränsa åtkomsten på det här sättet gäller endast för data i Applica
 
 ## <a name="use-apis-and-command-line"></a>Använda API: er och kommando rad
 
-Du kan automatisera processen som beskrivs tidigare med Azure Resource Manager mallar och kommando rads gränssnitt.
+Du kan automatisera processen som beskrivs tidigare med Azure Resource Manager mallar, REST-och kommando rads gränssnitt.
 
-Om du vill skapa och hantera privata länk omfattningar använder du [AZ Monitor Private-Link-scope](/cli/azure/monitor/private-link-scope?view=azure-cli-latest). Med det här kommandot kan du skapa omfattningar, associera Log Analytics arbets ytor och Application Insights komponenter och lägga till/ta bort/godkänna privata slut punkter.
+Om du vill skapa och hantera privata länk omfattningar använder du [REST API](https://docs.microsoft.com/rest/api/monitor/private%20link%20scopes%20(preview)) eller [Azure CLI (AZ Monitor Private-Link-scope)](/cli/azure/monitor/private-link-scope?view=azure-cli-latest).
 
 Om du vill hantera nätverks åtkomst använder du flaggorna `[--ingestion-access {Disabled, Enabled}]` och `[--query-access {Disabled, Enabled}]` på [Log Analytics arbets ytor](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest) eller [Application Insights komponenter](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest).
 

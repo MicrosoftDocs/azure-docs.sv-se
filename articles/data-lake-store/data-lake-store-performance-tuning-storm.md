@@ -1,23 +1,23 @@
 ---
 title: Prestanda justering – Storm med Azure Data Lake Storage Gen1
 description: Förstå faktorerna som bör beaktas när du justerar prestanda för en Azure Storm-topologi, inklusive fel sökning av vanliga problem.
-author: stewu
+author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
-ms.author: stewu
-ms.openlocfilehash: 68f30079d85e2064b92718c65b38dbb5069d810b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.author: twooley
+ms.openlocfilehash: 95619c75d332ec1bf68af97fc3dddbc67b6706ed
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101655"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97725045"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Prestanda justerings vägledning för storm på HDInsight och Azure Data Lake Storage Gen1
 
 Förstå faktorerna som bör övervägas när du justerar prestandan för en Azure Storm-topologi. Det är till exempel viktigt att förstå egenskaperna hos det arbete som utförs av kanaler och bultarna (oavsett om arbetet är I/O eller minnes krävande). Den här artikeln beskriver ett antal rikt linjer för prestanda justering, inklusive fel sökning av vanliga problem.
 
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 * **En Azure-prenumeration**. Se [Hämta en kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Ett Azure Data Lake Storage gen1 konto**. Instruktioner för hur du skapar ett finns i [Kom igång med Azure Data Lake Storage gen1](data-lake-store-get-started-portal.md).
@@ -126,7 +126,7 @@ Om du når gränserna för bandbredden som tillhandahålls av Data Lake Storage 
 
 Om du vill kontrol lera om du får en begränsning aktiverar du fel söknings loggning på klient sidan:
 
-1. I **Ambari**  >  **Storm**  >  **config**  >  **Advanced Storm-Work-log4j**, ändra ** &lt; rot nivå = "info" &gt; ** till ** &lt; rotnivån = "debug" &gt; **. Starta om alla noder/tjänster för att konfigurationen ska börja gälla.
+1. I **Ambari**  >  **Storm**  >  **config**  >  **Advanced Storm-Work-log4j**, ändra **&lt; rot nivå = "info" &gt;** till **&lt; rotnivån = "debug" &gt;**. Starta om alla noder/tjänster för att konfigurationen ska börja gälla.
 2. Övervaka loggfilerna för Storm-topologin på arbetsnoder (under/var/log/Storm/Worker-Artifacts/ &lt; TopologyName &gt; / &lt; port &gt; /Worker.log) för data Lake Storage gen1 begränsnings undantag.
 
 ## <a name="next-steps"></a>Nästa steg

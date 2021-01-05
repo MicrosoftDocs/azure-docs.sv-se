@@ -1,7 +1,7 @@
 ---
-title: Felsöka fjärrdistribution av webb tjänster
+title: Felsöka distribution av fjärrmodell
 titleSuffix: Azure Machine Learning
-description: Lär dig hur du arbetar runt, löser och felsöker vanliga Docker-distributions fel med Azure Kubernetes service och Azure Container Instances.
+description: Lär dig hur du arbetar runt, löser och felsöker några vanliga Docker-distributions fel med Azure Kubernetes-tjänsten och Azure Container Instances.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.reviewer: jmartens
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 92cd70e864ae0490ce3f9e7435d9518241f93c8e
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 4224e301d6410fc97da1f98cd0dd9577c6341cd3
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031512"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740631"
 ---
-# <a name="troubleshoot-model-deployment"></a>Felsöka modell distribution
+# <a name="troubleshooting-remote-model-deployment"></a>Felsöka distribution av fjärrmodell 
 
-Lär dig att felsöka och lösa eller kringgå, vanliga fjärrdocker distributions fel med Azure Container Instances (ACI) och Azure Kubernetes service (AKS) med Azure Machine Learning.
+Lär dig att felsöka och lösa eller kringgå vanliga fel som kan uppstå när du distribuerar en modell till Azure Container Instances (ACI) och Azure Kubernetes service (AKS) med Azure Machine Learning.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -177,6 +177,16 @@ Mer information om hur du ställer in `autoscale_target_utilization` , `autoscal
 En status kod för 504 visar att tids gränsen för begäran har uppnåtts. Standardvärdet för timeout är 1 minut.
 
 Du kan öka tids gränsen eller försöka påskynda tjänsten genom att ändra score.py för att ta bort onödiga anrop. Om de här åtgärderna inte löser problemet kan du använda informationen i den här artikeln för att felsöka score.py-filen. Koden kan vara i ett tillstånd som inte svarar eller en oändlig loop.
+
+## <a name="other-error-messages"></a>Andra fel meddelanden
+
+Utför följande åtgärder för följande fel:
+
+|Fel  | Lösning  |
+|---------|---------|
+|Bild skapande problem vid distribution av webb tjänst     |  Lägg till "pynacl = = 1.2.1" som ett pip-beroende till Conda-filen för avbildnings konfiguration       |
+|`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   Ändra SKU: n för virtuella datorer som används i distributionen till en som har mer minne. |
+|FPGA-problem     |  Du kommer inte att kunna distribuera modeller på FPGAs förrän du har begärt och godkänts för FPGA-kvoten. Om du vill begära åtkomst fyller du i formuläret kvot förfrågan: https://aka.ms/aml-real-time-ai       |
 
 ## <a name="advanced-debugging"></a>Avancerad fel sökning
 

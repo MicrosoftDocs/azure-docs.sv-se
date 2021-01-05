@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: 14ecb30af11bf750c90e45c3fb6b443d861a1445
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13535a82f8aca741a1e25755e5a2d971ce45514e
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400763"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739305"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Principer för tjänstslutpunkt för virtuellt nätverk för Azure Storage
 
@@ -122,7 +122,7 @@ Virtuella nätverk och Azure Storage konton kan vara i samma eller olika prenume
 - Virtuella nätverk måste finnas i samma region som tjänstslutpunktsprincipen.
 - Du kan bara använda tjänstslutpunktsprincipen i ett undernät om tjänstslutpunkterna har konfigurerats för de Azure-tjänster som anges i principen.
 - Du kan inte använda tjänstslutpunktsprinciper för trafik från ditt lokala nätverk till Azure-tjänster.
-- Azure Managed Services stöder för närvarande inte slut punkts principer. Detta inkluderar hanterade tjänster som distribuerats till delade undernät (t. ex. *Azure HDInsight, Azure Batch, Azure lägger till Azure Application Gateway, Azure-VPN gateway, Azure-brandvägg*) eller till dedikerade undernät (t. ex. *Azure App Service-miljön, Azure Redis Cache, Azure API Management, Azure SQL mi, klassiska hanterade tjänster*).
+- Azure Managed Services stöder för närvarande inte slut punkts principer. Detta inkluderar hanterade tjänster som distribuerats till delade undernät (t. ex. *Azure Batch, Azure lägger till Azure Application Gateway, Azure-VPN gateway, Azure-brandvägg*) eller till dedikerade undernät (t. ex. *Azure App Service-miljön, Azure Redis Cache, Azure API Management, Azure SQL mi, klassiska hanterade tjänster*).
 
  > [!WARNING]
  > Azure-tjänster som distribueras till ditt virtuella nätverk, till exempel Azure HDInsight, kommer åt andra Azure-tjänster såsom Azure Storage för infrastrukturkrav. Om slutpunktsprincipen begränsas till specifika resurser kan det stoppa åtkomsten till dessa infrastrukturresurser för de Azure-tjänster som distribueras i ditt virtuella nätverk.

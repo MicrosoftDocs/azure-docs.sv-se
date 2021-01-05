@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: f221237bee441ec78d726dabf476d1085a27071d
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 0a2439f0ed18cf93691a1d0389e049b1b7993d93
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095312"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97732074"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Använda kund hanterade lagrings konton i Azure Monitor Log Analytics
 
@@ -32,11 +32,11 @@ Data typer som stöds:
 * IIS-loggar
 
 ## <a name="using-private-links"></a>Använda privata länkar
-Kund hanterade lagrings konton krävs i vissa användnings fall när privata länkar används för att ansluta till Azure Monitor resurser. Ett sådant fall är inmatningen av anpassade loggar eller IIS-loggar. De här data typerna laddas först upp som blobbar till ett mellanliggande Azure Storage konto och hämtas bara till en arbets yta. På samma sätt kan vissa Azure Monitor-lösningar använda lagrings konton för att lagra stora filer, till exempel Watson-dumpfiler, som används av Azure Security Center-lösningen. 
+Kund hanterade lagrings konton krävs i vissa användnings fall när privata länkar används för att ansluta till Azure Monitor resurser. Ett sådant fall är inmatningen av anpassade loggar eller IIS-loggar. De här data typerna laddas först upp som blobbar till ett mellanliggande Azure Storage konto och hämtas bara till en arbets yta. På samma sätt kan vissa Azure Monitor-lösningar använda lagrings konton för att lagra stora filer, till exempel Azure Security Center (ASC) som kan behöva ladda upp filer. 
 
 ##### <a name="private-link-scenarios-that-require-a-customer-managed-storage"></a>Privata länk scenarier som kräver en kundhanterad lagring
 * Inmatning av anpassade loggar och IIS-loggar
-* Tillåter ASC-lösning för att samla in Watson-dumpfiler
+* Tillåter ASC-lösning att ladda upp filer
 
 ### <a name="how-to-use-a-customer-managed-storage-account-over-a-private-link"></a>Använda ett kundhanterat lagrings konto via en privat länk
 ##### <a name="workspace-requirements"></a>Krav på arbets yta
@@ -45,13 +45,14 @@ När du ansluter till Azure Monitor via en privat länk kan Log Analytics agente
 För att lagrings kontot ska kunna ansluta till din privata länk måste det:
 * Finnas i ditt VNet eller i ett peer-nätverk och är anslutet till ditt VNet via en privat länk. Detta gör det möjligt för agenter på ditt VNet att skicka loggar till lagrings kontot.
 * Finnas i samma region som arbets ytan som den är länkad till.
-* Tillåt Azure Monitor åtkomst till lagrings kontot. Om du väljer att endast tillåta utvalda nätverk att komma åt ditt lagrings konto bör du även tillåta detta undantag: "Tillåt betrodda Microsoft-tjänster för att få åtkomst till det här lagrings kontot". Detta gör att Log Analytics kan läsa de loggar som matas in på det här lagrings kontot.
+* Tillåt Azure Monitor åtkomst till lagrings kontot. Om du väljer att endast tillåta Välj nätverk att komma åt ditt lagrings konto bör du välja undantaget: "Tillåt betrodda Microsoft-tjänster för att få åtkomst till det här lagrings kontot".
+![Avbildning av lagrings konto förtroende MS Services](./media/private-storage/storage-trust.png)
 * Om din arbets yta även hanterar trafik från andra nätverk bör du konfigurera lagrings kontot så att inkommande trafik kommer från relevanta nätverk/Internet.
 
 ##### <a name="link-your-storage-account-to-a-log-analytics-workspace"></a>Länka ditt lagrings konto till en Log Analytics-arbetsyta
 Du kan länka ditt lagrings konto till arbets ytan via [Azure CLI](/cli/azure/monitor/log-analytics/workspace/linked-storage) eller [REST API](/rest/api/loganalytics/linkedstorageaccounts). Tillämpliga dataSourceType-värden:
 * CustomLogs – om du vill använda lagrings utrymmet för anpassade loggar och IIS-loggar under inmatning.
-* AzureWatson – Använd lagringen för Watson-dumpfiler som laddats upp av ASC-lösningen (Azure Security Center). Mer information om hur du hanterar kvarhållning, ersätter ett länkat lagrings konto och övervakar din lagrings konto aktivitet finns i [Hantera länkade lagrings konton](#managing-linked-storage-accounts). 
+* AzureWatson – Använd lagringen för filer som laddats upp av ASC-lösningen (Azure Security Center). Mer information om hur du hanterar kvarhållning, ersätter ett länkat lagrings konto och övervakar din lagrings konto aktivitet finns i [Hantera länkade lagrings konton](#managing-linked-storage-accounts). 
 
 ## <a name="encrypting-data-with-cmk"></a>Kryptera data med CMK
 Azure Storage krypterar alla data i vila i ett lagrings konto. Som standard krypterar den data med Microsoft-hanterade nycklar (MMK). Azure Storage kan dock i stället använda en kundhanterad nyckel (CMK) från Azure Key Vault för att kryptera dina lagrings data. Du kan antingen importera egna nycklar till Azure Key Vault, eller så kan du använda Azure Key Vault-API: er för att generera nycklar.

@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 12/16/2020
 ms.custom: generated
-ms.openlocfilehash: c9638ce3509ba181e9f716b3bb427128e50c80ac
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 9318ea9d811f2fd490ed6e796b9719c5c482d513
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652899"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707647"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure Resource Provider-åtgärder
 
@@ -1361,7 +1361,7 @@ Azure-tjänst: [Application Gateway](../application-gateway/index.yml), [azure s
 > | Microsoft. Network/vpnsites/Delete | Tar bort en VPN-webbplats resurs. |
 > | Microsoft. Network/vpnSites/vpnSiteLinks/Read | Hämtar en länk till VPN-platsen |
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Lagring
 
 ### <a name="microsoftclassicstorage"></a>Microsoft. ClassicStorage
 
@@ -4651,13 +4651,13 @@ Azure-tjänst: [Power BI Embedded](/azure/power-bi-embedded/)
 > | Åtgärd | Beskrivning |
 > | --- | --- |
 > | Microsoft. PowerBIDedicated/register/åtgärd | Registrerar Power BI dedikerad resurs leverantör. |
-> | Microsoft. PowerBIDedicated/kapaciteter/läsning | Hämtar information om den angivna Power BI dedikerade kapaciteten. |
-> | Microsoft. PowerBIDedicated/kapacitet/Skriv | Skapar eller uppdaterar den angivna dedikerade kapaciteten för Power BI. |
-> | Microsoft. PowerBIDedicated/kapacitets/Delete | Tar bort Power BI dedikerad kapacitet. |
+> | Microsoft. PowerBIDedicated/kapaciteter/läsning | Hämtar information om den angivna Power BI kapaciteten. |
+> | Microsoft. PowerBIDedicated/kapacitet/Skriv | Skapar eller uppdaterar den angivna Power BI kapaciteten. |
+> | Microsoft. PowerBIDedicated/kapacitets/Delete | Tar bort Power BIs kapaciteten. |
 > | Microsoft. PowerBIDedicated/kapacitet/PAUSE/åtgärd | Pausar kapaciteten. |
 > | Microsoft. PowerBIDedicated/kapaciteter/återuppta/åtgärd | Återupptar kapaciteten. |
 > | Microsoft. PowerBIDedicated/kapaciteter/SKU/läsa | Hämta tillgänglig SKU-information för kapaciteten |
-> | Microsoft. PowerBIDedicated/locations/checkNameAvailability/Action | Kontrollerar att angivet Power BI dedikerade kapacitets namn är giltigt och inte används. |
+> | Microsoft. PowerBIDedicated/locations/checkNameAvailability/Action | Kontrollerar att det tilldelade Power BI kapacitets namnet är giltigt och inte används. |
 > | Microsoft. PowerBIDedicated/locations/operationresults/Read | Hämtar information om det angivna åtgärds resultatet. |
 > | Microsoft. PowerBIDedicated/locations/operationstatuses/Read | Hämtar information om den angivna åtgärds statusen. |
 > | Microsoft. PowerBIDedicated/Operations/Read | Hämtar information om åtgärder |
@@ -9498,7 +9498,7 @@ Azure-tjänst: Microsoft Monitoring Insights
 > | Microsoft. Intune/diagnosticsettings/Delete | Tar bort en diagnostisk inställning |
 > | Microsoft. Intune/diagnosticsettingscategories/Read | Läser en diagnostisk inställnings kategori |
 
-## <a name="other"></a>Övrigt
+## <a name="other"></a>Annat
 
 ### <a name="microsoftbingmaps"></a>Microsoft. Bingkartssökning
 

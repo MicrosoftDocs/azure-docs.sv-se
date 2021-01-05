@@ -3,181 +3,151 @@ title: Synonymer för frågans expansion över ett Sök index
 titleSuffix: Azure Cognitive Search
 description: Skapa en synonym karta för att expandera omfånget för en Sök fråga på ett Azure Kognitiv sökning-index. Omfattningen utökas för att inkludera motsvarande termer som du anger i en lista.
 manager: nitinme
-author: brjohnstmsft
-ms.author: brjohnst
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: a8f1fa07b94072d37cf83320b6c8956d3b412f12
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/18/2020
+ms.openlocfilehash: b62621a77f383b5c6413e7c187e7ba3d60beabad
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993592"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97732095"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Synonymer i Azure Kognitiv sökning
 
-Synonymer i sökmotorer associerar likvärdiga villkor som implicit expanderar omfånget för en fråga utan att användaren behöver ange termen. Till exempel, med tanke på termen "hund" och synonym associationer för "Canine" och "Puppy", kommer alla dokument som innehåller "hund", "Canine" eller "Puppy" att falla inom frågans omfång.
-
-I Azure Kognitiv sökning görs synonym expansion vid tidpunkten för frågan. Du kan lägga till synonym Maps till en tjänst utan avbrott i befintliga åtgärder. Du kan lägga till en  **synonymMaps** -egenskap i en fält definition utan att behöva bygga om indexet.
+Med synonym Maps kan du associera motsvarande villkor och expandera omfånget för en fråga utan att användaren behöver ange termen. Exempel: anta att "hund", "Canine" och "Puppy" är synonymer, kommer en fråga på "Canine" att matcha ett dokument som innehåller "hund".
 
 ## <a name="create-synonyms"></a>Skapa synonymer
 
-Det finns inget Portal stöd för att skapa synonymer, men du kan använda REST API eller .NET SDK. För att komma igång med REST rekommenderar vi [Postman eller Visual Studio Code](search-get-started-rest.md) och formulering av förfrågningar som använder detta API: [skapa synonym Maps](/rest/api/searchservice/create-synonym-map). För C#-utvecklare kan du komma igång med att [lägga till synonymer i Azure kognitiv sökning med C#](search-synonyms-tutorial-sdk.md).
+En synonym karta är en till gång som kan skapas en gång och användas av många index. [Tjänst nivån](search-limits-quotas-capacity.md#synonym-limits) avgör hur många synonymer som du kan skapa, från 3 synonym kartor för kostnads fria och grundläggande nivåer, upp till 20 för standard nivåerna. 
 
-Om du använder [Kundhanterade nycklar](search-security-manage-encryption-keys.md) för tjänstens kryptering på plats kan du tillämpa det skyddet på innehållet i synonym kartan.
+Du kan skapa flera synonymer för olika språk, till exempel engelska och franska versioner, eller lexikon om ditt innehåll innehåller teknisk eller dold terminologi. Även om du kan skapa flera synonym mappningar kan för närvarande ett fält endast använda en av dem.
 
-## <a name="use-synonyms"></a>Använd synonymer
+En synonym mappning består av namn, format och regler som fungerar som synonym mappnings poster. Det enda format som stöds är `solr` och `solr` formatet bestämmer regel konstruktionen.
 
-I Azure Kognitiv sökning baseras synonym stödet på synonym Maps som du definierar och överför till din tjänst. Dessa kartor utgör en oberoende resurs (t. ex. index eller data källor) och kan användas av valfritt sökbart fält i alla index i Sök tjänsten.
-
-Synonym Maps och index upprätthålls oberoende av varandra. När du har definierat en synonym mappning och laddat upp den till tjänsten kan du aktivera synonym funktionen i ett fält genom att lägga till en ny egenskap med namnet **synonymMaps** i fält definitionen. Att skapa, uppdatera och ta bort en synonym mappning är alltid en hel dokument åtgärd, vilket innebär att du inte kan skapa, uppdatera eller ta bort delar av synonym kartan stegvis. Det krävs en ombelastning för att uppdatera även en enskild post.
-
-Att införliva synonymer i sökprogrammet är en två stegs process:
-
-1.  Lägg till en synonym mappning till din Sök tjänst via API: erna nedan.  
-
-2.  Konfigurera ett sökbart fält att använda synonym mappningen i index definitionen.
-
-Du kan skapa flera synonym mappningar för ditt sökprogram (till exempel efter språk om ditt program stöder en flerspråkig kund bas). För närvarande kan ett fält endast använda en av dem. Du kan när som helst uppdatera ett fälts synonymMaps-egenskap.
-
-### <a name="synonymmaps-resource-apis"></a>SynonymMaps-resurs-API: er
-
-#### <a name="add-or-update-a-synonym-map-under-your-service-using-post-or-put"></a>Lägg till eller uppdatera en synonym avbildning under din tjänst med POST eller placering.
-
-Synonym Maps överförs till tjänsten via POST eller placering. Varje regel måste avgränsas med det nya rad symbolen (\n). Du kan definiera upp till 5 000 regler per synonym mappning i en kostnads fri tjänst och 20 000 regler per karta i alla andra SKU: er. Varje regel kan ha upp till 20 expansionar.
-
-Synonym Maps måste vara i formatet Apache Solr som beskrivs nedan. Om du har en befintlig synonym ord lista i ett annat format och vill använda den direkt, kan du berätta för oss på [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
-
-Du kan skapa en ny synonym mappning med HTTP POST, som i följande exempel:
-
-```synonym-map
-    POST https://[servicename].search.windows.net/synonymmaps?api-version=2020-06-30
-    api-key: [admin key]
-
-    {
-       "name":"mysynonymmap",
-       "format":"solr",
-       "synonyms": "
-          USA, United States, United States of America\n
-          Washington, Wash., WA => WA\n"
-    }
+```http
+POST /synonymmaps?api-version=2020-06-30
+{
+    "name": "geo-synonyms",
+    "format": "solr",
+    "synonyms": "
+        USA, United States, United States of America\n
+        Washington, Wash., WA => WA\n"
+}
 ```
 
-Du kan också använda Lägg till och ange synonym mappnings namnet på URI: n. Om synonym mappningen inte finns kommer den att skapas.
+Om du vill skapa en synonym mappning använder du [mappningen skapa synonym (REST API)](/rest/api/searchservice/create-synonym-map) eller Azure SDK. För C#-utvecklare rekommenderar vi att du börjar med att [lägga till synonymer i Azure kognitiv sökning med C#](search-synonyms-tutorial-sdk.md).
 
-```synonym-map
-    PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
-    api-key: [admin key]
+## <a name="define-rules"></a>Definiera regler
 
-    {
-       "format":"solr",
-       "synonyms": "
-          USA, United States, United States of America\n
-          Washington, Wash., WA => WA\n"
-    }
-```
+Mappnings reglerna följer synonym filter specifikationen med öppen källkod för Apache Solr, som beskrivs i det här dokumentet: [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter). `solr` Formatet stöder två typer av regler:
 
-##### <a name="apache-solr-synonym-format"></a>Formatet Apache Solr synonym
++ likvärdighet (där termer är lika med ersättningar i frågan)
 
-Solr-formatet stöder motsvarande och explicita synonym mappningar. Mappnings reglerna följer synonym filter specifikationen med öppen källkod för Apache Solr, som beskrivs i det här dokumentet: [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter). Nedan visas en exempel regel för motsvarande synonymer.
++ explicita mappningar (där villkoren mappas till en explicit term före frågas)
 
-```
-USA, United States, United States of America
-```
+Varje regel måste avgränsas med det nya rad specialtecknet ( `\n` ). Du kan definiera upp till 5 000 regler per synonym mappning i en kostnads fri tjänst och 20 000 regler per karta på andra nivåer. Varje regel kan ha upp till 20 utökningar (eller objekt i en regel). Mer information finns i [synonym gränser](search-limits-quotas-capacity.md#synonym-limits).
 
-Med regeln ovan expanderas en Sök fråga "USA" till "USA" eller "USA" eller "USA av Amerika".
+Fråga parser kommer att sänka versaler eller versaler, men om du vill bevara specialtecken i strängen, till exempel ett kommatecken eller ett bindestreck, lägger du till lämpliga escape-tecken när du skapar synonym kartan. 
 
-Explicit mappning betecknas av en pil "=>". När det här alternativet har angetts ersätts en term ordning i en Sök fråga som matchar den vänstra sidan av "=>" med alternativen på den högra sidan. Med den här regeln nedan, Sök efter frågor "Washington", "tvätt". eller "WA" kommer att skrivas om till "WA". Explicit mappning gäller endast i den angivna riktningen och skriver inte om frågan "WA" till "Washington" i det här fallet.
+### <a name="equivalency-rules"></a>Regler för likvärdighet
 
-```
-Washington, Wash., WA => WA
-```
+Regler för likvärdiga villkor är kommaavgränsade i samma regel. I det första exemplet expanderas en fråga `USA` till `USA` eller `"United States"` eller `"United States of America"` . Observera att om du vill matcha på en fras måste själva frågan vara en offert-omgiven fras fråga.
 
-Om du behöver definiera synonymer som innehåller kommatecken kan du kringgå dem med ett omvänt snedstreck, som i det här exemplet:
-
-```
-WA\, USA, WA, Washington
-```
-
-Eftersom omvänt snedstreck själva är ett specialtecken i andra språk som JSON och C#, behöver du förmodligen dubbla escape-tecken. Till exempel skulle JSON som skickas till REST API för ovanstående synonym karta se ut så här:
+I fall visar en fråga för att `dog` frågan ska även innehålla `puppy` och `canine` .
 
 ```json
-    {
-       "format":"solr",
-       "synonyms": "WA\\, USA, WA, Washington"
-    }
+{
+"format": "solr",
+"synonyms": "
+    USA, United States, United States of America\n
+    dog, puppy, canine\n
+    coffee, latte, cup of joe, java\n"
+}
 ```
 
-#### <a name="list-synonym-maps-under-your-service"></a>Visa en lista över synonym mappningar under din tjänst.
+### <a name="explicit-mapping"></a>Explicit mappning
 
-```synonym-map
-    GET https://[servicename].search.windows.net/synonymmaps?api-version=2020-06-30
-    api-key: [admin key]
+Regler för en explicit mappning betecknas med en pil `=>` . När det här alternativet anges kommer en term ordning i en Sök fråga som matchar den vänstra sidan `=>` att ersättas med alternativen till höger vid tidpunkten för frågan.
+
+I det här fallet kommer en fråga för `Washington` `Wash.` eller `WA` att skrivas om som `WA` och frågemotor söker bara efter matchningar på villkoret `WA` . Explicit mappning gäller endast i den angivna riktningen och skriver inte om frågan `WA` till `Washington` i det här fallet.
+
+```json
+{
+"format": "solr",
+"synonyms": "
+    Washington, Wash., WA => WA\n
+    California, Calif., CA => CA\n"
+}
 ```
 
-#### <a name="get-a-synonym-map-under-your-service"></a>Få en synonym karta under din tjänst.
+### <a name="escaping-special-characters"></a>Hoppar över specialtecken
 
-```synonym-map
-    GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
-    api-key: [admin key]
+Om du behöver definiera synonymer som innehåller kommatecken eller andra specialtecken kan du kringgå dem med ett omvänt snedstreck, som i det här exemplet:
+
+```json
+{
+"format": "solr",
+"synonyms": "WA\, USA, WA, Washington\n"
+}
 ```
 
-#### <a name="delete-a-synonyms-map-under-your-service"></a>Ta bort en synonym mapp under din tjänst.
+Eftersom omvänt snedstreck är ett specialtecken i andra språk som JSON och C#, behöver du förmodligen dubbla escape-tecken. Till exempel skulle JSON som skickas till REST API för ovanstående synonym karta se ut så här:
 
-```synonym-map
-    DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
-    api-key: [admin key]
+```json
+{
+"format":"solr",
+"synonyms": "WA\\, USA, WA, Washington"
+}
 ```
 
-### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>Konfigurera ett sökbart fält att använda synonym mappningen i index definitionen.
+## <a name="upload-and-manage-synonym-maps"></a>Ladda upp och hantera synonym Maps
 
-En ny fält egenskap **synonymMaps** kan användas för att ange en synonym mappning som ska användas för ett sökbart fält. Synonym Maps är service nivå resurser och kan refereras till av fält i ett index under tjänsten.
+Som tidigare nämnts kan du skapa eller uppdatera en synonym mappning utan att avbryta frågor och indexera arbets belastningar. En synonym karta är ett fristående objekt (t. ex. index eller data källor), och så länge inget fält använder den, kommer uppdateringar inte att göra att indexeringen eller frågorna inte fungerar. Men när du har lagt till en synonym mappning till en fält definition, och om du sedan tar bort en synonym mappning, kommer alla frågor som innehåller fälten i fråga att Miss Miss 404-fel.
 
-```synonym-map
-    POST https://[servicename].search.windows.net/indexes?api-version=2020-06-30
-    api-key: [admin key]
+Att skapa, uppdatera och ta bort en synonym mappning är alltid en hel dokument åtgärd, vilket innebär att du inte kan uppdatera eller ta bort delar av synonym mappningen stegvis. Uppdatering av även en enskild regel kräver en ombelastning.
 
-    {
-       "name":"myindex",
-       "fields":[
-          {
-             "name":"id",
-             "type":"Edm.String",
-             "key":true
-          },
-          {
-             "name":"name",
-             "type":"Edm.String",
-             "searchable":true,
-             "analyzer":"en.lucene",
-             "synonymMaps":[
-                "mysynonymmap"
-             ]
-          },
-          {
-             "name":"name_jp",
-             "type":"Edm.String",
-             "searchable":true,
-             "analyzer":"ja.microsoft",
-             "synonymMaps":[
-                "japanesesynonymmap"
-             ]
-          }
-       ]
-    }
+## <a name="assign-synonyms-to-fields"></a>Tilldela synonymer till fält
+
+När du har överfört en synonym karta kan du aktivera synonymerna för fält av typen `Edm.String` eller `Collection(Edm.String)` , i fält med `"searchable":true` . Som anges kan en fält definition endast använda en synonym karta.
+
+```http
+POST /indexes?api-version=2020-06-30
+{
+    "name":"hotels-sample-index",
+    "fields":[
+        {
+            "name":"description",
+            "type":"Edm.String",
+            "searchable":true,
+            "synonymMaps":[
+            "en-synonyms"
+            ]
+        },
+        {
+            "name":"description_fr",
+            "type":"Edm.String",
+            "searchable":true,
+            "analyzer":"fr.microsoft",
+            "synonymMaps":[
+            "fr-synonyms"
+            ]
+        }
+    ]
+}
 ```
 
-**synonymMaps** kan anges för sökbara fält av typen ' EDM. String ' eller ' Collection (EDM. String) '.
+## <a name="query-on-equivalent-or-mapped-fields"></a>Fråga i motsvarande eller mappade fält
 
-> [!NOTE]
-> Du kan bara ha en synonym mappning per fält. Om du vill använda flera synonyma kartor kan du berätta för oss på [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
+Att lägga till synonymer ger inte nya krav på fråge konstruktion. Du kan utfärda term-och fras frågor precis som du gjorde innan du lade till synonymer. Den enda skillnaden är att om en frågeterm finns i synonym kartan, expanderar eller skriver du om termen eller frasen, beroende på vilken regel som används.
 
-## <a name="impact-of-synonyms-on-other-search-features"></a>Effekten av synonymer på andra Sök funktioner
+## <a name="how-synonyms-interact-with-other-features"></a>Hur synonymer interagerar med andra funktioner
 
 Funktionen synonymer skriver om den ursprungliga frågan med synonymer med operatorn OR. Av den anledningen kan träff markeringar och bedömnings profiler behandla den ursprungliga termen och synonymer som likvärdiga.
 
-Synonym-funktionen gäller för Sök frågor och gäller inte för filter eller FACET. På samma sätt baseras förslag endast på den ursprungliga termen. synonym matchningar visas inte i svaret.
+Synonymer gäller endast för Sök frågor och stöds inte för filter, ansikts, komplettera automatiskt eller förslag. Autoavsluta och förslag baseras bara på den ursprungliga termen. synonym matchningar visas inte i svaret.
 
 Synonym expansionar gäller inte för sökord med jokertecken. termerna prefix, fuzzy och regex expanderas inte.
 
@@ -188,4 +158,4 @@ Om du har ett befintligt index i en utvecklings miljö (icke-produktion) kan du 
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Skapa en synonym karta](/rest/api/searchservice/create-synonym-map)
+> [Skapa en synonym karta (REST API)](/rest/api/searchservice/create-synonym-map)
