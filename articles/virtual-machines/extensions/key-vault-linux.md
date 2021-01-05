@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: c9b624a1efc72bebec8547e8ecf9f3bf9fc99863
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 0558513d88eb5ffb03484e9d3bd8e37b2c9a0dcf
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680661"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895027"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Key Vault tillägg för virtuell dator för Linux
 
@@ -38,6 +38,21 @@ Key Vault VM-tillägget stöder dessa Linux-distributioner:
   - Key Vault instans med certifikat. Se [skapa en Key Vault](../../key-vault/general/quick-create-portal.md)
   - VM/VMSS måste ha tilldelats en [hanterad identitet](../../active-directory/managed-identities-azure-resources/overview.md)
   - Åtkomst principen för Key Vault måste anges med hemligheter `get` och `list` behörighet för VM/VMSS-hanterad identitet för att hämta en hemlig del av certifikatet. Se [hur du autentiserar till Key Vault](../../key-vault/general/authentication.md) och [tilldelar en Key Vault åtkomst princip](../../key-vault/general/assign-access-policy-cli.md).
+  -  VMSS ska ha följande identitets inställning: ` 
+  "identity": {
+  "type": "UserAssigned",
+  "userAssignedIdentities": {
+  "[parameters('userAssignedIdentityResourceId')]": {}
+  }
+  }
+  `
+  
+ - AKV-tillägget ska ha den här inställningen: `
+                 "authenticationSettings": {
+                    "msiEndpoint": "[parameters('userAssignedIdentityEndpoint')]",
+                    "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
+                  }
+   `
 
 ## <a name="extension-schema"></a>Tilläggsschema
 
@@ -138,6 +153,17 @@ JSON-konfigurationen för ett tillägg för virtuell dator måste kapslas i den 
     }
 ```
 
+### <a name="extension-dependency-ordering"></a>Tillägg för beroende ordning
+Key Vault VM-tillägget stöder tilläggs sortering om det är konfigurerat. Som standard rapporterar tillägget att det har startats så snart det har börjat avsökningen. Den kan dock konfigureras att vänta tills den har laddat ned den fullständiga listan över certifikat innan en lyckad start har rapporter ATS. Om andra tillägg är beroende av att den fullständiga uppsättningen certifikat installeras innan de startar, så tillåter de här tilläggen att tillägget deklarerar ett beroende av Key Vault-tillägget. Detta förhindrar att de här tilläggen startar förrän alla certifikat som de är beroende av har installerats. Tillägget gör om den inledande hämtningen på obestämd tid och förblir i ett `Transitioning` tillstånd.
+
+Aktivera detta genom att göra följande:
+```
+"secretsManagementSettings": {
+    "requireInitialSync": true,
+    ...
+}
+```
+> Lägg Att använda den här funktionen är inte kompatibel med en ARM-mall som skapar en systemtilldelad identitet och uppdaterar en Key Vault åtkomst princip med den identiteten. Detta leder till ett död läge eftersom valv åtkomst principen inte kan uppdateras förrän alla tillägg har startats. I stället bör du använda en *enda användare som tilldelats MSI-identitet* och för hands ACL dina valv med den identiteten innan du distribuerar.
 
 ## <a name="azure-powershell-deployment"></a>Azure PowerShell distribution
 > [!WARNING]

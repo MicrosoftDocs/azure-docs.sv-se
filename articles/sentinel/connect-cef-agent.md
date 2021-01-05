@@ -9,17 +9,17 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/01/2020
+ms.date: 01/05/2021
 ms.author: yelevin
-ms.openlocfilehash: ead878daaab977c77b3ab36f42ccfe4d01d7bc03
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 617599e3eb6dcca74324a7bdfd51e604904a2fa1
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548638"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897509"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>Steg 1: Distribuera logg vidarebefordraren
 
@@ -34,7 +34,7 @@ I det här steget ska du ange och konfigurera Linux-datorn som kommer att vidare
     - Lyssna efter syslog-meddelanden från dina säkerhets lösningar på TCP-port 514
     - vidarebefordra enbart de meddelanden som identifieras som CEF till Log Analytics agent på localhost med TCP-port 25226
  
-## <a name="prerequisites"></a>Krav
+## <a name="prerequisites"></a>Förutsättningar
 
 - Du måste ha förhöjd behörighet (sudo) på den utsedda Linux-datorn.
 
@@ -51,13 +51,13 @@ I det här steget ska du ange och konfigurera Linux-datorn som kommer att vidare
 1. Under **1,2 installerar du CEF-insamlaren på Linux-datorn**, kopierar länken som anges under **Kör följande skript för att installera och tillämpa CEF-insamlaren**, eller från texten nedan (Använd arbetsyte-ID och primär nyckel i plats för plats hållarna):
 
     ```bash
-    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
+    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]
     ```
 
 1. Kontrol lera att du inte får några fel eller varnings meddelanden medan skriptet körs.
     - Du kan få ett meddelande som uppmanar dig att köra ett kommando för att åtgärda ett problem med mappningen av fältet *dator* . Mer information finns i [förklaringen i distributions skriptet](#mapping-command) .
 
-1. Fortsätt till [steg 2: Konfigurera säkerhets lösningen för att vidarebefordra CEF-meddelanden](connect-cef-solution-config.md) .
+1. Fortsätt till [steg 2: Konfigurera säkerhets lösningen för att vidarebefordra CEF-meddelanden](connect-cef-solution-config.md).
 
 
 > [!NOTE]
@@ -189,8 +189,7 @@ Välj en syslog-daemon för att se lämplig beskrivning.
         `security-config-omsagent.conf`Filens innehåll:
 
         ```bash
-        filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
-        destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
+        filter f_oms_filter {match(\"CEF\|ASA\" ) ;};destination oms_destination {tcp(\"127.0.0.1\" port(25226));};
         log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
         ```
 

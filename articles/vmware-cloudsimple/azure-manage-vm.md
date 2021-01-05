@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-lösning av CloudSimple – hantera virtuella datorer med privat moln i Azure
 description: Beskriver hur du hanterar virtuella CloudSimple privata moln i Azure Portal, inklusive hur du lägger till diskar, ändrar VM-kapacitet och lägger till nätverks gränssnitt
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 82aa1ba6ec20e8242568a2725899ddc515a4dc0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 090b7711ab061b989eae13113fe7048e8dd875ee
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082077"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895197"
 ---
 # <a name="manage-your-cloudsimple-private-cloud-virtual-machines-in-azure"></a>Hantera dina virtuella CloudSimple privata moln datorer i Azure
 
@@ -23,7 +23,7 @@ Logga in på [Azure Portal](https://portal.azure.com)för att hantera de virtuel
 
 Följande kontroller är tillgängliga på **översikts** sidan för den valda virtuella datorn.
 
-| Kontroll | Beskrivning |
+| Kontroll | Description |
 | ------------ | ------------- |
 | Ansluta | Anslut till den angivna virtuella datorn.  |
 | Start | Starta den angivna virtuella datorn.  |
@@ -53,7 +53,7 @@ Om du vill lägga till en virtuell dator disk öppnar du sidan **diskar** för d
 
    | Objekt | Beskrivning |
    | ------------ | ------------- |
-   | Namn | Ange ett namn för att identifiera disken.  |
+   | Name | Ange ett namn för att identifiera disken.  |
    | Storlek | Välj en av de tillgängliga storlekarna.  |
    | SCSI-styrenhet | Välj en SCSI-styrenhet. Tillgängliga styrenheter varierar för de olika operativ system som stöds.  |
    | Läge | Anger hur disken deltar i ögonblicks bilder. Välj något av följande alternativ: <br> -Oberoende beständig: all data som skrivs till disken skrivs permanent.<br> – Oberoende, icke-permanent: ändringar som skrivs till disken ignoreras när du stänger av eller återställer den virtuella datorn.  Med det här läget kan du alltid starta om den virtuella datorn i samma tillstånd. Mer information finns i VMware- [dokumentationen](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html). |
@@ -72,11 +72,11 @@ Om du vill ändra kapaciteten för den virtuella datorn öppnar du **storleks** 
 
 ## <a name="manage-network-interfaces"></a>Hantera nätverks gränssnitt
 
-Klicka på **Lägg till nätverks gränssnitt**för att lägga till ett gränssnitt. Konfigurera var och en av följande inställningar genom att ange eller välja ett infogat alternativ. Klicka på **Spara**.
+Klicka på **Lägg till nätverks gränssnitt** för att lägga till ett gränssnitt. Konfigurera var och en av följande inställningar genom att ange eller välja ett infogat alternativ. Klicka på **Spara**.
 
    | Kontroll | Beskrivning |
    | ------------ | ------------- |
-   | Namn | Ange ett namn för att identifiera gränssnittet.  |
+   | Name | Ange ett namn för att identifiera gränssnittet.  |
    | Nätverk | Välj i listan över konfigurerade nätverk i ditt privata moln vSphere.  |
    | Adapter | Välj en vSphere-adapter i listan över tillgängliga typer som har kon figurer ATS för den virtuella datorn. Mer information finns i VMware Knowledge Base-artikeln [välja ett nätverkskort för den virtuella datorn](https://kb.vmware.com/s/article/1001805). |
    | Starta vid start | Välj om du vill aktivera NÄTVERKSKORTets maskin vara när den virtuella datorn startas. Standardvärdet är **Enable**. |

@@ -13,7 +13,7 @@
       items:
         - name: Använda webbportalen
           href: getting-started-build-a-classifier.md
-        - name: Använda Custom Vision SDK
+        - name: Använda Custom Vision SDK eller REST API
           href: quickstarts/image-classification.md
     - name: Skapa en objektidentifierare
       items:

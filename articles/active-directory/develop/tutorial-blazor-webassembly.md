@@ -8,18 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 09e922ffddcce732d9213eb91026561528c0728a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ce854c8f2d1d317c3660aaab9c0a6569aae0bb36
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169145"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895979"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>Självstudie: Logga in användare och anropa ett skyddat API från en blixt WebAssembly-app
 
-I den här självstudien skapar du en Blixts WebAssembly-app som loggar in användare och hämtar data från Microsoft Graph genom att använda Microsoft Identity Platform och registrera din app i Azure Active Directory (Azure AD).
-
-Vi har också en [själv studie kurs för](tutorial-blazor-server.md)den här guiden. 
+I den här självstudien skapar du en Blixts WebAssembly-app som loggar in användare och hämtar data från Microsoft Graph genom att använda Microsoft Identity Platform och registrera din app i Azure Active Directory (Azure AD). 
 
 I de här självstudierna har du
 
@@ -27,6 +25,10 @@ I de här självstudierna har du
 >
 > * Skapa en ny konfigurations program för Windows-webbsammansättning som kon figurer ATS för att använda Azure Active Directory (Azure AD) för [autentisering och auktorisering](authentication-vs-authorization.md) med hjälp av Microsoft Identity Platform
 > * Hämta data från ett skyddat webb-API, i det här fallet [Microsoft Graph](/graph/overview)
+
+I den här självstudien används .NET Core 3,1. .NET-dokumenten innehåller instruktioner om [hur du skyddar en Blixts WebAssembly-app](https://docs.microsoft.com/aspnet/core/blazor/security/webassembly/graph-api) med ASP.net Core 5,0. 
+
+Vi har också en [själv studie kurs för](tutorial-blazor-server.md)den här guiden. 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -40,7 +42,7 @@ Varje app som använder Azure Active Directory (Azure AD) för autentisering må
 - För **konto typer som stöds** väljer du **konton endast i den här organisations katalogen**.
 - Lämna List rutan **omdirigerings-URI** inställd på **webben** och ange `https://localhost:5001/authentication/login-callback` . Standard porten för en app som körs på Kestrel är 5001. Om appen är tillgänglig på en annan port anger du Port numret i stället för `5001` .
 
-När du har registrerat, i **autentisering**  >  **implicit beviljande**, markerar du kryss **Access tokens** rutorna för åtkomsttoken och **ID-token** och väljer sedan knappen **Spara** .
+När du har registrerat, i **autentisering**  >  **implicit beviljande**, markerar du kryss  rutorna för åtkomsttoken och **ID-token** och väljer sedan knappen **Spara** .
 
 ## <a name="create-the-app-using-the-net-core-cli"></a>Skapa appen med hjälp av .NET Core CLI
 
@@ -74,9 +76,11 @@ I webbläsaren navigerar du till `https://localhost:5001` och loggar in med ett 
 
 Komponenterna i den här mallen som aktiverar inloggningar med Azure AD med hjälp av Microsoft Identity Platform beskrivs i [ASP.net-dokumentet i det här avsnittet](/aspnet/core/blazor/security/webassembly/standalone-with-azure-active-directory#authentication-package).
 
-## <a name="retrieving-data-from-microsoft-graph"></a>Hämtar data från Microsoft Graph
+## <a name="retrieving-data-from-a-protected-api-microsoft-graph"></a>Hämta data från ett skyddat API (Microsoft Graph)
 
-[Microsoft Graph](/graph/overview) erbjuder ett antal API: er som ger åtkomst till Microsoft 365 data för användare i din klient organisation. Genom att använda Microsoft Identity Platform som identitets leverantör för din app har du enklare åtkomst till den här informationen eftersom Microsoft Graph direkt stöder de token som utfärdats av Microsoft Identity Platform. I det här avsnittet kan du lägga till kod som visar den inloggade användarens e-postmeddelanden på sidan "Hämta data" i programmet.
+[Microsoft Graph](/graph/overview) innehåller API: er som ger åtkomst till Microsoft 365 data för dina användare och som har stöd för de token som utfärdats av Microsoft Identity Platform, vilket gör det till ett lämpligt skydds-API att använda som exempel. I det här avsnittet ska du lägga till kod för att anropa Microsoft Graph och Visa användarens e-postmeddelanden på sidan "Hämta data" på programmets sida.
+
+Det här avsnittet är skrivet med en gemensam metod för att anropa en skyddad API med hjälp av en namngiven klient. Samma metod kan användas för andra skyddade API: er som du vill anropa. Men om du planerar att anropa Microsoft Graph från ditt program kan du använda Graph SDK för att minska standard. .NET-dokumenten innehåller instruktioner om [hur du använder Graph SDK](https://docs.microsoft.com/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0).
 
 Innan du börjar kan du logga ut från din app eftersom du kommer att göra ändringar i de behörigheter som krävs, och din aktuella token fungerar inte. Om du inte redan har gjort det kör du appen igen och väljer **Logga ut** innan du uppdaterar koden nedan.
 

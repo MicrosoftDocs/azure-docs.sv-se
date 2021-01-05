@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-lösning av CloudSimple – konfigurera brand Väggs tabeller och regler
 description: Beskriver hur du konfigurerar privata moln brand Väggs tabeller och regler för att begränsa trafik på undernät och VLAN.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 986f4b0da7254ebac3725a704f32af785c72fbcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32dcfb0c6cd26b5f34afad328db8f383fa1c2a6f
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85846876"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895639"
 ---
 # <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>Konfigurera brand Väggs tabeller och regler för privata moln
 
@@ -72,7 +72,7 @@ Brand Väggs regler avgör hur brand väggen behandlar vissa typer av trafik. Fl
 
 När du har definierat en brand Väggs tabell kan du ange de undernät som omfattas av reglerna i tabellen.
 
-1. **Network**  >  Välj en brand Väggs tabell på sidan Nätverks**brand Väggs tabeller** .
+1.   >  Välj en brand Väggs tabell på sidan Nätverks **brand Väggs tabeller** .
 2. Öppna fliken **anslutna VLAN/undernät** .
 3. Klicka på **Anslut till ett VLAN/undernät**.
 4. Välj det privata molnet och VLAN. Det associerade under näts namnet och CIDR-blocket visas.

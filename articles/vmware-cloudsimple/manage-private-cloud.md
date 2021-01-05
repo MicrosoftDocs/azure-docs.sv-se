@@ -1,19 +1,19 @@
 ---
 title: Hantera Azure VMware-lösningen via CloudSimple privat moln
 description: Beskriver de funktioner som är tillgängliga för hantering av dina CloudSimple privata moln resurser och aktivitet
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 06/10/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b0aff8298ac2335e5216252eb2cbd5a393cc37d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f2f66c2e1e2e8aa596393d4c69a757138ab5a91
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86525004"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895214"
 ---
 # <a name="manage-private-cloud-resources-and-activity"></a>Hantera resurser och aktivitet för privata moln
 
@@ -47,7 +47,7 @@ Visa en omfattande sammanfattning av det valda privata molnet.  Sammanfattnings 
 * [Köpa noder](create-nodes.md). Lägg till noder i det här privata molnet.
 * [Expandera](expand-private-cloud.md). Lägg till noder i det här privata molnet.
 * **Uppdatera**. Uppdatera informationen på den här sidan.
-* **Ta bort**. Du kan när som helst ta bort det privata molnet. **Innan du tar bort kontrollerar du att du har säkerhetskopierat alla system och data.** Om du tar bort ett privat moln tas alla virtuella datorer, vCenter-konfiguration och data bort. Klicka på **ta bort** i sammanfattnings avsnittet för det valda privata molnet. Efter borttagning raderas alla privata moln data i en säker och mycket kompatibel radering-process.
+* **Delete** (Ta bort). Du kan när som helst ta bort det privata molnet. **Innan du tar bort kontrollerar du att du har säkerhetskopierat alla system och data.** Om du tar bort ett privat moln tas alla virtuella datorer, vCenter-konfiguration och data bort. Klicka på **ta bort** i sammanfattnings avsnittet för det valda privata molnet. Efter borttagning raderas alla privata moln data i en säker och mycket kompatibel radering-process.
 * [Ändra vSphere-privilegier](escalate-private-cloud-privileges.md).  Eskalera dina privilegier i det här privata molnet.
 
 ## <a name="private-cloud-vlanssubnets"></a>VLAN/undernät för privata moln

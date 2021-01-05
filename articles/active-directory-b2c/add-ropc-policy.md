@@ -12,12 +12,12 @@ ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: edeee364ca4db1439688bba1a206b3de247d19ec
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 6afe9814757d894c61ab3154bbff02791a830ddd
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97618838"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895078"
 ---
 # <a name="set-up-a-resource-owner-password-credentials-flow-in-azure-active-directory-b2c"></a>Konfigurera ett flöde för autentiseringsuppgifter för resurs ägar lösen ord i Azure Active Directory B2C
 
@@ -308,7 +308,7 @@ Använd ditt favorit-API utvecklings program för att generera ett API-anrop och
 Förfrågningen om faktisk POST ser ut som i följande exempel:
 
 ```https
-POST /<tenant-name>.onmicrosoft.com/oauth2/v2.0/token?B2C_1A_ROPC_Auth HTTP/1.1
+POST /<tenant-name>.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1A_ROPC_Auth HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 

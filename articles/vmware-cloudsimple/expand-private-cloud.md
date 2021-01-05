@@ -1,19 +1,19 @@
 ---
 title: Expandera Azure VMware-lösning via CloudSimple privat moln
 description: Beskriver hur du expanderar ett befintligt privat CloudSimple-moln för att lägga till kapacitet i ett befintligt eller nytt kluster
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 06/06/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a82ba1b433e62ed1c4b72b8e942d4ade29f26c4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c469ea3f104e71eb80010d4a5cd421eab6184fcf
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77025307"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895866"
 ---
 # <a name="expand-a-cloudsimple-private-cloud"></a>Expandera ett privat CloudSimple-moln
 
@@ -47,7 +47,7 @@ Logga in på Azure Portal på [https://portal.azure.com](https://portal.azure.co
 
 4. Välj om du vill utöka det befintliga klustret eller skapa ett nytt vSphere-kluster. När du gör ändringar uppdateras sammanfattnings informationen på sidan.
 
-    * Klicka på **Visa befintligt kluster**för att expandera det befintliga klustret. Välj det kluster som du vill expandera och ange antalet noder som ska läggas till. Varje kluster kan ha högst 16 noder.
+    * Klicka på **Visa befintligt kluster** för att expandera det befintliga klustret. Välj det kluster som du vill expandera och ange antalet noder som ska läggas till. Varje kluster kan ha högst 16 noder.
     * Om du vill lägga till ett nytt kluster klickar du på **Skapa nytt kluster**. Ange ett namn för klustret. Välj ett befintligt Data Center eller ange ett namn för att skapa ett nytt Data Center. Välj nodtyp. Du kan välja en annan nodtyp när du skapar ett nytt vSphere-kluster, men inte när du expanderar ett befintligt vSphere-kluster. Välj antalet noder. Varje nytt kluster måste ha minst tre noder.
 
     ![Expandera privat moln – Lägg till noder](media/resources-expand-private-cloud-add-nodes.png)

@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 413a93a145ae063a3aab4066ed62365e154d744a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b1ff10290e0059295f14b55e90ed05e9690c9f5c
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96454108"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896832"
 ---
 # <a name="use-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>Använd Azure Portal för att hantera resurser på din Azure Stack Edge Pro
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Den här artikeln beskriver hur du hanterar resurser i Azure Stack Edge Pro. Du kan hantera Azure Stack Edge Pro via Azure Portal eller via det lokala webb gränssnittet. Använd Azure Portal för att lägga till, ta bort, uppdatera resurser eller synkronisera lagrings nyckeln för lagrings kontot som är kopplat till resurserna.
+Den här artikeln beskriver hur du hanterar resurser i Azure Stack Edge Pro. Du kan hantera Azure Stack Edge Pro via Azure Portal eller via det lokala webb gränssnittet. Använd Azure Portal för att lägga till, ta bort, uppdatera resurser eller synkronisera lagrings nyckeln för lagrings kontot som är kopplat till resurserna. Den här artikeln gäller Azure Stack Edge Pro GPU, Azure Stack Edge Pro R och Azure Stack Edge Mini R-enheter.
 
 ## <a name="about-shares"></a>Om resurser
 
@@ -33,7 +33,7 @@ Om du vill överföra data till Azure måste du skapa resurser på Azure Stack E
 
 Skapa en resurs genom att utföra stegen nedan på Azure-portalen.
 
-1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **Gateway-> resurser**. Välj **+ Lägg till resurs** i kommando fältet.
+1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **Cloud Storage Gateway-> resurser**. Välj **+ Lägg till resurs** i kommando fältet.
 
     ![Välj Lägg till resurs](media/azure-stack-edge-j-series-manage-shares/add-share-1.png)
 
@@ -63,7 +63,7 @@ Skapa en resurs genom att utföra stegen nedan på Azure-portalen.
 
 ## <a name="add-a-local-share"></a>Lägg till en lokal resurs
 
-1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **Gateway-> resurser**. Välj **+ Lägg till resurs** i kommando fältet.
+1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **Cloud Storage Gateway-> resurser**. Välj **+ Lägg till resurs** i kommando fältet.
 
     ![Välj Lägg till resurs 2](media/azure-stack-edge-j-series-manage-shares/add-local-share-1.png)
 
@@ -99,7 +99,7 @@ Skapa en resurs genom att utföra stegen nedan på Azure-portalen.
 Om du har skapat en resurs innan du konfigurerade Compute på din Azure Stack Edge Pro-enhet måste du montera resursen. Utför följande steg för att montera en resurs.
 
 
-1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **Gateway-> resurser**. Välj den resurs som du vill montera från listan över resurser. I kolumnen **används för beräkning** visas statusen som **inaktive rad** för den valda resursen.
+1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **Cloud Storage Gateway-> resurser**. Välj den resurs som du vill montera från listan över resurser. I kolumnen **används för beräkning** visas statusen som **inaktive rad** för den valda resursen.
 
     ![Välja resurs](media/azure-stack-edge-j-series-manage-shares/mount-share-1.png)
 
@@ -123,11 +123,11 @@ Om du har skapat en resurs innan du konfigurerade Compute på din Azure Stack Ed
 
 Utför följande steg i Azure Portal för att demontera en resurs.
 
-1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **Gateway-> resurser**.
+1. I Azure Portal går du till din Azure Stack Edge-resurs och går sedan till **Cloud Storage Gateway-> resurser**. I listan över resurser väljer du den resurs som du vill demontera. Du vill se till att resursen som du demonterar inte används av några moduler. Om resursen används av en modul visas problem med motsvarande modul.
 
     ![Välj resurs 2](media/azure-stack-edge-j-series-manage-shares/unmount-share-1.png)
 
-2. I listan över resurser väljer du den resurs som du vill demontera. Du vill se till att resursen som du demonterar inte används av några moduler. Om resursen används av en modul visas problem med motsvarande modul. Välj **demontera**.
+2.  Välj **demontera**.
 
     ![Välj demontera](media/azure-stack-edge-j-series-manage-shares/unmount-share-2.png)
 

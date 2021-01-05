@@ -11,19 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a4e8ec75d6610e19f241d2047518c3a43132a6e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 057ff064264485a9aea6fc2b31fe57ce37c805ce
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079027"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895622"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Felsöka hybrid Azure Active Directory anslutna enheter med äldre versioner 
 
 Den här artikeln gäller endast för följande enheter: 
 
 - Windows 7 
-- Windows 8.1 
+- Windows 8,1 
 - Windows Server 2008 R2 
 - Windows Server 2012 
 - Windows Server 2012 R2 
@@ -44,6 +44,7 @@ Den här artikeln innehåller fel söknings vägledning för hur du löser event
 - Du kan också hämta flera poster för en enhet på fliken Användar information på grund av en ominstallation av operativ systemet eller manuell omregistrering.
 - Inledande registrering/anslutning av enheter är konfigurerad för att utföra ett försök antingen på inloggning eller lås/Lås upp. Det kan finnas 5 minuters fördröjning som utlöses av en aktivitet i Schemaläggaren. 
 - Kontrol lera att [KB4284842](https://support.microsoft.com/help/4284842) har installerats, om det är Windows 7 SP1 eller windows Server 2008 R2 SP1. Den här uppdateringen förhindrar framtida autentiseringsfel på grund av kundens åtkomst förlust till skyddade nycklar när lösen ordet har ändrats.
+- Hybrid Azure AD Join kan Miss lyckas när en användare har ändrat sina UPN, vilket bryter sömlös SSO-autentiseringsprocessen. Under anslutnings processen kan du se att den fortfarande skickar det gamla UPN till Azure AD, såvida inte cookies för webbläsarsessionen rensas eller användaren uttryckligen loggar ut och tar bort gamla UPN.
 
 ## <a name="step-1-retrieve-the-registration-status"></a>Steg 1: Hämta registrerings status 
 
@@ -65,7 +66,7 @@ Om enheten inte var hybrid Azure AD-ansluten kan du försöka göra en hybrid Az
 
 - Ett felkonfigurerat AD FS-eller Azure AD-eller nätverks problem
 
-    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/02.png" alt-text="Skärm bild av dialog rutan Workplace Join för Windows. Text som innehåller en e-postadress som anger att en viss enhet är ansluten till en arbets plats." border="false":::
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/02.png" alt-text="Skärm bild av dialog rutan Workplace Join för Windows. Text rapporter som ett fel uppstod under autentiseringen av kontot." border="false":::
     
    - Autoworkplace.exe kan inte tyst autentisera med Azure AD eller AD FS. Detta kan orsakas av saknade eller felkonfigurerade AD FS (för federerade domäner) eller saknade eller felkonfigurerade Azure AD sömlösa enskilda Sign-On (för hanterade domäner) eller nätverks problem. 
    - Det kan bero på att Multi-Factor Authentication (MFA) är aktiverat/konfigurerat för användaren och WIAORMULTIAUTHN inte har kon figurer ATS på den AD FS servern. 
@@ -76,7 +77,7 @@ Om enheten inte var hybrid Azure AD-ansluten kan du försöka göra en hybrid Az
    - Din organisation använder Azure AD sömlös enkel inloggning `https://autologon.microsoftazuread-sso.com` eller finns `https://aadg.windows.net.nsatc.net` inte på enhetens intranäts inställningar på Internet och **Tillåt att uppdateringar av statusfältet via skript** inte har Aktiver ATS för zonen Intranät.
 - Du är inte inloggad som domän användare
 
-   :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/03.png" alt-text="Skärm bild av dialog rutan Workplace Join för Windows. Text som innehåller en e-postadress som anger att en viss enhet är ansluten till en arbets plats." border="false":::
+   :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/03.png" alt-text="Skärm bild av dialog rutan Workplace Join för Windows. Text rapporter som ett fel uppstod under verifieringen av kontot." border="false":::
 
    Det finns några olika orsaker till varför detta kan inträffa:
 
@@ -84,11 +85,11 @@ Om enheten inte var hybrid Azure AD-ansluten kan du försöka göra en hybrid Az
    - Klienten kan inte ansluta till en domänkontrollant.    
 - En kvot har nåtts
 
-    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/04.png" alt-text="Skärm bild av dialog rutan Workplace Join för Windows. Text som innehåller en e-postadress som anger att en viss enhet är ansluten till en arbets plats." border="false":::
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/04.png" alt-text="Skärm bild av dialog rutan Workplace Join för Windows. Text rapporterar ett fel eftersom användaren har nått det maximala antalet anslutna enheter." border="false":::
 
 - Tjänsten svarar inte 
 
-    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/05.png" alt-text="Skärm bild av dialog rutan Workplace Join för Windows. Text som innehåller en e-postadress som anger att en viss enhet är ansluten till en arbets plats." border="false":::
+    :::image type="content" source="./media/troubleshoot-hybrid-join-windows-legacy/05.png" alt-text="Skärm bild av dialog rutan Workplace Join för Windows. Text rapporterar att det uppstod ett fel på grund av att servern inte svarade." border="false":::
 
 Du kan också hitta statusinformation i händelse loggen under: **program och tjänster Log\Microsoft-Workplace Join**
   
@@ -97,7 +98,7 @@ Du kan också hitta statusinformation i händelse loggen under: **program och tj
 - Datorn är inte ansluten till din organisations interna nätverk eller till ett VPN med en anslutning till din lokala AD-domänkontrollant.
 - Du är inloggad på datorn med ett lokalt dator konto. 
 - Tjänst konfigurations problem: 
-   - AD FS-servern har inte kon figurer ATS för att stödja **WIAORMULTIAUTHN** . 
+   - AD FS-servern har inte kon figurer ATS för att stödja **WIAORMULTIAUTHN**. 
    - Datorns skog har inget objekt för tjänst anslutnings punkt som pekar på ditt verifierade domän namn i Azure AD 
    - Eller om din domän hanteras, har sömlöst SSO inte kon figurer ATS eller fungerar.
    - En användare har nått gränsen för enheter. 

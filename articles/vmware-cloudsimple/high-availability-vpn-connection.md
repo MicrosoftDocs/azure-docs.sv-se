@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-lösning av CloudSimple – konfigurera hög tillgänglighet från lokal plats till CloudSimple VPN-gateway
 description: Beskriver hur du konfigurerar en anslutning med hög tillgänglighet från din lokala miljö till en CloudSimple VPN-gateway som är aktive rad för hög tillgänglighet
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6e3118814eacc6cc63b5db59bd7f1877c1d347dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80805aaa172518c40c7ad123ca24361ee0f15e69
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77025273"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895707"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>Konfigurera en anslutning med hög tillgänglighet från lokal plats till CloudSimple VPN-gateway
 
@@ -162,7 +162,7 @@ Eftersom den här konfigurationen gäller för VPN med hög tillgänglighet krä
 
 Vägar är nödvändiga för lokala undernät för att uppnå CloudSimple privata moln under nät.
 
-Välj **Network**  >  **virtuella nätverks routrar**  >  *standard*  >  **statiska vägar**  >  **Lägg till**, konfigurera följande fält och klicka på **OK**.
+Välj   >  **virtuella nätverks routrar**  >  *standard*  >  **statiska vägar**  >  **Lägg till**, konfigurera följande fält och klicka på **OK**.
 
 * Namn. Ange ett namn för att enkelt identifiera syftet med vägen.
 * Mål. Ange de CloudSimple-undernät för privata moln som ska nås via S2S tunnel Interfaces från lokala platser

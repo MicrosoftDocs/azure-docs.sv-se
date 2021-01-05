@@ -1,19 +1,19 @@
 ---
 title: Skapa VLAN/undernät – Azure VMware-lösning av CloudSimple
 description: Azure VMware-lösningar av CloudSimple – beskriver hur du skapar och hanterar VLAN/undernät för dina privata moln och sedan använder brand Väggs regler.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c0160513eb9abca54adbc3819b982348dc202c90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06bebcb7369f6604fc79c1d3d0a4a6afa8b0a1da
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77566003"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896319"
 ---
 # <a name="create-and-manage-vlanssubnets-for-your-private-clouds"></a>Skapa och hantera VLAN/undernät för privata moln
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 5894a57e6495ca02002c8f32b893e696c7f5679b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5c21efc9cb082d915fd87e9ae01606fce18016bc
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350712"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897317"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Självstudie: Konfigurera ServiceNow för automatisk användar etablering
 
@@ -50,7 +50,7 @@ Det scenario som beskrivs i den här självstudien förutsätter att du redan ha
 
 1. Identifiera namnet på ServiceNow-instansen. Du kan hitta instans namnet i den URL som du använder för att få åtkomst till ServiceNow. I exemplet nedan är instans namnet dev35214.
 
-   ![ServiceNow-instans](media/servicenow-provisioning-tutorial/servicenow_instance.png)
+   ![ServiceNow-instans](media/servicenow-provisioning-tutorial/servicenow-instance.png)
 
 2. Hämta autentiseringsuppgifter för en administratör i ServiceNow. Navigera till användar profilen i ServiceNow och kontrol lera att användaren har administratörs rollen. 
 
@@ -94,7 +94,7 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
 5. Under avsnittet **admin credentials** måste du skriva in dina autentiseringsuppgifter och användar namn för ServiceNow-administratören. Klicka på **Testa anslutning** för att se till att Azure AD kan ansluta till ServiceNow. Om anslutningen Miss lyckas kontrollerar du att ServiceNow-kontot har administratörs behörighet och försöker igen.
 
-    ![Skärm bild som visar sidan tjänst etablering där du kan ange autentiseringsuppgifter för administratören.](./media/servicenow-provisioning-tutorial/provisioning.png)
+    ![Skärm bild som visar sidan tjänst etablering där du kan ange autentiseringsuppgifter för administratören.](./media/servicenow-provisioning-tutorial/servicenow-provisioning.png)
 
 6. I fältet **E-postavisering** anger du e-postadressen till den person eller grupp som ska ta emot meddelanden om etableringsfel. Markera sedan kryssrutan **Skicka ett e-postmeddelande när ett fel uppstår**.
 
@@ -142,11 +142,16 @@ När du har konfigurerat etableringen använder du följande resurser till att �
   
   `Details: Your ServiceNow instance name appears to be invalid.  Please provide a current ServiceNow administrative user name and          password along with the name of a valid ServiceNow instance.`                                                              
 
-   Det här felet indikerar ett problem som kommunicerar med ServiceNow-instansen. Kontrol lera att följande inställningar är inaktiverade i ServiceNow för att kontrol lera att följande inställningar är *inaktiverade* :
+   Det här felet indikerar ett problem som kommunicerar med ServiceNow-instansen. 
+   
+   Om du har problem med att testa anslutningen försöker du göra följande inställningar **inaktiverade** i ServiceNow:
    
    1. Välj **säkerhets**  >  **Inställningar** för system säkerhet  >  **kräver grundläggande autentisering för inkommande schema begär Anden**.
    2. Välj **system egenskaper**  >  **webb tjänster**  >  **kräver grundläggande auktorisering för inkommande SOAP-begäranden**.
 
+   ![Auktoriserar SOAP-begäran](media/servicenow-provisioning-tutorial/servicenow-webservice.png)
+
+   Om det löser problemen kontaktar du ServiceNow-supporten och ber dem att aktivera SOAP-felsökning för att felsöka. 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
 * [Hantera användarkontoetablering för Enterprise-appar](../app-provisioning/configure-automatic-user-provisioning-portal.md)

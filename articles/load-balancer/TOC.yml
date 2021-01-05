@@ -93,6 +93,8 @@
       href: manage.md
     - name: Skalningsuppsättningar för virtuella datorer
       items:
+        - name: Uppdatera eller ta bort befintliga Azure Load Balancer-objekt som används av VM-skalningsuppsättningar
+          href: update-load-balancer-with-vm-scale-set.md
         - name: Använd med en befintlig Azure Load Balancer – Portalen
           href: configure-vm-scale-set-portal.md
         - name: Använd med en befintlig Azure Load Balancer – PowerShell

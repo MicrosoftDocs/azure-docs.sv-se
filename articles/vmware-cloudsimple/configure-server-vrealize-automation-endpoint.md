@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-lösning av CloudSimple – konfigurera vCenter i privat moln för vRealize Automation
 description: Beskriver hur du konfigurerar en VMware vCenter-Server i ditt CloudSimple privata moln som en slut punkt för VMware vRealize Automation
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: df73acfc469a8b7b5329b61095aefdbd73baafd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b6c6a320e6299808a91214476c8c0460f9f53d9
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77024848"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895061"
 ---
 # <a name="set-up-vcenter-on-your-private-cloud-for-vmware-vrealize-automation"></a>Konfigurera vCenter i ditt privata moln för VMware vRealize Automation
 
@@ -48,16 +48,16 @@ Slutför de här uppgifterna innan du konfigurerar vCenter-servern:
 2. Distribuera en vSphere-agent för Automation-slutpunkten för vRealize.
     1. Gå till https://*vra-URL*: 5480/Installer, där *vra-URL* är den URL som du använder för att komma åt vRealize Automation administration UI.
     2. Klicka på **installations programmet för IaaS** för att hämta installations programmet.<br>
-    Namngivnings konventionen för installations filen är setup_*vra-URL* @5480.exe .
+    Namngivnings konventionen för installations filen är setup_ *vra-URL* @5480.exe .
     3. Kör installationsprogrammet. Klicka på **Nästa** på välkomstskärmen.
     4. Godkänn licens avtalet och klicka på **Nästa**.
-    5. Ange inloggnings informationen, klicka på **acceptera certifikat**och klicka sedan på **Nästa**.
+    5. Ange inloggnings informationen, klicka på **acceptera certifikat** och klicka sedan på **Nästa**.
     ![vRA-autentiseringsuppgifter](media/configure-vra-endpoint-login.png)
     6. Välj **anpassad installation** och **proxy agenter** och klicka på **Nästa**.
     ![Installations typ för vRA](media/configure-vra-endpoint-install-type.png)
     7. Ange inloggnings informationen för IaaS-servern och klicka på **Nästa**. Om du använder Active Directory anger du användar namnet i formatet **domän \ användare** . Annars använder du **user@domain** format.
     ![vRA inloggnings information](media/configure-vra-endpoint-account.png)
-    8. Ange **vSphere** för **agent typ**för proxyinställningarna. Ange ett namn för agenten.
+    8. Ange **vSphere** för **agent typ** för proxyinställningarna. Ange ett namn för agenten.
     9. Ange IaaS-serverns FQDN i värd fälten för **hanterings tjänst** och i **webb tjänstens värd fält i modell hanteraren** . Klicka på **testa** för att testa anslutningen för varje FQDN-värde. Om testet Miss lyckas ändrar du DNS-inställningarna så att IaaS-serverns värdnamn är löst.
     10. Ange ett namn för vCenter Server-slutpunkten för det privata molnet. Registrera namnet för senare användning i konfigurations processen.
 
@@ -69,10 +69,10 @@ Slutför de här uppgifterna innan du konfigurerar vCenter-servern:
 ## <a name="configure-the-vsphere-agent"></a>Konfigurera vSphere-agenten
 
 1. Gå till https://*vra-URL*/vcac och logga in som **ConfigurationAdmin**.
-2. Välj **Infrastructure**  >  **Endpoints**  >  **slut punkter**för infrastruktur slut punkter.
+2. Välj   >    >  **slut punkter** för infrastruktur slut punkter.
 3. Välj **ny**  >  **virtuell**  >  **vSphere**.
 4. Ange slut punkts namnet för vSphere som du angav i föregående procedur.
-5. För **adress**anger du det privata molnets vCenter Server URL i formatet https://*vCenter – FQDN*/SDK, där *vCenter-FQDN* är namnet på vCenter-servern.
+5. För **adress** anger du det privata molnets vCenter Server URL i formatet https://*vCenter – FQDN*/SDK, där *vCenter-FQDN* är namnet på vCenter-servern.
 6. Ange autentiseringsuppgifterna för den administrativa användaren vRealize Automation IaaS som CloudSimple-stöd har skapats för dig.
 7. Verifiera användarautentiseringsuppgifterna genom att klicka på **Testa anslutning** . Om testet Miss lyckas, verifiera URL, konto information och [slut punkts namn](#verify-the-endpoint-name) och försök igen.
 8. När testet är klart klickar du på **OK** för att skapa vSphere-slutpunkten.

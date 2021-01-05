@@ -6,14 +6,14 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: fa8f9ad2d15730d2a0a2c1a722aa3970bbc8f173
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6e80b1446142786cbd77245a2b6696cac1bb9272
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033994"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897101"
 ---
-# <a name="support-matrix-for-vmware-migration"></a>Support mat ris för VMware-migrering
+# <a name="support-matrix-for-vmware-migration"></a>Stödmatris för VMware-migrering
 
 Den här artikeln sammanfattar support inställningar och begränsningar för migrering av virtuella VMware-datorer med [Azure Migrate: Server-migrering](migrate-services-overview.md#azure-migrate-server-migration-tool) . Om du vill ha information om hur du bedömer virtuella VMware-datorer för migrering till Azure läser du [matrisen för utvärderings support](migrate-support-matrix-vmware.md).
 
@@ -59,7 +59,7 @@ I tabellen sammanfattas kraven för att migrera utan agent för virtuella VMware
 **Virtuella Linux-datorer i Azure** | Vissa virtuella datorer kan kräva ändringar så att de kan köras i Azure.<br/><br/> För Linux gör Azure Migrate ändringarna automatiskt för dessa operativ system:<br/> -Red Hat Enterprise Linux 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x<br/> -% OS 7,7, 7,6, 7,5, 7,4, 6. x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> – SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19,04, 19,10, 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8 <br/> Oracle Linux 7,7, 7,7 – CI<br/> För andra operativ system gör du [nödvändiga ändringar](prepare-for-migration.md#verify-required-changes-before-migrating) manuellt.
 **Linux-start** | Om/boot finns på en dedikerad partition bör den finnas på OS-disken och inte spridas över flera diskar.<br/> Om/Boot är en del av rot-partitionen (/) bör partitionen/-partitionen finnas på OS-disken och inte omfatta andra diskar.
 **UEFI-start** | Stöds. UEFI-baserade virtuella datorer kommer att migreras till virtuella datorer i Azure generation 2. 
-**Disk storlek** | 2 TB OS-disk (BIOS-start); 4 TB OS-disk (UEFI-start); 32 TB för data diskar.
+**Disk storlek** | 2 TB OS-disk;  32 TB för data diskar.
 **Disk gränser** |  Upp till 60 diskar per virtuell dator.
 **Krypterade diskar/volymer** | Virtuella datorer med krypterade diskar/volymer stöds inte för migrering.
 **Delat disk kluster** | Stöds inte.
@@ -122,7 +122,7 @@ Tabellen sammanfattar VMware VM-stöd för virtuella VMware-datorer som du vill 
 **UEFI-start** | Stöds. UEFI-baserade virtuella datorer kommer att migreras till virtuella datorer i Azure generation 2. 
 **UEFI – säker start**         | Stöds inte för migrering.
 **Mål disk** | Virtuella datorer kan bara migreras till Managed disks (standard-HDD, standard SSD, Premium SSD) i Azure.
-**Disk storlek** | 2 TB OS-disk (BIOS-start); 4 TB OS-disk (UEFI-start); 8 TB för data diskar.
+**Disk storlek** | 2 TB OS-disk; 32 TB för data diskar.
 **Disk gränser** |  Upp till 63 diskar per virtuell dator.
 **Krypterade diskar/volymer** | Virtuella datorer med krypterade diskar/volymer stöds inte för migrering.
 **Delat disk kluster** | Stöds inte.

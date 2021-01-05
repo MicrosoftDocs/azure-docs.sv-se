@@ -1,19 +1,19 @@
 ---
 title: Azure VMware-lösning av CloudSimple – skapa CloudSimple privat moln
 description: Beskriver hur du skapar ett CloudSimple privat moln för att utöka VMware-arbetsbelastningar till molnet med drift flexibilitet och kontinuitet
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4f700ac34b6c6e2a651366bee7dd1785c608064f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f4af4a36e719cbf15b3f0af77db81a32f2f2e42
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77024797"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896285"
 ---
 # <a name="create-a-cloudsimple-private-cloud"></a>Skapa ett privat CloudSimple-moln
 
@@ -50,7 +50,7 @@ Få åtkomst till [CloudSimple-portalen](access-cloudsimple-portal.md).
 1. Välj **Alla tjänster**.
 2. Sök efter **CloudSimple-tjänster**.
 3. Välj den CloudSimple-tjänst som du vill skapa ditt privata moln på.
-4. Från **Översikt**klickar du på **skapa privat moln** för att öppna en ny flik i webbläsaren för CloudSimple-portalen. Logga in med dina inloggnings uppgifter för Azure om du uppmanas till detta.
+4. Från **Översikt** klickar du på **skapa privat moln** för att öppna en ny flik i webbläsaren för CloudSimple-portalen. Logga in med dina inloggnings uppgifter för Azure om du uppmanas till detta.
 
     ![Skapa ett privat moln från Azure](media/create-private-cloud-from-azure.png)
 

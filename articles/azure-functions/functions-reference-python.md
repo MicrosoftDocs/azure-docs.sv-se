@@ -4,12 +4,12 @@ description: Förstå hur du utvecklar funktioner med python
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 8254abda68949e6884143316d4b29b07ade129dc
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: cf1d8f89de61a548f6c542d6d8a73fde93675e95
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96167853"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895418"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Guide för Azure Functions python-utvecklare
 
@@ -299,93 +299,13 @@ På samma sätt kan du ange `status_code` och `headers` för svarsmeddelandet i 
 
 ## <a name="scaling-and-performance"></a>Skalning och prestanda
 
-Det är viktigt att förstå hur funktionerna fungerar och hur den påverkar prestandan som påverkar hur din funktions app skalas. Detta är särskilt viktigt när du utformar hög presterande appar. Följande är flera faktorer att tänka på när du utformar, skriver och konfigurerar dina Functions-appar.
-
-### <a name="horizontal-scaling"></a>Horisontell skalning
-Som standard övervakar Azure Functions automatiskt belastningen på ditt program och skapar ytterligare värd instanser för python vid behov. Funktioner använder inbyggda tröskelvärden för olika utlösare för att bestämma när du ska lägga till instanser, till exempel ålder på meddelanden och kös Tor lek för QueueTrigger. Dessa tröskelvärden kan inte konfigureras av användaren. Mer information finns i [så här fungerar förbruknings-och Premium planerna](functions-scale.md#how-the-consumption-and-premium-plans-work).
-
-### <a name="improving-throughput-performance"></a>Förbättra data flödes prestanda
-
-En nyckel för att förbättra prestandan är att förstå hur appen använder resurser och kunna konfigurera din funktions app enligt detta.
-
-#### <a name="understanding-your-workload"></a>Förstå din arbets belastning
-
-Standardkonfigurationerna passar för de flesta Azure Functions-program. Du kan dock förbättra prestandan för dina programs data flöde genom att använda konfigurationer baserade på din arbets belastnings profil. Det första steget är att förstå vilken typ av arbets belastning som körs.
-
-| | I/O-Bound-arbetsbelastning | PROCESSOR-bindande arbets belastning |
-|--| -- | -- |
-|**Egenskaper för Function-appen**| <ul><li>Appen måste hantera många samtidiga anrop.</li> <li> App bearbetar ett stort antal I/O-händelser, t. ex. nätverks anrop och disk läsning/skrivning.</li> </ul>| <ul><li>I appen körs tids krävande beräkningar, till exempel bild storleks ändring.</li> <li>Data omvandlingen används av appen.</li> </ul> |
-|**Exempel**| <ul><li>Webb-API:er</li><ul> | <ul><li>Databearbetning</li><li> Maskin inlärnings störningar</li><ul>|
-
-
-> [!NOTE]
->  Eftersom Reality Functions-arbetsbelastningar är mest av en blandning av I/O och processor gränser, rekommenderar vi att du studerar arbets belastningen under realistiska produktions belastningar.
-
-
-#### <a name="performance-specific-configurations"></a>Prestanda-/regionsspecifika konfigurationer
-
-När du förstår arbets belastnings profilen för din Function-app, är följande konfigurationer som du kan använda för att förbättra data flödes prestandan för dina funktioner.
-
-##### <a name="async"></a>Async
-
-Eftersom [python är en enkel tråds körning](https://wiki.python.org/moin/GlobalInterpreterLock)kan en värd instans för python endast bearbeta ett funktions anrop åt gången. För program som bearbetar ett stort antal I/O-händelser och/eller är I/O-bundit kan du förbättra prestanda avsevärt genom att köra funktioner asynkront.
-
-Om du vill köra en funktion asynkront använder du `async def` instruktionen, som kör funktionen med [asyncio](https://docs.python.org/3/library/asyncio.html) direkt:
-
-```python
-async def main():
-    await some_nonblocking_socket_io_op()
-```
-Här är ett exempel på en funktion med HTTP-utlösare som använder [aiohttp](https://pypi.org/project/aiohttp/) http-klient:
-
-```python
-import aiohttp
-
-import azure.functions as func
-
-async def main(req: func.HttpRequest) -> func.HttpResponse:
-    async with aiohttp.ClientSession() as client:
-        async with client.get("PUT_YOUR_URL_HERE") as response:
-            return func.HttpResponse(await response.text())
-
-    return func.HttpResponse(body='NotFound', status_code=404)
-```
-
-
-En funktion utan `async` nyckelordet körs automatiskt i en asyncio tråd-pool:
-
-```python
-# Runs in an asyncio thread-pool
-
-def main():
-    some_blocking_socket_io()
-```
-
-För att få full nytta av att köra funktioner asynkront måste i/O-åtgärden/-biblioteket som används i din kod också ha asynkron implementerad. Att använda synkrona I/O-åtgärder i funktioner som definieras som asynkrona **kan försämra** den övergripande prestandan.
-
-Här följer några exempel på klient bibliotek som har implementerat asynkront mönster:
-- [aiohttp](https://pypi.org/project/aiohttp/) -http-klient/server för asyncio 
-- [Streams API](https://docs.python.org/3/library/asyncio-stream.html) – asynkrona/await-klara primitiver på hög nivå för att arbeta med nätverks anslutning
-- [Janus Queue](https://pypi.org/project/janus/) – tråd säker asyncio-medveten kö för python
-- [pyzmq](https://pypi.org/project/pyzmq/) – python-bindningar för ZeroMQ
- 
-
-##### <a name="use-multiple-language-worker-processes"></a>Använd flera språk arbets processer
-
-Som standard har varje Functions Host-instans en enda språk arbets process. Du kan öka antalet arbets processer per värd (upp till 10) med hjälp av inställningen [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) program. Azure Functions försöker sedan jämnt distribuera samtidiga funktions anrop över dessa arbetare.
-
-För CPU-kopplade appar bör du ange att antalet språk arbetare ska vara samma som eller högre än antalet kärnor som är tillgängliga per Function-app. Mer information finns i [tillgängliga instanser SKU: er](functions-premium-plan.md#available-instance-skus). 
-
-I/O-kopplade appar kan också dra nytta av att öka antalet arbets processer utöver antalet tillgängliga kärnor. Tänk på att om du anger antalet arbets uppgifter för hög kan du påverka den totala prestandan på grund av det ökade antalet kontext växlar som krävs. 
-
-FUNCTIONS_WORKER_PROCESS_COUNT gäller för varje värd som fungerar när du skalar ditt program för att möta efter frågan.
-
+För skalnings-och prestanda metod tips för python Function-appar, se [artikeln python Scale and Performance](python-scale-performance-reference.md).
 
 ## <a name="context"></a>Kontext
 
 Om du vill hämta anrops kontexten för en funktion under körningen ska du inkludera [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) argumentet i signaturen.
 
-Ett exempel:
+Till exempel:
 
 ```python
 import azure.functions
@@ -695,7 +615,7 @@ Om du vill ha en lista över förinstallerade system bibliotek i python Worker D
 |  Functions-körning  | Debian-version | Python-versioner |
 |------------|------------|------------|
 | Version 2. x | Sträck  | [Python 3,6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
-| Version 3. x | Buster | [Python 3,6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3,8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
+| Version 3. x | Buster | [Python 3,6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
 
 ## <a name="cross-origin-resource-sharing"></a>Cross-origin resource sharing (CORS)
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: e7d013775861f290d532e0d7c132896ebeff8ae8
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 137670715af8b90d8a867459fa50249cd9be8e70
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680218"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897124"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>Plattforms stöd för migrering av IaaS-resurser från klassisk till Azure Resource Manager i Linux
 
@@ -23,6 +23,8 @@ ms.locfileid: "97680218"
 
 
 Den här artikeln innehåller en översikt över Migreringsverktyg för plattform som stöds, hur du migrerar resurser från Azure Service Manager (ASM) aka Classic till Resource Manager (ARM) distributions modeller och information om hur du ansluter resurser från de två distributions modeller som finns i din prenumeration med hjälp av virtuella nätverks plats-till-plats-gatewayer. Du kan läsa mer om [Azure Resource Manager funktioner och förmåner](../azure-resource-manager/management/overview.md). 
+
+ASM stöder två olika beräknings produkter, Azure Virtual Machines (klassisk) aka IaaS VM & [Azure Cloud Services (klassisk)](https://docs.microsoft.com/azure/cloud-services/) aka PaaS-VM: ar eller Web/Worker-roller. Det här dokumentet pratar bara om migrering av Azure Virtual Machines (klassisk).
 
 ## <a name="goal-for-migration"></a>Mål för migrering
 Med Resource Manager kan du distribuera komplexa program via mallar, konfigurera virtuella datorer med hjälp av VM-tillägg och införliva åtkomst hantering och taggning. Azure Resource Manager innehåller skalbar, parallell distribution för virtuella datorer i tillgänglighets uppsättningar. Den nya distributions modellen innehåller också livs cykel hantering av beräkning, nätverk och lagring oberoende av varandra. Slutligen är det en fokus på att aktivera säkerhet som standard med tvång av virtuella datorer i ett virtuellt nätverk.

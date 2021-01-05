@@ -1,19 +1,19 @@
 ---
 title: Ta bort en Azure VMware-lösning via CloudSimple privat moln
 description: Lär dig hur du tar bort ett privat CloudSimple-moln. När du tar bort ett privat moln tas alla kluster bort.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/06/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 11fda35f5b236a4930b3d90eb7e3a62ea60207cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7db967955dc86db39db4dcb2b3a2baf8906efb20
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88142238"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896268"
 ---
 # <a name="delete-a-cloudsimple-private-cloud"></a>Ta bort ett privat CloudSimple-moln
 

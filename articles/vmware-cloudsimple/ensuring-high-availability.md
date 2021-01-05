@@ -1,19 +1,19 @@
 ---
 title: Se till att programmet är högt tillgängligt när du kör i VMware på Azure
 description: Beskriver CloudSimple funktioner för hög tillgänglighet för att åtgärda vanliga program krascher för program som körs i ett CloudSimple privat moln
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a3eed033ba6a1a6f9237116a53ec7751ae906fe4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bb1f8bb2aaeab88e5a9ea19534c8983af8c1626
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77025358"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895758"
 ---
 # <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>Se till att programmet är högt tillgängligt när du kör i VMware på Azure
 

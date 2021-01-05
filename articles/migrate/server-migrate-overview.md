@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 5e4aaea5b565e126f633b04215bbc3a24faf2cde
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 075f113975e5f340493fe33584d8072190be77c8
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753611"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896489"
 ---
 # <a name="select-a-vmware-migration-option"></a>Välj ett alternativ för VMware-migrering
 
@@ -43,7 +43,7 @@ När du har granskat begränsningarna kan du med hjälp av de steg som ingår i 
 **Uppgift** | **Information** |**Utan agent** | **Agent-baserad**
 --- | --- | --- | ---
 **Distribuera Azure Migrate-apparaten** | En förenklad apparat som körs på en virtuell VMware-dator.<br/><br/> Installations programmet används för att identifiera och utvärdera datorer och migrera datorer med hjälp av en agent lös migrering. | Krävs.<br/><br/> Om du redan har konfigurerat installationen för utvärdering kan du använda samma installation för att migrera utan agent. | Krävs inte.<br/><br/> Om du har konfigurerat en installations program för utvärdering kan du lämna den på plats eller ta bort den om du är klar med utvärderingen.
-**Använda verktyget Server bedömning** | Utvärdera datorer med verktyget Azure Migrate: Server bedömning. | Du kan utvärdera datorer innan du migrerar dem, men du behöver inte. | Utvärderingen är valfri | Utvärderingen är valfri.
+**Använda verktyget Server bedömning** | Utvärdera datorer med verktyget Azure Migrate: Server bedömning. | Du kan utvärdera datorer innan du migrerar dem, men du behöver inte. | Utvärderingen är valfri.
 **Använda verktyget Migreringsverktyg** | Lägg till verktyget för migrering av Azure Migrate server i Azure Migrate projektet. | Obligatorisk | Obligatorisk
 **Förbereda VMware för migrering** | Konfigurera inställningar på VMware-servrar och virtuella datorer. | Obligatorisk | Obligatorisk
 **Installera mobilitets tjänsten på virtuella datorer** | Mobilitets tjänsten körs på varje virtuell dator som du vill replikera | Krävs inte | Obligatorisk

@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 11/30/2020
-ms.openlocfilehash: c65833e5bf581c6326bf9362c7e5fc00a985d301
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.date: 01/04/2021
+ms.openlocfilehash: ca27df7188c5edd1da94fc41707f6c25eb4034bf
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96355112"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895146"
 ---
 # <a name="use-managed-identities-to-access-event-hubfrom-an-azure-stream-analytics-job-preview"></a>Använda hanterade identiteter för att komma åt Händelsehubben från ett Azure Stream Analytics jobb (förhands granskning)
 
@@ -20,6 +20,9 @@ Azure Stream Analytics stöder autentisering med hanterad identitet för både i
 En hanterad identitet är ett hanterat program registrerat i Azure Active Directory som representerar ett angivet Stream Analytics jobb. Det hanterade programmet används för att autentisera till en mål resurs, inklusive Event Hubs som finns bakom en brand vägg eller ett virtuellt nätverk (VNet). Mer information om hur du kringgår brand väggar finns i [Tillåt åtkomst till Azure Event Hubs-namnområden via privata slut punkter](../event-hubs/private-link-service.md#trusted-microsoft-services).
 
 Den här artikeln visar hur du aktiverar hanterad identitet för Event Hubs indata eller utdata för ett Stream Analytics jobb via Azure Portal.Innan du har aktiverat hanterad identitet måste du först ha en Stream Analytics jobb-och Event Hub-resurs.
+
+### <a name="limitation"></a>Begränsning
+Under för hands versionen fungerar inte insamlings indata från Event Hubs på Azure Portal när du använder läget för hanterad identitets autentisering.
 
 ## <a name="create-a-managedidentity"></a>Skapa en hanterad identitet  
 

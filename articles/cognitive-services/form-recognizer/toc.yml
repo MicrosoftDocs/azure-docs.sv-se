@@ -7,45 +7,13 @@
       href: overview.md
     - name: Nyheter
       href: whats-new.md
-- name: Snabbstarter
+- name: Komma igång med Formigenkänning
   expaned: true
   items:
-    - name: Använda klientbibliotek
+    - name: Använda klientbiblioteket eller REST-API
       href: quickstarts/client-library.md
     - name: Använda exempeletikettverktyget
-      items:
-        - name: Träna anpassad modell med etiketter
-          href: quickstarts/label-tool.md
-    - name: Använda REST API
-      items:
-        - name: Träna och använda anpassad modell utan etiketter
-          items:
-            - name: cURL
-              href: quickstarts/curl-train-extract.md
-            - name: Python
-              href: quickstarts/python-train-extract.md
-        - name: Träna och använda anpassad modell med etiketter
-          items:
-            - name: Python
-              href: quickstarts/python-labeled-data.md
-        - name: Använda en inbyggd kvittomodell
-          items:
-            - name: cURL
-              href: quickstarts/curl-receipts.md
-            - name: Python
-              href: quickstarts/python-receipts.md
-        - name: Använd fördefinierad visitkortsmodell
-          items:
-            - name: Python
-              href: quickstarts/python-business-cards.md
-        - name: Använda fördefinierad fakturamodell
-          items:
-            - name: Python
-              href: quickstarts/python-invoices.md
-        - name: Hämta information om layout
-          items:
-            - name: Python
-              href: quickstarts/python-layout.md
+      href: quickstarts/label-tool.md
 - name: Självstudier
   items:
     - name: Använda formigenkänning med Cognitive Search
@@ -77,7 +45,8 @@
           href: form-recognizer-container-configuration.md
           displayName: 'docker, container, run, billing, apikey, logging'
         - name: Använda containerinstanser
-          href: deploy-form-recognizer-on-container-instances.md
+          maintainContext: true
+          href: ../containers/azure-container-instance-recipe.md
         - name: Dokumentation om containrar för Cognitive Services
           href: ../containers/index.yml
     - name: Säkerhetskopiera och återställa modeller

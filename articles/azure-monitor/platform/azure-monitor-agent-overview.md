@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: cf64deb17bea508637debb5612231d355d523fbb
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 57b350c7772d42e5dbd89c1d03c89f905a26398b
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95315591"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895537"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Översikt över Azure Monitor Agent (för hands version)
 Azure Monitor agenten (AMA) samlar in övervaknings data från gäst operativ systemet på virtuella datorer och levererar det till Azure Monitor. Den här artikeln innehåller en översikt över Azure Monitor Agent, inklusive hur du installerar den och hur du konfigurerar data insamling.
@@ -54,7 +54,7 @@ Följande begränsningar gäller vid en offentlig för hands version av Azure Mo
 
 - Azure Monitor agenten har inte stöd för lösningar och insikter som Azure Monitor for VMs och Azure Security Center. Det enda scenario som stöds för närvarande är att samla in data med de data insamlings regler som du konfigurerar. 
 - Data insamlings regler måste skapas i samma region som en Log Analytics arbets yta som används som mål.
-- Virtuella Azure-datorer och Azure Arc-aktiverade servrar stöds för närvarande. Skalnings uppsättningar för virtuella datorer, Azure Kubernetes-tjänsten och andra beräknings resurs typer stöds inte för närvarande.
+- Virtuella Azure-datorer, skalnings uppsättningar för virtuella datorer och Azure Arc-aktiverade servrar stöds för närvarande. Azure Kubernetes-tjänsten och andra beräknings resurs typer stöds inte för närvarande.
 - Den virtuella datorn måste ha åtkomst till följande HTTPS-slutpunkter:
   - *.ods.opinsights.azure.com
   - *. ingest.monitor.azure.com

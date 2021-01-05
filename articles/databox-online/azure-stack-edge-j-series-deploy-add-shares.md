@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/22/2020
+ms.date: 01/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 845eef6e119823af789c9a263bfb750845d55bc0
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 919ec1c3c2b71b7d9aecb90d434aa919c7188d38
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740920"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897653"
 ---
 # <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-pro-gpu"></a>Självstudie: överföra data via resurser med Azure Stack Edge Pro GPU
 
@@ -43,7 +43,7 @@ Innan du lägger till resurser i Azure Stack Edge Pro, se till att:
 
 Om du vill skapa en resurs, gör du så här:
 
-1. I [Azure Portal](https://portal.azure.com/)väljer du din Azure Stack Edge-resurs och går sedan till **översikten**. Enheten bör vara online.
+1. I [Azure Portal](https://portal.azure.com/)väljer du din Azure Stack Edge-resurs och går sedan till **översikten**. Enheten bör vara online. Välj **Cloud Storage Gateway**.
 
    ![Enhet online](./media/azure-stack-edge-j-series-deploy-add-shares/device-online-1.png)
 
@@ -51,7 +51,7 @@ Om du vill skapa en resurs, gör du så här:
 
    ![Lägga till en resurs](./media/azure-stack-edge-j-series-deploy-add-shares/select-add-share-1.png)
 
-3. I fönstret **Lägg till resurs** gör du följande:
+3. I fönstret **Lägg till resurs** följer du dessa steg:
 
     a. Ange ett unikt namn på resursen i rutan **Namn**.  
     Resurs namnet får bara innehålla bokstäver, siffror och bindestreck. Det måste innehålla mellan 3 och 63 tecken och börja med en bokstav eller en siffra. Bindestreck måste föregås och följas av en bokstav eller ett numeriskt värde.

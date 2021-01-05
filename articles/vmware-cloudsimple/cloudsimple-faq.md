@@ -1,19 +1,19 @@
 ---
 title: Vanliga frågor och svar om Azure VMware-lösningar från CloudSimple
 description: Dessa vanliga frågor och svar om Azure VMware-lösningen av CloudSimple inkluderar anslutning, nätverk, säkerhet, lagring, Azure-integrering och andra.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0db8c13a7467ed864c0845319b37f958f60fa4d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3551327f9aa07fe218d3b05f73057e36f92abcad
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88140895"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895571"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>Vanliga frågor om VMware-lösning av CloudSimple
 
@@ -50,7 +50,7 @@ CloudSimple tillhandahåller ett meddelande flera dagar före ett schemalagt und
 * **CloudSimple-infrastruktur**.  CloudSimple-infrastrukturen är utformad för att vara hög tillgänglig.  Vid den här typen av underhålls intervall uppdateras redundanta komponenter en i taget för att undvika avbrott i tjänsten. Du upprätthåller åtkomst till ditt privata moln vCenter, alla virtuella datorer, Internet anslutningen från ditt privata moln och anslutningar till lokalt eller Azure.
 * **CloudSimple-portalen**. Under den här typen av underhålls intervall kan vissa funktioner på CloudSimple-portalen vara inaktiverade eller otillgängliga.  Meddelandet före underhålls intervallet innehåller information om funktions begränsningar medan underhåll sker.
 
-## <a name="connectivity"></a>Anslutningsmöjlighet
+## <a name="connectivity"></a>Anslutning
 
 **Vilka är mina anslutnings alternativ till CloudSimple regions nätverk?**
 

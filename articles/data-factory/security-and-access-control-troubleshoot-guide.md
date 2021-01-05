@@ -5,15 +5,15 @@ services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 11/19/2020
+ms.date: 01/05/2021
 ms.author: lle
 ms.reviewer: craigg
-ms.openlocfilehash: 51cb1a1a8151748fc9c6cd4c81da967424b52868
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: fac4f3029d783e9257d00466ddb9fc9741b0f5a2
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505162"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895656"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Felsöka problem med Azure Data Factory säkerhet och åtkomst kontroll
 
@@ -151,6 +151,16 @@ Lös problemet genom att gå till [Azures privata länk för Azure Data Factory]
 Försök att aktivera offentlig nätverks åtkomst i användar gränssnittet, som visas på följande skärm bild:
 
 ![Skärm bild av "Enabled"-kontrollen för "Tillåt offentlig nätverks åtkomst" i fönstret nätverk.](media/self-hosted-integration-runtime-troubleshoot-guide/enable-public-network-access.png)
+
+### <a name="pipeline-runtime-varies-when-basing-on-different-ir"></a>Pipeline-körningen varierar när du baserar på olika IR
+
+#### <a name="symptoms"></a>Symtom
+
+Att bara växla den länkade tjänstens listruta i data uppsättningen utför samma pipeline-aktiviteter, men har drastiskt olika körnings tider. När data uppsättningen baseras på den hanterade Virtual Network Integration Runtime, tar det mer än två minuter att slutföra körningen, men det tar cirka 20 sekunder att slutföra när den baseras på standard Integration Runtime.
+
+#### <a name="cause"></a>Orsak
+
+Genom att kontrol lera informationen om pipeline-körningar kan du se att den långsamma pipelinen körs på Managed VNet (Virtual Network) IR medan den normala en körs på Azure IR. Enligt design tar hanterade VNet-IR längre tid än Azure IR eftersom vi inte reserverar en Compute-nod per data fabrik, så att det finns en varm fördröjning på 2 minuter för varje kopierings aktivitet som ska starta, och det inträffar främst i VNet-anslutning i stället för Azure IR.
 
 ## <a name="next-steps"></a>Nästa steg
 

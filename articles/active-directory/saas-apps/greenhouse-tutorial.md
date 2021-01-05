@@ -9,37 +9,36 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/18/2019
+ms.date: 11/25/2020
 ms.author: jeedes
-ms.openlocfilehash: 2206f0e1cfbe9e362937c6299c65eee2ebbb6253
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 0eb64ebe5e55bc054b6a280ac249cf451bb027db
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92448069"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897418"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>Självstudie: Azure Active Directory integrering med växthus
 
-I den här självstudien lär du dig att integrera Greenhouse med Azure Active Directory (AD Azure).
-När du integrerar Greenhouse med Azure AD innebär det följande fördelar:
+I den här självstudien får du lära dig hur du integrerar växthus med Azure Active Directory (Azure AD). När du integrerar växthus med Azure AD kan du:
 
-* Du kan styra vem som har åtkomst till Greenhouse från Azure AD.
-* Du kan låta dina användare automatiskt loggas in på Greenhouse (enkel inloggning) med sina Azure AD-konton.
-* Du kan hantera dina konton på en central plats – Azure-portalen.
+* Kontroll i Azure AD som har åtkomst till växthus.
+* Gör det möjligt för användarna att logga in automatiskt till växthus med sina Azure AD-konton.
+* Hantera dina konton på en central plats – Azure Portal.
 
-Om du vill ha mer information om SaaS-appintegrering med Azure AD läser du avsnittet om [programåtkomst och enkel inloggning med Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
-Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto ](https://azure.microsoft.com/free/) innan du börjar.
+## <a name="prerequisites"></a>Förutsättningar
 
-## <a name="prerequisites"></a>Krav
+För att komma igång behöver du följande objekt:
 
-För att konfigurera Azure AD-integrering med Greenhouse behöver du följande:
+* En Azure AD-prenumeration. Om du inte har någon prenumeration kan du få ett [kostnads fritt konto](https://azure.microsoft.com/free/).
+* Prenumeration som är aktive rad för växthus enkel inloggning (SSO).
 
-* En Azure AD-prenumeration. Om du inte har någon Azure AD-miljö kan du hämta en månads utvärderingsversion [här](https://azure.microsoft.com/pricing/free-trial/)
-* Greenhouse-prenumeration med enkel inloggning aktiverat
+> [!NOTE] 
+> Den här integreringen är också tillgänglig för användning från Azure AD amerikanska myndigheters moln miljö. Du hittar det här programmet i Cloud App-galleriet för Azure AD amerikanska myndigheter och konfigurerar det på samma sätt som du gör från det offentliga molnet. 
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
 
-I den här självstudien konfigurerar och testar du enkel inloggning med Azure AD i en testmiljö.
+I den här självstudien konfigurerar och testar du Azure AD SSO i en test miljö.
 
 * Greenhouse stöder **SP**-initierad enkel inloggning
 
@@ -47,59 +46,38 @@ I den här självstudien konfigurerar och testar du enkel inloggning med Azure A
 
 För att konfigurera integreringen av Greenhouse i Azure AD måste du lägga till Greenhouse från galleriet till din lista över hanterade SaaS-appar.
 
-**Utför följande steg för att lägga till Greenhouse från galleriet:**
+1. Logga in på Azure Portal med antingen ett arbets-eller skol konto eller en personlig Microsoft-konto.
+1. I det vänstra navigerings fönstret väljer du tjänsten **Azure Active Directory** .
+1. Navigera till **företags program** och välj sedan **alla program**.
+1. Välj **nytt program** om du vill lägga till ett nytt program.
+1. I avsnittet **Lägg till från Galleri** skriver du **växthus** i sökrutan.
+1. Välj panelen **växthus** från resultat och Lägg sedan till appen. Vänta några sekunder medan appen läggs till i din klient organisation.
 
-1. I **[Azure-portalen](https://portal.azure.com)** går du till den vänstra navigeringspanelen och klickar på **Azure Active Directory**-ikonen.
 
-    ![Azure Active Directory-knappen](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-sso-for-greenhouse"></a>Konfigurera och testa Azure AD SSO för växthus
 
-2. Gå till **Företagsprogram** och välj alternativet **Alla program**.
+Konfigurera och testa Azure AD SSO med växthus med hjälp av en test användare som heter **B. Simon**. För att SSO ska fungera måste du upprätta en länk relation mellan en Azure AD-användare och den relaterade användaren i växthus.
 
-    ![Bladet Företagsprogram](common/enterprise-applications.png)
+Utför följande steg för att konfigurera och testa Azure AD SSO med växthus:
 
-3. Lägg till ett nytt program genom att klicka på knappen **Nytt program** högst upp i dialogrutan.
+1. **[Konfigurera Azure AD SSO](#configure-azure-ad-sso)** – så att användarna kan använda den här funktionen.
+    1. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)** – för att testa enkel inloggning med Azure AD med Britta Simon.
+    1. **[Tilldela Azure AD-testanvändaren](#assign-the-azure-ad-test-user)** – så att Britta Simon kan använda enkel inloggning med Azure AD.
+2. **[Konfigurera en växthus-SSO](#configure-greenhouse-sso)** -konfiguration för att konfigurera enskilda Sign-On inställningar på program sidan.
+    1. **[Skapa Greenhouse-testanvändare](#create-greenhouse-test-user)** – för att ha en motsvarighet för Britta Simon i Greenhouse som är länkad till en Azure AD-representation av användaren.
+3. **[Testa SSO](#test-sso)** – för att kontrol lera om konfigurationen fungerar.
 
-    ![Knappen Nytt program](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Konfigurera Azure AD SSO
 
-4. I sökrutan skriver du **Greenhouse**, väljer **Greenhouse** i resultatpanelen och klickar på knappen **Lägg till** för att lägga till programmet.
+Följ de här stegen för att aktivera Azure AD SSO i Azure Portal.
 
-     ![Greenhouse i resultatlistan](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa enkel inloggning med Azure AD
-
-I det här avsnittet ska du konfigurera och testa enkel inloggning i Azure AD med Greenhouse baserat på testanvändaren **Britta Simon**.
-För att enkel inloggning ska fungera så måste en länkrelation mellan en Azure AD-användare och den relaterade användaren i Greenhouse upprättas.
-
-För att konfigurera och testa Azure AD enkel inloggning med Greenhouse måste du utföra följande uppgifter:
-
-1. **[Konfigurera enkel inloggning med Azure AD](#configure-azure-ad-single-sign-on)** – så att användarna kan använda den här funktionen.
-2. **[Konfigurera enkel inloggning för Greenhouse](#configure-greenhouse-single-sign-on)** – för att konfigurera inställningarna för enkel inloggning på programsidan.
-3. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)** – för att testa enkel inloggning med Azure AD med Britta Simon.
-4. **[Tilldela Azure AD-testanvändaren](#assign-the-azure-ad-test-user)** – så att Britta Simon kan använda enkel inloggning med Azure AD.
-5. **[Skapa Greenhouse-testanvändare](#create-greenhouse-test-user)** – för att ha en motsvarighet för Britta Simon i Greenhouse som är länkad till en Azure AD-representation av användaren.
-6. **[Testa enkel inloggning](#test-single-sign-on)** – för att verifiera om konfigurationen fungerar.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurera enkel inloggning med Azure AD
-
-I det här avsnittet aktiverar du enkel inloggning med Azure AD i Azure-portalen.
-
-Utför följande steg för att konfigurera enkel inloggning i Azure AD med Greenhouse:
-
-1. Välj **Enkel inloggning** på sidan för programintegrering av **Greenhouse** på [Azure-portalen](https://portal.azure.com/).
-
-    ![Konfigurera länk för enkel inloggning](common/select-sso.png)
-
-2. I dialogrutan **Välj en metod för enkel inloggning** väljer du läget **SAML/WS-Fed** för att aktivera enkel inloggning.
-
-    ![Välja läge för enkel inloggning](common/select-saml-option.png)
-
-3. På sidan **Konfigurera enkel inloggning med SAML** klickar du på **redigeringsikonen** för att öppna dialogrutan **Grundläggande SAML-konfiguration**.
+1. På sidan för hantering av **växthus** program på sidan Azure Portal letar du reda på avsnittet **Hantera** och väljer **enkel inloggning**.
+1. På sidan **Välj metod för enkel inloggning** väljer du **SAML**.
+1. På sidan **Konfigurera enkel inloggning med SAML** klickar du på ikonen Redigera/penna för **grundläggande SAML-konfiguration** för att redigera inställningarna.
 
     ![Redigera grundläggande SAML-konfiguration](common/edit-urls.png)
 
 4. I avsnittet **Grundläggande SAML-konfiguration** utför du följande steg:
-
-    ![Greenhouse – enkel inloggning-information för domän och -URL:er](common/sp-identifier.png)
 
     a. I textrutan **Inloggnings-URL** anger du en URL enligt följande mönster: `https://<companyname>.greenhouse.io`
 
@@ -116,66 +94,57 @@ Utför följande steg för att konfigurera enkel inloggning i Azure AD med Green
 
     ![Kopiera konfigurations-URL:er](common/copy-configuration-urls.png)
 
-    a. Inloggnings-URL
 
-    b. Azure AD-identifierare
+### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare
 
-    c. Utloggnings-URL
+I det här avsnittet ska du skapa en test användare i Azure Portal som kallas B. Simon.
 
-### <a name="configure-greenhouse-single-sign-on"></a>Konfigurera enkel inloggning för Greenhouse
-
-För att konfigurera enkel inloggning på **Greenhouse**-sidan måste du skicka den nedladdade **XML:en med federationsmetadata** och lämpliga kopierade URL:er från Azure-portalen till [Greenhouse-supportteamet](https://www.greenhouse.io/contact). De anger inställningen så att SAML SSO-anslutningen ställs in korrekt på båda sidorna.
-
-### <a name="create-an-azure-ad-test-user"></a>Skapa en Azure AD-testanvändare 
-
-Målet med det här avsnittet är att skapa en testanvändare i Azure-portalen med namnet Britta Simon.
-
-1. Gå till den vänstra rutan i Azure-portalen och välj **Azure Active Directory**, välj **Users** och sedan **Alla användare**.
-
-    ![Länkarna ”Användare och grupper” och ”Alla grupper”](common/users.png)
-
-2. Välj **ny användare** överst på skärmen.
-
-    ![Knappen Ny användare](common/new-user.png)
-
-3. Genomför följande steg i Användaregenskaper.
-
-    ![Dialogrutan Användare](common/user-properties.png)
-
-    a. I fältet **Namn** anger du **BrittaSimon**.
-  
-    b. I fältet **användar namn** skriver du **brittasimon \@ yourcompanydomain. extension**  
-    Till exempel BrittaSimon@contoso.com
-
-    c. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan Lösenord.
-
-    d. Klicka på **Skapa**.
+1. I den vänstra rutan i Azure Portal väljer du **Azure Active Directory**, väljer **användare** och väljer sedan **alla användare**.
+1. Välj **ny användare** överst på skärmen.
+1. I **användar** egenskaperna följer du de här stegen:
+   1. I **Namn**-fältet skriver du `B.Simon`.  
+   1. I fältet **användar namn** anger du username@companydomain.extension . Ett exempel är `B.Simon@contoso.com`.
+   1. Markera kryssrutan **Visa lösenord** och skriv sedan ned det värde som visas i rutan **Lösenord**.
+   1. Klicka på **Skapa**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändaren
 
-I det här avsnittet gör du det möjligt för Britta Simon att använda enkel inloggning med Azure genom att ge åtkomst till Greenhouse.
+I det här avsnittet ska du aktivera B. Simon för att använda enkel inloggning med Azure genom att bevilja åtkomst till växthus.
 
-1. På Azure-portalen väljer du **Företagsprogram**, **Alla program** och sedan **Greenhouse**.
+1. I Azure Portal väljer du **företags program** och väljer sedan **alla program**.
+1. I listan med program väljer du **Greenhouse**.
+1. På sidan Översikt för appen letar du reda på avsnittet **Hantera** och väljer **användare och grupper**.
+1. Välj **Lägg till användare** och välj sedan **användare och grupper** i dialog rutan **Lägg till tilldelning** .
+1. I dialog rutan **användare och grupper** väljer du **B. Simon** från listan användare och klickar sedan på knappen **Välj** längst ned på skärmen.
+1. Om du förväntar dig att en roll ska tilldelas användarna kan du välja den från List rutan **Välj en roll** . Om ingen roll har kon figurer ATS för den här appen ser du rollen "standard åtkomst" vald.
+1. Klicka på knappen **tilldela** i dialog rutan **Lägg till tilldelning** .
 
-    ![Bladet Företagsprogram](common/enterprise-applications.png)
+## <a name="configure-greenhouse-sso"></a>Konfigurera växthus SSO
 
-2. I listan med program väljer du **Greenhouse**.
+1. Logga in på en växthus-webbplats som administratör i ett annat webbläsarfönster.
 
-    ![Greenhouse-länken i programlistan](common/all-applications.png)
+1. Gå till **konfigurera > dev Center > enkel inloggning**.
 
-3. På menyn till vänster väljer du **Användare och grupper**.
+    ![skärm bild för SSO-Sidan](./media/greenhouse-tutorial/configure.png)
 
-    ![Länken ”Användare och grupper”](common/users-groups-blade.png)
+1. Utför följande steg på sidan enskild Sign-On.
 
-4. Klicka på knappen **Lägg till användare** och välj sedan **Användare och grupper** i dialogrutan **Lägg till tilldelning**.
+    ![skärm bild för konfigurations sidan för SSO](./media/greenhouse-tutorial/sso-page.png)
 
-    ![Fönstret Lägg till tilldelning](common/add-assign-user.png)
+    a. Kopiera URL-värde för **SSO Assertion-konsumenten** , klistra in det här värdet i text rutan **SVARs-URL** i den **grundläggande SAML-konfigurationen** i Azure Portal.
 
-5. I dialogrutan **Användare och grupper** väljer du **Britta Simon** i listan med användare och klickar på knappen **Välj** längst ned på skärmen.
+    b. I text rutan **entitets-ID/Issuer** klistrar du in det ID-värde för **Azure AD** som du har kopierat från Azure Portal.
 
-6. Om du förväntar dig ett roll värde i SAML-kontrollen väljer du lämplig roll för användaren i listan i dialog rutan **Välj roll** och klickar sedan på knappen **Välj** längst ned på skärmen.
+    c. I text rutan **URL för enskild Sign-On** klistrar du in URL-värdet för **inloggning** som du har kopierat från Azure Portal.
 
-7. I dialogrutan **Lägg till tilldelning** klickar du på knappen **Tilldela**.
+    d. Öppna den hämtade **federationens metadata-XML** från Azure Portal i anteckningar och klistra in innehållet i text rutan för **finger avtryck för IDP-certifikat** .
+
+    e. Välj format värde för **namn identifierare** i list rutan.
+
+    f. Klicka på **påbörja testning**.
+
+    >[!NOTE]
+    >Alternativt kan du också ladda upp **XML-** filen med federationsmetadata genom att klicka på alternativet **Välj fil** .
 
 ### <a name="create-greenhouse-test-user"></a>Skapa Greenhouse-testanvändare
 
@@ -188,17 +157,13 @@ För att Azure AD-användare ska kunna logga in i Greenhouse måste de etableras
 
 1. Logga in på **Greenhouse**-företagsplatsen som administratör.
 
-2. På menyn längst upp klickar du på **Konfigurera** och sedan på **Användare**.
+2. Gå till **konfigurera > användare > nya användare**
    
-    ![Användare](./media/greenhouse-tutorial/ic790791.png "Användare")
+    ![Användare](./media/greenhouse-tutorial/create-user-1.png "Användare")
 
-3. Klicka på **Nya användare**.
+4. I avsnittet **Lägg till nya användare** utför du följande steg:
    
-    ![Ny användare](./media/greenhouse-tutorial/ic790792.png "Ny användare")
-
-4. I avsnittet **Lägg till ny användare** utför du följande steg:
-   
-    ![Lägg till ny användare](./media/greenhouse-tutorial/ic790793.png "Lägg till ny användare")
+    ![Lägg till ny användare](./media/greenhouse-tutorial/create-user-2.png "Lägg till ny användare")
 
     a. I textrutan för att **ange användarens e-postadress** skriver du e-postadressen för ett giltigt Azure Active Directory-konto som du vill etablera.
 
@@ -207,16 +172,17 @@ För att Azure AD-användare ska kunna logga in i Greenhouse måste de etableras
       >[!NOTE]
       >Azure Active Directory-kontoinnehavaren får ett e-postmeddelande med en länk för att bekräfta kontot innan det blir aktivt.
 
-### <a name="test-single-sign-on"></a>Testa enkel inloggning 
+### <a name="test-sso"></a>Testa SSO 
 
-I det här avsnittet testar du konfigurationen för enkel inloggning Azure AD med hjälp av åtkomstpanelen.
+I det här avsnittet ska du testa Azure AD-konfigurationen för enkel inloggning med följande alternativ. 
 
-När du klickar på Greenhouse-panelen i åtkomstpanelen så borde du automatiskt loggas in på den Greenhouse som du har konfigurerat enkel inloggning för. Mer information om åtkomstpanelen finns i [introduktionen till åtkomstpanelen](../user-help/my-apps-portal-end-user-access.md).
+* Klicka på **testa det här programmet** i Azure Portal. Detta omdirigerar till den växthus inloggnings-URL: en där du kan starta inloggnings flödet. 
 
-## <a name="additional-resources"></a>Ytterligare resurser
+* Gå till inloggnings-URL: n för växthus direkt och starta inloggnings flödet därifrån.
 
-- [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](./tutorial-list.md)
+* Du kan använda Microsoft Mina appar. När du klickar på panelen för växthus i Mina appar omdirigeras den till den växthus inloggnings-URL: en. Mer information om Mina appar finns i [Introduktion till Mina appar](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Vad är villkorlig åtkomst i Azure Active Directory?](../conditional-access/overview.md)
+## <a name="next-steps"></a>Nästa steg
+
+När du har konfigurerat växthus kan du framtvinga kontroll över sessioner, vilket skyddar exfiltrering och intrånget för organisationens känsliga data i real tid. Kontroll av sessionen sträcker sig från villkorlig åtkomst. [Lär dig hur du tvingar fram en session med Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
