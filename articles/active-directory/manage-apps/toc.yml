@@ -28,7 +28,7 @@
       href: delete-application-portal.md
 - name: Självstudier
   items:
-    - name: Lista över förkonfigurerade appar
+    - name: Lista över självstudier om appintegrering
       href: /azure/active-directory/saas-apps/
     - name: Lägga till en lokal app med programproxy
       href: application-proxy-add-on-premises-application.md

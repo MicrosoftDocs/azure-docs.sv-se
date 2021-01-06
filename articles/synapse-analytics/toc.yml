@@ -1113,6 +1113,16 @@
           href: ./machine-learning/tutorial-cognitive-services-anomaly.md
         - name: Konfigurera Cognitive Services för Azure Synapse
           href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
+- name: Data Catalog och styrning
+  items:
+    - name: Snabbstarter
+      items:
+        - name: Ansluta ett Azure Purview-konto
+          href: ./catalog-and-governance/quickstart-connect-azure-purview.md
+    - name: Anvisningar
+      items:
+        - name: 'Identifiera, ansluta och utforska data i Synapse med hjälp av Azure Purview'
+          href: ./catalog-and-governance/how-to-discover-connect-analyze-azure-purview.md
 - name: Så här gör du
   items:
     - name: Planera och hantera kostnader

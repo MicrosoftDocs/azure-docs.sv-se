@@ -205,8 +205,16 @@
           href: partner-center-portal/create-iot-edge-module-asset.md
     - name: Hanterade tjänsterbjudanden
       items:
+        - name: Planera ett erbjudande för hanterad tjänst
+          href: plan-managed-service-offer.md
         - name: Skapa ett erbjudande för hanterad tjänst
-          href: partner-center-portal/create-new-managed-service-offer.md
+          href: create-managed-service-offer.md
+        - name: Konfigurera erbjudande för hanterad tjänst
+          href: create-managed-service-offer-listing.md
+        - name: Lägg till en målgrupp för förhandsversionen
+          href: create-managed-service-offer-preview.md
+        - name: Skapa planer
+          href: create-managed-service-offer-plans.md
     - name: Erbjudanden för Power BI-appen
       items:
         - name: Planera ett erbjudande om Power BI-app

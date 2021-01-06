@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Azure Functions-dokumentation
-summary: Azure Functions är en serverlös beräkningstjänst som gör det möjligt att köra händelseutlöst kod utan att uttryckligen behöva etablera eller hantera infrastruktur. Dess ”compute on-demand”-funktioner möjliggör enkel integrering och ytterligare stödfunktioner. Du kan också använda den för att tillhandahålla webb-API:er, svara på databasändringar, bearbeta IoT-dataströmmar och hantera meddelandeköer.
+summary: Azure Functions är en molntjänst som är tillgänglig på begäran. Den tillhandahåller all kontinuerligt uppdaterad infrastruktur och de resurser som krävs för att köra dina program. Du fokuserar på de delar av koden som är viktigast för dig så hanterar Azure Functions resten. Du kan använda Azure Functions för att bygga webb-API:er, svara på databasändringar, bearbeta IoT-strömmar, hantera meddelandeköer med mera.
 metadata:
   title: Azure Functions-dokumentation
-  description: Azure Functions är en serverlös beräkningstjänst som gör det möjligt att köra händelseutlöst kod utan att uttryckligen behöva etablera eller hantera infrastruktur. Dess ”compute on-demand”-funktioner möjliggör enkel integrering och ytterligare stödfunktioner. Du kan också använda den för att tillhandahålla webb-API:er, svara på databasändringar, bearbeta IoT-dataströmmar och hantera meddelandeköer.
+  description: Azure Functions är en molntjänst som är tillgänglig på begäran. Den tillhandahåller all kontinuerligt uppdaterad infrastruktur och de resurser som krävs för att köra dina program. Du fokuserar på de delar av koden som är viktigast för dig så hanterar Azure Functions resten. Du kan använda Azure Functions för att bygga webb-API:er, svara på databasändringar, bearbeta IoT-strömmar, hantera meddelandeköer med mera.
   ms.service: azure-functions
   ms.topic: landing-page
   author: ggailey777
   ms.author: azfundocs
   ms.date: 09/17/2019
-  ms.openlocfilehash: e6c3cb1a9d536ed898c48c45f57434dc4bf66970
-  ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+  ms.openlocfilehash: 74acabf21252acfd79520d7f24ff79503734a235
+  ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
   ms.translationtype: HT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 12/15/2020
-  ms.locfileid: "97505298"
+  ms.lasthandoff: 01/05/2021
+  ms.locfileid: "97901529"
 landingContent:
 - title: Om Azure Functions
   linkLists:

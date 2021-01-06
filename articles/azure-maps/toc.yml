@@ -306,6 +306,8 @@
       items:
         - name: Datatjänst
           href: /rest/api/maps/data
+        - name: Tjänsten Elevation
+          href: /rest/api/maps/elevation
         - name: Geoplatstjänst
           href: /rest/api/maps/geolocation
         - name: Mobilitetstjänster
