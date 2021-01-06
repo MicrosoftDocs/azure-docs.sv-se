@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 58dacc9e65da6502d083446cb7202c222cb7e795
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 1b43a1ceb1f9e098e4932b405553ae8f33e27262
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97034045"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937356"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Hantera och öka kvoter för resurser med Azure Machine Learning
 
@@ -29,7 +29,7 @@ Azure använder gränser och kvoter för att förhindra budget överskridningar 
 > + Begäran om kvot ökar.
 > + Privat slut punkt och DNS-kvoter.
 
-Tillsammans med hanterings kvoter kan du lära dig hur du [planerar och hanterar kostnader för Azure Machine Learning](concept-plan-manage-cost.md).
+Tillsammans med hanterings kvoter kan du lära dig hur du [planerar och hanterar kostnader för Azure Machine Learning](concept-plan-manage-cost.md) eller Lär dig mer om [tjänst begränsningarna i Azure Machine Learning](resource-limits-quotas-capacity.md).
 
 ## <a name="special-considerations"></a>Särskilda överväganden
 
@@ -53,7 +53,9 @@ I det här avsnittet får du lära dig om standard-och Max kvot gränserna för 
 + Azure Storage
 
 > [!IMPORTANT]
-> Begränsningar kan komma att ändras. Den senaste informationen finns i [Azure-prenumeration och tjänst begränsningar, kvoter och begränsningar](../azure-resource-manager/management/azure-subscription-service-limits.md) för alla Azure.
+> Begränsningar kan komma att ändras. Den senaste informationen finns  [i tjänst gränser i Azure Machine Learning](resource-limits-quotas-capacity.md).
+
+
 
 ### <a name="azure-machine-learning-assets"></a>Azure Machine Learning till gångar
 Följande begränsningar för till gångar gäller per arbets yta. 
@@ -104,7 +106,7 @@ I följande tabell visas ytterligare gränser i plattformen. Kontakta AzureML pr
 #### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning pipelines
 [Azure Machine Learning pipelines](concept-ml-pipelines.md) har följande gränser.
 
-| **Resurs** | **Gräns** |
+| **Resurs** | **Gränserna** |
 | --- | --- |
 | Steg i en pipeline | 30 000 |
 | Arbets ytor per resurs grupp | 800 |
@@ -210,3 +212,4 @@ Använd följande steg för att begära en ersättning för dessa scenarier:
 ## <a name="next-steps"></a>Nästa steg
 
 + [Planera och hantera kostnader för Azure Machine Learning](concept-plan-manage-cost.md)
++ [Tjänst begränsningar i Azure Machine Learning](resource-limits-quotas-capacity.md)

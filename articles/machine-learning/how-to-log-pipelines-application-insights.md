@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 624409be4d7e2cfba37dbe16e083904766ae1389
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c0cb4527349b09ed8e794cc55dee6f9e54f8a7d4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309655"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937373"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>Samla in loggfiler för Machine Learning-pipeline i Application Insights för aviseringar och fel sökning
 
@@ -24,7 +24,7 @@ Python-biblioteket för [openräkning](https://opencensus.io/quickstart/python/)
 
 Om du loggar in på samma plats får du en historik över undantag och fel meddelanden. Eftersom Application Insights integreras med Azure-aviseringar kan du även skapa aviseringar baserat på Application Insights frågor.
 
-## <a name="prerequisites"></a>Förutsättningar
+## <a name="prerequisites"></a>Krav
 
 * Följ stegen för att skapa en [Azure Machine Learning](./how-to-manage-workspace.md) arbets yta och [skapa din första pipeline](./how-to-create-your-first-pipeline.md)
 * [Konfigurera utvecklings miljön](./how-to-configure-environment.md) för att installera Azure Machine Learning SDK.
@@ -134,7 +134,7 @@ custom_dimensions = {
 }
 
 # Assumes AzureLogHandler was already registered above
-logger.info("I will be sent to Application Insights with Custom Dimensions", custom_dimensions)
+logger.info("I will be sent to Application Insights with Custom Dimensions", extra= {"custom_dimensions":custom_dimensions})
 ```
 
 ## <a name="opencensus-python-logging-considerations"></a>Överväganden om python-loggning i openräkning
@@ -162,7 +162,7 @@ Några av frågorna nedan använder "customDimensions. level". Dessa allvarlighe
 | Logga resultat med severityLevel-fel under de senaste 7 dagarna              | <pre>traces \| <br>where timestamp > ago(7d) <br>and customDimensions.Level == 'ERROR'                     |
 | Antal logg resultat med severityLevel-fel under de senaste 7 dagarna     | <pre>traces \| <br>where timestamp > ago(7d) <br>and customDimensions.Level == 'ERROR' \| <br>summarize count()</pre> |
 
-## <a name="next-steps"></a>Nästa steg
+## <a name="next-steps"></a>Efterföljande moment
 
 När du har loggat in Application Insights-instansen kan de användas för att ange [Azure Monitor aviseringar](../azure-monitor/platform/alerts-overview.md#what-you-can-alert-on) baserat på frågeresultat.
 
